@@ -3019,10 +3019,10 @@ EndProcedure
 Procedure Telegram_GetBotInformation(FunctionParameters)
 
     Token  = FunctionParameters["Telegram_Token"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "GetBotInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "GetBotInformation", Options);
 
     // END
 
@@ -3033,10 +3033,10 @@ EndProcedure
 Procedure Telegram_GetUpdates(FunctionParameters)
 
     Token  = FunctionParameters["Telegram_Token"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "GetUpdates", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "GetUpdates", Options);
 
     // END
 
@@ -3049,11 +3049,11 @@ Procedure Telegram_SetWebhook(FunctionParameters)
     Token = FunctionParameters["Telegram_Token"];
     URL   = FunctionParameters["Telegram_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SetWebhook", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SetWebhook", Options);
 
     // END
 
@@ -3064,10 +3064,10 @@ EndProcedure
 Procedure Telegram_DeleteWebhook(FunctionParameters)
 
     Token  = FunctionParameters["Telegram_Token"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "DeleteWebhook", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "DeleteWebhook", Options);
 
     // END
 
@@ -3086,72 +3086,72 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
     KeyboardButtonsArray.Add("Button1");
     KeyboardButtonsArray.Add("Button2");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", KeyboardButtonsArray);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", KeyboardButtonsArray);
+    Options.Insert("", Истина);
 
-    Keyboard = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "FormKeyboardFromButtonArray", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Keyboard);
+    Keyboard = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "FormKeyboardFromButtonArray", Options);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
+    Options.Insert("", Keyboard);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendTextMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
     Process(Result, "Telegram", "SendTextMessage", , FunctionParameters, Text); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendTextMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
     // END
 
     Process(Result, "Telegram", "SendTextMessage", "Channel", FunctionParameters, Text);
 
     Text   = "<b>Text html %F0%9F%93%9E 10%</b>";
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", "HTML");
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
+    Options.Insert("", "HTML");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendTextMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
     Process(Result, "Telegram", "SendTextMessage", "HTML");
 
     Text   = "%F0%9F%A4%BC";
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendTextMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
     Process(Result, "Telegram", "SendTextMessage", "Emoji");
 
     Text   = "Text %F0%9F%A5%9D and emoji \(10%\)";
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", "MarkdownV2");
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
+    Options.Insert("", "MarkdownV2");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendTextMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
     Process(Result, "Telegram", "SendTextMessage", "Text + Emoji");
 
     Keyboard = OPI_Tools.JsonToStructure(Keyboard, False);
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Keyboard);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
+    Options.Insert("", Keyboard);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendTextMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
     Process(Result, "Telegram", "SendTextMessage", "Keyboard structure");
 
@@ -3164,10 +3164,10 @@ Procedure Telegram_FormKeyboardFromButtonArray(FunctionParameters)
     ButtonArray.Add("Button2");
     ButtonArray.Add("Button3");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ButtonArray);
+    Options = New Structure;
+    Options.Insert("", ButtonArray);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "FormKeyboardFromButtonArray", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "FormKeyboardFromButtonArray", Options);
 
     // END
 
@@ -3188,33 +3188,33 @@ Procedure Telegram_SendPicture(FunctionParameters)
 
     ImageDD = New BinaryData(ImagePath);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Image);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
+    Options.Insert("", Image);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendImage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendImage", Options);
 
     Process(Result, "Telegram", "SendImage", , FunctionParameters, Text); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", ImagePath);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
+    Options.Insert("", ImagePath);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendImage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendImage", Options);
 
     Process(Result, "Telegram", "SendImage", "Path", FunctionParameters, Text); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", ImageDD);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
+    Options.Insert("", ImageDD);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendImage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendImage", Options);
 
     // END
 
@@ -3225,31 +3225,31 @@ Procedure Telegram_SendPicture(FunctionParameters)
     ButtonArray.Add("Button2");
     ButtonArray.Add("Button3");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ButtonArray);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", ButtonArray);
+    Options.Insert("", Истина);
 
-    Keyboard = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "FormKeyboardFromButtonArray", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Image);
-    Опции.Вставить("", Keyboard);
+    Keyboard = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "FormKeyboardFromButtonArray", Options);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
+    Options.Insert("", Image);
+    Options.Insert("", Keyboard);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendImage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendImage", Options);
 
     Process(Result, "Telegram", "SendImage", "Keyboard", FunctionParameters, Text);
 
     Keyboard = OPI_Tools.JsonToStructure(Keyboard);
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Image);
-    Опции.Вставить("", Keyboard);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
+    Options.Insert("", Image);
+    Options.Insert("", Keyboard);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendImage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendImage", Options);
 
     Process(Result, "Telegram", "SendImage", "Keyboard collection", FunctionParameters, Text);
 
@@ -3272,33 +3272,33 @@ Procedure Telegram_SendVideo(FunctionParameters)
 
     VideoDD = New BinaryData(VideoPath);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Video);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
+    Options.Insert("", Video);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendVideo", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendVideo", Options);
 
     Process(Result, "Telegram", "SendVideo", , FunctionParameters, Text); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", VideoPath);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
+    Options.Insert("", VideoPath);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendVideo", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendVideo", Options);
 
     Process(Result, "Telegram", "SendVideo", "Path", FunctionParameters, Text); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", VideoDD);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
+    Options.Insert("", VideoDD);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendVideo", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendVideo", Options);
 
     // END
 
@@ -3322,33 +3322,33 @@ Procedure Telegram_SendAudio(FunctionParameters)
 
     AudioDD = New BinaryData(AudioPath);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Audio);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
+    Options.Insert("", Audio);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendAudio", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendAudio", Options);
 
     Process(Result, "Telegram", "SendAudio", , FunctionParameters, Text); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", AudioPath);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
+    Options.Insert("", AudioPath);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendAudio", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendAudio", Options);
 
     Process(Result, "Telegram", "SendAudio", "Path", FunctionParameters, Text); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", AudioDD);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
+    Options.Insert("", AudioDD);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendAudio", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendAudio", Options);
 
     // END
 
@@ -3372,45 +3372,45 @@ Procedure Telegram_SendDocument(FunctionParameters)
 
     DocumentDD = New BinaryData(DocumentPath);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Document);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
+    Options.Insert("", Document);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendDocument", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendDocument", Options);
 
     Process(Result, "Telegram", "SendDocument", , FunctionParameters, Text); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Document);
-    Опции.Вставить("", "customname.docx");
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
+    Options.Insert("", Document);
+    Options.Insert("", "customname.docx");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendDocument", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendDocument", Options);
 
     Process(Result, "Telegram", "SendDocument", "With name", FunctionParameters, Text); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", DocumentPath);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
+    Options.Insert("", DocumentPath);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendDocument", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendDocument", Options);
 
     Process(Result, "Telegram", "SendDocument", "Path", FunctionParameters, Text); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", DocumentDD);
-    Опции.Вставить("", "customname.docx");
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
+    Options.Insert("", DocumentDD);
+    Options.Insert("", "customname.docx");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendDocument", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendDocument", Options);
 
     // END
 
@@ -3434,33 +3434,33 @@ Procedure Telegram_SendGif(FunctionParameters)
 
     GifDD = New BinaryData(GifPath);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", GIF);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
+    Options.Insert("", GIF);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendGif", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendGif", Options);
 
     Process(Result, "Telegram", "SendGif", , FunctionParameters, Text); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", GifPath);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
+    Options.Insert("", GifPath);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendGif", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendGif", Options);
 
     Process(Result, "Telegram", "SendGif", "Path", FunctionParameters, Text); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", GifDD);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
+    Options.Insert("", GifDD);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendGif", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendGif", Options);
 
     // END
 
@@ -3491,13 +3491,13 @@ Procedure Telegram_SendMediaGroup(FunctionParameters)
     MediaGroup.Insert(ImagePath, "photo");
     MediaGroup.Insert(VideoDD  , "video");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", MediaGroup);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
+    Options.Insert("", MediaGroup);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendMediaGroup", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendMediaGroup", Options);
 
     // END
 
@@ -3513,13 +3513,13 @@ Procedure Telegram_SendMediaGroup(FunctionParameters)
     MediaGroup.Insert(DocumentURL , "document");
     MediaGroup.Insert(DocumentPath, "document");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", MediaGroup);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Text);
+    Options.Insert("", MediaGroup);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendMediaGroup", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendMediaGroup", Options);
 
     DeleteFiles(VideoPath);
     DeleteFiles(ImagePath);
@@ -3539,23 +3539,23 @@ Procedure Telegram_SendLocation(FunctionParameters)
     Width     = FunctionParameters["Lat"];
     Longitude = FunctionParameters["Long"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Width);
-    Опции.Вставить("", Longitude);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Width);
+    Options.Insert("", Longitude);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendLocation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendLocation", Options);
 
     Process(Result, "Telegram", "SendLocation"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Width);
-    Опции.Вставить("", Longitude);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Width);
+    Options.Insert("", Longitude);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendLocation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendLocation", Options);
 
     // END
 
@@ -3574,25 +3574,25 @@ Procedure Telegram_SendContact(FunctionParameters)
     LastName  = FunctionParameters["Surname"];
     Phone     = FunctionParameters["Phone"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", LastName);
-    Опции.Вставить("", Phone);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Name);
+    Options.Insert("", LastName);
+    Options.Insert("", Phone);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendContact", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendContact", Options);
 
     Process(Result, "Telegram", "SendContact", , Name); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", LastName);
-    Опции.Вставить("", Phone);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Name);
+    Options.Insert("", LastName);
+    Options.Insert("", Phone);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendContact", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendContact", Options);
 
     // END
 
@@ -3613,25 +3613,25 @@ Procedure Telegram_SendPoll(FunctionParameters)
     AnswersArray.Add("Green");
     AnswersArray.Add("Blue");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Question);
-    Опции.Вставить("", AnswersArray);
-    Опции.Вставить("", Ложь);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Question);
+    Options.Insert("", AnswersArray);
+    Options.Insert("", Ложь);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendPoll", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendPoll", Options);
 
     Process(Result, "Telegram", "SendPoll", , Question); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Question);
-    Опции.Вставить("", AnswersArray);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Question);
+    Options.Insert("", AnswersArray);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendPoll", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendPoll", Options);
 
     Process(Result, "Telegram", "SendPoll", "Channel", Question); // SKIP
 
@@ -3639,14 +3639,14 @@ Procedure Telegram_SendPoll(FunctionParameters)
 
     StringArray = "['Red', 'Yellow', 'Green', 'Blue']";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Question);
-    Опции.Вставить("", StringArray);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Question);
+    Options.Insert("", StringArray);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendPoll", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendPoll", Options);
 
     Process(Result, "Telegram", "SendPoll", "Questions as string", Question);
 
@@ -3659,11 +3659,11 @@ Procedure Telegram_DownloadFile(FunctionParameters)
     FileID = FunctionParameters["Telegram_FileID"];
     Token  = FunctionParameters["Telegram_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "DownloadFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "DownloadFile", Options);
 
     // END
 
@@ -3678,13 +3678,13 @@ Procedure Telegram_ForwardMessage(FunctionParameters)
     ChannelID = FunctionParameters["Telegram_ChannelID"];
     MessageID = FunctionParameters["Telegram_ChannelMessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", MessageID);
+    Options.Insert("", ChannelID);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "ForwardMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ForwardMessage", Options);
 
     // END
 
@@ -3698,12 +3698,12 @@ Procedure Telegram_Ban(FunctionParameters)
     UserID    = FunctionParameters["Telegram_ChatID"];
     ChannelID = FunctionParameters["Telegram_ChannelID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", UserID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", UserID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "Ban", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "Ban", Options);
 
     // END
 
@@ -3717,12 +3717,12 @@ Procedure Telegram_Unban(FunctionParameters)
     UserID    = FunctionParameters["Telegram_ChatID"];
     ChannelID = FunctionParameters["Telegram_ChannelID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", UserID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", UserID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "Unban", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "Unban", Options);
 
     // END
 
@@ -3741,14 +3741,14 @@ Procedure Telegram_CreateInviteLink(FunctionParameters)
     Expiration     = CurrentDate + Day;
     UnixExpiration = OPI_Tools.UNIXTime(Expiration);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", Title);
-    Опции.Вставить("", Expiration);
-    Опции.Вставить("", 200);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", Title);
+    Options.Insert("", Expiration);
+    Options.Insert("", 200);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "CreateInvitationLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "CreateInvitationLink", Options);
 
     // END
 
@@ -3762,12 +3762,12 @@ Procedure Telegram_PinMessage(FunctionParameters)
     ChannelID = FunctionParameters["Telegram_ChannelID"];
     MessageID = FunctionParameters["Telegram_ChannelMessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", MessageID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "PinMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "PinMessage", Options);
 
     // END
 
@@ -3781,12 +3781,12 @@ Procedure Telegram_UnpinMessage(FunctionParameters)
     ChannelID = FunctionParameters["Telegram_ChannelID"];
     MessageID = FunctionParameters["Telegram_ChannelMessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
-    Опции.Вставить("", MessageID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "UnpinMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "UnpinMessage", Options);
 
     // END
 
@@ -3799,11 +3799,11 @@ Procedure Telegram_GetParticipantCount(FunctionParameters)
     Token     = FunctionParameters["Telegram_Token"];
     ChannelID = FunctionParameters["Telegram_ChannelID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChannelID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChannelID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "GetParticipantCount", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "GetParticipantCount", Options);
 
     // END
 
@@ -3814,10 +3814,10 @@ EndProcedure
 Procedure Telegram_GetAvatarIconList(FunctionParameters)
 
     Token  = FunctionParameters["Telegram_Token"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "GetAvatarIconList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "GetAvatarIconList", Options);
 
     // END
 
@@ -3832,13 +3832,13 @@ Procedure Telegram_CreateForumTopic(FunctionParameters)
     Icon  = "5357419403325481346";
     Name  = "TestTopic " + String(New UUID);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Chat);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Icon);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Chat);
+    Options.Insert("", Name);
+    Options.Insert("", Icon);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "CreateForumThread", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "CreateForumThread", Options);
 
     // END
 
@@ -3847,12 +3847,12 @@ Procedure Telegram_CreateForumTopic(FunctionParameters)
     ChatTopic = Chat + "*" + FunctionParameters["Telegram_TopicID"];
     Text      = FunctionParameters["String"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatTopic);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatTopic);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "SendTextMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "SendTextMessage", Options);
 
     Process(Result, "Telegram", "CreateForumThread", "Message", FunctionParameters, Text);
 
@@ -3866,14 +3866,14 @@ Procedure Telegram_EditForumTopic(FunctionParameters)
     NewName = "NewTestTitle";
     NewIcon = "5310132165583840589";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Chat);
-    Опции.Вставить("", Topic);
-    Опции.Вставить("", NewName);
-    Опции.Вставить("", NewIcon);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Chat);
+    Options.Insert("", Topic);
+    Options.Insert("", NewName);
+    Options.Insert("", NewIcon);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "EditForumTopic", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "EditForumTopic", Options);
 
     // END
 
@@ -3893,12 +3893,12 @@ Procedure Telegram_CloseForumTopic(FunctionParameters)
 
     Process(Result, "Telegram", "CloseForumThread", "Main"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Chat);
-    Опции.Вставить("", Topic);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Chat);
+    Options.Insert("", Topic);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "CloseForumThread", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "CloseForumThread", Options);
 
     // END
 
@@ -3916,12 +3916,12 @@ Procedure Telegram_OpenForumTopic(FunctionParameters)
 
     Process(Result, "Telegram", "OpenForumThread", "Main"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Chat);
-    Опции.Вставить("", Topic);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Chat);
+    Options.Insert("", Topic);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "OpenForumThread", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "OpenForumThread", Options);
 
     // END
 
@@ -3935,12 +3935,12 @@ Procedure Telegram_DeleteForumTopic(FunctionParameters)
     Chat  = FunctionParameters["Telegram_ForumID"];
     Topic = FunctionParameters["Telegram_TopicID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Chat);
-    Опции.Вставить("", Topic);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Chat);
+    Options.Insert("", Topic);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "DeleteForumTopic", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "DeleteForumTopic", Options);
 
     // END
 
@@ -3954,11 +3954,11 @@ Procedure Telegram_ClearPinnedMessagesList(FunctionParameters)
     Chat  = FunctionParameters["Telegram_ForumID"];
     Topic = FunctionParameters["Telegram_TopicID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Chat);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Chat);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "ClearThreadPinnedMessagesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ClearThreadPinnedMessagesList", Options);
 
     Process(Result, "Telegram", "ClearThreadPinnedMessagesList", "Main"); // SKIP
 
@@ -3973,11 +3973,11 @@ Procedure Telegram_HideMainForumTopic(FunctionParameters)
     Token = FunctionParameters["Telegram_Token"];
     Chat  = FunctionParameters["Telegram_ForumID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Chat);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Chat);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "HideMainForumTopic", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "HideMainForumTopic", Options);
 
     // END
 
@@ -3990,11 +3990,11 @@ Procedure Telegram_ShowMainForumTopic(FunctionParameters)
     Token = FunctionParameters["Telegram_Token"];
     Chat  = FunctionParameters["Telegram_ForumID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Chat);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Chat);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "ShowMainForumTopic", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ShowMainForumTopic", Options);
 
     // END
 
@@ -4008,12 +4008,12 @@ Procedure Telegram_ChangeMainTopicName(FunctionParameters)
     Token = FunctionParameters["Telegram_Token"];
     Chat  = FunctionParameters["Telegram_ForumID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Chat);
-    Опции.Вставить("", Title);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Chat);
+    Options.Insert("", Title);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "EditMainForumTopicName", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "EditMainForumTopicName", Options);
 
     // END
 
@@ -4027,12 +4027,12 @@ Procedure Telegram_DeleteMessage(FunctionParameters)
     ChatID    = FunctionParameters["Telegram_ChannelID"];
     MessageID = FunctionParameters["Telegram_ChannelMessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "DeleteMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "DeleteMessage", Options);
 
     // END
 
@@ -4047,26 +4047,26 @@ Procedure Telegram_ReplaceMessageText(FunctionParameters)
     MessageID = FunctionParameters["Telegram_ChannelMessageID"];
     Text      = "New message text";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "ReplaceMessageText", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ReplaceMessageText", Options);
 
     // END
 
     Process(Result, "Telegram", "ReplaceMessageText", , Text);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", "<b>Bold text</b>");
-    Опции.Вставить("", "HTML");
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
+    Options.Insert("", "<b>Bold text</b>");
+    Options.Insert("", "HTML");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "ReplaceMessageText", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ReplaceMessageText", Options);
 
     Process(Result, "Telegram", "ReplaceMessageText", "Markup", "Bold text");
 
@@ -4083,20 +4083,20 @@ Procedure Telegram_ReplaceMessageKeyboard(FunctionParameters)
     ButtonArray.Add("New button 2");
     ButtonArray.Add("New button 1");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ButtonArray);
-    Опции.Вставить("", Истина);
-    Опции.Вставить("", Ложь);
+    Options = New Structure;
+    Options.Insert("", ButtonArray);
+    Options.Insert("", Истина);
+    Options.Insert("", Ложь);
 
-    Keyboard = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "FormKeyboardFromButtonArray", Опции);
+    Keyboard = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "FormKeyboardFromButtonArray", Options);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", Keyboard);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
+    Options.Insert("", Keyboard);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "ReplaceMessageKeyboard", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ReplaceMessageKeyboard", Options);
 
     // END
 
@@ -4111,13 +4111,13 @@ Procedure Telegram_ReplaceMessageCaption(FunctionParameters)
     MessageID = FunctionParameters["Telegram_PicMessageID"];
 
     Description = "New picture description";
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", Description);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
+    Options.Insert("", Description);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("telegram", "ReplaceMessageCaption", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("telegram", "ReplaceMessageCaption", Options);
 
     // END
 
@@ -4132,10 +4132,10 @@ EndProcedure
 Procedure VK_CreateTokenRetrievalLink(FunctionParameters)
 
     Application = FunctionParameters["VK_AppID"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Application);
+    Options = New Structure;
+    Options.Insert("", Application);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreateTokenRetrievalLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateTokenRetrievalLink", Options);
 
     // END
 
@@ -4159,27 +4159,27 @@ Procedure VK_CreatePost(FunctionParameters)
     ImageArray.Add(Image);
     ImageArray.Add(TFN);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", ImageArray);
-    Опции.Вставить("", Истина);
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", ImageArray);
+    Options.Insert("", Истина);
+    Options.Insert("", URL);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreatePost", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePost", Options);
 
     Process(Result, "VK", "CreatePost", , Parameters); // SKIP
 
     PostID = Result["response"]["post_id"]; // SKIP
     OPI_VK.DeletePost(PostID, Parameters); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Image);
-    Опции.Вставить("", Ложь);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", Image);
+    Options.Insert("", Ложь);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreatePost", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePost", Options);
 
     // END
 
@@ -4188,14 +4188,14 @@ Procedure VK_CreatePost(FunctionParameters)
     PostID = Result["response"]["post_id"];
     OPI_VK.DeletePost(PostID, Parameters);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", TFN);
-    Опции.Вставить("", Истина);
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", TFN);
+    Options.Insert("", Истина);
+    Options.Insert("", URL);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreatePost", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePost", Options);
 
     Process(Result, "VK", "CreatePost", "Path", FunctionParameters);
 
@@ -4208,11 +4208,11 @@ Procedure VK_DeletePost(FunctionParameters)
     Parameters = GetVKParameters();
     PostID     = FunctionParameters["VK_PostID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", PostID);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", PostID);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "DeletePost", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeletePost", Options);
 
     // END
 
@@ -4233,12 +4233,12 @@ Procedure VK_CreateCompositePost(FunctionParameters)
     CopyFile(Image, TFN);
 
     ImageUpload = OPI_VK.UploadPhotoToServer(TFN, Parameters)["response"][0];
-    Опции = Новый Структура;
-    Опции.Вставить("", Video);
-    Опции.Вставить("", "NewVideo");
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Video);
+    Options.Insert("", "NewVideo");
+    Options.Insert("", Parameters);
 
-    VideoUpload = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "UploadVideoToServer", Опции);
+    VideoUpload = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "UploadVideoToServer", Options);
 
     ImageOwner = OPI_Tools.NumberToString(ImageUpload["owner_id"]);
     VideoOwner = OPI_Tools.NumberToString(VideoUpload["owner_id"]);
@@ -4250,14 +4250,14 @@ Procedure VK_CreateCompositePost(FunctionParameters)
     AttachmentsArray.Add("photo" + ImageOwner + "_" + ImageID);
     AttachmentsArray.Add("video" + VideoOwner + "_" + VideoID);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", AttachmentsArray);
-    Опции.Вставить("", Ложь);
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", AttachmentsArray);
+    Options.Insert("", Ложь);
+    Options.Insert("", URL);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreateCompositePost", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateCompositePost", Options);
 
     // END
 
@@ -4277,13 +4277,13 @@ Procedure VK_CreatePoll(FunctionParameters)
     OptionArray.Add("Yellow");
     OptionArray.Add("Green");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Question);
-    Опции.Вставить("", OptionArray);
-    Опции.Вставить("", "Post text");
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Question);
+    Options.Insert("", OptionArray);
+    Options.Insert("", "Post text");
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreatePoll", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePoll", Options);
 
     Process(Result, "VK", "CreatePoll", "Text"); // SKIP
 
@@ -4291,13 +4291,13 @@ Procedure VK_CreatePoll(FunctionParameters)
 
     Image = FunctionParameters["Picture"]; // URL, File path or Binary Data
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Question);
-    Опции.Вставить("", OptionArray);
-    Опции.Вставить("", Image);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Question);
+    Options.Insert("", OptionArray);
+    Options.Insert("", Image);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreatePoll", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreatePoll", Options);
 
     // END
 
@@ -4316,12 +4316,12 @@ Procedure VK_CreateAlbum(FunctionParameters)
     Name        = "AlbumFromAutoTest";
     Description = "NewAlbumFromAutoTest";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Description);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Description);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreateAlbum", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateAlbum", Options);
 
     // END
 
@@ -4337,13 +4337,13 @@ Procedure VK_SavePictureToAlbum(FunctionParameters)
 
     Image = FunctionParameters["Picture"]; // URL, File path or Binary Data
 
-    Опции = Новый Структура;
-    Опции.Вставить("", AlbumID);
-    Опции.Вставить("", Image);
-    Опции.Вставить("", ImageDescription);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", AlbumID);
+    Options.Insert("", Image);
+    Options.Insert("", ImageDescription);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "SaveImageToAlbum", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "SaveImageToAlbum", Options);
 
     // END
 
@@ -4356,11 +4356,11 @@ Procedure VK_DeleteImage(FunctionParameters)
     Parameters = GetVKParameters();
     ImageID    = FunctionParameters["VK_PictureID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ImageID);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", ImageID);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "DeleteImage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteImage", Options);
 
     // END
 
@@ -4373,11 +4373,11 @@ Procedure VK_DeleteAlbum(FunctionParameters)
     Parameters = GetVKParameters();
     AlbumID    = FunctionParameters["VK_AlbumID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", AlbumID);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", AlbumID);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "DeleteAlbum", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteAlbum", Options);
 
     // END
 
@@ -4395,22 +4395,22 @@ Procedure VK_CreateStory(FunctionParameters)
     CopyFile(Image, TFN);
     Image = New BinaryData(TFN);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Image);
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Image);
+    Options.Insert("", URL);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreateStory", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateStory", Options);
 
     Process(Result, "VK", "CreateStory"); // SKIP
 
     // END
 
-    Опции = Новый Структура;
-    Опции.Вставить("", TFN);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", TFN);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreateStory", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateStory", Options);
 
     Process(Result, "VK", "CreateStory", "Path");
 
@@ -4424,12 +4424,12 @@ Procedure VK_CreateDiscussion(FunctionParameters)
     Name       = "Discussing: Which color is better?";
     Message    = "Red, yellow, blue, or some other?";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Message);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Message);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreateDiscussion", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateDiscussion", Options);
 
     // END
 
@@ -4441,12 +4441,12 @@ Procedure VK_CloseDiscussion(FunctionParameters)
 
     Parameters   = GetVKParameters();
     DiscussionID = FunctionParameters["VK_ConvID"];
-    Опции = Новый Структура;
-    Опции.Вставить("", DiscussionID);
-    Опции.Вставить("", Ложь);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", DiscussionID);
+    Options.Insert("", Ложь);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CloseDiscussion", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CloseDiscussion", Options);
 
     // END
 
@@ -4458,11 +4458,11 @@ Procedure VK_OpenDiscussion(FunctionParameters)
 
     Parameters   = GetVKParameters();
     DiscussionID = FunctionParameters["VK_ConvID"];
-    Опции = Новый Структура;
-    Опции.Вставить("", DiscussionID);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", DiscussionID);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "OpenDiscussion", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "OpenDiscussion", Options);
 
     // END
 
@@ -4476,12 +4476,12 @@ Procedure VK_PostToDiscussion(FunctionParameters)
     DiscussionID = FunctionParameters["VK_ConvID"];
     Message      = "I like yellow more";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", DiscussionID);
-    Опции.Вставить("", Message);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", DiscussionID);
+    Options.Insert("", Message);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "WriteInDiscussion", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "WriteInDiscussion", Options);
 
     // END
 
@@ -4494,11 +4494,11 @@ Procedure VK_LikePost(FunctionParameters)
     Parameters = GetVKParameters();
     PostID     = FunctionParameters["VK_PostID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", PostID);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", PostID);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "LikePost", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "LikePost", Options);
 
     // END
 
@@ -4512,12 +4512,12 @@ Procedure VK_MakeRepost(FunctionParameters)
     PostID     = 2571;
     WallID     = -218704372;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", PostID);
-    Опции.Вставить("", WallID);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", PostID);
+    Options.Insert("", WallID);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "MakeRepost", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "MakeRepost", Options);
 
     // END
 
@@ -4532,13 +4532,13 @@ Procedure VK_WriteComment(FunctionParameters)
     PostID     = FunctionParameters["VK_PostID"];
     WallID     = Parameters["owner_id"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", PostID);
-    Опции.Вставить("", WallID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", PostID);
+    Options.Insert("", WallID);
+    Options.Insert("", Text);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "WriteComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "WriteComment", Options);
 
     // END
 
@@ -4554,12 +4554,12 @@ Procedure VK_GetStatistics(FunctionParameters)
     StartDate   = BegOfDay(CurrentDate);
     EndDate     = EndOfDay(StartDate);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", StartDate);
-    Опции.Вставить("", EndDate);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", StartDate);
+    Options.Insert("", EndDate);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "GetStatistics", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetStatistics", Options);
 
     // END
 
@@ -4575,11 +4575,11 @@ Procedure VK_GetPostStatistics(FunctionParameters)
     ArrayOfPosts.Add(214);
     ArrayOfPosts.Add(215);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ArrayOfPosts);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", ArrayOfPosts);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "GetPostStatistics", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetPostStatistics", Options);
 
     // END
 
@@ -4594,12 +4594,12 @@ Procedure VK_CreateAdCampaign(FunctionParameters)
     AccountID = FunctionParameters["VK_AdsCabinetID"];
     Name      = "New campaign";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", AccountID);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", AccountID);
+    Options.Insert("", Name);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreateAdvertisingCampaign", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateAdvertisingCampaign", Options);
 
     // END
 
@@ -4617,15 +4617,15 @@ Procedure VK_CreateAd(FunctionParameters)
     PostID         = FunctionParameters["VK_PostID"];
     AccountID      = FunctionParameters["VK_AdsCabinetID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", CampaignNumber);
-    Опции.Вставить("", DailyLimit);
-    Опции.Вставить("", CategoryNumber);
-    Опции.Вставить("", PostID);
-    Опции.Вставить("", AccountID);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", CampaignNumber);
+    Options.Insert("", DailyLimit);
+    Options.Insert("", CategoryNumber);
+    Options.Insert("", PostID);
+    Options.Insert("", AccountID);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreateAd", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateAd", Options);
 
     // END
 
@@ -4640,12 +4640,12 @@ Procedure VK_PauseAdvertising(FunctionParameters)
     AccountID = FunctionParameters["VK_AdsCabinetID"];
     AdID      = FunctionParameters["VK_AdsPostID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", AccountID);
-    Опции.Вставить("", AdID);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", AccountID);
+    Options.Insert("", AdID);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "PauseAdvertising", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "PauseAdvertising", Options);
 
     // END
 
@@ -4659,10 +4659,10 @@ Procedure VK_FormKeyboard(FunctionParameters)
     ButtonArray.Add("Button 1");
     ButtonArray.Add("Button 2");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ButtonArray);
+    Options = New Structure;
+    Options.Insert("", ButtonArray);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "FormKeyboard", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "FormKeyboard", Options);
 
     // END
 
@@ -4682,18 +4682,18 @@ Procedure VK_WriteMessage(FunctionParameters)
     ButtonArray.Add("Button 1");
     ButtonArray.Add("Button 2");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ButtonArray);
+    Options = New Structure;
+    Options.Insert("", ButtonArray);
 
-    Keyboard = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "FormKeyboard", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Communitytoken);
-    Опции.Вставить("", Keyboard);
-    Опции.Вставить("", Parameters);
+    Keyboard = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "FormKeyboard", Options);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", UserID);
+    Options.Insert("", Communitytoken);
+    Options.Insert("", Keyboard);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "WriteMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "WriteMessage", Options);
 
     // END
 
@@ -4705,10 +4705,10 @@ Procedure VK_GetProductCategoryList(FunctionParameters)
 
     Parameters = GetVKParameters();
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "GetProductCategoryList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetProductCategoryList", Options);
 
     // END
 
@@ -4725,14 +4725,14 @@ Procedure VK_CreateProductCollection(FunctionParameters)
     Main   = True;
     Hidden = False;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Image);
-    Опции.Вставить("", Main);
-    Опции.Вставить("", Hidden);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Image);
+    Options.Insert("", Main);
+    Options.Insert("", Hidden);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreateProductCollection", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateProductCollection", Options);
 
     // END
 
@@ -4747,12 +4747,12 @@ Procedure VK_EditProductCollection(FunctionParameters)
     Name      = "EditedCollection";
     Selection = FunctionParameters["VK_MarketAlbumID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Selection);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Selection);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "EditProductCollection", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "EditProductCollection", Options);
 
     // END
 
@@ -4765,11 +4765,11 @@ Procedure VK_GetSelectionsByID(FunctionParameters)
     Parameters = GetVKParameters();
     Selection  = FunctionParameters["VK_MarketAlbumID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Selection);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Selection);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "GetSelectionsByID", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetSelectionsByID", Options);
 
     // END
 
@@ -4806,12 +4806,12 @@ Procedure VK_AddProduct(FunctionParameters)
     ProductDescription.Insert("SKU"              , "12345");
     ProductDescription.Insert("AvailableBalance" , "10");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ProductDescription);
-    Опции.Вставить("", Selection);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", ProductDescription);
+    Options.Insert("", Selection);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "AddProduct", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "AddProduct", Options);
 
     // END
 
@@ -4828,12 +4828,12 @@ Procedure VK_EditProduct(FunctionParameters)
     ProductDescription = New Map;
     ProductDescription.Insert("Name", "EditedTestProduct");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Product);
-    Опции.Вставить("", ProductDescription);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Product);
+    Options.Insert("", ProductDescription);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "EditProduct", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "EditProduct", Options);
 
     // END
 
@@ -4848,12 +4848,12 @@ Procedure VK_AddProductToCollection(FunctionParameters)
     Product   = FunctionParameters["VK_MarketItemID"];
     Selection = FunctionParameters["VK_MarketAlbumID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Product);
-    Опции.Вставить("", Selection);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Product);
+    Options.Insert("", Selection);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "AddProductToCollection", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "AddProductToCollection", Options);
 
     // END
 
@@ -4868,12 +4868,12 @@ Procedure VK_RemoveProductFromCollection(FunctionParameters)
     Product   = FunctionParameters["VK_MarketItemID"];
     Selection = FunctionParameters["VK_MarketAlbumID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Product);
-    Опции.Вставить("", Selection);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Product);
+    Options.Insert("", Selection);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "RemoveProductFromSelection", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "RemoveProductFromSelection", Options);
 
     // END
 
@@ -4887,11 +4887,11 @@ Procedure VK_DeleteProduct(FunctionParameters)
 
     Product = FunctionParameters["VK_MarketItemID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Product);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Product);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "DeleteProduct", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteProduct", Options);
 
     // END
 
@@ -4905,11 +4905,11 @@ Procedure VK_DeleteCollection(FunctionParameters)
 
     Selection = FunctionParameters["VK_MarketAlbumID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Selection);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Selection);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "DeleteSelection", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteSelection", Options);
 
     // END
 
@@ -4923,11 +4923,11 @@ Procedure VK_CreateProductProperty(FunctionParameters)
 
     Name = "Color";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "CreateProductProperty", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "CreateProductProperty", Options);
 
     // END
 
@@ -4942,12 +4942,12 @@ Procedure VK_EditProductProperty(FunctionParameters)
     Name     = "Color (change.)";
     Property = FunctionParameters["VK_PropID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Property);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Property);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "EditProductProperty", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "EditProductProperty", Options);
 
     // END
 
@@ -4988,13 +4988,13 @@ Procedure VK_EditProductPropertyVariant(FunctionParameters)
     Option   = FunctionParameters["VK_PropVarID1"];
     Value    = "New variant name";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Value);
-    Опции.Вставить("", Property);
-    Опции.Вставить("", Option);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Value);
+    Options.Insert("", Property);
+    Options.Insert("", Option);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "EditProductPropertyVariant", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "EditProductPropertyVariant", Options);
 
     // END
 
@@ -5033,11 +5033,11 @@ Procedure VK_CreateProductWithProp(FunctionParameters)
     Product.Insert("AvailableBalance" , "10");
     Product.Insert("PropertyValues"   , PropVariant1);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Product);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Product);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "AddProduct", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "AddProduct", Options);
 
     // END
 
@@ -5046,11 +5046,11 @@ Procedure VK_CreateProductWithProp(FunctionParameters)
     Product.Insert("Name"          , "Test product (another)");
     Product.Insert("PropertyValues", PropVariant2);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Product);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Product);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "AddProduct", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "AddProduct", Options);
 
     Process(Result, "VK", "CreateProductWithProp", "Second", FunctionParameters, 3);
 
@@ -5069,11 +5069,11 @@ Procedure VK_GetProductsByID(FunctionParameters)
     ProductsArray.Add(Item1);
     ProductsArray.Add(Item2);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ProductsArray);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", ProductsArray);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "GetProductsByID", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetProductsByID", Options);
 
     // END
 
@@ -5092,11 +5092,11 @@ Procedure VK_GroupProducts(FunctionParameters)
     ProductsArray.Add(Item1);
     ProductsArray.Add(Item2);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ProductsArray);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", ProductsArray);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "GroupProducts", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GroupProducts", Options);
 
     // END
 
@@ -5110,11 +5110,11 @@ Procedure VK_DeleteProductPropertyVariant(FunctionParameters)
 
     Option = FunctionParameters["VK_PropVarID1"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Option);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Option);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "DeleteProductPropertyVariant", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteProductPropertyVariant", Options);
 
     // END
 
@@ -5128,11 +5128,11 @@ Procedure VK_DeleteProductProperty(FunctionParameters)
 
     Property = FunctionParameters["VK_PropID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Property);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Property);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "DeleteProductProperty", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "DeleteProductProperty", Options);
 
     // END
 
@@ -5143,10 +5143,10 @@ EndProcedure
 Procedure VK_GetProductList(FunctionParameters)
 
     Parameters = GetVKParameters();
-    Опции = Новый Структура;
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "GetProductList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetProductList", Options);
 
     // END
 
@@ -5157,10 +5157,10 @@ EndProcedure
 Procedure VK_GetSelectionList(FunctionParameters)
 
     Parameters = GetVKParameters();
-    Опции = Новый Структура;
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "GetSelectionList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetSelectionList", Options);
 
     // END
 
@@ -5171,10 +5171,10 @@ EndProcedure
 Procedure VK_GetPropertyList(FunctionParameters)
 
     Parameters = GetVKParameters();
-    Опции = Новый Структура;
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "GetPropertyList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetPropertyList", Options);
 
     // END
 
@@ -5185,10 +5185,10 @@ EndProcedure
 Procedure VK_GetOrderList(FunctionParameters)
 
     Parameters = GetVKParameters();
-    Опции = Новый Структура;
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "GetOrderList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetOrderList", Options);
 
     // END
 
@@ -5204,13 +5204,13 @@ Procedure VK_UploadVideoToServer(FunctionParameters)
     Name        = "NewVideo";
     Description = "Video description";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Video);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Description);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Video);
+    Options.Insert("", Name);
+    Options.Insert("", Description);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "UploadVideoToServer", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "UploadVideoToServer", Options);
 
     // END
 
@@ -5225,12 +5225,12 @@ Procedure VK_UploadPhotoToServer(FunctionParameters)
     Image = FunctionParameters["Picture"]; // URL, Binary Data or File path
     View  = "Post";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Image);
-    Опции.Вставить("", Parameters);
-    Опции.Вставить("", View);
+    Options = New Structure;
+    Options.Insert("", Image);
+    Options.Insert("", Parameters);
+    Options.Insert("", View);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "UploadPhotoToServer", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "UploadPhotoToServer", Options);
 
     // END
 
@@ -5242,11 +5242,11 @@ Procedure VK_ShortenLink(FunctionParameters)
 
     Parameters = GetVKParameters();
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "https://github.com/Bayselonarrend/OpenIntegrations");
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", "https://github.com/Bayselonarrend/OpenIntegrations");
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "ShortenLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "ShortenLink", Options);
 
 EndProcedure
 
@@ -5254,10 +5254,10 @@ Procedure VK_GetAdvertisingCategoryList(FunctionParameters)
 
     Parameters = GetVKParameters();
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "GetAdvertisingCategoryList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetAdvertisingCategoryList", Options);
 
     // END
 
@@ -5267,9 +5267,9 @@ EndProcedure
 
 Procedure VK_GetProductDescription(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vk", "GetProductDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetProductDescription", Options);
 
     // END
 
@@ -5284,10 +5284,10 @@ EndProcedure
 Procedure YandexDisk_GetDiskInfo(FunctionParameters)
 
     Token  = FunctionParameters["YandexDisk_Token"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "GetDiskInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetDiskInformation", Options);
 
     // END
 
@@ -5300,11 +5300,11 @@ Procedure YandexDisk_CreateFolder(FunctionParameters)
     Token = FunctionParameters["YandexDisk_Token"];
     Path  = "/" + String(New UUID);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "CreateFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "CreateFolder", Options);
 
     // END
 
@@ -5320,12 +5320,12 @@ Procedure YandexDisk_UploadFileByURL(FunctionParameters)
     Address = FunctionParameters["Picture"];
     Path    = "/" + String(New UUID) + ".png";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
-    Опции.Вставить("", Address);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
+    Options.Insert("", Address);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "UploadFileByURL", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "UploadFileByURL", Options);
 
     // END
 
@@ -5338,11 +5338,11 @@ Procedure YandexDisk_GetObject(FunctionParameters)
     Token = FunctionParameters["YandexDisk_Token"];
     Path  = FunctionParameters["YandexDisk_FileByURLPath"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "GetObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetObject", Options);
 
     // END
 
@@ -5355,12 +5355,12 @@ Procedure YandexDisk_DeleteObject(FunctionParameters)
     Token = FunctionParameters["YandexDisk_Token"];
     Path  = FunctionParameters["YandexDisk_FileByURLPath"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
-    Опции.Вставить("", Ложь);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
+    Options.Insert("", Ложь);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "DeleteObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DeleteObject", Options);
 
     // END
 
@@ -5379,25 +5379,25 @@ Procedure YandexDisk_UploadFile(FunctionParameters)
     TFN = GetTempFileName("png"); // Path
     CopyFile(Image, TFN);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path1);
-    Опции.Вставить("", Image);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path1);
+    Options.Insert("", Image);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "UploadFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "UploadFile", Options);
 
     Process(Result, "YandexDisk", "UploadFile", "URL"); // SKIP
 
     OPI_YandexDisk.DeleteObject(Token, Path1, False); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path2);
-    Опции.Вставить("", TFN);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path2);
+    Options.Insert("", TFN);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "UploadFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "UploadFile", Options);
 
     // END
 
@@ -5414,13 +5414,13 @@ Procedure YandexDisk_CreateObjectCopy(FunctionParameters)
     Original = FunctionParameters["YandexDisk_OriginalFilePath"];
     Path     = "/" + String(New UUID) + ".png";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Original);
-    Опции.Вставить("", Path);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Original);
+    Options.Insert("", Path);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "CreateObjectCopy", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "CreateObjectCopy", Options);
 
     // END
 
@@ -5433,11 +5433,11 @@ Procedure YandexDisk_GetDownloadLink(FunctionParameters)
     Token = FunctionParameters["YandexDisk_Token"];
     Path  = FunctionParameters["YandexDisk_PathForLink"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "GetDownloadLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetDownloadLink", Options);
 
     // END
 
@@ -5450,11 +5450,11 @@ Procedure YandexDisk_DownloadFile(FunctionParameters)
     Token = FunctionParameters["YandexDisk_Token"];
     Path  = FunctionParameters["YandexDisk_PathForLink"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "DownloadFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DownloadFile", Options);
 
     // END
 
@@ -5469,13 +5469,13 @@ Procedure YandexDisk_GetFilesList(FunctionParameters)
     OffsetFromStart = 1;
     FilterByType    = "image";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Count);
-    Опции.Вставить("", OffsetFromStart);
-    Опции.Вставить("", FilterByType);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Count);
+    Options.Insert("", OffsetFromStart);
+    Options.Insert("", FilterByType);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "GetFilesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetFilesList", Options);
 
     // END
 
@@ -5489,13 +5489,13 @@ Procedure YandexDisk_MoveObject(FunctionParameters)
     Original = FunctionParameters["YandexDisk_OriginalFilePath"];
     Path     = "/" + String(New UUID) + ".png";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Original);
-    Опции.Вставить("", Path);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Original);
+    Options.Insert("", Path);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "MoveObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "MoveObject", Options);
 
     // END
 
@@ -5509,12 +5509,12 @@ Procedure YandexDisk_GetPublishedObjectsList(FunctionParameters)
     Count           = 2;
     OffsetFromStart = 1;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Count);
-    Опции.Вставить("", OffsetFromStart);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Count);
+    Options.Insert("", OffsetFromStart);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "GetPublishedObjectsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetPublishedObjectsList", Options);
 
     // END
 
@@ -5527,11 +5527,11 @@ Procedure YandexDisk_PublishObject(FunctionParameters)
     Token = FunctionParameters["YandexDisk_Token"];
     Path  = FunctionParameters["YandexDisk_OriginalFilePath"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "PublishObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "PublishObject", Options);
 
     // END
 
@@ -5544,11 +5544,11 @@ Procedure YandexDisk_GetDownloadLinkForPublicObject(FunctionParameters)
     Token = FunctionParameters["YandexDisk_Token"];
     URL   = FunctionParameters["YandexDisk_PublicURL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "GetDownloadLinkForPublicObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetDownloadLinkForPublicObject", Options);
 
     // END
 
@@ -5561,11 +5561,11 @@ Procedure YandexDisk_GetPublicObject(FunctionParameters)
     Token = FunctionParameters["YandexDisk_Token"];
     URL   = FunctionParameters["YandexDisk_PublicURL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "GetPublicObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetPublicObject", Options);
 
     // END
 
@@ -5578,11 +5578,11 @@ Procedure YandexDisk_SavePublicObjectToDisk(FunctionParameters)
     Token = FunctionParameters["YandexDisk_Token"];
     URL   = FunctionParameters["YandexDisk_PublicURL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "SavePublicObjectToDisk", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "SavePublicObjectToDisk", Options);
 
     // END
 
@@ -5595,11 +5595,11 @@ Procedure YandexDisk_CancelObjectPublication(FunctionParameters)
     Token = FunctionParameters["YandexDisk_Token"];
     Path  = FunctionParameters["YandexDisk_OriginalFilePath"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("yadisk", "CancelObjectPublication", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "CancelObjectPublication", Options);
 
     // END
 
@@ -5616,11 +5616,11 @@ Procedure Viber_SetWebhook(FunctionParameters)
     Token = FunctionParameters["Viber_ChannelToken"];
     URL   = "http://api.athenaeum.digital/hs/viber";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "SetWebhook", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SetWebhook", Options);
 
     // END
 
@@ -5631,10 +5631,10 @@ EndProcedure
 Procedure Viber_GetChannelInformation(FunctionParameters)
 
     Token  = FunctionParameters["Viber_ChannelToken"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "GetChannelInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "GetChannelInformation", Options);
 
     // END
 
@@ -5647,11 +5647,11 @@ Procedure Viber_GetUserData(FunctionParameters)
     Token  = FunctionParameters["Viber_ChannelToken"];
     UserID = FunctionParameters["Viber_ChannelAdminID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UserID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UserID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "GetUserData", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "GetUserData", Options);
 
     // END
 
@@ -5664,11 +5664,11 @@ Procedure Viber_GetOnlineUsers(FunctionParameters)
     Token  = FunctionParameters["Viber_ChannelToken"];
     UserID = FunctionParameters["Viber_ChannelAdminID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UserID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UserID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "GetOnlineUsers", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "GetOnlineUsers", Options);
 
     // END
 
@@ -5683,10 +5683,10 @@ Procedure Viber_CreateKeyboardFromArrayButton(FunctionParameters)
     ButtonArray.Add("Button 2");
     ButtonArray.Add("Button 3");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ButtonArray);
+    Options = New Structure;
+    Options.Insert("", ButtonArray);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "CreateKeyboardFromArrayButton", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "CreateKeyboardFromArrayButton", Options);
 
     // END
 
@@ -5707,19 +5707,19 @@ Procedure Viber_SendTextMessage(FunctionParameters)
     ButtonArray.Add("Button 2");
     ButtonArray.Add("Button 3");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ButtonArray);
+    Options = New Structure;
+    Options.Insert("", ButtonArray);
 
-    Keyboard = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "CreateKeyboardFromArrayButton", Опции);
+    Keyboard = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "CreateKeyboardFromArrayButton", Options);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", SendingToChannel);
-    Опции.Вставить("", Keyboard);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Text);
+    Options.Insert("", UserID);
+    Options.Insert("", SendingToChannel);
+    Options.Insert("", Keyboard);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "SendTextMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendTextMessage", Options);
 
     Process(Result, "Viber", "SendTextMessage"); // SKIP
 
@@ -5727,14 +5727,14 @@ Procedure Viber_SendTextMessage(FunctionParameters)
     Token            = FunctionParameters["Viber_ChannelToken"];
     SendingToChannel = True;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", SendingToChannel);
-    Опции.Вставить("", Keyboard);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Text);
+    Options.Insert("", UserID);
+    Options.Insert("", SendingToChannel);
+    Options.Insert("", Keyboard);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "SendTextMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendTextMessage", Options);
 
     // END
 
@@ -5751,14 +5751,14 @@ Procedure Viber_SendImage(FunctionParameters)
     Token            = FunctionParameters["Viber_Token"];
     SendingToChannel = False;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", SendingToChannel);
-    Опции.Вставить("", Description);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", SendingToChannel);
+    Options.Insert("", Description);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "SendImage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendImage", Options);
 
     Process(Result, "Viber", "SendImage"); // SKIP
 
@@ -5766,14 +5766,14 @@ Procedure Viber_SendImage(FunctionParameters)
     Token            = FunctionParameters["Viber_ChannelToken"];
     SendingToChannel = True;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", SendingToChannel);
-    Опции.Вставить("", Description);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", SendingToChannel);
+    Options.Insert("", Description);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "SendImage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendImage", Options);
 
     // END
 
@@ -5790,14 +5790,14 @@ Procedure Viber_SendFile(FunctionParameters)
     Token            = FunctionParameters["Viber_Token"];
     SendingToChannel = False;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", SendingToChannel);
-    Опции.Вставить("", Extension);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", SendingToChannel);
+    Options.Insert("", Extension);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "SendFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendFile", Options);
 
     Process(Result, "Viber", "SendFile"); // SKIP
 
@@ -5805,14 +5805,14 @@ Procedure Viber_SendFile(FunctionParameters)
     Token            = FunctionParameters["Viber_ChannelToken"];
     SendingToChannel = True;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", SendingToChannel);
-    Опции.Вставить("", Extension);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", SendingToChannel);
+    Options.Insert("", Extension);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "SendFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendFile", Options);
 
     // END
 
@@ -5829,14 +5829,14 @@ Procedure Viber_SendContact(FunctionParameters)
     Token            = FunctionParameters["Viber_Token"];
     SendingToChannel = False;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Phone);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", SendingToChannel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Name);
+    Options.Insert("", Phone);
+    Options.Insert("", UserID);
+    Options.Insert("", SendingToChannel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "SendContact", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendContact", Options);
 
     Process(Result, "Viber", "SendContact"); // SKIP
 
@@ -5844,14 +5844,14 @@ Procedure Viber_SendContact(FunctionParameters)
     Token            = FunctionParameters["Viber_ChannelToken"];
     SendingToChannel = True;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Phone);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", SendingToChannel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Name);
+    Options.Insert("", Phone);
+    Options.Insert("", UserID);
+    Options.Insert("", SendingToChannel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "SendContact", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendContact", Options);
 
     // END
 
@@ -5868,14 +5868,14 @@ Procedure Viber_SendLocation(FunctionParameters)
     Token            = FunctionParameters["Viber_Token"];
     SendingToChannel = False;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Latitude);
-    Опции.Вставить("", Longitude);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", SendingToChannel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Latitude);
+    Options.Insert("", Longitude);
+    Options.Insert("", UserID);
+    Options.Insert("", SendingToChannel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "SendLocation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLocation", Options);
 
     Process(Result, "Viber", "SendLocation"); // SKIP
 
@@ -5883,14 +5883,14 @@ Procedure Viber_SendLocation(FunctionParameters)
     Token            = FunctionParameters["Viber_ChannelToken"];
     SendingToChannel = True;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Latitude);
-    Опции.Вставить("", Longitude);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", SendingToChannel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Latitude);
+    Options.Insert("", Longitude);
+    Options.Insert("", UserID);
+    Options.Insert("", SendingToChannel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "SendLocation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLocation", Options);
 
     // END
 
@@ -5906,13 +5906,13 @@ Procedure Viber_SendLink(FunctionParameters)
     Token            = FunctionParameters["Viber_Token"];
     SendingToChannel = False;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", SendingToChannel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", SendingToChannel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "SendLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLink", Options);
 
     Process(Result, "Viber", "SendLink"); // SKIP
 
@@ -5920,13 +5920,13 @@ Procedure Viber_SendLink(FunctionParameters)
     Token            = FunctionParameters["Viber_ChannelToken"];
     SendingToChannel = True;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", SendingToChannel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", SendingToChannel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("viber", "SendLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("viber", "SendLink", Options);
 
     // END
 
@@ -5941,10 +5941,10 @@ EndProcedure
 Procedure GoogleWorkspace_FormCodeRetrievalLink(FunctionParameters)
 
     ClientID = FunctionParameters["Google_ClientID"];
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
+    Options = New Structure;
+    Options.Insert("", ClientID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("google", "FormCodeRetrievalLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "FormCodeRetrievalLink", Options);
 
     // END
 
@@ -5958,12 +5958,12 @@ Procedure GoogleWorkspace_GetTokenByCode(FunctionParameters)
     ClientSecret = FunctionParameters["Google_ClientSecret"];
     Code         = FunctionParameters["Google_Code"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", ClientSecret);
-    Опции.Вставить("", Code);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", ClientSecret);
+    Options.Insert("", Code);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("google", "GetTokenByCode", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "GetTokenByCode", Options);
 
     // END
 
@@ -5977,12 +5977,12 @@ Procedure GoogleWorkspace_RefreshToken(FunctionParameters)
     ClientSecret = FunctionParameters["Google_ClientSecret"];
     RefreshToken = FunctionParameters["Google_Refresh"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", ClientSecret);
-    Опции.Вставить("", RefreshToken);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", ClientSecret);
+    Options.Insert("", RefreshToken);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("google", "RefreshToken", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "RefreshToken", Options);
 
     // END
 
@@ -6007,11 +6007,11 @@ Procedure GoogleWorkspace_GetServiceAccountToken(FunctionParameters)
     Scope.Add("https://www.googleapis.com/auth/drive");
     Scope.Add("https://www.googleapis.com/auth/spreadsheets");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Data);
-    Опции.Вставить("", Scope);
+    Options = New Structure;
+    Options.Insert("", Data);
+    Options.Insert("", Scope);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("google", "GetServiceAccountToken", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("google", "GetServiceAccountToken", Options);
 
     // END
 
@@ -6026,10 +6026,10 @@ EndProcedure
 Procedure GoogleCalendar_GetCalendarList(FunctionParameters)
 
     Token  = FunctionParameters["Google_Token"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "GetCalendarList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetCalendarList", Options);
 
     // END
 
@@ -6042,11 +6042,11 @@ Procedure GoogleCalendar_CreateCalendar(FunctionParameters)
     Token = FunctionParameters["Google_Token"];
     Name  = "TestCalendar";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Name);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Name);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "CreateCalendar", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "CreateCalendar", Options);
 
     // END
 
@@ -6061,13 +6061,13 @@ Procedure GoogleCalendar_EditCalendarMetadata(FunctionParameters)
     Name        = "New name";
     Description = "New description";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Calendar);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Description);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Calendar);
+    Options.Insert("", Name);
+    Options.Insert("", Description);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "EditCalendarMetadata", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "EditCalendarMetadata", Options);
 
     // END
 
@@ -6080,11 +6080,11 @@ Procedure GoogleCalendar_GetCalendarMetadata(FunctionParameters)
     Token    = FunctionParameters["Google_Token"];
     Calendar = FunctionParameters["Google_NewCalendarID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Calendar);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Calendar);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "GetCalendarMetadata", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetCalendarMetadata", Options);
 
     // END
 
@@ -6100,11 +6100,11 @@ Procedure GoogleCalendar_AddCalendarToList(FunctionParameters)
     Token    = FunctionParameters["Google_Token"];
     Calendar = FunctionParameters["Google_NewCalendarID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Calendar);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Calendar);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "AddCalendarToList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "AddCalendarToList", Options);
 
     // END
 
@@ -6123,14 +6123,14 @@ Procedure GoogleCalendar_EditListCalendar(FunctionParameters)
     SecondaryColor = "#ffd800";
     Hidden         = False;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Calendar);
-    Опции.Вставить("", PrimaryColor);
-    Опции.Вставить("", SecondaryColor);
-    Опции.Вставить("", Hidden);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Calendar);
+    Options.Insert("", PrimaryColor);
+    Options.Insert("", SecondaryColor);
+    Options.Insert("", Hidden);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "EditListCalendar", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "EditListCalendar", Options);
 
     // END
 
@@ -6143,11 +6143,11 @@ Procedure GoogleCalendar_GetListCalendar(FunctionParameters)
     Token    = FunctionParameters["Google_Token"];
     Calendar = FunctionParameters["Google_NewCalendarID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Calendar);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Calendar);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "GetListCalendar", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetListCalendar", Options);
 
     // END
 
@@ -6162,10 +6162,10 @@ Procedure GoogleCalendar_ClearMainCalendar(FunctionParameters)
 
     Token = FunctionParameters["Google_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "ClearMainCalendar", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "ClearMainCalendar", Options);
 
     // END
 
@@ -6178,11 +6178,11 @@ Procedure GoogleCalendar_DeleteCalendarFromList(FunctionParameters)
     Token    = FunctionParameters["Google_Token"];
     Calendar = FunctionParameters["Google_NewCalendarID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Calendar);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Calendar);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "DeleteCalendarFromList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "DeleteCalendarFromList", Options);
 
     // END
 
@@ -6195,11 +6195,11 @@ Procedure GoogleCalendar_DeleteCalendar(FunctionParameters)
     Token    = FunctionParameters["Google_Token"];
     Calendar = FunctionParameters["Google_NewCalendarID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Calendar);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Calendar);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "DeleteCalendar", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "DeleteCalendar", Options);
 
     // END
 
@@ -6232,12 +6232,12 @@ Procedure GoogleCalendar_CreateEvent(FunctionParameters)
     EventDescription.Insert("ArrayOfAttachmentURLs", Attachments);
     EventDescription.Insert("SendNotifications"    , True);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Calendar);
-    Опции.Вставить("", EventDescription);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Calendar);
+    Options.Insert("", EventDescription);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "CreateEvent", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "CreateEvent", Options);
 
     // END
 
@@ -6255,13 +6255,13 @@ Procedure GoogleCalendar_EditEvent(FunctionParameters)
     EventDescription = New Map;
     EventDescription.Insert("Description", Description);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Calendar);
-    Опции.Вставить("", EventDescription);
-    Опции.Вставить("", Event);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Calendar);
+    Options.Insert("", EventDescription);
+    Options.Insert("", Event);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "EditEvent", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "EditEvent", Options);
 
     // END
 
@@ -6277,12 +6277,12 @@ Procedure GoogleCalendar_GetEvent(FunctionParameters)
     Calendar = FunctionParameters["Google_NewCalendarID"];
     Event    = FunctionParameters["Google_EventID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Calendar);
-    Опции.Вставить("", Event);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Calendar);
+    Options.Insert("", Event);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "GetEvent", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetEvent", Options);
 
     // END
 
@@ -6301,13 +6301,13 @@ Procedure GoogleCalendar_MoveEvent(FunctionParameters)
     SourceCalendar = FunctionParameters["Google_NewCalendarID"];
     TargetCalendar = FunctionParameters["Google_CalendarID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", SourceCalendar);
-    Опции.Вставить("", TargetCalendar);
-    Опции.Вставить("", Event);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", SourceCalendar);
+    Options.Insert("", TargetCalendar);
+    Options.Insert("", Event);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "MoveEvent", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "MoveEvent", Options);
 
     // END
 
@@ -6326,12 +6326,12 @@ Procedure GoogleCalendar_DeleteEvent(FunctionParameters)
     Calendar = FunctionParameters["Google_NewCalendarID"];
     Event    = FunctionParameters["Google_EventID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Calendar);
-    Опции.Вставить("", Event);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Calendar);
+    Options.Insert("", Event);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "DeleteEvent", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "DeleteEvent", Options);
 
     // END
 
@@ -6344,11 +6344,11 @@ Procedure GoogleCalendar_GetEventList(FunctionParameters)
     Token    = FunctionParameters["Google_Token"];
     Calendar = FunctionParameters["Google_NewCalendarID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Calendar);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Calendar);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "GetEventList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetEventList", Options);
 
     // END
 
@@ -6358,9 +6358,9 @@ EndProcedure
 
 Procedure GoogleCalendar_GetEventDescription(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gcalendar", "GetEventDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetEventDescription", Options);
 
     // END
 
@@ -6377,12 +6377,12 @@ Procedure GoogleDrive_GetDirectoriesList(FunctionParameters)
     Name  = "TestFolder";
     Token = FunctionParameters["Google_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Name);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "GetDirectoriesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetDirectoriesList", Options);
 
     // END
 
@@ -6395,11 +6395,11 @@ Procedure GoogleDrive_GetObjectInformation(FunctionParameters)
     Token      = FunctionParameters["Google_Token"];
     Identifier = FunctionParameters["GD_Catalog"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Identifier);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Identifier);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "GetObjectInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetObjectInformation", Options);
 
     // END
 
@@ -6413,17 +6413,17 @@ Procedure GoogleDrive_UploadFile(FunctionParameters)
     Image     = FunctionParameters["Picture"];
     Directory = FunctionParameters["GD_Catalog"];
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Description = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "GetFileDescription", Опции);
+    Description = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFileDescription", Options);
     Description.Insert("Parent", Directory);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Image);
-    Опции.Вставить("", Description);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Image);
+    Options.Insert("", Description);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "UploadFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "UploadFile", Options);
 
     // END
 
@@ -6434,12 +6434,12 @@ Procedure GoogleDrive_UploadFile(FunctionParameters)
         BigFile = FunctionParameters["Big"];
         Description.Insert("Name", "big.rar");
 
-        Опции = Новый Структура;
-        Опции.Вставить("", Token);
-        Опции.Вставить("", BigFile);
-        Опции.Вставить("", Description);
+        Options = New Structure;
+        Options.Insert("", Token);
+        Options.Insert("", BigFile);
+        Options.Insert("", Description);
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "UploadFile", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "UploadFile", Options);
 
         Process(Result, "GoogleDrive", "UploadFile", "Big", FunctionParameters, Description);
 
@@ -6454,13 +6454,13 @@ Procedure GoogleDrive_CopyObject(FunctionParameters)
     NewName    = "CopiedFile.jpeg";
     NewParent  = "root";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Identifier);
-    Опции.Вставить("", NewName);
-    Опции.Вставить("", NewParent);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Identifier);
+    Options.Insert("", NewName);
+    Options.Insert("", NewParent);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "CopyObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CopyObject", Options);
 
     // END
 
@@ -6473,11 +6473,11 @@ Procedure GoogleDrive_DownloadFile(FunctionParameters)
     Token      = FunctionParameters["Google_Token"];
     Identifier = FunctionParameters["GD_File"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Identifier);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Identifier);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "DownloadFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "DownloadFile", Options);
 
     // END
 
@@ -6492,13 +6492,13 @@ Procedure GoogleDrive_UpdateFile(FunctionParameters)
     Identifier = FunctionParameters["GD_File"];
     File       = FunctionParameters["Picture2"]; // URL, Binary Data or File path
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Identifier);
-    Опции.Вставить("", File);
-    Опции.Вставить("", NewName);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Identifier);
+    Options.Insert("", File);
+    Options.Insert("", NewName);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "UpdateFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "UpdateFile", Options);
 
     // END
 
@@ -6512,12 +6512,12 @@ Procedure GoogleDrive_GetFilesList(FunctionParameters)
     Directory    = "root";
     NameContains = "data";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", NameContains);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", NameContains);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "GetFilesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFilesList", Options);
 
     // END
 
@@ -6530,11 +6530,11 @@ Procedure GoogleDrive_DeleteObject(FunctionParameters)
     Token      = FunctionParameters["Google_Token"];
     Identifier = FunctionParameters["GD_File"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Identifier);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Identifier);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "DeleteObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "DeleteObject", Options);
 
     // END
 
@@ -6554,9 +6554,9 @@ EndProcedure
 
 Procedure GoogleDrive_GetFileDescription(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "GetFileDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFileDescription", Options);
 
     // END
 
@@ -6570,12 +6570,12 @@ Procedure GoogleDrive_CreateComment(FunctionParameters)
     Identifier = FunctionParameters["GD_File"];
     Comment    = "Comment text";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Identifier);
-    Опции.Вставить("", Comment);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Identifier);
+    Options.Insert("", Comment);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "CreateComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CreateComment", Options);
 
     // END
 
@@ -6589,12 +6589,12 @@ Procedure GoogleDrive_GetComment(FunctionParameters)
     Identifier = FunctionParameters["GD_File"];
     CommentID  = FunctionParameters["GD_Comment"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Identifier);
-    Опции.Вставить("", CommentID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Identifier);
+    Options.Insert("", CommentID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "GetComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetComment", Options);
 
     // END
 
@@ -6607,11 +6607,11 @@ Procedure GoogleDrive_GetCommentList(FunctionParameters)
     Token      = FunctionParameters["Google_Token"];
     Identifier = FunctionParameters["GD_File"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Identifier);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Identifier);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "GetCommentList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetCommentList", Options);
 
     // END
 
@@ -6625,12 +6625,12 @@ Procedure GoogleDrive_DeleteComment(FunctionParameters)
     Identifier = FunctionParameters["GD_File"];
     CommentID  = FunctionParameters["GD_Comment"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Identifier);
-    Опции.Вставить("", CommentID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Identifier);
+    Options.Insert("", CommentID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "DeleteComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "DeleteComment", Options);
 
     // END
 
@@ -6644,12 +6644,12 @@ Procedure GoogleDrive_CreateFolder(FunctionParameters)
     Directory = FunctionParameters["GD_Catalog"];
     Name      = "TestFolder";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Name);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "CreateFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CreateFolder", Options);
 
     // END
 
@@ -6658,11 +6658,11 @@ Procedure GoogleDrive_CreateFolder(FunctionParameters)
     CatalogID = Result["id"];
     OPI_GoogleDrive.DeleteObject(Token, CatalogID);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Name);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Name);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gdrive", "CreateFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "CreateFolder", Options);
 
     Process(Result, "GoogleDrive", "CreateFolder", "Root");
 
@@ -6684,24 +6684,24 @@ Procedure GoogleSheets_CreateSpreadsheet(FunctionParameters)
     SheetArray.Add("Sheet1");
     SheetArray.Add("Sheet2");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", SheetArray);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Name);
+    Options.Insert("", SheetArray);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gsheets", "CreateSpreadsheet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "CreateSpreadsheet", Options);
 
     // END
 
     Process(Result, "GoogleSheets", "CreateSpreadsheet", , FunctionParameters, Name, SheetArray);
 
     Name   = "Test table (new.)";
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", SheetArray);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Name);
+    Options.Insert("", SheetArray);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gsheets", "CreateSpreadsheet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "CreateSpreadsheet", Options);
 
     Process(Result, "GoogleSheets", "CreateSpreadsheet", "Additionally", FunctionParameters, Name);
 
@@ -6712,11 +6712,11 @@ Procedure GoogleSheets_GetSpreadsheet(FunctionParameters)
     Token      = FunctionParameters["Google_Token"];
     Identifier = FunctionParameters["GS_Spreadsheet"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Identifier);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Identifier);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gsheets", "GetSpreadsheet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetSpreadsheet", Options);
 
     // END
 
@@ -6731,13 +6731,13 @@ Procedure GoogleSheets_CopySheet(FunctionParameters)
     Target = FunctionParameters["GS_Spreadsheet2"];
     Sheet  = FunctionParameters["GS_Sheet"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", From);
-    Опции.Вставить("", Target);
-    Опции.Вставить("", Sheet);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", From);
+    Options.Insert("", Target);
+    Options.Insert("", Sheet);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gsheets", "CopySheet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "CopySheet", Options);
 
     // END
 
@@ -6751,12 +6751,12 @@ Procedure GoogleSheets_AddSheet(FunctionParameters)
     Spreadsheet = FunctionParameters["GS_Spreadsheet"];
     Name        = "TestSheet";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Spreadsheet);
-    Опции.Вставить("", Name);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Spreadsheet);
+    Options.Insert("", Name);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gsheets", "AddSheet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "AddSheet", Options);
 
     // END
 
@@ -6770,12 +6770,12 @@ Procedure GoogleSheets_DeleteSheet(FunctionParameters)
     Spreadsheet = FunctionParameters["GS_Spreadsheet"];
     Sheet       = FunctionParameters["GS_Sheet"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Spreadsheet);
-    Опции.Вставить("", Sheet);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Spreadsheet);
+    Options.Insert("", Sheet);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gsheets", "DeleteSheet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "DeleteSheet", Options);
 
     // END
 
@@ -6789,12 +6789,12 @@ Procedure GoogleSheets_EditSpreadsheetTitle(FunctionParameters)
     Spreadsheet = FunctionParameters["GS_Spreadsheet"];
     Name        = "Test table (changed.)";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Spreadsheet);
-    Опции.Вставить("", Name);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Spreadsheet);
+    Options.Insert("", Name);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gsheets", "EditSpreadsheetTitle", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "EditSpreadsheetTitle", Options);
 
     // END
 
@@ -6807,11 +6807,11 @@ Procedure GoogleSheets_GetTable(FunctionParameters)
     Token       = FunctionParameters["Google_Token"];
     Spreadsheet = FunctionParameters["GS_Spreadsheet"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Spreadsheet);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Spreadsheet);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gsheets", "GetSpreadsheet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetSpreadsheet", Options);
 
     // END
 
@@ -6835,13 +6835,13 @@ Procedure GoogleSheets_SetCellValues(FunctionParameters)
     ValueMapping.Insert("B1", "ThisIsB1");
     ValueMapping.Insert("B4", "ThisIsB4");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Spreadsheet);
-    Опции.Вставить("", ValueMapping);
-    Опции.Вставить("", Sheet);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Spreadsheet);
+    Options.Insert("", ValueMapping);
+    Options.Insert("", Sheet);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gsheets", "SetCellValues", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "SetCellValues", Options);
 
     // END
 
@@ -6860,24 +6860,24 @@ Procedure GoogleSheets_GetCellValues(FunctionParameters)
     CellsArray.Add("A3");
     CellsArray.Add("B4");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Spreadsheet);
-    Опции.Вставить("", CellsArray);
-    Опции.Вставить("", Sheet);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Spreadsheet);
+    Options.Insert("", CellsArray);
+    Options.Insert("", Sheet);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gsheets", "GetCellValues", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetCellValues", Options);
 
     // END
 
     Process(Result, "GoogleSheets", "GetCellValues", , CellsArray.Count());
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Spreadsheet);
-    Опции.Вставить("", Sheet);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Spreadsheet);
+    Options.Insert("", Sheet);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gsheets", "GetCellValues", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetCellValues", Options);
 
     Process(Result, "GoogleSheets", "GetCellValues", "All", Spreadsheet);
 
@@ -6894,13 +6894,13 @@ Procedure GoogleSheets_ClearCells(FunctionParameters)
     CellsArray.Add("A3");
     CellsArray.Add("B4");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Spreadsheet);
-    Опции.Вставить("", CellsArray);
-    Опции.Вставить("", Sheet);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Spreadsheet);
+    Options.Insert("", CellsArray);
+    Options.Insert("", Sheet);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("gsheets", "ClearCells", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "ClearCells", Options);
 
     // END
 
@@ -6915,10 +6915,10 @@ EndProcedure
 Procedure Slack_GetBotInformation(FunctionParameters)
 
     Token  = FunctionParameters["Slack_Token"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetBotInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetBotInformation", Options);
 
     // END
 
@@ -6929,10 +6929,10 @@ EndProcedure
 Procedure Slack_GetUserList(FunctionParameters)
 
     Token  = FunctionParameters["Slack_Token"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetUserList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetUserList", Options);
 
     // END
 
@@ -6943,10 +6943,10 @@ EndProcedure
 Procedure Slack_GetWorkspaceList(FunctionParameters)
 
     Token  = FunctionParameters["Slack_Token"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetWorkspaceList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetWorkspaceList", Options);
 
     // END
 
@@ -6962,12 +6962,12 @@ Procedure Slack_SendMessage(FunctionParameters)
     // Text
 
     Text   = "TestMessage1";
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "SendMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
 
     Process(Result, "Slack", "SendMessage", , FunctionParameters, Text, Channel); // SKIP
 
@@ -6977,20 +6977,20 @@ Procedure Slack_SendMessage(FunctionParameters)
     Image      = FunctionParameters["Picture"];
     BlockArray = New Array;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Image);
-    Опции.Вставить("", "Image");
+    Options = New Structure;
+    Options.Insert("", Image);
+    Options.Insert("", "Image");
 
-    Block = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GenerateImageBlock", Опции);
+    Block = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GenerateImageBlock", Options);
     BlockArray.Add(Block);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", BlockArray);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
+    Options.Insert("", Text);
+    Options.Insert("", BlockArray);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "SendMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
 
     Process(Result, "Slack", "SendMessage", "Image", FunctionParameters, Text, Channel); // SKIP
 
@@ -7001,13 +7001,13 @@ Procedure Slack_SendMessage(FunctionParameters)
     Day  = 24;
 
     SendingDate = OPI_Tools.GetCurrentDate() + (Day * Hour);
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", SendingDate);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
+    Options.Insert("", Text);
+    Options.Insert("", SendingDate);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "SendMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
 
     // END
 
@@ -7024,11 +7024,11 @@ Procedure Slack_GenerateImageBlock(FunctionParameters)
 
     Image = FunctionParameters["Picture"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Image);
-    Опции.Вставить("", "Image");
+    Options = New Structure;
+    Options.Insert("", Image);
+    Options.Insert("", "Image");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GenerateImageBlock", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GenerateImageBlock", Options);
 
     // END
 
@@ -7044,13 +7044,13 @@ Procedure Slack_EditMessage(FunctionParameters)
 
     Text = "TestMessage2";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
-    Опции.Вставить("", Timestamp);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
+    Options.Insert("", Timestamp);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "EditMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "EditMessage", Options);
 
     // END
 
@@ -7064,12 +7064,12 @@ Procedure Slack_GetMessageReplyList(FunctionParameters)
     Channel   = FunctionParameters["Slack_Channel"];
     Timestamp = FunctionParameters["Slack_MessageTS"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
-    Опции.Вставить("", Timestamp);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
+    Options.Insert("", Timestamp);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetMessageReplyList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetMessageReplyList", Options);
 
     // END
 
@@ -7083,12 +7083,12 @@ Procedure Slack_GetMessageLink(FunctionParameters)
     Channel   = FunctionParameters["Slack_Channel"];
     Timestamp = FunctionParameters["Slack_MessageTS"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
-    Опции.Вставить("", Timestamp);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
+    Options.Insert("", Timestamp);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetMessageLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetMessageLink", Options);
 
     // END
 
@@ -7102,12 +7102,12 @@ Procedure Slack_DeleteMessage(FunctionParameters)
     Channel   = FunctionParameters["Slack_Channel"];
     Timestamp = FunctionParameters["Slack_MessageTS"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
-    Опции.Вставить("", Timestamp);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
+    Options.Insert("", Timestamp);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "DeleteMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "DeleteMessage", Options);
 
     // END
 
@@ -7123,19 +7123,19 @@ Procedure Slack_SendEphemeralMessage(FunctionParameters)
     Image   = FunctionParameters["Picture"];
     Text    = "Ephemeral message";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Image);
-    Опции.Вставить("", "Image");
+    Options = New Structure;
+    Options.Insert("", Image);
+    Options.Insert("", "Image");
 
-    Block = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GenerateImageBlock", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", User);
-    Опции.Вставить("", Block);
+    Block = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GenerateImageBlock", Options);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
+    Options.Insert("", Text);
+    Options.Insert("", User);
+    Options.Insert("", Block);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "SendEphemeralMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendEphemeralMessage", Options);
 
     // END
 
@@ -7148,11 +7148,11 @@ Procedure Slack_GetDelayedMessageList(FunctionParameters)
     Token   = FunctionParameters["Slack_Token"];
     Channel = FunctionParameters["Slack_Channel"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetDelayedMessageList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetDelayedMessageList", Options);
 
     // END
 
@@ -7165,11 +7165,11 @@ Procedure Slack_CreateChannel(FunctionParameters)
     Token = FunctionParameters["Slack_Token"];
     Name  = "testconv" + String(New UUID);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Name);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Name);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "CreateChannel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "CreateChannel", Options);
 
     // END
 
@@ -7183,12 +7183,12 @@ Procedure Slack_SetChannelTopic(FunctionParameters)
     Channel = FunctionParameters["Slack_NewChannel"];
     Topic   = "TestTopic";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
-    Опции.Вставить("", Topic);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
+    Options.Insert("", Topic);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "SetChannelTopic", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SetChannelTopic", Options);
 
     // END
 
@@ -7202,12 +7202,12 @@ Procedure Slack_SetChannelGoal(FunctionParameters)
     Channel = FunctionParameters["Slack_NewChannel"];
     Purpose = "TestGoal";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
-    Опции.Вставить("", Purpose);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
+    Options.Insert("", Purpose);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "SetChannelGoal", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SetChannelGoal", Options);
 
     // END
 
@@ -7220,11 +7220,11 @@ Procedure Slack_GetChannel(FunctionParameters)
     Token   = FunctionParameters["Slack_Token"];
     Channel = FunctionParameters["Slack_NewChannel"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetChannel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetChannel", Options);
 
     // END
 
@@ -7238,12 +7238,12 @@ Procedure Slack_InviteUsersToChannel(FunctionParameters)
     Channel = FunctionParameters["Slack_NewChannel"];
     User    = FunctionParameters["Slack_User"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
-    Опции.Вставить("", User);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
+    Options.Insert("", User);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "InviteUsersToChannel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "InviteUsersToChannel", Options);
 
     // END
 
@@ -7257,12 +7257,12 @@ Procedure Slack_KickUserFromChannel(FunctionParameters)
     Channel = FunctionParameters["Slack_NewChannel"];
     User    = FunctionParameters["Slack_User"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
-    Опции.Вставить("", User);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
+    Options.Insert("", User);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "KickUserFromChannel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "KickUserFromChannel", Options);
 
     // END
 
@@ -7275,11 +7275,11 @@ Procedure Slack_GetChannelHistory(FunctionParameters)
     Token   = FunctionParameters["Slack_Token"];
     Channel = FunctionParameters["Slack_NewChannel"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetChannelHistory", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetChannelHistory", Options);
 
     // END
 
@@ -7292,11 +7292,11 @@ Procedure Slack_GetChannelUserList(FunctionParameters)
     Token   = FunctionParameters["Slack_Token"];
     Channel = FunctionParameters["Slack_NewChannel"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetChannelUserList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetChannelUserList", Options);
 
     // END
 
@@ -7309,11 +7309,11 @@ Procedure Slack_LeaveChannel(FunctionParameters)
     Token   = FunctionParameters["Slack_Token"];
     Channel = FunctionParameters["Slack_NewChannel"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "LeaveChannel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "LeaveChannel", Options);
 
     // END
 
@@ -7326,11 +7326,11 @@ Procedure Slack_JoinChannel(FunctionParameters)
     Token   = FunctionParameters["Slack_Token"];
     Channel = FunctionParameters["Slack_NewChannel"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "JoinChannel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "JoinChannel", Options);
 
     // END
 
@@ -7344,12 +7344,12 @@ Procedure Slack_RenameChannel(FunctionParameters)
     Channel = FunctionParameters["Slack_NewChannel"];
     Name    = "testconv" + String(New UUID);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
-    Опции.Вставить("", Name);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
+    Options.Insert("", Name);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "RenameChannel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "RenameChannel", Options);
 
     // END
 
@@ -7362,11 +7362,11 @@ Procedure Slack_ArchiveChannel(FunctionParameters)
     Token   = FunctionParameters["Slack_Token"];
     Channel = FunctionParameters["Slack_NewChannel"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "ArchiveChannel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "ArchiveChannel", Options);
 
     // END
 
@@ -7378,10 +7378,10 @@ Procedure Slack_GetChannelList(FunctionParameters)
 
     Token = FunctionParameters["Slack_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetChannelList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetChannelList", Options);
 
     // END
 
@@ -7394,11 +7394,11 @@ Procedure Slack_OpenDialog(FunctionParameters)
     Token = FunctionParameters["Slack_Token"];
     User  = FunctionParameters["Slack_User"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", User);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", User);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "OpenDialog", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "OpenDialog", Options);
 
     // END
 
@@ -7406,12 +7406,12 @@ Procedure Slack_OpenDialog(FunctionParameters)
 
     Channel = Result["channel"]["id"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
-    Опции.Вставить("", "Test dialog");
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
+    Options.Insert("", "Test dialog");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "SendMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendMessage", Options);
 
     Process(Result, "Slack", "OpenDialog", "Message", FunctionParameters);
 
@@ -7422,11 +7422,11 @@ Procedure Slack_CloseDialog(FunctionParameters)
     Token  = FunctionParameters["Slack_Token"];
     Dialog = FunctionParameters["Slack_Dialog"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Dialog);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Dialog);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "CloseDialog", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "CloseDialog", Options);
 
     // END
 
@@ -7439,20 +7439,20 @@ Procedure Slack_GetFilesList(FunctionParameters)
     Token   = FunctionParameters["Slack_Token"];
     Channel = FunctionParameters["Slack_Channel"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetFilesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetFilesList", Options);
 
     // END
 
     Process(Result, "Slack", "GetFilesList");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetFilesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetFilesList", Options);
 
     Process(Result, "Slack", "GetFilesList", "All");
 
@@ -7467,26 +7467,26 @@ Procedure Slack_UploadFile(FunctionParameters)
     FileName = "megadoc.docx";
     Title    = "NewFile";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", File);
-    Опции.Вставить("", FileName);
-    Опции.Вставить("", Title);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", File);
+    Options.Insert("", FileName);
+    Options.Insert("", Title);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "UploadFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "UploadFile", Options);
 
     Process(Result, "Slack", "UploadFile", , FunctionParameters, FileName); // SKIP
     Process(Result, "Slack", "MakeFilePublic"); // SKIP
     Process(Result, "Slack", "MakeFilePrivate"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", File);
-    Опции.Вставить("", FileName);
-    Опции.Вставить("", Title);
-    Опции.Вставить("", Channel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", File);
+    Options.Insert("", FileName);
+    Options.Insert("", Title);
+    Options.Insert("", Channel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "UploadFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "UploadFile", Options);
 
     // END
 
@@ -7500,11 +7500,11 @@ Procedure Slack_MakeFilePublic(FunctionParameters)
     Token  = FunctionParameters["Slack_Token"];
     FileID = FunctionParameters["Slack_FileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "MakeFilePublic", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "MakeFilePublic", Options);
 
     // END
 
@@ -7517,11 +7517,11 @@ Procedure Slack_MakeFilePrivate(FunctionParameters)
     Token  = FunctionParameters["Slack_Token"];
     FileID = FunctionParameters["Slack_FileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "MakeFilePrivate", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "MakeFilePrivate", Options);
 
     // END
 
@@ -7534,11 +7534,11 @@ Procedure Slack_GetFileData(FunctionParameters)
     Token  = FunctionParameters["Slack_Token"];
     FileID = FunctionParameters["Slack_FileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetFileData", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetFileData", Options);
 
     // END
 
@@ -7551,11 +7551,11 @@ Procedure Slack_DeleteFile(FunctionParameters)
     Token  = FunctionParameters["Slack_Token"];
     FileID = FunctionParameters["Slack_FileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "DeleteFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "DeleteFile", Options);
 
     // END
 
@@ -7568,20 +7568,20 @@ Procedure Slack_GetExternalFileList(FunctionParameters)
     Token   = FunctionParameters["Slack_Token"];
     Channel = FunctionParameters["Slack_Channel"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Channel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Channel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetExternalFileList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetExternalFileList", Options);
 
     // END
 
     Process(Result, "Slack", "GetExternalFileList");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetExternalFileList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetExternalFileList", Options);
 
     Process(Result, "Slack", "GetExternalFileList", "All");
 
@@ -7593,12 +7593,12 @@ Procedure Slack_AddExternalFile(FunctionParameters)
     Title = "NewFile";
     File  = FunctionParameters["Document"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", File);
-    Опции.Вставить("", Title);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", File);
+    Options.Insert("", Title);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "AddExternalFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "AddExternalFile", Options);
 
     // END
 
@@ -7611,11 +7611,11 @@ Procedure Slack_GetExternalFile(FunctionParameters)
     Token  = FunctionParameters["Slack_Token"];
     FileID = FunctionParameters["Slack_ExtFileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "GetExternalFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "GetExternalFile", Options);
 
     // END
 
@@ -7629,12 +7629,12 @@ Procedure Slack_SendExternalFile(FunctionParameters)
     Channel = FunctionParameters["Slack_Channel"];
     FileID  = FunctionParameters["Slack_ExtFileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", Channel);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", FileID);
+    Options.Insert("", Channel);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "SendExternalFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "SendExternalFile", Options);
 
     // END
 
@@ -7647,11 +7647,11 @@ Procedure Slack_DeleteExternalFile(FunctionParameters)
     Token  = FunctionParameters["Slack_Token"];
     FileID = FunctionParameters["Slack_ExtFileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("slack", "DeleteExternalFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("slack", "DeleteExternalFile", Options);
 
     // END
 
@@ -7678,13 +7678,13 @@ Procedure Airtable_CreateDatabase(FunctionParameters)
     TableMapping = New Map;
     TableMapping.Insert(TableName, FieldArray);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Region);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", TableMapping);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Region);
+    Options.Insert("", Name);
+    Options.Insert("", TableMapping);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "CreateDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreateDatabase", Options);
 
     // END
 
@@ -7698,11 +7698,11 @@ Procedure Airtable_GetDatabaseTables(FunctionParameters)
     Token = FunctionParameters["Airtable_Token"];
     Base  = FunctionParameters["Airtable_Base"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "GetDatabaseTables", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetDatabaseTables", Options);
 
     // END
 
@@ -7714,10 +7714,10 @@ Procedure Airtable_GetListOfBases(FunctionParameters)
 
     Token = FunctionParameters["Airtable_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "GetListOfBases", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetListOfBases", Options);
 
     // END
 
@@ -7727,10 +7727,10 @@ EndProcedure
 
 Procedure Airtable_GetNumberField(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "Number");
+    Options = New Structure;
+    Options.Insert("", "Number");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "GetNumberField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetNumberField", Options);
 
     // END
 
@@ -7740,10 +7740,10 @@ EndProcedure
 
 Procedure Airtable_GetStringField(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "String");
+    Options = New Structure;
+    Options.Insert("", "String");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "GetStringField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetStringField", Options);
 
     // END
 
@@ -7753,10 +7753,10 @@ EndProcedure
 
 Procedure Airtable_GetAttachmentField(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "Attachment");
+    Options = New Structure;
+    Options.Insert("", "Attachment");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "GetAttachmentField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetAttachmentField", Options);
 
     // END
 
@@ -7766,10 +7766,10 @@ EndProcedure
 
 Procedure Airtable_GetCheckboxField(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "Checkbox");
+    Options = New Structure;
+    Options.Insert("", "Checkbox");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "GetCheckboxField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetCheckboxField", Options);
 
     // END
 
@@ -7779,10 +7779,10 @@ EndProcedure
 
 Procedure Airtable_GetDateField(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "Date");
+    Options = New Structure;
+    Options.Insert("", "Date");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "GetDateField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetDateField", Options);
 
     // END
 
@@ -7792,10 +7792,10 @@ EndProcedure
 
 Procedure Airtable_GetPhoneField(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "Phone");
+    Options = New Structure;
+    Options.Insert("", "Phone");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "GetPhoneField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetPhoneField", Options);
 
     // END
 
@@ -7805,10 +7805,10 @@ EndProcedure
 
 Procedure Airtable_GetEmailField(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "Email");
+    Options = New Structure;
+    Options.Insert("", "Email");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "GetEmailField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetEmailField", Options);
 
     // END
 
@@ -7818,10 +7818,10 @@ EndProcedure
 
 Procedure Airtable_GetLinkField(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "Link");
+    Options = New Structure;
+    Options.Insert("", "Link");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "GetLinkField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetLinkField", Options);
 
     // END
 
@@ -7847,14 +7847,14 @@ Procedure Airtable_CreateTable(FunctionParameters)
     Name        = "TestTable2";
     Description = "NewTable";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", FieldArray);
-    Опции.Вставить("", Description);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Name);
+    Options.Insert("", FieldArray);
+    Options.Insert("", Description);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "CreateTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreateTable", Options);
 
     // END
 
@@ -7870,14 +7870,14 @@ Procedure Airtable_ModifyTable(FunctionParameters)
     Name        = "Test table 2 (change.)";
     Description = "New table (change.)";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Description);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Table);
+    Options.Insert("", Name);
+    Options.Insert("", Description);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "ModifyTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "ModifyTable", Options);
 
     // END
 
@@ -7892,17 +7892,17 @@ Procedure Airtable_CreateField(FunctionParameters)
     Table = FunctionParameters["Airtable_Table"];
     Name  = String(New UUID);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
+    Options = New Structure;
+    Options.Insert("", Name);
 
-    Field = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "GetNumberField", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Field);
+    Field = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetNumberField", Options);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Table);
+    Options.Insert("", Field);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "CreateField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreateField", Options);
 
     // END
 
@@ -7920,15 +7920,15 @@ Procedure Airtable_ModifyField(FunctionParameters)
     Name        = String(New UUID) + "(change.)";
     Description = "New description";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Field);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Description);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Table);
+    Options.Insert("", Field);
+    Options.Insert("", Name);
+    Options.Insert("", Description);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "ModifyField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "ModifyField", Options);
 
     // END
 
@@ -7952,13 +7952,13 @@ Procedure Airtable_CreatePosts(FunctionParameters)
     ArrayOfDescriptions.Add(RowDescription1);
     ArrayOfDescriptions.Add(RowDescription2);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ArrayOfDescriptions);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Table);
+    Options.Insert("", ArrayOfDescriptions);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "CreatePosts", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreatePosts", Options);
 
     // END
 
@@ -7977,13 +7977,13 @@ Procedure Airtable_CreatePosts(FunctionParameters)
 
     // Single
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Table);
-    Опции.Вставить("", RowDescription1);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Table);
+    Options.Insert("", RowDescription1);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "CreatePosts", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreatePosts", Options);
 
     Process(Result, "Airtable", "CreatePosts", "Single", FunctionParameters, Number, String);
 
@@ -7996,13 +7996,13 @@ Procedure Airtable_GetRecord(FunctionParameters)
     Table  = FunctionParameters["Airtable_Table"];
     Record = FunctionParameters["Airtable_Record"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Record);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Table);
+    Options.Insert("", Record);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "GetRecord", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetRecord", Options);
 
     // END
 
@@ -8018,14 +8018,14 @@ Procedure Airtable_CreateComment(FunctionParameters)
     Record = FunctionParameters["Airtable_Record"];
     Text   = "TestComment";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Record);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Table);
+    Options.Insert("", Record);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "CreateComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "CreateComment", Options);
 
     // END
 
@@ -8042,15 +8042,15 @@ Procedure Airtable_EditComment(FunctionParameters)
     Comment = FunctionParameters["Airtable_Comment"];
 
     Text   = "Test comment (change.)";
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Record);
-    Опции.Вставить("", Comment);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Table);
+    Options.Insert("", Record);
+    Options.Insert("", Comment);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "EditComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "EditComment", Options);
 
     // END
 
@@ -8065,13 +8065,13 @@ Procedure Airtable_GetComments(FunctionParameters)
     Table  = FunctionParameters["Airtable_Table"];
     Record = FunctionParameters["Airtable_Record"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Record);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Table);
+    Options.Insert("", Record);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "GetComments", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetComments", Options);
 
     // END
 
@@ -8087,14 +8087,14 @@ Procedure Airtable_DeleteComment(FunctionParameters)
     Record  = FunctionParameters["Airtable_Record"];
     Comment = FunctionParameters["Airtable_Comment"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Record);
-    Опции.Вставить("", Comment);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Table);
+    Options.Insert("", Record);
+    Options.Insert("", Comment);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "DeleteComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "DeleteComment", Options);
 
     // END
 
@@ -8108,12 +8108,12 @@ Procedure Airtable_GetListOfRecords(FunctionParameters)
     Base  = FunctionParameters["Airtable_Base"];
     Table = FunctionParameters["Airtable_Table"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Table);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Table);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "GetListOfRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "GetListOfRecords", Options);
 
     // END
 
@@ -8128,13 +8128,13 @@ Procedure Airtable_DeleteRecords(FunctionParameters)
     Table  = FunctionParameters["Airtable_Table"];
     Record = FunctionParameters["Airtable_Record"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Record);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Table);
+    Options.Insert("", Record);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("airtable", "DeleteRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("airtable", "DeleteRecords", Options);
 
     // END
 
@@ -8151,11 +8151,11 @@ Procedure Twitter_GetToken(FunctionParameters)
     Parameters = GetTwitterAuthData();
     Code       = "123456";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Code);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Code);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "GetToken", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "GetToken", Options);
 
     // END
 
@@ -8166,10 +8166,10 @@ EndProcedure
 Procedure Twitter_GetAuthorizationLink(FunctionParameters)
 
     Parameters = GetTwitterAuthData();
-    Опции = Новый Структура;
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "GetAuthorizationLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "GetAuthorizationLink", Options);
 
     // END
 
@@ -8180,10 +8180,10 @@ EndProcedure
 Procedure Twitter_RefreshToken(FunctionParameters)
 
     Parameters = GetTwitterAuthData();
-    Опции = Новый Структура;
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "RefreshToken", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "RefreshToken", Options);
 
     // END
 
@@ -8196,11 +8196,11 @@ Procedure Twitter_CreateTextTweet(FunctionParameters)
     Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "CreateTextTweet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateTextTweet", Options);
 
     // END
 
@@ -8220,22 +8220,22 @@ Procedure Twitter_CreateImageTweet(FunctionParameters)
     ImageArray.Add(Image);
     ImageArray.Add(Image2);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", ImageArray);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", ImageArray);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "CreateImageTweet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateImageTweet", Options);
 
     Process(Result, "Twitter", "CreateImageTweet", , Text); // SKIP
 
     Text   = "TestTweet" + String(New UUID);
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Image);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", Image);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "CreateImageTweet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateImageTweet", Options);
 
     // END
 
@@ -8244,12 +8244,12 @@ Procedure Twitter_CreateImageTweet(FunctionParameters)
     Image = OPI_HTTPRequests.Get(Image);
 
     Text   = "TestTweet" + String(New UUID);
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Image);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", Image);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "CreateImageTweet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateImageTweet", Options);
 
     Process(Result, "Twitter", "CreateImageTweet", "Binary", Text);
 
@@ -8267,22 +8267,22 @@ Procedure Twitter_CreateVideoTweet(FunctionParameters)
     VideosArray.Add(Video);
     VideosArray.Add(Video2);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", VideosArray);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", VideosArray);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "CreateVideoTweet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateVideoTweet", Options);
 
     Process(Result, "Twitter", "CreateVideoTweet", , Text); // SKIP
 
     Text   = "TestTweet" + String(New UUID);
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Video);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", Video);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "CreateVideoTweet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateVideoTweet", Options);
 
     // END
 
@@ -8291,12 +8291,12 @@ Procedure Twitter_CreateVideoTweet(FunctionParameters)
     Video = OPI_HTTPRequests.Get(Video);
 
     Text   = "TestTweet" + String(New UUID);
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Video);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", Video);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "CreateVideoTweet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateVideoTweet", Options);
 
     Process(Result, "Twitter", "CreateVideoTweet", "Binary", Text);
 
@@ -8314,22 +8314,22 @@ Procedure Twitter_CreateGifTweet(FunctionParameters)
     GifsArray.Add(GIF);
     GifsArray.Add(Gif2);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", GifsArray);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", GifsArray);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "CreateGifTweet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateGifTweet", Options);
 
     Process(Result, "Twitter", "CreateGifTweet", , Text); // SKIP
 
     Text   = "TestTweet" + String(New UUID);
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", GIF);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", GIF);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "CreateGifTweet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateGifTweet", Options);
 
     // END
 
@@ -8338,12 +8338,12 @@ Procedure Twitter_CreateGifTweet(FunctionParameters)
     GIF = OPI_HTTPRequests.Get(GIF);
 
     Text   = "TestTweet" + String(New UUID);
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", GIF);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", GIF);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "CreateGifTweet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateGifTweet", Options);
 
     Process(Result, "Twitter", "CreateGifTweet", "Binary", Text);
 
@@ -8358,13 +8358,13 @@ Procedure Twitter_CreatePollTweet(FunctionParameters)
     AnswersArray.Add("Option 1");
     AnswersArray.Add("Option 2");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", AnswersArray);
-    Опции.Вставить("", 60);
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", AnswersArray);
+    Options.Insert("", 60);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "CreatePollTweet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreatePollTweet", Options);
 
     // END
 
@@ -8384,18 +8384,18 @@ Procedure Twitter_CreateCustomTweet(FunctionParameters)
     ImageArray.Add(Image1);
     ImageArray.Add(Image2);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ImageArray);
-    Опции.Вставить("", "tweet_image");
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", ImageArray);
+    Options.Insert("", "tweet_image");
+    Options.Insert("", Parameters);
 
-    MediaArray = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "UploadAttachmentsArray", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Text);
-    Опции.Вставить("", MediaArray);
-    Опции.Вставить("", Parameters);
+    MediaArray = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "UploadAttachmentsArray", Options);
+    Options = New Structure;
+    Options.Insert("", Text);
+    Options.Insert("", MediaArray);
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "CreateCustomTweet", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "CreateCustomTweet", Options);
 
     // END
 
@@ -8414,12 +8414,12 @@ Procedure Twitter_UploadAttachmentsArray(FunctionParameters)
     ImageArray.Add(Image1);
     ImageArray.Add(Image2);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ImageArray);
-    Опции.Вставить("", "tweet_image");
-    Опции.Вставить("", Parameters);
+    Options = New Structure;
+    Options.Insert("", ImageArray);
+    Options.Insert("", "tweet_image");
+    Options.Insert("", Parameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("twitter", "UploadAttachmentsArray", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("twitter", "UploadAttachmentsArray", Options);
 
     // END
 
@@ -8437,12 +8437,12 @@ Procedure Notion_CreatePage(FunctionParameters)
     Parent = FunctionParameters["Notion_Parent"];
     Title  = "TestTitle";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Parent);
-    Опции.Вставить("", Title);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Parent);
+    Options.Insert("", Title);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("notion", "CreatePage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreatePage", Options);
 
     // END
 
@@ -8475,13 +8475,13 @@ Procedure Notion_CreateDatabase(FunctionParameters)
 
     Properties.Insert("Status", ValueSelection);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Parent);
-    Опции.Вставить("", Title);
-    Опции.Вставить("", Properties);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Parent);
+    Options.Insert("", Title);
+    Options.Insert("", Properties);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("notion", "CreateDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreateDatabase", Options);
 
     // END
 
@@ -8501,14 +8501,14 @@ Procedure Notion_EditDatabaseProperties(FunctionParameters)
     Properties.Insert("Email", "rich_text"); // Type fields "Email" will changed with email to text
     Properties.Insert("Website"); // Field "Website" will deleted
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Properties);
-    Опции.Вставить("", Title);
-    Опции.Вставить("", Description);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Properties);
+    Options.Insert("", Title);
+    Options.Insert("", Description);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("notion", "EditDatabaseProperties", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "EditDatabaseProperties", Options);
 
     // END
 
@@ -8521,11 +8521,11 @@ Procedure Notion_GetPage(FunctionParameters)
     Token = FunctionParameters["Notion_Token"];
     Page  = FunctionParameters["Notion_Page"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Page);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Page);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("notion", "GetPage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "GetPage", Options);
 
     // END
 
@@ -8538,11 +8538,11 @@ Procedure Notion_GetDatabase(FunctionParameters)
     Token = FunctionParameters["Notion_Token"];
     Base  = FunctionParameters["Notion_Base"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("notion", "GetDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "GetDatabase", Options);
 
     // END
 
@@ -8571,12 +8571,12 @@ Procedure Notion_CreatePageInDatabase(FunctionParameters)
     Properties.Insert("Phone"       , "88005553535");
     Properties.Insert("Status"      , "New");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Properties);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Base);
+    Options.Insert("", Properties);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("notion", "CreatePageInDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreatePageInDatabase", Options);
 
     // END
 
@@ -8596,15 +8596,15 @@ Procedure Notion_EditPageProperties(FunctionParameters)
     Properties.Insert("Active", False);
     Properties.Insert("Email" , "vector@mail.ru");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Page);
-    Опции.Вставить("", Properties);
-    Опции.Вставить("", Icon);
-    Опции.Вставить("", Cover);
-    Опции.Вставить("", Archive);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Page);
+    Options.Insert("", Properties);
+    Options.Insert("", Icon);
+    Options.Insert("", Cover);
+    Options.Insert("", Archive);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("notion", "EditPageProperties", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "EditPageProperties", Options);
 
     // END
 
@@ -8617,11 +8617,11 @@ Procedure Notion_ReturnBlock(FunctionParameters)
     Token = FunctionParameters["Notion_Token"];
     Block = FunctionParameters["Notion_Block"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Block);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Block);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("notion", "ReturnBlock", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "ReturnBlock", Options);
 
     // END
 
@@ -8635,17 +8635,17 @@ Procedure Notion_CreateBlock(FunctionParameters)
     Parent = FunctionParameters["Notion_Parent"];
     Block  = FunctionParameters["Notion_Block"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Block);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Block);
 
-    BlockData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("notion", "ReturnBlock", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Parent);
-    Опции.Вставить("", BlockData);
+    BlockData = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "ReturnBlock", Options);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Parent);
+    Options.Insert("", BlockData);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("notion", "CreateBlock", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "CreateBlock", Options);
 
     // END
 
@@ -8658,11 +8658,11 @@ Procedure Notion_ReturnChildBlocks(FunctionParameters)
     Token = FunctionParameters["Notion_Token"];
     Block = FunctionParameters["Notion_NewBlock"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Block);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Block);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("notion", "ReturnChildBlocks", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "ReturnChildBlocks", Options);
 
     // END
 
@@ -8675,11 +8675,11 @@ Procedure Notion_DeleteBlock(FunctionParameters)
     Token = FunctionParameters["Notion_Token"];
     Block = FunctionParameters["Notion_NewBlock"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Block);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Block);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("notion", "DeleteBlock", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "DeleteBlock", Options);
 
     // END
 
@@ -8691,10 +8691,10 @@ Procedure Notion_UserList(FunctionParameters)
 
     Token = FunctionParameters["Notion_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("notion", "UserList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "UserList", Options);
 
     // END
 
@@ -8707,11 +8707,11 @@ Procedure Notion_GetUserData(FunctionParameters)
     Token = FunctionParameters["Notion_Token"];
     User  = FunctionParameters["Notion_User"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", User);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", User);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("notion", "GetUserData", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("notion", "GetUserData", Options);
 
     // END
 
@@ -8726,10 +8726,10 @@ EndProcedure
 Procedure Dropbox_GetAuthorizationLink(FunctionParameters)
 
     AppKey = FunctionParameters["Dropbox_Appkey"];
-    Опции = Новый Структура;
-    Опции.Вставить("", AppKey);
+    Options = New Structure;
+    Options.Insert("", AppKey);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "GetAuthorizationLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAuthorizationLink", Options);
 
     // END
 
@@ -8743,12 +8743,12 @@ Procedure Dropbox_GetToken(FunctionParameters)
     AppSecret = FunctionParameters["Dropbox_Appsecret"];
     Code      = FunctionParameters["Dropbox_Code"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", AppKey);
-    Опции.Вставить("", AppSecret);
-    Опции.Вставить("", Code);
+    Options = New Structure;
+    Options.Insert("", AppKey);
+    Options.Insert("", AppSecret);
+    Options.Insert("", Code);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "GetToken", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetToken", Options);
 
     // END
 
@@ -8762,12 +8762,12 @@ Procedure Dropbox_UpdateToken(FunctionParameters)
     AppSecret    = FunctionParameters["Dropbox_Appsecret"];
     RefreshToken = FunctionParameters["Dropbox_Refresh"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", AppKey);
-    Опции.Вставить("", AppSecret);
-    Опции.Вставить("", RefreshToken);
+    Options = New Structure;
+    Options.Insert("", AppKey);
+    Options.Insert("", AppSecret);
+    Options.Insert("", RefreshToken);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "RefreshToken", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "RefreshToken", Options);
 
     // END
 
@@ -8780,12 +8780,12 @@ Procedure Dropbox_GetObjectInformation(FunctionParameters)
     Path  = "/New/pic.png";
     Token = FunctionParameters["Dropbox_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "GetObjectInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetObjectInformation", Options);
 
     // END
 
@@ -8798,11 +8798,11 @@ Procedure Dropbox_GetPreview(FunctionParameters)
     Token = FunctionParameters["Dropbox_Token"];
     Path  = "/New/mydoc.docx";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "GetPreview", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetPreview", Options);
 
     // END
 
@@ -8819,13 +8819,13 @@ Procedure Dropbox_UploadFile(FunctionParameters)
     ImagePath = GetTempFileName("png");
     CopyFile(Image, ImagePath);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ImagePath);
-    Опции.Вставить("", Path);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ImagePath);
+    Options.Insert("", Path);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "UploadFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "UploadFile", Options);
 
     // END
 
@@ -8837,13 +8837,13 @@ Procedure Dropbox_UploadFile(FunctionParameters)
         BigFile = FunctionParameters["Big"];
 
         Path   = "/giant.tmp";
-        Опции = Новый Структура;
-        Опции.Вставить("", Token);
-        Опции.Вставить("", BigFile);
-        Опции.Вставить("", Path);
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Token);
+        Options.Insert("", BigFile);
+        Options.Insert("", Path);
+        Options.Insert("", Истина);
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "UploadFile", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "UploadFile", Options);
 
         Process(Result, "Dropbox", "UploadFile", "Big", Path);
 
@@ -8857,12 +8857,12 @@ Procedure Dropbox_UploadFileByURL(FunctionParameters)
     Token = FunctionParameters["Dropbox_Token"];
     URL   = FunctionParameters["Document"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", URL);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "UploadFileByURL", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "UploadFileByURL", Options);
 
     // END
 
@@ -8893,11 +8893,11 @@ Procedure Dropbox_GetUploadStatusByURL(FunctionParameters)
 
     Token  = FunctionParameters["Dropbox_Token"];
     Path   = "/New/url_doc.docx";
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "DeleteObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DeleteObject", Options);
 
     Process(Result, "Dropbox", "GetUploadStatusByURL", "Deletion", Path);
 
@@ -8908,11 +8908,11 @@ Procedure Dropbox_DeleteObject(FunctionParameters)
     Path  = "/New/pic.png";
     Token = FunctionParameters["Dropbox_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "DeleteObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DeleteObject", Options);
 
     // END
 
@@ -8926,22 +8926,22 @@ Procedure Dropbox_CopyObject(FunctionParameters)
     Copy     = "/New/pic_copy.png";
     Token    = FunctionParameters["Dropbox_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Original);
-    Опции.Вставить("", Copy);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Original);
+    Options.Insert("", Copy);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "CopyObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "CopyObject", Options);
 
     // END
 
     Process(Result, "Dropbox", "CopyObject", , Copy);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Copy);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Copy);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "DeleteObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DeleteObject", Options);
 
     Process(Result, "Dropbox", "CopyObject", "Deletion", Copy);
 
@@ -8953,23 +8953,23 @@ Procedure Dropbox_MoveObject(FunctionParameters)
     TargetPath   = "/pic.png";
     Token        = FunctionParameters["Dropbox_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", OriginalPath);
-    Опции.Вставить("", TargetPath);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", OriginalPath);
+    Options.Insert("", TargetPath);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "MoveObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "MoveObject", Options);
 
     // END
 
     Process(Result, "Dropbox", "MoveObject", , TargetPath);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", TargetPath);
-    Опции.Вставить("", OriginalPath);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", TargetPath);
+    Options.Insert("", OriginalPath);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "MoveObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "MoveObject", Options);
 
     Process(Result, "Dropbox", "MoveObject", "Deletion", OriginalPath);
 
@@ -8980,11 +8980,11 @@ Procedure Dropbox_CreateFolder(FunctionParameters)
     Token = FunctionParameters["Dropbox_Token"];
     Path  = "/New catalog";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "CreateFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "CreateFolder", Options);
 
     // END
 
@@ -8999,11 +8999,11 @@ Procedure Dropbox_DownloadFile(FunctionParameters)
     Token = FunctionParameters["Dropbox_Token"];
     Path  = "/New/pic.png";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "DownloadFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DownloadFile", Options);
 
     // END
 
@@ -9016,11 +9016,11 @@ Procedure Dropbox_DownloadFolder(FunctionParameters)
     Token = FunctionParameters["Dropbox_Token"];
     Path  = "/New";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "DownloadFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DownloadFolder", Options);
 
     // END
 
@@ -9033,12 +9033,12 @@ Procedure Dropbox_GetFolderFileList(FunctionParameters)
     Path  = "/New";
     Token = FunctionParameters["Dropbox_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "GetListOfFolderFiles", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetListOfFolderFiles", Options);
 
     // END
 
@@ -9051,12 +9051,12 @@ Procedure Dropbox_GetObjectVersionList(FunctionParameters)
     Token = FunctionParameters["Dropbox_Token"];
     Path  = "/New/pic.png";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
-    Опции.Вставить("", 1);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
+    Options.Insert("", 1);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "GetObjectVersionList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetObjectVersionList", Options);
 
     // END
 
@@ -9070,12 +9070,12 @@ Procedure Dropbox_RestoreObjectToVersion(FunctionParameters)
     Token   = FunctionParameters["Dropbox_Token"];
     Path    = "/New/pic.png";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
-    Опции.Вставить("", Version);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
+    Options.Insert("", Version);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "RestoreObjectToVersion", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "RestoreObjectToVersion", Options);
 
     // END
 
@@ -9091,11 +9091,11 @@ Procedure Dropbox_GetTagList(FunctionParameters)
     PathsArray.Add("/New/Dogs.mp3");
     PathsArray.Add("/New/mydoc.docx");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", PathsArray);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", PathsArray);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "GetTagList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetTagList", Options);
 
     // END
 
@@ -9109,12 +9109,12 @@ Procedure Dropbox_AddTag(FunctionParameters)
     Token = FunctionParameters["Dropbox_Token"];
     Path  = "/New/mydoc.docx";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
-    Опции.Вставить("", Tag);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
+    Options.Insert("", Tag);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "AddTag", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddTag", Options);
 
     // END
 
@@ -9128,12 +9128,12 @@ Procedure Dropbox_DeleteTag(FunctionParameters)
     Token = FunctionParameters["Dropbox_Token"];
     Path  = "/New/mydoc.docx";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
-    Опции.Вставить("", Tag);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
+    Options.Insert("", Tag);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "DeleteTag", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "DeleteTag", Options);
 
     // END
 
@@ -9145,21 +9145,21 @@ Procedure Dropbox_GetAccountInformation(FunctionParameters)
 
     Token = FunctionParameters["Dropbox_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "GetAccountInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAccountInformation", Options);
 
     // END
 
     Process(Result, "Dropbox", "GetAccountInformation");
 
     AccountID = Result["account_id"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", AccountID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", AccountID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "GetAccountInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAccountInformation", Options);
 
     Process(Result, "Dropbox", "GetAccountInformation", "By ID");
 
@@ -9169,10 +9169,10 @@ Procedure Dropbox_GetSpaceUsageData(FunctionParameters)
 
     Token = FunctionParameters["Dropbox_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "GetSpaceUsageData", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetSpaceUsageData", Options);
 
     // END
 
@@ -9186,13 +9186,13 @@ Procedure Dropbox_AddUsersToFile(FunctionParameters)
     Email = FunctionParameters["Dropbox_OtherUser"];
     File  = FunctionParameters["Dropbox_FileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", File);
-    Опции.Вставить("", Email);
-    Опции.Вставить("", Ложь);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", File);
+    Options.Insert("", Email);
+    Options.Insert("", Ложь);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "AddUsersToFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFile", Options);
 
     // END
 
@@ -9201,13 +9201,13 @@ Procedure Dropbox_AddUsersToFile(FunctionParameters)
     Mails = New Array;
     Mails.Add(Email);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", File);
-    Опции.Вставить("", Mails);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", File);
+    Options.Insert("", Mails);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "AddUsersToFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFile", Options);
 
     Process(Result, "Dropbox", "AddUsersToFile", , Email, True);
 
@@ -9218,11 +9218,11 @@ Procedure Dropbox_PublishFolder(FunctionParameters)
     Token = FunctionParameters["Dropbox_Token"];
     Path  = "/New";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "PublishFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "PublishFolder", Options);
 
     // END
 
@@ -9235,11 +9235,11 @@ Procedure Dropbox_CancelFolderPublication(FunctionParameters)
     Token  = FunctionParameters["Dropbox_Token"];
     Folder = FunctionParameters["Dropbox_SharedFolder"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Folder);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Folder);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "CancelFolderPublication", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "CancelFolderPublication", Options);
 
     Process(Result, "Dropbox", "CancelFolderPublication"); // SKIP
 
@@ -9263,11 +9263,11 @@ Procedure Dropbox_GetAsynchronousChangeStatus(FunctionParameters)
     Token = FunctionParameters["Dropbox_Token"];
     JobID = FunctionParameters["Dropbox_NewJobID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", JobID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", JobID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "GetAsynchronousChangeStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "GetAsynchronousChangeStatus", Options);
 
     // END
 
@@ -9281,13 +9281,13 @@ Procedure Dropbox_AddUsersToFolder(FunctionParameters)
     Email  = FunctionParameters["Dropbox_OtherUser"];
     Folder = FunctionParameters["Dropbox_SharedFolder"]; // shared_folder_id
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Folder);
-    Опции.Вставить("", Email);
-    Опции.Вставить("", Ложь);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Folder);
+    Options.Insert("", Email);
+    Options.Insert("", Ложь);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "AddUsersToFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFolder", Options);
 
     // END
 
@@ -9296,13 +9296,13 @@ Procedure Dropbox_AddUsersToFolder(FunctionParameters)
     Mails = New Array;
     Mails.Add(Email);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Folder);
-    Опции.Вставить("", Mails);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Folder);
+    Options.Insert("", Mails);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "AddUsersToFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "AddUsersToFolder", Options);
 
     Process(Result, "Dropbox", "AddUsersToFolder", "Additional");
 
@@ -9313,11 +9313,11 @@ Procedure Dropbox_CancelFilePublication(FunctionParameters)
     Token = FunctionParameters["Dropbox_Token"];
     File  = FunctionParameters["Dropbox_FileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", File);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", File);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("dropbox", "CancelFilePublication", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("dropbox", "CancelFilePublication", Options);
 
     // END
 
@@ -9334,11 +9334,11 @@ Procedure Bitrix24_GetAppAuthLink(FunctionParameters)
     Domain   = FunctionParameters["Bitrix24_Domain"];
     ClientID = FunctionParameters["Bitrix24_ClientID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Domain);
-    Опции.Вставить("", ClientID);
+    Options = New Structure;
+    Options.Insert("", Domain);
+    Options.Insert("", ClientID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetAppAuthLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetAppAuthLink", Options);
 
     // END
 
@@ -9352,12 +9352,12 @@ Procedure Bitrix24_GetToken(FunctionParameters)
     ClientSecret = FunctionParameters["Bitrix24_ClientSecret"];
     Code         = FunctionParameters["Bitrix24_Code"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", ClientSecret);
-    Опции.Вставить("", Code);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", ClientSecret);
+    Options.Insert("", Code);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetToken", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetToken", Options);
 
     // END
 
@@ -9371,12 +9371,12 @@ Procedure Bitrix24_RefreshToken(FunctionParameters)
     ClientSecret = FunctionParameters["Bitrix24_ClientSecret"];
     Refresh      = FunctionParameters["Bitrix24_Refresh"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", ClientSecret);
-    Опции.Вставить("", Refresh);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", ClientSecret);
+    Options.Insert("", Refresh);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RefreshToken", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RefreshToken", Options);
 
     // END
 
@@ -9388,21 +9388,21 @@ Procedure Bitrix24_ServerTime(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ServerTime", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ServerTime", Options);
 
     Process(Result, "Bitrix24", "ServerTime", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ServerTime", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ServerTime", Options);
 
     // END
 
@@ -9423,28 +9423,28 @@ Procedure Bitrix24_CreatePost(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Files);
-    Опции.Вставить("", Title);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Text);
+    Options.Insert("", Files);
+    Options.Insert("", Title);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreatePost", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreatePost", Options);
 
     Process(Result, "Bitrix24", "CreatePost", "Hook", FunctionParameters); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Files);
-    Опции.Вставить("", Title);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Text);
+    Options.Insert("", Files);
+    Options.Insert("", Title);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreatePost", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreatePost", Options);
 
     // END
 
@@ -9464,14 +9464,14 @@ Procedure Bitrix24_UpdatePost(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", PostID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Files);
-    Опции.Вставить("", Title);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", PostID);
+    Options.Insert("", Text);
+    Options.Insert("", Files);
+    Options.Insert("", Title);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdatePost", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdatePost", Options);
 
     Process(Result, "Bitrix24", "UpdatePost", "Hook"); // SKIP
 
@@ -9479,15 +9479,15 @@ Procedure Bitrix24_UpdatePost(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     PostID = FunctionParameters["Bitrix24_HookPostID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", PostID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Files);
-    Опции.Вставить("", Title);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", PostID);
+    Options.Insert("", Text);
+    Options.Insert("", Files);
+    Options.Insert("", Title);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdatePost", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdatePost", Options);
 
     // END
 
@@ -9500,11 +9500,11 @@ Procedure Bitrix24_DeletePost(FunctionParameters)
     PostID = FunctionParameters["Bitrix24_HookPostID"];
     URL    = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", PostID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", PostID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeletePost", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeletePost", Options);
 
     Process(Result, "Bitrix24", "DeletePost", "Hook"); // SKIP
 
@@ -9512,12 +9512,12 @@ Procedure Bitrix24_DeletePost(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_Domain"];
     Token  = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", PostID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", PostID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeletePost", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeletePost", Options);
 
     // END
 
@@ -9530,23 +9530,23 @@ Procedure Bitrix24_GetImportantPostViewers(FunctionParameters)
     PostID = FunctionParameters["Bitrix24_HookPostID"];
     URL    = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", PostID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", PostID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetImportantPostViewers", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetImportantPostViewers", Options);
 
     Process(Result, "Bitrix24", "GetImportantPostViewers", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", PostID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", PostID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetImportantPostViewers", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetImportantPostViewers", Options);
 
     // END
 
@@ -9559,23 +9559,23 @@ Procedure Bitrix24_GetPosts(FunctionParameters)
     PostID = FunctionParameters["Bitrix24_PostID"];
     URL    = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", PostID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", PostID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetPosts", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetPosts", Options);
 
     Process(Result, "Bitrix24", "GetPosts", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", PostID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", PostID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetPosts", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetPosts", Options);
 
     // END
 
@@ -9589,12 +9589,12 @@ Procedure Bitrix24_AddPostComment(FunctionParameters)
     PostID = FunctionParameters["Bitrix24_PostID"];
     URL    = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", PostID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", PostID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddPostComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddPostComment", Options);
 
     Process(Result, "Bitrix24", "AddPostComment", "Hook"); // SKIP
 
@@ -9602,13 +9602,13 @@ Procedure Bitrix24_AddPostComment(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", PostID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", PostID);
+    Options.Insert("", Text);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddPostComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddPostComment", Options);
 
     // END
 
@@ -9622,25 +9622,25 @@ Procedure Bitrix24_AddPostRecipients(FunctionParameters)
     PostID     = FunctionParameters["Bitrix24_PostID"];
     URL        = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", PostID);
-    Опции.Вставить("", Visibility);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", PostID);
+    Options.Insert("", Visibility);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddPostRecipients", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddPostRecipients", Options);
 
     Process(Result, "Bitrix24", "AddPostRecipients", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", PostID);
-    Опции.Вставить("", Visibility);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", PostID);
+    Options.Insert("", Visibility);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddPostRecipients", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddPostRecipients", Options);
 
     // END
 
@@ -9652,21 +9652,21 @@ Procedure Bitrix24_GetTaskFieldsStructure(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTaskFieldsStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskFieldsStructure", Options);
 
     Process(Result, "Bitrix24", "GetTaskFieldsStructure", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTaskFieldsStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskFieldsStructure", Options);
 
     // END
 
@@ -9692,23 +9692,23 @@ Procedure Bitrix24_CreateTask(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskData);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskData);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateTask", Options);
 
     Process(Result, "Bitrix24", "CreateTask", "Hook", FunctionParameters); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskData);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskData);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateTask", Options);
 
     // END
 
@@ -9728,12 +9728,12 @@ Procedure Bitrix24_UpdateTask(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", TaskData);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", TaskData);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateTask", Options);
 
     Process(Result, "Bitrix24", "UpdateTask", "Hook"); // SKIP
 
@@ -9741,13 +9741,13 @@ Procedure Bitrix24_UpdateTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", TaskData);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", TaskData);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateTask", Options);
 
     // END
 
@@ -9760,11 +9760,11 @@ Procedure Bitrix24_GetTask(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTask", Options);
 
     Process(Result, "Bitrix24", "GetTask", "Hook"); // SKIP
 
@@ -9772,12 +9772,12 @@ Procedure Bitrix24_GetTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTask", Options);
 
     // END
 
@@ -9790,11 +9790,11 @@ Procedure Bitrix24_ApproveTask(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ApproveTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ApproveTask", Options);
 
     Process(Result, "Bitrix24", "ApproveTask", "Hook"); // SKIP
 
@@ -9802,12 +9802,12 @@ Procedure Bitrix24_ApproveTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ApproveTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ApproveTask", Options);
 
     // END
 
@@ -9820,11 +9820,11 @@ Procedure Bitrix24_DisapproveTask(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DisapproveTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DisapproveTask", Options);
 
     Process(Result, "Bitrix24", "DisapproveTask", "Hook"); // SKIP
 
@@ -9832,12 +9832,12 @@ Procedure Bitrix24_DisapproveTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DisapproveTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DisapproveTask", Options);
 
     // END
 
@@ -9850,11 +9850,11 @@ Procedure Bitrix24_CompleteTask(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CompleteTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CompleteTask", Options);
 
     Process(Result, "Bitrix24", "CompleteTask", "Hook"); // SKIP
 
@@ -9862,12 +9862,12 @@ Procedure Bitrix24_CompleteTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CompleteTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CompleteTask", Options);
 
     // END
 
@@ -9880,11 +9880,11 @@ Procedure Bitrix24_RenewTask(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RenewTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenewTask", Options);
 
     Process(Result, "Bitrix24", "RenewTask", "Hook"); // SKIP
 
@@ -9892,12 +9892,12 @@ Procedure Bitrix24_RenewTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RenewTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenewTask", Options);
 
     // END
 
@@ -9910,11 +9910,11 @@ Procedure Bitrix24_DeferTask(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeferTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeferTask", Options);
 
     Process(Result, "Bitrix24", "DeferTask", "Hook"); // SKIP
 
@@ -9922,12 +9922,12 @@ Procedure Bitrix24_DeferTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeferTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeferTask", Options);
 
     // END
 
@@ -9940,11 +9940,11 @@ Procedure Bitrix24_StartTask(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "StartTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StartTask", Options);
 
     Process(Result, "Bitrix24", "StartTask", "Hook"); // SKIP
 
@@ -9952,12 +9952,12 @@ Procedure Bitrix24_StartTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "StartTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StartTask", Options);
 
     // END
 
@@ -9970,11 +9970,11 @@ Procedure Bitrix24_StartWatchingTask(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "StartWatchingTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StartWatchingTask", Options);
 
     Process(Result, "Bitrix24", "StartWatchingTask", "Hook"); // SKIP
 
@@ -9982,12 +9982,12 @@ Procedure Bitrix24_StartWatchingTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "StartWatchingTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StartWatchingTask", Options);
 
     // END
 
@@ -10000,11 +10000,11 @@ Procedure Bitrix24_StopWatchingTask(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "StopWatchingTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StopWatchingTask", Options);
 
     Process(Result, "Bitrix24", "StopWatchingTask", "Hook"); // SKIP
 
@@ -10012,12 +10012,12 @@ Procedure Bitrix24_StopWatchingTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "StopWatchingTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StopWatchingTask", Options);
 
     // END
 
@@ -10030,11 +10030,11 @@ Procedure Bitrix24_PauseTask(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "PauseTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "PauseTask", Options);
 
     Process(Result, "Bitrix24", "PauseTask", "Hook"); // SKIP
 
@@ -10042,12 +10042,12 @@ Procedure Bitrix24_PauseTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "PauseTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "PauseTask", Options);
 
     // END
 
@@ -10060,11 +10060,11 @@ Procedure Bitrix24_DeleteTask(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTask", Options);
 
     Process(Result, "Bitrix24", "DeleteTask", "Hook"); // SKIP
 
@@ -10072,12 +10072,12 @@ Procedure Bitrix24_DeleteTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTask", Options);
 
     // END
 
@@ -10091,12 +10091,12 @@ Procedure Bitrix24_DelegateTask(FunctionParameters)
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
     UserID = FunctionParameters["Bitrix24_UserID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", UserID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", UserID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DelegateTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DelegateTask", Options);
 
     Process(Result, "Bitrix24", "DelegateTask", "Hook"); // SKIP
 
@@ -10104,13 +10104,13 @@ Procedure Bitrix24_DelegateTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", UserID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DelegateTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DelegateTask", Options);
 
     // END
 
@@ -10123,11 +10123,11 @@ Procedure Bitrix24_AddTaskToFavorites(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddTaskToFavorites", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddTaskToFavorites", Options);
 
     Process(Result, "Bitrix24", "AddTaskToFavorites", "Hook"); // SKIP
 
@@ -10135,12 +10135,12 @@ Procedure Bitrix24_AddTaskToFavorites(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddTaskToFavorites", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddTaskToFavorites", Options);
 
     // END
 
@@ -10153,11 +10153,11 @@ Procedure Bitrix24_RemoveTaskFromFavorites(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RemoveTaskFromFavorites", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RemoveTaskFromFavorites", Options);
 
     Process(Result, "Bitrix24", "RemoveTaskFromFavorites", "Hook"); // SKIP
 
@@ -10165,12 +10165,12 @@ Procedure Bitrix24_RemoveTaskFromFavorites(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RemoveTaskFromFavorites", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RemoveTaskFromFavorites", Options);
 
     // END
 
@@ -10183,11 +10183,11 @@ Procedure Bitrix24_GetTaskHistory(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTaskHistory", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskHistory", Options);
 
     Process(Result, "Bitrix24", "GetTaskHistory", "Hook"); // SKIP
 
@@ -10195,12 +10195,12 @@ Procedure Bitrix24_GetTaskHistory(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTaskHistory", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskHistory", Options);
 
     // END
 
@@ -10225,24 +10225,24 @@ Procedure Bitrix24_GetTasksList(FunctionParameters)
     Indent = 1;
     URL    = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Filter);
-    Опции.Вставить("", Fields);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Filter);
+    Options.Insert("", Fields);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTasksList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTasksList", Options);
 
     Process(Result, "Bitrix24", "GetTasksList", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Indent);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Indent);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTasksList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTasksList", Options);
 
     // END
 
@@ -10253,21 +10253,21 @@ EndProcedure
 Procedure Bitrix24_GetStoragesList(FunctionParameters)
 
     URL    = FunctionParameters["Bitrix24_URL"];
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetStoragesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetStoragesList", Options);
 
     Process(Result, "Bitrix24", "GetStoragesList", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetStoragesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetStoragesList", Options);
 
     // END
 
@@ -10280,11 +10280,11 @@ Procedure Bitrix24_GetAppStorage(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetAppSotrage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetAppSotrage", Options);
 
     // END
 
@@ -10304,27 +10304,27 @@ Procedure Bitrix24_UploadFileToStorage(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Filename2);
-    Опции.Вставить("", Image2);
-    Опции.Вставить("", DestinationID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Filename2);
+    Options.Insert("", Image2);
+    Options.Insert("", DestinationID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UploadFileToStorage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToStorage", Options);
 
     Process(Result, "Bitrix24", "UploadFileToStorage", "Hook", FunctionParameters); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Image);
-    Опции.Вставить("", DestinationID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Name);
+    Options.Insert("", Image);
+    Options.Insert("", DestinationID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UploadFileToStorage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToStorage", Options);
 
     // END
 
@@ -10337,11 +10337,11 @@ Procedure Bitrix24_DeleteFile(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     FileID = FunctionParameters["Bitrix24_HookFileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteFile", Options);
 
     Process(Result, "Bitrix24", "DeleteFile", "Hook"); // SKIP
 
@@ -10349,12 +10349,12 @@ Procedure Bitrix24_DeleteFile(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     FileID = FunctionParameters["Bitrix24_FileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteFile", Options);
 
     // END
 
@@ -10370,25 +10370,25 @@ Procedure Bitrix24_CreateStorageFolder(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", StorageID);
-    Опции.Вставить("", Filename2);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", StorageID);
+    Options.Insert("", Filename2);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateStorageFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateStorageFolder", Options);
 
     Process(Result, "Bitrix24", "CreateStorageFolder", "Hook", FunctionParameters); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", StorageID);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", StorageID);
+    Options.Insert("", Name);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateStorageFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateStorageFolder", Options);
 
     // END
 
@@ -10401,11 +10401,11 @@ Procedure Bitrix24_DeleteFolder(FunctionParameters)
     URL      = FunctionParameters["Bitrix24_URL"];
     FolderID = FunctionParameters["Bitrix24_HookFolderID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteFolder", Options);
 
     Process(Result, "Bitrix24", "DeleteFolder", "Hook"); // SKIP
 
@@ -10413,12 +10413,12 @@ Procedure Bitrix24_DeleteFolder(FunctionParameters)
     Token    = FunctionParameters["Bitrix24_Token"];
     FolderID = FunctionParameters["Bitrix24_FolderID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteFolder", Options);
 
     // END
 
@@ -10431,23 +10431,23 @@ Procedure Bitrix24_GetStorage(FunctionParameters)
     URL       = FunctionParameters["Bitrix24_URL"];
     StorageID = 3;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", StorageID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", StorageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetStorage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetStorage", Options);
 
     Process(Result, "Bitrix24", "GetStorage", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", StorageID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", StorageID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetStorage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetStorage", Options);
 
     // END
 
@@ -10460,23 +10460,23 @@ Procedure Bitrix24_GetStorageObjects(FunctionParameters)
     URL       = FunctionParameters["Bitrix24_URL"];
     StorageID = 3;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", StorageID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", StorageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetStorageObjects", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetStorageObjects", Options);
 
     Process(Result, "Bitrix24", "GetStorageObjects", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", StorageID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", StorageID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetStorageObjects", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetStorageObjects", Options);
 
     // END
 
@@ -10491,13 +10491,13 @@ Procedure Bitrix24_RenameStorage(FunctionParameters)
     Token     = FunctionParameters["Bitrix24_Token"];
     StorageID = FunctionParameters["Bitrix24_StorageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", StorageID);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", StorageID);
+    Options.Insert("", Name);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RenameStorage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenameStorage", Options);
 
     // END
 
@@ -10510,23 +10510,23 @@ Procedure Bitrix24_GetFolderInformation(FunctionParameters)
     URL      = FunctionParameters["Bitrix24_URL"];
     FolderID = FunctionParameters["Bitrix24_FolderID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetFolderInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderInformation", Options);
 
     Process(Result, "Bitrix24", "GetFolderInformation", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetFolderInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderInformation", Options);
 
     // END
 
@@ -10542,25 +10542,25 @@ Procedure Bitrix24_CreateSubfolder(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", Filename2);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
+    Options.Insert("", Filename2);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateSubfolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateSubfolder", Options);
 
     Process(Result, "Bitrix24", "CreateSubfolder", "Hook", FunctionParameters); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
+    Options.Insert("", Name);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateSubfolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateSubfolder", Options);
 
     // END
 
@@ -10575,12 +10575,12 @@ Procedure Bitrix24_MakeFolderCopy(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", DestinationID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
+    Options.Insert("", DestinationID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MakeFolderCopy", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeFolderCopy", Options);
 
     Process(Result, "Bitrix24", "MakeFolderCopy", "Hook"); // SKIP
 
@@ -10601,23 +10601,23 @@ Procedure Bitrix24_GetFolderExternalLink(FunctionParameters)
     URL      = FunctionParameters["Bitrix24_URL"];
     FolderID = FunctionParameters["Bitrix24_FolderID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetFolderExternalLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderExternalLink", Options);
 
     Process(Result, "Bitrix24", "GetFolderExternalLink", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetFolderExternalLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderExternalLink", Options);
 
     // END
 
@@ -10629,22 +10629,22 @@ Procedure Bitrix24_GetFolderFilterStructure(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetFolderFilterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderFilterStructure", Options);
 
     Process(Result, "Bitrix24", "GetFolderFilterStructure", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Истина);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Истина);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetFolderFilterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderFilterStructure", Options);
 
     // END
 
@@ -10657,23 +10657,23 @@ Procedure Bitrix24_GetFolderItems(FunctionParameters)
     URL      = FunctionParameters["Bitrix24_URL"];
     FolderID = FunctionParameters["Bitrix24_FolderID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetFolderItems", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderItems", Options);
 
     Process(Result, "Bitrix24", "GetFolderItems", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetFolderItems", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFolderItems", Options);
 
     // END
 
@@ -10686,23 +10686,23 @@ Procedure Bitrix24_MarkFolderAsDeleted(FunctionParameters)
     URL      = FunctionParameters["Bitrix24_URL"];
     FolderID = FunctionParameters["Bitrix24_FolderID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MarkFolderAsDeleted", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkFolderAsDeleted", Options);
 
     Process(Result, "Bitrix24", "MarkFolderAsDeleted", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MarkFolderAsDeleted", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkFolderAsDeleted", Options);
 
     // END
 
@@ -10715,23 +10715,23 @@ Procedure Bitrix24_RestoreFolder(FunctionParameters)
     URL      = FunctionParameters["Bitrix24_URL"];
     FolderID = FunctionParameters["Bitrix24_FolderID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RestoreFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RestoreFolder", Options);
 
     Process(Result, "Bitrix24", "RestoreFolder", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RestoreFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RestoreFolder", Options);
 
     // END
 
@@ -10746,12 +10746,12 @@ Procedure Bitrix24_MoveFolder(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", DestinationID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
+    Options.Insert("", DestinationID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MoveFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MoveFolder", Options);
 
     Process(Result, "Bitrix24", "MoveFolder", "Hook"); // SKIP
 
@@ -10760,13 +10760,13 @@ Procedure Bitrix24_MoveFolder(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", DestinationID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
+    Options.Insert("", DestinationID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MoveFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MoveFolder", Options);
 
     // END
 
@@ -10782,12 +10782,12 @@ Procedure Bitrix24_RenameFolder(FunctionParameters)
     FolderID2 = FunctionParameters["Bitrix24_HookFolderID"];
     URL       = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID2);
-    Опции.Вставить("", Filename2);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID2);
+    Options.Insert("", Filename2);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RenameFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenameFolder", Options);
 
     Process(Result, "Bitrix24", "RenameFolder", "Hook"); // SKIP
 
@@ -10795,13 +10795,13 @@ Procedure Bitrix24_RenameFolder(FunctionParameters)
     URL      = FunctionParameters["Bitrix24_Domain"];
     Token    = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FolderID);
+    Options.Insert("", Name);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RenameFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenameFolder", Options);
 
     // END
 
@@ -10821,13 +10821,13 @@ Procedure Bitrix24_UploadFileToFolder(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Filename2);
-    Опции.Вставить("", Image2);
-    Опции.Вставить("", DestinationID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Filename2);
+    Options.Insert("", Image2);
+    Options.Insert("", DestinationID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UploadFileToFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToFolder", Options);
 
     Process(Result, "Bitrix24", "UploadFileToFolder", "Hook", URL); // SKIP
 
@@ -10837,14 +10837,14 @@ Procedure Bitrix24_UploadFileToFolder(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Image);
-    Опции.Вставить("", DestinationID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Name);
+    Options.Insert("", Image);
+    Options.Insert("", DestinationID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UploadFileToFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToFolder", Options);
 
     // END
 
@@ -10863,12 +10863,12 @@ Procedure Bitrix24_MakeCopyFile(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", FolderID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
+    Options.Insert("", FolderID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MakeCopyFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeCopyFile", Options);
 
     Process(Result, "Bitrix24", "MakeCopyFile", "Hook"); // SKIP
 
@@ -10877,13 +10877,13 @@ Procedure Bitrix24_MakeCopyFile(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
+    Options.Insert("", FolderID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MakeCopyFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeCopyFile", Options);
 
     // END
 
@@ -10896,23 +10896,23 @@ Procedure Bitrix24_GetFileInformation(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     FileID = FunctionParameters["Bitrix24_FileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetFileInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFileInformation", Options);
 
     Process(Result, "Bitrix24", "GetFileInformation", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetFileInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFileInformation", Options);
 
     // END
 
@@ -10927,23 +10927,23 @@ Procedure Bitrix24_GetFileExternalLink(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     FileID = FunctionParameters["Bitrix24_FileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetFileExternalLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFileExternalLink", Options);
 
     Process(Result, "Bitrix24", "GetFileExternalLink", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetFileExternalLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFileExternalLink", Options);
 
     // END
 
@@ -10956,23 +10956,23 @@ Procedure Bitrix24_MarkFileAsDeleted(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     FileID = FunctionParameters["Bitrix24_FileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MarkFileAsDeleted", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkFileAsDeleted", Options);
 
     Process(Result, "Bitrix24", "MarkFileAsDeleted", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MarkFileAsDeleted", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkFileAsDeleted", Options);
 
     // END
 
@@ -10985,23 +10985,23 @@ Procedure Bitrix24_RestoreFile(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     FileID = FunctionParameters["Bitrix24_FileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RestoreFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RestoreFile", Options);
 
     Process(Result, "Bitrix24", "RestoreFile", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RestoreFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RestoreFile", Options);
 
     // END
 
@@ -11017,12 +11017,12 @@ Procedure Bitrix24_RenameFile(FunctionParameters)
     FileID2 = FunctionParameters["Bitrix24_HookFileID"];
     URL     = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID2);
-    Опции.Вставить("", Filename2);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID2);
+    Options.Insert("", Filename2);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RenameFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenameFile", Options);
 
     Process(Result, "Bitrix24", "RenameFile", "Hook"); // SKIP
 
@@ -11030,13 +11030,13 @@ Procedure Bitrix24_RenameFile(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_Domain"];
     Token  = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
+    Options.Insert("", Name);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RenameFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenameFile", Options);
 
     // END
 
@@ -11051,12 +11051,12 @@ Procedure Bitrix24_MoveFileToFolder(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", FolderID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
+    Options.Insert("", FolderID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MoveFileToFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MoveFileToFolder", Options);
 
     Process(Result, "Bitrix24", "MoveFileToFolder", "Hook"); // SKIP
 
@@ -11065,13 +11065,13 @@ Procedure Bitrix24_MoveFileToFolder(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FileID);
+    Options.Insert("", FolderID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MoveFileToFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MoveFileToFolder", Options);
 
     // END
 
@@ -11085,12 +11085,12 @@ Procedure Bitrix24_AttachFileToTopic(FunctionParameters)
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
     FileID = FunctionParameters["Bitrix24_TaskFileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AttachFileToTopic", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AttachFileToTopic", Options);
 
     Process(Result, "Bitrix24", "AttachFileToTopic", "Hook"); // SKIP
 
@@ -11098,13 +11098,13 @@ Procedure Bitrix24_AttachFileToTopic(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", FileID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AttachFileToTopic", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AttachFileToTopic", Options);
 
     // END
 
@@ -11121,12 +11121,12 @@ Procedure Bitrix24_CheckTaskAccesses(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", ArrayOfUsers);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", ArrayOfUsers);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CheckTaskAccesses", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CheckTaskAccesses", Options);
 
     Process(Result, "Bitrix24", "CheckTaskAccesses", "Hook", ArrayOfUsers.Count()); // SKIP
 
@@ -11134,13 +11134,13 @@ Procedure Bitrix24_CheckTaskAccesses(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", ArrayOfUsers);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", ArrayOfUsers);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CheckTaskAccesses", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CheckTaskAccesses", Options);
 
     // END
 
@@ -11153,11 +11153,11 @@ Procedure Bitrix24_MuteTask(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MuteTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MuteTask", Options);
 
     Process(Result, "Bitrix24", "MuteTask", "Hook"); // SKIP
 
@@ -11165,12 +11165,12 @@ Procedure Bitrix24_MuteTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MuteTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MuteTask", Options);
 
     // END
 
@@ -11183,11 +11183,11 @@ Procedure Bitrix24_UnmuteTask(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UnmuteTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UnmuteTask", Options);
 
     Process(Result, "Bitrix24", "UnmuteTask", "Hook"); // SKIP
 
@@ -11195,12 +11195,12 @@ Procedure Bitrix24_UnmuteTask(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UnmuteTask", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UnmuteTask", Options);
 
     // END
 
@@ -11215,12 +11215,12 @@ Procedure Bitrix24_AddTaskComment(FunctionParameters)
 
     Text = "Task impossible, let's split up";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddTaskComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddTaskComment", Options);
 
     Process(Result, "Bitrix24", "AddTaskComment", "Hook", FunctionParameters); // SKIP
 
@@ -11229,13 +11229,13 @@ Procedure Bitrix24_AddTaskComment(FunctionParameters)
 
     Text = "Task uninpossible, don't split up";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Text);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddTaskComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddTaskComment", Options);
 
     // END
 
@@ -11249,12 +11249,12 @@ Procedure Bitrix24_DeleteTaskComment(FunctionParameters)
     TaskID    = FunctionParameters["Bitrix24_CommentsTaskID"];
     CommentID = FunctionParameters["Bitrix24_HookCommentID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", CommentID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", CommentID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteTaskComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTaskComment", Options);
 
     Process(Result, "Bitrix24", "DeleteTaskComment", "Hook"); // SKIP
 
@@ -11262,13 +11262,13 @@ Procedure Bitrix24_DeleteTaskComment(FunctionParameters)
     Token     = FunctionParameters["Bitrix24_Token"];
     CommentID = FunctionParameters["Bitrix24_CommentID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", CommentID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", CommentID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteTaskComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTaskComment", Options);
 
     // END
 
@@ -11281,11 +11281,11 @@ Procedure Bitrix24_CreateResultFromComment(FunctionParameters)
     URL       = FunctionParameters["Bitrix24_URL"];
     CommentID = FunctionParameters["Bitrix24_HookCommentID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", CommentID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", CommentID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateResultFromComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateResultFromComment", Options);
 
     Process(Result, "Bitrix24", "CreateResultFromComment", "Hook"); // SKIP
 
@@ -11293,12 +11293,12 @@ Procedure Bitrix24_CreateResultFromComment(FunctionParameters)
     Token     = FunctionParameters["Bitrix24_Token"];
     CommentID = FunctionParameters["Bitrix24_CommentID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", CommentID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", CommentID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateResultFromComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateResultFromComment", Options);
 
     // END
 
@@ -11311,11 +11311,11 @@ Procedure Bitrix24_DeleteResultFromComment(FunctionParameters)
     URL       = FunctionParameters["Bitrix24_URL"];
     CommentID = FunctionParameters["Bitrix24_HookCommentID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", CommentID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", CommentID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteResultFromComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteResultFromComment", Options);
 
     Process(Result, "Bitrix24", "DeleteResultFromComment", "Hook"); // SKIP
 
@@ -11323,12 +11323,12 @@ Procedure Bitrix24_DeleteResultFromComment(FunctionParameters)
     Token     = FunctionParameters["Bitrix24_Token"];
     CommentID = FunctionParameters["Bitrix24_CommentID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", CommentID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", CommentID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteResultFromComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteResultFromComment", Options);
 
     // END
 
@@ -11341,23 +11341,23 @@ Procedure Bitrix24_GetResultsList(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_CommentsTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetResultsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetResultsList", Options);
 
     Process(Result, "Bitrix24", "GetResultsList", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetResultsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetResultsList", Options);
 
     // END
 
@@ -11370,23 +11370,23 @@ Procedure Bitrix24_GetTaskCommentsList(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_CommentsTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTaskCommentsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskCommentsList", Options);
 
     Process(Result, "Bitrix24", "GetTaskCommentsList", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTaskCommentsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskCommentsList", Options);
 
     // END
 
@@ -11400,12 +11400,12 @@ Procedure Bitrix24_GetTaskComment(FunctionParameters)
     CommentID = FunctionParameters["Bitrix24_HookCommentID"];
     TaskID    = FunctionParameters["Bitrix24_CommentsTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", CommentID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", CommentID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTaskComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskComment", Options);
 
     Process(Result, "Bitrix24", "GetTaskComment", "Hook"); // SKIP
 
@@ -11413,13 +11413,13 @@ Procedure Bitrix24_GetTaskComment(FunctionParameters)
     Token     = FunctionParameters["Bitrix24_Token"];
     CommentID = FunctionParameters["Bitrix24_CommentID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", CommentID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", CommentID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTaskComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskComment", Options);
 
     // END
 
@@ -11435,13 +11435,13 @@ Procedure Bitrix24_UpdateTaskComment(FunctionParameters)
 
     Text = "The task has been changed, do not split up";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", CommentID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", CommentID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateTaskComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateTaskComment", Options);
 
     Process(Result, "Bitrix24", "UpdateTaskComment", "Hook"); // SKIP
 
@@ -11451,14 +11451,14 @@ Procedure Bitrix24_UpdateTaskComment(FunctionParameters)
 
     Text = "The task has been changed, let's split up";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", CommentID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", CommentID);
+    Options.Insert("", Text);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateTaskComment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateTaskComment", Options);
 
     // END
 
@@ -11474,13 +11474,13 @@ Procedure Bitrix24_CreateTasksDependencies(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FromID);
-    Опции.Вставить("", DestinationID);
-    Опции.Вставить("", LinkType);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FromID);
+    Options.Insert("", DestinationID);
+    Options.Insert("", LinkType);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateTasksDependencies", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateTasksDependencies", Options);
 
     Process(Result, "Bitrix24", "CreateTasksDependencies", "Hook"); // SKIP
 
@@ -11493,14 +11493,14 @@ Procedure Bitrix24_CreateTasksDependencies(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FromID);
-    Опции.Вставить("", DestinationID);
-    Опции.Вставить("", LinkType);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FromID);
+    Options.Insert("", DestinationID);
+    Options.Insert("", LinkType);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateTasksDependencies", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateTasksDependencies", Options);
 
     // END
 
@@ -11519,13 +11519,13 @@ Procedure Bitrix24_DeleteTasksDependencies(FunctionParameters)
     URL = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType); // SKIP
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FromID);
-    Опции.Вставить("", DestinationID);
-    Опции.Вставить("", LinkType);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FromID);
+    Options.Insert("", DestinationID);
+    Options.Insert("", LinkType);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteTasksDependencies", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTasksDependencies", Options);
 
     Process(Result, "Bitrix24", "DeleteTasksDependencies", "Hook"); // SKIP
 
@@ -11537,14 +11537,14 @@ Procedure Bitrix24_DeleteTasksDependencies(FunctionParameters)
     Token = FunctionParameters["Bitrix24_Token"];
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType, Token); // SKIP
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FromID);
-    Опции.Вставить("", DestinationID);
-    Опции.Вставить("", LinkType);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FromID);
+    Options.Insert("", DestinationID);
+    Options.Insert("", LinkType);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteTasksDependencies", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTasksDependencies", Options);
 
     // END
 
@@ -11559,13 +11559,13 @@ Procedure Bitrix24_AddKanbanStage(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Color);
-    Опции.Вставить("", 6);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Name);
+    Options.Insert("", Color);
+    Options.Insert("", 6);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddKanbanStage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddKanbanStage", Options);
 
     Process(Result, "Bitrix24", "AddKanbanStage", "Hook", FunctionParameters); // SKIP
 
@@ -11576,15 +11576,15 @@ Procedure Bitrix24_AddKanbanStage(FunctionParameters)
     Token       = FunctionParameters["Bitrix24_Token"];
     PrevStageID = Result["result"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Color);
-    Опции.Вставить("", PrevStageID);
-    Опции.Вставить("", Истина);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Name);
+    Options.Insert("", Color);
+    Options.Insert("", PrevStageID);
+    Options.Insert("", Истина);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddKanbanStage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddKanbanStage", Options);
 
     // END
 
@@ -11598,12 +11598,12 @@ Procedure Bitrix24_DeleteKanbanStage(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", StageID);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", StageID);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteKanbanStage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteKanbanStage", Options);
 
     Process(Result, "Bitrix24", "DeleteKanbanStage", "Hook"); // SKIP
 
@@ -11612,12 +11612,12 @@ Procedure Bitrix24_DeleteKanbanStage(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", StageID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", StageID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteKanbanStage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteKanbanStage", Options);
 
     // END
 
@@ -11629,22 +11629,22 @@ Procedure Bitrix24_GetKanbanStages(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetKanbanStages", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetKanbanStages", Options);
 
     Process(Result, "Bitrix24", "GetKanbanStages", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetKanbanStages", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetKanbanStages", Options);
 
     // END
 
@@ -11659,12 +11659,12 @@ Procedure Bitrix24_MoveTaskToKanbanStage(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", StageID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", StageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MoveTaskToKanbanStage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MoveTaskToKanbanStage", Options);
 
     Process(Result, "Bitrix24", "MoveTaskToKanbanStage", "Hook"); // SKIP
 
@@ -11673,13 +11673,13 @@ Procedure Bitrix24_MoveTaskToKanbanStage(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", StageID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", StageID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MoveTaskToKanbanStage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MoveTaskToKanbanStage", Options);
 
     // END
 
@@ -11697,13 +11697,13 @@ Procedure Bitrix24_UpdateKanbansStage(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", StageID);
-    Опции.Вставить("", Color);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Name);
+    Options.Insert("", StageID);
+    Options.Insert("", Color);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateKanbansStage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateKanbansStage", Options);
 
     Process(Result, "Bitrix24", "UpdateKanbansStage", "Hook"); // SKIP
 
@@ -11714,16 +11714,16 @@ Procedure Bitrix24_UpdateKanbansStage(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", StageID);
-    Опции.Вставить("", Color);
-    Опции.Вставить("", 6);
-    Опции.Вставить("", Истина);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Name);
+    Options.Insert("", StageID);
+    Options.Insert("", Color);
+    Options.Insert("", 6);
+    Options.Insert("", Истина);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateKanbansStage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateKanbansStage", Options);
 
     // END
 
@@ -11738,13 +11738,13 @@ Procedure Bitrix24_AddTasksChecklistElement(FunctionParameters)
 
     Text = "Checklist element";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Text);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddTasksChecklistElement", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddTasksChecklistElement", Options);
 
     Process(Result, "Bitrix24", "AddTasksChecklistElement", "Hook", FunctionParameters); // SKIP
 
@@ -11752,13 +11752,13 @@ Procedure Bitrix24_AddTasksChecklistElement(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Text);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddTasksChecklistElement", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddTasksChecklistElement", Options);
 
     // END
 
@@ -11774,13 +11774,13 @@ Procedure Bitrix24_UpdateTasksChecklistElement(FunctionParameters)
 
     Text = "New elements text";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", ElementID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", ElementID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateTasksChecklistElement", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateTasksChecklistElement", Options);
 
     Process(Result, "Bitrix24", "UpdateTasksChecklistElement", "Hook"); // SKIP
 
@@ -11789,14 +11789,14 @@ Procedure Bitrix24_UpdateTasksChecklistElement(FunctionParameters)
     TaskID    = FunctionParameters["Bitrix24_TaskID"];
     ElementID = FunctionParameters["Bitrix24_CheckElementID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", ElementID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", ElementID);
+    Options.Insert("", Text);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateTasksChecklistElement", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateTasksChecklistElement", Options);
 
     // END
 
@@ -11810,12 +11810,12 @@ Procedure Bitrix24_DeleteTasksChecklistElement(FunctionParameters)
     TaskID    = FunctionParameters["Bitrix24_HookTaskID"];
     ElementID = FunctionParameters["Bitrix24_HookCheckElementID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", ElementID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", ElementID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteTasksChecklistElement", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTasksChecklistElement", Options);
 
     Process(Result, "Bitrix24", "DeleteTasksChecklistElement", "Hook"); // SKIP
 
@@ -11825,13 +11825,13 @@ Procedure Bitrix24_DeleteTasksChecklistElement(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", ElementID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", ElementID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteTasksChecklistElement", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTasksChecklistElement", Options);
 
     // END
 
@@ -11844,11 +11844,11 @@ Procedure Bitrix24_GetTasksChecklist(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_HookTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTasksChecklist", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTasksChecklist", Options);
 
     Process(Result, "Bitrix24", "GetTasksChecklist", "Hook"); // SKIP
 
@@ -11856,12 +11856,12 @@ Procedure Bitrix24_GetTasksChecklist(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     TaskID = FunctionParameters["Bitrix24_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTasksChecklist", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTasksChecklist", Options);
 
     // END
 
@@ -11875,12 +11875,12 @@ Procedure Bitrix24_GetTasksChecklistElement(FunctionParameters)
     TaskID    = FunctionParameters["Bitrix24_HookTaskID"];
     ElementID = FunctionParameters["Bitrix24_HookCheckElementID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", ElementID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", ElementID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTasksChecklistElement", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTasksChecklistElement", Options);
 
     Process(Result, "Bitrix24", "GetTasksChecklistElement", "Hook"); // SKIP
 
@@ -11890,13 +11890,13 @@ Procedure Bitrix24_GetTasksChecklistElement(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", ElementID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", ElementID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTasksChecklistElement", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTasksChecklistElement", Options);
 
     // END
 
@@ -11910,12 +11910,12 @@ Procedure Bitrix24_CompleteTasksChecklistElement(FunctionParameters)
     TaskID    = FunctionParameters["Bitrix24_HookTaskID"];
     ElementID = FunctionParameters["Bitrix24_HookCheckElementID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", ElementID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", ElementID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CompleteTasksChecklistElement", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CompleteTasksChecklistElement", Options);
 
     Process(Result, "Bitrix24", "CompleteTasksChecklistElement", "Hook"); // SKIP
 
@@ -11925,13 +11925,13 @@ Procedure Bitrix24_CompleteTasksChecklistElement(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", ElementID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", ElementID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CompleteTasksChecklistElement", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CompleteTasksChecklistElement", Options);
 
     // END
 
@@ -11945,12 +11945,12 @@ Procedure Bitrix24_RenewTasksChecklistElement(FunctionParameters)
     TaskID    = FunctionParameters["Bitrix24_HookTaskID"];
     ElementID = FunctionParameters["Bitrix24_HookCheckElementID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", ElementID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", ElementID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RenewTasksChecklistElement", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenewTasksChecklistElement", Options);
 
     Process(Result, "Bitrix24", "RenewTasksChecklistElement", "Hook"); // SKIP
 
@@ -11960,13 +11960,13 @@ Procedure Bitrix24_RenewTasksChecklistElement(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", ElementID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", ElementID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "RenewTasksChecklistElement", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "RenewTasksChecklistElement", Options);
 
     // END
 
@@ -11981,12 +11981,12 @@ Procedure Bitrix24_AddTaskTimeAccounting(FunctionParameters)
 
     Time = 3600;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Time);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Time);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddTaskTimeAccounting", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddTaskTimeAccounting", Options);
 
     Process(Result, "Bitrix24", "AddTaskTimeAccounting", "Hook", FunctionParameters); // SKIP
 
@@ -11998,16 +11998,16 @@ Procedure Bitrix24_AddTaskTimeAccounting(FunctionParameters)
     Time      = 7200;
     SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Time);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", SetupDate);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Time);
+    Options.Insert("", UserID);
+    Options.Insert("", Text);
+    Options.Insert("", SetupDate);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddTaskTimeAccounting", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddTaskTimeAccounting", Options);
 
     // END
 
@@ -12024,14 +12024,14 @@ Procedure Bitrix24_UpdateTaskTimeAccounting(FunctionParameters)
     Text = "The text I forgot last time";
     Time = 4800;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", RecordID);
-    Опции.Вставить("", Time);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", RecordID);
+    Options.Insert("", Time);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateTaskTimeAccounting", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateTaskTimeAccounting", Options);
 
     Process(Result, "Bitrix24", "UpdateTaskTimeAccounting", "Hook"); // SKIP
 
@@ -12043,16 +12043,16 @@ Procedure Bitrix24_UpdateTaskTimeAccounting(FunctionParameters)
     Time      = 4800;
     SetupDate = AddMonth(OPI_Tools.GetCurrentDate(), -1);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", RecordID);
-    Опции.Вставить("", Time);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", SetupDate);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", RecordID);
+    Options.Insert("", Time);
+    Options.Insert("", Text);
+    Options.Insert("", SetupDate);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateTaskTimeAccounting", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateTaskTimeAccounting", Options);
 
     // END
 
@@ -12066,12 +12066,12 @@ Procedure Bitrix24_DeleteTaskTimeAccounting(FunctionParameters)
     TaskID   = FunctionParameters["Bitrix24_ElapsedTaskID"];
     RecordID = FunctionParameters["Bitrix24_HookTimeID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", RecordID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", RecordID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteTaskTimeAccounting", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTaskTimeAccounting", Options);
 
     Process(Result, "Bitrix24", "DeleteTaskTimeAccounting", "Hook"); // SKIP
 
@@ -12079,13 +12079,13 @@ Procedure Bitrix24_DeleteTaskTimeAccounting(FunctionParameters)
     Token    = FunctionParameters["Bitrix24_Token"];
     RecordID = FunctionParameters["Bitrix24_TimeID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", RecordID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", RecordID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteTaskTimeAccounting", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteTaskTimeAccounting", Options);
 
     // END
 
@@ -12099,12 +12099,12 @@ Procedure Bitrix24_GetTaskTimeAccounting(FunctionParameters)
     TaskID   = FunctionParameters["Bitrix24_ElapsedTaskID"];
     RecordID = FunctionParameters["Bitrix24_HookTimeID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", RecordID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", RecordID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTaskTimeAccounting", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskTimeAccounting", Options);
 
     Process(Result, "Bitrix24", "GetTaskTimeAccounting", "Hook"); // SKIP
 
@@ -12112,13 +12112,13 @@ Procedure Bitrix24_GetTaskTimeAccounting(FunctionParameters)
     Token    = FunctionParameters["Bitrix24_Token"];
     RecordID = FunctionParameters["Bitrix24_TimeID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", RecordID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", RecordID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTaskTimeAccounting", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskTimeAccounting", Options);
 
     // END
 
@@ -12131,23 +12131,23 @@ Procedure Bitrix24_GetTaskTimeAccountingList(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     TaskID = FunctionParameters["Bitrix24_ElapsedTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTaskTimeAccountingList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskTimeAccountingList", Options);
 
     Process(Result, "Bitrix24", "GetTaskTimeAccountingList", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", TaskID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", TaskID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTaskTimeAccountingList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTaskTimeAccountingList", Options);
 
     // END
 
@@ -12159,21 +12159,21 @@ Procedure Bitrix24_GetDailyPlan(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetDailyPlan", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDailyPlan", Options);
 
     Process(Result, "Bitrix24", "GetDailyPlan", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetDailyPlan", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDailyPlan", Options);
 
     // END
 
@@ -12204,11 +12204,11 @@ Procedure Bitrix24_CreateChat(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatStructure);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateChat", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateChat", Options);
 
     Process(Result, "Bitrix24", "CreateChat", "Hook", FunctionParameters); // SKIP
 
@@ -12220,12 +12220,12 @@ Procedure Bitrix24_CreateChat(FunctionParameters)
     ChatStructure.Insert("TITLE", "Private chat");
     ChatStructure.Insert("USERS", MembersArray);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatStructure);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatStructure);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateChat", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateChat", Options);
 
     // END
 
@@ -12238,11 +12238,11 @@ Procedure Bitrix24_GetChatUsers(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     ChatID = FunctionParameters["Bitrix24_HookChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetChatUsers", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatUsers", Options);
 
     Process(Result, "Bitrix24", "GetChatUsers", "Hook"); // SKIP
 
@@ -12250,12 +12250,12 @@ Procedure Bitrix24_GetChatUsers(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     ChatID = FunctionParameters["Bitrix24_ChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetChatUsers", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatUsers", Options);
 
     // END
 
@@ -12268,11 +12268,11 @@ Procedure Bitrix24_LeaveChat(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     ChatID = FunctionParameters["Bitrix24_HookChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "LeaveChat", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "LeaveChat", Options);
 
     Process(Result, "Bitrix24", "LeaveChat", "Hook"); // SKIP
 
@@ -12280,12 +12280,12 @@ Procedure Bitrix24_LeaveChat(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     ChatID = FunctionParameters["Bitrix24_ChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "LeaveChat", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "LeaveChat", Options);
 
     // END
 
@@ -12300,12 +12300,12 @@ Procedure Bitrix24_DeleteUserFromChat(FunctionParameters)
 
     UserID = 10;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", UserID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", UserID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteUserFromChat", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteUserFromChat", Options);
 
     Process(Result, "Bitrix24", "DeleteUserFromChat", "Hook"); // SKIP
 
@@ -12313,13 +12313,13 @@ Procedure Bitrix24_DeleteUserFromChat(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     ChatID = FunctionParameters["Bitrix24_ChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", UserID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteUserFromChat", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteUserFromChat", Options);
 
     // END
 
@@ -12336,12 +12336,12 @@ Procedure Bitrix24_AddUsersToChat(FunctionParameters)
     UserIDs.Add(10);
     UserIDs.Add(12);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", UserIDs);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", UserIDs);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddUsersToChat", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddUsersToChat", Options);
 
     Process(Result, "Bitrix24", "AddUsersToChat", "Hook"); // SKIP
 
@@ -12350,14 +12350,14 @@ Procedure Bitrix24_AddUsersToChat(FunctionParameters)
     ChatID = FunctionParameters["Bitrix24_ChatID"];
     UserID = 10;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Истина);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", UserID);
+    Options.Insert("", Истина);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddUsersToChat", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddUsersToChat", Options);
 
     // END
 
@@ -12372,12 +12372,12 @@ Procedure Bitrix24_ChangeChatTitle(FunctionParameters)
 
     Title = "New chat title";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Title);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", Title);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ChangeChatTitle", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatTitle", Options);
 
     Process(Result, "Bitrix24", "ChangeChatTitle", "Hook"); // SKIP
 
@@ -12387,13 +12387,13 @@ Procedure Bitrix24_ChangeChatTitle(FunctionParameters)
 
     Title = "Another title";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Title);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", Title);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ChangeChatTitle", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatTitle", Options);
 
     // END
 
@@ -12408,12 +12408,12 @@ Procedure Bitrix24_ChangeChatColor(FunctionParameters)
 
     Color = "AZURE";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Color);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", Color);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ChangeChatColor", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatColor", Options);
 
     Process(Result, "Bitrix24", "ChangeChatColor", "Hook"); // SKIP
 
@@ -12422,13 +12422,13 @@ Procedure Bitrix24_ChangeChatColor(FunctionParameters)
 
     Color = "PURPLE";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Color);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", Color);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ChangeChatColor", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatColor", Options);
 
     // END
 
@@ -12443,12 +12443,12 @@ Procedure Bitrix24_ChangeChatPicture(FunctionParameters)
 
     Image = FunctionParameters["Picture2"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Image);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", Image);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ChangeChatPicture", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatPicture", Options);
 
     Process(Result, "Bitrix24", "ChangeChatPicture", "Hook"); // SKIP
 
@@ -12456,13 +12456,13 @@ Procedure Bitrix24_ChangeChatPicture(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     ChatID = FunctionParameters["Bitrix24_ChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Image);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", Image);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ChangeChatPicture", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatPicture", Options);
 
     // END
 
@@ -12475,11 +12475,11 @@ Procedure Bitrix24_DisableChatNotifications(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     ChatID = FunctionParameters["Bitrix24_HookChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DisableChatNotifications", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DisableChatNotifications", Options);
 
     Process(Result, "Bitrix24", "DisableChatNotifications", "Hook"); // SKIP
 
@@ -12487,12 +12487,12 @@ Procedure Bitrix24_DisableChatNotifications(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     ChatID = FunctionParameters["Bitrix24_ChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DisableChatNotifications", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DisableChatNotifications", Options);
 
     // END
 
@@ -12505,11 +12505,11 @@ Procedure Bitrix24_EnableChatNotifications(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     ChatID = FunctionParameters["Bitrix24_HookChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "EnableChatNotifications", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "EnableChatNotifications", Options);
 
     Process(Result, "Bitrix24", "EnableChatNotifications", "Hook"); // SKIP
 
@@ -12517,12 +12517,12 @@ Procedure Bitrix24_EnableChatNotifications(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     ChatID = FunctionParameters["Bitrix24_ChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "EnableChatNotifications", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "EnableChatNotifications", Options);
 
     // END
 
@@ -12537,12 +12537,12 @@ Procedure Bitrix24_ChangeChatOwner(FunctionParameters)
 
     UserID = 10;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", UserID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", UserID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ChangeChatOwner", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatOwner", Options);
 
     Process(Result, "Bitrix24", "ChangeChatOwner", "Hook"); // SKIP
 
@@ -12550,13 +12550,13 @@ Procedure Bitrix24_ChangeChatOwner(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     ChatID = FunctionParameters["Bitrix24_ChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", UserID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ChangeChatOwner", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeChatOwner", Options);
 
     // END
 
@@ -12569,11 +12569,11 @@ Procedure Bitrix24_GetChatMessagesList(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     ChatID = "chat4";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetChatMessagesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatMessagesList", Options);
 
     Process(Result, "Bitrix24", "GetChatMessagesList", "Hook", FunctionParameters); // SKIP
 
@@ -12581,13 +12581,13 @@ Procedure Bitrix24_GetChatMessagesList(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 10;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", 0);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", 0);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetChatMessagesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatMessagesList", Options);
 
     // END
 
@@ -12605,12 +12605,12 @@ Procedure Bitrix24_MarkMessageAsReaded(FunctionParameters)
 
     MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatString);
-    Опции.Вставить("", MessageID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatString);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MarkMessageAsReaded", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkMessageAsReaded", Options);
 
     Process(Result, "Bitrix24", "MarkMessageAsReaded", "Hook"); // SKIP
 
@@ -12619,13 +12619,13 @@ Procedure Bitrix24_MarkMessageAsReaded(FunctionParameters)
     UserID    = 10;
     MessageID = FunctionParameters["Bitrix24_UserMessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", MessageID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MarkMessageAsReaded", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkMessageAsReaded", Options);
 
     // END
 
@@ -12643,12 +12643,12 @@ Procedure Bitrix24_MarkMessageAsUnreaded(FunctionParameters)
     ChatString = "chat" + ChatID;
     MessageID  = FunctionParameters["Bitrix24_ChatMessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatString);
-    Опции.Вставить("", MessageID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatString);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MarkMessageAsUnreaded", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkMessageAsUnreaded", Options);
 
     Process(Result, "Bitrix24", "MarkMessageAsUnreaded", "Hook"); // SKIP
 
@@ -12657,13 +12657,13 @@ Procedure Bitrix24_MarkMessageAsUnreaded(FunctionParameters)
     UserID    = 10;
     MessageID = FunctionParameters["Bitrix24_UserMessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", MessageID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "MarkMessageAsUnreaded", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MarkMessageAsUnreaded", Options);
 
     // END
 
@@ -12680,11 +12680,11 @@ Procedure Bitrix24_GetDialog(FunctionParameters)
 
     ChatString = "chat" + ChatID;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatString);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatString);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetDialog", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDialog", Options);
 
     Process(Result, "Bitrix24", "GetDialog", "Hook"); // SKIP
 
@@ -12692,12 +12692,12 @@ Procedure Bitrix24_GetDialog(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 10;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetDialog", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDialog", Options);
 
     // END
 
@@ -12714,11 +12714,11 @@ Procedure Bitrix24_GetChatMembersList(FunctionParameters)
 
     ChatString = "chat" + ChatID;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatString);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatString);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetChatMembersList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatMembersList", Options);
 
     Process(Result, "Bitrix24", "GetChatMembersList", "Hook"); // SKIP
 
@@ -12726,12 +12726,12 @@ Procedure Bitrix24_GetChatMembersList(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 10;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetChatMembersList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatMembersList", Options);
 
     // END
 
@@ -12748,11 +12748,11 @@ Procedure Bitrix24_SendWritingNotification(FunctionParameters)
 
     ChatString = "chat" + ChatID;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatString);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatString);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "SendWritingNotification", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendWritingNotification", Options);
 
     Process(Result, "Bitrix24", "SendWritingNotification", "Hook"); // SKIP
 
@@ -12760,12 +12760,12 @@ Procedure Bitrix24_SendWritingNotification(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 10;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "SendWritingNotification", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendWritingNotification", Options);
 
     // END
 
@@ -12777,21 +12777,21 @@ Procedure Bitrix24_ReadAll(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ReadAll", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ReadAll", Options);
 
     Process(Result, "Bitrix24", "ReadAll", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ReadAll", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ReadAll", Options);
 
     // END
 
@@ -12815,13 +12815,13 @@ Procedure Bitrix24_SendMessage(FunctionParameters)
     Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
     Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatString);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Attachments);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatString);
+    Options.Insert("", Text);
+    Options.Insert("", Attachments);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "SendMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendMessage", Options);
 
     Process(Result, "Bitrix24", "SendMessage", "Hook", FunctionParameters); // SKIP
 
@@ -12829,13 +12829,13 @@ Procedure Bitrix24_SendMessage(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 10;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Text);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "SendMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendMessage", Options);
 
     // END
 
@@ -12850,12 +12850,12 @@ Procedure Bitrix24_EditMessage(FunctionParameters)
 
     Text = "New message text";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", MessageID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "EditMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "EditMessage", Options);
 
     Process(Result, "Bitrix24", "EditMessage", "Hook"); // SKIP
 
@@ -12870,14 +12870,14 @@ Procedure Bitrix24_EditMessage(FunctionParameters)
     Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
     Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Attachments);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", MessageID);
+    Options.Insert("", Text);
+    Options.Insert("", Attachments);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "EditMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "EditMessage", Options);
 
     // END
 
@@ -12890,11 +12890,11 @@ Procedure Bitrix24_DeleteMessage(FunctionParameters)
     URL       = FunctionParameters["Bitrix24_URL"];
     MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", MessageID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteMessage", Options);
 
     Process(Result, "Bitrix24", "DeleteMessage", "Hook"); // SKIP
 
@@ -12902,12 +12902,12 @@ Procedure Bitrix24_DeleteMessage(FunctionParameters)
     Token     = FunctionParameters["Bitrix24_Token"];
     MessageID = FunctionParameters["Bitrix24_UserMessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", MessageID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteMessage", Options);
 
     // END
 
@@ -12920,11 +12920,11 @@ Procedure Bitrix24_SetMessageReaction(FunctionParameters)
     URL       = FunctionParameters["Bitrix24_URL"];
     MessageID = FunctionParameters["Bitrix24_ChatMessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", MessageID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "SetMessageReaction", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetMessageReaction", Options);
 
     Process(Result, "Bitrix24", "SetMessageReaction", "Hook"); // SKIP
 
@@ -12932,12 +12932,12 @@ Procedure Bitrix24_SetMessageReaction(FunctionParameters)
     Token     = FunctionParameters["Bitrix24_Token"];
     MessageID = FunctionParameters["Bitrix24_UserMessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", MessageID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "SetMessageReaction", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetMessageReaction", Options);
 
     // END
 
@@ -12950,11 +12950,11 @@ Procedure Bitrix24_GetChatFilesFolder(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     ChatID = FunctionParameters["Bitrix24_HookChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetChatFilesFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatFilesFolder", Options);
 
     Process(Result, "Bitrix24", "GetChatFilesFolder", "Hook"); // SKIP
 
@@ -12962,12 +12962,12 @@ Procedure Bitrix24_GetChatFilesFolder(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     ChatID = FunctionParameters["Bitrix24_ChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetChatFilesFolder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatFilesFolder", Options);
 
     // END
 
@@ -12982,29 +12982,29 @@ Procedure Bitrix24_SendFile(FunctionParameters)
     File        = FunctionParameters["Document"]; // Binary Data, URL or path to file
     Description = "Very important file";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
 
-    Directory = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetChatFilesFolder", Опции);
+    Directory = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatFilesFolder", Options);
     FolderID  = Directory["result"]["ID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", "Imortant doc.docx");
-    Опции.Вставить("", File);
-    Опции.Вставить("", FolderID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", "Imortant doc.docx");
+    Options.Insert("", File);
+    Options.Insert("", FolderID);
 
-    UploadedFile = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UploadFileToFolder", Опции);
+    UploadedFile = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToFolder", Options);
     FileID       = UploadedFile["result"]["ID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", Description);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", FileID);
+    Options.Insert("", Description);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "SendFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendFile", Options);
 
     Process(Result, "Bitrix24", "SendFile", "Hook"); // SKIP
 
@@ -13012,32 +13012,32 @@ Procedure Bitrix24_SendFile(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     ChatID = FunctionParameters["Bitrix24_ChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", Token);
 
-    Directory = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetChatFilesFolder", Опции);
+    Directory = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatFilesFolder", Options);
     FolderID  = Directory["result"]["ID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", "Imortant doc.docx");
-    Опции.Вставить("", File);
-    Опции.Вставить("", FolderID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", "Imortant doc.docx");
+    Options.Insert("", File);
+    Options.Insert("", FolderID);
+    Options.Insert("", Token);
 
-    UploadedFile = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UploadFileToFolder", Опции);
+    UploadedFile = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UploadFileToFolder", Options);
     FileID       = UploadedFile["result"]["ID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", Description);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ChatID);
+    Options.Insert("", FileID);
+    Options.Insert("", Description);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "SendFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SendFile", Options);
 
     // END
 
@@ -13053,11 +13053,11 @@ Procedure Bitrix24_GetUsers(FunctionParameters)
     ArrayOfUsers.Add(1);
     ArrayOfUsers.Add(10);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", ArrayOfUsers);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", ArrayOfUsers);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetUsers", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUsers", Options);
 
     Process(Result, "Bitrix24", "GetUsers", "Hook"); // SKIP
 
@@ -13065,12 +13065,12 @@ Procedure Bitrix24_GetUsers(FunctionParameters)
     Token   = FunctionParameters["Bitrix24_Token"];
     UserIDs = 10;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserIDs);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserIDs);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetUsers", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUsers", Options);
 
     // END
 
@@ -13082,21 +13082,21 @@ Procedure Bitrix24_GetUserStatus(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetUserStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserStatus", Options);
 
     Process(Result, "Bitrix24", "GetUserStatus", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetUserStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserStatus", Options);
 
     // END
 
@@ -13109,11 +13109,11 @@ Procedure Bitrix24_SetUserStatus(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     Status = "dnd";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Status);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Status);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "SetUserStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetUserStatus", Options);
 
     Process(Result, "Bitrix24", "SetUserStatus", "Hook"); // SKIP
 
@@ -13121,12 +13121,12 @@ Procedure Bitrix24_SetUserStatus(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     Status = "away";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Status);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Status);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "SetUserStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetUserStatus", Options);
 
     // END
 
@@ -13147,13 +13147,13 @@ Procedure Bitrix24_CreatePersonalNotification(FunctionParameters)
     Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
     Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Attachments);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Text);
+    Options.Insert("", Attachments);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreatePersonalNotification", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreatePersonalNotification", Options);
 
     Process(Result, "Bitrix24", "CreatePersonalNotification", "Hook", FunctionParameters); // SKIP
 
@@ -13162,14 +13162,14 @@ Procedure Bitrix24_CreatePersonalNotification(FunctionParameters)
     Tag    = "New";
     UserID = 10;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Tag);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Text);
+    Options.Insert("", Tag);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreatePersonalNotification", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreatePersonalNotification", Options);
 
     // END
 
@@ -13190,13 +13190,13 @@ Procedure Bitrix24_CreateSystemNotification(FunctionParameters)
     Attachments.Add(OPI_Bitrix24.GetPictureBlock("Image1"  , Image));
     Attachments.Add(OPI_Bitrix24.GetFileBlock("File1.docx" , File));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Attachments);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Text);
+    Options.Insert("", Attachments);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateSystemNotification", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateSystemNotification", Options);
 
     Process(Result, "Bitrix24", "CreateSystemNotification", "Hook", FunctionParameters); // SKIP
 
@@ -13205,14 +13205,14 @@ Procedure Bitrix24_CreateSystemNotification(FunctionParameters)
     Tag    = "New";
     UserID = 10;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Tag);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Text);
+    Options.Insert("", Tag);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateSystemNotification", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateSystemNotification", Options);
 
     // END
 
@@ -13225,11 +13225,11 @@ Procedure Bitrix24_DeleteNotification(FunctionParameters)
     URL            = FunctionParameters["Bitrix24_URL"];
     NotificationID = FunctionParameters["Bitrix24_PersoalHookNotifyID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", NotificationID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", NotificationID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteNotification", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteNotification", Options);
 
     Process(Result, "Bitrix24", "DeleteNotification", "Hook"); // SKIP
 
@@ -13237,12 +13237,12 @@ Procedure Bitrix24_DeleteNotification(FunctionParameters)
     Token          = FunctionParameters["Bitrix24_Token"];
     NotificationID = FunctionParameters["Bitrix24_PersoalNotifyID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", NotificationID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", NotificationID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteNotification", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteNotification", Options);
 
     // END
 
@@ -13257,12 +13257,12 @@ Procedure Bitrix24_AddCustomTaskField(FunctionParameters)
     Type = "date";
     Name = "BIRTHDAY_FIELD";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Type);
-    Опции.Вставить("", Name);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Type);
+    Options.Insert("", Name);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddCustomTaskField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddCustomTaskField", Options);
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
@@ -13273,16 +13273,16 @@ Procedure Bitrix24_AddCustomTaskField(FunctionParameters)
     Title      = "Text field";
     Signature  = New Structure("en,ru", "Some field", "Nekotoroe pole");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Type);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", ExternalID);
-    Опции.Вставить("", Title);
-    Опции.Вставить("", Signature);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Type);
+    Options.Insert("", Name);
+    Options.Insert("", ExternalID);
+    Options.Insert("", Title);
+    Options.Insert("", Signature);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "AddCustomTaskField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "AddCustomTaskField", Options);
 
     // END
 
@@ -13295,12 +13295,12 @@ Procedure Bitrix24_UpdateCustomTaskField(FunctionParameters)
     FieldID = FunctionParameters["Bitrix24_HookTaskFieldID"];
     Title   = "New title";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FieldID);
-    Опции.Вставить("", Title);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FieldID);
+    Options.Insert("", Title);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateCustomTaskField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCustomTaskField", Options);
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
@@ -13309,14 +13309,14 @@ Procedure Bitrix24_UpdateCustomTaskField(FunctionParameters)
     ExternalID = "NEW_TEXT_FIELD";
     Signature  = New Structure("en,ru", "Updated field", "Izmenennoe pole");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FieldID);
-    Опции.Вставить("", ExternalID);
-    Опции.Вставить("", Signature);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FieldID);
+    Options.Insert("", ExternalID);
+    Options.Insert("", Signature);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateCustomTaskField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCustomTaskField", Options);
 
     // END
 
@@ -13327,22 +13327,22 @@ Procedure Bitrix24_GetCustomTaskField(FunctionParameters)
     URL     = FunctionParameters["Bitrix24_URL"];
     FieldID = FunctionParameters["Bitrix24_HookTaskFieldID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FieldID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FieldID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCustomTaskField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCustomTaskField", Options);
 
     URL     = FunctionParameters["Bitrix24_Domain"];
     Token   = FunctionParameters["Bitrix24_Token"];
     FieldID = FunctionParameters["Bitrix24_TaskFieldID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FieldID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FieldID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCustomTaskField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCustomTaskField", Options);
 
     // END
 
@@ -13352,19 +13352,19 @@ Procedure Bitrix24_GetCustomTaskFieldsList(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCustomTaskFieldsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCustomTaskFieldsList", Options);
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCustomTaskFieldsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCustomTaskFieldsList", Options);
 
     // END
 
@@ -13375,22 +13375,22 @@ Procedure Bitrix24_DeleteCustomTaskField(FunctionParameters)
     URL     = FunctionParameters["Bitrix24_URL"];
     FieldID = FunctionParameters["Bitrix24_HookTaskFieldID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FieldID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FieldID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteCustomTaskField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteCustomTaskField", Options);
 
     URL     = FunctionParameters["Bitrix24_Domain"];
     Token   = FunctionParameters["Bitrix24_Token"];
     FieldID = FunctionParameters["Bitrix24_TaskFieldID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FieldID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FieldID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteCustomTaskField", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteCustomTaskField", Options);
 
     // END
 
@@ -13403,12 +13403,12 @@ Procedure Bitrix24_CreateDepartment(FunctionParameters)
     Name     = "Main department";
     ParentID = 1;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", ParentID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Name);
+    Options.Insert("", ParentID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateDepartment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateDepartment", Options);
 
     Process(Result, "Bitrix24", "CreateDepartment", "Hook", FunctionParameters); // SKIP
 
@@ -13419,14 +13419,14 @@ Procedure Bitrix24_CreateDepartment(FunctionParameters)
     ParentID = FunctionParameters["Bitrix24_HookDepID"];
     HeadID   = 1;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", ParentID);
-    Опции.Вставить("", HeadID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Name);
+    Options.Insert("", ParentID);
+    Options.Insert("", HeadID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateDepartment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateDepartment", Options);
 
     // END
 
@@ -13441,12 +13441,12 @@ Procedure Bitrix24_UpdateDepartment(FunctionParameters)
     DepartmentID = FunctionParameters["Bitrix24_HookDepID"];
     ParentID     = 7;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", DepartmentID);
-    Опции.Вставить("", ParentID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", DepartmentID);
+    Options.Insert("", ParentID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateDepartment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateDepartment", Options);
 
     Process(Result, "Bitrix24", "UpdateDepartment", "Hook"); // SKIP
 
@@ -13458,15 +13458,15 @@ Procedure Bitrix24_UpdateDepartment(FunctionParameters)
     ParentID     = 1;
     HeadID       = 10;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", DepartmentID);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", ParentID);
-    Опции.Вставить("", HeadID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", DepartmentID);
+    Options.Insert("", Name);
+    Options.Insert("", ParentID);
+    Options.Insert("", HeadID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateDepartment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateDepartment", Options);
 
     // END
 
@@ -13479,11 +13479,11 @@ Procedure Bitrix24_DeleteDepartment(FunctionParameters)
     URL          = FunctionParameters["Bitrix24_URL"];
     DepartmentID = FunctionParameters["Bitrix24_DepID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", DepartmentID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", DepartmentID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteDepartment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteDepartment", Options);
 
     Process(Result, "Bitrix24", "DeleteDepartment", "Hook"); // SKIP
 
@@ -13491,12 +13491,12 @@ Procedure Bitrix24_DeleteDepartment(FunctionParameters)
     Token        = FunctionParameters["Bitrix24_Token"];
     DepartmentID = FunctionParameters["Bitrix24_HookDepID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", DepartmentID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", DepartmentID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteDepartment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteDepartment", Options);
 
     // END
 
@@ -13509,11 +13509,11 @@ Procedure Bitrix24_GetDepartments(FunctionParameters)
     URL          = FunctionParameters["Bitrix24_URL"];
     DepartmentID = FunctionParameters["Bitrix24_DepID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", DepartmentID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", DepartmentID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetDepartments", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDepartments", Options);
 
     Process(Result, "Bitrix24", "GetDepartments", "Hook"); // SKIP
 
@@ -13521,12 +13521,12 @@ Procedure Bitrix24_GetDepartments(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     HeadID = 1;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", HeadID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", HeadID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetDepartments", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDepartments", Options);
 
     // END
 
@@ -13538,21 +13538,21 @@ Procedure Bitrix24_GetCurrentUser(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCurrentUser", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCurrentUser", Options);
 
     Process(Result, "Bitrix24", "GetCurrentUser", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCurrentUser", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCurrentUser", Options);
 
     // END
 
@@ -13564,21 +13564,21 @@ Procedure Bitrix24_GetUserFieldsStructure(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetUserFieldsStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserFieldsStructure", Options);
 
     Process(Result, "Bitrix24", "GetUserFieldsStructure", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetUserFieldsStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserFieldsStructure", Options);
 
     // END
 
@@ -13597,11 +13597,11 @@ Procedure Bitrix24_CreateUser(FunctionParameters)
     UserStructure.Insert("EMAIL"        , Email);
     UserStructure.Insert("UF_DEPARTMENT", 7);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserStructure);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateUser", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateUser", Options);
 
     Process(Result, "Bitrix24", "CreateUser", "Hook", FunctionParameters); // SKIP
 
@@ -13616,12 +13616,12 @@ Procedure Bitrix24_CreateUser(FunctionParameters)
     UserStructure.Insert("PERSONAL_MOBILE", "88003553535");
     UserStructure.Insert("UF_DEPARTMENT"  , 1);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserStructure);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserStructure);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateUser", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateUser", Options);
 
     // END
 
@@ -13641,12 +13641,12 @@ Procedure Bitrix24_UpdateUser(FunctionParameters)
     UserStructure.Insert("EMAIL"        , Email);
     UserStructure.Insert("UF_DEPARTMENT", 1);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", UserStructure);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", UserStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateUser", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateUser", Options);
 
     Process(Result, "Bitrix24", "UpdateUser", "Hook"); // SKIP
 
@@ -13661,13 +13661,13 @@ Procedure Bitrix24_UpdateUser(FunctionParameters)
     UserStructure.Insert("LAST_NAME"    , "Lama");
     UserStructure.Insert("UF_DEPARTMENT", 7);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", UserStructure);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", UserStructure);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateUser", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateUser", Options);
 
     // END
 
@@ -13680,12 +13680,12 @@ Procedure Bitrix24_ChangeUserStatus(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     UserID = FunctionParameters["Bitrix24_HookUserID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ChangeUserStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeUserStatus", Options);
 
     Process(Result, "Bitrix24", "ChangeUserStatus", "Hook"); // SKIP
 
@@ -13693,13 +13693,13 @@ Procedure Bitrix24_ChangeUserStatus(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     UserID = FunctionParameters["Bitrix24_UserID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Истина);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Истина);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "ChangeUserStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "ChangeUserStatus", Options);
 
     // END
 
@@ -13712,11 +13712,11 @@ Procedure Bitrix24_GetUser(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     UserID = FunctionParameters["Bitrix24_HookUserID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetUser", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUser", Options);
 
     Process(Result, "Bitrix24", "GetUser", "Hook"); // SKIP
 
@@ -13724,12 +13724,12 @@ Procedure Bitrix24_GetUser(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     UserID = FunctionParameters["Bitrix24_UserID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetUser", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUser", Options);
 
     // END
 
@@ -13748,11 +13748,11 @@ Procedure Bitrix24_FindUsers(FunctionParameters)
     FilterStructure.Insert("UF_DEPARTMENT_NAME", "Marketing department");
     FilterStructure.Insert("USER_TYPE"         , "employee");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FilterStructure);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FilterStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "FindUsers", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "FindUsers", Options);
 
     Process(Result, "Bitrix24", "FindUsers", "Hook"); // SKIP
 
@@ -13762,12 +13762,12 @@ Procedure Bitrix24_FindUsers(FunctionParameters)
     FilterStructure = New Structure;
     FilterStructure.Insert("UF_DEPARTMENT_NAME", "Bitrix");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FilterStructure);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FilterStructure);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "FindUsers", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "FindUsers", Options);
 
     // END
 
@@ -13779,10 +13779,10 @@ Procedure Bitrix24_StartTimekeeping(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "StartTimekeeping", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StartTimekeeping", Options);
 
     Hour = 3600;
 
@@ -13792,14 +13792,14 @@ Procedure Bitrix24_StartTimekeeping(FunctionParameters)
     Time   = OPI_Tools.GetCurrentDate() - Hour;
     Report = "Late";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Time);
-    Опции.Вставить("", Report);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Time);
+    Options.Insert("", Report);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "StartTimekeeping", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StartTimekeeping", Options);
 
     // END
 
@@ -13809,10 +13809,10 @@ Procedure Bitrix24_StopTimekeeping(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "StopTimekeeping", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StopTimekeeping", Options);
 
     URL    = FunctionParameters["Bitrix24_Domain"];
     Token  = FunctionParameters["Bitrix24_Token"];
@@ -13820,14 +13820,14 @@ Procedure Bitrix24_StopTimekeeping(FunctionParameters)
     Time   = OPI_Tools.GetCurrentDate();
     Report = "Time off";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Time);
-    Опции.Вставить("", Report);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Time);
+    Options.Insert("", Report);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "StopTimekeeping", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "StopTimekeeping", Options);
 
 EndProcedure
 
@@ -13835,21 +13835,21 @@ Procedure Bitrix24_PauseTimekeeping(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "PauseTimekeeping", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "PauseTimekeeping", Options);
 
     URL    = FunctionParameters["Bitrix24_Domain"];
     Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 1;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "PauseTimekeeping", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "PauseTimekeeping", Options);
 
     // END
 
@@ -13859,21 +13859,21 @@ Procedure Bitrix24_GetTimekeepingStatus(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTimekeepingStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTimekeepingStatus", Options);
 
     URL    = FunctionParameters["Bitrix24_Domain"];
     Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 1;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTimekeepingStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTimekeepingStatus", Options);
 
 EndProcedure
 
@@ -13881,21 +13881,21 @@ Procedure Bitrix24_GetTimekeepingSettings(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTimekeepingSettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTimekeepingSettings", Options);
 
     URL    = FunctionParameters["Bitrix24_Domain"];
     Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 1;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", UserID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTimekeepingSettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTimekeepingSettings", Options);
 
     // END
 
@@ -13903,9 +13903,9 @@ EndProcedure
 
 Procedure Bitrix24_GetLeadFilterStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetLeadFilterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLeadFilterStructure", Options);
 
     // END
 
@@ -13917,21 +13917,21 @@ Procedure Bitrix24_GetLeadStructure(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetLeadStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLeadStructure", Options);
 
     Process(Result, "Bitrix24", "GetLeadStructure", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetLeadStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLeadStructure", Options);
 
     // END
 
@@ -13959,11 +13959,11 @@ Procedure Bitrix24_CreateLead(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FieldsStructure);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FieldsStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateLead", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateLead", Options);
 
     Process(Result, "Bitrix24", "CreateLead", "Hook", FunctionParameters); // SKIP
 
@@ -13973,12 +13973,12 @@ Procedure Bitrix24_CreateLead(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FieldsStructure);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FieldsStructure);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateLead", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateLead", Options);
 
     // END
 
@@ -13996,12 +13996,12 @@ Procedure Bitrix24_UpdateLead(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     LeadID = FunctionParameters["Bitrix24_HookLeadID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", LeadID);
-    Опции.Вставить("", FieldsStructure);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", LeadID);
+    Options.Insert("", FieldsStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateLead", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateLead", Options);
 
     Process(Result, "Bitrix24", "UpdateLead", "Hook"); // SKIP
 
@@ -14012,13 +14012,13 @@ Procedure Bitrix24_UpdateLead(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     LeadID = FunctionParameters["Bitrix24_LeadID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", LeadID);
-    Опции.Вставить("", FieldsStructure);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", LeadID);
+    Options.Insert("", FieldsStructure);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateLead", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateLead", Options);
 
     // END
 
@@ -14031,11 +14031,11 @@ Procedure Bitrix24_DeleteLead(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     LeadID = FunctionParameters["Bitrix24_HookLeadID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", LeadID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", LeadID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteLead", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteLead", Options);
 
     Process(Result, "Bitrix24", "DeleteLead", "Hook"); // SKIP
 
@@ -14043,12 +14043,12 @@ Procedure Bitrix24_DeleteLead(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     LeadID = FunctionParameters["Bitrix24_LeadID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", LeadID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", LeadID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteLead", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteLead", Options);
 
     // END
 
@@ -14061,11 +14061,11 @@ Procedure Bitrix24_GetLead(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     LeadID = FunctionParameters["Bitrix24_HookLeadID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", LeadID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", LeadID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetLead", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLead", Options);
 
     Process(Result, "Bitrix24", "GetLead", "Hook"); // SKIP
 
@@ -14073,12 +14073,12 @@ Procedure Bitrix24_GetLead(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     LeadID = FunctionParameters["Bitrix24_LeadID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", LeadID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", LeadID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetLead", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLead", Options);
 
     // END
 
@@ -14090,10 +14090,10 @@ Procedure Bitrix24_GetLeadsList(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetLeadsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLeadsList", Options);
 
     Process(Result, "Bitrix24", "GetLeadsList", "Hook"); // SKIP
 
@@ -14104,12 +14104,12 @@ Procedure Bitrix24_GetLeadsList(FunctionParameters)
     Filter.Insert("TITLE"    , "MegaClient");
     Filter.Insert("HAS_EMAIL", "Y");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Filter);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Filter);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetLeadsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLeadsList", Options);
 
     // END
 
@@ -14119,9 +14119,9 @@ EndProcedure
 
 Procedure Bitrix24_GetDealsFilterStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetDealsFilterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDealsFilterStructure", Options);
 
     // END
 
@@ -14133,21 +14133,21 @@ Procedure Bitrix24_GetDealStructure(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetDealStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDealStructure", Options);
 
     Process(Result, "Bitrix24", "GetDealStructure", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetDealStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDealStructure", Options);
 
     // END
 
@@ -14174,11 +14174,11 @@ Procedure Bitrix24_CreateDeal(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FieldsStructure);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FieldsStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateDeal", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateDeal", Options);
 
     Process(Result, "Bitrix24", "CreateDeal", "Hook", FunctionParameters); // SKIP
 
@@ -14188,12 +14188,12 @@ Procedure Bitrix24_CreateDeal(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", FieldsStructure);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", FieldsStructure);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateDeal", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateDeal", Options);
 
     // END
 
@@ -14211,12 +14211,12 @@ Procedure Bitrix24_UpdateDeal(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     DealID = FunctionParameters["Bitrix24_HookDealID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", DealID);
-    Опции.Вставить("", FieldsStructure);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", DealID);
+    Options.Insert("", FieldsStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateDeal", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateDeal", Options);
 
     Process(Result, "Bitrix24", "UpdateDeal", "Hook"); // SKIP
 
@@ -14227,13 +14227,13 @@ Procedure Bitrix24_UpdateDeal(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     DealID = FunctionParameters["Bitrix24_DealID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", DealID);
-    Опции.Вставить("", FieldsStructure);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", DealID);
+    Options.Insert("", FieldsStructure);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateDeal", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateDeal", Options);
 
     // END
 
@@ -14246,11 +14246,11 @@ Procedure Bitrix24_GetDeal(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     DealID = FunctionParameters["Bitrix24_HookDealID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", DealID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", DealID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetDeal", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDeal", Options);
 
     Process(Result, "Bitrix24", "GetDeal", "Hook"); // SKIP
 
@@ -14258,12 +14258,12 @@ Procedure Bitrix24_GetDeal(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     DealID = FunctionParameters["Bitrix24_HookDealID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", DealID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", DealID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetDeal", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDeal", Options);
 
     // END
 
@@ -14276,11 +14276,11 @@ Procedure Bitrix24_DeleteDeal(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_URL"];
     DealID = FunctionParameters["Bitrix24_HookDealID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", DealID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", DealID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteDeal", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteDeal", Options);
 
     Process(Result, "Bitrix24", "DeleteDeal", "Hook"); // SKIP
 
@@ -14288,12 +14288,12 @@ Procedure Bitrix24_DeleteDeal(FunctionParameters)
     Token  = FunctionParameters["Bitrix24_Token"];
     DealID = FunctionParameters["Bitrix24_DealID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", DealID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", DealID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteDeal", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteDeal", Options);
 
     // END
 
@@ -14305,10 +14305,10 @@ Procedure Bitrix24_GetDealsList(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetDealsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDealsList", Options);
 
     Process(Result, "Bitrix24", "GetDealsList", "Hook"); // SKIP
 
@@ -14319,12 +14319,12 @@ Procedure Bitrix24_GetDealsList(FunctionParameters)
     Filter.Insert("TITLE"      , "Sale in RUB");
     Filter.Insert("CURRENCY_ID", "RUB");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Filter);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Filter);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetDealsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDealsList", Options);
 
     // END
 
@@ -14334,9 +14334,9 @@ EndProcedure
 
 Procedure Bitrix24_GetTasksFilterStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetTasksFilterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTasksFilterStructure", Options);
 
     // END
 
@@ -14346,9 +14346,9 @@ EndProcedure
 
 Procedure Bitrix24_GetCommentStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCommentStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCommentStructure", Options);
 
     // END
 
@@ -14358,9 +14358,9 @@ EndProcedure
 
 Procedure Bitrix24_GetChatStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetChatStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatStructure", Options);
 
     // END
 
@@ -14373,11 +14373,11 @@ Procedure Bitrix24_GetPictureBlock(FunctionParameters)
     Name = "Image";
     URL  = FunctionParameters["Picture"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetPictureBlock", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetPictureBlock", Options);
 
     // END
 
@@ -14390,11 +14390,11 @@ Procedure Bitrix24_GetFileBlock(FunctionParameters)
     Name = "Image";
     URL  = FunctionParameters["Document"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetFileBlock", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetFileBlock", Options);
 
     // END
 
@@ -14404,9 +14404,9 @@ EndProcedure
 
 Procedure Bitrix24_GetUserFilterStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetUserFilterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserFilterStructure", Options);
 
     // END
 
@@ -14434,11 +14434,11 @@ Procedure Bitrix24_CreateCalendar(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", CalendarsStructure);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", CalendarsStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateCalendar", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateCalendar", Options);
 
     Process(Result, "Bitrix24", "CreateCalendar", "Hook", FunctionParameters); // SKIP
 
@@ -14448,12 +14448,12 @@ Procedure Bitrix24_CreateCalendar(FunctionParameters)
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", CalendarsStructure);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", CalendarsStructure);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateCalendar", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateCalendar", Options);
 
     // END
 
@@ -14474,12 +14474,12 @@ Procedure Bitrix24_UpdateCalendar(FunctionParameters)
     URL        = FunctionParameters["Bitrix24_URL"];
     CalendarID = FunctionParameters["Bitrix24_HookCalendarID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", CalendarID);
-    Опции.Вставить("", CalendarsStructure);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", CalendarID);
+    Options.Insert("", CalendarsStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateCalendar", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCalendar", Options);
 
     Process(Result, "Bitrix24", "UpdateCalendar", "Hook"); // SKIP
 
@@ -14487,13 +14487,13 @@ Procedure Bitrix24_UpdateCalendar(FunctionParameters)
     Token      = FunctionParameters["Bitrix24_Token"];
     CalendarID = FunctionParameters["Bitrix24_CalendarID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", CalendarID);
-    Опции.Вставить("", CalendarsStructure);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", CalendarID);
+    Options.Insert("", CalendarsStructure);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateCalendar", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCalendar", Options);
 
     // END
 
@@ -14508,13 +14508,13 @@ Procedure Bitrix24_DeleteCalendar(FunctionParameters)
     OwnerID    = 1;
     Type       = "user";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", CalendarID);
-    Опции.Вставить("", OwnerID);
-    Опции.Вставить("", Type);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", CalendarID);
+    Options.Insert("", OwnerID);
+    Options.Insert("", Type);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteCalendar", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteCalendar", Options);
 
     Process(Result, "Bitrix24", "DeleteCalendar", "Hook"); // SKIP
 
@@ -14522,14 +14522,14 @@ Procedure Bitrix24_DeleteCalendar(FunctionParameters)
     Token      = FunctionParameters["Bitrix24_Token"];
     CalendarID = FunctionParameters["Bitrix24_CalendarID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", CalendarID);
-    Опции.Вставить("", OwnerID);
-    Опции.Вставить("", Type);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", CalendarID);
+    Options.Insert("", OwnerID);
+    Options.Insert("", Type);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteCalendar", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteCalendar", Options);
 
     // END
 
@@ -14539,18 +14539,18 @@ EndProcedure
 
 Procedure Bitrix24_GetCalendarStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalendarStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarStructure", Options);
 
     // END
 
     Process(Result, "Bitrix24", "GetCalendarStructure");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalendarStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarStructure", Options);
 
     Process(Result, "Bitrix24", "GetCalendarStructure", "Clear");
 
@@ -14562,25 +14562,25 @@ Procedure Bitrix24_GetCalendarList(FunctionParameters)
     OwnerID = 1;
     Type    = "user";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", OwnerID);
-    Опции.Вставить("", Type);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", OwnerID);
+    Options.Insert("", Type);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalendarList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarList", Options);
 
     Process(Result, "Bitrix24", "GetCalendarList", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", OwnerID);
-    Опции.Вставить("", Type);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", OwnerID);
+    Options.Insert("", Type);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalendarList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarList", Options);
 
     // END
 
@@ -14592,21 +14592,21 @@ Procedure Bitrix24_GetCalendarSettingsStructure(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalendarSettingsStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarSettingsStructure", Options);
 
     Process(Result, "Bitrix24", "GetCalendarSettingsStructure", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalendarSettingsStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarSettingsStructure", Options);
 
     // END
 
@@ -14616,18 +14616,18 @@ EndProcedure
 
 Procedure Bitrix24_GetCalednarCustomSettingsStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalednarCustomSettingsStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalednarCustomSettingsStructure", Options);
 
     // END
 
     Process(Result, "Bitrix24", "GetCalednarCustomSettingsStructure");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalednarCustomSettingsStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalednarCustomSettingsStructure", Options);
 
     Process(Result, "Bitrix24", "GetCalednarCustomSettingsStructure", "Clear");
 
@@ -14637,21 +14637,21 @@ Procedure Bitrix24_GetCustomCalendarSettings(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
+    Options = New Structure;
+    Options.Insert("", URL);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCustomCalendarSettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCustomCalendarSettings", Options);
 
     Process(Result, "Bitrix24", "GetCustomCalendarSettings", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCustomCalendarSettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCustomCalendarSettings", Options);
 
     // END
 
@@ -14669,23 +14669,23 @@ Procedure Bitrix24_SetCustomCalendarSettings(FunctionParameters)
 
     URL = FunctionParameters["Bitrix24_URL"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", CalendarsStructure);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", CalendarsStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "SetCustomCalendarSettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetCustomCalendarSettings", Options);
 
     Process(Result, "Bitrix24", "SetCustomCalendarSettings", "Hook"); // SKIP
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", CalendarsStructure);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", CalendarsStructure);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "SetCustomCalendarSettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetCustomCalendarSettings", Options);
 
     // END
 
@@ -14706,13 +14706,13 @@ Procedure Bitrix24_GetUserBusy(FunctionParameters)
     StartDate = CurrentDate;
     EndDate   = CurrentDate + Week;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", User);
-    Опции.Вставить("", StartDate);
-    Опции.Вставить("", EndDate);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", User);
+    Options.Insert("", StartDate);
+    Options.Insert("", EndDate);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetUserBusy", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserBusy", Options);
 
     Process(Result, "Bitrix24", "GetUserBusy", "Hook"); // SKIP
 
@@ -14720,14 +14720,14 @@ Procedure Bitrix24_GetUserBusy(FunctionParameters)
     Token      = FunctionParameters["Bitrix24_Token"];
     CalendarID = FunctionParameters["Bitrix24_CalendarID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", User);
-    Опции.Вставить("", StartDate);
-    Опции.Вставить("", EndDate);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", User);
+    Options.Insert("", StartDate);
+    Options.Insert("", EndDate);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetUserBusy", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserBusy", Options);
 
     // END
 
@@ -14797,11 +14797,11 @@ Procedure Bitrix24_CreateCalendarEvent(FunctionParameters)
 
     EventStucture.Insert("meeting", MeetingStructure);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", EventStucture);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", EventStucture);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateCalendarEvent", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateCalendarEvent", Options);
 
     Process(Result, "Bitrix24", "CreateCalendarEvent", "Hook", FunctionParameters); // SKIP
 
@@ -14811,12 +14811,12 @@ Procedure Bitrix24_CreateCalendarEvent(FunctionParameters)
 
     EventStucture.Insert("section", CalendarID);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", EventStucture);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", EventStucture);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "CreateCalendarEvent", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "CreateCalendarEvent", Options);
 
     // END
 
@@ -14838,12 +14838,12 @@ Procedure Bitrix24_UpdateCalendarEvent(FunctionParameters)
     EventStucture.Insert("importance"   , "low");
     EventStucture.Insert("private_event", "Y");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", EventID);
-    Опции.Вставить("", EventStucture);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", EventID);
+    Options.Insert("", EventStucture);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateCalendarEvent", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCalendarEvent", Options);
 
     Process(Result, "Bitrix24", "UpdateCalendarEvent", "Hook", FunctionParameters); // SKIP
 
@@ -14852,13 +14852,13 @@ Procedure Bitrix24_UpdateCalendarEvent(FunctionParameters)
     EventID    = FunctionParameters["Bitrix24_CEventID"];
     CalendarID = FunctionParameters["Bitrix24_CalendarID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", EventID);
-    Опции.Вставить("", EventStucture);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", EventID);
+    Options.Insert("", EventStucture);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "UpdateCalendarEvent", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "UpdateCalendarEvent", Options);
 
     // END
 
@@ -14871,11 +14871,11 @@ Procedure Bitrix24_DeleteCalendarEvent(FunctionParameters)
     URL     = FunctionParameters["Bitrix24_URL"];
     EventID = FunctionParameters["Bitrix24_HookCEventID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", EventID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", EventID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteCalendarEvent", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteCalendarEvent", Options);
 
     Process(Result, "Bitrix24", "DeleteCalendarEvent", "Hook"); // SKIP
 
@@ -14883,12 +14883,12 @@ Procedure Bitrix24_DeleteCalendarEvent(FunctionParameters)
     Token   = FunctionParameters["Bitrix24_Token"];
     EventID = FunctionParameters["Bitrix24_CEventID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", EventID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", EventID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "DeleteCalendarEvent", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "DeleteCalendarEvent", Options);
 
     // END
 
@@ -14901,11 +14901,11 @@ Procedure Bitrix24_GetCalendarEvent(FunctionParameters)
     URL     = FunctionParameters["Bitrix24_URL"];
     EventID = FunctionParameters["Bitrix24_HookCEventID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", EventID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", EventID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalendarEvent", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEvent", Options);
 
     Process(Result, "Bitrix24", "GetCalendarEvent", "Hook"); // SKIP
 
@@ -14913,12 +14913,12 @@ Procedure Bitrix24_GetCalendarEvent(FunctionParameters)
     Token   = FunctionParameters["Bitrix24_Token"];
     EventID = FunctionParameters["Bitrix24_CEventID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", EventID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", EventID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalendarEvent", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEvent", Options);
 
     // END
 
@@ -14932,12 +14932,12 @@ Procedure Bitrix24_GetCalendarEvents(FunctionParameters)
     OwnerID = 1;
     Type    = "user";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", OwnerID);
-    Опции.Вставить("", Type);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", OwnerID);
+    Options.Insert("", Type);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalendarEvents", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEvents", Options);
 
     Process(Result, "Bitrix24", "GetCalendarEvents", "Hook"); // SKIP
 
@@ -14959,14 +14959,14 @@ Procedure Bitrix24_GetCalendarEvents(FunctionParameters)
     Filter.Insert("to"     , NextDay);
     Filter.Insert("section", ArrayOfCalendars);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", OwnerID);
-    Опции.Вставить("", Type);
-    Опции.Вставить("", Filter);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", OwnerID);
+    Options.Insert("", Type);
+    Options.Insert("", Filter);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalendarEvents", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEvents", Options);
 
     // END
 
@@ -14980,12 +14980,12 @@ Procedure Bitrix24_SetUserParticipationStatus(FunctionParameters)
     EventID = FunctionParameters["Bitrix24_HookCEventID"];
     Status  = "Y";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", EventID);
-    Опции.Вставить("", Status);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", EventID);
+    Options.Insert("", Status);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "SetUserParticipationStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetUserParticipationStatus", Options);
 
     Process(Result, "Bitrix24", "SetUserParticipationStatus", "Hook"); // SKIP
 
@@ -14993,13 +14993,13 @@ Procedure Bitrix24_SetUserParticipationStatus(FunctionParameters)
     Token   = FunctionParameters["Bitrix24_Token"];
     EventID = FunctionParameters["Bitrix24_CEventID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", EventID);
-    Опции.Вставить("", Status);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", EventID);
+    Options.Insert("", Status);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "SetUserParticipationStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "SetUserParticipationStatus", Options);
 
     // END
 
@@ -15012,11 +15012,11 @@ Procedure Bitrix24_GetUserParticipationStatus(FunctionParameters)
     URL     = FunctionParameters["Bitrix24_URL"];
     EventID = FunctionParameters["Bitrix24_HookCEventID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", EventID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", EventID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetUserParticipationStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserParticipationStatus", Options);
 
     Process(Result, "Bitrix24", "GetUserParticipationStatus", "Hook"); // SKIP
 
@@ -15024,12 +15024,12 @@ Procedure Bitrix24_GetUserParticipationStatus(FunctionParameters)
     Token   = FunctionParameters["Bitrix24_Token"];
     EventID = FunctionParameters["Bitrix24_CEventID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", EventID);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", EventID);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetUserParticipationStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserParticipationStatus", Options);
 
     // END
 
@@ -15039,18 +15039,18 @@ EndProcedure
 
 Procedure Bitrix24_GetCalendarEventsStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalendarEventsStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEventsStructure", Options);
 
     // END
 
     Process(Result, "Bitrix24", "GetCalendarEventsStructure");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalendarEventsStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEventsStructure", Options);
 
     Process(Result, "Bitrix24", "GetCalendarEventsStructure", "Clear");
 
@@ -15058,18 +15058,18 @@ EndProcedure
 
 Procedure Bitrix24_GetCalendarEventsFilterStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalendarEventsFilterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEventsFilterStructure", Options);
 
     // END
 
     Process(Result, "Bitrix24", "GetCalendarEventsFilterStructure");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("bitrix24", "GetCalendarEventsFilterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCalendarEventsFilterStructure", Options);
 
     Process(Result, "Bitrix24", "GetCalendarEventsFilterStructure", "Clear");
 
@@ -15082,10 +15082,10 @@ EndProcedure
 Procedure VKTeams_CheckToken(FunctionParameters)
 
     Token  = FunctionParameters["VkTeams_Token"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "CheckToken", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "CheckToken", Options);
 
     // END
 
@@ -15128,12 +15128,12 @@ Procedure VKTeams_SendTextMessage(FunctionParameters)
     ChatID = FunctionParameters["VkTeams_ChatID"];
     Text   = "Message text";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "SendTextMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendTextMessage", Options);
 
     Process(Result, "VKTeams", "SendTextMessage", "Simple", FunctionParameters); // SKIP
 
@@ -15154,15 +15154,15 @@ Procedure VKTeams_SendTextMessage(FunctionParameters)
     Keyboard.Add(ButtonsLineArray);
     // BSLLS:DuplicatedInsertionIntoCollection-on // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", ReplyID);
-    Опции.Вставить("", Keyboard);
-    Опции.Вставить("", Markup);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
+    Options.Insert("", ReplyID);
+    Options.Insert("", Keyboard);
+    Options.Insert("", Markup);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "SendTextMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendTextMessage", Options);
 
     // END
 
@@ -15177,26 +15177,26 @@ Procedure VKTeams_ForwardMessage(FunctionParameters)
     FromChatID = FunctionParameters["VkTeams_ChatID2"];
     MessageID  = FunctionParameters["VkTeams_MessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", FromChatID);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", MessageID);
+    Options.Insert("", FromChatID);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "ForwardMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ForwardMessage", Options);
 
     Process(Result, "VKTeams", "ForwardMessage", "Simple"); // SKIP
 
     Text = "Additional text";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", FromChatID);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", MessageID);
+    Options.Insert("", FromChatID);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "ForwardMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ForwardMessage", Options);
 
     // END
 
@@ -15217,33 +15217,33 @@ Procedure VKTeams_SendFile(FunctionParameters)
 
     FileBD = New BinaryData(FilePath); // Binary
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", File);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", File);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "SendFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendFile", Options);
 
     Process(Result, "VKTeams", "SendFile", "URL", FunctionParameters); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", FilePath);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", FilePath);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "SendFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendFile", Options);
 
     Process(Result, "VKTeams", "SendFile", "Path", FunctionParameters); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", FileBD);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", "ImportantDocument.docx");
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", FileBD);
+    Options.Insert("", Text);
+    Options.Insert("", "ImportantDocument.docx");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "SendFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendFile", Options);
 
     // END
 
@@ -15260,13 +15260,13 @@ Procedure VKTeams_ResendFile(FunctionParameters)
     FileID = FunctionParameters["VkTeams_FileID"];
     Text   = "File caption";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", FileID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", FileID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "ResendFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ResendFile", Options);
 
     // END
 
@@ -15279,11 +15279,11 @@ Procedure VKTeams_GetFileInformation(FunctionParameters)
     Token  = FunctionParameters["VkTeams_Token"];
     FileID = FunctionParameters["VkTeams_FileID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "GetFileInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetFileInformation", Options);
 
     // END
 
@@ -15298,27 +15298,27 @@ Procedure VKTeams_EditMessageText(FunctionParameters)
     MessageID = FunctionParameters["VkTeams_MessageID"];
     Text      = "New message text";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "EditMessageText", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "EditMessageText", Options);
 
     Process(Result, "VKTeams", "EditMessageText", "Path"); // SKIP
 
     Text   = "<b>New bold message text</b>";
     Markup = "HTML";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Markup);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
+    Options.Insert("", Text);
+    Options.Insert("", Markup);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "EditMessageText", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "EditMessageText", Options);
 
     // END
 
@@ -15332,12 +15332,12 @@ Procedure VKTeams_DeleteMessage(FunctionParameters)
     ChatID    = FunctionParameters["VkTeams_ChatID2"];
     MessageID = FunctionParameters["VkTeams_MessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "DeleteMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "DeleteMessage", Options);
 
     // END
 
@@ -15358,31 +15358,31 @@ Procedure VKTeams_SendVoice(FunctionParameters)
 
     FileBD = New BinaryData(FilePath); // Binary
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", File);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", File);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "SendVoice", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendVoice", Options);
 
     Process(Result, "VKTeams", "SendVoice", "URL", FunctionParameters); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", FilePath);
-    Опции.Вставить("", ReplyID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", FilePath);
+    Options.Insert("", ReplyID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "SendVoice", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendVoice", Options);
 
     Process(Result, "VKTeams", "SendVoice", "Path", FunctionParameters); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", FileBD);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", FileBD);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "SendVoice", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SendVoice", Options);
 
     // END
 
@@ -15398,12 +15398,12 @@ Procedure VKTeams_ResendVoice(FunctionParameters)
     ChatID = FunctionParameters["VkTeams_ChatID"];
     FileID = FunctionParameters["VkTeams_VoiceID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "ResendVoice", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ResendVoice", Options);
 
     // END
 
@@ -15417,12 +15417,12 @@ Procedure VKTeams_RemoveChatMembers(FunctionParameters)
     ChatID = FunctionParameters["VkTeams_ChatID2"];
     User   = 1011987091;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", User);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", User);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "RemoveChatMembers", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "RemoveChatMembers", Options);
 
     // END
 
@@ -15442,30 +15442,30 @@ Procedure VKTeams_ChangeChatPicture(FunctionParameters)
 
     FileBD = New BinaryData(FilePath); // Binary
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", File);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", File);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "ChangeChatPicture", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ChangeChatPicture", Options);
 
     Process(Result, "VKTeams", "ChangeChatPicture", "URL");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", FilePath);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", FilePath);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "ChangeChatPicture", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ChangeChatPicture", Options);
 
     Process(Result, "VKTeams", "ChangeChatPicture", "Path");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", FileBD);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", FileBD);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "ChangeChatPicture", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ChangeChatPicture", Options);
 
     // END
 
@@ -15480,11 +15480,11 @@ Procedure VKTeams_GetChatInfo(FunctionParameters)
     Token  = FunctionParameters["VkTeams_Token"];
     ChatID = FunctionParameters["VkTeams_ChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "GetChatInfo", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatInfo", Options);
 
     // END
 
@@ -15497,11 +15497,11 @@ Procedure VKTeams_GetChatAdmins(FunctionParameters)
     Token  = FunctionParameters["VkTeams_Token"];
     ChatID = FunctionParameters["VkTeams_ChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "GetChatAdmins", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatAdmins", Options);
 
     // END
 
@@ -15514,11 +15514,11 @@ Procedure VKTeams_GetChatMembers(FunctionParameters)
     Token  = FunctionParameters["VkTeams_Token"];
     ChatID = FunctionParameters["VkTeams_ChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "GetChatMembers", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatMembers", Options);
 
     // END
 
@@ -15531,11 +15531,11 @@ Procedure VKTeams_GetChatBlockedUsers(FunctionParameters)
     Token  = FunctionParameters["VkTeams_Token"];
     ChatID = FunctionParameters["VkTeams_ChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "GetChatBlockedUsers", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatBlockedUsers", Options);
 
     // END
 
@@ -15548,11 +15548,11 @@ Procedure VKTeams_GetChatJoinRequests(FunctionParameters)
     Token  = FunctionParameters["VkTeams_Token"];
     ChatID = FunctionParameters["VkTeams_ChatID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "GetChatJoinRequests", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "GetChatJoinRequests", Options);
 
     // END
 
@@ -15566,13 +15566,13 @@ Procedure VKTeams_BlockChatUser(FunctionParameters)
     ChatID = FunctionParameters["VkTeams_ChatID2"];
     User   = 1011987091;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", User);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", User);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "BlockChatUser", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "BlockChatUser", Options);
 
     // END
 
@@ -15586,12 +15586,12 @@ Procedure VKTeams_UnblockChatUser(FunctionParameters)
     ChatID = FunctionParameters["VkTeams_ChatID2"];
     User   = 1011987091;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", User);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", User);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "UnblockChatUser", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "UnblockChatUser", Options);
 
     // END
 
@@ -15605,12 +15605,12 @@ Procedure VKTeams_PinMessage(FunctionParameters)
     ChatID    = FunctionParameters["VkTeams_ChatID2"];
     MessageID = FunctionParameters["VkTeams_MessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "PinMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "PinMessage", Options);
 
     // END
 
@@ -15624,12 +15624,12 @@ Procedure VKTeams_UnpinMessage(FunctionParameters)
     ChatID    = FunctionParameters["VkTeams_ChatID2"];
     MessageID = FunctionParameters["VkTeams_MessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "UnpinMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "UnpinMessage", Options);
 
     // END
 
@@ -15643,20 +15643,20 @@ Procedure VKTeams_ApprovePending(FunctionParameters)
     ChatID = FunctionParameters["VkTeams_ChatID2"];
     User   = 1011987091;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", User);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", User);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "ApprovePending", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ApprovePending", Options);
 
     Process(Result, "VKTeams", "ApprovePending", "One"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "ApprovePending", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "ApprovePending", Options);
 
     // END
 
@@ -15670,20 +15670,20 @@ Procedure VKTeams_DisapprovePending(FunctionParameters)
     ChatID = FunctionParameters["VkTeams_ChatID2"];
     User   = 1011987091;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", User);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", User);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "DisapprovePending", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "DisapprovePending", Options);
 
     Process(Result, "VKTeams", "DisapprovePending", "One"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "DisapprovePending", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "DisapprovePending", Options);
 
     // END
 
@@ -15697,12 +15697,12 @@ Procedure VKTeams_SetChatTitle(FunctionParameters)
     ChatID = FunctionParameters["VkTeams_ChatID2"];
     Text   = "New title";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "SetChatTitle", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SetChatTitle", Options);
 
     // END
 
@@ -15716,12 +15716,12 @@ Procedure VKTeams_SetChatDescription(FunctionParameters)
     ChatID = FunctionParameters["VkTeams_ChatID2"];
     Text   = "New description";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "SetChatDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SetChatDescription", Options);
 
     // END
 
@@ -15735,12 +15735,12 @@ Procedure VKTeams_SetChatRules(FunctionParameters)
     ChatID = FunctionParameters["VkTeams_ChatID2"];
     Text   = "Text of the new rules";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("vkteams", "SetChatRules", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vkteams", "SetChatRules", Options);
 
     // END
 
@@ -15814,20 +15814,20 @@ Procedure Ozon_GetCategoriesAndProductTypesTree(FunctionParameters)
     ClientID = FunctionParameters["Ozon_ClientID"];
     APIKey   = FunctionParameters["Ozon_ApiKey"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", "EN");
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", "EN");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetCategoriesAndProductTypesTree", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetCategoriesAndProductTypesTree", Options);
 
     Process(Result, "Ozon", "GetCategoriesAndProductTypesTree", "EN"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetCategoriesAndProductTypesTree", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetCategoriesAndProductTypesTree", Options);
 
     // END
 
@@ -15842,13 +15842,13 @@ Procedure Ozon_GetCategoryAttributes(FunctionParameters)
     CategoryID = 17029016;
     TypeID     = 970778135;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", CategoryID);
-    Опции.Вставить("", TypeID);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", CategoryID);
+    Options.Insert("", TypeID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetCategoryAttributes", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetCategoryAttributes", Options);
 
     // END
 
@@ -15864,14 +15864,14 @@ Procedure Ozon_GetAttributeValues(FunctionParameters)
     TypeID      = 97311;
     AttributeID = 85;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", CategoryID);
-    Опции.Вставить("", TypeID);
-    Опции.Вставить("", AttributeID);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", CategoryID);
+    Options.Insert("", TypeID);
+    Options.Insert("", AttributeID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetAttributeValues", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetAttributeValues", Options);
 
     // END
 
@@ -15888,15 +15888,15 @@ Procedure Ozon_SearchAttributeValue(FunctionParameters)
     AttributeID = 85;
     Value       = "Sunshine";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", CategoryID);
-    Опции.Вставить("", TypeID);
-    Опции.Вставить("", AttributeID);
-    Опции.Вставить("", Value);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", CategoryID);
+    Options.Insert("", TypeID);
+    Options.Insert("", AttributeID);
+    Options.Insert("", Value);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "SearchAttributeValue", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "SearchAttributeValue", Options);
 
     // END
 
@@ -15906,9 +15906,9 @@ EndProcedure
 
 Procedure Ozon_GetProductStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductStructure", Options);
 
     // END
 
@@ -15967,12 +15967,12 @@ Procedure Ozon_CreateUpdateProducts(FunctionParameters)
     OPI_Ozon.CompleteComplexAttribute(ItemStructure, 8229 , 0, CategoryAttribute4);
     OPI_Ozon.CompleteComplexAttribute(ItemStructure, 9048 , 0, CategoryAttribute5);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", ItemStructure);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", ItemStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "CreateUpdateProducts", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "CreateUpdateProducts", Options);
 
     // END
 
@@ -16079,12 +16079,12 @@ Procedure Ozon_GetProductCreationStatus(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
     TaskID   = FunctionParameters["Ozon_TaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductCreationStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductCreationStatus", Options);
 
     // END
 
@@ -16113,12 +16113,12 @@ Procedure Ozon_CreateProductByOzonID(FunctionParameters)
     ItemStructure.Insert("vat"          , "0.1");
     ItemStructure.Insert("currency_code", "RUB");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", ItemStructure);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", ItemStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "CreateProductByOzonID", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "CreateProductByOzonID", Options);
 
     // END
 
@@ -16128,9 +16128,9 @@ EndProcedure
 
 Procedure Ozon_GetSimplifiedProductStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetSimplifiedProductStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetSimplifiedProductStructure", Options);
 
     // END
 
@@ -16140,9 +16140,9 @@ EndProcedure
 
 Procedure Ozon_GetAttributesUpdateStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetAttributesUpdateStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetAttributesUpdateStructure", Options);
 
     // END
 
@@ -16165,24 +16165,24 @@ Procedure Ozon_UpdateProductsAttributes(FunctionParameters)
     OPI_Ozon.CompleteComplexAttribute(AttributesStructure, 85   , 0, CategoryAttribute2);
     OPI_Ozon.CompleteComplexAttribute(AttributesStructure, 10096, 0, CategoryAttribute3);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", AttributesStructure);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", AttributesStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "UpdateProductsAttributes", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UpdateProductsAttributes", Options);
 
     // END
 
     Process(Result, "Ozon", "UpdateProductsAttributes", , FunctionParameters);
 
     TaskID = Result["task_id"];
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductCreationStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductCreationStatus", Options);
 
     If Result["result"]["items"].Count() > 0 Then
 
@@ -16201,9 +16201,9 @@ EndProcedure
 
 Procedure Ozon_GetProductsFilterStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductsFilterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsFilterStructure", Options);
 
     // END
 
@@ -16224,12 +16224,12 @@ Procedure Ozon_GetProductList(FunctionParameters)
     Filter.Insert("visibility", "ALL");
     Filter.Insert("offer_id"  , IDArray);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", Filter);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", Filter);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductList", Options);
 
     // END
 
@@ -16249,12 +16249,12 @@ Procedure Ozon_GetProductsAttributesData(FunctionParameters)
     Filter.Insert("visibility", "ALL");
     Filter.Insert("offer_id"  , IDArray);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", Filter);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", Filter);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductsAttributesData", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsAttributesData", Options);
 
     // END
 
@@ -16268,12 +16268,12 @@ Procedure Ozon_GetProductsContentRating(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
     SKU      = 1626044001;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", SKU);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", SKU);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductsContentRating", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsContentRating", Options);
 
     // END
 
@@ -16287,12 +16287,12 @@ Procedure Ozon_GetProductsInformation(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
     Article  = "143210609";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", Article);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", Article);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductsInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsInformation", Options);
 
     // END
 
@@ -16306,12 +16306,12 @@ Procedure Ozon_GetProductDescription(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
     Article  = "143210609";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", Article);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", Article);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductDescription", Options);
 
     // END
 
@@ -16324,11 +16324,11 @@ Procedure Ozon_GetProductsRequestsLimits(FunctionParameters)
     ClientID = FunctionParameters["Ozon_ClientID"];
     APIKey   = FunctionParameters["Ozon_ApiKey"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductsRequestsLimits", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsRequestsLimits", Options);
 
     // END
 
@@ -16351,14 +16351,14 @@ Procedure Ozon_UpdateProductImages(FunctionParameters)
     ImagesArray.Add(Image1);
     ImagesArray.Add(Image2);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", ProductID);
-    Опции.Вставить("", ImagesArray);
-    Опции.Вставить("", MarketingColor);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", ProductID);
+    Options.Insert("", ImagesArray);
+    Options.Insert("", MarketingColor);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "UpdateProductImages", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UpdateProductImages", Options);
 
     // END
 
@@ -16372,12 +16372,12 @@ Procedure Ozon_CheckProductsImagesUpload(FunctionParameters)
     APIKey    = FunctionParameters["Ozon_ApiKey"];
     ProductID = FunctionParameters["Ozon_ProductID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", ProductID);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", ProductID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "CheckProductsImagesUpload", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "CheckProductsImagesUpload", Options);
 
     // END
 
@@ -16393,12 +16393,12 @@ Procedure Ozon_UpdateProductsArticles(FunctionParameters)
     ArticlesMap = New Map;
     ArticlesMap.Insert("143210609", "143210612");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", ArticlesMap);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", ArticlesMap);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "UpdateProductsArticles", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UpdateProductsArticles", Options);
 
     // END
 
@@ -16407,12 +16407,12 @@ Procedure Ozon_UpdateProductsArticles(FunctionParameters)
     ArticlesMap = New Map;
     ArticlesMap.Insert("143210612", "143210609");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", ArticlesMap);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", ArticlesMap);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "UpdateProductsArticles", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UpdateProductsArticles", Options);
 
     Process(Result, "Ozon", "UpdateProductsArticles", "Reverse");
 
@@ -16424,12 +16424,12 @@ Procedure Ozon_ArchiveProducts(FunctionParameters)
     APIKey    = FunctionParameters["Ozon_ApiKey"];
     ProductID = FunctionParameters["Ozon_ProductID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", ProductID);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", ProductID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "ArchiveProducts", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "ArchiveProducts", Options);
 
     // END
 
@@ -16437,12 +16437,12 @@ Procedure Ozon_ArchiveProducts(FunctionParameters)
 
     ProductID = FunctionParameters["Ozon_ProductID2"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", ProductID);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", ProductID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "ArchiveProducts", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "ArchiveProducts", Options);
 
     Process(Result, "Ozon", "ArchiveProducts", "Additional");
 
@@ -16454,12 +16454,12 @@ Procedure Ozon_UnarchiveProducts(FunctionParameters)
     APIKey    = FunctionParameters["Ozon_ApiKey"];
     ProductID = FunctionParameters["Ozon_ProductID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", ProductID);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", ProductID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "UnarchiveProducts", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UnarchiveProducts", Options);
 
     // END
 
@@ -16475,24 +16475,24 @@ Procedure Ozon_DeleteProductsWithoutSKU(FunctionParameters)
     APIKey    = FunctionParameters["Ozon_ApiKey"];
     ProductID = FunctionParameters["Ozon_ProductID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", ProductID);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", ProductID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "ArchiveProducts", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "ArchiveProducts", Options);
 
     OPI_TestDataRetrieval.LogServiceInformation(Result, "ArchiveProducts (for deleting)", "Ozon"); // SKIP
     OPI_Tools.Pause(15); // SKIP
 
     Article = "143210609";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", Article);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", Article);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "DeleteProductsWithoutSKU", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "DeleteProductsWithoutSKU", Options);
 
     // END
 
@@ -16513,13 +16513,13 @@ Procedure Ozon_UploadProductActivationCodes(FunctionParameters)
     Codes.Add("11111111");
     Codes.Add("22222222");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", ProductID);
-    Опции.Вставить("", Codes);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", ProductID);
+    Options.Insert("", Codes);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "UploadProductActivationCodes", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UploadProductActivationCodes", Options);
 
     // END
 
@@ -16533,12 +16533,12 @@ Procedure Ozon_GetCodesUploadStatus(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
     TaskID   = FunctionParameters["Ozon_CodesTaskID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", TaskID);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", TaskID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetCodesUploadStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetCodesUploadStatus", Options);
 
     // END
 
@@ -16561,12 +16561,12 @@ Procedure Ozon_GetProductSubscribersCount(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
     SKU      = 1626044001;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", SKU);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", SKU);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductSubscribersCount", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductSubscribersCount", Options);
 
     // END
 
@@ -16580,12 +16580,12 @@ Procedure Ozon_GetRelatedSKUs(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
     SKU      = 1626044001;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", SKU);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", SKU);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetRelatedSKUs", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetRelatedSKUs", Options);
 
     // END
 
@@ -16601,12 +16601,12 @@ Procedure Ozon_BindBarcodes(FunctionParameters)
     BarcodesMap = New Map;
     BarcodesMap.Insert(1626044001, "112233");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", BarcodesMap);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", BarcodesMap);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "BindBarcodes", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "BindBarcodes", Options);
 
     // END
 
@@ -16620,12 +16620,12 @@ Procedure Ozon_CreateBarcodes(FunctionParameters)
     APIKey    = FunctionParameters["Ozon_ApiKey"];
     ProductID = FunctionParameters["Ozon_ProductID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", ProductID);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", ProductID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "CreateBarcodes", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "CreateBarcodes", Options);
 
     // END
 
@@ -16638,11 +16638,11 @@ Procedure Ozon_GetWarehousesList(FunctionParameters)
     ClientID = FunctionParameters["Ozon_ClientID"];
     APIKey   = FunctionParameters["Ozon_ApiKey"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetWarehousesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetWarehousesList", Options);
 
     // END
 
@@ -16662,12 +16662,12 @@ Procedure Ozon_GetProductsStocks(FunctionParameters)
     Filter.Insert("visibility", "ALL");
     Filter.Insert("offer_id"  , IDArray);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", Filter);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", Filter);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductsStocks", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsStocks", Options);
 
     // END
 
@@ -16691,12 +16691,12 @@ Procedure Ozon_UpdateProductsPrices(FunctionParameters)
     Prices.Insert("price_strategy_enabled", "DISABLED");
     Prices.Insert("product_id"            , ProductID);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", Prices);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", Prices);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "UpdateProductsPrices", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UpdateProductsPrices", Options);
 
     // END
 
@@ -16716,12 +16716,12 @@ Procedure Ozon_UpdateProductsStocks(FunctionParameters)
     Stocks.Insert("stock"       , 20);
     Stocks.Insert("warehouse_id", 1);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", Stocks);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", Stocks);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "UpdateProductsStocks", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "UpdateProductsStocks", Options);
 
     // END
 
@@ -16734,11 +16734,11 @@ Procedure Ozon_GetProductsPrices(FunctionParameters)
     ClientID = FunctionParameters["Ozon_ClientID"];
     APIKey   = FunctionParameters["Ozon_ApiKey"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductsPrices", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsPrices", Options);
 
     // END
 
@@ -16752,12 +16752,12 @@ Procedure Ozon_GetDiscountInformation(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
     SKU      = 1626044001;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", SKU);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", SKU);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetDiscountInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetDiscountInformation", Options);
 
     // END
 
@@ -16773,13 +16773,13 @@ Procedure Ozon_SetProductDiscount(FunctionParameters)
 
     Discount = 10;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", ProductID);
-    Опции.Вставить("", Discount);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", ProductID);
+    Options.Insert("", Discount);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "SetProductDiscount", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "SetProductDiscount", Options);
 
     // END
 
@@ -16792,11 +16792,11 @@ Procedure Ozon_GetPromotionsList(FunctionParameters)
     ClientID = FunctionParameters["Ozon_ClientID"];
     APIKey   = FunctionParameters["Ozon_ApiKey"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetPromotionsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetPromotionsList", Options);
 
     // END
 
@@ -16810,12 +16810,12 @@ Procedure Ozon_GetAvailablePromoProducts(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
     PromoID  = 111111111;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", PromoID);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", PromoID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetAvailablePromoProducts", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetAvailablePromoProducts", Options);
 
     // END
 
@@ -16829,12 +16829,12 @@ Procedure Ozon_GetCurrentPromoProducts(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
     PromoID  = 111111111;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", PromoID);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", PromoID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetCurrentPromoProducts", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetCurrentPromoProducts", Options);
 
     // END
 
@@ -16844,9 +16844,9 @@ EndProcedure
 
 Procedure Ozon_GetProductStocksStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductStocksStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductStocksStructure", Options);
 
     // END
 
@@ -16856,9 +16856,9 @@ EndProcedure
 
 Procedure Ozon_GetProductPriceStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetProductPriceStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductPriceStructure", Options);
 
     // END
 
@@ -16871,11 +16871,11 @@ Procedure Ozon_GetClustersList(FunctionParameters)
     ClientID = FunctionParameters["Ozon_ClientID"];
     APIKey   = FunctionParameters["Ozon_ApiKey"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetClustersList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetClustersList", Options);
 
     // END
 
@@ -16889,12 +16889,12 @@ Procedure Ozon_GetShippingWarehousesList(FunctionParameters)
     APIKey   = FunctionParameters["Ozon_ApiKey"];
     Search   = "Tver";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", Search);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", Search);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetShippingWarehousesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetShippingWarehousesList", Options);
 
     // END
 
@@ -16912,13 +16912,13 @@ Procedure Ozon_CreateFBODraft(FunctionParameters)
     Items.Insert("1783161863", 5);
     Items.Insert("1784654052", 2);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", Cluster);
-    Опции.Вставить("", Items);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", Cluster);
+    Options.Insert("", Items);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "CreateFBODraft", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "CreateFBODraft", Options);
 
     // END
 
@@ -16951,9 +16951,9 @@ EndProcedure
 
 Procedure Ozon_GetShipmentAdditionalFields(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetShipmentAdditionalFields", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetShipmentAdditionalFields", Options);
 
     // END
 
@@ -16963,9 +16963,9 @@ EndProcedure
 
 Procedure Ozon_GetShipmentsFilterStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetShipmentsFilterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetShipmentsFilterStructure", Options);
 
     // END
 
@@ -16986,13 +16986,13 @@ Procedure Ozon_GetFBOShipmentsList(FunctionParameters)
     Filter.Insert("since", XMLString('20230101') + "Z");
     Filter.Insert("to"   , XMLString('20240101') + "Z");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", Filter);
-    Опции.Вставить("", AddFields);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", Filter);
+    Options.Insert("", AddFields);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetFBOShipmentsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetFBOShipmentsList", Options);
 
     // END
 
@@ -17011,15 +17011,15 @@ Procedure Ozon_GetFBOTimeslots(FunctionParameters)
     Draft     = FunctionParameters["Ozon_Draft"];
     Warehouse = FunctionParameters["Ozon_FBOWarehouse"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ClientID);
-    Опции.Вставить("", APIKey);
-    Опции.Вставить("", DateFrom);
-    Опции.Вставить("", DateTo);
-    Опции.Вставить("", Draft);
-    Опции.Вставить("", Warehouse);
+    Options = New Structure;
+    Options.Insert("", ClientID);
+    Options.Insert("", APIKey);
+    Options.Insert("", DateFrom);
+    Options.Insert("", DateTo);
+    Options.Insert("", Draft);
+    Options.Insert("", Warehouse);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ozon", "GetFBOTimeslots", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetFBOTimeslots", Options);
 
     // END
 
@@ -17037,12 +17037,12 @@ Procedure Neocities_UploadFile(FunctionParameters)
     Data  = FunctionParameters["Picture"]; // URL, Path or Binary Data
     Path  = "testfolder/test_pic.png";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
-    Опции.Вставить("", Data);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
+    Options.Insert("", Data);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("neocities", "UploadFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "UploadFile", Options);
 
     // END
 
@@ -17063,11 +17063,11 @@ Procedure Neocities_UploadFiles(FunctionParameters)
     FileMapping.Insert("test/gif.gif" , Image2);
     FileMapping.Insert("pic2.png"     , GIF);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileMapping);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", FileMapping);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("neocities", "UploadFiles", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "UploadFiles", Options);
 
     // END
 
@@ -17084,29 +17084,29 @@ Procedure Neocities_DeleteSelectedFiles(FunctionParameters)
     Paths.Add("/test/gif.gif");
     Paths.Add("/pic2.png");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Paths);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Paths);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("neocities", "DeleteSelectedFiles", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "DeleteSelectedFiles", Options);
 
     // END
 
     Process(Result, "Neocities", "DeleteSelectedFiles");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", "/testfolder");
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", "/testfolder");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("neocities", "DeleteSelectedFiles", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "DeleteSelectedFiles", Options);
 
     Process(Result, "Neocities", "DeleteSelectedFiles", "Directory 1");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", "/test");
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", "/test");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("neocities", "DeleteSelectedFiles", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "DeleteSelectedFiles", Options);
 
     Process(Result, "Neocities", "DeleteSelectedFiles", "Directory 2");
 
@@ -17117,20 +17117,20 @@ Procedure Neocities_GetFilesList(FunctionParameters)
     Token = FunctionParameters["NC_Token"];
     Path  = "test";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Path);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("neocities", "GetFilesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "GetFilesList", Options);
 
     // END
 
     Process(Result, "Neocities", "GetFilesList");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("neocities", "GetFilesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "GetFilesList", Options);
 
     Process(Result, "Neocities", "GetFilesList", "All");
 
@@ -17141,18 +17141,18 @@ Procedure Neocities_GetSiteData(FunctionParameters)
     Token   = FunctionParameters["NC_Token"];
     Website = "2athenaeum";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("neocities", "GetSiteData", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "GetSiteData", Options);
 
     Process(Result, "Neocities", "GetSiteData"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Website);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Website);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("neocities", "GetSiteData", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "GetSiteData", Options);
 
     // END
 
@@ -17165,11 +17165,11 @@ Procedure Neocities_GetToken(FunctionParameters)
     Login    = FunctionParameters["NC_Login"];
     Password = FunctionParameters["NC_Password"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("neocities", "GetToken", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "GetToken", Options);
 
     // END
 
@@ -17186,12 +17186,12 @@ Procedure Neocities_SynchronizeFolders(FunctionParameters)
     LocalFolder  = "C:\test_site";
     RemoteFolder = "test_sync";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", LocalFolder);
-    Опции.Вставить("", RemoteFolder);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", LocalFolder);
+    Options.Insert("", RemoteFolder);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("neocities", "SynchronizeFolders", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("neocities", "SynchronizeFolders", Options);
 
     // END
 
@@ -17208,12 +17208,12 @@ Procedure CDEK_GetToken(FunctionParameters)
     Account  = FunctionParameters["CDEK_Account"];
     Password = FunctionParameters["CDEK_Password"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Account);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Account);
+    Options.Insert("", Password);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetToken", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetToken", Options);
 
     // END
 
@@ -17223,18 +17223,18 @@ EndProcedure
 
 Procedure CDEK_GetOrderDescription(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetOrderDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOrderDescription", Options);
 
     // END
 
     Process(Result, "CDEK", "GetOrderDescription");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetOrderDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOrderDescription", Options);
 
     Process(Result, "CDEK", "GetOrderDescription", "Clear");
 
@@ -17319,13 +17319,13 @@ Procedure CDEK_CreateOrder(FunctionParameters)
     OrderDescription.Insert("delivery_recipient_cost"    , New Structure("value"        , 50));
     OrderDescription.Insert("delivery_recipient_cost_adv", New Structure("sum,threshold", 3000, 200));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", OrderDescription);
-    Опции.Вставить("", Истина);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", OrderDescription);
+    Options.Insert("", Истина);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "CreateOrder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateOrder", Options);
 
     // END
 
@@ -17338,12 +17338,12 @@ Procedure CDEK_GetOrder(FunctionParameters)
     Token = FunctionParameters["CDEK_Token"];
     UUID  = FunctionParameters["CDEK_OrderUUID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetOrder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOrder", Options);
 
     // END
 
@@ -17356,13 +17356,13 @@ Procedure CDEK_GetOrderByNumber(FunctionParameters)
     Token = FunctionParameters["CDEK_Token"];
 
     OrderNumber = FunctionParameters["CDEK_OrderIMN"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", OrderNumber);
-    Опции.Вставить("", Истина);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", OrderNumber);
+    Options.Insert("", Истина);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetOrderByNumber", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOrderByNumber", Options);
 
     // END
 
@@ -17377,13 +17377,13 @@ Procedure CDEK_UpdateOrder(FunctionParameters)
 
     OrderDescription = New Structure("comment", "NewComment");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", OrderDescription);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", OrderDescription);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "UpdateOrder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "UpdateOrder", Options);
 
     // END
 
@@ -17396,12 +17396,12 @@ Procedure CDEK_DeleteOrder(FunctionParameters)
     Token = FunctionParameters["CDEK_Token"];
     UUID  = FunctionParameters["CDEK_OrderUUID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "DeleteOrder", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "DeleteOrder", Options);
 
     // END
 
@@ -17415,13 +17415,13 @@ Procedure CDEK_CreateCustomerRefund(FunctionParameters)
     UUID   = FunctionParameters["CDEK_OrderUUID"];
     Tariff = 139;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", Tariff);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", Tariff);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "CreateCustomerRefund", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateCustomerRefund", Options);
 
     // END
 
@@ -17434,12 +17434,12 @@ Procedure CDEK_CreateRefusal(FunctionParameters)
     Token = FunctionParameters["CDEK_Token"];
     UUID  = FunctionParameters["CDEK_OrderUUID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "CreateRefusal", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateRefusal", Options);
 
     // END
 
@@ -17449,18 +17449,18 @@ EndProcedure
 
 Procedure CDEK_GetCourierInvitationsDescription(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetCourierInvitationsDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetCourierInvitationsDescription", Options);
 
     // END
 
     Process(Result, "CDEK", "GetCourierInvitationsDescription");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetCourierInvitationsDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetCourierInvitationsDescription", Options);
 
     Process(Result, "CDEK", "GetCourierInvitationsDescription", "Clear");
 
@@ -17510,12 +17510,12 @@ Procedure CDEK_CreateCourierInvitation(FunctionParameters)
 
     InvitationDescription.Insert("from_location", ShippingPoint);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", InvitationDescription);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", InvitationDescription);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "CreateCourierInvitation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateCourierInvitation", Options);
 
     // END
 
@@ -17528,12 +17528,12 @@ Procedure CDEK_GetCourierInvitation(FunctionParameters)
     Token = FunctionParameters["CDEK_Token"];
     UUID  = FunctionParameters["CDEK_IntakeUUID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetCourierInvitation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetCourierInvitation", Options);
 
     // END
 
@@ -17546,12 +17546,12 @@ Procedure CDEK_DeleteCourierInvitation(FunctionParameters)
     Token = FunctionParameters["CDEK_Token"];
     UUID  = FunctionParameters["CDEK_IntakeUUID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "DeleteCourierInvitation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "DeleteCourierInvitation", Options);
 
     // END
 
@@ -17566,14 +17566,14 @@ Procedure CDEK_CreateReceipt(FunctionParameters)
     Type   = "tpl_russia";
     Copies = 1;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", Type);
-    Опции.Вставить("", Copies);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", Type);
+    Options.Insert("", Copies);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "CreateReceipt", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateReceipt", Options);
 
     // END
 
@@ -17601,14 +17601,14 @@ Procedure CDEK_CreateBarcode(FunctionParameters)
     Format = "A5";
     Copies = 1;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", Copies);
-    Опции.Вставить("", Format);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", Copies);
+    Options.Insert("", Format);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "CreateBarcode", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreateBarcode", Options);
 
     // END
 
@@ -17634,12 +17634,12 @@ Procedure CDEK_GetAvailableDeliveryIntervals(FunctionParameters)
     Token = FunctionParameters["CDEK_Token"];
     UUID  = FunctionParameters["CDEK_OrderUUID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetAvailableDeliveryIntervals", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetAvailableDeliveryIntervals", Options);
 
     // END
 
@@ -17649,18 +17649,18 @@ EndProcedure
 
 Procedure CDEK_GetAppointmentDescription(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetAppointmentDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetAppointmentDescription", Options);
 
     // END
 
     Process(Result, "CDEK", "GetAppointmentDescription");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetAppointmentDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetAppointmentDescription", Options);
 
     Process(Result, "CDEK", "GetAppointmentDescription", "Clear");
 
@@ -17703,12 +17703,12 @@ Procedure CDEK_RegisterDeliveryAppointment(FunctionParameters)
 
     Appointment.Insert("to_location", DeliveryLocation);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Appointment);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Appointment);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "RegisterDeliveryAppointment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "RegisterDeliveryAppointment", Options);
 
     // END
 
@@ -17721,12 +17721,12 @@ Procedure CDEK_GetDeliveryAppointment(FunctionParameters)
     Token = FunctionParameters["CDEK_Token"];
     UUID  = FunctionParameters["CDEK_ApptUUID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetDeliveryAppointment", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetDeliveryAppointment", Options);
 
     // END
 
@@ -17741,14 +17741,14 @@ Procedure CDEK_CreatePrealert(FunctionParameters)
     Point        = "NSK27";
     TransferDate = OPI_Tools.GetCurrentDate() + 60 * 60 * 24;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", TransferDate);
-    Опции.Вставить("", Point);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", TransferDate);
+    Options.Insert("", Point);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "CreatePrealert", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "CreatePrealert", Options);
 
     // END
 
@@ -17761,12 +17761,12 @@ Procedure CDEK_GetPrealert(FunctionParameters)
     Token = FunctionParameters["CDEK_Token"];
     UUID  = FunctionParameters["CDEK_PrealertUUID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetPrealert", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetPrealert", Options);
 
     // END
 
@@ -17779,12 +17779,12 @@ Procedure CDEK_GetPassportDataStatus(FunctionParameters)
     Token = FunctionParameters["CDEK_Token"];
     UUID  = FunctionParameters["CDEK_OrderUUID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetPassportDataStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetPassportDataStatus", Options);
 
     // END
 
@@ -17797,12 +17797,12 @@ Procedure CDEK_GetCashboxCheck(FunctionParameters)
     Token = FunctionParameters["CDEK_Token"];
     UUID  = FunctionParameters["CDEK_OrderUUID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UUID);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", UUID);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetCashboxCheck", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetCashboxCheck", Options);
 
     // END
 
@@ -17815,12 +17815,12 @@ Procedure CDEK_GetCashboxChecksByDate(FunctionParameters)
     Token         = FunctionParameters["CDEK_Token"];
     ReceivingDate = OPI_Tools.GetCurrentDate();
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ReceivingDate);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ReceivingDate);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetCashboxChecksByDate", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetCashboxChecksByDate", Options);
 
     // END
 
@@ -17833,12 +17833,12 @@ Procedure CDEK_GetDeliveryCashRegistry(FunctionParameters)
     Token         = FunctionParameters["CDEK_Token"];
     ReceivingDate = OPI_Tools.GetCurrentDate();
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ReceivingDate);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ReceivingDate);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetDeliveryCashRegistry", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetDeliveryCashRegistry", Options);
 
     // END
 
@@ -17851,12 +17851,12 @@ Procedure CDEK_GetDeliveryCashTransfers(FunctionParameters)
     Token         = FunctionParameters["CDEK_Token"];
     ReceivingDate = OPI_Tools.GetCurrentDate();
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", ReceivingDate);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", ReceivingDate);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetDeliveryCashTransfers", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetDeliveryCashTransfers", Options);
 
     // END
 
@@ -17866,18 +17866,18 @@ EndProcedure
 
 Procedure CDEK_GetOfficeFilterDescription(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetOfficeFilterDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOfficeFilterDescription", Options);
 
     // END
 
     Process(Result, "CDEK", "GetOfficeFilterDescription");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetOfficeFilterDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOfficeFilterDescription", Options);
 
     Process(Result, "CDEK", "GetOfficeFilterDescription", "Clear");
 
@@ -17891,12 +17891,12 @@ Procedure CDEK_GetOfficeList(FunctionParameters)
     Filter.Insert("city_code"  , 270);
     Filter.Insert("allowed_cod", True);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Filter);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Filter);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetOfficeList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetOfficeList", Options);
 
     // END
 
@@ -17908,11 +17908,11 @@ Procedure CDEK_GetRegionsList(FunctionParameters)
 
     Token = FunctionParameters["CDEK_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("cdek", "GetRegionsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("cdek", "GetRegionsList", Options);
 
     // END
 
@@ -17928,10 +17928,10 @@ Procedure YandexMetrika_GetTagsList(FunctionParameters)
 
     Token = FunctionParameters["Metrika_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("metrika", "GetTagsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetTagsList", Options);
 
     // END
 
@@ -17944,11 +17944,11 @@ Procedure YandexMetrika_CreateTag(FunctionParameters)
     Token = FunctionParameters["Metrika_Token"];
     Name  = "New tag";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Name);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Name);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("metrika", "CreateTag", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "CreateTag", Options);
 
     // END
 
@@ -17961,11 +17961,11 @@ Procedure YandexMetrika_DeleteTag(FunctionParameters)
     Token = FunctionParameters["Metrika_Token"];
     TagID = FunctionParameters["Metrika_LabelID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", TagID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", TagID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("metrika", "DeleteTag", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "DeleteTag", Options);
 
     // END
 
@@ -17979,12 +17979,12 @@ Procedure YandexMetrika_UpdateTag(FunctionParameters)
     TagID = FunctionParameters["Metrika_LabelID"];
     Name  = "New tag title";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", TagID);
-    Опции.Вставить("", Name);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", TagID);
+    Options.Insert("", Name);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("metrika", "UpdateTag", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "UpdateTag", Options);
 
     // END
 
@@ -17997,11 +17997,11 @@ Procedure YandexMetrika_GetTag(FunctionParameters)
     Token = FunctionParameters["Metrika_Token"];
     TagID = FunctionParameters["Metrika_LabelID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", TagID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", TagID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("metrika", "GetTag", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetTag", Options);
 
     // END
 
@@ -18011,9 +18011,9 @@ EndProcedure
 
 Procedure YandexMetrika_GetCounterStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("metrika", "GetCounterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCounterStructure", Options);
 
     // END
 
@@ -18068,11 +18068,11 @@ Procedure YandexMetrika_CreateCounter(FunctionParameters)
 
     CounterStructure.Insert("site2", DomainStructure);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", CounterStructure);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", CounterStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("metrika", "CreateCounter", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "CreateCounter", Options);
 
     // END
 
@@ -18085,11 +18085,11 @@ Procedure YandexMetrika_DeleteCounter(FunctionParameters)
     Token     = FunctionParameters["Metrika_Token"];
     CounterID = FunctionParameters["Metrika_CounterID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", CounterID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", CounterID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("metrika", "DeleteCounter", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "DeleteCounter", Options);
 
     // END
 
@@ -18115,12 +18115,12 @@ Procedure YandexMetrika_UpdateCounter(FunctionParameters)
     CounterStructure.Insert("favorite"     , 0);
     CounterStructure.Insert("filter_robots", 1);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", CounterID);
-    Опции.Вставить("", CounterStructure);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", CounterID);
+    Options.Insert("", CounterStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("metrika", "UpdateCounter", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "UpdateCounter", Options);
 
     // END
 
@@ -18133,11 +18133,11 @@ Procedure YandexMetrika_GetCounter(FunctionParameters)
     Token     = FunctionParameters["Metrika_Token"];
     CounterID = FunctionParameters["Metrika_CounterID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", CounterID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", CounterID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("metrika", "GetCounter", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCounter", Options);
 
     // END
 
@@ -18150,11 +18150,11 @@ Procedure YandexMetrika_RestoreCounter(FunctionParameters)
     Token     = FunctionParameters["Metrika_Token"];
     CounterID = FunctionParameters["Metrika_CounterID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", CounterID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", CounterID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("metrika", "RestoreCounter", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "RestoreCounter", Options);
 
     // END
 
@@ -18167,10 +18167,10 @@ Procedure YandexMetrika_GetCountersList(FunctionParameters)
     Token     = FunctionParameters["Metrika_Token"];
     CounterID = FunctionParameters["Metrika_CounterID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("metrika", "GetCountersList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCountersList", Options);
 
     Process(Result, "YandexMetrika", "GetCountersList"); // SKIP
 
@@ -18183,11 +18183,11 @@ Procedure YandexMetrika_GetCountersList(FunctionParameters)
 
     Filter.Insert("counter_ids", CountersArray);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Filter);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", Filter);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("metrika", "GetCountersList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCountersList", Options);
 
     // END
 
@@ -18200,11 +18200,11 @@ Procedure YandexMetrika_GetActionsList(FunctionParameters)
     Token     = FunctionParameters["Metrika_Token"];
     CounterID = FunctionParameters["Metrika_CounterID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Token);
-    Опции.Вставить("", CounterID);
+    Options = New Structure;
+    Options.Insert("", Token);
+    Options.Insert("", CounterID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("metrika", "GetActionsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetActionsList", Options);
 
     // END
 
@@ -18223,13 +18223,13 @@ Procedure S3_GetBasicDataStructure(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     // END
 
@@ -18244,20 +18244,20 @@ Procedure S3_SendRequestWithoutBody(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
     Method    = "GET";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Method);
-    Опции.Вставить("", BasicData);
+    Options = New Structure;
+    Options.Insert("", Method);
+    Options.Insert("", BasicData);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "SendRequestWithoutBody", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "SendRequestWithoutBody", Options);
 
     // END
 
@@ -18272,23 +18272,23 @@ Procedure S3_SendRequestWithBody(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Method = "PUT";
     Body   = "C:\test_data\document.docx"; // URL, Path or Binary Data
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Method);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Body);
+    Options = New Structure;
+    Options.Insert("", Method);
+    Options.Insert("", BasicData);
+    Options.Insert("", Body);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "SendRequestWithBody", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "SendRequestWithBody", Options);
 
     // END
 
@@ -18303,13 +18303,13 @@ Procedure S3_CreateBucket(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
@@ -18321,12 +18321,12 @@ Procedure S3_CreateBucket(FunctionParameters)
     Result = OPI_S3.DeleteBucket(Name, BasicData, Directory); // SKIP
     Process(Result, "S3", "CreateBucket", "Deletion"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "CreateBucket", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "CreateBucket", Options);
 
     // END
 
@@ -18341,13 +18341,13 @@ Procedure S3_DeleteBucket(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
@@ -18355,12 +18355,12 @@ Procedure S3_DeleteBucket(FunctionParameters)
     Name = "opi-dirbucket3";
     Name = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "DeleteBucket", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "DeleteBucket", Options);
 
     // END
 
@@ -18375,17 +18375,17 @@ Procedure S3_ListBuckets(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", BasicData);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
+    Options = New Structure;
+    Options.Insert("", BasicData);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "ListBuckets", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "ListBuckets", Options);
 
     // END
 
@@ -18400,13 +18400,13 @@ Procedure S3_HeadBucket(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
@@ -18414,22 +18414,22 @@ Procedure S3_HeadBucket(FunctionParameters)
     Name = "opi-dirbucket3";
     Name = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "HeadBucket", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "HeadBucket", Options);
 
     Process(Result, "S3", "HeadBucket"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
-    Опции.Вставить("", "1234");
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
+    Options.Insert("", "1234");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "HeadBucket", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "HeadBucket", Options);
 
     // END
 
@@ -18444,13 +18444,13 @@ Procedure S3_GetBucketEncryption(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
@@ -18458,12 +18458,12 @@ Procedure S3_GetBucketEncryption(FunctionParameters)
     Name = "opi-dirbucket3";
     Name = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBucketEncryption", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBucketEncryption", Options);
 
     // END
 
@@ -18478,13 +18478,13 @@ Procedure S3_DeleteBucketEncryption(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
@@ -18492,12 +18492,12 @@ Procedure S3_DeleteBucketEncryption(FunctionParameters)
     Name = "opi-dirbucket3";
     Name = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "DeleteBucketEncryption", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "DeleteBucketEncryption", Options);
 
     // END
 
@@ -18512,13 +18512,13 @@ Procedure S3_PutBucketEncryption(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
@@ -18534,13 +18534,13 @@ Procedure S3_PutBucketEncryption(FunctionParameters)
                       | </Rule>
                       |</ServerSideEncryptionConfiguration>";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", XmlConfig);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", BasicData);
+    Options.Insert("", XmlConfig);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "PutBucketEncryption", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "PutBucketEncryption", Options);
 
     // END
 
@@ -18555,13 +18555,13 @@ Procedure S3_GetBucketTagging(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
@@ -18569,12 +18569,12 @@ Procedure S3_GetBucketTagging(FunctionParameters)
     Name = "opi-dirbucket3";
     Name = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBucketTagging", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBucketTagging", Options);
 
     // END
 
@@ -18589,13 +18589,13 @@ Procedure S3_PutBucketTagging(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     TagStructure = New Structure;
     TagStructure.Insert("MyTag1", "SomeValue");
@@ -18607,12 +18607,12 @@ Procedure S3_PutBucketTagging(FunctionParameters)
     Name = "opi-dirbucket3";
     Name = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", TagStructure);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", BasicData);
+    Options.Insert("", TagStructure);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "PutBucketTagging", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "PutBucketTagging", Options);
 
     // END
 
@@ -18627,13 +18627,13 @@ Procedure S3_DeleteBucketTagging(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
@@ -18641,11 +18641,11 @@ Procedure S3_DeleteBucketTagging(FunctionParameters)
     Name = "opi-dirbucket3";
     Name = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", BasicData);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", BasicData);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "DeleteBucketTagging", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "DeleteBucketTagging", Options);
 
     // END
 
@@ -18660,13 +18660,13 @@ Procedure S3_GetBucketVersioning(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
@@ -18674,11 +18674,11 @@ Procedure S3_GetBucketVersioning(FunctionParameters)
     Name = "opi-dirbucket3";
     Name = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", BasicData);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", BasicData);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBucketVersioning", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBucketVersioning", Options);
 
     // END
 
@@ -18693,13 +18693,13 @@ Procedure S3_PutBucketVersioning(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
     Status    = True;
 
     Directory = True; // Formation URL in path-style
@@ -18708,12 +18708,12 @@ Procedure S3_PutBucketVersioning(FunctionParameters)
     Name = "opi-dirbucket3";
     Name = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Status);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", BasicData);
+    Options.Insert("", Status);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "PutBucketVersioning", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "PutBucketVersioning", Options);
 
     // END
 
@@ -18728,13 +18728,13 @@ Procedure S3_PutObject(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
@@ -18745,14 +18745,14 @@ Procedure S3_PutObject(FunctionParameters)
     Name   = "picture.jpg";
     Entity = FunctionParameters["Picture"]; // URL, Path or Binary Data
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", Entity);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", Entity);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "PutObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "PutObject", Options);
 
     Process(Result, "S3", "PutObject"); // SKIP
 
@@ -18761,14 +18761,14 @@ Procedure S3_PutObject(FunctionParameters)
 
     BasicData.Insert("ChunkSize", 5242880); // Size parts for upload in multiple of requests
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", Entity);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", Entity);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "PutObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "PutObject", Options);
 
     // END
 
@@ -18785,13 +18785,13 @@ Procedure S3_UploadFullObject(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name   = "pictureSmall.jpg";
     Entity = FunctionParameters["Picture"]; // URL, Path or Binary Data
@@ -18802,14 +18802,14 @@ Procedure S3_UploadFullObject(FunctionParameters)
     Bucket = "opi-dirbucket3";
     Bucket = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", Entity);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", Entity);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "UploadFullObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "UploadFullObject", Options);
 
     // END
 
@@ -18826,13 +18826,13 @@ Procedure S3_DeleteObject(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "picture.jpg";
 
@@ -18842,13 +18842,13 @@ Procedure S3_DeleteObject(FunctionParameters)
     Bucket = "opi-dirbucket3";
     Bucket = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "DeleteObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "DeleteObject", Options);
 
     // END
 
@@ -18863,13 +18863,13 @@ Procedure S3_HeadObject(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "picture.jpg";
 
@@ -18879,13 +18879,13 @@ Procedure S3_HeadObject(FunctionParameters)
     Bucket = "opi-dirbucket3";
     Bucket = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "HeadObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "HeadObject", Options);
 
     // END
 
@@ -18900,13 +18900,13 @@ Procedure S3_CopyObject(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
@@ -18918,15 +18918,15 @@ Procedure S3_CopyObject(FunctionParameters)
     SourceBucket    = "opi-dirbucket3";
     SourceBucket    = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", SourcePath);
-    Опции.Вставить("", DestinationBucket);
-    Опции.Вставить("", DestinationPath);
-    Опции.Вставить("", SourceBucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", SourcePath);
+    Options.Insert("", DestinationBucket);
+    Options.Insert("", DestinationPath);
+    Options.Insert("", SourceBucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "CopyObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "CopyObject", Options);
 
     // END
 
@@ -18943,13 +18943,13 @@ Procedure S3_PutObjectTagging(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "picture.jpg";
 
@@ -18964,14 +18964,14 @@ Procedure S3_PutObjectTagging(FunctionParameters)
     TagStructure.Insert("MyTag1", "SomeValue");
     TagStructure.Insert("MyTag2", "AnotherOne");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", TagStructure);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", TagStructure);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "PutObjectTagging", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "PutObjectTagging", Options);
 
     // END
 
@@ -18986,13 +18986,13 @@ Procedure S3_GetObjectTagging(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "picture.jpg";
 
@@ -19002,13 +19002,13 @@ Procedure S3_GetObjectTagging(FunctionParameters)
     Bucket = "opi-dirbucket3";
     Bucket = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetObjectTagging", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObjectTagging", Options);
 
     // END
 
@@ -19023,13 +19023,13 @@ Procedure S3_DeleteObjectTagging(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "picture.jpg";
 
@@ -19039,13 +19039,13 @@ Procedure S3_DeleteObjectTagging(FunctionParameters)
     Bucket = "opi-dirbucket3";
     Bucket = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "DeleteObjectTagging", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "DeleteObjectTagging", Options);
 
     // END
 
@@ -19060,13 +19060,13 @@ Procedure S3_ListObjects(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
@@ -19074,12 +19074,12 @@ Procedure S3_ListObjects(FunctionParameters)
     Bucket = "opi-dirbucket3";
     Bucket = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "ListObjects", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "ListObjects", Options);
 
     // END
 
@@ -19094,13 +19094,13 @@ Procedure S3_ListObjectVersions(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
@@ -19109,13 +19109,13 @@ Procedure S3_ListObjectVersions(FunctionParameters)
     Bucket = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
     Prefix = "pic";
-    Опции = Новый Структура;
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Prefix);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", Prefix);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "ListObjectVersions", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "ListObjectVersions", Options);
 
     // END
 
@@ -19134,13 +19134,13 @@ Procedure S3_GetObject(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "picture.jpg";
 
@@ -19150,26 +19150,26 @@ Procedure S3_GetObject(FunctionParameters)
     Bucket = "opi-dirbucket3";
     Bucket = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
     Process(Result, "S3", "GetObject", , RequiredSize); // SKIP
 
     TempFile = GetTempFileName();
     BasicData.Insert("ChunkSize", 200000);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", TempFile);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", TempFile);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
     // END
 
@@ -19179,22 +19179,22 @@ Procedure S3_GetObject(FunctionParameters)
     Bucket = "newbucket2";
 
     BigTempFile = GetTempFileName();
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", BigTempFile);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", BigTempFile);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
     Process(Result, "S3", "GetObject", "Big file", 34432400);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetObject", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
     Process(Result, "S3", "GetObject", "Big BD", 34432400);
 
@@ -19210,13 +19210,13 @@ Procedure S3_InitPartsUpload(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "fileChunked.mp3";
 
@@ -19229,13 +19229,13 @@ Procedure S3_InitPartsUpload(FunctionParameters)
     Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
     Entity = OPI_HTTPRequests.Get(Entity);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "InitPartsUpload", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "InitPartsUpload", Options);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     Process(Result, "S3", "InitPartsUpload"); // SKIP
@@ -19280,15 +19280,15 @@ Procedure S3_InitPartsUpload(FunctionParameters)
 
     EndDo;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", UploadID);
-    Опции.Вставить("", TagsArray);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", UploadID);
+    Options.Insert("", TagsArray);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "FinishPartsUpload", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "FinishPartsUpload", Options);
 
     // END
 
@@ -19305,13 +19305,13 @@ Procedure S3_FinishPartsUpload(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "fileChunked.mp3";
 
@@ -19324,13 +19324,13 @@ Procedure S3_FinishPartsUpload(FunctionParameters)
     Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
     Entity = OPI_HTTPRequests.Get(Entity);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "InitPartsUpload", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "InitPartsUpload", Options);
 
     Process(Result, "S3", "FinishPartsUpload", "Start"); // SKIP
 
@@ -19374,15 +19374,15 @@ Procedure S3_FinishPartsUpload(FunctionParameters)
 
     EndDo;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", UploadID);
-    Опции.Вставить("", TagsArray);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", UploadID);
+    Options.Insert("", TagsArray);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "FinishPartsUpload", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "FinishPartsUpload", Options);
     // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     // END
@@ -19400,13 +19400,13 @@ Procedure S3_UploadObjectPart(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "fileChunked.mp3";
 
@@ -19419,13 +19419,13 @@ Procedure S3_UploadObjectPart(FunctionParameters)
     Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
     Entity = OPI_HTTPRequests.Get(Entity);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "InitPartsUpload", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "InitPartsUpload", Options);
 
     Process(Result, "S3", "UploadObjectPart", "Start"); // SKIP
 
@@ -19471,15 +19471,15 @@ Procedure S3_UploadObjectPart(FunctionParameters)
 
     EndDo;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", UploadID);
-    Опции.Вставить("", TagsArray);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", UploadID);
+    Options.Insert("", TagsArray);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "FinishPartsUpload", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "FinishPartsUpload", Options);
 
     // END
 
@@ -19496,13 +19496,13 @@ Procedure S3_AbortMultipartUpload(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "fileChunked.mp3";
 
@@ -19512,23 +19512,23 @@ Procedure S3_AbortMultipartUpload(FunctionParameters)
     Bucket = "opi-dirbucket3";
     Bucket = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", Directory);
 
-    Start = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "InitPartsUpload", Опции);
+    Start = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "InitPartsUpload", Options);
     UploadID = Start["response"]["InitiateMultipartUploadResult"]["UploadId"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", UploadID);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", UploadID);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "AbortMultipartUpload", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "AbortMultipartUpload", Options);
 
     // END
 
@@ -19547,13 +19547,13 @@ Procedure S3_GetObjectDownloadLink(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "picture.jpg";
 
@@ -19563,14 +19563,14 @@ Procedure S3_GetObjectDownloadLink(FunctionParameters)
     Bucket = "opi-dirbucket3";
     Bucket = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", 7200);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", 7200);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetObjectDownloadLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObjectDownloadLink", Options);
 
     // END
 
@@ -19593,13 +19593,13 @@ Procedure S3_GetObjectUploadLink(FunctionParameters)
     SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AccessKey);
-    Опции.Вставить("", SecretKey);
-    Опции.Вставить("", Region);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AccessKey);
+    Options.Insert("", SecretKey);
+    Options.Insert("", Region);
 
-    BasicData = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetBasicDataStructure", Опции);
+    BasicData = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetBasicDataStructure", Options);
 
     Name = "pictureU.jpg";
 
@@ -19608,14 +19608,14 @@ Procedure S3_GetObjectUploadLink(FunctionParameters)
 
     Bucket = "newbucket2";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
-    Опции.Вставить("", 7200);
-    Опции.Вставить("", Directory);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
+    Options.Insert("", 7200);
+    Options.Insert("", Directory);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "GetObjectUploadLink", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObjectUploadLink", Options);
 
     // END
 
@@ -19628,12 +19628,12 @@ Procedure S3_GetObjectUploadLink(FunctionParameters)
 
     Process(Result, "S3", "GetObjectUploadLink", "Upload");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Bucket);
-    Опции.Вставить("", BasicData);
+    Options = New Structure;
+    Options.Insert("", Name);
+    Options.Insert("", Bucket);
+    Options.Insert("", BasicData);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "HeadObject", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "HeadObject", Options);
 
     Process(Check, "S3", "GetObjectUploadLink", "Check", RequiredSize);
 
@@ -19655,10 +19655,10 @@ Procedure TCP_CreateConnection(FunctionParameters)
     OPI_TCP.CloseConnection(Connection);
 
     Address    = "tcpbin.com:4243";
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Tls = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("tcp", "GetTLSSettings", Опции);
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetTLSSettings", Options);
     Connection = OPI_TCP.CreateConnection(Address, TLS);
 
     // END
@@ -19747,26 +19747,26 @@ Procedure TCP_ProcessRequest(FunctionParameters)
     Address = FunctionParameters["TCP_Address"];
     Data    = "Echo this!" + Chars.LF;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Data);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Data);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("tcp", "ProcessRequest", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ProcessRequest", Options);
 
     Process(Result, "TCP", "ProcessRequest", , "Echo this!" + Chars.LF); // SKIP
 
     Address = FunctionParameters["TCP_AddressTLS"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Tls = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("tcp", "GetTLSSettings", Опции);
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetTLSSettings", Options);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Data);
-    Опции.Вставить("", Tls);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Data);
+    Options.Insert("", Tls);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("tcp", "ProcessRequest", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "ProcessRequest", Options);
 
     // END
 
@@ -19836,10 +19836,10 @@ EndProcedure
 
 Procedure TCP_GetTLSSettings(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("tcp", "GetTLSSettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("tcp", "GetTLSSettings", Options);
 
     // END
 
@@ -19936,11 +19936,11 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
                    |data BLOB
                    |);";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
 
     Process(Result, "SQLite", "ExecuteSQLQuery", "Create"); // SKIP
 
@@ -19958,12 +19958,12 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     ParameterArray.Add(OPI_Tools.GetCurrentDate()); // DATETIME
     ParameterArray.Add(New Structure("blob", Image)); // BLOB
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", ParameterArray);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", ParameterArray);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
 
     Process(Result, "SQLite", "ExecuteSQLQuery", "Insert"); // SKIP
 
@@ -19971,11 +19971,11 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
 
     Process(Result, "SQLite", "ExecuteSQLQuery", , Image); // SKIP
 
@@ -19992,11 +19992,11 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
                    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
                    | COMMIT;";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
 
     Process(Result, "SQLite", "ExecuteSQLQuery", "Transaction"); // SKIP
 
@@ -20015,12 +20015,12 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     QueryText = "SELECT uuid4();";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", ExtensionMap);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", Connection);
+    Options.Insert("", ExtensionMap);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
 
     Process(Result, "SQLite", "ExecuteSQLQuery", "Extension"); // SKIP
 
@@ -20063,12 +20063,12 @@ Procedure SQLite_CreateTable(FunctionParameters)
     ColoumnsStruct.Insert("created_at", "DATETIME");
     ColoumnsStruct.Insert("data"      , "BLOB");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "CreateTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateTable", Options);
 
     // END
 
@@ -20078,12 +20078,12 @@ Procedure SQLite_CreateTable(FunctionParameters)
     ColoumnsMap.Insert("id"                 , "INTEGER PRIMARY KEY");
     ColoumnsMap.Insert("[An obscure column]", "TEXT");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "test1");
-    Опции.Вставить("", ColoumnsMap);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", "test1");
+    Options.Insert("", ColoumnsMap);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "CreateTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateTable", Options);
 
     Process(Result, "SQLite", "CreateTable", "An obscure column");
 
@@ -20121,64 +20121,64 @@ Procedure SQLite_AddRecords(FunctionParameters)
     DataArray.Add(RowStructure2);
     DataArray.Add(RowStrucutre1);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", DataArray);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", DataArray);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "AddRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
 
     // END
 
     Process(Result, "SQLite", "AddRecords");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", DataArray);
-    Опции.Вставить("", Ложь);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", DataArray);
+    Options.Insert("", Ложь);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "AddRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
 
     Process(Result, "SQLite", "AddRecords", "No transaction");
 
     RowStrucutre1.Insert("error", "Lesha");
     DataArray.Add(RowStrucutre1);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", DataArray);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", DataArray);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "AddRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
     Process(Result, "SQLite", "AddRecords", "Field error");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", DataArray);
-    Опции.Вставить("", Ложь);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", DataArray);
+    Options.Insert("", Ложь);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "AddRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
     Process(Result, "SQLite", "AddRecords", "Error without transaction");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", "not valid json");
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", "not valid json");
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "AddRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
     Process(Result, "SQLite", "AddRecords", "JSON Error");
 
     RowMap = New Map;
     RowMap.Insert("[An obscure column]", "yo");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "test1");
-    Опции.Вставить("", RowMap);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", "test1");
+    Options.Insert("", RowMap);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "AddRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
     Process(Result, "SQLite", "AddRecords", "An obscure column");
 
     Try
@@ -20221,47 +20221,47 @@ Procedure SQLite_GetRecords(FunctionParameters)
     Sort  = New Structure("created_at", "DESC");
     Count = 1;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Fields);
-    Опции.Вставить("", Filters);
-    Опции.Вставить("", Sort);
-    Опции.Вставить("", Count);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Fields);
+    Options.Insert("", Filters);
+    Options.Insert("", Sort);
+    Options.Insert("", Count);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
     // END
 
     Process(Result, "SQLite", "GetRecords");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", "['name','age','salary','is_active','created_at']");
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", "['name','age','salary','is_active','created_at']");
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
     Process(Result, "SQLite", "GetRecords", "No parameters");
 
     FilterStructure2.Insert("type", "BEETWEEN");
     Filters.Add(FilterStructure2);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", "['name','age','salary','is_active','created_at']");
-    Опции.Вставить("", Filters);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", "['name','age','salary','is_active','created_at']");
+    Options.Insert("", Filters);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
     Process(Result, "SQLite", "GetRecords", "Error");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "test1");
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", "test1");
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
     Process(Result, "SQLite", "GetRecords", "An obscure column");
 
@@ -20288,13 +20288,13 @@ Procedure SQLite_UpdateRecords(FunctionParameters)
 
     Filters.Add(FilterStructure);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", FieldsStructure);
-    Опции.Вставить("", FilterStructure);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", FieldsStructure);
+    Options.Insert("", FilterStructure);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "UpdateRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "UpdateRecords", Options);
 
     // END
 
@@ -20305,13 +20305,13 @@ Procedure SQLite_UpdateRecords(FunctionParameters)
     Filters = New Array;
     Filters.Add(FilterStructure);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", "['name','salary']");
-    Опции.Вставить("", Filters);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", "['name','salary']");
+    Options.Insert("", Filters);
+    Options.Insert("", Base);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecords", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
     Process(Check, "SQLite", "UpdateRecords", "Check", FieldsStructure);
 
@@ -20334,24 +20334,24 @@ Procedure SQLite_DeleteRecords(FunctionParameters)
 
     Filters.Add(FilterStructure);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", FilterStructure);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", FilterStructure);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "DeleteRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "DeleteRecords", Options);
 
     // END
 
     Process(Result, "SQLite", "DeleteRecords");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", "['name','salary']");
-    Опции.Вставить("", Filters);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", "['name','salary']");
+    Options.Insert("", Filters);
+    Options.Insert("", Base);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecords", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
     Process(Check, "SQLite", "DeleteRecords", "Check");
 
@@ -20362,11 +20362,11 @@ Procedure SQLite_GetTableInformation(FunctionParameters)
     Base  = FunctionParameters["SQLite_DB"];
     Table = "test";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
 
     // END
 
@@ -20376,18 +20376,18 @@ EndProcedure
 
 Procedure SQLite_GetRecordsFilterStrucutre(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecordsFilterStrucutre", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecordsFilterStrucutre", Options);
 
     // END
 
     Process(Result, "SQLite", "GetRecordsFilterStrucutre");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecordsFilterStrucutre", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecordsFilterStrucutre", Options);
 
     Process(Result, "SQLite", "GetRecordsFilterStrucutre", "Clear");
 
@@ -20398,21 +20398,21 @@ Procedure SQLite_DeleteTable(FunctionParameters)
     Base  = FunctionParameters["SQLite_DB"];
     Table = "test";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "DeleteTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "DeleteTable", Options);
 
     // END
 
     Process(Result, "SQLite", "DeleteTable");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Base);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetTableInformation", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
 
     Process(Check, "SQLite", "DeleteTable", "Check");
 
@@ -20425,29 +20425,29 @@ Procedure SQLite_ClearTable(FunctionParameters)
     Base  = FunctionParameters["SQLite_DB"];
     Table = "test";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "ClearTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ClearTable", Options);
 
     // END
 
     Process(Result, "SQLite", "ClearTable");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Base);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetTableInformation", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
 
     Process(Check, "SQLite", "ClearTable", "Table");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Base);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetRecords", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
 
     Process(Check, "SQLite", "ClearTable", "Check");
 
@@ -20499,23 +20499,23 @@ Procedure SQLite_AddTableColumn(FunctionParameters)
     Name     = "new_col";
     DataType = "TEXT";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", DataType);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Name);
+    Options.Insert("", DataType);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "AddTableColumn", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddTableColumn", Options);
 
     // END
 
     Process(Result, "SQLite", "AddTableColumn");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
 
     Process(Result, "SQLite", "AddTableColumn", "Check");
 
@@ -20527,22 +20527,22 @@ Procedure SQLite_DeleteTableColumn(FunctionParameters)
     Table = "test";
     Name  = "new_col";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Name);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "DeleteTableColumn", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "DeleteTableColumn", Options);
 
     // END
 
     Process(Result, "SQLite", "DeleteTableColumn");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
 
     Process(Result, "SQLite", "DeleteTableColumn", "Check");
 
@@ -20561,41 +20561,41 @@ Procedure SQLite_EnsureTable(FunctionParameters)
     ColoumnsStruct.Insert("age"  , "INTEGER");
     ColoumnsStruct.Insert("info" , "TEXT");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "EnsureTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "EnsureTable", Options);
 
     // END
 
     Process(Result, "SQLite", "EnsureTable");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Base);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetTableInformation", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
 
     Process(Check, "SQLite", "EnsureTable", "Check", ColoumnsStruct);
 
     Table = "test_new";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", Base);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "EnsureTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "EnsureTable", Options);
 
     Process(Result, "SQLite", "EnsureTable", "New");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Base);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Base);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("sqlite", "GetTableInformation", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
 
     Process(Check, "SQLite", "EnsureTable", "Check 2", ColoumnsStruct);
 
@@ -20612,13 +20612,13 @@ Procedure PostgreSQL_GenerateConnectionString(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "postgres";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     // END
 
@@ -20642,20 +20642,20 @@ Procedure PostgreSQL_CreateConnection(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -20683,20 +20683,20 @@ Procedure PostgreSQL_CloseConnection(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -20723,20 +20723,20 @@ Procedure PostgreSQL_IsConnector(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -20768,20 +20768,20 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -20807,11 +20807,11 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
                    |data BYTEA
                    |);";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
     Process(Result, "PostgreSQL", "ExecuteSQLQuery", "Create"); // SKIP
 
@@ -20829,12 +20829,12 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
     ParameterArray.Add(New Structure("DATE" , OPI_Tools.GetCurrentDate()));
     ParameterArray.Add(New Structure("BYTEA", Image));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", ParameterArray);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", ParameterArray);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
     Process(Result, "PostgreSQL", "ExecuteSQLQuery", "Insert"); // SKIP
 
@@ -20842,11 +20842,11 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
     Process(Result, "PostgreSQL", "ExecuteSQLQuery", , Image); // SKIP
 
@@ -20864,11 +20864,11 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
                    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
                    |END $$ LANGUAGE plpgsql;";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
     Process(Result, "PostgreSQL", "ExecuteSQLQuery", "Transaction"); // SKIP
 
@@ -20876,11 +20876,11 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     SQLFile = FunctionParameters["SQL"]; // Binary Data, URL or path to file
 
-    Опции = Новый Структура;
-    Опции.Вставить("", SQLFile);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", SQLFile);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ExecuteSQLQuery", Options);
 
     Process(Result, "PostgreSQL", "ExecuteSQLQuery", "File"); // SKIP
 
@@ -20905,20 +20905,20 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -20932,12 +20932,12 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateDatabase", Options);
 
     // END
 
@@ -20947,22 +20947,22 @@ Procedure PostgreSQL_CreateDatabase(FunctionParameters)
 
     Process(Connection, "PostgreSQL", "CreateDatabase", "Openning");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateDatabase", Options);
 
     Process(Result, "PostgreSQL", "CreateDatabase", "Existing");
 
     Base = "testbase2";
 
     OPI_PostgreSQL.DeleteDatabase(Base, ConnectionString, TLSSettings);
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateDatabase", Options);
 
     Process(Result, "PostgreSQL", "CreateDatabase", "New");
 
@@ -20983,20 +20983,20 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21036,13 +21036,13 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateTable", Options);
 
     // END
 
@@ -21050,26 +21050,26 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
 
     Table = "ABC DEF";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateTable", Options);
 
     Process(Result, "PostgreSQL", "CreateTable", "Name error");
 
     Table = "somename";
     ColoumnsStruct.Insert("wtf_field", "WTF");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "CreateTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "CreateTable", Options);
 
     Process(Result, "PostgreSQL", "CreateTable", "Type error");
 
@@ -21088,20 +21088,20 @@ Procedure PostgreSQL_GetTableInformation(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21112,12 +21112,12 @@ Procedure PostgreSQL_GetTableInformation(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
 
     // END
 
@@ -21125,12 +21125,12 @@ Procedure PostgreSQL_GetTableInformation(FunctionParameters)
 
     Table = "heyho";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
 
     Process(Result, "PostgreSQL", "GetTableInformation", "Error");
 
@@ -21149,20 +21149,20 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21211,14 +21211,14 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", RecordsArray);
-    Опции.Вставить("", Истина);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", RecordsArray);
+    Options.Insert("", Истина);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "AddRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "AddRecords", Options);
 
     // END
 
@@ -21239,20 +21239,20 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21265,25 +21265,25 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
 
     Process(Result, "PostgreSQL", "GetRecords"); // SKIP
 
     // Filter, selected fields, limit and sorting
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", "test_data");
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", "test_data");
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     Table = "test_data";
 
@@ -21315,16 +21315,16 @@ Procedure PostgreSQL_GetRecords(FunctionParameters)
     Sort  = New Structure("ip_address", "DESC");
     Count = 5;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Fields);
-    Опции.Вставить("", Filters);
-    Опции.Вставить("", Sort);
-    Опции.Вставить("", Count);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Fields);
+    Options.Insert("", Filters);
+    Options.Insert("", Sort);
+    Options.Insert("", Count);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
 
     // END
 
@@ -21345,20 +21345,20 @@ Procedure PostgreSQL_UpdateRecords(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21416,20 +21416,20 @@ Procedure PostgreSQL_DeleteRecords(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21461,13 +21461,13 @@ Procedure PostgreSQL_DeleteRecords(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Filters);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Filters);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteRecords", Options);
 
     // END
 
@@ -21478,12 +21478,12 @@ Procedure PostgreSQL_DeleteRecords(FunctionParameters)
 
     Process(Result, "PostgreSQL", "DeleteRecords");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
 
     Process(Result, "PostgreSQL", "DeleteRecords", "Check", Residue);
 
@@ -21503,20 +21503,20 @@ Procedure PostgreSQL_DeleteTable(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21527,12 +21527,12 @@ Procedure PostgreSQL_DeleteTable(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteTable", Options);
 
     // END
 
@@ -21541,20 +21541,20 @@ Procedure PostgreSQL_DeleteTable(FunctionParameters)
     Base  = "test_data";
     Table = "test_data";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteTable", Options);
 
     Process(Result, "PostgreSQL", "DeleteTable", "Test");
 
@@ -21573,20 +21573,20 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21597,12 +21597,12 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteDatabase", Options);
 
     // END
 
@@ -21614,27 +21614,27 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
 
     Process(Connection, "PostgreSQL", "DeleteDatabase", "Openning");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DisableAllDatabaseConnections", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DisableAllDatabaseConnections", Options);
 
     Process(Result, "PostgreSQL", "DeleteDatabase", "Shutdown");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteDatabase", Options);
 
     Process(Result, "PostgreSQL", "DeleteDatabase", "Deletion");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteDatabase", Options);
 
     Process(Result, "PostgreSQL", "DeleteDatabase", "Error");
 
@@ -21642,11 +21642,11 @@ Procedure PostgreSQL_DeleteDatabase(FunctionParameters)
 
     Process(Closing, "PostgreSQL", "DeleteDatabase", "Closing");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteDatabase", Options);
 
     Process(Result, "PostgreSQL", "DeleteDatabase", "Connection error");
 
@@ -21665,20 +21665,20 @@ Procedure PostgreSQL_ClearTable(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21689,23 +21689,23 @@ Procedure PostgreSQL_ClearTable(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "ClearTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "ClearTable", Options);
 
     // END
 
     Process(Result, "PostgreSQL", "ClearTable");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecords", Options);
 
     Process(Result, "PostgreSQL", "ClearTable", "Check");
 
@@ -21724,20 +21724,20 @@ Procedure PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21746,12 +21746,12 @@ Procedure PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DisableAllDatabaseConnections", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DisableAllDatabaseConnections", Options);
 
     // END
 
@@ -21761,18 +21761,18 @@ EndProcedure
 
 Procedure PostgreSQL_GetRecordsFilterStrucutre(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetRecordsFilterStrucutre", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecordsFilterStrucutre", Options);
 
     // END
 
     Process(Result, "PostgreSQL", "GetRecordsFilterStrucutre");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetRecordsFilterStrucutre", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetRecordsFilterStrucutre", Options);
 
     Process(Result, "PostgreSQL", "GetRecordsFilterStrucutre", "Clear");
 
@@ -21780,10 +21780,10 @@ EndProcedure
 
 Procedure PostgreSQL_GetTLSSettings(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
 
     // END
 
@@ -21804,20 +21804,20 @@ Procedure PostgreSQL_AddTableColumn(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21826,25 +21826,25 @@ Procedure PostgreSQL_AddTableColumn(FunctionParameters)
     Name     = "new_field";
     DataType = "TEXT";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", DataType);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Name);
+    Options.Insert("", DataType);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "AddTableColumn", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "AddTableColumn", Options);
 
     // END
 
     Process(Result, "PostgreSQL", "AddTableColumn");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
 
     Process(Result, "PostgreSQL", "AddTableColumn", "Check");
 
@@ -21863,20 +21863,20 @@ Procedure PostgreSQL_DeleteTableColumn(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21884,24 +21884,24 @@ Procedure PostgreSQL_DeleteTableColumn(FunctionParameters)
     Table = "testtable";
     Name  = "new_field";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Name);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "DeleteTableColumn", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "DeleteTableColumn", Options);
 
     // END
 
     Process(Result, "PostgreSQL", "DeleteTableColumn");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
 
     Process(Result, "PostgreSQL", "DeleteTableColumn", "Check");
 
@@ -21920,20 +21920,20 @@ Procedure PostgreSQL_EnsureTable(FunctionParameters)
     Port = 5432;
     Port = ?(TLS, 5433, 5432); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -21946,45 +21946,45 @@ Procedure PostgreSQL_EnsureTable(FunctionParameters)
     ColoumnsStruct.Insert("bigint_field"   , "BIGINT");
     ColoumnsStruct.Insert("custom_field"   , "TEXT");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "EnsureTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "EnsureTable", Options);
 
     // END
 
     Process(Result, "PostgreSQL", "EnsureTable");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTableInformation", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
 
     Process(Check, "PostgreSQL", "EnsureTable", "Check", ColoumnsStruct);
 
     Table = "test_new";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "EnsureTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "EnsureTable", Options);
 
     Process(Result, "PostgreSQL", "EnsureTable", "New");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("postgres", "GetTableInformation", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("postgres", "GetTableInformation", Options);
 
     Process(Check, "PostgreSQL", "EnsureTable", "Check", ColoumnsStruct);
 
@@ -22001,13 +22001,13 @@ Procedure MySQL_GenerateConnectionString(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     // END
 
@@ -22031,20 +22031,20 @@ Procedure MySQL_CreateConnection(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22071,20 +22071,20 @@ Procedure MySQL_CloseConnection(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22111,20 +22111,20 @@ Procedure MySQL_IsConnector(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22156,20 +22156,20 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22197,11 +22197,11 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
                    |data MEDIUMBLOB
                    |);";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options);
 
     Process(Result, "MySQL", "ExecuteSQLQuery", "Create"); // SKIP
 
@@ -22221,12 +22221,12 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
     ParameterArray.Add(New Structure("TIME"  , OPI_Tools.GetCurrentDate()));
     ParameterArray.Add(New Structure("BYTES" , Image));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", ParameterArray);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", ParameterArray);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options);
 
     Process(Result, "MySQL", "ExecuteSQLQuery", "Insert"); // SKIP
 
@@ -22234,11 +22234,11 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
 
     QueryText = "SELECT name, age, salary, amount, type, date, time, data FROM test_table;";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options);
 
     Process(Result, "MySQL", "ExecuteSQLQuery", , Image); // SKIP
 
@@ -22249,11 +22249,11 @@ Procedure MySQL_ExecuteSQLQuery(FunctionParameters)
 
     SQLFile = FunctionParameters["SQL2"]; // Binary Data, URL or path to file
 
-    Опции = Новый Структура;
-    Опции.Вставить("", SQLFile);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", SQLFile);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ExecuteSQLQuery", Options);
 
     Process(Result, "MySQL", "ExecuteSQLQuery", "File"); // SKIP
 
@@ -22278,20 +22278,20 @@ Procedure MySQL_CreateDatabase(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22304,12 +22304,12 @@ Procedure MySQL_CreateDatabase(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "CreateDatabase", Options);
 
     // END
 
@@ -22322,21 +22322,21 @@ Procedure MySQL_CreateDatabase(FunctionParameters)
 
     Process(Connection, "MySQL", "CreateDatabase", "Openning");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "CreateDatabase", Options);
 
     Process(Result, "MySQL", "CreateDatabase", "Creation");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "CreateDatabase", Options);
 
     Process(Result, "MySQL", "CreateDatabase", "Existing");
 
@@ -22357,20 +22357,20 @@ Procedure MySQL_CreateTable(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22403,13 +22403,13 @@ Procedure MySQL_CreateTable(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "CreateTable", Options);
 
     // END
 
@@ -22417,26 +22417,26 @@ Procedure MySQL_CreateTable(FunctionParameters)
 
     Table = "ABC DEF";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "CreateTable", Options);
 
     Process(Result, "MySQL", "CreateTable", "Name error");
 
     Table = "somename";
     ColoumnsStruct.Insert("wtf_field", "WTF");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "CreateTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "CreateTable", Options);
 
     Process(Result, "MySQL", "CreateTable", "Type error");
 
@@ -22455,20 +22455,20 @@ Procedure MySQL_AddRecords(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22509,14 +22509,14 @@ Procedure MySQL_AddRecords(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", RecordsArray);
-    Опции.Вставить("", Истина);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", RecordsArray);
+    Options.Insert("", Истина);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "AddRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "AddRecords", Options);
 
     // END
 
@@ -22537,20 +22537,20 @@ Procedure MySQL_GetRecords(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22563,25 +22563,25 @@ Procedure MySQL_GetRecords(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecords", Options);
 
     Process(Result, "MySQL", "GetRecords"); // SKIP
 
     // Filter, selected fields, limit and sorting
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", "test_data");
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", "test_data");
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     Table = "test_data";
 
@@ -22613,16 +22613,16 @@ Procedure MySQL_GetRecords(FunctionParameters)
     Sort  = New Structure("ip_address", "DESC");
     Count = 5;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Fields);
-    Опции.Вставить("", Filters);
-    Опции.Вставить("", Sort);
-    Опции.Вставить("", Count);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Fields);
+    Options.Insert("", Filters);
+    Options.Insert("", Sort);
+    Options.Insert("", Count);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecords", Options);
 
     // END
 
@@ -22643,20 +22643,20 @@ Procedure MySQL_UpdateRecords(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22685,27 +22685,27 @@ Procedure MySQL_UpdateRecords(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", FieldsStructure);
-    Опции.Вставить("", FilterStructure);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", FieldsStructure);
+    Options.Insert("", FilterStructure);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "UpdateRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "UpdateRecords", Options);
 
     // END
 
     Process(Result, "MySQL", "UpdateRecords");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", "['ip_address']");
-    Опции.Вставить("", Filters);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", "['ip_address']");
+    Options.Insert("", Filters);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetRecords", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecords", Options);
 
     Process(Check, "MySQL", "UpdateRecords", "Check", Count, FieldsStructure);
 
@@ -22724,20 +22724,20 @@ Procedure MySQL_DeleteRecords(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22769,13 +22769,13 @@ Procedure MySQL_DeleteRecords(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Filters);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Filters);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteRecords", Options);
 
     // END
 
@@ -22786,12 +22786,12 @@ Procedure MySQL_DeleteRecords(FunctionParameters)
 
     Process(Result, "MySQL", "DeleteRecords");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecords", Options);
 
     Process(Result, "MySQL", "DeleteRecords", "Check", Residue);
 
@@ -22810,20 +22810,20 @@ Procedure MySQL_DeleteTable(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22834,12 +22834,12 @@ Procedure MySQL_DeleteTable(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteTable", Options);
 
     // END
 
@@ -22848,20 +22848,20 @@ Procedure MySQL_DeleteTable(FunctionParameters)
     Base  = "test_data";
     Table = "test_data";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteTable", Options);
 
     Process(Result, "MySQL", "DeleteTable", "Test");
 
@@ -22880,20 +22880,20 @@ Procedure MySQL_DeleteDatabase(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22904,12 +22904,12 @@ Procedure MySQL_DeleteDatabase(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteDatabase", Options);
 
     // END
 
@@ -22921,19 +22921,19 @@ Procedure MySQL_DeleteDatabase(FunctionParameters)
 
     Process(Connection, "MySQL", "DeleteDatabase", "Openning");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteDatabase", Options);
 
     Process(Result, "MySQL", "DeleteDatabase", "Deletion");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteDatabase", Options);
 
     Process(Result, "MySQL", "DeleteDatabase", "Error");
 
@@ -22941,11 +22941,11 @@ Procedure MySQL_DeleteDatabase(FunctionParameters)
 
     Process(Closing, "MySQL", "DeleteDatabase", "Closing");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteDatabase", Options);
 
     Process(Result, "MySQL", "DeleteDatabase", "Connection error");
 
@@ -22964,20 +22964,20 @@ Procedure MySQL_ClearTable(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -22988,23 +22988,23 @@ Procedure MySQL_ClearTable(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "ClearTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "ClearTable", Options);
 
     // END
 
     Process(Result, "MySQL", "ClearTable");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecords", Options);
 
     Process(Result, "MySQL", "ClearTable", "Check");
 
@@ -23012,18 +23012,18 @@ EndProcedure
 
 Procedure MySQL_GetRecordsFilterStrucutre(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetRecordsFilterStrucutre", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecordsFilterStrucutre", Options);
 
     // END
 
     Process(Result, "MySQL", "GetRecordsFilterStrucutre");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetRecordsFilterStrucutre", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetRecordsFilterStrucutre", Options);
 
     Process(Result, "MySQL", "GetRecordsFilterStrucutre", "Clear");
 
@@ -23031,10 +23031,10 @@ EndProcedure
 
 Procedure MySQL_GetTLSSettings(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
 
     // END
 
@@ -23055,20 +23055,20 @@ Procedure MySQL_GetTableInformation(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -23079,12 +23079,12 @@ Procedure MySQL_GetTableInformation(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
 
     // END
 
@@ -23092,12 +23092,12 @@ Procedure MySQL_GetTableInformation(FunctionParameters)
 
     Table = "heyho";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
 
     Process(Result, "MySQL", "GetTableInformation", "Error");
 
@@ -23116,20 +23116,20 @@ Procedure MySQL_AddTableColumn(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -23142,25 +23142,25 @@ Procedure MySQL_AddTableColumn(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", DataType);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Name);
+    Options.Insert("", DataType);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "AddTableColumn", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "AddTableColumn", Options);
 
     // END
 
     Process(Result, "MySQL", "AddTableColumn");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
 
     Process(Result, "MySQL", "AddTableColumn", "Check");
 
@@ -23179,20 +23179,20 @@ Procedure MySQL_DeleteTableColumn(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -23204,24 +23204,24 @@ Procedure MySQL_DeleteTableColumn(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Name);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "DeleteTableColumn", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "DeleteTableColumn", Options);
 
     // END
 
     Process(Result, "MySQL", "DeleteTableColumn");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
 
     Process(Result, "MySQL", "DeleteTableColumn", "Check");
 
@@ -23240,20 +23240,20 @@ Procedure MySQL_EnsureTable(FunctionParameters)
     Port = 3306;
     Port = ?(TLS, 3307, 3306); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", Port);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", Port);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GenerateConnectionString", Options);
 
     If TLS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTLSSettings", Options);
     Else
         TLSSettings = Undefined;
     EndIf;
@@ -23270,45 +23270,45 @@ Procedure MySQL_EnsureTable(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "EnsureTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "EnsureTable", Options);
 
     // END
 
     Process(Result, "MySQL", "EnsureTable");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTableInformation", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
 
     Process(Check, "MySQL", "EnsureTable", "Check", ColoumnsStruct);
 
     Table = "test_new";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "EnsureTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "EnsureTable", Options);
 
     Process(Result, "MySQL", "EnsureTable", "New");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mysql", "GetTableInformation", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("mysql", "GetTableInformation", Options);
 
     Process(Check, "MySQL", "EnsureTable", "Check", ColoumnsStruct);
 
@@ -23325,13 +23325,13 @@ Procedure GreenAPI_FormAccessParameters(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
 
     // END
 
@@ -23346,17 +23346,17 @@ Procedure GreenAPI_GetInstanceSettings(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetInstanceSettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetInstanceSettings", Options);
 
     // END
 
@@ -23371,17 +23371,17 @@ Procedure GreenAPI_GetAccountInformation(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetAccountInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetAccountInformation", Options);
 
     // END
 
@@ -23391,18 +23391,18 @@ EndProcedure
 
 Procedure GreenAPI_GetInstanceSettingsStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetInstanceSettingsStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetInstanceSettingsStructure", Options);
 
     // END
 
     Process(Result, "GreenAPI", "GetInstanceSettingsStructure");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetInstanceSettingsStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetInstanceSettingsStructure", Options);
 
     Process(Result, "GreenAPI", "GetInstanceSettingsStructure", "Clear");
 
@@ -23415,13 +23415,13 @@ Procedure GreenAPI_SetInstanceSettings(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
 
     SettingsStructure = New Structure;
     SettingsStructure.Insert("pollMessageWebhook"       , "yes");
@@ -23431,11 +23431,11 @@ Procedure GreenAPI_SetInstanceSettings(FunctionParameters)
     SettingsStructure.Insert("deletedMessageWebhook"    , "yes");
     SettingsStructure.Insert("outgoingAPIMessageWebhook", "yes");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", SettingsStructure);
-    Опции.Вставить("", AccessParameters);
+    Options = New Structure;
+    Options.Insert("", SettingsStructure);
+    Options.Insert("", AccessParameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SetInstanceSettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SetInstanceSettings", Options);
 
     // END
 
@@ -23450,17 +23450,17 @@ Procedure GreenAPI_GetInstanceStatus(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetInstanceStatus", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetInstanceStatus", Options);
 
     // END
 
@@ -23475,17 +23475,17 @@ Procedure GreenAPI_RebootInstance(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "RebootInstance", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "RebootInstance", Options);
 
     // END
 
@@ -23500,17 +23500,17 @@ Procedure GreenAPI_GetQR(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetQR", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetQR", Options);
 
     // END
 
@@ -23525,17 +23525,17 @@ Procedure GreenAPI_LogoutInstance(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "LogoutInstance", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "LogoutInstance", Options);
 
     // END
 
@@ -23552,18 +23552,18 @@ Procedure GreenAPI_GetAuthorizationCode(FunctionParameters)
 
     PhoneNumber = 441234567890;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", PhoneNumber);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", PhoneNumber);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetAuthorizationCode", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetAuthorizationCode", Options);
 
     // END
 
@@ -23580,18 +23580,18 @@ Procedure GreenAPI_SetProfilePicture(FunctionParameters)
 
     Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", Image);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", Image);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SetProfilePicture", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SetProfilePicture", Options);
 
     // END
 
@@ -23608,18 +23608,18 @@ Procedure GreenAPI_CreateGroup(FunctionParameters)
 
     Name = "New group";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", Name);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", Name);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "CreateGroup", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "CreateGroup", Options);
 
     // END
 
@@ -23636,18 +23636,18 @@ Procedure GreenAPI_LeaveGroup(FunctionParameters)
 
     GroupID = FunctionParameters["GreenAPI_GroupID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", GroupID);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", GroupID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "LeaveGroup", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "LeaveGroup", Options);
 
     // END
 
@@ -23664,18 +23664,18 @@ Procedure GreenAPI_GetGroupInformation(FunctionParameters)
 
     GroupID = FunctionParameters["GreenAPI_GroupID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", GroupID);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", GroupID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetGroupInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetGroupInformation", Options);
 
     // END
 
@@ -23693,19 +23693,19 @@ Procedure GreenAPI_UpdateGroupName(FunctionParameters)
     GroupID = FunctionParameters["GreenAPI_GroupID"];
     Name    = "New name";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", GroupID);
-    Опции.Вставить("", Name);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", GroupID);
+    Options.Insert("", Name);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "UpdateGroupName", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "UpdateGroupName", Options);
 
     // END
 
@@ -23723,19 +23723,19 @@ Procedure GreenAPI_AddGroupMember(FunctionParameters)
     GroupID = FunctionParameters["GreenAPI_GroupID"];
     UserID  = "123123123@c.us";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", GroupID);
-    Опции.Вставить("", UserID);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", GroupID);
+    Options.Insert("", UserID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "AddGroupMember", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "AddGroupMember", Options);
 
     // END
 
@@ -23753,19 +23753,19 @@ Procedure GreenAPI_ExcludeGroupMember(FunctionParameters)
     GroupID = FunctionParameters["GreenAPI_GroupID"];
     UserID  = "123123123@c.us";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", GroupID);
-    Опции.Вставить("", UserID);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", GroupID);
+    Options.Insert("", UserID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "ExcludeGroupMember", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "ExcludeGroupMember", Options);
 
     // END
 
@@ -23783,19 +23783,19 @@ Procedure GreenAPI_SetAdminRights(FunctionParameters)
     GroupID = FunctionParameters["GreenAPI_GroupID"];
     UserID  = "123123123@c.us";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", GroupID);
-    Опции.Вставить("", UserID);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", GroupID);
+    Options.Insert("", UserID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SetAdminRights", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SetAdminRights", Options);
 
     // END
 
@@ -23813,19 +23813,19 @@ Procedure GreenAPI_RevokeAdminRights(FunctionParameters)
     GroupID = FunctionParameters["GreenAPI_GroupID"];
     UserID  = "123123123@c.us";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", GroupID);
-    Опции.Вставить("", UserID);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", GroupID);
+    Options.Insert("", UserID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "RevokeAdminRights", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "RevokeAdminRights", Options);
 
     // END
 
@@ -23843,19 +23843,19 @@ Procedure GreenAPI_SetGroupPicture(FunctionParameters)
     Image   = FunctionParameters["Picture"]; // URL, Path or Binary Data
     GroupID = FunctionParameters["GreenAPI_GroupID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", GroupID);
-    Опции.Вставить("", Image);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", GroupID);
+    Options.Insert("", Image);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SetGroupPicture", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SetGroupPicture", Options);
 
     // END
 
@@ -23873,32 +23873,32 @@ Procedure GreenAPI_SendTextMessage(FunctionParameters)
     ChatID = FunctionParameters["GreenAPI_TestGroupID"];
     Text   = "New message";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SendTextMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendTextMessage", Options);
 
     // END
 
     Process(Result, "GreenAPI", "SendTextMessage", , FunctionParameters);
 
     MessageID = Result["idMessage"];
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", MessageID);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SendTextMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendTextMessage", Options);
 
     Process(Result, "GreenAPI", "SendTextMessage", "Quote");
 
@@ -23914,19 +23914,19 @@ Procedure GreenAPI_DeleteMessage(FunctionParameters)
     ChatID    = FunctionParameters["GreenAPI_TestGroupID"];
     MessageID = FunctionParameters["GreenAPI_MessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "DeleteMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "DeleteMessage", Options);
 
     // END
 
@@ -23945,20 +23945,20 @@ Procedure GreenAPI_EditMessageText(FunctionParameters)
     MessageID = FunctionParameters["GreenAPI_MessageID"];
     Text      = "New message text";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
-    Опции.Вставить("", Text);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "EditMessageText", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "EditMessageText", Options);
 
     // END
 
@@ -23978,21 +23978,21 @@ Procedure GreenAPI_SendFile(FunctionParameters)
     ChatID      = FunctionParameters["GreenAPI_TestGroupID"];
     Description = "File description";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", File);
-    Опции.Вставить("", FileName);
-    Опции.Вставить("", Description);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", File);
+    Options.Insert("", FileName);
+    Options.Insert("", Description);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SendFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendFile", Options);
 
     // END
 
@@ -24002,15 +24002,15 @@ Procedure GreenAPI_SendFile(FunctionParameters)
     FileName = "vid.mp4";
 
     MessageID = Result["idMessage"];
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", File);
-    Опции.Вставить("", FileName);
-    Опции.Вставить("", Description);
-    Опции.Вставить("", MessageID);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", File);
+    Options.Insert("", FileName);
+    Options.Insert("", Description);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SendFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendFile", Options);
 
     Process(Result, "GreenAPI", "SendFile", "Quote");
 
@@ -24028,21 +24028,21 @@ Procedure GreenAPI_SendFileByURL(FunctionParameters)
     ChatID      = FunctionParameters["GreenAPI_TestGroupID"];
     Description = "File description";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", File);
-    Опции.Вставить("", FileName);
-    Опции.Вставить("", Description);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", File);
+    Options.Insert("", FileName);
+    Options.Insert("", Description);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SendFileByURL", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendFileByURL", Options);
 
     // END
 
@@ -24052,15 +24052,15 @@ Procedure GreenAPI_SendFileByURL(FunctionParameters)
     FileName = "vid.mp4";
 
     MessageID = Result["idMessage"];
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", File);
-    Опции.Вставить("", FileName);
-    Опции.Вставить("", Description);
-    Опции.Вставить("", MessageID);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", File);
+    Options.Insert("", FileName);
+    Options.Insert("", Description);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SendFileByURL", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendFileByURL", Options);
 
     Process(Result, "GreenAPI", "SendFileByURL", "Quote");
 
@@ -24081,35 +24081,35 @@ Procedure GreenAPI_SendPoll(FunctionParameters)
     Options.Add("Yellow");
     Options.Add("Green");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Options);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
+    Options.Insert("", Options);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SendPoll", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendPoll", Options);
 
     // END
 
     Process(Result, "GreenAPI", "SendPoll", , FunctionParameters);
 
     MessageID = Result["idMessage"];
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", Options);
-    Опции.Вставить("", Истина);
-    Опции.Вставить("", MessageID);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", Text);
+    Options.Insert("", Options);
+    Options.Insert("", Истина);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SendPoll", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendPoll", Options);
 
     Process(Result, "GreenAPI", "SendPoll", "Quote");
 
@@ -24122,13 +24122,13 @@ Procedure GreenAPI_GetLocationDescription(FunctionParameters)
     Address   = "Victory Square, Minsk";
     Name      = "Victory sq.";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Latitude);
-    Опции.Вставить("", Longitude);
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Name);
+    Options = New Structure;
+    Options.Insert("", Latitude);
+    Options.Insert("", Longitude);
+    Options.Insert("", Address);
+    Options.Insert("", Name);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetLocationDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetLocationDescription", Options);
 
     // END
 
@@ -24150,45 +24150,45 @@ Procedure GreenAPI_SendLocation(FunctionParameters)
     Address   = "Victory Square, Minsk";
     Name      = "Victory sq.";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Latitude);
-    Опции.Вставить("", Longitude);
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Name);
+    Options = New Structure;
+    Options.Insert("", Latitude);
+    Options.Insert("", Longitude);
+    Options.Insert("", Address);
+    Options.Insert("", Name);
 
-    Location = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetLocationDescription", Опции);
+    Location = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetLocationDescription", Options);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Location);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", Location);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SendLocation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendLocation", Options);
 
     // END
 
     Process(Result, "GreenAPI", "SendLocation", , FunctionParameters);
 
     MessageID = Result["idMessage"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Latitude);
-    Опции.Вставить("", Longitude);
+    Options = New Structure;
+    Options.Insert("", Latitude);
+    Options.Insert("", Longitude);
 
-    Location = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetLocationDescription", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Location);
-    Опции.Вставить("", MessageID);
+    Location = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetLocationDescription", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", Location);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SendLocation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendLocation", Options);
 
     Process(Result, "GreenAPI", "SendLocation", "Quote");
 
@@ -24202,14 +24202,14 @@ Procedure GreenAPI_GetContactDescription(FunctionParameters)
     Patronymic = "Petrovich";
     Company    = "Bicycle";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Phone);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", LastName);
-    Опции.Вставить("", Patronymic);
-    Опции.Вставить("", Company);
+    Options = New Structure;
+    Options.Insert("", Phone);
+    Options.Insert("", Name);
+    Options.Insert("", LastName);
+    Options.Insert("", Patronymic);
+    Options.Insert("", Company);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetContactDescription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetContactDescription", Options);
 
     // END
 
@@ -24232,46 +24232,46 @@ Procedure GreenAPI_SendContact(FunctionParameters)
     Patronymic = "Petrovich";
     Company    = "Bicycle";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Phone);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", LastName);
-    Опции.Вставить("", Patronymic);
-    Опции.Вставить("", Company);
+    Options = New Structure;
+    Options.Insert("", Phone);
+    Options.Insert("", Name);
+    Options.Insert("", LastName);
+    Options.Insert("", Patronymic);
+    Options.Insert("", Company);
 
-    Contact = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetContactDescription", Опции);
+    Contact = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetContactDescription", Options);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Contact);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", Contact);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SendContact", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendContact", Options);
 
     // END
 
     Process(Result, "GreenAPI", "SendContact", , FunctionParameters);
 
     MessageID = Result["idMessage"];
-    Опции = Новый Структура;
-    Опции.Вставить("", Phone);
-    Опции.Вставить("", Company);
+    Options = New Structure;
+    Options.Insert("", Phone);
+    Options.Insert("", Company);
 
-    Contact = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetContactDescription", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", Contact);
-    Опции.Вставить("", MessageID);
+    Contact = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetContactDescription", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", Contact);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SendContact", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SendContact", Options);
 
     Process(Result, "GreenAPI", "SendContact", "Quote");
 
@@ -24290,20 +24290,20 @@ Procedure GreenAPI_ForwardMessages(FunctionParameters)
 
     Message = FunctionParameters["GreenAPI_MessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", From);
-    Опции.Вставить("", Target);
-    Опции.Вставить("", Message);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", From);
+    Options.Insert("", Target);
+    Options.Insert("", Message);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "ForwardMessages", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "ForwardMessages", Options);
 
     // END
 
@@ -24318,17 +24318,17 @@ Procedure GreenAPI_GetNotification(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetNotification", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetNotification", Options);
 
     // END
 
@@ -24345,18 +24345,18 @@ Procedure GreenAPI_DeleteNotificationFromQueue(FunctionParameters)
 
     ReceiptID = FunctionParameters["GreenAPI_ReceiptID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ReceiptID);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ReceiptID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "DeleteNotificationFromQueue", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "DeleteNotificationFromQueue", Options);
 
     // END
 
@@ -24374,19 +24374,19 @@ Procedure GreenAPI_DownloadMessageFile(FunctionParameters)
     ChatID    = FunctionParameters["GreenAPI_TestGroupID"];
     MessageID = FunctionParameters["GreenAPI_FileMessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "DownloadMessageFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "DownloadMessageFile", Options);
 
     // END
 
@@ -24404,19 +24404,19 @@ Procedure GreenAPI_SetReadMark(FunctionParameters)
     ChatID    = FunctionParameters["GreenAPI_TestGroupID"];
     MessageID = FunctionParameters["GreenAPI_FileMessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "SetReadMark", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "SetReadMark", Options);
 
     // END
 
@@ -24431,17 +24431,17 @@ Procedure GreenAPI_GetMessageQueue(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetMessageQueue", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetMessageQueue", Options);
 
     // END
 
@@ -24456,17 +24456,17 @@ Procedure GreenAPI_ClearMessageQueue(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "ClearMessageQueue", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "ClearMessageQueue", Options);
 
     // END
 
@@ -24483,18 +24483,18 @@ Procedure GreenAPI_GetChatHistory(FunctionParameters)
 
     ChatID = FunctionParameters["GreenAPI_TestGroupID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetChatHistory", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetChatHistory", Options);
 
     // END
 
@@ -24512,19 +24512,19 @@ Procedure GreenAPI_GetMessage(FunctionParameters)
     ChatID    = FunctionParameters["GreenAPI_TestGroupID"];
     MessageID = FunctionParameters["GreenAPI_MessageID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
-    Опции.Вставить("", MessageID);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
+    Options.Insert("", MessageID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetMessage", Options);
 
     // END
 
@@ -24539,17 +24539,17 @@ Procedure GreenAPI_GetIncomingMessageLog(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetIncomingMessageLog", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetIncomingMessageLog", Options);
 
     // END
 
@@ -24564,17 +24564,17 @@ Procedure GreenAPI_GetOutgoingMessageLog(FunctionParameters)
     IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "GetOutgoingMessageLog", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "GetOutgoingMessageLog", Options);
 
     // END
 
@@ -24591,21 +24591,21 @@ Procedure GreenAPI_ArchiveChat(FunctionParameters)
 
     ChatID = FunctionParameters["GreenAPI_TestGroupID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
 
     OPI_GreenAPI.UnarchiveChat(AccessParameters, ChatID); // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "ArchiveChat", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "ArchiveChat", Options);
 
     // END
 
@@ -24622,18 +24622,18 @@ Procedure GreenAPI_UnarchiveChat(FunctionParameters)
 
     ChatID = FunctionParameters["GreenAPI_TestGroupID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ApiUrl);
-    Опции.Вставить("", MediaUrl);
-    Опции.Вставить("", IdInstance);
-    Опции.Вставить("", ApiTokenInstance);
+    Options = New Structure;
+    Options.Insert("", ApiUrl);
+    Options.Insert("", MediaUrl);
+    Options.Insert("", IdInstance);
+    Options.Insert("", ApiTokenInstance);
 
-    AccessParameters = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "FormAccessParameters", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", AccessParameters);
-    Опции.Вставить("", ChatID);
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("", AccessParameters);
+    Options.Insert("", ChatID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("greenapi", "UnarchiveChat", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenapi", "UnarchiveChat", Options);
 
     // END
 
@@ -24652,13 +24652,13 @@ Procedure RCON_FormConnectionParameters(FunctionParameters)
     WriteTimeout = 20;
     ReadTimeout  = 20;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", ReadTimeout);
-    Опции.Вставить("", WriteTimeout);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Password);
+    Options.Insert("", ReadTimeout);
+    Options.Insert("", WriteTimeout);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rcon", "FormConnectionParameters", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
 
     // END
 
@@ -24673,13 +24673,13 @@ Procedure RCON_CreateConnection(FunctionParameters)
     WriteTimeout = 20;
     ReadTimeout  = 20;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", ReadTimeout);
-    Опции.Вставить("", WriteTimeout);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Password);
+    Options.Insert("", ReadTimeout);
+    Options.Insert("", WriteTimeout);
 
-    ConnectionParams = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rcon", "FormConnectionParameters", Опции);
+    ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
     Result           = OPI_RCON.CreateConnection(ConnectionParams);
 
     // END
@@ -24695,32 +24695,32 @@ Procedure RCON_ExecuteCommand(FunctionParameters)
     WriteTimeout = 20;
     ReadTimeout  = 20;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", ReadTimeout);
-    Опции.Вставить("", WriteTimeout);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Password);
+    Options.Insert("", ReadTimeout);
+    Options.Insert("", WriteTimeout);
 
-    ConnectionParams = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rcon", "FormConnectionParameters", Опции);
+    ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
     Connection       = OPI_RCON.CreateConnection(ConnectionParams);
 
     Command = "list";
-    Опции = Новый Структура;
-    Опции.Вставить("", Command);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Command);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rcon", "ExecuteCommand", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "ExecuteCommand", Options);
 
     // END
 
     Process(Result, "RCON", "ExecuteCommand");
 
     Command = "list";
-    Опции = Новый Структура;
-    Опции.Вставить("", Command);
-    Опции.Вставить("", ConnectionParams);
+    Options = New Structure;
+    Options.Insert("", Command);
+    Options.Insert("", ConnectionParams);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rcon", "ExecuteCommand", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "ExecuteCommand", Options);
 
     Process(Result, "RCON", "ExecuteCommand", "No connection");
 
@@ -24733,13 +24733,13 @@ Procedure RCON_IsConnector(FunctionParameters)
     WriteTimeout = 20;
     ReadTimeout  = 20;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", ReadTimeout);
-    Опции.Вставить("", WriteTimeout);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Password);
+    Options.Insert("", ReadTimeout);
+    Options.Insert("", WriteTimeout);
 
-    ConnectionParams = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rcon", "FormConnectionParameters", Опции);
+    ConnectionParams = OPI_TestDataRetrieval.ExecuteTestCLI("rcon", "FormConnectionParameters", Options);
     Connection       = OPI_RCON.CreateConnection(ConnectionParams);
     Result           = OPI_RCON.IsConnector(Connection);
 
@@ -24764,13 +24764,13 @@ Procedure Ollama_GetResponse(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", Prompt);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", Prompt);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetResponse", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetResponse", Options);
 
     Process(Result, "Ollama", "GetResponse"); // SKIP
 
@@ -24797,14 +24797,14 @@ Procedure Ollama_GetResponse(FunctionParameters)
 
     AdditionalParameters = New Structure("format", Format);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", Prompt);
-    Опции.Вставить("", AdditionalParameters);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", Prompt);
+    Options.Insert("", AdditionalParameters);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetResponse", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetResponse", Options);
 
     // END
 
@@ -24824,36 +24824,36 @@ Procedure Ollama_GetContextResponse(FunctionParameters)
 
     MessagesArray = New Array;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "user");
-    Опции.Вставить("", "What is 1C:Enterprise?");
+    Options = New Structure;
+    Options.Insert("", "user");
+    Options.Insert("", "What is 1C:Enterprise?");
 
-    Question1 = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetContextMessageStructure", Опции);
+    Question1 = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextMessageStructure", Options);
     Question2 = OPI_Ollama.GetContextMessageStructure("user", "When the first version was released?"); // Question without specifics
 
     // Adding the first question to the context
     MessagesArray.Add(Question1);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", MessagesArray);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", MessagesArray);
+    Options.Insert("", AdditionalHeaders);
 
-    Response1 = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetContextResponse", Опции);
+    Response1 = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextResponse", Options);
 
     Process(Response1, "Ollama", "GetContextResponse", "Preliminary"); // SKIP
 
     MessagesArray.Add(Response1["message"]); // Add response to first question in context
     MessagesArray.Add(Question2); // Add second question in context
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", MessagesArray);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", MessagesArray);
+    Options.Insert("", AdditionalHeaders);
 
-    Response2 = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetContextResponse", Опции);
+    Response2 = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextResponse", Options);
 
     MessagesArray.Add(Response2["message"]);
 
@@ -24871,27 +24871,27 @@ Procedure Ollama_GetContextResponse(FunctionParameters)
     Options              = New Structure("seed,temperature", 101, 0);
     AdditionalParameters = New Structure("options", Options);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", MessagesArray);
-    Опции.Вставить("", AdditionalParameters);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", MessagesArray);
+    Options.Insert("", AdditionalParameters);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetContextResponse", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextResponse", Options);
 
     Process(Result, "Ollama", "GetContextResponse", "Seed 1");
 
     Message1 = Result["message"]["content"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", MessagesArray);
-    Опции.Вставить("", AdditionalParameters);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", MessagesArray);
+    Options.Insert("", AdditionalParameters);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetContextResponse", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextResponse", Options);
 
     Process(Result, "Ollama", "GetContextResponse", "Seed 2");
 
@@ -24900,14 +24900,14 @@ Procedure Ollama_GetContextResponse(FunctionParameters)
     Options              = New Structure("seed,temperature", 555, 10);
     AdditionalParameters = New Structure("options", Options);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", MessagesArray);
-    Опции.Вставить("", AdditionalParameters);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", MessagesArray);
+    Options.Insert("", AdditionalParameters);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetContextResponse", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextResponse", Options);
 
     Process(Result, "Ollama", "GetContextResponse", "Seed 3");
 
@@ -24928,13 +24928,13 @@ Procedure Ollama_LoadModelToMemory(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", Period);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", Period);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "LoadModelToMemory", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "LoadModelToMemory", Options);
 
     // END
 
@@ -24952,12 +24952,12 @@ Procedure Ollama_UnloadModelFromMemory(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "UnloadModelFromMemory", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "UnloadModelFromMemory", Options);
 
     // END
 
@@ -24967,18 +24967,18 @@ EndProcedure
 
 Procedure Ollama_GetRequestParameterStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetRequestParameterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetRequestParameterStructure", Options);
 
     // END
 
     Process(Result, "Ollama", "GetRequestParameterStructure");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetRequestParameterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetRequestParameterStructure", Options);
 
     Process(Result, "Ollama", "GetRequestParameterStructure", "Clear");
 
@@ -24986,18 +24986,18 @@ EndProcedure
 
 Procedure Ollama_GetContextParameterStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetContextParameterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextParameterStructure", Options);
 
     // END
 
     Process(Result, "Ollama", "GetContextParameterStructure");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetContextParameterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextParameterStructure", Options);
 
     Process(Result, "Ollama", "GetContextParameterStructure", "Clear");
 
@@ -25005,11 +25005,11 @@ EndProcedure
 
 Procedure Ollama_GetContextMessageStructure(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "user");
-    Опции.Вставить("", "Hello!");
+    Options = New Structure;
+    Options.Insert("", "user");
+    Options.Insert("", "Hello!");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetContextMessageStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetContextMessageStructure", Options);
 
     // END
 
@@ -25019,18 +25019,18 @@ EndProcedure
 
 Procedure Ollama_GetModelSettingsStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetModelSettingsStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelSettingsStructure", Options);
 
     // END
 
     Process(Result, "Ollama", "GetModelSettingsStructure");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetModelSettingsStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelSettingsStructure", Options);
 
     Process(Result, "Ollama", "GetModelSettingsStructure", "Clear");
 
@@ -25048,25 +25048,25 @@ Procedure Ollama_CreateModel(FunctionParameters)
 
     Settings = New Structure("from,system", "tinyllama", "You are Mario from Super Mario Bros.");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", Settings);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", Settings);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "CreateModel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CreateModel", Options);
 
     // END
 
     Process(Result, "Ollama", "CreateModel");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", "How are you?");
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", "How are you?");
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetResponse", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetResponse", Options);
 
     Process(Result, "Ollama", "CreateModel", "Request");
 
@@ -25082,38 +25082,38 @@ Procedure Ollama_DeleteModel(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "DeleteModel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "DeleteModel", Options);
 
     // END
 
     Process(Result, "Ollama", "DeleteModel");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", "library/tinyllama:latest");
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", "library/tinyllama:latest");
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "DeleteModel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "DeleteModel", Options);
     Process(Result, "Ollama", "DeleteModel", "Tiny");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", "bayselonarrend/tinyllama:latest");
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", "bayselonarrend/tinyllama:latest");
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "DeleteModel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "DeleteModel", Options);
     Process(Result, "Ollama", "DeleteModel", "Tiny, account");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetModelList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelList", Options);
 
     Process(Result, "Ollama", "DeleteModel", "List");
 
@@ -25127,11 +25127,11 @@ Procedure Ollama_GetModelList(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetModelList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelList", Options);
 
     // END
 
@@ -25147,11 +25147,11 @@ Procedure Ollama_ListRunningModels(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "ListRunningModels", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "ListRunningModels", Options);
 
     // END
 
@@ -25169,13 +25169,13 @@ Procedure Ollama_GetModelInformation(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", Ложь);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", Ложь);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetModelInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetModelInformation", Options);
 
     // END
 
@@ -25194,13 +25194,13 @@ Procedure Ollama_CopyModel(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", Name);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "CopyModel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CopyModel", Options);
 
     // END
 
@@ -25218,11 +25218,11 @@ Procedure Ollama_GetVersion(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetVersion", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetVersion", Options);
 
     // END
 
@@ -25244,13 +25244,13 @@ Procedure Ollama_GetEmbeddings(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", StingsArray);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", StingsArray);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetEmbeddings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetEmbeddings", Options);
 
     // END
 
@@ -25260,18 +25260,18 @@ EndProcedure
 
 Procedure Ollama_GetEmbeddingsParameterStructure(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetEmbeddingsParameterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetEmbeddingsParameterStructure", Options);
 
     // END
 
     Process(Result, "Ollama", "GetEmbeddingsParameterStructure");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "GetEmbeddingsParameterStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "GetEmbeddingsParameterStructure", Options);
 
     Process(Result, "Ollama", "GetEmbeddingsParameterStructure", "Clear");
 
@@ -25287,12 +25287,12 @@ Procedure Ollama_PushModel(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "PushModel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PushModel", Options);
 
     // END
 
@@ -25310,23 +25310,23 @@ Procedure Ollama_PullModel(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Model);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "PullModel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PullModel", Options);
 
     // END
 
     Process(Result, "Ollama", "PullModel");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", "bayselonarrend/tinyllama:latest");
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", "bayselonarrend/tinyllama:latest");
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "PullModel", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PullModel", Options);
 
     Process(Result, "Ollama", "PullModel", "Account");
 
@@ -25346,12 +25346,12 @@ Procedure Ollama_PushBlob(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Image);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Image);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "PushBlob", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "PushBlob", Options);
 
     // END
 
@@ -25368,23 +25368,23 @@ Procedure Ollama_CheckBlob(FunctionParameters)
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", SHA256);
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", SHA256);
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "CheckBlob", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CheckBlob", Options);
 
     // END
 
     Process(Result, "Ollama", "CheckBlob");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", "yoyoyo");
-    Опции.Вставить("", AdditionalHeaders);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", "yoyoyo");
+    Options.Insert("", AdditionalHeaders);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ollama", "CheckBlob", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ollama", "CheckBlob", Options);
 
     Process(Result, "Ollama", "CheckBlob", "Error");
 
@@ -26458,13 +26458,13 @@ Procedure OpenAI_GetResponse(FunctionParameters)
 
     Model = "smolvlm-256m-instruct";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", Messages);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", Model);
+    Options.Insert("", Messages);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetResponse", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetResponse", Options);
 
     Process(Result, "OpenAI", "GetResponse"); // SKIP
 
@@ -26477,32 +26477,32 @@ Procedure OpenAI_GetResponse(FunctionParameters)
 
     Messages = New Array;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileName);
-    Опции.Вставить("", File);
-    Опции.Вставить("", Destination);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", FileName);
+    Options.Insert("", File);
+    Options.Insert("", Destination);
 
-    ImageUpload = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "UploadFile", Опции);
+    ImageUpload = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "UploadFile", Options);
     ImageID     = ImageUpload["id"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "user");
-    Опции.Вставить("", ImageID);
-    Опции.Вставить("", "What is in this image?");
+    Options = New Structure;
+    Options.Insert("", "user");
+    Options.Insert("", ImageID);
+    Options.Insert("", "What is in this image?");
 
-    Description = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetImageMessageStructure", Опции);
+    Description = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetImageMessageStructure", Options);
 
     Messages.Add(Description);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", Messages);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", Model);
+    Options.Insert("", Messages);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetResponse", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetResponse", Options);
 
     OPI_OpenAI.DeleteFile(URL, Token, ImageID);
 
@@ -26520,13 +26520,13 @@ Procedure OpenAI_GetEmbeddings(FunctionParameters)
     Text  = "What is 1C:Enterprise?";
     Model = "text-embedding-ada-002";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", Text);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", Model);
+    Options.Insert("", Text);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetEmbeddings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetEmbeddings", Options);
 
     // END
 
@@ -26543,14 +26543,14 @@ Procedure OpenAI_CreateAssistant(FunctionParameters)
     Model       = "smolvlm-256m-instruct";
     Name        = "Math tutor";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", Instruction);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", Model);
+    Options.Insert("", Name);
+    Options.Insert("", Instruction);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "CreateAssistant", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "CreateAssistant", Options);
 
     // END
 
@@ -26565,12 +26565,12 @@ Procedure OpenAI_DeleteAssistant(FunctionParameters)
 
     AssistantID = FunctionParameters["OpenAI_Assistant"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", AssistantID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", AssistantID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "DeleteAssistant", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "DeleteAssistant", Options);
 
     // END
 
@@ -26585,12 +26585,12 @@ Procedure OpenAI_RetrieveAssistant(FunctionParameters)
 
     AssistantID = FunctionParameters["OpenAI_Assistant"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", AssistantID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", AssistantID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "RetrieveAssistant", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "RetrieveAssistant", Options);
 
     // END
 
@@ -26606,13 +26606,13 @@ Procedure OpenAI_GetAssistantsList(FunctionParameters)
     Count                = 2;
     AdditionalParameters = New Structure("after,order", "asst_2", "desc");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Count);
-    Опции.Вставить("", AdditionalParameters);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", Count);
+    Options.Insert("", AdditionalParameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetAssistantsList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetAssistantsList", Options);
 
     // END
 
@@ -26630,14 +26630,14 @@ Procedure OpenAI_UploadFile(FunctionParameters)
     FileName    = StrTemplate("%1.png", String(New UUID()));
     Destination = "assistants";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileName);
-    Опции.Вставить("", File);
-    Опции.Вставить("", Destination);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", FileName);
+    Options.Insert("", File);
+    Options.Insert("", Destination);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "UploadFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "UploadFile", Options);
 
     // END
 
@@ -26653,12 +26653,12 @@ Procedure OpenAI_DeleteFile(FunctionParameters)
 
     FileID = FunctionParameters["OpenAI_File"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "DeleteFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "DeleteFile", Options);
 
     // END
 
@@ -26673,12 +26673,12 @@ Procedure OpenAI_GetFileInformation(FunctionParameters)
 
     FileID = FunctionParameters["OpenAI_File"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetFileInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetFileInformation", Options);
 
     // END
 
@@ -26691,11 +26691,11 @@ Procedure OpenAI_GetFilesList(FunctionParameters)
     URL   = FunctionParameters["OpenAI_URL"];
     Token = FunctionParameters["OpenAI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetFilesList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetFilesList", Options);
 
     // END
 
@@ -26710,12 +26710,12 @@ Procedure OpenAI_DownloadFile(FunctionParameters)
 
     FileID = FunctionParameters["OpenAI_File"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", FileID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", FileID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "DownloadFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "DownloadFile", Options);
 
     // END
 
@@ -26725,11 +26725,11 @@ EndProcedure
 
 Procedure OpenAI_GetMessageStructure(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "user");
-    Опции.Вставить("", "What is 1C:Enterprise?");
+    Options = New Structure;
+    Options.Insert("", "user");
+    Options.Insert("", "What is 1C:Enterprise?");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetMessageStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetMessageStructure", Options);
 
     // END
 
@@ -26743,12 +26743,12 @@ Procedure OpenAI_GetImageMessageStructure(FunctionParameters)
     Token = FunctionParameters["OpenAI_Token"];
     Image = FunctionParameters["OpenAI_File"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "user");
-    Опции.Вставить("", Image);
-    Опции.Вставить("", "What is in this image?");
+    Options = New Structure;
+    Options.Insert("", "user");
+    Options.Insert("", Image);
+    Options.Insert("", "What is in this image?");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetImageMessageStructure", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetImageMessageStructure", Options);
 
     // END
 
@@ -26766,14 +26766,14 @@ Procedure OpenAI_GenerateSpeech(FunctionParameters)
 
     AdditionalParameters = New Structure("response_format", "wav");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", Text);
-    Опции.Вставить("", AdditionalParameters);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", Model);
+    Options.Insert("", Text);
+    Options.Insert("", AdditionalParameters);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GenerateSpeech", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GenerateSpeech", Options);
 
     // END
 
@@ -26789,14 +26789,14 @@ Procedure OpenAI_CreateTranscription(FunctionParameters)
     Audio = FunctionParameters["OpenAI_Speech"];
     Model = "whisper-1";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", Audio);
-    Опции.Вставить("", "audio/wav");
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", Model);
+    Options.Insert("", Audio);
+    Options.Insert("", "audio/wav");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "CreateTranscription", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "CreateTranscription", Options);
 
     // END
 
@@ -26816,19 +26816,19 @@ Procedure OpenAI_GetImages(FunctionParameters)
     Token = FunctionParameters["OpenAI_Token2"];
 
     Model       = "dall-e-3";
-    Опции = Новый Структура;
-    Опции.Вставить("", "Yellow alpaca");
-    Опции.Вставить("", 1);
-    Опции.Вставить("", "1024x1024");
+    Options = New Structure;
+    Options.Insert("", "Yellow alpaca");
+    Options.Insert("", 1);
+    Options.Insert("", "1024x1024");
 
-    Description = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetImageDescriptionStructure", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", Model);
-    Опции.Вставить("", Description);
+    Description = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetImageDescriptionStructure", Options);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", Model);
+    Options.Insert("", Description);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetImages", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetImages", Options);
 
     // END
 
@@ -26841,11 +26841,11 @@ Procedure OpenAI_GetModelList(FunctionParameters)
     URL   = FunctionParameters["OpenAI_URL"];
     Token = FunctionParameters["OpenAI_Token"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetModelList", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetModelList", Options);
 
     // END
 
@@ -26855,18 +26855,18 @@ EndProcedure
 
 Procedure OpenAI_GetAssistantMessage(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "What is 1C:Enterprise?");
+    Options = New Structure;
+    Options.Insert("", "What is 1C:Enterprise?");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetAssistantMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetAssistantMessage", Options);
 
     // END
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "assistant");
-    Опции.Вставить("", "What is 1C:Enterprise?");
+    Options = New Structure;
+    Options.Insert("", "assistant");
+    Options.Insert("", "What is 1C:Enterprise?");
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetMessageStructure", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetMessageStructure", Options);
     Check  = OPI_Tools.JSONString(Check);
     Result = OPI_Tools.JSONString(Result);
 
@@ -26876,20 +26876,20 @@ EndProcedure
 
 Procedure OpenAI_GetUserMessage(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "What is 1C:Enterprise?");
-    Опции.Вставить("", "Vitaly");
+    Options = New Structure;
+    Options.Insert("", "What is 1C:Enterprise?");
+    Options.Insert("", "Vitaly");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetUserMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetUserMessage", Options);
 
     // END
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "user");
-    Опции.Вставить("", "What is 1C:Enterprise?");
-    Опции.Вставить("", "Vitaly");
+    Options = New Structure;
+    Options.Insert("", "user");
+    Options.Insert("", "What is 1C:Enterprise?");
+    Options.Insert("", "Vitaly");
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetMessageStructure", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetMessageStructure", Options);
     Check  = OPI_Tools.JSONString(Check);
     Result = OPI_Tools.JSONString(Result);
 
@@ -26899,18 +26899,18 @@ EndProcedure
 
 Procedure OpenAI_GetSystemMessage(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "What is 1C:Enterprise?");
+    Options = New Structure;
+    Options.Insert("", "What is 1C:Enterprise?");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetSystemMessage", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetSystemMessage", Options);
 
     // END
 
-    Опции = Новый Структура;
-    Опции.Вставить("", "system");
-    Опции.Вставить("", "What is 1C:Enterprise?");
+    Options = New Structure;
+    Options.Insert("", "system");
+    Options.Insert("", "What is 1C:Enterprise?");
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("openai", "GetMessageStructure", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("openai", "GetMessageStructure", Options);
     Check  = OPI_Tools.JSONString(Check);
     Result = OPI_Tools.JSONString(Result);
 
@@ -26928,12 +26928,12 @@ Procedure MSSQL_GenerateConnectionString(FunctionParameters)
     Login    = "bayselonarrend";
     Password = FunctionParameters["PG_Password"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     // END
 
@@ -26950,16 +26950,16 @@ Procedure MSSQL_CreateConnection(FunctionParameters)
     Login    = "SA";
     Password = FunctionParameters["PG_Password"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
 
     Result = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
 
@@ -26975,16 +26975,16 @@ Procedure MSSQL_CloseConnection(FunctionParameters)
     Login    = "SA";
     Password = FunctionParameters["PG_Password"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
 
     Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
     Result     = OPI_MSSQL.CloseConnection(Connection);
@@ -27003,16 +27003,16 @@ Procedure MSSQL_IsConnector(FunctionParameters)
     Login    = "SA";
     Password = FunctionParameters["PG_Password"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
 
     Connection = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
     Result     = OPI_MSSQL.IsConnector(Connection);
@@ -27036,17 +27036,17 @@ Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "test_data";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
     Connection       = OPI_MSSQL.CreateConnection(ConnectionString, TLSSettings);
 
     OPI_MSSQL.DeleteTable("users"     , Connection); // SKIP
@@ -27070,11 +27070,11 @@ Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
         | Data VARBINARY(MAX)
         |);";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "ExecuteSQLQuery", Options);
 
     Process(Result, "MSSQL", "ExecuteSQLQuery", "Create"); // SKIP
 
@@ -27096,12 +27096,12 @@ Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
     ParameterArray.Add(New Structure("UUID"    , New UUID));
     ParameterArray.Add(New Structure("BYTES"   , Image));
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", ParameterArray);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", ParameterArray);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "ExecuteSQLQuery", Options);
 
     Process(Result, "MSSQL", "ExecuteSQLQuery", "Insert"); // SKIP
 
@@ -27109,11 +27109,11 @@ Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
 
     QueryText = "SELECT FirstName, LastName, BirthDate, IsEmployed, Salary, CreatedAt, Age, RowGuid, Data FROM test_table;";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", QueryText);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", QueryText);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "ExecuteSQLQuery", Options);
 
     Process(Result, "MSSQL", "ExecuteSQLQuery", , Image); // SKIP
 
@@ -27125,11 +27125,11 @@ Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
 
     SQLFile = FunctionParameters["SQL2"]; // Binary Data, URL or path to file
 
-    Опции = Новый Структура;
-    Опции.Вставить("", SQLFile);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", SQLFile);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "ExecuteSQLQuery", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "ExecuteSQLQuery", Options);
 
     Process(Result, "MSSQL", "ExecuteSQLQuery", "File"); // SKIP
 
@@ -27143,10 +27143,10 @@ EndProcedure
 
 Procedure MSSQL_GetTLSSettings(FunctionParameters)
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
 
     // END
 
@@ -27160,16 +27160,16 @@ Procedure MSSQL_CreateDatabase(FunctionParameters)
     Login    = "SA";
     Password = FunctionParameters["PG_Password"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     Base = "testbase1";
 
@@ -27179,12 +27179,12 @@ Procedure MSSQL_CreateDatabase(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "CreateDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateDatabase", Options);
 
     // END
 
@@ -27197,19 +27197,19 @@ Procedure MSSQL_CreateDatabase(FunctionParameters)
 
     Process(Connection, "MSSQL", "CreateDatabase", "Openning");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "CreateDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateDatabase", Options);
 
     Process(Result, "MSSQL", "CreateDatabase", "Creation");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "CreateDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateDatabase", Options);
 
     Process(Result, "MSSQL", "CreateDatabase", "Existing");
 
@@ -27224,17 +27224,17 @@ Procedure MSSQL_CreateTable(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     Table = "testtable";
 
@@ -27260,13 +27260,13 @@ Procedure MSSQL_CreateTable(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "CreateTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateTable", Options);
 
     // END
 
@@ -27274,26 +27274,26 @@ Procedure MSSQL_CreateTable(FunctionParameters)
 
     Table = "ABC DEF";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "CreateTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateTable", Options);
 
     Process(Result, "MSSQL", "CreateTable", "Name error");
 
     Table = "somename";
     ColoumnsStruct.Insert("wtf_field", "WTF");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "CreateTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "CreateTable", Options);
 
     Process(Result, "MSSQL", "CreateTable", "Type error");
 
@@ -27306,17 +27306,17 @@ Procedure MSSQL_AddRecords(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     Table        = "testtable";
     RecordsArray = New Array;
@@ -27363,14 +27363,14 @@ Procedure MSSQL_AddRecords(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", RecordsArray);
-    Опции.Вставить("", Истина);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", RecordsArray);
+    Options.Insert("", Истина);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "AddRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "AddRecords", Options);
 
     // END
 
@@ -27385,17 +27385,17 @@ Procedure MSSQL_GetRecords(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     // All records without filters
 
@@ -27405,24 +27405,24 @@ Procedure MSSQL_GetRecords(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetRecords", Options);
 
     Process(Result, "MSSQL", "GetRecords"); // SKIP
 
     // Filter, selected fields, limit and sorting
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", "test_data");
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", "test_data");
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     Table = "test_data";
 
@@ -27454,16 +27454,16 @@ Procedure MSSQL_GetRecords(FunctionParameters)
     Sort  = New Structure("ip_address", "DESC");
     Count = 5;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Fields);
-    Опции.Вставить("", Filters);
-    Опции.Вставить("", Sort);
-    Опции.Вставить("", Count);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Fields);
+    Options.Insert("", Filters);
+    Options.Insert("", Sort);
+    Options.Insert("", Count);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetRecords", Options);
 
     // END
 
@@ -27478,17 +27478,17 @@ Procedure MSSQL_UpdateRecords(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "test_data";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     Table = "test_data";
 
@@ -27514,27 +27514,27 @@ Procedure MSSQL_UpdateRecords(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", FieldsStructure);
-    Опции.Вставить("", FilterStructure);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", FieldsStructure);
+    Options.Insert("", FilterStructure);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "UpdateRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "UpdateRecords", Options);
 
     // END
 
     Process(Result, "MSSQL", "UpdateRecords");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", "['ip_address']");
-    Опции.Вставить("", Filters);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", "['ip_address']");
+    Options.Insert("", Filters);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetRecords", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetRecords", Options);
 
     Process(Check, "MSSQL", "UpdateRecords", "Check", Count, FieldsStructure);
 
@@ -27547,17 +27547,17 @@ Procedure MSSQL_DeleteRecords(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "test_data";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     Table = "test_data";
 
@@ -27586,13 +27586,13 @@ Procedure MSSQL_DeleteRecords(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Filters);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Filters);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "DeleteRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "DeleteRecords", Options);
 
     // END
 
@@ -27603,12 +27603,12 @@ Procedure MSSQL_DeleteRecords(FunctionParameters)
 
     Process(Result, "MSSQL", "DeleteRecords");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetRecords", Options);
 
     Process(Result, "MSSQL", "DeleteRecords", "Check", Residue);
 
@@ -27621,17 +27621,17 @@ Procedure MSSQL_DeleteTable(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     Table = "testtable";
 
@@ -27639,12 +27639,12 @@ Procedure MSSQL_DeleteTable(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "DeleteTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "DeleteTable", Options);
 
     // END
 
@@ -27653,19 +27653,19 @@ Procedure MSSQL_DeleteTable(FunctionParameters)
     Base  = "test_data";
     Table = "test_data";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "DeleteTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "DeleteTable", Options);
 
     Process(Result, "MSSQL", "DeleteTable", "Test");
 
@@ -27677,16 +27677,16 @@ Procedure MSSQL_DeleteDatabase(FunctionParameters)
     Login    = "SA";
     Password = FunctionParameters["PG_Password"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     Base = "testbase1";
 
@@ -27694,12 +27694,12 @@ Procedure MSSQL_DeleteDatabase(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "DeleteDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "DeleteDatabase", Options);
 
     // END
 
@@ -27711,19 +27711,19 @@ Procedure MSSQL_DeleteDatabase(FunctionParameters)
 
     Process(Connection, "MSSQL", "DeleteDatabase", "Openning");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "DeleteDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "DeleteDatabase", Options);
 
     Process(Result, "MSSQL", "DeleteDatabase", "Deletion");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "DeleteDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "DeleteDatabase", Options);
 
     Process(Result, "MSSQL", "DeleteDatabase", "Error");
 
@@ -27731,11 +27731,11 @@ Procedure MSSQL_DeleteDatabase(FunctionParameters)
 
     Process(Closing, "MSSQL", "DeleteDatabase", "Closing");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Base);
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "DeleteDatabase", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "DeleteDatabase", Options);
 
     Process(Result, "MSSQL", "DeleteDatabase", "Connection error");
 
@@ -27748,17 +27748,17 @@ Procedure MSSQL_ClearTable(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     Table = "testtable";
 
@@ -27766,23 +27766,23 @@ Procedure MSSQL_ClearTable(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "ClearTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "ClearTable", Options);
 
     // END
 
     Process(Result, "MSSQL", "ClearTable");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetRecords", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetRecords", Options);
 
     Process(Result, "MSSQL", "ClearTable", "Check");
 
@@ -27795,17 +27795,17 @@ Procedure MSSQL_GetTableInformation(FunctionParameters)
     Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     Table = "testtable";
 
@@ -27813,12 +27813,12 @@ Procedure MSSQL_GetTableInformation(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTableInformation", Options);
 
     // END
 
@@ -27826,12 +27826,12 @@ Procedure MSSQL_GetTableInformation(FunctionParameters)
 
     Table = "heyho";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTableInformation", Options);
 
     Process(Result, "MSSQL", "GetTableInformation", "Error");
 
@@ -27848,41 +27848,41 @@ Procedure MSSQL_AddTableColumn(FunctionParameters)
     Name     = "new_field";
     DataType = "bigint";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     // When using the connection string, a new connection is initialised,
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", DataType);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Name);
+    Options.Insert("", DataType);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "AddTableColumn", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "AddTableColumn", Options);
 
     // END
 
     Process(Result, "MSSQL", "AddTableColumn");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTableInformation", Options);
 
     Process(Result, "MSSQL", "AddTableColumn", "Check");
 
@@ -27898,40 +27898,40 @@ Procedure MSSQL_DeleteTableColumn(FunctionParameters)
     Table = "testtable";
     Name  = "new_field";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     // When using the connection string, a new connection is initialised,
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", Name);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", Name);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "DeleteTableColumn", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "DeleteTableColumn", Options);
 
     // END
 
     Process(Result, "MSSQL", "DeleteTableColumn");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTableInformation", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTableInformation", Options);
 
     Process(Result, "MSSQL", "DeleteTableColumn", "Check");
 
@@ -27946,17 +27946,17 @@ Procedure MSSQL_EnsureTable(FunctionParameters)
     Base  = "testbase1";
     Table = "testtable";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTLSSettings", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Address);
-    Опции.Вставить("", Base);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTLSSettings", Options);
+    Options = New Structure;
+    Options.Insert("", Address);
+    Options.Insert("", Base);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    ConnectionString = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GenerateConnectionString", Опции);
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GenerateConnectionString", Options);
 
     ColoumnsStruct = New Structure;
     ColoumnsStruct.Insert("smallint_field" , "smallint");
@@ -27968,45 +27968,45 @@ Procedure MSSQL_EnsureTable(FunctionParameters)
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,
     // previously created by the CreateConnection function()
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "EnsureTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "EnsureTable", Options);
 
     // END
 
     Process(Result, "MSSQL", "EnsureTable");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTableInformation", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTableInformation", Options);
 
     Process(Check, "MSSQL", "EnsureTable", "Check", ColoumnsStruct);
 
     Table = "test_new";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ColoumnsStruct);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ColoumnsStruct);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "EnsureTable", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "EnsureTable", Options);
 
     Process(Result, "MSSQL", "EnsureTable", "New");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Table);
-    Опции.Вставить("", ConnectionString);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", Table);
+    Options.Insert("", ConnectionString);
+    Options.Insert("", TLSSettings);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetTableInformation", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetTableInformation", Options);
 
     Process(Check, "MSSQL", "EnsureTable", "Check", ColoumnsStruct);
 
@@ -28014,18 +28014,18 @@ EndProcedure
 
 Procedure MSSQL_GetRecordsFilterStrucutre(FunctionParameters)
 
-    Опции = Новый Структура;
+    Options = New Structure;
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetRecordsFilterStrucutre", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetRecordsFilterStrucutre", Options);
 
     // END
 
     Process(Result, "MSSQL", "GetRecordsFilterStrucutre");
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("mssql", "GetRecordsFilterStrucutre", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mssql", "GetRecordsFilterStrucutre", Options);
 
     Process(Result, "MSSQL", "GetRecordsFilterStrucutre", "Clear");
 
@@ -28053,13 +28053,13 @@ Procedure FTP_CreateConnection(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -28070,22 +28070,22 @@ Procedure FTP_CreateConnection(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Result = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -28114,13 +28114,13 @@ Procedure FTP_GetWelcomeMessage(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -28131,31 +28131,31 @@ Procedure FTP_GetWelcomeMessage(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
+        Options = New Structure;
+        Options.Insert("", Connection);
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetWelcomeMessage", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetWelcomeMessage", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -28184,13 +28184,13 @@ Procedure FTP_GetConnectionConfiguration(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -28201,39 +28201,39 @@ Procedure FTP_GetConnectionConfiguration(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
-    Опции = Новый Структура;
-    Опции.Вставить("", FTPSettings);
-    Опции.Вставить("", ProxySettings);
-    Опции.Вставить("", TLSSettings);
+    Options = New Structure;
+    Options.Insert("", FTPSettings);
+    Options.Insert("", ProxySettings);
+    Options.Insert("", TLSSettings);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionConfiguration", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionConfiguration", Options);
 
     // END
 
     Process(Result, "FTP", "GetConnectionConfiguration", Postfix, FunctionParameters);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Result);
+    Options = New Structure;
+    Options.Insert("", Result);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetWelcomeMessage", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetWelcomeMessage", Options);
 
     Process(Check, "FTP", "GetConnectionConfiguration", "Check, " + Postfix);
 
@@ -28257,13 +28257,13 @@ Procedure FTP_CloseConnection(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -28274,22 +28274,22 @@ Procedure FTP_CloseConnection(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -28322,13 +28322,13 @@ Procedure FTP_IsConnector(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -28339,22 +28339,22 @@ Procedure FTP_IsConnector(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -28378,13 +28378,13 @@ Procedure FTP_GetConnectionSettings(FunctionParameters)
     Login    = FunctionParameters["FTP_User"];
     Password = FunctionParameters["FTP_Password"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     // END
 
@@ -28403,14 +28403,14 @@ Procedure FTP_GetProxySettings(FunctionParameters)
     ProxyLogin    = FunctionParameters["Proxy_User"];
     ProxyPassword = FunctionParameters["Proxy_Password"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", ProxyAddress);
-    Опции.Вставить("", ProxyPort);
-    Опции.Вставить("", ProxyType);
-    Опции.Вставить("", ProxyLogin);
-    Опции.Вставить("", ProxyPassword);
+    Options = New Structure;
+    Options.Insert("", ProxyAddress);
+    Options.Insert("", ProxyPort);
+    Options.Insert("", ProxyType);
+    Options.Insert("", ProxyLogin);
+    Options.Insert("", ProxyPassword);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     // END
 
@@ -28422,10 +28422,10 @@ Procedure FTP_GetTLSSettings(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
 
     // END
 
@@ -28451,13 +28451,13 @@ Procedure FTP_CreateNewDirectory(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -28468,22 +28468,22 @@ Procedure FTP_CreateNewDirectory(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -28493,11 +28493,11 @@ Procedure FTP_CreateNewDirectory(FunctionParameters)
         Deletion = OPI_FTP.DeleteDirectory(Connection, "new_dir"); // SKIP
         Process(Deletion, "FTP", "CreateNewDirectory", "Deletion, " + Postfix); // SKIP
 
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
-        Опции.Вставить("", "new_dir");
+        Options = New Structure;
+        Options.Insert("", Connection);
+        Options.Insert("", "new_dir");
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "CreateNewDirectory", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateNewDirectory", Options);
 
     Else
         Result = Connection; // Error of connection
@@ -28507,39 +28507,39 @@ Procedure FTP_CreateNewDirectory(FunctionParameters)
 
     Process(Result, "FTP", "CreateNewDirectory", Postfix, True);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "new_dir/another_one");
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "new_dir/another_one");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "CreateNewDirectory", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateNewDirectory", Options);
 
     Process(Result, "FTP", "CreateNewDirectory", "Nested, " + Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "second_dir/another_one");
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "second_dir/another_one");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "CreateNewDirectory", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "CreateNewDirectory", Options);
 
     Process(Result, "FTP", "CreateNewDirectory", "Double, " + Postfix);
 
     OPI_Tools.Pause(5);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "new_dir");
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "new_dir");
+    Options.Insert("", Истина);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
     Process(Check, "FTP", "CreateNewDirectory", "Check 1, " + Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "");
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "");
+    Options.Insert("", Истина);
 
-    Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
+    Check = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
     Process(Check, "FTP", "CreateNewDirectory", "Check 2, " + Postfix);
 
@@ -28563,13 +28563,13 @@ Procedure FTP_ListObjects(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -28580,33 +28580,33 @@ Procedure FTP_ListObjects(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
-        Опции.Вставить("", "");
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Connection);
+        Options.Insert("", "");
+        Options.Insert("", Истина);
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -28615,12 +28615,12 @@ Procedure FTP_ListObjects(FunctionParameters)
 
     Process(Result, "FTP", "ListObjects", Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "Dir1/Dir3/Git-2.50.0-64-bit.exe");
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "Dir1/Dir3/Git-2.50.0-64-bit.exe");
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
     Process(Result, "FTP", "ListObjects", "File, " + Postfix);
 
@@ -28653,15 +28653,15 @@ Procedure FTP_UploadFile(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
-    Опции.Вставить("", 1000);
-    Опции.Вставить("", 1000);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
+    Options.Insert("", 1000);
+    Options.Insert("", 1000);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -28672,40 +28672,40 @@ Procedure FTP_UploadFile(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
 
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
-        Опции.Вставить("", Image);
-        Опции.Вставить("", "new_dir/pic_from_disk.png");
+        Options = New Structure;
+        Options.Insert("", Connection);
+        Options.Insert("", Image);
+        Options.Insert("", "new_dir/pic_from_disk.png");
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UploadFile", Опции);
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
-        Опции.Вставить("", ImageDD);
-        Опции.Вставить("", "pic_from_binary.png");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UploadFile", Options);
+        Options = New Structure;
+        Options.Insert("", Connection);
+        Options.Insert("", ImageDD);
+        Options.Insert("", "pic_from_binary.png");
 
-        Result2 = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UploadFile", Опции);
+        Result2 = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UploadFile", Options);
 
     Else
         Result = Connection; // Error of connection
@@ -28716,16 +28716,16 @@ Procedure FTP_UploadFile(FunctionParameters)
     Process(Result , "FTP", "UploadFile", Postfix             , ImageDD.Size());
     Process(Result2, "FTP", "UploadFile", "Binary, " + Postfix, ImageDD.Size());
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "new_dir/pic_from_disk.png");
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "new_dir/pic_from_disk.png");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "pic_from_binary.png");
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "pic_from_binary.png");
 
-    Result2 = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
+    Result2 = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
     Process(Result , "FTP", "UploadFile", "Size 1, " + Postfix, ImageDD.Size());
     Process(Result2, "FTP", "UploadFile", "Size 2, " + Postfix, ImageDD.Size());
@@ -28746,12 +28746,12 @@ Procedure FTP_UploadFile(FunctionParameters)
     EndDo;
 
     BigData = OPI_HTTPRequests.Get(FunctionParameters["Big"]);
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", BigData);
-    Опции.Вставить("", "new_dir/big.bin");
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", BigData);
+    Options.Insert("", "new_dir/big.bin");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UploadFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UploadFile", Options);
 
     Process(Result, "FTP", "UploadFile", "Big, " + Postfix, BigData.Size());
 
@@ -28781,13 +28781,13 @@ Procedure FTP_DeleteFile(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -28798,32 +28798,32 @@ Procedure FTP_DeleteFile(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
-        Опции.Вставить("", "pic_from_binary.png");
+        Options = New Structure;
+        Options.Insert("", Connection);
+        Options.Insert("", "pic_from_binary.png");
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "DeleteFile", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "DeleteFile", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -28832,20 +28832,20 @@ Procedure FTP_DeleteFile(FunctionParameters)
 
     Process(Result , "FTP", "DeleteFile", Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "pic_from_binary.png");
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "pic_from_binary.png");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "DeleteFile", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "DeleteFile", Options);
 
     Process(Result , "FTP", "DeleteFile", "Nonexistent, " + Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "");
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "");
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
     Process(Result , "FTP", "DeleteFile", "Check, " + Postfix);
 
@@ -28869,13 +28869,13 @@ Procedure FTP_DeleteDirectory(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -28886,32 +28886,32 @@ Procedure FTP_DeleteDirectory(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
-        Опции.Вставить("", "new_dir/another_one");
+        Options = New Structure;
+        Options.Insert("", Connection);
+        Options.Insert("", "new_dir/another_one");
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "DeleteDirectory", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "DeleteDirectory", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -28940,13 +28940,13 @@ Procedure FTP_ClearDirectory(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -28957,32 +28957,32 @@ Procedure FTP_ClearDirectory(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
-        Опции.Вставить("", ".");
+        Options = New Structure;
+        Options.Insert("", Connection);
+        Options.Insert("", ".");
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ClearDirectory", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ClearDirectory", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -28991,12 +28991,12 @@ Procedure FTP_ClearDirectory(FunctionParameters)
 
     Process(Result , "FTP", "ClearDirectory", Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", ".");
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", ".");
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
     Process(Result , "FTP", "ClearDirectory", "Check, " + Postfix);
 
@@ -29020,13 +29020,13 @@ Procedure FTP_GetObjectSize(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -29037,32 +29037,32 @@ Procedure FTP_GetObjectSize(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
-        Опции.Вставить("", "new_dir/big.bin");
+        Options = New Structure;
+        Options.Insert("", Connection);
+        Options.Insert("", "new_dir/big.bin");
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -29071,11 +29071,11 @@ Procedure FTP_GetObjectSize(FunctionParameters)
 
     Process(Result , "FTP", "GetObjectSize", Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "new_dir/another.bin");
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "new_dir/another.bin");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
     Process(Result , "FTP", "GetObjectSize", "Nonexistent, " + Postfix);
 
@@ -29099,13 +29099,13 @@ Procedure FTP_UpdatePath(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -29116,33 +29116,33 @@ Procedure FTP_UpdatePath(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
-        Опции.Вставить("", "new_dir/big.bin");
-        Опции.Вставить("", "new_dir/giant.bin");
+        Options = New Structure;
+        Options.Insert("", Connection);
+        Options.Insert("", "new_dir/big.bin");
+        Options.Insert("", "new_dir/giant.bin");
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UpdatePath", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UpdatePath", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -29151,64 +29151,64 @@ Procedure FTP_UpdatePath(FunctionParameters)
 
     Process(Result , "FTP", "UpdatePath", Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "new_dir/giant.bin");
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "new_dir/giant.bin");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
     Process(Result , "FTP", "UpdatePath", "Check, new, " + Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "new_dir/big.bin");
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "new_dir/big.bin");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
     Process(Result , "FTP", "UpdatePath", "Check, old, " + Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "new_dir");
-    Опции.Вставить("", "brand_new_dir");
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "new_dir");
+    Options.Insert("", "brand_new_dir");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UpdatePath", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UpdatePath", Options);
 
     Process(Result , "FTP", "UpdatePath", "Directory, " + Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", ".");
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", ".");
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
     Process(Result , "FTP", "UpdatePath", "List, " + Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "brand_new_dir");
-    Опции.Вставить("", "new_dir");
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "brand_new_dir");
+    Options.Insert("", "new_dir");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UpdatePath", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UpdatePath", Options);
 
     Process(Result , "FTP", "UpdatePath", "Directory, back, " + Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", "new_dir/giant.bin");
-    Опции.Вставить("", "new_dir/big.bin");
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", "new_dir/giant.bin");
+    Options.Insert("", "new_dir/big.bin");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "UpdatePath", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UpdatePath", Options);
 
     Process(Result , "FTP", "UpdatePath", "Back, " + Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", ".");
-    Опции.Вставить("", Истина);
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", ".");
+    Options.Insert("", Истина);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ListObjects", Options);
 
     Process(Result , "FTP", "UpdatePath", "List, back, " + Postfix);
 
@@ -29232,13 +29232,13 @@ Procedure FTP_SaveFile(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -29249,22 +29249,22 @@ Procedure FTP_SaveFile(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -29274,12 +29274,12 @@ Procedure FTP_SaveFile(FunctionParameters)
         Path     = "new_dir/big.bin";
         FileName = GetTempFileName("bin");
 
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
-        Опции.Вставить("", Path);
-        Опции.Вставить("", FileName);
+        Options = New Structure;
+        Options.Insert("", Connection);
+        Options.Insert("", Path);
+        Options.Insert("", FileName);
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "SaveFile", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "SaveFile", Options);
 
     Else
         Result = Connection; // Error of connection
@@ -29289,11 +29289,11 @@ Procedure FTP_SaveFile(FunctionParameters)
 
     Process(Result, "FTP", "SaveFile", Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", Path);
 
-    Size = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
+    Size = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
     Process(Size, "FTP", "SaveFile", "Size, " + Postfix);
 
@@ -29343,13 +29343,13 @@ Procedure FTP_GetFileData(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -29360,22 +29360,22 @@ Procedure FTP_GetFileData(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -29393,11 +29393,11 @@ Procedure FTP_GetFileData(FunctionParameters)
 
     Process(Result, "FTP", "GetFileData", Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
-    Опции.Вставить("", Path);
+    Options = New Structure;
+    Options.Insert("", Connection);
+    Options.Insert("", Path);
 
-    Size = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetObjectSize", Опции);
+    Size = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
     Process(Size, "FTP", "GetFileData", "Size, " + Postfix);
 
@@ -29438,13 +29438,13 @@ Procedure FTP_Ping(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -29455,31 +29455,31 @@ Procedure FTP_Ping(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
+        Options = New Structure;
+        Options.Insert("", Connection);
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "Ping", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "Ping", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -29508,13 +29508,13 @@ Procedure FTP_ExecuteCustomCommand(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -29525,22 +29525,22 @@ Procedure FTP_ExecuteCustomCommand(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -29548,11 +29548,11 @@ Procedure FTP_ExecuteCustomCommand(FunctionParameters)
     If OPI_FTP.IsConnector(Connection) Then
 
         CommandText = "UMASK";
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
-        Опции.Вставить("", CommandText);
+        Options = New Structure;
+        Options.Insert("", Connection);
+        Options.Insert("", CommandText);
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ExecuteCustomCommand", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ExecuteCustomCommand", Options);
 
     Else
         Result = Connection; // Error of connection
@@ -29582,13 +29582,13 @@ Procedure FTP_ExecuteArbitraryCommand(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -29599,22 +29599,22 @@ Procedure FTP_ExecuteArbitraryCommand(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -29622,11 +29622,11 @@ Procedure FTP_ExecuteArbitraryCommand(FunctionParameters)
     If OPI_FTP.IsConnector(Connection) Then
 
         CommandText = "PWD";
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
-        Опции.Вставить("", CommandText);
+        Options = New Structure;
+        Options.Insert("", Connection);
+        Options.Insert("", CommandText);
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ExecuteArbitraryCommand", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "ExecuteArbitraryCommand", Options);
 
     Else
         Result = Connection; // Error of connection
@@ -29656,13 +29656,13 @@ Procedure FTP_GetCurrentDirectory(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -29673,31 +29673,31 @@ Procedure FTP_GetCurrentDirectory(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
+        Options = New Structure;
+        Options.Insert("", Connection);
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetCurrentDirectory", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetCurrentDirectory", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -29726,13 +29726,13 @@ Procedure FTP_ChangeCurrentDirectory(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -29743,22 +29743,22 @@ Procedure FTP_ChangeCurrentDirectory(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
@@ -29774,10 +29774,10 @@ Procedure FTP_ChangeCurrentDirectory(FunctionParameters)
 
     Process(Result, "FTP", "ChangeCurrentDirectory", Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetCurrentDirectory", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetCurrentDirectory", Options);
 
     Process(Result, "FTP", "ChangeCurrentDirectory", "Check, " + Postfix, Path);
 
@@ -29786,10 +29786,10 @@ Procedure FTP_ChangeCurrentDirectory(FunctionParameters)
 
     Process(Result, "FTP", "ChangeCurrentDirectory", "Back, " + Postfix);
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Connection);
+    Options = New Structure;
+    Options.Insert("", Connection);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetCurrentDirectory", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetCurrentDirectory", Options);
 
     Process(Result, "FTP", "ChangeCurrentDirectory", "Check, back, " + Postfix, Path);
 
@@ -29813,13 +29813,13 @@ Procedure FTP_GetProtocolFeatureList(FunctionParameters)
     UseProxy = FunctionParameters["Proxy"]; // SKIP
     FTPS     = FunctionParameters["TLS"]; // SKIP
 
-    Опции = Новый Структура;
-    Опции.Вставить("", Host);
-    Опции.Вставить("", Port);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", Host);
+    Options.Insert("", Port);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    FTPSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetConnectionSettings", Опции);
+    FTPSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetConnectionSettings", Options);
 
     If UseProxy Then
 
@@ -29830,31 +29830,31 @@ Procedure FTP_GetProtocolFeatureList(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        Опции = Новый Структура;
-        Опции.Вставить("", ProxyAddress);
-        Опции.Вставить("", ProxyPort);
-        Опции.Вставить("", ProxyType);
-        Опции.Вставить("", ProxyLogin);
-        Опции.Вставить("", ProxyPassword);
+        Options = New Structure;
+        Options.Insert("", ProxyAddress);
+        Options.Insert("", ProxyPort);
+        Options.Insert("", ProxyType);
+        Options.Insert("", ProxyLogin);
+        Options.Insert("", ProxyPassword);
 
-        ProxySettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProxySettings", Опции);
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProxySettings", Options);
 
     EndIf;
 
     If FTPS Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Истина);
+        Options = New Structure;
+        Options.Insert("", Истина);
 
-        TLSSettings = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetTLSSettings", Опции);
+        TLSSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetTLSSettings", Options);
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Опции = Новый Структура;
-        Опции.Вставить("", Connection);
+        Options = New Structure;
+        Options.Insert("", Connection);
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "GetProtocolFeatureList", Опции);
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetProtocolFeatureList", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -29875,12 +29875,12 @@ Procedure ReportPortal_GetTemporaryToken(FunctionParameters)
     Login    = FunctionParameters["RPortal_Login"];
     Password = FunctionParameters["RPortal_Password"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Login);
-    Опции.Вставить("", Password);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Login);
+    Options.Insert("", Password);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rportal", "GetTemporaryToken", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "GetTemporaryToken", Options);
 
     // END
 
@@ -29895,13 +29895,13 @@ Procedure ReportPortal_GetPermanentToken(FunctionParameters)
     UserID  = FunctionParameters["RPortal_UserID"];
     KeyName = "test_key";
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", KeyName);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", UserID);
+    Options.Insert("", KeyName);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rportal", "GetPermanentToken", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "GetPermanentToken", Options);
 
     // END
 
@@ -29916,13 +29916,13 @@ Procedure ReportPortal_DeletePermanentToken(FunctionParameters)
     UserID = FunctionParameters["RPortal_UserID"];
     KeyID  = FunctionParameters["RPortal_TestKeyID"];
 
-    Опции = Новый Структура;
-    Опции.Вставить("", URL);
-    Опции.Вставить("", Token);
-    Опции.Вставить("", UserID);
-    Опции.Вставить("", KeyID);
+    Options = New Structure;
+    Options.Insert("", URL);
+    Options.Insert("", Token);
+    Options.Insert("", UserID);
+    Options.Insert("", KeyID);
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("rportal", "DeletePermanentToken", Опции);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("rportal", "DeletePermanentToken", Options);
 
     // END
 
