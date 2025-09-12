@@ -36,6 +36,7 @@
 // BSLLS:UsingHardcodeNetworkAddress-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:UnusedLocalMethod-off
+// BSLLS:MissingTemporaryFileDeletion-on
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -11385,8 +11386,12 @@
 
     Попытка
 
+        // BSLLS:CommonModuleAssign-off
+        //      
         //@skip-check property-not-writable
         OPI_ReportPortal = Неопределено;
+        
+        // BSLLS:CommonModuleAssign-on
 
         // !OInt ТекущийКаталог = СтрЗаменить(ТекущийСценарий().Каталог, "\", "/");
         // !OInt МассивПути     = СтрРазделить(ТекущийКаталог, "/");
