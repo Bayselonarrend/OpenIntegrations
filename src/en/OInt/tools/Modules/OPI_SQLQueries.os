@@ -1036,10 +1036,14 @@ Function AddRecordsBatch(Val Module, Val Table, Val DataArray, Val Transaction, 
     BlanksArray = New Array;
     ErrorsArray = New Array;
 
+    // BSLLS:MissingTemporaryFileDeletion-off
+
     //@skip-check missing-temporary-file-deletion
     BlanksPath = GetTempFileName();
     //@skip-check missing-temporary-file-deletion
     KeysPath = GetTempFileName();
+
+    // BSLLS:MissingTemporaryFileDeletion-on
 
     Counter      = 0;
     SuccessCount = 0;
@@ -1579,8 +1583,13 @@ Function InitializeQuery(Val Connector, Val QueryText, Val ForceResult)
 
     If OPI_AddIns.FileTransferRequired() And StrLen(QueryText) > 1000 Then
 
+        // BSLLS:MissingTemporaryFileDeletion-off
+
         //@skip-check missing-temporary-file-deletion
         TFN = GetTempFileName();
+
+        // BSLLS:MissingTemporaryFileDeletion-on
+
         TextBD = GetBinaryDataFromString(QueryText);
         TextBD.Write(TFN);
 
@@ -1602,8 +1611,12 @@ Function SetQueryParams(Val Connector, Val QueryKey, Val Parameters)
 
     If OPI_AddIns.FileTransferRequired() And ValueIsFilled(Parameters) Then
 
+        // BSLLS:MissingTemporaryFileDeletion-off
+
         //@skip-check missing-temporary-file-deletion
         TFN = GetTempFileName();
+
+        // BSLLS:MissingTemporaryFileDeletion-on
 
         Try
             OPI_Tools.WriteJSONFile(TFN, Parameters);
@@ -1645,8 +1658,13 @@ Function ProcessQueryResult(Val Connector, Val QueryKey, Val ExecutionResult)
 
         If OPI_AddIns.FileTransferRequired() Then
 
+            // BSLLS:MissingTemporaryFileDeletion-off
+
             //@skip-check missing-temporary-file-deletion
             TFN = GetTempFileName();
+
+            // BSLLS:MissingTemporaryFileDeletion-on
+
             Result = Connector.GetResultAsFile(QueryKey, TFN);
             Result = OPI_Tools.JsonToStructure(Result);
 

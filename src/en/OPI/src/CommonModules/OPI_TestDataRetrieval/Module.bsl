@@ -36,6 +36,7 @@
 // BSLLS:UsingHardcodeNetworkAddress-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:UnusedLocalMethod-off
+// BSLLS:MissingTemporaryFileDeletion-on
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -11385,8 +11386,12 @@ Function ReportPortal()
 
     Try
 
+        // BSLLS:CommonModuleAssign-off
+        //
         //@skip-check property-not-writable
         OPI_ReportPortal = Undefined;
+
+        // BSLLS:CommonModuleAssign-on
 
         // !OInt CurrentDirectory = StrReplace(CurrentScript().Path, "\", "/");
         // !OInt PathArray = StrSplit(CurrentDirectory, "/");
