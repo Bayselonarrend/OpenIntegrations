@@ -1,18 +1,18 @@
 ﻿---
 sidebar_position: 2
-description: Создать директорию и другие функции для работы с FTP в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+description: Создать новую директорию и другие функции для работы с FTP в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, FTP]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Создать директорию
+# Создать новую директорию
  Создает директорию по указанному пути
 
 
 
-`Функция СоздатьДиректорию(Знач Соединение, Знач Путь) Экспорт`
+`Функция СоздатьНовуюДиректорию(Знач Соединение, Знач Путь) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
@@ -66,7 +66,7 @@ import TabItem from '@theme/TabItem';
 
     Если OPI_FTP.ЭтоКоннектор(Соединение) Тогда
 
-        Результат = OPI_FTP.СоздатьДиректорию(Соединение, "new_dir");
+        Результат = OPI_FTP.СоздатьНовуюДиректорию(Соединение, "new_dir");
 
     Иначе
         Результат = Соединение; // Ошибка соединения
@@ -74,28 +74,6 @@ import TabItem from '@theme/TabItem';
 ```
     
 
- <Tabs>
-  
-    <TabItem value="bash" label="Bash" default>
-        ```bash
-            oint ftp СоздатьДиректорию \
-              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
-              --path "second_dir/another_one"
-        ```
-    </TabItem>
-  
-    <TabItem value="bat" label="CMD/Bat" default>
-        ```batch
-            oint ftp СоздатьДиректорию ^
-              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
-              --path "second_dir/another_one"
-        ```
-    </TabItem>
-</Tabs>
 
 
-```json title="Результат"
-{
- "result": true
-}
-```
+

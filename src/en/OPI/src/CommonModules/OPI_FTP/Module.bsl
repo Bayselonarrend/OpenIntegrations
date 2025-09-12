@@ -535,7 +535,7 @@ Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Exp
 
 EndFunction
 
-// Create directory
+// Create new directory
 // Creates a directory at the specified path
 //
 // Note
@@ -547,7 +547,7 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
-Function CreateDirectory(Val Connection, Val Path) Export
+Function CreateNewDirectory(Val Connection, Val Path) Export
 
     CloseConnection = CheckCreateConnection(Connection);
 

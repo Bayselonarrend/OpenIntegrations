@@ -11028,7 +11028,7 @@ Function Check_FTP_GetTLSSettings(Val Result, Val Option)
 
 EndFunction
 
-Function Check_FTP_CreateDirectory(Val Result, Val Option, Primary = False)
+Function Check_FTP_CreateNewDirectory(Val Result, Val Option, Primary = False)
 
     If StrFind(Option, "Deletion") > 0 Then
         Return Result;
