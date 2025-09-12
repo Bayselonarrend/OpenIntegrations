@@ -1153,13 +1153,5 @@
   "editedMessageId": "",
   "isEdited": false,
   "isDeleted": false
- },
- {
-  "type": "outgoing",
-  "typeMessage": "",
-  "deletedMessageId": "",
-  "editedMessageId": "",
-  "isEdited": false,
-  "isDeleted": false
  }
 ]
