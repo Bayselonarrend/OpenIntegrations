@@ -277,7 +277,11 @@
 Процедура ЗаписатьJSONФайл(Знач Путь, Знач Данные) Экспорт
 
     ЗаписьJSON = Новый ЗаписьJSON();
+    
+    // BSLLS:ExternalAppStarting-off
     ЗаписьJSON.ОткрытьФайл(Путь, , Ложь);
+    // BSLLS:ExternalAppStarting-on
+    
     ЗаписатьJSON(ЗаписьJSON, Данные);
     ЗаписьJSON.Закрыть();
 
