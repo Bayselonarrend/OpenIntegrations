@@ -1,18 +1,18 @@
 ﻿---
 sidebar_position: 2
-description: Create directory and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+description: Create new directory and other functions to work with FTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, FTP]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Create directory
+# Create new directory
  Creates a directory at the specified path
 
 
 
-`Function CreateDirectory(Val Connection, Val Path) Export`
+`Function CreateNewDirectory(Val Connection, Val Path) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -66,7 +66,7 @@ FTP Command: `MKD`
 
     If OPI_FTP.IsConnector(Connection) Then
 
-        Result = OPI_FTP.CreateDirectory(Connection, "new_dir");
+        Result = OPI_FTP.CreateNewDirectory(Connection, "new_dir");
 
     Else
         Result = Connection; // Error of connection

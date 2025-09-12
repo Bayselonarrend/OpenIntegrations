@@ -2880,7 +2880,7 @@ Procedure FT_DirecotryManagement() Export
     For Each TestParameters In OptionArray Do
 
         FTP_ClearDirectory(TestParameters);
-        FTP_CreateDirectory(TestParameters);
+        FTP_CreateNewDirectory(TestParameters);
         FTP_GetCurrentDirectory(TestParameters);
         FTP_ChangeCurrentDirectory(TestParameters);
         FTP_ListObjects(TestParameters);
@@ -28433,7 +28433,7 @@ Procedure FTP_GetTLSSettings(FunctionParameters)
 
 EndProcedure
 
-Procedure FTP_CreateDirectory(FunctionParameters)
+Procedure FTP_CreateNewDirectory(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
@@ -28491,13 +28491,13 @@ Procedure FTP_CreateDirectory(FunctionParameters)
     If OPI_FTP.IsConnector(Connection) Then
 
         Deletion = OPI_FTP.DeleteDirectory(Connection, "new_dir"); // SKIP
-        Process(Deletion, "FTP", "CreateDirectory", "Deletion, " + Postfix); // SKIP
+        Process(Deletion, "FTP", "CreateNewDirectory", "Deletion, " + Postfix); // SKIP
 
         Опции = Новый Структура;
         Опции.Вставить("", Connection);
         Опции.Вставить("", "new_dir");
 
-        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "CreateDirectory", Опции);
+        Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "CreateNewDirectory", Опции);
 
     Else
         Result = Connection; // Error of connection
@@ -28505,23 +28505,23 @@ Procedure FTP_CreateDirectory(FunctionParameters)
 
     // END
 
-    Process(Result, "FTP", "CreateDirectory", Postfix, True);
+    Process(Result, "FTP", "CreateNewDirectory", Postfix, True);
 
     Опции = Новый Структура;
     Опции.Вставить("", Connection);
     Опции.Вставить("", "new_dir/another_one");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "CreateDirectory", Опции);
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "CreateNewDirectory", Опции);
 
-    Process(Result, "FTP", "CreateDirectory", "Nested, " + Postfix);
+    Process(Result, "FTP", "CreateNewDirectory", "Nested, " + Postfix);
 
     Опции = Новый Структура;
     Опции.Вставить("", Connection);
     Опции.Вставить("", "second_dir/another_one");
 
-    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "CreateDirectory", Опции);
+    Result = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "CreateNewDirectory", Опции);
 
-    Process(Result, "FTP", "CreateDirectory", "Double, " + Postfix);
+    Process(Result, "FTP", "CreateNewDirectory", "Double, " + Postfix);
 
     OPI_Tools.Pause(5);
 
@@ -28532,7 +28532,7 @@ Procedure FTP_CreateDirectory(FunctionParameters)
 
     Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
 
-    Process(Check, "FTP", "CreateDirectory", "Check 1, " + Postfix);
+    Process(Check, "FTP", "CreateNewDirectory", "Check 1, " + Postfix);
 
     Опции = Новый Структура;
     Опции.Вставить("", Connection);
@@ -28541,7 +28541,7 @@ Procedure FTP_CreateDirectory(FunctionParameters)
 
     Check = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("ftp", "ListObjects", Опции);
 
-    Process(Check, "FTP", "CreateDirectory", "Check 2, " + Postfix);
+    Process(Check, "FTP", "CreateNewDirectory", "Check 2, " + Postfix);
 
 EndProcedure
 
