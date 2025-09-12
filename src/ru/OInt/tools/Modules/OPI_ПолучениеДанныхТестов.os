@@ -35,6 +35,7 @@
 // BSLLS:MagicNumber-off
 // BSLLS:UsingHardcodeNetworkAddress-off
 // BSLLS:UsingSynchronousCalls-off
+// BSLLS:UnusedLocalMethod-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -11537,11 +11538,10 @@
 
             //@skip-check missing-temporary-file-deletion
             ИВФ   = ПолучитьИмяВременногоФайла("json");
+
             // BSLLS:MissingTemporaryFileDeletion-on
 
-            ЗаписьJSON.ОткрытьФайл(ИВФ);
-            ЗаписатьJSON(ЗаписьJSON, Значение);
-            ЗаписьJSON.Закрыть();
+            OPI_Инструменты.ЗаписатьJSONФайл(ИВФ, Значение);
 
             Значение = ИВФ;
             Обертка  = Истина;
