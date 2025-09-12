@@ -3,4 +3,4 @@
     Icon  = "5357419403325481346";
     Name  = "TestTopic " + String(New UUID);
 
-    Result = OPI_Telegram.CreateForumThread(Token, Chat, Name, Icon);
+    Result = OPI_Telegram.CreateForumTopic(Token, Chat, Name, Icon);
