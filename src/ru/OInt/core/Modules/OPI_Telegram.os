@@ -1688,24 +1688,24 @@ Function GetAvatarIconList(Val Token) Export
 	Return ПолучитьСписокИконокАватаров(Token);
 EndFunction
 
-Function CreateForumThread(Val Token, Val ChatID, Val Title, Val IconID = "") Export
+Function CreateForumTopic(Val Token, Val ChatID, Val Title, Val IconID = "") Export
 	Return СоздатьТемуФорума(Token, ChatID, Title, IconID);
 EndFunction
 
-Function EditForumTopic(Val Token, Val ChatID, Val ThreadID, Val Title = Undefined, Val IconID = Undefined) Export
-	Return ИзменитьТемуФорума(Token, ChatID, ThreadID, Title, IconID);
+Function EditForumTopic(Val Token, Val ChatID, Val TopicID, Val Title = Undefined, Val IconID = Undefined) Export
+	Return ИзменитьТемуФорума(Token, ChatID, TopicID, Title, IconID);
 EndFunction
 
-Function CloseForumThread(Val Token, Val ChatID, Val ThreadID = "") Export
-	Return ЗакрытьТемуФорума(Token, ChatID, ThreadID);
+Function CloseForumTopic(Val Token, Val ChatID, Val TopicID = "") Export
+	Return ЗакрытьТемуФорума(Token, ChatID, TopicID);
 EndFunction
 
-Function OpenForumThread(Val Token, Val ChatID, Val ThreadID = "") Export
-	Return ОткрытьТемуФорума(Token, ChatID, ThreadID);
+Function OpenForumTopic(Val Token, Val ChatID, Val TopicID = "") Export
+	Return ОткрытьТемуФорума(Token, ChatID, TopicID);
 EndFunction
 
-Function DeleteForumTopic(Val Token, Val ChatID, Val ThreadID) Export
-	Return УдалитьТемуФорума(Token, ChatID, ThreadID);
+Function DeleteForumTopic(Val Token, Val ChatID, Val TopicID) Export
+	Return УдалитьТемуФорума(Token, ChatID, TopicID);
 EndFunction
 
 Function HideMainForumTopic(Val Token, Val ChatID) Export
@@ -1720,8 +1720,8 @@ Function EditMainForumTopicName(Val Token, Val ChatID, Val Title) Export
 	Return ИзменитьИмяГлавнойТемыФорума(Token, ChatID, Title);
 EndFunction
 
-Function ClearThreadPinnedMessagesList(Val Token, Val ChatID, Val ThreadID = "") Export
-	Return ОчиститьСписокЗакрепленныхСообщенийТемы(Token, ChatID, ThreadID);
+Function ClearTopicPinnedMessagesList(Val Token, Val ChatID, Val TopicID = "") Export
+	Return ОчиститьСписокЗакрепленныхСообщенийТемы(Token, ChatID, TopicID);
 EndFunction
 
 #EndRegion

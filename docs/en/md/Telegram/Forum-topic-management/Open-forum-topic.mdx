@@ -1,0 +1,48 @@
+﻿---
+sidebar_position: 5
+description: Open forum topic and other functions to work with Telegram in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Telegram]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Open forum topic
+ Reopens a previously closed forum topic
+
+
+
+`Function OpenForumTopic(Val Token, Val ChatID, Val TopicID = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | ChatID | --forum | String, Number | &#x2714; | Topic chat ID |
+  | TopicID | --topic | String, Number | &#x2716; | Topic ID |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
+
+<br/>
+
+:::tip
+Method at API documentation: [reopenForumTopic](https://core.telegram.org/bots/api#reopenforumtopic)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token = "6129457865:AAFyzNYOAFbu...";
+    Chat  = "-1001971186208";
+    Topic = "11486";
+
+    Result = OPI_Telegram.OpenForumTopic(Token, Chat); // Opens main topic
+
+    Result = OPI_Telegram.OpenForumTopic(Token, Chat, Topic);
+```
+ 
+
+
+
+

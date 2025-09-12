@@ -1,0 +1,48 @@
+﻿---
+sidebar_position: 2
+description: Create forum topic and other functions to work with Telegram in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Telegram]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create forum topic
+ Creates a new topic in the group with theme functionality enabled
+
+
+
+`Function CreateForumTopic(Val Token, Val ChatID, Val Title, Val IconID = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Token | --token | String | &#x2714; | Token |
+  | ChatID | --forum | String, Number | &#x2714; | Topic creation chat ID |
+  | Title | --title | String | &#x2714; | Topic title |
+  | IconID | --icon | String | &#x2716; | See GetAvatarIconList |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
+
+<br/>
+
+:::tip
+Method at API documentation: [createForumTopic](https://core.telegram.org/bots/api#createforumtopic)
+:::
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Token = "6129457865:AAFyzNYOAFbu...";
+    Chat  = "-1001971186208";
+    Icon  = "5357419403325481346";
+    Name  = "TestTopic " + String(New UUID);
+
+    Result = OPI_Telegram.CreateForumTopic(Token, Chat, Name, Icon);
+```
+ 
+
+
+
+

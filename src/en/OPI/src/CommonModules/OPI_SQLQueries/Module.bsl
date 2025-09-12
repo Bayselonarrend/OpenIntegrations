@@ -1091,10 +1091,10 @@ Function AddRecordsBatch(Val Module, Val Table, Val DataArray, Val Transaction, 
 
     EndTry;
 
-    For Each Key In Keys Do
+    For Each QueryKey In Keys Do
 
-        Result = Connection.Execute(Key);
-        Result = ProcessQueryResult(Connection, Key, Result);
+        Result = Connection.Execute(QueryKey);
+        Result = ProcessQueryResult(Connection, QueryKey, Result);
 
         If Result["result"] Then
             SuccessCount = SuccessCount + 1;
@@ -1593,17 +1593,17 @@ Function InitializeQuery(Val Connector, Val QueryText, Val ForceResult)
         TextBD = GetBinaryDataFromString(QueryText);
         TextBD.Write(TFN);
 
-        Key = Connector.InitQuery(TFN, ForceResult, True);
+        QueryKey = Connector.InitQuery(TFN, ForceResult, True);
 
         OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete query file after execution");
 
     Else
-        Key = Connector.InitQuery(QueryText, ForceResult, False);
+        QueryKey = Connector.InitQuery(QueryText, ForceResult, False);
     EndIf;
 
-    Key = OPI_Tools.JSONToStructure(Key);
+    QueryKey = OPI_Tools.JSONToStructure(QueryKey);
 
-    Return Key;
+    Return QueryKey;
 
 EndFunction
 

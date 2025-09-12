@@ -1,4 +1,4 @@
 ﻿    Токен = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База  = "appEmaN0mr9hI9tBA";
+    База  = "appKMWlzHnsARgFzq";
 
     Результат = OPI_Airtable.ПолучитьТаблицыБазы(Токен, База);
