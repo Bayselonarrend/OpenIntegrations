@@ -35,6 +35,7 @@
 // BSLLS:MagicNumber-off
 // BSLLS:UsingHardcodeNetworkAddress-off
 // BSLLS:UsingSynchronousCalls-off
+// BSLLS:UnusedLocalMethod-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -11537,11 +11538,10 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
 
             //@skip-check missing-temporary-file-deletion
             TFN = GetTempFileName("json");
+
             // BSLLS:MissingTemporaryFileDeletion-on
 
-            JSONWriter.OpenFile(TFN);
-            WriteJSON(JSONWriter, Value);
-            JSONWriter.Close();
+            OPI_Tools.WriteJSONFile(TFN, Value);
 
             Value = TFN;
             Cover = True;
