@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "webhookUrl": "<URL for notification sending>",
  "webhookUrlToken": "<a token to access your notification server, if required>",
  "delaySendMessagesMilliseconds": "<message sending interval in milliseconds>",
