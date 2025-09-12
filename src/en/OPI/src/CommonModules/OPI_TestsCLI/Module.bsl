@@ -677,7 +677,7 @@ Procedure YDisk_CreateObjectCopy() Export
 
     YandexDisk_CreateObjectCopy(TestParameters);
 
-    CopyPath = TestParameters["YandexDisk_CopyFilePath"];
+    CopyPath = TestParameters["YandexDisk_FileCopyPath"];
 
     OPI_YandexDisk.DeleteObject(Token, OriginalPath, False);
     OPI_YandexDisk.DeleteObject(Token, CopyPath    , False);
@@ -1520,7 +1520,7 @@ Procedure B24_WorkingWithDrive() Export
     Bitrix24_MoveFileToFolder(TestParameters);
     Bitrix24_MakeFolderCopy(TestParameters);
     Bitrix24_UploadFileToFolder(TestParameters);
-    Bitrix24_MakeCopyFile(TestParameters);
+    Bitrix24_MakeFileCopy(TestParameters);
     Bitrix24_DeleteFile(TestParameters);
     Bitrix24_GetFolderFilterStructure(TestParameters);
     Bitrix24_GetFolderItems(TestParameters);
@@ -3184,7 +3184,7 @@ Procedure Telegram_SendPicture(FunctionParameters)
     Image     = FunctionParameters["Picture"];
 
     ImagePath = GetTempFileName("png");
-    CopyFile(Image, ImagePath);
+    FileCopy(Image, ImagePath);
 
     ImageDD = New BinaryData(ImagePath);
 
@@ -3268,7 +3268,7 @@ Procedure Telegram_SendVideo(FunctionParameters)
     Video     = FunctionParameters["Video"];
 
     VideoPath = GetTempFileName("mp4");
-    CopyFile(Video, VideoPath);
+    FileCopy(Video, VideoPath);
 
     VideoDD = New BinaryData(VideoPath);
 
@@ -3318,7 +3318,7 @@ Procedure Telegram_SendAudio(FunctionParameters)
     Audio     = FunctionParameters["Audio"];
 
     AudioPath = GetTempFileName("mp3");
-    CopyFile(Audio, AudioPath);
+    FileCopy(Audio, AudioPath);
 
     AudioDD = New BinaryData(AudioPath);
 
@@ -3368,7 +3368,7 @@ Procedure Telegram_SendDocument(FunctionParameters)
     Document  = FunctionParameters["Document"];
 
     DocumentPath = GetTempFileName("docx");
-    CopyFile(Document, DocumentPath);
+    FileCopy(Document, DocumentPath);
 
     DocumentDD = New BinaryData(DocumentPath);
 
@@ -3430,7 +3430,7 @@ Procedure Telegram_SendGif(FunctionParameters)
     GIF       = FunctionParameters["GIF"];
 
     GifPath = GetTempFileName("gif");
-    CopyFile(GIF, GifPath);
+    FileCopy(GIF, GifPath);
 
     GifDD = New BinaryData(GifPath);
 
@@ -3480,10 +3480,10 @@ Procedure Telegram_SendMediaGroup(FunctionParameters)
     Video  = FunctionParameters["Video"];
 
     ImagePath = GetTempFileName("png");
-    CopyFile(Image, ImagePath);
+    FileCopy(Image, ImagePath);
 
     VideoPath = GetTempFileName("mp4");
-    CopyFile(Video, VideoPath);
+    FileCopy(Video, VideoPath);
 
     VideoDD = New BinaryData(VideoPath);
 
@@ -3507,7 +3507,7 @@ Procedure Telegram_SendMediaGroup(FunctionParameters)
     DocumentPath = GetTempFileName("docx");
     ChannelID    = FunctionParameters["Telegram_ChannelID"];
 
-    CopyFile(DocumentURL, DocumentPath);
+    FileCopy(DocumentURL, DocumentPath);
 
     MediaGroup = New Map;
     MediaGroup.Insert(DocumentURL , "document");
@@ -4153,7 +4153,7 @@ Procedure VK_CreatePost(FunctionParameters)
     Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary Data
 
     TFN = GetTempFileName("png");
-    CopyFile(Image2, TFN);
+    FileCopy(Image2, TFN);
 
     ImageArray = New Array;
     ImageArray.Add(Image);
@@ -4230,7 +4230,7 @@ Procedure VK_CreateCompositePost(FunctionParameters)
     Video = FunctionParameters["Video"]; // URL, Path or Binary Data
 
     TFN = GetTempFileName("png");
-    CopyFile(Image, TFN);
+    FileCopy(Image, TFN);
 
     ImageUpload = OPI_VK.UploadPhotoToServer(TFN, Parameters)["response"][0];
     Options = New Structure;
@@ -4392,7 +4392,7 @@ Procedure VK_CreateStory(FunctionParameters)
 
     Image = FunctionParameters["Picture"]; // URL, File path or Binary Data
     TFN   = GetTempFileName("png");
-    CopyFile(Image, TFN);
+    FileCopy(Image, TFN);
     Image = New BinaryData(TFN);
 
     Options = New Structure;
@@ -5377,7 +5377,7 @@ Procedure YandexDisk_UploadFile(FunctionParameters)
     Image = FunctionParameters["Picture"]; // URL
 
     TFN = GetTempFileName("png"); // Path
-    CopyFile(Image, TFN);
+    FileCopy(Image, TFN);
 
     Options = New Structure;
     Options.Insert("", Token);
@@ -8817,7 +8817,7 @@ Procedure Dropbox_UploadFile(FunctionParameters)
     Image = FunctionParameters["Picture"];
 
     ImagePath = GetTempFileName("png");
-    CopyFile(Image, ImagePath);
+    FileCopy(Image, ImagePath);
 
     Options = New Structure;
     Options.Insert("", Token);
@@ -10856,7 +10856,7 @@ Procedure Bitrix24_UploadFileToFolder(FunctionParameters)
 
 EndProcedure
 
-Procedure Bitrix24_MakeCopyFile(FunctionParameters)
+Procedure Bitrix24_MakeFileCopy(FunctionParameters)
 
     FolderID = FunctionParameters["Bitrix24_HookFolderID"];
     FileID   = FunctionParameters["Bitrix24_FileID"];
@@ -10868,9 +10868,9 @@ Procedure Bitrix24_MakeCopyFile(FunctionParameters)
     Options.Insert("", FileID);
     Options.Insert("", FolderID);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeCopyFile", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeFileCopy", Options);
 
-    Process(Result, "Bitrix24", "MakeCopyFile", "Hook"); // SKIP
+    Process(Result, "Bitrix24", "MakeFileCopy", "Hook"); // SKIP
 
     FolderID = FunctionParameters["Bitrix24_FolderID"];
 
@@ -10883,11 +10883,11 @@ Procedure Bitrix24_MakeCopyFile(FunctionParameters)
     Options.Insert("", FolderID);
     Options.Insert("", Token);
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeCopyFile", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "MakeFileCopy", Options);
 
     // END
 
-    Process(Result, "Bitrix24", "MakeCopyFile");
+    Process(Result, "Bitrix24", "MakeFileCopy");
 
 EndProcedure
 
@@ -15213,7 +15213,7 @@ Procedure VKTeams_SendFile(FunctionParameters)
     File     = FunctionParameters["Document"]; // URL
     FilePath = GetTempFileName("docx"); // Path
 
-    CopyFile(File, FilePath);
+    FileCopy(File, FilePath);
 
     FileBD = New BinaryData(FilePath); // Binary
 
@@ -15354,7 +15354,7 @@ Procedure VKTeams_SendVoice(FunctionParameters)
     File     = FunctionParameters["Audio2"]; // URL
     FilePath = GetTempFileName("m4a"); // Path
 
-    CopyFile(File, FilePath);
+    FileCopy(File, FilePath);
 
     FileBD = New BinaryData(FilePath); // Binary
 
@@ -15438,7 +15438,7 @@ Procedure VKTeams_ChangeChatPicture(FunctionParameters)
     File     = FunctionParameters["Picture3"]; // URL
     FilePath = GetTempFileName("png"); // Path
 
-    CopyFile(File, FilePath);
+    FileCopy(File, FilePath);
 
     FileBD = New BinaryData(FilePath); // Binary
 
@@ -17675,7 +17675,7 @@ Procedure CDEK_RegisterDeliveryAppointment(FunctionParameters)
     CurrentDate  = BegOfDay(OPI_Tools.GetCurrentDate());
     DeliveryDate = CurrentDate + Day * 14;
 
-    While DayOfWeek(DeliveryDate) > 5 Do
+    While WeekDay(DeliveryDate) > 5 Do
         DeliveryDate = DeliveryDate + Day;
     EndDo;
 
@@ -20472,7 +20472,7 @@ Procedure SQLite_ConnectExtension(FunctionParameters)
     Process(Result, "SQLite", "ConnectExtension");
 
     TFN = GetTempFileName("dll");
-    CopyFile(Extension, TFN);
+    FileCopy(Extension, TFN);
 
     Result = OPI_SQLite.ConnectExtension(TFN, EntryPoint, Connection);
 
@@ -28634,7 +28634,7 @@ Procedure FTP_UploadFile(FunctionParameters)
 
     Image = FunctionParameters["Picture"]; // SKIP
     TFN   = GetTempFileName("png"); // SKIP
-    CopyFile(Image, TFN); // SKIP
+    FileCopy(Image, TFN); // SKIP
     Image = TFN; // SKIP
 
     ImageDD = New BinaryData(Image);
