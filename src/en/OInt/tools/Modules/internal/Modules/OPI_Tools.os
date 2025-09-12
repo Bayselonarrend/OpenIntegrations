@@ -277,7 +277,11 @@ EndFunction
 Procedure WriteJSONFile(Val Path, Val Data) Export
 
     JSONWriter = New JSONWriter();
+
+    // BSLLS:ExternalAppStarting-off
     JSONWriter.OpenFile(Path, , False);
+    // BSLLS:ExternalAppStarting-on
+
     WriteJSON(JSONWriter, Data);
     JSONWriter.Close();
 
