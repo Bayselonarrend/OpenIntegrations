@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "result": {
   "ID": "ID",
   "XML_ID": "Внешний код",
@@ -12,7 +12,6 @@
   "DATE_REGISTER": "Дата регистрации",
   "TIME_ZONE": "TIME_ZONE",
   "IS_ONLINE": "IS_ONLINE",
-  "TIME_ZONE_OFFSET": "TIME_ZONE_OFFSET",
   "TIMESTAMP_X": "TIMESTAMP_X",
   "LAST_ACTIVITY_DATE": "LAST_ACTIVITY_DATE",
   "PERSONAL_GENDER": "Пол",
@@ -66,13 +65,13 @@
   "USER_TYPE": "USER_TYPE"
  },
  "time": {
-  "start": 1728454930.84083,
-  "finish": 1728454930.86898,
-  "duration": 0.0281410217285156,
-  "processing": 0.000678062438964844,
-  "date_start": "2024-10-09T09:22:10+03:00",
-  "date_finish": "2024-10-09T09:22:10+03:00",
-  "operating_reset_at": 1728455530,
+  "start": 1757695272.97974,
+  "finish": 1757695273.00377,
+  "duration": 0.0240330696105957,
+  "processing": 0.000483989715576172,
+  "date_start": "2025-09-12T16:41:12+00:00",
+  "date_finish": "2025-09-12T16:41:13+00:00",
+  "operating_reset_at": 1757695873,
   "operating": 0
  }
 }

@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "type": "<calendar type: user, group, company_calendar>",
  "ownerId": "<calendar owner identifier>",
  "from": "<event start date and time (as string)>",

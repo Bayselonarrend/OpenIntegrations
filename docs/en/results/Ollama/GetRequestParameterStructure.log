@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "format": "<the format in which the response is returned: json or JSON schema>",
  "options": "<additional model parameters listed in the Modelfile documentation>",
  "system": "<system message (overrides what is defined in Modelfile)>",

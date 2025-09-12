@@ -1,0 +1,6 @@
+﻿{
+ "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc1Nzc4MzQ0NiwiaWF0IjoxNzU3Njk3MDQ2LCJqdGkiOiIxYjhmNmEzYS0wZmMyLTQyNTMtOWJlMS0wYWQwOTY4ZjBlNmEiLCJhdXRob3JpdGllcyI6W3sicm9sZSI6IlJPTEVfQURNSU5JU1RSQVRPUiJ9XSwiY2xpZW50X2lkIjoidWkifQ.Fi44Q1Y371t_ef9YTId5ld5DDJX6M9PgxAi4CSCACFA",
+ "refresh_token": "pqOo7bTumW2VwVqLgNlbeMFD9gNLib9SmDTP57T4C5ywjBXvNk8xwGOj7G_4QSPFG-3lcklINo4trSYJR5zGhC8NZSXK3Z-4xaodGcVhpJPcWrbi1bmCIj9c6-7bJN8z",
+ "token_type": "Bearer",
+ "expires_in": 86398
+}

@@ -1,15 +1,15 @@
-﻿ {
+﻿{
  "status": 200,
  "response": {
   "ListBucketResult": {
-   "Name": "opi-gpbucket3",
+   "Name": "opi-dirbucket3",
    "Prefix": {},
    "KeyCount": "1",
    "MaxKeys": "250",
    "IsTruncated": "false",
    "Contents": {
     "Key": "picture.jpg",
-    "LastModified": "2024-11-22T10:12:02.670Z",
+    "LastModified": "2025-09-12T16:52:14.186Z",
     "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
     "Size": "2114023",
     "StorageClass": "STANDARD"
@@ -18,15 +18,15 @@
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Content-Length": "451",
-  "Content-Type": "application/xml",
-  "Date": "Fri, 22 Nov 2024 10:12:24 GMT",
+  "Date": "Fri, 12 Sep 2025 16:54:11 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "Vary": "Origin,Accept-Encoding",
-  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
-  "X-Amz-Request-Id": "180A42B3443D1E1D",
+  "Vary": "Origin, Accept-Encoding",
+  "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
+  "X-Amz-Request-Id": "1864973EFC1016E4",
   "X-Content-Type-Options": "nosniff",
-  "X-Xss-Protection": "1; mode=block"
+  "X-XSS-Protection": "1; mode=block",
+  "Content-Length": "452",
+  "Content-Type": "application/xml"
  }
 }

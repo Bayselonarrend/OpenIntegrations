@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "options": "<additional model parameters listed in the Modelfile documentation>",
  "keep_alive": "<how long the model will remain loaded in memory after a request>",
  "truncate": "<trims the end of each response to fit within the context length. Returns an error if false and the length is exceeded>"

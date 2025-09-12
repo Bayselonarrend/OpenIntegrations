@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "args": {
   "param1": "text",
   "param2": "10"
@@ -7,9 +7,10 @@
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
+  "Content-Length": "0",
   "Host": "httpbin.org",
-  "User-Agent": "1Script v$1.9.2.10",
-  "X-Amzn-Trace-Id": "Root=1-682cd686-48023cf6367c49e635e9f2ba"
+  "User-Agent": "1Script v$2.0.0.0",
+  "X-Amzn-Trace-Id": "Root=1-68c4521e-398c11b26c8ae2565429e809"
  },
  "origin": "***",
  "url": "https://httpbin.org/get?param1=text&param2=10"
