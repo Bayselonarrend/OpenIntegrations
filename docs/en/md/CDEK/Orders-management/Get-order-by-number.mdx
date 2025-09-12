@@ -68,12 +68,12 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
 ```json title="Result"
 {
  "entity": {
-  "uuid": "a93fd1b1-55b3-4033-a52a-d2df7bb6b469",
+  "uuid": "327957ed-0d31-4573-baae-502eedb5b1c0",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1106094897",
-  "number": "3d2378de-8718-4041-b89a-33e6058810c8",
+  "cdek_number": "1106605237",
+  "number": "9eb6c874-59a0-4ba2-bff9-c40afa31de2c",
   "tariff_code": 139,
   "comment": "New order",
   "items_cost_currency": "RUB",
@@ -93,6 +93,11 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
    "company": "Тестирование Интеграции ИМ",
    "name": "Petrov Petr",
    "contragent_type": "LEGAL_ENTITY",
+   "phones": [
+    {
+     "number": "79529287654"
+    }
+   ],
    "passport_requirements_satisfied": false
   },
   "seller": {
@@ -113,7 +118,6 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
    "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
    "city": "Москва",
    "fias_guid": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
-   "kladr_code": "7700000000000",
    "country_code": "RU",
    "country": "Россия",
    "region": "Москва",
@@ -162,7 +166,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000000536893",
+    "barcode": "000001216560",
     "weight": 4000,
     "length": 10,
     "width": 10,
@@ -188,33 +192,29 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
       "cost": 300
      }
     ],
-    "package_id": "9c103199-2372-4807-9682-184e10288b38"
+    "package_id": "e51bb134-c13d-4f14-8dc6-56e3f726bdac"
    }
   ],
   "statuses": [
    {
-    "code": "ACCEPTED",
-    "name": "Принят",
-    "date_time": "2024-10-21T21:27:08+03:00",
-    "city": "Офис СДЭК"
-   },
-   {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2024-10-21T21:26:59+03:00",
-    "city": "Офис СДЭК"
+    "date_time": "2025-09-12T16:47:01+00:00",
+    "city": "Офис СДЭК",
+    "deleted": false
+   },
+   {
+    "code": "ACCEPTED",
+    "name": "Принят",
+    "date_time": "2025-09-12T16:47:00+00:00",
+    "city": "Офис СДЭК",
+    "deleted": false
    }
   ],
   "is_client_return": false,
   "delivery_mode": "1",
+  "has_reverse_order": false,
   "delivery_detail": {
    "delivery_sum": 1315,
-   "total_sum": 2183.4,
-   "payment_info": [],
-   "delivery_vat_rate": 20,
-   "delivery_vat_sum": 263,
-   "delivery_discount_percent": 0,
-   "delivery_discount_sum": 0
-  },
 ...
 ```
