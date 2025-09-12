@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "result": {
   "ID": {
    "type": "integer",
@@ -460,7 +460,7 @@
   "LAST_ACTIVITY_TIME": {
    "type": "datetime",
    "isRequired": false,
-   "isReadOnly": true,
+   "isReadOnly": false,
    "isImmutable": false,
    "isMultiple": false,
    "isDynamic": false,
@@ -469,11 +469,20 @@
   "LAST_ACTIVITY_BY": {
    "type": "user",
    "isRequired": false,
-   "isReadOnly": true,
+   "isReadOnly": false,
    "isImmutable": false,
    "isMultiple": false,
    "isDynamic": false,
    "title": "LAST_ACTIVITY_BY"
+  },
+  "LAST_COMMUNICATION_TIME": {
+   "type": "string",
+   "isRequired": false,
+   "isReadOnly": true,
+   "isImmutable": false,
+   "isMultiple": false,
+   "isDynamic": false,
+   "title": "LAST_COMMUNICATION_TIME"
   },
   "PHONE": {
    "type": "crm_multifield",
@@ -522,13 +531,13 @@
   }
  },
  "time": {
-  "start": 1728454940.18344,
-  "finish": 1728454940.22618,
-  "duration": 0.0427401065826416,
-  "processing": 0.0130200386047363,
-  "date_start": "2024-10-09T09:22:20+03:00",
-  "date_finish": "2024-10-09T09:22:20+03:00",
-  "operating_reset_at": 1728455540,
+  "start": 1757695288.59665,
+  "finish": 1757695288.63033,
+  "duration": 0.0336818695068359,
+  "processing": 0.0076291561126709,
+  "date_start": "2025-09-12T16:41:28+00:00",
+  "date_finish": "2025-09-12T16:41:28+00:00",
+  "operating_reset_at": 1757695888,
   "operating": 0
  }
 }

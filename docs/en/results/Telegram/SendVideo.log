@@ -1,7 +1,7 @@
-﻿ {
+﻿{
  "ok": true,
  "result": {
-  "message_id": 8305,
+  "message_id": 16244,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -11,11 +11,11 @@
   "chat": {
    "id": 461699897,
    "first_name": "Anton",
-   "last_name": "Titowets",
-   "username": "JKIee",
+   "last_name": "Titovets",
+   "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1728453323,
+  "date": 1757691818,
   "video": {
    "duration": 5,
    "width": 640,
@@ -23,21 +23,21 @@
    "file_name": "video",
    "mime_type": "video/mp4",
    "thumbnail": {
-    "file_id": "AAMCAgADGQMAAiBxZwYayqajllz9GMFHYBYZ7YpNjTEAAktaAAL9yDhIF3QIvLsyAUIBAAdtAAM2BA",
-    "file_unique_id": "AQADS1oAAv3IOEhy",
+    "file_id": "AAMCAgADGQMAAj90aMQ_qnVCcbY8kOi5kp6xQeJolpkAAmN9AAJt5yBKsugvW7n4NEcBAAdtAAM2BA",
+    "file_unique_id": "AQADY30AAm3nIEpy",
     "file_size": 20106,
     "width": 320,
     "height": 240
    },
    "thumb": {
-    "file_id": "AAMCAgADGQMAAiBxZwYayqajllz9GMFHYBYZ7YpNjTEAAktaAAL9yDhIF3QIvLsyAUIBAAdtAAM2BA",
-    "file_unique_id": "AQADS1oAAv3IOEhy",
+    "file_id": "AAMCAgADGQMAAj90aMQ_qnVCcbY8kOi5kp6xQeJolpkAAmN9AAJt5yBKsugvW7n4NEcBAAdtAAM2BA",
+    "file_unique_id": "AQADY30AAm3nIEpy",
     "file_size": 20106,
     "width": 320,
     "height": 240
    },
-   "file_id": "BAACAgIAAxkDAAIgcWcGGsqmo5Zc_RjBR2AWGe2KTY0xAAJLWgAC_cg4SBd0CLy7MgFCNgQ",
-   "file_unique_id": "AgADS1oAAv3IOEg",
+   "file_id": "BAACAgIAAxkDAAI_dGjEP6p1QnG2PJDouZKesUHiaJaZAAJjfQACbecgSrLoL1u5-DRHNgQ",
+   "file_unique_id": "AgADY30AAm3nIEo",
    "file_size": 1137878
   },
   "caption": "Строковое значение"

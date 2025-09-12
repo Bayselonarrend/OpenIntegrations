@@ -1,7 +1,7 @@
-﻿ {
+﻿{
  "result": {
   "task": {
-   "id": "2398",
+   "id": "7846",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -11,20 +11,22 @@
    "notViewed": "N",
    "replicate": "N",
    "stageId": "0",
+   "sprintId": null,
+   "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2024-10-09T09:19:28+03:00",
+   "createdDate": "2025-09-12T16:37:00+00:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2024-10-09T09:19:35+03:00",
+   "changedDate": "2025-09-12T16:37:05+00:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2024-10-09T09:19:28+03:00",
+   "activityDate": "2025-09-12T16:37:00+00:00",
    "dateStart": null,
-   "deadline": "2024-10-10T12:19:00+03:00",
-   "startDatePlan": "2024-10-09T09:19:28+03:00",
-   "endDatePlan": "2024-10-10T00:00:00+03:00",
-   "guid": "{51464df0-4e32-4fbe-9e9c-5d7081eb0ffb}",
+   "deadline": "2025-09-13T16:36:00+00:00",
+   "startDatePlan": "2025-09-12T16:37:00+00:00",
+   "endDatePlan": "2025-09-12T21:00:00+00:00",
+   "guid": "{d3dc5b79-b563-4007-8c69-f1bb21f19bed}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -39,7 +41,7 @@
    "forumTopicId": null,
    "forumId": null,
    "siteId": "s1",
-   "subordinate": "N",
+   "subordinate": "Y",
    "exchangeModified": null,
    "exchangeId": null,
    "outlookVersion": "3",
@@ -52,7 +54,7 @@
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2024-10-09T09:19:35+03:00",
+   "statusChangedDate": "2025-09-12T16:37:05+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -97,6 +99,7 @@
     "addFavorite": true,
     "deleteFavorite": false,
     "rate": true,
+    "take": false,
     "edit.originator": false,
     "checklist.reorder": true,
     "elapsedtime.add": true,
@@ -122,7 +125,8 @@
      "isImportant": false,
      "completedCount": 0,
      "members": [],
-     "attachments": []
+     "attachments": [],
+     "nodeId": null
     },
     "action": [],
     "descendants": []
@@ -131,13 +135,13 @@
   }
  },
  "time": {
-  "start": 1728454775.71852,
-  "finish": 1728454775.9367,
-  "duration": 0.218183040618896,
-  "processing": 0.191415071487427,
-  "date_start": "2024-10-09T09:19:35+03:00",
-  "date_finish": "2024-10-09T09:19:35+03:00",
-  "operating_reset_at": 1728455375,
-  "operating": 0.19139289855957
+  "start": 1757695025.0029,
+  "finish": 1757695025.21068,
+  "duration": 0.207780122756958,
+  "processing": 0.18087911605835,
+  "date_start": "2025-09-12T16:37:05+00:00",
+  "date_finish": "2025-09-12T16:37:05+00:00",
+  "operating_reset_at": 1757695625,
+  "operating": 0.180859088897705
  }
 }

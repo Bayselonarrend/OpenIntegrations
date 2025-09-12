@@ -1,22 +1,29 @@
-﻿ {
+﻿{
  "result": [
   {
-   "ID": "594",
+   "ID": "2618",
    "NAME": "Subordinate department",
    "SORT": 500,
-   "PARENT": "592",
+   "PARENT": "2616",
+   "UF_HEAD": "1"
+  },
+  {
+   "ID": "638",
+   "NAME": "Подчиненное подразделение",
+   "SORT": 500,
+   "PARENT": "636",
    "UF_HEAD": "1"
   }
  ],
- "total": 1,
+ "total": 2,
  "time": {
-  "start": 1728454927.4735,
-  "finish": 1728454927.50699,
-  "duration": 0.0334928035736084,
-  "processing": 0.00784516334533691,
-  "date_start": "2024-10-09T09:22:07+03:00",
-  "date_finish": "2024-10-09T09:22:07+03:00",
-  "operating_reset_at": 1728455527,
+  "start": 1757695264.74383,
+  "finish": 1757695264.7714,
+  "duration": 0.0275771617889404,
+  "processing": 0.0044560432434082,
+  "date_start": "2025-09-12T16:41:04+00:00",
+  "date_finish": "2025-09-12T16:41:04+00:00",
+  "operating_reset_at": 1757695864,
   "operating": 0
  }
 }
