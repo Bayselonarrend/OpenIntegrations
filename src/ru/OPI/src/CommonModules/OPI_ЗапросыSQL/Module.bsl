@@ -1044,7 +1044,7 @@
     ПутьКлючей      = ПолучитьИмяВременногоФайла();
 
     // BSLLS:MissingTemporaryFileDeletion-on
-    
+
     Счетчик         = 0;
     СчетчикУспешных = 0;
 
@@ -1584,12 +1584,12 @@
     Если OPI_Компоненты.ТребуетсяПередачаЧерезФайл() И СтрДлина(ТекстЗапроса) > 1000 Тогда
 
         // BSLLS:MissingTemporaryFileDeletion-off
-        
+
         //@skip-check missing-temporary-file-deletion
         ИВФ     = ПолучитьИмяВременногоФайла();
-        
+
         // BSLLS:MissingTemporaryFileDeletion-on
-        
+
         ТекстДД = ПолучитьДвоичныеДанныеИзСтроки(ТекстЗапроса);
         ТекстДД.Записать(ИВФ);
 
@@ -1612,10 +1612,10 @@
     Если OPI_Компоненты.ТребуетсяПередачаЧерезФайл() И ЗначениеЗаполнено(Параметры) Тогда
 
         // BSLLS:MissingTemporaryFileDeletion-off
-        
+
         //@skip-check missing-temporary-file-deletion
         ИВФ = ПолучитьИмяВременногоФайла();
-        
+
         // BSLLS:MissingTemporaryFileDeletion-on
 
         Попытка
@@ -1662,9 +1662,9 @@
 
             //@skip-check missing-temporary-file-deletion
             ИВФ       = ПолучитьИмяВременногоФайла();
-            
+
             // BSLLS:MissingTemporaryFileDeletion-on
-            
+
             Результат = Коннектор.GetResultAsFile(КлючЗапроса, ИВФ);
             Результат = OPI_Инструменты.JsonВСтруктуру(Результат);
 
