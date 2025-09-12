@@ -36,7 +36,9 @@
 // BSLLS:UsingHardcodeNetworkAddress-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:UnusedLocalMethod-off
-// BSLLS:MissingTemporaryFileDeletion-on
+// BSLLS:MissingTemporaryFileDeletion-off
+// BSLLS:MethodSize-off
+// BSLLS:IfElseIfEndsWithElse-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -608,7 +610,9 @@
     , ДопПараметр2 = Неопределено
     , ДопПараметр3 = Неопределено) Экспорт
 
+    // BSLLS:UnusedLocalVariable-off
     Результат_ = ?(OPI_Инструменты.ЭтоКоллекция(Результат), OPI_Инструменты.КопироватьКоллекцию(Результат), Результат);
+    // BSLLS:UnusedLocalVariable-on
 
     ЭтоВариант = ЗначениеЗаполнено(Вариант);
     МетодЛога  = ?(ЭтоВариант, СтрШаблон("%1 (%2)", Метод, Вариант), Метод);
@@ -4309,8 +4313,6 @@
 
 Функция Проверка_Dropbox_ПолучитьСписокТегов(Знач Результат, Знач Вариант, Параметры = "", МассивПутей = "")
 
-    Токен = Параметры["Dropbox_Token"];
-
     ОжидаетЧто(Результат["paths_to_tags"]).ИмеетТип("Массив");
     ОжидаетЧто(Результат["paths_to_tags"].Количество()).Равно(МассивПутей.Количество());
 
@@ -5926,7 +5928,7 @@
 
     ОжидаетЧто(Результат["result"]).ИмеетТип("Число").Заполнено();
 
-    Возврат Результат
+    Возврат Результат;
 
 КонецФункции
 
