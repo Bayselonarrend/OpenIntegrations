@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "postal_code": "<Postal code of the city for which the list of offices is required>",
  "city_code": "<CDEC locality code>",
  "type": "<Office type: PVZ, POSTAMAT, ALL>",

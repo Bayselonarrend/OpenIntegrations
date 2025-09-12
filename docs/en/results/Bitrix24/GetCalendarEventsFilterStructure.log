@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "from": "<selection start date. 3 months before the current default>",
  "to": "<selection end date. 3 months after the current default>",
  "section": "<array of calendar identifiers>"

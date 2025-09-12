@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "analytics_data": "<pass True to add analytics data to the response>",
  "financial_data": "<pass True to add financial data to the response>"
 }

@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "field": "<filtering field name>",
  "type": "<comparison type>",
  "value": "<comparison value>",

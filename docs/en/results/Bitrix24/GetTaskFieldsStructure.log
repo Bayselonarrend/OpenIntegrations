@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "result": {
   "fields": {
    "ID": {
@@ -85,6 +85,16 @@
    },
    "STAGE_ID": {
     "title": "Стадия",
+    "type": "integer",
+    "default": 0
+   },
+   "SPRINT_ID": {
+    "title": "Спринт",
+    "type": "integer",
+    "default": 0
+   },
+   "BACKLOG_ID": {
+    "title": "Бэклог",
     "type": "integer",
     "default": 0
    },
@@ -350,7 +360,7 @@
     "default": "N"
    },
    "FLOW_ID": {
-    "title": null,
+    "title": "Поток",
     "type": "integer",
     "default": 0
    },
@@ -369,13 +379,13 @@
   }
  },
  "time": {
-  "start": 1728454768.16944,
-  "finish": 1728454768.1963,
-  "duration": 0.0268528461456299,
-  "processing": 0.00112199783325195,
-  "date_start": "2024-10-09T09:19:28+03:00",
-  "date_finish": "2024-10-09T09:19:28+03:00",
-  "operating_reset_at": 1728455368,
+  "start": 1757695018.83279,
+  "finish": 1757695018.85693,
+  "duration": 0.0241348743438721,
+  "processing": 0.000950098037719726,
+  "date_start": "2025-09-12T16:36:58+00:00",
+  "date_finish": "2025-09-12T16:36:58+00:00",
+  "operating_reset_at": 1757695618,
   "operating": 0
  }
 }

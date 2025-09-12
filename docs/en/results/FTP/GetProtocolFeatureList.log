@@ -1,0 +1,15 @@
+﻿{
+ "data": {
+  "EPRT": null,
+  "EPSV": null,
+  "MDTM": null,
+  "PASV": null,
+  "PBSZ": null,
+  "PROT": null,
+  "REST": "STREAM",
+  "SIZE": null,
+  "TVFS": null,
+  "UTF8": null
+ },
+ "result": true
+}

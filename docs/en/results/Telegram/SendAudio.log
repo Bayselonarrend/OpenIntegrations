@@ -1,7 +1,7 @@
-﻿ {
+﻿{
  "ok": true,
  "result": {
-  "message_id": 8306,
+  "message_id": 16245,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -11,19 +11,19 @@
   "chat": {
    "id": 461699897,
    "first_name": "Anton",
-   "last_name": "Titowets",
-   "username": "JKIee",
+   "last_name": "Titovets",
+   "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1728453355,
+  "date": 1757691844,
   "audio": {
    "duration": 228,
    "file_name": "audio",
    "mime_type": "audio/mpeg",
    "title": "Dogs",
    "performer": "Motorhead",
-   "file_id": "CQACAgIAAxkDAAIgcmcGGuszMgUnk-JaG65Sngu8yYGMAAJNWgAC_cg4SEo4WdCQr5DQNgQ",
-   "file_unique_id": "AgADTVoAAv3IOEg",
+   "file_id": "CQACAgIAAxkDAAI_dWjEP8TKuq6I695oZ1N_9iUiIKYjAAJkfQACbecgSvTpgzkERpiyNgQ",
+   "file_unique_id": "AgADZH0AAm3nIEo",
    "file_size": 9229352
   },
   "caption": "Строковое значение"

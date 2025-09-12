@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "result": [
   {
    "id": 10,
@@ -9,6 +9,7 @@
    "work_position": null,
    "color": "#ab7761",
    "avatar": "",
+   "avatar_hr": "https://b24-ar17wx.bitrix24.by/bitrix/js/im/images/blank.gif",
    "gender": "M",
    "birthday": "",
    "extranet": false,
@@ -18,15 +19,18 @@
    "external_auth_id": "socservices",
    "status": "online",
    "idle": false,
-   "last_activity_date": "2024-07-13T21:36:23+03:00",
+   "last_activity_date": "2024-07-13T18:36:23+00:00",
    "mobile_last_date": false,
+   "desktop_last_date": false,
    "absent": false,
    "departments": [
     1,
-    264
+    640,
+    2614
    ],
    "phones": false,
-   "bot_data": null
+   "bot_data": null,
+   "type": "user"
   },
   {
    "id": 1,
@@ -37,6 +41,7 @@
    "work_position": null,
    "color": "#df532d",
    "avatar": "https://cdn-ru.bitrix24.by/b28528874/resize_cache/30/ff58db95aecdfa09ae61b51b5fd8f63f/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
+   "avatar_hr": "https://cdn-ru.bitrix24.by/b28528874/resize_cache/30/ff58db95aecdfa09ae61b51b5fd8f63f/main/d7e/d7e99cf556e4ab676463dae2c00ddfbb/a7e0af6899300e3c684caeca5c334d81.jpg",
    "gender": "M",
    "birthday": "",
    "extranet": false,
@@ -46,26 +51,29 @@
    "external_auth_id": "socservices",
    "status": "online",
    "idle": false,
-   "last_activity_date": "2024-09-17T21:21:49+03:00",
+   "last_activity_date": "2025-09-10T07:51:58+00:00",
    "mobile_last_date": false,
+   "desktop_last_date": false,
    "absent": false,
    "departments": [
     1,
-    264
+    638,
+    2614
    ],
    "phones": false,
-   "bot_data": null
+   "bot_data": null,
+   "type": "user"
   }
  ],
  "total": 2,
  "time": {
-  "start": 1728454904.75088,
-  "finish": 1728454904.78679,
-  "duration": 0.0359148979187012,
-  "processing": 0.00780296325683594,
-  "date_start": "2024-10-09T09:21:44+03:00",
-  "date_finish": "2024-10-09T09:21:44+03:00",
-  "operating_reset_at": 1728455504,
+  "start": 1757695228.06868,
+  "finish": 1757695228.09966,
+  "duration": 0.0309829711914062,
+  "processing": 0.00761890411376953,
+  "date_start": "2025-09-12T16:40:28+00:00",
+  "date_finish": "2025-09-12T16:40:28+00:00",
+  "operating_reset_at": 1757695828,
   "operating": 0
  }
 }

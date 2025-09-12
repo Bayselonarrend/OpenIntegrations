@@ -1,4 +1,4 @@
-﻿ {
+﻿{
  "type": "<calendar type: user, group)>",
  "ownerId": "<owner identifier>",
  "name": "<calendars name>",
