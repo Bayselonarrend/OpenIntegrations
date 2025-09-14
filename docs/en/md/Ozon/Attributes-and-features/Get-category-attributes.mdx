@@ -74,6 +74,38 @@ Method at API documentation: [post /v1/description-category/attribute](https://d
 {
  "result": [
   {
+   "id": 11254,
+   "attribute_complex_id": 0,
+   "name": "Rich-контент JSON",
+   "description": "Добавьте расширенное описание товара с фото и видео по шаблону в формате JSON. Подробнее о заполнении этой характеристики можно узнать в статье \"Rich-контент\" в \"Базе знаний\".",
+   "type": "String",
+   "is_collection": false,
+   "is_required": false,
+   "is_aspect": false,
+   "max_value_count": 0,
+   "group_name": "",
+   "group_id": 0,
+   "dictionary_id": 0,
+   "category_dependent": false,
+   "complex_is_collection": false
+  },
+  {
+   "id": 85,
+   "attribute_complex_id": 0,
+   "name": "Бренд",
+   "description": "Наименование бренда, под которым произведен товар. Если товар не имеет бренда, используйте значение \"Нет бренда\".",
+   "type": "String",
+   "is_collection": false,
+   "is_required": true,
+   "is_aspect": false,
+   "max_value_count": 0,
+   "group_name": "",
+   "group_id": 0,
+   "dictionary_id": 28732849,
+   "category_dependent": true,
+   "complex_is_collection": false
+  },
+  {
    "id": 21845,
    "attribute_complex_id": 100002,
    "name": "Озон.Видеообложка: ссылка",
@@ -90,26 +122,26 @@ Method at API documentation: [post /v1/description-category/attribute](https://d
    "complex_is_collection": false
   },
   {
-   "id": 8229,
+   "id": 6548,
    "attribute_complex_id": 0,
-   "name": "Тип",
-   "description": "Выберите из списка наиболее подходящий тип товара. Типы участвуют в распределении товаров по категориям на сайте Ozon. Чтобы правильно указать тип, найдите на сайте Ozon товары, похожие на ваш, и укажите в этом поле такой же тип.",
+   "name": "Материал",
+   "description": "Выберите из списка или укажите вручную. Можно добавить несколько значений через точку с запятой. Если точка с запятой есть в значении атрибута, поместите знак в кавычки \";\".",
    "type": "String",
-   "is_collection": false,
-   "is_required": true,
+   "is_collection": true,
+   "is_required": false,
    "is_aspect": false,
    "max_value_count": 0,
    "group_name": "",
    "group_id": 0,
-   "dictionary_id": 1960,
+   "dictionary_id": 1503,
    "category_dependent": true,
    "complex_is_collection": false
   },
   {
-   "id": 4385,
-   "attribute_complex_id": 0,
-   "name": "Гарантийный срок",
-   "description": "Период, в течение которого производитель отвечает за качество товара. А покупатель может оформить заявку на возврат по гарантийному случаю. Укажите срок в формате: количество лет, месяцев или дней. Например, 2 года или 3 месяца.",
+   "id": 8789,
+   "attribute_complex_id": 8788,
+   "name": "Название файла PDF",
+   "description": "",
    "type": "String",
    "is_collection": false,
    "is_required": false,
@@ -119,55 +151,7 @@ Method at API documentation: [post /v1/description-category/attribute](https://d
    "group_id": 0,
    "dictionary_id": 0,
    "category_dependent": false,
-   "complex_is_collection": false
-  },
-  {
-   "id": 4180,
-   "attribute_complex_id": 0,
-   "name": "Название",
-   "description": "Название пишется по принципу: Тип + Бренд + Модель (серия + пояснение) + Артикул производителя + , (запятая) + Атрибут Название не пишется большими буквами (не используем caps lock). Перед атрибутом ставится запятая. Если атрибутов несколько, они так же разделяются запятыми. Если какой-то составной части названия нет - пропускаем её. Атрибутом может быть: цвет, вес, объём, количество штук в упаковке и т.д. Цвет пишется с маленькой буквы, в мужском роде, единственном числе. Слово цвет в названии не пишем. Точка в конце не ставится. Никаких знаков препинания, кроме запятой, не используем. Кавычки используем только для названий на русском языке. Примеры корректных названий: Смартфон Apple iPhone XS MT572RU/A, space black Кеды Dr. Martens Киноклассика, бело-черные, размер 43 Стиральный порошок Ariel Магия белого с мерной ложкой, 15 кг Соус Heinz Xtreme Tabasco суперострый, 10 мл Игрушка для животных Четыре лапы \"Бегающая мышка\" БММ, белый",
-   "type": "String",
-   "is_collection": false,
-   "is_required": false,
-   "is_aspect": false,
-   "max_value_count": 0,
-   "group_name": "",
-   "group_id": 0,
-   "dictionary_id": 0,
-   "category_dependent": false,
-   "complex_is_collection": false
-  },
-  {
-   "id": 22232,
-   "attribute_complex_id": 0,
-   "name": "ТН ВЭД коды ЕАЭС",
-   "description": "Выберите одно значение из списка. Если вы не знаете, какой код нужно указать, то вам необходимо обратиться к таможенной службе или таможенному представителю.",
-   "type": "String",
-   "is_collection": false,
-   "is_required": true,
-   "is_aspect": false,
-   "max_value_count": 0,
-   "group_name": "",
-   "group_id": 0,
-   "dictionary_id": 124412395,
-   "category_dependent": true,
-   "complex_is_collection": false
-  },
-  {
-   "id": 9024,
-   "attribute_complex_id": 0,
-   "name": "Код продавца",
-   "description": "Цифро-буквенный код товара для его учета, является уникальным среди товаров. Не является EAN/серийным номером/штрихкодом, не равен названию модели товара - для этих параметров есть отдельные характеристики. Код продавца не выводится в карточке товара на сайте. Может использоваться при автоматическом формировании названия товара.",
-   "type": "String",
-   "is_collection": false,
-   "is_required": false,
-   "is_aspect": false,
-   "max_value_count": 0,
-   "group_name": "",
-   "group_id": 0,
-   "dictionary_id": 0,
-   "category_dependent": false,
-   "complex_is_collection": false
+   "complex_is_collection": true
   },
   {
    "id": 21837,
@@ -186,6 +170,22 @@ Method at API documentation: [post /v1/description-category/attribute](https://d
    "complex_is_collection": true
   },
   {
+   "id": 22390,
+   "attribute_complex_id": 0,
+   "name": "Название группы",
+   "description": "Введите одинаковое значение в этом атрибуте для объединения товаров в группу \"Похожие\". Обратите внимание, что товары в группе собираются в рамках одной категории второго уровня в личном кабинете. Если у товаров будет указано одно Название группы, но они находятся в разных категориях - вы получите несколько объединений товаров. Подробнее об объединении в Похожие можно прочитать здесь: https://seller-edu.ozon.ru/work-with-goods/zagruzka-tovarov/obedinenie-tovarov/pohojie-tovary",
+   "type": "String",
+   "is_collection": false,
+   "is_required": false,
+   "is_aspect": false,
+   "max_value_count": 0,
+   "group_name": "",
+   "group_id": 0,
+   "dictionary_id": 0,
+   "category_dependent": false,
+   "complex_is_collection": false
+  },
+  {
    "id": 9048,
    "attribute_complex_id": 0,
    "name": "Название модели (для объединения в одну карточку)",
@@ -202,11 +202,11 @@ Method at API documentation: [post /v1/description-category/attribute](https://d
    "complex_is_collection": false
   },
   {
-   "id": 8249,
+   "id": 23249,
    "attribute_complex_id": 0,
-   "name": "Число знаков шрифта для выделения",
-   "description": "Можно указать только целое число.",
-   "type": "Integer",
+   "name": "Количество товара в УЕИ",
+   "description": "УЕИ – унифицированная единица измерения. Необходимо указывать для продажи товаров на территории Республики Беларусь согласно локальному законодательству. Указывается количество пар либо штук в единице товара. \nМожно указать только целое число.",
+   "type": "Decimal",
    "is_collection": false,
    "is_required": false,
    "is_aspect": false,
@@ -218,8 +218,8 @@ Method at API documentation: [post /v1/description-category/attribute](https://d
    "complex_is_collection": false
   },
   {
-   "id": 10096,
-   "attribute_complex_id": 0,
-   "name": "Цвет товара",
+   "id": 21841,
+   "attribute_complex_id": 100001,
+   "name": "Озон.Видео: ссылка",
 ...
 ```
