@@ -1,9 +1,9 @@
 ﻿{
  "result": {
   "FILES": {
-   "upload42038": {
-    "id": 42038,
-    "chatId": 3050,
+   "upload42092": {
+    "id": 42092,
+    "chatId": 3054,
     "date": {},
     "type": "file",
     "name": "Imortant doc.docx",
@@ -15,19 +15,19 @@
     "authorId": 1,
     "authorName": "Антон Титовец",
     "urlPreview": "",
-    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=42038&width=1280&height=1280&signature=35054831fffa274a305929c7b0a8c89990e7cb1e40045abfa5107fe53c0b5991&exact=N&fileName=Imortant%20doc.docx",
-    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=42038&width=1280&height=1280&signature=35054831fffa274a305929c7b0a8c89990e7cb1e40045abfa5107fe53c0b5991&exact=N&fileName=Imortant%20doc.docx",
+    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=42092&width=1280&height=1280&signature=965f03958f60b19f3709605e62421d7e7b85f90d6a2a6c81bd8d5425ac122026&exact=N&fileName=Imortant%20doc.docx",
+    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=42092&width=1280&height=1280&signature=965f03958f60b19f3709605e62421d7e7b85f90d6a2a6c81bd8d5425ac122026&exact=N&fileName=Imortant%20doc.docx",
     "viewerAttrs": {
      "viewer": null,
      "viewerType": "cloud-document",
-     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=42038&width=1280&height=1280&signature=35054831fffa274a305929c7b0a8c89990e7cb1e40045abfa5107fe53c0b5991&exact=N&fileName=Imortant%20doc.docx",
+     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=42092&width=1280&height=1280&signature=965f03958f60b19f3709605e62421d7e7b85f90d6a2a6c81bd8d5425ac122026&exact=N&fileName=Imortant%20doc.docx",
      "viewerTypeClass": "BX.Messenger.Integration.Viewer.OnlyOfficeChatItem",
      "viewerSeparateItem": true,
      "viewerExtension": "im.integration.viewer",
-     "objectId": "42038",
-     "imChatId": 3050,
+     "objectId": "42092",
+     "imChatId": 3054,
      "title": "Imortant doc.docx",
-     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"42038\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
+     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"42092\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
     },
     "mediaUrl": {
      "preview": {
@@ -37,11 +37,11 @@
    }
   },
   "DISK_ID": [
-   "42038"
+   "42092"
   ],
   "FILE_MODELS": {
-   "upload42038": {
-    "id": 42038,
+   "upload42092": {
+    "id": 42092,
     "name": "Imortant doc.docx",
     "createTime": {},
     "updateTime": {},
@@ -49,33 +49,33 @@
     "code": null,
     "xmlId": null,
     "storageId": 6,
-    "realObjectId": 42038,
-    "parentId": 42034,
+    "realObjectId": 42092,
+    "parentId": 42088,
     "deletedType": 0,
     "createdBy": "1",
     "updatedBy": "1",
     "deletedBy": "0",
     "typeFile": 4,
     "globalContentVersion": 2,
-    "fileId": 28196,
+    "fileId": 28234,
     "size": 24071,
-    "etag": "efb8a6de9275f78f75bdb5a9ec5f1a17",
+    "etag": "b8d93eaebd8d027f138d2963bd80bed7",
     "links": {
-     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=42038",
-     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=42038&action=showObjectInGrid&ncc=1"
+     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=42092",
+     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=42092&action=showObjectInGrid&ncc=1"
     }
    }
   },
-  "MESSAGE_ID": 59978
+  "MESSAGE_ID": 60070
  },
  "time": {
-  "start": 1757707500.16114,
-  "finish": 1757707500.22022,
-  "duration": 0.0590870380401611,
-  "processing": 0.027116060256958,
-  "date_start": "2025-09-12T20:05:00+00:00",
-  "date_finish": "2025-09-12T20:05:00+00:00",
-  "operating_reset_at": 1757708100,
+  "start": 1757849505.53248,
+  "finish": 1757849505.58389,
+  "duration": 0.0514090061187744,
+  "processing": 0.0256760120391846,
+  "date_start": "2025-09-14T11:31:45+00:00",
+  "date_finish": "2025-09-14T11:31:45+00:00",
+  "operating_reset_at": 1757850105,
   "operating": 0
  }
 }

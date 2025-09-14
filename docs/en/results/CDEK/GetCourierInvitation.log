@@ -1,9 +1,9 @@
 ﻿{
  "entity": {
-  "uuid": "67aa0c98-b618-4145-badf-f9a24764e2ec",
-  "cdek_number": "1106605778",
-  "order_uuid": "44a9dd70-5360-4900-94a7-5a98fa7a9614",
-  "intake_date": "2025-09-13",
+  "uuid": "5efd4486-55f1-481f-8bd0-c7a84eb146d9",
+  "cdek_number": "1106607730",
+  "order_uuid": "784084c3-0cb5-4e32-b2d0-d42b3414b150",
+  "intake_date": "2025-09-15",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -41,12 +41,12 @@
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-09-12T20:13:16+00:00"
+    "date_time": "2025-09-14T11:39:28+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "00ebf1ff-6c5b-4cd7-b3bf-efdd5e6667db",
+    "package_id": "6b1cb3d5-8e57-4546-a243-f7b939c52418",
     "weight": 1000,
     "length": 10,
     "width": 10,
@@ -57,9 +57,9 @@
  },
  "requests": [
   {
-   "request_uuid": "aa8e38d3-9187-4047-b3ed-b620ec579b4b",
+   "request_uuid": "26ec60b4-bdd7-4c55-95b1-dad5ba02bd57",
    "type": "CREATE",
-   "date_time": "2025-09-12T20:13:14+00:00",
+   "date_time": "2025-09-14T11:39:27+00:00",
    "state": "ACCEPTED"
   }
  ]
