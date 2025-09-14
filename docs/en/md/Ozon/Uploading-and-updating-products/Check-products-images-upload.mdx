@@ -65,33 +65,18 @@ Method at API documentation: [post /v2/product/pictures/info](https://docs.ozon.
 
 ```json title="Result"
 {
- "result": {
-  "pictures": [
-   {
-    "product_id": 1215763512,
-    "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg",
-    "state": "imported",
-    "is_primary": true,
-    "is_360": false,
-    "is_color": false
-   },
-   {
-    "product_id": 1215763512,
-    "url": "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg",
-    "state": "imported",
-    "is_primary": false,
-    "is_360": false,
-    "is_color": false
-   },
-   {
-    "product_id": 1215763512,
-    "url": "GREEN",
-    "state": "imported",
-    "is_primary": false,
-    "is_360": false,
-    "is_color": true
-   }
-  ]
- }
+ "items": [
+  {
+   "product_id": 2701210312,
+   "primary_photo": [],
+   "photo": [
+    "https://hut.openintegrations.dev/test_data/picture.jpg",
+    "https://hut.openintegrations.dev/test_data/picture2.jpg"
+   ],
+   "color_photo": [],
+   "photo_360": [],
+   "errors": []
+  }
+ ]
 }
 ```
