@@ -4,11 +4,11 @@
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
-  "Authorization": "OAuth oauth_consumer_key=\"***\",oauth_token=\"***\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1757322510\",oauth_nonce=\"1757322510\",oauth_version=\"1.0\",oauth_signature=uM0fm8LihqatI37noXFVsFJhQSM%3D",
+  "Authorization": "OAuth oauth_consumer_key=\"***\",oauth_token=\"***\",oauth_signature_method=\"HMAC-SHA1\",oauth_timestamp=\"1757876008\",oauth_nonce=\"1757876008\",oauth_version=\"1.0\",oauth_signature=zuUrtsHBppFXftaHgD1fvPJHjnc%3D",
   "Content-Length": "0",
   "Host": "httpbin.org",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Amzn-Trace-Id": "Root=1-68beab1e-6aa7b0396a00ea12693b7c48"
+  "X-Amzn-Trace-Id": "Root=1-68c71d38-4ecd3471615cf03e31ce0083"
  },
  "origin": "***",
  "url": "https://httpbin.org/get"

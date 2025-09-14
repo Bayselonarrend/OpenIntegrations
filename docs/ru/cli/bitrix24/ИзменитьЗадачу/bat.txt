@@ -1,5 +1,5 @@
 oint bitrix24 ИзменитьЗадачу ^
   --url ""b24-ar17wx.bitrix24.by"" ^
-  --task ""7816"" ^
-  --fields ""/tmp/3d01jza5.sfs.json"" ^
+  --task ""7906"" ^
+  --fields ""/tmp/tymocoyk.l24.json"" ^
   --token "***"

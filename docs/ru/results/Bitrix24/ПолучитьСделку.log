@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "4772",
+  "ID": "4836",
   "TITLE": "Плановая продажа",
   "TYPE_ID": "GOODS",
   "STAGE_ID": "NEW",
@@ -13,13 +13,13 @@
   "COMPANY_ID": "1",
   "CONTACT_ID": "3",
   "QUOTE_ID": null,
-  "BEGINDATE": "2024-01-01T03:00:00+03:00",
-  "CLOSEDATE": "2030-01-01T03:00:00+03:00",
+  "BEGINDATE": "2024-01-01T00:00:00+00:00",
+  "CLOSEDATE": "2030-01-01T00:00:00+00:00",
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2025-09-11T20:52:51+03:00",
-  "DATE_MODIFY": "2025-09-11T20:52:51+03:00",
+  "DATE_CREATE": "2025-09-14T19:17:00+00:00",
+  "DATE_MODIFY": "2025-09-14T19:17:00+00:00",
   "OPENED": "Y",
   "CLOSED": "N",
   "COMMENTS": null,
@@ -36,8 +36,8 @@
   "ORIGINATOR_ID": null,
   "ORIGIN_ID": null,
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2025-09-11T20:52:51+03:00",
-  "LAST_ACTIVITY_TIME": "2025-09-11T20:52:51+03:00",
+  "MOVED_TIME": "2025-09-14T19:17:00+00:00",
+  "LAST_ACTIVITY_TIME": "2025-09-14T19:17:00+00:00",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
@@ -47,13 +47,13 @@
   "LAST_ACTIVITY_BY": "1"
  },
  "time": {
-  "start": 1757613172.67224,
-  "finish": 1757613172.70839,
-  "duration": 0.03615403175354,
-  "processing": 0.0133111476898193,
-  "date_start": "2025-09-11T20:52:52+03:00",
-  "date_finish": "2025-09-11T20:52:52+03:00",
-  "operating_reset_at": 1757613772,
+  "start": 1757877429.05874,
+  "finish": 1757877429.09856,
+  "duration": 0.0398199558258057,
+  "processing": 0.0149359703063965,
+  "date_start": "2025-09-14T19:17:09+00:00",
+  "date_finish": "2025-09-14T19:17:09+00:00",
+  "operating_reset_at": 1757878029,
   "operating": 0
  }
 }

@@ -1,4 +1,4 @@
 oint vk ИзменитьПодборкуТоваров ^
   --title ""Измененная подборка"" ^
-  --sel "138" ^
-  --auth ""/tmp/gj5yugt0.iwx.json""
+  --sel "144" ^
+  --auth ""/tmp/pemmsk40.vi0.json""

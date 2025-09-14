@@ -1,7 +1,7 @@
 oint vk СоздатьРекламноеОбъявление ^
-  --campaign "1031559142" ^
+  --campaign "1031565586" ^
   --limit "150" ^
   --category "126" ^
-  --post "9513" ^
+  --post "9613" ^
   --cabinet ""1607951446"" ^
-  --auth ""/tmp/o5xapyga.tbd.json""
+  --auth ""/tmp/4ic25unm.smy.json""

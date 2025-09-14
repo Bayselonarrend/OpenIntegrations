@@ -1,4 +1,4 @@
 oint vk СделатьРепост \
   --post "2571" \
   --from "-218704372" \
-  --auth ""/tmp/zcm10gqj.b2x.json""
+  --auth ""/tmp/saccxiln.g01.json""

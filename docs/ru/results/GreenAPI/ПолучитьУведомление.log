@@ -7,8 +7,8 @@
    "wid": "1234567890@c.us",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1757530612,
-  "idMessage": "BAE571902219F729",
+  "timestamp": 1757850539,
+  "idMessage": "BAE5EF2F5BB11764",
   "senderData": {
    "chatId": "120363410406221140@g.us",
    "chatName": "Основная тестовая группа",
@@ -19,9 +19,9 @@
   "messageData": {
    "typeMessage": "imageMessage",
    "fileMessageData": {
-    "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/dd519076-19d8-452e-b070-b1119573cd20.jpg",
-    "caption": "Описание файла",
-    "fileName": "dd519076-19d8-452e-b070-b1119573cd20.jpg",
+    "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/60e0fc77-f058-4ed0-bcab-82f2f119c374.jpg",
+    "caption": "File description",
+    "fileName": "60e0fc77-f058-4ed0-bcab-82f2f119c374.jpg",
     "jpegThumbnail": "",
     "isAnimated": false,
     "mimeType": "image/jpeg",
