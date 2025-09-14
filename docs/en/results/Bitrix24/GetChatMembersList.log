@@ -26,7 +26,7 @@
    "departments": [
     1,
     640,
-    2618
+    2622
    ],
    "phones": false,
    "bot_data": null,
@@ -58,7 +58,7 @@
    "departments": [
     1,
     638,
-    2618
+    2622
    ],
    "phones": false,
    "bot_data": null,
@@ -67,13 +67,13 @@
  ],
  "total": 2,
  "time": {
-  "start": 1757707488.95349,
-  "finish": 1757707488.98442,
-  "duration": 0.0309300422668457,
-  "processing": 0.00706911087036133,
-  "date_start": "2025-09-12T20:04:48+00:00",
-  "date_finish": "2025-09-12T20:04:48+00:00",
-  "operating_reset_at": 1757708088,
+  "start": 1757849493.91934,
+  "finish": 1757849493.94547,
+  "duration": 0.0261290073394775,
+  "processing": 0.00617194175720215,
+  "date_start": "2025-09-14T11:31:33+00:00",
+  "date_finish": "2025-09-14T11:31:33+00:00",
+  "operating_reset_at": 1757850093,
   "operating": 0
  }
 }
