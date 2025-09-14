@@ -6,7 +6,7 @@
     {
      "bundle_ids": [
       {
-       "bundle_id": "01993f8d-6431-7109-be0f-53deefa6229a",
+       "bundle_id": "01994803-aadf-75f4-8c0b-4145ef131afc",
        "is_docless": true
       }
      ],
@@ -22,13 +22,13 @@
      },
      "restricted_bundle_id": "",
      "travel_time_days": "0",
-     "total_score": 0.826361101229019,
+     "total_score": 0.823314960071762,
      "total_rank": 1
     },
     {
      "bundle_ids": [
       {
-       "bundle_id": "01993f8d-6431-7123-857b-7a42f77415ea",
+       "bundle_id": "01994803-aadf-70c3-8a77-1b734f359210",
        "is_docless": true
       }
      ],
@@ -44,13 +44,13 @@
      },
      "restricted_bundle_id": "",
      "travel_time_days": null,
-     "total_score": 0.800961982244876,
+     "total_score": 0.809123469476134,
      "total_rank": 2
     },
     {
      "bundle_ids": [
       {
-       "bundle_id": "01993f8d-6431-710b-9dbf-728ba6eab9a9",
+       "bundle_id": "01994803-aadf-70c4-8101-45ae26f53a80",
        "is_docless": true
       }
      ],
@@ -66,13 +66,13 @@
      },
      "restricted_bundle_id": "",
      "travel_time_days": null,
-     "total_score": 0.800926791173123,
+     "total_score": 0.800713148422202,
      "total_rank": 3
     },
     {
      "bundle_ids": [
       {
-       "bundle_id": "01993f8d-6431-7125-b70a-a761af48060e",
+       "bundle_id": "01994803-aadf-75f5-a17e-983119e79a13",
        "is_docless": true
       }
      ],
@@ -86,9 +86,9 @@
       "invalid_reason": "WAREHOUSE_SCORING_INVALID_REASON_NOT_AVAILABLE_RANK",
       "is_available": false
      },
-     "restricted_bundle_id": "01993f8d-6451-705d-809b-a52c5956a7fd",
+     "restricted_bundle_id": "01994803-aafe-73c5-848b-0f6744b2851c",
      "travel_time_days": null,
-     "total_score": 0.732605894927816,
+     "total_score": 0.730717186995671,
      "total_rank": 4
     },
     {
@@ -103,7 +103,7 @@
       "invalid_reason": "WAREHOUSE_SCORING_INVALID_REASON_NOT_AVAILABLE_MATRIX",
       "is_available": false
      },
-     "restricted_bundle_id": "01993f8d-6431-710a-ba40-e1fece61cbcc",
+     "restricted_bundle_id": "01994803-aae0-759f-8951-d0483255074a",
      "travel_time_days": null,
      "total_score": 0,
      "total_rank": 5
@@ -120,7 +120,7 @@
       "invalid_reason": "WAREHOUSE_SCORING_INVALID_REASON_NOT_AVAILABLE_MATRIX",
       "is_available": false
      },
-     "restricted_bundle_id": "01993f8d-6431-7124-96cb-12649d1b1d31",
+     "restricted_bundle_id": "01994803-aadf-70c5-95a7-12a3a716c43a",
      "travel_time_days": null,
      "total_score": 0,
      "total_rank": 6
@@ -130,6 +130,6 @@
    "cluster_name": "Санкт-Петербург и СЗО"
   }
  ],
- "draft_id": 68212958,
+ "draft_id": 68296123,
  "errors": []
 }
