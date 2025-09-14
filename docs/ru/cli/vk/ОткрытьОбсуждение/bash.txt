@@ -1,3 +1,3 @@
 oint vk ОткрытьОбсуждение \
-  --topic "54102123" \
-  --auth ""/tmp/2pnhvbvn.ha1.json""
+  --topic "54107076" \
+  --auth ""/tmp/ybgmcno4.sri.json""

@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-09-11T18:11:02.974765161Z",
+ "created_at": "2025-09-14T19:47:43.736069449Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in 2006. However, some updates were made to the software over time, such as bug fixes and performance improvements. In late 2018, 1C Company re-released a new version of the software, which included several major features and improvements compared to the previous release. The latest version, called 1C:Enterprise 12, was released in September 2020, with additional additions such as a CRM platform and improved analytics functionality. It's important to note that each new version of 1C:Enterprise may include new features, improvements, or bug fixes depending on the needs and preferences of the users and the company."
+  "content": "I do not have access to current information or details about the specific versions of crocus group's 1c:enterprise erp solution. It is common for software companies to release new versions of their products at regular intervals, which typically occur several times a year or less frequently depending on the needs and requirements of their users. The exact timeline of when new releases are made available may vary based on various factors, including changes in technology and customer demand."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 26978929611,
- "load_duration": 24962398,
- "prompt_eval_count": 335,
- "prompt_eval_duration": 9501510725,
- "eval_count": 158,
- "eval_duration": 17446305225
+ "total_duration": 11456870998,
+ "load_duration": 18416249,
+ "prompt_eval_count": 162,
+ "prompt_eval_duration": 3872449682,
+ "eval_count": 94,
+ "eval_duration": 7562205802
 }
