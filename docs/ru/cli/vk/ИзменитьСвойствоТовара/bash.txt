@@ -1,4 +1,4 @@
 oint vk ИзменитьСвойствоТовара \
   --title ""Цвет (изм.)"" \
-  --prop ""4252"" \
-  --auth ""/tmp/0yjmbyw0.kar.json""
+  --prop ""4308"" \
+  --auth ""/tmp/22fscem3.iox.json""

@@ -1,4 +1,4 @@
 oint mysql УдалитьТаблицу \
   --table ""test_data"" \
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-  --tls ""/tmp/3ltq5hhc.ett.json""
+  --tls ""/tmp/o2rjckm3.gme.json""

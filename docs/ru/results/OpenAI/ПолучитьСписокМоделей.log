@@ -2,7 +2,15 @@
  "object": "list",
  "data": [
   {
-   "id": "text-embedding-ada-002",
+   "id": "silero-vad",
+   "object": "model"
+  },
+  {
+   "id": "moondream2-20250414",
+   "object": "model"
+  },
+  {
+   "id": "tts-1",
    "object": "model"
   },
   {
@@ -10,11 +18,11 @@
    "object": "model"
   },
   {
-   "id": "gpt-4o",
+   "id": "stablediffusion",
    "object": "model"
   },
   {
-   "id": "silero-vad",
+   "id": "gpt-4o",
    "object": "model"
   },
   {
@@ -26,19 +34,11 @@
    "object": "model"
   },
   {
-   "id": "stablediffusion",
-   "object": "model"
-  },
-  {
-   "id": "tts-1",
-   "object": "model"
-  },
-  {
-   "id": "moondream2-20250414",
-   "object": "model"
-  },
-  {
    "id": "smolvlm-256m-instruct",
+   "object": "model"
+  },
+  {
+   "id": "text-embedding-ada-002",
    "object": "model"
   },
   {

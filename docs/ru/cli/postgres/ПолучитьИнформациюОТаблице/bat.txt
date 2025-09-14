@@ -1,4 +1,4 @@
 oint postgres ПолучитьИнформациюОТаблице ^
   --table ""test_new"" ^
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-  --tls ""/tmp/y3adrtbs.fdj.json""
+  --tls ""/tmp/htqtdwfr.cyr.json""

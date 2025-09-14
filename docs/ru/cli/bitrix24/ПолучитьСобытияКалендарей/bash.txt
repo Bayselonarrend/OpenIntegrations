@@ -2,5 +2,5 @@ oint bitrix24 ПолучитьСобытияКалендарей \
   --url ""b24-ar17wx.bitrix24.by"" \
   --owner "1" \
   --type ""user"" \
-  --filter ""/tmp/21aed3cd.ere.json"" \
+  --filter ""/tmp/ciwumskn.txa.json"" \
   --token "***"

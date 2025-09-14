@@ -1,9 +1,9 @@
 ﻿{
  "object": "database",
- "id": "26b82aa7-fc4e-812f-a2ec-da6569a9ddc1",
+ "id": "26e82aa7-fc4e-8124-8479-f7ae3cfdc9e9",
  "cover": null,
  "icon": null,
- "created_time": "2025-09-11T17:43:00Z",
+ "created_time": "2025-09-14T18:53:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -12,7 +12,7 @@
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2025-09-11T17:43:00Z",
+ "last_edited_time": "2025-09-14T18:53:00Z",
  "title": [
   {
    "type": "text",
@@ -53,50 +53,8 @@
  ],
  "is_inline": false,
  "properties": {
-  "Дата создания": {
-   "id": "%40%5Bd%40",
-   "name": "Дата создания",
-   "description": null,
-   "type": "date",
-   "date": {}
-  },
-  "Почта": {
-   "id": "AGWS",
-   "name": "Почта",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "Статус": {
-   "id": "D%7Cb%3A",
-   "name": "Статус",
-   "description": null,
-   "type": "select",
-   "select": {
-    "options": [
-     {
-      "id": "02226572-0413-410d-8b71-e7796996a611",
-      "name": "Новый",
-      "color": "green",
-      "description": null
-     },
-     {
-      "id": "c4f69a2c-a0b8-45a9-94f7-1a835b15b5a7",
-      "name": "В работе",
-      "color": "yellow",
-      "description": null
-     },
-     {
-      "id": "ccd7da23-3e18-4ae8-8ffe-a634bf0c0f5c",
-      "name": "Удаленный",
-      "color": "red",
-      "description": null
-     }
-    ]
-   }
-  },
   "Номер": {
-   "id": "MGOo",
+   "id": "P%7CZl",
    "name": "Номер",
    "description": null,
    "type": "number",
@@ -104,40 +62,82 @@
     "format": "number"
    }
   },
-  "Пользователь": {
-   "id": "SM%3F_",
-   "name": "Пользователь",
-   "description": null,
-   "type": "people",
-   "people": {}
-  },
-  "Картинка": {
-   "id": "_RM_",
-   "name": "Картинка",
-   "description": null,
-   "type": "files",
-   "files": {}
-  },
-  "Описание": {
-   "id": "cN%3AS",
-   "name": "Описание",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
   "Телефон": {
-   "id": "d%5Dnc",
+   "id": "Sc%3Ap",
    "name": "Телефон",
    "description": null,
    "type": "phone_number",
    "phone_number": {}
   },
+  "Почта": {
+   "id": "c%5DMw",
+   "name": "Почта",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
+  "Описание": {
+   "id": "dk%3Ew",
+   "name": "Описание",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
+  "Дата создания": {
+   "id": "pVG~",
+   "name": "Дата создания",
+   "description": null,
+   "type": "date",
+   "date": {}
+  },
+  "Картинка": {
+   "id": "s%3DvP",
+   "name": "Картинка",
+   "description": null,
+   "type": "files",
+   "files": {}
+  },
+  "Пользователь": {
+   "id": "tdGq",
+   "name": "Пользователь",
+   "description": null,
+   "type": "people",
+   "people": {}
+  },
   "Активен": {
-   "id": "sF%60C",
+   "id": "%7BV%3EY",
    "name": "Активен",
    "description": null,
    "type": "checkbox",
    "checkbox": {}
+  },
+  "Статус": {
+   "id": "~ORY",
+   "name": "Статус",
+   "description": null,
+   "type": "select",
+   "select": {
+    "options": [
+     {
+      "id": "b0811614-f5aa-4b60-80bd-585443a741eb",
+      "name": "Новый",
+      "color": "green",
+      "description": null
+     },
+     {
+      "id": "8684f5ae-ca33-41c4-be3a-64217d84345e",
+      "name": "В работе",
+      "color": "yellow",
+      "description": null
+     },
+     {
+      "id": "b5dfb8af-98ee-48ef-bc9b-6dfbbf62e551",
+      "name": "Удаленный",
+      "color": "red",
+      "description": null
+     }
+    ]
+   }
   },
   "Имя": {
    "id": "title",
@@ -151,9 +151,9 @@
   "type": "page_id",
   "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
  },
- "url": "https://www.notion.so/26b82aa7fc4e812fa2ecda6569a9ddc1",
+ "url": "https://www.notion.so/26e82aa7fc4e81248479f7ae3cfdc9e9",
  "public_url": null,
  "archived": false,
  "in_trash": false,
- "request_id": "cbdae558-86c8-4428-8edc-fdc2e93069f6"
+ "request_id": "fd402f5e-265c-4ae1-9dc7-f4456022862f"
 }

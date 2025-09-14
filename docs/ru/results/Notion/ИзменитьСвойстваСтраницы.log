@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "26b82aa7-fc4e-8147-9191-d08739299ca5",
- "created_time": "2025-09-11T17:43:00Z",
- "last_edited_time": "2025-09-11T17:43:00Z",
+ "id": "26e82aa7-fc4e-8159-89ac-f4810e2397a5",
+ "created_time": "2025-09-14T18:53:00Z",
+ "last_edited_time": "2025-09-14T18:53:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -29,6 +29,7 @@
  },
  "archived": false,
  "in_trash": false,
+ "is_locked": false,
  "properties": {
   "title": {
    "id": "title",
@@ -54,7 +55,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/26b82aa7fc4e81479191d08739299ca5",
+ "url": "https://www.notion.so/26e82aa7fc4e815989acf4810e2397a5",
  "public_url": null,
- "request_id": "7965240f-8526-40f9-86f9-d35e71cb7876"
+ "request_id": "1d531b9a-421b-4d71-b0fa-0a9a8826e7f5"
 }

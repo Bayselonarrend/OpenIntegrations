@@ -1,5 +1,5 @@
 oint vk ИзменитьВариантСвойстваТовара \
   --value ""Новое имя варианта"" \
-  --prop ""4252"" \
-  --option "7855" \
-  --auth ""/tmp/hpmo4opl.dha.json""
+  --prop ""4308"" \
+  --option "7955" \
+  --auth ""/tmp/5yivtdco.uf0.json""

@@ -19,14 +19,14 @@
    "external_auth_id": "socservices",
    "status": "online",
    "idle": false,
-   "last_activity_date": "2024-07-13T21:36:23+03:00",
+   "last_activity_date": "2024-07-13T18:36:23+00:00",
    "mobile_last_date": false,
    "desktop_last_date": false,
    "absent": false,
    "departments": [
     1,
     640,
-    2606
+    2638
    ],
    "phones": false,
    "bot_data": null,
@@ -51,14 +51,14 @@
    "external_auth_id": "socservices",
    "status": "online",
    "idle": false,
-   "last_activity_date": "2025-09-10T10:51:58+03:00",
+   "last_activity_date": "2025-09-10T07:51:58+00:00",
    "mobile_last_date": false,
    "desktop_last_date": false,
    "absent": false,
    "departments": [
     1,
     638,
-    2606
+    2638
    ],
    "phones": false,
    "bot_data": null,
@@ -67,13 +67,13 @@
  ],
  "total": 2,
  "time": {
-  "start": 1757613109.3809,
-  "finish": 1757613109.41204,
-  "duration": 0.031141996383667,
-  "processing": 0.0067589282989502,
-  "date_start": "2025-09-11T20:51:49+03:00",
-  "date_finish": "2025-09-11T20:51:49+03:00",
-  "operating_reset_at": 1757613709,
+  "start": 1757877194.81228,
+  "finish": 1757877194.84826,
+  "duration": 0.0359759330749512,
+  "processing": 0.00946712493896484,
+  "date_start": "2025-09-14T19:13:14+00:00",
+  "date_finish": "2025-09-14T19:13:14+00:00",
+  "operating_reset_at": 1757877794,
   "operating": 0
  }
 }

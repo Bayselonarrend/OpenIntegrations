@@ -1,5 +1,5 @@
 oint postgres ГарантироватьТаблицу \
   --table ""test_new"" \
-  --cols ""/tmp/i5d2gu10.mkr.json"" \
+  --cols ""/tmp/mporbkli.bqb.json"" \
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-  --tls ""/tmp/3wbdstrp.zs4.json""
+  --tls ""/tmp/0b1ch2xi.e0u.json""

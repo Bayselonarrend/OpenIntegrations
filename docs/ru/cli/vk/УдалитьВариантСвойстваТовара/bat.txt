@@ -1,3 +1,3 @@
 oint vk УдалитьВариантСвойстваТовара ^
-  --option "7855" ^
-  --auth ""/tmp/torlmfos.4lx.json""
+  --option "7955" ^
+  --auth ""/tmp/aji4nlk5.3mr.json""
