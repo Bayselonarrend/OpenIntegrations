@@ -2,5 +2,5 @@ oint bitrix24 ИзменитьПользовательскоеПолеЗадач
   --url ""b24-ar17wx.bitrix24.by"" ^
   --fieldid "261" ^
   --externalid ""NEW_TEXT_FIELD"" ^
-  --label ""/tmp/djyktmf1.pvx.json"" ^
+  --label ""/tmp/mgote1gc.4lr.json"" ^
   --token "***"

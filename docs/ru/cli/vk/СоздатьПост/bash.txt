@@ -1,6 +1,6 @@
 oint vk СоздатьПост \
   --text ""Пост из автотеста"" \
-  --pictures ""/tmp/0pq44x1z.stp.png"" \
+  --pictures ""/tmp/gcab1fca.lo4.png"" \
   --ad "true" \
   --url ""https://github.com/Bayselonarrend/OpenIntegrations"" \
-  --auth ""/tmp/hukgh2rz.gzg.json""
+  --auth ""/tmp/an2ndxqn.nek.json""
