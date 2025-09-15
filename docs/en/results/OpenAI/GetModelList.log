@@ -2,7 +2,7 @@
  "object": "list",
  "data": [
   {
-   "id": "silero-vad",
+   "id": "jina-reranker-v1-base-en",
    "object": "model"
   },
   {
@@ -10,19 +10,19 @@
    "object": "model"
   },
   {
-   "id": "moondream2-20250414",
-   "object": "model"
-  },
-  {
    "id": "smolvlm-256m-instruct",
    "object": "model"
   },
   {
-   "id": "stablediffusion",
+   "id": "text-embedding-ada-002",
    "object": "model"
   },
   {
    "id": "whisper-1",
+   "object": "model"
+  },
+  {
+   "id": "stablediffusion",
    "object": "model"
   },
   {
@@ -34,11 +34,11 @@
    "object": "model"
   },
   {
-   "id": "jina-reranker-v1-base-en",
+   "id": "silero-vad",
    "object": "model"
   },
   {
-   "id": "text-embedding-ada-002",
+   "id": "moondream2-20250414",
    "object": "model"
   },
   {
