@@ -7,13 +7,13 @@
     "owner_id": -218861756,
     "title": "EditedCollection",
     "count": 0,
-    "updated_time": 1757846558,
+    "updated_time": 1757916192,
     "is_main": false,
     "is_hidden": false,
     "photo": {
      "album_id": -53,
-     "date": 1757846558,
-     "id": 457258948,
+     "date": 1757916192,
+     "id": 457259043,
      "owner_id": -218861756,
      "sizes": [
       {
@@ -85,7 +85,7 @@
      ],
      "text": "",
      "user_id": 100,
-     "web_view_token": "485a649c4019a9af82",
+     "web_view_token": "e8c279650be349e9fe",
      "has_tags": false,
      "orig_photo": {
       "height": 1920,
