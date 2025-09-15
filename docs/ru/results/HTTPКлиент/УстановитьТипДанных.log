@@ -11,7 +11,7 @@
   "Content-Type": "text/markdown",
   "Host": "httpbin.org",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Amzn-Trace-Id": "Root=1-68c71ce6-2ac7c72d4b7aa9f11c24ae71"
+  "X-Amzn-Trace-Id": "Root=1-68c7d547-6983ad2974630f7924d57d4e"
  },
  "json": null,
  "origin": "***",

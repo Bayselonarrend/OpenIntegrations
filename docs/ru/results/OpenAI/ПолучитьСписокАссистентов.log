@@ -2,9 +2,9 @@
  "object": "list",
  "data": [
   {
-   "id": "asst_2",
+   "id": "asst_8",
    "object": "assistant",
-   "created": 1757879995,
+   "created": 1757927198,
    "model": "smolvlm-256m-instruct",
    "name": "Math tutor",
    "instructions": "You are a personal math tutor. When asked a question, write and run Python code to answer the question."
