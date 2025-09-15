@@ -1,5 +1,5 @@
 oint bitrix24 ИзменитьСделку \
   --url ""b24-ar17wx.bitrix24.by"" \
-  --deal "4838" \
-  --fields ""/tmp/tfrtzhc4.w3j.json"" \
+  --deal "4894" \
+  --fields ""/tmp/fn0z0aac.klv.json"" \
   --token "***"

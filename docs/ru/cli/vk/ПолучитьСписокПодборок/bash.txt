@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокПодборок \
-  --auth ""/tmp/ap2yvhfs.xw1.json""
+  --auth ""/tmp/ah3ov532.hdm.json""

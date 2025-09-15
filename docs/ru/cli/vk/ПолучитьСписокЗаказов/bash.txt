@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокЗаказов \
-  --auth ""/tmp/tduqjaw5.24z.json""
+  --auth ""/tmp/rggusmkx.1fj.json""

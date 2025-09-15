@@ -1,4 +1,4 @@
 oint sqlite УдалитьЗаписи \
   --table "test" \
   --filter "{'field':'name','type':'=','value':'Vitaly A.','union':'AND','raw':false}" \
-  --db "/tmp/xnl0clt5.0fi.sqlite"
+  --db "/tmp/ujurxvu2.nko.sqlite"

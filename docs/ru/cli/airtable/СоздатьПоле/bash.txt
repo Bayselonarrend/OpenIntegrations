@@ -1,5 +1,5 @@
 oint airtable СоздатьПоле \
   --token "***" \
-  --base "appgWUGVVFidkPzIH" \
-  --table "tbloXLnSJr7rmjhey" \
-  --fielddata "{'name':'86c25206-bb27-4da7-84bb-828ccdb1d11a','type':'number','options':{'precision':'0'}}"
+  --base "apppI5eGR2ySdXEeJ" \
+  --table "tblpWuf3QJvybPsQN" \
+  --fielddata "{'name':'1e781bf1-5146-4d3b-928b-7ceea018bbcf','type':'number','options':{'precision':'0'}}"

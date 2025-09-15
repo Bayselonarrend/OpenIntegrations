@@ -28,14 +28,6 @@
    "id": "file-7",
    "object": "file",
    "bytes": 2114025,
-   "created_at": "2025-09-05T07:19:45.741949164Z",
-   "filename": "7abf2794-bdf1-4f11-872e-3c58c321a1bb.png",
-   "purpose": "user_data"
-  },
-  {
-   "id": "file-7",
-   "object": "file",
-   "bytes": 2114025,
    "created_at": "2025-09-07T17:41:29.472968922Z",
    "filename": "6b4e8148-5c29-46ea-af84-82b5e3bf1447.png",
    "purpose": "user_data"
@@ -137,11 +129,19 @@
    "purpose": "user_data"
   },
   {
-   "id": "file-6",
+   "id": "file-7",
    "object": "file",
    "bytes": 2114025,
-   "created_at": "2025-09-15T18:55:46.938310844Z",
-   "filename": "c19eb8e6-0fd8-4a33-b651-76b01a28c99c.png",
+   "created_at": "2025-09-15T21:13:41.960390784Z",
+   "filename": "74f1ecd2-56ba-4ffe-943e-46ef68320057.png",
+   "purpose": "user_data"
+  },
+  {
+   "id": "file-9",
+   "object": "file",
+   "bytes": 2114025,
+   "created_at": "2025-09-15T21:17:04.832163664Z",
+   "filename": "89493bc4-bdd7-4e47-a618-f624b66ed552.png",
    "purpose": "assistants"
   }
  ],
