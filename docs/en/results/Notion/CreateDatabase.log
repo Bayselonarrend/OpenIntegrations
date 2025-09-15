@@ -1,9 +1,9 @@
 ﻿{
  "object": "database",
- "id": "26e82aa7-fc4e-81e3-a85f-feaec9905029",
+ "id": "26f82aa7-fc4e-811a-b6ef-d14f25de39e2",
  "cover": null,
  "icon": null,
- "created_time": "2025-09-14T11:21:00Z",
+ "created_time": "2025-09-15T06:38:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -12,7 +12,7 @@
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2025-09-14T11:21:00Z",
+ "last_edited_time": "2025-09-15T06:38:00Z",
  "title": [
   {
    "type": "text",
@@ -35,22 +35,15 @@
  "description": [],
  "is_inline": false,
  "properties": {
-  "Website": {
-   "id": "%40cOt",
-   "name": "Website",
+  "Email": {
+   "id": "BS%5BW",
+   "name": "Email",
    "description": null,
-   "type": "url",
-   "url": {}
-  },
-  "Description": {
-   "id": "JtSe",
-   "name": "Description",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
+   "type": "email",
+   "email": {}
   },
   "Number": {
-   "id": "NBEL",
+   "id": "CD%3Es",
    "name": "Number",
    "description": null,
    "type": "number",
@@ -58,75 +51,82 @@
     "format": "number"
    }
   },
+  "Description": {
+   "id": "HcBi",
+   "name": "Description",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
+  "Active": {
+   "id": "IaVM",
+   "name": "Active",
+   "description": null,
+   "type": "checkbox",
+   "checkbox": {}
+  },
+  "Website": {
+   "id": "%5BulK",
+   "name": "Website",
+   "description": null,
+   "type": "url",
+   "url": {}
+  },
+  "Image": {
+   "id": "%5DZ%40N",
+   "name": "Image",
+   "description": null,
+   "type": "files",
+   "files": {}
+  },
+  "CreationDate": {
+   "id": "%60%3Fqh",
+   "name": "CreationDate",
+   "description": null,
+   "type": "date",
+   "date": {}
+  },
+  "Phone": {
+   "id": "%60Nhk",
+   "name": "Phone",
+   "description": null,
+   "type": "phone_number",
+   "phone_number": {}
+  },
   "User": {
-   "id": "RT%3Ex",
+   "id": "aYCI",
    "name": "User",
    "description": null,
    "type": "people",
    "people": {}
   },
-  "Email": {
-   "id": "UfyP",
-   "name": "Email",
-   "description": null,
-   "type": "email",
-   "email": {}
-  },
   "Status": {
-   "id": "%5Ca%5D%3C",
+   "id": "wRAH",
    "name": "Status",
    "description": null,
    "type": "select",
    "select": {
     "options": [
      {
-      "id": "cafb5ca5-3314-4947-ad07-082c3e106da8",
+      "id": "c5db4f54-1e1e-43ca-a6d1-97d598483214",
       "name": "New",
       "color": "green",
       "description": null
      },
      {
-      "id": "a50e687a-b1f6-4a0a-a333-beb879d48f00",
+      "id": "a496dc8b-3629-4928-adfa-5f2ea5307dbd",
       "name": "InProgress",
       "color": "yellow",
       "description": null
      },
      {
-      "id": "f516dac2-03c0-429b-80e9-710cc1edf576",
+      "id": "1947d1ae-ba25-4370-9e4f-bc301ec719c1",
       "name": "Remote",
       "color": "red",
       "description": null
      }
     ]
    }
-  },
-  "Phone": {
-   "id": "%5DvOM",
-   "name": "Phone",
-   "description": null,
-   "type": "phone_number",
-   "phone_number": {}
-  },
-  "CreationDate": {
-   "id": "l%5Bx%7D",
-   "name": "CreationDate",
-   "description": null,
-   "type": "date",
-   "date": {}
-  },
-  "Active": {
-   "id": "meNE",
-   "name": "Active",
-   "description": null,
-   "type": "checkbox",
-   "checkbox": {}
-  },
-  "Image": {
-   "id": "tc%40%60",
-   "name": "Image",
-   "description": null,
-   "type": "files",
-   "files": {}
   },
   "Name": {
    "id": "title",
@@ -140,9 +140,9 @@
   "type": "page_id",
   "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
  },
- "url": "https://www.notion.so/26e82aa7fc4e81e3a85ffeaec9905029",
+ "url": "https://www.notion.so/26f82aa7fc4e811ab6efd14f25de39e2",
  "public_url": null,
  "archived": false,
  "in_trash": false,
- "request_id": "5ad88e66-78ac-46d4-ad84-2b36973db1d0"
+ "request_id": "7edf520b-4a1e-4a65-adc6-ffb50d338467"
 }
