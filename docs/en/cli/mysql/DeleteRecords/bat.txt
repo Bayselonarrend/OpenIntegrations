@@ -1,4 +1,5 @@
 oint mysql DeleteRecords ^
- --table "test_data" ^
- --filter "[{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false,'union':'AND'}]" ^
- --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/"
+ --table ""test_data"" ^
+ --filter ""[{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false,'union':'AND'}]"" ^
+ --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
+ --tls ""C:\Users\bayse\AppData\Local\Temp\adw4y2xe.b24.json""

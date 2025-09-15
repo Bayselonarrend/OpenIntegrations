@@ -1,0 +1,5 @@
+oint rportal DeletePermanentToken \
+ --url "tests.openintegrations.dev" \
+ --token "***" \
+ --user 1 \
+ --id 40

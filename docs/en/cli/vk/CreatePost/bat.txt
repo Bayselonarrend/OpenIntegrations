@@ -1,8 +1,6 @@
-:: JSON data can also be passed as a path to a .json file
-
 oint vk CreatePost ^
- --text "Post from autotest" ^
- --pictures "/tmp/bzip13xx.vuy.png" ^
- --ad true ^
- --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
- --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+ --text ""Post from autotest"" ^
+ --pictures ""C:\Users\bayse\AppData\Local\Temp\fnlievfa.lbu.png"" ^
+ --ad "true" ^
+ --url ""https://github.com/Bayselonarrend/OpenIntegrations"" ^
+ --auth ""C:\Users\bayse\AppData\Local\Temp\xgschuz0.oaj.json""

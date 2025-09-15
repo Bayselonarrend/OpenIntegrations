@@ -1,7 +1,6 @@
-# JSON data can also be passed as a path to a .json file
-
 oint mysql UpdateRecords \
- --table "testtable" \
- --values "{'varchar_field':{'VARCHAR':'Another varchar'}}" \
+ --table ""test_data"" \
+ --values ""C:\Users\bayse\AppData\Local\Temp\0ifdnccn.acz.json"" \
+ --filter ""C:\Users\bayse\AppData\Local\Temp\ql5hzxbq.fp4.json"" \
  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
- --tls "{'use_tls':true,'accept_invalid_certs':true}"
+ --tls ""C:\Users\bayse\AppData\Local\Temp\pyirktip.xn2.json""

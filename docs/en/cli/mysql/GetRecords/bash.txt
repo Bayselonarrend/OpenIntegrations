@@ -1,3 +1,4 @@
 oint mysql GetRecords \
- --table "testtable" \
- --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/"
+ --table ""testtable"" \
+ --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
+ --tls ""C:\Users\bayse\AppData\Local\Temp\uchllhsh.bld.json""
