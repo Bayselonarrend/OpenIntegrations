@@ -1,6 +1,6 @@
 oint notion ИзменитьСвойстваСтраницы ^
   --token "***" ^
-  --page "26e82aa7-fc4e-8159-89ac-f4810e2397a5" ^
+  --page "26f82aa7-fc4e-8148-9f26-ef5030e01447" ^
   --data "{'Активен':false,'Почта':'vector@mail.ru'}" ^
   --icon "https://hut.openintegrations.dev/test_data/picture.jpg" ^
   --cover "https://hut.openintegrations.dev/test_data/picture2.jpg" ^

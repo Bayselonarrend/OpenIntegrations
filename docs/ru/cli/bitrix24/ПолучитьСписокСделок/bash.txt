@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьСписокСделок \
   --url ""b24-ar17wx.bitrix24.by"" \
-  --filter ""/tmp/vutinlul.oza.json"" \
+  --filter ""/tmp/uwuo40hz.ktv.json"" \
   --token "***"

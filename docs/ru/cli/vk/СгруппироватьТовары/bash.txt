@@ -1,3 +1,3 @@
 oint vk СгруппироватьТовары \
-  --items ""[11831960,11831961]"" \
-  --auth ""/tmp/fvze3oco.vtv.json""
+  --items ""[11838217,11838218]"" \
+  --auth ""/tmp/gp0hj4st.e1s.json""

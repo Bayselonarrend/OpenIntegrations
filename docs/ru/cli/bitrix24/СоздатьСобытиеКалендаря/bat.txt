@@ -1,4 +1,4 @@
 oint bitrix24 СоздатьСобытиеКалендаря ^
   --url ""b24-ar17wx.bitrix24.by"" ^
-  --fields ""/tmp/rzzinpho.fwe.json"" ^
+  --fields ""/tmp/xaghy3sh.s3a.json"" ^
   --token "***"

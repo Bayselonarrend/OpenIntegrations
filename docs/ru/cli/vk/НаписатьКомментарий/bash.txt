@@ -1,5 +1,5 @@
 oint vk НаписатьКомментарий \
-  --post "9610" \
+  --post "9682" \
   --wall ""-218861756"" \
   --text ""Новый комментарий"" \
-  --auth ""/tmp/wknp0e0p.0ok.json""
+  --auth ""/tmp/tixsgfrm.m30.json""

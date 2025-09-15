@@ -1,4 +1,4 @@
 oint vk УдалитьТоварИзПодборки \
-  --item "11831957" \
-  --sel "144" \
-  --auth ""/tmp/zq5qpucz.ao0.json""
+  --item "11838214" \
+  --sel "146" \
+  --auth ""/tmp/1dgaml0c.jhk.json""
