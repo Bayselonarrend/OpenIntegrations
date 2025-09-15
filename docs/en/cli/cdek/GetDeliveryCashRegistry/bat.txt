@@ -1,4 +1,4 @@
 oint cdek GetDeliveryCashRegistry ^
  --token "***" ^
- --date "2025-07-15T17:41:28.6376874" ^
+ --date "2025-09-15T15:26:50.0382032" ^
  --testapi "***"

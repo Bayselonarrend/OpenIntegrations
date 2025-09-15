@@ -1,6 +1,4 @@
-# JSON data can also be passed as a path to a .json file
-
 oint cdek RegisterDeliveryAppointment \
  --token "***" \
- --appt "{'cdek_number':'1106207236','order_uuid':'21ceabf6-953e-43b3-9cef-318c783fcdd4','date':'2025-07-29','time_from':'10:00','time_to':'17:00','comment':'Group office','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':37.6204,'latitude':55.754,'country_code':'RU','region':'Novosibirsk','sub_region':'Novosibirsk','city':'Novosibirsk','kladr_code':'7700000000000','address':'st. Bluchera, 33'}}" \
+ --appt "{'cdek_number':'1106207236','order_uuid':'31fbb67f-d019-4992-bd19-09e612b59252','date':'2025-09-29','time_from':'10:00','time_to':'17:00','comment':'Group office','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Novosibirsk','sub_region':'Novosibirsk','city':'Novosibirsk','kladr_code':'7700000000000','address':'st. Bluchera, 33'}}" \
  --testapi "***"

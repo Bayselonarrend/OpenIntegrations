@@ -2,5 +2,5 @@ oint openai CreateTranscription ^
  --url "https://hut.openintegrations.dev/localai/" ^
  --token "***" ^
  --model "whisper-1" ^
- --audio "/tmp/pypyif03.np5.wav" ^
+ --audio "C:\Users\bayse\AppData\Local\Temp\i12by32j.bak.wav" ^
  --type "audio/wav"

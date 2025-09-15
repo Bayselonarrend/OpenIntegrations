@@ -1,5 +1,5 @@
 oint bitrix24 ChangeChatColor ^
- --url "b24-ar17wx.bitrix24.by" ^
- --chat 2808 ^
- --color "PURPLE" ^
+ --url ""b24-ar17wx.bitrix24.by"" ^
+ --chat "3080" ^
+ --color ""PURPLE"" ^
  --token "***"

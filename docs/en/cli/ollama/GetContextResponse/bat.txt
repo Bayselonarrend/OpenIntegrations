@@ -1,7 +1,6 @@
-:: JSON data can also be passed as a path to a .json file
-
 oint ollama GetContextResponse ^
- --url "https://hut.openintegrations.dev/ollama" ^
- --model "tinyllama" ^
- --msgs "[{'role':'user','content':'What is 1C:Enterprise?'},{'role':'assistant','content':'1C:Enterprise is a comprehensive enterprise resource planning (ERP) system developed by the Russian company 1-Central. It has various modules for accounting, inventory management, manufacturing, logistics, and marketing. The system includes features like customer relationship management (CRM), e-commerce, supply chain management (SCM), production planning, and order and delivery management. It is widely used in industries such as manufacturing, retail, wholesale, and service sectors. 1C:Enterprise\u0027s software is sold and supported by the company, and is available for purchase on its website.'},{'role':'user','content':'When the first version was released?'}]" ^
+ --url ""https://hut.openintegrations.dev/ollama"" ^
+ --model ""tinyllama"" ^
+ --msgs ""[{'role':'user','content':'Hello!'}]"" ^
+ --options ""C:\Users\bayse\AppData\Local\Temp\knsvprux.wnf.json"" ^
  --headers "{'Authorization':'***'}"

@@ -1,37 +1,37 @@
 ﻿{
  "entity": {
-  "uuid": "809041e7-2ef1-4b13-9983-b4f9086417ba",
+  "uuid": "a8b5c75c-7013-447e-9cbd-59df04fbe2e9",
   "orders": [
    {
-    "order_uuid": "d166e526-93f4-47b1-8c7c-c2c244205c6b"
+    "order_uuid": "80cde557-d7e4-462f-988f-b178fd6a1717"
    }
   ],
   "copy_count": 1,
   "type": "tpl_russia",
-  "url": "https://api.edu.cdek.ru/v2/print/orders/809041e7-2ef1-4b13-9983-b4f9086417ba.pdf",
+  "url": "https://api.edu.cdek.ru/v2/print/orders/a8b5c75c-7013-447e-9cbd-59df04fbe2e9.pdf",
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-09-15T09:57:48+03:00"
+    "date_time": "2025-09-15T15:27:36+03:00"
    },
    {
     "code": "PROCESSING",
     "name": "Формируется",
-    "date_time": "2025-09-15T09:57:48+03:00"
+    "date_time": "2025-09-15T15:27:36+03:00"
    },
    {
     "code": "READY",
     "name": "Сформирован",
-    "date_time": "2025-09-15T09:57:49+03:00"
+    "date_time": "2025-09-15T15:27:37+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "27ea4714-7e72-4cf4-b766-f0606389b1f5",
+   "request_uuid": "706896b8-64b5-4c50-be5f-dd4e22ff23fd",
    "type": "CREATE",
-   "date_time": "2025-09-15T09:57:48+03:00",
+   "date_time": "2025-09-15T15:27:36+03:00",
    "state": "SUCCESSFUL"
   }
  ],

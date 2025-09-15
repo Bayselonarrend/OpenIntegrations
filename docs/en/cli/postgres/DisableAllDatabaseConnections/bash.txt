@@ -1,3 +1,4 @@
 oint postgres DisableAllDatabaseConnections \
- --base "testbase1" \
- --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+ --base ""testbase2"" \
+ --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
+ --tls ""C:\Users\bayse\AppData\Local\Temp\qwab2r0i.teo.json""
