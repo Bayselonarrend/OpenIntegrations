@@ -1,5 +1,5 @@
 oint postgres СоздатьТаблицу \
   --table ""somename"" \
-  --cols ""/tmp/yeonusux.cc5.json"" \
+  --cols ""/tmp/hsooj1po.qrz.json"" \
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-  --tls ""/tmp/5vf3ippi.evx.json""
+  --tls ""/tmp/lmdnuqy3.wws.json""

@@ -1,4 +1,4 @@
 oint mysql УдалитьБазуДанных ^
   --base ""testbase2"" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls ""/tmp/wriuk3yd.ult.json""
+  --tls ""/tmp/0bcbmwwz.2j3.json""

@@ -1,4 +1,4 @@
 oint vk СоздатьАльбом \
   --title ""Альбом из автотеста"" \
   --description ""Новый альбом из автотеста"" \
-  --auth ""/tmp/35ufr2dc.pnr.json""
+  --auth ""/tmp/xjgtbzvw.pux.json""

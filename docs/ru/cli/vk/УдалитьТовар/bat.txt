@@ -1,3 +1,3 @@
 oint vk УдалитьТовар ^
-  --item "11831957" ^
-  --auth ""/tmp/3ngkzzls.ayg.json""
+  --item "11838214" ^
+  --auth ""/tmp/r2i41leq.rb3.json""

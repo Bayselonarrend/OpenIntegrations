@@ -2,7 +2,7 @@
  "ok": true,
  "result": [
   {
-   "message_id": 16441,
+   "message_id": 16457,
    "from": {
     "id": 6129457865,
     "is_bot": true,
@@ -16,8 +16,8 @@
     "username": "bayselonarrend",
     "type": "private"
    },
-   "date": 1757957629,
-   "media_group_id": "14063661036416378",
+   "date": 1757962938,
+   "media_group_id": "14063703509242594",
    "photo": [
     {
      "file_id": "AgACAgIAAxkDAAI_gmjEcD8Ow0YFkL3v_6qcv7wvQzMOAAJT9zEbbecgSr2tC0vnNP37AQADAgADcwADNgQ",
@@ -58,7 +58,7 @@
    "caption": "Строковое значение"
   },
   {
-   "message_id": 16442,
+   "message_id": 16458,
    "from": {
     "id": 6129457865,
     "is_bot": true,
@@ -72,8 +72,8 @@
     "username": "bayselonarrend",
     "type": "private"
    },
-   "date": 1757957629,
-   "media_group_id": "14063661036416378",
+   "date": 1757962938,
+   "media_group_id": "14063703509242594",
    "video": {
     "duration": 5,
     "width": 640,
@@ -81,21 +81,21 @@
     "file_name": "video1",
     "mime_type": "video/mp4",
     "thumbnail": {
-     "file_id": "AAMCAgADFQdoyE39RpoKBzq1g74Fd3YpL1HSywACWoMAAkAEQErM_CeQI9ppjwEAB20AAzYE",
-     "file_unique_id": "AQADWoMAAkAEQEpy",
-     "file_size": 20106,
+     "file_id": "AAMCAgADFQdoyGK6G_Tnia7dN2qL7GADiP8PiwAC9YQAAkAEQEoLPUdy1X-rpwEAB20AAzYE",
+     "file_unique_id": "AQAD9YQAAkAEQEpy",
+     "file_size": 19828,
      "width": 320,
      "height": 240
     },
     "thumb": {
-     "file_id": "AAMCAgADFQdoyE39RpoKBzq1g74Fd3YpL1HSywACWoMAAkAEQErM_CeQI9ppjwEAB20AAzYE",
-     "file_unique_id": "AQADWoMAAkAEQEpy",
-     "file_size": 20106,
+     "file_id": "AAMCAgADFQdoyGK6G_Tnia7dN2qL7GADiP8PiwAC9YQAAkAEQEoLPUdy1X-rpwEAB20AAzYE",
+     "file_unique_id": "AQAD9YQAAkAEQEpy",
+     "file_size": 19828,
      "width": 320,
      "height": 240
     },
-    "file_id": "BAACAgIAAxUHaMhN_UaaCgc6tYO-BXd2KS9R0ssAAlqDAAJABEBKzPwnkCPaaY82BA",
-    "file_unique_id": "AgADWoMAAkAEQEo",
+    "file_id": "BAACAgIAAxUHaMhiuhv054mu3Tdqi-xgA4j_D4sAAvWEAAJABEBKCz1HctV_q6c2BA",
+    "file_unique_id": "AgAD9YQAAkAEQEo",
     "file_size": 1137878
    }
   }

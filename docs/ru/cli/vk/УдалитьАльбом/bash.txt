@@ -1,3 +1,3 @@
 oint vk УдалитьАльбом \
-  --album "310054963" \
-  --auth ""/tmp/lmdxxsjp.w0n.json""
+  --album "310068536" \
+  --auth ""/tmp/nkd41brd.htw.json""
