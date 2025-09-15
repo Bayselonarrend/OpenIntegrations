@@ -1,8 +1,8 @@
 ﻿{
  "result": [
   {
-   "ID": "5540",
-   "TASK_ID": "7942",
+   "ID": "5548",
+   "TASK_ID": "7952",
    "PARENT_ID": 0,
    "CREATED_BY": "1",
    "TITLE": "BX_CHECKLIST_1",
@@ -15,9 +15,9 @@
    "ATTACHMENTS": []
   },
   {
-   "ID": "5542",
-   "TASK_ID": "7942",
-   "PARENT_ID": "5540",
+   "ID": "5550",
+   "TASK_ID": "7952",
+   "PARENT_ID": "5548",
    "CREATED_BY": "1",
    "TITLE": "New elements text",
    "SORT_INDEX": "1",
@@ -30,13 +30,13 @@
   }
  ],
  "time": {
-  "start": 1757938130.58752,
-  "finish": 1757938130.65122,
-  "duration": 0.0637028217315674,
-  "processing": 0.0282809734344482,
-  "date_start": "2025-09-15T15:08:50+03:00",
-  "date_finish": "2025-09-15T15:08:50+03:00",
-  "operating_reset_at": 1757938730,
+  "start": 1757948039.85104,
+  "finish": 1757948039.90058,
+  "duration": 0.0495419502258301,
+  "processing": 0.0222301483154297,
+  "date_start": "2025-09-15T14:53:59+00:00",
+  "date_finish": "2025-09-15T14:53:59+00:00",
+  "operating_reset_at": 1757948639,
   "operating": 0
  }
 }
