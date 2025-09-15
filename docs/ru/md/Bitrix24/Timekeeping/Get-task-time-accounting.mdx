@@ -35,14 +35,14 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "7842";
-    IDЗаписи = "2852";
+    IDЗадачи = "7892";
+    IDЗаписи = "2872";
 
     Результат = OPI_Bitrix24.ПолучитьТрудозатратыЗадачи(URL, IDЗадачи, IDЗаписи);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Токен    = "7a1ec468006e9f06006b12e400000001000...";
-    IDЗаписи = "2854";
+    Токен    = "75d8c668006e9f06006b12e400000001000...";
+    IDЗаписи = "2874";
 
     Результат = OPI_Bitrix24.ПолучитьТрудозатратыЗадачи(URL, IDЗадачи, IDЗаписи, Токен);
 ```
@@ -54,8 +54,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьТрудозатратыЗадачи \
               --url ""b24-ar17wx.bitrix24.by"" \
-              --task ""7822"" \
-              --record "2846" \
+              --task ""7912"" \
+              --record "2882" \
               --token "***"
         ```
     </TabItem>
@@ -64,8 +64,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьТрудозатратыЗадачи ^
               --url ""b24-ar17wx.bitrix24.by"" ^
-              --task ""7822"" ^
-              --record "2846" ^
+              --task ""7912"" ^
+              --record "2882" ^
               --token "***"
         ```
     </TabItem>
@@ -75,25 +75,25 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": "2850",
-  "TASK_ID": "7832",
+  "ID": "2890",
+  "TASK_ID": "7932",
   "USER_ID": "10",
   "COMMENT_TEXT": "Трудозатраты по обработке",
   "SECONDS": "7200",
   "MINUTES": "120",
   "SOURCE": "2",
-  "CREATED_DATE": "2025-08-11T20:50:42+03:00",
-  "DATE_START": "2025-09-11T20:50:42+03:00",
-  "DATE_STOP": "2025-09-11T20:50:42+03:00"
+  "CREATED_DATE": "2025-08-15T11:35:46+03:00",
+  "DATE_START": "2025-09-15T11:35:46+03:00",
+  "DATE_STOP": "2025-09-15T11:35:46+03:00"
  },
  "time": {
-  "start": 1757613043.29767,
-  "finish": 1757613043.3436,
-  "duration": 0.0459260940551758,
-  "processing": 0.0211019515991211,
-  "date_start": "2025-09-11T20:50:43+03:00",
-  "date_finish": "2025-09-11T20:50:43+03:00",
-  "operating_reset_at": 1757613643,
+  "start": 1757925347.99019,
+  "finish": 1757925348.06613,
+  "duration": 0.0759420394897461,
+  "processing": 0.0472369194030762,
+  "date_start": "2025-09-15T11:35:47+03:00",
+  "date_finish": "2025-09-15T11:35:48+03:00",
+  "operating_reset_at": 1757925948,
   "operating": 0
  }
 }

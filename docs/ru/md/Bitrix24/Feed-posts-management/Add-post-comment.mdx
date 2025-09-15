@@ -35,14 +35,14 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Текст     = "Комментарий к новости";
-    IDНовости = "2968";
+    IDНовости = "2988";
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Результат = OPI_Bitrix24.ДобавитьКомментарийНовости(URL, IDНовости, Текст);
 
     Текст = "Другой комментарий к новости";
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "7a1ec468006e9f06006b12e400000001000...";
+    Токен = "75d8c668006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ДобавитьКомментарийНовости(URL, IDНовости, Текст, Токен);
 ```
@@ -54,7 +54,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ДобавитьКомментарийНовости \
               --url ""b24-ar17wx.bitrix24.by"" \
-              --postid "2960" \
+              --postid "2996" \
               --text ""Другой комментарий к новости"" \
               --token "***"
         ```
@@ -64,7 +64,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ДобавитьКомментарийНовости ^
               --url ""b24-ar17wx.bitrix24.by"" ^
-              --postid "2960" ^
+              --postid "2996" ^
               --text ""Другой комментарий к новости"" ^
               --token "***"
         ```
@@ -74,16 +74,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 2874,
+ "result": 2914,
  "time": {
-  "start": 1757612931.87245,
-  "finish": 1757612931.98212,
-  "duration": 0.109678030014038,
-  "processing": 0.0816709995269775,
-  "date_start": "2025-09-11T20:48:51+03:00",
-  "date_finish": "2025-09-11T20:48:51+03:00",
-  "operating_reset_at": 1757613531,
-  "operating": 0
+  "start": 1757925188.56873,
+  "finish": 1757925188.81847,
+  "duration": 0.2497398853302,
+  "processing": 0.222721099853516,
+  "date_start": "2025-09-15T11:33:08+03:00",
+  "date_finish": "2025-09-15T11:33:08+03:00",
+  "operating_reset_at": 1757925788,
+  "operating": 0.222684860229492
  }
 }
 ```

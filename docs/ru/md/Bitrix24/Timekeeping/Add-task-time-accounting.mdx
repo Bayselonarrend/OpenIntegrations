@@ -38,14 +38,14 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "7842";
+    IDЗадачи = "7892";
 
     Время = 3600;
 
     Результат = OPI_Bitrix24.ДобавитьТрудозатратыЗадачи(URL, IDЗадачи, Время);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "7a1ec468006e9f06006b12e400000001000...";
+    Токен = "75d8c668006e9f06006b12e400000001000...";
 
     Текст          = "Трудозатраты по обработке";
     IDПользователя = 10;
@@ -68,11 +68,11 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ДобавитьТрудозатратыЗадачи \
               --url ""b24-ar17wx.bitrix24.by"" \
-              --task ""7822"" \
+              --task ""7912"" \
               --amount "7200" \
               --user "10" \
               --text ""Трудозатраты по обработке"" \
-              --date ""2025-08-11T12:33:41.0955649"" \
+              --date ""2025-08-14T19:10:23.5014784"" \
               --token "***"
         ```
     </TabItem>
@@ -81,11 +81,11 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ДобавитьТрудозатратыЗадачи ^
               --url ""b24-ar17wx.bitrix24.by"" ^
-              --task ""7822"" ^
+              --task ""7912"" ^
               --amount "7200" ^
               --user "10" ^
               --text ""Трудозатраты по обработке"" ^
-              --date ""2025-08-11T12:33:41.0955649"" ^
+              --date ""2025-08-14T19:10:23.5014784"" ^
               --token "***"
         ```
     </TabItem>
@@ -94,16 +94,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 2850,
+ "result": 2890,
  "time": {
-  "start": 1757613042.38919,
-  "finish": 1757613042.44575,
-  "duration": 0.0565569400787354,
-  "processing": 0.0345008373260498,
-  "date_start": "2025-09-11T20:50:42+03:00",
-  "date_finish": "2025-09-11T20:50:42+03:00",
-  "operating_reset_at": 1757613642,
-  "operating": 0
+  "start": 1757925346.70438,
+  "finish": 1757925346.83244,
+  "duration": 0.128062009811401,
+  "processing": 0.102971076965332,
+  "date_start": "2025-09-15T11:35:46+03:00",
+  "date_finish": "2025-09-15T11:35:46+03:00",
+  "operating_reset_at": 1757925946,
+  "operating": 0.102947950363159
  }
 }
 ```
