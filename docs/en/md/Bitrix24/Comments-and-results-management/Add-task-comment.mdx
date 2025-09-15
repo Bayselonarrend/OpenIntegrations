@@ -35,14 +35,14 @@ Method at API documentation: [task.commentitem.add](https://dev.1c-bitrix.ru/res
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "7838";
+    TaskID = "7888";
 
     Text = "Task impossible, let's split up";
 
     Result = OPI_Bitrix24.AddTaskComment(URL, TaskID, Text);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "7a1ec468006e9f06006b12e400000001000...";
+    Token = "75d8c668006e9f06006b12e400000001000...";
 
     Text = "Task uninpossible, don't split up";
 
@@ -76,16 +76,16 @@ Method at API documentation: [task.commentitem.add](https://dev.1c-bitrix.ru/res
 
 ```json title="Result"
 {
- "result": 18340,
+ "result": 18450,
  "time": {
-  "start": 1757849331.85699,
-  "finish": 1757849331.99713,
-  "duration": 0.140136003494263,
-  "processing": 0.117388963699341,
-  "date_start": "2025-09-14T11:28:51+00:00",
-  "date_finish": "2025-09-14T11:28:51+00:00",
-  "operating_reset_at": 1757849931,
-  "operating": 0.117371082305908
+  "start": 1757918713.4652,
+  "finish": 1757918713.73889,
+  "duration": 0.273684024810791,
+  "processing": 0.2499840259552,
+  "date_start": "2025-09-15T09:45:13+03:00",
+  "date_finish": "2025-09-15T09:45:13+03:00",
+  "operating_reset_at": 1757919313,
+  "operating": 0.249965906143188
  }
 }
 ```

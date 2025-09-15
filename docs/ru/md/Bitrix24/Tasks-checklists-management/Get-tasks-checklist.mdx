@@ -34,13 +34,13 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "7834";
+    IDЗадачи = "7884";
 
     Результат = OPI_Bitrix24.ПолучитьЧеклистЗадачи(URL, IDЗадачи);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Токен    = "7a1ec468006e9f06006b12e400000001000...";
-    IDЗадачи = "7836";
+    Токен    = "75d8c668006e9f06006b12e400000001000...";
+    IDЗадачи = "7886";
 
     Результат = OPI_Bitrix24.ПолучитьЧеклистЗадачи(URL, IDЗадачи, Токен);
 ```
@@ -52,7 +52,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьЧеклистЗадачи \
               --url ""b24-ar17wx.bitrix24.by"" \
-              --task ""7816"" \
+              --task ""7906"" \
               --token "***"
         ```
     </TabItem>
@@ -61,7 +61,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьЧеклистЗадачи ^
               --url ""b24-ar17wx.bitrix24.by"" ^
-              --task ""7816"" ^
+              --task ""7906"" ^
               --token "***"
         ```
     </TabItem>
@@ -72,8 +72,8 @@ import TabItem from '@theme/TabItem';
 {
  "result": [
   {
-   "ID": "5452",
-   "TASK_ID": "7826",
+   "ID": "5532",
+   "TASK_ID": "7926",
    "PARENT_ID": 0,
    "CREATED_BY": "1",
    "TITLE": "BX_CHECKLIST_1",
@@ -86,9 +86,9 @@ import TabItem from '@theme/TabItem';
    "ATTACHMENTS": []
   },
   {
-   "ID": "5454",
-   "TASK_ID": "7826",
-   "PARENT_ID": "5452",
+   "ID": "5534",
+   "TASK_ID": "7926",
+   "PARENT_ID": "5532",
    "CREATED_BY": "1",
    "TITLE": "Новый текст пункта чек-листа",
    "SORT_INDEX": "1",
@@ -101,13 +101,13 @@ import TabItem from '@theme/TabItem';
   }
  ],
  "time": {
-  "start": 1757612963.74843,
-  "finish": 1757612963.79284,
-  "duration": 0.0444121360778809,
-  "processing": 0.0204319953918457,
-  "date_start": "2025-09-11T20:49:23+03:00",
-  "date_finish": "2025-09-11T20:49:23+03:00",
-  "operating_reset_at": 1757613563,
+  "start": 1757925230.98877,
+  "finish": 1757925231.03428,
+  "duration": 0.0455060005187988,
+  "processing": 0.0231730937957764,
+  "date_start": "2025-09-15T11:33:50+03:00",
+  "date_finish": "2025-09-15T11:33:51+03:00",
+  "operating_reset_at": 1757925831,
   "operating": 0
  }
 }

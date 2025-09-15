@@ -35,7 +35,7 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    EventID = "2348";
+    EventID = "2388";
 
     EventStucture = New Structure;
 
@@ -49,9 +49,9 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
     Result = OPI_Bitrix24.UpdateCalendarEvent(URL, EventID, EventStucture);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "7a1ec468006e9f06006b12e400000001000...";
-    EventID    = "2352";
-    CalendarID = "1304";
+    Token      = "75d8c668006e9f06006b12e400000001000...";
+    EventID    = "2392";
+    CalendarID = "1324";
 
     Result = OPI_Bitrix24.UpdateCalendarEvent(URL, EventID, EventStucture, Token);
 ```
@@ -87,16 +87,16 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
 
 ```json title="Result"
 {
- "result": 2376,
+ "result": 2416,
  "time": {
-  "start": 1757849590.6303,
-  "finish": 1757849590.81867,
-  "duration": 0.188374042510986,
-  "processing": 0.158134937286377,
-  "date_start": "2025-09-14T11:33:10+00:00",
-  "date_finish": "2025-09-14T11:33:10+00:00",
-  "operating_reset_at": 1757850190,
-  "operating": 0.158102989196777
+  "start": 1757919163.54917,
+  "finish": 1757919163.78489,
+  "duration": 0.235720872879028,
+  "processing": 0.200080156326294,
+  "date_start": "2025-09-15T09:52:43+03:00",
+  "date_finish": "2025-09-15T09:52:43+03:00",
+  "operating_reset_at": 1757919763,
+  "operating": 0.20005202293396
  }
 }
 ```

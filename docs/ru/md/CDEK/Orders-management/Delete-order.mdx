@@ -33,8 +33,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTc2ODI5OTUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "6b24557d-24df-4379-ba05-d0a8d4c68b5c";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTc4NjI0MDMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "f5f74cc6-4d34-48f8-b89f-4625d8f44a53";
 
     Результат = OPI_CDEK.УдалитьЗаказ(Токен, UUID, Истина);
 ```
@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek УдалитьЗаказ \
               --token "***" \
-              --uuid "0badae35-071c-4641-9d49-bded5a70799c" \
+              --uuid "70bfbfe8-23f0-41ab-82d4-e59a0711fbc7" \
               --testapi "***"
         ```
     </TabItem>
@@ -55,7 +55,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek УдалитьЗаказ ^
               --token "***" ^
-              --uuid "0badae35-071c-4641-9d49-bded5a70799c" ^
+              --uuid "70bfbfe8-23f0-41ab-82d4-e59a0711fbc7" ^
               --testapi "***"
         ```
     </TabItem>
@@ -65,13 +65,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "7541337c-58ca-4f83-a8d9-42dcbe4ff440"
+  "uuid": "e19a673d-f424-45fd-b87b-b033918593f4"
  },
  "requests": [
   {
-   "request_uuid": "6c7a5bba-5fb8-4cd5-b730-8a6f66d204e6",
+   "request_uuid": "20ea4a88-4ad7-4707-9738-9c88221dde7c",
    "type": "DELETE",
-   "date_time": "2025-09-11T20:58:30+03:00",
+   "date_time": "2025-09-15T11:45:21+03:00",
    "state": "ACCEPTED"
   }
  ],

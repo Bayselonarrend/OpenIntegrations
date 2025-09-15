@@ -36,15 +36,15 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "7834";
+    IDЗадачи = "7884";
 
     Текст = "Пункт чек-листа";
 
     Результат = OPI_Bitrix24.ДобавитьЭлементЧеклистаЗадачи(URL, IDЗадачи, Текст, Истина);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Токен    = "7a1ec468006e9f06006b12e400000001000...";
-    IDЗадачи = "7836";
+    Токен    = "75d8c668006e9f06006b12e400000001000...";
+    IDЗадачи = "7886";
 
     Результат = OPI_Bitrix24.ДобавитьЭлементЧеклистаЗадачи(URL, IDЗадачи, Текст, , Токен);
 ```
@@ -56,7 +56,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ДобавитьЭлементЧеклистаЗадачи \
               --url ""b24-ar17wx.bitrix24.by"" \
-              --task ""7816"" \
+              --task ""7906"" \
               --text ""Пункт чек-листа"" \
               --token "***"
         ```
@@ -66,7 +66,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ДобавитьЭлементЧеклистаЗадачи ^
               --url ""b24-ar17wx.bitrix24.by"" ^
-              --task ""7816"" ^
+              --task ""7906"" ^
               --text ""Пункт чек-листа"" ^
               --token "***"
         ```
@@ -76,16 +76,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 5454,
+ "result": 5534,
  "time": {
-  "start": 1757612962.04269,
-  "finish": 1757612962.10539,
-  "duration": 0.0627009868621826,
-  "processing": 0.0380790233612061,
-  "date_start": "2025-09-11T20:49:22+03:00",
-  "date_finish": "2025-09-11T20:49:22+03:00",
-  "operating_reset_at": 1757613562,
-  "operating": 0
+  "start": 1757925229.11947,
+  "finish": 1757925229.2904,
+  "duration": 0.17092490196228,
+  "processing": 0.144614934921265,
+  "date_start": "2025-09-15T11:33:49+03:00",
+  "date_finish": "2025-09-15T11:33:49+03:00",
+  "operating_reset_at": 1757925829,
+  "operating": 0.14459490776062
  }
 }
 ```

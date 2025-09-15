@@ -35,8 +35,8 @@ Method at API documentation: [Information about delivery appointment](https://ap
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTc2ODI5OTUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "6d84f3e7-ac1e-41d0-b41f-29a83c3927d3";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTc4NjI0MDMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "31a67038-cd1e-4f06-86c4-c0e3aad65c73";
 
     Result = OPI_CDEK.GetDeliveryAppointment(Token, UUID, True);
 ```
@@ -68,7 +68,7 @@ Method at API documentation: [Information about delivery appointment](https://ap
 {
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "8407eb92-9bbe-40bd-a611-99dd1150a20f",
+  "order_uuid": "525c1876-5db6-4e67-9582-ccdd1126c24a",
   "date": "2025-09-29",
   "time_from": "10:00",
   "time_to": "17:00",
@@ -86,30 +86,30 @@ Method at API documentation: [Information about delivery appointment](https://ap
    "address": "st. Bluchera, 33",
    "postal_code": "109004"
   },
-  "uuid": "df517d19-a174-4b9e-baef-e0411f694699",
+  "uuid": "3ed64627-dec1-420e-9c0b-83723d153fbf",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2025-09-14T11:39:32+00:00"
+    "date_time": "2025-09-15T09:58:44+03:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2025-09-14T11:39:31+00:00"
+    "date_time": "2025-09-15T09:58:43+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "08f97bea-679a-4ccd-b4a0-add90245840d",
+   "request_uuid": "0661cf1b-d555-4ebe-881d-fb26251a2bc7",
    "type": "CREATE",
-   "date_time": "2025-09-14T11:39:31+00:00",
+   "date_time": "2025-09-15T09:58:43+03:00",
    "state": "INVALID",
    "errors": [
     {
      "code": "delivery_date_too_late",
-     "message": "Указанная дата доставки не может быть позднее 2025-09-24"
+     "message": "Указанная дата доставки не может быть позднее 2025-09-25"
     }
    ]
   }

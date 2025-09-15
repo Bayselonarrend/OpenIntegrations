@@ -35,20 +35,20 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    IDИсточника = "7834";
-    IDПриемника = "7836";
+    IDИсточника = "7884";
+    IDПриемника = "7886";
     ТипСвязи    = 0;
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Результат = OPI_Bitrix24.СоздатьЗависимостьЗадач(URL, IDИсточника, IDПриемника, ТипСвязи);
 
-    IDИсточника = "7836";
-    IDПриемника = "7834";
+    IDИсточника = "7886";
+    IDПриемника = "7884";
     ТипСвязи    = 2;
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "7a1ec468006e9f06006b12e400000001000...";
+    Токен = "75d8c668006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.СоздатьЗависимостьЗадач(URL, IDИсточника, IDПриемника, ТипСвязи, Токен);
 ```
@@ -60,8 +60,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 СоздатьЗависимостьЗадач \
               --url ""b24-ar17wx.bitrix24.by"" \
-              --taskfrom ""7816"" \
-              --taskto ""7814"" \
+              --taskfrom ""7906"" \
+              --taskto ""7904"" \
               --linktype "2" \
               --token "***"
         ```
@@ -71,8 +71,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 СоздатьЗависимостьЗадач ^
               --url ""b24-ar17wx.bitrix24.by"" ^
-              --taskfrom ""7816"" ^
-              --taskto ""7814"" ^
+              --taskfrom ""7906"" ^
+              --taskto ""7904"" ^
               --linktype "2" ^
               --token "***"
         ```
@@ -84,13 +84,13 @@ import TabItem from '@theme/TabItem';
 {
  "result": [],
  "time": {
-  "start": 1757612939.65051,
-  "finish": 1757612939.72705,
-  "duration": 0.0765371322631836,
-  "processing": 0.0521681308746338,
-  "date_start": "2025-09-11T20:48:59+03:00",
-  "date_finish": "2025-09-11T20:48:59+03:00",
-  "operating_reset_at": 1757613539,
+  "start": 1757925198.40679,
+  "finish": 1757925198.50417,
+  "duration": 0.0973739624023438,
+  "processing": 0.0693438053131104,
+  "date_start": "2025-09-15T11:33:18+03:00",
+  "date_finish": "2025-09-15T11:33:18+03:00",
+  "operating_reset_at": 1757925798,
   "operating": 0
  }
 }
