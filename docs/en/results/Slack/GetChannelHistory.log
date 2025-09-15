@@ -7,7 +7,7 @@
    "text": "<@U06UABH3APP> has joined the channel",
    "inviter": "U06UG1CAYH2",
    "type": "message",
-   "ts": "1757937545.505969"
+   "ts": "1757947722.458179"
   },
   {
    "subtype": "channel_purpose",
@@ -15,7 +15,7 @@
    "purpose": "TestGoal",
    "text": "set the channel description: TestGoal",
    "type": "message",
-   "ts": "1757937541.279669"
+   "ts": "1757947721.000259"
   },
   {
    "subtype": "channel_topic",
@@ -23,14 +23,14 @@
    "topic": "TestTopic",
    "text": "set the channel topic: TestTopic",
    "type": "message",
-   "ts": "1757937539.116429"
+   "ts": "1757947720.285239"
   },
   {
    "subtype": "channel_join",
    "user": "U06UG1CAYH2",
    "text": "<@U06UG1CAYH2> has joined the channel",
    "type": "message",
-   "ts": "1757937536.780439"
+   "ts": "1757947719.385909"
   }
  ],
  "has_more": false,
