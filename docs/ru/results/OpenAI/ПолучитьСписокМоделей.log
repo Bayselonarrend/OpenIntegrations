@@ -2,6 +2,10 @@
  "object": "list",
  "data": [
   {
+   "id": "tts-1",
+   "object": "model"
+  },
+  {
    "id": "silero-vad",
    "object": "model"
   },
@@ -10,7 +14,15 @@
    "object": "model"
   },
   {
-   "id": "tts-1",
+   "id": "gpt-4",
+   "object": "model"
+  },
+  {
+   "id": "smolvlm-256m-instruct",
+   "object": "model"
+  },
+  {
+   "id": "text-embedding-ada-002",
    "object": "model"
   },
   {
@@ -27,18 +39,6 @@
   },
   {
    "id": "jina-reranker-v1-base-en",
-   "object": "model"
-  },
-  {
-   "id": "gpt-4",
-   "object": "model"
-  },
-  {
-   "id": "smolvlm-256m-instruct",
-   "object": "model"
-  },
-  {
-   "id": "text-embedding-ada-002",
    "object": "model"
   },
   {
