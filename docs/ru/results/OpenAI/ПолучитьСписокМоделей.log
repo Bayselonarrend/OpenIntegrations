@@ -2,15 +2,7 @@
  "object": "list",
  "data": [
   {
-   "id": "tts-1",
-   "object": "model"
-  },
-  {
-   "id": "silero-vad",
-   "object": "model"
-  },
-  {
-   "id": "jina-reranker-v1-base-en",
+   "id": "smolvlm-256m-instruct",
    "object": "model"
   },
   {
@@ -38,7 +30,15 @@
    "object": "model"
   },
   {
-   "id": "smolvlm-256m-instruct",
+   "id": "tts-1",
+   "object": "model"
+  },
+  {
+   "id": "silero-vad",
+   "object": "model"
+  },
+  {
+   "id": "jina-reranker-v1-base-en",
    "object": "model"
   },
   {
