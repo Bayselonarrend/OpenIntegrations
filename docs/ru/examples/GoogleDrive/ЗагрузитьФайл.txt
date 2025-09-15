@@ -1,6 +1,6 @@
-﻿    Токен    = "ya29.a0AS3H6NwrH32o3TZZmc3e_ByEcGAt2XTmAPcv99GD_9QwcQfnRxKuI-SiaY_8supYx1k4moGVpqwHhRCIfTJiGob3aJdVZrAGlzpNd-xICMBDGVrfB-eNxg-2l...";
+﻿    Токен    = "ya29.a0AQQ_BDTgQbn9c5rXhPK3FCakms_7oKkdIWE1CCQFnSPftb2RxvloVqnYOcnsAKhXrD0Gq8Tz2Kgn5IBXG5E25uksZfvvTtXob-jFcuj_9LZYs9La4HrcFk766...";
     Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg";
-    Каталог  = "11Mo30odYPEtBBU_0OndFx5dz1kP7tu-Y";
+    Каталог  = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
 
     Описание = OPI_GoogleDrive.ПолучитьОписаниеФайла();
     Описание.Вставить("Родитель", Каталог);

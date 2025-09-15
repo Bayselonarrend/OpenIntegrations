@@ -36,15 +36,15 @@ Method at API documentation: [task.checklistitem.add](https://dev.1c-bitrix.ru/r
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "7834";
+    TaskID = "7884";
 
     Text = "Checklist element";
 
     Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, True);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "7a1ec468006e9f06006b12e400000001000...";
-    TaskID = "7836";
+    Token  = "75d8c668006e9f06006b12e400000001000...";
+    TaskID = "7886";
 
     Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, , Token);
 ```
@@ -76,15 +76,15 @@ Method at API documentation: [task.checklistitem.add](https://dev.1c-bitrix.ru/r
 
 ```json title="Result"
 {
- "result": 5486,
+ "result": 5526,
  "time": {
-  "start": 1757849314.86542,
-  "finish": 1757849314.93533,
-  "duration": 0.0699081420898438,
-  "processing": 0.0448892116546631,
-  "date_start": "2025-09-14T11:28:34+00:00",
-  "date_finish": "2025-09-14T11:28:34+00:00",
-  "operating_reset_at": 1757849914,
+  "start": 1757918693.37667,
+  "finish": 1757918693.44736,
+  "duration": 0.0706861019134522,
+  "processing": 0.0475609302520752,
+  "date_start": "2025-09-15T09:44:53+03:00",
+  "date_finish": "2025-09-15T09:44:53+03:00",
+  "operating_reset_at": 1757919293,
   "operating": 0
  }
 }

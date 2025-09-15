@@ -1,6 +1,6 @@
 ﻿    IDКлиента  = "2479669";
     КлючAPI    = "09f65e9f-262d-4aca...";
-    IDОперации = "01993ddd-b167-7005-a8ab-efab041ced86";
+    IDОперации = "0199488b-df98-7120-88ee-ad8ac91e31b7";
 
     Статус = "CALCULATION_STATUS_IN_PROGRESS";
 

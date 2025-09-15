@@ -1,7 +1,7 @@
 ﻿    URL   = "https://hut.openintegrations.dev/localai/";
     Token = "12We...";
 
-    Audio = "C:\Users\bayse\AppData\Local\Temp\v8_8D28_24.wav";
+    Audio = "C:\Users\bayse\AppData\Local\Temp\v8_AFE9_562.wav";
     Model = "whisper-1";
 
     Result = OPI_OpenAI.CreateTranscription(URL, Token, Model, Audio, "audio/wav");

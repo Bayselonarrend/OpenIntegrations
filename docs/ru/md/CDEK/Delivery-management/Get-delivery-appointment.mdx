@@ -35,8 +35,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTc2ODI5OTUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "6d84f3e7-ac1e-41d0-b41f-29a83c3927d3";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTc4NjI0MDMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "31a67038-cd1e-4f06-86c4-c0e3aad65c73";
 
     Результат = OPI_CDEK.ПолучитьДоговоренностьОДоставке(Токен, UUID, Истина);
 ```
@@ -48,7 +48,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьДоговоренностьОДоставке \
               --token "***" \
-              --uuid "0863a23f-6c5a-4176-b89b-c02bf3bbe06c" \
+              --uuid "842534c2-fcbd-4b3e-b29e-391e2f0ef6cd" \
               --testapi "***"
         ```
     </TabItem>
@@ -57,7 +57,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьДоговоренностьОДоставке ^
               --token "***" ^
-              --uuid "0863a23f-6c5a-4176-b89b-c02bf3bbe06c" ^
+              --uuid "842534c2-fcbd-4b3e-b29e-391e2f0ef6cd" ^
               --testapi "***"
         ```
     </TabItem>
@@ -68,8 +68,8 @@ import TabItem from '@theme/TabItem';
 {
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "7541337c-58ca-4f83-a8d9-42dcbe4ff440",
-  "date": "2025-09-25",
+  "order_uuid": "e19a673d-f424-45fd-b87b-b033918593f4",
+  "date": "2025-09-29",
   "time_from": "10:00",
   "time_to": "17:00",
   "comment": "Офис группы компаний",
@@ -86,30 +86,30 @@ import TabItem from '@theme/TabItem';
    "address": "ул. Блюхера, 33",
    "postal_code": "109004"
   },
-  "uuid": "f160782b-54e9-46a9-a9bd-e40c6a32f275",
+  "uuid": "0706be05-97f2-4100-bcfe-e645fd783229",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2025-09-11T20:58:09+03:00"
+    "date_time": "2025-09-15T11:45:00+03:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2025-09-11T20:58:08+03:00"
+    "date_time": "2025-09-15T11:44:59+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "c8da31c4-f5a1-481b-b9d5-f4b5bdc3defe",
+   "request_uuid": "987e8ef4-3d52-4545-81df-160d83d9c4cd",
    "type": "CREATE",
-   "date_time": "2025-09-11T20:58:08+03:00",
+   "date_time": "2025-09-15T11:44:59+03:00",
    "state": "INVALID",
    "errors": [
     {
      "code": "delivery_date_too_late",
-     "message": "Указанная дата доставки не может быть позднее 2025-09-23"
+     "message": "Указанная дата доставки не может быть позднее 2025-09-25"
     }
    ]
   }

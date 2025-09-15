@@ -34,12 +34,12 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDКаталога = "40712";
+    IDКаталога = "42174";
 
     Результат = OPI_Bitrix24.ПолучитьИнформациюОКаталоге(URL, IDКаталога);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "7a1ec468006e9f06006b12e400000001000...";
+    Токен = "75d8c668006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПолучитьИнформациюОКаталоге(URL, IDКаталога, Токен);
 ```
@@ -51,7 +51,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьИнформациюОКаталоге \
               --url ""b24-ar17wx.bitrix24.by"" \
-              --folderid "41824" \
+              --folderid "42282" \
               --token "***"
         ```
     </TabItem>
@@ -60,7 +60,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьИнформациюОКаталоге ^
               --url ""b24-ar17wx.bitrix24.by"" ^
-              --folderid "41824" ^
+              --folderid "42282" ^
               --token "***"
         ```
     </TabItem>
@@ -70,16 +70,16 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": "41878",
+  "ID": "42390",
   "NAME": "Новый каталог",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": "41878",
+  "REAL_OBJECT_ID": "42390",
   "PARENT_ID": "3",
   "DELETED_TYPE": "0",
-  "CREATE_TIME": "2025-09-11T20:50:15+03:00",
-  "UPDATE_TIME": "2025-09-11T20:50:15+03:00",
+  "CREATE_TIME": "2025-09-15T11:35:03+03:00",
+  "UPDATE_TIME": "2025-09-15T11:35:03+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -87,13 +87,13 @@ import TabItem from '@theme/TabItem';
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/Новый каталог"
  },
  "time": {
-  "start": 1757613016.85499,
-  "finish": 1757613016.88595,
-  "duration": 0.030951976776123,
-  "processing": 0.00411796569824219,
-  "date_start": "2025-09-11T20:50:16+03:00",
-  "date_finish": "2025-09-11T20:50:16+03:00",
-  "operating_reset_at": 1757613616,
+  "start": 1757925305.56762,
+  "finish": 1757925305.59877,
+  "duration": 0.0311579704284668,
+  "processing": 0.00328707695007324,
+  "date_start": "2025-09-15T11:35:05+03:00",
+  "date_finish": "2025-09-15T11:35:05+03:00",
+  "operating_reset_at": 1757925905,
   "operating": 0
  }
 }

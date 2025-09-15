@@ -1,5 +1,5 @@
-﻿    Токен = "ya29.a0AS3H6NwrH32o3TZZmc3e_ByEcGAt2XTmAPcv99GD_9QwcQfnRxKuI-SiaY_8supYx1k4moGVpqwHhRCIfTJiGob3aJdVZrAGlzpNd-xICMBDGVrfB-eNxg-2l...";
-    Книга = "16uutBcCYXsoCWaGdCWVt93HqQ1kw6LjgyHK1VfhKnQs";
+﻿    Токен = "ya29.a0AQQ_BDTgQbn9c5rXhPK3FCakms_7oKkdIWE1CCQFnSPftb2RxvloVqnYOcnsAKhXrD0Gq8Tz2Kgn5IBXG5E25uksZfvvTtXob-jFcuj_9LZYs9La4HrcFk766...";
+    Книга = "16uPAewX6jwjTdyVlE0O8adQngnoCMbUHQ5Ek36-IPaQ";
     Лист  = "Лист2";
 
     СоответствиеЗначений = Новый Соответствие;

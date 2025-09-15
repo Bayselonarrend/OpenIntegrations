@@ -40,7 +40,7 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
     Text   = "New post text";
     Title  = "New post title";
     Image1 = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
-    PostID = "2968";
+    PostID = "2988";
 
     Files = New Map;
     Files.Insert("1.png", Image1);
@@ -50,8 +50,8 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "7a1ec468006e9f06006b12e400000001000...";
-    PostID = "2966";
+    Token  = "75d8c668006e9f06006b12e400000001000...";
+    PostID = "2986";
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title, Token);
 ```
@@ -91,16 +91,16 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
 
 ```json title="Result"
 {
- "result": 2978,
+ "result": 2998,
  "time": {
-  "start": 1757849272.22051,
-  "finish": 1757849272.53542,
-  "duration": 0.314911842346191,
-  "processing": 0.283146142959595,
-  "date_start": "2025-09-14T11:27:52+00:00",
-  "date_finish": "2025-09-14T11:27:52+00:00",
-  "operating_reset_at": 1757849872,
-  "operating": 0.283128976821899
+  "start": 1757918653.53956,
+  "finish": 1757918654.13371,
+  "duration": 0.594149112701416,
+  "processing": 0.563472032546997,
+  "date_start": "2025-09-15T09:44:13+03:00",
+  "date_finish": "2025-09-15T09:44:14+03:00",
+  "operating_reset_at": 1757919253,
+  "operating": 0.563453197479248
  }
 }
 ```

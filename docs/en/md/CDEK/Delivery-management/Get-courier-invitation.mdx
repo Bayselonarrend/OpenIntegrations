@@ -35,8 +35,8 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTc2ODI5OTUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "1f37c5b0-96be-4cae-8934-f7ea4ee8d928";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTc4NjI0MDMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "5cc322e2-7cba-4060-9073-eb9a34f3da32";
 
     Result = OPI_CDEK.GetCourierInvitation(Token, UUID, True);
 ```
@@ -67,10 +67,10 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
 ```json title="Result"
 {
  "entity": {
-  "uuid": "5efd4486-55f1-481f-8bd0-c7a84eb146d9",
-  "cdek_number": "1106607730",
-  "order_uuid": "784084c3-0cb5-4e32-b2d0-d42b3414b150",
-  "intake_date": "2025-09-15",
+  "uuid": "d182711c-0233-4b05-9264-eaa8d531016e",
+  "cdek_number": "1106607784",
+  "order_uuid": "5d7264ae-e39f-4465-b53c-910623911379",
+  "intake_date": "2025-09-16",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -108,12 +108,12 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-09-14T11:39:28+00:00"
+    "date_time": "2025-09-15T09:58:41+03:00"
    }
   ],
   "packages": [
    {
-    "package_id": "6b1cb3d5-8e57-4546-a243-f7b939c52418",
+    "package_id": "ae9328b8-6dde-4908-b7b6-39b0cb0d3c31",
     "weight": 1000,
     "length": 10,
     "width": 10,
@@ -124,9 +124,9 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
  },
  "requests": [
   {
-   "request_uuid": "26ec60b4-bdd7-4c55-95b1-dad5ba02bd57",
+   "request_uuid": "8b3b76bf-c4b7-43c1-81a8-22e55f401eca",
    "type": "CREATE",
-   "date_time": "2025-09-14T11:39:27+00:00",
+   "date_time": "2025-09-15T09:58:39+03:00",
    "state": "ACCEPTED"
   }
  ]

@@ -34,7 +34,7 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CalendarID = "1302";
+    CalendarID = "1322";
 
     Tomorrow = OPI_Tools.GetCurrentDate() + 86400;
     Hour     = 3600;
@@ -96,8 +96,8 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
     Result = OPI_Bitrix24.CreateCalendarEvent(URL, EventStucture);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "7a1ec468006e9f06006b12e400000001000...";
-    CalendarID = "1304";
+    Token      = "75d8c668006e9f06006b12e400000001000...";
+    CalendarID = "1324";
 
     EventStucture.Insert("section", CalendarID);
 
@@ -133,16 +133,16 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
 
 ```json title="Result"
 {
- "result": 2376,
+ "result": 2416,
  "time": {
-  "start": 1757849584.76164,
-  "finish": 1757849585.08258,
-  "duration": 0.320930957794189,
-  "processing": 0.2969069480896,
-  "date_start": "2025-09-14T11:33:04+00:00",
-  "date_finish": "2025-09-14T11:33:05+00:00",
-  "operating_reset_at": 1757850184,
-  "operating": 0.2968909740448
+  "start": 1757919158.15096,
+  "finish": 1757919158.40207,
+  "duration": 0.251108884811401,
+  "processing": 0.226197957992554,
+  "date_start": "2025-09-15T09:52:38+03:00",
+  "date_finish": "2025-09-15T09:52:38+03:00",
+  "operating_reset_at": 1757919758,
+  "operating": 0.226180791854858
  }
 }
 ```
