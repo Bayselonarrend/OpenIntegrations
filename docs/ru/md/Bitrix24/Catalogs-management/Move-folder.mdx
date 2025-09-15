@@ -34,17 +34,17 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    IDПриемника = "40710";
-    IDКаталога  = "40716";
+    IDПриемника = "42172";
+    IDКаталога  = "42178";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Результат = OPI_Bitrix24.ПереместитьКаталог(URL, IDКаталога, IDПриемника);
 
-    IDКаталога = "40714";
+    IDКаталога = "42176";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "7a1ec468006e9f06006b12e400000001000...";
+    Токен = "75d8c668006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПереместитьКаталог(URL, IDКаталога, IDПриемника, Токен);
 ```
@@ -56,8 +56,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПереместитьКаталог \
               --url ""b24-ar17wx.bitrix24.by"" \
-              --folderid "41826" \
-              --tagetid "41822" \
+              --folderid "42284" \
+              --tagetid "42280" \
               --token "***"
         ```
     </TabItem>
@@ -66,8 +66,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПереместитьКаталог ^
               --url ""b24-ar17wx.bitrix24.by"" ^
-              --folderid "41826" ^
-              --tagetid "41822" ^
+              --folderid "42284" ^
+              --tagetid "42280" ^
               --token "***"
         ```
     </TabItem>
@@ -77,16 +77,16 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": "41880",
+  "ID": "42392",
   "NAME": "Новый подкаталог 2",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": "41880",
-  "PARENT_ID": 41876,
+  "REAL_OBJECT_ID": "42392",
+  "PARENT_ID": 42388,
   "DELETED_TYPE": "0",
-  "CREATE_TIME": "2025-09-11T20:50:18+03:00",
-  "UPDATE_TIME": "2025-09-11T20:50:20+03:00",
+  "CREATE_TIME": "2025-09-15T11:35:09+03:00",
+  "UPDATE_TIME": "2025-09-15T11:35:11+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -94,13 +94,13 @@ import TabItem from '@theme/TabItem';
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/Новый каталог 2/Новый подкаталог 2"
  },
  "time": {
-  "start": 1757613029.0209,
-  "finish": 1757613029.07233,
-  "duration": 0.0514340400695801,
-  "processing": 0.0253608226776123,
-  "date_start": "2025-09-11T20:50:29+03:00",
-  "date_finish": "2025-09-11T20:50:29+03:00",
-  "operating_reset_at": 1757613629,
+  "start": 1757925328.82861,
+  "finish": 1757925328.88924,
+  "duration": 0.0606319904327393,
+  "processing": 0.0321860313415527,
+  "date_start": "2025-09-15T11:35:28+03:00",
+  "date_finish": "2025-09-15T11:35:28+03:00",
+  "operating_reset_at": 1757925928,
   "operating": 0
  }
 }
