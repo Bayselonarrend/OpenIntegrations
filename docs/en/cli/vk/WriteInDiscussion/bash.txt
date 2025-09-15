@@ -1,6 +1,4 @@
-# JSON data can also be passed as a path to a .json file
-
 oint vk WriteInDiscussion \
- --topic 53987412 \
- --text "I like yellow more" \
- --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+ --topic "54108192" \
+ --text ""I like yellow more"" \
+ --auth ""C:\Users\bayse\AppData\Local\Temp\dv5dhgvz.55t.json""

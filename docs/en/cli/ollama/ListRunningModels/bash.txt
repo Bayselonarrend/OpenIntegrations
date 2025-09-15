@@ -1,5 +1,3 @@
-# JSON data can also be passed as a path to a .json file
-
 oint ollama ListRunningModels \
- --url "https://hut.openintegrations.dev/ollama" \
+ --url ""https://hut.openintegrations.dev/ollama"" \
  --headers "{'Authorization':'***'}"

@@ -1,0 +1,2 @@
+oint ftp Ping ^
+ --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'}}"

@@ -1,6 +1,5 @@
-:: JSON data can also be passed as a path to a .json file
-
 oint postgres EnsureTable ^
- --table "test_new" ^
- --cols "{'smallint_field':'SMALLINT','uuid_field':'uuid','bigint_field':'BIGINT','custom_field':'TEXT'}" ^
- --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+ --table ""test_new"" ^
+ --cols ""C:\Users\bayse\AppData\Local\Temp\bgv2gbne.afq.json"" ^
+ --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
+ --tls ""C:\Users\bayse\AppData\Local\Temp\e5eleemc.bbt.json""

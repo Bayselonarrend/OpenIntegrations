@@ -1,9 +1,3 @@
-# JSON data can also be passed as a path to a .json file
-
 oint rcon ExecuteCommand \
- --url "127.0.0.1:25575" \
- --pass "***" \
- --wtout 20 \
- --rtout 20 \
  --exec "list" \
- --conn "{'url':'127.0.0.1:25575','password':'***','read_timeout':20,'write_timeout':20}"
+ --conn "{'url':'127.0.0.1:25575','password':'***','read_timeout':'20','write_timeout':'20'}"

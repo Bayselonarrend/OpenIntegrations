@@ -2,4 +2,5 @@ oint telegram SendImage \
  --token "***" \
  --chat "@testsichee" \
  --text "Строковое значение" \
- --picture "/tmp/3wxj3yx4.sxu.png"
+ --picture "https://hut.openintegrations.dev/test_data/picture.jpg" \
+ --keyboard "{'inline_keyboard':[[{'text':'Button1','callback_data':'Button1'}],[{'text':'Button2','callback_data':'Button2'}],[{'text':'Button3','callback_data':'Button3'}]],'rows':'1'}"

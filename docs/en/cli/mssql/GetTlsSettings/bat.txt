@@ -1,2 +1,2 @@
-oint mssql GetTlsSettings ^
- --trust true
+oint mssql GetTLSSettings ^
+ --trust "true"

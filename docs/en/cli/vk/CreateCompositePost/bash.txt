@@ -1,8 +1,6 @@
-# JSON data can also be passed as a path to a .json file
-
 oint vk CreateCompositePost \
- --text "Post from autotest" \
- --objects "['photo657846756_457248056','video-218861756_456240614']" \
- --ad false \
- --url "https://github.com/Bayselonarrend/OpenIntegrations" \
- --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+ --text ""Post from autotest"" \
+ --objects ""['photo657846756_457248542','video-218861756_456240769']"" \
+ --ad "false" \
+ --url ""https://github.com/Bayselonarrend/OpenIntegrations"" \
+ --auth ""C:\Users\bayse\AppData\Local\Temp\c1ww14yr.fo1.json""

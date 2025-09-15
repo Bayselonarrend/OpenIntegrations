@@ -1,2 +1,2 @@
-oint postgres GetTlsSettings \
- --trust true
+oint postgres GetTLSSettings \
+ --trust "true"

@@ -1,3 +1,4 @@
 oint postgres ExecuteSQLQuery \
- --sql "https://hut.openintegrations.dev/test_data/TEST_DATA.sql" \
- --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+ --sql ""https://hut.openintegrations.dev/test_data/TEST_DATA.sql"" \
+ --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
+ --tls ""C:\Users\bayse\AppData\Local\Temp\jjpgmpo0.0yp.json""

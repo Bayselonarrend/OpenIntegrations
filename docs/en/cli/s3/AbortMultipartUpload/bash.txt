@@ -1,7 +1,6 @@
-# JSON data can also be passed as a path to a .json file
-
 oint s3 AbortMultipartUpload \
  --name "fileChunked.mp3" \
- --bucket "opi-gpbucket3" \
+ --bucket "opi-dirbucket3" \
  --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
- --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjI3MTkwZjU5LTI5ZTYtNDU3MC1hYTM3LTRkZWU2ZWNjMTRlMA"
+ --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmNiZjBlYzgxLTJkZmYtNGU4Ni1hZGVlLTQ4Mzc3OTIzMjg5Yw" \
+ --dir true

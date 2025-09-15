@@ -1,6 +1,4 @@
-# JSON data can also be passed as a path to a .json file
-
 oint vk UploadPhotoToServer \
- --file "https://hut.openintegrations.dev/test_data/picture.jpg" \
- --type "Post" \
- --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+ --file ""https://hut.openintegrations.dev/test_data/picture.jpg"" \
+ --auth ""C:\Users\bayse\AppData\Local\Temp\ec4gmdv0.jlf.json"" \
+ --type ""Post""

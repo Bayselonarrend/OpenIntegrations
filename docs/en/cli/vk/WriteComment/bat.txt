@@ -1,7 +1,5 @@
-:: JSON data can also be passed as a path to a .json file
-
 oint vk WriteComment ^
- --post 8916 ^
- --wall "-218861756" ^
- --text "NewComment" ^
- --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+ --post "9642" ^
+ --wall ""-218861756"" ^
+ --text ""NewComment"" ^
+ --auth ""C:\Users\bayse\AppData\Local\Temp\g0ypa014.yva.json""
