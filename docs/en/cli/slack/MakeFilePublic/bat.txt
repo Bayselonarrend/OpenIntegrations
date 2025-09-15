@@ -1,3 +1,3 @@
 oint slack MakeFilePublic ^
  --token "***" ^
- --fileid "F096L66AK32"
+ --fileid "F09FD3KUD6G"

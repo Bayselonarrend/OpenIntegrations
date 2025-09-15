@@ -1,5 +1,3 @@
-# JSON data can also be passed as a path to a .json file
-
 oint vk CreateProductProperty \
- --title "Color" \
- --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
+ --title ""Color"" \
+ --auth ""C:\Users\bayse\AppData\Local\Temp\t5kdv01s.ls4.json""
