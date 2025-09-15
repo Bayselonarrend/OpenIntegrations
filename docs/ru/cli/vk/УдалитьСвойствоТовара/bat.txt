@@ -1,3 +1,3 @@
 oint vk УдалитьСвойствоТовара ^
-  --prop ""4308"" ^
-  --auth ""/tmp/zuupkakr.yji.json""
+  --prop ""4321"" ^
+  --auth ""/tmp/xjjhlv5e.xjj.json""

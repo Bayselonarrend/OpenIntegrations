@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 335944730,
- "filepath": "/tmp/z5v5rjpt.cyy.bin",
- "result": true
+ "filepath": "/tmp/optbutp5.uug.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

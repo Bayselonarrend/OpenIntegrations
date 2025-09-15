@@ -1,4 +1,4 @@
 oint mssql УдалитьТаблицу \
   --table ""test_data"" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls ""/tmp/ulfauqal.jtp.json""
+  --tls ""/tmp/4tnsuuvm.ifq.json""

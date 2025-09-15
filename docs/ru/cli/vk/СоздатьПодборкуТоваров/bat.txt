@@ -3,4 +3,4 @@ oint vk СоздатьПодборкуТоваров ^
   --picture ""https://hut.openintegrations.dev/test_data/picture.jpg"" ^
   --main "true" ^
   --hidden "false" ^
-  --auth ""/tmp/x3xa51as.aeh.json""
+  --auth ""/tmp/q2iyms2o.lct.json""

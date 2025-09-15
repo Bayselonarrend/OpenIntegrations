@@ -1,3 +1,3 @@
 oint twitter СоздатьТекстовыйТвит ^
-  --text "Тестовый твиттcdca2116-748f-4277-9cd7-aaa3b866bf95" ^
+  --text "Тестовый твиттcb99b7c1-ee82-4d9b-9ad2-24be920bfc5f" ^
   --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

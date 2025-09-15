@@ -4,13 +4,13 @@
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
-  "Authorization": "AWS4-HMAC-SHA256 Credential=AccessKey/20250915/Region/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=12d370d8dc063070fe09fbdfe4cd77a4784fdf81ab01dca45c776ad49d84b430",
+  "Authorization": "AWS4-HMAC-SHA256 Credential=AccessKey/20250915/Region/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=07c2fea50abcbb6d429c1c3c3d05a4feea0838310c6f61db35c87aaf9339e787",
   "Content-Length": "0",
   "Host": "httpbin.org",
   "User-Agent": "1Script v$2.0.0.0",
   "X-Amz-Content-Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "X-Amz-Date": "20250915T090016Z",
-  "X-Amzn-Trace-Id": "Root=1-68c7d5a1-03c6eb2e761dabd4622782e6"
+  "X-Amz-Date": "20250915T211224Z",
+  "X-Amzn-Trace-Id": "Root=1-68c88139-28980c70783462971968b2e4"
  },
  "origin": "***",
  "url": "https://httpbin.org/get"

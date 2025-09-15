@@ -2,4 +2,4 @@ oint mssql УдалитьКолонкуТаблицы \
   --table ""testtable"" \
   --name ""new_field"" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls ""/tmp/pilfk1cy.byl.json""
+  --tls ""/tmp/vxufehom.2sq.json""

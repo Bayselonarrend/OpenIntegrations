@@ -1,3 +1,3 @@
 oint vk СоздатьИсторию ^
-  --picture ""/tmp/uqcze0hk.bcg.png"" ^
-  --auth ""/tmp/tdwx0r4w.yqx.json""
+  --picture ""/tmp/t5f2xs4d.jpy.png"" ^
+  --auth ""/tmp/4gr2y0ov.xji.json""

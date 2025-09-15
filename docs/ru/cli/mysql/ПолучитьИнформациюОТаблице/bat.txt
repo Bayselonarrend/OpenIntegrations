@@ -1,4 +1,4 @@
 oint mysql ПолучитьИнформациюОТаблице ^
   --table ""test_new"" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls ""/tmp/ekacwggr.5hb.json""
+  --tls ""/tmp/e0yer2vn.2gs.json""

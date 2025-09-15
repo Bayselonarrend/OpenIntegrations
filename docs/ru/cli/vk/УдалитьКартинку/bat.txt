@@ -1,3 +1,3 @@
 oint vk УдалитьКартинку ^
-  --pictureid "457259021" ^
-  --auth ""/tmp/4mgfak42.2na.json""
+  --pictureid "457259154" ^
+  --auth ""/tmp/nq42mug4.g05.json""

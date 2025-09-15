@@ -3,4 +3,4 @@ oint mssql ДобавитьКолонкуТаблицы \
   --name ""new_field"" \
   --type ""bigint"" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls ""/tmp/3udtszmd.2uw.json""
+  --tls ""/tmp/bu2xml3r.pfh.json""

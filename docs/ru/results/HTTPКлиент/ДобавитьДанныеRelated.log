@@ -1,6 +1,6 @@
 ﻿{
  "args": {},
- "data": "--32be41cdeba34b3db7dd9776d54b3bb9\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n{\r\n \"Поле1\": 10,\r\n \"Поле2\": \"Текст\",\r\n \"Поле3\": [\r\n  \"A\",\r\n  \"B\",\r\n  \"C\"\r\n ]\r\n}\r\n\r\n--32be41cdeba34b3db7dd9776d54b3bb9--\r\n",
+ "data": "--9b44e6da70b541149a35418d47da1a47\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n{\r\n \"Поле1\": 10,\r\n \"Поле2\": \"Текст\",\r\n \"Поле3\": [\r\n  \"A\",\r\n  \"B\",\r\n  \"C\"\r\n ]\r\n}\r\n\r\n--9b44e6da70b541149a35418d47da1a47--\r\n",
  "files": {},
  "form": {},
  "headers": {
@@ -8,10 +8,10 @@
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
   "Content-Length": "223",
-  "Content-Type": "multipart/related; boundary=32be41cdeba34b3db7dd9776d54b3bb9",
+  "Content-Type": "multipart/related; boundary=9b44e6da70b541149a35418d47da1a47",
   "Host": "httpbin.org",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Amzn-Trace-Id": "Root=1-68c7d57a-726bec8e3f6759ec5dbcfeeb"
+  "X-Amzn-Trace-Id": "Root=1-68c88104-4268718b66e77fe36108579a"
  },
  "json": null,
  "origin": "***",
