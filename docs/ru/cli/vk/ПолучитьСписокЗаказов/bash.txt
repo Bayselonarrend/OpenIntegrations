@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокЗаказов \
-  --auth ""/tmp/x3ziemq2.rpo.json""
+  --auth ""C:\Users\bayse\AppData\Local\Temp\sepglelr.cfl.json""

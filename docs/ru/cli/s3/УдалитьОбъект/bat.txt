@@ -1,3 +1,5 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint s3 УдалитьОбъект ^
   --name "picture.jpg" ^
   --bucket "opi-dirbucket3" ^

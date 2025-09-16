@@ -1,5 +1,7 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint airtable СоздатьПоле \
   --token "***" \
-  --base "appmj04pElJrZ8Hau" \
-  --table "tbl0IXpbtJjA7XiXo" \
-  --fielddata "{'name':'309c53d2-db5e-4598-9176-c5ba9226023a','type':'number','options':{'precision':'0'}}"
+  --base "appAxsE76ggwPsw35" \
+  --table "tblXllUw4FoGx1ofF" \
+  --fielddata "{'name':'b3182aec-58d7-4b1a-a143-5686075bb8a9','type':'number','options':{'precision':'0'}}"

@@ -1,4 +1,4 @@
 oint vk НаписатьВОбсуждение ^
-  --topic "54110014" ^
+  --topic "54111472" ^
   --text ""Мне больше нравится желтый"" ^
-  --auth ""/tmp/n2nkxsfl.jyb.json""
+  --auth ""C:\Users\bayse\AppData\Local\Temp\df1wbrx3.rvc.json""

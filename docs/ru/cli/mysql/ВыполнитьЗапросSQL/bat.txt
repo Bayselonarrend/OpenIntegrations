@@ -1,4 +1,4 @@
 oint mysql ВыполнитьЗапросSQL ^
   --sql ""https://hut.openintegrations.dev/test_data/TEST_DATA2.sql"" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls ""/tmp/yuxycaxd.2jd.json""
+  --tls ""C:\Users\bayse\AppData\Local\Temp\1lay0dmw.cjp.json""

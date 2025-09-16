@@ -1,3 +1,5 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint rcon ВыполнитьКоманду \
   --exec "list" \
   --conn "{'url':'127.0.0.1:25575','password':'***','read_timeout':'20','write_timeout':'20'}"

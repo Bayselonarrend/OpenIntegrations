@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокПодборок \
-  --auth ""/tmp/w3gkxasy.wou.json""
+  --auth ""C:\Users\bayse\AppData\Local\Temp\hqrxgdzj.bli.json""

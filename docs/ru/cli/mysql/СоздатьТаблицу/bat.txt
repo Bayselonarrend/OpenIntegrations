@@ -1,5 +1,5 @@
 oint mysql СоздатьТаблицу ^
   --table ""somename"" ^
-  --cols ""/tmp/fb0xlsvd.aid.json"" ^
+  --cols ""C:\Users\bayse\AppData\Local\Temp\uohgv4hz.gmg.json"" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls ""/tmp/3pjvwg5r.tif.json""
+  --tls ""C:\Users\bayse\AppData\Local\Temp\oxr5ncf3.xru.json""

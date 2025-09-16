@@ -1,3 +1,3 @@
 oint vk ПоставитьЛайк ^
-  --post "9712" ^
-  --auth ""/tmp/kexyyeun.ksj.json""
+  --post "9732" ^
+  --auth ""C:\Users\bayse\AppData\Local\Temp\pfrcsecy.wpf.json""

@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 20913,
+  "message_id": 20955,
   "sender_chat": {
    "id": -1001893407333,
    "title": "Тестовый канал",
@@ -14,8 +14,8 @@
    "username": "testsichee",
    "type": "channel"
   },
-  "date": 1757993795,
-  "edit_date": 1757993807,
+  "date": 1758050326,
+  "edit_date": 1758050338,
   "text": "Новый текст сообщения"
  }
 }

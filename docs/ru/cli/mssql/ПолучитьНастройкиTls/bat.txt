@@ -1,2 +1,2 @@
-oint mssql ПолучитьНастройкиTls ^
-  --trust "True"
+oint mssql ПолучитьНастройкиTLS ^
+  --trust "true"

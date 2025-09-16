@@ -1,7 +1,9 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint s3 ЗавершитьЗагрузкуЧастями \
   --name "fileChunked.mp3" \
   --bucket "opi-dirbucket3" \
   --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-  --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjRkMjEzZDI4LTVjNWMtNGM2Ny05YTEwLTdkOTNkNzhmOGNkZQ" \
-  --tags "['\"'"566e2d464b39b91eb8b5d89fb9f1a318\"'"','\"'"adb76a9a9ff8226ed08fb6f343102908\"'"']" \
+  --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmFhMDZiODMxLWVhZTEtNDFhYi1hM2Q2LTgxYTViMGY2YzdlYw" \
+  --tags "['\"566e2d464b39b91eb8b5d89fb9f1a318\"','\"adb76a9a9ff8226ed08fb6f343102908\"']" \
   --dir true

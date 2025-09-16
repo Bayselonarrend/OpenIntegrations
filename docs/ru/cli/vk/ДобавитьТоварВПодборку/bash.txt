@@ -1,4 +1,4 @@
 oint vk ДобавитьТоварВПодборку \
-  --items "11839322" \
-  --sel "141" \
-  --auth ""/tmp/afkjqnsq.24e.json""
+  --items "11845525" \
+  --sel "143" \
+  --auth ""C:\Users\bayse\AppData\Local\Temp\kxxecm0e.klf.json""

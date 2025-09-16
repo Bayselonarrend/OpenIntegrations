@@ -1,4 +1,4 @@
 oint postgres ОтключитьВсеСоединенияБазыДанных ^
   --base ""testbase2"" ^
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-  --tls ""/tmp/ta2ulcpg.t5g.json""
+  --tls ""C:\Users\bayse\AppData\Local\Temp\2otd1k1l.jv4.json""

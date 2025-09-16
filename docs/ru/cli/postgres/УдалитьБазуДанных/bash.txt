@@ -1,4 +1,4 @@
 oint postgres УдалитьБазуДанных \
   --base ""testbase2"" \
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-  --tls ""/tmp/t0z0sjxt.nd0.json""
+  --tls ""C:\Users\bayse\AppData\Local\Temp\wlb12eud.jy3.json""

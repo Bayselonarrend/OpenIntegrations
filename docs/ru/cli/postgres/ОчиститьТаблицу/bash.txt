@@ -1,4 +1,4 @@
 oint postgres ОчиститьТаблицу \
   --table ""testtable"" \
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-  --tls ""/tmp/0guu1u2l.gfk.json""
+  --tls ""C:\Users\bayse\AppData\Local\Temp\zli0oinw.mb2.json""
