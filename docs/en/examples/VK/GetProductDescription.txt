@@ -1,1 +1,2 @@
-﻿    Result = OPI_VK.GetProductDescription();
+﻿    Clear  = False;
+    Result = OPI_VK.GetProductDescription(Clear);
