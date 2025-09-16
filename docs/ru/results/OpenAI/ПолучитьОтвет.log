@@ -1,7 +1,7 @@
 ﻿{
- "created": 1757970815,
+ "created": 1758001668,
  "object": "chat.completion",
- "id": "83add36f-24e3-47f5-b0b4-11d17622eac6",
+ "id": "261c0f9a-4416-4e3d-9fb1-c4c4763334bd",
  "model": "smolvlm-256m-instruct",
  "choices": [
   {
@@ -9,13 +9,13 @@
    "finish_reason": "stop",
    "message": {
     "role": "assistant",
-    "content": "2004"
+    "content": "1C:Enterprise was released in 2013"
    }
   }
  ],
  "usage": {
   "prompt_tokens": 53,
-  "completion_tokens": 5,
-  "total_tokens": 58
+  "completion_tokens": 14,
+  "total_tokens": 67
  }
 }
