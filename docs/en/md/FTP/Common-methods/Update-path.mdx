@@ -75,10 +75,33 @@ FTP Command: `RNFR + RNTO`
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint ftp UpdatePath \
+             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
+             --old "new_dir/giant.bin" \
+             --new "new_dir/big.bin"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint ftp UpdatePath ^
+             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
+             --old "new_dir/giant.bin" ^
+             --new "new_dir/big.bin"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
 {
- "result": true
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
 ```

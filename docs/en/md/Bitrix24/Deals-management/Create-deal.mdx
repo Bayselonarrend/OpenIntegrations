@@ -66,22 +66,18 @@ Method at API documentation: [crm.deal.add](https://dev.1c-bitrix.ru/rest_help/c
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint bitrix24 CreateDeal \
-             --url "b24-ar17wx.bitrix24.by" \
-             --fields "{'TITLE':'Another deal','TYPE_ID':'GOODS','STAGE_ID':'NEW','COMPANY_ID':1,'CONTACT_ID':3,'OPENED':'Y','ASSIGNED_BY_ID':1,'PROBABILITY':30,'CURRENCY_ID':'USD','OPPORTUNITY':5000,'CATEGORY_ID':5,'BEGINDATE':'2024-01-01','CLOSEDATE':'2031-01-01'}" \
+             --url ""b24-ar17wx.bitrix24.by"" \
+             --fields ""/tmp/rct13jig.lgj.json"" \
              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint bitrix24 CreateDeal ^
-             --url "b24-ar17wx.bitrix24.by" ^
-             --fields "{'TITLE':'Another deal','TYPE_ID':'GOODS','STAGE_ID':'NEW','COMPANY_ID':1,'CONTACT_ID':3,'OPENED':'Y','ASSIGNED_BY_ID':1,'PROBABILITY':30,'CURRENCY_ID':'USD','OPPORTUNITY':5000,'CATEGORY_ID':5,'BEGINDATE':'2024-01-01','CLOSEDATE':'2031-01-01'}" ^
+             --url ""b24-ar17wx.bitrix24.by"" ^
+             --fields ""/tmp/rct13jig.lgj.json"" ^
              --token "***"
         ```
     </TabItem>
@@ -90,16 +86,16 @@ Method at API documentation: [crm.deal.add](https://dev.1c-bitrix.ru/rest_help/c
 
 ```json title="Result"
 {
- "result": 4846,
+ "result": 4902,
  "time": {
-  "start": 1757919146.52129,
-  "finish": 1757919146.99849,
-  "duration": 0.477205991744995,
-  "processing": 0.44936990737915,
-  "date_start": "2025-09-15T09:52:26+03:00",
-  "date_finish": "2025-09-15T09:52:26+03:00",
-  "operating_reset_at": 1757919746,
-  "operating": 0.449349880218506
+  "start": 1757977074.39561,
+  "finish": 1757977074.70858,
+  "duration": 0.312968015670776,
+  "processing": 0.291521072387695,
+  "date_start": "2025-09-15T22:57:54+00:00",
+  "date_finish": "2025-09-15T22:57:54+00:00",
+  "operating_reset_at": 1757977674,
+  "operating": 0.2914879322052
  }
 }
 ```

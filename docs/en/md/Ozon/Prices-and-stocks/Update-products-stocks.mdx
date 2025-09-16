@@ -57,43 +57,22 @@ Method at API documentation: [post /v2/products/stocks](https://docs.ozon.ru/api
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint ozon UpdateProductsStocks \
              --clientid "***" \
              --apikey "***" \
-             --stocks "{'offer_id':'143210610','product_id':2216912707,'stock':20,'warehouse_id':1}"
+             --stocks "{'offer_id':'143210610','product_id':'2717268535','stock':'20','warehouse_id':'1'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint ozon UpdateProductsStocks ^
              --clientid "***" ^
              --apikey "***" ^
-             --stocks "{'offer_id':'143210610','product_id':2216912707,'stock':20,'warehouse_id':1}"
+             --stocks "{'offer_id':'143210610','product_id':'2717268535','stock':'20','warehouse_id':'1'}"
         ```
     </TabItem>
 </Tabs>
 
 
-```json title="Result"
-{
- "result": [
-  {
-   "warehouse_id": 1,
-   "product_id": 0,
-   "offer_id": "143210610",
-   "updated": false,
-   "errors": [
-    {
-     "code": "WAREHOUSE_NOT_FOUND",
-     "message": "warehouse has wrong id: 1"
-    }
-   ]
-  }
- ]
-}
-```
+

@@ -48,8 +48,6 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/docs/ap
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint greenapi GetNotification \
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}"
         ```
@@ -57,8 +55,6 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/docs/ap
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint greenapi GetNotification ^
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}"
         ```
@@ -76,8 +72,8 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/docs/ap
    "wid": "1234567890@c.us",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1757850542,
-  "idMessage": "BAE5A7FFC4071671",
+  "timestamp": 1757919952,
+  "idMessage": "BAE5EF42B6D1A485",
   "senderData": {
    "chatId": "120363410406221140@g.us",
    "chatName": "Основная тестовая группа",
@@ -86,9 +82,26 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/docs/ap
    "senderContactName": ""
   },
   "messageData": {
-   "typeMessage": "deletedMessage",
-   "deletedMessageData": {
-    "stanzaId": "BAE5A578DA378873"
+   "typeMessage": "quotedMessage",
+   "extendedTextMessageData": {
+    "text": "New message",
+    "stanzaId": "BAE55E709C547A29",
+    "participant": "1234567890@c.us"
+   },
+   "quotedMessage": {
+    "stanzaId": "BAE55E709C547A29",
+    "participant": "1234567890@c.us",
+    "typeMessage": "extendedTextMessage",
+    "textMessage": "New message",
+    "extendedTextMessage": {
+     "text": "New message",
+     "description": "",
+     "title": "",
+     "previewType": "None",
+     "jpegThumbnail": "",
+     "forwardingScore": 0,
+     "isForwarded": false
+    }
    }
   }
  }

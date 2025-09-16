@@ -100,23 +100,21 @@ This is a service method. A `PutObject` method is intended for the common scenar
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint s3 InitPartsUpload \
              --name "fileChunked.mp3" \
-             --bucket "opi-gpbucket3" \
-             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+             --bucket "opi-dirbucket3" \
+             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+             --dir true
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint s3 InitPartsUpload ^
              --name "fileChunked.mp3" ^
-             --bucket "opi-gpbucket3" ^
-             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+             --bucket "opi-dirbucket3" ^
+             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+             --dir true
         ```
     </TabItem>
 </Tabs>
@@ -129,17 +127,17 @@ This is a service method. A `PutObject` method is intended for the common scenar
   "InitiateMultipartUploadResult": {
    "Bucket": "opi-dirbucket3",
    "Key": "fileChunked.mp3",
-   "UploadId": "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjBjMTZiZjNhLTM1ZjAtNDI3Yi1iMDg4LWY2YjU2MzJkMDIxNA"
+   "UploadId": "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjg2ZmI0MjM4LTNiYTAtNDE3My1iNGRmLTA0NmQ1YmM3OGJmZQ"
   }
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Mon, 15 Sep 2025 07:03:21 GMT",
+  "Date": "Mon, 15 Sep 2025 23:16:02 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
-  "X-Amz-Request-Id": "186562BECBBFE838",
+  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
+  "X-Amz-Request-Id": "186597D2FEC7C465",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "326",

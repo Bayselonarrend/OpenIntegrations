@@ -57,25 +57,21 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint sqlite UpdateRecords \
              --table "test" \
              --values "{'name':'Vitaly A.','salary':'999999'}" \
-             --filter "[{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':false}]" \
-             --db "/tmp/1h5u01yu.rt1.sqlite"
+             --filter "{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':false}" \
+             --db "/tmp/pvrrdds2.dxl.sqlite"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint sqlite UpdateRecords ^
              --table "test" ^
              --values "{'name':'Vitaly A.','salary':'999999'}" ^
-             --filter "[{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':false}]" ^
-             --db "/tmp/1h5u01yu.rt1.sqlite"
+             --filter "{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':false}" ^
+             --db "/tmp/pvrrdds2.dxl.sqlite"
         ```
     </TabItem>
 </Tabs>

@@ -56,6 +56,30 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint s3 UploadFullObject \
+             --name "pictureSmall.jpg" \
+             --bucket "opi-dirbucket3" \
+             --data "https://hut.openintegrations.dev/test_data/picture.jpg" \
+             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+             --dir true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint s3 UploadFullObject ^
+             --name "pictureSmall.jpg" ^
+             --bucket "opi-dirbucket3" ^
+             --data "https://hut.openintegrations.dev/test_data/picture.jpg" ^
+             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+             --dir true
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
@@ -64,13 +88,13 @@ Parameters with Binary data type can also accept file paths on disk and URLs
  "response": {},
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Mon, 15 Sep 2025 07:03:19 GMT",
+  "Date": "Mon, 15 Sep 2025 23:15:56 GMT",
   "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
-  "X-Amz-Request-Id": "186562BCC4A1739A",
+  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
+  "X-Amz-Request-Id": "186597D097C43A5B",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "0",

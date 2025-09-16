@@ -51,8 +51,9 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
             oint telegram ReplaceMessageText \
              --token "***" \
              --chat "@testsichee" \
-             --message "19142" \
-             --text "New message text"
+             --message "20871" \
+             --text "<b>Bold text</b>" \
+             --parsemode "HTML"
         ```
     </TabItem>
   
@@ -61,8 +62,9 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
             oint telegram ReplaceMessageText ^
              --token "***" ^
              --chat "@testsichee" ^
-             --message "19142" ^
-             --text "New message text"
+             --message "20871" ^
+             --text "<b>Bold text</b>" ^
+             --parsemode "HTML"
         ```
     </TabItem>
 </Tabs>
@@ -72,7 +74,7 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
 {
  "ok": true,
  "result": {
-  "message_id": 20724,
+  "message_id": 20871,
   "sender_chat": {
    "id": -1001893407333,
    "title": "Тестовый канал",
@@ -85,8 +87,8 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
    "username": "testsichee",
    "type": "channel"
   },
-  "date": 1757915637,
-  "edit_date": 1757915639,
+  "date": 1757971360,
+  "edit_date": 1757971372,
   "text": "New message text"
  }
 }

@@ -48,25 +48,21 @@ Method at API documentation: [Create image](https://platform.openai.com/docs/api
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint openai GetImages \
              --url "https://bothub.chat/api/v2/openai/" \
              --token "***" \
              --model "dall-e-3" \
-             --descr "{'prompt':'Yellow alpaca','n':1,'size':'1024x1024'}"
+             --descr "{'prompt':'Yellow alpaca','n':'1','size':'1024x1024'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint openai GetImages ^
              --url "https://bothub.chat/api/v2/openai/" ^
              --token "***" ^
              --model "dall-e-3" ^
-             --descr "{'prompt':'Yellow alpaca','n':1,'size':'1024x1024'}"
+             --descr "{'prompt':'Yellow alpaca','n':'1','size':'1024x1024'}"
         ```
     </TabItem>
 </Tabs>
@@ -74,11 +70,11 @@ Method at API documentation: [Create image](https://platform.openai.com/docs/api
 
 ```json title="Result"
 {
- "created": 1757709283,
+ "created": 1757982404,
  "data": [
   {
-   "revised_prompt": "Visualize a sunny, vibrant grassy plain under a clear blue sky. In the middle of this peaceful scene, a cuddly alpaca stands still. Its coat is full and fluffy, dyed with the most cheerful shade of yellow. Its ears are alert and pointed, and its eyes, hidden deep among the thick yellow fur, are as shiny and curious as black opals. The alpaca curiously gazes towards the viewer, emitting a sparkling aura of friendliness and warmth.",
-   "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-vf0VrTZ44yHusk7vPGBYcYgW/user-HMyGZPKt7HooVlzCBP2dP9we/img-QeAYLUWLGFpQai5ppqosyr8l.png?st=2025-09-12T19%3A34%3A43Z&se=2025-09-12T21%3A34%3A43Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=b1a0ae1f-618f-4548-84fd-8b16cacd5485&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-09-12T10%3A34%3A08Z&ske=2025-09-13T10%3A34%3A08Z&sks=b&skv=2024-08-04&sig=7%2BJ6GguFsPgrJpYjhIn7hnE2cQXCsloUFtBd6tUHQ7w%3D"
+   "revised_prompt": "An adorable, fluffy alpaca standing in a serene field. Its fur is the color of rich, vibrant yellow, appearing almost golden in the sunlight. The alpaca's gentle eyes and cute, rounded ears make it appear friendly and approachable. In the background, tall grasses and a cloudless blue sky portray a peaceful rural scene.",
+   "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-vf0VrTZ44yHusk7vPGBYcYgW/user-HMyGZPKt7HooVlzCBP2dP9we/img-mcVZADShuw1V7jNhvLr4sGQ6.png?st=2025-09-15T23%3A26%3A44Z&se=2025-09-16T01%3A26%3A44Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=ed3ea2f9-5e38-44be-9a1b-7c1e65e4d54f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-09-15T18%3A27%3A16Z&ske=2025-09-16T18%3A27%3A16Z&sks=b&skv=2024-08-04&sig=tSIPVLt4Wp1jFi4dZa%2BB%2BOdBpZOLgupNwosWvAmPMUc%3D"
   }
  ]
 }

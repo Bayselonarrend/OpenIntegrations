@@ -119,11 +119,9 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/33828
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint cdek CreateOrder \
              --token "***" \
-             --order "{'from_location':{'code':'44','city':'Moscow','address':'Ave. Leningradsky, 4'},'to_location':{'code':'270','city':'Novosibirsk','address':'st. Bluchera, 32'},'packages':[{'items':[{'payment':{'value':3000},'ware_key':'***','name':'Product','cost':300,'amount':2,'weight':700,'url':'www.item.ru'}],'number':'bar-001','comment':'Packaging','height':10,'length':10,'weight':'4000','width':10}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Ivaniv Ivan'},'sender':{'name':'Petrov Petr'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':10}],'number':'4c8e694e-542d-4cd6-b001-72d0a525f378','comment':'New order','tariff_code':139,'delivery_recipient_cost':{'value':50},'delivery_recipient_cost_adv':{'sum':3000,'threshold':200}}" \
+             --order "{'from_location':{'code':'44','city':'Moscow','address':'Ave. Leningradsky, 4'},'to_location':{'code':'270','city':'Novosibirsk','address':'st. Bluchera, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Product','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Packaging','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Ivaniv Ivan'},'sender':{'name':'Petrov Petr'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'7a744511-bb44-4469-ba2b-44761bd6e18d','comment':'New order','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" \
              --ostore true \
              --testapi "***"
         ```
@@ -131,11 +129,9 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/33828
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint cdek CreateOrder ^
              --token "***" ^
-             --order "{'from_location':{'code':'44','city':'Moscow','address':'Ave. Leningradsky, 4'},'to_location':{'code':'270','city':'Novosibirsk','address':'st. Bluchera, 32'},'packages':[{'items':[{'payment':{'value':3000},'ware_key':'***','name':'Product','cost':300,'amount':2,'weight':700,'url':'www.item.ru'}],'number':'bar-001','comment':'Packaging','height':10,'length':10,'weight':'4000','width':10}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Ivaniv Ivan'},'sender':{'name':'Petrov Petr'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':10}],'number':'4c8e694e-542d-4cd6-b001-72d0a525f378','comment':'New order','tariff_code':139,'delivery_recipient_cost':{'value':50},'delivery_recipient_cost_adv':{'sum':3000,'threshold':200}}" ^
+             --order "{'from_location':{'code':'44','city':'Moscow','address':'Ave. Leningradsky, 4'},'to_location':{'code':'270','city':'Novosibirsk','address':'st. Bluchera, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Product','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Packaging','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Ivaniv Ivan'},'sender':{'name':'Petrov Petr'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'7a744511-bb44-4469-ba2b-44761bd6e18d','comment':'New order','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" ^
              --ostore true ^
              --testapi "***"
         ```
@@ -146,13 +142,13 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/33828
 ```json title="Result"
 {
  "entity": {
-  "uuid": "525c1876-5db6-4e67-9582-ccdd1126c24a"
+  "uuid": "dbb9225f-576e-40c7-9571-bc0f9781a388"
  },
  "requests": [
   {
-   "request_uuid": "3fd3e7f5-6300-48c3-bec2-a501d5dfe265",
+   "request_uuid": "b212c325-de61-4000-92fd-8dc32819de52",
    "type": "CREATE",
-   "date_time": "2025-09-15T09:58:17+03:00",
+   "date_time": "2025-09-15T23:07:40+00:00",
    "state": "ACCEPTED"
   }
  ],

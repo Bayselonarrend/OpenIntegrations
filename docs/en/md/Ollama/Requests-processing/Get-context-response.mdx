@@ -68,24 +68,22 @@ Method at API documentation: [Generate a chat completion](https://github.com/oll
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint ollama GetContextResponse \
-             --url "https://hut.openintegrations.dev/ollama" \
-             --model "tinyllama" \
-             --msgs "[{'role':'user','content':'What is 1C:Enterprise?'},{'role':'assistant','content':'1C:Enterprise is a comprehensive enterprise resource planning (ERP) system developed by the Russian company 1-Central. It has various modules for accounting, inventory management, manufacturing, logistics, and marketing. The system includes features like customer relationship management (CRM), e-commerce, supply chain management (SCM), production planning, and order and delivery management. It is widely used in industries such as manufacturing, retail, wholesale, and service sectors. 1C:Enterprise\u0027s software is sold and supported by the company, and is available for purchase on its website.'},{'role':'user','content':'When the first version was released?'}]" \
+             --url ""https://hut.openintegrations.dev/ollama"" \
+             --model ""tinyllama"" \
+             --msgs ""[{'role':'user','content':'Hello!'}]"" \
+             --options ""/tmp/jslyarye.ngt.json"" \
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint ollama GetContextResponse ^
-             --url "https://hut.openintegrations.dev/ollama" ^
-             --model "tinyllama" ^
-             --msgs "[{'role':'user','content':'What is 1C:Enterprise?'},{'role':'assistant','content':'1C:Enterprise is a comprehensive enterprise resource planning (ERP) system developed by the Russian company 1-Central. It has various modules for accounting, inventory management, manufacturing, logistics, and marketing. The system includes features like customer relationship management (CRM), e-commerce, supply chain management (SCM), production planning, and order and delivery management. It is widely used in industries such as manufacturing, retail, wholesale, and service sectors. 1C:Enterprise\u0027s software is sold and supported by the company, and is available for purchase on its website.'},{'role':'user','content':'When the first version was released?'}]" ^
+             --url ""https://hut.openintegrations.dev/ollama"" ^
+             --model ""tinyllama"" ^
+             --msgs ""[{'role':'user','content':'Hello!'}]"" ^
+             --options ""/tmp/jslyarye.ngt.json"" ^
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
@@ -95,18 +93,18 @@ Method at API documentation: [Generate a chat completion](https://github.com/oll
 ```json title="Result"
 {
  "model": "tinyllama",
- "created_at": "2025-09-15T07:09:20.438652926Z",
+ "created_at": "2025-09-16T00:16:33.602488485Z",
  "message": {
   "role": "assistant",
-  "content": "I do not have access to internal company information related to product releases. However, in general, a first version of a new software product is called beta or alpha until it is officially released by its manufacturer or vendor. This process usually involves testing and refining the features and functionality before they are made available for public use. Beta versions may include preview builds of the product with limited functionality or pre-release software, while alpha versions may have more advanced features that are still in development. The official release of a new version is typically announced by the company on their website, newsletter, or social media channels."
+  "content": "Yes, the first version of 1C:Enterprise was released in 2005. However, the platform has undergone several major versions since then, each bringing new features and improvements to the software. The latest version available as of writing is 14, which was released in April 2021. The upgrade process involves downloading and installing updates that enhance functionality, fix bugs, and improve performance, as well as adding new features and capabilities based on customer feedback and market trends."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 26081060413,
- "load_duration": 39885386,
- "prompt_eval_count": 198,
- "prompt_eval_duration": 4355715040,
- "eval_count": 124,
- "eval_duration": 21679482545
+ "total_duration": 14043467332,
+ "load_duration": 16572316,
+ "prompt_eval_count": 233,
+ "prompt_eval_duration": 5708390784,
+ "eval_count": 106,
+ "eval_duration": 8311980284
 }
 ```

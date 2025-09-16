@@ -72,22 +72,18 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint bitrix24 CreateChat \
-             --url "b24-ar17wx.bitrix24.by" \
-             --fields "{'TYPE':'CHAT','TITLE':'Private chat','USERS':[10,1]}" \
+             --url ""b24-ar17wx.bitrix24.by"" \
+             --fields ""/tmp/3tcehvfu.fxk.json"" \
              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint bitrix24 CreateChat ^
-             --url "b24-ar17wx.bitrix24.by" ^
-             --fields "{'TYPE':'CHAT','TITLE':'Private chat','USERS':[10,1]}" ^
+             --url ""b24-ar17wx.bitrix24.by"" ^
+             --fields ""/tmp/3tcehvfu.fxk.json"" ^
              --token "***"
         ```
     </TabItem>
@@ -96,16 +92,16 @@ Method at API documentation: [im.chat.add](https://dev.1c-bitrix.ru/learning/cou
 
 ```json title="Result"
 {
- "result": 3074,
+ "result": 3102,
  "time": {
-  "start": 1757918851.84579,
-  "finish": 1757918852.01513,
-  "duration": 0.169336080551147,
-  "processing": 0.14218807220459,
-  "date_start": "2025-09-15T09:47:31+03:00",
-  "date_finish": "2025-09-15T09:47:32+03:00",
-  "operating_reset_at": 1757919451,
-  "operating": 0.142159938812256
+  "start": 1757976743.02991,
+  "finish": 1757976743.15509,
+  "duration": 0.125181913375854,
+  "processing": 0.092663049697876,
+  "date_start": "2025-09-15T22:52:23+00:00",
+  "date_finish": "2025-09-15T22:52:23+00:00",
+  "operating_reset_at": 1757977343,
+  "operating": 0
  }
 }
 ```
