@@ -1,4 +1,4 @@
 oint bitrix24 CreateDeal ^
  --url ""b24-ar17wx.bitrix24.by"" ^
- --fields ""C:\Users\bayse\AppData\Local\Temp\5c1dptno.jlf.json"" ^
+ --fields ""/tmp/rct13jig.lgj.json"" ^
  --token "***"

@@ -1,3 +1,3 @@
 oint vk AddProduct \
- --product ""C:\Users\bayse\AppData\Local\Temp\01025yo5.r0h.json"" \
- --auth ""C:\Users\bayse\AppData\Local\Temp\plxbe0tr.cpq.json""
+ --product ""/tmp/tixwf0nw.qgv.json"" \
+ --auth ""/tmp/ec055nt5.ay2.json""

@@ -1,4 +1,4 @@
 oint s3 PutBucketTagging \
- --name "opi-gpbucket3" \
+ --name "opi-dirbucket3" \
  --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
  --tagset "{'MyTag1':'SomeValue','MyTag2':'AnotherOne'}"

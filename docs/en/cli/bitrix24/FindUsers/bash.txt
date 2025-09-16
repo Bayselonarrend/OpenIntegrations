@@ -1,4 +1,4 @@
 oint bitrix24 FindUsers \
  --url ""b24-ar17wx.bitrix24.by"" \
- --filter ""C:\Users\bayse\AppData\Local\Temp\fvvqmllf.vvy.json"" \
+ --filter ""/tmp/r2uvwcmi.m3l.json"" \
  --token "***"

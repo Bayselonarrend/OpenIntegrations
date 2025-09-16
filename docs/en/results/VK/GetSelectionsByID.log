@@ -3,17 +3,17 @@
   "count": 1,
   "items": [
    {
-    "id": 143,
+    "id": 147,
     "owner_id": -218861756,
     "title": "EditedCollection",
     "count": 0,
-    "updated_time": 1757945574,
+    "updated_time": 1757972108,
     "is_main": false,
     "is_hidden": false,
     "photo": {
      "album_id": -53,
-     "date": 1757945574,
-     "id": 457259100,
+     "date": 1757972108,
+     "id": 457259176,
      "owner_id": -218861756,
      "sizes": [
       {
@@ -85,7 +85,7 @@
      ],
      "text": "",
      "user_id": 100,
-     "web_view_token": "14716d57fb616a92d9",
+     "web_view_token": "d85a560a7a116afcf0",
      "has_tags": false,
      "orig_photo": {
       "height": 1920,

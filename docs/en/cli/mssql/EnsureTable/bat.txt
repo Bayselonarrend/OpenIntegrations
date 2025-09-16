@@ -1,5 +1,5 @@
 oint mssql EnsureTable ^
  --table ""test_new"" ^
- --cols ""C:\Users\bayse\AppData\Local\Temp\p4cwydtq.4zq.json"" ^
+ --cols ""/tmp/jvovce3b.brs.json"" ^
  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
- --tls ""C:\Users\bayse\AppData\Local\Temp\ss4uy2gv.l5t.json""
+ --tls ""/tmp/e4pnnhzr.vif.json""

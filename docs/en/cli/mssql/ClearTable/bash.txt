@@ -1,4 +1,4 @@
 oint mssql ClearTable \
  --table ""testtable"" \
  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
- --tls ""C:\Users\bayse\AppData\Local\Temp\b13v53yp.5dh.json""
+ --tls ""/tmp/rtc0dda4.2cp.json""

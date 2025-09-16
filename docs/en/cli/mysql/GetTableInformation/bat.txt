@@ -1,4 +1,4 @@
 oint mysql GetTableInformation ^
  --table ""test_new"" ^
  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
- --tls ""C:\Users\bayse\AppData\Local\Temp\o3g1lvtn.anm.json""
+ --tls ""/tmp/4npzw32h.ms0.json""

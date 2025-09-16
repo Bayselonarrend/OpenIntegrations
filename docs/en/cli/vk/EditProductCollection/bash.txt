@@ -1,4 +1,4 @@
 oint vk EditProductCollection \
  --title ""EditedCollection"" \
- --sel "142" \
- --auth ""C:\Users\bayse\AppData\Local\Temp\flnxebfw.3su.json""
+ --sel "147" \
+ --auth ""/tmp/ayz4bnjr.4tx.json""

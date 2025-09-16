@@ -1,3 +1,3 @@
 oint vk DeleteProductProperty \
- --prop ""4315"" \
- --auth ""C:\Users\bayse\AppData\Local\Temp\rv0ng1xo.qix.json""
+ --prop ""4322"" \
+ --auth ""/tmp/zqk0ga2e.jw0.json""

@@ -1,4 +1,4 @@
 oint vk RemoveProductFromSelection \
- --item "11834911" \
- --sel "142" \
- --auth ""C:\Users\bayse\AppData\Local\Temp\jmfsaqdd.x0n.json""
+ --item "11838523" \
+ --sel "147" \
+ --auth ""/tmp/riut31oq.esu.json""

@@ -1,4 +1,4 @@
 oint twitter CreateImageTweet ^
- --text "TestTweet890732d2-9caa-4d2a-a051-5887a9ded86a" ^
- --pictures "C:\Users\bayse\AppData\Local\Temp\4330rshq.zo1" ^
+ --text "TestTweetbad2e79e-6047-4244-a113-46a8fcb15d01" ^
+ --pictures "/tmp/lk400mpe.ayn" ^
  --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

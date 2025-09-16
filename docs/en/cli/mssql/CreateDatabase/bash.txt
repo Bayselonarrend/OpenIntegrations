@@ -1,4 +1,4 @@
 oint mssql CreateDatabase \
  --base ""testbase2"" \
  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
- --tls ""C:\Users\bayse\AppData\Local\Temp\jodtmh4n.nen.json""
+ --tls ""/tmp/3b3xn1uu.4zs.json""

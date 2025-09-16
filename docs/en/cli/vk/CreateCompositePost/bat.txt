@@ -1,6 +1,6 @@
 oint vk CreateCompositePost ^
  --text ""Post from autotest"" ^
- --objects ""['photo657846756_457248542','video-218861756_456240769']"" ^
+ --objects ""['photo657846756_457248577','video-218861756_456240779']"" ^
  --ad "false" ^
  --url ""https://github.com/Bayselonarrend/OpenIntegrations"" ^
- --auth ""C:\Users\bayse\AppData\Local\Temp\c1ww14yr.fo1.json""
+ --auth ""/tmp/blub501n.xin.json""

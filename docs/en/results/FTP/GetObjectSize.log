@@ -1,4 +1,7 @@
 ﻿{
  "bytes": 335944730,
- "result": true
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

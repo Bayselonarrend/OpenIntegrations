@@ -11,7 +11,7 @@
   "Content-Type": "text/plain; charset=Windows-1251",
   "Host": "httpbin.org",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Amzn-Trace-Id": "Root=1-68c830c7-67e4ed025c1f6d2134e8fb84"
+  "X-Amzn-Trace-Id": "Root=1-68c8ad95-3aed0d6946a5ddb976d189b7"
  },
  "json": null,
  "origin": "***",

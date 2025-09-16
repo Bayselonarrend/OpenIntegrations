@@ -1,4 +1,4 @@
 oint vk CreateDiscussion \
  --title ""Discussing: Which color is better?"" \
  --text ""Red, yellow, blue, or some other?"" \
- --auth ""C:\Users\bayse\AppData\Local\Temp\pfjzr3hz.ts0.json""
+ --auth ""/tmp/0cvjo51c.2xp.json""

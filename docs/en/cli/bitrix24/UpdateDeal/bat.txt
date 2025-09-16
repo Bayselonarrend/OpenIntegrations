@@ -1,5 +1,5 @@
 oint bitrix24 UpdateDeal ^
  --url ""b24-ar17wx.bitrix24.by"" ^
- --deal "4862" ^
- --fields ""C:\Users\bayse\AppData\Local\Temp\nlchmyne.zdv.json"" ^
+ --deal "4902" ^
+ --fields ""/tmp/shrqwaf4.yth.json"" ^
  --token "***"

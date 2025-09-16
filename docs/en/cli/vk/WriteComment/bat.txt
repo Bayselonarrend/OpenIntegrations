@@ -1,5 +1,5 @@
 oint vk WriteComment ^
- --post "9642" ^
+ --post "9692" ^
  --wall ""-218861756"" ^
  --text ""NewComment"" ^
- --auth ""C:\Users\bayse\AppData\Local\Temp\g0ypa014.yva.json""
+ --auth ""/tmp/ccjh4cfz.jal.json""

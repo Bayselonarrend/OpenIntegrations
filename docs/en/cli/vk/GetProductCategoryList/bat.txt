@@ -1,2 +1,2 @@
 oint vk GetProductCategoryList ^
- --auth ""C:\Users\bayse\AppData\Local\Temp\51u5ri0b.zcj.json""
+ --auth ""/tmp/0ke3ko5s.0ce.json""

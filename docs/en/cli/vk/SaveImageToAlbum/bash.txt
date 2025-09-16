@@ -1,5 +1,5 @@
 oint vk SaveImageToAlbum \
- --album "310061588" \
+ --album "310069318" \
  --picture ""https://hut.openintegrations.dev/test_data/picture.jpg"" \
  --description ""AutoTestImage"" \
- --auth ""C:\Users\bayse\AppData\Local\Temp\giyst2cn.dkv.json""
+ --auth ""/tmp/04xys1yk.tz3.json""

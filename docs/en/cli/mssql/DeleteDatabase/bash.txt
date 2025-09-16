@@ -1,4 +1,4 @@
 oint mssql DeleteDatabase \
  --base ""testbase2"" \
  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
- --tls ""C:\Users\bayse\AppData\Local\Temp\obfzhsqn.4rl.json""
+ --tls ""/tmp/wxqeehab.mg1.json""

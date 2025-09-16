@@ -1,5 +1,5 @@
 oint gcalendar EditEvent \
  --token "***" \
- --calendar "c4ab2eb05c9918acfe68bebdc33a9914a98d7dfe514dcc7d137a8b45911d4760@group.calendar.google.com" \
+ --calendar "73c36eb1ab0dd34c3c2f298af8fdac687154aa19a316b297b75bb9d76c68ee39@group.calendar.google.com" \
  --props "{'Description':'New event description'}" \
- --event "agskj33000dikahtgdo5tnp0jo"
+ --event "mevv7hielimqt2v59r2nt6fh6k"

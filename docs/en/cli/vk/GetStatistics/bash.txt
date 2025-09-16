@@ -1,4 +1,4 @@
 oint vk GetStatistics \
  --datefrom ""2025-09-15T00:00:00"" \
  --dateto ""2025-09-15T23:59:59"" \
- --auth ""C:\Users\bayse\AppData\Local\Temp\lb1xlhnr.gzn.json""
+ --auth ""/tmp/wnqhhjg0.vdr.json""

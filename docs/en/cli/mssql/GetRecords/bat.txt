@@ -1,4 +1,4 @@
 oint mssql GetRecords ^
  --table ""testtable"" ^
  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
- --tls ""C:\Users\bayse\AppData\Local\Temp\1ainfwg3.syh.json""
+ --tls ""/tmp/jvporhvz.rsb.json""

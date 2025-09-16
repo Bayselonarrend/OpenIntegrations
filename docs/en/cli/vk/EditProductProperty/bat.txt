@@ -1,4 +1,4 @@
 oint vk EditProductProperty ^
  --title ""Color (change.)"" ^
- --prop ""4315"" ^
- --auth ""C:\Users\bayse\AppData\Local\Temp\4euzmlix.1kw.json""
+ --prop ""4322"" ^
+ --auth ""/tmp/hqikkfaf.fm4.json""

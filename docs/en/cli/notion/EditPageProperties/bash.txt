@@ -1,6 +1,6 @@
 oint notion EditPageProperties \
  --token "***" \
- --page "26f82aa7-fc4e-819f-89bc-e357d7b5308f" \
+ --page "26f82aa7-fc4e-81a3-8709-fb1cf3faacb2" \
  --data "{'Active':false,'Email':'vector@mail.ru'}" \
  --icon "https://hut.openintegrations.dev/test_data/picture.jpg" \
  --cover "https://hut.openintegrations.dev/test_data/picture2.jpg" \
