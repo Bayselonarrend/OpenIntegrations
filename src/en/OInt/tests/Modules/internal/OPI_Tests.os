@@ -2299,11 +2299,7 @@ Procedure SQLL_CommonMethods() Export
     SQLite_IsConnector(TestParameters);
     SQLite_ConnectExtension(TestParameters);
 
-    Try
-        DeleteFiles(Base);
-    Except
-        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Database file deletion error", "SQLite");
-    EndTry;
+    OPI_Tools.RemoveFileWithTry(Base, "Database file deletion error");
 
 EndProcedure
 
@@ -2347,11 +2343,7 @@ Procedure SQLL_ORM() Export
     SQLite_DeleteTable(TestParameters);
     SQLite_GetRecordsFilterStrucutre(TestParameters);
 
-    Try
-        DeleteFiles(Base);
-    Except
-        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Database file deletion error", "SQLite");
-    EndTry;
+    OPI_Tools.RemoveFileWithTry(Base, "Database file deletion error");
 
 EndProcedure
 
@@ -3162,7 +3154,7 @@ Procedure Telegram_SendImage(FunctionParameters)
 
     Process(Result, "Telegram", "SendImage", "Keyboard collection", FunctionParameters, Text);
 
-    DeleteFiles(ImagePath);
+    OPI_Tools.RemoveFileWithTry(ImagePath, "Failed to delete the temporary file after the test!");
 
     OPI_Tools.Pause(5);
 
@@ -3193,7 +3185,7 @@ Procedure Telegram_SendVideo(FunctionParameters)
 
     // END
 
-    DeleteFiles(VideoPath);
+    OPI_Tools.RemoveFileWithTry(VideoPath, "Failed to delete the temporary file after the test!");
     Process(Result, "Telegram", "SendVideo", "Binary", FunctionParameters, Text);
 
     OPI_Tools.Pause(5);
@@ -3225,7 +3217,7 @@ Procedure Telegram_SendAudio(FunctionParameters)
 
     // END
 
-    DeleteFiles(AudioPath);
+    OPI_Tools.RemoveFileWithTry(AudioPath, "Failed to delete the temporary file after the test!");
     Process(Result, "Telegram", "SendAudio", "Binary", FunctionParameters, Text);
 
     OPI_Tools.Pause(5);
@@ -3261,7 +3253,7 @@ Procedure Telegram_SendDocument(FunctionParameters)
 
     // END
 
-    DeleteFiles(DocumentPath);
+    OPI_Tools.RemoveFileWithTry(DocumentPath, "Failed to delete the temporary file after the test!");
     Process(Result, "Telegram", "SendDocument", "Binary", FunctionParameters, Text);
 
     OPI_Tools.Pause(5);
@@ -3293,7 +3285,7 @@ Procedure Telegram_SendGif(FunctionParameters)
 
     // END
 
-    DeleteFiles(GifPath);
+    OPI_Tools.RemoveFileWithTry(GifPath, "Failed to delete the temporary file after the test!");
     Process(Result, "Telegram", "SendGif", "Binary", FunctionParameters, Text);
 
     OPI_Tools.Pause(5);
@@ -3338,9 +3330,9 @@ Procedure Telegram_SendMediaGroup(FunctionParameters)
 
     Result = OPI_Telegram.SendMediaGroup(Token, ChannelID, Text, MediaGroup);
 
-    DeleteFiles(VideoPath);
-    DeleteFiles(ImagePath);
-    DeleteFiles(DocumentPath);
+    OPI_Tools.RemoveFileWithTry(VideoPath   , "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(ImagePath   , "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(DocumentPath, "Failed to delete the temporary file after the test!");
 
     Process(Result, "Telegram", "SendMediaGroup", "Documents");
 
@@ -3817,7 +3809,7 @@ Procedure VK_CreatePost(FunctionParameters)
 
     Process(Result, "VK", "CreatePost", "Path", FunctionParameters);
 
-    DeleteFiles(TFN);
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
 
 EndProcedure
 
@@ -3864,8 +3856,7 @@ Procedure VK_CreateCompositePost(FunctionParameters)
     // END
 
     Process(Result, "VK", "CreateCompositePost");
-    DeleteFiles(TFN);
-
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
 
 EndProcedure
 
@@ -3976,7 +3967,7 @@ Procedure VK_CreateStory(FunctionParameters)
 
     Process(Result, "VK", "CreateStory", "Path");
 
-    DeleteFiles(TFN);
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
 
 EndProcedure
 
@@ -4748,7 +4739,8 @@ Procedure YandexDisk_UploadFile(FunctionParameters)
 
     // END
 
-    DeleteFiles(TFN);
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
+
     Process(Result, "YandexDisk", "UploadFile");
 
     OPI_YandexDisk.DeleteObject(Token, Path2, False); // SKIP
@@ -7295,7 +7287,8 @@ Procedure Dropbox_UploadFile(FunctionParameters)
     // END
 
     Process(Result, "Dropbox", "UploadFile", , Path);
-    DeleteFiles(ImagePath);
+
+    OPI_Tools.RemoveFileWithTry(ImagePath, "Failed to delete the temporary file after the test!");
 
     If Not OPI_Tools.IsOneScript() And FunctionParameters.Property("Big") Then
 
@@ -11859,7 +11852,7 @@ Procedure VKTeams_SendFile(FunctionParameters)
 
     Process(Result, "VKTeams", "SendFile", , FunctionParameters);
 
-    DeleteFiles(FilePath);
+    OPI_Tools.RemoveFileWithTry(FilePath, "Failed to delete the temporary file after the test!");
 
 EndProcedure
 
@@ -11954,7 +11947,7 @@ Procedure VKTeams_SendVoice(FunctionParameters)
 
     Process(Result, "VKTeams", "SendVoice", , FunctionParameters);
 
-    DeleteFiles(FilePath);
+    OPI_Tools.RemoveFileWithTry(FilePath, "Failed to delete the temporary file after the test!");
 
 EndProcedure
 
@@ -12012,7 +12005,7 @@ Procedure VKTeams_ChangeChatPicture(FunctionParameters)
 
     Process(Result, "VKTeams", "ChangeChatPicture");
 
-    DeleteFiles(FilePath);
+    OPI_Tools.RemoveFileWithTry(FilePath, "Failed to delete the temporary file after the test!");
 
 EndProcedure
 
@@ -14397,13 +14390,9 @@ Procedure S3_PutBucketEncryption(FunctionParameters)
     Name = "opi-dirbucket3";
     Name = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    XmlConfig = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
-                      | <Rule>
-                      | <ApplyServerSideEncryptionByDefault>
-                      | <SSEAlgorithm>AES256</SSEAlgorithm>
-                      | </ApplyServerSideEncryptionByDefault>
-                      | </Rule>
-                      |</ServerSideEncryptionConfiguration>";
+    XmlConfig = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/""><Rule>"
+                      + "<ApplyServerSideEncryptionByDefault><SSEAlgorithm>AES256</SSEAlgorithm>"
+                      + "</ApplyServerSideEncryptionByDefault></Rule></ServerSideEncryptionConfiguration>";
 
     Result = OPI_S3.PutBucketEncryption(Name, BasicData, XmlConfig, Directory);
 
@@ -14850,8 +14839,8 @@ Procedure S3_GetObject(FunctionParameters)
 
     Process(Result, "S3", "GetObject", "Big BD", 34432400);
 
-    DeleteFiles(BigTempFile);
-    DeleteFiles(TempFile);
+    OPI_Tools.RemoveFileWithTry(BigTempFile, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(TempFile   , "Failed to delete the temporary file after the test!");
 
 EndProcedure
 
@@ -15406,11 +15395,7 @@ Procedure SQLite_CreateConnection(FunctionParameters)
 
     Process(Closing, "SQLite", "CreateConnection", "Closing");
 
-    Try
-        DeleteFiles(TFN);
-    Except
-        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Database file deletion error", "SQLite");
-    EndTry;
+    OPI_Tools.RemoveFileWithTry(TFN, "Database file deletion error");
 
 EndProcedure
 
@@ -15428,11 +15413,7 @@ Procedure SQLite_CloseConnection(FunctionParameters)
 
     Process(Closing, "SQLite", "CloseConnection");
 
-    Try
-        DeleteFiles(TFN);
-    Except
-        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Database file deletion error", "SQLite");
-    EndTry;
+    OPI_Tools.RemoveFileWithTry(TFN, "Database file deletion error");
 
 EndProcedure
 
@@ -15532,11 +15513,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     Process(Result, "SQLite", "ExecuteSQLQuery", "Closing");
 
-    Try
-        DeleteFiles(TFN);
-    Except
-        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Database file deletion error", "SQLite");
-    EndTry;
+    OPI_Tools.RemoveFileWithTry(TFN, "Database file deletion error");
 
 EndProcedure
 
@@ -15641,11 +15618,7 @@ Procedure SQLite_AddRecords(FunctionParameters)
     Result = OPI_SQLite.AddRecords("test1", RowMap, , Base);
     Process(Result, "SQLite", "AddRecords", "An obscure column");
 
-    Try
-        DeleteFiles(PictureFile);
-    Except
-        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Error deleting a picture file", "SQLite");
-    EndTry;
+    OPI_Tools.RemoveFileWithTry(PictureFile, "Failed to delete the temporary file after the test!");
 
 EndProcedure
 
@@ -15874,11 +15847,7 @@ Procedure SQLite_ConnectExtension(FunctionParameters)
 
     Result = OPI_SQLite.CloseConnection(Connection);
 
-    Try
-        DeleteFiles(TFN);
-    Except
-        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Error deleting extension file", "SQLite");
-    EndTry;
+    OPI_Tools.RemoveFileWithTry(TFN, "Error deleting extension file");
 
 EndProcedure
 
@@ -19494,11 +19463,7 @@ Procedure HTTPClient_SetResponseFile(FunctionParameters)
 
     Process(CheckResult, "HTTPClient", "SetResponseFile", "Body", TFN);
 
-    Try
-        DeleteFiles(TFN);
-    Except
-        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "File deletion error", "HTTPClient");
-    EndTry;
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
 
 EndProcedure
 
@@ -20191,11 +20156,7 @@ Procedure HTTPClient_ReturnResponseFilename(FunctionParameters)
 
     Process(Result, "HTTPClient", "ReturnResponseFilename", , TFN);
 
-    Try
-        DeleteFiles(TFN);
-    Except
-        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "File deletion error", "HTTPClient");
-    EndTry;
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
 
 EndProcedure
 
@@ -20579,11 +20540,7 @@ Procedure OpenAI_CreateTranscription(FunctionParameters)
 
     // END
 
-    Try
-        DeleteFiles(Audio);
-    Except
-        Message("Error deleting file after test");
-    EndTry;
+    OPI_Tools.RemoveFileWithTry(Audio, "Failed to delete the temporary file after the test!");
 
     Process(Result, "OpenAI", "CreateTranscription");
 
@@ -20950,8 +20907,7 @@ Procedure MSSQL_AddRecords(FunctionParameters)
     Image = FunctionParameters["Picture"];
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
-    XML = "<?xml version=""1.0""?>
-        |<root>
+    XML = "<?xml version=""1.0""?><root>
         | <element>
         | <name>Example</name>
         | <value>123</value>
@@ -21925,11 +21881,7 @@ Procedure FTP_UploadFile(FunctionParameters)
 
     Process(Result, "FTP", "UploadFile", "Big, " + Postfix, BigData.Size());
 
-    Try
-        DeleteFiles(TFN);
-    Except
-        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Error deleting a picture file", "FTP");
-    EndTry;
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
 
 EndProcedure
 
@@ -22310,11 +22262,7 @@ Procedure FTP_SaveFile(FunctionParameters)
 
     EndDo;
 
-    Try
-        DeleteFiles(FileName);
-    Except
-        OPI_TestDataRetrieval.LogServiceInformation(ErrorDescription(), "Error deleting a picture file", "FTP");
-    EndTry;
+    OPI_Tools.RemoveFileWithTry(FileName, "Failed to delete the temporary file after the test!");
 
 EndProcedure
 
