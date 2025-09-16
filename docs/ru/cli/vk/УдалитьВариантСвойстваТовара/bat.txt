@@ -1,3 +1,3 @@
 oint vk УдалитьВариантСвойстваТовара ^
-  --option "7994" ^
-  --auth ""/tmp/3unsocup.2od.json""
+  --option "8006" ^
+  --auth ""C:\Users\bayse\AppData\Local\Temp\n2i2ay0y.3zu.json""

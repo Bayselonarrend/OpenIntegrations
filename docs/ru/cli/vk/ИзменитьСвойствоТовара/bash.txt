@@ -1,4 +1,4 @@
 oint vk ИзменитьСвойствоТовара \
   --title ""Цвет (изм.)"" \
-  --prop ""4324"" \
-  --auth ""/tmp/gbcbyxdz.gpj.json""
+  --prop ""4360"" \
+  --auth ""C:\Users\bayse\AppData\Local\Temp\rpb2owap.rt2.json""

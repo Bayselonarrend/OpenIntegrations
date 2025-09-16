@@ -1,3 +1,3 @@
 oint vk УдалитьПост ^
-  --post ""9708"" ^
-  --auth ""/tmp/hoetdu2u.y32.json""
+  --post ""9728"" ^
+  --auth ""C:\Users\bayse\AppData\Local\Temp\vqielhaj.oca.json""

@@ -1,4 +1,4 @@
 oint vk УдалитьТоварИзПодборки \
-  --item "11839322" \
-  --sel "141" \
-  --auth ""/tmp/owcf535h.tdl.json""
+  --item "11845525" \
+  --sel "143" \
+  --auth ""C:\Users\bayse\AppData\Local\Temp\yrelhqhy.rdh.json""

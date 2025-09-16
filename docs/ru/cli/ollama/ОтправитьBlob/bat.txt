@@ -1,4 +1,6 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint ollama ОтправитьBlob ^
   --url ""https://hut.openintegrations.dev/ollama"" ^
-  --data ""/tmp/ni1ficox.ke5"" ^
+  --data ""C:\Users\bayse\AppData\Local\Temp\n3ez1bfb.dcb"" ^
   --headers "{'Authorization':'***'}"

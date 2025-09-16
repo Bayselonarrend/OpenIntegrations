@@ -1,4 +1,4 @@
 oint bitrix24 СоздатьСделку ^
   --url ""b24-ar17wx.bitrix24.by"" ^
-  --fields ""/tmp/2ghmlsll.ygy.json"" ^
+  --fields ""C:\Users\bayse\AppData\Local\Temp\5j4m0tl1.02c.json"" ^
   --token "***"

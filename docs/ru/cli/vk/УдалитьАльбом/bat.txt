@@ -1,3 +1,3 @@
 oint vk УдалитьАльбом ^
-  --album "310070973" ^
-  --auth ""/tmp/hq4nsg0e.xvp.json""
+  --album "310084032" ^
+  --auth ""C:\Users\bayse\AppData\Local\Temp\fqo3cbd5.k13.json""

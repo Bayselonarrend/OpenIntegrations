@@ -1,5 +1,5 @@
 oint mssql ГарантироватьТаблицу ^
   --table ""test_new"" ^
-  --cols ""/tmp/5wcgxv2b.zud.json"" ^
+  --cols ""C:\Users\bayse\AppData\Local\Temp\qny25tca.ltv.json"" ^
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-  --tls ""/tmp/4qjxwdka.xyh.json""
+  --tls ""C:\Users\bayse\AppData\Local\Temp\oxv44adm.skc.json""

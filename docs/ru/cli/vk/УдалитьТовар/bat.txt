@@ -1,3 +1,3 @@
 oint vk УдалитьТовар ^
-  --item "11839322" ^
-  --auth ""/tmp/qrunuwjj.gx1.json""
+  --item "11845525" ^
+  --auth ""C:\Users\bayse\AppData\Local\Temp\nmbgo3xh.eep.json""
