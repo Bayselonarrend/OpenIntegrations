@@ -1,3 +1,5 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint openai ПолучитьКартинки ^
   --url "https://bothub.chat/api/v2/openai/" ^
   --token "***" ^

@@ -1,3 +1,3 @@
 oint vk УдалитьСвойствоТовара \
-  --prop ""4324"" \
-  --auth ""/tmp/pfscpgri.spw.json""
+  --prop ""4360"" \
+  --auth ""C:\Users\bayse\AppData\Local\Temp\uzfrmorn.u4m.json""

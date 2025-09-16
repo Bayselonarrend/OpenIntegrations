@@ -1,4 +1,6 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint sqlite ВыполнитьЗапросSQL ^
   --sql "SELECT uuid4();" ^
-  --db "/tmp/3heqzoac.uzt.sqlite" ^
-  --exts "{'https://hut.openintegrations.dev/test_data/uuid.so':'sqlite3_uuid_init'}"
+  --db "C:\Users\bayse\AppData\Local\Temp\j2oe200d.1vw.sqlite" ^
+  --exts "{'https://hut.openintegrations.dev/test_data/uuid.dll':'sqlite3_uuid_init'}"

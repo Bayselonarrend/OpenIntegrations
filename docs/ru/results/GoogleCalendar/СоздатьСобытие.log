@@ -1,11 +1,11 @@
 ﻿{
  "kind": "calendar#event",
- "etag": "\"3515995304509406\"",
- "id": "q20risvqe4ehfmfp7dsh1fdoho",
+ "etag": "\"3516106997681438\"",
+ "id": "o8hureoc80h2icu31ukhcfa6g4",
  "status": "confirmed",
- "htmlLink": "https://www.google.com/calendar/event?eid=cTIwcmlzdnFlNGVoZm1mcDdkc2gxZmRvaG8gZWFmNGE1OTZkMjRmZjM3ZGJjMWM3ZmNkNmZlYzg2ZjUxMmY0YTc3NjA2Y2MyNWY4NDM3NjA2OTAwMzNhNjI1NUBn",
- "created": "2025-09-16T04:40:52Z",
- "updated": "2025-09-16T04:40:52.254Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=bzhodXJlb2M4MGgyaWN1MzF1a2hjZmE2ZzQgYWE4Mjc0ZGNlYjg5ZDJjZjY2M2Q3YjBiOGY4ODI3Yjk1Nzg1YzU1ZTY1OTZmODM1OTkyYTA1ODBjNDEzZjYyNEBn",
+ "created": "2025-09-16T20:11:38Z",
+ "updated": "2025-09-16T20:11:38.84Z",
  "summary": "Новое событие",
  "description": "Описание тестового события",
  "location": "В офисе",
@@ -13,19 +13,19 @@
   "email": "bayselonarrend@gmail.com"
  },
  "organizer": {
-  "email": "eaf4a596d24ff37dbc1c7fcd6fec86f512f4a77606cc25f843760690033a6255@group.calendar.google.com",
+  "email": "aa8274dceb89d2cf663d7b0b8f8827b95785c55e6596f835992a0580c413f624@group.calendar.google.com",
   "displayName": "Тестовый календарь",
   "self": true
  },
  "start": {
-  "dateTime": "2025-09-16T04:40:50+00:00",
+  "dateTime": "2025-09-17T02:11:36+03:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2025-09-16T05:40:50+00:00",
+  "dateTime": "2025-09-17T03:11:36+03:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "q20risvqe4ehfmfp7dsh1fdoho@google.com",
+ "iCalUID": "o8hureoc80h2icu31ukhcfa6g4@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true

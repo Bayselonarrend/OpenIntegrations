@@ -3,4 +3,4 @@ oint mysql ДобавитьКолонкуТаблицы ^
   --name ""new_field"" ^
   --type ""MEDIUMTEXT"" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls ""/tmp/2lknmm4g.co1.json""
+  --tls ""C:\Users\bayse\AppData\Local\Temp\1004bpcg.z4m.json""

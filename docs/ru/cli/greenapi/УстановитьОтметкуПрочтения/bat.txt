@@ -1,4 +1,6 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint greenapi УстановитьОтметкуПрочтения ^
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
   --chat "120363410406221140@g.us" ^
-  --message "BAE5FC8E6B352605"
+  --message "BAE5B127A99835C8"

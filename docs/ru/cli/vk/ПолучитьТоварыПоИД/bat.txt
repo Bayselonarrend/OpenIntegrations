@@ -1,3 +1,3 @@
 oint vk ПолучитьТоварыПоИД ^
-  --items ""[11839323,11839324]"" ^
-  --auth ""/tmp/d0ha03x0.myn.json""
+  --items ""[11845531,11845532]"" ^
+  --auth ""C:\Users\bayse\AppData\Local\Temp\q5qmyiuo.myq.json""

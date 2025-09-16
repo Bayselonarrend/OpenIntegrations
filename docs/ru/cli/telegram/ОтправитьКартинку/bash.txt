@@ -1,3 +1,5 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint telegram ОтправитьКартинку \
   --token "***" \
   --chat "@testsichee" \

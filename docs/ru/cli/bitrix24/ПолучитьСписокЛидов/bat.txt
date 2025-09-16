@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьСписокЛидов ^
   --url ""b24-ar17wx.bitrix24.by"" ^
-  --filter ""/tmp/znfaoiyl.xc5.json"" ^
+  --filter ""C:\Users\bayse\AppData\Local\Temp\pzkcvxhg.zbt.json"" ^
   --token "***"

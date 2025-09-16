@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокРекламныхКатегорий \
-  --auth ""/tmp/0lr3wxyz.bfn.json""
+  --auth ""C:\Users\bayse\AppData\Local\Temp\ebwghs0t.4dd.json""

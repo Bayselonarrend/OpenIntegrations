@@ -1,6 +1,6 @@
 oint bitrix24 УдалитьКалендарь ^
   --url ""b24-ar17wx.bitrix24.by"" ^
-  --calendar "1372" ^
+  --calendar "1380" ^
   --owner "1" ^
   --type ""user"" ^
   --token "***"

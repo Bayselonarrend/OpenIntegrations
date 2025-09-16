@@ -2,5 +2,5 @@ oint bitrix24 ПолучитьСобытияКалендарей \
   --url ""b24-ar17wx.bitrix24.by"" \
   --owner "1" \
   --type ""user"" \
-  --filter ""/tmp/isqpwzge.e5i.json"" \
+  --filter ""C:\Users\bayse\AppData\Local\Temp\way530ji.jms.json"" \
   --token "***"

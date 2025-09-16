@@ -1,5 +1,5 @@
 oint mysql ГарантироватьТаблицу \
   --table ""test_new"" \
-  --cols ""/tmp/u1rc2yq4.jw5.json"" \
+  --cols ""C:\Users\bayse\AppData\Local\Temp\jh3lytdb.mrd.json"" \
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-  --tls ""/tmp/0gh2fmch.was.json""
+  --tls ""C:\Users\bayse\AppData\Local\Temp\bw4kwebx.b0e.json""

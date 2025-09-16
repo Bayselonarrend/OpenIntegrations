@@ -1,6 +1,8 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint airtable СоздатьТаблицу \
   --token "***" \
-  --base "appmj04pElJrZ8Hau" \
+  --base "appAxsE76ggwPsw35" \
   --title "Тестовая таблица 2" \
   --fieldsdata "[{'name':'Номер','type':'number','options':{'precision':'0'}},{'name':'Строковое','type':'richText'},{'name':'Вложение','type':'multipleAttachments'},{'name':'Флажок','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Дата','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Телефон','type':'phoneNumber'},{'name':'Почта','type':'email'},{'name':'Ссылка','type':'url'}]" \
   --description "Новая таблица"

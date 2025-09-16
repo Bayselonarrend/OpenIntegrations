@@ -1,3 +1,3 @@
 oint vk УдалитьПодборку \
-  --sel "141" \
-  --auth ""/tmp/yducwfkm.iji.json""
+  --sel "143" \
+  --auth ""C:\Users\bayse\AppData\Local\Temp\0p241hmm.mmq.json""
