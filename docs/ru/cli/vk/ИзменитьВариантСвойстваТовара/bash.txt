@@ -1,5 +1,5 @@
 oint vk ИзменитьВариантСвойстваТовара \
   --value ""Новое имя варианта"" \
-  --prop ""4324"" \
-  --option "7994" \
-  --auth ""/tmp/qpu2c5pq.3jt.json""
+  --prop ""4360"" \
+  --option "8006" \
+  --auth ""C:\Users\bayse\AppData\Local\Temp\li0r21jn.dz4.json""

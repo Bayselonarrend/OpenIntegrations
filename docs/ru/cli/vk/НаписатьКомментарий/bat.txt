@@ -1,5 +1,5 @@
 oint vk НаписатьКомментарий ^
-  --post "9712" ^
+  --post "9732" ^
   --wall ""-218861756"" ^
   --text ""Новый комментарий"" ^
-  --auth ""/tmp/gdgxpqdn.1h4.json""
+  --auth ""C:\Users\bayse\AppData\Local\Temp\0bkosmgv.dup.json""

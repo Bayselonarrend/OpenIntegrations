@@ -1,6 +1,10 @@
 ﻿{
  "response": [
   {
+   "activity": {
+    "comments": 2,
+    "likes": 2
+   },
    "period_from": 1757980800,
    "period_to": 1758067199,
    "reach": {
