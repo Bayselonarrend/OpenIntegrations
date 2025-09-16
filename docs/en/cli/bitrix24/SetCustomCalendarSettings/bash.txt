@@ -1,4 +1,4 @@
 oint bitrix24 SetCustomCalendarSettings \
  --url ""b24-ar17wx.bitrix24.by"" \
- --settings ""C:\Users\bayse\AppData\Local\Temp\befghovf.bj2.json"" \
+ --settings ""/tmp/als5s5ek.hr5.json"" \
  --token "***"

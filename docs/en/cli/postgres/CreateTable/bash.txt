@@ -1,5 +1,5 @@
 oint postgres CreateTable \
  --table ""somename"" \
- --cols ""C:\Users\bayse\AppData\Local\Temp\ccsr0kbo.mtx.json"" \
+ --cols ""/tmp/2dto03k1.tzv.json"" \
  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
- --tls ""C:\Users\bayse\AppData\Local\Temp\3vnmttpu.3te.json""
+ --tls ""/tmp/ogop3dbf.slz.json""

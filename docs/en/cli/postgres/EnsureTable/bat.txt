@@ -1,5 +1,5 @@
 oint postgres EnsureTable ^
  --table ""test_new"" ^
- --cols ""C:\Users\bayse\AppData\Local\Temp\bgv2gbne.afq.json"" ^
+ --cols ""/tmp/xi5erf4o.rk4.json"" ^
  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
- --tls ""C:\Users\bayse\AppData\Local\Temp\e5eleemc.bbt.json""
+ --tls ""/tmp/povtpgc2.opp.json""

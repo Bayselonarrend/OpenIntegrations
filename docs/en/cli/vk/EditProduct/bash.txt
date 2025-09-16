@@ -1,4 +1,4 @@
 oint vk EditProduct \
- --item "11834911" \
- --product ""C:\Users\bayse\AppData\Local\Temp\3xwfsqd0.mya.json"" \
- --auth ""C:\Users\bayse\AppData\Local\Temp\y4w4fvl5.yhj.json""
+ --item "11838523" \
+ --product ""/tmp/gmcihcps.2f5.json"" \
+ --auth ""/tmp/2v2wqmrz.jxs.json""

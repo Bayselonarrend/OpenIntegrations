@@ -1,2 +1,2 @@
 oint vk GetAdvertisingCategoryList \
- --auth ""C:\Users\bayse\AppData\Local\Temp\w1hlm5eb.tl4.json""
+ --auth ""/tmp/1niwwi2z.fo4.json""

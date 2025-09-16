@@ -1,5 +1,5 @@
 oint gsheets SetCellValues \
  --token "***" \
- --spreadsheet "18DeXnrgiRPjdpx41qUhd3IP8zM8OJkaTkJSoAauUECc" \
+ --spreadsheet "1NYD5B4YQnXCfmGMzXGh7GzA9Uk1tifgDK4A8682lufM" \
  --data "{'A1':'ThisIsA1','A2':'ThisIsA2','B2':'ThisIsB2','B3':'ThisIsB3','A3':'ThisIsA3','A4':'ThisIsA4','B1':'ThisIsB1','B4':'ThisIsB4'}" \
  --sheetname "Sheet2"

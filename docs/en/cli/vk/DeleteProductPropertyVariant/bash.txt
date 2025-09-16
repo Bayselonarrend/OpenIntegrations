@@ -1,3 +1,3 @@
 oint vk DeleteProductPropertyVariant \
- --option "7972" \
- --auth ""C:\Users\bayse\AppData\Local\Temp\wjddtvzq.14f.json""
+ --option "7988" \
+ --auth ""/tmp/3chkpyur.gjr.json""

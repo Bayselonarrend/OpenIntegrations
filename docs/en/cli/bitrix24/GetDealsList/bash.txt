@@ -1,4 +1,4 @@
 oint bitrix24 GetDealsList \
  --url ""b24-ar17wx.bitrix24.by"" \
- --filter ""C:\Users\bayse\AppData\Local\Temp\xbgkhw1k.rjh.json"" \
+ --filter ""/tmp/ejvpyapn.3mv.json"" \
  --token "***"

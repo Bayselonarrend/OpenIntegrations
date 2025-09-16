@@ -4,5 +4,5 @@ oint bitrix24 AddCustomTaskField ^
  --fieldname ""TEXT_FIELD"" ^
  --externalid ""BITRIX_TEXT_FIELD"" ^
  --title ""Text field"" ^
- --label ""C:\Users\bayse\AppData\Local\Temp\pp1efnku.kcv.json"" ^
+ --label ""/tmp/i0ke10lr.cns.json"" ^
  --token "***"

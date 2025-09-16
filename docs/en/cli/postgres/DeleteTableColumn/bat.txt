@@ -2,4 +2,4 @@ oint postgres DeleteTableColumn ^
  --table ""testtable"" ^
  --name ""new_field"" ^
  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
- --tls ""C:\Users\bayse\AppData\Local\Temp\ixfpz4om.12l.json""
+ --tls ""/tmp/zbh3klk5.2gd.json""

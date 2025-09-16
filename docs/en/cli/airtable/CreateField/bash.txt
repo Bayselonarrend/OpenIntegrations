@@ -1,5 +1,5 @@
 oint airtable CreateField \
  --token "***" \
- --base "appE91sYJ84nuh8Yf" \
- --table "tblulRoUg9jTlesjI" \
- --fielddata "{'name':'19e9606d-6873-48dd-b806-6ab933912673','type':'number','options':{'precision':'0'}}"
+ --base "appUHJhiJ9eMFouSg" \
+ --table "tbl0Cgy9AVXbpuuqH" \
+ --fielddata "{'name':'b7bac892-9d6a-4a28-afc9-1bfaccbca053','type':'number','options':{'precision':'0'}}"

@@ -1,2 +1,2 @@
 oint vk GetSelectionList ^
- --auth ""C:\Users\bayse\AppData\Local\Temp\dl3fvs3f.l1r.json""
+ --auth ""/tmp/g4wcdfze.ts1.json""

@@ -1,4 +1,4 @@
 oint vk WriteInDiscussion ^
- --topic "54108192" ^
+ --topic "54109758" ^
  --text ""I like yellow more"" ^
- --auth ""C:\Users\bayse\AppData\Local\Temp\dv5dhgvz.55t.json""
+ --auth ""/tmp/yen3xoba.rv3.json""

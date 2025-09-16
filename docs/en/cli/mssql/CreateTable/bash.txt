@@ -1,5 +1,5 @@
 oint mssql CreateTable \
  --table ""somename"" \
- --cols ""C:\Users\bayse\AppData\Local\Temp\p0pehop3.xs1.json"" \
+ --cols ""/tmp/ot5nxwq2.f0a.json"" \
  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
- --tls ""C:\Users\bayse\AppData\Local\Temp\vh3nh4ij.lzn.json""
+ --tls ""/tmp/ti0xpkrs.5zb.json""

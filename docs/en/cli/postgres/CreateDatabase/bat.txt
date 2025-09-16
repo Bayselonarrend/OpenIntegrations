@@ -1,4 +1,4 @@
 oint postgres CreateDatabase ^
  --base ""testbase2"" ^
  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
- --tls ""C:\Users\bayse\AppData\Local\Temp\2p2coj2p.dsd.json""
+ --tls ""/tmp/iq25lycc.ipe.json""

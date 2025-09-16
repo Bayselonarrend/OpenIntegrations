@@ -1,4 +1,4 @@
 oint vk PauseAdvertising \
  --cabinet ""1607951446"" \
  --adv "0" \
- --auth ""C:\Users\bayse\AppData\Local\Temp\j3dxverx.mrz.json""
+ --auth ""/tmp/ti0qt0yt.rne.json""

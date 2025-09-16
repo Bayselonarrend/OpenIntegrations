@@ -2,4 +2,4 @@ oint postgres DeleteRecords \
  --table ""test_data"" \
  --filter ""[{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false,'union':'AND'}]"" \
  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
- --tls ""C:\Users\bayse\AppData\Local\Temp\ace3o0nd.sa3.json""
+ --tls ""/tmp/fix0ss4w.wrf.json""

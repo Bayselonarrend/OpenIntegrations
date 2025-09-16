@@ -28,24 +28,8 @@
    "id": "file-7",
    "object": "file",
    "bytes": 2114025,
-   "created_at": "2025-09-05T07:19:45.741949164Z",
-   "filename": "7abf2794-bdf1-4f11-872e-3c58c321a1bb.png",
-   "purpose": "user_data"
-  },
-  {
-   "id": "file-7",
-   "object": "file",
-   "bytes": 2114025,
    "created_at": "2025-09-07T17:41:29.472968922Z",
    "filename": "6b4e8148-5c29-46ea-af84-82b5e3bf1447.png",
-   "purpose": "user_data"
-  },
-  {
-   "id": "file-4",
-   "object": "file",
-   "bytes": 2114025,
-   "created_at": "2025-09-08T10:09:47.710834673Z",
-   "filename": "eae14e17-aab5-44fa-8416-f80e9cb1ca43.png",
    "purpose": "user_data"
   },
   {
@@ -89,14 +73,6 @@
    "purpose": "user_data"
   },
   {
-   "id": "file-1",
-   "object": "file",
-   "bytes": 2114025,
-   "created_at": "2025-09-14T19:54:28.649268297Z",
-   "filename": "06c7dd67-27ac-4fc0-b09d-c151f9bb1fce.png",
-   "purpose": "user_data"
-  },
-  {
    "id": "file-4",
    "object": "file",
    "bytes": 2114025,
@@ -110,14 +86,6 @@
    "bytes": 2114025,
    "created_at": "2025-09-15T09:01:29.495497457Z",
    "filename": "16c8e0c2-7b36-41c3-8167-67f09ed44876.png",
-   "purpose": "user_data"
-  },
-  {
-   "id": "file-10",
-   "object": "file",
-   "bytes": 2114025,
-   "created_at": "2025-09-15T13:23:38.881058835Z",
-   "filename": "a8eb99b7-5096-47e6-ad1c-794e0a88545b.png",
    "purpose": "user_data"
   },
   {
@@ -137,11 +105,43 @@
    "purpose": "user_data"
   },
   {
-   "id": "file-3",
+   "id": "file-1",
    "object": "file",
    "bytes": 2114025,
-   "created_at": "2025-09-15T15:36:13.534215695Z",
-   "filename": "7a621326-9c96-4fe9-97a1-b7f1d6b900e4.png",
+   "created_at": "2025-09-15T17:24:12.257103258Z",
+   "filename": "addcc9cb-7b6b-44be-89c0-f2f8a85b58b5.png",
+   "purpose": "user_data"
+  },
+  {
+   "id": "file-4",
+   "object": "file",
+   "bytes": 2114025,
+   "created_at": "2025-09-15T18:51:53.906135172Z",
+   "filename": "f5f08e2e-a903-4213-9970-467459837f87.png",
+   "purpose": "user_data"
+  },
+  {
+   "id": "file-7",
+   "object": "file",
+   "bytes": 2114025,
+   "created_at": "2025-09-15T21:13:41.960390784Z",
+   "filename": "74f1ecd2-56ba-4ffe-943e-46ef68320057.png",
+   "purpose": "user_data"
+  },
+  {
+   "id": "file-10",
+   "object": "file",
+   "bytes": 2114025,
+   "created_at": "2025-09-16T00:23:15.874713981Z",
+   "filename": "e48e746c-b206-402a-8344-59108131113e.png",
+   "purpose": "user_data"
+  },
+  {
+   "id": "file-12",
+   "object": "file",
+   "bytes": 2114025,
+   "created_at": "2025-09-16T00:27:13.526537069Z",
+   "filename": "4ab5d04d-4296-4572-a912-f2334a88a5c9.png",
    "purpose": "assistants"
   }
  ],

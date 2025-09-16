@@ -1,4 +1,4 @@
 oint vk CreateAlbum \
  --title ""AlbumFromAutoTest"" \
  --description ""NewAlbumFromAutoTest"" \
- --auth ""C:\Users\bayse\AppData\Local\Temp\dsnpgwjc.3c4.json""
+ --auth ""/tmp/rcw0jlhc.yo3.json""

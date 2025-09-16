@@ -2,5 +2,5 @@ oint bitrix24 GetCalendarEvents ^
  --url ""b24-ar17wx.bitrix24.by"" ^
  --owner "1" ^
  --type ""user"" ^
- --filter ""C:\Users\bayse\AppData\Local\Temp\gbarv3mq.pn0.json"" ^
+ --filter ""/tmp/i5nf2c01.230.json"" ^
  --token "***"

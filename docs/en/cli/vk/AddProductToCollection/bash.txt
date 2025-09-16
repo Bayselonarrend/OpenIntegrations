@@ -1,4 +1,4 @@
 oint vk AddProductToCollection \
- --items "11834911" \
- --sel "142" \
- --auth ""C:\Users\bayse\AppData\Local\Temp\rsyvpvlo.uc3.json""
+ --items "11838523" \
+ --sel "147" \
+ --auth ""/tmp/pyjqwk5f.cbe.json""

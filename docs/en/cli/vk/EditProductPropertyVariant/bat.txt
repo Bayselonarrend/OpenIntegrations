@@ -1,5 +1,5 @@
 oint vk EditProductPropertyVariant ^
  --value ""New variant name"" ^
- --prop ""4315"" ^
- --option "7972" ^
- --auth ""C:\Users\bayse\AppData\Local\Temp\lai35jzs.p2h.json""
+ --prop ""4322"" ^
+ --option "7988" ^
+ --auth ""/tmp/0t2jiwru.zdx.json""

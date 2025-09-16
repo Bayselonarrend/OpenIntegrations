@@ -1,4 +1,4 @@
 oint postgres DeleteTable ^
  --table ""test_data"" ^
  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
- --tls ""C:\Users\bayse\AppData\Local\Temp\m012pnbl.w0n.json""
+ --tls ""/tmp/t4045524.3ov.json""

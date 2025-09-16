@@ -1,5 +1,5 @@
 oint bitrix24 UpdateCalendar \
  --url ""b24-ar17wx.bitrix24.by"" \
- --calendar "1344" \
- --fields ""C:\Users\bayse\AppData\Local\Temp\icb5skrc.war.json"" \
+ --calendar "1364" \
+ --fields ""/tmp/ki1nvlgy.ux5.json"" \
  --token "***"

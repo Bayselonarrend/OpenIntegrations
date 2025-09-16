@@ -1,3 +1,3 @@
 oint vk GroupProducts ^
- --items ""[11834918,11834919]"" ^
- --auth ""C:\Users\bayse\AppData\Local\Temp\2xxcgb4z.b04.json""
+ --items ""[11838525,11838526]"" ^
+ --auth ""/tmp/2hopvy1w.qfh.json""
