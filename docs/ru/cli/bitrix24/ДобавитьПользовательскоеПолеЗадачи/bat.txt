@@ -4,5 +4,5 @@ oint bitrix24 ДобавитьПользовательскоеПолеЗадач
   --fieldname ""TEXT_FIELD"" ^
   --externalid ""BITRIX_TEXT_FIELD"" ^
   --title ""Поле для текста"" ^
-  --label ""/tmp/myhmid0n.rda.json"" ^
+  --label ""/tmp/wtu20exw.4ir.json"" ^
   --token "***"

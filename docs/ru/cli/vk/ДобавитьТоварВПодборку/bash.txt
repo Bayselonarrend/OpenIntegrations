@@ -1,4 +1,4 @@
 oint vk ДобавитьТоварВПодборку \
-  --items "11838214" \
-  --sel "146" \
-  --auth ""/tmp/p21hxkpa.1am.json""
+  --items "11839322" \
+  --sel "141" \
+  --auth ""/tmp/afkjqnsq.24e.json""

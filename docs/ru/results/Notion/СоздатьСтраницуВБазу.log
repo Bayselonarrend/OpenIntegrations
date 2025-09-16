@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "26f82aa7-fc4e-812a-b684-f047969e7ed5",
- "created_time": "2025-09-15T20:11:00Z",
- "last_edited_time": "2025-09-15T20:11:00Z",
+ "id": "27082aa7-fc4e-81e6-b5ed-d89bb8d9f424",
+ "created_time": "2025-09-16T04:45:00Z",
+ "last_edited_time": "2025-09-16T04:45:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,23 +15,28 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "26f82aa7-fc4e-8168-971a-c7383d093b56"
+  "database_id": "27082aa7-fc4e-81b7-8fe3-d87406684e60"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Дата создания": {
-   "id": "%3ArDK",
-   "type": "date",
-   "date": {
-    "start": "2025-09-15T08:11:00+00:00",
-    "end": null,
-    "time_zone": null
+  "Активен": {
+   "id": "%3ARN%3C",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "Статус": {
+   "id": "KX%3C%5C",
+   "type": "select",
+   "select": {
+    "id": "cb8e4300-45ba-4e21-99bc-61a11aeb6827",
+    "name": "Новый",
+    "color": "green"
    }
   },
   "Описание": {
-   "id": "%3CM%3A%60",
+   "id": "LFcP",
    "type": "rich_text",
    "rich_text": [
     {
@@ -54,12 +59,17 @@
    ]
   },
   "Пользователь": {
-   "id": "%3E%7B%5Bo",
+   "id": "NOMv",
    "type": "people",
    "people": []
   },
+  "Телефон": {
+   "id": "S%7CNg",
+   "type": "phone_number",
+   "phone_number": "88005553535"
+  },
   "Почта": {
-   "id": "G%7CDN",
+   "id": "dxl%3D",
    "type": "rich_text",
    "rich_text": [
     {
@@ -82,7 +92,7 @@
    ]
   },
   "Картинка": {
-   "id": "s%7Cb%7C",
+   "id": "vggN",
    "type": "files",
    "files": [
     {
@@ -94,29 +104,19 @@
     }
    ]
   },
-  "Статус": {
-   "id": "tEfQ",
-   "type": "select",
-   "select": {
-    "id": "124ee45e-71a4-4858-8f18-2b668f2bd6de",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
-  "Телефон": {
-   "id": "%7DK%3Et",
-   "type": "phone_number",
-   "phone_number": "88005553535"
-  },
-  "Активен": {
-   "id": "%7DZSN",
-   "type": "checkbox",
-   "checkbox": true
-  },
   "Номер": {
-   "id": "~%3Ast",
+   "id": "y%3D%5E%3F",
    "type": "number",
    "number": 1
+  },
+  "Дата создания": {
+   "id": "yjVM",
+   "type": "date",
+   "date": {
+    "start": "2025-09-16T04:45:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
   },
   "Имя": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/26f82aa7fc4e812ab684f047969e7ed5",
+ "url": "https://www.notion.so/27082aa7fc4e81e6b5edd89bb8d9f424",
  "public_url": null,
- "request_id": "fae33e14-fee4-4077-9e36-48fd39b4ab81"
+ "request_id": "1aa0f3d7-de2c-43f8-8dac-013f98c8456e"
 }

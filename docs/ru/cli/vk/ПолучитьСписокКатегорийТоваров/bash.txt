@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокКатегорийТоваров \
-  --auth ""/tmp/5vdsijkx.hiq.json""
+  --auth ""/tmp/rziynwvn.2xg.json""

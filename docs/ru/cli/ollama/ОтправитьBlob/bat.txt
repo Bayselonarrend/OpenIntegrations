@@ -1,4 +1,4 @@
 oint ollama ОтправитьBlob ^
   --url ""https://hut.openintegrations.dev/ollama"" ^
-  --data ""/tmp/pyqlg2u4.g5j"" ^
+  --data ""/tmp/ni1ficox.ke5"" ^
   --headers "{'Authorization':'***'}"
