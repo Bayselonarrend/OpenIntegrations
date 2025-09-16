@@ -19,3 +19,7 @@ However, there are cases when it becomes necessary to introduce so-called **"bre
 ### 1.24.0 -> 1.25.0
 
 **All**: The date and time format has been changed to an ISO 8601-compliant format when retrieving values from the database
+
+### 1.26.0 -> 1.27.0
+
+**All**: The `CreatePoll` method of the VK library has been modified due to [API changes](https://vk.com/@vkappsdev-obnovlyaem-rabotu-metodov-api-wallpost-walledit-i-newsfeed). Ambiguous usage of "Thread" and "Topic" in forum methods of Telegram library has been corrected; Only "Topic" is now used
