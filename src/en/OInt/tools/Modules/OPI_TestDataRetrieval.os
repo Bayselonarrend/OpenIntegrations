@@ -117,11 +117,7 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
         WriteCLICall(Library, Method, WriteOptions);
     EndIf;
 
-    Try
-        DeleteFiles(ResultFile);
-    Except
-        Message("Failed to delete the temporary file after the test!");
-    EndTry;
+    OPI_Tools.RemoveFileWithTry(ResultFile, "Failed to delete the temporary file after the test!");
 
     Return Result;
 
@@ -557,7 +553,7 @@ Function GetFilePath(Val Path) Export
         Path   = TFN;
         Binary = New BinaryData(Path);
 
-        DeleteFiles(TFN);
+        OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
 
     Else
 
