@@ -59,16 +59,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint mysql DeleteTable \
-             --table "test_data" \
-             --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/"
+             --table ""test_data"" \
+             --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
+             --tls ""/tmp/wpj5sku3.zqu.json""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint mysql DeleteTable ^
-             --table "test_data" ^
-             --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/"
+             --table ""test_data"" ^
+             --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
+             --tls ""/tmp/wpj5sku3.zqu.json""
         ```
     </TabItem>
 </Tabs>

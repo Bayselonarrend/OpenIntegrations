@@ -43,14 +43,36 @@ Method at API documentation: [createForumTopic](https://core.telegram.org/bots/a
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint telegram CreateForumTopic \
+             --token "***" \
+             --forum "-1001971186208" \
+             --title "TestTopic 1c29830c-d66e-4232-b39d-e36835df2192" \
+             --icon "5357419403325481346"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint telegram CreateForumTopic ^
+             --token "***" ^
+             --forum "-1001971186208" ^
+             --title "TestTopic 1c29830c-d66e-4232-b39d-e36835df2192" ^
+             --icon "5357419403325481346"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
 {
  "ok": true,
  "result": {
-  "message_thread_id": 11578,
-  "name": "TestTopic 99b6545c-dca1-4c7b-89e3-bf864a43a08c",
+  "message_thread_id": 11655,
+  "name": "TestTopic 1c29830c-d66e-4232-b39d-e36835df2192",
   "icon_color": 7322096,
   "icon_custom_emoji_id": "5357419403325481346"
  }

@@ -67,22 +67,18 @@ If you want to add an intranet user, you must pass UF_DEPARTMENT field: [...]
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint bitrix24 CreateUser \
-             --url "b24-ar17wx.bitrix24.by" \
-             --fields "{'EMAIL':'b727cf59-5711-44f9-a8da-10ef1c28b9f8@exepmple.org','NAME':'Vitaly','LAST_NAME':'Alpaca','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':1}" \
+             --url ""b24-ar17wx.bitrix24.by"" \
+             --fields ""/tmp/qrtlaa0g.gfu.json"" \
              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint bitrix24 CreateUser ^
-             --url "b24-ar17wx.bitrix24.by" ^
-             --fields "{'EMAIL':'b727cf59-5711-44f9-a8da-10ef1c28b9f8@exepmple.org','NAME':'Vitaly','LAST_NAME':'Alpaca','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':1}" ^
+             --url ""b24-ar17wx.bitrix24.by"" ^
+             --fields ""/tmp/qrtlaa0g.gfu.json"" ^
              --token "***"
         ```
     </TabItem>
@@ -91,16 +87,16 @@ If you want to add an intranet user, you must pass UF_DEPARTMENT field: [...]
 
 ```json title="Result"
 {
- "result": 2640,
+ "result": 2668,
  "time": {
-  "start": 1757919003.67168,
-  "finish": 1757919044.87078,
-  "duration": 41.1990990638733,
-  "processing": 41.1642949581146,
-  "date_start": "2025-09-15T09:50:03+03:00",
-  "date_finish": "2025-09-15T09:50:44+03:00",
-  "operating_reset_at": 1757919603,
-  "operating": 41.1642639636993
+  "start": 1757977001.54863,
+  "finish": 1757977002.32455,
+  "duration": 0.775922060012817,
+  "processing": 0.749781847000122,
+  "date_start": "2025-09-15T22:56:41+00:00",
+  "date_finish": "2025-09-15T22:56:42+00:00",
+  "operating_reset_at": 1757977601,
+  "operating": 0.749761819839478
  }
 }
 ```

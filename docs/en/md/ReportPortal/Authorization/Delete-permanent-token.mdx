@@ -39,10 +39,32 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint rportal DeletePermanentToken \
+             --url "tests.openintegrations.dev" \
+             --token "***" \
+             --user 1 \
+             --id 45
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint rportal DeletePermanentToken ^
+             --url "tests.openintegrations.dev" ^
+             --token "***" ^
+             --user 1 ^
+             --id 45
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
 {
- "message": "Api key with ID = '38' was successfully deleted."
+ "message": "Api key with ID = '45' was successfully deleted."
 }
 ```

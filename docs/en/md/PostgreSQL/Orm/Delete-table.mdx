@@ -59,16 +59,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint postgres DeleteTable \
-             --table "testtable" \
-             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+             --table ""test_data"" \
+             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
+             --tls ""/tmp/t4045524.3ov.json""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint postgres DeleteTable ^
-             --table "testtable" ^
-             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+             --table ""test_data"" ^
+             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
+             --tls ""/tmp/t4045524.3ov.json""
         ```
     </TabItem>
 </Tabs>

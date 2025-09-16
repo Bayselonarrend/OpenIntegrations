@@ -51,23 +51,19 @@ Method at AWS documentation: [DeleteBucketEncryption](https://docs.aws.amazon.co
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint s3 DeleteBucketEncryption \
-             --name "opi-newbucket2" \
+             --name "opi-dirbucket3" \
              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-             --dir false
+             --dir true
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint s3 DeleteBucketEncryption ^
-             --name "opi-newbucket2" ^
+             --name "opi-dirbucket3" ^
              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-             --dir false
+             --dir true
         ```
     </TabItem>
 </Tabs>
@@ -79,12 +75,12 @@ Method at AWS documentation: [DeleteBucketEncryption](https://docs.aws.amazon.co
  "response": {},
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Mon, 15 Sep 2025 07:00:13 GMT",
+  "Date": "Mon, 15 Sep 2025 23:11:40 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
-  "X-Amz-Request-Id": "18656291B8232099",
+  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
+  "X-Amz-Request-Id": "18659795CBAE73F1",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Type": "text/plain; charset=utf-8"

@@ -61,24 +61,20 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint bitrix24 UpdateCalendarEvent \
-             --url "b24-ar17wx.bitrix24.by" \
-             --event 1952 \
-             --fields "{'ownerId':1,'type':'user','name':'Modified event','description':'New event description','importance':'low','private_event':'Y'}" \
+             --url ""b24-ar17wx.bitrix24.by"" \
+             --event "2472" \
+             --fields ""/tmp/d0uia3jb.402.json"" \
              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint bitrix24 UpdateCalendarEvent ^
-             --url "b24-ar17wx.bitrix24.by" ^
-             --event 1952 ^
-             --fields "{'ownerId':1,'type':'user','name':'Modified event','description':'New event description','importance':'low','private_event':'Y'}" ^
+             --url ""b24-ar17wx.bitrix24.by"" ^
+             --event "2472" ^
+             --fields ""/tmp/d0uia3jb.402.json"" ^
              --token "***"
         ```
     </TabItem>
@@ -87,16 +83,16 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
 
 ```json title="Result"
 {
- "result": 2416,
+ "result": 2472,
  "time": {
-  "start": 1757919163.54917,
-  "finish": 1757919163.78489,
-  "duration": 0.235720872879028,
-  "processing": 0.200080156326294,
-  "date_start": "2025-09-15T09:52:43+03:00",
-  "date_finish": "2025-09-15T09:52:43+03:00",
-  "operating_reset_at": 1757919763,
-  "operating": 0.20005202293396
+  "start": 1757977141.41628,
+  "finish": 1757977141.58494,
+  "duration": 0.168663024902344,
+  "processing": 0.14338493347168,
+  "date_start": "2025-09-15T22:59:01+00:00",
+  "date_finish": "2025-09-15T22:59:01+00:00",
+  "operating_reset_at": 1757977741,
+  "operating": 0.14336895942688
  }
 }
 ```

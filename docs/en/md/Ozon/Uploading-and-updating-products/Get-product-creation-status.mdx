@@ -48,7 +48,7 @@ Method at API documentation: [post /v1/product/import/info](https://docs.ozon.ru
             oint ozon GetProductCreationStatus \
              --clientid "***" \
              --apikey "***" \
-             --taskid 1678409793
+             --taskid 2921237180
         ```
     </TabItem>
   
@@ -57,35 +57,10 @@ Method at API documentation: [post /v1/product/import/info](https://docs.ozon.ru
             oint ozon GetProductCreationStatus ^
              --clientid "***" ^
              --apikey "***" ^
-             --taskid 1678409793
+             --taskid 2921237180
         ```
     </TabItem>
 </Tabs>
 
 
-```json title="Result"
-{
- "result": {
-  "items": [
-   {
-    "offer_id": "143210609",
-    "product_id": 2711147044,
-    "status": "imported",
-    "errors": [
-     {
-      "code": "error_attribute_values_empty",
-      "field": "",
-      "attribute_id": 22232,
-      "state": "new",
-      "level": "error",
-      "description": "Это обязательное поле — без него нельзя продавать товар. Заполните поле и пересохраните карточку. Если редактируете через XLS-шаблон, скачайте его заново",
-      "attribute_name": "ТН ВЭД коды ЕАЭС",
-      "message": "Это обязательное поле — без него нельзя продавать товар. Заполните поле и пересохраните карточку. Если редактируете через XLS-шаблон, скачайте его заново"
-     }
-    ]
-   }
-  ],
-  "total": 1
- }
-}
-```
+

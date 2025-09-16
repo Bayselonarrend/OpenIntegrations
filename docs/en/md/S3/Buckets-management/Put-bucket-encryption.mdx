@@ -60,25 +60,21 @@ Method at AWS documentation: [PutBucketEncryption](https://docs.aws.amazon.com/A
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint s3 PutBucketEncryption \
-             --name "opi-newbucket2" \
+             --name "opi-dirbucket3" \
              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-             --conf "/tmp/xurca5nj.xcs.xml" \
-             --dir false
+             --conf "<ServerSideEncryptionConfiguration xmlns="'"http://s3.amazonaws.com/doc/2006-03-01/"'">\n <Rule>\n <ApplyServerSideEncryptionByDefault>\n <SSEAlgorithm>AES256</SSEAlgorithm>\n </ApplyServerSideEncryptionByDefault>\n </Rule>\n</ServerSideEncryptionConfiguration>" \
+             --dir true
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint s3 PutBucketEncryption ^
-             --name "opi-newbucket2" ^
+             --name "opi-dirbucket3" ^
              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-             --conf "/tmp/xurca5nj.xcs.xml" ^
-             --dir false
+             --conf "<ServerSideEncryptionConfiguration xmlns="'"http://s3.amazonaws.com/doc/2006-03-01/"'">\n <Rule>\n <ApplyServerSideEncryptionByDefault>\n <SSEAlgorithm>AES256</SSEAlgorithm>\n </ApplyServerSideEncryptionByDefault>\n </Rule>\n</ServerSideEncryptionConfiguration>" ^
+             --dir true
         ```
     </TabItem>
 </Tabs>

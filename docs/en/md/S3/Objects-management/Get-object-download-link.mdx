@@ -57,30 +57,28 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint s3 GetObjectDownloadLink \
              --name "picture.jpg" \
-             --bucket "opi-gpbucket3" \
+             --bucket "opi-dirbucket3" \
              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-             --expires 7200
+             --expires 7200 \
+             --dir true
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint s3 GetObjectDownloadLink ^
              --name "picture.jpg" ^
-             --bucket "opi-gpbucket3" ^
+             --bucket "opi-dirbucket3" ^
              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-             --expires 7200
+             --expires 7200 ^
+             --dir true
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Result"
-"storage-155.s3hoster.by/opi-dirbucket3/picture.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=BRN5RKJE67YCVDZRRQVI%2F20250915%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20250915T070505Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=6037998104fac876b2decc1ea687b2105899daeb2c9358924f3b1d432a01ba25"
+"storage-155.s3hoster.by/opi-dirbucket3/picture.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=BRN5RKJE67YCVDZRRQVI%2F20250915%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20250915T231834Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=a86f9514bf798f56b497ad3124733d51c4a4ab942a0007330e558606ea63d1a1"
 ```

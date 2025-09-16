@@ -57,23 +57,19 @@ Method at API documentation: [post /v1/product/import-by-sku](https://docs.ozon.
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint ozon CreateProductByOzonID \
              --clientid "***" \
              --apikey "***" \
-             --items "{'name':'New imported product','sku':1626044001,'offer_id':'91132','price':'1100','old_price':'1100','vat':'0.1','currency_code':'RUB'}"
+             --items "{'name':'New imported product','sku':'1626044001','offer_id':'91132','price':'1100','old_price':'1100','vat':'0.1','currency_code':'RUB'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint ozon CreateProductByOzonID ^
              --clientid "***" ^
              --apikey "***" ^
-             --items "{'name':'New imported product','sku':1626044001,'offer_id':'91132','price':'1100','old_price':'1100','vat':'0.1','currency_code':'RUB'}"
+             --items "{'name':'New imported product','sku':'1626044001','offer_id':'91132','price':'1100','old_price':'1100','vat':'0.1','currency_code':'RUB'}"
         ```
     </TabItem>
 </Tabs>
@@ -82,7 +78,7 @@ Method at API documentation: [post /v1/product/import-by-sku](https://docs.ozon.
 ```json title="Result"
 {
  "result": {
-  "task_id": 2916346290,
+  "task_id": 2921236852,
   "unmatched_sku_list": []
  }
 }

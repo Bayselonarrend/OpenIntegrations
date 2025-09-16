@@ -59,16 +59,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint postgres GetTableInformation \
-             --table "test_new" \
-             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+             --table ""test_new"" \
+             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
+             --tls ""/tmp/etxgl521.ih4.json""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint postgres GetTableInformation ^
-             --table "test_new" ^
-             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+             --table ""test_new"" ^
+             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
+             --tls ""/tmp/etxgl521.ih4.json""
         ```
     </TabItem>
 </Tabs>
