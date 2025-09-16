@@ -6,7 +6,29 @@
     {
      "bundle_ids": [
       {
-       "bundle_id": "01994ea6-15cb-75e0-b086-f1d8cb3f6140",
+       "bundle_id": "019950f4-1c5a-7288-98b6-c022887bcf47",
+       "is_docless": true
+      }
+     ],
+     "supply_warehouse": {
+      "warehouse_id": 23903599483000,
+      "name": "СПБ_БУГРЫ_РФЦ",
+      "address": "Россия, Ленинградская Обл., Всеволожский м.р-н, Бугровское С.П., Бугры Массив тер., Шоссейная ул., зд. 50, к. 1."
+     },
+     "status": {
+      "state": "WAREHOUSE_SCORING_STATUS_FULL_AVAILABLE",
+      "invalid_reason": "WAREHOUSE_SCORING_INVALID_REASON_NO_REASON",
+      "is_available": true
+     },
+     "restricted_bundle_id": "",
+     "travel_time_days": "0",
+     "total_score": 0.826479340885691,
+     "total_rank": 1
+    },
+    {
+     "bundle_ids": [
+      {
+       "bundle_id": "019950f4-1c5b-71af-b117-b9b6d42d9008",
        "is_docless": true
       }
      ],
@@ -16,19 +38,19 @@
       "address": "196642, г. Санкт-Петербург, поселок Петро-Славянка, ул.Софийская, 118 корпус 4 строение 1"
      },
      "status": {
-      "state": "WAREHOUSE_SCORING_STATUS_FULL_AVAILABLE",
-      "invalid_reason": "WAREHOUSE_SCORING_INVALID_REASON_NO_REASON",
-      "is_available": true
+      "state": "WAREHOUSE_SCORING_STATUS_NOT_AVAILABLE",
+      "invalid_reason": "WAREHOUSE_SCORING_INVALID_REASON_NOT_AVAILABLE_RANK",
+      "is_available": false
      },
      "restricted_bundle_id": "",
-     "travel_time_days": "0",
-     "total_score": 0.824656286371906,
-     "total_rank": 1
+     "travel_time_days": null,
+     "total_score": 0.818366662646706,
+     "total_rank": 2
     },
     {
      "bundle_ids": [
       {
-       "bundle_id": "01994ea6-15cb-7010-bd13-2304e4469637",
+       "bundle_id": "019950f4-1c5a-7287-b665-b10581727ced",
        "is_docless": true
       }
      ],
@@ -44,35 +66,13 @@
      },
      "restricted_bundle_id": "",
      "travel_time_days": null,
-     "total_score": 0.81461527725158,
-     "total_rank": 2
-    },
-    {
-     "bundle_ids": [
-      {
-       "bundle_id": "01994ea6-15cb-75de-b4b5-113a51f45499",
-       "is_docless": true
-      }
-     ],
-     "supply_warehouse": {
-      "warehouse_id": 23903599483000,
-      "name": "СПБ_БУГРЫ_РФЦ",
-      "address": "Россия, Ленинградская Обл., Всеволожский м.р-н, Бугровское С.П., Бугры Массив тер., Шоссейная ул., зд. 50, к. 1."
-     },
-     "status": {
-      "state": "WAREHOUSE_SCORING_STATUS_NOT_AVAILABLE",
-      "invalid_reason": "WAREHOUSE_SCORING_INVALID_REASON_NOT_AVAILABLE_RANK",
-      "is_available": false
-     },
-     "restricted_bundle_id": "",
-     "travel_time_days": null,
-     "total_score": 0.814073255080144,
+     "total_score": 0.816346054630551,
      "total_rank": 3
     },
     {
      "bundle_ids": [
       {
-       "bundle_id": "01994ea6-15cb-700e-a187-493a8bc8b651",
+       "bundle_id": "019950f4-1c5b-7710-a009-d2484e27aa79",
        "is_docless": true
       }
      ],
@@ -86,9 +86,9 @@
       "invalid_reason": "WAREHOUSE_SCORING_INVALID_REASON_NOT_AVAILABLE_RANK",
       "is_available": false
      },
-     "restricted_bundle_id": "01994ea6-15ec-76a5-b0f3-2dedad6a65ec",
+     "restricted_bundle_id": "019950f4-1c85-7793-b03a-d02168cc8390",
      "travel_time_days": null,
-     "total_score": 0.749437540336198,
+     "total_score": 0.762763049060174,
      "total_rank": 4
     },
     {
@@ -103,7 +103,7 @@
       "invalid_reason": "WAREHOUSE_SCORING_INVALID_REASON_NOT_AVAILABLE_MATRIX",
       "is_available": false
      },
-     "restricted_bundle_id": "01994ea6-15cb-75df-a431-a360e79bae6a",
+     "restricted_bundle_id": "019950f4-1c5a-7289-bf2b-d06821369a1e",
      "travel_time_days": null,
      "total_score": 0,
      "total_rank": 5
@@ -120,7 +120,7 @@
       "invalid_reason": "WAREHOUSE_SCORING_INVALID_REASON_NOT_AVAILABLE_MATRIX",
       "is_available": false
      },
-     "restricted_bundle_id": "01994ea6-15cb-700f-9266-ebbfc368d001",
+     "restricted_bundle_id": "019950f4-1c5b-71ae-b373-1df7822afc25",
      "travel_time_days": null,
      "total_score": 0,
      "total_rank": 6
@@ -130,6 +130,6 @@
    "cluster_name": "Санкт-Петербург и СЗО"
   }
  ],
- "draft_id": 68449770,
+ "draft_id": 68476297,
  "errors": []
 }
