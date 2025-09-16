@@ -1,3 +1,3 @@
 oint vk GetSelectionsByID \
- --sels "142" \
- --auth ""C:\Users\bayse\AppData\Local\Temp\buqltx5c.wgw.json""
+ --sels "147" \
+ --auth ""/tmp/ojkhnlhf.riz.json""

@@ -1,4 +1,4 @@
 oint bitrix24 CreateCalendar \
  --url ""b24-ar17wx.bitrix24.by"" \
- --fields ""C:\Users\bayse\AppData\Local\Temp\ihz1vnyv.uej.json"" \
+ --fields ""/tmp/ppwprhtw.wqu.json"" \
  --token "***"

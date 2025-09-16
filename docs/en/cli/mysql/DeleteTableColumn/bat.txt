@@ -2,4 +2,4 @@ oint mysql DeleteTableColumn ^
  --table ""testtable"" ^
  --name ""new_field"" ^
  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
- --tls ""C:\Users\bayse\AppData\Local\Temp\dg14vasf.mdf.json""
+ --tls ""/tmp/cj4rmezc.efc.json""

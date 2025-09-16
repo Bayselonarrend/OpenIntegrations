@@ -1,5 +1,5 @@
 oint bitrix24 UpdateLead \
  --url ""b24-ar17wx.bitrix24.by"" \
- --lead "2438" \
- --fields ""C:\Users\bayse\AppData\Local\Temp\m4hhti0j.idk.json"" \
+ --lead "2458" \
+ --fields ""/tmp/qzuicnbx.fi0.json"" \
  --token "***"

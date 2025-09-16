@@ -1,5 +1,5 @@
 oint bitrix24 UpdateCalendarEvent \
  --url ""b24-ar17wx.bitrix24.by"" \
- --event "2432" \
- --fields ""C:\Users\bayse\AppData\Local\Temp\4bcobisc.i4b.json"" \
+ --event "2472" \
+ --fields ""/tmp/d0uia3jb.402.json"" \
  --token "***"

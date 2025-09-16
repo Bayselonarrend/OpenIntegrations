@@ -1,4 +1,4 @@
 oint twitter CreateCustomTweet ^
- --text "TestTweet51ac37b6-dfc7-4afd-a1e5-72a982261524" ^
- --media "['1967545653074038784','1967545666118262784']" ^
+ --text "TestTweet0e36b94a-3d8c-4d7c-a397-56dd070262fc" ^
+ --media "['1967705655684280320','1967705668762116096']" ^
  --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

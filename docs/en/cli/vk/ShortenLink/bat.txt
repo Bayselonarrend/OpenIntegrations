@@ -1,3 +1,3 @@
 oint vk ShortenLink ^
  --url ""https://github.com/Bayselonarrend/OpenIntegrations"" ^
- --auth ""C:\Users\bayse\AppData\Local\Temp\gth5ialr.cxh.json""
+ --auth ""/tmp/vist45ln.ef2.json""

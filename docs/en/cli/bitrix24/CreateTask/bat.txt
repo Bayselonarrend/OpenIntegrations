@@ -1,4 +1,4 @@
 oint bitrix24 CreateTask ^
  --url ""b24-ar17wx.bitrix24.by"" ^
- --fields ""C:\Users\bayse\AppData\Local\Temp\ag0dt03c.iwm.json"" ^
+ --fields ""/tmp/dpjrx4uz.1pa.json"" ^
  --token "***"

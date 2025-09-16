@@ -1,2 +1,2 @@
 oint vk GetProductList ^
- --auth ""C:\Users\bayse\AppData\Local\Temp\rs1am2za.3eb.json""
+ --auth ""/tmp/udnkeni1.4q5.json""

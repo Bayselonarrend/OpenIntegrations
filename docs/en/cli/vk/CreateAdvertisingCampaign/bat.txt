@@ -1,4 +1,4 @@
 oint vk CreateAdvertisingCampaign ^
  --cabinet ""1607951446"" ^
  --title ""New campaign"" ^
- --auth ""C:\Users\bayse\AppData\Local\Temp\ew1rx05v.2rt.json""
+ --auth ""/tmp/uqfd53u0.ptd.json""

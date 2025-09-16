@@ -1,6 +1,6 @@
 oint bitrix24 CreatePost ^
  --url ""b24-ar17wx.bitrix24.by"" ^
  --text ""Text of post"" ^
- --files ""C:\Users\bayse\AppData\Local\Temp\ceqkfwrn.tmg.json"" ^
+ --files ""/tmp/ulq0ce0n.kpc.json"" ^
  --title ""Post title"" ^
  --token "***"

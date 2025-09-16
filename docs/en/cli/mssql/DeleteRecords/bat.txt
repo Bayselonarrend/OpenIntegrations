@@ -2,4 +2,4 @@ oint mssql DeleteRecords ^
  --table ""test_data"" ^
  --filter ""[{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':false,'union':'AND'}]"" ^
  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
- --tls ""C:\Users\bayse\AppData\Local\Temp\efq2dw40.x5d.json""
+ --tls ""/tmp/2ooinrx0.fro.json""

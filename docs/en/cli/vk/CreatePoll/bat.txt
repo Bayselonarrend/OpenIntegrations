@@ -2,4 +2,4 @@ oint vk CreatePoll ^
  --question ""What's your favorite color?"" ^
  --options ""['Red','Yellow','Green']"" ^
  --picture ""https://hut.openintegrations.dev/test_data/picture.jpg"" ^
- --auth ""C:\Users\bayse\AppData\Local\Temp\jjgl5ihy.mmb.json""
+ --auth ""/tmp/m4ho5ru4.xjo.json""

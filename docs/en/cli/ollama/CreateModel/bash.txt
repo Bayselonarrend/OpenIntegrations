@@ -1,5 +1,5 @@
 oint ollama CreateModel \
  --url ""https://hut.openintegrations.dev/ollama"" \
  --model ""mario"" \
- --settings ""C:\Users\bayse\AppData\Local\Temp\pqu2ecxh.wpj.json"" \
+ --settings ""/tmp/qz5easkb.hph.json"" \
  --headers "{'Authorization':'***'}"
