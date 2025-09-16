@@ -2,7 +2,9 @@
     Image     = "https://hut.openintegrations.dev/test_data/picture.jpg";
     Directory = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
 
-    Description = OPI_GoogleDrive.GetFileDescription();
+    Clear       = False;
+    Description = OPI_GoogleDrive.GetFileDescription(Clear);
+
     Description.Insert("Parent", Directory);
 
     Result = OPI_GoogleDrive.UploadFile(Token, Image, Description);
