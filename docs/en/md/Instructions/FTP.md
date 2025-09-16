@@ -58,9 +58,6 @@ The client also supports secure connections via TLS. To enable it, pass the TLS 
     TLSSettings = OPI_FTP.GetTLSSettings(True);
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
-```
-
-
     If UseProxy Then
 
         ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
@@ -79,3 +76,5 @@ The client also supports secure connections via TLS. To enable it, pass the TLS 
     EndIf;
 
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
+
+```
