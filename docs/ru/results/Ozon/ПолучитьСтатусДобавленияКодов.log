@@ -1,5 +1,1 @@
-﻿    {
- "code": 7,
- "message": "s2s: method \"/endpoints.v1.Service/GetDigitalCodesTaskByID\" is not allowed for the provided access tokens: permission denied",
- "details": []
-}
+﻿
