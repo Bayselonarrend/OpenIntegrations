@@ -11920,6 +11920,11 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
         ProcessSpecialOptionsSecrets(Library, Option.Key, CurrentOption);
 
         CurrentOption = FormOption(Option.Key, CurrentOption);
+
+        If Not FindJSON Then
+            FindJSON = StrFind(CurrentOption, "{") > 0 And StrFind(CurrentOption, "}") > 0;
+        EndIf;
+
         OptionsArray.Add(CurrentOption);
 
     EndDo;

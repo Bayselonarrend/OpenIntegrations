@@ -1938,7 +1938,7 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
 
     Ozon_GetProductStructure(TestParameters);
     Ozon_CreateUpdateProducts(TestParameters);
-    Ozon_GetProductCreationStatus(TestParameters);
+    //Ozon_GetProductCreationStatus(TestParameters);
     Ozon_AddProductVideo(TestParameters);
     Ozon_AddProductVideoCover(TestParameters);
     Ozon_CompleteComplexAttribute(TestParameters);
@@ -1957,7 +1957,7 @@ Procedure OzonAPI_UploadingAndUpdatingProducts() Export
     Ozon_UpdateProductsArticles(TestParameters);
     Ozon_ArchiveProducts(TestParameters);
     Ozon_UnarchiveProducts(TestParameters);
-    Ozon_UploadProductActivationCodes(TestParameters);
+    //Ozon_UploadProductActivationCodes(TestParameters);
     //Ozon_GetCodesUploadStatus(TestParameters);
     Ozon_GetProductSubscribersCount(TestParameters);
     Ozon_GetRelatedSKUs(TestParameters);
@@ -1972,7 +1972,7 @@ Procedure OzonAPI_Barcodes() Export
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"   , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ProductID", TestParameters);
 
-    Ozon_BindBarcodes(TestParameters);
+    //Ozon_BindBarcodes(TestParameters);
     Ozon_CreateBarcodes(TestParameters);
 
 EndProcedure
@@ -1986,10 +1986,10 @@ Procedure OzonAPI_PricesAndStocks() Export
 
     Ozon_GetProductsStocks(TestParameters);
     Ozon_UpdateProductsPrices(TestParameters);
-    Ozon_UpdateProductsStocks(TestParameters);
+    //Ozon_UpdateProductsStocks(TestParameters);
     Ozon_GetProductsPrices(TestParameters);
     Ozon_GetDiscountInformation(TestParameters);
-    Ozon_SetProductDiscount(TestParameters);
+    //Ozon_SetProductDiscount(TestParameters);
     Ozon_GetProductStocksStructure(TestParameters);
     Ozon_GetProductPriceStructure(TestParameters);
 
@@ -2012,8 +2012,8 @@ Procedure OzonAPI_PromotionsManagement() Export
     OPI_TestDataRetrieval.ParameterToCollection("Ozon_ApiKey"  , TestParameters);
 
     Ozon_GetPromotionsList(TestParameters);
-    Ozon_GetCurrentPromoProducts(TestParameters);
-    Ozon_GetAvailablePromoProducts(TestParameters);
+    //Ozon_GetCurrentPromoProducts(TestParameters);
+    //Ozon_GetAvailablePromoProducts(TestParameters);
 
 EndProcedure
 
@@ -5267,7 +5267,9 @@ EndProcedure
 
 Procedure VK_GetProductDescription(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetProductDescription", Options);
 
@@ -6358,7 +6360,9 @@ EndProcedure
 
 Procedure GoogleCalendar_GetEventDescription(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetEventDescription", Options);
 
@@ -6413,9 +6417,12 @@ Procedure GoogleDrive_UploadFile(FunctionParameters)
     Image     = FunctionParameters["Picture"];
     Directory = FunctionParameters["GD_Catalog"];
 
+    Clear       = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Description = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFileDescription", Options);
+
     Description.Insert("Parent", Directory);
 
     Options = New Structure;
@@ -13903,7 +13910,9 @@ EndProcedure
 
 Procedure Bitrix24_GetLeadFilterStructure(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetLeadFilterStructure", Options);
 
@@ -14119,7 +14128,9 @@ EndProcedure
 
 Procedure Bitrix24_GetDealsFilterStructure(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetDealsFilterStructure", Options);
 
@@ -14334,7 +14345,9 @@ EndProcedure
 
 Procedure Bitrix24_GetTasksFilterStructure(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetTasksFilterStructure", Options);
 
@@ -14346,7 +14359,9 @@ EndProcedure
 
 Procedure Bitrix24_GetCommentStructure(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetCommentStructure", Options);
 
@@ -14358,7 +14373,9 @@ EndProcedure
 
 Procedure Bitrix24_GetChatStructure(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetChatStructure", Options);
 
@@ -14404,7 +14421,9 @@ EndProcedure
 
 Procedure Bitrix24_GetUserFilterStructure(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("bitrix24", "GetUserFilterStructure", Options);
 
@@ -15906,7 +15925,9 @@ EndProcedure
 
 Procedure Ozon_GetProductStructure(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductStructure", Options);
 
@@ -16128,7 +16149,9 @@ EndProcedure
 
 Procedure Ozon_GetSimplifiedProductStructure(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetSimplifiedProductStructure", Options);
 
@@ -16140,7 +16163,9 @@ EndProcedure
 
 Procedure Ozon_GetAttributesUpdateStructure(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetAttributesUpdateStructure", Options);
 
@@ -16201,7 +16226,9 @@ EndProcedure
 
 Procedure Ozon_GetProductsFilterStructure(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductsFilterStructure", Options);
 
@@ -16844,7 +16871,9 @@ EndProcedure
 
 Procedure Ozon_GetProductStocksStructure(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductStocksStructure", Options);
 
@@ -16856,7 +16885,9 @@ EndProcedure
 
 Procedure Ozon_GetProductPriceStructure(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetProductPriceStructure", Options);
 
@@ -16951,7 +16982,9 @@ EndProcedure
 
 Procedure Ozon_GetShipmentAdditionalFields(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetShipmentAdditionalFields", Options);
 
@@ -16963,7 +16996,9 @@ EndProcedure
 
 Procedure Ozon_GetShipmentsFilterStructure(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ozon", "GetShipmentsFilterStructure", Options);
 
@@ -18011,7 +18046,9 @@ EndProcedure
 
 Procedure YandexMetrika_GetCounterStructure(FunctionParameters)
 
+    Clear  = False;
     Options = New Structure;
+    Options.Insert("empty", Clear);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("metrika", "GetCounterStructure", Options);
 

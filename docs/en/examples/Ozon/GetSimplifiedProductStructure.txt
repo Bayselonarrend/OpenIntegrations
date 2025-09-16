@@ -1,1 +1,2 @@
-﻿    Result = OPI_Ozon.GetSimplifiedProductStructure();
+﻿    Clear  = False;
+    Result = OPI_Ozon.GetSimplifiedProductStructure(Clear);

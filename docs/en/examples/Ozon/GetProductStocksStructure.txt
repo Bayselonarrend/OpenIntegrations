@@ -1,1 +1,2 @@
-﻿    Result = OPI_Ozon.GetProductStocksStructure();
+﻿    Clear  = False;
+    Result = OPI_Ozon.GetProductStocksStructure(Clear);
