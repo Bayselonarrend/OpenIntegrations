@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокСвойств ^
-  --auth ""/tmp/mo54xeip.plg.json""
+  --auth ""/tmp/la4qsh23.1xn.json""
