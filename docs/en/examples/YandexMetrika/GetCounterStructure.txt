@@ -1,1 +1,2 @@
-﻿    Result = OPI_YandexMetrika.GetCounterStructure();
+﻿    Clear  = False;
+    Result = OPI_YandexMetrika.GetCounterStructure(Clear);

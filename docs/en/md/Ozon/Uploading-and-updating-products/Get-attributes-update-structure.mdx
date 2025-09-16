@@ -31,7 +31,8 @@ Attributes are structures with complex_id, id and values fields. For their quick
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Result = OPI_Ozon.GetAttributesUpdateStructure();
+    Clear  = False;
+    Result = OPI_Ozon.GetAttributesUpdateStructure(Clear);
 ```
  
 
