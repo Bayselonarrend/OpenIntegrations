@@ -1,4 +1,4 @@
 oint postgres GetTableInformation \
  --table ""test_new"" \
  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
- --tls ""C:\Users\bayse\AppData\Local\Temp\a4uojvds.5ml.json""
+ --tls ""/tmp/etxgl521.ih4.json""

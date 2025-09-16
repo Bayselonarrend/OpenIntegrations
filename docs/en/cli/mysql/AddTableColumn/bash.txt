@@ -3,4 +3,4 @@ oint mysql AddTableColumn \
  --name ""new_field"" \
  --type ""MEDIUMTEXT"" \
  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
- --tls ""C:\Users\bayse\AppData\Local\Temp\h3vnekrr.afv.json""
+ --tls ""/tmp/kwzid43z.fw1.json""

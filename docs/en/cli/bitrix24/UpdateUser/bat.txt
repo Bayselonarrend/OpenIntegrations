@@ -1,5 +1,5 @@
 oint bitrix24 UpdateUser ^
  --url ""b24-ar17wx.bitrix24.by"" ^
- --userid "2648" ^
- --fields ""C:\Users\bayse\AppData\Local\Temp\bn5hjzrd.4un.json"" ^
+ --userid "2668" ^
+ --fields ""/tmp/m24jsyqm.xh3.json"" ^
  --token "***"

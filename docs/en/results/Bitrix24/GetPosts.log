@@ -1,7 +1,7 @@
 ﻿{
  "result": [
   {
-   "ID": "3012",
+   "ID": "3028",
    "BLOG_ID": "1",
    "PUBLISH_STATUS": "P",
    "TITLE": "New post title",
@@ -11,7 +11,7 @@
    "CODE": null,
    "MICRO": "N",
    "DETAIL_TEXT": "New post text",
-   "DATE_PUBLISH": "2025-09-15T14:53:10+00:00",
+   "DATE_PUBLISH": "2025-09-15T22:44:03+00:00",
    "CATEGORY_ID": null,
    "HAS_SOCNET_ALL": "N",
    "HAS_TAGS": "N",
@@ -62,7 +62,7 @@
      "BASE_TYPE": "file"
     },
     "VALUE": false,
-    "ENTITY_VALUE_ID": 3012,
+    "ENTITY_VALUE_ID": 3028,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -93,7 +93,7 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3012,
+    "ENTITY_VALUE_ID": 3028,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -138,7 +138,7 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3012,
+    "ENTITY_VALUE_ID": 3028,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -177,13 +177,13 @@
      ]
     },
     "VALUE": [
-     11794,
-     11796,
-     11798
+     11858,
+     11860,
+     11862
     ],
-    "ENTITY_VALUE_ID": 3012,
+    "ENTITY_VALUE_ID": 3028,
     "VALUE_EXISTS": true,
-    "VALUE_RAW": "a:3:{i:0;i:11794;i:1;i:11796;i:2;i:11798;}",
+    "VALUE_RAW": "a:3:{i:0;i:11858;i:1;i:11860;i:2;i:11862;}",
     "CUSTOM_DATA": {
      "PHOTO_TEMPLATE": ""
     }
@@ -230,7 +230,7 @@
      ]
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3012,
+    "ENTITY_VALUE_ID": 3028,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -275,7 +275,7 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3012,
+    "ENTITY_VALUE_ID": 3028,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -322,7 +322,7 @@
      "BASE_TYPE": "datetime"
     },
     "VALUE": "",
-    "ENTITY_VALUE_ID": 3012,
+    "ENTITY_VALUE_ID": 3028,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -361,27 +361,27 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3012,
+    "ENTITY_VALUE_ID": 3028,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
    },
    "FILES": [
-    11794,
-    11796,
-    11798
+    11858,
+    11860,
+    11862
    ]
   }
  ],
  "total": 1,
  "time": {
-  "start": 1757947997.99738,
-  "finish": 1757947998.03503,
-  "duration": 0.0376548767089844,
-  "processing": 0.00985884666442871,
-  "date_start": "2025-09-15T14:53:17+00:00",
-  "date_finish": "2025-09-15T14:53:18+00:00",
-  "operating_reset_at": 1757948598,
+  "start": 1757976262.86641,
+  "finish": 1757976262.90002,
+  "duration": 0.0336148738861084,
+  "processing": 0.00972700119018555,
+  "date_start": "2025-09-15T22:44:22+00:00",
+  "date_finish": "2025-09-15T22:44:22+00:00",
+  "operating_reset_at": 1757976862,
   "operating": 0
  }
 }

@@ -2,5 +2,5 @@ oint ollama GetContextResponse \
  --url ""https://hut.openintegrations.dev/ollama"" \
  --model ""tinyllama"" \
  --msgs ""[{'role':'user','content':'Hello!'}]"" \
- --options ""C:\Users\bayse\AppData\Local\Temp\knsvprux.wnf.json"" \
+ --options ""/tmp/jslyarye.ngt.json"" \
  --headers "{'Authorization':'***'}"

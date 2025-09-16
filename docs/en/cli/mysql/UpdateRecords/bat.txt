@@ -1,6 +1,6 @@
 oint mysql UpdateRecords ^
  --table ""test_data"" ^
- --values ""C:\Users\bayse\AppData\Local\Temp\0ifdnccn.acz.json"" ^
- --filter ""C:\Users\bayse\AppData\Local\Temp\ql5hzxbq.fp4.json"" ^
+ --values ""/tmp/nyzrddm4.ynv.json"" ^
+ --filter ""/tmp/ozrtwfjk.40y.json"" ^
  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
- --tls ""C:\Users\bayse\AppData\Local\Temp\pyirktip.xn2.json""
+ --tls ""/tmp/qeqw4r1h.hps.json""

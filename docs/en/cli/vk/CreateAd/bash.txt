@@ -1,7 +1,7 @@
 oint vk CreateAd \
- --campaign "1031566894" \
+ --campaign "1031568261" \
  --limit "150" \
  --category "126" \
- --post "9645" \
+ --post "9695" \
  --cabinet ""1607951446"" \
- --auth ""C:\Users\bayse\AppData\Local\Temp\f4jkk0xe.0by.json""
+ --auth ""/tmp/tihgsj2m.0so.json""

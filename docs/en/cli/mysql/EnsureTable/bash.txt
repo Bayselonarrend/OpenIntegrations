@@ -1,5 +1,5 @@
 oint mysql EnsureTable \
  --table ""test_new"" \
- --cols ""C:\Users\bayse\AppData\Local\Temp\3nkqidti.td0.json"" \
+ --cols ""/tmp/ibigveh5.fws.json"" \
  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
- --tls ""C:\Users\bayse\AppData\Local\Temp\fhlboizf.3p0.json""
+ --tls ""/tmp/zgvnh5sv.2gg.json""

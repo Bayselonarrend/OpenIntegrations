@@ -1,5 +1,5 @@
 oint twitter CreatePollTweet \
- --text "TestTweet287e1b58-ccbc-4709-90b5-2dba7b53c967" \
+ --text "TestTweetdfdb6675-bfb6-4f9c-adb1-ce587dd5c5b9" \
  --options "['Option 1','Option 2']" \
  --duration 60 \
  --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

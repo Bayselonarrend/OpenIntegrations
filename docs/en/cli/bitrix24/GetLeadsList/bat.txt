@@ -1,4 +1,4 @@
 oint bitrix24 GetLeadsList ^
  --url ""b24-ar17wx.bitrix24.by"" ^
- --filter ""C:\Users\bayse\AppData\Local\Temp\ks03e2xa.3zn.json"" ^
+ --filter ""/tmp/xstz3pxp.i2h.json"" ^
  --token "***"

@@ -2,4 +2,4 @@ oint sqlite UpdateRecords \
  --table "test" \
  --values "{'name':'Vitaly A.','salary':'999999'}" \
  --filter "{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':false}" \
- --db "C:\Users\bayse\AppData\Local\Temp\rph1i233.3t1.sqlite"
+ --db "/tmp/pvrrdds2.dxl.sqlite"

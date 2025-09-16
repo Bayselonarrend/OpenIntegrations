@@ -1,4 +1,4 @@
 oint mysql DeleteTable ^
  --table ""test_data"" ^
  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
- --tls ""C:\Users\bayse\AppData\Local\Temp\2sjv2c0x.auc.json""
+ --tls ""/tmp/wpj5sku3.zqu.json""

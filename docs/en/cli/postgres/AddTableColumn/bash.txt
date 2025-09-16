@@ -3,4 +3,4 @@ oint postgres AddTableColumn \
  --name ""new_field"" \
  --type ""TEXT"" \
  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
- --tls ""C:\Users\bayse\AppData\Local\Temp\4j2ubeb1.lap.json""
+ --tls ""/tmp/eaea0243.iwx.json""

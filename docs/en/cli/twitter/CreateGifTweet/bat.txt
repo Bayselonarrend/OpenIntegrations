@@ -1,4 +1,4 @@
 oint twitter CreateGifTweet ^
- --text "TestTweetad7e6dc7-baae-46d8-8489-dc115c1609b2" ^
- --gifs "C:\Users\bayse\AppData\Local\Temp\rjrx2cjk.syf" ^
+ --text "TestTweetb3e1800e-b1e7-40b5-986f-4c50a1dce3bd" ^
+ --gifs "/tmp/4vmhm3br.mug" ^
  --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
