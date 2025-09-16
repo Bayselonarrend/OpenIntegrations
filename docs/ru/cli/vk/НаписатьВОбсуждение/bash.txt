@@ -1,4 +1,4 @@
 oint vk НаписатьВОбсуждение \
-  --topic "54109682" \
+  --topic "54110014" \
   --text ""Мне больше нравится желтый"" \
-  --auth ""/tmp/bk5jjanq.out.json""
+  --auth ""/tmp/n2nkxsfl.jyb.json""

@@ -1,4 +1,4 @@
 oint vk СоздатьРекламнуюКампанию \
   --cabinet ""1607951446"" \
   --title ""Новая кампания"" \
-  --auth ""/tmp/kjgx53hh.2qi.json""
+  --auth ""/tmp/tb0gljer.wtz.json""

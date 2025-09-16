@@ -1,5 +1,5 @@
 oint mssql СоздатьТаблицу ^
   --table ""somename"" ^
-  --cols ""/tmp/5pgufwcs.ers.json"" ^
+  --cols ""/tmp/lzmkarxc.mli.json"" ^
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-  --tls ""/tmp/lmilz5gz.vnp.json""
+  --tls ""/tmp/wtof0swv.0m0.json""
