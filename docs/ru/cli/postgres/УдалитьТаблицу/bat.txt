@@ -1,4 +1,4 @@
 oint postgres УдалитьТаблицу ^
   --table ""test_data"" ^
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-  --tls ""/tmp/f1ys1sza.iij.json""
+  --tls ""/tmp/o3ej5bsq.2m5.json""

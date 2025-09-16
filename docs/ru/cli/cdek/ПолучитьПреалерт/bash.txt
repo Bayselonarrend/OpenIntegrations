@@ -1,4 +1,4 @@
 oint cdek ПолучитьПреалерт \
   --token "***" \
-  --uuid "e3d2c55d-9b5b-4ad9-998f-6ff2bcb62703" \
+  --uuid "8e5f4160-4218-4525-a90a-8e78dd988357" \
   --testapi "***"

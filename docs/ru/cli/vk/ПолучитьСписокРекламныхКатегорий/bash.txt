@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокРекламныхКатегорий \
-  --auth ""/tmp/mw2kgb4m.ft0.json""
+  --auth ""/tmp/0lr3wxyz.bfn.json""

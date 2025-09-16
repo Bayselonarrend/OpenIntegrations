@@ -89,22 +89,6 @@
    "purpose": "user_data"
   },
   {
-   "id": "file-10",
-   "object": "file",
-   "bytes": 2114025,
-   "created_at": "2025-09-15T13:23:38.881058835Z",
-   "filename": "a8eb99b7-5096-47e6-ad1c-794e0a88545b.png",
-   "purpose": "user_data"
-  },
-  {
-   "id": "file-12",
-   "object": "file",
-   "bytes": 2114025,
-   "created_at": "2025-09-15T13:28:56.741982193Z",
-   "filename": "074cd27a-9288-419b-90dd-fb0640017bbd.png",
-   "purpose": "assistants"
-  },
-  {
    "id": "file-1",
    "object": "file",
    "bytes": 2114025,
@@ -137,11 +121,35 @@
    "purpose": "user_data"
   },
   {
-   "id": "file-9",
+   "id": "file-10",
    "object": "file",
    "bytes": 2114025,
-   "created_at": "2025-09-15T21:17:04.832163664Z",
-   "filename": "89493bc4-bdd7-4e47-a618-f624b66ed552.png",
+   "created_at": "2025-09-16T00:23:15.874713981Z",
+   "filename": "e48e746c-b206-402a-8344-59108131113e.png",
+   "purpose": "user_data"
+  },
+  {
+   "id": "file-12",
+   "object": "file",
+   "bytes": 2114025,
+   "created_at": "2025-09-16T00:27:13.526537069Z",
+   "filename": "4ab5d04d-4296-4572-a912-f2334a88a5c9.png",
+   "purpose": "assistants"
+  },
+  {
+   "id": "file-13",
+   "object": "file",
+   "bytes": 2114025,
+   "created_at": "2025-09-16T01:47:32.018641481Z",
+   "filename": "6015afa0-8dbe-43fd-a4d4-7f58e33b03fb.png",
+   "purpose": "user_data"
+  },
+  {
+   "id": "file-18",
+   "object": "file",
+   "bytes": 2114025,
+   "created_at": "2025-09-16T05:53:52.87155648Z",
+   "filename": "839b9d90-4b54-4b37-9155-d96083ec7d65.png",
    "purpose": "assistants"
   }
  ],

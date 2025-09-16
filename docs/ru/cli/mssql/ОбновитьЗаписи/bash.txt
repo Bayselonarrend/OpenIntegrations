@@ -1,6 +1,6 @@
 oint mssql ОбновитьЗаписи \
   --table ""test_data"" \
-  --values ""/tmp/wnandy2l.yp0.json"" \
-  --filter ""/tmp/ev41g2yd.xs1.json"" \
+  --values ""/tmp/fczdopsp.3xz.json"" \
+  --filter ""/tmp/eirkpdio.nws.json"" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls ""/tmp/ybhqh0mj.k2f.json""
+  --tls ""/tmp/m5uerdc1.m1z.json""

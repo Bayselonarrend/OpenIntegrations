@@ -1,4 +1,4 @@
 oint postgres ПолучитьЗаписи \
   --table ""testtable"" \
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-  --tls ""/tmp/ujzqt4w2.5aj.json""
+  --tls ""/tmp/pkp2stqe.hqa.json""

@@ -1,4 +1,4 @@
 oint mssql УдалитьБазуДанных ^
   --base ""testbase2"" ^
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-  --tls ""/tmp/dbbfwkwv.qk3.json""
+  --tls ""/tmp/pxzzn2aj.d4l.json""

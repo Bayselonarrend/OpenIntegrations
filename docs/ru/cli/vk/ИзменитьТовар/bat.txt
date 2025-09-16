@@ -1,4 +1,4 @@
 oint vk ИзменитьТовар ^
-  --item "11838214" ^
-  --product ""/tmp/rwylbyny.yak.json"" ^
-  --auth ""/tmp/zqemfsy1.fct.json""
+  --item "11839322" ^
+  --product ""/tmp/gnpvj2zd.b4p.json"" ^
+  --auth ""/tmp/rdpz31rf.nxn.json""
