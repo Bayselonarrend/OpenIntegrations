@@ -67,22 +67,18 @@ Method at API documentation: [crm.lead.add](https://dev.1c-bitrix.ru/rest_help/c
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint bitrix24 CreateLead \
-             --url "b24-ar17wx.bitrix24.by" \
-             --fields "{'ADDRESS':'Pushkin st., b. 10','ADDRESS_COUNTRY':'Russia','EMAIL':[{'VALUE':'yo@example.com','VALUE_TYPE':'HOME'},{'VALUE':'hi@example.com','VALUE_TYPE':'WORK'}],'NAME':'Ivan','LAST_NAME':'Ivanov','PHONE':[{'VALUE':'88005553535','VALUE_TYPE':'WORK'}],'TITLE':'MegaClient'}" \
+             --url ""b24-ar17wx.bitrix24.by"" \
+             --fields ""/tmp/qidxyhc0.zqk.json"" \
              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint bitrix24 CreateLead ^
-             --url "b24-ar17wx.bitrix24.by" ^
-             --fields "{'ADDRESS':'Pushkin st., b. 10','ADDRESS_COUNTRY':'Russia','EMAIL':[{'VALUE':'yo@example.com','VALUE_TYPE':'HOME'},{'VALUE':'hi@example.com','VALUE_TYPE':'WORK'}],'NAME':'Ivan','LAST_NAME':'Ivanov','PHONE':[{'VALUE':'88005553535','VALUE_TYPE':'WORK'}],'TITLE':'MegaClient'}" ^
+             --url ""b24-ar17wx.bitrix24.by"" ^
+             --fields ""/tmp/qidxyhc0.zqk.json"" ^
              --token "***"
         ```
     </TabItem>
@@ -91,16 +87,16 @@ Method at API documentation: [crm.lead.add](https://dev.1c-bitrix.ru/rest_help/c
 
 ```json title="Result"
 {
- "result": 2430,
+ "result": 2458,
  "time": {
-  "start": 1757919136.78107,
-  "finish": 1757919137.71133,
-  "duration": 0.93025803565979,
-  "processing": 0.892561912536621,
-  "date_start": "2025-09-15T09:52:16+03:00",
-  "date_finish": "2025-09-15T09:52:17+03:00",
-  "operating_reset_at": 1757919736,
-  "operating": 0.892537117004394
+  "start": 1757977043.72848,
+  "finish": 1757977044.31012,
+  "duration": 0.581634998321533,
+  "processing": 0.556619882583618,
+  "date_start": "2025-09-15T22:57:23+00:00",
+  "date_finish": "2025-09-15T22:57:24+00:00",
+  "operating_reset_at": 1757977643,
+  "operating": 0.556604862213135
  }
 }
 ```

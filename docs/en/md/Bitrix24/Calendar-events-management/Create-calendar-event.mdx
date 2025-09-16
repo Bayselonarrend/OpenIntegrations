@@ -109,22 +109,18 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint bitrix24 CreateCalendarEvent \
-             --url "b24-ar17wx.bitrix24.by" \
-             --fields "{'type':'user','ownerId':1,'from':'2025-07-16T17:36:04.5765858','to':'2025-07-16T18:36:04.5765858','section':1098,'name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'busy','importance':'high','private_event':'N','rrule':{'FREQ':'DAILY','COUNT':3,'INTERVAL':10,'BYDAY':['SA','MO'],'UNTIL':'2025-07-26T17:36:04.5765858'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':1}],'attendees':['1','10'],'host':1,'meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" \
+             --url ""b24-ar17wx.bitrix24.by"" \
+             --fields ""/tmp/jhaqjeqm.24k.json"" \
              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint bitrix24 CreateCalendarEvent ^
-             --url "b24-ar17wx.bitrix24.by" ^
-             --fields "{'type':'user','ownerId':1,'from':'2025-07-16T17:36:04.5765858','to':'2025-07-16T18:36:04.5765858','section':1098,'name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'busy','importance':'high','private_event':'N','rrule':{'FREQ':'DAILY','COUNT':3,'INTERVAL':10,'BYDAY':['SA','MO'],'UNTIL':'2025-07-26T17:36:04.5765858'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':1}],'attendees':['1','10'],'host':1,'meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" ^
+             --url ""b24-ar17wx.bitrix24.by"" ^
+             --fields ""/tmp/jhaqjeqm.24k.json"" ^
              --token "***"
         ```
     </TabItem>
@@ -133,16 +129,16 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
 
 ```json title="Result"
 {
- "result": 2416,
+ "result": 2472,
  "time": {
-  "start": 1757919158.15096,
-  "finish": 1757919158.40207,
-  "duration": 0.251108884811401,
-  "processing": 0.226197957992554,
-  "date_start": "2025-09-15T09:52:38+03:00",
-  "date_finish": "2025-09-15T09:52:38+03:00",
-  "operating_reset_at": 1757919758,
-  "operating": 0.226180791854858
+  "start": 1757977116.84178,
+  "finish": 1757977117.01358,
+  "duration": 0.171799898147583,
+  "processing": 0.146694898605347,
+  "date_start": "2025-09-15T22:58:36+00:00",
+  "date_finish": "2025-09-15T22:58:37+00:00",
+  "operating_reset_at": 1757977716,
+  "operating": 0.14667797088623
  }
 }
 ```

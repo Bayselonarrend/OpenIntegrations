@@ -47,8 +47,6 @@ Method at API documentation: [post /v1/barcode/add](https://docs.ozon.ru/api/sel
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint ozon BindBarcodes \
              --clientid "***" \
              --apikey "***" \
@@ -58,8 +56,6 @@ Method at API documentation: [post /v1/barcode/add](https://docs.ozon.ru/api/sel
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint ozon BindBarcodes ^
              --clientid "***" ^
              --apikey "***" ^
@@ -69,15 +65,4 @@ Method at API documentation: [post /v1/barcode/add](https://docs.ozon.ru/api/sel
 </Tabs>
 
 
-```json title="Result"
-{
- "errors": [
-  {
-   "barcode": "112233",
-   "code": "item_not_found",
-   "error": "sellerID of item 1626044001 is not 2128753",
-   "sku": 1626044001
-  }
- ]
-}
-```
+

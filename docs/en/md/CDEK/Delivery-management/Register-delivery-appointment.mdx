@@ -76,22 +76,18 @@ Method at API documentation: [Registration of delivery appointment](https://api-
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint cdek RegisterDeliveryAppointment \
              --token "***" \
-             --appt "{'cdek_number':'1106207236','order_uuid':'21ceabf6-953e-43b3-9cef-318c783fcdd4','date':'2025-07-29','time_from':'10:00','time_to':'17:00','comment':'Group office','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':37.6204,'latitude':55.754,'country_code':'RU','region':'Novosibirsk','sub_region':'Novosibirsk','city':'Novosibirsk','kladr_code':'7700000000000','address':'st. Bluchera, 33'}}" \
+             --appt "{'cdek_number':'1106207236','order_uuid':'dbb9225f-576e-40c7-9571-bc0f9781a388','date':'2025-09-29','time_from':'10:00','time_to':'17:00','comment':'Group office','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Novosibirsk','sub_region':'Novosibirsk','city':'Novosibirsk','kladr_code':'7700000000000','address':'st. Bluchera, 33'}}" \
              --testapi "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint cdek RegisterDeliveryAppointment ^
              --token "***" ^
-             --appt "{'cdek_number':'1106207236','order_uuid':'21ceabf6-953e-43b3-9cef-318c783fcdd4','date':'2025-07-29','time_from':'10:00','time_to':'17:00','comment':'Group office','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':37.6204,'latitude':55.754,'country_code':'RU','region':'Novosibirsk','sub_region':'Novosibirsk','city':'Novosibirsk','kladr_code':'7700000000000','address':'st. Bluchera, 33'}}" ^
+             --appt "{'cdek_number':'1106207236','order_uuid':'dbb9225f-576e-40c7-9571-bc0f9781a388','date':'2025-09-29','time_from':'10:00','time_to':'17:00','comment':'Group office','to_location':{'code':'270','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Novosibirsk','sub_region':'Novosibirsk','city':'Novosibirsk','kladr_code':'7700000000000','address':'st. Bluchera, 33'}}" ^
              --testapi "***"
         ```
     </TabItem>
@@ -101,13 +97,13 @@ Method at API documentation: [Registration of delivery appointment](https://api-
 ```json title="Result"
 {
  "entity": {
-  "uuid": "3ed64627-dec1-420e-9c0b-83723d153fbf"
+  "uuid": "01506868-8818-4d44-870e-a25931cc900a"
  },
  "requests": [
   {
-   "request_uuid": "0661cf1b-d555-4ebe-881d-fb26251a2bc7",
+   "request_uuid": "b547a628-d3c8-4f52-92ae-e7890736783a",
    "type": "CREATE",
-   "date_time": "2025-09-15T09:58:43+03:00",
+   "date_time": "2025-09-15T23:08:21+00:00",
    "state": "ACCEPTED"
   }
  ],

@@ -60,23 +60,19 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint gcalendar CreateEvent \
              --token "***" \
-             --calendar "71f75db8bf9c75c25f264964b3af33cf6d655047017e7bc54cf74ab33dc9b704@group.calendar.google.com" \
-             --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'2025-07-15T17:13:04.7271347Z','EndDate':'2025-07-15T18:13:04.7271347Z','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
+             --calendar "73c36eb1ab0dd34c3c2f298af8fdac687154aa19a316b297b75bb9d76c68ee39@group.calendar.google.com" \
+             --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'09/15/2025 22:29:51','EndDate':'09/15/2025 23:29:51','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint gcalendar CreateEvent ^
              --token "***" ^
-             --calendar "71f75db8bf9c75c25f264964b3af33cf6d655047017e7bc54cf74ab33dc9b704@group.calendar.google.com" ^
-             --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'2025-07-15T17:13:04.7271347Z','EndDate':'2025-07-15T18:13:04.7271347Z','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
+             --calendar "73c36eb1ab0dd34c3c2f298af8fdac687154aa19a316b297b75bb9d76c68ee39@group.calendar.google.com" ^
+             --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'09/15/2025 22:29:51','EndDate':'09/15/2025 23:29:51','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
         ```
     </TabItem>
 </Tabs>
@@ -85,12 +81,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "kind": "calendar#event",
- "etag": "\"3515836314974782\"",
- "id": "90ekv800472n8coil98l1ufnqk",
+ "etag": "\"3515950789474558\"",
+ "id": "mevv7hielimqt2v59r2nt6fh6k",
  "status": "confirmed",
- "htmlLink": "https://www.google.com/calendar/event?eid=OTBla3Y4MDA0NzJuOGNvaWw5OGwxdWZucWsgMGZkZGViOTYyOGE1NzA4OGQzNTQ2YjI1ZGMwZmJjMDBkNzNiZWMxMGE4YmYxZjA0OTRmODEzYzQwMzg2ZTJhZEBn",
- "created": "2025-09-15T06:35:57Z",
- "updated": "2025-09-15T06:35:57.487Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=bWV2djdoaWVsaW1xdDJ2NTlyMm50NmZoNmsgNzNjMzZlYjFhYjBkZDM0YzNjMmYyOThhZjhmZGFjNjg3MTU0YWExOWEzMTZiMjk3Yjc1YmI5ZDc2YzY4ZWUzOUBn",
+ "created": "2025-09-15T22:29:54Z",
+ "updated": "2025-09-15T22:29:54.737Z",
  "summary": "New event",
  "description": "TestEventDescription",
  "location": "InOffice",
@@ -98,19 +94,19 @@ import TabItem from '@theme/TabItem';
   "email": "bayselonarrend@gmail.com"
  },
  "organizer": {
-  "email": "0fddeb9628a57088d3546b25dc0fbc00d73bec10a8bf1f0494f813c40386e2ad@group.calendar.google.com",
+  "email": "73c36eb1ab0dd34c3c2f298af8fdac687154aa19a316b297b75bb9d76c68ee39@group.calendar.google.com",
   "displayName": "TestCalendar",
   "self": true
  },
  "start": {
-  "dateTime": "2025-09-15T12:35:57+03:00",
+  "dateTime": "2025-09-15T22:29:51+00:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2025-09-15T13:35:57+03:00",
+  "dateTime": "2025-09-15T23:29:51+00:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "90ekv800472n8coil98l1ufnqk@google.com",
+ "iCalUID": "mevv7hielimqt2v59r2nt6fh6k@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true

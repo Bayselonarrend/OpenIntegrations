@@ -55,29 +55,25 @@ Method at API documentation: [SendFileByUrl](https://green-api.com/docs/api/send
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint greenapi SendFileByURL \
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
              --chat "120363410406221140@g.us" \
              --url "https://hut.openintegrations.dev/test_data/video.mp4" \
              --filename "vid.mp4" \
              --caption "File description" \
-             --quoted "BAE5ED514EE3C3DC"
+             --quoted "BAE51F08E377BDA5"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint greenapi SendFileByURL ^
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
              --chat "120363410406221140@g.us" ^
              --url "https://hut.openintegrations.dev/test_data/video.mp4" ^
              --filename "vid.mp4" ^
              --caption "File description" ^
-             --quoted "BAE5ED514EE3C3DC"
+             --quoted "BAE51F08E377BDA5"
         ```
     </TabItem>
 </Tabs>
@@ -85,6 +81,6 @@ Method at API documentation: [SendFileByUrl](https://green-api.com/docs/api/send
 
 ```json title="Result"
 {
- "idMessage": "BAE5F235DFC57F65"
+ "idMessage": "BAE51F08E377BDA5"
 }
 ```
