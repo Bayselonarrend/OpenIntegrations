@@ -1,7 +1,7 @@
 ﻿{
  "result": [
   {
-   "ID": "3024",
+   "ID": "3036",
    "BLOG_ID": "1",
    "PUBLISH_STATUS": "P",
    "TITLE": "Новый заголовок новости",
@@ -11,7 +11,7 @@
    "CODE": null,
    "MICRO": "N",
    "DETAIL_TEXT": "Новый текст новости",
-   "DATE_PUBLISH": "2025-09-15T20:20:57+00:00",
+   "DATE_PUBLISH": "2025-09-16T04:54:28+00:00",
    "CATEGORY_ID": null,
    "HAS_SOCNET_ALL": "N",
    "HAS_TAGS": "N",
@@ -62,7 +62,7 @@
      "BASE_TYPE": "file"
     },
     "VALUE": false,
-    "ENTITY_VALUE_ID": 3024,
+    "ENTITY_VALUE_ID": 3036,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -93,7 +93,7 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3024,
+    "ENTITY_VALUE_ID": 3036,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -138,7 +138,7 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3024,
+    "ENTITY_VALUE_ID": 3036,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -177,13 +177,13 @@
      ]
     },
     "VALUE": [
-     11842,
-     11844,
-     11846
+     11890,
+     11892,
+     11894
     ],
-    "ENTITY_VALUE_ID": 3024,
+    "ENTITY_VALUE_ID": 3036,
     "VALUE_EXISTS": true,
-    "VALUE_RAW": "a:3:{i:0;i:11842;i:1;i:11844;i:2;i:11846;}",
+    "VALUE_RAW": "a:3:{i:0;i:11890;i:1;i:11892;i:2;i:11894;}",
     "CUSTOM_DATA": {
      "PHOTO_TEMPLATE": ""
     }
@@ -230,7 +230,7 @@
      ]
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3024,
+    "ENTITY_VALUE_ID": 3036,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -275,7 +275,7 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3024,
+    "ENTITY_VALUE_ID": 3036,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -322,7 +322,7 @@
      "BASE_TYPE": "datetime"
     },
     "VALUE": "",
-    "ENTITY_VALUE_ID": 3024,
+    "ENTITY_VALUE_ID": 3036,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -361,27 +361,27 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3024,
+    "ENTITY_VALUE_ID": 3036,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
    },
    "FILES": [
-    11842,
-    11844,
-    11846
+    11890,
+    11892,
+    11894
    ]
   }
  ],
  "total": 1,
  "time": {
-  "start": 1757967675.78906,
-  "finish": 1757967675.83827,
-  "duration": 0.0492110252380371,
-  "processing": 0.0178871154785156,
-  "date_start": "2025-09-15T20:21:15+00:00",
-  "date_finish": "2025-09-15T20:21:15+00:00",
-  "operating_reset_at": 1757968275,
+  "start": 1757998486.40677,
+  "finish": 1757998486.44429,
+  "duration": 0.0375261306762695,
+  "processing": 0.0102758407592773,
+  "date_start": "2025-09-16T04:54:46+00:00",
+  "date_finish": "2025-09-16T04:54:46+00:00",
+  "operating_reset_at": 1757999086,
   "operating": 0
  }
 }
