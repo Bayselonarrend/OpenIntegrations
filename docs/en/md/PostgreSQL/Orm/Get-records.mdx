@@ -107,16 +107,18 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint postgres GetRecords \
-             --table "testtable" \
-             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+             --table ""testtable"" \
+             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
+             --tls ""/tmp/cfleng4k.so1.json""
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint postgres GetRecords ^
-             --table "testtable" ^
-             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/"
+             --table ""testtable"" ^
+             --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
+             --tls ""/tmp/cfleng4k.so1.json""
         ```
     </TabItem>
 </Tabs>
@@ -154,10 +156,10 @@ import TabItem from '@theme/TabItem';
    "smallint_field": 5,
    "smallserial_field": 6,
    "text_field": "Some text",
-   "time_field": "09:28:15",
-   "ts_field": "2025-09-15T09:28:15",
-   "tswtz_field": "2025-09-15T07:28:15.727109+03:00",
-   "uuid_field": "45d9a246-09da-4091-894f-ebe6fabda6dc",
+   "time_field": "22:10:42",
+   "ts_field": "2025-09-15T22:10:42",
+   "tswtz_field": "2025-09-15T17:10:42.738452+00:00",
+   "uuid_field": "bd502198-c3e3-4c9e-8ef2-77fa2e8f52df",
    "varchar_field": "Some varchar"
   }
  ],

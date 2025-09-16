@@ -61,26 +61,22 @@ Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_he
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON data can also be passed as a path to a .json file
-            
             oint bitrix24 CreatePost \
-             --url "b24-ar17wx.bitrix24.by" \
-             --text "Text of post" \
-             --files "{'1.png':'https://hut.openintegrations.dev/test_data/picture.jpg','2.png':'https://hut.openintegrations.dev/test_data/picture2.jpg'}" \
-             --title "Post title" \
+             --url ""b24-ar17wx.bitrix24.by"" \
+             --text ""Text of post"" \
+             --files ""/tmp/ulq0ce0n.kpc.json"" \
+             --title ""Post title"" \
              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON data can also be passed as a path to a .json file
-            
             oint bitrix24 CreatePost ^
-             --url "b24-ar17wx.bitrix24.by" ^
-             --text "Text of post" ^
-             --files "{'1.png':'https://hut.openintegrations.dev/test_data/picture.jpg','2.png':'https://hut.openintegrations.dev/test_data/picture2.jpg'}" ^
-             --title "Post title" ^
+             --url ""b24-ar17wx.bitrix24.by"" ^
+             --text ""Text of post"" ^
+             --files ""/tmp/ulq0ce0n.kpc.json"" ^
+             --title ""Post title"" ^
              --token "***"
         ```
     </TabItem>
@@ -89,16 +85,16 @@ Method at API documentation: [log.blogpost.add](https://dev.1c-bitrix.ru/rest_he
 
 ```json title="Result"
 {
- "result": 3000,
+ "result": 3028,
  "time": {
-  "start": 1757918646.45709,
-  "finish": 1757918647.17748,
-  "duration": 0.720388889312744,
-  "processing": 0.693776845932007,
-  "date_start": "2025-09-15T09:44:06+03:00",
-  "date_finish": "2025-09-15T09:44:07+03:00",
-  "operating_reset_at": 1757919246,
-  "operating": 0.693757057189941
+  "start": 1757976243.35157,
+  "finish": 1757976243.87206,
+  "duration": 0.520492076873779,
+  "processing": 0.493538856506348,
+  "date_start": "2025-09-15T22:44:03+00:00",
+  "date_finish": "2025-09-15T22:44:03+00:00",
+  "operating_reset_at": 1757976843,
+  "operating": 0.493517875671387
  }
 }
 ```

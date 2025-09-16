@@ -54,20 +54,18 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 MakeFolderCopy \
-             --url "b24-ar17wx.bitrix24.by" \
-             --folderid 39118 \
-             --tagetid 39120 \
-             --token "***"
+             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
+             --folderid "42718" \
+             --tagetid "42716"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 MakeFolderCopy ^
-             --url "b24-ar17wx.bitrix24.by" ^
-             --folderid 39118 ^
-             --tagetid 39120 ^
-             --token "***"
+             --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
+             --folderid "42718" ^
+             --tagetid "42716"
         ```
     </TabItem>
 </Tabs>
@@ -76,16 +74,16 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
 ```json title="Result"
 {
  "result": {
-  "ID": 42342,
+  "ID": 42720,
   "NAME": "New subfolder",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": 42342,
-  "PARENT_ID": "42338",
+  "REAL_OBJECT_ID": 42720,
+  "PARENT_ID": "42716",
   "DELETED_TYPE": 0,
-  "CREATE_TIME": "2025-09-15T09:46:19+03:00",
-  "UPDATE_TIME": "2025-09-15T09:46:19+03:00",
+  "CREATE_TIME": "2025-09-15T22:49:55+00:00",
+  "UPDATE_TIME": "2025-09-15T22:49:55+00:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -93,14 +91,14 @@ Method at API documentation: [disk.folder.copyto](https://dev.1c-bitrix.ru/rest_
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog/New subfolder 2/New subfolder"
  },
  "time": {
-  "start": 1757918779.82274,
-  "finish": 1757918779.94693,
-  "duration": 0.124189853668213,
-  "processing": 0.100175142288208,
-  "date_start": "2025-09-15T09:46:19+03:00",
-  "date_finish": "2025-09-15T09:46:19+03:00",
-  "operating_reset_at": 1757919379,
-  "operating": 0.100157022476196
+  "start": 1757976595.60966,
+  "finish": 1757976595.69257,
+  "duration": 0.0829141139984131,
+  "processing": 0.0611820220947266,
+  "date_start": "2025-09-15T22:49:55+00:00",
+  "date_finish": "2025-09-15T22:49:55+00:00",
+  "operating_reset_at": 1757977195,
+  "operating": 0
  }
 }
 ```
