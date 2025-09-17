@@ -1,3 +1,3 @@
 oint vk ОткрытьОбсуждение ^
-  --topic "54111472" ^
-  --auth ""C:\Users\bayse\AppData\Local\Temp\1attnbvb.obx.json""
+  --topic "54112370" ^
+  --auth ""C:\Users\bayse\AppData\Local\Temp\fczzplyo.hsz.json""

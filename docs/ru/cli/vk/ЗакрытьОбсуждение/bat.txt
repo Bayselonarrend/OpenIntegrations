@@ -1,4 +1,4 @@
 oint vk ЗакрытьОбсуждение ^
-  --topic "54111472" ^
+  --topic "54112370" ^
   --remove "false" ^
-  --auth ""C:\Users\bayse\AppData\Local\Temp\01bifb2q.ab1.json""
+  --auth ""C:\Users\bayse\AppData\Local\Temp\m3yvd1d4.azz.json""

@@ -11,7 +11,7 @@
   "Content-Type": "application/json; charset=utf-8",
   "Host": "httpbin.org",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Amzn-Trace-Id": "Root=1-68c8f99d-65b4381b4549e5ac41e6fc56"
+  "X-Amzn-Trace-Id": "Root=1-68cabfb6-7864861a006153922a184e48"
  },
  "json": {
   "Поле1": 10,

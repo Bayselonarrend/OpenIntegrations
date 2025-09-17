@@ -1,4 +1,4 @@
 oint bitrix24 СоздатьЛид \
   --url ""b24-ar17wx.bitrix24.by"" \
-  --fields ""C:\Users\bayse\AppData\Local\Temp\fi51q5n4.1gj.json"" \
+  --fields ""C:\Users\bayse\AppData\Local\Temp\nppenro4.kk1.json"" \
   --token "***"
