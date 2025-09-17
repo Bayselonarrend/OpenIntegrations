@@ -1,6 +1,6 @@
 oint ftp ПолучитьНастройкиПрокси ^
   --addr "127.0.0.1" ^
-  --port 1080 ^
-  --type "socks5" ^
+  --port 8071 ^
+  --type "http" ^
   --login "proxyuser" ^
   --pass "***"

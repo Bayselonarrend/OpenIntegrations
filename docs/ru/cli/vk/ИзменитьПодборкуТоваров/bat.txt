@@ -1,4 +1,4 @@
 oint vk ИзменитьПодборкуТоваров ^
   --title ""Измененная подборка"" ^
-  --sel "143" ^
-  --auth ""C:\Users\bayse\AppData\Local\Temp\iehuwkhy.1fr.json""
+  --sel "140" ^
+  --auth ""C:\Users\bayse\AppData\Local\Temp\gxplonbz.1iq.json""

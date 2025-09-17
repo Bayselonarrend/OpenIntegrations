@@ -1,3 +1,5 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint ollama ПолучитьПредставления ^
   --url ""https://hut.openintegrations.dev/ollama"" ^
   --model ""tinyllama"" ^

@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокСвойств ^
-  --auth ""C:\Users\bayse\AppData\Local\Temp\kl2gl5dm.kxs.json""
+  --auth ""C:\Users\bayse\AppData\Local\Temp\2xnwwnub.p5a.json""

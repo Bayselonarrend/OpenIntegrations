@@ -1,5 +1,5 @@
 oint bitrix24 ИзменитьЗадачу \
   --url ""b24-ar17wx.bitrix24.by"" \
-  --task ""8032"" \
-  --fields ""C:\Users\bayse\AppData\Local\Temp\lfrccbqg.d4v.json"" \
+  --task ""8042"" \
+  --fields ""C:\Users\bayse\AppData\Local\Temp\bzennsem.yp2.json"" \
   --token "***"

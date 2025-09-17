@@ -1,5 +1,5 @@
 oint bitrix24 ИзменитьЛид \
   --url ""b24-ar17wx.bitrix24.by"" \
-  --lead "2474" \
-  --fields ""C:\Users\bayse\AppData\Local\Temp\so0aim32.2ed.json"" \
+  --lead "2478" \
+  --fields ""C:\Users\bayse\AppData\Local\Temp\5r1gqag0.uoz.json"" \
   --token "***"

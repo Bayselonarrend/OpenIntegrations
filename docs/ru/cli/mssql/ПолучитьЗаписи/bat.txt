@@ -1,4 +1,4 @@
 oint mssql ПолучитьЗаписи ^
   --table ""testtable"" ^
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-  --tls ""C:\Users\bayse\AppData\Local\Temp\cfl4thvt.edg.json""
+  --tls ""C:\Users\bayse\AppData\Local\Temp\u14vacpa.pfi.json""

@@ -1,4 +1,4 @@
 oint bitrix24 УстановитьПользовательскиеНастройкиКалендаря ^
   --url ""b24-ar17wx.bitrix24.by"" ^
-  --settings ""C:\Users\bayse\AppData\Local\Temp\ci5zsitg.cc5.json"" ^
+  --settings ""C:\Users\bayse\AppData\Local\Temp\u1z2g15j.e0i.json"" ^
   --token "***"

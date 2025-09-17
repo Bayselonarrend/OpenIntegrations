@@ -1996,7 +1996,7 @@
    }
   },
   {
-   "ID": "1378",
+   "ID": "1382",
    "NAME": "Новое имя календаря",
    "GAPI_CALENDAR_ID": null,
    "DESCRIPTION": "Этот календарь был изменен",
@@ -2004,13 +2004,13 @@
    "TEXT_COLOR": "#000000",
    "EXPORT": {
     "ALLOW": true,
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1378&sign=803572ac54eca13900d0958a8b98d0f6&bx_hit_hash=fIjIZOpXq472tH6QuMhtU7rB8Pg4ZvTB"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1382&sign=2450c8b54cc9176321f44d03edd92c4d&bx_hit_hash=fIjIZOpXq472tH6QuMhtU7rB8Pg4ZvTB"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2025-09-16 23:38:00",
-   "TIMESTAMP_X": "2025-09-16 23:38:00",
+   "DATE_CREATE": "2025-09-17 16:22:00",
+   "TIMESTAMP_X": "2025-09-17 16:22:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": null,
    "PAGE_TOKEN": null,
@@ -2031,7 +2031,7 @@
    }
   },
   {
-   "ID": "1380",
+   "ID": "1384",
    "NAME": "Новое имя календаря",
    "GAPI_CALENDAR_ID": null,
    "DESCRIPTION": "Этот календарь был изменен",
@@ -2039,13 +2039,13 @@
    "TEXT_COLOR": "#000000",
    "EXPORT": {
     "ALLOW": true,
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1380&sign=3c1d59f610e2470a36a7422dcb12b0c1&bx_hit_hash=fIjIZOpXq472tH6QuMhtU7rB8Pg4ZvTB"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1384&sign=915b37df955398882aef31410c98cd4d&bx_hit_hash=fIjIZOpXq472tH6QuMhtU7rB8Pg4ZvTB"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2025-09-16 23:38:00",
-   "TIMESTAMP_X": "2025-09-16 23:38:00",
+   "DATE_CREATE": "2025-09-17 16:22:00",
+   "TIMESTAMP_X": "2025-09-17 16:22:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": null,
    "PAGE_TOKEN": null,
@@ -2067,13 +2067,13 @@
   }
  ],
  "time": {
-  "start": 1758055103.20777,
-  "finish": 1758055103.24223,
-  "duration": 0.0344600677490234,
-  "processing": 0.0123600959777832,
-  "date_start": "2025-09-16T23:38:23+03:00",
-  "date_finish": "2025-09-16T23:38:23+03:00",
-  "operating_reset_at": 1758055703,
+  "start": 1758115320.75015,
+  "finish": 1758115320.788,
+  "duration": 0.037851095199585,
+  "processing": 0.012686014175415,
+  "date_start": "2025-09-17T16:22:00+03:00",
+  "date_finish": "2025-09-17T16:22:00+03:00",
+  "operating_reset_at": 1758115920,
   "operating": 0
  }
 }
