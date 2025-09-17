@@ -443,7 +443,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1466,
+    "marketing_price": 1475,
     "marketing_seller_price": 1829,
     "min_price": 1646,
     "old_price": 2195,
@@ -455,12 +455,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 874,
+     "min_price": 964,
      "min_price_currency": "RUB",
-     "price_index_value": 1.37
+     "price_index_value": 1.31
     },
     "ozon_index_data": {
-     "min_price": 1603,
+     "min_price": 1606,
      "min_price_currency": "RUB",
      "price_index_value": 0.87
     },
@@ -750,14 +750,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 559,
+     "min_price": 654,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 0.74
     },
     "ozon_index_data": {
-     "min_price": 488,
+     "min_price": 645,
      "min_price_currency": "RUB",
-     "price_index_value": 1
+     "price_index_value": 0.76
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -809,14 +809,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 840,
+     "min_price": 714,
      "min_price_currency": "RUB",
-     "price_index_value": 0.54
+     "price_index_value": 0.63
     },
     "ozon_index_data": {
-     "min_price": 474,
+     "min_price": 481,
      "min_price_currency": "RUB",
-     "price_index_value": 0.95
+     "price_index_value": 0.94
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -1104,9 +1104,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 535,
+     "min_price": 555,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0.86
     },
     "ozon_index_data": {
      "min_price": 0,
@@ -4467,12 +4467,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 3825,
+     "min_price": 5322,
      "min_price_currency": "RUB",
-     "price_index_value": 1.03
+     "price_index_value": 0.74
     },
     "ozon_index_data": {
-     "min_price": 5026,
+     "min_price": 5047,
      "min_price_currency": "RUB",
      "price_index_value": 0.78
     },
@@ -4632,7 +4632,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1045,
+    "marketing_price": 1074,
     "marketing_seller_price": 1330,
     "min_price": 1221,
     "old_price": 1628,
@@ -4644,14 +4644,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1095,
+     "min_price": 1370,
      "min_price_currency": "RUB",
-     "price_index_value": 0.9
+     "price_index_value": 0.74
     },
     "ozon_index_data": {
-     "min_price": 1144,
+     "min_price": 1172,
      "min_price_currency": "RUB",
-     "price_index_value": 0.86
+     "price_index_value": 0.87
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -6355,9 +6355,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 314,
+     "min_price": 376,
      "min_price_currency": "RUB",
-     "price_index_value": 1.72
+     "price_index_value": 1.66
     },
     "ozon_index_data": {
      "min_price": 1623,
@@ -6414,14 +6414,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1640,
+     "min_price": 1794,
      "min_price_currency": "RUB",
-     "price_index_value": 0.73
+     "price_index_value": 0.67
     },
     "ozon_index_data": {
-     "min_price": 1354,
+     "min_price": 1387,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0.86
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -6473,16 +6473,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 790,
+     "min_price": 1233,
      "min_price_currency": "RUB",
-     "price_index_value": 1.27
+     "price_index_value": 0.88
     },
     "ozon_index_data": {
-     "min_price": 1249,
+     "min_price": 1208,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 0.9
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -6668,7 +6668,7 @@
    }
   },
   {
-   "acquiring": 22.76,
+   "acquiring": 35.15,
    "offer_id": "0380359657",
    "product_id": 1382965929,
    "volume_weight": 0.1,
@@ -6691,21 +6691,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Распродажа летнего",
-      "value": 1198,
-      "date_from": "2025-07-30T21:00:00Z",
-      "date_to": "2025-09-30T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1198,
-    "marketing_seller_price": 1198,
+    "marketing_price": 1850,
+    "marketing_seller_price": 1850,
     "min_price": 941,
     "old_price": 2000,
     "price": 1850,
@@ -6723,9 +6716,9 @@
     "ozon_index_data": {
      "min_price": 1500,
      "min_price_currency": "RUB",
-     "price_index_value": 0.8
+     "price_index_value": 1.19
     },
-    "color_index": "GREEN",
+    "color_index": "RED",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -7058,7 +7051,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1823,
+    "marketing_price": 1832,
     "marketing_seller_price": 2247,
     "min_price": 2023,
     "old_price": 2697,
@@ -7075,9 +7068,9 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 2775,
+     "min_price": 2769,
      "min_price_currency": "RUB",
-     "price_index_value": 0.62
+     "price_index_value": 0.63
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7117,7 +7110,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1400,
+    "marketing_price": 1436,
     "marketing_seller_price": 1777,
     "min_price": 1599,
     "old_price": 2132,
@@ -7134,9 +7127,9 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 3187,
+     "min_price": 3193,
      "min_price_currency": "RUB",
-     "price_index_value": 0.41
+     "price_index_value": 0.43
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7353,7 +7346,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1508,
+    "marketing_price": 1517,
     "marketing_seller_price": 1881,
     "min_price": 1693,
     "old_price": 2258,
@@ -7365,14 +7358,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1787,
+     "min_price": 1867,
      "min_price_currency": "RUB",
-     "price_index_value": 0.8
+     "price_index_value": 0.77
     },
     "ozon_index_data": {
-     "min_price": 1596,
+     "min_price": 1521,
      "min_price_currency": "RUB",
-     "price_index_value": 0.9
+     "price_index_value": 0.95
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7412,7 +7405,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1383,
+    "marketing_price": 1391,
     "marketing_seller_price": 1725,
     "min_price": 1552,
     "old_price": 2070,
@@ -7426,12 +7419,12 @@
     "external_index_data": {
      "min_price": 1696,
      "min_price_currency": "RUB",
-     "price_index_value": 0.77
+     "price_index_value": 0.78
     },
     "ozon_index_data": {
-     "min_price": 1799,
+     "min_price": 1794,
      "min_price_currency": "RUB",
-     "price_index_value": 0.73
+     "price_index_value": 0.74
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7530,7 +7523,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1688,
+    "marketing_price": 1689,
     "marketing_seller_price": 2090,
     "min_price": 1881,
     "old_price": 2508,
@@ -7547,7 +7540,7 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 1392,
+     "min_price": 1402,
      "min_price_currency": "RUB",
      "price_index_value": 1.13
     },
@@ -7837,16 +7830,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 217,
+     "min_price": 290,
      "min_price_currency": "RUB",
-     "price_index_value": 1.24
+     "price_index_value": 0.99
     },
     "ozon_index_data": {
      "min_price": 288,
      "min_price_currency": "RUB",
-     "price_index_value": 0.99
+     "price_index_value": 1
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -7884,7 +7877,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1865,
+    "marketing_price": 1874,
     "marketing_seller_price": 2299,
     "min_price": 2070,
     "old_price": 2759,
@@ -7901,9 +7894,9 @@
      "price_index_value": 0.89
     },
     "ozon_index_data": {
-     "min_price": 2323,
+     "min_price": 2187,
      "min_price_currency": "RUB",
-     "price_index_value": 0.76
+     "price_index_value": 0.81
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8002,7 +7995,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1688,
+    "marketing_price": 1689,
     "marketing_seller_price": 2090,
     "min_price": 1881,
     "old_price": 2508,
@@ -8014,14 +8007,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1795,
+     "min_price": 1928,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0.83
     },
     "ozon_index_data": {
-     "min_price": 2275,
+     "min_price": 2264,
      "min_price_currency": "RUB",
-     "price_index_value": 0.7
+     "price_index_value": 0.71
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8073,12 +8066,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1095,
+     "min_price": 1319,
      "min_price_currency": "RUB",
-     "price_index_value": 0.92
+     "price_index_value": 0.76
     },
     "ozon_index_data": {
-     "min_price": 1524,
+     "min_price": 1534,
      "min_price_currency": "RUB",
      "price_index_value": 0.66
     },
@@ -8132,14 +8125,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1272,
+     "min_price": 1589,
      "min_price_currency": "RUB",
-     "price_index_value": 0.75
+     "price_index_value": 0.6
     },
     "ozon_index_data": {
-     "min_price": 1183,
+     "min_price": 1208,
      "min_price_currency": "RUB",
-     "price_index_value": 0.81
+     "price_index_value": 0.79
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8250,9 +8243,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 599,
+     "min_price": 790,
      "min_price_currency": "RUB",
-     "price_index_value": 1.77
+     "price_index_value": 1.69
     },
     "ozon_index_data": {
      "min_price": 3079,
@@ -8297,7 +8290,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1538,
+    "marketing_price": 1580,
     "marketing_seller_price": 1962,
     "min_price": 1766,
     "old_price": 2354,
@@ -8309,12 +8302,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1534,
+     "min_price": 2019,
      "min_price_currency": "RUB",
-     "price_index_value": 0.95
+     "price_index_value": 0.74
     },
     "ozon_index_data": {
-     "min_price": 1570,
+     "min_price": 1618,
      "min_price_currency": "RUB",
      "price_index_value": 0.93
     },
@@ -8373,9 +8366,9 @@
      "price_index_value": 1.73
     },
     "ozon_index_data": {
-     "min_price": 2384,
+     "min_price": 2020,
      "min_price_currency": "RUB",
-     "price_index_value": 0.94
+     "price_index_value": 1.1
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -8415,7 +8408,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2514,
+    "marketing_price": 2528,
     "marketing_seller_price": 3091,
     "min_price": 2872,
     "old_price": 3829,
@@ -8427,14 +8420,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 599,
+     "min_price": 790,
      "min_price_currency": "RUB",
-     "price_index_value": 1.75
+     "price_index_value": 1.67
     },
     "ozon_index_data": {
-     "min_price": 2738,
+     "min_price": 2803,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 0.86
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -8486,14 +8479,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1023,
+     "min_price": 810,
      "min_price_currency": "RUB",
-     "price_index_value": 1.64
+     "price_index_value": 1.71
     },
     "ozon_index_data": {
-     "min_price": 3029,
+     "min_price": 3165,
      "min_price_currency": "RUB",
-     "price_index_value": 0.93
+     "price_index_value": 0.89
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -8545,14 +8538,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 594,
+     "min_price": 781,
      "min_price_currency": "RUB",
-     "price_index_value": 1.77
+     "price_index_value": 1.69
     },
     "ozon_index_data": {
-     "min_price": 3029,
+     "min_price": 3165,
      "min_price_currency": "RUB",
-     "price_index_value": 0.84
+     "price_index_value": 0.81
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -8663,16 +8656,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 481,
+     "min_price": 1090,
      "min_price_currency": "RUB",
-     "price_index_value": 1.32
+     "price_index_value": 0.64
     },
     "ozon_index_data": {
-     "min_price": 808,
+     "min_price": 829,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 0.85
     },
-    "color_index": "RED",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -8828,7 +8821,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 753,
+    "marketing_price": 748,
     "marketing_seller_price": 890,
     "min_price": 828,
     "old_price": 1104,
@@ -8840,14 +8833,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 711,
+     "min_price": 937,
      "min_price_currency": "RUB",
-     "price_index_value": 1
+     "price_index_value": 0.76
     },
     "ozon_index_data": {
-     "min_price": 705,
+     "min_price": 721,
      "min_price_currency": "RUB",
-     "price_index_value": 1.01
+     "price_index_value": 0.99
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8958,14 +8951,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1325,
+     "min_price": 1307,
      "min_price_currency": "RUB",
      "price_index_value": 1.49
     },
     "ozon_index_data": {
-     "min_price": 2954,
+     "min_price": 3032,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 0.85
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -9076,16 +9069,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1653,
+     "min_price": 1743,
      "min_price_currency": "RUB",
-     "price_index_value": 1.04
+     "price_index_value": 0.99
     },
     "ozon_index_data": {
-     "min_price": 1699,
+     "min_price": 1750,
      "min_price_currency": "RUB",
-     "price_index_value": 1.02
+     "price_index_value": 0.99
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -9094,7 +9087,7 @@
    }
   },
   {
-   "acquiring": 39.65,
+   "acquiring": 46.66,
    "offer_id": "0380359625",
    "product_id": 1535776520,
    "volume_weight": 0.1,
@@ -9117,21 +9110,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Распродажа летнего",
-      "value": 2087,
-      "date_from": "2025-07-30T21:00:00Z",
-      "date_to": "2025-09-30T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1679,
-    "marketing_seller_price": 2087,
+    "marketing_price": 1981,
+    "marketing_seller_price": 2456,
     "min_price": 2211,
     "old_price": 2947,
     "price": 2456,
@@ -9142,14 +9128,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1734,
+     "min_price": 2271,
      "min_price_currency": "RUB",
-     "price_index_value": 0.91
+     "price_index_value": 0.83
     },
     "ozon_index_data": {
-     "min_price": 1868,
+     "min_price": 1916,
      "min_price_currency": "RUB",
-     "price_index_value": 0.85
+     "price_index_value": 0.98
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9206,11 +9192,11 @@
      "price_index_value": 0.99
     },
     "ozon_index_data": {
-     "min_price": 1699,
+     "min_price": 1708,
      "min_price_currency": "RUB",
-     "price_index_value": 1.02
+     "price_index_value": 1.01
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -9319,9 +9305,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1187,
+     "min_price": 1286,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 0.81
     },
     "ozon_index_data": {
      "min_price": 1592,
@@ -9366,7 +9352,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1688,
+    "marketing_price": 1689,
     "marketing_seller_price": 2090,
     "min_price": 1881,
     "old_price": 2508,
@@ -9378,14 +9364,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1384,
+     "min_price": 1483,
      "min_price_currency": "RUB",
-     "price_index_value": 1.14
+     "price_index_value": 1.08
     },
     "ozon_index_data": {
-     "min_price": 1885,
+     "min_price": 2069,
      "min_price_currency": "RUB",
-     "price_index_value": 0.85
+     "price_index_value": 0.78
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -9425,7 +9411,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2465,
+    "marketing_price": 2468,
     "marketing_seller_price": 3031,
     "min_price": 2728,
     "old_price": 3637,
@@ -9437,14 +9423,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 3015,
+     "min_price": 3386,
      "min_price_currency": "RUB",
-     "price_index_value": 0.78
+     "price_index_value": 0.69
     },
     "ozon_index_data": {
-     "min_price": 2751,
+     "min_price": 2621,
      "min_price_currency": "RUB",
-     "price_index_value": 0.85
+     "price_index_value": 0.89
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9484,7 +9470,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1259,
+    "marketing_price": 1261,
     "marketing_seller_price": 1568,
     "min_price": 1411,
     "old_price": 1881,
@@ -9496,16 +9482,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1755,
+     "min_price": 722,
      "min_price_currency": "RUB",
-     "price_index_value": 0.68
+     "price_index_value": 1.4
     },
     "ozon_index_data": {
-     "min_price": 1443,
+     "min_price": 1596,
      "min_price_currency": "RUB",
-     "price_index_value": 0.82
+     "price_index_value": 0.75
     },
-    "color_index": "GREEN",
+    "color_index": "RED",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -9543,7 +9529,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1851,
+    "marketing_price": 1865,
     "marketing_seller_price": 2299,
     "min_price": 2070,
     "old_price": 2759,
@@ -9555,14 +9541,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 2015,
+     "min_price": 2153,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 0.82
     },
     "ozon_index_data": {
-     "min_price": 2323,
+     "min_price": 2187,
      "min_price_currency": "RUB",
-     "price_index_value": 0.75
+     "price_index_value": 0.81
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9632,7 +9618,7 @@
    }
   },
   {
-   "acquiring": 32.57,
+   "acquiring": 36.42,
    "offer_id": "0370355030",
    "product_id": 1626637524,
    "volume_weight": 0.1,
@@ -9655,21 +9641,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Распродажа летнего",
-      "value": 1714,
-      "date_from": "2025-07-30T21:00:00Z",
-      "date_to": "2025-09-30T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1380,
-    "marketing_seller_price": 1714,
+    "marketing_price": 1553,
+    "marketing_seller_price": 1917,
     "min_price": 1816,
     "old_price": 2421,
     "price": 1917,
@@ -9680,16 +9659,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1493,
+     "min_price": 1624,
      "min_price_currency": "RUB",
-     "price_index_value": 0.88
+     "price_index_value": 0.91
     },
     "ozon_index_data": {
-     "min_price": 1348,
+     "min_price": 1381,
      "min_price_currency": "RUB",
-     "price_index_value": 0.97
+     "price_index_value": 1.06
     },
-    "color_index": "GREEN",
+    "color_index": "YELLOW",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -9698,7 +9677,7 @@
    }
   },
   {
-   "acquiring": 40.26,
+   "acquiring": 47.37,
    "offer_id": "0371045016",
    "product_id": 1626703485,
    "volume_weight": 0.4,
@@ -9721,21 +9700,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Распродажа летнего",
-      "value": 2119,
-      "date_from": "2025-07-30T21:00:00Z",
-      "date_to": "2025-09-30T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1706,
-    "marketing_seller_price": 2119,
+    "marketing_price": 2019,
+    "marketing_seller_price": 2493,
     "min_price": 2244,
     "old_price": 2991,
     "price": 2493,
@@ -9748,12 +9720,12 @@
     "external_index_data": {
      "min_price": 2036,
      "min_price_currency": "RUB",
-     "price_index_value": 0.8
+     "price_index_value": 0.94
     },
     "ozon_index_data": {
-     "min_price": 1964,
+     "min_price": 2015,
      "min_price_currency": "RUB",
-     "price_index_value": 0.82
+     "price_index_value": 0.95
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10631,12 +10603,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 559,
+     "min_price": 665,
      "min_price_currency": "RUB",
-     "price_index_value": 0.86
+     "price_index_value": 0.72
     },
     "ozon_index_data": {
-     "min_price": 1231,
+     "min_price": 1232,
      "min_price_currency": "RUB",
      "price_index_value": 0.39
     },
@@ -10690,9 +10662,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 580,
+     "min_price": 831,
      "min_price_currency": "RUB",
-     "price_index_value": 0.86
+     "price_index_value": 0.6
     },
     "ozon_index_data": {
      "min_price": 502,
@@ -10796,7 +10768,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1288,
+    "marketing_price": 1296,
     "marketing_seller_price": 1600,
     "min_price": 1599,
     "old_price": 2132,
@@ -10810,12 +10782,12 @@
     "external_index_data": {
      "min_price": 1324,
      "min_price_currency": "RUB",
-     "price_index_value": 0.92
+     "price_index_value": 0.93
     },
     "ozon_index_data": {
      "min_price": 1502,
      "min_price_currency": "RUB",
-     "price_index_value": 0.81
+     "price_index_value": 0.82
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10867,9 +10839,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1599,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.6
+     "price_index_value": 0
     },
     "ozon_index_data": {
      "min_price": 1853,
@@ -10914,7 +10886,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1431,
+    "marketing_price": 1440,
     "marketing_seller_price": 1777,
     "min_price": 1599,
     "old_price": 2132,
@@ -10926,14 +10898,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 346,
+     "min_price": 433,
      "min_price_currency": "RUB",
-     "price_index_value": 1.75
+     "price_index_value": 1.68
     },
     "ozon_index_data": {
-     "min_price": 1473,
+     "min_price": 1510,
      "min_price_currency": "RUB",
-     "price_index_value": 0.92
+     "price_index_value": 0.91
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -10985,16 +10957,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 744,
+     "min_price": 980,
      "min_price_currency": "RUB",
-     "price_index_value": 1.2
+     "price_index_value": 0.95
     },
     "ozon_index_data": {
-     "min_price": 922,
+     "min_price": 961,
      "min_price_currency": "RUB",
-     "price_index_value": 1.01
+     "price_index_value": 0.97
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -11740,7 +11712,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2442,
+    "marketing_price": 2455,
     "marketing_seller_price": 3000,
     "min_price": 2164,
     "old_price": 3200,
@@ -11757,7 +11729,7 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 2135,
+     "min_price": 2153,
      "min_price_currency": "RUB",
      "price_index_value": 1.08
     },
@@ -11888,6 +11860,6 @@
    }
   }
  ],
- "cursor": "WzIyMTU0MzMwNzIsMjIxNTQzMzA3Ml0=",
- "total": 201
+ "cursor": "WzI3MjQxNzg2NzQsMjcyNDE3ODY3NF0=",
+ "total": 202
 }

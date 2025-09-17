@@ -1,3 +1,3 @@
 oint vk ДобавитьТовар \
-  --product ""C:\Users\bayse\AppData\Local\Temp\5nhmv0gb.xaz.json"" \
-  --auth ""C:\Users\bayse\AppData\Local\Temp\pw05t1sd.g1b.json""
+  --product ""C:\Users\bayse\AppData\Local\Temp\dwjcuxuc.vcn.json"" \
+  --auth ""C:\Users\bayse\AppData\Local\Temp\spnmxxsi.vsz.json""

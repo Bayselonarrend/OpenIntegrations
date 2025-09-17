@@ -1,4 +1,4 @@
 oint vk СделатьРепост \
   --post "2571" \
   --from "-218704372" \
-  --auth ""C:\Users\bayse\AppData\Local\Temp\okuqjbfc.w5y.json""
+  --auth ""C:\Users\bayse\AppData\Local\Temp\3beuziqm.hwd.json""
