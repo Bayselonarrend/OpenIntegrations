@@ -1,4 +1,4 @@
 oint postgres ВыполнитьЗапросSQL ^
   --sql ""https://hut.openintegrations.dev/test_data/TEST_DATA.sql"" ^
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-  --tls ""C:\Users\bayse\AppData\Local\Temp\4bu2zbvx.4vb.json""
+  --tls ""C:\Users\bayse\AppData\Local\Temp\3jkkhwin.zod.json""

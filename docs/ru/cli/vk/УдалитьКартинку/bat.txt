@@ -1,3 +1,3 @@
 oint vk УдалитьКартинку ^
-  --pictureid "457259249" ^
-  --auth ""C:\Users\bayse\AppData\Local\Temp\qjpcmfcf.sfk.json""
+  --pictureid "457259268" ^
+  --auth ""C:\Users\bayse\AppData\Local\Temp\3ztvuemw.omu.json""

@@ -1,7 +1,7 @@
 oint vk СоздатьРекламноеОбъявление ^
-  --campaign "1031570821" ^
+  --campaign "1031572253" ^
   --limit "150" ^
   --category "126" ^
-  --post "9735" ^
+  --post "9745" ^
   --cabinet ""1607951446"" ^
-  --auth ""C:\Users\bayse\AppData\Local\Temp\g51rptwe.5rw.json""
+  --auth ""C:\Users\bayse\AppData\Local\Temp\ja5nvbti.tsa.json""

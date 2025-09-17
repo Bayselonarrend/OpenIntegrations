@@ -1,5 +1,5 @@
 oint postgres СоздатьТаблицу ^
   --table ""somename"" ^
-  --cols ""C:\Users\bayse\AppData\Local\Temp\taqkv4yo.tuu.json"" ^
+  --cols ""C:\Users\bayse\AppData\Local\Temp\yu3nbxmu.n1t.json"" ^
   --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-  --tls ""C:\Users\bayse\AppData\Local\Temp\um11ckqu.e21.json""
+  --tls ""C:\Users\bayse\AppData\Local\Temp\icpquoqf.oe5.json""

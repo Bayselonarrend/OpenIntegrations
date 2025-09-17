@@ -1,4 +1,4 @@
 oint vk СоздатьОбсуждение ^
   --title ""Обсуждаем: какой цвет лучше?"" ^
   --text ""Красный, желтый, синий или какой-то другой?"" ^
-  --auth ""C:\Users\bayse\AppData\Local\Temp\fe32d24k.hn3.json""
+  --auth ""C:\Users\bayse\AppData\Local\Temp\35wsw0sk.wmb.json""

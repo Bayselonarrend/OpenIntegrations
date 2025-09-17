@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "8032",
+   "id": "8042",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-09-16T23:25:36+03:00",
+   "createdDate": "2025-09-17T16:08:59+03:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2025-09-16T23:25:49+03:00",
+   "changedDate": "2025-09-17T16:09:14+03:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2025-09-16T23:25:36+03:00",
+   "activityDate": "2025-09-17T16:08:59+03:00",
    "dateStart": null,
-   "deadline": "2025-09-18T02:25:00+03:00",
-   "startDatePlan": "2025-09-16T23:25:36+03:00",
-   "endDatePlan": "2025-09-17T00:00:00+03:00",
-   "guid": "{0d33f575-ab34-45eb-86be-cb50b58e9ff7}",
+   "deadline": "2025-09-18T19:08:00+03:00",
+   "startDatePlan": "2025-09-17T16:08:59+03:00",
+   "endDatePlan": "2025-09-18T00:00:00+03:00",
+   "guid": "{cac605be-173c-4010-926e-425eccd48eca}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -54,7 +54,7 @@
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2025-09-16T23:25:49+03:00",
+   "statusChangedDate": "2025-09-17T16:09:14+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -135,13 +135,13 @@
   }
  },
  "time": {
-  "start": 1758054360.23804,
-  "finish": 1758054360.30077,
-  "duration": 0.0627329349517822,
-  "processing": 0.0378198623657227,
-  "date_start": "2025-09-16T23:26:00+03:00",
-  "date_finish": "2025-09-16T23:26:00+03:00",
-  "operating_reset_at": 1758054960,
-  "operating": 0
+  "start": 1758114568.36177,
+  "finish": 1758114568.5089,
+  "duration": 0.147135972976685,
+  "processing": 0.116607189178467,
+  "date_start": "2025-09-17T16:09:28+03:00",
+  "date_finish": "2025-09-17T16:09:28+03:00",
+  "operating_reset_at": 1758115168,
+  "operating": 0.116586923599243
  }
 }

@@ -1,3 +1,3 @@
 oint vk СократитьСсылку ^
   --url ""https://github.com/Bayselonarrend/OpenIntegrations"" ^
-  --auth ""C:\Users\bayse\AppData\Local\Temp\sbzz5rdg.upp.json""
+  --auth ""C:\Users\bayse\AppData\Local\Temp\hgzdc222.eid.json""

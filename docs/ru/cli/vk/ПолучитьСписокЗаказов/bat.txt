@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокЗаказов ^
-  --auth ""C:\Users\bayse\AppData\Local\Temp\sepglelr.cfl.json""
+  --auth ""C:\Users\bayse\AppData\Local\Temp\v0qggbha.rcy.json""

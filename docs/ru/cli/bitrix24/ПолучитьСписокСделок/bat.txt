@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьСписокСделок ^
   --url ""b24-ar17wx.bitrix24.by"" ^
-  --filter ""C:\Users\bayse\AppData\Local\Temp\yfsuxobw.wri.json"" ^
+  --filter ""C:\Users\bayse\AppData\Local\Temp\zwvcc4nq.l15.json"" ^
   --token "***"

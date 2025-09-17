@@ -1,2 +1,2 @@
 oint vk ПолучитьСписокТоваров \
-  --auth ""C:\Users\bayse\AppData\Local\Temp\kta2decw.5wh.json""
+  --auth ""C:\Users\bayse\AppData\Local\Temp\1falrcfn.fet.json""

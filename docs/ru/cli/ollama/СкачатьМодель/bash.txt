@@ -2,5 +2,5 @@
 
 oint ollama СкачатьМодель \
   --url ""https://hut.openintegrations.dev/ollama"" \
-  --model ""tinyllama"" \
+  --model ""bayselonarrend/tinyllama:latest"" \
   --headers "{'Authorization':'***'}"

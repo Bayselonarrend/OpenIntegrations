@@ -1,4 +1,4 @@
 oint mysql ОчиститьТаблицу ^
   --table ""testtable"" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls ""C:\Users\bayse\AppData\Local\Temp\eueti4sr.jj4.json""
+  --tls ""C:\Users\bayse\AppData\Local\Temp\tbwswme0.rvq.json""
