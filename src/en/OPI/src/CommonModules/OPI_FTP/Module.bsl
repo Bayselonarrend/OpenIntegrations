@@ -804,6 +804,8 @@ Function SaveFile(Val Connection, Val Path, Val FileName) Export
         OPI_TypeConversion.GetLine(Path);
         OPI_TypeConversion.GetLine(FileName);
 
+        OPI_Tools.RestoreEscapeSequences(FileName);
+
         Result = Connection.DownloadToFile(Path, FileName);
         Result = OPI_Tools.JsonToStructure(Result);
 
