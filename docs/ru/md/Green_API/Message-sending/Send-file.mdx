@@ -57,25 +57,29 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint greenapi ОтправитьФайл \
               --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
               --chat "120363410406221140@g.us" \
               --file "https://hut.openintegrations.dev/test_data/video.mp4" \
               --filename "vid.mp4" \
               --caption "Описание файла" \
-              --quoted "BAE56877B6D57DE3"
+              --quoted "BAE5A02235BF0F35"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint greenapi ОтправитьФайл ^
               --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
               --chat "120363410406221140@g.us" ^
               --file "https://hut.openintegrations.dev/test_data/video.mp4" ^
               --filename "vid.mp4" ^
               --caption "Описание файла" ^
-              --quoted "BAE56877B6D57DE3"
+              --quoted "BAE5A02235BF0F35"
         ```
     </TabItem>
 </Tabs>
@@ -83,7 +87,7 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "idMessage": "BAE56877B6D57DE3",
- "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/e23e7633-2ca2-470b-887f-7d94969661ff.jpg"
+ "idMessage": "BAE5A02235BF0F35",
+ "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/f863422b-37e8-4a0e-8d4a-535fcb1d4352.jpg"
 }
 ```

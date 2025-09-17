@@ -61,6 +61,8 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint notion СоздатьБазуДанных \
               --token "***" \
               --page "5dd94c34fab04bff986b7511c0779f77" \
@@ -71,6 +73,8 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint notion СоздатьБазуДанных ^
               --token "***" ^
               --page "5dd94c34fab04bff986b7511c0779f77" ^
@@ -84,10 +88,10 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "object": "database",
- "id": "27082aa7-fc4e-81b7-8fe3-d87406684e60",
+ "id": "27082aa7-fc4e-810a-b6d8-e2067c001f97",
  "cover": null,
  "icon": null,
- "created_time": "2025-09-16T04:45:00Z",
+ "created_time": "2025-09-16T20:15:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -96,7 +100,7 @@ import TabItem from '@theme/TabItem';
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2025-09-16T04:45:00Z",
+ "last_edited_time": "2025-09-16T20:15:00Z",
  "title": [
   {
    "type": "text",
@@ -119,85 +123,22 @@ import TabItem from '@theme/TabItem';
  "description": [],
  "is_inline": false,
  "properties": {
-  "Активен": {
-   "id": "%3ARN%3C",
-   "name": "Активен",
-   "description": null,
-   "type": "checkbox",
-   "checkbox": {}
-  },
-  "Статус": {
-   "id": "KX%3C%5C",
-   "name": "Статус",
-   "description": null,
-   "type": "select",
-   "select": {
-    "options": [
-     {
-      "id": "cb8e4300-45ba-4e21-99bc-61a11aeb6827",
-      "name": "Новый",
-      "color": "green",
-      "description": null
-     },
-     {
-      "id": "4cc11a34-eb50-4eb4-ba89-14126cde888d",
-      "name": "В работе",
-      "color": "yellow",
-      "description": null
-     },
-     {
-      "id": "2e6428e4-5201-47c9-85c8-f45e70891647",
-      "name": "Удаленный",
-      "color": "red",
-      "description": null
-     }
-    ]
-   }
-  },
-  "Описание": {
-   "id": "LFcP",
-   "name": "Описание",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "Пользователь": {
-   "id": "NOMv",
-   "name": "Пользователь",
-   "description": null,
-   "type": "people",
-   "people": {}
-  },
   "Телефон": {
-   "id": "S%7CNg",
+   "id": "%3BXTT",
    "name": "Телефон",
    "description": null,
    "type": "phone_number",
    "phone_number": {}
   },
-  "Сайт": {
-   "id": "_su%3E",
-   "name": "Сайт",
-   "description": null,
-   "type": "url",
-   "url": {}
-  },
-  "Почта": {
-   "id": "dxl%3D",
-   "name": "Почта",
-   "description": null,
-   "type": "email",
-   "email": {}
-  },
   "Картинка": {
-   "id": "vggN",
+   "id": "B%5Dyj",
    "name": "Картинка",
    "description": null,
    "type": "files",
    "files": {}
   },
   "Номер": {
-   "id": "y%3D%5E%3F",
+   "id": "JGWm",
    "name": "Номер",
    "description": null,
    "type": "number",
@@ -205,12 +146,75 @@ import TabItem from '@theme/TabItem';
     "format": "number"
    }
   },
+  "Сайт": {
+   "id": "L%60uy",
+   "name": "Сайт",
+   "description": null,
+   "type": "url",
+   "url": {}
+  },
+  "Почта": {
+   "id": "WbQq",
+   "name": "Почта",
+   "description": null,
+   "type": "email",
+   "email": {}
+  },
+  "Статус": {
+   "id": "dEGg",
+   "name": "Статус",
+   "description": null,
+   "type": "select",
+   "select": {
+    "options": [
+     {
+      "id": "4fa7089c-ceb4-41fc-8e99-dae8f5dcd3d1",
+      "name": "Новый",
+      "color": "green",
+      "description": null
+     },
+     {
+      "id": "c16d324c-f4fd-485c-8688-0e6c4074a183",
+      "name": "В работе",
+      "color": "yellow",
+      "description": null
+     },
+     {
+      "id": "33cddd24-48cd-496a-837e-b41ee57b4359",
+      "name": "Удаленный",
+      "color": "red",
+      "description": null
+     }
+    ]
+   }
+  },
   "Дата создания": {
-   "id": "yjVM",
+   "id": "hVjf",
    "name": "Дата создания",
    "description": null,
    "type": "date",
    "date": {}
+  },
+  "Описание": {
+   "id": "mh~g",
+   "name": "Описание",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
+  "Активен": {
+   "id": "nlVg",
+   "name": "Активен",
+   "description": null,
+   "type": "checkbox",
+   "checkbox": {}
+  },
+  "Пользователь": {
+   "id": "vLJE",
+   "name": "Пользователь",
+   "description": null,
+   "type": "people",
+   "people": {}
   },
   "Имя": {
    "id": "title",
@@ -224,10 +228,10 @@ import TabItem from '@theme/TabItem';
   "type": "page_id",
   "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
  },
- "url": "https://www.notion.so/27082aa7fc4e81b78fe3d87406684e60",
+ "url": "https://www.notion.so/27082aa7fc4e810ab6d8e2067c001f97",
  "public_url": null,
  "archived": false,
  "in_trash": false,
- "request_id": "06d49c74-395e-4938-a8d7-e88c03562d8c"
+ "request_id": "9084e782-5fb4-4a69-80a3-692f9e8d3092"
 }
 ```

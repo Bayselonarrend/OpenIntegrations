@@ -100,6 +100,8 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint s3 ИнициализироватьЗагрузкуЧастями \
               --name "fileChunked.mp3" \
               --bucket "opi-dirbucket3" \
@@ -110,6 +112,8 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint s3 ИнициализироватьЗагрузкуЧастями ^
               --name "fileChunked.mp3" ^
               --bucket "opi-dirbucket3" ^
@@ -127,17 +131,17 @@ import TabItem from '@theme/TabItem';
   "InitiateMultipartUploadResult": {
    "Bucket": "opi-dirbucket3",
    "Key": "fileChunked.mp3",
-   "UploadId": "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjllNDI4MTMxLTgyMmYtNDE0Yy04MzQ1LWEyZDYwMDYzNWI5ZQ"
+   "UploadId": "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmRjNjUzYzRiLTJmODAtNDZmNC05MjNmLTYzZTVjMDBiZmVlOQ"
   }
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Tue, 16 Sep 2025 05:29:42 GMT",
+  "Date": "Tue, 16 Sep 2025 20:56:40 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
-  "X-Amz-Request-Id": "1865AC3713E757A4",
+  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
+  "X-Amz-Request-Id": "1865DECCCA4DDE67",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "326",

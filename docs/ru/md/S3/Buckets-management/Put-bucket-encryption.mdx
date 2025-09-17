@@ -56,21 +56,25 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint s3 УстановитьШифрованиеБакета \
-              --name "opi-dirbucket3" \
+              --name "opi-gpbucket3" \
               --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-              --conf "<ServerSideEncryptionConfiguration xmlns="'"http://s3.amazonaws.com/doc/2006-03-01/"'">\n    <Rule>\n        <ApplyServerSideEncryptionByDefault>\n            <SSEAlgorithm>AES256</SSEAlgorithm>\n        </ApplyServerSideEncryptionByDefault>\n    </Rule>\n</ServerSideEncryptionConfiguration>" \
-              --dir true
+              --conf "<ServerSideEncryptionConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Rule><ApplyServerSideEncryptionByDefault><SSEAlgorithm>AES256</SSEAlgorithm></ApplyServerSideEncryptionByDefault></Rule></ServerSideEncryptionConfiguration>" \
+              --dir false
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint s3 УстановитьШифрованиеБакета ^
-              --name "opi-dirbucket3" ^
+              --name "opi-gpbucket3" ^
               --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-              --conf "<ServerSideEncryptionConfiguration xmlns="'"http://s3.amazonaws.com/doc/2006-03-01/"'">\n    <Rule>\n        <ApplyServerSideEncryptionByDefault>\n            <SSEAlgorithm>AES256</SSEAlgorithm>\n        </ApplyServerSideEncryptionByDefault>\n    </Rule>\n</ServerSideEncryptionConfiguration>" ^
-              --dir true
+              --conf "<ServerSideEncryptionConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Rule><ApplyServerSideEncryptionByDefault><SSEAlgorithm>AES256</SSEAlgorithm></ApplyServerSideEncryptionByDefault></Rule></ServerSideEncryptionConfiguration>" ^
+              --dir false
         ```
     </TabItem>
 </Tabs>
