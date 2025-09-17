@@ -11555,6 +11555,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
 
         If Not Embedded Then
             Value = ?(Value, "true", "false");
+            Cover = False;
         EndIf;
 
     ElsIf CurrentType = Type("BinaryData") Then

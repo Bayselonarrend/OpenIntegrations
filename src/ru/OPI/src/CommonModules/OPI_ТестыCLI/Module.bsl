@@ -18556,9 +18556,17 @@
     Наименование = "opi-dirbucket3";
     Наименование = ?(Каталог, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    XMLКонфигурация = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/""><Rule>"
-                      + "<ApplyServerSideEncryptionByDefault><SSEAlgorithm>AES256</SSEAlgorithm>"
-                      + "</ApplyServerSideEncryptionByDefault></Rule></ServerSideEncryptionConfiguration>";
+    XMLКонфигурация = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
+                      | <Rule>
+                      | <ApplyServerSideEncryptionByDefault>
+                      | <SSEAlgorithm>AES256</SSEAlgorithm>
+                      | </ApplyServerSideEncryptionByDefault>
+                      | </Rule>
+                      |</ServerSideEncryptionConfiguration>";
+
+    ИВФ             = ПолучитьИмяВременногоФайла("xml");                       // SKIP
+    ПолучитьДвоичныеДанныеИзСтроки(XMLКонфигурация).Записать(ИВФ); // SKIP
+    XMLКонфигурация = ИВФ;                                         // SKIP
 
     Опции = Новый Структура;
     Опции.Вставить("name", Наименование);
@@ -18569,6 +18577,8 @@
     Результат = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("s3", "УстановитьШифрованиеБакета", Опции);
 
     // END
+
+    OPI_Инструменты.УдалитьФайлВПопытке(XMLКонфигурация, "Ошибка удаления файла после теста");
 
     Обработать(Результат, "S3", "УстановитьШифрованиеБакета");
 

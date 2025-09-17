@@ -14391,13 +14391,23 @@ Procedure S3_PutBucketEncryption(FunctionParameters)
     Name = "opi-dirbucket3";
     Name = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-    XmlConfig = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/""><Rule>"
-                      + "<ApplyServerSideEncryptionByDefault><SSEAlgorithm>AES256</SSEAlgorithm>"
-                      + "</ApplyServerSideEncryptionByDefault></Rule></ServerSideEncryptionConfiguration>";
+    XmlConfig = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
+                      | <Rule>
+                      | <ApplyServerSideEncryptionByDefault>
+                      | <SSEAlgorithm>AES256</SSEAlgorithm>
+                      | </ApplyServerSideEncryptionByDefault>
+                      | </Rule>
+                      |</ServerSideEncryptionConfiguration>";
+
+    TFN       = GetTempFileName("xml"); // SKIP
+    GetBinaryDataFromString(XmlConfig).Write(TFN); // SKIP
+    XmlConfig = TFN; // SKIP
 
     Result = OPI_S3.PutBucketEncryption(Name, BasicData, XmlConfig, Directory);
 
     // END
+
+    OPI_Tools.RemoveFileWithTry(XmlConfig, "Error deleting file after test");
 
     Process(Result, "S3", "PutBucketEncryption");
 

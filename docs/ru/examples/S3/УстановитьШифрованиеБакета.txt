@@ -7,8 +7,12 @@
 
     Каталог = Истина; // Формирование URL в path-style
     Наименование = "opi-dirbucket3";
-    XMLКонфигурация = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/""><Rule>"
-                      + "<ApplyServerSideEncryptionByDefault><SSEAlgorithm>AES256</SSEAlgorithm>"
-                      + "</ApplyServerSideEncryptionByDefault></Rule></ServerSideEncryptionConfiguration>";
+    XMLКонфигурация = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
+                      | <Rule>
+                      | <ApplyServerSideEncryptionByDefault>
+                      | <SSEAlgorithm>AES256</SSEAlgorithm>
+                      | </ApplyServerSideEncryptionByDefault>
+                      | </Rule>
+                      |</ServerSideEncryptionConfiguration>";
 
     Результат = OPI_S3.УстановитьШифрованиеБакета(Наименование, ОсновныеДанные, XMLКонфигурация, Каталог);
