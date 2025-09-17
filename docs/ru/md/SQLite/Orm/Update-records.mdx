@@ -57,21 +57,25 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint sqlite ОбновитьЗаписи \
               --table "test" \
               --values "{'name':'Vitaly A.','salary':'999999'}" \
               --filter "{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':false}" \
-              --db "/tmp/44h0mspf.2k0.sqlite"
+              --db "C:\Users\bayse\AppData\Local\Temp\k2yr4ce5.zuv.sqlite"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint sqlite ОбновитьЗаписи ^
               --table "test" ^
               --values "{'name':'Vitaly A.','salary':'999999'}" ^
               --filter "{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':false}" ^
-              --db "/tmp/44h0mspf.2k0.sqlite"
+              --db "C:\Users\bayse\AppData\Local\Temp\k2yr4ce5.zuv.sqlite"
         ```
     </TabItem>
 </Tabs>

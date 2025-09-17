@@ -58,25 +58,29 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint greenapi ОтправитьОпрос \
               --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
               --chat "120363410406221140@g.us" \
               --text "Какой ваш любимый цвет?" \
               --options "['Красный','Желтый','Зеленый']" \
               --multi true \
-              --quoted "BAE5F969585B70FC"
+              --quoted "BAE543309FDBC3D7"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint greenapi ОтправитьОпрос ^
               --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
               --chat "120363410406221140@g.us" ^
               --text "Какой ваш любимый цвет?" ^
               --options "['Красный','Желтый','Зеленый']" ^
               --multi true ^
-              --quoted "BAE5F969585B70FC"
+              --quoted "BAE543309FDBC3D7"
         ```
     </TabItem>
 </Tabs>
@@ -84,6 +88,6 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "idMessage": "BAE5F969585B70FC"
+ "idMessage": "BAE543309FDBC3D7"
 }
 ```

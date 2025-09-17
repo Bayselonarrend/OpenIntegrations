@@ -53,9 +53,11 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint gsheets УстановитьЗначенияЯчеек \
               --token "***" \
-              --spreadsheet "1_TpPJyTYNmDqp3-mJDPwFan9N4IWnIUivikXZM3mInE" \
+              --spreadsheet "1mB2i7FGHlqnSGWnP163heF71YUwDg2dzcypo_M8aCMY" \
               --data "{'A1':'Это A1','A2':'Это A2','B2':'Это B2','B3':'Это B3','A3':'Это A3','A4':'Это A4','B1':'Это B1','B4':'Это B4'}" \
               --sheetname "Лист2"
         ```
@@ -63,9 +65,11 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint gsheets УстановитьЗначенияЯчеек ^
               --token "***" ^
-              --spreadsheet "1_TpPJyTYNmDqp3-mJDPwFan9N4IWnIUivikXZM3mInE" ^
+              --spreadsheet "1mB2i7FGHlqnSGWnP163heF71YUwDg2dzcypo_M8aCMY" ^
               --data "{'A1':'Это A1','A2':'Это A2','B2':'Это B2','B3':'Это B3','A3':'Это A3','A4':'Это A4','B1':'Это B1','B4':'Это B4'}" ^
               --sheetname "Лист2"
         ```
@@ -75,63 +79,63 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "spreadsheetId": "1_TpPJyTYNmDqp3-mJDPwFan9N4IWnIUivikXZM3mInE",
+ "spreadsheetId": "1mB2i7FGHlqnSGWnP163heF71YUwDg2dzcypo_M8aCMY",
  "totalUpdatedRows": 4,
  "totalUpdatedColumns": 2,
  "totalUpdatedCells": 8,
  "totalUpdatedSheets": 1,
  "responses": [
   {
-   "spreadsheetId": "1_TpPJyTYNmDqp3-mJDPwFan9N4IWnIUivikXZM3mInE",
+   "spreadsheetId": "1mB2i7FGHlqnSGWnP163heF71YUwDg2dzcypo_M8aCMY",
    "updatedRange": "'Лист2'!A1",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1_TpPJyTYNmDqp3-mJDPwFan9N4IWnIUivikXZM3mInE",
+   "spreadsheetId": "1mB2i7FGHlqnSGWnP163heF71YUwDg2dzcypo_M8aCMY",
    "updatedRange": "'Лист2'!A2",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1_TpPJyTYNmDqp3-mJDPwFan9N4IWnIUivikXZM3mInE",
+   "spreadsheetId": "1mB2i7FGHlqnSGWnP163heF71YUwDg2dzcypo_M8aCMY",
    "updatedRange": "'Лист2'!B2",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1_TpPJyTYNmDqp3-mJDPwFan9N4IWnIUivikXZM3mInE",
+   "spreadsheetId": "1mB2i7FGHlqnSGWnP163heF71YUwDg2dzcypo_M8aCMY",
    "updatedRange": "'Лист2'!B3",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1_TpPJyTYNmDqp3-mJDPwFan9N4IWnIUivikXZM3mInE",
+   "spreadsheetId": "1mB2i7FGHlqnSGWnP163heF71YUwDg2dzcypo_M8aCMY",
    "updatedRange": "'Лист2'!A3",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1_TpPJyTYNmDqp3-mJDPwFan9N4IWnIUivikXZM3mInE",
+   "spreadsheetId": "1mB2i7FGHlqnSGWnP163heF71YUwDg2dzcypo_M8aCMY",
    "updatedRange": "'Лист2'!A4",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1_TpPJyTYNmDqp3-mJDPwFan9N4IWnIUivikXZM3mInE",
+   "spreadsheetId": "1mB2i7FGHlqnSGWnP163heF71YUwDg2dzcypo_M8aCMY",
    "updatedRange": "'Лист2'!B1",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1_TpPJyTYNmDqp3-mJDPwFan9N4IWnIUivikXZM3mInE",
+   "spreadsheetId": "1mB2i7FGHlqnSGWnP163heF71YUwDg2dzcypo_M8aCMY",
    "updatedRange": "'Лист2'!B4",
    "updatedRows": 1,
    "updatedColumns": 1,
