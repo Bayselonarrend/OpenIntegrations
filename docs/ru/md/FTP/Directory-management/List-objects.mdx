@@ -80,7 +80,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint ftp ПолучитьСписокОбъектов \
-              --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'}}" \
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'}}" \
               --path "." \
               --rcv true
         ```
@@ -91,7 +91,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint ftp ПолучитьСписокОбъектов ^
-              --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'}}" ^
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'}}" ^
               --path "." ^
               --rcv true
         ```
@@ -106,8 +106,8 @@ import TabItem from '@theme/TabItem';
   {
    "is_directory": true,
    "is_symlink": false,
-   "list_string": "drwxr-sr-x    3 1000     1000         4096 Sep 16 19:43 new_dir",
-   "modified": "2025-09-16T22:43:00+03:00",
+   "list_string": "drwxr-sr-x    3 1000     1000         4096 Sep 17 11:31 new_dir",
+   "modified": "2025-09-17T14:31:00+03:00",
    "name": "new_dir",
    "size": 4096,
    "symlink_path": "",
@@ -116,8 +116,8 @@ import TabItem from '@theme/TabItem';
     {
      "is_directory": true,
      "is_symlink": false,
-     "list_string": "drwxr-sr-x    2 1000     1000         4096 Sep 16 19:43 another_one",
-     "modified": "2025-09-16T22:43:00+03:00",
+     "list_string": "drwxr-sr-x    2 1000     1000         4096 Sep 17 11:31 another_one",
+     "modified": "2025-09-17T14:31:00+03:00",
      "name": "another_one",
      "size": 4096,
      "symlink_path": "",
