@@ -155,3 +155,40 @@ This option is not displayed in the list of arguments within the web interface a
 :::important  
 When implementing custom extensions — particularly those involving `melezhcontext` — it is strongly recommended to use the OneScript version of Melezh during development. This enables running the project in debug mode (e.g., in VSCode) and setting breakpoints to inspect runtime values and context data.
 :::
+
+## Debugging Extensions
+
+Like any OneScript project, Melezh can be launched in debug mode using the [OneScript Debug (BSL)](https://marketplace.visualstudio.com/items?itemName=EvilBeaver.oscript-debug) plugin for Visual Studio Code. To do this, install the plugin, open the Melezh directory in VSC, and create a `launch.json` debug configuration file (tab `Run and Debug (Ctrl + Shift + D)` -> `Create a launch.json file` or the gear icon if a debug configuration was previously created).
+
+Example `launch.json` debug configuration content:
+
+```json
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Melezh Debug",
+            "type": "oscript",
+            "request": "launch",
+            "program": "${workspaceRoot}/src/core/Classes/app.os",
+            "args": ["RunProject", "--port", "1921", "--proj", "R:/new_project.melezh"],
+            "cwd": "${workspaceRoot}",
+            "env": {},
+            "runtimeExecutable": null,
+            "runtimeArgs": [],
+            "debugPort": 2801
+        },
+    ]
+}
+
+```
+
++ In the `program` field, specify the path to the `core/Classes/app.os` file within the Melezh directory.
++ In the `args` field, replace `port` and `proj` with your desired launch port and the path to the project file being debugged, respectively.
+
+:::important
+If Melezh was not installed as an OPM package, you must additionally add the path to `oscript/oscript.exe` (located in `{Melezh directory}/OInt/share/oint/bin`) to your `PATH` environment variable, or [download OneScript v. >2.0 separately from the official website](https://oscript.io/downloads/preview).
+:::
+
+After starting the debugger, you can set breakpoints in both the main Melezh scripts and user extension files.
