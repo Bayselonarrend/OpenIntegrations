@@ -152,3 +152,40 @@ sidebar_position: 4
 :::important
 При необходимости добавлять собственные расширения (с `melezhcontext` в частности), для разработки рекомендуется использовать OneScript версию Melezh. Это позволит запустить проект в режиме отладки (VSCode) и ставить точки останова для просмотра содержимого значений
 :::
+
+## Отладка расширений
+
+Как и любой проект на OneScript, Melezh может быть запущен в режиме отладки при помощи плагина [OneScript Debug (BSL)](https://marketplace.visualstudio.com/items?itemName=EvilBeaver.oscript-debug) для Visual Studio Code. Для этого необходимо установить сам плагин, открыть каталог Melezh в VSC и создать `launch.json` файл конфигурации отладки (вкладка `Run anb Debug (Ctrl + Shift + D)` -> `Create a launch.json file` или значок шестеренки, если конфигурация отладки уже была создана ранее)
+
+Пример содержания конфигурации отладки `launch.json`:
+
+```json
+
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Melezh Debug",
+            "type": "oscript",
+            "request": "launch",
+            "program": "${workspaceRoot}/src/core/Classes/app.os",
+            "args": ["ЗапуститьПроект", "--port", "1921", "--proj", "R:/new_project.melezh"],
+            "cwd": "${workspaceRoot}",
+            "env": {},
+            "runtimeExecutable": null,
+            "runtimeArgs": [],
+            "debugPort": 2801
+        },
+    ]
+}
+
+```
+
++ В поле `program` необходимо указать путь к файлу `core/Classes/app.os` в каталоге Melezh
++ В поле `args` необходимо заменить `port` и `proj` на свои порт запуска и путь к файлу отлаживаемого проекта соответственно
+
+:::important
+Если Melezh был установлен не как OPM пакет, то необходимо дополнительно прописать в `PATH` путь к `oscript/oscript.exe` (находится в `{каталог Melezh}/OInt/share/oint/bin`) или [скачать OneScript v. >2.0 с официального сайта](https://oscript.io/downloads/preview) отдельно
+:::
+
+После запуска отладки, можно устанавливать точки останова как в основных скриптах Melezh, так и в файлах пользовательских расширений
