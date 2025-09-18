@@ -35,7 +35,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL   = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
     Почта = Строка(Новый УникальныйИдентификатор) + "@exepmple.org";
@@ -67,18 +66,22 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 СоздатьПользователя \
-              --url ""b24-ar17wx.bitrix24.by"" \
-              --fields ""C:\Users\bayse\AppData\Local\Temp\gpcotcyq.pyz.json"" \
+              --url "b24-ar17wx.bitrix24.by" \
+              --fields "{'EMAIL':'5594b1b8-959d-42d5-a4cc-914ef79e9d14@exepmple.org','NAME':'Виталий','LAST_NAME':'Альпака','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':'1'}" \
               --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 СоздатьПользователя ^
-              --url ""b24-ar17wx.bitrix24.by"" ^
-              --fields ""C:\Users\bayse\AppData\Local\Temp\gpcotcyq.pyz.json"" ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --fields "{'EMAIL':'5594b1b8-959d-42d5-a4cc-914ef79e9d14@exepmple.org','NAME':'Виталий','LAST_NAME':'Альпака','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':'1'}" ^
               --token "***"
         ```
     </TabItem>
@@ -87,16 +90,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 2688,
+ "result": 2692,
  "time": {
-  "start": 1758115221.30268,
-  "finish": 1758115222.51156,
-  "duration": 1.20888018608093,
-  "processing": 1.17956709861755,
-  "date_start": "2025-09-17T16:20:21+03:00",
-  "date_finish": "2025-09-17T16:20:22+03:00",
-  "operating_reset_at": 1758115821,
-  "operating": 1.17954587936401
+  "start": 1758186933.59042,
+  "finish": 1758186934.70401,
+  "duration": 1.11358904838562,
+  "processing": 1.08279705047607,
+  "date_start": "2025-09-18T12:15:33+03:00",
+  "date_finish": "2025-09-18T12:15:34+03:00",
+  "operating_reset_at": 1758187533,
+  "operating": 1.08277702331543
  }
 }
 ```

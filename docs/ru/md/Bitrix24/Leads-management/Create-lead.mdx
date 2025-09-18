@@ -31,7 +31,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     МассивПочт = Новый Массив;
     МассивПочт.Добавить(Новый Структура("VALUE,VALUE_TYPE", "yo@example.com", "HOME"));
@@ -67,18 +66,22 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 СоздатьЛид \
-              --url ""b24-ar17wx.bitrix24.by"" \
-              --fields ""C:\Users\bayse\AppData\Local\Temp\nppenro4.kk1.json"" \
+              --url "b24-ar17wx.bitrix24.by" \
+              --fields "{'ADDRESS':'ул. Пушкина, д. 10','ADDRESS_COUNTRY':'Россия','EMAIL':[{'VALUE':'yo@example.com','VALUE_TYPE':'HOME'},{'VALUE':'hi@example.com','VALUE_TYPE':'WORK'}],'NAME':'Иван','LAST_NAME':'Иванов','PHONE':[{'VALUE':'88005553535','VALUE_TYPE':'WORK'}],'TITLE':'Мегаклиент'}" \
               --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 СоздатьЛид ^
-              --url ""b24-ar17wx.bitrix24.by"" ^
-              --fields ""C:\Users\bayse\AppData\Local\Temp\nppenro4.kk1.json"" ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --fields "{'ADDRESS':'ул. Пушкина, д. 10','ADDRESS_COUNTRY':'Россия','EMAIL':[{'VALUE':'yo@example.com','VALUE_TYPE':'HOME'},{'VALUE':'hi@example.com','VALUE_TYPE':'WORK'}],'NAME':'Иван','LAST_NAME':'Иванов','PHONE':[{'VALUE':'88005553535','VALUE_TYPE':'WORK'}],'TITLE':'Мегаклиент'}" ^
               --token "***"
         ```
     </TabItem>
@@ -87,16 +90,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 2478,
+ "result": 2482,
  "time": {
-  "start": 1758115259.24384,
-  "finish": 1758115259.93446,
-  "duration": 0.690619945526123,
-  "processing": 0.66667914390564,
-  "date_start": "2025-09-17T16:20:59+03:00",
-  "date_finish": "2025-09-17T16:20:59+03:00",
-  "operating_reset_at": 1758115859,
-  "operating": 0.666659832000732
+  "start": 1758186973.91452,
+  "finish": 1758186974.76939,
+  "duration": 0.85486888885498,
+  "processing": 0.820871114730835,
+  "date_start": "2025-09-18T12:16:13+03:00",
+  "date_finish": "2025-09-18T12:16:14+03:00",
+  "operating_reset_at": 1758187573,
+  "operating": 0.820849180221558
  }
 }
 ```

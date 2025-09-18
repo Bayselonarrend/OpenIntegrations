@@ -31,7 +31,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
     IDКалендаря = "1322";
@@ -109,18 +108,22 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 СоздатьСобытиеКалендаря \
-              --url ""b24-ar17wx.bitrix24.by"" \
-              --fields ""C:\Users\bayse\AppData\Local\Temp\cyp1qnso.uvz.json"" \
+              --url "b24-ar17wx.bitrix24.by" \
+              --fields "{'type':'user','ownerId':'1','from':'9/19/2025 12:17:16 PM','to':'9/19/2025 1:17:16 PM','section':'1388','name':'Новое событие','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Описание события','color':'%%23000000>','text_color':'%%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'9/29/2025 12:17:16 PM'},'is_meeting':'Y','location':'Офис','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" \
               --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 СоздатьСобытиеКалендаря ^
-              --url ""b24-ar17wx.bitrix24.by"" ^
-              --fields ""C:\Users\bayse\AppData\Local\Temp\cyp1qnso.uvz.json"" ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --fields "{'type':'user','ownerId':'1','from':'9/19/2025 12:17:16 PM','to':'9/19/2025 1:17:16 PM','section':'1388','name':'Новое событие','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Описание события','color':'%%23000000>','text_color':'%%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'9/29/2025 12:17:16 PM'},'is_meeting':'Y','location':'Офис','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" ^
               --token "***"
         ```
     </TabItem>
@@ -129,16 +132,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 2512,
+ "result": 2520,
  "time": {
-  "start": 1758115325.54223,
-  "finish": 1758115325.79068,
-  "duration": 0.248449802398682,
-  "processing": 0.222582101821899,
-  "date_start": "2025-09-17T16:22:05+03:00",
-  "date_finish": "2025-09-17T16:22:05+03:00",
-  "operating_reset_at": 1758115925,
-  "operating": 0.222559928894043
+  "start": 1758187040.90018,
+  "finish": 1758187041.24929,
+  "duration": 0.349112033843994,
+  "processing": 0.317604064941406,
+  "date_start": "2025-09-18T12:17:20+03:00",
+  "date_finish": "2025-09-18T12:17:21+03:00",
+  "operating_reset_at": 1758187640,
+  "operating": 0.317585945129394
  }
 }
 ```

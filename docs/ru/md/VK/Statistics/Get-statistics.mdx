@@ -27,7 +27,6 @@ import TabItem from '@theme/TabItem';
 
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Параметры = ПолучитьПараметрыВК();
 
@@ -43,19 +42,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk ПолучитьСтатистику \
-              --datefrom ""2025-09-17T00:00:00"" \
-              --dateto ""2025-09-17T23:59:59"" \
-              --auth ""C:\Users\bayse\AppData\Local\Temp\yfsvddx0.ug0.json""
+              --datefrom "2025-09-18T00:00:00" \
+              --dateto "2025-09-18T23:59:59" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk ПолучитьСтатистику ^
-              --datefrom ""2025-09-17T00:00:00"" ^
-              --dateto ""2025-09-17T23:59:59"" ^
-              --auth ""C:\Users\bayse\AppData\Local\Temp\yfsvddx0.ug0.json""
+              --datefrom "2025-09-18T00:00:00" ^
+              --dateto "2025-09-18T23:59:59" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>
@@ -69,8 +72,8 @@ import TabItem from '@theme/TabItem';
     "comments": 1,
     "likes": 1
    },
-   "period_from": 1758067200,
-   "period_to": 1758153599,
+   "period_from": 1758153600,
+   "period_to": 1758239999,
    "reach": {
     "age": [
      {
@@ -205,11 +208,11 @@ import TabItem from '@theme/TabItem';
   },
   {
    "activity": {
-    "comments": 2,
-    "likes": 2
+    "comments": 1,
+    "likes": 1
    },
-   "period_from": 1757980800,
-   "period_to": 1758067199,
+   "period_from": 1758067200,
+   "period_to": 1758153599,
    "reach": {
     "age": [
 ...
