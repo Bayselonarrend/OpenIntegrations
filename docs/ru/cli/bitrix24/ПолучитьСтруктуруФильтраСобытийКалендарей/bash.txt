@@ -1,2 +1,2 @@
 oint bitrix24 ПолучитьСтруктуруФильтраСобытийКалендарей \
-  --empty "true"
+  --empty true

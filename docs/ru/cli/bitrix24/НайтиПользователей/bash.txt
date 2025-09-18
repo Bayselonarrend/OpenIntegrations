@@ -1,4 +1,6 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint bitrix24 НайтиПользователей \
-  --url ""b24-ar17wx.bitrix24.by"" \
-  --filter ""C:\Users\bayse\AppData\Local\Temp\uojoouk1.mbf.json"" \
+  --url "b24-ar17wx.bitrix24.by" \
+  --filter "{'UF_DEPARTMENT_NAME':'Битрикс'}" \
   --token "***"

@@ -1,7 +1,7 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint ollama ПолучитьИнформациюОМодели \
-  --url ""https://hut.openintegrations.dev/ollama"" \
-  --model ""mario"" \
-  --verbose "false" \
+  --url "https://hut.openintegrations.dev/ollama" \
+  --model "mario" \
+  --verbose false \
   --headers "{'Authorization':'***'}"

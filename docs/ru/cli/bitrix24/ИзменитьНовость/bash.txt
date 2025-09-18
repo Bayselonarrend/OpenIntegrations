@@ -1,7 +1,9 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint bitrix24 ИзменитьНовость \
-  --url ""b24-ar17wx.bitrix24.by"" \
-  --postid "3046" \
-  --text ""Новый текст новости"" \
-  --files ""C:\Users\bayse\AppData\Local\Temp\rt2f0bq0.44b.json"" \
-  --title ""Новый заголовок новости"" \
+  --url "b24-ar17wx.bitrix24.by" \
+  --postid 3050 \
+  --text "Новый текст новости" \
+  --files "{'1.png':'https://hut.openintegrations.dev/test_data/picture.jpg'}" \
+  --title "Новый заголовок новости" \
   --token "***"

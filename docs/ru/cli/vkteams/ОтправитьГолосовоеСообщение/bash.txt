@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение \
   --token "***" \
   --chatid "689203963@chat.agent" \
-  --file "C:\Users\bayse\AppData\Local\Temp\s12c0vzm.0c0"
+  --file "C:\Users\bayse\AppData\Local\Temp\sa0rbtey.fyq"

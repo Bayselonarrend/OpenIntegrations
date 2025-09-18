@@ -1,4 +1,6 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint mssql ПолучитьИнформациюОТаблице \
-  --table ""test_new"" \
+  --table "test_new" \
   --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-  --tls ""C:\Users\bayse\AppData\Local\Temp\c2dgqi21.tlx.json""
+  --tls "{'use_tls':true,'accept_invalid_certs':true}"

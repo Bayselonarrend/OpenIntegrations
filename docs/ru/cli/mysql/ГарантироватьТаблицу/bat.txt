@@ -1,5 +1,7 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint mysql ГарантироватьТаблицу ^
-  --table ""test_new"" ^
-  --cols ""C:\Users\bayse\AppData\Local\Temp\0bsuk3ce.zoj.json"" ^
+  --table "test_new" ^
+  --cols "{'smallint_field':'SMALLINT','double_field':'DOUBLE','bigint_field':'BIGINT','custom_field':'TEXT'}" ^
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-  --tls ""C:\Users\bayse\AppData\Local\Temp\ga04iktc.hn5.json""
+  --tls "{'use_tls':true,'accept_invalid_certs':true}"

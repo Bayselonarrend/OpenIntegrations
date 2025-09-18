@@ -1,5 +1,7 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint bitrix24 ИзменитьПользователя ^
-  --url ""b24-ar17wx.bitrix24.by"" ^
-  --userid "2688" ^
-  --fields ""C:\Users\bayse\AppData\Local\Temp\33tp2dqg.hbr.json"" ^
+  --url "b24-ar17wx.bitrix24.by" ^
+  --userid 2692 ^
+  --fields "{'EMAIL':'186e554a-6fe3-434f-b273-2d20baab54cc@exepmple.org','NAME':'Олег','LAST_NAME':'Лама','UF_DEPARTMENT':'7'}" ^
   --token "***"

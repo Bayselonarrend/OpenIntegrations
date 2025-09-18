@@ -1,4 +1,6 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint vk НаписатьВОбсуждение \
-  --topic "54112370" \
-  --text ""Мне больше нравится желтый"" \
-  --auth ""C:\Users\bayse\AppData\Local\Temp\4bz3br20.mbt.json""
+  --topic 54113633 \
+  --text "Мне больше нравится желтый" \
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

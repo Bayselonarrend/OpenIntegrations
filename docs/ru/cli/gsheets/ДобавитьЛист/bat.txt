@@ -1,4 +1,4 @@
 oint gsheets ДобавитьЛист ^
   --token "***" ^
-  --spreadsheet "1E_x1OVng6V5uJocXeDt7WCjo56gdxcwZbYdx8BGwHmc" ^
+  --spreadsheet "1d-AOftL913umVSlqfGVXs2knA_S2A0S8LGmCn9tIqFA" ^
   --title "Тестовый лист"

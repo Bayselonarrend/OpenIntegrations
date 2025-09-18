@@ -1,6 +1,6 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint ollama ВыгрузитьМодельИзПамяти ^
-  --url ""https://hut.openintegrations.dev/ollama"" ^
-  --model ""tinyllama"" ^
+  --url "https://hut.openintegrations.dev/ollama" ^
+  --model "tinyllama" ^
   --headers "{'Authorization':'***'}"
