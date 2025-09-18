@@ -1,5 +1,7 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint bitrix24 ИзменитьКалендарь ^
-  --url ""b24-ar17wx.bitrix24.by"" ^
-  --calendar "1384" ^
-  --fields ""C:\Users\bayse\AppData\Local\Temp\qxr0sydt.vs3.json"" ^
+  --url "b24-ar17wx.bitrix24.by" ^
+  --calendar 1388 ^
+  --fields "{'type':'user','ownerId':'1','name':'Новое имя календаря','description':'Этот календарь был изменен'}" ^
   --token "***"

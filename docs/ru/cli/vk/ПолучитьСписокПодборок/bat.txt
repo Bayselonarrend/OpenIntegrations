@@ -1,2 +1,4 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint vk ПолучитьСписокПодборок ^
-  --auth ""C:\Users\bayse\AppData\Local\Temp\dms5jntz.m30.json""
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
