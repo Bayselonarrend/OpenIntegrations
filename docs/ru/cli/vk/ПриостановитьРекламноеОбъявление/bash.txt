@@ -1,4 +1,6 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint vk ПриостановитьРекламноеОбъявление \
-  --cabinet ""1607951446"" \
-  --adv "0" \
-  --auth ""C:\Users\bayse\AppData\Local\Temp\l13bec5u.vyr.json""
+  --cabinet "1607951446" \
+  --adv 0 \
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

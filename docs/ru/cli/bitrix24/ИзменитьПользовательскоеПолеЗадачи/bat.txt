@@ -1,6 +1,8 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint bitrix24 ИзменитьПользовательскоеПолеЗадачи ^
-  --url ""b24-ar17wx.bitrix24.by"" ^
-  --fieldid "261" ^
-  --externalid ""NEW_TEXT_FIELD"" ^
-  --label ""C:\Users\bayse\AppData\Local\Temp\m1ya0sfw.nly.json"" ^
+  --url "b24-ar17wx.bitrix24.by" ^
+  --fieldid 261 ^
+  --externalid "NEW_TEXT_FIELD" ^
+  --label "{'en':'Updated field','ru':'Измененное поле'}" ^
   --token "***"

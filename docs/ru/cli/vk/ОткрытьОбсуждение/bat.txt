@@ -1,3 +1,5 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint vk ОткрытьОбсуждение ^
-  --topic "54112370" ^
-  --auth ""C:\Users\bayse\AppData\Local\Temp\fczzplyo.hsz.json""
+  --topic 54113633 ^
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

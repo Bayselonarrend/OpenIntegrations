@@ -1,4 +1,6 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint vk ИзменитьТовар \
-  --item "11849034" \
-  --product ""C:\Users\bayse\AppData\Local\Temp\o35ftntl.5em.json"" \
-  --auth ""C:\Users\bayse\AppData\Local\Temp\rpnqirgq.jq4.json""
+  --item 11853910 \
+  --product "{'Имя':'Тестовый товар измененный'}" \
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

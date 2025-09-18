@@ -1,6 +1,8 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint bitrix24 ПолучитьСобытияКалендарей ^
-  --url ""b24-ar17wx.bitrix24.by"" ^
-  --owner "1" ^
-  --type ""user"" ^
-  --filter ""C:\Users\bayse\AppData\Local\Temp\cqnac0ml.jlv.json"" ^
+  --url "b24-ar17wx.bitrix24.by" ^
+  --owner 1 ^
+  --type "user" ^
+  --filter "{'from':'9/19/2025 12:17:35 PM','to':'9/20/2025 12:17:35 PM','section':['1386','1388']}" ^
   --token "***"

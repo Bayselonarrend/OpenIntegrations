@@ -1,4 +1,6 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint vk СоздатьРекламнуюКампанию ^
-  --cabinet ""1607951446"" ^
-  --title ""Новая кампания"" ^
-  --auth ""C:\Users\bayse\AppData\Local\Temp\whwos4wl.kc2.json""
+  --cabinet "1607951446" ^
+  --title "Новая кампания" ^
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

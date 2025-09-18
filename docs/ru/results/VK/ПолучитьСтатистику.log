@@ -5,8 +5,8 @@
     "comments": 1,
     "likes": 1
    },
-   "period_from": 1758067200,
-   "period_to": 1758153599,
+   "period_from": 1758153600,
+   "period_to": 1758239999,
    "reach": {
     "age": [
      {
@@ -141,11 +141,11 @@
   },
   {
    "activity": {
-    "comments": 2,
-    "likes": 2
+    "comments": 1,
+    "likes": 1
    },
-   "period_from": 1757980800,
-   "period_to": 1758067199,
+   "period_from": 1758067200,
+   "period_to": 1758153599,
    "reach": {
     "age": [
      {

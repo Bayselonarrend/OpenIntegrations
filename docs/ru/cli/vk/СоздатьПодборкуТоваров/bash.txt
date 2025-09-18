@@ -1,6 +1,8 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint vk СоздатьПодборкуТоваров \
-  --title ""Тестовая подборка"" \
-  --picture ""https://hut.openintegrations.dev/test_data/picture.jpg"" \
-  --main "true" \
-  --hidden "false" \
-  --auth ""C:\Users\bayse\AppData\Local\Temp\0b3qpac3.kbf.json""
+  --title "Тестовая подборка" \
+  --picture "https://hut.openintegrations.dev/test_data/picture.jpg" \
+  --main true \
+  --hidden false \
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

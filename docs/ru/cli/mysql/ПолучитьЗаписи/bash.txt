@@ -1,4 +1,6 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint mysql ПолучитьЗаписи \
-  --table ""testtable"" \
+  --table "testtable" \
   --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-  --tls ""C:\Users\bayse\AppData\Local\Temp\bgrrre01.dzs.json""
+  --tls "{'use_tls':true,'accept_invalid_certs':true}"
