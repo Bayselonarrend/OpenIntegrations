@@ -24,10 +24,7 @@ import TabItem from '@theme/TabItem';
 
 @Примечание
 
-
-```bsl title="Пример использования для 1С:Предприятие/OneScript"
 @Вызов1С
-```
     
 @ВызовCLI
 
