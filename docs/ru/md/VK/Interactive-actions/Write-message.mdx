@@ -29,7 +29,6 @@ import TabItem from '@theme/TabItem';
 
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Параметры = ПолучитьПараметрыВК();
 
@@ -50,23 +49,27 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk НаписатьСообщение \
-              --text ""Сообщение из автотеста"" \
-              --user ""657846756"" \
+              --text "Сообщение из автотеста" \
+              --user "657846756" \
               --ct "***" \
-              --keyboard ""C:\Users\bayse\AppData\Local\Temp\pe5evudu.roy.json"" \
-              --auth ""C:\Users\bayse\AppData\Local\Temp\a0tjxe4f.ixw.json""
+              --keyboard "{'buttons':[[{'action':{'type':'text','label':'Button 1'}},{'action':{'type':'text','label':'Button 2'}}]],'one_time':false}" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk НаписатьСообщение ^
-              --text ""Сообщение из автотеста"" ^
-              --user ""657846756"" ^
+              --text "Сообщение из автотеста" ^
+              --user "657846756" ^
               --ct "***" ^
-              --keyboard ""C:\Users\bayse\AppData\Local\Temp\pe5evudu.roy.json"" ^
-              --auth ""C:\Users\bayse\AppData\Local\Temp\a0tjxe4f.ixw.json""
+              --keyboard "{'buttons':[[{'action':{'type':'text','label':'Button 1'}},{'action':{'type':'text','label':'Button 2'}}]],'one_time':false}" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>
@@ -74,6 +77,6 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "response": 1147
+ "response": 1148
 }
 ```

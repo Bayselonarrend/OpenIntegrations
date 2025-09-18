@@ -27,7 +27,6 @@ import TabItem from '@theme/TabItem';
 
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     ТекущаяДата  = OPI_Инструменты.ПолучитьТекущуюДату();
     Токен        = "ya29.a0AQQ_BDTgQbn9c5rXhPK3FCakms_7oKkdIWE1CCQFnSPftb2RxvloVqnYOcnsAKhXrD0Gq8Tz2Kgn5IBXG5E25uksZfvvTtXob-jFcuj_9LZYs9La4HrcFk766...";
@@ -64,8 +63,8 @@ import TabItem from '@theme/TabItem';
             
             oint gcalendar СоздатьСобытие \
               --token "***" \
-              --calendar "eee60d14dd83333d09f56a4074ac29c6560532e5f126b49ccfc3dde2d937ae4b@group.calendar.google.com" \
-              --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'9/17/2025 3:53:49 PM','ДатаОкончания':'9/17/2025 4:53:49 PM','МассивURLФайловВложений':{'Картинка1':'https://hut.openintegrations.dev/test_data/picture.jpg','Картинка2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
+              --calendar "e079d183ec8b1075b88b9e2841ba88215a34ba04b4654b712dff89905a248d99@group.calendar.google.com" \
+              --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'9/18/2025 11:49:45 AM','ДатаОкончания':'9/18/2025 12:49:45 PM','МассивURLФайловВложений':{'Картинка1':'https://hut.openintegrations.dev/test_data/picture.jpg','Картинка2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
         ```
     </TabItem>
   
@@ -75,8 +74,8 @@ import TabItem from '@theme/TabItem';
             
             oint gcalendar СоздатьСобытие ^
               --token "***" ^
-              --calendar "eee60d14dd83333d09f56a4074ac29c6560532e5f126b49ccfc3dde2d937ae4b@group.calendar.google.com" ^
-              --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'9/17/2025 3:53:49 PM','ДатаОкончания':'9/17/2025 4:53:49 PM','МассивURLФайловВложений':{'Картинка1':'https://hut.openintegrations.dev/test_data/picture.jpg','Картинка2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
+              --calendar "e079d183ec8b1075b88b9e2841ba88215a34ba04b4654b712dff89905a248d99@group.calendar.google.com" ^
+              --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'9/18/2025 11:49:45 AM','ДатаОкончания':'9/18/2025 12:49:45 PM','МассивURLФайловВложений':{'Картинка1':'https://hut.openintegrations.dev/test_data/picture.jpg','Картинка2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
         ```
     </TabItem>
 </Tabs>
@@ -85,12 +84,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "kind": "calendar#event",
- "etag": "\"3516227262097054\"",
- "id": "h6vi8sf4c3343infs82hgd2sk4",
+ "etag": "\"3516370773823678\"",
+ "id": "vbl8fscqir4coj23h712a6tgj0",
  "status": "confirmed",
- "htmlLink": "https://www.google.com/calendar/event?eid=aDZ2aThzZjRjMzM0M2luZnM4MmhnZDJzazQgZWVlNjBkMTRkZDgzMzMzZDA5ZjU2YTQwNzRhYzI5YzY1NjA1MzJlNWYxMjZiNDljY2ZjM2RkZTJkOTM3YWU0YkBn",
- "created": "2025-09-17T12:53:50Z",
- "updated": "2025-09-17T12:53:51.048Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=dmJsOGZzY3FpcjRjb2oyM2g3MTJhNnRnajAgZTA3OWQxODNlYzhiMTA3NWI4OGI5ZTI4NDFiYTg4MjE1YTM0YmEwNGI0NjU0YjcxMmRmZjg5OTA1YTI0OGQ5OUBn",
+ "created": "2025-09-18T08:49:46Z",
+ "updated": "2025-09-18T08:49:46.911Z",
  "summary": "Новое событие",
  "description": "Описание тестового события",
  "location": "В офисе",
@@ -98,19 +97,19 @@ import TabItem from '@theme/TabItem';
   "email": "bayselonarrend@gmail.com"
  },
  "organizer": {
-  "email": "eee60d14dd83333d09f56a4074ac29c6560532e5f126b49ccfc3dde2d937ae4b@group.calendar.google.com",
+  "email": "e079d183ec8b1075b88b9e2841ba88215a34ba04b4654b712dff89905a248d99@group.calendar.google.com",
   "displayName": "Тестовый календарь",
   "self": true
  },
  "start": {
-  "dateTime": "2025-09-17T18:53:49+03:00",
+  "dateTime": "2025-09-18T14:49:45+03:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2025-09-17T19:53:49+03:00",
+  "dateTime": "2025-09-18T15:49:45+03:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "h6vi8sf4c3343infs82hgd2sk4@google.com",
+ "iCalUID": "vbl8fscqir4coj23h712a6tgj0@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true

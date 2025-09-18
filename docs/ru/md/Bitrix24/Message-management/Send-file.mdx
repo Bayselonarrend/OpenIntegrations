@@ -33,7 +33,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
     IDЧата   = "3060";
@@ -67,10 +66,10 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint bitrix24 ОтправитьФайл \
-              --url ""b24-ar17wx.bitrix24.by"" \
-              --chat "3122" \
-              --fileid "43010" \
-              --description ""Очень важный файл"" \
+              --url "b24-ar17wx.bitrix24.by" \
+              --chat 3126 \
+              --fileid 43064 \
+              --description "Очень важный файл" \
               --token "***"
         ```
     </TabItem>
@@ -78,10 +77,10 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint bitrix24 ОтправитьФайл ^
-              --url ""b24-ar17wx.bitrix24.by"" ^
-              --chat "3122" ^
-              --fileid "43010" ^
-              --description ""Очень важный файл"" ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --chat 3126 ^
+              --fileid 43064 ^
+              --description "Очень важный файл" ^
               --token "***"
         ```
     </TabItem>
@@ -92,9 +91,9 @@ import TabItem from '@theme/TabItem';
 {
  "result": {
   "FILES": {
-   "upload43010": {
-    "id": 43010,
-    "chatId": 3122,
+   "upload43064": {
+    "id": 43064,
+    "chatId": 3126,
     "date": {},
     "type": "file",
     "name": "Важный документ.docx",
@@ -106,19 +105,19 @@ import TabItem from '@theme/TabItem';
     "authorId": 1,
     "authorName": "Антон Титовец",
     "urlPreview": "",
-    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=43010&width=1280&height=1280&signature=ac1d366795789015aff7072f49bbc823970c99aadb15b78f80585faef8d094cc&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
-    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=43010&width=1280&height=1280&signature=ac1d366795789015aff7072f49bbc823970c99aadb15b78f80585faef8d094cc&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
+    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=43064&width=1280&height=1280&signature=624621b71079795763b56e6e5bbbbf44e891fa944bc6f3ca9a04bf6422c61bec&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
+    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=43064&width=1280&height=1280&signature=624621b71079795763b56e6e5bbbbf44e891fa944bc6f3ca9a04bf6422c61bec&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
     "viewerAttrs": {
      "viewer": null,
      "viewerType": "cloud-document",
-     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=43010&width=1280&height=1280&signature=ac1d366795789015aff7072f49bbc823970c99aadb15b78f80585faef8d094cc&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
+     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=43064&width=1280&height=1280&signature=624621b71079795763b56e6e5bbbbf44e891fa944bc6f3ca9a04bf6422c61bec&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
      "viewerTypeClass": "BX.Messenger.Integration.Viewer.OnlyOfficeChatItem",
      "viewerSeparateItem": true,
      "viewerExtension": "im.integration.viewer",
-     "objectId": "43010",
-     "imChatId": 3122,
+     "objectId": "43064",
+     "imChatId": 3126,
      "title": "Важный документ.docx",
-     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"43010\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
+     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"43064\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
     },
     "mediaUrl": {
      "preview": {
@@ -128,11 +127,11 @@ import TabItem from '@theme/TabItem';
    }
   },
   "DISK_ID": [
-   "43010"
+   "43064"
   ],
   "FILE_MODELS": {
-   "upload43010": {
-    "id": 43010,
+   "upload43064": {
+    "id": 43064,
     "name": "Важный документ.docx",
     "createTime": {},
     "updateTime": {},
@@ -140,33 +139,33 @@ import TabItem from '@theme/TabItem';
     "code": null,
     "xmlId": null,
     "storageId": 6,
-    "realObjectId": 43010,
-    "parentId": 43006,
+    "realObjectId": 43064,
+    "parentId": 43060,
     "deletedType": 0,
     "createdBy": "1",
     "updatedBy": "1",
     "deletedBy": "0",
     "typeFile": 4,
     "globalContentVersion": 2,
-    "fileId": 28880,
+    "fileId": 28922,
     "size": 24071,
-    "etag": "603765a5c79c3f15409c9e6e84d29be9",
+    "etag": "a099d15a2339d9e6fb2039163d08c866",
     "links": {
-     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=43010",
-     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=43010&action=showObjectInGrid&ncc=1"
+     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=43064",
+     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=43064&action=showObjectInGrid&ncc=1"
     }
    }
   },
-  "MESSAGE_ID": 61558
+  "MESSAGE_ID": 61662
  },
  "time": {
-  "start": 1758115130.8515,
-  "finish": 1758115130.91908,
-  "duration": 0.0675840377807617,
-  "processing": 0.038640022277832,
-  "date_start": "2025-09-17T16:18:50+03:00",
-  "date_finish": "2025-09-17T16:18:50+03:00",
-  "operating_reset_at": 1758115730,
+  "start": 1758186836.6476,
+  "finish": 1758186836.7128,
+  "duration": 0.0651979446411133,
+  "processing": 0.039578914642334,
+  "date_start": "2025-09-18T12:13:56+03:00",
+  "date_finish": "2025-09-18T12:13:56+03:00",
+  "operating_reset_at": 1758187436,
   "operating": 0
  }
 }

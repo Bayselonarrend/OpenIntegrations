@@ -26,7 +26,6 @@ import TabItem from '@theme/TabItem';
 
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Параметры = ПолучитьПараметрыВК();
 
@@ -40,17 +39,21 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk СоздатьСвойствоТовара \
-              --title ""Цвет"" \
-              --auth ""C:\Users\bayse\AppData\Local\Temp\4snclrup.jpp.json""
+              --title "Цвет" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk СоздатьСвойствоТовара ^
-              --title ""Цвет"" ^
-              --auth ""C:\Users\bayse\AppData\Local\Temp\4snclrup.jpp.json""
+              --title "Цвет" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>
@@ -59,7 +62,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "response": {
-  "property_id": 4365
+  "property_id": 4374
  }
 }
 ```
