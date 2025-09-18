@@ -31,7 +31,6 @@ import TabItem from '@theme/TabItem';
 
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Адрес  = "127.0.0.1";
     Логин  = "bayselonarrend";
@@ -100,19 +99,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint mysql ПолучитьЗаписи \
-              --table ""testtable"" \
+              --table "testtable" \
               --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-              --tls ""C:\Users\bayse\AppData\Local\Temp\bgrrre01.dzs.json""
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint mysql ПолучитьЗаписи ^
-              --table ""testtable"" ^
+              --table "testtable" ^
               --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-              --tls ""C:\Users\bayse\AppData\Local\Temp\bgrrre01.dzs.json""
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
 </Tabs>
@@ -124,8 +127,8 @@ import TabItem from '@theme/TabItem';
   {
    "bigint_field": 9223372036854775807,
    "char_field": "AAAAA",
-   "date_field": "2025-09-17T03:00:00+03:00",
-   "datetime_field": "2025-09-17T18:40:52+03:00",
+   "date_field": "2025-09-18T03:00:00+03:00",
+   "datetime_field": "2025-09-18T14:37:03+03:00",
    "double_field": 100.51212310791,
    "float_field": 100.5,
    "int_field": -2147483647,
@@ -138,8 +141,8 @@ import TabItem from '@theme/TabItem';
    "set_field": "one",
    "smallint_field": -32767,
    "text_field": "Some text",
-   "time_field": "1970-01-01T17:40:52+02:00",
-   "timestamp_field": "2025-09-17T18:40:52+03:00",
+   "time_field": "1970-01-01T13:37:03+02:00",
+   "timestamp_field": "2025-09-18T14:37:03+03:00",
    "tinyint_field": 127,
    "tinytext_field": "Some tiny text",
    "uint_field": 4294967295,

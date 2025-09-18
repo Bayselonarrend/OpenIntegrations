@@ -32,7 +32,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     // Полную структуру полей можно получить функцией ПолучитьСтруктуруЗадачи()
 
@@ -58,20 +57,24 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 ИзменитьЗадачу \
-              --url ""b24-ar17wx.bitrix24.by"" \
-              --task ""8042"" \
-              --fields ""C:\Users\bayse\AppData\Local\Temp\bzennsem.yp2.json"" \
+              --url "b24-ar17wx.bitrix24.by" \
+              --task "8052" \
+              --fields "{'TITLE':'Другой заголовок задачи','DESCRIPTION':'Другое описание задачи','PRIORITY':'1'}" \
               --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 ИзменитьЗадачу ^
-              --url ""b24-ar17wx.bitrix24.by"" ^
-              --task ""8042"" ^
-              --fields ""C:\Users\bayse\AppData\Local\Temp\bzennsem.yp2.json"" ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --task "8052" ^
+              --fields "{'TITLE':'Другой заголовок задачи','DESCRIPTION':'Другое описание задачи','PRIORITY':'1'}" ^
               --token "***"
         ```
     </TabItem>
@@ -82,7 +85,7 @@ import TabItem from '@theme/TabItem';
 {
  "result": {
   "task": {
-   "id": "8042",
+   "id": "8052",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -95,19 +98,19 @@ import TabItem from '@theme/TabItem';
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-09-17T16:08:59+03:00",
+   "createdDate": "2025-09-18T12:04:13+03:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2025-09-17T16:09:14+03:00",
+   "changedDate": "2025-09-18T12:04:27+03:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2025-09-17T16:08:59+03:00",
+   "activityDate": "2025-09-18T12:04:13+03:00",
    "dateStart": null,
-   "deadline": "2025-09-18T19:08:00+03:00",
-   "startDatePlan": "2025-09-17T16:08:59+03:00",
-   "endDatePlan": "2025-09-18T00:00:00+03:00",
-   "guid": "{cac605be-173c-4010-926e-425eccd48eca}",
+   "deadline": "2025-09-19T15:04:00+03:00",
+   "startDatePlan": "2025-09-18T12:04:13+03:00",
+   "endDatePlan": "2025-09-19T00:00:00+03:00",
+   "guid": "{23de3e75-ae2f-44e7-bbdd-5c9f6024e753}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -135,7 +138,7 @@ import TabItem from '@theme/TabItem';
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2025-09-17T16:09:14+03:00",
+   "statusChangedDate": "2025-09-18T12:04:27+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -216,14 +219,14 @@ import TabItem from '@theme/TabItem';
   }
  },
  "time": {
-  "start": 1758114554.52911,
-  "finish": 1758114554.79306,
-  "duration": 0.263955116271973,
-  "processing": 0.237704038619995,
-  "date_start": "2025-09-17T16:09:14+03:00",
-  "date_finish": "2025-09-17T16:09:14+03:00",
-  "operating_reset_at": 1758115154,
-  "operating": 0.237684011459351
+  "start": 1758186267.32425,
+  "finish": 1758186267.57267,
+  "duration": 0.248412847518921,
+  "processing": 0.222781181335449,
+  "date_start": "2025-09-18T12:04:27+03:00",
+  "date_finish": "2025-09-18T12:04:27+03:00",
+  "operating_reset_at": 1758186867,
+  "operating": 0.222760915756226
  }
 }
 ```

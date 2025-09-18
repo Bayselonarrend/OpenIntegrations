@@ -34,7 +34,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     IDКлиента = "2479669";
     КлючAPI   = "09f65e9f-262d-4aca...";
@@ -55,20 +54,24 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint ozon ПолучитьСписокОтправленийFBO \
               --clientid "***" \
               --apikey "***" \
-              --filter "{'since':'01/01/2023 00:00:00','to':'01/01/2024 00:00:00'}" \
+              --filter "{'since':'1/1/2023 12:00:00 AM','to':'1/1/2024 12:00:00 AM'}" \
               --with "{'analytics_data':true,'financial_data':true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint ozon ПолучитьСписокОтправленийFBO ^
               --clientid "***" ^
               --apikey "***" ^
-              --filter "{'since':'01/01/2023 00:00:00','to':'01/01/2024 00:00:00'}" ^
+              --filter "{'since':'1/1/2023 12:00:00 AM','to':'1/1/2024 12:00:00 AM'}" ^
               --with "{'analytics_data':true,'financial_data':true}"
         ```
     </TabItem>

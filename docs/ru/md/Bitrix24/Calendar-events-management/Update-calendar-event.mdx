@@ -32,7 +32,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
     IDСобытия = "2388";
@@ -61,20 +60,24 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 ИзменитьСобытиеКалендаря \
-              --url ""b24-ar17wx.bitrix24.by"" \
-              --event "2512" \
-              --fields ""C:\Users\bayse\AppData\Local\Temp\ombeccx5.o3g.json"" \
+              --url "b24-ar17wx.bitrix24.by" \
+              --event 2520 \
+              --fields "{'ownerId':'1','type':'user','name':'Измененное событие','description':'Новое описание события','importance':'low','private_event':'Y'}" \
               --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 ИзменитьСобытиеКалендаря ^
-              --url ""b24-ar17wx.bitrix24.by"" ^
-              --event "2512" ^
-              --fields ""C:\Users\bayse\AppData\Local\Temp\ombeccx5.o3g.json"" ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --event 2520 ^
+              --fields "{'ownerId':'1','type':'user','name':'Измененное событие','description':'Новое описание события','importance':'low','private_event':'Y'}" ^
               --token "***"
         ```
     </TabItem>
@@ -83,16 +86,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 2512,
+ "result": 2520,
  "time": {
-  "start": 1758115346.69676,
-  "finish": 1758115346.88527,
-  "duration": 0.188516139984131,
-  "processing": 0.166176080703735,
-  "date_start": "2025-09-17T16:22:26+03:00",
-  "date_finish": "2025-09-17T16:22:26+03:00",
-  "operating_reset_at": 1758115946,
-  "operating": 0.166159152984619
+  "start": 1758187061.76182,
+  "finish": 1758187062.0728,
+  "duration": 0.310980081558228,
+  "processing": 0.285372972488403,
+  "date_start": "2025-09-18T12:17:41+03:00",
+  "date_finish": "2025-09-18T12:17:42+03:00",
+  "operating_reset_at": 1758187661,
+  "operating": 0.285348892211914
  }
 }
 ```

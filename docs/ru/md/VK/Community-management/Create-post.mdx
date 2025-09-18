@@ -33,7 +33,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Параметры = ПолучитьПараметрыВК();
     Текст     = "Пост из автотеста";
@@ -59,23 +58,27 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk СоздатьПост \
-              --text ""Пост из автотеста"" \
-              --pictures ""C:\Users\bayse\AppData\Local\Temp\f23ef2ft.pgb.png"" \
-              --ad "true" \
-              --url ""https://github.com/Bayselonarrend/OpenIntegrations"" \
-              --auth ""C:\Users\bayse\AppData\Local\Temp\00kplx0a.vty.json""
+              --text "Пост из автотеста" \
+              --pictures "C:\Users\bayse\AppData\Local\Temp\3jqj1sff.kq1.png" \
+              --ad true \
+              --url "https://github.com/Bayselonarrend/OpenIntegrations" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk СоздатьПост ^
-              --text ""Пост из автотеста"" ^
-              --pictures ""C:\Users\bayse\AppData\Local\Temp\f23ef2ft.pgb.png"" ^
-              --ad "true" ^
-              --url ""https://github.com/Bayselonarrend/OpenIntegrations"" ^
-              --auth ""C:\Users\bayse\AppData\Local\Temp\00kplx0a.vty.json""
+              --text "Пост из автотеста" ^
+              --pictures "C:\Users\bayse\AppData\Local\Temp\3jqj1sff.kq1.png" ^
+              --ad true ^
+              --url "https://github.com/Bayselonarrend/OpenIntegrations" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>
@@ -84,7 +87,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "response": {
-  "post_id": 9736
+  "post_id": 9746
  }
 }
 ```

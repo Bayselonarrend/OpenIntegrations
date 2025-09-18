@@ -35,7 +35,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Адрес  = "127.0.0.1";
     Логин  = "bayselonarrend";
@@ -107,11 +106,11 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint postgres ДобавитьЗаписи \
-              --table ""testtable"" \
-              --rows ""[{'bool_field':{'BOOL':true},'oldchar_field':{'OLDCHAR':1},'smallint_field':{'SMALLINT':5},'smallserial_field':{'SMALLSERIAL':6},'int_field':{'INT':100},'serial_field':{'SERIAL':100},'oid_field':{'OID':24576},'bigint_field':{'BIGINT':9999999},'bigserial_field':{'BIGSERIAL':9999999},'real_field':{'REAL':15.2},'dp_field':{'DOUBLE_PRECISION':1.0002},'text_field':{'TEXT':'Some text'},'varchar_field':{'VARCHAR':'Some varchar'},'charn_field':{'CHAR':'AAA'},'char_field':{'CHAR':'A'},'name_field':{'NAME':'Vitaly'},'bytea_field':{'BYTEA':'C:\\Users\\bayse\\AppData\\Local\\Temp\\y5o5k5fj.j22'},'ts_field':{'TIMESTAMP':'2025-09-17T15:36:27.8658204Z'},'tswtz_field':{'TIMESTAMP_WITH_TIME_ZONE':'2025-09-17T15:36:27.8658204+05:00'},'ip_field':{'INET':'127.0.0.1'},'json_field':{'JSON':{'key':'ItsKey','value':10}},'jsonb_field':{'JSONB':{'key':'ItsKey','value':10}},'date_field':{'DATE':'2025-09-17T15:36:27.8658204Z'},'time_field':{'TIME':'2025-09-17T15:36:27.8658204Z'},'uuid_field':{'UUID':'03edbf24-c80a-438b-9ee1-17f1c180e2e9'}}]"" \
-              --trn "true" \
+              --table "testtable" \
+              --rows "[{'bool_field':{'BOOL':true},'oldchar_field':{'OLDCHAR':'1'},'smallint_field':{'SMALLINT':'5'},'smallserial_field':{'SMALLSERIAL':'6'},'int_field':{'INT':'100'},'serial_field':{'SERIAL':'100'},'oid_field':{'OID':'24576'},'bigint_field':{'BIGINT':'9999999'},'bigserial_field':{'BIGSERIAL':'9999999'},'real_field':{'REAL':'15.2'},'dp_field':{'DOUBLE_PRECISION':'1.0002'},'text_field':{'TEXT':'Some text'},'varchar_field':{'VARCHAR':'Some varchar'},'charn_field':{'CHAR':'AAA'},'char_field':{'CHAR':'A'},'name_field':{'NAME':'Vitaly'},'bytea_field':{'BYTEA':'C:\\Users\\bayse\\AppData\\Local\\Temp\\5piiyvub.yux'},'ts_field':{'TIMESTAMP':'9/18/2025 11:32:42 AM'},'tswtz_field':{'TIMESTAMP_WITH_TIME_ZONE':'9/18/2025 9:32:42 AM'},'ip_field':{'INET':'127.0.0.1'},'json_field':{'JSON':{'key':'***','value':'10'}},'jsonb_field':{'JSONB':{'key':'***','value':'10'}},'date_field':{'DATE':'9/18/2025 11:32:42 AM'},'time_field':{'TIME':'9/18/2025 11:32:42 AM'},'uuid_field':{'UUID':'ef422504-aff1-469e-b4a7-9e901c4fc2e6'}}]" \
+              --trn true \
               --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-              --tls ""C:\Users\bayse\AppData\Local\Temp\xa3yfx4h.b1n.json""
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
   
@@ -120,11 +119,11 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint postgres ДобавитьЗаписи ^
-              --table ""testtable"" ^
-              --rows ""[{'bool_field':{'BOOL':true},'oldchar_field':{'OLDCHAR':1},'smallint_field':{'SMALLINT':5},'smallserial_field':{'SMALLSERIAL':6},'int_field':{'INT':100},'serial_field':{'SERIAL':100},'oid_field':{'OID':24576},'bigint_field':{'BIGINT':9999999},'bigserial_field':{'BIGSERIAL':9999999},'real_field':{'REAL':15.2},'dp_field':{'DOUBLE_PRECISION':1.0002},'text_field':{'TEXT':'Some text'},'varchar_field':{'VARCHAR':'Some varchar'},'charn_field':{'CHAR':'AAA'},'char_field':{'CHAR':'A'},'name_field':{'NAME':'Vitaly'},'bytea_field':{'BYTEA':'C:\\Users\\bayse\\AppData\\Local\\Temp\\y5o5k5fj.j22'},'ts_field':{'TIMESTAMP':'2025-09-17T15:36:27.8658204Z'},'tswtz_field':{'TIMESTAMP_WITH_TIME_ZONE':'2025-09-17T15:36:27.8658204+05:00'},'ip_field':{'INET':'127.0.0.1'},'json_field':{'JSON':{'key':'ItsKey','value':10}},'jsonb_field':{'JSONB':{'key':'ItsKey','value':10}},'date_field':{'DATE':'2025-09-17T15:36:27.8658204Z'},'time_field':{'TIME':'2025-09-17T15:36:27.8658204Z'},'uuid_field':{'UUID':'03edbf24-c80a-438b-9ee1-17f1c180e2e9'}}]"" ^
-              --trn "true" ^
+              --table "testtable" ^
+              --rows "[{'bool_field':{'BOOL':true},'oldchar_field':{'OLDCHAR':'1'},'smallint_field':{'SMALLINT':'5'},'smallserial_field':{'SMALLSERIAL':'6'},'int_field':{'INT':'100'},'serial_field':{'SERIAL':'100'},'oid_field':{'OID':'24576'},'bigint_field':{'BIGINT':'9999999'},'bigserial_field':{'BIGSERIAL':'9999999'},'real_field':{'REAL':'15.2'},'dp_field':{'DOUBLE_PRECISION':'1.0002'},'text_field':{'TEXT':'Some text'},'varchar_field':{'VARCHAR':'Some varchar'},'charn_field':{'CHAR':'AAA'},'char_field':{'CHAR':'A'},'name_field':{'NAME':'Vitaly'},'bytea_field':{'BYTEA':'C:\\Users\\bayse\\AppData\\Local\\Temp\\5piiyvub.yux'},'ts_field':{'TIMESTAMP':'9/18/2025 11:32:42 AM'},'tswtz_field':{'TIMESTAMP_WITH_TIME_ZONE':'9/18/2025 9:32:42 AM'},'ip_field':{'INET':'127.0.0.1'},'json_field':{'JSON':{'key':'***','value':'10'}},'jsonb_field':{'JSONB':{'key':'***','value':'10'}},'date_field':{'DATE':'9/18/2025 11:32:42 AM'},'time_field':{'TIME':'9/18/2025 11:32:42 AM'},'uuid_field':{'UUID':'ef422504-aff1-469e-b4a7-9e901c4fc2e6'}}]" ^
+              --trn true ^
               --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-              --tls ""C:\Users\bayse\AppData\Local\Temp\xa3yfx4h.b1n.json""
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
 </Tabs>

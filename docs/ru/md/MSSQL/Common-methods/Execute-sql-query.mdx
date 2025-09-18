@@ -35,7 +35,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     ТекущаяДата = OPI_Инструменты.ПолучитьТекущуюДату();
     Картинка    = "https://hut.openintegrations.dev/test_data/picture.jpg";
@@ -108,19 +107,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint mssql ВыполнитьЗапросSQL \
-              --sql ""https://hut.openintegrations.dev/test_data/TEST_DATA2.sql"" \
+              --sql "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql" \
               --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-              --tls ""C:\Users\bayse\AppData\Local\Temp\qqzewu5g.sb4.json""
+              --tls "{'use_tls':true,'accept_invalid_certs':true,'ca_cert_path':''}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint mssql ВыполнитьЗапросSQL ^
-              --sql ""https://hut.openintegrations.dev/test_data/TEST_DATA2.sql"" ^
+              --sql "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql" ^
               --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-              --tls ""C:\Users\bayse\AppData\Local\Temp\qqzewu5g.sb4.json""
+              --tls "{'use_tls':true,'accept_invalid_certs':true,'ca_cert_path':''}"
         ```
     </TabItem>
 </Tabs>
@@ -131,15 +134,15 @@ import TabItem from '@theme/TabItem';
  "data": [
   {
    "Age": 20,
-   "BirthDate": "2025-09-17",
-   "CreatedAt": "2025-09-17T15:42:34",
+   "BirthDate": "2025-09-18",
+   "CreatedAt": "2025-09-18T11:38:43",
    "Data": {
     "BYTES": "Base64"
    },
    "FirstName": "Vitaly",
    "IsEmployed": 1,
    "LastName": "Alpaca",
-   "RowGuid": "13f54b0a-c9fb-49f9-b4d4-32aba11d4d35",
+   "RowGuid": "5bdaffbd-4c34-435a-9201-732708d1ec57",
    "Salary": 10.3
   }
  ],

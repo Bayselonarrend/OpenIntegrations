@@ -34,7 +34,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Адрес  = "127.0.0.1";
     Логин  = "SA";
@@ -64,21 +63,25 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint mssql ГарантироватьТаблицу \
-              --table ""test_new"" \
-              --cols ""C:\Users\bayse\AppData\Local\Temp\vyejqywk.slb.json"" \
+              --table "test_new" \
+              --cols "{'smallint_field':'smallint','double_field':'real','bigint_field':'bigint','custom_field':'nvarchar'}" \
               --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-              --tls ""C:\Users\bayse\AppData\Local\Temp\twzicxdo.vb2.json""
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint mssql ГарантироватьТаблицу ^
-              --table ""test_new"" ^
-              --cols ""C:\Users\bayse\AppData\Local\Temp\vyejqywk.slb.json"" ^
+              --table "test_new" ^
+              --cols "{'smallint_field':'smallint','double_field':'real','bigint_field':'bigint','custom_field':'nvarchar'}" ^
               --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-              --tls ""C:\Users\bayse\AppData\Local\Temp\twzicxdo.vb2.json""
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
 </Tabs>

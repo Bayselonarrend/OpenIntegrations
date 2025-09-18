@@ -35,7 +35,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Текст     = "Текст новости";
     Заголовок = "Заголовок новости";
@@ -61,22 +60,26 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 СоздатьНовость \
-              --url ""b24-ar17wx.bitrix24.by"" \
-              --text ""Текст новости"" \
-              --files ""C:\Users\bayse\AppData\Local\Temp\yb2bwobm.ug0.json"" \
-              --title ""Заголовок новости"" \
+              --url "b24-ar17wx.bitrix24.by" \
+              --text "Текст новости" \
+              --files "{'1.png':'https://hut.openintegrations.dev/test_data/picture.jpg','2.png':'https://hut.openintegrations.dev/test_data/picture2.jpg'}" \
+              --title "Заголовок новости" \
               --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 СоздатьНовость ^
-              --url ""b24-ar17wx.bitrix24.by"" ^
-              --text ""Текст новости"" ^
-              --files ""C:\Users\bayse\AppData\Local\Temp\yb2bwobm.ug0.json"" ^
-              --title ""Заголовок новости"" ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --text "Текст новости" ^
+              --files "{'1.png':'https://hut.openintegrations.dev/test_data/picture.jpg','2.png':'https://hut.openintegrations.dev/test_data/picture2.jpg'}" ^
+              --title "Заголовок новости" ^
               --token "***"
         ```
     </TabItem>
@@ -85,16 +88,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 3048,
+ "result": 3052,
  "time": {
-  "start": 1758114481.85585,
-  "finish": 1758114482.45847,
-  "duration": 0.602617979049683,
-  "processing": 0.566243886947632,
-  "date_start": "2025-09-17T16:08:01+03:00",
-  "date_finish": "2025-09-17T16:08:02+03:00",
-  "operating_reset_at": 1758115081,
-  "operating": 0.566220998764038
+  "start": 1758186199.4928,
+  "finish": 1758186200.51439,
+  "duration": 1.02158284187317,
+  "processing": 0.987185955047608,
+  "date_start": "2025-09-18T12:03:19+03:00",
+  "date_finish": "2025-09-18T12:03:20+03:00",
+  "operating_reset_at": 1758186799,
+  "operating": 0.987159013748169
  }
 }
 ```

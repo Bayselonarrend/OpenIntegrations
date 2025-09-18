@@ -35,7 +35,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Адрес  = "127.0.0.1";
     Логин  = "bayselonarrend";
@@ -80,23 +79,27 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint mysql ОбновитьЗаписи \
-              --table ""test_data"" \
-              --values ""C:\Users\bayse\AppData\Local\Temp\ecdy1jim.3n5.json"" \
-              --filter ""C:\Users\bayse\AppData\Local\Temp\5uc14zkp.dcn.json"" \
+              --table "test_data" \
+              --values "{'ip_address':{'VARCHAR':'127.0.0.1'}}" \
+              --filter "{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false}" \
               --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-              --tls ""C:\Users\bayse\AppData\Local\Temp\nevxlcl0.y5r.json""
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint mysql ОбновитьЗаписи ^
-              --table ""test_data"" ^
-              --values ""C:\Users\bayse\AppData\Local\Temp\ecdy1jim.3n5.json"" ^
-              --filter ""C:\Users\bayse\AppData\Local\Temp\5uc14zkp.dcn.json"" ^
+              --table "test_data" ^
+              --values "{'ip_address':{'VARCHAR':'127.0.0.1'}}" ^
+              --filter "{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false}" ^
               --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-              --tls ""C:\Users\bayse\AppData\Local\Temp\nevxlcl0.y5r.json""
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
 </Tabs>
