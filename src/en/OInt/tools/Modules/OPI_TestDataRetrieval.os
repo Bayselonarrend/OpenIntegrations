@@ -12000,6 +12000,8 @@ EndProcedure
 
 Procedure ProcessSpecialOptionsSecrets(Val Library, Val Option, Value)
 
+    Value_ = Value;
+
     If Library = "bitrix24" Then
 
         ProcessSecretsBitrix24(Option, Value);
@@ -12028,7 +12030,9 @@ Procedure ProcessSpecialOptionsSecrets(Val Library, Val Option, Value)
         Return;
     EndIf;
 
-    Value = StrTemplate("""%1""", Value);
+    If Not Value_ = Value Then
+        Value     = StrTemplate("""%1""", Value);
+    EndIf;
 
 EndProcedure
 
