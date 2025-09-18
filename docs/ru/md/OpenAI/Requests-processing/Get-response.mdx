@@ -34,7 +34,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL   = "https://hut.openintegrations.dev/localai/";
     Токен = "12We...";
@@ -82,7 +81,7 @@ import TabItem from '@theme/TabItem';
               --url "https://hut.openintegrations.dev/localai/" \
               --token "***" \
               --model "moondream2-20250414" \
-              --msgs "[{'role':'user','content':[{'type':'input_image','file_id':'file-7'},{'type':'input_text','text':'What is in this image?'}]}]"
+              --msgs "[{'role':'user','content':[{'type':'input_image','file_id':'file-10'},{'type':'input_text','text':'What is in this image?'}]}]"
         ```
     </TabItem>
   
@@ -94,7 +93,7 @@ import TabItem from '@theme/TabItem';
               --url "https://hut.openintegrations.dev/localai/" ^
               --token "***" ^
               --model "moondream2-20250414" ^
-              --msgs "[{'role':'user','content':[{'type':'input_image','file_id':'file-7'},{'type':'input_text','text':'What is in this image?'}]}]"
+              --msgs "[{'role':'user','content':[{'type':'input_image','file_id':'file-10'},{'type':'input_text','text':'What is in this image?'}]}]"
         ```
     </TabItem>
 </Tabs>
@@ -102,9 +101,9 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "created": 1758117890,
+ "created": 1758189898,
  "object": "chat.completion",
- "id": "e275d8b3-339e-4ce5-9956-5cacdc492e97",
+ "id": "7a221539-8c40-4e3c-89a8-ae4adca98222",
  "model": "smolvlm-256m-instruct",
  "choices": [
   {
@@ -112,14 +111,14 @@ import TabItem from '@theme/TabItem';
    "finish_reason": "stop",
    "message": {
     "role": "assistant",
-    "content": "10/15/2017"
+    "content": "2019"
    }
   }
  ],
  "usage": {
   "prompt_tokens": 53,
-  "completion_tokens": 11,
-  "total_tokens": 64
+  "completion_tokens": 5,
+  "total_tokens": 58
  }
 }
 ```

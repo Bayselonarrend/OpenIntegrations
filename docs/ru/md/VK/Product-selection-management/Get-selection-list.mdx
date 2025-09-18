@@ -25,7 +25,6 @@ import TabItem from '@theme/TabItem';
 
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Параметры = ПолучитьПараметрыВК();
     Результат = OPI_VK.ПолучитьСписокПодборок(Параметры);
@@ -36,15 +35,19 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk ПолучитьСписокПодборок \
-              --auth ""C:\Users\bayse\AppData\Local\Temp\dms5jntz.m30.json""
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk ПолучитьСписокПодборок ^
-              --auth ""C:\Users\bayse\AppData\Local\Temp\dms5jntz.m30.json""
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>
@@ -135,7 +138,7 @@ import TabItem from '@theme/TabItem';
    ],
    "text": "",
    "user_id": 100,
-   "web_view_token": "57ec3355b593433c27",
+   "web_view_token": "62b3504fb8a5123f8b",
    "has_tags": false,
    "orig_photo": {
     "height": 1920,

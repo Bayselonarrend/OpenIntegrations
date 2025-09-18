@@ -27,7 +27,6 @@ import TabItem from '@theme/TabItem';
 
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Адрес  = "127.0.0.1";
     Логин  = "bayselonarrend";
@@ -56,19 +55,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint postgres ОтключитьВсеСоединенияБазыДанных \
-              --base ""testbase2"" \
+              --base "testbase2" \
               --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-              --tls ""C:\Users\bayse\AppData\Local\Temp\eos10qsz.aeg.json""
+              --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint postgres ОтключитьВсеСоединенияБазыДанных ^
-              --base ""testbase2"" ^
+              --base "testbase2" ^
               --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-              --tls ""C:\Users\bayse\AppData\Local\Temp\eos10qsz.aeg.json""
+              --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"
         ```
     </TabItem>
 </Tabs>

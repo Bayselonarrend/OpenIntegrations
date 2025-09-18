@@ -36,7 +36,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTc4NjI0MDMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
     UUID  = "f5f74cc6-4d34-48f8-b89f-4625d8f44a53";
@@ -52,7 +51,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ОформитьКлиентскийВозврат \
               --token "***" \
-              --uuid "e6f39bcc-a856-4c28-b85d-94138836d7a1" \
+              --uuid "8975bf60-cd1b-46ba-a68c-1712b4f7d42b" \
               --tariff 139 \
               --testapi "***"
         ```
@@ -62,7 +61,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ОформитьКлиентскийВозврат ^
               --token "***" ^
-              --uuid "e6f39bcc-a856-4c28-b85d-94138836d7a1" ^
+              --uuid "8975bf60-cd1b-46ba-a68c-1712b4f7d42b" ^
               --tariff 139 ^
               --testapi "***"
         ```
@@ -73,13 +72,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "e6f39bcc-a856-4c28-b85d-94138836d7a1"
+  "uuid": "8975bf60-cd1b-46ba-a68c-1712b4f7d42b"
  },
  "requests": [
   {
-   "request_uuid": "351388c6-5c94-455d-bde3-9e827b86e617",
+   "request_uuid": "efc2dbf9-0228-4134-a03d-43682f89e1f8",
    "type": "CREATE_CLIENT_RETURN",
-   "date_time": "2025-09-17T16:32:04+03:00",
+   "date_time": "2025-09-18T12:26:01+03:00",
    "state": "ACCEPTED"
   }
  ],

@@ -27,7 +27,6 @@ import TabItem from '@theme/TabItem';
 
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Параметры = ПолучитьПараметрыВК();
 
@@ -64,17 +63,21 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk ДобавитьТовар \
-              --product ""C:\Users\bayse\AppData\Local\Temp\dwjcuxuc.vcn.json"" \
-              --auth ""C:\Users\bayse\AppData\Local\Temp\spnmxxsi.vsz.json""
+              --product "{'Имя':'Тестовый товар (другой)','Описание':'Описание товара','Категория':'20173','Цена':'1','СтараяЦена':'15','ОсновноеФото':'https://hut.openintegrations.dev/test_data/picture.jpg','URL':'https://github.com/Bayselonarrend/OpenIntegrations','ДополнительныеФото':['https://hut.openintegrations.dev/test_data/picture.jpg','https://hut.openintegrations.dev/test_data/picture2.jpg'],'ГлавныйВГруппе':true,'Ширина':'20','Высота':'30','Глубина':'40','Вес':'100','SKU':'12345','ДоступныйОстаток':'10','ЗначенияСвойств':'8035'}" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk ДобавитьТовар ^
-              --product ""C:\Users\bayse\AppData\Local\Temp\dwjcuxuc.vcn.json"" ^
-              --auth ""C:\Users\bayse\AppData\Local\Temp\spnmxxsi.vsz.json""
+              --product "{'Имя':'Тестовый товар (другой)','Описание':'Описание товара','Категория':'20173','Цена':'1','СтараяЦена':'15','ОсновноеФото':'https://hut.openintegrations.dev/test_data/picture.jpg','URL':'https://github.com/Bayselonarrend/OpenIntegrations','ДополнительныеФото':['https://hut.openintegrations.dev/test_data/picture.jpg','https://hut.openintegrations.dev/test_data/picture2.jpg'],'ГлавныйВГруппе':true,'Ширина':'20','Высота':'30','Глубина':'40','Вес':'100','SKU':'12345','ДоступныйОстаток':'10','ЗначенияСвойств':'8035'}" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>
@@ -83,7 +86,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "response": {
-  "market_item_id": 11849034
+  "market_item_id": 11853910
  }
 }
 ```

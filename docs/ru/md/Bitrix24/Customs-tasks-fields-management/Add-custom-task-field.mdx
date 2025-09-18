@@ -35,7 +35,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
@@ -61,26 +60,30 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 ДобавитьПользовательскоеПолеЗадачи \
-              --url ""b24-ar17wx.bitrix24.by"" \
-              --type ""string"" \
-              --fieldname ""TEXT_FIELD"" \
-              --externalid ""BITRIX_TEXT_FIELD"" \
-              --title ""Поле для текста"" \
-              --label ""C:\Users\bayse\AppData\Local\Temp\htmzdhdb.axr.json"" \
+              --url "b24-ar17wx.bitrix24.by" \
+              --type "string" \
+              --fieldname "TEXT_FIELD" \
+              --externalid "BITRIX_TEXT_FIELD" \
+              --title "Поле для текста" \
+              --label "{'en':'Some field','ru':'Некоторое поле'}" \
               --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 ДобавитьПользовательскоеПолеЗадачи ^
-              --url ""b24-ar17wx.bitrix24.by"" ^
-              --type ""string"" ^
-              --fieldname ""TEXT_FIELD"" ^
-              --externalid ""BITRIX_TEXT_FIELD"" ^
-              --title ""Поле для текста"" ^
-              --label ""C:\Users\bayse\AppData\Local\Temp\htmzdhdb.axr.json"" ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --type "string" ^
+              --fieldname "TEXT_FIELD" ^
+              --externalid "BITRIX_TEXT_FIELD" ^
+              --title "Поле для текста" ^
+              --label "{'en':'Some field','ru':'Некоторое поле'}" ^
               --token "***"
         ```
     </TabItem>

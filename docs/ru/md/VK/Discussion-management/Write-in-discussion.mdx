@@ -27,7 +27,6 @@ import TabItem from '@theme/TabItem';
 
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Параметры    = ПолучитьПараметрыВК();
     ИДОбсуждения = "54113542";
@@ -41,19 +40,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk НаписатьВОбсуждение \
-              --topic "54112370" \
-              --text ""Мне больше нравится желтый"" \
-              --auth ""C:\Users\bayse\AppData\Local\Temp\4bz3br20.mbt.json""
+              --topic 54113633 \
+              --text "Мне больше нравится желтый" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk НаписатьВОбсуждение ^
-              --topic "54112370" ^
-              --text ""Мне больше нравится желтый"" ^
-              --auth ""C:\Users\bayse\AppData\Local\Temp\4bz3br20.mbt.json""
+              --topic 54113633 ^
+              --text "Мне больше нравится желтый" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>
@@ -61,6 +64,6 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "response": 3182
+ "response": 3187
 }
 ```

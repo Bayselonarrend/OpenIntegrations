@@ -26,7 +26,6 @@ import TabItem from '@theme/TabItem';
 
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Параметры    = ПолучитьПараметрыВК();
     ИДОбсуждения = "54113542";
@@ -38,17 +37,21 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk ОткрытьОбсуждение \
-              --topic "54112370" \
-              --auth ""C:\Users\bayse\AppData\Local\Temp\fczzplyo.hsz.json""
+              --topic 54113633 \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk ОткрытьОбсуждение ^
-              --topic "54112370" ^
-              --auth ""C:\Users\bayse\AppData\Local\Temp\fczzplyo.hsz.json""
+              --topic 54113633 ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>

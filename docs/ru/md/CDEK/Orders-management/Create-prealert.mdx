@@ -33,7 +33,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен        = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTc4NjI0MDMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
     UUID         = "f5f74cc6-4d34-48f8-b89f-4625d8f44a53";
@@ -50,8 +49,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek СоздатьПреалерт \
               --token "***" \
-              --uuids "e6f39bcc-a856-4c28-b85d-94138836d7a1" \
-              --date "2025-09-18T16:31:30.6541192" \
+              --uuids "8975bf60-cd1b-46ba-a68c-1712b4f7d42b" \
+              --date "2025-09-19T12:25:26.5373397" \
               --point "NSK27" \
               --testapi "***"
         ```
@@ -61,8 +60,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek СоздатьПреалерт ^
               --token "***" ^
-              --uuids "e6f39bcc-a856-4c28-b85d-94138836d7a1" ^
-              --date "2025-09-18T16:31:30.6541192" ^
+              --uuids "8975bf60-cd1b-46ba-a68c-1712b4f7d42b" ^
+              --date "2025-09-19T12:25:26.5373397" ^
               --point "NSK27" ^
               --testapi "***"
         ```
@@ -73,13 +72,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "7adc3994-8763-415f-91e7-be8ff603c4a9"
+  "uuid": "dea87f80-568d-417f-b08b-3dce6fc45bba"
  },
  "requests": [
   {
-   "request_uuid": "0be99419-b006-4296-af84-196c77909075",
+   "request_uuid": "f0f636ef-60ad-4afe-8684-82d8ef08445b",
    "type": "CREATE",
-   "date_time": "2025-09-17T16:31:32+03:00",
+   "date_time": "2025-09-18T12:25:28+03:00",
    "state": "ACCEPTED"
   }
  ],

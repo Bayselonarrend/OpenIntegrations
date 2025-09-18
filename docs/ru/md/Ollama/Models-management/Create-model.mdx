@@ -32,7 +32,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL   = "https://hut.openintegrations.dev/ollama";
     Токен = "12We34..."; // Авторизация - не часть API Ollama
@@ -55,9 +54,9 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint ollama СоздатьМодель \
-              --url ""https://hut.openintegrations.dev/ollama"" \
-              --model ""mario"" \
-              --settings ""C:\Users\bayse\AppData\Local\Temp\wmt2dwjy.s3i.json"" \
+              --url "https://hut.openintegrations.dev/ollama" \
+              --model "mario" \
+              --settings "{'from':'tinyllama','system':'You are Mario from Super Mario Bros.'}" \
               --headers "{'Authorization':'***'}"
         ```
     </TabItem>
@@ -67,9 +66,9 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint ollama СоздатьМодель ^
-              --url ""https://hut.openintegrations.dev/ollama"" ^
-              --model ""mario"" ^
-              --settings ""C:\Users\bayse\AppData\Local\Temp\wmt2dwjy.s3i.json"" ^
+              --url "https://hut.openintegrations.dev/ollama" ^
+              --model "mario" ^
+              --settings "{'from':'tinyllama','system':'You are Mario from Super Mario Bros.'}" ^
               --headers "{'Authorization':'***'}"
         ```
     </TabItem>

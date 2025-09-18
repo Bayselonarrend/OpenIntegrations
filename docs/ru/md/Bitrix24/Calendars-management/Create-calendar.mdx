@@ -31,7 +31,6 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     IDПользователя = 1;
 
@@ -67,18 +66,22 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 СоздатьКалендарь \
-              --url ""b24-ar17wx.bitrix24.by"" \
-              --fields ""C:\Users\bayse\AppData\Local\Temp\ymrdxhh5.tfz.json"" \
+              --url "b24-ar17wx.bitrix24.by" \
+              --fields "{'type':'user','ownerId':'1','name':'Другой календарь','description':'Мой другой новый календарь','color':'#FFFFFF','text_color':'#000000','export':{'ALLOW':'Истина','SET':'all'}}" \
               --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint bitrix24 СоздатьКалендарь ^
-              --url ""b24-ar17wx.bitrix24.by"" ^
-              --fields ""C:\Users\bayse\AppData\Local\Temp\ymrdxhh5.tfz.json"" ^
+              --url "b24-ar17wx.bitrix24.by" ^
+              --fields "{'type':'user','ownerId':'1','name':'Другой календарь','description':'Мой другой новый календарь','color':'#FFFFFF','text_color':'#000000','export':{'ALLOW':'Истина','SET':'all'}}" ^
               --token "***"
         ```
     </TabItem>
@@ -87,15 +90,15 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 1384,
+ "result": 1388,
  "time": {
-  "start": 1758115312.88975,
-  "finish": 1758115312.94108,
-  "duration": 0.051332950592041,
-  "processing": 0.0283849239349365,
-  "date_start": "2025-09-17T16:21:52+03:00",
-  "date_finish": "2025-09-17T16:21:52+03:00",
-  "operating_reset_at": 1758115912,
+  "start": 1758187027.58879,
+  "finish": 1758187027.63868,
+  "duration": 0.0498840808868408,
+  "processing": 0.0191719532012939,
+  "date_start": "2025-09-18T12:17:07+03:00",
+  "date_finish": "2025-09-18T12:17:07+03:00",
+  "operating_reset_at": 1758187627,
   "operating": 0
  }
 }

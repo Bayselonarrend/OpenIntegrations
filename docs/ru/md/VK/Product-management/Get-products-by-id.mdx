@@ -26,7 +26,6 @@ import TabItem from '@theme/TabItem';
 
 
 
-
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Параметры = ПолучитьПараметрыВК();
 
@@ -45,17 +44,21 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk ПолучитьТоварыПоИД \
-              --items ""[11849040,11849042]"" \
-              --auth ""C:\Users\bayse\AppData\Local\Temp\c2teic5s.d2z.json""
+              --items "['11853917','11853920']" \
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint vk ПолучитьТоварыПоИД ^
-              --items ""[11849040,11849042]"" ^
-              --auth ""C:\Users\bayse\AppData\Local\Temp\c2teic5s.d2z.json""
+              --items "['11853917','11853920']" ^
+              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>
@@ -78,7 +81,7 @@ import TabItem from '@theme/TabItem';
      }
     },
     "description": "Описание товара",
-    "id": 11849040,
+    "id": 11853917,
     "owner_id": -218861756,
     "price": {
      "amount": "100",
@@ -98,6 +101,7 @@ import TabItem from '@theme/TabItem';
       "title": "Другие товары сообщества",
       "view_type": 1,
       "item_ids": [
+       "-218861756_11853920",
        "-218861756_11825634",
        "-218861756_11699243",
        "-218861756_11311308",
@@ -106,8 +110,7 @@ import TabItem from '@theme/TabItem';
        "-218861756_11311275",
        "-218861756_11311214",
        "-218861756_11311213",
-       "-218861756_11309324",
-       "-218861756_11309323"
+       "-218861756_11309324"
       ],
       "referrer_item_type": "other_goods"
      }
@@ -122,10 +125,10 @@ import TabItem from '@theme/TabItem';
     "photos": [
      {
       "album_id": -53,
-      "date": 1758108137,
-      "id": 457259275,
+      "date": 1758180202,
+      "id": 457259294,
       "owner_id": -218861756,
-      "access_key": "68b2a484fbf1980b6f",
+      "access_key": "2b53097f49dfdbe37c",
       "sizes": [
        {
         "height": 54,
@@ -196,7 +199,7 @@ import TabItem from '@theme/TabItem';
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "639cca2d350d9e2c34",
+      "web_view_token": "0866ca7411c4812073",
       "has_tags": false,
       "orig_photo": {
        "height": 1920,
@@ -207,10 +210,10 @@ import TabItem from '@theme/TabItem';
      },
      {
       "album_id": -53,
-      "date": 1758108143,
-      "id": 457259276,
+      "date": 1758180208,
+      "id": 457259295,
       "owner_id": -218861756,
-      "access_key": "0b8f1f063dfecd792c",
+      "access_key": "b15378ea64abb14465",
       "sizes": [
 ...
 ```
