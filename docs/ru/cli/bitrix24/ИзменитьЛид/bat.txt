@@ -1,5 +1,7 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint bitrix24 ИзменитьЛид ^
-  --url ""b24-ar17wx.bitrix24.by"" ^
-  --lead "2478" ^
-  --fields ""C:\Users\bayse\AppData\Local\Temp\5r1gqag0.uoz.json"" ^
+  --url "b24-ar17wx.bitrix24.by" ^
+  --lead 2482 ^
+  --fields "{'ADDRESS':'ул. Лермонтова, д. 20','ADDRESS_COUNTRY':'Беларусь','TITLE':'Суперклиент','NAME':'Евгений','LAST_NAME':'Евгеньев'}" ^
   --token "***"

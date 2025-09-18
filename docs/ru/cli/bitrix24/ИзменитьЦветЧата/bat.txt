@@ -1,5 +1,5 @@
 oint bitrix24 ИзменитьЦветЧата ^
-  --url ""b24-ar17wx.bitrix24.by"" ^
-  --chat "3120" ^
-  --color ""PURPLE"" ^
+  --url "b24-ar17wx.bitrix24.by" ^
+  --chat 3124 ^
+  --color "PURPLE" ^
   --token "***"

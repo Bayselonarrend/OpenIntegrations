@@ -1,2 +1,2 @@
 oint bitrix24 ПолучитьСтруктуруФильтраСделок \
-  --empty "false"
+  --empty false

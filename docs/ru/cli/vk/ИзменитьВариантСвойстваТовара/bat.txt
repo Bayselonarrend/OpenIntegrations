@@ -1,5 +1,7 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint vk ИзменитьВариантСвойстваТовара ^
-  --value ""Новое имя варианта"" ^
-  --prop ""4365"" ^
-  --option "8017" ^
-  --auth ""C:\Users\bayse\AppData\Local\Temp\4redqq2o.1f0.json""
+  --value "Новое имя варианта" ^
+  --prop "4374" ^
+  --option 8034 ^
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

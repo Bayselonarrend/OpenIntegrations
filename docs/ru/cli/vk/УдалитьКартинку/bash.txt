@@ -1,3 +1,5 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint vk УдалитьКартинку \
-  --pictureid "457259268" \
-  --auth ""C:\Users\bayse\AppData\Local\Temp\3ztvuemw.omu.json""
+  --pictureid 457259287 \
+  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

@@ -31,13 +31,13 @@
   "path_to_type_location": ""
  },
  "time": {
-  "start": 1758115375.50337,
-  "finish": 1758115375.53037,
-  "duration": 0.0269999504089355,
-  "processing": 0.00356507301330566,
-  "date_start": "2025-09-17T16:22:55+03:00",
-  "date_finish": "2025-09-17T16:22:55+03:00",
-  "operating_reset_at": 1758115975,
+  "start": 1758187092.22513,
+  "finish": 1758187092.26356,
+  "duration": 0.0384311676025391,
+  "processing": 0.00573205947875976,
+  "date_start": "2025-09-18T12:18:12+03:00",
+  "date_finish": "2025-09-18T12:18:12+03:00",
+  "operating_reset_at": 1758187692,
   "operating": 0
  }
 }
