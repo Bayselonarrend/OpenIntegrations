@@ -1,13 +1,13 @@
 mod methods;
 
 use addin1c::{name, Variant};
+use serde_json::json;
 use crate::core::getset;
-
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
 // Синонимы
 pub const METHODS: &[&[u16]] = &[
-    name!("Method1"),    // 0
+    name!("Connect"),
 
 ];
 
@@ -25,7 +25,8 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
     match num {
 
-        0 => Box::new(methods::method1()),
+        0 => Box::new(obj.initialize()),
+
         _ => Box::new(false), // Неверный номер команды
     }
 
@@ -37,30 +38,36 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
 // Синонимы
 pub const PROPS: &[&[u16]] = &[
-    name!("Prop1")
+    name!("Database")
 ];
 
 
 pub struct AddIn {
-    pub prop1: String,
+    field: String
 }
 
 impl AddIn {
     /// Создает новый объект
     pub fn new() -> Self {
         AddIn {
-            prop1: String::new()
+            field: String::new()
         }
     }
+
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
         match index {
-            0 => &self.prop1 as &dyn getset::ValueType as *const _,
+            0 => &self.field as &dyn getset::ValueType as *const _,
             _ => panic!("Index out of bounds"),
         }
     }
     pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType { self.get_field_ptr(index) as *mut _ }
 }
 // -------------------------------------------------------------------------------------------------
+
+
+pub fn format_json_error(error: &str) -> String {
+    json!({"result": false, "error": error}).to_string()
+}
 
 // УНИЧТОЖЕНИЕ ОБЪЕКТА -----------------------------------------------------------------------------
 

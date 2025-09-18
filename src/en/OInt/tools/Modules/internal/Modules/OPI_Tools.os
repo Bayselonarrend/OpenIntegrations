@@ -1019,7 +1019,7 @@ Function ThisIsCollection(Val Value, Val KeyValue = False) Export
 EndFunction
 
 Function OPIVersion() Export
-    Return "1.27.0";
+    Return "1.28.0";
 EndFunction
 
 Function OPILanguage() Export
