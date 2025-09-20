@@ -127,6 +127,11 @@ EndFunction
 Function CloseConnection(Val Connection) Export
 
     CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    EndIf;
+
     Result = Connection.Close();
     Result = OPI_Tools.JsonToStructure(Result);
 

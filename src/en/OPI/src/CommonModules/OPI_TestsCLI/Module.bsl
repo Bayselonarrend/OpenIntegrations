@@ -2942,6 +2942,22 @@ EndProcedure
 
 #EndRegion
 
+#Region SSH
+
+Procedure SShell_CommonMethods() Export
+
+    OptionArray = OPI_TestDataRetrieval.GetSSHParameterOptions();
+
+    For Each TestParameters In OptionArray Do
+
+
+
+    EndDo;
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -19964,11 +19980,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
                    |data BLOB
                    |);";
 
-    Options = New Structure;
-    Options.Insert("sql", QueryText);
-    Options.Insert("db", Connection);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
     Process(Result, "SQLite", "ExecuteSQLQuery", "Create"); // SKIP
 
@@ -19986,12 +19998,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     ParameterArray.Add(OPI_Tools.GetCurrentDate()); // DATETIME
     ParameterArray.Add(New Structure("blob", Image)); // BLOB
 
-    Options = New Structure;
-    Options.Insert("sql", QueryText);
-    Options.Insert("params", ParameterArray);
-    Options.Insert("db", Connection);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
 
     Process(Result, "SQLite", "ExecuteSQLQuery", "Insert"); // SKIP
 
@@ -19999,11 +20006,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
 
-    Options = New Structure;
-    Options.Insert("sql", QueryText);
-    Options.Insert("db", Connection);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
     Process(Result, "SQLite", "ExecuteSQLQuery", , Image); // SKIP
 
@@ -20020,11 +20023,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
                    | INSERT INTO users (name, age) VALUES ('Charlie', 35);
                    | COMMIT;";
 
-    Options = New Structure;
-    Options.Insert("sql", QueryText);
-    Options.Insert("db", Connection);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
     Process(Result, "SQLite", "ExecuteSQLQuery", "Transaction"); // SKIP
 
@@ -20043,12 +20042,7 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
 
     QueryText = "SELECT uuid4();";
 
-    Options = New Structure;
-    Options.Insert("sql", QueryText);
-    Options.Insert("db", Connection);
-    Options.Insert("exts", ExtensionMap);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ExecuteSQLQuery", Options);
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection, ExtensionMap);
 
     Process(Result, "SQLite", "ExecuteSQLQuery", "Extension"); // SKIP
 
@@ -20087,12 +20081,7 @@ Procedure SQLite_CreateTable(FunctionParameters)
     ColoumnsStruct.Insert("created_at", "DATETIME");
     ColoumnsStruct.Insert("data"      , "BLOB");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("cols", ColoumnsStruct);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateTable", Options);
+    Result = OPI_SQLite.CreateTable(Table, ColoumnsStruct, Base);
 
     // END
 
@@ -20102,12 +20091,7 @@ Procedure SQLite_CreateTable(FunctionParameters)
     ColoumnsMap.Insert("id"                 , "INTEGER PRIMARY KEY");
     ColoumnsMap.Insert("[An obscure column]", "TEXT");
 
-    Options = New Structure;
-    Options.Insert("table", "test1");
-    Options.Insert("cols", ColoumnsMap);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "CreateTable", Options);
+    Result = OPI_SQLite.CreateTable("test1", ColoumnsMap, Base);
 
     Process(Result, "SQLite", "CreateTable", "An obscure column");
 
@@ -20145,64 +20129,32 @@ Procedure SQLite_AddRecords(FunctionParameters)
     DataArray.Add(RowStructure2);
     DataArray.Add(RowStrucutre1);
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("rows", DataArray);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
+    Result = OPI_SQLite.AddRecords(Table, DataArray, , Base);
 
     // END
 
     Process(Result, "SQLite", "AddRecords");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("rows", DataArray);
-    Options.Insert("trn", Ложь);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
+    Result = OPI_SQLite.AddRecords(Table, DataArray, False, Base);
 
     Process(Result, "SQLite", "AddRecords", "No transaction");
 
     RowStrucutre1.Insert("error", "Lesha");
     DataArray.Add(RowStrucutre1);
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("rows", DataArray);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
+    Result = OPI_SQLite.AddRecords(Table, DataArray, , Base);
     Process(Result, "SQLite", "AddRecords", "Field error");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("rows", DataArray);
-    Options.Insert("trn", Ложь);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
+    Result = OPI_SQLite.AddRecords(Table, DataArray, False, Base);
     Process(Result, "SQLite", "AddRecords", "Error without transaction");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("rows", "not valid json");
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
+    Result = OPI_SQLite.AddRecords(Table, "not valid json", , Base);
     Process(Result, "SQLite", "AddRecords", "JSON Error");
 
     RowMap = New Map;
     RowMap.Insert("[An obscure column]", "yo");
 
-    Options = New Structure;
-    Options.Insert("table", "test1");
-    Options.Insert("rows", RowMap);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddRecords", Options);
+    Result = OPI_SQLite.AddRecords("test1", RowMap, , Base);
     Process(Result, "SQLite", "AddRecords", "An obscure column");
 
     OPI_Tools.RemoveFileWithTry(PictureFile, "Failed to delete the temporary file after the test!");
@@ -20241,47 +20193,29 @@ Procedure SQLite_GetRecords(FunctionParameters)
     Sort  = New Structure("created_at", "DESC");
     Count = 1;
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("fields", Fields);
-    Options.Insert("filter", Filters);
-    Options.Insert("order", Sort);
-    Options.Insert("limit", Count);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
+    Result = OPI_SQLite.GetRecords(Table, Fields, Filters, Sort, Count, Base);
 
     // END
 
     Process(Result, "SQLite", "GetRecords");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("fields", "['name','age','salary','is_active','created_at']");
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
+    Result = OPI_SQLite.GetRecords(Table, "['name','age','salary','is_active','created_at']", , , , Base);
 
     Process(Result, "SQLite", "GetRecords", "No parameters");
 
     FilterStructure2.Insert("type", "BEETWEEN");
     Filters.Add(FilterStructure2);
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("fields", "['name','age','salary','is_active','created_at']");
-    Options.Insert("filter", Filters);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
+    Result = OPI_SQLite.GetRecords(Table
+        , "['name','age','salary','is_active','created_at']"
+        , Filters
+        ,
+        ,
+        , Base);
 
     Process(Result, "SQLite", "GetRecords", "Error");
 
-    Options = New Structure;
-    Options.Insert("table", "test1");
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
+    Result = OPI_SQLite.GetRecords("test1", , , , , Base);
 
     Process(Result, "SQLite", "GetRecords", "An obscure column");
 
@@ -20308,13 +20242,7 @@ Procedure SQLite_UpdateRecords(FunctionParameters)
 
     Filters.Add(FilterStructure);
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("values", FieldsStructure);
-    Options.Insert("filter", FilterStructure);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "UpdateRecords", Options);
+    Result = OPI_SQLite.UpdateRecords(Table, FieldsStructure, FilterStructure, Base);
 
     // END
 
@@ -20325,13 +20253,7 @@ Procedure SQLite_UpdateRecords(FunctionParameters)
     Filters = New Array;
     Filters.Add(FilterStructure);
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("fields", "['name','salary']");
-    Options.Insert("filter", Filters);
-    Options.Insert("db", Base);
-
-    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
+    Check = OPI_SQLite.GetRecords(Table, "['name','salary']", Filters, , , Base);
 
     Process(Check, "SQLite", "UpdateRecords", "Check", FieldsStructure);
 
@@ -20354,24 +20276,13 @@ Procedure SQLite_DeleteRecords(FunctionParameters)
 
     Filters.Add(FilterStructure);
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("filter", FilterStructure);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "DeleteRecords", Options);
+    Result = OPI_SQLite.DeleteRecords(Table, FilterStructure, Base);
 
     // END
 
     Process(Result, "SQLite", "DeleteRecords");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("fields", "['name','salary']");
-    Options.Insert("filter", Filters);
-    Options.Insert("db", Base);
-
-    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
+    Check = OPI_SQLite.GetRecords(Table, "['name','salary']", Filters, , , Base);
 
     Process(Check, "SQLite", "DeleteRecords", "Check");
 
@@ -20382,11 +20293,7 @@ Procedure SQLite_GetTableInformation(FunctionParameters)
     Base  = FunctionParameters["SQLite_DB"];
     Table = "test";
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
+    Result = OPI_SQLite.GetTableInformation(Table, Base);
 
     // END
 
@@ -20396,18 +20303,13 @@ EndProcedure
 
 Procedure SQLite_GetRecordsFilterStrucutre(FunctionParameters)
 
-    Options = New Structure;
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecordsFilterStrucutre", Options);
+    Result = OPI_SQLite.GetRecordsFilterStrucutre();
 
     // END
 
     Process(Result, "SQLite", "GetRecordsFilterStrucutre");
 
-    Options = New Structure;
-    Options.Insert("empty", Истина);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecordsFilterStrucutre", Options);
+    Result = OPI_SQLite.GetRecordsFilterStrucutre(True);
 
     Process(Result, "SQLite", "GetRecordsFilterStrucutre", "Clear");
 
@@ -20418,21 +20320,13 @@ Procedure SQLite_DeleteTable(FunctionParameters)
     Base  = FunctionParameters["SQLite_DB"];
     Table = "test";
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "DeleteTable", Options);
+    Result = OPI_SQLite.DeleteTable(Table, Base);
 
     // END
 
     Process(Result, "SQLite", "DeleteTable");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("db", Base);
-
-    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
+    Check = OPI_SQLite.GetTableInformation(Table, Base);
 
     Process(Check, "SQLite", "DeleteTable", "Check");
 
@@ -20445,29 +20339,17 @@ Procedure SQLite_ClearTable(FunctionParameters)
     Base  = FunctionParameters["SQLite_DB"];
     Table = "test";
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "ClearTable", Options);
+    Result = OPI_SQLite.ClearTable(Table, Base);
 
     // END
 
     Process(Result, "SQLite", "ClearTable");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("db", Base);
-
-    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
+    Check = OPI_SQLite.GetTableInformation(Table, Base);
 
     Process(Check, "SQLite", "ClearTable", "Table");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("db", Base);
-
-    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetRecords", Options);
+    Check = OPI_SQLite.GetRecords(Table, , , , , Base);
 
     Process(Check, "SQLite", "ClearTable", "Check");
 
@@ -20515,23 +20397,13 @@ Procedure SQLite_AddTableColumn(FunctionParameters)
     Name     = "new_col";
     DataType = "TEXT";
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("name", Name);
-    Options.Insert("type", DataType);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "AddTableColumn", Options);
+    Result = OPI_SQLite.AddTableColumn(Table, Name, DataType, Base);
 
     // END
 
     Process(Result, "SQLite", "AddTableColumn");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
+    Result = OPI_SQLite.GetTableInformation(Table, Base);
 
     Process(Result, "SQLite", "AddTableColumn", "Check");
 
@@ -20543,22 +20415,13 @@ Procedure SQLite_DeleteTableColumn(FunctionParameters)
     Table = "test";
     Name  = "new_col";
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("name", Name);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "DeleteTableColumn", Options);
+    Result = OPI_SQLite.DeleteTableColumn(Table, Name, Base);
 
     // END
 
     Process(Result, "SQLite", "DeleteTableColumn");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
+    Result = OPI_SQLite.GetTableInformation(Table, Base);
 
     Process(Result, "SQLite", "DeleteTableColumn", "Check");
 
@@ -20577,41 +20440,23 @@ Procedure SQLite_EnsureTable(FunctionParameters)
     ColoumnsStruct.Insert("age"  , "INTEGER");
     ColoumnsStruct.Insert("info" , "TEXT");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("cols", ColoumnsStruct);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "EnsureTable", Options);
+    Result = OPI_SQLite.EnsureTable(Table, ColoumnsStruct, Base);
 
     // END
 
     Process(Result, "SQLite", "EnsureTable");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("db", Base);
-
-    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
+    Check = OPI_SQLite.GetTableInformation(Table, Base);
 
     Process(Check, "SQLite", "EnsureTable", "Check", ColoumnsStruct);
 
     Table = "test_new";
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("cols", ColoumnsStruct);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "EnsureTable", Options);
+    Result = OPI_SQLite.EnsureTable(Table, ColoumnsStruct, Base);
 
     Process(Result, "SQLite", "EnsureTable", "New");
 
-    Options = New Structure;
-    Options.Insert("table", Table);
-    Options.Insert("db", Base);
-
-    Check = OPI_TestDataRetrieval.ExecuteTestCLI("sqlite", "GetTableInformation", Options);
+    Check = OPI_SQLite.GetTableInformation(Table, Base);
 
     Process(Check, "SQLite", "EnsureTable", "Check 2", ColoumnsStruct);
 

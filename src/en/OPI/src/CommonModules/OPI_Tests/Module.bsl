@@ -2941,6 +2941,22 @@ EndProcedure
 
 #EndRegion
 
+#Region SSH
+
+Procedure SShell_CommonMethods() Export
+
+    OptionArray = OPI_TestDataRetrieval.GetSSHParameterOptions();
+
+    For Each TestParameters In OptionArray Do
+
+
+
+    EndDo;
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
