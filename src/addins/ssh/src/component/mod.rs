@@ -1,25 +1,36 @@
 mod methods;
-mod ssh_conf;
+mod ssh_settings;
+mod tcp_establish;
 
+use std::io::Read;
 use addin1c::{name, Variant};
 use serde_json::json;
 use crate::core::getset;
 use ssh2::Session;
-use std::net::TcpStream;
-use crate::component::ssh_conf::{SshConf, SshAuthTypes};
+use crate::component::ssh_settings::{SshAuthTypes, SshConf};
+use crate::component::tcp_establish::create_tcp_connection;
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
 // Синонимы
 pub const METHODS: &[&[u16]] = &[
+    name!("SetSettings"),
+    name!("SetProxy"),
     name!("Connect"),
-
+    name!("Execute"),
+    name!("Disconnect"),
+    name!("GetConfiguration"),
 ];
 
 // Число параметров функций компоненты
 pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 1,
+        1 => 1,
+        2 => 0,
+        3 => 1,
+        4 => 0,
+        5 => 0,
         _ => 0,
     }
 }
@@ -31,8 +42,25 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
     match num {
         0 => {
             let json_string = params[0].get_string().unwrap_or("".to_string());
-            Box::new(obj.initialize(json_string))
+            Box::new(obj.set_settings(json_string))
         },
+        1 => {
+            let json_string = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.set_proxy(json_string))
+        },
+        2 => {
+            Box::new(obj.initialize())
+        }
+        3 => {
+            let command = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.execute(&command))
+        },
+        4 => {
+            Box::new(obj.disconnect())
+        },
+        5 => {
+            Box::new(obj.get_configuration())
+        }
         _ => Box::new(false), // Неверный номер команды
     }
 
@@ -47,7 +75,7 @@ pub const PROPS: &[&[u16]] = &[];
 
 pub struct AddIn {
     inner: Option<Session>,
-    credentials: Option<SshConf>
+    conf: Option<SshConf>,
 }
 
 impl AddIn {
@@ -55,20 +83,47 @@ impl AddIn {
     pub fn new() -> Self {
         AddIn {
             inner: None,
-            credentials: None,
+            conf: None,
         }
     }
 
-    pub fn initialize(&mut self, conf: String) -> String {
+    pub fn set_settings(&mut self, settings: String) -> String{
 
-        let conf_data = match SshConf::from_sting(conf.as_str()){
-            Ok(conf_data) => conf_data,
-            Err(e) => return format_json_error(&e)
+        let mut conf = self.conf.take().unwrap_or_else(|| SshConf::new());
+
+        match conf.set_settings(settings) {
+            Ok(_) => json!({"result": true}).to_string(),
+            Err(e) => format_json_error(&e),
+        }
+
+    }
+
+    pub fn set_proxy(&mut self, proxy: String) -> String{
+
+        let mut conf = self.conf.take().unwrap_or_else(|| SshConf::new());
+
+        match conf.set_proxy(proxy) {
+            Ok(_) => json!({"result": true}).to_string(),
+            Err(e) => format_json_error(&e),
+        }
+
+    }
+
+    pub fn initialize(&mut self) -> String {
+
+        let conf_data = match &self.conf{
+            Some(conf_data) => conf_data,
+            None => return format_json_error("No configuration found")
         };
 
-        self.credentials = Some(conf_data.clone());
+        let settings = match &conf_data.set {
+            Some(settings) => settings,
+            None => return format_json_error("No settings found")
+        };
 
-        let tcp = match TcpStream::connect(format!("{}:{}", conf_data.host, conf_data.port)){
+        let proxy = &conf_data.proxy;
+
+        let tcp = match create_tcp_connection(&settings.host, settings.port, proxy){
             Ok(tcp) => tcp,
             Err(e) => return format_json_error(&e.to_string())
         };
@@ -84,20 +139,21 @@ impl AddIn {
             return e.to_string();
         };
 
-        let username= &conf_data.username;
-        let password = &conf_data.password.unwrap_or("".to_string());
-        let passphrase = conf_data.passphrase;
-        let key_path = &conf_data.key_path;
+        let username= &settings.username;
+        let password = settings.password.as_deref().unwrap_or("");
+        let passphrase = &settings.passphrase;
+        let key_path = &settings.key_path;
 
-        let auth_success = match conf_data.auth_type {
+        let auth_success = match settings.auth_type {
 
-            SshAuthTypes::Password => sess.userauth_password(username,password),
+            SshAuthTypes::Password => sess.userauth_password(username, password),
             SshAuthTypes::Agent => sess.userauth_agent(username),
             SshAuthTypes::PrivateKey => {
                 let path = match key_path{
                     Some(key_path) => key_path.as_ref(),
                     None => return format_json_error("No key path provided with PK auth type")
                 };
+
                 sess.userauth_pubkey_file(username, None, path, passphrase.as_deref())
             },
 
@@ -115,6 +171,64 @@ impl AddIn {
 
         json!({"result": true}).to_string()
 
+    }
+
+    pub fn execute(&self, command: &str) -> String {
+
+        let session = match &self.inner{
+            Some(sess) => sess,
+            None => return format_json_error("No session"),
+        };
+
+        let mut channel = match session.channel_session(){
+            Ok(channel) => channel,
+            Err(e) => return format_json_error(&e.to_string())
+        };
+
+        if let Err(e) = channel.exec(command){
+            return format_json_error(&e.to_string());
+        };
+
+        let mut stdout = String::new();
+        if let Err(e) = channel.read_to_string(&mut stdout).map_err(|e| e.to_string()){
+            stdout = e.to_string();
+        };
+
+        let mut stderr = String::new();
+        if let Err(e) = channel.stderr().read_to_string(&mut stderr).map_err(|e| e.to_string()){
+            stderr = e.to_string();
+        };
+
+        let exit_code = match channel.wait_close(){
+            Ok(_) => channel.exit_status().map_err(|e| e.to_string()),
+            Err(e) => Err(e.to_string())
+        };
+
+        let code = match exit_code{
+            Ok(code) => code.to_string(),
+            Err(e) => e.to_string()
+        };
+
+        json!({"result": true, "exit_code": code, "stdout": stdout, "stderr": stderr}).to_string()
+
+    }
+
+    pub fn disconnect(&mut self) -> String{
+        if let Some(_conn) = self.inner.take() {
+            json!({"result": true}).to_string()
+        } else {
+            json!({"result": false, "error": "No session"}).to_string()
+        }
+    }
+
+    pub fn get_configuration(&mut self) -> String{
+
+        let conf = match &self.conf{
+            Some(conf) => conf,
+            None => return format_json_error("No configuration found")
+        };
+
+        json!({"result": true, "conf": conf}).to_string()
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
