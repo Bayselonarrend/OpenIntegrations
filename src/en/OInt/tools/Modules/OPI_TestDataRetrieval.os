@@ -131,6 +131,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Viber"          , 5);
     Sections.Insert("Twitter"        , 4);
     Sections.Insert("FTP"            , 5);
+    Sections.Insert("SSH"            , 5);
     Sections.Insert("PostgreSQL"     , 5);
     Sections.Insert("MySQL"          , 5);
     Sections.Insert("MSSQL"          , 5);
@@ -174,6 +175,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("Viber"          , StandardDependencies);
     Sections.Insert("Twitter"        , StandardDependencies);
     Sections.Insert("FTP"            , StandardDependencies);
+    Sections.Insert("SSH"            , StandardDependencies);
     Sections.Insert("PostgreSQL"     , StandardDependencies);
     Sections.Insert("MySQL"          , StandardDependencies);
     Sections.Insert("MSSQL"          , StandardDependencies);
@@ -240,6 +242,7 @@ Function GetTestTable() Export
     MSSQL     = "MSSQL";
     FTP       = "FTP";
     RPortal   = "ReportPortal";
+    SSH       = "SSH";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -409,6 +412,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "FT_FileOperations"                    , "Files management"                , FTP);
     NewTest(TestTable, "FT_CommonMethods"                     , "Common methods"                  , FTP);
     NewTest(TestTable, "RPortal_Authorization"                , "Authorization"                   , RPortal);
+    NewTest(TestTable, "SShell_CommonMethods"                 , "Common methods"                  , SSH);
 
     Return TestTable;
 
@@ -1044,6 +1048,33 @@ Function GetFTPParameterOptions() Export
         OptionArray.Add(ParametersStructure);
 
     EndIf;
+
+    Return OptionArray;
+
+EndFunction
+
+Function GetSSHParameterOptions() Export
+
+    OptionArray = New Array;
+
+    TestParametersMain = New Structure;
+    ParameterToCollection("SSH_Host"    , TestParametersMain);
+    ParameterToCollection("SSH_Port"    , TestParametersMain);
+    ParameterToCollection("SSH_User"    , TestParametersMain);
+    ParameterToCollection("SSH_Password", TestParametersMain);
+    ParameterToCollection("SSH_Key"     , TestParametersMain);
+
+    TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
+    TestParameters.Insert("AuthType", "By login and password");
+    OptionArray.Add(TestParameters);
+
+    TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
+    TestParameters.Insert("AuthType", "By key");
+    OptionArray.Add(TestParameters);
+
+    TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
+    TestParameters.Insert("AuthType", "Via SSH agent");
+    OptionArray.Add(TestParameters);
 
     Return OptionArray;
 
@@ -12222,6 +12253,10 @@ EndFunction
 
 Function ПолучитьВариантыПараметровFTP() Export
 	Return GetFTPParameterOptions();
+EndFunction
+
+Function ПолучитьВариантыПараметровSSH() Export
+	Return GetSSHParameterOptions();
 EndFunction
 
 Function ПолучитьВариантыПараметровS3() Export
