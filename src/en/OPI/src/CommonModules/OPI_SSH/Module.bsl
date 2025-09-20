@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_SQLite.os
+﻿// OneScript: ./OInt/core/Modules/OPI_SQLite.os
 // Lib: SQLite
 // CLI: ssh
 // Keywords: ssh, shell
@@ -320,42 +320,6 @@ Function SetProxy(Val Connector, Val Proxy)
 
     Return Result;
 
-EndFunction
-
-#EndRegion
-
-#Region Alternate
-
-Function ОткрытьСоединение(Val НастройкиSSH, Val Прокси = "") Export
-	Return CreateConnection(НастройкиSSH, Прокси);
-EndFunction
-
-Function ПолучитьКонфигурациюСоединения(Val НастройкиSSH, Val Прокси = Undefined) Export
-	Return GetConnectionConfiguration(НастройкиSSH, Прокси);
-EndFunction
-
-Function ВыполнитьКоманду(Val Соединение, Val Команда) Export
-	Return ExecuteCommand(Соединение, Команда);
-EndFunction
-
-Function ЗакрытьСоединение(Val Соединение) Export
-	Return CloseConnection(Соединение);
-EndFunction
-
-Function ЭтоКоннектор(Val Значение) Export
-	Return IsConnector(Значение);
-EndFunction
-
-Function ПолучитьНастройкиЛогинПароль(Val Хост, Val Порт, Val Логин, Val Пароль = "") Export
-	Return GetSettingsLoginPassword(Хост, Порт, Логин, Пароль);
-EndFunction
-
-Function ПолучитьНастройкиПриватныйКлюч(Val Хост, Val Порт, Val Логин, Val ПутьККлючу, Val Пароль = "") Export
-	Return GetSettingsPrivateKey(Хост, Порт, Логин, ПутьККлючу, Пароль);
-EndFunction
-
-Function ПолучитьНастройкиЧерезАгента(Val Хост, Val Порт, Val Логин) Export
-	Return GetSettingsViaAgent(Хост, Порт, Логин);
 EndFunction
 
 #EndRegion
