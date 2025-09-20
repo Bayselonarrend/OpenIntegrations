@@ -19,7 +19,7 @@
 |![ReportPortal](../ReportPortal.png)| `ReportPortal`| reportportal |
 |![S3](../S3.png)| `S3`| s3, minio, aws, simple storage service |
 |![Slack](../Slack.png)| `Slack`| slack |
-|![SQLite](../SQLite.png)| `SQLite`| sqlite |
+|![SQLite](../SQLite.png)| `SQLite`| ssh, shell |
 |![TCP](../TCP.png)| `TCP`| tcp |
 |![Telegram](../Telegram.png)| `Telegram`| telegram |
 |![Twitter](../Twitter.png)| `Twitter`| twitter, x |
