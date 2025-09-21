@@ -18,6 +18,7 @@ pub struct SshSettings {
     pub username: String,
     pub password: Option<String>,
     pub key_path: Option<String>,
+    pub pub_path: Option<String>,
     pub passphrase: Option<String>,
 
 }
