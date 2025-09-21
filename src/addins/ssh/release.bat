@@ -4,5 +4,6 @@
 set CARGO_NAME=opi_ssh
 set LIB_NAME=OPI_SSH
 set ADDIN_DIR=%~dp0
+set CARGO_FEATURE_ZLIB_NG_COMPAT=1
 
 call ../build.bat
