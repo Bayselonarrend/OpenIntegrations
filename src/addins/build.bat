@@ -2,6 +2,7 @@
 
 set THIS_DIR=%~dp0
 set "THIS_DIR=%THIS_DIR:\=/%"
+set VCPKG_ROOT=R:\Repos\vcpkg
 
 :: Перейти в директорию проекта
 cd /d %ADDIN_DIR%
@@ -13,6 +14,11 @@ if not exist "%OUTPUT_DIR%" mkdir "%OUTPUT_DIR%"
 :: СБОРКА ОСНОВНОЙ ВЕРСИИ ----------------------------------------------------------------------------------------------
 
 :: Сборка для x86_64-pc-windows-msvc
+
+set OPENSSL_DIR=R:\Repos\vcpkg\installed\x64-windows
+set OPENSSL_LIB_DIR=R:\Repos\vcpkg\installed\x64-windows\lib
+set OPENSSL_INCLUDE_DIR=R:\Repos\vcpkg\installed\x64-windows\include
+
 cargo build --release --target x86_64-pc-windows-msvc
 if errorlevel 1 goto :error
 
@@ -21,6 +27,11 @@ wsl -d OracleLinux_9_1 env LIBRARY_PATH=/usr/lib64 OPENSSL_DIR=/usr cargo zigbui
 if errorlevel 1 goto :error
 
 :: Сборка для i686-pc-windows-msvc
+
+set OPENSSL_DIR=R:\Repos\vcpkg\installed\x86-windows
+set OPENSSL_LIB_DIR=R:\Repos\vcpkg\installed\x86-windows\lib
+set OPENSSL_INCLUDE_DIR=R:\Repos\vcpkg\installed\x86-windows\include
+
 cargo build --release --target i686-pc-windows-msvc
 if errorlevel 1 goto :error
 

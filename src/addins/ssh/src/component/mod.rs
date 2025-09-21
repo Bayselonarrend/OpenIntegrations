@@ -3,10 +3,11 @@ mod ssh_settings;
 mod tcp_establish;
 
 use std::io::Read;
+use std::path::Path;
 use addin1c::{name, Variant};
 use serde_json::json;
 use crate::core::getset;
-use ssh2::Session;
+use ssh2::{MethodType, Session};
 use crate::component::ssh_settings::{SshAuthTypes, SshConf};
 use crate::component::tcp_establish::create_tcp_connection;
 
@@ -127,6 +128,11 @@ impl AddIn {
             None => return format_json_error("No settings found")
         };
 
+        let username= &settings.username;
+        let password = settings.password.as_deref().unwrap_or("");
+        let passphrase = &settings.passphrase;
+        let key_path = &settings.key_path;
+        let pub_path = &settings.pub_path;
         let proxy = &conf_data.proxy;
 
         let tcp = match create_tcp_connection(&settings.host, settings.port, proxy){
@@ -134,33 +140,68 @@ impl AddIn {
             Err(e) => return format_json_error(format!("TCP error: {}", e.to_string()).as_str())
         };
 
+        ssh2::init();
+
+        let mut identities = vec![];
+        let methods;
+        let banner;
+        let kex;
+
         let mut sess = match Session::new(){
-            Ok(sess) => sess,
+            Ok(sess) => {
+                methods = sess.auth_methods(username).unwrap_or("").to_string();
+                banner = sess.banner().unwrap_or("").to_string();
+                kex = sess.methods(MethodType::Kex).unwrap_or("").to_string();
+
+                sess
+            },
             Err(e) => return format_json_error(format!("Session error: {}", e.to_string()).as_str())
+        };
+
+        match sess.agent(){
+            Ok(agent) => {
+                match agent.identities(){
+                    Ok(idents) => {
+                        for ident in idents{
+                            identities.push(ident.comment().to_string());
+                        }
+                    }
+                    Err(e) => identities.push(e.to_string())
+                }
+            }
+            Err(e) => identities.push(e.to_string())
         };
 
         sess.set_tcp_stream(tcp);
 
         if let Err(e) = sess.handshake() {
-            return format_json_error(format!("Handshake error: {}", e.to_string()).as_str());
+            return json!({
+                "result": false,
+                "error": format!("Handshake error: {}", e.to_string()),
+                "identities": identities,
+                "methods": methods,
+                "banner": banner,
+                "kex_methods": kex
+            }).to_string();
         };
-
-        let username= &settings.username;
-        let password = settings.password.as_deref().unwrap_or("");
-        let passphrase = &settings.passphrase;
-        let key_path = &settings.key_path;
 
         let auth_success = match settings.auth_type {
 
             SshAuthTypes::Password => sess.userauth_password(username, password),
             SshAuthTypes::Agent => sess.userauth_agent(username),
             SshAuthTypes::PrivateKey => {
+
                 let path = match key_path{
                     Some(key_path) => key_path.as_ref(),
                     None => return format_json_error("No key path provided with PK auth type")
                 };
 
-                sess.userauth_pubkey_file(username, None, path, passphrase.as_deref())
+                let pub_path = match pub_path{
+                    Some(pub_path) => Some(Path::new(pub_path)),
+                    None => None
+                };
+
+                sess.userauth_pubkey_file(username, pub_path, path, passphrase.as_deref())
             },
 
         };
