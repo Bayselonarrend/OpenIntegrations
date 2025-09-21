@@ -92,7 +92,10 @@ impl AddIn {
         let mut conf = self.conf.take().unwrap_or_else(|| SshConf::new());
 
         match conf.set_settings(settings) {
-            Ok(_) => json!({"result": true}).to_string(),
+            Ok(_) => {
+                self.conf = Some(conf);
+                json!({"result": true}).to_string()
+            },
             Err(e) => format_json_error(&e),
         }
 
@@ -103,7 +106,10 @@ impl AddIn {
         let mut conf = self.conf.take().unwrap_or_else(|| SshConf::new());
 
         match conf.set_proxy(proxy) {
-            Ok(_) => json!({"result": true}).to_string(),
+            Ok(_) => {
+                self.conf = Some(conf);
+                json!({"result": true}).to_string()
+            },
             Err(e) => format_json_error(&e),
         }
 
@@ -125,18 +131,18 @@ impl AddIn {
 
         let tcp = match create_tcp_connection(&settings.host, settings.port, proxy){
             Ok(tcp) => tcp,
-            Err(e) => return format_json_error(&e.to_string())
+            Err(e) => return format_json_error(format!("TCP error: {}", e.to_string()).as_str())
         };
 
         let mut sess = match Session::new(){
             Ok(sess) => sess,
-            Err(e) => return format_json_error(&e.to_string())
+            Err(e) => return format_json_error(format!("Session error: {}", e.to_string()).as_str())
         };
 
         sess.set_tcp_stream(tcp);
 
         if let Err(e) = sess.handshake() {
-            return e.to_string();
+            return format_json_error(format!("Handshake error: {}", e.to_string()).as_str());
         };
 
         let username= &settings.username;
@@ -160,7 +166,7 @@ impl AddIn {
         };
 
         if let Err(e) = auth_success{
-            return format_json_error(&e.to_string());
+            return format_json_error(format!("Auth error: {}", e.to_string()).as_str());
         };
 
         if !sess.authenticated(){
