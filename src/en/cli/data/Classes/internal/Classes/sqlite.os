@@ -21,22 +21,18 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "ExecuteSQLQuery";
-    NewLine.SearchMethod = "InЫПОЛNAndТЬЗАПРОСSQL";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
     NewLine.Parameter    = "--sql";
     NewLine.Description    = "Database query text";
     NewLine.Region     = "Common methods";
-    NewLine.MethodDescription   = "Executes an arbitrary SQL query
-    |
-    |    Example of specifying a parameter of array type:
-    |    --param ""['Val1','Val2','Val3']""
-    |";
+    NewLine.MethodDescription   = "Executes an arbitrary SQL query";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "ExecuteSQLQuery";
-    NewLine.SearchMethod = "InЫПОЛNAndТЬЗАПРОСSQL";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
     NewLine.Parameter    = "--params";
     NewLine.Description    = "Array of positional parameters of the request (optional, def. val. - Empty value)";
     NewLine.Region     = "Common methods";
@@ -46,7 +42,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "ExecuteSQLQuery";
-    NewLine.SearchMethod = "InЫПОЛNAndТЬЗАПРОСSQL";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
     NewLine.Parameter    = "--force";
     NewLine.Description    = "Includes an attempt to retrieve the result, even for nonSELECT queries (optional, def. val. - False)";
     NewLine.Region     = "Common methods";
@@ -56,7 +52,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "ExecuteSQLQuery";
-    NewLine.SearchMethod = "InЫПОЛNAndТЬЗАПРОСSQL";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
     NewLine.Parameter    = "--db";
     NewLine.Description    = "Existing connection or path to the base. In memory, if not filled (optional, def. val. - Empty value)";
     NewLine.Region     = "Common methods";
@@ -66,7 +62,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "ExecuteSQLQuery";
-    NewLine.SearchMethod = "InЫПОЛNAndТЬЗАПРОСSQL";
+    NewLine.SearchMethod = "EXECUTESQLQUERY";
     NewLine.Parameter    = "--exts";
     NewLine.Description    = "Extensions: Key > filepath or extension data, Value > entry point (optional, def. val. - Empty value)";
     NewLine.Region     = "Common methods";
@@ -76,7 +72,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "GetTableInformation";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬAndNФОРМАЦAndЮОТАБЛAndЦЕ";
+    NewLine.SearchMethod = "GETTABLEINFORMATION";
     NewLine.Parameter    = "--table";
     NewLine.Description    = "Table name";
     NewLine.Region     = "Orm";
@@ -87,7 +83,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "GetTableInformation";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬAndNФОРМАЦAndЮОТАБЛAndЦЕ";
+    NewLine.SearchMethod = "GETTABLEINFORMATION";
     NewLine.Parameter    = "--db";
     NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -97,7 +93,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "CreateTable";
-    NewLine.SearchMethod = "СОЗДATЬТАБЛAndЦУ";
+    NewLine.SearchMethod = "CREATETABLE";
     NewLine.Parameter    = "--table";
     NewLine.Description    = "Table name";
     NewLine.Region     = "Orm";
@@ -108,7 +104,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "CreateTable";
-    NewLine.SearchMethod = "СОЗДATЬТАБЛAndЦУ";
+    NewLine.SearchMethod = "CREATETABLE";
     NewLine.Parameter    = "--cols";
     NewLine.Description    = "Column structure: Key > Name, Value > Data type";
     NewLine.Region     = "Orm";
@@ -118,7 +114,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "CreateTable";
-    NewLine.SearchMethod = "СОЗДATЬТАБЛAndЦУ";
+    NewLine.SearchMethod = "CREATETABLE";
     NewLine.Parameter    = "--db";
     NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -128,7 +124,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "AddTableColumn";
-    NewLine.SearchMethod = "ДОБАInAndТЬKОЛОNKУТАБЛAndЦЫ";
+    NewLine.SearchMethod = "ADDTABLECOLUMN";
     NewLine.Parameter    = "--table";
     NewLine.Description    = "Table name";
     NewLine.Region     = "Orm";
@@ -139,7 +135,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "AddTableColumn";
-    NewLine.SearchMethod = "ДОБАInAndТЬKОЛОNKУТАБЛAndЦЫ";
+    NewLine.SearchMethod = "ADDTABLECOLUMN";
     NewLine.Parameter    = "--name";
     NewLine.Description    = "Column name";
     NewLine.Region     = "Orm";
@@ -149,7 +145,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "AddTableColumn";
-    NewLine.SearchMethod = "ДОБАInAndТЬKОЛОNKУТАБЛAndЦЫ";
+    NewLine.SearchMethod = "ADDTABLECOLUMN";
     NewLine.Parameter    = "--type";
     NewLine.Description    = "Column data type";
     NewLine.Region     = "Orm";
@@ -159,7 +155,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "AddTableColumn";
-    NewLine.SearchMethod = "ДОБАInAndТЬKОЛОNKУТАБЛAndЦЫ";
+    NewLine.SearchMethod = "ADDTABLECOLUMN";
     NewLine.Parameter    = "--db";
     NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -169,7 +165,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "DeleteTableColumn";
-    NewLine.SearchMethod = "УДАЛAndТЬKОЛОNKУТАБЛAndЦЫ";
+    NewLine.SearchMethod = "DELETETABLECOLUMN";
     NewLine.Parameter    = "--table";
     NewLine.Description    = "Table name";
     NewLine.Region     = "Orm";
@@ -180,7 +176,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "DeleteTableColumn";
-    NewLine.SearchMethod = "УДАЛAndТЬKОЛОNKУТАБЛAndЦЫ";
+    NewLine.SearchMethod = "DELETETABLECOLUMN";
     NewLine.Parameter    = "--name";
     NewLine.Description    = "Column name";
     NewLine.Region     = "Orm";
@@ -190,7 +186,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "DeleteTableColumn";
-    NewLine.SearchMethod = "УДАЛAndТЬKОЛОNKУТАБЛAndЦЫ";
+    NewLine.SearchMethod = "DELETETABLECOLUMN";
     NewLine.Parameter    = "--db";
     NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -200,7 +196,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "EnsureTable";
-    NewLine.SearchMethod = "ГАРАNТAndРОInATЬТАБЛAndЦУ";
+    NewLine.SearchMethod = "ENSURETABLE";
     NewLine.Parameter    = "--table";
     NewLine.Description    = "Table name";
     NewLine.Region     = "Orm";
@@ -211,7 +207,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "EnsureTable";
-    NewLine.SearchMethod = "ГАРАNТAndРОInATЬТАБЛAndЦУ";
+    NewLine.SearchMethod = "ENSURETABLE";
     NewLine.Parameter    = "--cols";
     NewLine.Description    = "Column structure: Key > Name, Value > Data type";
     NewLine.Region     = "Orm";
@@ -221,7 +217,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "EnsureTable";
-    NewLine.SearchMethod = "ГАРАNТAndРОInATЬТАБЛAndЦУ";
+    NewLine.SearchMethod = "ENSURETABLE";
     NewLine.Parameter    = "--db";
     NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -231,22 +227,18 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "AddRecords";
-    NewLine.SearchMethod = "ДОБАInAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "ADDRECORDS";
     NewLine.Parameter    = "--table";
     NewLine.Description    = "Table name";
     NewLine.Region     = "Orm";
-    NewLine.MethodDescription   = "Adds new rows to the table
-    |
-    |    Example of specifying a parameter of array type:
-    |    --param ""['Val1','Val2','Val3']""
-    |";
+    NewLine.MethodDescription   = "Adds new rows to the table";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "AddRecords";
-    NewLine.SearchMethod = "ДОБАInAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "ADDRECORDS";
     NewLine.Parameter    = "--rows";
     NewLine.Description    = "An array of string data structures: Key > field, Value > field value";
     NewLine.Region     = "Orm";
@@ -256,7 +248,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "AddRecords";
-    NewLine.SearchMethod = "ДОБАInAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "ADDRECORDS";
     NewLine.Parameter    = "--trn";
     NewLine.Description    = "True > adding records to transactions with rollback on error (optional, def. val. - True)";
     NewLine.Region     = "Orm";
@@ -266,7 +258,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "AddRecords";
-    NewLine.SearchMethod = "ДОБАInAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "ADDRECORDS";
     NewLine.Parameter    = "--db";
     NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -276,22 +268,18 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "GetRecords";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "GETRECORDS";
     NewLine.Parameter    = "--table";
     NewLine.Description    = "Table name";
     NewLine.Region     = "Orm";
-    NewLine.MethodDescription   = "Gets records from the selected table
-    |
-    |    Example of specifying a parameter of array type:
-    |    --param ""['Val1','Val2','Val3']""
-    |";
+    NewLine.MethodDescription   = "Gets records from the selected table";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "GetRecords";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "GETRECORDS";
     NewLine.Parameter    = "--fields";
     NewLine.Description    = "Fields for selection (optional, def. val. - *)";
     NewLine.Region     = "Orm";
@@ -301,7 +289,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "GetRecords";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "GETRECORDS";
     NewLine.Parameter    = "--filter";
     NewLine.Description    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -311,7 +299,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "GetRecords";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "GETRECORDS";
     NewLine.Parameter    = "--order";
     NewLine.Description    = "Sorting: Key > field name, Value > direction (ASC, DESC) (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -321,7 +309,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "GetRecords";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "GETRECORDS";
     NewLine.Parameter    = "--limit";
     NewLine.Description    = "Limiting the number of received strings (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -331,7 +319,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "GetRecords";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "GETRECORDS";
     NewLine.Parameter    = "--db";
     NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -341,22 +329,18 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "UpdateRecords";
-    NewLine.SearchMethod = "ОБNОInAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "UPDATERECORDS";
     NewLine.Parameter    = "--table";
     NewLine.Description    = "Table name";
     NewLine.Region     = "Orm";
-    NewLine.MethodDescription   = "Updates the value of records by selected criteria
-    |
-    |    Example of specifying a parameter of array type:
-    |    --param ""['Val1','Val2','Val3']""
-    |";
+    NewLine.MethodDescription   = "Updates the value of records by selected criteria";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "UpdateRecords";
-    NewLine.SearchMethod = "ОБNОInAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "UPDATERECORDS";
     NewLine.Parameter    = "--values";
     NewLine.Description    = "Values structure: Key > field, Value > field value";
     NewLine.Region     = "Orm";
@@ -366,7 +350,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "UpdateRecords";
-    NewLine.SearchMethod = "ОБNОInAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "UPDATERECORDS";
     NewLine.Parameter    = "--filter";
     NewLine.Description    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -376,7 +360,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "UpdateRecords";
-    NewLine.SearchMethod = "ОБNОInAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "UPDATERECORDS";
     NewLine.Parameter    = "--db";
     NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -386,22 +370,18 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "DeleteRecords";
-    NewLine.SearchMethod = "УДАЛAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "DELETERECORDS";
     NewLine.Parameter    = "--table";
     NewLine.Description    = "Table name";
     NewLine.Region     = "Orm";
-    NewLine.MethodDescription   = "Deletes records from the table
-    |
-    |    Example of specifying a parameter of array type:
-    |    --param ""['Val1','Val2','Val3']""
-    |";
+    NewLine.MethodDescription   = "Deletes records from the table";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "DeleteRecords";
-    NewLine.SearchMethod = "УДАЛAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "DELETERECORDS";
     NewLine.Parameter    = "--filter";
     NewLine.Description    = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -411,7 +391,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "DeleteRecords";
-    NewLine.SearchMethod = "УДАЛAndТЬЗАПAndСAnd";
+    NewLine.SearchMethod = "DELETERECORDS";
     NewLine.Parameter    = "--db";
     NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -421,7 +401,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "DeleteTable";
-    NewLine.SearchMethod = "УДАЛAndТЬТАБЛAndЦУ";
+    NewLine.SearchMethod = "DELETETABLE";
     NewLine.Parameter    = "--table";
     NewLine.Description    = "Table name";
     NewLine.Region     = "Orm";
@@ -432,7 +412,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "DeleteTable";
-    NewLine.SearchMethod = "УДАЛAndТЬТАБЛAndЦУ";
+    NewLine.SearchMethod = "DELETETABLE";
     NewLine.Parameter    = "--db";
     NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -442,7 +422,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "ClearTable";
-    NewLine.SearchMethod = "ОЧAndСТAndТЬТАБЛAndЦУ";
+    NewLine.SearchMethod = "CLEARTABLE";
     NewLine.Parameter    = "--table";
     NewLine.Description    = "Table name";
     NewLine.Region     = "Orm";
@@ -453,7 +433,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "ClearTable";
-    NewLine.SearchMethod = "ОЧAndСТAndТЬТАБЛAndЦУ";
+    NewLine.SearchMethod = "CLEARTABLE";
     NewLine.Parameter    = "--db";
     NewLine.Description    = "Existing connection or database path (optional, def. val. - Empty value)";
     NewLine.Region     = "Orm";
@@ -463,7 +443,7 @@ Function GetComposition() Export
     NewLine.Library  = "sqlite";
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "GetRecordsFilterStrucutre";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬСТРУKТУРУФAndЛЬТРАЗАПAndСЕЙ";
+    NewLine.SearchMethod = "GETRECORDSFILTERSTRUCUTRE";
     NewLine.Parameter    = "--empty";
     NewLine.Description    = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
     NewLine.Region     = "Orm";
