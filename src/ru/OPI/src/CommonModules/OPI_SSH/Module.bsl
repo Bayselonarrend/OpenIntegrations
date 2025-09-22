@@ -1,8 +1,7 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_SQLite.os
-// Lib: SQLite
+﻿// OneScript: ./OInt/core/Modules/OPI_SSH.os
+// Lib: SSH
 // CLI: ssh
 // Keywords: ssh, shell
-// Depends: OPI_SSH
 
 // MIT License
 
