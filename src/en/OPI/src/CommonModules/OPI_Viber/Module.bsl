@@ -346,9 +346,9 @@ Function SendMessage(Val Token
 
         If Type = "file" Then
 
-            ParametersStructure.Insert("media"    , Value["URL"]);
-            ParametersStructure.Insert("size"     , Value["Size"]);
-            ParametersStructure.Insert("file_name", "File." + Value["Extension"]);
+            ParametersStructure.Insert("media"    , Value.URL);
+            ParametersStructure.Insert("size"     , Value.Size);
+            ParametersStructure.Insert("file_name", "File." + Value.Extension);
 
         ElsIf Type = "contact" Then
             ParametersStructure.Insert("contact"  , Value);

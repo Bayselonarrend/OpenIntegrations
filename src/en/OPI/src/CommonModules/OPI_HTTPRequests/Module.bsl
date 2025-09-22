@@ -52,11 +52,16 @@
 Function NewRequest() Export
 
     If OPI_Tools.IsOneScript() Then
+
         //@skip-check property-not-writable
+        //@skip-check bsl-legacy-check-static-feature-access
         DataProcessors = Undefined;
-        HTTPClient     = New("OPI_HTTPClient");
+
+        TypeName   = "OPI_HTTPClient";
+        HTTPClient = New(TypeName);
+
     Else
-        HTTPClient     = DataProcessors.OPI_HTTPClient.Create();
+        HTTPClient = DataProcessors.OPI_HTTPClient.Create();
     EndIf;
 
     Return HTTPClient;
@@ -168,6 +173,7 @@ Function PostMultipart(Val URL
 
         OPI_TypeConversion.GetKeyValueCollection(Files);
 
+        //@skip-check bsl-legacy-check-for-each-statetement-collection
         For Each File In Files Do
 
             DataStructure = SplitFileKey(File.Key, ContentType);
@@ -184,6 +190,7 @@ Function PostMultipart(Val URL
 
         OPI_TypeConversion.GetKeyValueCollection(Parameters);
 
+        //@skip-check bsl-legacy-check-for-each-statetement-collection
         For Each Parameter In Parameters Do
             HttpClient.AddMultipartFormDataField(Parameter.Key, Parameter.Value);
         EndDo;
@@ -287,6 +294,7 @@ Function ExecuteMultipartRequest(Val URL
         .SetResponseFile(ResponseFile)
         .StartMultipartBody();
 
+    //@skip-check bsl-legacy-check-for-each-statetement-collection
     For Each File In Files Do
 
         DataStructure = SplitFileKey(File.Key, ContentType);
@@ -298,6 +306,7 @@ Function ExecuteMultipartRequest(Val URL
 
     EndDo;
 
+    //@skip-check bsl-legacy-check-for-each-statetement-collection
     For Each Parameter In Parameters Do
         HttpClient.AddMultipartFormDataField(Parameter.Key, Parameter.Value);
     EndDo;
