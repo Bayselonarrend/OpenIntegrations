@@ -1156,11 +1156,11 @@ Function GetS3ParameterOptions() Export
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("Directory", False);
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("Directory", True);
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     Return OptionArray;
 
@@ -1181,14 +1181,14 @@ Function GetPostgresParameterOptions() Export
     TestParameters.Insert("TLS" , False);
     TestParameters.Insert("Port", 5432);
 
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
 
     TestParameters.Insert("TLS" , True);
     TestParameters.Insert("Port", 5433);
 
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     Return OptionArray;
 
@@ -1209,14 +1209,14 @@ Function GetMySQLParameterOptions() Export
     TestParameters.Insert("TLS" , False);
     TestParameters.Insert("Port", 3306);
 
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
 
     TestParameters.Insert("TLS" , True);
     TestParameters.Insert("Port", 3307);
 
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     Return OptionArray;
 
