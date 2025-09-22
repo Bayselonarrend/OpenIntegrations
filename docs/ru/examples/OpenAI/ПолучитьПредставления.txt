@@ -2,6 +2,6 @@
     Токен = "12We...";
 
     Текст  = "What is 1C:Enterprise?";
-    Модель = "text-embedding-ada-002";
+    Модель = "arcee-ai_afm-4.5b";
 
     Результат = OPI_OpenAI.ПолучитьПредставления(URL, Токен, Модель, Текст);

@@ -220,6 +220,13 @@ pipeline {
 			}
 			}
 		}
+		stage('Testing-SSH') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "SShell_ОсновныеМетоды"')
+			}
+			}
+		}
 		stage('Testing-PostgreSQL') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

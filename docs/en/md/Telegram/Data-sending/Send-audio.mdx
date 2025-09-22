@@ -48,10 +48,13 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
     AudioDD = New BinaryData(AudioPath);
 
+    // In chat, by URL
     Result = OPI_Telegram.SendAudio(Token, ChatID, Text, Audio);
 
+    // To channel, on disk
     Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioPath);
 
+    // To channel, from binary data
     Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioDD);
 ```
  

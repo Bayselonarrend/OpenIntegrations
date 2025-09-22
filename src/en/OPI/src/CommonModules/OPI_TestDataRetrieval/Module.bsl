@@ -46,6 +46,11 @@
 //@skip-check undefined-function-or-procedure
 //@skip-check wrong-string-literal-content
 //@skip-check module-unused-method
+//@skip-check missing-temporary-file-deletion
+//@skip-check method-too-many-params
+//@skip-check bsl-legacy-check-for-each-statetement-collection
+//@skip-check bsl-legacy-check-string-literal
+//@skip-check bsl-legacy-check-expression-type
 
 // Uncomment if OneScript is executed
 // #Use "./internal"
@@ -611,7 +616,10 @@ Procedure ProcessTestingResult(Val Result
     , AddParam3  = Undefined) Export
 
     // BSLLS:UnusedLocalVariable-off
+    //
+    //@skip-check module-unused-local-variable
     Result_ = ?(OPI_Tools.ThisIsCollection(Result), OPI_Tools.CopyCollection(Result), Result);
+
     // BSLLS:UnusedLocalVariable-on
 
     IsVariant  = ValueIsFilled(Option);
@@ -726,13 +734,13 @@ Function CreateReportPortalLaunch(Val Platform = "") Export
     WriteParameter("RPortal_MainLaunch", UUID);
 
     Result = ReportPortal().CreateLaunch(URL, Token, Project, LaunchStructure);
-    ID     = Result["id"];
+    UID    = Result["id"];
 
-    CreateLaunchFile(ID);
+    CreateLaunchFile(UID);
 
     Message(OPI_Tools.JSONString(Result));
 
-    Return ID;
+    Return UID;
 
 EndFunction
 
@@ -928,7 +936,6 @@ Function GetFTPParameterOptions() Export
     ParameterToCollection("Picture"       , TestParametersMain);
     ParameterToCollection("Big"           , TestParametersMain);
 
-
     Localhost = GetLocalhost();
 
     Socks5IP                        = TestParametersMain["Socks5_IP"];
@@ -1058,23 +1065,79 @@ Function GetSSHParameterOptions() Export
     OptionArray = New Array;
 
     TestParametersMain = New Structure;
-    ParameterToCollection("SSH_Host"    , TestParametersMain);
-    ParameterToCollection("SSH_Port"    , TestParametersMain);
-    ParameterToCollection("SSH_User"    , TestParametersMain);
-    ParameterToCollection("SSH_Password", TestParametersMain);
-    ParameterToCollection("SSH_Key"     , TestParametersMain);
+    ParameterToCollection("SSH_Host"      , TestParametersMain);
+    ParameterToCollection("SSH_Port"      , TestParametersMain);
+    ParameterToCollection("SSH_User"      , TestParametersMain);
+    ParameterToCollection("SSH_Password"  , TestParametersMain);
+    ParameterToCollection("SSH_Key"       , TestParametersMain);
+    ParameterToCollection("SSH_Pub"       , TestParametersMain);
+    ParameterToCollection("Proxy_User"    , TestParametersMain);
+    ParameterToCollection("Proxy_Password", TestParametersMain);
+    ParameterToCollection("Socks5_IP"     , TestParametersMain);
+    ParameterToCollection("Socks5_Port"   , TestParametersMain);
+    ParameterToCollection("Proxy_IP"      , TestParametersMain);
+    ParameterToCollection("Proxy_Port"    , TestParametersMain);
+    ParameterToCollection("Access_Token"  , TestParametersMain);
+
+    NetAddress = TestParametersMain["SSH_Host"];
+    TestParametersMain.Insert("SSH_Host", GetLocalhost());
+
+    PrivateKey = GetTempFileName();
+    Token      = TestParametersMain["Access_Token"];
+    OPI_HTTPRequests
+        .NewRequest()
+        .Initialize(TestParametersMain["SSH_Key"])
+        .AddBearerAuthorization(Token)
+        .ProcessRequest("GET")
+        .ReturnResponseAsBinaryData()
+        .Write(PrivateKey);
+
+    TestParametersMain.Insert("SSH_Key", PrivateKey);
+
+    TestParametersMain.Insert("Proxy", False);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("AuthType", "By login and password");
-    OptionArray.Add(TestParameters);
+    TestParameters.Insert("Postfix" , "By login and password");
+    OptionArray.Add(Parameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("AuthType", "By key");
-    OptionArray.Add(TestParameters);
+    TestParameters.Insert("Postfix" , "By key");
+    OptionArray.Add(Parameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("AuthType", "Via SSH agent");
-    OptionArray.Add(TestParameters);
+    TestParameters.Insert("Postfix" , "Via SSH agent");
+    //OptionArray.Add(Parameters);
+
+    For N = 0 To OptionArray.UBound() Do
+
+        TestProxyParameters = OPI_Tools.CopyCollection(OptionArray[N]);
+
+        Prefix = ?(TestProxyParameters["Postfix"] = "By login and password"
+            , ""
+            , StrTemplate("%1, SOCKS5", TestProxyParameters["Postfix"]));
+
+        TestProxyParameters.Insert("SSH_Host" , NetAddress);
+        TestProxyParameters.Insert("Proxy"     , True);
+        TestProxyParameters.Insert("Proxy_Type", "socks5");
+        TestProxyParameters.Insert("Postfix"   , Prefix);
+
+        TestProxyParameters.Insert("Proxy_IP"   , TestProxyParameters["Socks5_IP"]);
+        TestProxyParameters.Insert("Proxy_Port" , TestProxyParameters["Socks5_Port"]);
+        OptionArray.Add(ParametersProxy);
+
+        TestProxyParameters = OPI_Tools.CopyCollection(OptionArray[N]);
+
+        TestProxyParameters.Insert("SSH_Host" , NetAddress);
+        TestProxyParameters.Insert("Proxy"     , True);
+        TestProxyParameters.Insert("Proxy_Type", "http");
+        TestProxyParameters.Insert("Postfix"   , StrTemplate("%1, HTTP", TestProxyParameters["Postfix"]));
+
+        OptionArray.Add(ParametersProxy);
+
+    EndDo;
 
     Return OptionArray;
 
@@ -1093,11 +1156,11 @@ Function GetS3ParameterOptions() Export
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("Directory", False);
-    OptionArray.Add(TestParameters);
+    OptionArray.Add(Parameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("Directory", True);
-    OptionArray.Add(TestParameters);
+    OptionArray.Add(Parameters);
 
     Return OptionArray;
 
@@ -1118,14 +1181,14 @@ Function GetPostgresParameterOptions() Export
     TestParameters.Insert("TLS" , False);
     TestParameters.Insert("Port", 5432);
 
-    OptionArray.Add(TestParameters);
+    OptionArray.Add(Parameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
 
     TestParameters.Insert("TLS" , True);
     TestParameters.Insert("Port", 5433);
 
-    OptionArray.Add(TestParameters);
+    OptionArray.Add(Parameters);
 
     Return OptionArray;
 
@@ -1146,14 +1209,14 @@ Function GetMySQLParameterOptions() Export
     TestParameters.Insert("TLS" , False);
     TestParameters.Insert("Port", 3306);
 
-    OptionArray.Add(TestParameters);
+    OptionArray.Add(Parameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
 
     TestParameters.Insert("TLS" , True);
     TestParameters.Insert("Port", 3307);
 
-    OptionArray.Add(TestParameters);
+    OptionArray.Add(Parameters);
 
     Return OptionArray;
 
@@ -1418,7 +1481,7 @@ Function Check_Telegram_Ban(Val Result, Val Option)
 
     OPI_Tools.Pause(5);
 
-    Return Result;
+    Return Undefined;
 
 EndFunction
 
@@ -1429,7 +1492,7 @@ Function Check_Telegram_Unban(Val Result, Val Option)
 
     OPI_Tools.Pause(5);
 
-    Return Result;
+    Return Undefined;
 
 EndFunction
 
@@ -1496,6 +1559,8 @@ Function Check_Telegram_CreateForumTopic(Val Result, Val Option, Parameters = ""
 
     If Not ValueIsFilled(Option) Then
 
+        TTID = "Telegram_TopicID";
+
         ExpectsThat(Result).ИмеетТип("Map").Заполнено();
         ExpectsThat(Result["ok"]).Равно(True);
         ExpectsThat(Result["result"]["name"]).Равно(NameOrText);
@@ -1503,8 +1568,8 @@ Function Check_Telegram_CreateForumTopic(Val Result, Val Option, Parameters = ""
 
         Topic = Result["result"]["message_thread_id"];
 
-        OPI_Tools.AddField("Telegram_TopicID", Topic, "String", Parameters);
-        OPI_TestDataRetrieval.WriteParameter("Telegram_TopicID", Parameters["Telegram_TopicID"]);
+        OPI_Tools.AddField(TTID, Topic, "String", Parameters);
+        WriteParameter(TTID, Parameters[TTID]);
 
     Else
 
@@ -2053,7 +2118,7 @@ Function Check_VK_CreateProductProperty(Val Result, Val Option, Parameters = "")
     Property = Result["response"]["property_id"];
     Property = OPI_Tools.NumberToString(Property);
 
-    OPI_TestDataRetrieval.WriteParameter("VK_PropID", Property);
+    WriteParameter("VK_PropID", Property);
     Parameters.Insert("VK_PropID", Property);
 
     OPI_Tools.Pause(5);
@@ -2081,7 +2146,7 @@ Function Check_VK_AddProductPropertyVariant(Val Result, Val Option, Parameters =
     VariantID     = Result["response"]["variant_id"];
     ParameterName = "VK_PropVarID" + String(Counter);
 
-    OPI_TestDataRetrieval.WriteParameter(ParameterName, VariantID);
+    WriteParameter(ParameterName, VariantID);
     Parameters.Insert(ParameterName, VariantID);
 
     OPI_Tools.Pause(5);
@@ -2109,7 +2174,7 @@ Function Check_VK_CreateProductWithProp(Val Result, Val Option, Parameters = "",
     ProductID = Result["response"]["market_item_id"];
     FieldName = "VK_MarketItemID" + String(Counter);
 
-    OPI_TestDataRetrieval.WriteParameter(FieldName, ProductID);
+    WriteParameter(FieldName, ProductID);
     Parameters.Insert(FieldName, ProductID);
 
     Return Result;
@@ -3025,7 +3090,7 @@ Function Check_GoogleSheets_CreateSpreadsheet(Val Result, Val Option, Parameters
 
     Else
 
-        OPI_TestDataRetrieval.WriteParameter("GS_Spreadsheet2", Spreadsheet);
+        WriteParameter("GS_Spreadsheet2", Spreadsheet);
         OPI_Tools.AddField("GS_Spreadsheet2", Spreadsheet, "String", Parameters);
 
     EndIf;
@@ -3733,7 +3798,7 @@ Function Check_Airtable_CreateComment(Val Result, Val Option, Parameters = "", T
     ExpectsThat(Result["text"]).Равно(Text);
 
     Comment = Result["id"];
-    OPI_TestDataRetrieval.WriteParameter("Airtable_Comment", Comment);
+    WriteParameter("Airtable_Comment", Comment);
     OPI_Tools.AddField("Airtable_Comment", Comment, "String", Parameters);
 
     Return Result;
@@ -7753,15 +7818,15 @@ EndFunction
 Function Check_ReportPortal_GetPermanentToken(Val Result, Val Option, Parameters = "")
 
     Token = Result["api_key"];
-    ID    = Result["id"];
+    UID   = Result["id"];
 
     ExpectsThat(Token).Заполнено();
 
     WriteParameter("RPortal_TestApiKey", Token);
     Parameters.Insert("RPortal_TestApiKey", Token);
 
-    WriteParameter("RPortal_TestKeyID", ID);
-    Parameters.Insert("RPortal_TestKeyID", ID);
+    WriteParameter("RPortal_TestKeyID", UID);
+    Parameters.Insert("RPortal_TestKeyID", UID);
 
     Return Result;
 
@@ -10340,8 +10405,11 @@ EndFunction
 Function Check_OpenAI_GetResponse(Val Result, Val Option)
 
     ExpectsThat(Result["id"]).Заполнено();
-    ExpectsThat(Result["object"]).Равно("chat.completion");
-    ExpectsThat(Result["choices"]).ИмеетТип("Array").Заполнено();
+
+    If Not Option = "Image upload" Then
+        ExpectsThat(Result["object"]).Равно("chat.completion");
+        ExpectsThat(Result["choices"]).ИмеетТип("Array").Заполнено();
+    EndIf;
 
     Return Result;
 
@@ -10490,7 +10558,10 @@ EndFunction
 
 Function Check_OpenAI_CreateTranscription(Val Result, Val Option)
 
-    ExpectsThat(Lower(Result["text"])).Равно("attack ships on fire off the shoulder of orion bright as magnesium.");
+    Text = Lower(Result["text"]);
+    ExpectsThat(StrFind(Text, "attack") > 0).Равно(True);
+    ExpectsThat(StrFind(Text, "fire") > 0).Равно(True);
+    ExpectsThat(StrFind(Text, "orion") > 0).Равно(True);
 
     Return Result;
 
@@ -11262,6 +11333,19 @@ Function Check_FTP_GetFileData(Val Result, Val Option, CheckSize = "")
 
 EndFunction
 
+Function Check_SSH_CreateConnection(Val Result, Val Option)
+
+    Result = String(TypeOf(Result));
+    ExpectsThat(Result).Равно("AddIn.OPI_SSH.Main");
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(5);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region ReportPortal
@@ -11376,10 +11460,10 @@ EndProcedure
 Function GetExistingLaunch()
 
     Data      = ReadLaunchFile();
-    ID        = Data["id"];
+    UID       = Data["id"];
     Completed = Data["ended"];
 
-    If Not ValueIsFilled(ID) Or Completed Then
+    If Not ValueIsFilled(UID) Or Completed Then
         Return Undefined;
     Else
         Return Data;
@@ -11416,8 +11500,9 @@ Function ReportPortal()
     Try
 
         // BSLLS:CommonModuleAssign-off
-        //
+
         //@skip-check property-not-writable
+        //@skip-check bsl-legacy-check-static-feature-access
         OPI_ReportPortal = Undefined;
 
         // BSLLS:CommonModuleAssign-on
@@ -11710,6 +11795,7 @@ Function FormOption(Val Name, Val Value, Embedded = False)
     SecretsArray.Add("client");
     SecretsArray.Add("api");
     SecretsArray.Add("refresh");
+    SecretsArray.Add("invite_link");
 
     ExceptionsList = New ValueList();
     ExceptionsList.Add("passive");

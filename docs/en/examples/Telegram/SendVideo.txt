@@ -9,8 +9,11 @@
 
     VideoDD = New BinaryData(VideoPath);
 
+    // In chat, by URL
     Result = OPI_Telegram.SendVideo(Token, ChatID, Text, Video);
 
+    // To channel, on disk
     Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoPath);
 
+    // To channel, from binary data
     Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoDD);

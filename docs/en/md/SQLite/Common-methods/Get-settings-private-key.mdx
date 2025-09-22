@@ -12,14 +12,15 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function GetSettingsPrivateKey(Val Host, Val Port, Val Login, Val KeyPath, Val Password = "") Export`
+`Function GetSettingsPrivateKey(Val Host, Val Port, Val Login, Val Private, Val Public = "", Val Password = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Host | --host | String | &#x2714; | SSH host |
   | Port | --port | Number | &#x2714; | SSH port |
   | Login | --user | String | &#x2714; | SSH username |
-  | KeyPath | --key | String | &#x2714; | Path to private key file |
+  | Private | --key | String | &#x2714; | Path to private key file |
+  | Public | --pub | String | &#x2716; | Path to public key file |
   | Password | --pass | String | &#x2716; | Private key password (passphrase) |
 
   

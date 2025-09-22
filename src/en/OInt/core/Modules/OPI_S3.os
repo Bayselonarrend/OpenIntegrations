@@ -41,6 +41,7 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 //@skip-check constructor-function-return-section
+//@skip-check bsl-legacy-check-expression-type
 
 #Region Public
 

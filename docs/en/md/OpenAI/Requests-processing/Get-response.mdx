@@ -59,7 +59,8 @@ Method at API documentation: [Create chat completion](https://platform.openai.co
     Messages = New Array;
 
     ImageUpload = OPI_OpenAI.UploadFile(URL, Token, FileName, File, Destination);
-    ImageID     = ImageUpload["id"];
+
+    ImageID = ImageUpload["id"];
 
     Description = OPI_OpenAI.GetImageMessageStructure("user", ImageID, "What is in this image?");
 

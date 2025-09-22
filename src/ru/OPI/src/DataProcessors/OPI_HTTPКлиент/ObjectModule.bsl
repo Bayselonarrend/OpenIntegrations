@@ -773,10 +773,10 @@
             ДобавитьЛог("НачатьЗаписьТелаMultipart: создание временного файла");
 
             // BSLLS:MissingTemporaryFileDeletion-off
-           
+
             //@skip-check missing-temporary-file-deletion
             ЗапросФайлТела     = ПолучитьИмяВременногоФайла();
-            
+
             // BSLLS:MissingTemporaryFileDeletion-on
 
             ФайлТелаВременный  = Истина;
