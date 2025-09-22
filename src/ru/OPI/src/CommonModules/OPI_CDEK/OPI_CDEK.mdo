@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>CDEK (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы со СДЭК </comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

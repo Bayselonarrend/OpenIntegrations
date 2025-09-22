@@ -798,7 +798,7 @@ Function GetTaskHistory(Val URL, Val TaskID, Val Token = "") Export
 
 EndFunction
 
-// Check task acesses for users
+// Check task accesses for users
 // Checks the availability of the task for users
 //
 // Note

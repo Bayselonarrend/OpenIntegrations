@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>Bitrix24 (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с Bitrix24 из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>
