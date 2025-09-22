@@ -1099,12 +1099,12 @@ Function GetSSHParameterOptions() Export
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("AuthType", "By login and password");
     TestParameters.Insert("Postfix" , "By login and password");
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("AuthType", "By key");
     TestParameters.Insert("Postfix" , "By key");
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("AuthType", "Via SSH agent");
@@ -1126,7 +1126,7 @@ Function GetSSHParameterOptions() Export
 
         TestProxyParameters.Insert("Proxy_IP"   , TestProxyParameters["Socks5_IP"]);
         TestProxyParameters.Insert("Proxy_Port" , TestProxyParameters["Socks5_Port"]);
-        OptionArray.Add(ParametersProxy);
+        OptionArray.Add(TestProxyParameters);
 
         TestProxyParameters = OPI_Tools.CopyCollection(OptionArray[N]);
 
@@ -1135,7 +1135,7 @@ Function GetSSHParameterOptions() Export
         TestProxyParameters.Insert("Proxy_Type", "http");
         TestProxyParameters.Insert("Postfix"   , StrTemplate("%1, HTTP", TestProxyParameters["Postfix"]));
 
-        OptionArray.Add(ParametersProxy);
+        OptionArray.Add(TestProxyParameters);
 
     EndDo;
 
