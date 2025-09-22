@@ -8,25 +8,21 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Create Connection 
- Creates a new SSH session
+ Creates a connection to the specified base
 
 
 
-`Function CreateConnection(Val SSHSettings, Val Proxy = "") Export`
+`Function CreateConnection(Val Base = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
-  | SSHSettings | - | Structure Of KeyAndValue | &#x2714; | Connection settings structure |
-  | Proxy | - | Structure Of KeyAndValue | &#x2716; | Proxy settings structure, if necessary |
+  | Base | - | String | &#x2716; | Path to database. In memory, if not filled |
 
   
-  Returns:  Arbitrary, Map of KeyAndValue - Create Connection
+  Returns:  Arbitrary - Connector object or structure with error information
 
 <br/>
 
-:::tip
-Get the connection configuration using the functions `GetSettingsLoginPassword`, `GetSettingsPrivateKey`, `GetSettingsViaAgent`
-:::
 
 :::caution
 **NOCLI:** this method is not available in CLI version
