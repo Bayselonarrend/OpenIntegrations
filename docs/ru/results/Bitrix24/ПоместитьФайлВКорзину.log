@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "43032",
+  "ID": "43086",
   "NAME": "Новое имя файла.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
@@ -8,25 +8,25 @@
   "PARENT_ID": "3",
   "DELETED_TYPE": "3",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "28902",
+  "FILE_ID": "28956",
   "SIZE": "805189",
-  "CREATE_TIME": "2025-09-18T12:07:49+03:00",
-  "UPDATE_TIME": "2025-09-18T12:07:49+03:00",
-  "DELETE_TIME": "2025-09-18T12:08:27+03:00",
+  "CREATE_TIME": "2025-09-23T00:13:27+03:00",
+  "UPDATE_TIME": "2025-09-23T00:13:27+03:00",
+  "DELETE_TIME": "2025-09-23T00:13:50+03:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=c5d8cb68006e9f06006b12e4000000010000077987a8c1c3de539e5d51ab0840ba7db3&token=disk%7CaWQ9NDMwMzImXz1xNzdNU1pvOEFXaVZLbEdHbGwwbDFNTFdqOHZHZmYzQw%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5ETXdNekltWHoxeE56ZE5VMXB2T0VGWGFWWkxiRWRIYkd3d2JERk5URmRxT0haSFptWXpRdz09fGM1ZDhjYjY4MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3Nzk4N2E4YzFjM2RlNTM5ZTVkNTFhYjA4NDBiYTdkYjMi.RQHRH6yMZ6fnclxv6ET21UQSLtFdIw06PBr7fNu0xTo%3D",
-  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Новое имя файла.jpgi17581865076033i"
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=bbc9d168006e9f06006b12e40000000100000781e9b6433711eedbda5bc51f59ddaacf&token=disk%7CaWQ9NDMwODYmXz11VnFjMHI4bDlyZlJxdWxsZ3BaN1NHcEl2MU9lMXBCNg%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5ETXdPRFltWHoxMVZuRmpNSEk0YkRseVpsSnhkV3hzWjNCYU4xTkhjRWwyTVU5bE1YQkNOZz09fGJiYzlkMTY4MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3ODFlOWI2NDMzNzExZWVkYmRhNWJjNTFmNTlkZGFhY2Yi.8i5JldLq71uCAiTpHl5Ti%2Bz6h3M1m%2BPnXpj7gXKpLvI%3D",
+  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Новое имя файла.jpgi17585756309892i"
  },
  "time": {
-  "start": 1758186509.69478,
-  "finish": 1758186509.74647,
-  "duration": 0.0516941547393799,
-  "processing": 0.0108039379119873,
-  "date_start": "2025-09-18T12:08:29+03:00",
-  "date_finish": "2025-09-18T12:08:29+03:00",
-  "operating_reset_at": 1758187109,
+  "start": 1758575631.37224,
+  "finish": 1758575631.40302,
+  "duration": 0.0307857990264893,
+  "processing": 0.00730395317077637,
+  "date_start": "2025-09-23T00:13:51+03:00",
+  "date_finish": "2025-09-23T00:13:51+03:00",
+  "operating_reset_at": 1758576231,
   "operating": 0
  }
 }
