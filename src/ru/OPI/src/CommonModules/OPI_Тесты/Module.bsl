@@ -20571,7 +20571,7 @@
     Токен = ПараметрыФункции["OpenAI_Token"];
 
     Текст  = "Attack ships on fire off the shoulder of Orion bright as magnesium";
-    Модель = "kitten-tts";
+    Модель = "bark-cpp-small";
 
     ДопПараметры = Новый Структура("response_format", "wav");
 
