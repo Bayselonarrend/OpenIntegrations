@@ -2,7 +2,7 @@
     Токен = "12We...";
 
     Текст  = "Attack ships on fire off the shoulder of Orion bright as magnesium";
-    Модель = "tts-1";
+    Модель = "bark-cpp-small";
 
     ДопПараметры = Новый Структура("response_format", "wav");
 

@@ -48,10 +48,13 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
     ImageDD = New BinaryData(ImagePath);
 
+    // In chat, by URL
     Result = OPI_Telegram.SendImage(Token, ChatID, Text, Image);
 
+    // To channel, on disk
     Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImagePath);
 
+    // To channel, from binary data
     Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImageDD);
 ```
  

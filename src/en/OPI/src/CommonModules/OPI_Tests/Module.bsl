@@ -55,6 +55,10 @@
 //@skip-check undefined-function-or-procedure
 //@skip-check wrong-string-literal-content
 //@skip-check module-unused-local-variable
+//@skip-check bsl-legacy-check-string-literal
+//@skip-check bsl-legacy-check-method-for-statements-after-return
+//@skip-check missing-temporary-file-deletion
+//@skip-check module-unused-method
 
 // Uncomment if OneScript is executed
 // #Use oint
@@ -2949,9 +2953,11 @@ Procedure SShell_CommonMethods() Export
 
     For Each TestParameters In OptionArray Do
 
-
+        SSH_CreateConnection(TestParameters);
 
     EndDo;
+
+    OPI_Tools.RemoveFileWithTry(OptionArray[0]["SSH_Key"], "Error deleting file after test");
 
 EndProcedure
 
@@ -2997,13 +3003,14 @@ Function GetTwitterAuthData()
 
 EndFunction
 
+//@skip-check method-too-many-params
 Procedure Process(Val Result
     , Val Library
     , Val Method
     , Val Option = ""
-    , AddParam1  = Undefined
-    , AddParam2  = Undefined
-    , AddParam3  = Undefined)
+    , AddParam1 = Undefined
+    , AddParam2 = Undefined
+    , AddParam3 = Undefined)
 
     CLITestsMark = 0;
 
@@ -3081,11 +3088,13 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
     KeyboardButtonsArray.Add("Button1");
     KeyboardButtonsArray.Add("Button2");
 
+    // With keyboard, in chat
     Keyboard = OPI_Telegram.FormKeyboardFromButtonArray(KeyboardButtonsArray, True);
-    Result   = OPI_Telegram.SendTextMessage(Token, ChatID, Text, Keyboard);
+    Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text, Keyboard);
 
     Process(Result, "Telegram", "SendTextMessage", , FunctionParameters, Text); // SKIP
 
+    // Simple, to channel
     Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);
 
     // END
@@ -3142,14 +3151,17 @@ Procedure Telegram_SendImage(FunctionParameters)
 
     ImageDD = New BinaryData(ImagePath);
 
+    // In chat, by URL
     Result = OPI_Telegram.SendImage(Token, ChatID, Text, Image);
 
     Process(Result, "Telegram", "SendImage", , FunctionParameters, Text); // SKIP
 
+    // To channel, on disk
     Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImagePath);
 
     Process(Result, "Telegram", "SendImage", "Path", FunctionParameters, Text); // SKIP
 
+    // To channel, from binary data
     Result = OPI_Telegram.SendImage(Token, ChannelID, Text, ImageDD);
 
     // END
@@ -3190,14 +3202,17 @@ Procedure Telegram_SendVideo(FunctionParameters)
 
     VideoDD = New BinaryData(VideoPath);
 
+    // In chat, by URL
     Result = OPI_Telegram.SendVideo(Token, ChatID, Text, Video);
 
     Process(Result, "Telegram", "SendVideo", , FunctionParameters, Text); // SKIP
 
+    // To channel, on disk
     Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoPath);
 
     Process(Result, "Telegram", "SendVideo", "Path", FunctionParameters, Text); // SKIP
 
+    // To channel, from binary data
     Result = OPI_Telegram.SendVideo(Token, ChannelID, Text, VideoDD);
 
     // END
@@ -3222,14 +3237,17 @@ Procedure Telegram_SendAudio(FunctionParameters)
 
     AudioDD = New BinaryData(AudioPath);
 
+    // In chat, by URL
     Result = OPI_Telegram.SendAudio(Token, ChatID, Text, Audio);
 
     Process(Result, "Telegram", "SendAudio", , FunctionParameters, Text); // SKIP
 
+    // To channel, on disk
     Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioPath);
 
     Process(Result, "Telegram", "SendAudio", "Path", FunctionParameters, Text); // SKIP
 
+    // To channel, from binary data
     Result = OPI_Telegram.SendAudio(Token, ChannelID, Text, AudioDD);
 
     // END
@@ -3254,18 +3272,22 @@ Procedure Telegram_SendDocument(FunctionParameters)
 
     DocumentDD = New BinaryData(DocumentPath);
 
+    // In chat, by URL
     Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document);
 
     Process(Result, "Telegram", "SendDocument", , FunctionParameters, Text); // SKIP
 
+    // In chat, by URL, with file name
     Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document, , , "customname.docx");
 
     Process(Result, "Telegram", "SendDocument", "With name", FunctionParameters, Text); // SKIP
 
+    // To channel, on disk
     Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentPath);
 
     Process(Result, "Telegram", "SendDocument", "Path", FunctionParameters, Text); // SKIP
 
+    // To channel, from binary data, with file name
     Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentDD, , , "customname.docx");
 
     // END
@@ -3290,14 +3312,17 @@ Procedure Telegram_SendGif(FunctionParameters)
 
     GifDD = New BinaryData(GifPath);
 
+    // In chat, by URL
     Result = OPI_Telegram.SendGif(Token, ChatID, Text, GIF);
 
     Process(Result, "Telegram", "SendGif", , FunctionParameters, Text); // SKIP
 
+    // To channel, on disk
     Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifPath);
 
     Process(Result, "Telegram", "SendGif", "Path", FunctionParameters, Text); // SKIP
 
+    // To channel, from binary data
     Result = OPI_Telegram.SendGif(Token, ChannelID, Text, GifDD);
 
     // END
@@ -20341,7 +20366,10 @@ Procedure OpenAI_GetResponse(FunctionParameters)
     Messages = New Array;
 
     ImageUpload = OPI_OpenAI.UploadFile(URL, Token, FileName, File, Destination);
-    ImageID     = ImageUpload["id"];
+
+    Process(ImageUpload, "OpenAI", "GetResponse", "Image upload"); // SKIP
+
+    ImageID = ImageUpload["id"];
 
     Description = OPI_OpenAI.GetImageMessageStructure("user", ImageID, "What is in this image?");
 
@@ -20363,7 +20391,7 @@ Procedure OpenAI_GetEmbeddings(FunctionParameters)
     Token = FunctionParameters["OpenAI_Token"];
 
     Text  = "What is 1C:Enterprise?";
-    Model = "text-embedding-ada-002";
+    Model = "arcee-ai_afm-4.5b";
 
     Result = OPI_OpenAI.GetEmbeddings(URL, Token, Model, Text);
 
@@ -20543,7 +20571,7 @@ Procedure OpenAI_GenerateSpeech(FunctionParameters)
     Token = FunctionParameters["OpenAI_Token"];
 
     Text  = "Attack ships on fire off the shoulder of Orion bright as magnesium";
-    Model = "tts-1";
+    Model = "bark-cpp-small";
 
     AdditionalParameters = New Structure("response_format", "wav");
 
@@ -20575,11 +20603,11 @@ EndProcedure
 
 Procedure OpenAI_GetImages(FunctionParameters)
 
-    URL   = FunctionParameters["OpenAI_URL2"];
-    Token = FunctionParameters["OpenAI_Token2"];
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
 
-    Model       = "dall-e-3";
-    Description = OPI_OpenAI.GetImageDescriptionStructure("Yellow alpaca", 1, , "1024x1024");
+    Model       = "sd-1.5-ggml";
+    Description = OPI_OpenAI.GetImageDescriptionStructure("Yellow alpaca", 1, , "64x64");
     Result      = OPI_OpenAI.GetImages(URL, Token, Model, Description);
 
     // END
@@ -22739,6 +22767,71 @@ Procedure ReportPortal_DeletePermanentToken(FunctionParameters)
     // END
 
     Process(Result, "ReportPortal", "DeletePermanentToken");
+
+EndProcedure
+
+#EndRegion
+
+#Region SSH
+
+Procedure SSH_CreateConnection(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
+
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    UseProxy          = FunctionParameters["Proxy"]; // SKIP
+    AuthorizationType = FunctionParameters["AuthType"]; // SKIP
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        SSHSettings = OPI_SSH.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = FunctionParameters["SSH_User"];
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
+        PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
+
+        SSHSettings = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login       = FunctionParameters["SSH_User"];
+        SSHSettings = OPI_SSH.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_SSH.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Result = OPI_SSH.CreateConnection(SSHSettings, ProxySettings);
+
+    // END
+
+    Process(Result, "SSH", "CreateConnection", Postfix);
 
 EndProcedure
 

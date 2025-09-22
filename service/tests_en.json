@@ -5862,6 +5862,11 @@
 {
 "lib": "OpenAI",
 "name": "GetResponse",
+"variant": "Image upload"
+},
+{
+"lib": "OpenAI",
+"name": "GetResponse",
 "variant": "Image"
 },
 {
@@ -6337,6 +6342,11 @@
 {
 "lib": "ReportPortal",
 "name": "DeletePermanentToken",
+"variant": ""
+},
+{
+"lib": "SSH",
+"name": "CreateConnection",
 "variant": ""
 }
 ]
