@@ -8583,7 +8583,7 @@
 "УстановитьJsonТело: Нет данных, пропуск": "SetJsonBody: No data, skip",
 "ПолучитьДанныеИспользованияПространства": "GetSpaceUsageData",
 "URL    = ПараметрыФункции[\"Bitrix24_URL": "URL = FunctionParameters[\"Bitrix24_URL",
-"МассивВариантов.Добавить(ПараметрыТеста": "OptionArray.Add(Parameters",
+"МассивВариантов.Добавить(ПараметрыТеста": "OptionArray.Add(TestParameters",
 "Перезаписывать файл при конфликте путей": "Overwrite file in case of path conflicts",
 "ПолучитьКонфигурациюСоединения (простой": "GetConnectionConfiguration (simple",
 "Пароль для авторизации, если необходимо": "Authorization password, if required",
