@@ -76,8 +76,8 @@ EndFunction
 //
 // Parameters:
 // Token - String - Bot token - token
-// Timeout - String, Number - Waiting time for new events - timeout
-// Offset - String, Number - Offset in the list of received messages - offset
+// Timeout - Number - Waiting time for new events - timeout
+// Offset - Number - Offset in the list of received messages - offset
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Telegram

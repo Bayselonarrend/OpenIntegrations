@@ -207,7 +207,9 @@ Function ConnectExtension(Val Extension, Val EntryPoint = "", Val Connection = "
     FilePath  = Extension_["Path"];
     Connector = CreateConnection(Connection);
 
-    If TypeOf(Connector) <> Type("AddIn.OPI_SQLite.Main") Then
+    ComponentType = "AddIn.OPI_SQLite.Main";
+
+    If TypeOf(Connector) <> Type(ComponentType) Then
         Return Connector;
     EndIf;
 

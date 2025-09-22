@@ -9,10 +9,14 @@
 
     DocumentDD = New BinaryData(DocumentPath);
 
+    // In chat, by URL
     Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document);
 
+    // In chat, by URL, with file name
     Result = OPI_Telegram.SendDocument(Token, ChatID, Text, Document, , , "customname.docx");
 
+    // To channel, on disk
     Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentPath);
 
+    // To channel, from binary data, with file name
     Result = OPI_Telegram.SendDocument(Token, ChannelID, Text, DocumentDD, , , "customname.docx");

@@ -773,7 +773,10 @@ Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
             AddLog("StartMultipartBody: creating a temporary file");
 
             // BSLLS:MissingTemporaryFileDeletion-off
+
+            //@skip-check missing-temporary-file-deletion
             RequestBodyFile = GetTempFileName();
+
             // BSLLS:MissingTemporaryFileDeletion-on
 
             BodyTemporaryFile = True;

@@ -147,6 +147,16 @@ Function GetComposition() Export
     NewLine.Module      = "OPI_SQLite";
     NewLine.Method       = "GetSettingsPrivateKey";
     NewLine.SearchMethod = "GETSETTINGSPRIVATEKEY";
+    NewLine.Parameter    = "--pub";
+    NewLine.Description    = "Path to public key file (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ssh";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetSettingsPrivateKey";
+    NewLine.SearchMethod = "GETSETTINGSPRIVATEKEY";
     NewLine.Parameter    = "--pass";
     NewLine.Description    = "Private key password (passphrase) (optional, def. val. - Empty value)";
     NewLine.Region     = "Common methods";
@@ -180,6 +190,57 @@ Function GetComposition() Export
     NewLine.SearchMethod = "GETSETTINGSVIAAGENT";
     NewLine.Parameter    = "--user";
     NewLine.Description    = "SSH username";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ssh";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetProxySettings";
+    NewLine.SearchMethod = "GETPROXYSETTINGS";
+    NewLine.Parameter    = "--addr";
+    NewLine.Description    = "Proxy address";
+    NewLine.Region     = "Common methods";
+    NewLine.MethodDescription   = "Creates a structure of proxy server settings for the connection";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ssh";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetProxySettings";
+    NewLine.SearchMethod = "GETPROXYSETTINGS";
+    NewLine.Parameter    = "--port";
+    NewLine.Description    = "Proxy port";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ssh";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetProxySettings";
+    NewLine.SearchMethod = "GETPROXYSETTINGS";
+    NewLine.Parameter    = "--type";
+    NewLine.Description    = "Proxy type: socks5, socks4, http (optional, def. val. - socks5)";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ssh";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetProxySettings";
+    NewLine.SearchMethod = "GETPROXYSETTINGS";
+    NewLine.Parameter    = "--login";
+    NewLine.Description    = "Authorization login, if required (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "ssh";
+    NewLine.Module      = "OPI_SQLite";
+    NewLine.Method       = "GetProxySettings";
+    NewLine.SearchMethod = "GETPROXYSETTINGS";
+    NewLine.Parameter    = "--pass";
+    NewLine.Description    = "Authorization password, if required (optional, def. val. - Empty value)";
     NewLine.Region     = "Common methods";
 
     Return CompositionTable;

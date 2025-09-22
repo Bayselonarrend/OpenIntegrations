@@ -2,7 +2,7 @@
     Token = "12We...";
 
     Text  = "Attack ships on fire off the shoulder of Orion bright as magnesium";
-    Model = "tts-1";
+    Model = "bark-cpp-small";
 
     AdditionalParameters = New Structure("response_format", "wav");
 

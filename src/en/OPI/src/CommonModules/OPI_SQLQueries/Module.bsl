@@ -1398,6 +1398,7 @@ Procedure FillFields(Scheme, Val Fields)
 
     OPI_TypeConversion.GetArray(Fields);
 
+    //@skip-check bsl-legacy-check-for-each-statetement-collection
     For Each Field In Fields Do
         AddField(Scheme, Field);
     EndDo;
@@ -1412,6 +1413,7 @@ Procedure FillFilters(Scheme, Val Filters)
 
     OPI_TypeConversion.GetArray(Filters);
 
+    //@skip-check bsl-legacy-check-for-each-statetement-collection
     For Each Filter In Filters Do
 
         AddFilter(Scheme
@@ -1433,6 +1435,7 @@ Procedure FillSorting(Val Scheme, Val Sort)
 
     OPI_TypeConversion.GetCollection(Sort);
 
+    //@skip-check bsl-legacy-check-for-each-statetement-collection
     For Each Element In Sort Do
 
         AddSorting(Scheme, Element.Key, Element.Value);

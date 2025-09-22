@@ -7,7 +7,9 @@
     KeyboardButtonsArray.Add("Button1");
     KeyboardButtonsArray.Add("Button2");
 
+    // With keyboard, in chat
     Keyboard = OPI_Telegram.FormKeyboardFromButtonArray(KeyboardButtonsArray, True);
-    Result   = OPI_Telegram.SendTextMessage(Token, ChatID, Text, Keyboard);
+    Result = OPI_Telegram.SendTextMessage(Token, ChatID, Text, Keyboard);
 
+    // Simple, to channel
     Result = OPI_Telegram.SendTextMessage(Token, ChannelID, Text);

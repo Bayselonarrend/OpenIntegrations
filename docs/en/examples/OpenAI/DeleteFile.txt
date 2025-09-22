@@ -1,6 +1,6 @@
 ﻿    URL   = "https://hut.openintegrations.dev/localai/";
     Token = "12We...";
 
-    FileID = "file-18";
+    FileID = "file-3";
 
     Result = OPI_OpenAI.DeleteFile(URL, Token, FileID);

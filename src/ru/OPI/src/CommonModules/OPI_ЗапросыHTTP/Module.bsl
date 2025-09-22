@@ -52,14 +52,14 @@
 Функция НовыйЗапрос() Экспорт
 
     Если OPI_Инструменты.ЭтоOneScript() Тогда
-        
+
         //@skip-check property-not-writable
         //@skip-check bsl-legacy-check-static-feature-access
         Обработки  = Неопределено;
-        
+
         ИмяТипа    = "OPI_HTTPКлиент";
         HTTPКлиент = Новый(ИмяТипа);
-        
+
     Иначе
         HTTPКлиент = Обработки.OPI_HTTPКлиент.Создать();
     КонецЕсли;

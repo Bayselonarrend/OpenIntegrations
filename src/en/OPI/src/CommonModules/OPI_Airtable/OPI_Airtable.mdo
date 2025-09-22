@@ -9,6 +9,7 @@
     <key>en</key>
     <value>Airtable (OpenIntegrations)</value>
   </synonym>
+  <comment>Module for working with Airtable from the Open Integrations Package</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

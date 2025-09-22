@@ -67,7 +67,7 @@ Function CreateConnection(Val SSHSettings, Val Proxy = "") Export
 
     Connector = OPI_AddIns.GetAddIn("SSH");
 
-    ConfigureSetup = SetConfiguration(Connector, SSHSettings);
+    ConfigureSetup = SetSettings(Connector, SSHSettings);
 
     If Not OPI_Tools.GetOr(ConfigureSetup, "result", False) Then
         Return ConfigureSetup;
@@ -82,7 +82,7 @@ Function CreateConnection(Val SSHSettings, Val Proxy = "") Export
     Result = Connector.Connect();
     Result = OPI_Tools.JsonToStructure(Result);
 
-    Return Result;
+    Return ?(Result["result"], Connector, Result);
 
 EndFunction
 
@@ -196,10 +196,11 @@ EndFunction
 Function GetSettingsLoginPassword(Val Host, Val Port, Val Login, Val Password = "") Export
 
     ConfigurationStructure = New Structure;
-    OPI_Tools.AddField("host"    , Host    , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("port"    , Port    , "Number" , ConfigurationStructure);
-    OPI_Tools.AddField("username", Login   , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("password", Password, "String" , ConfigurationStructure);
+    OPI_Tools.AddField("auth_type", "password", "String" , ConfigurationStructure);
+    OPI_Tools.AddField("host"     , Host      , "String" , ConfigurationStructure);
+    OPI_Tools.AddField("port"     , Port      , "Number" , ConfigurationStructure);
+    OPI_Tools.AddField("username" , Login     , "String" , ConfigurationStructure);
+    OPI_Tools.AddField("password" , Password  , "String" , ConfigurationStructure);
 
     Return ConfigurationStructure;
 
@@ -212,19 +213,37 @@ EndFunction
 // Host - String - SSH host - host
 // Port - Number - SSH port - port
 // Login - String - SSH username - user
-// KeyPath - String - Path to private key file - key
+// Private - String - Path to private key file - key
+// Public - String - Path to public key file - pub
 // Password - String - Private key password (passphrase) - pass
 //
 // Returns:
 // Structure Of KeyAndValue - Connection configuration
-Function GetSettingsPrivateKey(Val Host, Val Port, Val Login, Val KeyPath, Val Password = "") Export
+Function GetSettingsPrivateKey(Val Host
+    , Val Port
+    , Val Login
+    , Val Private
+    , Val Public = ""
+    , Val Password = "") Export
+
+    OPI_TypeConversion.GetFileOnDisk(Private);
+    Private_ = Private.Path;
+
+    If ValueIsFilled(Public) Then
+        OPI_TypeConversion.GetFileOnDisk(Public);
+        Public_ = Public.Path;
+    Else
+        Public_ = Undefined;
+    EndIf;
 
     ConfigurationStructure = New Structure;
-    OPI_Tools.AddField("host"      , Host     , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("port"      , Port     , "Number" , ConfigurationStructure);
-    OPI_Tools.AddField("username"  , Login    , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("key_path"  , KeyPath  , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("passphrase", Password , "String" , ConfigurationStructure);
+    OPI_Tools.AddField("auth_type" , "private_key" , "String" , ConfigurationStructure);
+    OPI_Tools.AddField("host"      , Host          , "String" , ConfigurationStructure);
+    OPI_Tools.AddField("port"      , Port          , "Number" , ConfigurationStructure);
+    OPI_Tools.AddField("username"  , Login         , "String" , ConfigurationStructure);
+    OPI_Tools.AddField("key_path"  , Private_      , "String" , ConfigurationStructure);
+    OPI_Tools.AddField("pub_path"  , Public_       , "String" , ConfigurationStructure);
+    OPI_Tools.AddField("passphrase", Password      , "String" , ConfigurationStructure);
 
     Return ConfigurationStructure;
 
@@ -243,11 +262,50 @@ EndFunction
 Function GetSettingsViaAgent(Val Host, Val Port, Val Login) Export
 
     ConfigurationStructure = New Structure;
-    OPI_Tools.AddField("host"     , Host  , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("port"     , Port  , "Number" , ConfigurationStructure);
-    OPI_Tools.AddField("username" , Login , "String" , ConfigurationStructure);
+    OPI_Tools.AddField("auth_type" , "agent", "String" , ConfigurationStructure);
+    OPI_Tools.AddField("host"      , Host   , "String" , ConfigurationStructure);
+    OPI_Tools.AddField("port"      , Port   , "Number" , ConfigurationStructure);
+    OPI_Tools.AddField("username"  , Login  , "String" , ConfigurationStructure);
 
     Return ConfigurationStructure;
+
+EndFunction
+
+// Get proxy settings
+// Creates a structure of proxy server settings for the connection
+//
+// Parameters:
+// Address - String - Proxy address - addr
+// Port - Number - Proxy port - port
+// View - String - Proxy type: socks5, socks4, http - type
+// Login - String, Undefined - Authorization login, if required - login
+// Password - String, Undefined - Authorization password, if required - pass
+//
+// Returns:
+// Structure Of KeyAndValue - Proxy settings structure
+Function GetProxySettings(Val Address
+    , Val Port
+    , Val View = "socks5"
+    , Val Login = Undefined
+    , Val Password = Undefined) Export
+
+    SettingsStructure = New Structure;
+    OPI_Tools.AddField("server"    , Address, "String" , SettingsStructure);
+    OPI_Tools.AddField("port"      , Port   , "Number" , SettingsStructure);
+    OPI_Tools.AddField("proxy_type", View   , "String" , SettingsStructure);
+
+    If Not Login = Undefined Then
+        OPI_TypeConversion.GetLine(Login);
+        SettingsStructure.Insert("login", Login);
+    EndIf;
+
+    If Not Password = Undefined Then
+        OPI_TypeConversion.GetLine(Password);
+        SettingsStructure.Insert("password", Password);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return SettingsStructure;
 
 EndFunction
 
@@ -270,7 +328,7 @@ Function CheckCreateConnection(Connection)
 
 EndFunction
 
-Function SetConfiguration(Val Connector, Val SSHSettings)
+Function SetSettings(Val Connector, Val SSHSettings)
 
     ErrorPattern = "Incorrect connection configuration provided: %1";
 
@@ -350,12 +408,16 @@ Function ПолучитьНастройкиЛогинПароль(Val Хост, 
 	Return GetSettingsLoginPassword(Хост, Порт, Логин, Пароль);
 EndFunction
 
-Function ПолучитьНастройкиПриватныйКлюч(Val Хост, Val Порт, Val Логин, Val ПутьККлючу, Val Пароль = "") Export
-	Return GetSettingsPrivateKey(Хост, Порт, Логин, ПутьККлючу, Пароль);
+Function ПолучитьНастройкиПриватныйКлюч(Val Хост, Val Порт, Val Логин, Val Приватный, Val Публичный = "", Val Пароль = "") Export
+	Return GetSettingsPrivateKey(Хост, Порт, Логин, Приватный, Публичный, Пароль);
 EndFunction
 
 Function ПолучитьНастройкиЧерезАгента(Val Хост, Val Порт, Val Логин) Export
 	Return GetSettingsViaAgent(Хост, Порт, Логин);
+EndFunction
+
+Function ПолучитьНастройкиПрокси(Val Адрес, Val Порт, Val Вид = "socks5", Val Логин = Undefined, Val Пароль = Undefined) Export
+	Return GetProxySettings(Адрес, Порт, Вид, Логин, Пароль);
 EndFunction
 
 #EndRegion

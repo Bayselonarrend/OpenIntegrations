@@ -5,6 +5,7 @@
     <key>en</key>
     <value>Bitrix24 (OpenIntegrations)</value>
   </synonym>
+  <comment>Module for working with Bitrix24 from the Open Integrations Package</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

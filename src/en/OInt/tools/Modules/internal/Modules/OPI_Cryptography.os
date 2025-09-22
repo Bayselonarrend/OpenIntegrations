@@ -105,6 +105,7 @@ Function JWT(Val Payload, Val SignKey, Val Method, Val AdditionalHeaders = "") E
 
         OPI_TypeConversion.GetKeyValueCollection(AdditionalHeaders);
 
+        //@skip-check bsl-legacy-check-for-each-statetement-collection
         For Each KeyValue In AdditionalHeaders Do
             Headers.Insert(KeyValue.Key, KeyValue.Value);
         EndDo;
