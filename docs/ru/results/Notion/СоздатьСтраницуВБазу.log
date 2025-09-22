@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "27282aa7-fc4e-81c6-a53d-c0d71bf5f8aa",
- "created_time": "2025-09-18T08:54:00Z",
- "last_edited_time": "2025-09-18T08:54:00Z",
+ "id": "27682aa7-fc4e-815d-9e57-dc917a6608d6",
+ "created_time": "2025-09-22T21:06:00Z",
+ "last_edited_time": "2025-09-22T21:06:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,23 +15,33 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "27282aa7-fc4e-81aa-84e7-d4deb22b0556"
+  "database_id": "27682aa7-fc4e-8120-bb19-f0894acec585"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Статус": {
-   "id": "BY%5Be",
-   "type": "select",
-   "select": {
-    "id": "10990cf8-e181-466f-9cd2-3accd55f03e1",
-    "name": "Новый",
-    "color": "green"
+  "Номер": {
+   "id": "%3BJuC",
+   "type": "number",
+   "number": 1
+  },
+  "Пользователь": {
+   "id": "GqbO",
+   "type": "people",
+   "people": []
+  },
+  "Дата создания": {
+   "id": "OCTb",
+   "type": "date",
+   "date": {
+    "start": "2025-09-23T15:06:00+03:00",
+    "end": null,
+    "time_zone": null
    }
   },
   "Почта": {
-   "id": "FAla",
+   "id": "Vq%7B%3B",
    "type": "rich_text",
    "rich_text": [
     {
@@ -53,13 +63,13 @@
     }
    ]
   },
-  "Активен": {
-   "id": "FD_y",
-   "type": "checkbox",
-   "checkbox": true
+  "Телефон": {
+   "id": "%5Cs%3Ai",
+   "type": "phone_number",
+   "phone_number": "88005553535"
   },
   "Картинка": {
-   "id": "Hp%60u",
+   "id": "flZS",
    "type": "files",
    "files": [
     {
@@ -71,32 +81,8 @@
     }
    ]
   },
-  "Пользователь": {
-   "id": "SeEn",
-   "type": "people",
-   "people": []
-  },
-  "Дата создания": {
-   "id": "YLEj",
-   "type": "date",
-   "date": {
-    "start": "2025-09-18T14:54:00+03:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Номер": {
-   "id": "adKu",
-   "type": "number",
-   "number": 1
-  },
-  "Телефон": {
-   "id": "o%60%40%7D",
-   "type": "phone_number",
-   "phone_number": "88005553535"
-  },
   "Описание": {
-   "id": "yjF%3D",
+   "id": "qrt%3A",
    "type": "rich_text",
    "rich_text": [
     {
@@ -117,6 +103,20 @@
      "href": null
     }
    ]
+  },
+  "Активен": {
+   "id": "rMfu",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "Статус": {
+   "id": "%7Cs%5CM",
+   "type": "select",
+   "select": {
+    "id": "6802a6a7-705d-464b-bfe1-60d2366b8ba1",
+    "name": "Новый",
+    "color": "green"
+   }
   },
   "Имя": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/27282aa7fc4e81c6a53dc0d71bf5f8aa",
+ "url": "https://www.notion.so/27682aa7fc4e815d9e57dc917a6608d6",
  "public_url": null,
- "request_id": "3e2e7c5e-e3f6-4264-8c46-153e60d4bae8"
+ "request_id": "9db6fe57-d1e0-4c2e-8a4e-30af3497d36d"
 }

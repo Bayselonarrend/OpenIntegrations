@@ -2,27 +2,11 @@
  "object": "list",
  "data": [
   {
-   "id": "stablediffusion",
+   "id": "parler-tts-mini-v0.1",
    "object": "model"
   },
   {
-   "id": "silero-vad",
-   "object": "model"
-  },
-  {
-   "id": "moondream2-20250414",
-   "object": "model"
-  },
-  {
-   "id": "tts-1",
-   "object": "model"
-  },
-  {
-   "id": "jina-reranker-v1-base-en",
-   "object": "model"
-  },
-  {
-   "id": "gpt-4",
+   "id": "sd-1.5-ggml",
    "object": "model"
   },
   {
@@ -30,19 +14,23 @@
    "object": "model"
   },
   {
-   "id": "text-embedding-ada-002",
-   "object": "model"
-  },
-  {
    "id": "whisper-1",
    "object": "model"
   },
   {
-   "id": "gpt-4o",
+   "id": "arcee-ai_afm-4.5b",
    "object": "model"
   },
   {
-   "id": "minicpm-v-2_6-mmproj-f16.gguf",
+   "id": "bark-cpp-small",
+   "object": "model"
+  },
+  {
+   "id": "kitten-tts",
+   "object": "model"
+  },
+  {
+   "id": "moondream2-20250414",
    "object": "model"
   },
   {
