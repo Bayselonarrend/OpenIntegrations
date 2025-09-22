@@ -7,8 +7,9 @@
   </synonym>
   <synonym>
     <key>ru</key>
-    <value>Airtable (ОПИ)</value>
+    <value>Airtable (OpenIntegrations)</value>
   </synonym>
+  <comment>Модуль для работы с Airtable из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>
