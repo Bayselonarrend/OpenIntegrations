@@ -1099,17 +1099,17 @@ Function GetSSHParameterOptions() Export
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("AuthType", "By login and password");
     TestParameters.Insert("Postfix" , "By login and password");
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("AuthType", "By key");
     TestParameters.Insert("Postfix" , "By key");
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("AuthType", "Via SSH agent");
     TestParameters.Insert("Postfix" , "Via SSH agent");
-    //OptionArray.Add(Parameters);
+    //OptionArray.Add(TestParameters);
 
     For N = 0 To OptionArray.UBound() Do
 
@@ -1119,23 +1119,23 @@ Function GetSSHParameterOptions() Export
             , ""
             , StrTemplate("%1, SOCKS5", TestProxyParameters["Postfix"]));
 
-        TestProxyParameters.Insert("SSH_Host" , NetAddress);
+        TestProxyParameters.Insert("SSH_Host"  , NetAddress);
         TestProxyParameters.Insert("Proxy"     , True);
         TestProxyParameters.Insert("Proxy_Type", "socks5");
         TestProxyParameters.Insert("Postfix"   , Prefix);
 
         TestProxyParameters.Insert("Proxy_IP"   , TestProxyParameters["Socks5_IP"]);
         TestProxyParameters.Insert("Proxy_Port" , TestProxyParameters["Socks5_Port"]);
-        OptionArray.Add(ParametersProxy);
+        OptionArray.Add(TestParametersProxy);
 
         TestProxyParameters = OPI_Tools.CopyCollection(OptionArray[N]);
 
-        TestProxyParameters.Insert("SSH_Host" , NetAddress);
+        TestProxyParameters.Insert("SSH_Host"  , NetAddress);
         TestProxyParameters.Insert("Proxy"     , True);
         TestProxyParameters.Insert("Proxy_Type", "http");
         TestProxyParameters.Insert("Postfix"   , StrTemplate("%1, HTTP", TestProxyParameters["Postfix"]));
 
-        OptionArray.Add(ParametersProxy);
+        OptionArray.Add(TestParametersProxy);
 
     EndDo;
 
@@ -1156,11 +1156,11 @@ Function GetS3ParameterOptions() Export
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("Directory", False);
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("Directory", True);
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     Return OptionArray;
 
@@ -1181,14 +1181,14 @@ Function GetPostgresParameterOptions() Export
     TestParameters.Insert("TLS" , False);
     TestParameters.Insert("Port", 5432);
 
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
 
     TestParameters.Insert("TLS" , True);
     TestParameters.Insert("Port", 5433);
 
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     Return OptionArray;
 
@@ -1209,14 +1209,14 @@ Function GetMySQLParameterOptions() Export
     TestParameters.Insert("TLS" , False);
     TestParameters.Insert("Port", 3306);
 
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
 
     TestParameters.Insert("TLS" , True);
     TestParameters.Insert("Port", 3307);
 
-    OptionArray.Add(Parameters);
+    OptionArray.Add(TestParameters);
 
     Return OptionArray;
 

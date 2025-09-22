@@ -1,0 +1,160 @@
+﻿---
+sidebar_position: 4
+description: Execute SQL query and other functions to work with SQLite in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, SQLite]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Execute SQL query
+ Executes an arbitrary SQL query
+
+
+
+`Function ExecuteSQLQuery(Val QueryText, Val Parameters = "", Val ForceResult = False, Val Connection = "", Val Extensions = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | QueryText | --sql | String | &#x2714; | Database query text |
+  | Parameters | --params | Array Of Arbitrary | &#x2716; | Array of positional parameters of the request |
+  | ForceResult | --force | Boolean | &#x2716; | Includes an attempt to retrieve the result, even for nonSELECT queries |
+  | Connection | --db | String, Arbitrary | &#x2716; | Existing connection or path to the base. In memory, if not filled |
+  | Extensions | --exts | Map Of KeyAndValue | &#x2716; | Extensions: Key > filepath or extension data, Value > entry point |
+
+  
+  Returns:  Map Of KeyAndValue - Result of query execution
+
+<br/>
+
+:::tip
+Available parameter types: String, Number, Date, Boolean, BinaryData. Binary data can also be passed as a `{'blob':File path}` structure. Binary data (BLOB) values are returned as `{'blob':Base64 string}`
+
+Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword For other queries, `result:true` or `false` with error text is returned
+
+When performing multiple requests within a single connection, it is better to connect extensions once using the `ConnectExtension` function
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    TFN = GetTempFileName("sqlite");
+
+    Image = "https://hut.openintegrations.dev/test_data/picture.jpg";
+    OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
+
+    Connection = OPI_SQLite.CreateConnection(TFN);
+
+    // CREATE
+
+    QueryText = "
+                   |CREATE TABLE test_table (
+                   |id INTEGER PRIMARY KEY,
+                   |name TEXT,
+                   |age INTEGER,
+                   |salary REAL,
+                   |is_active BOOLEAN,
+                   |created_at DATETIME,
+                   |data BLOB
+                   |);";
+
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
+
+    // INSERT with parameters
+
+    QueryText = "
+                   |INSERT INTO test_table (name, age, salary, is_active, created_at, data)
+                   |VALUES (?1, ?2, ?3, ?4, ?5, ?6);";
+
+    ParameterArray = New Array;
+    ParameterArray.Add("Vitaly"); // TEXT
+    ParameterArray.Add(25); // INTEGER
+    ParameterArray.Add(1000.12); // REAL
+    ParameterArray.Add(True); // BOOL
+    ParameterArray.Add(OPI_Tools.GetCurrentDate()); // DATETIME
+    ParameterArray.Add(New Structure("blob", Image)); // BLOB
+
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, ParameterArray, , Connection);
+
+    // SELECT (The result of this query is shown in the Result block)
+
+    QueryText = "SELECT id, name, age, salary, is_active, created_at, data FROM test_table;";
+
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
+
+    // Transaction
+
+    QueryText = "BEGIN TRANSACTION;
+                   | CREATE TABLE IF NOT EXISTS users (
+                   | id INTEGER PRIMARY KEY AUTOINCREMENT,
+                   | name TEXT NOT NULL,
+                   | age INTEGER NOT NULL
+                   | );
+                   | INSERT INTO users (name, age) VALUES ('Alice', 30);
+                   | INSERT INTO users (name, age) VALUES ('Bob', 25);
+                   | INSERT INTO users (name, age) VALUES ('Charlie', 35);
+                   | COMMIT;";
+
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
+
+    // With extension
+
+    If OPI_Tools.IsWindows() Then
+        Extension = "https://hut.openintegrations.dev/test_data/uuid.dll"; // URL, Path or Binary Data
+    Else
+        Extension = "https://hut.openintegrations.dev/test_data/uuid.so"; // URL, Path or Binary Data
+    EndIf;
+
+    EntryPoint = "sqlite3_uuid_init";
+
+    ExtensionMap = New Map;
+    ExtensionMap.Insert(Extension, EntryPoint);
+
+    QueryText = "SELECT uuid4();";
+
+    Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection, ExtensionMap);
+
+    Closing = OPI_SQLite.CloseConnection(Connection);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint sqlite ExecuteSQLQuery \
+             --sql "SELECT uuid4();" \
+             --db "/tmp/gsbpdtkm.cyx.sqlite" \
+             --exts "{'https://hut.openintegrations.dev/test_data/uuid.so':'sqlite3_uuid_init'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint sqlite ExecuteSQLQuery ^
+             --sql "SELECT uuid4();" ^
+             --db "/tmp/gsbpdtkm.cyx.sqlite" ^
+             --exts "{'https://hut.openintegrations.dev/test_data/uuid.so':'sqlite3_uuid_init'}"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "data": [
+  {
+   "age": 25,
+   "created_at": "2025-09-15T22:20:42.4894648Z",
+   "data": {
+    "blob": "Base64"
+   },
+   "id": 1,
+   "is_active": 1,
+   "name": "Vitaly",
+   "salary": 1000.12
+  }
+ ],
+ "result": true
+}
+```

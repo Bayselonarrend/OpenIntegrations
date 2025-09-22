@@ -1,8 +1,8 @@
 // OneScript: ./OInt/core/Modules/OPI_SQLite.os
 // Lib: SQLite
-// CLI: ssh
-// Keywords: ssh, shell
-// Depends: OPI_SSH
+// CLI: sqlite
+// Keywords: sqlite
+// Depends: OPI_SQLite
 
 // MIT License
 
@@ -47,100 +47,30 @@
 #Region CommonMethods
 
 // Create Connection !NOCLI
-// Creates a new SSH session
-//
-// Note
-// Get the connection configuration using the functions `GetSettingsLoginPassword`,^^
-// `GetSettingsPrivateKey`, `GetSettingsViaAgent`
+// Creates a connection to the specified base
 //
 // Parameters:
-// SSHSettings - Structure Of KeyAndValue - Connection settings structure - set
-// Proxy - Structure Of KeyAndValue - Proxy settings structure, if necessary - proxy
+// Base - String - Path to database. In memory, if not filled - db
 //
 // Returns:
-// Arbitrary, Map of KeyAndValue - Create Connection
-Function CreateConnection(Val SSHSettings, Val Proxy = "") Export
+// Arbitrary - Connector object or structure with error information
+Function CreateConnection(Val Base = "") Export
 
-    If IsConnector(SSHSettings) Then
-        Return SSHSettings;
+    If IsConnector(Base) Then
+        Return Base;
     EndIf;
 
-    Connector = OPI_AddIns.GetAddIn("SSH");
+    OPI_TypeConversion.GetLine(Base);
+    OPI_Tools.RestoreEscapeSequences(Base);
 
-    ConfigureSetup = SetSettings(Connector, SSHSettings);
+    Connector = OPI_AddIns.GetAddIn("SQLite");
 
-    If Not OPI_Tools.GetOr(ConfigureSetup, "result", False) Then
-        Return ConfigureSetup;
-    EndIf;
-
-    ProxySetup = SetProxy(Connector, Proxy);
-
-     If Not OPI_Tools.GetOr(ProxySetup, "result", False) Then
-        Return ProxySetup;
-    EndIf;
+    Connector.Database = Base;
 
     Result = Connector.Connect();
-    Result = OPI_Tools.JsonToStructure(Result);
+    Result = OPI_Tools.JsonToStructure(Result, False);
 
     Return ?(Result["result"], Connector, Result);
-
-EndFunction
-
-// Get connection configuration
-// Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions
-//
-// Note
-// Can be passed as the `Connection` parameter in other functions instead of the actual connection from the `CreateConnection` function.
-// At the same time, a new connection will be opened and closed within the called function
-// It is not recommended to use the connection configuration for multiple requests to the SSH server.^^
-// This functionality is primarily intended for the CLI version of OInt, where maintaining a connection between calls is not possible
-//
-// Parameters:
-// SSHSettings - Structure Of KeyAndValue - SSH settings - set
-// Proxy - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
-//
-// Returns:
-// Structure Of KeyAndValue - Connection settings structure
-Function GetConnectionConfiguration(Val SSHSettings, Val Proxy = Undefined) Export
-
-    ConfigurationStructure = New Structure;
-
-    OPI_Tools.AddField("set"  , SSHSettings, "Collection", ConfigurationStructure);
-    OPI_Tools.AddField("proxy", Proxy      , "Collection", ConfigurationStructure);
-
-    Return ConfigurationStructure;
-
-EndFunction
-
-// Execute command
-// Executes the specified command
-//
-// Parameters:
-// Connection - Arbitrary - Existing connection or connection configuration - conn
-// Command - String - Command text - comm
-//
-// Returns:
-// Map Of KeyAndValue - Processing result
-Function ExecuteCommand(Val Connection, Val Command) Export
-
-    CloseConnection = CheckCreateConnection(Connection);
-
-    If Not IsConnector(Connection) Then
-        Return Connection;
-    Else
-
-        OPI_TypeConversion.GetLine(Command);
-
-        Result = Connection.Execute(Command);
-        Result = OPI_Tools.JsonToStructure(Result);
-
-    EndIf;
-
-    If CloseConnection Then
-        Result.Insert("close_connection", CloseConnection(Connection));
-    EndIf;
-
-    Return Result;
 
 EndFunction
 
@@ -148,28 +78,29 @@ EndFunction
 // Explicitly closes the passed connection
 //
 // Parameters:
-// Connection - Arbitrary - AddIn object with open connection - conn
+// Connection - Arbitrary - AddIn object with open connection - db
 //
 // Returns:
 // Structure Of KeyAndValue - Result of connection termination
 Function CloseConnection(Val Connection) Export
 
-    CheckCreateConnection(Connection);
+    If IsConnector(Connection) Then
 
-    If Not IsConnector(Connection) Then
-        Return Connection;
+        Result = Connection.Close();
+        Result = OPI_Tools.JsonToStructure(Result, False);
+
+    Else
+
+        Result = New Structure("result,error", False, "It's not a connection");
+
     EndIf;
 
-    Result = Connection.Disconnect();
-    Result = OPI_Tools.JsonToStructure(Result);
-
-    //@skip-check constructor-function-return-section
     Return Result;
 
 EndFunction
 
 // Is connector !NOCLI
-// Checks that the value is an object of an external component for working with SSH
+// Checks that the value is an object of a SQLite AddIn
 //
 // Parameters:
 // Value - Arbitrary - Value to check - value
@@ -178,205 +109,390 @@ EndFunction
 // Boolean - Is connector
 Function IsConnector(Val Value) Export
 
-    Return String(TypeOf(Value)) = "AddIn.OPI_SSH.Main";
+    Return String(TypeOf(Value)) = "AddIn.OPI_SQLite.Main";
 
 EndFunction
 
-// Get settings (login/password)
-// Gets connection settings with login and password authentication
+// Execute SQL query
+// Executes an arbitrary SQL query
+//
+// Note
+// Available parameter types: String, Number, Date, Boolean, BinaryData.^^
+// Binary data can also be passed as a `{'blob':File path}` structure. Binary data (BLOB) values are returned^^
+// as `{'blob':Base64 string}`
+// Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword^^
+// For other queries, `result:true` or `false` with error text is returned
+// When performing multiple requests within a single connection, it is better to connect extensions once using the `ConnectExtension` function
 //
 // Parameters:
-// Host - String - SSH host - host
-// Port - Number - SSH port - port
-// Login - String - SSH username - user
-// Password - String - SSH user password - pass
+// QueryText - String - Database query text - sql
+// Parameters - Array Of Arbitrary - Array of positional parameters of the request - params
+// ForceResult - Boolean - Includes an attempt to retrieve the result, even for nonSELECT queries - force
+// Connection - String, Arbitrary - Existing connection or path to the base. In memory, if not filled - db
+// Extensions - Map Of KeyAndValue - Extensions: Key > filepath or extension data, Value > entry point - exts
 //
 // Returns:
-// Structure Of KeyAndValue - Connection configuration
-Function GetSettingsLoginPassword(Val Host, Val Port, Val Login, Val Password = "") Export
+// Map Of KeyAndValue - Result of query execution
+Function ExecuteSQLQuery(Val QueryText
+    , Val Parameters = ""
+    , Val ForceResult = False
+    , Val Connection = ""
+    , Val Extensions = Undefined) Export
 
-    ConfigurationStructure = New Structure;
-    OPI_Tools.AddField("auth_type", "password", "String" , ConfigurationStructure);
-    OPI_Tools.AddField("host"     , Host      , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("port"     , Port      , "Number" , ConfigurationStructure);
-    OPI_Tools.AddField("username" , Login     , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("password" , Password  , "String" , ConfigurationStructure);
-
-    Return ConfigurationStructure;
-
-EndFunction
-
-// Get settings (private key)
-// Gets connection settings with private key authentication
-//
-// Parameters:
-// Host - String - SSH host - host
-// Port - Number - SSH port - port
-// Login - String - SSH username - user
-// Private - String - Path to private key file - key
-// Public - String - Path to public key file - pub
-// Password - String - Private key password (passphrase) - pass
-//
-// Returns:
-// Structure Of KeyAndValue - Connection configuration
-Function GetSettingsPrivateKey(Val Host
-    , Val Port
-    , Val Login
-    , Val Private
-    , Val Public = ""
-    , Val Password = "") Export
-
-    OPI_TypeConversion.GetFileOnDisk(Private);
-    Private_ = Private.Path;
-
-    If ValueIsFilled(Public) Then
-        OPI_TypeConversion.GetFileOnDisk(Public);
-        Public_ = Public.Path;
+    If IsConnector(Connection) Then
+        CloseConnection = False;
+        Connector       = Connection;
     Else
-        Public_ = Undefined;
-    EndIf;
-
-    ConfigurationStructure = New Structure;
-    OPI_Tools.AddField("auth_type" , "private_key" , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("host"      , Host          , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("port"      , Port          , "Number" , ConfigurationStructure);
-    OPI_Tools.AddField("username"  , Login         , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("key_path"  , Private_      , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("pub_path"  , Public_       , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("passphrase", Password      , "String" , ConfigurationStructure);
-
-    Return ConfigurationStructure;
-
-EndFunction
-
-// Get settings (via agent)
-// Gets connection settings with SSH Agent authentication
-//
-// Parameters:
-// Host - String - SSH host - host
-// Port - Number - SSH port - port
-// Login - String - SSH username - user
-//
-// Returns:
-// Structure Of KeyAndValue - Connection configuration
-Function GetSettingsViaAgent(Val Host, Val Port, Val Login) Export
-
-    ConfigurationStructure = New Structure;
-    OPI_Tools.AddField("auth_type" , "agent", "String" , ConfigurationStructure);
-    OPI_Tools.AddField("host"      , Host   , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("port"      , Port   , "Number" , ConfigurationStructure);
-    OPI_Tools.AddField("username"  , Login  , "String" , ConfigurationStructure);
-
-    Return ConfigurationStructure;
-
-EndFunction
-
-// Get proxy settings
-// Creates a structure of proxy server settings for the connection
-//
-// Parameters:
-// Address - String - Proxy address - addr
-// Port - Number - Proxy port - port
-// View - String - Proxy type: socks5, socks4, http - type
-// Login - String, Undefined - Authorization login, if required - login
-// Password - String, Undefined - Authorization password, if required - pass
-//
-// Returns:
-// Structure Of KeyAndValue - Proxy settings structure
-Function GetProxySettings(Val Address
-    , Val Port
-    , Val View = "socks5"
-    , Val Login = Undefined
-    , Val Password = Undefined) Export
-
-    SettingsStructure = New Structure;
-    OPI_Tools.AddField("server"    , Address, "String" , SettingsStructure);
-    OPI_Tools.AddField("port"      , Port   , "Number" , SettingsStructure);
-    OPI_Tools.AddField("proxy_type", View   , "String" , SettingsStructure);
-
-    If Not Login = Undefined Then
-        OPI_TypeConversion.GetLine(Login);
-        SettingsStructure.Insert("login", Login);
-    EndIf;
-
-    If Not Password = Undefined Then
-        OPI_TypeConversion.GetLine(Password);
-        SettingsStructure.Insert("password", Password);
-    EndIf;
-
-    //@skip-check constructor-function-return-section
-    Return SettingsStructure;
-
-EndFunction
-
-#EndRegion
-
-#EndRegion
-
-#Region Private
-
-Function CheckCreateConnection(Connection)
-
-    If Not IsConnector(Connection) Then
-
         CloseConnection = True;
-        Connection      = CreateConnection(Connection);
+        Connector       = CreateConnection(Connection);
+    EndIf;
+
+    If Not IsConnector(Connector) Then
+        Return Connector;
+    EndIf;
+
+    OPI_TypeConversion.GetLine(QueryText, True);
+    OPI_TypeConversion.GetBoolean(ForceResult);
+
+    If ValueIsFilled(Extensions) Then
+
+        OPI_TypeConversion.GetKeyValueCollection(Extensions, "Incorrect collection of extensions!");
+
+        For Each Extension In Extensions Do
+
+            ExtensionConnection = ConnectExtension(Extension.Key, Extension.Value, Connector);
+
+            If Not ExtensionConnection["result"] Then
+                Return ExtensionConnection;
+            EndIf;
+
+        EndDo;
 
     EndIf;
 
-    Return CloseConnection;
+    Parameters_ = OPI_SQLQueries.ProcessParameters(Parameters, GetTypesStructure());
+    Result      = OPI_SQLQueries.ExecuteQueryWithProcessing(Connector, QueryText, ForceResult, Parameters_);
 
-EndFunction
-
-Function SetSettings(Val Connector, Val SSHSettings)
-
-    ErrorPattern = "Incorrect connection configuration provided: %1";
-
-    Try
-        OPI_TypeConversion.GetKeyValueCollection(SSHSettings);
-    Except
-
-        Result = New Map;
-        Result.Insert("result", False);
-        Result.Insert("error" , StrTemplate(ErrorPattern, ErrorDescription()));
-        Return Result;
-
-    EndTry;
-
-    SettingsString = OPI_Tools.JSONString(SSHSettings);
-
-    Result = Connector.SetSettings(SettingsString);
-    Result = OPI_Tools.JsonToStructure(Result);
+    If CloseConnection Then
+        CloseConnection(Connector);
+    EndIf;
 
     Return Result;
 
 EndFunction
 
-Function SetProxy(Val Connector, Val Proxy)
+// Connect extension !NOCLI
+// Connects the SQLite extension for the specified connection
+//
+// Note
+// The extension is active only for the current connection. You must reconnect it each time a new connection is established
+// Similar to using the `Extensions` parameter (`exts` in CLI) of the `ExecuteSQLQuery` function
+//
+// Parameters:
+// Extension - String, BinaryData - Extension data or filepath - ext
+// EntryPoint - String - Expansion entry point, if required - point
+// Connection - String, Arbitrary - Existing connection or path to the base. In memory, if not filled - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of extension connecting
+Function ConnectExtension(Val Extension, Val EntryPoint = "", Val Connection = "") Export
 
-    If Not ValueIsFilled(Proxy) Then
-        Return New Structure("result", True);
+    Extension_    = Extension;
+    FileExtension = ?(OPI_Tools.IsWindows(), "dll", "so");
+
+    OPI_TypeConversion.GetFileOnDisk(Extension_, FileExtension);
+    OPI_TypeConversion.GetLine(EntryPoint);
+
+    Temporary = Extension_["Temporary"];
+    FilePath  = Extension_["Path"];
+    Connector = CreateConnection(Connection);
+
+    ComponentType = "AddIn.OPI_SQLite.Main";
+
+    If TypeOf(Connector) <> Type(ComponentType) Then
+        Return Connector;
     EndIf;
 
-    ErrorPattern = "Incorrect proxy configuration passed: %1";
-
-    Try
-        OPI_TypeConversion.GetKeyValueCollection(Proxy);
-    Except
-
-        Result = New Map;
-        Result.Insert("result", False);
-        Result.Insert("error" , StrTemplate(ErrorPattern, ErrorDescription()));
-        Return Result;
-
-    EndTry;
-
-    ProxyString = OPI_Tools.JSONString(Proxy);
-
-    Result = Connector.SetProxy(ProxyString);
+    Result = Connector.LoadExtension(FilePath, EntryPoint);
     Result = OPI_Tools.JsonToStructure(Result);
 
+    If Temporary Then
+
+        Try
+            DeleteFiles(FilePath);
+        Except
+            Return Result;
+        EndTry;
+
+    EndIf;
+
     Return Result;
+
+EndFunction
+
+#EndRegion
+
+#Region ORM
+
+// Get table information
+// Gets information about the table
+//
+// Parameters:
+// Table - String - Table name - table
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function GetTableInformation(Val Table, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.GetTableStructure(OPI_SQLite, Table, Connection);
+    Return Result;
+
+EndFunction
+
+// Create table
+// Creates an empty table in the database
+//
+// Parameters:
+// Table - String - Table name - table
+// ColoumnsStruct - Structure Of KeyAndValue - Column structure: Key > Name, Value > Data type - cols
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.CreateTable(OPI_SQLite, Table, ColoumnsStruct, Connection);
+    Return Result;
+
+EndFunction
+
+// Add table column
+// Adds a new column to an existing table
+//
+// Parameters:
+// Table - String - Table name - table
+// Name - String - Column name - name
+// DataType - String - Column data type - type
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function AddTableColumn(Val Table, Val Name, Val DataType, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.AddTableColumn(OPI_SQLite, Table, Name, DataType, Connection);
+    Return Result;
+
+EndFunction
+
+// Delete table column
+// Deletes a column from the table
+//
+// Parameters:
+// Table - String - Table name - table
+// Name - String - Column name - name
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function DeleteTableColumn(Val Table, Val Name, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.DeleteTableColumn(OPI_SQLite, Table, Name, Connection);
+    Return Result;
+
+EndFunction
+
+// Ensure table
+// Creates a new table if it does not exist or updates the composition of columns in an existing table
+//
+// Note
+// As a result of changing the table structure, data may be lost!^^
+// It is recommended to test this method on test data beforehand
+// This function does not update the data type of existing columns
+//
+// Parameters:
+// Table - String - Table name - table
+// ColoumnsStruct - Structure Of KeyAndValue - Column structure: Key > Name, Value > Data type - cols
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function EnsureTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.EnsureTable(OPI_SQLite, Table, ColoumnsStruct, Connection);
+    Return Result;
+
+EndFunction
+
+// Add rows
+// Adds new rows to the table
+//
+// Note
+// Binary data can also be transferred as a structure `{'blob':File path}`
+//
+// Parameters:
+// Table - String - Table name - table
+// DataArray - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
+// Transaction - Boolean - True > adding records to transactions with rollback on error - trn
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.AddRecords(OPI_SQLite, Table, DataArray, Transaction, Connection);
+    Return Result;
+
+EndFunction
+
+// Get records
+// Gets records from the selected table
+//
+// Note
+// Values of the Binary data type (BLOB) are returned as `{'blob':Base64 string}`
+//
+// Parameters:
+// Table - String - Table name - table
+// Fields - Array Of String - Fields for selection - fields
+// Filters - Array of Structure - Filters array. See GetRecordsFilterStrucutre - filter
+// Sort - Structure Of KeyAndValue - Sorting: Key > field name, Value > direction (ASC, DESC) - order
+// Count - Number - Limiting the number of received strings - limit
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function GetRecords(Val Table
+    , Val Fields = "*"
+    , Val Filters = ""
+    , Val Sort = ""
+    , Val Count = ""
+    , Val Connection = "") Export
+
+    Result = OPI_SQLQueries.GetRecords(OPI_SQLite, Table, Fields, Filters, Sort, Count, Connection);
+    Return Result;
+
+EndFunction
+
+// Update records
+// Updates the value of records by selected criteria
+//
+// Parameters:
+// Table - String - Table name - table
+// ValueStructure - Structure Of KeyAndValue - Values structure: Key > field, Value > field value - values
+// Filters - Array of Structure - Filters array. See GetRecordsFilterStrucutre - filter
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "") Export
+
+    Result = OPI_SQLQueries.UpdateRecords(OPI_SQLite, Table, ValueStructure, Filters, Connection);
+    Return Result;
+
+EndFunction
+
+// Delete records
+// Deletes records from the table
+//
+// Parameters:
+// Table - String - Table name - table
+// Filters - Array of Structure - Filters array. See GetRecordsFilterStrucutre - filter
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "") Export
+
+    Result = OPI_SQLQueries.DeleteRecords(OPI_SQLite, Table, Filters, Connection);
+    Return Result;
+
+EndFunction
+
+// Delete table
+// Deletes a table from the database
+//
+// Parameters:
+// Table - String - Table name - table
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function DeleteTable(Val Table, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.DeleteTable(OPI_SQLite, Table, Connection);
+    Return Result;
+
+EndFunction
+
+// Clear table
+// Clears the database table
+//
+// Parameters:
+// Table - String - Table name - table
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function ClearTable(Val Table, Val Connection = "") Export
+
+    Result = OPI_SQLQueries.DeleteRecords(OPI_SQLite, Table, , Connection);
+    Return Result;
+
+EndFunction
+
+// Get records filter strucutre
+// Gets the template structure for filtering records in ORM queries
+//
+// Note
+// The use of the `raw` feature is necessary for compound constructions like `BEETWEEN`.^^
+// For example: with `raw:false` the filter `type:BETWEEN` `value:10 AND 20` will be interpolated as `BETWEEN ?1 `^^
+// where `?1 = "10 AND 20,"' which would cause an error.
+// In such a case, you must use `raw:true` to set the condition directly in the query text
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+//
+// Returns:
+// Structure Of KeyAndValue - Record filter element
+Function GetRecordsFilterStrucutre(Val Clear = False) Export
+
+    Return OPI_SQLQueries.GetRecordsFilterStrucutre(Clear);
+
+EndFunction
+
+#EndRegion
+
+#EndRegion
+
+#Region Internal
+
+Function GetFeatures() Export
+
+    Features = New Map;
+    Features.Insert("ParameterNumeration", True);
+    Features.Insert("ParameterMarker"    , "?");
+    Features.Insert("DBMS"               , "sqlite");
+    Features.Insert("ColumnField"        , "name");
+    Features.Insert("TransactionStart"   , "BEGIN");
+
+    Return Features;
+
+EndFunction
+
+Function GetTypesStructure() Export
+
+    TypesStructure = New Map;
+    TypesStructure.Insert("BinaryData"   , "BLOB");
+    TypesStructure.Insert("UUID"         , "TEXT");
+    TypesStructure.Insert("Boolean"      , "BOOL");
+    TypesStructure.Insert("Float"        , "REAL");
+    TypesStructure.Insert("Whole"        , "INTEGER");
+    TypesStructure.Insert("Date"         , "TEXT");
+    TypesStructure.Insert("String"       , "TEXT");
+    TypesStructure.Insert("Collections"  , New ValueList);
+    TypesStructure.Insert("BoolAsNumber" , False);
+
+    Return TypesStructure;
 
 EndFunction
 
@@ -384,16 +500,8 @@ EndFunction
 
 #Region Alternate
 
-Function ОткрытьСоединение(Val НастройкиSSH, Val Прокси = "") Export
-	Return CreateConnection(НастройкиSSH, Прокси);
-EndFunction
-
-Function ПолучитьКонфигурациюСоединения(Val НастройкиSSH, Val Прокси = Undefined) Export
-	Return GetConnectionConfiguration(НастройкиSSH, Прокси);
-EndFunction
-
-Function ВыполнитьКоманду(Val Соединение, Val Команда) Export
-	Return ExecuteCommand(Соединение, Команда);
+Function ОткрытьСоединение(Val База = "") Export
+	Return CreateConnection(База);
 EndFunction
 
 Function ЗакрытьСоединение(Val Соединение) Export
@@ -404,20 +512,68 @@ Function ЭтоКоннектор(Val Значение) Export
 	Return IsConnector(Значение);
 EndFunction
 
-Function ПолучитьНастройкиЛогинПароль(Val Хост, Val Порт, Val Логин, Val Пароль = "") Export
-	Return GetSettingsLoginPassword(Хост, Порт, Логин, Пароль);
+Function ВыполнитьЗапросSQL(Val ТекстЗапроса, Val Параметры = "", Val ФорсироватьРезультат = False, Val Соединение = "", Val Расширения = Undefined) Export
+	Return ExecuteSQLQuery(ТекстЗапроса, Параметры, ФорсироватьРезультат, Соединение, Расширения);
 EndFunction
 
-Function ПолучитьНастройкиПриватныйКлюч(Val Хост, Val Порт, Val Логин, Val Приватный, Val Публичный = "", Val Пароль = "") Export
-	Return GetSettingsPrivateKey(Хост, Порт, Логин, Приватный, Публичный, Пароль);
+Function ПодключитьРасширение(Val Расширение, Val ТочкаВхода = "", Val Соединение = "") Export
+	Return ConnectExtension(Расширение, ТочкаВхода, Соединение);
 EndFunction
 
-Function ПолучитьНастройкиЧерезАгента(Val Хост, Val Порт, Val Логин) Export
-	Return GetSettingsViaAgent(Хост, Порт, Логин);
+Function ПолучитьИнформациюОТаблице(Val Таблица, Val Соединение = "") Export
+	Return GetTableInformation(Таблица, Соединение);
 EndFunction
 
-Function ПолучитьНастройкиПрокси(Val Адрес, Val Порт, Val Вид = "socks5", Val Логин = Undefined, Val Пароль = Undefined) Export
-	Return GetProxySettings(Адрес, Порт, Вид, Логин, Пароль);
+Function СоздатьТаблицу(Val Таблица, Val СтруктураКолонок, Val Соединение = "") Export
+	Return CreateTable(Таблица, СтруктураКолонок, Соединение);
+EndFunction
+
+Function ДобавитьКолонкуТаблицы(Val Таблица, Val Имя, Val ТипДанных, Val Соединение = "") Export
+	Return AddTableColumn(Таблица, Имя, ТипДанных, Соединение);
+EndFunction
+
+Function УдалитьКолонкуТаблицы(Val Таблица, Val Имя, Val Соединение = "") Export
+	Return DeleteTableColumn(Таблица, Имя, Соединение);
+EndFunction
+
+Function ГарантироватьТаблицу(Val Таблица, Val СтруктураКолонок, Val Соединение = "") Export
+	Return EnsureTable(Таблица, СтруктураКолонок, Соединение);
+EndFunction
+
+Function ДобавитьЗаписи(Val Таблица, Val МассивДанных, Val Транзакция = True, Val Соединение = "") Export
+	Return AddRecords(Таблица, МассивДанных, Транзакция, Соединение);
+EndFunction
+
+Function ПолучитьЗаписи(Val Таблица, Val Поля = "*", Val Фильтры = "", Val Сортировка = "", Val Количество = "", Val Соединение = "") Export
+	Return GetRecords(Таблица, Поля, Фильтры, Сортировка, Количество, Соединение);
+EndFunction
+
+Function ОбновитьЗаписи(Val Таблица, Val СтруктураЗначений, Val Фильтры = "", Val Соединение = "") Export
+	Return UpdateRecords(Таблица, СтруктураЗначений, Фильтры, Соединение);
+EndFunction
+
+Function УдалитьЗаписи(Val Таблица, Val Фильтры = "", Val Соединение = "") Export
+	Return DeleteRecords(Таблица, Фильтры, Соединение);
+EndFunction
+
+Function УдалитьТаблицу(Val Таблица, Val Соединение = "") Export
+	Return DeleteTable(Таблица, Соединение);
+EndFunction
+
+Function ОчиститьТаблицу(Val Таблица, Val Соединение = "") Export
+	Return ClearTable(Таблица, Соединение);
+EndFunction
+
+Function ПолучитьСтруктуруФильтраЗаписей(Val Пустая = False) Export
+	Return GetRecordsFilterStrucutre(Пустая);
+EndFunction
+
+Function ПолучитьОсобенности() Export
+	Return GetFeatures();
+EndFunction
+
+Function ПолучитьСтруктуруТипов() Export
+	Return GetTypesStructure();
 EndFunction
 
 #EndRegion
