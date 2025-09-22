@@ -14,7 +14,7 @@
      }
     },
     "description": "Описание товара",
-    "id": 11853917,
+    "id": 11886075,
     "owner_id": -218861756,
     "price": {
      "amount": "100",
@@ -34,7 +34,7 @@
       "title": "Другие товары сообщества",
       "view_type": 1,
       "item_ids": [
-       "-218861756_11853920",
+       "-218861756_11886077",
        "-218861756_11825634",
        "-218861756_11699243",
        "-218861756_11311308",
@@ -58,10 +58,10 @@
     "photos": [
      {
       "album_id": -53,
-      "date": 1758180202,
-      "id": 457259294,
+      "date": 1758573197,
+      "id": 457259313,
       "owner_id": -218861756,
-      "access_key": "2b53097f49dfdbe37c",
+      "access_key": "d24b62d48457788b31",
       "sizes": [
        {
         "height": 54,
@@ -132,7 +132,7 @@
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "0866ca7411c4812073",
+      "web_view_token": "afd277cc4cd07f8c7d",
       "has_tags": false,
       "orig_photo": {
        "height": 1920,
@@ -143,10 +143,10 @@
      },
      {
       "album_id": -53,
-      "date": 1758180208,
-      "id": 457259295,
+      "date": 1758573200,
+      "id": 457259314,
       "owner_id": -218861756,
-      "access_key": "b15378ea64abb14465",
+      "access_key": "53a7086f6567bc00b8",
       "sizes": [
        {
         "height": 54,
@@ -217,7 +217,7 @@
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "64307a128cb52f278d",
+      "web_view_token": "aacd7f24ea46b64838",
       "has_tags": false,
       "orig_photo": {
        "height": 1920,
@@ -228,10 +228,10 @@
      },
      {
       "album_id": -53,
-      "date": 1758180210,
-      "id": 457259296,
+      "date": 1758573202,
+      "id": 457259315,
       "owner_id": -218861756,
-      "access_key": "bf0b06ca231cf8ff74",
+      "access_key": "ae1e085d995e4d25ab",
       "sizes": [
        {
         "height": 40,
@@ -302,7 +302,7 @@
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "f8329bdeee4bb6f2be",
+      "web_view_token": "62e76897f17f582719",
       "has_tags": false,
       "orig_photo": {
        "height": 1080,
@@ -330,9 +330,9 @@
       "type": "text",
       "variants": [
        {
-        "variant_id": 8034,
+        "variant_id": 8082,
         "name": "Новое имя варианта",
-        "item_id": 11853917,
+        "item_id": 11886075,
         "is_selected": true
        }
       ]
@@ -354,7 +354,7 @@
      "is_available": true
     },
     "labels": [],
-    "date": 1758180211,
+    "date": 1758573202,
     "item_type": 0,
     "is_owner": true,
     "is_adult": false,
@@ -362,7 +362,7 @@
     "is_main_variant": true,
     "property_values": [
      {
-      "variant_id": 8034,
+      "variant_id": 8082,
       "variant_name": "Новое имя варианта",
       "property_name": "Цвет (изм.)"
      }
@@ -375,7 +375,7 @@
      "reviews_count_text": "Нет отзывов"
     },
     "has_group_access": true,
-    "market_url": "https://vk.com/market/product/testovy-tovar-so-svoystvom-218861756-11853917"
+    "market_url": "https://vk.com/market/product/testovy-tovar-so-svoystvom-218861756-11886075"
    },
    {
     "availability": 0,
@@ -389,7 +389,7 @@
      }
     },
     "description": "Описание товара",
-    "id": 11853920,
+    "id": 11886077,
     "owner_id": -218861756,
     "price": {
      "amount": "100",
@@ -409,7 +409,7 @@
       "title": "Другие товары сообщества",
       "view_type": 1,
       "item_ids": [
-       "-218861756_11853920",
+       "-218861756_11886077",
        "-218861756_11825634",
        "-218861756_11699243",
        "-218861756_11311308",
@@ -433,10 +433,10 @@
     "photos": [
      {
       "album_id": -53,
-      "date": 1758180218,
-      "id": 457259297,
+      "date": 1758573205,
+      "id": 457259316,
       "owner_id": -218861756,
-      "access_key": "cd8742be5925f16dae",
+      "access_key": "db593e0c1c822dc76a",
       "sizes": [
        {
         "height": 54,
@@ -507,7 +507,7 @@
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "b11cc11b425dabd970",
+      "web_view_token": "ebb29ca372b63e34e8",
       "has_tags": false,
       "orig_photo": {
        "height": 1920,
@@ -518,10 +518,10 @@
      },
      {
       "album_id": -53,
-      "date": 1758180223,
-      "id": 457259298,
+      "date": 1758573210,
+      "id": 457259317,
       "owner_id": -218861756,
-      "access_key": "6dfece00029e6bc741",
+      "access_key": "4ebd6ecf0c9d74d50e",
       "sizes": [
        {
         "height": 54,
@@ -592,7 +592,7 @@
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "14c432eaa0c6df9ee9",
+      "web_view_token": "17d22cf330330493cc",
       "has_tags": false,
       "orig_photo": {
        "height": 1920,
@@ -603,10 +603,10 @@
      },
      {
       "album_id": -53,
-      "date": 1758180225,
-      "id": 457259299,
+      "date": 1758573211,
+      "id": 457259318,
       "owner_id": -218861756,
-      "access_key": "a6be10bde15b58cfec",
+      "access_key": "bd6ec188d908e2dcf7",
       "sizes": [
        {
         "height": 40,
@@ -677,7 +677,7 @@
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "6031c55f7c5eba966c",
+      "web_view_token": "07fa890a93009735bb",
       "has_tags": false,
       "orig_photo": {
        "height": 1080,
@@ -705,9 +705,9 @@
       "type": "text",
       "variants": [
        {
-        "variant_id": 8035,
+        "variant_id": 8083,
         "name": "Синий",
-        "item_id": 11853920,
+        "item_id": 11886077,
         "is_selected": true
        }
       ]
@@ -729,7 +729,7 @@
      "is_available": true
     },
     "labels": [],
-    "date": 1758180225,
+    "date": 1758573211,
     "item_type": 0,
     "is_owner": true,
     "is_adult": false,
@@ -737,7 +737,7 @@
     "is_main_variant": true,
     "property_values": [
      {
-      "variant_id": 8035,
+      "variant_id": 8083,
       "variant_name": "Синий",
       "property_name": "Цвет (изм.)"
      }
@@ -750,7 +750,7 @@
      "reviews_count_text": "Нет отзывов"
     },
     "has_group_access": true,
-    "market_url": "https://vk.com/market/product/testovy-tovar-drugoy-218861756-11853920"
+    "market_url": "https://vk.com/market/product/testovy-tovar-drugoy-218861756-11886077"
    }
   ]
  }
