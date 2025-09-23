@@ -2,6 +2,14 @@
  "object": "list",
  "data": [
   {
+   "id": "kitten-tts",
+   "object": "model"
+  },
+  {
+   "id": "moondream2-20250414",
+   "object": "model"
+  },
+  {
    "id": "parler-tts-mini-v0.1",
    "object": "model"
   },
@@ -23,14 +31,6 @@
   },
   {
    "id": "bark-cpp-small",
-   "object": "model"
-  },
-  {
-   "id": "kitten-tts",
-   "object": "model"
-  },
-  {
-   "id": "moondream2-20250414",
    "object": "model"
   },
   {

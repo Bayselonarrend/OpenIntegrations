@@ -7,11 +7,11 @@
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
+  "Connection": "Keep-Alive",
   "Content-Length": "96",
   "Content-Type": "application/json; charset=utf-8",
-  "Host": "httpbin.org",
-  "User-Agent": "1Script v$2.0.0.0",
-  "X-Amzn-Trace-Id": "Root=1-68cbd85c-60b726eb3389fb5626ab0014"
+  "Host": "localhost:2424",
+  "User-Agent": "1Script v$2.0.0.0"
  },
  "json": {
   "Поле1": 10,
@@ -23,5 +23,5 @@
   ]
  },
  "origin": "***",
- "url": "https://httpbin.org/post"
+ "url": "http://localhost:2424/post"
 }
