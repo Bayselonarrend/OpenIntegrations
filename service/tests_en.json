@@ -6348,5 +6348,10 @@
 "lib": "SSH",
 "name": "CreateConnection",
 "variant": ""
+},
+{
+"lib": "SSH",
+"name": "ExecuteCommand",
+"variant": ""
 }
 ]

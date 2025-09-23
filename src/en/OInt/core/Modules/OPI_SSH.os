@@ -321,6 +321,8 @@ Function CheckCreateConnection(Connection)
         CloseConnection = True;
         Connection      = CreateConnection(Connection);
 
+    Else
+        CloseConnection = False;
     EndIf;
 
     Return CloseConnection;
