@@ -19,9 +19,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetConnectionConfiguration";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬKОNФAndГУРАЦAndЮСОЕДAndNOTNAndЯ";
+    NewLine.SearchMethod = "GETCONNECTIONCONFIGURATION";
     NewLine.Parameter    = "--set";
     NewLine.Description    = "SSH settings";
     NewLine.Region     = "Common methods";
@@ -30,9 +30,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetConnectionConfiguration";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬKОNФAndГУРАЦAndЮСОЕДAndNOTNAndЯ";
+    NewLine.SearchMethod = "GETCONNECTIONCONFIGURATION";
     NewLine.Parameter    = "--proxy";
     NewLine.Description    = "Proxy settings, if required. See GetProxySettings (optional, def. val. - Empty value)";
     NewLine.Region     = "Common methods";
@@ -40,9 +40,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "ExecuteCommand";
-    NewLine.SearchMethod = "InЫПОЛNAndТЬKОМАNДУ";
+    NewLine.SearchMethod = "EXECUTECOMMAND";
     NewLine.Parameter    = "--conn";
     NewLine.Description    = "Existing connection or connection configuration";
     NewLine.Region     = "Common methods";
@@ -51,9 +51,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "ExecuteCommand";
-    NewLine.SearchMethod = "InЫПОЛNAndТЬKОМАNДУ";
+    NewLine.SearchMethod = "EXECUTECOMMAND";
     NewLine.Parameter    = "--comm";
     NewLine.Description    = "Command text";
     NewLine.Region     = "Common methods";
@@ -61,21 +61,21 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetSettingsLoginPassword";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndЛОГAndNПАРОЛЬ";
+    NewLine.SearchMethod = "GETSETTINGSLOGINPASSWORD";
     NewLine.Parameter    = "--host";
     NewLine.Description    = "SSH host";
     NewLine.Region     = "Common methods";
-    NewLine.MethodDescription   = "парoль)
+    NewLine.MethodDescription   = "password)
     |    Gets connection settings with login and password authentication";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetSettingsLoginPassword";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndЛОГAndNПАРОЛЬ";
+    NewLine.SearchMethod = "GETSETTINGSLOGINPASSWORD";
     NewLine.Parameter    = "--port";
     NewLine.Description    = "SSH port";
     NewLine.Region     = "Common methods";
@@ -83,9 +83,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetSettingsLoginPassword";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndЛОГAndNПАРОЛЬ";
+    NewLine.SearchMethod = "GETSETTINGSLOGINPASSWORD";
     NewLine.Parameter    = "--user";
     NewLine.Description    = "SSH username";
     NewLine.Region     = "Common methods";
@@ -93,9 +93,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetSettingsLoginPassword";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndЛОГAndNПАРОЛЬ";
+    NewLine.SearchMethod = "GETSETTINGSLOGINPASSWORD";
     NewLine.Parameter    = "--pass";
     NewLine.Description    = "SSH user password (optional, def. val. - Empty value)";
     NewLine.Region     = "Common methods";
@@ -103,9 +103,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetSettingsPrivateKey";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndПРAndInATNЫЙKЛЮЧ";
+    NewLine.SearchMethod = "GETSETTINGSPRIVATEKEY";
     NewLine.Parameter    = "--host";
     NewLine.Description    = "SSH host";
     NewLine.Region     = "Common methods";
@@ -114,9 +114,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetSettingsPrivateKey";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndПРAndInATNЫЙKЛЮЧ";
+    NewLine.SearchMethod = "GETSETTINGSPRIVATEKEY";
     NewLine.Parameter    = "--port";
     NewLine.Description    = "SSH port";
     NewLine.Region     = "Common methods";
@@ -124,9 +124,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetSettingsPrivateKey";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndПРAndInATNЫЙKЛЮЧ";
+    NewLine.SearchMethod = "GETSETTINGSPRIVATEKEY";
     NewLine.Parameter    = "--user";
     NewLine.Description    = "SSH username";
     NewLine.Region     = "Common methods";
@@ -134,9 +134,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetSettingsPrivateKey";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndПРAndInATNЫЙKЛЮЧ";
+    NewLine.SearchMethod = "GETSETTINGSPRIVATEKEY";
     NewLine.Parameter    = "--key";
     NewLine.Description    = "Path to private key file";
     NewLine.Region     = "Common methods";
@@ -144,9 +144,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetSettingsPrivateKey";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndПРAndInATNЫЙKЛЮЧ";
+    NewLine.SearchMethod = "GETSETTINGSPRIVATEKEY";
     NewLine.Parameter    = "--pub";
     NewLine.Description    = "Path to public key file (optional, def. val. - Empty value)";
     NewLine.Region     = "Common methods";
@@ -154,9 +154,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetSettingsPrivateKey";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndПРAndInATNЫЙKЛЮЧ";
+    NewLine.SearchMethod = "GETSETTINGSPRIVATEKEY";
     NewLine.Parameter    = "--pass";
     NewLine.Description    = "Private key password (passphrase) (optional, def. val. - Empty value)";
     NewLine.Region     = "Common methods";
@@ -164,9 +164,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetSettingsViaAgent";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndЧЕРЕЗАГЕNТА";
+    NewLine.SearchMethod = "GETSETTINGSVIAAGENT";
     NewLine.Parameter    = "--host";
     NewLine.Description    = "SSH host";
     NewLine.Region     = "Common methods";
@@ -175,9 +175,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetSettingsViaAgent";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndЧЕРЕЗАГЕNТА";
+    NewLine.SearchMethod = "GETSETTINGSVIAAGENT";
     NewLine.Parameter    = "--port";
     NewLine.Description    = "SSH port";
     NewLine.Region     = "Common methods";
@@ -185,9 +185,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetSettingsViaAgent";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndЧЕРЕЗАГЕNТА";
+    NewLine.SearchMethod = "GETSETTINGSVIAAGENT";
     NewLine.Parameter    = "--user";
     NewLine.Description    = "SSH username";
     NewLine.Region     = "Common methods";
@@ -195,9 +195,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetProxySettings";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndПРОKСAnd";
+    NewLine.SearchMethod = "GETPROXYSETTINGS";
     NewLine.Parameter    = "--addr";
     NewLine.Description    = "Proxy address";
     NewLine.Region     = "Common methods";
@@ -206,9 +206,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetProxySettings";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndПРОKСAnd";
+    NewLine.SearchMethod = "GETPROXYSETTINGS";
     NewLine.Parameter    = "--port";
     NewLine.Description    = "Proxy port";
     NewLine.Region     = "Common methods";
@@ -216,9 +216,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetProxySettings";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndПРОKСAnd";
+    NewLine.SearchMethod = "GETPROXYSETTINGS";
     NewLine.Parameter    = "--type";
     NewLine.Description    = "Proxy type: socks5, socks4, http (optional, def. val. - socks5)";
     NewLine.Region     = "Common methods";
@@ -226,9 +226,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetProxySettings";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndПРОKСAnd";
+    NewLine.SearchMethod = "GETPROXYSETTINGS";
     NewLine.Parameter    = "--login";
     NewLine.Description    = "Authorization login, if required (optional, def. val. - Empty value)";
     NewLine.Region     = "Common methods";
@@ -236,9 +236,9 @@ Function GetComposition() Export
 
     NewLine = CompositionTable.Add();
     NewLine.Library  = "ssh";
-    NewLine.Module      = "OPI_SQLite";
+    NewLine.Module      = "OPI_SSH";
     NewLine.Method       = "GetProxySettings";
-    NewLine.SearchMethod = "ПОЛУЧAndТЬNАСТРОЙKAndПРОKСAnd";
+    NewLine.SearchMethod = "GETPROXYSETTINGS";
     NewLine.Parameter    = "--pass";
     NewLine.Description    = "Authorization password, if required (optional, def. val. - Empty value)";
     NewLine.Region     = "Common methods";
@@ -252,11 +252,12 @@ Function GetConnectionString() Export
 
     Return "
         |Context = New Structure;
-
+        |Context.Insert(""OPI_SSH"", Undefined);
         |
-
+        |OPI_SSH = LoadScript(""%1/oint/core/Modules/OPI_SSH.os"", Context);
+        |Context.Insert(""OPI_SSH"", OPI_SSH);
         |
-        |OPI_SQLite = LoadScript(""%1/oint/core/Modules/OPI_SQLite.os"", Context);
+        |OPI_SSH = LoadScript(""%1/oint/core/Modules/OPI_SSH.os"", Context);
         |" + Chars.LF;
 
 

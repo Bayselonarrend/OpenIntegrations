@@ -1,0 +1,42 @@
+﻿---
+sidebar_position: 2
+description: Get connection configuration and other functions to work with SSH in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, SSH]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get connection configuration
+ Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions
+
+
+
+`Function GetConnectionConfiguration(Val SSHSettings, Val Proxy = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | SSHSettings | --set | Structure Of KeyAndValue | &#x2714; | SSH settings |
+  | Proxy | --proxy | Structure Of KeyAndValue | &#x2716; | Proxy settings, if required. See GetProxySettings |
+
+  
+  Returns:  Structure Of KeyAndValue - Connection settings structure
+
+<br/>
+
+:::tip
+Can be passed as the `Connection` parameter in other functions instead of the actual connection from the `CreateConnection` function.
+
+At the same time, a new connection will be opened and closed within the called function
+
+It is not recommended to use the connection configuration for multiple requests to the SSH server. This functionality is primarily intended for the CLI version of OInt, where maintaining a connection between calls is not possible
+:::
+<br/>
+
+
+
+ 
+
+
+
+
