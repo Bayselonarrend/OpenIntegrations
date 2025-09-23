@@ -1,4 +1,5 @@
 use serde::{Deserialize, Serialize};
+use common_tcp::config::ProxySettings;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum SshAuthTypes{
@@ -24,18 +25,9 @@ pub struct SshSettings {
 }
 
 #[derive(Deserialize,Serialize,Clone)]
-pub struct SshProxy {
-    pub server: String,
-    pub port: u16,
-    pub proxy_type: String, // "http", "socks4", "socks5"
-    pub login: Option<String>,
-    pub password: Option<String>,
-}
-
-#[derive(Deserialize,Serialize,Clone)]
 pub struct SshConf {
     pub set: Option<SshSettings>,
-    pub proxy: Option<SshProxy>
+    pub proxy: Option<ProxySettings>
 }
 
 impl SshConf {
@@ -54,7 +46,7 @@ impl SshConf {
     }
 
     pub fn set_proxy(&mut self, proxy: String) -> Result<(), String> {
-        match serde_json::from_str::<SshProxy>(&proxy){
+        match serde_json::from_str::<ProxySettings>(&proxy){
             Ok(proxy) => Ok(self.proxy = Some(proxy)),
             Err(e) => Err(e.to_string())
         }

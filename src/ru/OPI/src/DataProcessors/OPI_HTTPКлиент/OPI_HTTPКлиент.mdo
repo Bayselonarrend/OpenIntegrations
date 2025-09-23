@@ -7,7 +7,8 @@
   <name>OPI_HTTPКлиент</name>
   <synonym>
     <key>ru</key>
-    <value>HTTP клиент (ОПИ)</value>
+    <value>HTTP-клиент (ОПИ)</value>
   </synonym>
+  <comment>HTTP-клиент набора ОПИ</comment>
   <useStandardCommands>true</useStandardCommands>
 </mdclass:DataProcessor>

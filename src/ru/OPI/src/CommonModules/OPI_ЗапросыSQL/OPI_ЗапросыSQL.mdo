@@ -3,8 +3,9 @@
   <name>OPI_ЗапросыSQL</name>
   <synonym>
     <key>ru</key>
-    <value>SQL</value>
+    <value>SQL (служебный, ОПИ)</value>
   </synonym>
+  <comment>Общий модуль инструментов работы с SQL набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

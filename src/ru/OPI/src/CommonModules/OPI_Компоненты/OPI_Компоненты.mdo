@@ -3,8 +3,9 @@
   <name>OPI_Компоненты</name>
   <synonym>
     <key>ru</key>
-    <value>Компоненты (ОПИ)</value>
+    <value>Компоненты (служебный, ОПИ)</value>
   </synonym>
+  <comment>Модуль работы с внешними компонентами набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

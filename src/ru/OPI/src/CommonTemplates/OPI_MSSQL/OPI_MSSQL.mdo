@@ -3,7 +3,7 @@
   <name>OPI_MSSQL</name>
   <synonym>
     <key>ru</key>
-    <value>MSSQL</value>
+    <value>Компонента MS SQL (ОПИ)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>HTTP (служебный, ОПИ)</value>
   </synonym>
+  <comment>Служебный модуль работы с HTTP набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

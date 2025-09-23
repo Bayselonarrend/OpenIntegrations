@@ -3,7 +3,7 @@
   <name>OPI_MySQL</name>
   <synonym>
     <key>ru</key>
-    <value>My SQL</value>
+    <value>Компонента MySQL (ОПИ)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

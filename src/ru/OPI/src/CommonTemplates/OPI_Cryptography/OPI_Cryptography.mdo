@@ -3,7 +3,7 @@
   <name>OPI_Cryptography</name>
   <synonym>
     <key>ru</key>
-    <value>Cryptography</value>
+    <value>Компонента криптографии (ОПИ)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

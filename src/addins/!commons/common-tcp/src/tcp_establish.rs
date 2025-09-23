@@ -1,81 +1,13 @@
 use std::io::{Read, Write};
-use std::net::{SocketAddr, TcpStream, ToSocketAddrs};
+use std::net::{TcpStream, ToSocketAddrs};
 use std::time::Duration;
 use socks::{Socks4Stream, Socks5Stream};
 use base64::{Engine as _, engine::general_purpose};
-use suppaftp::FtpError;
-use crate::component::configuration::{FtpProxySettings, FtpSettings};
-use std::vec::IntoIter;
 use std::fmt::Write as FmtWrite;
+use crate::config::ProxySettings;
 
-
-pub fn make_passive_proxy_stream(
-    ftp_settings: &FtpSettings,
-    proxy_settings: &Option<FtpProxySettings>,
-    addr: SocketAddr) -> Result<TcpStream, FtpError> {
-
-    let redirect = match ftp_settings.advanced_resolve {
-        true => {
-            if proxy_settings.is_some() || addr.ip().is_loopback()   {
-                Some(&ftp_settings.domain)
-            } else {
-                None
-            }
-        }
-        false => None,
-    };
-
-    let corrected_addr = if let Some(domain) = redirect {
-
-        match get_socket_addr(domain, addr.port()) {
-            Ok(mut addrs) => addrs.next().unwrap_or(addr),
-            Err(_) => addr,
-        }
-    } else {
-        addr
-    };
-
-    match create_tcp_connection_for_passive(&proxy_settings, corrected_addr)
-        .map_err(|e| FtpError::ConnectionError(
-            std::io::Error::new(std::io::ErrorKind::Other, e))){
-
-        Ok(tcp_connection) => {
-
-            let w_timeout = Some(Duration::from_secs(ftp_settings.write_timeout));
-            let r_timeout = Some(Duration::from_secs(ftp_settings.read_timeout));
-
-            let _ = tcp_connection.set_write_timeout(w_timeout);
-            let _ = tcp_connection.set_read_timeout(r_timeout);
-
-            Ok(tcp_connection)
-
-        },
-        Err(e) => Err(e)
-    }
-}
-
-pub fn create_tcp_connection(
-    ftp_settings: &FtpSettings,
-    proxy_settings: &Option<FtpProxySettings>) -> Result<TcpStream, String> {
-
-    let target_addr = (ftp_settings.domain.as_str(), ftp_settings.port);
-    connect(proxy_settings, target_addr)
-}
-
-pub fn create_tcp_connection_for_passive(
-    proxy_settings: &Option<FtpProxySettings>,
-    addr: SocketAddr) -> Result<TcpStream, String> {
-
-    let ip = addr.ip().to_string();
-    let target_addr = (ip.as_str(), addr.port());
-    connect(proxy_settings, target_addr)
-}
-
-fn connect(
-    proxy_settings: &Option<FtpProxySettings>,
-    target_addr: (&str, u16)
-) -> Result<TcpStream, String> {
-
+pub fn create_tcp_connection(host: &str, port: u16, proxy_settings: &Option<ProxySettings>) -> Result<TcpStream, String> {
+    let target_addr = (host, port);
     match proxy_settings{
         Some(s) => connect_via_proxy(&s, target_addr),
         None => connect_direct(target_addr)
@@ -83,7 +15,7 @@ fn connect(
 }
 
 fn connect_via_proxy(
-    proxy_settings: &FtpProxySettings,
+    proxy_settings: &ProxySettings,
     target_addr: (&str, u16)
 ) -> Result<TcpStream, String> {
 
@@ -97,8 +29,7 @@ fn connect_via_proxy(
     }
 }
 
-
-fn connect_via_socks5(proxy_settings: &FtpProxySettings, target_addr: (&str, u16)) -> Result<TcpStream, String> {
+fn connect_via_socks5(proxy_settings: &ProxySettings, target_addr: (&str, u16)) -> Result<TcpStream, String> {
 
     let proxy_addr = format!("{}:{}", proxy_settings.server, proxy_settings.port);
 
@@ -112,7 +43,7 @@ fn connect_via_socks5(proxy_settings: &FtpProxySettings, target_addr: (&str, u16
         .map_err(|e| format!("SOCKS5 error: {}", e))
 }
 
-fn connect_via_socks4(proxy_settings: &FtpProxySettings, target_addr: (&str, u16)) -> Result<TcpStream, String> {
+fn connect_via_socks4(proxy_settings: &ProxySettings, target_addr: (&str, u16)) -> Result<TcpStream, String> {
 
     let proxy_addr = format!("{}:{}", proxy_settings.server, proxy_settings.port);
 
@@ -126,7 +57,7 @@ fn connect_via_socks4(proxy_settings: &FtpProxySettings, target_addr: (&str, u16
         .map_err(|e| format!("SOCKS4 error: {}", e))
 }
 
-pub fn connect_via_http_proxy(proxy_settings: &FtpProxySettings, target_addr: (&str, u16)) -> Result<TcpStream, String> {
+pub fn connect_via_http_proxy(proxy_settings: &ProxySettings, target_addr: (&str, u16)) -> Result<TcpStream, String> {
     let proxy_addr = format!("{}:{}", proxy_settings.server, proxy_settings.port);
     let max_retries = 5;
 
@@ -141,7 +72,7 @@ pub fn connect_via_http_proxy(proxy_settings: &FtpProxySettings, target_addr: (&
         // Увеличиваем таймауты
         stream.set_read_timeout(Some(Duration::from_secs(30))).ok();
         stream.set_write_timeout(Some(Duration::from_secs(30))).ok();
-        stream.set_nodelay(true).ok(); // Отключаем алгоритм Нейгла
+        stream.set_nodelay(true).ok();
 
         let host_port = format!("{}:{}", target_addr.0, target_addr.1);
         let mut request = format!(
@@ -194,7 +125,6 @@ pub fn connect_via_http_proxy(proxy_settings: &FtpProxySettings, target_addr: (&
 
         let response_str = String::from_utf8_lossy(&response);
 
-        // Парсим ответ
         let mut headers = [httparse::EMPTY_HEADER; 32];
         let mut resp = httparse::Response::new(&mut headers);
 
@@ -247,14 +177,7 @@ pub fn connect_via_http_proxy(proxy_settings: &FtpProxySettings, target_addr: (&
     Err("Failed to connect via proxy after all retries".to_string())
 }
 
-
-fn get_socket_addr(host: &str, port: u16) -> Result<IntoIter<SocketAddr>, String> {
-    let host_and_port = format!("{}:{}", host, port);
-    host_and_port.to_socket_addrs().map_err(|e| e.to_string())
-}
-
 fn connect_direct(addr: (&str, u16)) -> Result<TcpStream, String> {
     let target_addr = format!("{}:{}", addr.0, addr.1);
     TcpStream::connect(&target_addr).map_err(|e| format!("Direct connection error: {}", e))
 }
-
