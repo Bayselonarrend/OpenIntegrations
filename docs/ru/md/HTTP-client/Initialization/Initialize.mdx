@@ -36,7 +36,7 @@ URL может быть установлен позднее при помощи 
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL = "https://bin.openintegrations.dev";
+    URL = "http://localhost:2424";
     URL = URL + "/get";
 
     Результат = OPI_ЗапросыHTTP
@@ -56,12 +56,12 @@ URL может быть установлен позднее при помощи 
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
+  "Connection": "Keep-Alive",
   "Content-Length": "0",
-  "Host": "httpbin.org",
-  "User-Agent": "1Script v$2.0.0.0",
-  "X-Amzn-Trace-Id": "Root=1-68d1c152-1fa249c764486fa7527dee63"
+  "Host": "localhost:2424",
+  "User-Agent": "1Script v$2.0.0.0"
  },
  "origin": "***",
- "url": "https://httpbin.org/get"
+ "url": "http://localhost:2424/get"
 }
 ```
