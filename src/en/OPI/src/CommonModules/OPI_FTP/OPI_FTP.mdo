@@ -5,6 +5,7 @@
     <key>en</key>
     <value>FTP (OpenIntegrations)</value>
   </synonym>
+  <comment>FTP Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

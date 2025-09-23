@@ -7,8 +7,9 @@
   </synonym>
   <synonym>
     <key>en</key>
-    <value>Tests for YaxUnit (OpenIntegrations)</value>
+    <value>Tests for YaxUnit/1testrunner (Utility, OpenIntegrations)</value>
   </synonym>
+  <comment>Main Test Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

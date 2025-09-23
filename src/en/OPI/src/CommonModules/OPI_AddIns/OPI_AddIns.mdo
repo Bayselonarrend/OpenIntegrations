@@ -3,8 +3,9 @@
   <name>OPI_AddIns</name>
   <synonym>
     <key>en</key>
-    <value>AddIns (OpenIntegrations)</value>
+    <value>AddIns (Utility, OpenIntegrations)</value>
   </synonym>
+  <comment>External Components Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

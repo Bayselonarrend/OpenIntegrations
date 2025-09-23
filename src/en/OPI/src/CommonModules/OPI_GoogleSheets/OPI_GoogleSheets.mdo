@@ -9,6 +9,7 @@
     <key>en</key>
     <value>Google Sheets (OpenIntegrations)</value>
   </synonym>
+  <comment>Google Sheets Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

@@ -3,8 +3,9 @@
   <name>OPI_Cryptography</name>
   <synonym>
     <key>en</key>
-    <value>Cryptography (OpenIntegrations)</value>
+    <value>Cryptography (Utility, OpenIntegrations)</value>
   </synonym>
+  <comment>Cryptography Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

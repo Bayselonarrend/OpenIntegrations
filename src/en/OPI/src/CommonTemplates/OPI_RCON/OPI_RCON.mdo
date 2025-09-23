@@ -3,7 +3,7 @@
   <name>OPI_RCON</name>
   <synonym>
     <key>en</key>
-    <value>RCON</value>
+    <value>RCON Component (OpenIntegrations)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

@@ -5,6 +5,7 @@
     <key>en</key>
     <value>Viber (OpenIntegrations)</value>
   </synonym>
+  <comment>Viber Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

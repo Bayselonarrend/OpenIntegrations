@@ -5,6 +5,7 @@
     <key>en</key>
     <value>S3 (OpenIntegrations)</value>
   </synonym>
+  <comment>S3 Storage Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

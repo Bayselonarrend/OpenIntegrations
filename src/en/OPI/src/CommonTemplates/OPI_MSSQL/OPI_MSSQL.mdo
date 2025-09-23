@@ -3,7 +3,7 @@
   <name>OPI_MSSQL</name>
   <synonym>
     <key>en</key>
-    <value>MSSQL</value>
+    <value>MS SQL Component (OpenIntegrations)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

@@ -5,6 +5,7 @@
     <key>en</key>
     <value>VK (OpenIntegrations)</value>
   </synonym>
+  <comment>VK Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

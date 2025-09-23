@@ -5,6 +5,11 @@
     <key></key>
     <value>OPI test data retrieval</value>
   </synonym>
+  <synonym>
+    <key>en</key>
+    <value>Test Data Retrieval (Utility, OpenIntegrations)</value>
+  </synonym>
+  <comment>A set for obtaining data and settings for executing OpenIntegrations tests</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

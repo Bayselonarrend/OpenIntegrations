@@ -5,6 +5,7 @@
     <key>en</key>
     <value>OpenIntegrations</value>
   </synonym>
+  <comment>A set of tools for integration with popular APIs and technologies</comment>
   <objectBelonging>Adopted</objectBelonging>
   <extension xsi:type="mdclassExtension:ConfigurationExtension">
     <defaultRunMode>Checked</defaultRunMode>
@@ -24,12 +25,16 @@
   <defaultRunMode>ManagedApplication</defaultRunMode>
   <usePurposes>PersonalComputer</usePurposes>
   <scriptVariant>English</scriptVariant>
-  <vendor>Bayselonarrend</vendor>
+  <vendor>https://github.com/Bayselonarrend</vendor>
   <version>1.28.0</version>
   <detailedInformation>
     <key>en</key>
     <value>The Open Integration Package is a set of libraries for integrating with some popular APIs for 1C:Enterprise. It consists of common modules, each responsible for its own API, as well as several shared tool modules..</value>
   </detailedInformation>
+  <copyright>
+    <key>en</key>
+    <value>Copyright (c) 2023-2025 Anton Tsitavets</value>
+  </copyright>
   <vendorInformationAddress>
     <key>en</key>
     <value>https://github.com/Bayselonarrend</value>
