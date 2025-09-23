@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>RCON (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с RCON из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

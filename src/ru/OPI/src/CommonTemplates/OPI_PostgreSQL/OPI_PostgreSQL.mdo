@@ -3,7 +3,7 @@
   <name>OPI_PostgreSQL</name>
   <synonym>
     <key>ru</key>
-    <value>Postgre SQL</value>
+    <value>Компонента PostgreSQL (ОПИ)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

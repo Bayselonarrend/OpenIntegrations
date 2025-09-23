@@ -5,6 +5,11 @@
     <key></key>
     <value>OPI SQLite</value>
   </synonym>
+  <synonym>
+    <key>ru</key>
+    <value>SQLite (ОПИ)</value>
+  </synonym>
+  <comment>Модуль для работы с базами SQLite из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

@@ -3,7 +3,7 @@
   <name>OPI_SSH</name>
   <synonym>
     <key>ru</key>
-    <value>SSH</value>
+    <value>Компонента SSH/SFTP (ОПИ)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

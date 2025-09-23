@@ -9,6 +9,7 @@
     <key>ru</key>
     <value>Google Sheets (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с Google Sheets из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

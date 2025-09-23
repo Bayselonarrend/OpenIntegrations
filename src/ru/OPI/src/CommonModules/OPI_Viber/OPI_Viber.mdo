@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>Viber (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с Viber из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

@@ -3,8 +3,9 @@
   <name>OPI_ReportPortal</name>
   <synonym>
     <key>ru</key>
-    <value>Report portal (ОПИ)</value>
+    <value>ReportPortal (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с ReportPortal из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

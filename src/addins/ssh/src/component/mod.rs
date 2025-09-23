@@ -1,6 +1,5 @@
 mod methods;
 mod ssh_settings;
-mod tcp_establish;
 
 use std::io::Read;
 use std::path::Path;
@@ -9,7 +8,7 @@ use serde_json::json;
 use crate::core::getset;
 use ssh2::{MethodType, Session};
 use crate::component::ssh_settings::{SshAuthTypes, SshConf};
-use crate::component::tcp_establish::create_tcp_connection;
+use common_tcp::tcp_establish::create_tcp_connection;
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
