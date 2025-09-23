@@ -9,6 +9,7 @@
     <key>en</key>
     <value>Google Drive (OpenIntegrations)</value>
   </synonym>
+  <comment>Google Drive Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

@@ -35,7 +35,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL = "https://bin.openintegrations.dev";
+    URL = "http://localhost:2424";
     URL = URL + "/post";
 
     Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
@@ -60,14 +60,14 @@ import TabItem from '@theme/TabItem';
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
+  "Connection": "Keep-Alive",
   "Content-Length": "2114023",
   "Content-Type": "application/octet-stream",
-  "Host": "httpbin.org",
-  "User-Agent": "1Script v$2.0.0.0",
-  "X-Amzn-Trace-Id": "Root=1-68d1c1a4-0105e1fe21d1db95695dbc53"
+  "Host": "localhost:2424",
+  "User-Agent": "1Script v$2.0.0.0"
  },
  "json": null,
  "origin": "***",
- "url": "https://httpbin.org/post"
+ "url": "http://localhost:2424/post"
 }
 ```

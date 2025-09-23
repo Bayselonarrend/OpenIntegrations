@@ -9,6 +9,7 @@
     <key>en</key>
     <value>Google Calendar (OpenIntegrations)</value>
   </synonym>
+  <comment>Google Calendar Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

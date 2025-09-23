@@ -3,7 +3,7 @@
   <name>OPI_Cryptography</name>
   <synonym>
     <key>en</key>
-    <value>Cryptography</value>
+    <value>Cryptography Component (OpenIntegrations)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

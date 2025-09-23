@@ -5,6 +5,7 @@
     <key>en</key>
     <value>Yandex.Disk (OpenIntegrations)</value>
   </synonym>
+  <comment>Yandex.Disk Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

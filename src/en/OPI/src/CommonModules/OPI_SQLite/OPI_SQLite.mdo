@@ -5,6 +5,11 @@
     <key></key>
     <value>OPI SQLite</value>
   </synonym>
+  <synonym>
+    <key>en</key>
+    <value>SQLite (OpenIntegrations)</value>
+  </synonym>
+  <comment>SQLite Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

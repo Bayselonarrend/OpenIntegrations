@@ -11774,6 +11774,13 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
 
         Value = TFN;
 
+    ElsIf AddInName = "OPI_SSH" Then
+
+        Value = Value.GetConfiguration();
+        OPI_TypeConversion.GetKeyValueCollection(Value);
+
+        Value = Value["conf"];
+
     Else
         Raise "Invalid type " + ValeType;
     EndIf;
