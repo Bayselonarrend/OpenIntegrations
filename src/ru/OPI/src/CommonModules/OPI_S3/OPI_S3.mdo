@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>S3 (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с S3 хранилищами из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

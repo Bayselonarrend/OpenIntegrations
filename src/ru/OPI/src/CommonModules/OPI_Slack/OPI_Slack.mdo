@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>Slack (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы со Slack из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

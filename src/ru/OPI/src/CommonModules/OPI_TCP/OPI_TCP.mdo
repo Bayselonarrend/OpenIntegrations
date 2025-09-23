@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>TCP (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с TCP из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

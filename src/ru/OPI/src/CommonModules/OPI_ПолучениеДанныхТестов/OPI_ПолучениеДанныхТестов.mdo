@@ -5,6 +5,11 @@
     <key></key>
     <value>OPI получение данных тестов</value>
   </synonym>
+  <synonym>
+    <key>ru</key>
+    <value>Получение данных тестов (служебный, ОПИ)</value>
+  </synonym>
+  <comment>Набор получения данных и нстроек для выполнения тестов набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

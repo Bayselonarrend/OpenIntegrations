@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>SSH (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с SSH из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

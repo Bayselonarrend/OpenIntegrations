@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>Open AI (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с OpenAI API из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>Yandex Metrika (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с Yandex Metrika из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

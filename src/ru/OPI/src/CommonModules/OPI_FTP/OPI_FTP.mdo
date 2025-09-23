@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>FTP (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с FTP из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

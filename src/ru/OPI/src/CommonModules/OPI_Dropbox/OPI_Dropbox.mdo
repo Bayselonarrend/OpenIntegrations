@@ -9,6 +9,7 @@
     <key>ru</key>
     <value>Dropbox (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с Dropbox из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

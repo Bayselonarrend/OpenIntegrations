@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>Green API (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с WhatsApp через GreenAPI из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

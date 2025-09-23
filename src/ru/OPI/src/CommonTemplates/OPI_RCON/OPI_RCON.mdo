@@ -3,7 +3,7 @@
   <name>OPI_RCON</name>
   <synonym>
     <key>ru</key>
-    <value>RCON</value>
+    <value>Компонента RCON (ОПИ)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

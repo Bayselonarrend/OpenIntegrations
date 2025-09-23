@@ -3,8 +3,9 @@
   <name>OPI_Криптография</name>
   <synonym>
     <key>ru</key>
-    <value>Криптография (ОПИ)</value>
+    <value>Криптография (служебный, ОПИ)</value>
   </synonym>
+  <comment>Модуль работы с криптографией набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

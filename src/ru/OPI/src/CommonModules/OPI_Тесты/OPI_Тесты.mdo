@@ -7,8 +7,9 @@
   </synonym>
   <synonym>
     <key>ru</key>
-    <value>Тесты для YaxUnit (ОПИ)</value>
+    <value>Тесты для YaxUnit/1testrunner (служебный, ОПИ)</value>
   </synonym>
+  <comment>Основной модуль тестов набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>
