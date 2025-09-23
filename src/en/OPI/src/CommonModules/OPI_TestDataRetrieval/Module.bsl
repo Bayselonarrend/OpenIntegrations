@@ -1236,7 +1236,7 @@ Function Check_Telegram_GetBotInformation(Val Result, Val Option)
     ExpectsThat(Result["ok"]).Равно(True);
     ExpectsThat(Result["result"]["username"]).Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1248,7 +1248,7 @@ Function Check_Telegram_GetUpdates(Val Result, Val Option)
     ExpectsThat(Result["ok"]).Равно(True);
     ExpectsThat(Result["result"]).ИмеетТип("Array");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Undefined;
 
@@ -1261,7 +1261,7 @@ Function Check_Telegram_SetWebhook(Val Result, Val Option)
     ExpectsThat(Result["result"]).Равно(True);
     ExpectsThat(Result["description"]).Равно("Webhook was set");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1274,7 +1274,7 @@ Function Check_Telegram_DeleteWebhook(Val Result, Val Option)
     ExpectsThat(Result["result"]).Равно(True);
     ExpectsThat(Result["description"]).Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1468,7 +1468,7 @@ Function Check_Telegram_ForwardMessage(Val Result, Val Option, MessageID = "")
     ExpectsThat(Result["ok"]).Равно(True);
     ExpectsThat(Result["result"]["forward_origin"]["message_id"]).Равно(Number(MessageID));
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1479,7 +1479,7 @@ Function Check_Telegram_Ban(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["description"]).Равно("Bad Request: can't remove chat owner");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Undefined;
 
@@ -1490,7 +1490,7 @@ Function Check_Telegram_Unban(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["description"]).Равно("Bad Request: can't remove chat owner");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Undefined;
 
@@ -1505,7 +1505,7 @@ Function Check_Telegram_CreateInvitationLink(Val Result, Val Option, Title = "",
     ExpectsThat(Result[Result_]["name"]).Равно(Title);
     ExpectsThat(Result[Result_]["expire_date"]).Равно(Number(UnixExpiration));
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1516,7 +1516,7 @@ Function Check_Telegram_PinMessage(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1527,7 +1527,7 @@ Function Check_Telegram_UnpinMessage(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1539,7 +1539,7 @@ Function Check_Telegram_GetParticipantCount(Val Result, Val Option)
     ExpectsThat(Result["ok"]).Равно(True);
     ExpectsThat(Result["result"]).ИмеетТип("Number");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1549,7 +1549,7 @@ Function Check_Telegram_GetAvatarIconList(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1588,7 +1588,7 @@ Function Check_Telegram_EditForumTopic(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1632,7 +1632,7 @@ Function Check_Telegram_ClearTopicPinnedMessagesList(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1643,7 +1643,7 @@ Function Check_Telegram_HideMainForumTopic(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1654,7 +1654,7 @@ Function Check_Telegram_ShowMainForumTopic(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1665,7 +1665,7 @@ Function Check_Telegram_EditMainForumTopicName(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1676,7 +1676,7 @@ Function Check_Telegram_DeleteMessage(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1745,7 +1745,7 @@ Function Check_VK_CreatePost(Val Result, Val Option, Parameters = "")
 
     EndIf;
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1756,7 +1756,7 @@ Function Check_VK_DeletePost(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1767,7 +1767,7 @@ Function Check_VK_CreateCompositePost(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]["post_id"]).ИмеетТип("Number").Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1805,7 +1805,7 @@ Function Check_VK_SaveImageToAlbum(Val Result, Val Option, Parameters = "", Desc
     Parameters.Insert("VK_PictureID", ImageID);
     WriteParameter("VK_PictureID", ImageID);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1816,7 +1816,7 @@ Function Check_VK_DeleteImage(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1827,7 +1827,7 @@ Function Check_VK_DeleteAlbum(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1839,7 +1839,7 @@ Function Check_VK_CreateStory(Val Result, Val Option)
     ExpectsThat(Result["response"]["count"]).ИмеетТип("Number").Равно(1);
     ExpectsThat(Result["response"]["items"]).ИмеетТип("Array").Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1854,7 +1854,7 @@ Function Check_VK_CreateDiscussion(Val Result, Val Option, Parameters = "")
     Parameters.Insert("VK_ConvID", DiscussionID);
     WriteParameter("VK_ConvID", DiscussionID);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1865,7 +1865,7 @@ Function Check_VK_CloseDiscussion(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1876,7 +1876,7 @@ Function Check_VK_OpenDiscussion(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1896,7 +1896,7 @@ Function Check_VK_LikePost(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]["likes"]).ИмеетТип("Number").Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1910,7 +1910,7 @@ Function Check_VK_MakeRepost(Val Result, Val Option, Parameters = "")
 
     Parameters.Insert("Repost", Result["response"]["post_id"]);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1921,7 +1921,7 @@ Function Check_VK_WriteComment(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]["comment_id"]).ИмеетТип("Number").Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1935,7 +1935,7 @@ Function Check_VK_GetStatistics(Val Result, Val Option)
     ExpectsThat(Result["response"][0]["visitors"]).ИмеетТип(TypeMap).Заполнено();
     ExpectsThat(Result["response"][0]["reach"]).ИмеетТип(TypeMap).Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -1945,7 +1945,7 @@ Function Check_VK_GetPostStatistics(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Array").ИмеетДлину(2);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2029,7 +2029,7 @@ Function Check_VK_EditProductCollection(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2071,7 +2071,7 @@ Function Check_VK_AddProductToCollection(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map");
     ExpectsThat(Result["response"]).ИмеетТип("Number").Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2082,7 +2082,7 @@ Function Check_VK_RemoveProductFromSelection(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2093,7 +2093,7 @@ Function Check_VK_DeleteProduct(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2104,7 +2104,7 @@ Function Check_VK_DeleteSelection(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2121,7 +2121,7 @@ Function Check_VK_CreateProductProperty(Val Result, Val Option, Parameters = "")
     WriteParameter("VK_PropID", Property);
     Parameters.Insert("VK_PropID", Property);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2132,7 +2132,7 @@ Function Check_VK_EditProductProperty(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2149,7 +2149,7 @@ Function Check_VK_AddProductPropertyVariant(Val Result, Val Option, Parameters =
     WriteParameter(ParameterName, VariantID);
     Parameters.Insert(ParameterName, VariantID);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2160,7 +2160,7 @@ Function Check_VK_EditProductPropertyVariant(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2186,7 +2186,7 @@ Function Check_VK_GetProductsByID(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map");
     ExpectsThat(Result["response"]["items"]).ИмеетТип("Array").ИмеетДлину(2);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2197,7 +2197,7 @@ Function Check_VK_GroupProducts(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map");
     ExpectsThat(Result["response"]["item_group_id"]).ИмеетТип("Number").Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2208,7 +2208,7 @@ Function Check_VK_DeleteProductPropertyVariant(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2219,7 +2219,7 @@ Function Check_VK_DeleteProductProperty(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"]).ИмеетТип("Number").Равно(1);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2229,7 +2229,7 @@ Function Check_VK_GetProductList(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Array");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2239,7 +2239,7 @@ Function Check_VK_GetSelectionList(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Array");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2249,7 +2249,7 @@ Function Check_VK_GetPropertyList(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Array");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2259,7 +2259,7 @@ Function Check_VK_GetOrderList(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Array");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2270,7 +2270,7 @@ Function Check_VK_UploadVideoToServer(Val Result, Val Option)
     ExpectsThat(Result["video_id"]).Заполнено();
     ExpectsThat(Result["video_hash"]).Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2318,7 +2318,7 @@ Function Check_YandexDisk_GetDiskInformation(Val Result, Val Option)
     ExpectsThat(Result["system_folders"]).ИмеетТип(Map_);
     ExpectsThat(Result["user"]).ИмеетТип(Map_);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2330,7 +2330,7 @@ Function Check_YandexDisk_CreateFolder(Val Result, Val Option, Token = "", Path 
     ExpectsThat(Result["type"]).Равно("dir");
     ExpectsThat(Result["path"]).Равно("disk:" + Path);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2345,7 +2345,7 @@ Function Check_YandexDisk_UploadFileByURL(Val Result, Val Option, Parameters = "
     WriteParameter("YandexDisk_FileByURLPath", Path);
     Parameters.Insert("YandexDisk_FileByURLPath", Path);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2367,7 +2367,7 @@ Function Check_YandexDisk_DeleteObject(Val Result, Val Option)
         ExpectsThat(ValueIsFilled(Result)).Равно(False);
     EndIf;
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2379,7 +2379,7 @@ Function Check_YandexDisk_UploadFile(Val Result, Val Option)
         ExpectsThat(ValueIsFilled(Result)).Равно(False);
     EndIf;
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2394,7 +2394,7 @@ Function Check_YandexDisk_CreateObjectCopy(Val Result, Val Option, Parameters = 
     WriteParameter("YandexDisk_CopyFilePath", Path);
     Parameters.Insert("YandexDisk_CopyFilePath", Path);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2406,7 +2406,7 @@ Function Check_YandexDisk_GetDownloadLink(Val Result, Val Option)
     ExpectsThat(Result["method"]).Равно("GET");
     ExpectsThat(Result["href"]).ИмеетТип("String").Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2419,7 +2419,7 @@ Function Check_YandexDisk_DownloadFile(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("BinaryData");
     ExpectsThat(Result.Size() > MinimumSize).Равно(True);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2432,7 +2432,7 @@ Function Check_YandexDisk_GetFilesList(Val Result, Val Option, Count = 0, Indent
     ExpectsThat(Result["offset"]).Равно(Indent);
     ExpectsThat(Result["items"]).ИмеетТип("Array");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2447,7 +2447,7 @@ Function Check_YandexDisk_MoveObject(Val Result, Val Option, Parameters = "", Pa
     WriteParameter("YandexDisk_NewFilePath", Path);
     Parameters.Insert("YandexDisk_NewFilePath", Path);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2460,7 +2460,7 @@ Function Check_YandexDisk_GetPublishedObjectsList(Val Result, Val Option, Count 
     ExpectsThat(Result["offset"]).Равно(Indent);
     ExpectsThat(Result["items"]).ИмеетТип("Array");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2537,7 +2537,7 @@ Function Check_Viber_GetChannelInformation(Val Result, Val Option)
     ExpectsThat(Result["status_message"]).Равно("ok");
     ExpectsThat(Result["status"]).Равно(0);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2548,7 +2548,7 @@ Function Check_Viber_GetUserData(Val Result, Val Option)
     ExpectsThat(Result["chat_hostname"]).Заполнено();
     ExpectsThat(Result["status_message"]).Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2560,7 +2560,7 @@ Function Check_Viber_GetOnlineUsers(Val Result, Val Option)
     ExpectsThat(Result["status"]).Равно(0);
     ExpectsThat(Result["users"]).ИмеетТип("Array");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2578,7 +2578,7 @@ Function Check_Viber_SendTextMessage(Val Result, Val Option)
     ExpectsThat(Result["status_message"]).Равно("ok");
     ExpectsThat(Result["status"]).Равно(0);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2590,7 +2590,7 @@ Function Check_Viber_SendImage(Val Result, Val Option)
     ExpectsThat(Result["status_message"]).Равно("ok");
     ExpectsThat(Result["status"]).Равно(0);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2602,7 +2602,7 @@ Function Check_Viber_SendFile(Val Result, Val Option)
     ExpectsThat(Result["status_message"]).Равно("ok");
     ExpectsThat(Result["status"]).Равно(0);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2614,7 +2614,7 @@ Function Check_Viber_SendContact(Val Result, Val Option)
     ExpectsThat(Result["status_message"]).Равно("ok");
     ExpectsThat(Result["status"]).Равно(0);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2626,7 +2626,7 @@ Function Check_Viber_SendLocation(Val Result, Val Option)
     ExpectsThat(Result["status_message"]).Равно("ok");
     ExpectsThat(Result["status"]).Равно(0);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2638,7 +2638,7 @@ Function Check_Viber_SendLink(Val Result, Val Option)
     ExpectsThat(Result["status_message"]).Равно("ok");
     ExpectsThat(Result["status"]).Равно(0);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2655,7 +2655,7 @@ Function Check_GoogleWorkspace_FormCodeRetrievalLink(Val Result, Val Option)
 
     WriteParameter("Google_Link", Result);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2670,7 +2670,7 @@ Function Check_GoogleWorkspace_GetTokenByCode(Val Result, Val Option)
 
     EndIf;
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Undefined;
 
@@ -2682,7 +2682,7 @@ Function Check_GoogleWorkspace_RefreshToken(Val Result, Val Option)
     ExpectsThat(Result["access_token"]).Заполнено();
     WriteParameter("Google_Token", Result["access_token"]);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2694,7 +2694,7 @@ Function Check_GoogleWorkspace_GetServiceAccountToken(Val Result, Val Option)
     ExpectsThat(Result["access_token"]).Заполнено();
     WriteParameter("Google_ServiceToken", Result["access_token"]);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2704,7 +2704,7 @@ Function Check_GoogleCalendar_GetCalendarList(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Array");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2892,7 +2892,7 @@ Function Check_GoogleDrive_GetDirectoriesList(Val Result, Val Option, Parameters
     WriteParameter("GD_Catalog", Identifier);
     OPI_Tools.AddField("GD_Catalog", Identifier, "String", Parameters);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2903,7 +2903,7 @@ Function Check_GoogleDrive_GetObjectInformation(Val Result, Val Option)
     ExpectsThat(Result["mimeType"]).Равно("application/vnd.google-apps.folder");
     ExpectsThat(Result["name"]).Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2946,7 +2946,7 @@ Function Check_GoogleDrive_CopyObject(Val Result, Val Option, Parameters = "", N
     ArrayOfDeletions.Add(Identifier);
     Parameters.Insert("ArrayOfDeletions", ArrayOfDeletions);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2959,7 +2959,7 @@ Function Check_GoogleDrive_DownloadFile(Val Result, Val Option, Parameters = "")
     ExpectsThat(Result).ИмеетТип("BinaryData");
     ExpectsThat(Result.Size() >= Size).Равно(True);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -2972,7 +2972,7 @@ Function Check_GoogleDrive_UpdateFile(Val Result, Val Option, NewName = "")
     ExpectsThat(Result["mimeType"]).Равно(Description["MIME"]);
     ExpectsThat(Result["name"]).Равно(Description["Name"]);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -3014,7 +3014,7 @@ Function Check_GoogleDrive_CreateComment(Val Result, Val Option, Parameters = ""
     WriteParameter("GD_Comment", Identifier);
     OPI_Tools.AddField("GD_Comment", Identifier, "String", Parameters);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -3868,7 +3868,7 @@ Function Check_Twitter_GetAuthorizationLink(Val Result, Val Option)
 
     WriteParameter("Twitter_URL", Result);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -3891,7 +3891,7 @@ Function Check_Twitter_RefreshToken(Val Result, Val Option)
         WriteParameter("Twitter_Token", Token);
     EndIf;
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Undefined;
 
@@ -3917,7 +3917,7 @@ Function Check_Twitter_CreateTextTweet(Val Result, Val Option, Text = "")
 
     EndIf;
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4246,7 +4246,7 @@ Function Check_Dropbox_GetObjectInformation(Val Result, Val Option, Path = "")
 
     ExpectsThat(Result["path_display"]).Равно(Path);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4257,7 +4257,7 @@ Function Check_Dropbox_GetPreview(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("BinaryData");
     ExpectsThat(Result.Size() >= 1200).Равно(True);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4267,7 +4267,7 @@ Function Check_Dropbox_UploadFile(Val Result, Val Option, Path = "")
 
     ExpectsThat(Result["path_display"]).Равно(Path);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4281,7 +4281,7 @@ Function Check_Dropbox_UploadFileByURL(Val Result, Val Option, Parameters = "")
     Parameters.Insert("Dropbox_Job", Work);
     WriteParameter("Dropbox_Job", Work);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4293,7 +4293,7 @@ Function Check_Dropbox_GetUploadStatusByURL(Val Result, Val Option, Path = "")
 
         ExpectsThat(Result[".tag"]).Равно("complete");
 
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
 
     EndIf;
 
@@ -4309,7 +4309,7 @@ Function Check_Dropbox_DeleteObject(Val Result, Val Option, Path = "")
 
     ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4319,7 +4319,7 @@ Function Check_Dropbox_CopyObject(Val Result, Val Option, Path = "")
 
     ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4329,7 +4329,7 @@ Function Check_Dropbox_MoveObject(Val Result, Val Option, Path = "")
 
     ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4339,7 +4339,7 @@ Function Check_Dropbox_CreateFolder(Val Result, Val Option, Path = "")
 
     ExpectsThat(Result["metadata"]["path_display"]).Равно(Path);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4350,7 +4350,7 @@ Function Check_Dropbox_DownloadFile(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("BinaryData");
     ExpectsThat(Result.Size() >= 2000000).Равно(True);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4361,7 +4361,7 @@ Function Check_Dropbox_DownloadFolder(Val Result, Val Option)
     ExpectsThat(Result).ИмеетТип("BinaryData");
     ExpectsThat(Result.Size() >= 200000).Равно(True);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4371,7 +4371,7 @@ Function Check_Dropbox_GetListOfFolderFiles(Val Result, Val Option)
 
     ExpectsThat(Result["entries"]).ИмеетТип("Array");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4387,7 +4387,7 @@ Function Check_Dropbox_GetObjectVersionList(Val Result, Val Option, Parameters =
     Parameters.Insert("Dropbox_FileRevision", Revision);
     WriteParameter("Dropbox_FileRevision", Revision);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4397,7 +4397,7 @@ Function Check_Dropbox_RestoreObjectToVersion(Val Result, Val Option, Path = "")
 
     ExpectsThat(Result["path_display"]).Равно(Path);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4408,7 +4408,7 @@ Function Check_Dropbox_GetTagList(Val Result, Val Option, Parameters = "", Paths
     ExpectsThat(Result["paths_to_tags"]).ИмеетТип("Array");
     ExpectsThat(Result["paths_to_tags"].Count()).Равно(PathsArray.Count());
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4420,7 +4420,7 @@ Function Check_Dropbox_AddTag(Val Result, Val Option)
         ExpectsThat(ValueIsFilled(Result)).Равно(False);
     EndIf;
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4432,7 +4432,7 @@ Function Check_Dropbox_DeleteTag(Val Result, Val Option)
         ExpectsThat(ValueIsFilled(Result)).Равно(False);
     EndIf;
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4442,7 +4442,7 @@ Function Check_Dropbox_GetAccountInformation(Val Result, Val Option)
 
     ExpectsThat(Result["account_id"]).Заполнено();
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4475,7 +4475,7 @@ Function Check_Dropbox_PublishFolder(Val Result, Val Option, Parameters = "")
     Parameters.Insert("Dropbox_SharedFolder", FolderID);
     WriteParameter("Dropbox_SharedFolder", FolderID);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -4490,7 +4490,7 @@ Function Check_Dropbox_CancelFolderPublication(Val Result, Val Option, Parameter
         Parameters.Insert("Dropbox_NewJobID", JobID);
         WriteParameter("Dropbox_NewJobID", JobID);
 
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
 
     EndIf;
 
@@ -6285,7 +6285,7 @@ Function Check_VKTeams_SendFile(Val Result, Val Option, Parameters = "")
         WriteParameter("VkTeams_FileID", FileID);
         Parameters.Insert("VkTeams_FileID", FileID);
 
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
 
     EndIf;
 
@@ -6339,7 +6339,7 @@ Function Check_VKTeams_SendVoice(Val Result, Val Option, Parameters = "")
         WriteParameter("VkTeams_VoiceID", FileID);
         Parameters.Insert("VkTeams_VoiceID", FileID);
 
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
 
     EndIf;
 
@@ -6903,7 +6903,7 @@ Function Check_Ozon_GetShippingWarehousesList(Val Result, Val Option)
 
     ExpectsThat(Result["search"]).ИмеетТип("Array");
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -6917,7 +6917,7 @@ Function Check_Ozon_CreateFBODraft(Val Result, Val Option, Parameters = "")
     WriteParameter("Ozon_FBOOperID", DraftID);
     Parameters.Insert("Ozon_FBOOperID", DraftID);
 
-    OPI_Tools.Pause(5);
+    OPI_Tools.Pause(2);
 
     Return Result;
 
@@ -9599,7 +9599,13 @@ Function Check_HTTPClient_Initialize(Val Result, Val Option, Parameters = "")
             HTTPRequest    = Result.ReturnRequest();
             HTTPConnection = Result.ReturnConnection();
             HTTPResponse   = Result.ReturnResponse();
-            MainURL        = StrReplace(Parameters["HTTP_URL"], "https://", "");
+
+            MainURL = StrReplace(Parameters["HTTP_URL"], "https://", "");
+            MainURL = StrReplace(MainURL               , "http://" , "");
+
+            If StrFind(MainURL, ":") > 0 Then
+                MainURL = StrSplit(MainURL, ":")[0];
+            EndIf;
 
             ExpectsThat(HTTPRequest).ИмеетТип("HTTPRequest");
             ExpectsThat(HTTPConnection).ИмеетТип("HTTPConnection");
@@ -9653,6 +9659,11 @@ Function Check_HTTPClient_SetURL(Val Result, Val Option, Parameters = "")
             HTTPConnection = Result.ReturnConnection();
             HTTPResponse   = Result.ReturnResponse();
             MainURL        = StrReplace(Parameters["HTTP_URL"], "https://", "");
+            MainURL        = StrReplace(MainURL               , "http://" , "");
+
+            If StrFind(MainURL, ":") > 0 Then
+                MainURL = StrSplit(MainURL, ":")[0];
+            EndIf;
 
             ExpectsThat(HTTPRequest).ИмеетТип("HTTPRequest");
             ExpectsThat(HTTPConnection).ИмеетТип("HTTPConnection");
@@ -10908,7 +10919,7 @@ Function Check_FTP_CreateConnection(Val Result, Val Option)
     ExpectsThat(Result).Равно("AddIn.OPI_FTP.Main");
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -10921,7 +10932,7 @@ Function Check_FTP_GetWelcomeMessage(Val Result, Val Option)
     ExpectsThat(Result["data"]).Заполнено();
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -10934,7 +10945,7 @@ Function Check_FTP_GetProtocolFeatureList(Val Result, Val Option)
     ExpectsThat(Result["data"]).Заполнено();
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -10950,7 +10961,7 @@ Function Check_FTP_Ping(Val Result, Val Option)
     EndIf;
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -10964,7 +10975,7 @@ Function Check_FTP_ExecuteCustomCommand(Val Result, Val Option)
     ExpectsThat(Result["data"]).Заполнено();
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -10978,7 +10989,7 @@ Function Check_FTP_ExecuteArbitraryCommand(Val Result, Val Option)
     ExpectsThat(Result["data"]).Заполнено();
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -10996,7 +11007,7 @@ Function Check_FTP_GetCurrentDirectory(Val Result, Val Option, Parameters = "")
     OPI_Tools.AddField("FTP_RootPath", Path, "String", Parameters);
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -11012,7 +11023,7 @@ Function Check_FTP_ChangeCurrentDirectory(Val Result, Val Option, Path = "")
     EndIf;
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -11078,7 +11089,7 @@ Function Check_FTP_CloseConnection(Val Result, Val Option)
     EndIf;
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -11155,7 +11166,7 @@ Function Check_FTP_CreateNewDirectory(Val Result, Val Option, Primary = False)
     EndIf;
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -11171,7 +11182,7 @@ Function Check_FTP_ListObjects(Val Result, Val Option)
     EndIf;
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -11189,7 +11200,7 @@ Function Check_FTP_UploadFile(Val Result, Val Option, Size = "")
     EndIf;
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -11214,7 +11225,7 @@ Function Check_FTP_DeleteFile(Val Result, Val Option)
     EndIf;
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -11226,7 +11237,7 @@ Function Check_FTP_DeleteDirectory(Val Result, Val Option)
     ExpectsThat(Result["result"]).Равно(True);
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -11242,7 +11253,7 @@ Function Check_FTP_ClearDirectory(Val Result, Val Option)
     EndIf;
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -11258,7 +11269,7 @@ Function Check_FTP_GetObjectSize(Val Result, Val Option)
     EndIf;
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -11291,7 +11302,7 @@ Function Check_FTP_UpdatePath(Val Result, Val Option)
     EndIf;
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -11308,7 +11319,7 @@ Function Check_FTP_SaveFile(Val Result, Val Option, ResultSize = "", CheckSize =
     EndIf;
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -11326,7 +11337,7 @@ Function Check_FTP_GetFileData(Val Result, Val Option, CheckSize = "")
     EndIf;
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
 
     Return Result;
@@ -11339,8 +11350,18 @@ Function Check_SSH_CreateConnection(Val Result, Val Option)
     ExpectsThat(Result).Равно("AddIn.OPI_SSH.Main");
 
     If StrFind(Option, "HTTP") Then
-        OPI_Tools.Pause(5);
+        OPI_Tools.Pause(2);
     EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SSH_ExecuteCommand(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["stderr"]).Равно("");
+    ExpectsThat(Result["exit_code"]).Равно("0");
 
     Return Result;
 

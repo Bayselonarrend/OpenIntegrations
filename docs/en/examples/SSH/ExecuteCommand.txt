@@ -1,33 +1,4 @@
-﻿---
-sidebar_position: 3
-description: Execute command and other functions to work with SSH in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
-keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, SSH]
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-# Execute command
- Executes the specified command
-
-
-
-`Function ExecuteCommand(Val Connection, Val Command) Export`
-
-  | Parameter | CLI option | Type | Required | Description |
-  |-|-|-|-|-|
-  | Connection | --conn | Arbitrary | &#x2714; | Existing connection or connection configuration |
-  | Command | --comm | String | &#x2714; | Command text |
-
-  
-  Returns:  Map Of KeyAndValue - Processing result
-
-<br/>
-
-
-
-```bsl title="1C:Enterprise/OneScript code example"
-    Host = "172.33.0.13";
+﻿    Host = "172.33.0.13";
     Port = "2222";
 
     UseProxy          = True;
@@ -76,9 +47,3 @@ import TabItem from '@theme/TabItem';
     Else
         Result = Connection; // Error of connection
     EndIf;
-```
- 
-
-
-
-

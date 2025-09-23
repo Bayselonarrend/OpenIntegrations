@@ -2954,6 +2954,7 @@ Procedure SShell_CommonMethods() Export
     For Each TestParameters In OptionArray Do
 
         SSH_CreateConnection(TestParameters);
+        SSH_ExecuteCommand(TestParameters);
 
     EndDo;
 
@@ -22831,6 +22832,73 @@ Procedure SSH_CreateConnection(FunctionParameters)
     // END
 
     Process(Result, "SSH", "CreateConnection", Postfix);
+
+EndProcedure
+
+Procedure SSH_ExecuteCommand(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
+
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    UseProxy          = FunctionParameters["Proxy"]; // SKIP
+    AuthorizationType = FunctionParameters["AuthType"]; // SKIP
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        SSHSettings = OPI_SSH.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = FunctionParameters["SSH_User"];
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
+        PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
+
+        SSHSettings = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login       = FunctionParameters["SSH_User"];
+        SSHSettings = OPI_SSH.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_SSH.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Connection = OPI_SSH.CreateConnection(SSHSettings, ProxySettings);
+
+    If OPI_SSH.IsConnector(Connection) Then
+        Result = OPI_SSH.ExecuteCommand(Connection, "whoami");
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Process(Result, "SSH", "ExecuteCommand", Postfix);
 
 EndProcedure
 
