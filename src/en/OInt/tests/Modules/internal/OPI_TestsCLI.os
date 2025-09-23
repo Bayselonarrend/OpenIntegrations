@@ -29993,7 +29993,13 @@ Procedure SSH_CreateConnection(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SSH.GetSettingsLoginPassword(Host, Port, Login, Password);
+        Options = New Structure;
+        Options.Insert("host", Host);
+        Options.Insert("port", Port);
+        Options.Insert("user", Login);
+        Options.Insert("pass", Password);
+
+        SSHSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetSettingsLoginPassword", Options);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -30022,7 +30028,14 @@ Procedure SSH_CreateConnection(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_SSH.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+        Options = New Structure;
+        Options.Insert("addr", ProxyAddress);
+        Options.Insert("port", ProxyPort);
+        Options.Insert("type", ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass", ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetProxySettings", Options);
 
     EndIf;
 
