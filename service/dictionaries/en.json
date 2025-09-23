@@ -8632,6 +8632,7 @@
 "ПолучитьКонфигурациюСоединения (простой": "GetConnectionConfiguration (simple",
 "Перезаписывать файл при конфликте путей": "Overwrite file in case of path conflicts",
 "МассивВариантов.Добавить(ПараметрыТеста": "OptionArray.Add(TestParameters",
+"МассивВариантов.Добавить(ПараметрыТестаПрокси": "OptionArray.Add(TestProxyParameters",
 "URL    = ПараметрыФункции[\"Bitrix24_URL": "URL = FunctionParameters[\"Bitrix24_URL",
 "ПолучитьДанныеИспользованияПространства": "GetSpaceUsageData",
 "УстановитьJsonТело: Нет данных, пропуск": "SetJsonBody: No data, skip",
