@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>PostgreSQL (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с базами PostgreSQL из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

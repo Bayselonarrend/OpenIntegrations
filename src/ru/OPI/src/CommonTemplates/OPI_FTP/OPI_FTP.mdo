@@ -3,7 +3,7 @@
   <name>OPI_FTP</name>
   <synonym>
     <key>ru</key>
-    <value>FTP (OPI)</value>
+    <value>Компонента FTP (ОПИ)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

@@ -3,8 +3,9 @@
   <name>OPI_ПреобразованиеТипов</name>
   <synonym>
     <key>ru</key>
-    <value>Преобразование типов (ОПИ)</value>
+    <value>Преобразование типов (служебный, ОПИ)</value>
   </synonym>
+  <comment>Модуль приведения типов набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

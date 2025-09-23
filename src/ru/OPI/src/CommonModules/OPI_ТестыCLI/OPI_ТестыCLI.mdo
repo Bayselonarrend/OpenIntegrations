@@ -3,8 +3,9 @@
   <name>OPI_ТестыCLI</name>
   <synonym>
     <key>ru</key>
-    <value>Тесты CLI</value>
+    <value>Тесты CLI-приложения (служебный, ОПИ)</value>
   </synonym>
+  <comment>Модуль тестов консольного приложения (CLI) набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

@@ -10,10 +10,10 @@ use std::string::String;
 use std::time::{Duration, Instant};
 use base64::Engine;
 use base64::engine::general_purpose;
+use common_tcp::config::ProxySettings;
 use suppaftp::types::Response;
-use crate::component::configuration::{FtpProxySettings, FtpSettings, FtpTlsSettings};
-use crate::component::tls_establish;
-use crate::component::tcp_establish;
+use crate::component::configuration::{FtpSettings, FtpTlsSettings};
+use crate::component::{passive_establish, tls_establish};
 
 pub enum FtpClient {
     Secure(RustlsFtpStream),
@@ -390,7 +390,7 @@ impl FtpClient {
 pub fn configure_ftp_client(
     ftp_settings: &FtpSettings,
     tls_settings: Option<&FtpTlsSettings>,
-    proxy_settings: Option<&FtpProxySettings>,
+    proxy_settings: Option<&ProxySettings>,
     tcp_stream: TcpStream,
 ) -> Result<FtpClient, String> {
 
@@ -417,11 +417,12 @@ pub fn configure_ftp_client(
             let proxy_settings_clone = proxy_settings.cloned();
 
             secure_stream = secure_stream.passive_stream_builder(move |addr: SocketAddr| {
-                tcp_establish::make_passive_proxy_stream(&ftp_settings_clone, &proxy_settings_clone, addr)
+                passive_establish::make_passive_proxy_stream(&ftp_settings_clone, &proxy_settings_clone, addr)
             });
         }
 
         Ok(FtpClient::Secure(secure_stream))
+
     } else {
         let mut ftp_stream = FtpStream::connect_with_stream(tcp_stream)
             .map_err(|e| format_json_error(&e.to_string()))?;
@@ -434,7 +435,7 @@ pub fn configure_ftp_client(
             let proxy_settings_clone = proxy_settings.cloned();
 
             ftp_stream = ftp_stream.passive_stream_builder(move |addr: SocketAddr| {
-                tcp_establish::make_passive_proxy_stream(&ftp_settings_clone, &proxy_settings_clone, addr)
+                passive_establish::make_passive_proxy_stream(&ftp_settings_clone, &proxy_settings_clone, addr)
             });
         }
 

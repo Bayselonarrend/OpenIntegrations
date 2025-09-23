@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>VK (ОПИ)</value>
   </synonym>
+  <comment>Модуль для работы с VK из набора ОПИ</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

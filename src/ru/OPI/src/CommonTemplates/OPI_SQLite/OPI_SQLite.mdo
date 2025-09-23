@@ -3,7 +3,7 @@
   <name>OPI_SQLite</name>
   <synonym>
     <key>ru</key>
-    <value>SQLite</value>
+    <value>Компонента SQLite (ОПИ)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

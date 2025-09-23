@@ -1,7 +1,7 @@
 mod ftp_client;
-mod tcp_establish;
 mod tls_establish;
 mod configuration;
+mod passive_establish;
 
 use addin1c::{name, Variant};
 
@@ -13,7 +13,9 @@ use std::time::Duration;
 
 use crate::core::getset;
 use crate::component::ftp_client::FtpClient;
-use crate::component::configuration::{FtpProxySettings, FtpSettings, FtpTlsSettings};
+use crate::component::configuration::{FtpSettings, FtpTlsSettings};
+use common_tcp::config::ProxySettings;
+use common_tcp::tcp_establish;
 
 // МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
 
@@ -284,7 +286,7 @@ pub struct AddIn {
     client: Option<Arc<Mutex<FtpClient>>>,
     ftp_settings: Option<FtpSettings>,
     tls_settings: Option<FtpTlsSettings>,
-    proxy_settings: Option<FtpProxySettings>,
+    proxy_settings: Option<ProxySettings>,
 }
 
 impl AddIn {
@@ -311,8 +313,10 @@ impl AddIn {
 
         let proxy_settings = &self.proxy_settings;
         let tls_settings = &self.tls_settings;
+        let host = &ftp_settings.domain;
+        let port = ftp_settings.port;
 
-        let tcp_stream = match tcp_establish::create_tcp_connection(&ftp_settings, proxy_settings) {
+        let tcp_stream = match tcp_establish::create_tcp_connection(host, port, proxy_settings) {
             Ok(stream) => stream,
             Err(e) => return process_error(&e),
         };
@@ -377,7 +381,7 @@ impl AddIn {
 
     pub fn update_proxy(&mut self, json_data: &str) -> String {
 
-        let json_struct: FtpProxySettings = match serde_json::from_str(json_data){
+        let json_struct: ProxySettings = match serde_json::from_str(json_data){
             Ok(s) => s,
             Err(e) => return process_error(&e.to_string()),
         };

@@ -5,6 +5,7 @@
     <key>ru</key>
     <value>Открытый пакет интеграций</value>
   </synonym>
+  <comment>Набор инструментов интеграции с популярными API и технологиями</comment>
   <objectBelonging>Adopted</objectBelonging>
   <extension xsi:type="mdclassExtension:ConfigurationExtension">
     <defaultRunMode>Checked</defaultRunMode>
@@ -24,12 +25,16 @@
   <defaultRunMode>ManagedApplication</defaultRunMode>
   <usePurposes>PersonalComputer</usePurposes>
   <scriptVariant>Russian</scriptVariant>
-  <vendor>Bayselonarrend</vendor>
+  <vendor>https://github.com/Bayselonarrend</vendor>
   <version>1.28.0</version>
   <detailedInformation>
     <key>ru</key>
     <value>Открытый пакет интеграций - набор библиотек для интеграции с некоторыми популярными API для 1C:Enterprise. Он состоит из общих модулей, каждый из которых отвечает за свой API, а также нескольких модулей-инструментов, общих для всех.</value>
   </detailedInformation>
+  <copyright>
+    <key>ru</key>
+    <value>Copyright (c) 2023-2025 Anton Tsitavets</value>
+  </copyright>
   <vendorInformationAddress>
     <key>ru</key>
     <value>https://github.com/Bayselonarrend</value>
