@@ -10,13 +10,13 @@
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
+  "Connection": "Keep-Alive",
   "Content-Length": "53",
   "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-  "Host": "httpbin.org",
-  "User-Agent": "1Script v$2.0.0.0",
-  "X-Amzn-Trace-Id": "Root=1-68cbd85e-38317adc69a7bda75f2fc480"
+  "Host": "localhost:2424",
+  "User-Agent": "1Script v$2.0.0.0"
  },
  "json": null,
  "origin": "***",
- "url": "https://httpbin.org/post"
+ "url": "http://localhost:2424/post"
 }

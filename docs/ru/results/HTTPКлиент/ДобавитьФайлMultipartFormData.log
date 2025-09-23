@@ -12,13 +12,13 @@
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
+  "Connection": "Keep-Alive",
   "Content-Length": "2114384",
-  "Content-Type": "multipart/form-data; boundary=39a51772c02a4b2fa1ab4a58495f0f28",
-  "Host": "httpbin.org",
-  "User-Agent": "1Script v$2.0.0.0",
-  "X-Amzn-Trace-Id": "Root=1-68cbd886-6293d0125ba2fef772a57530"
+  "Content-Type": "multipart/form-data; boundary=a145ee35005c47cfaa84458beab5c591",
+  "Host": "localhost:2424",
+  "User-Agent": "1Script v$2.0.0.0"
  },
  "json": null,
  "origin": "***",
- "url": "https://httpbin.org/post"
+ "url": "http://localhost:2424/post"
 }

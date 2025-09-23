@@ -4,13 +4,13 @@
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
+  "Connection": "Keep-Alive",
   "Content-Length": "0",
-  "Host": "httpbin.org",
+  "Host": "localhost:2424",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Amzn-Trace-Id": "Root=1-68d1c17f-2a3a14c917d36e5160e5a1d4",
   "X-Header1": "Value1",
   "X-Header2": "Value2"
  },
  "origin": "***",
- "url": "https://httpbin.org/get"
+ "url": "http://localhost:2424/get"
 }
