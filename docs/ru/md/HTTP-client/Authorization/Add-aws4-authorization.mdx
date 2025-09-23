@@ -34,7 +34,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL = "https://bin.openintegrations.dev";
+    URL = "http://localhost:2424";
     URL = URL + "/get";
 
     AccessKey = "AccessKey";
@@ -59,15 +59,15 @@ import TabItem from '@theme/TabItem';
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
-  "Authorization": "AWS4-HMAC-SHA256 Credential=AccessKey/20250922/Region/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=3ab23e1512219b83c2b7ebd2348700c5aec68b9c8ae144158ed0c77ea86dfbae",
+  "Authorization": "AWS4-HMAC-SHA256 Credential=AccessKey/20250923/Region/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=70cb76e8b5fc69327ccc1a8949aab453cf241405e411986275ee18836284fa26",
+  "Connection": "Keep-Alive",
   "Content-Length": "0",
-  "Host": "httpbin.org",
+  "Host": "localhost:80",
   "User-Agent": "1Script v$2.0.0.0",
   "X-Amz-Content-Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "X-Amz-Date": "20250922T213715Z",
-  "X-Amzn-Trace-Id": "Root=1-68d1c18c-0de3fa073870682774741fce"
+  "X-Amz-Date": "20250923T114115Z"
  },
  "origin": "***",
- "url": "https://httpbin.org/get"
+ "url": "http://localhost:80/get"
 }
 ```

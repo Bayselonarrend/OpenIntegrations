@@ -3,8 +3,9 @@
   <name>OPI_TestsCLI</name>
   <synonym>
     <key>en</key>
-    <value>CLI Tests</value>
+    <value>CLI Application Tests (Utility, OpenIntegrations)</value>
   </synonym>
+  <comment>CLI Application Test Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

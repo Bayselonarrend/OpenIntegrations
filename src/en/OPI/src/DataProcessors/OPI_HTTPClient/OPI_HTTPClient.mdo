@@ -7,7 +7,8 @@
   <name>OPI_HTTPClient</name>
   <synonym>
     <key>en</key>
-    <value>HTTP client (OpenIntegrations)</value>
+    <value>HTTP Client (OpenIntegrations)</value>
   </synonym>
+  <comment>HTTP Client of OpenIntegrations</comment>
   <useStandardCommands>true</useStandardCommands>
 </mdclass:DataProcessor>

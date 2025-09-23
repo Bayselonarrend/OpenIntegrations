@@ -5,6 +5,7 @@
     <key>en</key>
     <value>Slack (OpenIntegrations)</value>
   </synonym>
+  <comment>Slack Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

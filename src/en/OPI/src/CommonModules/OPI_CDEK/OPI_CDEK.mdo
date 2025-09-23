@@ -5,7 +5,7 @@
     <key>en</key>
     <value>CDEK (OpenIntegrations)</value>
   </synonym>
-  <comment>Module for working with CDEK </comment>
+  <comment>CDEK Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

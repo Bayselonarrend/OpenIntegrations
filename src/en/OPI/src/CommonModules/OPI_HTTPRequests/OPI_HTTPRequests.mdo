@@ -5,6 +5,7 @@
     <key>en</key>
     <value>HTTP (service, OpenIntegrations)</value>
   </synonym>
+  <comment>Utility HTTP Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

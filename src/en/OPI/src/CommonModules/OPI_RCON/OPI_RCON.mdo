@@ -5,6 +5,7 @@
     <key>en</key>
     <value>RCON (OpenIntegrations)</value>
   </synonym>
+  <comment>RCON Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

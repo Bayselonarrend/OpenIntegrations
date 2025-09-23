@@ -3,8 +3,9 @@
   <name>OPI_TypeConversion</name>
   <synonym>
     <key>en</key>
-    <value>Type conversion (OpenIntegrations)</value>
+    <value>Type Conversion (Utility, OpenIntegrations)</value>
   </synonym>
+  <comment>Type Conversion Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

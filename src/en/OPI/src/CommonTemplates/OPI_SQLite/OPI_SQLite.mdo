@@ -3,7 +3,7 @@
   <name>OPI_SQLite</name>
   <synonym>
     <key>en</key>
-    <value>SQLite</value>
+    <value>SQLite Component (OpenIntegrations)</value>
   </synonym>
   <templateType>AddIn</templateType>
 </mdclass:CommonTemplate>

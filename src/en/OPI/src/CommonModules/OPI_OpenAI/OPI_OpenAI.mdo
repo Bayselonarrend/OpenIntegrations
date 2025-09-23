@@ -5,6 +5,7 @@
     <key>en</key>
     <value>Open AI (OpenIntegrations)</value>
   </synonym>
+  <comment>OpenAI API Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>

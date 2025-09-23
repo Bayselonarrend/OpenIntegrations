@@ -5,6 +5,7 @@
     <key>en</key>
     <value>Green API (OpenIntegrations)</value>
   </synonym>
+  <comment>WhatsApp via GreenAPI Module of OpenIntegrations</comment>
   <server>true</server>
   <externalConnection>true</externalConnection>
   <clientOrdinaryApplication>true</clientOrdinaryApplication>
