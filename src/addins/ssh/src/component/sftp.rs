@@ -63,7 +63,7 @@ pub fn list_directory(sftp: &Sftp, path: &str) -> Result<Vec<Value>, String> {
     }
 }
 
-pub fn upload_data(sftp: &Sftp, path: &str, data: &[u8]) -> Result<u64, String> {
+pub fn upload_data(sftp: &Sftp, data: &[u8], path: &str) -> Result<u64, String> {
     let mut cursor = Cursor::new(data);
     upload_from_reader(sftp, path, &mut cursor)
 }
