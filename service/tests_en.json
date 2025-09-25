@@ -6353,5 +6353,40 @@
 "lib": "SSH",
 "name": "ExecuteCommand",
 "variant": ""
+},
+{
+"lib": "SFTP",
+"name": "CreateConnection",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "CreateNewDirectory",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "DeleteDirectory",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "GetCurrentDirectory",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "ListObjects",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "UploadFile",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "DeleteFile",
+"variant": ""
 }
 ]

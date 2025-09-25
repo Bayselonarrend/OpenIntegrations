@@ -112,6 +112,32 @@ Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Expo
 
 EndFunction
 
+Function GetProxySettings(Val Address
+    , Val Port
+    , Val View     = "socks5"
+    , Val Login    = Undefined
+    , Val Password = Undefined) Export
+
+    SettingsStructure = New Structure;
+    OPI_Tools.AddField("server"    , Address, "String" , SettingsStructure);
+    OPI_Tools.AddField("port"      , Port   , "Number" , SettingsStructure);
+    OPI_Tools.AddField("proxy_type", View   , "String" , SettingsStructure);
+
+    If Not Login = Undefined Then
+        OPI_TypeConversion.GetLine(Login);
+        SettingsStructure.Insert("login", Login);
+    EndIf;
+
+    If Not Password = Undefined Then
+        OPI_TypeConversion.GetLine(Password);
+        SettingsStructure.Insert("password", Password);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return SettingsStructure;
+
+EndFunction
+
 Function FileTransferRequired() Export
 
     // Components in 1C on Linux cannot reliably send and receive data larger than 30 KB

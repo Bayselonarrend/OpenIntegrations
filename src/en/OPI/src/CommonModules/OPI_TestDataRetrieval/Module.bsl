@@ -137,6 +137,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Twitter"        , 4);
     Sections.Insert("FTP"            , 5);
     Sections.Insert("SSH"            , 5);
+    Sections.Insert("SFTP"           , 5);
     Sections.Insert("PostgreSQL"     , 5);
     Sections.Insert("MySQL"          , 5);
     Sections.Insert("MSSQL"          , 5);
@@ -181,6 +182,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("Twitter"        , StandardDependencies);
     Sections.Insert("FTP"            , StandardDependencies);
     Sections.Insert("SSH"            , StandardDependencies);
+    Sections.Insert("SFTP"           , StandardDependencies);
     Sections.Insert("PostgreSQL"     , StandardDependencies);
     Sections.Insert("MySQL"          , StandardDependencies);
     Sections.Insert("MSSQL"          , StandardDependencies);
@@ -248,6 +250,7 @@ Function GetTestTable() Export
     FTP       = "FTP";
     RPortal   = "ReportPortal";
     SSH       = "SSH";
+    SFTP      = "SFTP";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -418,6 +421,9 @@ Function GetTestTable() Export
     NewTest(TestTable, "FT_CommonMethods"                     , "Common methods"                  , FTP);
     NewTest(TestTable, "RPortal_Authorization"                , "Authorization"                   , RPortal);
     NewTest(TestTable, "SShell_CommonMethods"                 , "Common methods"                  , SSH);
+    NewTest(TestTable, "SF_CommonMethods"                     , "Common methods"                  , SFTP);
+    NewTest(TestTable, "SF_DirectoryManagement"               , "Directory management"            , SFTP);
+    NewTest(TestTable, "SF_FileManagement"                    , "Files management"                , SFTP);
 
     Return TestTable;
 
@@ -1065,6 +1071,8 @@ Function GetSSHParameterOptions() Export
     OptionArray = New Array;
 
     TestParametersMain = New Structure;
+    ParameterToCollection("Picture"       , TestParametersMain);
+    ParameterToCollection("Big"           , TestParametersMain);
     ParameterToCollection("SSH_Host"      , TestParametersMain);
     ParameterToCollection("SSH_Port"      , TestParametersMain);
     ParameterToCollection("SSH_User"      , TestParametersMain);
@@ -11362,6 +11370,116 @@ Function Check_SSH_ExecuteCommand(Val Result, Val Option)
     ExpectsThat(Result["result"]).Равно(True);
     ExpectsThat(Result["stderr"]).Равно("");
     ExpectsThat(Result["exit_code"]).Равно("0");
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_CreateConnection(Val Result, Val Option)
+
+    Result = String(TypeOf(Result));
+    ExpectsThat(Result).Равно("AddIn.OPI_SSH.Main");
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(2);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_CreateNewDirectory(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_DeleteDirectory(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_GetCurrentDirectory(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["path"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_ListObjects(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"]).ИмеетТип("Array").Заполнено();
+    ExpectsThat(Result["data"][0]["uid"]).Заполнено();
+    ExpectsThat(Result["data"][0]["is_directory"]).Равно(True);
+
+    If StrFind(Option, "No recursion") = 0 Then
+
+        ExpectsThat(Result["data"][0]["objects"].Count()).Равно(3);
+        ExpectsThat(Result["data"][0]["objects"][1]["objects"].Count()).Равно(1);
+        ExpectsThat(Result["data"][0]["objects"][2]["objects"].Count()).Равно(2);
+
+        ExpectsThat(Result["data"][0]["objects"][0]["objects"]).Равно(Undefined);
+
+    Else
+
+        ExpectsThat(Result["data"][0]["objects"]).Равно(Undefined);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_ChangeCurrentDirectory(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If StrFind(Option, "Check") > 0 Then
+        ExpectsThat(Result["path"]).Равно("/config/test_folder");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_UploadFile(Val Result, Val Option, Size = "")
+
+    ExpectsThat(Result["bytes"]).Равно(Size);
+
+   If Not StrFind(Option, "Size 1") >  0 Or StrFind(Option, "Size 2") > 0 Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_DeleteFile(Val Result, Val Option)
+
+    If StrFind(Option, "Nonexistent") > 0 Then
+
+        ExpectsThat(Result["result"]).Равно(False);
+
+    ElsIf StrFind(Option, "Check") > 0 Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
+
+    Else
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+    EndIf;
 
     Return Result;
 

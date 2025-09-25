@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="72aa8b08-1537-461e-954d-0b657275c31d">
+  <name>OPI_SFTP</name>
+  <synonym>
+    <key>en</key>
+    <value>SFTP (OpenIntegrations)</value>
+  </synonym>
+  <comment>Module for working with SFTP from the OpenIntegrations package</comment>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>

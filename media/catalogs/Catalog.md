@@ -28,3 +28,4 @@
 |![VK](../VK.png)| `VK`| vk, vkontakte |
 |![VKTeams](../VKTeams.png)| `VKTeams`| vkteams, vk teams |
 |![Yandex Disk](../YandexDisk.png)| `Yandex Disk`| yandexdisk, yandex.disk, yandex disk, yandex drive, yadisk, ya disk |
+|![SFTP](../SFTP.png)| `SFTP`| sftp |

@@ -112,6 +112,32 @@
 
 КонецФункции
 
+Функция ПолучитьНастройкиПрокси(Знач Адрес
+    , Знач Порт
+    , Знач Вид    = "socks5"
+    , Знач Логин  = Неопределено
+    , Знач Пароль = Неопределено) Экспорт
+
+    СтруктураНастроек = Новый Структура;
+    OPI_Инструменты.ДобавитьПоле("server"    , Адрес, "Строка", СтруктураНастроек);
+    OPI_Инструменты.ДобавитьПоле("port"      , Порт , "Число" , СтруктураНастроек);
+    OPI_Инструменты.ДобавитьПоле("proxy_type", Вид  , "Строка", СтруктураНастроек);
+
+    Если Не Логин = Неопределено Тогда
+        OPI_ПреобразованиеТипов.ПолучитьСтроку(Логин);
+        СтруктураНастроек.Вставить("login", Логин);
+    КонецЕсли;
+
+    Если Не Пароль = Неопределено Тогда
+        OPI_ПреобразованиеТипов.ПолучитьСтроку(Пароль);
+        СтруктураНастроек.Вставить("password", Пароль);
+    КонецЕсли;
+
+    //@skip-check constructor-function-return-section
+    Возврат СтруктураНастроек;
+
+КонецФункции
+
 Функция ТребуетсяПередачаЧерезФайл() Экспорт
 
     // Компоненты в 1С на Linux не могут стабильно отдавать и принимать данные свыше 30 КБ
@@ -265,6 +291,10 @@ EndFunction
 
 Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
 	Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
+EndFunction
+
+Function GetProxySettings(Val Address, Val Port, Val View = "socks5", Val Login = Undefined, Val Password = Undefined) Export
+	Return ПолучитьНастройкиПрокси(Address, Port, View, Login, Password);
 EndFunction
 
 Function FileTransferRequired() Export
