@@ -102,13 +102,15 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.upload_file(&file, &path))
         },
         11 => {
-            let path = params[0].get_string().unwrap_or("".to_string());
+
             let data = match params[0].get_blob(){
                 Ok(b) => b,
                 Err(e) => return Box::new(
                     format_json_error(format!("Blob error: {}", e.to_string()).as_str()))
             };
-            Box::new(obj.upload_data(&path, data))
+
+            let path = params[1].get_string().unwrap_or("".to_string());
+            Box::new(obj.upload_data(data, &path))
         },
         12 => {
             let path = params[0].get_string().unwrap_or("".to_string());
@@ -391,10 +393,10 @@ impl AddIn {
         }
     }
 
-    pub fn upload_data(&mut self, path: &str, data: &[u8]) -> String {
+    pub fn upload_data(&mut self, data: &[u8], path: &str) -> String {
         match &self.sftp{
             Some(s) => {
-                match sftp::upload_data(s, path, data){
+                match sftp::upload_data(s, data, path){
                     Ok(d) => json!({"result": true, "bytes": d}).to_string(),
                     Err(e) => format_json_error(&e.to_string())
                 }
