@@ -1,12 +1,13 @@
 mod methods;
 mod ssh_settings;
+mod sftp;
 
 use std::io::Read;
 use std::path::Path;
 use addin1c::{name, Variant};
 use serde_json::json;
 use crate::core::getset;
-use ssh2::{MethodType, Session};
+use ssh2::{MethodType, Session, Sftp};
 use crate::component::ssh_settings::{SshAuthTypes, SshConf};
 use common_tcp::tcp_establish::create_tcp_connection;
 
@@ -20,6 +21,14 @@ pub const METHODS: &[&[u16]] = &[
     name!("Execute"),
     name!("Disconnect"),
     name!("GetConfiguration"),
+    name!("ToSFTP"),
+    name!("MakeDirectory"),
+    name!("RemoveDirectory"),
+    name!("ListDirectory"),
+    name!("UploadFile"),
+    name!("UploadData"),
+    name!("RemoveFile"),
+    name!("IsSFTP")
 ];
 
 // Число параметров функций компоненты
@@ -31,6 +40,14 @@ pub fn get_params_amount(num: usize) -> usize {
         3 => 1,
         4 => 0,
         5 => 0,
+        6 => 0,
+        7 => 2,
+        8 => 1,
+        9 => 1,
+        10 => 2,
+        11 => 2,
+        12 => 1,
+        13 => 0,
         _ => 0,
     }
 }
@@ -60,6 +77,45 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         },
         5 => {
             Box::new(obj.get_configuration())
+        },
+        6 => {
+            Box::new(obj.make_sftp())
+        },
+        7 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+            let mode = params[1].get_i32().unwrap_or(0);
+
+            Box::new(obj.make_directory(&path, mode))
+        },
+        8 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.remove_directory(&path))
+        },
+        9 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.list_directory(&path))
+        },
+        10 => {
+            let file = params[0].get_string().unwrap_or("".to_string());
+            let path = params[1].get_string().unwrap_or("".to_string());
+
+            Box::new(obj.upload_file(&file, &path))
+        },
+        11 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+            let data = match params[0].get_blob(){
+                Ok(b) => b,
+                Err(e) => return Box::new(
+                    format_json_error(format!("Blob error: {}", e.to_string()).as_str()))
+            };
+            Box::new(obj.upload_data(&path, data))
+        },
+        12 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.delete_file(&path))
+        },
+        13 => {
+            Box::new(obj.sftp.is_some())
         }
         _ => Box::new(false), // Неверный номер команды
     }
@@ -76,6 +132,7 @@ pub const PROPS: &[&[u16]] = &[];
 pub struct AddIn {
     inner: Option<Session>,
     conf: Option<SshConf>,
+    sftp: Option<Sftp>
 }
 
 impl AddIn {
@@ -84,6 +141,7 @@ impl AddIn {
         AddIn {
             inner: None,
             conf: None,
+            sftp: None,
         }
     }
 
@@ -259,14 +317,6 @@ impl AddIn {
 
     }
 
-    pub fn disconnect(&mut self) -> String{
-        if let Some(_conn) = self.inner.take() {
-            json!({"result": true}).to_string()
-        } else {
-            json!({"result": false, "error": "No session"}).to_string()
-        }
-    }
-
     pub fn get_configuration(&mut self) -> String{
 
         let conf = match &self.conf{
@@ -275,6 +325,102 @@ impl AddIn {
         };
 
         json!({"result": true, "conf": conf}).to_string()
+    }
+
+    // SFTP
+
+    pub fn make_sftp(&mut self) -> String {
+        match &self.inner{
+            Some(sess) => {
+                self.sftp = match sftp::make_sftp(sess){
+                    Ok(sftp) => Some(sftp),
+                    Err(e) => return e.to_string()
+                };
+                json!({"result": true}).to_string()
+            },
+            None => json!({"result": false, "error": "Init SSH connection first"}).to_string()
+        }
+    }
+
+    pub fn make_directory(&mut self, path: &str, mode: i32) -> String {
+       match &self.sftp{
+           Some(s) => {
+               match sftp::make_directory(s, path, mode){
+                   Ok(_) => json!({"result": true}).to_string(),
+                   Err(e) => format_json_error(&e.to_string())
+               }
+           },
+           None => json!({"result": false, "error": "Init SFTP first"}).to_string()
+       }
+    }
+
+    pub fn remove_directory(&mut self, path: &str) -> String {
+        match &self.sftp{
+            Some(s) => {
+                match sftp::remove_directory(s, path){
+                    Ok(_) => json!({"result": true}).to_string(),
+                    Err(e) => format_json_error(&e.to_string())
+                }
+            },
+            None => json!({"result": false, "error": "Init SFTP first"}).to_string()
+        }
+    }
+
+    pub fn list_directory(&mut self, path: &str) -> String {
+        match &self.sftp{
+            Some(s) => {
+                match sftp::list_directory(s, path){
+                    Ok(d) => json!({"result": true, "data": d}).to_string(),
+                    Err(e) => format_json_error(&e.to_string())
+                }
+            },
+            None => json!({"result": false, "error": "Init SFTP first"}).to_string()
+        }
+    }
+
+    pub fn upload_file(&mut self, file: &str, path: &str) -> String {
+
+        match &self.sftp{
+            Some(s) => {
+                match sftp::upload_file(s, file, path){
+                    Ok(d) => json!({"result": true, "bytes": d}).to_string(),
+                    Err(e) => format_json_error(&e.to_string())
+                }
+            },
+            None => json!({"result": false, "error": "Init SFTP first"}).to_string()
+        }
+    }
+
+    pub fn upload_data(&mut self, path: &str, data: &[u8]) -> String {
+        match &self.sftp{
+            Some(s) => {
+                match sftp::upload_data(s, path, data){
+                    Ok(d) => json!({"result": true, "bytes": d}).to_string(),
+                    Err(e) => format_json_error(&e.to_string())
+                }
+            },
+            None => json!({"result": false, "error": "Init SFTP first"}).to_string()
+        }
+    }
+
+    pub fn delete_file(&mut self, path: &str) -> String {
+        match &self.sftp{
+            Some(s) => {
+                match sftp::remove_file(s, path){
+                    Ok(_) => json!({"result": true}).to_string(),
+                    Err(e) => format_json_error(&e.to_string())
+                }
+            },
+            None => json!({"result": false, "error": "Init SFTP first"}).to_string()
+        }
+    }
+
+    pub fn disconnect(&mut self) -> String{
+        if let Some(_conn) = self.inner.take() {
+            json!({"result": true}).to_string()
+        } else {
+            json!({"result": false, "error": "No session"}).to_string()
+        }
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
