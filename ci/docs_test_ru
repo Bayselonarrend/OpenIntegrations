@@ -12,7 +12,7 @@ pipeline {
                 
                 bat encoding: 'UTF-8', script:'chcp 65001 & xcopy "docs/ru/md" "docs/docusaurus/docs" /s /e /i /y'
                 bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & npm install'
-                bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & yarn build'
+                bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & npm run build'
             }
         }
     }
