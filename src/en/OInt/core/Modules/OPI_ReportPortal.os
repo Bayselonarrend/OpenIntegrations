@@ -380,11 +380,13 @@ EndFunction
 // Structure Of KeyAndValue - Fields structure
 Function GetLaunchCompletionStructure(Val Time, Val Status = "", Val Description = "", Val Attributes = "") Export
 
+    String_ = "String";
+
     FinishStructure = New Structure;
     OPI_Tools.AddField("endTime"    , Time       , "DateISO", FinishStructure);
-    OPI_Tools.AddField("status"     , Status     , "String" , FinishStructure);
-    OPI_Tools.AddField("description", Description, "String" , FinishStructure);
-    OPI_Tools.AddField("attributes" , Attributes , "String" , FinishStructure);
+    OPI_Tools.AddField("status"     , Status     , String_  , FinishStructure);
+    OPI_Tools.AddField("description", Description, String_  , FinishStructure);
+    OPI_Tools.AddField("attributes" , Attributes , String_  , FinishStructure);
 
     Return FinishStructure;
 
@@ -436,12 +438,14 @@ EndFunction
 // Structure Of KeyAndValue - Fields structure
 Function GetLogStructure(Val LaunchID, Val ElementID, Val Time, Val Text = "", Val Level = "info") Export
 
+    String_ = "String";
+
     LogStructure = New Structure;
-    OPI_Tools.AddField("launchUuid", LaunchID , "String", LogStructure);
-    OPI_Tools.AddField("itemUuid"  , ElementID, "String", LogStructure);
+    OPI_Tools.AddField("launchUuid", LaunchID , String_ , LogStructure);
+    OPI_Tools.AddField("itemUuid"  , ElementID, String_ , LogStructure);
     OPI_Tools.AddField("time"      , Time     , "Date"  , LogStructure);
-    OPI_Tools.AddField("message"   , Text     , "String", LogStructure);
-    OPI_Tools.AddField("level"     , Level    , "String", LogStructure);
+    OPI_Tools.AddField("message"   , Text     , String_ , LogStructure);
+    OPI_Tools.AddField("level"     , Level    , String_ , LogStructure);
 
     Return LogStructure;
 
