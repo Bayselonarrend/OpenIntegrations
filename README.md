@@ -204,95 +204,11 @@ ___
 >Licensed under the MIT License<br>
 >Список зависимостей находится в файле NOTICE<br>
 <details>
-<summary>Облако тэгов</summary>
+<summary>Синопсис</summary>
 <br>
-	
- - Airtable для 1С:Предприятие и OneScript
- - Работа с Airtable для 1С
- - Интеграция с Airtable в 1С
- - Bitrix24 для 1С:Предприятие и OneScript
- - Работа с Bitrix24 для 1С
- - Интеграция с Bitrix24 в 1С
- - CDEK для 1С:Предприятие и OneScript
- - Работа с CDEK для 1С
- - Интеграция с CDEK в 1С
- - Dropbox для 1С:Предприятие и OneScript
- - Работа с Dropbox для 1С
- - Интеграция с Dropbox в 1С
- - FTP для 1С:Предприятие и OneScript
- - Работа с FTP для 1С
- - Интеграция с FTP в 1С
- - Google Calendar для 1С:Предприятие и OneScript
- - Работа с Google Calendar для 1С
- - Интеграция с Google Calendar в 1С
- - Google Drive для 1С:Предприятие и OneScript
- - Работа с Google Drive для 1С
- - Интеграция с Google Drive в 1С
- - Google Sheets для 1С:Предприятие и OneScript
- - Работа с Google Sheets для 1С
- - Интеграция с Google Sheets в 1С
- - Green API для 1С:Предприятие и OneScript
- - Работа с Green API для 1С
- - Интеграция с Green API в 1С
- - MSSQL для 1С:Предприятие и OneScript
- - Работа с MSSQL для 1С
- - Интеграция с MSSQL в 1С
- - MySQL для 1С:Предприятие и OneScript
- - Работа с MySQL для 1С
- - Интеграция с MySQL в 1С
- - Neocities для 1С:Предприятие и OneScript
- - Работа с Neocities для 1С
- - Интеграция с Neocities в 1С
- - Notion для 1С:Предприятие и OneScript
- - Работа с Notion для 1С
- - Интеграция с Notion в 1С
- - Ozon для 1С:Предприятие и OneScript
- - Работа с Ozon для 1С
- - Интеграция с Ozon в 1С
- - PostgreSQL для 1С:Предприятие и OneScript
- - Работа с PostgreSQL для 1С
- - Интеграция с PostgreSQL в 1С
- - RCON для 1С:Предприятие и OneScript
- - Работа с RCON для 1С
- - Интеграция с RCON в 1С
- - ReportPortal для 1С:Предприятие и OneScript
- - Работа с ReportPortal для 1С
- - Интеграция с ReportPortal в 1С
- - S3 для 1С:Предприятие и OneScript
- - Работа с S3 для 1С
- - Интеграция с S3 в 1С
- - SFTP для 1С:Предприятие и OneScript
- - Работа с SFTP для 1С
- - Интеграция с SFTP в 1С
- - Slack для 1С:Предприятие и OneScript
- - Работа с Slack для 1С
- - Интеграция с Slack в 1С
- - SQLite для 1С:Предприятие и OneScript
- - Работа с SQLite для 1С
- - Интеграция с SQLite в 1С
- - SSH для 1С:Предприятие и OneScript
- - Работа с SSH для 1С
- - Интеграция с SSH в 1С
- - TCP для 1С:Предприятие и OneScript
- - Работа с TCP для 1С
- - Интеграция с TCP в 1С
- - Telegram для 1С:Предприятие и OneScript
- - Работа с Telegram для 1С
- - Интеграция с Telegram в 1С
- - Twitter для 1С:Предприятие и OneScript
- - Работа с Twitter для 1С
- - Интеграция с Twitter в 1С
- - Viber для 1С:Предприятие и OneScript
- - Работа с Viber для 1С
- - Интеграция с Viber в 1С
- - VK для 1С:Предприятие и OneScript
- - Работа с VK для 1С
- - Интеграция с VK в 1С
- - VKTeams для 1С:Предприятие и OneScript
- - Работа с VKTeams для 1С
- - Интеграция с VKTeams в 1С
- - Yandex Disk для 1С:Предприятие и OneScript
- - Работа с Yandex Disk для 1С
- - Интеграция с Yandex Disk в 1С
+
+Этот проект предоставляет библиотеку для интеграции 1С:Предприятие, OneScript и CLI с внешними сервисами через REST API и другие протоколы. Благодаря представленным в ней методам вы можете работать в экосистеме 1С:Предприятие с такими сервисами и технологиями как: Airtable, Bitrix24, CDEK, Dropbox, FTP, Google Calendar, Google Drive, Google Sheets, Green API, MSSQL, MySQL, Neocities, Notion, Ozon, PostgreSQL, RCON, ReportPortal, S3, SFTP, Slack, SQLite, SSH, TCP, Telegram, Twitter, Viber, VK, VKTeams, Yandex Disk
   
+Существуют варианты поставки в виде расширения (.cfe, XML, EDT), OPM-пакета и других пакетов для разных операционных систем. Версия 1С: 8.3.10. Подходит для любых конфигураций, не использует БСП
+
 </details>
