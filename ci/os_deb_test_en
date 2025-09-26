@@ -236,6 +236,19 @@ pipeline {
 			}
 			}
 		}
+		stage('Testing-SFTP') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "SF_CommonMethods"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "SF_DirectoryManagement"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "SF_FileManagement"')
+			}
+			}
+		}
 		stage('Testing-PostgreSQL') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_SFTP.os
+// OneScript: ./OInt/core/Modules/OPI_SFTP.os
 // Lib: SFTP
 // CLI: sftp
 // Keywords: sftp
@@ -525,3 +525,63 @@
 КонецПроцедуры
 
 #КонецОбласти
+
+#Region Alternate
+
+Function CreateConnection(Val SSHSettings, Val Proxy = "") Export
+	Return ОткрытьСоединение(SSHSettings, Proxy);
+EndFunction
+
+Function GetConnectionConfiguration(Val SSHSettings, Val Proxy = Undefined) Export
+	Return ПолучитьКонфигурациюСоединения(SSHSettings, Proxy);
+EndFunction
+
+Function CloseConnection(Val Connection) Export
+	Return ЗакрытьСоединение(Connection);
+EndFunction
+
+Function IsConnector(Val Value) Export
+	Return ЭтоКоннектор(Value);
+EndFunction
+
+Function GetSettingsLoginPassword(Val Host, Val Port, Val Login, Val Password = "") Export
+	Return ПолучитьНастройкиЛогинПароль(Host, Port, Login, Password);
+EndFunction
+
+Function GetSettingsPrivateKey(Val Host, Val Port, Val Login, Val Private, Val Public = "", Val Password = "") Export
+	Return ПолучитьНастройкиПриватныйКлюч(Host, Port, Login, Private, Public, Password);
+EndFunction
+
+Function GetSettingsViaAgent(Val Host, Val Port, Val Login) Export
+	Return ПолучитьНастройкиЧерезАгента(Host, Port, Login);
+EndFunction
+
+Function GetProxySettings(Val Address, Val Port, Val View = "socks5", Val Login = Undefined, Val Password = Undefined) Export
+	Return ПолучитьНастройкиПрокси(Address, Port, View, Login, Password);
+EndFunction
+
+Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Export
+	Return ПолучитьСписокОбъектов(Connection, Path, Recursively);
+EndFunction
+
+Function CreateNewDirectory(Val Connection, Val Path, Val Permissions = 700) Export
+	Return СоздатьНовуюДиректорию(Connection, Path, Permissions);
+EndFunction
+
+Function DeleteDirectory(Val Connection, Val Path) Export
+	Return УдалитьДиректорию(Connection, Path);
+EndFunction
+
+Function GetCurrentDirectory(Val Connection) Export
+	Return ПолучитьТекущийКаталог(Connection);
+EndFunction
+
+Function UploadFile(Val Connection, Val File, Val Path) Export
+	Return ЗагрузитьФайл(Connection, File, Path);
+EndFunction
+
+Function DeleteFile(Val Connection, Val Path) Export
+	Return УдалитьФайл(Connection, Path);
+EndFunction
+
+#EndRegion

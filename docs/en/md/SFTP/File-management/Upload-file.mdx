@@ -1,0 +1,96 @@
+﻿---
+sidebar_position: 1
+description: Upload file and other functions to work with SFTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, SFTP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Upload file
+ Uploads a file from disk or binary data to the server
+
+
+
+`Function UploadFile(Val Connection, Val File, Val Path) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --conn | Arbitrary | &#x2714; | Existing connection or connection configuration |
+  | File | --file | String, BinaryData | &#x2714; | File on disk or file data |
+  | Path | --path | String | &#x2714; | Path to save file on server |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+:::tip
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ImagePath = "C:\pic.png";
+
+    ImageDD = New BinaryData(Image);
+
+    Host = "172.33.0.13";
+    Port = "2222";
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = "bayselonarrend";
+        Password = "12we...";
+
+        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = "bayselonarrend";
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        SSHSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login       = "bayselonarrend";
+        SSHSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = "http"; // http, socks5, socks4
+
+        ProxyAddress  = "127.0.0.1";
+        ProxyPort     = "8071";
+        ProxyLogin    = "proxyuser";
+        ProxyPassword = "12we...";
+
+        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Connection = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
+
+    If OPI_SFTP.IsConnector(Connection) Then
+
+        Result  = OPI_SFTP.UploadFile(Connection, Image, "pic_from_disk.png");
+        Result2 = OPI_SFTP.UploadFile(Connection, ImageDD, "files_folder/pic_from_binary.png");
+
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+```
+ 
+
+
+
+
