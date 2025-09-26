@@ -16,12 +16,12 @@
 |![Ozon](../Ozon.png)| `Ozon`| ozon, seller api |
 |![PostgreSQL](../PostgreSQL.png)| `PostgreSQL`| postgresql, postgre sql, postgres |
 |![RCON](../RCON.png)| `RCON`| rcon, remote console |
-|![ReportPortal](../ReportPortal.png)| `ReportPortal`| reportportal |
+|![ReportPortal (в разработке)](../default.png)| `ReportPortal (в разработке)`| reportportal |
 |![S3](../S3.png)| `S3`| s3, minio, aws, simple storage service |
-|![SFTP](../SFTP.png)| `SFTP`| sftp |
+|![SFTP (в разработке)](../default.png)| `SFTP (в разработке)`| sftp |
 |![Slack](../Slack.png)| `Slack`| slack |
 |![SQLite](../SQLite.png)| `SQLite`| sqlite |
-|![SSH](../SSH.png)| `SSH`| ssh, shell |
+|![SSH (в разработке)](../default.png)| `SSH (в разработке)`| ssh, shell |
 |![TCP](../TCP.png)| `TCP`| tcp |
 |![Telegram](../Telegram.png)| `Telegram`| telegram |
 |![Twitter](../Twitter.png)| `Twitter`| twitter, x |
