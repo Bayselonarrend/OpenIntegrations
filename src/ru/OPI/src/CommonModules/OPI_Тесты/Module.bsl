@@ -47,6 +47,8 @@
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:MagicNumber-off
 // BSLLS:MagicDate-off
+// BSLLS:MissingParameterDescription-off
+// BSLLS:NumberOfOptionalParams-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -2896,7 +2898,7 @@
         FTP_ПолучитьДанныеФайла(ПараметрыТеста);
         FTP_УдалитьФайл(ПараметрыТеста);
 
-    КонецЦикла
+    КонецЦикла;
 
 КонецПроцедуры
 
@@ -9270,7 +9272,7 @@
 
     Обработать(Результат, "Bitrix24", "СоздатьЗависимостьЗадач");
 
-    OPI_Bitrix24.УдалитьЗависимостьЗадач(URL, IDИсточника, IDПриемника, ТипСвязи, Токен)
+    OPI_Bitrix24.УдалитьЗависимостьЗадач(URL, IDИсточника, IDПриемника, ТипСвязи, Токен);
 
 КонецПроцедуры
 
