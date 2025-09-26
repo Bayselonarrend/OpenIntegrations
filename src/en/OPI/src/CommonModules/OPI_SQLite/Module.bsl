@@ -481,14 +481,16 @@ EndFunction
 
 Function GetTypesStructure() Export
 
+    Text_ = "TEXT";
+
     TypesStructure = New Map;
     TypesStructure.Insert("BinaryData"   , "BLOB");
-    TypesStructure.Insert("UUID"         , "TEXT");
+    TypesStructure.Insert("UUID"         , Text_);
     TypesStructure.Insert("Boolean"      , "BOOL");
     TypesStructure.Insert("Float"        , "REAL");
     TypesStructure.Insert("Whole"        , "INTEGER");
-    TypesStructure.Insert("Date"         , "TEXT");
-    TypesStructure.Insert("String"       , "TEXT");
+    TypesStructure.Insert("Date"         , Text_);
+    TypesStructure.Insert("String"       , Text_);
     TypesStructure.Insert("Collections"  , New ValueList);
     TypesStructure.Insert("BoolAsNumber" , False);
 
