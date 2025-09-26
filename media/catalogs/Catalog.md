@@ -18,6 +18,7 @@
 |![RCON](../RCON.png)| `RCON`| rcon, remote console |
 |![ReportPortal](../ReportPortal.png)| `ReportPortal`| reportportal |
 |![S3](../S3.png)| `S3`| s3, minio, aws, simple storage service |
+|![SFTP](../SFTP.png)| `SFTP`| sftp |
 |![Slack](../Slack.png)| `Slack`| slack |
 |![SQLite](../SQLite.png)| `SQLite`| sqlite |
 |![SSH](../SSH.png)| `SSH`| ssh, shell |
@@ -28,4 +29,3 @@
 |![VK](../VK.png)| `VK`| vk, vkontakte |
 |![VKTeams](../VKTeams.png)| `VKTeams`| vkteams, vk teams |
 |![Yandex Disk](../YandexDisk.png)| `Yandex Disk`| yandexdisk, yandex.disk, yandex disk, yandex drive, yadisk, ya disk |
-|![SFTP](../SFTP.png)| `SFTP`| sftp |
