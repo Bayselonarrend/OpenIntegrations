@@ -552,4 +552,3 @@ Function GetTypesStructure() Export
 EndFunction
 
 #EndRegion
-

@@ -131,7 +131,6 @@ Procedure GetCollection(Value, ByNetwork = True) Export
                 Value = ReadJSON(JSONReader, True, Undefined, JSONDateFormat.ISO);
                 JSONReader.Close();
 
-
             ElsIf ByNetwork And (StrStartsWith(TrimL(ValueES), "http://")
                 Or StrStartsWith(TrimL(ValueES), "https://")) Then
 

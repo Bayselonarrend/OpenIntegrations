@@ -1,37 +1,4 @@
-﻿---
-sidebar_position: 5
-description: Is connector  and other functions to work with SSH in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
-keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, SSH]
----
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-# Is connector 
- Checks that the value is an object of an external component for working with SSH
-
-
-
-`Function IsConnector(Val Value) Export`
-
-  | Parameter | CLI option | Type | Required | Description |
-  |-|-|-|-|-|
-  | Value | - | Arbitrary | &#x2714; | Value to check |
-
-  
-  Returns:  Boolean - Is connector
-
-<br/>
-
-
-:::caution
-**NOCLI:** this method is not available in CLI version
-:::
-<br/>
-
-
-```bsl title="1C:Enterprise/OneScript code example"
-    Host = "172.33.0.13";
+﻿    Host = "172.33.0.13";
     Port = "2222";
 
     UseProxy          = True;
@@ -73,11 +40,4 @@ import TabItem from '@theme/TabItem';
 
     EndIf;
 
-    Connection = OPI_SSH.CreateConnection(SSHSettings, ProxySettings);
-    Result     = OPI_SSH.IsConnector(Connection);
-```
- 
-
-
-
-
+    Result = OPI_SSH.GetConnectionConfiguration(SSHSettings, ProxySettings);

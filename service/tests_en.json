@@ -6355,6 +6355,21 @@
 "variant": ""
 },
 {
+"lib": "SSH",
+"name": "GetConnectionConfiguration",
+"variant": ""
+},
+{
+"lib": "SSH",
+"name": "CloseConnection",
+"variant": ""
+},
+{
+"lib": "SSH",
+"name": "IsConnector",
+"variant": ""
+},
+{
 "lib": "SFTP",
 "name": "CreateConnection",
 "variant": ""
