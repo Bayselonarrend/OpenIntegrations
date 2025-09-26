@@ -42,6 +42,7 @@
 // BSLLS:CognitiveComplexity-off
 // BSLLS:NumberOfOptionalParams-off
 // BSLLS:CommentedCode-off
+// BSLLS:CyclomaticComplexity-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -737,7 +738,7 @@ Function CreateReportPortalLaunch(Val Platform = "") Export
     LaunchStructure = New Structure;
 
     LaunchStructure.Insert("name"      , LaunchName);
-    LaunchStructure.Insert("startTime" , CurrentDate);;
+    LaunchStructure.Insert("startTime" , CurrentDate);
     LaunchStructure.Insert("uuid"      , UUID);
 
     WriteParameter("RPortal_MainLaunch", UUID);
@@ -822,7 +823,6 @@ Function CreateTestElement(Val Set, Val Library, Val Method, Val Option) Export
         Title      = Method;
         Identifier = StrTemplate("%1_%2"   , Library, Method);
     EndIf;
-
 
     Token   = GetParameter("RPortal_Token");
     Project = GetParameter("RPortal_MainProject");
@@ -3695,7 +3695,6 @@ EndFunction
 
 Function Check_Airtable_GetNumberField(Val Result, Val Option)
 
-
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
     Return Result;
@@ -3905,7 +3904,6 @@ Function Check_Twitter_GetAuthorizationLink(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("String");
     ExpectsThat(StrStartsWith(Result, "https://twitter.com/i/oauth2/")).Равно(True);
-
 
     WriteParameter("Twitter_URL", Result);
 
@@ -4247,7 +4245,6 @@ Function Check_Dropbox_GetAuthorizationLink(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("String");
     ExpectsThat(StrStartsWith(Result, "https://www.dropbox.com/oauth2")).Равно(True);
-
 
     Return Result;
 
@@ -7986,7 +7983,6 @@ EndFunction
 
 Function Check_SQLite_ExecuteSQLQuery(Val Result, Val Option, Image = "")
 
-
     If Not ValueIsFilled(Option) Then
 
         ExpectsThat(Result["result"]).Равно(True);
@@ -8343,7 +8339,8 @@ Function Check_PostgreSQL_GetRecords(Val Result, Val Option)
     If Not ValueIsFilled(Option) Then
 
         If ValueIsFilled(Result["data"]) Then
-            Result["data"][0]["bytea_field"]["BYTEA"] = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10) + "...";
+            Result["data"][0]["bytea_field"]["BYTEA"] = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10)
+                + "...";
         EndIf;
 
     Else
@@ -8631,7 +8628,11 @@ Function Check_MySQL_GetRecords(Val Result, Val Option)
     If Not ValueIsFilled(Option) Then
 
         If ValueIsFilled(Result["data"]) Then
-            Result["data"][0]["mediumblob_field"]["BYTES"] = Left(Result["data"][0]["mediumblob_field"]["BYTES"], 10) + "...";
+
+            Result["data"][0]["mediumblob_field"]["BYTES"] =
+                Left(Result["data"][0]["mediumblob_field"]["BYTES"], 10)
+                + "...";
+
         EndIf;
 
     Else
@@ -9268,7 +9269,7 @@ Function Check_GreenAPI_GetMessage(Val Result, Val Option, Parameters = "")
 
         Result = OPI_Tools.JsonToStructure(JSON, True);
     Except
-        Message("JSON Error")
+        Message("JSON Error");
     EndTry;
 
     ExpectsThat(Result["idMessage"]).Заполнено();
@@ -9375,7 +9376,11 @@ Function Check_Ollama_GetResponse(Val Result, Val Option)
 
 EndFunction
 
-Function Check_Ollama_GetContextResponse(Val Result, Val Option, Message1 = "", Message2 = "", Message3 = "")
+Function Check_Ollama_GetContextResponse(Val Result
+    , Val Option
+    , Message1 = ""
+    , Message2 = ""
+    , Message3 = "")
 
     If Option = "Comparison" Then
 
@@ -9729,14 +9734,16 @@ Function Check_HTTPClient_SetURLParams(Val Result, Val Option, Parameters = "")
     Address = "/get?param1=text&param2=10";
 
     ResponseMap = New Map;
-    ResponseMap.Insert("Option 1" , "/page?param1=search%3Ftext&param2=John%20Doe&param3=value%26another&param4=%D0%BA%D0%B8%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D1%86%D0%B0&param5=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E");
+    ResponseMap.Insert("Option 1", "/page?param1=search%3Ftext&param2=John"
+        + "%20Doe&param3=value%26another&param4=%D0%BA%D0%B8%D1%80%D0%B8%D0%BB%D0%BB%"
+        + "D0%B8%D1%86%D0%B0&param5=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E");
+
     ResponseMap.Insert("Option 2" , "/page?existing=value&param1=search%3Ftext&param2=John%20Doe");
     ResponseMap.Insert("Variant 3", "/page?param1=search%3Ftext&param2=John%20Doe");
     ResponseMap.Insert("Variant 4", "/path%20with%20spaces?param1=search%3Ftext&param2=John%20Doe");
     ResponseMap.Insert("Variant 5", "/page?param1=search%3Ftext&param2=John%20Doe#section");
     ResponseMap.Insert("Variant 6", "/%D0%BF%D1%83%D1%82%D1%8C?param1=search%3Ftext&param2=John%20Doe");
     ResponseMap.Insert("Variant 7", "/page?param1=value1&param2=value%20two&param3=value%3Cthree%3E");
-
 
     If Not ValueIsFilled(Option) Then
 
@@ -10166,7 +10173,8 @@ Function Check_HTTPClient_AddBasicAuthorization(Val Result, Val Option)
         EndTry;
     EndTry;
 
-    ExpectsThat(Result["headers"]["Authorization"]).Равно("Basic " + Base64String(GetBinaryDataFromString("user:password")));
+    ExpectsThat(Result["headers"]["Authorization"])
+        .Равно("Basic " + Base64String(GetBinaryDataFromString("user:password")));
 
     Return Result;
 
@@ -10421,10 +10429,15 @@ EndFunction
 
 Function Check_HTTPClient_UseURLEncoding(Val Result, Val Option)
 
-    CorrectVariant1 = "/page?param1=search?text&param2=John Doe&param3=value&another&param4=кириллица&param5=<script>alert('XSS')</script>";
+    CorrectVariant1 = "/page?param1=search?text&param2=John Doe&param3"
+        + "=value&another&param4=кириллица&param5=<script>alert('XSS')</script>";
+
     ExpectsThat(Result["No encoding"]).Равно(CorrectVariant1);
 
-    CorrectVariant2 = "/page?param1=search%3Ftext&param2=John%20Doe&param3=value%26another&param4=%D0%BA%D0%B8%D1%80%D0%B8%D0%BB%D0%BB%D0%B8%D1%86%D0%B0&param5=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E";
+    CorrectVariant2 = "/page?param1=search%3Ftext&param2=John%20Doe&pa"
+        + "ram3=value%26another&param4=%D0%BA%D0%B8%D1%80%D0%B8%D0%BB%D0%"
+        + "BB%D0%B8%D1%86%D0%B0&param5=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E";
+
     ExpectsThat(Result["With encoding"]).Равно(CorrectVariant2);
 
     Return Result;
@@ -10771,7 +10784,10 @@ Function Check_MSSQL_GetRecords(Val Result, Val Option)
     If Not ValueIsFilled(Option) Then
 
         If ValueIsFilled(Result["data"]) Then
-            Result["data"][0]["varbinary_field"]["BYTES"] = Left(Result["data"][0]["varbinary_field"]["BYTES"], 10) + "...";
+
+            Result["data"][0]["varbinary_field"]["BYTES"] =
+                Left(Result["data"][0]["varbinary_field"]["BYTES"], 10) + "...";
+
         EndIf;
 
     Else
@@ -11319,7 +11335,6 @@ EndFunction
 
 Function Check_FTP_UpdatePath(Val Result, Val Option)
 
-
     If StrFind(Option, "List, back") > 0 Then
 
         ExpectsThat(Result["result"]).Равно(True);
@@ -11408,6 +11423,51 @@ Function Check_SSH_ExecuteCommand(Val Result, Val Option)
 
 EndFunction
 
+Function Check_SSH_GetConnectionConfiguration(Val Result, Val Option)
+
+    If StrFind(Option, "Check") > 0 Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["stderr"]).Равно("");
+        ExpectsThat(Result["stdout"]).Заполнено();
+        ExpectsThat(Result["exit_code"]).Равно("0");
+        ExpectsThat(Result["close_connection"]["result"]).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["set"]).Заполнено();
+
+        If StrFind(Lower(Option), "socks5") > 0 Or StrFind(Lower(Option), "http") > 0 Then
+            ExpectsThat(Result["proxy"]).Заполнено();
+        EndIf;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SSH_CloseConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_SSH_IsConnector(Val Result, Val Option)
+
+    If StrFind(Option, "Error") Then
+        ExpectsThat(Result).Равно(False);
+    Else
+        ExpectsThat(Result).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+
 Function Check_SFTP_CreateConnection(Val Result, Val Option)
 
     Result = String(TypeOf(Result));
@@ -11485,7 +11545,7 @@ EndFunction
 
 Function Check_SFTP_UploadFile(Val Result, Val Option, Size = "")
 
-    ExpectsThat(Result["bytes"]).Равно(Size);
+   ExpectsThat(Result["bytes"]).Равно(Size);
 
    If Not StrFind(Option, "Size 1") >  0 Or StrFind(Option, "Size 2") > 0 Then
 
@@ -11801,7 +11861,6 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
 
         EndIf;
 
-
         JSONWriter = New JSONWriter();
 
         If CurrentType = Type("Array") Or Embedded Then
@@ -11890,7 +11949,10 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
     If AddInName = "OPI_PostgreSQL" Or AddInName = "OPI_MySQL" Or AddInName = "OPI_MSSQL" Then
 
         If AddInName = "OPI_MSSQL" Then
-            AddOptions.Insert("tls", New Structure("use_tls, accept_invalid_certs, ca_cert_path", True, True, ""));
+
+            TLS = New Structure("use_tls, accept_invalid_certs, ca_cert_path", True, True, "");
+            AddOptions.Insert("tls", TLS);
+
         Else
 
             TLS = Value.GetTLSSettings();
