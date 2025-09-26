@@ -1,0 +1,35 @@
+﻿---
+sidebar_position: 7
+description: Get settings (via agent) and other functions to work with SFTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, SFTP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get settings (via agent)
+ Gets connection settings with SSH Agent authentication
+
+
+
+`Function GetSettingsViaAgent(Val Host, Val Port, Val Login) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Host | --host | String | &#x2714; | SSH host |
+  | Port | --port | Number | &#x2714; | SSH port |
+  | Login | --user | String | &#x2714; | SSH username |
+
+  
+  Returns:  Structure Of KeyAndValue - Connection configuration
+
+<br/>
+
+
+
+
+ 
+
+
+
+

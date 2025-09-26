@@ -1,0 +1,86 @@
+﻿---
+sidebar_position: 1
+description: Create Connection  and other functions to work with SFTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, SFTP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create Connection 
+ Creates a new SFTP session
+
+
+
+`Function CreateConnection(Val SSHSettings, Val Proxy = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | SSHSettings | - | Structure Of KeyAndValue | &#x2714; | Connection settings structure |
+  | Proxy | - | Structure Of KeyAndValue | &#x2716; | Proxy settings structure, if necessary |
+
+  
+  Returns:  Arbitrary, Map of KeyAndValue - Create Connection
+
+<br/>
+
+:::tip
+Get the connection configuration using the functions `GetSettingsLoginPassword`, `GetSettingsPrivateKey`, `GetSettingsViaAgent`
+:::
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Host = "172.33.0.13";
+    Port = "2222";
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = "bayselonarrend";
+        Password = "12we...";
+
+        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = "bayselonarrend";
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        SSHSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login       = "bayselonarrend";
+        SSHSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = "http"; // http, socks5, socks4
+
+        ProxyAddress  = "127.0.0.1";
+        ProxyPort     = "8071";
+        ProxyLogin    = "proxyuser";
+        ProxyPassword = "12we...";
+
+        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Result = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
+```
+ 
+
+
+
+

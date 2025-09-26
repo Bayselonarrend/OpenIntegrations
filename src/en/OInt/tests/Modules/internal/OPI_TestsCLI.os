@@ -30206,7 +30206,13 @@ Procedure SFTP_CreateConnection(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        Options = New Structure;
+        Options.Insert("host", Host);
+        Options.Insert("port", Port);
+        Options.Insert("user", Login);
+        Options.Insert("pass", Password);
+
+        SSHSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsLoginPassword", Options);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -30235,7 +30241,14 @@ Procedure SFTP_CreateConnection(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+        Options = New Structure;
+        Options.Insert("addr", ProxyAddress);
+        Options.Insert("port", ProxyPort);
+        Options.Insert("type", ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass", ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetProxySettings", Options);
 
     EndIf;
 
@@ -30267,7 +30280,13 @@ Procedure SFTP_CreateNewDirectory(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        Options = New Structure;
+        Options.Insert("host", Host);
+        Options.Insert("port", Port);
+        Options.Insert("user", Login);
+        Options.Insert("pass", Password);
+
+        SSHSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsLoginPassword", Options);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -30296,14 +30315,25 @@ Procedure SFTP_CreateNewDirectory(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+        Options = New Structure;
+        Options.Insert("addr", ProxyAddress);
+        Options.Insert("port", ProxyPort);
+        Options.Insert("type", ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass", ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetProxySettings", Options);
 
     EndIf;
 
     Connection = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
 
     If OPI_SFTP.IsConnector(Connection) Then
-        Result = OPI_SFTP.CreateNewDirectory(Connection, "new_dir");
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("path", "new_dir");
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "CreateNewDirectory", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -30334,7 +30364,13 @@ Procedure SFTP_DeleteDirectory(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        Options = New Structure;
+        Options.Insert("host", Host);
+        Options.Insert("port", Port);
+        Options.Insert("user", Login);
+        Options.Insert("pass", Password);
+
+        SSHSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsLoginPassword", Options);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -30363,14 +30399,25 @@ Procedure SFTP_DeleteDirectory(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+        Options = New Structure;
+        Options.Insert("addr", ProxyAddress);
+        Options.Insert("port", ProxyPort);
+        Options.Insert("type", ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass", ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetProxySettings", Options);
 
     EndIf;
 
     Connection = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
 
     If OPI_SFTP.IsConnector(Connection) Then
-        Result = OPI_SFTP.DeleteDirectory(Connection, "new_dir");
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("path", "new_dir");
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "DeleteDirectory", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -30400,7 +30447,13 @@ Procedure SFTP_GetCurrentDirectory(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        Options = New Structure;
+        Options.Insert("host", Host);
+        Options.Insert("port", Port);
+        Options.Insert("user", Login);
+        Options.Insert("pass", Password);
+
+        SSHSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsLoginPassword", Options);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -30429,14 +30482,24 @@ Procedure SFTP_GetCurrentDirectory(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+        Options = New Structure;
+        Options.Insert("addr", ProxyAddress);
+        Options.Insert("port", ProxyPort);
+        Options.Insert("type", ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass", ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetProxySettings", Options);
 
     EndIf;
 
     Connection = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
 
     If OPI_SFTP.IsConnector(Connection) Then
-        Result = OPI_SFTP.GetCurrentDirectory(Connection);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetCurrentDirectory", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -30466,7 +30529,13 @@ Procedure SFTP_ListObjects(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        Options = New Structure;
+        Options.Insert("host", Host);
+        Options.Insert("port", Port);
+        Options.Insert("user", Login);
+        Options.Insert("pass", Password);
+
+        SSHSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsLoginPassword", Options);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -30495,14 +30564,26 @@ Procedure SFTP_ListObjects(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+        Options = New Structure;
+        Options.Insert("addr", ProxyAddress);
+        Options.Insert("port", ProxyPort);
+        Options.Insert("type", ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass", ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetProxySettings", Options);
 
     EndIf;
 
     Connection = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
 
     If OPI_SFTP.IsConnector(Connection) Then
-        Result = OPI_SFTP.ListObjects(Connection, "test_folder", True);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("path", "test_folder");
+        Options.Insert("rcv", Истина);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "ListObjects", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -30511,7 +30592,11 @@ Procedure SFTP_ListObjects(FunctionParameters)
 
     Process(Result, "SFTP", "ListObjects", Postfix);
 
-    Result = OPI_SFTP.ListObjects(Connection, "test_folder");
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "test_folder");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "ListObjects", Options);
 
     Process(Result, "SFTP", "ListObjects", Postfix + ", No recursion");
 
@@ -30545,7 +30630,13 @@ Procedure SFTP_UploadFile(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        Options = New Structure;
+        Options.Insert("host", Host);
+        Options.Insert("port", Port);
+        Options.Insert("user", Login);
+        Options.Insert("pass", Password);
+
+        SSHSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsLoginPassword", Options);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -30574,7 +30665,14 @@ Procedure SFTP_UploadFile(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+        Options = New Structure;
+        Options.Insert("addr", ProxyAddress);
+        Options.Insert("port", ProxyPort);
+        Options.Insert("type", ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass", ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetProxySettings", Options);
 
     EndIf;
 
@@ -30582,8 +30680,18 @@ Procedure SFTP_UploadFile(FunctionParameters)
 
     If OPI_SFTP.IsConnector(Connection) Then
 
-        Result  = OPI_SFTP.UploadFile(Connection, Image, "pic_from_disk.png");
-        Result2 = OPI_SFTP.UploadFile(Connection, ImageDD, "files_folder/pic_from_binary.png");
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("file", Image);
+        Options.Insert("path", "pic_from_disk.png");
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "UploadFile", Options);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("file", ImageDD);
+        Options.Insert("path", "files_folder/pic_from_binary.png");
+
+        Result2 = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "UploadFile", Options);
 
     Else
         Result = Connection; // Error of connection
@@ -30632,7 +30740,13 @@ Procedure SFTP_DeleteFile(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        Options = New Structure;
+        Options.Insert("host", Host);
+        Options.Insert("port", Port);
+        Options.Insert("user", Login);
+        Options.Insert("pass", Password);
+
+        SSHSettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetSettingsLoginPassword", Options);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -30661,14 +30775,25 @@ Procedure SFTP_DeleteFile(FunctionParameters)
         ProxyLogin    = FunctionParameters["Proxy_User"];
         ProxyPassword = FunctionParameters["Proxy_Password"];
 
-        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+        Options = New Structure;
+        Options.Insert("addr", ProxyAddress);
+        Options.Insert("port", ProxyPort);
+        Options.Insert("type", ProxyType);
+        Options.Insert("login", ProxyLogin);
+        Options.Insert("pass", ProxyPassword);
+
+        ProxySettings = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetProxySettings", Options);
 
     EndIf;
 
     Connection = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
 
     If OPI_SFTP.IsConnector(Connection) Then
-        Result = OPI_SFTP.DeleteFile(Connection, "files_folder/pic_from_binary.png");
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("path", "files_folder/pic_from_binary.png");
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "DeleteFile", Options);
     Else
         Result = Connection; // Error of connection
     EndIf;
@@ -30677,11 +30802,20 @@ Procedure SFTP_DeleteFile(FunctionParameters)
 
     Process(Result , "SFTP", "DeleteFile", Postfix);
 
-    Result = OPI_SFTP.DeleteFile(Connection, "files_folder/pic_from_binary.png");
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "files_folder/pic_from_binary.png");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "DeleteFile", Options);
 
     Process(Result , "SFTP", "DeleteFile", "Nonexistent, " + Postfix);
 
-    Result = OPI_SFTP.ListObjects(Connection, "files_folder", True);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "files_folder");
+    Options.Insert("rcv", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "ListObjects", Options);
 
     Process(Result , "SFTP", "DeleteFile", "Check, " + Postfix);
 
