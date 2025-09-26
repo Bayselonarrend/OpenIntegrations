@@ -47,6 +47,8 @@
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:MagicNumber-off
 // BSLLS:MagicDate-off
+// BSLLS:MissingParameterDescription-off
+// BSLLS:NumberOfOptionalParams-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -2897,7 +2899,7 @@ Procedure FT_FileOperations() Export
         FTP_GetFileData(TestParameters);
         FTP_DeleteFile(TestParameters);
 
-    EndDo
+    EndDo;
 
 EndProcedure
 
@@ -11598,7 +11600,7 @@ Procedure Bitrix24_CreateTasksDependencies(FunctionParameters)
 
     Process(Result, "Bitrix24", "CreateTasksDependencies");
 
-    OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType, Token)
+    OPI_Bitrix24.DeleteTasksDependencies(URL, FromID, DestinationID, LinkType, Token);
 
 EndProcedure
 

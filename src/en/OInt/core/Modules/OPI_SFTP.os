@@ -233,29 +233,7 @@ Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Exp
         Result = Connection.ListDirectory(Path);
         Result = OPI_Tools.JsonToStructure(Result);
 
-        If Result["result"] And Recursively Then
-
-            For Each DirectoryObject In Result["data"] Do
-
-                If Not DirectoryObject["is_directory"] Then
-                    Continue;
-                EndIf;
-
-                Child = ListObjects(Connection, DirectoryObject["path"], True);
-
-                If Child["result"] Then
-
-                    DirectoryObject.Insert("objects", Child["data"]);
-
-                Else
-
-                    DirectoryObject.Insert("objects", Child["error"]);
-
-                EndIf;
-
-            EndDo;
-
-        EndIf;
+        ProcessListObtainResult(Result, Connection, Recursively);
 
     EndIf;
 
@@ -266,6 +244,8 @@ Function ListObjects(Val Connection, Val Path = "", Val Recursively = False) Exp
     Return Result;
 
 EndFunction
+
+// BSLLS:MagicNumber-off
 
 // Create new directory
 // Creates a directory at the specified path
@@ -299,6 +279,8 @@ Function CreateNewDirectory(Val Connection, Val Path, Val Permissions = 700) Exp
     Return Result;
 
 EndFunction
+
+// BSLLS:MagicNumber-on
 
 // Delete directory
 // Deletes an existing directory
@@ -470,7 +452,7 @@ EndFunction
 
 #EndRegion
 
-#Region Internal
+#Region Private
 
 Function CheckCreateConnection(Connection)
 
@@ -499,13 +481,15 @@ EndFunction
 
 Procedure ProcessSSHCommandExecution(Result, ResultField = "data")
 
-    If Result["result"] Then
+    Result_ = "result";
+
+    If Result[Result_] Then
 
         Result_ = New Map;
 
         If Not ValueIsFilled(Result["stderr"]) Then
 
-            Result_.Insert("result", True);
+            Result_.Insert(Result_, True);
 
             StdOut = Result["stdout"];
 
@@ -514,11 +498,39 @@ Procedure ProcessSSHCommandExecution(Result, ResultField = "data")
             EndIf;
 
         Else
-            Result_.Insert("result", False);
-            Result_.Insert("error" , Result["stderr"]);
+            Result_.Insert(Result_, False);
+            Result_.Insert("error", Result["stderr"]);
         EndIf;
 
         Result = Result_;
+
+    EndIf;
+
+EndProcedure
+
+Procedure ProcessListObtainResult(Result, Connection, Val Recursively)
+
+    If Result["result"] And Recursively Then
+
+        For Each DirectoryObject In Result["data"] Do
+
+            If Not DirectoryObject["is_directory"] Then
+                Continue;
+            EndIf;
+
+            Child = ListObjects(Connection, DirectoryObject["path"], True);
+
+            If Child["result"] Then
+
+                DirectoryObject.Insert("objects", Child["data"]);
+
+            Else
+
+                DirectoryObject.Insert("objects", Child["error"]);
+
+            EndIf;
+
+        EndDo;
 
     EndIf;
 

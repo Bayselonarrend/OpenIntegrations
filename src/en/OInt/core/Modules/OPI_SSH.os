@@ -60,6 +60,8 @@
 // Arbitrary, Map of KeyAndValue - Create Connection
 Function CreateConnection(Val SSHSettings, Val Proxy = "") Export
 
+    Result_ = "result";
+
     If IsConnector(SSHSettings) Then
         Return SSHSettings;
     EndIf;
@@ -68,20 +70,20 @@ Function CreateConnection(Val SSHSettings, Val Proxy = "") Export
 
     ConfigureSetup = SetSettings(Connector, SSHSettings);
 
-    If Not OPI_Tools.GetOr(ConfigureSetup, "result", False) Then
+    If Not OPI_Tools.GetOr(ConfigureSetup, Result_, False) Then
         Return ConfigureSetup;
     EndIf;
 
     ProxySetup = SetProxy(Connector, Proxy);
 
-     If Not OPI_Tools.GetOr(ProxySetup, "result", False) Then
+     If Not OPI_Tools.GetOr(ProxySetup, Result_, False) Then
         Return ProxySetup;
     EndIf;
 
     Result = Connector.Connect();
     Result = OPI_Tools.JsonToStructure(Result);
 
-    Return ?(Result["result"], Connector, Result);
+    Return ?(Result[Result_], Connector, Result);
 
 EndFunction
 
@@ -202,12 +204,14 @@ EndFunction
 // Structure Of KeyAndValue - Connection configuration
 Function GetSettingsLoginPassword(Val Host, Val Port, Val Login, Val Password = "") Export
 
+    String_ = "String";
+
     ConfigurationStructure = New Structure;
-    OPI_Tools.AddField("auth_type", "password", "String" , ConfigurationStructure);
-    OPI_Tools.AddField("host"     , Host      , "String" , ConfigurationStructure);
+    OPI_Tools.AddField("auth_type", "password", String_  , ConfigurationStructure);
+    OPI_Tools.AddField("host"     , Host      , String_  , ConfigurationStructure);
     OPI_Tools.AddField("port"     , Port      , "Number" , ConfigurationStructure);
-    OPI_Tools.AddField("username" , Login     , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("password" , Password  , "String" , ConfigurationStructure);
+    OPI_Tools.AddField("username" , Login     , String_  , ConfigurationStructure);
+    OPI_Tools.AddField("password" , Password  , String_  , ConfigurationStructure);
 
     Return ConfigurationStructure;
 
@@ -233,6 +237,8 @@ Function GetSettingsPrivateKey(Val Host
     , Val Public = ""
     , Val Password = "") Export
 
+    String_ = "String";
+
     OPI_TypeConversion.GetFileOnDisk(Private);
     Private_ = Private.Path;
 
@@ -244,13 +250,13 @@ Function GetSettingsPrivateKey(Val Host
     EndIf;
 
     ConfigurationStructure = New Structure;
-    OPI_Tools.AddField("auth_type" , "private_key" , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("host"      , Host          , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("port"      , Port          , "Number" , ConfigurationStructure);
-    OPI_Tools.AddField("username"  , Login         , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("key_path"  , Private_      , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("pub_path"  , Public_       , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("passphrase", Password      , "String" , ConfigurationStructure);
+    OPI_Tools.AddField("auth_type" , "private_key" , String_ , ConfigurationStructure);
+    OPI_Tools.AddField("host"      , Host          , String_ , ConfigurationStructure);
+    OPI_Tools.AddField("port"      , Port          , "Number", ConfigurationStructure);
+    OPI_Tools.AddField("username"  , Login         , String_ , ConfigurationStructure);
+    OPI_Tools.AddField("key_path"  , Private_      , String_ , ConfigurationStructure);
+    OPI_Tools.AddField("pub_path"  , Public_       , String_ , ConfigurationStructure);
+    OPI_Tools.AddField("passphrase", Password      , String_ , ConfigurationStructure);
 
     Return ConfigurationStructure;
 
@@ -268,11 +274,13 @@ EndFunction
 // Structure Of KeyAndValue - Connection configuration
 Function GetSettingsViaAgent(Val Host, Val Port, Val Login) Export
 
+    String_ = "String";
+
     ConfigurationStructure = New Structure;
-    OPI_Tools.AddField("auth_type" , "agent", "String" , ConfigurationStructure);
-    OPI_Tools.AddField("host"      , Host   , "String" , ConfigurationStructure);
-    OPI_Tools.AddField("port"      , Port   , "Number" , ConfigurationStructure);
-    OPI_Tools.AddField("username"  , Login  , "String" , ConfigurationStructure);
+    OPI_Tools.AddField("auth_type" , "agent", String_ , ConfigurationStructure);
+    OPI_Tools.AddField("host"      , Host   , String_ , ConfigurationStructure);
+    OPI_Tools.AddField("port"      , Port   , "Number", ConfigurationStructure);
+    OPI_Tools.AddField("username"  , Login  , String_ , ConfigurationStructure);
 
     Return ConfigurationStructure;
 
