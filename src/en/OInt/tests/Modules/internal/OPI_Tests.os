@@ -2956,7 +2956,10 @@ Procedure SShell_CommonMethods() Export
     For Each TestParameters In OptionArray Do
 
         SSH_CreateConnection(TestParameters);
+        SSH_GetConnectionConfiguration(TestParameters);
         SSH_ExecuteCommand(TestParameters);
+        SSH_CloseConnection(TestParameters);
+        SSH_IsConnector(TestParameters);
 
     EndDo;
 
@@ -6534,7 +6537,6 @@ Procedure Airtable_CreateDatabase(FunctionParameters)
     // END
 
     Process(Result, "Airtable", "CreateDatabase", , FunctionParameters, TableName);
-
 
 EndProcedure
 
@@ -14345,7 +14347,6 @@ Procedure S3_CreateBucket(FunctionParameters)
     Name = "opi-dirbucket3";
     Name = ?(Directory, "opi-dirbucket3", "opi-gpbucket3"); // SKIP
 
-
     Result = OPI_S3.DeleteBucket(Name, BasicData, Directory); // SKIP
     Process(Result, "S3", "CreateBucket", "Deletion"); // SKIP
 
@@ -16701,7 +16702,6 @@ Procedure PostgreSQL_DeleteRecords(FunctionParameters)
     Result = OPI_PostgreSQL.GetRecords(Table, , , , , ConnectionString, TLSSettings);
 
     Process(Result, "PostgreSQL", "DeleteRecords", "Check", Residue);
-
 
 EndProcedure
 
@@ -22833,7 +22833,6 @@ Procedure SSH_CreateConnection(FunctionParameters)
     Host = FunctionParameters["SSH_Host"];
     Port = FunctionParameters["SSH_Port"];
 
-
     UseProxy          = True;
     ProxySettings     = Undefined;
     AuthorizationType = "By login and password";
@@ -22894,7 +22893,6 @@ Procedure SSH_ExecuteCommand(FunctionParameters)
     Host = FunctionParameters["SSH_Host"];
     Port = FunctionParameters["SSH_Port"];
 
-
     UseProxy          = True;
     ProxySettings     = Undefined;
     AuthorizationType = "By login and password";
@@ -22954,6 +22952,201 @@ Procedure SSH_ExecuteCommand(FunctionParameters)
 
 EndProcedure
 
+Procedure SSH_GetConnectionConfiguration(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    UseProxy          = FunctionParameters["Proxy"]; // SKIP
+    AuthorizationType = FunctionParameters["AuthType"]; // SKIP
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        SSHSettings = OPI_SSH.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = FunctionParameters["SSH_User"];
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
+        PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
+
+        SSHSettings = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login       = FunctionParameters["SSH_User"];
+        SSHSettings = OPI_SSH.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_SSH.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Result = OPI_SSH.GetConnectionConfiguration(SSHSettings, ProxySettings);
+
+    // END
+
+    Process(Result, "SSH", "GetConnectionConfiguration", Postfix);
+
+    Result = OPI_SSH.ExecuteCommand(Result, "whoami");
+
+    Process(Result, "SSH", "GetConnectionConfiguration", "Check, " + Postfix);
+
+EndProcedure
+
+Procedure SSH_CloseConnection(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    UseProxy          = FunctionParameters["Proxy"]; // SKIP
+    AuthorizationType = FunctionParameters["AuthType"]; // SKIP
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        SSHSettings = OPI_SSH.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = FunctionParameters["SSH_User"];
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
+        PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
+
+        SSHSettings = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login       = FunctionParameters["SSH_User"];
+        SSHSettings = OPI_SSH.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_SSH.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Connection = OPI_SSH.CreateConnection(SSHSettings, ProxySettings);
+
+    If OPI_SSH.IsConnector(Connection) Then
+        Result = OPI_SSH.CloseConnection(Connection);
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Process(Result, "SSH", "CloseConnection", Postfix);
+
+EndProcedure
+
+Procedure SSH_IsConnector(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    UseProxy          = FunctionParameters["Proxy"]; // SKIP
+    AuthorizationType = FunctionParameters["AuthType"]; // SKIP
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        SSHSettings = OPI_SSH.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = FunctionParameters["SSH_User"];
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
+        PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
+
+        SSHSettings = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login       = FunctionParameters["SSH_User"];
+        SSHSettings = OPI_SSH.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_SSH.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Connection = OPI_SSH.CreateConnection(SSHSettings, ProxySettings);
+    Result     = OPI_SSH.IsConnector(Connection);
+
+    // END
+
+    Process(Result, "SSH", "IsConnector", Postfix);
+
+    Result = OPI_SSH.IsConnector("a");
+
+    Process(Result, "SSH", "IsConnector", "Error, " + Postfix);
+
+EndProcedure
+
 #EndRegion
 
 #Region SFTP
@@ -22964,7 +23157,6 @@ Procedure SFTP_CreateConnection(FunctionParameters)
 
     Host = FunctionParameters["SSH_Host"];
     Port = FunctionParameters["SSH_Port"];
-
 
     UseProxy          = True;
     ProxySettings     = Undefined;
@@ -23025,7 +23217,6 @@ Procedure SFTP_CreateNewDirectory(FunctionParameters)
 
     Host = FunctionParameters["SSH_Host"];
     Port = FunctionParameters["SSH_Port"];
-
 
     UseProxy          = True;
     ProxySettings     = Undefined;
@@ -23092,7 +23283,6 @@ Procedure SFTP_DeleteDirectory(FunctionParameters)
 
     Host = FunctionParameters["SSH_Host"];
     Port = FunctionParameters["SSH_Port"];
-
 
     UseProxy          = True;
     ProxySettings     = Undefined;

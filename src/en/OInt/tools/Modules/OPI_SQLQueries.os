@@ -1686,7 +1686,6 @@ Function ProcessQueryResult(Val Connector, Val QueryKey, Val ExecutionResult)
 
             OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete result file after execution");
 
-
         Else
             Result = Connector.GetResultAsString(QueryKey);
             Result = OPI_Tools.JsonToStructure(Result);
