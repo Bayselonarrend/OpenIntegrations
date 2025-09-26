@@ -39,6 +39,9 @@
 // BSLLS:MissingTemporaryFileDeletion-off
 // BSLLS:MethodSize-off
 // BSLLS:IfElseIfEndsWithElse-off
+// BSLLS:CognitiveComplexity-off
+// BSLLS:NumberOfOptionalParams-off
+// BSLLS:CommentedCode-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -905,8 +908,11 @@ EndFunction
 
 Function GetFullTestList() Export
 
-    Lang  = OPI_Tools.OPILanguage();
-    Tests = StrTemplate("https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/service/tests_%1.json", Lang);
+    Lang = OPI_Tools.OPILanguage();
+
+    Tests = StrTemplate(
+        "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/service/tests_%1.json",
+        Lang);
 
     OPI_TypeConversion.GetCollection(Tests);
 
@@ -1803,7 +1809,11 @@ Function Check_VK_CreateAlbum(Val Result, Val Option, Parameters = "", Descripti
 
 EndFunction
 
-Function Check_VK_SaveImageToAlbum(Val Result, Val Option, Parameters = "", Description = "", AlbumID = "")
+Function Check_VK_SaveImageToAlbum(Val Result
+    , Val Option
+    , Parameters  = ""
+    , Description = ""
+    , AlbumID     = "")
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"][0]["text"]).Равно(Description);
@@ -2461,7 +2471,10 @@ Function Check_YandexDisk_MoveObject(Val Result, Val Option, Parameters = "", Pa
 
 EndFunction
 
-Function Check_YandexDisk_GetPublishedObjectsList(Val Result, Val Option, Count = 0, Indent = 0)
+Function Check_YandexDisk_GetPublishedObjectsList(Val Result
+    , Val Option
+    , Count  = 0
+    , Indent = 0)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["limit"]).Равно(Count);
@@ -2732,7 +2745,10 @@ Function Check_GoogleCalendar_CreateCalendar(Val Result, Val Option, Parameters 
 
 EndFunction
 
-Function Check_GoogleCalendar_EditCalendarMetadata(Val Result, Val Option, Name = "", Description = "")
+Function Check_GoogleCalendar_EditCalendarMetadata(Val Result
+    , Val Option
+    , Name        = ""
+    , Description = "")
 
     ExpectsThat(Result).ИмеетТип("Map");
     ExpectsThat(Result["summary"]).Равно(Name);
@@ -2743,7 +2759,10 @@ Function Check_GoogleCalendar_EditCalendarMetadata(Val Result, Val Option, Name 
 
 EndFunction
 
-Function Check_GoogleCalendar_GetCalendarMetadata(Val Result, Val Option, Name = "", Description = "")
+Function Check_GoogleCalendar_GetCalendarMetadata(Val Result
+    , Val Option
+    , Name        = ""
+    , Description = "")
 
     ExpectsThat(Result).ИмеетТип("Map");
     ExpectsThat(Result["summary"]).Равно(Name);
@@ -2765,7 +2784,10 @@ Function Check_GoogleCalendar_AddCalendarToList(Val Result, Val Option, Name = "
 
 EndFunction
 
-Function Check_GoogleCalendar_EditListCalendar(Val Result, Val Option, PrimaryColor = "", SecondaryColor = "")
+Function Check_GoogleCalendar_EditListCalendar(Val Result
+    , Val Option
+    , PrimaryColor   = ""
+    , SecondaryColor = "")
 
     ExpectsThat(Result).ИмеетТип("Map");
     ExpectsThat(Result["foregroundColor"]).Равно(PrimaryColor);
@@ -2775,7 +2797,10 @@ Function Check_GoogleCalendar_EditListCalendar(Val Result, Val Option, PrimaryCo
 
 EndFunction
 
-Function Check_GoogleCalendar_GetListCalendar(Val Result, Val Option, PrimaryColor = "", SecondaryColor = "")
+Function Check_GoogleCalendar_GetListCalendar(Val Result
+    , Val Option
+    , PrimaryColor   = ""
+    , SecondaryColor = "")
 
     ExpectsThat(Result).ИмеетТип("Map");
     ExpectsThat(Result["foregroundColor"]).Равно(PrimaryColor);
@@ -2815,7 +2840,11 @@ Function Check_GoogleCalendar_DeleteCalendar(Val Result, Val Option)
 
 EndFunction
 
-Function Check_GoogleCalendar_CreateEvent(Val Result, Val Option, Parameters = "", Name = "", Description = "")
+Function Check_GoogleCalendar_CreateEvent(Val Result
+    , Val Option
+    , Parameters  = ""
+    , Name        = ""
+    , Description = "")
 
     ExpectsThat(Result).ИмеетТип("Map");
     ExpectsThat(Result["summary"]).Равно(Name);
@@ -3068,7 +3097,11 @@ Function Check_GoogleDrive_CreateFolder(Val Result, Val Option)
 
 EndFunction
 
-Function Check_GoogleSheets_CreateSpreadsheet(Val Result, Val Option, Parameters = "", Name = "", SheetArray = "")
+Function Check_GoogleSheets_CreateSpreadsheet(Val Result
+    , Val Option
+    , Parameters = ""
+    , Name       = ""
+    , SheetArray = "")
 
     ExpectsThat(Result["properties"]["title"]).Равно(Name);
 
@@ -11706,8 +11739,6 @@ Function GetCommonModule(Val Name)
     Return Module;
 EndFunction
 
-// BSLLS:CognitiveComplexity-off
-
 Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
 
     CurrentType       = TypeOf(Value);
@@ -11927,8 +11958,6 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
     Return Value;
 
 EndFunction
-
-// BSLLS:CognitiveComplexity-on
 
 Function FormOption(Val Name, Val Value, Embedded = False)
 
