@@ -459,7 +459,7 @@ Function CheckCreateConnection(Connection)
     If Not IsConnector(Connection) Then
 
         CloseConnection = True;
-        Connection      = CreateConnection(Connection);
+        Connection      = CreateConnectionByConfiguration(Connection);
 
     Else
         CloseConnection = False;
@@ -476,6 +476,41 @@ Function CheckCreateConnection(Connection)
     EndIf;
 
     Return CloseConnection;
+
+EndFunction
+
+Function CreateConnectionByConfiguration(Val ConfigurationStructure)
+
+    If IsConnector(ConfigurationStructure) Then
+        Return ConfigurationStructure;
+    EndIf;
+
+    ErrorPattern = "Incorrect connection configuration provided: %1";
+
+    Try
+        OPI_TypeConversion.GetKeyValueCollection(ConfigurationStructure);
+    Except
+
+        Result = New Map;
+        Result.Insert("result", False);
+        Result.Insert("error" , StrTemplate(ErrorPattern, ErrorDescription()));
+        Return Result;
+
+    EndTry;
+
+    If Not OPI_Tools.CollectionFieldExists(ConfigurationStructure, "set") Then
+
+        Result = New Map;
+        Result.Insert("result", False);
+        Result.Insert("error" , StrTemplate(ErrorPattern, "missing main connection parameters"));
+        Return Result;
+
+    EndIf;
+
+    SSHSettings = ConfigurationStructure["set"];
+    Proxy       = OPI_Tools.GetOr(ConfigurationStructure, "proxy", Undefined);
+
+    Return CreateConnection(SSHSettings, Proxy);
 
 EndFunction
 
