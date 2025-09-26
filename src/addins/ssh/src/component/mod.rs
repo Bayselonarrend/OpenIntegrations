@@ -419,6 +419,7 @@ impl AddIn {
 
     pub fn disconnect(&mut self) -> String{
         if let Some(_conn) = self.inner.take() {
+            self.sftp.take();
             json!({"result": true}).to_string()
         } else {
             json!({"result": false, "error": "No session"}).to_string()
