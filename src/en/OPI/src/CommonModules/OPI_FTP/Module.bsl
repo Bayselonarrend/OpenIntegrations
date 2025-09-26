@@ -57,6 +57,8 @@
 // Arbitrary - Client object or map with error information
 Function CreateConnection(Val FTPSettings, Val Proxy = Undefined, Val Tls = Undefined) Export
 
+    Result_ = "result";
+
     If IsConnector(FTPSettings) Then
         Return FTPSettings;
     EndIf;
@@ -65,26 +67,26 @@ Function CreateConnection(Val FTPSettings, Val Proxy = Undefined, Val Tls = Unde
 
     SetSettings = SetFtpSettings(Connector, FTPSettings);
 
-    If Not OPI_Tools.GetOr(SetSettings, "result", False) Then
+    If Not OPI_Tools.GetOr(SetSettings, Result_, False) Then
         Return SetSettings;
     EndIf;
 
     Tls = OPI_AddIns.SetTls(Connector, Tls);
 
-    If Not OPI_Tools.GetOr(Tls, "result", False) Then
+    If Not OPI_Tools.GetOr(Tls, Result_, False) Then
         Return Tls;
     EndIf;
 
     SetProxy = SetProxySettings(Connector, Proxy);
 
-    If Not OPI_Tools.GetOr(SetProxy, "result", False) Then
+    If Not OPI_Tools.GetOr(SetProxy, Result_, False) Then
         Return SetProxy;
     EndIf;
 
     Result = Connector.Connect();
     Result = OPI_Tools.JSONToStructure(Result);
 
-    Return ?(Result["result"], Connector, Result);
+    Return ?(Result[Result_], Connector, Result);
 
 EndFunction
 
@@ -106,11 +108,12 @@ EndFunction
 // Structure Of KeyAndValue - Connection settings structure
 Function GetConnectionConfiguration(Val FTPSettings, Val Proxy = Undefined, Val Tls = Undefined) Export
 
+    Collection_            = "Collection";
     ConfigurationStructure = New Structure;
 
-    OPI_Tools.AddField("set"  , FTPSettings, "Collection", ConfigurationStructure);
-    OPI_Tools.AddField("proxy", Proxy      , "Collection", ConfigurationStructure);
-    OPI_Tools.AddField("tls"  , Tls        , "Collection", ConfigurationStructure);
+    OPI_Tools.AddField("set"  , FTPSettings, Collection_, ConfigurationStructure);
+    OPI_Tools.AddField("proxy", Proxy      , Collection_, ConfigurationStructure);
+    OPI_Tools.AddField("tls"  , Tls        , Collection_, ConfigurationStructure);
 
     Return ConfigurationStructure;
 
@@ -379,6 +382,8 @@ Function IsConnector(Val Value) Export
 
 EndFunction
 
+// BSLLS:NumberOfParams-off
+
 // Get connection settings
 // Creates a structure of FTP connection settings
 //
@@ -407,12 +412,14 @@ Function GetConnectionSettings(Val Host
     , Val WriteTimeout = 120
     , Val IPResolve = True) Export
 
+    Number_ = "Number";
+
     SettingsStructure = New Structure;
     OPI_Tools.AddField("domain"          , Host         , "String" , SettingsStructure);
-    OPI_Tools.AddField("port"            , Port         , "Number" , SettingsStructure);
+    OPI_Tools.AddField("port"            , Port         , Number_  , SettingsStructure);
     OPI_Tools.AddField("passive"         , Passive      , "Boolean", SettingsStructure);
-    OPI_Tools.AddField("read_timeout"    , ReadTimeout  , "Number" , SettingsStructure);
-    OPI_Tools.AddField("write_timeout"   , WriteTimeout , "Number" , SettingsStructure);
+    OPI_Tools.AddField("read_timeout"    , ReadTimeout  , Number_  , SettingsStructure);
+    OPI_Tools.AddField("write_timeout"   , WriteTimeout , Number_  , SettingsStructure);
     OPI_Tools.AddField("advanced_resolve", IPResolve    , "Boolean", SettingsStructure);
 
     If Not Login = Undefined Then
@@ -429,6 +436,8 @@ Function GetConnectionSettings(Val Host
     Return SettingsStructure;
 
 EndFunction
+
+// BSLLS:NumberOfParams-on
 
 // Get proxy settings
 // Creates a structure of proxy server settings for the connection
