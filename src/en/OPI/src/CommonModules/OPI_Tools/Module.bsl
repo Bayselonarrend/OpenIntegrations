@@ -634,27 +634,11 @@ Function CopyCollection(Val Collection) Export
 
     If IsStructure Or IsMap Then
 
-        Collection_ = ?(IsStructure, New Structure, New Map);
-
-        For Each CollectionField In Collection Do
-
-            CurrentValue = CollectionField.Value;
-            CurrentValue = ?(ThisIsCollection(CurrentValue), CopyCollection(CurrentValue), CurrentValue);
-
-            Collection_.Insert(CollectionField.Key, CurrentValue);
-
-        EndDo;
+        Collection_ = CopyCollectionKeyValue(Collection, IsStructure);
 
     ElsIf IsArray Then
 
-        Collection_ = New Array;
-
-        For Each CollectionItem In Collection Do
-
-            CurrentValue = ?(ThisIsCollection(CollectionItem), CopyCollection(CollectionItem), CollectionItem);
-            Collection_.Add(CurrentValue);
-
-        EndDo;
+        Collection_ = CopyCollectionArray(Collection);
 
     Else
 
@@ -765,7 +749,10 @@ Procedure DebugInfo(Val Text) Export
     If IsDebug = "YES" Then
 
         // BSLLS:DeprecatedMessage-off
+
+        //@skip-check use-non-recommended-method
         Message(Text);
+
         // BSLLS:DeprecatedMessage-on
 
     EndIf;
@@ -863,8 +850,14 @@ Procedure RemoveFileWithTry(Val Path, Val MessageText) Export
     Try
         DeleteFiles(Path);
     Except
+
+        // BSLLS:DeprecatedMessage-off
+
         //@skip-check use-non-recommended-method
         Message(MessageText);
+
+        // BSLLS:DeprecatedMessage-on
+
     EndTry;
 
 EndProcedure
@@ -1191,6 +1184,38 @@ Function GetEscapeSequencesMap()
     CharacterMapping.Insert("\v" , Chars.VTab);
 
     Return CharacterMapping;
+
+EndFunction
+
+Function CopyCollectionKeyValue(Val Collection, Val IsStructure)
+
+    Collection_ = ?(IsStructure, New Structure, New Map);
+
+    For Each CollectionField In Collection Do
+
+        CurrentValue = CollectionField.Value;
+        CurrentValue = ?(ThisIsCollection(CurrentValue), CopyCollection(CurrentValue), CurrentValue);
+
+        Collection_.Insert(CollectionField.Key, CurrentValue);
+
+    EndDo;
+
+    Return Collection_;
+
+EndFunction
+
+Function CopyCollectionArray(Val Collection)
+
+    Collection_ = New Array;
+
+    For Each CollectionItem In Collection Do
+
+        CurrentValue = ?(ThisIsCollection(CollectionItem), CopyCollection(CollectionItem), CollectionItem);
+        Collection_.Add(CurrentValue);
+
+    EndDo;
+
+    Return Collection_;
 
 EndFunction
 

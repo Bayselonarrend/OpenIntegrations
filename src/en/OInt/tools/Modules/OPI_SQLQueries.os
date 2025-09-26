@@ -1011,16 +1011,10 @@ Function AddRecordsSeparately(Val Module, Val Table, Val DataArray, Val Transact
 
         Result = AddRow(Module, Table, Record, Connection);
 
-        If Result["result"] Then
-            SuccessCount = SuccessCount + 1;
-        Else
+        Success = CheckSingleQueryExecution(Result, Transaction, Counter, SuccessCount, ErrorsArray);
 
-            ErrorsArray.Add(New Structure("row,error", Counter, Result["error"]));
-
-            If Transaction Then
-                Break;
-            EndIf;
-
+        If Not Success Then
+            Break;
         EndIf;
 
     EndDo;
@@ -1096,16 +1090,10 @@ Function AddRecordsBatch(Val Module, Val Table, Val DataArray, Val Transaction, 
         Result = Connection.Execute(QueryKey);
         Result = ProcessQueryResult(Connection, QueryKey, Result);
 
-        If Result["result"] Then
-            SuccessCount = SuccessCount + 1;
-        Else
+        Success = CheckSingleQueryExecution(Result, Transaction, Counter, SuccessCount, ErrorsArray);
 
-            ErrorsArray.Add(New Structure("row,error", Counter, Result["error"]));
-
-            If Transaction Then
-                Break;
-            EndIf;
-
+        If Not Success Then
+            Break;
         EndIf;
 
     EndDo;
@@ -1113,6 +1101,28 @@ Function AddRecordsBatch(Val Module, Val Table, Val DataArray, Val Transaction, 
     Result = New Structure("ErrorsArray,SuccessCount", ErrorsArray, SuccessCount);
 
     Return Result;
+
+EndFunction
+
+Function CheckSingleQueryExecution(Val Result
+    , Val Transaction
+    , Val Counter
+    , SuccessCount
+    , ErrorsArray)
+
+    If Result["result"] Then
+            SuccessCount = SuccessCount + 1;
+        Else
+
+            ErrorsArray.Add(New Structure("row,error", Counter, Result["error"]));
+
+            If Transaction Then
+                Return False;
+            EndIf;
+
+    EndIf;
+
+    Return True;
 
 EndFunction
 
@@ -1805,8 +1815,7 @@ Procedure ProcessCollectionParameter(Val CurrentType, Val TypesStructure, Curren
                 CurrentParameter = CurrentValue;
 
             ElsIf CurrentKey     = BinaryType Then
-                CurrentParameter = ProcessBlob(CurrentValue)
-
+                CurrentParameter = ProcessBlob(CurrentValue);
             Else
                 CurrentParameter = ProcessParameter(CurrentValue, TypesStructure, False);
             EndIf;

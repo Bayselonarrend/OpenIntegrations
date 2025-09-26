@@ -140,12 +140,17 @@ EndFunction
 
 Function FileTransferRequired() Export
 
+    // BSLLS:CommentedCode-off
+
     // Components in 1C on Linux cannot reliably send and receive data larger than 30 KB
     // https://github.com/Bayselonarrend/OpenIntegrations/issues/72
 
     // UPD: NoIsolated works
 
     // Return Not OPI_Tools.IsWindows() And Not OPI_Tools.IsOneScript();
+
+    // BSLLS:CommentedCode-on
+
     Return False;
 
 EndFunction
@@ -207,7 +212,8 @@ Function ConnectAddInNoIsolated(TemplateName, AddInName)
     If Not TypeRequiered Then
 
         AddInConnectionType = Undefined;
-        Result              = AttachAddIn(TemplateName, AddInName, AddInType.Native);
+
+        Result = AttachAddIn(TemplateName, AddInName, AddInType.Native);
 
     Else
 
@@ -219,7 +225,8 @@ Function ConnectAddInNoIsolated(TemplateName, AddInName)
 
         // BSLLS:UnusedLocalVariable-on
 
-        Result = Eval("AttachAddIn(TemplateName, AddInName, AddInType.Native, ConnectionType)");
+        Result = Eval(
+            "AttachAddIn(TemplateName, AddInName, AddInType.Native, ConnectionType)");
 
     EndIf;
 
