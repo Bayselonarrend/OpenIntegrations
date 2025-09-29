@@ -2960,6 +2960,8 @@ Procedure SShell_CommonMethods() Export
         SSH_ExecuteCommand(TestParameters);
         SSH_CloseConnection(TestParameters);
         SSH_IsConnector(TestParameters);
+        SSH_GetSettingsLoginPassword(TestParameters);
+        SSH_GetSettingsPrivateKey(TestParameters);
 
     EndDo;
 
@@ -23144,6 +23146,40 @@ Procedure SSH_IsConnector(FunctionParameters)
     Result = OPI_SSH.IsConnector("a");
 
     Process(Result, "SSH", "IsConnector", "Error, " + Postfix);
+
+EndProcedure
+
+Procedure SSH_GetSettingsLoginPassword(FunctionParameters)
+
+    Host     = FunctionParameters["SSH_Host"];
+    Port     = FunctionParameters["SSH_Port"];
+    Login    = FunctionParameters["SSH_User"];
+    Password = FunctionParameters["SSH_Password"];
+
+    Result = OPI_SSH.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    // END
+
+    Process(Result, "SSH", "GetSettingsLoginPassword");
+
+EndProcedure
+
+Procedure SSH_GetSettingsPrivateKey(FunctionParameters)
+
+    Host       = FunctionParameters["SSH_Host"];
+    Port       = FunctionParameters["SSH_Port"];
+    Login      = FunctionParameters["SSH_User"];
+    PrivateKey = "./ssh_key";
+    PublicKey  = "./ssh_key.pub";
+
+    PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
+    PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
+
+    Result = OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    // END
+
+    Process(Result, "SSH", "GetSettingsPrivateKey");
 
 EndProcedure
 
