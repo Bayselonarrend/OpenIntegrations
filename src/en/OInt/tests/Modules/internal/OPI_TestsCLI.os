@@ -2963,6 +2963,8 @@ Procedure SShell_CommonMethods() Export
         SSH_IsConnector(TestParameters);
         SSH_GetSettingsLoginPassword(TestParameters);
         SSH_GetSettingsPrivateKey(TestParameters);
+        SSH_GetSettingsViaAgent(TestParameters);
+        SSH_GetProxySettings(TestParameters);
 
     EndDo;
 
@@ -30428,6 +30430,8 @@ EndProcedure
 
 Procedure SSH_GetSettingsLoginPassword(FunctionParameters)
 
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
     Host     = FunctionParameters["SSH_Host"];
     Port     = FunctionParameters["SSH_Port"];
     Login    = FunctionParameters["SSH_User"];
@@ -30443,11 +30447,13 @@ Procedure SSH_GetSettingsLoginPassword(FunctionParameters)
 
     // END
 
-    Process(Result, "SSH", "GetSettingsLoginPassword");
+    Process(Result, "SSH", "GetSettingsLoginPassword", Postfix);
 
 EndProcedure
 
 Procedure SSH_GetSettingsPrivateKey(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host       = FunctionParameters["SSH_Host"];
     Port       = FunctionParameters["SSH_Port"];
@@ -30469,7 +30475,53 @@ Procedure SSH_GetSettingsPrivateKey(FunctionParameters)
 
     // END
 
-    Process(Result, "SSH", "GetSettingsPrivateKey");
+    Process(Result, "SSH", "GetSettingsPrivateKey", Postfix);
+
+EndProcedure
+
+Procedure SSH_GetSettingsViaAgent(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host        = FunctionParameters["SSH_Host"];
+    Port        = FunctionParameters["SSH_Port"];
+    Login       = FunctionParameters["SSH_User"];
+    Options = New Structure;
+    Options.Insert("host", Host);
+    Options.Insert("port", Port);
+    Options.Insert("user", Login);
+
+    SSHSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetSettingsViaAgent", Options);
+
+    // END
+
+    Process(Result, "SSH", "GetSettingsViaAgent", Postfix);
+
+EndProcedure
+
+Procedure SSH_GetProxySettings(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+    ProxyAddress  = FunctionParameters["Proxy_IP"];
+    ProxyPort     = FunctionParameters["Proxy_Port"];
+    ProxyLogin    = FunctionParameters["Proxy_User"];
+    ProxyPassword = FunctionParameters["Proxy_Password"];
+
+    Options = New Structure;
+    Options.Insert("addr", ProxyAddress);
+    Options.Insert("port", ProxyPort);
+    Options.Insert("type", ProxyType);
+    Options.Insert("login", ProxyLogin);
+    Options.Insert("pass", ProxyPassword);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetProxySettings", Options);
+
+    // END
+
+    Process(Result, "SSH", "GetProxySettings", Postfix);
 
 EndProcedure
 

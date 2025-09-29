@@ -6380,6 +6380,16 @@
 "variant": ""
 },
 {
+"lib": "SSH",
+"name": "GetSettingsViaAgent",
+"variant": ""
+},
+{
+"lib": "SSH",
+"name": "GetProxySettings",
+"variant": ""
+},
+{
 "lib": "SFTP",
 "name": "CreateConnection",
 "variant": ""
