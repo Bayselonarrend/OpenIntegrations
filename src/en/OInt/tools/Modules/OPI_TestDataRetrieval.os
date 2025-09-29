@@ -11437,8 +11437,20 @@ Function Check_SSH_GetConnectionConfiguration(Val Result, Val Option)
 
         ExpectsThat(Result["set"]).Заполнено();
 
+        If OPI_Tools.CollectionFieldExists(Result["set"], "password") Then
+            Result["set"]["password"] = "***";
+        EndIf;
+
+        If OPI_Tools.CollectionFieldExists(Result["set"], "key_path") Then
+            Result["set"]["key_path"] = "./ssh_key";
+            Result["set"]["pub_path"] = "./ssh_key.pub";
+        EndIf;
+
         If StrFind(Lower(Option), "socks5") > 0 Or StrFind(Lower(Option), "http") > 0 Then
+
             ExpectsThat(Result["proxy"]).Заполнено();
+            Result["proxy"]["password"] = "***";
+
         EndIf;
 
     EndIf;
@@ -11467,6 +11479,35 @@ Function Check_SSH_IsConnector(Val Result, Val Option)
 
 EndFunction
 
+Function Check_SSH_GetSettingsLoginPassword(Val Result, Val Option)
+
+    ExpectsThat(Result["auth_type"]).Равно("password");
+    ExpectsThat(Result["host"]).Заполнено();
+    ExpectsThat(Result["port"]).Заполнено();
+    ExpectsThat(Result["username"]).Заполнено();
+    ExpectsThat(Result["password"]).Заполнено();
+
+    Result["password"] = "***";
+
+    Return Result;
+
+EndFunction
+
+Function Check_SSH_GetSettingsPrivateKey(Val Result, Val Option)
+
+    ExpectsThat(Result["auth_type"]).Равно("private_key");
+    ExpectsThat(Result["host"]).Заполнено();
+    ExpectsThat(Result["port"]).Заполнено();
+    ExpectsThat(Result["username"]).Заполнено();
+    ExpectsThat(Result["key_path"]).Заполнено();
+    ExpectsThat(Result["pub_path"]).Заполнено();
+
+    Result["key_path"] = "./ssh_key";
+    Result["pub_path"] = "./ssh_key.pub";
+
+    Return Result;
+
+EndFunction
 
 Function Check_SFTP_CreateConnection(Val Result, Val Option)
 
