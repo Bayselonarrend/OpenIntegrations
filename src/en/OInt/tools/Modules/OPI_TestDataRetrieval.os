@@ -11509,6 +11509,27 @@ Function Check_SSH_GetSettingsPrivateKey(Val Result, Val Option)
 
 EndFunction
 
+Function Check_SSH_GetSettingsViaAgent(Val Result, Val Option)
+
+    ExpectsThat(Result["auth_type"]).Равно("agent");
+    ExpectsThat(Result["host"]).Заполнено();
+    ExpectsThat(Result["port"]).Заполнено();
+    ExpectsThat(Result["username"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_SSH_GetProxySettings(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Result["password"] = "***";
+
+    Return Result;
+
+EndFunction
+
 Function Check_SFTP_CreateConnection(Val Result, Val Option)
 
     Result = String(TypeOf(Result));
