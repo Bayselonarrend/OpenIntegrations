@@ -6370,6 +6370,16 @@
 "variant": ""
 },
 {
+"lib": "SSH",
+"name": "GetSettingsLoginPassword",
+"variant": ""
+},
+{
+"lib": "SSH",
+"name": "GetSettingsPrivateKey",
+"variant": ""
+},
+{
 "lib": "SFTP",
 "name": "CreateConnection",
 "variant": ""
