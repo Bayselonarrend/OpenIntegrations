@@ -2962,6 +2962,8 @@ Procedure SShell_CommonMethods() Export
         SSH_IsConnector(TestParameters);
         SSH_GetSettingsLoginPassword(TestParameters);
         SSH_GetSettingsPrivateKey(TestParameters);
+        SSH_GetSettingsViaAgent(TestParameters);
+        SSH_GetProxySettings(TestParameters);
 
     EndDo;
 
@@ -23151,6 +23153,8 @@ EndProcedure
 
 Procedure SSH_GetSettingsLoginPassword(FunctionParameters)
 
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
     Host     = FunctionParameters["SSH_Host"];
     Port     = FunctionParameters["SSH_Port"];
     Login    = FunctionParameters["SSH_User"];
@@ -23160,11 +23164,13 @@ Procedure SSH_GetSettingsLoginPassword(FunctionParameters)
 
     // END
 
-    Process(Result, "SSH", "GetSettingsLoginPassword");
+    Process(Result, "SSH", "GetSettingsLoginPassword", Postfix);
 
 EndProcedure
 
 Procedure SSH_GetSettingsPrivateKey(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
 
     Host       = FunctionParameters["SSH_Host"];
     Port       = FunctionParameters["SSH_Port"];
@@ -23179,7 +23185,41 @@ Procedure SSH_GetSettingsPrivateKey(FunctionParameters)
 
     // END
 
-    Process(Result, "SSH", "GetSettingsPrivateKey");
+    Process(Result, "SSH", "GetSettingsPrivateKey", Postfix);
+
+EndProcedure
+
+Procedure SSH_GetSettingsViaAgent(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host        = FunctionParameters["SSH_Host"];
+    Port        = FunctionParameters["SSH_Port"];
+    Login       = FunctionParameters["SSH_User"];
+    SSHSettings = OPI_SSH.GetSettingsViaAgent(Host, Port, Login);
+
+    // END
+
+    Process(Result, "SSH", "GetSettingsViaAgent", Postfix);
+
+EndProcedure
+
+Procedure SSH_GetProxySettings(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+    ProxyAddress  = FunctionParameters["Proxy_IP"];
+    ProxyPort     = FunctionParameters["Proxy_Port"];
+    ProxyLogin    = FunctionParameters["Proxy_User"];
+    ProxyPassword = FunctionParameters["Proxy_Password"];
+
+    Result = OPI_SSH.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    // END
+
+    Process(Result, "SSH", "GetProxySettings", Postfix);
 
 EndProcedure
 
