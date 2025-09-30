@@ -1,4 +1,4 @@
-﻿    Host        = "172.33.0.13";
-    Port        = "2222";
-    Login       = "bayselonarrend";
-    SSHSettings = OPI_SSH.GetSettingsViaAgent(Host, Port, Login);
+﻿    Host   = "172.33.0.13";
+    Port   = "2222";
+    Login  = "bayselonarrend";
+    Result = OPI_SSH.GetSettingsViaAgent(Host, Port, Login);

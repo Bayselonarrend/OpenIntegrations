@@ -91,6 +91,7 @@
   <commonModules>CommonModule.OPI_Tools</commonModules>
   <commonModules>CommonModule.OPI_HTTPRequests</commonModules>
   <commonModules>CommonModule.OPI_SQLQueries</commonModules>
+  <commonModules>CommonModule.OPI_SSHRequests</commonModules>
   <commonModules>CommonModule.OPI_AddIns</commonModules>
   <commonModules>CommonModule.OPI_Cryptography</commonModules>
   <commonModules>CommonModule.OPI_TestDataRetrieval</commonModules>
