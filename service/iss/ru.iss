@@ -125,7 +125,7 @@ begin
 
   AddonDescription := TNewStaticText.Create(WizardForm);
   AddonDescription.Parent := AddonTaskPage.Surface;
-  AddonDescription.Caption := 'Melezh - это небольшой (~ 1 MB) серверный аддон для OInt, позволяющий запускать настраиваемый gateway для любых его методов. Melezh может прослушивать выбранный вами порт и интерпретировать приходящие туда HTTP-запросы в команды OInt для дальнейшего выплнения. Имеется встроенное логирование и Web UI для удобной настройки';
+  AddonDescription.Caption := 'Melezh - это небольшой (~ 6 MB) серверный аддон для OInt, позволяющий запускать настраиваемый gateway для любых его методов. Melezh может прослушивать выбранный вами порт и интерпретировать приходящие туда HTTP-запросы в команды OInt для дальнейшего выплнения. Имеется встроенное логирование и Web UI для удобной настройки';
   AddonDescription.WordWrap := True;
   AddonDescription.Width := 350;
   AddonDescription.Height := 300;
