@@ -1,32 +1,32 @@
 ﻿{
  "result": {
-  "ID": "43194",
+  "ID": "43248",
   "NAME": "Новое имя файла.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "file",
-  "PARENT_ID": 43204,
+  "PARENT_ID": 43258,
   "DELETED_TYPE": "0",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "29032",
+  "FILE_ID": "29094",
   "SIZE": "805189",
-  "CREATE_TIME": "2025-09-23T14:18:37+03:00",
-  "UPDATE_TIME": "2025-09-23T14:19:05+03:00",
-  "DELETE_TIME": "2025-09-23T14:19:04+03:00",
+  "CREATE_TIME": "2025-09-30T19:32:47+00:00",
+  "UPDATE_TIME": "2025-09-30T19:33:13+00:00",
+  "DELETE_TIME": "2025-09-30T19:33:12+00:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=928fd268006e9f06006b12e40000000100000746e1956d8239d50cc12febd23e719750&token=disk%7CaWQ9NDMxOTQmXz1oTGNXY1Q3NlI3cG5UWVh2TGU1SjM5bEd1VlV1ZFVDTw%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5ETXhPVFFtWHoxb1RHTlhZMVEzTmxJM2NHNVVXVmgyVEdVMVNqTTViRWQxVmxWMVpGVkRUdz09fDkyOGZkMjY4MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3NDZlMTk1NmQ4MjM5ZDUwY2MxMmZlYmQyM2U3MTk3NTAi.44zJRnk2KxXiO7uEbRBUtpM8oaPpAVoeAlikNc1ctQQ%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=0d3edc68006e9f06006b12e4000000010000079df8ded9203f36d552b4c6853acb2215&token=disk%7CaWQ9NDMyNDgmXz1USmwyN1kzR0VuU0RXUzlRMmUwdTZDaU5kSENOSk1xMA%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5ETXlORGdtWHoxVVNtd3lOMWt6UjBWdVUwUlhVemxSTW1Vd2RUWkRhVTVrU0VOT1NrMXhNQT09fDBkM2VkYzY4MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3OWRmOGRlZDkyMDNmMzZkNTUyYjRjNjg1M2FjYjIyMTUi.o0fS0XGUKH%2FBnznnZ7HXZPoIVaFC4Qnzny1HKffFEKI%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Новый каталог/Новый подкаталог/Новое имя файла.jpg"
  },
  "time": {
-  "start": 1758626353.40984,
-  "finish": 1758626353.63266,
-  "duration": 0.222823143005371,
-  "processing": 0.117683887481689,
-  "date_start": "2025-09-23T14:19:13+03:00",
-  "date_finish": "2025-09-23T14:19:13+03:00",
-  "operating_reset_at": 1758626953,
-  "operating": 0.117662906646729
+  "start": 1759260800,
+  "finish": 1759260800.38293,
+  "duration": 0.382926940917969,
+  "processing": 0,
+  "date_start": "2025-09-30T19:33:20+00:00",
+  "date_finish": "2025-09-30T19:33:20+00:00",
+  "operating_reset_at": 1759261400,
+  "operating": 0
  }
 }
