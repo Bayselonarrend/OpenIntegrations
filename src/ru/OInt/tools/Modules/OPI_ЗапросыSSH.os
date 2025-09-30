@@ -43,7 +43,7 @@
 //@skip-check constructor-function-return-section
 
 // Раскомментировать, если выполняется OneScript
-// #Использовать "./internal"
+#Использовать "./internal"
 
 #Область СлужебныйПрограммныйИнтерфейс
 
