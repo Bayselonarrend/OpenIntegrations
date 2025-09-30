@@ -120,7 +120,7 @@ begin
 
   AddonDescription := TNewStaticText.Create(WizardForm);
   AddonDescription.Parent := AddonTaskPage.Surface;
-  AddonDescription.Caption := 'Melezh is a small (~1 MB) server-side add-on for OInt that allows you to run a customizable gateway for any of its methods. Melezh can listen on a port of your choice and interpret incoming HTTP requests as OInt commands for further execution. It features built-in logging and a Web UI for convenient configuration';
+  AddonDescription.Caption := 'Melezh is a small (~6 MB) server-side add-on for OInt that allows you to run a customizable gateway for any of its methods. Melezh can listen on a port of your choice and interpret incoming HTTP requests as OInt commands for further execution. It features built-in logging and a Web UI for convenient configuration';
   AddonDescription.WordWrap := True;
   AddonDescription.Width := 350;
   AddonDescription.Height := 300;
