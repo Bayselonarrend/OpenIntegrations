@@ -2657,6 +2657,10 @@ Procedure HTTP_Initialization() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL" , TestParameters);
 
+    TestParameters["HTTP_URL"] = ?(TestParameters["HTTP_URL"] = "127.0.0.1"
+        , OPI_TestDataRetrieval.GetLocalhost()
+        , TestParameters["HTTP_URL"]);
+
     HTTPClient_Initialize(TestParameters);
     HTTPClient_SetURL(TestParameters);
     HTTPClient_SetURLParams(TestParameters);
@@ -2673,6 +2677,10 @@ Procedure HTTP_BodySet() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
+
+    TestParameters["HTTP_URL"] = ?(TestParameters["HTTP_URL"] = "127.0.0.1"
+        , OPI_TestDataRetrieval.GetLocalhost()
+        , TestParameters["HTTP_URL"]);
 
     HTTPClient_SetBinaryBody(TestParameters);
     HTTPClient_SetStringBody(TestParameters);
@@ -2691,6 +2699,10 @@ Procedure HTTP_Settings() Export
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
 
+    TestParameters["HTTP_URL"] = ?(TestParameters["HTTP_URL"] = "127.0.0.1"
+        , OPI_TestDataRetrieval.GetLocalhost()
+        , TestParameters["HTTP_URL"]);
+
     HTTPClient_UseEncoding(TestParameters);
     HTTPClient_UseGzipCompression(TestParameters);
     HTTPClient_UseBodyFiledsAtOAuth(TestParameters);
@@ -2704,6 +2716,10 @@ Procedure HTTP_HeadersSetting() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
 
+    TestParameters["HTTP_URL"] = ?(TestParameters["HTTP_URL"] = "127.0.0.1"
+        , OPI_TestDataRetrieval.GetLocalhost()
+        , TestParameters["HTTP_URL"]);
+
     HTTPClient_SetHeaders(TestParameters);
     HTTPClient_AddHeader(TestParameters);
 
@@ -2713,6 +2729,10 @@ Procedure HTTP_Authorization() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
+
+    TestParameters["HTTP_URL"] = ?(TestParameters["HTTP_URL"] = "127.0.0.1"
+        , OPI_TestDataRetrieval.GetLocalhost()
+        , TestParameters["HTTP_URL"]);
 
     HTTPClient_AddBasicAuthorization(TestParameters);
     HTTPClient_AddBearerAuthorization(TestParameters);
@@ -2726,6 +2746,10 @@ Procedure HTTP_RequestProcessing() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
+
+    TestParameters["HTTP_URL"] = ?(TestParameters["HTTP_URL"] = "127.0.0.1"
+        , OPI_TestDataRetrieval.GetLocalhost()
+        , TestParameters["HTTP_URL"]);
 
     HTTPClient_ProcessRequest(TestParameters);
     HTTPClient_ExecuteRequest(TestParameters);

@@ -1093,8 +1093,16 @@ Function GetSSHParameterOptions() Export
     ParameterToCollection("Proxy_Port"    , TestParametersMain);
     ParameterToCollection("Access_Token"  , TestParametersMain);
 
+    Localhost = GetLocalhost();
+
+    Socks5IP                        = TestParametersMain["Socks5_IP"];
+    TestParametersMain["Socks5_IP"] = ?(Socks5IP = "127.0.0.1", Localhost, Socks5IP);
+
+    HttpProxyIP                    = TestParametersMain["Proxy_IP"];
+    TestParametersMain["Proxy_IP"] = ?(HttpProxyIP = "127.0.0.1", Localhost, HttpProxyIP);
+
     NetAddress = TestParametersMain["SSH_Host"];
-    TestParametersMain.Insert("SSH_Host", GetLocalhost());
+    TestParametersMain.Insert("SSH_Host", Localhost);
 
     PrivateKey = GetTempFileName();
     Token      = TestParametersMain["Access_Token"];
