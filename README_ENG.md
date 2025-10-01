@@ -139,8 +139,8 @@ The companies listed below support the development of the Open Integration Packa
 
 ||
 |-|
-| <img width="100" height="120" alt="Logo_GREEN-API_icon_G_green" src="https://github.com/user-attachments/assets/df7802ad-d107-47d5-881e-ba900bf5ea6b" /> |
-| **GreenAPI** <br/> Stable WhatsApp API <br/> Gateway <br/> <br/> [green-api.com](https://green-api.com/) 🌍 |
+| <img width="100" height="120" alt="Logo_GREEN-API_icon_G_green" src="docs/docusaurus/static/img/Sponsors/GreenAPI.png" /> |
+| **GreenAPI** <br/> Stable WhatsApp API <br/> Gateway <br/> <br/> [green-api.com](https://green-api.com/en) 🌍 |
 
 <br/>
 
