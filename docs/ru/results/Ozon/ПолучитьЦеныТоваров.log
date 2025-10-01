@@ -420,15 +420,15 @@
    "volume_weight": 0.6,
    "commissions": {
     "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 96,
-    "fbo_direct_flow_trans_min_amount": 96,
-    "fbo_return_flow_amount": 96,
+    "fbo_direct_flow_trans_max_amount": 101,
+    "fbo_direct_flow_trans_min_amount": 101,
+    "fbo_return_flow_amount": 101,
     "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 134,
-    "fbs_direct_flow_trans_max_amount": 134,
+    "fbs_direct_flow_trans_min_amount": 139,
+    "fbs_direct_flow_trans_max_amount": 139,
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 134,
+    "fbs_return_flow_amount": 139,
     "sales_percent_fbo": 30,
     "sales_percent_fbs": 29.5,
     "sales_percent_rfbs": 27,
@@ -438,6 +438,12 @@
     "current_period_from": null,
     "current_period_to": null,
     "actions": [
+     {
+      "title": "Максимальный бустинг.",
+      "value": 1646,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
      {
       "title": "Максимальный бустинг: усиление",
       "value": 1646,
@@ -450,7 +456,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1349,
+    "marketing_price": 1348,
     "marketing_seller_price": 1646,
     "min_price": 1646,
     "old_price": 2195,
@@ -462,9 +468,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 792,
+     "min_price": 775,
      "min_price_currency": "RUB",
-     "price_index_value": 1.38
+     "price_index_value": 1.4
     },
     "ozon_index_data": {
      "min_price": 1461,
@@ -757,9 +763,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 639,
+     "min_price": 853,
      "min_price_currency": "RUB",
-     "price_index_value": 0.76
+     "price_index_value": 0.57
     },
     "ozon_index_data": {
      "min_price": 626,
@@ -816,9 +822,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 972,
+     "min_price": 980,
      "min_price_currency": "RUB",
-     "price_index_value": 0.47
+     "price_index_value": 0.46
     },
     "ozon_index_data": {
      "min_price": 637,
@@ -840,15 +846,15 @@
    "volume_weight": 0.7,
    "commissions": {
     "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 96,
-    "fbo_direct_flow_trans_min_amount": 96,
-    "fbo_return_flow_amount": 96,
+    "fbo_direct_flow_trans_max_amount": 101,
+    "fbo_direct_flow_trans_min_amount": 101,
+    "fbo_return_flow_amount": 101,
     "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 134,
-    "fbs_direct_flow_trans_max_amount": 134,
+    "fbs_direct_flow_trans_min_amount": 139,
+    "fbs_direct_flow_trans_max_amount": 139,
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 134,
+    "fbs_return_flow_amount": 139,
     "sales_percent_fbo": 30,
     "sales_percent_fbs": 26,
     "sales_percent_rfbs": 24,
@@ -3122,11 +3128,11 @@
      "price_index_value": 1.18
     },
     "ozon_index_data": {
-     "min_price": 388,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.98
+     "price_index_value": 0
     },
-    "color_index": "YELLOW",
+    "color_index": "RED",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -3731,15 +3737,15 @@
    "volume_weight": 3.2,
    "commissions": {
     "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 146,
-    "fbo_direct_flow_trans_min_amount": 146,
-    "fbo_return_flow_amount": 146,
+    "fbo_direct_flow_trans_max_amount": 176,
+    "fbo_direct_flow_trans_min_amount": 176,
+    "fbo_return_flow_amount": 176,
     "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 224,
-    "fbs_direct_flow_trans_max_amount": 224,
+    "fbs_direct_flow_trans_min_amount": 254,
+    "fbs_direct_flow_trans_max_amount": 254,
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 224,
+    "fbs_return_flow_amount": 254,
     "sales_percent_fbo": 30,
     "sales_percent_fbs": 26,
     "sales_percent_rfbs": 24,
@@ -3790,15 +3796,15 @@
    "volume_weight": 0.9,
    "commissions": {
     "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 106,
-    "fbo_direct_flow_trans_min_amount": 106,
-    "fbo_return_flow_amount": 106,
+    "fbo_direct_flow_trans_max_amount": 116,
+    "fbo_direct_flow_trans_min_amount": 116,
+    "fbo_return_flow_amount": 116,
     "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 152,
-    "fbs_direct_flow_trans_max_amount": 152,
+    "fbs_direct_flow_trans_min_amount": 162,
+    "fbs_direct_flow_trans_max_amount": 162,
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 152,
+    "fbs_return_flow_amount": 162,
     "sales_percent_fbo": 30,
     "sales_percent_fbs": 26,
     "sales_percent_rfbs": 24,
@@ -3849,15 +3855,15 @@
    "volume_weight": 1.9,
    "commissions": {
     "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 156,
-    "fbo_direct_flow_trans_min_amount": 156,
-    "fbo_return_flow_amount": 156,
+    "fbo_direct_flow_trans_max_amount": 191,
+    "fbo_direct_flow_trans_min_amount": 191,
+    "fbo_return_flow_amount": 191,
     "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 242,
-    "fbs_direct_flow_trans_max_amount": 242,
+    "fbs_direct_flow_trans_min_amount": 277,
+    "fbs_direct_flow_trans_max_amount": 277,
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 242,
+    "fbs_return_flow_amount": 277,
     "sales_percent_fbo": 30,
     "sales_percent_fbs": 26,
     "sales_percent_rfbs": 24,
@@ -4610,7 +4616,7 @@
    }
   },
   {
-   "acquiring": 25.27,
+   "acquiring": 23.2,
    "offer_id": "0371060541",
    "product_id": 1376052792,
    "volume_weight": 0.9,
@@ -4633,14 +4639,21 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [],
+    "actions": [
+     {
+      "title": "Максимальный бустинг.",
+      "value": 1221,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     }
+    ],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1084,
-    "marketing_seller_price": 1330,
+    "marketing_price": 1014,
+    "marketing_seller_price": 1221,
     "min_price": 1221,
     "old_price": 1628,
     "price": 1330,
@@ -4651,14 +4664,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1072,
+     "min_price": 1213,
      "min_price_currency": "RUB",
-     "price_index_value": 0.96
+     "price_index_value": 0.8
     },
     "ozon_index_data": {
      "min_price": 1154,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0.84
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -6310,16 +6323,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 439,
+     "min_price": 564,
      "min_price_currency": "RUB",
-     "price_index_value": 1.15
+     "price_index_value": 0.91
     },
     "ozon_index_data": {
-     "min_price": 459,
+     "min_price": 559,
      "min_price_currency": "RUB",
-     "price_index_value": 1.11
+     "price_index_value": 0.92
     },
-    "color_index": "RED",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -6374,11 +6387,11 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 1264,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.89
+     "price_index_value": 0
     },
-    "color_index": "GREEN",
+    "color_index": "WITHOUT_INDEX",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -6487,7 +6500,7 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1187,
+     "min_price": 1195,
      "min_price_currency": "RUB",
      "price_index_value": 0.91
     },
@@ -7061,6 +7074,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 2023,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 2023,
       "date_from": "2025-09-14T21:00:00Z",
@@ -7102,7 +7121,7 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 30.38,
    "offer_id": "4100347986",
    "product_id": 1443990405,
    "volume_weight": 0.3,
@@ -7125,14 +7144,21 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [],
+    "actions": [
+     {
+      "title": "Максимальный бустинг.",
+      "value": 1599,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     }
+    ],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1436,
-    "marketing_seller_price": 1777,
+    "marketing_price": 1306,
+    "marketing_seller_price": 1599,
     "min_price": 1599,
     "old_price": 2132,
     "price": 1777,
@@ -7150,7 +7176,7 @@
     "ozon_index_data": {
      "min_price": 3172,
      "min_price_currency": "RUB",
-     "price_index_value": 0.43
+     "price_index_value": 0.39
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7363,6 +7389,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 1693,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 1693,
       "date_from": "2025-09-14T21:00:00Z",
@@ -7386,9 +7418,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1652,
+     "min_price": 1566,
      "min_price_currency": "RUB",
-     "price_index_value": 0.8
+     "price_index_value": 0.84
     },
     "ozon_index_data": {
      "min_price": 1552,
@@ -7429,6 +7461,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 1552,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 1552,
       "date_from": "2025-09-14T21:00:00Z",
@@ -7440,7 +7478,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1276,
+    "marketing_price": 1271,
     "marketing_seller_price": 1552,
     "min_price": 1552,
     "old_price": 2070,
@@ -7457,7 +7495,7 @@
      "price_index_value": 0.68
     },
     "ozon_index_data": {
-     "min_price": 1789,
+     "min_price": 1788,
      "min_price_currency": "RUB",
      "price_index_value": 0.68
     },
@@ -7554,6 +7592,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 1881,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 1881,
       "date_from": "2025-09-14T21:00:00Z",
@@ -7577,9 +7621,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 3314,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.44
+     "price_index_value": 0
     },
     "ozon_index_data": {
      "min_price": 2433,
@@ -7856,6 +7900,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 301,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 301,
       "date_from": "2025-09-14T21:00:00Z",
@@ -7879,16 +7929,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 234,
+     "min_price": 245,
      "min_price_currency": "RUB",
-     "price_index_value": 1.06
+     "price_index_value": 1.02
     },
     "ozon_index_data": {
      "min_price": 211,
      "min_price_currency": "RUB",
      "price_index_value": 1.16
     },
-    "color_index": "RED",
+    "color_index": "YELLOW",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -8047,6 +8097,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 1881,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 1881,
       "date_from": "2025-09-14T21:00:00Z",
@@ -8070,9 +8126,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 2475,
+     "min_price": 2443,
      "min_price_currency": "RUB",
-     "price_index_value": 0.59
+     "price_index_value": 0.6
     },
     "ozon_index_data": {
      "min_price": 2253,
@@ -8318,9 +8374,9 @@
      "price_index_value": 1.67
     },
     "ozon_index_data": {
-     "min_price": 2807,
+     "min_price": 3079,
      "min_price_currency": "RUB",
-     "price_index_value": 0.83
+     "price_index_value": 0.76
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -8331,7 +8387,7 @@
    }
   },
   {
-   "acquiring": 37.28,
+   "acquiring": 33.55,
    "offer_id": "0380359606",
    "product_id": 1535623959,
    "volume_weight": 0.1,
@@ -8354,14 +8410,21 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [],
+    "actions": [
+     {
+      "title": "Максимальный бустинг.",
+      "value": 1766,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     }
+    ],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1557,
-    "marketing_seller_price": 1962,
+    "marketing_price": 1446,
+    "marketing_seller_price": 1766,
     "min_price": 1766,
     "old_price": 2354,
     "price": 1962,
@@ -8374,12 +8437,12 @@
     "external_index_data": {
      "min_price": 1827,
      "min_price_currency": "RUB",
-     "price_index_value": 0.81
+     "price_index_value": 0.75
     },
     "ozon_index_data": {
      "min_price": 1665,
      "min_price_currency": "RUB",
-     "price_index_value": 0.88
+     "price_index_value": 0.83
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8474,6 +8537,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 2872,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 2872,
       "date_from": "2025-09-14T21:00:00Z",
@@ -8485,7 +8554,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2345,
+    "marketing_price": 2353,
     "marketing_seller_price": 2872,
     "min_price": 2872,
     "old_price": 3829,
@@ -8502,9 +8571,9 @@
      "price_index_value": 1.66
     },
     "ozon_index_data": {
-     "min_price": 2855,
+     "min_price": 2769,
      "min_price_currency": "RUB",
-     "price_index_value": 0.78
+     "price_index_value": 0.81
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -8515,7 +8584,7 @@
    }
   },
   {
-   "acquiring": 69.86,
+   "acquiring": 66.31,
    "offer_id": "0370355068",
    "product_id": 1535648291,
    "volume_weight": 0.2,
@@ -8538,14 +8607,21 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [],
+    "actions": [
+     {
+      "title": "Максимальный бустинг.",
+      "value": 3490,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     }
+    ],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 3048,
-    "marketing_seller_price": 3677,
+    "marketing_price": 2893,
+    "marketing_seller_price": 3490,
     "min_price": 3490,
     "old_price": 4653,
     "price": 3677,
@@ -8556,14 +8632,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 771,
+     "min_price": 811,
      "min_price_currency": "RUB",
-     "price_index_value": 1.73
+     "price_index_value": 1.7
     },
     "ozon_index_data": {
-     "min_price": 3455,
+     "min_price": 3079,
      "min_price_currency": "RUB",
-     "price_index_value": 0.84
+     "price_index_value": 0.89
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -8733,9 +8809,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 923,
+     "min_price": 1002,
      "min_price_currency": "RUB",
-     "price_index_value": 0.79
+     "price_index_value": 0.73
     },
     "ozon_index_data": {
      "min_price": 857,
@@ -8894,6 +8970,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 828,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 828,
       "date_from": "2025-09-14T21:00:00Z",
@@ -8905,7 +8987,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 682,
+    "marketing_price": 683,
     "marketing_seller_price": 828,
     "min_price": 828,
     "old_price": 1104,
@@ -8922,9 +9004,9 @@
      "price_index_value": 0.77
     },
     "ozon_index_data": {
-     "min_price": 746,
+     "min_price": 742,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 0.88
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9217,11 +9299,11 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 1939,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.97
+     "price_index_value": 0
     },
-    "color_index": "GREEN",
+    "color_index": "WITHOUT_INDEX",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -9432,6 +9514,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 1881,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 1881,
       "date_from": "2025-09-14T21:00:00Z",
@@ -9455,14 +9543,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1222,
+     "min_price": 1159,
      "min_price_currency": "RUB",
-     "price_index_value": 1.16
+     "price_index_value": 1.21
     },
     "ozon_index_data": {
-     "min_price": 2084,
+     "min_price": 2034,
      "min_price_currency": "RUB",
-     "price_index_value": 0.7
+     "price_index_value": 0.72
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -9498,6 +9586,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 2728,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 2728,
       "date_from": "2025-09-14T21:00:00Z",
@@ -9509,7 +9603,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2250,
+    "marketing_price": 2242,
     "marketing_seller_price": 2728,
     "min_price": 2728,
     "old_price": 3637,
@@ -9564,6 +9658,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 1411,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 1411,
       "date_from": "2025-09-14T21:00:00Z",
@@ -9575,7 +9675,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1160,
+    "marketing_price": 1170,
     "marketing_seller_price": 1411,
     "min_price": 1411,
     "old_price": 1881,
@@ -9592,9 +9692,9 @@
      "price_index_value": 1.46
     },
     "ozon_index_data": {
-     "min_price": 1642,
+     "min_price": 1603,
      "min_price_currency": "RUB",
-     "price_index_value": 0.67
+     "price_index_value": 0.69
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -9630,6 +9730,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 2070,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 2070,
       "date_from": "2025-09-14T21:00:00Z",
@@ -9653,9 +9759,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 2440,
+     "min_price": 2311,
      "min_price_currency": "RUB",
-     "price_index_value": 0.67
+     "price_index_value": 0.7
     },
     "ozon_index_data": {
      "min_price": 2447,
@@ -9677,15 +9783,15 @@
    "volume_weight": 4,
    "commissions": {
     "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 146,
-    "fbo_direct_flow_trans_min_amount": 146,
-    "fbo_return_flow_amount": 146,
+    "fbo_direct_flow_trans_max_amount": 176,
+    "fbo_direct_flow_trans_min_amount": 176,
+    "fbo_return_flow_amount": 176,
     "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 224,
-    "fbs_direct_flow_trans_max_amount": 224,
+    "fbs_direct_flow_trans_min_amount": 254,
+    "fbs_direct_flow_trans_max_amount": 254,
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 224,
+    "fbs_return_flow_amount": 254,
     "sales_percent_fbo": 27,
     "sales_percent_fbs": 27.5,
     "sales_percent_rfbs": 26,
@@ -9755,6 +9861,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 1816,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 1816,
       "date_from": "2025-09-14T21:00:00Z",
@@ -9778,14 +9890,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1546,
+     "min_price": 1514,
      "min_price_currency": "RUB",
-     "price_index_value": 0.92
+     "price_index_value": 0.93
     },
     "ozon_index_data": {
-     "min_price": 1460,
+     "min_price": 1428,
      "min_price_currency": "RUB",
-     "price_index_value": 0.97
+     "price_index_value": 0.99
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9821,6 +9933,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 2244,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 2244,
       "date_from": "2025-09-14T21:00:00Z",
@@ -9844,16 +9962,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1760,
+     "min_price": 1933,
      "min_price_currency": "RUB",
-     "price_index_value": 0.99
+     "price_index_value": 0.9
     },
     "ozon_index_data": {
-     "min_price": 1554,
+     "min_price": 1965,
      "min_price_currency": "RUB",
-     "price_index_value": 1.11
+     "price_index_value": 0.89
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -10729,9 +10847,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 573,
+     "min_price": 578,
      "min_price_currency": "RUB",
-     "price_index_value": 0.86
+     "price_index_value": 0.85
     },
     "ozon_index_data": {
      "min_price": 1215,
@@ -10788,9 +10906,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 393,
+     "min_price": 396,
      "min_price_currency": "RUB",
-     "price_index_value": 1.21
+     "price_index_value": 1.2
     },
     "ozon_index_data": {
      "min_price": 491,
@@ -10890,6 +11008,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 1599,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 1599,
       "date_from": "2025-09-14T21:00:00Z",
@@ -10913,9 +11037,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1198,
+     "min_price": 1222,
      "min_price_currency": "RUB",
-     "price_index_value": 1.04
+     "price_index_value": 1.02
     },
     "ozon_index_data": {
      "min_price": 1126,
@@ -11015,6 +11139,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 1599,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 1599,
       "date_from": "2025-09-14T21:00:00Z",
@@ -11081,6 +11211,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 899,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 899,
       "date_from": "2025-09-14T21:00:00Z",
@@ -11092,7 +11228,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 740,
+    "marketing_price": 741,
     "marketing_seller_price": 899,
     "min_price": 1200,
     "old_price": 2132,
@@ -11106,12 +11242,12 @@
     "external_index_data": {
      "min_price": 886,
      "min_price_currency": "RUB",
-     "price_index_value": 0.79
+     "price_index_value": 0.8
     },
     "ozon_index_data": {
-     "min_price": 1325,
+     "min_price": 995,
      "min_price_currency": "RUB",
-     "price_index_value": 0.53
+     "price_index_value": 0.71
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -11855,6 +11991,12 @@
     "current_period_to": null,
     "actions": [
      {
+      "title": "Максимальный бустинг.",
+      "value": 2164,
+      "date_from": "2025-09-09T21:00:00Z",
+      "date_to": "2025-10-02T20:59:59Z"
+     },
+     {
       "title": "Максимальный бустинг: усиление",
       "value": 2164,
       "date_from": "2025-09-14T21:00:00Z",
@@ -12012,102 +12154,8 @@
      "price_index_value": 0
     }
    }
-  },
-  {
-   "acquiring": 0,
-   "offer_id": "143210609",
-   "product_id": 2809709447,
-   "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 0,
-    "fbo_direct_flow_trans_max_amount": 0,
-    "fbo_direct_flow_trans_min_amount": 0,
-    "fbo_return_flow_amount": 0,
-    "fbs_deliv_to_customer_amount": 0,
-    "fbs_direct_flow_trans_min_amount": 0,
-    "fbs_direct_flow_trans_max_amount": 0,
-    "fbs_first_mile_max_amount": 0,
-    "fbs_first_mile_min_amount": 0,
-    "fbs_return_flow_amount": 0,
-    "sales_percent_fbo": 0,
-    "sales_percent_fbs": 0,
-    "sales_percent_rfbs": 0,
-    "sales_percent_fbp": 0
-   },
-   "marketing_actions": {
-    "current_period_from": null,
-    "current_period_to": null,
-    "actions": [],
-    "ozon_actions_exist": false
-   },
-   "price": {
-    "auto_action_enabled": false,
-    "currency_code": "RUB",
-    "marketing_price": 0,
-    "marketing_seller_price": 0,
-    "min_price": 0,
-    "old_price": 1300,
-    "price": 1300,
-    "retail_price": 0,
-    "vat": 0.1,
-    "auto_add_to_ozon_actions_list_enabled": true,
-    "net_price": 0
-   },
-   "price_indexes": {
-    "external_index_data": null,
-    "ozon_index_data": null,
-    "color_index": "WITHOUT_INDEX",
-    "self_marketplaces_index_data": null
-   }
-  },
-  {
-   "acquiring": 0,
-   "offer_id": "1432106010",
-   "product_id": 2809709604,
-   "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 0,
-    "fbo_direct_flow_trans_max_amount": 0,
-    "fbo_direct_flow_trans_min_amount": 0,
-    "fbo_return_flow_amount": 0,
-    "fbs_deliv_to_customer_amount": 0,
-    "fbs_direct_flow_trans_min_amount": 0,
-    "fbs_direct_flow_trans_max_amount": 0,
-    "fbs_first_mile_max_amount": 0,
-    "fbs_first_mile_min_amount": 0,
-    "fbs_return_flow_amount": 0,
-    "sales_percent_fbo": 0,
-    "sales_percent_fbs": 0,
-    "sales_percent_rfbs": 0,
-    "sales_percent_fbp": 0
-   },
-   "marketing_actions": {
-    "current_period_from": null,
-    "current_period_to": null,
-    "actions": [],
-    "ozon_actions_exist": false
-   },
-   "price": {
-    "auto_action_enabled": false,
-    "currency_code": "RUB",
-    "marketing_price": 0,
-    "marketing_seller_price": 0,
-    "min_price": 0,
-    "old_price": 1300,
-    "price": 1300,
-    "retail_price": 0,
-    "vat": 0.1,
-    "auto_add_to_ozon_actions_list_enabled": true,
-    "net_price": 0
-   },
-   "price_indexes": {
-    "external_index_data": null,
-    "ozon_index_data": null,
-    "color_index": "WITHOUT_INDEX",
-    "self_marketplaces_index_data": null
-   }
   }
  ],
- "cursor": "WzI4MDk3MDk2MDQsMjgwOTcwOTYwNF0=",
- "total": 203
+ "cursor": "WzI4MDk3MDk0NDcsMjgwOTcwOTQ0N10=",
+ "total": 202
 }
