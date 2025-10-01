@@ -1,4 +1,4 @@
-﻿    Token = "7419cd51de4037f7...";
+﻿    Token = "f1e616e20ab5893b...";
 
     Image1 = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
     Image2 = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Path or Binary Data

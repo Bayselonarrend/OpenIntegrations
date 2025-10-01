@@ -1,4 +1,4 @@
-﻿    Token = "7419cd51de4037f7...";
+﻿    Token = "f1e616e20ab5893b...";
 
     LocalFolder  = "C:\test_site";
     RemoteFolder = "test_sync";

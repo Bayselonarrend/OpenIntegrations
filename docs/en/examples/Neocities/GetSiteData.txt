@@ -1,4 +1,4 @@
-﻿    Token   = "7419cd51de4037f7...";
+﻿    Token   = "f1e616e20ab5893b...";
     Website = "2athenaeum";
 
     Result = OPI_Neocities.GetSiteData(Token);
