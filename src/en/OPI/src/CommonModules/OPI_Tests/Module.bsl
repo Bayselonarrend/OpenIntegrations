@@ -23194,10 +23194,10 @@ Procedure SSH_GetSettingsViaAgent(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
-    Host        = FunctionParameters["SSH_Host"];
-    Port        = FunctionParameters["SSH_Port"];
-    Login       = FunctionParameters["SSH_User"];
-    SSHSettings = OPI_SSH.GetSettingsViaAgent(Host, Port, Login);
+    Host   = FunctionParameters["SSH_Host"];
+    Port   = FunctionParameters["SSH_Port"];
+    Login  = FunctionParameters["SSH_User"];
+    Result = OPI_SSH.GetSettingsViaAgent(Host, Port, Login);
 
     // END
 
