@@ -5,6 +5,145 @@
     "comments": 1,
     "likes": 1
    },
+   "period_from": 1759276800,
+   "period_to": 1759363199,
+   "reach": {
+    "age": [
+     {
+      "value": "12-18",
+      "count": 0
+     },
+     {
+      "value": "18-21",
+      "count": 0
+     },
+     {
+      "value": "21-24",
+      "count": 0
+     },
+     {
+      "value": "24-27",
+      "count": 1
+     },
+     {
+      "value": "27-30",
+      "count": 0
+     },
+     {
+      "value": "30-35",
+      "count": 0
+     },
+     {
+      "value": "35-45",
+      "count": 0
+     },
+     {
+      "value": "45-100",
+      "count": 0
+     }
+    ],
+    "cities": [],
+    "countries": [
+     {
+      "code": "BY",
+      "count": 1,
+      "name": "Беларусь",
+      "value": 3
+     }
+    ],
+    "mobile_reach": 1,
+    "reach": 1,
+    "reach_subscribers": 1,
+    "sex": [
+     {
+      "value": "f",
+      "count": 0
+     },
+     {
+      "value": "m",
+      "count": 1
+     }
+    ],
+    "sex_age": [
+     {
+      "value": "f;12-18",
+      "count": 0
+     },
+     {
+      "value": "f;18-21",
+      "count": 0
+     },
+     {
+      "value": "f;21-24",
+      "count": 0
+     },
+     {
+      "value": "f;24-27",
+      "count": 0
+     },
+     {
+      "value": "f;27-30",
+      "count": 0
+     },
+     {
+      "value": "f;30-35",
+      "count": 0
+     },
+     {
+      "value": "f;35-45",
+      "count": 0
+     },
+     {
+      "value": "f;45-100",
+      "count": 0
+     },
+     {
+      "value": "m;12-18",
+      "count": 0
+     },
+     {
+      "value": "m;18-21",
+      "count": 0
+     },
+     {
+      "value": "m;21-24",
+      "count": 0
+     },
+     {
+      "value": "m;24-27",
+      "count": 1
+     },
+     {
+      "value": "m;27-30",
+      "count": 0
+     },
+     {
+      "value": "m;30-35",
+      "count": 0
+     },
+     {
+      "value": "m;35-45",
+      "count": 0
+     },
+     {
+      "value": "m;45-100",
+      "count": 0
+     }
+    ]
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [],
+    "mobile_views": 0,
+    "views": 0,
+    "visitors": 0
+   }
+  },
+  {
+   "activity": {
+    "comments": 1,
+    "likes": 1
+   },
    "period_from": 1759190400,
    "period_to": 1759276799,
    "reach": {
@@ -150,31 +289,6 @@
     "mobile_views": 0,
     "views": 2,
     "visitors": 2
-   }
-  },
-  {
-   "period_from": 1759104000,
-   "period_to": 1759190399,
-   "reach": {
-    "cities": [],
-    "countries": [],
-    "mobile_reach": 0,
-    "reach": 0,
-    "reach_subscribers": 0
-   },
-   "visitors": {
-    "cities": [],
-    "countries": [
-     {
-      "code": "SC",
-      "count": 1,
-      "name": "Сейшелы",
-      "value": 175
-     }
-    ],
-    "mobile_views": 0,
-    "views": 1,
-    "visitors": 1
    }
   }
  ]
