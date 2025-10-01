@@ -30483,15 +30483,15 @@ Procedure SSH_GetSettingsViaAgent(FunctionParameters)
 
     Postfix = FunctionParameters["Postfix"]; // SKIP
 
-    Host        = FunctionParameters["SSH_Host"];
-    Port        = FunctionParameters["SSH_Port"];
-    Login       = FunctionParameters["SSH_User"];
+    Host   = FunctionParameters["SSH_Host"];
+    Port   = FunctionParameters["SSH_Port"];
+    Login  = FunctionParameters["SSH_User"];
     Options = New Structure;
     Options.Insert("host", Host);
     Options.Insert("port", Port);
     Options.Insert("user", Login);
 
-    SSHSettings = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetSettingsViaAgent", Options);
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("ssh", "GetSettingsViaAgent", Options);
 
     // END
 
