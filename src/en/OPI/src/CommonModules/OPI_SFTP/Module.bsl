@@ -60,9 +60,9 @@
 // Arbitrary, Map of KeyAndValue - Create Connection
 Function CreateConnection(Val SSHSettings, Val Proxy = "") Export
 
-    SSHConnection = OPI_SSH.CreateConnection(SSHSettings, Proxy);
+    SSHConnection = OPI_SSHRequests.CreateConnection(SSHSettings, Proxy);
 
-    If OPI_SSH.IsConnector(SSHConnection) Then
+    If IsConnector(SSHConnection) Then
         Result = SSHConnection.ToSFTP();
         Result = OPI_Tools.JsonToStructure(Result);
     Else
@@ -90,7 +90,7 @@ EndFunction
 // Structure Of KeyAndValue - Connection settings structure
 Function GetConnectionConfiguration(Val SSHSettings, Val Proxy = Undefined) Export
 
-    Return OPI_SSH.GetConnectionConfiguration(SSHSettings, Proxy);
+    Return OPI_SSHRequests.GetConnectionConfiguration(SSHSettings, Proxy);
 
 EndFunction
 
@@ -104,7 +104,7 @@ EndFunction
 // Structure Of KeyAndValue - Result of connection termination
 Function CloseConnection(Val Connection) Export
 
-    Return OPI_SSH.CloseConnection(Connection);
+    Return OPI_SSHRequests.CloseConnection(Connection);
 
 EndFunction
 
@@ -118,7 +118,7 @@ EndFunction
 // Boolean - Is connector
 Function IsConnector(Val Value) Export
 
-    Return OPI_SSH.IsConnector(Value);
+    Return OPI_SSHRequests.IsConnector(Value);
 
 EndFunction
 
@@ -135,7 +135,7 @@ EndFunction
 // Structure Of KeyAndValue - Connection configuration
 Function GetSettingsLoginPassword(Val Host, Val Port, Val Login, Val Password = "") Export
 
-    Return OPI_SSH.GetSettingsLoginPassword(Host, Port, Login, Password);
+    Return OPI_SSHRequests.GetSettingsLoginPassword(Host, Port, Login, Password);
 
 EndFunction
 
@@ -159,7 +159,7 @@ Function GetSettingsPrivateKey(Val Host
     , Val Public = ""
     , Val Password = "") Export
 
-    Return OPI_SSH.GetSettingsPrivateKey(Host, Port, Login, Private, Public, Password);
+    Return OPI_SSHRequests.GetSettingsPrivateKey(Host, Port, Login, Private, Public, Password);
 
 EndFunction
 
@@ -175,7 +175,7 @@ EndFunction
 // Structure Of KeyAndValue - Connection configuration
 Function GetSettingsViaAgent(Val Host, Val Port, Val Login) Export
 
-    Return OPI_SSH.GetSettingsViaAgent(Host, Port, Login);
+    Return OPI_SSHRequests.GetSettingsViaAgent(Host, Port, Login);
 
 EndFunction
 
@@ -331,7 +331,7 @@ Function GetCurrentDirectory(Val Connection) Export
         Return Connection;
     Else
 
-        Result = OPI_SSH.ExecuteCommand(Connection, "pwd");
+        Result = OPI_SSHRequests.ExecuteCommand(Connection, "pwd");
         ProcessSSHCommandExecution(Result, "path");
 
     EndIf;

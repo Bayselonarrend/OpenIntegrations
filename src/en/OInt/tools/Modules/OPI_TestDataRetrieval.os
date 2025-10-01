@@ -1108,7 +1108,8 @@ Function GetSSHParameterOptions() Export
 
     TestParametersMain.Insert("SSH_Key", PrivateKey);
 
-    TestParametersMain.Insert("Proxy", False);
+    TestParametersMain.Insert("Proxy"     , False);
+    TestParametersMain.Insert("Proxy_Type", "none");
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("AuthType", "By login and password");

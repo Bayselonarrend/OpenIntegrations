@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="b59f0d9d-94ec-4c4b-80a2-c75fa4e29094">
+  <name>OPI_SSHRequests</name>
+  <synonym>
+    <key>en</key>
+    <value>SSH (Utility, OpenIntegrations)</value>
+  </synonym>
+  <comment>Common SSH Tools Module of OpenIntegrations</comment>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>
