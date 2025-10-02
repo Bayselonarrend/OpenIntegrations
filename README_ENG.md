@@ -1,22 +1,21 @@
 ![Main](media/main.gif#gh-dark-mode-only#gh-dark-mode-only)
 ![Main-light](media/main-light.gif#gh-light-mode-only)
 
-
 # Open Integrations Package
+
 ![Версия](https://img.shields.io/badge/1C_version-8.3.10-yellow)
 [![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/2/736878759.json)](https://openyellow.org/grid?data=top&repo=736878759)
 [![OneScript](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/media/os-logo.json)](https://github.com/EvilBeaver/OneScript)
 [![Boosty](media/boosty.svg)](https://boosty.to/bayselonarrend)
 
 <br>
-A set of tools for integration with popular APIs: console application (Windows/Linux) and library (extension) for 1C:Enterprise/OneScript, consisting of a common set of ready-made functions for working with many well-known cloud services <br>
-
+A set of integration tools with popular APIs: console application (Windows/Linux) and library (extension) for 1C:Enterprise/OneScript, consisting of a common set of ready-made functions for working with multiple well-known cloud services <br>
 
 <br>
 
-The implemented methods perform specific tasks (such as ``SendMessage`` or ``CreatePost``), allowing them to be used without delving into the implementation details. However, the code is highly decomposed – authorization methods, data retrieval, etc., are separated into individual functions where possible. This makes it easy to add new methods, even if they are not yet implemented in the library at the current time. <br><br>
+All implemented methods from the set perform specific application tasks, such as `SendMessage` or `CreatePost`, allowing them to be used without deep diving into the implementation. However, the code is well-decomposed: authorization methods, data retrieval, etc., are separated into distinct functions where possible. This facilitates easy addition of new methods based on existing ones without unraveling the implementation chain from the very beginning of API interaction <br><br>
 
-List of currently available APIs:
+📋 Currently implemented methods for working with the following services ([list](/media/catalogs/Catalog.md))
 <br>
   <div>
   <a href="https://en.openintegrations.dev/docs/Instructions/Telegram/"><img src="media/Telegram.png" width="40"></a>
@@ -46,14 +45,14 @@ List of currently available APIs:
   <a href="https://en.openintegrations.dev/docs/Instructions/Neocities/"><img src="media/Neocities.png?6" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/FTP/"><img src="media/FTP.png?6" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/TCP/"><img src="media/TCP.png?6" width="40"></a>
-    <a href="https://openintegrations.dev/docs/Instructions/HTTP/"><img src="media/HTTP.png?6" width="40"></a>
+    <a href="https://en.openintegrations.dev/docs/Instructions/HTTP/"><img src="media/HTTP.png?6" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png?6" width="40"></a>
-</div> 
+</div>
 <br>
 
-## Work example
+## Usage Example
 
-Sending picture to Telegram chat for 1C/OneScript
+Sending an image to a Telegram chat from 1C/OneScript
 
 ```bsl
 
@@ -76,11 +75,11 @@ Same thing, but for CLI (bash example)
         --picture "picture.jpg"
 ```
 
-You can use the standard `>` redirect or the oint's `--out` option to save the response in the console. For more details of working with the CLI version, see the corresponding [documentation section](https://en.openintegrations.dev/docs/Start/CLI_version)
+To save the response in the console, you can use the standard `>` redirect or the `--out <file path>` option. For more detailed information on working with the CLI version, refer to the corresponding [documentation section](https://en.openintegrations.dev/docs/Start/CLI_version)
 
 <br>
- 
-## Releases ##
+
+## Installation and Release Variants
 
 [![GitHub Downloads](https://img.shields.io/github/downloads/bayselonarrend/openintegrations/total?logo=github&logoColor=white)](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest)
 [![SourceForge Downloads](https://img.shields.io/sourceforge/dw/openintegrations?logo=sourceforge&logoColor=white&color=orange)](https://sourceforge.net/projects/openintegrations/)
@@ -89,62 +88,67 @@ You can use the standard `>` redirect or the oint's `--out` option to save the r
 
 <br><br>
 
-#### The library releases come in five versions:
-- As a CLI application for Windows and Linux (exe, rpm, deb)
-- As XML extension files for loading via the configurator
-- As an EDT extension project
-- As a standalone extension file in cfe format
-- As a OneScript extension package in ospx format
+#### The library releases are available in five variants
+
+- As CLI application for Windows and Linux (exe, rpm, deb)
+- As XML extension export
+- As EDT extension project
+- As standalone extension file in CFE format
+- As [OneScript](https://github.com/EvilBeaver/OneScript) extension package in OSPX format
 
 <br/><br>
 
-When using the 1C and OneScript versions, you can also simply copy the code of common modules from the releases into your project by hand. However, regardless of the chosen installation method, you should get the files from Release, because the repository source files themselves contain intermediate data and functions under development.
+When using versions for 1C and OneScript, you can also manually copy common module code into your project. However, regardless of the chosen installation method, it is recommended to obtain files from [*Releases*](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest) or the [*stable branch*](https://github.com/Bayselonarrend/OpenIntegrations/tree/stable) of the repository, as the source files in the main branch may contain intermediate data and functions under development.
 
-<br/>
+Quick start options:
 
-+ To start working in 1C it is enough to download the CFE file (or XML upload) of the extension and load it into the extensions list of your configuration <br>
-+ To start working in OneScript, you need to install the package
+- To start working in 1C: Simply [download](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest) the CFE file (or XML export) of the extension and load it into your configuration's extensions list<br>
+- To start working in OneScript: Install the package
 
    From the package hub (RU version only):
+
    ```powershell
        opm install oint
    ```
 
    Or from a downloaded ospx file:
+
    ```powershell
        opm install -f "./OInt-x.x.x.ospx"
    ```
+
 <br>
 
-+ To get started with the CLI (command line application), you need to download the Windows installer or one of the package variants for Linux from the releases, according to the operating system you are using
+- To start working with CLI (command line application): [Download from releases](https://github.com/Bayselonarrend/OpenIntegrations/releases/latest) the Windows installer or one of the Linux package variants, depending on your operating system
 
-   With any installation option, the OInt CLI is started with the `oint` command from the command line (installation from Installer for Windows may require a reboot)
+Regardless of the installation method, OInt CLI is launched with the `oint` command from the command line (when installing via Windows Installer, a system reboot may be required).
 
 <br/>
- 
->[!WARNING]
->Also, there is a single exe-file delivery for the CLI application. To run it, .Net Framework 4.8 or the relevant version of Mono is required.
->This delivery option has performance issues, so we recommend using it only if it is impossible to use other variants on the target system
+
+## Documentation
+
+OpenIntegrations features comprehensive documentation with examples available at [en.openintegrations.dev](https://en.openintegrations.dev). Here you can find both general guidelines for getting started with each specific API and descriptions of each method with code examples, parameters, and return values.
+
+![Docs](media/docs.png?4)
+
+The OpenIntegrations CLI version includes built-in help for all methods. Help is displayed when calling the library without a method, when calling a method without options, or when specifying the `--help` option.
+
+## Sponsors [?](https://boosty.to/bayselonarrend/purchase/3429871?ssource=DIRECT&share=subscription_link)
+
+The companies listed below support the development of the Open Integration Package and make significant contributions to its progress.
+
+||
+|-|
+| <img width="100" height="120" alt="Logo_GREEN-API_icon_G_green" src="docs/docusaurus/static/img/Sponsors/GreenAPI.png" /> |
+| **GreenAPI** <br/> Stable WhatsApp API <br/> Gateway <br/> <br/> [green-api.com](https://green-api.com/en) 🌍 |
+
 <br/>
 
+## Support the Project
 
+If you like this or my other projects, you can support me [on Boosty](https://boosty.to/bayselonarrend) (recurring or one-time). Subscriptions starting from 500 rubles provide access to a private Telegram chat where you can ask questions about the project and get direct help from me. There is also a sponsor subscription for companies with priority support and logo placement in the sponsors list.
 
-## Documentation ##
-
-OpenIntegrations has detailed documentation with examples available at [https://en.openintegrations.dev](https://en.openintegrations.dev). There you can find both general guidelines for getting started with each specific API and descriptions of each method with code examples, parameters, and return values.
-
-![Docs](media/docs_eng.png?4)
-
-The CLI version of OpenIntegrations has its own built-in help for all methods. The help is displayed when calling the library without a method, a method without options, or by specifying the `--help` option.
-
-## Support the project
-
-![image](media/boosty.png)
-
-If you like this or my other projects, you can support me [on Boosty](https://boosty.to/bayselonarrend) (regularly or one-time). With a subscription of 500 rubles (~6 dollars) or more, you'll get access to a private Telegram chat where you can ask questions about the project and receive direct assistance from me.
-
-**Thanks for your support!**
-
+**Thank you for your support!**
 
 <br>
 
