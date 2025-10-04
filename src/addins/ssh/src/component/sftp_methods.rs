@@ -1,7 +1,7 @@
 use std::io::{BufReader, Cursor, Read, copy, Write};
 use std::path::Path;
 use serde_json::{json};
-use ssh2::{Sftp};
+use ssh2::{RenameFlags, Sftp};
 use crate::component::{AddIn};
 use crate::component::format_json_error;
 
@@ -193,6 +193,26 @@ impl AddIn{
         }
 
     }
+
+    pub fn rename_object(&mut self, path: &str, new_path: &str, overwrite: bool) -> String {
+
+        match &self.sftp{
+            Some(s) => {
+
+                let flags = match overwrite {
+                    true => Some(RenameFlags::OVERWRITE),
+                    false => None,
+                };
+
+                match s.rename(path.as_ref(), new_path.as_ref(), flags) {
+                    Ok(_) => json!({"result": true}).to_string(),
+                    Err(e) => format_json_error(&e.to_string())
+                }
+            },
+            None => json!({"result": false, "error": "Init SFTP first"}).to_string()
+        }
+    }
+
 }
 
 fn is_directory(mode: u32) -> bool {
