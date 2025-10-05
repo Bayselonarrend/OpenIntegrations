@@ -1,0 +1,8 @@
+﻿    ProxyType = "http"; // http, socks5, socks4
+
+    ProxyAddress  = "127.0.0.1";
+    ProxyPort     = "8071";
+    ProxyLogin    = "proxyuser";
+    ProxyPassword = "12we...";
+
+    Result = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
