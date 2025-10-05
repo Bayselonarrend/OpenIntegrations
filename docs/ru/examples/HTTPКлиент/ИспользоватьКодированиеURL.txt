@@ -1,4 +1,4 @@
-﻿    URL = "http://localhost:2424";
+﻿    URL = "https://bin.openintegrations.dev";
     URL = URL + "/get";
 
     СтруктураПараметров = Новый Структура;

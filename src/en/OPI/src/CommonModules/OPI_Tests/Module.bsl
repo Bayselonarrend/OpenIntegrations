@@ -2656,10 +2656,6 @@ Procedure HTTP_Initialization() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL" , TestParameters);
 
-    TestParameters["HTTP_URL"] = ?(TestParameters["HTTP_URL"] = "127.0.0.1"
-        , OPI_TestDataRetrieval.GetLocalhost()
-        , TestParameters["HTTP_URL"]);
-
     HTTPClient_Initialize(TestParameters);
     HTTPClient_SetURL(TestParameters);
     HTTPClient_SetURLParams(TestParameters);
@@ -2676,10 +2672,6 @@ Procedure HTTP_BodySet() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
-
-    TestParameters["HTTP_URL"] = ?(TestParameters["HTTP_URL"] = "127.0.0.1"
-        , OPI_TestDataRetrieval.GetLocalhost()
-        , TestParameters["HTTP_URL"]);
 
     HTTPClient_SetBinaryBody(TestParameters);
     HTTPClient_SetStringBody(TestParameters);
@@ -2698,10 +2690,6 @@ Procedure HTTP_Settings() Export
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
 
-    TestParameters["HTTP_URL"] = ?(TestParameters["HTTP_URL"] = "127.0.0.1"
-        , OPI_TestDataRetrieval.GetLocalhost()
-        , TestParameters["HTTP_URL"]);
-
     HTTPClient_UseEncoding(TestParameters);
     HTTPClient_UseGzipCompression(TestParameters);
     HTTPClient_UseBodyFiledsAtOAuth(TestParameters);
@@ -2715,10 +2703,6 @@ Procedure HTTP_HeadersSetting() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
 
-    TestParameters["HTTP_URL"] = ?(TestParameters["HTTP_URL"] = "127.0.0.1"
-        , OPI_TestDataRetrieval.GetLocalhost()
-        , TestParameters["HTTP_URL"]);
-
     HTTPClient_SetHeaders(TestParameters);
     HTTPClient_AddHeader(TestParameters);
 
@@ -2728,10 +2712,6 @@ Procedure HTTP_Authorization() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
-
-    TestParameters["HTTP_URL"] = ?(TestParameters["HTTP_URL"] = "127.0.0.1"
-        , OPI_TestDataRetrieval.GetLocalhost()
-        , TestParameters["HTTP_URL"]);
 
     HTTPClient_AddBasicAuthorization(TestParameters);
     HTTPClient_AddBearerAuthorization(TestParameters);
@@ -2745,10 +2725,6 @@ Procedure HTTP_RequestProcessing() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
-
-    TestParameters["HTTP_URL"] = ?(TestParameters["HTTP_URL"] = "127.0.0.1"
-        , OPI_TestDataRetrieval.GetLocalhost()
-        , TestParameters["HTTP_URL"]);
 
     HTTPClient_ProcessRequest(TestParameters);
     HTTPClient_ExecuteRequest(TestParameters);
@@ -3006,6 +2982,13 @@ Procedure SF_CommonMethods() Export
     For Each TestParameters In OptionArray Do
 
         SFTP_CreateConnection(TestParameters);
+        SFTP_GetConnectionConfiguration(TestParameters);
+        SFTP_IsConnector(TestParameters);
+        SFTP_CloseConnection(TestParameters);
+        SFTP_GetSettingsLoginPassword(TestParameters);
+        SFTP_GetSettingsPrivateKey(TestParameters);
+        SFTP_GetSettingsViaAgent(TestParameters);
+        SFTP_GetProxySettings(TestParameters);
 
     EndDo;
 
@@ -3037,6 +3020,10 @@ Procedure SF_FileManagement() Export
     For Each TestParameters In OptionArray Do
 
         SFTP_UploadFile(TestParameters);
+        SFTP_GetFileInformation(TestParameters);
+        SFTP_GetFileData(TestParameters);
+        SFTP_SaveFile(TestParameters);
+        SFTP_UpdatePath(TestParameters);
         SFTP_DeleteFile(TestParameters);
 
     EndDo;
@@ -22393,7 +22380,7 @@ Procedure FTP_SaveFile(FunctionParameters)
         Result = OPI_FTP.SaveFile(Connection, Path, FileName);
 
         If Not Result["result"] Then
-            Process(FileSize, "FTP", "SaveFile", "Multiple, " + Postfix);
+            Process(Result, "FTP", "SaveFile", "Multiple, " + Postfix);
         EndIf;
 
     EndDo;
@@ -22470,7 +22457,7 @@ Procedure FTP_GetFileData(FunctionParameters)
         Result = OPI_FTP.GetFileData(Connection, Path);
 
         If Not TypeOf(Result) = Type("BinaryData") Then
-            Process(Size, "FTP", "GetFileData", "Multiple, " + Postfix);
+            Process(Result, "FTP", "GetFileData", "Multiple, " + Postfix);
         EndIf;
 
     EndDo;
@@ -23271,7 +23258,7 @@ Procedure SFTP_CreateConnection(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -23282,12 +23269,12 @@ Procedure SFTP_CreateConnection(FunctionParameters)
         PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
-        SSHSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
     Else
 
-        Login       = FunctionParameters["SSH_User"];
-        SSHSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+        Login        = FunctionParameters["SSH_User"];
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
 
     EndIf;
 
@@ -23304,7 +23291,7 @@ Procedure SFTP_CreateConnection(FunctionParameters)
 
     EndIf;
 
-    Result = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
+    Result = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
 
     // END
 
@@ -23331,7 +23318,7 @@ Procedure SFTP_CreateNewDirectory(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -23342,12 +23329,12 @@ Procedure SFTP_CreateNewDirectory(FunctionParameters)
         PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
-        SSHSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
     Else
 
-        Login       = FunctionParameters["SSH_User"];
-        SSHSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+        Login        = FunctionParameters["SSH_User"];
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
 
     EndIf;
 
@@ -23364,7 +23351,7 @@ Procedure SFTP_CreateNewDirectory(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
 
     If OPI_SFTP.IsConnector(Connection) Then
         Result = OPI_SFTP.CreateNewDirectory(Connection, "new_dir");
@@ -23397,7 +23384,7 @@ Procedure SFTP_DeleteDirectory(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -23408,12 +23395,12 @@ Procedure SFTP_DeleteDirectory(FunctionParameters)
         PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
-        SSHSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
     Else
 
-        Login       = FunctionParameters["SSH_User"];
-        SSHSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+        Login        = FunctionParameters["SSH_User"];
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
 
     EndIf;
 
@@ -23430,7 +23417,7 @@ Procedure SFTP_DeleteDirectory(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
 
     If OPI_SFTP.IsConnector(Connection) Then
         Result = OPI_SFTP.DeleteDirectory(Connection, "new_dir");
@@ -23463,7 +23450,7 @@ Procedure SFTP_GetCurrentDirectory(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -23474,12 +23461,12 @@ Procedure SFTP_GetCurrentDirectory(FunctionParameters)
         PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
-        SSHSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
     Else
 
-        Login       = FunctionParameters["SSH_User"];
-        SSHSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+        Login        = FunctionParameters["SSH_User"];
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
 
     EndIf;
 
@@ -23496,7 +23483,7 @@ Procedure SFTP_GetCurrentDirectory(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
 
     If OPI_SFTP.IsConnector(Connection) Then
         Result = OPI_SFTP.GetCurrentDirectory(Connection);
@@ -23529,7 +23516,7 @@ Procedure SFTP_ListObjects(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -23540,12 +23527,12 @@ Procedure SFTP_ListObjects(FunctionParameters)
         PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
-        SSHSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
     Else
 
-        Login       = FunctionParameters["SSH_User"];
-        SSHSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+        Login        = FunctionParameters["SSH_User"];
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
 
     EndIf;
 
@@ -23562,7 +23549,7 @@ Procedure SFTP_ListObjects(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
 
     If OPI_SFTP.IsConnector(Connection) Then
         Result = OPI_SFTP.ListObjects(Connection, "test_folder", True);
@@ -23608,7 +23595,7 @@ Procedure SFTP_UploadFile(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -23619,12 +23606,12 @@ Procedure SFTP_UploadFile(FunctionParameters)
         PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
-        SSHSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
     Else
 
-        Login       = FunctionParameters["SSH_User"];
-        SSHSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+        Login        = FunctionParameters["SSH_User"];
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
 
     EndIf;
 
@@ -23641,7 +23628,7 @@ Procedure SFTP_UploadFile(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
 
     If OPI_SFTP.IsConnector(Connection) Then
 
@@ -23695,7 +23682,7 @@ Procedure SFTP_DeleteFile(FunctionParameters)
         Login    = FunctionParameters["SSH_User"];
         Password = FunctionParameters["SSH_Password"];
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -23706,12 +23693,12 @@ Procedure SFTP_DeleteFile(FunctionParameters)
         PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
         PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
 
-        SSHSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
     Else
 
-        Login       = FunctionParameters["SSH_User"];
-        SSHSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+        Login        = FunctionParameters["SSH_User"];
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
 
     EndIf;
 
@@ -23728,7 +23715,7 @@ Procedure SFTP_DeleteFile(FunctionParameters)
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
 
     If OPI_SFTP.IsConnector(Connection) Then
         Result = OPI_SFTP.DeleteFile(Connection, "files_folder/pic_from_binary.png");
@@ -23747,6 +23734,575 @@ Procedure SFTP_DeleteFile(FunctionParameters)
     Result = OPI_SFTP.ListObjects(Connection, "files_folder", True);
 
     Process(Result , "SFTP", "DeleteFile", "Check, " + Postfix);
+
+EndProcedure
+
+Procedure SFTP_IsConnector(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    UseProxy          = FunctionParameters["Proxy"]; // SKIP
+    AuthorizationType = FunctionParameters["AuthType"]; // SKIP
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = FunctionParameters["SSH_User"];
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
+        PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login        = FunctionParameters["SSH_User"];
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+    Result     = OPI_SFTP.IsConnector(Connection);
+
+    // END
+
+    Process(Result, "SFTP", "IsConnector", Postfix);
+
+    Result = OPI_SFTP.IsConnector("a");
+
+    Process(Result, "SFTP", "IsConnector", "Error, " + Postfix);
+
+EndProcedure
+
+Procedure SFTP_GetSettingsLoginPassword(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host     = FunctionParameters["SSH_Host"];
+    Port     = FunctionParameters["SSH_Port"];
+    Login    = FunctionParameters["SSH_User"];
+    Password = FunctionParameters["SSH_Password"];
+
+    Result = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    // END
+
+    Process(Result, "SFTP", "GetSettingsLoginPassword", Postfix);
+
+EndProcedure
+
+Procedure SFTP_GetSettingsPrivateKey(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host       = FunctionParameters["SSH_Host"];
+    Port       = FunctionParameters["SSH_Port"];
+    Login      = FunctionParameters["SSH_User"];
+    PrivateKey = "./ssh_key";
+    PublicKey  = "./ssh_key.pub";
+
+    PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
+    PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
+
+    Result = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    // END
+
+    Process(Result, "SFTP", "GetSettingsPrivateKey", Postfix);
+
+EndProcedure
+
+Procedure SFTP_GetSettingsViaAgent(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host   = FunctionParameters["SSH_Host"];
+    Port   = FunctionParameters["SSH_Port"];
+    Login  = FunctionParameters["SSH_User"];
+    Result = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+
+    // END
+
+    Process(Result, "SFTP", "GetSettingsViaAgent", Postfix);
+
+EndProcedure
+
+Procedure SFTP_GetProxySettings(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+    ProxyAddress  = FunctionParameters["Proxy_IP"];
+    ProxyPort     = FunctionParameters["Proxy_Port"];
+    ProxyLogin    = FunctionParameters["Proxy_User"];
+    ProxyPassword = FunctionParameters["Proxy_Password"];
+
+    Result = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    // END
+
+    Process(Result, "SFTP", "GetProxySettings", Postfix);
+
+EndProcedure
+
+Procedure SFTP_GetConnectionConfiguration(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    UseProxy          = FunctionParameters["Proxy"]; // SKIP
+    AuthorizationType = FunctionParameters["AuthType"]; // SKIP
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = FunctionParameters["SSH_User"];
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
+        PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login        = FunctionParameters["SSH_User"];
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Result = OPI_SFTP.GetConnectionConfiguration(SFTPSettings, ProxySettings);
+
+    // END
+
+    Process(Result, "SFTP", "GetConnectionConfiguration", Postfix);
+
+    Result = OPI_SSH.ExecuteCommand(Result, "whoami");
+
+    Process(Result, "SFTP", "GetConnectionConfiguration", "Check, " + Postfix);
+
+EndProcedure
+
+Procedure SFTP_CloseConnection(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    UseProxy          = FunctionParameters["Proxy"]; // SKIP
+    AuthorizationType = FunctionParameters["AuthType"]; // SKIP
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = FunctionParameters["SSH_User"];
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
+        PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login        = FunctionParameters["SSH_User"];
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+
+    If OPI_SFTP.IsConnector(Connection) Then
+        Result = OPI_SFTP.CloseConnection(Connection);
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Process(Result, "SFTP", "CloseConnection", Postfix);
+
+EndProcedure
+
+Procedure SFTP_SaveFile(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    UseProxy          = FunctionParameters["Proxy"]; // SKIP
+    AuthorizationType = FunctionParameters["AuthType"]; // SKIP
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = FunctionParameters["SSH_User"];
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
+        PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login        = FunctionParameters["SSH_User"];
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+
+    If OPI_SFTP.IsConnector(Connection) Then
+
+        Path     = "pic_from_disk.png";
+        FileName = GetTempFileName("bin");
+
+        Result = OPI_SFTP.SaveFile(Connection, Path, FileName);
+
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Process(Result, "SFTP", "SaveFile", Postfix);
+
+    Path = "files_folder/pic_from_binary.png";
+
+    For N = 1 To 20 Do
+
+        Result = OPI_SFTP.SaveFile(Connection, Path, FileName);
+
+        If Not Result["result"] Then
+            Process(Result, "SFTP", "SaveFile", "Multiple, " + Postfix);
+        EndIf;
+
+    EndDo;
+
+    OPI_Tools.RemoveFileWithTry(FileName, "Failed to delete the temporary file after the test!");
+
+EndProcedure
+
+Procedure SFTP_GetFileData(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    UseProxy          = FunctionParameters["Proxy"]; // SKIP
+    AuthorizationType = FunctionParameters["AuthType"]; // SKIP
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = FunctionParameters["SSH_User"];
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
+        PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login        = FunctionParameters["SSH_User"];
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+
+    If OPI_SFTP.IsConnector(Connection) Then
+
+        Path   = "pic_from_disk.png";
+        Result = OPI_SFTP.GetFileData(Connection, Path);
+
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Process(Result, "SFTP", "GetFileData", Postfix);
+
+    Path = "files_folder/pic_from_binary.png";
+
+    For N = 1 To 20 Do
+
+        Result = OPI_SFTP.GetFileData(Connection, Path);
+
+        If Not TypeOf(Result) = Type("BinaryData") Then
+            Process(Result, "SFTP", "GetFileData", "Multiple, " + Postfix);
+        EndIf;
+
+    EndDo;
+
+EndProcedure
+
+Procedure SFTP_UpdatePath(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    UseProxy          = FunctionParameters["Proxy"]; // SKIP
+    AuthorizationType = FunctionParameters["AuthType"]; // SKIP
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = FunctionParameters["SSH_User"];
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
+        PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login        = FunctionParameters["SSH_User"];
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+
+    If OPI_SFTP.IsConnector(Connection) Then
+        Result = OPI_SFTP.UpdatePath(Connection, "pic_from_disk.png", "files_folder/pic_from_disk.png");
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Process(Result , "SFTP", "UpdatePath", Postfix);
+
+    Result = OPI_SFTP.UpdatePath(Connection, "files_folder/pic_from_disk.png", "pic_from_disk.png");
+
+    Process(Result , "SFTP", "UpdatePath", "Back, " + Postfix);
+
+EndProcedure
+
+Procedure SFTP_GetFileInformation(FunctionParameters)
+
+    Postfix = FunctionParameters["Postfix"]; // SKIP
+
+    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    UseProxy          = FunctionParameters["Proxy"]; // SKIP
+    AuthorizationType = FunctionParameters["AuthType"]; // SKIP
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
+
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = FunctionParameters["SSH_User"];
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        PrivateKey = FunctionParameters["SSH_Key"]; // SKIP
+        PublicKey  = FunctionParameters["SSH_Pub"]; // SKIP
+
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login        = FunctionParameters["SSH_User"];
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
+
+        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+
+    If OPI_SFTP.IsConnector(Connection) Then
+        Result = OPI_SFTP.GetFileInformation(Connection, "files_folder/pic_from_binary.png");
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+
+    // END
+
+    Process(Result , "SFTP", "GetFileInformation", Postfix);
 
 EndProcedure
 

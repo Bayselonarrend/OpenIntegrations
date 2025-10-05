@@ -6423,5 +6423,60 @@
 "lib": "SFTP",
 "name": "DeleteFile",
 "variant": ""
+},
+{
+"lib": "SFTP",
+"name": "IsConnector",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "GetSettingsLoginPassword",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "GetSettingsPrivateKey",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "GetSettingsViaAgent",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "GetProxySettings",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "GetConnectionConfiguration",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "CloseConnection",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "SaveFile",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "GetFileData",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "UpdatePath",
+"variant": ""
+},
+{
+"lib": "SFTP",
+"name": "GetFileInformation",
+"variant": ""
 }
 ]

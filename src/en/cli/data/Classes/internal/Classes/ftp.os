@@ -481,7 +481,7 @@ Function GetComposition() Export
     NewLine.Method       = "DeleteFile";
     NewLine.SearchMethod = "DELETEFILE";
     NewLine.Parameter    = "--path";
-    NewLine.Description    = "Path to save file on server";
+    NewLine.Description    = "Path to file on server";
     NewLine.Region     = "File management";
 
 

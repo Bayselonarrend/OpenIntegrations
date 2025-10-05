@@ -108,6 +108,42 @@ Function CloseConnection(Val Connection) Export
 
 EndFunction
 
+// Update path
+// Changes the object's path to the specified one
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Current path to object - old
+// NewPath - String - New path to object - new
+// Overwrite - Boolean - Overwrite if an object already exists at the target path - rw
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function UpdatePath(Val Connection, Val Path, Val NewPath, Val Overwrite = False) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+        OPI_TypeConversion.GetLine(NewPath);
+        OPI_TypeConversion.GetBoolean(Overwrite);
+
+        Result = Connection.RenameObject(Path, NewPath, Overwrite);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 // Is connector !NOCLI
 // Checks that the value is an object of an external component for working with SFTP
 //
@@ -416,12 +452,9 @@ EndFunction
 // Delete file
 // Delete file from server
 //
-// Note
-// FTP Command: `DELE`
-//
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to save file on server - path
+// Path - String - Path to file on server - path
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -436,6 +469,135 @@ Function DeleteFile(Val Connection, Val Path) Export
         OPI_TypeConversion.GetLine(Path);
 
         Result = Connection.RemoveFile(Path);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Save file
+// Saves the file from the server to the specified path
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to file on server - path
+// FileName - String - Path to save file on disk - file
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function SaveFile(Val Connection, Val Path, Val FileName) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+        OPI_TypeConversion.GetLine(FileName);
+
+        OPI_Tools.RestoreEscapeSequences(FileName);
+
+        Result = Connection.DownloadToFile(Path, FileName);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Get file data !NOCLI
+// Gets file from server as binary data
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to file on server - path
+//
+// Returns:
+// Map Of KeyAndValue, BinaryData - File data or error information
+Function GetFileData(Val Connection, Val Path) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+
+        If OPI_AddIns.FileTransferRequired() Then
+
+            // BSLLS:MissingTemporaryFileDeletion-off
+
+            //@skip-check missing-temporary-file-deletion
+            TFN = GetTempFileName();
+
+            // BSLLS:MissingTemporaryFileDeletion-on
+
+            Result = Connection.DownloadToFile(Path, TFN);
+            Result = OPI_Tools.JsonToStructure(Result);
+
+            If Result["result"] Then
+
+                Data = New BinaryData(TFN);
+                OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete temporary file after upload");
+                Return Data;
+
+            EndIf;
+
+        Else
+
+            Data = Connection.DownloadToBuffer(Path);
+
+            If TypeOf(Data) = Type("String") Then
+                Result      = OPI_Tools.JsonToStructure(Data);
+            Else
+                Return Data;
+            EndIf;
+
+        EndIf;
+
+    EndIf;
+
+    If CloseConnection Then
+        Result.Insert("close_connection", CloseConnection(Connection));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Get information about file
+// Get file information by the specified path
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection configuration - conn
+// Path - String - Path to file on server - path
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetFileInformation(Val Connection, Val Path) Export
+
+    CloseConnection = CheckCreateConnection(Connection);
+
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    Else
+
+        OPI_TypeConversion.GetLine(Path);
+
+        Result = Connection.GetFileInfo(Path);
         Result = OPI_Tools.JsonToStructure(Result);
 
     EndIf;
@@ -587,6 +749,10 @@ Function ЗакрытьСоединение(Val Соединение) Export
 	Return CloseConnection(Соединение);
 EndFunction
 
+Function ИзменитьПуть(Val Соединение, Val Путь, Val НовыйПуть, Val Перезаписывать = False) Export
+	Return UpdatePath(Соединение, Путь, НовыйПуть, Перезаписывать);
+EndFunction
+
 Function ЭтоКоннектор(Val Значение) Export
 	Return IsConnector(Значение);
 EndFunction
@@ -629,6 +795,18 @@ EndFunction
 
 Function УдалитьФайл(Val Соединение, Val Путь) Export
 	Return DeleteFile(Соединение, Путь);
+EndFunction
+
+Function СохранитьФайл(Val Соединение, Val Путь, Val ИмяФайла) Export
+	Return SaveFile(Соединение, Путь, ИмяФайла);
+EndFunction
+
+Function ПолучитьДанныеФайла(Val Соединение, Val Путь) Export
+	Return GetFileData(Соединение, Путь);
+EndFunction
+
+Function ПолучитьИнформациюОФайле(Val Соединение, Val Путь) Export
+	Return GetFileInformation(Соединение, Путь);
 EndFunction
 
 #EndRegion

@@ -18,10 +18,10 @@
 |![RCON](../RCON.png)| `RCON`| rcon, remote console |
 |![ReportPortal (в разработке)](../default.png)| `ReportPortal (в разработке)`| reportportal |
 |![S3](../S3.png)| `S3`| s3, minio, aws, simple storage service |
-|![SFTP (в разработке)](../default.png)| `SFTP (в разработке)`| sftp |
+|![SFTP](../SFTP.png)| `SFTP`| sftp |
 |![Slack](../Slack.png)| `Slack`| slack |
 |![SQLite](../SQLite.png)| `SQLite`| sqlite |
-|![SSH (в разработке)](../default.png)| `SSH (в разработке)`| ssh, shell |
+|![SSH](../SSH.png)| `SSH`| ssh, shell |
 |![TCP](../TCP.png)| `TCP`| tcp |
 |![Telegram](../Telegram.png)| `Telegram`| telegram |
 |![Twitter](../Twitter.png)| `Twitter`| twitter, x |

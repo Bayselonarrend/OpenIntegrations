@@ -1,4 +1,4 @@
-﻿    URL = "http://localhost:2424";
+﻿    URL = "https://bin.openintegrations.dev";
     URL = URL + "/post";
 
     Image = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
