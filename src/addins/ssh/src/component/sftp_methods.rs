@@ -1,7 +1,7 @@
 use std::io::{BufReader, Cursor, Read, copy, Write};
-use std::path::Path;
-use serde_json::{json};
-use ssh2::{RenameFlags, Sftp};
+use std::path::{Path, PathBuf};
+use serde_json::{json, Value};
+use ssh2::{FileStat, RenameFlags, Sftp};
 use crate::component::{AddIn};
 use crate::component::format_json_error;
 
@@ -69,42 +69,38 @@ impl AddIn{
                 for item in contents {
 
                     let object_pb = item.0;
-                    let object_path = object_pb.to_str().unwrap_or("").to_string();
                     let object_info = &item.1;
-                    let object_perm = object_info.perm.unwrap_or(0);
 
-                    let object_filename = object_pb
-                        .file_name()
-                        .unwrap_or("".as_ref())
-                        .to_str()
-                        .unwrap_or("")
-                        .to_string();
 
-                    let object_ext = object_pb
-                        .extension()
-                        .unwrap_or("".as_ref())
-                        .to_str()
-                        .unwrap_or("")
-                        .to_string();
-
-                    data.push(json!({
-                    "uid": object_info.uid,
-                    "gid": object_info.gid,
-                    "is_directory": is_directory(object_perm),
-                    "is_symlink": object_pb.is_symlink(),
-                    "modified": object_info.mtime,
-                    "accessed": object_info.atime,
-                    "name": object_filename,
-                    "size": object_info.size,
-                    "path": object_path,
-                    "permissions":  format!("{:o}", object_perm),
-                    "extension": object_ext,
-                }));
+                    data.push(form_file_info(&object_pb, object_info));
                 }
 
                 json!({"result": true, "data": data}).to_string()
             },
             Err(err) =>  format_json_error(&err.to_string()),
+        }
+    }
+
+    pub fn get_file_info(&mut self, path: &str) -> String {
+
+        let sftp = match &self.sftp {
+            Some(s) => s,
+            None => return json!({"result": false, "error": "Init SFTP first"}).to_string()
+        };
+
+        let real_path = match sftp.realpath(path.as_ref()){
+            Ok(real_path) => real_path,
+            Err(err) => return format_json_error(&err.to_string()),
+        };
+
+        match sftp.stat(real_path.as_path()) {
+            Ok(stat) => {
+                json!({
+                    "result": true,
+                    "data": form_file_info(&real_path, &stat)
+                }).to_string()
+            },
+            Err(err) => format_json_error(&err.to_string()),
         }
     }
 
@@ -250,4 +246,40 @@ fn download_to_writer<W: Write>(sftp: &Sftp, path: &str, writer: &mut W, ) -> Re
         Ok(b) => Ok(b),
         Err(e) => Err(format!("Upload error: {}", &e.to_string()))
     }
+}
+
+fn form_file_info(path: &PathBuf, data: &FileStat) -> Value{
+
+    let object_path = path.to_str().unwrap_or("").to_string();
+    let object_perm = data.perm.unwrap_or(0);
+
+
+    let object_filename = path
+        .file_name()
+        .unwrap_or("".as_ref())
+        .to_str()
+        .unwrap_or("")
+        .to_string();
+
+    let object_ext = path
+        .extension()
+        .unwrap_or("".as_ref())
+        .to_str()
+        .unwrap_or("")
+        .to_string();
+
+    json!({
+        "uid": data.uid,
+        "gid": data.gid,
+        "is_directory": is_directory(object_perm),
+        "is_symlink": path.is_symlink(),
+        "modified": data.mtime,
+        "accessed": data.atime,
+        "name": object_filename,
+        "size": data.size,
+        "path": object_path,
+        "permissions":  format!("{:o}", object_perm),
+        "extension": object_ext,
+    })
+
 }
