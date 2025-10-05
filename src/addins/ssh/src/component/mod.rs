@@ -28,6 +28,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("IsSFTP"),
     name!("DownloadToFile"),
     name!("DownloadToBuffer"),
+    name!("RenameObject"),
+    name!("GetFileInfo"),
 ];
 
 // Число параметров функций компоненты
@@ -49,6 +51,8 @@ pub fn get_params_amount(num: usize) -> usize {
         13 => 0,
         14 => 2,
         15 => 1,
+        16 => 3,
+        17 => 1,
         _ => 0,
     }
 }
@@ -135,6 +139,18 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
                 Ok(v) => Box::new(v),
                 Err(e) => Box::new(e)
             }
+        },
+        16 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+            let new_path = params[1].get_string().unwrap_or("".to_string());
+            let overwrite = params[2].get_bool().unwrap_or(false);
+
+            Box::new(obj.rename_object(&path, &new_path, overwrite))
+        },
+        17 => {
+            let path = params[0].get_string().unwrap_or("".to_string());
+
+            Box::new(obj.get_file_info(&path))
         }
         _ => Box::new(false), // Неверный номер команды
     }
