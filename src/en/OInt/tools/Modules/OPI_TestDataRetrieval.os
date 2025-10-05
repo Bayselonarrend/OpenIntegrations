@@ -11649,6 +11649,167 @@ Function Check_SFTP_DeleteFile(Val Result, Val Option)
 
 EndFunction
 
+Function Check_SFTP_IsConnector(Val Result, Val Option)
+
+    If StrFind(Option, "Error") Then
+        ExpectsThat(Result).Равно(False);
+    Else
+        ExpectsThat(Result).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_GetSettingsLoginPassword(Val Result, Val Option)
+
+    ExpectsThat(Result["auth_type"]).Равно("password");
+    ExpectsThat(Result["host"]).Заполнено();
+    ExpectsThat(Result["port"]).Заполнено();
+    ExpectsThat(Result["username"]).Заполнено();
+    ExpectsThat(Result["password"]).Заполнено();
+
+    Result["password"] = "***";
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_GetSettingsPrivateKey(Val Result, Val Option)
+
+    ExpectsThat(Result["auth_type"]).Равно("private_key");
+    ExpectsThat(Result["host"]).Заполнено();
+    ExpectsThat(Result["port"]).Заполнено();
+    ExpectsThat(Result["username"]).Заполнено();
+    ExpectsThat(Result["key_path"]).Заполнено();
+    ExpectsThat(Result["pub_path"]).Заполнено();
+
+    Result["key_path"] = "./ssh_key";
+    Result["pub_path"] = "./ssh_key.pub";
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_GetSettingsViaAgent(Val Result, Val Option)
+
+    ExpectsThat(Result["auth_type"]).Равно("agent");
+    ExpectsThat(Result["host"]).Заполнено();
+    ExpectsThat(Result["port"]).Заполнено();
+    ExpectsThat(Result["username"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_GetProxySettings(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Result["password"] = "***";
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_GetConnectionConfiguration(Val Result, Val Option)
+
+    If StrFind(Option, "Check") > 0 Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["stderr"]).Равно("");
+        ExpectsThat(Result["stdout"]).Заполнено();
+        ExpectsThat(Result["exit_code"]).Равно("0");
+        ExpectsThat(Result["close_connection"]["result"]).Равно(True);
+
+    Else
+
+        ExpectsThat(Result["set"]).Заполнено();
+
+        If OPI_Tools.CollectionFieldExists(Result["set"], "password") Then
+            Result["set"]["password"] = "***";
+        EndIf;
+
+        If OPI_Tools.CollectionFieldExists(Result["set"], "key_path") Then
+            Result["set"]["key_path"] = "./ssh_key";
+            Result["set"]["pub_path"] = "./ssh_key.pub";
+        EndIf;
+
+        If StrFind(Lower(Option), "socks5") > 0 Or StrFind(Lower(Option), "http") > 0 Then
+
+            ExpectsThat(Result["proxy"]).Заполнено();
+            Result["proxy"]["password"] = "***";
+
+        EndIf;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_CloseConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_SaveFile(Val Result, Val Option, ResultSize = "", CheckSize = "")
+
+    If StrFind(Option, "File size") > 0 Then
+        ExpectsThat(Result).Равно(ResultSize);
+        ExpectsThat(Result).Равно(CheckSize);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(2);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_GetFileData(Val Result, Val Option, CheckSize = "")
+
+    If StrFind(Option, "File size") > 0 Then
+        ExpectsThat(Result).Равно(CheckSize);
+    ElsIf StrFind(Option, "Size") > 0 Then
+        ExpectsThat(Result["result"]).Равно(True);
+    Else
+        ExpectsThat(Result).ИмеетТип("BinaryData");
+    EndIf;
+
+    If StrFind(Option, "HTTP") Then
+        OPI_Tools.Pause(2);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_UpdatePath(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_SFTP_GetFileInformation(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"]).Заполнено();
+    ExpectsThat(Result["data"]["size"]).Заполнено();
+    ExpectsThat(Result["data"]["modified"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region ReportPortal
@@ -12083,6 +12244,11 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
         OPI_TypeConversion.GetKeyValueCollection(Value);
 
         Value = Value["conf"];
+
+        TFN = GetTempFileName();
+        OPI_Tools.WriteJSONFile(TFN, Value);
+
+        Value = TFN;
 
     Else
         Raise "Invalid type " + ValeType;
