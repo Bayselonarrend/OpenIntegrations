@@ -47,7 +47,7 @@ Get the connection configuration using the functions `GetSettingsLoginPassword`,
         Login    = "bayselonarrend";
         Password = "12we...";
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -55,12 +55,12 @@ Get the connection configuration using the functions `GetSettingsLoginPassword`,
         PrivateKey = "./ssh_key";
         PublicKey  = "./ssh_key.pub";
 
-        SSHSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
     Else
 
-        Login       = "bayselonarrend";
-        SSHSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+        Login        = "bayselonarrend";
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
 
     EndIf;
 
@@ -77,7 +77,7 @@ Get the connection configuration using the functions `GetSettingsLoginPassword`,
 
     EndIf;
 
-    Result = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
+    Result = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
 ```
  
 

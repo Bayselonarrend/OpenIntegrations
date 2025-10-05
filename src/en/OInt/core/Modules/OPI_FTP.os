@@ -752,7 +752,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to save file on server - path
+// Path - String - Path to file on server - path
 //
 // Returns:
 // Map Of KeyAndValue - Processing result

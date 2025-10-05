@@ -1,0 +1,86 @@
+﻿---
+sidebar_position: 4
+description: Update path and other functions to work with SFTP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, SFTP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Update path
+ Changes the object's path to the specified one
+
+
+
+`Function UpdatePath(Val Connection, Val Path, Val NewPath, Val Overwrite = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --conn | Arbitrary | &#x2714; | Existing connection or connection configuration |
+  | Path | --old | String | &#x2714; | Current path to object |
+  | NewPath | --new | String | &#x2714; | New path to object |
+  | Overwrite | --rw | Boolean | &#x2716; | Overwrite if an object already exists at the target path |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Host = "172.33.0.13";
+    Port = "2222";
+
+    UseProxy          = True;
+    ProxySettings     = Undefined;
+    AuthorizationType = "By login and password";
+
+    If AuthorizationType = "By login and password" Then
+
+        Login    = "bayselonarrend";
+        Password = "12we...";
+
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+
+    ElsIf AuthorizationType = "By key" Then
+
+        Login      = "bayselonarrend";
+        PrivateKey = "./ssh_key";
+        PublicKey  = "./ssh_key.pub";
+
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+
+    Else
+
+        Login        = "bayselonarrend";
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+
+    EndIf;
+
+    If UseProxy Then
+
+        ProxyType = "http"; // http, socks5, socks4
+
+        ProxyAddress  = "127.0.0.1";
+        ProxyPort     = "8071";
+        ProxyLogin    = "proxyuser";
+        ProxyPassword = "12we...";
+
+        ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    EndIf;
+
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
+
+    If OPI_SFTP.IsConnector(Connection) Then
+        Result = OPI_SFTP.UpdatePath(Connection, "pic_from_disk.png", "files_folder/pic_from_disk.png");
+    Else
+        Result = Connection; // Error of connection
+    EndIf;
+```
+ 
+
+
+
+

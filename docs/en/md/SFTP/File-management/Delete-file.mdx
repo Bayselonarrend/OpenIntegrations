@@ -17,17 +17,13 @@ import TabItem from '@theme/TabItem';
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Connection | --conn | Arbitrary | &#x2714; | Existing connection or connection configuration |
-  | Path | --path | String | &#x2714; | Path to save file on server |
+  | Path | --path | String | &#x2714; | Path to file on server |
 
   
   Returns:  Map Of KeyAndValue - Processing result
 
 <br/>
 
-:::tip
-FTP Command: `DELE`
-:::
-<br/>
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
@@ -43,7 +39,7 @@ FTP Command: `DELE`
         Login    = "bayselonarrend";
         Password = "12we...";
 
-        SSHSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
+        SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
@@ -51,12 +47,12 @@ FTP Command: `DELE`
         PrivateKey = "./ssh_key";
         PublicKey  = "./ssh_key.pub";
 
-        SSHSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
+        SFTPSettings = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);
 
     Else
 
-        Login       = "bayselonarrend";
-        SSHSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
+        Login        = "bayselonarrend";
+        SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
 
     EndIf;
 
@@ -73,7 +69,7 @@ FTP Command: `DELE`
 
     EndIf;
 
-    Connection = OPI_SFTP.CreateConnection(SSHSettings, ProxySettings);
+    Connection = OPI_SFTP.CreateConnection(SFTPSettings, ProxySettings);
 
     If OPI_SFTP.IsConnector(Connection) Then
         Result = OPI_SFTP.DeleteFile(Connection, "files_folder/pic_from_binary.png");

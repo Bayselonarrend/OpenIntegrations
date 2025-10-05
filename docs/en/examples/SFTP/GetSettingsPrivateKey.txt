@@ -1,0 +1,7 @@
+﻿    Host       = "172.33.0.13";
+    Port       = "2222";
+    Login      = "bayselonarrend";
+    PrivateKey = "./ssh_key";
+    PublicKey  = "./ssh_key.pub";
+
+    Result = OPI_SFTP.GetSettingsPrivateKey(Host, Port, Login, PrivateKey, PublicKey);

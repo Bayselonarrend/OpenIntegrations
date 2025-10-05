@@ -41,6 +41,47 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library  = "sftp";
     NewLine.Module      = "OPI_SFTP";
+    NewLine.Method       = "UpdatePath";
+    NewLine.SearchMethod = "UPDATEPATH";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "Common methods";
+    NewLine.MethodDescription   = "Changes the object's path to the specified one";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "sftp";
+    NewLine.Module      = "OPI_SFTP";
+    NewLine.Method       = "UpdatePath";
+    NewLine.SearchMethod = "UPDATEPATH";
+    NewLine.Parameter    = "--old";
+    NewLine.Description    = "Current path to object";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "sftp";
+    NewLine.Module      = "OPI_SFTP";
+    NewLine.Method       = "UpdatePath";
+    NewLine.SearchMethod = "UPDATEPATH";
+    NewLine.Parameter    = "--new";
+    NewLine.Description    = "New path to object";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "sftp";
+    NewLine.Module      = "OPI_SFTP";
+    NewLine.Method       = "UpdatePath";
+    NewLine.SearchMethod = "UPDATEPATH";
+    NewLine.Parameter    = "--rw";
+    NewLine.Description    = "Overwrite if an object already exists at the target path (optional, def. val. - False)";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "sftp";
+    NewLine.Module      = "OPI_SFTP";
     NewLine.Method       = "GetSettingsLoginPassword";
     NewLine.SearchMethod = "GETSETTINGSLOGINPASSWORD";
     NewLine.Parameter    = "--host";
@@ -365,7 +406,59 @@ Function GetComposition() Export
     NewLine.Method       = "DeleteFile";
     NewLine.SearchMethod = "DELETEFILE";
     NewLine.Parameter    = "--path";
-    NewLine.Description    = "Path to save file on server";
+    NewLine.Description    = "Path to file on server";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "sftp";
+    NewLine.Module      = "OPI_SFTP";
+    NewLine.Method       = "SaveFile";
+    NewLine.SearchMethod = "SAVEFILE";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Saves the file from the server to the specified path";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "sftp";
+    NewLine.Module      = "OPI_SFTP";
+    NewLine.Method       = "SaveFile";
+    NewLine.SearchMethod = "SAVEFILE";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to file on server";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "sftp";
+    NewLine.Module      = "OPI_SFTP";
+    NewLine.Method       = "SaveFile";
+    NewLine.SearchMethod = "SAVEFILE";
+    NewLine.Parameter    = "--file";
+    NewLine.Description    = "Path to save file on disk";
+    NewLine.Region     = "File management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "sftp";
+    NewLine.Module      = "OPI_SFTP";
+    NewLine.Method       = "GetFileInformation";
+    NewLine.SearchMethod = "GETFILEINFORMATION";
+    NewLine.Parameter    = "--conn";
+    NewLine.Description    = "Existing connection or connection configuration";
+    NewLine.Region     = "File management";
+    NewLine.MethodDescription   = "Get file information by the specified path";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "sftp";
+    NewLine.Module      = "OPI_SFTP";
+    NewLine.Method       = "GetFileInformation";
+    NewLine.SearchMethod = "GETFILEINFORMATION";
+    NewLine.Parameter    = "--path";
+    NewLine.Description    = "Path to file on server";
     NewLine.Region     = "File management";
 
     Return CompositionTable;
