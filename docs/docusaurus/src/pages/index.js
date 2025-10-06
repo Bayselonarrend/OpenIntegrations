@@ -35,6 +35,8 @@ const iconList = [
   '/img/APIs/TCP.png',
   '/img/APIs/VKTeams.png',
   '/img/APIs/FTP.png',
+  '/img/APIs/SFTP.png',
+  '/img/APIs/SSH.png',
 ];
 
 const FallingIcons = () => {
