@@ -6421,6 +6421,11 @@
 },
 {
 "lib": "SFTP",
+"name": "SaveFile",
+"variant": ""
+},
+{
+"lib": "SFTP",
 "name": "DeleteFile",
 "variant": ""
 },
@@ -6457,11 +6462,6 @@
 {
 "lib": "SFTP",
 "name": "CloseConnection",
-"variant": ""
-},
-{
-"lib": "SFTP",
-"name": "SaveFile",
 "variant": ""
 },
 {
