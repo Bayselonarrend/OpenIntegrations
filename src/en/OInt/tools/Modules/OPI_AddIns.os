@@ -192,8 +192,13 @@ EndFunction
 
 Function ConnectAddInNoIsolated(TemplateName, AddInName)
 
-    If OPI_Tools.IsOneScript() Or OPI_Tools.IsWindows() Then
-        TypeRequiered = False;
+    IsOneScript           = OPI_Tools.IsOneScript();
+    TypeRequieredBySystem = Not IsOneScript And Not OPI_Tools.IsWindows();
+
+    If IsOneScript Then
+
+        TypeRequieredByVersion = False;
+
     Else
 
         SystemInfo = New SystemInfo();
@@ -205,13 +210,17 @@ Function ConnectAddInNoIsolated(TemplateName, AddInName)
         Part2 = Number(Version1C[1]);
         Part3 = Number(Version1C[2]);
 
-        TypeRequiered = Part1 > 8 Or Part2 > 3 Or Part3 > 20;
+        TypeRequieredByVersion = Part1 > 8 Or Part2 > 3 Or Part3 > 20;
 
     EndIf;
 
+    TypeRequiered = TypeRequieredByVersion And TypeRequieredBySystem;
+
     If Not TypeRequiered Then
 
-        AddInConnectionType = Undefined;
+        If Not TypeRequieredByVersion Then
+            AddInConnectionType = Undefined;
+        EndIf;
 
         Result = AttachAddIn(TemplateName, AddInName, AddInType.Native);
 
@@ -225,8 +234,7 @@ Function ConnectAddInNoIsolated(TemplateName, AddInName)
 
         // BSLLS:UnusedLocalVariable-on
 
-        Result = Eval(
-            "AttachAddIn(TemplateName, AddInName, AddInType.Native, ConnectionType)");
+        Result = Eval("AttachAddIn(TemplateName, AddInName, AddInType.Native, ConnectionType)");
 
     EndIf;
 

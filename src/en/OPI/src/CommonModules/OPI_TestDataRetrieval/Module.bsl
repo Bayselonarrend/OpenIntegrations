@@ -11616,15 +11616,18 @@ EndFunction
 
 Function Check_SFTP_UploadFile(Val Result, Val Option, Size = "")
 
-   ExpectsThat(Result["bytes"]).Равно(Size);
+   If StrFind(Option, "File size") > 0 Then
 
-   If Not StrFind(Option, "Size 1") >  0 Or StrFind(Option, "Size 2") > 0 Then
+       ExpectsThat(Result).Равно(Size);
 
+   Else
+
+        ExpectsThat(Result["bytes"]).Равно(Size);
         ExpectsThat(Result["result"]).Равно(True);
 
-    EndIf;
+   EndIf;
 
-    Return Result;
+   Return Result;
 
 EndFunction
 
@@ -11756,10 +11759,9 @@ Function Check_SFTP_CloseConnection(Val Result, Val Option)
 
 EndFunction
 
-Function Check_SFTP_SaveFile(Val Result, Val Option, ResultSize = "", CheckSize = "")
+Function Check_SFTP_SaveFile(Val Result, Val Option, CheckSize = "")
 
     If StrFind(Option, "File size") > 0 Then
-        ExpectsThat(Result).Равно(ResultSize);
         ExpectsThat(Result).Равно(CheckSize);
     Else
         ExpectsThat(Result["result"]).Равно(True);
@@ -11793,7 +11795,11 @@ EndFunction
 
 Function Check_SFTP_UpdatePath(Val Result, Val Option)
 
-    ExpectsThat(Result["result"]).Равно(True);
+    If StrFind(Option, "Check, Old") Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
 
     Return Result;
 
