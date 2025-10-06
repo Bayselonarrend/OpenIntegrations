@@ -1,5 +1,6 @@
 use std::io::{BufReader, Cursor, Read, copy, Write};
 use std::path::{Path, PathBuf};
+use std::str::FromStr;
 use serde_json::{json, Value};
 use ssh2::{FileStat, RenameFlags, Sftp};
 use crate::component::{AddIn};
@@ -88,16 +89,16 @@ impl AddIn{
             None => return json!({"result": false, "error": "Init SFTP first"}).to_string()
         };
 
-        let real_path = match sftp.realpath(path.as_ref()){
-            Ok(real_path) => real_path,
+        let pb = match PathBuf::from_str(path){
+            Ok(pb) => pb,
             Err(err) => return format_json_error(&err.to_string()),
         };
 
-        match sftp.stat(real_path.as_path()) {
+        match sftp.stat(pb.as_path()) {
             Ok(stat) => {
                 json!({
                     "result": true,
-                    "data": form_file_info(&real_path, &stat)
+                    "data": form_file_info(&pb, &stat)
                 }).to_string()
             },
             Err(err) => format_json_error(&err.to_string()),
