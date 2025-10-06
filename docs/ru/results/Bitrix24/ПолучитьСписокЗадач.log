@@ -4056,13 +4056,13 @@
  "next": 50,
  "total": 339,
  "time": {
-  "start": 1759307057,
-  "finish": 1759307058.02972,
-  "duration": 1.02972197532654,
-  "processing": 1,
-  "date_start": "2025-10-01T08:24:17+00:00",
-  "date_finish": "2025-10-01T08:24:18+00:00",
-  "operating_reset_at": 1759307657,
+  "start": 1759772997,
+  "finish": 1759772997.09035,
+  "duration": 0.0903489589691162,
+  "processing": 0,
+  "date_start": "2025-10-06T17:49:57+00:00",
+  "date_finish": "2025-10-06T17:49:57+00:00",
+  "operating_reset_at": 1759773597,
   "operating": 0
  }
 }
