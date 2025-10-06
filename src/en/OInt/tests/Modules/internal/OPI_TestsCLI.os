@@ -31050,8 +31050,20 @@ Procedure SFTP_UploadFile(FunctionParameters)
 
     // END
 
-    Process(Result , "SFTP", "UploadFile", Postfix             , ImageDD.Size());
+    UploadedFile = New File(Image);
+
+    Process(Result , "SFTP", "UploadFile", Postfix             , UploadedFile.Size());
     Process(Result2, "SFTP", "UploadFile", "Binary, " + Postfix, ImageDD.Size());
+
+
+    FileSizeLocal   = UploadedFile.Size();
+    FileSizeLocalBD = ImageDD.Size();
+
+    FileSizeRemote   = OPI_SFTP.GetFileInformation(Connection, "pic_from_disk.png")["data"]["size"];
+    FileSizeRemoteBD = OPI_SFTP.GetFileInformation(Connection, "files_folder/pic_from_binary.png")["data"]["size"];
+
+    Process(FileSizeLocal  , "SFTP", "SaveFile", "File size, " + Postfix    , FileSizeRemote);
+    Process(FileSizeLocalBD, "SFTP", "SaveFile", "File size, BD, " + Postfix, FileSizeRemoteBD);
 
     For N = 1 To 7 Do
 
@@ -31598,6 +31610,12 @@ Procedure SFTP_SaveFile(FunctionParameters)
 
     Process(Result, "SFTP", "SaveFile", Postfix);
 
+    UploadedFile   = New File(FileName);
+    FileSizeLocal  = UploadedFile.Size();
+    FileSizeRemote = OPI_SFTP.GetFileInformation(Connection, Path)["data"]["size"];
+
+    Process(FileSizeLocal, "SFTP", "SaveFile", "File size, " + Postfix, FileSizeRemote);
+
     Path = "files_folder/pic_from_binary.png";
 
     For N = 1 To 20 Do
@@ -31693,6 +31711,11 @@ Procedure SFTP_GetFileData(FunctionParameters)
     // END
 
     Process(Result, "SFTP", "GetFileData", Postfix);
+
+    FileSizeLocal  = Result.Size();
+    FileSizeRemote = OPI_SFTP.GetFileInformation(Connection, Path)["data"]["size"];
+
+    Process(FileSizeLocal, "SFTP", "GetFileData", "File size, " + Postfix, FileSizeRemote);
 
     Path = "files_folder/pic_from_binary.png";
 
@@ -31792,12 +31815,44 @@ Procedure SFTP_UpdatePath(FunctionParameters)
 
     Options = New Structure;
     Options.Insert("conn", Connection);
+    Options.Insert("path", "pic_from_disk.png");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetFileInformation", Options);
+
+    Process(Result , "SFTP", "UpdatePath", "Check, Old, " + Postfix);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "files_folder/pic_from_disk.png");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetFileInformation", Options);
+
+    Process(Result , "SFTP", "UpdatePath", "Check, New, " + Postfix);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
     Options.Insert("old", "files_folder/pic_from_disk.png");
     Options.Insert("new", "pic_from_disk.png");
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "UpdatePath", Options);
 
     Process(Result , "SFTP", "UpdatePath", "Back, " + Postfix);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "files_folder/pic_from_disk.png");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetFileInformation", Options);
+
+    Process(Result , "SFTP", "UpdatePath", "Check, Old, Back, " + Postfix);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("path", "pic_from_disk.png");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("sftp", "GetFileInformation", Options);
+
+    Process(Result , "SFTP", "UpdatePath", "Check, New, Back, " + Postfix);
 
 EndProcedure
 
