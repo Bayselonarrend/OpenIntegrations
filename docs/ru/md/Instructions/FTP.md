@@ -10,6 +10,13 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 Этот раздел посвящен библиотеке для работы с протоколом FTP(s) в 1С:Предприятие, OneScript и CLI. На данной странице описаны все действия, необходимые для полноценного начала работы
 
+<div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
+
+<img src={require('../../static/img/addin.png').default} class="tipimage" />
+<div class="addin">Для реализации некоторых функции в этой библиотеке используется внешняя компонента <br/>
+Пожалуйста, ознакомьтесь с разделом ["О внешних компонентах"](/docs/Start/Component-requirements) перед началом работы</div>
+</div>
+
 ## Начало работы
 
 Данная библиотека предоставляет различные методы работы с FTP(s) на стороне клиента. Каждый из них принимает в качестве первого параметра `Соединение`, значение которого может быть получено одним из двух способов:
