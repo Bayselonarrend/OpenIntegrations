@@ -1,2 +1,2 @@
 oint mysql GetRecordsFilterStrucutre ^
- --empty "true"
+ --empty true

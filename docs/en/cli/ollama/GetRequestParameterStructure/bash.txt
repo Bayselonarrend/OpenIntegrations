@@ -1,2 +1,2 @@
 oint ollama GetRequestParameterStructure \
- --empty "true"
+ --empty true

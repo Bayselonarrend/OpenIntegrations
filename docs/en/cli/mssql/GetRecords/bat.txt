@@ -1,4 +1,6 @@
+:: JSON data can also be passed as a path to a .json file
+
 oint mssql GetRecords ^
- --table ""testtable"" ^
+ --table "testtable" ^
  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
- --tls ""/tmp/jvporhvz.rsb.json""
+ --tls "{'use_tls':true,'accept_invalid_certs':true}"

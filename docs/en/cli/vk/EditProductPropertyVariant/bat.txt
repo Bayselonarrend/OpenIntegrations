@@ -1,5 +1,7 @@
+:: JSON data can also be passed as a path to a .json file
+
 oint vk EditProductPropertyVariant ^
- --value ""New variant name"" ^
- --prop ""4322"" ^
- --option "7988" ^
- --auth ""/tmp/0t2jiwru.zdx.json""
+ --value "New variant name" ^
+ --prop "4583" ^
+ --option 8326 ^
+ --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

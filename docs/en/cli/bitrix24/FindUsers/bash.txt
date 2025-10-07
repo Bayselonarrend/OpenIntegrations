@@ -1,4 +1,6 @@
+# JSON data can also be passed as a path to a .json file
+
 oint bitrix24 FindUsers \
- --url ""b24-ar17wx.bitrix24.by"" \
- --filter ""/tmp/r2uvwcmi.m3l.json"" \
+ --url "b24-ar17wx.bitrix24.by" \
+ --filter "{'UF_DEPARTMENT_NAME':'Bitrix'}" \
  --token "***"

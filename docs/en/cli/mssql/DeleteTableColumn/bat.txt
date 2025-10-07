@@ -1,5 +1,7 @@
+:: JSON data can also be passed as a path to a .json file
+
 oint mssql DeleteTableColumn ^
- --table ""testtable"" ^
- --name ""new_field"" ^
+ --table "testtable" ^
+ --name "new_field" ^
  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
- --tls ""/tmp/4u02kmr1.dri.json""
+ --tls "{'use_tls':true,'accept_invalid_certs':true}"

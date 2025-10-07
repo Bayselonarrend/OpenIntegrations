@@ -1,4 +1,6 @@
+# JSON data can also be passed as a path to a .json file
+
 oint vk CloseDiscussion \
- --topic "54109758" \
- --remove "false" \
- --auth ""/tmp/bnqifjjn.z2u.json""
+ --topic 54325125 \
+ --remove false \
+ --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

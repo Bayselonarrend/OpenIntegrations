@@ -1,5 +1,7 @@
+# JSON data can also be passed as a path to a .json file
+
 oint cdek UpdateOrder \
  --token "***" \
- --uuid "80cde557-d7e4-462f-988f-b178fd6a1717" \
+ --uuid "c0c5c25d-9af6-48b4-936b-a89c197d2b1b" \
  --order "{'comment':'NewComment'}" \
  --testapi "***"

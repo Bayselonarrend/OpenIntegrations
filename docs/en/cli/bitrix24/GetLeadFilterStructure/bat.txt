@@ -1,2 +1,2 @@
 oint bitrix24 GetLeadFilterStructure ^
- 
+ --empty false

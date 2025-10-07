@@ -1,2 +1,2 @@
 oint postgres GetRecordsFilterStrucutre \
- --empty "true"
+ --empty true

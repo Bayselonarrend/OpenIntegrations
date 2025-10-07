@@ -1,4 +1,6 @@
+# JSON data can also be passed as a path to a .json file
+
 oint vk PauseAdvertising \
- --cabinet ""1607951446"" \
- --adv "0" \
- --auth ""/tmp/ti0qt0yt.rne.json""
+ --cabinet "1607951446" \
+ --adv 0 \
+ --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

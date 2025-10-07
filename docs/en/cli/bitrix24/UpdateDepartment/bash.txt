@@ -1,7 +1,7 @@
 oint bitrix24 UpdateDepartment \
- --url ""b24-ar17wx.bitrix24.by"" \
- --depid "2674" \
- --title ""New department"" \
- --parentid "1" \
- --headid "10" \
+ --url "b24-ar17wx.bitrix24.by" \
+ --depid 2726 \
+ --title "New department" \
+ --parentid 1 \
+ --headid 10 \
  --token "***"

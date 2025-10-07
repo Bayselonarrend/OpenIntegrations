@@ -1,4 +1,4 @@
 oint bitrix24 CreateResultFromComment ^
- --url ""b24-ar17wx.bitrix24.by"" ^
- --comment "18616" ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --comment 18908 ^
  --token "***"

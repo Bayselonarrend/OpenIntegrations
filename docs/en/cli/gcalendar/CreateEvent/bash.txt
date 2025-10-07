@@ -1,4 +1,6 @@
+# JSON data can also be passed as a path to a .json file
+
 oint gcalendar CreateEvent \
  --token "***" \
- --calendar "73c36eb1ab0dd34c3c2f298af8fdac687154aa19a316b297b75bb9d76c68ee39@group.calendar.google.com" \
- --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'09/15/2025 22:29:51','EndDate':'09/15/2025 23:29:51','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
+ --calendar "598a3e5cf6b40a1cdbdf016c2540a89c1710be6279377af7a27f966d2954269d@group.calendar.google.com" \
+ --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'10/07/2025 14:30:27','EndDate':'10/07/2025 15:30:27','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"

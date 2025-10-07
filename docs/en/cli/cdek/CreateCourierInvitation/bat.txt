@@ -1,4 +1,6 @@
+:: JSON data can also be passed as a path to a .json file
+
 oint cdek CreateCourierInvitation ^
  --token "***" ^
- --intake "{'intake_date':'2025-09-16','intake_time_from':'10:00','intake_time_to':'17:00','name':'Consolidated cargo','weight':'1000','length':'10','width':'10','height':'10','comment':'Comment to courier','need_call':false,'sender':{'company':'Company','name':'Ivaniv Ivan','phones':[{'number':'+79589441654'}]},'from_location':{'code':'44','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Moscow','sub_region':'Moscow','city':'Moscow','kladr_code':'7700000000000','address':'st. Bluchera, 32'}}" ^
+ --intake "{'intake_date':'2025-10-08','intake_time_from':'10:00','intake_time_to':'17:00','name':'Consolidated cargo','weight':'1000','length':'10','width':'10','height':'10','comment':'Comment to courier','need_call':false,'sender':{'company':'Company','name':'Ivaniv Ivan','phones':[{'number':'+79589441654'}]},'from_location':{'code':'44','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Moscow','sub_region':'Moscow','city':'Moscow','kladr_code':'7700000000000','address':'st. Bluchera, 32'}}" ^
  --testapi "***"

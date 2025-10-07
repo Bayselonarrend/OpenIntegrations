@@ -1,4 +1,6 @@
+:: JSON data can also be passed as a path to a .json file
+
 oint postgres GetTableInformation ^
- --table ""test_new"" ^
+ --table "test_new" ^
  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
- --tls ""/tmp/etxgl521.ih4.json""
+ --tls "{'use_tls':true,'accept_invalid_certs':true}"

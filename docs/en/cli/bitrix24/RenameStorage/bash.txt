@@ -1,5 +1,5 @@
 oint bitrix24 RenameStorage \
- --url ""b24-ar17wx.bitrix24.by"" \
- --storageid ""18"" \
- --title ""New storage name"" \
+ --url "b24-ar17wx.bitrix24.by" \
+ --storageid "18" \
+ --title "New storage name" \
  --token "***"

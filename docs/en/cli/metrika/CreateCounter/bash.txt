@@ -1,3 +1,5 @@
+# JSON data can also be passed as a path to a .json file
+
 oint metrika CreateCounter \
  --token "***" \
  --fields "{'autogoals_enabled':true,'code_options':{'async':'0','clickmap':'1','ecommerce':'1','in_one_line':'0','track_hash':'1','visor':'1','xml_site':'0','ytm':'0','alternative_cdn':'1','informer':{'color_arrow':'1','color_end':'EFEFEFFE','color_start':'EEEEEEEE','color_text':'0','enabled':'1','indicator':'uniques','size':'2','type':'ext'}},'counter_flags':{'collect_first_party_data':true,'measurement_enabled':true,'use_in_benchmarks':true,'direct_allow_use_goals_without_access':true},'favorite':'1','filter_robots':'2','gdpr_agreement_accepted':'1','site2':{'site':'openintegrations.dev'}}"

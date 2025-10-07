@@ -1,2 +1,2 @@
 oint ollama GetContextParameterStructure \
- --empty "true"
+ --empty true

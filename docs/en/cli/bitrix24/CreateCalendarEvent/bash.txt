@@ -1,4 +1,6 @@
+# JSON data can also be passed as a path to a .json file
+
 oint bitrix24 CreateCalendarEvent \
- --url ""b24-ar17wx.bitrix24.by"" \
- --fields ""/tmp/jhaqjeqm.24k.json"" \
+ --url "b24-ar17wx.bitrix24.by" \
+ --fields "{'type':'user','ownerId':'1','from':'10/08/2025 14:59:37','to':'10/08/2025 15:59:37','section':'1416','name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'10/18/2025 14:59:37'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" \
  --token "***"
