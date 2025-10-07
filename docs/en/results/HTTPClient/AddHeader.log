@@ -4,13 +4,18 @@
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
+  "Connection": "Keep-Alive",
   "Content-Length": "0",
-  "Host": "httpbin.org",
+  "Host": "localhost:2424",
+  "Max-Forwards": "10",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Amzn-Trace-Id": "Root=1-68c8ada8-4d8805af2c73b01820ce3e52",
+  "X-Arr-Log-Id": "99c10e43-0336-43f1-86ad-e9856b27b5c6",
+  "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
+  "X-Forwarded-Host": "bin.openintegrations.dev",
   "X-Header1": "Value1",
-  "X-Header2": "Value2"
+  "X-Header2": "Value2",
+  "X-Original-Url": "/get"
  },
  "origin": "***",
- "url": "https://httpbin.org/get"
+ "url": "https://bin.openintegrations.dev/get"
 }

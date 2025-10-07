@@ -1,4 +1,6 @@
+# JSON data can also be passed as a path to a .json file
+
 oint twitter CreateGifTweet \
- --text "TestTweetb3e1800e-b1e7-40b5-986f-4c50a1dce3bd" \
- --gifs "/tmp/4vmhm3br.mug" \
+ --text "TestTweet7bc5c79e-fba0-4c81-99b8-81683b598467" \
+ --gifs "/tmp/wzkxkzrh.i3r" \
  --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

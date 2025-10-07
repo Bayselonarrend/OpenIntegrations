@@ -2,11 +2,11 @@
  "response": [
   {
    "activity": {
-    "comments": 8,
-    "likes": 8
+    "comments": 1,
+    "likes": 1
    },
-   "period_from": 1757894400,
-   "period_to": 1757980799,
+   "period_from": 1759795200,
+   "period_to": 1759881599,
    "reach": {
     "age": [
      {
@@ -133,26 +133,19 @@
    },
    "visitors": {
     "cities": [],
-    "countries": [
-     {
-      "code": "IN",
-      "count": 1,
-      "name": "Индия",
-      "value": 80
-     }
-    ],
+    "countries": [],
     "mobile_views": 0,
-    "views": 1,
-    "visitors": 1
+    "views": 0,
+    "visitors": 0
    }
   },
   {
    "activity": {
-    "comments": 5,
-    "likes": 5
+    "comments": 1,
+    "likes": 1
    },
-   "period_from": 1757808000,
-   "period_to": 1757894399,
+   "period_from": 1759708800,
+   "period_to": 1759795199,
    "reach": {
     "age": [
      {
@@ -279,17 +272,10 @@
    },
    "visitors": {
     "cities": [],
-    "countries": [
-     {
-      "code": "RU",
-      "count": 1,
-      "name": "Россия",
-      "value": 1
-     }
-    ],
+    "countries": [],
     "mobile_views": 0,
-    "views": 1,
-    "visitors": 1
+    "views": 0,
+    "visitors": 0
    }
   }
  ]

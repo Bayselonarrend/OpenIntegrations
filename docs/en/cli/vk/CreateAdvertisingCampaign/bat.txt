@@ -1,4 +1,6 @@
+:: JSON data can also be passed as a path to a .json file
+
 oint vk CreateAdvertisingCampaign ^
- --cabinet ""1607951446"" ^
- --title ""New campaign"" ^
- --auth ""/tmp/uqfd53u0.ptd.json""
+ --cabinet "1607951446" ^
+ --title "New campaign" ^
+ --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

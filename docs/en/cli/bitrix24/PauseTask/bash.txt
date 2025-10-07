@@ -1,4 +1,4 @@
 oint bitrix24 PauseTask \
- --url ""b24-ar17wx.bitrix24.by"" \
- --task ""7992"" \
+ --url "b24-ar17wx.bitrix24.by" \
+ --task "8122" \
  --token "***"

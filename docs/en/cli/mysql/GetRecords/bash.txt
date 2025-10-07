@@ -1,4 +1,6 @@
+# JSON data can also be passed as a path to a .json file
+
 oint mysql GetRecords \
- --table ""testtable"" \
+ --table "testtable" \
  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
- --tls ""/tmp/0hwqg1pm.21s.json""
+ --tls "{'use_tls':true,'accept_invalid_certs':true}"

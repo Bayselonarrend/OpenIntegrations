@@ -1,6 +1,8 @@
+:: JSON data can also be passed as a path to a .json file
+
 oint notion EditDatabaseProperties ^
  --token "***" ^
- --base "26f82aa7-fc4e-8100-8c40-ec5a1dfa460e" ^
+ --base "28582aa7-fc4e-81c1-9894-c463a62d6207" ^
  --props "{'Email':'rich_text','Website':null}" ^
  --title "TestTitle" ^
  --description "TestDescription"

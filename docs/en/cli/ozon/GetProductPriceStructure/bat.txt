@@ -1,2 +1,2 @@
 oint ozon GetProductPriceStructure ^
- 
+ --empty false
