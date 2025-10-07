@@ -79,6 +79,28 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ssh ВыполнитьКоманду \
+              --conn "{'set':{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'/tmp/ccef1szf.hn5.tmp'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}}" \
+              --comm "whoami"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint ssh ВыполнитьКоманду ^
+              --conn "{'set':{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'/tmp/ccef1szf.hn5.tmp'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}}" ^
+              --comm "whoami"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

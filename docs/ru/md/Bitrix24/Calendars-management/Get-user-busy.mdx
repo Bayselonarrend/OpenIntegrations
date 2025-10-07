@@ -35,7 +35,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDКалендаря = "1322";
+    IDКалендаря = "1422";
 
     Пользователь = 1;
 
@@ -48,8 +48,8 @@ import TabItem from '@theme/TabItem';
     Результат = OPI_Bitrix24.ПолучитьЗанятостьПользователей(URL, Пользователь, ДатаНачала, ДатаОкончания);
 
     URL         = "b24-ar17wx.bitrix24.by";
-    Токен       = "75d8c668006e9f06006b12e400000001000...";
-    IDКалендаря = "1324";
+    Токен       = "c866e568006e9f06006b12e400000001000...";
+    IDКалендаря = "1424";
 
     Результат = OPI_Bitrix24.ПолучитьЗанятостьПользователей(URL, Пользователь, ДатаНачала, ДатаОкончания, Токен);
 ```
@@ -62,8 +62,8 @@ import TabItem from '@theme/TabItem';
             oint bitrix24 ПолучитьЗанятостьПользователей \
               --url "b24-ar17wx.bitrix24.by" \
               --users 1 \
-              --from "2025-09-18T12:17:42.4734195" \
-              --to "2025-09-25T12:17:42.4734195" \
+              --from "2025-10-07T19:22:48.5752817" \
+              --to "2025-10-14T19:22:48.5752817" \
               --token "***"
         ```
     </TabItem>
@@ -73,8 +73,8 @@ import TabItem from '@theme/TabItem';
             oint bitrix24 ПолучитьЗанятостьПользователей ^
               --url "b24-ar17wx.bitrix24.by" ^
               --users 1 ^
-              --from "2025-09-18T12:17:42.4734195" ^
-              --to "2025-09-25T12:17:42.4734195" ^
+              --from "2025-10-07T19:22:48.5752817" ^
+              --to "2025-10-14T19:22:48.5752817" ^
               --token "***"
         ```
     </TabItem>
@@ -86,12 +86,12 @@ import TabItem from '@theme/TabItem';
  "result": {
   "1": [
    {
-    "ID": "2564",
+    "ID": "2604",
     "NAME": "[Под вопросом]",
-    "DATE_FROM": "07.10.2025 17:54:00",
-    "DATE_TO": "07.10.2025 18:54:00",
-    "DATE_FROM_TS_UTC": "1759838040",
-    "DATE_TO_TS_UTC": "1762444440",
+    "DATE_FROM": "09.10.2025 00:01:00",
+    "DATE_TO": "09.10.2025 01:01:00",
+    "DATE_FROM_TS_UTC": "1759946460",
+    "DATE_TO_TS_UTC": "1762552860",
     "~USER_OFFSET_FROM": 0,
     "~USER_OFFSET_TO": 0,
     "DT_SKIP_TIME": "N",
@@ -102,12 +102,12 @@ import TabItem from '@theme/TabItem';
     "EVENT_TYPE": null
    },
    {
-    "ID": "2568",
+    "ID": "2608",
     "NAME": "[Под вопросом]",
-    "DATE_FROM": "07.10.2025 17:54:00",
-    "DATE_TO": "07.10.2025 18:54:00",
-    "DATE_FROM_TS_UTC": "1759838040",
-    "DATE_TO_TS_UTC": "1762444440",
+    "DATE_FROM": "09.10.2025 00:01:00",
+    "DATE_TO": "09.10.2025 01:01:00",
+    "DATE_FROM_TS_UTC": "1759946460",
+    "DATE_TO_TS_UTC": "1762552860",
     "~USER_OFFSET_FROM": 0,
     "~USER_OFFSET_TO": 0,
     "DT_SKIP_TIME": "N",
@@ -120,13 +120,13 @@ import TabItem from '@theme/TabItem';
   ]
  },
  "time": {
-  "start": 1759773277,
-  "finish": 1759773277.75934,
-  "duration": 0.759344100952148,
-  "processing": 0,
-  "date_start": "2025-10-06T17:54:37+00:00",
-  "date_finish": "2025-10-06T17:54:37+00:00",
-  "operating_reset_at": 1759773877,
+  "start": 1759870876,
+  "finish": 1759870877.00401,
+  "duration": 1.00400900840759,
+  "processing": 1,
+  "date_start": "2025-10-08T00:01:16+03:00",
+  "date_finish": "2025-10-08T00:01:17+03:00",
+  "operating_reset_at": 1759871476,
   "operating": 0
  }
 }

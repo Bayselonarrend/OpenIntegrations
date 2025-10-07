@@ -35,6 +35,26 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint ssh ПолучитьНастройкиЧерезАгента \
+              --host "172.33.0.13" \
+              --port "2222" \
+              --user "bayselonarrend"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint ssh ПолучитьНастройкиЧерезАгента ^
+              --host "172.33.0.13" ^
+              --port "2222" ^
+              --user "bayselonarrend"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

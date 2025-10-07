@@ -41,11 +41,35 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint ssh ПолучитьНастройкиПрокси \
+              --addr "127.0.0.1" \
+              --port 8071 \
+              --type "http" \
+              --login "proxyuser" \
+              --pass "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint ssh ПолучитьНастройкиПрокси ^
+              --addr "127.0.0.1" ^
+              --port 8071 ^
+              --type "http" ^
+              --login "proxyuser" ^
+              --pass "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
 {
- "server": "host.docker.internal",
+ "server": "127.0.0.1",
  "port": 1080,
  "proxy_type": "socks5",
  "login": "proxyuser",

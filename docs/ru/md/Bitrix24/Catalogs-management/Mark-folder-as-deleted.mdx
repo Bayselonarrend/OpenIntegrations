@@ -33,12 +33,12 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDКаталога = "42174";
+    IDКаталога = "43602";
 
     Результат = OPI_Bitrix24.ПоместитьКаталогВКорзину(URL, IDКаталога);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "75d8c668006e9f06006b12e400000001000...";
+    Токен = "c866e568006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПоместитьКаталогВКорзину(URL, IDКаталога, Токен);
 ```
@@ -50,7 +50,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПоместитьКаталогВКорзину \
               --url "b24-ar17wx.bitrix24.by" \
-              --folderid 43038 \
+              --folderid 43656 \
               --token "***"
         ```
     </TabItem>
@@ -59,7 +59,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПоместитьКаталогВКорзину ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --folderid 43038 ^
+              --folderid 43656 ^
               --token "***"
         ```
     </TabItem>
@@ -69,30 +69,30 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": "43362",
+  "ID": "43710",
   "NAME": "Новый каталог",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": "43362",
+  "REAL_OBJECT_ID": "43710",
   "PARENT_ID": "3",
   "DELETED_TYPE": "3",
-  "CREATE_TIME": "2025-10-06T17:51:05+00:00",
-  "UPDATE_TIME": "2025-10-06T17:51:17+00:00",
-  "DELETE_TIME": "2025-10-06T17:51:23+00:00",
+  "CREATE_TIME": "2025-10-07T23:58:17+03:00",
+  "UPDATE_TIME": "2025-10-07T23:58:25+03:00",
+  "DELETE_TIME": "2025-10-07T23:58:29+03:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/Новый каталог"
  },
  "time": {
-  "start": 1759773083,
-  "finish": 1759773083.93936,
-  "duration": 0.939359903335571,
+  "start": 1759870709,
+  "finish": 1759870709.57037,
+  "duration": 0.570369958877564,
   "processing": 0,
-  "date_start": "2025-10-06T17:51:23+00:00",
-  "date_finish": "2025-10-06T17:51:23+00:00",
-  "operating_reset_at": 1759773683,
+  "date_start": "2025-10-07T23:58:29+03:00",
+  "date_finish": "2025-10-07T23:58:29+03:00",
+  "operating_reset_at": 1759871309,
   "operating": 0
  }
 }

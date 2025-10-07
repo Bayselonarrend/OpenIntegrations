@@ -1,5 +1,5 @@
 ﻿    Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C09F9H2HQR2";
+    Channel = "C09KMGY4ZGR";
     User    = "U06UABH3APP";
 
     Result = OPI_Slack.KickUserFromChannel(Token, Channel, User);

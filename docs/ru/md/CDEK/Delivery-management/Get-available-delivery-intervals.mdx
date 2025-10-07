@@ -32,8 +32,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTc4NjI0MDMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID  = "f5f74cc6-4d34-48f8-b89f-4625d8f44a53";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTk4NjIwOTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "6c416756-13cc-4dff-9c62-ffbcf3d40f41";
 
     Результат = OPI_CDEK.ПолучитьДоступныеИнтервалыДоставки(Токен, UUID, Истина);
 ```
@@ -45,7 +45,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьДоступныеИнтервалыДоставки \
               --token "***" \
-              --uuid "6434e273-1d96-4767-9502-74dfa3a4dd68" \
+              --uuid "98cb9202-3bac-4ae4-bb85-7dcd3a2a2881" \
               --testapi "***"
         ```
     </TabItem>
@@ -54,7 +54,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьДоступныеИнтервалыДоставки ^
               --token "***" ^
-              --uuid "6434e273-1d96-4767-9502-74dfa3a4dd68" ^
+              --uuid "98cb9202-3bac-4ae4-bb85-7dcd3a2a2881" ^
               --testapi "***"
         ```
     </TabItem>
@@ -64,27 +64,6 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "date_intervals": [
-  {
-   "date": "2025-10-08",
-   "time_intervals": [
-    {
-     "start_time": "09:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "09:00:00",
-     "end_time": "14:00:00"
-    },
-    {
-     "start_time": "14:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "18:00:00",
-     "end_time": "22:00:00"
-    }
-   ]
-  },
   {
    "date": "2025-10-15",
    "time_intervals": [

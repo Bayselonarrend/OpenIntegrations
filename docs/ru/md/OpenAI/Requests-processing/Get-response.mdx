@@ -81,8 +81,8 @@ import TabItem from '@theme/TabItem';
             oint openai ПолучитьОтвет \
               --url "https://hut.openintegrations.dev/localai/" \
               --token "***" \
-              --model "moondream2-20250414" \
-              --msgs "[{'role':'user','content':[{'type':'input_image','file_id':'file-10'},{'type':'input_text','text':'What is in this image?'}]}]"
+              --model "smolvlm-256m-instruct" \
+              --msgs "[{'role':'user','content':'What is 1C:Enterprise?'},{'role':'assistant','content':'1C:Enterprise is a full-stack, low-code platform'},{'role':'user','content':'When the first version was released?'}]"
         ```
     </TabItem>
   
@@ -93,8 +93,8 @@ import TabItem from '@theme/TabItem';
             oint openai ПолучитьОтвет ^
               --url "https://hut.openintegrations.dev/localai/" ^
               --token "***" ^
-              --model "moondream2-20250414" ^
-              --msgs "[{'role':'user','content':[{'type':'input_image','file_id':'file-10'},{'type':'input_text','text':'What is in this image?'}]}]"
+              --model "smolvlm-256m-instruct" ^
+              --msgs "[{'role':'user','content':'What is 1C:Enterprise?'},{'role':'assistant','content':'1C:Enterprise is a full-stack, low-code platform'},{'role':'user','content':'When the first version was released?'}]"
         ```
     </TabItem>
 </Tabs>

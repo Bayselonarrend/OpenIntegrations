@@ -34,8 +34,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTc4NjI0MDMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID  = "5cc322e2-7cba-4060-9073-eb9a34f3da32";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTk4NjIwOTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "94010234-5606-4bb8-8ac4-a4d5e96e4a10";
 
     Результат = OPI_CDEK.ПолучитьЗаявкуНаВызовКурьера(Токен, UUID, Истина);
 ```
@@ -47,7 +47,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьЗаявкуНаВызовКурьера \
               --token "***" \
-              --uuid "e4f8331a-6947-44c4-80e4-9e5ddfdef6ac" \
+              --uuid "c42529ff-c514-49c1-beb5-030e1fd50fb0" \
               --testapi "***"
         ```
     </TabItem>
@@ -56,7 +56,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьЗаявкуНаВызовКурьера ^
               --token "***" ^
-              --uuid "e4f8331a-6947-44c4-80e4-9e5ddfdef6ac" ^
+              --uuid "c42529ff-c514-49c1-beb5-030e1fd50fb0" ^
               --testapi "***"
         ```
     </TabItem>
@@ -66,10 +66,10 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "a3d98767-737d-4b8e-9211-ed14cdf6a9e6",
-  "cdek_number": "1106623574",
-  "order_uuid": "1ebe0f06-87ca-4764-b74d-51f565ef7886",
-  "intake_date": "2025-10-07",
+  "uuid": "cf4e0593-fb34-4f09-9f98-02dd7ac6f165",
+  "cdek_number": "1106624022",
+  "order_uuid": "0f096a1f-276d-4d5f-abf9-985067e8db61",
+  "intake_date": "2025-10-09",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -107,12 +107,12 @@ import TabItem from '@theme/TabItem';
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-06T18:00:00+00:00"
+    "date_time": "2025-10-08T00:07:04+03:00"
    }
   ],
   "packages": [
    {
-    "package_id": "65248e39-e860-4628-aa6b-13fddc63c473",
+    "package_id": "c9f11724-061e-4e89-83fd-6db997c4dafa",
     "weight": 1000,
     "length": 10,
     "width": 10,
@@ -123,9 +123,9 @@ import TabItem from '@theme/TabItem';
  },
  "requests": [
   {
-   "request_uuid": "993d589a-4342-4e0b-94ff-8d74041c4dc5",
+   "request_uuid": "d5de35e8-cedf-48aa-8b6a-bb59a559b82b",
    "type": "CREATE",
-   "date_time": "2025-10-06T17:59:59+00:00",
+   "date_time": "2025-10-08T00:07:02+03:00",
    "state": "ACCEPTED"
   }
  ]
