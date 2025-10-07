@@ -33,17 +33,17 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    IDКаталога = "42176";
-    IDФайла    = "42168";
+    IDКаталога = "43604";
+    IDФайла    = "43596";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Результат = OPI_Bitrix24.ПереместитьФайлВКаталог(URL, IDФайла, IDКаталога);
 
-    IDКаталога = "42178";
+    IDКаталога = "43606";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "75d8c668006e9f06006b12e400000001000...";
+    Токен = "c866e568006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПереместитьФайлВКаталог(URL, IDФайла, IDКаталога, Токен);
 ```
@@ -55,8 +55,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПереместитьФайлВКаталог \
               --url "b24-ar17wx.bitrix24.by" \
-              --fileid 43032 \
-              --folderid 43042 \
+              --fileid 43650 \
+              --folderid 43660 \
               --token "***"
         ```
     </TabItem>
@@ -65,8 +65,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПереместитьФайлВКаталог ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --fileid 43032 ^
-              --folderid 43042 ^
+              --fileid 43650 ^
+              --folderid 43660 ^
               --token "***"
         ```
     </TabItem>
@@ -76,33 +76,33 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": "43356",
+  "ID": "43704",
   "NAME": "Новое имя файла.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "file",
-  "PARENT_ID": 43366,
+  "PARENT_ID": 43714,
   "DELETED_TYPE": "0",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "29174",
+  "FILE_ID": "29426",
   "SIZE": "805189",
-  "CREATE_TIME": "2025-10-06T17:50:37+00:00",
-  "UPDATE_TIME": "2025-10-06T17:51:03+00:00",
-  "DELETE_TIME": "2025-10-06T17:51:02+00:00",
+  "CREATE_TIME": "2025-10-07T23:57:51+03:00",
+  "UPDATE_TIME": "2025-10-07T23:58:15+03:00",
+  "DELETE_TIME": "2025-10-07T23:58:15+03:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=170fe468006e9f06006b12e40000000100000705136b6fdf87b812b74c5db1c71de6ad&token=disk%7CaWQ9NDMzNTYmXz03R25EM01qVlFnNDUyekpXaWhxQ0hkU2FUNDRtZ3FkcQ%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5ETXpOVFltWHowM1IyNUVNMDFxVmxGbk5EVXlla3BYYVdoeFEwaGtVMkZVTkRSdFozRmtjUT09fDE3MGZlNDY4MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3MDUxMzZiNmZkZjg3YjgxMmI3NGM1ZGIxYzcxZGU2YWQi.SWc1dEItjMF%2BMYA1EBVPFKbCC9WLDzu4BXafRxDQtgU%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=938ce568006e9f06006b12e400000001000007d095ad845de74ca7eb40abaee7071d09&token=disk%7CaWQ9NDM3MDQmXz01MUMya25maU5XSWNLR3R6dDFZdEo2V09aM0E5OGltTQ%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5ETTNNRFFtWHowMU1VTXlhMjVtYVU1WFNXTkxSM1I2ZERGWmRFbzJWMDlhTTBFNU9HbHRUUT09fDkzOGNlNTY4MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3ZDA5NWFkODQ1ZGU3NGNhN2ViNDBhYmFlZTcwNzFkMDki.uoDBnzld%2FrIGXRSwBqfP7O8miPMAyr8rFmm3C9nh2fs%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Новый каталог/Новый подкаталог/Новое имя файла.jpg"
  },
  "time": {
-  "start": 1759773071,
-  "finish": 1759773071.44714,
-  "duration": 0.447144985198975,
+  "start": 1759870701,
+  "finish": 1759870701.21038,
+  "duration": 0.210378885269165,
   "processing": 0,
-  "date_start": "2025-10-06T17:51:11+00:00",
-  "date_finish": "2025-10-06T17:51:11+00:00",
-  "operating_reset_at": 1759773671,
+  "date_start": "2025-10-07T23:58:21+03:00",
+  "date_finish": "2025-10-07T23:58:21+03:00",
+  "operating_reset_at": 1759871301,
   "operating": 0
  }
 }

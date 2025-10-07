@@ -33,8 +33,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTc4NjI0MDMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID  = "f5f74cc6-4d34-48f8-b89f-4625d8f44a53";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTk4NjIwOTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "6c416756-13cc-4dff-9c62-ffbcf3d40f41";
 
     ОписаниеЗаказа = Новый Структура("comment", "Новый комментарий");
 
@@ -50,7 +50,7 @@ import TabItem from '@theme/TabItem';
             
             oint cdek ИзменитьЗаказ \
               --token "***" \
-              --uuid "8975bf60-cd1b-46ba-a68c-1712b4f7d42b" \
+              --uuid "7f2bd3e8-c8a5-4789-bef0-3743d8ded1a3" \
               --order "{'comment':'Новый комментарий'}" \
               --testapi "***"
         ```
@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
             
             oint cdek ИзменитьЗаказ ^
               --token "***" ^
-              --uuid "8975bf60-cd1b-46ba-a68c-1712b4f7d42b" ^
+              --uuid "7f2bd3e8-c8a5-4789-bef0-3743d8ded1a3" ^
               --order "{'comment':'Новый комментарий'}" ^
               --testapi "***"
         ```
@@ -73,13 +73,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "eafab4f8-f4f7-4a2d-b2f1-d1a609edd427"
+  "uuid": "857284d2-e21a-4a6d-ac9d-577ca5c4464f"
  },
  "requests": [
   {
-   "request_uuid": "5902680a-a0a9-4de8-99d7-a7552983a7d2",
+   "request_uuid": "e90b956d-b35f-438b-8f65-6ff208af9e4f",
    "type": "UPDATE",
-   "date_time": "2025-10-06T17:59:30+00:00",
+   "date_time": "2025-10-08T00:06:36+03:00",
    "state": "ACCEPTED"
   }
  ],

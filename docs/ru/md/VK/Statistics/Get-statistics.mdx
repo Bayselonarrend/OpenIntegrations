@@ -45,8 +45,8 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику \
-              --datefrom "2025-09-18T00:00:00" \
-              --dateto "2025-09-18T23:59:59" \
+              --datefrom "2025-10-07T00:00:00" \
+              --dateto "2025-10-07T23:59:59" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -56,8 +56,8 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику ^
-              --datefrom "2025-09-18T00:00:00" ^
-              --dateto "2025-09-18T23:59:59" ^
+              --datefrom "2025-10-07T00:00:00" ^
+              --dateto "2025-10-07T23:59:59" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -69,11 +69,11 @@ import TabItem from '@theme/TabItem';
  "response": [
   {
    "activity": {
-    "comments": 1,
-    "likes": 1
+    "comments": 5,
+    "likes": 5
    },
-   "period_from": 1759708800,
-   "period_to": 1759795199,
+   "period_from": 1759795200,
+   "period_to": 1759881599,
    "reach": {
     "age": [
      {
@@ -207,13 +207,13 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "period_from": 1759622400,
-   "period_to": 1759708799,
+   "activity": {
+    "comments": 1,
+    "likes": 1
+   },
+   "period_from": 1759708800,
+   "period_to": 1759795199,
    "reach": {
-    "cities": [],
-    "countries": [],
-    "mobile_reach": 0,
-    "reach": 0,
-    "reach_subscribers": 0
+    "age": [
 ...
 ```
