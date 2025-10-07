@@ -70,21 +70,25 @@ This function does not update the data type of existing columns
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint mysql EnsureTable \
-             --table ""test_new"" \
-             --cols ""/tmp/ibigveh5.fws.json"" \
+             --table "test_new" \
+             --cols "{'smallint_field':'SMALLINT','double_field':'DOUBLE','bigint_field':'BIGINT','custom_field':'TEXT'}" \
              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-             --tls ""/tmp/zgvnh5sv.2gg.json""
+             --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint mysql EnsureTable ^
-             --table ""test_new"" ^
-             --cols ""/tmp/ibigveh5.fws.json"" ^
+             --table "test_new" ^
+             --cols "{'smallint_field':'SMALLINT','double_field':'DOUBLE','bigint_field':'BIGINT','custom_field':'TEXT'}" ^
              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-             --tls ""/tmp/zgvnh5sv.2gg.json""
+             --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
 </Tabs>

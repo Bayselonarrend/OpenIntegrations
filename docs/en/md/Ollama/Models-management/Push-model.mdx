@@ -51,18 +51,22 @@ The model name must follow the format &lt;namespace&gt;/&lt;model&gt;:&lt;tag&gt
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint ollama PushModel \
-             --url ""https://hut.openintegrations.dev/ollama"" \
-             --model ""bayselonarrend/tinyllama:latest"" \
+             --url "https://hut.openintegrations.dev/ollama" \
+             --model "bayselonarrend/tinyllama:latest" \
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint ollama PushModel ^
-             --url ""https://hut.openintegrations.dev/ollama"" ^
-             --model ""bayselonarrend/tinyllama:latest"" ^
+             --url "https://hut.openintegrations.dev/ollama" ^
+             --model "bayselonarrend/tinyllama:latest" ^
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>

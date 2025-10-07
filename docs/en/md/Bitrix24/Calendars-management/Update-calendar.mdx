@@ -58,20 +58,24 @@ Method at API documentation: [calendar.section.update](https://apidocs.bitrix24.
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint bitrix24 UpdateCalendar \
-             --url ""b24-ar17wx.bitrix24.by"" \
-             --calendar "1364" \
-             --fields ""/tmp/ki1nvlgy.ux5.json"" \
+             --url "b24-ar17wx.bitrix24.by" \
+             --calendar 1416 \
+             --fields "{'type':'user','ownerId':'1','name':'New calendar name','description':'This calendar has been changed'}" \
              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint bitrix24 UpdateCalendar ^
-             --url ""b24-ar17wx.bitrix24.by"" ^
-             --calendar "1364" ^
-             --fields ""/tmp/ki1nvlgy.ux5.json"" ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --calendar 1416 ^
+             --fields "{'type':'user','ownerId':'1','name':'New calendar name','description':'This calendar has been changed'}" ^
              --token "***"
         ```
     </TabItem>
@@ -80,15 +84,15 @@ Method at API documentation: [calendar.section.update](https://apidocs.bitrix24.
 
 ```json title="Result"
 {
- "result": 1364,
+ "result": 1416,
  "time": {
-  "start": 1757977107.03015,
-  "finish": 1757977107.06781,
-  "duration": 0.0376620292663574,
-  "processing": 0.0151371955871582,
-  "date_start": "2025-09-15T22:58:27+00:00",
-  "date_finish": "2025-09-15T22:58:27+00:00",
-  "operating_reset_at": 1757977707,
+  "start": 1759849172,
+  "finish": 1759849172.88862,
+  "duration": 0.88861608505249,
+  "processing": 0,
+  "date_start": "2025-10-07T14:59:32+00:00",
+  "date_finish": "2025-10-07T14:59:32+00:00",
+  "operating_reset_at": 1759849772,
   "operating": 0
  }
 }

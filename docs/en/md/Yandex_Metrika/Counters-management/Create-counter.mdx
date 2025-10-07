@@ -84,6 +84,8 @@ Method at API documentation: [Creating a counter](https://yandex.ru/dev/metrika/
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint metrika CreateCounter \
              --token "***" \
              --fields "{'autogoals_enabled':true,'code_options':{'async':'0','clickmap':'1','ecommerce':'1','in_one_line':'0','track_hash':'1','visor':'1','xml_site':'0','ytm':'0','alternative_cdn':'1','informer':{'color_arrow':'1','color_end':'EFEFEFFE','color_start':'EEEEEEEE','color_text':'0','enabled':'1','indicator':'uniques','size':'2','type':'ext'}},'counter_flags':{'collect_first_party_data':true,'measurement_enabled':true,'use_in_benchmarks':true,'direct_allow_use_goals_without_access':true},'favorite':'1','filter_robots':'2','gdpr_agreement_accepted':'1','site2':{'site':'openintegrations.dev'}}"
@@ -92,6 +94,8 @@ Method at API documentation: [Creating a counter](https://yandex.ru/dev/metrika/
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint metrika CreateCounter ^
              --token "***" ^
              --fields "{'autogoals_enabled':true,'code_options':{'async':'0','clickmap':'1','ecommerce':'1','in_one_line':'0','track_hash':'1','visor':'1','xml_site':'0','ytm':'0','alternative_cdn':'1','informer':{'color_arrow':'1','color_end':'EFEFEFFE','color_start':'EEEEEEEE','color_text':'0','enabled':'1','indicator':'uniques','size':'2','type':'ext'}},'counter_flags':{'collect_first_party_data':true,'measurement_enabled':true,'use_in_benchmarks':true,'direct_allow_use_goals_without_access':true},'favorite':'1','filter_robots':'2','gdpr_agreement_accepted':'1','site2':{'site':'openintegrations.dev'}}"
@@ -103,7 +107,7 @@ Method at API documentation: [Creating a counter](https://yandex.ru/dev/metrika/
 ```json title="Result"
 {
  "counter": {
-  "id": 104163724,
+  "id": 104463291,
   "status": "Active",
   "owner_login": "bayselonarrend",
   "code_status": "CS_ERR_UNKNOWN",
@@ -144,12 +148,12 @@ Method at API documentation: [Creating a counter](https://yandex.ru/dev/metrika/
    "ytm": false,
    "ssr": true
   },
-  "create_time": "2025-09-15T23:09:31+00:00",
+  "create_time": "2025-10-07T15:11:57+00:00",
   "time_zone_name": "Europe/Moscow",
   "time_zone_offset": 180,
   "partner_id": 0,
-  "update_time": "2025-09-16 02:09:32",
-  "code": "<!-- Yandex.Metrika informer -->\n<a href=\"https://metrica.yandex.com/stat/?id=104163724&amp;from=informer\" target=\"_blank\" rel=\"nofollow\">\n    <img src=\"https://metrika-informer.com/informer/104163724/2_1_EEEEEEEE_EFEFEFFE_0_uniques\"\n         style=\"width:80px; height:31px; border:0;\"\n         alt=\"Yandex Metrica\"\n         title=\"Yandex Metrica: data for today (unique users)\"\n        class=\"ym-advanced-informer\" data-cid=\"104163724\" data-lang=\"en\"/>\n</a>\n<!-- /Yandex.Metrika informer -->\n\n<!-- Yandex.Metrika counter -->\n<script type=\"text/javascript\">\n    (function(m,e,t,r,i,k,a){\n        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};\n        m[i].l=1*new Date();\n        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}\n        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)\n    })(window, document,'script','https://mc.webvisor.org/metrika/tag_ww.js?id=104163724', 'ym');\n\n    ym(104163724, 'init', {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:\"dataLayer\", params: {__ym: {isFromApi: 'yesIsFromApi'}}, accurateTrackBounce:true, trackLinks:true});\n</script>\n<noscript><div><img src=\"https://mc.yandex.ru/watch/104163724\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div></noscript>\n<!-- /Yandex.Metrika counter -->\n\n\n",
+  "update_time": "2025-10-07 18:11:58",
+  "code": "<!-- Yandex.Metrika informer -->\n<a href=\"https://metrica.yandex.com/stat/?id=104463291&amp;from=informer\" target=\"_blank\" rel=\"nofollow\">\n    <img src=\"https://metrika-informer.com/informer/104463291/2_1_EEEEEEEE_EFEFEFFE_0_uniques\"\n         style=\"width:80px; height:31px; border:0;\"\n         alt=\"Yandex Metrica\"\n         title=\"Yandex Metrica: data for today (unique users)\"\n        class=\"ym-advanced-informer\" data-cid=\"104463291\" data-lang=\"en\"/>\n</a>\n<!-- /Yandex.Metrika informer -->\n\n<!-- Yandex.Metrika counter -->\n<script type=\"text/javascript\">\n    (function(m,e,t,r,i,k,a){\n        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};\n        m[i].l=1*new Date();\n        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}\n        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)\n    })(window, document,'script','https://mc.webvisor.org/metrika/tag_ww.js?id=104463291', 'ym');\n\n    ym(104463291, 'init', {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:\"dataLayer\", params: {__ym: {isFromApi: 'yesIsFromApi'}}, accurateTrackBounce:true, trackLinks:true});\n</script>\n<noscript><div><img src=\"https://mc.yandex.ru/watch/104463291\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div></noscript>\n<!-- /Yandex.Metrika counter -->\n\n\n",
   "filter_robots": 2,
   "currency": 643,
   "currency_code": "RUB",

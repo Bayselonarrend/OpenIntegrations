@@ -57,6 +57,8 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint s3 GetObjectUploadLink \
              --name "pictureU.jpg" \
              --bucket "newbucket2" \
@@ -68,6 +70,8 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint s3 GetObjectUploadLink ^
              --name "pictureU.jpg" ^
              --bucket "newbucket2" ^
@@ -80,5 +84,5 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
 
 
 ```json title="Result"
-"storage-155.s3hoster.by/newbucket2/pictureU.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=BRN5RKJE67YCVDZRRQVI%2F20250915%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20250915T231846Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=335606fa3e07f274139b3067ced25616f007ef78edb5b835108e29191f81b93a"
+"storage-155.s3hoster.by/newbucket2/pictureU.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=BRN5RKJE67YCVDZRRQVI%2F20251007%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20251007T152233Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=c5c9feac71aa9ead13195dce4e81e2ffc05e2b74d83aa04ca286f9e0d8318e00"
 ```

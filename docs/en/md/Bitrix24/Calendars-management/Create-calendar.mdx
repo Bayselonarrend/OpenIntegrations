@@ -66,18 +66,22 @@ Method at API documentation: [calendar.section.add](https://apidocs.bitrix24.ru/
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint bitrix24 CreateCalendar \
-             --url ""b24-ar17wx.bitrix24.by"" \
-             --fields ""/tmp/ppwprhtw.wqu.json"" \
+             --url "b24-ar17wx.bitrix24.by" \
+             --fields "{'type':'user','ownerId':'1','name':'Another calendar','description':'My other new calendar','color':'#FFFFFF','text_color':'#000000','export':{'ALLOW':'True','SET':'all'}}" \
              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint bitrix24 CreateCalendar ^
-             --url ""b24-ar17wx.bitrix24.by"" ^
-             --fields ""/tmp/ppwprhtw.wqu.json"" ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --fields "{'type':'user','ownerId':'1','name':'Another calendar','description':'My other new calendar','color':'#FFFFFF','text_color':'#000000','export':{'ALLOW':'True','SET':'all'}}" ^
              --token "***"
         ```
     </TabItem>
@@ -86,15 +90,15 @@ Method at API documentation: [calendar.section.add](https://apidocs.bitrix24.ru/
 
 ```json title="Result"
 {
- "result": 1364,
+ "result": 1416,
  "time": {
-  "start": 1757977102.28303,
-  "finish": 1757977102.32224,
-  "duration": 0.0392129421234131,
-  "processing": 0.0164370536804199,
-  "date_start": "2025-09-15T22:58:22+00:00",
-  "date_finish": "2025-09-15T22:58:22+00:00",
-  "operating_reset_at": 1757977702,
+  "start": 1759849167,
+  "finish": 1759849167.41803,
+  "duration": 0.418034076690674,
+  "processing": 0,
+  "date_start": "2025-10-07T14:59:27+00:00",
+  "date_finish": "2025-10-07T14:59:27+00:00",
+  "operating_reset_at": 1759849767,
   "operating": 0
  }
 }

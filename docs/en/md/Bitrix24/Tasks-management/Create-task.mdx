@@ -61,18 +61,22 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint bitrix24 CreateTask \
-             --url ""b24-ar17wx.bitrix24.by"" \
-             --fields ""/tmp/dpjrx4uz.1pa.json"" \
+             --url "b24-ar17wx.bitrix24.by" \
+             --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'10/08/2025 14:44:16','RESPONSIBLE_ID':'1'}" \
              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint bitrix24 CreateTask ^
-             --url ""b24-ar17wx.bitrix24.by"" ^
-             --fields ""/tmp/dpjrx4uz.1pa.json"" ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'10/08/2025 14:44:16','RESPONSIBLE_ID':'1'}" ^
              --token "***"
         ```
     </TabItem>
@@ -83,7 +87,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
 {
  "result": {
   "task": {
-   "id": "7992",
+   "id": "8122",
    "parentId": null,
    "title": "New task",
    "description": "New task description",
@@ -96,19 +100,19 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-09-15T22:44:50+00:00",
+   "createdDate": "2025-10-07T14:44:21+00:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2025-09-15T22:44:50+00:00",
+   "changedDate": "2025-10-07T14:44:21+00:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2025-09-15T22:44:50+00:00",
+   "activityDate": "2025-10-07T14:44:21+00:00",
    "dateStart": null,
-   "deadline": "2025-09-16T22:44:00+00:00",
+   "deadline": "2025-10-08T14:44:00+00:00",
    "startDatePlan": null,
    "endDatePlan": null,
-   "guid": "{51ce5c5a-b35c-4e91-90a2-e14e6e9e30e7}",
+   "guid": "{5ae0a1e6-0d69-47f2-9fe5-63059d5d8f9b}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -136,7 +140,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2025-09-15T22:44:50+00:00",
+   "statusChangedDate": "2025-10-07T14:44:21+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -217,14 +221,14 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
   }
  },
  "time": {
-  "start": 1757976290.62699,
-  "finish": 1757976290.79295,
-  "duration": 0.165958166122437,
-  "processing": 0.138093948364258,
-  "date_start": "2025-09-15T22:44:50+00:00",
-  "date_finish": "2025-09-15T22:44:50+00:00",
-  "operating_reset_at": 1757976890,
-  "operating": 0.13807487487793
+  "start": 1759848261,
+  "finish": 1759848262.0943,
+  "duration": 1.09429788589478,
+  "processing": 1,
+  "date_start": "2025-10-07T14:44:21+00:00",
+  "date_finish": "2025-10-07T14:44:22+00:00",
+  "operating_reset_at": 1759848861,
+  "operating": 0.224899053573608
  }
 }
 ```

@@ -57,19 +57,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint mysql ClearTable \
-             --table ""testtable"" \
+             --table "testtable" \
              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-             --tls ""/tmp/j2wwb531.y2k.json""
+             --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint mysql ClearTable ^
-             --table ""testtable"" ^
+             --table "testtable" ^
              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-             --tls ""/tmp/j2wwb531.y2k.json""
+             --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
 </Tabs>

@@ -49,6 +49,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint tcp ProcessRequest \
              --address "tcpbin.com:4243" \
              --data "Echo this!\n" \
@@ -58,6 +60,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint tcp ProcessRequest ^
              --address "tcpbin.com:4243" ^
              --data "Echo this!\n" ^

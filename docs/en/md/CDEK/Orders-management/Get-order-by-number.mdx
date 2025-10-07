@@ -46,7 +46,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
         ```bash
             oint cdek GetOrderByNumber \
              --token "***" \
-             --number "40c825ee-ce1a-4499-a600-38e4760ba342" \
+             --number "6427ac8f-fb7a-4e3e-80b9-d54e0f0b1ff0" \
              --internal true \
              --testapi "***"
         ```
@@ -56,7 +56,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
         ```batch
             oint cdek GetOrderByNumber ^
              --token "***" ^
-             --number "40c825ee-ce1a-4499-a600-38e4760ba342" ^
+             --number "6427ac8f-fb7a-4e3e-80b9-d54e0f0b1ff0" ^
              --internal true ^
              --testapi "***"
         ```
@@ -67,12 +67,12 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
 ```json title="Result"
 {
  "entity": {
-  "uuid": "d21e50df-430b-4b25-a3e1-4059d93047f5",
+  "uuid": "c0c5c25d-9af6-48b4-936b-a89c197d2b1b",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1106608109",
-  "number": "40c825ee-ce1a-4499-a600-38e4760ba342",
+  "cdek_number": "1106623973",
+  "number": "6427ac8f-fb7a-4e3e-80b9-d54e0f0b1ff0",
   "tariff_code": 139,
   "comment": "New order",
   "items_cost_currency": "RUB",
@@ -142,16 +142,6 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
   },
   "services": [
    {
-    "code": "SECURE_PACKAGE_A2",
-    "parameter": "10",
-    "sum": 500,
-    "total_sum": 600,
-    "discount_percent": 0,
-    "discount_sum": 0,
-    "vat_rate": 20,
-    "vat_sum": 100
-   },
-   {
     "code": "INSURANCE",
     "parameter": "600.00",
     "sum": 4.5,
@@ -160,12 +150,22 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
     "discount_sum": 0,
     "vat_rate": 20,
     "vat_sum": 0.9
+   },
+   {
+    "code": "SECURE_PACKAGE_A2",
+    "parameter": "10",
+    "sum": 500,
+    "total_sum": 600,
+    "discount_percent": 0,
+    "discount_sum": 0,
+    "vat_rate": 20,
+    "vat_sum": 100
    }
   ],
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001220077",
+    "barcode": "000001241889",
     "weight": 4000,
     "length": 10,
     "width": 10,
@@ -191,21 +191,21 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
       "cost": 300
      }
     ],
-    "package_id": "73b7b733-8933-4898-8d2b-56ca66226b0a"
+    "package_id": "e28a15fb-2d24-450f-9736-fe4fdf537a09"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2025-09-15T23:06:31+00:00",
+    "date_time": "2025-10-07T15:08:38+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-09-15T23:06:30+00:00",
+    "date_time": "2025-10-07T15:08:36+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    }

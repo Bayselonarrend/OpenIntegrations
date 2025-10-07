@@ -50,20 +50,24 @@ Method at API documentation: [Copy a Model](https://github.com/ollama/ollama/blo
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint ollama CopyModel \
-             --url ""https://hut.openintegrations.dev/ollama"" \
-             --model ""mario"" \
-             --name ""mario2"" \
+             --url "https://hut.openintegrations.dev/ollama" \
+             --model "mario" \
+             --name "mario2" \
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint ollama CopyModel ^
-             --url ""https://hut.openintegrations.dev/ollama"" ^
-             --model ""mario"" ^
-             --name ""mario2"" ^
+             --url "https://hut.openintegrations.dev/ollama" ^
+             --model "mario" ^
+             --name "mario2" ^
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>

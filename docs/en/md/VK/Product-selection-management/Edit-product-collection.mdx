@@ -48,19 +48,23 @@ Parameters with Binary data type can also accept file paths on disk and URLs
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint vk EditProductCollection \
-             --title ""EditedCollection"" \
-             --sel "147" \
-             --auth ""/tmp/ayz4bnjr.4tx.json""
+             --title "EditedCollection" \
+             --sel 140 \
+             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint vk EditProductCollection ^
-             --title ""EditedCollection"" ^
-             --sel "147" ^
-             --auth ""/tmp/ayz4bnjr.4tx.json""
+             --title "EditedCollection" ^
+             --sel 140 ^
+             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>

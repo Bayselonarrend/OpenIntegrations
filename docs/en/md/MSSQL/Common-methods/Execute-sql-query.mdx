@@ -107,19 +107,23 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint mssql ExecuteSQLQuery \
-             --sql ""https://hut.openintegrations.dev/test_data/TEST_DATA2.sql"" \
+             --sql "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql" \
              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-             --tls ""/tmp/pelitlce.dnm.json""
+             --tls "{'use_tls':true,'accept_invalid_certs':true,'ca_cert_path':''}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint mssql ExecuteSQLQuery ^
-             --sql ""https://hut.openintegrations.dev/test_data/TEST_DATA2.sql"" ^
+             --sql "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql" ^
              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-             --tls ""/tmp/pelitlce.dnm.json""
+             --tls "{'use_tls':true,'accept_invalid_certs':true,'ca_cert_path':''}"
         ```
     </TabItem>
 </Tabs>
@@ -130,15 +134,15 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
  "data": [
   {
    "Age": 20,
-   "BirthDate": "2025-09-15",
-   "CreatedAt": "2025-09-15T22:18:14",
+   "BirthDate": "2025-10-07",
+   "CreatedAt": "2025-10-07T14:19:36",
    "Data": {
     "BYTES": "Base64"
    },
    "FirstName": "Vitaly",
    "IsEmployed": 1,
    "LastName": "Alpaca",
-   "RowGuid": "d96881ac-ff80-489b-919d-01f3c39e3e07",
+   "RowGuid": "8a2e0caf-5240-4878-a16e-2956a0416cba",
    "Salary": 10.3
   }
  ],

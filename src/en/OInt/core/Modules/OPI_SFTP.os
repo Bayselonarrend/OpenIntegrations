@@ -682,24 +682,24 @@ Procedure ProcessSSHCommandExecution(Result, ResultField = "data")
 
     If Result[Result_] Then
 
-        Result_ = New Map;
+        ProcessingResult = New Map;
 
         If Not ValueIsFilled(Result["stderr"]) Then
 
-            Result_.Insert(Result_, True);
+            ProcessingResult.Insert(Result_, True);
 
             StdOut = Result["stdout"];
 
             If ValueIsFilled(StdOut) Then
-                Result_.Insert(ResultField, StdOut);
+                ProcessingResult.Insert(ResultField, StdOut);
             EndIf;
 
         Else
-            Result_.Insert(Result_, False);
-            Result_.Insert("error", Result["stderr"]);
+            ProcessingResult.Insert(Result_, False);
+            ProcessingResult.Insert("error", Result["stderr"]);
         EndIf;
 
-        Result = Result_;
+        Result = ProcessingResult;
 
     EndIf;
 
