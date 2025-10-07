@@ -1,13 +1,13 @@
 ﻿{
- "result": "https://b24-ar17wx.bitrix24.by/~hLvrc",
+ "result": "https://b24-ar17wx.bitrix24.by/~cF0pE",
  "time": {
-  "start": 1759773069,
-  "finish": 1759773069.10604,
-  "duration": 0.106034994125366,
+  "start": 1759864163,
+  "finish": 1759864163.91306,
+  "duration": 0.913055896759033,
   "processing": 0,
-  "date_start": "2025-10-06T17:51:09+00:00",
-  "date_finish": "2025-10-06T17:51:09+00:00",
-  "operating_reset_at": 1759773669,
+  "date_start": "2025-10-07T19:09:23+00:00",
+  "date_finish": "2025-10-07T19:09:23+00:00",
+  "operating_reset_at": 1759864763,
   "operating": 0
  }
 }

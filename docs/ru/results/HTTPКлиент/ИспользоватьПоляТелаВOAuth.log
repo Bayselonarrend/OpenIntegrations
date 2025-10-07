@@ -12,14 +12,19 @@
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
-  "Authorization": "OAuth oauth_consumer_key=\"***\",oauth_token=\"***\",oauth_signature_method=\"HMAC-SHA256\",oauth_timestamp=\"1758634865\",oauth_nonce=\"1758634865\",oauth_version=\"1.0\",oauth_signature=D8Ia9C%2BEUuEF31NIyPDgyi1ERVTZj3eNXMsLyFxQftQ%3D",
+  "Authorization": "OAuth oauth_consumer_key=\"***\",oauth_token=\"***\",oauth_signature_method=\"HMAC-SHA256\",oauth_timestamp=\"1759863797\",oauth_nonce=\"1759863797\",oauth_version=\"1.0\",oauth_signature=vG2yZIoUTXyKwduQUyO4Zzv%2FLDmfYgPZvpDqQnQqbyY%3D",
   "Connection": "Keep-Alive",
   "Content-Length": "2114378",
-  "Content-Type": "multipart/form-data; boundary=c052a5a2132545709e282bc7cadccef6",
+  "Content-Type": "multipart/form-data; boundary=eaca3d4294be4e11a8c7b0aa3b1487b1",
   "Host": "localhost:2424",
-  "User-Agent": "1Script v$2.0.0.0"
+  "Max-Forwards": "10",
+  "User-Agent": "1Script v$2.0.0.0",
+  "X-Arr-Log-Id": "d4cb714a-d2c9-4d65-8a51-2e6f4df8fbf1",
+  "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
+  "X-Forwarded-Host": "bin.openintegrations.dev",
+  "X-Original-Url": "/post"
  },
  "json": null,
  "origin": "***",
- "url": "http://localhost:2424/post"
+ "url": "https://bin.openintegrations.dev/post"
 }

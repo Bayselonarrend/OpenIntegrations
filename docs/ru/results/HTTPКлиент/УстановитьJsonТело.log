@@ -11,7 +11,12 @@
   "Content-Length": "96",
   "Content-Type": "application/json; charset=utf-8",
   "Host": "localhost:2424",
-  "User-Agent": "1Script v$2.0.0.0"
+  "Max-Forwards": "10",
+  "User-Agent": "1Script v$2.0.0.0",
+  "X-Arr-Log-Id": "6b3fc32b-2578-4b4f-813d-0a97be2bb161",
+  "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
+  "X-Forwarded-Host": "bin.openintegrations.dev",
+  "X-Original-Url": "/post"
  },
  "json": {
   "Поле1": 10,
@@ -23,5 +28,5 @@
   ]
  },
  "origin": "***",
- "url": "http://localhost:2424/post"
+ "url": "https://bin.openintegrations.dev/post"
 }

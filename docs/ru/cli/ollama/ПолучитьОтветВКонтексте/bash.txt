@@ -1,8 +1,8 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint ollama ПолучитьОтветВКонтексте \
-  --url ""https://hut.openintegrations.dev/ollama"" \
-  --model ""tinyllama"" \
-  --msgs ""[{'role':'user','content':'Hello!'}]"" \
-  --options ""C:\Users\bayse\AppData\Local\Temp\jh3rjlft.kym.json"" \
+  --url "https://hut.openintegrations.dev/ollama" \
+  --model "tinyllama" \
+  --msgs "[{'role':'user','content':'Hello!'}]" \
+  --options "{'options':{'seed':'555','temperature':'10'}}" \
   --headers "{'Authorization':'***'}"
