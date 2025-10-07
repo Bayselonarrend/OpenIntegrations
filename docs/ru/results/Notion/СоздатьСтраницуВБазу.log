@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "28482aa7-fc4e-815e-be49-d8f7638e65cb",
- "created_time": "2025-10-06T17:44:00Z",
- "last_edited_time": "2025-10-06T17:44:00Z",
+ "id": "28582aa7-fc4e-81eb-98aa-e0c442a341e0",
+ "created_time": "2025-10-07T18:52:00Z",
+ "last_edited_time": "2025-10-07T18:52:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,29 +15,51 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "28482aa7-fc4e-8154-8b52-ed9ae02dab1c"
+  "database_id": "28582aa7-fc4e-81a0-aaf3-cc28c3338757"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Номер": {
-   "id": "%3CzG_",
-   "type": "number",
-   "number": 1
+  "Картинка": {
+   "id": "E_go",
+   "type": "files",
+   "files": [
+    {
+     "name": "Лого",
+     "type": "external",
+     "external": {
+      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
+     }
+    }
+   ]
   },
   "Пользователь": {
-   "id": "OH~W",
+   "id": "GP%3DL",
    "type": "people",
    "people": []
   },
+  "Статус": {
+   "id": "HGnI",
+   "type": "select",
+   "select": {
+    "id": "8e8ef92d-9222-4793-9ce5-8ea28cb6b3f8",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Активен": {
+   "id": "Ytb%60",
+   "type": "checkbox",
+   "checkbox": true
+  },
   "Телефон": {
-   "id": "Rt%40%3C",
+   "id": "ex%3Fk",
    "type": "phone_number",
    "phone_number": "88005553535"
   },
   "Почта": {
-   "id": "X%3Eai",
+   "id": "kJu%3C",
    "type": "rich_text",
    "rich_text": [
     {
@@ -59,31 +81,8 @@
     }
    ]
   },
-  "Дата создания": {
-   "id": "X%5EP%5D",
-   "type": "date",
-   "date": {
-    "start": "2025-10-06T05:44:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Активен": {
-   "id": "%5CXSV",
-   "type": "checkbox",
-   "checkbox": true
-  },
-  "Статус": {
-   "id": "koq%40",
-   "type": "select",
-   "select": {
-    "id": "265b9803-8ccf-4ae7-adfe-f5aeab2cadd3",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
   "Описание": {
-   "id": "vUwh",
+   "id": "wMMO",
    "type": "rich_text",
    "rich_text": [
     {
@@ -105,18 +104,19 @@
     }
    ]
   },
-  "Картинка": {
-   "id": "%7C%3F%3E%3E",
-   "type": "files",
-   "files": [
-    {
-     "name": "Лого",
-     "type": "external",
-     "external": {
-      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
-     }
-    }
-   ]
+  "Номер": {
+   "id": "ylkb",
+   "type": "number",
+   "number": 1
+  },
+  "Дата создания": {
+   "id": "~%5BN%3D",
+   "type": "date",
+   "date": {
+    "start": "2025-10-07T06:52:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
   },
   "Имя": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/28482aa7fc4e815ebe49d8f7638e65cb",
+ "url": "https://www.notion.so/28582aa7fc4e81eb98aae0c442a341e0",
  "public_url": null,
- "request_id": "fa3bd435-3583-49b0-b2a7-196edfb495a6"
+ "request_id": "2f9b87f0-3e28-4bc6-a003-0dd98c3ef920"
 }

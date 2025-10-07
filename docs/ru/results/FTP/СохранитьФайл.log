@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 335944730,
- "filepath": "/tmp/155pmlyx.jt0.bin",
- "result": true
+ "filepath": "/tmp/jhkt5efu.fh4.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

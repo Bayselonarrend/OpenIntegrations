@@ -1,4 +1,4 @@
 oint bitrix24 НачатьНаблюдатьЗаЗадачей \
   --url "b24-ar17wx.bitrix24.by" \
-  --task "8052" \
+  --task "8162" \
   --token "***"

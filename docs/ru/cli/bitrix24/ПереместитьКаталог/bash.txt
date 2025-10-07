@@ -1,5 +1,5 @@
 oint bitrix24 ПереместитьКаталог \
   --url "b24-ar17wx.bitrix24.by" \
-  --folderid 43040 \
-  --tagetid 43036 \
+  --folderid 43658 \
+  --tagetid 43654 \
   --token "***"

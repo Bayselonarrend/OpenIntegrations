@@ -1,4 +1,4 @@
 oint bitrix24 УстановитьРеакциюНаСообщение ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --message 61658 ^
+  --message 62602 ^
   --token "***"

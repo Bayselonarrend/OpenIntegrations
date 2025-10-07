@@ -1,7 +1,7 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint ollama ПолучитьПредставления \
-  --url ""https://hut.openintegrations.dev/ollama"" \
-  --model ""tinyllama"" \
-  --input ""['Why is the sky blue?','Why is the grass green?']"" \
+  --url "https://hut.openintegrations.dev/ollama" \
+  --model "tinyllama" \
+  --input "['Why is the sky blue?','Why is the grass green?']" \
   --headers "{'Authorization':'***'}"
