@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint ollama ПолучитьВерсию ^
-  --url ""https://hut.openintegrations.dev/ollama"" ^
+  --url "https://hut.openintegrations.dev/ollama" ^
   --headers "{'Authorization':'***'}"

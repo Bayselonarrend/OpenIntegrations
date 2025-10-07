@@ -1,3 +1,5 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint twitter ЗагрузитьМассивВложений ^
   --files "['https://hut.openintegrations.dev/test_data/picture.jpg','https://hut.openintegrations.dev/test_data/picture2.jpg']" ^
   --type "tweet_image" ^

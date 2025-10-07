@@ -14,9 +14,14 @@
   "Content-Length": "53",
   "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
   "Host": "localhost:2424",
-  "User-Agent": "1Script v$2.0.0.0"
+  "Max-Forwards": "10",
+  "User-Agent": "1Script v$2.0.0.0",
+  "X-Arr-Log-Id": "e9146517-b470-466f-a8cd-32962c8135cd",
+  "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
+  "X-Forwarded-Host": "bin.openintegrations.dev",
+  "X-Original-Url": "/post"
  },
  "json": null,
  "origin": "***",
- "url": "http://localhost:2424/post"
+ "url": "https://bin.openintegrations.dev/post"
 }

@@ -4,14 +4,19 @@
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
-  "Authorization": "AWS4-HMAC-SHA256 Credential=AccessKey/20250923/Region/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=70cb76e8b5fc69327ccc1a8949aab453cf241405e411986275ee18836284fa26",
+  "Authorization": "AWS4-HMAC-SHA256 Credential=AccessKey/20251007/Region/s3/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=ff40b9546ed1144c8b6e7c77f29cbd3a4df4a592b33b952dd7b3d3086f4e60f7",
   "Connection": "Keep-Alive",
   "Content-Length": "0",
-  "Host": "localhost:80",
+  "Host": "localhost:2424",
+  "Max-Forwards": "10",
   "User-Agent": "1Script v$2.0.0.0",
   "X-Amz-Content-Sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-  "X-Amz-Date": "20250923T114115Z"
+  "X-Amz-Date": "20251007T200330Z",
+  "X-Arr-Log-Id": "855467db-5372-4d1a-a81a-71f10e835a1e",
+  "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
+  "X-Forwarded-Host": "bin.openintegrations.dev",
+  "X-Original-Url": "/get"
  },
  "origin": "***",
- "url": "http://localhost:80/get"
+ "url": "https://bin.openintegrations.dev/get"
 }

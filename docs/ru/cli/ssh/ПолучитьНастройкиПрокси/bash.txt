@@ -1,0 +1,6 @@
+oint ssh ПолучитьНастройкиПрокси \
+  --addr "127.0.0.1" \
+  --port 8071 \
+  --type "http" \
+  --login "proxyuser" \
+  --pass "***"

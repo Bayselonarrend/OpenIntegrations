@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/g42fnet3.05t.bin",
- "result": true
+ "filepath": "/tmp/51dotwqr.k3t.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
