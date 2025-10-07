@@ -53,17 +53,21 @@ Method at API documentation: [List of available counters](https://yandex.ru/dev/
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint metrika GetCountersList \
              --token "***" \
-             --filter "{'counter_ids':['104163723']}"
+             --filter "{'counter_ids':['104463285']}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint metrika GetCountersList ^
              --token "***" ^
-             --filter "{'counter_ids':['104163723']}"
+             --filter "{'counter_ids':['104463285']}"
         ```
     </TabItem>
 </Tabs>
@@ -74,7 +78,7 @@ Method at API documentation: [List of available counters](https://yandex.ru/dev/
  "rows": 3,
  "counters": [
   {
-   "id": 104163723,
+   "id": 104463285,
    "status": "Active",
    "owner_login": "bayselonarrend",
    "code_status": "CS_ERR_UNKNOWN",
@@ -115,7 +119,7 @@ Method at API documentation: [List of available counters](https://yandex.ru/dev/
     "ytm": false,
     "ssr": true
    },
-   "create_time": "2025-09-15T23:09:09+00:00",
+   "create_time": "2025-10-07T15:11:32+00:00",
    "time_zone_name": "Europe/Moscow",
    "time_zone_offset": 180,
    "partner_id": 0,

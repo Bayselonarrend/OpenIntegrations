@@ -1246,8 +1246,8 @@
     КонецЕсли;
 
     Url              = ПараметрыДоступа[ПолеURL];
-    IdInstance       = ПараметрыДоступа.idInstance;
-    ApiTokenInstance = ПараметрыДоступа.apiTokenInstance;
+    IdInstance       = ПараметрыДоступа["idInstance"];
+    ApiTokenInstance = ПараметрыДоступа["apiTokenInstance"];
 
     URL = СтрШаблон("%1/waInstance%2/%3/%4", Url, IdInstance, Метод, ApiTokenInstance);
 

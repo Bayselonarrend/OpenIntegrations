@@ -50,18 +50,22 @@ Parameters with Binary data type can also accept file paths on disk and URLs
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint ollama PushBlob \
-             --url ""https://hut.openintegrations.dev/ollama"" \
-             --data ""/tmp/3fjk5wqf.xut"" \
+             --url "https://hut.openintegrations.dev/ollama" \
+             --data "/tmp/uxri3lav.oyp" \
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint ollama PushBlob ^
-             --url ""https://hut.openintegrations.dev/ollama"" ^
-             --data ""/tmp/3fjk5wqf.xut"" ^
+             --url "https://hut.openintegrations.dev/ollama" ^
+             --data "/tmp/uxri3lav.oyp" ^
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
@@ -71,6 +75,6 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```json title="Result"
 {
  "status_code": 201,
- "digest": "d372cdb21dc32604b8850307157fbd1b8f615bc78a6474603d7f313e5bc57374"
+ "digest": "761d105ebf1c1679ce67fa566dbd876e5682d2d67bd3a1a86aa2896a212a8bd2"
 }
 ```

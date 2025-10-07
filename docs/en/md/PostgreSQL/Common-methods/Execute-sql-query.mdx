@@ -123,19 +123,23 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint postgres ExecuteSQLQuery \
-             --sql ""https://hut.openintegrations.dev/test_data/TEST_DATA.sql"" \
+             --sql "https://hut.openintegrations.dev/test_data/TEST_DATA.sql" \
              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
-             --tls ""/tmp/5ipwpn4a.lmj.json""
+             --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint postgres ExecuteSQLQuery ^
-             --sql ""https://hut.openintegrations.dev/test_data/TEST_DATA.sql"" ^
+             --sql "https://hut.openintegrations.dev/test_data/TEST_DATA.sql" ^
              --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" ^
-             --tls ""/tmp/5ipwpn4a.lmj.json""
+             --tls "{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true}"
         ```
     </TabItem>
 </Tabs>
@@ -146,7 +150,7 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
  "data": [
   {
    "age": 25,
-   "created_at": "2025-09-15",
+   "created_at": "2025-10-07",
    "data": {
     "BYTEA": "Base64"
    },

@@ -60,22 +60,26 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint bitrix24 EditMessage \
-             --url ""b24-ar17wx.bitrix24.by"" \
-             --message "61092" \
-             --text ""New message text"" \
-             --blocks ""[{'IMAGE':{'NAME':'Image1','LINK':'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg'}},{'FILE':{'NAME':'File1.docx','LINK':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx'}}]"" \
+             --url "b24-ar17wx.bitrix24.by" \
+             --message 62270 \
+             --text "New message text" \
+             --blocks "[{'IMAGE':{'NAME':'Image1','LINK':'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg'}},{'FILE':{'NAME':'File1.docx','LINK':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx'}}]" \
              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint bitrix24 EditMessage ^
-             --url ""b24-ar17wx.bitrix24.by"" ^
-             --message "61092" ^
-             --text ""New message text"" ^
-             --blocks ""[{'IMAGE':{'NAME':'Image1','LINK':'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg'}},{'FILE':{'NAME':'File1.docx','LINK':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx'}}]"" ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --message 62270 ^
+             --text "New message text" ^
+             --blocks "[{'IMAGE':{'NAME':'Image1','LINK':'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg'}},{'FILE':{'NAME':'File1.docx','LINK':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx'}}]" ^
              --token "***"
         ```
     </TabItem>
@@ -86,13 +90,13 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
 {
  "result": true,
  "time": {
-  "start": 1757976862.27104,
-  "finish": 1757976862.31744,
-  "duration": 0.0464050769805908,
-  "processing": 0.0231227874755859,
-  "date_start": "2025-09-15T22:54:22+00:00",
-  "date_finish": "2025-09-15T22:54:22+00:00",
-  "operating_reset_at": 1757977462,
+  "start": 1759848908,
+  "finish": 1759848908.97247,
+  "duration": 0.972474098205566,
+  "processing": 0,
+  "date_start": "2025-10-07T14:55:08+00:00",
+  "date_finish": "2025-10-07T14:55:08+00:00",
+  "operating_reset_at": 1759849508,
   "operating": 0
  }
 }

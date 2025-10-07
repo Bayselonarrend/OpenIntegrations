@@ -79,23 +79,27 @@ The list of available types is described on the initial page of the MySQL librar
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint mysql UpdateRecords \
-             --table ""test_data"" \
-             --values ""/tmp/nyzrddm4.ynv.json"" \
-             --filter ""/tmp/ozrtwfjk.40y.json"" \
+             --table "test_data" \
+             --values "{'ip_address':{'VARCHAR':'127.0.0.1'}}" \
+             --filter "{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false}" \
              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-             --tls ""/tmp/qeqw4r1h.hps.json""
+             --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint mysql UpdateRecords ^
-             --table ""test_data"" ^
-             --values ""/tmp/nyzrddm4.ynv.json"" ^
-             --filter ""/tmp/ozrtwfjk.40y.json"" ^
+             --table "test_data" ^
+             --values "{'ip_address':{'VARCHAR':'127.0.0.1'}}" ^
+             --filter "{'field':'gender','type':'=','value':{'VARCHAR':'Male'},'raw':false}" ^
              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-             --tls ""/tmp/qeqw4r1h.hps.json""
+             --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
 </Tabs>

@@ -40,19 +40,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint vk WriteInDiscussion \
-             --topic "54109758" \
-             --text ""I like yellow more"" \
-             --auth ""/tmp/yen3xoba.rv3.json""
+             --topic 54325125 \
+             --text "I like yellow more" \
+             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint vk WriteInDiscussion ^
-             --topic "54109758" ^
-             --text ""I like yellow more"" ^
-             --auth ""/tmp/yen3xoba.rv3.json""
+             --topic 54325125 ^
+             --text "I like yellow more" ^
+             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>
@@ -60,6 +64,6 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Result"
 {
- "response": 3167
+ "response": 3208
 }
 ```

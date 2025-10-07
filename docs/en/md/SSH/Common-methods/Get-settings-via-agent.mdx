@@ -35,6 +35,33 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint ssh GetSettingsViaAgent \
+             --host "172.33.0.13" \
+             --port "2222" \
+             --user "bayselonarrend"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint ssh GetSettingsViaAgent ^
+             --host "172.33.0.13" ^
+             --port "2222" ^
+             --user "bayselonarrend"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "auth_type": "agent",
+ "host": "172.33.0.13",
+ "port": 2222,
+ "username": "bayselonarrend"
+}
+```

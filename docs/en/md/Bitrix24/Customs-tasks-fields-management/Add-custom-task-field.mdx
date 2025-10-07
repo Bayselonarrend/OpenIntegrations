@@ -60,26 +60,30 @@ Method at API documentation: [task.item.userfield.add](https://dev.1c-bitrix.ru/
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint bitrix24 AddCustomTaskField \
-             --url ""b24-ar17wx.bitrix24.by"" \
-             --type ""string"" \
-             --fieldname ""TEXT_FIELD"" \
-             --externalid ""BITRIX_TEXT_FIELD"" \
-             --title ""Text field"" \
-             --label ""/tmp/i0ke10lr.cns.json"" \
+             --url "b24-ar17wx.bitrix24.by" \
+             --type "string" \
+             --fieldname "TEXT_FIELD" \
+             --externalid "BITRIX_TEXT_FIELD" \
+             --title "Text field" \
+             --label "{'en':'Some field','ru':'Nekotoroe pole'}" \
              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint bitrix24 AddCustomTaskField ^
-             --url ""b24-ar17wx.bitrix24.by"" ^
-             --type ""string"" ^
-             --fieldname ""TEXT_FIELD"" ^
-             --externalid ""BITRIX_TEXT_FIELD"" ^
-             --title ""Text field"" ^
-             --label ""/tmp/i0ke10lr.cns.json"" ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --type "string" ^
+             --fieldname "TEXT_FIELD" ^
+             --externalid "BITRIX_TEXT_FIELD" ^
+             --title "Text field" ^
+             --label "{'en':'Some field','ru':'Nekotoroe pole'}" ^
              --token "***"
         ```
     </TabItem>

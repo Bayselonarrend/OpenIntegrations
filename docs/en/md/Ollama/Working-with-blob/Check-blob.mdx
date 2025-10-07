@@ -47,18 +47,22 @@ Method at API documentation: [Check if a Blob Exists](https://github.com/ollama/
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint ollama CheckBlob \
-             --url ""https://hut.openintegrations.dev/ollama"" \
-             --digest ""yoyoyo"" \
+             --url "https://hut.openintegrations.dev/ollama" \
+             --digest "yoyoyo" \
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint ollama CheckBlob ^
-             --url ""https://hut.openintegrations.dev/ollama"" ^
-             --digest ""yoyoyo"" ^
+             --url "https://hut.openintegrations.dev/ollama" ^
+             --digest "yoyoyo" ^
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>

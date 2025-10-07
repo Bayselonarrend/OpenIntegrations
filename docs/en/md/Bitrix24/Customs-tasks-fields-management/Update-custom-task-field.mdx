@@ -57,22 +57,26 @@ Method at API documentation: [task.item.userfield.update](https://dev.1c-bitrix.
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint bitrix24 UpdateCustomTaskField \
-             --url ""b24-ar17wx.bitrix24.by"" \
-             --fieldid "261" \
-             --externalid ""NEW_TEXT_FIELD"" \
-             --label ""/tmp/x5x03spf.fhe.json"" \
+             --url "b24-ar17wx.bitrix24.by" \
+             --fieldid 261 \
+             --externalid "NEW_TEXT_FIELD" \
+             --label "{'en':'Updated field','ru':'Izmenennoe pole'}" \
              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint bitrix24 UpdateCustomTaskField ^
-             --url ""b24-ar17wx.bitrix24.by"" ^
-             --fieldid "261" ^
-             --externalid ""NEW_TEXT_FIELD"" ^
-             --label ""/tmp/x5x03spf.fhe.json"" ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --fieldid 261 ^
+             --externalid "NEW_TEXT_FIELD" ^
+             --label "{'en':'Updated field','ru':'Izmenennoe pole'}" ^
              --token "***"
         ```
     </TabItem>

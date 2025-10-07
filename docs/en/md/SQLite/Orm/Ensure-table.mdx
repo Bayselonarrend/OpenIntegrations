@@ -53,19 +53,23 @@ This function does not update the data type of existing columns
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint sqlite EnsureTable \
              --table "test_new" \
              --cols "{'id':'INTEGER','code':'INTEGER','name':'TEXT','age':'INTEGER','info':'TEXT'}" \
-             --db "/tmp/pvrrdds2.dxl.sqlite"
+             --db "/tmp/irt1oajf.wt5.sqlite"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint sqlite EnsureTable ^
              --table "test_new" ^
              --cols "{'id':'INTEGER','code':'INTEGER','name':'TEXT','age':'INTEGER','info':'TEXT'}" ^
-             --db "/tmp/pvrrdds2.dxl.sqlite"
+             --db "/tmp/irt1oajf.wt5.sqlite"
         ```
     </TabItem>
 </Tabs>

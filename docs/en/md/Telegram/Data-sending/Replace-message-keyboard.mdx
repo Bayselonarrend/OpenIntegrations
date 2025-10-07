@@ -52,20 +52,24 @@ Method at API documentation: [editMessageReplyMarkup](https://core.telegram.org/
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint telegram ReplaceMessageKeyboard \
              --token "***" \
              --chat "461699897" \
-             --message "16463" \
+             --message "16722" \
              --keyboard "{'inline_keyboard':[[{'text':'New button 3','callback_data':'New button 3'},{'text':'New button 2','callback_data':'New button 2'},{'text':'New button 1','callback_data':'New button 1'}]],'rows':'1'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint telegram ReplaceMessageKeyboard ^
              --token "***" ^
              --chat "461699897" ^
-             --message "16463" ^
+             --message "16722" ^
              --keyboard "{'inline_keyboard':[[{'text':'New button 3','callback_data':'New button 3'},{'text':'New button 2','callback_data':'New button 2'},{'text':'New button 1','callback_data':'New button 1'}]],'rows':'1'}"
         ```
     </TabItem>
@@ -76,7 +80,7 @@ Method at API documentation: [editMessageReplyMarkup](https://core.telegram.org/
 {
  "ok": true,
  "result": {
-  "message_id": 16463,
+  "message_id": 16722,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -90,8 +94,8 @@ Method at API documentation: [editMessageReplyMarkup](https://core.telegram.org/
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1757971358,
-  "edit_date": 1757971379,
+  "date": 1759842219,
+  "edit_date": 1759842282,
   "text": "Строковое значение",
   "reply_markup": {
    "inline_keyboard": [

@@ -1246,8 +1246,8 @@ Function FormURL(AccessParameters, Method, URLField)
     EndIf;
 
     Url              = AccessParameters[URLField];
-    IdInstance       = AccessParameters.idInstance;
-    ApiTokenInstance = AccessParameters.apiTokenInstance;
+    IdInstance       = AccessParameters["idInstance"];
+    ApiTokenInstance = AccessParameters["apiTokenInstance"];
 
     URL = StrTemplate("%1/waInstance%2/%3/%4", Url, IdInstance, Method, ApiTokenInstance);
 
