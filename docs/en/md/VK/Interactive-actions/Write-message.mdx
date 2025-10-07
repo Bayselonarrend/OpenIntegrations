@@ -49,23 +49,27 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint vk WriteMessage \
-             --text ""Message from autotest"" \
-             --user ""657846756"" \
+             --text "Message from autotest" \
+             --user "657846756" \
              --ct "***" \
-             --keyboard ""/tmp/ggummk2q.4cl.json"" \
-             --auth ""/tmp/bhe31ioo.yzo.json""
+             --keyboard "{'buttons':[[{'action':{'type':'text','label':'Button 1'}},{'action':{'type':'text','label':'Button 2'}}]],'one_time':false}" \
+             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint vk WriteMessage ^
-             --text ""Message from autotest"" ^
-             --user ""657846756"" ^
+             --text "Message from autotest" ^
+             --user "657846756" ^
              --ct "***" ^
-             --keyboard ""/tmp/ggummk2q.4cl.json"" ^
-             --auth ""/tmp/bhe31ioo.yzo.json""
+             --keyboard "{'buttons':[[{'action':{'type':'text','label':'Button 1'}},{'action':{'type':'text','label':'Button 2'}}]],'one_time':false}" ^
+             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>
@@ -73,6 +77,6 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Result"
 {
- "response": 1142
+ "response": 1155
 }
 ```

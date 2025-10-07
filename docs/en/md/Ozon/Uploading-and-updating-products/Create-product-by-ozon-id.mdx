@@ -56,6 +56,8 @@ Method at API documentation: [post /v1/product/import-by-sku](https://docs.ozon.
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint ozon CreateProductByOzonID \
              --clientid "***" \
              --apikey "***" \
@@ -65,6 +67,8 @@ Method at API documentation: [post /v1/product/import-by-sku](https://docs.ozon.
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint ozon CreateProductByOzonID ^
              --clientid "***" ^
              --apikey "***" ^
@@ -77,7 +81,7 @@ Method at API documentation: [post /v1/product/import-by-sku](https://docs.ozon.
 ```json title="Result"
 {
  "result": {
-  "task_id": 2921236852,
+  "task_id": 3061563009,
   "unmatched_sku_list": []
  }
 }

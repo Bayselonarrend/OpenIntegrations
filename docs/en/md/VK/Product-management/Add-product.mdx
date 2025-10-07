@@ -63,17 +63,21 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint vk AddProduct \
-             --product ""/tmp/tixwf0nw.qgv.json"" \
-             --auth ""/tmp/ec055nt5.ay2.json""
+             --product "{'Name':'Test product (another)','Description':'Product description','Category':'20173','Price':'1','OldPrice':'15','MainPhoto':'https://hut.openintegrations.dev/test_data/picture.jpg','URL':'https://github.com/Bayselonarrend/OpenIntegrations','AdditionalPhotos':['https://hut.openintegrations.dev/test_data/picture.jpg','https://hut.openintegrations.dev/test_data/picture2.jpg'],'MainInGroup':true,'Width':'20','Height':'30','Depth':'40','Weight':'100','SKU':'12345','AvailableBalance':'10','PropertyValues':'8327'}" \
+             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint vk AddProduct ^
-             --product ""/tmp/tixwf0nw.qgv.json"" ^
-             --auth ""/tmp/ec055nt5.ay2.json""
+             --product "{'Name':'Test product (another)','Description':'Product description','Category':'20173','Price':'1','OldPrice':'15','MainPhoto':'https://hut.openintegrations.dev/test_data/picture.jpg','URL':'https://github.com/Bayselonarrend/OpenIntegrations','AdditionalPhotos':['https://hut.openintegrations.dev/test_data/picture.jpg','https://hut.openintegrations.dev/test_data/picture2.jpg'],'MainInGroup':true,'Width':'20','Height':'30','Depth':'40','Weight':'100','SKU':'12345','AvailableBalance':'10','PropertyValues':'8327'}" ^
+             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>
@@ -82,7 +86,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "response": {
-  "market_item_id": 11838523
+  "market_item_id": 11976641
  }
 }
 ```

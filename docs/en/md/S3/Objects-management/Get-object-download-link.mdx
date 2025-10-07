@@ -56,6 +56,8 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint s3 GetObjectDownloadLink \
              --name "picture.jpg" \
              --bucket "opi-dirbucket3" \
@@ -67,6 +69,8 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint s3 GetObjectDownloadLink ^
              --name "picture.jpg" ^
              --bucket "opi-dirbucket3" ^
@@ -79,5 +83,5 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
 
 
 ```json title="Result"
-"storage-155.s3hoster.by/opi-dirbucket3/picture.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=BRN5RKJE67YCVDZRRQVI%2F20250915%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20250915T231834Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=a86f9514bf798f56b497ad3124733d51c4a4ab942a0007330e558606ea63d1a1"
+"storage-155.s3hoster.by/opi-dirbucket3/picture.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=BRN5RKJE67YCVDZRRQVI%2F20251007%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20251007T152222Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=cbfdd561c40142a855f4abb3ba694a1309b2e7e6bb28a2b5510dfdd908f40b55"
 ```

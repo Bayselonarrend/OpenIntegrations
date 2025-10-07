@@ -67,22 +67,26 @@ Method at API documentation: [Generate a chat completion](https://github.com/oll
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint ollama GetContextResponse \
-             --url ""https://hut.openintegrations.dev/ollama"" \
-             --model ""tinyllama"" \
-             --msgs ""[{'role':'user','content':'Hello!'}]"" \
-             --options ""/tmp/jslyarye.ngt.json"" \
+             --url "https://hut.openintegrations.dev/ollama" \
+             --model "tinyllama" \
+             --msgs "[{'role':'user','content':'Hello!'}]" \
+             --options "{'options':{'seed':'555','temperature':'10'}}" \
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint ollama GetContextResponse ^
-             --url ""https://hut.openintegrations.dev/ollama"" ^
-             --model ""tinyllama"" ^
-             --msgs ""[{'role':'user','content':'Hello!'}]"" ^
-             --options ""/tmp/jslyarye.ngt.json"" ^
+             --url "https://hut.openintegrations.dev/ollama" ^
+             --model "tinyllama" ^
+             --msgs "[{'role':'user','content':'Hello!'}]" ^
+             --options "{'options':{'seed':'555','temperature':'10'}}" ^
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
@@ -92,18 +96,18 @@ Method at API documentation: [Generate a chat completion](https://github.com/oll
 ```json title="Result"
 {
  "model": "tinyllama",
- "created_at": "2025-09-16T00:16:33.602488485Z",
+ "created_at": "2025-10-07T15:27:12.944553078Z",
  "message": {
   "role": "assistant",
-  "content": "Yes, the first version of 1C:Enterprise was released in 2005. However, the platform has undergone several major versions since then, each bringing new features and improvements to the software. The latest version available as of writing is 14, which was released in April 2021. The upgrade process involves downloading and installing updates that enhance functionality, fix bugs, and improve performance, as well as adding new features and capabilities based on customer feedback and market trends."
+  "content": "The first version of 1C:Enterprise was released in 1988. The software program is still widely used by small and medium-sized enterprises (SMEs), particularly for accounting, billing, and inventory management needs. It's been further updated with new features and functionalities over the years."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 14043467332,
- "load_duration": 16572316,
- "prompt_eval_count": 233,
- "prompt_eval_duration": 5708390784,
- "eval_count": 106,
- "eval_duration": 8311980284
+ "total_duration": 14975521284,
+ "load_duration": 22062269,
+ "prompt_eval_count": 232,
+ "prompt_eval_duration": 8393666439,
+ "eval_count": 72,
+ "eval_duration": 6550325052
 }
 ```

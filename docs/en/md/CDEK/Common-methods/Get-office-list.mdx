@@ -46,6 +46,8 @@ Method at API documentation: [List of pickup points](https://api-docs.cdek.ru/36
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint cdek GetOfficeList \
              --token "***" \
              --filter "{'weight_max':'50','city_code':'270','allowed_cod':true}" \
@@ -55,6 +57,8 @@ Method at API documentation: [List of pickup points](https://api-docs.cdek.ru/36
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint cdek GetOfficeList ^
              --token "***" ^
              --filter "{'weight_max':'50','city_code':'270','allowed_cod':true}" ^

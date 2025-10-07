@@ -41,19 +41,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint vk RemoveProductFromSelection \
-             --item "11838523" \
-             --sel "147" \
-             --auth ""/tmp/riut31oq.esu.json""
+             --item 11976641 \
+             --sel 140 \
+             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint vk RemoveProductFromSelection ^
-             --item "11838523" ^
-             --sel "147" ^
-             --auth ""/tmp/riut31oq.esu.json""
+             --item 11976641 ^
+             --sel 140 ^
+             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>
