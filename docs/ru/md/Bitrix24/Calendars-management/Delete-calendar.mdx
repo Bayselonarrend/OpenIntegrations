@@ -35,15 +35,15 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDКалендаря = "1322";
+    IDКалендаря = "1422";
     IDВладельца = 1;
     Тип         = "user";
 
     Результат = OPI_Bitrix24.УдалитьКалендарь(URL, IDКалендаря, IDВладельца, Тип);
 
     URL         = "b24-ar17wx.bitrix24.by";
-    Токен       = "75d8c668006e9f06006b12e400000001000...";
-    IDКалендаря = "1324";
+    Токен       = "c866e568006e9f06006b12e400000001000...";
+    IDКалендаря = "1424";
 
     Результат = OPI_Bitrix24.УдалитьКалендарь(URL, IDКалендаря, IDВладельца, Тип, Токен);
 ```
@@ -55,7 +55,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 УдалитьКалендарь \
               --url "b24-ar17wx.bitrix24.by" \
-              --calendar 1388 \
+              --calendar 1428 \
               --owner 1 \
               --type "user" \
               --token "***"
@@ -66,7 +66,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 УдалитьКалендарь ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --calendar 1388 ^
+              --calendar 1428 ^
               --owner 1 ^
               --type "user" ^
               --token "***"
@@ -79,13 +79,13 @@ import TabItem from '@theme/TabItem';
 {
  "result": true,
  "time": {
-  "start": 1759773280,
-  "finish": 1759773280.13937,
-  "duration": 0.13936710357666,
+  "start": 1759870878,
+  "finish": 1759870878.89124,
+  "duration": 0.891237020492554,
   "processing": 0,
-  "date_start": "2025-10-06T17:54:40+00:00",
-  "date_finish": "2025-10-06T17:54:40+00:00",
-  "operating_reset_at": 1759773880,
+  "date_start": "2025-10-08T00:01:18+03:00",
+  "date_finish": "2025-10-08T00:01:18+03:00",
+  "operating_reset_at": 1759871478,
   "operating": 0
  }
 }

@@ -1,10 +1,10 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    LeadID = "2416";
+    LeadID = "2520";
 
     Result = OPI_Bitrix24.GetLead(URL, LeadID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "75d8c668006e9f06006b12e400000001000...";
-    LeadID = "2418";
+    Token  = "c866e568006e9f06006b12e400000001000...";
+    LeadID = "2522";
 
     Result = OPI_Bitrix24.GetLead(URL, LeadID, Token);
