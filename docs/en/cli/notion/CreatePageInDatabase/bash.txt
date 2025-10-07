@@ -1,4 +1,6 @@
+# JSON data can also be passed as a path to a .json file
+
 oint notion CreatePageInDatabase \
  --token "***" \
- --base "26f82aa7-fc4e-8100-8c40-ec5a1dfa460e" \
- --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'09/15/2025 22:34:45','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'88005553535','Status':'New'}"
+ --base "28582aa7-fc4e-81c1-9894-c463a62d6207" \
+ --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'10/07/2025 14:35:02','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'88005553535','Status':'New'}"

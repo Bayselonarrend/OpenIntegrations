@@ -1,5 +1,7 @@
+# JSON data can also be passed as a path to a .json file
+
 oint bitrix24 UpdateUser \
- --url ""b24-ar17wx.bitrix24.by"" \
- --userid "2668" \
- --fields ""/tmp/m24jsyqm.xh3.json"" \
+ --url "b24-ar17wx.bitrix24.by" \
+ --userid 2722 \
+ --fields "{'EMAIL':'99aa8e64-8344-4c56-89b2-7bedfcab305c@exepmple.org','NAME':'Oleg','LAST_NAME':'Lama','UF_DEPARTMENT':'7'}" \
  --token "***"

@@ -1,5 +1,7 @@
+# JSON data can also be passed as a path to a .json file
+
 oint sqlite UpdateRecords \
  --table "test" \
  --values "{'name':'Vitaly A.','salary':'999999'}" \
  --filter "{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':false}" \
- --db "/tmp/pvrrdds2.dxl.sqlite"
+ --db "/tmp/irt1oajf.wt5.sqlite"

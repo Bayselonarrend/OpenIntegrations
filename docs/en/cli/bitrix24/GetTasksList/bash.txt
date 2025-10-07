@@ -1,4 +1,4 @@
 oint bitrix24 GetTasksList \
- --url ""b24-ar17wx.bitrix24.by"" \
- --offset "1" \
+ --url "b24-ar17wx.bitrix24.by" \
+ --offset 1 \
  --token "***"

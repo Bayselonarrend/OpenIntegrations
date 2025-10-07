@@ -1,6 +1,8 @@
+# JSON data can also be passed as a path to a .json file
+
 oint bitrix24 EditMessage \
- --url ""b24-ar17wx.bitrix24.by"" \
- --message "61092" \
- --text ""New message text"" \
- --blocks ""[{'IMAGE':{'NAME':'Image1','LINK':'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg'}},{'FILE':{'NAME':'File1.docx','LINK':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx'}}]"" \
+ --url "b24-ar17wx.bitrix24.by" \
+ --message 62270 \
+ --text "New message text" \
+ --blocks "[{'IMAGE':{'NAME':'Image1','LINK':'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg'}},{'FILE':{'NAME':'File1.docx','LINK':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx'}}]" \
  --token "***"

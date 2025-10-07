@@ -1,4 +1,6 @@
+# JSON data can also be passed as a path to a .json file
+
 oint bitrix24 CreateUser \
- --url ""b24-ar17wx.bitrix24.by"" \
- --fields ""/tmp/qrtlaa0g.gfu.json"" \
+ --url "b24-ar17wx.bitrix24.by" \
+ --fields "{'EMAIL':'73e0c389-7236-4ec4-86f0-f5cd190521e7@exepmple.org','NAME':'Vitaly','LAST_NAME':'Alpaca','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':'1'}" \
  --token "***"

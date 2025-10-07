@@ -1,2 +1,2 @@
 oint ozon GetProductStructure \
- 
+ --empty false

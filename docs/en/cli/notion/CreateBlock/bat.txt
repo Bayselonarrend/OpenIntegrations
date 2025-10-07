@@ -1,3 +1,5 @@
+:: JSON data can also be passed as a path to a .json file
+
 oint notion CreateBlock ^
  --token "***" ^
  --page "5dd94c34fab04bff986b7511c0779f77" ^

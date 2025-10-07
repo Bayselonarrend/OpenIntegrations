@@ -1,5 +1,7 @@
+# JSON data can also be passed as a path to a .json file
+
 oint mysql DeleteTableColumn \
- --table ""testtable"" \
- --name ""new_field"" \
+ --table "testtable" \
+ --name "new_field" \
  --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
- --tls ""/tmp/cj4rmezc.efc.json""
+ --tls "{'use_tls':true,'accept_invalid_certs':true}"

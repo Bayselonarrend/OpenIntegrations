@@ -1,2 +1,2 @@
 oint vk FormKeyboard ^
- --buttons ""['Button 1','Button 2']""
+ --buttons "['Button 1','Button 2']"

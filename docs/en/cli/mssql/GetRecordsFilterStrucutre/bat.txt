@@ -1,2 +1,2 @@
 oint mssql GetRecordsFilterStrucutre ^
- --empty "true"
+ --empty true
