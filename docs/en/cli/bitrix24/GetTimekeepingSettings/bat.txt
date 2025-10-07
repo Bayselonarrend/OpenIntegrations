@@ -1,4 +1,4 @@
 oint bitrix24 GetTimekeepingSettings ^
- --url ""b24-ar17wx.bitrix24.by"" ^
- --userid "1" ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --userid 1 ^
  --token "***"

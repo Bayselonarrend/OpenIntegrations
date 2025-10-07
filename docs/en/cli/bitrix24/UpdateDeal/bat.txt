@@ -1,5 +1,7 @@
+:: JSON data can also be passed as a path to a .json file
+
 oint bitrix24 UpdateDeal ^
- --url ""b24-ar17wx.bitrix24.by"" ^
- --deal "4902" ^
- --fields ""/tmp/shrqwaf4.yth.json"" ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --deal 5006 ^
+ --fields "{'TITLE':'Future deal in RUB','CURRENCY_ID':'RUB','OPPORTUNITY':'50000','BEGINDATE':'2025-01-01'}" ^
  --token "***"

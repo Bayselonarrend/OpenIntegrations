@@ -1,3 +1,5 @@
+:: JSON data can also be passed as a path to a .json file
+
 oint vk CreateStory ^
- --picture ""/tmp/2yjfkgvr.au5.png"" ^
- --auth ""/tmp/y1vn04jz.zcs.json""
+ --picture "/tmp/zwbn3o2x.0lp.png" ^
+ --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

@@ -1,6 +1,6 @@
 oint postgres GenerateConnectionString ^
  --addr "127.0.0.1" ^
- --db ""postgres"" ^
- --login ""bayselonarrend"" ^
+ --db "postgres" ^
+ --login "bayselonarrend" ^
  --pass "***" ^
- --port "5433"
+ --port 5433

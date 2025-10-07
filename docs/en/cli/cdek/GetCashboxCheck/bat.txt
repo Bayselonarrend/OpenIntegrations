@@ -1,4 +1,4 @@
 oint cdek GetCashboxCheck ^
  --token "***" ^
- --uuid "d21e50df-430b-4b25-a3e1-4059d93047f5" ^
+ --uuid "c0c5c25d-9af6-48b4-936b-a89c197d2b1b" ^
  --testapi "***"

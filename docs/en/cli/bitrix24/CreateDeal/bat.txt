@@ -1,4 +1,6 @@
+:: JSON data can also be passed as a path to a .json file
+
 oint bitrix24 CreateDeal ^
- --url ""b24-ar17wx.bitrix24.by"" ^
- --fields ""/tmp/rct13jig.lgj.json"" ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --fields "{'TITLE':'Another deal','TYPE_ID':'GOODS','STAGE_ID':'NEW','COMPANY_ID':'1','CONTACT_ID':'3','OPENED':'Y','ASSIGNED_BY_ID':'1','PROBABILITY':'30','CURRENCY_ID':'USD','OPPORTUNITY':'5000','CATEGORY_ID':'5','BEGINDATE':'2024-01-01','CLOSEDATE':'2031-01-01'}" ^
  --token "***"

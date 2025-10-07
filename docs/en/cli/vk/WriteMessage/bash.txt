@@ -1,6 +1,8 @@
+# JSON data can also be passed as a path to a .json file
+
 oint vk WriteMessage \
- --text ""Message from autotest"" \
- --user ""657846756"" \
+ --text "Message from autotest" \
+ --user "657846756" \
  --ct "***" \
- --keyboard ""/tmp/ggummk2q.4cl.json"" \
- --auth ""/tmp/bhe31ioo.yzo.json""
+ --keyboard "{'buttons':[[{'action':{'type':'text','label':'Button 1'}},{'action':{'type':'text','label':'Button 2'}}]],'one_time':false}" \
+ --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

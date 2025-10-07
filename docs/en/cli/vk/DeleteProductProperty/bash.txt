@@ -1,3 +1,5 @@
+# JSON data can also be passed as a path to a .json file
+
 oint vk DeleteProductProperty \
- --prop ""4322"" \
- --auth ""/tmp/zqk0ga2e.jw0.json""
+ --prop "4583" \
+ --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

@@ -1,2 +1,2 @@
 oint ozon GetAttributesUpdateStructure \
- 
+ --empty false

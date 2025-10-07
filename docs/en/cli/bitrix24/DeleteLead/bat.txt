@@ -1,4 +1,4 @@
 oint bitrix24 DeleteLead ^
- --url ""b24-ar17wx.bitrix24.by"" ^
- --lead "2458" ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --lead 2510 ^
  --token "***"

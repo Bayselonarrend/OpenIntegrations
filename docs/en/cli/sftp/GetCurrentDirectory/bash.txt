@@ -1,0 +1,4 @@
+# JSON data can also be passed as a path to a .json file
+
+oint sftp GetCurrentDirectory \
+ --conn "{'proxy':null,'set':{'auth_type':'password','host':'127.0.0.1','key_path':null,'passphrase':null,'password':'***','port':'2222','pub_path':null,'username':'bayselonarrend'}}"

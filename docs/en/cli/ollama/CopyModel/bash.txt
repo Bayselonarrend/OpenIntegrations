@@ -1,5 +1,7 @@
+# JSON data can also be passed as a path to a .json file
+
 oint ollama CopyModel \
- --url ""https://hut.openintegrations.dev/ollama"" \
- --model ""mario"" \
- --name ""mario2"" \
+ --url "https://hut.openintegrations.dev/ollama" \
+ --model "mario" \
+ --name "mario2" \
  --headers "{'Authorization':'***'}"

@@ -1,5 +1,7 @@
+:: JSON data can also be passed as a path to a .json file
+
 oint ollama GetResponse ^
- --url ""https://hut.openintegrations.dev/ollama"" ^
- --model ""mario"" ^
- --prompt ""How are you?"" ^
+ --url "https://hut.openintegrations.dev/ollama" ^
+ --model "mario" ^
+ --prompt "How are you?" ^
  --headers "{'Authorization':'***'}"

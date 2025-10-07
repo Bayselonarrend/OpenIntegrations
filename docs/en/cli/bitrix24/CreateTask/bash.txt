@@ -1,4 +1,6 @@
+# JSON data can also be passed as a path to a .json file
+
 oint bitrix24 CreateTask \
- --url ""b24-ar17wx.bitrix24.by"" \
- --fields ""/tmp/dpjrx4uz.1pa.json"" \
+ --url "b24-ar17wx.bitrix24.by" \
+ --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'10/08/2025 14:44:16','RESPONSIBLE_ID':'1'}" \
  --token "***"

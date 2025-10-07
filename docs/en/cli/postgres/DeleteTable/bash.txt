@@ -1,4 +1,6 @@
+# JSON data can also be passed as a path to a .json file
+
 oint postgres DeleteTable \
- --table ""test_data"" \
+ --table "test_data" \
  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
- --tls ""/tmp/t4045524.3ov.json""
+ --tls "{'use_tls':true,'accept_invalid_certs':true}"

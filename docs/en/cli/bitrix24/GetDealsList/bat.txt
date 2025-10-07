@@ -1,4 +1,6 @@
+:: JSON data can also be passed as a path to a .json file
+
 oint bitrix24 GetDealsList ^
- --url ""b24-ar17wx.bitrix24.by"" ^
- --filter ""/tmp/ejvpyapn.3mv.json"" ^
+ --url "b24-ar17wx.bitrix24.by" ^
+ --filter "{'TITLE':'Sale in RUB','CURRENCY_ID':'RUB'}" ^
  --token "***"

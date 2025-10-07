@@ -1,6 +1,8 @@
+:: JSON data can also be passed as a path to a .json file
+
 oint openai GenerateSpeech ^
  --url "https://hut.openintegrations.dev/localai/" ^
  --token "***" ^
- --model "tts-1" ^
+ --model "bark-cpp-small" ^
  --input "Attack ships on fire off the shoulder of Orion bright as magnesium" ^
  --options "{'response_format':'wav'}"
