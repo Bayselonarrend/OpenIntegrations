@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "28582aa7-fc4e-81eb-98aa-e0c442a341e0",
- "created_time": "2025-10-07T18:52:00Z",
- "last_edited_time": "2025-10-07T18:52:00Z",
+ "id": "28582aa7-fc4e-8132-8c50-f1a73c46e477",
+ "created_time": "2025-10-07T20:52:00Z",
+ "last_edited_time": "2025-10-07T20:52:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,14 +15,19 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "28582aa7-fc4e-81a0-aaf3-cc28c3338757"
+  "database_id": "28582aa7-fc4e-8110-b8e2-c503c71bb0fa"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
+  "Телефон": {
+   "id": "%3ApPy",
+   "type": "phone_number",
+   "phone_number": "88005553535"
+  },
   "Картинка": {
-   "id": "E_go",
+   "id": "OW%7DD",
    "type": "files",
    "files": [
     {
@@ -34,32 +39,8 @@
     }
    ]
   },
-  "Пользователь": {
-   "id": "GP%3DL",
-   "type": "people",
-   "people": []
-  },
-  "Статус": {
-   "id": "HGnI",
-   "type": "select",
-   "select": {
-    "id": "8e8ef92d-9222-4793-9ce5-8ea28cb6b3f8",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
-  "Активен": {
-   "id": "Ytb%60",
-   "type": "checkbox",
-   "checkbox": true
-  },
-  "Телефон": {
-   "id": "ex%3Fk",
-   "type": "phone_number",
-   "phone_number": "88005553535"
-  },
   "Почта": {
-   "id": "kJu%3C",
+   "id": "RLr%3B",
    "type": "rich_text",
    "rich_text": [
     {
@@ -81,8 +62,31 @@
     }
    ]
   },
+  "Статус": {
+   "id": "XxyE",
+   "type": "select",
+   "select": {
+    "id": "8fa9d8ab-6184-4c90-b3c5-9cab336cd55d",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Активен": {
+   "id": "cxgf",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "Дата создания": {
+   "id": "jHnm",
+   "type": "date",
+   "date": {
+    "start": "2025-10-07T14:52:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
   "Описание": {
-   "id": "wMMO",
+   "id": "mzFW",
    "type": "rich_text",
    "rich_text": [
     {
@@ -105,18 +109,14 @@
    ]
   },
   "Номер": {
-   "id": "ylkb",
+   "id": "zzS%7B",
    "type": "number",
    "number": 1
   },
-  "Дата создания": {
-   "id": "~%5BN%3D",
-   "type": "date",
-   "date": {
-    "start": "2025-10-07T06:52:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
+  "Пользователь": {
+   "id": "%7Bxya",
+   "type": "people",
+   "people": []
   },
   "Имя": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/28582aa7fc4e81eb98aae0c442a341e0",
+ "url": "https://www.notion.so/28582aa7fc4e81328c50f1a73c46e477",
  "public_url": null,
- "request_id": "2f9b87f0-3e28-4bc6-a003-0dd98c3ef920"
+ "request_id": "dd33b185-35d2-4dcd-97f2-fc4e7a9af866"
 }
