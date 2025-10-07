@@ -53,18 +53,22 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint twitter СоздатьПроизвольныйТвит \
-              --text "Тестовый твиттbe1e222c-27c5-48fc-8f83-9fcdde581587" \
-              --media "['1967669484329603072','1967669497491230721']" \
+              --text "Тестовый твитт7a9b833e-069a-4051-955e-37bdc7b37108" \
+              --media "['1975614082720944128','1975614094381092864']" \
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint twitter СоздатьПроизвольныйТвит ^
-              --text "Тестовый твиттbe1e222c-27c5-48fc-8f83-9fcdde581587" ^
-              --media "['1967669484329603072','1967669497491230721']" ^
+              --text "Тестовый твитт7a9b833e-069a-4051-955e-37bdc7b37108" ^
+              --media "['1975614082720944128','1975614094381092864']" ^
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -73,12 +77,9 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "data": {
-  "text": "Тестовый твитт61526b83-2140-4bfe-8286-d76f749359e8 https://t.co/BssYs0ktX0",
-  "edit_history_tweet_ids": [
-   "1975246445172204010"
-  ],
-  "id": "1975246445172204010"
- }
+ "title": "Too Many Requests",
+ "detail": "Too Many Requests",
+ "type": "about:blank",
+ "status": 429
 }
 ```

@@ -79,7 +79,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint ftp ПолучитьСписокОбъектов \
-              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'}}" \
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
               --path "." \
               --rcv true
         ```
@@ -90,7 +90,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint ftp ПолучитьСписокОбъектов ^
-              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'}}" ^
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
               --path "." ^
               --rcv true
         ```
@@ -105,8 +105,8 @@ import TabItem from '@theme/TabItem';
   {
    "is_directory": true,
    "is_symlink": false,
-   "list_string": "drwxr-sr-x    3 1000     1000         4096 Oct 06 17:08 new_dir",
-   "modified": "2025-10-06T17:08:00+00:00",
+   "list_string": "drwxr-sr-x    3 1000     1000         4096 Oct 07 17:33 new_dir",
+   "modified": "2025-10-07T17:33:00+00:00",
    "name": "new_dir",
    "size": 4096,
    "symlink_path": "",
@@ -115,8 +115,8 @@ import TabItem from '@theme/TabItem';
     {
      "is_directory": true,
      "is_symlink": false,
-     "list_string": "drwxr-sr-x    2 1000     1000         4096 Oct 06 17:08 another_one",
-     "modified": "2025-10-06T17:08:00+00:00",
+     "list_string": "drwxr-sr-x    2 1000     1000         4096 Oct 07 17:33 another_one",
+     "modified": "2025-10-07T17:33:00+00:00",
      "name": "another_one",
      "size": 4096,
      "symlink_path": "",
@@ -125,6 +125,9 @@ import TabItem from '@theme/TabItem';
     }
    ]
   }
- ]
+ ],
+ "close_connection": {
+  "result": true
+ }
 }
 ```

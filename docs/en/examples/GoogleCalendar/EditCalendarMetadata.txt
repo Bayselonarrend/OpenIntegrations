@@ -1,5 +1,5 @@
-﻿    Token       = "ya29.a0AQQ_BDTgQbn9c5rXhPK3FCakms_7oKkdIWE1CCQFnSPftb2RxvloVqnYOcnsAKhXrD0Gq8Tz2Kgn5IBXG5E25uksZfvvTtXob-jFcuj_9LZYs9La4HrcFk766...";
-    Calendar    = "a9168079abee0b7314a77e16ec7ada0ae393cdd389a6f4a8d3f4501aa958f8e9@group.calendar.google.com";
+﻿    Token       = "ya29.a0AQQ_BDQFeGE6sXaw7ceggeFv33b1k1QXPownfQX5VxQHa49L-lDOFphPG0xij3vtOLSerlEKGn_Qf-ohstVkCUcuNOpUaAC5ofYxuyXHNg4xZPjNH4y-U4lKX...";
+    Calendar    = "c1f124b52d50b7264075c0fa576067f206ba4cfd9af84718045be702f5d2dd54@group.calendar.google.com";
     Name        = "New name";
     Description = "New description";
 

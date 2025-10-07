@@ -1,4 +1,4 @@
 ﻿    Token  = "xoxb-6965308400114-696804637...";
-    FileID = "F09F9H2EW12";
+    FileID = "F09JT69JATZ";
 
     Result = OPI_Slack.DeleteFile(Token, FileID);

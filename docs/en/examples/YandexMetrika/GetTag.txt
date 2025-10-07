@@ -1,4 +1,4 @@
 ﻿    Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
-    TagID = "319789";
+    TagID = "320169";
 
     Result = OPI_YandexMetrika.GetTag(Token, TagID);

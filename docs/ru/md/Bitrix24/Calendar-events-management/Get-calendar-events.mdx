@@ -41,10 +41,10 @@ import TabItem from '@theme/TabItem';
     Результат = OPI_Bitrix24.ПолучитьСобытияКалендарей(URL, IDВладельца, Тип);
 
     URL          = "b24-ar17wx.bitrix24.by";
-    Токен        = "75d8c668006e9f06006b12e400000001000...";
-    IDСобытия    = "2392";
-    IDКалендаря1 = "1322";
-    IDКалендаря2 = "1324";
+    Токен        = "c866e568006e9f06006b12e400000001000...";
+    IDСобытия    = "2592";
+    IDКалендаря1 = "1422";
+    IDКалендаря2 = "1424";
 
     Завтра      = OPI_Инструменты.ПолучитьТекущуюДату() + 86400;
     Послезавтра = Завтра + 86400;
@@ -72,7 +72,7 @@ import TabItem from '@theme/TabItem';
               --url "b24-ar17wx.bitrix24.by" \
               --owner 1 \
               --type "user" \
-              --filter "{'from':'9/19/2025 12:17:35 PM','to':'9/20/2025 12:17:35 PM','section':['1386','1388']}" \
+              --filter "{'from':'10/08/2025 19:22:39','to':'10/09/2025 19:22:39','section':['1426','1428']}" \
               --token "***"
         ```
     </TabItem>
@@ -85,7 +85,7 @@ import TabItem from '@theme/TabItem';
               --url "b24-ar17wx.bitrix24.by" ^
               --owner 1 ^
               --type "user" ^
-              --filter "{'from':'9/19/2025 12:17:35 PM','to':'9/20/2025 12:17:35 PM','section':['1386','1388']}" ^
+              --filter "{'from':'10/08/2025 19:22:39','to':'10/09/2025 19:22:39','section':['1426','1428']}" ^
               --token "***"
         ```
     </TabItem>
@@ -96,28 +96,28 @@ import TabItem from '@theme/TabItem';
 {
  "result": [
   {
-   "ID": "2564",
-   "PARENT_ID": "2564",
+   "ID": "2604",
+   "PARENT_ID": "2604",
    "ACTIVE": "Y",
    "DELETED": "N",
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "NAME": "Новое событие",
-   "DATE_FROM": "07.10.2025 17:54:00",
-   "DATE_TO": "07.10.2025 18:54:00",
+   "DATE_FROM": "09.10.2025 00:01:00",
+   "DATE_TO": "09.10.2025 01:01:00",
    "ORIGINAL_DATE_FROM": null,
    "TZ_FROM": "Europe/Minsk",
    "TZ_TO": "Europe/Minsk",
    "TZ_OFFSET_FROM": "10800",
    "TZ_OFFSET_TO": "10800",
-   "DATE_FROM_TS_UTC": "1759838069",
-   "DATE_TO_TS_UTC": "1762444440",
+   "DATE_FROM_TS_UTC": "1759946470",
+   "DATE_TO_TS_UTC": "1762552860",
    "DT_SKIP_TIME": "N",
    "DT_LENGTH": 3600,
    "EVENT_TYPE": null,
    "CREATED_BY": "1",
-   "DATE_CREATE": "06.10.2025 20:54:29",
-   "TIMESTAMP_X": "06.10.2025 20:54:29",
+   "DATE_CREATE": "08.10.2025 00:01:10",
+   "TIMESTAMP_X": "08.10.2025 00:01:10",
    "DESCRIPTION": "Описание события",
    "DT_FROM": null,
    "DT_TO": null,
@@ -150,12 +150,12 @@ import TabItem from '@theme/TabItem';
     "FREQ": "DAILY",
     "COUNT": 3,
     "INTERVAL": 10,
-    "UNTIL": "17.10.2025",
-    "~UNTIL": "17.10.2025",
-    "UNTIL_TS": 1760659200
+    "UNTIL": "19.10.2025",
+    "~UNTIL": "19.10.2025",
+    "UNTIL_TS": 1760832000
    },
    "EXDATE": "",
-   "DAV_XML_ID": "20251007T145400Z-cf8f55b0586e03fd966bfafe79fcaf7f@b24-ar17wx.bitrix24.by",
+   "DAV_XML_ID": "20251008T210100Z-e4b346dc512f22dbff37d48d6fecebc2@b24-ar17wx.bitrix24.by",
    "G_EVENT_ID": "",
    "DAV_EXCH_LABEL": "",
    "CAL_DAV_LABEL": "",
@@ -166,30 +166,30 @@ import TabItem from '@theme/TabItem';
    ],
    "RECURRENCE_ID": null,
    "RELATIONS": "",
-   "SECTION_ID": "1410",
+   "SECTION_ID": "1430",
    "SYNC_STATUS": null,
    "UF_CRM_CAL_EVENT": false,
    "UF_WEBDAV_CAL_EVENT": false,
    "SECTION_DAV_XML_ID": null,
-   "DATE_FROM_FORMATTED": "Tue Oct 07 2025 17:54:00",
-   "DATE_TO_FORMATTED": "Tue Oct 07 2025 18:54:00",
+   "DATE_FROM_FORMATTED": "Thu Oct 09 2025 00:01:00",
+   "DATE_TO_FORMATTED": "Thu Oct 09 2025 01:01:00",
    "IS_DAYLIGHT_SAVING_TZ": "N",
-   "SECT_ID": "1410",
+   "SECT_ID": "1430",
    "OPTIONS": null,
    "ATTENDEE_LIST": [
     {
      "id": 1,
-     "entryId": "2564",
+     "entryId": "2604",
      "status": "H"
     },
     {
      "id": 10,
-     "entryId": "2566",
+     "entryId": "2606",
      "status": "Q"
     }
    ],
    "COLLAB_ID": null,
-   "~RRULE_DESCRIPTION": "каждый 10-й день, от 07.10.2025 до 17.10.2025",
+   "~RRULE_DESCRIPTION": "каждый 10-й день, от 09.10.2025 до 19.10.2025",
    "attendeesEntityList": [
     {
      "entityId": "user",
@@ -200,35 +200,35 @@ import TabItem from '@theme/TabItem';
      "id": 10
     }
    ],
-   "~DATE_FROM": "07.10.2025 17:54:00",
-   "~DATE_TO": "07.10.2025 18:54:00",
+   "~DATE_FROM": "09.10.2025 00:01:00",
+   "~DATE_TO": "09.10.2025 01:01:00",
    "RINDEX": 0,
    "~USER_OFFSET_FROM": 0,
    "~USER_OFFSET_TO": 0
   },
   {
-   "ID": "2568",
-   "PARENT_ID": "2568",
+   "ID": "2608",
+   "PARENT_ID": "2608",
    "ACTIVE": "Y",
    "DELETED": "N",
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "NAME": "Новое событие",
-   "DATE_FROM": "07.10.2025 17:54:00",
-   "DATE_TO": "07.10.2025 18:54:00",
+   "DATE_FROM": "09.10.2025 00:01:00",
+   "DATE_TO": "09.10.2025 01:01:00",
    "ORIGINAL_DATE_FROM": null,
    "TZ_FROM": "Europe/Minsk",
    "TZ_TO": "Europe/Minsk",
    "TZ_OFFSET_FROM": "10800",
    "TZ_OFFSET_TO": "10800",
-   "DATE_FROM_TS_UTC": "1759838069",
-   "DATE_TO_TS_UTC": "1762444440",
+   "DATE_FROM_TS_UTC": "1759946470",
+   "DATE_TO_TS_UTC": "1762552860",
    "DT_SKIP_TIME": "N",
    "DT_LENGTH": 3600,
    "EVENT_TYPE": null,
    "CREATED_BY": "1",
-   "DATE_CREATE": "06.10.2025 20:54:30",
-   "TIMESTAMP_X": "06.10.2025 20:54:30",
+   "DATE_CREATE": "08.10.2025 00:01:11",
+   "TIMESTAMP_X": "08.10.2025 00:01:11",
    "DESCRIPTION": "Описание события",
    "DT_FROM": null,
    "DT_TO": null,

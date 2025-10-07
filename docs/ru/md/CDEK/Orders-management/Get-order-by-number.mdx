@@ -33,9 +33,9 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTc4NjI0MDMsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTk4NjIwOTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
 
-    НомерЗаказа = "6ceca026-2bd5-495a-9ffd-964d2ad18f8c";
+    НомерЗаказа = "3f003664-aa61-4e39-9b6b-40fa90b0bf55";
     Результат   = OPI_CDEK.ПолучитьЗаказПоНомеру(Токен, НомерЗаказа, Истина, Истина);
 ```
     
@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьЗаказПоНомеру \
               --token "***" \
-              --number "2984b1b4-d2bd-4b8f-a2db-bf747aee086a" \
+              --number "f69ffd85-5b6e-4bd7-9c8e-95a15c54ceb3" \
               --internal true \
               --testapi "***"
         ```
@@ -56,7 +56,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьЗаказПоНомеру ^
               --token "***" ^
-              --number "2984b1b4-d2bd-4b8f-a2db-bf747aee086a" ^
+              --number "f69ffd85-5b6e-4bd7-9c8e-95a15c54ceb3" ^
               --internal true ^
               --testapi "***"
         ```
@@ -67,12 +67,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "eafab4f8-f4f7-4a2d-b2f1-d1a609edd427",
+  "uuid": "857284d2-e21a-4a6d-ac9d-577ca5c4464f",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1106623572",
-  "number": "ae359629-46ac-4b76-9d64-04518126adad",
+  "cdek_number": "1106624020",
+  "number": "4892812a-5597-401e-a451-75be2e0527fa",
   "tariff_code": 139,
   "comment": "Новый заказ",
   "items_cost_currency": "RUB",
@@ -165,7 +165,7 @@ import TabItem from '@theme/TabItem';
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001240886",
+    "barcode": "000001242106",
     "weight": 4000,
     "length": 10,
     "width": 10,
@@ -191,21 +191,21 @@ import TabItem from '@theme/TabItem';
       "cost": 300
      }
     ],
-    "package_id": "bb5b5470-f7ab-4f50-87b2-ac281848cf5c"
+    "package_id": "81c05880-16ad-45a7-b95b-956aff533cb5"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2025-10-06T17:58:40+00:00",
+    "date_time": "2025-10-08T00:05:48+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-06T17:58:38+00:00",
+    "date_time": "2025-10-08T00:05:47+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }

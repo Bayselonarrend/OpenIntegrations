@@ -33,13 +33,13 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЛида = "2416";
+    IDЛида = "2520";
 
     Результат = OPI_Bitrix24.ПолучитьЛид(URL, IDЛида);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Токен  = "75d8c668006e9f06006b12e400000001000...";
-    IDЛида = "2418";
+    Токен  = "c866e568006e9f06006b12e400000001000...";
+    IDЛида = "2522";
 
     Результат = OPI_Bitrix24.ПолучитьЛид(URL, IDЛида, Токен);
 ```
@@ -51,7 +51,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьЛид \
               --url "b24-ar17wx.bitrix24.by" \
-              --lead 2482 \
+              --lead 2526 \
               --token "***"
         ```
     </TabItem>
@@ -60,7 +60,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьЛид ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --lead 2482 ^
+              --lead 2526 ^
               --token "***"
         ```
     </TabItem>
@@ -70,7 +70,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": "2506",
+  "ID": "2530",
   "TITLE": "Мегаклиент",
   "HONORIFIC": null,
   "NAME": "Иван",
@@ -78,7 +78,7 @@ import TabItem from '@theme/TabItem';
   "LAST_NAME": "Иванов",
   "COMPANY_TITLE": null,
   "COMPANY_ID": null,
-  "CONTACT_ID": "2506",
+  "CONTACT_ID": "2530",
   "IS_RETURN_CUSTOMER": "N",
   "BIRTHDATE": "",
   "SOURCE_ID": "CALL",
@@ -96,15 +96,15 @@ import TabItem from '@theme/TabItem';
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2025-10-06T17:54:04+00:00",
-  "DATE_MODIFY": "2025-10-06T17:54:05+00:00",
-  "DATE_CLOSED": "2025-10-05T21:00:00+00:00",
+  "DATE_CREATE": "2025-10-08T00:00:50+03:00",
+  "DATE_MODIFY": "2025-10-08T00:00:51+03:00",
+  "DATE_CLOSED": "2025-10-08T00:00:00+03:00",
   "STATUS_SEMANTIC_ID": "S",
   "OPENED": "Y",
   "ORIGINATOR_ID": null,
   "ORIGIN_ID": null,
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2025-10-06T17:54:05+00:00",
+  "MOVED_TIME": "2025-10-08T00:00:51+03:00",
   "ADDRESS": "ул. Пушкина, д. 10",
   "ADDRESS_2": null,
   "ADDRESS_CITY": null,
@@ -113,7 +113,7 @@ import TabItem from '@theme/TabItem';
   "ADDRESS_PROVINCE": null,
   "ADDRESS_COUNTRY": "Россия",
   "ADDRESS_COUNTRY_CODE": null,
-  "ADDRESS_LOC_ADDR_ID": "5010",
+  "ADDRESS_LOC_ADDR_ID": "5058",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
@@ -121,16 +121,16 @@ import TabItem from '@theme/TabItem';
   "UTM_TERM": null,
   "LAST_COMMUNICATION_TIME": null,
   "LAST_ACTIVITY_BY": "1",
-  "LAST_ACTIVITY_TIME": "2025-10-06T17:54:04+00:00",
+  "LAST_ACTIVITY_TIME": "2025-10-08T00:00:50+03:00",
   "EMAIL": [
    {
-    "ID": "15006",
+    "ID": "15150",
     "VALUE_TYPE": "HOME",
     "VALUE": "yo@example.com",
     "TYPE_ID": "EMAIL"
    },
    {
-    "ID": "15008",
+    "ID": "15152",
     "VALUE_TYPE": "WORK",
     "VALUE": "hi@example.com",
     "TYPE_ID": "EMAIL"
@@ -138,7 +138,7 @@ import TabItem from '@theme/TabItem';
   ],
   "PHONE": [
    {
-    "ID": "15010",
+    "ID": "15154",
     "VALUE_TYPE": "WORK",
     "VALUE": "88005553535",
     "TYPE_ID": "PHONE"
@@ -146,13 +146,13 @@ import TabItem from '@theme/TabItem';
   ]
  },
  "time": {
-  "start": 1759773246,
-  "finish": 1759773246.36482,
-  "duration": 0.364815950393677,
+  "start": 1759870852,
+  "finish": 1759870852.2599,
+  "duration": 0.259903907775879,
   "processing": 0,
-  "date_start": "2025-10-06T17:54:06+00:00",
-  "date_finish": "2025-10-06T17:54:06+00:00",
-  "operating_reset_at": 1759773846,
+  "date_start": "2025-10-08T00:00:52+03:00",
+  "date_finish": "2025-10-08T00:00:52+03:00",
+  "operating_reset_at": 1759871452,
   "operating": 0
  }
 }

@@ -1,7 +1,7 @@
 ﻿    Token   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base    = "appaKLx2yhnY45n6b";
-    Table   = "tblwLZErQh3D39If3";
-    Record  = "rec3wM8jBf9St9nzS";
-    Comment = "comBYtGdJmDRYmhXy";
+    Base    = "appTFxTxSGl5JIIYT";
+    Table   = "tblm1MzAyPSjSsFXY";
+    Record  = "rec2DhMcBduGDh8nz";
+    Comment = "comfmoeMlarmKbjFm";
 
     Result = OPI_Airtable.DeleteComment(Token, Base, Table, Record, Comment);

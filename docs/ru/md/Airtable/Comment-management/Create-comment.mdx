@@ -31,9 +31,9 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен   = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База    = "appaKLx2yhnY45n6b";
-    Таблица = "tblwLZErQh3D39If3";
-    Запись  = "rec3wM8jBf9St9nzS";
+    База    = "appTFxTxSGl5JIIYT";
+    Таблица = "tblm1MzAyPSjSsFXY";
+    Запись  = "rec2DhMcBduGDh8nz";
     Текст   = "Тестовый комментарий";
 
     Результат = OPI_Airtable.СоздатьКомментарий(Токен, База, Таблица, Запись, Текст);
@@ -46,9 +46,9 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint airtable СоздатьКомментарий \
               --token "***" \
-              --base "appaFJVYmgeMICjaG" \
-              --table "tblucJtmix0k7lGvF" \
-              --record "recYEWc1zpgRs8Wo2" \
+              --base "apps8F1Pa1piGVddn" \
+              --table "tblrr1pehc2M9C5NG" \
+              --record "recPnPFkVJIMohJy0" \
               --text "Тестовый комментарий"
         ```
     </TabItem>
@@ -57,9 +57,9 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint airtable СоздатьКомментарий ^
               --token "***" ^
-              --base "appaFJVYmgeMICjaG" ^
-              --table "tblucJtmix0k7lGvF" ^
-              --record "recYEWc1zpgRs8Wo2" ^
+              --base "apps8F1Pa1piGVddn" ^
+              --table "tblrr1pehc2M9C5NG" ^
+              --record "recPnPFkVJIMohJy0" ^
               --text "Тестовый комментарий"
         ```
     </TabItem>
@@ -68,14 +68,14 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "id": "com6HVMVtJydbwEjT",
+ "id": "comqKOAeQOJ30gCrP",
  "author": {
   "id": "usrFlaAHlTfYWAbVW",
   "email": "bayselonarrend@gmail.com",
   "name": "Антон Титовец"
  },
  "text": "Тестовый комментарий",
- "createdTime": "2025-10-06T17:46:21.087Z",
+ "createdTime": "2025-10-07T20:54:10.872Z",
  "lastUpdatedTime": null
 }
 ```
