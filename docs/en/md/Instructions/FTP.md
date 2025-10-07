@@ -10,6 +10,13 @@ keywords: [1C, 1C:Enterprise, 1C:Enterprise 8.3, API, Integration, Services, Dat
 
 This section is dedicated to the library for working with FTP(s). On this page, all the steps necessary to start working are described
 
+<div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
+
+<img src={require('../../static/img/addin.png').default} class="tipimage" />
+<div class="addin">An external component is used to implement some functions in this library<br/>
+Please review the ["About external components"](/docs/Start/Component-requirements) section before getting started</div>
+</div>
+
 ## Getting Started
 
 This library provides various methods for working with FTP(s) on the client side. Each method accepts a `Connection` as its first parameter, which can be initialized in one of two ways:
