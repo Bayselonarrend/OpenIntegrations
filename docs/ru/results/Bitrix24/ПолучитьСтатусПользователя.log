@@ -1,13 +1,13 @@
 ﻿{
  "result": "away",
  "time": {
-  "start": 1759864400,
-  "finish": 1759864400.39951,
-  "duration": 0.399511098861694,
+  "start": 1759870730,
+  "finish": 1759870730.49713,
+  "duration": 0.49712610244751,
   "processing": 0,
-  "date_start": "2025-10-07T19:13:20+00:00",
-  "date_finish": "2025-10-07T19:13:20+00:00",
-  "operating_reset_at": 1759865000,
+  "date_start": "2025-10-07T23:58:50+03:00",
+  "date_finish": "2025-10-07T23:58:50+03:00",
+  "operating_reset_at": 1759871330,
   "operating": 0
  }
 }
