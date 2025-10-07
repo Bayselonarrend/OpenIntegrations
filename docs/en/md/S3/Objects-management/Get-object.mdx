@@ -62,6 +62,8 @@ You can use the `ChunkSize` field in the basic data to specify the minimum file 
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint s3 GetObject \
              --name "bigfile.exe" \
              --bucket "newbucket2" \
@@ -71,6 +73,8 @@ You can use the `ChunkSize` field in the basic data to specify the minimum file 
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint s3 GetObject ^
              --name "bigfile.exe" ^
              --bucket "newbucket2" ^

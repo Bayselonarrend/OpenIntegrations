@@ -49,20 +49,24 @@ Method at API documentation: [Show Model Information](https://github.com/ollama/
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint ollama GetModelInformation \
-             --url ""https://hut.openintegrations.dev/ollama"" \
-             --model ""mario"" \
-             --verbose "false" \
+             --url "https://hut.openintegrations.dev/ollama" \
+             --model "mario" \
+             --verbose false \
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint ollama GetModelInformation ^
-             --url ""https://hut.openintegrations.dev/ollama"" ^
-             --model ""mario"" ^
-             --verbose "false" ^
+             --url "https://hut.openintegrations.dev/ollama" ^
+             --model "mario" ^
+             --verbose false ^
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>

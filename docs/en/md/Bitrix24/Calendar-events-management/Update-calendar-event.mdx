@@ -60,20 +60,24 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint bitrix24 UpdateCalendarEvent \
-             --url ""b24-ar17wx.bitrix24.by"" \
-             --event "2472" \
-             --fields ""/tmp/d0uia3jb.402.json"" \
+             --url "b24-ar17wx.bitrix24.by" \
+             --event 2576 \
+             --fields "{'ownerId':'1','type':'user','name':'Modified event','description':'New event description','importance':'low','private_event':'Y'}" \
              --token "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint bitrix24 UpdateCalendarEvent ^
-             --url ""b24-ar17wx.bitrix24.by"" ^
-             --event "2472" ^
-             --fields ""/tmp/d0uia3jb.402.json"" ^
+             --url "b24-ar17wx.bitrix24.by" ^
+             --event 2576 ^
+             --fields "{'ownerId':'1','type':'user','name':'Modified event','description':'New event description','importance':'low','private_event':'Y'}" ^
              --token "***"
         ```
     </TabItem>
@@ -82,16 +86,16 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
 
 ```json title="Result"
 {
- "result": 2472,
+ "result": 2576,
  "time": {
-  "start": 1757977141.41628,
-  "finish": 1757977141.58494,
-  "duration": 0.168663024902344,
-  "processing": 0.14338493347168,
-  "date_start": "2025-09-15T22:59:01+00:00",
-  "date_finish": "2025-09-15T22:59:01+00:00",
-  "operating_reset_at": 1757977741,
-  "operating": 0.14336895942688
+  "start": 1759849209,
+  "finish": 1759849209.9025,
+  "duration": 0.902498960494995,
+  "processing": 0,
+  "date_start": "2025-10-07T15:00:09+00:00",
+  "date_finish": "2025-10-07T15:00:09+00:00",
+  "operating_reset_at": 1759849809,
+  "operating": 0.38993501663208
  }
 }
 ```

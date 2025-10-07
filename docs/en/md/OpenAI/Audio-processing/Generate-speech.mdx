@@ -56,10 +56,12 @@ The audio file format of the response can be changed by adding `response_format`
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint openai GenerateSpeech \
              --url "https://hut.openintegrations.dev/localai/" \
              --token "***" \
-             --model "tts-1" \
+             --model "bark-cpp-small" \
              --input "Attack ships on fire off the shoulder of Orion bright as magnesium" \
              --options "{'response_format':'wav'}"
         ```
@@ -67,10 +69,12 @@ The audio file format of the response can be changed by adding `response_format`
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint openai GenerateSpeech ^
              --url "https://hut.openintegrations.dev/localai/" ^
              --token "***" ^
-             --model "tts-1" ^
+             --model "bark-cpp-small" ^
              --input "Attack ships on fire off the shoulder of Orion bright as magnesium" ^
              --options "{'response_format':'wav'}"
         ```

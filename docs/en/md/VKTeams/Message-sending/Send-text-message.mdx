@@ -65,11 +65,13 @@ Method at API documentation: [GET /messages/sendText](https://teams.vk.com/botap
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint vkteams SendTextMessage \
              --token "***" \
              --chatid "689203963@chat.agent" \
              --text "<b>Bold text</b>" \
-             --reply "7550417725999299739" \
+             --reply "7558168741809241503" \
              --keyboard "[[{'text':'Button1','callbackData':'ButtonEvent1','style':'attention'},{'text':'Button2','url':'https://openintegrations.dev','style':'base'}],[{'text':'Button1','callbackData':'ButtonEvent1','style':'attention'},{'text':'Button2','url':'https://openintegrations.dev','style':'base'}]]" \
              --parsemod "HTML"
         ```
@@ -77,11 +79,13 @@ Method at API documentation: [GET /messages/sendText](https://teams.vk.com/botap
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint vkteams SendTextMessage ^
              --token "***" ^
              --chatid "689203963@chat.agent" ^
              --text "<b>Bold text</b>" ^
-             --reply "7550417725999299739" ^
+             --reply "7558168741809241503" ^
              --keyboard "[[{'text':'Button1','callbackData':'ButtonEvent1','style':'attention'},{'text':'Button2','url':'https://openintegrations.dev','style':'base'}],[{'text':'Button1','callbackData':'ButtonEvent1','style':'attention'},{'text':'Button2','url':'https://openintegrations.dev','style':'base'}]]" ^
              --parsemod "HTML"
         ```

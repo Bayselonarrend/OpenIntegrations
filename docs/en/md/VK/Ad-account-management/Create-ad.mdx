@@ -52,25 +52,29 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint vk CreateAd \
-             --campaign "1031568261" \
-             --limit "150" \
-             --category "126" \
-             --post "9695" \
-             --cabinet ""1607951446"" \
-             --auth ""/tmp/tihgsj2m.0so.json""
+             --campaign 1031612051 \
+             --limit 150 \
+             --category 126 \
+             --post 9825 \
+             --cabinet "1607951446" \
+             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint vk CreateAd ^
-             --campaign "1031568261" ^
-             --limit "150" ^
-             --category "126" ^
-             --post "9695" ^
-             --cabinet ""1607951446"" ^
-             --auth ""/tmp/tihgsj2m.0so.json""
+             --campaign 1031612051 ^
+             --limit 150 ^
+             --category 126 ^
+             --post 9825 ^
+             --cabinet "1607951446" ^
+             --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
 </Tabs>

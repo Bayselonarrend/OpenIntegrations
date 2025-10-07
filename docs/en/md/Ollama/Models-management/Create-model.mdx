@@ -51,20 +51,24 @@ Method at API documentation: [Create a Model](https://github.com/ollama/ollama/b
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint ollama CreateModel \
-             --url ""https://hut.openintegrations.dev/ollama"" \
-             --model ""mario"" \
-             --settings ""/tmp/qz5easkb.hph.json"" \
+             --url "https://hut.openintegrations.dev/ollama" \
+             --model "mario" \
+             --settings "{'from':'tinyllama','system':'You are Mario from Super Mario Bros.'}" \
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint ollama CreateModel ^
-             --url ""https://hut.openintegrations.dev/ollama"" ^
-             --model ""mario"" ^
-             --settings ""/tmp/qz5easkb.hph.json"" ^
+             --url "https://hut.openintegrations.dev/ollama" ^
+             --model "mario" ^
+             --settings "{'from':'tinyllama','system':'You are Mario from Super Mario Bros.'}" ^
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>

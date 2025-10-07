@@ -49,6 +49,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint twitter UploadAttachmentsArray \
              --files "['https://hut.openintegrations.dev/test_data/picture.jpg','https://hut.openintegrations.dev/test_data/picture2.jpg']" \
              --type "tweet_image" \
@@ -58,6 +60,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint twitter UploadAttachmentsArray ^
              --files "['https://hut.openintegrations.dev/test_data/picture.jpg','https://hut.openintegrations.dev/test_data/picture2.jpg']" ^
              --type "tweet_image" ^
@@ -69,7 +73,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 ```json title="Result"
 [
- "1967704849073471488",
- "1967704862834970624"
+ "1975552037954654208",
+ "1975552049396768768"
 ]
 ```

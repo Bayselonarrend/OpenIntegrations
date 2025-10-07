@@ -61,23 +61,27 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint mysql AddTableColumn \
-             --table ""testtable"" \
-             --name ""new_field"" \
-             --type ""MEDIUMTEXT"" \
+             --table "testtable" \
+             --name "new_field" \
+             --type "MEDIUMTEXT" \
              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" \
-             --tls ""/tmp/kwzid43z.fw1.json""
+             --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint mysql AddTableColumn ^
-             --table ""testtable"" ^
-             --name ""new_field"" ^
-             --type ""MEDIUMTEXT"" ^
+             --table "testtable" ^
+             --name "new_field" ^
+             --type "MEDIUMTEXT" ^
              --dbc "mysql://bayselonarrend:***@127.0.0.1:3306/" ^
-             --tls ""/tmp/kwzid43z.fw1.json""
+             --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
 </Tabs>

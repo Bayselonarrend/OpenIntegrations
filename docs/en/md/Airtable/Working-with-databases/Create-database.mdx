@@ -50,6 +50,8 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint airtable CreateDatabase \
              --token "***" \
              --ws "wspdf8yl1yZz3PmWZ" \
@@ -60,6 +62,8 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint airtable CreateDatabase ^
              --token "***" ^
              --ws "wspdf8yl1yZz3PmWZ" ^
@@ -72,30 +76,30 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Result"
 {
- "id": "appUHJhiJ9eMFouSg",
+ "id": "apppLBhsU5rQXonVc",
  "tables": [
   {
-   "id": "tblNSgNYYa98koTqI",
+   "id": "tblnMGeHoeuI8UXF1",
    "name": "TestTable",
-   "primaryFieldId": "fld1DqCPCiKFhIyZS",
+   "primaryFieldId": "fld3TOabJCDSnHylc",
    "fields": [
     {
      "type": "number",
      "options": {
       "precision": 0
      },
-     "id": "fld1DqCPCiKFhIyZS",
+     "id": "fld3TOabJCDSnHylc",
      "name": "Number"
     },
     {
      "type": "richText",
-     "id": "fldQoWm38IHjko160",
+     "id": "fld1HbX14HOa9bxIj",
      "name": "String"
     }
    ],
    "views": [
     {
-     "id": "viwMqBmhwYdBZUwHi",
+     "id": "viw5mYOZpgdOFc7ed",
      "name": "Grid view",
      "type": "grid"
     }

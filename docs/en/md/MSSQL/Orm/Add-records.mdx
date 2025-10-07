@@ -96,23 +96,27 @@ List of available types is described on the initial page of the MSSQL library do
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint mssql AddRecords \
-             --table ""testtable"" \
-             --rows ""[{'tinyint_field':{'TINYINT':5},'smallint_field':{'SMALLINT':2000},'int_field':{'INT':200000},'bigint_field':{'BIGINT':20000000000},'float24_field':{'FLOAT24':10.1234567},'float53_field':{'FLOAT53':10.123456789123456},'bit_field':{'BIT':true},'nvarchar_field':{'NVARCHAR':'Some text'},'varbinary_field':{'BYTES':'/tmp/xt2vcq2f.p3y'},'uid_field':{'UUID':'dc9e060c-f71a-4fd6-a5fd-338cbee1faec'},'numeric_field':{'NUMERIC':5.333},'xml_field':{'XML':'<?xml version=\"'"1.0\"'"?> <root>  <element>  <name>Example</name>  <value>123</value>  </element>  <element>  <name>Test</name>  <value>456</value>  </element> </root>'},'date_field':{'DATE':'2025-09-15T22:18:58.2829632Z'},'time_field':{'TIME':'2025-09-15T22:18:58.2829632Z'},'dto_field':{'DATETIMEOFFSET':'2025-09-15T22:18:58.2829632+05:00'},'datetime_field':{'DATETIME':'2025-09-15T22:18:58.2829632Z'}}]"" \
-             --trn "true" \
+             --table "testtable" \
+             --rows "[{'tinyint_field':{'TINYINT':5},'smallint_field':{'SMALLINT':2000},'int_field':{'INT':200000},'bigint_field':{'BIGINT':20000000000},'float24_field':{'FLOAT24':10.1234567},'float53_field':{'FLOAT53':10.123456789123456},'bit_field':{'BIT':true},'nvarchar_field':{'NVARCHAR':'Some text'},'varbinary_field':{'BYTES':'/tmp/rzm0phkk.xab'},'uid_field':{'UUID':'5836fa39-0100-4781-b3cf-5e953c1db4cd'},'numeric_field':{'NUMERIC':5.333},'xml_field':{'XML':'<?xml version=\"'"1.0\"'"?><root>  <element>  <name>Example</name>  <value>123</value>  </element>  <element>  <name>Test</name>  <value>456</value>  </element> </root>'},'date_field':{'DATE':'2025-10-07T14:20:22.7036445Z'},'time_field':{'TIME':'2025-10-07T14:20:22.7036445Z'},'dto_field':{'DATETIMEOFFSET':'2025-10-07T14:20:22.7036445+05:00'},'datetime_field':{'DATETIME':'2025-10-07T14:20:22.7036445Z'}}]" \
+             --trn true \
              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" \
-             --tls ""/tmp/qdgdy3sj.50a.json""
+             --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint mssql AddRecords ^
-             --table ""testtable"" ^
-             --rows ""[{'tinyint_field':{'TINYINT':5},'smallint_field':{'SMALLINT':2000},'int_field':{'INT':200000},'bigint_field':{'BIGINT':20000000000},'float24_field':{'FLOAT24':10.1234567},'float53_field':{'FLOAT53':10.123456789123456},'bit_field':{'BIT':true},'nvarchar_field':{'NVARCHAR':'Some text'},'varbinary_field':{'BYTES':'/tmp/xt2vcq2f.p3y'},'uid_field':{'UUID':'dc9e060c-f71a-4fd6-a5fd-338cbee1faec'},'numeric_field':{'NUMERIC':5.333},'xml_field':{'XML':'<?xml version=\"'"1.0\"'"?> <root>  <element>  <name>Example</name>  <value>123</value>  </element>  <element>  <name>Test</name>  <value>456</value>  </element> </root>'},'date_field':{'DATE':'2025-09-15T22:18:58.2829632Z'},'time_field':{'TIME':'2025-09-15T22:18:58.2829632Z'},'dto_field':{'DATETIMEOFFSET':'2025-09-15T22:18:58.2829632+05:00'},'datetime_field':{'DATETIME':'2025-09-15T22:18:58.2829632Z'}}]"" ^
-             --trn "true" ^
+             --table "testtable" ^
+             --rows "[{'tinyint_field':{'TINYINT':5},'smallint_field':{'SMALLINT':2000},'int_field':{'INT':200000},'bigint_field':{'BIGINT':20000000000},'float24_field':{'FLOAT24':10.1234567},'float53_field':{'FLOAT53':10.123456789123456},'bit_field':{'BIT':true},'nvarchar_field':{'NVARCHAR':'Some text'},'varbinary_field':{'BYTES':'/tmp/rzm0phkk.xab'},'uid_field':{'UUID':'5836fa39-0100-4781-b3cf-5e953c1db4cd'},'numeric_field':{'NUMERIC':5.333},'xml_field':{'XML':'<?xml version=\"'"1.0\"'"?><root>  <element>  <name>Example</name>  <value>123</value>  </element>  <element>  <name>Test</name>  <value>456</value>  </element> </root>'},'date_field':{'DATE':'2025-10-07T14:20:22.7036445Z'},'time_field':{'TIME':'2025-10-07T14:20:22.7036445Z'},'dto_field':{'DATETIMEOFFSET':'2025-10-07T14:20:22.7036445+05:00'},'datetime_field':{'DATETIME':'2025-10-07T14:20:22.7036445Z'}}]" ^
+             --trn true ^
              --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
-             --tls ""/tmp/qdgdy3sj.50a.json""
+             --tls "{'use_tls':true,'accept_invalid_certs':true}"
         ```
     </TabItem>
 </Tabs>

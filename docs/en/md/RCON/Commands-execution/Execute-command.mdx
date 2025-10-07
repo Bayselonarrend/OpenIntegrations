@@ -48,6 +48,8 @@ When passing connection parameters, a new connection will be created and closed 
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint rcon ExecuteCommand \
              --exec "list" \
              --conn "{'url':'127.0.0.1:25575','password':'***','read_timeout':'20','write_timeout':'20'}"
@@ -56,6 +58,8 @@ When passing connection parameters, a new connection will be created and closed 
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint rcon ExecuteCommand ^
              --exec "list" ^
              --conn "{'url':'127.0.0.1:25575','password':'***','read_timeout':'20','write_timeout':'20'}"

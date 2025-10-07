@@ -54,20 +54,24 @@ Method at API documentation: [Generate Embeddings](https://github.com/ollama/oll
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint ollama GetEmbeddings \
-             --url ""https://hut.openintegrations.dev/ollama"" \
-             --model ""tinyllama"" \
-             --input ""['Why is the sky blue?','Why is the grass green?']"" \
+             --url "https://hut.openintegrations.dev/ollama" \
+             --model "tinyllama" \
+             --input "['Why is the sky blue?','Why is the grass green?']" \
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint ollama GetEmbeddings ^
-             --url ""https://hut.openintegrations.dev/ollama"" ^
-             --model ""tinyllama"" ^
-             --input ""['Why is the sky blue?','Why is the grass green?']"" ^
+             --url "https://hut.openintegrations.dev/ollama" ^
+             --model "tinyllama" ^
+             --input "['Why is the sky blue?','Why is the grass green?']" ^
              --headers "{'Authorization':'***'}"
         ```
     </TabItem>
