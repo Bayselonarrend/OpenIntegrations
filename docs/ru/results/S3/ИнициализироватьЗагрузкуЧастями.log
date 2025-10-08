@@ -4,17 +4,17 @@
   "InitiateMultipartUploadResult": {
    "Bucket": "opi-dirbucket3",
    "Key": "fileChunked.mp3",
-   "UploadId": "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmM4Y2E3YTAzLWNiNzgtNDg5YS1iZjFlLTJlOWExODA5MTdiMg"
+   "UploadId": "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjMwNmFkOTMzLTVjZGEtNDYwNi05ODk0LTQ1OWM3NmRlOWZmOQ"
   }
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Tue, 07 Oct 2025 21:10:25 GMT",
+  "Date": "Wed, 08 Oct 2025 07:57:51 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
-  "X-Amz-Request-Id": "186C51BCD273EEC5",
+  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
+  "X-Amz-Request-Id": "186C75113243606E",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "326",
