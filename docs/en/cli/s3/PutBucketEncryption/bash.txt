@@ -3,5 +3,5 @@
 oint s3 PutBucketEncryption \
  --name "opi-dirbucket3" \
  --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
- --conf "/tmp/vcvcwy0a.zou.xml" \
+ --conf "C:\Users\bayse\AppData\Local\Temp\pgsgqdqn.pmn.xml" \
  --dir true
