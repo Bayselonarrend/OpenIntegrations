@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "ID": "18",
-  "NAME": "Новое имя хранилища",
+  "NAME": "New storage name",
   "CODE": null,
   "MODULE_ID": "disk",
   "ENTITY_TYPE": "restapp",
@@ -9,13 +9,13 @@
   "ROOT_OBJECT_ID": "464"
  },
  "time": {
-  "start": 1759920948,
-  "finish": 1759920948.55135,
-  "duration": 0.551352977752686,
+  "start": 1759950967,
+  "finish": 1759950967.87108,
+  "duration": 0.87108302116394,
   "processing": 0,
-  "date_start": "2025-10-08T13:55:48+03:00",
-  "date_finish": "2025-10-08T13:55:48+03:00",
-  "operating_reset_at": 1759921548,
+  "date_start": "2025-10-08T22:16:07+03:00",
+  "date_finish": "2025-10-08T22:16:07+03:00",
+  "operating_reset_at": 1759951567,
   "operating": 0
  }
 }
