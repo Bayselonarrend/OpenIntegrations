@@ -1,5 +1,5 @@
 oint bitrix24 GetTaskTimeAccounting \
  --url "b24-ar17wx.bitrix24.by" \
- --task "8128" \
- --record 2966 \
+ --task "8208" \
+ --record 2998 \
  --token "***"

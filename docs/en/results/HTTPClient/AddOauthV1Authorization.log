@@ -4,12 +4,17 @@
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
-  "Authorization": "OAuth oauth_consumer_key=\"***\",oauth_token=\"***\",oauth_signature_method=\"HMAC-SHA256\",oauth_timestamp=\"1757937895\",oauth_nonce=\"1757937895\",oauth_version=\"1.0\",oauth_signature=oY5o4eEWpU%2BbLdAlTUn6NLu9LJfxCEVtiAOVoCs3rko%3D",
+  "Authorization": "OAuth oauth_consumer_key=\"***\",oauth_token=\"***\",oauth_signature_method=\"HMAC-SHA256\",oauth_timestamp=\"1759954599\",oauth_nonce=\"1759954599\",oauth_version=\"1.0\",oauth_signature=NRqVeFeDItA%2FofaQuPCeC5R2xihz4z%2BEoFKARYqF4sY%3D",
+  "Connection": "Keep-Alive",
   "Content-Length": "0",
-  "Host": "httpbin.org",
+  "Host": "localhost:2424",
+  "Max-Forwards": "10",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Amzn-Trace-Id": "Root=1-68c7e4c7-05efc96808d7c66455034513"
+  "X-Arr-Log-Id": "c2b8b78d-c2c7-4241-bb52-a1d5cef2235c",
+  "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
+  "X-Forwarded-Host": "bin.openintegrations.dev",
+  "X-Original-Url": "/get"
  },
  "origin": "***",
- "url": "https://httpbin.org/get"
+ "url": "https://bin.openintegrations.dev/get"
 }
