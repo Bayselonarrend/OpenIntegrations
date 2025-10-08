@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 335944730,
- "filepath": "/tmp/zpr0idjc.u41.bin",
- "result": true
+ "filepath": "C:\\Users\\bayse\\AppData\\Local\\Temp\\rpwxzcqb.1vw.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

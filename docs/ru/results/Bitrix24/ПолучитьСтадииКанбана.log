@@ -121,8 +121,8 @@
    "TO_UPDATE": [],
    "TO_UPDATE_ACCESS": null
   },
-  "3002": {
-   "ID": "3002",
+  "3006": {
+   "ID": "3006",
    "TITLE": "Новая стадия",
    "SORT": "1100",
    "COLOR": "0026FF",
@@ -133,8 +133,8 @@
    "TO_UPDATE": [],
    "TO_UPDATE_ACCESS": null
   },
-  "3004": {
-   "ID": "3004",
+  "3008": {
+   "ID": "3008",
    "TITLE": "Новая стадия 2",
    "SORT": "1200",
    "COLOR": "0026FF",
@@ -735,13 +735,13 @@
   }
  },
  "time": {
-  "start": 1759909348,
-  "finish": 1759909348.262,
-  "duration": 0.261996984481812,
+  "start": 1759921092,
+  "finish": 1759921093.0107,
+  "duration": 1.01069903373718,
   "processing": 0,
-  "date_start": "2025-10-08T07:42:28+00:00",
-  "date_finish": "2025-10-08T07:42:28+00:00",
-  "operating_reset_at": 1759909948,
+  "date_start": "2025-10-08T13:58:12+03:00",
+  "date_finish": "2025-10-08T13:58:13+03:00",
+  "operating_reset_at": 1759921693,
   "operating": 0
  }
 }
