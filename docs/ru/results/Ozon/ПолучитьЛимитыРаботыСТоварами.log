@@ -1,6 +1,6 @@
 ﻿{
  "daily_create": {
-  "usage": 0,
+  "usage": 1,
   "limit": 1500,
   "reset_at": "2025-10-09T00:00:00Z"
  },
@@ -10,7 +10,7 @@
   "reset_at": "2025-10-09T00:00:00Z"
  },
  "total": {
-  "usage": 210,
+  "usage": 211,
   "limit": 252000
  }
 }
