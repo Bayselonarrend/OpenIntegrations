@@ -1,20 +1,20 @@
 ﻿{
- "id": "tblxPGQuFPAjuvRwy",
+ "id": "tblKVyRflFXpSfgV5",
  "name": "Тестовая таблица 2",
  "description": "Новая таблица",
- "primaryFieldId": "fldvRIPjfIBw6XZxk",
+ "primaryFieldId": "fldfXn5V5T9GjZraV",
  "fields": [
   {
    "type": "number",
    "options": {
     "precision": 0
    },
-   "id": "fldvRIPjfIBw6XZxk",
+   "id": "fldfXn5V5T9GjZraV",
    "name": "Номер"
   },
   {
    "type": "richText",
-   "id": "fldtdg599VZklpu0e",
+   "id": "fldHeD4OhGxXD3DBg",
    "name": "Строковое"
   },
   {
@@ -22,7 +22,7 @@
    "options": {
     "isReversed": false
    },
-   "id": "fldcYqZ1paVs2pX9w",
+   "id": "fld2BoFlLM6sC4Lir",
    "name": "Вложение"
   },
   {
@@ -31,7 +31,7 @@
     "icon": "check",
     "color": "yellowBright"
    },
-   "id": "fldX3QqoluK5sz6MD",
+   "id": "fldqma0dcfexDPVo7",
    "name": "Флажок"
   },
   {
@@ -42,28 +42,28 @@
      "format": "YYYY-MM-DD"
     }
    },
-   "id": "fldjD8zhdaaT53dg5",
+   "id": "fldRlLkawrvksKaLw",
    "name": "Дата"
   },
   {
    "type": "phoneNumber",
-   "id": "fldz2h0QykiBVhNEY",
+   "id": "fld3joC47b07oqTF0",
    "name": "Телефон"
   },
   {
    "type": "email",
-   "id": "fldbqakZbcQjG9wbZ",
+   "id": "fldOH5SXhLaCUOWpD",
    "name": "Почта"
   },
   {
    "type": "url",
-   "id": "fldjUEMPwDFvcAUiX",
+   "id": "fldCmxRZCNHmHByk0",
    "name": "Ссылка"
   }
  ],
  "views": [
   {
-   "id": "viwkOZHaCvbqQy7nm",
+   "id": "viwCrL9ptCNvaYZbG",
    "name": "Grid view",
    "type": "grid"
   }
