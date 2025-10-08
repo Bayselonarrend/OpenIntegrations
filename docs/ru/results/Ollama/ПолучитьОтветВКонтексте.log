@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-10-08T11:30:23.638220991Z",
+ "created_at": "2025-10-08T19:36:06.252285889Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise, which was released in 2004, was a desktop software package designed specifically for small and medium-size businesses. Since then, the company has continued to release new versions of the software with updates and improvements, which include cloud-based versions for SMEs and businesses. The latest version is 1C:Enterprise 2021."
+  "content": "1C:Enterprise was released in 2003 as version 5. The product has been re-released on multiple occasions since, with each version including bug fixes and improvements to the user interface, reporting, accounting functionalities, and more. Some of the notable releases include:\n\n- Version 6 (2010): new features and improved performance\n- Version 7 (2013): enhanced mobile capabilities, support for multiple currencies, and greater data protection\n- Version 8 (2015): enhancements to reporting, expense management, and user experience\n\nThe latest version of 1C:Enterprise is currently 9.4. The product is regularly updated with new features and improvements until its release as version 10 in late 2022 or early 2023."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 12612082895,
- "load_duration": 15933723,
- "prompt_eval_count": 176,
- "prompt_eval_duration": 3837136793,
- "eval_count": 87,
- "eval_duration": 8750998074
+ "total_duration": 21507128798,
+ "load_duration": 19462322,
+ "prompt_eval_count": 151,
+ "prompt_eval_duration": 2915180805,
+ "eval_count": 184,
+ "eval_duration": 18569764385
 }

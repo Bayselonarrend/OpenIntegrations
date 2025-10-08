@@ -1,7 +1,7 @@
 ﻿{
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "ab6c1471-dc71-47fe-b448-da100d234ec5",
+  "order_uuid": "8b7e1399-f8e0-4257-95d1-b5a827b606db",
   "date": "2025-10-22",
   "time_from": "10:00",
   "time_to": "17:00",
@@ -19,30 +19,30 @@
    "address": "ул. Блюхера, 33",
    "postal_code": "109004"
   },
-  "uuid": "eb570901-df98-4203-b180-6dc49b8c2a83",
+  "uuid": "873f1273-efd9-4613-b459-8524663d4a1f",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2025-10-08T14:14:13+03:00"
+    "date_time": "2025-10-08T22:25:21+03:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2025-10-08T14:14:12+03:00"
+    "date_time": "2025-10-08T22:25:20+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "0d4bee02-f47e-4bc5-a503-1a1f281f668f",
+   "request_uuid": "9579d505-fd4d-46b2-bcf4-39ef27075a09",
    "type": "CREATE",
-   "date_time": "2025-10-08T14:14:12+03:00",
+   "date_time": "2025-10-08T22:25:20+03:00",
    "state": "INVALID",
    "errors": [
     {
      "code": "delivery_date_too_late",
-     "message": "Указанная дата доставки не может быть позднее 2025-10-20"
+     "message": "Указанная дата доставки не может быть позднее 2025-10-21"
     }
    ]
   }
