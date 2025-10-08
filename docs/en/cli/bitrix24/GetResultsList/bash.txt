@@ -1,4 +1,4 @@
 oint bitrix24 GetResultsList \
  --url "b24-ar17wx.bitrix24.by" \
- --task "8124" \
+ --task "8204" \
  --token "***"

@@ -1,4 +1,4 @@
 oint vkteams SendVoice \
  --token "***" \
  --chatid "689203963@chat.agent" \
- --file "/tmp/j2rroz5i.q5g"
+ --file "C:\Users\bayse\AppData\Local\Temp\lootmkxb.gpw"
