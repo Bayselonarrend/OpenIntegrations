@@ -1,9 +1,9 @@
 ﻿{
  "response": [
   {
-   "album_id": 310347523,
-   "date": 1759938960,
-   "id": 457259546,
+   "album_id": 310361535,
+   "date": 1760033649,
+   "id": 457259604,
    "owner_id": -218861756,
    "sizes": [
     {
@@ -75,7 +75,7 @@
    ],
    "text": "AutoTestImage",
    "user_id": 100,
-   "web_view_token": "1ac21c6413a872bb74",
+   "web_view_token": "079645fea4f71c5319",
    "has_tags": false,
    "orig_photo": {
     "height": 1920,
