@@ -2,7 +2,7 @@
  "rows": 3,
  "counters": [
   {
-   "id": 104571102,
+   "id": 104581459,
    "status": "Active",
    "owner_login": "bayselonarrend",
    "code_status": "CS_ERR_UNKNOWN",
@@ -43,7 +43,7 @@
     "ytm": false,
     "ssr": true
    },
-   "create_time": "2025-10-09T18:51:15+03:00",
+   "create_time": "2025-10-09T19:16:21+00:00",
    "time_zone_name": "Europe/Moscow",
    "time_zone_offset": 180,
    "partner_id": 0,
@@ -97,7 +97,7 @@
     "ytm": false,
     "ssr": false
    },
-   "create_time": "2024-05-15T16:55:09+03:00",
+   "create_time": "2024-05-15T13:55:09+00:00",
    "time_zone_name": "Europe/Minsk",
    "time_zone_offset": 180,
    "partner_id": 0,
@@ -151,7 +151,7 @@
     "ytm": false,
     "ssr": false
    },
-   "create_time": "2024-09-03T19:06:14+03:00",
+   "create_time": "2024-09-03T16:06:14+00:00",
    "time_zone_name": "Europe/Minsk",
    "time_zone_offset": 180,
    "partner_id": 0,

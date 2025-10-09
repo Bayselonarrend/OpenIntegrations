@@ -1,24 +1,24 @@
 ﻿{
  "result": {
-  "ID": "3006",
-  "TASK_ID": "8228",
+  "ID": "3014",
+  "TASK_ID": "8248",
   "USER_ID": "10",
   "COMMENT_TEXT": "Time spent on work",
   "SECONDS": "7200",
   "MINUTES": "120",
   "SOURCE": "2",
-  "CREATED_DATE": "2025-09-09T18:43:13+03:00",
-  "DATE_START": "2025-10-09T18:43:14+03:00",
-  "DATE_STOP": "2025-10-09T18:43:14+03:00"
+  "CREATED_DATE": "2025-09-09T16:06:04+00:00",
+  "DATE_START": "2025-10-09T19:06:04+00:00",
+  "DATE_STOP": "2025-10-09T19:06:04+00:00"
  },
  "time": {
-  "start": 1760024594,
-  "finish": 1760024594.88601,
-  "duration": 0.886012077331543,
+  "start": 1760036766,
+  "finish": 1760036766.0565,
+  "duration": 0.056502103805542,
   "processing": 0,
-  "date_start": "2025-10-09T18:43:14+03:00",
-  "date_finish": "2025-10-09T18:43:14+03:00",
-  "operating_reset_at": 1760025194,
+  "date_start": "2025-10-09T19:06:06+00:00",
+  "date_finish": "2025-10-09T19:06:06+00:00",
+  "operating_reset_at": 1760037366,
   "operating": 0
  }
 }

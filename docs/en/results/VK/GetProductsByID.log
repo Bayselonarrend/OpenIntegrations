@@ -14,7 +14,7 @@
      }
     },
     "description": "Product description",
-    "id": 11983740,
+    "id": 11990224,
     "owner_id": -218861756,
     "price": {
      "amount": "100",
@@ -58,10 +58,10 @@
     "photos": [
      {
       "album_id": -53,
-      "date": 1759939182,
-      "id": 457259553,
+      "date": 1760033825,
+      "id": 457259611,
       "owner_id": -218861756,
-      "access_key": "70943b86afa4a0950c",
+      "access_key": "11bd2d5ec055dea62d",
       "sizes": [
        {
         "height": 54,
@@ -132,7 +132,7 @@
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "ffe253b877a68d0c5f",
+      "web_view_token": "e37d09dcd12f894537",
       "has_tags": false,
       "orig_photo": {
        "height": 1920,
@@ -143,10 +143,10 @@
      },
      {
       "album_id": -53,
-      "date": 1759939187,
-      "id": 457259554,
+      "date": 1760033829,
+      "id": 457259612,
       "owner_id": -218861756,
-      "access_key": "c1ae358809d5104275",
+      "access_key": "c0a5de544352dc8024",
       "sizes": [
        {
         "height": 54,
@@ -217,7 +217,7 @@
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "c576e36e22bfeded47",
+      "web_view_token": "c6d51f34e41a49c298",
       "has_tags": false,
       "orig_photo": {
        "height": 1920,
@@ -228,10 +228,10 @@
      },
      {
       "album_id": -53,
-      "date": 1759939188,
-      "id": 457259555,
+      "date": 1760033830,
+      "id": 457259613,
       "owner_id": -218861756,
-      "access_key": "b57485644aae658ce8",
+      "access_key": "df7e2a24e6b0041c21",
       "sizes": [
        {
         "height": 40,
@@ -302,7 +302,7 @@
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "ec0caf0ee033c5b261",
+      "web_view_token": "8de0f47c2a0e1c74ed",
       "has_tags": false,
       "orig_photo": {
        "height": 1080,
@@ -330,9 +330,9 @@
       "type": "text",
       "variants": [
        {
-        "variant_id": 8357,
+        "variant_id": 8421,
         "name": "New variant name",
-        "item_id": 11983740,
+        "item_id": 11990224,
         "is_selected": true
        }
       ]
@@ -354,7 +354,7 @@
      "is_available": true
     },
     "labels": [],
-    "date": 1759939188,
+    "date": 1760033830,
     "item_type": 0,
     "is_owner": true,
     "is_adult": false,
@@ -362,7 +362,7 @@
     "is_main_variant": true,
     "property_values": [
      {
-      "variant_id": 8357,
+      "variant_id": 8421,
       "variant_name": "New variant name",
       "property_name": "Color (change.)"
      }
@@ -375,7 +375,7 @@
      "reviews_count_text": "Нет отзывов"
     },
     "has_group_access": true,
-    "market_url": "https://vk.com/market/product/test-product-with-prop-218861756-11983740"
+    "market_url": "https://vk.com/market/product/test-product-with-prop-218861756-11990224"
    },
    {
     "availability": 0,
@@ -389,7 +389,7 @@
      }
     },
     "description": "Product description",
-    "id": 11983742,
+    "id": 11990230,
     "owner_id": -218861756,
     "price": {
      "amount": "100",
@@ -433,10 +433,10 @@
     "photos": [
      {
       "album_id": -53,
-      "date": 1759939193,
-      "id": 457259556,
+      "date": 1760033834,
+      "id": 457259614,
       "owner_id": -218861756,
-      "access_key": "78f142cf700ec58b50",
+      "access_key": "ab639ca1f08e9c02b7",
       "sizes": [
        {
         "height": 54,
@@ -507,7 +507,7 @@
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "47f14954de62a9a91c",
+      "web_view_token": "7c40069cea1c4461f5",
       "has_tags": false,
       "orig_photo": {
        "height": 1920,
@@ -518,10 +518,10 @@
      },
      {
       "album_id": -53,
-      "date": 1759939197,
-      "id": 457259557,
+      "date": 1760033837,
+      "id": 457259615,
       "owner_id": -218861756,
-      "access_key": "52f9722be9a1efd488",
+      "access_key": "99799e27359ecb55a1",
       "sizes": [
        {
         "height": 54,
@@ -592,7 +592,7 @@
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "97ea374bdfba8b891d",
+      "web_view_token": "93671cd307d48e50c8",
       "has_tags": false,
       "orig_photo": {
        "height": 1920,
@@ -603,10 +603,10 @@
      },
      {
       "album_id": -53,
-      "date": 1759939198,
-      "id": 457259558,
+      "date": 1760033839,
+      "id": 457259616,
       "owner_id": -218861756,
-      "access_key": "600e94dbee0341d734",
+      "access_key": "c6c1c5b4df4751be7e",
       "sizes": [
        {
         "height": 40,
@@ -677,7 +677,7 @@
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "13bdb2939bf93ff9ed",
+      "web_view_token": "cc58346f5f0c37e216",
       "has_tags": false,
       "orig_photo": {
        "height": 1080,
@@ -705,9 +705,9 @@
       "type": "text",
       "variants": [
        {
-        "variant_id": 8358,
+        "variant_id": 8422,
         "name": "Blue",
-        "item_id": 11983742,
+        "item_id": 11990230,
         "is_selected": true
        }
       ]
@@ -729,7 +729,7 @@
      "is_available": true
     },
     "labels": [],
-    "date": 1759939198,
+    "date": 1760033839,
     "item_type": 0,
     "is_owner": true,
     "is_adult": false,
@@ -737,7 +737,7 @@
     "is_main_variant": true,
     "property_values": [
      {
-      "variant_id": 8358,
+      "variant_id": 8422,
       "variant_name": "Blue",
       "property_name": "Color (change.)"
      }
@@ -750,7 +750,7 @@
      "reviews_count_text": "Нет отзывов"
     },
     "has_group_access": true,
-    "market_url": "https://vk.com/market/product/test-product-another-218861756-11983742"
+    "market_url": "https://vk.com/market/product/test-product-another-218861756-11990230"
    }
   ]
  }
