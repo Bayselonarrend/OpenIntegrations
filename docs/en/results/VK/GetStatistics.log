@@ -2,11 +2,11 @@
  "response": [
   {
    "activity": {
-    "comments": 3,
-    "likes": 3
+    "comments": 1,
+    "likes": 1
    },
-   "period_from": 1759881600,
-   "period_to": 1759967999,
+   "period_from": 1759968000,
+   "period_to": 1760054399,
    "reach": {
     "age": [
      {
@@ -27,7 +27,7 @@
      },
      {
       "value": "27-30",
-      "count": 0
+      "count": 1
      },
      {
       "value": "30-35",
@@ -42,8 +42,20 @@
       "count": 0
      }
     ],
-    "cities": [],
+    "cities": [
+     {
+      "count": 1,
+      "name": "Воронеж",
+      "value": 42
+     }
+    ],
     "countries": [
+     {
+      "code": "RU",
+      "count": 1,
+      "name": "Россия",
+      "value": 1
+     },
      {
       "code": "BY",
       "count": 1,
@@ -51,13 +63,13 @@
       "value": 3
      }
     ],
-    "mobile_reach": 1,
-    "reach": 1,
+    "mobile_reach": 2,
+    "reach": 2,
     "reach_subscribers": 1,
     "sex": [
      {
       "value": "f",
-      "count": 0
+      "count": 1
      },
      {
       "value": "m",
@@ -83,7 +95,7 @@
      },
      {
       "value": "f;27-30",
-      "count": 0
+      "count": 1
      },
      {
       "value": "f;30-35",
@@ -141,11 +153,11 @@
   },
   {
    "activity": {
-    "comments": 5,
-    "likes": 5
+    "comments": 4,
+    "likes": 4
    },
-   "period_from": 1759795200,
-   "period_to": 1759881599,
+   "period_from": 1759881600,
+   "period_to": 1759967999,
    "reach": {
     "age": [
      {
