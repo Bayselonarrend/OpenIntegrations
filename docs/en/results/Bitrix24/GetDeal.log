@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "5068",
+  "ID": "5084",
   "TITLE": "Planned sale",
   "TYPE_ID": "GOODS",
   "STAGE_ID": "NEW",
@@ -18,8 +18,8 @@
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2025-10-08T20:32:03+03:00",
-  "DATE_MODIFY": "2025-10-08T20:32:03+03:00",
+  "DATE_CREATE": "2025-10-09T18:45:24+03:00",
+  "DATE_MODIFY": "2025-10-09T18:45:24+03:00",
   "OPENED": "Y",
   "CLOSED": "N",
   "COMMENTS": null,
@@ -36,8 +36,8 @@
   "ORIGINATOR_ID": null,
   "ORIGIN_ID": null,
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2025-10-08T20:32:03+03:00",
-  "LAST_ACTIVITY_TIME": "2025-10-08T20:32:03+03:00",
+  "MOVED_TIME": "2025-10-09T18:45:24+03:00",
+  "LAST_ACTIVITY_TIME": "2025-10-09T18:45:24+03:00",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
@@ -47,13 +47,13 @@
   "LAST_ACTIVITY_BY": "1"
  },
  "time": {
-  "start": 1759944730,
-  "finish": 1759944730.14299,
-  "duration": 0.142992973327637,
+  "start": 1760024725,
+  "finish": 1760024725.81973,
+  "duration": 0.819726943969726,
   "processing": 0,
-  "date_start": "2025-10-08T20:32:10+03:00",
-  "date_finish": "2025-10-08T20:32:10+03:00",
-  "operating_reset_at": 1759945330,
+  "date_start": "2025-10-09T18:45:25+03:00",
+  "date_finish": "2025-10-09T18:45:25+03:00",
+  "operating_reset_at": 1760025325,
   "operating": 0
  }
 }

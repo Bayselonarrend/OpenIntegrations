@@ -218,5 +218,24 @@
     "title": "Красный"
    }
   ]
+ },
+ {
+  "id": 4603,
+  "title": "Color (change.)",
+  "type": "text",
+  "variants": [
+   {
+    "id": 8365,
+    "title": "New variant name"
+   },
+   {
+    "id": 8366,
+    "title": "Blue"
+   },
+   {
+    "id": 8367,
+    "title": "Red"
+   }
+  ]
  }
 ]
