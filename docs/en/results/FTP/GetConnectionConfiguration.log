@@ -10,9 +10,9 @@
   "password": "***"
  },
  "proxy": {
-  "server": "127.0.0.1",
-  "port": 8071,
-  "proxy_type": "http",
+  "server": "host.docker.internal",
+  "port": 1080,
+  "proxy_type": "socks5",
   "login": "proxyuser",
   "password": "***"
  },

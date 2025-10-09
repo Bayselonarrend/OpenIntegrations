@@ -1,32 +1,6 @@
 ﻿[
  {
-  "messageID": "BAE5E0FE484DE159",
-  "type": "sendLocation",
-  "body": {
-   "chatId": "120363410406221140@g.us",
-   "quotedMessageId": "BAE5E7F52C0DDCED",
-   "latitude": 53.908522,
-   "longitude": 27.574821,
-   "typingTime": null
-  }
- },
- {
-  "messageID": "BAE59626818F89F8",
-  "type": "sendContact",
-  "body": {
-   "chatId": "120363410406221140@g.us",
-   "contact": {
-    "phoneContact": 79001234568,
-    "firstName": "Artem",
-    "middleName": "Evpatoriysky",
-    "lastName": "Petrovich",
-    "company": "Bicycle"
-   },
-   "typingTime": null
-  }
- },
- {
-  "messageID": "BAE50352136D959C",
+  "messageID": "BAE5EEC5C2EE2866",
   "type": "sendContact",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -34,30 +8,30 @@
     "phoneContact": 79001234568,
     "company": "Bicycle"
    },
-   "quotedMessageId": "BAE59626818F89F8",
+   "quotedMessageId": "BAE52282BE439BF7",
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "BAE51666871B9FC1"
+   "BAE55CC267599900"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "120363410406221140@g.us",
    "chatIdFrom": "120363410406221140@g.us",
    "messages": [
-    "BAE516DE64E58EC6"
+    "BAE5A821B0D695C5"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "BAE58F8667F9748E",
+  "messageID": "BAE517D35AA1DE2E",
   "type": "editMessage",
   "body": {
    "chatId": "120363410406221140@g.us",
-   "idMessage": "BAE516DE64E58EC6",
+   "idMessage": "BAE5A821B0D695C5",
    "message": "New message text",
    "linkPreview": true
   }
