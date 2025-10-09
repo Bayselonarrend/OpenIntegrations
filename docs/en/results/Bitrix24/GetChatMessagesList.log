@@ -3,6 +3,70 @@
   "chat_id": 10,
   "messages": [
    {
+    "id": 16,
+    "chat_id": 10,
+    "author_id": 0,
+    "date": "2024-06-15T16:48:49+00:00",
+    "text": "Я с вами в команде!",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": {
+     "CODE": [
+      "USER_JOIN"
+     ]
+    },
+    "disappearing_date": null
+   },
+   {
+    "id": 3808,
+    "chat_id": 10,
+    "author_id": 1,
+    "date": "2024-07-13T14:45:29+00:00",
+    "text": "Сообщение для теста",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": [],
+    "disappearing_date": null
+   },
+   {
+    "id": 3810,
+    "chat_id": 10,
+    "author_id": 10,
+    "date": "2024-07-13T14:46:31+00:00",
+    "text": "Понял",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": [],
+    "disappearing_date": null
+   },
+   {
+    "id": 3852,
+    "chat_id": 10,
+    "author_id": 10,
+    "date": "2024-07-13T14:54:42+00:00",
+    "text": "Принял",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": [],
+    "disappearing_date": null
+   },
+   {
+    "id": 3854,
+    "chat_id": 10,
+    "author_id": 10,
+    "date": "2024-07-13T14:54:43+00:00",
+    "text": "Записал",
+    "unread": false,
+    "uuid": null,
+    "replaces": [],
+    "params": [],
+    "disappearing_date": null
+   },
+   {
     "id": 4286,
     "chat_id": 10,
     "author_id": 1,
@@ -205,76 +269,6 @@
      "IS_DELETED": "Y"
     },
     "disappearing_date": null
-   },
-   {
-    "id": 5060,
-    "chat_id": 10,
-    "author_id": 1,
-    "date": "2024-07-14T08:59:43+00:00",
-    "text": "Это сообщение было удалено",
-    "unread": false,
-    "uuid": null,
-    "replaces": [],
-    "params": {
-     "IS_DELETED": "Y"
-    },
-    "disappearing_date": null
-   },
-   {
-    "id": 5140,
-    "chat_id": 10,
-    "author_id": 1,
-    "date": "2024-07-14T09:29:40+00:00",
-    "text": "Это сообщение было удалено",
-    "unread": false,
-    "uuid": null,
-    "replaces": [],
-    "params": {
-     "IS_DELETED": "Y"
-    },
-    "disappearing_date": null
-   },
-   {
-    "id": 5182,
-    "chat_id": 10,
-    "author_id": 1,
-    "date": "2024-07-14T09:35:56+00:00",
-    "text": "Это сообщение было удалено",
-    "unread": false,
-    "uuid": null,
-    "replaces": [],
-    "params": {
-     "IS_DELETED": "Y"
-    },
-    "disappearing_date": null
-   },
-   {
-    "id": 5262,
-    "chat_id": 10,
-    "author_id": 1,
-    "date": "2024-07-14T11:27:54+00:00",
-    "text": "Это сообщение было удалено",
-    "unread": false,
-    "uuid": null,
-    "replaces": [],
-    "params": {
-     "IS_DELETED": "Y"
-    },
-    "disappearing_date": null
-   },
-   {
-    "id": 5342,
-    "chat_id": 10,
-    "author_id": 1,
-    "date": "2024-07-14T14:59:23+00:00",
-    "text": "Это сообщение было удалено",
-    "unread": false,
-    "uuid": null,
-    "replaces": [],
-    "params": {
-     "IS_DELETED": "Y"
-    },
-    "disappearing_date": null
    }
   ],
   "users": [
@@ -304,7 +298,39 @@
     "departments": [
      1,
      638,
-     2770
+     2774
+    ],
+    "phones": false,
+    "bot_data": null,
+    "type": "user"
+   },
+   {
+    "id": 10,
+    "active": true,
+    "name": "Techno Pizza",
+    "first_name": "Techno",
+    "last_name": "Pizza",
+    "work_position": null,
+    "color": "#ab7761",
+    "avatar": "",
+    "avatar_hr": "https://b24-ar17wx.bitrix24.by/bitrix/js/im/images/blank.gif",
+    "gender": "M",
+    "birthday": "",
+    "extranet": false,
+    "network": false,
+    "bot": false,
+    "connector": false,
+    "external_auth_id": "socservices",
+    "status": "online",
+    "idle": false,
+    "last_activity_date": "2024-07-13T18:36:23+00:00",
+    "mobile_last_date": false,
+    "desktop_last_date": false,
+    "absent": false,
+    "departments": [
+     1,
+     640,
+     2774
     ],
     "phones": false,
     "bot_data": null,
@@ -314,13 +340,13 @@
   "files": []
  },
  "time": {
-  "start": 1760036830,
-  "finish": 1760036830.92922,
-  "duration": 0.929220914840698,
+  "start": 1760044405,
+  "finish": 1760044405.29141,
+  "duration": 0.291413068771362,
   "processing": 0,
-  "date_start": "2025-10-09T19:07:10+00:00",
-  "date_finish": "2025-10-09T19:07:10+00:00",
-  "operating_reset_at": 1760037430,
+  "date_start": "2025-10-09T21:13:25+00:00",
+  "date_finish": "2025-10-09T21:13:25+00:00",
+  "operating_reset_at": 1760045005,
   "operating": 0
  }
 }
