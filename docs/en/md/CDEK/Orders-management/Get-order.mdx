@@ -45,7 +45,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
         ```bash
             oint cdek GetOrder \
              --token "***" \
-             --uuid "c0c5c25d-9af6-48b4-936b-a89c197d2b1b" \
+             --uuid "f968a61d-0f7a-411d-a67f-f42643e2fe53" \
              --testapi "***"
         ```
     </TabItem>
@@ -54,7 +54,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
         ```batch
             oint cdek GetOrder ^
              --token "***" ^
-             --uuid "c0c5c25d-9af6-48b4-936b-a89c197d2b1b" ^
+             --uuid "f968a61d-0f7a-411d-a67f-f42643e2fe53" ^
              --testapi "***"
         ```
     </TabItem>
@@ -64,12 +64,12 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
 ```json title="Result"
 {
  "entity": {
-  "uuid": "c0c5c25d-9af6-48b4-936b-a89c197d2b1b",
+  "uuid": "37777fa2-8049-44e1-bebb-05c835e484c6",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1106623973",
-  "number": "6427ac8f-fb7a-4e3e-80b9-d54e0f0b1ff0",
+  "cdek_number": "1106625152",
+  "number": "506ecd00-b8c0-46d7-aebd-2b27667d39ec",
   "tariff_code": 139,
   "comment": "New order",
   "items_cost_currency": "RUB",
@@ -162,7 +162,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001241889",
+    "barcode": "000001244484",
     "weight": 4000,
     "length": 10,
     "width": 10,
@@ -188,21 +188,21 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
       "cost": 300
      }
     ],
-    "package_id": "e28a15fb-2d24-450f-9736-fe4fdf537a09"
+    "package_id": "b9f75fba-addb-4ba0-8368-451472eb4785"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2025-10-07T15:08:38+00:00",
+    "date_time": "2025-10-09T21:20:02+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-07T15:08:36+00:00",
+    "date_time": "2025-10-09T21:20:00+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    }

@@ -88,8 +88,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             # JSON data can also be passed as a path to a .json file
             
             oint ftp UploadFile \
-             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'1000','write_timeout':'1000'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
-             --file "/tmp/lpgplz0w.apk" \
+             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'1000','write_timeout':'1000'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'}}" \
+             --file "C:\Users\bayse\AppData\Local\Temp\hqwpdld4.wt1" \
              --path "new_dir/big.bin"
         ```
     </TabItem>
@@ -99,8 +99,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             :: JSON data can also be passed as a path to a .json file
             
             oint ftp UploadFile ^
-             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'1000','write_timeout':'1000'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
-             --file "/tmp/lpgplz0w.apk" ^
+             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'1000','write_timeout':'1000'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'}}" ^
+             --file "C:\Users\bayse\AppData\Local\Temp\hqwpdld4.wt1" ^
              --path "new_dir/big.bin"
         ```
     </TabItem>
@@ -110,9 +110,6 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```json title="Result"
 {
  "bytes": 2114023,
- "result": true,
- "close_connection": {
-  "result": true
- }
+ "result": true
 }
 ```
