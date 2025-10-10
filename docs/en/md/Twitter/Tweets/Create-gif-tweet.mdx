@@ -56,8 +56,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             # JSON data can also be passed as a path to a .json file
             
             oint twitter CreateGifTweet \
-             --text "TestTweet7bc5c79e-fba0-4c81-99b8-81683b598467" \
-             --gifs "/tmp/wzkxkzrh.i3r" \
+             --text "TestTweet534a839e-ab76-4115-953a-3e503af70bd3" \
+             --gifs "C:\Users\bayse\AppData\Local\Temp\qmrr3blw.fye" \
              --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -67,8 +67,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             :: JSON data can also be passed as a path to a .json file
             
             oint twitter CreateGifTweet ^
-             --text "TestTweet7bc5c79e-fba0-4c81-99b8-81683b598467" ^
-             --gifs "/tmp/wzkxkzrh.i3r" ^
+             --text "TestTweet534a839e-ab76-4115-953a-3e503af70bd3" ^
+             --gifs "C:\Users\bayse\AppData\Local\Temp\qmrr3blw.fye" ^
              --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -77,9 +77,12 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 ```json title="Result"
 {
- "title": "Too Many Requests",
- "detail": "Too Many Requests",
- "type": "about:blank",
- "status": 429
+ "data": {
+  "edit_history_tweet_ids": [
+   "1976383767318008034"
+  ],
+  "id": "1976383767318008034",
+  "text": "TestTweetfbdc1d3b-bb7b-4cc5-8f0f-f01555e24855 https://t.co/tVANoRnVYG"
+ }
 }
 ```

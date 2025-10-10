@@ -49,18 +49,22 @@ Method at API documentation: [SetGroupAdmin](https://green-api.com/docs/api/grou
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint greenapi SetAdminRights \
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-             --group "120363420481416535@g.us" \
+             --group "120363420297661411@g.us" \
              --user "123123123@c.us"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint greenapi SetAdminRights ^
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
-             --group "120363420481416535@g.us" ^
+             --group "120363420297661411@g.us" ^
              --user "123123123@c.us"
         ```
     </TabItem>

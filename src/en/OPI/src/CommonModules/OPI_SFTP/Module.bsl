@@ -627,6 +627,10 @@ Function CheckCreateConnection(Connection)
         CloseConnection = False;
     EndIf;
 
+    If Not IsConnector(Connection) Then
+        Return Connection;
+    EndIf;
+
     IsSFTP = Connection.IsSFTP();
 
     If Not IsSFTP Then
