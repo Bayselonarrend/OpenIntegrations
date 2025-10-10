@@ -11,7 +11,7 @@
    "IsTruncated": "false",
    "Version": {
     "Key": "picture.jpg",
-    "LastModified": "2025-10-09T17:41:41.762Z",
+    "LastModified": "2025-10-10T10:36:17.698Z",
     "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
     "Size": "2114023",
     "Owner": {
@@ -26,12 +26,12 @@
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Thu, 09 Oct 2025 17:45:42 GMT",
+  "Date": "Fri, 10 Oct 2025 10:38:58 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
-  "X-Amz-Request-Id": "186CE3BA03A2C6ED",
+  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
+  "X-Amz-Request-Id": "186D1B051E17D1A6",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "708",
