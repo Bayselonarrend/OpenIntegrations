@@ -2,4 +2,4 @@ oint telegram ОтправитьАудио \
   --token "***" \
   --chat "@testsichee" \
   --text "Строковое значение" \
-  --audio "C:\Users\bayse\AppData\Local\Temp\nsmooliv.ads"
+  --audio "/tmp/ec0100fn.3e5"

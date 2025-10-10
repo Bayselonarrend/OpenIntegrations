@@ -7,8 +7,8 @@
    "wid": "1234567890@c.us",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1759951917,
-  "idMessage": "BAE5E7CDCB1F3E5E",
+  "timestamp": 1760025728,
+  "idMessage": "BAE57C49A955ECF3",
   "senderData": {
    "chatId": "120363410406221140@g.us",
    "chatName": "Основная тестовая группа",
@@ -19,17 +19,17 @@
   "messageData": {
    "typeMessage": "quotedMessage",
    "extendedTextMessageData": {
-    "text": "Новое сообщение",
-    "stanzaId": "BAE5D40E8BA654CF",
+    "text": "New message",
+    "stanzaId": "BAE516DE64E58EC6",
     "participant": "1234567890@c.us"
    },
    "quotedMessage": {
-    "stanzaId": "BAE5D40E8BA654CF",
+    "stanzaId": "BAE516DE64E58EC6",
     "participant": "1234567890@c.us",
     "typeMessage": "extendedTextMessage",
-    "textMessage": "Новое сообщение",
+    "textMessage": "New message",
     "extendedTextMessage": {
-     "text": "Новое сообщение",
+     "text": "New message",
      "description": "",
      "title": "",
      "previewType": "None",
