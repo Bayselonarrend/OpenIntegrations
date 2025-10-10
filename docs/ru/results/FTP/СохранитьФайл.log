@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 335944730,
- "filepath": "/tmp/bzd1w0nt.dg0.bin",
- "result": true
+ "filepath": "/tmp/531e4xl1.rhr.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
