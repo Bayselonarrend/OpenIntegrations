@@ -81,9 +81,9 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint ftp ИзменитьПуть \
-              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
-              --old "new_dir/giant.bin" \
-              --new "new_dir/big.bin"
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.10','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'}}" \
+              --old "new_dir" \
+              --new "brand_new_dir"
         ```
     </TabItem>
   
@@ -92,9 +92,9 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint ftp ИзменитьПуть ^
-              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
-              --old "new_dir/giant.bin" ^
-              --new "new_dir/big.bin"
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.10','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'}}" ^
+              --old "new_dir" ^
+              --new "brand_new_dir"
         ```
     </TabItem>
 </Tabs>
@@ -102,9 +102,6 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": true,
- "close_connection": {
-  "result": true
- }
+ "result": true
 }
 ```

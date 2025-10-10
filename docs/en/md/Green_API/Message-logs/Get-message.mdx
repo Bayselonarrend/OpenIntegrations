@@ -49,19 +49,23 @@ Method at API documentation: [GetMessage](https://green-api.com/docs/api/journal
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON data can also be passed as a path to a .json file
+            
             oint greenapi GetMessage \
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
              --chat "120363410406221140@g.us" \
-             --msg "BAE5BB1508D0BC37"
+             --msg "BAE55C09A54B0818"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
             oint greenapi GetMessage ^
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
              --chat "120363410406221140@g.us" ^
-             --msg "BAE5BB1508D0BC37"
+             --msg "BAE55C09A54B0818"
         ```
     </TabItem>
 </Tabs>
@@ -70,8 +74,8 @@ Method at API documentation: [GetMessage](https://green-api.com/docs/api/journal
 ```json title="Result"
 {
  "type": "outgoing",
- "idMessage": "BAE5BB1508D0BC37",
- "timestamp": 1757978474,
+ "idMessage": "BAE54A3A982AD019",
+ "timestamp": 1760045516,
  "typeMessage": "extendedTextMessage",
  "chatId": "120363410406221140@g.us",
  "textMessage": "New message",
@@ -86,9 +90,9 @@ Method at API documentation: [GetMessage](https://green-api.com/docs/api/journal
  },
  "statusMessage": "sent",
  "sendByApi": true,
- "deletedMessageId": "",
+ "deletedMessageId": "BAE58D0EC787ED62",
  "editedMessageId": "",
  "isEdited": false,
- "isDeleted": false
+ "isDeleted": true
 }
 ```

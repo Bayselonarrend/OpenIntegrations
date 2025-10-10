@@ -84,9 +84,9 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint ftp СохранитьФайл \
-              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'}}" \
               --path "new_dir/big.bin" \
-              --file "/tmp/jhkt5efu.fh4.bin"
+              --file "C:\Users\bayse\AppData\Local\Temp\rpwxzcqb.1vw.bin"
         ```
     </TabItem>
   
@@ -95,9 +95,9 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint ftp СохранитьФайл ^
-              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
+              --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'}}" ^
               --path "new_dir/big.bin" ^
-              --file "/tmp/jhkt5efu.fh4.bin"
+              --file "C:\Users\bayse\AppData\Local\Temp\rpwxzcqb.1vw.bin"
         ```
     </TabItem>
 </Tabs>
@@ -106,10 +106,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "bytes": 335944730,
- "filepath": "/tmp/jhkt5efu.fh4.bin",
- "result": true,
- "close_connection": {
-  "result": true
- }
+ "filepath": "/tmp/bzd1w0nt.dg0.bin",
+ "result": true
 }
 ```
