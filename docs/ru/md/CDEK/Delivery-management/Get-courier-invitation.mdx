@@ -47,7 +47,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьЗаявкуНаВызовКурьера \
               --token "***" \
-              --uuid "4aa0c808-869c-4068-99c9-7f0f5c39a3a0" \
+              --uuid "f5761a33-b5d1-4598-87d1-a15088ed8603" \
               --testapi "***"
         ```
     </TabItem>
@@ -56,7 +56,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьЗаявкуНаВызовКурьера ^
               --token "***" ^
-              --uuid "4aa0c808-869c-4068-99c9-7f0f5c39a3a0" ^
+              --uuid "f5761a33-b5d1-4598-87d1-a15088ed8603" ^
               --testapi "***"
         ```
     </TabItem>
@@ -66,10 +66,11 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "d66eb89f-b347-4f5f-90aa-945ab815bb83",
-  "cdek_number": "1106625112",
-  "order_uuid": "60d343a5-1ddb-4f27-aadb-02704686350b",
-  "intake_date": "2025-10-10",
+  "uuid": "f5761a33-b5d1-4598-87d1-a15088ed8603",
+  "cdek_number": "1106625426",
+  "order_uuid": "9f5ea44e-9742-4bfa-b521-eec490be3f22",
+  "intake_date": "2025-10-11",
+  "intake_number": "13310018",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -80,10 +81,11 @@ import TabItem from '@theme/TabItem';
   "comment": "Комментарий курьеру",
   "sender": {
    "company": "Компания",
-   "name": "Иванов Иван",
+   "name": "Компания",
+   "contragent_type": "LEGAL_ENTITY",
    "phones": [
     {
-     "number": "+79589441654"
+     "number": "79589441654"
     }
    ],
    "passport_requirements_satisfied": false
@@ -102,17 +104,40 @@ import TabItem from '@theme/TabItem';
    "latitude": 55.75222,
    "address": "ул. Блюхера, 32"
   },
+  "to_location": {
+   "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "longitude": 37.831928,
+   "latitude": 55.644399,
+   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
+   "postal_code": "140091"
+  },
   "need_call": false,
   "statuses": [
    {
+    "code": "READY_FOR_APPOINTMENT",
+    "name": "Готова к назначению",
+    "date_time": "2025-10-10T10:25:53+00:00"
+   },
+   {
+    "code": "CREATED",
+    "name": "Создан",
+    "date_time": "2025-10-10T10:25:53+00:00"
+   },
+   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-09T17:34:01+00:00"
+    "date_time": "2025-10-10T10:25:53+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "decb08a1-12cb-4f49-9159-c1fc48a84fa0",
+    "package_id": "81316aed-8402-4978-865c-4dba41c31e52",
     "weight": 1000,
     "length": 10,
     "width": 10,
@@ -123,10 +148,10 @@ import TabItem from '@theme/TabItem';
  },
  "requests": [
   {
-   "request_uuid": "59d7271f-5290-4138-8b4a-6a8ca38edbbd",
+   "request_uuid": "467c842a-5c43-4b0e-9916-538a7d75176c",
    "type": "CREATE",
-   "date_time": "2025-10-09T17:33:59+00:00",
-   "state": "ACCEPTED"
+   "date_time": "2025-10-10T10:25:52+00:00",
+   "state": "SUCCESSFUL"
   }
  ]
 }
