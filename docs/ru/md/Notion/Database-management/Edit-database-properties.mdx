@@ -52,7 +52,7 @@ import TabItem from '@theme/TabItem';
             
             oint notion ИзменитьСвойстваБазы \
               --token "***" \
-              --base "28682aa7-fc4e-819f-9fe5-c643b4d5dc1d" \
+              --base "28882aa7-fc4e-81a6-996b-e95e2d72be00" \
               --props "{'Почта':'rich_text','Сайт':null}" \
               --title "Тестовый заголовок" \
               --description "Тестовое описание"
@@ -65,7 +65,7 @@ import TabItem from '@theme/TabItem';
             
             oint notion ИзменитьСвойстваБазы ^
               --token "***" ^
-              --base "28682aa7-fc4e-819f-9fe5-c643b4d5dc1d" ^
+              --base "28882aa7-fc4e-81a6-996b-e95e2d72be00" ^
               --props "{'Почта':'rich_text','Сайт':null}" ^
               --title "Тестовый заголовок" ^
               --description "Тестовое описание"
@@ -77,10 +77,10 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "object": "database",
- "id": "28782aa7-fc4e-8180-9abc-fdcf67429586",
+ "id": "28882aa7-fc4e-81a6-996b-e95e2d72be00",
  "cover": null,
  "icon": null,
- "created_time": "2025-10-09T17:17:00Z",
+ "created_time": "2025-10-10T09:49:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -89,7 +89,7 @@ import TabItem from '@theme/TabItem';
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2025-10-09T17:17:00Z",
+ "last_edited_time": "2025-10-10T09:50:00Z",
  "title": [
   {
    "type": "text",
@@ -130,43 +130,50 @@ import TabItem from '@theme/TabItem';
  ],
  "is_inline": false,
  "properties": {
-  "Картинка": {
-   "id": "%40rba",
-   "name": "Картинка",
-   "description": null,
-   "type": "files",
-   "files": {}
-  },
   "Описание": {
-   "id": "CMa%5C",
+   "id": "HK%5C%5C",
    "name": "Описание",
    "description": null,
    "type": "rich_text",
    "rich_text": {}
   },
-  "Дата создания": {
-   "id": "R_aV",
-   "name": "Дата создания",
-   "description": null,
-   "type": "date",
-   "date": {}
-  },
-  "Почта": {
-   "id": "c%7Cvl",
-   "name": "Почта",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
   "Пользователь": {
-   "id": "deZk",
+   "id": "JBrS",
    "name": "Пользователь",
    "description": null,
    "type": "people",
    "people": {}
   },
+  "Статус": {
+   "id": "S%7BH%7C",
+   "name": "Статус",
+   "description": null,
+   "type": "select",
+   "select": {
+    "options": [
+     {
+      "id": "e1b96fd2-3354-4a54-a066-396852a18996",
+      "name": "Новый",
+      "color": "green",
+      "description": null
+     },
+     {
+      "id": "fd8a87e0-61ff-42da-89aa-bd1d923343a0",
+      "name": "В работе",
+      "color": "yellow",
+      "description": null
+     },
+     {
+      "id": "47a8ed6e-40f4-46b4-93d6-7b8ecda4ad67",
+      "name": "Удаленный",
+      "color": "red",
+      "description": null
+     }
+    ]
+   }
+  },
   "Номер": {
-   "id": "qXw%3B",
+   "id": "Wp%3CF",
    "name": "Номер",
    "description": null,
    "type": "number",
@@ -175,46 +182,39 @@ import TabItem from '@theme/TabItem';
    }
   },
   "Телефон": {
-   "id": "rrI~",
+   "id": "%5BYKO",
    "name": "Телефон",
    "description": null,
    "type": "phone_number",
    "phone_number": {}
   },
+  "Почта": {
+   "id": "%5Bo%7Dx",
+   "name": "Почта",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
+  "Картинка": {
+   "id": "eWHH",
+   "name": "Картинка",
+   "description": null,
+   "type": "files",
+   "files": {}
+  },
+  "Дата создания": {
+   "id": "rpR%3D",
+   "name": "Дата создания",
+   "description": null,
+   "type": "date",
+   "date": {}
+  },
   "Активен": {
-   "id": "x_S%5E",
+   "id": "ttDX",
    "name": "Активен",
    "description": null,
    "type": "checkbox",
    "checkbox": {}
-  },
-  "Статус": {
-   "id": "ylBC",
-   "name": "Статус",
-   "description": null,
-   "type": "select",
-   "select": {
-    "options": [
-     {
-      "id": "03ae397a-12c6-4801-8649-ae5065b5d020",
-      "name": "Новый",
-      "color": "green",
-      "description": null
-     },
-     {
-      "id": "43e998d3-faf5-4054-93bd-f286dc2b6400",
-      "name": "В работе",
-      "color": "yellow",
-      "description": null
-     },
-     {
-      "id": "dac04da3-6361-4f36-8f47-2f32cda338c2",
-      "name": "Удаленный",
-      "color": "red",
-      "description": null
-     }
-    ]
-   }
   },
   "Имя": {
    "id": "title",
