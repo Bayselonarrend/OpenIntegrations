@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "28882aa7-fc4e-812b-bd43-d9088a202b83",
- "created_time": "2025-10-10T09:49:00Z",
- "last_edited_time": "2025-10-10T09:49:00Z",
+ "id": "28c82aa7-fc4e-814c-8a35-cc85e2355073",
+ "created_time": "2025-10-14T07:53:00Z",
+ "last_edited_time": "2025-10-14T07:53:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -55,7 +55,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/28882aa7fc4e812bbd43d9088a202b83",
+ "url": "https://www.notion.so/28c82aa7fc4e814c8a35cc85e2355073",
  "public_url": null,
- "request_id": "c19d8595-dd84-4c63-9487-5368942c4dfb"
+ "request_id": "06cfb452-1b34-4e62-a45b-57bfabdd48bc"
 }

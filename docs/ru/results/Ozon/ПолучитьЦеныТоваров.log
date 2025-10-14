@@ -106,7 +106,7 @@
      "price_index_value": 1.77
     },
     "ozon_index_data": {
-     "min_price": 2696,
+     "min_price": 2702,
      "min_price_currency": "RUB",
      "price_index_value": 0.85
     },
@@ -460,9 +460,9 @@
      "price_index_value": 1.42
     },
     "ozon_index_data": {
-     "min_price": 1222,
+     "min_price": 1592,
      "min_price_currency": "RUB",
-     "price_index_value": 1.14
+     "price_index_value": 0.9
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -750,14 +750,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 794,
+     "min_price": 564,
      "min_price_currency": "RUB",
-     "price_index_value": 0.6
+     "price_index_value": 0.85
     },
     "ozon_index_data": {
-     "min_price": 598,
+     "min_price": 582,
      "min_price_currency": "RUB",
-     "price_index_value": 0.8
+     "price_index_value": 0.82
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -814,11 +814,11 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 553,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.82
+     "price_index_value": 0
     },
-    "color_index": "GREEN",
+    "color_index": "WITHOUT_INDEX",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -3110,14 +3110,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 343,
+     "min_price": 352,
      "min_price_currency": "RUB",
-     "price_index_value": 1.1
+     "price_index_value": 1.07
     },
     "ozon_index_data": {
-     "min_price": 372,
+     "min_price": 393,
      "min_price_currency": "RUB",
-     "price_index_value": 1.02
+     "price_index_value": 0.97
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -3582,14 +3582,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 532,
+     "min_price": 547,
      "min_price_currency": "RUB",
-     "price_index_value": 0.71
+     "price_index_value": 0.69
     },
     "ozon_index_data": {
-     "min_price": 320,
+     "min_price": 313,
      "min_price_currency": "RUB",
-     "price_index_value": 1.15
+     "price_index_value": 1.17
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -4644,14 +4644,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1072,
+     "min_price": 1123,
      "min_price_currency": "RUB",
-     "price_index_value": 0.97
+     "price_index_value": 0.93
     },
     "ozon_index_data": {
-     "min_price": 1148,
+     "min_price": 1200,
      "min_price_currency": "RUB",
-     "price_index_value": 0.91
+     "price_index_value": 0.87
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -6296,9 +6296,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 535,
+     "min_price": 563,
      "min_price_currency": "RUB",
-     "price_index_value": 1.15
+     "price_index_value": 1.1
     },
     "ozon_index_data": {
      "min_price": 559,
@@ -7022,7 +7022,7 @@
    }
   },
   {
-   "acquiring": 32.28,
+   "acquiring": 42.69,
    "offer_id": "4100347985",
    "product_id": 1443988263,
    "volume_weight": 0.4,
@@ -7045,27 +7045,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Эластичный бустинг. Без ограничения срока действия",
-      "value": 1954,
-      "date_from": "2025-03-19T21:00:44Z",
-      "date_to": "2025-12-31T20:59:59Z"
-     },
-     {
-      "title": "Максимальный бустинг",
-      "value": 1699,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1388,
-    "marketing_seller_price": 1699,
+    "marketing_price": 1822,
+    "marketing_seller_price": 2247,
     "min_price": 2023,
     "old_price": 2697,
     "price": 2247,
@@ -7081,9 +7068,9 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 2643,
+     "min_price": 2775,
      "min_price_currency": "RUB",
-     "price_index_value": 0.5
+     "price_index_value": 0.62
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7330,7 +7317,7 @@
    }
   },
   {
-   "acquiring": 30.02,
+   "acquiring": 35.74,
    "offer_id": "4100347987",
    "product_id": 1444006632,
    "volume_weight": 0.3,
@@ -7353,27 +7340,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Эластичный бустинг. Без ограничения срока действия",
-      "value": 1636,
-      "date_from": "2025-03-19T21:00:44Z",
-      "date_to": "2025-12-31T20:59:59Z"
-     },
-     {
-      "title": "Максимальный бустинг",
-      "value": 1580,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1281,
-    "marketing_seller_price": 1580,
+    "marketing_price": 1518,
+    "marketing_seller_price": 1881,
     "min_price": 1693,
     "old_price": 2258,
     "price": 1881,
@@ -7384,14 +7358,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1708,
+     "min_price": 1734,
      "min_price_currency": "RUB",
-     "price_index_value": 0.71
+     "price_index_value": 0.83
     },
     "ozon_index_data": {
-     "min_price": 1641,
+     "min_price": 1717,
      "min_price_currency": "RUB",
-     "price_index_value": 0.74
+     "price_index_value": 0.83
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7448,7 +7422,7 @@
      "price_index_value": 0.78
     },
     "ozon_index_data": {
-     "min_price": 1731,
+     "min_price": 1728,
      "min_price_currency": "RUB",
      "price_index_value": 0.78
     },
@@ -7520,7 +7494,7 @@
    }
   },
   {
-   "acquiring": 30.02,
+   "acquiring": 39.71,
    "offer_id": "4100348024",
    "product_id": 1445460991,
    "volume_weight": 0.4,
@@ -7543,27 +7517,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Эластичный бустинг. Без ограничения срока действия",
-      "value": 1818,
-      "date_from": "2025-03-19T21:00:44Z",
-      "date_to": "2025-12-31T20:59:59Z"
-     },
-     {
-      "title": "Максимальный бустинг",
-      "value": 1580,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1281,
-    "marketing_seller_price": 1580,
+    "marketing_price": 1687,
+    "marketing_seller_price": 2090,
     "min_price": 1881,
     "old_price": 2508,
     "price": 2090,
@@ -7574,14 +7535,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 0,
-     "min_price_currency": "RUB",
-     "price_index_value": 0
-    },
-    "ozon_index_data": {
-     "min_price": 2446,
+     "min_price": 3201,
      "min_price_currency": "RUB",
      "price_index_value": 0.5
+    },
+    "ozon_index_data": {
+     "min_price": 2491,
+     "min_price_currency": "RUB",
+     "price_index_value": 0.64
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7828,7 +7789,7 @@
    }
   },
   {
-   "acquiring": 5.59,
+   "acquiring": 6.35,
    "offer_id": "0111039315",
    "product_id": 1482670219,
    "volume_weight": 0.5,
@@ -7838,11 +7799,11 @@
     "fbo_direct_flow_trans_min_amount": 76,
     "fbo_return_flow_amount": 76,
     "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 25,
-    "fbs_direct_flow_trans_max_amount": 25,
+    "fbs_direct_flow_trans_min_amount": 98,
+    "fbs_direct_flow_trans_max_amount": 98,
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 25,
+    "fbs_return_flow_amount": 98,
     "sales_percent_fbo": 30,
     "sales_percent_fbs": 30,
     "sales_percent_rfbs": 28,
@@ -7851,27 +7812,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Эластичный бустинг. Без ограничения срока действия",
-      "value": 299,
-      "date_from": "2025-03-19T21:00:44Z",
-      "date_to": "2025-12-31T20:59:59Z"
-     },
-     {
-      "title": "Максимальный бустинг",
-      "value": 294,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 264,
-    "marketing_seller_price": 294,
+    "marketing_price": 275,
+    "marketing_seller_price": 334,
     "min_price": 301,
     "old_price": 401,
     "price": 334,
@@ -7882,14 +7830,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 260,
+     "min_price": 258,
      "min_price_currency": "RUB",
-     "price_index_value": 0.95
+     "price_index_value": 1
     },
     "ozon_index_data": {
-     "min_price": 211,
+     "min_price": 194,
      "min_price_currency": "RUB",
-     "price_index_value": 1.15
+     "price_index_value": 1.25
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -7946,7 +7894,7 @@
      "price_index_value": 0.97
     },
     "ozon_index_data": {
-     "min_price": 2690,
+     "min_price": 2687,
      "min_price_currency": "RUB",
      "price_index_value": 0.67
     },
@@ -8018,7 +7966,7 @@
    }
   },
   {
-   "acquiring": 33.65,
+   "acquiring": 39.71,
    "offer_id": "4100347993",
    "product_id": 1534386283,
    "volume_weight": 0.3,
@@ -8041,27 +7989,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Эластичный бустинг. Без ограничения срока действия",
-      "value": 1818,
-      "date_from": "2025-03-19T21:00:44Z",
-      "date_to": "2025-12-31T20:59:59Z"
-     },
-     {
-      "title": "Максимальный бустинг",
-      "value": 1771,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1452,
-    "marketing_seller_price": 1771,
+    "marketing_price": 1691,
+    "marketing_seller_price": 2090,
     "min_price": 1881,
     "old_price": 2508,
     "price": 2090,
@@ -8072,14 +8007,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 2868,
+     "min_price": 2849,
      "min_price_currency": "RUB",
-     "price_index_value": 0.48
+     "price_index_value": 0.56
     },
     "ozon_index_data": {
-     "min_price": 2178,
+     "min_price": 2161,
      "min_price_currency": "RUB",
-     "price_index_value": 0.63
+     "price_index_value": 0.74
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8313,11 +8248,11 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 3003,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.88
+     "price_index_value": 0
     },
-    "color_index": "GREEN",
+    "color_index": "WITHOUT_INDEX",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -8367,14 +8302,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1581,
+     "min_price": 1603,
      "min_price_currency": "RUB",
-     "price_index_value": 0.97
+     "price_index_value": 0.95
     },
     "ozon_index_data": {
-     "min_price": 1596,
+     "min_price": 1609,
      "min_price_currency": "RUB",
-     "price_index_value": 0.96
+     "price_index_value": 0.95
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8473,7 +8408,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2562,
+    "marketing_price": 2525,
     "marketing_seller_price": 3091,
     "min_price": 2872,
     "old_price": 3829,
@@ -8485,14 +8420,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 924,
+     "min_price": 960,
      "min_price_currency": "RUB",
-     "price_index_value": 1.62
+     "price_index_value": 1.6
     },
     "ozon_index_data": {
-     "min_price": 2687,
+     "min_price": 2769,
      "min_price_currency": "RUB",
-     "price_index_value": 0.9
+     "price_index_value": 0.86
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -8503,7 +8438,7 @@
    }
   },
   {
-   "acquiring": 59.38,
+   "acquiring": 69.86,
    "offer_id": "0370355068",
    "product_id": 1535648291,
    "volume_weight": 0.2,
@@ -8526,27 +8461,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Эластичный бустинг. Без ограничения срока действия",
-      "value": 3604,
-      "date_from": "2025-03-19T21:00:44Z",
-      "date_to": "2025-12-31T20:59:59Z"
-     },
-     {
-      "title": "Максимальный бустинг",
-      "value": 3125,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2571,
-    "marketing_seller_price": 3125,
+    "marketing_price": 3020,
+    "marketing_seller_price": 3677,
     "min_price": 3490,
     "old_price": 4653,
     "price": 3677,
@@ -8557,14 +8479,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 841,
+     "min_price": 874,
      "min_price_currency": "RUB",
-     "price_index_value": 1.65
+     "price_index_value": 1.69
     },
     "ozon_index_data": {
-     "min_price": 3086,
+     "min_price": 3507,
      "min_price_currency": "RUB",
-     "price_index_value": 0.79
+     "price_index_value": 0.81
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -8734,14 +8656,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 898,
+     "min_price": 885,
      "min_price_currency": "RUB",
-     "price_index_value": 0.81
+     "price_index_value": 0.82
     },
     "ozon_index_data": {
-     "min_price": 809,
+     "min_price": 835,
      "min_price_currency": "RUB",
-     "price_index_value": 0.9
+     "price_index_value": 0.87
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8916,11 +8838,11 @@
      "price_index_value": 0.95
     },
     "ozon_index_data": {
-     "min_price": 687,
+     "min_price": 712,
      "min_price_currency": "RUB",
-     "price_index_value": 1.02
+     "price_index_value": 0.98
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -9265,16 +9187,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1790,
+     "min_price": 1833,
      "min_price_currency": "RUB",
-     "price_index_value": 1
+     "price_index_value": 0.97
     },
     "ozon_index_data": {
-     "min_price": 1699,
+     "min_price": 1775,
      "min_price_currency": "RUB",
-     "price_index_value": 1.05
+     "price_index_value": 1.01
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -9401,7 +9323,7 @@
    }
   },
   {
-   "acquiring": 34.54,
+   "acquiring": 39.71,
    "offer_id": "4100347970",
    "product_id": 1537431413,
    "volume_weight": 0.4,
@@ -9424,27 +9346,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Эластичный бустинг. Без ограничения срока действия",
-      "value": 1818,
-      "date_from": "2025-03-19T21:00:44Z",
-      "date_to": "2025-12-31T20:59:59Z"
-     },
-     {
-      "title": "Максимальный бустинг",
-      "value": 1843,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1490,
-    "marketing_seller_price": 1818,
+    "marketing_price": 1692,
+    "marketing_seller_price": 2090,
     "min_price": 1881,
     "old_price": 2508,
     "price": 2090,
@@ -9455,14 +9364,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1264,
+     "min_price": 1283,
      "min_price_currency": "RUB",
-     "price_index_value": 1.11
+     "price_index_value": 1.2
     },
     "ozon_index_data": {
-     "min_price": 2044,
+     "min_price": 1996,
      "min_price_currency": "RUB",
-     "price_index_value": 0.69
+     "price_index_value": 0.8
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -9473,7 +9382,7 @@
    }
   },
   {
-   "acquiring": 50.79,
+   "acquiring": 57.59,
    "offer_id": "4100347989",
    "product_id": 1537461804,
    "volume_weight": 0.4,
@@ -9496,21 +9405,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 2673,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2184,
-    "marketing_seller_price": 2673,
+    "marketing_price": 2479,
+    "marketing_seller_price": 3031,
     "min_price": 2728,
     "old_price": 3637,
     "price": 3031,
@@ -9521,14 +9423,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 3646,
+     "min_price": 3497,
      "min_price_currency": "RUB",
-     "price_index_value": 0.57
+     "price_index_value": 0.67
     },
     "ozon_index_data": {
-     "min_price": 2749,
+     "min_price": 2885,
      "min_price_currency": "RUB",
-     "price_index_value": 0.75
+     "price_index_value": 0.81
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9585,7 +9487,7 @@
      "price_index_value": 1.47
     },
     "ozon_index_data": {
-     "min_price": 1676,
+     "min_price": 1666,
      "min_price_currency": "RUB",
      "price_index_value": 0.72
     },
@@ -9598,7 +9500,7 @@
    }
   },
   {
-   "acquiring": 37.03,
+   "acquiring": 43.68,
    "offer_id": "4100347991",
    "product_id": 1537511985,
    "volume_weight": 0.3,
@@ -9621,27 +9523,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Эластичный бустинг. Без ограничения срока действия",
-      "value": 2000,
-      "date_from": "2025-03-19T21:00:44Z",
-      "date_to": "2025-12-31T20:59:59Z"
-     },
-     {
-      "title": "Максимальный бустинг",
-      "value": 1949,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1598,
-    "marketing_seller_price": 1949,
+    "marketing_price": 1861,
+    "marketing_seller_price": 2299,
     "min_price": 2070,
     "old_price": 2759,
     "price": 2299,
@@ -9654,12 +9543,12 @@
     "external_index_data": {
      "min_price": 1913,
      "min_price_currency": "RUB",
-     "price_index_value": 0.78
+     "price_index_value": 0.92
     },
     "ozon_index_data": {
-     "min_price": 3135,
+     "min_price": 3105,
      "min_price_currency": "RUB",
-     "price_index_value": 0.48
+     "price_index_value": 0.57
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9729,7 +9618,7 @@
    }
   },
   {
-   "acquiring": 30.95,
+   "acquiring": 36.42,
    "offer_id": "0370355030",
    "product_id": 1626637524,
    "volume_weight": 0.1,
@@ -9752,27 +9641,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Эластичный бустинг. Без ограничения срока действия",
-      "value": 1667,
-      "date_from": "2025-03-19T21:00:44Z",
-      "date_to": "2025-12-31T20:59:59Z"
-     },
-     {
-      "title": "Максимальный бустинг",
-      "value": 1629,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1347,
-    "marketing_seller_price": 1629,
+    "marketing_price": 1558,
+    "marketing_seller_price": 1917,
     "min_price": 1816,
     "old_price": 2421,
     "price": 1917,
@@ -9783,16 +9659,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1538,
+     "min_price": 1548,
      "min_price_currency": "RUB",
-     "price_index_value": 0.83
+     "price_index_value": 0.95
     },
     "ozon_index_data": {
-     "min_price": 1369,
+     "min_price": 1380,
      "min_price_currency": "RUB",
-     "price_index_value": 0.93
+     "price_index_value": 1.06
     },
-    "color_index": "GREEN",
+    "color_index": "YELLOW",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -9801,7 +9677,7 @@
    }
   },
   {
-   "acquiring": 35.02,
+   "acquiring": 47.37,
    "offer_id": "0371045016",
    "product_id": 1626703485,
    "volume_weight": 0.4,
@@ -9824,27 +9700,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Эластичный бустинг. Без ограничения срока действия",
-      "value": 1843,
-      "date_from": "2025-03-19T21:00:44Z",
-      "date_to": "2025-12-31T20:59:59Z"
-     },
-     {
-      "title": "Максимальный бустинг",
-      "value": 1970,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1503,
-    "marketing_seller_price": 1843,
+    "marketing_price": 1984,
+    "marketing_seller_price": 2493,
     "min_price": 2244,
     "old_price": 2991,
     "price": 2493,
@@ -9855,14 +9718,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1847,
+     "min_price": 1933,
      "min_price_currency": "RUB",
-     "price_index_value": 0.77
+     "price_index_value": 0.97
     },
     "ozon_index_data": {
-     "min_price": 1839,
+     "min_price": 2062,
      "min_price_currency": "RUB",
-     "price_index_value": 0.78
+     "price_index_value": 0.91
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10740,14 +10603,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 743,
+     "min_price": 658,
      "min_price_currency": "RUB",
-     "price_index_value": 0.64
+     "price_index_value": 0.72
     },
     "ozon_index_data": {
-     "min_price": 1194,
+     "min_price": 1206,
      "min_price_currency": "RUB",
-     "price_index_value": 0.4
+     "price_index_value": 0.39
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10799,14 +10662,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 734,
+     "min_price": 840,
      "min_price_currency": "RUB",
-     "price_index_value": 0.68
+     "price_index_value": 0.59
     },
     "ozon_index_data": {
-     "min_price": 544,
+     "min_price": 535,
      "min_price_currency": "RUB",
-     "price_index_value": 0.91
+     "price_index_value": 0.93
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10876,7 +10739,7 @@
    }
   },
   {
-   "acquiring": 25.18,
+   "acquiring": 30.4,
    "offer_id": "0381049046",
    "product_id": 1860811444,
    "volume_weight": 0.1,
@@ -10899,27 +10762,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Эластичный бустинг. Без ограничения срока действия",
-      "value": 1349,
-      "date_from": "2025-03-19T21:00:44Z",
-      "date_to": "2025-12-31T20:59:59Z"
-     },
-     {
-      "title": "Максимальный бустинг",
-      "value": 1325,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1081,
-    "marketing_seller_price": 1325,
+    "marketing_price": 1284,
+    "marketing_seller_price": 1600,
     "min_price": 1599,
     "old_price": 2132,
     "price": 1600,
@@ -10930,16 +10780,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1127,
+     "min_price": 1128,
      "min_price_currency": "RUB",
-     "price_index_value": 0.91
+     "price_index_value": 1.07
     },
     "ozon_index_data": {
-     "min_price": 1086,
+     "min_price": 1120,
      "min_price_currency": "RUB",
-     "price_index_value": 0.94
+     "price_index_value": 1.08
     },
-    "color_index": "GREEN",
+    "color_index": "RED",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -11007,7 +10857,7 @@
    }
   },
   {
-   "acquiring": 23.79,
+   "acquiring": 41.8,
    "offer_id": "0381049030",
    "product_id": 1860869732,
    "volume_weight": 0.1,
@@ -11030,27 +10880,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Эластичный бустинг. Без ограничения срока действия",
-      "value": 1252,
-      "date_from": "2025-03-19T21:00:44Z",
-      "date_to": "2025-12-31T20:59:59Z"
-     },
-     {
-      "title": "Максимальный бустинг",
-      "value": 1567,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1022,
-    "marketing_seller_price": 1252,
+    "marketing_price": 1788,
+    "marketing_seller_price": 2200,
     "min_price": 1200,
     "old_price": 3000,
     "price": 2200,
@@ -11061,14 +10898,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 397,
+     "min_price": 412,
      "min_price_currency": "RUB",
-     "price_index_value": 1.59
+     "price_index_value": 1.76
     },
     "ozon_index_data": {
-     "min_price": 1459,
+     "min_price": 1510,
      "min_price_currency": "RUB",
-     "price_index_value": 0.66
+     "price_index_value": 1.11
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -11120,16 +10957,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 954,
+     "min_price": 957,
      "min_price_currency": "RUB",
      "price_index_value": 0.99
     },
     "ozon_index_data": {
-     "min_price": 919,
+     "min_price": 963,
      "min_price_currency": "RUB",
-     "price_index_value": 1.03
+     "price_index_value": 0.98
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -11846,7 +11683,7 @@
    }
   },
   {
-   "acquiring": 47.88,
+   "acquiring": 57,
    "offer_id": "0380359695",
    "product_id": 1952562843,
    "volume_weight": 0.4,
@@ -11869,21 +11706,14 @@
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 2520,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2052,
-    "marketing_seller_price": 2520,
+    "marketing_price": 2467,
+    "marketing_seller_price": 3000,
     "min_price": 2164,
     "old_price": 3200,
     "price": 3000,
@@ -11894,16 +11724,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 3151,
+     "min_price": 2938,
      "min_price_currency": "RUB",
-     "price_index_value": 0.62
+     "price_index_value": 0.79
     },
     "ozon_index_data": {
-     "min_price": 2232,
+     "min_price": 2278,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 1.02
     },
-    "color_index": "GREEN",
+    "color_index": "YELLOW",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -12028,102 +11858,8 @@
      "price_index_value": 0
     }
    }
-  },
-  {
-   "acquiring": 0,
-   "offer_id": "143210609",
-   "product_id": 2851433700,
-   "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 0,
-    "fbo_direct_flow_trans_max_amount": 0,
-    "fbo_direct_flow_trans_min_amount": 0,
-    "fbo_return_flow_amount": 0,
-    "fbs_deliv_to_customer_amount": 0,
-    "fbs_direct_flow_trans_min_amount": 0,
-    "fbs_direct_flow_trans_max_amount": 0,
-    "fbs_first_mile_max_amount": 0,
-    "fbs_first_mile_min_amount": 0,
-    "fbs_return_flow_amount": 0,
-    "sales_percent_fbo": 0,
-    "sales_percent_fbs": 0,
-    "sales_percent_rfbs": 0,
-    "sales_percent_fbp": 0
-   },
-   "marketing_actions": {
-    "current_period_from": null,
-    "current_period_to": null,
-    "actions": [],
-    "ozon_actions_exist": false
-   },
-   "price": {
-    "auto_action_enabled": false,
-    "currency_code": "RUB",
-    "marketing_price": 0,
-    "marketing_seller_price": 0,
-    "min_price": 0,
-    "old_price": 1300,
-    "price": 1300,
-    "retail_price": 0,
-    "vat": 0.1,
-    "auto_add_to_ozon_actions_list_enabled": true,
-    "net_price": 0
-   },
-   "price_indexes": {
-    "external_index_data": null,
-    "ozon_index_data": null,
-    "color_index": "WITHOUT_INDEX",
-    "self_marketplaces_index_data": null
-   }
-  },
-  {
-   "acquiring": 0,
-   "offer_id": "1432106010",
-   "product_id": 2851434014,
-   "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 0,
-    "fbo_direct_flow_trans_max_amount": 0,
-    "fbo_direct_flow_trans_min_amount": 0,
-    "fbo_return_flow_amount": 0,
-    "fbs_deliv_to_customer_amount": 0,
-    "fbs_direct_flow_trans_min_amount": 0,
-    "fbs_direct_flow_trans_max_amount": 0,
-    "fbs_first_mile_max_amount": 0,
-    "fbs_first_mile_min_amount": 0,
-    "fbs_return_flow_amount": 0,
-    "sales_percent_fbo": 0,
-    "sales_percent_fbs": 0,
-    "sales_percent_rfbs": 0,
-    "sales_percent_fbp": 0
-   },
-   "marketing_actions": {
-    "current_period_from": null,
-    "current_period_to": null,
-    "actions": [],
-    "ozon_actions_exist": false
-   },
-   "price": {
-    "auto_action_enabled": false,
-    "currency_code": "RUB",
-    "marketing_price": 0,
-    "marketing_seller_price": 0,
-    "min_price": 0,
-    "old_price": 1300,
-    "price": 1300,
-    "retail_price": 0,
-    "vat": 0.1,
-    "auto_add_to_ozon_actions_list_enabled": true,
-    "net_price": 0
-   },
-   "price_indexes": {
-    "external_index_data": null,
-    "ozon_index_data": null,
-    "color_index": "WITHOUT_INDEX",
-    "self_marketplaces_index_data": null
-   }
   }
  ],
- "cursor": "WzI4NTE0MzQwMTQsMjg1MTQzNDAxNF0=",
- "total": 203
+ "cursor": "WzIyMTU0MzMwNzIsMjIxNTQzMzA3Ml0=",
+ "total": 201
 }
