@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-10-14T15:18:13.708941525Z",
+ "created_at": "2025-10-14T17:28:42.147841827Z",
  "message": {
   "role": "assistant",
-  "content": "1C:Enterprise has undergone several updates since its initial release. The latest version is version 14, which was released in August 2021. It includes various improvements and bug fixes as well as new features such as a simplified interface for better usability and easier navigation. However, the exact release date of the first version varies depending on the country or region. For example, the first major release of 1C:Enterprise in Russia was launched in July 2005, while the first version was released in Ukraine in January 2007. It is recommended to check with your local distributor or sales partner for more detailed information regarding the specific release dates of each version of 1C:Enterprise in different regions."
+  "content": "1C:Enterprise has been released several times throughout its history, with different versions being updated over time. The latest version that's still in active development is the latest iteration of the software known as version 9.15. This version was launched in December 2021. However, earlier versions were available for download and use on older computers and systems."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 23626374268,
- "load_duration": 30019856,
- "prompt_eval_count": 185,
- "prompt_eval_duration": 4916096556,
- "eval_count": 159,
- "eval_duration": 18665408703
+ "total_duration": 8939937510,
+ "load_duration": 15115197,
+ "prompt_eval_count": 186,
+ "prompt_eval_duration": 3301496630,
+ "eval_count": 77,
+ "eval_duration": 5616445007
 }
