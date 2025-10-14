@@ -23,6 +23,7 @@
      "workspace": true
     },
     "workspace_name": "Bayselonarrends Notion",
+    "workspace_id": "53dabb1a-8cb7-485a-9dd1-ff7053ec06b8",
     "workspace_limits": {
      "max_file_upload_size_in_bytes": 5242880
     }
@@ -33,5 +34,5 @@
  "has_more": false,
  "type": "user",
  "user": {},
- "request_id": "9f7b2e7a-fc72-407d-8b30-cca6002c89ee"
+ "request_id": "a38b6cda-34ba-4a9c-b183-a1c80dfda783"
 }
