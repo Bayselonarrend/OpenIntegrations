@@ -5,6 +5,1442 @@
     {
      "warehouses": [
       {
+       "warehouse_id": 1020001995936000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_КАЛИНИНГРАД_ХАБ_КАМСКАЯ_Возвраты"
+      },
+      {
+       "warehouse_id": 20547966716000,
+       "type": "SORTING_CENTER",
+       "name": "КАЛИНИНГРАД_ХАБ_ПЕЧАТНАЯ"
+      },
+      {
+       "warehouse_id": 1020001370635000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ФФ_КАЛИНИНГРАД_Возвраты"
+      },
+      {
+       "warehouse_id": 1020001989874000,
+       "type": "SORTING_CENTER",
+       "name": "КАЛИНИНГРАД_ХАБ_КАМСКАЯ_КГТ"
+      },
+      {
+       "warehouse_id": 22294782253000,
+       "type": "FULL_FILLMENT",
+       "name": "КАЛИНИНГРАД_МРФЦ"
+      },
+      {
+       "warehouse_id": 1020002912539000,
+       "type": "SORTING_CENTER",
+       "name": "КАЛИНИНГРАД_ХАБ_КАМСКАЯ"
+      },
+      {
+       "warehouse_id": 1020001237023000,
+       "type": "SORTING_CENTER",
+       "name": "КАЛИНИНГРАД_МРФЦ_КГТ"
+      }
+     ]
+    }
+   ],
+   "id": 12,
+   "name": "Калининград",
+   "type": "OZON"
+  },
+  {
+   "logistic_clusters": [
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 1020001351192000,
+       "type": "FULL_FILLMENT",
+       "name": "САМАРА_РФЦ_ЮВЕЛИРНЫЙ"
+      },
+      {
+       "warehouse_id": 23268782971000,
+       "type": "CROSS_DOCK",
+       "name": "САМАРА_РФЦ_Кроссдокинг"
+      },
+      {
+       "warehouse_id": 1020000833345000,
+       "type": "SORTING_CENTER",
+       "name": "САМАРА_ХАБ_ИНДУСТРИАЛЬНАЯ"
+      },
+      {
+       "warehouse_id": 1020001443623000,
+       "type": "FULL_FILLMENT",
+       "name": "САМАРА_РФЦ_НЕГАБАРИТ"
+      },
+      {
+       "warehouse_id": 1020001526953000,
+       "type": "SORTING_CENTER",
+       "name": "ЧАПАЕВСК_ТСЦ"
+      },
+      {
+       "warehouse_id": 1020003227860000,
+       "type": "SORTING_CENTER",
+       "name": "САМАРА_ХАБ_КИЗИЛОВА_Блок_1"
+      },
+      {
+       "warehouse_id": 1020003227861000,
+       "type": "SORTING_CENTER",
+       "name": "САМАРА_ХАБ_КИЗИЛОВА_Блок_2"
+      },
+      {
+       "warehouse_id": 20547966400000,
+       "type": "SORTING_CENTER",
+       "name": "ТСЦ_САМАРА"
+      },
+      {
+       "warehouse_id": 1020001443666000,
+       "type": "CROSS_DOCK",
+       "name": "САМАРА_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 20547966388000,
+       "type": "SORTING_CENTER",
+       "name": "САМАРА_ХАБ_ПРЕОБРАЖЕНКА"
+      },
+      {
+       "warehouse_id": 23678093223000,
+       "type": "SORTING_CENTER",
+       "name": "САМАРА_ХАБ_КГТ"
+      },
+      {
+       "warehouse_id": 1020000987771000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_САМАРА_ИНДУСТРИАЛЬНАЯ_Возвраты"
+      },
+      {
+       "warehouse_id": 1020001668512000,
+       "type": "SORTING_CENTER",
+       "name": "САМАРА_ЮЖНАЯ_ТСЦ"
+      },
+      {
+       "warehouse_id": 23128509046000,
+       "type": "FULL_FILLMENT",
+       "name": "САМАРА_РФЦ"
+      }
+     ]
+    }
+   ],
+   "id": 150,
+   "name": "Самара",
+   "type": "OZON"
+  },
+  {
+   "logistic_clusters": [
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 1020002162305000,
+       "type": "SORTING_CENTER",
+       "name": "ГРОЗНЫЙ_ХАБ"
+      },
+      {
+       "warehouse_id": 1020000851710000,
+       "type": "SORTING_CENTER",
+       "name": "МАХАЧКАЛА_ХАБ_3PL"
+      },
+      {
+       "warehouse_id": 1020003112090000,
+       "type": "CROSS_DOCK",
+       "name": "МАХАЧКАЛА_РФЦ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 1020002162504000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Грозный_Хаб_Возвраты"
+      },
+      {
+       "warehouse_id": 1020003220103000,
+       "type": "SORTING_CENTER",
+       "name": "МАХАЧКАЛА_ХАБ_ЗАВОДСКАЯ"
+      },
+      {
+       "warehouse_id": 1020003111941000,
+       "type": "FULL_FILLMENT",
+       "name": "МАХАЧКАЛА_РФЦ"
+      },
+      {
+       "warehouse_id": 1020003227750000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Махачкала_Заводская_Возвраты"
+      },
+      {
+       "warehouse_id": 1020002478583000,
+       "type": "SORTING_CENTER",
+       "name": "ГРОЗНЫЙ_ХАБ_КГТ"
+      }
+     ]
+    },
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 1020000950023000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Ставрополь_Кулакова_Возвраты"
+      },
+      {
+       "warehouse_id": 1020002495382000,
+       "type": "SORTING_CENTER",
+       "name": "НЕВИННОМЫССК_ХАБ"
+      },
+      {
+       "warehouse_id": 1020002495388000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Невинномысск_Возвраты"
+      },
+      {
+       "warehouse_id": 16187533603000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_СТАВРОПОЛЬ"
+      },
+      {
+       "warehouse_id": 1020000949962000,
+       "type": "SORTING_CENTER",
+       "name": "СТАВРОПОЛЬ_ХАБ_КУЛАКОВА"
+      },
+      {
+       "warehouse_id": 1020001351249000,
+       "type": "CROSS_DOCK",
+       "name": "НЕВИННОМЫССК_РФЦ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 1020002220254000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "СТАВРОПОЛЬ_АППЗ_1"
+      },
+      {
+       "warehouse_id": 1020000969743000,
+       "type": "SORTING_CENTER",
+       "name": "СТАВРОПОЛЬ_ХАБ_РАКИТНАЯ_КГТ"
+      },
+      {
+       "warehouse_id": 1020002702559000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "СТАВРОПОЛЬ_АППЗ_2"
+      },
+      {
+       "warehouse_id": 1020001351243000,
+       "type": "FULL_FILLMENT",
+       "name": "НЕВИННОМЫССК_РФЦ"
+      },
+      {
+       "warehouse_id": 1020002541543000,
+       "type": "SORTING_CENTER",
+       "name": "НЕВИННОМЫССК_ХАБ_КГТ"
+      },
+      {
+       "warehouse_id": 20547967105000,
+       "type": "SORTING_CENTER",
+       "name": "СТАВРОПОЛЬ_ХАБ_РАКИТНАЯ"
+      }
+     ]
+    }
+   ],
+   "id": 153,
+   "name": "Кавказ",
+   "type": "OZON"
+  },
+  {
+   "logistic_clusters": [
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 1020002007512000,
+       "type": "CROSS_DOCK",
+       "name": "ЯРОСЛАВЛЬ_РФЦ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 1020002513331000,
+       "type": "SORTING_CENTER",
+       "name": "ЯРОСЛАВЛЬ_2_ХАБ"
+      },
+      {
+       "warehouse_id": 1020002093565000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ЯРОСЛАВЛЬ_АППЗ_1"
+      },
+      {
+       "warehouse_id": 1020001070840000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "КОСТРОМА_АППЗ_2"
+      },
+      {
+       "warehouse_id": 1020002513368000,
+       "type": "SORTING_CENTER",
+       "name": "ЯРОСЛАВЛЬ_КГТ"
+      },
+      {
+       "warehouse_id": 1020002513728000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ФФ_ЯРОСЛАВЛЬ_ВОЗВРАТЫ"
+      },
+      {
+       "warehouse_id": 1020002006967000,
+       "type": "FULL_FILLMENT",
+       "name": "ЯРОСЛАВЛЬ_РФЦ"
+      },
+      {
+       "warehouse_id": 1020002513329000,
+       "type": "SORTING_CENTER",
+       "name": "ЯРОСЛАВЛЬ_1_ХАБ"
+      },
+      {
+       "warehouse_id": 22259183721000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_КОСТРОМА_ИНДУСТРИАЛЬНАЯ"
+      }
+     ]
+    }
+   ],
+   "id": 170,
+   "name": "Ярославль",
+   "type": "OZON"
+  },
+  {
+   "logistic_clusters": [
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 20547967177000,
+       "type": "SORTING_CENTER",
+       "name": "Пермь_КГТ"
+      },
+      {
+       "warehouse_id": 1020003227887000,
+       "type": "SORTING_CENTER",
+       "name": "ПЕРМЬ_ХАБ_КУЛТАЕВО_БЛОК_2"
+      },
+      {
+       "warehouse_id": 23967301431000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ПЕРМЬ_СППЗ_СОВЕТСКАЯ"
+      },
+      {
+       "warehouse_id": 1020002581291000,
+       "type": "SORTING_CENTER",
+       "name": "ПЕРМЬ_ХАБ_КУЛТАЕВО"
+      },
+      {
+       "warehouse_id": 1020001853819000,
+       "type": "FULL_FILLMENT",
+       "name": "ПЕРМЬ_РФЦ"
+      },
+      {
+       "warehouse_id": 1020002581541000,
+       "type": "SORTING_CENTER",
+       "name": "ПЕРМЬ_ХАБ_КУЛТАЕВО_КГТ"
+      },
+      {
+       "warehouse_id": 1020002590474000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ФФ_ПЕРМЬ_КУЛТАЕВО_ВОЗВРАТЫ"
+      },
+      {
+       "warehouse_id": 1020001853873000,
+       "type": "CROSS_DOCK",
+       "name": "ПЕРМЬ_РФЦ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 23973761265000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ПЕРМЬ_АППЗ_2"
+      },
+      {
+       "warehouse_id": 16184778465000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ПЕРМЬ_НОВЫЙ"
+      },
+      {
+       "warehouse_id": 20547966807000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ПЕРМЬ_ПРОМЫШЛЕННАЯ"
+      },
+      {
+       "warehouse_id": 20547966941000,
+       "type": "SORTING_CENTER",
+       "name": "ПЕРМЬ_ХАБ_АЭЛИТА"
+      },
+      {
+       "warehouse_id": 21704694055000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Пермь"
+      }
+     ]
+    },
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 1020002119057000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ЕКАТЕРИНБУРГ_ПЫШМА_Возвраты"
+      },
+      {
+       "warehouse_id": 20547966706000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ЕКАТЕРИНБУРГ_СЕВЕР"
+      },
+      {
+       "warehouse_id": 23967619320000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ЕКАТЕРИНБУРГ_СППЗ_МИЧУРИНА"
+      },
+      {
+       "warehouse_id": 1020000119938000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ПЕРВОУРАЛЬСК_АППЗ_1"
+      },
+      {
+       "warehouse_id": 1020002118674000,
+       "type": "SORTING_CENTER",
+       "name": "ЕКАТЕРИНБУРГ_ХАБ_ПЫШМА"
+      },
+      {
+       "warehouse_id": 23967557462000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ЕКАТЕРИНБУРГ_СППЗ_ЛУНАЧАРСКОГО_21"
+      },
+      {
+       "warehouse_id": 1020002474300000,
+       "type": "FULL_FILLMENT",
+       "name": "ЕКАТЕРИНБУРГ_ПЫШМА_РФЦ_НЕГАБАРИТ"
+      },
+      {
+       "warehouse_id": 1020001041939000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ЕКАТЕРИНБУРГ_АППЗ_4"
+      },
+      {
+       "warehouse_id": 1020002474369000,
+       "type": "CROSS_DOCK",
+       "name": "ЕКАТЕРИНБУРГ_ПЫШМА_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 23967336532000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ЕКАТЕРИНБУРГ_СППЗ_МАШИНОСТРОИТЕЛЕЙ"
+      },
+      {
+       "warehouse_id": 20547966639000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ЕКАТЕРИНБУРГ_САДОВЫЙ"
+      },
+      {
+       "warehouse_id": 20547966647000,
+       "type": "SORTING_CENTER",
+       "name": "ТСЦ_ЕКБ_САДОВЫЙ"
+      }
+     ]
+    },
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 1020001947018000,
+       "type": "SORTING_CENTER",
+       "name": "ЕКАТЕРИНБУРГ_ХАБ_ЧЕРНЯХОВСКОГО_Блок_1"
+      },
+      {
+       "warehouse_id": 1020000993827000,
+       "type": "SORTING_CENTER",
+       "name": "ЕКАТЕРИНБУРГ_ХАБ_АЭРОПОРТ_Блок_1"
+      },
+      {
+       "warehouse_id": 1020001008715000,
+       "type": "SORTING_CENTER",
+       "name": "ЕКАТЕРИНБУРГ_ХАБ_АЭРОПОРТ_БЛОК_2"
+      },
+      {
+       "warehouse_id": 18044570445000,
+       "type": "FULL_FILLMENT",
+       "name": "Екатеринбург_РФЦ_НОВЫЙ"
+      },
+      {
+       "warehouse_id": 20547967047000,
+       "type": "SORTING_CENTER",
+       "name": "ЕКАТЕРИНБУРГ_КГТ"
+      },
+      {
+       "warehouse_id": 1020003087340000,
+       "type": "SORTING_CENTER",
+       "name": "ЕКАТЕРИНБУРГ_ХАБ_АПЕЛЬСИН"
+      },
+      {
+       "warehouse_id": 1020001135261000,
+       "type": "CROSS_DOCK",
+       "name": "ЕКАТЕРИНБУРГ_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 1020001884720000,
+       "type": "CROSS_DOCK",
+       "name": "ЕКАТЕРИНБУРГ_ЛЦ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 1020001008734000,
+       "type": "SORTING_CENTER",
+       "name": "ЕКАТЕРИНБУРГ_ХАБ_АЭРОПОРТ_БЛОК_3"
+      },
+      {
+       "warehouse_id": 1020002307098000,
+       "type": "CROSS_DOCK",
+       "name": "ЕКАТЕРИНБУРГ_ЧЕРНЯХОВСКОГО_Кроссдокинг"
+      },
+      {
+       "warehouse_id": 1020001351115000,
+       "type": "FULL_FILLMENT",
+       "name": "ЕКАТЕРИНБУРГ_РФЦ_ЮВЕЛИРНЫЙ"
+      },
+      {
+       "warehouse_id": 1020003227864000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ЕКАТЕРИНБУРГ_АПЕЛЬСИН_Возвраты"
+      },
+      {
+       "warehouse_id": 1020005000266315,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ЕКАТЕРИНБУРГ_АППЗ_5"
+      },
+      {
+       "warehouse_id": 1020001023054000,
+       "type": "SORTING_CENTER",
+       "name": "ЕКАТЕРИНБУРГ_ХАБ_АЭРОПОРТ_БЛОК_4"
+      },
+      {
+       "warehouse_id": 20547966879000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ЕКАТЕРИНБУРГ_ЮГ"
+      },
+      {
+       "warehouse_id": 1020002222108000,
+       "type": "SORTING_CENTER",
+       "name": "ЕКАТЕРИНБУРГ_ХАБ_АЭРОПОРТ_КГТ"
+      },
+      {
+       "warehouse_id": 23967625865000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ЕКАТЕРИНБУРГ_СППЗ_ШАУМЯНА"
+      },
+      {
+       "warehouse_id": 1020001023562000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ЕКАТЕРИНБУРГ_АЭРОПОРТ_Возвраты"
+      },
+      {
+       "warehouse_id": 1020001029577000,
+       "type": "SORTING_CENTER",
+       "name": "ЕКАТЕРИНБУРГ_ДО_Кольцово"
+      },
+      {
+       "warehouse_id": 23888613613000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ЕКАТЕРИНБУРГ_АППЗ_2"
+      },
+      {
+       "warehouse_id": 21957500760000,
+       "type": "CROSS_DOCK",
+       "name": "ЕКАТЕРИНБУРГ_РФЦ_Кроссдокинг"
+      },
+      {
+       "warehouse_id": 1020000185234000,
+       "type": "SORTING_CENTER",
+       "name": "ЕКАТЕРИНБУРГ_ТСЦ_КОЛЬЦОВО"
+      },
+      {
+       "warehouse_id": 1020001135128000,
+       "type": "FULL_FILLMENT",
+       "name": "ЕКАТЕРИНБУРГ_РФЦ_НЕГАБАРИТ"
+      },
+      {
+       "warehouse_id": 20547967114000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ЕКАТЕРИНБУРГ_КОЛЬЦОВО"
+      }
+     ]
+    }
+   ],
+   "id": 3,
+   "name": "Урал",
+   "type": "OZON"
+  },
+  {
+   "logistic_clusters": [
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 1020002042107000,
+       "type": "SORTING_CENTER",
+       "name": "ХАБАРОВСК_ХАБ_ИНДУСТРИАЛЬНАЯ"
+      },
+      {
+       "warehouse_id": 20547966481000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ХАБАРОВСК_ПУТЕВАЯ"
+      },
+      {
+       "warehouse_id": 1020000890284000,
+       "type": "CROSS_DOCK",
+       "name": "ХАБАРОВСК_2_РФЦ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 1020003227925000,
+       "type": "SORTING_CENTER",
+       "name": "ХАБАРОВСК_ХАБ_РАКИТНОЕ"
+      },
+      {
+       "warehouse_id": 1020001008722000,
+       "type": "SORTING_CENTER",
+       "name": "ХАБАРОВСК_КГТ"
+      },
+      {
+       "warehouse_id": 1020000811274000,
+       "type": "SORTING_CENTER",
+       "name": "ХАБАРОВСК_ХАБ_СУВОРОВА"
+      },
+      {
+       "warehouse_id": 21225173751000,
+       "type": "FULL_FILLMENT",
+       "name": "Хабаровск_РФЦ"
+      },
+      {
+       "warehouse_id": 1020000890160000,
+       "type": "FULL_FILLMENT",
+       "name": "ХАБАРОВСК_2_РФЦ"
+      },
+      {
+       "warehouse_id": 21957712892000,
+       "type": "CROSS_DOCK",
+       "name": "ХАБАРОВСК_РФЦ_Кроссдокинг"
+      }
+     ]
+    }
+   ],
+   "id": 7,
+   "name": "Дальний Восток",
+   "type": "OZON"
+  },
+  {
+   "logistic_clusters": [
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 1020003227902000,
+       "type": "SORTING_CENTER",
+       "name": "КАЗАНЬ_ХАБ_ВЗЛЁТНАЯ"
+      },
+      {
+       "warehouse_id": 20547966580000,
+       "type": "SORTING_CENTER",
+       "name": "ТСЦ_КАЗАНЬ_АЭРОПОРТ"
+      },
+      {
+       "warehouse_id": 1020002066005000,
+       "type": "FULL_FILLMENT",
+       "name": "КЗН_СТОЛБИЩЕ_РФЦ_НЕГАБАРИТ"
+      },
+      {
+       "warehouse_id": 16188790631000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_КАЗАНЬ_НОВЫЙ"
+      },
+      {
+       "warehouse_id": 1020003068291000,
+       "type": "SORTING_CENTER",
+       "name": "СТОЛБИЩЕ_ТСЦ"
+      },
+      {
+       "warehouse_id": 1020000844824000,
+       "type": "SORTING_CENTER",
+       "name": "КАЗАНЬ_ХАБ_АЭРОПОРТ"
+      },
+      {
+       "warehouse_id": 1020002066136000,
+       "type": "CROSS_DOCK",
+       "name": "КЗН_СТОЛБИЩЕ_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 1020003227903000,
+       "type": "SORTING_CENTER",
+       "name": "КАЗАНЬ_ХАБ_ДОСТАВКИ_ВЗЛЁТНАЯ_ВОЗВРАТЫ"
+      },
+      {
+       "warehouse_id": 1020003227904000,
+       "type": "SORTING_CENTER",
+       "name": "КАЗАНЬ_ВЗЛЁТНАЯ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 1020002405059000,
+       "type": "SORTING_CENTER",
+       "name": "КАЗАНЬ_ХАБ_АЭРОПОРТ_КГТ"
+      },
+      {
+       "warehouse_id": 21704470486000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Казань_Столбище"
+      }
+     ]
+    },
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 21957475354000,
+       "type": "CROSS_DOCK",
+       "name": "КАЗАНЬ_РФЦ_Кроссдокинг"
+      },
+      {
+       "warehouse_id": 23990514366000,
+       "type": "SORTING_CENTER",
+       "name": "КАЗАНЬ_ХАБ_ТЭЦЕВСКАЯ_КГТ"
+      },
+      {
+       "warehouse_id": 1020002010287000,
+       "type": "SORTING_CENTER",
+       "name": "КАЗАНЬ_ХАБ_ЗЕЛЕНОДОЛЬСК"
+      },
+      {
+       "warehouse_id": 23953666717000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "КАЗАНЬ_АППЗ_2"
+      },
+      {
+       "warehouse_id": 1020002100622000,
+       "type": "SORTING_CENTER",
+       "name": "КАЗАНЬ_ХАБ_ЗЕЛЕНОДОЛЬСК_БЛОК_2"
+      },
+      {
+       "warehouse_id": 1020005000283072,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "КАЗАНЬ_АППЗ_5"
+      },
+      {
+       "warehouse_id": 1020001415725000,
+       "type": "SORTING_CENTER",
+       "name": "ЗЕЛЕНОДОЛЬСК_ТСЦ"
+      },
+      {
+       "warehouse_id": 1020002011879000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_КАЗАНЬ_ХАБ_ЗЕЛЕНОДОЛЬСК_Возвраты"
+      },
+      {
+       "warehouse_id": 22216626852000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ППЗ_КАЗАНЬ_ГАГАРИНА"
+      },
+      {
+       "warehouse_id": 1020002079439000,
+       "type": "SORTING_CENTER",
+       "name": "КАЗАНЬ_ХАБ_ЗЕЛЕНОДОЛЬСК_КГТ"
+      },
+      {
+       "warehouse_id": 23963011321000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "КАЗАНЬ_СППЗ_ГАГАРИНА"
+      },
+      {
+       "warehouse_id": 23962971740000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "КАЗАНЬ_СППЗ_САЛИМЖАНОВА"
+      },
+      {
+       "warehouse_id": 1020000986290000,
+       "type": "SORTING_CENTER",
+       "name": "КАЗАНЬ_ТСЦ_ТУРА"
+      },
+      {
+       "warehouse_id": 1020000615395000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "КАЗАНЬ_АППЗ_4"
+      },
+      {
+       "warehouse_id": 18044494830000,
+       "type": "FULL_FILLMENT",
+       "name": "Казань_РФЦ_НОВЫЙ"
+      },
+      {
+       "warehouse_id": 1020000189638000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "КАЗАНЬ_АППЗ_3"
+      }
+     ]
+    },
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 1020003199729000,
+       "type": "SORTING_CENTER",
+       "name": "НИЖНИЙ_НОВГОРОД_ХАБ_БЛОК_2"
+      },
+      {
+       "warehouse_id": 1020001625568000,
+       "type": "SORTING_CENTER",
+       "name": "ДЗЕРЖИНСК_ТСЦ"
+      },
+      {
+       "warehouse_id": 1020002418177000,
+       "type": "CROSS_DOCK",
+       "name": "НИНО_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 1020005000363709,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "НИЖНИЙ_НОВГОРОД_АППЗ_2"
+      },
+      {
+       "warehouse_id": 1020005000363717,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "НИЖНИЙ_НОВГОРОД_АППЗ_3"
+      },
+      {
+       "warehouse_id": 1020000978608000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_НИЖНИЙ_НОВГОРОД_КРАСНЫЙ_ЯКОРЬ_Возвраты"
+      },
+      {
+       "warehouse_id": 1020001273589000,
+       "type": "SORTING_CENTER",
+       "name": "НИЖНИЙ_НОВГОРОД_ХАБ_ТЕПЛИЧНАЯ_Блок_1"
+      },
+      {
+       "warehouse_id": 23839637911000,
+       "type": "CROSS_DOCK",
+       "name": "НИЖНИЙ_НОВГОРОД_РФЦ_Кроссдокинг"
+      },
+      {
+       "warehouse_id": 1020003182899000,
+       "type": "SORTING_CENTER",
+       "name": "НИЖНИЙ_НОВГОРОД_ХАБ_БЛОК_1"
+      },
+      {
+       "warehouse_id": 1020005000363679,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "НИЖНИЙ_НОВГОРОД_АППЗ_1"
+      },
+      {
+       "warehouse_id": 1020001280299000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_НИЖНИЙ_НОВГОРОД_ТЕПЛИЧНАЯ_Возвраты"
+      },
+      {
+       "warehouse_id": 1020003194451000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_НИЖНИЙ_НОВГОРОД_ХАБ_ВОЗВРАТЫ"
+      },
+      {
+       "warehouse_id": 1020002542735000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_НИЖНИЙ_НОВГОРОД_Возвраты"
+      },
+      {
+       "warehouse_id": 20547966368000,
+       "type": "SORTING_CENTER",
+       "name": "НИЖНИЙ_НОВГОРОД_ХАБ_КУДЬМА"
+      },
+      {
+       "warehouse_id": 1020002462483000,
+       "type": "SORTING_CENTER",
+       "name": "ДЗЕРЖИНСК _КГТ"
+      },
+      {
+       "warehouse_id": 1020003105329000,
+       "type": "FULL_FILLMENT",
+       "name": "НИЖНИЙ_НОВГОРОД_2_РФЦ"
+      },
+      {
+       "warehouse_id": 1020003105440000,
+       "type": "CROSS_DOCK",
+       "name": "НИЖНИЙ_НОВГОРОД_2_РФЦ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 1020000978396000,
+       "type": "SORTING_CENTER",
+       "name": "НИЖНИЙ_НОВГОРОД_ХАБ_КРАСНЫЙ_ ЯКОРЬ"
+      },
+      {
+       "warehouse_id": 1020003227804000,
+       "type": "SORTING_CENTER",
+       "name": "НИЖНИЙ_НОВГОРОД_ВОЛГА_КГТ"
+      },
+      {
+       "warehouse_id": 1020002630205000,
+       "type": "FULL_FILLMENT",
+       "name": "ВЕТАПТЕКА_НИНО"
+      },
+      {
+       "warehouse_id": 1020003227803000,
+       "type": "SORTING_CENTER",
+       "name": "НИЖНИЙ_НОВГОРОД_ТСЦ_ВОЛГА"
+      },
+      {
+       "warehouse_id": 1020002418138000,
+       "type": "FULL_FILLMENT",
+       "name": "НИНО_РФЦ_НЕГАБАРИТ"
+      },
+      {
+       "warehouse_id": 23599177351000,
+       "type": "FULL_FILLMENT",
+       "name": "НИЖНИЙ_НОВГОРОД_РФЦ"
+      },
+      {
+       "warehouse_id": 1020000471824000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_НИЖНИЙ_НОВГОРОД_ИНДУСТРИАЛЬНАЯ_Возвраты"
+      },
+      {
+       "warehouse_id": 23555325921000,
+       "type": "SORTING_CENTER",
+       "name": "НИЖНИЙ_НОВГОРОД_КГТ"
+      },
+      {
+       "warehouse_id": 1020001280810000,
+       "type": "SORTING_CENTER",
+       "name": "НИЖНИЙ_НОВГОРОД_ХАБ_ТЕПЛИЧНАЯ_КГТ"
+      },
+      {
+       "warehouse_id": 23962981627000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "НИЖНИЙ НОВГОРОД_СППЗ_ГЕНКИНОЙ"
+      },
+      {
+       "warehouse_id": 23963007458000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "НИЖНИЙ НОВГОРОД_СППЗ_ДОСТОЕВСКОГО"
+      },
+      {
+       "warehouse_id": 1020001762016000,
+       "type": "SORTING_CENTER",
+       "name": "НИНО_ТСЦ_ТЕПЛИЧНАЯ"
+      },
+      {
+       "warehouse_id": 23963040215000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "НИЖНИЙ НОВГОРОД_СППЗ_БУСЫГИНА_42"
+      },
+      {
+       "warehouse_id": 20547966379000,
+       "type": "SORTING_CENTER",
+       "name": "ТСЦ_НИЖНИЙ_НОВГОРОД"
+      },
+      {
+       "warehouse_id": 23927144565000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_НИЖНИЙ_НОВГОРОД_КУДЬМА_Возвраты"
+      },
+      {
+       "warehouse_id": 23960969555000,
+       "type": "SORTING_CENTER",
+       "name": "НИЖНИЙ_НОВГОРОД_ХАБ_ИНДУСТРИАЛЬНАЯ"
+      }
+     ]
+    }
+   ],
+   "id": 149,
+   "name": "Казань",
+   "type": "OZON"
+  },
+  {
+   "logistic_clusters": [
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 20547966787000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_СПБ_Юкки"
+      },
+      {
+       "warehouse_id": 1020000974650000,
+       "type": "FULL_FILLMENT",
+       "name": "СПБ_БУГРЫ_РФЦ_ЮВЕЛИРНЫЙ"
+      },
+      {
+       "warehouse_id": 1020001478784000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_МИНИ_ТСЦ_ПАРНАС"
+      },
+      {
+       "warehouse_id": 1020003052910000,
+       "type": "DISTRIBUTION_CENTER",
+       "name": "РЦ_БУГРЫ_ШОССЕЙНАЯ"
+      },
+      {
+       "warehouse_id": 1020000843282000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_ПАРНАС_БЛОК_2"
+      },
+      {
+       "warehouse_id": 1020000843285000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_ПАРНАС_БЛОК_4"
+      },
+      {
+       "warehouse_id": 1020000811573000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_ПАРНАС_БЛОК_1"
+      },
+      {
+       "warehouse_id": 1020000811776000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ДО_Юкки_Возвраты"
+      },
+      {
+       "warehouse_id": 1020003056184000,
+       "type": "CROSS_DOCK",
+       "name": "РЦ_БУГРЫ_ШОССЕЙНАЯ_КРОССДОК"
+      },
+      {
+       "warehouse_id": 1020002265855000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_Парнас_Блок_5"
+      },
+      {
+       "warehouse_id": 20547966299000,
+       "type": "SORTING_CENTER",
+       "name": "ТСЦ_СПБ_Осиновая Роща"
+      },
+      {
+       "warehouse_id": 1020000326320000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "САНКТ-ПЕТЕРБУРГ_АППЗ_17"
+      },
+      {
+       "warehouse_id": 1020000811777000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ДО_Юкки"
+      },
+      {
+       "warehouse_id": 1020000848662000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Парнас_Возвраты"
+      },
+      {
+       "warehouse_id": 23903599483000,
+       "type": "FULL_FILLMENT",
+       "name": "СПБ_БУГРЫ_РФЦ"
+      },
+      {
+       "warehouse_id": 23964006565000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "СПБ_СППЗ_ШОСТАКОВИЧА_5"
+      },
+      {
+       "warehouse_id": 1020000160743000,
+       "type": "CROSS_DOCK",
+       "name": "СПБ_БУГРЫ_РФЦ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 20547966842000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_СПБ_Бугры"
+      },
+      {
+       "warehouse_id": 1020000843284000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_ПАРНАС_БЛОК_3"
+      }
+     ]
+    },
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 1020002417800000,
+       "type": "FULL_FILLMENT",
+       "name": "СПБ_ПОРОШКИНО_РФЦ"
+      },
+      {
+       "warehouse_id": 1020002418002000,
+       "type": "CROSS_DOCK",
+       "name": "СПБ_ПОРОШКИНО_РФЦ_КРОССДОКИНГ"
+      }
+     ]
+    },
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 1020002065865000,
+       "type": "FULL_FILLMENT",
+       "name": "ВЕТАПТЕКА_ТРОИЦКИЙ"
+      },
+      {
+       "warehouse_id": 18044249781000,
+       "type": "FULL_FILLMENT",
+       "name": "Санкт_Петербург_РФЦ"
+      },
+      {
+       "warehouse_id": 1020000613947000,
+       "type": "CROSS_DOCK",
+       "name": "СПБ_ШУШАРЫ_РФЦ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 1020000691660000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ДО_Московское_177_Возвраты"
+      },
+      {
+       "warehouse_id": 23920426985000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Шушары_Возвраты"
+      },
+      {
+       "warehouse_id": 22019797908000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_СПБ_Троицкий_кроссдокинг"
+      },
+      {
+       "warehouse_id": 1020000284626000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_6"
+      },
+      {
+       "warehouse_id": 1020001025487000,
+       "type": "CROSS_DOCK",
+       "name": "СПБ_ШУШАРЫ_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 23786277208000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_2"
+      },
+      {
+       "warehouse_id": 1020001649180000,
+       "type": "FULL_FILLMENT",
+       "name": "СПБ_КОЛПИНО_РФЦ"
+      },
+      {
+       "warehouse_id": 1020002464375000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_Шушары_ДО_Возвраты"
+      },
+      {
+       "warehouse_id": 1020000613861000,
+       "type": "FULL_FILLMENT",
+       "name": "СПБ_ШУШАРЫ_РФЦ"
+      },
+      {
+       "warehouse_id": 1020002000455000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_МИНИ_ТСЦ_ШУШАРЫ"
+      },
+      {
+       "warehouse_id": 23961865028000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_7"
+      },
+      {
+       "warehouse_id": 1020000919557000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Московское_Блок_4_Возвраты"
+      },
+      {
+       "warehouse_id": 1020000919754000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Московское_Блок_8_Возвраты"
+      },
+      {
+       "warehouse_id": 20547966822000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_СПБ_Армада"
+      },
+      {
+       "warehouse_id": 1020000919729000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Московское_Блок_5_Возвраты"
+      },
+      {
+       "warehouse_id": 1020001025471000,
+       "type": "FULL_FILLMENT",
+       "name": "СПБ_ШУШАРЫ_РФЦ_НЕГАБАРИТ"
+      },
+      {
+       "warehouse_id": 1020002056763000,
+       "type": "FULL_FILLMENT",
+       "name": "ВЕТАПТЕКА_СПБ"
+      },
+      {
+       "warehouse_id": 1020000918852000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Московское_Блок_1_Возвраты"
+      },
+      {
+       "warehouse_id": 1020000919550000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Московское_Блок_3_Возвраты"
+      },
+      {
+       "warehouse_id": 1020002127265000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_Московское_Блок_9"
+      },
+      {
+       "warehouse_id": 20547966798000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_СПБ_ШУШАРЫ"
+      },
+      {
+       "warehouse_id": 1020000988146000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_Шушары_КГТ"
+      },
+      {
+       "warehouse_id": 1020002624297000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_Московское_Блок_10"
+      },
+      {
+       "warehouse_id": 21896333622000,
+       "type": "CROSS_DOCK",
+       "name": "САНКТ-ПЕТЕРБУРГ_РФЦ_Кроссдокинг"
+      },
+      {
+       "warehouse_id": 23641575982000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ТСЦ_Шушары"
+      },
+      {
+       "warehouse_id": 23759266951000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_1"
+      },
+      {
+       "warehouse_id": 1020000284655000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_8"
+      },
+      {
+       "warehouse_id": 1020001030021000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "САНКТ-ПЕТЕРБУРГ_АППЗ_21"
+      },
+      {
+       "warehouse_id": 1020002252910000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_СПБ_Шушары_КГТ_Возвраты"
+      },
+      {
+       "warehouse_id": 1020001649204000,
+       "type": "CROSS_DOCK",
+       "name": "СПБ_КОЛПИНО_РФЦ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 23961817402000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_5"
+      },
+      {
+       "warehouse_id": 1020000919533000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Московское_Блок_2_Возвраты"
+      },
+      {
+       "warehouse_id": 23786279659000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_3"
+      },
+      {
+       "warehouse_id": 23979852399000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "КОЛПИНО_АППЗ_1"
+      },
+      {
+       "warehouse_id": 23786281445000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_4"
+      },
+      {
+       "warehouse_id": 23963987231000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "СПБ_СППЗ_БУХАРЕСТСКАЯ_67"
+      },
+      {
+       "warehouse_id": 1020000685196000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ДО_МОСКОВСКОЕ_177"
+      },
+      {
+       "warehouse_id": 1020000919742000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Московское_Блок_6_Возвраты"
+      },
+      {
+       "warehouse_id": 1020000919747000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Московское_Блок_7_Возвраты"
+      }
+     ]
+    },
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 1020001993642000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_МИНИ_ТСЦ_ВОЛХОНСКОЕ"
+      },
+      {
+       "warehouse_id": 1020001993649000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ТСЦ_ВОЛХОНСКОЕ"
+      },
+      {
+       "warehouse_id": 1020001443754000,
+       "type": "FULL_FILLMENT",
+       "name": "СПБ_ВОЛХОНКА_РФЦ_НЕГАБАРИТ"
+      },
+      {
+       "warehouse_id": 1020002458308000,
+       "type": "FULL_FILLMENT",
+       "name": "СПБ_ВОЛХОНКА_3_РФЦ_НЕГАБАРИТ"
+      },
+      {
+       "warehouse_id": 1020002458319000,
+       "type": "CROSS_DOCK",
+       "name": "СПБ_ВОЛХОНКА_3_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 1020001450768000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ВОЛХОНСКОЕ_ТСЦ_Возвраты"
+      },
+      {
+       "warehouse_id": 1020001993580000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_Волхонское_Блок_3"
+      },
+      {
+       "warehouse_id": 1020001263027000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "КРАСНОЕ_СЕЛО_АППЗ_2"
+      },
+      {
+       "warehouse_id": 1020001443783000,
+       "type": "CROSS_DOCK",
+       "name": "СПБ_ВОЛХОНКА_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 1020002458103000,
+       "type": "FULL_FILLMENT",
+       "name": "СПБ_ВОЛХОНКА_2_РФЦ_ПАЛЛЕТНЫЙ"
+      },
+      {
+       "warehouse_id": 1020001374462000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_Волхонское_Блок_1"
+      },
+      {
+       "warehouse_id": 1020001374505000,
+       "type": "SORTING_CENTER",
+       "name": "СПБ_ХАБ_Волхонское_Блок_2"
+      },
+      {
+       "warehouse_id": 1020001374506000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Волхонское_Возвраты"
+      }
+     ]
+    }
+   ],
+   "id": 2,
+   "name": "Санкт-Петербург и СЗО",
+   "type": "OZON"
+  },
+  {
+   "logistic_clusters": [
+    {
+     "warehouses": [
+      {
+       "warehouse_id": 23963150422000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ВОРОНЕЖ_СППЗ_45-СТРЕЛКОВОЙ ДИВИЗИИ_62"
+      },
+      {
+       "warehouse_id": 1020001007805000,
+       "type": "FULL_FILLMENT",
+       "name": "ВОРОНЕЖ_2_РФЦ"
+      },
+      {
+       "warehouse_id": 1020000980265000,
+       "type": "SORTING_CENTER",
+       "name": "ВОРОНЕЖ_ХАБ_АКВАРЕЛЬНАЯ"
+      },
+      {
+       "warehouse_id": 1020002581497000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ВОРОНЕЖ_АППЗ_3"
+      },
+      {
+       "warehouse_id": 21807384609000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ВОРОНЕЖ"
+      },
+      {
+       "warehouse_id": 19815467502000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_ВОРОНЕЖ_ПРОМЫШЛЕННАЯ"
+      },
+      {
+       "warehouse_id": 1020003227885000,
+       "type": "SORTING_CENTER",
+       "name": "ВОРОНЕЖ_ХАБ_АКВАРЕЛЬНАЯ_БЛОК_2"
+      },
+      {
+       "warehouse_id": 20547966358000,
+       "type": "SORTING_CENTER",
+       "name": "ТСЦ_ВОРОНЕЖ_ТСЦ"
+      },
+      {
+       "warehouse_id": 1020001007922000,
+       "type": "CROSS_DOCK",
+       "name": "ВОРОНЕЖ_2_РФЦ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 20547967168000,
+       "type": "SORTING_CENTER",
+       "name": "ВОРОНЕЖ_ХАБ_ЛОГВИЛЛ_КГТ"
+      },
+      {
+       "warehouse_id": 1020002160746000,
+       "type": "ORDERS_RECEIVING_POINT",
+       "name": "ВОРОНЕЖ_АППЗ_2"
+      },
+      {
+       "warehouse_id": 20547967160000,
+       "type": "SORTING_CENTER",
+       "name": "ВОРОНЕЖ_ХАБ_ЛОГВИЛЛ"
+      },
+      {
+       "warehouse_id": 1020000995023000,
+       "type": "SORTING_CENTER",
+       "name": "СЦ_Воронеж_Акварельная_Возвраты"
+      },
+      {
+       "warehouse_id": 1020002196480000,
+       "type": "FULL_FILLMENT",
+       "name": "ВОРОНЕЖ_РФЦ_НЕГАБАРИТ"
+      },
+      {
+       "warehouse_id": 1020002196551000,
+       "type": "CROSS_DOCK",
+       "name": "ВОРОНЕЖ_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
+      },
+      {
+       "warehouse_id": 23684735180000,
+       "type": "FULL_FILLMENT",
+       "name": "ВОРОНЕЖ_МРФЦ"
+      },
+      {
+       "warehouse_id": 23860043883000,
+       "type": "CROSS_DOCK",
+       "name": "ВОРОНЕЖ_МРФЦ_Кроссдокинг"
+      }
+     ]
+    }
+   ],
+   "id": 16,
+   "name": "Воронеж",
+   "type": "OZON"
+  },
+  {
+   "logistic_clusters": [
+    {
+     "warehouses": [
+      {
        "warehouse_id": 1020002080349000,
        "type": "SORTING_CENTER",
        "name": "ТВЕРЬ_КОНЯЕВСКАЯ_ФБС"
@@ -861,402 +2297,69 @@
     {
      "warehouses": [
       {
-       "warehouse_id": 20547966787000,
+       "warehouse_id": 1020003227802000,
        "type": "SORTING_CENTER",
-       "name": "СЦ_СПБ_Юкки"
+       "name": "КРАСНОЯРСК_СОЛОНЦЫ_КГТ"
       },
       {
-       "warehouse_id": 1020000974650000,
+       "warehouse_id": 1020002690706000,
        "type": "FULL_FILLMENT",
-       "name": "СПБ_БУГРЫ_РФЦ_ЮВЕЛИРНЫЙ"
+       "name": "КРАСНОЯРСК_СТАРЦЕВО_РФЦ"
       },
       {
-       "warehouse_id": 1020001478784000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_МИНИ_ТСЦ_ПАРНАС"
-      },
-      {
-       "warehouse_id": 1020003052910000,
-       "type": "DISTRIBUTION_CENTER",
-       "name": "РЦ_БУГРЫ_ШОССЕЙНАЯ"
-      },
-      {
-       "warehouse_id": 1020000843282000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_ПАРНАС_БЛОК_2"
-      },
-      {
-       "warehouse_id": 1020000843285000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_ПАРНАС_БЛОК_4"
-      },
-      {
-       "warehouse_id": 1020000811573000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_ПАРНАС_БЛОК_1"
-      },
-      {
-       "warehouse_id": 1020000811776000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ДО_Юкки_Возвраты"
-      },
-      {
-       "warehouse_id": 1020003056184000,
+       "warehouse_id": 1020002690770000,
        "type": "CROSS_DOCK",
-       "name": "РЦ_БУГРЫ_ШОССЕЙНАЯ_КРОССДОК"
+       "name": "КРАСНОЯРСК_СТАРЦЕВО_РФЦ_КРОССДОКИНГ"
       },
       {
-       "warehouse_id": 1020002265855000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_Парнас_Блок_5"
-      },
-      {
-       "warehouse_id": 20547966299000,
-       "type": "SORTING_CENTER",
-       "name": "ТСЦ_СПБ_Осиновая Роща"
-      },
-      {
-       "warehouse_id": 1020000326320000,
+       "warehouse_id": 1020002365266000,
        "type": "ORDERS_RECEIVING_POINT",
-       "name": "САНКТ-ПЕТЕРБУРГ_АППЗ_17"
+       "name": "КРАСНОЯРСК_АППЗ_1"
       },
       {
-       "warehouse_id": 1020000811777000,
+       "warehouse_id": 20547966669000,
        "type": "SORTING_CENTER",
-       "name": "СПБ_ДО_Юкки"
+       "name": "СЦ_КРАСНОЯРСК_СЕВЕРНОЕ"
       },
       {
-       "warehouse_id": 1020000848662000,
+       "warehouse_id": 1020000808758000,
        "type": "SORTING_CENTER",
-       "name": "СЦ_Парнас_Возвраты"
-      },
-      {
-       "warehouse_id": 23903599483000,
-       "type": "FULL_FILLMENT",
-       "name": "СПБ_БУГРЫ_РФЦ"
-      },
-      {
-       "warehouse_id": 23964006565000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "СПБ_СППЗ_ШОСТАКОВИЧА_5"
-      },
-      {
-       "warehouse_id": 1020000160743000,
-       "type": "CROSS_DOCK",
-       "name": "СПБ_БУГРЫ_РФЦ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 20547966842000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_СПБ_Бугры"
-      },
-      {
-       "warehouse_id": 1020000843284000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_ПАРНАС_БЛОК_3"
+       "name": "КРАСНОЯРСК_ХАБ_СОЛОНЦЫ"
       }
      ]
     },
     {
      "warehouses": [
       {
-       "warehouse_id": 1020002417800000,
+       "warehouse_id": 22296628035000,
        "type": "FULL_FILLMENT",
-       "name": "СПБ_ПОРОШКИНО_РФЦ"
+       "name": "КРАСНОЯРСК_МРФЦ"
       },
       {
-       "warehouse_id": 1020002418002000,
+       "warehouse_id": 1020002915070000,
+       "type": "SORTING_CENTER",
+       "name": "КРАСНОЯРСК_ХАБ_КРАЗОВСКАЯ_БЛОК_2"
+      },
+      {
+       "warehouse_id": 1020002910376000,
+       "type": "SORTING_CENTER",
+       "name": "КРАСНОЯРСК_ХАБ_КРАЗОВСКАЯ_БЛОК_1 "
+      },
+      {
+       "warehouse_id": 1020001041555000,
+       "type": "SORTING_CENTER",
+       "name": "КРАСНОЯРСК_КГТ"
+      },
+      {
+       "warehouse_id": 21705001607000,
        "type": "CROSS_DOCK",
-       "name": "СПБ_ПОРОШКИНО_РФЦ_КРОССДОКИНГ"
-      }
-     ]
-    },
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 1020002065865000,
-       "type": "FULL_FILLMENT",
-       "name": "ВЕТАПТЕКА_ТРОИЦКИЙ"
-      },
-      {
-       "warehouse_id": 18044249781000,
-       "type": "FULL_FILLMENT",
-       "name": "Санкт_Петербург_РФЦ"
-      },
-      {
-       "warehouse_id": 1020000613947000,
-       "type": "CROSS_DOCK",
-       "name": "СПБ_ШУШАРЫ_РФЦ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 1020000691660000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ДО_Московское_177_Возвраты"
-      },
-      {
-       "warehouse_id": 23920426985000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Шушары_Возвраты"
-      },
-      {
-       "warehouse_id": 22019797908000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_СПБ_Троицкий_кроссдокинг"
-      },
-      {
-       "warehouse_id": 1020000284626000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_6"
-      },
-      {
-       "warehouse_id": 1020001025487000,
-       "type": "CROSS_DOCK",
-       "name": "СПБ_ШУШАРЫ_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 23786277208000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_2"
-      },
-      {
-       "warehouse_id": 1020001649180000,
-       "type": "FULL_FILLMENT",
-       "name": "СПБ_КОЛПИНО_РФЦ"
-      },
-      {
-       "warehouse_id": 1020002464375000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_Шушары_ДО_Возвраты"
-      },
-      {
-       "warehouse_id": 1020000613861000,
-       "type": "FULL_FILLMENT",
-       "name": "СПБ_ШУШАРЫ_РФЦ"
-      },
-      {
-       "warehouse_id": 1020002000455000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_МИНИ_ТСЦ_ШУШАРЫ"
-      },
-      {
-       "warehouse_id": 23961865028000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_7"
-      },
-      {
-       "warehouse_id": 1020000919557000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Московское_Блок_4_Возвраты"
-      },
-      {
-       "warehouse_id": 1020000919754000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Московское_Блок_8_Возвраты"
-      },
-      {
-       "warehouse_id": 20547966822000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_СПБ_Армада"
-      },
-      {
-       "warehouse_id": 1020000919729000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Московское_Блок_5_Возвраты"
-      },
-      {
-       "warehouse_id": 1020001025471000,
-       "type": "FULL_FILLMENT",
-       "name": "СПБ_ШУШАРЫ_РФЦ_НЕГАБАРИТ"
-      },
-      {
-       "warehouse_id": 1020002056763000,
-       "type": "FULL_FILLMENT",
-       "name": "ВЕТАПТЕКА_СПБ"
-      },
-      {
-       "warehouse_id": 1020000918852000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Московское_Блок_1_Возвраты"
-      },
-      {
-       "warehouse_id": 1020000919550000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Московское_Блок_3_Возвраты"
-      },
-      {
-       "warehouse_id": 1020002127265000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_Московское_Блок_9"
-      },
-      {
-       "warehouse_id": 20547966798000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_СПБ_ШУШАРЫ"
-      },
-      {
-       "warehouse_id": 1020000988146000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_Шушары_КГТ"
-      },
-      {
-       "warehouse_id": 1020002624297000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_Московское_Блок_10"
-      },
-      {
-       "warehouse_id": 21896333622000,
-       "type": "CROSS_DOCK",
-       "name": "САНКТ-ПЕТЕРБУРГ_РФЦ_Кроссдокинг"
-      },
-      {
-       "warehouse_id": 23641575982000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ТСЦ_Шушары"
-      },
-      {
-       "warehouse_id": 23759266951000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_1"
-      },
-      {
-       "warehouse_id": 1020000284655000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_8"
-      },
-      {
-       "warehouse_id": 1020001030021000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "САНКТ-ПЕТЕРБУРГ_АППЗ_21"
-      },
-      {
-       "warehouse_id": 1020002252910000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_СПБ_Шушары_КГТ_Возвраты"
-      },
-      {
-       "warehouse_id": 1020001649204000,
-       "type": "CROSS_DOCK",
-       "name": "СПБ_КОЛПИНО_РФЦ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 23961817402000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_5"
-      },
-      {
-       "warehouse_id": 1020000919533000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Московское_Блок_2_Возвраты"
-      },
-      {
-       "warehouse_id": 23786279659000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_3"
-      },
-      {
-       "warehouse_id": 23979852399000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "КОЛПИНО_АППЗ_1"
-      },
-      {
-       "warehouse_id": 23786281445000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_МОСКОВСКОЕ_БЛОК_4"
-      },
-      {
-       "warehouse_id": 23963987231000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "СПБ_СППЗ_БУХАРЕСТСКАЯ_67"
-      },
-      {
-       "warehouse_id": 1020000685196000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ДО_МОСКОВСКОЕ_177"
-      },
-      {
-       "warehouse_id": 1020000919742000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Московское_Блок_6_Возвраты"
-      },
-      {
-       "warehouse_id": 1020000919747000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Московское_Блок_7_Возвраты"
-      }
-     ]
-    },
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 1020001993642000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_МИНИ_ТСЦ_ВОЛХОНСКОЕ"
-      },
-      {
-       "warehouse_id": 1020001993649000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ТСЦ_ВОЛХОНСКОЕ"
-      },
-      {
-       "warehouse_id": 1020001443754000,
-       "type": "FULL_FILLMENT",
-       "name": "СПБ_ВОЛХОНКА_РФЦ_НЕГАБАРИТ"
-      },
-      {
-       "warehouse_id": 1020002458308000,
-       "type": "FULL_FILLMENT",
-       "name": "СПБ_ВОЛХОНКА_3_РФЦ_НЕГАБАРИТ"
-      },
-      {
-       "warehouse_id": 1020002458319000,
-       "type": "CROSS_DOCK",
-       "name": "СПБ_ВОЛХОНКА_3_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 1020001450768000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ВОЛХОНСКОЕ_ТСЦ_Возвраты"
-      },
-      {
-       "warehouse_id": 1020001993580000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_Волхонское_Блок_3"
-      },
-      {
-       "warehouse_id": 1020001263027000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "КРАСНОЕ_СЕЛО_АППЗ_2"
-      },
-      {
-       "warehouse_id": 1020001443783000,
-       "type": "CROSS_DOCK",
-       "name": "СПБ_ВОЛХОНКА_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 1020002458103000,
-       "type": "FULL_FILLMENT",
-       "name": "СПБ_ВОЛХОНКА_2_РФЦ_ПАЛЛЕТНЫЙ"
-      },
-      {
-       "warehouse_id": 1020001374462000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_Волхонское_Блок_1"
-      },
-      {
-       "warehouse_id": 1020001374505000,
-       "type": "SORTING_CENTER",
-       "name": "СПБ_ХАБ_Волхонское_Блок_2"
-      },
-      {
-       "warehouse_id": 1020001374506000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Волхонское_Возвраты"
+       "name": "Красноярск_МРФЦ_Кроссдокинг"
       }
      ]
     }
    ],
-   "id": 2,
-   "name": "Санкт-Петербург и СЗО",
+   "id": 155,
+   "name": "Красноярск",
    "type": "OZON"
   },
   {
@@ -1702,197 +2805,35 @@
     {
      "warehouses": [
       {
-       "warehouse_id": 1020002042107000,
+       "warehouse_id": 1020003227894000,
        "type": "SORTING_CENTER",
-       "name": "ХАБАРОВСК_ХАБ_ИНДУСТРИАЛЬНАЯ"
+       "name": "ТЮМЕНЬ_ХАБ_УСПЕНКА"
       },
       {
-       "warehouse_id": 20547966481000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ХАБАРОВСК_ПУТЕВАЯ"
-      },
-      {
-       "warehouse_id": 1020000890284000,
+       "warehouse_id": 1020002007577000,
        "type": "CROSS_DOCK",
-       "name": "ХАБАРОВСК_2_РФЦ_КРОССДОКИНГ"
+       "name": "ТЮМЕНЬ_РФЦ_КРОССДОКИНГ"
       },
       {
-       "warehouse_id": 1020003227925000,
+       "warehouse_id": 1020000952580000,
        "type": "SORTING_CENTER",
-       "name": "ХАБАРОВСК_ХАБ_РАКИТНОЕ"
+       "name": "СЦ_ТЮМЕНЬ_ТОБОЛЬСКОГО_Возвраты"
       },
       {
-       "warehouse_id": 1020001008722000,
-       "type": "SORTING_CENTER",
-       "name": "ХАБАРОВСК_КГТ"
-      },
-      {
-       "warehouse_id": 1020000811274000,
-       "type": "SORTING_CENTER",
-       "name": "ХАБАРОВСК_ХАБ_СУВОРОВА"
-      },
-      {
-       "warehouse_id": 21225173751000,
+       "warehouse_id": 1020002007530000,
        "type": "FULL_FILLMENT",
-       "name": "Хабаровск_РФЦ"
+       "name": "ТЮМЕНЬ_РФЦ"
       },
       {
-       "warehouse_id": 1020000890160000,
-       "type": "FULL_FILLMENT",
-       "name": "ХАБАРОВСК_2_РФЦ"
-      },
-      {
-       "warehouse_id": 21957712892000,
-       "type": "CROSS_DOCK",
-       "name": "ХАБАРОВСК_РФЦ_Кроссдокинг"
+       "warehouse_id": 1020000866625000,
+       "type": "SORTING_CENTER",
+       "name": "ТЮМЕНЬ_ХАБ_ТОБОЛЬСКОГО"
       }
      ]
     }
    ],
-   "id": 7,
-   "name": "Дальний Восток",
-   "type": "OZON"
-  },
-  {
-   "logistic_clusters": [
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 1020001995936000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_КАЛИНИНГРАД_ХАБ_КАМСКАЯ_Возвраты"
-      },
-      {
-       "warehouse_id": 20547966716000,
-       "type": "SORTING_CENTER",
-       "name": "КАЛИНИНГРАД_ХАБ_ПЕЧАТНАЯ"
-      },
-      {
-       "warehouse_id": 1020001370635000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ФФ_КАЛИНИНГРАД_Возвраты"
-      },
-      {
-       "warehouse_id": 1020001989874000,
-       "type": "SORTING_CENTER",
-       "name": "КАЛИНИНГРАД_ХАБ_КАМСКАЯ_КГТ"
-      },
-      {
-       "warehouse_id": 22294782253000,
-       "type": "FULL_FILLMENT",
-       "name": "КАЛИНИНГРАД_МРФЦ"
-      },
-      {
-       "warehouse_id": 1020002912539000,
-       "type": "SORTING_CENTER",
-       "name": "КАЛИНИНГРАД_ХАБ_КАМСКАЯ"
-      },
-      {
-       "warehouse_id": 1020001237023000,
-       "type": "SORTING_CENTER",
-       "name": "КАЛИНИНГРАД_МРФЦ_КГТ"
-      }
-     ]
-    }
-   ],
-   "id": 12,
-   "name": "Калининград",
-   "type": "OZON"
-  },
-  {
-   "logistic_clusters": [
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 23963150422000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ВОРОНЕЖ_СППЗ_45-СТРЕЛКОВОЙ ДИВИЗИИ_62"
-      },
-      {
-       "warehouse_id": 1020001007805000,
-       "type": "FULL_FILLMENT",
-       "name": "ВОРОНЕЖ_2_РФЦ"
-      },
-      {
-       "warehouse_id": 1020000980265000,
-       "type": "SORTING_CENTER",
-       "name": "ВОРОНЕЖ_ХАБ_АКВАРЕЛЬНАЯ"
-      },
-      {
-       "warehouse_id": 1020002581497000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ВОРОНЕЖ_АППЗ_3"
-      },
-      {
-       "warehouse_id": 21807384609000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ВОРОНЕЖ"
-      },
-      {
-       "warehouse_id": 19815467502000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ВОРОНЕЖ_ПРОМЫШЛЕННАЯ"
-      },
-      {
-       "warehouse_id": 1020003227885000,
-       "type": "SORTING_CENTER",
-       "name": "ВОРОНЕЖ_ХАБ_АКВАРЕЛЬНАЯ_БЛОК_2"
-      },
-      {
-       "warehouse_id": 20547966358000,
-       "type": "SORTING_CENTER",
-       "name": "ТСЦ_ВОРОНЕЖ_ТСЦ"
-      },
-      {
-       "warehouse_id": 1020001007922000,
-       "type": "CROSS_DOCK",
-       "name": "ВОРОНЕЖ_2_РФЦ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 20547967168000,
-       "type": "SORTING_CENTER",
-       "name": "ВОРОНЕЖ_ХАБ_ЛОГВИЛЛ_КГТ"
-      },
-      {
-       "warehouse_id": 1020002160746000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ВОРОНЕЖ_АППЗ_2"
-      },
-      {
-       "warehouse_id": 20547967160000,
-       "type": "SORTING_CENTER",
-       "name": "ВОРОНЕЖ_ХАБ_ЛОГВИЛЛ"
-      },
-      {
-       "warehouse_id": 1020000995023000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Воронеж_Акварельная_Возвраты"
-      },
-      {
-       "warehouse_id": 1020002196480000,
-       "type": "FULL_FILLMENT",
-       "name": "ВОРОНЕЖ_РФЦ_НЕГАБАРИТ"
-      },
-      {
-       "warehouse_id": 1020002196551000,
-       "type": "CROSS_DOCK",
-       "name": "ВОРОНЕЖ_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 23684735180000,
-       "type": "FULL_FILLMENT",
-       "name": "ВОРОНЕЖ_МРФЦ"
-      },
-      {
-       "warehouse_id": 23860043883000,
-       "type": "CROSS_DOCK",
-       "name": "ВОРОНЕЖ_МРФЦ_Кроссдокинг"
-      }
-     ]
-    }
-   ],
-   "id": 16,
-   "name": "Воронеж",
+   "id": 144,
+   "name": "Тюмень",
    "type": "OZON"
   },
   {
@@ -1978,947 +2919,6 @@
    ],
    "id": 148,
    "name": "Уфа",
-   "type": "OZON"
-  },
-  {
-   "logistic_clusters": [
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 1020003227902000,
-       "type": "SORTING_CENTER",
-       "name": "КАЗАНЬ_ХАБ_ВЗЛЁТНАЯ"
-      },
-      {
-       "warehouse_id": 20547966580000,
-       "type": "SORTING_CENTER",
-       "name": "ТСЦ_КАЗАНЬ_АЭРОПОРТ"
-      },
-      {
-       "warehouse_id": 1020002066005000,
-       "type": "FULL_FILLMENT",
-       "name": "КЗН_СТОЛБИЩЕ_РФЦ_НЕГАБАРИТ"
-      },
-      {
-       "warehouse_id": 16188790631000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_КАЗАНЬ_НОВЫЙ"
-      },
-      {
-       "warehouse_id": 1020003068291000,
-       "type": "SORTING_CENTER",
-       "name": "СТОЛБИЩЕ_ТСЦ"
-      },
-      {
-       "warehouse_id": 1020000844824000,
-       "type": "SORTING_CENTER",
-       "name": "КАЗАНЬ_ХАБ_АЭРОПОРТ"
-      },
-      {
-       "warehouse_id": 1020002066136000,
-       "type": "CROSS_DOCK",
-       "name": "КЗН_СТОЛБИЩЕ_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 1020003227903000,
-       "type": "SORTING_CENTER",
-       "name": "КАЗАНЬ_ХАБ_ДОСТАВКИ_ВЗЛЁТНАЯ_ВОЗВРАТЫ"
-      },
-      {
-       "warehouse_id": 1020003227904000,
-       "type": "SORTING_CENTER",
-       "name": "КАЗАНЬ_ВЗЛЁТНАЯ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 1020002405059000,
-       "type": "SORTING_CENTER",
-       "name": "КАЗАНЬ_ХАБ_АЭРОПОРТ_КГТ"
-      },
-      {
-       "warehouse_id": 21704470486000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Казань_Столбище"
-      }
-     ]
-    },
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 21957475354000,
-       "type": "CROSS_DOCK",
-       "name": "КАЗАНЬ_РФЦ_Кроссдокинг"
-      },
-      {
-       "warehouse_id": 23990514366000,
-       "type": "SORTING_CENTER",
-       "name": "КАЗАНЬ_ХАБ_ТЭЦЕВСКАЯ_КГТ"
-      },
-      {
-       "warehouse_id": 1020002010287000,
-       "type": "SORTING_CENTER",
-       "name": "КАЗАНЬ_ХАБ_ЗЕЛЕНОДОЛЬСК"
-      },
-      {
-       "warehouse_id": 23953666717000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "КАЗАНЬ_АППЗ_2"
-      },
-      {
-       "warehouse_id": 1020002100622000,
-       "type": "SORTING_CENTER",
-       "name": "КАЗАНЬ_ХАБ_ЗЕЛЕНОДОЛЬСК_БЛОК_2"
-      },
-      {
-       "warehouse_id": 1020005000283072,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "КАЗАНЬ_АППЗ_5"
-      },
-      {
-       "warehouse_id": 1020001415725000,
-       "type": "SORTING_CENTER",
-       "name": "ЗЕЛЕНОДОЛЬСК_ТСЦ"
-      },
-      {
-       "warehouse_id": 1020002011879000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_КАЗАНЬ_ХАБ_ЗЕЛЕНОДОЛЬСК_Возвраты"
-      },
-      {
-       "warehouse_id": 22216626852000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ППЗ_КАЗАНЬ_ГАГАРИНА"
-      },
-      {
-       "warehouse_id": 1020002079439000,
-       "type": "SORTING_CENTER",
-       "name": "КАЗАНЬ_ХАБ_ЗЕЛЕНОДОЛЬСК_КГТ"
-      },
-      {
-       "warehouse_id": 23963011321000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "КАЗАНЬ_СППЗ_ГАГАРИНА"
-      },
-      {
-       "warehouse_id": 23962971740000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "КАЗАНЬ_СППЗ_САЛИМЖАНОВА"
-      },
-      {
-       "warehouse_id": 1020000986290000,
-       "type": "SORTING_CENTER",
-       "name": "КАЗАНЬ_ТСЦ_ТУРА"
-      },
-      {
-       "warehouse_id": 1020000615395000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "КАЗАНЬ_АППЗ_4"
-      },
-      {
-       "warehouse_id": 18044494830000,
-       "type": "FULL_FILLMENT",
-       "name": "Казань_РФЦ_НОВЫЙ"
-      },
-      {
-       "warehouse_id": 1020000189638000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "КАЗАНЬ_АППЗ_3"
-      }
-     ]
-    },
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 1020003199729000,
-       "type": "SORTING_CENTER",
-       "name": "НИЖНИЙ_НОВГОРОД_ХАБ_БЛОК_2"
-      },
-      {
-       "warehouse_id": 1020001625568000,
-       "type": "SORTING_CENTER",
-       "name": "ДЗЕРЖИНСК_ТСЦ"
-      },
-      {
-       "warehouse_id": 1020002418177000,
-       "type": "CROSS_DOCK",
-       "name": "НИНО_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 1020005000363709,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "НИЖНИЙ_НОВГОРОД_АППЗ_2"
-      },
-      {
-       "warehouse_id": 1020005000363717,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "НИЖНИЙ_НОВГОРОД_АППЗ_3"
-      },
-      {
-       "warehouse_id": 1020000978608000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_НИЖНИЙ_НОВГОРОД_КРАСНЫЙ_ЯКОРЬ_Возвраты"
-      },
-      {
-       "warehouse_id": 1020001273589000,
-       "type": "SORTING_CENTER",
-       "name": "НИЖНИЙ_НОВГОРОД_ХАБ_ТЕПЛИЧНАЯ_Блок_1"
-      },
-      {
-       "warehouse_id": 23839637911000,
-       "type": "CROSS_DOCK",
-       "name": "НИЖНИЙ_НОВГОРОД_РФЦ_Кроссдокинг"
-      },
-      {
-       "warehouse_id": 1020003182899000,
-       "type": "SORTING_CENTER",
-       "name": "НИЖНИЙ_НОВГОРОД_ХАБ_БЛОК_1"
-      },
-      {
-       "warehouse_id": 1020005000363679,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "НИЖНИЙ_НОВГОРОД_АППЗ_1"
-      },
-      {
-       "warehouse_id": 1020001280299000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_НИЖНИЙ_НОВГОРОД_ТЕПЛИЧНАЯ_Возвраты"
-      },
-      {
-       "warehouse_id": 1020003194451000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_НИЖНИЙ_НОВГОРОД_ХАБ_ВОЗВРАТЫ"
-      },
-      {
-       "warehouse_id": 1020002542735000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_НИЖНИЙ_НОВГОРОД_Возвраты"
-      },
-      {
-       "warehouse_id": 20547966368000,
-       "type": "SORTING_CENTER",
-       "name": "НИЖНИЙ_НОВГОРОД_ХАБ_КУДЬМА"
-      },
-      {
-       "warehouse_id": 1020002462483000,
-       "type": "SORTING_CENTER",
-       "name": "ДЗЕРЖИНСК _КГТ"
-      },
-      {
-       "warehouse_id": 1020003105329000,
-       "type": "FULL_FILLMENT",
-       "name": "НИЖНИЙ_НОВГОРОД_2_РФЦ"
-      },
-      {
-       "warehouse_id": 1020003105440000,
-       "type": "CROSS_DOCK",
-       "name": "НИЖНИЙ_НОВГОРОД_2_РФЦ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 1020000978396000,
-       "type": "SORTING_CENTER",
-       "name": "НИЖНИЙ_НОВГОРОД_ХАБ_КРАСНЫЙ_ ЯКОРЬ"
-      },
-      {
-       "warehouse_id": 1020003227804000,
-       "type": "SORTING_CENTER",
-       "name": "НИЖНИЙ_НОВГОРОД_ВОЛГА_КГТ"
-      },
-      {
-       "warehouse_id": 1020002630205000,
-       "type": "FULL_FILLMENT",
-       "name": "ВЕТАПТЕКА_НИНО"
-      },
-      {
-       "warehouse_id": 1020003227803000,
-       "type": "SORTING_CENTER",
-       "name": "НИЖНИЙ_НОВГОРОД_ТСЦ_ВОЛГА"
-      },
-      {
-       "warehouse_id": 1020002418138000,
-       "type": "FULL_FILLMENT",
-       "name": "НИНО_РФЦ_НЕГАБАРИТ"
-      },
-      {
-       "warehouse_id": 23599177351000,
-       "type": "FULL_FILLMENT",
-       "name": "НИЖНИЙ_НОВГОРОД_РФЦ"
-      },
-      {
-       "warehouse_id": 1020000471824000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_НИЖНИЙ_НОВГОРОД_ИНДУСТРИАЛЬНАЯ_Возвраты"
-      },
-      {
-       "warehouse_id": 23555325921000,
-       "type": "SORTING_CENTER",
-       "name": "НИЖНИЙ_НОВГОРОД_КГТ"
-      },
-      {
-       "warehouse_id": 1020001280810000,
-       "type": "SORTING_CENTER",
-       "name": "НИЖНИЙ_НОВГОРОД_ХАБ_ТЕПЛИЧНАЯ_КГТ"
-      },
-      {
-       "warehouse_id": 23962981627000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "НИЖНИЙ НОВГОРОД_СППЗ_ГЕНКИНОЙ"
-      },
-      {
-       "warehouse_id": 23963007458000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "НИЖНИЙ НОВГОРОД_СППЗ_ДОСТОЕВСКОГО"
-      },
-      {
-       "warehouse_id": 1020001762016000,
-       "type": "SORTING_CENTER",
-       "name": "НИНО_ТСЦ_ТЕПЛИЧНАЯ"
-      },
-      {
-       "warehouse_id": 23963040215000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "НИЖНИЙ НОВГОРОД_СППЗ_БУСЫГИНА_42"
-      },
-      {
-       "warehouse_id": 20547966379000,
-       "type": "SORTING_CENTER",
-       "name": "ТСЦ_НИЖНИЙ_НОВГОРОД"
-      },
-      {
-       "warehouse_id": 23927144565000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_НИЖНИЙ_НОВГОРОД_КУДЬМА_Возвраты"
-      },
-      {
-       "warehouse_id": 23960969555000,
-       "type": "SORTING_CENTER",
-       "name": "НИЖНИЙ_НОВГОРОД_ХАБ_ИНДУСТРИАЛЬНАЯ"
-      }
-     ]
-    }
-   ],
-   "id": 149,
-   "name": "Казань",
-   "type": "OZON"
-  },
-  {
-   "logistic_clusters": [
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 20547967177000,
-       "type": "SORTING_CENTER",
-       "name": "Пермь_КГТ"
-      },
-      {
-       "warehouse_id": 1020003227887000,
-       "type": "SORTING_CENTER",
-       "name": "ПЕРМЬ_ХАБ_КУЛТАЕВО_БЛОК_2"
-      },
-      {
-       "warehouse_id": 23967301431000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ПЕРМЬ_СППЗ_СОВЕТСКАЯ"
-      },
-      {
-       "warehouse_id": 1020002581291000,
-       "type": "SORTING_CENTER",
-       "name": "ПЕРМЬ_ХАБ_КУЛТАЕВО"
-      },
-      {
-       "warehouse_id": 1020001853819000,
-       "type": "FULL_FILLMENT",
-       "name": "ПЕРМЬ_РФЦ"
-      },
-      {
-       "warehouse_id": 1020002581541000,
-       "type": "SORTING_CENTER",
-       "name": "ПЕРМЬ_ХАБ_КУЛТАЕВО_КГТ"
-      },
-      {
-       "warehouse_id": 1020002590474000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ФФ_ПЕРМЬ_КУЛТАЕВО_ВОЗВРАТЫ"
-      },
-      {
-       "warehouse_id": 1020001853873000,
-       "type": "CROSS_DOCK",
-       "name": "ПЕРМЬ_РФЦ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 23973761265000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ПЕРМЬ_АППЗ_2"
-      },
-      {
-       "warehouse_id": 16184778465000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ПЕРМЬ_НОВЫЙ"
-      },
-      {
-       "warehouse_id": 20547966807000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ПЕРМЬ_ПРОМЫШЛЕННАЯ"
-      },
-      {
-       "warehouse_id": 20547966941000,
-       "type": "SORTING_CENTER",
-       "name": "ПЕРМЬ_ХАБ_АЭЛИТА"
-      },
-      {
-       "warehouse_id": 21704694055000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Пермь"
-      }
-     ]
-    },
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 1020002119057000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ЕКАТЕРИНБУРГ_ПЫШМА_Возвраты"
-      },
-      {
-       "warehouse_id": 20547966706000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ЕКАТЕРИНБУРГ_СЕВЕР"
-      },
-      {
-       "warehouse_id": 23967619320000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ЕКАТЕРИНБУРГ_СППЗ_МИЧУРИНА"
-      },
-      {
-       "warehouse_id": 1020000119938000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ПЕРВОУРАЛЬСК_АППЗ_1"
-      },
-      {
-       "warehouse_id": 1020002118674000,
-       "type": "SORTING_CENTER",
-       "name": "ЕКАТЕРИНБУРГ_ХАБ_ПЫШМА"
-      },
-      {
-       "warehouse_id": 23967557462000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ЕКАТЕРИНБУРГ_СППЗ_ЛУНАЧАРСКОГО_21"
-      },
-      {
-       "warehouse_id": 1020002474300000,
-       "type": "FULL_FILLMENT",
-       "name": "ЕКАТЕРИНБУРГ_ПЫШМА_РФЦ_НЕГАБАРИТ"
-      },
-      {
-       "warehouse_id": 1020001041939000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ЕКАТЕРИНБУРГ_АППЗ_4"
-      },
-      {
-       "warehouse_id": 1020002474369000,
-       "type": "CROSS_DOCK",
-       "name": "ЕКАТЕРИНБУРГ_ПЫШМА_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 23967336532000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ЕКАТЕРИНБУРГ_СППЗ_МАШИНОСТРОИТЕЛЕЙ"
-      },
-      {
-       "warehouse_id": 20547966639000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ЕКАТЕРИНБУРГ_САДОВЫЙ"
-      },
-      {
-       "warehouse_id": 20547966647000,
-       "type": "SORTING_CENTER",
-       "name": "ТСЦ_ЕКБ_САДОВЫЙ"
-      }
-     ]
-    },
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 1020001947018000,
-       "type": "SORTING_CENTER",
-       "name": "ЕКАТЕРИНБУРГ_ХАБ_ЧЕРНЯХОВСКОГО_Блок_1"
-      },
-      {
-       "warehouse_id": 1020000993827000,
-       "type": "SORTING_CENTER",
-       "name": "ЕКАТЕРИНБУРГ_ХАБ_АЭРОПОРТ_Блок_1"
-      },
-      {
-       "warehouse_id": 1020001008715000,
-       "type": "SORTING_CENTER",
-       "name": "ЕКАТЕРИНБУРГ_ХАБ_АЭРОПОРТ_БЛОК_2"
-      },
-      {
-       "warehouse_id": 18044570445000,
-       "type": "FULL_FILLMENT",
-       "name": "Екатеринбург_РФЦ_НОВЫЙ"
-      },
-      {
-       "warehouse_id": 20547967047000,
-       "type": "SORTING_CENTER",
-       "name": "ЕКАТЕРИНБУРГ_КГТ"
-      },
-      {
-       "warehouse_id": 1020003087340000,
-       "type": "SORTING_CENTER",
-       "name": "ЕКАТЕРИНБУРГ_ХАБ_АПЕЛЬСИН"
-      },
-      {
-       "warehouse_id": 1020001135261000,
-       "type": "CROSS_DOCK",
-       "name": "ЕКАТЕРИНБУРГ_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 1020001884720000,
-       "type": "CROSS_DOCK",
-       "name": "ЕКАТЕРИНБУРГ_ЛЦ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 1020001008734000,
-       "type": "SORTING_CENTER",
-       "name": "ЕКАТЕРИНБУРГ_ХАБ_АЭРОПОРТ_БЛОК_3"
-      },
-      {
-       "warehouse_id": 1020002307098000,
-       "type": "CROSS_DOCK",
-       "name": "ЕКАТЕРИНБУРГ_ЧЕРНЯХОВСКОГО_Кроссдокинг"
-      },
-      {
-       "warehouse_id": 1020001351115000,
-       "type": "FULL_FILLMENT",
-       "name": "ЕКАТЕРИНБУРГ_РФЦ_ЮВЕЛИРНЫЙ"
-      },
-      {
-       "warehouse_id": 1020003227864000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ЕКАТЕРИНБУРГ_АПЕЛЬСИН_Возвраты"
-      },
-      {
-       "warehouse_id": 1020005000266315,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ЕКАТЕРИНБУРГ_АППЗ_5"
-      },
-      {
-       "warehouse_id": 1020001023054000,
-       "type": "SORTING_CENTER",
-       "name": "ЕКАТЕРИНБУРГ_ХАБ_АЭРОПОРТ_БЛОК_4"
-      },
-      {
-       "warehouse_id": 20547966879000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ЕКАТЕРИНБУРГ_ЮГ"
-      },
-      {
-       "warehouse_id": 1020002222108000,
-       "type": "SORTING_CENTER",
-       "name": "ЕКАТЕРИНБУРГ_ХАБ_АЭРОПОРТ_КГТ"
-      },
-      {
-       "warehouse_id": 23967625865000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ЕКАТЕРИНБУРГ_СППЗ_ШАУМЯНА"
-      },
-      {
-       "warehouse_id": 1020001023562000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ЕКАТЕРИНБУРГ_АЭРОПОРТ_Возвраты"
-      },
-      {
-       "warehouse_id": 1020001029577000,
-       "type": "SORTING_CENTER",
-       "name": "ЕКАТЕРИНБУРГ_ДО_Кольцово"
-      },
-      {
-       "warehouse_id": 23888613613000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ЕКАТЕРИНБУРГ_АППЗ_2"
-      },
-      {
-       "warehouse_id": 21957500760000,
-       "type": "CROSS_DOCK",
-       "name": "ЕКАТЕРИНБУРГ_РФЦ_Кроссдокинг"
-      },
-      {
-       "warehouse_id": 1020000185234000,
-       "type": "SORTING_CENTER",
-       "name": "ЕКАТЕРИНБУРГ_ТСЦ_КОЛЬЦОВО"
-      },
-      {
-       "warehouse_id": 1020001135128000,
-       "type": "FULL_FILLMENT",
-       "name": "ЕКАТЕРИНБУРГ_РФЦ_НЕГАБАРИТ"
-      },
-      {
-       "warehouse_id": 20547967114000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ЕКАТЕРИНБУРГ_КОЛЬЦОВО"
-      }
-     ]
-    }
-   ],
-   "id": 3,
-   "name": "Урал",
-   "type": "OZON"
-  },
-  {
-   "logistic_clusters": [
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 1020003227894000,
-       "type": "SORTING_CENTER",
-       "name": "ТЮМЕНЬ_ХАБ_УСПЕНКА"
-      },
-      {
-       "warehouse_id": 1020002007577000,
-       "type": "CROSS_DOCK",
-       "name": "ТЮМЕНЬ_РФЦ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 1020000952580000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ТЮМЕНЬ_ТОБОЛЬСКОГО_Возвраты"
-      },
-      {
-       "warehouse_id": 1020002007530000,
-       "type": "FULL_FILLMENT",
-       "name": "ТЮМЕНЬ_РФЦ"
-      },
-      {
-       "warehouse_id": 1020000866625000,
-       "type": "SORTING_CENTER",
-       "name": "ТЮМЕНЬ_ХАБ_ТОБОЛЬСКОГО"
-      }
-     ]
-    }
-   ],
-   "id": 144,
-   "name": "Тюмень",
-   "type": "OZON"
-  },
-  {
-   "logistic_clusters": [
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 1020001351192000,
-       "type": "FULL_FILLMENT",
-       "name": "САМАРА_РФЦ_ЮВЕЛИРНЫЙ"
-      },
-      {
-       "warehouse_id": 23268782971000,
-       "type": "CROSS_DOCK",
-       "name": "САМАРА_РФЦ_Кроссдокинг"
-      },
-      {
-       "warehouse_id": 1020000833345000,
-       "type": "SORTING_CENTER",
-       "name": "САМАРА_ХАБ_ИНДУСТРИАЛЬНАЯ"
-      },
-      {
-       "warehouse_id": 1020001443623000,
-       "type": "FULL_FILLMENT",
-       "name": "САМАРА_РФЦ_НЕГАБАРИТ"
-      },
-      {
-       "warehouse_id": 1020001526953000,
-       "type": "SORTING_CENTER",
-       "name": "ЧАПАЕВСК_ТСЦ"
-      },
-      {
-       "warehouse_id": 1020003227860000,
-       "type": "SORTING_CENTER",
-       "name": "САМАРА_ХАБ_КИЗИЛОВА_Блок_1"
-      },
-      {
-       "warehouse_id": 1020003227861000,
-       "type": "SORTING_CENTER",
-       "name": "САМАРА_ХАБ_КИЗИЛОВА_Блок_2"
-      },
-      {
-       "warehouse_id": 20547966400000,
-       "type": "SORTING_CENTER",
-       "name": "ТСЦ_САМАРА"
-      },
-      {
-       "warehouse_id": 1020001443666000,
-       "type": "CROSS_DOCK",
-       "name": "САМАРА_РФЦ_НЕГАБАРИТ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 20547966388000,
-       "type": "SORTING_CENTER",
-       "name": "САМАРА_ХАБ_ПРЕОБРАЖЕНКА"
-      },
-      {
-       "warehouse_id": 23678093223000,
-       "type": "SORTING_CENTER",
-       "name": "САМАРА_ХАБ_КГТ"
-      },
-      {
-       "warehouse_id": 1020000987771000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_САМАРА_ИНДУСТРИАЛЬНАЯ_Возвраты"
-      },
-      {
-       "warehouse_id": 1020001668512000,
-       "type": "SORTING_CENTER",
-       "name": "САМАРА_ЮЖНАЯ_ТСЦ"
-      },
-      {
-       "warehouse_id": 23128509046000,
-       "type": "FULL_FILLMENT",
-       "name": "САМАРА_РФЦ"
-      }
-     ]
-    }
-   ],
-   "id": 150,
-   "name": "Самара",
-   "type": "OZON"
-  },
-  {
-   "logistic_clusters": [
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 1020002162305000,
-       "type": "SORTING_CENTER",
-       "name": "ГРОЗНЫЙ_ХАБ"
-      },
-      {
-       "warehouse_id": 1020000851710000,
-       "type": "SORTING_CENTER",
-       "name": "МАХАЧКАЛА_ХАБ_3PL"
-      },
-      {
-       "warehouse_id": 1020003112090000,
-       "type": "CROSS_DOCK",
-       "name": "МАХАЧКАЛА_РФЦ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 1020002162504000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Грозный_Хаб_Возвраты"
-      },
-      {
-       "warehouse_id": 1020003220103000,
-       "type": "SORTING_CENTER",
-       "name": "МАХАЧКАЛА_ХАБ_ЗАВОДСКАЯ"
-      },
-      {
-       "warehouse_id": 1020003111941000,
-       "type": "FULL_FILLMENT",
-       "name": "МАХАЧКАЛА_РФЦ"
-      },
-      {
-       "warehouse_id": 1020003227750000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Махачкала_Заводская_Возвраты"
-      },
-      {
-       "warehouse_id": 1020002478583000,
-       "type": "SORTING_CENTER",
-       "name": "ГРОЗНЫЙ_ХАБ_КГТ"
-      }
-     ]
-    },
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 1020000950023000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Ставрополь_Кулакова_Возвраты"
-      },
-      {
-       "warehouse_id": 1020002495382000,
-       "type": "SORTING_CENTER",
-       "name": "НЕВИННОМЫССК_ХАБ"
-      },
-      {
-       "warehouse_id": 1020002495388000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_Невинномысск_Возвраты"
-      },
-      {
-       "warehouse_id": 16187533603000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_СТАВРОПОЛЬ"
-      },
-      {
-       "warehouse_id": 1020000949962000,
-       "type": "SORTING_CENTER",
-       "name": "СТАВРОПОЛЬ_ХАБ_КУЛАКОВА"
-      },
-      {
-       "warehouse_id": 1020001351249000,
-       "type": "CROSS_DOCK",
-       "name": "НЕВИННОМЫССК_РФЦ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 1020002220254000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "СТАВРОПОЛЬ_АППЗ_1"
-      },
-      {
-       "warehouse_id": 1020000969743000,
-       "type": "SORTING_CENTER",
-       "name": "СТАВРОПОЛЬ_ХАБ_РАКИТНАЯ_КГТ"
-      },
-      {
-       "warehouse_id": 1020002702559000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "СТАВРОПОЛЬ_АППЗ_2"
-      },
-      {
-       "warehouse_id": 1020001351243000,
-       "type": "FULL_FILLMENT",
-       "name": "НЕВИННОМЫССК_РФЦ"
-      },
-      {
-       "warehouse_id": 1020002541543000,
-       "type": "SORTING_CENTER",
-       "name": "НЕВИННОМЫССК_ХАБ_КГТ"
-      },
-      {
-       "warehouse_id": 20547967105000,
-       "type": "SORTING_CENTER",
-       "name": "СТАВРОПОЛЬ_ХАБ_РАКИТНАЯ"
-      }
-     ]
-    }
-   ],
-   "id": 153,
-   "name": "Кавказ",
-   "type": "OZON"
-  },
-  {
-   "logistic_clusters": [
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 1020003227802000,
-       "type": "SORTING_CENTER",
-       "name": "КРАСНОЯРСК_СОЛОНЦЫ_КГТ"
-      },
-      {
-       "warehouse_id": 1020002690706000,
-       "type": "FULL_FILLMENT",
-       "name": "КРАСНОЯРСК_СТАРЦЕВО_РФЦ"
-      },
-      {
-       "warehouse_id": 1020002690770000,
-       "type": "CROSS_DOCK",
-       "name": "КРАСНОЯРСК_СТАРЦЕВО_РФЦ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 1020002365266000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "КРАСНОЯРСК_АППЗ_1"
-      },
-      {
-       "warehouse_id": 20547966669000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_КРАСНОЯРСК_СЕВЕРНОЕ"
-      },
-      {
-       "warehouse_id": 1020000808758000,
-       "type": "SORTING_CENTER",
-       "name": "КРАСНОЯРСК_ХАБ_СОЛОНЦЫ"
-      }
-     ]
-    },
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 22296628035000,
-       "type": "FULL_FILLMENT",
-       "name": "КРАСНОЯРСК_МРФЦ"
-      },
-      {
-       "warehouse_id": 1020002915070000,
-       "type": "SORTING_CENTER",
-       "name": "КРАСНОЯРСК_ХАБ_КРАЗОВСКАЯ_БЛОК_2"
-      },
-      {
-       "warehouse_id": 1020002910376000,
-       "type": "SORTING_CENTER",
-       "name": "КРАСНОЯРСК_ХАБ_КРАЗОВСКАЯ_БЛОК_1 "
-      },
-      {
-       "warehouse_id": 1020001041555000,
-       "type": "SORTING_CENTER",
-       "name": "КРАСНОЯРСК_КГТ"
-      },
-      {
-       "warehouse_id": 21705001607000,
-       "type": "CROSS_DOCK",
-       "name": "Красноярск_МРФЦ_Кроссдокинг"
-      }
-     ]
-    }
-   ],
-   "id": 155,
-   "name": "Красноярск",
-   "type": "OZON"
-  },
-  {
-   "logistic_clusters": [
-    {
-     "warehouses": [
-      {
-       "warehouse_id": 1020002007512000,
-       "type": "CROSS_DOCK",
-       "name": "ЯРОСЛАВЛЬ_РФЦ_КРОССДОКИНГ"
-      },
-      {
-       "warehouse_id": 1020002513331000,
-       "type": "SORTING_CENTER",
-       "name": "ЯРОСЛАВЛЬ_2_ХАБ"
-      },
-      {
-       "warehouse_id": 1020002093565000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "ЯРОСЛАВЛЬ_АППЗ_1"
-      },
-      {
-       "warehouse_id": 1020001070840000,
-       "type": "ORDERS_RECEIVING_POINT",
-       "name": "КОСТРОМА_АППЗ_2"
-      },
-      {
-       "warehouse_id": 1020002513368000,
-       "type": "SORTING_CENTER",
-       "name": "ЯРОСЛАВЛЬ_КГТ"
-      },
-      {
-       "warehouse_id": 1020002513728000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_ФФ_ЯРОСЛАВЛЬ_ВОЗВРАТЫ"
-      },
-      {
-       "warehouse_id": 1020002006967000,
-       "type": "FULL_FILLMENT",
-       "name": "ЯРОСЛАВЛЬ_РФЦ"
-      },
-      {
-       "warehouse_id": 1020002513329000,
-       "type": "SORTING_CENTER",
-       "name": "ЯРОСЛАВЛЬ_1_ХАБ"
-      },
-      {
-       "warehouse_id": 22259183721000,
-       "type": "SORTING_CENTER",
-       "name": "СЦ_КОСТРОМА_ИНДУСТРИАЛЬНАЯ"
-      }
-     ]
-    }
-   ],
-   "id": 170,
-   "name": "Ярославль",
    "type": "OZON"
   },
   {

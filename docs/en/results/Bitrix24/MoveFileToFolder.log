@@ -1,32 +1,32 @@
 ﻿{
  "result": {
-  "ID": "44514",
+  "ID": "44730",
   "NAME": "New file name.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "file",
-  "PARENT_ID": 44524,
+  "PARENT_ID": 44740,
   "DELETED_TYPE": "0",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "29998",
+  "FILE_ID": "30150",
   "SIZE": "805189",
-  "CREATE_TIME": "2025-10-14T08:13:50+03:00",
-  "UPDATE_TIME": "2025-10-14T08:14:31+03:00",
-  "DELETE_TIME": "2025-10-14T08:14:27+03:00",
+  "CREATE_TIME": "2025-10-14T09:38:58+00:00",
+  "UPDATE_TIME": "2025-10-14T09:39:35+00:00",
+  "DELETE_TIME": "2025-10-14T09:39:33+00:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=2ce9ed68006e9f06006b12e40000000100000718e289e81d645c2c922e0e2c36f57cfc&token=disk%7CaWQ9NDQ1MTQmXz1Wb2hmZHZTQTNRZWF0VUlhMGxNQjF6WjRXWFN2OTAwTw%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EUTFNVFFtWHoxV2IyaG1aSFpUUVROUlpXRjBWVWxoTUd4TlFqRjZXalJYV0ZOMk9UQXdUdz09fDJjZTllZDY4MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3MThlMjg5ZTgxZDY0NWMyYzkyMmUwZTJjMzZmNTdjZmMi.od%2FB7eH4rH8o1jTxMjLtfOqE0v2mF796VmWUzHVtQJ0%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=a027ee68006e9f06006b12e400000001000007cba16d7012bc2d5feb6fd3acb022751d&token=disk%7CaWQ9NDQ3MzAmXz1jTThsSVBqVFNCQzFabDdZMGg4OHRLNjVnWG5IeVVETg%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EUTNNekFtWHoxalRUaHNTVkJxVkZOQ1F6RmFiRGRaTUdnNE9IUkxOalZuV0c1SWVWVkVUZz09fGEwMjdlZTY4MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3Y2JhMTZkNzAxMmJjMmQ1ZmViNmZkM2FjYjAyMjc1MWQi.e1iGkHFwjwqIClM38Js1ay6TQw2Eu7hQKOM6NhdBb7k%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New catalog/New subfolder/New file name.jpg"
  },
  "time": {
-  "start": 1760418895,
-  "finish": 1760418895.34937,
-  "duration": 0.349366903305054,
+  "start": 1760434786,
+  "finish": 1760434786.85057,
+  "duration": 0.850570917129516,
   "processing": 0,
-  "date_start": "2025-10-14T08:14:55+03:00",
-  "date_finish": "2025-10-14T08:14:55+03:00",
-  "operating_reset_at": 1760419495,
-  "operating": 0
+  "date_start": "2025-10-14T09:39:46+00:00",
+  "date_finish": "2025-10-14T09:39:46+00:00",
+  "operating_reset_at": 1760435386,
+  "operating": 0.139147996902466
  }
 }
