@@ -2,5 +2,5 @@
 
 oint ollama ОтправитьBlob ^
   --url "https://hut.openintegrations.dev/ollama" ^
-  --data "/tmp/dvfons4d.rcs" ^
+  --data "/tmp/pilixwtg.tx4" ^
   --headers "{'Authorization':'***'}"
