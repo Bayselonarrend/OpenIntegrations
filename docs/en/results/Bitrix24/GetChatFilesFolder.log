@@ -1,15 +1,15 @@
 ﻿{
  "result": {
-  "ID": 44542
+  "ID": 44758
  },
  "time": {
-  "start": 1760419136,
-  "finish": 1760419136.08597,
-  "duration": 0.085968017578125,
+  "start": 1760434950,
+  "finish": 1760434950.41061,
+  "duration": 0.410607099533081,
   "processing": 0,
-  "date_start": "2025-10-14T08:18:56+03:00",
-  "date_finish": "2025-10-14T08:18:56+03:00",
-  "operating_reset_at": 1760419736,
-  "operating": 0
+  "date_start": "2025-10-14T09:42:30+00:00",
+  "date_finish": "2025-10-14T09:42:30+00:00",
+  "operating_reset_at": 1760435550,
+  "operating": 0.12748908996582
  }
 }

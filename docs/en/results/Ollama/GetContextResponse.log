@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-10-14T06:33:02.112244616Z",
+ "created_at": "2025-10-14T10:06:48.253952461Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in 1986. Since then, several updates and versions have been released for various platforms and editions. The latest edition of 1C:Enterprise is the latest release, which includes numerous enhancements, improvements, and bug fixes. It's available for Windows, Linux, Mac OS X, and other operating systems."
+  "content": "Oracle released the first version of 1C:Enterprise as a standalone product in November 1997. Since then, there have been several subsequent versions and upgrades to 1C:Enterprise, including some major releases such as 2004, 2006, 2012, and 2018. The latest version of 1C:Enterprise is 19.5, which was released in July 2020."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 10983853810,
- "load_duration": 16072416,
- "prompt_eval_count": 199,
- "prompt_eval_duration": 1555007357,
- "eval_count": 83,
- "eval_duration": 9406646947
+ "total_duration": 12000029848,
+ "load_duration": 28149302,
+ "prompt_eval_count": 171,
+ "prompt_eval_duration": 2013775756,
+ "eval_count": 110,
+ "eval_duration": 9954278945
 }

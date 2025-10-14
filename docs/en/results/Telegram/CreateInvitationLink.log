@@ -1,15 +1,15 @@
 ﻿{
  "ok": true,
  "result": {
-  "invite_link": "https://t.me/+MAI1JvTPJEYwZjRi",
-  "name": "Link 10/14/2025 6:48:30 AM",
+  "invite_link": "https://t.me/+xyQeyanwuYwzYzdi",
+  "name": "Link 10/14/2025 08:45:50",
   "creator": {
    "id": 6129457865,
    "is_bot": true,
    "first_name": "Бот Виталий",
    "username": "sicheebot"
   },
-  "expire_date": 1760507310,
+  "expire_date": 1760514350,
   "member_limit": 200,
   "creates_join_request": false,
   "is_primary": false,
