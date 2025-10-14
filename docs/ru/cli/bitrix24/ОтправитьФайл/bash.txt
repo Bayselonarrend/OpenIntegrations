@@ -1,6 +1,6 @@
 oint bitrix24 ОтправитьФайл \
   --url "b24-ar17wx.bitrix24.by" \
-  --chat 3254 \
-  --fileid 44816 \
+  --chat 3258 \
+  --fileid 44870 \
   --description "Очень важный файл" \
   --token "***"
