@@ -1,24 +1,24 @@
 ﻿{
  "result": {
-  "id": 3082,
-  "taskId": 8334,
-  "commentId": 19370,
+  "id": 3098,
+  "taskId": 8374,
+  "commentId": 19458,
   "createdBy": 1,
-  "createdAt": "2025-10-14T07:59:49+00:00",
-  "updatedAt": "2025-10-14T07:59:49+00:00",
+  "createdAt": "2025-10-14T11:57:15+00:00",
+  "updatedAt": "2025-10-14T11:57:15+00:00",
   "status": 0,
   "text": "Задача изменена, расходимся",
   "formattedText": "Задача изменена, расходимся",
   "files": null
  },
  "time": {
-  "start": 1760428792,
-  "finish": 1760428793.11398,
-  "duration": 1.11398100852966,
-  "processing": 1,
-  "date_start": "2025-10-14T07:59:52+00:00",
-  "date_finish": "2025-10-14T07:59:53+00:00",
-  "operating_reset_at": 1760429392,
-  "operating": 0.226707935333252
+  "start": 1760443045,
+  "finish": 1760443045.08912,
+  "duration": 0.0891149044036865,
+  "processing": 0,
+  "date_start": "2025-10-14T11:57:25+00:00",
+  "date_finish": "2025-10-14T11:57:25+00:00",
+  "operating_reset_at": 1760443645,
+  "operating": 0
  }
 }

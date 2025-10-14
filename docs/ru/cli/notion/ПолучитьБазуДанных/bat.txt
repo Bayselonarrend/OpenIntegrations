@@ -1,3 +1,3 @@
 oint notion ПолучитьБазуДанных ^
   --token "***" ^
-  --base "28882aa7-fc4e-81a6-996b-e95e2d72be00"
+  --base "28c82aa7-fc4e-8133-8053-cb8d843df02b"

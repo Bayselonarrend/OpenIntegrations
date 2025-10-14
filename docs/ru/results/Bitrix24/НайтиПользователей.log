@@ -855,15 +855,15 @@
   }
  ],
  "next": 50,
- "total": 698,
+ "total": 702,
  "time": {
-  "start": 1760429081,
-  "finish": 1760429081.9312,
-  "duration": 0.931197881698608,
+  "start": 1760443638,
+  "finish": 1760443638.24735,
+  "duration": 0.247353076934814,
   "processing": 0,
-  "date_start": "2025-10-14T08:04:41+00:00",
-  "date_finish": "2025-10-14T08:04:41+00:00",
-  "operating_reset_at": 1760429681,
-  "operating": 0
+  "date_start": "2025-10-14T12:07:18+00:00",
+  "date_finish": "2025-10-14T12:07:18+00:00",
+  "operating_reset_at": 1760444238,
+  "operating": 0.110742092132568
  }
 }

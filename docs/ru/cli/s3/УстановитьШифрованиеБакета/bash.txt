@@ -3,5 +3,5 @@
 oint s3 УстановитьШифрованиеБакета \
   --name "opi-dirbucket3" \
   --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-  --conf "/tmp/zzhecqbl.cnj.xml" \
+  --conf "/tmp/434x1vy1.4nl.xml" \
   --dir true
