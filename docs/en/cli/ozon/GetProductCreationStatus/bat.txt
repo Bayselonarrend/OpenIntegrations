@@ -1,4 +1,4 @@
 oint ozon GetProductCreationStatus ^
  --clientid "***" ^
  --apikey "***" ^
- --taskid 3067714920
+ --taskid 3101328950

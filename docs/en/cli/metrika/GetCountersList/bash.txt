@@ -2,4 +2,4 @@
 
 oint metrika GetCountersList \
  --token "***" \
- --filter "{'counter_ids':['104543961']}"
+ --filter "{'counter_ids':['104628806']}"

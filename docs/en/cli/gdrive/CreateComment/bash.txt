@@ -1,4 +1,4 @@
 oint gdrive CreateComment \
  --token "***" \
- --object "1Xx3_5x4Xo9wnsiTqD4q_96To-9dMSpUD" \
+ --object "1ACFhuUOyZYdUezoH5RRBWDKcOepPdmHG" \
  --text "Comment text"

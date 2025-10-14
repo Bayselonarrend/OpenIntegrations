@@ -1,3 +1,3 @@
 oint metrika GetActionsList ^
  --token "***" ^
- --counter "104543964"
+ --counter "104628809"
