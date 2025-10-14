@@ -1,1 +1,99 @@
-﻿{}
+﻿[
+ {
+  "messageID": "BAE58B53F5D39386",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": true,
+   "quotedMessageId": "BAE52AC0A5399FCE",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE581191DAAC535",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "address": "Площадь Победы, Минск",
+   "nameLocation": "пл. Победы",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE59967773C2E45",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "quotedMessageId": "BAE581191DAAC535",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE573F8960AAD4C",
+  "type": "sendContact",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "contact": {
+    "phoneContact": 79001234568,
+    "firstName": "Артем",
+    "middleName": "Евпаторийский",
+    "lastName": "Петрович",
+    "company": "Велосипед"
+   },
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE525DC7B4798FE",
+  "type": "sendContact",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "contact": {
+    "phoneContact": 79001234568,
+    "company": "Велосипед"
+   },
+   "quotedMessageId": "BAE573F8960AAD4C",
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "BAE589937D1CCAA1"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "chatIdFrom": "120363410406221140@g.us",
+   "messages": [
+    "BAE55F371B9A6743"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE5C9A0E6B1B41C",
+  "type": "editMessage",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "idMessage": "BAE55F371B9A6743",
+   "message": "Новый текст сообщения",
+   "linkPreview": true
+  }
+ }
+]
