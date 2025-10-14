@@ -2053,7 +2053,7 @@
    }
   },
   {
-   "ID": "1510",
+   "ID": "1514",
    "NAME": "Новое имя календаря",
    "GAPI_CALENDAR_ID": null,
    "DESCRIPTION": "Этот календарь был изменен",
@@ -2062,13 +2062,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1510&sign=c47274d35dede1aaeb11740a6b4c1c89&bx_hit_hash=1ZjfzCmWq1drkMeJjtCtfsDIrVovUf0Q"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1514&sign=03c80fe53acaebc687412b89c7e419d4&bx_hit_hash=1ZjfzCmWq1drkMeJjtCtfsDIrVovUf0Q"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2025-10-14 15:09:00",
-   "TIMESTAMP_X": "2025-10-14 15:09:00",
+   "DATE_CREATE": "2025-10-14 17:44:00",
+   "TIMESTAMP_X": "2025-10-14 17:44:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": null,
    "PAGE_TOKEN": null,
@@ -2089,7 +2089,7 @@
    }
   },
   {
-   "ID": "1512",
+   "ID": "1516",
    "NAME": "Новое имя календаря",
    "GAPI_CALENDAR_ID": null,
    "DESCRIPTION": "Этот календарь был изменен",
@@ -2098,13 +2098,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1512&sign=e7453cdfba40a82a7ea517532ad26c7f&bx_hit_hash=1ZjfzCmWq1drkMeJjtCtfsDIrVovUf0Q"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1516&sign=e07706ca650dc7977479ef4b1b91a3a9&bx_hit_hash=1ZjfzCmWq1drkMeJjtCtfsDIrVovUf0Q"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2025-10-14 15:09:00",
-   "TIMESTAMP_X": "2025-10-14 15:09:00",
+   "DATE_CREATE": "2025-10-14 17:44:00",
+   "TIMESTAMP_X": "2025-10-14 17:44:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": null,
    "PAGE_TOKEN": null,
@@ -2126,13 +2126,13 @@
   }
  ],
  "time": {
-  "start": 1760443756,
-  "finish": 1760443756.45936,
-  "duration": 0.45936393737793,
+  "start": 1760453046,
+  "finish": 1760453046.70055,
+  "duration": 0.700547933578491,
   "processing": 0,
-  "date_start": "2025-10-14T12:09:16+00:00",
-  "date_finish": "2025-10-14T12:09:16+00:00",
-  "operating_reset_at": 1760444356,
+  "date_start": "2025-10-14T14:44:06+00:00",
+  "date_finish": "2025-10-14T14:44:06+00:00",
+  "operating_reset_at": 1760453646,
   "operating": 0
  }
 }

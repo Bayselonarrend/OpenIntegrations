@@ -7,8 +7,8 @@
    "wid": "1234567890@c.us",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1760376559,
-  "idMessage": "BAE5C60743A363AE",
+  "timestamp": 1760385453,
+  "idMessage": "BAE58466890A3038",
   "senderData": {
    "chatId": "120363410406221140@g.us",
    "chatName": "Основная тестовая группа",
@@ -17,21 +17,15 @@
    "senderContactName": ""
   },
   "messageData": {
-   "typeMessage": "pollMessage",
-   "pollMessageData": {
-    "name": "Какой ваш любимый цвет?",
-    "options": [
-     {
-      "optionName": "Красный"
-     },
-     {
-      "optionName": "Желтый"
-     },
-     {
-      "optionName": "Зеленый"
-     }
-    ],
-    "multipleAnswers": false
+   "typeMessage": "extendedTextMessage",
+   "extendedTextMessageData": {
+    "text": "New message",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
    }
   }
  }
