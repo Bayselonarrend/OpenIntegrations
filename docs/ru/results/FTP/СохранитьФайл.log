@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 335944730,
- "filepath": "/tmp/ojtnqsg3.tgp.bin",
- "result": true
+ "filepath": "/tmp/vbeofcck.vmh.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
