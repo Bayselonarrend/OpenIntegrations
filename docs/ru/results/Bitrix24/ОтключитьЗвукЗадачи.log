@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "8332",
+   "id": "8372",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-10-14T07:58:41+00:00",
+   "createdDate": "2025-10-14T11:54:22+00:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2025-10-14T07:58:48+00:00",
+   "changedDate": "2025-10-14T11:54:41+00:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2025-10-14T07:58:41+00:00",
+   "activityDate": "2025-10-14T11:54:22+00:00",
    "dateStart": null,
-   "deadline": "2025-10-15T07:58:00+00:00",
-   "startDatePlan": "2025-10-14T07:58:41+00:00",
+   "deadline": "2025-10-15T11:54:00+00:00",
+   "startDatePlan": "2025-10-14T11:54:22+00:00",
    "endDatePlan": "2025-10-14T21:00:00+00:00",
-   "guid": "{d456e397-d29a-4178-9c71-b4194dd370b3}",
+   "guid": "{2bf40912-5ae9-4610-a3d3-382fc2f6cf94}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -54,7 +54,7 @@
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2025-10-14T07:58:48+00:00",
+   "statusChangedDate": "2025-10-14T11:54:41+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -135,13 +135,13 @@
   }
  },
  "time": {
-  "start": 1760428731,
-  "finish": 1760428731.61912,
-  "duration": 0.619117021560669,
+  "start": 1760442891,
+  "finish": 1760442891.37554,
+  "duration": 0.375545024871826,
   "processing": 0,
-  "date_start": "2025-10-14T07:58:51+00:00",
-  "date_finish": "2025-10-14T07:58:51+00:00",
-  "operating_reset_at": 1760429331,
-  "operating": 0.104331970214844
+  "date_start": "2025-10-14T11:54:51+00:00",
+  "date_finish": "2025-10-14T11:54:51+00:00",
+  "operating_reset_at": 1760443491,
+  "operating": 0
  }
 }
