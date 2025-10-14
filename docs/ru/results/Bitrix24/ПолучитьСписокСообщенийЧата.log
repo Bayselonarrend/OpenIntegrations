@@ -304,7 +304,7 @@
     "departments": [
      1,
      638,
-     2826
+     2830
     ],
     "phones": false,
     "bot_data": null,
@@ -314,13 +314,13 @@
   "files": []
  },
  "time": {
-  "start": 1760452737,
-  "finish": 1760452737.60416,
-  "duration": 0.604163885116577,
+  "start": 1760461487,
+  "finish": 1760461487.90548,
+  "duration": 0.905484914779663,
   "processing": 0,
-  "date_start": "2025-10-14T14:38:57+00:00",
-  "date_finish": "2025-10-14T14:38:57+00:00",
-  "operating_reset_at": 1760453337,
+  "date_start": "2025-10-14T17:04:47+00:00",
+  "date_finish": "2025-10-14T17:04:47+00:00",
+  "operating_reset_at": 1760462087,
   "operating": 0
  }
 }
