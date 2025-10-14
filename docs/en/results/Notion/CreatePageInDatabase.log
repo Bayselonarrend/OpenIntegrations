@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "28c82aa7-fc4e-81c7-829a-ec113b1372df",
- "created_time": "2025-10-14T05:03:00Z",
- "last_edited_time": "2025-10-14T05:03:00Z",
+ "id": "28c82aa7-fc4e-8110-84bd-d6ea64f6de52",
+ "created_time": "2025-10-14T09:30:00Z",
+ "last_edited_time": "2025-10-14T09:30:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,28 +15,28 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "28c82aa7-fc4e-8164-abb2-d149ecfc07ef"
+  "database_id": "28c82aa7-fc4e-816d-97a6-f2e690045446"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Phone": {
-   "id": "D%5DA%5B",
-   "type": "phone_number",
-   "phone_number": "88005553535"
-  },
   "Status": {
-   "id": "H%3CVx",
+   "id": "E%5D%5Eq",
    "type": "select",
    "select": {
-    "id": "2297d930-bf88-4194-9287-b05256711379",
+    "id": "ff0637ad-40c5-4563-a80b-08b05fcdcb1b",
     "name": "New",
     "color": "green"
    }
   },
+  "Phone": {
+   "id": "Fcex",
+   "type": "phone_number",
+   "phone_number": "88005553535"
+  },
   "Image": {
-   "id": "N%5ECL",
+   "id": "KlOu",
    "type": "files",
    "files": [
     {
@@ -48,45 +48,18 @@
     }
    ]
   },
-  "Active": {
-   "id": "a%7B%3AE",
-   "type": "checkbox",
-   "checkbox": true
+  "User": {
+   "id": "YIp%5D",
+   "type": "people",
+   "people": []
   },
-  "CreationDate": {
-   "id": "gmEc",
-   "type": "date",
-   "date": {
-    "start": "2025-10-14T11:03:00+03:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Email": {
-   "id": "hQR%5E",
-   "type": "rich_text",
-   "rich_text": [
-    {
-     "type": "text",
-     "text": {
-      "content": "mail@vector.ru",
-      "link": null
-     },
-     "annotations": {
-      "bold": false,
-      "italic": false,
-      "strikethrough": false,
-      "underline": false,
-      "code": false,
-      "color": "default"
-     },
-     "plain_text": "mail@vector.ru",
-     "href": null
-    }
-   ]
+  "Number": {
+   "id": "%5C%3CVD",
+   "type": "number",
+   "number": 1
   },
   "Description": {
-   "id": "wiIp",
+   "id": "geqR",
    "type": "rich_text",
    "rich_text": [
     {
@@ -108,15 +81,42 @@
     }
    ]
   },
-  "User": {
-   "id": "%7BrTe",
-   "type": "people",
-   "people": []
+  "Active": {
+   "id": "rKAg",
+   "type": "checkbox",
+   "checkbox": true
   },
-  "Number": {
-   "id": "~%7CUe",
-   "type": "number",
-   "number": 1
+  "Email": {
+   "id": "vkxh",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "mail@vector.ru",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "mail@vector.ru",
+     "href": null
+    }
+   ]
+  },
+  "CreationDate": {
+   "id": "%7CM%7C%5B",
+   "type": "date",
+   "date": {
+    "start": "2025-10-14T09:30:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
   },
   "Name": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/LLC-Vector-28c82aa7fc4e81c7829aec113b1372df",
+ "url": "https://www.notion.so/LLC-Vector-28c82aa7fc4e811084bdd6ea64f6de52",
  "public_url": null,
- "request_id": "2989c701-d2c8-4c96-b277-01a3813a94ad"
+ "request_id": "2dc7e60a-e1e5-4a0a-90dc-7abb93282f8b"
 }
