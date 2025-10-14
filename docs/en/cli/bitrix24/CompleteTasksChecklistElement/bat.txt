@@ -1,5 +1,5 @@
 oint bitrix24 CompleteTasksChecklistElement ^
  --url "b24-ar17wx.bitrix24.by" ^
- --task "8202" ^
- --element 5750 ^
+ --task "8322" ^
+ --element 5846 ^
  --token "***"

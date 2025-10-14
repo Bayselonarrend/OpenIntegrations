@@ -1,5 +1,5 @@
 oint bitrix24 AddTasksChecklistElement \
  --url "b24-ar17wx.bitrix24.by" \
- --task "8202" \
+ --task "8322" \
  --text "Checklist element" \
  --token "***"
