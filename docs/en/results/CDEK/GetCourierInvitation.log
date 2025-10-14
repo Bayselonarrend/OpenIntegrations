@@ -1,9 +1,10 @@
 ﻿{
  "entity": {
-  "uuid": "de17c043-49f0-488b-8778-c03165d3bf21",
-  "cdek_number": "1106625154",
-  "order_uuid": "7c610794-29ce-421a-a0d9-cd616e2a0afd",
-  "intake_date": "2025-10-10",
+  "uuid": "220b5e54-6c98-4e9c-ad20-6e2a6a8ae656",
+  "cdek_number": "1106626711",
+  "order_uuid": "4cb2ffd6-6f78-4685-9216-0a22b79407ec",
+  "intake_date": "2025-10-15",
+  "intake_number": "13310045",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -14,10 +15,11 @@
   "comment": "Comment to courier",
   "sender": {
    "company": "Company",
-   "name": "Ivaniv Ivan",
+   "name": "Company",
+   "contragent_type": "LEGAL_ENTITY",
    "phones": [
     {
-     "number": "+79589441654"
+     "number": "79589441654"
     }
    ],
    "passport_requirements_satisfied": false
@@ -36,17 +38,40 @@
    "latitude": 55.75222,
    "address": "st. Bluchera, 32"
   },
+  "to_location": {
+   "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "longitude": 37.831928,
+   "latitude": 55.644399,
+   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
+   "postal_code": "140091"
+  },
   "need_call": false,
   "statuses": [
    {
+    "code": "READY_FOR_APPOINTMENT",
+    "name": "Готова к назначению",
+    "date_time": "2025-10-14T08:31:43+03:00"
+   },
+   {
+    "code": "CREATED",
+    "name": "Создан",
+    "date_time": "2025-10-14T08:31:43+03:00"
+   },
+   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-09T21:21:20+00:00"
+    "date_time": "2025-10-14T08:31:43+03:00"
    }
   ],
   "packages": [
    {
-    "package_id": "81dbcadf-d6ed-4d6a-b05e-6d4762c0bb01",
+    "package_id": "48a6e516-b691-4ef5-bca4-5e027874d0e3",
     "weight": 1000,
     "length": 10,
     "width": 10,
@@ -57,10 +82,10 @@
  },
  "requests": [
   {
-   "request_uuid": "d216f953-95fb-490a-b066-e2f955164f60",
+   "request_uuid": "df270e70-b6ed-4cc8-bd67-e5a6a5523740",
    "type": "CREATE",
-   "date_time": "2025-10-09T21:21:19+00:00",
-   "state": "ACCEPTED"
+   "date_time": "2025-10-14T08:31:41+03:00",
+   "state": "SUCCESSFUL"
   }
  ]
 }

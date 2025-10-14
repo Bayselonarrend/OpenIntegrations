@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "44136",
+  "ID": "44514",
   "NAME": "Picture1.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
@@ -8,25 +8,25 @@
   "PARENT_ID": "3",
   "DELETED_TYPE": "0",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "29730",
+  "FILE_ID": "29998",
   "SIZE": "805189",
-  "CREATE_TIME": "2025-10-09T21:11:18+00:00",
-  "UPDATE_TIME": "2025-10-09T21:11:18+00:00",
+  "CREATE_TIME": "2025-10-14T08:13:50+03:00",
+  "UPDATE_TIME": "2025-10-14T08:13:50+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "0",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=a932e868006e9f06006b12e400000001000007cb4f91548f2b14466d71cee6bef90289&token=disk%7CaWQ9NDQxMzYmXz1JR0oxZkp5RW92UzY3WkE3NktEd21uWlhuRmhqckd2ZQ%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EUXhNelltWHoxSlIwb3haa3A1Ulc5MlV6WTNXa0UzTmt0RWQyMXVXbGh1Um1ocWNrZDJaUT09fGE5MzJlODY4MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3Y2I0ZjkxNTQ4ZjJiMTQ0NjZkNzFjZWU2YmVmOTAyODki.%2F1RQfEz1rL1khaUYtDqk0NVDNFNJlfGFxdzKV0CZkxM%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=2ce9ed68006e9f06006b12e40000000100000718e289e81d645c2c922e0e2c36f57cfc&token=disk%7CaWQ9NDQ1MTQmXz1DcWk1RTNkTmpSZnY4bktWNzlDdzVIZ29BTHNURnowMA%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EUTFNVFFtWHoxRGNXazFSVE5rVG1wU1puWTRia3RXTnpsRGR6VklaMjlCVEhOVVJub3dNQT09fDJjZTllZDY4MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3MThlMjg5ZTgxZDY0NWMyYzkyMmUwZTJjMzZmNTdjZmMi.q6m0cZQHyqwTuBDCOOAey91PcLqJv8EdGYhrTRhUX8U%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Picture1.jpg"
  },
  "time": {
-  "start": 1760044280,
-  "finish": 1760044280.98368,
-  "duration": 0.983675003051758,
+  "start": 1760418837,
+  "finish": 1760418837.85439,
+  "duration": 0.8543860912323,
   "processing": 0,
-  "date_start": "2025-10-09T21:11:20+00:00",
-  "date_finish": "2025-10-09T21:11:20+00:00",
-  "operating_reset_at": 1760044880,
+  "date_start": "2025-10-14T08:13:57+03:00",
+  "date_finish": "2025-10-14T08:13:57+03:00",
+  "operating_reset_at": 1760419437,
   "operating": 0
  }
 }
