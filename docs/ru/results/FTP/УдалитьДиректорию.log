@@ -1,7 +1,4 @@
 ﻿{
  "result": true,
- "deleted_objects": [],
- "close_connection": {
-  "result": true
- }
+ "deleted_objects": []
 }
