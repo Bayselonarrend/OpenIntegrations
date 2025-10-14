@@ -3,5 +3,5 @@
 oint telegram ReplaceMessageKeyboard \
  --token "***" \
  --chat "461699897" \
- --message "16834" \
+ --message "17026" \
  --keyboard "{'inline_keyboard':[[{'text':'New button 3','callback_data':'New button 3'},{'text':'New button 2','callback_data':'New button 2'},{'text':'New button 1','callback_data':'New button 1'}]],'rows':'1'}"

@@ -1,6 +1,6 @@
 ﻿{
- "access_token": "ya29.a0AQQ_BDRYe88ZYAN9XLEl3qBIEP7oWoxKCtuaM1UYbe1cFerZ7c6VT2aYKv9tIvzAyFtw6vUkKSTDM87HwJEUZktYyBWzZYxaNNbkHX-KSJSjSEZikfRmlZsnAfXLbaeAxqhXZYGx6ZgrExeTRt0WjO6cmcmedrpimLIBdpv6kqGwuBHXWZ01l8DMyxxFUqfPC3VONEjxqgaCgYKATISARMSFQHGX2MiQeh99TnLfegA1ayB1rH6cQ0209",
+ "access_token": "ya29.a0AQQ_BDRK1S_qEt0rxrGD8FcC9tCa_qYyxiNmsgZo9HeAR9KPYqcFfGrLU4lGeMoeVBzIPfCrWD8Fm3dCiBC_A5hIAwIjx1Qbz9_mIssDq6Ct1P2k16MzvTsRNpumQw2mDTW0TAs9tL_9IzapDvQedKcnJaZF6cf144nq74qHNRPgDhwsqIUEREvAhEm8rOnIrL2ux_Y-EAaCgYKAd4SARMSFQHGX2Mi6zd8yK0sOZsrLuxEd5ihjg0209",
  "expires_in": 3599,
- "scope": "https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive",
+ "scope": "https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/spreadsheets",
  "token_type": "Bearer"
 }

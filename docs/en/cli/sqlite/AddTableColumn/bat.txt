@@ -2,4 +2,4 @@ oint sqlite AddTableColumn ^
  --table "test" ^
  --name "new_col" ^
  --type "TEXT" ^
- --db "C:\Users\bayse\AppData\Local\Temp\sjtajjsz.4ui.sqlite"
+ --db "C:\Users\bayse\AppData\Local\Temp\4xvzd0f4.1gz.sqlite"

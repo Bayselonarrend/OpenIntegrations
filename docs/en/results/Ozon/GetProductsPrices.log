@@ -1,26 +1,11 @@
 ﻿{
  "items": [
   {
-   "acquiring": 30.34,
+   "acquiring": 0,
    "offer_id": "4100347961",
    "product_id": 1287217882,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -60,26 +45,11 @@
    }
   },
   {
-   "acquiring": 43.68,
+   "acquiring": 0,
    "offer_id": "4100347960",
    "product_id": 1288360323,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -106,7 +76,7 @@
      "price_index_value": 1.77
     },
     "ozon_index_data": {
-     "min_price": 2696,
+     "min_price": 2700,
      "min_price_currency": "RUB",
      "price_index_value": 0.85
     },
@@ -119,26 +89,11 @@
    }
   },
   {
-   "acquiring": 42.69,
+   "acquiring": 0,
    "offer_id": "4100347962",
    "product_id": 1289792530,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -178,26 +133,11 @@
    }
   },
   {
-   "acquiring": 31.77,
+   "acquiring": 0,
    "offer_id": "4100347994",
    "product_id": 1289804139,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -237,26 +177,11 @@
    }
   },
   {
-   "acquiring": 41.71,
+   "acquiring": 0,
    "offer_id": "4100347996",
    "product_id": 1289825574,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -296,26 +221,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "4100347971",
    "product_id": 1289848579,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -355,26 +265,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "4100347964",
    "product_id": 1289890844,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -414,26 +309,11 @@
    }
   },
   {
-   "acquiring": 34.75,
+   "acquiring": 0,
    "offer_id": "4100340264",
    "product_id": 1289905444,
    "volume_weight": 0.6,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 101,
-    "fbo_direct_flow_trans_min_amount": 101,
-    "fbo_return_flow_amount": 101,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 139,
-    "fbs_direct_flow_trans_max_amount": 139,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 139,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -460,9 +340,9 @@
      "price_index_value": 1.42
     },
     "ozon_index_data": {
-     "min_price": 1222,
+     "min_price": 1592,
      "min_price_currency": "RUB",
-     "price_index_value": 1.14
+     "price_index_value": 0.9
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -473,26 +353,11 @@
    }
   },
   {
-   "acquiring": 29.79,
+   "acquiring": 0,
    "offer_id": "4100347969",
    "product_id": 1289939109,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -532,26 +397,11 @@
    }
   },
   {
-   "acquiring": 49.65,
+   "acquiring": 0,
    "offer_id": "4100347892",
    "product_id": 1289952369,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -591,26 +441,11 @@
    }
   },
   {
-   "acquiring": 31.77,
+   "acquiring": 0,
    "offer_id": "4100348009",
    "product_id": 1289966386,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -650,26 +485,11 @@
    }
   },
   {
-   "acquiring": 41.71,
+   "acquiring": 0,
    "offer_id": "4100347997",
    "product_id": 1289976497,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -709,26 +529,11 @@
    }
   },
   {
-   "acquiring": 11.12,
+   "acquiring": 0,
    "offer_id": "1211020004",
    "product_id": 1291661354,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -750,12 +555,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 805,
+     "min_price": 564,
      "min_price_currency": "RUB",
-     "price_index_value": 0.6
+     "price_index_value": 0.85
     },
     "ozon_index_data": {
-     "min_price": 612,
+     "min_price": 613,
      "min_price_currency": "RUB",
      "price_index_value": 0.78
     },
@@ -768,26 +573,11 @@
    }
   },
   {
-   "acquiring": 10.53,
+   "acquiring": 0,
    "offer_id": "1211020001",
    "product_id": 1291680787,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -814,11 +604,11 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 553,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.82
+     "price_index_value": 0
     },
-    "color_index": "GREEN",
+    "color_index": "WITHOUT_INDEX",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -827,26 +617,11 @@
    }
   },
   {
-   "acquiring": 59.57,
+   "acquiring": 0,
    "offer_id": "31441234",
    "product_id": 1291745585,
    "volume_weight": 0.7,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 101,
-    "fbo_direct_flow_trans_min_amount": 101,
-    "fbo_return_flow_amount": 101,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 139,
-    "fbs_direct_flow_trans_max_amount": 139,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 139,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -886,26 +661,11 @@
    }
   },
   {
-   "acquiring": 19.86,
+   "acquiring": 0,
    "offer_id": "123345",
    "product_id": 1291745586,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -945,26 +705,11 @@
    }
   },
   {
-   "acquiring": 19.86,
+   "acquiring": 0,
    "offer_id": "9250435526",
    "product_id": 1301731860,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 28,
-    "sales_percent_fbs": 38,
-    "sales_percent_rfbs": 34,
-    "sales_percent_fbp": 34
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1004,26 +749,11 @@
    }
   },
   {
-   "acquiring": 11.13,
+   "acquiring": 0,
    "offer_id": "1211020007",
    "product_id": 1307971826,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1063,26 +793,11 @@
    }
   },
   {
-   "acquiring": 11.13,
+   "acquiring": 0,
    "offer_id": "1211020003",
    "product_id": 1308060960,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1122,26 +837,11 @@
    }
   },
   {
-   "acquiring": 17.58,
+   "acquiring": 0,
    "offer_id": "9250435563",
    "product_id": 1308129708,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 28,
-    "sales_percent_fbs": 38,
-    "sales_percent_rfbs": 34,
-    "sales_percent_fbp": 34
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1181,26 +881,11 @@
    }
   },
   {
-   "acquiring": 13.32,
+   "acquiring": 0,
    "offer_id": "9250435516",
    "product_id": 1308220433,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 28,
-    "sales_percent_fbs": 38,
-    "sales_percent_rfbs": 34,
-    "sales_percent_fbp": 34
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1240,26 +925,11 @@
    }
   },
   {
-   "acquiring": 9.94,
+   "acquiring": 0,
    "offer_id": "9250435177",
    "product_id": 1308483641,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 28,
-    "sales_percent_fbs": 38,
-    "sales_percent_rfbs": 34,
-    "sales_percent_fbp": 34
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1299,26 +969,11 @@
    }
   },
   {
-   "acquiring": 29.79,
+   "acquiring": 0,
    "offer_id": "4100347998",
    "product_id": 1343690655,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1358,26 +1013,11 @@
    }
   },
   {
-   "acquiring": 29.47,
+   "acquiring": 0,
    "offer_id": "0381049025",
    "product_id": 1355752167,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1417,26 +1057,11 @@
    }
   },
   {
-   "acquiring": 31.29,
+   "acquiring": 0,
    "offer_id": "0380352420",
    "product_id": 1356578544,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1476,26 +1101,11 @@
    }
   },
   {
-   "acquiring": 21.28,
+   "acquiring": 0,
    "offer_id": "0380352410",
    "product_id": 1356691851,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1535,26 +1145,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "0381090215",
    "product_id": 1367157436,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1594,26 +1189,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "0381090220",
    "product_id": 1367182492,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1653,26 +1233,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "0011032050",
    "product_id": 1367251619,
    "volume_weight": 0.6,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1712,26 +1277,11 @@
    }
   },
   {
-   "acquiring": 13.87,
+   "acquiring": 0,
    "offer_id": "0381090210",
    "product_id": 1367490970,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1771,26 +1321,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "4001100556",
    "product_id": 1367768993,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1830,26 +1365,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "4001100559",
    "product_id": 1367982464,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1889,26 +1409,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "4001100557",
    "product_id": 1368000154,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -1948,26 +1453,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "4001100558",
    "product_id": 1368022477,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2007,26 +1497,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "4001100563",
    "product_id": 1368032219,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2066,26 +1541,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "4001100561",
    "product_id": 1368056450,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2125,26 +1585,11 @@
    }
   },
   {
-   "acquiring": 10.03,
+   "acquiring": 0,
    "offer_id": "4001042150",
    "product_id": 1368193772,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2184,26 +1629,11 @@
    }
   },
   {
-   "acquiring": 10.03,
+   "acquiring": 0,
    "offer_id": "4001042151",
    "product_id": 1369398757,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2243,26 +1673,11 @@
    }
   },
   {
-   "acquiring": 8.34,
+   "acquiring": 0,
    "offer_id": "4001042153",
    "product_id": 1369439391,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2302,26 +1717,11 @@
    }
   },
   {
-   "acquiring": 10.03,
+   "acquiring": 0,
    "offer_id": "4001042147",
    "product_id": 1369468263,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2361,26 +1761,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "4001042192",
    "product_id": 1369498174,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2420,26 +1805,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "4001042191",
    "product_id": 1369540032,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2479,26 +1849,11 @@
    }
   },
   {
-   "acquiring": 7.56,
+   "acquiring": 0,
    "offer_id": "4000361962",
    "product_id": 1369590692,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2538,26 +1893,11 @@
    }
   },
   {
-   "acquiring": 7.56,
+   "acquiring": 0,
    "offer_id": "4000361966",
    "product_id": 1369834677,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2597,26 +1937,11 @@
    }
   },
   {
-   "acquiring": 7.56,
+   "acquiring": 0,
    "offer_id": "4000361965",
    "product_id": 1369861508,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2656,26 +1981,11 @@
    }
   },
   {
-   "acquiring": 7.56,
+   "acquiring": 0,
    "offer_id": "4000361961",
    "product_id": 1369908026,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2715,26 +2025,11 @@
    }
   },
   {
-   "acquiring": 7.56,
+   "acquiring": 0,
    "offer_id": "4000361963",
    "product_id": 1369926773,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2774,26 +2069,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "4001042183",
    "product_id": 1369945013,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2833,26 +2113,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "4001042185",
    "product_id": 1369982409,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2892,26 +2157,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "4001042184",
    "product_id": 1370006785,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -2951,26 +2201,11 @@
    }
   },
   {
-   "acquiring": 7.56,
+   "acquiring": 0,
    "offer_id": "4000361964",
    "product_id": 1370023510,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3010,26 +2245,11 @@
    }
   },
   {
-   "acquiring": 8.97,
+   "acquiring": 0,
    "offer_id": "4001042165",
    "product_id": 1370042931,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3069,26 +2289,11 @@
    }
   },
   {
-   "acquiring": 8.95,
+   "acquiring": 0,
    "offer_id": "4001042164",
    "product_id": 1370052343,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3110,16 +2315,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 343,
+     "min_price": 352,
      "min_price_currency": "RUB",
-     "price_index_value": 1.1
+     "price_index_value": 1.07
     },
     "ozon_index_data": {
-     "min_price": 403,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.94
+     "price_index_value": 0
     },
-    "color_index": "YELLOW",
+    "color_index": "RED",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -3128,26 +2333,11 @@
    }
   },
   {
-   "acquiring": 8.97,
+   "acquiring": 0,
    "offer_id": "4001042167",
    "product_id": 1370094708,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3187,26 +2377,11 @@
    }
   },
   {
-   "acquiring": 8.97,
+   "acquiring": 0,
    "offer_id": "4001042166",
    "product_id": 1370104046,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3246,26 +2421,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "4001042162",
    "product_id": 1370119366,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3305,26 +2465,11 @@
    }
   },
   {
-   "acquiring": 8.28,
+   "acquiring": 0,
    "offer_id": "4001042161",
    "product_id": 1370126298,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3364,26 +2509,11 @@
    }
   },
   {
-   "acquiring": 8.97,
+   "acquiring": 0,
    "offer_id": "4001042163",
    "product_id": 1370200835,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3423,26 +2553,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "4001042159",
    "product_id": 1370210543,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3482,26 +2597,11 @@
    }
   },
   {
-   "acquiring": 8.97,
+   "acquiring": 0,
    "offer_id": "4001042195",
    "product_id": 1370225988,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3541,26 +2641,11 @@
    }
   },
   {
-   "acquiring": 8.99,
+   "acquiring": 0,
    "offer_id": "4001100562",
    "product_id": 1370238796,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3582,14 +2667,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 532,
+     "min_price": 547,
      "min_price_currency": "RUB",
-     "price_index_value": 0.71
+     "price_index_value": 0.69
     },
     "ozon_index_data": {
-     "min_price": 320,
+     "min_price": 313,
      "min_price_currency": "RUB",
-     "price_index_value": 1.15
+     "price_index_value": 1.17
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -3600,26 +2685,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "0011181648",
    "product_id": 1371882324,
    "volume_weight": 0.9,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3659,26 +2729,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "0011180605",
    "product_id": 1371908255,
    "volume_weight": 1.7,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3718,26 +2773,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "0011180603",
    "product_id": 1371931921,
    "volume_weight": 3.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 176,
-    "fbo_direct_flow_trans_min_amount": 176,
-    "fbo_return_flow_amount": 176,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 254,
-    "fbs_direct_flow_trans_max_amount": 254,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 254,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3777,26 +2817,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "0011181619",
    "product_id": 1371950841,
    "volume_weight": 0.9,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 116,
-    "fbo_direct_flow_trans_min_amount": 116,
-    "fbo_return_flow_amount": 116,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 162,
-    "fbs_direct_flow_trans_max_amount": 162,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 162,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3836,26 +2861,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "0011181617",
    "product_id": 1371994486,
    "volume_weight": 1.9,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 191,
-    "fbo_direct_flow_trans_min_amount": 191,
-    "fbo_return_flow_amount": 191,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 277,
-    "fbs_direct_flow_trans_max_amount": 277,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 277,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3895,26 +2905,11 @@
    }
   },
   {
-   "acquiring": 35.74,
+   "acquiring": 0,
    "offer_id": "0370351703",
    "product_id": 1375920901,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -3954,26 +2949,11 @@
    }
   },
   {
-   "acquiring": 79.42,
+   "acquiring": 0,
    "offer_id": "0371092301",
    "product_id": 1375932989,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4013,26 +2993,11 @@
    }
   },
   {
-   "acquiring": 79.42,
+   "acquiring": 0,
    "offer_id": "0371092306",
    "product_id": 1375939268,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4072,26 +3037,11 @@
    }
   },
   {
-   "acquiring": 79.42,
+   "acquiring": 0,
    "offer_id": "0371092311",
    "product_id": 1375940532,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4131,26 +3081,11 @@
    }
   },
   {
-   "acquiring": 31.65,
+   "acquiring": 0,
    "offer_id": "0370351711",
    "product_id": 1375950033,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4190,26 +3125,11 @@
    }
   },
   {
-   "acquiring": 59.57,
+   "acquiring": 0,
    "offer_id": "0371153001",
    "product_id": 1375965280,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4249,26 +3169,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "0370355078",
    "product_id": 1375971753,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4308,26 +3213,11 @@
    }
   },
   {
-   "acquiring": 34.2,
+   "acquiring": 0,
    "offer_id": "0371060542",
    "product_id": 1376007330,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4367,26 +3257,11 @@
    }
   },
   {
-   "acquiring": 91.33,
+   "acquiring": 0,
    "offer_id": "0371060803",
    "product_id": 1376011526,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4426,26 +3301,11 @@
    }
   },
   {
-   "acquiring": 100.7,
+   "acquiring": 0,
    "offer_id": "0371060813",
    "product_id": 1376019105,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4485,26 +3345,11 @@
    }
   },
   {
-   "acquiring": 32.87,
+   "acquiring": 0,
    "offer_id": "0371060406",
    "product_id": 1376024432,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4544,26 +3389,11 @@
    }
   },
   {
-   "acquiring": 26.6,
+   "acquiring": 0,
    "offer_id": "0371060563",
    "product_id": 1376037578,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4603,26 +3433,11 @@
    }
   },
   {
-   "acquiring": 25.27,
+   "acquiring": 0,
    "offer_id": "0371060541",
    "product_id": 1376052792,
    "volume_weight": 0.9,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4644,14 +3459,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1072,
+     "min_price": 1123,
      "min_price_currency": "RUB",
-     "price_index_value": 0.97
+     "price_index_value": 0.93
     },
     "ozon_index_data": {
-     "min_price": 1148,
+     "min_price": 1200,
      "min_price_currency": "RUB",
-     "price_index_value": 0.91
+     "price_index_value": 0.87
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -4662,26 +3477,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "0371045003",
    "product_id": 1376067260,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4721,26 +3521,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "0371150001",
    "product_id": 1376071969,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4780,26 +3565,11 @@
    }
   },
   {
-   "acquiring": 59.57,
+   "acquiring": 0,
    "offer_id": "0370355106",
    "product_id": 1376116354,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4839,26 +3609,11 @@
    }
   },
   {
-   "acquiring": 22.8,
+   "acquiring": 0,
    "offer_id": "0370351708",
    "product_id": 1376130862,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4898,26 +3653,11 @@
    }
   },
   {
-   "acquiring": 23.83,
+   "acquiring": 0,
    "offer_id": "0371100501",
    "product_id": 1376135235,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -4957,26 +3697,11 @@
    }
   },
   {
-   "acquiring": 23.83,
+   "acquiring": 0,
    "offer_id": "0371106234",
    "product_id": 1376149554,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5016,26 +3741,11 @@
    }
   },
   {
-   "acquiring": 42.69,
+   "acquiring": 0,
    "offer_id": "0371045044",
    "product_id": 1376167479,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5075,26 +3785,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "0371045042",
    "product_id": 1376172568,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5134,26 +3829,11 @@
    }
   },
   {
-   "acquiring": 24.21,
+   "acquiring": 0,
    "offer_id": "0371100011",
    "product_id": 1376192030,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5193,26 +3873,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "0370355035",
    "product_id": 1376200605,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5252,26 +3917,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "0370355079",
    "product_id": 1376207010,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5311,26 +3961,11 @@
    }
   },
   {
-   "acquiring": 34.12,
+   "acquiring": 0,
    "offer_id": "0370351770",
    "product_id": 1376210023,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5370,26 +4005,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "0381040403",
    "product_id": 1376773397,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5429,26 +4049,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "0380359256",
    "product_id": 1376831218,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5488,26 +4093,11 @@
    }
   },
   {
-   "acquiring": 38,
+   "acquiring": 0,
    "offer_id": "0380359604",
    "product_id": 1376852296,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5547,26 +4137,11 @@
    }
   },
   {
-   "acquiring": 46.27,
+   "acquiring": 0,
    "offer_id": "0381049035",
    "product_id": 1376882379,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5606,26 +4181,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "0380359582",
    "product_id": 1376902057,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5665,26 +4225,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "0381090001",
    "product_id": 1376917875,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5724,26 +4269,11 @@
    }
   },
   {
-   "acquiring": 23.16,
+   "acquiring": 0,
    "offer_id": "0380350625",
    "product_id": 1376966208,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5783,26 +4313,11 @@
    }
   },
   {
-   "acquiring": 37.34,
+   "acquiring": 0,
    "offer_id": "0381040425",
    "product_id": 1377179244,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5842,26 +4357,11 @@
    }
   },
   {
-   "acquiring": 22.84,
+   "acquiring": 0,
    "offer_id": "0380350635",
    "product_id": 1377188714,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5901,26 +4401,11 @@
    }
   },
   {
-   "acquiring": 27.8,
+   "acquiring": 0,
    "offer_id": "0381040390",
    "product_id": 1377227025,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -5960,26 +4445,11 @@
    }
   },
   {
-   "acquiring": 48.26,
+   "acquiring": 0,
    "offer_id": "0380352444",
    "product_id": 1377254546,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6019,26 +4489,11 @@
    }
   },
   {
-   "acquiring": 36.35,
+   "acquiring": 0,
    "offer_id": "0380350120",
    "product_id": 1377285339,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6078,26 +4533,11 @@
    }
   },
   {
-   "acquiring": 39.81,
+   "acquiring": 0,
    "offer_id": "0380352426",
    "product_id": 1378077781,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6137,26 +4577,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "0380359580",
    "product_id": 1378115233,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6196,26 +4621,11 @@
    }
   },
   {
-   "acquiring": 35.74,
+   "acquiring": 0,
    "offer_id": "0380352450",
    "product_id": 1382850074,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6255,26 +4665,11 @@
    }
   },
   {
-   "acquiring": 15.2,
+   "acquiring": 0,
    "offer_id": "0381040432",
    "product_id": 1382859209,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6296,9 +4691,9 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 535,
+     "min_price": 563,
      "min_price_currency": "RUB",
-     "price_index_value": 1.15
+     "price_index_value": 1.1
     },
     "ozon_index_data": {
      "min_price": 559,
@@ -6314,26 +4709,11 @@
    }
   },
   {
-   "acquiring": 28.8,
+   "acquiring": 0,
    "offer_id": "0381049047",
    "product_id": 1382873300,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6373,26 +4753,11 @@
    }
   },
   {
-   "acquiring": 30.78,
+   "acquiring": 0,
    "offer_id": "0380359605",
    "product_id": 1382882175,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6432,26 +4797,11 @@
    }
   },
   {
-   "acquiring": 27.8,
+   "acquiring": 0,
    "offer_id": "0380359603",
    "product_id": 1382888840,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6491,26 +4841,11 @@
    }
   },
   {
-   "acquiring": 30.31,
+   "acquiring": 0,
    "offer_id": "0380359646",
    "product_id": 1382901318,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6550,26 +4885,11 @@
    }
   },
   {
-   "acquiring": 37.73,
+   "acquiring": 0,
    "offer_id": "0381040790",
    "product_id": 1382914501,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6609,26 +4929,11 @@
    }
   },
   {
-   "acquiring": 35.15,
+   "acquiring": 0,
    "offer_id": "0380359645",
    "product_id": 1382924894,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6668,26 +4973,11 @@
    }
   },
   {
-   "acquiring": 35.15,
+   "acquiring": 0,
    "offer_id": "0380359657",
    "product_id": 1382965929,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6727,26 +5017,11 @@
    }
   },
   {
-   "acquiring": 23.83,
+   "acquiring": 0,
    "offer_id": "0380359594",
    "product_id": 1382974217,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6786,26 +5061,11 @@
    }
   },
   {
-   "acquiring": 9.94,
+   "acquiring": 0,
    "offer_id": "0031049225",
    "product_id": 1383855905,
    "volume_weight": 0.7,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6845,26 +5105,11 @@
    }
   },
   {
-   "acquiring": 14.5,
+   "acquiring": 0,
    "offer_id": "0380359671",
    "product_id": 1385491841,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6904,26 +5149,11 @@
    }
   },
   {
-   "acquiring": 35.74,
+   "acquiring": 0,
    "offer_id": "0371060549",
    "product_id": 1420280997,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -6963,26 +5193,11 @@
    }
   },
   {
-   "acquiring": 40.72,
+   "acquiring": 0,
    "offer_id": "4100347995",
    "product_id": 1443980422,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -7022,44 +5237,22 @@
    }
   },
   {
-   "acquiring": 32.28,
+   "acquiring": 0,
    "offer_id": "4100347985",
    "product_id": 1443988263,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 1699,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1402,
-    "marketing_seller_price": 1699,
+    "marketing_price": 1822,
+    "marketing_seller_price": 2247,
     "min_price": 2023,
     "old_price": 2697,
     "price": 2247,
@@ -7075,9 +5268,9 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 2643,
+     "min_price": 2775,
      "min_price_currency": "RUB",
-     "price_index_value": 0.5
+     "price_index_value": 0.62
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7088,26 +5281,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "4100347986",
    "product_id": 1443990405,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -7147,26 +5325,11 @@
    }
   },
   {
-   "acquiring": 43.68,
+   "acquiring": 0,
    "offer_id": "4100347940",
    "product_id": 1443992651,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -7206,26 +5369,11 @@
    }
   },
   {
-   "acquiring": 31.77,
+   "acquiring": 0,
    "offer_id": "4100347999",
    "product_id": 1443997163,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -7265,26 +5413,11 @@
    }
   },
   {
-   "acquiring": 46.66,
+   "acquiring": 0,
    "offer_id": "4100347988",
    "product_id": 1444003147,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -7324,44 +5457,22 @@
    }
   },
   {
-   "acquiring": 30.02,
+   "acquiring": 0,
    "offer_id": "4100347987",
    "product_id": 1444006632,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 1580,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1291,
-    "marketing_seller_price": 1580,
+    "marketing_price": 1518,
+    "marketing_seller_price": 1881,
     "min_price": 1693,
     "old_price": 2258,
     "price": 1881,
@@ -7372,14 +5483,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1708,
+     "min_price": 1734,
      "min_price_currency": "RUB",
-     "price_index_value": 0.72
+     "price_index_value": 0.83
     },
     "ozon_index_data": {
-     "min_price": 1641,
+     "min_price": 1717,
      "min_price_currency": "RUB",
-     "price_index_value": 0.74
+     "price_index_value": 0.83
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7390,26 +5501,11 @@
    }
   },
   {
-   "acquiring": 32.78,
+   "acquiring": 0,
    "offer_id": "4100348021",
    "product_id": 1444009616,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -7436,9 +5532,9 @@
      "price_index_value": 0.78
     },
     "ozon_index_data": {
-     "min_price": 1737,
+     "min_price": 1728,
      "min_price_currency": "RUB",
-     "price_index_value": 0.77
+     "price_index_value": 0.78
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7449,26 +5545,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "4100347958",
    "product_id": 1444009962,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -7508,44 +5589,22 @@
    }
   },
   {
-   "acquiring": 30.02,
+   "acquiring": 0,
    "offer_id": "4100348024",
    "product_id": 1445460991,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 1580,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1291,
-    "marketing_seller_price": 1580,
+    "marketing_price": 1687,
+    "marketing_seller_price": 2090,
     "min_price": 1881,
     "old_price": 2508,
     "price": 2090,
@@ -7556,14 +5615,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 0,
-     "min_price_currency": "RUB",
-     "price_index_value": 0
-    },
-    "ozon_index_data": {
-     "min_price": 2464,
+     "min_price": 3207,
      "min_price_currency": "RUB",
      "price_index_value": 0.5
+    },
+    "ozon_index_data": {
+     "min_price": 2491,
+     "min_price_currency": "RUB",
+     "price_index_value": 0.64
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7574,26 +5633,11 @@
    }
   },
   {
-   "acquiring": 25.67,
+   "acquiring": 0,
    "offer_id": "9250437054",
    "product_id": 1461961007,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 28,
-    "sales_percent_fbs": 38,
-    "sales_percent_rfbs": 34,
-    "sales_percent_fbp": 34
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -7633,26 +5677,11 @@
    }
   },
   {
-   "acquiring": 23.83,
+   "acquiring": 0,
    "offer_id": "9250437055",
    "product_id": 1462006437,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 28,
-    "sales_percent_fbs": 38,
-    "sales_percent_rfbs": 34,
-    "sales_percent_fbp": 34
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -7692,26 +5721,11 @@
    }
   },
   {
-   "acquiring": 10.93,
+   "acquiring": 0,
    "offer_id": "9250435450",
    "product_id": 1462024725,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 28,
-    "sales_percent_fbs": 38,
-    "sales_percent_rfbs": 34,
-    "sales_percent_fbp": 34
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -7751,26 +5765,11 @@
    }
   },
   {
-   "acquiring": 23.67,
+   "acquiring": 0,
    "offer_id": "9250437086",
    "product_id": 1462044885,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 28,
-    "sales_percent_fbs": 38,
-    "sales_percent_rfbs": 34,
-    "sales_percent_fbp": 34
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -7810,44 +5809,22 @@
    }
   },
   {
-   "acquiring": 5.59,
+   "acquiring": 0,
    "offer_id": "0111039315",
    "product_id": 1482670219,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 25,
-    "fbs_direct_flow_trans_max_amount": 25,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 25,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 294,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 264,
-    "marketing_seller_price": 294,
+    "marketing_price": 275,
+    "marketing_seller_price": 334,
     "min_price": 301,
     "old_price": 401,
     "price": 334,
@@ -7858,14 +5835,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 262,
+     "min_price": 258,
      "min_price_currency": "RUB",
-     "price_index_value": 0.95
+     "price_index_value": 1
     },
     "ozon_index_data": {
-     "min_price": 211,
+     "min_price": 194,
      "min_price_currency": "RUB",
-     "price_index_value": 1.15
+     "price_index_value": 1.25
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -7876,26 +5853,11 @@
    }
   },
   {
-   "acquiring": 43.68,
+   "acquiring": 0,
    "offer_id": "4100347992",
    "product_id": 1533704358,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -7922,7 +5884,7 @@
      "price_index_value": 0.97
     },
     "ozon_index_data": {
-     "min_price": 2710,
+     "min_price": 2687,
      "min_price_currency": "RUB",
      "price_index_value": 0.67
     },
@@ -7935,26 +5897,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "4100348000",
    "product_id": 1533872040,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -7994,44 +5941,22 @@
    }
   },
   {
-   "acquiring": 33.65,
+   "acquiring": 0,
    "offer_id": "4100347993",
    "product_id": 1534386283,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 1771,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1434,
-    "marketing_seller_price": 1771,
+    "marketing_price": 1691,
+    "marketing_seller_price": 2090,
     "min_price": 1881,
     "old_price": 2508,
     "price": 2090,
@@ -8042,14 +5967,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 2868,
+     "min_price": 2849,
      "min_price_currency": "RUB",
-     "price_index_value": 0.47
+     "price_index_value": 0.56
     },
     "ozon_index_data": {
-     "min_price": 2178,
+     "min_price": 2161,
      "min_price_currency": "RUB",
-     "price_index_value": 0.62
+     "price_index_value": 0.74
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8060,26 +5985,11 @@
    }
   },
   {
-   "acquiring": 25.82,
+   "acquiring": 0,
    "offer_id": "0371060539",
    "product_id": 1535553275,
    "volume_weight": 0.8,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -8119,26 +6029,11 @@
    }
   },
   {
-   "acquiring": 24.49,
+   "acquiring": 0,
    "offer_id": "0370350385",
    "product_id": 1535582105,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -8178,26 +6073,11 @@
    }
   },
   {
-   "acquiring": 28.42,
+   "acquiring": 0,
    "offer_id": "0381049050",
    "product_id": 1535603127,
    "volume_weight": 0.6,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -8237,26 +6117,11 @@
    }
   },
   {
-   "acquiring": 63.54,
+   "acquiring": 0,
    "offer_id": "0370351265",
    "product_id": 1535613761,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -8283,11 +6148,11 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 3003,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.88
+     "price_index_value": 0
     },
-    "color_index": "GREEN",
+    "color_index": "WITHOUT_INDEX",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -8296,26 +6161,11 @@
    }
   },
   {
-   "acquiring": 37.28,
+   "acquiring": 0,
    "offer_id": "0380359606",
    "product_id": 1535623959,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -8337,14 +6187,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1581,
+     "min_price": 1603,
      "min_price_currency": "RUB",
-     "price_index_value": 0.97
+     "price_index_value": 0.95
     },
     "ozon_index_data": {
-     "min_price": 1596,
+     "min_price": 1609,
      "min_price_currency": "RUB",
-     "price_index_value": 0.96
+     "price_index_value": 0.95
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8355,26 +6205,11 @@
    }
   },
   {
-   "acquiring": 57,
+   "acquiring": 0,
    "offer_id": "0370351206",
    "product_id": 1535632833,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -8414,26 +6249,11 @@
    }
   },
   {
-   "acquiring": 58.73,
+   "acquiring": 0,
    "offer_id": "0370351201",
    "product_id": 1535640586,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -8443,7 +6263,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2562,
+    "marketing_price": 2525,
     "marketing_seller_price": 3091,
     "min_price": 2872,
     "old_price": 3829,
@@ -8455,14 +6275,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 924,
+     "min_price": 960,
      "min_price_currency": "RUB",
-     "price_index_value": 1.62
+     "price_index_value": 1.6
     },
     "ozon_index_data": {
-     "min_price": 2687,
+     "min_price": 2769,
      "min_price_currency": "RUB",
-     "price_index_value": 0.9
+     "price_index_value": 0.86
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -8473,44 +6293,22 @@
    }
   },
   {
-   "acquiring": 59.38,
+   "acquiring": 0,
    "offer_id": "0370355068",
    "product_id": 1535648291,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 3125,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2566,
-    "marketing_seller_price": 3125,
+    "marketing_price": 3020,
+    "marketing_seller_price": 3677,
     "min_price": 3490,
     "old_price": 4653,
     "price": 3677,
@@ -8521,14 +6319,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 883,
+     "min_price": 874,
      "min_price_currency": "RUB",
-     "price_index_value": 1.64
+     "price_index_value": 1.69
     },
     "ozon_index_data": {
-     "min_price": 3113,
+     "min_price": 3089,
      "min_price_currency": "RUB",
-     "price_index_value": 0.78
+     "price_index_value": 0.92
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -8539,26 +6337,11 @@
    }
   },
   {
-   "acquiring": 64.62,
+   "acquiring": 0,
    "offer_id": "0370355069",
    "product_id": 1535654541,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -8598,26 +6381,11 @@
    }
   },
   {
-   "acquiring": 69.86,
+   "acquiring": 0,
    "offer_id": "0370355048",
    "product_id": 1535685687,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -8657,26 +6425,11 @@
    }
   },
   {
-   "acquiring": 17.88,
+   "acquiring": 0,
    "offer_id": "0381049029",
    "product_id": 1535709460,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -8698,14 +6451,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 898,
+     "min_price": 885,
      "min_price_currency": "RUB",
-     "price_index_value": 0.81
+     "price_index_value": 0.82
     },
     "ozon_index_data": {
-     "min_price": 830,
+     "min_price": 835,
      "min_price_currency": "RUB",
-     "price_index_value": 0.88
+     "price_index_value": 0.87
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8716,26 +6469,11 @@
    }
   },
   {
-   "acquiring": 23.83,
+   "acquiring": 0,
    "offer_id": "0371106233",
    "product_id": 1535720488,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -8775,26 +6513,11 @@
    }
   },
   {
-   "acquiring": 25.82,
+   "acquiring": 0,
    "offer_id": "0371060511",
    "product_id": 1535728528,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -8834,26 +6557,11 @@
    }
   },
   {
-   "acquiring": 16.91,
+   "acquiring": 0,
    "offer_id": "0381040110",
    "product_id": 1535733601,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -8880,11 +6588,11 @@
      "price_index_value": 0.95
     },
     "ozon_index_data": {
-     "min_price": 687,
+     "min_price": 712,
      "min_price_currency": "RUB",
-     "price_index_value": 1.02
+     "price_index_value": 0.98
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -8893,26 +6601,11 @@
    }
   },
   {
-   "acquiring": 26.32,
+   "acquiring": 0,
    "offer_id": "0371060507",
    "product_id": 1535737664,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -8952,26 +6645,11 @@
    }
   },
   {
-   "acquiring": 65.25,
+   "acquiring": 0,
    "offer_id": "0370351231",
    "product_id": 1535742469,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -9011,26 +6689,11 @@
    }
   },
   {
-   "acquiring": 27.21,
+   "acquiring": 0,
    "offer_id": "0370352041",
    "product_id": 1535749240,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -9070,26 +6733,11 @@
    }
   },
   {
-   "acquiring": 44.21,
+   "acquiring": 0,
    "offer_id": "0380359607",
    "product_id": 1535773995,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -9129,26 +6777,11 @@
    }
   },
   {
-   "acquiring": 46.66,
+   "acquiring": 0,
    "offer_id": "0380359625",
    "product_id": 1535776520,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -9188,26 +6821,11 @@
    }
   },
   {
-   "acquiring": 44.21,
+   "acquiring": 0,
    "offer_id": "0380359608",
    "product_id": 1535781043,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -9229,16 +6847,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1790,
+     "min_price": 1833,
      "min_price_currency": "RUB",
-     "price_index_value": 1
+     "price_index_value": 0.97
     },
     "ozon_index_data": {
-     "min_price": 1744,
+     "min_price": 1775,
      "min_price_currency": "RUB",
-     "price_index_value": 1.02
+     "price_index_value": 1.01
     },
-    "color_index": "YELLOW",
+    "color_index": "GREEN",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -9247,26 +6865,11 @@
    }
   },
   {
-   "acquiring": 26.32,
+   "acquiring": 0,
    "offer_id": "0371060534",
    "product_id": 1535784183,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -9306,26 +6909,11 @@
    }
   },
   {
-   "acquiring": 26.52,
+   "acquiring": 0,
    "offer_id": "0371060522",
    "product_id": 1535786850,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -9365,44 +6953,22 @@
    }
   },
   {
-   "acquiring": 35.02,
+   "acquiring": 0,
    "offer_id": "4100347970",
    "product_id": 1537431413,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 1843,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1492,
-    "marketing_seller_price": 1843,
+    "marketing_price": 1692,
+    "marketing_seller_price": 2090,
     "min_price": 1881,
     "old_price": 2508,
     "price": 2090,
@@ -9413,14 +6979,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1264,
+     "min_price": 1283,
      "min_price_currency": "RUB",
-     "price_index_value": 1.11
+     "price_index_value": 1.2
     },
     "ozon_index_data": {
-     "min_price": 2044,
+     "min_price": 1996,
      "min_price_currency": "RUB",
-     "price_index_value": 0.69
+     "price_index_value": 0.8
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -9431,44 +6997,22 @@
    }
   },
   {
-   "acquiring": 50.79,
+   "acquiring": 0,
    "offer_id": "4100347989",
    "product_id": 1537461804,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 2673,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2184,
-    "marketing_seller_price": 2673,
+    "marketing_price": 2479,
+    "marketing_seller_price": 3031,
     "min_price": 2728,
     "old_price": 3637,
     "price": 3031,
@@ -9479,14 +7023,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 3646,
+     "min_price": 3497,
      "min_price_currency": "RUB",
-     "price_index_value": 0.57
+     "price_index_value": 0.67
     },
     "ozon_index_data": {
-     "min_price": 2749,
+     "min_price": 2885,
      "min_price_currency": "RUB",
-     "price_index_value": 0.75
+     "price_index_value": 0.81
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9497,26 +7041,11 @@
    }
   },
   {
-   "acquiring": 29.79,
+   "acquiring": 0,
    "offer_id": "4100347968",
    "product_id": 1537469908,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -9543,7 +7072,7 @@
      "price_index_value": 1.47
     },
     "ozon_index_data": {
-     "min_price": 1676,
+     "min_price": 1666,
      "min_price_currency": "RUB",
      "price_index_value": 0.72
     },
@@ -9556,44 +7085,22 @@
    }
   },
   {
-   "acquiring": 37.03,
+   "acquiring": 0,
    "offer_id": "4100347991",
    "product_id": 1537511985,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 1949,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1578,
-    "marketing_seller_price": 1949,
+    "marketing_price": 1861,
+    "marketing_seller_price": 2299,
     "min_price": 2070,
     "old_price": 2759,
     "price": 2299,
@@ -9606,12 +7113,12 @@
     "external_index_data": {
      "min_price": 1913,
      "min_price_currency": "RUB",
-     "price_index_value": 0.78
+     "price_index_value": 0.92
     },
     "ozon_index_data": {
-     "min_price": 3101,
+     "min_price": 3096,
      "min_price_currency": "RUB",
-     "price_index_value": 0.48
+     "price_index_value": 0.57
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9622,26 +7129,11 @@
    }
   },
   {
-   "acquiring": 119.13,
+   "acquiring": 0,
    "offer_id": "123456789",
    "product_id": 1596300711,
    "volume_weight": 4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 176,
-    "fbo_direct_flow_trans_min_amount": 176,
-    "fbo_return_flow_amount": 176,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 254,
-    "fbs_direct_flow_trans_max_amount": 254,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 254,
-    "sales_percent_fbo": 27,
-    "sales_percent_fbs": 32,
-    "sales_percent_rfbs": 30,
-    "sales_percent_fbp": 30
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -9681,44 +7173,22 @@
    }
   },
   {
-   "acquiring": 30.95,
+   "acquiring": 0,
    "offer_id": "0370355030",
    "product_id": 1626637524,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 1629,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1333,
-    "marketing_seller_price": 1629,
+    "marketing_price": 1558,
+    "marketing_seller_price": 1917,
     "min_price": 1816,
     "old_price": 2421,
     "price": 1917,
@@ -9729,16 +7199,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1538,
+     "min_price": 1548,
      "min_price_currency": "RUB",
-     "price_index_value": 0.82
+     "price_index_value": 0.95
     },
     "ozon_index_data": {
-     "min_price": 1369,
+     "min_price": 1380,
      "min_price_currency": "RUB",
-     "price_index_value": 0.92
+     "price_index_value": 1.06
     },
-    "color_index": "GREEN",
+    "color_index": "YELLOW",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -9747,44 +7217,22 @@
    }
   },
   {
-   "acquiring": 37.43,
+   "acquiring": 0,
    "offer_id": "0371045016",
    "product_id": 1626703485,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 1970,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1600,
-    "marketing_seller_price": 1970,
+    "marketing_price": 1984,
+    "marketing_seller_price": 2493,
     "min_price": 2244,
     "old_price": 2991,
     "price": 2493,
@@ -9795,14 +7243,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1847,
+     "min_price": 1933,
      "min_price_currency": "RUB",
-     "price_index_value": 0.82
+     "price_index_value": 0.97
     },
     "ozon_index_data": {
-     "min_price": 1839,
+     "min_price": 2016,
      "min_price_currency": "RUB",
-     "price_index_value": 0.82
+     "price_index_value": 0.93
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9813,26 +7261,11 @@
    }
   },
   {
-   "acquiring": 43.68,
+   "acquiring": 0,
    "offer_id": "0381060015",
    "product_id": 1626829667,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -9872,26 +7305,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "0371060925",
    "product_id": 1626879200,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -9931,26 +7349,11 @@
    }
   },
   {
-   "acquiring": 41.8,
+   "acquiring": 0,
    "offer_id": "0371061037",
    "product_id": 1626926909,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -9990,26 +7393,11 @@
    }
   },
   {
-   "acquiring": 41.71,
+   "acquiring": 0,
    "offer_id": "0371061039",
    "product_id": 1627014507,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10049,26 +7437,11 @@
    }
   },
   {
-   "acquiring": 41.71,
+   "acquiring": 0,
    "offer_id": "0371061038",
    "product_id": 1627138905,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10108,26 +7481,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "0371060990",
    "product_id": 1627150768,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10167,26 +7525,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "0371060401",
    "product_id": 1627166618,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10226,26 +7569,11 @@
    }
   },
   {
-   "acquiring": 27.8,
+   "acquiring": 0,
    "offer_id": "0371061019",
    "product_id": 1627195969,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10285,26 +7613,11 @@
    }
   },
   {
-   "acquiring": 83.6,
+   "acquiring": 0,
    "offer_id": "0371061044",
    "product_id": 1627208241,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10344,26 +7657,11 @@
    }
   },
   {
-   "acquiring": 27.38,
+   "acquiring": 0,
    "offer_id": "0371061043",
    "product_id": 1627213344,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10403,26 +7701,11 @@
    }
   },
   {
-   "acquiring": 32.3,
+   "acquiring": 0,
    "offer_id": "0371060558",
    "product_id": 1627219746,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10462,26 +7745,11 @@
    }
   },
   {
-   "acquiring": 43.68,
+   "acquiring": 0,
    "offer_id": "0371061045",
    "product_id": 1627226464,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10521,26 +7789,11 @@
    }
   },
   {
-   "acquiring": 26.22,
+   "acquiring": 0,
    "offer_id": "0371060518",
    "product_id": 1627237279,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10580,26 +7833,11 @@
    }
   },
   {
-   "acquiring": 47.65,
+   "acquiring": 0,
    "offer_id": "0380359683",
    "product_id": 1627249102,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10639,26 +7877,11 @@
    }
   },
   {
-   "acquiring": 11.21,
+   "acquiring": 0,
    "offer_id": "1211020006",
    "product_id": 1658122303,
    "volume_weight": 0.9,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10668,7 +7891,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 519,
+    "marketing_price": 501,
     "marketing_seller_price": 590,
     "min_price": 508,
     "old_price": 678,
@@ -10680,14 +7903,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 743,
+     "min_price": 658,
      "min_price_currency": "RUB",
-     "price_index_value": 0.66
+     "price_index_value": 0.72
     },
     "ozon_index_data": {
-     "min_price": 1192,
+     "min_price": 1206,
      "min_price_currency": "RUB",
-     "price_index_value": 0.41
+     "price_index_value": 0.39
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10698,26 +7921,11 @@
    }
   },
   {
-   "acquiring": 11.59,
+   "acquiring": 0,
    "offer_id": "1211020005",
    "product_id": 1658281793,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10739,14 +7947,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 734,
+     "min_price": 840,
      "min_price_currency": "RUB",
-     "price_index_value": 0.68
+     "price_index_value": 0.59
     },
     "ozon_index_data": {
-     "min_price": 544,
+     "min_price": 535,
      "min_price_currency": "RUB",
-     "price_index_value": 0.91
+     "price_index_value": 0.93
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10757,26 +7965,11 @@
    }
   },
   {
-   "acquiring": 10.74,
+   "acquiring": 0,
    "offer_id": "1211020008",
    "product_id": 1658286854,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 30,
-    "sales_percent_rfbs": 28,
-    "sales_percent_fbp": 28
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10816,44 +8009,22 @@
    }
   },
   {
-   "acquiring": 25.18,
+   "acquiring": 0,
    "offer_id": "0381049046",
    "product_id": 1860811444,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 1325,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1075,
-    "marketing_seller_price": 1325,
+    "marketing_price": 1284,
+    "marketing_seller_price": 1600,
     "min_price": 1599,
     "old_price": 2132,
     "price": 1600,
@@ -10864,16 +8035,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1127,
+     "min_price": 1128,
      "min_price_currency": "RUB",
-     "price_index_value": 0.9
+     "price_index_value": 1.07
     },
     "ozon_index_data": {
-     "min_price": 1086,
+     "min_price": 1120,
      "min_price_currency": "RUB",
-     "price_index_value": 0.94
+     "price_index_value": 1.08
     },
-    "color_index": "GREEN",
+    "color_index": "RED",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -10882,26 +8053,11 @@
    }
   },
   {
-   "acquiring": 24.7,
+   "acquiring": 0,
    "offer_id": "0380359573",
    "product_id": 1860846169,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -10941,44 +8097,22 @@
    }
   },
   {
-   "acquiring": 29.77,
+   "acquiring": 0,
    "offer_id": "0381049030",
    "product_id": 1860869732,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 1567,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1282,
-    "marketing_seller_price": 1567,
+    "marketing_price": 1788,
+    "marketing_seller_price": 2200,
     "min_price": 1200,
     "old_price": 3000,
     "price": 2200,
@@ -10989,14 +8123,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 397,
+     "min_price": 412,
      "min_price_currency": "RUB",
-     "price_index_value": 1.67
+     "price_index_value": 1.76
     },
     "ozon_index_data": {
-     "min_price": 1498,
+     "min_price": 1510,
      "min_price_currency": "RUB",
-     "price_index_value": 0.81
+     "price_index_value": 1.11
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -11007,26 +8141,11 @@
    }
   },
   {
-   "acquiring": 22.8,
+   "acquiring": 0,
    "offer_id": "0381040380",
    "product_id": 1860904295,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11048,14 +8167,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 954,
+     "min_price": 957,
      "min_price_currency": "RUB",
      "price_index_value": 0.99
     },
     "ozon_index_data": {
-     "min_price": 943,
+     "min_price": 963,
      "min_price_currency": "RUB",
-     "price_index_value": 1
+     "price_index_value": 0.98
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -11066,26 +8185,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "0371106020",
    "product_id": 1860953714,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11125,26 +8229,11 @@
    }
   },
   {
-   "acquiring": 81.42,
+   "acquiring": 0,
    "offer_id": "0371060941",
    "product_id": 1860980552,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11184,26 +8273,11 @@
    }
   },
   {
-   "acquiring": 23.83,
+   "acquiring": 0,
    "offer_id": "0371100006",
    "product_id": 1861017680,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11243,26 +8317,11 @@
    }
   },
   {
-   "acquiring": 23.83,
+   "acquiring": 0,
    "offer_id": "0371106238",
    "product_id": 1861050603,
    "volume_weight": 0.1,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11302,26 +8361,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "0371106236",
    "product_id": 1861124783,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11361,26 +8405,11 @@
    }
   },
   {
-   "acquiring": 39.71,
+   "acquiring": 0,
    "offer_id": "0381049039",
    "product_id": 1861417469,
    "volume_weight": 0.9,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11420,26 +8449,11 @@
    }
   },
   {
-   "acquiring": 35.74,
+   "acquiring": 0,
    "offer_id": "0371060754",
    "product_id": 1861461555,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11479,26 +8493,11 @@
    }
   },
   {
-   "acquiring": 30.4,
+   "acquiring": 0,
    "offer_id": "0381049048",
    "product_id": 1861770407,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11538,26 +8537,11 @@
    }
   },
   {
-   "acquiring": 32.3,
+   "acquiring": 0,
    "offer_id": "0381040378",
    "product_id": 1861834340,
    "volume_weight": 0.5,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11597,26 +8581,11 @@
    }
   },
   {
-   "acquiring": 30.4,
+   "acquiring": 0,
    "offer_id": "0381049054",
    "product_id": 1861927220,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11656,26 +8625,11 @@
    }
   },
   {
-   "acquiring": 30.78,
+   "acquiring": 0,
    "offer_id": "0381040010",
    "product_id": 1951868742,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11715,26 +8669,11 @@
    }
   },
   {
-   "acquiring": 45.6,
+   "acquiring": 0,
    "offer_id": "0381049037",
    "product_id": 1952520913,
    "volume_weight": 0.8,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11774,44 +8713,22 @@
    }
   },
   {
-   "acquiring": 47.88,
+   "acquiring": 0,
    "offer_id": "0380359695",
    "product_id": 1952562843,
    "volume_weight": 0.4,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 76,
-    "fbo_direct_flow_trans_min_amount": 76,
-    "fbo_return_flow_amount": 76,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 98,
-    "fbs_direct_flow_trans_max_amount": 98,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
-    "actions": [
-     {
-      "title": "Максимальный бустинг",
-      "value": 2520,
-      "date_from": "2025-10-07T21:00:00Z",
-      "date_to": "2025-10-23T20:59:59Z"
-     }
-    ],
+    "actions": [],
     "ozon_actions_exist": false
    },
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 2052,
-    "marketing_seller_price": 2520,
+    "marketing_price": 2467,
+    "marketing_seller_price": 3000,
     "min_price": 2164,
     "old_price": 3200,
     "price": 3000,
@@ -11822,16 +8739,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 3151,
+     "min_price": 2938,
      "min_price_currency": "RUB",
-     "price_index_value": 0.62
+     "price_index_value": 0.79
     },
     "ozon_index_data": {
-     "min_price": 2264,
+     "min_price": 2278,
      "min_price_currency": "RUB",
-     "price_index_value": 0.86
+     "price_index_value": 1.02
     },
-    "color_index": "GREEN",
+    "color_index": "YELLOW",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -11840,26 +8757,11 @@
    }
   },
   {
-   "acquiring": 33.76,
+   "acquiring": 0,
    "offer_id": "0380350020",
    "product_id": 1952595558,
    "volume_weight": 0.3,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11899,26 +8801,11 @@
    }
   },
   {
-   "acquiring": 42.69,
+   "acquiring": 0,
    "offer_id": "4100348008",
    "product_id": 2215433072,
    "volume_weight": 0.2,
-   "commissions": {
-    "fbo_deliv_to_customer_amount": 25,
-    "fbo_direct_flow_trans_max_amount": 66,
-    "fbo_direct_flow_trans_min_amount": 66,
-    "fbo_return_flow_amount": 66,
-    "fbs_deliv_to_customer_amount": 25,
-    "fbs_direct_flow_trans_min_amount": 80,
-    "fbs_direct_flow_trans_max_amount": 80,
-    "fbs_first_mile_max_amount": 30,
-    "fbs_first_mile_min_amount": 10,
-    "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 30,
-    "sales_percent_fbs": 34,
-    "sales_percent_rfbs": 31,
-    "sales_percent_fbp": 31
-   },
+   "commissions": null,
    "marketing_actions": {
     "current_period_from": null,
     "current_period_to": null,
@@ -11958,6 +8845,6 @@
    }
   }
  ],
- "cursor": "WzI4NDY2Mzg5ODEsMjg0NjYzODk4MV0=",
+ "cursor": "WzI4NzAzMTk5NTMsMjg3MDMxOTk1M10=",
  "total": 202
 }

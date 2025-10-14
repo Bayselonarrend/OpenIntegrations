@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "28782aa7-fc4e-8176-ab6d-ff167ab08f87",
- "created_time": "2025-10-09T21:05:00Z",
- "last_edited_time": "2025-10-09T21:05:00Z",
+ "id": "28c82aa7-fc4e-81c7-829a-ec113b1372df",
+ "created_time": "2025-10-14T05:03:00Z",
+ "last_edited_time": "2025-10-14T05:03:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,38 +15,55 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "28782aa7-fc4e-815b-ab93-e96a5c025ece"
+  "database_id": "28c82aa7-fc4e-8164-abb2-d149ecfc07ef"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
   "Phone": {
-   "id": "BCte",
+   "id": "D%5DA%5B",
    "type": "phone_number",
    "phone_number": "88005553535"
   },
-  "Active": {
-   "id": "C~f%3B",
-   "type": "checkbox",
-   "checkbox": true
-  },
   "Status": {
-   "id": "%5DZQs",
+   "id": "H%3CVx",
    "type": "select",
    "select": {
-    "id": "47ce6f86-e7a6-4b3a-9a94-8f9dee3d79e1",
+    "id": "2297d930-bf88-4194-9287-b05256711379",
     "name": "New",
     "color": "green"
    }
   },
-  "User": {
-   "id": "_%7Dw%5E",
-   "type": "people",
-   "people": []
+  "Image": {
+   "id": "N%5ECL",
+   "type": "files",
+   "files": [
+    {
+     "name": "Logo",
+     "type": "external",
+     "external": {
+      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
+     }
+    }
+   ]
+  },
+  "Active": {
+   "id": "a%7B%3AE",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "CreationDate": {
+   "id": "gmEc",
+   "type": "date",
+   "date": {
+    "start": "2025-10-14T11:03:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
   },
   "Email": {
-   "id": "iGxd",
+   "id": "hQR%5E",
    "type": "rich_text",
    "rich_text": [
     {
@@ -68,35 +85,8 @@
     }
    ]
   },
-  "Image": {
-   "id": "iJnF",
-   "type": "files",
-   "files": [
-    {
-     "name": "Logo",
-     "type": "external",
-     "external": {
-      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
-     }
-    }
-   ]
-  },
-  "CreationDate": {
-   "id": "mAG_",
-   "type": "date",
-   "date": {
-    "start": "2025-10-09T09:05:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Number": {
-   "id": "z%3EnU",
-   "type": "number",
-   "number": 1
-  },
   "Description": {
-   "id": "%7Dm%7BA",
+   "id": "wiIp",
    "type": "rich_text",
    "rich_text": [
     {
@@ -117,6 +107,16 @@
      "href": null
     }
    ]
+  },
+  "User": {
+   "id": "%7BrTe",
+   "type": "people",
+   "people": []
+  },
+  "Number": {
+   "id": "~%7CUe",
+   "type": "number",
+   "number": 1
   },
   "Name": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/LLC-Vector-28782aa7fc4e8176ab6dff167ab08f87",
+ "url": "https://www.notion.so/LLC-Vector-28c82aa7fc4e81c7829aec113b1372df",
  "public_url": null,
- "request_id": "5d5c7c91-fb70-4a40-9fd6-54f964ec8595"
+ "request_id": "2989c701-d2c8-4c96-b277-01a3813a94ad"
 }
