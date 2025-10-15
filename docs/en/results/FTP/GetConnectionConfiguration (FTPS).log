@@ -7,7 +7,7 @@
   "write_timeout": 120,
   "advanced_resolve": true,
   "login": "bayselonarrend",
-  "password": "12we3456!2154"
+  "password": "***"
  },
  "tls": {
   "use_tls": true,
