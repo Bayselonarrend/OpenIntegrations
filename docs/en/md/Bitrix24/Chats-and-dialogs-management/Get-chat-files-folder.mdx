@@ -33,13 +33,13 @@ Method at API documentation: [im.disk.folder.get](https://dev.1c-bitrix.ru/learn
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID = "3164";
+    ChatID = "3244";
 
     Result = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c866e568006e9f06006b12e400000001000...";
-    ChatID = "3166";
+    Token  = "8a1bee68006e9f06006b12e400000001000...";
+    ChatID = "3246";
 
     Result = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
 ```
@@ -51,7 +51,7 @@ Method at API documentation: [im.disk.folder.get](https://dev.1c-bitrix.ru/learn
         ```bash
             oint bitrix24 GetChatFilesFolder \
              --url "b24-ar17wx.bitrix24.by" \
-             --chat 3186 \
+             --chat 3266 \
              --token "***"
         ```
     </TabItem>
@@ -60,7 +60,7 @@ Method at API documentation: [im.disk.folder.get](https://dev.1c-bitrix.ru/learn
         ```batch
             oint bitrix24 GetChatFilesFolder ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --chat 3186 ^
+             --chat 3266 ^
              --token "***"
         ```
     </TabItem>
@@ -70,17 +70,17 @@ Method at API documentation: [im.disk.folder.get](https://dev.1c-bitrix.ru/learn
 ```json title="Result"
 {
  "result": {
-  "ID": 44164
+  "ID": 44974
  },
  "time": {
-  "start": 1760044423,
-  "finish": 1760044423.74618,
-  "duration": 0.746181964874268,
+  "start": 1760522403,
+  "finish": 1760522403.44235,
+  "duration": 0.442353010177612,
   "processing": 0,
-  "date_start": "2025-10-09T21:13:43+00:00",
-  "date_finish": "2025-10-09T21:13:43+00:00",
-  "operating_reset_at": 1760045023,
-  "operating": 0
+  "date_start": "2025-10-15T10:00:03+00:00",
+  "date_finish": "2025-10-15T10:00:03+00:00",
+  "operating_reset_at": 1760523003,
+  "operating": 0.101873874664307
  }
 }
 ```

@@ -42,10 +42,10 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
     Result = OPI_Bitrix24.CreateDepartment(URL, Name, ParentID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c866e568006e9f06006b12e400000001000...";
+    Token = "8a1bee68006e9f06006b12e400000001000...";
 
     Name     = "Subordinate department";
-    ParentID = "2736";
+    ParentID = "2816";
     HeadID   = 1;
 
     Result = OPI_Bitrix24.CreateDepartment(URL, Name, ParentID, HeadID, Token);
@@ -59,7 +59,7 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
             oint bitrix24 CreateDepartment \
              --url "b24-ar17wx.bitrix24.by" \
              --title "Subordinate department" \
-             --parentid 2756 \
+             --parentid 2836 \
              --headid 1 \
              --token "***"
         ```
@@ -70,7 +70,7 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
             oint bitrix24 CreateDepartment ^
              --url "b24-ar17wx.bitrix24.by" ^
              --title "Subordinate department" ^
-             --parentid 2756 ^
+             --parentid 2836 ^
              --headid 1 ^
              --token "***"
         ```
@@ -80,16 +80,16 @@ Method at API documentation: [department.add](https://dev.1c-bitrix.ru/rest_help
 
 ```json title="Result"
 {
- "result": 2778,
+ "result": 2838,
  "time": {
-  "start": 1760044449,
-  "finish": 1760044449.81379,
-  "duration": 0.813791990280151,
+  "start": 1760522496,
+  "finish": 1760522496.73183,
+  "duration": 0.731828927993774,
   "processing": 0,
-  "date_start": "2025-10-09T21:14:09+00:00",
-  "date_finish": "2025-10-09T21:14:09+00:00",
-  "operating_reset_at": 1760045049,
-  "operating": 0.130964994430542
+  "date_start": "2025-10-15T10:01:36+00:00",
+  "date_finish": "2025-10-15T10:01:36+00:00",
+  "operating_reset_at": 1760523096,
+  "operating": 0.324176073074341
  }
 }
 ```

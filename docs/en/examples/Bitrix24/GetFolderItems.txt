@@ -1,9 +1,9 @@
 ﻿    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    FolderID = "43602";
+    FolderID = "44682";
 
     Result = OPI_Bitrix24.GetFolderItems(URL, FolderID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c866e568006e9f06006b12e400000001000...";
+    Token = "8a1bee68006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetFolderItems(URL, FolderID, , Token);

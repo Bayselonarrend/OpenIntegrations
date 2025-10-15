@@ -34,8 +34,8 @@ Method at API documentation: [Registration of Prealert document](https://api-doc
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token        = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTk4NjIwOTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID         = "6c416756-13cc-4dff-9c62-ffbcf3d40f41";
+    Token        = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjA0MzY3MTIsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID         = "c91d4e76-0b17-4e76-ae73-674bfdabecf9";
     Point        = "NSK27";
     TransferDate = OPI_Tools.GetCurrentDate() + 60 * 60 * 24;
 
@@ -49,8 +49,8 @@ Method at API documentation: [Registration of Prealert document](https://api-doc
         ```bash
             oint cdek CreatePrealert \
              --token "***" \
-             --uuids "f968a61d-0f7a-411d-a67f-f42643e2fe53" \
-             --date "2025-10-09T20:40:57.9464826" \
+             --uuids "ae2ba595-fbac-4572-80f5-03f20395a70a" \
+             --date "2025-10-16T10:14:36.9790051" \
              --point "NSK27" \
              --testapi "***"
         ```
@@ -60,8 +60,8 @@ Method at API documentation: [Registration of Prealert document](https://api-doc
         ```batch
             oint cdek CreatePrealert ^
              --token "***" ^
-             --uuids "f968a61d-0f7a-411d-a67f-f42643e2fe53" ^
-             --date "2025-10-09T20:40:57.9464826" ^
+             --uuids "ae2ba595-fbac-4572-80f5-03f20395a70a" ^
+             --date "2025-10-16T10:14:36.9790051" ^
              --point "NSK27" ^
              --testapi "***"
         ```
@@ -72,13 +72,13 @@ Method at API documentation: [Registration of Prealert document](https://api-doc
 ```json title="Result"
 {
  "entity": {
-  "uuid": "050d0706-b97c-4bf2-9a3c-7a33b2fc5360"
+  "uuid": "24797e97-4c5b-4830-a91b-fc3f9e85854e"
  },
  "requests": [
   {
-   "request_uuid": "fea90c50-cc08-401a-a629-b81775de8498",
+   "request_uuid": "6d102743-bef9-46c7-a054-7393e69a203a",
    "type": "CREATE",
-   "date_time": "2025-10-09T21:20:27+00:00",
+   "date_time": "2025-10-15T10:14:39+00:00",
    "state": "ACCEPTED"
   }
  ],

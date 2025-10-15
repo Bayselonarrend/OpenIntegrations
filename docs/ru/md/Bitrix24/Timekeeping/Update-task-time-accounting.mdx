@@ -37,8 +37,8 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "8158";
-    IDЗаписи = "2976";
+    IDЗадачи = "8358";
+    IDЗаписи = "3056";
 
     Текст = "Забытый в прошлый раз текст";
     Время = 4800;
@@ -46,8 +46,8 @@ import TabItem from '@theme/TabItem';
     Результат = OPI_Bitrix24.ИзменитьТрудозатратыЗадачи(URL, IDЗадачи, IDЗаписи, Время, Текст);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Токен    = "c866e568006e9f06006b12e400000001000...";
-    IDЗаписи = "2978";
+    Токен    = "8a1bee68006e9f06006b12e400000001000...";
+    IDЗаписи = "3058";
 
     Текст         = "Новые трудозатраты по обработке";
     Время         = 4800;
@@ -63,11 +63,11 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ИзменитьТрудозатратыЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8268" \
-              --record 3022 \
+              --task "8388" \
+              --record 3070 \
               --amount 4800 \
               --text "Новые трудозатраты по обработке" \
-              --date "2025-09-10T10:08:04.3882728" \
+              --date "2025-09-14T14:36:41.8064705" \
               --token "***"
         ```
     </TabItem>
@@ -76,11 +76,11 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ИзменитьТрудозатратыЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8268" ^
-              --record 3022 ^
+              --task "8388" ^
+              --record 3070 ^
               --amount 4800 ^
               --text "Новые трудозатраты по обработке" ^
-              --date "2025-09-10T10:08:04.3882728" ^
+              --date "2025-09-14T14:36:41.8064705" ^
               --token "***"
         ```
     </TabItem>
@@ -91,14 +91,14 @@ import TabItem from '@theme/TabItem';
 {
  "result": null,
  "time": {
-  "start": 1760090886,
-  "finish": 1760090890.16581,
-  "duration": 4.16581201553345,
-  "processing": 1,
-  "date_start": "2025-10-10T10:08:06+00:00",
-  "date_finish": "2025-10-10T10:08:10+00:00",
-  "operating_reset_at": 1760091489,
-  "operating": 0.313225984573364
+  "start": 1760461426,
+  "finish": 1760461426.29335,
+  "duration": 0.293351888656616,
+  "processing": 0,
+  "date_start": "2025-10-14T17:03:46+00:00",
+  "date_finish": "2025-10-14T17:03:46+00:00",
+  "operating_reset_at": 1760462026,
+  "operating": 0
  }
 }
 ```

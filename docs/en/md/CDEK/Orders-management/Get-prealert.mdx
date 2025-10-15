@@ -34,8 +34,8 @@ Method at API documentation: [Details of prealert document](https://api-docs.cde
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTk4NjIwOTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID  = "21828ee7-e8e4-42f8-a28f-6bd7d9de626a";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjA0MzY3MTIsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID  = "0bc0554b-3d5a-43cf-b487-4a195ec7ebae";
 
     Result = OPI_CDEK.GetPrealert(Token, UUID, True);
 ```
@@ -47,7 +47,7 @@ Method at API documentation: [Details of prealert document](https://api-docs.cde
         ```bash
             oint cdek GetPrealert \
              --token "***" \
-             --uuid "226dc684-611f-4a35-9f27-196734e38a15" \
+             --uuid "24797e97-4c5b-4830-a91b-fc3f9e85854e" \
              --testapi "***"
         ```
     </TabItem>
@@ -56,7 +56,7 @@ Method at API documentation: [Details of prealert document](https://api-docs.cde
         ```batch
             oint cdek GetPrealert ^
              --token "***" ^
-             --uuid "226dc684-611f-4a35-9f27-196734e38a15" ^
+             --uuid "24797e97-4c5b-4830-a91b-fc3f9e85854e" ^
              --testapi "***"
         ```
     </TabItem>
@@ -66,19 +66,19 @@ Method at API documentation: [Details of prealert document](https://api-docs.cde
 ```json title="Result"
 {
  "entity": {
-  "planned_date": "2025-10-10T21:20:26+00:00",
+  "planned_date": "2025-10-16T10:14:36+00:00",
   "shipment_point": "NSK27",
   "orders": [
    {
-    "order_uuid": "37777fa2-8049-44e1-bebb-05c835e484c6"
+    "order_uuid": "ae2ba595-fbac-4572-80f5-03f20395a70a"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "fea90c50-cc08-401a-a629-b81775de8498",
+   "request_uuid": "6d102743-bef9-46c7-a054-7393e69a203a",
    "type": "CREATE",
-   "date_time": "2025-10-09T21:20:27+00:00",
+   "date_time": "2025-10-15T10:14:39+00:00",
    "state": "ACCEPTED"
   }
  ],

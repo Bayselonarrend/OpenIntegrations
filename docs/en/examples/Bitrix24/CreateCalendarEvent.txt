@@ -1,5 +1,5 @@
 ﻿    URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CalendarID = "1422";
+    CalendarID = "1502";
 
     Tomorrow = OPI_Tools.GetCurrentDate() + 86400;
     Hour     = 3600;
@@ -61,8 +61,8 @@
     Result = OPI_Bitrix24.CreateCalendarEvent(URL, EventStucture);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "c866e568006e9f06006b12e400000001000...";
-    CalendarID = "1424";
+    Token      = "8a1bee68006e9f06006b12e400000001000...";
+    CalendarID = "1504";
 
     EventStucture.Insert("section", CalendarID);
 

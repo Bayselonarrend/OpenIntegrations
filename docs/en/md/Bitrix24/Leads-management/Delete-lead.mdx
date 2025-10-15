@@ -33,13 +33,13 @@ Method at API documentation: [crm.lead.delete](https://dev.1c-bitrix.ru/rest_hel
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    LeadID = "2520";
+    LeadID = "2600";
 
     Result = OPI_Bitrix24.DeleteLead(URL, LeadID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c866e568006e9f06006b12e400000001000...";
-    LeadID = "2522";
+    Token  = "8a1bee68006e9f06006b12e400000001000...";
+    LeadID = "2602";
 
     Result = OPI_Bitrix24.DeleteLead(URL, LeadID, Token);
 ```
@@ -51,7 +51,7 @@ Method at API documentation: [crm.lead.delete](https://dev.1c-bitrix.ru/rest_hel
         ```bash
             oint bitrix24 DeleteLead \
              --url "b24-ar17wx.bitrix24.by" \
-             --lead 2542 \
+             --lead 2622 \
              --token "***"
         ```
     </TabItem>
@@ -60,7 +60,7 @@ Method at API documentation: [crm.lead.delete](https://dev.1c-bitrix.ru/rest_hel
         ```batch
             oint bitrix24 DeleteLead ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --lead 2542 ^
+             --lead 2622 ^
              --token "***"
         ```
     </TabItem>
@@ -71,14 +71,14 @@ Method at API documentation: [crm.lead.delete](https://dev.1c-bitrix.ru/rest_hel
 {
  "result": true,
  "time": {
-  "start": 1760044479,
-  "finish": 1760044479.89716,
-  "duration": 0.897165060043335,
-  "processing": 0,
-  "date_start": "2025-10-09T21:14:39+00:00",
-  "date_finish": "2025-10-09T21:14:39+00:00",
-  "operating_reset_at": 1760045079,
-  "operating": 0.177538871765137
+  "start": 1760522603,
+  "finish": 1760522604.00032,
+  "duration": 1.00032496452332,
+  "processing": 1,
+  "date_start": "2025-10-15T10:03:23+00:00",
+  "date_finish": "2025-10-15T10:03:24+00:00",
+  "operating_reset_at": 1760523203,
+  "operating": 0.560378074645996
  }
 }
 ```

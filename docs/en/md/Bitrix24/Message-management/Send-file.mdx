@@ -35,7 +35,7 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID      = "3164";
+    ChatID      = "3244";
     File        = "https://hut.openintegrations.dev/test_data/document.docx"; // Binary Data, URL or path to file
     Description = "Very important file";
 
@@ -48,8 +48,8 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
     Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c866e568006e9f06006b12e400000001000...";
-    ChatID = "3166";
+    Token  = "8a1bee68006e9f06006b12e400000001000...";
+    ChatID = "3246";
 
     Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
     FolderID  = Directory["result"]["ID"];
@@ -67,8 +67,8 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
         ```bash
             oint bitrix24 SendFile \
              --url "b24-ar17wx.bitrix24.by" \
-             --chat 3186 \
-             --fileid 43898 \
+             --chat 3266 \
+             --fileid 44978 \
              --description "Very important file" \
              --token "***"
         ```
@@ -78,8 +78,8 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
         ```batch
             oint bitrix24 SendFile ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --chat 3186 ^
-             --fileid 43898 ^
+             --chat 3266 ^
+             --fileid 44978 ^
              --description "Very important file" ^
              --token "***"
         ```
@@ -91,9 +91,9 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 {
  "result": {
   "FILES": {
-   "upload44168": {
-    "id": 44168,
-    "chatId": 3206,
+   "upload44978": {
+    "id": 44978,
+    "chatId": 3266,
     "date": {},
     "type": "file",
     "name": "Imortant doc.docx",
@@ -105,19 +105,19 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
     "authorId": 1,
     "authorName": "Антон Титовец",
     "urlPreview": "",
-    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=44168&width=1280&height=1280&signature=129ba1506340012d2fadc1aa687dfb3c5b7d5a5b27eefbca6557ac7b8c42a599&exact=N&fileName=Imortant%20doc.docx",
-    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=44168&width=1280&height=1280&signature=129ba1506340012d2fadc1aa687dfb3c5b7d5a5b27eefbca6557ac7b8c42a599&exact=N&fileName=Imortant%20doc.docx",
+    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=44978&width=1280&height=1280&signature=368b8cdef3e72a6311d281b7551dc05cf27ff27a0786bf6cc08cd477f95f1ea0&exact=N&fileName=Imortant%20doc.docx",
+    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=44978&width=1280&height=1280&signature=368b8cdef3e72a6311d281b7551dc05cf27ff27a0786bf6cc08cd477f95f1ea0&exact=N&fileName=Imortant%20doc.docx",
     "viewerAttrs": {
      "viewer": null,
      "viewerType": "cloud-document",
-     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=44168&width=1280&height=1280&signature=129ba1506340012d2fadc1aa687dfb3c5b7d5a5b27eefbca6557ac7b8c42a599&exact=N&fileName=Imortant%20doc.docx",
+     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=44978&width=1280&height=1280&signature=368b8cdef3e72a6311d281b7551dc05cf27ff27a0786bf6cc08cd477f95f1ea0&exact=N&fileName=Imortant%20doc.docx",
      "viewerTypeClass": "BX.Messenger.Integration.Viewer.OnlyOfficeChatItem",
      "viewerSeparateItem": true,
      "viewerExtension": "im.integration.viewer",
-     "objectId": "44168",
-     "imChatId": 3206,
+     "objectId": "44978",
+     "imChatId": 3266,
      "title": "Imortant doc.docx",
-     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"44168\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
+     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"44978\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
     },
     "mediaUrl": {
      "preview": {
@@ -128,11 +128,11 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
    }
   },
   "DISK_ID": [
-   "44168"
+   "44978"
   ],
   "FILE_MODELS": {
-   "upload44168": {
-    "id": 44168,
+   "upload44978": {
+    "id": 44978,
     "name": "Imortant doc.docx",
     "createTime": {},
     "updateTime": {},
@@ -140,35 +140,35 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
     "code": null,
     "xmlId": null,
     "storageId": 6,
-    "realObjectId": 44168,
-    "parentId": 44164,
+    "realObjectId": 44978,
+    "parentId": 44974,
     "deletedType": 0,
     "createdBy": "1",
     "updatedBy": "1",
     "deletedBy": "0",
-    "uniqueCode": "stE8uoqkaH8grjEd0Rop",
+    "uniqueCode": "B6BIsHdI7WsUao0PDVfG",
     "typeFile": 4,
     "globalContentVersion": 2,
-    "fileId": 29750,
+    "fileId": 30322,
     "size": 24071,
-    "etag": "d84a81f908d04749a5d99e972c954326",
+    "etag": "27d5d5b06cd060fd11fb92271c4c0f31",
     "links": {
-     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=44168",
-     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=44168&action=showObjectInGrid&ncc=1"
+     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=44978",
+     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=44978&action=showObjectInGrid&ncc=1"
     }
    }
   },
-  "MESSAGE_ID": 63414
+  "MESSAGE_ID": 64730
  },
  "time": {
-  "start": 1760044426,
-  "finish": 1760044426.16296,
-  "duration": 0.162960052490234,
+  "start": 1760522419,
+  "finish": 1760522422.56019,
+  "duration": 3.5601909160614,
   "processing": 0,
-  "date_start": "2025-10-09T21:13:46+00:00",
-  "date_finish": "2025-10-09T21:13:46+00:00",
-  "operating_reset_at": 1760045026,
-  "operating": 0
+  "date_start": "2025-10-15T10:00:19+00:00",
+  "date_finish": "2025-10-15T10:00:22+00:00",
+  "operating_reset_at": 1760523022,
+  "operating": 0.275109052658081
  }
 }
 ```

@@ -33,12 +33,12 @@ Method at API documentation: [disk.folder.markdeleted](https://dev.1c-bitrix.ru/
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    FolderID = "43602";
+    FolderID = "44682";
 
     Result = OPI_Bitrix24.MarkFolderAsDeleted(URL, FolderID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c866e568006e9f06006b12e400000001000...";
+    Token = "8a1bee68006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MarkFolderAsDeleted(URL, FolderID, Token);
 ```
@@ -50,7 +50,7 @@ Method at API documentation: [disk.folder.markdeleted](https://dev.1c-bitrix.ru/
         ```bash
             oint bitrix24 MarkFolderAsDeleted \
              --url "b24-ar17wx.bitrix24.by" \
-             --folderid 43872 \
+             --folderid 44952 \
              --token "***"
         ```
     </TabItem>
@@ -59,7 +59,7 @@ Method at API documentation: [disk.folder.markdeleted](https://dev.1c-bitrix.ru/
         ```batch
             oint bitrix24 MarkFolderAsDeleted ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --folderid 43872 ^
+             --folderid 44952 ^
              --token "***"
         ```
     </TabItem>
@@ -69,30 +69,30 @@ Method at API documentation: [disk.folder.markdeleted](https://dev.1c-bitrix.ru/
 ```json title="Result"
 {
  "result": {
-  "ID": "44142",
+  "ID": "44952",
   "NAME": "New catalog",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": "44142",
+  "REAL_OBJECT_ID": "44952",
   "PARENT_ID": "3",
   "DELETED_TYPE": "3",
-  "CREATE_TIME": "2025-10-09T21:11:46+00:00",
-  "UPDATE_TIME": "2025-10-09T21:11:58+00:00",
-  "DELETE_TIME": "2025-10-09T21:12:03+00:00",
+  "CREATE_TIME": "2025-10-15T09:54:29+00:00",
+  "UPDATE_TIME": "2025-10-15T09:55:12+00:00",
+  "DELETE_TIME": "2025-10-15T09:55:35+00:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog"
  },
  "time": {
-  "start": 1760044324,
-  "finish": 1760044324.09315,
-  "duration": 0.0931520462036133,
+  "start": 1760522138,
+  "finish": 1760522138.14934,
+  "duration": 0.149338006973267,
   "processing": 0,
-  "date_start": "2025-10-09T21:12:04+00:00",
-  "date_finish": "2025-10-09T21:12:04+00:00",
-  "operating_reset_at": 1760044924,
+  "date_start": "2025-10-15T09:55:38+00:00",
+  "date_finish": "2025-10-15T09:55:38+00:00",
+  "operating_reset_at": 1760522738,
   "operating": 0
  }
 }
