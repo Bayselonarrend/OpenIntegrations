@@ -11,6 +11,6 @@
   "port": 1080,
   "proxy_type": "socks5",
   "login": "proxyuser",
-  "password": "12we3456!2154"
+  "password": "***"
  }
 }
