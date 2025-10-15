@@ -35,17 +35,17 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    TaskID  = "8156";
-    StageID = "2990";
+    TaskID  = "8356";
+    StageID = "3070";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID);
 
-    StageID = "2992";
+    StageID = "3072";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c866e568006e9f06006b12e400000001000...";
+    Token = "8a1bee68006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID, , , Token);
 ```
@@ -57,8 +57,8 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
         ```bash
             oint bitrix24 MoveTaskToKanbanStage \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "8206" \
-             --stage 3012 \
+             --task "8406" \
+             --stage 3092 \
              --token "***"
         ```
     </TabItem>
@@ -67,8 +67,8 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
         ```batch
             oint bitrix24 MoveTaskToKanbanStage ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "8206" ^
-             --stage 3012 ^
+             --task "8406" ^
+             --stage 3092 ^
              --token "***"
         ```
     </TabItem>
@@ -79,13 +79,13 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
 {
  "result": true,
  "time": {
-  "start": 1760044332,
-  "finish": 1760044332.86048,
-  "duration": 0.860475063323975,
+  "start": 1760522167,
+  "finish": 1760522167.4685,
+  "duration": 0.468499898910522,
   "processing": 0,
-  "date_start": "2025-10-09T21:12:12+00:00",
-  "date_finish": "2025-10-09T21:12:12+00:00",
-  "operating_reset_at": 1760044932,
+  "date_start": "2025-10-15T09:56:07+00:00",
+  "date_finish": "2025-10-15T09:56:07+00:00",
+  "operating_reset_at": 1760522767,
   "operating": 0
  }
 }

@@ -33,13 +33,13 @@ Method at API documentation: [tasks.task.result.addFromComment](https://dev.1c-b
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CommentID = "18972";
+    CommentID = "19412";
 
     Result = OPI_Bitrix24.CreateResultFromComment(URL, CommentID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "c866e568006e9f06006b12e400000001000...";
-    CommentID = "18974";
+    Token     = "8a1bee68006e9f06006b12e400000001000...";
+    CommentID = "19414";
 
     Result = OPI_Bitrix24.CreateResultFromComment(URL, CommentID, Token);
 ```
@@ -51,7 +51,7 @@ Method at API documentation: [tasks.task.result.addFromComment](https://dev.1c-b
         ```bash
             oint bitrix24 CreateResultFromComment \
              --url "b24-ar17wx.bitrix24.by" \
-             --comment 19084 \
+             --comment 19524 \
              --token "***"
         ```
     </TabItem>
@@ -60,7 +60,7 @@ Method at API documentation: [tasks.task.result.addFromComment](https://dev.1c-b
         ```batch
             oint bitrix24 CreateResultFromComment ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --comment 19084 ^
+             --comment 19524 ^
              --token "***"
         ```
     </TabItem>
@@ -70,25 +70,25 @@ Method at API documentation: [tasks.task.result.addFromComment](https://dev.1c-b
 ```json title="Result"
 {
  "result": {
-  "id": 3050,
-  "taskId": 8254,
-  "commentId": 19194,
+  "id": 3110,
+  "taskId": 8404,
+  "commentId": 19524,
   "createdBy": 1,
-  "createdAt": "2025-10-09T21:11:00+00:00",
-  "updatedAt": "2025-10-09T21:11:00+00:00",
+  "createdAt": "2025-10-15T09:52:31+00:00",
+  "updatedAt": "2025-10-15T09:52:31+00:00",
   "status": 0,
   "text": "The task has been changed, let's split up",
   "formattedText": "The task has been changed, let's split up",
   "files": null
  },
  "time": {
-  "start": 1760044263,
-  "finish": 1760044263.33113,
-  "duration": 0.33112907409668,
+  "start": 1760521962,
+  "finish": 1760521962.18186,
+  "duration": 0.181855916976929,
   "processing": 0,
-  "date_start": "2025-10-09T21:11:03+00:00",
-  "date_finish": "2025-10-09T21:11:03+00:00",
-  "operating_reset_at": 1760044863,
+  "date_start": "2025-10-15T09:52:42+00:00",
+  "date_finish": "2025-10-15T09:52:42+00:00",
+  "operating_reset_at": 1760522562,
   "operating": 0
  }
 }

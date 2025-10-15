@@ -36,15 +36,15 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID = "3164";
+    ChatID = "3244";
 
     Image = "https://hut.openintegrations.dev/test_data/picture2.jpg";
 
     Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c866e568006e9f06006b12e400000001000...";
-    ChatID = "3166";
+    Token  = "8a1bee68006e9f06006b12e400000001000...";
+    ChatID = "3246";
 
     Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image, Token);
 ```
@@ -56,7 +56,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
         ```bash
             oint bitrix24 ChangeChatPicture \
              --url "b24-ar17wx.bitrix24.by" \
-             --chat 3186 \
+             --chat 3266 \
              --picture "https://hut.openintegrations.dev/test_data/picture2.jpg" \
              --token "***"
         ```
@@ -66,7 +66,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
         ```batch
             oint bitrix24 ChangeChatPicture ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --chat 3186 ^
+             --chat 3266 ^
              --picture "https://hut.openintegrations.dev/test_data/picture2.jpg" ^
              --token "***"
         ```
@@ -78,14 +78,14 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 {
  "result": true,
  "time": {
-  "start": 1760044396,
-  "finish": 1760044396.98097,
-  "duration": 0.980968952178955,
-  "processing": 0,
-  "date_start": "2025-10-09T21:13:16+00:00",
-  "date_finish": "2025-10-09T21:13:16+00:00",
-  "operating_reset_at": 1760044996,
-  "operating": 0.662477016448975
+  "start": 1760522319,
+  "finish": 1760522320.23317,
+  "duration": 1.23317289352417,
+  "processing": 1,
+  "date_start": "2025-10-15T09:58:39+00:00",
+  "date_finish": "2025-10-15T09:58:40+00:00",
+  "operating_reset_at": 1760522919,
+  "operating": 0.927073001861572
  }
 }
 ```

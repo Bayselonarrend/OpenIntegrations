@@ -41,13 +41,13 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
     TaskData.Insert("PRIORITY"   , "1");
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "8150";
+    TaskID = "8350";
 
     Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c866e568006e9f06006b12e400000001000...";
-    TaskID = "8152";
+    Token  = "8a1bee68006e9f06006b12e400000001000...";
+    TaskID = "8352";
 
     Result = OPI_Bitrix24.UpdateTask(URL, TaskID, TaskData, Token);
 ```
@@ -61,7 +61,7 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
             
             oint bitrix24 UpdateTask \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "8202" \
+             --task "8402" \
              --fields "{'TITLE':'Another task title','DESCRIPTION':'Another task description','PRIORITY':'1'}" \
              --token "***"
         ```
@@ -73,7 +73,7 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
             
             oint bitrix24 UpdateTask ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "8202" ^
+             --task "8402" ^
              --fields "{'TITLE':'Another task title','DESCRIPTION':'Another task description','PRIORITY':'1'}" ^
              --token "***"
         ```
@@ -85,7 +85,7 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
 {
  "result": {
   "task": {
-   "id": "8252",
+   "id": "8402",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -98,19 +98,19 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-10-09T21:10:14+00:00",
+   "createdDate": "2025-10-15T09:49:30+00:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2025-10-09T21:10:19+00:00",
+   "changedDate": "2025-10-15T09:49:46+00:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2025-10-09T21:10:14+00:00",
+   "activityDate": "2025-10-15T09:49:30+00:00",
    "dateStart": null,
-   "deadline": "2025-10-10T21:10:00+00:00",
-   "startDatePlan": "2025-10-09T21:10:14+00:00",
-   "endDatePlan": "2025-10-10T21:00:00+00:00",
-   "guid": "{e6b0195f-cc21-41c0-a292-d4c5d110cb18}",
+   "deadline": "2025-10-16T09:49:00+00:00",
+   "startDatePlan": "2025-10-15T09:49:30+00:00",
+   "endDatePlan": "2025-10-15T21:00:00+00:00",
+   "guid": "{9d66ffbd-3c22-4486-b9c6-4cf997e510aa}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -138,7 +138,7 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2025-10-09T21:10:19+00:00",
+   "statusChangedDate": "2025-10-15T09:49:46+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -219,14 +219,14 @@ Method at API documentation: [tasks.task.update](https://dev.1c-bitrix.ru/rest_h
   }
  },
  "time": {
-  "start": 1760044219,
-  "finish": 1760044219.54079,
-  "duration": 0.540791034698486,
+  "start": 1760521786,
+  "finish": 1760521786.79147,
+  "duration": 0.7914719581604,
   "processing": 0,
-  "date_start": "2025-10-09T21:10:19+00:00",
-  "date_finish": "2025-10-09T21:10:19+00:00",
-  "operating_reset_at": 1760044819,
-  "operating": 0.187725067138672
+  "date_start": "2025-10-15T09:49:46+00:00",
+  "date_finish": "2025-10-15T09:49:46+00:00",
+  "operating_reset_at": 1760522386,
+  "operating": 0.345438003540039
  }
 }
 ```
