@@ -1,3 +1,3 @@
 oint metrika DeleteCounter \
  --token "***" \
- --counter "104628809"
+ --counter "104649906"

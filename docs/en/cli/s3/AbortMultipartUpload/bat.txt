@@ -4,5 +4,5 @@ oint s3 AbortMultipartUpload ^
  --name "fileChunked.mp3" ^
  --bucket "opi-dirbucket3" ^
  --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
- --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjRjYjRhYmFlLWU2YjQtNDEyOS04MTg2LTU0OWNlMjg3MmQ1Yg" ^
+ --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjBmNTAyZTliLWE1ZmUtNDViYS05OTNkLTgzZmY0NmYyMzgwMg" ^
  --dir true
