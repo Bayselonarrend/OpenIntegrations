@@ -1,5 +1,5 @@
 oint gcalendar EditCalendarMetadata ^
  --token "***" ^
- --calendar "a9687ac90a4dac24bfe17a7044ec25ed87e83320de2d57309e484791c879f1de@group.calendar.google.com" ^
+ --calendar "2b77d2c5b52a4315950e5a46180ee3441f2a288a72fca92c28b28c2ed993b522@group.calendar.google.com" ^
  --title "New name" ^
  --description "New description"

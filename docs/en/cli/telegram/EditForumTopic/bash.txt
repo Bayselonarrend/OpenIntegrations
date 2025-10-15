@@ -1,6 +1,6 @@
 oint telegram EditForumTopic \
  --token "***" \
  --forum "-1001971186208" \
- --topic "12007" \
+ --topic "12117" \
  --title "NewTestTitle" \
  --icon "5310132165583840589"

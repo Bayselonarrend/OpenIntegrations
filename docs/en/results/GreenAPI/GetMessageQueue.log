@@ -1,65 +1,77 @@
 ﻿[
  {
-  "messageID": "BAE5981503C421F5",
-  "type": "sendLocation",
+  "messageID": "BAE5B8457AE5FC88",
+  "type": "sendMessage",
   "body": {
    "chatId": "120363410406221140@g.us",
-   "quotedMessageId": "BAE521F83EFFA9B9",
-   "latitude": 53.908522,
-   "longitude": 27.574821,
-   "typingTime": null
+   "message": "New message",
+   "linkPreview": true,
+   "typingTime": null,
+   "typePreview": "small"
   }
  },
  {
-  "messageID": "BAE531BE583D5FBE",
-  "type": "sendContact",
+  "messageID": "BAE50DE3D325C617",
+  "type": "sendMessage",
   "body": {
    "chatId": "120363410406221140@g.us",
-   "contact": {
-    "phoneContact": 79001234568,
-    "firstName": "Artem",
-    "middleName": "Evpatoriysky",
-    "lastName": "Petrovich",
-    "company": "Bicycle"
-   },
-   "typingTime": null
+   "message": "New message",
+   "quotedMessageId": "BAE5B8457AE5FC88",
+   "linkPreview": true,
+   "typingTime": null,
+   "typePreview": "small"
   }
  },
  {
-  "messageID": "BAE5E291414D0BDC",
-  "type": "sendContact",
+  "messageID": "BAE5C8B93FC989C5",
+  "type": "sendFileByUrl",
   "body": {
+   "fileName": "photo.jpg",
    "chatId": "120363410406221140@g.us",
-   "contact": {
-    "phoneContact": 79001234568,
-    "company": "Bicycle"
-   },
-   "quotedMessageId": "BAE531BE583D5FBE",
-   "typingTime": null
+   "caption": "File description",
+   "archive": false,
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/0ba995d0-5b11-4861-99b5-729204b596d2.jpg",
+   "typingTime": null,
+   "typingType": "composing"
   }
  },
  {
-  "messagesIDs": [
-   "BAE5C6CC4B06B977"
-  ],
-  "type": "ForwardMessages",
+  "messageID": "BAE5F48C5BFFB882",
+  "type": "sendFileByUrl",
   "body": {
+   "fileName": "vid.mp4",
    "chatId": "120363410406221140@g.us",
-   "chatIdFrom": "120363410406221140@g.us",
-   "messages": [
-    "BAE503A4CCA0962A"
-   ],
-   "typingTime": null
+   "quotedMessageId": "BAE5C8B93FC989C5",
+   "caption": "File description",
+   "archive": false,
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/e74ea56d-b09a-4f61-a83d-836d8d6d10b3.mp4",
+   "typingTime": null,
+   "typingType": "composing"
   }
  },
  {
-  "messageID": "BAE5F026D3B87A76",
-  "type": "editMessage",
+  "messageID": "BAE5D97C67FBD0D9",
+  "type": "sendFileByUrl",
   "body": {
    "chatId": "120363410406221140@g.us",
-   "idMessage": "BAE503A4CCA0962A",
-   "message": "New message text",
-   "linkPreview": true
+   "urlFile": "https://hut.openintegrations.dev/test_data/picture.jpg",
+   "fileName": "photo.jpg",
+   "caption": "File description",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "BAE59BF0B798E59A",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "urlFile": "https://hut.openintegrations.dev/test_data/video.mp4",
+   "fileName": "vid.mp4",
+   "caption": "File description",
+   "quotedMessageId": "BAE5D97C67FBD0D9",
+   "typingTime": null,
+   "typingType": "composing"
   }
  }
 ]

@@ -1,4 +1,4 @@
 oint vkteams SendVoice \
  --token "***" \
  --chatid "689203963@chat.agent" \
- --file "C:\Users\bayse\AppData\Local\Temp\ahhs3vbt.tam"
+ --file "/tmp/ijpz4znc.rhf"

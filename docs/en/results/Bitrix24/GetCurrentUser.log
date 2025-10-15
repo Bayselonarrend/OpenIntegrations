@@ -10,7 +10,7 @@
   "DATE_REGISTER": "2024-02-10T00:00:00+00:00",
   "TIME_ZONE": "Europe/Moscow",
   "IS_ONLINE": "N",
-  "TIMESTAMP_X": "14.10.2025 12:43:07",
+  "TIMESTAMP_X": "15.10.2025 13:01:37",
   "LAST_ACTIVITY_DATE": "2025-09-10 10:51:58",
   "PERSONAL_GENDER": "",
   "PERSONAL_BIRTHDAY": "",
@@ -19,17 +19,17 @@
   "UF_DEPARTMENT": [
    1,
    638,
-   2822
+   2838
   ]
  },
  "time": {
-  "start": 1760435006,
-  "finish": 1760435006.07995,
-  "duration": 0.0799500942230225,
+  "start": 1760522525,
+  "finish": 1760522525.76715,
+  "duration": 0.767149925231934,
   "processing": 0,
-  "date_start": "2025-10-14T09:43:26+00:00",
-  "date_finish": "2025-10-14T09:43:26+00:00",
-  "operating_reset_at": 1760435606,
+  "date_start": "2025-10-15T10:02:05+00:00",
+  "date_finish": "2025-10-15T10:02:05+00:00",
+  "operating_reset_at": 1760523125,
   "operating": 0
  }
 }

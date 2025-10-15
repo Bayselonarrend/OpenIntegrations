@@ -1,4 +1,4 @@
 oint slack SendExternalFile \
  --token "***" \
- --fileid "F09LBMT8UD8" \
+ --fileid "F09LEMVED4K" \
  --channels "C06UFNUTKUL"
