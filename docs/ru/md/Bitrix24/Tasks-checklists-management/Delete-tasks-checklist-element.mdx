@@ -34,16 +34,16 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи   = "8150";
-    IDЭлемента = "5706";
+    IDЗадачи   = "8350";
+    IDЭлемента = "5866";
 
     Результат = OPI_Bitrix24.УдалитьЭлементЧеклистаЗадачи(URL, IDЗадачи, IDЭлемента);
 
-    IDЗадачи   = "8152";
-    IDЭлемента = "5710";
+    IDЗадачи   = "8352";
+    IDЭлемента = "5870";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "c866e568006e9f06006b12e400000001000...";
+    Токен = "8a1bee68006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.УдалитьЭлементЧеклистаЗадачи(URL, IDЗадачи, IDЭлемента, Токен);
 ```
@@ -55,8 +55,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 УдалитьЭлементЧеклистаЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8262" \
-              --element 5798 \
+              --task "8382" \
+              --element 5894 \
               --token "***"
         ```
     </TabItem>
@@ -65,8 +65,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 УдалитьЭлементЧеклистаЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8262" ^
-              --element 5798 ^
+              --task "8382" ^
+              --element 5894 ^
               --token "***"
         ```
     </TabItem>
@@ -77,14 +77,14 @@ import TabItem from '@theme/TabItem';
 {
  "result": true,
  "time": {
-  "start": 1760090568,
-  "finish": 1760090568.19958,
-  "duration": 0.199580907821655,
+  "start": 1760461331,
+  "finish": 1760461331.86613,
+  "duration": 0.86612606048584,
   "processing": 0,
-  "date_start": "2025-10-10T10:02:48+00:00",
-  "date_finish": "2025-10-10T10:02:48+00:00",
-  "operating_reset_at": 1760091168,
-  "operating": 0.10076904296875
+  "date_start": "2025-10-14T17:02:11+00:00",
+  "date_finish": "2025-10-14T17:02:11+00:00",
+  "operating_reset_at": 1760461931,
+  "operating": 0
  }
 }
 ```

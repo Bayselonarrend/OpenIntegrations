@@ -1,4 +1,4 @@
 ﻿    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Path  = "/4c8c4354-516a-427c-ac96-056469a62b1a.png";
+    Path  = "/f228f0e9-5f02-4b1b-a823-97d6f85d8630.png";
 
     Result = OPI_YandexDisk.PublishObject(Token, Path);

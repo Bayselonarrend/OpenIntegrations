@@ -33,12 +33,12 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "8154";
+    IDЗадачи = "8354";
 
     Результат = OPI_Bitrix24.ПолучитьСписокКомментариевЗадачи(URL, IDЗадачи);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "c866e568006e9f06006b12e400000001000...";
+    Токен = "8a1bee68006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПолучитьСписокКомментариевЗадачи(URL, IDЗадачи, Токен);
 ```
@@ -50,7 +50,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьСписокКомментариевЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8264" \
+              --task "8384" \
               --token "***"
         ```
     </TabItem>
@@ -59,7 +59,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьСписокКомментариевЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8264" ^
+              --task "8384" ^
               --token "***"
         ```
     </TabItem>
@@ -71,31 +71,31 @@ import TabItem from '@theme/TabItem';
  "result": [
   {
    "POST_MESSAGE_HTML": null,
-   "ID": "19214",
+   "ID": "19500",
    "AUTHOR_ID": "1",
    "AUTHOR_NAME": "Антон Титовец",
    "AUTHOR_EMAIL": "",
-   "POST_DATE": "2025-10-10T10:03:17+00:00",
+   "POST_DATE": "2025-10-14T17:02:22+00:00",
    "POST_MESSAGE": "Задача изменена, не расходимся"
   },
   {
    "POST_MESSAGE_HTML": null,
-   "ID": "19216",
+   "ID": "19502",
    "AUTHOR_ID": "1",
    "AUTHOR_NAME": "Антон Титовец",
    "AUTHOR_EMAIL": "",
-   "POST_DATE": "2025-10-10T10:03:23+00:00",
+   "POST_DATE": "2025-10-14T17:02:23+00:00",
    "POST_MESSAGE": "Задача изменена, расходимся"
   }
  ],
  "time": {
-  "start": 1760090632,
-  "finish": 1760090632.23668,
-  "duration": 0.236681938171387,
+  "start": 1760461348,
+  "finish": 1760461348.96884,
+  "duration": 0.968837022781372,
   "processing": 0,
-  "date_start": "2025-10-10T10:03:52+00:00",
-  "date_finish": "2025-10-10T10:03:52+00:00",
-  "operating_reset_at": 1760091232,
+  "date_start": "2025-10-14T17:02:28+00:00",
+  "date_finish": "2025-10-14T17:02:28+00:00",
+  "operating_reset_at": 1760461948,
   "operating": 0
  }
 }

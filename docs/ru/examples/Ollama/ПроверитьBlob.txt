@@ -1,6 +1,6 @@
 ﻿    URL    = "https://hut.openintegrations.dev/ollama";
     Токен  = "12We34..."; // Авторизация - не часть API Ollama
-    SHA256 = "3776e2ada7359a12f8ef44970d07f767c52ac0e581d2b522ba004dd6a3d5aa6d";
+    SHA256 = "6d09b4c092ea615aa20c0257c1ae6533b2a962f9ea6444dec455e0d635f516ee";
 
     ДопЗаголовки = Новый Соответствие;
     ДопЗаголовки.Вставить("Authorization", СтрШаблон("Bearer %1", Токен));

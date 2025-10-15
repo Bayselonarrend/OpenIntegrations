@@ -35,15 +35,15 @@ Method at API documentation: [task.checklistitem.add](https://dev.1c-bitrix.ru/r
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "8150";
+    TaskID = "8350";
 
     Text = "Checklist element";
 
     Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, True);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c866e568006e9f06006b12e400000001000...";
-    TaskID = "8152";
+    Token  = "8a1bee68006e9f06006b12e400000001000...";
+    TaskID = "8352";
 
     Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, , Token);
 ```
@@ -55,7 +55,7 @@ Method at API documentation: [task.checklistitem.add](https://dev.1c-bitrix.ru/r
         ```bash
             oint bitrix24 AddTasksChecklistElement \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "8202" \
+             --task "8402" \
              --text "Checklist element" \
              --token "***"
         ```
@@ -65,7 +65,7 @@ Method at API documentation: [task.checklistitem.add](https://dev.1c-bitrix.ru/r
         ```batch
             oint bitrix24 AddTasksChecklistElement ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "8202" ^
+             --task "8402" ^
              --text "Checklist element" ^
              --token "***"
         ```
@@ -75,16 +75,16 @@ Method at API documentation: [task.checklistitem.add](https://dev.1c-bitrix.ru/r
 
 ```json title="Result"
 {
- "result": 5790,
+ "result": 5910,
  "time": {
-  "start": 1760044243,
-  "finish": 1760044243.89664,
-  "duration": 0.896641969680786,
+  "start": 1760521890,
+  "finish": 1760521890.57028,
+  "duration": 0.570281028747559,
   "processing": 0,
-  "date_start": "2025-10-09T21:10:43+00:00",
-  "date_finish": "2025-10-09T21:10:43+00:00",
-  "operating_reset_at": 1760044843,
-  "operating": 0.148900985717773
+  "date_start": "2025-10-15T09:51:30+00:00",
+  "date_finish": "2025-10-15T09:51:30+00:00",
+  "operating_reset_at": 1760522490,
+  "operating": 0
  }
 }
 ```

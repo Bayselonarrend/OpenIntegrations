@@ -34,14 +34,14 @@ Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Text   = "Comment for post";
-    PostID = "3100";
+    PostID = "3180";
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text);
 
     Text  = "Another comment";
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c866e568006e9f06006b12e400000001000...";
+    Token = "8a1bee68006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.AddPostComment(URL, PostID, Text, Token);
 ```
@@ -53,7 +53,7 @@ Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest
         ```bash
             oint bitrix24 AddPostComment \
              --url "b24-ar17wx.bitrix24.by" \
-             --postid 3120 \
+             --postid 3200 \
              --text "Another comment" \
              --token "***"
         ```
@@ -63,7 +63,7 @@ Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest
         ```batch
             oint bitrix24 AddPostComment ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --postid 3120 ^
+             --postid 3200 ^
              --text "Another comment" ^
              --token "***"
         ```
@@ -73,16 +73,16 @@ Method at API documentation: [log.blogcomment.add](https://dev.1c-bitrix.ru/rest
 
 ```json title="Result"
 {
- "result": 3050,
+ "result": 3110,
  "time": {
-  "start": 1760044206,
-  "finish": 1760044206.94208,
-  "duration": 0.94208288192749,
-  "processing": 0,
-  "date_start": "2025-10-09T21:10:06+00:00",
-  "date_finish": "2025-10-09T21:10:06+00:00",
-  "operating_reset_at": 1760044806,
-  "operating": 0
+  "start": 1760521737,
+  "finish": 1760521738.16839,
+  "duration": 1.16838908195496,
+  "processing": 1,
+  "date_start": "2025-10-15T09:48:57+00:00",
+  "date_finish": "2025-10-15T09:48:58+00:00",
+  "operating_reset_at": 1760522337,
+  "operating": 0.192625045776367
  }
 }
 ```

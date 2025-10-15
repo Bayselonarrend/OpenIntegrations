@@ -1,5 +1,5 @@
 ﻿    Parameters = GetVKParameters();
 
-    Option = "8337";
+    Option = "8522";
 
     Result = OPI_VK.DeleteProductPropertyVariant(Option, Parameters);

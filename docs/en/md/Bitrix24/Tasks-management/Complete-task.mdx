@@ -33,13 +33,13 @@ Method at API documentation: [tasks.task.complete](https://dev.1c-bitrix.ru/rest
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "8150";
+    TaskID = "8350";
 
     Result = OPI_Bitrix24.CompleteTask(URL, TaskID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c866e568006e9f06006b12e400000001000...";
-    TaskID = "8152";
+    Token  = "8a1bee68006e9f06006b12e400000001000...";
+    TaskID = "8352";
 
     Result = OPI_Bitrix24.CompleteTask(URL, TaskID, Token);
 ```
@@ -51,7 +51,7 @@ Method at API documentation: [tasks.task.complete](https://dev.1c-bitrix.ru/rest
         ```bash
             oint bitrix24 CompleteTask \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "8202" \
+             --task "8402" \
              --token "***"
         ```
     </TabItem>
@@ -60,7 +60,7 @@ Method at API documentation: [tasks.task.complete](https://dev.1c-bitrix.ru/rest
         ```batch
             oint bitrix24 CompleteTask ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "8202" ^
+             --task "8402" ^
              --token "***"
         ```
     </TabItem>
@@ -71,7 +71,7 @@ Method at API documentation: [tasks.task.complete](https://dev.1c-bitrix.ru/rest
 {
  "result": {
   "task": {
-   "id": "8252",
+   "id": "8402",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -84,19 +84,19 @@ Method at API documentation: [tasks.task.complete](https://dev.1c-bitrix.ru/rest
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-10-09T21:10:14+00:00",
-   "responsibleId": "2770",
+   "createdDate": "2025-10-15T09:49:30+00:00",
+   "responsibleId": "2830",
    "changedBy": "1",
-   "changedDate": "2025-10-09T21:10:29+00:00",
+   "changedDate": "2025-10-15T09:50:30+00:00",
    "statusChangedBy": "1",
    "closedBy": "1",
-   "closedDate": "2025-10-09T21:10:29+00:00",
-   "activityDate": "2025-10-09T21:10:29+00:00",
+   "closedDate": "2025-10-15T09:50:30+00:00",
+   "activityDate": "2025-10-15T09:50:31+00:00",
    "dateStart": null,
-   "deadline": "2025-10-10T21:10:00+00:00",
-   "startDatePlan": "2025-10-09T21:10:14+00:00",
-   "endDatePlan": "2025-10-10T21:00:00+00:00",
-   "guid": "{e6b0195f-cc21-41c0-a292-d4c5d110cb18}",
+   "deadline": "2025-10-16T09:49:00+00:00",
+   "startDatePlan": "2025-10-15T09:49:30+00:00",
+   "endDatePlan": "2025-10-15T21:00:00+00:00",
+   "guid": "{9d66ffbd-3c22-4486-b9c6-4cf997e510aa}",
    "xmlId": null,
    "commentsCount": "2",
    "serviceCommentsCount": "2",
@@ -108,14 +108,14 @@ Method at API documentation: [tasks.task.complete](https://dev.1c-bitrix.ru/rest
    "timeEstimate": "0",
    "timeSpentInLogs": null,
    "matchWorkTime": "N",
-   "forumTopicId": "5356",
+   "forumTopicId": "5446",
    "forumId": "11",
    "siteId": "s1",
    "subordinate": "Y",
    "exchangeModified": null,
    "exchangeId": null,
    "outlookVersion": "6",
-   "viewedDate": "2025-10-09T21:10:30+00:00",
+   "viewedDate": "2025-10-15T09:50:31+00:00",
    "sorting": null,
    "durationFact": null,
    "isMuted": "N",
@@ -124,7 +124,7 @@ Method at API documentation: [tasks.task.complete](https://dev.1c-bitrix.ru/rest
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "5",
-   "statusChangedDate": "2025-10-09T21:10:29+00:00",
+   "statusChangedDate": "2025-10-15T09:50:30+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -141,9 +141,9 @@ Method at API documentation: [tasks.task.complete](https://dev.1c-bitrix.ru/rest
     "workPosition": null
    },
    "responsible": {
-    "id": "2770",
-    "name": "Oleg Lama",
-    "link": "/company/personal/user/2770/",
+    "id": "2830",
+    "name": "Олег Лама",
+    "link": "/company/personal/user/2830/",
     "icon": "/bitrix/images/tasks/default_avatar.png",
     "workPosition": null
    },
@@ -205,14 +205,14 @@ Method at API documentation: [tasks.task.complete](https://dev.1c-bitrix.ru/rest
   }
  },
  "time": {
-  "start": 1760044229,
-  "finish": 1760044230.08174,
-  "duration": 1.08174300193787,
+  "start": 1760521830,
+  "finish": 1760521831.55676,
+  "duration": 1.55675506591797,
   "processing": 1,
-  "date_start": "2025-10-09T21:10:29+00:00",
-  "date_finish": "2025-10-09T21:10:30+00:00",
-  "operating_reset_at": 1760044829,
-  "operating": 0.310199975967407
+  "date_start": "2025-10-15T09:50:30+00:00",
+  "date_finish": "2025-10-15T09:50:31+00:00",
+  "operating_reset_at": 1760522430,
+  "operating": 0.655788898468018
  }
 }
 ```

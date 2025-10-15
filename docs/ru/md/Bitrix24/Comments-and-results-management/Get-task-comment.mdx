@@ -34,14 +34,14 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL           = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDКомментария = "18972";
-    IDЗадачи      = "8154";
+    IDКомментария = "19412";
+    IDЗадачи      = "8354";
 
     Результат = OPI_Bitrix24.ПолучитьКомменатрийЗадачи(URL, IDЗадачи, IDКомментария);
 
     URL           = "b24-ar17wx.bitrix24.by";
-    Токен         = "c866e568006e9f06006b12e400000001000...";
-    IDКомментария = "18974";
+    Токен         = "8a1bee68006e9f06006b12e400000001000...";
+    IDКомментария = "19414";
 
     Результат = OPI_Bitrix24.ПолучитьКомменатрийЗадачи(URL, IDЗадачи, IDКомментария, Токен);
 ```
@@ -53,8 +53,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьКомменатрийЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8264" \
-              --comment 19216 \
+              --task "8384" \
+              --comment 19480 \
               --token "***"
         ```
     </TabItem>
@@ -63,8 +63,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьКомменатрийЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8264" ^
-              --comment 19216 ^
+              --task "8384" ^
+              --comment 19480 ^
               --token "***"
         ```
     </TabItem>
@@ -75,21 +75,21 @@ import TabItem from '@theme/TabItem';
 {
  "result": {
   "POST_MESSAGE_HTML": null,
-  "ID": "19216",
+  "ID": "19502",
   "AUTHOR_ID": "1",
   "AUTHOR_NAME": "Антон Титовец",
   "AUTHOR_EMAIL": "",
-  "POST_DATE": "2025-10-10T10:03:23+00:00",
+  "POST_DATE": "2025-10-14T17:02:23+00:00",
   "POST_MESSAGE": "Задача изменена, расходимся"
  },
  "time": {
-  "start": 1760090637,
-  "finish": 1760090637.50328,
-  "duration": 0.503278970718384,
+  "start": 1760461350,
+  "finish": 1760461350.05826,
+  "duration": 0.0582630634307861,
   "processing": 0,
-  "date_start": "2025-10-10T10:03:57+00:00",
-  "date_finish": "2025-10-10T10:03:57+00:00",
-  "operating_reset_at": 1760091237,
+  "date_start": "2025-10-14T17:02:30+00:00",
+  "date_finish": "2025-10-14T17:02:30+00:00",
+  "operating_reset_at": 1760461950,
   "operating": 0
  }
 }

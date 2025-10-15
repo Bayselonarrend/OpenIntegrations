@@ -34,14 +34,14 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "8154";
+    IDЗадачи = "8354";
 
     Текст = "Задача невыполнима, расходимся";
 
     Результат = OPI_Bitrix24.ДобавитьКомментарийЗадачи(URL, IDЗадачи, Текст);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "c866e568006e9f06006b12e400000001000...";
+    Токен = "8a1bee68006e9f06006b12e400000001000...";
 
     Текст = "Задача выполнима, не расходимся";
 
@@ -55,7 +55,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ДобавитьКомментарийЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8264" \
+              --task "8384" \
               --text "Задача выполнима, не расходимся" \
               --token "***"
         ```
@@ -65,7 +65,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ДобавитьКомментарийЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8264" ^
+              --task "8384" ^
               --text "Задача выполнима, не расходимся" ^
               --token "***"
         ```
@@ -75,16 +75,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 19216,
+ "result": 19502,
  "time": {
-  "start": 1760090600,
-  "finish": 1760090604.20132,
-  "duration": 4.20132207870483,
-  "processing": 4,
-  "date_start": "2025-10-10T10:03:20+00:00",
-  "date_finish": "2025-10-10T10:03:24+00:00",
-  "operating_reset_at": 1760091200,
-  "operating": 3.31846213340759
+  "start": 1760461343,
+  "finish": 1760461343.60985,
+  "duration": 0.609852075576782,
+  "processing": 0,
+  "date_start": "2025-10-14T17:02:23+00:00",
+  "date_finish": "2025-10-14T17:02:23+00:00",
+  "operating_reset_at": 1760461943,
+  "operating": 0.143918037414551
  }
 }
 ```

@@ -47,7 +47,7 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
     Color = "0026FF";
 
     URL         = "b24-ar17wx.bitrix24.by";
-    Token       = "c866e568006e9f06006b12e400000001000...";
+    Token       = "8a1bee68006e9f06006b12e400000001000...";
     PrevStageID = Result["result"];
 
     Result = OPI_Bitrix24.AddKanbanStage(URL, Name, Color, PrevStageID, , True, Token);
@@ -62,7 +62,7 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
              --url "b24-ar17wx.bitrix24.by" \
              --title "New stage 2" \
              --color "0026FF" \
-             --prevstage 3010 \
+             --prevstage 3090 \
              --admin true \
              --token "***"
         ```
@@ -74,7 +74,7 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
              --url "b24-ar17wx.bitrix24.by" ^
              --title "New stage 2" ^
              --color "0026FF" ^
-             --prevstage 3010 ^
+             --prevstage 3090 ^
              --admin true ^
              --token "***"
         ```
@@ -84,16 +84,16 @@ Method at API documentation: [task.stages.add](https://dev.1c-bitrix.ru/rest_hel
 
 ```json title="Result"
 {
- "result": 3032,
+ "result": 3092,
  "time": {
-  "start": 1760044330,
-  "finish": 1760044330.7628,
-  "duration": 0.76280403137207,
-  "processing": 0,
-  "date_start": "2025-10-09T21:12:10+00:00",
-  "date_finish": "2025-10-09T21:12:10+00:00",
-  "operating_reset_at": 1760044930,
-  "operating": 0
+  "start": 1760522156,
+  "finish": 1760522157.05827,
+  "duration": 1.05826711654663,
+  "processing": 1,
+  "date_start": "2025-10-15T09:55:56+00:00",
+  "date_finish": "2025-10-15T09:55:57+00:00",
+  "operating_reset_at": 1760522756,
+  "operating": 0.100509881973267
  }
 }
 ```
