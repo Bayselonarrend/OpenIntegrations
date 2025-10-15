@@ -34,7 +34,7 @@ This function does not update the data type of existing columns
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Base = "C:\Users\bayse\AppData\Local\Temp\v8_62E7_33.sqlite";
+    Base = "C:\Users\bayse\AppData\Local\Temp\v8_3DC8_294.sqlite";
 
     Table = "test";
 
@@ -58,7 +58,7 @@ This function does not update the data type of existing columns
             oint sqlite EnsureTable \
              --table "test_new" \
              --cols "{'id':'INTEGER','code':'INTEGER','name':'TEXT','age':'INTEGER','info':'TEXT'}" \
-             --db "C:\Users\bayse\AppData\Local\Temp\sjtajjsz.4ui.sqlite"
+             --db "/tmp/1q3umrdj.x1r.sqlite"
         ```
     </TabItem>
   
@@ -69,7 +69,7 @@ This function does not update the data type of existing columns
             oint sqlite EnsureTable ^
              --table "test_new" ^
              --cols "{'id':'INTEGER','code':'INTEGER','name':'TEXT','age':'INTEGER','info':'TEXT'}" ^
-             --db "C:\Users\bayse\AppData\Local\Temp\sjtajjsz.4ui.sqlite"
+             --db "/tmp/1q3umrdj.x1r.sqlite"
         ```
     </TabItem>
 </Tabs>

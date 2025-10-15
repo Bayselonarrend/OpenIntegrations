@@ -87,7 +87,7 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint sftp CreateNewDirectory \
-             --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\zbk3nbpv.gpn.tmp','username':'bayselonarrend'}}" \
+             --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'/tmp/jfex2jgb.qkg.tmp','username':'bayselonarrend'}}" \
              --path "new_dir"
         ```
     </TabItem>
@@ -97,7 +97,7 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint sftp CreateNewDirectory ^
-             --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\zbk3nbpv.gpn.tmp','username':'bayselonarrend'}}" ^
+             --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'/tmp/jfex2jgb.qkg.tmp','username':'bayselonarrend'}}" ^
              --path "new_dir"
         ```
     </TabItem>
@@ -106,6 +106,9 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Result"
 {
- "result": true
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
 ```

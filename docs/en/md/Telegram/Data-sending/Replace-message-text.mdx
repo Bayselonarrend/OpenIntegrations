@@ -36,7 +36,7 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
 ```bsl title="1C:Enterprise/OneScript code example"
     Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "@testsichee";
-    MessageID = "21225";
+    MessageID = "21624";
     Text      = "New message text";
 
     Result = OPI_Telegram.ReplaceMessageText(Token, ChatID, MessageID, Text);
@@ -50,7 +50,7 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
             oint telegram ReplaceMessageText \
              --token "***" \
              --chat "@testsichee" \
-             --message "21309" \
+             --message "21770" \
              --text "<b>Bold text</b>" \
              --parsemode "HTML"
         ```
@@ -61,7 +61,7 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
             oint telegram ReplaceMessageText ^
              --token "***" ^
              --chat "@testsichee" ^
-             --message "21309" ^
+             --message "21770" ^
              --text "<b>Bold text</b>" ^
              --parsemode "HTML"
         ```
@@ -73,7 +73,7 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
 {
  "ok": true,
  "result": {
-  "message_id": 21414,
+  "message_id": 21770,
   "sender_chat": {
    "id": -1001893407333,
    "title": "Тестовый канал",
@@ -86,8 +86,8 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
    "username": "testsichee",
    "type": "channel"
   },
-  "date": 1760040868,
-  "edit_date": 1760040871,
+  "date": 1760516118,
+  "edit_date": 1760516176,
   "text": "New message text"
  }
 }

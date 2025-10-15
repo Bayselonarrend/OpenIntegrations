@@ -34,15 +34,15 @@ Method at API documentation: [im.chat.user.delete](https://dev.1c-bitrix.ru/lear
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID = "3164";
+    ChatID = "3244";
 
     UserID = 10;
 
     Result = OPI_Bitrix24.DeleteUserFromChat(URL, ChatID, UserID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c866e568006e9f06006b12e400000001000...";
-    ChatID = "3166";
+    Token  = "8a1bee68006e9f06006b12e400000001000...";
+    ChatID = "3246";
 
     Result = OPI_Bitrix24.DeleteUserFromChat(URL, ChatID, UserID, Token);
 ```
@@ -54,7 +54,7 @@ Method at API documentation: [im.chat.user.delete](https://dev.1c-bitrix.ru/lear
         ```bash
             oint bitrix24 DeleteUserFromChat \
              --url "b24-ar17wx.bitrix24.by" \
-             --chat 3186 \
+             --chat 3266 \
              --user 10 \
              --token "***"
         ```
@@ -64,7 +64,7 @@ Method at API documentation: [im.chat.user.delete](https://dev.1c-bitrix.ru/lear
         ```batch
             oint bitrix24 DeleteUserFromChat ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --chat 3186 ^
+             --chat 3266 ^
              --user 10 ^
              --token "***"
         ```
@@ -76,14 +76,14 @@ Method at API documentation: [im.chat.user.delete](https://dev.1c-bitrix.ru/lear
 {
  "result": true,
  "time": {
-  "start": 1760044364,
-  "finish": 1760044364.56932,
-  "duration": 0.569317102432251,
+  "start": 1760522268,
+  "finish": 1760522268.34694,
+  "duration": 0.346940994262695,
   "processing": 0,
-  "date_start": "2025-10-09T21:12:44+00:00",
-  "date_finish": "2025-10-09T21:12:44+00:00",
-  "operating_reset_at": 1760044964,
-  "operating": 0
+  "date_start": "2025-10-15T09:57:48+00:00",
+  "date_finish": "2025-10-15T09:57:48+00:00",
+  "operating_reset_at": 1760522868,
+  "operating": 0.100121021270752
  }
 }
 ```

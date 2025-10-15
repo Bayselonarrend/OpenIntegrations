@@ -32,8 +32,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTk4NjIwOTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID  = "6c416756-13cc-4dff-9c62-ffbcf3d40f41";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjA0MzY3MTIsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID  = "c91d4e76-0b17-4e76-ae73-674bfdabecf9";
 
     Результат = OPI_CDEK.ПолучитьЗаказ(Токен, UUID, Истина);
 ```
@@ -45,7 +45,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьЗаказ \
               --token "***" \
-              --uuid "da588960-e557-4012-8e6d-30f89f799f2a" \
+              --uuid "cd42c7c6-5a05-409d-bb66-5898c1ddcb08" \
               --testapi "***"
         ```
     </TabItem>
@@ -54,7 +54,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьЗаказ ^
               --token "***" ^
-              --uuid "da588960-e557-4012-8e6d-30f89f799f2a" ^
+              --uuid "cd42c7c6-5a05-409d-bb66-5898c1ddcb08" ^
               --testapi "***"
         ```
     </TabItem>
@@ -64,12 +64,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "da588960-e557-4012-8e6d-30f89f799f2a",
+  "uuid": "7806f65b-b443-4a7d-8d39-448a678c21d8",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1106625424",
-  "number": "80d50d84-52d9-4cea-b6bf-57d2b0872d23",
+  "cdek_number": "1106626962",
+  "number": "a690b124-a128-4bfb-8f82-a8b6a15cd8c6",
   "tariff_code": 139,
   "comment": "Новый заказ",
   "items_cost_currency": "RUB",
@@ -162,7 +162,7 @@ import TabItem from '@theme/TabItem';
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001245442",
+    "barcode": "000001249480",
     "weight": 4000,
     "length": 10,
     "width": 10,
@@ -188,21 +188,21 @@ import TabItem from '@theme/TabItem';
       "cost": 300
      }
     ],
-    "package_id": "0be15001-5236-4d0c-9815-f62b732fd432"
+    "package_id": "e0c1760f-a28d-4e28-a3fe-3ed1f1d438b5"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2025-10-10T10:24:01+00:00",
+    "date_time": "2025-10-14T17:10:24+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-10T10:23:59+00:00",
+    "date_time": "2025-10-14T17:10:22+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    }

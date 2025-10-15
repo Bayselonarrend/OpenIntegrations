@@ -39,7 +39,7 @@ Method at API documentation: [crm.deal.update](https://dev.1c-bitrix.ru/rest_hel
     FieldsStructure.Insert("OPPORTUNITY", 50000);
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    DealID = "5028";
+    DealID = "5188";
 
     Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure);
 
@@ -47,8 +47,8 @@ Method at API documentation: [crm.deal.update](https://dev.1c-bitrix.ru/rest_hel
     FieldsStructure.Insert("BEGINDATE", "2025-01-01");
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c866e568006e9f06006b12e400000001000...";
-    DealID = "5030";
+    Token  = "8a1bee68006e9f06006b12e400000001000...";
+    DealID = "5190";
 
     Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure, Token);
 ```
@@ -62,7 +62,7 @@ Method at API documentation: [crm.deal.update](https://dev.1c-bitrix.ru/rest_hel
             
             oint bitrix24 UpdateDeal \
              --url "b24-ar17wx.bitrix24.by" \
-             --deal 5070 \
+             --deal 5230 \
              --fields "{'TITLE':'Future deal in RUB','CURRENCY_ID':'RUB','OPPORTUNITY':'50000','BEGINDATE':'2025-01-01'}" \
              --token "***"
         ```
@@ -74,7 +74,7 @@ Method at API documentation: [crm.deal.update](https://dev.1c-bitrix.ru/rest_hel
             
             oint bitrix24 UpdateDeal ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --deal 5070 ^
+             --deal 5230 ^
              --fields "{'TITLE':'Future deal in RUB','CURRENCY_ID':'RUB','OPPORTUNITY':'50000','BEGINDATE':'2025-01-01'}" ^
              --token "***"
         ```
@@ -86,14 +86,14 @@ Method at API documentation: [crm.deal.update](https://dev.1c-bitrix.ru/rest_hel
 {
  "result": true,
  "time": {
-  "start": 1760044489,
-  "finish": 1760044489.29095,
-  "duration": 0.290952920913696,
+  "start": 1760522632,
+  "finish": 1760522632.64707,
+  "duration": 0.64707088470459,
   "processing": 0,
-  "date_start": "2025-10-09T21:14:49+00:00",
-  "date_finish": "2025-10-09T21:14:49+00:00",
-  "operating_reset_at": 1760045089,
-  "operating": 0.187089920043945
+  "date_start": "2025-10-15T10:03:52+00:00",
+  "date_finish": "2025-10-15T10:03:52+00:00",
+  "operating_reset_at": 1760523232,
+  "operating": 0.394465923309326
  }
 }
 ```

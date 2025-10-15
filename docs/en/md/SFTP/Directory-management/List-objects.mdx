@@ -91,7 +91,7 @@ FTP Command: `LIST`
             # JSON data can also be passed as a path to a .json file
             
             oint sftp ListObjects \
-             --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\vemoma14.qj4.tmp','username':'bayselonarrend'}}" \
+             --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'/tmp/2clco5hb.neb.tmp','username':'bayselonarrend'}}" \
              --path "files_folder" \
              --rcv true
         ```
@@ -102,7 +102,7 @@ FTP Command: `LIST`
             :: JSON data can also be passed as a path to a .json file
             
             oint sftp ListObjects ^
-             --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\vemoma14.qj4.tmp','username':'bayselonarrend'}}" ^
+             --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'/tmp/2clco5hb.neb.tmp','username':'bayselonarrend'}}" ^
              --path "files_folder" ^
              --rcv true
         ```
@@ -114,7 +114,7 @@ FTP Command: `LIST`
 {
  "data": [
   {
-   "accessed": 1760042818,
+   "accessed": 1760519073,
    "extension": "",
    "gid": 1000,
    "is_directory": true,
@@ -140,7 +140,7 @@ FTP Command: `LIST`
      "uid": 1000
     },
     {
-     "accessed": 1760042818,
+     "accessed": 1760519073,
      "extension": "",
      "gid": 1000,
      "is_directory": true,
@@ -168,7 +168,7 @@ FTP Command: `LIST`
      ]
     },
     {
-     "accessed": 1760042818,
+     "accessed": 1760519074,
      "extension": "",
      "gid": 1000,
      "is_directory": true,
@@ -211,6 +211,9 @@ FTP Command: `LIST`
    ]
   }
  ],
- "result": true
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
 ```

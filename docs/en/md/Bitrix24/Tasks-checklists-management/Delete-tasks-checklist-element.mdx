@@ -34,16 +34,16 @@ Method at API documentation: [task.checklistitem.delete](https://dev.1c-bitrix.r
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID    = "8150";
-    ElementID = "5706";
+    TaskID    = "8350";
+    ElementID = "5866";
 
     Result = OPI_Bitrix24.DeleteTasksChecklistElement(URL, TaskID, ElementID);
 
-    TaskID    = "8152";
-    ElementID = "5710";
+    TaskID    = "8352";
+    ElementID = "5870";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "c866e568006e9f06006b12e400000001000...";
+    Token = "8a1bee68006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.DeleteTasksChecklistElement(URL, TaskID, ElementID, Token);
 ```
@@ -55,8 +55,8 @@ Method at API documentation: [task.checklistitem.delete](https://dev.1c-bitrix.r
         ```bash
             oint bitrix24 DeleteTasksChecklistElement \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "8202" \
-             --element 5750 \
+             --task "8402" \
+             --element 5910 \
              --token "***"
         ```
     </TabItem>
@@ -65,8 +65,8 @@ Method at API documentation: [task.checklistitem.delete](https://dev.1c-bitrix.r
         ```batch
             oint bitrix24 DeleteTasksChecklistElement ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "8202" ^
-             --element 5750 ^
+             --task "8402" ^
+             --element 5910 ^
              --token "***"
         ```
     </TabItem>
@@ -77,13 +77,13 @@ Method at API documentation: [task.checklistitem.delete](https://dev.1c-bitrix.r
 {
  "result": true,
  "time": {
-  "start": 1760044250,
-  "finish": 1760044250.66034,
-  "duration": 0.660337924957275,
+  "start": 1760521921,
+  "finish": 1760521921.44614,
+  "duration": 0.446140050888062,
   "processing": 0,
-  "date_start": "2025-10-09T21:10:50+00:00",
-  "date_finish": "2025-10-09T21:10:50+00:00",
-  "operating_reset_at": 1760044850,
+  "date_start": "2025-10-15T09:52:01+00:00",
+  "date_finish": "2025-10-15T09:52:01+00:00",
+  "operating_reset_at": 1760522521,
   "operating": 0
  }
 }

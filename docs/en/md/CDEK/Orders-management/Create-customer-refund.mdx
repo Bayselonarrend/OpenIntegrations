@@ -37,8 +37,8 @@ Method at API documentation: [Registration of refusal](https://api-docs.cdek.ru/
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token  = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NTk4NjIwOTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID   = "6c416756-13cc-4dff-9c62-ffbcf3d40f41";
+    Token  = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjA0MzY3MTIsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID   = "c91d4e76-0b17-4e76-ae73-674bfdabecf9";
     Tariff = 139;
 
     Result = OPI_CDEK.CreateCustomerRefund(Token, UUID, Tariff, True);
@@ -51,7 +51,7 @@ Method at API documentation: [Registration of refusal](https://api-docs.cdek.ru/
         ```bash
             oint cdek CreateCustomerRefund \
              --token "***" \
-             --uuid "f968a61d-0f7a-411d-a67f-f42643e2fe53" \
+             --uuid "ae2ba595-fbac-4572-80f5-03f20395a70a" \
              --tariff 139 \
              --testapi "***"
         ```
@@ -61,7 +61,7 @@ Method at API documentation: [Registration of refusal](https://api-docs.cdek.ru/
         ```batch
             oint cdek CreateCustomerRefund ^
              --token "***" ^
-             --uuid "f968a61d-0f7a-411d-a67f-f42643e2fe53" ^
+             --uuid "ae2ba595-fbac-4572-80f5-03f20395a70a" ^
              --tariff 139 ^
              --testapi "***"
         ```
@@ -72,13 +72,13 @@ Method at API documentation: [Registration of refusal](https://api-docs.cdek.ru/
 ```json title="Result"
 {
  "entity": {
-  "uuid": "37777fa2-8049-44e1-bebb-05c835e484c6"
+  "uuid": "ae2ba595-fbac-4572-80f5-03f20395a70a"
  },
  "requests": [
   {
-   "request_uuid": "058ccacc-7c6c-406b-a998-fade906f3d9a",
+   "request_uuid": "2a99ccd1-cb12-490a-b054-14d6811e40f4",
    "type": "CREATE_CLIENT_RETURN",
-   "date_time": "2025-10-09T21:20:52+00:00",
+   "date_time": "2025-10-15T10:15:15+00:00",
    "state": "ACCEPTED"
   }
  ],

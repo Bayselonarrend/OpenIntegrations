@@ -34,7 +34,7 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    EventID = "2588";
+    EventID = "2748";
 
     EventStucture = New Structure;
 
@@ -48,9 +48,9 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
     Result = OPI_Bitrix24.UpdateCalendarEvent(URL, EventID, EventStucture);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "c866e568006e9f06006b12e400000001000...";
-    EventID    = "2592";
-    CalendarID = "1424";
+    Token      = "8a1bee68006e9f06006b12e400000001000...";
+    EventID    = "2752";
+    CalendarID = "1504";
 
     Result = OPI_Bitrix24.UpdateCalendarEvent(URL, EventID, EventStucture, Token);
 ```
@@ -64,7 +64,7 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
             
             oint bitrix24 UpdateCalendarEvent \
              --url "b24-ar17wx.bitrix24.by" \
-             --event 2632 \
+             --event 2792 \
              --fields "{'ownerId':'1','type':'user','name':'Modified event','description':'New event description','importance':'low','private_event':'Y'}" \
              --token "***"
         ```
@@ -76,7 +76,7 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
             
             oint bitrix24 UpdateCalendarEvent ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --event 2632 ^
+             --event 2792 ^
              --fields "{'ownerId':'1','type':'user','name':'Modified event','description':'New event description','importance':'low','private_event':'Y'}" ^
              --token "***"
         ```
@@ -86,16 +86,16 @@ Method at API documentation: [calendar.event.update](https://apidocs.bitrix24.ru
 
 ```json title="Result"
 {
- "result": 2672,
+ "result": 2792,
  "time": {
-  "start": 1760044505,
-  "finish": 1760044505.28423,
-  "duration": 0.284234046936035,
+  "start": 1760522694,
+  "finish": 1760522694.2998,
+  "duration": 0.299803972244263,
   "processing": 0,
-  "date_start": "2025-10-09T21:15:05+00:00",
-  "date_finish": "2025-10-09T21:15:05+00:00",
-  "operating_reset_at": 1760045105,
-  "operating": 0.161412000656128
+  "date_start": "2025-10-15T10:04:54+00:00",
+  "date_finish": "2025-10-15T10:04:54+00:00",
+  "operating_reset_at": 1760523294,
+  "operating": 0.203435182571411
  }
 }
 ```

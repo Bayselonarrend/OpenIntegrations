@@ -35,7 +35,7 @@ Method at API documentation: [im.message.add](https://dev.1c-bitrix.ru/learning/
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID = "3164";
+    ChatID = "3244";
 
     OPI_TypeConversion.GetLine(ChatID);
 
@@ -51,7 +51,7 @@ Method at API documentation: [im.message.add](https://dev.1c-bitrix.ru/learning/
     Result = OPI_Bitrix24.SendMessage(URL, ChatString, Text, Attachments);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "c866e568006e9f06006b12e400000001000...";
+    Token  = "8a1bee68006e9f06006b12e400000001000...";
     UserID = 10;
 
     Result = OPI_Bitrix24.SendMessage(URL, UserID, Text, , Token);
@@ -84,15 +84,15 @@ Method at API documentation: [im.message.add](https://dev.1c-bitrix.ru/learning/
 
 ```json title="Result"
 {
- "result": 63410,
+ "result": 64726,
  "time": {
-  "start": 1760044416,
-  "finish": 1760044416.75692,
-  "duration": 0.756920099258423,
+  "start": 1760522375,
+  "finish": 1760522376.03599,
+  "duration": 1.0359890460968,
   "processing": 0,
-  "date_start": "2025-10-09T21:13:36+00:00",
-  "date_finish": "2025-10-09T21:13:36+00:00",
-  "operating_reset_at": 1760045016,
+  "date_start": "2025-10-15T09:59:35+00:00",
+  "date_finish": "2025-10-15T09:59:36+00:00",
+  "operating_reset_at": 1760522976,
   "operating": 0
  }
 }
