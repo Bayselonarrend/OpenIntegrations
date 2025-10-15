@@ -2053,7 +2053,7 @@
    }
   },
   {
-   "ID": "1506",
+   "ID": "1522",
    "NAME": "New calendar name",
    "GAPI_CALENDAR_ID": null,
    "DESCRIPTION": "This calendar has been changed",
@@ -2062,13 +2062,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1506&sign=2da418d479671aabcfae2bc5ceb0aebb&bx_hit_hash=1ZjfzCmWq1drkMeJjtCtfsDIrVovUf0Q"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1522&sign=6eeca511b80d7129dc6645e262b37ba5&bx_hit_hash=1ZjfzCmWq1drkMeJjtCtfsDIrVovUf0Q"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2025-10-14 12:45:00",
-   "TIMESTAMP_X": "2025-10-14 12:45:00",
+   "DATE_CREATE": "2025-10-15 13:04:00",
+   "TIMESTAMP_X": "2025-10-15 13:04:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": null,
    "PAGE_TOKEN": null,
@@ -2089,7 +2089,7 @@
    }
   },
   {
-   "ID": "1508",
+   "ID": "1524",
    "NAME": "New calendar name",
    "GAPI_CALENDAR_ID": null,
    "DESCRIPTION": "This calendar has been changed",
@@ -2098,13 +2098,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1508&sign=43095406b5f9d3d682156cc4d68a8dc5&bx_hit_hash=1ZjfzCmWq1drkMeJjtCtfsDIrVovUf0Q"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1524&sign=ac324b324be90aadc0d07d76d47cc706&bx_hit_hash=1ZjfzCmWq1drkMeJjtCtfsDIrVovUf0Q"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2025-10-14 12:45:00",
-   "TIMESTAMP_X": "2025-10-14 12:45:00",
+   "DATE_CREATE": "2025-10-15 13:04:00",
+   "TIMESTAMP_X": "2025-10-15 13:04:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": null,
    "PAGE_TOKEN": null,
@@ -2126,13 +2126,13 @@
   }
  ],
  "time": {
-  "start": 1760435110,
-  "finish": 1760435110.15179,
-  "duration": 0.151787042617798,
+  "start": 1760522663,
+  "finish": 1760522663.70776,
+  "duration": 0.70776104927063,
   "processing": 0,
-  "date_start": "2025-10-14T09:45:10+00:00",
-  "date_finish": "2025-10-14T09:45:10+00:00",
-  "operating_reset_at": 1760435710,
+  "date_start": "2025-10-15T10:04:23+00:00",
+  "date_finish": "2025-10-15T10:04:23+00:00",
+  "operating_reset_at": 1760523263,
   "operating": 0
  }
 }

@@ -1,24 +1,24 @@
 ﻿{
  "result": [
   {
-   "id": 3094,
-   "taskId": 8364,
-   "commentId": 19436,
+   "id": 3110,
+   "taskId": 8404,
+   "commentId": 19524,
    "createdBy": 1,
-   "createdAt": "2025-10-14T09:38:23+00:00",
-   "updatedAt": "2025-10-14T09:38:23+00:00",
+   "createdAt": "2025-10-15T09:52:31+00:00",
+   "updatedAt": "2025-10-15T09:52:31+00:00",
    "status": 0,
    "text": "The task has been changed, let's split up",
    "formattedText": "The task has been changed, let's split up",
    "files": []
   },
   {
-   "id": 3092,
-   "taskId": 8364,
-   "commentId": 19434,
+   "id": 3108,
+   "taskId": 8404,
+   "commentId": 19522,
    "createdBy": 1,
-   "createdAt": "2025-10-14T09:38:22+00:00",
-   "updatedAt": "2025-10-14T09:38:22+00:00",
+   "createdAt": "2025-10-15T09:52:29+00:00",
+   "updatedAt": "2025-10-15T09:52:29+00:00",
    "status": 0,
    "text": "The task has been changed, do not split up",
    "formattedText": "The task has been changed, do not split up",
@@ -26,13 +26,13 @@
   }
  ],
  "time": {
-  "start": 1760434714,
-  "finish": 1760434714.04909,
-  "duration": 0.0490870475769043,
+  "start": 1760521966,
+  "finish": 1760521967.02307,
+  "duration": 1.02307200431824,
   "processing": 0,
-  "date_start": "2025-10-14T09:38:34+00:00",
-  "date_finish": "2025-10-14T09:38:34+00:00",
-  "operating_reset_at": 1760435314,
+  "date_start": "2025-10-15T09:52:46+00:00",
+  "date_finish": "2025-10-15T09:52:47+00:00",
+  "operating_reset_at": 1760522567,
   "operating": 0
  }
 }

@@ -2,11 +2,11 @@
  "response": [
   {
    "activity": {
-    "comments": 5,
-    "likes": 5
+    "comments": 1,
+    "likes": 1
    },
-   "period_from": 1760400000,
-   "period_to": 1760486399,
+   "period_from": 1760486400,
+   "period_to": 1760572799,
    "reach": {
     "age": [
      {
@@ -141,11 +141,11 @@
   },
   {
    "activity": {
-    "comments": 3,
-    "likes": 3
+    "comments": 10,
+    "likes": 10
    },
-   "period_from": 1760313600,
-   "period_to": 1760399999,
+   "period_from": 1760400000,
+   "period_to": 1760486399,
    "reach": {
     "age": [
      {
@@ -274,10 +274,10 @@
     "cities": [],
     "countries": [
      {
-      "code": "SC",
+      "code": "IN",
       "count": 1,
-      "name": "Сейшелы",
-      "value": 175
+      "name": "Индия",
+      "value": 80
      }
     ],
     "mobile_views": 0,

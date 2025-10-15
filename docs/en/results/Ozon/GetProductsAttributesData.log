@@ -1,9 +1,9 @@
 ﻿{
  "result": [
   {
-   "id": 2874355805,
+   "id": 2876547413,
    "barcode": "",
-   "name": "Protective film set for X3 NFC. Dark cotton",
+   "name": "Комплект защитных плёнок для X3 NFC. Темный хлопок",
    "offer_id": "143210609",
    "height": 250,
    "depth": 10,
@@ -40,7 +40,7 @@
      "values": [
       {
        "dictionary_value_id": 0,
-       "value": "Protective film set for X3 NFC. Dark cotton"
+       "value": "Комплект защитных плёнок для X3 NFC. Темный хлопок"
       }
      ]
     },
@@ -50,7 +50,7 @@
      "values": [
       {
        "dictionary_value_id": 61576,
-       "value": "gray"
+       "value": "серый"
       }
      ]
     },
@@ -60,7 +60,7 @@
      "values": [
       {
        "dictionary_value_id": 0,
-       "value": "Protective film set for X3 NFC. Dark cotton"
+       "value": "Комплект защитных плёнок для X3 NFC. Темный хлопок"
       }
      ]
     },
