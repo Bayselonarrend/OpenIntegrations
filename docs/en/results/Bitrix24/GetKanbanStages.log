@@ -121,8 +121,8 @@
    "TO_UPDATE": [],
    "TO_UPDATE_ACCESS": null
   },
-  "3074": {
-   "ID": "3074",
+  "3090": {
+   "ID": "3090",
    "TITLE": "New stage",
    "SORT": "1100",
    "COLOR": "0026FF",
@@ -133,8 +133,8 @@
    "TO_UPDATE": [],
    "TO_UPDATE_ACCESS": null
   },
-  "3076": {
-   "ID": "3076",
+  "3092": {
+   "ID": "3092",
    "TITLE": "New stage 2",
    "SORT": "1200",
    "COLOR": "0026FF",
@@ -735,13 +735,13 @@
   }
  },
  "time": {
-  "start": 1760434821,
-  "finish": 1760434821.70336,
-  "duration": 0.703356027603149,
+  "start": 1760522162,
+  "finish": 1760522162.09543,
+  "duration": 0.0954279899597168,
   "processing": 0,
-  "date_start": "2025-10-14T09:40:21+00:00",
-  "date_finish": "2025-10-14T09:40:21+00:00",
-  "operating_reset_at": 1760435421,
+  "date_start": "2025-10-15T09:56:02+00:00",
+  "date_finish": "2025-10-15T09:56:02+00:00",
+  "operating_reset_at": 1760522762,
   "operating": 0
  }
 }

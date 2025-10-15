@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-10-14T10:06:48.253952461Z",
+ "created_at": "2025-10-15T10:59:28.943437366Z",
  "message": {
   "role": "assistant",
-  "content": "Oracle released the first version of 1C:Enterprise as a standalone product in November 1997. Since then, there have been several subsequent versions and upgrades to 1C:Enterprise, including some major releases such as 2004, 2006, 2012, and 2018. The latest version of 1C:Enterprise is 19.5, which was released in July 2020."
+  "content": "1C:Enterprise has been released several times since its initial launch in 1997. The current version is called 1C:2021, and it was released in November 2020. However, the exact release date of each version may vary depending on various factors such as technical improvements, customer feedback, and the availability of licenses from the original developer 1C Company."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 12000029848,
- "load_duration": 28149302,
- "prompt_eval_count": 171,
- "prompt_eval_duration": 2013775756,
- "eval_count": 110,
- "eval_duration": 9954278945
+ "total_duration": 19811118210,
+ "load_duration": 16260020,
+ "prompt_eval_count": 412,
+ "prompt_eval_duration": 9997799498,
+ "eval_count": 87,
+ "eval_duration": 9791369148
 }

@@ -1,12 +1,12 @@
 ﻿[
  {
   "kind": "calendar#event",
-  "etag": "\"3520868096992638\"",
-  "id": "ig2fatf4sbmd9m61ahq3749tn0",
+  "etag": "\"3521041923711038\"",
+  "id": "ulf4pckup49gec9msphe981avc",
   "status": "confirmed",
-  "htmlLink": "https://www.google.com/calendar/event?eid=aWcyZmF0ZjRzYm1kOW02MWFocTM3NDl0bjAgYjE0NjgwYTU0MWY5ZTBkNWM5NTM2OGZlNTc4YjVjOTUxMzc2YzZjNjdmZjMwMDM4MTE3ZDk2N2Q4MTA3NmQzZUBn",
-  "created": "2025-10-14T09:27:21Z",
-  "updated": "2025-10-14T09:27:28.496Z",
+  "htmlLink": "https://www.google.com/calendar/event?eid=dWxmNHBja3VwNDlnZWM5bXNwaGU5ODFhdmMgY2IyZmMyYzhhZGIxY2ZjZTQ4NWM2NWExMWQ0NmM5OWRmZjAzMTA4YTg0ZmEwN2Q4NDBmYzQyMGJmNWY2MWIyNEBn",
+  "created": "2025-10-15T09:35:50Z",
+  "updated": "2025-10-15T09:36:01.855Z",
   "summary": "New event",
   "description": "New event description",
   "location": "InOffice",
@@ -14,19 +14,19 @@
    "email": "bayselonarrend@gmail.com"
   },
   "organizer": {
-   "email": "b14680a541f9e0d5c95368fe578b5c951376c6c67ff30038117d967d81076d3e@group.calendar.google.com",
+   "email": "cb2fc2c8adb1cfce485c65a11d46c99dff03108a84fa07d840fc420bf5f61b24@group.calendar.google.com",
    "displayName": "TestCalendar",
    "self": true
   },
   "start": {
-   "dateTime": "2025-10-14T09:27:21+00:00",
+   "dateTime": "2025-10-15T09:35:47+00:00",
    "timeZone": "Europe/Moscow"
   },
   "end": {
-   "dateTime": "2025-10-14T10:27:21+00:00",
+   "dateTime": "2025-10-15T10:35:47+00:00",
    "timeZone": "Europe/Moscow"
   },
-  "iCalUID": "ig2fatf4sbmd9m61ahq3749tn0@google.com",
+  "iCalUID": "ulf4pckup49gec9msphe981avc@google.com",
   "sequence": 0,
   "reminders": {
    "useDefault": true

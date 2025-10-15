@@ -1,39 +1,39 @@
 ﻿{
  "result": [
   {
-   "ID": "3060",
-   "TASK_ID": "8368",
+   "ID": "3076",
+   "TASK_ID": "8408",
    "USER_ID": "1",
    "COMMENT_TEXT": "",
    "SECONDS": "3600",
    "MINUTES": "60",
    "SOURCE": "2",
-   "CREATED_DATE": "2025-10-14T09:40:32+00:00",
-   "DATE_START": "2025-10-14T09:40:32+00:00",
-   "DATE_STOP": "2025-10-14T09:40:32+00:00"
+   "CREATED_DATE": "2025-10-15T09:56:23+00:00",
+   "DATE_START": "2025-10-15T09:56:23+00:00",
+   "DATE_STOP": "2025-10-15T09:56:23+00:00"
   },
   {
-   "ID": "3062",
-   "TASK_ID": "8368",
+   "ID": "3078",
+   "TASK_ID": "8408",
    "USER_ID": "10",
    "COMMENT_TEXT": "Time spent on work",
    "SECONDS": "7200",
    "MINUTES": "120",
    "SOURCE": "2",
-   "CREATED_DATE": "2025-09-14T06:40:33+00:00",
-   "DATE_START": "2025-10-14T09:40:33+00:00",
-   "DATE_STOP": "2025-10-14T09:40:33+00:00"
+   "CREATED_DATE": "2025-09-15T06:56:23+00:00",
+   "DATE_START": "2025-10-15T09:56:25+00:00",
+   "DATE_STOP": "2025-10-15T09:56:25+00:00"
   }
  ],
  "total": 2,
  "time": {
-  "start": 1760434836,
-  "finish": 1760434836.92046,
-  "duration": 0.920454978942871,
+  "start": 1760522195,
+  "finish": 1760522195.44698,
+  "duration": 0.446976900100708,
   "processing": 0,
-  "date_start": "2025-10-14T09:40:36+00:00",
-  "date_finish": "2025-10-14T09:40:36+00:00",
-  "operating_reset_at": 1760435436,
-  "operating": 0.138755083084106
+  "date_start": "2025-10-15T09:56:35+00:00",
+  "date_finish": "2025-10-15T09:56:35+00:00",
+  "operating_reset_at": 1760522795,
+  "operating": 0
  }
 }

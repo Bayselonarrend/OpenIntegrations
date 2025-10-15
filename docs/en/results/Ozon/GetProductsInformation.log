@@ -1,15 +1,15 @@
 ﻿{
  "items": [
   {
-   "id": 2874355805,
-   "name": "Protective film set for X3 NFC. Dark cotton",
+   "id": 2876547413,
+   "name": "Комплект защитных плёнок для X3 NFC. Темный хлопок",
    "offer_id": "143210609",
    "is_archived": false,
    "is_autoarchived": false,
    "barcodes": [],
    "description_category_id": 17028922,
    "type_id": 91565,
-   "created_at": "2025-10-14T09:11:13.438564Z",
+   "created_at": "2025-10-14T17:09:02.38203Z",
    "images": [
     "https://hut.openintegrations.dev/test_data/picture.jpg",
     "https://hut.openintegrations.dev/test_data/picture2.jpg"
@@ -59,7 +59,7 @@
      }
     }
    ],
-   "updated_at": "2025-10-14T09:11:13.438564Z",
+   "updated_at": "2025-10-14T17:09:02.38203Z",
    "vat": "0.10",
    "visibility_details": {
     "has_price": true,
@@ -96,7 +96,7 @@
     "status_description": "Не создан",
     "is_created": false,
     "status_tooltip": "Не прошел валидацию",
-    "status_updated_at": "2025-10-14T09:48:33.489013Z"
+    "status_updated_at": "2025-10-15T10:09:54.914448Z"
    },
    "is_super": false,
    "is_seasonal": false,

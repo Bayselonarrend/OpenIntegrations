@@ -1,4 +1,4 @@
 oint telegram SendTextMessage ^
  --token "***" ^
- --chat "-1001971186208*12007" ^
+ --chat "-1001971186208*12117" ^
  --text "Строковое значение"

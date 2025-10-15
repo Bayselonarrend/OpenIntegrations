@@ -1,4 +1,4 @@
 oint bitrix24 GetTasksChecklist ^
  --url "b24-ar17wx.bitrix24.by" ^
- --task "8322" ^
+ --task "8402" ^
  --token "***"

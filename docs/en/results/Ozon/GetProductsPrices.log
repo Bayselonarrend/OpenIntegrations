@@ -16,10 +16,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -75,10 +75,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -106,9 +106,9 @@
      "price_index_value": 1.77
     },
     "ozon_index_data": {
-     "min_price": 2631,
+     "min_price": 2624,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 0.88
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -134,10 +134,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -193,10 +193,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -252,10 +252,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -311,10 +311,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -370,10 +370,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -429,10 +429,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 139,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -460,7 +460,7 @@
      "price_index_value": 1.42
     },
     "ozon_index_data": {
-     "min_price": 1592,
+     "min_price": 1587,
      "min_price_currency": "RUB",
      "price_index_value": 0.9
     },
@@ -488,10 +488,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -547,10 +547,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -606,10 +606,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -665,10 +665,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -724,10 +724,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -750,14 +750,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 564,
+     "min_price": 883,
      "min_price_currency": "RUB",
-     "price_index_value": 0.85
+     "price_index_value": 0.54
     },
     "ozon_index_data": {
-     "min_price": 515,
+     "min_price": 525,
      "min_price_currency": "RUB",
-     "price_index_value": 0.93
+     "price_index_value": 0.91
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -783,10 +783,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -842,10 +842,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 139,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -901,10 +901,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -960,10 +960,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 28,
+    "sales_percent_fbs": 38,
+    "sales_percent_rfbs": 34,
+    "sales_percent_fbp": 34
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1019,10 +1019,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1078,10 +1078,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1137,10 +1137,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 28,
+    "sales_percent_fbs": 38,
+    "sales_percent_rfbs": 34,
+    "sales_percent_fbp": 34
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1196,10 +1196,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 28,
+    "sales_percent_fbs": 38,
+    "sales_percent_rfbs": 34,
+    "sales_percent_fbp": 34
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1255,10 +1255,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 28,
+    "sales_percent_fbs": 38,
+    "sales_percent_rfbs": 34,
+    "sales_percent_fbp": 34
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1314,10 +1314,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1373,10 +1373,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1432,10 +1432,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1491,10 +1491,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1550,10 +1550,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1609,10 +1609,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1668,10 +1668,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1727,10 +1727,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1786,10 +1786,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1845,10 +1845,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1904,10 +1904,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -1963,10 +1963,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2022,10 +2022,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2081,10 +2081,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2140,10 +2140,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2199,10 +2199,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2258,10 +2258,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2317,10 +2317,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2376,10 +2376,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2435,10 +2435,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2494,10 +2494,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2553,10 +2553,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2612,10 +2612,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2671,10 +2671,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2730,10 +2730,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2789,10 +2789,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2848,10 +2848,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2907,10 +2907,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -2966,10 +2966,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3025,10 +3025,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3084,10 +3084,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3110,14 +3110,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 352,
+     "min_price": 361,
      "min_price_currency": "RUB",
-     "price_index_value": 1.07
+     "price_index_value": 1.05
     },
     "ozon_index_data": {
-     "min_price": 393,
+     "min_price": 386,
      "min_price_currency": "RUB",
-     "price_index_value": 0.97
+     "price_index_value": 0.98
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -3143,10 +3143,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3202,10 +3202,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3261,10 +3261,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3320,10 +3320,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3379,10 +3379,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3438,10 +3438,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3497,10 +3497,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3556,10 +3556,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3582,14 +3582,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 547,
+     "min_price": 562,
      "min_price_currency": "RUB",
-     "price_index_value": 0.69
+     "price_index_value": 0.67
     },
     "ozon_index_data": {
-     "min_price": 313,
+     "min_price": 314,
      "min_price_currency": "RUB",
-     "price_index_value": 1.17
+     "price_index_value": 1.16
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -3615,10 +3615,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3674,10 +3674,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3733,10 +3733,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 254,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3792,10 +3792,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 162,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3851,10 +3851,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 277,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3910,10 +3910,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -3969,10 +3969,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4028,10 +4028,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4087,10 +4087,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4146,10 +4146,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4205,10 +4205,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4264,10 +4264,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4323,10 +4323,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4382,10 +4382,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4441,10 +4441,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4500,10 +4500,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4559,10 +4559,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4618,10 +4618,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4649,9 +4649,9 @@
      "price_index_value": 0.93
     },
     "ozon_index_data": {
-     "min_price": 1200,
+     "min_price": 1912,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 0.54
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -4677,10 +4677,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4736,10 +4736,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4795,10 +4795,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4854,10 +4854,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4913,10 +4913,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -4972,10 +4972,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5031,10 +5031,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5090,10 +5090,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5149,10 +5149,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5208,10 +5208,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5267,10 +5267,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5326,10 +5326,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5385,10 +5385,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5444,10 +5444,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5503,10 +5503,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5562,10 +5562,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5621,10 +5621,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5680,10 +5680,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5739,10 +5739,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5798,10 +5798,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5857,10 +5857,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5916,10 +5916,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -5975,10 +5975,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6034,10 +6034,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6093,10 +6093,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6152,10 +6152,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6211,10 +6211,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6270,10 +6270,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6329,10 +6329,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6388,10 +6388,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6447,10 +6447,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6506,10 +6506,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6565,10 +6565,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6624,10 +6624,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6683,10 +6683,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6742,10 +6742,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6801,10 +6801,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6860,10 +6860,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6919,10 +6919,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -6978,10 +6978,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7037,10 +7037,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7068,7 +7068,7 @@
      "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 2775,
+     "min_price": 2774,
      "min_price_currency": "RUB",
      "price_index_value": 0.62
     },
@@ -7096,10 +7096,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7155,10 +7155,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7214,10 +7214,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7273,10 +7273,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7332,10 +7332,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7346,7 +7346,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1503,
+    "marketing_price": 1498,
     "marketing_seller_price": 1881,
     "min_price": 1693,
     "old_price": 2258,
@@ -7358,14 +7358,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1734,
+     "min_price": 1838,
      "min_price_currency": "RUB",
-     "price_index_value": 0.82
+     "price_index_value": 0.78
     },
     "ozon_index_data": {
-     "min_price": 1717,
+     "min_price": 1684,
      "min_price_currency": "RUB",
-     "price_index_value": 0.83
+     "price_index_value": 0.85
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7391,10 +7391,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7417,14 +7417,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1713,
+     "min_price": 1699,
      "min_price_currency": "RUB",
-     "price_index_value": 0.78
+     "price_index_value": 0.79
     },
     "ozon_index_data": {
-     "min_price": 1728,
+     "min_price": 1683,
      "min_price_currency": "RUB",
-     "price_index_value": 0.78
+     "price_index_value": 0.8
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -7450,10 +7450,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7509,10 +7509,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7523,7 +7523,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1699,
+    "marketing_price": 1667,
     "marketing_seller_price": 2090,
     "min_price": 1881,
     "old_price": 2508,
@@ -7535,12 +7535,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 3201,
+     "min_price": 0,
      "min_price_currency": "RUB",
-     "price_index_value": 0.5
+     "price_index_value": 0
     },
     "ozon_index_data": {
-     "min_price": 2491,
+     "min_price": 2475,
      "min_price_currency": "RUB",
      "price_index_value": 0.64
     },
@@ -7568,10 +7568,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 28,
+    "sales_percent_fbs": 38,
+    "sales_percent_rfbs": 34,
+    "sales_percent_fbp": 34
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7627,10 +7627,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 28,
+    "sales_percent_fbs": 38,
+    "sales_percent_rfbs": 34,
+    "sales_percent_fbp": 34
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7686,10 +7686,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 28,
+    "sales_percent_fbs": 38,
+    "sales_percent_rfbs": 34,
+    "sales_percent_fbp": 34
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7745,10 +7745,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 28,
+    "sales_percent_fbs": 38,
+    "sales_percent_rfbs": 34,
+    "sales_percent_fbp": 34
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7804,10 +7804,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7818,7 +7818,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 275,
+    "marketing_price": 279,
     "marketing_seller_price": 334,
     "min_price": 301,
     "old_price": 401,
@@ -7830,14 +7830,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 264,
+     "min_price": 269,
      "min_price_currency": "RUB",
-     "price_index_value": 0.97
+     "price_index_value": 0.98
     },
     "ozon_index_data": {
-     "min_price": 194,
+     "min_price": 195,
      "min_price_currency": "RUB",
-     "price_index_value": 1.24
+     "price_index_value": 1.26
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -7863,10 +7863,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7894,7 +7894,7 @@
      "price_index_value": 0.97
     },
     "ozon_index_data": {
-     "min_price": 2687,
+     "min_price": 2697,
      "min_price_currency": "RUB",
      "price_index_value": 0.67
     },
@@ -7922,10 +7922,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -7981,10 +7981,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8012,7 +8012,7 @@
      "price_index_value": 0.56
     },
     "ozon_index_data": {
-     "min_price": 2161,
+     "min_price": 2155,
      "min_price_currency": "RUB",
      "price_index_value": 0.74
     },
@@ -8040,10 +8040,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8099,10 +8099,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8158,10 +8158,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8217,10 +8217,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8276,10 +8276,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8307,7 +8307,7 @@
      "price_index_value": 0.95
     },
     "ozon_index_data": {
-     "min_price": 1609,
+     "min_price": 1603,
      "min_price_currency": "RUB",
      "price_index_value": 0.95
     },
@@ -8335,10 +8335,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8394,10 +8394,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8420,12 +8420,12 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 960,
+     "min_price": 984,
      "min_price_currency": "RUB",
-     "price_index_value": 1.6
+     "price_index_value": 1.59
     },
     "ozon_index_data": {
-     "min_price": 2769,
+     "min_price": 2751,
      "min_price_currency": "RUB",
      "price_index_value": 0.86
     },
@@ -8453,10 +8453,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8479,14 +8479,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 874,
+     "min_price": 895,
      "min_price_currency": "RUB",
      "price_index_value": 1.69
     },
     "ozon_index_data": {
-     "min_price": 3059,
+     "min_price": 3459,
      "min_price_currency": "RUB",
-     "price_index_value": 0.93
+     "price_index_value": 0.83
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -8512,10 +8512,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8571,10 +8571,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8630,10 +8630,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8661,9 +8661,9 @@
      "price_index_value": 0.82
     },
     "ozon_index_data": {
-     "min_price": 835,
+     "min_price": 822,
      "min_price_currency": "RUB",
-     "price_index_value": 0.87
+     "price_index_value": 0.88
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8689,10 +8689,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8748,10 +8748,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8807,10 +8807,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8838,9 +8838,9 @@
      "price_index_value": 0.95
     },
     "ozon_index_data": {
-     "min_price": 712,
+     "min_price": 705,
      "min_price_currency": "RUB",
-     "price_index_value": 0.98
+     "price_index_value": 0.99
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -8866,10 +8866,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8925,10 +8925,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -8984,10 +8984,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9043,10 +9043,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9102,10 +9102,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9161,10 +9161,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9187,16 +9187,16 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1833,
+     "min_price": 1804,
      "min_price_currency": "RUB",
-     "price_index_value": 0.97
+     "price_index_value": 0.99
     },
     "ozon_index_data": {
-     "min_price": 1775,
+     "min_price": 1752,
      "min_price_currency": "RUB",
-     "price_index_value": 1.01
+     "price_index_value": 1.02
     },
-    "color_index": "GREEN",
+    "color_index": "YELLOW",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -9220,10 +9220,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9279,10 +9279,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9338,10 +9338,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9352,7 +9352,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1699,
+    "marketing_price": 1667,
     "marketing_seller_price": 2090,
     "min_price": 1881,
     "old_price": 2508,
@@ -9364,14 +9364,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1283,
+     "min_price": 1320,
      "min_price_currency": "RUB",
-     "price_index_value": 1.2
+     "price_index_value": 1.17
     },
     "ozon_index_data": {
-     "min_price": 1996,
+     "min_price": 1950,
      "min_price_currency": "RUB",
-     "price_index_value": 0.8
+     "price_index_value": 0.81
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -9397,10 +9397,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9428,9 +9428,9 @@
      "price_index_value": 0.67
     },
     "ozon_index_data": {
-     "min_price": 2885,
+     "min_price": 2854,
      "min_price_currency": "RUB",
-     "price_index_value": 0.81
+     "price_index_value": 0.82
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -9456,10 +9456,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9487,9 +9487,9 @@
      "price_index_value": 1.47
     },
     "ozon_index_data": {
-     "min_price": 1666,
+     "min_price": 1537,
      "min_price_currency": "RUB",
-     "price_index_value": 0.72
+     "price_index_value": 0.78
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -9515,10 +9515,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9529,7 +9529,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1869,
+    "marketing_price": 1834,
     "marketing_seller_price": 2299,
     "min_price": 2070,
     "old_price": 2759,
@@ -9543,10 +9543,10 @@
     "external_index_data": {
      "min_price": 1913,
      "min_price_currency": "RUB",
-     "price_index_value": 0.92
+     "price_index_value": 0.91
     },
     "ozon_index_data": {
-     "min_price": 3105,
+     "min_price": 3041,
      "min_price_currency": "RUB",
      "price_index_value": 0.57
     },
@@ -9574,10 +9574,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 254,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 27,
+    "sales_percent_fbs": 32,
+    "sales_percent_rfbs": 30,
+    "sales_percent_fbp": 30
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9633,10 +9633,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9647,7 +9647,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1538,
+    "marketing_price": 1534,
     "marketing_seller_price": 1917,
     "min_price": 1816,
     "old_price": 2421,
@@ -9659,14 +9659,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1548,
+     "min_price": 1524,
      "min_price_currency": "RUB",
-     "price_index_value": 0.94
+     "price_index_value": 0.96
     },
     "ozon_index_data": {
-     "min_price": 1380,
+     "min_price": 1375,
      "min_price_currency": "RUB",
-     "price_index_value": 1.05
+     "price_index_value": 1.06
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -9692,10 +9692,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9706,7 +9706,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1986,
+    "marketing_price": 1999,
     "marketing_seller_price": 2493,
     "min_price": 2244,
     "old_price": 2991,
@@ -9720,14 +9720,14 @@
     "external_index_data": {
      "min_price": 1933,
      "min_price_currency": "RUB",
-     "price_index_value": 0.97
+     "price_index_value": 0.98
     },
     "ozon_index_data": {
-     "min_price": 2024,
+     "min_price": 1843,
      "min_price_currency": "RUB",
-     "price_index_value": 0.92
+     "price_index_value": 1.03
     },
-    "color_index": "GREEN",
+    "color_index": "YELLOW",
     "self_marketplaces_index_data": {
      "min_price": 0,
      "min_price_currency": "RUB",
@@ -9751,10 +9751,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9810,10 +9810,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9869,10 +9869,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9928,10 +9928,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -9987,10 +9987,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10046,10 +10046,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10105,10 +10105,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10164,10 +10164,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10223,10 +10223,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10282,10 +10282,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10341,10 +10341,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10400,10 +10400,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10459,10 +10459,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10518,10 +10518,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10577,10 +10577,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10603,14 +10603,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 658,
+     "min_price": 788,
      "min_price_currency": "RUB",
-     "price_index_value": 0.72
+     "price_index_value": 0.6
     },
     "ozon_index_data": {
-     "min_price": 1206,
+     "min_price": 1148,
      "min_price_currency": "RUB",
-     "price_index_value": 0.39
+     "price_index_value": 0.41
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10636,10 +10636,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10662,14 +10662,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 840,
+     "min_price": 855,
      "min_price_currency": "RUB",
-     "price_index_value": 0.59
+     "price_index_value": 0.58
     },
     "ozon_index_data": {
-     "min_price": 514,
+     "min_price": 525,
      "min_price_currency": "RUB",
-     "price_index_value": 0.97
+     "price_index_value": 0.95
     },
     "color_index": "GREEN",
     "self_marketplaces_index_data": {
@@ -10695,10 +10695,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 30,
+    "sales_percent_rfbs": 28,
+    "sales_percent_fbp": 28
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10754,10 +10754,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10768,7 +10768,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1298,
+    "marketing_price": 1280,
     "marketing_seller_price": 1600,
     "min_price": 1599,
     "old_price": 2132,
@@ -10780,14 +10780,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 1128,
-     "min_price_currency": "RUB",
-     "price_index_value": 1.07
-    },
-    "ozon_index_data": {
-     "min_price": 1120,
+     "min_price": 1127,
      "min_price_currency": "RUB",
      "price_index_value": 1.08
+    },
+    "ozon_index_data": {
+     "min_price": 1097,
+     "min_price_currency": "RUB",
+     "price_index_value": 1.1
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -10813,10 +10813,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10872,10 +10872,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10886,7 +10886,7 @@
    "price": {
     "auto_action_enabled": false,
     "currency_code": "RUB",
-    "marketing_price": 1752,
+    "marketing_price": 1764,
     "marketing_seller_price": 2200,
     "min_price": 1200,
     "old_price": 3000,
@@ -10898,14 +10898,14 @@
    },
    "price_indexes": {
     "external_index_data": {
-     "min_price": 412,
+     "min_price": 423,
      "min_price_currency": "RUB",
      "price_index_value": 1.75
     },
     "ozon_index_data": {
-     "min_price": 1510,
+     "min_price": 1504,
      "min_price_currency": "RUB",
-     "price_index_value": 1.09
+     "price_index_value": 1.1
     },
     "color_index": "RED",
     "self_marketplaces_index_data": {
@@ -10931,10 +10931,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -10962,7 +10962,7 @@
      "price_index_value": 0.99
     },
     "ozon_index_data": {
-     "min_price": 959,
+     "min_price": 955,
      "min_price_currency": "RUB",
      "price_index_value": 0.99
     },
@@ -10990,10 +10990,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11049,10 +11049,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11108,10 +11108,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11167,10 +11167,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11226,10 +11226,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11285,10 +11285,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11344,10 +11344,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11403,10 +11403,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11462,10 +11462,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11521,10 +11521,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11580,10 +11580,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11639,10 +11639,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11698,10 +11698,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 98,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11729,9 +11729,9 @@
      "price_index_value": 0.79
     },
     "ozon_index_data": {
-     "min_price": 2278,
+     "min_price": 2223,
      "min_price_currency": "RUB",
-     "price_index_value": 1.02
+     "price_index_value": 1.05
     },
     "color_index": "YELLOW",
     "self_marketplaces_index_data": {
@@ -11757,10 +11757,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11816,10 +11816,10 @@
     "fbs_first_mile_max_amount": 30,
     "fbs_first_mile_min_amount": 10,
     "fbs_return_flow_amount": 80,
-    "sales_percent_fbo": 10,
-    "sales_percent_fbs": 10,
-    "sales_percent_rfbs": 10,
-    "sales_percent_fbp": 10
+    "sales_percent_fbo": 30,
+    "sales_percent_fbs": 34,
+    "sales_percent_rfbs": 31,
+    "sales_percent_fbp": 31
    },
    "marketing_actions": {
     "current_period_from": null,
@@ -11860,6 +11860,6 @@
    }
   }
  ],
- "cursor": "WzI4NzQzNTU4ODAsMjg3NDM1NTg4MF0=",
- "total": 203
+ "cursor": "WzIyMTU0MzMwNzIsMjIxNTQzMzA3Ml0=",
+ "total": 201
 }
