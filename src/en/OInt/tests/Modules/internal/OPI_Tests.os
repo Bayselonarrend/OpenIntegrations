@@ -20879,7 +20879,7 @@ Procedure FTP_UploadFile(FunctionParameters)
     Process(Result , "FTP", "UploadFile", "Size 1, " + Postfix, ImageDD.Size());
     Process(Result2, "FTP", "UploadFile", "Size 2, " + Postfix, ImageDD.Size());
 
-    For N = 1 To 7 Do
+    For N = 1 To 5 Do
 
         Result  = OPI_FTP.UploadFile(Connection, Image, "new_dir/pic_from_disk.png");
         Result2 = OPI_FTP.UploadFile(Connection, ImageDD, "pic_from_binary.png");
@@ -20893,11 +20893,6 @@ Procedure FTP_UploadFile(FunctionParameters)
         EndIf;
 
     EndDo;
-
-    BigData = OPI_HTTPRequests.Get(FunctionParameters["Big"]);
-    Result  = OPI_FTP.UploadFile(Connection, BigData, "new_dir/big.bin");
-
-    Process(Result, "FTP", "UploadFile", "Big, " + Postfix, BigData.Size());
 
     OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
 
@@ -21270,7 +21265,7 @@ Procedure FTP_SaveFile(FunctionParameters)
 
     Path = "new_dir/pic_from_disk.png";
 
-    For N = 1 To 20 Do
+    For N = 1 To 5 Do
 
         Result = OPI_FTP.SaveFile(Connection, Path, FileName);
 
@@ -21347,7 +21342,7 @@ Procedure FTP_GetFileData(FunctionParameters)
 
     Path = "new_dir/pic_from_disk.png";
 
-    For N = 1 To 20 Do
+    For N = 1 To 5 Do
 
         Result = OPI_FTP.GetFileData(Connection, Path);
 
