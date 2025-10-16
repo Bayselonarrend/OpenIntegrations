@@ -46,6 +46,7 @@
   <subsystems>Subsystem.OPI_Интеграция</subsystems>
   <commonTemplates>CommonTemplate.OPI_Cryptography</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_FTP</commonTemplates>
+  <commonTemplates>CommonTemplate.OPI_MongoDB</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_MSSQL</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_MySQL</commonTemplates>
   <commonTemplates>CommonTemplate.OPI_PostgreSQL</commonTemplates>
@@ -63,6 +64,7 @@
   <commonModules>CommonModule.OPI_GoogleSheets</commonModules>
   <commonModules>CommonModule.OPI_GoogleWorkspace</commonModules>
   <commonModules>CommonModule.OPI_GreenAPI</commonModules>
+  <commonModules>CommonModule.OPI_MongoDB</commonModules>
   <commonModules>CommonModule.OPI_MSSQL</commonModules>
   <commonModules>CommonModule.OPI_MySQL</commonModules>
   <commonModules>CommonModule.OPI_Neocities</commonModules>

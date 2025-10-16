@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="ded8600c-c713-4f05-9b7b-10fbd0e80aa7">
+  <name>OPI_MongoDB</name>
+  <synonym>
+    <key>ru</key>
+    <value>Компонента MongoDB (ОПИ)</value>
+  </synonym>
+  <templateType>AddIn</templateType>
+</mdclass:CommonTemplate>
