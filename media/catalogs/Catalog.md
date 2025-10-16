@@ -13,7 +13,6 @@
 |![MySQL](../MySQL.png)| `MySQL`| mysql, my sql |
 |![Neocities](../Neocities.png)| `Neocities`| neocities |
 |![Notion](../Notion.png)| `Notion`| notion |
-|![Ozon](../Ozon.png)| `Ozon`| ozon, seller api |
 |![PostgreSQL](../PostgreSQL.png)| `PostgreSQL`| postgresql, postgre sql, postgres |
 |![RCON](../RCON.png)| `RCON`| rcon, remote console |
 |![ReportPortal (в разработке)](../default.png)| `ReportPortal (в разработке)`| reportportal |
