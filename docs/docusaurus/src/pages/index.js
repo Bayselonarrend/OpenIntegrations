@@ -10,7 +10,6 @@ import styles from './index.module.css';
 const iconList = [
   '/img/APIs/Airtable.png',
   '/img/APIs/VK.png',
-  '/img/APIs/Ozon.png',
   '/img/APIs/Neocities.png',
   '/img/APIs/Telegram.png',
   '/img/APIs/Viber.png',
