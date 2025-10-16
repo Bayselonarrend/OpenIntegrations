@@ -3,7 +3,7 @@
   <name>OPI_MongoDB</name>
   <synonym>
     <key>ru</key>
-    <value>Mongo DB (ОПИ)</value>
+    <value>MongoDB (ОПИ)</value>
   </synonym>
   <comment>Модуль для работы с базами MongoDB из набора ОПИ</comment>
   <server>true</server>
