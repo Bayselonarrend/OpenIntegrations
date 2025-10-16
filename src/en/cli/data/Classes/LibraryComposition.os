@@ -40,7 +40,6 @@ Procedure InitializeCommonLists() Export
     ModuleCommandMapping.Insert("notion", "OPI_Notion");
     ModuleCommandMapping.Insert("ollama", "OPI_Ollama");
     ModuleCommandMapping.Insert("openai", "OPI_OpenAI");
-    ModuleCommandMapping.Insert("ozon", "OPI_Ozon");
     ModuleCommandMapping.Insert("postgres", "OPI_PostgreSQL");
     ModuleCommandMapping.Insert("rcon", "OPI_RCON");
     ModuleCommandMapping.Insert("rportal", "OPI_ReportPortal");
