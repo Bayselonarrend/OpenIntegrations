@@ -1,4 +1,0 @@
-oint ozon GetCurrentPromoProducts ^
- --clientid "***" ^
- --apikey "***" ^
- --actionid 111111111

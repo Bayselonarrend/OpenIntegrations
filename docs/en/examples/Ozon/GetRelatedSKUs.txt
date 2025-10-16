@@ -1,5 +1,0 @@
-﻿    ClientID = "2479669";
-    APIKey   = "09f65e9f-262d-4aca...";
-    SKU      = 1626044001;
-
-    Result = OPI_Ozon.GetRelatedSKUs(ClientID, APIKey, SKU);

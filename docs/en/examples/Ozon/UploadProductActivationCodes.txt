@@ -1,9 +1,0 @@
-﻿    ClientID  = "2479669";
-    APIKey    = "09f65e9f-262d-4aca...";
-    ProductID = "2873814040";
-
-    Codes = New Array;
-    Codes.Add("11111111");
-    Codes.Add("22222222");
-
-    Result = OPI_Ozon.UploadProductActivationCodes(ClientID, APIKey, ProductID, Codes);

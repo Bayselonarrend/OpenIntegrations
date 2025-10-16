@@ -1,7 +1,0 @@
-# JSON data can also be passed as a path to a .json file
-
-oint ozon CompleteComplexAttribute \
- --object "{'description_category_id':17028922,'name':'Protective film set for X3 NFC. Dark cotton','offer_id':'143210608','barcode':'112772873170','price':'1000','old_price':'1100','vat':'0.1','height':250,'width':150,'depth':10,'dimension_unit':'mm','weight':100,'weight_unit':'g'}" \
- --attributeid 5076 \
- --complexid 0 \
- --values "{'dictionary_value_id':971082156,'value':'Speaker stand'}"

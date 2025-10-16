@@ -1,6 +1,0 @@
-# JSON data can also be passed as a path to a .json file
-
-oint ozon UpdateProductsStocks \
- --clientid "***" \
- --apikey "***" \
- --stocks "{'offer_id':'143210610','product_id':1394030898,'stock':20,'warehouse_id':1}"

@@ -1,4 +1,0 @@
-oint ozon GetProductSubscribersCount ^
- --clientid "***" ^
- --apikey "***" ^
- --sku 1626044001
