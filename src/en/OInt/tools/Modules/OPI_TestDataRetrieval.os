@@ -10972,7 +10972,7 @@ Function Check_SSH_GetConnectionConfiguration(Val Result, Val Option)
             Result["set"]["pub_path"] = "./ssh_key.pub";
         EndIf;
 
-        If StrFind(Lower(Option), "socks5") > 0 Or StrFind(Lower(Option), "http") > 0 Then
+        If OPI_Tools.CollectionFieldExists(Result, "proxy") Then
 
             ExpectsThat(Result["proxy"]).Заполнено();
             Result["proxy"]["password"] = "***";
@@ -11255,7 +11255,7 @@ Function Check_SFTP_GetConnectionConfiguration(Val Result, Val Option)
             Result["set"]["pub_path"] = "./ssh_key.pub";
         EndIf;
 
-        If StrFind(Lower(Option), "socks5") > 0 Or StrFind(Lower(Option), "http") > 0 Then
+         If OPI_Tools.CollectionFieldExists(Result, "proxy") Then
 
             ExpectsThat(Result["proxy"]).Заполнено();
             Result["proxy"]["password"] = "***";

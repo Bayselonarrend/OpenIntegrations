@@ -3,7 +3,7 @@
   <name>OPI_MySQL</name>
   <synonym>
     <key>en</key>
-    <value>MySQL (OPI)</value>
+    <value>MySQL (OpenIntegrations)</value>
   </synonym>
   <comment>MySQL Module of OpenIntegrations</comment>
   <server>true</server>
