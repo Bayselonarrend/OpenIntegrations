@@ -40,6 +40,7 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
+//@skip-check bsl-legacy-check-string-literal
 
 #Region Public
 
