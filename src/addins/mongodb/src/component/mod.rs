@@ -48,6 +48,7 @@ impl AddIn {
     }
 
     pub fn initialize(&mut self) -> String {
+
         if self.connection_string.is_empty() {
             return format_json_error("Empty connection string!");
         }
@@ -62,7 +63,7 @@ impl AddIn {
         };
 
         match guard.connect(self.connection_string.as_str()){
-            Ok(b) => {
+            Ok(_) => {
                 self.initialized = true;
                 json!({"result": true}).to_string()
             },
