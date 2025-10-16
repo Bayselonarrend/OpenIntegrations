@@ -51,7 +51,7 @@
 // Creates a connection to the specified base
 //
 // Parameters:
-// ConnectionString - String - Connection string. See GenerateConnectionString - sting
+// ConnectionString - String - Connection string. See GenerateConnectionString - string
 // Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
