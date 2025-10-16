@@ -158,7 +158,6 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("Dropbox"        , 5);
     Sections.Insert("Bitrix24"       , 5);
     Sections.Insert("VkTeams"        , 5);
-    Sections.Insert("Ozon"           , 5);
     Sections.Insert("Neocities"      , 5);
     Sections.Insert("CDEK"           , 5);
     Sections.Insert("YandexMetrika"  , 5);
@@ -203,7 +202,6 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("Dropbox"        , StandardDependencies);
     Sections.Insert("Bitrix24"       , StandardDependencies);
     Sections.Insert("VkTeams"        , StandardDependencies);
-    Sections.Insert("Ozon"           , StandardDependencies);
     Sections.Insert("Neocities"      , StandardDependencies);
     Sections.Insert("CDEK"           , StandardDependencies);
     Sections.Insert("YandexMetrika"  , StandardDependencies);
@@ -236,7 +234,6 @@ Function GetTestTable() Export
     Dropbox   = "Dropbox";
     Bitrix    = "Bitrix24";
     VKT       = "VkTeams";
-    Ozon      = "Ozon";
     Neocities = "Neocities";
     Cdek      = "CDEK";
     Metrika   = "YandexMetrika";
@@ -261,173 +258,166 @@ Function GetTestTable() Export
     TestTable.Columns.Add("Synonym");
     TestTable.Columns.Add("Section");
 
-    NewTest(TestTable, "TelegramAPI_GetBotInfo"               , "Get bot information"             , Telegram);
-    NewTest(TestTable, "TelegramAPI_GetUpdates"               , "Get updates"                     , Telegram);
-    NewTest(TestTable, "TelegramAPI_SetWebhook"               , "Set Webhook"                     , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendTextMessage"          , "Send text message"               , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendImage"                , "Send image"                      , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendVideo"                , "Send video"                      , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendAudio"                , "Send audio"                      , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendDocument"             , "Send document"                   , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendGIF"                  , "Send GIF"                        , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendMediaGroup"           , "Send mediagroup"                 , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendLocation"             , "Send location"                   , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendContact"              , "Send contact"                    , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendPoll"                 , "Send poll"                       , Telegram);
-    NewTest(TestTable, "TelegramAPI_ForwardMessage"           , "Forward message"                 , Telegram);
-    NewTest(TestTable, "TelegramAPI_BanUnban"                 , "Ban/Unban"                       , Telegram);
-    NewTest(TestTable, "TelegramAPI_CreateInvitationLink"     , "Create invitation link"          , Telegram);
-    NewTest(TestTable, "TelegramAPI_PinUnpinMessage"          , "Pin/Unpin message"               , Telegram);
-    NewTest(TestTable, "TelegramAPI_GetMemberCount"           , "Get participant count"           , Telegram);
-    NewTest(TestTable, "TelegramAPI_GetForumAvatarsList"      , "Get forum avatars list"          , Telegram);
-    NewTest(TestTable, "TelegramAPI_CreateDeleteForumTopic"   , "Create/Delete forum topic"       , Telegram);
-    NewTest(TestTable, "TelegramAPI_ChangeMainTopicName"      , "Change main topic name"          , Telegram);
-    NewTest(TestTable, "TelegramAPI_HideShowMainTopic"        , "Hide/Show main topic"            , Telegram);
-    NewTest(TestTable, "VKAPI_CreateTokenLink"                , "Create token retrieval link"     , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateDeletePost"               , "Create/Delete post"              , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateCompositePost"            , "Create/Delete composite post"    , VKontakte);
-    NewTest(TestTable, "VKAPI_CreatePoll"                     , "Create poll"                     , VKontakte);
-    NewTest(TestTable, "VKAPI_SaveDeleteImage"                , "Add/Delete image"                , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateStory"                    , "Create story"                    , VKontakte);
-    NewTest(TestTable, "VKAPI_DiscussionMethods"              , "Actions with discussions"        , VKontakte);
-    NewTest(TestTable, "VKAPI_LikeRepostComment"              , "Like/Repost/Comment"             , VKontakte);
-    NewTest(TestTable, "VKAPI_GetStatistics"                  , "Get statistics"                  , VKontakte);
-    NewTest(TestTable, "VKAPI_GetPostStatistics"              , "Get post statistics"             , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateAdCampaign"               , "Create advertising campaign"     , VKontakte);
-    NewTest(TestTable, "VKAPI_SendMessage"                    , "Send message"                    , VKontakte);
-    NewTest(TestTable, "VKAPI_GetProductCategories"           , "Get product categories"          , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateProductSelection"         , "Create product and selection"    , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateProductWithProperties"    , "Create product with properties"  , VKontakte);
-    NewTest(TestTable, "VKAPI_GetProductList"                 , "Get product list"                , VKontakte);
-    NewTest(TestTable, "VKAPI_GetSelectionList"               , "Get selection list"              , VKontakte);
-    NewTest(TestTable, "VKAPI_GetPropertyList"                , "Get property list"               , VKontakte);
-    NewTest(TestTable, "VKAPI_GetOrderList"                   , "Get order list"                  , VKontakte);
-    NewTest(TestTable, "VKAPI_UploadVideo"                    , "Upload video"                    , VKontakte);
-    NewTest(TestTable, "YDisk_GetDiskInfo"                    , "Get disk information"            , YDisk);
-    NewTest(TestTable, "YDisk_CreateFolder"                   , "Create folder"                   , YDisk);
-    NewTest(TestTable, "YDisk_UploadByUrlAndGetObject"        , "Upload by URL and get"           , YDisk);
-    NewTest(TestTable, "YDisk_UploadDeleteFile"               , "Upload/Delete file"              , YDisk);
-    NewTest(TestTable, "YDisk_CreateObjectCopy"               , "Create object copy"              , YDisk);
-    NewTest(TestTable, "YDisk_GetDownloadLink"                , "Get download link"               , YDisk);
-    NewTest(TestTable, "YDisk_GetFileList"                    , "Get list of files"               , YDisk);
-    NewTest(TestTable, "YDisk_MoveObject"                     , "Move object"                     , YDisk);
-    NewTest(TestTable, "YDisk_PublicObjectActions"            , "Actions with public objects"     , YDisk);
-    NewTest(TestTable, "YDisk_GetPublishedList"               , "Get published list"              , YDisk);
-    NewTest(TestTable, "GW_Auth"                              , "Authorization"                   , VSpace);
-    NewTest(TestTable, "GW_Auth"                              , "Authorization"                   , Calendar);
-    NewTest(TestTable, "GC_GetCalendarList"                   , "Get list of calendars"           , Calendar);
-    NewTest(TestTable, "GC_CreateDeleteCalendar"              , "Create/Delete calendar"          , Calendar);
-    NewTest(TestTable, "GC_CreateDeleteEvent"                 , "Create/Delete event"             , Calendar);
-    NewTest(TestTable, "GW_Auth"                              , "Authorization"                   , Drive);
-    NewTest(TestTable, "GD_GetCatalogList"                    , "Get list of directories"         , Drive);
-    NewTest(TestTable, "GD_UploadDeleteFile"                  , "Upload/Delete file"              , Drive);
-    NewTest(TestTable, "GD_CreateDeleteComment"               , "Create/Delete Comment"           , Drive);
-    NewTest(TestTable, "GD_CreateCatalog"                     , "Create/Delete catalog"           , Drive);
-    NewTest(TestTable, "GW_Auth"                              , "Authorization"                   , Tables);
-    NewTest(TestTable, "GT_CreateTable"                       , "Create table"                    , Tables);
-    NewTest(TestTable, "GT_FillClearCells"                    , "Fill/Clear cells"                , Tables);
-    NewTest(TestTable, "TwitterAPI_AccountData"               , "Account data"                    , Twitter);
-    NewTest(TestTable, "TwitterAPI_Tweets"                    , "Tweets creation"                 , Twitter);
-    NewTest(TestTable, "Viber_DataRetrieval"                  , "Data retrieval"                  , Viber);
-    NewTest(TestTable, "Viber_MessagesSending"                , "Messages sending"                , Viber);
-    NewTest(TestTable, "NotionAPI_CreatePage"                 , "Create page"                     , Notion);
-    NewTest(TestTable, "NotionAPI_CreateUpdateBase"           , "Create/Edit database"            , Notion);
-    NewTest(TestTable, "NotionAPI_CreateDeleteBlock"          , "Create/Delete block"             , Notion);
-    NewTest(TestTable, "NotionAPI_GetUsers"                   , "Get users"                       , Notion);
-    NewTest(TestTable, "SlackGetData"                         , "Get data"                        , Slack);
-    NewTest(TestTable, "Slack_SendDeleteMessage"              , "Send/Delete message"             , Slack);
-    NewTest(TestTable, "Slack_CreateArchiveChannel"           , "Create/Archive channel"          , Slack);
-    NewTest(TestTable, "Slack_OpenCloseDialog"                , "Open/Close dialog"               , Slack);
-    NewTest(TestTable, "Slack_UploadDeleteFile"               , "Upload/Delete file"              , Slack);
-    NewTest(TestTable, "Slack_UploadDeleteExternalFile"       , "Upload/Delete external file"     , Slack);
-    NewTest(TestTable, "AT_CreateDatabase"                    , "Create/Edit database"            , AirT);
-    NewTest(TestTable, "AT_CreateTable"                       , "Create/Edit table"               , AirT);
-    NewTest(TestTable, "AT_CreateField"                       , "Create/Edit field"               , AirT);
-    NewTest(TestTable, "AT_CreateDeleteRecords"               , "Create/Delete records"           , AirT);
-    NewTest(TestTable, "DropboxAPI_GetUpdateToken"            , "Get/Update token"                , Dropbox);
-    NewTest(TestTable, "DropboxAPI_UploadFile"                , "Upload file"                     , Dropbox);
-    NewTest(TestTable, "DropboxAPI_UploadFileByURL"           , "Upload file by URL"              , Dropbox);
-    NewTest(TestTable, "DropboxAPI_CreateFolder"              , "Create folder"                   , Dropbox);
-    NewTest(TestTable, "DropboxAPI_CreateDeleteTag"           , "Create/Delete tag"               , Dropbox);
-    NewTest(TestTable, "DropboxAPI_GetAccount"                , "Get account data"                , Dropbox);
-    NewTest(TestTable, "DropboxAPI_AccessManagement"          , "Access management"               , Dropbox);
-    NewTest(TestTable, "DropboxAPI_GetFolderFileList"         , "Get list of folder files"        , Dropbox);
-    NewTest(TestTable, "B24_TokenManagement"                  , "Token management"                , Bitrix);
-    NewTest(TestTable, "B24_ServerTime"                       , "Server time"                     , Bitrix);
-    NewTest(TestTable, "B24_PostsManagement"                  , "Posts management"                , Bitrix);
-    NewTest(TestTable, "B24_TaskManagement"                   , "Tasks management"                , Bitrix);
-    NewTest(TestTable, "B24_CommentsManagement"               , "Comments management"             , Bitrix);
-    NewTest(TestTable, "B24_WorkingWithDrive"                 , "Working with drive"              , Bitrix);
-    NewTest(TestTable, "B24_Kanban"                           , "Kanban"                          , Bitrix);
-    NewTest(TestTable, "B24_Timekeeping"                      , "Timekeeping"                     , Bitrix);
-    NewTest(TestTable, "B24_ChatManagement"                   , "Chats works"                     , Bitrix);
-    NewTest(TestTable, "B24_NotificationsManagement"          , "Notifications management"        , Bitrix);
-    NewTest(TestTable, "B24_TasksFieldsManagement"            , "Working with custom task fields" , Bitrix);
-    NewTest(TestTable, "B24_DepartmentsManagement"            , "Departments management"          , Bitrix);
-    NewTest(TestTable, "B2_UsersManagement"                   , "Users management"                , Bitrix);
-    NewTest(TestTable, "B24_LeadsManagement"                  , "Leads management"                , Bitrix);
-    NewTest(TestTable, "B24_DealsManagement"                  , "Deals management"                , Bitrix);
-    NewTest(TestTable, "B24_CalendarsManagement"              , "Calendars management"            , Bitrix);
-    NewTest(TestTable, "VKT_MessagesSending"                  , "Messages sending"                , VKT);
-    NewTest(TestTable, "VKT_CommonMethods"                    , "Common methods"                  , VKT);
-    NewTest(TestTable, "VKT_ChatManagement"                   , "Chat management"                 , VKT);
-    NewTest(TestTable, "OzonAPI_AttributesAndFeatures"        , "Attributes and features"         , Ozon);
-    NewTest(TestTable, "OzonAPI_UploadingAndUpdatingProducts" , "Uploading and updating products" , Ozon);
-    NewTest(TestTable, "OzonAPI_Barcodes"                     , "Barcodes"                        , Ozon);
-    NewTest(TestTable, "OzonAPI_PricesAndStocks"              , "Prices and stocks"               , Ozon);
-    NewTest(TestTable, "OzonAPI_PromotionsManagement"         , "Promotions management"           , Ozon);
-    NewTest(TestTable, "OzonAPI_WarehousesManagement"         , "Warehouses management"           , Ozon);
-    NewTest(TestTable, "OzonAPI_FBOScheme"                    , "FBO scheme"                      , Ozon);
-    NewTest(TestTable, "NC_FilesManagement"                   , "Files management"                , Neocities);
-    NewTest(TestTable, "NC_DataRetrieving"                    , "Data retrieving"                 , Neocities);
-    NewTest(TestTable, "CdekAPI_CommonMethods"                , "Common methods"                  , Cdek);
-    NewTest(TestTable, "CDEKAPI_OrdersManagement"             , "Orders management"               , Cdek);
-    NewTest(TestTable, "CdekAPI_CourierInvitationsManagement" , "Courier invitations management"  , Cdek);
-    NewTest(TestTable, "YaMetrika_TagsManagement"             , "Tags management"                 , Metrika);
-    NewTest(TestTable, "YaMetrika_CountersManagement"         , "Counters management"             , Metrika);
-    NewTest(TestTable, "YaMetrika_ActionsManagement"          , "Actions management"              , Metrika);
-    NewTest(TestTable, "AWS_CommonMethods"                    , "Common methods"                  , S3_);
-    NewTest(TestTable, "AWS_BucketsManagement"                , "Buckets management"              , S3_);
-    NewTest(TestTable, "AWS_ObjectsManagement"                , "Objects management"              , S3_);
-    NewTest(TestTable, "TC_Client"                            , "TCP Client"                      , TCP);
-    NewTest(TestTable, "SQLL_CommonMethods"                   , "Common methods"                  , SQLite);
-    NewTest(TestTable, "SQLL_ORM"                             , "ORM"                             , SQLite);
-    NewTest(TestTable, "Postgres_CommonMethods"               , "Common methods"                  , Postgres);
-    NewTest(TestTable, "Postgres_ORM"                         , "ORM"                             , Postgres);
-    NewTest(TestTable, "MYS_CommonMethods"                    , "Common methods"                  , MySQL);
-    NewTest(TestTable, "MYS_ORM"                              , "ORM"                             , MySQL);
-    NewTest(TestTable, "MSS_CommonMethods"                    , "Common methods"                  , MSSQL);
-    NewTest(TestTable, "MSS_ORM"                              , "ORM"                             , MSSQL);
-    NewTest(TestTable, "GAPI_GroupManagement"                 , "Group management"                , GreenAPI);
-    NewTest(TestTable, "GAPI_MessageSending"                  , "Messages sending"                , GreenAPI);
-    NewTest(TestTable, "GAPI_NotificationsReceiving"          , "Notifications receiving"         , GreenAPI);
-    NewTest(TestTable, "GAPI_MessageQueue"                    , "Message queue"                   , GreenAPI);
-    NewTest(TestTable, "GAPI_MessageLogs"                     , "Message logs"                    , GreenAPI);
-    NewTest(TestTable, "GAPI_Account"                         , "Account"                         , GreenAPI);
-    NewTest(TestTable, "RC_CommandsExecution"                 , "Commands execution"              , RCON);
-    NewTest(TestTable, "OLLM_RequestsProcessing"              , "Requests processing"             , Ollama);
-    NewTest(TestTable, "OLLM_ModelsManagement"                , "Models management"               , Ollama);
-    NewTest(TestTable, "OLLM_WorkingWithBlob"                 , "Working with Blob"               , Ollama);
-    NewTest(TestTable, "HTTP_Initialization"                  , "Initialization"                  , Http);
-    NewTest(TestTable, "HTTP_BodySet"                         , "Body set"                        , Http);
-    NewTest(TestTable, "HTTP_Settings"                        , "Settings"                        , Http);
-    NewTest(TestTable, "HTTP_HeadersSetting"                  , "Headers setting"                 , Http);
-    NewTest(TestTable, "HTTP_Authorization"                   , "Authorization"                   , Http);
-    NewTest(TestTable, "HTTP_RequestProcessing"               , "Request processing"              , Http);
-    NewTest(TestTable, "HTTP_ResponseReceiving"               , "Response receiving"              , Http);
-    NewTest(TestTable, "OAI_RequestsProcessing"               , "Requests processing"             , OpenAI);
-    NewTest(TestTable, "OAI_Assistants"                       , "Assistants"                      , OpenAI);
-    NewTest(TestTable, "OAI_FileManagement"                   , "Files management"                , OpenAI);
-    NewTest(TestTable, "OAI_AudioProcessing"                  , "Audio processing"                , OpenAI);
-    NewTest(TestTable, "OAI_ModelsManagement"                 , "Models management"               , OpenAI);
-    NewTest(TestTable, "FT_DirecotryManagement"               , "Directory management"            , FTP);
-    NewTest(TestTable, "FT_FileOperations"                    , "Files management"                , FTP);
-    NewTest(TestTable, "FT_CommonMethods"                     , "Common methods"                  , FTP);
-    NewTest(TestTable, "RPortal_Authorization"                , "Authorization"                   , RPortal);
-    NewTest(TestTable, "SShell_CommonMethods"                 , "Common methods"                  , SSH);
-    NewTest(TestTable, "SF_CommonMethods"                     , "Common methods"                  , SFTP);
-    NewTest(TestTable, "SF_DirectoryManagement"               , "Directory management"            , SFTP);
-    NewTest(TestTable, "SF_FileManagement"                    , "Files management"                , SFTP);
+    NewTest(TestTable, "TelegramAPI_GetBotInfo"              , "Get bot information"             , Telegram);
+    NewTest(TestTable, "TelegramAPI_GetUpdates"              , "Get updates"                     , Telegram);
+    NewTest(TestTable, "TelegramAPI_SetWebhook"              , "Set Webhook"                     , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendTextMessage"         , "Send text message"               , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendImage"               , "Send image"                      , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendVideo"               , "Send video"                      , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendAudio"               , "Send audio"                      , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendDocument"            , "Send document"                   , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendGIF"                 , "Send GIF"                        , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendMediaGroup"          , "Send mediagroup"                 , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendLocation"            , "Send location"                   , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendContact"             , "Send contact"                    , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendPoll"                , "Send poll"                       , Telegram);
+    NewTest(TestTable, "TelegramAPI_ForwardMessage"          , "Forward message"                 , Telegram);
+    NewTest(TestTable, "TelegramAPI_BanUnban"                , "Ban/Unban"                       , Telegram);
+    NewTest(TestTable, "TelegramAPI_CreateInvitationLink"    , "Create invitation link"          , Telegram);
+    NewTest(TestTable, "TelegramAPI_PinUnpinMessage"         , "Pin/Unpin message"               , Telegram);
+    NewTest(TestTable, "TelegramAPI_GetMemberCount"          , "Get participant count"           , Telegram);
+    NewTest(TestTable, "TelegramAPI_GetForumAvatarsList"     , "Get forum avatars list"          , Telegram);
+    NewTest(TestTable, "TelegramAPI_CreateDeleteForumTopic"  , "Create/Delete forum topic"       , Telegram);
+    NewTest(TestTable, "TelegramAPI_ChangeMainTopicName"     , "Change main topic name"          , Telegram);
+    NewTest(TestTable, "TelegramAPI_HideShowMainTopic"       , "Hide/Show main topic"            , Telegram);
+    NewTest(TestTable, "VKAPI_CreateTokenLink"               , "Create token retrieval link"     , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateDeletePost"              , "Create/Delete post"              , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateCompositePost"           , "Create/Delete composite post"    , VKontakte);
+    NewTest(TestTable, "VKAPI_CreatePoll"                    , "Create poll"                     , VKontakte);
+    NewTest(TestTable, "VKAPI_SaveDeleteImage"               , "Add/Delete image"                , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateStory"                   , "Create story"                    , VKontakte);
+    NewTest(TestTable, "VKAPI_DiscussionMethods"             , "Actions with discussions"        , VKontakte);
+    NewTest(TestTable, "VKAPI_LikeRepostComment"             , "Like/Repost/Comment"             , VKontakte);
+    NewTest(TestTable, "VKAPI_GetStatistics"                 , "Get statistics"                  , VKontakte);
+    NewTest(TestTable, "VKAPI_GetPostStatistics"             , "Get post statistics"             , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateAdCampaign"              , "Create advertising campaign"     , VKontakte);
+    NewTest(TestTable, "VKAPI_SendMessage"                   , "Send message"                    , VKontakte);
+    NewTest(TestTable, "VKAPI_GetProductCategories"          , "Get product categories"          , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateProductSelection"        , "Create product and selection"    , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateProductWithProperties"   , "Create product with properties"  , VKontakte);
+    NewTest(TestTable, "VKAPI_GetProductList"                , "Get product list"                , VKontakte);
+    NewTest(TestTable, "VKAPI_GetSelectionList"              , "Get selection list"              , VKontakte);
+    NewTest(TestTable, "VKAPI_GetPropertyList"               , "Get property list"               , VKontakte);
+    NewTest(TestTable, "VKAPI_GetOrderList"                  , "Get order list"                  , VKontakte);
+    NewTest(TestTable, "VKAPI_UploadVideo"                   , "Upload video"                    , VKontakte);
+    NewTest(TestTable, "YDisk_GetDiskInfo"                   , "Get disk information"            , YDisk);
+    NewTest(TestTable, "YDisk_CreateFolder"                  , "Create folder"                   , YDisk);
+    NewTest(TestTable, "YDisk_UploadByUrlAndGetObject"       , "Upload by URL and get"           , YDisk);
+    NewTest(TestTable, "YDisk_UploadDeleteFile"              , "Upload/Delete file"              , YDisk);
+    NewTest(TestTable, "YDisk_CreateObjectCopy"              , "Create object copy"              , YDisk);
+    NewTest(TestTable, "YDisk_GetDownloadLink"               , "Get download link"               , YDisk);
+    NewTest(TestTable, "YDisk_GetFileList"                   , "Get list of files"               , YDisk);
+    NewTest(TestTable, "YDisk_MoveObject"                    , "Move object"                     , YDisk);
+    NewTest(TestTable, "YDisk_PublicObjectActions"           , "Actions with public objects"     , YDisk);
+    NewTest(TestTable, "YDisk_GetPublishedList"              , "Get published list"              , YDisk);
+    NewTest(TestTable, "GW_Auth"                             , "Authorization"                   , VSpace);
+    NewTest(TestTable, "GW_Auth"                             , "Authorization"                   , Calendar);
+    NewTest(TestTable, "GC_GetCalendarList"                  , "Get list of calendars"           , Calendar);
+    NewTest(TestTable, "GC_CreateDeleteCalendar"             , "Create/Delete calendar"          , Calendar);
+    NewTest(TestTable, "GC_CreateDeleteEvent"                , "Create/Delete event"             , Calendar);
+    NewTest(TestTable, "GW_Auth"                             , "Authorization"                   , Drive);
+    NewTest(TestTable, "GD_GetCatalogList"                   , "Get list of directories"         , Drive);
+    NewTest(TestTable, "GD_UploadDeleteFile"                 , "Upload/Delete file"              , Drive);
+    NewTest(TestTable, "GD_CreateDeleteComment"              , "Create/Delete Comment"           , Drive);
+    NewTest(TestTable, "GD_CreateCatalog"                    , "Create/Delete catalog"           , Drive);
+    NewTest(TestTable, "GW_Auth"                             , "Authorization"                   , Tables);
+    NewTest(TestTable, "GT_CreateTable"                      , "Create table"                    , Tables);
+    NewTest(TestTable, "GT_FillClearCells"                   , "Fill/Clear cells"                , Tables);
+    NewTest(TestTable, "TwitterAPI_AccountData"              , "Account data"                    , Twitter);
+    NewTest(TestTable, "TwitterAPI_Tweets"                   , "Tweets creation"                 , Twitter);
+    NewTest(TestTable, "Viber_DataRetrieval"                 , "Data retrieval"                  , Viber);
+    NewTest(TestTable, "Viber_MessagesSending"               , "Messages sending"                , Viber);
+    NewTest(TestTable, "NotionAPI_CreatePage"                , "Create page"                     , Notion);
+    NewTest(TestTable, "NotionAPI_CreateUpdateBase"          , "Create/Edit database"            , Notion);
+    NewTest(TestTable, "NotionAPI_CreateDeleteBlock"         , "Create/Delete block"             , Notion);
+    NewTest(TestTable, "NotionAPI_GetUsers"                  , "Get users"                       , Notion);
+    NewTest(TestTable, "SlackGetData"                        , "Get data"                        , Slack);
+    NewTest(TestTable, "Slack_SendDeleteMessage"             , "Send/Delete message"             , Slack);
+    NewTest(TestTable, "Slack_CreateArchiveChannel"          , "Create/Archive channel"          , Slack);
+    NewTest(TestTable, "Slack_OpenCloseDialog"               , "Open/Close dialog"               , Slack);
+    NewTest(TestTable, "Slack_UploadDeleteFile"              , "Upload/Delete file"              , Slack);
+    NewTest(TestTable, "Slack_UploadDeleteExternalFile"      , "Upload/Delete external file"     , Slack);
+    NewTest(TestTable, "AT_CreateDatabase"                   , "Create/Edit database"            , AirT);
+    NewTest(TestTable, "AT_CreateTable"                      , "Create/Edit table"               , AirT);
+    NewTest(TestTable, "AT_CreateField"                      , "Create/Edit field"               , AirT);
+    NewTest(TestTable, "AT_CreateDeleteRecords"              , "Create/Delete records"           , AirT);
+    NewTest(TestTable, "DropboxAPI_GetUpdateToken"           , "Get/Update token"                , Dropbox);
+    NewTest(TestTable, "DropboxAPI_UploadFile"               , "Upload file"                     , Dropbox);
+    NewTest(TestTable, "DropboxAPI_UploadFileByURL"          , "Upload file by URL"              , Dropbox);
+    NewTest(TestTable, "DropboxAPI_CreateFolder"             , "Create folder"                   , Dropbox);
+    NewTest(TestTable, "DropboxAPI_CreateDeleteTag"          , "Create/Delete tag"               , Dropbox);
+    NewTest(TestTable, "DropboxAPI_GetAccount"               , "Get account data"                , Dropbox);
+    NewTest(TestTable, "DropboxAPI_AccessManagement"         , "Access management"               , Dropbox);
+    NewTest(TestTable, "DropboxAPI_GetFolderFileList"        , "Get list of folder files"        , Dropbox);
+    NewTest(TestTable, "B24_TokenManagement"                 , "Token management"                , Bitrix);
+    NewTest(TestTable, "B24_ServerTime"                      , "Server time"                     , Bitrix);
+    NewTest(TestTable, "B24_PostsManagement"                 , "Posts management"                , Bitrix);
+    NewTest(TestTable, "B24_TaskManagement"                  , "Tasks management"                , Bitrix);
+    NewTest(TestTable, "B24_CommentsManagement"              , "Comments management"             , Bitrix);
+    NewTest(TestTable, "B24_WorkingWithDrive"                , "Working with drive"              , Bitrix);
+    NewTest(TestTable, "B24_Kanban"                          , "Kanban"                          , Bitrix);
+    NewTest(TestTable, "B24_Timekeeping"                     , "Timekeeping"                     , Bitrix);
+    NewTest(TestTable, "B24_ChatManagement"                  , "Chats works"                     , Bitrix);
+    NewTest(TestTable, "B24_NotificationsManagement"         , "Notifications management"        , Bitrix);
+    NewTest(TestTable, "B24_TasksFieldsManagement"           , "Working with custom task fields" , Bitrix);
+    NewTest(TestTable, "B24_DepartmentsManagement"           , "Departments management"          , Bitrix);
+    NewTest(TestTable, "B2_UsersManagement"                  , "Users management"                , Bitrix);
+    NewTest(TestTable, "B24_LeadsManagement"                 , "Leads management"                , Bitrix);
+    NewTest(TestTable, "B24_DealsManagement"                 , "Deals management"                , Bitrix);
+    NewTest(TestTable, "B24_CalendarsManagement"             , "Calendars management"            , Bitrix);
+    NewTest(TestTable, "VKT_MessagesSending"                 , "Messages sending"                , VKT);
+    NewTest(TestTable, "VKT_CommonMethods"                   , "Common methods"                  , VKT);
+    NewTest(TestTable, "VKT_ChatManagement"                  , "Chat management"                 , VKT);
+    NewTest(TestTable, "NC_FilesManagement"                  , "Files management"                , Neocities);
+    NewTest(TestTable, "NC_DataRetrieving"                   , "Data retrieving"                 , Neocities);
+    NewTest(TestTable, "CdekAPI_CommonMethods"               , "Common methods"                  , Cdek);
+    NewTest(TestTable, "CDEKAPI_OrdersManagement"            , "Orders management"               , Cdek);
+    NewTest(TestTable, "CdekAPI_CourierInvitationsManagement", "Courier invitations management"  , Cdek);
+    NewTest(TestTable, "YaMetrika_TagsManagement"            , "Tags management"                 , Metrika);
+    NewTest(TestTable, "YaMetrika_CountersManagement"        , "Counters management"             , Metrika);
+    NewTest(TestTable, "YaMetrika_ActionsManagement"         , "Actions management"              , Metrika);
+    NewTest(TestTable, "AWS_CommonMethods"                   , "Common methods"                  , S3_);
+    NewTest(TestTable, "AWS_BucketsManagement"               , "Buckets management"              , S3_);
+    NewTest(TestTable, "AWS_ObjectsManagement"               , "Objects management"              , S3_);
+    NewTest(TestTable, "TC_Client"                           , "TCP Client"                      , TCP);
+    NewTest(TestTable, "SQLL_CommonMethods"                  , "Common methods"                  , SQLite);
+    NewTest(TestTable, "SQLL_ORM"                            , "ORM"                             , SQLite);
+    NewTest(TestTable, "Postgres_CommonMethods"              , "Common methods"                  , Postgres);
+    NewTest(TestTable, "Postgres_ORM"                        , "ORM"                             , Postgres);
+    NewTest(TestTable, "MYS_CommonMethods"                   , "Common methods"                  , MySQL);
+    NewTest(TestTable, "MYS_ORM"                             , "ORM"                             , MySQL);
+    NewTest(TestTable, "MSS_CommonMethods"                   , "Common methods"                  , MSSQL);
+    NewTest(TestTable, "MSS_ORM"                             , "ORM"                             , MSSQL);
+    NewTest(TestTable, "GAPI_GroupManagement"                , "Group management"                , GreenAPI);
+    NewTest(TestTable, "GAPI_MessageSending"                 , "Messages sending"                , GreenAPI);
+    NewTest(TestTable, "GAPI_NotificationsReceiving"         , "Notifications receiving"         , GreenAPI);
+    NewTest(TestTable, "GAPI_MessageQueue"                   , "Message queue"                   , GreenAPI);
+    NewTest(TestTable, "GAPI_MessageLogs"                    , "Message logs"                    , GreenAPI);
+    NewTest(TestTable, "GAPI_Account"                        , "Account"                         , GreenAPI);
+    NewTest(TestTable, "RC_CommandsExecution"                , "Commands execution"              , RCON);
+    NewTest(TestTable, "OLLM_RequestsProcessing"             , "Requests processing"             , Ollama);
+    NewTest(TestTable, "OLLM_ModelsManagement"               , "Models management"               , Ollama);
+    NewTest(TestTable, "OLLM_WorkingWithBlob"                , "Working with Blob"               , Ollama);
+    NewTest(TestTable, "HTTP_Initialization"                 , "Initialization"                  , Http);
+    NewTest(TestTable, "HTTP_BodySet"                        , "Body set"                        , Http);
+    NewTest(TestTable, "HTTP_Settings"                       , "Settings"                        , Http);
+    NewTest(TestTable, "HTTP_HeadersSetting"                 , "Headers setting"                 , Http);
+    NewTest(TestTable, "HTTP_Authorization"                  , "Authorization"                   , Http);
+    NewTest(TestTable, "HTTP_RequestProcessing"              , "Request processing"              , Http);
+    NewTest(TestTable, "HTTP_ResponseReceiving"              , "Response receiving"              , Http);
+    NewTest(TestTable, "OAI_RequestsProcessing"              , "Requests processing"             , OpenAI);
+    NewTest(TestTable, "OAI_Assistants"                      , "Assistants"                      , OpenAI);
+    NewTest(TestTable, "OAI_FileManagement"                  , "Files management"                , OpenAI);
+    NewTest(TestTable, "OAI_AudioProcessing"                 , "Audio processing"                , OpenAI);
+    NewTest(TestTable, "OAI_ModelsManagement"                , "Models management"               , OpenAI);
+    NewTest(TestTable, "FT_DirecotryManagement"              , "Directory management"            , FTP);
+    NewTest(TestTable, "FT_FileOperations"                   , "Files management"                , FTP);
+    NewTest(TestTable, "FT_CommonMethods"                    , "Common methods"                  , FTP);
+    NewTest(TestTable, "RPortal_Authorization"               , "Authorization"                   , RPortal);
+    NewTest(TestTable, "SShell_CommonMethods"                , "Common methods"                  , SSH);
+    NewTest(TestTable, "SF_CommonMethods"                    , "Common methods"                  , SFTP);
+    NewTest(TestTable, "SF_DirectoryManagement"              , "Directory management"            , SFTP);
+    NewTest(TestTable, "SF_FileManagement"                   , "Files management"                , SFTP);
 
     Return TestTable;
 
@@ -6541,479 +6531,6 @@ Function Check_VKTeams_AnswerButtonEvent(Val Result, Val Option)
     ExpectsThat(Result["ok"]).Равно(True);
 
     Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetCategoriesAndProductTypesTree(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-    ExpectsThat(Result["result"][0]["category_name"]).Заполнено();
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetCategoryAttributes(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-    ExpectsThat(Result["result"][0]["name"]).Заполнено();
-    ExpectsThat(Result["result"][0]["id"]).Заполнено();
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetAttributeValues(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-    ExpectsThat(Result["result"][0]["value"]).Заполнено();
-    ExpectsThat(Result["result"][0]["id"]).Заполнено();
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_SearchAttributeValue(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-    ExpectsThat(Result["result"][0]["value"]).Заполнено();
-    ExpectsThat(Result["result"][0]["id"]).Заполнено();
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetProductStructure(Val Result, Val Option)
-
-    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_CreateUpdateProducts(Val Result, Val Option, Parameters = "")
-
-    TaskID = Result["result"]["task_id"];
-    ExpectsThat(TaskID).Заполнено();
-
-    TaskID = Result["result"]["task_id"];
-    WriteParameter("Ozon_TaskID", TaskID);
-    Parameters.Insert("Ozon_TaskID", TaskID);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_AddProductVideo(Val Result, Val Option)
-
-    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_AddProductVideoCover(Val Result, Val Option)
-
-    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_CompleteComplexAttribute(Val Result, Val Option)
-
-    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetProductCreationStatus(Val Result, Val Option)
-
-    Status             = Result["result"]["items"][0]["status"];
-    ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
-    ExpectsThat(Status = "imported" Or Status = "skipped").Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_CreateProductByOzonID(Val Result, Val Option)
-
-    TaskID = Result["result"]["task_id"];
-    ExpectsThat(TaskID).Заполнено();
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetSimplifiedProductStructure(Val Result, Val Option)
-
-    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetAttributesUpdateStructure(Val Result, Val Option)
-
-    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_UpdateProductsAttributes(Val Result, Val Option, Parameters = "")
-
-    If Not ValueIsFilled(Option) Then
-
-        TaskID = Result["task_id"];
-        ExpectsThat(TaskID).Заполнено();
-
-        WriteParameter("Ozon_AttUpdateTaskID", TaskID);
-        Parameters.Insert("Ozon_AttUpdateTaskID", TaskID);
-
-    Else
-
-        Status             = Result["result"]["items"][0]["status"];
-        ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
-        ExpectsThat(Status = "imported" Or Status = "skipped").Равно(True);
-
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetProductsFilterStructure(Val Result, Val Option)
-
-    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetProductList(Val Result, Val Option, Parameters = "")
-
-    ExpectsThat(Result["result"]["items"]).ИмеетТип("Array");
-
-    ProductID = Result["result"]["items"][0]["product_id"];
-    WriteParameter("Ozon_ProductID", ProductID);
-    Parameters.Insert("Ozon_ProductID", ProductID);
-
-    ProductID = Result["result"]["items"][1]["product_id"];
-    WriteParameter("Ozon_ProductID2", ProductID);
-    Parameters.Insert("Ozon_ProductID2", ProductID);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetProductsAttributesData(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetProductsContentRating(Val Result, Val Option)
-
-    ExpectsThat(Result["products"]).ИмеетТип("Array");
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetProductsInformation(Val Result, Val Option)
-
-    ExpectsThat(Result["items"]).ИмеетТип("Array");
-    ExpectsThat(Result["items"][0]["name"]).Заполнено();
-    ExpectsThat(Result["items"][0]["id"]).Заполнено();
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetProductDescription(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]["id"]).Заполнено();
-    ExpectsThat(Result["result"]["name"]).Заполнено();
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetProductsRequestsLimits(Val Result, Val Option)
-
-    ExpectsThat(Result["daily_create"]).Заполнено();
-    ExpectsThat(Result["daily_update"]).Заполнено();
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_UpdateProductImages(Val Result, Val Option)
-
-    // TODO: Return check later
-    // ExpectsThat(Result["result"]["pictures"]).ИмеетТип("Array").Заполнено();
-
-    Return Undefined;
-
-EndFunction
-
-Function Check_Ozon_CheckProductsImagesUpload(Val Result, Val Option)
-
-    ExpectsThat(Result["items"]).ИмеетТип("Array");
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_UpdateProductsArticles(Val Result, Val Option)
-
-    // TODO: Return check later
-    // ExpectsThat(Result["errors"].Count()).Равно(0);
-
-    Return Undefined;
-
-EndFunction
-
-Function Check_Ozon_ArchiveProducts(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_UnarchiveProducts(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_DeleteProductsWithoutSKU(Val Result, Val Option)
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_UploadProductActivationCodes(Val Result, Val Option, Parameters = "")
-
-    TaskID = 1;
-    WriteParameter("Ozon_CodesTaskID", TaskID);
-    Parameters.Insert("Ozon_CodesTaskID", TaskID);
-
-    Return Undefined;
-
-EndFunction
-
-Function Check_Ozon_GetCodesUploadStatus(Val Result, Val Option)
-
-    // ExpectsThat(Result["result"]["status"]).Равно("imported");
-
-    Return Undefined;
-
-EndFunction
-
-Function Check_Ozon_GetProductSubscribersCount(Val Result, Val Option)
-
-    ExpectsThat(Result["result"][0]["count"]).ИмеетТип("Number");
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetRelatedSKUs(Val Result, Val Option)
-
-    ExpectsThat(Result["items"]).ИмеетТип("Array");
-    ExpectsThat(Result["items"][0]["availability"]).Заполнено();
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_BindBarcodes(Val Result, Val Option)
-
-    Return Undefined;
-
-EndFunction
-
-Function Check_Ozon_CreateBarcodes(Val Result, Val Option)
-
-    ExpectsThat(Result["errors"].Count()).Равно(0);
-
-    Return Undefined;
-
-EndFunction
-
-Function Check_Ozon_GetWarehousesList(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetProductsStocks(Val Result, Val Option)
-
-    ExpectsThat(Result["items"]).ИмеетТип("Array");
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_UpdateProductsPrices(Val Result, Val Option)
-
-    ExpectsThat(Result["result"][0]["updated"]).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_UpdateProductsStocks(Val Result, Val Option)
-
-    Return Undefined;
-
-EndFunction
-
-Function Check_Ozon_GetProductsPrices(Val Result, Val Option)
-
-    ExpectsThat(Result["items"]).ИмеетТип("Array");
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetDiscountInformation(Val Result, Val Option)
-
-    ExpectsThat(Result["items"]).ИмеетТип("Array");
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_SetProductDiscount(Val Result, Val Option)
-
-    Return Undefined;
-
-EndFunction
-
-Function Check_Ozon_GetPromotionsList(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetAvailablePromoProducts(Val Result, Val Option)
-
-    Return Undefined;
-
-EndFunction
-
-Function Check_Ozon_GetCurrentPromoProducts(Val Result, Val Option)
-
-    Return Undefined;
-
-EndFunction
-
-Function Check_Ozon_GetProductStocksStructure(Val Result, Val Option)
-
-    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetProductPriceStructure(Val Result, Val Option)
-
-    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetClustersList(Val Result, Val Option)
-
-    ExpectsThat(Result["clusters"]).ИмеетТип("Array");
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetShippingWarehousesList(Val Result, Val Option)
-
-    ExpectsThat(Result["search"]).ИмеетТип("Array");
-
-    OPI_Tools.Pause(2);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_CreateFBODraft(Val Result, Val Option, Parameters = "")
-
-    ExpectsThat(Result["operation_id"]).ИмеетТип("String").Заполнено();
-
-    DraftID = Result["operation_id"];
-    WriteParameter("Ozon_FBOOperID", DraftID);
-    Parameters.Insert("Ozon_FBOOperID", DraftID);
-
-    OPI_Tools.Pause(2);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetFBODraft(Val Result, Val Option, Parameters = "")
-
-    ExpectsThat(Result["status"]).Равно("CALCULATION_STATUS_SUCCESS");
-
-    DraftID = Result["draft_id"];
-    WriteParameter("Ozon_Draft", DraftID);
-    Parameters.Insert("Ozon_Draft", DraftID);
-
-    WarehouseID = Result["clusters"][0]["warehouses"][0]["supply_warehouse"]["warehouse_id"];
-    WriteParameter("Ozon_FBOWarehouse", WarehouseID);
-    Parameters.Insert("Ozon_FBOWarehouse", WarehouseID);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetShipmentAdditionalFields(Val Result, Val Option)
-
-    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetShipmentsFilterStructure(Val Result, Val Option)
-
-    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetFBOShipmentsList(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).ИмеетТип("Array");
-
-    Return Result;
-
-EndFunction
-
-Function Check_Ozon_GetFBOTimeslots(Val Result, Val Option)
-
-    // ExpectsThat(Result["drop_off_warehouse_timeslots"]).ИмеетТип("Array");
-    Return Undefined;
 
 EndFunction
 
