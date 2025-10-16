@@ -1,6 +1,0 @@
-:: JSON data can also be passed as a path to a .json file
-
-oint ozon GetProductList ^
- --clientid "***" ^
- --apikey "***" ^
- --filter "{'visibility':'ALL','offer_id':['143210609','1432106010']}"

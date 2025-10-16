@@ -1,6 +1,0 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
-oint ozon ОбновитьХарактеристикиТоваров \
-  --clientid "***" \
-  --apikey "***" \
-  --items "{'offer_id':'143210609','attributes':[{'id':'5076','complex_id':'0','values':[{'dictionary_value_id':'971082156','value':'Стойка для акустической системы'}]},{'id':'85','complex_id':'0','values':[{'dictionary_value_id':'5060050','value':'Samsung'}]},{'id':'10096','complex_id':'0','values':[{'dictionary_value_id':'61576','value':'красный'}]}]}"

@@ -1,4 +1,0 @@
-oint ozon UpdateProductsStocks ^
- --clientid "***" ^
- --apikey "***" ^
- --stocks "{'offer_id':'143210610','product_id':'2717268535','stock':'20','warehouse_id':'1'}"
