@@ -23,3 +23,7 @@ However, there are cases when it becomes necessary to introduce so-called **"bre
 ### 1.26.0 -> 1.27.0
 
 **All**: The `CreatePoll` method of the VK library has been modified due to [API changes](https://vk.com/@vkappsdev-obnovlyaem-rabotu-metodov-api-wallpost-walledit-i-newsfeed). Ambiguous usage of "Thread" and "Topic" in forum methods of Telegram library has been corrected; Only "Topic" is now used
+
+### 1.28.0 -> 1.29.0
+
+**Ozon**: The Ozon Seller API library has been removed and its support is discontinued. If you are already using this library in your project, you need to preserve it separately before updating
