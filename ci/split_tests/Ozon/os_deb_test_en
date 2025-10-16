@@ -1,0 +1,114 @@
+def runCommand(String command) {
+    if (isUnix()) {
+        sh(script: command)
+    } else {
+        bat(script: command)
+    }
+}
+
+pipeline {
+    agent {
+        label 'Deb-Agent'  // Имя или метка агента
+    }
+	stages {
+		stage('Remove OInt from OneScript Lib') {
+			steps {
+				script {
+					try {
+						// Удаление каталога /opt/onescript/lib/oint, если существует
+						sh '''
+							DIR_PATH="/opt/onescript/lib/oint"
+
+							if [ -d "$DIR_PATH" ]; then
+								echo "Каталог oint найден. Удаляем..."
+								rm -rf "$DIR_PATH"
+								echo "Каталог oint успешно удален."
+							else
+								echo "Каталог oint не найден. Пропускаем удаление."
+							fi
+						'''
+
+						// Проверяем, что каталог действительно удален
+						sh '''
+							DIR_PATH="/opt/onescript/lib/oint"
+
+							if [ -d "$DIR_PATH" ]; then
+								echo "Ошибка: Каталог oint всё ещё существует после попытки удаления!"
+								exit 1
+							else
+								echo "Проверка: Каталог oint отсутствует после удаления."
+							fi
+						'''
+					} catch (Exception e) {
+						echo "Произошла ошибка при удалении каталога oint: ${e.getMessage()}"
+						currentBuild.result = 'FAILURE'
+						error("Удаление каталога oint завершено с ошибкой.")
+					}
+				}
+			}
+		}
+
+      	stage('Prepare'){
+         		steps{
+					sh 'cd ./src/en/OInt && opm build && opm install oint-1.28.0.ospx && rm oint-1.28.0.ospx'
+            		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+              			sh 'gpg --quiet --batch --yes --decrypt --passphrase="$GPGKEY" --output ./data.json ./data.json.gpg'
+            		}
+         		}
+      	}
+		stage('Create ReportPortal launch'){
+				steps{
+					sh 'oscript ./ci/os/rp_start.os'
+				}
+		}
+
+		stage('Testing-Ozon') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_AttributesAndFeatures"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_UploadingAndUpdatingProducts"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_Barcodes"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_PricesAndStocks"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_PromotionsManagement"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_WarehousesManagement"')
+			}
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OzonAPI_FBOScheme"')
+			}
+			}
+		}
+
+	}
+	post{
+		always{
+			script {
+				catchError() {   
+				    runCommand('oscript ./ci/os/rp_stop.os "en"')
+			    }
+				withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+					sh 'rm "./data.json.gpg"'
+					sh 'gpg --batch --symmetric --cipher-algo AES256 --passphrase="$GPGKEY" ./data.json'
+					sh 'rm "./data.json"'
+				}
+				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+					sh "git config user.email vitaly.the.alpaca@gmail.com"
+					sh 'git config user.name "Vitaly the Alpaca (bot)"'
+					sh "git config --global core.ignorecase true"
+					sh "git add ."
+					sh 'git commit -m "Test data update (Jenkins)"'
+					sh "git push origin HEAD:main"
+				}
+			}
+		}
+	}
+}
