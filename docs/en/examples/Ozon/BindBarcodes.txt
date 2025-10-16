@@ -1,7 +1,0 @@
-﻿    ClientID = "2479669";
-    APIKey   = "09f65e9f-262d-4aca...";
-
-    BarcodesMap = New Map;
-    BarcodesMap.Insert(1626044001, "112233");
-
-    Result = OPI_Ozon.BindBarcodes(ClientID, APIKey, BarcodesMap);

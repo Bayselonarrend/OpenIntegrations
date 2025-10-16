@@ -1,4 +1,0 @@
-oint ozon CheckProductsImagesUpload ^
- --clientid "***" ^
- --apikey "***" ^
- --products 1394030898

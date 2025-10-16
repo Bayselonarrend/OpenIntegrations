@@ -1,7 +1,0 @@
-:: JSON data can also be passed as a path to a .json file
-
-oint ozon CreateFBODraft ^
- --clientid "***" ^
- --apikey "***" ^
- --clusters 2 ^
- --items "{'1783161863':'5','1784654052':'2'}"

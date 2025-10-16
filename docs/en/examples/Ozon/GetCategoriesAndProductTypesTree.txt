@@ -1,6 +1,0 @@
-﻿    ClientID = "2479669";
-    APIKey   = "09f65e9f-262d-4aca...";
-
-    Result = OPI_Ozon.GetCategoriesAndProductTypesTree(ClientID, APIKey, "EN");
-
-    Result = OPI_Ozon.GetCategoriesAndProductTypesTree(ClientID, APIKey);

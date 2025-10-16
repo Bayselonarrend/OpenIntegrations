@@ -1,5 +1,0 @@
-oint ozon ПолучитьХарактеристикиКатегории \
-  --clientid "***" \
-  --apikey "***" \
-  --categoryid 17029016 \
-  --typeid 970778135

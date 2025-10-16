@@ -1,5 +1,0 @@
-oint ozon GetCategoryAttributes ^
- --clientid "***" ^
- --apikey "***" ^
- --categoryid 17029016 ^
- --typeid 970778135

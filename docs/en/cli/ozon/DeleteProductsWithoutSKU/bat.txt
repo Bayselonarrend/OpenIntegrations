@@ -1,4 +1,0 @@
-oint ozon DeleteProductsWithoutSKU ^
- --clientid "***" ^
- --apikey "***" ^
- --articles "143210609"

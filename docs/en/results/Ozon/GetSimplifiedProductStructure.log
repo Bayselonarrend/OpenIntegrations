@@ -1,9 +1,0 @@
-﻿{
- "name": "<name>",
- "sku": "<product identifier in the Ozon system>",
- "offer_id": "<article>",
- "price": "<price>",
- "old_price": "<old price>",
- "vat": "<VAT rate, e.g. 0.2>",
- "currency_code": "<currency>"
-}

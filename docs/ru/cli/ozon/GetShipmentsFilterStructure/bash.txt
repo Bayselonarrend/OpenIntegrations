@@ -1,2 +1,0 @@
-oint ozon GetShipmentsFilterStructure \
- --empty false

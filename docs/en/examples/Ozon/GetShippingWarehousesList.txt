@@ -1,5 +1,0 @@
-﻿    ClientID = "2479669";
-    APIKey   = "09f65e9f-262d-4aca...";
-    Search   = "Tver";
-
-    Result = OPI_Ozon.GetShippingWarehousesList(ClientID, APIKey, Search);

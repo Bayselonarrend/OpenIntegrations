@@ -69,7 +69,6 @@
   <commonModules>CommonModule.OPI_Notion</commonModules>
   <commonModules>CommonModule.OPI_Ollama</commonModules>
   <commonModules>CommonModule.OPI_OpenAI</commonModules>
-  <commonModules>CommonModule.OPI_Ozon</commonModules>
   <commonModules>CommonModule.OPI_PostgreSQL</commonModules>
   <commonModules>CommonModule.OPI_RCON</commonModules>
   <commonModules>CommonModule.OPI_ReportPortal</commonModules>

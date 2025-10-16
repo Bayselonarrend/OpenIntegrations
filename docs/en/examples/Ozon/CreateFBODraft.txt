@@ -1,9 +1,0 @@
-﻿    ClientID = "2479669";
-    APIKey   = "09f65e9f-262d-4aca...";
-    Cluster  = 2;
-
-    Items = New Map;
-    Items.Insert("1783161863", 5);
-    Items.Insert("1784654052", 2);
-
-    Result = OPI_Ozon.CreateFBODraft(ClientID, APIKey, Cluster, Items);

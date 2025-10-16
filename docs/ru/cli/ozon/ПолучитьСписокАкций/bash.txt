@@ -1,3 +1,0 @@
-oint ozon ПолучитьСписокАкций \
-  --clientid "***" \
-  --apikey "***"

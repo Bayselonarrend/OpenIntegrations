@@ -1,4 +1,0 @@
-oint ozon GetShippingWarehousesList \
- --clientid "***" \
- --apikey "***" \
- --search "Tver"

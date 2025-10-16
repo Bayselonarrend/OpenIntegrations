@@ -1,6 +1,0 @@
-oint ozon GetAttributeValues \
- --clientid "***" \
- --apikey "***" \
- --categoryid 17054869 \
- --typeid 97311 \
- --attributeid 85
