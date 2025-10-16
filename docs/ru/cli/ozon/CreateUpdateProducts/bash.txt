@@ -1,6 +1,0 @@
-# JSON data can also be passed as a path to a .json file
-
-oint ozon CreateUpdateProducts \
- --clientid "***" \
- --apikey "***" \
- --items "{'description_category_id':17028922,'name':'Protective film set for X3 NFC. Dark cotton','offer_id':'143210609','barcode':'112772873170','price':'1300','old_price':'1300','vat':'0.1','height':250,'width':150,'depth':10,'dimension_unit':'mm','weight':100,'weight_unit':'g','images':['https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture.jpg','https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/picture2.jpg'],'complex_attributes':[{'attributes':[{'id':21841,'complex_id':100001,'values':[{'value':'https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/'}]},{'id':21837,'complex_id':100001,'values':[{'value':'video1'}]}]}],'attributes':[{'id':'5076','complex_id':'0','values':[{'dictionary_value_id':971082156,'value':'Speaker stand'}]},{'id':85,'complex_id':0,'values':[{'dictionary_value_id':5060050,'value':'Samsung'}]},{'id':10096,'complex_id':0,'values':[{'dictionary_value_id':61576,'value':'gray'}]},{'id':8229,'complex_id':0,'values':[{'dictionary_value_id':95911,'value':'Protective film set for X3 NFC. Dark cotton'}]},{'id':9048,'complex_id':0,'values':[{'value':'Protective film set for X3 NFC. Dark cotton'}]}]}"

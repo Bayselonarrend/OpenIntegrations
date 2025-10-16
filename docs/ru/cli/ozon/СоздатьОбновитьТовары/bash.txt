@@ -1,6 +1,0 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
-oint ozon СоздатьОбновитьТовары \
-  --clientid "***" \
-  --apikey "***" \
-  --items "{'description_category_id':'17028922','name':'Комплект защитных плёнок для X3 NFC. Темный хлопок','offer_id':'143210609','barcode':'112772873170','price':'1300','old_price':'1300','vat':'0.1','height':'250','width':'150','depth':'10','dimension_unit':'mm','weight':'100','weight_unit':'g','images':['https://hut.openintegrations.dev/test_data/picture.jpg','https://hut.openintegrations.dev/test_data/picture2.jpg'],'type_id':'91565','complex_attributes':[{'attributes':[{'id':'21841','complex_id':'100001','values':[{'value':'https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/'}]},{'id':'21837','complex_id':'100001','values':[{'value':'viedo1'}]}]}],'attributes':[{'id':'5076','complex_id':'0','values':[{'dictionary_value_id':'971082156','value':'Стойка для акустической системы'}]},{'id':'85','complex_id':'0','values':[{'dictionary_value_id':'5060050','value':'Samsung'}]},{'id':'10096','complex_id':'0','values':[{'dictionary_value_id':'61576','value':'серый'}]},{'id':'8229','complex_id':'0','values':[{'dictionary_value_id':'95911','value':'Комплект защитных плёнок для X3 NFC. Темный хлопок'}]},{'id':'9048','complex_id':'0','values':[{'value':'Комплект защитных плёнок для X3 NFC. Темный хлопок'}]}]}"

@@ -1,4 +1,0 @@
-oint ozon UnarchiveProducts \
- --clientid "***" \
- --apikey "***" \
- --products 1394030898

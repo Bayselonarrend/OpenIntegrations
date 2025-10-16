@@ -1,4 +1,0 @@
-oint ozon ОбновитьКоличествоТоваров ^
-  --clientid "***" ^
-  --apikey "***" ^
-  --stocks "{'offer_id':'143210610','product_id':'2719894740','stock':'20','warehouse_id':'1'}"

@@ -1,5 +1,0 @@
-﻿    ClientID = "2479669";
-    APIKey   = "09f65e9f-262d-4aca...";
-    Article  = "143210609";
-
-    Result = OPI_Ozon.GetProductDescription(ClientID, APIKey, , Article);

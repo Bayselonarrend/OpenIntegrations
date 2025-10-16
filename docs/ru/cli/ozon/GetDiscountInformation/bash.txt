@@ -1,4 +1,0 @@
-oint ozon GetDiscountInformation \
- --clientid "***" \
- --apikey "***" \
- --sku 1626044001

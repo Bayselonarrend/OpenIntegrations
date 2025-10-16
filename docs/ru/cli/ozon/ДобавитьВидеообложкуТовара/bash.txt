@@ -1,5 +1,0 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
-oint ozon ДобавитьВидеообложкуТовара \
-  --item "{'description_category_id':17028922,'name':'Комплект защитных плёнок для X3 NFC. Темный хлопок','offer_id':'143210608','barcode':'112772873170','price':'1000','old_price':'1100','vat':'0.1','height':250,'width':150,'depth':10,'dimension_unit':'mm','weight':100,'weight_unit':'g'}" \
-  --url "https://rutube.ru/video/c6cc4d620b1d4338901770a44b3e82f4/"

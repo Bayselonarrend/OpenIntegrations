@@ -1,6 +1,0 @@
-# JSON data can also be passed as a path to a .json file
-
-oint ozon BindBarcodes \
- --clientid "***" \
- --apikey "***" \
- --barcodes "{'1626044001':'112233'}"

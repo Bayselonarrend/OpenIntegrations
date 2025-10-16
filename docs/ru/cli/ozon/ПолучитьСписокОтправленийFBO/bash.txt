@@ -1,7 +1,0 @@
-# JSON данные также могут быть переданы как путь к файлу .json
-
-oint ozon ПолучитьСписокОтправленийFBO \
-  --clientid "***" \
-  --apikey "***" \
-  --filter "{'since':'1/1/2023 12:00:00 AM','to':'1/1/2024 12:00:00 AM'}" \
-  --with "{'analytics_data':true,'financial_data':true}"
