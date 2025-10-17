@@ -64,6 +64,7 @@
   <commonModules>CommonModule.OPI_GoogleSheets</commonModules>
   <commonModules>CommonModule.OPI_GoogleWorkspace</commonModules>
   <commonModules>CommonModule.OPI_GreenAPI</commonModules>
+  <commonModules>CommonModule.OPI_GreenMax</commonModules>
   <commonModules>CommonModule.OPI_MongoDB</commonModules>
   <commonModules>CommonModule.OPI_MSSQL</commonModules>
   <commonModules>CommonModule.OPI_MySQL</commonModules>

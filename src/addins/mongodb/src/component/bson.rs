@@ -1,6 +1,7 @@
 use serde_json::{Number, Value};
 use mongodb::bson::{Bson, Document};
 use mongodb::bson;
+use base64::{Engine as _, engine::{self, general_purpose}, alphabet};
 
 fn json_value_to_bson(value: &Value) -> Bson {
     match value {
@@ -28,7 +29,7 @@ fn json_value_to_bson(value: &Value) -> Bson {
 
             if let Some(binary) = obj.get("__OPI_BINARY__") {
                 if let Some(base64_str) = binary.as_str() {
-                    if let Ok(bytes) = base64::decode(base64_str) {
+                    if let Ok(bytes) = general_purpose::STANDARD.decode(base64_str) {
                         return Bson::Binary(bson::Binary {
                             bytes,
                             subtype: bson::spec::BinarySubtype::Generic
@@ -39,7 +40,7 @@ fn json_value_to_bson(value: &Value) -> Bson {
 
             if let Some(timestamp) = obj.get("__OPI_DATE__") {
                 if let Some(ts) = timestamp.as_i64() {
-                    return Bson::DateTime(mongodb::bson::DateTime::from_millis(ts));
+                    return Bson::DateTime(bson::DateTime::from_millis(ts));
                 }
             }
 
@@ -90,7 +91,7 @@ fn bson_to_json_value(bson: &Bson) -> Value {
 
             Bson::Binary(bin) => {
             let mut map = serde_json::Map::new();
-            let base64 = base64::encode(&bin.bytes);
+            let base64 = general_purpose::STANDARD.encode(&bin.bytes);
             map.insert("__B64_BINARY__".to_string(), Value::String(base64));
             Value::Object(map)
         },
