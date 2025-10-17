@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_MongoDB.os
+// OneScript: ./OInt/core/Modules/OPI_MongoDB.os
 // Lib: MongoDB
 // CLI: mongodb
 // Keywords: mongodb, mongo, nosql
@@ -116,3 +116,19 @@
 #КонецОбласти
 
 #КонецОбласти
+
+#Region Alternate
+
+Function CreateConnection(Val ConnectionString = "") Export
+	Return ОткрытьСоединение(ConnectionString);
+EndFunction
+
+Function CloseConnection(Val Connection) Export
+	Return ЗакрытьСоединение(Connection);
+EndFunction
+
+Function IsConnector(Val Value) Export
+	Return ЭтоКоннектор(Value);
+EndFunction
+
+#EndRegion
