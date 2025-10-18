@@ -10870,14 +10870,14 @@ Function Check_FTP_UpdatePath(Val Result, Val Option)
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
         ExpectsThat(Result["data"][0]["path"]).Равно("new_dir");
-        ExpectsThat(Result["data"][0]["objects"][0]["path"]).Равно("new_dir/big.bin");
+        ExpectsThat(Result["data"][0]["objects"][0]["path"]).Равно("new_dir/pic_from_disk.png");
 
     ElsIf StrFind(Option, "List") > 0 Then
 
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Result["data"]).ИмеетТип("Array").ИмеетДлину(1);
         ExpectsThat(Result["data"][0]["path"]).Равно("brand_new_dir");
-        ExpectsThat(Result["data"][0]["objects"][0]["path"]).Равно("brand_new_dir/giant.bin");
+        ExpectsThat(Result["data"][0]["objects"][0]["path"]).Равно("brand_new_dir/pic_copy.png");
 
     ElsIf StrFind(Option, "Check, old") > 0 Then
 

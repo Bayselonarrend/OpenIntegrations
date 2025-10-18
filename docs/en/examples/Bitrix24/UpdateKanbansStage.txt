@@ -1,6 +1,6 @@
 ﻿    Name    = "New stage name";
     Color   = "000000";
-    StageID = "3070";
+    StageID = "3094";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
@@ -8,9 +8,9 @@
 
     Name    = "New stage name 2";
     Color   = "000000";
-    StageID = "3072";
+    StageID = "3096";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "8a1bee68006e9f06006b12e400000001000...";
+    Token = "a2a9f368006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.UpdateKanbansStage(URL, Name, StageID, Color, 6, True, Token);

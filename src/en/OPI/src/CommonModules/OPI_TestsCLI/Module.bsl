@@ -27829,7 +27829,7 @@ Procedure FTP_GetObjectSize(FunctionParameters)
     If OPI_FTP.IsConnector(Connection) Then
         Options = New Structure;
         Options.Insert("conn", Connection);
-        Options.Insert("path", "new_dir/big.bin");
+        Options.Insert("path", "new_dir/pic_from_disk.png");
 
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
     Else
@@ -27908,8 +27908,8 @@ Procedure FTP_UpdatePath(FunctionParameters)
     If OPI_FTP.IsConnector(Connection) Then
         Options = New Structure;
         Options.Insert("conn", Connection);
-        Options.Insert("old", "new_dir/big.bin");
-        Options.Insert("new", "new_dir/giant.bin");
+        Options.Insert("old", "new_dir/pic_from_disk.png");
+        Options.Insert("new", "new_dir/pic_copy.png");
 
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UpdatePath", Options);
     Else
@@ -27922,7 +27922,7 @@ Procedure FTP_UpdatePath(FunctionParameters)
 
     Options = New Structure;
     Options.Insert("conn", Connection);
-    Options.Insert("path", "new_dir/giant.bin");
+    Options.Insert("path", "new_dir/pic_copy.png");
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
@@ -27930,7 +27930,7 @@ Procedure FTP_UpdatePath(FunctionParameters)
 
     Options = New Structure;
     Options.Insert("conn", Connection);
-    Options.Insert("path", "new_dir/big.bin");
+    Options.Insert("path", "new_dir/pic_from_binary.png");
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "GetObjectSize", Options);
 
@@ -27965,8 +27965,8 @@ Procedure FTP_UpdatePath(FunctionParameters)
 
     Options = New Structure;
     Options.Insert("conn", Connection);
-    Options.Insert("old", "new_dir/giant.bin");
-    Options.Insert("new", "new_dir/big.bin");
+    Options.Insert("old", "new_dir/pic_copy.png");
+    Options.Insert("new", "new_dir/pic_from_disk.png");
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("ftp", "UpdatePath", Options);
 
@@ -28040,7 +28040,7 @@ Procedure FTP_SaveFile(FunctionParameters)
 
     If OPI_FTP.IsConnector(Connection) Then
 
-        Path     = "new_dir/big.bin";
+        Path     = "new_dir/pic_from_disk.png";
         FileName = GetTempFileName("bin");
 
         Options = New Structure;
@@ -28147,7 +28147,7 @@ Procedure FTP_GetFileData(FunctionParameters)
 
     If OPI_FTP.IsConnector(Connection) Then
 
-        Path   = "new_dir/big.bin";
+        Path   = "new_dir/pic_from_disk.png";
         Result = OPI_FTP.GetFileData(Connection, Path);
 
     Else

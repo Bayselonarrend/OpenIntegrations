@@ -32,7 +32,7 @@
 
     If OPI_FTP.IsConnector(Connection) Then
 
-        Path   = "new_dir/big.bin";
+        Path   = "new_dir/pic_from_disk.png";
         Result = OPI_FTP.GetFileData(Connection, Path);
 
     Else
