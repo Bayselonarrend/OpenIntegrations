@@ -44,11 +44,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/Telegram.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/Telegram.report')) {
                         def reportContent = readFile('./test_results/Telegram.report')
                         echo "=== report content ==="
@@ -56,6 +51,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: Telegram.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -74,11 +74,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/VK.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/VK.report')) {
                         def reportContent = readFile('./test_results/VK.report')
                         echo "=== report content ==="
@@ -86,6 +81,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: VK.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -104,11 +104,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/Viber.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/Viber.report')) {
                         def reportContent = readFile('./test_results/Viber.report')
                         echo "=== report content ==="
@@ -116,6 +111,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: Viber.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -134,11 +134,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/Twitter.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/Twitter.report')) {
                         def reportContent = readFile('./test_results/Twitter.report')
                         echo "=== report content ==="
@@ -146,6 +141,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: Twitter.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -164,11 +164,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/FTP.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/FTP.report')) {
                         def reportContent = readFile('./test_results/FTP.report')
                         echo "=== report content ==="
@@ -176,6 +171,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: FTP.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -194,11 +194,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/SSH.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/SSH.report')) {
                         def reportContent = readFile('./test_results/SSH.report')
                         echo "=== report content ==="
@@ -206,6 +201,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: SSH.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -224,11 +224,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/SFTP.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/SFTP.report')) {
                         def reportContent = readFile('./test_results/SFTP.report')
                         echo "=== report content ==="
@@ -236,6 +231,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: SFTP.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -254,11 +254,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/PostgreSQL.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/PostgreSQL.report')) {
                         def reportContent = readFile('./test_results/PostgreSQL.report')
                         echo "=== report content ==="
@@ -266,6 +261,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: PostgreSQL.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -284,11 +284,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/MySQL.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/MySQL.report')) {
                         def reportContent = readFile('./test_results/MySQL.report')
                         echo "=== report content ==="
@@ -296,6 +291,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: MySQL.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -314,11 +314,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/MSSQL.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/MSSQL.report')) {
                         def reportContent = readFile('./test_results/MSSQL.report')
                         echo "=== report content ==="
@@ -326,6 +321,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: MSSQL.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -344,11 +344,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/SQLite.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/SQLite.report')) {
                         def reportContent = readFile('./test_results/SQLite.report')
                         echo "=== report content ==="
@@ -356,6 +351,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: SQLite.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -374,11 +374,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/RCON.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/RCON.report')) {
                         def reportContent = readFile('./test_results/RCON.report')
                         echo "=== report content ==="
@@ -386,6 +381,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: RCON.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -404,11 +404,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/YandexDisk.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/YandexDisk.report')) {
                         def reportContent = readFile('./test_results/YandexDisk.report')
                         echo "=== report content ==="
@@ -416,6 +411,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: YandexDisk.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -434,11 +434,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/GoogleWorkspace.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/GoogleWorkspace.report')) {
                         def reportContent = readFile('./test_results/GoogleWorkspace.report')
                         echo "=== report content ==="
@@ -446,6 +441,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: GoogleWorkspace.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -464,11 +464,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/GoogleCalendar.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/GoogleCalendar.report')) {
                         def reportContent = readFile('./test_results/GoogleCalendar.report')
                         echo "=== report content ==="
@@ -476,6 +471,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: GoogleCalendar.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -494,11 +494,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/GoogleDrive.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/GoogleDrive.report')) {
                         def reportContent = readFile('./test_results/GoogleDrive.report')
                         echo "=== report content ==="
@@ -506,6 +501,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: GoogleDrive.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -524,11 +524,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/GoogleSheets.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/GoogleSheets.report')) {
                         def reportContent = readFile('./test_results/GoogleSheets.report')
                         echo "=== report content ==="
@@ -536,6 +531,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: GoogleSheets.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -554,11 +554,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/Notion.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/Notion.report')) {
                         def reportContent = readFile('./test_results/Notion.report')
                         echo "=== report content ==="
@@ -566,6 +561,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: Notion.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -584,11 +584,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/Slack.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/Slack.report')) {
                         def reportContent = readFile('./test_results/Slack.report')
                         echo "=== report content ==="
@@ -596,6 +591,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: Slack.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -614,11 +614,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/Airtable.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/Airtable.report')) {
                         def reportContent = readFile('./test_results/Airtable.report')
                         echo "=== report content ==="
@@ -626,6 +621,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: Airtable.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -644,11 +644,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/Dropbox.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/Dropbox.report')) {
                         def reportContent = readFile('./test_results/Dropbox.report')
                         echo "=== report content ==="
@@ -656,6 +651,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: Dropbox.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -674,11 +674,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/Bitrix24.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/Bitrix24.report')) {
                         def reportContent = readFile('./test_results/Bitrix24.report')
                         echo "=== report content ==="
@@ -686,6 +681,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: Bitrix24.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -704,11 +704,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/VkTeams.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/VkTeams.report')) {
                         def reportContent = readFile('./test_results/VkTeams.report')
                         echo "=== report content ==="
@@ -716,6 +711,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: VkTeams.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -734,11 +734,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/Neocities.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/Neocities.report')) {
                         def reportContent = readFile('./test_results/Neocities.report')
                         echo "=== report content ==="
@@ -746,6 +741,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: Neocities.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -764,11 +764,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/CDEK.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/CDEK.report')) {
                         def reportContent = readFile('./test_results/CDEK.report')
                         echo "=== report content ==="
@@ -776,6 +771,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: CDEK.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -794,11 +794,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/YandexMetrika.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/YandexMetrika.report')) {
                         def reportContent = readFile('./test_results/YandexMetrika.report')
                         echo "=== report content ==="
@@ -806,6 +801,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: YandexMetrika.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -824,11 +824,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/S3.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/S3.report')) {
                         def reportContent = readFile('./test_results/S3.report')
                         echo "=== report content ==="
@@ -836,6 +831,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: S3.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -854,11 +854,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/TCP.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/TCP.report')) {
                         def reportContent = readFile('./test_results/TCP.report')
                         echo "=== report content ==="
@@ -866,6 +861,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: TCP.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -884,11 +884,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/GreenAPI.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/GreenAPI.report')) {
                         def reportContent = readFile('./test_results/GreenAPI.report')
                         echo "=== report content ==="
@@ -896,6 +891,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: GreenAPI.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -914,11 +914,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/GreenMax.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/GreenMax.report')) {
                         def reportContent = readFile('./test_results/GreenMax.report')
                         echo "=== report content ==="
@@ -926,6 +921,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: GreenMax.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -944,11 +944,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/Ollama.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/Ollama.report')) {
                         def reportContent = readFile('./test_results/Ollama.report')
                         echo "=== report content ==="
@@ -956,6 +951,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: Ollama.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -974,11 +974,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/HTTPClient.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/HTTPClient.report')) {
                         def reportContent = readFile('./test_results/HTTPClient.report')
                         echo "=== report content ==="
@@ -986,6 +981,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: HTTPClient.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -1004,11 +1004,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/OpenAI.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/OpenAI.report')) {
                         def reportContent = readFile('./test_results/OpenAI.report')
                         echo "=== report content ==="
@@ -1016,6 +1011,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: OpenAI.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
@@ -1034,11 +1034,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/ReportPortal.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/ReportPortal.report')) {
                         def reportContent = readFile('./test_results/ReportPortal.report')
                         echo "=== report content ==="
@@ -1046,6 +1041,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: ReportPortal.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
