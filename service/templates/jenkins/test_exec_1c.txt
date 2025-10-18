@@ -1,0 +1,26 @@
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+
+                script {
+				    runCommand('"%1" /IBConnectionString "Srvr=\"%2\";Ref=\"%3\";" /C"RunUnitTests=./yaxunit_conf/%5/%4.json"')
+            
+                    timeout(time: 60, unit: 'MINUTES') {
+                        waitUntil {
+                            fileExists './test_results/%4.code'
+                        }
+                    }
+
+                    def exitCode = readFile('./test_results/%4.code').trim()
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
+                    }
+
+                    if (fileExists('./test_results/%4.report')) {
+                        def reportContent = readFile('./test_results/%4.report')
+                        echo "=== report content ==="
+                        echo reportContent
+                        echo "=========================="
+                    } else {
+                        echo "WARNING: %4.report file not found"
+                    }
+                }
+			}
