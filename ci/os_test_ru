@@ -608,6 +608,13 @@ pipeline {
 			}
 			}
 		}
+		stage('Testing-GreenMax') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "GMax_Аккаунт"')
+			}
+			}
+		}
 		stage('Testing-Ollama') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   

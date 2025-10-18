@@ -1,0 +1,75 @@
+def runCommand(String command) {
+    if (isUnix()) {
+        sh(script: command)
+    } else {
+        bat(script: command)
+    }
+}
+
+pipeline {
+	agent {
+		label 'windows'
+	}
+	stages {
+
+		stage('Prepare Test Results Directory') {
+            steps {
+                script {
+                    runCommand '''
+                        if exist ".\\test_results" (
+                            rmdir /s /q ".\\test_results"
+                        )
+                        mkdir ".\\test_results"
+                    '''
+                }
+            }
+        }
+
+		stage('Create ReportPortal launch'){
+				steps{
+					bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/rp_start.os "1C:Enterprise"'
+				}
+		}
+
+		stage('Testing-GreenMax') {
+			steps {			
+			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+
+                script {
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrationsEng\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\en\GreenMax.json"')
+            
+                    timeout(time: 60, unit: 'MINUTES') {
+                        waitUntil {
+                            fileExists './test_results/GreenMax.code'
+                        }
+                    }
+
+                    def exitCode = readFile('./test_results/GreenMax.code').trim()
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
+                    }
+
+                    if (fileExists('./test_results/GreenMax.report')) {
+                        def reportContent = readFile('./test_results/GreenMax.report')
+                        echo "=== report content ==="
+                        echo reportContent
+                        echo "=========================="
+                    } else {
+                        echo "WARNING: GreenMax.report file not found"
+                    }
+                }
+			}
+			}
+		}
+
+	}
+	post{
+		always{
+			script {
+				catchError() {   
+				    runCommand('oscript ./ci/os/rp_stop.os "en"')
+			    }	
+			}
+		}
+	}
+}
