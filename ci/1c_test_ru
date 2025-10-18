@@ -6,6 +6,36 @@ def runCommand(String command) {
     }
 }
 
+def runLibraryTest(String libraryName, String configPath) {
+    catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+        script {
+            runCommand("\"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe\" /IBConnectionString \"Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";\" /C\"RunUnitTests=${configPath}\"")
+        
+            timeout(time: 60, unit: 'MINUTES') {
+                waitUntil {
+                    fileExists "./test_results/${libraryName}.code"
+                }
+            }
+
+            if (fileExists("./test_results/${libraryName}.report")) {
+                def reportContent = readFile("./test_results/${libraryName}.report")
+                echo "=== ${libraryName} report content ==="
+                echo reportContent
+                echo "=========================="
+            } else {
+                echo "WARNING: ${libraryName}.report file not found"
+            }
+
+            def exitCode = readFile("./test_results/${libraryName}.code").trim().replaceAll("[^0-9]", "")
+            echo "Exit code for ${libraryName}: ${exitCode}"
+            if (exitCode != "0") {
+                error "Tests ${libraryName} failed with exit code: ${exitCode}"
+            }
+        }
+    }
+}
+
+
 pipeline {
 	agent {
 		label 'windows'
@@ -34,29 +64,8 @@ pipeline {
 		stage('Testing-Telegram') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Telegram.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/Telegram.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/Telegram.report')) {
-                        def reportContent = readFile('./test_results/Telegram.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: Telegram.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/Telegram.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('Telegram', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Telegram.json')
                 }
 			}
 			}
@@ -64,29 +73,8 @@ pipeline {
 		stage('Testing-VK') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\VK.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/VK.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/VK.report')) {
-                        def reportContent = readFile('./test_results/VK.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: VK.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/VK.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('VK', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\VK.json')
                 }
 			}
 			}
@@ -94,29 +82,8 @@ pipeline {
 		stage('Testing-Viber') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Viber.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/Viber.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/Viber.report')) {
-                        def reportContent = readFile('./test_results/Viber.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: Viber.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/Viber.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('Viber', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Viber.json')
                 }
 			}
 			}
@@ -124,29 +91,8 @@ pipeline {
 		stage('Testing-Twitter') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Twitter.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/Twitter.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/Twitter.report')) {
-                        def reportContent = readFile('./test_results/Twitter.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: Twitter.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/Twitter.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('Twitter', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Twitter.json')
                 }
 			}
 			}
@@ -154,29 +100,8 @@ pipeline {
 		stage('Testing-FTP') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\FTP.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/FTP.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/FTP.report')) {
-                        def reportContent = readFile('./test_results/FTP.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: FTP.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/FTP.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('FTP', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\FTP.json')
                 }
 			}
 			}
@@ -184,29 +109,8 @@ pipeline {
 		stage('Testing-SSH') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\SSH.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/SSH.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/SSH.report')) {
-                        def reportContent = readFile('./test_results/SSH.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: SSH.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/SSH.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('SSH', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\SSH.json')
                 }
 			}
 			}
@@ -214,29 +118,8 @@ pipeline {
 		stage('Testing-SFTP') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\SFTP.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/SFTP.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/SFTP.report')) {
-                        def reportContent = readFile('./test_results/SFTP.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: SFTP.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/SFTP.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('SFTP', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\SFTP.json')
                 }
 			}
 			}
@@ -244,29 +127,8 @@ pipeline {
 		stage('Testing-PostgreSQL') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\PostgreSQL.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/PostgreSQL.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/PostgreSQL.report')) {
-                        def reportContent = readFile('./test_results/PostgreSQL.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: PostgreSQL.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/PostgreSQL.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('PostgreSQL', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\PostgreSQL.json')
                 }
 			}
 			}
@@ -274,29 +136,8 @@ pipeline {
 		stage('Testing-MySQL') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\MySQL.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/MySQL.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/MySQL.report')) {
-                        def reportContent = readFile('./test_results/MySQL.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: MySQL.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/MySQL.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('MySQL', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\MySQL.json')
                 }
 			}
 			}
@@ -304,29 +145,8 @@ pipeline {
 		stage('Testing-MSSQL') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\MSSQL.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/MSSQL.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/MSSQL.report')) {
-                        def reportContent = readFile('./test_results/MSSQL.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: MSSQL.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/MSSQL.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('MSSQL', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\MSSQL.json')
                 }
 			}
 			}
@@ -334,29 +154,8 @@ pipeline {
 		stage('Testing-SQLite') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\SQLite.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/SQLite.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/SQLite.report')) {
-                        def reportContent = readFile('./test_results/SQLite.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: SQLite.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/SQLite.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('SQLite', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\SQLite.json')
                 }
 			}
 			}
@@ -364,29 +163,8 @@ pipeline {
 		stage('Testing-RCON') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\RCON.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/RCON.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/RCON.report')) {
-                        def reportContent = readFile('./test_results/RCON.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: RCON.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/RCON.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('RCON', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\RCON.json')
                 }
 			}
 			}
@@ -394,29 +172,8 @@ pipeline {
 		stage('Testing-YandexDisk') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\YandexDisk.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/YandexDisk.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/YandexDisk.report')) {
-                        def reportContent = readFile('./test_results/YandexDisk.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: YandexDisk.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/YandexDisk.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('YandexDisk', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\YandexDisk.json')
                 }
 			}
 			}
@@ -424,29 +181,8 @@ pipeline {
 		stage('Testing-GoogleWorkspace') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GoogleWorkspace.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/GoogleWorkspace.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/GoogleWorkspace.report')) {
-                        def reportContent = readFile('./test_results/GoogleWorkspace.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: GoogleWorkspace.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/GoogleWorkspace.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('GoogleWorkspace', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GoogleWorkspace.json')
                 }
 			}
 			}
@@ -454,29 +190,8 @@ pipeline {
 		stage('Testing-GoogleCalendar') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GoogleCalendar.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/GoogleCalendar.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/GoogleCalendar.report')) {
-                        def reportContent = readFile('./test_results/GoogleCalendar.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: GoogleCalendar.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/GoogleCalendar.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('GoogleCalendar', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GoogleCalendar.json')
                 }
 			}
 			}
@@ -484,29 +199,8 @@ pipeline {
 		stage('Testing-GoogleDrive') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GoogleDrive.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/GoogleDrive.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/GoogleDrive.report')) {
-                        def reportContent = readFile('./test_results/GoogleDrive.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: GoogleDrive.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/GoogleDrive.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('GoogleDrive', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GoogleDrive.json')
                 }
 			}
 			}
@@ -514,29 +208,8 @@ pipeline {
 		stage('Testing-GoogleSheets') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GoogleSheets.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/GoogleSheets.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/GoogleSheets.report')) {
-                        def reportContent = readFile('./test_results/GoogleSheets.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: GoogleSheets.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/GoogleSheets.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('GoogleSheets', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GoogleSheets.json')
                 }
 			}
 			}
@@ -544,29 +217,8 @@ pipeline {
 		stage('Testing-Notion') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Notion.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/Notion.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/Notion.report')) {
-                        def reportContent = readFile('./test_results/Notion.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: Notion.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/Notion.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('Notion', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Notion.json')
                 }
 			}
 			}
@@ -574,29 +226,8 @@ pipeline {
 		stage('Testing-Slack') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Slack.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/Slack.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/Slack.report')) {
-                        def reportContent = readFile('./test_results/Slack.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: Slack.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/Slack.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('Slack', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Slack.json')
                 }
 			}
 			}
@@ -604,29 +235,8 @@ pipeline {
 		stage('Testing-Airtable') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Airtable.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/Airtable.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/Airtable.report')) {
-                        def reportContent = readFile('./test_results/Airtable.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: Airtable.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/Airtable.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('Airtable', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Airtable.json')
                 }
 			}
 			}
@@ -634,29 +244,8 @@ pipeline {
 		stage('Testing-Dropbox') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Dropbox.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/Dropbox.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/Dropbox.report')) {
-                        def reportContent = readFile('./test_results/Dropbox.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: Dropbox.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/Dropbox.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('Dropbox', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Dropbox.json')
                 }
 			}
 			}
@@ -664,29 +253,8 @@ pipeline {
 		stage('Testing-Bitrix24') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Bitrix24.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/Bitrix24.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/Bitrix24.report')) {
-                        def reportContent = readFile('./test_results/Bitrix24.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: Bitrix24.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/Bitrix24.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('Bitrix24', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Bitrix24.json')
                 }
 			}
 			}
@@ -694,29 +262,8 @@ pipeline {
 		stage('Testing-VkTeams') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\VkTeams.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/VkTeams.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/VkTeams.report')) {
-                        def reportContent = readFile('./test_results/VkTeams.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: VkTeams.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/VkTeams.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('VkTeams', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\VkTeams.json')
                 }
 			}
 			}
@@ -724,29 +271,8 @@ pipeline {
 		stage('Testing-Neocities') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Neocities.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/Neocities.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/Neocities.report')) {
-                        def reportContent = readFile('./test_results/Neocities.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: Neocities.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/Neocities.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('Neocities', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Neocities.json')
                 }
 			}
 			}
@@ -754,29 +280,8 @@ pipeline {
 		stage('Testing-CDEK') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\CDEK.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/CDEK.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/CDEK.report')) {
-                        def reportContent = readFile('./test_results/CDEK.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: CDEK.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/CDEK.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('CDEK', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\CDEK.json')
                 }
 			}
 			}
@@ -784,29 +289,8 @@ pipeline {
 		stage('Testing-YandexMetrika') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\YandexMetrika.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/YandexMetrika.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/YandexMetrika.report')) {
-                        def reportContent = readFile('./test_results/YandexMetrika.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: YandexMetrika.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/YandexMetrika.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('YandexMetrika', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\YandexMetrika.json')
                 }
 			}
 			}
@@ -814,29 +298,8 @@ pipeline {
 		stage('Testing-S3') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\S3.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/S3.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/S3.report')) {
-                        def reportContent = readFile('./test_results/S3.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: S3.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/S3.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('S3', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\S3.json')
                 }
 			}
 			}
@@ -844,29 +307,8 @@ pipeline {
 		stage('Testing-TCP') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\TCP.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/TCP.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/TCP.report')) {
-                        def reportContent = readFile('./test_results/TCP.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: TCP.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/TCP.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('TCP', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\TCP.json')
                 }
 			}
 			}
@@ -874,29 +316,8 @@ pipeline {
 		stage('Testing-GreenAPI') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GreenAPI.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/GreenAPI.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/GreenAPI.report')) {
-                        def reportContent = readFile('./test_results/GreenAPI.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: GreenAPI.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/GreenAPI.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('GreenAPI', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GreenAPI.json')
                 }
 			}
 			}
@@ -904,29 +325,8 @@ pipeline {
 		stage('Testing-GreenMax') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GreenMax.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/GreenMax.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/GreenMax.report')) {
-                        def reportContent = readFile('./test_results/GreenMax.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: GreenMax.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/GreenMax.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('GreenMax', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GreenMax.json')
                 }
 			}
 			}
@@ -934,29 +334,8 @@ pipeline {
 		stage('Testing-Ollama') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Ollama.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/Ollama.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/Ollama.report')) {
-                        def reportContent = readFile('./test_results/Ollama.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: Ollama.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/Ollama.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('Ollama', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Ollama.json')
                 }
 			}
 			}
@@ -964,29 +343,8 @@ pipeline {
 		stage('Testing-HTTPКлиент') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\HTTPКлиент.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/HTTPКлиент.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/HTTPКлиент.report')) {
-                        def reportContent = readFile('./test_results/HTTPКлиент.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: HTTPКлиент.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/HTTPКлиент.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('HTTPКлиент', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\HTTPКлиент.json')
                 }
 			}
 			}
@@ -994,29 +352,8 @@ pipeline {
 		stage('Testing-OpenAI') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\OpenAI.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/OpenAI.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/OpenAI.report')) {
-                        def reportContent = readFile('./test_results/OpenAI.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: OpenAI.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/OpenAI.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('OpenAI', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\OpenAI.json')
                 }
 			}
 			}
@@ -1024,29 +361,8 @@ pipeline {
 		stage('Testing-ReportPortal') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\ReportPortal.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/ReportPortal.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/ReportPortal.report')) {
-                        def reportContent = readFile('./test_results/ReportPortal.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: ReportPortal.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/ReportPortal.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('ReportPortal', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\ReportPortal.json')
                 }
 			}
 			}
