@@ -1,0 +1,30 @@
+{
+  "reportPath": "./test_results/YandexMetrika.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"ЯМетрика_УправлениеМетками",
+"ЯМетрика_УправлениеСчетчиками",
+"ЯМетрика_УправлениеОперациями"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/YandexMetrika.code",
+  "ПодключатьВнешниеКомпоненты": true
+}
