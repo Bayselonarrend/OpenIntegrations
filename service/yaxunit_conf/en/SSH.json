@@ -9,7 +9,7 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"SShell_CommonMethods"
+"OPI_Tests.SShell_CommonMethods"
     ]
   },
   "settings": {

@@ -9,9 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"FT_DirecotryManagement",
-"FT_FileOperations",
-"FT_CommonMethods"
+"OPI_Tests.FT_DirecotryManagement",
+"OPI_Tests.FT_FileOperations",
+"OPI_Tests.FT_CommonMethods"
     ]
   },
   "settings": {

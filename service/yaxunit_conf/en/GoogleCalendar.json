@@ -9,10 +9,10 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"GW_Auth",
-"GC_GetCalendarList",
-"GC_CreateDeleteCalendar",
-"GC_CreateDeleteEvent"
+"OPI_Tests.GW_Auth",
+"OPI_Tests.GC_GetCalendarList",
+"OPI_Tests.GC_CreateDeleteCalendar",
+"OPI_Tests.GC_CreateDeleteEvent"
     ]
   },
   "settings": {
