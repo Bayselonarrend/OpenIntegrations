@@ -6198,5 +6198,65 @@
 "lib": "SFTP",
 "name": "GetFileInformation",
 "variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "FormAccessParameters",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetAuthorizationCode",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "LogoutInstance",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "SendAuthorizationCode",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetInstanceStatus",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "RebootInstance",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetInstanceSettingsStructure",
+"variant": ""
+},
+{
+"lib": "GreenMAx",
+"name": "GetInstanceSettingsStructure",
+"variant": "Clear"
+},
+{
+"lib": "GreenMax",
+"name": "GetInstanceSettings",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "SetInstanceSettings",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "SetProfilePicture",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetAccountInformation",
+"variant": ""
 }
 ]

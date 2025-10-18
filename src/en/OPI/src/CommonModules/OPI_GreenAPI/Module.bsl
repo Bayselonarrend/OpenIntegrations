@@ -1224,13 +1224,13 @@ EndFunction
 
 Function FormPrimaryURL(Val AccessParameters, Val Method)
 
-        Return FormURL(AccessParameters, Method, "apiUrl");
+    Return FormURL(AccessParameters, Method, "apiUrl");
 
 EndFunction
 
 Function FormMediaURL(Val AccessParameters, Val Method)
 
-        Return FormURL(AccessParameters, Method, "mediaUrl");
+    Return FormURL(AccessParameters, Method, "mediaUrl");
 
 EndFunction
 

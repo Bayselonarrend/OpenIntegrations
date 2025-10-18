@@ -1,0 +1,48 @@
+﻿---
+sidebar_position: 6
+description: Отправить код авторизации и другие функции для работы с Green Max в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, Green Max]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Отправить код авторизации
+ Авторизует инстанс по коду доступа из SMS
+
+
+
+`Функция ОтправитьКодАвторизации(Знач ПараметрыДоступа, Знач КодАвторизации) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | ПараметрыДоступа | --access | Структура Из КлючИЗначение | &#x2714; | Параметры доступа. См. [`СформироватьПараметрыДоступа`](/docs/GreenMax/Account/Form-access-parameters) |
+  | КодАвторизации | --code | Строка | &#x2714; | Код авторизации |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
+
+<br/>
+
+:::tip
+Метод в документации API: [SendAuthorizationCode](https://green-api.com/v3/docs/api/account/SendAuthorizationCode/)
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    ApiUrl           = "https://3100.api.green-api.com/v3";
+    MediaUrl         = "https://3100.api.green-api.com/v3";
+    IdInstance       = "31003...";
+    ApiTokenInstance = "17915d8e0b4b4975a183478da...";
+
+    КодАвторизации = 123456;
+
+    ПараметрыДоступа = OPI_GreenMax.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Результат        = OPI_GreenMax.ОтправитьКодАвторизации(ПараметрыДоступа, КодАвторизации);
+```
+    
+
+
+
+

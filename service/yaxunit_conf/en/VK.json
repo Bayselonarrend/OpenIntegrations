@@ -1,0 +1,47 @@
+{
+  "reportPath": "./test_results/VK.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"VKAPI_CreateTokenLink",
+"VKAPI_CreateDeletePost",
+"VKAPI_CreateCompositePost",
+"VKAPI_CreatePoll",
+"VKAPI_SaveDeleteImage",
+"VKAPI_CreateStory",
+"VKAPI_DiscussionMethods",
+"VKAPI_LikeRepostComment",
+"VKAPI_GetStatistics",
+"VKAPI_GetPostStatistics",
+"VKAPI_CreateAdCampaign",
+"VKAPI_SendMessage",
+"VKAPI_GetProductCategories",
+"VKAPI_CreateProductSelection",
+"VKAPI_CreateProductWithProperties",
+"VKAPI_GetProductList",
+"VKAPI_GetSelectionList",
+"VKAPI_GetPropertyList",
+"VKAPI_GetOrderList",
+"VKAPI_UploadVideo"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/VK.code",
+  "ПодключатьВнешниеКомпоненты": true
+}

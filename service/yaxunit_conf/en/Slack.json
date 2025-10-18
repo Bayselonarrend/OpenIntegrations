@@ -1,0 +1,33 @@
+{
+  "reportPath": "./test_results/Slack.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"SlackGetData",
+"Slack_SendDeleteMessage",
+"Slack_CreateArchiveChannel",
+"Slack_OpenCloseDialog",
+"Slack_UploadDeleteFile",
+"Slack_UploadDeleteExternalFile"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/Slack.code",
+  "ПодключатьВнешниеКомпоненты": true
+}
