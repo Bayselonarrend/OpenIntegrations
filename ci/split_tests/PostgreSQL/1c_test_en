@@ -53,7 +53,7 @@ pipeline {
                         echo "WARNING: PostgreSQL.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/PostgreSQL.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
