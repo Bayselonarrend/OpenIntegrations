@@ -1,5 +1,5 @@
 ﻿    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    EventID = "2748";
+    EventID = "2796";
 
     EventStucture = New Structure;
 
@@ -13,8 +13,8 @@
     Result = OPI_Bitrix24.UpdateCalendarEvent(URL, EventID, EventStucture);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "8a1bee68006e9f06006b12e400000001000...";
-    EventID    = "2752";
-    CalendarID = "1504";
+    Token      = "a2a9f368006e9f06006b12e400000001000...";
+    EventID    = "2800";
+    CalendarID = "1528";
 
     Result = OPI_Bitrix24.UpdateCalendarEvent(URL, EventID, EventStucture, Token);
