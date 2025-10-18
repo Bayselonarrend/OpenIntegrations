@@ -6,6 +6,36 @@ def runCommand(String command) {
     }
 }
 
+def runLibraryTest(String libraryName, String configPath) {
+    catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+        script {
+            runCommand("\"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe\" /IBConnectionString \"Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";\" /C\"RunUnitTests=${configPath}\"")
+        
+            timeout(time: 60, unit: 'MINUTES') {
+                waitUntil {
+                    fileExists "./test_results/${libraryName}.code"
+                }
+            }
+
+            if (fileExists("./test_results/${libraryName}.report")) {
+                def reportContent = readFile("./test_results/${libraryName}.report")
+                echo "=== ${libraryName} report content ==="
+                echo reportContent
+                echo "=========================="
+            } else {
+                echo "WARNING: ${libraryName}.report file not found"
+            }
+
+            def exitCode = readFile("./test_results/${libraryName}.code").trim().replaceAll("[^0-9]", "")
+            echo "Exit code for ${libraryName}: ${exitCode}"
+            if (exitCode != "0") {
+                error "Tests ${libraryName} failed with exit code: ${exitCode}"
+            }
+        }
+    }
+}
+
+
 pipeline {
 	agent {
 		label 'windows'
@@ -34,29 +64,8 @@ pipeline {
 		stage('Testing-Notion') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Notion.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/Notion.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/Notion.report')) {
-                        def reportContent = readFile('./test_results/Notion.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: Notion.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/Notion.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('Notion', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Notion.json')
                 }
 			}
 			}

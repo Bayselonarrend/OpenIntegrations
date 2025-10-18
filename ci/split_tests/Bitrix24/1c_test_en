@@ -6,6 +6,36 @@ def runCommand(String command) {
     }
 }
 
+def runLibraryTest(String libraryName, String configPath) {
+    catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+        script {
+            runCommand("\"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe\" /IBConnectionString \"Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrationsEng\"\";\" /C\"RunUnitTests=${configPath}\"")
+        
+            timeout(time: 60, unit: 'MINUTES') {
+                waitUntil {
+                    fileExists "./test_results/${libraryName}.code"
+                }
+            }
+
+            if (fileExists("./test_results/${libraryName}.report")) {
+                def reportContent = readFile("./test_results/${libraryName}.report")
+                echo "=== ${libraryName} report content ==="
+                echo reportContent
+                echo "=========================="
+            } else {
+                echo "WARNING: ${libraryName}.report file not found"
+            }
+
+            def exitCode = readFile("./test_results/${libraryName}.code").trim().replaceAll("[^0-9]", "")
+            echo "Exit code for ${libraryName}: ${exitCode}"
+            if (exitCode != "0") {
+                error "Tests ${libraryName} failed with exit code: ${exitCode}"
+            }
+        }
+    }
+}
+
+
 pipeline {
 	agent {
 		label 'windows'
@@ -34,29 +64,8 @@ pipeline {
 		stage('Testing-Bitrix24') {
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrationsEng\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\en\\Bitrix24.json"')
-            
-                    timeout(time: 60, unit: 'MINUTES') {
-                        waitUntil {
-                            fileExists './test_results/Bitrix24.code'
-                        }
-                    }
-
-                    if (fileExists('./test_results/Bitrix24.report')) {
-                        def reportContent = readFile('./test_results/Bitrix24.report')
-                        echo "=== report content ==="
-                        echo reportContent
-                        echo "=========================="
-                    } else {
-                        echo "WARNING: Bitrix24.report file not found"
-                    }
-
-                    def exitCode = readFile('./test_results/Bitrix24.code').trim().replaceAll("[^0-9]", "")
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
+                    runLibraryTest('Bitrix24', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\en\\Bitrix24.json')
                 }
 			}
 			}
