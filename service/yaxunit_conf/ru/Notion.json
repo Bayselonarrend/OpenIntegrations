@@ -1,0 +1,31 @@
+{
+  "reportPath": "./test_results/Notion.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"НоушнАпи_СоздатьСтраницу",
+"НоушнАпи_СоздатьИзменитьБазу",
+"НоушнАпи_СоздатьУдалитьБлок",
+"НоушнАпи_ПолучитьПользователей"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/Notion.code",
+  "ПодключатьВнешниеКомпоненты": true
+}

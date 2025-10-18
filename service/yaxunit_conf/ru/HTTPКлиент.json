@@ -1,0 +1,34 @@
+{
+  "reportPath": "./test_results/HTTPКлиент.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"HTTP_Инициализация",
+"HTTP_УстановкаТела",
+"HTTP_Настройки",
+"HTTP_УстановкаЗаголовков",
+"HTTP_Авторизация",
+"HTTP_ОбработкаЗапроса",
+"HTTP_ПолучениеОтвета"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/HTTPКлиент.code",
+  "ПодключатьВнешниеКомпоненты": true
+}
