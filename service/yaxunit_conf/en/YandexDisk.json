@@ -9,16 +9,16 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"YDisk_GetDiskInfo",
-"YDisk_CreateFolder",
-"YDisk_UploadByUrlAndGetObject",
-"YDisk_UploadDeleteFile",
-"YDisk_CreateObjectCopy",
-"YDisk_GetDownloadLink",
-"YDisk_GetFileList",
-"YDisk_MoveObject",
-"YDisk_PublicObjectActions",
-"YDisk_GetPublishedList"
+"OPI_Tests.YDisk_GetDiskInfo",
+"OPI_Tests.YDisk_CreateFolder",
+"OPI_Tests.YDisk_UploadByUrlAndGetObject",
+"OPI_Tests.YDisk_UploadDeleteFile",
+"OPI_Tests.YDisk_CreateObjectCopy",
+"OPI_Tests.YDisk_GetDownloadLink",
+"OPI_Tests.YDisk_GetFileList",
+"OPI_Tests.YDisk_MoveObject",
+"OPI_Tests.YDisk_PublicObjectActions",
+"OPI_Tests.YDisk_GetPublishedList"
     ]
   },
   "settings": {

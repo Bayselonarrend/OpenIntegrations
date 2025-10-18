@@ -9,11 +9,11 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"GW_Auth",
-"GD_GetCatalogList",
-"GD_UploadDeleteFile",
-"GD_CreateDeleteComment",
-"GD_CreateCatalog"
+"OPI_Tests.GW_Auth",
+"OPI_Tests.GD_GetCatalogList",
+"OPI_Tests.GD_UploadDeleteFile",
+"OPI_Tests.GD_CreateDeleteComment",
+"OPI_Tests.GD_CreateCatalog"
     ]
   },
   "settings": {

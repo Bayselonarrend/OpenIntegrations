@@ -9,13 +9,13 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"HTTP_Initialization",
-"HTTP_BodySet",
-"HTTP_Settings",
-"HTTP_HeadersSetting",
-"HTTP_Authorization",
-"HTTP_RequestProcessing",
-"HTTP_ResponseReceiving"
+"OPI_Tests.HTTP_Initialization",
+"OPI_Tests.HTTP_BodySet",
+"OPI_Tests.HTTP_Settings",
+"OPI_Tests.HTTP_HeadersSetting",
+"OPI_Tests.HTTP_Authorization",
+"OPI_Tests.HTTP_RequestProcessing",
+"OPI_Tests.HTTP_ResponseReceiving"
     ]
   },
   "settings": {

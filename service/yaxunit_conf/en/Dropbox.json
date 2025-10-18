@@ -9,14 +9,14 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"DropboxAPI_GetUpdateToken",
-"DropboxAPI_UploadFile",
-"DropboxAPI_UploadFileByURL",
-"DropboxAPI_CreateFolder",
-"DropboxAPI_CreateDeleteTag",
-"DropboxAPI_GetAccount",
-"DropboxAPI_AccessManagement",
-"DropboxAPI_GetFolderFileList"
+"OPI_Tests.DropboxAPI_GetUpdateToken",
+"OPI_Tests.DropboxAPI_UploadFile",
+"OPI_Tests.DropboxAPI_UploadFileByURL",
+"OPI_Tests.DropboxAPI_CreateFolder",
+"OPI_Tests.DropboxAPI_CreateDeleteTag",
+"OPI_Tests.DropboxAPI_GetAccount",
+"OPI_Tests.DropboxAPI_AccessManagement",
+"OPI_Tests.DropboxAPI_GetFolderFileList"
     ]
   },
   "settings": {
