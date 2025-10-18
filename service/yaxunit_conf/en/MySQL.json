@@ -9,8 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"MYS_CommonMethods",
-"MYS_ORM"
+"OPI_Tests.MYS_CommonMethods",
+"OPI_Tests.MYS_ORM"
     ]
   },
   "settings": {

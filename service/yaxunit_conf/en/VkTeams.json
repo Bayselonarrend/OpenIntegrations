@@ -9,9 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"VKT_MessagesSending",
-"VKT_CommonMethods",
-"VKT_ChatManagement"
+"OPI_Tests.VKT_MessagesSending",
+"OPI_Tests.VKT_CommonMethods",
+"OPI_Tests.VKT_ChatManagement"
     ]
   },
   "settings": {

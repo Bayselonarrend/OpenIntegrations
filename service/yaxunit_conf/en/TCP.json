@@ -9,7 +9,7 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"TC_Client"
+"OPI_Tests.TC_Client"
     ]
   },
   "settings": {

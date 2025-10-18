@@ -9,11 +9,11 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OAI_RequestsProcessing",
-"OAI_Assistants",
-"OAI_FileManagement",
-"OAI_AudioProcessing",
-"OAI_ModelsManagement"
+"OPI_Tests.OAI_RequestsProcessing",
+"OPI_Tests.OAI_Assistants",
+"OPI_Tests.OAI_FileManagement",
+"OPI_Tests.OAI_AudioProcessing",
+"OPI_Tests.OAI_ModelsManagement"
     ]
   },
   "settings": {

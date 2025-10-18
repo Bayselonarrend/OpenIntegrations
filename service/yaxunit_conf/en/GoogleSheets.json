@@ -9,9 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"GW_Auth",
-"GT_CreateTable",
-"GT_FillClearCells"
+"OPI_Tests.GW_Auth",
+"OPI_Tests.GT_CreateTable",
+"OPI_Tests.GT_FillClearCells"
     ]
   },
   "settings": {

@@ -9,8 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"MSS_CommonMethods",
-"MSS_ORM"
+"OPI_Tests.MSS_CommonMethods",
+"OPI_Tests.MSS_ORM"
     ]
   },
   "settings": {

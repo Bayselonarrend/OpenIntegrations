@@ -9,12 +9,12 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"GAPI_GroupManagement",
-"GAPI_MessageSending",
-"GAPI_NotificationsReceiving",
-"GAPI_MessageQueue",
-"GAPI_MessageLogs",
-"GAPI_Account"
+"OPI_Tests.GAPI_GroupManagement",
+"OPI_Tests.GAPI_MessageSending",
+"OPI_Tests.GAPI_NotificationsReceiving",
+"OPI_Tests.GAPI_MessageQueue",
+"OPI_Tests.GAPI_MessageLogs",
+"OPI_Tests.GAPI_Account"
     ]
   },
   "settings": {

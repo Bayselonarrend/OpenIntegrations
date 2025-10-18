@@ -9,10 +9,10 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"AT_CreateDatabase",
-"AT_CreateTable",
-"AT_CreateField",
-"AT_CreateDeleteRecords"
+"OPI_Tests.AT_CreateDatabase",
+"OPI_Tests.AT_CreateTable",
+"OPI_Tests.AT_CreateField",
+"OPI_Tests.AT_CreateDeleteRecords"
     ]
   },
   "settings": {

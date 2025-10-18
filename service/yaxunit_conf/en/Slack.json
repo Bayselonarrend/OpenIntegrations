@@ -9,12 +9,12 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"SlackGetData",
-"Slack_SendDeleteMessage",
-"Slack_CreateArchiveChannel",
-"Slack_OpenCloseDialog",
-"Slack_UploadDeleteFile",
-"Slack_UploadDeleteExternalFile"
+"OPI_Tests.SlackGetData",
+"OPI_Tests.Slack_SendDeleteMessage",
+"OPI_Tests.Slack_CreateArchiveChannel",
+"OPI_Tests.Slack_OpenCloseDialog",
+"OPI_Tests.Slack_UploadDeleteFile",
+"OPI_Tests.Slack_UploadDeleteExternalFile"
     ]
   },
   "settings": {

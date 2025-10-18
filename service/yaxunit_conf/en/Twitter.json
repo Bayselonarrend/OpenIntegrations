@@ -9,8 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"TwitterAPI_AccountData",
-"TwitterAPI_Tweets"
+"OPI_Tests.TwitterAPI_AccountData",
+"OPI_Tests.TwitterAPI_Tweets"
     ]
   },
   "settings": {
