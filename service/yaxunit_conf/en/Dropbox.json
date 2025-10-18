@@ -1,0 +1,35 @@
+{
+  "reportPath": "./test_results/Dropbox.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"DropboxAPI_GetUpdateToken",
+"DropboxAPI_UploadFile",
+"DropboxAPI_UploadFileByURL",
+"DropboxAPI_CreateFolder",
+"DropboxAPI_CreateDeleteTag",
+"DropboxAPI_GetAccount",
+"DropboxAPI_AccessManagement",
+"DropboxAPI_GetFolderFileList"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/Dropbox.code",
+  "ПодключатьВнешниеКомпоненты": true
+}
