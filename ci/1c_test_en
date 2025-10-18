@@ -53,7 +53,7 @@ pipeline {
                         echo "WARNING: Telegram.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/Telegram.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -83,7 +83,7 @@ pipeline {
                         echo "WARNING: VK.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/VK.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -113,7 +113,7 @@ pipeline {
                         echo "WARNING: Viber.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/Viber.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -143,7 +143,7 @@ pipeline {
                         echo "WARNING: Twitter.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/Twitter.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -173,7 +173,7 @@ pipeline {
                         echo "WARNING: FTP.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/FTP.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -203,7 +203,7 @@ pipeline {
                         echo "WARNING: SSH.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/SSH.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -233,7 +233,7 @@ pipeline {
                         echo "WARNING: SFTP.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/SFTP.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -263,7 +263,7 @@ pipeline {
                         echo "WARNING: PostgreSQL.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/PostgreSQL.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -293,7 +293,7 @@ pipeline {
                         echo "WARNING: MySQL.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/MySQL.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -323,7 +323,7 @@ pipeline {
                         echo "WARNING: MSSQL.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/MSSQL.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -353,7 +353,7 @@ pipeline {
                         echo "WARNING: SQLite.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/SQLite.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -383,7 +383,7 @@ pipeline {
                         echo "WARNING: RCON.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/RCON.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -413,7 +413,7 @@ pipeline {
                         echo "WARNING: YandexDisk.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/YandexDisk.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -443,7 +443,7 @@ pipeline {
                         echo "WARNING: GoogleWorkspace.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/GoogleWorkspace.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -473,7 +473,7 @@ pipeline {
                         echo "WARNING: GoogleCalendar.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/GoogleCalendar.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -503,7 +503,7 @@ pipeline {
                         echo "WARNING: GoogleDrive.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/GoogleDrive.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -533,7 +533,7 @@ pipeline {
                         echo "WARNING: GoogleSheets.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/GoogleSheets.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -563,7 +563,7 @@ pipeline {
                         echo "WARNING: Notion.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/Notion.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -593,7 +593,7 @@ pipeline {
                         echo "WARNING: Slack.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/Slack.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -623,7 +623,7 @@ pipeline {
                         echo "WARNING: Airtable.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/Airtable.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -653,7 +653,7 @@ pipeline {
                         echo "WARNING: Dropbox.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/Dropbox.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -683,7 +683,7 @@ pipeline {
                         echo "WARNING: Bitrix24.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/Bitrix24.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -713,7 +713,7 @@ pipeline {
                         echo "WARNING: VkTeams.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/VkTeams.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -743,7 +743,7 @@ pipeline {
                         echo "WARNING: Neocities.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/Neocities.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -773,7 +773,7 @@ pipeline {
                         echo "WARNING: CDEK.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/CDEK.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -803,7 +803,7 @@ pipeline {
                         echo "WARNING: YandexMetrika.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/YandexMetrika.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -833,7 +833,7 @@ pipeline {
                         echo "WARNING: S3.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/S3.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -863,7 +863,7 @@ pipeline {
                         echo "WARNING: TCP.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/TCP.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -893,7 +893,7 @@ pipeline {
                         echo "WARNING: GreenAPI.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/GreenAPI.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -923,7 +923,7 @@ pipeline {
                         echo "WARNING: GreenMax.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/GreenMax.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -953,7 +953,7 @@ pipeline {
                         echo "WARNING: Ollama.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/Ollama.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -983,7 +983,7 @@ pipeline {
                         echo "WARNING: HTTPClient.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/HTTPClient.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -1013,7 +1013,7 @@ pipeline {
                         echo "WARNING: OpenAI.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/OpenAI.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
@@ -1043,7 +1043,7 @@ pipeline {
                         echo "WARNING: ReportPortal.report file not found"
                     }
 
-                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    def exitCode = readFile('./test_results/ReportPortal.code').trim().replaceAll("[^0-9]", "")
                     if (exitCode != "0") {
                         error "Tests failed with exit code: ${exitCode}"
                     }
