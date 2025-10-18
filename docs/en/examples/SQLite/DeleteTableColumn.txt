@@ -1,4 +1,4 @@
-﻿    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_FF37_66.sqlite";
+﻿    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_FF37_8c.sqlite";
     Table = "test";
     Name  = "new_col";
 
