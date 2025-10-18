@@ -1,0 +1,30 @@
+{
+  "reportPath": "./test_results/GoogleSheets.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"GW_Auth",
+"GT_CreateTable",
+"GT_FillClearCells"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/GoogleSheets.code",
+  "ПодключатьВнешниеКомпоненты": true
+}

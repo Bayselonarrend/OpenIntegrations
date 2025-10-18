@@ -1,0 +1,37 @@
+{
+  "reportPath": "./test_results/YandexDisk.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"YDisk_GetDiskInfo",
+"YDisk_CreateFolder",
+"YDisk_UploadByUrlAndGetObject",
+"YDisk_UploadDeleteFile",
+"YDisk_CreateObjectCopy",
+"YDisk_GetDownloadLink",
+"YDisk_GetFileList",
+"YDisk_MoveObject",
+"YDisk_PublicObjectActions",
+"YDisk_GetPublishedList"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/YandexDisk.code",
+  "ПодключатьВнешниеКомпоненты": true
+}

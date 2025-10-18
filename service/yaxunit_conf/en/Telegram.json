@@ -1,0 +1,49 @@
+{
+  "reportPath": "./test_results/Telegram.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"TelegramAPI_GetBotInfo",
+"TelegramAPI_GetUpdates",
+"TelegramAPI_SetWebhook",
+"TelegramAPI_SendTextMessage",
+"TelegramAPI_SendImage",
+"TelegramAPI_SendVideo",
+"TelegramAPI_SendAudio",
+"TelegramAPI_SendDocument",
+"TelegramAPI_SendGIF",
+"TelegramAPI_SendMediaGroup",
+"TelegramAPI_SendLocation",
+"TelegramAPI_SendContact",
+"TelegramAPI_SendPoll",
+"TelegramAPI_ForwardMessage",
+"TelegramAPI_BanUnban",
+"TelegramAPI_CreateInvitationLink",
+"TelegramAPI_PinUnpinMessage",
+"TelegramAPI_GetMemberCount",
+"TelegramAPI_GetForumAvatarsList",
+"TelegramAPI_CreateDeleteForumTopic",
+"TelegramAPI_ChangeMainTopicName",
+"TelegramAPI_HideShowMainTopic"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/Telegram.code",
+  "ПодключатьВнешниеКомпоненты": true
+}
