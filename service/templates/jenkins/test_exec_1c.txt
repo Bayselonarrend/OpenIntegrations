@@ -1,7 +1,7 @@
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"%1" /IBConnectionString "Srvr=\"%2\";Ref=\"%3\";" /C"RunUnitTests=./yaxunit_conf/%5/%4.json"')
+				    runCommand('"%1" /IBConnectionString "Srvr=\"\"%2\"\";Ref=\"\"%3\"\";" /C"RunUnitTests=%5"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
