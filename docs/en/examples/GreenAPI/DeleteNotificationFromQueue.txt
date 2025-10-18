@@ -3,7 +3,7 @@
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
-    ReceiptID = "2";
+    ReceiptID = "1";
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.DeleteNotificationFromQueue(AccessParameters, ReceiptID);

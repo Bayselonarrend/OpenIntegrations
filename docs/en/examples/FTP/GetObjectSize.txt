@@ -31,7 +31,7 @@
     Connection = OPI_FTP.CreateConnection(FTPSettings, ProxySettings, TLSSettings);
 
     If OPI_FTP.IsConnector(Connection) Then
-        Result = OPI_FTP.GetObjectSize(Connection, "new_dir/big.bin");
+        Result = OPI_FTP.GetObjectSize(Connection, "new_dir/pic_from_disk.png");
     Else
         Result = Connection; // Error of connection
     EndIf;

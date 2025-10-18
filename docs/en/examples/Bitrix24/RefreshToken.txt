@@ -1,5 +1,5 @@
 ﻿    ClientID     = "local.6667fc928a50a9.70414732";
     ClientSecret = "ZeKyeYIgy2NsHZqsIHY6GfG1V...";
-    Refresh      = "7a9a1569006e9f06006b12e400000001000...";
+    Refresh      = "92281b69006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.RefreshToken(ClientID, ClientSecret, Refresh);
