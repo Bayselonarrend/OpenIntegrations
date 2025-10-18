@@ -44,11 +44,6 @@ pipeline {
                         }
                     }
 
-                    def exitCode = readFile('./test_results/HTTPClient.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/HTTPClient.report')) {
                         def reportContent = readFile('./test_results/HTTPClient.report')
                         echo "=== report content ==="
@@ -56,6 +51,11 @@ pipeline {
                         echo "=========================="
                     } else {
                         echo "WARNING: HTTPClient.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
