@@ -19,6 +19,7 @@ fakedata.json
 /docs/docusaurus/build
 /docs/docusaurus/docs
 /Melezh
+/test_results
 
 target/
 .idea/
