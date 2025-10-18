@@ -36,7 +36,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\Telegram.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Telegram.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -66,7 +66,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\VK.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\VK.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -96,7 +96,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\Viber.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Viber.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -126,7 +126,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\Twitter.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Twitter.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -156,7 +156,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\FTP.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\FTP.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -186,7 +186,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\SSH.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\SSH.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -216,7 +216,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\SFTP.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\SFTP.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -246,7 +246,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\PostgreSQL.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\PostgreSQL.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -276,7 +276,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\MySQL.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\MySQL.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -306,7 +306,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\MSSQL.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\MSSQL.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -336,7 +336,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\SQLite.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\SQLite.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -366,7 +366,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\RCON.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\RCON.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -396,7 +396,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\YandexDisk.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\YandexDisk.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -426,7 +426,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\GoogleWorkspace.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GoogleWorkspace.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -456,7 +456,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\GoogleCalendar.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GoogleCalendar.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -486,7 +486,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\GoogleDrive.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GoogleDrive.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -516,7 +516,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\GoogleSheets.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GoogleSheets.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -546,7 +546,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\Notion.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Notion.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -576,7 +576,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\Slack.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Slack.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -606,7 +606,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\Airtable.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Airtable.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -636,7 +636,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\Dropbox.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Dropbox.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -666,7 +666,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\Bitrix24.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Bitrix24.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -696,7 +696,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\VkTeams.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\VkTeams.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -726,7 +726,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\Neocities.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Neocities.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -756,7 +756,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\CDEK.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\CDEK.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -786,7 +786,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\YandexMetrika.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\YandexMetrika.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -816,7 +816,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\S3.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\S3.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -846,7 +846,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\TCP.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\TCP.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -876,7 +876,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\GreenAPI.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GreenAPI.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -906,7 +906,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\GreenMax.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GreenMax.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -936,7 +936,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\Ollama.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Ollama.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -966,7 +966,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\HTTPКлиент.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\HTTPКлиент.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -996,7 +996,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\OpenAI.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\OpenAI.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
@@ -1026,7 +1026,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\ReportPortal.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\ReportPortal.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {

@@ -36,7 +36,7 @@ pipeline {
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 
                 script {
-				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\service\yaxunit_conf\ru\GreenMax.json"')
+				    runCommand('"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe" /IBConnectionString "Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";" /C"RunUnitTests=C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\GreenMax.json"')
             
                     timeout(time: 60, unit: 'MINUTES') {
                         waitUntil {
