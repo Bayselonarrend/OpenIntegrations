@@ -9,9 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OLLM_RequestsProcessing",
-"OLLM_ModelsManagement",
-"OLLM_WorkingWithBlob"
+"OPI_Tests.OLLM_RequestsProcessing",
+"OPI_Tests.OLLM_ModelsManagement",
+"OPI_Tests.OLLM_WorkingWithBlob"
     ]
   },
   "settings": {

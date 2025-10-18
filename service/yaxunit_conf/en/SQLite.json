@@ -9,8 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"SQLL_CommonMethods",
-"SQLL_ORM"
+"OPI_Tests.SQLL_CommonMethods",
+"OPI_Tests.SQLL_ORM"
     ]
   },
   "settings": {
