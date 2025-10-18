@@ -9,11 +9,6 @@
                         }
                     }
 
-                    def exitCode = readFile('./test_results/%4.code').trim()
-                    if (exitCode != "0") {
-                        error "Tests failed with exit code: ${exitCode}"
-                    }
-
                     if (fileExists('./test_results/%4.report')) {
                         def reportContent = readFile('./test_results/%4.report')
                         echo "=== report content ==="
@@ -21,6 +16,11 @@
                         echo "=========================="
                     } else {
                         echo "WARNING: %4.report file not found"
+                    }
+
+                    def exitCode = readFile('code.log').trim().replaceAll("[^0-9]", "")
+                    if (exitCode != "0") {
+                        error "Tests failed with exit code: ${exitCode}"
                     }
                 }
 			}
