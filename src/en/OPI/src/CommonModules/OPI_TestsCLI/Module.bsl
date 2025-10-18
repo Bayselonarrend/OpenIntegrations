@@ -2347,7 +2347,7 @@ Procedure GAPI_Account() Export
     GreenAPI_SetInstanceSettings(TestParameters);
     GreenAPI_GetInstanceStatus(TestParameters);
     GreenAPI_SetProfilePicture(TestParameters);
-    GreenAPI_RebootInstance(TestParameters);
+    // GreenMax_RebootInstance(TestParameters);
     // GreenAPI_GetAuthorizationCode(TestParameters);
     // GreenAPI_LogoutInstance(TestParameters);
     // GreenAPI_GetQR(TestParameters);
@@ -2906,6 +2906,36 @@ Procedure SF_FileManagement() Export
     EndDo;
 
     OPI_Tools.RemoveFileWithTry(OptionArray[0]["SSH_Key"], "Error deleting file after test");
+
+EndProcedure
+
+#EndRegion
+
+#Region GreenMax
+
+Procedure GMax_Account() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_ApiURL"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MediaURL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_IdInstance" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Token"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Phone"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_AccountID"  , TestParameters);
+    //OPI_TestDataRetrieval.ParameterToCollection("GreenMax_TestGroupID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
+
+    GreenMax_FormAccessParameters(TestParameters);
+    //GreenMax_LogoutInstance(TestParameters);
+    //GreenMax_GetAuthorizationCode(TestParameters);
+    //GreenMax_SendAuthorizationCode(TestParameters);
+    GreenMax_GetInstanceStatus(TestParameters);
+    GreenMax_GetInstanceSettings(TestParameters);
+    GreenMax_SetInstanceSettings(TestParameters);
+    GreenMax_GetInstanceSettingsStructure(TestParameters);
+    GreenMax_SetProfilePicture(TestParameters);
+    GreenMax_GetAccountInformation(TestParameters);
+    GreenMax_RebootInstance(TestParameters);
 
 EndProcedure
 
@@ -30564,6 +30594,195 @@ Procedure SFTP_GetFileInformation(FunctionParameters)
     // END
 
     Process(Result , "SFTP", "GetFileInformation", Postfix);
+
+EndProcedure
+
+#EndRegion
+
+#Region GreenMax
+
+Procedure GreenMax_FormAccessParameters(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    Result = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+
+    // END
+
+    Process(Result, "GreenMax", "FormAccessParameters");
+
+EndProcedure
+
+Procedure GreenMax_GetAuthorizationCode(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    PhoneNumber = 441234567890;
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.GetAuthorizationCode(AccessParameters, PhoneNumber);
+
+    // END
+
+    Process(Result, "GreenMax", "GetAuthorizationCode");
+
+EndProcedure
+
+Procedure GreenMax_LogoutInstance(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.LogoutInstance(AccessParameters);
+
+    // END
+
+    Process(Result, "GreenMax", "LogoutInstance");
+
+EndProcedure
+
+Procedure GreenMax_SendAuthorizationCode(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    AuthCode = 123456;
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.SendAuthorizationCode(AccessParameters, AuthCode);
+
+    // END
+
+    Process(Result, "GreenMax", "SendAuthorizationCode");
+
+EndProcedure
+
+Procedure GreenMax_GetInstanceStatus(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.GetInstanceStatus(AccessParameters);
+
+    // END
+
+    Process(Result, "GreenMax", "GetInstanceStatus");
+
+EndProcedure
+
+Procedure GreenMax_RebootInstance(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.RebootInstance(AccessParameters);
+
+    // END
+
+    Process(Result, "GreenMax", "RebootInstance");
+
+EndProcedure
+
+Procedure GreenMax_GetInstanceSettingsStructure(FunctionParameters)
+
+    Result = OPI_GreenMax.GetInstanceSettingsStructure();
+
+    // END
+
+    Process(Result, "GreenMax", "GetInstanceSettingsStructure");
+
+    Result = OPI_GreenMax.GetInstanceSettingsStructure(True);
+
+    Process(Result, "GreenMAx", "GetInstanceSettingsStructure", "Clear");
+
+EndProcedure
+
+Procedure GreenMax_GetInstanceSettings(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.GetInstanceSettings(AccessParameters);
+
+    // END
+
+    Process(Result, "GreenMax", "GetInstanceSettings", , FunctionParameters);
+
+EndProcedure
+
+Procedure GreenMax_SetInstanceSettings(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+
+    SettingsStructure = New Structure;
+    SettingsStructure.Insert("markIncomingMessagesReaded" , "no");
+    SettingsStructure.Insert("outgoingWebhook"            , "no");
+    SettingsStructure.Insert("outgoingAPIMessageWebhook"  , "yes");
+
+    Result = OPI_GreenMax.SetInstanceSettings(SettingsStructure, AccessParameters);
+
+    // END
+
+    Process(Result, "GreenMax", "SetInstanceSettings");
+
+EndProcedure
+
+Procedure GreenMax_SetProfilePicture(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.SetProfilePicture(AccessParameters, Image);
+
+    // END
+
+    Process(Result, "GreenMax", "SetProfilePicture");
+
+EndProcedure
+
+Procedure GreenMax_GetAccountInformation(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.GetAccountInformation(AccessParameters);
+
+    // END
+
+    Process(Result, "GreenMax", "GetAccountInformation");
 
 EndProcedure
 

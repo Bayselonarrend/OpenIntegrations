@@ -164,6 +164,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("S3"             , 5);
     Sections.Insert("TCP"            , 5);
     Sections.Insert("GreenAPI"       , 5);
+    Sections.Insert("GreenMax"       , 5);
     Sections.Insert("Ollama"         , 5);
     Sections.Insert("HTTPClient"     , 5);
     Sections.Insert("OpenAI"         , 5);
@@ -208,6 +209,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("S3"             , StandardDependencies);
     Sections.Insert("TCP"            , StandardDependencies);
     Sections.Insert("GreenAPI"       , StandardDependencies);
+    Sections.Insert("GreenMax"       , StandardDependencies);
     Sections.Insert("Ollama"         , StandardDependencies);
     Sections.Insert("HTTPClient"     , StandardDependencies);
     Sections.Insert("OpenAI"         , StandardDependencies);
@@ -252,6 +254,7 @@ Function GetTestTable() Export
     RPortal   = "ReportPortal";
     SSH       = "SSH";
     SFTP      = "SFTP";
+    GreenMax  = "GreenMax";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -394,6 +397,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "GAPI_MessageQueue"                   , "Message queue"                   , GreenAPI);
     NewTest(TestTable, "GAPI_MessageLogs"                    , "Message logs"                    , GreenAPI);
     NewTest(TestTable, "GAPI_Account"                        , "Account"                         , GreenAPI);
+    NewTest(TestTable, "GMax_Account"                        , "Account"                         , GreenMax);
     NewTest(TestTable, "RC_CommandsExecution"                , "Commands execution"              , RCON);
     NewTest(TestTable, "OLLM_RequestsProcessing"             , "Requests processing"             , Ollama);
     NewTest(TestTable, "OLLM_ModelsManagement"               , "Models management"               , Ollama);
@@ -11328,6 +11332,121 @@ Function Check_SFTP_GetFileInformation(Val Result, Val Option)
     ExpectsThat(Result["data"]).Заполнено();
     ExpectsThat(Result["data"]["size"]).Заполнено();
     ExpectsThat(Result["data"]["modified"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_FormAccessParameters(Val Result, Val Option)
+
+    Result.Insert("apiTokenInstance", "***");
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetAuthorizationCode(Val Result, Val Option)
+
+    ExpectsThat(Result["data"]["reason"]).Равно("already_registered");
+    Return Undefined;
+
+EndFunction
+
+Function Check_GreenMax_LogoutInstance(Val Result, Val Option)
+
+    ExpectsThat(Result["isLogout"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_SendAuthorizationCode(Val Result, Val Option)
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_GreenMax_GetInstanceStatus(Val Result, Val Option)
+
+    ExpectsThat(Result["stateInstance"]).Равно("authorized");
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_RebootInstance(Val Result, Val Option)
+
+    ExpectsThat(Result["isReboot"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetInstanceSettingsStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetInstanceSettings(Val Result, Val Option, Parameters = "")
+
+    Try
+        JSON = OPI_Tools.JSONString(Result);
+        JSON = StrReplace(JSON, Parameters["GreenMax_AccountID"], "1234567890@c.us");
+
+        Result = OPI_Tools.JsonToStructure(JSON, True);
+    Except
+        Message("JSON Error");
+    EndTry;
+
+    ExpectsThat(Result["delaySendMessagesMilliseconds"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_SetInstanceSettings(Val Result, Val Option)
+
+    ExpectsThat(Result["saveSettings"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_SetProfilePicture(Val Result, Val Option)
+
+    ExpectsThat(Result["setProfilePicture"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetAccountInformation(Val Result, Val Option)
+
+    Try
+        Result["chatId"] = "***";
+        Result["phone"]  = "***";
+    Except
+        Message("Failed to replace the secrets!");
+    EndTry;
+
+    ExpectsThat(Result["chatId"]).Заполнено();
+    ExpectsThat(Result["phone"]).Заполнено();
 
     Return Result;
 

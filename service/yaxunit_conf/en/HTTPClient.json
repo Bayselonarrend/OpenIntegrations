@@ -1,0 +1,34 @@
+{
+  "reportPath": "./test_results/HTTPClient.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"HTTP_Initialization",
+"HTTP_BodySet",
+"HTTP_Settings",
+"HTTP_HeadersSetting",
+"HTTP_Authorization",
+"HTTP_RequestProcessing",
+"HTTP_ResponseReceiving"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/HTTPClient.code",
+  "ПодключатьВнешниеКомпоненты": true
+}

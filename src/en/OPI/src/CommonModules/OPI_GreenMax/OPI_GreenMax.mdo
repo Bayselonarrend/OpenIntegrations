@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="4e5775cb-c0c2-4b37-9ccf-4efaed1bb8e8">
+  <name>OPI_GreenMax</name>
+  <synonym>
+    <key>en</key>
+    <value>GreenAPI Max (OpenIntegrations)</value>
+  </synonym>
+  <comment>Module for working with Max via GreenAPI from the OpenIntegrations set</comment>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>
