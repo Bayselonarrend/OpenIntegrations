@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_GreenMax.os
+// OneScript: ./OInt/core/Modules/OPI_GreenMax.os
 // Lib: Green Max
 // CLI: greenmax
 // Keywords: greenapi, max
@@ -382,3 +382,55 @@
 
 
 #КонецОбласти
+
+#Region Alternate
+
+Function FormAccessParameters(Val ApiUrl, Val MediaUrl, Val IdInstance, Val ApiTokenInstance) Export
+	Return СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+EndFunction
+
+Function GetAccountInformation(Val AccessParameters) Export
+	Return ПолучитьИнформациюОбАккаунте(AccessParameters);
+EndFunction
+
+Function GetInstanceSettings(Val AccessParameters) Export
+	Return ПолучитьНастройкиИнстанса(AccessParameters);
+EndFunction
+
+Function SetInstanceSettings(Val Settings, Val AccessParameters) Export
+	Return УстановитьНастройкиИнстанса(Settings, AccessParameters);
+EndFunction
+
+Function GetAuthorizationCode(Val AccessParameters, Val PhoneNumber) Export
+	Return ПолучитьКодАвторизации(AccessParameters, PhoneNumber);
+EndFunction
+
+Function SendAuthorizationCode(Val AccessParameters, Val AuthCode) Export
+	Return ОтправитьКодАвторизации(AccessParameters, AuthCode);
+EndFunction
+
+Function GetInstanceStatus(Val AccessParameters) Export
+	Return ПолучитьСостояниеИнстанса(AccessParameters);
+EndFunction
+
+Function SetProfilePicture(Val AccessParameters, Val Image) Export
+	Return УстановитьКартинкуПрофиля(AccessParameters, Image);
+EndFunction
+
+Function LogoutInstance(Val AccessParameters) Export
+	Return РазлогинитьИнстанс(AccessParameters);
+EndFunction
+
+Function RebootInstance(Val AccessParameters) Export
+	Return ПерезапуститьИнстанс(AccessParameters);
+EndFunction
+
+Function CheckAccount(Val AccessParameters, Val PhoneNumber, Val IgnoreCache = False) Export
+	Return ПроверитьАккаунт(AccessParameters, PhoneNumber, IgnoreCache);
+EndFunction
+
+Function GetInstanceSettingsStructure(Val Clear = False) Export
+	Return ПолучитьСтруктуруНастроекИнстанса(Clear);
+EndFunction
+
+#EndRegion

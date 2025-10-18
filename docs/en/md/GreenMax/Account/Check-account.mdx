@@ -1,0 +1,39 @@
+﻿---
+sidebar_position: 11
+description: Check account and other functions to work with Green Max in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Green Max]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Check account
+ Checks the existence of a Max account by phone number
+
+
+
+`Function CheckAccount(Val AccessParameters, Val PhoneNumber, Val IgnoreCache = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
+  | PhoneNumber | --phone | String, Number | &#x2714; | Phone number for verification without + |
+  | IgnoreCache | --force | Boolean | &#x2716; | Ignore cache on repeated verification request |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Green API
+
+<br/>
+
+:::tip
+Method at API documentation: [CheckAccount](https://green-api.com/v3/docs/api/account/CheckAccount/)
+:::
+<br/>
+
+
+
+ 
+
+
+
+
