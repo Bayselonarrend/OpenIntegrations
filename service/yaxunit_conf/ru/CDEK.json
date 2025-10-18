@@ -1,0 +1,30 @@
+{
+  "reportPath": "./test_results/CDEK.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"СдэкАПИ_ОбщиеМетоды",
+"СдэкАПИ_РаботаСЗаказами",
+"СдэкАПИ_РаботаСЗаявкамиНаВызовКурьера"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/CDEK.code",
+  "ПодключатьВнешниеКомпоненты": true
+}
