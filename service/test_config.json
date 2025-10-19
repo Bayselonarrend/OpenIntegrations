@@ -31,7 +31,7 @@
 "GreenMax": true,
 "Ollama": true,
 "HTTPКлиент": true,
-"OpenAI": true,
+"OpenAI": false,
 "ReportPortal": true,
 "HTTPClient": true
 }
