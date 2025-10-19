@@ -17,7 +17,6 @@ pipeline {
                 script {
                     def configText = readFile './service/tests_config.json'
                     env.STAGES_CONFIG = configText
-					echo "Config loaded: ${configText}"
                 }
             }
         }
@@ -71,7 +70,9 @@ pipeline {
 		}
 
 		stage('Testing-Telegram') {
-
+            when {
+                expression { return shouldRunStage('Telegram') }
+            }
 			steps {
 				script {
 					def tests = [
@@ -801,31 +802,34 @@ pipeline {
 
 def shouldRunStage(stageName) {
     try {
+        echo "=== DEBUG shouldRunStage: ${stageName} ==="
+        echo "STAGES_CONFIG exists: ${env.STAGES_CONFIG != null}"
+        
         if (!env.STAGES_CONFIG) {
-            echo "[WARN] STAGES_CONFIG not set. Assuming stage '${stageName}' is ENABLED."
-            return true
-        }
-        def config = readJSON text: env.STAGES_CONFIG
-        def value = config[stageName]
-        if (value == null) {
-            echo "[WARN] Stage '${stageName}' not found in config. Defaulting to DISABLED."
+            echo "STAGES_CONFIG is NULL or EMPTY"
             return false
         }
-        return value == true
+        
+        echo "STAGES_CONFIG content: ${env.STAGES_CONFIG}"
+        
+        def config = readJSON text: env.STAGES_CONFIG
+        echo "Config keys: ${config.keySet()}"
+        
+        def value = config[stageName]
+        echo "Value for ${stageName}: ${value} (type: ${value?.getClass()})"
+        
+        def result = (value == true)
+        echo "Final result for ${stageName}: ${result}"
+        
+        return result
+        
     } catch (Exception e) {
-        echo "[ERROR] Failed to parse STAGES_CONFIG: ${e.message}"
-        echo "Raw config: ${env.STAGES_CONFIG}"
-        return true
+        echo "ERROR in shouldRunStage: ${e.getMessage()}"
+        echo "Stack trace: ${e.getStackTrace()}"
+        return false
     }
 }
 
 def runLibraryTest(String configPath, String libraryName) {
-    try {
-        echo "Executing: 1testrunner -run \"${configPath}\" \"${libraryName}\""
-        runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
-        echo "Test ${libraryName} completed successfully"
-    } catch (Exception e) {
-        echo "ERROR in test ${libraryName}: ${e.getMessage()}"
-        throw e 
-    }
+    runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
 }
