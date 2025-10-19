@@ -1,4 +1,7 @@
 		stage('Testing-%1') {
+            when {
+                expression { return shouldRunStage('%1') }
+            }
 			steps {			
 %2
 			}
