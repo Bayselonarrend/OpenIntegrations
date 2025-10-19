@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-Ollama') {
+            when {
+                expression { return shouldRunStage('Ollama') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

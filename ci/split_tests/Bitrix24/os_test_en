@@ -12,6 +12,15 @@ pipeline {
 	}
 	stages {
 
+        stage('Read stages config') {
+            steps {
+                script {
+                    def configText = readFile './service/tests_config.json'
+                    env.STAGES_CONFIG = configText
+                }
+            }
+        }
+
 		stage('Remove OInt from OneScript Lib') {
 			steps {
 				script {
@@ -61,6 +70,9 @@ pipeline {
 		}
 
 		stage('Testing-Bitrix24') {
+            when {
+                expression { return shouldRunStage('Bitrix24') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TokenManagement"')
@@ -136,4 +148,9 @@ pipeline {
 			}
 		}
 	}
+}
+
+def shouldRunStage(stageName) {
+    def config = readJSON text: env.STAGES_CONFIG
+    return config[stageName] == true
 }

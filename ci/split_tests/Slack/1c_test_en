@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-Slack') {
+            when {
+                expression { return shouldRunStage('Slack') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
