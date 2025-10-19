@@ -66,55 +66,32 @@ pipeline {
             when {
                 expression { return shouldRunStage('Bitrix24') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_TokenManagement"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_ServerTime"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_PostsManagement"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_TaskManagement"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_CommentsManagement"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_WorkingWithDrive"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_Kanban"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_Timekeeping"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_ChatManagement"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_NotificationsManagement"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_TasksFieldsManagement"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_DepartmentsManagement"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B2_UsersManagement"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_LeadsManagement"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_DealsManagement"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "B24_CalendarsManagement"')
-			}
+			steps {
+				script {
+					def tests = [
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_TokenManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_ServerTime'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_PostsManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_TaskManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_CommentsManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_WorkingWithDrive'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_Kanban'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_Timekeeping'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_ChatManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_NotificationsManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_TasksFieldsManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_DepartmentsManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B2_UsersManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_LeadsManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_DealsManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'B24_CalendarsManagement'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 
@@ -146,4 +123,8 @@ pipeline {
 def shouldRunStage(stageName) {
     def config = readJSON text: env.STAGES_CONFIG
     return config[stageName] == true
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
 }

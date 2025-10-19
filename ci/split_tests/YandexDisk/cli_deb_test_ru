@@ -67,37 +67,26 @@ pipeline {
             when {
                 expression { return shouldRunStage('YandexDisk') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ЯДиск_ПолучитьИнформациюОДиске"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ЯДиск_СоздатьПапку"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ЯДиск_ЗагрузитьУдалитьФайл"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ЯДиск_СоздатьКопиюОбъекта"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ЯДиск_ПолучитьСсылкуНаСкачивание"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ЯДиск_ПолучитьСписокФайлов"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ЯДиск_ПереместитьОбъект"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ЯДиск_ДействияПубличныхОбъектов"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ЯДиск_ПолучитьСписокОпубликованных"')
-			}
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ПолучитьИнформациюОДиске'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_СоздатьПапку'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ЗагрузитьУдалитьФайл'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_СоздатьКопиюОбъекта'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ПолучитьСсылкуНаСкачивание'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ПолучитьСписокФайлов'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ПереместитьОбъект'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ДействияПубличныхОбъектов'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ПолучитьСписокОпубликованных'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 
@@ -129,4 +118,8 @@ pipeline {
 def shouldRunStage(stageName) {
     def config = readJSON text: env.STAGES_CONFIG
     return config[stageName] == true
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
 }

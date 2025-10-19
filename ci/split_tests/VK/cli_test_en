@@ -146,67 +146,36 @@ pipeline {
             when {
                 expression { return shouldRunStage('VK') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_CreateTokenLink"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_CreateDeletePost"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_CreateCompositePost"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_CreatePoll"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_SaveDeleteImage"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_CreateStory"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_DiscussionMethods"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_LikeRepostComment"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_GetStatistics"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_GetPostStatistics"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_CreateAdCampaign"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_SendMessage"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_GetProductCategories"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_CreateProductSelection"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_CreateProductWithProperties"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_GetProductList"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_GetSelectionList"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_GetPropertyList"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_GetOrderList"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "VKAPI_UploadVideo"')
-			}
+			steps {
+				script {
+					def tests = [
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateTokenLink'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateDeletePost'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateCompositePost'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreatePoll'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_SaveDeleteImage'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateStory'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_DiscussionMethods'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_LikeRepostComment'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetStatistics'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetPostStatistics'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateAdCampaign'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_SendMessage'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetProductCategories'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateProductSelection'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_CreateProductWithProperties'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetProductList'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetSelectionList'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetPropertyList'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_GetOrderList'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'VKAPI_UploadVideo'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 
@@ -238,4 +207,8 @@ pipeline {
 def shouldRunStage(stageName) {
     def config = readJSON text: env.STAGES_CONFIG
     return config[stageName] == true
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
 }

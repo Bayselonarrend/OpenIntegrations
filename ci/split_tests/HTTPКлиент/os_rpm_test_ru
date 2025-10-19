@@ -76,28 +76,23 @@ pipeline {
             when {
                 expression { return shouldRunStage('HTTPКлиент') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "HTTP_Инициализация"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "HTTP_УстановкаТела"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "HTTP_Настройки"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "HTTP_УстановкаЗаголовков"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "HTTP_Авторизация"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "HTTP_ОбработкаЗапроса"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "HTTP_ПолучениеОтвета"')
-			}
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'HTTP_Инициализация'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'HTTP_УстановкаТела'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'HTTP_Настройки'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'HTTP_УстановкаЗаголовков'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'HTTP_Авторизация'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'HTTP_ОбработкаЗапроса'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'HTTP_ПолучениеОтвета'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 
@@ -129,4 +124,8 @@ pipeline {
 def shouldRunStage(stageName) {
     def config = readJSON text: env.STAGES_CONFIG
     return config[stageName] == true
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
 }

@@ -65,12 +65,17 @@ pipeline {
             when {
                 expression { return shouldRunStage('Viber') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-                script {
-                    runLibraryTest('Viber', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\en\\Viber.json')
-                }
-			}
+			steps {
+				script {
+					def tests = [
+						['Viber', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\en\\Viber.json'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 

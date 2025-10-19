@@ -65,12 +65,17 @@ pipeline {
             when {
                 expression { return shouldRunStage('Airtable') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-                script {
-                    runLibraryTest('Airtable', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\en\\Airtable.json')
-                }
-			}
+			steps {
+				script {
+					def tests = [
+						['Airtable', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\en\\Airtable.json'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 
