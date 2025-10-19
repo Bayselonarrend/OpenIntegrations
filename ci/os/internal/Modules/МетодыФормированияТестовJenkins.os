@@ -36,7 +36,7 @@
 	База1сRu = "OpenIntegrations";
 	База1сEn = "OpenIntegrationsEng";
 
-	ФайлКонфигурацииТестов   = "./service/test_config.json";
+	ФайлКонфигурацииТестов   = "./service/tests_config.json";
 	ДанныеКонфигурацииТестов = OPI_Инструменты.ПрочитатьJSONФайл(ФайлКонфигурацииТестов, Истина);
 
 	КаталогКонфигурацииYaxUnit = "./service/yaxunit_conf/";
