@@ -17,6 +17,7 @@ pipeline {
                 script {
                     def configText = readFile './service/tests_config.json'
                     env.STAGES_CONFIG = configText
+					echo "Config loaded: ${configText}"
                 }
             }
         }
@@ -816,8 +817,7 @@ def shouldRunStage(stageName) {
     } catch (Exception e) {
         echo "[ERROR] Failed to parse STAGES_CONFIG: ${e.message}"
         echo "Raw config: ${env.STAGES_CONFIG}"
-        // Решите: включать stage по умолчанию или нет?
-        return false // или true — по вашему усмотрению
+        return true
     }
 }
 
