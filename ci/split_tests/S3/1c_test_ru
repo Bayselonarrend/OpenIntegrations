@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-S3') {
+            when {
+                expression { return shouldRunStage('S3') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

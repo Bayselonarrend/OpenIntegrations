@@ -12,6 +12,15 @@ pipeline {
 	}
 	stages {
 
+        stage('Read stages config') {
+            steps {
+                script {
+                    def configText = readFile './service/tests_config.json'
+                    env.STAGES_CONFIG = configText
+                }
+            }
+        }
+
 		stage('Remove OInt from OneScript Lib') {
 			steps {
 				script {
@@ -61,6 +70,9 @@ pipeline {
 		}
 
 		stage('Testing-GoogleCalendar') {
+            when {
+                expression { return shouldRunStage('GoogleCalendar') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os" "ГВ_Авторизация"')
@@ -100,4 +112,9 @@ pipeline {
 			}
 		}
 	}
+}
+
+def shouldRunStage(stageName) {
+    def config = readJSON text: env.STAGES_CONFIG
+    return config[stageName] == true
 }

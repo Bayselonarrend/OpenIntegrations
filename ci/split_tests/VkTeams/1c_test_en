@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-VkTeams') {
+            when {
+                expression { return shouldRunStage('VkTeams') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

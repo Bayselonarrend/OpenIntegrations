@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-GreenMax') {
+            when {
+                expression { return shouldRunStage('GreenMax') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

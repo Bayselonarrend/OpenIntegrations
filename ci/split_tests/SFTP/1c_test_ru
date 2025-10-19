@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-SFTP') {
+            when {
+                expression { return shouldRunStage('SFTP') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

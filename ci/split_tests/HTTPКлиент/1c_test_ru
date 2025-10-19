@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-HTTPКлиент') {
+            when {
+                expression { return shouldRunStage('HTTPКлиент') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

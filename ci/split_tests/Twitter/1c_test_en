@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-Twitter') {
+            when {
+                expression { return shouldRunStage('Twitter') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
