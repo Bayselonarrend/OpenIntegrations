@@ -141,5 +141,12 @@ def shouldRunStage(stageName) {
 }
 
 def runLibraryTest(String configPath, String libraryName) {
-    runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
+    try {
+        echo "Executing: 1testrunner -run \"${configPath}\" \"${libraryName}\""
+        runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
+        echo "Test ${libraryName} completed successfully"
+    } catch (Exception e) {
+        echo "ERROR in test ${libraryName}: ${e.getMessage()}"
+        throw e 
+    }
 }
