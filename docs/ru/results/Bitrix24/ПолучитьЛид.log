@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "2618",
+  "ID": "2633",
   "TITLE": "Мегаклиент",
   "HONORIFIC": null,
   "NAME": "Иван",
@@ -8,7 +8,7 @@
   "LAST_NAME": "Иванов",
   "COMPANY_TITLE": null,
   "COMPANY_ID": null,
-  "CONTACT_ID": "2618",
+  "CONTACT_ID": "2633",
   "IS_RETURN_CUSTOMER": "N",
   "BIRTHDATE": "",
   "SOURCE_ID": "CALL",
@@ -26,15 +26,15 @@
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2025-10-14T17:06:01+00:00",
-  "DATE_MODIFY": "2025-10-14T17:06:02+00:00",
-  "DATE_CLOSED": "2025-10-13T21:00:00+00:00",
+  "DATE_CREATE": "2025-10-19T13:58:47+03:00",
+  "DATE_MODIFY": "2025-10-19T13:58:47+03:00",
+  "DATE_CLOSED": "2025-10-19T00:00:00+03:00",
   "STATUS_SEMANTIC_ID": "S",
   "OPENED": "Y",
   "ORIGINATOR_ID": null,
   "ORIGIN_ID": null,
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2025-10-14T17:06:02+00:00",
+  "MOVED_TIME": "2025-10-19T13:58:47+03:00",
   "ADDRESS": "ул. Пушкина, д. 10",
   "ADDRESS_2": null,
   "ADDRESS_CITY": null,
@@ -43,7 +43,7 @@
   "ADDRESS_PROVINCE": null,
   "ADDRESS_COUNTRY": "Россия",
   "ADDRESS_COUNTRY_CODE": null,
-  "ADDRESS_LOC_ADDR_ID": "5234",
+  "ADDRESS_LOC_ADDR_ID": "5265",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
@@ -51,16 +51,16 @@
   "UTM_TERM": null,
   "LAST_COMMUNICATION_TIME": null,
   "LAST_ACTIVITY_BY": "1",
-  "LAST_ACTIVITY_TIME": "2025-10-14T17:06:01+00:00",
+  "LAST_ACTIVITY_TIME": "2025-10-19T13:58:47+03:00",
   "EMAIL": [
    {
-    "ID": "15678",
+    "ID": "15773",
     "VALUE_TYPE": "HOME",
     "VALUE": "yo@example.com",
     "TYPE_ID": "EMAIL"
    },
    {
-    "ID": "15680",
+    "ID": "15775",
     "VALUE_TYPE": "WORK",
     "VALUE": "hi@example.com",
     "TYPE_ID": "EMAIL"
@@ -68,7 +68,7 @@
   ],
   "PHONE": [
    {
-    "ID": "15682",
+    "ID": "15777",
     "VALUE_TYPE": "WORK",
     "VALUE": "88005553535",
     "TYPE_ID": "PHONE"
@@ -76,13 +76,13 @@
   ]
  },
  "time": {
-  "start": 1760461563,
-  "finish": 1760461563.64113,
-  "duration": 0.641125917434692,
+  "start": 1760871528,
+  "finish": 1760871528.26381,
+  "duration": 0.263808965682983,
   "processing": 0,
-  "date_start": "2025-10-14T17:06:03+00:00",
-  "date_finish": "2025-10-14T17:06:03+00:00",
-  "operating_reset_at": 1760462163,
+  "date_start": "2025-10-19T13:58:48+03:00",
+  "date_finish": "2025-10-19T13:58:48+03:00",
+  "operating_reset_at": 1760872128,
   "operating": 0
  }
 }

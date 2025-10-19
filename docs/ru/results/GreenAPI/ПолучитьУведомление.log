@@ -7,8 +7,8 @@
    "wid": "1234567890@c.us",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1760385456,
-  "idMessage": "BAE5C4369602ECE1",
+  "timestamp": 1760796759,
+  "idMessage": "BAE529EC160F4BC7",
   "senderData": {
    "chatId": "120363410406221140@g.us",
    "chatName": "Основная тестовая группа",
@@ -17,26 +17,16 @@
    "senderContactName": ""
   },
   "messageData": {
-   "typeMessage": "quotedMessage",
-   "extendedTextMessageData": {
-    "text": "New message",
-    "stanzaId": "BAE58466890A3038",
-    "participant": "1234567890@c.us"
-   },
-   "quotedMessage": {
-    "stanzaId": "BAE58466890A3038",
-    "participant": "1234567890@c.us",
-    "typeMessage": "extendedTextMessage",
-    "textMessage": "New message",
-    "extendedTextMessage": {
-     "text": "New message",
-     "description": "",
-     "title": "",
-     "previewType": "None",
-     "jpegThumbnail": "",
-     "forwardingScore": 0,
-     "isForwarded": false
-    }
+   "typeMessage": "imageMessage",
+   "fileMessageData": {
+    "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/bc1dc538-2a39-4f8c-9b28-54e4a942f520.jpg",
+    "caption": "Описание файла",
+    "fileName": "bc1dc538-2a39-4f8c-9b28-54e4a942f520.jpg",
+    "jpegThumbnail": "",
+    "isAnimated": false,
+    "mimeType": "image/jpeg",
+    "forwardingScore": 0,
+    "isForwarded": false
    }
   }
  }
