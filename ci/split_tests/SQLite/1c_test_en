@@ -65,12 +65,17 @@ pipeline {
             when {
                 expression { return shouldRunStage('SQLite') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-                script {
-                    runLibraryTest('SQLite', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\en\\SQLite.json')
-                }
-			}
+			steps {
+				script {
+					def tests = [
+						['SQLite', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\en\\SQLite.json'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 

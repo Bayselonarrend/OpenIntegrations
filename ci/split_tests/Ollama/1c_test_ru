@@ -65,12 +65,17 @@ pipeline {
             when {
                 expression { return shouldRunStage('Ollama') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-                script {
-                    runLibraryTest('Ollama', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Ollama.json')
-                }
-			}
+			steps {
+				script {
+					def tests = [
+						['Ollama', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Ollama.json'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 

@@ -73,16 +73,19 @@ pipeline {
             when {
                 expression { return shouldRunStage('CDEK') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "CdekAPI_CommonMethods"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "CDEKAPI_OrdersManagement"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "CdekAPI_CourierInvitationsManagement"')
-			}
+			steps {
+				script {
+					def tests = [
+						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'CdekAPI_CommonMethods'],
+						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'CDEKAPI_OrdersManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'CdekAPI_CourierInvitationsManagement'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 
@@ -114,4 +117,8 @@ pipeline {
 def shouldRunStage(stageName) {
     def config = readJSON text: env.STAGES_CONFIG
     return config[stageName] == true
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
 }
