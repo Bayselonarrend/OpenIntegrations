@@ -1,3 +1,0 @@
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "%1" "%2"')
-			}

@@ -1,5 +1,0 @@
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-                script {
-                    runLibraryTest('%1', '%2')
-                }
-			}
