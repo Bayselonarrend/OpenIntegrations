@@ -67,25 +67,22 @@ pipeline {
             when {
                 expression { return shouldRunStage('Slack') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Слак_ПолучитьИнформацию"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Слак_ОтправитьУдалитьСообщение"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Слак_СоздатьАрхивироватьКанал"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Слак_ОткрытьЗакрытьДиалог"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Слак_ЗагрузитьУдалитьФайл"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Слак_ЗагрузитьУдалитьВФ"')
-			}
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ПолучитьИнформацию'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ОтправитьУдалитьСообщение'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_СоздатьАрхивироватьКанал'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ОткрытьЗакрытьДиалог'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ЗагрузитьУдалитьФайл'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ЗагрузитьУдалитьВФ'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 
@@ -117,4 +114,8 @@ pipeline {
 def shouldRunStage(stageName) {
     def config = readJSON text: env.STAGES_CONFIG
     return config[stageName] == true
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
 }
