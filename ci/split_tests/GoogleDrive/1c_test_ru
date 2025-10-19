@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-GoogleDrive') {
+            when {
+                expression { return shouldRunStage('GoogleDrive') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

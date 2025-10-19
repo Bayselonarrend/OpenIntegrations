@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-Airtable') {
+            when {
+                expression { return shouldRunStage('Airtable') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

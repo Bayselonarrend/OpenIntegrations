@@ -1,12 +1,12 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЧата = "3268";
+    IDЧата = "3272";
 
     Картинка = "https://hut.openintegrations.dev/test_data/picture2.jpg";
 
     Результат = OPI_Bitrix24.ИзменитьКартинкуЧата(URL, IDЧата, Картинка);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Токен  = "a2a9f368006e9f06006b12e400000001000...";
-    IDЧата = "3270";
+    Токен  = "3b1af468006e9f06006b12e400000001000...";
+    IDЧата = "3274";
 
     Результат = OPI_Bitrix24.ИзменитьКартинкуЧата(URL, IDЧата, Картинка, Токен);

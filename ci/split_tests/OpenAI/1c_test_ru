@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-OpenAI') {
+            when {
+                expression { return shouldRunStage('OpenAI') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

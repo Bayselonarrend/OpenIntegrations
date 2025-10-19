@@ -1,5 +1,5 @@
 ﻿    URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CalendarID = "1526";
+    CalendarID = "1530";
 
     User = 1;
 
@@ -12,7 +12,7 @@
     Result = OPI_Bitrix24.GetUserBusy(URL, User, StartDate, EndDate);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "a2a9f368006e9f06006b12e400000001000...";
-    CalendarID = "1528";
+    Token      = "3b1af468006e9f06006b12e400000001000...";
+    CalendarID = "1532";
 
     Result = OPI_Bitrix24.GetUserBusy(URL, User, StartDate, EndDate, Token);

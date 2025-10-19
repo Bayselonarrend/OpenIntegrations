@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-Telegram') {
+            when {
+                expression { return shouldRunStage('Telegram') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -71,6 +74,9 @@ pipeline {
 			}
 		}
 		stage('Testing-VK') {
+            when {
+                expression { return shouldRunStage('VK') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -80,6 +86,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Viber') {
+            when {
+                expression { return shouldRunStage('Viber') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -89,6 +98,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Twitter') {
+            when {
+                expression { return shouldRunStage('Twitter') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -98,6 +110,9 @@ pipeline {
 			}
 		}
 		stage('Testing-FTP') {
+            when {
+                expression { return shouldRunStage('FTP') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -107,6 +122,9 @@ pipeline {
 			}
 		}
 		stage('Testing-SSH') {
+            when {
+                expression { return shouldRunStage('SSH') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -116,6 +134,9 @@ pipeline {
 			}
 		}
 		stage('Testing-SFTP') {
+            when {
+                expression { return shouldRunStage('SFTP') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -125,6 +146,9 @@ pipeline {
 			}
 		}
 		stage('Testing-PostgreSQL') {
+            when {
+                expression { return shouldRunStage('PostgreSQL') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -134,6 +158,9 @@ pipeline {
 			}
 		}
 		stage('Testing-MySQL') {
+            when {
+                expression { return shouldRunStage('MySQL') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -143,6 +170,9 @@ pipeline {
 			}
 		}
 		stage('Testing-MSSQL') {
+            when {
+                expression { return shouldRunStage('MSSQL') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -152,6 +182,9 @@ pipeline {
 			}
 		}
 		stage('Testing-SQLite') {
+            when {
+                expression { return shouldRunStage('SQLite') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -161,6 +194,9 @@ pipeline {
 			}
 		}
 		stage('Testing-RCON') {
+            when {
+                expression { return shouldRunStage('RCON') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -170,6 +206,9 @@ pipeline {
 			}
 		}
 		stage('Testing-YandexDisk') {
+            when {
+                expression { return shouldRunStage('YandexDisk') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -179,6 +218,9 @@ pipeline {
 			}
 		}
 		stage('Testing-GoogleWorkspace') {
+            when {
+                expression { return shouldRunStage('GoogleWorkspace') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -188,6 +230,9 @@ pipeline {
 			}
 		}
 		stage('Testing-GoogleCalendar') {
+            when {
+                expression { return shouldRunStage('GoogleCalendar') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -197,6 +242,9 @@ pipeline {
 			}
 		}
 		stage('Testing-GoogleDrive') {
+            when {
+                expression { return shouldRunStage('GoogleDrive') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -206,6 +254,9 @@ pipeline {
 			}
 		}
 		stage('Testing-GoogleSheets') {
+            when {
+                expression { return shouldRunStage('GoogleSheets') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -215,6 +266,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Notion') {
+            when {
+                expression { return shouldRunStage('Notion') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -224,6 +278,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Slack') {
+            when {
+                expression { return shouldRunStage('Slack') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -233,6 +290,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Airtable') {
+            when {
+                expression { return shouldRunStage('Airtable') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -242,6 +302,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Dropbox') {
+            when {
+                expression { return shouldRunStage('Dropbox') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -251,6 +314,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Bitrix24') {
+            when {
+                expression { return shouldRunStage('Bitrix24') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -260,6 +326,9 @@ pipeline {
 			}
 		}
 		stage('Testing-VkTeams') {
+            when {
+                expression { return shouldRunStage('VkTeams') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -269,6 +338,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Neocities') {
+            when {
+                expression { return shouldRunStage('Neocities') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -278,6 +350,9 @@ pipeline {
 			}
 		}
 		stage('Testing-CDEK') {
+            when {
+                expression { return shouldRunStage('CDEK') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -287,6 +362,9 @@ pipeline {
 			}
 		}
 		stage('Testing-YandexMetrika') {
+            when {
+                expression { return shouldRunStage('YandexMetrika') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -296,6 +374,9 @@ pipeline {
 			}
 		}
 		stage('Testing-S3') {
+            when {
+                expression { return shouldRunStage('S3') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -305,6 +386,9 @@ pipeline {
 			}
 		}
 		stage('Testing-TCP') {
+            when {
+                expression { return shouldRunStage('TCP') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -314,6 +398,9 @@ pipeline {
 			}
 		}
 		stage('Testing-GreenAPI') {
+            when {
+                expression { return shouldRunStage('GreenAPI') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -323,6 +410,9 @@ pipeline {
 			}
 		}
 		stage('Testing-GreenMax') {
+            when {
+                expression { return shouldRunStage('GreenMax') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -332,6 +422,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Ollama') {
+            when {
+                expression { return shouldRunStage('Ollama') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -341,6 +434,9 @@ pipeline {
 			}
 		}
 		stage('Testing-HTTPClient') {
+            when {
+                expression { return shouldRunStage('HTTPClient') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -350,6 +446,9 @@ pipeline {
 			}
 		}
 		stage('Testing-OpenAI') {
+            when {
+                expression { return shouldRunStage('OpenAI') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
@@ -359,6 +458,9 @@ pipeline {
 			}
 		}
 		stage('Testing-ReportPortal') {
+            when {
+                expression { return shouldRunStage('ReportPortal') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

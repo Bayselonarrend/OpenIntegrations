@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-SSH') {
+            when {
+                expression { return shouldRunStage('SSH') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

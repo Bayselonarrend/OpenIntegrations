@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-GreenAPI') {
+            when {
+                expression { return shouldRunStage('GreenAPI') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

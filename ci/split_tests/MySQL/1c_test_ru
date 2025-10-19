@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-MySQL') {
+            when {
+                expression { return shouldRunStage('MySQL') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

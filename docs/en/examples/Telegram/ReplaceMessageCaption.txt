@@ -1,6 +1,6 @@
 ﻿    Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "461699897";
-    MessageID = "17204";
+    MessageID = "17220";
 
     Description = "New picture description";
     Result      = OPI_Telegram.ReplaceMessageCaption(Token, ChatID, MessageID, Description);

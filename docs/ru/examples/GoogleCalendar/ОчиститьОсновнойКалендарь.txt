@@ -1,3 +1,3 @@
-﻿    Токен = "ya29.a0AQQ_BDRfjRCmU5SeUIezsIJ0MMPx8rGY1cJrDRCGoiznokY8J1VbDpoIsria1fc0P9nhxwiUoadmzeQoio1JAt8mABgw7K47DK2YITbHMxCTAzRgJgPZ9z_1F...";
+﻿    Токен = "ya29.a0AQQ_BDT_CMAJqFIcOfzUrSDYRQ2mZ6TLDIGN-tv27R3mPj8iFcUgZ-x-aipMSCOTXMfqqTzT2aRN4TCe8MFrBD2tInauCN39ueJtc4LHbj71tbNlq9LdkejgF...";
 
     Результат = OPI_GoogleCalendar.ОчиститьОсновнойКалендарь(Токен);

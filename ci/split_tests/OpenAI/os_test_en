@@ -12,6 +12,15 @@ pipeline {
 	}
 	stages {
 
+        stage('Read stages config') {
+            steps {
+                script {
+                    def configText = readFile './service/tests_config.json'
+                    env.STAGES_CONFIG = configText
+                }
+            }
+        }
+
 		stage('Remove OInt from OneScript Lib') {
 			steps {
 				script {
@@ -61,6 +70,9 @@ pipeline {
 		}
 
 		stage('Testing-OpenAI') {
+            when {
+                expression { return shouldRunStage('OpenAI') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OAI_RequestsProcessing"')
@@ -103,4 +115,9 @@ pipeline {
 			}
 		}
 	}
+}
+
+def shouldRunStage(stageName) {
+    def config = readJSON text: env.STAGES_CONFIG
+    return config[stageName] == true
 }

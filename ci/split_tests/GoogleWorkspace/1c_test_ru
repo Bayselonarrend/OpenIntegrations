@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-GoogleWorkspace') {
+            when {
+                expression { return shouldRunStage('GoogleWorkspace') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

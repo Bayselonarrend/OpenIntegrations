@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-MSSQL') {
+            when {
+                expression { return shouldRunStage('MSSQL') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

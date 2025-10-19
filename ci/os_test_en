@@ -12,6 +12,15 @@ pipeline {
 	}
 	stages {
 
+        stage('Read stages config') {
+            steps {
+                script {
+                    def configText = readFile './service/tests_config.json'
+                    env.STAGES_CONFIG = configText
+                }
+            }
+        }
+
 		stage('Remove OInt from OneScript Lib') {
 			steps {
 				script {
@@ -61,6 +70,9 @@ pipeline {
 		}
 
 		stage('Testing-Telegram') {
+            when {
+                expression { return shouldRunStage('Telegram') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TelegramAPI_GetBotInfo"')
@@ -131,6 +143,9 @@ pipeline {
 			}
 		}
 		stage('Testing-VK') {
+            when {
+                expression { return shouldRunStage('VK') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKAPI_CreateTokenLink"')
@@ -195,6 +210,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Viber') {
+            when {
+                expression { return shouldRunStage('Viber') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Viber_DataRetrieval"')
@@ -205,6 +223,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Twitter') {
+            when {
+                expression { return shouldRunStage('Twitter') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TwitterAPI_AccountData"')
@@ -215,6 +236,9 @@ pipeline {
 			}
 		}
 		stage('Testing-FTP') {
+            when {
+                expression { return shouldRunStage('FTP') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "FT_DirecotryManagement"')
@@ -228,6 +252,9 @@ pipeline {
 			}
 		}
 		stage('Testing-SSH') {
+            when {
+                expression { return shouldRunStage('SSH') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "SShell_CommonMethods"')
@@ -235,6 +262,9 @@ pipeline {
 			}
 		}
 		stage('Testing-SFTP') {
+            when {
+                expression { return shouldRunStage('SFTP') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "SF_CommonMethods"')
@@ -248,6 +278,9 @@ pipeline {
 			}
 		}
 		stage('Testing-PostgreSQL') {
+            when {
+                expression { return shouldRunStage('PostgreSQL') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "Postgres_CommonMethods"')
@@ -258,6 +291,9 @@ pipeline {
 			}
 		}
 		stage('Testing-MySQL') {
+            when {
+                expression { return shouldRunStage('MySQL') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "MYS_CommonMethods"')
@@ -268,6 +304,9 @@ pipeline {
 			}
 		}
 		stage('Testing-MSSQL') {
+            when {
+                expression { return shouldRunStage('MSSQL') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "MSS_CommonMethods"')
@@ -278,6 +317,9 @@ pipeline {
 			}
 		}
 		stage('Testing-SQLite') {
+            when {
+                expression { return shouldRunStage('SQLite') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "SQLL_CommonMethods"')
@@ -288,6 +330,9 @@ pipeline {
 			}
 		}
 		stage('Testing-RCON') {
+            when {
+                expression { return shouldRunStage('RCON') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "RC_CommandsExecution"')
@@ -295,6 +340,9 @@ pipeline {
 			}
 		}
 		stage('Testing-YandexDisk') {
+            when {
+                expression { return shouldRunStage('YandexDisk') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YDisk_GetDiskInfo"')
@@ -329,6 +377,9 @@ pipeline {
 			}
 		}
 		stage('Testing-GoogleWorkspace') {
+            when {
+                expression { return shouldRunStage('GoogleWorkspace') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GW_Auth"')
@@ -336,6 +387,9 @@ pipeline {
 			}
 		}
 		stage('Testing-GoogleCalendar') {
+            when {
+                expression { return shouldRunStage('GoogleCalendar') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GW_Auth"')
@@ -352,6 +406,9 @@ pipeline {
 			}
 		}
 		stage('Testing-GoogleDrive') {
+            when {
+                expression { return shouldRunStage('GoogleDrive') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GW_Auth"')
@@ -371,6 +428,9 @@ pipeline {
 			}
 		}
 		stage('Testing-GoogleSheets') {
+            when {
+                expression { return shouldRunStage('GoogleSheets') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GW_Auth"')
@@ -384,6 +444,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Notion') {
+            when {
+                expression { return shouldRunStage('Notion') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "NotionAPI_CreatePage"')
@@ -400,6 +463,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Slack') {
+            when {
+                expression { return shouldRunStage('Slack') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "SlackGetData"')
@@ -422,6 +488,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Airtable') {
+            when {
+                expression { return shouldRunStage('Airtable') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AT_CreateDatabase"')
@@ -438,6 +507,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Dropbox') {
+            when {
+                expression { return shouldRunStage('Dropbox') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "DropboxAPI_GetUpdateToken"')
@@ -466,6 +538,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Bitrix24') {
+            when {
+                expression { return shouldRunStage('Bitrix24') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "B24_TokenManagement"')
@@ -518,6 +593,9 @@ pipeline {
 			}
 		}
 		stage('Testing-VkTeams') {
+            when {
+                expression { return shouldRunStage('VkTeams') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "VKT_MessagesSending"')
@@ -531,6 +609,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Neocities') {
+            when {
+                expression { return shouldRunStage('Neocities') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "NC_FilesManagement"')
@@ -541,6 +622,9 @@ pipeline {
 			}
 		}
 		stage('Testing-CDEK') {
+            when {
+                expression { return shouldRunStage('CDEK') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "CdekAPI_CommonMethods"')
@@ -554,6 +638,9 @@ pipeline {
 			}
 		}
 		stage('Testing-YandexMetrika') {
+            when {
+                expression { return shouldRunStage('YandexMetrika') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "YaMetrika_TagsManagement"')
@@ -567,6 +654,9 @@ pipeline {
 			}
 		}
 		stage('Testing-S3') {
+            when {
+                expression { return shouldRunStage('S3') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "AWS_CommonMethods"')
@@ -580,6 +670,9 @@ pipeline {
 			}
 		}
 		stage('Testing-TCP') {
+            when {
+                expression { return shouldRunStage('TCP') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "TC_Client"')
@@ -587,6 +680,9 @@ pipeline {
 			}
 		}
 		stage('Testing-GreenAPI') {
+            when {
+                expression { return shouldRunStage('GreenAPI') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GAPI_GroupManagement"')
@@ -609,6 +705,9 @@ pipeline {
 			}
 		}
 		stage('Testing-GreenMax') {
+            when {
+                expression { return shouldRunStage('GreenMax') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "GMax_Account"')
@@ -616,6 +715,9 @@ pipeline {
 			}
 		}
 		stage('Testing-Ollama') {
+            when {
+                expression { return shouldRunStage('Ollama') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OLLM_RequestsProcessing"')
@@ -629,6 +731,9 @@ pipeline {
 			}
 		}
 		stage('Testing-HTTPClient') {
+            when {
+                expression { return shouldRunStage('HTTPClient') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "HTTP_Initialization"')
@@ -654,6 +759,9 @@ pipeline {
 			}
 		}
 		stage('Testing-OpenAI') {
+            when {
+                expression { return shouldRunStage('OpenAI') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "OAI_RequestsProcessing"')
@@ -673,6 +781,9 @@ pipeline {
 			}
 		}
 		stage('Testing-ReportPortal') {
+            when {
+                expression { return shouldRunStage('ReportPortal') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_Tests.os" "RPortal_Authorization"')
@@ -703,4 +814,9 @@ pipeline {
 			}
 		}
 	}
+}
+
+def shouldRunStage(stageName) {
+    def config = readJSON text: env.STAGES_CONFIG
+    return config[stageName] == true
 }
