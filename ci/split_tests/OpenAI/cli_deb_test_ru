@@ -67,22 +67,21 @@ pipeline {
             when {
                 expression { return shouldRunStage('OpenAI') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "OAI_ОбработкаЗапросов"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "OAI_Ассистенты"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "OAI_РаботаСФайлами"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "OAI_РаботаСАудио"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "OAI_РаботаСМоделями"')
-			}
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'OAI_ОбработкаЗапросов'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'OAI_Ассистенты'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'OAI_РаботаСФайлами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'OAI_РаботаСАудио'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'OAI_РаботаСМоделями'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 
@@ -114,4 +113,8 @@ pipeline {
 def shouldRunStage(stageName) {
     def config = readJSON text: env.STAGES_CONFIG
     return config[stageName] == true
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
 }

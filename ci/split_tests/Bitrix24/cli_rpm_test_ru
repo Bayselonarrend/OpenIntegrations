@@ -66,55 +66,32 @@ pipeline {
             when {
                 expression { return shouldRunStage('Bitrix24') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_РаботаСТокеном"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_СерверноеВремя"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_РаботаСНовостями"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_РаботаСЗадачами"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_РаботаСКомментариями"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_РаботаСДиском"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_Канбан"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_УчетРабочегоВремени"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_РаботаСЧатами"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_РаботаСУведомлениями"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_РаботаСПолямиЗадач"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_УправлениеПодразделениями"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_УправлениеПользователями"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_РаботаСЛидами"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_РаботаСоСделками"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Б24_РаботаСКалендарями"')
-			}
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСТокеном'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_СерверноеВремя'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСНовостями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСЗадачами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСКомментариями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСДиском'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_Канбан'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_УчетРабочегоВремени'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСЧатами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСУведомлениями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСПолямиЗадач'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_УправлениеПодразделениями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_УправлениеПользователями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСЛидами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСоСделками'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСКалендарями'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 
@@ -146,4 +123,8 @@ pipeline {
 def shouldRunStage(stageName) {
     def config = readJSON text: env.STAGES_CONFIG
     return config[stageName] == true
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
 }

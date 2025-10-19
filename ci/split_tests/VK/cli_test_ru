@@ -146,67 +146,36 @@ pipeline {
             when {
                 expression { return shouldRunStage('VK') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_СоздатьСсылкуТокена"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_СоздатьУдалитьПост"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_СоздатьСоставнойПост"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_СоздатьОпрос"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_СохранитьУдалитьКартинку"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_СоздатьИсторию"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_МетодыОбсуждений"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_ЛайкРепостКоммент"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_ПолучитьСтатистику"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_ПолучитьСтатистикуПостов"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_СоздатьРекламнуюКампанию"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_ОтправитьСообщение"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_ПолучитьКатегорииТоваров"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_СоздатьТоварПодборку"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_СоздатьТоварСоСвойствами"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_ПолучитьСписокТоваров"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_ПолучитьСписокПодборок"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_ПолучитьСписокСвойств"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_ПолучитьСписокЗаказов"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "ВК_ЗагрузитьВидео"')
-			}
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьСсылкуТокена'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьУдалитьПост'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьСоставнойПост'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьОпрос'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СохранитьУдалитьКартинку'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьИсторию'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_МетодыОбсуждений'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ЛайкРепостКоммент'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ПолучитьСтатистику'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ПолучитьСтатистикуПостов'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьРекламнуюКампанию'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ОтправитьСообщение'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ПолучитьКатегорииТоваров'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьТоварПодборку'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьТоварСоСвойствами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ПолучитьСписокТоваров'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ПолучитьСписокПодборок'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ПолучитьСписокСвойств'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ПолучитьСписокЗаказов'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ЗагрузитьВидео'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 
@@ -238,4 +207,8 @@ pipeline {
 def shouldRunStage(stageName) {
     def config = readJSON text: env.STAGES_CONFIG
     return config[stageName] == true
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
 }

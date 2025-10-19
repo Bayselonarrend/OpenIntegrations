@@ -67,73 +67,38 @@ pipeline {
             when {
                 expression { return shouldRunStage('Telegram') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ПолучитьИнформациюБота"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ПолучитьОбновления"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_УстановитьWebhook"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ОтправитьТекстовоеСообщение"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ОтправитьКартинку"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ОтправитьВидео"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ОтправитьАудио"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ОтправитьДокумент"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ОтправитьГифку"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ОтправитьМедиагруппу"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ОтправитьМестоположение"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ОтправитьКонтакт"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ОтправитьОпрос"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ПереслатьСообщение"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_БанРазбан"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_СоздатьСсылкуПриглашение"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ЗакрепитьОткрепитьСообщение"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ПолучитьЧислоУчастников"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ПолучитьСписокАватаровФорума"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_СоздатьУдалитьТемуФорума"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_ИзменитьИмяГлавнойТемы"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os" "Телеграм_СкрытьПоказатьГлавнуюТему"')
-			}
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ПолучитьИнформациюБота'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ПолучитьОбновления'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_УстановитьWebhook'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьТекстовоеСообщение'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьКартинку'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьВидео'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьАудио'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьДокумент'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьГифку'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьМедиагруппу'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьМестоположение'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьКонтакт'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьОпрос'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ПереслатьСообщение'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_БанРазбан'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_СоздатьСсылкуПриглашение'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ЗакрепитьОткрепитьСообщение'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ПолучитьЧислоУчастников'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ПолучитьСписокАватаровФорума'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_СоздатьУдалитьТемуФорума'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ИзменитьИмяГлавнойТемы'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_СкрытьПоказатьГлавнуюТему'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 
@@ -165,4 +130,8 @@ pipeline {
 def shouldRunStage(stageName) {
     def config = readJSON text: env.STAGES_CONFIG
     return config[stageName] == true
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
 }

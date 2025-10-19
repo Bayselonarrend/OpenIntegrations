@@ -66,25 +66,22 @@ pipeline {
             when {
                 expression { return shouldRunStage('GreenAPI') }
             }
-			steps {			
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "GAPI_GroupManagement"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "GAPI_MessageSending"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "GAPI_NotificationsReceiving"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "GAPI_MessageQueue"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "GAPI_MessageLogs"')
-			}
-			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
-				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "GAPI_Account"')
-			}
+			steps {
+				script {
+					def tests = [
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GAPI_GroupManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GAPI_MessageSending'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GAPI_NotificationsReceiving'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GAPI_MessageQueue'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GAPI_MessageLogs'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GAPI_Account'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
 			}
 		}
 
@@ -116,4 +113,8 @@ pipeline {
 def shouldRunStage(stageName) {
     def config = readJSON text: env.STAGES_CONFIG
     return config[stageName] == true
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
 }
