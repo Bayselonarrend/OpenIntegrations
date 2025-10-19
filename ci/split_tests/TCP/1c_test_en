@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-TCP') {
+            when {
+                expression { return shouldRunStage('TCP') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

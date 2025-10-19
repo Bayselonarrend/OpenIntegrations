@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-YandexMetrika') {
+            when {
+                expression { return shouldRunStage('YandexMetrika') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-GoogleSheets') {
+            when {
+                expression { return shouldRunStage('GoogleSheets') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {

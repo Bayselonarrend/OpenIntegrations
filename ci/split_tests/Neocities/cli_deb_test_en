@@ -12,6 +12,16 @@ pipeline {
     }
 
 	stages {
+
+        stage('Read stages config') {
+            steps {
+                script {
+                    def configText = readFile './service/tests_config.json'
+                    env.STAGES_CONFIG = configText
+                }
+            }
+        }
+
         stage('Remove oint') {
             steps {
                 script {
@@ -54,6 +64,9 @@ pipeline {
 		}
 
 		stage('Testing-Neocities') {
+            when {
+                expression { return shouldRunStage('Neocities') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
 				runCommand('1testrunner -run "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os" "NC_FilesManagement"')
@@ -87,4 +100,9 @@ pipeline {
 			}
 		}
 	}
+}
+
+def shouldRunStage(stageName) {
+    def config = readJSON text: env.STAGES_CONFIG
+    return config[stageName] == true
 }

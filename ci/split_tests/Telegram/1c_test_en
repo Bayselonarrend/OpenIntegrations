@@ -62,6 +62,9 @@ pipeline {
 		}
 
 		stage('Testing-Telegram') {
+            when {
+                expression { return shouldRunStage('Telegram') }
+            }
 			steps {			
 			catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
                 script {
