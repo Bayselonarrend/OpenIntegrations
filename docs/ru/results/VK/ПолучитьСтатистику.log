@@ -2,11 +2,11 @@
  "response": [
   {
    "activity": {
-    "comments": 8,
-    "likes": 8
+    "comments": 1,
+    "likes": 1
    },
-   "period_from": 1760400000,
-   "period_to": 1760486399,
+   "period_from": 1760832000,
+   "period_to": 1760918399,
    "reach": {
     "age": [
      {
@@ -141,11 +141,11 @@
   },
   {
    "activity": {
-    "comments": 3,
-    "likes": 3
+    "comments": 2,
+    "likes": 2
    },
-   "period_from": 1760313600,
-   "period_to": 1760399999,
+   "period_from": 1760745600,
+   "period_to": 1760831999,
    "reach": {
     "age": [
      {
@@ -272,17 +272,10 @@
    },
    "visitors": {
     "cities": [],
-    "countries": [
-     {
-      "code": "SC",
-      "count": 1,
-      "name": "Сейшелы",
-      "value": 175
-     }
-    ],
+    "countries": [],
     "mobile_views": 0,
-    "views": 1,
-    "visitors": 1
+    "views": 0,
+    "visitors": 0
    }
   }
  ]
