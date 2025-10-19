@@ -100,3 +100,7 @@ def shouldRunStage(stageName) {
     def config = readJSON text: env.STAGES_CONFIG
     return config[stageName] == true
 }
+
+def runLibraryTest(String configPath, String libraryName) {
+    runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
+}
