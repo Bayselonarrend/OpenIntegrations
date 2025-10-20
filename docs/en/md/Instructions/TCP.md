@@ -38,7 +38,3 @@ For a simple scenario with standard settings, there is also the `ProcessRequest`
 ## TLS
 
 The library supports TLS mode. To enable it, you must configure TLS settings using the `GetTlsSettings` function and pass them as the corresponding parameter to the `CreateConnection` or `ProcessRequest` function. If the TLS parameter is not provided when calling these functions, the connection will be initialized in an unsecured mode.
-
-## Compatibility
-
-Technically, the client implementation is a Native component in Rust. It comes in a zip archive format, and, in theory, should work on all available platforms: x86 and x64 Windows and Linux. The actual testing was done on Windows x64 and, cossentially (via OneScript), on Linux x64

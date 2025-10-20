@@ -30,7 +30,3 @@ Typically, control via RCON is available on servers for games such as:
  - etc.
 
 This library provides two main functions for operation: `CreateConnection` for connection and authorisation on the server, and `ExecuteCommand` for performing actions. It is also possible to execute single commands without creating a preliminary connection, passing connection parameters to the `ExecuteCommand` method (in this case the connection will be opened and closed within the function, the only option for CLI version).
-
-## Compatibility
-
-Technically, the client implementation is a Native component in Rust. It comes in a zip archive format, and, in theory, should work on all available platforms: x86 and x64 Windows and Linux. The actual testing was done on Windows x64 and, cossentially (via OneScript), on Linux x64
