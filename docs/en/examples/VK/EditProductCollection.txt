@@ -1,6 +1,6 @@
 ﻿    Parameters = GetVKParameters();
 
     Name      = "EditedCollection";
-    Selection = "142";
+    Selection = FunctionParameters["VK_MarketAlbumID"];
 
     Result = OPI_VK.EditProductCollection(Name, Selection, , , , Parameters);

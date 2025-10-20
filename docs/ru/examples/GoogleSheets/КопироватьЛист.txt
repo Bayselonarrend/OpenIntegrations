@@ -1,6 +1,6 @@
-﻿    Токен  = "ya29.a0AQQ_BDT_CMAJqFIcOfzUrSDYRQ2mZ6TLDIGN-tv27R3mPj8iFcUgZ-x-aipMSCOTXMfqqTzT2aRN4TCe8MFrBD2tInauCN39ueJtc4LHbj71tbNlq9LdkejgF...";
-    Откуда = "1b-FXTgorLebbivo4B969jJzrnoMurXNYneyv9cPl7QU";
-    Куда   = "1M1g41OHuOIeJVALo6g51qr-BOUeckanlHqshges2yMk";
-    Лист   = "1993801941";
+﻿    Токен  = ПараметрыФункции["Google_Token"];
+    Откуда = ПараметрыФункции["GS_Spreadsheet"];
+    Куда   = ПараметрыФункции["GS_Spreadsheet2"];
+    Лист   = ПараметрыФункции["GS_Sheet"];
 
     Результат = OPI_GoogleSheets.КопироватьЛист(Токен, Откуда, Куда, Лист);

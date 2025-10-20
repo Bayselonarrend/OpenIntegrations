@@ -1,8 +1,8 @@
-﻿    Token  = "6129457865:AAFyzNYOAFbu...";
-    ChatID = "461699897";
-    Text   = "Строковое значение";
-    Image  = "https://hut.openintegrations.dev/test_data/picture.jpg";
-    Video  = "https://hut.openintegrations.dev/test_data/video.mp4";
+﻿    Token  = FunctionParameters["Telegram_Token"];
+    ChatID = FunctionParameters["Telegram_ChatID"];
+    Text   = FunctionParameters["String"];
+    Image  = FunctionParameters["Picture"];
+    Video  = FunctionParameters["Video"];
 
     ImagePath = GetTempFileName("png");
     CopyFile(Image, ImagePath);

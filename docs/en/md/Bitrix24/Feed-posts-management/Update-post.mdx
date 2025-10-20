@@ -38,19 +38,19 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
 ```bsl title="1C:Enterprise/OneScript code example"
     Text   = "New post text";
     Title  = "New post title";
-    Image1 = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
-    PostID = "3208";
+    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    PostID = FunctionParameters["Bitrix24_PostID"];
 
     Files = New Map;
     Files.Insert("1.png", Image1);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    URL = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title);
 
-    URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "3b1af468006e9f06006b12e400000001000...";
-    PostID = "3206";
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    PostID = FunctionParameters["Bitrix24_HookPostID"];
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title, Token);
 ```

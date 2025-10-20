@@ -33,15 +33,15 @@ Method at API documentation: [ForwardMessages](https://green-api.com/docs/api/se
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    ApiUrl           = "https://7105.api.greenapi.com";
-    MediaUrl         = "https://7105.media.greenapi.com";
-    IdInstance       = "71051...";
-    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
     From   = "11001234567@c.us";
-    Target = "120363410406221140@g.us";
+    Target = FunctionParameters["GreenAPI_TestGroupID"];
 
-    Message = "BAE5C93FC2430568";
+    Message = FunctionParameters["GreenAPI_MessageID"];
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.ForwardMessages(AccessParameters, From, Target, Message);

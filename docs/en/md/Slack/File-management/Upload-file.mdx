@@ -34,9 +34,9 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C06UFNUTKUL";
-    File    = "https://hut.openintegrations.dev/test_data/document.docx"; // URL, Binary Data or File path
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
+    File    = FunctionParameters["Document"]; // URL, Binary Data or File path
 
     FileName = "megadoc.docx";
     Title    = "NewFile";

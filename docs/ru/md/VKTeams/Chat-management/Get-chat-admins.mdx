@@ -31,8 +31,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен  = "001.3501506236.091...";
-    IDЧата = "AoLI0egLWBSLR1Ngn2w";
+    Токен  = ПараметрыФункции["VkTeams_Token"];
+    IDЧата = ПараметрыФункции["VkTeams_ChatID"];
 
     Результат = OPI_VKTeams.ПолучитьАдминистраторовЧата(Токен, IDЧата);
 ```

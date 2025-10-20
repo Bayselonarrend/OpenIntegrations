@@ -32,11 +32,11 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "f1e616e20ab5893b...";
+    Токен = ПараметрыФункции["NC_Token"];
 
-    Картинка1 = "https://hut.openintegrations.dev/test_data/picture.jpg";  // URL, Путь или Двоичные данные
-    Картинка2 = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Путь или Двоичные данные
-    Гифка     = "https://hut.openintegrations.dev/test_data/animation.gif";      // URL, Путь или Двоичные данные
+    Картинка1 = ПараметрыФункции["Picture"];  // URL, Путь или Двоичные данные
+    Картинка2 = ПараметрыФункции["Picture2"]; // URL, Путь или Двоичные данные
+    Гифка     = ПараметрыФункции["Gif"];      // URL, Путь или Двоичные данные
 
     СоответствиеФайлов = Новый Соответствие;
     СоответствиеФайлов.Вставить("test/pic1.png", Картинка1);

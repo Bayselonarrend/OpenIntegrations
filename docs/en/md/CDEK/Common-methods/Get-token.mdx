@@ -32,8 +32,8 @@ Method at API documentation: [Client authorization](https://api-docs.cdek.ru/338
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Account  = "wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP";
-    Password = "RmAmgvSgSl...";
+    Account  = FunctionParameters["CDEK_Account"];
+    Password = FunctionParameters["CDEK_Password"];
 
     Result = OPI_CDEK.GetToken(Account, Password, True);
 ```

@@ -1,12 +1,12 @@
-﻿    StageID = "3098";
+﻿    StageID = FunctionParameters["Bitrix24_HookStageID"];
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    URL = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.DeleteKanbanStage(URL, StageID, True);
 
-    StageID = "3100";
+    StageID = FunctionParameters["Bitrix24_StageID"];
 
-    URL   = "b24-ar17wx.bitrix24.by";
-    Token = "3b1af468006e9f06006b12e400000001000...";
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
 
     Result = OPI_Bitrix24.DeleteKanbanStage(URL, StageID, , Token);

@@ -30,8 +30,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C06UFNUTKUL";
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_Channel"];
 
     // Text
 
@@ -41,7 +41,7 @@ import TabItem from '@theme/TabItem';
     // With attachments (picture block in the example)
 
     Text       = "Message with picture";
-    Image      = "https://hut.openintegrations.dev/test_data/picture.jpg";
+    Image      = FunctionParameters["Picture"];
     BlockArray = New Array;
 
     Block = OPI_Slack.GenerateImageBlock(Image, "Image");

@@ -1,4 +1,4 @@
-﻿    Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
-    TagID = "320348";
+﻿    Token = FunctionParameters["Metrika_Token"];
+    TagID = FunctionParameters["Metrika_LabelID"];
 
     Result = OPI_YandexMetrika.GetTag(Token, TagID);

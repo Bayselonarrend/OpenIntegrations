@@ -1,5 +1,5 @@
-﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID = "3272";
+﻿    URL    = FunctionParameters["Bitrix24_URL"];
+    ChatID = FunctionParameters["Bitrix24_HookChatID"];
 
     OPI_TypeConversion.GetLine(ChatID);
 
@@ -7,8 +7,8 @@
 
     Result = OPI_Bitrix24.SendWritingNotification(URL, ChatString);
 
-    URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "3b1af468006e9f06006b12e400000001000...";
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
     UserID = 10;
 
     Result = OPI_Bitrix24.SendWritingNotification(URL, UserID, Token);

@@ -1,5 +1,5 @@
-﻿    URL   = "https://hut.openintegrations.dev/localai/";
-    Токен = "12We...";
+﻿    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
 
     Модель    = "sd-1.5-ggml";
     Описание  = OPI_OpenAI.ПолучитьСтруктуруОписанияКартинок("Yellow alpaca", 1, , "64x64");

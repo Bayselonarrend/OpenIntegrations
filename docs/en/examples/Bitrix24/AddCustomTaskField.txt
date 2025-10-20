@@ -1,12 +1,12 @@
-﻿    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+﻿    URL = FunctionParameters["Bitrix24_URL"];
 
     Type = "date";
     Name = "BIRTHDAY_FIELD";
 
     Result = OPI_Bitrix24.AddCustomTaskField(URL, Type, Name);
 
-    URL   = "b24-ar17wx.bitrix24.by";
-    Token = "3b1af468006e9f06006b12e400000001000...";
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
 
     Type       = "string";
     Name       = "TEXT_FIELD";

@@ -28,9 +28,9 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C09M6TB30CV";
-    User    = "U06UABH3APP";
+    Token   = FunctionParameters["Slack_Token"];
+    Channel = FunctionParameters["Slack_NewChannel"];
+    User    = FunctionParameters["Slack_User"];
 
     Result = OPI_Slack.KickUserFromChannel(Token, Channel, User);
 ```

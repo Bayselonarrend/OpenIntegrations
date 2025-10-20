@@ -1,8 +1,8 @@
-﻿    Token = "f1e616e20ab5893b...";
+﻿    Token = FunctionParameters["NC_Token"];
 
-    Image1 = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
-    Image2 = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Path or Binary Data
-    GIF    = "https://hut.openintegrations.dev/test_data/animation.gif"; // URL, Path or Binary Data
+    Image1 = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image2 = FunctionParameters["Picture2"]; // URL, Path or Binary Data
+    GIF    = FunctionParameters["Gif"]; // URL, Path or Binary Data
 
     FileMapping = New Map;
     FileMapping.Insert("test/pic1.png", Image1);

@@ -1,4 +1,4 @@
-﻿    Токен     = "ya29.a0AQQ_BDT_CMAJqFIcOfzUrSDYRQ2mZ6TLDIGN-tv27R3mPj8iFcUgZ-x-aipMSCOTXMfqqTzT2aRN4TCe8MFrBD2tInauCN39ueJtc4LHbj71tbNlq9LdkejgF...";
-    Календарь = "cece9cf2ef513ea9209ec0e4b5029809c52153f74ad18d53e40d362bcb1f297a@group.calendar.google.com";
+﻿    Токен     = ПараметрыФункции["Google_Token"];
+    Календарь = ПараметрыФункции["Google_NewCalendarID"];
 
     Результат = OPI_GoogleCalendar.ПолучитьСписокСобытий(Токен, Календарь);

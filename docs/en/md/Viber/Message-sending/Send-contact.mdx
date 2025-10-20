@@ -33,14 +33,14 @@ import TabItem from '@theme/TabItem';
     Name  = "Petr Petrov";
     Phone = "+123456789";
 
-    UserID           = "d3jxe61Z4W73nmNkjYGgZg==";
-    Token            = "523b5b25ed27e6ec-fdf013e4...";
+    UserID           = FunctionParameters["Viber_UserID"];
+    Token            = FunctionParameters["Viber_Token"];
     SendingToChannel = False;
 
     Result = OPI_Viber.SendContact(Token, Name, Phone, UserID, SendingToChannel);
 
-    UserID           = "tMNGhftyUPrB3r1lD+bT4g==";
-    Token            = "523b58ba82afffaa-7ef3b426...";
+    UserID           = FunctionParameters["Viber_ChannelAdminID"];
+    Token            = FunctionParameters["Viber_ChannelToken"];
     SendingToChannel = True;
 
     Result = OPI_Viber.SendContact(Token, Name, Phone, UserID, SendingToChannel);

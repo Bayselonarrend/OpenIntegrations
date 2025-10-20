@@ -1,7 +1,7 @@
 ﻿    Parameters = GetTwitterAuthData();
 
-    Image1 = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Binary Data or File path
-    Image2 = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Binary Data or File path
+    Image1 = FunctionParameters["Picture"]; // URL, Binary Data or File path
+    Image2 = FunctionParameters["Picture2"]; // URL, Binary Data or File path
 
     ImageArray = New Array;
     ImageArray.Add(Image1);

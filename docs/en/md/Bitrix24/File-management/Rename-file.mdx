@@ -36,14 +36,14 @@ Method at API documentation: [disk.file.rename](https://dev.1c-bitrix.ru/rest_he
     Name      = "New file name.jpg";
     Filename2 = "New file name 2.jpg";
 
-    FileID2 = "45052";
-    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    FileID2 = FunctionParameters["Bitrix24_HookFileID"];
+    URL     = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.RenameFile(URL, FileID2, Filename2);
 
-    FileID = "45054";
-    URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "3b1af468006e9f06006b12e400000001000...";
+    FileID = FunctionParameters["Bitrix24_FileID"];
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
 
     Result = OPI_Bitrix24.RenameFile(URL, FileID, Name, Token);
 ```

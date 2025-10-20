@@ -35,8 +35,8 @@ Method at API documentation: [Create chat completion](https://platform.openai.co
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL   = "https://hut.openintegrations.dev/localai/";
-    Token = "12We...";
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
 
     // Text messages
 
@@ -52,7 +52,7 @@ Method at API documentation: [Create chat completion](https://platform.openai.co
     // Pictures
 
     Model       = "moondream2-20250414";
-    File        = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+    File        = FunctionParameters["Picture"]; // URL, Path or Binary Data
     FileName    = StrTemplate("%1.png", String(New UUID()));
     Destination = "user_data";
 

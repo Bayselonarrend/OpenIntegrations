@@ -1,4 +1,4 @@
-﻿    URL = "https://bin.openintegrations.dev";
+﻿    URL = ПараметрыФункции["HTTP_URL"];
     URL = URL + "/post";
 
     Данные = Новый Структура("Поле1,Поле2", "10", "Текст");

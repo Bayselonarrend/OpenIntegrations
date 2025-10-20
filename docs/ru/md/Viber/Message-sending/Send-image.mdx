@@ -31,16 +31,16 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Описание = "Тестовое сообщение";
-    URL      = "https://hut.openintegrations.dev/test_data/picture.jpg";
+    URL      = ПараметрыФункции["Picture"];
 
-    IDПользователя = "d3jxe61Z4W73nmNkjYGgZg==";
-    Токен          = "523b5b25ed27e6ec-fdf013e4...";
+    IDПользователя = ПараметрыФункции["Viber_UserID"];
+    Токен          = ПараметрыФункции["Viber_Token"];
     ОтправкаВКанал = Ложь;
 
     Результат = OPI_Viber.ОтправитьКартинку(Токен, URL, IDПользователя, ОтправкаВКанал, Описание);
 
-    IDПользователя = "tMNGhftyUPrB3r1lD+bT4g==";
-    Токен          = "523b58ba82afffaa-7ef3b426...";
+    IDПользователя = ПараметрыФункции["Viber_ChannelAdminID"];
+    Токен          = ПараметрыФункции["Viber_ChannelToken"];
     ОтправкаВКанал = Истина;
 
     Результат = OPI_Viber.ОтправитьКартинку(Токен, URL, IDПользователя, ОтправкаВКанал, Описание);

@@ -1,5 +1,5 @@
-﻿    Token      = "ya29.a0AQQ_BDT_CMAJqFIcOfzUrSDYRQ2mZ6TLDIGN-tv27R3mPj8iFcUgZ-x-aipMSCOTXMfqqTzT2aRN4TCe8MFrBD2tInauCN39ueJtc4LHbj71tbNlq9LdkejgF...";
-    Identifier = "165Rrx54VIA4Wl2nWic20rdfuJFl7MynQ";
-    CommentID  = "AAABsgd4k1M";
+﻿    Token      = FunctionParameters["Google_Token"];
+    Identifier = FunctionParameters["GD_File"];
+    CommentID  = FunctionParameters["GD_Comment"];
 
     Result = OPI_GoogleDrive.GetComment(Token, Identifier, CommentID);

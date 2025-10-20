@@ -1,4 +1,4 @@
-﻿    URL = "https://bin.openintegrations.dev";
+﻿    URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
 
     ParametersStructure = New Structure;

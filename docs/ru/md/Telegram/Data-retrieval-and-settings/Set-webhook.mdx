@@ -31,8 +31,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "6129457865:AAFyzNYOAFbu...";
-    URL   = "https://api.athenaeum.digital/opi/hs/twitter";
+    Токен = ПараметрыФункции["Telegram_Token"];
+    URL   = ПараметрыФункции["Telegram_URL"];
 
     Результат = OPI_Telegram.УстановитьWebhook(Токен, URL);
 ```

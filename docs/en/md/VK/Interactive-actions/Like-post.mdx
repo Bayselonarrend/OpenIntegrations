@@ -29,7 +29,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Parameters = GetVKParameters();
-    PostID     = "10106";
+    PostID     = FunctionParameters["VK_PostID"];
 
     Result = OPI_VK.LikePost(PostID, , Parameters);
 ```

@@ -32,9 +32,9 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "6129457865:AAFyzNYOAFbu...";
-    Чат   = "-1001971186208";
-    Тема  = "12139";
+    Токен = ПараметрыФункции["Telegram_Token"];
+    Чат   = ПараметрыФункции["Telegram_ForumID"];
+    Тема  = ПараметрыФункции["Telegram_TopicID"];
 
     Результат = OPI_Telegram.УдалитьТемуФорума(Токен, Чат, Тема);
 ```

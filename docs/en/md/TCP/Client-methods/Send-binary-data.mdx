@@ -36,7 +36,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Address    = "45.79.112.203:4242";
+    Address    = FunctionParameters["TCP_Address"];
     Connection = OPI_TCP.CreateConnection(Address);
     Message    = "Hello server!" + Chars.LF;
     Data       = GetBinaryDataFromString(Message);

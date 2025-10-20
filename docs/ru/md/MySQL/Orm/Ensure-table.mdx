@@ -35,9 +35,9 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Адрес  = "127.0.0.1";
+    Адрес  = ПараметрыФункции["PG_IP"];
     Логин  = "bayselonarrend";
-    Пароль = "12we...";
+    Пароль = ПараметрыФункции["PG_Password"];
     База   = "testbase1";
 
     TLS = Истина;

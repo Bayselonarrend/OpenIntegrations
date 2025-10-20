@@ -27,8 +27,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен        = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Пользователь = "ed71865a-9891-46bc-86cd-a92aa499cfdb";
+    Токен        = ПараметрыФункции["Notion_Token"];
+    Пользователь = ПараметрыФункции["Notion_User"];
 
     Результат = OPI_Notion.ПолучитьДанныеПользователя(Токен, Пользователь);
 ```
