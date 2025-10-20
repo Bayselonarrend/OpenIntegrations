@@ -1,6 +1,6 @@
-﻿    Token     = "ya29.a0AQQ_BDT_CMAJqFIcOfzUrSDYRQ2mZ6TLDIGN-tv27R3mPj8iFcUgZ-x-aipMSCOTXMfqqTzT2aRN4TCe8MFrBD2tInauCN39ueJtc4LHbj71tbNlq9LdkejgF...";
-    Image     = "https://hut.openintegrations.dev/test_data/picture.jpg";
-    Directory = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
+﻿    Token     = FunctionParameters["Google_Token"];
+    Image     = FunctionParameters["Picture"];
+    Directory = FunctionParameters["GD_Catalog"];
 
     Clear       = False;
     Description = OPI_GoogleDrive.GetFileDescription(Clear);

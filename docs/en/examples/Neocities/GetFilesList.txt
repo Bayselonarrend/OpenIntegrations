@@ -1,4 +1,4 @@
-﻿    Token = "f1e616e20ab5893b...";
+﻿    Token = FunctionParameters["NC_Token"];
     Path  = "test";
 
     Result = OPI_Neocities.GetFilesList(Token, Path);

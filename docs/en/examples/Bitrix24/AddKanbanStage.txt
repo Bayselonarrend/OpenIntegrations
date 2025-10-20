@@ -1,15 +1,15 @@
 ﻿    Name  = "New stage";
     Color = "0026FF";
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    URL = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.AddKanbanStage(URL, Name, Color, 6);
 
     Name  = "New stage 2";
     Color = "0026FF";
 
-    URL         = "b24-ar17wx.bitrix24.by";
-    Token       = "3b1af468006e9f06006b12e400000001000...";
+    URL         = FunctionParameters["Bitrix24_Domain"];
+    Token       = FunctionParameters["Bitrix24_Token"];
     PrevStageID = Result["result"];
 
     Result = OPI_Bitrix24.AddKanbanStage(URL, Name, Color, PrevStageID, , True, Token);

@@ -1,9 +1,9 @@
-﻿    Image = "https://hut.openintegrations.dev/test_data/picture.jpg";
+﻿    Image = FunctionParameters["Picture"];
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
-    Address  = "127.0.0.1";
+    Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
-    Password = "12we...";
+    Password = FunctionParameters["PG_Password"];
     Base     = "test_data";
 
     TLS = True;
@@ -61,7 +61,7 @@
 
     // SQL query from file
 
-    SQLFile = "https://hut.openintegrations.dev/test_data/TEST_DATA2.sql"; // Binary Data, URL or path to file
+    SQLFile = FunctionParameters["SQL2"]; // Binary Data, URL or path to file
 
     Result = OPI_MySQL.ExecuteSQLQuery(SQLFile, , , Connection);
 

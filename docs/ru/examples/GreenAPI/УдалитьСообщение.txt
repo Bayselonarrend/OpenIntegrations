@@ -1,10 +1,10 @@
-﻿    ApiUrl           = "https://7105.api.greenapi.com";
-    MediaUrl         = "https://7105.media.greenapi.com";
-    IdInstance       = "71051...";
-    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+﻿    ApiUrl           = ПараметрыФункции["GreenAPI_ApiURL"];
+    MediaUrl         = ПараметрыФункции["GreenAPI_MediaURL"];
+    IdInstance       = ПараметрыФункции["GreenAPI_IdInstance"];
+    ApiTokenInstance = ПараметрыФункции["GreenAPI_Token"];
 
-    IDЧата      = "120363410406221140@g.us";
-    IDСообщения = "BAE5C93FC2430568";
+    IDЧата      = ПараметрыФункции["GreenAPI_TestGroupID"];
+    IDСообщения = ПараметрыФункции["GreenAPI_MessageID"];
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Результат        = OPI_GreenAPI.УдалитьСообщение(ПараметрыДоступа, IDЧата, IDСообщения);

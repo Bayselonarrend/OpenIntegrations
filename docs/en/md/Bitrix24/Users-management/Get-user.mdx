@@ -32,14 +32,14 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    UserID = "2840";
+    URL    = FunctionParameters["Bitrix24_URL"];
+    UserID = FunctionParameters["Bitrix24_HookUserID"];
 
     Result = OPI_Bitrix24.GetUser(URL, UserID);
 
-    URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "3b1af468006e9f06006b12e400000001000...";
-    UserID = "2842";
+    URL    = FunctionParameters["Bitrix24_Domain"];
+    Token  = FunctionParameters["Bitrix24_Token"];
+    UserID = FunctionParameters["Bitrix24_UserID"];
 
     Result = OPI_Bitrix24.GetUser(URL, UserID, Token);
 ```

@@ -1,2 +1,2 @@
-﻿    Application = "51694790";
+﻿    Application = FunctionParameters["VK_AppID"];
     Result      = OPI_VK.CreateTokenRetrievalLink(Application);

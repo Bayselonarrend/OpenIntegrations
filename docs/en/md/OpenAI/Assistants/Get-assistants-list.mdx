@@ -34,8 +34,8 @@ Method at API documentation: [List assistants](https://platform.openai.com/docs/
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL   = "https://hut.openintegrations.dev/localai/";
-    Token = "12We...";
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
 
     Count                = 2;
     AdditionalParameters = New Structure("after,order", "asst_2", "desc");

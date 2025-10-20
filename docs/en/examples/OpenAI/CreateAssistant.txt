@@ -1,5 +1,5 @@
-﻿    URL   = "https://hut.openintegrations.dev/localai/";
-    Token = "12We...";
+﻿    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
 
     Instruction = "You are a personal math tutor. When asked a question, write and run Python code to answer the question.";
     Model       = "smolvlm-256m-instruct";

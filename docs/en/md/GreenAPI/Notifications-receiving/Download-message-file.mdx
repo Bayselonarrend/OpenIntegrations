@@ -32,13 +32,13 @@ Method at API documentation: [DownloadFile](https://green-api.com/docs/api/recei
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    ApiUrl           = "https://7105.api.greenapi.com";
-    MediaUrl         = "https://7105.media.greenapi.com";
-    IdInstance       = "71051...";
-    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
+    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
-    ChatID    = "120363410406221140@g.us";
-    MessageID = "BAE502B432F35528";
+    ChatID    = FunctionParameters["GreenAPI_TestGroupID"];
+    MessageID = FunctionParameters["GreenAPI_FileMessageID"];
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.DownloadMessageFile(AccessParameters, ChatID, MessageID);

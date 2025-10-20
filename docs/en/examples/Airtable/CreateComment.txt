@@ -1,7 +1,7 @@
-﻿    Token  = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base   = "appuRWfDpxp26HYXm";
-    Table  = "tblcaCcQHtjeUgXBC";
-    Record = "recGvsPnfuQYWG29H";
+﻿    Token  = FunctionParameters["Airtable_Token"];
+    Base   = FunctionParameters["Airtable_Base"];
+    Table  = FunctionParameters["Airtable_Table"];
+    Record = FunctionParameters["Airtable_Record"];
     Text   = "TestComment";
 
     Result = OPI_Airtable.CreateComment(Token, Base, Table, Record, Text);
