@@ -1,4 +1,4 @@
-﻿    Token     = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
-    CounterID = "104700794";
+﻿    Token     = FunctionParameters["Metrika_Token"];
+    CounterID = FunctionParameters["Metrika_CounterID"];
 
     Result = OPI_YandexMetrika.RestoreCounter(Token, CounterID);

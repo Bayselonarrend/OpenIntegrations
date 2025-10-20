@@ -1,6 +1,6 @@
-﻿    URL            = "tests.openintegrations.dev";
-    Токен          = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MDkxMjMyOSwiaWF0IjoxNzYwODI1OTI5LCJqdGkiOiIxMTdkNmY5Yy0xN2...";
-    IDПользователя = "1";
+﻿    URL            = ПараметрыФункции["RPortal_URL"];
+    Токен          = ПараметрыФункции["RPortal_TempToken"];
+    IDПользователя = ПараметрыФункции["RPortal_UserID"];
     ИмяКлюча       = "test_key";
 
     Результат = OPI_ReportPortal.ПолучитьПостоянныйТокен(URL, Токен, IDПользователя, ИмяКлюча);

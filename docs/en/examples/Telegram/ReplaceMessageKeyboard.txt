@@ -1,6 +1,6 @@
-﻿    Token     = "6129457865:AAFyzNYOAFbu...";
-    ChatID    = "461699897";
-    MessageID = "17217";
+﻿    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    MessageID = FunctionParameters["Telegram_MessageID"];
 
     ButtonArray = New Array;
     ButtonArray.Add("New button 3");

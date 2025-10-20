@@ -40,9 +40,9 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL       = "storage-155.s3hoster.by";
-    AccessKey = "BRN5RKJE67...";
-    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
+    URL       = FunctionParameters["S3_URL"];
+    AccessKey = FunctionParameters["S3_AccessKey"];
+    SecretKey = FunctionParameters["S3_SecretKey"];
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
@@ -51,7 +51,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
     Directory = True; // Formation URL in path-style
     Bucket = "opi-dirbucket3";
-    Entity = "https://hut.openintegrations.dev/test_data/song.mp3"; // URL, Path or Binary Data
+    Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
     Entity = OPI_HTTPRequests.Get(Entity);
 
     Result = OPI_S3.InitPartsUpload(Name, Bucket, BasicData, , Directory);

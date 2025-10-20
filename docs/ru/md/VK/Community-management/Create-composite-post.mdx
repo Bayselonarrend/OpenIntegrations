@@ -34,8 +34,8 @@ import TabItem from '@theme/TabItem';
     Текст     = "Пост из автотеста";
     URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
-    Видео    = "https://hut.openintegrations.dev/test_data/video.mp4";   // URL, Путь или Двоичные данные
+    Картинка = ПараметрыФункции["Picture"]; // URL, Путь или Двоичные данные
+    Видео    = ПараметрыФункции["Video"];   // URL, Путь или Двоичные данные
 
     ИВФ = ПолучитьИмяВременногоФайла("png");
     КопироватьФайл(Картинка, ИВФ);

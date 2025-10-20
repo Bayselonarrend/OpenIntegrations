@@ -31,8 +31,8 @@ Method at API documentation: [GET /files/getInfo](https://teams.vk.com/botapi/#/
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token  = "001.3501506236.091...";
-    FileID = "YyTKnJRpsBq8PAnsFE05FF68f40d7c1bd";
+    Token  = FunctionParameters["VkTeams_Token"];
+    FileID = FunctionParameters["VkTeams_FileID"];
 
     Result = OPI_VKTeams.GetFileInformation(Token, FileID);
 ```

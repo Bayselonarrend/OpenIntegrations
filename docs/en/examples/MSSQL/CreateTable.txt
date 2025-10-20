@@ -1,6 +1,6 @@
-﻿    Address  = "127.0.0.1";
+﻿    Address  = FunctionParameters["PG_IP"];
     Login    = "SA";
-    Password = "12we...";
+    Password = FunctionParameters["PG_Password"];
     Base     = "testbase1";
 
     TLSSettings      = OPI_MSSQL.GetTLSSettings(True);

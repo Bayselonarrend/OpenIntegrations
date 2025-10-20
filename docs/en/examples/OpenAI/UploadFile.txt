@@ -1,7 +1,7 @@
-﻿    URL   = "https://hut.openintegrations.dev/localai/";
-    Token = "12We...";
+﻿    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
 
-    File = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+    File = FunctionParameters["Picture"]; // URL, Path or Binary Data
 
     FileName    = StrTemplate("%1.png", String(New UUID()));
     Destination = "assistants";

@@ -1,4 +1,4 @@
-﻿    Домен    = "b24-ar17wx.bitrix24.by";
-    ClientID = "local.6667fc928a50a9.70414732";
+﻿    Домен    = ПараметрыФункции["Bitrix24_Domain"];
+    ClientID = ПараметрыФункции["Bitrix24_ClientID"];
 
     Результат = OPI_Bitrix24.ПолучитьСсылкуАвторизацииПриложения(Домен, ClientID);

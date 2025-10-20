@@ -41,12 +41,12 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Если OPI_Инструменты.ЭтоWindows() Тогда
-        Расширение = "https://hut.openintegrations.dev/test_data/uuid.dll";      // URL, Путь или Двоичные данные
+        Расширение = ПараметрыФункции["SQLite_Ext"];      // URL, Путь или Двоичные данные
     Иначе
-        Расширение = "https://hut.openintegrations.dev/test_data/uuid.so"; // URL, Путь или Двоичные данные
+        Расширение = ПараметрыФункции["SQLite_ExtLinux"]; // URL, Путь или Двоичные данные
     КонецЕсли;
 
-    База       = "C:\Users\bayse\AppData\Local\Temp\v8_2F49_2c.sqlite";
+    База       = ПараметрыФункции["SQLite_DB"];
     ТочкаВхода = "sqlite3_uuid_init";
 
     Соединение = OPI_SQLite.ОткрытьСоединение(База);

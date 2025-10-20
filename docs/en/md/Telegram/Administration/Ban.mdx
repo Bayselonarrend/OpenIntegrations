@@ -32,9 +32,9 @@ Method at API documentation: [banChatMember](https://core.telegram.org/bots/api#
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token     = "6129457865:AAFyzNYOAFbu...";
-    UserID    = "461699897";
-    ChannelID = "@testsichee";
+    Token     = FunctionParameters["Telegram_Token"];
+    UserID    = FunctionParameters["Telegram_ChatID"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
 
     Result = OPI_Telegram.Ban(Token, ChannelID, UserID);
 ```

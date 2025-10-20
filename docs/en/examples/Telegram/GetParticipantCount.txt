@@ -1,4 +1,4 @@
-﻿    Token     = "6129457865:AAFyzNYOAFbu...";
-    ChannelID = "@testsichee";
+﻿    Token     = FunctionParameters["Telegram_Token"];
+    ChannelID = FunctionParameters["Telegram_ChannelID"];
 
     Result = OPI_Telegram.GetParticipantCount(Token, ChannelID);

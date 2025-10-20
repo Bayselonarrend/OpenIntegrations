@@ -1,4 +1,4 @@
-﻿    Login    = "2athenaeum";
-    Password = "Rit...";
+﻿    Login    = FunctionParameters["NC_Login"];
+    Password = FunctionParameters["NC_Password"];
 
     Result = OPI_Neocities.GetToken(Login, Password);

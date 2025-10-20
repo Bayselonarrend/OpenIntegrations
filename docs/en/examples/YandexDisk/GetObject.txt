@@ -1,4 +1,4 @@
-﻿    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
-    Path  = "/ae91ec99-6b31-4000-902d-6938d75d9500.png";
+﻿    Token = FunctionParameters["YandexDisk_Token"];
+    Path  = FunctionParameters["YandexDisk_FileByURLPath"];
 
     Result = OPI_YandexDisk.GetObject(Token, Path);

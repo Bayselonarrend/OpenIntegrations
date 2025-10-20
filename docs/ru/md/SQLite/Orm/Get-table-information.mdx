@@ -27,7 +27,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    База    = "C:\Users\bayse\AppData\Local\Temp\v8_2F49_2c.sqlite";
+    База    = ПараметрыФункции["SQLite_DB"];
     Таблица = "test";
 
     Результат = OPI_SQLite.ПолучитьИнформациюОТаблице(Таблица, База);

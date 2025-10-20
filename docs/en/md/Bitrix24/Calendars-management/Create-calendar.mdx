@@ -48,15 +48,15 @@ Method at API documentation: [calendar.section.add](https://apidocs.bitrix24.ru/
 
     CalendarsStructure.Insert("export", ExportStructure);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    URL = FunctionParameters["Bitrix24_URL"];
 
     Result = OPI_Bitrix24.CreateCalendar(URL, CalendarsStructure);
 
     CalendarsStructure.Insert("name"       , "Another calendar");
     CalendarsStructure.Insert("description", "My other new calendar");
 
-    URL   = "b24-ar17wx.bitrix24.by";
-    Token = "3b1af468006e9f06006b12e400000001000...";
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
 
     Result = OPI_Bitrix24.CreateCalendar(URL, CalendarsStructure, Token);
 ```

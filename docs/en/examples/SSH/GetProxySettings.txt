@@ -1,8 +1,8 @@
-﻿    ProxyType = "http"; // http, socks5, socks4
+﻿    ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
 
-    ProxyAddress  = "127.0.0.1";
-    ProxyPort     = "8071";
-    ProxyLogin    = "proxyuser";
-    ProxyPassword = "12we...";
+    ProxyAddress  = FunctionParameters["Proxy_IP"];
+    ProxyPort     = FunctionParameters["Proxy_Port"];
+    ProxyLogin    = FunctionParameters["Proxy_User"];
+    ProxyPassword = FunctionParameters["Proxy_Password"];
 
     Result = OPI_SSH.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);

@@ -35,17 +35,17 @@ Method at API documentation: [task.item.userfield.update](https://dev.1c-bitrix.
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    URL = FunctionParameters["Bitrix24_URL"];
 
-    FieldID = "255";
+    FieldID = FunctionParameters["Bitrix24_HookTaskFieldID"];
     Title   = "New title";
 
     Result = OPI_Bitrix24.UpdateCustomTaskField(URL, FieldID, , Title);
 
-    URL   = "b24-ar17wx.bitrix24.by";
-    Token = "3b1af468006e9f06006b12e400000001000...";
+    URL   = FunctionParameters["Bitrix24_Domain"];
+    Token = FunctionParameters["Bitrix24_Token"];
 
-    FieldID    = "257";
+    FieldID    = FunctionParameters["Bitrix24_TaskFieldID"];
     ExternalID = "NEW_TEXT_FIELD";
     Signature  = New Structure("en,ru", "Updated field", "Izmenennoe pole");
 

@@ -1,5 +1,5 @@
-﻿    Token = "xoxb-6965308400114-696804637...";
+﻿    Token = FunctionParameters["Slack_Token"];
     Title = "NewFile";
-    File  = "https://hut.openintegrations.dev/test_data/document.docx";
+    File  = FunctionParameters["Document"];
 
     Result = OPI_Slack.AddExternalFile(Token, File, Title);

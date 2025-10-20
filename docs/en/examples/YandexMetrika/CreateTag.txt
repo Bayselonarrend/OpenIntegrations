@@ -1,4 +1,4 @@
-﻿    Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
+﻿    Token = FunctionParameters["Metrika_Token"];
     Name  = "New tag";
 
     Result = OPI_YandexMetrika.CreateTag(Token, Name);

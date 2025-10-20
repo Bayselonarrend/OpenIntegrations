@@ -1,7 +1,7 @@
 ﻿    Parameters = GetVKParameters();
     URL        = "https://github.com/Bayselonarrend/OpenIntegrations";
 
-    Image = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, File path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, File path or Binary Data
     TFN   = GetTempFileName("png");
     CopyFile(Image, TFN);
     Image = New BinaryData(TFN);

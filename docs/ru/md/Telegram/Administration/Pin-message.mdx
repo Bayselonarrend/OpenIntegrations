@@ -32,9 +32,9 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен       = "6129457865:AAFyzNYOAFbu...";
-    IDКанала    = "@testsichee";
-    IDСообщения = "21812";
+    Токен       = ПараметрыФункции["Telegram_Token"];
+    IDКанала    = ПараметрыФункции["Telegram_ChannelID"];
+    IDСообщения = ПараметрыФункции["Telegram_ChannelMessageID"];
 
     Результат = OPI_Telegram.ЗакрепитьСообщение(Токен, IDКанала, IDСообщения);
 ```

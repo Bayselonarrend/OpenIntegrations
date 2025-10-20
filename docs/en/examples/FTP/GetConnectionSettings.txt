@@ -1,6 +1,6 @@
-﻿    Host     = "172.33.0.10";
-    Port     = "21";
-    Login    = "bayselonarrend";
-    Password = "12we...";
+﻿    Host     = FunctionParameters["FTP_IP"];
+    Port     = FunctionParameters["FTP_Port"];
+    Login    = FunctionParameters["FTP_User"];
+    Password = FunctionParameters["FTP_Password"];
 
     Result = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);

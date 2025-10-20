@@ -1,7 +1,7 @@
-﻿    Token   = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Page    = "29082aa7-fc4e-8138-a6a6-ec06f87704de";
-    Icon    = "https://hut.openintegrations.dev/test_data/picture.jpg";
-    Cover   = "https://hut.openintegrations.dev/test_data/picture2.jpg";
+﻿    Token   = FunctionParameters["Notion_Token"];
+    Page    = FunctionParameters["Notion_Page"];
+    Icon    = FunctionParameters["Picture"];
+    Cover   = FunctionParameters["Picture2"];
     Archive = False;
 
     Properties = New Map;

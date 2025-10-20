@@ -1,4 +1,4 @@
 ﻿    Наименование = "Картинка";
-    URL          = "https://hut.openintegrations.dev/test_data/picture.jpg";
+    URL          = ПараметрыФункции["Picture"];
 
     Результат = OPI_Bitrix24.ПолучитьБлокКартинки(Наименование, URL);

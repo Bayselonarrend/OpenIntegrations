@@ -26,7 +26,7 @@ Getting a link for interactive token retrieval (access_token), which is necessar
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Application = "51694790";
+    Application = FunctionParameters["VK_AppID"];
     Result      = OPI_VK.CreateTokenRetrievalLink(Application);
 ```
  

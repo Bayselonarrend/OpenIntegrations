@@ -1,6 +1,6 @@
-﻿    Token      = "ya29.a0AQQ_BDT_CMAJqFIcOfzUrSDYRQ2mZ6TLDIGN-tv27R3mPj8iFcUgZ-x-aipMSCOTXMfqqTzT2aRN4TCe8MFrBD2tInauCN39ueJtc4LHbj71tbNlq9LdkejgF...";
+﻿    Token      = FunctionParameters["Google_Token"];
     NewName    = "UpdatedFile.jpg";
-    Identifier = "165Rrx54VIA4Wl2nWic20rdfuJFl7MynQ";
-    File       = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Binary Data or File path
+    Identifier = FunctionParameters["GD_File"];
+    File       = FunctionParameters["Picture2"]; // URL, Binary Data or File path
 
     Result = OPI_GoogleDrive.UpdateFile(Token, Identifier, File, NewName);

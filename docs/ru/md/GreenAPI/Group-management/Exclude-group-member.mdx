@@ -32,12 +32,12 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    ApiUrl           = "https://7105.api.greenapi.com";
-    MediaUrl         = "https://7105.media.greenapi.com";
-    IdInstance       = "71051...";
-    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+    ApiUrl           = ПараметрыФункции["GreenAPI_ApiURL"];
+    MediaUrl         = ПараметрыФункции["GreenAPI_MediaURL"];
+    IdInstance       = ПараметрыФункции["GreenAPI_IdInstance"];
+    ApiTokenInstance = ПараметрыФункции["GreenAPI_Token"];
 
-    IDГруппы       = "120363420522290653@g.us";
+    IDГруппы       = ПараметрыФункции["GreenAPI_GroupID"];
     IDПользователя = "123123123@c.us";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);

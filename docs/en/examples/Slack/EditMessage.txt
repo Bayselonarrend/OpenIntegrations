@@ -1,6 +1,6 @@
-﻿    Token     = "xoxb-6965308400114-696804637...";
-    Channel   = "C06UFNUTKUL";
-    Timestamp = "1760823742.152349";
+﻿    Token     = FunctionParameters["Slack_Token"];
+    Channel   = FunctionParameters["Slack_Channel"];
+    Timestamp = FunctionParameters["Slack_MessageTS"];
 
     Text = "TestMessage2";
 

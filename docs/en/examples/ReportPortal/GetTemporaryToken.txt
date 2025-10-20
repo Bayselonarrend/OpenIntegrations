@@ -1,5 +1,5 @@
-﻿    URL      = "tests.openintegrations.dev";
-    Login    = "superadmin";
-    Password = "Rit2...";
+﻿    URL      = FunctionParameters["RPortal_URL"];
+    Login    = FunctionParameters["RPortal_Login"];
+    Password = FunctionParameters["RPortal_Password"];
 
     Result = OPI_ReportPortal.GetTemporaryToken(URL, Login, Password);

@@ -1,5 +1,5 @@
-﻿    Token  = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Region = "wspdf8yl1yZz3PmWZ";
+﻿    Token  = FunctionParameters["Airtable_Token"];
+    Region = FunctionParameters["Airtable_Workspace"];
     Name   = "TestDatabase";
 
     FieldArray = New Array;

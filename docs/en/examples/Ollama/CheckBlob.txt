@@ -1,6 +1,6 @@
-﻿    URL    = "https://hut.openintegrations.dev/ollama";
-    Token  = "12We34..."; // Authorization - not part API Ollama
-    SHA256 = "927310db9b933150ef3466184c36310e57f2497838a181a2d37d7c3a4789d63d";
+﻿    URL    = FunctionParameters["Ollama_URL"];
+    Token  = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+    SHA256 = FunctionParameters["Ollama_Blob"];
 
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));

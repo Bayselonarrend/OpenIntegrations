@@ -34,9 +34,9 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен   = "001.3501506236.091...";
-    IDЧата  = "AoLI0egLWBSLR1Ngn2w";
-    IDФайла = "YyTKnJRpsBq8PAnsFE05FF68f40d7c1bd";
+    Токен   = ПараметрыФункции["VkTeams_Token"];
+    IDЧата  = ПараметрыФункции["VkTeams_ChatID"];
+    IDФайла = ПараметрыФункции["VkTeams_FileID"];
     Текст   = "Подпись к файлу";
 
     Результат = OPI_VKTeams.ПереслатьФайл(Токен, IDЧата, IDФайла, Текст);

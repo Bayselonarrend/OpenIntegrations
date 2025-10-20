@@ -1,2 +1,2 @@
-﻿    Token  = "xoxb-6965308400114-696804637...";
+﻿    Token  = FunctionParameters["Slack_Token"];
     Result = OPI_Slack.GetUserList(Token);

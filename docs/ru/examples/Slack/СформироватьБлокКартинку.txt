@@ -1,3 +1,3 @@
-﻿    Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg";
+﻿    Картинка = ПараметрыФункции["Picture"];
 
     Результат = OPI_Slack.СформироватьБлокКартинку(Картинка, "Картинка");

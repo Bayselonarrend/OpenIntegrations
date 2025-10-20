@@ -1,7 +1,7 @@
-﻿    Токен        = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Страница     = "29082aa7-fc4e-8138-a6a6-ec06f87704de";
-    Иконка       = "https://hut.openintegrations.dev/test_data/picture.jpg";
-    Обложка      = "https://hut.openintegrations.dev/test_data/picture2.jpg";
+﻿    Токен        = ПараметрыФункции["Notion_Token"];
+    Страница     = ПараметрыФункции["Notion_Page"];
+    Иконка       = ПараметрыФункции["Picture"];
+    Обложка      = ПараметрыФункции["Picture2"];
     Архивировать = Ложь;
 
     Свойства = Новый Соответствие;

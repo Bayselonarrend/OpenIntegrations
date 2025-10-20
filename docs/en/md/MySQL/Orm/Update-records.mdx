@@ -36,9 +36,9 @@ The list of available types is described on the initial page of the MySQL librar
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Address  = "127.0.0.1";
+    Address  = FunctionParameters["PG_IP"];
     Login    = "bayselonarrend";
-    Password = "12we...";
+    Password = FunctionParameters["PG_Password"];
     Base     = "test_data";
 
     TLS = True;

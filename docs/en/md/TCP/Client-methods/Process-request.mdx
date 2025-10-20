@@ -33,12 +33,12 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Address = "45.79.112.203:4242";
+    Address = FunctionParameters["TCP_Address"];
     Data    = "Echo this!" + Chars.LF;
 
     Result = OPI_TCP.ProcessRequest(Address, Data);
 
-    Address = "tcpbin.com:4243";
+    Address = FunctionParameters["TCP_AddressTLS"];
     Tls     = OPI_TCP.GetTLSSettings(True);
 
     Result = OPI_TCP.ProcessRequest(Address, Data, , Tls);

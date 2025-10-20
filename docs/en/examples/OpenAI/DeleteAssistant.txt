@@ -1,6 +1,6 @@
-﻿    URL   = "https://hut.openintegrations.dev/localai/";
-    Token = "12We...";
+﻿    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
 
-    AssistantID = "asst_2";
+    AssistantID = FunctionParameters["OpenAI_Assistant"];
 
     Result = OPI_OpenAI.DeleteAssistant(URL, Token, AssistantID);

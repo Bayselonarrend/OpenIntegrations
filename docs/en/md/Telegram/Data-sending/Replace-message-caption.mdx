@@ -34,9 +34,9 @@ Method at API documentation: [editMessageCaption](https://core.telegram.org/bots
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token     = "6129457865:AAFyzNYOAFbu...";
-    ChatID    = "461699897";
-    MessageID = "17220";
+    Token     = FunctionParameters["Telegram_Token"];
+    ChatID    = FunctionParameters["Telegram_ChatID"];
+    MessageID = FunctionParameters["Telegram_PicMessageID"];
 
     Description = "New picture description";
     Result      = OPI_Telegram.ReplaceMessageCaption(Token, ChatID, MessageID, Description);

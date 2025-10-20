@@ -1,4 +1,4 @@
-﻿    Token        = "ya29.a0AQQ_BDT_CMAJqFIcOfzUrSDYRQ2mZ6TLDIGN-tv27R3mPj8iFcUgZ-x-aipMSCOTXMfqqTzT2aRN4TCe8MFrBD2tInauCN39ueJtc4LHbj71tbNlq9LdkejgF...";
+﻿    Token        = FunctionParameters["Google_Token"];
     Directory    = "root";
     NameContains = "data";
 

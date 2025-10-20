@@ -1,5 +1,5 @@
 ﻿    Parameters = GetVKParameters();
 
-    Product = "12037197";
+    Product = FunctionParameters["VK_MarketItemID"];
 
     Result = OPI_VK.DeleteProduct(Product, Parameters);
