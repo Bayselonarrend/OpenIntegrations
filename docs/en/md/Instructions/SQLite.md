@@ -25,7 +25,3 @@ By default, all SELECT queries return an array of selected data, while other que
 ## "BLOB" type fields
 
 This library can process fields of type BLOB (Binary Data). To place a value in a field of this type during INSERT or UPDATE, it can be passed either as a variable of type `BinaryData` (in 1C and OneScript) or as a structure of type `{"blob":File Path}` (in 1C, OneScript and CLI versions). Binary data is always returned as `{"blob":Base64 string}`.
-
-## Compatibility
-
-Technically, the client implementation is a Native component in Rust. It comes in a zip archive format, and, in theory, should work on all available platforms: x86 and x64 Windows and Linux. The actual testing was done on Windows x64 and, cossentially (via OneScript), on Linux x64
