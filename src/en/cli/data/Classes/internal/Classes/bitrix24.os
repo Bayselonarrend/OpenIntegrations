@@ -487,7 +487,7 @@ Function GetComposition() Export
     NewLine.Parameter    = "--url";
     NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
     NewLine.Region     = "Tasks management";
-    NewLine.MethodDescription   = "Get tasks list (50 at one response max))";
+    NewLine.MethodDescription   = "Get tasks list (50 at one response max) with or without filtering";
 
 
     NewLine = CompositionTable.Add();
@@ -496,7 +496,7 @@ Function GetComposition() Export
     NewLine.Method       = "GetTasksList";
     NewLine.SearchMethod = "GETTASKSLIST";
     NewLine.Parameter    = "--filter";
-    NewLine.Description    = "Structure of task filter (see GetTaskFieldsStructure) (optional, def. val. - Empty value)";
+    NewLine.Description    = "Lead filter structure. See GetLeadFilterStructure (optional, def. val. - Empty value)";
     NewLine.Region     = "Tasks management";
 
 
@@ -538,7 +538,7 @@ Function GetComposition() Export
     NewLine.Parameter    = "--url";
     NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
     NewLine.Region     = "Tasks management";
-    NewLine.MethodDescription   = "Create new task by fields structure (see GetTaskFieldsStructure)";
+    NewLine.MethodDescription   = "Create new task by fields structure";
 
 
     NewLine = CompositionTable.Add();
@@ -547,7 +547,7 @@ Function GetComposition() Export
     NewLine.Method       = "CreateTask";
     NewLine.SearchMethod = "CREATETASK";
     NewLine.Parameter    = "--fields";
-    NewLine.Description    = "Task fields structure (see GetTaskFieldsStructure)";
+    NewLine.Description    = "Task fields structure. See GetTaskFieldsStructure";
     NewLine.Region     = "Tasks management";
 
 
@@ -3340,7 +3340,7 @@ Function GetComposition() Export
     NewLine.Method       = "GetFolderItems";
     NewLine.SearchMethod = "GETFOLDERITEMS";
     NewLine.Parameter    = "--filter";
-    NewLine.Description    = "Items filter (see GetFolderFilterStructure) (optional, def. val. - Empty value)";
+    NewLine.Description    = "Items filter. See GetFolderFilterStructure (optional, def. val. - Empty value)";
     NewLine.Region     = "Catalogs management";
 
 
@@ -5511,7 +5511,7 @@ Function GetComposition() Export
     NewLine.Parameter    = "--url";
     NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
     NewLine.Region     = "Leads management";
-    NewLine.MethodDescription   = "Creates a new lead by fields structure (see GetLeadStructure)";
+    NewLine.MethodDescription   = "Creates a new lead by fields structure";
 
 
     NewLine = CompositionTable.Add();
@@ -5520,7 +5520,7 @@ Function GetComposition() Export
     NewLine.Method       = "CreateLead";
     NewLine.SearchMethod = "CREATELEAD";
     NewLine.Parameter    = "--fields";
-    NewLine.Description    = "Lead fields structure (see GetLeadStructure)";
+    NewLine.Description    = "Lead fields structure. See GetLeadStructure";
     NewLine.Region     = "Leads management";
 
 
@@ -5604,7 +5604,7 @@ Function GetComposition() Export
     NewLine.Parameter    = "--url";
     NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
     NewLine.Region     = "Leads management";
-    NewLine.MethodDescription   = "Gets a list of leads (50 per request max) with or without filtering (see GetLeadFilterStructure)";
+    NewLine.MethodDescription   = "Gets a list of leads (50 per request max) with or without filtering";
 
 
     NewLine = CompositionTable.Add();
@@ -5613,7 +5613,7 @@ Function GetComposition() Export
     NewLine.Method       = "GetLeadsList";
     NewLine.SearchMethod = "GETLEADSLIST";
     NewLine.Parameter    = "--filter";
-    NewLine.Description    = "Lead filter structure (see GetLeadFilterStructure) (optional, def. val. - Empty value)";
+    NewLine.Description    = "Lead filter structure. See GetLeadFilterStructure (optional, def. val. - Empty value)";
     NewLine.Region     = "Leads management";
 
 
@@ -5718,7 +5718,7 @@ Function GetComposition() Export
     NewLine.Parameter    = "--url";
     NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
     NewLine.Region     = "Deals management";
-    NewLine.MethodDescription   = "Creates a new deal by field structure (see. GetDealStructure)";
+    NewLine.MethodDescription   = "Creates a new deal by field structure";
 
 
     NewLine = CompositionTable.Add();
@@ -5727,7 +5727,7 @@ Function GetComposition() Export
     NewLine.Method       = "CreateDeal";
     NewLine.SearchMethod = "CREATEDEAL";
     NewLine.Parameter    = "--fields";
-    NewLine.Description    = "Deal fields structure (see. GetDealStructure)";
+    NewLine.Description    = "Deal fields structure. See. GetDealStructure";
     NewLine.Region     = "Deals management";
 
 
@@ -5811,7 +5811,7 @@ Function GetComposition() Export
     NewLine.Parameter    = "--url";
     NewLine.Description    = "URL of webhook or a Bitrix24 domain, when token used";
     NewLine.Region     = "Deals management";
-    NewLine.MethodDescription   = "Gets the list of deals (50 pcs per query max) with or without filtering (see. GetDealsFilterStructure)";
+    NewLine.MethodDescription   = "Gets the list of deals (50 pcs per query max) with or without filtering";
 
 
     NewLine = CompositionTable.Add();
@@ -5820,7 +5820,7 @@ Function GetComposition() Export
     NewLine.Method       = "GetDealsList";
     NewLine.SearchMethod = "GETDEALSLIST";
     NewLine.Parameter    = "--filter";
-    NewLine.Description    = "Deals filter structure (see. GetDealsFilterStructure) (optional, def. val. - Empty value)";
+    NewLine.Description    = "Deals filter structure. See GetDealsFilterStructure (optional, def. val. - Empty value)";
     NewLine.Region     = "Deals management";
 
 
@@ -5975,7 +5975,7 @@ Function GetComposition() Export
     NewLine.Method       = "CreateCalendar";
     NewLine.SearchMethod = "CREATECALENDAR";
     NewLine.Parameter    = "--fields";
-    NewLine.Description    = "Calendar fields structure (see GetCalendarStructure)";
+    NewLine.Description    = "Calendar fields structure. See GetCalendarStructure";
     NewLine.Region     = "Calendars management";
 
 
@@ -6016,7 +6016,7 @@ Function GetComposition() Export
     NewLine.Method       = "UpdateCalendar";
     NewLine.SearchMethod = "UPDATECALENDAR";
     NewLine.Parameter    = "--fields";
-    NewLine.Description    = "Deal fields structure (see. GetDealStructure)";
+    NewLine.Description    = "Deal fields structure. See. GetDealStructure";
     NewLine.Region     = "Calendars management";
 
 
@@ -6170,7 +6170,7 @@ Function GetComposition() Export
     NewLine.Method       = "SetCustomCalendarSettings";
     NewLine.SearchMethod = "SETCUSTOMCALENDARSETTINGS";
     NewLine.Parameter    = "--settings";
-    NewLine.Description    = "Settings structure (see GetCalednarCustomSettingsStructure)";
+    NewLine.Description    = "Settings structure. See GetCalednarCustomSettingsStructure";
     NewLine.Region     = "Calendars management";
 
 
