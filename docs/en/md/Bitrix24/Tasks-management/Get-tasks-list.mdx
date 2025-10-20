@@ -8,7 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # Get tasks list
- Get tasks list (50 at one response max))
+ Get tasks list (50 at one response max) with or without filtering
 
 
 
@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | URL | --url | String | &#x2714; | URL of webhook or a Bitrix24 domain, when token used |
-  | Filter | --filter | Structure of KeyAndValue | &#x2716; | Structure of task filter (see GetTaskFieldsStructure) |
+  | Filter | --filter | Structure of KeyAndValue | &#x2716; | Lead filter structure. See GetLeadFilterStructure |
   | Indent | --offset | Number, String | &#x2716; | Offset of tasks list |
   | Token | --token | String | &#x2716; | Access token, when app auth method used |
   | Fields | --select | String, Array of String | &#x2716; | A list of task fields in the response. All non calculable by default |

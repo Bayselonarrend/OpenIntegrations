@@ -59,7 +59,6 @@
 // Uncomment if OneScript is executed
 #Use "./internal"
 #Use asserts
-
 #Region Internal
 
 Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
@@ -92,11 +91,7 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
         CurrentValue = GetCLIFormedValue(Option.Value, , AddOptions);
 
-        LaunchString = LaunchString
-            + " --"
-            + Option.Key
-            + " "
-            + CurrentValue;
+        LaunchString = LaunchString + " --" + Option.Key + " " + CurrentValue;
 
         WriteOptions.Insert(Option.Key, CurrentValue);
 
@@ -106,18 +101,14 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
 
         CurrentValue = GetCLIFormedValue(AddOption.Value);
 
-        LaunchString = LaunchString
-            + " --"
-            + AddOption.Key
-            + " "
-            + CurrentValue;
+        LaunchString = LaunchString + " --" + AddOption.Key + " " + CurrentValue;
 
         WriteOptions.Insert(AddOption.Key, CurrentValue);
 
     EndDo;
 
     // BSLLS:ExternalAppStarting-off
-    RunApp(LaunchString + " --out """ + ResultFile + """ --debug" , , True);
+    RunApp(LaunchString + " --out """ + ResultFile + """ --debug", , True);
     // BSLLS:ExternalAppStarting-on
 
     Result = ReadCLIResponse(ResultFile);
@@ -261,167 +252,167 @@ Function GetTestTable() Export
     TestTable.Columns.Add("Synonym");
     TestTable.Columns.Add("Section");
 
-    NewTest(TestTable, "TelegramAPI_GetBotInfo"              , "Get bot information"             , Telegram);
-    NewTest(TestTable, "TelegramAPI_GetUpdates"              , "Get updates"                     , Telegram);
-    NewTest(TestTable, "TelegramAPI_SetWebhook"              , "Set Webhook"                     , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendTextMessage"         , "Send text message"               , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendImage"               , "Send image"                      , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendVideo"               , "Send video"                      , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendAudio"               , "Send audio"                      , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendDocument"            , "Send document"                   , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendGIF"                 , "Send GIF"                        , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendMediaGroup"          , "Send mediagroup"                 , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendLocation"            , "Send location"                   , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendContact"             , "Send contact"                    , Telegram);
-    NewTest(TestTable, "TelegramAPI_SendPoll"                , "Send poll"                       , Telegram);
-    NewTest(TestTable, "TelegramAPI_ForwardMessage"          , "Forward message"                 , Telegram);
-    NewTest(TestTable, "TelegramAPI_BanUnban"                , "Ban/Unban"                       , Telegram);
-    NewTest(TestTable, "TelegramAPI_CreateInvitationLink"    , "Create invitation link"          , Telegram);
-    NewTest(TestTable, "TelegramAPI_PinUnpinMessage"         , "Pin/Unpin message"               , Telegram);
-    NewTest(TestTable, "TelegramAPI_GetMemberCount"          , "Get participant count"           , Telegram);
-    NewTest(TestTable, "TelegramAPI_GetForumAvatarsList"     , "Get forum avatars list"          , Telegram);
-    NewTest(TestTable, "TelegramAPI_CreateDeleteForumTopic"  , "Create/Delete forum topic"       , Telegram);
-    NewTest(TestTable, "TelegramAPI_ChangeMainTopicName"     , "Change main topic name"          , Telegram);
-    NewTest(TestTable, "TelegramAPI_HideShowMainTopic"       , "Hide/Show main topic"            , Telegram);
-    NewTest(TestTable, "VKAPI_CreateTokenLink"               , "Create token retrieval link"     , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateDeletePost"              , "Create/Delete post"              , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateCompositePost"           , "Create/Delete composite post"    , VKontakte);
-    NewTest(TestTable, "VKAPI_CreatePoll"                    , "Create poll"                     , VKontakte);
-    NewTest(TestTable, "VKAPI_SaveDeleteImage"               , "Add/Delete image"                , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateStory"                   , "Create story"                    , VKontakte);
-    NewTest(TestTable, "VKAPI_DiscussionMethods"             , "Actions with discussions"        , VKontakte);
-    NewTest(TestTable, "VKAPI_LikeRepostComment"             , "Like/Repost/Comment"             , VKontakte);
-    NewTest(TestTable, "VKAPI_GetStatistics"                 , "Get statistics"                  , VKontakte);
-    NewTest(TestTable, "VKAPI_GetPostStatistics"             , "Get post statistics"             , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateAdCampaign"              , "Create advertising campaign"     , VKontakte);
-    NewTest(TestTable, "VKAPI_SendMessage"                   , "Send message"                    , VKontakte);
-    NewTest(TestTable, "VKAPI_GetProductCategories"          , "Get product categories"          , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateProductSelection"        , "Create product and selection"    , VKontakte);
-    NewTest(TestTable, "VKAPI_CreateProductWithProperties"   , "Create product with properties"  , VKontakte);
-    NewTest(TestTable, "VKAPI_GetProductList"                , "Get product list"                , VKontakte);
-    NewTest(TestTable, "VKAPI_GetSelectionList"              , "Get selection list"              , VKontakte);
-    NewTest(TestTable, "VKAPI_GetPropertyList"               , "Get property list"               , VKontakte);
-    NewTest(TestTable, "VKAPI_GetOrderList"                  , "Get order list"                  , VKontakte);
-    NewTest(TestTable, "VKAPI_UploadVideo"                   , "Upload video"                    , VKontakte);
-    NewTest(TestTable, "YDisk_GetDiskInfo"                   , "Get disk information"            , YDisk);
-    NewTest(TestTable, "YDisk_CreateFolder"                  , "Create folder"                   , YDisk);
-    NewTest(TestTable, "YDisk_UploadByUrlAndGetObject"       , "Upload by URL and get"           , YDisk);
-    NewTest(TestTable, "YDisk_UploadDeleteFile"              , "Upload/Delete file"              , YDisk);
-    NewTest(TestTable, "YDisk_CreateObjectCopy"              , "Create object copy"              , YDisk);
-    NewTest(TestTable, "YDisk_GetDownloadLink"               , "Get download link"               , YDisk);
-    NewTest(TestTable, "YDisk_GetFileList"                   , "Get list of files"               , YDisk);
-    NewTest(TestTable, "YDisk_MoveObject"                    , "Move object"                     , YDisk);
-    NewTest(TestTable, "YDisk_PublicObjectActions"           , "Actions with public objects"     , YDisk);
-    NewTest(TestTable, "YDisk_GetPublishedList"              , "Get published list"              , YDisk);
-    NewTest(TestTable, "GW_Auth"                             , "Authorization"                   , VSpace);
-    NewTest(TestTable, "GW_Auth"                             , "Authorization"                   , Calendar);
-    NewTest(TestTable, "GC_GetCalendarList"                  , "Get list of calendars"           , Calendar);
-    NewTest(TestTable, "GC_CreateDeleteCalendar"             , "Create/Delete calendar"          , Calendar);
-    NewTest(TestTable, "GC_CreateDeleteEvent"                , "Create/Delete event"             , Calendar);
-    NewTest(TestTable, "GW_Auth"                             , "Authorization"                   , Drive);
-    NewTest(TestTable, "GD_GetCatalogList"                   , "Get list of directories"         , Drive);
-    NewTest(TestTable, "GD_UploadDeleteFile"                 , "Upload/Delete file"              , Drive);
-    NewTest(TestTable, "GD_CreateDeleteComment"              , "Create/Delete Comment"           , Drive);
-    NewTest(TestTable, "GD_CreateCatalog"                    , "Create/Delete catalog"           , Drive);
-    NewTest(TestTable, "GW_Auth"                             , "Authorization"                   , Tables);
-    NewTest(TestTable, "GT_CreateTable"                      , "Create table"                    , Tables);
-    NewTest(TestTable, "GT_FillClearCells"                   , "Fill/Clear cells"                , Tables);
-    NewTest(TestTable, "TwitterAPI_AccountData"              , "Account data"                    , Twitter);
-    NewTest(TestTable, "TwitterAPI_Tweets"                   , "Tweets creation"                 , Twitter);
-    NewTest(TestTable, "Viber_DataRetrieval"                 , "Data retrieval"                  , Viber);
-    NewTest(TestTable, "Viber_MessagesSending"               , "Messages sending"                , Viber);
-    NewTest(TestTable, "NotionAPI_CreatePage"                , "Create page"                     , Notion);
-    NewTest(TestTable, "NotionAPI_CreateUpdateBase"          , "Create/Edit database"            , Notion);
-    NewTest(TestTable, "NotionAPI_CreateDeleteBlock"         , "Create/Delete block"             , Notion);
-    NewTest(TestTable, "NotionAPI_GetUsers"                  , "Get users"                       , Notion);
-    NewTest(TestTable, "SlackGetData"                        , "Get data"                        , Slack);
-    NewTest(TestTable, "Slack_SendDeleteMessage"             , "Send/Delete message"             , Slack);
-    NewTest(TestTable, "Slack_CreateArchiveChannel"          , "Create/Archive channel"          , Slack);
-    NewTest(TestTable, "Slack_OpenCloseDialog"               , "Open/Close dialog"               , Slack);
-    NewTest(TestTable, "Slack_UploadDeleteFile"              , "Upload/Delete file"              , Slack);
-    NewTest(TestTable, "Slack_UploadDeleteExternalFile"      , "Upload/Delete external file"     , Slack);
-    NewTest(TestTable, "AT_CreateDatabase"                   , "Create/Edit database"            , AirT);
-    NewTest(TestTable, "AT_CreateTable"                      , "Create/Edit table"               , AirT);
-    NewTest(TestTable, "AT_CreateField"                      , "Create/Edit field"               , AirT);
-    NewTest(TestTable, "AT_CreateDeleteRecords"              , "Create/Delete records"           , AirT);
-    NewTest(TestTable, "DropboxAPI_GetUpdateToken"           , "Get/Update token"                , Dropbox);
-    NewTest(TestTable, "DropboxAPI_UploadFile"               , "Upload file"                     , Dropbox);
-    NewTest(TestTable, "DropboxAPI_UploadFileByURL"          , "Upload file by URL"              , Dropbox);
-    NewTest(TestTable, "DropboxAPI_CreateFolder"             , "Create folder"                   , Dropbox);
-    NewTest(TestTable, "DropboxAPI_CreateDeleteTag"          , "Create/Delete tag"               , Dropbox);
-    NewTest(TestTable, "DropboxAPI_GetAccount"               , "Get account data"                , Dropbox);
-    NewTest(TestTable, "DropboxAPI_AccessManagement"         , "Access management"               , Dropbox);
-    NewTest(TestTable, "DropboxAPI_GetFolderFileList"        , "Get list of folder files"        , Dropbox);
-    NewTest(TestTable, "B24_TokenManagement"                 , "Token management"                , Bitrix);
-    NewTest(TestTable, "B24_ServerTime"                      , "Server time"                     , Bitrix);
-    NewTest(TestTable, "B24_PostsManagement"                 , "Posts management"                , Bitrix);
-    NewTest(TestTable, "B24_TaskManagement"                  , "Tasks management"                , Bitrix);
-    NewTest(TestTable, "B24_CommentsManagement"              , "Comments management"             , Bitrix);
-    NewTest(TestTable, "B24_WorkingWithDrive"                , "Working with drive"              , Bitrix);
-    NewTest(TestTable, "B24_Kanban"                          , "Kanban"                          , Bitrix);
-    NewTest(TestTable, "B24_Timekeeping"                     , "Timekeeping"                     , Bitrix);
-    NewTest(TestTable, "B24_ChatManagement"                  , "Chats works"                     , Bitrix);
-    NewTest(TestTable, "B24_NotificationsManagement"         , "Notifications management"        , Bitrix);
-    NewTest(TestTable, "B24_TasksFieldsManagement"           , "Working with custom task fields" , Bitrix);
-    NewTest(TestTable, "B24_DepartmentsManagement"           , "Departments management"          , Bitrix);
-    NewTest(TestTable, "B2_UsersManagement"                  , "Users management"                , Bitrix);
-    NewTest(TestTable, "B24_LeadsManagement"                 , "Leads management"                , Bitrix);
-    NewTest(TestTable, "B24_DealsManagement"                 , "Deals management"                , Bitrix);
-    NewTest(TestTable, "B24_CalendarsManagement"             , "Calendars management"            , Bitrix);
-    NewTest(TestTable, "VKT_MessagesSending"                 , "Messages sending"                , VKT);
-    NewTest(TestTable, "VKT_CommonMethods"                   , "Common methods"                  , VKT);
-    NewTest(TestTable, "VKT_ChatManagement"                  , "Chat management"                 , VKT);
-    NewTest(TestTable, "NC_FilesManagement"                  , "Files management"                , Neocities);
-    NewTest(TestTable, "NC_DataRetrieving"                   , "Data retrieving"                 , Neocities);
-    NewTest(TestTable, "CdekAPI_CommonMethods"               , "Common methods"                  , Cdek);
-    NewTest(TestTable, "CDEKAPI_OrdersManagement"            , "Orders management"               , Cdek);
-    NewTest(TestTable, "CdekAPI_CourierInvitationsManagement", "Courier invitations management"  , Cdek);
-    NewTest(TestTable, "YaMetrika_TagsManagement"            , "Tags management"                 , Metrika);
-    NewTest(TestTable, "YaMetrika_CountersManagement"        , "Counters management"             , Metrika);
-    NewTest(TestTable, "YaMetrika_ActionsManagement"         , "Actions management"              , Metrika);
-    NewTest(TestTable, "AWS_CommonMethods"                   , "Common methods"                  , S3_);
-    NewTest(TestTable, "AWS_BucketsManagement"               , "Buckets management"              , S3_);
-    NewTest(TestTable, "AWS_ObjectsManagement"               , "Objects management"              , S3_);
-    NewTest(TestTable, "TC_Client"                           , "TCP Client"                      , TCP);
-    NewTest(TestTable, "SQLL_CommonMethods"                  , "Common methods"                  , SQLite);
-    NewTest(TestTable, "SQLL_ORM"                            , "ORM"                             , SQLite);
-    NewTest(TestTable, "Postgres_CommonMethods"              , "Common methods"                  , Postgres);
-    NewTest(TestTable, "Postgres_ORM"                        , "ORM"                             , Postgres);
-    NewTest(TestTable, "MYS_CommonMethods"                   , "Common methods"                  , MySQL);
-    NewTest(TestTable, "MYS_ORM"                             , "ORM"                             , MySQL);
-    NewTest(TestTable, "MSS_CommonMethods"                   , "Common methods"                  , MSSQL);
-    NewTest(TestTable, "MSS_ORM"                             , "ORM"                             , MSSQL);
-    NewTest(TestTable, "GAPI_GroupManagement"                , "Group management"                , GreenAPI);
-    NewTest(TestTable, "GAPI_MessageSending"                 , "Messages sending"                , GreenAPI);
-    NewTest(TestTable, "GAPI_NotificationsReceiving"         , "Notifications receiving"         , GreenAPI);
-    NewTest(TestTable, "GAPI_MessageQueue"                   , "Message queue"                   , GreenAPI);
-    NewTest(TestTable, "GAPI_MessageLogs"                    , "Message logs"                    , GreenAPI);
-    NewTest(TestTable, "GAPI_Account"                        , "Account"                         , GreenAPI);
-    NewTest(TestTable, "GMax_Account"                        , "Account"                         , GreenMax);
-    NewTest(TestTable, "RC_CommandsExecution"                , "Commands execution"              , RCON);
-    NewTest(TestTable, "OLLM_RequestsProcessing"             , "Requests processing"             , Ollama);
-    NewTest(TestTable, "OLLM_ModelsManagement"               , "Models management"               , Ollama);
-    NewTest(TestTable, "OLLM_WorkingWithBlob"                , "Working with Blob"               , Ollama);
-    NewTest(TestTable, "HTTP_Initialization"                 , "Initialization"                  , Http);
-    NewTest(TestTable, "HTTP_BodySet"                        , "Body set"                        , Http);
-    NewTest(TestTable, "HTTP_Settings"                       , "Settings"                        , Http);
-    NewTest(TestTable, "HTTP_HeadersSetting"                 , "Headers setting"                 , Http);
-    NewTest(TestTable, "HTTP_Authorization"                  , "Authorization"                   , Http);
-    NewTest(TestTable, "HTTP_RequestProcessing"              , "Request processing"              , Http);
-    NewTest(TestTable, "HTTP_ResponseReceiving"              , "Response receiving"              , Http);
-    NewTest(TestTable, "OAI_RequestsProcessing"              , "Requests processing"             , OpenAI);
-    NewTest(TestTable, "OAI_Assistants"                      , "Assistants"                      , OpenAI);
-    NewTest(TestTable, "OAI_FileManagement"                  , "Files management"                , OpenAI);
-    NewTest(TestTable, "OAI_AudioProcessing"                 , "Audio processing"                , OpenAI);
-    NewTest(TestTable, "OAI_ModelsManagement"                , "Models management"               , OpenAI);
-    NewTest(TestTable, "FT_DirecotryManagement"              , "Directory management"            , FTP);
-    NewTest(TestTable, "FT_FileOperations"                   , "Files management"                , FTP);
-    NewTest(TestTable, "FT_CommonMethods"                    , "Common methods"                  , FTP);
-    NewTest(TestTable, "RPortal_Authorization"               , "Authorization"                   , RPortal);
-    NewTest(TestTable, "SShell_CommonMethods"                , "Common methods"                  , SSH);
-    NewTest(TestTable, "SF_CommonMethods"                    , "Common methods"                  , SFTP);
-    NewTest(TestTable, "SF_DirectoryManagement"              , "Directory management"            , SFTP);
-    NewTest(TestTable, "SF_FileManagement"                   , "Files management"                , SFTP);
+    NewTest(TestTable, "TelegramAPI_GetBotInfo"              , "Get bot information"            , Telegram);
+    NewTest(TestTable, "TelegramAPI_GetUpdates"              , "Get updates"                    , Telegram);
+    NewTest(TestTable, "TelegramAPI_SetWebhook"              , "Set Webhook"                    , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendTextMessage"         , "Send text message"              , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendImage"               , "Send image"                     , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendVideo"               , "Send video"                     , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendAudio"               , "Send audio"                     , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendDocument"            , "Send document"                  , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendGIF"                 , "Send GIF"                       , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendMediaGroup"          , "Send mediagroup"                , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendLocation"            , "Send location"                  , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendContact"             , "Send contact"                   , Telegram);
+    NewTest(TestTable, "TelegramAPI_SendPoll"                , "Send poll"                      , Telegram);
+    NewTest(TestTable, "TelegramAPI_ForwardMessage"          , "Forward message"                , Telegram);
+    NewTest(TestTable, "TelegramAPI_BanUnban"                , "Ban/Unban"                      , Telegram);
+    NewTest(TestTable, "TelegramAPI_CreateInvitationLink"    , "Create invitation link"         , Telegram);
+    NewTest(TestTable, "TelegramAPI_PinUnpinMessage"         , "Pin/Unpin message"              , Telegram);
+    NewTest(TestTable, "TelegramAPI_GetMemberCount"          , "Get participant count"          , Telegram);
+    NewTest(TestTable, "TelegramAPI_GetForumAvatarsList"     , "Get forum avatars list"         , Telegram);
+    NewTest(TestTable, "TelegramAPI_CreateDeleteForumTopic"  , "Create/Delete forum topic"      , Telegram);
+    NewTest(TestTable, "TelegramAPI_ChangeMainTopicName"     , "Change main topic name"         , Telegram);
+    NewTest(TestTable, "TelegramAPI_HideShowMainTopic"       , "Hide/Show main topic"           , Telegram);
+    NewTest(TestTable, "VKAPI_CreateTokenLink"               , "Create token retrieval link"    , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateDeletePost"              , "Create/Delete post"             , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateCompositePost"           , "Create/Delete composite post"   , VKontakte);
+    NewTest(TestTable, "VKAPI_CreatePoll"                    , "Create poll"                    , VKontakte);
+    NewTest(TestTable, "VKAPI_SaveDeleteImage"               , "Add/Delete image"               , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateStory"                   , "Create story"                   , VKontakte);
+    NewTest(TestTable, "VKAPI_DiscussionMethods"             , "Actions with discussions"       , VKontakte);
+    NewTest(TestTable, "VKAPI_LikeRepostComment"             , "Like/Repost/Comment"            , VKontakte);
+    NewTest(TestTable, "VKAPI_GetStatistics"                 , "Get statistics"                 , VKontakte);
+    NewTest(TestTable, "VKAPI_GetPostStatistics"             , "Get post statistics"            , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateAdCampaign"              , "Create advertising campaign"    , VKontakte);
+    NewTest(TestTable, "VKAPI_SendMessage"                   , "Send message"                   , VKontakte);
+    NewTest(TestTable, "VKAPI_GetProductCategories"          , "Get product categories"         , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateProductSelection"        , "Create product and selection"   , VKontakte);
+    NewTest(TestTable, "VKAPI_CreateProductWithProperties"   , "Create product with properties" , VKontakte);
+    NewTest(TestTable, "VKAPI_GetProductList"                , "Get product list"               , VKontakte);
+    NewTest(TestTable, "VKAPI_GetSelectionList"              , "Get selection list"             , VKontakte);
+    NewTest(TestTable, "VKAPI_GetPropertyList"               , "Get property list"              , VKontakte);
+    NewTest(TestTable, "VKAPI_GetOrderList"                  , "Get order list"                 , VKontakte);
+    NewTest(TestTable, "VKAPI_UploadVideo"                   , "Upload video"                   , VKontakte);
+    NewTest(TestTable, "YDisk_GetDiskInfo"                   , "Get disk information"           , YDisk);
+    NewTest(TestTable, "YDisk_CreateFolder"                  , "Create folder"                  , YDisk);
+    NewTest(TestTable, "YDisk_UploadByUrlAndGetObject"       , "Upload by URL and get"          , YDisk);
+    NewTest(TestTable, "YDisk_UploadDeleteFile"              , "Upload/Delete file"             , YDisk);
+    NewTest(TestTable, "YDisk_CreateObjectCopy"              , "Create object copy"             , YDisk);
+    NewTest(TestTable, "YDisk_GetDownloadLink"               , "Get download link"              , YDisk);
+    NewTest(TestTable, "YDisk_GetFileList"                   , "Get list of files"              , YDisk);
+    NewTest(TestTable, "YDisk_MoveObject"                    , "Move object"                    , YDisk);
+    NewTest(TestTable, "YDisk_PublicObjectActions"           , "Actions with public objects"    , YDisk);
+    NewTest(TestTable, "YDisk_GetPublishedList"              , "Get published list"             , YDisk);
+    NewTest(TestTable, "GW_Auth"                             , "Authorization"                  , VSpace);
+    NewTest(TestTable, "GW_Auth"                             , "Authorization"                  , Calendar);
+    NewTest(TestTable, "GC_GetCalendarList"                  , "Get list of calendars"          , Calendar);
+    NewTest(TestTable, "GC_CreateDeleteCalendar"             , "Create/Delete calendar"         , Calendar);
+    NewTest(TestTable, "GC_CreateDeleteEvent"                , "Create/Delete event"            , Calendar);
+    NewTest(TestTable, "GW_Auth"                             , "Authorization"                  , Drive);
+    NewTest(TestTable, "GD_GetCatalogList"                   , "Get list of directories"        , Drive);
+    NewTest(TestTable, "GD_UploadDeleteFile"                 , "Upload/Delete file"             , Drive);
+    NewTest(TestTable, "GD_CreateDeleteComment"              , "Create/Delete Comment"          , Drive);
+    NewTest(TestTable, "GD_CreateCatalog"                    , "Create/Delete catalog"          , Drive);
+    NewTest(TestTable, "GW_Auth"                             , "Authorization"                  , Tables);
+    NewTest(TestTable, "GT_CreateTable"                      , "Create table"                   , Tables);
+    NewTest(TestTable, "GT_FillClearCells"                   , "Fill/Clear cells"               , Tables);
+    NewTest(TestTable, "TwitterAPI_AccountData"              , "Account data"                   , Twitter);
+    NewTest(TestTable, "TwitterAPI_Tweets"                   , "Tweets creation"                , Twitter);
+    NewTest(TestTable, "Viber_DataRetrieval"                 , "Data retrieval"                 , Viber);
+    NewTest(TestTable, "Viber_MessagesSending"               , "Messages sending"               , Viber);
+    NewTest(TestTable, "NotionAPI_CreatePage"                , "Create page"                    , Notion);
+    NewTest(TestTable, "NotionAPI_CreateUpdateBase"          , "Create/Edit database"           , Notion);
+    NewTest(TestTable, "NotionAPI_CreateDeleteBlock"         , "Create/Delete block"            , Notion);
+    NewTest(TestTable, "NotionAPI_GetUsers"                  , "Get users"                      , Notion);
+    NewTest(TestTable, "SlackGetData"                        , "Get data"                       , Slack);
+    NewTest(TestTable, "Slack_SendDeleteMessage"             , "Send/Delete message"            , Slack);
+    NewTest(TestTable, "Slack_CreateArchiveChannel"          , "Create/Archive channel"         , Slack);
+    NewTest(TestTable, "Slack_OpenCloseDialog"               , "Open/Close dialog"              , Slack);
+    NewTest(TestTable, "Slack_UploadDeleteFile"              , "Upload/Delete file"             , Slack);
+    NewTest(TestTable, "Slack_UploadDeleteExternalFile"      , "Upload/Delete external file"    , Slack);
+    NewTest(TestTable, "AT_CreateDatabase"                   , "Create/Edit database"           , AirT);
+    NewTest(TestTable, "AT_CreateTable"                      , "Create/Edit table"              , AirT);
+    NewTest(TestTable, "AT_CreateField"                      , "Create/Edit field"              , AirT);
+    NewTest(TestTable, "AT_CreateDeleteRecords"              , "Create/Delete records"          , AirT);
+    NewTest(TestTable, "DropboxAPI_GetUpdateToken"           , "Get/Update token"               , Dropbox);
+    NewTest(TestTable, "DropboxAPI_UploadFile"               , "Upload file"                    , Dropbox);
+    NewTest(TestTable, "DropboxAPI_UploadFileByURL"          , "Upload file by URL"             , Dropbox);
+    NewTest(TestTable, "DropboxAPI_CreateFolder"             , "Create folder"                  , Dropbox);
+    NewTest(TestTable, "DropboxAPI_CreateDeleteTag"          , "Create/Delete tag"              , Dropbox);
+    NewTest(TestTable, "DropboxAPI_GetAccount"               , "Get account data"               , Dropbox);
+    NewTest(TestTable, "DropboxAPI_AccessManagement"         , "Access management"              , Dropbox);
+    NewTest(TestTable, "DropboxAPI_GetFolderFileList"        , "Get list of folder files"       , Dropbox);
+    NewTest(TestTable, "B24_TokenManagement"                 , "Token management"               , Bitrix);
+    NewTest(TestTable, "B24_ServerTime"                      , "Server time"                    , Bitrix);
+    NewTest(TestTable, "B24_PostsManagement"                 , "Posts management"               , Bitrix);
+    NewTest(TestTable, "B24_TaskManagement"                  , "Tasks management"               , Bitrix);
+    NewTest(TestTable, "B24_CommentsManagement"              , "Comments management"            , Bitrix);
+    NewTest(TestTable, "B24_WorkingWithDrive"                , "Working with drive"             , Bitrix);
+    NewTest(TestTable, "B24_Kanban"                          , "Kanban"                         , Bitrix);
+    NewTest(TestTable, "B24_Timekeeping"                     , "Timekeeping"                    , Bitrix);
+    NewTest(TestTable, "B24_ChatManagement"                  , "Chats works"                    , Bitrix);
+    NewTest(TestTable, "B24_NotificationsManagement"         , "Notifications management"       , Bitrix);
+    NewTest(TestTable, "B24_TasksFieldsManagement"           , "Working with custom task fields", Bitrix);
+    NewTest(TestTable, "B24_DepartmentsManagement"           , "Departments management"         , Bitrix);
+    NewTest(TestTable, "B2_UsersManagement"                  , "Users management"               , Bitrix);
+    NewTest(TestTable, "B24_LeadsManagement"                 , "Leads management"               , Bitrix);
+    NewTest(TestTable, "B24_DealsManagement"                 , "Deals management"               , Bitrix);
+    NewTest(TestTable, "B24_CalendarsManagement"             , "Calendars management"           , Bitrix);
+    NewTest(TestTable, "VKT_MessagesSending"                 , "Messages sending"               , VKT);
+    NewTest(TestTable, "VKT_CommonMethods"                   , "Common methods"                 , VKT);
+    NewTest(TestTable, "VKT_ChatManagement"                  , "Chat management"                , VKT);
+    NewTest(TestTable, "NC_FilesManagement"                  , "Files management"               , Neocities);
+    NewTest(TestTable, "NC_DataRetrieving"                   , "Data retrieving"                , Neocities);
+    NewTest(TestTable, "CdekAPI_CommonMethods"               , "Common methods"                 , Cdek);
+    NewTest(TestTable, "CDEKAPI_OrdersManagement"            , "Orders management"              , Cdek);
+    NewTest(TestTable, "CdekAPI_CourierInvitationsManagement", "Courier invitations management" , Cdek);
+    NewTest(TestTable, "YaMetrika_TagsManagement"            , "Tags management"                , Metrika);
+    NewTest(TestTable, "YaMetrika_CountersManagement"        , "Counters management"            , Metrika);
+    NewTest(TestTable, "YaMetrika_ActionsManagement"         , "Actions management"             , Metrika);
+    NewTest(TestTable, "AWS_CommonMethods"                   , "Common methods"                 , S3_);
+    NewTest(TestTable, "AWS_BucketsManagement"               , "Buckets management"             , S3_);
+    NewTest(TestTable, "AWS_ObjectsManagement"               , "Objects management"             , S3_);
+    NewTest(TestTable, "TC_Client"                           , "TCP Client"                     , TCP);
+    NewTest(TestTable, "SQLL_CommonMethods"                  , "Common methods"                 , SQLite);
+    NewTest(TestTable, "SQLL_ORM"                            , "ORM"                            , SQLite);
+    NewTest(TestTable, "Postgres_CommonMethods"              , "Common methods"                 , Postgres);
+    NewTest(TestTable, "Postgres_ORM"                        , "ORM"                            , Postgres);
+    NewTest(TestTable, "MYS_CommonMethods"                   , "Common methods"                 , MySQL);
+    NewTest(TestTable, "MYS_ORM"                             , "ORM"                            , MySQL);
+    NewTest(TestTable, "MSS_CommonMethods"                   , "Common methods"                 , MSSQL);
+    NewTest(TestTable, "MSS_ORM"                             , "ORM"                            , MSSQL);
+    NewTest(TestTable, "GAPI_GroupManagement"                , "Group management"               , GreenAPI);
+    NewTest(TestTable, "GAPI_MessageSending"                 , "Messages sending"               , GreenAPI);
+    NewTest(TestTable, "GAPI_NotificationsReceiving"         , "Notifications receiving"        , GreenAPI);
+    NewTest(TestTable, "GAPI_MessageQueue"                   , "Message queue"                  , GreenAPI);
+    NewTest(TestTable, "GAPI_MessageLogs"                    , "Message logs"                   , GreenAPI);
+    NewTest(TestTable, "GAPI_Account"                        , "Account"                        , GreenAPI);
+    NewTest(TestTable, "GMax_Account"                        , "Account"                        , GreenMax);
+    NewTest(TestTable, "RC_CommandsExecution"                , "Commands execution"             , RCON);
+    NewTest(TestTable, "OLLM_RequestsProcessing"             , "Requests processing"            , Ollama);
+    NewTest(TestTable, "OLLM_ModelsManagement"               , "Models management"              , Ollama);
+    NewTest(TestTable, "OLLM_WorkingWithBlob"                , "Working with Blob"              , Ollama);
+    NewTest(TestTable, "HTTP_Initialization"                 , "Initialization"                 , Http);
+    NewTest(TestTable, "HTTP_BodySet"                        , "Body set"                       , Http);
+    NewTest(TestTable, "HTTP_Settings"                       , "Settings"                       , Http);
+    NewTest(TestTable, "HTTP_HeadersSetting"                 , "Headers setting"                , Http);
+    NewTest(TestTable, "HTTP_Authorization"                  , "Authorization"                  , Http);
+    NewTest(TestTable, "HTTP_RequestProcessing"              , "Request processing"             , Http);
+    NewTest(TestTable, "HTTP_ResponseReceiving"              , "Response receiving"             , Http);
+    NewTest(TestTable, "OAI_RequestsProcessing"              , "Requests processing"            , OpenAI);
+    NewTest(TestTable, "OAI_Assistants"                      , "Assistants"                     , OpenAI);
+    NewTest(TestTable, "OAI_FileManagement"                  , "Files management"               , OpenAI);
+    NewTest(TestTable, "OAI_AudioProcessing"                 , "Audio processing"               , OpenAI);
+    NewTest(TestTable, "OAI_ModelsManagement"                , "Models management"              , OpenAI);
+    NewTest(TestTable, "FT_DirecotryManagement"              , "Directory management"           , FTP);
+    NewTest(TestTable, "FT_FileOperations"                   , "Files management"               , FTP);
+    NewTest(TestTable, "FT_CommonMethods"                    , "Common methods"                 , FTP);
+    NewTest(TestTable, "RPortal_Authorization"               , "Authorization"                  , RPortal);
+    NewTest(TestTable, "SShell_CommonMethods"                , "Common methods"                 , SSH);
+    NewTest(TestTable, "SF_CommonMethods"                    , "Common methods"                 , SFTP);
+    NewTest(TestTable, "SF_DirectoryManagement"              , "Directory management"           , SFTP);
+    NewTest(TestTable, "SF_FileManagement"                   , "Files management"               , SFTP);
 
     Return TestTable;
 
@@ -611,13 +602,8 @@ Procedure WriteParameter(Parameter, Value) Export
 
 EndProcedure
 
-Procedure ProcessTestingResult(Val Result
-    , Val Method
-    , Val Library
-    , Val Option = ""
-    , AddParam1  = Undefined
-    , AddParam2  = Undefined
-    , AddParam3  = Undefined) Export
+Procedure ProcessTestingResult(Val Result, Val Method, Val Library, Val Option = "",
+    AddParam1                                                                     = Undefined, AddParam2 = Undefined, AddParam3 = Undefined) Export
 
     // BSLLS:UnusedLocalVariable-off
     //
@@ -656,7 +642,7 @@ Procedure ProcessTestingResult(Val Result
         CheckResult = Undefined;
 
         //@skip-check server-execution-safe-mode
-        Execute(CheckCall);
+        Execute (CheckCall);
 
         Text = PrintLog(Result, LogsMethod, Library);
 
@@ -693,13 +679,13 @@ EndProcedure
 Procedure LogServiceInformation(Val Text, Val Note, Val Library) Export
 
     TextTemplate = "
-    |--!!!---------%1----------!!!--
-    |
-    |%2
-    |
-    |%3
-    |
-    |---------------------------------";
+                   |--!!!---------%1----------!!!--
+                   |
+                   |%2
+                   |
+                   |%3
+                   |
+                   |---------------------------------";
 
     Message(StrTemplate(TextTemplate, Library, Note, Text));
 
@@ -731,9 +717,9 @@ Function CreateReportPortalLaunch(Val Platform = "") Export
 
     LaunchStructure = New Structure;
 
-    LaunchStructure.Insert("name"      , LaunchName);
-    LaunchStructure.Insert("startTime" , CurrentDate);
-    LaunchStructure.Insert("uuid"      , UUID);
+    LaunchStructure.Insert("name"     , LaunchName);
+    LaunchStructure.Insert("startTime", CurrentDate);
+    LaunchStructure.Insert("uuid"     , UUID);
 
     WriteParameter("RPortal_MainLaunch", UUID);
 
@@ -780,11 +766,11 @@ Function CreateLaunchSet(Val Name) Export
     UUID = String(New UUID);
 
     ElementStructure = New Structure;
-    ElementStructure.Insert("name"       , Name);
-    ElementStructure.Insert("startTime"  , CurrentDate);
-    ElementStructure.Insert("type"       , "suite");
-    ElementStructure.Insert("launchUuid" , Data["id"]);
-    ElementStructure.Insert("uuid"       , UUID);
+    ElementStructure.Insert("name"      , Name);
+    ElementStructure.Insert("startTime" , CurrentDate);
+    ElementStructure.Insert("type"      , "suite");
+    ElementStructure.Insert("launchUuid", Data["id"]);
+    ElementStructure.Insert("uuid"      , UUID);
 
     ReportPortal().CreateItem(URL, Token, Project, ElementStructure);
 
@@ -824,11 +810,11 @@ Function CreateTestElement(Val Set, Val Library, Val Method, Val Option) Export
 
     ElementStructure = New Structure;
 
-    ElementStructure.Insert("name"       , Title);
-    ElementStructure.Insert("startTime"  , CurrentDate);
-    ElementStructure.Insert("uuid"       , UUID);
-    ElementStructure.Insert("type"       , "step");
-    ElementStructure.Insert("launchUuid" , Data["id"]);
+    ElementStructure.Insert("name"      , Title);
+    ElementStructure.Insert("startTime" , CurrentDate);
+    ElementStructure.Insert("uuid"      , UUID);
+    ElementStructure.Insert("type"      , "step");
+    ElementStructure.Insert("launchUuid", Data["id"]);
 
     ReportPortal().CreateItem(URL, Token, Project, ElementStructure, Set);
 
@@ -862,7 +848,7 @@ Procedure FinishLaunch() Export
         EndIf;
 
         AllTests      = GetFullTestList();
-        ExecutedTests = New ValueList();
+        ExecutedTests = New ValueList;
         ExecutedTests.LoadValues(GetExecutedTestsList());
 
         If ExecutedTests.Count() / AllTests.Count() > 0.8 Then
@@ -905,8 +891,7 @@ Function GetFullTestList() Export
     Lang = OPI_Tools.OPILanguage();
 
     Tests = StrTemplate(
-        "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/service/tests_%1.json",
-        Lang);
+        "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/service/tests_%1.json", Lang);
 
     OPI_TypeConversion.GetCollection(Tests);
 
@@ -1100,13 +1085,8 @@ Function GetSSHParameterOptions() Export
 
     PrivateKey = GetTempFileName();
     Token      = TestParametersMain["Access_Token"];
-    OPI_HTTPRequests
-        .NewRequest()
-        .Initialize(TestParametersMain["SSH_Key"])
-        .AddBearerAuthorization(Token)
-        .ProcessRequest("GET")
-        .ReturnResponseAsBinaryData()
-        .Write(PrivateKey);
+    OPI_HTTPRequests.NewRequest().Initialize(TestParametersMain["SSH_Key"]).AddBearerAuthorization(
+        Token).ProcessRequest("GET").ReturnResponseAsBinaryData().Write(PrivateKey);
 
     TestParametersMain.Insert("SSH_Key", PrivateKey);
 
@@ -1132,17 +1112,16 @@ Function GetSSHParameterOptions() Export
 
         TestProxyParameters = OPI_Tools.CopyCollection(OptionArray[N]);
 
-        Prefix = ?(TestProxyParameters["Postfix"] = "By login and password"
-            , ""
-            , StrTemplate("%1, SOCKS5", TestProxyParameters["Postfix"]));
+        Prefix = ?(TestProxyParameters["Postfix"] = "By login and password", "", StrTemplate("%1, SOCKS5",
+            TestProxyParameters["Postfix"]));
 
         TestProxyParameters.Insert("SSH_Host"  , NetAddress);
         TestProxyParameters.Insert("Proxy"     , True);
         TestProxyParameters.Insert("Proxy_Type", "socks5");
         TestProxyParameters.Insert("Postfix"   , Prefix);
 
-        TestProxyParameters.Insert("Proxy_IP"   , TestProxyParameters["Socks5_IP"]);
-        TestProxyParameters.Insert("Proxy_Port" , TestProxyParameters["Socks5_Port"]);
+        TestProxyParameters.Insert("Proxy_IP"  , TestProxyParameters["Socks5_IP"]);
+        TestProxyParameters.Insert("Proxy_Port", TestProxyParameters["Socks5_Port"]);
         OptionArray.Add(TestProxyParameters);
 
         TestProxyParameters = OPI_Tools.CopyCollection(OptionArray[N]);
@@ -1261,7 +1240,7 @@ EndFunction
 
 Function Check_Telegram_GetUpdates(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("Map") .Заполнено();
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
     ExpectsThat(Result["result"]).ИмеетТип("Array");
 
@@ -1339,7 +1318,7 @@ EndFunction
 
 Function Check_Telegram_SendImage(Val Result, Val Option, Parameters = "", Text = "")
 
-    ExpectsThat(Result).ИмеетТип("Map") .Заполнено();
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
     ExpectsThat(Result["result"]["caption"]).Равно(Text);
     ExpectsThat(Result["result"]["photo"]).ИмеетТип("Array");
@@ -1726,7 +1705,7 @@ EndFunction
 
 Function Check_Telegram_ReplaceMessageCaption(Val Result, Val Option, Text = "")
 
-    ExpectsThat(Result).ИмеетТип("Map") .Заполнено();
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
     ExpectsThat(Result["result"]["caption"]).Равно(Text);
     ExpectsThat(Result["result"]["photo"]).ИмеетТип("Array");
@@ -1738,7 +1717,7 @@ EndFunction
 Function Check_VK_CreateTokenRetrievalLink(Val Result, Val Option)
 
     If TypeOf(Result) = Type("BinaryData") Then
-        Result        = GetStringFromBinaryData(Result);
+        Result           = GetStringFromBinaryData(Result);
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
@@ -1812,11 +1791,7 @@ Function Check_VK_CreateAlbum(Val Result, Val Option, Parameters = "", Descripti
 
 EndFunction
 
-Function Check_VK_SaveImageToAlbum(Val Result
-    , Val Option
-    , Parameters  = ""
-    , Description = ""
-    , AlbumID     = "")
+Function Check_VK_SaveImageToAlbum(Val Result, Val Option, Parameters = "", Description = "", AlbumID = "")
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["response"][0]["text"]).Равно(Description);
@@ -2474,10 +2449,8 @@ Function Check_YandexDisk_MoveObject(Val Result, Val Option, Parameters = "", Pa
 
 EndFunction
 
-Function Check_YandexDisk_GetPublishedObjectsList(Val Result
-    , Val Option
-    , Count  = 0
-    , Indent = 0)
+Function Check_YandexDisk_GetPublishedObjectsList(Val Result, Val Option, Count = 0,
+    Indent                                                                         = 0)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["limit"]).Равно(Count);
@@ -2671,7 +2644,7 @@ EndFunction
 Function Check_GoogleWorkspace_FormCodeRetrievalLink(Val Result, Val Option)
 
     If TypeOf(Result) = Type("BinaryData") Then
-        Result        = GetStringFromBinaryData(Result);
+        Result           = GetStringFromBinaryData(Result);
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
@@ -2748,10 +2721,8 @@ Function Check_GoogleCalendar_CreateCalendar(Val Result, Val Option, Parameters 
 
 EndFunction
 
-Function Check_GoogleCalendar_EditCalendarMetadata(Val Result
-    , Val Option
-    , Name        = ""
-    , Description = "")
+Function Check_GoogleCalendar_EditCalendarMetadata(Val Result, Val Option, Name = "",
+    Description                                                                    = "")
 
     ExpectsThat(Result).ИмеетТип("Map");
     ExpectsThat(Result["summary"]).Равно(Name);
@@ -2762,10 +2733,8 @@ Function Check_GoogleCalendar_EditCalendarMetadata(Val Result
 
 EndFunction
 
-Function Check_GoogleCalendar_GetCalendarMetadata(Val Result
-    , Val Option
-    , Name        = ""
-    , Description = "")
+Function Check_GoogleCalendar_GetCalendarMetadata(Val Result, Val Option, Name = "",
+    Description                                                                   = "")
 
     ExpectsThat(Result).ИмеетТип("Map");
     ExpectsThat(Result["summary"]).Равно(Name);
@@ -2787,10 +2756,8 @@ Function Check_GoogleCalendar_AddCalendarToList(Val Result, Val Option, Name = "
 
 EndFunction
 
-Function Check_GoogleCalendar_EditListCalendar(Val Result
-    , Val Option
-    , PrimaryColor   = ""
-    , SecondaryColor = "")
+Function Check_GoogleCalendar_EditListCalendar(Val Result, Val Option, PrimaryColor = "",
+    SecondaryColor                                                                     = "")
 
     ExpectsThat(Result).ИмеетТип("Map");
     ExpectsThat(Result["foregroundColor"]).Равно(PrimaryColor);
@@ -2800,10 +2767,8 @@ Function Check_GoogleCalendar_EditListCalendar(Val Result
 
 EndFunction
 
-Function Check_GoogleCalendar_GetListCalendar(Val Result
-    , Val Option
-    , PrimaryColor   = ""
-    , SecondaryColor = "")
+Function Check_GoogleCalendar_GetListCalendar(Val Result, Val Option, PrimaryColor = "",
+    SecondaryColor                                                                    = "")
 
     ExpectsThat(Result).ИмеетТип("Map");
     ExpectsThat(Result["foregroundColor"]).Равно(PrimaryColor);
@@ -2843,11 +2808,8 @@ Function Check_GoogleCalendar_DeleteCalendar(Val Result, Val Option)
 
 EndFunction
 
-Function Check_GoogleCalendar_CreateEvent(Val Result
-    , Val Option
-    , Parameters  = ""
-    , Name        = ""
-    , Description = "")
+Function Check_GoogleCalendar_CreateEvent(Val Result, Val Option, Parameters = "", Name = "",
+    Description                                                                 = "")
 
     ExpectsThat(Result).ИмеетТип("Map");
     ExpectsThat(Result["summary"]).Равно(Name);
@@ -3100,11 +3062,8 @@ Function Check_GoogleDrive_CreateFolder(Val Result, Val Option)
 
 EndFunction
 
-Function Check_GoogleSheets_CreateSpreadsheet(Val Result
-    , Val Option
-    , Parameters = ""
-    , Name       = ""
-    , SheetArray = "")
+Function Check_GoogleSheets_CreateSpreadsheet(Val Result, Val Option, Parameters = "", Name = "",
+    SheetArray                                                                      = "")
 
     ExpectsThat(Result["properties"]["title"]).Равно(Name);
 
@@ -3902,7 +3861,7 @@ EndFunction
 Function Check_Twitter_GetAuthorizationLink(Val Result, Val Option)
 
     If TypeOf(Result) = Type("BinaryData") Then
-        Result        = GetStringFromBinaryData(Result);
+        Result           = GetStringFromBinaryData(Result);
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
@@ -4243,7 +4202,7 @@ EndFunction
 Function Check_Dropbox_GetAuthorizationLink(Val Result, Val Option)
 
     If TypeOf(Result) = Type("BinaryData") Then
-        Result        = GetStringFromBinaryData(Result);
+        Result           = GetStringFromBinaryData(Result);
     EndIf;
 
     ExpectsThat(Result).ИмеетТип("String");
@@ -4611,7 +4570,7 @@ Function Check_Bitrix24_ServerTime(Val Result, Val Option)
     Time = Result["result"];
 
     If Not TypeOf(Time) = Type("Date") Then
-       Time             = XMLValue(Type("Date"), Time);
+        Time               = XMLValue(Type("Date"), Time);
     EndIf;
 
     ExpectsThat(Time).ИмеетТип("Date").Заполнено();
@@ -4624,7 +4583,7 @@ Function Check_Bitrix24_CreatePost(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookPostID";
     Else
         ParameterName = "Bitrix24_PostID";
@@ -4700,7 +4659,7 @@ Function Check_Bitrix24_CreateTask(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["result"]["task"]).Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookTaskID";
     Else
         ParameterName = "Bitrix24_TaskID";
@@ -4878,7 +4837,7 @@ Function Check_Bitrix24_UploadFileToStorage(Val Result, Val Option, Parameters =
     ExpectsThat(Result["result"]).ИмеетТип("Map");
     ExpectsThat(Result["result"]["ID"]).Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookFileID";
     Else
         ParameterName = "Bitrix24_FileID";
@@ -4906,7 +4865,7 @@ Function Check_Bitrix24_CreateStorageFolder(Val Result, Val Option, Parameters =
     ExpectsThat(Result["result"]).ИмеетТип("Map");
     ExpectsThat(Result["result"]["ID"]).Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookFolderID";
     Else
         ParameterName = "Bitrix24_FolderID";
@@ -4969,7 +4928,7 @@ Function Check_Bitrix24_CreateSubfolder(Val Result, Val Option, Parameters = "")
     ExpectsThat(Result["result"]).ИмеетТип("Map");
     ExpectsThat(Result["result"]["ID"]).Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookSubfolderID";
     Else
         ParameterName = "Bitrix24_SubfolderID";
@@ -5165,7 +5124,7 @@ Function Check_Bitrix24_AddTaskComment(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookCommentID";
     Else
         ParameterName = "Bitrix24_CommentID";
@@ -5261,7 +5220,7 @@ Function Check_Bitrix24_AddKanbanStage(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookStageID";
     Else
         ParameterName = "Bitrix24_StageID";
@@ -5312,7 +5271,7 @@ Function Check_Bitrix24_AddTasksChecklistElement(Val Result, Val Option, Paramet
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookCheckElementID";
     Else
         ParameterName = "Bitrix24_CheckElementID";
@@ -5381,7 +5340,7 @@ Function Check_Bitrix24_AddTaskTimeAccounting(Val Result, Val Option, Parameters
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookTimeID";
     Else
         ParameterName = "Bitrix24_TimeID";
@@ -5444,7 +5403,7 @@ Function Check_Bitrix24_CreateChat(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookChatID";
     Else
         ParameterName = "Bitrix24_ChatID";
@@ -5545,7 +5504,7 @@ Function Check_Bitrix24_GetChatMessagesList(Val Result, Val Option, Parameters =
 
     ExpectsThat(Result["result"]["messages"]).ИмеетТип("Array");
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_ChatMessageID";
     Else
         ParameterName = "Bitrix24_UserMessageID";
@@ -5613,7 +5572,7 @@ Function Check_Bitrix24_SendMessage(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_ChatMessageID";
     Else
         ParameterName = "Bitrix24_UserMessageID";
@@ -5698,7 +5657,7 @@ Function Check_Bitrix24_CreatePersonalNotification(Val Result, Val Option, Param
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_PersoalHookNotifyID";
     Else
         ParameterName = "Bitrix24_PersoalNotifyID";
@@ -5717,7 +5676,7 @@ Function Check_Bitrix24_CreateSystemNotification(Val Result, Val Option, Paramet
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_SystemHookNotifyID";
     Else
         ParameterName = "Bitrix24_SystemNotifyID";
@@ -5744,7 +5703,7 @@ Function Check_Bitrix24_CreateDepartment(Val Result, Val Option, Parameters = ""
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookDepID";
     Else
         ParameterName = "Bitrix24_DepID";
@@ -5805,7 +5764,7 @@ Function Check_Bitrix24_CreateUser(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookUserID";
     Else
         ParameterName = "Bitrix24_UserID";
@@ -5873,7 +5832,7 @@ Function Check_Bitrix24_CreateLead(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookLeadID";
     Else
         ParameterName = "Bitrix24_LeadID";
@@ -5942,7 +5901,7 @@ Function Check_Bitrix24_CreateDeal(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookDealID";
     Else
         ParameterName = "Bitrix24_DealID";
@@ -6042,7 +6001,7 @@ Function Check_Bitrix24_CreateCalendar(Val Result, Val Option, Parameters = "")
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookCalendarID";
     Else
         ParameterName = "Bitrix24_CalendarID";
@@ -6157,7 +6116,7 @@ Function Check_Bitrix24_CreateCalendarEvent(Val Result, Val Option, Parameters =
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookCEventID";
     Else
         ParameterName = "Bitrix24_CEventID";
@@ -6176,7 +6135,7 @@ Function Check_Bitrix24_UpdateCalendarEvent(Val Result, Val Option, Parameters =
 
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
-    If Option         = "Hook" Then
+    If Option      = "Hook" Then
         ParameterName = "Bitrix24_HookCEventID";
     Else
         ParameterName = "Bitrix24_CEventID";
@@ -7350,7 +7309,7 @@ Function Check_S3_GetObjectDownloadLink(Val Result, Val Option, Size = "")
     If Not ValueIsFilled(Option) Then
         ExpectsThat(Result).ИмеетТип("String");
     Else
-       ExpectsThat(Result).ИмеетТип("BinaryData");
+        ExpectsThat(Result).ИмеетТип("BinaryData");
         ExpectsThat(Result.Size() >= Size).Равно(True);
     EndIf;
 
@@ -7487,10 +7446,10 @@ EndFunction
 
 Function Check_SQLite_CreateConnection(Val Result, Val Option)
 
-    If Option  = "Closing" Then
+    If Option = "Closing" Then
         ExpectsThat(Result["result"]).Равно(True);
     Else
-        Result = String(TypeOf(Result));
+        Result   = String(TypeOf(Result));
         ExpectsThat(Result).Равно("AddIn.OPI_SQLite.Main");
     EndIf;
 
@@ -7500,8 +7459,8 @@ EndFunction
 
 Function Check_SQLite_CloseConnection(Val Result, Val Option)
 
-    If Option  = "Openning" Then
-        Result = String(TypeOf(Result));
+    If Option = "Openning" Then
+        Result   = String(TypeOf(Result));
         ExpectsThat(Result).Равно("AddIn.OPI_SQLite.Main");
     Else
         ExpectsThat(Result["result"]).Равно(True);
@@ -7556,10 +7515,10 @@ EndFunction
 
 Function Check_SQLite_AddRecords(Val Result, Val Option)
 
-    If Option                       = "Field error" Or Option = "JSON Error" Then
+    If Option                   = "Field error" Or Option = "JSON Error" Then
         ExpectsThat(Result["result"]).Равно(False);
-    ElsIf Option                    = "Error without transaction" Then
-         ExpectsThat(Result["rows"] = 1 Or Result["rows"] = 2).Равно(True);
+    ElsIf Option                = "Error without transaction" Then
+        ExpectsThat(Result["rows"] = 1 Or Result["rows"] = 2).Равно(True);
     Else
         ExpectsThat(Result["result"]).Равно(True);
     EndIf;
@@ -7869,8 +7828,7 @@ Function Check_PostgreSQL_GetRecords(Val Result, Val Option)
     If Not ValueIsFilled(Option) Then
 
         If ValueIsFilled(Result["data"]) Then
-            Result["data"][0]["bytea_field"]["BYTEA"] = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10)
-                + "...";
+            Result["data"][0]["bytea_field"]["BYTEA"] = Left(Result["data"][0]["bytea_field"]["BYTEA"], 10) + "...";
         EndIf;
 
     Else
@@ -7999,7 +7957,7 @@ Function Check_PostgreSQL_AddTableColumn(Val Result, Val Option)
 
             If Coloumn["column_name"] = "new_field" Then
                 ExpectsThat(Lower(Coloumn["data_type"])).Равно("text");
-                Found                 = True;
+                Found                    = True;
             EndIf;
 
         EndDo;
@@ -8023,7 +7981,7 @@ Function Check_PostgreSQL_DeleteTableColumn(Val Result, Val Option)
         For Each Coloumn In Result["data"] Do
 
             If Coloumn["column_name"] = "new_field" Then
-                Found                 = True;
+                Found                    = True;
             EndIf;
 
         EndDo;
@@ -8160,8 +8118,7 @@ Function Check_MySQL_GetRecords(Val Result, Val Option)
         If ValueIsFilled(Result["data"]) Then
 
             Result["data"][0]["mediumblob_field"]["BYTES"] =
-                Left(Result["data"][0]["mediumblob_field"]["BYTES"], 10)
-                + "...";
+                Left(Result["data"][0]["mediumblob_field"]["BYTES"], 10) + "...";
 
         EndIf;
 
@@ -8321,7 +8278,7 @@ Function Check_MySQL_DeleteTableColumn(Val Result, Val Option)
         For Each Coloumn In Result["data"] Do
 
             If Coloumn["COLUMN_NAME"] = "new_field" Then
-                Found                 = True;
+                Found                    = True;
             EndIf;
 
         EndDo;
@@ -8906,11 +8863,8 @@ Function Check_Ollama_GetResponse(Val Result, Val Option)
 
 EndFunction
 
-Function Check_Ollama_GetContextResponse(Val Result
-    , Val Option
-    , Message1 = ""
-    , Message2 = ""
-    , Message3 = "")
+Function Check_Ollama_GetContextResponse(Val Result, Val Option, Message1 = "", Message2 = "",
+    Message3                                                                 = "")
 
     If Option = "Comparison" Then
 
@@ -9141,7 +9095,7 @@ EndFunction
 
 Function Check_Ollama_CheckBlob(Val Result, Val Option, Parameters = "")
 
-    If Option                              = "Error" Then
+    If Option                           = "Error" Then
         ExpectsThat(Result["status_code"] >= 400).Равно(True);
     Else
         ExpectsThat(Result["status_code"] < 300).Равно(True);
@@ -9264,8 +9218,7 @@ Function Check_HTTPClient_SetURLParams(Val Result, Val Option, Parameters = "")
     Address = "/get?param1=text&param2=10";
 
     ResponseMap = New Map;
-    ResponseMap.Insert("Option 1", "/page?param1=search%3Ftext&param2=John"
-        + "%20Doe&param3=value%26another&param4=%D0%BA%D0%B8%D1%80%D0%B8%D0%BB%D0%BB%"
+    ResponseMap.Insert("Option 1", "/page?param1=search%3Ftext&param2=John" + "%20Doe&param3=value%26another&param4=%D0%BA%D0%B8%D1%80%D0%B8%D0%BB%D0%BB%"
         + "D0%B8%D1%86%D0%B0&param5=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E");
 
     ResponseMap.Insert("Option 2" , "/page?existing=value&param1=search%3Ftext&param2=John%20Doe");
@@ -9297,8 +9250,8 @@ Function Check_HTTPClient_SetURLParams(Val Result, Val Option, Parameters = "")
 
         Try
 
-        ExpectsThat(Result).ИмеетТип("HTTPRequest");
-        ExpectsThat(Result.ResourceAddress).Равно(Address);
+            ExpectsThat(Result).ИмеетТип("HTTPRequest");
+            ExpectsThat(Result.ResourceAddress).Равно(Address);
 
         Except
             Raise ErrorDescription() + Chars.LF + Chars.LF + Result.GetLog(True);
@@ -9590,7 +9543,7 @@ EndFunction
 
 Function Check_HTTPClient_UseGzipCompression(Val Result, Val Option)
 
-    If Option       = "Enabled" Then
+    If Option    = "Enabled" Then
         Compression = "gzip";
     Else
         Compression = Undefined;
@@ -9703,8 +9656,8 @@ Function Check_HTTPClient_AddBasicAuthorization(Val Result, Val Option)
         EndTry;
     EndTry;
 
-    ExpectsThat(Result["headers"]["Authorization"])
-        .Равно("Basic " + Base64String(GetBinaryDataFromString("user:password")));
+    ExpectsThat(Result["headers"]["Authorization"]).Равно("Basic " + Base64String(GetBinaryDataFromString(
+        "user:password")));
 
     Return Result;
 
@@ -9867,7 +9820,7 @@ EndFunction
 
 Function Check_HTTPClient_ReturnResponse(Val Result, Val Option)
 
-   ExpectsThat(Result).ИмеетТип("HTTPResponse");
+    ExpectsThat(Result).ИмеетТип("HTTPResponse");
 
     Return Result;
 
@@ -9894,7 +9847,7 @@ EndFunction
 
 Function Check_HTTPClient_ReturnResponseAsBinaryData(Val Result, Val Option)
 
-   ExpectsThat(Result).ИмеетТип("BinaryData");
+    ExpectsThat(Result).ИмеетТип("BinaryData");
 
     Return Result;
 
@@ -9964,8 +9917,7 @@ Function Check_HTTPClient_UseURLEncoding(Val Result, Val Option)
 
     ExpectsThat(Result["No encoding"]).Равно(CorrectVariant1);
 
-    CorrectVariant2 = "/page?param1=search%3Ftext&param2=John%20Doe&pa"
-        + "ram3=value%26another&param4=%D0%BA%D0%B8%D1%80%D0%B8%D0%BB%D0%"
+    CorrectVariant2 = "/page?param1=search%3Ftext&param2=John%20Doe&pa" + "ram3=value%26another&param4=%D0%BA%D0%B8%D1%80%D0%B8%D0%BB%D0%"
         + "BB%D0%B8%D1%86%D0%B0&param5=%3Cscript%3Ealert%28%27XSS%27%29%3C%2Fscript%3E";
 
     ExpectsThat(Result["With encoding"]).Равно(CorrectVariant2);
@@ -9990,8 +9942,8 @@ Function Check_HTTPClient_SplitArraysInURL(Val Result, Val Option)
     ExpectsThat(SeparationPhp).Равно(CorrectVariant3);
 
     Result = StrTemplate("No separation: %1;
-    |Separation: %2
-    |Separation (php): %3", NoSeparation, Separation, SeparationPhp);
+                          |Separation: %2
+                          |Separation (php): %3", NoSeparation, Separation, SeparationPhp);
 
     Return Result;
 
@@ -10447,7 +10399,7 @@ Function Check_MSSQL_DeleteTableColumn(Val Result, Val Option)
         For Each Coloumn In Result["data"] Do
 
             If Coloumn["column_name"] = "new_field" Then
-                Found                 = True;
+                Found                    = True;
             EndIf;
 
         EndDo;
@@ -10780,7 +10732,7 @@ Function Check_FTP_UploadFile(Val Result, Val Option, Size = "")
 
     ExpectsThat(Result["bytes"]).Равно(Size);
 
-   If Not StrFind(Option, "Size 1") >  0 Or StrFind(Option, "Size 2") > 0 Then
+    If Not StrFind(Option, "Size 1") >  0 Or StrFind(Option, "Size 2") > 0 Then
 
         ExpectsThat(Result["result"]).Равно(True);
 
@@ -11137,18 +11089,18 @@ EndFunction
 
 Function Check_SFTP_UploadFile(Val Result, Val Option, Size = "")
 
-   If StrFind(Option, "File size") > 0 Then
+    If StrFind(Option, "File size") > 0 Then
 
-       ExpectsThat(Result).Равно(Size);
+        ExpectsThat(Result).Равно(Size);
 
-   Else
+    Else
 
         ExpectsThat(Result["bytes"]).Равно(Size);
         ExpectsThat(Result["result"]).Равно(True);
 
-   EndIf;
+    EndIf;
 
-   Return Result;
+    Return Result;
 
 EndFunction
 
@@ -11259,7 +11211,7 @@ Function Check_SFTP_GetConnectionConfiguration(Val Result, Val Option)
             Result["set"]["pub_path"] = "./ssh_key.pub";
         EndIf;
 
-         If OPI_Tools.CollectionFieldExists(Result, "proxy") Then
+        If OPI_Tools.CollectionFieldExists(Result, "proxy") Then
 
             ExpectsThat(Result["proxy"]).Заполнено();
             Result["proxy"]["password"] = "***";
@@ -11475,9 +11427,9 @@ Procedure WriteMissingTest(Val Library, Val Method, Val Option)
 
     ElementStructure = New Structure;
 
-    ElementStructure.Insert("endTime"    , CurrentDate);
-    ElementStructure.Insert("launchUuid" , Data["id"]);
-    ElementStructure.Insert("status"     , "skipped");
+    ElementStructure.Insert("endTime"   , CurrentDate);
+    ElementStructure.Insert("launchUuid", Data["id"]);
+    ElementStructure.Insert("status"    , "skipped");
 
     ReportPortal().FinishItem(URL, Token, Project, ElementID, ElementStructure);
 
@@ -11524,9 +11476,9 @@ Procedure FinishTestElement(Val UUID, Val Status)
 
     ElementStructure = New Structure;
 
-    ElementStructure.Insert("endTime"    , CurrentDate);
-    ElementStructure.Insert("launchUuid" , Data["id"]);
-    ElementStructure.Insert("status"     , Status);
+    ElementStructure.Insert("endTime"   , CurrentDate);
+    ElementStructure.Insert("launchUuid", Data["id"]);
+    ElementStructure.Insert("status"    , Status);
 
     ReportPortal().FinishItem(URL, Token, Project, UUID, ElementStructure);
 
@@ -11707,13 +11659,11 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
             Cover = True;
         EndIf;
 
-    ElsIf CurrentType  = Type("Structure")
-        Or CurrentType = Type("Map")
-        Or CurrentType = Type("Array") Then
+    ElsIf CurrentType = Type("Structure") Or CurrentType = Type("Map") Or CurrentType = Type("Array") Then
 
         If CurrentType = Type("Structure") Or CurrentType = Type("Map") Then
 
-            Value_ = New(CurrentTypeString);
+            Value_ = New (CurrentTypeString);
 
             For Each KeyValue In Value Do
                 Value_.Insert(KeyValue.Key, GetCLIFormedValue(KeyValue.Value, True, AddOptions));
@@ -11735,13 +11685,13 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
 
         EndIf;
 
-        JSONWriter = New JSONWriter();
+        JSONWriter = New JSONWriter;
 
         If CurrentType = Type("Array") Or Embedded Then
 
-            If CurrentType   = Type("Array") Then
-                For N        = 0 To Value.UBound() Do
-                    Value[N] = GetCLIFormedValue(Value[N], True, AddOptions);
+            If CurrentType = Type("Array") Then
+                For N         = 0 To Value.UBound() Do
+                    Value[N]     = GetCLIFormedValue(Value[N], True, AddOptions);
                 EndDo;
             EndIf;
 
@@ -11796,7 +11746,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
 
     ElsIf CurrentType = Type("Undefined") And Embedded Then
 
-         Value = Undefined;
+        Value = Undefined;
 
     Else
 
@@ -11805,7 +11755,7 @@ Function GetCLIFormedValue(Val Value, Val Embedded = False, AddOptions = "")
     EndIf;
 
     If Not OPI_Tools.IsWindows() And Not Embedded Then
-        Value = StrReplace(Value, """" , """'""");
+        Value = StrReplace(Value, """", """'""");
     EndIf;
 
     If Cover Then
@@ -11863,7 +11813,7 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
         OPI_TypeConversion.GetKeyValueCollection(Value);
 
         Data          = Value["data"];
-        Configuration = New Structure();
+        Configuration = New Structure;
 
         Configuration.Insert("set", Data["ftp_settings"]);
 
@@ -11902,7 +11852,7 @@ EndFunction
 
 Function FormOption(Val Name, Val Value, Embedded = False)
 
-    SecretsArray = New Array();
+    SecretsArray = New Array;
     SecretsArray.Add("token");
     SecretsArray.Add("key");
     SecretsArray.Add("secret");
@@ -11913,7 +11863,7 @@ Function FormOption(Val Name, Val Value, Embedded = False)
     SecretsArray.Add("refresh");
     SecretsArray.Add("invite_link");
 
-    ExceptionsList = New ValueList();
+    ExceptionsList = New ValueList;
     ExceptionsList.Add("passive");
     ExceptionsList.Add("keyboard");
 
@@ -11926,8 +11876,7 @@ Function FormOption(Val Name, Val Value, Embedded = False)
 
         For Each SecretKey In SecretsArray Do
 
-            If StrFind(Lower(Name), SecretKey) <> 0
-                And ExceptionsList.FindByValue(Lower(Name)) = Undefined Then
+            If StrFind(Lower(Name), SecretKey) <> 0 And ExceptionsList.FindByValue(Lower(Name)) = Undefined Then
 
                 Value = "***";
                 Cover = True;
@@ -11961,10 +11910,10 @@ Function FormOption(Val Name, Val Value, Embedded = False)
     If TypeOf(Value) = Type("Array") Then
 
         If String(Value[0]) = ValueAsString Then
-            Value           = ValueAsString;
+            Value              = ValueAsString;
         Else
 
-            For N        = 0 To Value.UBound() Do
+            For N     = 0 To Value.UBound() Do
                 Value[N] = FormOption("", Value[N], True);
             EndDo;
 
@@ -11972,7 +11921,7 @@ Function FormOption(Val Name, Val Value, Embedded = False)
 
     ElsIf OPI_Tools.ThisIsCollection(Value, True) Then
 
-        Value_ = New(TypeOf(Value));
+        Value_ = New (TypeOf(Value));
 
         For Each KeyValue In Value Do
             Value_.Insert(KeyValue.Key, FormOption(KeyValue.Key, KeyValue.Value, True));
@@ -11992,9 +11941,9 @@ Function FormOption(Val Name, Val Value, Embedded = False)
 
         If Not TypeOf(Value) = Type("String") Then
             Try
-                Value        = OPI_Tools.JSONString(Value, , False, False);
+                Value              = OPI_Tools.JSONString(Value, , False, False);
             Except
-                Value        = String(Value);
+                Value              = String(Value);
             EndTry;
         EndIf;
 
@@ -12010,7 +11959,7 @@ Function ReadCLIResponse(Val ResultFile)
     Try
 
         // BSLLS:ExternalAppStarting-off
-        JSONReader = New JSONReader();
+        JSONReader = New JSONReader;
         JSONReader.OpenFile(ResultFile);
         Result = ReadJSON(JSONReader, True);
         JSONReader.Close();
@@ -12028,12 +11977,12 @@ Function ReadCLIResponse(Val ResultFile)
             EndIf;
 
         Except
-            Result = null;
+            Result = Null;
         EndTry;
 
-     EndTry;
+    EndTry;
 
-     Return Result;
+    Return Result;
 
 EndFunction
 
@@ -12046,20 +11995,11 @@ Function PrintLog(Val Result, Val Method, Val Library, Val ErrorDescription = Un
     Text = Header + Chars.LF + Chars.LF;
 
     If ValueIsFilled(ErrorDescription) Then
-        Text = Text + ErrorDescription
-            + Chars.LF
-            + Chars.LF
-            + "---------------------------------"
-            + Chars.LF
-            + Chars.LF ;
+        Text = Text + ErrorDescription + Chars.LF + Chars.LF + "---------------------------------" + Chars.LF
+            + Chars.LF;
     EndIf;
 
-    Text = Text
-        + Data
-        + Chars.LF
-        + Chars.LF
-        + "---------------------------------"
-        + Chars.LF;
+    Text = Text + Data + Chars.LF + Chars.LF + "---------------------------------" + Chars.LF;
 
     Message(Text);
 
@@ -12086,9 +12026,9 @@ Function IsCLITest()
     Data = GetEnvironmentVariable("OINT_TESTS_CLI");
 
     If String(Data) = "1" Then
-        Result      = True;
+        Result         = True;
     Else
-        Result      = False;
+        Result         = False;
     EndIf;
 
     Return Result;
@@ -12264,7 +12204,7 @@ Procedure ProcessSpecialOptionsSecrets(Val Library, Val Option, Value)
     EndIf;
 
     If Not Value_ = Value Then
-        Value     = StrTemplate("""%1""", Value);
+        Value        = StrTemplate("""%1""", Value);
     EndIf;
 
 EndProcedure
@@ -12273,9 +12213,7 @@ Procedure ProcessSecretsBitrix24(Val Option, Value)
 
     If Option = "url" Then
 
-        Value = ?(StrFind(Value, "rest") > 0
-            , "https://b24-ar17wx.bitrix24.by/rest/1/***"
-            , Value);
+        Value = ?(StrFind(Value, "rest") > 0, "https://b24-ar17wx.bitrix24.by/rest/1/***", Value);
 
     EndIf;
 

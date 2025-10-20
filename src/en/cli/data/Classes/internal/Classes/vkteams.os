@@ -609,7 +609,7 @@ Function GetComposition() Export
     NewLine.Parameter    = "--text";
     NewLine.Description    = "Button text";
     NewLine.Region     = "Message sending";
-    NewLine.MethodDescription   = "Forms an action button for the message keyboard (see SendTextMessage)";
+    NewLine.MethodDescription   = "Forms an action button for the message keyboard";
 
 
     NewLine = CompositionTable.Add();
