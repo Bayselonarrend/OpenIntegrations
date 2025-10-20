@@ -1,5 +1,5 @@
-﻿    URL   = "https://hut.openintegrations.dev/localai/";
-    Токен = "12We...";
+﻿    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
 
     Текст  = "Attack ships on fire off the shoulder of Orion bright as magnesium";
     Модель = "bark-cpp-small";

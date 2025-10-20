@@ -1,5 +1,5 @@
-﻿    Host = "172.33.0.13";
-    Port = "2222";
+﻿    Host = FunctionParameters["SSH_Host"];
+    Port = FunctionParameters["SSH_Port"];
 
     UseProxy          = True;
     ProxySettings     = Undefined;
@@ -7,14 +7,14 @@
 
     If AuthorizationType = "By login and password" Then
 
-        Login    = "bayselonarrend";
-        Password = "12we...";
+        Login    = FunctionParameters["SSH_User"];
+        Password = FunctionParameters["SSH_Password"];
 
         SSHSettings = OPI_SSH.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
-        Login      = "bayselonarrend";
+        Login      = FunctionParameters["SSH_User"];
         PrivateKey = "./ssh_key";
         PublicKey  = "./ssh_key.pub";
 
@@ -22,19 +22,19 @@
 
     Else
 
-        Login       = "bayselonarrend";
+        Login       = FunctionParameters["SSH_User"];
         SSHSettings = OPI_SSH.GetSettingsViaAgent(Host, Port, Login);
 
     EndIf;
 
     If UseProxy Then
 
-        ProxyType = "http"; // http, socks5, socks4
+        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
 
-        ProxyAddress  = "127.0.0.1";
-        ProxyPort     = "8071";
-        ProxyLogin    = "proxyuser";
-        ProxyPassword = "12we...";
+        ProxyAddress  = FunctionParameters["Proxy_IP"];
+        ProxyPort     = FunctionParameters["Proxy_Port"];
+        ProxyLogin    = FunctionParameters["Proxy_User"];
+        ProxyPassword = FunctionParameters["Proxy_Password"];
 
         ProxySettings = OPI_SSH.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
 

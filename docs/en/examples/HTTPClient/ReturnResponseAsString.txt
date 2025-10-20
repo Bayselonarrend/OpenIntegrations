@@ -1,7 +1,7 @@
-﻿    URL = "https://bin.openintegrations.dev";
+﻿    URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
 
-    Image = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)

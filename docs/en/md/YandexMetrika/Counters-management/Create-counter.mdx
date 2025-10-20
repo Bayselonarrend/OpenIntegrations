@@ -31,7 +31,7 @@ Method at API documentation: [Creating a counter](https://yandex.ru/dev/metrika/
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
+    Token = FunctionParameters["Metrika_Token"];
 
     CounterStructure = New Structure;
     CounterStructure.Insert("autogoals_enabled", True);

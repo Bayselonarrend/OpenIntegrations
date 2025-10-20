@@ -1,2 +1,2 @@
-﻿    Token  = "6129457865:AAFyzNYOAFbu...";
+﻿    Token  = FunctionParameters["Telegram_Token"];
     Result = OPI_Telegram.GetAvatarIconList(Token);

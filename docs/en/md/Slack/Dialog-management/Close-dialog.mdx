@@ -27,8 +27,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token  = "xoxb-6965308400114-696804637...";
-    Dialog = "D06UAKK1C6R";
+    Token  = FunctionParameters["Slack_Token"];
+    Dialog = FunctionParameters["Slack_Dialog"];
 
     Result = OPI_Slack.CloseDialog(Token, Dialog);
 ```

@@ -1,6 +1,6 @@
-﻿    Host       = "172.33.0.13";
-    Port       = "2222";
-    Login      = "bayselonarrend";
+﻿    Host       = FunctionParameters["SSH_Host"];
+    Port       = FunctionParameters["SSH_Port"];
+    Login      = FunctionParameters["SSH_User"];
     PrivateKey = "./ssh_key";
     PublicKey  = "./ssh_key.pub";
 

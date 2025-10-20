@@ -1,6 +1,6 @@
 ﻿    Parameters = GetVKParameters();
 
-    AccountID = "1607951446";
+    AccountID = FunctionParameters["VK_AdsCabinetID"];
     Name      = "New campaign";
 
     Result = OPI_VK.CreateAdvertisingCampaign(AccountID, Name, Parameters);

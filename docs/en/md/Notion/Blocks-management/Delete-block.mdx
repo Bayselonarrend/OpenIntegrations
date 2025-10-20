@@ -27,8 +27,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Block = "29082aa7-fc4e-816e-8f86-cdde1b50cdd1";
+    Token = FunctionParameters["Notion_Token"];
+    Block = FunctionParameters["Notion_NewBlock"];
 
     Result = OPI_Notion.DeleteBlock(Token, Block);
 ```

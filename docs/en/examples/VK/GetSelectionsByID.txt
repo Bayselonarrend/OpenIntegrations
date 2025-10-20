@@ -1,4 +1,4 @@
 ﻿    Parameters = GetVKParameters();
-    Selection  = "142";
+    Selection  = FunctionParameters["VK_MarketAlbumID"];
 
     Result = OPI_VK.GetSelectionsByID(Selection, Parameters);

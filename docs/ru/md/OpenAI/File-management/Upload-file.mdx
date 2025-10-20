@@ -37,10 +37,10 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL   = "https://hut.openintegrations.dev/localai/";
-    Токен = "12We...";
+    URL   = ПараметрыФункции["OpenAI_URL"];
+    Токен = ПараметрыФункции["OpenAI_Token"];
 
-    Файл = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
+    Файл = ПараметрыФункции["Picture"]; // URL, Путь или Двоичные данные
 
     ИмяФайла   = СтрШаблон("%1.png", Строка(Новый УникальныйИдентификатор()));
     Назначение = "assistants";

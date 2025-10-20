@@ -35,8 +35,8 @@ Method at API documentation: [Create embeddings](https://platform.openai.com/doc
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL   = "https://hut.openintegrations.dev/localai/";
-    Token = "12We...";
+    URL   = FunctionParameters["OpenAI_URL"];
+    Token = FunctionParameters["OpenAI_Token"];
 
     Text  = "What is 1C:Enterprise?";
     Model = "arcee-ai_afm-4.5b";

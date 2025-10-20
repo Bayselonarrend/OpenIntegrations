@@ -36,7 +36,7 @@ The URL can be set later using the `SetURL` function
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL = "https://bin.openintegrations.dev";
+    URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
 
     Result = OPI_HTTPRequests

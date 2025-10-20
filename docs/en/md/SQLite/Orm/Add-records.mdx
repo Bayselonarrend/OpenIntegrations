@@ -33,13 +33,13 @@ Binary data can also be transferred as a structure `{'blob':File path}`
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Image = "https://hut.openintegrations.dev/test_data/picture.jpg";
+    Image = FunctionParameters["Picture"];
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
     PictureFile = GetTempFileName("png");
     Image.Write(PictureFile); // PictureFile - File to disk
 
-    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_2F49_2c.sqlite";
+    Base  = FunctionParameters["SQLite_DB"];
     Table = "test";
 
     DataArray = New Array;

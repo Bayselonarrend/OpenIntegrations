@@ -1,4 +1,4 @@
-﻿    URL = "https://bin.openintegrations.dev";
+﻿    URL = ПараметрыФункции["HTTP_URL"];
     URL = URL + "/post";
 
     СлучайныйМассив = Новый Массив;

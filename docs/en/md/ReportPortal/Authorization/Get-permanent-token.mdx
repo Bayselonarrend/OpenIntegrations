@@ -29,9 +29,9 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL     = "tests.openintegrations.dev";
-    Token   = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MDkxMjMyOSwiaWF0IjoxNzYwODI1OTI5LCJqdGkiOiIxMTdkNmY5Yy0xN2...";
-    UserID  = "1";
+    URL     = FunctionParameters["RPortal_URL"];
+    Token   = FunctionParameters["RPortal_TempToken"];
+    UserID  = FunctionParameters["RPortal_UserID"];
     KeyName = "test_key";
 
     Result = OPI_ReportPortal.GetPermanentToken(URL, Token, UserID, KeyName);

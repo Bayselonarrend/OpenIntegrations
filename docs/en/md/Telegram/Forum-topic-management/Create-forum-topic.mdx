@@ -33,8 +33,8 @@ Method at API documentation: [createForumTopic](https://core.telegram.org/bots/a
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "6129457865:AAFyzNYOAFbu...";
-    Chat  = "-1001971186208";
+    Token = FunctionParameters["Telegram_Token"];
+    Chat  = FunctionParameters["Telegram_ForumID"];
     Icon  = "5357419403325481346";
     Name  = "TestTopic " + String(New UUID);
 

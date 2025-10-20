@@ -1,4 +1,4 @@
-﻿    Token  = "xoxb-6965308400114-696804637...";
-    FileID = "F09N4KUDTB2";
+﻿    Token  = FunctionParameters["Slack_Token"];
+    FileID = FunctionParameters["Slack_ExtFileID"];
 
     Result = OPI_Slack.DeleteExternalFile(Token, FileID);
