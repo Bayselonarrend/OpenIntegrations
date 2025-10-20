@@ -1,0 +1,15 @@
+pipeline {
+	agent {
+		label 'windows'
+	}
+    stages {
+
+        stage('Build') {
+            steps {
+                    bat encoding: 'UTF-8', script:'chcp 65001 & 1cedtcli -data C:\\Users\\bayse\\AppData\\Local\\1C\\1cedtstart\\projects\\OpenIntegrations_Ru -command build --yes'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & 1cedtcli -data C:\\Users\\bayse\\AppData\\Local\\1C\\1cedtstart\\projects\\OpenIntegrations_En -command build --yes'
+            }
+        }
+
+    }
+}
