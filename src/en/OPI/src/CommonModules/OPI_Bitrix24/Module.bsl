@@ -409,14 +409,14 @@ Function GetTask(Val URL, Val TaskID, Val Token = "") Export
 EndFunction
 
 // Get tasks list
-// Get tasks list (50 at one response max))
+// Get tasks list (50 at one response max) with or without filtering
 //
 // Note
 // Method at API documentation: [tasks.task.list](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_list.php)
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Filter - Structure of KeyAndValue - Structure of task filter (see GetTaskFieldsStructure) - filter
+// Filter - Structure of KeyAndValue - Lead filter structure. See GetLeadFilterStructure - filter
 // Indent - Number, String - Offset of tasks list - offset
 // Token - String - Access token, when app auth method used - token
 // Fields - String, Array of String - A list of task fields in the response. All non calculable by default - select
@@ -437,14 +437,14 @@ Function GetTasksList(Val URL, Val Filter = "", Val Indent = 0, Val Token = "", 
 EndFunction
 
 // Create task
-// Create new task by fields structure (see GetTaskFieldsStructure)
+// Create new task by fields structure
 //
 // Note
 // Method at API documentation: [tasks.task.add](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_add.php)
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure Of KeyAndValue - Task fields structure (see GetTaskFieldsStructure) - fields
+// FieldsStructure - Structure Of KeyAndValue - Task fields structure. See GetTaskFieldsStructure - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -2440,7 +2440,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // FolderID - String, Number - Folder identifier - folderid
-// Filter - Structure of KeyAndValue - Items filter (see GetFolderFilterStructure) - filter
+// Filter - Structure of KeyAndValue - Items filter. See GetFolderFilterStructure - filter
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -4105,14 +4105,14 @@ EndFunction
 #Region LeadsManagement
 
 // Create lead
-// Creates a new lead by fields structure (see GetLeadStructure)
+// Creates a new lead by fields structure
 //
 // Note
 // Method at API documentation: [crm.lead.add](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_add.php)
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure Of KeyAndValue - Lead fields structure (see GetLeadStructure) - fields
+// FieldsStructure - Structure Of KeyAndValue - Lead fields structure. See GetLeadStructure - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -4170,14 +4170,14 @@ Function GetLead(Val URL, Val LeadID, Val Token = "") Export
 EndFunction
 
 // Get leads list
-// Gets a list of leads (50 per request max) with or without filtering (see GetLeadFilterStructure)
+// Gets a list of leads (50 per request max) with or without filtering
 //
 // Note
 // Method at API documentation: [crm.lead.list](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_list.php)
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Filter - Structure of KeyAndValue - Lead filter structure (see GetLeadFilterStructure) - filter
+// Filter - Structure of KeyAndValue - Lead filter structure. See GetLeadFilterStructure - filter
 // Indent - Number, String - Offset from the beginning of the list to get leads > 50 recursively - offset
 // Token - String - Access token, when app auth method used - token
 //
@@ -4298,14 +4298,14 @@ EndFunction
 #Region DealsManagement
 
 // Create deal
-// Creates a new deal by field structure (see. GetDealStructure)
+// Creates a new deal by field structure
 //
 // Note
 // Method at API documentation: [crm.deal.add](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_add.php)
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure Of KeyAndValue - Deal fields structure (see. GetDealStructure) - fields
+// FieldsStructure - Structure Of KeyAndValue - Deal fields structure. See. GetDealStructure - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -4363,14 +4363,14 @@ Function GetDeal(Val URL, Val DealID, Val Token = "") Export
 EndFunction
 
 // Get deals list
-// Gets the list of deals (50 pcs per query max) with or without filtering (see. GetDealsFilterStructure)
+// Gets the list of deals (50 pcs per query max) with or without filtering
 //
 // Note
 // Method at API documentation: [crm.deal.list](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_list.php)
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// Filter - Structure of KeyAndValue - Deals filter structure (see. GetDealsFilterStructure) - filter
+// Filter - Structure of KeyAndValue - Deals filter structure. See GetDealsFilterStructure - filter
 // Indent - Number, String - Offset from the beginning of the list to retrieve deals > 50 pcs recursively - offset
 // Token - String - Access token, when app auth method used - token
 //
@@ -4529,7 +4529,7 @@ EndFunction
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// FieldsStructure - Structure Of KeyAndValue - Calendar fields structure (see GetCalendarStructure) - fields
+// FieldsStructure - Structure Of KeyAndValue - Calendar fields structure. See GetCalendarStructure - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -4559,7 +4559,7 @@ EndFunction
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
 // CalendarID - String, Number - Calendar ID - calendar
-// FieldsStructure - Structure Of KeyAndValue - Deal fields structure (see. GetDealStructure) - fields
+// FieldsStructure - Structure Of KeyAndValue - Deal fields structure. See. GetDealStructure - fields
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:
@@ -4674,7 +4674,7 @@ EndFunction
 //
 // Parameters:
 // URL - String - URL of webhook or a Bitrix24 domain, when token used - url
-// SettingsStructure - Structure Of KeyAndValue - Settings structure (see GetCalednarCustomSettingsStructure) - settings
+// SettingsStructure - Structure Of KeyAndValue - Settings structure. See GetCalednarCustomSettingsStructure - settings
 // Token - String - Access token, when app auth method used - token
 //
 // Returns:

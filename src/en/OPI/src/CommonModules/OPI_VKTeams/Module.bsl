@@ -523,7 +523,10 @@ Function AnswerButtonEvent(Val Token
 EndFunction
 
 // Make action button
-// Forms an action button for the message keyboard (see SendTextMessage)
+// Forms an action button for the message keyboard
+//
+// Note
+// Used for `SendTextMessage` function
 //
 // Parameters:
 // Text - String - Button text - text
