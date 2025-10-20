@@ -13,7 +13,30 @@ src/en/cli/data/Classes/internal/Classes/** linguist-vendored
 *.iss linguist-vendored
 *.bat linguist-vendored
 
-* text=auto eol=lf
-*.<> text eol=lf
+* text=auto
+* text eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.jar binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.zip binary
+*.addin binary
+*.dll binary
+*.mp3 binary
+*.mp4 binary
+*.bmp binary
+*.webp binary
+*.pdn binary
+
 *.sh text eol=lf
+*.bash text eol=lf
+*.bat text eol=crlf
 
