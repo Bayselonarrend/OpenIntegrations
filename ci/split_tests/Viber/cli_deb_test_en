@@ -43,7 +43,6 @@ pipeline {
         stage('Install oint package') {
             steps {
                 script {
-                    // Устанавливаем скаченный пакет
                     sh 'dpkg -i oint_1.28.0_all_en.deb'
                 }
             }
