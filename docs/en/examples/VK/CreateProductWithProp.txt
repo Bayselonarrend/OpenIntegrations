@@ -2,8 +2,8 @@
 
     Image1       = "https://hut.openintegrations.dev/test_data/picture.jpg";
     Image2       = "https://hut.openintegrations.dev/test_data/picture2.jpg";
-    PropVariant1 = "8573";
-    PropVariant2 = "8574";
+    PropVariant1 = "8702";
+    PropVariant2 = "8703";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);

@@ -1,6 +1,6 @@
 ﻿    Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base  = "appuRWfDpxp26HYXm";
-    Table = "tblcaCcQHtjeUgXBC";
+    Base  = "appBEgfZnOQXjj4V4";
+    Table = "tbl7VjtIddrXmaoTW";
 
     Number = 10;
     String = "Hello";
