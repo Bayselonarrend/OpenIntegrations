@@ -6,13 +6,13 @@ pipeline {
     stages {
         stage('OpenIntegrations - Build') {
             steps {
-                build job: 'OpiMain', wait: true
+                build job: 'OpiBuild/OpiMain', wait: true
             }
         }
 
         stage('OpenIntegrations - 1C DB Update') {
             steps {
-                build job: 'OpiBaseUpdate', wait: true
+                build job: 'OpiBuild/OpiBaseUpdate', wait: true
             }
         }
 
@@ -25,14 +25,14 @@ pipeline {
         stage('OpenIntegrations - Release') {
             steps {
                 echo 'Release (OpenIntegrations)'
-                build job: 'OpiRelease', wait: true
+                build job: 'OpiBuild/OpiRelease', wait: true
             }
         }
         stage('OpenIntegrations - Test (1C, Win, RU)') {
             steps {
                 script {
                     try {
-                        build job: 'Opi1cWinRu', propagate: false, wait: true
+                        build job: 'OPITest/OpiFullTest/Opi1cWinRu', propagate: false, wait: true
                     } catch (Exception e) {
                         echo "Stage failed, but continuing: ${e.message}"
                     }
@@ -43,7 +43,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        build job: 'Opi1cWinEn', propagate: false, wait: true
+                        build job: 'OPITest/OpiFullTest/Opi1cWinEn', propagate: false, wait: true
                     } catch (Exception e) {
                         echo "Stage failed, but continuing: ${e.message}"
                     }
