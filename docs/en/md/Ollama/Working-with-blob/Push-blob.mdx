@@ -34,10 +34,10 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL   = FunctionParameters["Ollama_URL"];
-    Token = FunctionParameters["Ollama_Token"]; // Authorization - not part API Ollama
+    URL   = "https://hut.openintegrations.dev/ollama";
+    Token = "12We34..."; // Authorization - not part API Ollama
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
 
     AdditionalHeaders = New Map;
     AdditionalHeaders.Insert("Authorization", StrTemplate("Bearer %1", Token));

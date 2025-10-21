@@ -1,5 +1,5 @@
-﻿    Токен = ПараметрыФункции["Dropbox_Token"];
-    Почта = ПараметрыФункции["Dropbox_OtherUser"];
-    Папка = ПараметрыФункции["Dropbox_SharedFolder"]; // shared_folder_id
+﻿    Токен = "sl.u.AGAGzotJ_9OuP6MRKStSIEoDQTzXMAkIGe8ENpKXQDzll1dOkHELxjHPTgrtDxbSOHjjGif8Pvd2LknDCCPNaWPRs51s34xZA_KUMY0FYazkVuperdpU9hlHCmqyOAUWY87j4yEM5E5Ca8G_DQ3dzBNFhWiP7BtXO6vEwIkiJNyI6rhGsqIWDCls86sAm7iAY6qmzZeocjSXDaA-YhFDhfHbCGA5a6A2EE3euUkADJX1Op03kEbKgzqys6144IX4kV2bq0R7j6rn8dE_PwJeimneLnudLpko7Tng4bi7PLLr6J9nrhXejybPTUlWZ9Q4Ef5g_tL6_M5D5orFHgVZKrni5cjt-tO1dkHuwJgmluAl0WfETDEnHG_rqEndaQrhWktLszMgjhOjZ9Wp0BVf3pTDmnLirT_rAhi0pCjFGG_PllShVYpStw2-I2Y8lgRcW6m54TqM0BTjcF7dB4Y_849sbPPvtjcAQfhZpwPVTLk5sNOhOsl2ccb2ZTqeX47qyuwdH6B15lhXUuMC8s6cxCBDO5t58xAB2r3sMq2xiLnv6IpDHAEX-MLQRSPTahQD58Z7-YzVjB0RPQZ4Vds2jWpkrJGQ9_sZJFl1u-DyxQbJRZfH9MBf1ijjqdWCPf-ZxvRn7rD2d_jR-NXihHcT4ePLBWmxW1m8iDAFapLE0_M5ggJlaFMitonDlIg279BqonvJ_47uMx-zCLwvtNhPu1QZksaakSf...";
+    Почта = "h5bk6ft62s@privaterelay.appleid.com";
+    Папка = "13051199777"; // shared_folder_id
 
     Результат = OPI_Dropbox.ДобавитьПользователейКПапке(Токен, Папка, Почта, Ложь);

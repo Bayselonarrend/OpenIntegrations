@@ -40,7 +40,7 @@ When performing multiple requests within a single connection, it is better to co
 ```bsl title="1C:Enterprise/OneScript code example"
     TFN = GetTempFileName("sqlite");
 
-    Image = FunctionParameters["Picture"];
+    Image = "https://hut.openintegrations.dev/test_data/picture.jpg";
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
     Connection = OPI_SQLite.CreateConnection(TFN);
@@ -100,9 +100,9 @@ When performing multiple requests within a single connection, it is better to co
     // With extension
 
     If OPI_Tools.IsWindows() Then
-        Extension = FunctionParameters["SQLite_Ext"]; // URL, Path or Binary Data
+        Extension = "https://hut.openintegrations.dev/test_data/uuid.dll"; // URL, Path or Binary Data
     Else
-        Extension = FunctionParameters["SQLite_ExtLinux"]; // URL, Path or Binary Data
+        Extension = "https://hut.openintegrations.dev/test_data/uuid.so"; // URL, Path or Binary Data
     EndIf;
 
     EntryPoint = "sqlite3_uuid_init";

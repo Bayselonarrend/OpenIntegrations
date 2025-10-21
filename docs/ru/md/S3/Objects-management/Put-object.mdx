@@ -39,9 +39,9 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL       = ПараметрыФункции["S3_URL"];
-    AccessKey = ПараметрыФункции["S3_AccessKey"];
-    SecretKey = ПараметрыФункции["S3_SecretKey"];
+    URL       = "storage-155.s3hoster.by";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
     Region    = "BTC";
 
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
@@ -49,12 +49,12 @@ import TabItem from '@theme/TabItem';
     Каталог = Истина; // Формирование URL в path-style
     Бакет = "opi-dirbucket3";
     Наименование = "picture.jpg";
-    Содержимое   = ПараметрыФункции["Picture"]; // URL, Путь или Двоичные данные
+    Содержимое   = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
 
     Результат = OPI_S3.ЗагрузитьОбъект(Наименование, Бакет, Содержимое, ОсновныеДанные, , Каталог);
 
     Наименование = "fileChunked.mp3";
-    Содержимое   = ПараметрыФункции["Audio"]; // URL, Путь или Двоичные данные
+    Содержимое   = "https://hut.openintegrations.dev/test_data/song.mp3"; // URL, Путь или Двоичные данные
 
     ОсновныеДанные.Вставить("ChunkSize", 5242880); // Размер части для загрузки в несколько запросов
 

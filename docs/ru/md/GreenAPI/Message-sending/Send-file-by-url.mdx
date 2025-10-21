@@ -35,14 +35,14 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    ApiUrl           = ПараметрыФункции["GreenAPI_ApiURL"];
-    MediaUrl         = ПараметрыФункции["GreenAPI_MediaURL"];
-    IdInstance       = ПараметрыФункции["GreenAPI_IdInstance"];
-    ApiTokenInstance = ПараметрыФункции["GreenAPI_Token"];
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
-    Файл     = ПараметрыФункции["Picture"];
+    Файл     = "https://hut.openintegrations.dev/test_data/picture.jpg";
     ИмяФайла = "photo.jpg";
-    IDЧата   = ПараметрыФункции["GreenAPI_TestGroupID"];
+    IDЧата   = "120363410406221140@g.us";
     Описание = "Описание файла";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);

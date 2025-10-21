@@ -33,5 +33,6 @@
 "HTTPКлиент": true,
 "OpenAI": false,
 "ReportPortal": true,
-"HTTPClient": true
+"HTTPClient": true,
+"BuildCheck": true
 }

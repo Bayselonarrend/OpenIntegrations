@@ -64,7 +64,12 @@ Procedure FormCommand()
 		Help.DisplayStartPage(AllCommands, Version);
 
 		Return;
-		
+
+	ElsIf CurrentCommand = "hashsum" Then
+
+		Message(OPI_Tools.GetLastBuildHashSum());
+		Exit(0);
+
 	EndIf;
 	
 	Command           = Parser.CommandDescription(CurrentCommand);

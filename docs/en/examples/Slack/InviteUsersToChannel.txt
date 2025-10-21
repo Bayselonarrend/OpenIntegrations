@@ -1,5 +1,5 @@
-﻿    Token   = FunctionParameters["Slack_Token"];
-    Channel = FunctionParameters["Slack_NewChannel"];
-    User    = FunctionParameters["Slack_User"];
+﻿    Token   = "xoxb-6965308400114-696804637...";
+    Channel = "C09M6TB30CV";
+    User    = "U06UABH3APP";
 
     Result = OPI_Slack.InviteUsersToChannel(Token, Channel, User);

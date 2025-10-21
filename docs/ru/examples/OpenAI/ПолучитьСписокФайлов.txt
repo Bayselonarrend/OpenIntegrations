@@ -1,4 +1,4 @@
-﻿    URL   = ПараметрыФункции["OpenAI_URL"];
-    Токен = ПараметрыФункции["OpenAI_Token"];
+﻿    URL   = "https://hut.openintegrations.dev/localai/";
+    Токен = "12We...";
 
     Результат = OPI_OpenAI.ПолучитьСписокФайлов(URL, Токен);

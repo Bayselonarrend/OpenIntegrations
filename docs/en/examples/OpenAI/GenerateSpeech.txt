@@ -1,5 +1,5 @@
-﻿    URL   = FunctionParameters["OpenAI_URL"];
-    Token = FunctionParameters["OpenAI_Token"];
+﻿    URL   = "https://hut.openintegrations.dev/localai/";
+    Token = "12We...";
 
     Text  = "Attack ships on fire off the shoulder of Orion bright as magnesium";
     Model = "bark-cpp-small";

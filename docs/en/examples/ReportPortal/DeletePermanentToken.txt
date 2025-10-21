@@ -1,6 +1,6 @@
-﻿    URL    = FunctionParameters["RPortal_URL"];
-    Token  = FunctionParameters["RPortal_TestApiKey"];
-    UserID = FunctionParameters["RPortal_UserID"];
-    KeyID  = FunctionParameters["RPortal_TestKeyID"];
+﻿    URL    = "tests.openintegrations.dev";
+    Token  = "test-key_s4lzGlXbSdi99NEXMLiRF_6ILCo...";
+    UserID = "1";
+    KeyID  = "8...";
 
     Result = OPI_ReportPortal.DeletePermanentToken(URL, Token, UserID, KeyID);

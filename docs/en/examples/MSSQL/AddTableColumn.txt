@@ -1,6 +1,6 @@
-﻿    Address  = FunctionParameters["PG_IP"];
+﻿    Address  = "127.0.0.1";
     Login    = "SA";
-    Password = FunctionParameters["PG_Password"];
+    Password = "12we...";
 
     Base     = "testbase1";
     Table    = "testtable";

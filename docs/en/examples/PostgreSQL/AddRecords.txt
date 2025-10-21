@@ -1,6 +1,6 @@
-﻿    Address  = FunctionParameters["PG_IP"];
+﻿    Address  = "127.0.0.1";
     Login    = "bayselonarrend";
-    Password = FunctionParameters["PG_Password"];
+    Password = "12we...";
     Base     = "testbase1";
 
     TLS = True;
@@ -16,7 +16,7 @@
     Table        = "testtable";
     RecordsArray = New Array;
 
-    Image = FunctionParameters["Picture"];
+    Image = "https://hut.openintegrations.dev/test_data/picture.jpg";
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
     CasualStructure = New Structure("key,value", "ItsKey", 10);

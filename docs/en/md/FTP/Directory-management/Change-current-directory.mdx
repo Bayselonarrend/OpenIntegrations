@@ -35,10 +35,10 @@ FTP Command: `CWD`
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Host     = FunctionParameters["FTP_IP"];
-    Port     = FunctionParameters["FTP_Port"];
-    Login    = FunctionParameters["FTP_User"];
-    Password = FunctionParameters["FTP_Password"];
+    Host     = "172.33.0.10";
+    Port     = "21";
+    Login    = "bayselonarrend";
+    Password = "12we...";
 
     UseProxy = True;
     FTPS     = True;
@@ -50,12 +50,12 @@ FTP Command: `CWD`
 
     If UseProxy Then
 
-        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+        ProxyType = "http"; // http, socks5, socks4
 
-        ProxyAddress  = FunctionParameters["Proxy_IP"];
-        ProxyPort     = FunctionParameters["Proxy_Port"];
-        ProxyLogin    = FunctionParameters["Proxy_User"];
-        ProxyPassword = FunctionParameters["Proxy_Password"];
+        ProxyAddress  = "127.0.0.1";
+        ProxyPort     = "8071";
+        ProxyLogin    = "proxyuser";
+        ProxyPassword = "12we...";
 
         ProxySettings = OPI_FTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
 

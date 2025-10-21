@@ -1,5 +1,5 @@
-﻿    Host = FunctionParameters["SSH_Host"];
-    Port = FunctionParameters["SSH_Port"];
+﻿    Host = "172.33.0.13";
+    Port = "2222";
 
     UseProxy          = True;
     ProxySettings     = Undefined;
@@ -7,14 +7,14 @@
 
     If AuthorizationType = "By login and password" Then
 
-        Login    = FunctionParameters["SSH_User"];
-        Password = FunctionParameters["SSH_Password"];
+        Login    = "bayselonarrend";
+        Password = "12we...";
 
         SFTPSettings = OPI_SFTP.GetSettingsLoginPassword(Host, Port, Login, Password);
 
     ElsIf AuthorizationType = "By key" Then
 
-        Login      = FunctionParameters["SSH_User"];
+        Login      = "bayselonarrend";
         PrivateKey = "./ssh_key";
         PublicKey  = "./ssh_key.pub";
 
@@ -22,19 +22,19 @@
 
     Else
 
-        Login        = FunctionParameters["SSH_User"];
+        Login        = "bayselonarrend";
         SFTPSettings = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
 
     EndIf;
 
     If UseProxy Then
 
-        ProxyType = FunctionParameters["Proxy_Type"]; // http, socks5, socks4
+        ProxyType = "http"; // http, socks5, socks4
 
-        ProxyAddress  = FunctionParameters["Proxy_IP"];
-        ProxyPort     = FunctionParameters["Proxy_Port"];
-        ProxyLogin    = FunctionParameters["Proxy_User"];
-        ProxyPassword = FunctionParameters["Proxy_Password"];
+        ProxyAddress  = "127.0.0.1";
+        ProxyPort     = "8071";
+        ProxyLogin    = "proxyuser";
+        ProxyPassword = "12we...";
 
         ProxySettings = OPI_SFTP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
 

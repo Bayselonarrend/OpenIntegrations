@@ -1,7 +1,7 @@
 ﻿    Parameters       = GetVKParameters();
     ImageDescription = "AutoTestImage";
-    AlbumID          = FunctionParameters["VK_AlbumID"];
+    AlbumID          = "310450421";
 
-    Image = FunctionParameters["Picture"]; // URL, File path or Binary Data
+    Image = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, File path or Binary Data
 
     Result = OPI_VK.SaveImageToAlbum(AlbumID, Image, ImageDescription, Parameters);

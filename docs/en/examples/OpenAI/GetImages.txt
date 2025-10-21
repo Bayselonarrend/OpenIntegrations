@@ -1,5 +1,5 @@
-﻿    URL   = FunctionParameters["OpenAI_URL"];
-    Token = FunctionParameters["OpenAI_Token"];
+﻿    URL   = "https://hut.openintegrations.dev/localai/";
+    Token = "12We...";
 
     Model       = "sd-1.5-ggml";
     Description = OPI_OpenAI.GetImageDescriptionStructure("Yellow alpaca", 1, , "64x64");

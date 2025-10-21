@@ -36,12 +36,12 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Image = FunctionParameters["Picture"];
+    Image = "https://hut.openintegrations.dev/test_data/picture.jpg";
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
-    Address  = FunctionParameters["PG_IP"];
+    Address  = "127.0.0.1";
     Login    = "bayselonarrend";
-    Password = FunctionParameters["PG_Password"];
+    Password = "12we...";
     Base     = "test_data";
 
     TLS = True;
@@ -111,7 +111,7 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
 
     // SQL query from file
 
-    SQLFile = FunctionParameters["SQL"]; // Binary Data, URL or path to file
+    SQLFile = "https://hut.openintegrations.dev/test_data/TEST_DATA.sql"; // Binary Data, URL or path to file
 
     Result = OPI_PostgreSQL.ExecuteSQLQuery(SQLFile, , , Connection);
 

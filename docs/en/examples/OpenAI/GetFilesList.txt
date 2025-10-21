@@ -1,4 +1,4 @@
-﻿    URL   = FunctionParameters["OpenAI_URL"];
-    Token = FunctionParameters["OpenAI_Token"];
+﻿    URL   = "https://hut.openintegrations.dev/localai/";
+    Token = "12We...";
 
     Result = OPI_OpenAI.GetFilesList(URL, Token);

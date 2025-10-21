@@ -34,10 +34,10 @@ By default, the body data is used in the signature calculation if it was set usi
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL = FunctionParameters["HTTP_URL"];
+    URL = "https://bin.openintegrations.dev";
     URL = URL + "/post";
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
 
     Token       = "***";
     Secret      = "***";

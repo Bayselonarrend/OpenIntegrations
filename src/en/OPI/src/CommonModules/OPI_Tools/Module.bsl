@@ -1011,6 +1011,12 @@ Function ThisIsCollection(Val Value, Val KeyValue = False) Export
 
 EndFunction
 
+Function GetLastBuildHashSum() Export
+
+    Return OPI_BuildHash.GetHashSum();
+
+EndFunction
+
 Function OPIVersion() Export
     Return "1.28.0";
 EndFunction
@@ -1019,6 +1025,7 @@ Function OPILanguage() Export
     CurrentOPILanguage = "en";
     Return CurrentOPILanguage;
 EndFunction
+
 
 #EndRegion
 

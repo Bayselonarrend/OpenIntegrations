@@ -1,4 +1,4 @@
-﻿    Token = FunctionParameters["NC_Token"];
+﻿    Token = "f1e616e20ab5893b...";
 
     LocalFolder  = "C:\test_site";
     RemoteFolder = "test_sync";
