@@ -37,10 +37,10 @@ When `IPResolve = True`, the connection address returned by the server in passiv
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Host     = FunctionParameters["FTP_IP"];
-    Port     = FunctionParameters["FTP_Port"];
-    Login    = FunctionParameters["FTP_User"];
-    Password = FunctionParameters["FTP_Password"];
+    Host     = "172.33.0.10";
+    Port     = "21";
+    Login    = "bayselonarrend";
+    Password = "12we...";
 
     Result = OPI_FTP.GetConnectionSettings(Host, Port, Login, Password);
 ```

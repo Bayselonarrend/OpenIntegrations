@@ -86,6 +86,36 @@ EndFunction
 
 #Region RunnableTests
 
+#Region Service
+
+Procedure BuildCheck_CheckIBToLastBuildCompliance() Export
+
+    If OPI_TestDataRetrieval.IsCLITest() Then
+
+        //@skip-check use-non-recommended-method
+        Message("CLI test check");
+        BuildSum = OPI_TestDataRetrieval.ExecuteTestCLI("hashsum", "", New Structure);
+
+    Else
+
+        BuildSum = OPI_Tools.GetLastBuildHashSum();
+
+    EndIf;
+
+    URL = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/service/last_build_hash.txt";
+
+    LastSum = OPI_HTTPRequests
+        .NewRequest()
+        .Initialize(URL)
+        .ProcessRequest("GET")
+        .ReturnResponseAsString(False, True);
+
+    Process(Result, "BuildCheck", "CheckIBToLastBuildCompliance");
+
+EndProcedure
+
+#EndRegion
+
 #Region Telegram
 
 Procedure TelegramAPI_GetBotInfo() Export

@@ -35,10 +35,10 @@ If it is not possible to obtain a collection from the body, binary data will be 
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL = FunctionParameters["HTTP_URL"];
+    URL = "https://bin.openintegrations.dev";
     URL = URL + "/post";
 
-    Image = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    Image = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)

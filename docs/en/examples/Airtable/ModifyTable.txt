@@ -1,6 +1,6 @@
-﻿    Token       = FunctionParameters["Airtable_Token"];
-    Base        = FunctionParameters["Airtable_Base"];
-    Table       = FunctionParameters["Airtable_Table"];
+﻿    Token       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
+    Base        = "appuRWfDpxp26HYXm";
+    Table       = "tblcaCcQHtjeUgXBC";
     Name        = "Test table 2 (change.)";
     Description = "New table (change.)";
 

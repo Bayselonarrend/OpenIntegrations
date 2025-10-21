@@ -1,5 +1,5 @@
-﻿    Token    = FunctionParameters["YandexDisk_Token"];
-    Original = FunctionParameters["YandexDisk_OriginalFilePath"];
+﻿    Token    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Original = "/5ad9ee8f-dae6-4111-a39b-9fa9dfe9d1b3.png";
     Path     = "/" + String(New UUID) + ".png";
 
     Result = OPI_YandexDisk.CreateObjectCopy(Token, Original, Path, True);

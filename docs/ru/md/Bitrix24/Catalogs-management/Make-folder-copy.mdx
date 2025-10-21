@@ -33,18 +33,18 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    IDПриемника = ПараметрыФункции["Bitrix24_HookSubfolderID"];
-    IDКаталога  = ПараметрыФункции["Bitrix24_SubfolderID"];
+    IDПриемника = "45062";
+    IDКаталога  = "45064";
 
-    URL = ПараметрыФункции["Bitrix24_URL"];
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Результат = OPI_Bitrix24.СкопироватьКаталог(URL, IDКаталога, IDПриемника);
 
-    IDПриемника = ПараметрыФункции["Bitrix24_SubfolderID"];
-    IDКаталога  = ПараметрыФункции["Bitrix24_HookSubfolderID"];
+    IDПриемника = "45064";
+    IDКаталога  = "45062";
 
-    URL   = ПараметрыФункции["Bitrix24_Domain"];
-    Токен = ПараметрыФункции["Bitrix24_Token"];
+    URL   = "b24-ar17wx.bitrix24.by";
+    Токен = "3b1af468006e9f06006b12e400000001000...";
 ```
     
 

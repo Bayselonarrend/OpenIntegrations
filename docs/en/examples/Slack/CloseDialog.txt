@@ -1,4 +1,4 @@
-﻿    Token  = FunctionParameters["Slack_Token"];
-    Dialog = FunctionParameters["Slack_Dialog"];
+﻿    Token  = "xoxb-6965308400114-696804637...";
+    Dialog = "D06UAKK1C6R";
 
     Result = OPI_Slack.CloseDialog(Token, Dialog);

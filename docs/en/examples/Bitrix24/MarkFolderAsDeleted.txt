@@ -1,9 +1,9 @@
-﻿    URL      = FunctionParameters["Bitrix24_URL"];
-    FolderID = FunctionParameters["Bitrix24_FolderID"];
+﻿    URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    FolderID = "45060";
 
     Result = OPI_Bitrix24.MarkFolderAsDeleted(URL, FolderID);
 
-    URL   = FunctionParameters["Bitrix24_Domain"];
-    Token = FunctionParameters["Bitrix24_Token"];
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "3b1af468006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MarkFolderAsDeleted(URL, FolderID, Token);

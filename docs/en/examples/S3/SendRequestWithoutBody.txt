@@ -1,6 +1,6 @@
-﻿    URL       = FunctionParameters["S3_URL"] + "/opi-newbucket2";
-    AccessKey = FunctionParameters["S3_AccessKey"];
-    SecretKey = FunctionParameters["S3_SecretKey"];
+﻿    URL       = "storage-155.s3hoster.by" + "/opi-newbucket2";
+    AccessKey = "BRN5RKJE67...";
+    SecretKey = "NNhv+i9PrytpT8Tu0C1N...";
     Region    = "BTC";
 
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);

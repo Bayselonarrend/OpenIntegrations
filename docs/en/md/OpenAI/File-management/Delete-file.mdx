@@ -33,10 +33,10 @@ Method at API documentation: [Delete file](https://platform.openai.com/docs/api-
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL   = FunctionParameters["OpenAI_URL"];
-    Token = FunctionParameters["OpenAI_Token"];
+    URL   = "https://hut.openintegrations.dev/localai/";
+    Token = "12We...";
 
-    FileID = FunctionParameters["OpenAI_File"];
+    FileID = "file-3";
 
     Result = OPI_OpenAI.DeleteFile(URL, Token, FileID);
 ```

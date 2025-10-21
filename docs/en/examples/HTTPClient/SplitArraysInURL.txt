@@ -1,4 +1,4 @@
-﻿    URL = FunctionParameters["HTTP_URL"];
+﻿    URL = "https://bin.openintegrations.dev";
     URL = URL + "/get";
 
     ArrayParam = New Array;

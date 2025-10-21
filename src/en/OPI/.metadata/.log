@@ -1,0 +1,53 @@
+﻿!SESSION 2025-10-20 21:51:53.033 -----------------------------------------------
+eclipse.buildId=2025.1.3.11
+java.version=17.0.16
+java.vendor=Axiom JSC
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments: 2025.1\1cedt\1cedtc.exe
+Command-line arguments: -os win32 -ws win32 -arch x86_64 2025.1\1cedt\1cedtc.exe -console -data C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\src\ru\OPI
+
+!ENTRY com._1c.g5.v8.dt.core 1 0 2025-10-20 21:52:04.282
+!MESSAGE java.vm.name=OpenJDK 64-Bit Server VM
+
+!ENTRY com._1c.g5.v8.dt.core 1 0 2025-10-20 21:52:04.289
+!MESSAGE java.vm.info=mixed mode, sharing
+
+!ENTRY com._1c.g5.v8.internal.resourcemanagement.ResourceManagementPlugin 2 0 2025-10-20 21:52:09.011
+!MESSAGE CPU overload. Memory 4201629304 used of 4294967296
+
+!ENTRY com.e1c.g5.v8.dt.platform.standaloneserver.wst.core 1 0 2025-10-20 21:52:13.254
+!MESSAGE Starting one-time migration process: Switching to debug server embedded in standalone server.
+
+!ENTRY com._1c.g5.v8.internal.resourcemanagement.ResourceManagementPlugin 2 0 2025-10-20 21:52:13.468
+!MESSAGE CPU overload. Memory 4260864240 used of 4294967296
+
+!ENTRY com._1c.g5.v8.dt.platform.services.core 2 0 2025-10-20 21:52:21.934
+!MESSAGE Error occured while searching web servers
+!STACK 0
+java.io.IOException: Cannot run program "wmic": CreateProcess error=2, The system cannot find the file specified
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1143)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1073)
+	at com._1c.g5.v8.dt.platform.services.core.webservers.ApacheWmicLookup.findApacheExcecutorLocations(ApacheWmicLookup.java:28)
+	at com._1c.g5.v8.dt.platform.services.core.webservers.AbstractWindowsApacheLookup.lookup(AbstractWindowsApacheLookup.java:40)
+	at com._1c.g5.v8.dt.internal.platform.services.core.webservers.WebServerManager.search(WebServerManager.java:277)
+	at com._1c.g5.v8.dt.internal.platform.services.core.webservers.WebServerManager.getWebServersResource(WebServerManager.java:203)
+	at com._1c.g5.v8.dt.internal.platform.services.core.webservers.WebServerManager.getAll(WebServerManager.java:169)
+	at com._1c.g5.v8.dt.internal.platform.services.core.webservers.WebServerManager.getAll(WebServerManager.java:162)
+	at com._1c.g5.v8.dt.internal.platform.services.core.webservers.WebServerManager.activate(WebServerManager.java:108)
+	at com._1c.g5.wiring.ManagedServicesSupport.activateManagedService(ManagedServicesSupport.java:40)
+	at com._1c.g5.internal.wiring.InjectorAwareManagedServiceRegistrationBuilder.prepareInstance(InjectorAwareManagedServiceRegistrationBuilder.java:61)
+	at com._1c.g5.internal.wiring.InjectorAwareManagedServiceRegistrationBuilder.prepareInstance(InjectorAwareManagedServiceRegistrationBuilder.java:1)
+	at com._1c.g5.internal.wiring.InjectorAwareServiceRegistrationBuilder.registerInjected(InjectorAwareServiceRegistrationBuilder.java:81)
+	at com._1c.g5.internal.wiring.InjectorAwareServiceRegistrationBuilder.registerInjected(InjectorAwareServiceRegistrationBuilder.java:63)
+	at com._1c.g5.v8.dt.internal.platform.services.core.PlatformServicesCore.lambda$8(PlatformServicesCore.java:479)
+	at com._1c.g5.internal.wiring.WiringPlugin$InitializationContext.lambda$0(WiringPlugin.java:329)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncRun.run(CompletableFuture.java:1804)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+Caused by: java.io.IOException: CreateProcess error=2, The system cannot find the file specified
+	at java.base/java.lang.ProcessImpl.create(Native Method)
+	at java.base/java.lang.ProcessImpl.<init>(ProcessImpl.java:505)
+	at java.base/java.lang.ProcessImpl.start(ProcessImpl.java:158)
+	at java.base/java.lang.ProcessBuilder.start(ProcessBuilder.java:1110)
+	... 19 more

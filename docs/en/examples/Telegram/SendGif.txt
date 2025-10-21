@@ -1,8 +1,8 @@
-﻿    Token     = FunctionParameters["Telegram_Token"];
-    ChatID    = FunctionParameters["Telegram_ChatID"];
-    ChannelID = FunctionParameters["Telegram_ChannelID"];
-    Text      = FunctionParameters["String"];
-    GIF       = FunctionParameters["GIF"];
+﻿    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    ChannelID = "@testsichee";
+    Text      = "Строковое значение";
+    GIF       = "https://hut.openintegrations.dev/test_data/animation.gif";
 
     GifPath = GetTempFileName("gif");
     CopyFile(GIF, GifPath);

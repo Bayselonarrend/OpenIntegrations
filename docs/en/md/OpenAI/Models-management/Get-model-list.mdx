@@ -32,8 +32,8 @@ Method at API documentation: [List models](https://platform.openai.com/docs/api-
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL   = FunctionParameters["OpenAI_URL"];
-    Token = FunctionParameters["OpenAI_Token"];
+    URL   = "https://hut.openintegrations.dev/localai/";
+    Token = "12We...";
 
     Result = OPI_OpenAI.GetModelList(URL, Token);
 ```

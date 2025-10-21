@@ -1,7 +1,7 @@
 ﻿    Parameters = GetVKParameters();
 
     Name   = "TestCollection";
-    Image  = FunctionParameters["Picture"];
+    Image  = "https://hut.openintegrations.dev/test_data/picture.jpg";
     Main   = True;
     Hidden = False;
 

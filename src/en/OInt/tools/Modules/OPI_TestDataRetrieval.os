@@ -126,6 +126,7 @@ EndFunction
 Function GetTestingSectionMapping() Export
 
     Sections = New Structure;
+    Sections.Insert("BuildCheck"     , 1);
     Sections.Insert("Telegram"       , 5);
     Sections.Insert("VK"             , 5);
     Sections.Insert("Viber"          , 5);
@@ -171,6 +172,7 @@ Function GetTestingSectionMappingGA() Export
     GoogleDependencies   = "Testing-GoogleWorkspace";
 
     Sections = New Structure;
+    Sections.Insert("BuildCheck"     , StandardDependencies);
     Sections.Insert("Telegram"       , StandardDependencies);
     Sections.Insert("VK"             , StandardDependencies);
     Sections.Insert("Viber"          , StandardDependencies);
@@ -251,6 +253,11 @@ Function GetTestTable() Export
     TestTable.Columns.Add("Method");
     TestTable.Columns.Add("Synonym");
     TestTable.Columns.Add("Section");
+
+    NewTest(TestTable
+        , "CheckIBToLastBuildCompliance"
+        , "Check IB to last build compliance"
+        , "BuildCheck");
 
     NewTest(TestTable, "TelegramAPI_GetBotInfo"              , "Get bot information"             , Telegram);
     NewTest(TestTable, "TelegramAPI_GetUpdates"              , "Get updates"                     , Telegram);
@@ -575,6 +582,20 @@ Function GetLocalhost() Export
         Result = "127.0.0.1";
     Else
         Result = "host.docker.internal";
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function IsCLITest() Export
+
+    Data = GetEnvironmentVariable("OINT_TESTS_CLI");
+
+    If String(Data) = "1" Then
+        Result      = True;
+    Else
+        Result      = False;
     EndIf;
 
     Return Result;
@@ -1225,6 +1246,19 @@ EndFunction
 #Region Private
 
 #Region Checks
+
+Function Check_BuildCheck_CheckIBToLastBuildCompliance(Val Result, Val Option, Val LastSum)
+
+    //@skip-check use-non-recommended-method
+    Message(StrTemplate("Current IB build: %1", Result));
+    //@skip-check use-non-recommended-method
+    Message(StrTemplate("Last project build: %1", LastSum));
+
+    ExpectsThat(Result).Равно(LastSum);
+
+    Return Undefined;
+
+EndFunction
 
 Function Check_Telegram_GetBotInformation(Val Result, Val Option)
 
@@ -12021,20 +12055,6 @@ Function TestResultAsText(Val Result)
 
 EndFunction
 
-Function IsCLITest()
-
-    Data = GetEnvironmentVariable("OINT_TESTS_CLI");
-
-    If String(Data) = "1" Then
-        Result      = True;
-    Else
-        Result      = False;
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
 Procedure NewTest(ValueTable, Val Method, Val Synonym, Val Section)
 
     NewTest         = ValueTable.Add();
@@ -12345,6 +12365,10 @@ EndFunction
 
 Function ПолучитьLocalhost() Export
 	Return GetLocalhost();
+EndFunction
+
+Function ЭтоТестCLI() Export
+	Return IsCLITest();
 EndFunction
 
 Procedure ПараметрВКоллекцию(Параметр, Коллекция) Export

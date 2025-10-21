@@ -1,2 +1,2 @@
-﻿    AppKey = FunctionParameters["Dropbox_Appkey"];
+﻿    AppKey = "oynqxds...";
     Result = OPI_Dropbox.GetAuthorizationLink(AppKey);

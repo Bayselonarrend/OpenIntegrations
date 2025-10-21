@@ -1,6 +1,6 @@
-﻿    Token  = FunctionParameters["Google_Token"];
-    From   = FunctionParameters["GS_Spreadsheet"];
-    Target = FunctionParameters["GS_Spreadsheet2"];
-    Sheet  = FunctionParameters["GS_Sheet"];
+﻿    Token  = "ya29.a0AQQ_BDT_CMAJqFIcOfzUrSDYRQ2mZ6TLDIGN-tv27R3mPj8iFcUgZ-x-aipMSCOTXMfqqTzT2aRN4TCe8MFrBD2tInauCN39ueJtc4LHbj71tbNlq9LdkejgF...";
+    From   = "1b-FXTgorLebbivo4B969jJzrnoMurXNYneyv9cPl7QU";
+    Target = "1M1g41OHuOIeJVALo6g51qr-BOUeckanlHqshges2yMk";
+    Sheet  = "1993801941";
 
     Result = OPI_GoogleSheets.CopySheet(Token, From, Target, Sheet);

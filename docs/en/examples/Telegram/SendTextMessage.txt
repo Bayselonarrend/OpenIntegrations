@@ -1,7 +1,7 @@
-﻿    Token     = FunctionParameters["Telegram_Token"];
-    ChatID    = FunctionParameters["Telegram_ChatID"];
-    ChannelID = FunctionParameters["Telegram_ChannelID"];
-    Text      = FunctionParameters["String"];
+﻿    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    ChannelID = "@testsichee";
+    Text      = "Строковое значение";
 
     KeyboardButtonsArray = New Array;
     KeyboardButtonsArray.Add("Button1");

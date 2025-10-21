@@ -1,4 +1,4 @@
-﻿    Токен = ПараметрыФункции["Viber_ChannelToken"];
+﻿    Токен = "523b58ba82afffaa-7ef3b426...";
     URL   = "http://api.athenaeum.digital/hs/viber";
 
     Результат = OPI_Viber.УстановитьWebhook(Токен, URL);

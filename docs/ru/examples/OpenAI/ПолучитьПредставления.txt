@@ -1,5 +1,5 @@
-﻿    URL   = ПараметрыФункции["OpenAI_URL"];
-    Токен = ПараметрыФункции["OpenAI_Token"];
+﻿    URL   = "https://hut.openintegrations.dev/localai/";
+    Токен = "12We...";
 
     Текст  = "What is 1C:Enterprise?";
     Модель = "arcee-ai_afm-4.5b";

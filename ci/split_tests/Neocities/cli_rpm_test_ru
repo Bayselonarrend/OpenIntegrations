@@ -62,6 +62,21 @@ pipeline {
 				}
 		}
 
+		stage('Testing-BuildCheck') {
+            when {
+                expression { return shouldRunStage('BuildCheck') }
+            }
+			steps {
+				script {
+					def tests = [
+
+					]
+					for (test in tests) {
+							runLibraryTest(test[0], test[1])
+					}
+				}
+			}
+		}
 		stage('Testing-Neocities') {
             when {
                 expression { return shouldRunStage('Neocities') }

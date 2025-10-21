@@ -1,5 +1,5 @@
-﻿    Token   = FunctionParameters["Slack_Token"];
-    Channel = FunctionParameters["Slack_Channel"];
-    FileID  = FunctionParameters["Slack_ExtFileID"];
+﻿    Token   = "xoxb-6965308400114-696804637...";
+    Channel = "C06UFNUTKUL";
+    FileID  = "F09N4KUDTB2";
 
     Result = OPI_Slack.SendExternalFile(Token, FileID, Channel);
