@@ -6,7 +6,7 @@
     From   = "11001234567@c.us";
     Target = "120363410406221140@g.us";
 
-    Message = "BAE5C93FC2430568";
+    Message = "BAE560B6696667AE";
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.ForwardMessages(AccessParameters, From, Target, Message);
