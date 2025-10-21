@@ -1510,10 +1510,14 @@ Function SendRequest(Val Method
         .SetHeaders(Headers)
         .SetBinaryBody(Body)
         .AddAWS4Authorization(AccessKey, SecretKey, Region, Service)
-        .ProcessRequest(Method)
-        .ReturnResponse(False, True);
+        .ProcessRequest(Method);
 
-    Response = FormResponse(Response, ExpectedBinary);
+    HTTPResponse = Response.ReturnResponse(False, True);
+    ResponseBody = ?(ExpectedBinary
+        , Response.ReturnResponseAsBinaryData(False, True)
+        , Response.ReturnResponseAsString(False, True));
+
+    Response = FormResponse(HTTPResponse, ResponseBody);
 
     Return Response;
 
@@ -1749,18 +1753,18 @@ Function UploadObjectInParts(Val Name
 
 EndFunction
 
-Function FormResponse(Val Response, Val ExpectedBinary = False)
+Function FormResponse(Val Response, Val Body)
 
     Status          = Response.StatusCode;
     Headers         = Response.Headers;
     LastSuccessCode = 299;
 
-    If Not ExpectedBinary Or Status > LastSuccessCode Then
+    If TypeOf(Body) = Type("String") Or Status > LastSuccessCode Then
 
         ResponseData = New Structure;
         BodyData     = New Structure;
 
-        ResponseBodyInitial    = Response.GetBodyAsString();
+        ResponseBodyInitial    = ?(TypeOf(Body) = Type("String"), Body, Base64String(Body));
         ResponseBodyProcessing = TrimAll(ResponseBodyInitial);
 
         If ValueIsFilled(ResponseBodyProcessing) Then
@@ -1779,7 +1783,7 @@ Function FormResponse(Val Response, Val ExpectedBinary = False)
         ResponseData.Insert("headers" , Headers);
 
     Else
-        ResponseData = Response.GetBodyAsBinaryData();
+        ResponseData = Body;
     EndIf;
 
     Return ResponseData;
