@@ -4,7 +4,7 @@
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     Image   = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
-    GroupID = "120363420522290653@g.us";
+    GroupID = "120363404315049467@g.us";
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.SetGroupPicture(AccessParameters, GroupID, Image);

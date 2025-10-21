@@ -1,10 +1,10 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID = "3272";
+    ChatID = "3278";
 
     Result = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "3b1af468006e9f06006b12e400000001000...";
-    ChatID = "3274";
+    Token  = "0ebbf768006e9f06006b12e400000001000...";
+    ChatID = "3280";
 
     Result = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
