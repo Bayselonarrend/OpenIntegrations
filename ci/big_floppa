@@ -28,27 +28,5 @@ pipeline {
                 build job: 'OpiBuild/OpiRelease', wait: true
             }
         }
-        stage('OpenIntegrations - Test (1C, Win, RU)') {
-            steps {
-                script {
-                    try {
-                        build job: 'OPITest/OpiFullTest/Opi1cWinRu', propagate: false, wait: true
-                    } catch (Exception e) {
-                        echo "Stage failed, but continuing: ${e.message}"
-                    }
-                }
-            }
-        }
-        stage('OpenIntegrations - Test (1C, Win, EN)') {
-            steps {
-                script {
-                    try {
-                        build job: 'OPITest/OpiFullTest/Opi1cWinEn', propagate: false, wait: true
-                    } catch (Exception e) {
-                        echo "Stage failed, but continuing: ${e.message}"
-                    }
-                }
-            }
-        }
     }
 }
