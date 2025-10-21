@@ -40,6 +40,7 @@
 //@skip-check wrong-string-literal-content
 //@skip-check use-non-recommended-method
 
+// Uncomment if OneScript is executed
 #Use "./internal"
 
 #Region Internal
