@@ -86,26 +86,35 @@
 
 #Область ЗапускаемыеТесты
 
-Процедура ПроверитьСоответствиеИБПоследнейСборке() Экспорт
+#Область Служебные
+
+Процедура BuildCheck_ПроверитьСоответствиеИБПоследнейСборке() Экспорт
     
-    UUIDСборки = OPI_Инструменты.ПолучитьUUIDПоследнейСборки();
+    Если OPI_ПолучениеДанныхТестов.ЭтоТестCLI() Тогда
+        
+        //@skip-check use-non-recommended-method
+        Сообщить("CLI test check");
+        СуммаСборки = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("hashsum", "", Новый Структура);
+        
+    Иначе
+        
+        СуммаСборки = OPI_Инструменты.ПолучитьХешСуммуПоследнейСборки();
+        
+    КонецЕсли;
     
-    URL = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/service/last_build_uuid.txt";
+    URL = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/service/last_build_hash.txt";
     
-    UUIDПоследний = OPI_ЗапросыHTTP
+    СуммаПоследний = OPI_ЗапросыHTTP
         .НовыйЗапрос()
         .Инициализировать(URL)
         .ОбработатьЗапрос("GET")
         .ВернутьОтветКакСтроку(Ложь, Истина);
         
-    //@skip-check use-non-recommended-method
-    Сообщить(СтрШаблон("Current IB build: %1", UUIDСборки));
-    //@skip-check use-non-recommended-method
-    Сообщить(СтрШаблон("Last project build: %1", UUIDПоследний));
-    
-    OPI_ПолучениеДанныхТестов.ОжидаетЧто(UUIDСборки).Равно(UUIDПоследний);
+    Обработать(Результат, "BuildCheck", "ПроверитьСоответствиеИБПоследнейСборке");
     
 КонецПроцедуры
+
+#КонецОбласти
 
 #Область Telegram
 
