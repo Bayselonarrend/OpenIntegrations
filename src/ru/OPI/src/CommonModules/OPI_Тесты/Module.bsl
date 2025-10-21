@@ -93,7 +93,7 @@
     Если OPI_ПолучениеДанныхТестов.ЭтоТестCLI() Тогда
 
         //@skip-check use-non-recommended-method
-        Сообщить("CLI test check");
+        Сообщить("CLI test check for hash sum");
         СуммаСборки = OPI_ПолучениеДанныхТестов.ВыполнитьТестCLI("hashsum", "", Новый Структура);
 
     Иначе
