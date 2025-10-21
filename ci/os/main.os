@@ -276,7 +276,14 @@
 
 	КонецЦикла;
 
-	ПолучитьДвоичныеДанныеИзСтроки(Сумма).Записать("./service/last_build_hash.txt");
+	СуммаДД = ПолучитьДвоичныеДанныеИзСтроки(Сумма);
+
+	СуммаДД.Записать("./service/last_build_hash.txt");
+	СуммаДД.Записать("./src/ru/OInt/.versionhash");
+	СуммаДД.Записать("./src/en/OInt/.versionhash");
+	СуммаДД.Записать("./src/ru/cli/.versionhash");
+	СуммаДД.Записать("./src/en/cli/.versionhash");
+	СуммаДД.Записать("./ci/installer_set/share/oint");
 
 КонецПроцедуры
 
