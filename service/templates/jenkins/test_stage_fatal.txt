@@ -1,0 +1,15 @@
+		stage('Testing-%1') {
+            when {
+                expression { return shouldRunStage('%1') }
+            }
+			steps {
+				script {
+					def tests = [
+%2
+					]
+					for (test in tests) {
+							runLibraryTest(test[0], test[1])
+					}
+				}
+			}
+		}
