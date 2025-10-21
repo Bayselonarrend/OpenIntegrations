@@ -100,5 +100,6 @@
   <commonModules>CommonModule.OPI_ПреобразованиеТипов</commonModules>
   <commonModules>CommonModule.OPI_Тесты</commonModules>
   <commonModules>CommonModule.OPI_ТестыCLI</commonModules>
+  <commonModules>CommonModule.OPI_BuildHash</commonModules>
   <dataProcessors>DataProcessor.OPI_HTTPКлиент</dataProcessors>
 </mdclass:Configuration>
