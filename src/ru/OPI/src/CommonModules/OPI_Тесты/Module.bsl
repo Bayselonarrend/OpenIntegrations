@@ -86,6 +86,27 @@
 
 #Область ЗапускаемыеТесты
 
+Процедура ПроверитьСоответствиеИБПоследнейСборке() Экспорт
+    
+    UUIDСборки = OPI_Инструменты.ПолучитьUUIDПоследнейСборки();
+    
+    URL = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/service/last_build_uuid.txt";
+    
+    UUIDПоследний = OPI_ЗапросыHTTP
+        .НовыйЗапрос()
+        .Инициализировать(URL)
+        .ОбработатьЗапрос("GET")
+        .ВернутьОтветКакСтроку(Ложь, Истина);
+        
+    //@skip-check use-non-recommended-method
+    Сообщить(СтрШаблон("Current IB build: %1", UUIDСборки));
+    //@skip-check use-non-recommended-method
+    Сообщить(СтрШаблон("Last project build: %1", UUIDПоследний));
+    
+    OPI_ПолучениеДанныхТестов.ОжидаетЧто(UUIDСборки).Равно(UUIDПоследний);
+    
+КонецПроцедуры
+
 #Область Telegram
 
 Процедура Телеграм_ПолучитьИнформациюБота() Экспорт
