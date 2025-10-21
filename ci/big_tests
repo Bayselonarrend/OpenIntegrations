@@ -1,0 +1,80 @@
+pipeline {
+	agent {
+		label 'windows'
+	}
+
+    stages {
+        stage('OpenIntegrations - Test (1C, Win, RU)') {
+            steps {
+                script {
+                    try {
+                        build job: 'OPITest/OpiFullTest/Opi1cWinRu', propagate: false, wait: true
+                    } catch (Exception e) {
+                        echo "Stage failed, but continuing: ${e.message}"
+                    }
+                }
+            }
+        }
+        stage('OpenIntegrations - Test (1C, Win, EN)') {
+            steps {
+                script {
+                    try {
+                        build job: 'OPITest/OpiFullTest/Opi1cWinEn', propagate: false, wait: true
+                    } catch (Exception e) {
+                        echo "Stage failed, but continuing: ${e.message}"
+                    }
+                }
+            }
+        }
+
+        stage('OpenIntegrations - Test (CLI, Win, RU)') {
+            steps {
+                script {
+                    try {
+                        build job: 'OPITest/OpiFullTest/OpiCliWinRu', propagate: false, wait: true
+                    } catch (Exception e) {
+                        echo "Stage failed, but continuing: ${e.message}"
+                    }
+                }
+            }
+        }
+
+        stage('OpenIntegrations - Test (CLI, Win, EN)') {
+            steps {
+                script {
+                    try {
+                        build job: 'OPITest/OpiFullTest/OpiCliWinEn', propagate: false, wait: true
+                    } catch (Exception e) {
+                        echo "Stage failed, but continuing: ${e.message}"
+                    }
+                }
+            }
+        }
+
+        stage('OpenIntegrations - Test (CLI, Deb, RU)') {
+            steps {
+                script {
+                    try {
+                        build job: 'OPITest/OpiFullTest/OpiCliDebRu', propagate: false, wait: true
+                    } catch (Exception e) {
+                        echo "Stage failed, but continuing: ${e.message}"
+                    }
+                }
+            }
+        }
+
+        stage('OpenIntegrations - Test (CLI, Deb, EN)') {
+            steps {
+                script {
+                    try {
+                        build job: 'OPITest/OpiFullTest/OpiCliDebEn', propagate: false, wait: true
+                    } catch (Exception e) {
+                        echo "Stage failed, but continuing: ${e.message}"
+                    }
+                }
+            }
+        }
+        
+
+    }
+}
