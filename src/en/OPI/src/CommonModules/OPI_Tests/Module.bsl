@@ -110,7 +110,7 @@ Procedure BuildCheck_CheckIBToLastBuildCompliance() Export
         .ProcessRequest("GET")
         .ReturnResponseAsString(False, True);
 
-    Process(Result, "BuildCheck", "CheckIBToLastBuildCompliance");
+    Process(BuildSum, "BuildCheck", "CheckIBToLastBuildCompliance", , LastSum);
 
 EndProcedure
 
