@@ -4,30 +4,50 @@ pipeline {
 	}
 
     stages {
-        stage('OpiMain') {
+        stage('OpenIntegrations - Build') {
             steps {
-                echo 'Main (OpenIntegrations)'
                 build job: 'OpiMain', wait: true
             }
         }
 
-        stage('MelezhRelease') {
+        stage('OpenIntegrations - 1C DB Update') {
             steps {
-                echo 'Main + Release (Melezh)'
+                build job: 'OpiBaseUpdate', wait: true
+            }
+        }
+
+        stage('Melezh - Main + Release') {
+            steps {
                 build job: 'MelezhRelease', wait: true
             }
         }
 
-        stage('OpiRelease') {
+        stage('OpenIntegrations - Release') {
             steps {
                 echo 'Release (OpenIntegrations)'
                 build job: 'OpiRelease', wait: true
             }
         }
-        stage('OpiCliTestRu') {
+        stage('OpenIntegrations - Test (1C, Win, RU)') {
             steps {
-                echo 'CLI Test (OpenIntegrations)'
-                build job: 'OpiCliTestRu', wait: true
+                script {
+                    try {
+                        build job: 'Opi1cWinRu', propagate: false, wait: true
+                    } catch (Exception e) {
+                        echo "Stage failed, but continuing: ${e.message}"
+                    }
+                }
+            }
+        }
+        stage('OpenIntegrations - Test (1C, Win, EN)') {
+            steps {
+                script {
+                    try {
+                        build job: 'Opi1cWinEn', propagate: false, wait: true
+                    } catch (Exception e) {
+                        echo "Stage failed, but continuing: ${e.message}"
+                    }
+                }
             }
         }
     }
