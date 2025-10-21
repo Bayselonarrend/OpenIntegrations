@@ -40,6 +40,8 @@
 //@skip-check wrong-string-literal-content
 //@skip-check use-non-recommended-method
 
+#Use "./internal"
+
 #Region Internal
 
 #Region WebMethods
