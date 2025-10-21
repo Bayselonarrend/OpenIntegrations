@@ -9,7 +9,7 @@
     "contexts": null,
     "paths": null,
     "tests": [
-
+"OPI_Tests.CheckIBToLastBuildCompliance"
     ]
   },
   "settings": {
