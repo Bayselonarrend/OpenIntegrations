@@ -94,7 +94,7 @@ Procedure BuildCheck_CheckIBToLastBuildCompliance() Export
     If OPI_TestDataRetrieval.IsCLITest() Then
 
         //@skip-check use-non-recommended-method
-        Message("CLI test check");
+        Message("CLI test check for hash sum");
         BuildSum = OPI_TestDataRetrieval.ExecuteTestCLI("hashsum", "", New Structure);
 
     Else
