@@ -40,6 +40,9 @@
 //@skip-check wrong-string-literal-content
 //@skip-check use-non-recommended-method
 
+// Раскомментировать, если выполняется OneScript
+// #Использовать "./internal"
+
 #Область СлужебныйПрограммныйИнтерфейс
 
 #Область РаботаССетью
