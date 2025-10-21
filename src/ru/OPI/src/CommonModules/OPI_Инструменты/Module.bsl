@@ -1013,7 +1013,7 @@
 
 Функция ПолучитьХешСуммуПоследнейСборки() Экспорт
     
-    LastBuildHash = "1";
+    LastBuildHash  = "A1C5D4657E3E1BF2ED137347E260FF2929D066630A890D109AA28F5A2B728865";
     
     Возврат LastBuildHash;
     
