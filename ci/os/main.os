@@ -283,7 +283,7 @@
 	СуммаДД.Записать("./src/en/OInt/.versionhash");
 	СуммаДД.Записать("./src/ru/cli/.versionhash");
 	СуммаДД.Записать("./src/en/cli/.versionhash");
-	СуммаДД.Записать("./ci/installer_set/share/oint");
+	СуммаДД.Записать("./ci/installer_set/share/oint/.versionhash");
 
 КонецПроцедуры
 
