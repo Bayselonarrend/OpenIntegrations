@@ -88,7 +88,7 @@ EndFunction
 
 #Region Service
 
-Procedure BuildCheck_CheckIBToLastBuildCompliance() Export
+Procedure CheckIBToLastBuildCompliance() Export
 
     If OPI_TestDataRetrieval.IsCLITest() Then
 
