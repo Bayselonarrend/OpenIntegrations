@@ -1011,6 +1011,12 @@
 
 КонецФункции
 
+Функция ПолучитьХешСуммуПоследнейСборки() Экспорт
+
+    Возврат OPI_BuildHash.GetHashSum();
+
+КонецФункции
+
 Функция ВерсияОПИ() Экспорт
     Возврат "1.28.0";
 КонецФункции
@@ -1019,6 +1025,7 @@
     ТекущийЯзыкОПИ = "ru";
     Возврат ТекущийЯзыкОПИ;
 КонецФункции
+
 
 #КонецОбласти
 
@@ -1373,6 +1380,10 @@ EndFunction
 
 Function ThisIsCollection(Val Value, Val KeyValue = False) Export
 	Return ЭтоКоллекция(Value, KeyValue);
+EndFunction
+
+Function GetLastBuildHashSum() Export
+	Return ПолучитьХешСуммуПоследнейСборки();
 EndFunction
 
 Function OPIVersion() Export

@@ -28,9 +28,9 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен     = ПараметрыФункции["Slack_Token"];
+    Токен     = "xoxb-6965308400114-696804637...";
     Заголовок = "Новый файл";
-    Файл      = ПараметрыФункции["Document"];
+    Файл      = "https://hut.openintegrations.dev/test_data/document.docx";
 
     Результат = OPI_Slack.ДобавитьВнешнийФайл(Токен, Файл, Заголовок);
 ```

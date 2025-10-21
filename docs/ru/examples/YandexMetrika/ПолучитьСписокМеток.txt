@@ -1,3 +1,3 @@
-﻿    Токен = ПараметрыФункции["Metrika_Token"];
+﻿    Токен = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
 
     Результат = OPI_YandexMetrika.ПолучитьСписокМеток(Токен);

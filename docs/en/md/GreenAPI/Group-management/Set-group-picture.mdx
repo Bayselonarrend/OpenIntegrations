@@ -34,13 +34,13 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
-    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
-    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
-    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
-    Image   = FunctionParameters["Picture"]; // URL, Path or Binary Data
-    GroupID = FunctionParameters["GreenAPI_GroupID"];
+    Image   = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+    GroupID = "120363420522290653@g.us";
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.SetGroupPicture(AccessParameters, GroupID, Image);

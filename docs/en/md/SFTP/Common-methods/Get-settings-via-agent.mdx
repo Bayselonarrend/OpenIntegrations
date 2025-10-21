@@ -28,9 +28,9 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Host   = FunctionParameters["SSH_Host"];
-    Port   = FunctionParameters["SSH_Port"];
-    Login  = FunctionParameters["SSH_User"];
+    Host   = "172.33.0.13";
+    Port   = "2222";
+    Login  = "bayselonarrend";
     Result = OPI_SFTP.GetSettingsViaAgent(Host, Port, Login);
 ```
  

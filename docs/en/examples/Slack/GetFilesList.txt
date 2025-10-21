@@ -1,4 +1,4 @@
-﻿    Token   = FunctionParameters["Slack_Token"];
-    Channel = FunctionParameters["Slack_Channel"];
+﻿    Token   = "xoxb-6965308400114-696804637...";
+    Channel = "C06UFNUTKUL";
 
     Result = OPI_Slack.GetFilesList(Token, Channel);

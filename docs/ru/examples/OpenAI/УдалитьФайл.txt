@@ -1,6 +1,6 @@
-﻿    URL   = ПараметрыФункции["OpenAI_URL"];
-    Токен = ПараметрыФункции["OpenAI_Token"];
+﻿    URL   = "https://hut.openintegrations.dev/localai/";
+    Токен = "12We...";
 
-    IDФайла = ПараметрыФункции["OpenAI_File"];
+    IDФайла = "file-3";
 
     Результат = OPI_OpenAI.УдалитьФайл(URL, Токен, IDФайла);

@@ -30,10 +30,10 @@ Method at API documentation: [GetSettings](https://green-api.com/docs/api/accoun
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    ApiUrl           = FunctionParameters["GreenAPI_ApiURL"];
-    MediaUrl         = FunctionParameters["GreenAPI_MediaURL"];
-    IdInstance       = FunctionParameters["GreenAPI_IdInstance"];
-    ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.GetInstanceSettings(AccessParameters);

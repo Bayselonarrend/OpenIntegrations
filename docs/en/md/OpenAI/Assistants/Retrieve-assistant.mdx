@@ -33,10 +33,10 @@ Method at API documentation: [Retrieve assistant](https://platform.openai.com/do
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL   = FunctionParameters["OpenAI_URL"];
-    Token = FunctionParameters["OpenAI_Token"];
+    URL   = "https://hut.openintegrations.dev/localai/";
+    Token = "12We...";
 
-    AssistantID = FunctionParameters["OpenAI_Assistant"];
+    AssistantID = "asst_2";
 
     Result = OPI_OpenAI.RetrieveAssistant(URL, Token, AssistantID);
 ```

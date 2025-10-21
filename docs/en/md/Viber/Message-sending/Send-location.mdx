@@ -33,14 +33,14 @@ import TabItem from '@theme/TabItem';
     Latitude  = "48.87373649724122";
     Longitude = "2.2954639195323967";
 
-    UserID           = FunctionParameters["Viber_UserID"];
-    Token            = FunctionParameters["Viber_Token"];
+    UserID           = "d3jxe61Z4W73nmNkjYGgZg==";
+    Token            = "523b5b25ed27e6ec-fdf013e4...";
     SendingToChannel = False;
 
     Result = OPI_Viber.SendLocation(Token, Latitude, Longitude, UserID, SendingToChannel);
 
-    UserID           = FunctionParameters["Viber_ChannelAdminID"];
-    Token            = FunctionParameters["Viber_ChannelToken"];
+    UserID           = "tMNGhftyUPrB3r1lD+bT4g==";
+    Token            = "523b58ba82afffaa-7ef3b426...";
     SendingToChannel = True;
 
     Result = OPI_Viber.SendLocation(Token, Latitude, Longitude, UserID, SendingToChannel);

@@ -35,17 +35,17 @@ Method at API documentation: [task.stages.movetask](https://dev.1c-bitrix.ru/res
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    TaskID  = FunctionParameters["Bitrix24_KanbanTaskID"];
-    StageID = FunctionParameters["Bitrix24_HookStageID"];
+    TaskID  = "8426";
+    StageID = "3098";
 
-    URL = FunctionParameters["Bitrix24_URL"];
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID);
 
-    StageID = FunctionParameters["Bitrix24_StageID"];
+    StageID = "3100";
 
-    URL   = FunctionParameters["Bitrix24_Domain"];
-    Token = FunctionParameters["Bitrix24_Token"];
+    URL   = "b24-ar17wx.bitrix24.by";
+    Token = "3b1af468006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MoveTaskToKanbanStage(URL, TaskID, StageID, , , Token);
 ```

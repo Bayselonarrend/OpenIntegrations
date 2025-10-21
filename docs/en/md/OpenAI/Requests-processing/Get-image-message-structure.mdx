@@ -28,9 +28,9 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL   = FunctionParameters["OpenAI_URL"];
-    Token = FunctionParameters["OpenAI_Token"];
-    Image = FunctionParameters["OpenAI_File"];
+    URL   = "https://hut.openintegrations.dev/localai/";
+    Token = "12We...";
+    Image = "file-3";
 
     Result = OPI_OpenAI.GetImageMessageStructure("user", Image, "What is in this image?");
 ```

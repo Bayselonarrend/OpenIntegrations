@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="6f50b040-6438-4128-b861-8756e188e607">
+  <name>OPI_BuildHash</name>
+  <synonym>
+    <key>en</key>
+    <value>Build hash (OpenIntegrations</value>
+  </synonym>
+  <comment>Service module that helps determine project relevance to the source code</comment>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>

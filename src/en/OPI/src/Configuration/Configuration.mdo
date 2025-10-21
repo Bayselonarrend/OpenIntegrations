@@ -100,5 +100,6 @@
   <commonModules>CommonModule.OPI_TypeConversion</commonModules>
   <commonModules>CommonModule.OPI_Tests</commonModules>
   <commonModules>CommonModule.OPI_TestsCLI</commonModules>
+  <commonModules>CommonModule.OPI_BuildHash</commonModules>
   <dataProcessors>DataProcessor.OPI_HTTPClient</dataProcessors>
 </mdclass:Configuration>
