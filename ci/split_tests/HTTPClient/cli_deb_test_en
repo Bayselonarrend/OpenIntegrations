@@ -70,7 +70,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'CheckIBToLastBuildCompliance'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
