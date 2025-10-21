@@ -40,6 +40,8 @@
 //@skip-check wrong-string-literal-content
 //@skip-check use-non-recommended-method
 
+#Использовать "./internal"
+
 #Область СлужебныйПрограммныйИнтерфейс
 
 #Область РаботаССетью
