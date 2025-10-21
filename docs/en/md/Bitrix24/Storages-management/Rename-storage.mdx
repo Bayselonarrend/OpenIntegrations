@@ -34,9 +34,9 @@ Method at API documentation: [disk.storage.rename](https://dev.1c-bitrix.ru/rest
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Name      = "New storage name";
-    URL       = FunctionParameters["Bitrix24_Domain"];
-    Token     = FunctionParameters["Bitrix24_Token"];
-    StorageID = FunctionParameters["Bitrix24_StorageID"];
+    URL       = "b24-ar17wx.bitrix24.by";
+    Token     = "3b1af468006e9f06006b12e400000001000...";
+    StorageID = "18";
 
     Result = OPI_Bitrix24.RenameStorage(URL, StorageID, Name, Token);
 ```

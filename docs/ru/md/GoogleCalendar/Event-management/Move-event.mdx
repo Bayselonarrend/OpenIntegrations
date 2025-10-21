@@ -29,11 +29,11 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен   = ПараметрыФункции["Google_Token"];
-    Событие = ПараметрыФункции["Google_EventID"];
+    Токен   = "ya29.a0AQQ_BDT_CMAJqFIcOfzUrSDYRQ2mZ6TLDIGN-tv27R3mPj8iFcUgZ-x-aipMSCOTXMfqqTzT2aRN4TCe8MFrBD2tInauCN39ueJtc4LHbj71tbNlq9LdkejgF...";
+    Событие = "ccknhhgag1168lmsuqdkn9n9gk";
 
-    КалендарьИсточник = ПараметрыФункции["Google_NewCalendarID"];
-    КалендарьПриемник = ПараметрыФункции["Google_CalendarID"];
+    КалендарьИсточник = "cece9cf2ef513ea9209ec0e4b5029809c52153f74ad18d53e40d362bcb1f297a@group.calendar.google.com";
+    КалендарьПриемник = "bayselonarrend@gmail.com";
 
     Результат = OPI_GoogleCalendar.ПереместитьСобытие(Токен, КалендарьИсточник, КалендарьПриемник, Событие);
 ```

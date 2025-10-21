@@ -1,14 +1,14 @@
 ﻿    Расширение = "docx";
-    URL        = ПараметрыФункции["Document"];
+    URL        = "https://hut.openintegrations.dev/test_data/document.docx";
 
-    IDПользователя = ПараметрыФункции["Viber_UserID"];
-    Токен          = ПараметрыФункции["Viber_Token"];
+    IDПользователя = "d3jxe61Z4W73nmNkjYGgZg==";
+    Токен          = "523b5b25ed27e6ec-fdf013e4...";
     ОтправкаВКанал = Ложь;
 
     Результат = OPI_Viber.ОтправитьФайл(Токен, URL, IDПользователя, ОтправкаВКанал, Расширение);
 
-    IDПользователя = ПараметрыФункции["Viber_ChannelAdminID"];
-    Токен          = ПараметрыФункции["Viber_ChannelToken"];
+    IDПользователя = "tMNGhftyUPrB3r1lD+bT4g==";
+    Токен          = "523b58ba82afffaa-7ef3b426...";
     ОтправкаВКанал = Истина;
 
     Результат = OPI_Viber.ОтправитьФайл(Токен, URL, IDПользователя, ОтправкаВКанал, Расширение);

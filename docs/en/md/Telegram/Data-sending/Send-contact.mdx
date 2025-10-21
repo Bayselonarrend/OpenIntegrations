@@ -35,12 +35,12 @@ Method at API documentation: [sendContact](https://core.telegram.org/bots/api#se
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token     = FunctionParameters["Telegram_Token"];
-    ChatID    = FunctionParameters["Telegram_ChatID"];
-    ChannelID = FunctionParameters["Telegram_ChannelID"];
-    Name      = FunctionParameters["Name"];
-    LastName  = FunctionParameters["Surname"];
-    Phone     = FunctionParameters["Phone"];
+    Token     = "6129457865:AAFyzNYOAFbu...";
+    ChatID    = "461699897";
+    ChannelID = "@testsichee";
+    Name      = "Петр";
+    LastName  = "Петров";
+    Phone     = "88005553535";
 
     Result = OPI_Telegram.SendContact(Token, ChatID, Name, LastName, Phone);
 

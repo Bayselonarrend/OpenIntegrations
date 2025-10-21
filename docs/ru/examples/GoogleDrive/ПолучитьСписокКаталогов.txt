@@ -1,4 +1,4 @@
 ﻿    Имя   = "Тестовая папка";
-    Токен = ПараметрыФункции["Google_Token"];
+    Токен = "ya29.a0AQQ_BDT_CMAJqFIcOfzUrSDYRQ2mZ6TLDIGN-tv27R3mPj8iFcUgZ-x-aipMSCOTXMfqqTzT2aRN4TCe8MFrBD2tInauCN39ueJtc4LHbj71tbNlq9LdkejgF...";
 
     Результат = OPI_GoogleDrive.ПолучитьСписокКаталогов(Токен, Имя, Истина);

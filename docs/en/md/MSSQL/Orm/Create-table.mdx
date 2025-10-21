@@ -33,9 +33,9 @@ List of available types is described on the initial page of the MSSQL library do
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Address  = FunctionParameters["PG_IP"];
+    Address  = "127.0.0.1";
     Login    = "SA";
-    Password = FunctionParameters["PG_Password"];
+    Password = "12we...";
     Base     = "testbase1";
 
     TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
