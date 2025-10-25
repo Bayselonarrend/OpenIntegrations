@@ -1,9 +1,9 @@
 ﻿{
  "result": {
   "FILES": {
-   "upload45139": {
-    "id": 45139,
-    "chatId": 3277,
+   "upload45300": {
+    "id": 45300,
+    "chatId": 3288,
     "date": {},
     "type": "file",
     "name": "Важный документ.docx",
@@ -15,19 +15,19 @@
     "authorId": 1,
     "authorName": "Антон Титовец",
     "urlPreview": "",
-    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=45139&width=1280&height=1280&signature=bf629dc1fbacf4c7567919d156abe04842ef711ea6549c43deef51ff243ea569&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
-    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=45139&width=1280&height=1280&signature=bf629dc1fbacf4c7567919d156abe04842ef711ea6549c43deef51ff243ea569&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
+    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=45300&width=1280&height=1280&signature=8e6218fefd356a31bac1fa62f2fa5e416d1dc4ae13aff2b328553822219731d5&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
+    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=45300&width=1280&height=1280&signature=8e6218fefd356a31bac1fa62f2fa5e416d1dc4ae13aff2b328553822219731d5&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
     "viewerAttrs": {
      "viewer": null,
      "viewerType": "cloud-document",
-     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=45139&width=1280&height=1280&signature=bf629dc1fbacf4c7567919d156abe04842ef711ea6549c43deef51ff243ea569&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
+     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=45300&width=1280&height=1280&signature=8e6218fefd356a31bac1fa62f2fa5e416d1dc4ae13aff2b328553822219731d5&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
      "viewerTypeClass": "BX.Messenger.Integration.Viewer.OnlyOfficeChatItem",
      "viewerSeparateItem": true,
      "viewerExtension": "im.integration.viewer",
-     "objectId": "45139",
-     "imChatId": 3277,
+     "objectId": "45300",
+     "imChatId": 3288,
      "title": "Важный документ.docx",
-     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"45139\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
+     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"45300\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
     },
     "mediaUrl": {
      "preview": {
@@ -38,11 +38,11 @@
    }
   },
   "DISK_ID": [
-   "45139"
+   "45300"
   ],
   "FILE_MODELS": {
-   "upload45139": {
-    "id": 45139,
+   "upload45300": {
+    "id": 45300,
     "name": "Важный документ.docx",
     "createTime": {},
     "updateTime": {},
@@ -50,34 +50,34 @@
     "code": null,
     "xmlId": null,
     "storageId": 6,
-    "realObjectId": 45139,
-    "parentId": 45135,
+    "realObjectId": 45300,
+    "parentId": 45296,
     "deletedType": 0,
     "createdBy": "1",
     "updatedBy": "1",
     "deletedBy": "0",
-    "uniqueCode": "7pZ4zfKQW0jZfzww7GU1",
+    "uniqueCode": "3WXycq0JWGG6th24IaTR",
     "typeFile": 4,
     "globalContentVersion": 2,
-    "fileId": 30435,
+    "fileId": 30548,
     "size": 24071,
-    "etag": "8cdd05c1b4512ca95e20ee1bb47050ac",
+    "etag": "c9e7cad70018979fcf219f5c8c78a2a0",
     "links": {
-     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=45139",
-     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=45139&action=showObjectInGrid&ncc=1"
+     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=45300",
+     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=45300&action=showObjectInGrid&ncc=1"
     }
    }
   },
-  "MESSAGE_ID": 65001
+  "MESSAGE_ID": 65304
  },
  "time": {
-  "start": 1760871486,
-  "finish": 1760871486.16807,
-  "duration": 0.168073892593384,
+  "start": 1761402289,
+  "finish": 1761402289.4261,
+  "duration": 0.426101922988892,
   "processing": 0,
-  "date_start": "2025-10-19T13:58:06+03:00",
-  "date_finish": "2025-10-19T13:58:06+03:00",
-  "operating_reset_at": 1760872086,
+  "date_start": "2025-10-25T14:24:49+00:00",
+  "date_finish": "2025-10-25T14:24:49+00:00",
+  "operating_reset_at": 1761402889,
   "operating": 0
  }
 }

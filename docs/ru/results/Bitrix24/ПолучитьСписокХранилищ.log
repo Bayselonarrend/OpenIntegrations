@@ -20,7 +20,7 @@
   },
   {
    "ID": "4",
-   "NAME": "Payment Processing Customer Support",
+   "NAME": "Bitrix24 Sales team",
    "CODE": null,
    "MODULE_ID": "disk",
    "ENTITY_TYPE": "user",
@@ -443,15 +443,15 @@
   }
  ],
  "next": 49,
- "total": 1418,
+ "total": 1424,
  "time": {
-  "start": 1760871351,
-  "finish": 1760871352.00251,
-  "duration": 1.0025110244751,
-  "processing": 1,
-  "date_start": "2025-10-19T13:55:51+03:00",
-  "date_finish": "2025-10-19T13:55:52+03:00",
-  "operating_reset_at": 1760871951,
+  "start": 1761402137,
+  "finish": 1761402137.93938,
+  "duration": 0.939377069473266,
+  "processing": 0,
+  "date_start": "2025-10-25T14:22:17+00:00",
+  "date_finish": "2025-10-25T14:22:17+00:00",
+  "operating_reset_at": 1761402737,
   "operating": 0
  }
 }
