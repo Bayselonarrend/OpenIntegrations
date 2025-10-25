@@ -85,6 +85,8 @@ pipeline {
 				script {
 					def tests = [
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_Аккаунт'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_РаботаСГруппами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_ОтправкаСообщений'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
