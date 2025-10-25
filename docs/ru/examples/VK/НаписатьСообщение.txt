@@ -2,7 +2,7 @@
 
     Текст          = "Сообщение из автотеста";
     IDПользователя = "657846756";
-    Communitytoken = "vk1.a.IzbBGUkYUvrNfMt_sknCcC66hyYifL0U1Bb8CVYCNFBUVfpsJtzZ_K5LwCzURr2_uCzEaP_AK1QmInp9sGp7fu_CtEDSipFWFXJo0y8I...";
+    Communitytoken = "vk1.a.phxjN1ZbTM9Lt-4F_i8d-LvqA9mOQH20qMstHTeytoRzDphTXA7aKpd57CJTn56Apn1ZHKPOpcrLDca43LFrKijMAtOYMwD4spRCAAuh...";
 
     МассивКнопок = Новый Массив;
     МассивКнопок.Добавить("Button 1");
