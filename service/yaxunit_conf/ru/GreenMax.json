@@ -9,7 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.GMax_Аккаунт"
+"OPI_Тесты.GMax_Аккаунт",
+"OPI_Тесты.GMax_РаботаСГруппами",
+"OPI_Тесты.GMax_ОтправкаСообщений"
     ]
   },
   "settings": {
