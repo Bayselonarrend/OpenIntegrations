@@ -1,0 +1,24 @@
+﻿{
+ "chatId": "***",
+ "owner": "39888725",
+ "subject": "Новая группа",
+ "description": "",
+ "creation": 1761402838,
+ "groupInviteLink": "https://max.ru/join/-sGnx7wfLJpmYfo6gNM_hriF2ZU_0RPXvhOegR4EaL4",
+ "allowParticipantsAddMembers": true,
+ "allowParticipantsEditGroupSettings": true,
+ "allowParticipantsPinMessages": true,
+ "size": 2,
+ "participants": [
+  {
+   "chatId": "***",
+   "isAdmin": true,
+   "isSuperAdmin": true
+  },
+  {
+   "chatId": "***",
+   "isAdmin": false,
+   "isSuperAdmin": false
+  }
+ ]
+}

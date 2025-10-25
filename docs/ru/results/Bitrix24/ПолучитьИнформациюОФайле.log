@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "45107",
+  "ID": "45268",
   "NAME": "Картинка1.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
@@ -8,25 +8,25 @@
   "PARENT_ID": "3",
   "DELETED_TYPE": "0",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "30415",
+  "FILE_ID": "30528",
   "SIZE": "805189",
-  "CREATE_TIME": "2025-10-19T13:55:57+03:00",
-  "UPDATE_TIME": "2025-10-19T13:55:57+03:00",
+  "CREATE_TIME": "2025-10-25T14:22:23+00:00",
+  "UPDATE_TIME": "2025-10-25T14:22:23+00:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "0",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=85d1f468006e9f06006b12e4000000010000078e149021a7078c5faf7648be19566b72&token=disk%7CaWQ9NDUxMDcmXz1MdGx4VHNocGF0TVJnYUREMzhPQmQ3bzdlS0tCWHppQg%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EVXhNRGNtWHoxTWRHeDRWSE5vY0dGMFRWSm5ZVVJFTXpoUFFtUTNiemRsUzB0Q1dIcHBRZz09fDg1ZDFmNDY4MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3OGUxNDkwMjFhNzA3OGM1ZmFmNzY0OGJlMTk1NjZiNzIi.RgEZf1RAf%2BXzNJDD8ZitsTW9Ek%2BRB0W0OUgR%2BhggxCw%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=d0eafc68006e9f06006b12e4000000010000079b815c62e8719a1fb2d2afe2641aa755&token=disk%7CaWQ9NDUyNjgmXz1WQWo2aklrbjhjdURwVW5XQWtWTUJ5cTE2RVBQRWh1UQ%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EVXlOamdtWHoxV1FXbzJha2xyYmpoamRVUndWVzVYUVd0V1RVSjVjVEUyUlZCUVJXaDFVUT09fGQwZWFmYzY4MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3OWI4MTVjNjJlODcxOWExZmIyZDJhZmUyNjQxYWE3NTUi.Bb0RcgIFGJdGpequyXAYWCa04YYZNv%2B1xX9WrzvbO9Y%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Картинка1.jpg"
  },
  "time": {
-  "start": 1760871358,
-  "finish": 1760871358.50293,
-  "duration": 0.502931118011475,
+  "start": 1761402146,
+  "finish": 1761402146.07731,
+  "duration": 0.0773119926452637,
   "processing": 0,
-  "date_start": "2025-10-19T13:55:58+03:00",
-  "date_finish": "2025-10-19T13:55:58+03:00",
-  "operating_reset_at": 1760871958,
+  "date_start": "2025-10-25T14:22:26+00:00",
+  "date_finish": "2025-10-25T14:22:26+00:00",
+  "operating_reset_at": 1761402746,
   "operating": 0
  }
 }
