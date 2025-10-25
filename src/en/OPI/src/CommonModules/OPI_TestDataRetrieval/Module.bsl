@@ -1031,7 +1031,7 @@ Function GetFTPParameterOptions() Export
     ParametersStructure.Insert("Big", TestParametersMain["Big"]);
     OptionArray.Add(ParametersStructure);
 
-    If OPI_Tools.IsWindows() Then
+    If False Then
 
         // FTP + HTTP
         ParametersStructure = New Structure;
