@@ -2964,7 +2964,73 @@ Procedure GMax_Account() Export
     GreenMax_GetInstanceSettingsStructure(TestParameters);
     GreenMax_SetProfilePicture(TestParameters);
     GreenMax_GetAccountInformation(TestParameters);
+    GreenMax_CheckAccount(TestParameters);
+    GreenMax_GetContactList(TestParameters);
+    GreenMax_GetContactInformation(TestParameters);
+    GreenMax_GetChatList(TestParameters);
+    GreenMax_GetChatAvatar(TestParameters);
     GreenMax_RebootInstance(TestParameters);
+
+EndProcedure
+
+Procedure GMax_GroupManagement() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_ApiURL"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MediaURL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_IdInstance" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Token"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Phone"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_AccountID"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture3"            , TestParameters);
+
+    GreenMax_GetContactList(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_CreateGroup(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_GetGroupInformation(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_UpdateGroupName(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_ChangeGroupSettings(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_SetAdminRights(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_RevokeAdminRights(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_RemoveGroupMember(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_AddGroupMember(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_SetGroupPicture(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_LeaveGroup(TestParameters);
+    GreenMax_GetGroupSettingsStructure(TestParameters);
+
+EndProcedure
+
+Procedure GMax_MessageSending() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_ApiURL"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MediaURL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_IdInstance" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Token"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Phone"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_AccountID"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
+
+    GreenMax_GetContactList(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_CreateGroup(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_SendTextMessage(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_RemoveGroupMember(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_LeaveGroup(TestParameters);
+    OPI_Tools.Pause(1);
 
 EndProcedure
 
@@ -23482,6 +23548,347 @@ Procedure GreenMax_GetAccountInformation(FunctionParameters)
     // END
 
     Process(Result, "GreenMax", "GetAccountInformation");
+
+EndProcedure
+
+Procedure GreenMax_CheckAccount(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    PhoneNumber = 441234567890;
+    PhoneNumber = FunctionParameters["GreenMax_Phone"]; // SKIP
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.CheckAccount(AccessParameters, PhoneNumber);
+
+    // END
+
+    Process(Result, "GreenMax", "CheckAccount", , FunctionParameters);
+
+EndProcedure
+
+Procedure GreenMax_GetContactList(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    Count = 1;
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.GetContactList(AccessParameters, Count);
+
+    // END
+
+    Process(Result, "GreenMax", "GetContactList", , FunctionParameters);
+
+EndProcedure
+
+Procedure GreenMax_GetContactInformation(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    ContactID = 87654321;
+    ContactID = FunctionParameters["GreenMax_ContactID"]; // SKIP
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.GetContactInformation(AccessParameters, ContactID);
+
+    // END
+
+    Process(Result, "GreenMax", "GetContactInformation");
+
+EndProcedure
+
+Procedure GreenMax_GetChatList(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.GetChatList(AccessParameters);
+
+    // END
+
+    Process(Result, "GreenMax", "GetChatList");
+
+EndProcedure
+
+Procedure GreenMax_GetChatAvatar(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    ChatID = 87654321;
+    ChatID = FunctionParameters["GreenMax_ContactID"]; // SKIP
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.GetChatAvatar(AccessParameters, ChatID);
+
+    // END
+
+    Process(Result, "GreenMax", "GetChatAvatar");
+
+EndProcedure
+
+Procedure GreenMax_CreateGroup(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    UserID = 87654321;
+    Name   = "New group";
+
+    UserID = FunctionParameters["GreenMax_ContactID"]; //SKIP
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.CreateGroup(AccessParameters, Name, UserID);
+
+    // END
+
+    Process(Result, "GreenMax", "CreateGroup", , FunctionParameters);
+
+EndProcedure
+
+Procedure GreenMax_AddGroupMember(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    ChatID   = 12345678;
+    MemberID = 87654321;
+
+    ChatID   = FunctionParameters["GreenMax_GroupID"]; // SKIP
+    MemberID = FunctionParameters["GreenMax_ContactID"]; // SKIP
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.AddGroupMember(AccessParameters, ChatID, MemberID);
+
+    // END
+
+    Process(Result, "GreenMax", "AddGroupMember");
+
+    GreenMax_RemoveGroupMember(FunctionParameters);
+
+EndProcedure
+
+Procedure GreenMax_RemoveGroupMember(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    ChatID   = 12345678;
+    MemberID = 87654321;
+
+    ChatID   = FunctionParameters["GreenMax_GroupID"]; // SKIP
+    MemberID = FunctionParameters["GreenMax_ContactID"]; // SKIP
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.RemoveGroupMember(AccessParameters, ChatID, MemberID);
+
+    // END
+
+    Process(Result, "GreenMax", "RemoveGroupMember");
+
+EndProcedure
+
+Procedure GreenMax_LeaveGroup(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    ChatID = 12345678;
+    ChatID = FunctionParameters["GreenMax_GroupID"]; // SKIP
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.LeaveGroup(AccessParameters, ChatID);
+
+    // END
+
+    Process(Result, "GreenMax", "LeaveGroup");
+
+EndProcedure
+
+Procedure GreenMax_UpdateGroupName(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    Name   = "New group name";
+    ChatID = 12345678;
+    ChatID = FunctionParameters["GreenMax_GroupID"]; // SKIP
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.UpdateGroupName(AccessParameters, ChatID, Name);
+
+    // END
+
+    Process(Result, "GreenMax", "UpdateGroupName");
+
+EndProcedure
+
+Procedure GreenMax_GetGroupInformation(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    ChatID = 12345678;
+    ChatID = FunctionParameters["GreenMax_GroupID"]; // SKIP
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.GetGroupInformation(AccessParameters, ChatID);
+
+    // END
+
+    Process(Result, "GreenMax", "GetGroupInformation");
+
+EndProcedure
+
+Procedure GreenMax_ChangeGroupSettings(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    ChatID = 12345678;
+    ChatID = FunctionParameters["GreenMax_GroupID"]; // SKIP
+
+    Settings = New Structure;
+    Settings.Insert("allowParticipantsEditGroupSettings" , True);
+    Settings.Insert("allowParticipantsPinMessages"       , False);
+    Settings.Insert("allowParticipantsAddMembers"        , False);
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.ChangeGroupSettings(AccessParameters, ChatID, Settings);
+
+    // END
+
+    Process(Result, "GreenMax", "ChangeGroupSettings");
+
+EndProcedure
+
+Procedure GreenMax_GetGroupSettingsStructure(FunctionParameters)
+
+    Result = OPI_GreenMax.GetGroupSettingsStructure();
+
+    // END
+
+    Process(Result, "GreenMax", "GetGroupSettingsStructure");
+
+    Result = OPI_GreenMax.GetGroupSettingsStructure(True);
+
+    Process(Result, "GreenMax", "GetGroupSettingsStructure", "Clear");
+
+EndProcedure
+
+Procedure GreenMax_SetAdminRights(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    ChatID   = 12345678;
+    MemberID = 87654321;
+
+    ChatID   = FunctionParameters["GreenMax_GroupID"]; // SKIP
+    MemberID = FunctionParameters["GreenMax_ContactID"]; // SKIP
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.SetAdminRights(AccessParameters, ChatID, MemberID);
+
+    // END
+
+    Process(Result, "GreenMax", "SetAdminRights");
+
+EndProcedure
+
+Procedure GreenMax_RevokeAdminRights(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    ChatID   = 12345678;
+    MemberID = 87654321;
+
+    ChatID   = FunctionParameters["GreenMax_GroupID"]; // SKIP
+    MemberID = FunctionParameters["GreenMax_ContactID"]; // SKIP
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.RevokeAdminRights(AccessParameters, ChatID, MemberID);
+
+    // END
+
+    Process(Result, "GreenMax", "RevokeAdminRights");
+
+EndProcedure
+
+Procedure GreenMax_SetGroupPicture(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    Image  = FunctionParameters["Picture3"]; // URL, Path or Binary Data
+    ChatID = 12345678;
+
+    ChatID = FunctionParameters["GreenMax_GroupID"]; // SKIP
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.SetGroupPicture(AccessParameters, ChatID, Image);
+
+    // END
+
+    Process(Result, "GreenMax", "SetGroupPicture");
+
+EndProcedure
+
+Procedure GreenMax_SendTextMessage(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    Text   = "Message text";
+    ChatID = 12345678;
+    Set    = 2000;
+
+    ChatID = FunctionParameters["GreenMax_GroupID"]; // SKIP
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.SendTextMessage(AccessParameters, ChatID, Text, Set);
+
+    // END
+
+    Process(Result, "GreenMax", "SendTextMessage", , FunctionParameters);
 
 EndProcedure
 

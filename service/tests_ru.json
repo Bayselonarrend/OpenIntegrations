@@ -6258,5 +6258,95 @@
 "lib": "GreenMax",
 "name": "ПолучитьИнформациюОбАккаунте",
 "variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПроверитьАккаунт",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьСписокКонтактов",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьИнформациюОКонтакте",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьСписокЧатов",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьАватарЧата",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "СоздатьГруппу",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ДобавитьУчастникаГруппы",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "УдалитьУчастникаГруппы",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ВыйтиИзГруппы",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ИзменитьИмяГруппы",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьИнформациюОГруппе",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ИзменитьНастройкиГруппы",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьСтруктуруНастроекГруппы",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьСтруктуруНастроекГруппы",
+"variant": "Пустая"
+},
+{
+"lib": "GreenMax",
+"name": "НазначитьПраваАдминистратора",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ОтозватьПраваАдминистратора",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "УстановитьКартинкуГруппы",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ОтправитьТекстовоеСообщение",
+"variant": ""
 }
 ]
