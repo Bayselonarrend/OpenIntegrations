@@ -1,32 +1,6 @@
 ﻿[
  {
-  "messageID": "BAE572B0E72B15DE",
-  "type": "sendLocation",
-  "body": {
-   "chatId": "120363410406221140@g.us",
-   "quotedMessageId": "BAE59852C099A680",
-   "latitude": 53.908522,
-   "longitude": 27.574821,
-   "typingTime": null
-  }
- },
- {
-  "messageID": "BAE5F5DF145B219B",
-  "type": "sendContact",
-  "body": {
-   "chatId": "120363410406221140@g.us",
-   "contact": {
-    "phoneContact": 79001234568,
-    "firstName": "Артем",
-    "middleName": "Евпаторийский",
-    "lastName": "Петрович",
-    "company": "Велосипед"
-   },
-   "typingTime": null
-  }
- },
- {
-  "messageID": "BAE525BCB79FD27B",
+  "messageID": "BAE54903F2E85B02",
   "type": "sendContact",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -34,30 +8,30 @@
     "phoneContact": 79001234568,
     "company": "Велосипед"
    },
-   "quotedMessageId": "BAE5F5DF145B219B",
+   "quotedMessageId": "BAE55B096FF6A386",
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "BAE50EBDBBA7BCC1"
+   "BAE518CC5447C970"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "120363410406221140@g.us",
    "chatIdFrom": "120363410406221140@g.us",
    "messages": [
-    "BAE58013CF7E7F69"
+    "BAE545C43B7B76C6"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "BAE537C9CFE3977A",
+  "messageID": "BAE5159EE05F80CB",
   "type": "editMessage",
   "body": {
    "chatId": "120363410406221140@g.us",
-   "idMessage": "BAE58013CF7E7F69",
+   "idMessage": "BAE545C43B7B76C6",
    "message": "Новый текст сообщения",
    "linkPreview": true
   }
