@@ -6,7 +6,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 <img src={require('../../static/img/APIs/GreenAPI.png').default} width='64px' />
 
-# Green API (WhatsApp)
+# WhatsApp (GreenAPI)
 
 Этот раздел посвящен библиотеке для работы с WhatsApp через Green API в 1С:Предприятие, OneScript и CLI. На данной странице описаны все действия, необходимые для полноценного начала работы
 

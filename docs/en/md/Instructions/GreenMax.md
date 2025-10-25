@@ -1,11 +1,11 @@
 ---
-id: GreenAPI
-sidebar_class_name: GreenAPI
+id: GreenMax
+sidebar_class_name: GreenMax
 ---
 
-<img src={require('../../static/img/APIs/GreenAPI.png').default} width='64px' />
+<img src={require('../../static/img/APIs/GreenMax.png').default} width='64px' />
 
-# Green API (WhatsApp)
+# Max (GreenAPI)
 
 This section is dedicated to the library for working with WhatsApp via Green API. On this page, all the steps necessary to start working are described
 
