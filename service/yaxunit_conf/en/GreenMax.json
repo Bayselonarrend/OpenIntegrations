@@ -9,7 +9,9 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.GMax_Account"
+"OPI_Tests.GMax_Account",
+"OPI_Tests.GMax_GroupManagement",
+"OPI_Tests.GMax_MessageSending"
     ]
   },
   "settings": {

@@ -92,6 +92,8 @@ pipeline {
 				script {
 					def tests = [
 						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GMax_Account'],
+						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GMax_GroupManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GMax_MessageSending'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
