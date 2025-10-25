@@ -197,7 +197,7 @@ li > a.menu__link {
 .VKTeams a::before, .S3 a::before, .TCP a::before, .Neocities a::before, .CDEK a::before, .Start a::before, 
 .Other a::before, .SQLite a::before, .PostgreSQL a::before, .GreenAPI a::before, .RCON a::before, .MySQL a::before, .MSSQL a::before, .AI a:before,
 .Ollama a::before, .Exchange a::before, .HTTP a::before, .OpenAI a::before, .Addons a::before, .Melezh a::before, .CL a::before, .WebUI a::before,
-.Info a::before, .FTP a::before, .SFTP a::before, .SSH a::before{
+.Info a::before, .FTP a::before, .SFTP a::before, .SSH a::before, .GreenMax a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
 }
@@ -300,6 +300,10 @@ li > a.menu__link {
 
 .GreenAPI > div > a::before{
   content: url(../../static/img/APIs/small/GreenAPI.png);
+}
+
+.GreenMax > div > a::before{
+  content: url(../../static/img/APIs/small/GreenMax.png);
 }
 
 
