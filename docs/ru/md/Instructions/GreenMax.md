@@ -1,12 +1,12 @@
 ---
-id: GreenAPI
-sidebar_class_name: GreenAPI
-keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, GreenAPI]
+id: GreenMax
+sidebar_class_name: GreenMax
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, GreenAPI, Max]
 ---
 
-<img src={require('../../static/img/APIs/GreenAPI.png').default} width='64px' />
+<img src={require('../../static/img/APIs/GreenMax.png').default} width='64px' />
 
-# Green API (WhatsApp)
+# Max (GreenAPI)
 
 Этот раздел посвящен библиотеке для работы с WhatsApp через Green API в 1С:Предприятие, OneScript и CLI. На данной странице описаны все действия, необходимые для полноценного начала работы
 
