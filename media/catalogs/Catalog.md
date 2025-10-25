@@ -9,7 +9,7 @@
 |![Google Drive](../GoogleDrive.png)| `Google Drive`| google drive, googledrive, gdrive, google disk |
 |![Google Sheets](../GoogleSheets.png)| `Google Sheets`| googlesheets, google sheets, spreadsheets |
 |![Green API](../GreenAPI.png)| `Green API`| greenapi, whatsapp |
-|![Green Max (в разработке)](../default.png)| `Green Max (в разработке)`| greenapi, max |
+|![Green Max](../GreenMax.png)| `Green Max`| greenapi, max |
 |![MongoDB (в разработке)](../default.png)| `MongoDB (в разработке)`| mongodb, mongo, nosql |
 |![MSSQL](../MSSQL.png)| `MSSQL`| mssql, ms sql |
 |![MySQL](../MySQL.png)| `MySQL`| mysql, my sql |
