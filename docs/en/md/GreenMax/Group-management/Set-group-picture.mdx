@@ -1,0 +1,52 @@
+﻿---
+sidebar_position: 4
+description: Set group picture and other functions to work with Green Max in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Green Max]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set group picture
+ Sets the image as the group chat avatar
+
+
+
+`Function SetGroupPicture(Val AccessParameters, Val ChatID, Val Image) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
+  | ChatID | --chat | String | &#x2714; | Group chat ID |
+  | Image | --picture | String, BinaryData | &#x2714; | Image in jpg format |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Green API
+
+<br/>
+
+:::tip
+Method at API documentation: [SetGroupPicture](https://green-api.com/v3/docs/api/groups/SetGroupPicture/)
+
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ApiUrl           = "https://3100.api.green-api.com/v3";
+    MediaUrl         = "https://3100.api.green-api.com/v3";
+    IdInstance       = "31003...";
+    ApiTokenInstance = "17915d8e0b4b4975a183478da...";
+
+    Image  = "https://hut.openintegrations.dev/test_data/spy2.png"; // URL, Path or Binary Data
+    ChatID = 12345678;
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.SetGroupPicture(AccessParameters, ChatID, Image);
+```
+ 
+
+
+
+

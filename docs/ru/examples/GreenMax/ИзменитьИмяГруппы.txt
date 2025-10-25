@@ -1,0 +1,9 @@
+﻿    ApiUrl           = "https://3100.api.green-api.com/v3";
+    MediaUrl         = "https://3100.api.green-api.com/v3";
+    IdInstance       = "31003...";
+    ApiTokenInstance = "17915d8e0b4b4975a183478da...";
+
+    Наименование = "Новое имя группы";
+    IDЧата       = 12345678;
+    ПараметрыДоступа = OPI_GreenMax.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Результат        = OPI_GreenMax.ИзменитьИмяГруппы(ПараметрыДоступа, IDЧата, Наименование);

@@ -41,6 +41,7 @@
 //@skip-check wrong-string-literal-content
 //@skip-check method-too-many-params
 //@skip-check bsl-legacy-check-string-literal
+//@skip-check doc-comment-collection-item-type
 
 #Region Public
 
@@ -280,7 +281,7 @@ EndFunction
 // Checks the existence of a Max account by phone number
 //
 // Note
-// Method at API documentation: [CheckAccount](@green-api.com/v3/docs/api/account/CheckAccount/)
+// Method at API documentation: [CheckAccount](@green-api.com/v3/docs/api/service/CheckAccount/)
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
@@ -300,6 +301,98 @@ Function CheckAccount(Val AccessParameters, Val PhoneNumber, Val IgnoreCache = F
     OPI_Tools.AddField("force"      , IgnoreCache , "Boolean", Parameters);
 
     URL      = FormPrimaryURL(AccessParameters, "checkAccount");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get contact list
+// Gets account contact list
+//
+// Note
+// Method at API documentation: [GetContacts](@green-api.com/v3/docs/api/service/GetContacts/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// Count - Number - Contact count to retrieve. All if not specified - count
+//
+// Returns:
+// Array Of Map - serialized JSON response from Green API
+Function GetContactList(Val AccessParameters, Val Count = Undefined) Export
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("count", Count, "Number" , Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "getContacts");
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get contact information
+// Gets information about the selected contact
+//
+// Note
+// Method at API documentation: [GetContactInfo](@green-api.com/v3/docs/api/service/GetContactInfo/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetContactInformation(Val AccessParameters, Val ChatID) Export
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("chatId", ChatID , "String" , Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "getContactInfo");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get chat list
+// Gets account chat list
+//
+// Note
+// Method at API documentation: [GetChats](@green-api.com/v3/docs/api/service/GetChats/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+//
+// Returns:
+// Array Of Map - serialized JSON response from Green API
+Function GetChatList(Val AccessParameters) Export
+
+    URL      = FormPrimaryURL(AccessParameters, "getChats");
+    Response = OPI_HTTPRequests.Get(URL);
+
+    Return Response;
+
+EndFunction
+
+// Get chat avatar
+// Gets chat image URL
+//
+// Note
+// Method at API documentation: [GetAvatar](@green-api.com/v3/docs/api/service/GetAvatar/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetChatAvatar(Val AccessParameters, Val ChatID) Export
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("chatId", ChatID , "String" , Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "getAvatar");
     Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
 
     Return Response;
@@ -337,6 +430,347 @@ Function GetInstanceSettingsStructure(Val Clear = False) Export
 
     //@skip-check constructor-function-return-section
     Return SettingsStructure;
+
+EndFunction
+
+#EndRegion
+
+#Region GroupManagement
+
+// Create group
+// Creates a new group chat with the specified name
+//
+// Note
+// Method at API documentation: [CreateGroup](@green-api.com/v3/docs/api/groups/CreateGroup/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// Name - String - Group name - name
+// Members - Array Of String, String - Array of group member IDs or a single ID - members
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function CreateGroup(Val AccessParameters, Val Name, Val Members) Export
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("groupName", Name, "String", Parameters);
+
+    If ValueIsFilled(Members) Then
+        OPI_Tools.AddField("chatIds", Members, "Array", Parameters);
+    Else
+        Parameters.Insert("chatIds", New Array);
+    EndIf;
+
+    URL      = FormPrimaryURL(AccessParameters, "createGroup");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get group information
+// Gets information about the group chat
+//
+// Note
+// Method at API documentation: [GetGroupData](@green-api.com/v3/docs/api/groups/GetGroupData/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Group chat ID - chat
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetGroupInformation(Val AccessParameters, Val ChatID) Export
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("chatId" , ChatID , "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "getGroupData");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Update group name
+// Change group chat name
+//
+// Note
+// Method at API documentation: [UpdateGroupName](@green-api.com/v3/docs/api/groups/UpdateGroupName/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Group chat ID - chat
+// Name - String - New chat name - name
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function UpdateGroupName(Val AccessParameters, Val ChatID, Val Name) Export
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("chatId"   , ChatID , "String", Parameters);
+    OPI_Tools.AddField("groupName", Name   , "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "updateGroupName");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Set group picture
+// Sets the image as the group chat avatar
+//
+// Note
+// Method at API documentation: [SetGroupPicture](@green-api.com/v3/docs/api/groups/SetGroupPicture/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Group chat ID - chat
+// Image - String, BinaryData - Image in jpg format - picture
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SetGroupPicture(Val AccessParameters, Val ChatID, Val Image) Export
+
+    OPI_TypeConversion.GetBinaryData(Image);
+
+    PictureMap = New Map();
+    PictureMap.Insert("file|file.jpg", Image);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("chatId", ChatID, "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "setGroupPicture");
+    Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, PictureMap);
+
+    Return Response;
+
+EndFunction
+
+// Change group settings
+// Changes selected group chat settings
+//
+// Note
+// Method at API documentation: [UpdateGroupSettings](@green-api.com/v3/docs/api/groups/UpdateGroupSettings/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Group chat ID - chat
+// Settings - Structure Of KeyAndValue - Group chat settings. See GetGroupSettingsStructure - set
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function ChangeGroupSettings(Val AccessParameters, Val ChatID, Val Settings) Export
+
+    OPI_TypeConversion.GetKeyValueCollection(Settings);
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("chatId", ChatID, "String", Parameters);
+
+    For Each KeyValue In Settings Do
+        OPI_Tools.AddField(KeyValue.Key, KeyValue.Value, "Current", Parameters);
+    EndDo;
+
+    URL      = FormPrimaryURL(AccessParameters, "updateGroupSettings");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Add group member
+// Adds a new member to the selected group chat
+//
+// Note
+// Method at API documentation: [AddGroupParticipant](@green-api.com/v3/docs/api/groups/AddGroupParticipant/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Group chat ID - chat
+// MemberID - String - Member ID for addition - member
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function AddGroupMember(Val AccessParameters, Val ChatID, Val MemberID) Export
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("chatId"           , ChatID  , "String", Parameters);
+    OPI_Tools.AddField("participantChatId", MemberID, "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "addGroupParticipant");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Remove group member
+// Removes a member from the selected group chat
+//
+// Note
+// Method at API documentation: [RemoveGroupParticipant](@green-api.com/v3/docs/api/groups/RemoveGroupParticipant/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Group chat ID - chat
+// MemberID - String - Member ID for removal - member
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function RemoveGroupMember(Val AccessParameters, Val ChatID, Val MemberID) Export
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("chatId"           , ChatID  , "String", Parameters);
+    OPI_Tools.AddField("participantChatId", MemberID, "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "removeGroupParticipant");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Set admin rights
+// Assigns administrator rights to the specified group chat member
+//
+// Note
+// Method at API documentation: [SetGroupAdmin](@green-api.com/v3/docs/api/groups/SetGroupAdmin/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Group chat ID - chat
+// MemberID - String - Member ID - member
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SetAdminRights(Val AccessParameters, Val ChatID, Val MemberID) Export
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("chatId"           , ChatID  , "String", Parameters);
+    OPI_Tools.AddField("participantChatId", MemberID, "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "setGroupAdmin");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Revoke admin rights
+// Revokes administrator rights from the specified group chat member
+//
+// Note
+// Method at API documentation: [RemoveAdmin](@green-api.com/v3/docs/api/groups/RemoveAdmin/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Group chat ID - chat
+// MemberID - String - Member ID - member
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function RevokeAdminRights(Val AccessParameters, Val ChatID, Val MemberID) Export
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("chatId"           , ChatID  , "String", Parameters);
+    OPI_Tools.AddField("participantChatId", MemberID, "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "removeAdmin");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Leave group
+// Excludes the current account from the specified group
+//
+// Note
+// Method at API documentation: [LeaveGroup](@green-api.com/v3/docs/api/groups/LeaveGroup/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Group chat ID - chat
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function LeaveGroup(Val AccessParameters, Val ChatID) Export
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("chatId", ChatID, "String", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "leaveGroup");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get group settings structure
+// Returns the structure of group chat settings fields
+//
+// Parameters:
+// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// AsMap - Boolean - True > returns settings fields as a mapping - map
+//
+// Returns:
+// Structure Of KeyAndValue - Fields structure
+Function GetGroupSettingsStructure(Val Clear = False, Val AsMap = False) Export
+
+    OPI_TypeConversion.GetBoolean(Clear);
+    OPI_TypeConversion.GetBoolean(AsMap);
+
+    If AsMap Then
+        Settings = New Map;
+    Else
+        Settings = New Structure;
+    EndIf;
+
+    Settings.Insert("allowParticipantsEditGroupSettings" , "<allow members to change group settings>");
+    Settings.Insert("allowParticipantsPinMessages"       , "<allow members to pin messages>");
+    Settings.Insert("allowParticipantsAddMembers"        , "<allow members to add new participants>");
+
+    If Clear Then
+        Settings = OPI_Tools.ClearCollectionRecursively(Settings);
+    EndIf;
+
+    //@skip-check constructor-function-return-section
+    Return Settings;
+
+EndFunction
+
+#EndRegion
+
+#Region MessageSending
+
+// Send text message
+// Sends a text message to the selected chat room
+//
+// Note
+// Method at API documentation: [SendMessage](@green-api.com/v3/docs/api/sending/SendMessage/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// Text - String - Message text - text
+// TypingTime - Number - Time to show the typing indicator before sending (in ms.) - typing
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SendTextMessage(Val AccessParameters, Val ChatID, Val Text, Val TypingTime = 0) Export
+
+    String_    = "String";
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"    , ChatID    , String_ , Parameters);
+    OPI_Tools.AddField("message"   , Text      , String_ , Parameters);
+    OPI_Tools.AddField("typingTime", TypingTime, "Number", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "sendMessage");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
 
 EndFunction
 

@@ -6258,5 +6258,95 @@
 "lib": "GreenMax",
 "name": "GetAccountInformation",
 "variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "CheckAccount",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetContactList",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetContactInformation",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetChatList",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetChatAvatar",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "CreateGroup",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "AddGroupMember",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "RemoveGroupMember",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "LeaveGroup",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "UpdateGroupName",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetGroupInformation",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ChangeGroupSettings",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetGroupSettingsStructure",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetGroupSettingsStructure",
+"variant": "Clear"
+},
+{
+"lib": "GreenMax",
+"name": "SetAdminRights",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "RevokeAdminRights",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "SetGroupPicture",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "SendTextMessage",
+"variant": ""
 }
 ]
