@@ -396,6 +396,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "GAPI_MessageLogs"                    , "Message logs"                    , GreenAPI);
     NewTest(TestTable, "GAPI_Account"                        , "Account"                         , GreenAPI);
     NewTest(TestTable, "GMax_Account"                        , "Account"                         , GreenMax);
+    NewTest(TestTable, "GMax_GroupManagement"                , "Group management"                , GreenMax);
+    NewTest(TestTable, "GMax_MessageSending"                 , "Messages sending"                , GreenMax);
     NewTest(TestTable, "RC_CommandsExecution"                , "Commands execution"              , RCON);
     NewTest(TestTable, "OLLM_RequestsProcessing"             , "Requests processing"             , Ollama);
     NewTest(TestTable, "OLLM_ModelsManagement"               , "Models management"               , Ollama);
@@ -11425,15 +11427,201 @@ EndFunction
 
 Function Check_GreenMax_GetAccountInformation(Val Result, Val Option)
 
-    Try
-        Result["chatId"] = "***";
-        Result["phone"]  = "***";
-    Except
-        Message("Failed to replace the secrets!");
-    EndTry;
-
     ExpectsThat(Result["chatId"]).Заполнено();
     ExpectsThat(Result["phone"]).Заполнено();
+
+    Result["chatId"] = "***";
+    Result["phone"]  = "***";
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_CheckAccount(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["chatId"]).Заполнено();
+    ExpectsThat(Result["exist"]).Равно(True);
+
+    ContactID = Result["chatId"];
+    WriteParameter("GreenMax_MyID", ContactID);
+    Parameters.Insert("GreenMax_MyID", ContactID);
+
+    Result["chatId"] = "***";
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetContactList(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Array");
+    ExpectsThat(Result[0]["chatId"]).Заполнено();
+
+    ContactID = Result[0]["chatId"];
+    WriteParameter("GreenMax_ContactID", ContactID);
+    Parameters.Insert("GreenMax_ContactID", ContactID);
+
+    Result[0]["chatId"]      = "***";
+    Result[0]["phoneNumber"] = "***";
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetContactInformation(Val Result, Val Option)
+
+    ExpectsThat(Result["chatId"]).Заполнено();
+    ExpectsThat(Result["name"]).Заполнено();
+    ExpectsThat(Result["avatar"]).Заполнено();
+
+    Result["chatId"]      = "***";
+    Result["phoneNumber"] = "***";
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetChatList(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Array");
+    ExpectsThat(Result[0]["chatId"]).Заполнено();
+
+    For Each Chat In Result Do
+        Chat["phoneNumber"] = "***";
+        Chat["chatId"]      = "***";
+    EndDo;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetChatAvatar(Val Result, Val Option)
+
+    ExpectsThat(Result["urlAvatar"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_CreateGroup(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result["chatId"]).Заполнено();
+    ExpectsThat(Result["created"]).Равно(True);
+
+    GroupID = Result["chatId"];
+    WriteParameter("GreenMax_GroupID", GroupID);
+    Parameters.Insert("GreenMax_GroupID", GroupID);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_RemoveGroupMember(Val Result, Val Option)
+
+    ExpectsThat(Result["removeParticipant"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_AddGroupMember(Val Result, Val Option)
+
+    ExpectsThat(Result["addParticipant"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_LeaveGroup(Val Result, Val Option)
+
+    ExpectsThat(Result["leaveGroup"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_UpdateGroupName(Val Result, Val Option)
+
+    ExpectsThat(Result["updateGroupName"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetGroupInformation(Val Result, Val Option)
+
+    ExpectsThat(Result["creation"]).Заполнено();
+    ExpectsThat(Result["subject"]).Равно("New group");
+
+    Result["chatId"] = "***";
+
+    For Each Member In Result["participants"] Do
+        Member["chatId"] = "***";
+    EndDo;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_ChangeGroupSettings(Val Result, Val Option)
+
+    ExpectsThat(Result["updateGroupSettings"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetGroupSettingsStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    If Option = "Clear" Then
+
+        For Each Element In Result Do
+
+            If OPI_Tools.IsPrimitiveType(Element.Value) Then
+                ExpectsThat(ValueIsFilled(Element.Value)).Равно(False);
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_SetAdminRights(Val Result, Val Option)
+
+    ExpectsThat(Result["setGroupAdmin"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_RevokeAdminRights(Val Result, Val Option)
+
+    ExpectsThat(Result["removeAdmin"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_SetGroupPicture(Val Result, Val Option)
+
+    ExpectsThat(Result["setGroupPicture"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_SendTextMessage(Val Result, Val Option, Val Parameters = "")
+
+    ExpectsThat(Result["idMessage"]).Заполнено();
+
+    MessageID = Result["idMessage"];
+    WriteParameter("GreenMax_MessageID", MessageID);
+    Parameters.Insert("GreenMax_MessageID", MessageID);
 
     Return Result;
 
@@ -11897,6 +12085,7 @@ Function FormOption(Val Name, Val Value, Embedded = False)
     SecretsArray.Add("api");
     SecretsArray.Add("refresh");
     SecretsArray.Add("invite_link");
+    SecretsArray.Add("phone");
 
     ExceptionsList = New ValueList;
     ExceptionsList.Add("passive");

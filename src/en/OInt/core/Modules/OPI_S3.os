@@ -863,7 +863,7 @@ Function GetObject(Val Name
     , Val Directory = False) Export
 
     BasicData_ = OPI_Tools.CopyCollection(BasicData);
-    ObjectInfo = HeadObject(Name, Bucket, BasicData_, Version);
+    ObjectInfo = HeadObject(Name, Bucket, BasicData_, Version, , Directory);
 
     If OPI_Tools.CollectionFieldExists(BasicData_, "ChunkSize") Then
         MaxSize = BasicData_["ChunkSize"];
