@@ -1,0 +1,4 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint greenmax ПолучитьИнформациюОбАккаунте ^
+  --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}"
