@@ -1,0 +1,7 @@
+﻿    ApiUrl           = "https://3100.api.green-api.com/v3";
+    MediaUrl         = "https://3100.api.green-api.com/v3";
+    IdInstance       = "31003...";
+    ApiTokenInstance = "17915d8e0b4b4975a183478da...";
+
+    ПараметрыДоступа = OPI_GreenMax.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Результат        = OPI_GreenMax.ОчиститьОчередьСообщенийКОтправке(ПараметрыДоступа);

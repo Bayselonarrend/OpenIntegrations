@@ -3021,6 +3021,7 @@ Procedure GMax_MessageSending() Export
     OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Phone"      , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenMax_AccountID"  , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Video"               , TestParameters);
 
     GreenMax_GetContactList(TestParameters);
     OPI_Tools.Pause(1);
@@ -3028,9 +3029,76 @@ Procedure GMax_MessageSending() Export
     OPI_Tools.Pause(1);
     GreenMax_SendTextMessage(TestParameters);
     OPI_Tools.Pause(1);
+    GreenMax_SendFile(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_SendFileByURL(TestParameters);
+    OPI_Tools.Pause(1);
     GreenMax_RemoveGroupMember(TestParameters);
     OPI_Tools.Pause(1);
     GreenMax_LeaveGroup(TestParameters);
+    OPI_Tools.Pause(1);
+
+EndProcedure
+
+Procedure GMax_Notifications() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_ApiURL"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MediaURL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_IdInstance" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Token"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Phone"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_AccountID"  , TestParameters);
+
+    GreenMax_GetNotification(TestParameters);
+    GreenMax_DeleteNotification(TestParameters);
+
+EndProcedure
+
+Procedure GMax_MessageHistory() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_ApiURL"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MediaURL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_IdInstance" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Token"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Phone"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_AccountID"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MainGroupID", TestParameters);
+
+    GreenMax_MarkMessagesAsRead(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_GetChatMessageHistory(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_GetChatMessage(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_GetIncomingMessageLog(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_GetOutgoingMessageLog(TestParameters);
+    OPI_Tools.Pause(1);
+
+EndProcedure
+
+Procedure GMax_Queues() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_ApiURL"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MediaURL"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_IdInstance" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Token"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Phone"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_AccountID"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MainGroupID", TestParameters);
+
+    GreenMax_GetOutgoingMessageCount(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_GetOutgoingMessageQueue(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_ClearOutgoingMessageQueue(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_GetIncomingNotificationCount(TestParameters);
+    OPI_Tools.Pause(1);
+    GreenMax_ClearIncomingNotificationQueue(TestParameters);
     OPI_Tools.Pause(1);
 
 EndProcedure
@@ -31490,6 +31558,438 @@ Procedure GreenMax_SendTextMessage(FunctionParameters)
     // END
 
     Process(Result, "GreenMax", "SendTextMessage", , FunctionParameters);
+
+EndProcedure
+
+Procedure GreenMax_SendFile(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    File        = FunctionParameters["Picture"]; // URL, Path or Binary Data
+    FileName    = "photo.jpg";
+    ChatID      = 12345678;
+    Description = "File description";
+
+    ChatID = FunctionParameters["GreenMax_GroupID"]; // SKIP
+
+    Options = New Structure;
+    Options.Insert("api", ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id", IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("chat", ChatID);
+    Options.Insert("file", File);
+    Options.Insert("filename", FileName);
+    Options.Insert("caption", Description);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "SendFile", Options);
+
+    // END
+
+    Process(Result, "GreenMax", "SendFile", , FunctionParameters);
+
+    File     = FunctionParameters["Video"];
+    FileName = "vid.mp4";
+
+    MessageID = Result["idMessage"];
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("chat", ChatID);
+    Options.Insert("file", File);
+    Options.Insert("filename", FileName);
+    Options.Insert("caption", Description);
+    Options.Insert("typing", 1000);
+    Options.Insert("ttype", "video");
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "SendFile", Options);
+
+    Process(Result, "GreenMax", "SendFile", "Video");
+
+EndProcedure
+
+Procedure GreenMax_SendFileByURL(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    File        = FunctionParameters["Picture"];
+    FileName    = "photo.jpg";
+    ChatID      = 12345678;
+    Description = "File description";
+
+    ChatID = FunctionParameters["GreenMax_GroupID"]; // SKIP
+
+    Options = New Structure;
+    Options.Insert("api", ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id", IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("chat", ChatID);
+    Options.Insert("url", File);
+    Options.Insert("filename", FileName);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "SendFileByURL", Options);
+
+    // END
+
+    Process(Result, "GreenMax", "SendFileByURL");
+
+    File     = FunctionParameters["Video"];
+    FileName = "vid.mp4";
+
+    MessageID = Result["idMessage"];
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("chat", ChatID);
+    Options.Insert("url", File);
+    Options.Insert("filename", FileName);
+    Options.Insert("caption", Description);
+    Options.Insert("typing", 1000);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "SendFileByURL", Options);
+
+    Process(Result, "GreenMax", "SendFileByURL", "Typing");
+
+EndProcedure
+
+Procedure GreenMax_GetNotification(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    Options = New Structure;
+    Options.Insert("api", ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id", IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "GetNotification", Options);
+
+    // END
+
+    Process(Result, "GreenMax", "GetNotification", , FunctionParameters);
+
+EndProcedure
+
+Procedure GreenMax_DeleteNotification(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    NotificationID = FunctionParameters["GreenMax_ReceiptID"];
+
+    Options = New Structure;
+    Options.Insert("api", ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id", IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("id", NotificationID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "DeleteNotification", Options);
+
+    // END
+
+    Process(Result, "GreenMax", "DeleteNotification", , FunctionParameters);
+
+EndProcedure
+
+Procedure GreenMax_MarkMessagesAsRead(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    ChatID = 12345678;
+
+    ChatID = FunctionParameters["GreenMax_MainGroupID"]; // SKIP
+
+    Options = New Structure;
+    Options.Insert("api", ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id", IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("chat", ChatID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "MarkMessagesAsRead", Options);
+
+    // END
+
+    Process(Result, "GreenMax", "MarkMessagesAsRead");
+
+EndProcedure
+
+Procedure GreenMax_GetChatMessageHistory(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    ChatID = 12345678;
+    Count  = 3;
+
+    ChatID = FunctionParameters["GreenMax_MainGroupID"]; // SKIP
+
+    Options = New Structure;
+    Options.Insert("api", ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id", IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("chat", ChatID);
+    Options.Insert("count", Count);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "GetChatMessageHistory", Options);
+
+    // END
+
+    Process(Result, "GreenMax", "GetChatMessageHistory", , FunctionParameters);
+
+EndProcedure
+
+Procedure GreenMax_GetChatMessage(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    ChatID    = 12345678;
+    MessageID = FunctionParameters["GreenMax_MainMessageID"];
+
+    ChatID = FunctionParameters["GreenMax_MainGroupID"]; // SKIP
+
+    Options = New Structure;
+    Options.Insert("api", ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id", IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("chat", ChatID);
+    Options.Insert("message", MessageID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "GetChatMessage", Options);
+
+    // END
+
+    Process(Result, "GreenMax", "GetChatMessage", , MessageID);
+
+EndProcedure
+
+Procedure GreenMax_GetIncomingMessageLog(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    Period = 30;
+
+    Options = New Structure;
+    Options.Insert("api", ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id", IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("span", Period);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "GetIncomingMessageLog", Options);
+
+    // END
+
+    Process(Result, "GreenMax", "GetIncomingMessageLog");
+
+EndProcedure
+
+Procedure GreenMax_GetOutgoingMessageLog(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    Period = 30;
+
+    Options = New Structure;
+    Options.Insert("api", ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id", IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+    Options.Insert("span", Period);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "GetOutgoingMessageLog", Options);
+
+    // END
+
+    Process(Result, "GreenMax", "GetOutgoingMessageLog");
+
+EndProcedure
+
+Procedure GreenMax_GetOutgoingMessageCount(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    Options = New Structure;
+    Options.Insert("api", ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id", IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "GetOutgoingMessageCount", Options);
+
+    // END
+
+    Process(Result, "GreenMax", "GetOutgoingMessageCount");
+
+EndProcedure
+
+Procedure GreenMax_GetOutgoingMessageQueue(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    Options = New Structure;
+    Options.Insert("api", ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id", IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "GetOutgoingMessageQueue", Options);
+
+    // END
+
+    Process(Result, "GreenMax", "GetOutgoingMessageQueue");
+
+EndProcedure
+
+Procedure GreenMax_ClearOutgoingMessageQueue(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    Options = New Structure;
+    Options.Insert("api", ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id", IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "ClearOutgoingMessageQueue", Options);
+
+    // END
+
+    Process(Result, "GreenMax", "ClearOutgoingMessageQueue");
+
+EndProcedure
+
+Procedure GreenMax_GetIncomingNotificationCount(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    Options = New Structure;
+    Options.Insert("api", ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id", IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "GetIncomingNotificationCount", Options);
+
+    // END
+
+    Process(Result, "GreenMax", "GetIncomingNotificationCount");
+
+EndProcedure
+
+Procedure GreenMax_ClearIncomingNotificationQueue(FunctionParameters)
+
+    ApiUrl           = FunctionParameters["GreenMax_ApiURL"];
+    MediaUrl         = FunctionParameters["GreenMax_MediaURL"];
+    IdInstance       = FunctionParameters["GreenMax_IdInstance"];
+    ApiTokenInstance = FunctionParameters["GreenMax_Token"];
+
+    Options = New Structure;
+    Options.Insert("api", ApiUrl);
+    Options.Insert("media", MediaUrl);
+    Options.Insert("id", IdInstance);
+    Options.Insert("token", ApiTokenInstance);
+
+    AccessParameters = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "FormAccessParameters", Options);
+    Options = New Structure;
+    Options.Insert("access", AccessParameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("greenmax", "ClearIncomingNotificationQueue", Options);
+
+    // END
+
+    Process(Result, "GreenMax", "ClearIncomingNotificationQueue");
 
 EndProcedure
 

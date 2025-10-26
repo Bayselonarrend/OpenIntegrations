@@ -1,0 +1,82 @@
+﻿---
+sidebar_position: 9
+description: Set group picture and other functions to work with GreenAPI (WhatsApp) in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GreenAPI (WhatsApp)]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set group picture
+ Sets the group chat picture
+
+
+
+`Function SetGroupPicture(Val AccessParameters, Val GroupID, Val Image) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
+  | GroupID | --group | String | &#x2714; | Group chat identifier |
+  | Image | --picture | BinaryData, String | &#x2714; | Profile picture |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Green API
+
+<br/>
+
+:::tip
+Method at API documentation: [SetGroupPicture](https://green-api.com/docs/api/groups/SetGroupPicture/)
+
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+
+    Image   = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+    GroupID = "120363404315049467@g.us";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.SetGroupPicture(AccessParameters, GroupID, Image);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenapi SetGroupPicture \
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+             --group "120363423945947675@g.us" \
+             --picture "https://hut.openintegrations.dev/test_data/picture.jpg"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenapi SetGroupPicture ^
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+             --group "120363423945947675@g.us" ^
+             --picture "https://hut.openintegrations.dev/test_data/picture.jpg"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "reason": "",
+ "urlAvatar": "https://pps.whatsapp.net/v/t61.24694-24/554555513_1399667398249688_6153204445356717318_n.jpg?ccb=11-4&oh=01_Q5Aa2wG7VFYaMhOt4jb8oUUaiPz5oP7CDTz2_xXftwgrnIFiqw&oe=68FB289D&_nc_sid=5e03e0&_nc_cat=110",
+ "setGroupPicture": true
+}
+```

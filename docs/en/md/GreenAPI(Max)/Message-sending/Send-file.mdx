@@ -1,0 +1,58 @@
+﻿---
+sidebar_position: 2
+description: Send file and other functions to work with GreenAPI (Max) in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GreenAPI (Max)]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Send file
+ Sends the file to the selected chat room
+
+
+
+`Function SendFile(Val AccessParameters, Val ChatID, Val File, Val FileName, Val Description = "", Val TypingTime = 0, Val TypingType = "file") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
+  | ChatID | --chat | String | &#x2714; | Chat identifier |
+  | File | --file | String, BinaryData | &#x2714; | File data or filepath |
+  | FileName | --filename | String | &#x2714; | Name of the file with the extension |
+  | Description | --caption | String | &#x2716; | Message text below the file |
+  | TypingTime | --typing | Number | &#x2716; | Time to show typing indicator before sending (in ms.) |
+  | TypingType | --ttype | String | &#x2716; | Typing type: text, recording, video, image, file |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Green API
+
+<br/>
+
+:::tip
+Method at API documentation: [SendFileByUpload](https://green-api.com/v3/docs/api/sending/SendFileByUpload/)
+
+Parameters with Binary data type can also accept file paths on disk and URLs
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ApiUrl           = "https://3100.api.green-api.com/v3";
+    MediaUrl         = "https://3100.api.green-api.com/v3";
+    IdInstance       = "31003...";
+    ApiTokenInstance = "17915d8e0b4b4975a183478da...";
+
+    File        = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+    FileName    = "photo.jpg";
+    ChatID      = 12345678;
+    Description = "File description";
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.SendFile(AccessParameters, ChatID, File, FileName, Description);
+```
+ 
+
+
+
+

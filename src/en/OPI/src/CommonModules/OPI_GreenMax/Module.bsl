@@ -1,5 +1,5 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_GreenMax.os
-// Lib: Green Max
+// Lib: GreenAPI (Max)
 // CLI: greenmax
 // Keywords: greenapi, max
 
@@ -769,6 +769,409 @@ Function SendTextMessage(Val AccessParameters, Val ChatID, Val Text, Val TypingT
 
     URL      = FormPrimaryURL(AccessParameters, "sendMessage");
     Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Send file
+// Sends the file to the selected chat room
+//
+// Note
+// Method at API documentation: [SendFileByUpload](@green-api.com/v3/docs/api/sending/SendFileByUpload/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// File - String, BinaryData - File data or filepath - file
+// FileName - String - Name of the file with the extension - filename
+// Description - String - Message text below the file - caption
+// TypingTime - Number - Time to show typing indicator before sending (in ms.) - typing
+// TypingType - String - Typing type: text, recording, video, image, file - ttype
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SendFile(Val AccessParameters
+    , Val ChatID
+    , Val File
+    , Val FileName
+    , Val Description = ""
+    , Val TypingTime = 0
+    , Val TypingType = "file") Export
+
+    OPI_TypeConversion.GetBinaryData(File);
+
+    String_    = "String";
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"    , ChatID      , String_ , Parameters);
+    OPI_Tools.AddField("fileName"  , FileName    , String_ , Parameters);
+    OPI_Tools.AddField("caption"   , Description , String_ , Parameters);
+    OPI_Tools.AddField("typingTime", TypingTime  , "Number", Parameters);
+
+    If ValueIsFilled(TypingTime) Then
+        OPI_Tools.AddField("typingType", TypingType , String_, Parameters);
+    EndIf;
+
+    FileMapping = New Map();
+    FileMapping.Insert(StrTemplate("file|%1", FileName), File);
+
+    URL      = FormMediaURL(AccessParameters, "SendFileByUpload");
+    Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, FileMapping, "application/octet-stream");
+
+    Return Response;
+
+EndFunction
+
+// Send file by URL
+// Sends a file from web to the selected chat room
+//
+// Note
+// Method at API documentation: [SendFileByUrl](@green-api.com/v3/docs/api/sending/SendFileByUrl/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat identifier - chat
+// FileURL - String - File URL - url
+// FileName - String - Name of the file with the extension - filename
+// Description - String - Message text below the file - caption
+// TypingTime - Number - Time to show typing indicator before sending (in ms.) - typing
+// TypingType - String - Typing type: text, recording, video, image, file - ttype
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function SendFileByURL(Val AccessParameters
+    , Val ChatID
+    , Val FileURL
+    , Val FileName
+    , Val Description = ""
+    , Val TypingTime = 0
+    , Val TypingType = "file") Export
+
+    String_    = "String";
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"    , ChatID      , String_ , Parameters);
+    OPI_Tools.AddField("urlFile"   , FileURL     , String_ , Parameters);
+    OPI_Tools.AddField("fileName"  , FileName    , String_ , Parameters);
+    OPI_Tools.AddField("caption"   , Description , String_ , Parameters);
+    OPI_Tools.AddField("typingTime", TypingTime  , "Number", Parameters);
+
+    If ValueIsFilled(TypingTime) Then
+        OPI_Tools.AddField("typingType", TypingType , String_, Parameters);
+    EndIf;
+
+    URL      = FormPrimaryURL(AccessParameters, "sendFileByUrl");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
+#Region Notifications
+
+// Get notification
+// Gets the latest notification from the queue
+//
+// Note
+// To get the next notification, the current notification must be deleted
+// Method at API documentation: [ReceiveNotification](@green-api.com/v3/docs/api/receiving/technology-http-api/ReceiveNotification/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// Timeout - Number - Timeout for waiting for a notification if the queue is empty - timeout
+// Delete - Boolean - Delete notification from the queue after retrieval - del
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetNotification(Val AccessParameters, Val Timeout = 5, Val Delete = False) Export
+
+    OPI_TypeConversion.GetBoolean(Delete);
+
+    URL = FormPrimaryURL(AccessParameters, "receiveNotification");
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("receiveTimeout", Timeout, "Number", Parameters);
+
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
+
+    If Delete Then
+
+        NotificationID = Response["receiptId"];
+
+        If ValueIsFilled(NotificationID) Then
+            Response.Insert("deleting", DeleteNotification(AccessParameters, NotificationID));
+        EndIf;
+
+    EndIf;
+
+    Return Response;
+
+EndFunction
+
+// Delete notification
+// Deletes the specified notification from the queue
+//
+// Note
+// Method at API documentation: [DeleteNotification](@green-api.com/v3/docs/api/receiving/technology-http-api/DeleteNotification/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// NotificationID - Number - Notification ID - id
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function DeleteNotification(Val AccessParameters, Val NotificationID) Export
+
+    OPI_TypeConversion.GetLine(NotificationID);
+
+    URL = FormPrimaryURL(AccessParameters, "deleteNotification");
+    URL = StrTemplate("%1/%2", URL, NotificationID);
+
+    Response = OPI_HTTPRequests.Delete(URL);
+
+    Return Response
+
+EndFunction
+
+#EndRegion
+
+#Region MessageHistory
+
+// Get chat message history
+// Gets the latest messages from the chat history
+//
+// Note
+// Method at API documentation: [GetChatHistory](@green-api.com/v3/docs/api/journals/GetChatHistory/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat ID - chat
+// Count - Number - Number of messages to receive - count
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetChatMessageHistory(Val AccessParameters, Val ChatID, Val Count = 100) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId", ChatID , "String" , Parameters);
+    OPI_Tools.AddField("count" , Count  , "Number" , Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "getChatHistory");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get chat message
+// Gets information about the chat message by ID
+//
+// Note
+// Method at API documentation: [GetMessage](@green-api.com/v3/docs/api/journals/GetMessage/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat ID - chat
+// MessageID - String - Message ID - message
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetChatMessage(Val AccessParameters, Val ChatID, Val MessageID) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"   , ChatID   , "String" , Parameters);
+    OPI_Tools.AddField("idMessage", MessageID, "String" , Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "getMessage");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get incoming message log
+// Gets the latest incoming messages of the instance
+//
+// Note
+// Method at API documentation: [LastIncomingMessages](@green-api.com/v3/docs/api/journals/LastIncomingMessages/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// Period - Number - Time in minutes for which messages need to be received - span
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetIncomingMessageLog(Val AccessParameters, Val Period = 1440) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("minutes", Period, "Number", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "lastIncomingMessages");
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Get outgoing message log
+// Gets the latest outgoing messages of the instance
+//
+// Note
+// Method at API documentation: [LastOutgoingMessages](@green-api.com/v3/docs/api/journals/LastOutgoingMessages/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// Period - Number - Time in minutes for which messages need to be received - span
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetOutgoingMessageLog(Val AccessParameters, Val Period = 1440) Export
+
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("minutes", Period, "Number", Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "lastOutgoingMessages");
+    Response = OPI_HTTPRequests.Get(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+// Mark messages as read
+// Marks messages in the chat as read
+//
+// Note
+// When specifying the message ID, all messages after the specified one will be marked as read
+// Method at API documentation: [ReadChat](@green-api.com/v3/docs/api/marks/ReadChat/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+// ChatID - String - Chat ID - chat
+// MessageID - String - Message ID. All messages, unless specified - message
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function MarkMessagesAsRead(Val AccessParameters, Val ChatID, Val MessageID = "") Export
+
+    String_    = "String";
+    Parameters = New Structure;
+
+    OPI_Tools.AddField("chatId"   , ChatID   , String_, Parameters);
+    OPI_Tools.AddField("idMessage", MessageID, String_, Parameters);
+
+    URL      = FormPrimaryURL(AccessParameters, "readChat");
+    Response = OPI_HTTPRequests.PostWithBody(URL, Parameters);
+
+    Return Response;
+
+EndFunction
+
+#EndRegion
+
+#Region Queues
+
+// Get outgoing message count
+// Gets the number of messages in the outgoing queue
+//
+// Note
+// Method at API documentation: [GetMessagesCount](@green-api.com/v3/docs/api/queues/GetMessagesCount/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetOutgoingMessageCount(Val AccessParameters) Export
+
+    URL      = FormPrimaryURL(AccessParameters, "getMessagesCount");
+    Response = OPI_HTTPRequests.Get(URL);
+
+    Return Response;
+
+EndFunction
+
+// Get outgoing message queue
+// Gets the list of messages to be sent
+//
+// Note
+// Method at API documentation: [ShowMessagesQueue](@green-api.com/v3/docs/api/queues/ShowMessagesQueue/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetOutgoingMessageQueue(Val AccessParameters) Export
+
+    URL      = FormPrimaryURL(AccessParameters, "showMessagesQueue");
+    Response = OPI_HTTPRequests.Get(URL);
+
+    Return Response;
+
+EndFunction
+
+// Clear outgoing message queue
+// Clears the list of messages to be sent
+//
+// Note
+// Method at API documentation: [ClearMessagesQueue](@green-api.com/v3/docs/api/queues/ClearMessagesQueue/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function ClearOutgoingMessageQueue(Val AccessParameters) Export
+
+    URL      = FormPrimaryURL(AccessParameters, "clearMessagesQueue");
+    Response = OPI_HTTPRequests.Get(URL);
+
+    Return Response;
+
+EndFunction
+
+// Get incoming notification count
+// Gets the number of notifications in the incoming queue
+//
+// Note
+// Method at API documentation: [GetWebhooksCount](@green-api.com/v3/docs/api/queues/GetWebhooksCount/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function GetIncomingNotificationCount(Val AccessParameters) Export
+
+    URL      = FormPrimaryURL(AccessParameters, "getWebhooksCount");
+    Response = OPI_HTTPRequests.Get(URL);
+
+    Return Response;
+
+EndFunction
+
+// Clear incoming notification queue
+// Clears the incoming notification queue
+//
+// Note
+// Method at API documentation: [ClearWebhooksQueue](@green-api.com/v3/docs/api/queues/ClearWebhooksQueue/)
+//
+// Parameters:
+// AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Green API
+Function ClearIncomingNotificationQueue(Val AccessParameters) Export
+
+    URL      = FormPrimaryURL(AccessParameters, "clearWebhooksQueue");
+    Response = OPI_HTTPRequests.Delete(URL);
 
     Return Response;
 
