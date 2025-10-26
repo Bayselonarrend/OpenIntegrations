@@ -1,0 +1,95 @@
+﻿---
+sidebar_position: 1
+description: Получить информацию о группе и другие функции для работы с GreenAPI (WhatsApp) в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, GreenAPI (WhatsApp)]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить информацию о группе
+ Получает данные группового чата
+
+
+
+`Функция ПолучитьИнформациюОГруппе(Знач ПараметрыДоступа, Знач IDГруппы) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | ПараметрыДоступа | --access | Структура Из КлючИЗначение | &#x2714; | Параметры доступа. См. [`СформироватьПараметрыДоступа`](/docs/GreenAPI/Account/Form-access-parameters) |
+  | IDГруппы | --group | Строка | &#x2714; | Идентификатор группового чата |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
+
+<br/>
+
+:::tip
+Метод в документации API: [GetGroupData](https://green-api.com/docs/api/groups/GetGroupData/)
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+
+    IDГруппы = "120363404315049467@g.us";
+
+    ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Результат        = OPI_GreenAPI.ПолучитьИнформациюОГруппе(ПараметрыДоступа, IDГруппы);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenapi ПолучитьИнформациюОГруппе \
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+              --group "120363421678846450@g.us"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenapi ПолучитьИнформациюОГруппе ^
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+              --group "120363421678846450@g.us"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "groupId": "120363402967946217@g.us",
+ "owner": "***",
+ "subject": "New group",
+ "creation": 1761402757,
+ "subjectTime": 1761402757,
+ "subjectOwner": "375447830891@c.us",
+ "groupInviteLink": "https://chat.whatsapp.com/JCXzG7QTDQLHBTWHeJGA77",
+ "ephemeralExpiration": 0,
+ "allowParticipantsEditGroupSettings": true,
+ "allowParticipantsSendMessages": true,
+ "allowParticipantsAddMembers": false,
+ "isCommunity": false,
+ "isCommunityAnnounce": false,
+ "size": 1,
+ "participants": [
+  {
+   "id": "***",
+   "lid": "78714469634134@lid",
+   "isAdmin": true,
+   "isSuperAdmin": true
+  }
+ ]
+}
+```

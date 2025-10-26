@@ -395,9 +395,12 @@ Function GetTestTable() Export
     NewTest(TestTable, "GAPI_MessageQueue"                   , "Message queue"                   , GreenAPI);
     NewTest(TestTable, "GAPI_MessageLogs"                    , "Message logs"                    , GreenAPI);
     NewTest(TestTable, "GAPI_Account"                        , "Account"                         , GreenAPI);
-    NewTest(TestTable, "GMax_Account"                        , "Account"                         , GreenMax);
     NewTest(TestTable, "GMax_GroupManagement"                , "Group management"                , GreenMax);
     NewTest(TestTable, "GMax_MessageSending"                 , "Messages sending"                , GreenMax);
+    NewTest(TestTable, "GMax_Notifications"                  , "Notifications"                   , GreenMax);
+    NewTest(TestTable, "GMax_MessageHistory"                 , "Message history"                 , GreenMax);
+    NewTest(TestTable, "GMax_Queues"                         , "Queues"                          , GreenMax);
+    NewTest(TestTable, "GMax_Account"                        , "Account"                         , GreenMax);
     NewTest(TestTable, "RC_CommandsExecution"                , "Commands execution"              , RCON);
     NewTest(TestTable, "OLLM_RequestsProcessing"             , "Requests processing"             , Ollama);
     NewTest(TestTable, "OLLM_ModelsManagement"               , "Models management"               , Ollama);
@@ -11627,6 +11630,160 @@ Function Check_GreenMax_SendTextMessage(Val Result, Val Option, Val Parameters =
 
 EndFunction
 
+Function Check_GreenMax_SendFile(Val Result, Val Option, Val Parameters = "")
+
+    ExpectsThat(Result["idMessage"]).Заполнено();
+
+    If Not ValueIsFilled(Option) Then
+        MessageID = Result["idMessage"];
+        WriteParameter("GreenMax_FileMessageID", MessageID);
+        Parameters.Insert("GreenMax_FileMessageID", MessageID);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_SendFileByURL(Val Result, Val Option)
+
+    ExpectsThat(Result["idMessage"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetNotification(Val Result, Val Option, Val Parameters = "")
+
+    ExpectsThat(Result["receiptId"]).Заполнено();
+    ExpectsThat(Result["body"]).Заполнено();
+
+    If Not ValueIsFilled(Option) Then
+        MessageID = Result["receiptId"];
+        WriteParameter("GreenMax_ReceiptID", MessageID);
+        Parameters.Insert("GreenMax_ReceiptID", MessageID);
+    EndIf;
+
+    IndicatorsArray = StrSplit("phone,idInstance,wid,sender,chatId", ",");
+
+    Result = ReplaceSecretsRecursively(Result, IndicatorsArray);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_DeleteNotification(Val Result, Val Option, Val Parameters = "")
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_MarkMessagesAsRead(Val Result, Val Option)
+
+    ExpectsThat(Result["setRead"]).ИмеетТип("Boolean");
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetChatMessageHistory(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Array").ИмеетДлину(3);
+
+    MessageID = Result[0]["idMessage"];
+    WriteParameter("GreenMax_MainMessageID", MessageID);
+    Parameters.Insert("GreenMax_MainMessageID", MessageID);
+
+    IndicatorsArray = StrSplit("phone,idInstance,wid,sender,chatId", ",");
+
+    Result = ReplaceSecretsRecursively(Result, IndicatorsArray);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetChatMessage(Val Result, Val Option, MessageID = "")
+
+    ExpectsThat(Result["idMessage"]).Равно(MessageID);
+    ExpectsThat(Result["chatId"]).Заполнено();
+
+    IndicatorsArray = StrSplit("phone,idInstance,wid,sender,chatId", ",");
+
+    Result = ReplaceSecretsRecursively(Result, IndicatorsArray);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetIncomingMessageLog(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result)).Равно(True);
+
+    IndicatorsArray = StrSplit("phone,idInstance,wid,sender,chatId", ",");
+
+    Result = ReplaceSecretsRecursively(Result, IndicatorsArray);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetOutgoingMessageLog(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result)).Равно(True);
+
+    IndicatorsArray = StrSplit("phone,idInstance,wid,sender,chatId", ",");
+
+    Result = ReplaceSecretsRecursively(Result, IndicatorsArray);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetOutgoingMessageCount(Val Result, Val Option)
+
+    ExpectsThat(Result["count"]).ИмеетТип("Number");
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetOutgoingMessageQueue(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result)).Равно(True);
+
+    IndicatorsArray = StrSplit("phone,idInstance,wid,sender,chatId", ",");
+
+    Result = ReplaceSecretsRecursively(Result, IndicatorsArray);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_ClearOutgoingMessageQueue(Val Result, Val Option)
+
+    ExpectsThat(Result["isCleared"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_GetIncomingNotificationCount(Val Result, Val Option)
+
+    ExpectsThat(Result["count"]).ИмеетТип("Number");
+
+    Return Result;
+
+EndFunction
+
+Function Check_GreenMax_ClearIncomingNotificationQueue(Val Result, Val Option)
+
+    ExpectsThat(Result["isCleared"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region ReportPortal
@@ -12498,6 +12655,52 @@ Procedure ProcessSecretsVK(Val Option, Value)
     EndIf;
 
 EndProcedure
+
+Function ReplaceSecretsRecursively(Value, Val Indicators)
+
+    If TypeOf(Value) = Type("Array") Then
+
+        Value_ = New Array;
+
+        For Each Element In Value Do
+            Value_.Add(ReplaceSecretsRecursively(Element, Indicators));
+        EndDo;
+
+    ElsIf OPI_Tools.ThisIsCollection(Value, True) Then
+
+        Value_ = New(TypeOf(Value));
+
+        For Each Element In Value Do
+
+            CurrentKey   = Element.Key;
+            CurrentValue = Element.Value;
+
+            If OPI_Tools.ThisIsCollection(CurrentValue) Then
+                CurrentValue = ReplaceSecretsRecursively(CurrentValue, Indicators);
+            Else
+
+                For Each Indication In Indicators Do
+
+                    If StrFind(Lower(CurrentKey), Lower(Indication)) > 0 Then
+                        CurrentValue = ReplaceSecretsRecursively(CurrentValue, Indicators);
+                        Break;
+                    EndIf;
+
+                EndDo;
+
+            EndIf;
+
+            Value_.Insert(CurrentKey, CurrentValue);
+
+        EndDo;
+
+    Else
+        Value_ = "***";
+    EndIf;
+
+    Return Value_;
+
+EndFunction
 
 #EndRegion
 
