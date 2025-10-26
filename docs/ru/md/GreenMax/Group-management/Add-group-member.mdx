@@ -1,0 +1,54 @@
+﻿---
+sidebar_position: 6
+description: Добавить участника группы и другие функции для работы с GreenMax в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, GreenMax]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Добавить участника группы
+ Добавляет нового участника в выбранный групповой чат
+
+
+
+`Функция ДобавитьУчастникаГруппы(Знач ПараметрыДоступа, Знач IDЧата, Знач IDУчастника) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | ПараметрыДоступа | --access | Структура Из КлючИЗначение | &#x2714; | Параметры доступа. См. [`СформироватьПараметрыДоступа`](/docs/GreenMax/Account/Form-access-parameters) |
+  | IDЧата | --chat | Строка | &#x2714; | ID группового чата |
+  | IDУчастника | --member | Строка | &#x2714; | ID участника для добавления |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
+
+<br/>
+
+:::tip
+Метод в документации API: [AddGroupParticipant](https://green-api.com/v3/docs/api/groups/AddGroupParticipant/)
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    ApiUrl           = "https://3100.api.green-api.com/v3";
+    MediaUrl         = "https://3100.api.green-api.com/v3";
+    IdInstance       = "31003...";
+    ApiTokenInstance = "17915d8e0b4b4975a183478da...";
+
+    IDЧата      = 12345678;
+    IDУчастника = 87654321;
+
+    ПараметрыДоступа = OPI_GreenMax.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Результат        = OPI_GreenMax.ДобавитьУчастникаГруппы(ПараметрыДоступа, IDЧата, IDУчастника);
+```
+    
+
+
+
+```json title="Результат"
+{
+ "addParticipant": true
+}
+```
