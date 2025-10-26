@@ -14,7 +14,7 @@
      }
     },
     "description": "Описание товара",
-    "id": 12076877,
+    "id": 12081909,
     "owner_id": -218861756,
     "price": {
      "amount": "100",
@@ -34,6 +34,7 @@
       "title": "Другие товары сообщества",
       "view_type": 1,
       "item_ids": [
+       "-218861756_12081910",
        "-218861756_11825634",
        "-218861756_11699243",
        "-218861756_11311308",
@@ -42,8 +43,7 @@
        "-218861756_11311275",
        "-218861756_11311214",
        "-218861756_11311213",
-       "-218861756_11309324",
-       "-218861756_11309323"
+       "-218861756_11309324"
       ],
       "referrer_item_type": "other_goods"
      }
@@ -58,256 +58,256 @@
     "photos": [
      {
       "album_id": -53,
-      "date": 1761400134,
-      "id": 457260063,
+      "date": 1761497826,
+      "id": 457260082,
       "owner_id": -218861756,
-      "access_key": "1b56f4d8ba8945e530",
+      "access_key": "603c0216484387660f",
       "sizes": [
        {
         "height": 54,
         "type": "s",
         "width": 72,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-aTx-LrQewSKtae40kLTWl59AuKC95pZ71lat0-WqIUuidc-9vEoefOcLWLYROHPr55anTO1EeHYgQQX-dPC0ufG.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/GEr_83DwYMsF-gCpPNiYPTkDLF3diwSamf2OqTPAwiSwreU_1_TauNEgrg-Y-LEJSiHW2uRnddS04VfJXVczXcci.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
        },
        {
         "height": 120,
         "type": "m",
         "width": 160,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-aTx-LrQewSKtae40kLTWl59AuKC95pZ71lat0-WqIUuidc-9vEoefOcLWLYROHPr55anTO1EeHYgQQX-dPC0ufG.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/GEr_83DwYMsF-gCpPNiYPTkDLF3diwSamf2OqTPAwiSwreU_1_TauNEgrg-Y-LEJSiHW2uRnddS04VfJXVczXcci.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
        },
        {
         "height": 480,
         "type": "x",
         "width": 640,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-aTx-LrQewSKtae40kLTWl59AuKC95pZ71lat0-WqIUuidc-9vEoefOcLWLYROHPr55anTO1EeHYgQQX-dPC0ufG.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/GEr_83DwYMsF-gCpPNiYPTkDLF3diwSamf2OqTPAwiSwreU_1_TauNEgrg-Y-LEJSiHW2uRnddS04VfJXVczXcci.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
        },
        {
         "height": 810,
         "type": "y",
         "width": 1080,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-aTx-LrQewSKtae40kLTWl59AuKC95pZ71lat0-WqIUuidc-9vEoefOcLWLYROHPr55anTO1EeHYgQQX-dPC0ufG.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/GEr_83DwYMsF-gCpPNiYPTkDLF3diwSamf2OqTPAwiSwreU_1_TauNEgrg-Y-LEJSiHW2uRnddS04VfJXVczXcci.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
        },
        {
         "height": 960,
         "type": "z",
         "width": 1280,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-aTx-LrQewSKtae40kLTWl59AuKC95pZ71lat0-WqIUuidc-9vEoefOcLWLYROHPr55anTO1EeHYgQQX-dPC0ufG.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/GEr_83DwYMsF-gCpPNiYPTkDLF3diwSamf2OqTPAwiSwreU_1_TauNEgrg-Y-LEJSiHW2uRnddS04VfJXVczXcci.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
        },
        {
         "height": 1920,
         "type": "w",
         "width": 2560,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-aTx-LrQewSKtae40kLTWl59AuKC95pZ71lat0-WqIUuidc-9vEoefOcLWLYROHPr55anTO1EeHYgQQX-dPC0ufG.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/GEr_83DwYMsF-gCpPNiYPTkDLF3diwSamf2OqTPAwiSwreU_1_TauNEgrg-Y-LEJSiHW2uRnddS04VfJXVczXcci.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
        },
        {
         "height": 81,
         "type": "o",
         "width": 108,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-aTx-LrQewSKtae40kLTWl59AuKC95pZ71lat0-WqIUuidc-9vEoefOcLWLYROHPr55anTO1EeHYgQQX-dPC0ufG.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/GEr_83DwYMsF-gCpPNiYPTkDLF3diwSamf2OqTPAwiSwreU_1_TauNEgrg-Y-LEJSiHW2uRnddS04VfJXVczXcci.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
        },
        {
         "height": 180,
         "type": "p",
         "width": 240,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-aTx-LrQewSKtae40kLTWl59AuKC95pZ71lat0-WqIUuidc-9vEoefOcLWLYROHPr55anTO1EeHYgQQX-dPC0ufG.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/GEr_83DwYMsF-gCpPNiYPTkDLF3diwSamf2OqTPAwiSwreU_1_TauNEgrg-Y-LEJSiHW2uRnddS04VfJXVczXcci.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
        },
        {
         "height": 270,
         "type": "q",
         "width": 360,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-aTx-LrQewSKtae40kLTWl59AuKC95pZ71lat0-WqIUuidc-9vEoefOcLWLYROHPr55anTO1EeHYgQQX-dPC0ufG.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/GEr_83DwYMsF-gCpPNiYPTkDLF3diwSamf2OqTPAwiSwreU_1_TauNEgrg-Y-LEJSiHW2uRnddS04VfJXVczXcci.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
        },
        {
         "height": 405,
         "type": "r",
         "width": 540,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-aTx-LrQewSKtae40kLTWl59AuKC95pZ71lat0-WqIUuidc-9vEoefOcLWLYROHPr55anTO1EeHYgQQX-dPC0ufG.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/GEr_83DwYMsF-gCpPNiYPTkDLF3diwSamf2OqTPAwiSwreU_1_TauNEgrg-Y-LEJSiHW2uRnddS04VfJXVczXcci.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
        },
        {
         "height": 1920,
         "type": "base",
         "width": 2560,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-aTx-LrQewSKtae40kLTWl59AuKC95pZ71lat0-WqIUuidc-9vEoefOcLWLYROHPr55anTO1EeHYgQQX-dPC0ufG.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/GEr_83DwYMsF-gCpPNiYPTkDLF3diwSamf2OqTPAwiSwreU_1_TauNEgrg-Y-LEJSiHW2uRnddS04VfJXVczXcci.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
        }
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "be69592c0ea267562e",
+      "web_view_token": "59a35059e0d3ae471f",
       "has_tags": false,
       "orig_photo": {
        "height": 1920,
        "type": "base",
-       "url": "https://sun9-73.userapi.com/s/v1/if2/-aTx-LrQewSKtae40kLTWl59AuKC95pZ71lat0-WqIUuidc-9vEoefOcLWLYROHPr55anTO1EeHYgQQX-dPC0ufG.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
+       "url": "https://sun9-73.userapi.com/s/v1/if2/GEr_83DwYMsF-gCpPNiYPTkDLF3diwSamf2OqTPAwiSwreU_1_TauNEgrg-Y-LEJSiHW2uRnddS04VfJXVczXcci.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
        "width": 2560
       }
      },
      {
       "album_id": -53,
-      "date": 1761400136,
-      "id": 457260064,
+      "date": 1761497828,
+      "id": 457260083,
       "owner_id": -218861756,
-      "access_key": "9a9c8258cea11e845d",
+      "access_key": "54b3aa0a818ae77549",
       "sizes": [
        {
         "height": 54,
         "type": "s",
         "width": 72,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-F6MTyoJD7HXkjG9lImxBnsyPnv2XltvHbxYuFyVQhAkRKos1S-F-5PfXa81PU8QegA4uxymUKzLt2Ibz-dBl_j2.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/kBUWqrM6oh0n3dNTiDc_w0FAGkOcvCR5vmbXlskG-sLqhKH6pzCLrFqYp0RwH1CQ9YFpdi4NhP9fMETx-QaQF3Jy.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
        },
        {
         "height": 120,
         "type": "m",
         "width": 160,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-F6MTyoJD7HXkjG9lImxBnsyPnv2XltvHbxYuFyVQhAkRKos1S-F-5PfXa81PU8QegA4uxymUKzLt2Ibz-dBl_j2.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/kBUWqrM6oh0n3dNTiDc_w0FAGkOcvCR5vmbXlskG-sLqhKH6pzCLrFqYp0RwH1CQ9YFpdi4NhP9fMETx-QaQF3Jy.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
        },
        {
         "height": 480,
         "type": "x",
         "width": 640,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-F6MTyoJD7HXkjG9lImxBnsyPnv2XltvHbxYuFyVQhAkRKos1S-F-5PfXa81PU8QegA4uxymUKzLt2Ibz-dBl_j2.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/kBUWqrM6oh0n3dNTiDc_w0FAGkOcvCR5vmbXlskG-sLqhKH6pzCLrFqYp0RwH1CQ9YFpdi4NhP9fMETx-QaQF3Jy.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
        },
        {
         "height": 810,
         "type": "y",
         "width": 1080,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-F6MTyoJD7HXkjG9lImxBnsyPnv2XltvHbxYuFyVQhAkRKos1S-F-5PfXa81PU8QegA4uxymUKzLt2Ibz-dBl_j2.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/kBUWqrM6oh0n3dNTiDc_w0FAGkOcvCR5vmbXlskG-sLqhKH6pzCLrFqYp0RwH1CQ9YFpdi4NhP9fMETx-QaQF3Jy.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
        },
        {
         "height": 960,
         "type": "z",
         "width": 1280,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-F6MTyoJD7HXkjG9lImxBnsyPnv2XltvHbxYuFyVQhAkRKos1S-F-5PfXa81PU8QegA4uxymUKzLt2Ibz-dBl_j2.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/kBUWqrM6oh0n3dNTiDc_w0FAGkOcvCR5vmbXlskG-sLqhKH6pzCLrFqYp0RwH1CQ9YFpdi4NhP9fMETx-QaQF3Jy.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
        },
        {
         "height": 1920,
         "type": "w",
         "width": 2560,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-F6MTyoJD7HXkjG9lImxBnsyPnv2XltvHbxYuFyVQhAkRKos1S-F-5PfXa81PU8QegA4uxymUKzLt2Ibz-dBl_j2.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/kBUWqrM6oh0n3dNTiDc_w0FAGkOcvCR5vmbXlskG-sLqhKH6pzCLrFqYp0RwH1CQ9YFpdi4NhP9fMETx-QaQF3Jy.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
        },
        {
         "height": 81,
         "type": "o",
         "width": 108,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-F6MTyoJD7HXkjG9lImxBnsyPnv2XltvHbxYuFyVQhAkRKos1S-F-5PfXa81PU8QegA4uxymUKzLt2Ibz-dBl_j2.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/kBUWqrM6oh0n3dNTiDc_w0FAGkOcvCR5vmbXlskG-sLqhKH6pzCLrFqYp0RwH1CQ9YFpdi4NhP9fMETx-QaQF3Jy.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
        },
        {
         "height": 180,
         "type": "p",
         "width": 240,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-F6MTyoJD7HXkjG9lImxBnsyPnv2XltvHbxYuFyVQhAkRKos1S-F-5PfXa81PU8QegA4uxymUKzLt2Ibz-dBl_j2.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/kBUWqrM6oh0n3dNTiDc_w0FAGkOcvCR5vmbXlskG-sLqhKH6pzCLrFqYp0RwH1CQ9YFpdi4NhP9fMETx-QaQF3Jy.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
        },
        {
         "height": 270,
         "type": "q",
         "width": 360,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-F6MTyoJD7HXkjG9lImxBnsyPnv2XltvHbxYuFyVQhAkRKos1S-F-5PfXa81PU8QegA4uxymUKzLt2Ibz-dBl_j2.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/kBUWqrM6oh0n3dNTiDc_w0FAGkOcvCR5vmbXlskG-sLqhKH6pzCLrFqYp0RwH1CQ9YFpdi4NhP9fMETx-QaQF3Jy.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
        },
        {
         "height": 405,
         "type": "r",
         "width": 540,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-F6MTyoJD7HXkjG9lImxBnsyPnv2XltvHbxYuFyVQhAkRKos1S-F-5PfXa81PU8QegA4uxymUKzLt2Ibz-dBl_j2.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/kBUWqrM6oh0n3dNTiDc_w0FAGkOcvCR5vmbXlskG-sLqhKH6pzCLrFqYp0RwH1CQ9YFpdi4NhP9fMETx-QaQF3Jy.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
        },
        {
         "height": 1920,
         "type": "base",
         "width": 2560,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/-F6MTyoJD7HXkjG9lImxBnsyPnv2XltvHbxYuFyVQhAkRKos1S-F-5PfXa81PU8QegA4uxymUKzLt2Ibz-dBl_j2.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/kBUWqrM6oh0n3dNTiDc_w0FAGkOcvCR5vmbXlskG-sLqhKH6pzCLrFqYp0RwH1CQ9YFpdi4NhP9fMETx-QaQF3Jy.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
        }
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "9305124f24c2d416ef",
+      "web_view_token": "7e056e8dafd19c8033",
       "has_tags": false,
       "orig_photo": {
        "height": 1920,
        "type": "base",
-       "url": "https://sun9-73.userapi.com/s/v1/if2/-F6MTyoJD7HXkjG9lImxBnsyPnv2XltvHbxYuFyVQhAkRKos1S-F-5PfXa81PU8QegA4uxymUKzLt2Ibz-dBl_j2.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
+       "url": "https://sun9-73.userapi.com/s/v1/if2/kBUWqrM6oh0n3dNTiDc_w0FAGkOcvCR5vmbXlskG-sLqhKH6pzCLrFqYp0RwH1CQ9YFpdi4NhP9fMETx-QaQF3Jy.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
        "width": 2560
       }
      },
      {
       "album_id": -53,
-      "date": 1761400138,
-      "id": 457260065,
+      "date": 1761497830,
+      "id": 457260084,
       "owner_id": -218861756,
-      "access_key": "23057eef4d6d16f9d0",
+      "access_key": "a864da038085c4073a",
       "sizes": [
        {
         "height": 40,
         "type": "s",
         "width": 72,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/IG8tK6UIxLsLWrPJZphN8qmJKdApg1xJ6Qts5rEl9KMWxEnFI5MLvS90vQH4HkcC3DBbHT1C43SFN8oXTkwIinxO.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=72x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/oyZxUaVSWYEEqIa02WLXJuix5TluCMttCQznucTO4-6IlRDYZkuCiiuRJM9TwW7hBMqQhTE0M4iDs6hnohdyf4fa.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=72x0"
        },
        {
         "height": 90,
         "type": "m",
         "width": 160,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/IG8tK6UIxLsLWrPJZphN8qmJKdApg1xJ6Qts5rEl9KMWxEnFI5MLvS90vQH4HkcC3DBbHT1C43SFN8oXTkwIinxO.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=160x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/oyZxUaVSWYEEqIa02WLXJuix5TluCMttCQznucTO4-6IlRDYZkuCiiuRJM9TwW7hBMqQhTE0M4iDs6hnohdyf4fa.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=160x0"
        },
        {
         "height": 360,
         "type": "x",
         "width": 640,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/IG8tK6UIxLsLWrPJZphN8qmJKdApg1xJ6Qts5rEl9KMWxEnFI5MLvS90vQH4HkcC3DBbHT1C43SFN8oXTkwIinxO.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=640x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/oyZxUaVSWYEEqIa02WLXJuix5TluCMttCQznucTO4-6IlRDYZkuCiiuRJM9TwW7hBMqQhTE0M4iDs6hnohdyf4fa.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=640x0"
        },
        {
         "height": 607,
         "type": "y",
         "width": 1080,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/IG8tK6UIxLsLWrPJZphN8qmJKdApg1xJ6Qts5rEl9KMWxEnFI5MLvS90vQH4HkcC3DBbHT1C43SFN8oXTkwIinxO.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1080x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/oyZxUaVSWYEEqIa02WLXJuix5TluCMttCQznucTO4-6IlRDYZkuCiiuRJM9TwW7hBMqQhTE0M4iDs6hnohdyf4fa.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1080x0"
        },
        {
         "height": 720,
         "type": "z",
         "width": 1280,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/IG8tK6UIxLsLWrPJZphN8qmJKdApg1xJ6Qts5rEl9KMWxEnFI5MLvS90vQH4HkcC3DBbHT1C43SFN8oXTkwIinxO.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1280x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/oyZxUaVSWYEEqIa02WLXJuix5TluCMttCQznucTO4-6IlRDYZkuCiiuRJM9TwW7hBMqQhTE0M4iDs6hnohdyf4fa.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1280x0"
        },
        {
         "height": 1080,
         "type": "w",
         "width": 1920,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/IG8tK6UIxLsLWrPJZphN8qmJKdApg1xJ6Qts5rEl9KMWxEnFI5MLvS90vQH4HkcC3DBbHT1C43SFN8oXTkwIinxO.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/oyZxUaVSWYEEqIa02WLXJuix5TluCMttCQznucTO4-6IlRDYZkuCiiuRJM9TwW7hBMqQhTE0M4iDs6hnohdyf4fa.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0"
        },
        {
         "height": 61,
         "type": "o",
         "width": 108,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/IG8tK6UIxLsLWrPJZphN8qmJKdApg1xJ6Qts5rEl9KMWxEnFI5MLvS90vQH4HkcC3DBbHT1C43SFN8oXTkwIinxO.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=108x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/oyZxUaVSWYEEqIa02WLXJuix5TluCMttCQznucTO4-6IlRDYZkuCiiuRJM9TwW7hBMqQhTE0M4iDs6hnohdyf4fa.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=108x0"
        },
        {
         "height": 135,
         "type": "p",
         "width": 240,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/IG8tK6UIxLsLWrPJZphN8qmJKdApg1xJ6Qts5rEl9KMWxEnFI5MLvS90vQH4HkcC3DBbHT1C43SFN8oXTkwIinxO.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=240x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/oyZxUaVSWYEEqIa02WLXJuix5TluCMttCQznucTO4-6IlRDYZkuCiiuRJM9TwW7hBMqQhTE0M4iDs6hnohdyf4fa.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=240x0"
        },
        {
         "height": 202,
         "type": "q",
         "width": 360,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/IG8tK6UIxLsLWrPJZphN8qmJKdApg1xJ6Qts5rEl9KMWxEnFI5MLvS90vQH4HkcC3DBbHT1C43SFN8oXTkwIinxO.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=360x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/oyZxUaVSWYEEqIa02WLXJuix5TluCMttCQznucTO4-6IlRDYZkuCiiuRJM9TwW7hBMqQhTE0M4iDs6hnohdyf4fa.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=360x0"
        },
        {
         "height": 304,
         "type": "r",
         "width": 540,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/IG8tK6UIxLsLWrPJZphN8qmJKdApg1xJ6Qts5rEl9KMWxEnFI5MLvS90vQH4HkcC3DBbHT1C43SFN8oXTkwIinxO.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=540x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/oyZxUaVSWYEEqIa02WLXJuix5TluCMttCQznucTO4-6IlRDYZkuCiiuRJM9TwW7hBMqQhTE0M4iDs6hnohdyf4fa.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=540x0"
        },
        {
         "height": 1080,
         "type": "base",
         "width": 1920,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/IG8tK6UIxLsLWrPJZphN8qmJKdApg1xJ6Qts5rEl9KMWxEnFI5MLvS90vQH4HkcC3DBbHT1C43SFN8oXTkwIinxO.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/oyZxUaVSWYEEqIa02WLXJuix5TluCMttCQznucTO4-6IlRDYZkuCiiuRJM9TwW7hBMqQhTE0M4iDs6hnohdyf4fa.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu"
        }
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "4b6b10965062fb1c82",
+      "web_view_token": "313a24bbf64615778b",
       "has_tags": false,
       "orig_photo": {
        "height": 1080,
        "type": "base",
-       "url": "https://sun9-11.userapi.com/s/v1/if2/IG8tK6UIxLsLWrPJZphN8qmJKdApg1xJ6Qts5rEl9KMWxEnFI5MLvS90vQH4HkcC3DBbHT1C43SFN8oXTkwIinxO.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu",
+       "url": "https://sun9-11.userapi.com/s/v1/if2/oyZxUaVSWYEEqIa02WLXJuix5TluCMttCQznucTO4-6IlRDYZkuCiiuRJM9TwW7hBMqQhTE0M4iDs6hnohdyf4fa.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu",
        "width": 1920
       }
      }
@@ -330,9 +330,9 @@
       "type": "text",
       "variants": [
        {
-        "variant_id": 8776,
+        "variant_id": 8779,
         "name": "Новое имя варианта",
-        "item_id": 12076877,
+        "item_id": 12081909,
         "is_selected": true
        }
       ]
@@ -354,15 +354,15 @@
      "is_available": true
     },
     "labels": [],
-    "date": 1761400138,
+    "date": 1761497830,
     "item_type": 0,
     "is_owner": true,
     "is_adult": false,
-    "thumb_photo": "https://sun56-2.userapi.com/impg/otl1czQzAl3AkYXjhOpdB3ITA1pXVNZdcgo6Rw/5r2lFQttT3I.jpg?crop=0.125,0,0.75,1&size=0x400&quality=95&sign=a4f4373892d2758273f9717f063734a0&c_uniq_tag=O0OfA7ouEY0QDauVjsSMEACTBIB3hZP1pAOTaI8tiQQ",
+    "thumb_photo": "https://sun56-2.userapi.com/impg/otl1czQzAl3AkYXjhOpdB3ITA1pXVNZdcgo6Rw/VX0J7l1XNMg.jpg?crop=0.125,0,0.75,1&size=0x400&quality=95&sign=73989115886f9674839921f9b46e9ad0&c_uniq_tag=fNQlYB8EnZXUX-JWfMYXutr40JZJA0QiZkhBr0KWDnk",
     "is_main_variant": true,
     "property_values": [
      {
-      "variant_id": 8776,
+      "variant_id": 8779,
       "variant_name": "Новое имя варианта",
       "property_name": "Цвет (изм.)"
      }
@@ -375,7 +375,7 @@
      "reviews_count_text": "Нет отзывов"
     },
     "has_group_access": true,
-    "market_url": "https://vk.com/market/product/testovy-tovar-so-svoystvom-218861756-12076877"
+    "market_url": "https://vk.com/market/product/testovy-tovar-so-svoystvom-218861756-12081909"
    },
    {
     "availability": 0,
@@ -389,7 +389,7 @@
      }
     },
     "description": "Описание товара",
-    "id": 12076878,
+    "id": 12081910,
     "owner_id": -218861756,
     "price": {
      "amount": "100",
@@ -409,6 +409,7 @@
       "title": "Другие товары сообщества",
       "view_type": 1,
       "item_ids": [
+       "-218861756_12081910",
        "-218861756_11825634",
        "-218861756_11699243",
        "-218861756_11311308",
@@ -417,8 +418,7 @@
        "-218861756_11311275",
        "-218861756_11311214",
        "-218861756_11311213",
-       "-218861756_11309324",
-       "-218861756_11309323"
+       "-218861756_11309324"
       ],
       "referrer_item_type": "other_goods"
      }
@@ -433,256 +433,256 @@
     "photos": [
      {
       "album_id": -53,
-      "date": 1761400141,
-      "id": 457260066,
+      "date": 1761497835,
+      "id": 457260085,
       "owner_id": -218861756,
-      "access_key": "7597179c344b7538f3",
+      "access_key": "efda91c70942a75105",
       "sizes": [
        {
         "height": 54,
         "type": "s",
         "width": 72,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/kPSARypJKOAFX3QOdwmYPTCDaCc7WMwwwnGvSaXjOy6Kiu4WvpR-83L0CMMRdRrFl9Q8XhVUsZ99-DPopW0pvnuZ.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/Ysc9TMzAjqJiqhlEfg4QOGyuFmxGR6tOxm872ndFyXGsWnYvRynjE3s1N5recTMujEomiUsbE2gXt7WeAZn5BAh1.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
        },
        {
         "height": 120,
         "type": "m",
         "width": 160,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/kPSARypJKOAFX3QOdwmYPTCDaCc7WMwwwnGvSaXjOy6Kiu4WvpR-83L0CMMRdRrFl9Q8XhVUsZ99-DPopW0pvnuZ.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/Ysc9TMzAjqJiqhlEfg4QOGyuFmxGR6tOxm872ndFyXGsWnYvRynjE3s1N5recTMujEomiUsbE2gXt7WeAZn5BAh1.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
        },
        {
         "height": 480,
         "type": "x",
         "width": 640,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/kPSARypJKOAFX3QOdwmYPTCDaCc7WMwwwnGvSaXjOy6Kiu4WvpR-83L0CMMRdRrFl9Q8XhVUsZ99-DPopW0pvnuZ.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/Ysc9TMzAjqJiqhlEfg4QOGyuFmxGR6tOxm872ndFyXGsWnYvRynjE3s1N5recTMujEomiUsbE2gXt7WeAZn5BAh1.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
        },
        {
         "height": 810,
         "type": "y",
         "width": 1080,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/kPSARypJKOAFX3QOdwmYPTCDaCc7WMwwwnGvSaXjOy6Kiu4WvpR-83L0CMMRdRrFl9Q8XhVUsZ99-DPopW0pvnuZ.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/Ysc9TMzAjqJiqhlEfg4QOGyuFmxGR6tOxm872ndFyXGsWnYvRynjE3s1N5recTMujEomiUsbE2gXt7WeAZn5BAh1.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
        },
        {
         "height": 960,
         "type": "z",
         "width": 1280,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/kPSARypJKOAFX3QOdwmYPTCDaCc7WMwwwnGvSaXjOy6Kiu4WvpR-83L0CMMRdRrFl9Q8XhVUsZ99-DPopW0pvnuZ.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/Ysc9TMzAjqJiqhlEfg4QOGyuFmxGR6tOxm872ndFyXGsWnYvRynjE3s1N5recTMujEomiUsbE2gXt7WeAZn5BAh1.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
        },
        {
         "height": 1920,
         "type": "w",
         "width": 2560,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/kPSARypJKOAFX3QOdwmYPTCDaCc7WMwwwnGvSaXjOy6Kiu4WvpR-83L0CMMRdRrFl9Q8XhVUsZ99-DPopW0pvnuZ.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/Ysc9TMzAjqJiqhlEfg4QOGyuFmxGR6tOxm872ndFyXGsWnYvRynjE3s1N5recTMujEomiUsbE2gXt7WeAZn5BAh1.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
        },
        {
         "height": 81,
         "type": "o",
         "width": 108,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/kPSARypJKOAFX3QOdwmYPTCDaCc7WMwwwnGvSaXjOy6Kiu4WvpR-83L0CMMRdRrFl9Q8XhVUsZ99-DPopW0pvnuZ.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/Ysc9TMzAjqJiqhlEfg4QOGyuFmxGR6tOxm872ndFyXGsWnYvRynjE3s1N5recTMujEomiUsbE2gXt7WeAZn5BAh1.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
        },
        {
         "height": 180,
         "type": "p",
         "width": 240,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/kPSARypJKOAFX3QOdwmYPTCDaCc7WMwwwnGvSaXjOy6Kiu4WvpR-83L0CMMRdRrFl9Q8XhVUsZ99-DPopW0pvnuZ.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/Ysc9TMzAjqJiqhlEfg4QOGyuFmxGR6tOxm872ndFyXGsWnYvRynjE3s1N5recTMujEomiUsbE2gXt7WeAZn5BAh1.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
        },
        {
         "height": 270,
         "type": "q",
         "width": 360,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/kPSARypJKOAFX3QOdwmYPTCDaCc7WMwwwnGvSaXjOy6Kiu4WvpR-83L0CMMRdRrFl9Q8XhVUsZ99-DPopW0pvnuZ.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/Ysc9TMzAjqJiqhlEfg4QOGyuFmxGR6tOxm872ndFyXGsWnYvRynjE3s1N5recTMujEomiUsbE2gXt7WeAZn5BAh1.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
        },
        {
         "height": 405,
         "type": "r",
         "width": 540,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/kPSARypJKOAFX3QOdwmYPTCDaCc7WMwwwnGvSaXjOy6Kiu4WvpR-83L0CMMRdRrFl9Q8XhVUsZ99-DPopW0pvnuZ.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/Ysc9TMzAjqJiqhlEfg4QOGyuFmxGR6tOxm872ndFyXGsWnYvRynjE3s1N5recTMujEomiUsbE2gXt7WeAZn5BAh1.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
        },
        {
         "height": 1920,
         "type": "base",
         "width": 2560,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/kPSARypJKOAFX3QOdwmYPTCDaCc7WMwwwnGvSaXjOy6Kiu4WvpR-83L0CMMRdRrFl9Q8XhVUsZ99-DPopW0pvnuZ.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/Ysc9TMzAjqJiqhlEfg4QOGyuFmxGR6tOxm872ndFyXGsWnYvRynjE3s1N5recTMujEomiUsbE2gXt7WeAZn5BAh1.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
        }
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "75a52da4ec4473c1db",
+      "web_view_token": "7a489686d7b13919c3",
       "has_tags": false,
       "orig_photo": {
        "height": 1920,
        "type": "base",
-       "url": "https://sun9-73.userapi.com/s/v1/if2/kPSARypJKOAFX3QOdwmYPTCDaCc7WMwwwnGvSaXjOy6Kiu4WvpR-83L0CMMRdRrFl9Q8XhVUsZ99-DPopW0pvnuZ.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
+       "url": "https://sun9-73.userapi.com/s/v1/if2/Ysc9TMzAjqJiqhlEfg4QOGyuFmxGR6tOxm872ndFyXGsWnYvRynjE3s1N5recTMujEomiUsbE2gXt7WeAZn5BAh1.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
        "width": 2560
       }
      },
      {
       "album_id": -53,
-      "date": 1761400143,
-      "id": 457260067,
+      "date": 1761497837,
+      "id": 457260086,
       "owner_id": -218861756,
-      "access_key": "cc50c85768ab75f863",
+      "access_key": "8a133b6f4ff866f9c4",
       "sizes": [
        {
         "height": 54,
         "type": "s",
         "width": 72,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/H6W8kaKNj-OildobSR-MypIGbKSanjikgSJCkGqzaHWwM6q19Me8Wp01LiL_QPclCmMn0gTq0VUc7ChUI7kGbnLB.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/0Oa9lH1r1VcDzLxSwgqXOqYccXGC43eMXYRA5sU4hZFSqA3D18yYQlBluJYtJHo6rrD1bJb8tLwGH6Y3tU2I5PWS.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
        },
        {
         "height": 120,
         "type": "m",
         "width": 160,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/H6W8kaKNj-OildobSR-MypIGbKSanjikgSJCkGqzaHWwM6q19Me8Wp01LiL_QPclCmMn0gTq0VUc7ChUI7kGbnLB.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/0Oa9lH1r1VcDzLxSwgqXOqYccXGC43eMXYRA5sU4hZFSqA3D18yYQlBluJYtJHo6rrD1bJb8tLwGH6Y3tU2I5PWS.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
        },
        {
         "height": 480,
         "type": "x",
         "width": 640,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/H6W8kaKNj-OildobSR-MypIGbKSanjikgSJCkGqzaHWwM6q19Me8Wp01LiL_QPclCmMn0gTq0VUc7ChUI7kGbnLB.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/0Oa9lH1r1VcDzLxSwgqXOqYccXGC43eMXYRA5sU4hZFSqA3D18yYQlBluJYtJHo6rrD1bJb8tLwGH6Y3tU2I5PWS.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
        },
        {
         "height": 810,
         "type": "y",
         "width": 1080,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/H6W8kaKNj-OildobSR-MypIGbKSanjikgSJCkGqzaHWwM6q19Me8Wp01LiL_QPclCmMn0gTq0VUc7ChUI7kGbnLB.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/0Oa9lH1r1VcDzLxSwgqXOqYccXGC43eMXYRA5sU4hZFSqA3D18yYQlBluJYtJHo6rrD1bJb8tLwGH6Y3tU2I5PWS.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
        },
        {
         "height": 960,
         "type": "z",
         "width": 1280,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/H6W8kaKNj-OildobSR-MypIGbKSanjikgSJCkGqzaHWwM6q19Me8Wp01LiL_QPclCmMn0gTq0VUc7ChUI7kGbnLB.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/0Oa9lH1r1VcDzLxSwgqXOqYccXGC43eMXYRA5sU4hZFSqA3D18yYQlBluJYtJHo6rrD1bJb8tLwGH6Y3tU2I5PWS.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
        },
        {
         "height": 1920,
         "type": "w",
         "width": 2560,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/H6W8kaKNj-OildobSR-MypIGbKSanjikgSJCkGqzaHWwM6q19Me8Wp01LiL_QPclCmMn0gTq0VUc7ChUI7kGbnLB.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/0Oa9lH1r1VcDzLxSwgqXOqYccXGC43eMXYRA5sU4hZFSqA3D18yYQlBluJYtJHo6rrD1bJb8tLwGH6Y3tU2I5PWS.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
        },
        {
         "height": 81,
         "type": "o",
         "width": 108,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/H6W8kaKNj-OildobSR-MypIGbKSanjikgSJCkGqzaHWwM6q19Me8Wp01LiL_QPclCmMn0gTq0VUc7ChUI7kGbnLB.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/0Oa9lH1r1VcDzLxSwgqXOqYccXGC43eMXYRA5sU4hZFSqA3D18yYQlBluJYtJHo6rrD1bJb8tLwGH6Y3tU2I5PWS.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
        },
        {
         "height": 180,
         "type": "p",
         "width": 240,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/H6W8kaKNj-OildobSR-MypIGbKSanjikgSJCkGqzaHWwM6q19Me8Wp01LiL_QPclCmMn0gTq0VUc7ChUI7kGbnLB.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/0Oa9lH1r1VcDzLxSwgqXOqYccXGC43eMXYRA5sU4hZFSqA3D18yYQlBluJYtJHo6rrD1bJb8tLwGH6Y3tU2I5PWS.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
        },
        {
         "height": 270,
         "type": "q",
         "width": 360,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/H6W8kaKNj-OildobSR-MypIGbKSanjikgSJCkGqzaHWwM6q19Me8Wp01LiL_QPclCmMn0gTq0VUc7ChUI7kGbnLB.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/0Oa9lH1r1VcDzLxSwgqXOqYccXGC43eMXYRA5sU4hZFSqA3D18yYQlBluJYtJHo6rrD1bJb8tLwGH6Y3tU2I5PWS.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
        },
        {
         "height": 405,
         "type": "r",
         "width": 540,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/H6W8kaKNj-OildobSR-MypIGbKSanjikgSJCkGqzaHWwM6q19Me8Wp01LiL_QPclCmMn0gTq0VUc7ChUI7kGbnLB.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/0Oa9lH1r1VcDzLxSwgqXOqYccXGC43eMXYRA5sU4hZFSqA3D18yYQlBluJYtJHo6rrD1bJb8tLwGH6Y3tU2I5PWS.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
        },
        {
         "height": 1920,
         "type": "base",
         "width": 2560,
-        "url": "https://sun9-73.userapi.com/s/v1/if2/H6W8kaKNj-OildobSR-MypIGbKSanjikgSJCkGqzaHWwM6q19Me8Wp01LiL_QPclCmMn0gTq0VUc7ChUI7kGbnLB.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
+        "url": "https://sun9-73.userapi.com/s/v1/if2/0Oa9lH1r1VcDzLxSwgqXOqYccXGC43eMXYRA5sU4hZFSqA3D18yYQlBluJYtJHo6rrD1bJb8tLwGH6Y3tU2I5PWS.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
        }
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "2fa67514d0f18cdf86",
+      "web_view_token": "123cf23e7df678d773",
       "has_tags": false,
       "orig_photo": {
        "height": 1920,
        "type": "base",
-       "url": "https://sun9-73.userapi.com/s/v1/if2/H6W8kaKNj-OildobSR-MypIGbKSanjikgSJCkGqzaHWwM6q19Me8Wp01LiL_QPclCmMn0gTq0VUc7ChUI7kGbnLB.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
+       "url": "https://sun9-73.userapi.com/s/v1/if2/0Oa9lH1r1VcDzLxSwgqXOqYccXGC43eMXYRA5sU4hZFSqA3D18yYQlBluJYtJHo6rrD1bJb8tLwGH6Y3tU2I5PWS.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
        "width": 2560
       }
      },
      {
       "album_id": -53,
-      "date": 1761400144,
-      "id": 457260068,
+      "date": 1761497839,
+      "id": 457260087,
       "owner_id": -218861756,
-      "access_key": "122b06000dbf1f1398",
+      "access_key": "4be340ab429312f061",
       "sizes": [
        {
         "height": 40,
         "type": "s",
         "width": 72,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/xTwrjnXi8iS6oshbQ4BDw0eWTKfxJQIUC5mbONlM9KDsDMrEr_fdVlSox7jwAwYksSESEGnzqFvz5LUjyAjIwarY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=72x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/CyHmUnMXgwsbshZASc6QOQ6qkbNZU4SJ-uEUj07_HZe03wcYnvI9BaLARZQSgWxMGpxvXdZ4I82EX9oLHoAxUJvA.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=72x0"
        },
        {
         "height": 90,
         "type": "m",
         "width": 160,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/xTwrjnXi8iS6oshbQ4BDw0eWTKfxJQIUC5mbONlM9KDsDMrEr_fdVlSox7jwAwYksSESEGnzqFvz5LUjyAjIwarY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=160x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/CyHmUnMXgwsbshZASc6QOQ6qkbNZU4SJ-uEUj07_HZe03wcYnvI9BaLARZQSgWxMGpxvXdZ4I82EX9oLHoAxUJvA.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=160x0"
        },
        {
         "height": 360,
         "type": "x",
         "width": 640,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/xTwrjnXi8iS6oshbQ4BDw0eWTKfxJQIUC5mbONlM9KDsDMrEr_fdVlSox7jwAwYksSESEGnzqFvz5LUjyAjIwarY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=640x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/CyHmUnMXgwsbshZASc6QOQ6qkbNZU4SJ-uEUj07_HZe03wcYnvI9BaLARZQSgWxMGpxvXdZ4I82EX9oLHoAxUJvA.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=640x0"
        },
        {
         "height": 607,
         "type": "y",
         "width": 1080,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/xTwrjnXi8iS6oshbQ4BDw0eWTKfxJQIUC5mbONlM9KDsDMrEr_fdVlSox7jwAwYksSESEGnzqFvz5LUjyAjIwarY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1080x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/CyHmUnMXgwsbshZASc6QOQ6qkbNZU4SJ-uEUj07_HZe03wcYnvI9BaLARZQSgWxMGpxvXdZ4I82EX9oLHoAxUJvA.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1080x0"
        },
        {
         "height": 720,
         "type": "z",
         "width": 1280,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/xTwrjnXi8iS6oshbQ4BDw0eWTKfxJQIUC5mbONlM9KDsDMrEr_fdVlSox7jwAwYksSESEGnzqFvz5LUjyAjIwarY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1280x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/CyHmUnMXgwsbshZASc6QOQ6qkbNZU4SJ-uEUj07_HZe03wcYnvI9BaLARZQSgWxMGpxvXdZ4I82EX9oLHoAxUJvA.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1280x0"
        },
        {
         "height": 1080,
         "type": "w",
         "width": 1920,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/xTwrjnXi8iS6oshbQ4BDw0eWTKfxJQIUC5mbONlM9KDsDMrEr_fdVlSox7jwAwYksSESEGnzqFvz5LUjyAjIwarY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/CyHmUnMXgwsbshZASc6QOQ6qkbNZU4SJ-uEUj07_HZe03wcYnvI9BaLARZQSgWxMGpxvXdZ4I82EX9oLHoAxUJvA.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0"
        },
        {
         "height": 61,
         "type": "o",
         "width": 108,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/xTwrjnXi8iS6oshbQ4BDw0eWTKfxJQIUC5mbONlM9KDsDMrEr_fdVlSox7jwAwYksSESEGnzqFvz5LUjyAjIwarY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=108x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/CyHmUnMXgwsbshZASc6QOQ6qkbNZU4SJ-uEUj07_HZe03wcYnvI9BaLARZQSgWxMGpxvXdZ4I82EX9oLHoAxUJvA.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=108x0"
        },
        {
         "height": 135,
         "type": "p",
         "width": 240,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/xTwrjnXi8iS6oshbQ4BDw0eWTKfxJQIUC5mbONlM9KDsDMrEr_fdVlSox7jwAwYksSESEGnzqFvz5LUjyAjIwarY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=240x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/CyHmUnMXgwsbshZASc6QOQ6qkbNZU4SJ-uEUj07_HZe03wcYnvI9BaLARZQSgWxMGpxvXdZ4I82EX9oLHoAxUJvA.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=240x0"
        },
        {
         "height": 202,
         "type": "q",
         "width": 360,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/xTwrjnXi8iS6oshbQ4BDw0eWTKfxJQIUC5mbONlM9KDsDMrEr_fdVlSox7jwAwYksSESEGnzqFvz5LUjyAjIwarY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=360x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/CyHmUnMXgwsbshZASc6QOQ6qkbNZU4SJ-uEUj07_HZe03wcYnvI9BaLARZQSgWxMGpxvXdZ4I82EX9oLHoAxUJvA.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=360x0"
        },
        {
         "height": 304,
         "type": "r",
         "width": 540,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/xTwrjnXi8iS6oshbQ4BDw0eWTKfxJQIUC5mbONlM9KDsDMrEr_fdVlSox7jwAwYksSESEGnzqFvz5LUjyAjIwarY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=540x0"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/CyHmUnMXgwsbshZASc6QOQ6qkbNZU4SJ-uEUj07_HZe03wcYnvI9BaLARZQSgWxMGpxvXdZ4I82EX9oLHoAxUJvA.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=540x0"
        },
        {
         "height": 1080,
         "type": "base",
         "width": 1920,
-        "url": "https://sun9-11.userapi.com/s/v1/if2/xTwrjnXi8iS6oshbQ4BDw0eWTKfxJQIUC5mbONlM9KDsDMrEr_fdVlSox7jwAwYksSESEGnzqFvz5LUjyAjIwarY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu"
+        "url": "https://sun9-11.userapi.com/s/v1/if2/CyHmUnMXgwsbshZASc6QOQ6qkbNZU4SJ-uEUj07_HZe03wcYnvI9BaLARZQSgWxMGpxvXdZ4I82EX9oLHoAxUJvA.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu"
        }
       ],
       "text": "",
       "user_id": 100,
-      "web_view_token": "4f800e577dfb0decbd",
+      "web_view_token": "ecfdf4350f1981748d",
       "has_tags": false,
       "orig_photo": {
        "height": 1080,
        "type": "base",
-       "url": "https://sun9-11.userapi.com/s/v1/if2/xTwrjnXi8iS6oshbQ4BDw0eWTKfxJQIUC5mbONlM9KDsDMrEr_fdVlSox7jwAwYksSESEGnzqFvz5LUjyAjIwarY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu",
+       "url": "https://sun9-11.userapi.com/s/v1/if2/CyHmUnMXgwsbshZASc6QOQ6qkbNZU4SJ-uEUj07_HZe03wcYnvI9BaLARZQSgWxMGpxvXdZ4I82EX9oLHoAxUJvA.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu",
        "width": 1920
       }
      }
@@ -705,9 +705,9 @@
       "type": "text",
       "variants": [
        {
-        "variant_id": 8777,
+        "variant_id": 8780,
         "name": "Синий",
-        "item_id": 12076878,
+        "item_id": 12081910,
         "is_selected": true
        }
       ]
@@ -729,15 +729,15 @@
      "is_available": true
     },
     "labels": [],
-    "date": 1761400144,
+    "date": 1761497839,
     "item_type": 0,
     "is_owner": true,
     "is_adult": false,
-    "thumb_photo": "https://sun56-2.userapi.com/impg/otl1czQzAl3AkYXjhOpdB3ITA1pXVNZdcgo6Rw/9dCY7FwW7hI.jpg?crop=0.125,0,0.75,1&size=0x400&quality=95&sign=220e2e4d248d56f05bddf3668c236142&c_uniq_tag=_-OYUKfA0gS_EqWuQfG31O45YX1wlUg0elbT2941Hj4",
+    "thumb_photo": "https://sun56-2.userapi.com/impg/otl1czQzAl3AkYXjhOpdB3ITA1pXVNZdcgo6Rw/MFuWaGoNcCw.jpg?crop=0.125,0,0.75,1&size=0x400&quality=95&sign=f70ceb00db8f251278f664624a41ad46&c_uniq_tag=jP4oHmYK_OYKybVS4U7aBi9yQTZ1-6nLF0R8kXXl1lA",
     "is_main_variant": true,
     "property_values": [
      {
-      "variant_id": 8777,
+      "variant_id": 8780,
       "variant_name": "Синий",
       "property_name": "Цвет (изм.)"
      }
@@ -750,7 +750,7 @@
      "reviews_count_text": "Нет отзывов"
     },
     "has_group_access": true,
-    "market_url": "https://vk.com/market/product/testovy-tovar-drugoy-218861756-12076878"
+    "market_url": "https://vk.com/market/product/testovy-tovar-drugoy-218861756-12081910"
    }
   ]
  }

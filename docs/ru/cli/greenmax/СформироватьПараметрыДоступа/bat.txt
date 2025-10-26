@@ -1,0 +1,5 @@
+oint greenmax СформироватьПараметрыДоступа ^
+  --api "***" ^
+  --media "https://3100.api.green-api.com/v3" ^
+  --id "3100309139" ^
+  --token "***"
