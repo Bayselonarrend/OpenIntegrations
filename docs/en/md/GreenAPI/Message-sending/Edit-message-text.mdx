@@ -1,0 +1,82 @@
+﻿---
+sidebar_position: 8
+description: Change the message text and other functions to work with GreenAPI in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GreenAPI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Change the message text
+ Changes the text of the message
+
+
+
+`Function EditMessageText(Val AccessParameters, Val ChatID, Val MessageID, Val Text) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
+  | ChatID | --chat | String | &#x2714; | Chat identifier |
+  | MessageID | --message | String | &#x2714; | Message identifier |
+  | Text | --text | String | &#x2714; | New message text |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Green API
+
+<br/>
+
+:::tip
+Method at API documentation: [EditMessage](https://green-api.com/docs/api/service/EditMessage/)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+
+    ChatID    = "120363410406221140@g.us";
+    MessageID = "BAE53683AD8BAA8C";
+    Text      = "New message text";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.EditMessageText(AccessParameters, ChatID, MessageID, Text);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenapi EditMessageText \
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+             --chat "120363410406221140@g.us" \
+             --message "BAE5C5FA375FA242" \
+             --text "New message text"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenapi EditMessageText ^
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+             --chat "120363410406221140@g.us" ^
+             --message "BAE5C5FA375FA242" ^
+             --text "New message text"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "idMessage": "BAE5F026D3B87A76"
+}
+```

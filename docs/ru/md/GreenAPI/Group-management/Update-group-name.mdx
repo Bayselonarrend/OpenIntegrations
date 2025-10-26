@@ -1,0 +1,78 @@
+﻿---
+sidebar_position: 3
+description: Изменить имя группы и другие функции для работы с GreenAPI в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, GreenAPI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Изменить имя группы
+ Изменяет имя существующей группы
+
+
+
+`Функция ИзменитьИмяГруппы(Знач ПараметрыДоступа, Знач IDГруппы, Знач Имя) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | ПараметрыДоступа | --access | Структура Из КлючИЗначение | &#x2714; | Параметры доступа. См. [`СформироватьПараметрыДоступа`](/docs/GreenAPI/Account/Form-access-parameters) |
+  | IDГруппы | --group | Строка | &#x2714; | Идентификатор группового чата |
+  | Имя | --name | Строка | &#x2714; | Новое наименование группового чата |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
+
+<br/>
+
+:::tip
+Метод в документации API: [UpdateGroupName](https://green-api.com/docs/api/groups/UpdateGroupName/)
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+
+    IDГруппы = "120363404315049467@g.us";
+    Имя      = "New name";
+
+    ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Результат        = OPI_GreenAPI.ИзменитьИмяГруппы(ПараметрыДоступа, IDГруппы, Имя);
+```
+    
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenapi ИзменитьИмяГруппы \
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+              --group "120363421678846450@g.us" \
+              --name "New name"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenapi ИзменитьИмяГруппы ^
+              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+              --group "120363421678846450@g.us" ^
+              --name "New name"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Результат"
+{
+ "updateGroupName": true
+}
+```

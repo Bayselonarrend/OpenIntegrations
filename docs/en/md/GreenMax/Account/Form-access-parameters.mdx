@@ -1,0 +1,47 @@
+﻿---
+sidebar_position: 1
+description: Form access parameters and other functions to work with GreenMax in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GreenMax]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Form access parameters
+ Forms the structure of basic authorization data
+
+
+
+`Function FormAccessParameters(Val ApiUrl, Val MediaUrl, Val IdInstance, Val ApiTokenInstance) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ApiUrl | --api | String | &#x2714; | API host link |
+  | MediaUrl | --media | String | &#x2714; | Link to host API for sending files |
+  | IdInstance | --id | String | &#x2714; | Unique instance number |
+  | ApiTokenInstance | --token | String | &#x2714; | Instance access key |
+
+  
+  Returns:  Structure - Structure of access parameters
+
+<br/>
+
+:::tip
+More details in the API documentation: [Get access parameters to instance](https://green-api.com/v3/docs/before-start/#parameters)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ApiUrl           = "https://3100.api.green-api.com/v3";
+    MediaUrl         = "https://3100.api.green-api.com/v3";
+    IdInstance       = "31003...";
+    ApiTokenInstance = "17915d8e0b4b4975a183478da...";
+
+    Result = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+```
+ 
+
+
+
+
