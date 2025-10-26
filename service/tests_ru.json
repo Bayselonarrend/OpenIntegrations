@@ -6348,5 +6348,85 @@
 "lib": "GreenMax",
 "name": "ОтправитьТекстовоеСообщение",
 "variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ОтправитьФайл",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ОтправитьФайл",
+"variant": "Видео"
+},
+{
+"lib": "GreenMax",
+"name": "ОтправитьФайлПоURL",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ОтправитьФайлПоURL",
+"variant": "Ввод"
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьУведомление",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "УдалитьУведомление",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ОтметитьСообщенияКакПрочитанные",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьИсториюСообщенийЧата",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьСообщениеЧата",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьЖурналВходящихСообщений",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьЖурналИсходящихСообщений",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьКоличествоСообщенийКОтправке",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьОчередьСообщенийКОтправке",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ОчиститьОчередьСообщенийКОтправке",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ПолучитьКоличествоВходящихУведомлений",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ОчиститьОчередьВходящихУведомлений",
+"variant": ""
 }
 ]

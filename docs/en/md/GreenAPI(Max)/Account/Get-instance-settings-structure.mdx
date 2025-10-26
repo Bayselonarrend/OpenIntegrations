@@ -1,0 +1,35 @@
+﻿---
+sidebar_position: 16
+description: Get instance settings structure and other functions to work with GreenAPI (Max) in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GreenAPI (Max)]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get instance settings structure
+ Gets the structure template for instance settings
+
+
+
+`Function GetInstanceSettingsStructure(Val Clear = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Clear | --empty | Boolean | &#x2716; | True > structure with empty valuse, False > field descriptions at values |
+
+  
+  Returns:  Structure Of KeyAndValue - Structure of instance settings
+
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Result = OPI_GreenMax.GetInstanceSettingsStructure();
+```
+ 
+
+
+
+
