@@ -664,6 +664,390 @@ Function GetComposition() Export
     NewLine.Description    = "Time to show the typing indicator before sending (in ms.) (optional, def. val. - Empty value)";
     NewLine.Region     = "Message sending";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends the file to the selected chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat identifier";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--file";
+    NewLine.Description    = "File data or filepath";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--filename";
+    NewLine.Description    = "Name of the file with the extension";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--caption";
+    NewLine.Description    = "Message text below the file (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--typing";
+    NewLine.Description    = "Time to show typing indicator before sending (in ms.) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "SendFile";
+    NewLine.SearchMethod = "SENDFILE";
+    NewLine.Parameter    = "--ttype";
+    NewLine.Description    = "Typing type: text, recording, video, image, file (optional, def. val. - file)";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "SendFileByURL";
+    NewLine.SearchMethod = "SENDFILEBYURL";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message sending";
+    NewLine.MethodDescription   = "Sends a file from web to the selected chat room";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "SendFileByURL";
+    NewLine.SearchMethod = "SENDFILEBYURL";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat identifier";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "SendFileByURL";
+    NewLine.SearchMethod = "SENDFILEBYURL";
+    NewLine.Parameter    = "--url";
+    NewLine.Description    = "File URL";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "SendFileByURL";
+    NewLine.SearchMethod = "SENDFILEBYURL";
+    NewLine.Parameter    = "--filename";
+    NewLine.Description    = "Name of the file with the extension";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "SendFileByURL";
+    NewLine.SearchMethod = "SENDFILEBYURL";
+    NewLine.Parameter    = "--caption";
+    NewLine.Description    = "Message text below the file (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "SendFileByURL";
+    NewLine.SearchMethod = "SENDFILEBYURL";
+    NewLine.Parameter    = "--typing";
+    NewLine.Description    = "Time to show typing indicator before sending (in ms.) (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "SendFileByURL";
+    NewLine.SearchMethod = "SENDFILEBYURL";
+    NewLine.Parameter    = "--ttype";
+    NewLine.Description    = "Typing type: text, recording, video, image, file (optional, def. val. - file)";
+    NewLine.Region     = "Message sending";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetNotification";
+    NewLine.SearchMethod = "GETNOTIFICATION";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Notifications";
+    NewLine.MethodDescription   = "Gets the latest notification from the queue";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetNotification";
+    NewLine.SearchMethod = "GETNOTIFICATION";
+    NewLine.Parameter    = "--timeout";
+    NewLine.Description    = "Timeout for waiting for a notification if the queue is empty (optional, def. val. - 5)";
+    NewLine.Region     = "Notifications";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetNotification";
+    NewLine.SearchMethod = "GETNOTIFICATION";
+    NewLine.Parameter    = "--del";
+    NewLine.Description    = "Delete notification from the queue after retrieval (optional, def. val. - False)";
+    NewLine.Region     = "Notifications";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "DeleteNotification";
+    NewLine.SearchMethod = "DELETENOTIFICATION";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Notifications";
+    NewLine.MethodDescription   = "Deletes the specified notification from the queue";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "DeleteNotification";
+    NewLine.SearchMethod = "DELETENOTIFICATION";
+    NewLine.Parameter    = "--id";
+    NewLine.Description    = "Notification ID";
+    NewLine.Region     = "Notifications";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetChatMessageHistory";
+    NewLine.SearchMethod = "GETCHATMESSAGEHISTORY";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message history";
+    NewLine.MethodDescription   = "Gets the latest messages from the chat history";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetChatMessageHistory";
+    NewLine.SearchMethod = "GETCHATMESSAGEHISTORY";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Message history";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetChatMessageHistory";
+    NewLine.SearchMethod = "GETCHATMESSAGEHISTORY";
+    NewLine.Parameter    = "--count";
+    NewLine.Description    = "Number of messages to receive (optional, def. val. - 100)";
+    NewLine.Region     = "Message history";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetChatMessage";
+    NewLine.SearchMethod = "GETCHATMESSAGE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message history";
+    NewLine.MethodDescription   = "Gets information about the chat message by ID";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetChatMessage";
+    NewLine.SearchMethod = "GETCHATMESSAGE";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Message history";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetChatMessage";
+    NewLine.SearchMethod = "GETCHATMESSAGE";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "Message ID";
+    NewLine.Region     = "Message history";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetIncomingMessageLog";
+    NewLine.SearchMethod = "GETINCOMINGMESSAGELOG";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message history";
+    NewLine.MethodDescription   = "Gets the latest incoming messages of the instance";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetIncomingMessageLog";
+    NewLine.SearchMethod = "GETINCOMINGMESSAGELOG";
+    NewLine.Parameter    = "--span";
+    NewLine.Description    = "Time in minutes for which messages need to be received (optional, def. val. - 1440)";
+    NewLine.Region     = "Message history";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetOutgoingMessageLog";
+    NewLine.SearchMethod = "GETOUTGOINGMESSAGELOG";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message history";
+    NewLine.MethodDescription   = "Gets the latest outgoing messages of the instance";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetOutgoingMessageLog";
+    NewLine.SearchMethod = "GETOUTGOINGMESSAGELOG";
+    NewLine.Parameter    = "--span";
+    NewLine.Description    = "Time in minutes for which messages need to be received (optional, def. val. - 1440)";
+    NewLine.Region     = "Message history";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "MarkMessagesAsRead";
+    NewLine.SearchMethod = "MARKMESSAGESASREAD";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Message history";
+    NewLine.MethodDescription   = "Marks messages in the chat as read";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "MarkMessagesAsRead";
+    NewLine.SearchMethod = "MARKMESSAGESASREAD";
+    NewLine.Parameter    = "--chat";
+    NewLine.Description    = "Chat ID";
+    NewLine.Region     = "Message history";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "MarkMessagesAsRead";
+    NewLine.SearchMethod = "MARKMESSAGESASREAD";
+    NewLine.Parameter    = "--message";
+    NewLine.Description    = "Message ID. All messages, unless specified (optional, def. val. - Empty value)";
+    NewLine.Region     = "Message history";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetOutgoingMessageCount";
+    NewLine.SearchMethod = "GETOUTGOINGMESSAGECOUNT";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Queues";
+    NewLine.MethodDescription   = "Gets the number of messages in the outgoing queue";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetOutgoingMessageQueue";
+    NewLine.SearchMethod = "GETOUTGOINGMESSAGEQUEUE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Queues";
+    NewLine.MethodDescription   = "Gets the list of messages to be sent";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "ClearOutgoingMessageQueue";
+    NewLine.SearchMethod = "CLEAROUTGOINGMESSAGEQUEUE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Queues";
+    NewLine.MethodDescription   = "Clears the list of messages to be sent";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "GetIncomingNotificationCount";
+    NewLine.SearchMethod = "GETINCOMINGNOTIFICATIONCOUNT";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Queues";
+    NewLine.MethodDescription   = "Gets the number of notifications in the incoming queue";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "greenmax";
+    NewLine.Module      = "OPI_GreenMax";
+    NewLine.Method       = "ClearIncomingNotificationQueue";
+    NewLine.SearchMethod = "CLEARINCOMINGNOTIFICATIONQUEUE";
+    NewLine.Parameter    = "--access";
+    NewLine.Description    = "Access parameters. See FormAccessParameters";
+    NewLine.Region     = "Queues";
+    NewLine.MethodDescription   = "Clears the incoming notification queue";
+
     Return CompositionTable;
 EndFunction
 

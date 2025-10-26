@@ -1,0 +1,85 @@
+﻿---
+sidebar_position: 7
+description: Forward messages and other functions to work with GreenAPI (WhatsApp) in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GreenAPI (WhatsApp)]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Forward messages
+ Sends messages from one chat room to another
+
+
+
+`Function ForwardMessages(Val AccessParameters, Val From, Val Target, Val Messages) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
+  | From | --from | String | &#x2714; | Message source chat ID |
+  | Target | --to | String | &#x2714; | Message receiver chat ID |
+  | Messages | --msgs | String, Array of String | &#x2714; | Messages or a single message to be sent |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Green API
+
+<br/>
+
+:::tip
+Method at API documentation: [ForwardMessages](https://green-api.com/docs/api/sending/ForwardMessages/)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+
+    From   = "11001234567@c.us";
+    Target = "120363410406221140@g.us";
+
+    Message = "BAE53683AD8BAA8C";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.ForwardMessages(AccessParameters, From, Target, Message);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenapi ForwardMessages \
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+             --from "120363410406221140@g.us" \
+             --to "120363410406221140@g.us" \
+             --msgs "BAE5C5FA375FA242"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenapi ForwardMessages ^
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+             --from "120363410406221140@g.us" ^
+             --to "120363410406221140@g.us" ^
+             --msgs "BAE5C5FA375FA242"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "messages": [
+  "BAE5C6CC4B06B977"
+ ]
+}
+```

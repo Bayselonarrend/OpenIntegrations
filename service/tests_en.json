@@ -6348,5 +6348,85 @@
 "lib": "GreenMax",
 "name": "SendTextMessage",
 "variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "SendFile",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "SendFile",
+"variant": "Video"
+},
+{
+"lib": "GreenMax",
+"name": "SendFileByURL",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "SendFileByURL",
+"variant": "Typing"
+},
+{
+"lib": "GreenMax",
+"name": "GetNotification",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "DeleteNotification",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "MarkMessagesAsRead",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetChatMessageHistory",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetChatMessage",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetIncomingMessageLog",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetOutgoingMessageLog",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetOutgoingMessageCount",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetOutgoingMessageQueue",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ClearOutgoingMessageQueue",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "GetIncomingNotificationCount",
+"variant": ""
+},
+{
+"lib": "GreenMax",
+"name": "ClearIncomingNotificationQueue",
+"variant": ""
 }
 ]

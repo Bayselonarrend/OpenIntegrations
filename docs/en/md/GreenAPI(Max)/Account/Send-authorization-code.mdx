@@ -1,0 +1,48 @@
+﻿---
+sidebar_position: 6
+description: Send authorization code and other functions to work with GreenAPI (Max) in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GreenAPI (Max)]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Send authorization code
+ Authorizes the instance using the access code from SMS
+
+
+
+`Function SendAuthorizationCode(Val AccessParameters, Val AuthCode) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
+  | AuthCode | --code | String | &#x2714; | Authorization code |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Green API
+
+<br/>
+
+:::tip
+Method at API documentation: [SendAuthorizationCode](https://green-api.com/v3/docs/api/account/SendAuthorizationCode/)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ApiUrl           = "https://3100.api.green-api.com/v3";
+    MediaUrl         = "https://3100.api.green-api.com/v3";
+    IdInstance       = "31003...";
+    ApiTokenInstance = "17915d8e0b4b4975a183478da...";
+
+    AuthCode = 123456;
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.SendAuthorizationCode(AccessParameters, AuthCode);
+```
+ 
+
+
+
+

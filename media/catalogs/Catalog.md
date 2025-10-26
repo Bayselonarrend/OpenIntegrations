@@ -8,8 +8,8 @@
 |![Google Calendar](../GoogleCalendar.png)| `Google Calendar`| google calendar, googlecalendar, gcalendar |
 |![Google Drive](../GoogleDrive.png)| `Google Drive`| google drive, googledrive, gdrive, google disk |
 |![Google Sheets](../GoogleSheets.png)| `Google Sheets`| googlesheets, google sheets, spreadsheets |
-|![Green API](../GreenAPI.png)| `Green API`| greenapi, whatsapp |
-|![Green Max](../GreenMax.png)| `Green Max`| greenapi, max |
+|![GreenAPI (WhatsApp) (в разработке)](../default.png)| `GreenAPI (WhatsApp) (в разработке)`| greenapi, whatsapp |
+|![GreenAPI (Max) (в разработке)](../default.png)| `GreenAPI (Max) (в разработке)`| greenapi, max |
 |![MongoDB (в разработке)](../default.png)| `MongoDB (в разработке)`| mongodb, mongo, nosql |
 |![MSSQL](../MSSQL.png)| `MSSQL`| mssql, ms sql |
 |![MySQL](../MySQL.png)| `MySQL`| mysql, my sql |

@@ -1,0 +1,77 @@
+﻿---
+sidebar_position: 9
+description: Delete message and other functions to work with GreenAPI (WhatsApp) in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GreenAPI (WhatsApp)]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Delete message
+ Deletes a message in the selected chat room
+
+
+
+`Function DeleteMessage(Val AccessParameters, Val ChatID, Val MessageID, Val ForSenderOnly = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
+  | ChatID | --chat | String | &#x2714; | Chat identifier |
+  | MessageID | --message | String | &#x2714; | Message identifier |
+  | ForSenderOnly | --sender | Boolean | &#x2716; | Delete for sender only |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Green API
+
+<br/>
+
+:::tip
+Method at API documentation: [DeleteMessage](https://green-api.com/docs/api/service/deleteMessage/)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+
+    ChatID    = "120363410406221140@g.us";
+    MessageID = "BAE53683AD8BAA8C";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.DeleteMessage(AccessParameters, ChatID, MessageID);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenapi DeleteMessage \
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+             --chat "120363410406221140@g.us" \
+             --message "BAE5C5FA375FA242"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenapi DeleteMessage ^
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+             --chat "120363410406221140@g.us" ^
+             --message "BAE5C5FA375FA242"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{}
+```
