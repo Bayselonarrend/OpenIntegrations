@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение ^
   --token "***" ^
   --chatid "689203963@chat.agent" ^
-  --file "/tmp/0b5bz4wz.ij5"
+  --file "/tmp/qtr1uwm0.o00"
