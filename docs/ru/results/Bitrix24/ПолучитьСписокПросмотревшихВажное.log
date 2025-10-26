@@ -3,13 +3,13 @@
   "1"
  ],
  "time": {
-  "start": 1761402067,
-  "finish": 1761402067.66313,
-  "duration": 0.663131952285766,
+  "start": 1761501940,
+  "finish": 1761501940.28941,
+  "duration": 0.289412021636963,
   "processing": 0,
-  "date_start": "2025-10-25T14:21:07+00:00",
-  "date_finish": "2025-10-25T14:21:07+00:00",
-  "operating_reset_at": 1761402667,
+  "date_start": "2025-10-26T18:05:40+00:00",
+  "date_finish": "2025-10-26T18:05:40+00:00",
+  "operating_reset_at": 1761502540,
   "operating": 0
  }
 }
