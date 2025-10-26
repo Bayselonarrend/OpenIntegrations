@@ -1,0 +1,45 @@
+﻿---
+sidebar_position: 4
+description: Получить количество входящих уведомлений и другие функции для работы с GreenMax в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, GreenMax]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Получить количество входящих уведомлений
+ Получает количество уведомлений во входящей очереди
+
+
+
+`Функция ПолучитьКоличествоВходящихУведомлений(Знач ПараметрыДоступа) Экспорт`
+
+  | Параметр | CLI опция | Тип | Обяз. | Назначение |
+  |-|-|-|-|-|
+  | ПараметрыДоступа | --access | Структура Из КлючИЗначение | &#x2714; | Параметры доступа. См. [`СформироватьПараметрыДоступа`](/docs/GreenMax/Account/Form-access-parameters) |
+
+  
+  Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
+
+<br/>
+
+:::tip
+Метод в документации API: [GetWebhooksCount](https://green-api.com/v3/docs/api/queues/GetWebhooksCount/)
+:::
+<br/>
+
+
+```bsl title="Пример использования для 1С:Предприятие/OneScript"
+    ApiUrl           = "https://3100.api.green-api.com/v3";
+    MediaUrl         = "https://3100.api.green-api.com/v3";
+    IdInstance       = "31003...";
+    ApiTokenInstance = "17915d8e0b4b4975a183478da...";
+
+    ПараметрыДоступа = OPI_GreenMax.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Результат        = OPI_GreenMax.ПолучитьКоличествоВходящихУведомлений(ПараметрыДоступа);
+```
+    
+
+
+
+
