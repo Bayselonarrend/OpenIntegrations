@@ -1,0 +1,78 @@
+﻿---
+sidebar_position: 5
+description: Exclude group member and other functions to work with GreenAPI in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GreenAPI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Exclude group member
+ Excludes a member from the group
+
+
+
+`Function ExcludeGroupMember(Val AccessParameters, Val GroupID, Val UserID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
+  | GroupID | --group | String | &#x2714; | Group chat identifier |
+  | UserID | --user | String | &#x2714; | User ID to add |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Green API
+
+<br/>
+
+:::tip
+Method at API documentation: [RemoveGroupParticipant](https://green-api.com/docs/api/groups/RemoveGroupParticipant/)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ApiUrl           = "https://7105.api.greenapi.com";
+    MediaUrl         = "https://7105.media.greenapi.com";
+    IdInstance       = "71051...";
+    ApiTokenInstance = "425010d90e114aa6b78f0969e...";
+
+    GroupID = "120363404315049467@g.us";
+    UserID  = "123123123@c.us";
+
+    AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenAPI.ExcludeGroupMember(AccessParameters, GroupID, UserID);
+```
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenapi ExcludeGroupMember \
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
+             --group "120363423945947675@g.us" \
+             --user "123123123@c.us"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenapi ExcludeGroupMember ^
+             --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
+             --group "120363423945947675@g.us" ^
+             --user "123123123@c.us"
+        ```
+    </TabItem>
+</Tabs>
+
+
+```json title="Result"
+{
+ "removeParticipant": true
+}
+```

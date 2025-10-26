@@ -1,0 +1,50 @@
+﻿---
+sidebar_position: 1
+description: Get chat message history and other functions to work with GreenMax in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GreenMax]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get chat message history
+ Gets the latest messages from the chat history
+
+
+
+`Function GetChatMessageHistory(Val AccessParameters, Val ChatID, Val Count = 100) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
+  | ChatID | --chat | String | &#x2714; | Chat ID |
+  | Count | --count | Number | &#x2716; | Number of messages to receive |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Green API
+
+<br/>
+
+:::tip
+Method at API documentation: [GetChatHistory](https://green-api.com/v3/docs/api/journals/GetChatHistory/)
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ApiUrl           = "https://3100.api.green-api.com/v3";
+    MediaUrl         = "https://3100.api.green-api.com/v3";
+    IdInstance       = "31003...";
+    ApiTokenInstance = "17915d8e0b4b4975a183478da...";
+
+    ChatID = 12345678;
+    Count  = 3;
+
+    AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Result           = OPI_GreenMax.GetChatMessageHistory(AccessParameters, ChatID, Count);
+```
+ 
+
+
+
+

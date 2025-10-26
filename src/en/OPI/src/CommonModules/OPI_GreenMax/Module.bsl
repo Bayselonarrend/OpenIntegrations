@@ -1,5 +1,5 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_GreenMax.os
-// Lib: GreenAPI (Max)
+// Lib: GreenMax
 // CLI: greenmax
 // Keywords: greenapi, max
 
@@ -851,11 +851,11 @@ Function SendFileByURL(Val AccessParameters
     String_    = "String";
     Parameters = New Structure;
 
-    OPI_Tools.AddField("chatId"    , ChatID      , String_ , Parameters);
-    OPI_Tools.AddField("urlFile"   , FileURL     , String_ , Parameters);
-    OPI_Tools.AddField("fileName"  , FileName    , String_ , Parameters);
-    OPI_Tools.AddField("caption"   , Description , String_ , Parameters);
-    OPI_Tools.AddField("typingTime", TypingTime  , "Number", Parameters);
+    OPI_Tools.AddField("chatId"     , ChatID      , String_ , Parameters);
+    OPI_Tools.AddField("urlFile"    , FileURL     , String_ , Parameters);
+    OPI_Tools.AddField("fileName"   , FileName    , String_ , Parameters);
+    OPI_Tools.AddField("caption"    , Description , String_ , Parameters);
+    OPI_Tools.AddField("typingTime" , TypingTime  , "Number", Parameters);
 
     If ValueIsFilled(TypingTime) Then
         OPI_Tools.AddField("typingType", TypingType , String_, Parameters);
