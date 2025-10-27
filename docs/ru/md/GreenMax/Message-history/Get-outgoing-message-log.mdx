@@ -43,6 +43,142 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenmax ПолучитьЖурналИсходящихСообщений \
+              --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
+              --span 30
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenmax ПолучитьЖурналИсходящихСообщений ^
+              --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
+              --span 30
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+[
+ {
+  "type": "outgoing",
+  "idMessage": "2761503843618",
+  "timestamp": 1761503846,
+  "typeMessage": "videoMessage",
+  "chatId": "***",
+  "downloadUrl": "https://hut.openintegrations.dev/test_data/video.mp4",
+  "caption": "Описание файла",
+  "fileName": "vid.mp4",
+  "jpegThumbnail": "UklGRrIBAABXRUJQVlA4IKYBAADwCwCdASoyACYAPlUei0WjoaEepAA4BUSxgGl3uAcsue6fZPKL/POwA1q/95/gHKmlbjlB+RRLTXhIv5u8R/s9dhoJF+bdmYCG0Ugy6YPq3Bmv4xvfFrHC2s5qtskgMOc21Kg1DvILAAD+TyRfeMl7NWHye6Hnx+GnBHHxTtbr3cCvB9/0j4XgytZg7jwIUWlGnmEgBq6xvrJd8v1H+5HV30lPPL32xlOS7ny2h1X8KxO/aGmLicunmpYRIBhMOX2DfqHR/H3mHlpK6uEFG5B2X/SGgmxHQo/4Twu1Owcvntxart8RLdOBjAWwdULpTZ8n7ot7eqIU/USBqHu0zAdaRV+yoV3QvFvkrEH6ThZpQ7pATjSUxk4FeOg8tJ/qDWuv828frke1wBhHH5qVevOxv0VFxwGlufldEJL84aT5L+ckz34Ol0ZC/v8OH/OLmZMG4ulcz9Kbve5EAOxuARhmUj0cF5iWA0/WZrwrGLBLjDIOMKAgYQvUbS1clXXVepBTic6Np+FkvSCdiK6YzFF7bSD50tORArPHzClB8Fpk+XM6AuAAAA==",
+  "mimeType": "video/mp4",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "delivered",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "2761503841082",
+  "timestamp": 1761503842,
+  "typeMessage": "imageMessage",
+  "chatId": "***",
+  "downloadUrl": "https://hut.openintegrations.dev/test_data/picture.jpg",
+  "caption": "",
+  "fileName": "photo.jpg",
+  "jpegThumbnail": "UklGRvgBAABXRUJQVlA4IOwBAADwCgCdASoyACYAAUAmJYwC7NEi26VoDwT8xB/ScUr4wDxM/4Bq9/7l/UC+jSyuGNjR/nd+I42sIZfXav7EIAoB3MeAdBEgl58tkqFHL4ied/Cd9ogQFtjPrcML5F72L+AA/vX41ZdOHu9NLDZhqPsz1GI5WcPnL+G8cTPu4+FDM0EdyS+ud8JaLepEEOz/VInh1AspI3vwFJrnpwZfd3wMBVIYfP8kjg+kDKi9JhT9X2f03DQVFc2DOoqBUIwe+mhjlNWtltwdXJGY6vsVTecmLfR3BcwnxrFKgYVFq+ll1fJSbyMWo2ENhkZFQgVX49/MmUblS/H8j11IIygSiWeWs66Lbqehk7vr7yYUSjWmDYmlpsT6+sl8/6KEjq53OcL/1QzlaGML4CeELUw6QgG3Q6kbaMTyF8T8qwv4nLMe+7v0vb9YirtDpRw6BRNc+Ac2VzhqPkdofUu4sJ5d3rF58zHmZBQN+7nr50P8wnrA1/4McyHKo+slgx8oixxKNUNc7LnuCZuXurUyNVPhCuYMhbLeNxgzIDFeO2TNjInyKw3Mzuo/e6Wsn95ggvkXTRMROKC4/Sh94Zb3YRuQdMEmmDrkTYhzOb5lMQUBHbbqoek44klC80RFndJKcP0CjWuNqN9Sl7clTkn1wAA=",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "delivered",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "2761503836126",
+  "timestamp": 1761503838,
+  "typeMessage": "videoMessage",
+  "chatId": "***",
+  "downloadUrl": "https://mediaout-3100.storage.yandexcloud.net/3100309139/4f0252cb-cbed-4cc1-9810-40230ead6605.mp4",
+  "caption": "Описание файла",
+  "fileName": "vid.mp4",
+  "jpegThumbnail": "UklGRrIBAABXRUJQVlA4IKYBAADwCwCdASoyACYAPlUei0WjoaEepAA4BUSxgGl3uAcsue6fZPKL/POwA1q/95/gHKmlbjlB+RRLTXhIv5u8R/s9dhoJF+bdmYCG0Ugy6YPq3Bmv4xvfFrHC2s5qtskgMOc21Kg1DvILAAD+TyRfeMl7NWHye6Hnx+GnBHHxTtbr3cCvB9/0j4XgytZg7jwIUWlGnmEgBq6xvrJd8v1H+5HV30lPPL32xlOS7ny2h1X8KxO/aGmLicunmpYRIBhMOX2DfqHR/H3mHlpK6uEFG5B2X/SGgmxHQo/4Twu1Owcvntxart8RLdOBjAWwdULpTZ8n7ot7eqIU/USBqHu0zAdaRV+yoV3QvFvkrEH6ThZpQ7pATjSUxk4FeOg8tJ/qDWuv828frke1wBhHH5qVevOxv0VFxwGlufldEJL84aT5L+ckz34Ol0ZC/v8OH/OLmZMG4ulcz9Kbve5EAOxuARhmUj0cF5iWA0/WZrwrGLBLjDIOMKAgYQvUbS1clXXVepBTic6Np+FkvSCdiK6YzFF7bSD50tORArPHzClB8Fpk+XM6AuAAAA==",
+  "mimeType": "video/mp4",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "delivered",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "2761503832402",
+  "timestamp": 1761503832,
+  "typeMessage": "imageMessage",
+  "chatId": "***",
+  "downloadUrl": "https://mediaout-3100.storage.yandexcloud.net/3100309139/295b20db-c8f3-47f3-9636-6168f4b1d897.jpg",
+  "caption": "Описание файла",
+  "fileName": "photo.jpg",
+  "jpegThumbnail": "UklGRvgBAABXRUJQVlA4IOwBAADwCgCdASoyACYAAUAmJYwC7NEi26VoDwT8xB/ScUr4wDxM/4Bq9/7l/UC+jSyuGNjR/nd+I42sIZfXav7EIAoB3MeAdBEgl58tkqFHL4ied/Cd9ogQFtjPrcML5F72L+AA/vX41ZdOHu9NLDZhqPsz1GI5WcPnL+G8cTPu4+FDM0EdyS+ud8JaLepEEOz/VInh1AspI3vwFJrnpwZfd3wMBVIYfP8kjg+kDKi9JhT9X2f03DQVFc2DOoqBUIwe+mhjlNWtltwdXJGY6vsVTecmLfR3BcwnxrFKgYVFq+ll1fJSbyMWo2ENhkZFQgVX49/MmUblS/H8j11IIygSiWeWs66Lbqehk7vr7yYUSjWmDYmlpsT6+sl8/6KEjq53OcL/1QzlaGML4CeELUw6QgG3Q6kbaMTyF8T8qwv4nLMe+7v0vb9YirtDpRw6BRNc+Ac2VzhqPkdofUu4sJ5d3rF58zHmZBQN+7nr50P8wnrA1/4McyHKo+slgx8oixxKNUNc7LnuCZuXurUyNVPhCuYMhbLeNxgzIDFeO2TNjInyKw3Mzuo/e6Wsn95ggvkXTRMROKC4/Sh94Zb3YRuQdMEmmDrkTYhzOb5lMQUBHbbqoek44klC80RFndJKcP0CjWuNqN9Sl7clTkn1wAA=",
+  "mimeType": "image/jpeg",
+  "isAnimated": false,
+  "isForwarded": false,
+  "forwardingScore": 0,
+  "statusMessage": "delivered",
+  "sendByApi": true,
+  "editedMessageId": "",
+  "deletedMessageId": "",
+  "videoNote": false,
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "2761503826029",
+  "timestamp": 1761503828,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "***",
+  "textMessage": "Текст сообщения",
+  "extendedTextMessage": {
+   "text": "Текст сообщения",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "delivered",
+  "sendByApi": true,
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ }
+]
+```

@@ -47,10 +47,36 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenmax ОтправитьТекстовоеСообщение \
+              --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
+              --chat "-68888502009941" \
+              --text "Текст сообщения" \
+              --typing 2000
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenmax ОтправитьТекстовоеСообщение ^
+              --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
+              --chat "-68888502009941" ^
+              --text "Текст сообщения" ^
+              --typing 2000
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
 {
- "idMessage": "2761402867394"
+ "idMessage": "2761503826029"
 }
 ```
