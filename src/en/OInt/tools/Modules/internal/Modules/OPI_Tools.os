@@ -1021,7 +1021,7 @@ Function GetLastBuildHashSum() Export
 EndFunction
 
 Function OPIVersion() Export
-    Return "1.28.0";
+    Return "1.29.0";
 EndFunction
 
 Function OPILanguage() Export
