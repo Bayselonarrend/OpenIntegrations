@@ -44,6 +44,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenmax ИзменитьИмяГруппы \
+              --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
+              --chat "-68888497946709" \
+              --name "Новое имя группы"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenmax ИзменитьИмяГруппы ^
+              --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
+              --chat "-68888497946709" ^
+              --name "Новое имя группы"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

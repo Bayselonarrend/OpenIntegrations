@@ -45,6 +45,54 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenmax ПолучитьСообщениеЧата \
+              --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
+              --chat "-68885166162005" \
+              --message "2761480287806"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenmax ПолучитьСообщениеЧата ^
+              --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
+              --chat "-68885166162005" ^
+              --message "2761480287806"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "type": "outgoing",
+ "idMessage": "2761480287806",
+ "timestamp": 1761480287,
+ "typeMessage": "extendedTextMessage",
+ "chatId": "***",
+ "textMessage": "Тест 5",
+ "extendedTextMessage": {
+  "text": "Тест 5",
+  "description": "",
+  "title": "",
+  "previewType": "None",
+  "jpegThumbnail": "",
+  "forwardingScore": 0,
+  "isForwarded": false
+ },
+ "statusMessage": "delivered",
+ "sendByApi": true,
+ "deletedMessageId": "",
+ "editedMessageId": "",
+ "isEdited": false,
+ "isDeleted": false
+}
+```

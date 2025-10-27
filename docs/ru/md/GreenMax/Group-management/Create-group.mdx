@@ -45,12 +45,36 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenmax СоздатьГруппу \
+              --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
+              --name "Новая группа" \
+              --members "89974336"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenmax СоздатьГруппу ^
+              --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
+              --name "Новая группа" ^
+              --members "89974336"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
 {
  "created": true,
- "chatId": "-68879171387477",
- "groupInviteLink": "https://max.ru/join/Em7wZkm0YLDY788G0rls-PdnpDaCQg-hkl_zotQZOHA"
+ "chatId": "-68888502009941",
+ "groupInviteLink": "https://max.ru/join/7HLWWTIn7alo8rWTGSAyZh0-3vIXVTAs1HFOTNLOjc4"
 }
 ```
