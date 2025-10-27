@@ -44,6 +44,60 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenmax ПолучитьУведомление \
+              --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint greenmax ПолучитьУведомление ^
+              --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Результат"
+{
+ "receiptId": 1,
+ "body": {
+  "typeWebhook": "outgoingAPIMessageReceived",
+  "instanceData": {
+   "idInstance": "***",
+   "wid": "***",
+   "typeInstance": "v3"
+  },
+  "timestamp": 1761462482,
+  "idMessage": "2761462462573",
+  "senderData": {
+   "chatId": "***",
+   "chatName": "Новая группа",
+   "sender": "***",
+   "senderName": "***",
+   "senderContactName": "***",
+   "senderPhoneNumber": "***"
+  },
+  "messageData": {
+   "typeMessage": "extendedTextMessage",
+   "extendedTextMessageData": {
+    "text": "Текст сообщения",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   }
+  }
+ }
+}
+```
