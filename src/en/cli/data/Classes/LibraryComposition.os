@@ -9,7 +9,7 @@ Var PackagesDirectory;
 
 Procedure OnObjectCreate()
 
-    Version = "1.28.0";
+    Version = "1.29.0";
     InitializeCommonLists();
 
     CurrentDirectory = CurrentScript().Path;
