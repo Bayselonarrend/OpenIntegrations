@@ -1,0 +1,5 @@
+﻿{
+ "allowParticipantsEditGroupSettings": "<allow members to change group settings>",
+ "allowParticipantsPinMessages": "<allow members to pin messages>",
+ "allowParticipantsAddMembers": "<allow members to add new participants>"
+}
