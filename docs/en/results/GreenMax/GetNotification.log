@@ -1,0 +1,16 @@
+﻿{
+ "receiptId": 1,
+ "body": {
+  "typeWebhook": "outgoingMessageStatus",
+  "chatId": "***",
+  "instanceData": {
+   "idInstance": "***",
+   "wid": "***",
+   "typeInstance": "v3"
+  },
+  "timestamp": 1761491280,
+  "idMessage": "2761491204283",
+  "status": "notInGroup",
+  "sendByApi": true
+ }
+}
