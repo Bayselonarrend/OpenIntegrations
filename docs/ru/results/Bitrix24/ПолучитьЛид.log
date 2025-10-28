@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "2668",
+  "ID": "2672",
   "TITLE": "Мегаклиент",
   "HONORIFIC": null,
   "NAME": "Иван",
@@ -8,7 +8,7 @@
   "LAST_NAME": "Иванов",
   "COMPANY_TITLE": null,
   "COMPANY_ID": null,
-  "CONTACT_ID": "2668",
+  "CONTACT_ID": "2672",
   "IS_RETURN_CUSTOMER": "N",
   "BIRTHDATE": "",
   "SOURCE_ID": "CALL",
@@ -26,15 +26,15 @@
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2025-10-28T17:01:25+03:00",
-  "DATE_MODIFY": "2025-10-28T17:01:26+03:00",
-  "DATE_CLOSED": "2025-10-28T00:00:00+03:00",
+  "DATE_CREATE": "2025-10-28T16:20:23+00:00",
+  "DATE_MODIFY": "2025-10-28T16:20:23+00:00",
+  "DATE_CLOSED": "2025-10-27T21:00:00+00:00",
   "STATUS_SEMANTIC_ID": "S",
   "OPENED": "Y",
   "ORIGINATOR_ID": null,
   "ORIGIN_ID": null,
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2025-10-28T17:01:26+03:00",
+  "MOVED_TIME": "2025-10-28T16:20:23+00:00",
   "ADDRESS": "ул. Пушкина, д. 10",
   "ADDRESS_2": null,
   "ADDRESS_CITY": null,
@@ -43,7 +43,7 @@
   "ADDRESS_PROVINCE": null,
   "ADDRESS_COUNTRY": "Россия",
   "ADDRESS_COUNTRY_CODE": null,
-  "ADDRESS_LOC_ADDR_ID": "5336",
+  "ADDRESS_LOC_ADDR_ID": "5344",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
@@ -51,16 +51,16 @@
   "UTM_TERM": null,
   "LAST_COMMUNICATION_TIME": null,
   "LAST_ACTIVITY_BY": "1",
-  "LAST_ACTIVITY_TIME": "2025-10-28T17:01:25+03:00",
+  "LAST_ACTIVITY_TIME": "2025-10-28T16:20:23+00:00",
   "EMAIL": [
    {
-    "ID": "15988",
+    "ID": "16012",
     "VALUE_TYPE": "HOME",
     "VALUE": "yo@example.com",
     "TYPE_ID": "EMAIL"
    },
    {
-    "ID": "15990",
+    "ID": "16014",
     "VALUE_TYPE": "WORK",
     "VALUE": "hi@example.com",
     "TYPE_ID": "EMAIL"
@@ -68,7 +68,7 @@
   ],
   "PHONE": [
    {
-    "ID": "15992",
+    "ID": "16016",
     "VALUE_TYPE": "WORK",
     "VALUE": "88005553535",
     "TYPE_ID": "PHONE"
@@ -76,13 +76,13 @@
   ]
  },
  "time": {
-  "start": 1761660087,
-  "finish": 1761660087.30919,
-  "duration": 0.309194087982178,
+  "start": 1761668428,
+  "finish": 1761668428.54823,
+  "duration": 0.548229932785034,
   "processing": 0,
-  "date_start": "2025-10-28T17:01:27+03:00",
-  "date_finish": "2025-10-28T17:01:27+03:00",
-  "operating_reset_at": 1761660687,
+  "date_start": "2025-10-28T16:20:28+00:00",
+  "date_finish": "2025-10-28T16:20:28+00:00",
+  "operating_reset_at": 1761669028,
   "operating": 0
  }
 }

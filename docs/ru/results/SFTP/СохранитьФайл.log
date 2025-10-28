@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "C:\\Users\\bayse\\AppData\\Local\\Temp\\sukt5ysg.sj3.bin",
- "result": true
+ "filepath": "/tmp/jxbcn5gd.mb1.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
