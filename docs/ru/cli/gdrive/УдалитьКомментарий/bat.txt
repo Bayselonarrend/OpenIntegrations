@@ -1,4 +1,4 @@
 oint gdrive УдалитьКомментарий ^
   --token "***" ^
-  --object "13oizso-27bIPXQuaz9FT7HNKYb29BkPn" ^
-  --comment "AAABtiM7TZ8"
+  --object "1qCgNJf4jX-_kXZg7QWDhO6ZW4CHcgf4T" ^
+  --comment "AAABtJpALa8"
