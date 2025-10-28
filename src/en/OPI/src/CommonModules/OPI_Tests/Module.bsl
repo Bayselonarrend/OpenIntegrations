@@ -22731,7 +22731,6 @@ Procedure SFTP_UploadFile(FunctionParameters)
     Process(Result , "SFTP", "UploadFile", Postfix             , UploadedFile.Size());
     Process(Result2, "SFTP", "UploadFile", "Binary, " + Postfix, ImageDD.Size());
 
-
     FileSizeLocal   = UploadedFile.Size();
     FileSizeLocalBD = ImageDD.Size();
 
@@ -23720,7 +23719,7 @@ Procedure GreenMax_CreateGroup(FunctionParameters)
     UserID = 87654321;
     Name   = "New group";
 
-    UserID = FunctionParameters["GreenMax_ContactID"]; //SKIP
+    UserID = FunctionParameters["GreenMax_ContactID"]; // SKIP
 
     AccessParameters = OPI_GreenMax.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenMax.CreateGroup(AccessParameters, Name, UserID);
