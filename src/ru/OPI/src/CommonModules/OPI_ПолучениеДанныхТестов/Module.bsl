@@ -43,6 +43,7 @@
 // BSLLS:NumberOfOptionalParams-off
 // BSLLS:CommentedCode-off
 // BSLLS:CyclomaticComplexity-off
+// BSLLS:LineLength-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -9696,8 +9697,9 @@
         КонецПопытки;
     КонецПопытки;
 
-    ОжидаетЧто(Результат["headers"]["Authorization"]).Равно("Basic " + Base64Строка(ПолучитьДвоичныеДанныеИзСтроки(
-        "user:password")));
+    Данные = ПолучитьДвоичныеДанныеИзСтроки("user:password");
+    Basic  = "Basic " + Base64Строка(Данные);
+    ОжидаетЧто(Результат["headers"]["Authorization"]).Равно(Basic);
 
     Возврат Результат;
 
