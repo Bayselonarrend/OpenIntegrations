@@ -22,13 +22,17 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+// BSLLS:CommonModuleMissingAPI-off
+// BSLLS:CodeOutOfRegion-off
+// BSLLS:UsingServiceTag-off
+
 // https://github.com/Bayselonarrend/OpenIntegrations
 
 //@skip-check module-structure-method-in-regions
 
 Function GetHashSum() Export
 
-    LastBuildHash  = "2FE720A1AE204B9F10F86ACD3303F1AF9F519348896AE375C2BC823F2790B528";
+    LastBuildHash  = "1F792B3A76AD480F5189FE05D5A8C00881A91F928E29CA406F523D3B7B6EDDBD";
 
     Return LastBuildHash;
 

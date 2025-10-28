@@ -43,6 +43,7 @@
 // BSLLS:NumberOfOptionalParams-off
 // BSLLS:CommentedCode-off
 // BSLLS:CyclomaticComplexity-off
+// BSLLS:LineLength-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -9695,8 +9696,9 @@ Function Check_HTTPClient_AddBasicAuthorization(Val Result, Val Option)
         EndTry;
     EndTry;
 
-    ExpectsThat(Result["headers"]["Authorization"]).Равно("Basic " + Base64String(GetBinaryDataFromString(
-        "user:password")));
+    Data  = GetBinaryDataFromString("user:password");
+    Basic = "Basic " + Base64String(Data);
+    ExpectsThat(Result["headers"]["Authorization"]).Равно(Basic);
 
     Return Result;
 

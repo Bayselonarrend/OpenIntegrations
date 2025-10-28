@@ -1029,7 +1029,6 @@ Function OPILanguage() Export
     Return CurrentOPILanguage;
 EndFunction
 
-
 #EndRegion
 
 #EndRegion

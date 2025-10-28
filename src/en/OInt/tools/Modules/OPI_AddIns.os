@@ -234,7 +234,9 @@ Function ConnectAddInNoIsolated(TemplateName, AddInName)
 
         // BSLLS:UnusedLocalVariable-on
 
+        // BSLLS:LineLength-off
         Result = Eval("AttachAddIn(TemplateName, AddInName, AddInType.Native, ConnectionType)");
+        // BSLLS:LineLength-on
 
     EndIf;
 
