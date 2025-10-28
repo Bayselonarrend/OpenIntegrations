@@ -6,5 +6,5 @@
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
     Directory = True; // Formation URL in path-style
-    Name = "opi-dirbucket3";
+    Name = "opi-dirbucket4";
     Result = OPI_S3.DeleteBucket(Name, BasicData, Directory);
