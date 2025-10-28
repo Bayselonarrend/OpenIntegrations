@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "29882aa7-fc4e-8126-96ea-c3ab28d1713d",
- "created_time": "2025-10-26T17:57:00Z",
- "last_edited_time": "2025-10-26T17:57:00Z",
+ "id": "29a82aa7-fc4e-816b-b7e0-c442f41b8c90",
+ "created_time": "2025-10-28T11:52:00Z",
+ "last_edited_time": "2025-10-28T11:52:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,75 +15,23 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "29882aa7-fc4e-8164-88f5-cde2188cc6db"
+  "database_id": "29a82aa7-fc4e-810e-b893-dfc9a3bff05a"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Телефон": {
-   "id": "A%3DKy",
-   "type": "phone_number",
-   "phone_number": "88005553535"
-  },
   "Статус": {
-   "id": "E%7DAD",
+   "id": "%3C%3AN%7C",
    "type": "select",
    "select": {
-    "id": "3cd2fbbd-a852-49d4-b44c-577e151d133b",
+    "id": "b425f0e4-9afd-4c8e-86b0-77788ae6341a",
     "name": "Новый",
     "color": "green"
    }
   },
-  "Пользователь": {
-   "id": "MtMu",
-   "type": "people",
-   "people": []
-  },
-  "Номер": {
-   "id": "W%60%5E%3E",
-   "type": "number",
-   "number": 1
-  },
-  "Дата создания": {
-   "id": "_DZ%7B",
-   "type": "date",
-   "date": {
-    "start": "2025-10-26T05:57:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Активен": {
-   "id": "%60LUv",
-   "type": "checkbox",
-   "checkbox": true
-  },
-  "Описание": {
-   "id": "ncSl",
-   "type": "rich_text",
-   "rich_text": [
-    {
-     "type": "text",
-     "text": {
-      "content": "Наш первый клиент",
-      "link": null
-     },
-     "annotations": {
-      "bold": false,
-      "italic": false,
-      "strikethrough": false,
-      "underline": false,
-      "code": false,
-      "color": "default"
-     },
-     "plain_text": "Наш первый клиент",
-     "href": null
-    }
-   ]
-  },
   "Почта": {
-   "id": "qNI%7B",
+   "id": "Fzxh",
    "type": "rich_text",
    "rich_text": [
     {
@@ -105,8 +53,13 @@
     }
    ]
   },
+  "Пользователь": {
+   "id": "%5C%5D~s",
+   "type": "people",
+   "people": []
+  },
   "Картинка": {
-   "id": "yvie",
+   "id": "__yY",
    "type": "files",
    "files": [
     {
@@ -117,6 +70,53 @@
      }
     }
    ]
+  },
+  "Дата создания": {
+   "id": "jafA",
+   "type": "date",
+   "date": {
+    "start": "2025-10-28T05:52:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
+  "Номер": {
+   "id": "nz%5BU",
+   "type": "number",
+   "number": 1
+  },
+  "Телефон": {
+   "id": "pKcj",
+   "type": "phone_number",
+   "phone_number": "88005553535"
+  },
+  "Описание": {
+   "id": "vfBy",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Наш первый клиент",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Наш первый клиент",
+     "href": null
+    }
+   ]
+  },
+  "Активен": {
+   "id": "wC%60a",
+   "type": "checkbox",
+   "checkbox": true
   },
   "Имя": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/29882aa7fc4e812696eac3ab28d1713d",
+ "url": "https://www.notion.so/29a82aa7fc4e816bb7e0c442f41b8c90",
  "public_url": null,
- "request_id": "e7b20655-e535-4bc8-bb20-f4ada29973be"
+ "request_id": "7893fdbc-5b9d-4d33-abaf-aecec60e34c2"
 }
