@@ -2,5 +2,5 @@
 
 oint cdek СоздатьЗаявкуНаВызовКурьера \
   --token "***" \
-  --intake "{'intake_date':'2025-10-27','intake_time_from':'10:00','intake_time_to':'17:00','name':'Консолидированный груз','weight':'1000','length':'10','width':'10','height':'10','comment':'Комментарий курьеру','need_call':false,'sender':{'company':'Компания','name':'Иванов Иван','phones':[{'number':'+79589441654'}]},'from_location':{'code':'44','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Москва','sub_region':'Москва','city':'Москва','kladr_code':'7700000000000','address':'ул. Блюхера, 32'}}" \
+  --intake "{'intake_date':'2025-10-29','intake_time_from':'10:00','intake_time_to':'17:00','name':'Консолидированный груз','weight':'1000','length':'10','width':'10','height':'10','comment':'Комментарий курьеру','need_call':false,'sender':{'company':'Компания','name':'Иванов Иван','phones':[{'number':'+79589441654'}]},'from_location':{'code':'44','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Москва','sub_region':'Москва','city':'Москва','kladr_code':'7700000000000','address':'ул. Блюхера, 32'}}" \
   --testapi "***"

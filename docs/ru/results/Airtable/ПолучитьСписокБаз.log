@@ -4379,6 +4379,26 @@
    "id": "appqEv8lDCX4X6TpM",
    "name": "Тестовая база",
    "permissionLevel": "create"
+  },
+  {
+   "id": "appMw7OaVVHZqn3Kv",
+   "name": "TestDatabase",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appOQsBO4ogP10sGD",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appV9I2LlZaAsjRQV",
+   "name": "TestDatabase",
+   "permissionLevel": "create"
+  },
+  {
+   "id": "appVoQJTUERPErkln",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
   }
  ]
 }
