@@ -1,10 +1,10 @@
 ﻿{
  "entity": {
-  "uuid": "6926e488-0cbd-46cf-b651-7fffd1997b8a",
-  "cdek_number": "1106629989",
-  "order_uuid": "9d3da4c9-05ec-47c3-bc7f-4abdd987d68f",
-  "intake_date": "2025-10-27",
-  "intake_number": "13310142",
+  "uuid": "b45b7e03-dc29-43ef-86e1-f116aeaa6a64",
+  "cdek_number": "1106630794",
+  "order_uuid": "7f27ca24-911b-4f08-b7f6-85b240f6029c",
+  "intake_date": "2025-10-29",
+  "intake_number": "13310258",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -56,22 +56,22 @@
    {
     "code": "READY_FOR_APPOINTMENT",
     "name": "Готова к назначению",
-    "date_time": "2025-10-26T18:27:42+00:00"
+    "date_time": "2025-10-28T15:22:29+03:00"
    },
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2025-10-26T18:27:42+00:00"
+    "date_time": "2025-10-28T15:22:29+03:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-26T18:27:42+00:00"
+    "date_time": "2025-10-28T15:22:29+03:00"
    }
   ],
   "packages": [
    {
-    "package_id": "0a505540-bf1e-40d6-a654-37b1c70e9f94",
+    "package_id": "ce6edbe8-d58a-48da-a327-cecfa2dae789",
     "weight": 1000,
     "length": 10,
     "width": 10,
@@ -82,9 +82,9 @@
  },
  "requests": [
   {
-   "request_uuid": "05cce536-7538-47f8-8770-efc51eae79cc",
+   "request_uuid": "042f108c-2294-4ad1-a483-aaf3d9a79561",
    "type": "CREATE",
-   "date_time": "2025-10-26T18:27:41+00:00",
+   "date_time": "2025-10-28T15:22:28+03:00",
    "state": "SUCCESSFUL"
   }
  ]

@@ -1,4 +1,4 @@
 oint vkteams ИзменитьАватарЧата \
   --token "***" \
   --chatid "AoLI0egLWBSLR1Ngn2w" \
-  --file "/tmp/ivyacts1.1jx"
+  --file "C:\Users\bayse\AppData\Local\Temp\dypob4q0.oel"

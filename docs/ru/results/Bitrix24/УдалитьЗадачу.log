@@ -3,13 +3,13 @@
   "task": true
  },
  "time": {
-  "start": 1761502137,
-  "finish": 1761502137.59926,
-  "duration": 0.599260091781616,
-  "processing": 0,
-  "date_start": "2025-10-26T18:08:57+00:00",
-  "date_finish": "2025-10-26T18:08:57+00:00",
-  "operating_reset_at": 1761502737,
-  "operating": 0.18552303314209
+  "start": 1761653033,
+  "finish": 1761653034.00198,
+  "duration": 1.00198006629944,
+  "processing": 1,
+  "date_start": "2025-10-28T15:03:53+03:00",
+  "date_finish": "2025-10-28T15:03:54+03:00",
+  "operating_reset_at": 1761653633,
+  "operating": 0.423801898956299
  }
 }

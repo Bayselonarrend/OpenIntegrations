@@ -9,7 +9,7 @@
    },
    "char_field": "A",
    "charn_field": "AAA",
-   "date_field": "2025-10-26",
+   "date_field": "2025-10-28",
    "dp_field": 1.0002,
    "int_field": 100,
    "ip_field": "127.0.0.1",
@@ -29,10 +29,10 @@
    "smallint_field": 5,
    "smallserial_field": 6,
    "text_field": "Some text",
-   "time_field": "17:34:55",
-   "ts_field": "2025-10-26T17:34:55",
-   "tswtz_field": "2025-10-26T12:34:55.9577+00:00",
-   "uuid_field": "556bd6ad-602d-41c2-92bd-51244879e1db",
+   "time_field": "14:29:07",
+   "ts_field": "2025-10-28T14:29:07",
+   "tswtz_field": "2025-10-28T15:29:07.227819+03:00",
+   "uuid_field": "2e6f1ecf-7e53-4650-8882-bea7ab343a25",
    "varchar_field": "Some varchar"
   }
  ],

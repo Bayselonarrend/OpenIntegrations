@@ -7,8 +7,8 @@
    "wid": "1234567890@c.us",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1761464783,
-  "idMessage": "BAE53683AD8BAA8C",
+  "timestamp": 1761647453,
+  "idMessage": "BAE54CFD803B874D",
   "senderData": {
    "chatId": "120363410406221140@g.us",
    "chatName": "Основная тестовая группа",
@@ -17,13 +17,14 @@
    "senderContactName": ""
   },
   "messageData": {
-   "typeMessage": "extendedTextMessage",
-   "extendedTextMessageData": {
-    "text": "Новое сообщение",
-    "description": "",
-    "title": "",
-    "previewType": "None",
+   "typeMessage": "imageMessage",
+   "fileMessageData": {
+    "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/be800ca2-bfa3-42a3-a2f1-7480ab4c13e6.jpg",
+    "caption": "Описание файла",
+    "fileName": "be800ca2-bfa3-42a3-a2f1-7480ab4c13e6.jpg",
     "jpegThumbnail": "",
+    "isAnimated": false,
+    "mimeType": "image/jpeg",
     "forwardingScore": 0,
     "isForwarded": false
    }
