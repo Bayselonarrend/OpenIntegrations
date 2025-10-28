@@ -14,11 +14,11 @@
   "Accept-Encoding": "gzip",
   "Connection": "Keep-Alive",
   "Content-Length": "2114384",
-  "Content-Type": "multipart/form-data; boundary=315b7bafd4174cfe899d85059a438876",
+  "Content-Type": "multipart/form-data; boundary=afd806ec31134acd9579815b27ebf87c",
   "Host": "localhost:2424",
   "Max-Forwards": "10",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Arr-Log-Id": "fc223f10-d388-49c1-8c5c-b207f4609ca6",
+  "X-Arr-Log-Id": "0dfebf85-46c4-4e91-8a85-596c4f007608",
   "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
   "X-Forwarded-Host": "bin.openintegrations.dev",
   "X-Original-Url": "/post"
