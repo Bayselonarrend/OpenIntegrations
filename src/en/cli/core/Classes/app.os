@@ -65,11 +65,6 @@ Procedure FormCommand()
 
 		Return;
 
-	ElsIf CurrentCommand = "hashsum" Then
-
-		Message(OPI_Tools.GetLastBuildHashSum());
-		Exit(0);
-
 	EndIf;
 	
 	Command           = Parser.CommandDescription(CurrentCommand);
@@ -120,6 +115,10 @@ Procedure ExecuteCommandProcessing(Val Data)
 EndProcedure
 
 Function GetProcessingResult(Val Command, Val Parameters)
+
+	If CurrentCommand = "hashsum" Then
+		Return OPI_Tools.GetLastBuildHashSum();
+	EndIf;
 
 	Method     = TrimAll(Parameters["Method"]);
 	Response     = "Function Returned Empty Value";
