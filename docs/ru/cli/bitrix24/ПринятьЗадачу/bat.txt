@@ -1,4 +1,4 @@
 oint bitrix24 ПринятьЗадачу ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --task "8470" ^
+  --task "8500" ^
   --token "***"
