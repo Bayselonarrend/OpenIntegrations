@@ -17,12 +17,8 @@
       "CreationDate": "2025-10-21T10:59:21.083Z"
      },
      {
-      "Name": "opi-dirbucket4",
-      "CreationDate": "2025-10-28T12:24:03.601Z"
-     },
-     {
       "Name": "opi-gpbucket4",
-      "CreationDate": "2025-10-28T12:24:53.713Z"
+      "CreationDate": "2025-10-28T14:06:36.744Z"
      },
      {
       "Name": "opi-newbucket2",
@@ -34,15 +30,15 @@
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Tue, 28 Oct 2025 12:25:08 GMT",
+  "Date": "Tue, 28 Oct 2025 14:06:46 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
-  "X-Amz-Request-Id": "1872A7428947B993",
+  "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
+  "X-Amz-Request-Id": "1872ACCE3DB72505",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
-  "Content-Length": "755",
+  "Content-Length": "658",
   "Content-Type": "application/xml"
  }
 }
