@@ -234,7 +234,9 @@
 
         // BSLLS:UnusedLocalVariable-on
 
+        // BSLLS:LineLength-off
         Результат = Вычислить("ПодключитьВнешнююКомпоненту(ИмяМакета, ИмяКомпоненты, ТипВнешнейКомпоненты.Native, ТипПодключения)");
+        // BSLLS:LineLength-on
 
     КонецЕсли;
 

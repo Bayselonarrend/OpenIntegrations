@@ -932,7 +932,7 @@ Function DeleteNotification(Val AccessParameters, Val NotificationID) Export
 
     Response = OPI_HTTPRequests.Delete(URL);
 
-    Return Response
+    Return Response;
 
 EndFunction
 
@@ -1216,7 +1216,6 @@ Function FormURL(AccessParameters, Method, URLField)
     Return URL;
 
 EndFunction
-
 
 #EndRegion
 
