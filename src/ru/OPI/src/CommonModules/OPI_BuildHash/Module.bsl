@@ -22,6 +22,10 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
+// BSLLS:CommonModuleMissingAPI-off
+// BSLLS:CodeOutOfRegion-off
+// BSLLS:UsingServiceTag-off
+
 // https://github.com/Bayselonarrend/OpenIntegrations
 
 //@skip-check module-structure-method-in-regions
