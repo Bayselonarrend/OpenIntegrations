@@ -8,7 +8,7 @@
     Name = "picture.jpg";
 
     Directory = True; // Formation URL in path-style
-    Bucket = "opi-dirbucket3";
+    Bucket = "opi-dirbucket4";
     Result = OPI_S3.GetObject(Name, Bucket, BasicData, , , , Directory);
 
     TempFile = GetTempFileName();
