@@ -2,5 +2,5 @@
 
 oint greenmax ИзменитьНастройкиГруппы ^
   --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
-  --chat "-68905177972821" ^
+  --chat "-68907700060245" ^
   --set "{'allowParticipantsEditGroupSettings':true,'allowParticipantsPinMessages':false,'allowParticipantsAddMembers':false}"
