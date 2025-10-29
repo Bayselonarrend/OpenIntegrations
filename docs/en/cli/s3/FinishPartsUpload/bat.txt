@@ -2,8 +2,8 @@
 
 oint s3 FinishPartsUpload ^
  --name "fileChunked.mp3" ^
- --bucket "opi-dirbucket3" ^
+ --bucket "opi-dirbucket4" ^
  --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
- --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjk2NTJiYzhiLTc5OWEtNDJiNS05ZDkxLTYyMTcyMjZhMDMxYQ" ^
+ --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjkyOTk2M2E3LTIzZDgtNDM5OC1iN2Y1LTNjMTVjN2E5ZGQ3MQ" ^
  --tags "['\"'"566e2d464b39b91eb8b5d89fb9f1a318\"'"','\"'"adb76a9a9ff8226ed08fb6f343102908\"'"']" ^
  --dir true

@@ -4,4 +4,4 @@ oint sqlite UpdateRecords \
  --table "test" \
  --values "{'name':'Vitaly A.','salary':'999999'}" \
  --filter "{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':false}" \
- --db "/tmp/1q3umrdj.x1r.sqlite"
+ --db "/tmp/pqtq2tjj.o5g.sqlite"

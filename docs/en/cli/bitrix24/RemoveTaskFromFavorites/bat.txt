@@ -1,4 +1,4 @@
 oint bitrix24 RemoveTaskFromFavorites ^
  --url "b24-ar17wx.bitrix24.by" ^
- --task "8402" ^
+ --task "8610" ^
  --token "***"

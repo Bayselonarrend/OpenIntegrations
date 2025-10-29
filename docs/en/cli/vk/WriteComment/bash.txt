@@ -1,7 +1,7 @@
 # JSON data can also be passed as a path to a .json file
 
 oint vk WriteComment \
- --post 10083 \
+ --post 10311 \
  --wall "-218861756" \
  --text "NewComment" \
  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

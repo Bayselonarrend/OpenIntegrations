@@ -1,7 +1,7 @@
 # JSON data can also be passed as a path to a .json file
 
 oint twitter CreatePollTweet \
- --text "TestTweetaf4a097e-e865-4e99-9eaa-9484d4103340" \
+ --text "TestTweet5d041f7e-4b5e-450c-b180-e58a43c73fb3" \
  --options "['Option 1','Option 2']" \
  --duration 60 \
  --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"

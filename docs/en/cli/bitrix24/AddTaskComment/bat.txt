@@ -1,5 +1,5 @@
 oint bitrix24 AddTaskComment ^
  --url "b24-ar17wx.bitrix24.by" ^
- --task "8404" ^
+ --task "8612" ^
  --text "Task uninpossible, don't split up" ^
  --token "***"

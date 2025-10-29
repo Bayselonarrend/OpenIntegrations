@@ -1,0 +1,2 @@
+oint greenmax GetInstanceSettingsStructure ^
+ --empty true

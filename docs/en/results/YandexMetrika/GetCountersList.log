@@ -1,8 +1,8 @@
 ﻿{
- "rows": 3,
+ "rows": 4,
  "counters": [
   {
-   "id": 104865588,
+   "id": 104956332,
    "status": "Active",
    "owner_login": "bayselonarrend",
    "code_status": "CS_ERR_UNKNOWN",
@@ -43,7 +43,60 @@
     "ytm": false,
     "ssr": true
    },
-   "create_time": "2025-10-27T10:17:11+00:00",
+   "create_time": "2025-10-29T22:26:26+00:00",
+   "time_zone_name": "Europe/Moscow",
+   "time_zone_offset": 180,
+   "partner_id": 0,
+   "site": "openintegrations.dev",
+   "site2": {
+    "site": "openintegrations.dev",
+    "domain": "openintegrations.dev"
+   },
+   "gdpr_agreement_accepted": 1
+  },
+  {
+   "id": 104954469,
+   "status": "Active",
+   "owner_login": "bayselonarrend",
+   "code_status": "CS_ERR_UNKNOWN",
+   "activity_status": "low",
+   "type": "simple",
+   "favorite": 0,
+   "hide_address": 0,
+   "pro": 0,
+   "permission": "own",
+   "webvisor": {
+    "arch_enabled": 0,
+    "arch_type": "none",
+    "load_player_type": "proxy",
+    "wv_version": 2,
+    "allow_wv2": true,
+    "wv_forms": 1
+   },
+   "code_options": {
+    "async": 0,
+    "informer": {
+     "enabled": 1,
+     "type": "ext",
+     "size": 2,
+     "indicator": "uniques",
+     "color_start": "EEEEEEEE",
+     "color_end": "EFEFEFFE",
+     "color_text": 0,
+     "color_arrow": 1
+    },
+    "visor": 1,
+    "track_hash": 1,
+    "xml_site": 0,
+    "clickmap": 1,
+    "in_one_line": 0,
+    "ecommerce": 1,
+    "alternative_cdn": 1,
+    "ecommerce_object": "dataLayer",
+    "ytm": false,
+    "ssr": true
+   },
+   "create_time": "2025-10-29T17:54:06+00:00",
    "time_zone_name": "Europe/Moscow",
    "time_zone_offset": 180,
    "partner_id": 0,

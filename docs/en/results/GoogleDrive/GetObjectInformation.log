@@ -1,8 +1,9 @@
 ﻿{
  "kind": "drive#file",
- "id": "11Mo30odYPEtBBU_0OndFx5dz1kP7tu-Y",
- "name": "Test folder",
+ "id": "1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP",
+ "name": "TestFolder",
  "mimeType": "application/vnd.google-apps.folder",
+ "description": "",
  "starred": false,
  "trashed": false,
  "explicitlyTrashed": false,
@@ -13,15 +14,14 @@
   "drive"
  ],
  "version": "1",
- "webViewLink": "https://drive.google.com/drive/folders/11Mo30odYPEtBBU_0OndFx5dz1kP7tu-Y",
+ "webViewLink": "https://drive.google.com/drive/folders/1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP",
  "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder",
  "hasThumbnail": false,
  "thumbnailVersion": "0",
- "viewedByMe": true,
- "viewedByMeTime": "2025-01-09T19:05:16.432Z",
- "createdTime": "2025-01-09T19:05:16.432Z",
- "modifiedTime": "2025-01-09T19:05:20.704Z",
- "modifiedByMeTime": "2025-01-09T19:05:20.704Z",
+ "viewedByMe": false,
+ "createdTime": "2025-10-28T11:51:11.778Z",
+ "modifiedTime": "2025-10-28T11:51:11.778Z",
+ "modifiedByMeTime": "2025-10-28T11:51:11.778Z",
  "modifiedByMe": true,
  "owners": [
   {
@@ -121,7 +121,7 @@
  ],
  "folderColorRgb": "#8f8f8f",
  "quotaBytesUsed": "0",
- "isAppAuthorized": false,
+ "isAppAuthorized": true,
  "linkShareMetadata": {
   "securityUpdateEligible": false,
   "securityUpdateEnabled": true

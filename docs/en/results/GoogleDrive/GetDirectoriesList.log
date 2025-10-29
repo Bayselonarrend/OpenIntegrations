@@ -89,22 +89,22 @@
   }
  },
  "kind": "drive#file",
- "id": "11Mo30odYPEtBBU_0OndFx5dz1kP7tu-Y",
- "name": "Test folder",
+ "id": "1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP",
+ "name": "TestFolder",
  "mimeType": "application/vnd.google-apps.folder",
+ "description": "",
  "starred": false,
  "trashed": false,
  "explicitlyTrashed": false,
  "version": "1",
- "webViewLink": "https://drive.google.com/drive/folders/11Mo30odYPEtBBU_0OndFx5dz1kP7tu-Y",
+ "webViewLink": "https://drive.google.com/drive/folders/1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP",
  "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder",
  "hasThumbnail": false,
  "thumbnailVersion": "0",
- "viewedByMe": true,
- "viewedByMeTime": "2025-01-09T19:05:16.432Z",
- "createdTime": "2025-01-09T19:05:16.432Z",
- "modifiedTime": "2025-01-09T19:05:20.704Z",
- "modifiedByMeTime": "2025-01-09T19:05:20.704Z",
+ "viewedByMe": false,
+ "createdTime": "2025-10-28T11:51:11.778Z",
+ "modifiedTime": "2025-10-28T11:51:11.778Z",
+ "modifiedByMeTime": "2025-10-28T11:51:11.778Z",
  "modifiedByMe": true,
  "shared": false,
  "ownedByMe": true,
@@ -113,154 +113,7 @@
  "writersCanShare": true,
  "folderColorRgb": "#8f8f8f",
  "quotaBytesUsed": "0",
- "isAppAuthorized": false,
+ "isAppAuthorized": true,
  "inheritedPermissionsDisabled": false,
- "files": [
-  {
-   "parents": [
-    "11Mo30odYPEtBBU_0OndFx5dz1kP7tu-Y"
-   ],
-   "lastModifyingUser": {
-    "displayName": "Антон Титовец",
-    "kind": "drive#user",
-    "me": true,
-    "permissionId": "07468399490707249352",
-    "emailAddress": "bayselonarrend@gmail.com",
-    "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
-   },
-   "owners": [
-    {
-     "displayName": "Антон Титовец",
-     "kind": "drive#user",
-     "me": true,
-     "permissionId": "07468399490707249352",
-     "emailAddress": "bayselonarrend@gmail.com",
-     "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64"
-    }
-   ],
-   "permissions": [
-    {
-     "kind": "drive#permission",
-     "id": "07468399490707249352",
-     "type": "user",
-     "emailAddress": "bayselonarrend@gmail.com",
-     "role": "owner",
-     "displayName": "Антон Титовец",
-     "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKYttNv2CZ-cTTuE90Zmht_PwnGc0YnjM1IUllXsTVORfZFVPU=s64",
-     "deleted": false,
-     "pendingOwner": false
-    }
-   ],
-   "spaces": [
-    "drive"
-   ],
-   "capabilities": {
-    "canAcceptOwnership": false,
-    "canAddChildren": false,
-    "canAddMyDriveParent": false,
-    "canChangeCopyRequiresWriterPermission": true,
-    "canChangeItemDownloadRestriction": true,
-    "canChangeSecurityUpdateEnabled": false,
-    "canChangeViewersCanCopyContent": true,
-    "canComment": true,
-    "canCopy": true,
-    "canDelete": true,
-    "canDisableInheritedPermissions": false,
-    "canDownload": true,
-    "canEdit": true,
-    "canEnableInheritedPermissions": true,
-    "canListChildren": false,
-    "canModifyContent": true,
-    "canModifyContentRestriction": true,
-    "canModifyEditorContentRestriction": true,
-    "canModifyOwnerContentRestriction": true,
-    "canModifyLabels": false,
-    "canMoveChildrenWithinDrive": false,
-    "canMoveItemIntoTeamDrive": true,
-    "canMoveItemOutOfDrive": true,
-    "canMoveItemWithinDrive": true,
-    "canReadLabels": false,
-    "canReadRevisions": true,
-    "canRemoveChildren": false,
-    "canRemoveContentRestriction": false,
-    "canRemoveMyDriveParent": true,
-    "canRename": true,
-    "canShare": true,
-    "canTrash": true,
-    "canUntrash": true
-   },
-   "permissionIds": [
-    "07468399490707249352"
-   ],
-   "imageMediaMetadata": {
-    "width": 3264,
-    "height": 2448,
-    "rotation": 0,
-    "time": "2012:08:03 08:21:50",
-    "cameraMake": "SONY",
-    "cameraModel": "DSC-H7",
-    "exposureTime": 0.00125,
-    "aperture": 5.6,
-    "flashUsed": true,
-    "focalLength": 5.2,
-    "isoSpeed": 100,
-    "meteringMode": "Pattern",
-    "exposureMode": "Auto",
-    "colorSpace": "sRGB",
-    "whiteBalance": "Auto",
-    "exposureBias": 0,
-    "maxApertureValue": 2.875
-   },
-   "linkShareMetadata": {
-    "securityUpdateEligible": false,
-    "securityUpdateEnabled": true
-   },
-   "downloadRestrictions": {
-    "itemDownloadRestriction": {
-     "restrictedForReaders": false,
-     "restrictedForWriters": false
-    },
-    "effectiveDownloadRestrictionWithContext": {
-     "restrictedForReaders": false,
-     "restrictedForWriters": false
-    }
-   },
-   "kind": "drive#file",
-   "id": "1QwfuLjDUGl3BBbM6502DCFAtdoqTXuag",
-   "name": "New file.jpg",
-   "mimeType": "image/jpeg",
-   "description": "This is a new file",
-   "starred": false,
-   "trashed": false,
-   "explicitlyTrashed": false,
-   "version": "2",
-   "webContentLink": "https://drive.google.com/uc?id=1QwfuLjDUGl3BBbM6502DCFAtdoqTXuag&export=download",
-   "webViewLink": "https://drive.google.com/file/d/1QwfuLjDUGl3BBbM6502DCFAtdoqTXuag/view?usp=drivesdk",
-   "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
-   "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBMiOgigWgjvlbFHufcQCuAA3h40SACFFYjHk7dfxb38NnimBstFNf0LBvtLxMhONJXUbGcYOs8nwLk7qv6Fx79dpJVV6QhNH6WvvOsA2nzPoA=s220",
-   "thumbnailVersion": "1",
-   "viewedByMe": false,
-   "createdTime": "2025-06-19T06:54:46.294Z",
-   "modifiedTime": "2025-06-19T06:54:46.294Z",
-   "modifiedByMeTime": "2025-06-19T06:54:46.294Z",
-   "modifiedByMe": true,
-   "shared": false,
-   "ownedByMe": true,
-   "viewersCanCopyContent": true,
-   "copyRequiresWriterPermission": false,
-   "writersCanShare": true,
-   "originalFilename": "New file.jpg",
-   "fullFileExtension": "jpg",
-   "fileExtension": "jpg",
-   "md5Checksum": "85b6518b95b58536480354d9d5fc3d8b",
-   "sha1Checksum": "ebdbaf8ed7fe21f6562fde438a2bb12ba49750f2",
-   "sha256Checksum": "1a03612de72929ef42a272cb17123871bf9b7723c89f9659765a49f744b6162b",
-   "size": "2114025",
-   "quotaBytesUsed": "2114025",
-   "headRevisionId": "0B92vrbrhqfJrQnEvY29MZjN6NDVDaG8vcnZETE11WGtXb3R3PQ",
-   "isAppAuthorized": true,
-   "inheritedPermissionsDisabled": false
-  }
- ]
+ "files": []
 }

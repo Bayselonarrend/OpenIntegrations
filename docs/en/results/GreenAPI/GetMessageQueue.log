@@ -1,12 +1,1 @@
-﻿[
- {
-  "messageID": "BAE56756537DAE1A",
-  "type": "editMessage",
-  "body": {
-   "chatId": "120363410406221140@g.us",
-   "idMessage": "BAE579E0B0330DDC",
-   "message": "New message text",
-   "linkPreview": true
-  }
- }
-]
+﻿{}

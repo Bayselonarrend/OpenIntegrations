@@ -3,4 +3,4 @@ oint telegram SendContact ^
  --chat "@testsichee" ^
  --name "Петр" ^
  --surname "Петров" ^
- --phone "88005553535"
+ --phone "***"

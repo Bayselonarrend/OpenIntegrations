@@ -1,0 +1,6 @@
+:: JSON data can also be passed as a path to a .json file
+
+oint greenmax GetChatMessage ^
+ --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
+ --chat "-68885166162005" ^
+ --message "2761480287806"
