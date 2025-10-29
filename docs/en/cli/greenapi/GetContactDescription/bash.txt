@@ -1,3 +1,6 @@
 oint greenapi GetContactDescription \
- --phone 79001234568 \
+ --phone "***" \
+ --name "Artem" \
+ --surname "Evpatoriysky" \
+ --midname "Petrovich" \
  --company "Bicycle"

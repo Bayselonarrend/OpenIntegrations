@@ -2,10 +2,10 @@
  "response": [
   {
    "album_id": -14,
-   "date": 1761557161,
-   "id": 457248895,
+   "date": 1761770489,
+   "id": 457248992,
    "owner_id": 657846756,
-   "access_key": "33432f7f4366d9ec64",
+   "access_key": "971f0416220b914f34",
    "sizes": [
     {
      "height": 54,
@@ -75,7 +75,7 @@
     }
    ],
    "text": "",
-   "web_view_token": "468afbd59053330c06",
+   "web_view_token": "9f06b3550bbe5f38f2",
    "has_tags": false,
    "orig_photo": {
     "height": 1920,

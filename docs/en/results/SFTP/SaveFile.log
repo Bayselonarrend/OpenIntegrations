@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/zcqehtkp.kmv.bin",
- "result": true
+ "filepath": "/tmp/muaupgwa.m42.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

@@ -2,11 +2,11 @@
  "response": [
   {
    "activity": {
-    "comments": 1,
-    "likes": 1
+    "comments": 6,
+    "likes": 6
    },
-   "period_from": 1761523200,
-   "period_to": 1761609599,
+   "period_from": 1761696000,
+   "period_to": 1761782399,
    "reach": {
     "age": [
      {
@@ -141,11 +141,11 @@
   },
   {
    "activity": {
-    "comments": 1,
-    "likes": 1
+    "comments": 8,
+    "likes": 8
    },
-   "period_from": 1761436800,
-   "period_to": 1761523199,
+   "period_from": 1761609600,
+   "period_to": 1761695999,
    "reach": {
     "age": [
      {

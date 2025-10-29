@@ -2,6 +2,6 @@
 
 oint bitrix24 UpdateCalendarEvent \
  --url "b24-ar17wx.bitrix24.by" \
- --event 2792 \
+ --event 2958 \
  --fields "{'ownerId':'1','type':'user','name':'Modified event','description':'New event description','importance':'low','private_event':'Y'}" \
  --token "***"

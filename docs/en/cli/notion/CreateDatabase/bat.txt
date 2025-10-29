@@ -4,4 +4,4 @@ oint notion CreateDatabase ^
  --token "***" ^
  --page "5dd94c34fab04bff986b7511c0779f77" ^
  --title "TestTitle" ^
- --props "{'Name':'title','Description':'rich_text','Number':'number','CreationDate':'date','Image':'files','Active':'checkbox','Website':'url','Email':'email','Phone':'phone_number','User':'people','Status':{'New':'green','InProgress':'yellow','Remote':'red'}}"
+ --props "{'Name':'title','Description':'rich_text','Number':'number','CreationDate':'date','Image':'files','Active':'checkbox','Website':'url','Email':'email','Phone':'***','User':'people','Status':{'New':'green','InProgress':'yellow','Remote':'red'}}"

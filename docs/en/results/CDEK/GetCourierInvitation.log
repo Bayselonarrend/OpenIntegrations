@@ -1,10 +1,10 @@
 ﻿{
  "entity": {
-  "uuid": "0f37cf68-a95c-4b72-98ab-e0f2264c4c6c",
-  "cdek_number": "1106630090",
-  "order_uuid": "664adfeb-0597-401f-9b01-41d84a89b17e",
-  "intake_date": "2025-10-28",
-  "intake_number": "13310148",
+  "uuid": "ce01dfc2-5ea3-4079-a3f5-840cc9a0dd2e",
+  "cdek_number": "1106631385",
+  "order_uuid": "2febbcd9-2e30-47b3-adf5-5b1e2e57357c",
+  "intake_date": "2025-10-30",
+  "intake_number": "13310318",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -18,9 +18,6 @@
    "name": "Company",
    "contragent_type": "LEGAL_ENTITY",
    "phones": [
-    {
-     "number": "+79589441654"
-    },
     {
      "number": "79589441654"
     }
@@ -59,22 +56,22 @@
    {
     "code": "READY_FOR_APPOINTMENT",
     "name": "Готова к назначению",
-    "date_time": "2025-10-27T10:16:35+00:00"
+    "date_time": "2025-10-29T22:25:03+00:00"
    },
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2025-10-27T10:16:34+00:00"
+    "date_time": "2025-10-29T22:25:03+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-27T10:16:34+00:00"
+    "date_time": "2025-10-29T22:25:03+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "a0d5f045-30ef-4e04-9e52-ddfdd06451f6",
+    "package_id": "712bc170-c771-4fff-894f-9590bbb4d89f",
     "weight": 1000,
     "length": 10,
     "width": 10,
@@ -85,9 +82,9 @@
  },
  "requests": [
   {
-   "request_uuid": "21135870-aa9a-4dab-8364-210e0a43d8d0",
+   "request_uuid": "5f56db87-67b4-4962-bf2f-035af0c9fd0e",
    "type": "CREATE",
-   "date_time": "2025-10-27T10:16:33+00:00",
+   "date_time": "2025-10-29T22:25:03+00:00",
    "state": "SUCCESSFUL"
   }
  ]
