@@ -1388,8 +1388,8 @@ Function SendFileByURL(Val AccessParameters, Val ChatID, Val FileURL, Val FileNa
 	Return ОтправитьФайлПоURL(AccessParameters, ChatID, FileURL, FileName, Description, ReplyID);
 EndFunction
 
-Function SendPoll(Val AccessParameters, Val ChatID, Val Text, Val Options, Val MultipleSelect = False, Val ReplyID = "") Export
-	Return ОтправитьОпрос(AccessParameters, ChatID, Text, Options, MultipleSelect, ReplyID);
+Function SendPoll(Val AccessParameters, Val ChatID, Val Text, Val Variants, Val MultipleSelect = False, Val ReplyID = "") Export
+	Return ОтправитьОпрос(AccessParameters, ChatID, Text, Variants, MultipleSelect, ReplyID);
 EndFunction
 
 Function SendLocation(Val AccessParameters, Val ChatID, Val Location, Val ReplyID = "") Export

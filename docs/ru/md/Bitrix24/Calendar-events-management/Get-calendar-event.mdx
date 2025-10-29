@@ -33,13 +33,13 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDСобытия = "2818";
+    IDСобытия = "2866";
 
     Результат = OPI_Bitrix24.ПолучитьСобытиеКалендаря(URL, IDСобытия);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "0ebbf768006e9f06006b12e400000001000...";
-    IDСобытия = "2822";
+    Токен     = "1dbf0069006e9f06006b12e400000001000...";
+    IDСобытия = "2870";
 
     Результат = OPI_Bitrix24.ПолучитьСобытиеКалендаря(URL, IDСобытия, Токен);
 ```
@@ -51,7 +51,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьСобытиеКалендаря \
               --url "b24-ar17wx.bitrix24.by" \
-              --event 2846 \
+              --event 2942 \
               --token "***"
         ```
     </TabItem>
@@ -60,7 +60,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьСобытиеКалендаря ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --event 2846 ^
+              --event 2942 ^
               --token "***"
         ```
     </TabItem>
@@ -70,27 +70,27 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": "2846",
-  "PARENT_ID": "2846",
+  "ID": "2942",
+  "PARENT_ID": "2942",
   "DELETED": "N",
   "CAL_TYPE": "user",
   "OWNER_ID": "1",
   "NAME": "Новое событие",
-  "DATE_FROM": "27.10.2025 18:20:00",
-  "DATE_TO": "27.10.2025 19:20:00",
+  "DATE_FROM": "30.10.2025 17:46:00",
+  "DATE_TO": "30.10.2025 18:46:00",
   "ORIGINAL_DATE_FROM": null,
   "TZ_FROM": "Europe/Minsk",
   "TZ_TO": "Europe/Minsk",
   "TZ_OFFSET_FROM": "10800",
   "TZ_OFFSET_TO": "10800",
-  "DATE_FROM_TS_UTC": "1761567615",
-  "DATE_TO_TS_UTC": "1764174000",
+  "DATE_FROM_TS_UTC": "1761824733",
+  "DATE_TO_TS_UTC": "1764431160",
   "DT_SKIP_TIME": "N",
   "DT_LENGTH": 3600,
   "EVENT_TYPE": null,
   "CREATED_BY": "1",
-  "DATE_CREATE": "26.10.2025 21:20:20",
-  "TIMESTAMP_X": "26.10.2025 21:20:20",
+  "DATE_CREATE": "29.10.2025 20:45:37",
+  "TIMESTAMP_X": "29.10.2025 20:45:37",
   "DESCRIPTION": "Описание события",
   "PRIVATE_EVENT": "1",
   "ACCESSIBILITY": "quest",
@@ -120,12 +120,12 @@ import TabItem from '@theme/TabItem';
    "FREQ": "DAILY",
    "COUNT": 3,
    "INTERVAL": 10,
-   "UNTIL": "06.11.2025",
-   "~UNTIL": "06.11.2025",
-   "UNTIL_TS": 1762387200
+   "UNTIL": "09.11.2025",
+   "~UNTIL": "09.11.2025",
+   "UNTIL_TS": 1762646400
   },
   "EXDATE": "",
-  "DAV_XML_ID": "20251027T152000Z-287b79ab14dcf76b9636cc44fa3c90e1@b24-ar17wx.bitrix24.by",
+  "DAV_XML_ID": "20251030T144600Z-9ac191fd3527472a15470c8205d3186b@b24-ar17wx.bitrix24.by",
   "G_EVENT_ID": "",
   "DAV_EXCH_LABEL": "",
   "CAL_DAV_LABEL": "",
@@ -136,30 +136,30 @@ import TabItem from '@theme/TabItem';
   ],
   "RECURRENCE_ID": null,
   "RELATIONS": "",
-  "SECTION_ID": "1550",
+  "SECTION_ID": "1598",
   "SYNC_STATUS": null,
   "UF_CRM_CAL_EVENT": false,
   "UF_WEBDAV_CAL_EVENT": false,
   "SECTION_DAV_XML_ID": null,
-  "DATE_FROM_FORMATTED": "Mon Oct 27 2025 18:20:00",
-  "DATE_TO_FORMATTED": "Mon Oct 27 2025 19:20:00",
+  "DATE_FROM_FORMATTED": "Thu Oct 30 2025 17:46:00",
+  "DATE_TO_FORMATTED": "Thu Oct 30 2025 18:46:00",
   "IS_DAYLIGHT_SAVING_TZ": "N",
-  "SECT_ID": "1550",
+  "SECT_ID": "1598",
   "OPTIONS": null,
   "ATTENDEE_LIST": [
    {
     "id": 1,
-    "entryId": "2846",
+    "entryId": "2942",
     "status": "H"
    },
    {
     "id": 10,
-    "entryId": "2848",
+    "entryId": "2944",
     "status": "Q"
    }
   ],
   "COLLAB_ID": null,
-  "~RRULE_DESCRIPTION": "каждый 10-й день, от 27.10.2025 до 06.11.2025",
+  "~RRULE_DESCRIPTION": "каждый 10-й день, от 30.10.2025 до 09.11.2025",
   "attendeesEntityList": [
    {
     "entityId": "user",
@@ -175,13 +175,13 @@ import TabItem from '@theme/TabItem';
   "~USER_OFFSET_TO": 0
  },
  "time": {
-  "start": 1761502835,
-  "finish": 1761502835.65366,
-  "duration": 0.653655052185059,
+  "start": 1761759951,
+  "finish": 1761759951.70933,
+  "duration": 0.70933198928833,
   "processing": 0,
-  "date_start": "2025-10-26T18:20:35+00:00",
-  "date_finish": "2025-10-26T18:20:35+00:00",
-  "operating_reset_at": 1761503435,
+  "date_start": "2025-10-29T17:45:51+00:00",
+  "date_finish": "2025-10-29T17:45:51+00:00",
+  "operating_reset_at": 1761760551,
   "operating": 0
  }
 }
