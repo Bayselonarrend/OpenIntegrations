@@ -1,4 +1,4 @@
 oint gsheets EditSpreadsheetTitle \
  --token "***" \
- --spreadsheet "1JVCJKA4-Pzai2MxxkUzjlfNogHS8d972M4O1_FsY8jA" \
+ --spreadsheet "1O-c0rNTaFMFwBXAoGeikG9I5iecRiXECc8lzIQoK9xM" \
  --title "Test table (changed.)"

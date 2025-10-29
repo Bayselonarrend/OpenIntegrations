@@ -2,7 +2,7 @@
 
 oint bitrix24 EditMessage \
  --url "b24-ar17wx.bitrix24.by" \
- --message 64726 \
+ --message 66560 \
  --text "New message text" \
  --blocks "[{'IMAGE':{'NAME':'Image1','LINK':'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg'}},{'FILE':{'NAME':'File1.docx','LINK':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx'}}]" \
  --token "***"

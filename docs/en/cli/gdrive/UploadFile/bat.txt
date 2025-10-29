@@ -3,4 +3,4 @@
 oint gdrive UploadFile ^
  --token "***" ^
  --file "https://hut.openintegrations.dev/test_data/picture.jpg" ^
- --props "{'MIME':'image/jpeg','Name':'New file.jpg','Description':'This is a new file','Parent':'11Mo30odYPEtBBU_0OndFx5dz1kP7tu-Y'}"
+ --props "{'MIME':'image/jpeg','Name':'New file.jpg','Description':'This is a new file','Parent':'1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP'}"
