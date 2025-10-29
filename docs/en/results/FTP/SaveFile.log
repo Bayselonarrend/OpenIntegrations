@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/kx0wohpz.fh5.bin",
- "result": true
+ "filepath": "/tmp/qmdxhwsi.lov.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

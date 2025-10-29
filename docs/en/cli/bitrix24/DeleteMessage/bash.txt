@@ -1,4 +1,4 @@
 oint bitrix24 DeleteMessage \
  --url "b24-ar17wx.bitrix24.by" \
- --message 64726 \
+ --message 66560 \
  --token "***"

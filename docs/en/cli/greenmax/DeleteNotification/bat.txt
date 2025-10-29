@@ -1,0 +1,5 @@
+:: JSON data can also be passed as a path to a .json file
+
+oint greenmax DeleteNotification ^
+ --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
+ --id 1

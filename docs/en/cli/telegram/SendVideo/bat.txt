@@ -2,4 +2,4 @@ oint telegram SendVideo ^
  --token "***" ^
  --chat "@testsichee" ^
  --text "Строковое значение" ^
- --video "/tmp/wix0haw1.uet"
+ --video "/tmp/z11tld5q.ryo"
