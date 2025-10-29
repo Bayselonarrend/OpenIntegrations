@@ -7,8 +7,8 @@
    "wid": "1234567890@c.us",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1761741837,
-  "idMessage": "BAE5F1071C949A37",
+  "timestamp": 1761749798,
+  "idMessage": "BAE5A7B09A9EE6F2",
   "senderData": {
    "chatId": "120363410406221140@g.us",
    "chatName": "Основная тестовая группа",
@@ -19,7 +19,7 @@
   "messageData": {
    "typeMessage": "extendedTextMessage",
    "extendedTextMessageData": {
-    "text": "Новое сообщение",
+    "text": "New message",
     "description": "",
     "title": "",
     "previewType": "None",
