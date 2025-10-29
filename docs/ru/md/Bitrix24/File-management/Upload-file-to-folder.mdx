@@ -42,14 +42,14 @@ import TabItem from '@theme/TabItem';
     Картинка2 = "https://hut.openintegrations.dev/test_data/picture.jpg";  // Локальный путь, URL или Двоичные данные
     Картинка  = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // Локальный путь, URL или Двоичные данные
 
-    IDПриемника = "45166";
+    IDПриемника = "45508";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Результат = OPI_Bitrix24.ЗагрузитьФайлВКаталог(URL, Наименование2, Картинка2, IDПриемника);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "0ebbf768006e9f06006b12e400000001000...";
+    Токен = "1dbf0069006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ЗагрузитьФайлВКаталог(URL, Наименование, Картинка, IDПриемника, Токен);
 ```
@@ -63,7 +63,7 @@ import TabItem from '@theme/TabItem';
               --url "b24-ar17wx.bitrix24.by" \
               --title "Важный документ.docx" \
               --file "https://hut.openintegrations.dev/test_data/document.docx" \
-              --folderid 45350 \
+              --folderid 45998 \
               --token "***"
         ```
     </TabItem>
@@ -74,7 +74,7 @@ import TabItem from '@theme/TabItem';
               --url "b24-ar17wx.bitrix24.by" ^
               --title "Важный документ.docx" ^
               --file "https://hut.openintegrations.dev/test_data/document.docx" ^
-              --folderid 45350 ^
+              --folderid 45998 ^
               --token "***"
         ```
     </TabItem>
@@ -84,23 +84,23 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": 45340,
+  "ID": 45988,
   "NAME": "Картинка1.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "file",
-  "PARENT_ID": "45328",
+  "PARENT_ID": "45976",
   "DELETED_TYPE": 0,
   "GLOBAL_CONTENT_VERSION": 1,
-  "FILE_ID": 30572,
+  "FILE_ID": 31028,
   "SIZE": "805191",
-  "CREATE_TIME": "2025-10-26T18:11:37+00:00",
-  "UPDATE_TIME": "2025-10-26T18:11:37+00:00",
+  "CREATE_TIME": "2025-10-29T17:37:08+00:00",
+  "UPDATE_TIME": "2025-10-29T17:37:08+00:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": null,
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=e070fe68006e9f06006b12e400000001000007e5f1a9a9da0bc55ef456924e7b7a39d2&token=disk%7CaWQ9NDUzNDAmXz1xTUhGVHp0Y2hDTE1BTTBSeVp0MWJKbU1ETFZXNEhZdw%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EVXpOREFtWHoxeFRVaEdWSHAwWTJoRFRFMUJUVEJTZVZwME1XSktiVTFFVEZaWE5FaFpkdz09fGUwNzBmZTY4MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3ZTVmMWE5YTlkYTBiYzU1ZWY0NTY5MjRlN2I3YTM5ZDIi.h6smChD4hqqkinHo%2F6EXxbn%2FHpV138reO%2B0nAq4oJqY%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=5f5d0269006e9f06006b12e4000000010000078fe85447956d9711f09a35bbe7972f27&token=disk%7CaWQ9NDU5ODgmXz1TSkRYM2h4clV4U0RPTnZzM3VpZDF4WXRRTWxMZEphdw%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EVTVPRGdtWHoxVFNrUllNMmg0Y2xWNFUwUlBUblp6TTNWcFpERjRXWFJSVFd4TVpFcGhkdz09fDVmNWQwMjY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3OGZlODU0NDc5NTZkOTcxMWYwOWEzNWJiZTc5NzJmMjci.ONjREOSSuy8jkRfFvSaNOhH9rVol6GjZdgGK6pyHkic%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Новый каталог/Картинка1.jpg"
  }
 }

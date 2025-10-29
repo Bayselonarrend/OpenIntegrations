@@ -34,14 +34,14 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "8438";
-    IDФайла  = "45156";
+    IDЗадачи = "8502";
+    IDФайла  = "45494";
 
     Результат = OPI_Bitrix24.ДобавитьФайлВЗадачу(URL, IDЗадачи, IDФайла);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Токен    = "0ebbf768006e9f06006b12e400000001000...";
-    IDЗадачи = "8440";
+    Токен    = "1dbf0069006e9f06006b12e400000001000...";
+    IDЗадачи = "8504";
 
     Результат = OPI_Bitrix24.ДобавитьФайлВЗадачу(URL, IDЗадачи, IDФайла, Токен);
 ```
@@ -53,8 +53,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ДобавитьФайлВЗадачу \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8470" \
-              --fileid 45318 \
+              --task "8590" \
+              --fileid 45966 \
               --token "***"
         ```
     </TabItem>
@@ -63,8 +63,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ДобавитьФайлВЗадачу ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8470" ^
-              --fileid 45318 ^
+              --task "8590" ^
+              --fileid 45966 ^
               --token "***"
         ```
     </TabItem>
@@ -74,16 +74,16 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "attachmentId": 12658
+  "attachmentId": 12850
  },
  "time": {
-  "start": 1761502131,
-  "finish": 1761502131.97238,
-  "duration": 0.972381114959717,
+  "start": 1761759270,
+  "finish": 1761759270.1147,
+  "duration": 0.114703893661499,
   "processing": 0,
-  "date_start": "2025-10-26T18:08:51+00:00",
-  "date_finish": "2025-10-26T18:08:51+00:00",
-  "operating_reset_at": 1761502731,
+  "date_start": "2025-10-29T17:34:30+00:00",
+  "date_finish": "2025-10-29T17:34:30+00:00",
+  "operating_reset_at": 1761759870,
   "operating": 0
  }
 }

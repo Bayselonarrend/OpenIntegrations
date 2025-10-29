@@ -82,6 +82,15 @@ pipeline {
 				}
 		}
 
+        stage('Read stages config') {
+            steps {
+                script {
+                    def configText = readFile './service/tests_config.json'
+                    env.STAGES_CONFIG = configText
+                }
+            }
+        }
+
 		stage('Testing-BuildCheck') {
             when {
                 expression { return shouldRunStage('BuildCheck') }

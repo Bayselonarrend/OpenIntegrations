@@ -709,7 +709,7 @@ EndFunction
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
 // ChatID - String - Chat identifier - chat
 // Text - String - Message text - text
-// Options - Array Of String - Answer options - options
+// Variants - Array Of String - Answer options - options
 // MultipleSelect - Boolean - Allows to select more than one answer choice - multi
 // ReplyID - String - Replying message id if necessary - quoted
 //
@@ -718,7 +718,7 @@ EndFunction
 Function SendPoll(Val AccessParameters
     , Val ChatID
     , Val Text
-    , Val Options
+    , Val Variants
     , Val MultipleSelect = False
     , Val ReplyID = "") Export
 
@@ -726,9 +726,9 @@ Function SendPoll(Val AccessParameters
     Parameters  = New Structure;
     OptionArray = New Array;
 
-    OPI_TypeConversion.GetArray(Options);
+    OPI_TypeConversion.GetArray(Variants);
 
-    For Each Option In Options Do
+    For Each Option In Variants Do
         OptionArray.Add(New Structure("optionName", Option));
     EndDo;
 

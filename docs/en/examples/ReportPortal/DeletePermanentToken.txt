@@ -1,6 +1,6 @@
 ﻿    URL    = "tests.openintegrations.dev";
-    Token  = "test-key_zpAus6_2QvWeMdRXfQgFbB3f9Yu...";
+    Token  = "test-key_b0iH1mpXROGYOvAWUzRNluW5uzW...";
     UserID = "1";
-    KeyID  = "8...";
+    KeyID  = "9...";
 
     Result = OPI_ReportPortal.DeletePermanentToken(URL, Token, UserID, KeyID);

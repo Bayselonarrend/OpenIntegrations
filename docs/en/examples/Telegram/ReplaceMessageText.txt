@@ -1,6 +1,6 @@
 ﻿    Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "@testsichee";
-    MessageID = "21896";
+    MessageID = "22056";
     Text      = "New message text";
 
     Result = OPI_Telegram.ReplaceMessageText(Token, ChatID, MessageID, Text);

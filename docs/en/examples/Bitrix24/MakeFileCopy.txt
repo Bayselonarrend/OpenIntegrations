@@ -1,13 +1,13 @@
-﻿    FolderID = "45164";
-    FileID   = "45160";
+﻿    FolderID = "45506";
+    FileID   = "45498";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Result = OPI_Bitrix24.MakeFileCopy(URL, FileID, FolderID);
 
-    FolderID = "45166";
+    FolderID = "45508";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "0ebbf768006e9f06006b12e400000001000...";
+    Token = "1dbf0069006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MakeFileCopy(URL, FileID, FolderID, Token);

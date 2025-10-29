@@ -17562,20 +17562,20 @@ Procedure GreenAPI_SendPoll(FunctionParameters)
     ChatID = FunctionParameters["GreenAPI_TestGroupID"];
     Text   = "What's your favorite color?";
 
-    Options = New Array;
-    Options.Add("Red");
-    Options.Add("Yellow");
-    Options.Add("Green");
+    Variants = New Array;
+    Variants.Add("Red");
+    Variants.Add("Yellow");
+    Variants.Add("Green");
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Result           = OPI_GreenAPI.SendPoll(AccessParameters, ChatID, Text, Options);
+    Result           = OPI_GreenAPI.SendPoll(AccessParameters, ChatID, Text, Variants);
 
     // END
 
     Process(Result, "GreenAPI", "SendPoll", , FunctionParameters);
 
     MessageID = Result["idMessage"];
-    Result    = OPI_GreenAPI.SendPoll(AccessParameters, ChatID, Text, Options, True, MessageID);
+    Result    = OPI_GreenAPI.SendPoll(AccessParameters, ChatID, Text, Variants, True, MessageID);
 
     Process(Result, "GreenAPI", "SendPoll", "Quote");
 

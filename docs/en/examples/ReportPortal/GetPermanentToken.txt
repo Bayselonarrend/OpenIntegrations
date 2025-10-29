@@ -1,5 +1,5 @@
 ﻿    URL     = "tests.openintegrations.dev";
-    Token   = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MTE0OTYwNywiaWF0IjoxNzYxMDYzMjA3LCJqdGkiOiIwYjcyZTI4Ni00ZG...";
+    Token   = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MTc0MTk5NiwiaWF0IjoxNzYxNjU1NTk2LCJqdGkiOiJmZmUxOTBjNC1iNz...";
     UserID  = "1";
     KeyName = "test_key";
 
