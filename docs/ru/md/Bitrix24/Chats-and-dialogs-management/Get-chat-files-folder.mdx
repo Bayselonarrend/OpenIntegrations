@@ -33,13 +33,13 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЧата = "3278";
+    IDЧата = "3302";
 
     Результат = OPI_Bitrix24.ПолучитьКаталогФайловЧата(URL, IDЧата);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Токен  = "0ebbf768006e9f06006b12e400000001000...";
-    IDЧата = "3280";
+    Токен  = "1dbf0069006e9f06006b12e400000001000...";
+    IDЧата = "3304";
 
     Результат = OPI_Bitrix24.ПолучитьКаталогФайловЧата(URL, IDЧата, Токен);
 ```
@@ -51,7 +51,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьКаталогФайловЧата \
               --url "b24-ar17wx.bitrix24.by" \
-              --chat 3292 \
+              --chat 3340 \
               --token "***"
         ```
     </TabItem>
@@ -60,7 +60,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьКаталогФайловЧата ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --chat 3292 ^
+              --chat 3340 ^
               --token "***"
         ```
     </TabItem>
@@ -70,16 +70,16 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": 45350
+  "ID": 45998
  },
  "time": {
-  "start": 1761502583,
-  "finish": 1761502583.57989,
-  "duration": 0.57988691329956,
+  "start": 1761759710,
+  "finish": 1761759710.41989,
+  "duration": 0.419888973236084,
   "processing": 0,
-  "date_start": "2025-10-26T18:16:23+00:00",
-  "date_finish": "2025-10-26T18:16:23+00:00",
-  "operating_reset_at": 1761503183,
+  "date_start": "2025-10-29T17:41:50+00:00",
+  "date_finish": "2025-10-29T17:41:50+00:00",
+  "operating_reset_at": 1761760310,
   "operating": 0
  }
 }

@@ -34,14 +34,14 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Текст     = "Комментарий к новости";
-    IDНовости = "3214";
+    IDНовости = "3242";
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Результат = OPI_Bitrix24.ДобавитьКомментарийНовости(URL, IDНовости, Текст);
 
     Текст = "Другой комментарий к новости";
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "0ebbf768006e9f06006b12e400000001000...";
+    Токен = "1dbf0069006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ДобавитьКомментарийНовости(URL, IDНовости, Текст, Токен);
 ```
@@ -53,7 +53,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ДобавитьКомментарийНовости \
               --url "b24-ar17wx.bitrix24.by" \
-              --postid 3226 \
+              --postid 3274 \
               --text "Другой комментарий к новости" \
               --token "***"
         ```
@@ -63,7 +63,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ДобавитьКомментарийНовости ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --postid 3226 ^
+              --postid 3274 ^
               --text "Другой комментарий к новости" ^
               --token "***"
         ```
@@ -73,16 +73,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 3136,
+ "result": 3184,
  "time": {
-  "start": 1761501950,
-  "finish": 1761501950.38226,
-  "duration": 0.382261991500854,
+  "start": 1761759098,
+  "finish": 1761759098.47835,
+  "duration": 0.478353977203369,
   "processing": 0,
-  "date_start": "2025-10-26T18:05:50+00:00",
-  "date_finish": "2025-10-26T18:05:50+00:00",
-  "operating_reset_at": 1761502550,
-  "operating": 0.100375890731812
+  "date_start": "2025-10-29T17:31:38+00:00",
+  "date_finish": "2025-10-29T17:31:38+00:00",
+  "operating_reset_at": 1761759698,
+  "operating": 0
  }
 }
 ```

@@ -33,13 +33,13 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL           = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDКомментария = "19608";
+    IDКомментария = "19762";
 
     Результат = OPI_Bitrix24.СоздатьРезультатИзКомментария(URL, IDКомментария);
 
     URL           = "b24-ar17wx.bitrix24.by";
-    Токен         = "0ebbf768006e9f06006b12e400000001000...";
-    IDКомментария = "19610";
+    Токен         = "1dbf0069006e9f06006b12e400000001000...";
+    IDКомментария = "19764";
 
     Результат = OPI_Bitrix24.СоздатьРезультатИзКомментария(URL, IDКомментария, Токен);
 ```
@@ -51,7 +51,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 СоздатьРезультатИзКомментария \
               --url "b24-ar17wx.bitrix24.by" \
-              --comment 19676 \
+              --comment 19940 \
               --token "***"
         ```
     </TabItem>
@@ -60,7 +60,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 СоздатьРезультатИзКомментария ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --comment 19676 ^
+              --comment 19940 ^
               --token "***"
         ```
     </TabItem>
@@ -70,25 +70,25 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "id": 3136,
-  "taskId": 8472,
-  "commentId": 19676,
+  "id": 3184,
+  "taskId": 8592,
+  "commentId": 19940,
   "createdBy": 1,
-  "createdAt": "2025-10-26T18:09:06+00:00",
-  "updatedAt": "2025-10-26T18:09:06+00:00",
+  "createdAt": "2025-10-29T17:34:43+00:00",
+  "updatedAt": "2025-10-29T17:34:43+00:00",
   "status": 0,
   "text": "Задача изменена, расходимся",
   "formattedText": "Задача изменена, расходимся",
   "files": null
  },
  "time": {
-  "start": 1761502155,
-  "finish": 1761502156.02619,
-  "duration": 1.0261869430542,
-  "processing": 1,
-  "date_start": "2025-10-26T18:09:15+00:00",
-  "date_finish": "2025-10-26T18:09:16+00:00",
-  "operating_reset_at": 1761502755,
+  "start": 1761759293,
+  "finish": 1761759293.48064,
+  "duration": 0.48063588142395,
+  "processing": 0,
+  "date_start": "2025-10-29T17:34:53+00:00",
+  "date_finish": "2025-10-29T17:34:53+00:00",
+  "operating_reset_at": 1761759893,
   "operating": 0
  }
 }

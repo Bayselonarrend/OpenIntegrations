@@ -31,8 +31,8 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен        = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База         = "appBEgfZnOQXjj4V4";
-    Таблица      = "tbl7VjtIddrXmaoTW";
+    База         = "appV9I2LlZaAsjRQV";
+    Таблица      = "tblLFp3HF457KlmKo";
     Наименование = "Тестовая таблица 2 (изм.)";
     Описание     = "Новая таблица (изм.)";
 
@@ -46,8 +46,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint airtable ИзменитьТаблицу \
               --token "***" \
-              --base "appqEv8lDCX4X6TpM" \
-              --table "tblWhbqONx4Dvfa3M" \
+              --base "appNsi8JTYz7ZWFIi" \
+              --table "tbl12JvProORAC97r" \
               --title "Тестовая таблица 2 (изм.)" \
               --description "Новая таблица (изм.)"
         ```
@@ -57,8 +57,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint airtable ИзменитьТаблицу ^
               --token "***" ^
-              --base "appqEv8lDCX4X6TpM" ^
-              --table "tblWhbqONx4Dvfa3M" ^
+              --base "appNsi8JTYz7ZWFIi" ^
+              --table "tbl12JvProORAC97r" ^
               --title "Тестовая таблица 2 (изм.)" ^
               --description "Новая таблица (изм.)"
         ```
@@ -68,13 +68,13 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "id": "tblWhbqONx4Dvfa3M",
+ "id": "tbl12JvProORAC97r",
  "name": "Тестовая таблица 2 (изм.)",
  "description": "Новая таблица (изм.)",
- "primaryFieldId": "fldnXlQpS5ty9NjhG",
+ "primaryFieldId": "fldPm4qS2SrIs35ro",
  "fields": [
   {
-   "id": "fldnXlQpS5ty9NjhG",
+   "id": "fldPm4qS2SrIs35ro",
    "name": "Номер",
    "type": "number",
    "options": {
@@ -82,12 +82,12 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "id": "fld5dfPDwvkjz4SmY",
+   "id": "fldbcZ1khsTRenqPa",
    "name": "Строковое",
    "type": "richText"
   },
   {
-   "id": "fldAp9t8F5s86nScZ",
+   "id": "fldFdVZFIPmDNQjLZ",
    "name": "Вложение",
    "type": "multipleAttachments",
    "options": {
@@ -95,7 +95,7 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "id": "fld9rV7VcHyKd2tpK",
+   "id": "fldSLtfRVqQ6yoAa0",
    "name": "Флажок",
    "type": "checkbox",
    "options": {
@@ -104,7 +104,7 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "id": "fldzZAy65q5yTQjZq",
+   "id": "fldSQEAdnaNfthECV",
    "name": "Дата",
    "type": "date",
    "options": {
@@ -115,24 +115,24 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "id": "fldBWtt9Wb555BJ9X",
+   "id": "fldV7grSXQ5RJp07V",
    "name": "Телефон",
    "type": "phoneNumber"
   },
   {
-   "id": "fldxSceYtXQXNQexN",
+   "id": "fld4h2kwjYzAtPoUT",
    "name": "Почта",
    "type": "email"
   },
   {
-   "id": "fldI7U8U2mHmx5ALe",
+   "id": "fldqWBJQUS6Blh4NG",
    "name": "Ссылка",
    "type": "url"
   }
  ],
  "views": [
   {
-   "id": "viwnj8NjLuaZDMMhQ",
+   "id": "viwZXgNska7NsOEJ3",
    "name": "Grid view",
    "type": "grid"
   }

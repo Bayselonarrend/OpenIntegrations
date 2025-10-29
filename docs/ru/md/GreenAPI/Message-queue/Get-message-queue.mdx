@@ -63,5 +63,155 @@ import TabItem from '@theme/TabItem';
 
 
 ```json title="Результат"
-{}
+[
+ {
+  "messageID": "BAE5B30087D87E94",
+  "type": "sendMessage",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "message": "Новое сообщение",
+   "linkPreview": true,
+   "typingTime": null,
+   "typePreview": "small"
+  }
+ },
+ {
+  "messageID": "BAE5606C92A3BDB3",
+  "type": "sendMessage",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "message": "Новое сообщение",
+   "quotedMessageId": "BAE5B30087D87E94",
+   "linkPreview": true,
+   "typingTime": null,
+   "typePreview": "small"
+  }
+ },
+ {
+  "messageID": "BAE5BD40A0E6C0C4",
+  "type": "sendFileByUrl",
+  "body": {
+   "fileName": "photo.jpg",
+   "chatId": "120363410406221140@g.us",
+   "caption": "Описание файла",
+   "archive": false,
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/ab626d20-3de6-4454-ab38-f95fa318ee46.jpg",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "BAE56C8E30A463EA",
+  "type": "sendFileByUrl",
+  "body": {
+   "fileName": "vid.mp4",
+   "chatId": "120363410406221140@g.us",
+   "quotedMessageId": "BAE5BD40A0E6C0C4",
+   "caption": "Описание файла",
+   "archive": false,
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/776a1af5-c885-4f6b-91aa-74cba79418e3.mp4",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "BAE527DA9C071D2D",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "urlFile": "https://hut.openintegrations.dev/test_data/picture.jpg",
+   "fileName": "photo.jpg",
+   "caption": "Описание файла",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "BAE59A172507CAFA",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "urlFile": "https://hut.openintegrations.dev/test_data/video.mp4",
+   "fileName": "vid.mp4",
+   "caption": "Описание файла",
+   "quotedMessageId": "BAE527DA9C071D2D",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "BAE5F2B89ABFB2DF",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE5EA8025004556",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": true,
+   "quotedMessageId": "BAE5F2B89ABFB2DF",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE5FBAA810C67F9",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "address": "Площадь Победы, Минск",
+   "nameLocation": "пл. Победы",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE5116C7BF4AD49",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "quotedMessageId": "BAE5FBAA810C67F9",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE54E86FB814E98",
+  "type": "sendContact",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "contact": {
+    "phoneContact": 79001234568,
+    "firstName": "Артем",
+...
 ```
