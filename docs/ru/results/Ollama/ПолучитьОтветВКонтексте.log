@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-10-28T17:03:24.929558611Z",
+ "created_at": "2025-10-29T18:31:58.082626259Z",
  "message": {
   "role": "assistant",
-  "content": "Yes, the first version of 1C:Enterprise was released in May 2016. The product underwent significant changes and improvements, including better data visualization, better integration with Oracle's financial solutions (such as QuickBooks), and enhanced mobile capabilities. In addition to these enhancements, the software also gained new features, such as improved inventory management, e-commerce, and time tracking. The product has since undergone numerous upgrades and updates, including version 13 in March 2021, which offers improved user experience, better performance, and expanded capabilities."
+  "content": "The first version of 1C:Enterprise was released in 2003. The latest major release is 14.4, which was released on January 25, 2022."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 23200974964,
- "load_duration": 21060266,
- "prompt_eval_count": 210,
- "prompt_eval_duration": 6691702414,
- "eval_count": 130,
- "eval_duration": 16481739201
+ "total_duration": 9712223668,
+ "load_duration": 28934147,
+ "prompt_eval_count": 180,
+ "prompt_eval_duration": 4457251058,
+ "eval_count": 49,
+ "eval_duration": 5221176514
 }

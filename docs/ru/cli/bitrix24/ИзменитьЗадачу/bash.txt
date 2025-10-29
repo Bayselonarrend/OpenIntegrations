@@ -2,6 +2,6 @@
 
 oint bitrix24 ИзменитьЗадачу \
   --url "b24-ar17wx.bitrix24.by" \
-  --task "8530" \
+  --task "8590" \
   --fields "{'TITLE':'Другой заголовок задачи','DESCRIPTION':'Другое описание задачи','PRIORITY':'1'}" \
   --token "***"
