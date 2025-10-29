@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение \
   --token "***" \
   --chatid "689203963@chat.agent" \
-  --file "/tmp/xo30fdlj.wen"
+  --file "/tmp/szgt5bmg.poe"

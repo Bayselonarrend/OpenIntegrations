@@ -1,5 +1,5 @@
 oint bitrix24 СоздатьПодкаталог \
   --url "b24-ar17wx.bitrix24.by" \
-  --folderid 45652 \
+  --folderid 45976 \
   --title "Новый подкаталог" \
   --token "***"

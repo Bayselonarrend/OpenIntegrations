@@ -1,6 +1,6 @@
 oint airtable УдалитьКомментарий \
   --token "***" \
-  --base "app7yhqgDSXQpKaTE" \
-  --table "tblsunYvtOteoAjE9" \
-  --record "recndGZlz8anmUofX" \
-  --comment "com0qKLAtXtTAa0vi"
+  --base "appNsi8JTYz7ZWFIi" \
+  --table "tbl12JvProORAC97r" \
+  --record "recsoO1pTiF4sgSY2" \
+  --comment "comJ14Hh4ukAn5MLO"

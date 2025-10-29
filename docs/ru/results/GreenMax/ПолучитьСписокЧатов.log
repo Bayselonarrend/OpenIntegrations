@@ -74,5 +74,9 @@
  {
   "chatId": "***",
   "phoneNumber": "***"
+ },
+ {
+  "chatId": "***",
+  "phoneNumber": "***"
  }
 ]
