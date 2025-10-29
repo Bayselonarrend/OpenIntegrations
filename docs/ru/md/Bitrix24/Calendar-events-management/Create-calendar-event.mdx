@@ -33,7 +33,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDКалендаря = "1536";
+    IDКалендаря = "1560";
 
     Завтра = OPI_Инструменты.ПолучитьТекущуюДату() + 86400;
     Час    = 3600;
@@ -95,8 +95,8 @@ import TabItem from '@theme/TabItem';
     Результат = OPI_Bitrix24.СоздатьСобытиеКалендаря(URL, СтруктураСобытия);
 
     URL         = "b24-ar17wx.bitrix24.by";
-    Токен       = "0ebbf768006e9f06006b12e400000001000...";
-    IDКалендаря = "1538";
+    Токен       = "1dbf0069006e9f06006b12e400000001000...";
+    IDКалендаря = "1562";
 
     СтруктураСобытия.Вставить("section", IDКалендаря);
 
@@ -112,7 +112,7 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 СоздатьСобытиеКалендаря \
               --url "b24-ar17wx.bitrix24.by" \
-              --fields "{'type':'user','ownerId':'1','from':'10/27/2025 18:20:15','to':'10/27/2025 19:20:15','section':'1550','name':'Новое событие','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Описание события','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'11/06/2025 18:20:15'},'is_meeting':'Y','location':'Офис','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" \
+              --fields "{'type':'user','ownerId':'1','from':'10/30/2025 17:45:33','to':'10/30/2025 18:45:33','section':'1598','name':'Новое событие','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Описание события','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'11/09/2025 17:45:33'},'is_meeting':'Y','location':'Офис','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" \
               --token "***"
         ```
     </TabItem>
@@ -123,7 +123,7 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 СоздатьСобытиеКалендаря ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --fields "{'type':'user','ownerId':'1','from':'10/27/2025 18:20:15','to':'10/27/2025 19:20:15','section':'1550','name':'Новое событие','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Описание события','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'11/06/2025 18:20:15'},'is_meeting':'Y','location':'Офис','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" ^
+              --fields "{'type':'user','ownerId':'1','from':'10/30/2025 17:45:33','to':'10/30/2025 18:45:33','section':'1598','name':'Новое событие','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Описание события','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'11/09/2025 17:45:33'},'is_meeting':'Y','location':'Офис','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" ^
               --token "***"
         ```
     </TabItem>
@@ -132,16 +132,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 2846,
+ "result": 2942,
  "time": {
-  "start": 1761502820,
-  "finish": 1761502820.69509,
-  "duration": 0.695087909698486,
+  "start": 1761759937,
+  "finish": 1761759937.82459,
+  "duration": 0.824588060379028,
   "processing": 0,
-  "date_start": "2025-10-26T18:20:20+00:00",
-  "date_finish": "2025-10-26T18:20:20+00:00",
-  "operating_reset_at": 1761503420,
-  "operating": 0.209616899490356
+  "date_start": "2025-10-29T17:45:37+00:00",
+  "date_finish": "2025-10-29T17:45:37+00:00",
+  "operating_reset_at": 1761760537,
+  "operating": 0.16338586807251
  }
 }
 ```

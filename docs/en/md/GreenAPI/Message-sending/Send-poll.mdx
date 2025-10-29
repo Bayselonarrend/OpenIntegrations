@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function SendPoll(Val AccessParameters, Val ChatID, Val Text, Val Options, Val MultipleSelect = False, Val ReplyID = "") Export`
+`Function SendPoll(Val AccessParameters, Val ChatID, Val Text, Val Variants, Val MultipleSelect = False, Val ReplyID = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | AccessParameters | --access | Structure Of KeyAndValue | &#x2714; | Access parameters. See FormAccessParameters |
   | ChatID | --chat | String | &#x2714; | Chat identifier |
   | Text | --text | String | &#x2714; | Message text |
-  | Options | --options | Array Of String | &#x2714; | Answer options |
+  | Variants | --options | Array Of String | &#x2714; | Answer options |
   | MultipleSelect | --multi | Boolean | &#x2716; | Allows to select more than one answer choice |
   | ReplyID | --quoted | String | &#x2716; | Replying message id if necessary |
 
@@ -43,13 +43,13 @@ Method at API documentation: [SendPoll](https://green-api.com/docs/api/sending/S
     ChatID = "120363410406221140@g.us";
     Text   = "What's your favorite color?";
 
-    Options = New Array;
-    Options.Add("Red");
-    Options.Add("Yellow");
-    Options.Add("Green");
+    Variants = New Array;
+    Variants.Add("Red");
+    Variants.Add("Yellow");
+    Variants.Add("Green");
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
-    Result           = OPI_GreenAPI.SendPoll(AccessParameters, ChatID, Text, Options);
+    Result           = OPI_GreenAPI.SendPoll(AccessParameters, ChatID, Text, Variants);
 ```
  
 

@@ -33,12 +33,12 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "8446";
+    IDЗадачи = "8512";
 
     Результат = OPI_Bitrix24.ПолучитьСписокТрудозатратЗадачи(URL, IDЗадачи);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "0ebbf768006e9f06006b12e400000001000...";
+    Токен = "1dbf0069006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПолучитьСписокТрудозатратЗадачи(URL, IDЗадачи, Токен);
 ```
@@ -50,7 +50,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьСписокТрудозатратЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8476" \
+              --task "8596" \
               --token "***"
         ```
     </TabItem>
@@ -59,7 +59,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьСписокТрудозатратЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8476" ^
+              --task "8596" ^
               --token "***"
         ```
     </TabItem>
@@ -70,39 +70,39 @@ import TabItem from '@theme/TabItem';
 {
  "result": [
   {
-   "ID": "3102",
-   "TASK_ID": "8476",
+   "ID": "3150",
+   "TASK_ID": "8596",
    "USER_ID": "1",
    "COMMENT_TEXT": "",
    "SECONDS": "3600",
    "MINUTES": "60",
    "SOURCE": "2",
-   "CREATED_DATE": "2025-10-26T18:12:50+00:00",
-   "DATE_START": "2025-10-26T18:12:50+00:00",
-   "DATE_STOP": "2025-10-26T18:12:50+00:00"
+   "CREATED_DATE": "2025-10-29T17:38:21+00:00",
+   "DATE_START": "2025-10-29T17:38:21+00:00",
+   "DATE_STOP": "2025-10-29T17:38:21+00:00"
   },
   {
-   "ID": "3104",
-   "TASK_ID": "8476",
+   "ID": "3152",
+   "TASK_ID": "8596",
    "USER_ID": "10",
    "COMMENT_TEXT": "Трудозатраты по обработке",
    "SECONDS": "7200",
    "MINUTES": "120",
    "SOURCE": "2",
-   "CREATED_DATE": "2025-09-26T15:12:51+00:00",
-   "DATE_START": "2025-10-26T18:12:53+00:00",
-   "DATE_STOP": "2025-10-26T18:12:53+00:00"
+   "CREATED_DATE": "2025-09-29T14:38:22+00:00",
+   "DATE_START": "2025-10-29T17:38:24+00:00",
+   "DATE_STOP": "2025-10-29T17:38:24+00:00"
   }
  ],
  "total": 2,
  "time": {
-  "start": 1761502383,
-  "finish": 1761502383.08418,
-  "duration": 0.0841789245605469,
+  "start": 1761759513,
+  "finish": 1761759513.5339,
+  "duration": 0.533899068832398,
   "processing": 0,
-  "date_start": "2025-10-26T18:13:03+00:00",
-  "date_finish": "2025-10-26T18:13:03+00:00",
-  "operating_reset_at": 1761502983,
+  "date_start": "2025-10-29T17:38:33+00:00",
+  "date_finish": "2025-10-29T17:38:33+00:00",
+  "operating_reset_at": 1761760113,
   "operating": 0
  }
 }
