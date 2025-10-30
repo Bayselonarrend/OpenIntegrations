@@ -1,14 +1,14 @@
 ﻿{
  "data": [
   {
-   "accessed": 1761833837,
+   "accessed": 1761850033,
    "extension": "",
    "gid": 1000,
    "is_directory": true,
    "is_symlink": false,
    "modified": 1758718863,
    "name": "test_folder2",
-   "path": "test_folder\\test_folder2",
+   "path": "test_folder/test_folder2",
    "permissions": "40777",
    "size": 512,
    "uid": 1000,
@@ -21,20 +21,20 @@
      "is_symlink": false,
      "modified": 1758718863,
      "name": "3.txt",
-     "path": "test_folder\\test_folder2\\3.txt",
+     "path": "test_folder/test_folder2/3.txt",
      "permissions": "100777",
      "size": 0,
      "uid": 1000
     },
     {
-     "accessed": 1761833837,
+     "accessed": 1761850033,
      "extension": "",
      "gid": 1000,
      "is_directory": true,
      "is_symlink": false,
      "modified": 1758718868,
      "name": "test_folder3",
-     "path": "test_folder\\test_folder2\\test_folder3",
+     "path": "test_folder/test_folder2/test_folder3",
      "permissions": "40777",
      "size": 512,
      "uid": 1000,
@@ -47,7 +47,7 @@
        "is_symlink": false,
        "modified": 1758718867,
        "name": "4.txt",
-       "path": "test_folder\\test_folder2\\test_folder3\\4.txt",
+       "path": "test_folder/test_folder2/test_folder3/4.txt",
        "permissions": "100777",
        "size": 0,
        "uid": 1000
@@ -55,14 +55,14 @@
      ]
     },
     {
-     "accessed": 1761833837,
+     "accessed": 1761850033,
      "extension": "",
      "gid": 1000,
      "is_directory": true,
      "is_symlink": false,
      "modified": 1758718856,
      "name": "test_folder4",
-     "path": "test_folder\\test_folder2\\test_folder4",
+     "path": "test_folder/test_folder2/test_folder4",
      "permissions": "40777",
      "size": 512,
      "uid": 1000,
@@ -75,7 +75,7 @@
        "is_symlink": false,
        "modified": 1758718851,
        "name": "1.txt",
-       "path": "test_folder\\test_folder2\\test_folder4\\1.txt",
+       "path": "test_folder/test_folder2/test_folder4/1.txt",
        "permissions": "100777",
        "size": 0,
        "uid": 1000
@@ -88,7 +88,7 @@
        "is_symlink": false,
        "modified": 1758718856,
        "name": "2.txt",
-       "path": "test_folder\\test_folder2\\test_folder4\\2.txt",
+       "path": "test_folder/test_folder2/test_folder4/2.txt",
        "permissions": "100777",
        "size": 0,
        "uid": 1000
@@ -98,8 +98,5 @@
    ]
   }
  ],
- "result": true,
- "close_connection": {
-  "result": true
- }
+ "result": true
 }
