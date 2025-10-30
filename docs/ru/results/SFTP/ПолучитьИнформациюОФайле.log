@@ -1,11 +1,11 @@
 ﻿{
  "data": {
-  "accessed": 1761810800,
+  "accessed": 1761834027,
   "extension": "png",
   "gid": 1000,
   "is_directory": false,
   "is_symlink": false,
-  "modified": 1761810800,
+  "modified": 1761834027,
   "name": "pic_from_binary.png",
   "path": "files_folder/pic_from_binary.png",
   "permissions": "100644",
