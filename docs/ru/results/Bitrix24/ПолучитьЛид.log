@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "2696",
+  "ID": "2712",
   "TITLE": "Мегаклиент",
   "HONORIFIC": null,
   "NAME": "Иван",
@@ -8,7 +8,7 @@
   "LAST_NAME": "Иванов",
   "COMPANY_TITLE": null,
   "COMPANY_ID": null,
-  "CONTACT_ID": "2696",
+  "CONTACT_ID": "2712",
   "IS_RETURN_CUSTOMER": "N",
   "BIRTHDATE": "",
   "SOURCE_ID": "CALL",
@@ -26,15 +26,15 @@
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2025-10-29T17:44:24+00:00",
-  "DATE_MODIFY": "2025-10-29T17:44:25+00:00",
-  "DATE_CLOSED": "2025-10-28T21:00:00+00:00",
+  "DATE_CREATE": "2025-10-30T08:52:09+00:00",
+  "DATE_MODIFY": "2025-10-30T08:52:09+00:00",
+  "DATE_CLOSED": "2025-10-29T21:00:00+00:00",
   "STATUS_SEMANTIC_ID": "S",
   "OPENED": "Y",
   "ORIGINATOR_ID": null,
   "ORIGIN_ID": null,
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2025-10-29T17:44:25+00:00",
+  "MOVED_TIME": "2025-10-30T08:52:09+00:00",
   "ADDRESS": "ул. Пушкина, д. 10",
   "ADDRESS_2": null,
   "ADDRESS_CITY": null,
@@ -43,7 +43,7 @@
   "ADDRESS_PROVINCE": null,
   "ADDRESS_COUNTRY": "Россия",
   "ADDRESS_COUNTRY_CODE": null,
-  "ADDRESS_LOC_ADDR_ID": "5392",
+  "ADDRESS_LOC_ADDR_ID": "5424",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
@@ -51,16 +51,16 @@
   "UTM_TERM": null,
   "LAST_COMMUNICATION_TIME": null,
   "LAST_ACTIVITY_BY": "1",
-  "LAST_ACTIVITY_TIME": "2025-10-29T17:44:24+00:00",
+  "LAST_ACTIVITY_TIME": "2025-10-30T08:52:09+00:00",
   "EMAIL": [
    {
-    "ID": "16156",
+    "ID": "16252",
     "VALUE_TYPE": "HOME",
     "VALUE": "yo@example.com",
     "TYPE_ID": "EMAIL"
    },
    {
-    "ID": "16158",
+    "ID": "16254",
     "VALUE_TYPE": "WORK",
     "VALUE": "hi@example.com",
     "TYPE_ID": "EMAIL"
@@ -68,7 +68,7 @@
   ],
   "PHONE": [
    {
-    "ID": "16160",
+    "ID": "16256",
     "VALUE_TYPE": "WORK",
     "VALUE": "88005553535",
     "TYPE_ID": "PHONE"
@@ -76,13 +76,13 @@
   ]
  },
  "time": {
-  "start": 1761759869,
-  "finish": 1761759869.9827,
-  "duration": 0.982702970504761,
+  "start": 1761814334,
+  "finish": 1761814334.84278,
+  "duration": 0.842780113220215,
   "processing": 0,
-  "date_start": "2025-10-29T17:44:29+00:00",
-  "date_finish": "2025-10-29T17:44:29+00:00",
-  "operating_reset_at": 1761760469,
+  "date_start": "2025-10-30T08:52:14+00:00",
+  "date_finish": "2025-10-30T08:52:14+00:00",
+  "operating_reset_at": 1761814934,
   "operating": 0
  }
 }

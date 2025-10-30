@@ -1,7 +1,7 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk СохранитьКартинкуВАльбом ^
-  --album 310566199 ^
+  --album 310571427 ^
   --picture "https://hut.openintegrations.dev/test_data/picture.jpg" ^
   --description "Картинка автотест" ^
   --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "29b82aa7-fc4e-8140-bf0d-cf5fef9ddcbd",
- "created_time": "2025-10-29T17:22:00Z",
- "last_edited_time": "2025-10-29T17:22:00Z",
+ "id": "29c82aa7-fc4e-8190-9222-da09bb2ce58b",
+ "created_time": "2025-10-30T08:26:00Z",
+ "last_edited_time": "2025-10-30T08:26:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,74 +15,19 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "29b82aa7-fc4e-81ac-b4ad-cd7e9f1172be"
+  "database_id": "29c82aa7-fc4e-81b6-9bf4-db2206c24ee3"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Активен": {
-   "id": "ZE%7Dz",
-   "type": "checkbox",
-   "checkbox": true
-  },
   "Пользователь": {
-   "id": "%60njh",
+   "id": "%3E%3AWV",
    "type": "people",
    "people": []
   },
-  "Номер": {
-   "id": "bYgV",
-   "type": "number",
-   "number": 1
-  },
-  "Картинка": {
-   "id": "fONi",
-   "type": "files",
-   "files": [
-    {
-     "name": "Лого",
-     "type": "external",
-     "external": {
-      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
-     }
-    }
-   ]
-  },
-  "Дата создания": {
-   "id": "kU%5C%7D",
-   "type": "date",
-   "date": {
-    "start": "2025-10-29T05:22:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Почта": {
-   "id": "prW%3E",
-   "type": "rich_text",
-   "rich_text": [
-    {
-     "type": "text",
-     "text": {
-      "content": "mail@vector.ru",
-      "link": null
-     },
-     "annotations": {
-      "bold": false,
-      "italic": false,
-      "strikethrough": false,
-      "underline": false,
-      "code": false,
-      "color": "default"
-     },
-     "plain_text": "mail@vector.ru",
-     "href": null
-    }
-   ]
-  },
   "Описание": {
-   "id": "vfBf",
+   "id": "Cy%5C%60",
    "type": "rich_text",
    "rich_text": [
     {
@@ -104,19 +49,74 @@
     }
    ]
   },
-  "Телефон": {
-   "id": "~CYh",
-   "type": "phone_number",
-   "phone_number": "88005553535"
+  "Дата создания": {
+   "id": "E%5DJe",
+   "type": "date",
+   "date": {
+    "start": "2025-10-30T08:26:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
+  "Активен": {
+   "id": "MBW_",
+   "type": "checkbox",
+   "checkbox": true
   },
   "Статус": {
-   "id": "~zUV",
+   "id": "Pmxh",
    "type": "select",
    "select": {
-    "id": "45072806-a98a-431c-94c5-16e572044b61",
+    "id": "eb866c20-6d52-4ce9-8230-801dd8bc7447",
     "name": "Новый",
     "color": "green"
    }
+  },
+  "Картинка": {
+   "id": "TkJP",
+   "type": "files",
+   "files": [
+    {
+     "name": "Лого",
+     "type": "external",
+     "external": {
+      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
+     }
+    }
+   ]
+  },
+  "Номер": {
+   "id": "XWpu",
+   "type": "number",
+   "number": 1
+  },
+  "Телефон": {
+   "id": "a%3BM%3B",
+   "type": "phone_number",
+   "phone_number": "88005553535"
+  },
+  "Почта": {
+   "id": "yaBN",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "mail@vector.ru",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "mail@vector.ru",
+     "href": null
+    }
+   ]
   },
   "Имя": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/29b82aa7fc4e8140bf0dcf5fef9ddcbd",
+ "url": "https://www.notion.so/29c82aa7fc4e81909222da09bb2ce58b",
  "public_url": null,
- "request_id": "03dbac44-f352-486b-896a-93574ced9f78"
+ "request_id": "bb227c7c-87f9-4983-b015-34cda2000679"
 }
