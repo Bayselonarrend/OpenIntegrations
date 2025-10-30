@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-10-30T09:34:10.053351917Z",
+ "created_at": "2025-10-30T15:41:23.182990431Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in late 2003. It is not specified whether there have been subsequent versions or updates since then. The software's official website (https://www.1c-enterprise.com/) and any other online resources may provide more information on its release history."
+  "content": "The first version of 1C:Enterprise was released in 2006. It has since been updated with several subsequent versions, including:\n\n1. 1C:2014 - Released in 2013\n2. 1C:2016 - Released in 2015\n3. 1C:2019 - Released in 2018\n4. 1C:2021 - Currently in development\n\nRegular updates are made to the program, with new features and bug fixes being released regularly."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 15127221458,
- "load_duration": 19622610,
- "prompt_eval_count": 180,
- "prompt_eval_duration": 4956176903,
- "eval_count": 69,
- "eval_duration": 10143706089
+ "total_duration": 29810963460,
+ "load_duration": 16051568,
+ "prompt_eval_count": 172,
+ "prompt_eval_duration": 3875395588,
+ "eval_count": 129,
+ "eval_duration": 25909463181
 }

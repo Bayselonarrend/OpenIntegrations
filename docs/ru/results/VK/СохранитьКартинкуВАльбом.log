@@ -1,9 +1,9 @@
 ﻿{
  "response": [
   {
-   "album_id": 310571427,
-   "date": 1761808715,
-   "id": 457260386,
+   "album_id": 310576355,
+   "date": 1761832405,
+   "id": 457260443,
    "owner_id": -218861756,
    "sizes": [
     {
@@ -75,7 +75,7 @@
    ],
    "text": "Картинка автотест",
    "user_id": 100,
-   "web_view_token": "dd5dee786b6a84f635",
+   "web_view_token": "7036b759f97ce0ed80",
    "has_tags": false,
    "orig_photo": {
     "height": 1920,

@@ -3,5 +3,5 @@
 oint telegram ЗаменитьКлавиатуруСообщения ^
   --token "***" ^
   --chat "461699897" ^
-  --message "17597" ^
+  --message "17645" ^
   --keyboard "{'inline_keyboard':[[{'text':'Новая кнопка 1','callback_data':'Новая кнопка 1'},{'text':'Новая кнопка 2','callback_data':'Новая кнопка 2'},{'text':'Новая кнопка 3','callback_data':'Новая кнопка 3'}]],'rows':'1'}"
