@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-10-29T18:31:58.082626259Z",
+ "created_at": "2025-10-30T09:34:10.053351917Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in 2003. The latest major release is 14.4, which was released on January 25, 2022."
+  "content": "The first version of 1C:Enterprise was released in late 2003. It is not specified whether there have been subsequent versions or updates since then. The software's official website (https://www.1c-enterprise.com/) and any other online resources may provide more information on its release history."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 9712223668,
- "load_duration": 28934147,
+ "total_duration": 15127221458,
+ "load_duration": 19622610,
  "prompt_eval_count": 180,
- "prompt_eval_duration": 4457251058,
- "eval_count": 49,
- "eval_duration": 5221176514
+ "prompt_eval_duration": 4956176903,
+ "eval_count": 69,
+ "eval_duration": 10143706089
 }

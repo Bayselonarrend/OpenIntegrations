@@ -1,3 +1,2 @@
 oint slack ПолучитьСписокФайлов \
-  --token "***" \
-  --channel "C06UFNUTKUL"
+  --token "***"

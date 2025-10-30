@@ -1,8 +1,8 @@
 ﻿{
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "4d35e480-d626-4a2e-8477-c937aad4fb2e",
-  "date": "2025-11-12",
+  "order_uuid": "4cab0fc9-8346-4622-bedf-f06181e2a57f",
+  "date": "2025-11-13",
   "time_from": "10:00",
   "time_to": "17:00",
   "comment": "Офис группы компаний",
@@ -19,25 +19,25 @@
    "address": "ул. Блюхера, 33",
    "postal_code": "109004"
   },
-  "uuid": "a98271dd-8521-4a88-801d-53d29b199661",
+  "uuid": "38913569-5aa4-43a0-9459-ce8d9bfa3d98",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2025-10-29T17:52:55+00:00"
+    "date_time": "2025-10-30T09:01:33+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2025-10-29T17:52:54+00:00"
+    "date_time": "2025-10-30T09:01:32+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "3bc58928-3b78-4116-ae03-79f6eeb9e6d3",
+   "request_uuid": "82da6f42-a0ac-46ed-b864-732d29d3ac7f",
    "type": "CREATE",
-   "date_time": "2025-10-29T17:52:54+00:00",
+   "date_time": "2025-10-30T09:01:32+00:00",
    "state": "INVALID",
    "errors": [
     {
