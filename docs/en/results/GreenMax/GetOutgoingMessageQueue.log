@@ -1,14 +1,1 @@
-﻿[
- {
-  "messageID": "2761822208516",
-  "type": "sendFileByUrl",
-  "body": {
-   "chatId": "***",
-   "urlFile": "https://hut.openintegrations.dev/test_data/video.mp4",
-   "fileName": "vid.mp4",
-   "caption": "File description",
-   "typingTime": 1000,
-   "typingType": "file"
-  }
- }
-]
+﻿{}

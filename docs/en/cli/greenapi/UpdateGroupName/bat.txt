@@ -2,5 +2,5 @@
 
 oint greenapi UpdateGroupName ^
  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
- --group "120363423790814591@g.us" ^
+ --group "120363423048654769@g.us" ^
  --name "New name"
