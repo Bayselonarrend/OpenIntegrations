@@ -1,10 +1,10 @@
 ﻿{
  "entity": {
-  "uuid": "973ac184-df07-473a-b5c1-f390515dfe9d",
-  "cdek_number": "1106631537",
-  "order_uuid": "fcf61299-6c3f-4c7e-8dc3-e9ff0c24ab91",
+  "uuid": "07236b8f-052f-4421-970d-efbe4dea67cb",
+  "cdek_number": "1106631708",
+  "order_uuid": "90b10219-095a-4e66-bc3c-787c53a7ef88",
   "intake_date": "2025-10-31",
-  "intake_number": "13310322",
+  "intake_number": "13310325",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -15,14 +15,11 @@
   "comment": "Comment to courier",
   "sender": {
    "company": "Company",
-   "name": "Ivaniv Ivan",
+   "name": "Company",
    "contragent_type": "LEGAL_ENTITY",
    "phones": [
     {
      "number": "79589441654"
-    },
-    {
-     "number": "+79589441654"
     }
    ],
    "passport_requirements_satisfied": false
@@ -57,19 +54,24 @@
   "need_call": false,
   "statuses": [
    {
+    "code": "READY_FOR_APPOINTMENT",
+    "name": "Готова к назначению",
+    "date_time": "2025-10-30T20:32:04+03:00"
+   },
+   {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2025-10-30T10:44:52+00:00"
+    "date_time": "2025-10-30T20:32:04+03:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-30T10:44:52+00:00"
+    "date_time": "2025-10-30T20:32:04+03:00"
    }
   ],
   "packages": [
    {
-    "package_id": "0b6e51db-57cf-43bf-b295-8f703bb4d316",
+    "package_id": "5582947b-93c3-42ce-bc8a-d5052e0d57d8",
     "weight": 1000,
     "length": 10,
     "width": 10,
@@ -80,9 +82,9 @@
  },
  "requests": [
   {
-   "request_uuid": "e4ec1250-cc07-44c2-959c-011c77b62bb7",
+   "request_uuid": "f6c73584-bd18-47fb-b109-783129751805",
    "type": "CREATE",
-   "date_time": "2025-10-30T10:44:51+00:00",
+   "date_time": "2025-10-30T20:32:03+03:00",
    "state": "SUCCESSFUL"
   }
  ]

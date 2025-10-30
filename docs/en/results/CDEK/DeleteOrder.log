@@ -1,12 +1,12 @@
 ﻿{
  "entity": {
-  "uuid": "ea71b5e6-bb05-4a44-ad5f-c09eb697371b"
+  "uuid": "0387cdd8-1d6f-4906-ab7d-713f1f1b7544"
  },
  "requests": [
   {
-   "request_uuid": "2a436a03-8901-482c-b128-604f402c1472",
+   "request_uuid": "775ffe11-c400-4bd2-9c73-68a2163ab0c4",
    "type": "DELETE",
-   "date_time": "2025-10-30T10:45:18+00:00",
+   "date_time": "2025-10-30T20:32:40+03:00",
    "state": "ACCEPTED"
   }
  ],

@@ -1,24 +1,24 @@
 ﻿{
  "result": {
-  "id": 3204,
-  "taskId": 8642,
-  "commentId": 20050,
+  "id": 3216,
+  "taskId": 8672,
+  "commentId": 20116,
   "createdBy": 1,
-  "createdAt": "2025-10-30T10:36:01+00:00",
-  "updatedAt": "2025-10-30T10:36:01+00:00",
+  "createdAt": "2025-10-30T20:16:10+03:00",
+  "updatedAt": "2025-10-30T20:16:10+03:00",
   "status": 0,
   "text": "The task has been changed, let's split up",
   "formattedText": "The task has been changed, let's split up",
   "files": null
  },
  "time": {
-  "start": 1761820563,
-  "finish": 1761820563.67384,
-  "duration": 0.673840045928955,
+  "start": 1761844578,
+  "finish": 1761844578.08883,
+  "duration": 0.0888309478759766,
   "processing": 0,
-  "date_start": "2025-10-30T10:36:03+00:00",
-  "date_finish": "2025-10-30T10:36:03+00:00",
-  "operating_reset_at": 1761821163,
+  "date_start": "2025-10-30T20:16:18+03:00",
+  "date_finish": "2025-10-30T20:16:18+03:00",
+  "operating_reset_at": 1761845178,
   "operating": 0
  }
 }

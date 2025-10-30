@@ -3,4 +3,4 @@
 oint greenapi SetReadMark \
  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
  --chat "120363410406221140@g.us" \
- --message "BAE5A2E3F079844F"
+ --message "BAE5506506B24B5B"

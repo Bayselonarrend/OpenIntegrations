@@ -1,6 +1,6 @@
 oint bitrix24 CreateDepartment ^
  --url "b24-ar17wx.bitrix24.by" ^
  --title "Subordinate department" ^
- --parentid 2918 ^
+ --parentid 2942 ^
  --headid 1 ^
  --token "***"
