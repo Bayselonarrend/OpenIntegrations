@@ -2,31 +2,31 @@
  "result": [
   {
    "POST_MESSAGE_HTML": null,
-   "ID": "19982",
+   "ID": "20048",
    "AUTHOR_ID": "1",
    "AUTHOR_NAME": "Антон Титовец",
    "AUTHOR_EMAIL": "",
-   "POST_DATE": "2025-10-29T22:06:14+00:00",
+   "POST_DATE": "2025-10-30T10:36:00+00:00",
    "POST_MESSAGE": "The task has been changed, do not split up"
   },
   {
    "POST_MESSAGE_HTML": null,
-   "ID": "19984",
+   "ID": "20050",
    "AUTHOR_ID": "1",
    "AUTHOR_NAME": "Антон Титовец",
    "AUTHOR_EMAIL": "",
-   "POST_DATE": "2025-10-29T22:06:17+00:00",
+   "POST_DATE": "2025-10-30T10:36:01+00:00",
    "POST_MESSAGE": "The task has been changed, let's split up"
   }
  ],
  "time": {
-  "start": 1761775602,
-  "finish": 1761775602.66409,
-  "duration": 0.664089918136597,
+  "start": 1761820567,
+  "finish": 1761820567.08877,
+  "duration": 0.0887699127197266,
   "processing": 0,
-  "date_start": "2025-10-29T22:06:42+00:00",
-  "date_finish": "2025-10-29T22:06:42+00:00",
-  "operating_reset_at": 1761776202,
+  "date_start": "2025-10-30T10:36:07+00:00",
+  "date_finish": "2025-10-30T10:36:07+00:00",
+  "operating_reset_at": 1761821167,
   "operating": 0
  }
 }
