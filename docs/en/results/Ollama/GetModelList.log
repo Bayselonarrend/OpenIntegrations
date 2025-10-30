@@ -3,7 +3,7 @@
   {
    "name": "mario:latest",
    "model": "mario:latest",
-   "modified_at": "2025-10-29T22:58:42.471546086Z",
+   "modified_at": "2025-10-30T11:09:14.745442083Z",
    "size": 637700145,
    "digest": "83472d32997e219d78e3e480763e7b72beca170aaa02f3f2e2dbf613c248dee4",
    "details": {
@@ -20,7 +20,7 @@
   {
    "name": "bayselonarrend/tinyllama:latest",
    "model": "bayselonarrend/tinyllama:latest",
-   "modified_at": "2025-10-29T22:58:35.778842644Z",
+   "modified_at": "2025-10-30T11:09:13.341368456Z",
    "size": 637700138,
    "digest": "2644915ede352ea7bdfaff0bfac0be74c719d5d5202acb63a6fb095b52f394a4",
    "details": {
@@ -37,7 +37,7 @@
   {
    "name": "tinyllama:latest",
    "model": "tinyllama:latest",
-   "modified_at": "2025-10-29T22:58:32.473462922Z",
+   "modified_at": "2025-10-30T11:09:12.301313917Z",
    "size": 637700138,
    "digest": "2644915ede352ea7bdfaff0bfac0be74c719d5d5202acb63a6fb095b52f394a4",
    "details": {
