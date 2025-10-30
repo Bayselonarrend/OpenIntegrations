@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьИнформациюОКаталоге ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --folderid 45976 ^
+  --folderid 46192 ^
   --token "***"
