@@ -1,27 +1,27 @@
 ﻿{
  "tables": [
   {
-   "id": "tblRdWo8yywInDKdH",
+   "id": "tbloGy6BMddLzUA6Z",
    "name": "Тестовая таблица",
-   "primaryFieldId": "fldCsg5HSihSDVeP9",
+   "primaryFieldId": "fldqf5ekT4IL7pabO",
    "fields": [
     {
      "type": "number",
      "options": {
       "precision": 0
      },
-     "id": "fldCsg5HSihSDVeP9",
+     "id": "fldqf5ekT4IL7pabO",
      "name": "Номер"
     },
     {
      "type": "richText",
-     "id": "fldL0srel3TSgFXQw",
+     "id": "fldhdKiZFJrSPt1Sk",
      "name": "Строковое"
     }
    ],
    "views": [
     {
-     "id": "viwlSKAIS666Oqfmz",
+     "id": "viwxjT84FiHX4oLnJ",
      "name": "Grid view",
      "type": "grid"
     }

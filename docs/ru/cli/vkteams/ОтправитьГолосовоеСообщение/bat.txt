@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение ^
   --token "***" ^
   --chatid "689203963@chat.agent" ^
-  --file "/tmp/4o1d0ll3.tv4"
+  --file "C:\Users\bayse\AppData\Local\Temp\25amutpl.05w"

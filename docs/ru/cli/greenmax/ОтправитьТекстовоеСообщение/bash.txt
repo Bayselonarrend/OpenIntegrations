@@ -2,6 +2,6 @@
 
 oint greenmax ОтправитьТекстовоеСообщение \
   --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
-  --chat "-68924012298325" \
+  --chat "-68927783043157" \
   --text "Текст сообщения" \
   --typing 2000

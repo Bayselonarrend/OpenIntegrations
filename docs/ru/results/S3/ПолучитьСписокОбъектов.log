@@ -9,7 +9,7 @@
    "IsTruncated": "false",
    "Contents": {
     "Key": "picture.jpg",
-    "LastModified": "2025-10-30T09:15:36.726Z",
+    "LastModified": "2025-10-30T15:25:17.665Z",
     "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
     "Size": "2114023",
     "StorageClass": "STANDARD"
@@ -18,12 +18,12 @@
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Thu, 30 Oct 2025 09:21:35 GMT",
+  "Date": "Thu, 30 Oct 2025 15:29:13 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
   "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
-  "X-Amz-Request-Id": "18733A677766A429",
+  "X-Amz-Request-Id": "18734E773D18A3AD",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "452",
