@@ -2,6 +2,6 @@ oint bitrix24 AddKanbanStage \
  --url "b24-ar17wx.bitrix24.by" \
  --title "New stage 2" \
  --color "0026FF" \
- --prevstage 3172 \
+ --prevstage 3196 \
  --admin true \
  --token "***"

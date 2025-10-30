@@ -1,4 +1,4 @@
 oint vkteams SendVoice \
  --token "***" \
  --chatid "689203963@chat.agent" \
- --file "/tmp/zqcshplt.jzu"
+ --file "C:\Users\bayse\AppData\Local\Temp\hzfb4sib.g0p"

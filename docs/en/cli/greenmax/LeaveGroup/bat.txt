@@ -2,4 +2,4 @@
 
 oint greenmax LeaveGroup ^
  --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
- --chat "-68920189648981"
+ --chat "-68929077051477"
