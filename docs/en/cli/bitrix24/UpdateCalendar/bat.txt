@@ -2,6 +2,6 @@
 
 oint bitrix24 UpdateCalendar ^
  --url "b24-ar17wx.bitrix24.by" ^
- --calendar 1606 ^
+ --calendar 1630 ^
  --fields "{'type':'user','ownerId':'1','name':'New calendar name','description':'This calendar has been changed'}" ^
  --token "***"

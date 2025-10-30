@@ -2,5 +2,5 @@
 
 oint ollama PushBlob \
  --url "https://hut.openintegrations.dev/ollama" \
- --data "/tmp/jikl0on2.ama" \
+ --data "C:\Users\bayse\AppData\Local\Temp\u1asplwj.1fo" \
  --headers "{'Authorization':'***'}"

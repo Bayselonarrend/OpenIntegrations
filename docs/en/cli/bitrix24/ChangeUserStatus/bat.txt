@@ -1,5 +1,5 @@
 oint bitrix24 ChangeUserStatus ^
  --url "b24-ar17wx.bitrix24.by" ^
- --userid 2916 ^
+ --userid 2940 ^
  --fire true ^
  --token "***"

@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "29c82aa7-fc4e-81ab-ae8c-c09a0770a512",
- "created_time": "2025-10-30T10:30:00Z",
- "last_edited_time": "2025-10-30T10:30:00Z",
+ "id": "29c82aa7-fc4e-81e0-82d9-f6c6a7cb101f",
+ "created_time": "2025-10-30T17:05:00Z",
+ "last_edited_time": "2025-10-30T17:05:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,69 +15,37 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "29c82aa7-fc4e-8183-819e-d25dd809c386"
+  "database_id": "29c82aa7-fc4e-81dd-91f2-f1e5911332dd"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Image": {
-   "id": "%3El%60a",
-   "type": "files",
-   "files": [
-    {
-     "name": "Logo",
-     "type": "external",
-     "external": {
-      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
-     }
-    }
-   ]
+  "Phone": {
+   "id": "%3BUPe",
+   "type": "phone_number",
+   "phone_number": "88005553535"
   },
   "Status": {
-   "id": "AdLA",
+   "id": "KaWH",
    "type": "select",
    "select": {
-    "id": "a2795f22-0625-4b6d-b47c-2fadfd3e30d0",
+    "id": "e0f0b499-cce0-4eaa-8475-e9c404cec00b",
     "name": "New",
     "color": "green"
    }
   },
-  "Number": {
-   "id": "Evhb",
-   "type": "number",
-   "number": 1
-  },
-  "Email": {
-   "id": "E%7BD%7D",
-   "type": "rich_text",
-   "rich_text": [
-    {
-     "type": "text",
-     "text": {
-      "content": "mail@vector.ru",
-      "link": null
-     },
-     "annotations": {
-      "bold": false,
-      "italic": false,
-      "strikethrough": false,
-      "underline": false,
-      "code": false,
-      "color": "default"
-     },
-     "plain_text": "mail@vector.ru",
-     "href": null
-    }
-   ]
-  },
-  "Active": {
-   "id": "N%5B%5EO",
-   "type": "checkbox",
-   "checkbox": true
+  "CreationDate": {
+   "id": "_vsE",
+   "type": "date",
+   "date": {
+    "start": "2025-10-30T11:05:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
   },
   "Description": {
-   "id": "THgS",
+   "id": "dYYC",
    "type": "rich_text",
    "rich_text": [
     {
@@ -99,24 +67,56 @@
     }
    ]
   },
-  "CreationDate": {
-   "id": "lah%5E",
-   "type": "date",
-   "date": {
-    "start": "2025-10-30T10:30:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Phone": {
-   "id": "rHIl",
-   "type": "phone_number",
-   "phone_number": "88005553535"
+  "Email": {
+   "id": "kFfg",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "mail@vector.ru",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "mail@vector.ru",
+     "href": null
+    }
+   ]
   },
   "User": {
-   "id": "yO%5E%7D",
+   "id": "m%3BYi",
    "type": "people",
    "people": []
+  },
+  "Image": {
+   "id": "tP%3Cj",
+   "type": "files",
+   "files": [
+    {
+     "name": "Logo",
+     "type": "external",
+     "external": {
+      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
+     }
+    }
+   ]
+  },
+  "Number": {
+   "id": "tkI%3A",
+   "type": "number",
+   "number": 1
+  },
+  "Active": {
+   "id": "y%3F%5Co",
+   "type": "checkbox",
+   "checkbox": true
   },
   "Name": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/LLC-Vector-29c82aa7fc4e81abae8cc09a0770a512",
+ "url": "https://www.notion.so/LLC-Vector-29c82aa7fc4e81e082d9f6c6a7cb101f",
  "public_url": null,
- "request_id": "2f454ac0-259d-428f-88d2-41f4533f99ae"
+ "request_id": "2b1b4ec2-d535-4974-8723-9e894b2b8f09"
 }
