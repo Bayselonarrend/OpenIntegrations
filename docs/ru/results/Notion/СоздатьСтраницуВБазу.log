@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "29c82aa7-fc4e-8190-9222-da09bb2ce58b",
- "created_time": "2025-10-30T08:26:00Z",
- "last_edited_time": "2025-10-30T08:26:00Z",
+ "id": "29c82aa7-fc4e-818d-9385-d1b3e99aa696",
+ "created_time": "2025-10-30T14:48:00Z",
+ "last_edited_time": "2025-10-30T14:48:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,19 +15,37 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "29c82aa7-fc4e-81b6-9bf4-db2206c24ee3"
+  "database_id": "29c82aa7-fc4e-81a8-8ef6-f8d90e7a2fcf"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Пользователь": {
-   "id": "%3E%3AWV",
-   "type": "people",
-   "people": []
+  "Телефон": {
+   "id": "GAm%5C",
+   "type": "phone_number",
+   "phone_number": "88005553535"
+  },
+  "Статус": {
+   "id": "H%60J%3D",
+   "type": "select",
+   "select": {
+    "id": "8001c734-7e84-415c-af8d-d87a2b4c5e28",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Дата создания": {
+   "id": "OuhC",
+   "type": "date",
+   "date": {
+    "start": "2025-10-30T08:48:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
   },
   "Описание": {
-   "id": "Cy%5C%60",
+   "id": "%5Byo%60",
    "type": "rich_text",
    "rich_text": [
     {
@@ -49,31 +67,13 @@
     }
    ]
   },
-  "Дата создания": {
-   "id": "E%5DJe",
-   "type": "date",
-   "date": {
-    "start": "2025-10-30T08:26:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
   "Активен": {
-   "id": "MBW_",
+   "id": "%5Eu%5DY",
    "type": "checkbox",
    "checkbox": true
   },
-  "Статус": {
-   "id": "Pmxh",
-   "type": "select",
-   "select": {
-    "id": "eb866c20-6d52-4ce9-8230-801dd8bc7447",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
   "Картинка": {
-   "id": "TkJP",
+   "id": "kfpY",
    "type": "files",
    "files": [
     {
@@ -86,17 +86,17 @@
    ]
   },
   "Номер": {
-   "id": "XWpu",
+   "id": "tnGx",
    "type": "number",
    "number": 1
   },
-  "Телефон": {
-   "id": "a%3BM%3B",
-   "type": "phone_number",
-   "phone_number": "88005553535"
+  "Пользователь": {
+   "id": "unDM",
+   "type": "people",
+   "people": []
   },
   "Почта": {
-   "id": "yaBN",
+   "id": "~PM%7D",
    "type": "rich_text",
    "rich_text": [
     {
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/29c82aa7fc4e81909222da09bb2ce58b",
+ "url": "https://www.notion.so/29c82aa7fc4e818d9385d1b3e99aa696",
  "public_url": null,
- "request_id": "bb227c7c-87f9-4983-b015-34cda2000679"
+ "request_id": "5c915e15-4630-4c2d-a9f5-cc594ee38caf"
 }

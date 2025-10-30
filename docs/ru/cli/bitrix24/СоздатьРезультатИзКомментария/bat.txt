@@ -1,4 +1,4 @@
 oint bitrix24 СоздатьРезультатИзКомментария ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --comment 20028 ^
+  --comment 20094 ^
   --token "***"
