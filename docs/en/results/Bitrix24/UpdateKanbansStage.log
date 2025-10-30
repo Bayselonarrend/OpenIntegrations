@@ -1,13 +1,13 @@
 ﻿{
  "result": true,
  "time": {
-  "start": 1761775793,
-  "finish": 1761775793.2566,
-  "duration": 0.256597995758057,
+  "start": 1761820643,
+  "finish": 1761820643.60189,
+  "duration": 0.601892948150635,
   "processing": 0,
-  "date_start": "2025-10-29T22:09:53+00:00",
-  "date_finish": "2025-10-29T22:09:53+00:00",
-  "operating_reset_at": 1761776393,
+  "date_start": "2025-10-30T10:37:23+00:00",
+  "date_finish": "2025-10-30T10:37:23+00:00",
+  "operating_reset_at": 1761821243,
   "operating": 0
  }
 }
