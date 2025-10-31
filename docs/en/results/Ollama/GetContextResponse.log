@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-10-30T18:01:03.434004681Z",
+ "created_at": "2025-10-31T12:26:13.839204322Z",
  "message": {
   "role": "assistant",
-  "content": "I don't have access to real-time information or date information on upgrades. However, in general, a major new release of 1c:enterprise is typically released every two to three years (or at least once every four years) based on the product's development cycle. This release will include new features and functionality, as well as bug fixes and performance improvements, among other enhancements. The exact date for a new version may vary depending on various factors such as the company's development schedule and the user base's demand for specific features or functionalities."
+  "content": "The first version of 1C:Enterprise was released in November 2004. It has since been updated with new features and improvements, such as enhancements to inventory management, accounting, and project management. In recent years, 1C:Enterprise has undergone significant upgrades and improvements, including new modules for business intelligence, mobile app support, and more. The latest version of 1C:Enterprise is 3.5, which was released in 2019."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 17503919101,
- "load_duration": 35588074,
- "prompt_eval_count": 212,
- "prompt_eval_duration": 5211065776,
- "eval_count": 121,
- "eval_duration": 12244415838
+ "total_duration": 15730040496,
+ "load_duration": 18357020,
+ "prompt_eval_count": 181,
+ "prompt_eval_duration": 4272287371,
+ "eval_count": 110,
+ "eval_duration": 11434948545
 }
