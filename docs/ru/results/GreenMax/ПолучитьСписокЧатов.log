@@ -114,5 +114,9 @@
  {
   "chatId": "***",
   "phoneNumber": "***"
+ },
+ {
+  "chatId": "***",
+  "phoneNumber": "***"
  }
 ]
