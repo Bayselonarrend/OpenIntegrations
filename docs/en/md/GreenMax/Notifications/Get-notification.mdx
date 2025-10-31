@@ -44,6 +44,26 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/v3/docs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenmax GetNotification \
+             --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenmax GetNotification ^
+             --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
@@ -57,9 +77,10 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/v3/docs
    "wid": "***",
    "typeInstance": "v3"
   },
-  "timestamp": 1761491280,
-  "idMessage": "2761491204283",
-  "status": "notInGroup",
+  "timestamp": 1761898782,
+  "idMessage": "2761898750161",
+  "status": "failed",
+  "description": "MessageError: Вы не можете отправить сообщение в этом чате",
   "sendByApi": true
  }
 }

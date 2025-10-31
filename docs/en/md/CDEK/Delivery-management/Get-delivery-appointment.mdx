@@ -34,8 +34,8 @@ Method at API documentation: [Information about delivery appointment](https://ap
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjE2NTcxMDcsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID  = "6ac43f89-0148-426b-813c-61fc07605188";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjE4MDg5ODQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "bc855113-dae0-436d-8058-24b75ac0118b";
 
     Result = OPI_CDEK.GetDeliveryAppointment(Token, UUID, True);
 ```
@@ -47,7 +47,7 @@ Method at API documentation: [Information about delivery appointment](https://ap
         ```bash
             oint cdek GetDeliveryAppointment \
              --token "***" \
-             --uuid "abd0a427-7000-44d1-8a5b-054e5f7dca2a" \
+             --uuid "8c823c59-e0ba-433a-8349-c638a5ea8853" \
              --testapi "***"
         ```
     </TabItem>
@@ -56,7 +56,7 @@ Method at API documentation: [Information about delivery appointment](https://ap
         ```batch
             oint cdek GetDeliveryAppointment ^
              --token "***" ^
-             --uuid "abd0a427-7000-44d1-8a5b-054e5f7dca2a" ^
+             --uuid "8c823c59-e0ba-433a-8349-c638a5ea8853" ^
              --testapi "***"
         ```
     </TabItem>
@@ -67,8 +67,8 @@ Method at API documentation: [Information about delivery appointment](https://ap
 {
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "cfe17138-ac8d-4328-b845-1870ddf7ca0c",
-  "date": "2025-11-10",
+  "order_uuid": "4c7113d6-e20b-4218-9fd9-2cf33b75a384",
+  "date": "2025-11-14",
   "time_from": "10:00",
   "time_to": "17:00",
   "comment": "Group office",
@@ -85,30 +85,30 @@ Method at API documentation: [Information about delivery appointment](https://ap
    "address": "st. Bluchera, 33",
    "postal_code": "109004"
   },
-  "uuid": "82b43f26-ccf1-4ec3-9f38-bd6e68a80550",
+  "uuid": "2bb6253b-d0ce-45cd-8281-f42bc5c03553",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2025-10-27T10:16:39+00:00"
+    "date_time": "2025-10-31T12:03:58+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2025-10-27T10:16:38+00:00"
+    "date_time": "2025-10-31T12:03:57+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "68cfe53f-99e1-42af-8802-c20b32178ebd",
+   "request_uuid": "34e4bca2-59ed-4b54-9e50-786ae28b3242",
    "type": "CREATE",
-   "date_time": "2025-10-27T10:16:38+00:00",
+   "date_time": "2025-10-31T12:03:57+00:00",
    "state": "INVALID",
    "errors": [
     {
      "code": "delivery_date_too_late",
-     "message": "Указанная дата доставки не может быть позднее 2025-11-06"
+     "message": "Указанная дата доставки не может быть позднее 2025-11-11"
     }
    ]
   }
