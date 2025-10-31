@@ -28,7 +28,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Token = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Base  = "29a82aa7-fc4e-8177-9e39-f14132abda70";
+    Base  = "29c82aa7-fc4e-8184-8582-da9da081508e";
 
     Result = OPI_Notion.GetDatabase(Token, Base);
 ```
@@ -40,7 +40,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint notion GetDatabase \
              --token "***" \
-             --base "28d82aa7-fc4e-813c-9f5e-ecbe6ad80be3"
+             --base "29c82aa7-fc4e-81dd-91f2-f1e5911332dd"
         ```
     </TabItem>
   
@@ -48,7 +48,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint notion GetDatabase ^
              --token "***" ^
-             --base "28d82aa7-fc4e-813c-9f5e-ecbe6ad80be3"
+             --base "29c82aa7-fc4e-81dd-91f2-f1e5911332dd"
         ```
     </TabItem>
 </Tabs>
@@ -57,10 +57,10 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "object": "database",
- "id": "29982aa7-fc4e-8165-9383-ceb47e2029c5",
+ "id": "29d82aa7-fc4e-8173-83c3-eef87a456cc4",
  "cover": null,
  "icon": null,
- "created_time": "2025-10-27T09:59:00Z",
+ "created_time": "2025-10-31T11:46:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -69,7 +69,7 @@ import TabItem from '@theme/TabItem';
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2025-10-27T09:59:00Z",
+ "last_edited_time": "2025-10-31T11:46:00Z",
  "title": [
   {
    "type": "text",
@@ -110,57 +110,8 @@ import TabItem from '@theme/TabItem';
  ],
  "is_inline": false,
  "properties": {
-  "Active": {
-   "id": "%3Fi%3Dw",
-   "name": "Active",
-   "description": null,
-   "type": "checkbox",
-   "checkbox": {}
-  },
-  "CreationDate": {
-   "id": "GJs%3B",
-   "name": "CreationDate",
-   "description": null,
-   "type": "date",
-   "date": {}
-  },
-  "Image": {
-   "id": "Xh~%3C",
-   "name": "Image",
-   "description": null,
-   "type": "files",
-   "files": {}
-  },
-  "Email": {
-   "id": "%5E~%3C%60",
-   "name": "Email",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "Phone": {
-   "id": "hn%3Dz",
-   "name": "Phone",
-   "description": null,
-   "type": "phone_number",
-   "phone_number": {}
-  },
-  "Description": {
-   "id": "l%3Fcd",
-   "name": "Description",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "User": {
-   "id": "rCPm",
-   "name": "User",
-   "description": null,
-   "type": "people",
-   "people": {}
-  },
   "Number": {
-   "id": "vXTq",
+   "id": "BlJD",
    "name": "Number",
    "description": null,
    "type": "number",
@@ -168,27 +119,76 @@ import TabItem from '@theme/TabItem';
     "format": "number"
    }
   },
+  "Phone": {
+   "id": "Wl~i",
+   "name": "Phone",
+   "description": null,
+   "type": "phone_number",
+   "phone_number": {}
+  },
+  "Active": {
+   "id": "Z%5B%3Dr",
+   "name": "Active",
+   "description": null,
+   "type": "checkbox",
+   "checkbox": {}
+  },
+  "User": {
+   "id": "%5EIRs",
+   "name": "User",
+   "description": null,
+   "type": "people",
+   "people": {}
+  },
+  "CreationDate": {
+   "id": "%60%7BzS",
+   "name": "CreationDate",
+   "description": null,
+   "type": "date",
+   "date": {}
+  },
+  "Image": {
+   "id": "g%5EIp",
+   "name": "Image",
+   "description": null,
+   "type": "files",
+   "files": {}
+  },
+  "Email": {
+   "id": "nJ%40%3F",
+   "name": "Email",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
+  "Description": {
+   "id": "oeUs",
+   "name": "Description",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
   "Status": {
-   "id": "%7Dkh%3E",
+   "id": "~d%3Cz",
    "name": "Status",
    "description": null,
    "type": "select",
    "select": {
     "options": [
      {
-      "id": "4b0124e2-e40c-4a22-9557-d1ecd931f0ff",
+      "id": "baddcdaa-38ec-4a30-bb0a-3ad825ed31c3",
       "name": "New",
       "color": "green",
       "description": null
      },
      {
-      "id": "cd76fd5c-9bb9-4761-adac-fffe3917df5a",
+      "id": "09d5c3f9-052d-4bc6-a68e-3468343a019e",
       "name": "InProgress",
       "color": "yellow",
       "description": null
      },
      {
-      "id": "08d93219-0e74-40eb-bc14-8356526fb359",
+      "id": "df89a664-1720-411e-b20c-f2479b064e33",
       "name": "Remote",
       "color": "red",
       "description": null

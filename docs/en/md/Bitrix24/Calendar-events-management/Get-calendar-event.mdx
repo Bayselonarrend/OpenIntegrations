@@ -33,13 +33,13 @@ Method at API documentation: [calendar.event.getbyid](https://apidocs.bitrix24.r
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    EventID = "2866";
+    EventID = "2962";
 
     Result = OPI_Bitrix24.GetCalendarEvent(URL, EventID);
 
     URL     = "b24-ar17wx.bitrix24.by";
-    Token   = "1dbf0069006e9f06006b12e400000001000...";
-    EventID = "2870";
+    Token   = "53100369006e9f06006b12e400000001000...";
+    EventID = "2966";
 
     Result = OPI_Bitrix24.GetCalendarEvent(URL, EventID, Token);
 ```
@@ -51,7 +51,7 @@ Method at API documentation: [calendar.event.getbyid](https://apidocs.bitrix24.r
         ```bash
             oint bitrix24 GetCalendarEvent \
              --url "b24-ar17wx.bitrix24.by" \
-             --event 2792 \
+             --event 3006 \
              --token "***"
         ```
     </TabItem>
@@ -60,7 +60,7 @@ Method at API documentation: [calendar.event.getbyid](https://apidocs.bitrix24.r
         ```batch
             oint bitrix24 GetCalendarEvent ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --event 2792 ^
+             --event 3006 ^
              --token "***"
         ```
     </TabItem>
@@ -70,27 +70,27 @@ Method at API documentation: [calendar.event.getbyid](https://apidocs.bitrix24.r
 ```json title="Result"
 {
  "result": {
-  "ID": "2854",
-  "PARENT_ID": "2854",
+  "ID": "3046",
+  "PARENT_ID": "3046",
   "DELETED": "N",
   "CAL_TYPE": "user",
   "OWNER_ID": "1",
   "NAME": "New event",
-  "DATE_FROM": "28.10.2025 10:12:00",
-  "DATE_TO": "28.10.2025 11:12:00",
+  "DATE_FROM": "01.11.2025 11:59:00",
+  "DATE_TO": "01.11.2025 12:59:00",
   "ORIGINAL_DATE_FROM": null,
   "TZ_FROM": "Europe/Minsk",
   "TZ_TO": "Europe/Minsk",
   "TZ_OFFSET_FROM": "10800",
   "TZ_OFFSET_TO": "10800",
-  "DATE_FROM_TS_UTC": "1761624736",
-  "DATE_TO_TS_UTC": "1764231120",
+  "DATE_FROM_TS_UTC": "1761976769",
+  "DATE_TO_TS_UTC": "1764583140",
   "DT_SKIP_TIME": "N",
   "DT_LENGTH": 3600,
   "EVENT_TYPE": null,
   "CREATED_BY": "1",
-  "DATE_CREATE": "27.10.2025 13:12:18",
-  "TIMESTAMP_X": "27.10.2025 13:12:18",
+  "DATE_CREATE": "31.10.2025 14:59:30",
+  "TIMESTAMP_X": "31.10.2025 14:59:30",
   "DESCRIPTION": "Event description",
   "PRIVATE_EVENT": "1",
   "ACCESSIBILITY": "quest",
@@ -120,12 +120,12 @@ Method at API documentation: [calendar.event.getbyid](https://apidocs.bitrix24.r
    "FREQ": "DAILY",
    "COUNT": 3,
    "INTERVAL": 10,
-   "UNTIL": "07.11.2025",
-   "~UNTIL": "07.11.2025",
-   "UNTIL_TS": 1762473600
+   "UNTIL": "11.11.2025",
+   "~UNTIL": "11.11.2025",
+   "UNTIL_TS": 1762819200
   },
   "EXDATE": "",
-  "DAV_XML_ID": "20251028T071200Z-fc360ad9cfe154b289ac4bae63525597@b24-ar17wx.bitrix24.by",
+  "DAV_XML_ID": "20251101T085900Z-8274cbbce4ef4a01dd0fe75ba3e8aa39@b24-ar17wx.bitrix24.by",
   "G_EVENT_ID": "",
   "DAV_EXCH_LABEL": "",
   "CAL_DAV_LABEL": "",
@@ -136,30 +136,30 @@ Method at API documentation: [calendar.event.getbyid](https://apidocs.bitrix24.r
   ],
   "RECURRENCE_ID": null,
   "RELATIONS": "",
-  "SECTION_ID": "1554",
+  "SECTION_ID": "1650",
   "SYNC_STATUS": null,
   "UF_CRM_CAL_EVENT": false,
   "UF_WEBDAV_CAL_EVENT": false,
   "SECTION_DAV_XML_ID": null,
-  "DATE_FROM_FORMATTED": "Tue Oct 28 2025 10:12:00",
-  "DATE_TO_FORMATTED": "Tue Oct 28 2025 11:12:00",
+  "DATE_FROM_FORMATTED": "Sat Nov 01 2025 11:59:00",
+  "DATE_TO_FORMATTED": "Sat Nov 01 2025 12:59:00",
   "IS_DAYLIGHT_SAVING_TZ": "N",
-  "SECT_ID": "1554",
+  "SECT_ID": "1650",
   "OPTIONS": null,
   "ATTENDEE_LIST": [
    {
     "id": 1,
-    "entryId": "2854",
+    "entryId": "3046",
     "status": "H"
    },
    {
     "id": 10,
-    "entryId": "2856",
+    "entryId": "3048",
     "status": "Q"
    }
   ],
   "COLLAB_ID": null,
-  "~RRULE_DESCRIPTION": "каждый 10-й день, от 28.10.2025 до 07.11.2025",
+  "~RRULE_DESCRIPTION": "каждый 10-й день, от 01.11.2025 до 11.11.2025",
   "attendeesEntityList": [
    {
     "entityId": "user",
@@ -175,13 +175,13 @@ Method at API documentation: [calendar.event.getbyid](https://apidocs.bitrix24.r
   "~USER_OFFSET_TO": 0
  },
  "time": {
-  "start": 1761559942,
-  "finish": 1761559942.61338,
-  "duration": 0.613379001617432,
+  "start": 1761911975,
+  "finish": 1761911975.88151,
+  "duration": 0.881509065628052,
   "processing": 0,
-  "date_start": "2025-10-27T10:12:22+00:00",
-  "date_finish": "2025-10-27T10:12:22+00:00",
-  "operating_reset_at": 1761560542,
+  "date_start": "2025-10-31T11:59:35+00:00",
+  "date_finish": "2025-10-31T11:59:35+00:00",
+  "operating_reset_at": 1761912575,
   "operating": 0
  }
 }

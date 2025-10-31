@@ -35,16 +35,16 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL           = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи      = "8508";
-    IDКомментария = "19762";
+    IDЗадачи      = "8622";
+    IDКомментария = "20004";
 
     Текст = "Задача изменена, не расходимся";
 
     Результат = OPI_Bitrix24.ИзменитьКомментарийЗадачи(URL, IDЗадачи, IDКомментария, Текст);
 
     URL           = "b24-ar17wx.bitrix24.by";
-    Токен         = "1dbf0069006e9f06006b12e400000001000...";
-    IDКомментария = "19764";
+    Токен         = "53100369006e9f06006b12e400000001000...";
+    IDКомментария = "20006";
 
     Текст = "Задача изменена, расходимся";
 
@@ -58,8 +58,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ИзменитьКомментарийЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8592" \
-              --comment 19940 \
+              --task "8692" \
+              --comment 20160 \
               --text "Задача изменена, расходимся" \
               --token "***"
         ```
@@ -69,8 +69,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ИзменитьКомментарийЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8592" ^
-              --comment 19940 ^
+              --task "8692" ^
+              --comment 20160 ^
               --text "Задача изменена, расходимся" ^
               --token "***"
         ```
@@ -82,13 +82,13 @@ import TabItem from '@theme/TabItem';
 {
  "result": true,
  "time": {
-  "start": 1761759288,
-  "finish": 1761759288.78622,
-  "duration": 0.786225080490112,
+  "start": 1761905616,
+  "finish": 1761905616.69587,
+  "duration": 0.695873975753784,
   "processing": 0,
-  "date_start": "2025-10-29T17:34:48+00:00",
-  "date_finish": "2025-10-29T17:34:48+00:00",
-  "operating_reset_at": 1761759888,
+  "date_start": "2025-10-31T13:13:36+03:00",
+  "date_finish": "2025-10-31T13:13:36+03:00",
+  "operating_reset_at": 1761906216,
   "operating": 0
  }
 }

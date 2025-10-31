@@ -40,7 +40,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     Image   = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
-    GroupID = "120363423809451714@g.us";
+    GroupID = "120363405536804960@g.us";
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.SetGroupPicture(AccessParameters, GroupID, Image);
@@ -55,7 +55,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             
             oint greenapi SetGroupPicture \
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-             --group "120363423945947675@g.us" \
+             --group "120363423048654769@g.us" \
              --picture "https://hut.openintegrations.dev/test_data/picture.jpg"
         ```
     </TabItem>
@@ -66,7 +66,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             
             oint greenapi SetGroupPicture ^
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
-             --group "120363423945947675@g.us" ^
+             --group "120363423048654769@g.us" ^
              --picture "https://hut.openintegrations.dev/test_data/picture.jpg"
         ```
     </TabItem>
@@ -76,7 +76,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```json title="Result"
 {
  "reason": "",
- "urlAvatar": "https://pps.whatsapp.net/v/t61.24694-24/572717065_1337002404584554_1241427587422259459_n.jpg?ccb=11-4&oh=01_Q5Aa2wH2vd7V7SBqSiNMSL5zhGYPB1V3ZpQjKwRugE5tXGqb2A&oe=690C5CC4&_nc_sid=5e03e0&_nc_cat=109",
+ "urlAvatar": "https://pps.whatsapp.net/v/t61.24694-24/534417244_1362172255521642_3227611397255160444_n.jpg?ccb=11-4&oh=01_Q5Aa2wHs8_WscRsUNzewzpslVduICUcImHKEM7nM8DNLucD1-w&oe=6911C43A&_nc_sid=5e03e0&_nc_cat=104",
  "setGroupPicture": true
 }
 ```

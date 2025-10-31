@@ -48,6 +48,30 @@ Method at API documentation: [UpdateGroupSettings](https://green-api.com/v3/docs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenmax ChangeGroupSettings \
+             --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
+             --chat "-68929070366805" \
+             --set "{'allowParticipantsEditGroupSettings':true,'allowParticipantsPinMessages':false,'allowParticipantsAddMembers':false}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenmax ChangeGroupSettings ^
+             --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
+             --chat "-68929070366805" ^
+             --set "{'allowParticipantsEditGroupSettings':true,'allowParticipantsPinMessages':false,'allowParticipantsAddMembers':false}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

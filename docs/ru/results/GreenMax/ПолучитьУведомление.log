@@ -1,17 +1,33 @@
 ﻿{
  "receiptId": 1,
  "body": {
-  "typeWebhook": "outgoingMessageStatus",
-  "chatId": "***",
+  "typeWebhook": "outgoingAPIMessageReceived",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "v3"
   },
-  "timestamp": 1761853463,
-  "idMessage": "2761853429974",
-  "status": "failed",
-  "description": "MessageError: Вы не можете отправить сообщение в этом чате",
-  "sendByApi": true
+  "timestamp": 1761898745,
+  "idMessage": "2761898742981",
+  "senderData": {
+   "chatId": "***",
+   "chatName": "Новая группа",
+   "sender": "***",
+   "senderName": "***",
+   "senderContactName": "***",
+   "senderPhoneNumber": "***"
+  },
+  "messageData": {
+   "typeMessage": "extendedTextMessage",
+   "extendedTextMessageData": {
+    "text": "Текст сообщения",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   }
+  }
  }
 }

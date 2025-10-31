@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
 ```bsl title="1C:Enterprise/OneScript code example"
     Parameters = GetVKParameters();
 
-    Product = "12093754";
+    Product = "12106789";
 
     ProductDescription = New Map;
     ProductDescription.Insert("Name", "EditedTestProduct");
@@ -47,7 +47,7 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint vk EditProduct \
-             --item 12011945 \
+             --item 12110915 \
              --product "{'Name':'EditedTestProduct'}" \
              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
@@ -58,7 +58,7 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint vk EditProduct ^
-             --item 12011945 ^
+             --item 12110915 ^
              --product "{'Name':'EditedTestProduct'}" ^
              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
