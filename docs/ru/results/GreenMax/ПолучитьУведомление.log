@@ -7,11 +7,11 @@
    "wid": "***",
    "typeInstance": "v3"
   },
-  "timestamp": 1761846984,
-  "idMessage": "2761846982323",
+  "timestamp": 1761853424,
+  "idMessage": "2761853422518",
   "senderData": {
    "chatId": "***",
-   "chatName": "New group",
+   "chatName": "Новая группа",
    "sender": "***",
    "senderName": "***",
    "senderContactName": "***",
@@ -20,7 +20,7 @@
   "messageData": {
    "typeMessage": "extendedTextMessage",
    "extendedTextMessageData": {
-    "text": "Message text",
+    "text": "Текст сообщения",
     "description": "",
     "title": "",
     "previewType": "None",
