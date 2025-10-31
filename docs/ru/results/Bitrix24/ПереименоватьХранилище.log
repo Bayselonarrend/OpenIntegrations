@@ -9,13 +9,13 @@
   "ROOT_OBJECT_ID": "464"
  },
  "time": {
-  "start": 1761887936,
-  "finish": 1761887936.9403,
-  "duration": 0.940299034118652,
-  "processing": 0,
-  "date_start": "2025-10-31T05:18:56+00:00",
-  "date_finish": "2025-10-31T05:18:56+00:00",
-  "operating_reset_at": 1761888536,
+  "start": 1761896712,
+  "finish": 1761896713.00842,
+  "duration": 1.00841689109802,
+  "processing": 1,
+  "date_start": "2025-10-31T07:45:12+00:00",
+  "date_finish": "2025-10-31T07:45:13+00:00",
+  "operating_reset_at": 1761897312,
   "operating": 0
  }
 }
