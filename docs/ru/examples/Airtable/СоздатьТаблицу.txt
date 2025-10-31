@@ -1,5 +1,5 @@
 ﻿    Токен = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База  = "appV9I2LlZaAsjRQV";
+    База  = "apppSUqWfuxL53HHT";
 
     МассивПолей = Новый Массив;
     МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеНомера("Номер"));

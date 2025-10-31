@@ -1,1 +1,39 @@
-﻿{}
+﻿[
+ {
+  "messageID": "BAE5849D7A78175C",
+  "type": "sendContact",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "contact": {
+    "phoneContact": 79001234568,
+    "company": "Bicycle"
+   },
+   "quotedMessageId": "BAE557AE1AB1719C",
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "BAE555AA9330A992"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "chatIdFrom": "120363410406221140@g.us",
+   "messages": [
+    "BAE5777A5F7C5685"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE515F0B7D50661",
+  "type": "editMessage",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "idMessage": "BAE5777A5F7C5685",
+   "message": "New message text",
+   "linkPreview": true
+  }
+ }
+]

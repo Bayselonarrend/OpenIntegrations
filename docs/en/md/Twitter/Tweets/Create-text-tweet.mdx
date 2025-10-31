@@ -41,7 +41,7 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint twitter CreateTextTweet \
-             --text "TestTweetf6f5a5f7-3421-477e-a184-869a5c819777" \
+             --text "TestTweet8f38b669-1837-4a8a-b3f6-3c3ad908da3c" \
              --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -51,7 +51,7 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint twitter CreateTextTweet ^
-             --text "TestTweetf6f5a5f7-3421-477e-a184-869a5c819777" ^
+             --text "TestTweet8f38b669-1837-4a8a-b3f6-3c3ad908da3c" ^
              --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -60,12 +60,9 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Result"
 {
- "data": {
-  "text": "TestTweet4c6ae3c3-d3c8-4403-b762-4507d3408294",
-  "id": "1982741765367996468",
-  "edit_history_tweet_ids": [
-   "1982741765367996468"
-  ]
- }
+ "title": "Too Many Requests",
+ "detail": "Too Many Requests",
+ "type": "about:blank",
+ "status": 429
 }
 ```

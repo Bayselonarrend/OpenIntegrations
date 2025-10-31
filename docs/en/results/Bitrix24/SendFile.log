@@ -1,9 +1,9 @@
 ﻿{
  "result": {
   "FILES": {
-   "upload46434": {
-    "id": 46434,
-    "chatId": 3372,
+   "upload46704": {
+    "id": 46704,
+    "chatId": 3392,
     "date": {},
     "type": "file",
     "name": "Imortant doc.docx",
@@ -15,19 +15,19 @@
     "authorId": 1,
     "authorName": "Антон Титовец",
     "urlPreview": "",
-    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=46434&width=1280&height=1280&signature=8cf40a127bd11345d350d3a10e6055c2e82f42dfd3f53d8866b5b5e8a2fe3ae1&exact=N&fileName=Imortant%20doc.docx",
-    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=46434&width=1280&height=1280&signature=8cf40a127bd11345d350d3a10e6055c2e82f42dfd3f53d8866b5b5e8a2fe3ae1&exact=N&fileName=Imortant%20doc.docx",
+    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=46704&width=1280&height=1280&signature=941659c89c40899c8990d486ea88d7305f8788a0f930e799b428ccb047a82d5f&exact=N&fileName=Imortant%20doc.docx",
+    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=46704&width=1280&height=1280&signature=941659c89c40899c8990d486ea88d7305f8788a0f930e799b428ccb047a82d5f&exact=N&fileName=Imortant%20doc.docx",
     "viewerAttrs": {
      "viewer": null,
      "viewerType": "cloud-document",
-     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=46434&width=1280&height=1280&signature=8cf40a127bd11345d350d3a10e6055c2e82f42dfd3f53d8866b5b5e8a2fe3ae1&exact=N&fileName=Imortant%20doc.docx",
+     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=46704&width=1280&height=1280&signature=941659c89c40899c8990d486ea88d7305f8788a0f930e799b428ccb047a82d5f&exact=N&fileName=Imortant%20doc.docx",
      "viewerTypeClass": "BX.Messenger.Integration.Viewer.OnlyOfficeChatItem",
      "viewerSeparateItem": true,
      "viewerExtension": "im.integration.viewer",
-     "objectId": "46434",
-     "imChatId": 3372,
+     "objectId": "46704",
+     "imChatId": 3392,
      "title": "Imortant doc.docx",
-     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"46434\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
+     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"46704\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
     },
     "mediaUrl": {
      "preview": {
@@ -38,11 +38,11 @@
    }
   },
   "DISK_ID": [
-   "46434"
+   "46704"
   ],
   "FILE_MODELS": {
-   "upload46434": {
-    "id": 46434,
+   "upload46704": {
+    "id": 46704,
     "name": "Imortant doc.docx",
     "createTime": {},
     "updateTime": {},
@@ -50,34 +50,34 @@
     "code": null,
     "xmlId": null,
     "storageId": 6,
-    "realObjectId": 46434,
-    "parentId": 46430,
+    "realObjectId": 46704,
+    "parentId": 46700,
     "deletedType": 0,
     "createdBy": "1",
     "updatedBy": "1",
     "deletedBy": "0",
-    "uniqueCode": "nw9dVkB9UMgr0pWzYjAE",
+    "uniqueCode": "F2CNOcOLs7VeeUWcFEcm",
     "typeFile": 4,
     "globalContentVersion": 2,
-    "fileId": 31346,
+    "fileId": 31536,
     "size": 24071,
-    "etag": "c03de1c426d79edac2a64ee7de71def9",
+    "etag": "0ccd5be57af364798059d3673a6d6140",
     "links": {
-     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=46434",
-     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=46434&action=showObjectInGrid&ncc=1"
+     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=46704",
+     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=46704&action=showObjectInGrid&ncc=1"
     }
    }
   },
-  "MESSAGE_ID": 67104
+  "MESSAGE_ID": 67540
  },
  "time": {
-  "start": 1761844943,
-  "finish": 1761844943.92258,
-  "duration": 0.922579050064087,
+  "start": 1761911877,
+  "finish": 1761911877.65027,
+  "duration": 0.650269031524658,
   "processing": 0,
-  "date_start": "2025-10-30T20:22:23+03:00",
-  "date_finish": "2025-10-30T20:22:23+03:00",
-  "operating_reset_at": 1761845543,
+  "date_start": "2025-10-31T11:57:57+00:00",
+  "date_finish": "2025-10-31T11:57:57+00:00",
+  "operating_reset_at": 1761912477,
   "operating": 0
  }
 }

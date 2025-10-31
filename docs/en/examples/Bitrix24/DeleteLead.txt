@@ -1,10 +1,10 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    LeadID = "2658";
+    LeadID = "2706";
 
     Result = OPI_Bitrix24.DeleteLead(URL, LeadID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "1dbf0069006e9f06006b12e400000001000...";
-    LeadID = "2660";
+    Token  = "53100369006e9f06006b12e400000001000...";
+    LeadID = "2708";
 
     Result = OPI_Bitrix24.DeleteLead(URL, LeadID, Token);

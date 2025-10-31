@@ -1,5 +1,5 @@
 ﻿    Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
-    TagID = "320498";
+    TagID = "320542";
     Name  = "New tag title";
 
     Result = OPI_YandexMetrika.UpdateTag(Token, TagID, Name);

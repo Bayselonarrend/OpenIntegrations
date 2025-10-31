@@ -33,13 +33,13 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "8502";
+    IDЗадачи = "8618";
 
     Результат = OPI_Bitrix24.ПолучитьЧеклистЗадачи(URL, IDЗадачи);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Токен    = "1dbf0069006e9f06006b12e400000001000...";
-    IDЗадачи = "8504";
+    Токен    = "53100369006e9f06006b12e400000001000...";
+    IDЗадачи = "8620";
 
     Результат = OPI_Bitrix24.ПолучитьЧеклистЗадачи(URL, IDЗадачи, Токен);
 ```
@@ -51,7 +51,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьЧеклистЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8590" \
+              --task "8690" \
               --token "***"
         ```
     </TabItem>
@@ -60,7 +60,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьЧеклистЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8590" ^
+              --task "8690" ^
               --token "***"
         ```
     </TabItem>
@@ -71,8 +71,8 @@ import TabItem from '@theme/TabItem';
 {
  "result": [
   {
-   "ID": "6058",
-   "TASK_ID": "8590",
+   "ID": "6154",
+   "TASK_ID": "8710",
    "PARENT_ID": 0,
    "CREATED_BY": "1",
    "TITLE": "BX_CHECKLIST_1",
@@ -85,9 +85,9 @@ import TabItem from '@theme/TabItem';
    "ATTACHMENTS": []
   },
   {
-   "ID": "6060",
-   "TASK_ID": "8590",
-   "PARENT_ID": "6058",
+   "ID": "6156",
+   "TASK_ID": "8710",
+   "PARENT_ID": "6154",
    "CREATED_BY": "1",
    "TITLE": "Новый текст пункта чек-листа",
    "SORT_INDEX": "1",
@@ -100,13 +100,13 @@ import TabItem from '@theme/TabItem';
   }
  ],
  "time": {
-  "start": 1761759238,
-  "finish": 1761759238.16505,
-  "duration": 0.165045976638794,
+  "start": 1761905599,
+  "finish": 1761905599.37301,
+  "duration": 0.373012065887451,
   "processing": 0,
-  "date_start": "2025-10-29T17:33:58+00:00",
-  "date_finish": "2025-10-29T17:33:58+00:00",
-  "operating_reset_at": 1761759838,
+  "date_start": "2025-10-31T13:13:19+03:00",
+  "date_finish": "2025-10-31T13:13:19+03:00",
+  "operating_reset_at": 1761906199,
   "operating": 0
  }
 }

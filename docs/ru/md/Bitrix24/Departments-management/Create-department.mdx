@@ -42,10 +42,10 @@ import TabItem from '@theme/TabItem';
     Результат = OPI_Bitrix24.СоздатьПодразделение(URL, Наименование, IDРодителя);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "1dbf0069006e9f06006b12e400000001000...";
+    Токен = "53100369006e9f06006b12e400000001000...";
 
     Наименование   = "Подчиненное подразделение";
-    IDРодителя     = "2874";
+    IDРодителя     = "2922";
     IDРуководителя = 1;
 
     Результат = OPI_Bitrix24.СоздатьПодразделение(URL, Наименование, IDРодителя, IDРуководителя, Токен);
@@ -59,7 +59,7 @@ import TabItem from '@theme/TabItem';
             oint bitrix24 СоздатьПодразделение \
               --url "b24-ar17wx.bitrix24.by" \
               --title "Подчиненное подразделение" \
-              --parentid 2910 \
+              --parentid 2950 \
               --headid 1 \
               --token "***"
         ```
@@ -70,7 +70,7 @@ import TabItem from '@theme/TabItem';
             oint bitrix24 СоздатьПодразделение ^
               --url "b24-ar17wx.bitrix24.by" ^
               --title "Подчиненное подразделение" ^
-              --parentid 2910 ^
+              --parentid 2950 ^
               --headid 1 ^
               --token "***"
         ```
@@ -80,16 +80,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 2912,
+ "result": 2960,
  "time": {
-  "start": 1761759790,
-  "finish": 1761759790.72717,
-  "duration": 0.727169036865234,
+  "start": 1761905815,
+  "finish": 1761905815.42381,
+  "duration": 0.423813104629517,
   "processing": 0,
-  "date_start": "2025-10-29T17:43:10+00:00",
-  "date_finish": "2025-10-29T17:43:10+00:00",
-  "operating_reset_at": 1761760390,
-  "operating": 0.135555028915405
+  "date_start": "2025-10-31T13:16:55+03:00",
+  "date_finish": "2025-10-31T13:16:55+03:00",
+  "operating_reset_at": 1761906415,
+  "operating": 0.233961820602417
  }
 }
 ```

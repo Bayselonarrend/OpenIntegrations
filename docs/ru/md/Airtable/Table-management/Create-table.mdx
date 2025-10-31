@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База  = "appV9I2LlZaAsjRQV";
+    База  = "apppSUqWfuxL53HHT";
 
     МассивПолей = Новый Массив;
     МассивПолей.Добавить(OPI_Airtable.ПолучитьПолеНомера("Номер"));
@@ -58,7 +58,7 @@ import TabItem from '@theme/TabItem';
             
             oint airtable СоздатьТаблицу \
               --token "***" \
-              --base "appNsi8JTYz7ZWFIi" \
+              --base "apphUHAhseA2RhGuH" \
               --title "Тестовая таблица 2" \
               --fieldsdata "[{'name':'Номер','type':'number','options':{'precision':'0'}},{'name':'Строковое','type':'richText'},{'name':'Вложение','type':'multipleAttachments'},{'name':'Флажок','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Дата','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Телефон','type':'phoneNumber'},{'name':'Почта','type':'email'},{'name':'Ссылка','type':'url'}]" \
               --description "Новая таблица"
@@ -71,7 +71,7 @@ import TabItem from '@theme/TabItem';
             
             oint airtable СоздатьТаблицу ^
               --token "***" ^
-              --base "appNsi8JTYz7ZWFIi" ^
+              --base "apphUHAhseA2RhGuH" ^
               --title "Тестовая таблица 2" ^
               --fieldsdata "[{'name':'Номер','type':'number','options':{'precision':'0'}},{'name':'Строковое','type':'richText'},{'name':'Вложение','type':'multipleAttachments'},{'name':'Флажок','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Дата','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Телефон','type':'phoneNumber'},{'name':'Почта','type':'email'},{'name':'Ссылка','type':'url'}]" ^
               --description "Новая таблица"
@@ -82,22 +82,22 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "id": "tbl12JvProORAC97r",
+ "id": "tblzkopS7ftgzkDfv",
  "name": "Тестовая таблица 2",
  "description": "Новая таблица",
- "primaryFieldId": "fldPm4qS2SrIs35ro",
+ "primaryFieldId": "fldNfyeloB8qSPEZf",
  "fields": [
   {
    "type": "number",
    "options": {
     "precision": 0
    },
-   "id": "fldPm4qS2SrIs35ro",
+   "id": "fldNfyeloB8qSPEZf",
    "name": "Номер"
   },
   {
    "type": "richText",
-   "id": "fldbcZ1khsTRenqPa",
+   "id": "fldLE8eBbZ1JhRiLZ",
    "name": "Строковое"
   },
   {
@@ -105,7 +105,7 @@ import TabItem from '@theme/TabItem';
    "options": {
     "isReversed": false
    },
-   "id": "fldFdVZFIPmDNQjLZ",
+   "id": "fldUpiuwAS7lN3J8t",
    "name": "Вложение"
   },
   {
@@ -114,7 +114,7 @@ import TabItem from '@theme/TabItem';
     "icon": "check",
     "color": "yellowBright"
    },
-   "id": "fldSLtfRVqQ6yoAa0",
+   "id": "fld9MQMP5dkG3q8N1",
    "name": "Флажок"
   },
   {
@@ -125,28 +125,28 @@ import TabItem from '@theme/TabItem';
      "format": "YYYY-MM-DD"
     }
    },
-   "id": "fldSQEAdnaNfthECV",
+   "id": "fldAZk4JKI1pQo2Hd",
    "name": "Дата"
   },
   {
    "type": "phoneNumber",
-   "id": "fldV7grSXQ5RJp07V",
+   "id": "fldsBp13Ql7OnjA3f",
    "name": "Телефон"
   },
   {
    "type": "email",
-   "id": "fld4h2kwjYzAtPoUT",
+   "id": "fldNHy7Gz6mXhn2Hl",
    "name": "Почта"
   },
   {
    "type": "url",
-   "id": "fldqWBJQUS6Blh4NG",
+   "id": "fld3Ft0ic8vZxOsEC",
    "name": "Ссылка"
   }
  ],
  "views": [
   {
-   "id": "viwZXgNska7NsOEJ3",
+   "id": "viwtQW2vPaZJdsAKj",
    "name": "Grid view",
    "type": "grid"
   }

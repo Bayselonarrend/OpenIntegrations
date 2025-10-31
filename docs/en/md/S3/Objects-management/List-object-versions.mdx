@@ -56,7 +56,7 @@ Method at AWS documentation: [ListObjectVersions](https://docs.aws.amazon.com/Am
             # JSON data can also be passed as a path to a .json file
             
             oint s3 ListObjectVersions \
-             --bucket "opi-dirbucket3" \
+             --bucket "opi-dirbucket4" \
              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
              --prefix "pic" \
              --dir true
@@ -68,7 +68,7 @@ Method at AWS documentation: [ListObjectVersions](https://docs.aws.amazon.com/Am
             :: JSON data can also be passed as a path to a .json file
             
             oint s3 ListObjectVersions ^
-             --bucket "opi-dirbucket3" ^
+             --bucket "opi-dirbucket4" ^
              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
              --prefix "pic" ^
              --dir true
@@ -82,7 +82,7 @@ Method at AWS documentation: [ListObjectVersions](https://docs.aws.amazon.com/Am
  "status": 200,
  "response": {
   "ListVersionsResult": {
-   "Name": "opi-dirbucket3",
+   "Name": "opi-dirbucket4",
    "Prefix": "pic",
    "KeyMarker": {},
    "NextVersionIdMarker": {},
@@ -91,7 +91,7 @@ Method at AWS documentation: [ListObjectVersions](https://docs.aws.amazon.com/Am
    "IsTruncated": "false",
    "Version": {
     "Key": "picture.jpg",
-    "LastModified": "2025-10-15T10:28:41.783Z",
+    "LastModified": "2025-10-31T12:14:44.469Z",
     "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
     "Size": "2114023",
     "Owner": {
@@ -106,12 +106,12 @@ Method at AWS documentation: [ListObjectVersions](https://docs.aws.amazon.com/Am
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Wed, 15 Oct 2025 10:33:44 GMT",
+  "Date": "Fri, 31 Oct 2025 12:18:20 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
   "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
-  "X-Amz-Request-Id": "186EA3A2F244C84B",
+  "X-Amz-Request-Id": "187392A12A2C9013",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "708",

@@ -33,13 +33,13 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "8502";
+    IDЗадачи = "8618";
 
     Результат = OPI_Bitrix24.ПрекратитьНаблюдатьЗаЗадачей(URL, IDЗадачи);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Токен    = "1dbf0069006e9f06006b12e400000001000...";
-    IDЗадачи = "8504";
+    Токен    = "53100369006e9f06006b12e400000001000...";
+    IDЗадачи = "8620";
 
     Результат = OPI_Bitrix24.ПрекратитьНаблюдатьЗаЗадачей(URL, IDЗадачи, Токен);
 ```
@@ -51,7 +51,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПрекратитьНаблюдатьЗаЗадачей \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8590" \
+              --task "8690" \
               --token "***"
         ```
     </TabItem>
@@ -60,7 +60,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПрекратитьНаблюдатьЗаЗадачей ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8590" ^
+              --task "8690" ^
               --token "***"
         ```
     </TabItem>
@@ -71,7 +71,7 @@ import TabItem from '@theme/TabItem';
 {
  "result": {
   "task": {
-   "id": "8590",
+   "id": "8710",
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
    "descriptionInBbcode": "Y",
@@ -81,22 +81,22 @@ import TabItem from '@theme/TabItem';
    "statusComplete": "1",
    "multitask": "N",
    "stageId": "0",
-   "responsibleId": "2876",
+   "responsibleId": "2908",
    "responsibleName": "Олег",
    "responsibleLastName": "Лама",
    "responsibleSecondName": null,
-   "responsibleLogin": "e6655c4c-841c-4fe3-8d5d-18e6e03da141@exepmple.org",
+   "responsibleLogin": "3fee6cf6-c63e-4b88-ab66-82305b08019c@exepmple.org",
    "responsibleWorkPosition": null,
    "responsiblePhoto": null,
-   "dateStart": "2025-10-29T17:33:15+00:00",
+   "dateStart": "2025-10-31T13:13:09+03:00",
    "durationFact": null,
    "timeEstimate": "0",
    "timeSpentInLogs": null,
    "replicate": "N",
-   "deadline": "2025-10-30T17:31:00+00:00",
-   "deadlineOrig": "30.10.2025 20:31:00",
-   "startDatePlan": "2025-10-29T17:32:01+00:00",
-   "endDatePlan": "2025-10-29T21:00:00+00:00",
+   "deadline": "2025-11-01T16:12:00+03:00",
+   "deadlineOrig": "01.11.2025 16:12:00",
+   "startDatePlan": "2025-10-31T13:12:48+03:00",
+   "endDatePlan": "2025-11-01T00:00:00+03:00",
    "createdBy": "1",
    "createdByName": "Антон",
    "createdByLastName": "Титовец",
@@ -104,14 +104,14 @@ import TabItem from '@theme/TabItem';
    "createdByLogin": "VKuser657846756",
    "createdByWorkPosition": null,
    "createdByPhoto": "30",
-   "createdDate": "2025-10-29T17:32:01+00:00",
+   "createdDate": "2025-10-31T13:12:48+03:00",
    "changedBy": "1",
-   "changedDate": "2025-10-29T17:33:19+00:00",
+   "changedDate": "2025-10-31T13:13:10+03:00",
    "statusChangedBy": "1",
    "closedBy": "0",
    "closedDate": null,
-   "activityDate": "2025-10-29T17:33:10+00:00",
-   "guid": "{4d2b652c-c368-486b-ab00-5174e6ea5b7f}",
+   "activityDate": "2025-10-31T13:13:08+03:00",
+   "guid": "{ea8ab84a-baaf-4337-88a5-c2c7df5cb85e}",
    "xmlId": null,
    "mark": null,
    "allowChangeDeadline": "N",
@@ -119,7 +119,7 @@ import TabItem from '@theme/TabItem';
    "matchWorkTime": "N",
    "taskControl": "N",
    "addInReport": "N",
-   "forumTopicId": "5558",
+   "forumTopicId": "5630",
    "parentId": null,
    "commentsCount": "3",
    "serviceCommentsCount": "3",
@@ -129,7 +129,7 @@ import TabItem from '@theme/TabItem';
    "exchangeModified": null,
    "exchangeId": null,
    "outlookVersion": "9",
-   "viewedDate": "2025-10-29T17:33:10+00:00",
+   "viewedDate": "2025-10-31T13:13:08+03:00",
    "deadlineCounted": "0",
    "forkedByTemplateId": null,
    "sorting": null,
@@ -147,7 +147,7 @@ import TabItem from '@theme/TabItem';
    "ufTaskWebdavFiles": false,
    "ufMailMessage": null,
    "status": "3",
-   "statusChangedDate": "2025-10-29T17:33:15+00:00",
+   "statusChangedDate": "2025-10-31T13:13:09+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -167,9 +167,9 @@ import TabItem from '@theme/TabItem';
     "workPosition": null
    },
    "responsible": {
-    "id": "2876",
+    "id": "2908",
     "name": "Олег Лама",
-    "link": "/company/personal/user/2876/",
+    "link": "/company/personal/user/2908/",
     "icon": "/bitrix/images/tasks/default_avatar.png",
     "workPosition": null
    },

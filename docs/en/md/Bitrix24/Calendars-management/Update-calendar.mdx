@@ -42,13 +42,13 @@ Method at API documentation: [calendar.section.update](https://apidocs.bitrix24.
     CalendarsStructure.Insert("description", "This calendar has been changed");
 
     URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CalendarID = "1560";
+    CalendarID = "1608";
 
     Result = OPI_Bitrix24.UpdateCalendar(URL, CalendarID, CalendarsStructure);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "1dbf0069006e9f06006b12e400000001000...";
-    CalendarID = "1562";
+    Token      = "53100369006e9f06006b12e400000001000...";
+    CalendarID = "1610";
 
     Result = OPI_Bitrix24.UpdateCalendar(URL, CalendarID, CalendarsStructure, Token);
 ```
@@ -62,7 +62,7 @@ Method at API documentation: [calendar.section.update](https://apidocs.bitrix24.
             
             oint bitrix24 UpdateCalendar \
              --url "b24-ar17wx.bitrix24.by" \
-             --calendar 1524 \
+             --calendar 1630 \
              --fields "{'type':'user','ownerId':'1','name':'New calendar name','description':'This calendar has been changed'}" \
              --token "***"
         ```
@@ -74,7 +74,7 @@ Method at API documentation: [calendar.section.update](https://apidocs.bitrix24.
             
             oint bitrix24 UpdateCalendar ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --calendar 1524 ^
+             --calendar 1630 ^
              --fields "{'type':'user','ownerId':'1','name':'New calendar name','description':'This calendar has been changed'}" ^
              --token "***"
         ```
@@ -84,15 +84,15 @@ Method at API documentation: [calendar.section.update](https://apidocs.bitrix24.
 
 ```json title="Result"
 {
- "result": 1554,
+ "result": 1650,
  "time": {
-  "start": 1761559934,
-  "finish": 1761559934.99963,
-  "duration": 0.999627113342285,
+  "start": 1761911967,
+  "finish": 1761911967.33517,
+  "duration": 0.335170030593872,
   "processing": 0,
-  "date_start": "2025-10-27T10:12:14+00:00",
-  "date_finish": "2025-10-27T10:12:14+00:00",
-  "operating_reset_at": 1761560534,
+  "date_start": "2025-10-31T11:59:27+00:00",
+  "date_finish": "2025-10-31T11:59:27+00:00",
+  "operating_reset_at": 1761912567,
   "operating": 0
  }
 }

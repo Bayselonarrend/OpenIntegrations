@@ -42,6 +42,28 @@ Method at API documentation: [GetGroupData](https://green-api.com/v3/docs/api/gr
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenmax GetGroupInformation \
+             --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
+             --chat "-68929070366805"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenmax GetGroupInformation ^
+             --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
+             --chat "-68929070366805"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
@@ -50,8 +72,8 @@ Method at API documentation: [GetGroupData](https://green-api.com/v3/docs/api/gr
  "owner": "39888725",
  "subject": "New group",
  "description": "",
- "creation": 1761560425,
- "groupInviteLink": "https://max.ru/join/nCB74FX3XPkq_w7KYWME83880TByWwbU08BCsCLdEB4",
+ "creation": 1761913346,
+ "groupInviteLink": "https://max.ru/join/5QdgsEYpoZ1mmnYRkFQaYhhrH5BCuuqINhoPJdGeCgA",
  "allowParticipantsAddMembers": true,
  "allowParticipantsEditGroupSettings": true,
  "allowParticipantsPinMessages": true,
