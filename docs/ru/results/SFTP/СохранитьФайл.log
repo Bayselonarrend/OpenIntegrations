@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/sksvpll1.sfa.bin",
- "result": true
+ "filepath": "/tmp/3pmfye0o.ff5.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
