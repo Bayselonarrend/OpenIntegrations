@@ -38,8 +38,8 @@ Method at API documentation: [Creating order receipt](https://api-docs.cdek.ru/3
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token  = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjE2NTcxMDcsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID   = "8c441728-8c4e-4622-b520-30056bce31b1";
+    Token  = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjE4MDg5ODQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID   = "20de9280-2848-455a-b231-c1ab706e345b";
     Type   = "tpl_russia";
     Copies = 1;
 
@@ -53,7 +53,7 @@ Method at API documentation: [Creating order receipt](https://api-docs.cdek.ru/3
         ```bash
             oint cdek CreateReceipt \
              --token "***" \
-             --uuids "ae2ba595-fbac-4572-80f5-03f20395a70a" \
+             --uuids "30b65bfe-a4ac-46b8-96db-c692076c609b" \
              --type "tpl_russia" \
              --count 1 \
              --testapi "***"
@@ -64,7 +64,7 @@ Method at API documentation: [Creating order receipt](https://api-docs.cdek.ru/3
         ```batch
             oint cdek CreateReceipt ^
              --token "***" ^
-             --uuids "ae2ba595-fbac-4572-80f5-03f20395a70a" ^
+             --uuids "30b65bfe-a4ac-46b8-96db-c692076c609b" ^
              --type "tpl_russia" ^
              --count 1 ^
              --testapi "***"
@@ -76,13 +76,13 @@ Method at API documentation: [Creating order receipt](https://api-docs.cdek.ru/3
 ```json title="Result"
 {
  "entity": {
-  "uuid": "966939da-734c-4be3-8917-7f0ee7327308"
+  "uuid": "fe0421c4-7a85-4fae-812d-3aee31c939cb"
  },
  "requests": [
   {
-   "request_uuid": "49e27be6-6d1a-4012-9bbf-4e734ca7e505",
+   "request_uuid": "e6376b27-dfdc-45ec-b76a-7aceeac4b6e2",
    "type": "CREATE",
-   "date_time": "2025-10-27T10:15:39+00:00",
+   "date_time": "2025-10-31T12:02:57+00:00",
    "state": "ACCEPTED"
   }
  ],

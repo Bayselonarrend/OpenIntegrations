@@ -34,20 +34,20 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    FromID        = "8502";
-    DestinationID = "8504";
+    FromID        = "8618";
+    DestinationID = "8620";
     LinkType      = 0;
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType);
 
-    FromID        = "8504";
-    DestinationID = "8502";
+    FromID        = "8620";
+    DestinationID = "8618";
     LinkType      = 2;
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "1dbf0069006e9f06006b12e400000001000...";
+    Token = "53100369006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CreateTasksDependencies(URL, FromID, DestinationID, LinkType, Token);
 ```
@@ -59,8 +59,8 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
         ```bash
             oint bitrix24 CreateTasksDependencies \
              --url "b24-ar17wx.bitrix24.by" \
-             --taskfrom "8402" \
-             --taskto "8400" \
+             --taskfrom "8670" \
+             --taskto "8668" \
              --linktype 2 \
              --token "***"
         ```
@@ -70,8 +70,8 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
         ```batch
             oint bitrix24 CreateTasksDependencies ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --taskfrom "8402" ^
-             --taskto "8400" ^
+             --taskfrom "8670" ^
+             --taskto "8668" ^
              --linktype 2 ^
              --token "***"
         ```
@@ -83,13 +83,13 @@ Method at API documentation: [task.dependence.add](https://dev.1c-bitrix.ru/rest
 {
  "result": [],
  "time": {
-  "start": 1761559571,
-  "finish": 1761559571.10422,
-  "duration": 0.104224920272827,
+  "start": 1761911554,
+  "finish": 1761911554.08749,
+  "duration": 0.0874900817871094,
   "processing": 0,
-  "date_start": "2025-10-27T10:06:11+00:00",
-  "date_finish": "2025-10-27T10:06:11+00:00",
-  "operating_reset_at": 1761560171,
+  "date_start": "2025-10-31T11:52:34+00:00",
+  "date_finish": "2025-10-31T11:52:34+00:00",
+  "operating_reset_at": 1761912154,
   "operating": 0
  }
 }

@@ -33,7 +33,7 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    FolderID  = "45508";
+    FolderID  = "46138";
     Name      = "New subfolder";
     Filename2 = "New subfolder 2";
 
@@ -42,7 +42,7 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
     Result = OPI_Bitrix24.CreateSubfolder(URL, FolderID, Filename2);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "1dbf0069006e9f06006b12e400000001000...";
+    Token = "53100369006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CreateSubfolder(URL, FolderID, Name, Token);
 ```
@@ -54,7 +54,7 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
         ```bash
             oint bitrix24 CreateSubfolder \
              --url "b24-ar17wx.bitrix24.by" \
-             --folderid 44952 \
+             --folderid 46408 \
              --title "New subfolder" \
              --token "***"
         ```
@@ -64,7 +64,7 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
         ```batch
             oint bitrix24 CreateSubfolder ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --folderid 44952 ^
+             --folderid 46408 ^
              --title "New subfolder" ^
              --token "***"
         ```
@@ -75,16 +75,16 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
 ```json title="Result"
 {
  "result": {
-  "ID": 45386,
+  "ID": 46682,
   "NAME": "New subfolder",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": 45386,
-  "PARENT_ID": "45382",
+  "REAL_OBJECT_ID": 46682,
+  "PARENT_ID": "46678",
   "DELETED_TYPE": 0,
-  "CREATE_TIME": "2025-10-27T10:08:20+00:00",
-  "UPDATE_TIME": "2025-10-27T10:08:20+00:00",
+  "CREATE_TIME": "2025-10-31T11:55:04+00:00",
+  "UPDATE_TIME": "2025-10-31T11:55:04+00:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -92,13 +92,13 @@ Method at API documentation: [disk.folder.addsubfolder](https://dev.1c-bitrix.ru
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog/New subfolder"
  },
  "time": {
-  "start": 1761559700,
-  "finish": 1761559700.10885,
-  "duration": 0.108850955963135,
+  "start": 1761911704,
+  "finish": 1761911704.33369,
+  "duration": 0.333688020706177,
   "processing": 0,
-  "date_start": "2025-10-27T10:08:20+00:00",
-  "date_finish": "2025-10-27T10:08:20+00:00",
-  "operating_reset_at": 1761560300,
+  "date_start": "2025-10-31T11:55:04+00:00",
+  "date_finish": "2025-10-31T11:55:04+00:00",
+  "operating_reset_at": 1761912304,
   "operating": 0
  }
 }
