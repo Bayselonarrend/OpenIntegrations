@@ -5,12 +5,12 @@
    "TagSet": {
     "Tag": [
      {
-      "Key": "MyTag1",
-      "Value": "SomeValue"
-     },
-     {
       "Key": "MyTag2",
       "Value": "AnotherOne"
+     },
+     {
+      "Key": "MyTag1",
+      "Value": "SomeValue"
      }
     ]
    }
@@ -18,12 +18,12 @@
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Thu, 30 Oct 2025 19:23:09 GMT",
+  "Date": "Fri, 31 Oct 2025 05:41:00 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
   "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
-  "X-Amz-Request-Id": "18735B3B34FAA2C3",
+  "X-Amz-Request-Id": "18737CF2A26D55F8",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "141",

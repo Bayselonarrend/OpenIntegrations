@@ -1,9 +1,10 @@
 ﻿{
  "entity": {
-  "uuid": "43a6c676-8d6e-4961-bbb9-eacbfcbd35ac",
-  "cdek_number": "1106631716",
-  "order_uuid": "2f6c8f19-eb30-453d-8455-9a305ef7b972",
-  "intake_date": "2025-10-31",
+  "uuid": "a279f526-a66d-45f2-9a2e-4d80b947fabd",
+  "cdek_number": "1106631745",
+  "order_uuid": "00ed5232-68c3-40f2-95de-06a6d5501226",
+  "intake_date": "2025-11-01",
+  "intake_number": "13310327",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -14,10 +15,11 @@
   "comment": "Комментарий курьеру",
   "sender": {
    "company": "Компания",
-   "name": "Иванов Иван",
+   "name": "Компания",
+   "contragent_type": "LEGAL_ENTITY",
    "phones": [
     {
-     "number": "+79589441654"
+     "number": "79589441654"
     }
    ],
    "passport_requirements_satisfied": false
@@ -36,17 +38,40 @@
    "latitude": 55.75222,
    "address": "ул. Блюхера, 32"
   },
+  "to_location": {
+   "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "longitude": 37.831928,
+   "latitude": 55.644399,
+   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
+   "postal_code": "140091"
+  },
   "need_call": false,
   "statuses": [
    {
+    "code": "READY_FOR_APPOINTMENT",
+    "name": "Готова к назначению",
+    "date_time": "2025-10-31T05:36:53+00:00"
+   },
+   {
+    "code": "CREATED",
+    "name": "Создан",
+    "date_time": "2025-10-31T05:36:53+00:00"
+   },
+   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-30T19:20:31+00:00"
+    "date_time": "2025-10-31T05:36:53+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "70c6cf76-02d6-4b03-8db5-49de84d48992",
+    "package_id": "e284f1d1-2309-44bd-9b4a-ae66df1baee8",
     "weight": 1000,
     "length": 10,
     "width": 10,
@@ -57,10 +82,10 @@
  },
  "requests": [
   {
-   "request_uuid": "2bc82922-a082-49aa-942b-664220a2ad0a",
+   "request_uuid": "f073cb10-8fe6-4fb6-b984-2b0a8de6cafe",
    "type": "CREATE",
-   "date_time": "2025-10-30T19:20:29+00:00",
-   "state": "ACCEPTED"
+   "date_time": "2025-10-31T05:36:51+00:00",
+   "state": "SUCCESSFUL"
   }
  ]
 }
