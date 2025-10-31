@@ -55,7 +55,7 @@ Method at AWS documentation: [ListObjectsV2](https://docs.aws.amazon.com/AmazonS
             # JSON data can also be passed as a path to a .json file
             
             oint s3 ListObjects \
-             --bucket "opi-dirbucket3" \
+             --bucket "opi-dirbucket4" \
              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
              --dir true
         ```
@@ -66,7 +66,7 @@ Method at AWS documentation: [ListObjectsV2](https://docs.aws.amazon.com/AmazonS
             :: JSON data can also be passed as a path to a .json file
             
             oint s3 ListObjects ^
-             --bucket "opi-dirbucket3" ^
+             --bucket "opi-dirbucket4" ^
              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
              --dir true
         ```
@@ -79,14 +79,14 @@ Method at AWS documentation: [ListObjectsV2](https://docs.aws.amazon.com/AmazonS
  "status": 200,
  "response": {
   "ListBucketResult": {
-   "Name": "opi-dirbucket3",
+   "Name": "opi-dirbucket4",
    "Prefix": {},
    "KeyCount": "1",
    "MaxKeys": "250",
    "IsTruncated": "false",
    "Contents": {
     "Key": "picture.jpg",
-    "LastModified": "2025-10-15T10:28:41.783Z",
+    "LastModified": "2025-10-31T12:14:44.469Z",
     "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
     "Size": "2114023",
     "StorageClass": "STANDARD"
@@ -95,12 +95,12 @@ Method at AWS documentation: [ListObjectsV2](https://docs.aws.amazon.com/AmazonS
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Wed, 15 Oct 2025 10:33:41 GMT",
+  "Date": "Fri, 31 Oct 2025 12:18:19 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
   "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
-  "X-Amz-Request-Id": "186EA3A22FE611F4",
+  "X-Amz-Request-Id": "187392A10FDFF3A1",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "452",

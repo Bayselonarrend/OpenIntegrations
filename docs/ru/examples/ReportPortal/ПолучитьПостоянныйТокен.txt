@@ -1,5 +1,5 @@
 ﻿    URL            = "tests.openintegrations.dev";
-    Токен          = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MTc0MTk5NiwiaWF0IjoxNzYxNjU1NTk2LCJqdGkiOiJmZmUxOTBjNC1iNz...";
+    Токен          = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX25hbWUiOiJzdXBlcmFkbWluIiwic2NvcGVzIjpbInVpIl0sImV4cCI6MTc2MTg5MzI5OSwiaWF0IjoxNzYxODA2ODk5LCJqdGkiOiIzODJjZThkMi01Nz...";
     IDПользователя = "1";
     ИмяКлюча       = "test_key";
 

@@ -37,15 +37,15 @@ Method at API documentation: [department.update](https://dev.1c-bitrix.ru/rest_h
 ```bsl title="1C:Enterprise/OneScript code example"
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
-    DepartmentID = "2874";
+    DepartmentID = "2922";
     ParentID     = 7;
 
     Result = OPI_Bitrix24.UpdateDepartment(URL, DepartmentID, , ParentID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "1dbf0069006e9f06006b12e400000001000...";
+    Token = "53100369006e9f06006b12e400000001000...";
 
-    DepartmentID = "2876";
+    DepartmentID = "2924";
     Name         = "New department";
     ParentID     = 1;
     HeadID       = 10;
@@ -65,7 +65,7 @@ Method at API documentation: [department.update](https://dev.1c-bitrix.ru/rest_h
         ```bash
             oint bitrix24 UpdateDepartment \
              --url "b24-ar17wx.bitrix24.by" \
-             --depid 2838 \
+             --depid 2944 \
              --title "New department" \
              --parentid 1 \
              --headid 10 \
@@ -77,7 +77,7 @@ Method at API documentation: [department.update](https://dev.1c-bitrix.ru/rest_h
         ```batch
             oint bitrix24 UpdateDepartment ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --depid 2838 ^
+             --depid 2944 ^
              --title "New department" ^
              --parentid 1 ^
              --headid 10 ^
@@ -91,14 +91,14 @@ Method at API documentation: [department.update](https://dev.1c-bitrix.ru/rest_h
 {
  "result": true,
  "time": {
-  "start": 1761559873,
-  "finish": 1761559873.91146,
-  "duration": 0.911464929580688,
+  "start": 1761911909,
+  "finish": 1761911909.53564,
+  "duration": 0.53564190864563,
   "processing": 0,
-  "date_start": "2025-10-27T10:11:13+00:00",
-  "date_finish": "2025-10-27T10:11:13+00:00",
-  "operating_reset_at": 1761560473,
-  "operating": 0.279052019119263
+  "date_start": "2025-10-31T11:58:29+00:00",
+  "date_finish": "2025-10-31T11:58:29+00:00",
+  "operating_reset_at": 1761912509,
+  "operating": 0.30736517906189
  }
 }
 ```

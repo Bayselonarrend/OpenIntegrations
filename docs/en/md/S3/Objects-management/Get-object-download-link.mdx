@@ -60,7 +60,7 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
             
             oint s3 GetObjectDownloadLink \
              --name "picture.jpg" \
-             --bucket "opi-dirbucket3" \
+             --bucket "opi-dirbucket4" \
              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
              --expires 7200 \
              --dir true
@@ -73,7 +73,7 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
             
             oint s3 GetObjectDownloadLink ^
              --name "picture.jpg" ^
-             --bucket "opi-dirbucket3" ^
+             --bucket "opi-dirbucket4" ^
              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
              --expires 7200 ^
              --dir true
@@ -83,5 +83,5 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
 
 
 ```json title="Result"
-"storage-155.s3hoster.by/opi-dirbucket3/picture.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=BRN5RKJE67YCVDZRRQVI%2F20251015%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20251015T103458Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=01cf32313a9aefaa6460f58bbf34593ff45863949c46b89af75afb7f3be32e7d"
+"storage-155.s3hoster.by/opi-dirbucket4/picture.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=BRN5RKJE67YCVDZRRQVI%2F20251031%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20251031T121922Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=df6ff9ae03824eb5b845f48ec8e0cadbabe8f2e65d4795708ea0825e407afba6"
 ```
