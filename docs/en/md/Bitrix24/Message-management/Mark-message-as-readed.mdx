@@ -34,19 +34,19 @@ Method at API documentation: [im.dialog.read](https://dev.1c-bitrix.ru/learning/
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID = "3302";
+    ChatID = "3350";
 
     OPI_TypeConversion.GetLine(ChatID);
     ChatString = "chat" + ChatID;
 
-    MessageID = "65638";
+    MessageID = "66638";
 
     Result = OPI_Bitrix24.MarkMessageAsReaded(URL, ChatString, MessageID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "1dbf0069006e9f06006b12e400000001000...";
+    Token     = "53100369006e9f06006b12e400000001000...";
     UserID    = 10;
-    MessageID = "65640";
+    MessageID = "66640";
 
     Result = OPI_Bitrix24.MarkMessageAsReaded(URL, UserID, MessageID, Token);
 ```
@@ -59,7 +59,7 @@ Method at API documentation: [im.dialog.read](https://dev.1c-bitrix.ru/learning/
             oint bitrix24 MarkMessageAsReaded \
              --url "b24-ar17wx.bitrix24.by" \
              --chat 10 \
-             --message 4286 \
+             --message 16 \
              --token "***"
         ```
     </TabItem>
@@ -69,7 +69,7 @@ Method at API documentation: [im.dialog.read](https://dev.1c-bitrix.ru/learning/
             oint bitrix24 MarkMessageAsReaded ^
              --url "b24-ar17wx.bitrix24.by" ^
              --chat 10 ^
-             --message 4286 ^
+             --message 16 ^
              --token "***"
         ```
     </TabItem>

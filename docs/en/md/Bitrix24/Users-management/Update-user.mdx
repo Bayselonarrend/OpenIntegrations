@@ -34,7 +34,7 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    UserID = "2870";
+    UserID = "2918";
     Email  = String(New UUID) + "@exepmple.org";
 
     // The full structure can be obtained with the function GetUserFieldsStructure
@@ -46,8 +46,8 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
     Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "1dbf0069006e9f06006b12e400000001000...";
-    UserID = "2872";
+    Token  = "53100369006e9f06006b12e400000001000...";
+    UserID = "2920";
     Email  = String(New UUID) + "@exepmple.org";
 
     UserStructure = New Structure;
@@ -68,8 +68,8 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
             
             oint bitrix24 UpdateUser \
              --url "b24-ar17wx.bitrix24.by" \
-             --userid 2834 \
-             --fields "{'EMAIL':'bee65326-cfcb-4c16-9818-8981b8415be8@exepmple.org','NAME':'Oleg','LAST_NAME':'Lama','UF_DEPARTMENT':'7'}" \
+             --userid 2940 \
+             --fields "{'EMAIL':'eac2773b-8a51-420e-89b6-d781f2e255de@exepmple.org','NAME':'Oleg','LAST_NAME':'Lama','UF_DEPARTMENT':'7'}" \
              --token "***"
         ```
     </TabItem>
@@ -80,8 +80,8 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
             
             oint bitrix24 UpdateUser ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --userid 2834 ^
-             --fields "{'EMAIL':'bee65326-cfcb-4c16-9818-8981b8415be8@exepmple.org','NAME':'Oleg','LAST_NAME':'Lama','UF_DEPARTMENT':'7'}" ^
+             --userid 2940 ^
+             --fields "{'EMAIL':'eac2773b-8a51-420e-89b6-d781f2e255de@exepmple.org','NAME':'Oleg','LAST_NAME':'Lama','UF_DEPARTMENT':'7'}" ^
              --token "***"
         ```
     </TabItem>
@@ -92,14 +92,14 @@ Method at API documentation: [user.update](https://dev.1c-bitrix.ru/rest_help/us
 {
  "result": true,
  "time": {
-  "start": 1761559891,
-  "finish": 1761559891.45911,
-  "duration": 0.45910906791687,
+  "start": 1761911923,
+  "finish": 1761911923.74994,
+  "duration": 0.749943971633911,
   "processing": 0,
-  "date_start": "2025-10-27T10:11:31+00:00",
-  "date_finish": "2025-10-27T10:11:31+00:00",
-  "operating_reset_at": 1761560491,
-  "operating": 0.42077898979187
+  "date_start": "2025-10-31T11:58:43+00:00",
+  "date_finish": "2025-10-31T11:58:43+00:00",
+  "operating_reset_at": 1761912523,
+  "operating": 0.283153057098389
  }
 }
 ```

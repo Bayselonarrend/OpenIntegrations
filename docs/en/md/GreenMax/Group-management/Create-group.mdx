@@ -45,12 +45,36 @@ Method at API documentation: [CreateGroup](https://green-api.com/v3/docs/api/gro
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenmax CreateGroup \
+             --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
+             --name "New group" \
+             --members "89974336"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenmax CreateGroup ^
+             --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
+             --name "New group" ^
+             --members "89974336"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
 {
  "created": true,
- "chatId": "-68893490151509",
- "groupInviteLink": "https://max.ru/join/cOHMJawV9U5uWTi01edIXoXvB0-s0xNJAp35I0nmr1o"
+ "chatId": "-68935456522325",
+ "groupInviteLink": "https://max.ru/join/rgJY3pghbhHuB1-C4LAXvwr_nMi05Tad5OOh5xDPZbc"
 }
 ```

@@ -4,7 +4,7 @@
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     IDЧата      = "120363410406221140@g.us";
-    IDСообщения = "BAE5D48CDB45B437";
+    IDСообщения = "BAE57F28631FA1BC";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Результат        = OPI_GreenAPI.ПолучитьСообщение(ПараметрыДоступа, IDЧата, IDСообщения);

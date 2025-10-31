@@ -41,13 +41,13 @@ import TabItem from '@theme/TabItem';
     СтруктураЗадачи.Вставить("PRIORITY"   , "1");
 
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "8502";
+    IDЗадачи = "8618";
 
     Результат = OPI_Bitrix24.ИзменитьЗадачу(URL, IDЗадачи, СтруктураЗадачи);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Токен    = "1dbf0069006e9f06006b12e400000001000...";
-    IDЗадачи = "8504";
+    Токен    = "53100369006e9f06006b12e400000001000...";
+    IDЗадачи = "8620";
 
     Результат = OPI_Bitrix24.ИзменитьЗадачу(URL, IDЗадачи, СтруктураЗадачи, Токен);
 ```
@@ -61,7 +61,7 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьЗадачу \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8590" \
+              --task "8690" \
               --fields "{'TITLE':'Другой заголовок задачи','DESCRIPTION':'Другое описание задачи','PRIORITY':'1'}" \
               --token "***"
         ```
@@ -73,7 +73,7 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьЗадачу ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8590" ^
+              --task "8690" ^
               --fields "{'TITLE':'Другой заголовок задачи','DESCRIPTION':'Другое описание задачи','PRIORITY':'1'}" ^
               --token "***"
         ```
@@ -85,7 +85,7 @@ import TabItem from '@theme/TabItem';
 {
  "result": {
   "task": {
-   "id": "8590",
+   "id": "8710",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -98,19 +98,19 @@ import TabItem from '@theme/TabItem';
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-10-29T17:32:01+00:00",
+   "createdDate": "2025-10-31T13:12:48+03:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2025-10-29T17:32:16+00:00",
+   "changedDate": "2025-10-31T13:12:52+03:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2025-10-29T17:32:01+00:00",
+   "activityDate": "2025-10-31T13:12:48+03:00",
    "dateStart": null,
-   "deadline": "2025-10-30T17:31:00+00:00",
-   "startDatePlan": "2025-10-29T17:32:01+00:00",
-   "endDatePlan": "2025-10-29T21:00:00+00:00",
-   "guid": "{4d2b652c-c368-486b-ab00-5174e6ea5b7f}",
+   "deadline": "2025-11-01T16:12:00+03:00",
+   "startDatePlan": "2025-10-31T13:12:48+03:00",
+   "endDatePlan": "2025-11-01T00:00:00+03:00",
+   "guid": "{ea8ab84a-baaf-4337-88a5-c2c7df5cb85e}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -138,7 +138,7 @@ import TabItem from '@theme/TabItem';
    "flowId": null,
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2025-10-29T17:32:16+00:00",
+   "statusChangedDate": "2025-10-31T13:12:52+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -219,14 +219,14 @@ import TabItem from '@theme/TabItem';
   }
  },
  "time": {
-  "start": 1761759136,
-  "finish": 1761759136.85019,
-  "duration": 0.850186109542847,
-  "processing": 0,
-  "date_start": "2025-10-29T17:32:16+00:00",
-  "date_finish": "2025-10-29T17:32:16+00:00",
-  "operating_reset_at": 1761759736,
-  "operating": 0.20336389541626
+  "start": 1761905572,
+  "finish": 1761905573.15327,
+  "duration": 1.15326690673828,
+  "processing": 1,
+  "date_start": "2025-10-31T13:12:52+03:00",
+  "date_finish": "2025-10-31T13:12:53+03:00",
+  "operating_reset_at": 1761906172,
+  "operating": 0.22455906867981
  }
 }
 ```

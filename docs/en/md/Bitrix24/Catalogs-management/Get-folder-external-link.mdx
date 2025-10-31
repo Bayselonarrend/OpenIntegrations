@@ -33,12 +33,12 @@ Method at API documentation: [disk.folder.getExternalLink](https://dev.1c-bitrix
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    FolderID = "45508";
+    FolderID = "46138";
 
     Result = OPI_Bitrix24.GetFolderExternalLink(URL, FolderID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "1dbf0069006e9f06006b12e400000001000...";
+    Token = "53100369006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetFolderExternalLink(URL, FolderID, Token);
 ```
@@ -50,7 +50,7 @@ Method at API documentation: [disk.folder.getExternalLink](https://dev.1c-bitrix
         ```bash
             oint bitrix24 GetFolderExternalLink \
              --url "b24-ar17wx.bitrix24.by" \
-             --folderid 44952 \
+             --folderid 46408 \
              --token "***"
         ```
     </TabItem>
@@ -59,7 +59,7 @@ Method at API documentation: [disk.folder.getExternalLink](https://dev.1c-bitrix
         ```batch
             oint bitrix24 GetFolderExternalLink ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --folderid 44952 ^
+             --folderid 46408 ^
              --token "***"
         ```
     </TabItem>
@@ -68,15 +68,15 @@ Method at API documentation: [disk.folder.getExternalLink](https://dev.1c-bitrix
 
 ```json title="Result"
 {
- "result": "https://b24-ar17wx.bitrix24.by/~VzTNK",
+ "result": "https://b24-ar17wx.bitrix24.by/~SndSm",
  "time": {
-  "start": 1761559698,
-  "finish": 1761559698.8456,
-  "duration": 0.845602989196777,
+  "start": 1761911702,
+  "finish": 1761911702.86928,
+  "duration": 0.869277954101562,
   "processing": 0,
-  "date_start": "2025-10-27T10:08:18+00:00",
-  "date_finish": "2025-10-27T10:08:18+00:00",
-  "operating_reset_at": 1761560298,
+  "date_start": "2025-10-31T11:55:02+00:00",
+  "date_finish": "2025-10-31T11:55:02+00:00",
+  "operating_reset_at": 1761912302,
   "operating": 0
  }
 }

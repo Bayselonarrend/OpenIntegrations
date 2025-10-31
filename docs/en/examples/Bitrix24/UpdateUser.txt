@@ -1,5 +1,5 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    UserID = "2870";
+    UserID = "2918";
     Email  = String(New UUID) + "@exepmple.org";
 
     // The full structure can be obtained with the function GetUserFieldsStructure
@@ -11,8 +11,8 @@
     Result = OPI_Bitrix24.UpdateUser(URL, UserID, UserStructure);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "1dbf0069006e9f06006b12e400000001000...";
-    UserID = "2872";
+    Token  = "53100369006e9f06006b12e400000001000...";
+    UserID = "2920";
     Email  = String(New UUID) + "@exepmple.org";
 
     UserStructure = New Structure;

@@ -41,10 +41,10 @@ Method at API documentation: [calendar.event.get](https://apidocs.bitrix24.ru/ap
     Result = OPI_Bitrix24.GetCalendarEvents(URL, OwnerID, Type);
 
     URL         = "b24-ar17wx.bitrix24.by";
-    Token       = "1dbf0069006e9f06006b12e400000001000...";
-    EventID     = "2870";
-    CalendarID1 = "1560";
-    CalendarID2 = "1562";
+    Token       = "53100369006e9f06006b12e400000001000...";
+    EventID     = "2966";
+    CalendarID1 = "1608";
+    CalendarID2 = "1610";
 
     Tomorrow = OPI_Tools.GetCurrentDate() + 86400;
     NextDay  = Tomorrow + 86400;
@@ -72,7 +72,7 @@ Method at API documentation: [calendar.event.get](https://apidocs.bitrix24.ru/ap
              --url "b24-ar17wx.bitrix24.by" \
              --owner 1 \
              --type "user" \
-             --filter "{'from':'10/16/2025 10:04:46','to':'10/17/2025 10:04:46','section':['1522','1524']}" \
+             --filter "{'from':'10/31/2025 8:25:50 PM','to':'11/1/2025 8:25:50 PM','section':['1628','1630']}" \
              --token "***"
         ```
     </TabItem>
@@ -85,7 +85,7 @@ Method at API documentation: [calendar.event.get](https://apidocs.bitrix24.ru/ap
              --url "b24-ar17wx.bitrix24.by" ^
              --owner 1 ^
              --type "user" ^
-             --filter "{'from':'10/16/2025 10:04:46','to':'10/17/2025 10:04:46','section':['1522','1524']}" ^
+             --filter "{'from':'10/31/2025 8:25:50 PM','to':'11/1/2025 8:25:50 PM','section':['1628','1630']}" ^
              --token "***"
         ```
     </TabItem>
@@ -96,28 +96,28 @@ Method at API documentation: [calendar.event.get](https://apidocs.bitrix24.ru/ap
 {
  "result": [
   {
-   "ID": "2850",
-   "PARENT_ID": "2850",
+   "ID": "3042",
+   "PARENT_ID": "3042",
    "ACTIVE": "Y",
    "DELETED": "N",
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "NAME": "New event",
-   "DATE_FROM": "28.10.2025 10:12:00",
-   "DATE_TO": "28.10.2025 11:12:00",
+   "DATE_FROM": "01.11.2025 11:59:00",
+   "DATE_TO": "01.11.2025 12:59:00",
    "ORIGINAL_DATE_FROM": null,
    "TZ_FROM": "Europe/Minsk",
    "TZ_TO": "Europe/Minsk",
    "TZ_OFFSET_FROM": "10800",
    "TZ_OFFSET_TO": "10800",
-   "DATE_FROM_TS_UTC": "1761624736",
-   "DATE_TO_TS_UTC": "1764231120",
+   "DATE_FROM_TS_UTC": "1761976769",
+   "DATE_TO_TS_UTC": "1764583140",
    "DT_SKIP_TIME": "N",
    "DT_LENGTH": 3600,
    "EVENT_TYPE": null,
    "CREATED_BY": "1",
-   "DATE_CREATE": "27.10.2025 13:12:16",
-   "TIMESTAMP_X": "27.10.2025 13:12:16",
+   "DATE_CREATE": "31.10.2025 14:59:29",
+   "TIMESTAMP_X": "31.10.2025 14:59:29",
    "DESCRIPTION": "Event description",
    "DT_FROM": null,
    "DT_TO": null,
@@ -150,12 +150,12 @@ Method at API documentation: [calendar.event.get](https://apidocs.bitrix24.ru/ap
     "FREQ": "DAILY",
     "COUNT": 3,
     "INTERVAL": 10,
-    "UNTIL": "07.11.2025",
-    "~UNTIL": "07.11.2025",
-    "UNTIL_TS": 1762473600
+    "UNTIL": "11.11.2025",
+    "~UNTIL": "11.11.2025",
+    "UNTIL_TS": 1762819200
    },
    "EXDATE": "",
-   "DAV_XML_ID": "20251028T071200Z-d9af4ae37986c0952aaf247f5952e24a@b24-ar17wx.bitrix24.by",
+   "DAV_XML_ID": "20251101T085900Z-681c3960c0ee2ea3efada2e4c6047ea2@b24-ar17wx.bitrix24.by",
    "G_EVENT_ID": "",
    "DAV_EXCH_LABEL": "",
    "CAL_DAV_LABEL": "",
@@ -166,30 +166,30 @@ Method at API documentation: [calendar.event.get](https://apidocs.bitrix24.ru/ap
    ],
    "RECURRENCE_ID": null,
    "RELATIONS": "",
-   "SECTION_ID": "1552",
+   "SECTION_ID": "1648",
    "SYNC_STATUS": null,
    "UF_CRM_CAL_EVENT": false,
    "UF_WEBDAV_CAL_EVENT": false,
    "SECTION_DAV_XML_ID": null,
-   "DATE_FROM_FORMATTED": "Tue Oct 28 2025 10:12:00",
-   "DATE_TO_FORMATTED": "Tue Oct 28 2025 11:12:00",
+   "DATE_FROM_FORMATTED": "Sat Nov 01 2025 11:59:00",
+   "DATE_TO_FORMATTED": "Sat Nov 01 2025 12:59:00",
    "IS_DAYLIGHT_SAVING_TZ": "N",
-   "SECT_ID": "1552",
+   "SECT_ID": "1648",
    "OPTIONS": null,
    "ATTENDEE_LIST": [
     {
      "id": 1,
-     "entryId": "2850",
+     "entryId": "3042",
      "status": "H"
     },
     {
      "id": 10,
-     "entryId": "2852",
+     "entryId": "3044",
      "status": "Q"
     }
    ],
    "COLLAB_ID": null,
-   "~RRULE_DESCRIPTION": "каждый 10-й день, от 28.10.2025 до 07.11.2025",
+   "~RRULE_DESCRIPTION": "каждый 10-й день, от 01.11.2025 до 11.11.2025",
    "attendeesEntityList": [
     {
      "entityId": "user",
@@ -200,35 +200,35 @@ Method at API documentation: [calendar.event.get](https://apidocs.bitrix24.ru/ap
      "id": 10
     }
    ],
-   "~DATE_FROM": "28.10.2025 10:12:00",
-   "~DATE_TO": "28.10.2025 11:12:00",
+   "~DATE_FROM": "01.11.2025 11:59:00",
+   "~DATE_TO": "01.11.2025 12:59:00",
    "RINDEX": 0,
    "~USER_OFFSET_FROM": 0,
    "~USER_OFFSET_TO": 0
   },
   {
-   "ID": "2854",
-   "PARENT_ID": "2854",
+   "ID": "3046",
+   "PARENT_ID": "3046",
    "ACTIVE": "Y",
    "DELETED": "N",
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "NAME": "New event",
-   "DATE_FROM": "28.10.2025 10:12:00",
-   "DATE_TO": "28.10.2025 11:12:00",
+   "DATE_FROM": "01.11.2025 11:59:00",
+   "DATE_TO": "01.11.2025 12:59:00",
    "ORIGINAL_DATE_FROM": null,
    "TZ_FROM": "Europe/Minsk",
    "TZ_TO": "Europe/Minsk",
    "TZ_OFFSET_FROM": "10800",
    "TZ_OFFSET_TO": "10800",
-   "DATE_FROM_TS_UTC": "1761624736",
-   "DATE_TO_TS_UTC": "1764231120",
+   "DATE_FROM_TS_UTC": "1761976769",
+   "DATE_TO_TS_UTC": "1764583140",
    "DT_SKIP_TIME": "N",
    "DT_LENGTH": 3600,
    "EVENT_TYPE": null,
    "CREATED_BY": "1",
-   "DATE_CREATE": "27.10.2025 13:12:18",
-   "TIMESTAMP_X": "27.10.2025 13:12:18",
+   "DATE_CREATE": "31.10.2025 14:59:30",
+   "TIMESTAMP_X": "31.10.2025 14:59:30",
    "DESCRIPTION": "Event description",
    "DT_FROM": null,
    "DT_TO": null,

@@ -1,5 +1,5 @@
-﻿    Токен   = "ya29.a0ATi6K2vDW-Vv1H04Laa7CH4aF_93Z7LtfD1VoGLPCWCYErIG_1l_DAwwozCcosZGjJ8Pw0i45BG5ojbNDczD3Iskrwrl_K7jf7N7dHe0f5kYLvKyhDmT3AO2m...";
-    Каталог = "11Mo30odYPEtBBU_0OndFx5dz1kP7tu-Y";
+﻿    Токен   = "ya29.a0ATi6K2tVhkOEu91I_FKDEZ7_olNcPRKrwKbGh7GiFIzwDZjaTNm46ErGj-Lju2am1aAUurgQyVnv0f3G4L7keHSXYNhuCPGvTvzjRdPQJNz_0LzKWjviK54u4...";
+    Каталог = "1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP";
     Имя     = "Тестовая папка";
 
     Результат = OPI_GoogleDrive.СоздатьПапку(Токен, Имя, Каталог);

@@ -1,4 +1,4 @@
-﻿    Token    = "ya29.a0ATi6K2vDW-Vv1H04Laa7CH4aF_93Z7LtfD1VoGLPCWCYErIG_1l_DAwwozCcosZGjJ8Pw0i45BG5ojbNDczD3Iskrwrl_K7jf7N7dHe0f5kYLvKyhDmT3AO2m...";
-    Calendar = "d6ccb7c2e90ccc94859863b2e25994cbd8720d00c4823b1c22ade133614c97bf@group.calendar.google.com";
+﻿    Token    = "ya29.a0ATi6K2tVhkOEu91I_FKDEZ7_olNcPRKrwKbGh7GiFIzwDZjaTNm46ErGj-Lju2am1aAUurgQyVnv0f3G4L7keHSXYNhuCPGvTvzjRdPQJNz_0LzKWjviK54u4...";
+    Calendar = "27c0997a94ab1fa7a33cc8e22f5286319a5d71143235f31fcce71adf79941e8a@group.calendar.google.com";
 
     Result = OPI_GoogleCalendar.DeleteCalendar(Token, Calendar);
