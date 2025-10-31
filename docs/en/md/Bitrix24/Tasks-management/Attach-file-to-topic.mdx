@@ -34,14 +34,14 @@ Method at API documentation: [tasks.task.files.attach](https://dev.1c-bitrix.ru/
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "8502";
-    FileID = "45494";
+    TaskID = "8618";
+    FileID = "46128";
 
     Result = OPI_Bitrix24.AttachFileToTopic(URL, TaskID, FileID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "1dbf0069006e9f06006b12e400000001000...";
-    TaskID = "8504";
+    Token  = "53100369006e9f06006b12e400000001000...";
+    TaskID = "8620";
 
     Result = OPI_Bitrix24.AttachFileToTopic(URL, TaskID, FileID, Token);
 ```
@@ -53,8 +53,8 @@ Method at API documentation: [tasks.task.files.attach](https://dev.1c-bitrix.ru/
         ```bash
             oint bitrix24 AttachFileToTopic \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "8402" \
-             --fileid 44942 \
+             --task "8670" \
+             --fileid 46398 \
              --token "***"
         ```
     </TabItem>
@@ -63,8 +63,8 @@ Method at API documentation: [tasks.task.files.attach](https://dev.1c-bitrix.ru/
         ```batch
             oint bitrix24 AttachFileToTopic ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "8402" ^
-             --fileid 44942 ^
+             --task "8670" ^
+             --fileid 46398 ^
              --token "***"
         ```
     </TabItem>
@@ -74,16 +74,16 @@ Method at API documentation: [tasks.task.files.attach](https://dev.1c-bitrix.ru/
 ```json title="Result"
 {
  "result": {
-  "attachmentId": 12674
+  "attachmentId": 13058
  },
  "time": {
-  "start": 1761559628,
-  "finish": 1761559628.31781,
-  "duration": 0.317811012268066,
+  "start": 1761911622,
+  "finish": 1761911623.04785,
+  "duration": 1.047847032547,
   "processing": 0,
-  "date_start": "2025-10-27T10:07:08+00:00",
-  "date_finish": "2025-10-27T10:07:08+00:00",
-  "operating_reset_at": 1761560228,
+  "date_start": "2025-10-31T11:53:42+00:00",
+  "date_finish": "2025-10-31T11:53:43+00:00",
+  "operating_reset_at": 1761912223,
   "operating": 0
  }
 }

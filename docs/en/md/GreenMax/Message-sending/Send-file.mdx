@@ -53,11 +53,43 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenmax SendFile \
+             --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
+             --chat "-68929077051477" \
+             --file "https://hut.openintegrations.dev/test_data/video.mp4" \
+             --filename "vid.mp4" \
+             --caption "File description" \
+             --typing 1000 \
+             --ttype "video"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenmax SendFile ^
+             --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
+             --chat "-68929077051477" ^
+             --file "https://hut.openintegrations.dev/test_data/video.mp4" ^
+             --filename "vid.mp4" ^
+             --caption "File description" ^
+             --typing 1000 ^
+             --ttype "video"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
 {
- "idMessage": "2761560457364",
- "urlFile": "https://mediaout-3100.storage.yandexcloud.net/3100309139/9cbe3e4e-decc-4e0c-9314-adfacb8d5a7e.jpg"
+ "idMessage": "2761913378142",
+ "urlFile": "https://mediaout-3100.storage.yandexcloud.net/3100309139/2b5be8b3-c2ab-4592-9556-3fa45200ea95.jpg"
 }
 ```

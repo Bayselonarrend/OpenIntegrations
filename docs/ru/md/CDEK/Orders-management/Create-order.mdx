@@ -33,7 +33,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjE2NTcxMDcsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjE4MDg5ODQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
 
     ОписаниеЗаказа = Новый Структура;
 
@@ -122,7 +122,7 @@ import TabItem from '@theme/TabItem';
             
             oint cdek СоздатьЗаказ \
               --token "***" \
-              --order "{'from_location':{'code':'44','city':'Москва','address':'пр. Ленинградский, д.4'},'to_location':{'code':'270','city':'Новосибирск','address':'ул. Блюхера, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Товар','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Упаковка','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Иванов Иван'},'sender':{'name':'Петров Петр'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'49ad9e22-1299-4f9a-ae4d-7964052d2973','comment':'Новый заказ','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" \
+              --order "{'from_location':{'code':'44','city':'Москва','address':'пр. Ленинградский, д.4'},'to_location':{'code':'270','city':'Новосибирск','address':'ул. Блюхера, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Товар','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Упаковка','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Иванов Иван'},'sender':{'name':'Петров Петр'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'e8736119-f3eb-4b58-8f0a-e2f88ae5a997','comment':'Новый заказ','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" \
               --ostore true \
               --testapi "***"
         ```
@@ -134,7 +134,7 @@ import TabItem from '@theme/TabItem';
             
             oint cdek СоздатьЗаказ ^
               --token "***" ^
-              --order "{'from_location':{'code':'44','city':'Москва','address':'пр. Ленинградский, д.4'},'to_location':{'code':'270','city':'Новосибирск','address':'ул. Блюхера, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Товар','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Упаковка','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Иванов Иван'},'sender':{'name':'Петров Петр'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'49ad9e22-1299-4f9a-ae4d-7964052d2973','comment':'Новый заказ','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" ^
+              --order "{'from_location':{'code':'44','city':'Москва','address':'пр. Ленинградский, д.4'},'to_location':{'code':'270','city':'Новосибирск','address':'ул. Блюхера, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Товар','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Упаковка','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Иванов Иван'},'sender':{'name':'Петров Петр'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'e8736119-f3eb-4b58-8f0a-e2f88ae5a997','comment':'Новый заказ','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" ^
               --ostore true ^
               --testapi "***"
         ```
@@ -145,13 +145,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "4d35e480-d626-4a2e-8477-c937aad4fb2e"
+  "uuid": "b9ae254b-20f5-4268-9d43-6867c42058b8"
  },
  "requests": [
   {
-   "request_uuid": "5a206047-4c93-4385-bc8e-e76ab4a7dfb9",
+   "request_uuid": "8fb6ba97-8eb2-4767-87d3-b46a976e6c94",
    "type": "CREATE",
-   "date_time": "2025-10-29T17:52:13+00:00",
+   "date_time": "2025-10-31T07:54:12+00:00",
    "state": "ACCEPTED"
   }
  ],

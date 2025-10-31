@@ -33,12 +33,12 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDКаталога = "45508";
+    IDКаталога = "46138";
 
     Результат = OPI_Bitrix24.ПолучитьВнешнююСсылкуКаталога(URL, IDКаталога);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "1dbf0069006e9f06006b12e400000001000...";
+    Токен = "53100369006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПолучитьВнешнююСсылкуКаталога(URL, IDКаталога, Токен);
 ```
@@ -50,7 +50,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьВнешнююСсылкуКаталога \
               --url "b24-ar17wx.bitrix24.by" \
-              --folderid 45976 \
+              --folderid 46516 \
               --token "***"
         ```
     </TabItem>
@@ -59,7 +59,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьВнешнююСсылкуКаталога ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --folderid 45976 ^
+              --folderid 46516 ^
               --token "***"
         ```
     </TabItem>
@@ -68,15 +68,15 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": "https://b24-ar17wx.bitrix24.by/~9Uxn7",
+ "result": "https://b24-ar17wx.bitrix24.by/~wa6xX",
  "time": {
-  "start": 1761759409,
-  "finish": 1761759409.30089,
-  "duration": 0.300887107849121,
+  "start": 1761905665,
+  "finish": 1761905665.29771,
+  "duration": 0.297713994979858,
   "processing": 0,
-  "date_start": "2025-10-29T17:36:49+00:00",
-  "date_finish": "2025-10-29T17:36:49+00:00",
-  "operating_reset_at": 1761760009,
+  "date_start": "2025-10-31T13:14:25+03:00",
+  "date_finish": "2025-10-31T13:14:25+03:00",
+  "operating_reset_at": 1761906265,
   "operating": 0
  }
 }

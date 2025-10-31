@@ -37,8 +37,8 @@ Method at API documentation: [task.elapseditem.update](https://dev.1c-bitrix.ru/
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID   = "8512";
-    RecordID = "3114";
+    TaskID   = "8626";
+    RecordID = "3162";
 
     Text = "The text I forgot last time";
     Time = 4800;
@@ -46,8 +46,8 @@ Method at API documentation: [task.elapseditem.update](https://dev.1c-bitrix.ru/
     Result = OPI_Bitrix24.UpdateTaskTimeAccounting(URL, TaskID, RecordID, Time, Text);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Token    = "1dbf0069006e9f06006b12e400000001000...";
-    RecordID = "3116";
+    Token    = "53100369006e9f06006b12e400000001000...";
+    RecordID = "3164";
 
     Text      = "New time record";
     Time      = 4800;
@@ -63,11 +63,11 @@ Method at API documentation: [task.elapseditem.update](https://dev.1c-bitrix.ru/
         ```bash
             oint bitrix24 UpdateTaskTimeAccounting \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "8408" \
-             --record 3078 \
+             --task "8676" \
+             --record 3184 \
              --amount 4800 \
              --text "New time record" \
-             --date "2025-09-15T09:56:37.9545897" \
+             --date "2025-09-30T20:19:29.999452" \
              --token "***"
         ```
     </TabItem>
@@ -76,11 +76,11 @@ Method at API documentation: [task.elapseditem.update](https://dev.1c-bitrix.ru/
         ```batch
             oint bitrix24 UpdateTaskTimeAccounting ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "8408" ^
-             --record 3078 ^
+             --task "8676" ^
+             --record 3184 ^
              --amount 4800 ^
              --text "New time record" ^
-             --date "2025-09-15T09:56:37.9545897" ^
+             --date "2025-09-30T20:19:29.999452" ^
              --token "***"
         ```
     </TabItem>
@@ -91,13 +91,13 @@ Method at API documentation: [task.elapseditem.update](https://dev.1c-bitrix.ru/
 {
  "result": null,
  "time": {
-  "start": 1761559745,
-  "finish": 1761559745.22232,
-  "duration": 0.222316026687622,
+  "start": 1761911757,
+  "finish": 1761911757.7165,
+  "duration": 0.716495037078858,
   "processing": 0,
-  "date_start": "2025-10-27T10:09:05+00:00",
-  "date_finish": "2025-10-27T10:09:05+00:00",
-  "operating_reset_at": 1761560345,
+  "date_start": "2025-10-31T11:55:57+00:00",
+  "date_finish": "2025-10-31T11:55:57+00:00",
+  "operating_reset_at": 1761912357,
   "operating": 0
  }
 }
