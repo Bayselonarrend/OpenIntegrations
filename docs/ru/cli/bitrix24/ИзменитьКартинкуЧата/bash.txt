@@ -1,5 +1,5 @@
 oint bitrix24 ИзменитьКартинкуЧата \
   --url "b24-ar17wx.bitrix24.by" \
-  --chat 3368 \
+  --chat 3380 \
   --picture "https://hut.openintegrations.dev/test_data/picture2.jpg" \
   --token "***"

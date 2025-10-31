@@ -4,4 +4,4 @@ oint greenapi ПереслатьСообщения ^
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
   --from "120363410406221140@g.us" ^
   --to "120363410406221140@g.us" ^
-  --msgs "BAE51D5D5FC4C1D7"
+  --msgs "BAE50F34848039C3"

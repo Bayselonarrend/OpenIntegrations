@@ -2,6 +2,6 @@
 
 oint airtable СоздатьЗаписи ^
   --token "***" ^
-  --base "app4rFGpKPdhf9UYq" ^
-  --table "tbludHApJ9dac55pK" ^
+  --base "apphUHAhseA2RhGuH" ^
+  --table "tblgufcMyKTNDMBLj" ^
   --data "{'Номер':'10','Строковое':'Привет'}"
