@@ -34,8 +34,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjE2NTcxMDcsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID  = "d011bf40-93b7-47e6-a319-7da39ae0f939";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjE4MDg5ODQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "8eedd52e-594a-4899-9dca-a21c9be01144";
 
     Результат = OPI_CDEK.ПолучитьЗаявкуНаВызовКурьера(Токен, UUID, Истина);
 ```
@@ -47,7 +47,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьЗаявкуНаВызовКурьера \
               --token "***" \
-              --uuid "4f95dd48-6094-4d3b-a6a7-5a5e37244244" \
+              --uuid "a279f526-a66d-45f2-9a2e-4d80b947fabd" \
               --testapi "***"
         ```
     </TabItem>
@@ -56,7 +56,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьЗаявкуНаВызовКурьера ^
               --token "***" ^
-              --uuid "4f95dd48-6094-4d3b-a6a7-5a5e37244244" ^
+              --uuid "a279f526-a66d-45f2-9a2e-4d80b947fabd" ^
               --testapi "***"
         ```
     </TabItem>
@@ -66,11 +66,8 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "4f95dd48-6094-4d3b-a6a7-5a5e37244244",
-  "cdek_number": "1106631362",
-  "order_uuid": "4b606476-1e4e-4a9a-bb91-c6bdc257d7ff",
-  "intake_date": "2025-10-30",
-  "intake_number": "13310311",
+  "uuid": "a8225077-c112-4d49-b321-0f4ba9416a8b",
+  "intake_date": "2025-11-01",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -81,77 +78,41 @@ import TabItem from '@theme/TabItem';
   "comment": "Комментарий курьеру",
   "sender": {
    "company": "Компания",
-   "name": "Компания",
-   "contragent_type": "LEGAL_ENTITY",
+   "name": "Иванов Иван",
    "phones": [
     {
-     "number": "79589441654"
+     "number": "+79589441654"
     }
-   ],
-   "passport_requirements_satisfied": false
+   ]
   },
   "from_location": {
    "code": 44,
-   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
    "city": "Москва",
    "fias_guid": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
+   "kladr_code": "7700000000000",
    "country_code": "RU",
-   "country": "Россия",
    "region": "Москва",
-   "region_code": 81,
    "sub_region": "Москва",
-   "longitude": 37.61556,
-   "latitude": 55.75222,
-   "address": "ул. Блюхера, 32"
-  },
-  "to_location": {
-   "code": 44,
-   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
-   "city": "Москва",
-   "country_code": "RU",
-   "country": "Россия",
-   "region": "Москва",
-   "region_code": 81,
-   "longitude": 37.831928,
-   "latitude": 55.644399,
-   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
-   "postal_code": "140091"
+   "longitude": 37.6204,
+   "latitude": 55.754,
+   "address": "ул. Блюхера, 32",
+   "postal_code": "109004"
   },
   "need_call": false,
   "statuses": [
    {
-    "code": "READY_FOR_APPOINTMENT",
-    "name": "Готова к назначению",
-    "date_time": "2025-10-29T17:52:41+00:00"
-   },
-   {
-    "code": "CREATED",
-    "name": "Создан",
-    "date_time": "2025-10-29T17:52:41+00:00"
-   },
-   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-29T17:52:41+00:00"
+    "date_time": "2025-10-31T07:54:38+00:00"
    }
-  ],
-  "packages": [
-   {
-    "package_id": "2ac01542-a738-463a-b2db-8055406985d5",
-    "weight": 1000,
-    "length": 10,
-    "width": 10,
-    "height": 10
-   }
-  ],
-  "contragent_uuid": "ed75ecf4-30ed-4153-afe9-eb80bb512f22"
+  ]
  },
  "requests": [
   {
-   "request_uuid": "01ba6c2b-94e9-4d07-8c7c-e1de601dd514",
+   "request_uuid": "bc1efa6a-9750-48b6-902e-961555f69c3d",
    "type": "CREATE",
-   "date_time": "2025-10-29T17:52:40+00:00",
-   "state": "SUCCESSFUL"
+   "date_time": "2025-10-31T07:54:34+00:00",
+   "state": "ACCEPTED"
   }
  ]
 }

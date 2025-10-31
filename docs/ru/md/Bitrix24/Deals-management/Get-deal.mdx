@@ -33,13 +33,13 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDСделки = "5306";
+    IDСделки = "5402";
 
     Результат = OPI_Bitrix24.ПолучитьСделку(URL, IDСделки);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Токен    = "1dbf0069006e9f06006b12e400000001000...";
-    IDСделки = "5306";
+    Токен    = "53100369006e9f06006b12e400000001000...";
+    IDСделки = "5402";
 
     Результат = OPI_Bitrix24.ПолучитьСделку(URL, IDСделки, Токен);
 ```
@@ -51,7 +51,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьСделку \
               --url "b24-ar17wx.bitrix24.by" \
-              --deal 5378 \
+              --deal 5458 \
               --token "***"
         ```
     </TabItem>
@@ -60,7 +60,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьСделку ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --deal 5378 ^
+              --deal 5458 ^
               --token "***"
         ```
     </TabItem>
@@ -70,7 +70,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": "5378",
+  "ID": "5474",
   "TITLE": "Плановая продажа",
   "TYPE_ID": "GOODS",
   "STAGE_ID": "NEW",
@@ -83,13 +83,13 @@ import TabItem from '@theme/TabItem';
   "COMPANY_ID": "1",
   "CONTACT_ID": "3",
   "QUOTE_ID": null,
-  "BEGINDATE": "2024-01-01T00:00:00+00:00",
-  "CLOSEDATE": "2030-01-01T00:00:00+00:00",
+  "BEGINDATE": "2024-01-01T03:00:00+03:00",
+  "CLOSEDATE": "2030-01-01T03:00:00+03:00",
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2025-10-29T17:44:53+00:00",
-  "DATE_MODIFY": "2025-10-29T17:44:53+00:00",
+  "DATE_CREATE": "2025-10-31T13:17:31+03:00",
+  "DATE_MODIFY": "2025-10-31T13:17:31+03:00",
   "OPENED": "Y",
   "CLOSED": "N",
   "COMMENTS": null,
@@ -106,8 +106,8 @@ import TabItem from '@theme/TabItem';
   "ORIGINATOR_ID": null,
   "ORIGIN_ID": null,
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2025-10-29T17:44:53+00:00",
-  "LAST_ACTIVITY_TIME": "2025-10-29T17:44:53+00:00",
+  "MOVED_TIME": "2025-10-31T13:17:31+03:00",
+  "LAST_ACTIVITY_TIME": "2025-10-31T13:17:31+03:00",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
@@ -117,13 +117,13 @@ import TabItem from '@theme/TabItem';
   "LAST_ACTIVITY_BY": "1"
  },
  "time": {
-  "start": 1761759900,
-  "finish": 1761759900.39944,
-  "duration": 0.399441003799438,
+  "start": 1761905853,
+  "finish": 1761905853.80018,
+  "duration": 0.800184011459351,
   "processing": 0,
-  "date_start": "2025-10-29T17:45:00+00:00",
-  "date_finish": "2025-10-29T17:45:00+00:00",
-  "operating_reset_at": 1761760500,
+  "date_start": "2025-10-31T13:17:33+03:00",
+  "date_finish": "2025-10-31T13:17:33+03:00",
+  "operating_reset_at": 1761906453,
   "operating": 0
  }
 }

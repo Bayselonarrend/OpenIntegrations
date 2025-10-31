@@ -1,17 +1,51 @@
 ﻿[
  {
-  "messageID": "BAE58ADB687150EC",
+  "messageID": "BAE56096475CDFDF",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": true,
+   "quotedMessageId": "BAE5C91717B8D48B",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE5FC0F091C84D1",
   "type": "sendLocation",
   "body": {
    "chatId": "120363410406221140@g.us",
-   "quotedMessageId": "BAE588EA738B4C93",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "address": "Площадь Победы, Минск",
+   "nameLocation": "пл. Победы",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "BAE5346530FCEF63",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "quotedMessageId": "BAE5FC0F091C84D1",
    "latitude": 53.908522,
    "longitude": 27.574821,
    "typingTime": null
   }
  },
  {
-  "messageID": "BAE5E1F5A515EE5D",
+  "messageID": "BAE5F2362C98DE96",
   "type": "sendContact",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -26,7 +60,7 @@
   }
  },
  {
-  "messageID": "BAE50EB1312BF530",
+  "messageID": "BAE5BDE6DD77A24E",
   "type": "sendContact",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -34,30 +68,30 @@
     "phoneContact": 79001234568,
     "company": "Велосипед"
    },
-   "quotedMessageId": "BAE5E1F5A515EE5D",
+   "quotedMessageId": "BAE5F2362C98DE96",
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "BAE51AF435A128AE"
+   "BAE58B2291C007AD"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "120363410406221140@g.us",
    "chatIdFrom": "120363410406221140@g.us",
    "messages": [
-    "BAE56FDA78D67241"
+    "BAE52E4EB950BEFA"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "BAE5B71BD95A2293",
+  "messageID": "BAE5A7AD61350527",
   "type": "editMessage",
   "body": {
    "chatId": "120363410406221140@g.us",
-   "idMessage": "BAE56FDA78D67241",
+   "idMessage": "BAE52E4EB950BEFA",
    "message": "Новый текст сообщения",
    "linkPreview": true
   }

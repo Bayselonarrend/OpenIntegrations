@@ -34,14 +34,14 @@ Method at API documentation: [task.commentitem.get](https://dev.1c-bitrix.ru/res
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CommentID = "19762";
-    TaskID    = "8508";
+    CommentID = "20004";
+    TaskID    = "8622";
 
     Result = OPI_Bitrix24.GetTaskComment(URL, TaskID, CommentID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "1dbf0069006e9f06006b12e400000001000...";
-    CommentID = "19764";
+    Token     = "53100369006e9f06006b12e400000001000...";
+    CommentID = "20006";
 
     Result = OPI_Bitrix24.GetTaskComment(URL, TaskID, CommentID, Token);
 ```
@@ -53,8 +53,8 @@ Method at API documentation: [task.commentitem.get](https://dev.1c-bitrix.ru/res
         ```bash
             oint bitrix24 GetTaskComment \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "8404" \
-             --comment 19524 \
+             --task "8672" \
+             --comment 20116 \
              --token "***"
         ```
     </TabItem>
@@ -63,8 +63,8 @@ Method at API documentation: [task.commentitem.get](https://dev.1c-bitrix.ru/res
         ```batch
             oint bitrix24 GetTaskComment ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "8404" ^
-             --comment 19524 ^
+             --task "8672" ^
+             --comment 20116 ^
              --token "***"
         ```
     </TabItem>
@@ -75,21 +75,21 @@ Method at API documentation: [task.commentitem.get](https://dev.1c-bitrix.ru/res
 {
  "result": {
   "POST_MESSAGE_HTML": null,
-  "ID": "19698",
+  "ID": "20226",
   "AUTHOR_ID": "1",
   "AUTHOR_NAME": "Антон Титовец",
   "AUTHOR_EMAIL": "",
-  "POST_DATE": "2025-10-27T10:07:17+00:00",
+  "POST_DATE": "2025-10-31T11:53:51+00:00",
   "POST_MESSAGE": "The task has been changed, let's split up"
  },
  "time": {
-  "start": 1761559647,
-  "finish": 1761559647.2274,
-  "duration": 0.227396011352539,
+  "start": 1761911641,
+  "finish": 1761911641.45838,
+  "duration": 0.458379030227661,
   "processing": 0,
-  "date_start": "2025-10-27T10:07:27+00:00",
-  "date_finish": "2025-10-27T10:07:27+00:00",
-  "operating_reset_at": 1761560247,
+  "date_start": "2025-10-31T11:54:01+00:00",
+  "date_finish": "2025-10-31T11:54:01+00:00",
+  "operating_reset_at": 1761912241,
   "operating": 0
  }
 }

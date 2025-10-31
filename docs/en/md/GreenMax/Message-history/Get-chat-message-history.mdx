@@ -45,6 +45,30 @@ Method at API documentation: [GetChatHistory](https://green-api.com/v3/docs/api/
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint greenmax GetChatMessageHistory \
+             --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
+             --chat "-68885166162005" \
+             --count 3
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint greenmax GetChatMessageHistory ^
+             --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
+             --chat "-68885166162005" ^
+             --count 3
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
