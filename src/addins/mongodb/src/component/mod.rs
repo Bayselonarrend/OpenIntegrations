@@ -11,25 +11,28 @@ use serde_json::json;
 // МЕТОДЫ КОМПОНЕНТЫ
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
+    name!("Disconnect")
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 0,
+        1 => 0,
         _ => 0,
     }
 }
 
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
     match num {
-        0 => Box::new(obj.initialize()),
+        0 => Box::new(obj.connect()),
+        1 => Box::new(obj.disconnect()),
         _ => Box::new(false),
     }
 }
 
 // ПОЛЯ КОМПОНЕНТЫ
 pub const PROPS: &[&[u16]] = &[
-    name!("URI")
+    name!("ConnectionString")
 ];
 
 pub struct AddIn {
@@ -47,14 +50,14 @@ impl AddIn {
         }
     }
 
-    pub fn initialize(&mut self) -> String {
+    pub fn connect(&mut self) -> String {
 
         if self.connection_string.is_empty() {
             return format_json_error("Empty connection string!");
         }
 
         if self.initialized {
-            return format_json_error("Client already initialized!");
+            return format_json_error("Connection already initialized!");
         }
 
         let guard = match self.backend.lock(){
@@ -65,6 +68,26 @@ impl AddIn {
         match guard.connect(self.connection_string.as_str()){
             Ok(_) => {
                 self.initialized = true;
+                json!({"result": true}).to_string()
+            },
+            Err(e) => format_json_error(&e.to_string())
+        }
+    }
+
+    pub fn disconnect(&mut self) -> String {
+
+        if !self.initialized {
+            return format_json_error("Connection already closed!");
+        }
+
+        let guard = match self.backend.lock(){
+            Ok(lock) => lock,
+            Err(e) => return format_json_error(&e.to_string())
+        };
+
+        match guard.disconnect(){
+            Ok(_) => {
+                self.initialized = false;
                 json!({"result": true}).to_string()
             },
             Err(e) => format_json_error(&e.to_string())

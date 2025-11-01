@@ -12,12 +12,10 @@ fn json_value_to_bson(value: &Value) -> Bson {
         Value::Bool(b) => Bson::Boolean(*b),
         Value::Null => Bson::Null,
 
-        // Массивы
         Value::Array(arr) => {
             Bson::Array(arr.iter().map(json_value_to_bson).collect())
         },
 
-        // Объекты - проверяем специальные типы
         Value::Object(obj) => {
             if let Some(oid) = obj.get("__OPI_OID__") {
                 if let Some(oid_str) = oid.as_str() {
