@@ -112,11 +112,6 @@ pipeline {
 				catchError() {   
 				    runCommand('oscript ./ci/os/rp_stop.os "ru"')
 			    }
-				withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
-					bat encoding: 'UTF-8', script:'del "./data.json.gpg"'
-					bat encoding: 'UTF-8', script:'gpg --batch --symmetric --cipher-algo AES256 --passphrase="%GPGKEY%" ./data.json'
-					bat encoding: 'UTF-8', script:'del "./data.json"'
-				}
 				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
 					bat "git config user.email vitaly.the.alpaca@gmail.com"
 					bat 'git config user.name "Vitaly the Alpaca (bot)"'

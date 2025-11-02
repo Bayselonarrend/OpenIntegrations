@@ -1,0 +1,42 @@
+﻿---
+sidebar_position: 4
+description: Generate connection string and other functions to work with MongoDB in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MongoDB]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Generate connection string
+ Forms a MongoDB connection string
+
+
+
+`Function GenerateConnectionString(Val Address, Val Base = "", Val Login = "", Val Password = "", Val Parameters = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Address | --addr | String | &#x2714; | Host IP address with port or URL |
+  | Base | --db | String | &#x2716; | Database, if necessary |
+  | Login | --usr | String | &#x2716; | Username for authorization |
+  | Password | --pwd | String | &#x2716; | Password for authorization |
+  | Parameters | --params | Structure Of KeyAndValue, Undefined | &#x2716; | Additional connection parameters |
+
+  
+  Returns:  String - MongoDB connection string
+
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1:1234";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "main";
+```
+ 
+
+
+
+

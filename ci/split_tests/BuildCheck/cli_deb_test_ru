@@ -51,9 +51,6 @@ pipeline {
       	stage('Prepare'){
          		steps{
                     sh 'cd ./src/ru/OInt && opm build && opm install oint-1.29.0.ospx && rm oint-1.29.0.ospx'
-            		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
-              			sh 'gpg --quiet --batch --yes --decrypt --passphrase="$GPGKEY" --output ./data.json ./data.json.gpg'
-            		}
          		}
       	}
         stage('Create ReportPortal launch'){
@@ -85,11 +82,6 @@ pipeline {
                 catchError() {   
 				    runCommand('oscript ./ci/os/rp_stop.os "ru"')
 			    }
-				withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
-					sh 'rm "./data.json.gpg"'
-					sh 'gpg --batch --symmetric --cipher-algo AES256 --passphrase="$GPGKEY" ./data.json'
-					sh 'rm "./data.json"'
-				}
 				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
 					sh "git config user.email vitaly.the.alpaca@gmail.com"
 					sh 'git config user.name "Vitaly the Alpaca (bot)"'
