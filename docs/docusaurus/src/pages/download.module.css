@@ -1,18 +1,16 @@
-
-
 .downloadHeaderWrapper {
   display: flex;
-  align-items: flex-start; /* выравнивание по верху, так как иконка выше текста */
+  align-items: flex-start;
   gap: 1rem;
   margin-bottom: 0;
 }
 
 .downloadIcon {
-  width: 4rem;       /* 32px — достаточно для двух строк текста */
+  width: 4rem;
   height: 4rem;
-  flex-shrink: 0;    /* не сжимать при узком экране */
+  flex-shrink: 0;
   color: #004943;
-  margin-top: 0.31rem; /* лёгкая компенсация вертикального смещения */
+  margin-top: 0.31rem;
   margin-right: 10px;
 }
 
@@ -97,7 +95,7 @@
 
 .langButtons .downloadButton {
   flex: 1;
-  min-width: 0; /* чтобы не вылезали за границы на мобильных */
+  min-width: 0;
   text-align: center;
 }
 
@@ -106,6 +104,7 @@
   margin-top: 2rem;
 }
 
+/* Modal */
 .modalOverlay {
   position: fixed;
   top: 0;
@@ -115,11 +114,21 @@
   background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* не центрировать по вертикали, чтобы не обрезалось сверху */
+  align-items: flex-start;
   padding: 20px 16px;
   box-sizing: border-box;
   z-index: 1000;
-  overflow-y: auto; /* разрешить скролл всего overlay, если нужно */
+  overflow-y: auto;
+
+  /* Начальное состояние */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modalOverlayVisible {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .modalContent {
@@ -129,21 +138,28 @@
   max-width: 800px;
   width: 100%;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  position: relative;
-  margin-top: 80px; /* отступ сверху, чтобы не прилипало к шапке */
-  max-height: calc(100vh - 80px); /* оставить место сверху и снизу */
+  margin-top: 80px;
+  max-height: calc(100vh - 80px);
   display: flex;
   flex-direction: column;
+
+  /* Анимация контента */
+  transform: translateY(20px);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Контент, который может скроллиться */
+.modalOverlayVisible .modalContent {
+  transform: translateY(0);
+  opacity: 1;
+}
+
 .modalScrollable {
   flex: 1;
   overflow-y: auto;
   padding-bottom: 1rem;
 }
 
-/* Кнопка "Нет, спасибо" — всегда внизу и видна */
 .closeButton {
   display: block;
   width: 100%;
@@ -155,7 +171,7 @@
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  margin-top: auto; /* прижать к низу */
+  margin-top: auto;
   box-sizing: border-box;
 }
 
@@ -216,7 +232,6 @@
   color: #333;
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .supportGrid {
     grid-template-columns: 1fr;
