@@ -34,5 +34,6 @@
 "OpenAI": false,
 "ReportPortal": true,
 "HTTPClient": true,
-"BuildCheck": true
+"BuildCheck": true,
+"MongoDB": true
 }
