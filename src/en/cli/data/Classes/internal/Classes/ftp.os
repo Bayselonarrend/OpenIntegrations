@@ -181,7 +181,7 @@ Function GetComposition() Export
     NewLine.Method       = "GetConnectionSettings";
     NewLine.SearchMethod = "GETCONNECTIONSETTINGS";
     NewLine.Parameter    = "--host";
-    NewLine.Description    = "Host addres";
+    NewLine.Description    = "Host address";
     NewLine.Region     = "Common methods";
     NewLine.MethodDescription   = "Creates a structure of FTP connection settings";
 

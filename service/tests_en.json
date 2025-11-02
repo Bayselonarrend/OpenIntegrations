@@ -6428,5 +6428,20 @@
 "lib": "GreenMax",
 "name": "ClearIncomingNotificationQueue",
 "variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "GenerateConnectionString",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "CreateConnection",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "CreateConnection",
+"variant": "Closing"
 }
 ]

@@ -16,6 +16,57 @@ Function GetComposition() Export
     CompositionTable.Columns.Add("Description");
     CompositionTable.Columns.Add("MethodDescription");
     CompositionTable.Columns.Add("Region");
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "mongodb";
+    NewLine.Module      = "OPI_MongoDB";
+    NewLine.Method       = "GenerateConnectionString";
+    NewLine.SearchMethod = "GENERATECONNECTIONSTRING";
+    NewLine.Parameter    = "--addr";
+    NewLine.Description    = "Host IP address with port or URL";
+    NewLine.Region     = "Common methods";
+    NewLine.MethodDescription   = "Forms a MongoDB connection string";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "mongodb";
+    NewLine.Module      = "OPI_MongoDB";
+    NewLine.Method       = "GenerateConnectionString";
+    NewLine.SearchMethod = "GENERATECONNECTIONSTRING";
+    NewLine.Parameter    = "--db";
+    NewLine.Description    = "Database, if necessary (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "mongodb";
+    NewLine.Module      = "OPI_MongoDB";
+    NewLine.Method       = "GenerateConnectionString";
+    NewLine.SearchMethod = "GENERATECONNECTIONSTRING";
+    NewLine.Parameter    = "--usr";
+    NewLine.Description    = "Username for authorization (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "mongodb";
+    NewLine.Module      = "OPI_MongoDB";
+    NewLine.Method       = "GenerateConnectionString";
+    NewLine.SearchMethod = "GENERATECONNECTIONSTRING";
+    NewLine.Parameter    = "--pwd";
+    NewLine.Description    = "Password for authorization (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library  = "mongodb";
+    NewLine.Module      = "OPI_MongoDB";
+    NewLine.Method       = "GenerateConnectionString";
+    NewLine.SearchMethod = "GENERATECONNECTIONSTRING";
+    NewLine.Parameter    = "--params";
+    NewLine.Description    = "Additional connection parameters (optional, def. val. - Empty value)";
+    NewLine.Region     = "Common methods";
+
     Return CompositionTable;
 EndFunction
 
