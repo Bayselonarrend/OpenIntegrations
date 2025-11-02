@@ -1,9 +1,9 @@
 use serde_json::{Number, Value};
 use mongodb::bson::{Bson, Document};
 use mongodb::bson;
-use base64::{Engine as _, engine::{self, general_purpose}, alphabet};
+use base64::{Engine as _, engine::{general_purpose}};
 
-fn json_value_to_bson(value: &Value) -> Bson {
+pub fn json_value_to_bson(value: &Value) -> Bson {
     match value {
 
         Value::String(s) => Bson::String(s.clone()),
@@ -52,7 +52,7 @@ fn json_value_to_bson(value: &Value) -> Bson {
     }
 }
 
-fn bson_to_json_value(bson: &Bson) -> Value {
+pub fn bson_to_json_value(bson: &Bson) -> Value {
     match bson {
         Bson::String(s) => Value::String(s.clone()),
         Bson::Int32(n) => Value::Number((*n).into()),
