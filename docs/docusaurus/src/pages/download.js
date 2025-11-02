@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import Heading from '@theme/Heading';
@@ -8,9 +8,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 const DownloadPage = () => {
   const [showThankYou, setShowThankYou] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
-
-  const githubLogo = useBaseUrl('/img/github-logo.svg');
-  const boostyLogo = useBaseUrl('/img/boosty-logo.svg');
+  const thankYouClosed = useRef(false); // флаг: пользователь закрыл окно
 
   const downloadItems = [
     {
@@ -94,22 +92,37 @@ const DownloadPage = () => {
     },
   ];
 
-  const handleDownload = (filename) => {
+  const triggerDownload = (filename) => {
     const cleanFilename = filename.trim();
     const url = `https://github.com/Bayselonarrend/OpenIntegrations/releases/latest/download/${cleanFilename}`;
-
     const link = document.createElement('a');
     link.href = url;
     link.setAttribute('target', '_self');
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const handleDownload = (filename) => {
+    if (thankYouClosed.current) {
+      // Просто скачиваем без модалки
+      triggerDownload(filename);
+      return;
+    }
+
+    triggerDownload(filename);
 
     setShowThankYou(true);
-    // Через кадр — включаем видимость → запускается transition
+    // Задержка перед анимацией (чтобы пользователь успел увидеть начало скачивания)
     setTimeout(() => {
       setIsModalVisible(true);
     }, 600);
+  };
+
+  const handleCloseThankYou = () => {
+    setShowThankYou(false);
+    setIsModalVisible(false);
+    thankYouClosed.current = true; // запоминаем выбор на время сессии
   };
 
   return (
@@ -180,10 +193,7 @@ const DownloadPage = () => {
       {showThankYou && (
         <div
           className={`${styles.modalOverlay} ${isModalVisible ? styles.modalOverlayVisible : ''}`}
-          onClick={() => {
-            setShowThankYou(false);
-            setIsModalVisible(false);
-          }}
+          onClick={handleCloseThankYou}
         >
           <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
             <div className={styles.modalScrollable}>
@@ -239,7 +249,7 @@ const DownloadPage = () => {
                     />
                   </svg>
                   <p>
-                    Пожертвования на Boosty — единственный источника дохода проекта. Такой вид монетизации позволяет нам развивать проект дальше, при этом не пряча функционал за платными версиями и не засоряя документацию рекламными блоками
+                    Пожертвования на Boosty — единственный источник дохода проекта. Такой вид монетизации позволяет нам развивать проект дальше, при этом не пряча функционал за платными версиями и не засоряя документацию рекламными блоками.
                   </p>
                   <Link
                     className={styles.supportButton}
@@ -253,13 +263,7 @@ const DownloadPage = () => {
               </div>
             </div>
 
-            <button
-              className={styles.closeButton}
-              onClick={() => {
-                setShowThankYou(false);
-                setIsModalVisible(false);
-              }}
-            >
+            <button className={styles.closeButton} onClick={handleCloseThankYou}>
               Нет, спасибо
             </button>
           </div>
