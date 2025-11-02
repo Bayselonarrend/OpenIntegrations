@@ -1,11 +1,23 @@
 use serde_json::Value;
 use std::sync::mpsc::{self, Sender};
 use std::thread::{self, JoinHandle};
+use mongodb::bson::{Bson, Document};
 use mongodb::Client;
+use serde::{Deserialize, Serialize};
+use crate::component::bson::{bson_to_json_value, json_value_to_bson};
 
 pub struct MongoBackend {
     pub(crate) tx: Sender<BackendCommand>,
     thread_handle: Option<JoinHandle<()>>,
+}
+
+#[derive(Serialize, Deserialize)]
+pub struct ExecuteParams {
+    pub operation: String,
+    pub database: Option<String>,
+    pub collection: Option<String>,
+    pub data: Option<Value>,
+    pub fields: Option<Value>,
 }
 
 pub enum BackendCommand {
@@ -15,11 +27,7 @@ pub enum BackendCommand {
     },
     Shutdown,
     Execute {
-        operation: String,
-        database: Option<String>,
-        collection: Option<String>,
-        data: Option<Value>,
-        fields: Option<Value>,
+        params: ExecuteParams,
         response: Sender<String>,
     },
     Disconnect {
@@ -51,20 +59,18 @@ impl MongoBackend {
                                 }
                             }
                         }
-                        BackendCommand::Execute {
-                            operation,
-                            database,
-                            collection,
-                            data,
-                            fields,
-                            response,
-                        } => {
+                        BackendCommand::Execute { params, response } => {
                             if client.is_none() {
                                 let _ = response.send("Not connected to MongoDB".to_string());
                                 continue;
                             }
 
-                            let _ = response.send(format!("Executing operation: {}", operation));
+                            let result = rt.block_on(execute_operation(
+                                client.as_ref().unwrap(),
+                                &params
+                            ));
+
+                            let _ = response.send(result.unwrap_or_else(|e| e));
                         },
                         BackendCommand::Disconnect { response } => {
                             client = None;
@@ -81,10 +87,6 @@ impl MongoBackend {
             thread_handle: Some(thread_handle),
         }
     }
-
-    pub fn send_command(&self, cmd: BackendCommand) {
-        let _ = self.tx.send(cmd);
-    }
 }
 
 async fn handle_connect(connection_string: &str) -> Result<Client, String> {
@@ -98,6 +100,46 @@ async fn handle_connect(connection_string: &str) -> Result<Client, String> {
         .map_err(|e| format!("Failed to verify connection: {}", e))?;
 
     Ok(client)
+}
+
+async fn execute_operation(
+    client: &Client,
+    params: &ExecuteParams,
+) -> Result<String, String> {
+
+    let db_name = params.database.as_deref().unwrap_or("admin");
+    let db = client.database(db_name);
+
+    let mut command = Document::new();
+
+    if let Some(coll) = &params.collection {
+        command.insert(&params.operation, coll);
+    } else {
+        command.insert(&params.operation, 1);
+    }
+
+    if let Some(Value::Object(data_map)) = &params.data {
+        for (key, value) in data_map {
+            if key != &params.operation {
+                command.insert(key, json_value_to_bson(value));
+            }
+        }
+    }
+
+    if let Some(Value::Object(fields_map)) = &params.fields {
+        for (key, value) in fields_map {
+            command.insert(key, json_value_to_bson(value));
+        }
+    }
+
+    let result_doc = db
+        .run_command(command)
+        .await
+        .map_err(|e| format!("MongoDB command '{}' failed: {}", &params.operation, e))?;
+
+    let json_result = bson_to_json_value(&Bson::Document(result_doc));
+    serde_json::to_string(&json_result)
+        .map_err(|e| format!("Failed to serialize command result: {}", e))
 }
 
 impl Drop for MongoBackend {
