@@ -9,9 +9,7 @@ pipeline {
                         bat encoding: 'UTF-8', script:'chcp 65001 & xcopy "docs/ru/md" "docs/docusaurus/docs" /s /e /i /y'
                         bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & npm install'
                         bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & npm run build'
-                        withCredentials([string(credentialsId: 'neocities-ru', variable: 'TOKEN')]) {
-                            powershell encoding: 'UTF-8', script:'rclone sync C:/ProgramData/Jenkins/.jenkins/workspace/OpiDocs/OpiDocsRu/docs/docusaurus/build/ hoster:public_html --progress'
-                        }
+                        bat encoding: 'UTF-8', script:'rclone sync C:/ProgramData/Jenkins/.jenkins/workspace/OpiDocs/OpiDocsRu/docs/docusaurus/build/ hoster:public_html --progress'
                     }
                     
                     bat encoding: 'UTF-8', script:'chcp 65001 & rmdir /s /q "C:/ProgramData/Jenkins/.jenkins/workspace/OpiDocs/OpiDocsRu/docs/docusaurus/build"'

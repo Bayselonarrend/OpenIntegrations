@@ -34,7 +34,7 @@ By default, all SELECT queries return an array of selected data, while other que
 
 The PostgreSQL connector supports the use of positional parameters. All values passed both when executing queries directly through the `ExecuteRequestSQL()` function and in ORM methods with value setting, such as `AddRecords` and `UpdateRecords`, must be a structure of the form `{'Data Type': 'Value'}`. The following data types are supported:
 
-:::TIP
+:::tip
 🟢 - Implemented, tested; 🟡 - Implemented, not tested
 :::
 
