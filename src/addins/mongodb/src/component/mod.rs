@@ -26,6 +26,10 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
     match num {
         0 => Box::new(obj.connect()),
         1 => Box::new(obj.disconnect()),
+        2 => {
+            let json_string = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.execute(&json_string))
+        }
         _ => Box::new(false),
     }
 }
@@ -90,6 +94,23 @@ impl AddIn {
                 self.initialized = false;
                 json!({"result": true}).to_string()
             },
+            Err(e) => format_json_error(&e.to_string())
+        }
+    }
+
+    pub fn execute(&mut self, json_string: &str) -> String {
+
+        if !self.initialized {
+            return format_json_error("Connection already closed!");
+        }
+
+        let guard = match self.backend.lock(){
+            Ok(lock) => lock,
+            Err(e) => return format_json_error(&e.to_string())
+        };
+
+        match guard.execute(json_string){
+            Ok(result) => json!({"result": true, "data": result}).to_string(),
             Err(e) => format_json_error(&e.to_string())
         }
     }
