@@ -11,13 +11,15 @@ use serde_json::json;
 // МЕТОДЫ КОМПОНЕНТЫ
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
-    name!("Disconnect")
+    name!("Disconnect"),
+    name!("Execute")
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 0,
         1 => 0,
+        2 => 1,
         _ => 0,
     }
 }
