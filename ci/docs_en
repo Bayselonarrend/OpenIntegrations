@@ -11,7 +11,7 @@ pipeline {
                         bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & npm install'
                         bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & npm run build'
                         withCredentials([string(credentialsId: 'neocities-en', variable: 'TOKEN')]) {
-                            powershell encoding: 'UTF-8', script:'oint neocities СинхронизироватьКаталоги --token $ENV:TOKEN --local "C:/ProgramData/Jenkins/.jenkins/workspace/OpiDocs/OpiDocsEn/docs/docusaurus/build"'
+                            powershell encoding: 'UTF-8', script:'rclone sync C:/ProgramData/Jenkins/.jenkins/workspace/OpiDocs/OpiDocsEn/docs/docusaurus/build/ hoster:public_html_en --progress'
                         }
                     }
                     
