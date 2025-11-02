@@ -126,7 +126,7 @@ function HomepageHeader() {
             </Link>
           </div>
           <div className={styles.button}>
-            <Link className="button button--secondary button--bg" to="https://github.com/Bayselonarrend/OpenIntegrations/releases/latest">
+            <Link className="button button--secondary button--bg" to="./download">
               ⬇️ Скачать
             </Link>
           </div>

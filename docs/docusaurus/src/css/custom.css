@@ -137,7 +137,9 @@ strong{
   margin-top: 10px;
 }
 
-
+.hero__subtitle{
+  margin-top: -15px;
+}
 
 .menu__link{
   font-weight: 350;
@@ -410,7 +412,7 @@ li > a.menu__link {
   display: inline-block;
   font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 20px;
   list-style: none;
   padding: 6px 16px;

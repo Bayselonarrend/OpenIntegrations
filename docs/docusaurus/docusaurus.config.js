@@ -120,7 +120,7 @@ window.yaContextCb.push(() => {
             type: 'docSidebar',
             sidebarId: 'docs',
             position: 'left',
-            label: 'Описания методов',
+            label: 'Документация',
           },
           {
             type: 'docSidebar',
@@ -134,6 +134,12 @@ window.yaContextCb.push(() => {
             position: 'right',
             className: 'navbar-boosty-link', // Класс для кастомизации
             'aria-label': 'Boosty',
+          },
+          {
+            to: '/download',
+            label: 'Скачать',
+            position: 'left',
+            'aria-label': 'Download',
           },
           {
             to: 'https://github.com/Bayselonarrend/OpenIntegrations',
