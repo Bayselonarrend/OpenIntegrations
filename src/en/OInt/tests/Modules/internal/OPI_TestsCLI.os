@@ -11,7 +11,7 @@
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
 
-// The above copyright notice and this permission notice shall be included in all
+// The above copyright notice and +this permission notice shall be included in all
 // copies or substantial portions of the Software.
 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
@@ -1063,7 +1063,7 @@ Procedure TwitterAPI_AccountData() Export
 
     Twitter_GetToken(TestParameters);
     Twitter_GetAuthorizationLink(TestParameters);
-    Twitter_RefreshToken(TestParameters);
+    // Twitter_UpdateToken(TestParameters);
 
 EndProcedure
 
@@ -3105,6 +3105,24 @@ EndProcedure
 
 #EndRegion
 
+#Region MongoDB
+
+Procedure Mongo_CommonMethods() Export
+
+    TestParameters = New Structure;
+
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Port"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_User"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
+
+    MongoDB_GenerateConnectionString(TestParameters);
+    MongoDB_CreateConnection(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -3129,10 +3147,23 @@ Function GetTwitterAuthData()
 
     Parameters = New Map;
 
+    ServerToken = OPI_TestDataRetrieval.GetParameter("Access_Token");
+
+    URL = "https://hut.openintegrations.dev/melezh/get_twitter_token";
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .SetURL(URL)
+        .AddBearerAuthorization(ServerToken) // <---
+        .ProcessRequest("GET")
+        .ReturnResponseAsJSONObject();
+
+    Token = Result["data"];
+
     Parameters.Insert("redirect_uri"      , OPI_TestDataRetrieval.GetParameter("Twitter_Redirect"));
     Parameters.Insert("client_id"         , OPI_TestDataRetrieval.GetParameter("Twitter_ClinetID"));
     Parameters.Insert("client_secret"     , OPI_TestDataRetrieval.GetParameter("Twitter_ClientSecret"));
-    Parameters.Insert("access_token"      , OPI_TestDataRetrieval.GetParameter("Twitter_Token"));
+    Parameters.Insert("access_token"      , Token);
     Parameters.Insert("refresh_token"     , OPI_TestDataRetrieval.GetParameter("Twitter_Refresh"));
     Parameters.Insert("oauth_token"       , OPI_TestDataRetrieval.GetParameter("Twitter_OAuthToken"));
     Parameters.Insert("oauth_token_secret", OPI_TestDataRetrieval.GetParameter("Twitter_OAuthSecret"));
@@ -31989,6 +32020,66 @@ Procedure GreenMax_ClearIncomingNotificationQueue(FunctionParameters)
     // END
 
     Process(Result, "GreenMax", "ClearIncomingNotificationQueue");
+
+EndProcedure
+
+#EndRegion
+
+#Region MongoDB
+
+Procedure MongoDB_GenerateConnectionString(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + FunctionParameters["MongoDB_Port"]; // END
+
+    ConnectionParams = New Structure("authSource", "admin");
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("db", Base);
+    Options.Insert("usr", Login);
+    Options.Insert("pwd", Password);
+    Options.Insert("params", ConnectionParams);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+
+    // END
+
+    Process(Result, "MongoDB", "GenerateConnectionString", , FunctionParameters);
+
+EndProcedure
+
+Procedure MongoDB_CreateConnection(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + FunctionParameters["MongoDB_Port"]; // END
+
+    ConnectionParams = New Structure("authSource", "admin");
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("db", Base);
+    Options.Insert("usr", Login);
+    Options.Insert("pwd", Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+
+    Result = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    // END
+
+    Process(Result, "MongoDB", "CreateConnection");
+
+    Result = OPI_MongoDB.CloseConnection(Result);
+
+    Process(Result, "MongoDB", "CreateConnection", "Closing");
 
 EndProcedure
 

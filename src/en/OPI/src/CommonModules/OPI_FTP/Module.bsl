@@ -392,7 +392,7 @@ EndFunction
 // from the `Host` field, in cases when a proxy is used or the server returns `127.0.0.1` (only if an IP address is specified in the `Host` field))
 //
 // Parameters:
-// Host - String - Host addres - host
+// Host - String - Host address - host
 // Port - Number - Server port - port
 // Login - String, Undefined - Username for authorization, if required - login
 // Password - String, Undefined - User password for authorization, if required - pass
