@@ -314,6 +314,23 @@ pipeline {
 				}
 			}
 		}
+		stage('Testing-MongoDB') {
+            when {
+                expression { return shouldRunStage('MongoDB') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_CommonMethods'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
 		stage('Testing-RCON') {
             when {
                 expression { return shouldRunStage('RCON') }
