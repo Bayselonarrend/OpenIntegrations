@@ -15,9 +15,8 @@ pub struct MongoBackend {
 pub struct ExecuteParams {
     pub operation: String,
     pub database: Option<String>,
-    pub collection: Option<String>,
-    pub data: Option<Value>,
-    pub fields: Option<Value>,
+    pub argument: Option<Value>,
+    pub data: Option<Value>
 }
 
 pub enum BackendCommand {
@@ -112,8 +111,8 @@ async fn execute_operation(
 
     let mut command = Document::new();
 
-    if let Some(coll) = &params.collection {
-        command.insert(&params.operation, coll);
+    if let Some(value) = &params.argument {
+        command.insert(&params.operation, json_value_to_bson(value));
     } else {
         command.insert(&params.operation, 1);
     }
@@ -123,12 +122,6 @@ async fn execute_operation(
             if key != &params.operation {
                 command.insert(key, json_value_to_bson(value));
             }
-        }
-    }
-
-    if let Some(Value::Object(fields_map)) = &params.fields {
-        for (key, value) in fields_map {
-            command.insert(key, json_value_to_bson(value));
         }
     }
 
