@@ -3,6 +3,13 @@
  * and scoped locally.
  */
 
+ h3,h1{
+  font-weight: 350;
+ }
+
+ p{
+  font-weight: lighter;
+ }
 
 
 .heroBanner {
