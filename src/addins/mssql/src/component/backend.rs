@@ -160,6 +160,15 @@ impl MSSQLBackend {
 
     }
 
+    pub fn shutdown(&mut self) {
+        let _ = self.tx.send(BackendCommand::Shutdown);
+        if let Some(handle) = self.thread_handle.take() {
+            if let Err(e) = handle.join() {
+                eprintln!("Backend thread panicked during shutdown: {:?}", e);
+            }
+        }
+    }
+
     async fn execute_query_internal(
         client: &mut Client<Compat<TcpStream>>,
         query: &str,

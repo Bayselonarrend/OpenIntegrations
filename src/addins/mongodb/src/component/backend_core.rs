@@ -1,10 +1,11 @@
-use serde_json::Value;
+use serde_json::{json, Value};
 use std::sync::mpsc::{self, Sender};
 use std::thread::{self, JoinHandle};
 use mongodb::bson::{Bson, Document};
 use mongodb::Client;
 use serde::{Deserialize, Serialize};
 use crate::component::bson::{bson_to_json_value, json_value_to_bson};
+use crate::component::format_json_error;
 
 pub struct MongoBackend {
     pub(crate) tx: Sender<BackendCommand>,
@@ -51,7 +52,7 @@ impl MongoBackend {
                             match client_result {
                                 Ok(new_client) => {
                                     client = Some(new_client);
-                                    let _ = response.send("Connection established successfully".to_string());
+                                    let _ = response.send("".to_string());
                                 }
                                 Err(error_msg) => {
                                     let _ = response.send(error_msg);
@@ -69,7 +70,19 @@ impl MongoBackend {
                                 &params
                             ));
 
-                            let _ = response.send(result.unwrap_or_else(|e| e));
+                            let result_string = match result {
+                                Ok(d) => {
+
+                                    let result_value = match serde_json::from_str(&d){
+                                        Ok (value) => value,
+                                        Err(_) => Value::String(d)
+                                    };
+                                    json!({"result": true, "data": result_value}).to_string()
+                                },
+                                Err(e) => format_json_error(&e)
+                            };
+
+                            let _ = response.send(result_string);
                         },
                         BackendCommand::Disconnect { response } => {
                             client = None;
@@ -106,8 +119,10 @@ async fn execute_operation(
     params: &ExecuteParams,
 ) -> Result<String, String> {
 
-    let db_name = params.database.as_deref().unwrap_or("admin");
-    let db = client.database(db_name);
+    let db = match &params.database {
+        Some(d) => client.database(d),
+        None => client.default_database().unwrap_or(client.database("admin")),
+    };
 
     let mut command = Document::new();
 
@@ -129,6 +144,7 @@ async fn execute_operation(
         .run_command(command)
         .await
         .map_err(|e| format!("MongoDB command '{}' failed: {}", &params.operation, e))?;
+
 
     let json_result = bson_to_json_value(&Bson::Document(result_doc));
     serde_json::to_string(&json_result)
