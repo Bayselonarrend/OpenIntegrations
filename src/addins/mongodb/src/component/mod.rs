@@ -5,7 +5,7 @@ mod bson;
 use std::sync::{Arc, Mutex};
 use addin1c::{name, Variant};
 use crate::core::getset;
-use serde_json::json;
+use serde_json::{json};
 
 
 // МЕТОДЫ КОМПОНЕНТЫ
@@ -111,10 +111,7 @@ impl AddIn {
             Err(e) => return format_json_error(&e.to_string())
         };
 
-        match guard.execute(json_string){
-            Ok(result) => json!({"result": true, "data": result}).to_string(),
-            Err(e) => format_json_error(&e.to_string())
-        }
+        guard.execute(json_string).unwrap_or_else(|e| format_json_error(&e.to_string()))
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
