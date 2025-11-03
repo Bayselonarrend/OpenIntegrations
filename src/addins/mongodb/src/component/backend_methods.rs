@@ -11,10 +11,15 @@ impl MongoBackend {
             })
             .map_err(|e| format!("Sending error: {}", e))?;
 
-        response_rx
+        let result = response_rx
             .recv()
             .map_err(|e| format!("Response receiver error: {}", e))?;
-        Ok(())
+
+        match result.is_empty(){
+            true => Ok(()),
+            false => Err(result),
+        }
+
     }
 
     pub fn disconnect(&self) -> Result<(), String> {
