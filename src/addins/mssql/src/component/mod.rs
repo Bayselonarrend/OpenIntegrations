@@ -191,7 +191,19 @@ impl AddIn {
     }
 
     pub fn close_connection(&mut self) -> String {
+
+        match self.backend.lock() {
+            Ok(mut guard) => {
+                guard.shutdown();
+            }
+            Err(e) => {
+                return format_json_error(format!("Failed to acquire backend lock during close: {}", e).as_str());
+            }
+        }
+
+        self.backend = Arc::new(Mutex::new(backend::MSSQLBackend::new()));
         self.initialized = false;
+
         json!({"result": true}).to_string()
     }
 
