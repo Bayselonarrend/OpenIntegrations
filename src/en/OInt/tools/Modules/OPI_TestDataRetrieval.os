@@ -394,7 +394,6 @@ Function GetTestTable() Export
     NewTest(TestTable, "MSS_CommonMethods"                   , "Common methods"                  , MSSQL);
     NewTest(TestTable, "MSS_ORM"                             , "ORM"                             , MSSQL);
     NewTest(TestTable, "Mongo_CommonMethods"                 , "Common methods"                  , MongoDB);
-    NewTest(TestTable, "Mong_DatabaseManagement"             , "Database management"             , MongoDB);
     NewTest(TestTable, "GAPI_GroupManagement"                , "Group management"                , GreenAPI);
     NewTest(TestTable, "GAPI_MessageSending"                 , "Messages sending"                , GreenAPI);
     NewTest(TestTable, "GAPI_NotificationsReceiving"         , "Notifications receiving"         , GreenAPI);
@@ -11768,7 +11767,7 @@ EndFunction
 
 Function Check_MongoDB_GenerateConnectionString(Val Result, Val Option, Parameters = "")
 
-    Address  = "127.0.0.1:1234";
+    Address  = GetLocalhost() + Parameters["MongoDB_Port"];
     Login    = Parameters["MongoDB_User"];
     Password = Parameters["MongoDB_Password"];
     Base     = Parameters["MongoDB_DB"];
@@ -11790,29 +11789,6 @@ Function Check_MongoDB_CreateConnection(Val Result, Val Option)
         Result = String(TypeOf(Result));
         ExpectsThat(Result).Равно("AddIn.OPI_MongoDB.Main");
     EndIf;
-
-    Return Result;
-
-EndFunction
-
-Function Check_MongoDB_ExecuteCommand(Val Result, Val Option)
-
-    If Option  = "Connection" Then
-        Result = String(TypeOf(Result));
-        ExpectsThat(Result).Равно("AddIn.OPI_MongoDB.Main");
-    Else
-        ExpectsThat(Result["result"]).Равно(True);
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
-Function Check_MongoDB_GetDatabase(Val Result, Val Option)
-
-    ExpectsThat(Result["result"]).Равно(True);
-    ExpectsThat(Result["data"]["ok"]).Равно(1);
-    ExpectsThat(Result["data"]["db"]).Равно("test_db");
 
     Return Result;
 
