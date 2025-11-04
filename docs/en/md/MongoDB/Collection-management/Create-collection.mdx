@@ -1,0 +1,36 @@
+﻿---
+sidebar_position: 1
+description: Create collection and other functions to work with MongoDB in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MongoDB]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create collection
+ Creates a new collection with the specified parameters
+
+
+
+`Function CreateCollection(Val Connection, Val Name, Val Base = Undefined, Val Parameters = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --dbc | String, Arbitrary | &#x2714; | Connection or connection string |
+  | Name | --name | String | &#x2714; | Collection name |
+  | Base | --db | String | &#x2716; | Database name. Current database if not specified |
+  | Parameters | --params | Structure Of KeyAndValue | &#x2716; | Additional creation parameters |
+
+  
+  Returns:  Map Of KeyAndValue - Operation result
+
+<br/>
+
+
+
+
+ 
+
+
+
+

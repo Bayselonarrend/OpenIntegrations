@@ -167,14 +167,19 @@ EndFunction
 
 Procedure AddCommandParameters(Parser, Command);
 	
-	Parameter_ = "Parameter";
+	Fields = "Parameter,ParameterTrim";
 
-	TableForUse = ParametersTable.Copy(, Parameter_);
-	TableForUse.GroupBy(Parameter_);
+	TableForUse = ParametersTable.Copy(, Fields);
+	TableForUse.GroupBy(Fields);
 
-	ParameterArray = TableForUse.UnloadColumn(Parameter_);
+	ParameterArray     = TableForUse.UnloadColumn("Parameter");
+	ParameterArrayTrim = TableForUse.UnloadColumn("ParameterTrim");
 	
 	For Each Parameter In ParameterArray Do
+		Parser.AddNamedCommandParameter(Command, Parameter);
+	EndDo;
+
+	For Each Parameter In ParameterArrayTrim Do
 		Parser.AddNamedCommandParameter(Command, Parameter);
 	EndDo;
 	
