@@ -3117,20 +3117,6 @@ Procedure Mongo_CommonMethods() Export
 
     MongoDB_GenerateConnectionString(TestParameters);
     MongoDB_CreateConnection(TestParameters);
-    MongoDB_ExecuteCommand(TestParameters);
-
-EndProcedure
-
-Procedure Mong_DatabaseManagement() Export
-
-    TestParameters = New Structure;
-
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Port"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_User"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Password", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
-
-    MongoDB_GetDatabase(TestParameters);
 
 EndProcedure
 
@@ -24288,6 +24274,8 @@ Procedure MongoDB_GenerateConnectionString(FunctionParameters)
     Password = FunctionParameters["MongoDB_Password"];
     Base     = FunctionParameters["MongoDB_DB"];
 
+    Address = OPI_TestDataRetrieval.GetLocalhost() + FunctionParameters["MongoDB_Port"]; // END
+
     ConnectionParams = New Structure("authSource", "admin");
     Result           = OPI_MongoDB.GenerateConnectionString(Address, Base, Login, Password, ConnectionParams);
 
@@ -24304,7 +24292,7 @@ Procedure MongoDB_CreateConnection(FunctionParameters)
     Password = FunctionParameters["MongoDB_Password"];
     Base     = FunctionParameters["MongoDB_DB"];
 
-    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // END
+    Address = OPI_TestDataRetrieval.GetLocalhost() + FunctionParameters["MongoDB_Port"]; // END
 
     ConnectionParams = New Structure("authSource", "admin");
     ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, Base, Login, Password, ConnectionParams);
@@ -24318,56 +24306,6 @@ Procedure MongoDB_CreateConnection(FunctionParameters)
     Result = OPI_MongoDB.CloseConnection(Result);
 
     Process(Result, "MongoDB", "CreateConnection", "Closing");
-
-EndProcedure
-
-Procedure MongoDB_ExecuteCommand(FunctionParameters)
-
-    Address  = "127.0.0.1:1234";
-    Login    = FunctionParameters["MongoDB_User"];
-    Password = FunctionParameters["MongoDB_Password"];
-    Base     = FunctionParameters["MongoDB_DB"];
-
-    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // END
-
-    ConnectionParams = New Structure("authSource", "admin");
-    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, Base, Login, Password, ConnectionParams);
-
-    Command = "listDatabases";
-    Data    = New Structure("nameOnly", True);
-
-    Connection = OPI_MongoDB.CreateConnection(ConnectionString);
-
-    Process(Connection, "MongoDB", "ExecuteCommand", "Connection"); // SKIP
-
-    Result = OPI_MongoDB.ExecuteCommand(Connection, Command, , , Data);
-
-    // END
-
-    Process(Result, "MongoDB", "ExecuteCommand");
-
-EndProcedure
-
-Procedure MongoDB_GetDatabase(FunctionParameters)
-
-    Address  = "127.0.0.1:1234";
-    Login    = FunctionParameters["MongoDB_User"];
-    Password = FunctionParameters["MongoDB_Password"];
-    Base     = FunctionParameters["MongoDB_DB"];
-
-    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // END
-
-    ConnectionParams = New Structure("authSource", "admin");
-    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, Base, Login, Password, ConnectionParams);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
-
-    Base = "test_db";
-
-    Result = OPI_MongoDB.GetDatabase(Connection, Base);
-
-    // END
-
-    Process(Result, "MongoDB", "GetDatabase");
 
 EndProcedure
 

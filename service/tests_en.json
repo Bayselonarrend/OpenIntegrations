@@ -6443,20 +6443,5 @@
 "lib": "MongoDB",
 "name": "CreateConnection",
 "variant": "Closing"
-},
-{
-"lib": "MongoDB",
-"name": "ExecuteCommand",
-"variant": "Connection"
-},
-{
-"lib": "MongoDB",
-"name": "ExecuteCommand",
-"variant": ""
-},
-{
-"lib": "MongoDB",
-"name": "GetDatabase",
-"variant": ""
 }
 ]
