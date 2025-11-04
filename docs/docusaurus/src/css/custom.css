@@ -394,6 +394,8 @@ li > a.menu__link {
 .MySQL a::before,
 .Neocities a::before,
 .Notion a::before,
+.Ollama a::before,
+.OpenAI a::before,
 .PostgreSQL a::before,
 .RCON a::before,
 .ReportPortal a::before,
@@ -408,7 +410,9 @@ li > a.menu__link {
 .Viber a::before,
 .VK a::before,
 .VKTeams a::before,
-.YandexDisk a::before,{
+.YandexDisk a::before,
+.HTTP a::before,
+.HTTP a::before,{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
 }
@@ -473,6 +477,14 @@ li > a.menu__link {
   content: url(../../static/img/APIs/small/Notion.png);
 }
 
+.Ollama > div > a::before{
+  content: url(../../static/img/APIs/small/Ollama.png);
+}
+
+.OpenAI > div > a::before{
+  content: url(../../static/img/APIs/small/OpenAI.png);
+}
+
 .PostgreSQL > div > a::before{
   content: url(../../static/img/APIs/small/PostgreSQL.png);
 }
@@ -531,4 +543,12 @@ li > a.menu__link {
 
 .YandexDisk > div > a::before{
   content: url(../../static/img/APIs/small/YandexDisk.png);
+}
+
+.HTTP > div > a::before{
+  content: url(../../static/img/APIs/small/HTTP.png);
+}
+
+.HTTP > div > a::before{
+  content: url(../../static/img/APIs/small/HTTP.png);
 }
