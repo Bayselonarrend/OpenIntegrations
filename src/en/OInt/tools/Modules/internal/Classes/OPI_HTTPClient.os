@@ -1,6 +1,7 @@
 // OneScript: ./OInt/tools/Modules/internal/Classes/OPI_HTTPClient.os
 // Lib: HTTP-client
 // CLI: none
+// Keywords: http, https
 
 // MIT License
 

@@ -14,6 +14,8 @@
 "MySQL",
 "Neocities",
 "Notion",
+"Ollama",
+"OpenAI",
 "PostgreSQL",
 "RCON",
 "ReportPortal",
@@ -28,5 +30,7 @@
 "Viber",
 "VK",
 "VKTeams",
-"YandexDisk"
+"YandexDisk",
+"HTTP",
+"HTTP"
 ]

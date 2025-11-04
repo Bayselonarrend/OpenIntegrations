@@ -1,6 +1,7 @@
 // OneScript: ./OInt/core/Modules/OPI_OpenAI.os
 // Lib: OpenAI
 // CLI: openai
+// Keywords: openai, localai, ai llm
 
 // MIT License
 
