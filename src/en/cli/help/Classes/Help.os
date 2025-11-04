@@ -209,10 +209,6 @@ Procedure HandleHelpTabulation(ParametersTable)
 	MaximumLength 	= 15;
 
 	For Each MethodParameter In ParametersTable Do
-
-		If ValueIsFilled(MethodParameter["ParameterTrim"]) Then
-			MethodParameter[Parameter_] = MethodParameter[Parameter_] + ", " + MethodParameter["ParameterTrim"];
-		EndIf;
 			
 		While Not StrLen(MethodParameter[Parameter_]) = MaximumLength Do
 			MethodParameter[Parameter_] = MethodParameter[Parameter_] + " ";
