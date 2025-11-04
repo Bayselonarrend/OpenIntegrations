@@ -10,7 +10,7 @@
 |![Google Sheets](../GoogleSheets.png)| `Google Sheets`| googlesheets, google sheets, spreadsheets |
 |![GreenAPI](../GreenAPI.png)| `GreenAPI`| greenapi, whatsapp |
 |![GreenMax](../GreenMax.png)| `GreenMax`| greenapi, max |
-|![MongoDB](../MongoDB.png)| `MongoDB`| mongodb, mongo, nosql |
+|![MongoDB (в разработке)](../default.png)| `MongoDB (в разработке)`| mongodb, mongo, nosql |
 |![MSSQL](../MSSQL.png)| `MSSQL`| mssql, ms sql |
 |![MySQL](../MySQL.png)| `MySQL`| mysql, my sql |
 |![Neocities](../Neocities.png)| `Neocities`| neocities |

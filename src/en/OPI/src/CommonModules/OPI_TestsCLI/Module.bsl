@@ -3118,20 +3118,6 @@ Procedure Mongo_CommonMethods() Export
 
     MongoDB_GenerateConnectionString(TestParameters);
     MongoDB_CreateConnection(TestParameters);
-    MongoDB_ExecuteCommand(TestParameters);
-
-EndProcedure
-
-Procedure Mong_DatabaseManagement() Export
-
-    TestParameters = New Structure;
-
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Port"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_User"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Password", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
-
-    MongoDB_GetDatabase(TestParameters);
 
 EndProcedure
 
@@ -32048,6 +32034,8 @@ Procedure MongoDB_GenerateConnectionString(FunctionParameters)
     Password = FunctionParameters["MongoDB_Password"];
     Base     = FunctionParameters["MongoDB_DB"];
 
+    Address = OPI_TestDataRetrieval.GetLocalhost() + FunctionParameters["MongoDB_Port"]; // END
+
     ConnectionParams = New Structure("authSource", "admin");
     Options = New Structure;
     Options.Insert("addr", Address);
@@ -32071,7 +32059,7 @@ Procedure MongoDB_CreateConnection(FunctionParameters)
     Password = FunctionParameters["MongoDB_Password"];
     Base     = FunctionParameters["MongoDB_DB"];
 
-    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // END
+    Address = OPI_TestDataRetrieval.GetLocalhost() + FunctionParameters["MongoDB_Port"]; // END
 
     ConnectionParams = New Structure("authSource", "admin");
     Options = New Structure;
@@ -32092,79 +32080,6 @@ Procedure MongoDB_CreateConnection(FunctionParameters)
     Result = OPI_MongoDB.CloseConnection(Result);
 
     Process(Result, "MongoDB", "CreateConnection", "Closing");
-
-EndProcedure
-
-Procedure MongoDB_ExecuteCommand(FunctionParameters)
-
-    Address  = "127.0.0.1:1234";
-    Login    = FunctionParameters["MongoDB_User"];
-    Password = FunctionParameters["MongoDB_Password"];
-    Base     = FunctionParameters["MongoDB_DB"];
-
-    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // END
-
-    ConnectionParams = New Structure("authSource", "admin");
-    Options = New Structure;
-    Options.Insert("addr", Address);
-    Options.Insert("db", Base);
-    Options.Insert("usr", Login);
-    Options.Insert("pwd", Password);
-    Options.Insert("params", ConnectionParams);
-
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-
-    Command = "listDatabases";
-    Data    = New Structure("nameOnly", True);
-
-    Connection = OPI_MongoDB.CreateConnection(ConnectionString);
-
-    Process(Connection, "MongoDB", "ExecuteCommand", "Connection"); // SKIP
-
-    Options = New Structure;
-    Options.Insert("dbc", Connection);
-    Options.Insert("comm", Command);
-    Options.Insert("data", Data);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "ExecuteCommand", Options);
-
-    // END
-
-    Process(Result, "MongoDB", "ExecuteCommand");
-
-EndProcedure
-
-Procedure MongoDB_GetDatabase(FunctionParameters)
-
-    Address  = "127.0.0.1:1234";
-    Login    = FunctionParameters["MongoDB_User"];
-    Password = FunctionParameters["MongoDB_Password"];
-    Base     = FunctionParameters["MongoDB_DB"];
-
-    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // END
-
-    ConnectionParams = New Structure("authSource", "admin");
-    Options = New Structure;
-    Options.Insert("addr", Address);
-    Options.Insert("db", Base);
-    Options.Insert("usr", Login);
-    Options.Insert("pwd", Password);
-    Options.Insert("params", ConnectionParams);
-
-    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
-    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
-
-    Base = "test_db";
-
-    Options = New Structure;
-    Options.Insert("dbc", Connection);
-    Options.Insert("db", Base);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetDatabase", Options);
-
-    // END
-
-    Process(Result, "MongoDB", "GetDatabase");
 
 EndProcedure
 
