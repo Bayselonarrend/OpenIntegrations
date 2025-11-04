@@ -9,7 +9,8 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Тесты.Mongo_ОсновныеМетоды"
+"OPI_Тесты.Mongo_ОсновныеМетоды",
+"OPI_Тесты.Mongo_РаботаСБазами"
     ]
   },
   "settings": {
