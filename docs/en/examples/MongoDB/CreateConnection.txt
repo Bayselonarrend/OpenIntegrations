@@ -2,3 +2,8 @@
     Login    = "bayselonarrend";
     Password = "12we...";
     Base     = "main";
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, Base, Login, Password, ConnectionParams);
+
+    Result = OPI_MongoDB.CreateConnection(ConnectionString);
