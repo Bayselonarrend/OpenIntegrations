@@ -205,7 +205,7 @@ ___
 <summary>Синопсис</summary>
 <br>
 
-Этот проект предоставляет библиотеку для интеграции 1С:Предприятие, OneScript и CLI с внешними сервисами через REST API и другие протоколы. Благодаря представленным в ней методам вы можете работать в экосистеме 1С:Предприятие с такими сервисами и технологиями как: Airtable, Bitrix24, CDEK, Dropbox, FTP, Google Calendar, Google Drive, Google Sheets, GreenAPI, GreenMax, MongoDB, MSSQL, MySQL, Neocities, Notion, PostgreSQL, RCON, ReportPortal, S3, SFTP, Slack, SQLite, SSH, TCP, Telegram, Twitter, Viber, VK, VKTeams, Yandex Disk
+Этот проект предоставляет библиотеку для интеграции 1С:Предприятие, OneScript и CLI с внешними сервисами через REST API и другие протоколы. Благодаря представленным в ней методам вы можете работать в экосистеме 1С:Предприятие с такими сервисами и технологиями как: Airtable, Bitrix24, CDEK, Dropbox, FTP, Google Calendar, Google Drive, Google Sheets, GreenAPI, GreenMax, MongoDB, MSSQL, MySQL, Neocities, Notion, Ollama, OpenAI, PostgreSQL, RCON, ReportPortal, S3, SFTP, Slack, SQLite, SSH, TCP, Telegram, Twitter, Viber, VK, VKTeams, Yandex Disk, HTTP-client, HTTP-клиент
   
 Существуют варианты поставки в виде расширения (.cfe, XML, EDT), OPM-пакета и других пакетов для разных операционных систем. Версия 1С: 8.3.10. Подходит для любых конфигураций, не использует БСП
 
