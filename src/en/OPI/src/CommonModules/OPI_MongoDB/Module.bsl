@@ -184,6 +184,247 @@ Function GenerateConnectionString(Val Address
 
 EndFunction
 
+// Execute command
+// Executes the command according to its description
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Command - String - Command name to execute - comm
+// Argument - Arbitrary - Command argument - arg
+// Base - String - Database in which the operation needs to be performed - db
+// Data - Structure Of KeyAndValue - Main data fields for performing the operation - data
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function ExecuteCommand(Val Connection
+    , Val Command
+    , Val Argument = 1
+    , Val Base = Undefined
+    , Val Data = Undefined) Export
+
+    If IsConnector(Connection) Then
+        CloseConnection = False;
+        Connector       = Connection;
+    Else
+        CloseConnection = True;
+        Connector       = CreateConnection(Connection);
+    EndIf;
+
+    If Not IsConnector(Connector) Then
+        Return Connector;
+    EndIf;
+
+    OperationStructure = New Structure();
+
+    OPI_Tools.AddField("operation", Command, "String", OperationStructure);
+
+    If Base <> Undefined Then
+        OPI_Tools.AddField("database", Base, "String", OperationStructure);
+    EndIf;
+
+    If Argument <> Undefined Then
+        ProcessedArgument = ProcessDataForOperation(Argument);
+        OperationStructure.Insert("argument", ProcessedArgument);
+    EndIf;
+
+    If Data <> Undefined Then
+        ProcessedData = ProcessDataForOperation(Data);
+        OperationStructure.Insert("data", ProcessedData);
+    EndIf;
+
+    OperationsJSON = OPI_Tools.JSONString(OperationStructure);
+
+    Result = Connector.Execute(OperationsJSON);
+    Result = OPI_Tools.JsonToStructure(Result);
+
+    If CloseConnection Then
+        CloseConnection(Connector);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
+
+#Region WorkingWithDatabases
+
+// Get list of bases
+// Gets the list of databases
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function GetListOfBases(Val Connection) Export
+
+    Result = ExecuteCommand(Connection, "listDatabases");
+    Return Result;
+
+EndFunction
+
+// Get database
+// Gets information about the database
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Base - String - Database name. Current database if not specified - db
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function GetDatabase(Val Connection, Val Base = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Base);
+
+    Result = ExecuteCommand(Connection, "dbStats", , Base);
+    Return Result;
+
+EndFunction
+
+// Drop database
+// Deletes the database
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Base - String - Database name. Current database if not specified - db
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function DeleteDatabase(Val Connection, Val Base = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Base);
+
+    Result = ExecuteCommand(Connection, "dropDatabase", , Base);
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
+#Region CollectionManagement
+
+// Create collection
+// Creates a new collection with the specified parameters
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Name - String - Collection name - name
+// Base - String - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional creation parameters - params
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function CreateCollection(Val Connection
+    , Val Name
+    , Val Base = Undefined
+    , Val Parameters = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Name);
+
+    If Parameters <> Undefined Then
+        OPI_TypeConversion.GetKeyValueCollection(Parameters);
+    EndIf;
+
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
+
+    Result = ExecuteCommand(Connection, "createCollection", Name, Base, Parameters);
+    Return Result;
+
+EndFunction
+
+// Delete collection
+// Deletes the selected database collection
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Collection - String - Collection name - coll
+// Base - String - Database name. Current database if not specified - db
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function DeleteCollection(Val Connection, Val Collection, Val Base = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Collection);
+
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
+
+    Result = ExecuteCommand(Connection, "drop", Collection, Base);
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
+#EndRegion
+
+#Region Private
+
+Function ProcessDataForOperation(Val Data)
+
+    Try
+
+        ProcessedData = Data;
+        OPI_TypeConversion.GetKeyValueCollection(ProcessedData);
+        ProcessedData = ProcessCollectionForOperation(ProcessedData);
+
+    Except
+
+        ProcessedData = Data;
+
+        If OPI_Tools.ThisIsCollection(ProcessedData) Then
+
+            ProcessedData = ProcessCollectionForOperation(ProcessedData);
+
+        ElsIf TypeOf(ProcessedData) = Type("BinaryData") Then
+
+            ProcessedData = New Structure("__OPI_BINARY__", GetBase64StringFromBinaryData(ProcessedData));
+
+        ElsIf TypeOf(ProcessedData) = Type("Date") Then
+
+            ProcessedData = New Structure("__OPI_DATE__", OPI_Tools.DateRFC3339(ProcessedData));
+
+        ElsIf Not TypeOf(ProcessedData) = Type("Number") And Not TypeOf(ProcessedData) = Type("Boolean") Then
+
+            OPI_TypeConversion.GetLine(ProcessedData);
+
+        EndIf;
+
+    EndTry;
+
+    Return ProcessedData;
+
+EndFunction
+
+Function ProcessCollectionForOperation(Val Data)
+
+    ProcessedData = Type(TypeOf(Data));
+
+    If OPI_Tools.ThisIsCollection(ProcessedData) Then
+
+        For Each DataPart In Data Do
+
+            CurrentKey   = String(DataPart.Key);
+            CurrentValue = ProcessDataForOperation(DataPart.Value);
+
+            ProcessedData.Insert(CurrentKey, CurrentValue);
+
+        EndDo;
+
+    Else
+
+        For Each Element In Data Do
+            ProcessedData.Add(ProcessDataForOperation(Element));
+        EndDo;
+
+    EndIf;
+
+    Return ProcessedData;
+
+EndFunction
 
 #EndRegion
