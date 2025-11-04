@@ -35,7 +35,7 @@ pipeline {
             steps {
                 script {
                     // Скачиваем новый deb-пакет oint
-                    sh 'wget -O oint_1.29.0_all_en.deb https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.29.0/oint_1.29.0_all_en.deb '
+                    sh 'wget -O oint_1.30.0_all_en.deb https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.30.0/oint_1.30.0_all_en.deb '
                 }
             }
         }
@@ -43,14 +43,14 @@ pipeline {
         stage('Install oint package') {
             steps {
                 script {
-                    sh 'dpkg -i oint_1.29.0_all_en.deb'
+                    sh 'dpkg -i oint_1.30.0_all_en.deb'
                 }
             }
         }
 
       	stage('Prepare'){
          		steps{
-                    sh 'cd ./src/en/OInt && opm build && opm install oint-1.29.0.ospx && rm oint-1.29.0.ospx'
+                    sh 'cd ./src/en/OInt && opm build && opm install oint-1.30.0.ospx && rm oint-1.30.0.ospx'
          		}
       	}
         stage('Create ReportPortal launch'){
