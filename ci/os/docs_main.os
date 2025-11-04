@@ -25,7 +25,6 @@
 Перем КаталогИнструкцийЛокализация;
 Перем СоответствиеМетодовПутям;
 Перем ИменаБиблиотек;
-Перем ПутьКФайлуСтиля;
 
 Процедура ПриСозданииОбъекта()  
 	
@@ -56,7 +55,6 @@
 		КаталогПримеров     = "./docs/" + Язык + "/examples/";
 		КаталогЗначений     = "./docs/" + Язык + "/data/";
 		КаталогCLI          = "./docs/" + Язык + "/cli/";
-		ПутьКФайлуСтиля     = "./docs/docusaurus/src/css/custom.css";
 		
 		СписокОбластей      = Новый СписокЗначений();
 		ТекущаяОбласть      = "";
@@ -614,6 +612,8 @@
 
 Процедура ДополнитьФайлСтиля()
 
+	ПутьКФайлуСтиля     = "C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\docs\docusaurus\src\css\custom.css";
+	
 	ТекстовыйДокумент = Новый ТекстовыйДокумент();
 	ТекстовыйДокумент.Прочитать(ПутьКФайлуСтиля);
 
@@ -662,8 +662,8 @@
 
 Процедура СоздатьЗаглушкиИконок()
 
-	ПутьКаталогаИконок          = "/docs/docusaurus/static/img/APIs/";
-	ПутьКаталогаМаленькихИконок = "/docs/docusaurus/static/img/APIs/small/";
+	ПутьКаталогаИконок          = "C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\docs\docusaurus\static\img\APIs\";
+	ПутьКаталогаМаленькихИконок = "C:\ProgramData\Jenkins\.jenkins\workspace\OpiBuild\OpiMain\docs\docusaurus\static\img\APIs\small\";
 
 	СоздатьЗаглушкиВКаталоге(ПутьКаталогаИконок);
 	СоздатьЗаглушкиВКаталоге(ПутьКаталогаМаленькихИконок);
