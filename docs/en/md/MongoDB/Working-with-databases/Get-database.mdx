@@ -31,6 +31,14 @@ import TabItem from '@theme/TabItem';
     Login    = "bayselonarrend";
     Password = "12we...";
     Base     = "main";
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, Base, Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Base = "test_db";
+
+    Result = OPI_MongoDB.GetDatabase(Connection, Base);
 ```
  
 
