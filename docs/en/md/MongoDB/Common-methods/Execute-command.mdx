@@ -1,0 +1,42 @@
+﻿---
+sidebar_position: 5
+description: Execute command and other functions to work with MongoDB in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MongoDB]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Execute command
+ Executes the command according to its description
+
+
+
+`Function ExecuteCommand(Val Connection, Val Command, Val Argument = 1, Val Base = Undefined, Val Data = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --dbc | String, Arbitrary | &#x2714; | Connection or connection string |
+  | Command | --comm | String | &#x2714; | Command name to execute |
+  | Argument | --arg | Arbitrary | &#x2716; | Command argument |
+  | Base | --db | String | &#x2716; | Database in which the operation needs to be performed |
+  | Data | --data | Structure Of KeyAndValue | &#x2716; | Main data fields for performing the operation |
+
+  
+  Returns:  Map Of KeyAndValue - Operation result
+
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1:1234";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "main";
+```
+ 
+
+
+
+
