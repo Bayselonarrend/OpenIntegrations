@@ -1,6 +1,7 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_Ollama.os
 // Lib: Ollama
 // CLI: ollama
+// Keywords: ollama, ai llm
 
 // MIT License
 
