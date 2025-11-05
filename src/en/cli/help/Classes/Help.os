@@ -206,7 +206,17 @@ EndProcedure
 Procedure HandleHelpTabulation(ParametersTable)
 
 	Parameter_			= "Parameter";
-	MaximumLength 	= 9;
+	MaximumLength 	= 0;
+
+	For Each MethodParameter In ParametersTable Do
+
+		CurrentLength = StrLen(MethodParameter[Parameter_]);
+
+		If MaximumLength < CurrentLength Then
+			MaximumLength = CurrentLength;
+		EndIf;
+		
+	EndDo;
 
 	For Each MethodParameter In ParametersTable Do
 			
