@@ -26,9 +26,43 @@ Function GetComposition() Export
     NewLine.Parameter     = "--app";
     NewLine.ParameterTrim = "-a";
     NewLine.Description     = "app_id from application settings";
-    NewLine.Region      = "Token retrieval";
+    NewLine.Region      = "Authorization";
     NewLine.MethodDescription   = "Getting a link for interactive token retrieval (access_token), which is necessary
     |    for further actions";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "vk";
+    NewLine.Module       = "OPI_VK";
+    NewLine.Method        = "GetAuthParameters";
+    NewLine.SearchMethod  = "GETAUTHPARAMETERS";
+    NewLine.Parameter     = "--group";
+    NewLine.ParameterTrim = "-g";
+    NewLine.Description     = "Group ID";
+    NewLine.Region      = "Authorization";
+    NewLine.MethodDescription   = "Gets the structure of authorization parameters";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "vk";
+    NewLine.Module       = "OPI_VK";
+    NewLine.Method        = "GetAuthParameters";
+    NewLine.SearchMethod  = "GETAUTHPARAMETERS";
+    NewLine.Parameter     = "--app";
+    NewLine.ParameterTrim = "-a";
+    NewLine.Description     = "App ID";
+    NewLine.Region      = "Authorization";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "vk";
+    NewLine.Module       = "OPI_VK";
+    NewLine.Method        = "GetAuthParameters";
+    NewLine.SearchMethod  = "GETAUTHPARAMETERS";
+    NewLine.Parameter     = "--token";
+    NewLine.ParameterTrim = "-t";
+    NewLine.Description     = "Auth token";
+    NewLine.Region      = "Authorization";
 
 
     NewLine = CompositionTable.Add();
@@ -91,7 +125,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPOST";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Community management";
 
 
@@ -155,7 +189,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECOMPOSITEPOST";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Community management";
 
 
@@ -186,7 +220,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEPOST";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Community management";
 
 
@@ -250,7 +284,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPOLL";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Community management";
 
 
@@ -292,7 +326,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEALBUM";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Community management";
 
 
@@ -323,7 +357,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEALBUM";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Community management";
 
 
@@ -365,7 +399,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATESTORY";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Community management";
 
 
@@ -418,7 +452,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SAVEIMAGETOALBUM";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Community management";
 
 
@@ -449,7 +483,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEIMAGE";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Community management";
 
 
@@ -513,7 +547,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADVIDEOTOSERVER";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Community management";
 
 
@@ -544,7 +578,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADPHOTOTOSERVER";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Community management";
 
 
@@ -597,7 +631,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEDISCUSSION";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Discussion management";
 
 
@@ -639,7 +673,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CLOSEDISCUSSION";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Discussion management";
 
 
@@ -670,7 +704,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "OPENDISCUSSION";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Discussion management";
 
 
@@ -712,7 +746,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "WRITEINDISCUSSION";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Discussion management";
 
 
@@ -754,7 +788,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LIKEPOST";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Interactive actions";
 
 
@@ -818,7 +852,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MAKEREPOST";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Interactive actions";
 
 
@@ -871,7 +905,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "WRITEMESSAGE";
     NewLine.Parameter     = "--keyboard";
     NewLine.ParameterTrim = "-k";
-    NewLine.Description     = "JSON keyboard. See FormKeyboard (optional, def. val. - Empty value)";
+    NewLine.Description     = "Keyboard JSON. See FormKeyboard (optional, def. val. - Empty value)";
     NewLine.Region      = "Interactive actions";
 
 
@@ -882,7 +916,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "WRITEMESSAGE";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Interactive actions";
 
 
@@ -935,7 +969,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "WRITECOMMENT";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Interactive actions";
 
 
@@ -966,7 +1000,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SHORTENLINK";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Interactive actions";
 
 
@@ -1008,7 +1042,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSTATISTICS";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Statistics";
 
 
@@ -1039,7 +1073,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPOSTSTATISTICS";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Statistics";
 
 
@@ -1081,7 +1115,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEADVERTISINGCAMPAIGN";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Ad account management";
 
 
@@ -1156,7 +1190,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEAD";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Ad account management";
 
 
@@ -1198,7 +1232,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PAUSEADVERTISING";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Ad account management";
 
 
@@ -1209,7 +1243,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETADVERTISINGCATEGORYLIST";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Ad account management";
     NewLine.MethodDescription   = "Gets a list of advertising category IDs for creating an advertising post
     |    Data structure for option --auth:
@@ -1229,7 +1263,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPRODUCTCATEGORYLIST";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product management";
     NewLine.MethodDescription   = "Gets a list of product category IDs to specify when creating a product
     |    Data structure for option --auth:
@@ -1269,7 +1303,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPRODUCTLIST";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product management";
 
 
@@ -1300,7 +1334,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPRODUCTSBYID";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product management";
 
 
@@ -1311,7 +1345,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDPRODUCT";
     NewLine.Parameter     = "--product";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "JSON description of the product or path";
+    NewLine.Description     = "Product description. See GetProductDescription";
     NewLine.Region      = "Product management";
     NewLine.MethodDescription   = "Adds a new product to the community's catalog
     |    Data structure for option --product:
@@ -1362,7 +1396,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDPRODUCT";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product management";
 
 
@@ -1413,7 +1447,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITPRODUCT";
     NewLine.Parameter     = "--product";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "JSON description of the product or path";
+    NewLine.Description     = "Product description. See GetProductDescription";
     NewLine.Region      = "Product management";
 
 
@@ -1435,7 +1469,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITPRODUCT";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product management";
 
 
@@ -1466,7 +1500,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEPRODUCT";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product management";
 
 
@@ -1508,7 +1542,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GROUPPRODUCTS";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product management";
 
 
@@ -1531,7 +1565,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSELECTIONLIST";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product selection management";
     NewLine.MethodDescription   = "Gets the list of product selections
     |    Data structure for option --auth:
@@ -1571,7 +1605,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSELECTIONSBYID";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product selection management";
 
 
@@ -1635,7 +1669,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPRODUCTCOLLECTION";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product selection management";
 
 
@@ -1710,7 +1744,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITPRODUCTCOLLECTION";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product selection management";
 
 
@@ -1752,7 +1786,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDPRODUCTTOCOLLECTION";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product selection management";
 
 
@@ -1794,7 +1828,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "REMOVEPRODUCTFROMSELECTION";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product selection management";
 
 
@@ -1825,7 +1859,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETESELECTION";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product selection management";
 
 
@@ -1836,7 +1870,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPROPERTYLIST";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product properties management";
     NewLine.MethodDescription   = "Gets the list of properties of group products
     |    Data structure for option --auth:
@@ -1876,7 +1910,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPRODUCTPROPERTY";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product properties management";
 
 
@@ -1918,7 +1952,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITPRODUCTPROPERTY";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product properties management";
 
 
@@ -1949,7 +1983,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEPRODUCTPROPERTY";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product properties management";
 
 
@@ -1991,7 +2025,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDPRODUCTPROPERTYVARIANT";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product properties management";
 
 
@@ -2044,7 +2078,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITPRODUCTPROPERTYVARIANT";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product properties management";
 
 
@@ -2075,7 +2109,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEPRODUCTPROPERTYVARIANT";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Product properties management";
 
 
@@ -2086,7 +2120,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETORDERLIST";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization JSON or path to .json (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Order management";
     NewLine.MethodDescription   = "Returns the community's order list
     |    Data structure for option --auth:
