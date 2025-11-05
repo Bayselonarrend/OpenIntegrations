@@ -79,7 +79,7 @@
 // Получает информацию об аккаунте
 //
 // Примечание:
-// Метод в документации API: [GetWaSettings](@green-api.com/v3/docs/api/account/GetAccountSettings/)
+// Метод в документации API: [GetWaSettings](@green-api.com/v3/docs/api/account/GetWaSettings/)
 //
 // Параметры:
 //  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа - access

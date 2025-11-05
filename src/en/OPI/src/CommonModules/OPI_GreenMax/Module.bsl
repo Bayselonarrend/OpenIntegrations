@@ -79,7 +79,7 @@ EndFunction
 // Gets account information
 //
 // Note
-// Method at API documentation: [GetWaSettings](@green-api.com/v3/docs/api/account/GetAccountSettings/)
+// Method at API documentation: [GetWaSettings](@green-api.com/v3/docs/api/account/GetWaSettings/)
 //
 // Parameters:
 // AccessParameters - Structure Of KeyAndValue - Access parameters. See FormAccessParameters - access
