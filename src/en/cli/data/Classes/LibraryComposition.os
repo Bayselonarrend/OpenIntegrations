@@ -151,8 +151,13 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
 
     For Each RequiredParameter In MethodParameters Do
 
-        ParameterName      = RequiredParameter.Parameter;
-        ParameterValue = PassedParameters.Get(ParameterName);
+       ParameterName      = RequiredParameter.Parameter;
+       ParameterNameTrim  = RequiredParameter.ParameterTrim;
+
+       ParameterValue = PassedParameters.Get(ParameterName);
+       ParameterValue = ?(ParameterValue = Undefined
+          , PassedParameters.Get(ParameterNameTrim)
+          , ParameterValue);
 
         If ValueIsFilled(ParameterValue) Then
 
