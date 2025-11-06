@@ -41,8 +41,8 @@ pipeline {
             steps {
                 script {
                     def tests = [
-                        ['BuildCheckRu', './service/yaxunit_conf/ru/BuildCheck.json', env.IB_RU],
-                        ['BuildCheckEn', './service/yaxunit_conf/en/BuildCheck.json', env.IB_EN],
+                        ['BuildCheckRu', "${WORKSPACE}\\service\\yaxunit_conf\\ru\\BuildCheck.json", env.IB_RU],
+                        ['BuildCheckEn', "${WORKSPACE}\\service\\yaxunit_conf\\ru\\BuildCheck.json", env.IB_EN],
                     ]
                     for (test in tests) {
                         runLibraryTest(test[0], test[1], env.ONEC_PATH, test[2])
@@ -56,7 +56,8 @@ pipeline {
 def runLibraryTest(String libraryName, String configPath, String oneCPath, String ibName) {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
         script {
-            bat encoding: 'UTF-8', script: "\"${oneCPath}\" /IBName \"${ibName}\" /C\"RunUnitTests=${configPath}\""
+            def ibConn = "Srvr=\"\"${env.SRV}\"\";Ref=\"\"${ibName}\"\";"
+            bat encoding: 'UTF-8', script: "\"${oneCPath}\" /IBConnectionString \"${ibConn}\" /C\"RunUnitTests=${configPath}\""
         }
 
         timeout(time: 60, unit: 'MINUTES') {
