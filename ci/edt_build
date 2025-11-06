@@ -4,7 +4,7 @@ pipeline {
         stage('Initialize') {
             steps {
                 script {
-                    def config = readJSON file: 'paths.json'
+                    def config = readJSON file: './service/local_vars.json'
                     env.ONEC_PATH = config.onec_path
                     env.EDT_RU = config.edt_ru_path
                     env.EDT_EN = config.edt_en_path
