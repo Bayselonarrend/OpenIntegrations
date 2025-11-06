@@ -9,7 +9,7 @@ def runCommand(String command) {
 def runLibraryTest(String libraryName, String configPath) {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
         script {
-            runCommand("\"C:\\Program Files\\1cv8\\8.3.18.1208\\bin\\1cv8c.exe\" /IBConnectionString \"Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";\" /C\"RunUnitTests=${configPath}\"")
+            runCommand("\"C:/Program Files/1cv8/8.3.18.1208/bin/1cv8c.exe\" /IBConnectionString \"Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrations\"\";\" /C\"RunUnitTests=${configPath}\"")
         
             timeout(time: 60, unit: 'MINUTES') {
                 waitUntil {
@@ -98,7 +98,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['BuildCheck', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\BuildCheck.json'],
+						['BuildCheck', './service/yaxunit_conf/ru/BuildCheck.json'],
 					]
 					for (test in tests) {
 							runLibraryTest(test[0], test[1])
@@ -113,7 +113,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['Ollama', 'C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\OpiBuild\\OpiMain\\service\\yaxunit_conf\\ru\\Ollama.json'],
+						['Ollama', './service/yaxunit_conf/ru/Ollama.json'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
