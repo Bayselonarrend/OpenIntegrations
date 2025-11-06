@@ -21,23 +21,27 @@ pipeline {
                     def runEdtExport = { dataPath, projectPath, configPath, projectName ->
                         echo "Building ${projectName}..."
                         
-                        def output = bat(
+                        def result = bat(
                             encoding: 'UTF-8',
                             script: "chcp 65001 >nul && 1cedtcli -data \"${dataPath}\" -command export --project \"${projectPath}\" --configuration-files \"${configPath}\"",
+                            returnStatus: true,
                             returnStdout: true
                         )
                         
-                        // Убираем строку с командой (первую строку)
+                        def exitCode = result[0]
+                        def output = result[1]
+                        
                         def cleanOutput = output.readLines().drop(1).join('\n').trim()
                         
-                        echo "EDT output for ${projectName}: '${cleanOutput}'"
-                        
-                        // Если есть какой-либо вывод после команды - считаем ошибкой
-                        if (cleanOutput) {
-                            error "EDT export for ${projectName} produced output (likely errors): ${cleanOutput}"
-                        } else {
-                            echo "✓ ${projectName} build completed silently (success)"
+                        if (exitCode != 0) {
+                            error "EDT export for ${projectName} failed with exit code ${exitCode}"
                         }
+                        
+                        if (cleanOutput) {
+                            error "EDT export for ${projectName} produced output: ${cleanOutput}"
+                        }
+                        
+                        echo "✓ ${projectName} build completed successfully"
                     }
                     
                     runEdtExport(env.EDT_RU, "./src/ru/OPI", "./build/OPI_RU", "RU")
