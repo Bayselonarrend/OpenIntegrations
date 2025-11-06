@@ -1,15 +1,79 @@
 pipeline {
-	agent {
-		label 'windows'
-	}
+    agent { label 'windows' }
     stages {
-
-        stage('Build') {
+        stage('Initialize') {
             steps {
-                    bat encoding: 'UTF-8', script:'chcp 65001 & 1cedtcli -data C:\\Users\\bayse\\AppData\\Local\\1C\\1cedtstart\\projects\\OpenIntegrations_Ru -command export --project .\\src\\ru\\OPI  --configuration-files .\\build\\OPI_RU'
-                    bat encoding: 'UTF-8', script:'chcp 65001 & 1cedtcli -data C:\\Users\\bayse\\AppData\\Local\\1C\\1cedtstart\\projects\\OpenIntegrations_En -command export --project .\\src\\en\\OPI  --configuration-files .\\build\\OPI_EN' 
+                script {
+                    def config = readJSON file: 'paths.json'
+                    env.ONEC_PATH = config.onec_path
+                    env.EDT_RU = config.edt_ru_path
+                    env.EDT_EN = config.edt_en_path
+                    env.IB_RU = config.ib_ru_name
+                    env.IB_EN = config.ib_en_name
+                    env.SRV = config.server_name
+                }
             }
         }
 
+        stage('Build') {
+            steps {
+                script {
+                    bat encoding: 'UTF-8', script: "chcp 65001 >nul && 1cedtcli -data \"${env.EDT_RU}\" -command export --project ./src/ru/OPI --configuration-files ./build/OPI_RU"
+                    bat encoding: 'UTF-8', script: "chcp 65001 >nul && 1cedtcli -data \"${env.EDT_EN}\" -command export --project ./src/en/OPI --configuration-files ./build/OPI_EN"
+                }
+            }
+        }
+
+        stage('Update') {
+            steps {
+                script {
+                    bat encoding: 'UTF-8', script: "chcp 65001 >nul && \"${env.ONEC_PATH}\" DESIGNER /IBName \"${env.IB_RU}\" /LoadConfigFromFiles ./build/OPI_RU -Extension OpenIntegrations"
+                    bat encoding: 'UTF-8', script: "chcp 65001 >nul && \"${env.ONEC_PATH}\" DESIGNER /IBName \"${env.IB_EN}\" /LoadConfigFromFiles ./build/OPI_EN -Extension OpenIntegrations"
+                }
+            }
+        }
+
+        stage('Hash check') {
+            steps {
+                script {
+                    def tests = [
+                        ['BuildCheckRu', './service/yaxunit_conf/ru/BuildCheck.json', ],
+                        ['BuildCheckEn', './service/yaxunit_conf/en/BuildCheck.json'],
+                    ]
+                    for (test in tests) {
+                        runLibraryTest(test[0], test[1], env.ONEC_PATH, test[2])
+                    }
+                }
+            }
+        }
+    }
+}
+
+def runLibraryTest(String libraryName, String configPath, String oneCPath, String ibName) {
+    catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+        script {
+            def ibConn = 'Srvr="\"${env.SRV}\"";Ref="\"${ibName}\"";'
+            bat encoding: 'UTF-8', script: "\"${oneCPath}\" /IBConnectionString \"${ibConn}\" /C\"RunUnitTests=${configPath}\""
+        }
+
+        timeout(time: 60, unit: 'MINUTES') {
+            waitUntil {
+                fileExists "./test_results/${libraryName}.code"
+            }
+        }
+
+        if (fileExists("./test_results/${libraryName}.report")) {
+            def reportContent = readFile("./test_results/${libraryName}.report")
+            echo "=== ${libraryName} report content ==="
+            echo reportContent
+        } else {
+            echo "WARNING: ${libraryName}.report not found"
+        }
+
+        def exitCode = readFile("./test_results/${libraryName}.code").trim().replaceAll(/[^0-9]/, '')
+        echo "Exit code: ${exitCode}"
+        if (exitCode != '0') {
+            error "Tests ${libraryName} failed (exit code: ${exitCode})"
+        }
     }
 }
