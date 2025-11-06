@@ -6,8 +6,8 @@ pipeline {
 
         stage('Build') {
             steps {
-                    bat encoding: 'UTF-8', script:'chcp 65001 & 1cedtcli -data C:\\Users\\bayse\\AppData\\Local\\1C\\1cedtstart\\projects\\OpenIntegrations_Ru -command build --yes'
-                    bat encoding: 'UTF-8', script:'chcp 65001 & 1cedtcli -data C:\\Users\\bayse\\AppData\\Local\\1C\\1cedtstart\\projects\\OpenIntegrations_En -command build --yes'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & 1cedtcli -data C:\\Users\\bayse\\AppData\\Local\\1C\\1cedtstart\\projects\\OpenIntegrations_Ru -command export --project .\\src\\ru\\OPI  --configuration-files .\\build\\OPI_RU'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & 1cedtcli -data C:\\Users\\bayse\\AppData\\Local\\1C\\1cedtstart\\projects\\OpenIntegrations_En -command export --project .\\src\\en\\OPI  --configuration-files .\\build\\OPI_EN' 
             }
         }
 
