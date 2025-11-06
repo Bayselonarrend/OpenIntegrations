@@ -25,12 +25,16 @@ pipeline {
                             encoding: 'UTF-8',
                             script: "chcp 65001 >nul && 1cedtcli -data \"${dataPath}\" -command export --project \"${projectPath}\" --configuration-files \"${configPath}\"",
                             returnStdout: true
-                        ).trim()
+                        )
                         
-                        echo "EDT output for ${projectName}: '${output}'"
+                        // Убираем строку с командой (первую строку)
+                        def cleanOutput = output.readLines().drop(1).join('\n').trim()
                         
-                        if (output) {
-                            error "EDT export for ${projectName} produced output (likely errors): ${output}"
+                        echo "EDT output for ${projectName}: '${cleanOutput}'"
+                        
+                        // Если есть какой-либо вывод после команды - считаем ошибкой
+                        if (cleanOutput) {
+                            error "EDT export for ${projectName} produced output (likely errors): ${cleanOutput}"
                         } else {
                             echo "✓ ${projectName} build completed silently (success)"
                         }
