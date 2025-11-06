@@ -9,23 +9,31 @@ pipeline {
                 build job: 'OpiBuild/OpiMain', wait: true
             }
         }
-
+        stage('Melezh - Main + Release') {
+            steps {
+                build job: 'Melezh/MelezhRelease', wait: true
+            }
+        }
         stage('OpenIntegrations - 1C DB Update') {
             steps {
                 build job: 'OpiBuild/OpiBaseUpdate', wait: true
             }
         }
-
-        stage('Melezh - Main + Release') {
-            steps {
-                build job: 'MelezhRelease', wait: true
-            }
-        }
-
         stage('OpenIntegrations - Release') {
             steps {
                 echo 'Release (OpenIntegrations)'
                 build job: 'OpiBuild/OpiRelease', wait: true
+            }
+        }
+        stage('Melezh - Docker') {
+            steps {
+                build job: 'Melezh/MelezhDocker', wait: true
+            }
+        }
+
+        stage('Melezh - Test') {
+            steps {
+                build job: 'Melezh/MelezhTests', wait: true
             }
         }
     }
