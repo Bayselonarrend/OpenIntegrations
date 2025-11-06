@@ -42,6 +42,14 @@ pipeline {
             }
         }
 
+        stage('CRLF Replace'){
+            steps{
+                script{
+                    bat encoding: 'UTF-8', script: 'oscript ./ci/os/crlf_replace.os ./build'    
+                }
+            }
+        }
+
         stage('Update') {
             steps {
                 script {
