@@ -57,7 +57,7 @@ def runLibraryTest(String libraryName, String configPath, String oneCPath, Strin
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
         script {
             def ibConn = "Srvr=\"\"${env.SRV}\"\";Ref=\"\"${ibName}\"\";"
-            bat encoding: 'UTF-8', script: "\"${oneCPath}\" /IBConnectionString \"${ibConn}\" /UsePrivilegedMode /C\"RunUnitTests=${configPath}\""
+            bat encoding: 'UTF-8', script: "\"${oneCPath}1cv8c.exe\" /IBConnectionString \"${ibConn}\" /UsePrivilegedMode /C\"RunUnitTests=${configPath}\""
         }
 
         timeout(time: 60, unit: 'MINUTES') {
