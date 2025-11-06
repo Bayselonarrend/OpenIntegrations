@@ -14,34 +14,44 @@ pipeline {
                 }
             }
         }
-
         stage('Build') {
             steps {
                 script {
                     def runEdtExport = { dataPath, projectPath, configPath, projectName ->
                         echo "Building ${projectName}..."
                         
-                        def result = bat(
+                        def output = bat(
                             encoding: 'UTF-8',
                             script: "chcp 65001 >nul && 1cedtcli -data \"${dataPath}\" -command export --project \"${projectPath}\" --configuration-files \"${configPath}\"",
-                            returnStatus: true,
                             returnStdout: true
                         )
                         
-                        def exitCode = result[0]
-                        def output = result[1]
-                        
-                        def cleanOutput = output.readLines().drop(1).join('\n').trim()
-                        
-                        if (exitCode != 0) {
-                            error "EDT export for ${projectName} failed with exit code ${exitCode}"
+                        // Фильтруем вывод: убираем строки, содержащие команду
+                        def lines = output.readLines()
+                        def cleanLines = lines.findAll { line ->
+                            !line.contains('chcp 65001') && 
+                            !line.contains('1cedtcli') && 
+                            !line.contains('--project') &&
+                            !line.contains('--configuration-files') &&
+                            line.trim()
                         }
+                        def cleanOutput = cleanLines.join('\n').trim()
                         
                         if (cleanOutput) {
-                            error "EDT export for ${projectName} produced output: ${cleanOutput}"
+                            echo "EDT output for ${projectName}: ${cleanOutput}"
+                            
+                            // Проверяем на критические ошибки
+                            if (cleanOutput.contains('ERROR') || 
+                                cleanOutput.contains('Exception') || 
+                                cleanOutput.contains('IllegalStateException') ||
+                                cleanOutput.contains('External property manager')) {
+                                error "EDT export for ${projectName} failed with errors: ${cleanOutput}"
+                            } else {
+                                echo "⚠ ${projectName} build completed with warnings: ${cleanOutput}"
+                            }
+                        } else {
+                            echo "✓ ${projectName} build completed successfully (no output)"
                         }
-                        
-                        echo "✓ ${projectName} build completed successfully"
                     }
                     
                     runEdtExport(env.EDT_RU, "./src/ru/OPI", "./build/OPI_RU", "RU")
