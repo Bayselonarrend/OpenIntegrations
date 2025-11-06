@@ -4,5 +4,6 @@
     "edt_en_path": "C:/Users/bayse/AppData/Local/1C/1cedtstart/projects/OpenIntegrations_En",
     "ib_ru_name": "OpenIntegrations",
     "ib_en_name": "OpenIntegrationsEng",
-    "server_name": "DEVSRV"
+    "server_name": "DEVSRV",
+    "jenkins_host": "https://jenkins.openintegrations.dev"
 }
