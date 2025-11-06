@@ -41,8 +41,8 @@ pipeline {
             steps {
                 script {
                     def tests = [
-                        ['BuildCheckRu', './service/yaxunit_conf/ru/BuildCheck.json', ],
-                        ['BuildCheckEn', './service/yaxunit_conf/en/BuildCheck.json'],
+                        ['BuildCheckRu', './service/yaxunit_conf/ru/BuildCheck.json', env.IB_RU],
+                        ['BuildCheckEn', './service/yaxunit_conf/en/BuildCheck.json', env.IB_EN],
                     ]
                     for (test in tests) {
                         runLibraryTest(test[0], test[1], env.ONEC_PATH, test[2])
