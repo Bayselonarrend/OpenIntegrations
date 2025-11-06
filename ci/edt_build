@@ -18,8 +18,26 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    bat encoding: 'UTF-8', script: "chcp 65001 >nul && 1cedtcli -data \"${env.EDT_RU}\" -command export --project ./src/ru/OPI --configuration-files ./build/OPI_RU"
-                    bat encoding: 'UTF-8', script: "chcp 65001 >nul && 1cedtcli -data \"${env.EDT_EN}\" -command export --project ./src/en/OPI --configuration-files ./build/OPI_EN"
+                    def runEdtExport = { dataPath, projectPath, configPath, projectName ->
+                        echo "Building ${projectName}..."
+                        
+                        def output = bat(
+                            encoding: 'UTF-8',
+                            script: "chcp 65001 >nul && 1cedtcli -data \"${dataPath}\" -command export --project \"${projectPath}\" --configuration-files \"${configPath}\"",
+                            returnStdout: true
+                        ).trim()
+                        
+                        echo "EDT output for ${projectName}: '${output}'"
+                        
+                        if (output) {
+                            error "EDT export for ${projectName} produced output (likely errors): ${output}"
+                        } else {
+                            echo "✓ ${projectName} build completed silently (success)"
+                        }
+                    }
+                    
+                    runEdtExport(env.EDT_RU, "./src/ru/OPI", "./build/OPI_RU", "RU")
+                    runEdtExport(env.EDT_EN, "./src/en/OPI", "./build/OPI_EN", "EN")
                 }
             }
         }
