@@ -1,2 +1,2 @@
-﻿    Токен     = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+﻿    Токен     = "y0__xCOranuBRj1uTsgs8z_iRV...";
     Результат = OPI_YandexDisk.ПолучитьИнформациюОДиске(Токен);

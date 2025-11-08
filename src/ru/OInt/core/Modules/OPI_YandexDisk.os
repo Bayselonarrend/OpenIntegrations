@@ -41,6 +41,59 @@
 
 #Область ПрограммныйИнтерфейс
 
+#Область Авторизация
+
+// Получить код подтверждения
+// Получает код подтверждения и адрес страницы, на которой его необходимо ввести
+//
+// Параметры:
+//  ClientId - Строка - Client id - id
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+Функция ПолучитьКодПодтверждения(Знач ClientId) Экспорт
+
+    Результат = OPI_YandexID.ПолучитьКодПодтверждения(ClientId);
+    Возврат Результат;
+
+КонецФункции
+
+// Преобразовать код в токен
+// Преобразовывает код в токен после ввода кода при выполнении ПолучитьКодПодтверждения
+//
+// Параметры:
+//  ClientId      - Строка - Client id                               - id
+//  ClientSecret  - Строка - Client secret                           - secret
+//  КодУстройства - Строка - device_code из ПолучитьКодПодтверждения - device
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+Функция ПреобразоватьКодВТокен(Знач ClientId, Знач ClientSecret, Знач КодУстройства) Экспорт
+
+    Результат = OPI_YandexID.ПреобразоватьКодВТокен(ClientId, ClientSecret, КодУстройства);
+    Возврат Результат;
+
+КонецФункции
+
+// Обновить токен
+// Обновляет токен по Refresh token
+//
+// Параметры:
+//  ClientId     - Строка - Client id      - id
+//  ClientSecret - Строка - Client secret  - secret
+//  RefreshToken - Строка - Refresh token  - refresh
+//
+// Возвращаемое значение:
+//  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex
+Функция ОбновитьТокен(Знач ClientId, Знач ClientSecret, Знач RefreshToken) Экспорт
+
+    Результат = OPI_YandexID.ОбновитьТокен(ClientId, ClientSecret, RefreshToken);
+    Возврат Результат;
+
+КонецФункции
+
+#КонецОбласти
+
 #Область РаботаСФайламиИПапками
 
 // Получить информацию о диске
@@ -608,6 +661,18 @@
 #КонецОбласти
 
 #Region Alternate
+
+Function GetConfirmationCode(Val ClientId) Export
+	Return ПолучитьКодПодтверждения(ClientId);
+EndFunction
+
+Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Export
+	Return ПреобразоватьКодВТокен(ClientId, ClientSecret, DeviceCode);
+EndFunction
+
+Function RefreshToken(Val ClientId, Val ClientSecret, Val RefreshToken) Export
+	Return ОбновитьТокен(ClientId, ClientSecret, RefreshToken);
+EndFunction
 
 Function GetDiskInformation(Val Token) Export
 	Return ПолучитьИнформациюОДиске(Token);
