@@ -331,6 +331,11 @@
 },
 {
 "lib": "VK",
+"name": "GetAuthParameters",
+"variant": ""
+},
+{
+"lib": "VK",
 "name": "CreatePost",
 "variant": ""
 },
@@ -606,6 +611,21 @@
 },
 {
 "lib": "YandexDisk",
+"name": "GetConfirmationCode",
+"variant": ""
+},
+{
+"lib": "YandexDisk",
+"name": "ConvertCodeToToken",
+"variant": ""
+},
+{
+"lib": "YandexDisk",
+"name": "RefreshToken",
+"variant": ""
+},
+{
+"lib": "YandexDisk",
 "name": "GetDiskInformation",
 "variant": ""
 },
@@ -801,6 +821,26 @@
 },
 {
 "lib": "GoogleCalendar",
+"name": "FormCodeRetrievalLink",
+"variant": ""
+},
+{
+"lib": "GoogleCalendar",
+"name": "GetTokenByCode",
+"variant": ""
+},
+{
+"lib": "GoogleCalendar",
+"name": "RefreshToken",
+"variant": ""
+},
+{
+"lib": "GoogleCalendar",
+"name": "GetServiceAccountToken",
+"variant": ""
+},
+{
+"lib": "GoogleCalendar",
 "name": "GetCalendarList",
 "variant": ""
 },
@@ -886,6 +926,26 @@
 },
 {
 "lib": "GoogleDrive",
+"name": "FormCodeRetrievalLink",
+"variant": ""
+},
+{
+"lib": "GoogleDrive",
+"name": "GetTokenByCode",
+"variant": ""
+},
+{
+"lib": "GoogleDrive",
+"name": "RefreshToken",
+"variant": ""
+},
+{
+"lib": "GoogleDrive",
+"name": "GetServiceAccountToken",
+"variant": ""
+},
+{
+"lib": "GoogleDrive",
 "name": "GetDirectoriesList",
 "variant": ""
 },
@@ -958,6 +1018,26 @@
 "lib": "GoogleDrive",
 "name": "CreateFolder",
 "variant": "Root"
+},
+{
+"lib": "GoogleSheets",
+"name": "FormCodeRetrievalLink",
+"variant": ""
+},
+{
+"lib": "GoogleSheets",
+"name": "GetTokenByCode",
+"variant": ""
+},
+{
+"lib": "GoogleSheets",
+"name": "RefreshToken",
+"variant": ""
+},
+{
+"lib": "GoogleSheets",
+"name": "GetServiceAccountToken",
+"variant": ""
 },
 {
 "lib": "GoogleSheets",

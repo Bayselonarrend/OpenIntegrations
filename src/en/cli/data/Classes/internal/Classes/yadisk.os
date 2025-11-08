@@ -21,6 +21,86 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library   = "yadisk";
     NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "GetConfirmationCode";
+    NewLine.SearchMethod  = "GETCONFIRMATIONCODE";
+    NewLine.Parameter     = "--id";
+    NewLine.ParameterTrim = "-i";
+    NewLine.Description     = "Client id";
+    NewLine.Region      = "Authorization";
+    NewLine.MethodDescription   = "Gets the confirmation code and the address of the page where it needs to be entered";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "ConvertCodeToToken";
+    NewLine.SearchMethod  = "CONVERTCODETOTOKEN";
+    NewLine.Parameter     = "--id";
+    NewLine.ParameterTrim = "-i";
+    NewLine.Description     = "Client id";
+    NewLine.Region      = "Authorization";
+    NewLine.MethodDescription   = "Converts the code to a token after entering the code when executing GetConfirmationCode";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "ConvertCodeToToken";
+    NewLine.SearchMethod  = "CONVERTCODETOTOKEN";
+    NewLine.Parameter     = "--secret";
+    NewLine.ParameterTrim = "-s";
+    NewLine.Description     = "Client secret";
+    NewLine.Region      = "Authorization";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "ConvertCodeToToken";
+    NewLine.SearchMethod  = "CONVERTCODETOTOKEN";
+    NewLine.Parameter     = "--device";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "device_code from GetConfirmationCode";
+    NewLine.Region      = "Authorization";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "RefreshToken";
+    NewLine.SearchMethod  = "REFRESHTOKEN";
+    NewLine.Parameter     = "--id";
+    NewLine.ParameterTrim = "-i";
+    NewLine.Description     = "Client id";
+    NewLine.Region      = "Authorization";
+    NewLine.MethodDescription   = "Updates token by Refresh token";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "RefreshToken";
+    NewLine.SearchMethod  = "REFRESHTOKEN";
+    NewLine.Parameter     = "--secret";
+    NewLine.ParameterTrim = "-s";
+    NewLine.Description     = "Client secret";
+    NewLine.Region      = "Authorization";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "RefreshToken";
+    NewLine.SearchMethod  = "REFRESHTOKEN";
+    NewLine.Parameter     = "--refresh";
+    NewLine.ParameterTrim = "-r";
+    NewLine.Description     = "Refresh token";
+    NewLine.Region      = "Authorization";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
     NewLine.Method        = "GetDiskInformation";
     NewLine.SearchMethod  = "GETDISKINFORMATION";
     NewLine.Parameter     = "--token";

@@ -1,0 +1,8 @@
+﻿    Данные = "https://hut.openintegrations.dev/secret_test_data/google_service.json"; // URL, двоичные данные, файл или коллекция
+
+    ОбластиДействия = Новый Массив;
+    ОбластиДействия.Добавить("https://www.googleapis.com/auth/calendar");
+    ОбластиДействия.Добавить("https://www.googleapis.com/auth/drive");
+    ОбластиДействия.Добавить("https://www.googleapis.com/auth/spreadsheets");
+
+    Результат = OPI_GoogleSheets.ПолучитьТокенServiceАккаунта(Данные, ОбластиДействия);

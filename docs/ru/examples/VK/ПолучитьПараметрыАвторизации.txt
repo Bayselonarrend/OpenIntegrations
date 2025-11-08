@@ -1,0 +1,5 @@
+﻿    IDГруппы     = "218861756";
+    IDПриложения = "51694790";
+    Токен        = "vk1.a.bem0q4ee0ZFzipCOx9iuOETGXuSligRy2xM7y_6QLt_rntCagXXIxt928Thwa9Gt_rhmLw2yUr9sOzW8EoOTg8QyNVvJ0S4gq4y5tBj-...";
+
+    Результат = OPI_VK.ПолучитьПараметрыАвторизации(IDГруппы, IDПриложения, Токен);

@@ -1,0 +1,41 @@
+﻿---
+sidebar_position: 2
+description: Convert code to token and other functions to work with Yandex Disk in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Yandex Disk]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Convert code to token
+ Converts the code to a token after entering the code when executing GetConfirmationCode
+
+
+
+`Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | ClientId | --id | String | &#x2714; | Client id |
+  | ClientSecret | --secret | String | &#x2714; | Client secret |
+  | DeviceCode | --device | String | &#x2714; | device_code from GetConfirmationCode |
+
+  
+  Returns:  Map Of KeyAndValue - serialized JSON response from Yandex
+
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ClientID     = "cc2ce9d60deb4975be58866d32dbe7aa";
+    ClientSecret = "7cc0b903d33e41c1...";
+    DeviceCode   = "12345678";
+
+    Result = OPI_YandexDisk.ConvertCodeToToken(ClientID, ClientSecret, DeviceCode);
+```
+ 
+
+
+
+

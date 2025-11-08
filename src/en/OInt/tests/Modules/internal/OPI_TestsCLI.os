@@ -397,9 +397,12 @@ EndProcedure
 Procedure VKAPI_CreateTokenLink() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("VK_AppID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VK_AppID"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VK_GroupID", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("VK_Token"  , TestParameters);
 
     VK_CreateTokenRetrievalLink(TestParameters);
+    VK_GetAuthParameters(TestParameters);
 
 EndProcedure
 
@@ -654,6 +657,20 @@ EndProcedure
 
 #Region YandexDisk
 
+Procedure YDisk_Authorization() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token"       , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_ClientID"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_ClientSecret", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_RefreshToken", TestParameters);
+
+    YandexDisk_GetConfirmationCode(TestParameters);
+    YandexDisk_ConvertCodeToToken(TestParameters);
+    YandexDisk_RefreshToken(TestParameters);
+
+EndProcedure
+
 Procedure YDisk_GetDiskInfo() Export
 
     TestParameters = New Structure;
@@ -898,6 +915,23 @@ EndProcedure
 
 #Region GoogleCalendar
 
+Procedure GC_Authorization() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientID"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientSecret", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Code"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Refresh"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ServiceData" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Access_Token"       , TestParameters);
+
+    GoogleCalendar_FormCodeRetrievalLink(TestParameters);
+    GoogleCalendar_GetTokenByCode(TestParameters);
+    GoogleCalendar_RefreshToken(TestParameters);
+    GoogleCalendar_GetServiceAccountToken(TestParameters);
+
+EndProcedure
+
 Procedure GC_GetCalendarList() Export
 
     TestParameters = New Structure;
@@ -952,6 +986,23 @@ EndProcedure
 #EndRegion
 
 #Region GoogleDrive
+
+Procedure GD_Authorization() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientID"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientSecret", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Code"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Refresh"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ServiceData" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Access_Token"       , TestParameters);
+
+    GoogleDrive_FormCodeRetrievalLink(TestParameters);
+    GoogleDrive_GetTokenByCode(TestParameters);
+    GoogleDrive_RefreshToken(TestParameters);
+    GoogleDrive_GetServiceAccountToken(TestParameters);
+
+EndProcedure
 
 Procedure GD_GetCatalogList() Export
 
@@ -1019,6 +1070,23 @@ EndProcedure
 #EndRegion
 
 #Region GoogleSheets
+
+Procedure GT_Authorization() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientID"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ClientSecret", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Code"        , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_Refresh"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Google_ServiceData" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Access_Token"       , TestParameters);
+
+    GoogleSheets_FormCodeRetrievalLink(TestParameters);
+    GoogleSheets_GetTokenByCode(TestParameters);
+    GoogleSheets_RefreshToken(TestParameters);
+    GoogleSheets_GetServiceAccountToken(TestParameters);
+
+EndProcedure
 
 Procedure GT_CreateTable() Export
 
@@ -4362,6 +4430,26 @@ Procedure VK_CreateTokenRetrievalLink(FunctionParameters)
 
 EndProcedure
 
+Procedure VK_GetAuthParameters(FunctionParameters)
+
+
+    GroupID = FunctionParameters["VK_GroupID"];
+    AppID   = FunctionParameters["VK_AppID"];
+    Token   = FunctionParameters["VK_Token"];
+
+    Options = New Structure;
+    Options.Insert("group", GroupID);
+    Options.Insert("app", AppID);
+    Options.Insert("token", Token);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("vk", "GetAuthParameters", Options);
+
+    // END
+
+    Process(Result, "VK", "GetAuthParameters");
+
+EndProcedure
+
 Procedure VK_CreatePost(FunctionParameters)
 
     Parameters = GetVKParameters();
@@ -5501,6 +5589,59 @@ EndProcedure
 
 #Region YandexDisk
 
+Procedure YandexDisk_GetConfirmationCode(FunctionParameters)
+
+    ClientID = FunctionParameters["YandexDisk_ClientID"];
+
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "GetConfirmationCode", Options);
+
+    // END
+
+    Process(Result, "YandexDisk", "GetConfirmationCode");
+
+EndProcedure
+
+Procedure YandexDisk_ConvertCodeToToken(FunctionParameters)
+
+    ClientID     = FunctionParameters["YandexDisk_ClientID"];
+    ClientSecret = FunctionParameters["YandexDisk_ClientSecret"];
+    DeviceCode   = "12345678";
+
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+    Options.Insert("secret", ClientSecret);
+    Options.Insert("device", DeviceCode);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "ConvertCodeToToken", Options);
+
+    // END
+
+    Process(Result, "YandexDisk", "ConvertCodeToToken", , FunctionParameters);
+
+EndProcedure
+
+Procedure YandexDisk_RefreshToken(FunctionParameters)
+
+    ClientID     = FunctionParameters["YandexDisk_ClientID"];
+    ClientSecret = FunctionParameters["YandexDisk_ClientSecret"];
+    RefreshToken = FunctionParameters["YandexDisk_RefreshToken"];
+
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+    Options.Insert("secret", ClientSecret);
+    Options.Insert("refresh", RefreshToken);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "RefreshToken", Options);
+
+    // END
+
+    Process(Result, "YandexDisk", "RefreshToken", , FunctionParameters);
+
+EndProcedure
+
 Procedure YandexDisk_GetDiskInformation(FunctionParameters)
 
     Token  = FunctionParameters["YandexDisk_Token"];
@@ -6244,6 +6385,87 @@ EndProcedure
 
 #Region GoogleCalendar
 
+Procedure GoogleCalendar_FormCodeRetrievalLink(FunctionParameters)
+
+    ClientID = FunctionParameters["Google_ClientID"];
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "FormCodeRetrievalLink", Options);
+
+    // END
+
+    Process(Result, "GoogleCalendar", "FormCodeRetrievalLink");
+
+EndProcedure
+
+Procedure GoogleCalendar_GetTokenByCode(FunctionParameters)
+
+    ClientID     = FunctionParameters["Google_ClientID"];
+    ClientSecret = FunctionParameters["Google_ClientSecret"];
+    Code         = FunctionParameters["Google_Code"];
+
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+    Options.Insert("secret", ClientSecret);
+    Options.Insert("code", Code);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetTokenByCode", Options);
+
+    // END
+
+    Process(Result, "GoogleCalendar", "GetTokenByCode");
+
+EndProcedure
+
+Procedure GoogleCalendar_RefreshToken(FunctionParameters)
+
+    ClientID     = FunctionParameters["Google_ClientID"];
+    ClientSecret = FunctionParameters["Google_ClientSecret"];
+    RefreshToken = FunctionParameters["Google_Refresh"];
+
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+    Options.Insert("secret", ClientSecret);
+    Options.Insert("refresh", RefreshToken);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "RefreshToken", Options);
+
+    // END
+
+    Process(Result, "GoogleCalendar", "RefreshToken");
+
+EndProcedure
+
+Procedure GoogleCalendar_GetServiceAccountToken(FunctionParameters)
+
+    Data = FunctionParameters["Google_ServiceData"]; // URL, binary Data, file or collection
+
+    Token = FunctionParameters["Access_Token"]; // SKIP
+    Data  = OPI_HTTPRequests // SKIP
+        .NewRequest() // SKIP
+        .Initialize(Data) // SKIP
+        .AddBearerAuthorization(Token) // SKIP
+        .ProcessRequest("GET") // SKIP
+        .ReturnResponseAsBinaryData(); // SKIP
+
+    Scope = New Array;
+    Scope.Add("https://www.googleapis.com/auth/calendar");
+    Scope.Add("https://www.googleapis.com/auth/drive");
+    Scope.Add("https://www.googleapis.com/auth/spreadsheets");
+
+    Options = New Structure;
+    Options.Insert("auth", Data);
+    Options.Insert("scope", Scope);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gcalendar", "GetServiceAccountToken", Options);
+
+    // END
+
+    Process(Result, "GoogleCalendar", "GetServiceAccountToken");
+
+EndProcedure
+
 Procedure GoogleCalendar_GetCalendarList(FunctionParameters)
 
     Token  = FunctionParameters["Google_Token"];
@@ -6595,6 +6817,87 @@ EndProcedure
 
 #Region GoogleDrive
 
+Procedure GoogleDrive_FormCodeRetrievalLink(FunctionParameters)
+
+    ClientID = FunctionParameters["Google_ClientID"];
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "FormCodeRetrievalLink", Options);
+
+    // END
+
+    Process(Result, "GoogleDrive", "FormCodeRetrievalLink");
+
+EndProcedure
+
+Procedure GoogleDrive_GetTokenByCode(FunctionParameters)
+
+    ClientID     = FunctionParameters["Google_ClientID"];
+    ClientSecret = FunctionParameters["Google_ClientSecret"];
+    Code         = FunctionParameters["Google_Code"];
+
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+    Options.Insert("secret", ClientSecret);
+    Options.Insert("code", Code);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetTokenByCode", Options);
+
+    // END
+
+    Process(Result, "GoogleDrive", "GetTokenByCode");
+
+EndProcedure
+
+Procedure GoogleDrive_RefreshToken(FunctionParameters)
+
+    ClientID     = FunctionParameters["Google_ClientID"];
+    ClientSecret = FunctionParameters["Google_ClientSecret"];
+    RefreshToken = FunctionParameters["Google_Refresh"];
+
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+    Options.Insert("secret", ClientSecret);
+    Options.Insert("refresh", RefreshToken);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "RefreshToken", Options);
+
+    // END
+
+    Process(Result, "GoogleDrive", "RefreshToken");
+
+EndProcedure
+
+Procedure GoogleDrive_GetServiceAccountToken(FunctionParameters)
+
+    Data = FunctionParameters["Google_ServiceData"]; // URL, binary Data, file or collection
+
+    Token = FunctionParameters["Access_Token"]; // SKIP
+    Data  = OPI_HTTPRequests // SKIP
+        .NewRequest() // SKIP
+        .Initialize(Data) // SKIP
+        .AddBearerAuthorization(Token) // SKIP
+        .ProcessRequest("GET") // SKIP
+        .ReturnResponseAsBinaryData(); // SKIP
+
+    Scope = New Array;
+    Scope.Add("https://www.googleapis.com/auth/calendar");
+    Scope.Add("https://www.googleapis.com/auth/drive");
+    Scope.Add("https://www.googleapis.com/auth/spreadsheets");
+
+    Options = New Structure;
+    Options.Insert("auth", Data);
+    Options.Insert("scope", Scope);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetServiceAccountToken", Options);
+
+    // END
+
+    Process(Result, "GoogleDrive", "GetServiceAccountToken");
+
+EndProcedure
+
 Procedure GoogleDrive_GetDirectoriesList(FunctionParameters)
 
     Name  = "TestFolder";
@@ -6900,6 +7203,87 @@ EndProcedure
 #EndRegion
 
 #Region GoogleSheets
+
+Procedure GoogleSheets_FormCodeRetrievalLink(FunctionParameters)
+
+    ClientID = FunctionParameters["Google_ClientID"];
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "FormCodeRetrievalLink", Options);
+
+    // END
+
+    Process(Result, "GoogleSheets", "FormCodeRetrievalLink");
+
+EndProcedure
+
+Procedure GoogleSheets_GetTokenByCode(FunctionParameters)
+
+    ClientID     = FunctionParameters["Google_ClientID"];
+    ClientSecret = FunctionParameters["Google_ClientSecret"];
+    Code         = FunctionParameters["Google_Code"];
+
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+    Options.Insert("secret", ClientSecret);
+    Options.Insert("code", Code);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetTokenByCode", Options);
+
+    // END
+
+    Process(Result, "GoogleSheets", "GetTokenByCode");
+
+EndProcedure
+
+Procedure GoogleSheets_RefreshToken(FunctionParameters)
+
+    ClientID     = FunctionParameters["Google_ClientID"];
+    ClientSecret = FunctionParameters["Google_ClientSecret"];
+    RefreshToken = FunctionParameters["Google_Refresh"];
+
+    Options = New Structure;
+    Options.Insert("id", ClientID);
+    Options.Insert("secret", ClientSecret);
+    Options.Insert("refresh", RefreshToken);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "RefreshToken", Options);
+
+    // END
+
+    Process(Result, "GoogleSheets", "RefreshToken");
+
+EndProcedure
+
+Procedure GoogleSheets_GetServiceAccountToken(FunctionParameters)
+
+    Data = FunctionParameters["Google_ServiceData"]; // URL, binary Data, file or collection
+
+    Token = FunctionParameters["Access_Token"]; // SKIP
+    Data  = OPI_HTTPRequests // SKIP
+        .NewRequest() // SKIP
+        .Initialize(Data) // SKIP
+        .AddBearerAuthorization(Token) // SKIP
+        .ProcessRequest("GET") // SKIP
+        .ReturnResponseAsBinaryData(); // SKIP
+
+    Scope = New Array;
+    Scope.Add("https://www.googleapis.com/auth/calendar");
+    Scope.Add("https://www.googleapis.com/auth/drive");
+    Scope.Add("https://www.googleapis.com/auth/spreadsheets");
+
+    Options = New Structure;
+    Options.Insert("auth", Data);
+    Options.Insert("scope", Scope);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("gsheets", "GetServiceAccountToken", Options);
+
+    // END
+
+    Process(Result, "GoogleSheets", "GetServiceAccountToken");
+
+EndProcedure
 
 Procedure GoogleSheets_CreateSpreadsheet(FunctionParameters)
 

@@ -331,6 +331,11 @@
 },
 {
 "lib": "VK",
+"name": "ПолучитьПараметрыАвторизации",
+"variant": ""
+},
+{
+"lib": "VK",
 "name": "СоздатьПост",
 "variant": ""
 },
@@ -606,6 +611,21 @@
 },
 {
 "lib": "YandexDisk",
+"name": "ПолучитьКодПодтверждения",
+"variant": ""
+},
+{
+"lib": "YandexDisk",
+"name": "ПреобразоватьКодВТокен",
+"variant": ""
+},
+{
+"lib": "YandexDisk",
+"name": "ОбновитьТокен",
+"variant": ""
+},
+{
+"lib": "YandexDisk",
 "name": "ПолучитьИнформациюОДиске",
 "variant": ""
 },
@@ -801,6 +821,26 @@
 },
 {
 "lib": "GoogleCalendar",
+"name": "СформироватьСсылкуПолученияКода",
+"variant": ""
+},
+{
+"lib": "GoogleCalendar",
+"name": "ПолучитьТокенПоКоду",
+"variant": ""
+},
+{
+"lib": "GoogleCalendar",
+"name": "ОбновитьТокен",
+"variant": ""
+},
+{
+"lib": "GoogleCalendar",
+"name": "ПолучитьТокенServiceАккаунта",
+"variant": ""
+},
+{
+"lib": "GoogleCalendar",
 "name": "ПолучитьСписокКалендарей",
 "variant": ""
 },
@@ -886,6 +926,26 @@
 },
 {
 "lib": "GoogleDrive",
+"name": "СформироватьСсылкуПолученияКода",
+"variant": ""
+},
+{
+"lib": "GoogleDrive",
+"name": "ПолучитьТокенПоКоду",
+"variant": ""
+},
+{
+"lib": "GoogleDrive",
+"name": "ОбновитьТокен",
+"variant": ""
+},
+{
+"lib": "GoogleDrive",
+"name": "ПолучитьТокенServiceАккаунта",
+"variant": ""
+},
+{
+"lib": "GoogleDrive",
 "name": "ПолучитьСписокКаталогов",
 "variant": ""
 },
@@ -958,6 +1018,26 @@
 "lib": "GoogleDrive",
 "name": "СоздатьПапку",
 "variant": "Корень"
+},
+{
+"lib": "GoogleSheets",
+"name": "СформироватьСсылкуПолученияКода",
+"variant": ""
+},
+{
+"lib": "GoogleSheets",
+"name": "ПолучитьТокенПоКоду",
+"variant": ""
+},
+{
+"lib": "GoogleSheets",
+"name": "ОбновитьТокен",
+"variant": ""
+},
+{
+"lib": "GoogleSheets",
+"name": "ПолучитьТокенServiceАккаунта",
+"variant": ""
 },
 {
 "lib": "GoogleSheets",

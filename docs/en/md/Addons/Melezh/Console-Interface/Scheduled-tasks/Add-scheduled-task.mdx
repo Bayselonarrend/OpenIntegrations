@@ -1,0 +1,37 @@
+﻿---
+sidebar_position: 1
+description: Add scheduled task and other functions to work with Melezh in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Add scheduled task
+ Adds a new handler to the project
+
+
+
+`Function AddScheduledTask(Val Project, Val HandlersKey, Val Schedule) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Project | --proj | String | &#x2714; | Project filepath |
+  | HandlersKey | --handler | String | &#x2714; | Handlers key |
+  | Schedule | --cron | String | &#x2714; | Schedule in extended cron format |
+
+  
+  Returns:  Structure Of KeyAndValue - Task addition result
+
+<br/>
+
+:::tip
+Schedule format:<br/>sec min hour day of month month day of week year<br/>0 30 9,12,15 1,15 May-Aug Mon,Wed,Fri 2018/2
+:::
+<br/>
+
+
+ 
+
+
+
