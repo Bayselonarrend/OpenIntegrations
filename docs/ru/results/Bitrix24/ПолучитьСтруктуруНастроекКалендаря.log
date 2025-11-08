@@ -5,8 +5,8 @@
   "year_holidays": "1.01,2.01,7.01,23.02,8.03,1.05,9.05,12.06,4.11",
   "year_workdays": "31.12",
   "week_holidays": [
-   "SA",
-   "SU"
+   "***",
+   "***"
   ],
   "week_start": "MO",
   "user_name_template": "#NAME# #LAST_NAME#",
@@ -31,13 +31,13 @@
   "path_to_type_location": ""
  },
  "time": {
-  "start": 1761905886,
-  "finish": 1761905886.16277,
-  "duration": 0.16277289390564,
+  "start": 1762641251,
+  "finish": 1762641251.30714,
+  "duration": 0.307138919830322,
   "processing": 0,
-  "date_start": "2025-10-31T13:18:06+03:00",
-  "date_finish": "2025-10-31T13:18:06+03:00",
-  "operating_reset_at": 1761906486,
+  "date_start": "2025-11-09T01:34:11+03:00",
+  "date_finish": "2025-11-09T01:34:11+03:00",
+  "operating_reset_at": 1762641851,
   "operating": 0
  }
 }

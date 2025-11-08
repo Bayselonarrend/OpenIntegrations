@@ -29,7 +29,7 @@
   },
   {
    "ID": "10",
-   "NAME": "CoPilot",
+   "NAME": "BitrixGPT",
    "CODE": null,
    "MODULE_ID": "disk",
    "ENTITY_TYPE": "user",
@@ -443,15 +443,15 @@
   }
  ],
  "next": 49,
- "total": 1474,
+ "total": 1478,
  "time": {
-  "start": 1761905627,
-  "finish": 1761905627.96197,
-  "duration": 0.961966037750244,
+  "start": 1762641043,
+  "finish": 1762641043.75797,
+  "duration": 0.757973909378052,
   "processing": 0,
-  "date_start": "2025-10-31T13:13:47+03:00",
-  "date_finish": "2025-10-31T13:13:47+03:00",
-  "operating_reset_at": 1761906227,
+  "date_start": "2025-11-09T01:30:43+03:00",
+  "date_finish": "2025-11-09T01:30:43+03:00",
+  "operating_reset_at": 1762641643,
   "operating": 0
  }
 }
