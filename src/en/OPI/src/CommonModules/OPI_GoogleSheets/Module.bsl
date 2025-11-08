@@ -39,6 +39,85 @@
 
 #Region Public
 
+#Region Authorization
+
+// Generate code retrieval link
+// Returns URL for browser authorization
+//
+// Parameters:
+// ClientID - String - Client ID - id
+// Calendar - Boolean - Calendar methods permission - calendar
+// Drive - Boolean - Drive methods permission - drive
+// Sheets - Boolean - Sheets methods permission - sheets
+//
+// Returns:
+// String - Code retrieval link
+Function FormCodeRetrievalLink(Val ClientID
+    , Val Calendar = True
+    , Val Drive = True
+    , Val Sheets = True) Export
+
+    Result = OPI_GoogleWorkspace.FormCodeRetrievalLink(ClientID, Calendar, Drive, Sheets);
+    Return Result;
+
+EndFunction
+
+// Get token by code
+// Gets token by code from browser authorization
+//
+// Parameters:
+// ClientID - String - Client ID - id
+// ClientSecret - String - Client secret - secret
+// Code - String - Code from browser - code
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Google
+Function GetTokenByCode(Val ClientID, Val ClientSecret, Val Code) Export
+
+    Result = OPI_GoogleWorkspace.GetTokenByCode(ClientID, ClientSecret, Code);
+    Return Result;
+
+EndFunction
+
+// Refresh token
+// Updates token by Refresh token
+//
+// Parameters:
+// ClientID - String - Client ID - id
+// ClientSecret - String - Client secret - secret
+// RefreshToken - String - Refresh token - refresh
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Google
+Function RefreshToken(Val ClientID, Val ClientSecret, Val RefreshToken) Export
+
+    Result = OPI_GoogleWorkspace.RefreshToken(ClientID, ClientSecret, RefreshToken);
+    Return Result;
+
+EndFunction
+
+// Get service account token
+// Gets authorization token by service account data
+//
+// Note
+// List of available scopes: [developers.google.com](https://developers.google.com/identity/protocols/oauth2/scopes)
+//
+// Parameters:
+// Data - Arbitrary - JSON authorization data as a file, collection or binary data - auth
+// Scope - Array Of String - Scope or array of scopes - scope
+// Expire - Number - Token lifetime in seconds - exp
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Google
+Function GetServiceAccountToken(Val Data, Val Scope, Val Expire = 3600) Export
+
+    Result = OPI_GoogleWorkspace.GetServiceAccountToken(Data, Scope, Expire);
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
 #Region SpreadsheetsManagement
 
 // Create spreadsheet
