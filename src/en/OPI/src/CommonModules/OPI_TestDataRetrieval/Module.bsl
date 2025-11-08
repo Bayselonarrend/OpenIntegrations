@@ -305,6 +305,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "VKAPI_GetPropertyList"               , "Get property list"               , VKontakte);
     NewTest(TestTable, "VKAPI_GetOrderList"                  , "Get order list"                  , VKontakte);
     NewTest(TestTable, "VKAPI_UploadVideo"                   , "Upload video"                    , VKontakte);
+    NewTest(TestTable, "YDisk_Authorization"                 , "Authorization"                   , YDisk);
     NewTest(TestTable, "YDisk_GetDiskInfo"                   , "Get disk information"            , YDisk);
     NewTest(TestTable, "YDisk_CreateFolder"                  , "Create folder"                   , YDisk);
     NewTest(TestTable, "YDisk_UploadByUrlAndGetObject"       , "Upload by URL and get"           , YDisk);
@@ -316,16 +317,16 @@ Function GetTestTable() Export
     NewTest(TestTable, "YDisk_PublicObjectActions"           , "Actions with public objects"     , YDisk);
     NewTest(TestTable, "YDisk_GetPublishedList"              , "Get published list"              , YDisk);
     NewTest(TestTable, "GW_Auth"                             , "Authorization"                   , VSpace);
-    NewTest(TestTable, "GW_Auth"                             , "Authorization"                   , Calendar);
+    NewTest(TestTable, "GC_Authorization"                    , "Authorization"                   , Calendar);
     NewTest(TestTable, "GC_GetCalendarList"                  , "Get list of calendars"           , Calendar);
     NewTest(TestTable, "GC_CreateDeleteCalendar"             , "Create/Delete calendar"          , Calendar);
     NewTest(TestTable, "GC_CreateDeleteEvent"                , "Create/Delete event"             , Calendar);
-    NewTest(TestTable, "GW_Auth"                             , "Authorization"                   , Drive);
+    NewTest(TestTable, "GD_Authorization"                    , "Authorization"                   , Drive);
     NewTest(TestTable, "GD_GetCatalogList"                   , "Get list of directories"         , Drive);
     NewTest(TestTable, "GD_UploadDeleteFile"                 , "Upload/Delete file"              , Drive);
     NewTest(TestTable, "GD_CreateDeleteComment"              , "Create/Delete Comment"           , Drive);
     NewTest(TestTable, "GD_CreateCatalog"                    , "Create/Delete catalog"           , Drive);
-    NewTest(TestTable, "GW_Auth"                             , "Authorization"                   , Tables);
+    NewTest(TestTable, "GT_Authorization"                    , "Authorization"                   , Tables);
     NewTest(TestTable, "GT_CreateTable"                      , "Create table"                    , Tables);
     NewTest(TestTable, "GT_FillClearCells"                   , "Fill/Clear cells"                , Tables);
     NewTest(TestTable, "TwitterAPI_AccountData"              , "Account data"                    , Twitter);
@@ -2352,6 +2353,20 @@ Function Check_VK_GetProductDescription(Val Result, Val Option)
 
 EndFunction
 
+Function Check_VK_GetAuthParameters(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    ExpectsThat(Result["v"]).Заполнено();
+    ExpectsThat(Result["from_group"]).Заполнено();
+    ExpectsThat(Result["group_id"]).Заполнено();
+    ExpectsThat(Result["owner_id"]).Заполнено();
+    ExpectsThat(Result["app_id"]).Заполнено();
+    ExpectsThat(Result["access_token"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
 Function Check_YandexDisk_GetDiskInformation(Val Result, Val Option)
 
     Map_ = "Map";
@@ -2567,6 +2582,54 @@ Function Check_YandexDisk_CancelObjectPublication(Val Result, Val Option, Path =
 
 EndFunction
 
+Function Check_YandexDisk_GetConfirmationCode(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["verification_url"]).Заполнено();
+    ExpectsThat(Result["device_code"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_YandexDisk_ConvertCodeToToken(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    If Result.Get("access_token") <> Undefined Then
+
+        Token = Result["access_token"];
+        WriteParameter("YandexDisk_Token", Token);
+        Parameters.Insert("YandexDisk_Token", Token);
+
+        Token = Result["refresh_token"];
+        WriteParameter("YandexDisk_RefreshToken", Token);
+        Parameters.Insert("YandexDisk_RefreshToken", Token);
+
+    EndIf;
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_YandexDisk_RefreshToken(Val Result, Val Option, Parameters = "")
+
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["access_token"]).Заполнено();
+    ExpectsThat(Result["refresh_token"]).Заполнено();
+
+    Token = Result["access_token"];
+    WriteParameter("YandexDisk_Token", Token);
+    Parameters.Insert("YandexDisk_Token", Token);
+
+    Token = Result["refresh_token"];
+    WriteParameter("YandexDisk_RefreshToken", Token);
+    Parameters.Insert("YandexDisk_RefreshToken", Token);
+
+    Return Undefined;
+
+EndFunction
+
 Function Check_Viber_SetWebhook(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
@@ -2732,6 +2795,62 @@ Function Check_GoogleWorkspace_RefreshToken(Val Result, Val Option)
 EndFunction
 
 Function Check_GoogleWorkspace_GetServiceAccountToken(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["access_token"]).Заполнено();
+    WriteParameter("Google_ServiceToken", Result["access_token"]);
+
+    OPI_Tools.Pause(2);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_FormCodeRetrievalLink(Val Result, Val Option)
+
+    If TypeOf(Result) = Type("BinaryData") Then
+        Result        = GetStringFromBinaryData(Result);
+    EndIf;
+
+    ExpectsThat(Result).ИмеетТип("String");
+    ExpectsThat(StrStartsWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
+
+    WriteParameter("Google_Link", Result);
+
+    OPI_Tools.Pause(2);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_GetTokenByCode(Val Result, Val Option)
+
+    If ValueIsFilled(Result["access_token"]) And ValueIsFilled(Result["refresh_token"]) Then
+
+        WriteParameter("Google_Token"  , Result["access_token"]);
+        WriteParameter("Google_Refresh", Result["refresh_token"]);
+
+    EndIf;
+
+    OPI_Tools.Pause(2);
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_GoogleCalendar_RefreshToken(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["access_token"]).Заполнено();
+    WriteParameter("Google_Token", Result["access_token"]);
+
+    OPI_Tools.Pause(2);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleCalendar_GetServiceAccountToken(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map");
     ExpectsThat(Result["access_token"]).Заполнено();
@@ -2929,6 +3048,62 @@ Function Check_GoogleCalendar_GetEventDescription(Val Result, Val Option)
 
 EndFunction
 
+Function Check_GoogleDrive_FormCodeRetrievalLink(Val Result, Val Option)
+
+    If TypeOf(Result) = Type("BinaryData") Then
+        Result        = GetStringFromBinaryData(Result);
+    EndIf;
+
+    ExpectsThat(Result).ИмеетТип("String");
+    ExpectsThat(StrStartsWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
+
+    WriteParameter("Google_Link", Result);
+
+    OPI_Tools.Pause(2);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_GetTokenByCode(Val Result, Val Option)
+
+    If ValueIsFilled(Result["access_token"]) And ValueIsFilled(Result["refresh_token"]) Then
+
+        WriteParameter("Google_Token"  , Result["access_token"]);
+        WriteParameter("Google_Refresh", Result["refresh_token"]);
+
+    EndIf;
+
+    OPI_Tools.Pause(2);
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_GoogleDrive_RefreshToken(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["access_token"]).Заполнено();
+    WriteParameter("Google_Token", Result["access_token"]);
+
+    OPI_Tools.Pause(2);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleDrive_GetServiceAccountToken(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["access_token"]).Заполнено();
+    WriteParameter("Google_ServiceToken", Result["access_token"]);
+
+    OPI_Tools.Pause(2);
+
+    Return Result;
+
+EndFunction
+
 Function Check_GoogleDrive_GetDirectoriesList(Val Result, Val Option, Parameters = "")
 
     Result = Result[0];
@@ -3103,6 +3278,62 @@ Function Check_GoogleDrive_CreateFolder(Val Result, Val Option)
 
     ExpectsThat(Result["mimeType"]).Равно("application/vnd.google-apps.folder");
     ExpectsThat(Result["name"]).Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleSheets_FormCodeRetrievalLink(Val Result, Val Option)
+
+    If TypeOf(Result) = Type("BinaryData") Then
+        Result        = GetStringFromBinaryData(Result);
+    EndIf;
+
+    ExpectsThat(Result).ИмеетТип("String");
+    ExpectsThat(StrStartsWith(Result, "https://accounts.google.com/o/oauth2")).Равно(True);
+
+    WriteParameter("Google_Link", Result);
+
+    OPI_Tools.Pause(2);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleSheets_GetTokenByCode(Val Result, Val Option)
+
+    If ValueIsFilled(Result["access_token"]) And ValueIsFilled(Result["refresh_token"]) Then
+
+        WriteParameter("Google_Token"  , Result["access_token"]);
+        WriteParameter("Google_Refresh", Result["refresh_token"]);
+
+    EndIf;
+
+    OPI_Tools.Pause(2);
+
+    Return Undefined;
+
+EndFunction
+
+Function Check_GoogleSheets_RefreshToken(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["access_token"]).Заполнено();
+    WriteParameter("Google_Token", Result["access_token"]);
+
+    OPI_Tools.Pause(2);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GoogleSheets_GetServiceAccountToken(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
+    ExpectsThat(Result["access_token"]).Заполнено();
+    WriteParameter("Google_ServiceToken", Result["access_token"]);
+
+    OPI_Tools.Pause(2);
 
     Return Result;
 

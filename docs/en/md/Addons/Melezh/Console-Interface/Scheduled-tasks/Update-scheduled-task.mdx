@@ -1,0 +1,33 @@
+﻿---
+sidebar_position: 5
+description: Update scheduled task and other functions to work with Melezh in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Update scheduled task
+ Changes the schedule of the selected scheduled task
+
+
+
+`Function UpdateScheduledTask(Val Project, Val TaskID, Val Schedule = "", Val HandlersKey = "") Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Project | --proj | String | &#x2714; | Project filepath |
+  | TaskID | --task | String | &#x2714; | Task ID |
+  | Schedule | --cron | String | &#x2716; | Schedule in extended cron format |
+
+  
+  Returns:  Structure Of KeyAndValue - Task update result
+
+<br/>
+
+
+
+ 
+
+
+

@@ -1,7 +1,7 @@
 ﻿    Path1 = "/" + String(New UUID) + ".png";
     Path2 = "/" + String(New UUID) + ".png";
 
-    Token = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Token = "y0__xCOranuBRj1uTsgs8z_iRV...";
     Image = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL
 
     TFN = GetTempFileName("png"); // Path

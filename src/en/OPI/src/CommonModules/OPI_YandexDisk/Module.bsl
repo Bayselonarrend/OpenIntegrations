@@ -41,6 +41,59 @@
 
 #Region Public
 
+#Region Authorization
+
+// Get confirmation code
+// Gets the confirmation code and the address of the page where it needs to be entered
+//
+// Parameters:
+// ClientId - String - Client id - id
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Yandex
+Function GetConfirmationCode(Val ClientId) Export
+
+    Result = OPI_YandexID.GetConfirmationCode(ClientId);
+    Return Result;
+
+EndFunction
+
+// Convert code to token
+// Converts the code to a token after entering the code when executing GetConfirmationCode
+//
+// Parameters:
+// ClientId - String - Client id - id
+// ClientSecret - String - Client secret - secret
+// DeviceCode - String - device_code from GetConfirmationCode - device
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Yandex
+Function ConvertCodeToToken(Val ClientId, Val ClientSecret, Val DeviceCode) Export
+
+    Result = OPI_YandexID.ConvertCodeToToken(ClientId, ClientSecret, DeviceCode);
+    Return Result;
+
+EndFunction
+
+// Refresh token
+// Updates token by Refresh token
+//
+// Parameters:
+// ClientId - String - Client id - id
+// ClientSecret - String - Client secret - secret
+// RefreshToken - String - Refresh token - refresh
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Yandex
+Function RefreshToken(Val ClientId, Val ClientSecret, Val RefreshToken) Export
+
+    Result = OPI_YandexID.RefreshToken(ClientId, ClientSecret, RefreshToken);
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
 #Region FileAndFolderManagement
 
 // Get disk information

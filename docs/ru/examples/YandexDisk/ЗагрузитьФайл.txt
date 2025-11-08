@@ -1,7 +1,7 @@
 ﻿    Путь1 = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
     Путь2 = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
 
-    Токен    = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+    Токен    = "y0__xCOranuBRj1uTsgs8z_iRV...";
     Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL
 
     ИВФ = ПолучитьИмяВременногоФайла("png"); // Путь

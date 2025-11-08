@@ -1,4 +1,4 @@
-﻿    Токен = "y0_AgAAAABdylaOAAs0QgAAAAD5i-a...";
+﻿    Токен = "y0__xCOranuBRj1uTsgs8z_iRV...";
     Адрес = "https://hut.openintegrations.dev/test_data/picture.jpg";
     Путь  = "/" + Строка(Новый УникальныйИдентификатор) + ".png";
 
