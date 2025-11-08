@@ -1,13 +1,15 @@
 ﻿{
  "entity": {
-  "uuid": "a8225077-c112-4d49-b321-0f4ba9416a8b",
-  "intake_date": "2025-11-01",
+  "uuid": "dc0c1a18-1705-4ff9-8b90-284b0da398b0",
+  "cdek_number": "1106633778",
+  "order_uuid": "01a5c80a-a788-4375-b226-13b3defc17dc",
+  "intake_date": "2025-11-10",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
   "weight": 1000,
   "length": 10,
-  "width": 10,
+  "width": "***",
   "height": 10,
   "comment": "Комментарий курьеру",
   "sender": {
@@ -17,35 +19,47 @@
     {
      "number": "+79589441654"
     }
-   ]
+   ],
+   "passport_requirements_satisfied": "***"
   },
   "from_location": {
    "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
    "city": "Москва",
    "fias_guid": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
-   "kladr_code": "7700000000000",
    "country_code": "RU",
+   "country": "Россия",
    "region": "Москва",
+   "region_code": 81,
    "sub_region": "Москва",
-   "longitude": 37.6204,
-   "latitude": 55.754,
-   "address": "ул. Блюхера, 32",
-   "postal_code": "109004"
+   "longitude": 37.61556,
+   "latitude": 55.75222,
+   "address": "ул. Блюхера, 32"
   },
   "need_call": false,
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-31T07:54:38+00:00"
+    "date_time": "2025-11-09T01:37:53+03:00"
    }
-  ]
+  ],
+  "packages": [
+   {
+    "package_id": "25b9cf31-a598-4679-9bb3-9caaa90bd14a",
+    "weight": 1000,
+    "length": 10,
+    "width": "***",
+    "height": 10
+   }
+  ],
+  "contragent_uuid": "ed75ecf4-30ed-4153-afe9-eb80bb512f22"
  },
  "requests": [
   {
-   "request_uuid": "bc1efa6a-9750-48b6-902e-961555f69c3d",
+   "request_uuid": "1c0b1738-7f2e-4edc-9012-40dbe1e4cfd9",
    "type": "CREATE",
-   "date_time": "2025-10-31T07:54:34+00:00",
+   "date_time": "2025-11-09T01:37:52+03:00",
    "state": "ACCEPTED"
   }
  ]

@@ -4,12 +4,12 @@
   "ListBucketResult": {
    "Name": "opi-dirbucket4",
    "Prefix": {},
-   "KeyCount": "1",
-   "MaxKeys": "250",
+   "KeyCount": "***",
+   "MaxKeys": "***",
    "IsTruncated": "false",
    "Contents": {
-    "Key": "picture.jpg",
-    "LastModified": "2025-10-31T10:30:09.098Z",
+    "Key": "***",
+    "LastModified": "2025-11-08T22:42:27.969Z",
     "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
     "Size": "2114023",
     "StorageClass": "STANDARD"
@@ -18,12 +18,12 @@
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Fri, 31 Oct 2025 10:38:28 GMT",
+  "Date": "Sat, 08 Nov 2025 22:43:34 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
-  "X-Amz-Request-Id": "18738D2E161A2F1D",
+  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
+  "X-Amz-Request-Id": "1876296423F077B6",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "452",

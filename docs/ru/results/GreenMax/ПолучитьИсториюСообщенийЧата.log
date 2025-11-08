@@ -4,7 +4,7 @@
   "idMessage": "2761480287806",
   "timestamp": 1761480287,
   "typeMessage": "extendedTextMessage",
-  "chatId": "***",
+  "chatId": "-68885166162005",
   "textMessage": "Тест 5",
   "extendedTextMessage": {
    "text": "Тест 5",
@@ -27,7 +27,7 @@
   "idMessage": "2761480285785",
   "timestamp": 1761480285,
   "typeMessage": "extendedTextMessage",
-  "chatId": "***",
+  "chatId": "-68885166162005",
   "textMessage": "Тест 4",
   "extendedTextMessage": {
    "text": "Тест 4",
@@ -50,7 +50,7 @@
   "idMessage": "2761480283525",
   "timestamp": 1761480283,
   "typeMessage": "extendedTextMessage",
-  "chatId": "***",
+  "chatId": "-68885166162005",
   "textMessage": "Тест 3",
   "extendedTextMessage": {
    "text": "Тест 3",

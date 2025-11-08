@@ -3,6 +3,6 @@
  "host": "172.33.0.13",
  "port": 2222,
  "username": "bayselonarrend",
- "key_path": "./ssh_key",
+ "key_path": "***",
  "pub_path": "./ssh_key.pub"
 }
