@@ -1,6 +1,6 @@
 ﻿{
  "parents": [
-  "0AN2vrbrhqfJrUk9PVA"
+  "***"
  ],
  "lastModifyingUser": {
   "displayName": "Антон Титовец",
@@ -34,7 +34,7 @@
   }
  ],
  "spaces": [
-  "drive"
+  "***"
  ],
  "capabilities": {
   "canAcceptOwnership": false,
@@ -72,7 +72,7 @@
   "canUntrash": true
  },
  "permissionIds": [
-  "07468399490707249352"
+  "***"
  ],
  "linkShareMetadata": {
   "securityUpdateEligible": false,
@@ -118,7 +118,7 @@
  "files": [
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -152,7 +152,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -190,10 +190,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 0,
+    "width": "***",
     "height": 0
    },
    "linkShareMetadata": {
@@ -248,7 +248,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -282,7 +282,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -320,10 +320,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -368,7 +368,7 @@
    "webViewLink": "https://drive.google.com/file/d/1mIXxbwcaevP2Nr4v3bc-NdB1UcxBPHV6/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBM2jtJrvWwE-rQqG6CBkbqVBfoAN3DbLbX9S5PAsj_GjA6y2uo4O3mAVMhyYeeR-R_GPFT5O_H3Xzo6QinRE-W9Q_m_QTo0ASC9hsicNxcCBA=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBPHamEtWoetdF59qnksBGjEZXEHVgNf2qgIS2cMDWMdC2sFE7LvU1YNqso7rQ1imrG-ej6QBfkBYzpofmZFd0vC_fsMzwBkcC3jqZaQhLihVPQ=s220",
    "thumbnailVersion": "1",
    "viewedByMe": false,
    "createdTime": "2025-08-15T06:40:21.782Z",
@@ -394,7 +394,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -428,7 +428,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -466,10 +466,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 0,
+    "width": "***",
     "height": 0
    },
    "linkShareMetadata": {
@@ -524,7 +524,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -558,7 +558,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -596,10 +596,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -644,7 +644,7 @@
    "webViewLink": "https://drive.google.com/file/d/19oFDzCDj1weVaoLWgfg37NrB34jeqblF/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBMwdzTxQLMtCVN70nYzJDdr-V0k4IDF916lXk5Ayr4iqogQqbyeUp8xO-UcSUFaUhgE9TddT-s4tGOFMhb6vOn6svgEF24OLl_M-lWtWri4FA=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBPWYxJrmp7fkQmGYBdpImMzL_MMepHlllbljvOapYuWVHsgMx5Z2D1lpyodthP_f68U0jJ4XHwNrYq1iPIJUUAl6JG18LWyBFHWq1Zyj9eLT7Q=s220",
    "thumbnailVersion": "1",
    "viewedByMe": false,
    "createdTime": "2025-08-15T06:21:17.238Z",
@@ -670,7 +670,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -704,7 +704,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -742,10 +742,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -790,7 +790,7 @@
    "webViewLink": "https://drive.google.com/file/d/1D4_i5J4Ybd5ikgYZGzxC7MwTGn0MKHSV/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBMs-vYS9nkPydUtANjt-tvFzSPpZ5RsmtLnejUtYzSBpCPhGCvRUIMuHkd9fhbcC5d9QcBobsUS3ElNbM8MBYsLvZmSBOxi5eKDTRgHqkbMjw=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBPg9PADAGzOlyYFlGy06WK_k0MRidlcGIgDquQbrcbA8YUkm72AOayqXhfN-UXkEpDMIyTRFuoRqp1TjmRHRCv6zAALQPzznSrgD-YccC8uDz0=s220",
    "thumbnailVersion": "1",
    "viewedByMe": true,
    "viewedByMeTime": "2025-07-05T22:36:00.171Z",
@@ -817,7 +817,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -851,7 +851,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -889,10 +889,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -937,7 +937,7 @@
    "webViewLink": "https://drive.google.com/file/d/10d3Rn4IZPtS20TENvuRdf8vNozgBpg_q/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBM1dr32CuzZ71kiAJL5ANOnknPYHXvHEthaiPxIiyc4dMM2ImegvZB5WUkTc6cQtJ37ibGm6S4KpuC5tt2oysORkfDJdqExr8frmPrNYJV-8w=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBOFAFO7bME5iB1L6DhHif0P2B3bgIxzcmJDTckPyKKbOhS33wkl-rdv1nu925zxV4AyGZw74dbDmQAw4DEJ-ENxHZaleK1A_bl0USaOhNf0O_I=s220",
    "thumbnailVersion": "1",
    "viewedByMe": false,
    "createdTime": "2025-04-30T12:34:02.934Z",
@@ -963,7 +963,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -997,7 +997,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -1035,10 +1035,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -1083,7 +1083,7 @@
    "webViewLink": "https://drive.google.com/file/d/1krsElfatAcHRCcUlOH3vJ6HLSDzYveH8/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBN1dKh2TlRay5yqcuDPH5RdbdpOwQ35EPX1-gIWQlolMwDrBq8jFdkGQ75qVoXRIrOHFie5So9ZocLBCqYGIdDNSfxSdQH2rv9RbMwGZE6GNg=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBOrYRElmyVgDD1ce7JUk8wrxVSpsOWFnG7D-JbOCSsy3iMXD2DEAMh8FuHNSbrR4UPE4AH_zBmL96VmmzHVGKGiZYJX321yboZe3IKRHWrh9hY=s220",
    "thumbnailVersion": "1",
    "viewedByMe": false,
    "createdTime": "2025-04-30T11:27:26.722Z",
@@ -1109,7 +1109,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -1143,7 +1143,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -1181,10 +1181,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 0,
+    "width": "***",
     "height": 0
    },
    "linkShareMetadata": {
@@ -1239,7 +1239,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -1273,7 +1273,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -1311,10 +1311,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 0,
+    "width": "***",
     "height": 0
    },
    "linkShareMetadata": {
@@ -1369,7 +1369,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -1403,7 +1403,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -1441,10 +1441,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -1489,7 +1489,7 @@
    "webViewLink": "https://drive.google.com/file/d/1stw54TFxyrphXaro5J_p91dWFBrLe3Ak/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBPYcWUJrgM1Nw5mWCHrR2u9-zZqVaFoznhQHNo0YOV4WSB6IqWDCo8HN426L4jXbChxrs6wLFtiAi5_OMi6UYpe_HiQosfhvPSfCf-IEQtVgg=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBPuFppSDK4MawlPbcyTqu88yt_K_cTdkUdL-hsbjBJwXNKXE_mvegUpQNdKUmyXBBd9IKHYKnaSZ6FNvNOi7ye0QL5_3Y2Qr44fuPp96Xh0Q8M=s220",
    "thumbnailVersion": "1",
    "viewedByMe": false,
    "createdTime": "2025-04-26T10:50:23.809Z",
@@ -1515,7 +1515,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -1549,7 +1549,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -1587,10 +1587,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 0,
+    "width": "***",
     "height": 0
    },
    "linkShareMetadata": {
@@ -1645,7 +1645,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -1679,7 +1679,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -1717,10 +1717,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -1765,7 +1765,7 @@
    "webViewLink": "https://drive.google.com/file/d/1i9FtiXPlAazyMgcZq2iEaqpkJw0F56Di/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBOjBGddepCTRL8Dr0nfJPmf2KGjioFEFnKx5J2BzE6w74QBwDDUG57mNs2IG0UPN_wCo7Oat9IUSXwD4rhENVLvyn4IURmuAKu-pw3EM25upA=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBNa-LinxWOYLrSAH1qISMG6Oxg7iu4mi-pfwNKV_lAKJP2iPbK8uIn_IQJMZ81EWD_0juq_Qv0C-5thBzTA9kczd1IGzPE59vdhqBV0Ic3V2Gg=s220",
    "thumbnailVersion": "1",
    "viewedByMe": false,
    "createdTime": "2025-04-26T10:45:32.652Z",
@@ -1791,7 +1791,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -1825,7 +1825,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -1863,10 +1863,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -1911,7 +1911,7 @@
    "webViewLink": "https://drive.google.com/file/d/1VAqUAy5MYmZq-WQdimYxt8YiO8JckOK7/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBN1xFDFiHzyTFfz0CjXBFC-c0gfuEp32ga5M749-Kx-ytRqgqJ6m8Ia5_x-4TZ7aNqRhbCLaSY01xuHn8dxNqvvnYsug72uAezeF_i5-MysVw=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBM7Cn9v6HvDkcQtIYlsNdEBO1aRqZCpDD5XnAwHAtDpaNMGusW_MTBtKHUjLgfs03nDUipU7Z7KjR_3cz9X6-Nwv6p8-kHhHzMzcyBlN1luf0w=s220",
    "thumbnailVersion": "1",
    "viewedByMe": false,
    "createdTime": "2025-04-26T10:37:41.355Z",
@@ -1937,7 +1937,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -1971,7 +1971,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -2009,10 +2009,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -2057,7 +2057,7 @@
    "webViewLink": "https://drive.google.com/file/d/1YXyLMUsw8DvaeMBY1GT_ZPY_N8s5Ap_p/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBMzRv_Xcxzp_cSrk-rvgzRy9n9CfV974JTkY5S5vcNur7sxv-6AOW5W7b366AuDSdJ6CjubBzlthlkx9KJN6rcTvRlBtfJFdhF-sb3hP8AL4g=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBPRumBrcsIH0OkMmwvVxelEZw0tKUQl00HVD2IP7zuS8Xvc1MMIk7kvMC29TXhFAUyikkeIMMnTKHM9fgEjrwzmDIN9ktaIcn_Day4YopgGmms=s220",
    "thumbnailVersion": "1",
    "viewedByMe": false,
    "createdTime": "2025-04-26T10:31:35.834Z",
@@ -2083,7 +2083,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -2117,7 +2117,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -2155,10 +2155,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -2203,7 +2203,7 @@
    "webViewLink": "https://drive.google.com/file/d/19vtjBgg5JrYBnlnoZhzi6F-yUqnACmvS/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBO3r5HOEu-H7sKMLzNrAUviBaFY5Q3auZEmM4tGL1L-HR_5lmV2T3oZapPwwTqrZCgIv4x4sPVrXk2xsTuGV2MvQsetRLY6t2SCKAyJj2DO8g=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBObaOvEmvVbH4t3Y3ubAG4p33tfz-E7IIgJzbaPm_YUoQgwLouQwdEfLc970MvN2nYlsghMybILOeBPpL3_8U56o_YF7tuxjctbcbGhp0ft8UY=s220",
    "thumbnailVersion": "1",
    "viewedByMe": false,
    "createdTime": "2025-04-26T10:30:33.235Z",
@@ -2229,7 +2229,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -2263,7 +2263,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -2301,10 +2301,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -2349,7 +2349,7 @@
    "webViewLink": "https://drive.google.com/file/d/10LzfeRTmZkQ6yrmCZ6_-I_fz9ANfcle4/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBMrx1QvT3ZIjXYXZIEVe2SE0je-DFMz1ImYsoFBqNH_h3autSQE8jOmbjXdK7JWeIXOqLFEz4nbDi0X5TNKUEjDMt8O3Q4q62yeqH0J3HlmxA=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBM-1eVjxyHnQqw-5xxhL8SX4_Gk2LnnDZ7309I2OdnV3NmyNmP2fy8QG6DTRrS5ivThHp_kVMYSzJvkBT0OPfLOQ-_jtti35kiuGkJ5lUImmgE=s220",
    "thumbnailVersion": "1",
    "viewedByMe": false,
    "createdTime": "2025-04-26T10:20:39.365Z",
@@ -2375,7 +2375,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -2409,7 +2409,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -2447,10 +2447,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -2495,7 +2495,7 @@
    "webViewLink": "https://drive.google.com/file/d/12wyAoYFxNTYE5vB76PXNSO8v9RihX-hx/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBNLoY9biR_Rsm-ITV8L8CRKPgyDH0UVSbJax91cxY0TuqyXQggay5znvnGkINrN20FJFy5H98TGG0J5wIRG-qpkgFEwpbVhO_bkPThQdUV9Fw=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBMTEDAUTnQAf3p4xpnwDQ-y0pFUKJwtA4Hxge7aSPvSPb_1lBbJiHqsW1GtsrVsuE1qeALRV74zK1pT7gKRBU6g1OXJgc3UPP8MaOtfnWjPWpA=s220",
    "thumbnailVersion": "1",
    "viewedByMe": true,
    "viewedByMeTime": "2025-04-24T13:25:03.363Z",
@@ -2522,7 +2522,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -2556,7 +2556,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -2594,10 +2594,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -2642,7 +2642,7 @@
    "webViewLink": "https://drive.google.com/file/d/1DXHyN9pEYuOH88vrX01-SFqmH3AvISWx/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBMSOlthReBWtN9J-uvk1zHHxmVlClCuAkjzGh3F-Q_OBxUM88dk4WdcTOmxdetkBhR612ZDHymwXn9SyixktIlFTNLpNkQ_tZIdyv5P446lCA=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBOnGWMp5zaVxSXBjS080TY_L6wP0lBuEiLWycoS6GGHfmP6SlSeKfDExyIYtQR13dafXG7SoFCZ39y_TPceg9XNJp61u_HLQVf-Shu_TI8Li4g=s220",
    "thumbnailVersion": "1",
    "viewedByMe": true,
    "viewedByMeTime": "2025-04-24T11:19:56.302Z",
@@ -2669,7 +2669,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -2703,7 +2703,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -2741,10 +2741,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -2789,7 +2789,7 @@
    "webViewLink": "https://drive.google.com/file/d/1vSDooU859sqy-YiaThQFnEcb6ng_R1mn/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBMTuimjkqwLXMNFn2iNhXmpq2dGHyj5NSWZy_voE2s9MGBbkLKXPXG0lD28eh9d6Uc7TXcDaWDriLf7Kv_CTFX3qu9IS4EJIJe173b46G5lkA=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBPojf92_FafS0Jc-h19Lp8s9c_RRtx0B1KfA-8u77R-BPbu5d07_jWDuY_NqtTYFy779V7VfRZtU7HJc-DMNmzoCrMAfQd26KQS1GthfyYxFBk=s220",
    "thumbnailVersion": "1",
    "viewedByMe": true,
    "viewedByMeTime": "2025-04-24T09:06:57.888Z",
@@ -2816,7 +2816,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -2850,7 +2850,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -2888,10 +2888,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -2936,7 +2936,7 @@
    "webViewLink": "https://drive.google.com/file/d/1nbzBurYEL9ztVUvS6yxNK3_QbowdpS3q/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBOUfPAg5ZAJabpWetxmIpf5-OgIoPxf26aFd6_QXDPhVFcfyYE89_z_CzAAFfcKcYI5e9tp_KUN9E4jtnx8rtGRZSTyYp6bNvahQrSSN3KC1Q=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBO8eqm7aTKiCOUIbIn9uLYUt4eesNuXDXcoEqe9qzTE64HyDSSTQi0IEyTQhVrd_vA7i9Jfs851XLZwzhNXuwDnivRxvovch5vr0aarRYunpUE=s220",
    "thumbnailVersion": "1",
    "viewedByMe": true,
    "viewedByMeTime": "2025-04-24T06:44:21.453Z",
@@ -2963,7 +2963,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -2997,7 +2997,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -3035,10 +3035,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 3264,
+    "width": "***",
     "height": 2448,
     "rotation": 0,
     "time": "2012:08:03 08:21:50",
@@ -3083,7 +3083,7 @@
    "webViewLink": "https://drive.google.com/file/d/119HpUAhLFM9clI0-Xte8TvVUdaQIhS_D/view?usp=drivesdk",
    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/image/jpeg",
    "hasThumbnail": true,
-   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBOtOfJDZzW4u5kusInwc3Q_HuFwJvcT-P4rhFoz0PebHQhgbV1OiW-uKxTKKEeSURssgiPYhLcbE_jQqOHP307OgeG10nipi7vR68SIc9CNzw=s220",
+   "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBOuPh8k22LN-bQ0LNFaRpDiILgF1sSal7o3ZxGAckj-vO2k_1SOsdHW3zjJ8iPGzfhr1LjB1xze5KpV1ycqvXKCGc6j80uvltGIy7RbVL6rJ9A=s220",
    "thumbnailVersion": "1",
    "viewedByMe": false,
    "createdTime": "2024-11-17T13:38:22.531Z",
@@ -3109,7 +3109,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -3143,7 +3143,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -3181,10 +3181,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 0,
+    "width": "***",
     "height": 0
    },
    "linkShareMetadata": {
@@ -3239,7 +3239,7 @@
   },
   {
    "parents": [
-    "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM"
+    "***"
    ],
    "lastModifyingUser": {
     "displayName": "Антон Титовец",
@@ -3273,7 +3273,7 @@
     }
    ],
    "spaces": [
-    "drive"
+    "***"
    ],
    "capabilities": {
     "canAcceptOwnership": false,
@@ -3311,10 +3311,10 @@
     "canUntrash": true
    },
    "permissionIds": [
-    "07468399490707249352"
+    "***"
    ],
    "imageMediaMetadata": {
-    "width": 0,
+    "width": "***",
     "height": 0
    },
    "linkShareMetadata": {

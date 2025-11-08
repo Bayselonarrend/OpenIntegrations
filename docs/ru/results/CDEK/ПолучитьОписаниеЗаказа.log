@@ -3,12 +3,12 @@
  "recipient": {
   "company": "<Название компании>",
   "name": "<ФИО контактного лица>",
-  "passport_series": "<Серия паспорта>",
-  "passport_number": "<Номер паспорта>",
-  "passport_date_of_issue": "<Дата выдачи паспорта>",
-  "passport_organization": "<Орган выдачи паспорта>",
+  "passport_series": "***",
+  "passport_number": "***",
+  "passport_date_of_issue": "***",
+  "passport_organization": "***",
   "tin": "<ИНН>",
-  "passport_date_of_birth": "<Дата рождения>",
+  "passport_date_of_birth": "***",
   "email": "<Email как RFC 2822>",
   "contragent_type": "<Тип отправителя: LEGAL_ENTITY, INDIVIDUAL >",
   "phones": [
@@ -23,13 +23,13 @@
    "number": "<Номер упаковки>",
    "weight": "<Общий вес (в граммах)>",
    "length": "<Габариты упаковки. Длина (в сантиметрах)>",
-   "width": "<Габариты упаковки. Ширина (в сантиметрах)>",
+   "width": "***",
    "height": "<Габариты упаковки. Высота (в сантиметрах)>",
    "comment": "<Комментарий к упаковке>",
    "items": [
     {
      "name": "<Наименование товара>",
-     "ware_key": "<Идентификатор/артикул товара>",
+     "ware_key": "***",
      "marking": "<Маркировка товара>",
      "payment": {
       "value": "<Сумма наложенного платежа, в том числе и НДС>",
@@ -52,7 +52,7 @@
  ],
  "additional_order_types": "<Дополнительный тип заказа>",
  "comment": "<Комментарий к заказу>",
- "developer_key": "<Ключ разработчика (для разработчиков модулей)>",
+ "developer_key": "***",
  "shipment_point": "<Код ПВЗ СДЭК для самостоятельного привоза клиентом>",
  "delivery_point": "<Код офиса СДЭК, на который будет доставлена посылка>",
  "date_invoice": "<Дата инвойса>",
@@ -62,12 +62,12 @@
   "company": "<Название компании>",
   "name": "<ФИО контактного лица>",
   "email": "<Email для оповещений RFC 2822>",
-  "passport_series": "<Серия паспорта>",
-  "passport_number": "<Номер паспорта>",
-  "passport_date_of_issue": "<Дата выдачи паспорта>",
-  "passport_organization": "<Орган выдачи паспорта>",
+  "passport_series": "***",
+  "passport_number": "***",
+  "passport_date_of_issue": "***",
+  "passport_organization": "***",
   "tin": "<ИНН>",
-  "passport_date_of_birth": "<Дата рождения>",
+  "passport_date_of_birth": "***",
   "contragent_type": "<Тип отправителя: LEGAL_ENTITY, INDIVIDUAL>",
   "phones": [
    {
@@ -109,7 +109,7 @@
   "parameter": "<Параметр дополнительной услуги>"
  },
  "print": "<Необходимость сформировать печатную форму>",
- "is_client_return": "<Клиентский возврат>",
+ "is_client_return": "***",
  "accompanying_number": "<Номер сопроводительной накладной>",
- "widget_token": "<Токен, полученный от widget.cdek.ru>"
+ "widget_token": "***"
 }
