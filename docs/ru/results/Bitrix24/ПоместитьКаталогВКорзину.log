@@ -1,29 +1,29 @@
 ﻿{
  "result": {
-  "ID": "46624",
+  "ID": "46732",
   "NAME": "Новый каталог",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": "46624",
+  "REAL_OBJECT_ID": "46732",
   "PARENT_ID": "3",
   "DELETED_TYPE": "3",
-  "CREATE_TIME": "2025-10-31T13:14:22+03:00",
-  "UPDATE_TIME": "2025-10-31T13:14:34+03:00",
-  "DELETE_TIME": "2025-10-31T13:14:38+03:00",
+  "CREATE_TIME": "2025-11-09T01:31:13+03:00",
+  "UPDATE_TIME": "2025-11-09T01:31:23+03:00",
+  "DELETE_TIME": "2025-11-09T01:31:26+03:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/Новый каталог"
  },
  "time": {
-  "start": 1761905679,
-  "finish": 1761905679.2248,
-  "duration": 0.224805116653442,
+  "start": 1762641086,
+  "finish": 1762641086.97704,
+  "duration": 0.97704005241394,
   "processing": 0,
-  "date_start": "2025-10-31T13:14:39+03:00",
-  "date_finish": "2025-10-31T13:14:39+03:00",
-  "operating_reset_at": 1761906279,
+  "date_start": "2025-11-09T01:31:26+03:00",
+  "date_finish": "2025-11-09T01:31:26+03:00",
+  "operating_reset_at": 1762641686,
   "operating": 0
  }
 }

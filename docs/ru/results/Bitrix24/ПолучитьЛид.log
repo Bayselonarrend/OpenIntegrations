@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "2744",
+  "ID": "2752",
   "TITLE": "Мегаклиент",
   "HONORIFIC": null,
   "NAME": "Иван",
@@ -8,7 +8,7 @@
   "LAST_NAME": "Иванов",
   "COMPANY_TITLE": null,
   "COMPANY_ID": null,
-  "CONTACT_ID": "2744",
+  "CONTACT_ID": "2752",
   "IS_RETURN_CUSTOMER": "N",
   "BIRTHDATE": "",
   "SOURCE_ID": "CALL",
@@ -20,21 +20,21 @@
   "CURRENCY_ID": "BYN",
   "OPPORTUNITY": "0.00",
   "IS_MANUAL_OPPORTUNITY": "N",
-  "HAS_PHONE": "Y",
+  "HAS_PHONE": "***",
   "HAS_EMAIL": "Y",
   "HAS_IMOL": "N",
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2025-10-31T13:17:21+03:00",
-  "DATE_MODIFY": "2025-10-31T13:17:22+03:00",
-  "DATE_CLOSED": "2025-10-31T00:00:00+03:00",
+  "DATE_CREATE": "2025-11-09T01:33:41+03:00",
+  "DATE_MODIFY": "2025-11-09T01:33:42+03:00",
+  "DATE_CLOSED": "2025-11-09T00:00:00+03:00",
   "STATUS_SEMANTIC_ID": "S",
   "OPENED": "Y",
   "ORIGINATOR_ID": null,
   "ORIGIN_ID": null,
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2025-10-31T13:17:22+03:00",
+  "MOVED_TIME": "2025-11-09T01:33:42+03:00",
   "ADDRESS": "ул. Пушкина, д. 10",
   "ADDRESS_2": null,
   "ADDRESS_CITY": null,
@@ -43,7 +43,7 @@
   "ADDRESS_PROVINCE": null,
   "ADDRESS_COUNTRY": "Россия",
   "ADDRESS_COUNTRY_CODE": null,
-  "ADDRESS_LOC_ADDR_ID": "5488",
+  "ADDRESS_LOC_ADDR_ID": "5504",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
@@ -51,16 +51,16 @@
   "UTM_TERM": null,
   "LAST_COMMUNICATION_TIME": null,
   "LAST_ACTIVITY_BY": "1",
-  "LAST_ACTIVITY_TIME": "2025-10-31T13:17:21+03:00",
+  "LAST_ACTIVITY_TIME": "2025-11-09T01:33:41+03:00",
   "EMAIL": [
    {
-    "ID": "16444",
+    "ID": "16492",
     "VALUE_TYPE": "HOME",
     "VALUE": "yo@example.com",
     "TYPE_ID": "EMAIL"
    },
    {
-    "ID": "16446",
+    "ID": "16494",
     "VALUE_TYPE": "WORK",
     "VALUE": "hi@example.com",
     "TYPE_ID": "EMAIL"
@@ -68,7 +68,7 @@
   ],
   "PHONE": [
    {
-    "ID": "16448",
+    "ID": "16496",
     "VALUE_TYPE": "WORK",
     "VALUE": "88005553535",
     "TYPE_ID": "PHONE"
@@ -76,13 +76,13 @@
   ]
  },
  "time": {
-  "start": 1761905843,
-  "finish": 1761905843.69142,
-  "duration": 0.691417932510376,
+  "start": 1762641223,
+  "finish": 1762641223.2065,
+  "duration": 0.206501007080078,
   "processing": 0,
-  "date_start": "2025-10-31T13:17:23+03:00",
-  "date_finish": "2025-10-31T13:17:23+03:00",
-  "operating_reset_at": 1761906443,
+  "date_start": "2025-11-09T01:33:43+03:00",
+  "date_finish": "2025-11-09T01:33:43+03:00",
+  "operating_reset_at": 1762641823,
   "operating": 0
  }
 }

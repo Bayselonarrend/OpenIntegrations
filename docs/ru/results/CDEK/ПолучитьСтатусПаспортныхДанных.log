@@ -1,16 +1,16 @@
 ﻿{
  "orders": [
   {
-   "order_uuid": "58fbb121-bac5-4eab-9f4a-4a35e1d3b66e",
-   "cdek_number": 1106631766,
+   "order_uuid": "80997ce7-1ea6-4a52-926c-720f222ca6b7",
+   "cdek_number": 1106633776,
    "passport": [
     {
-     "client": "SENDER",
-     "passport_requirements_satisfied": false
+     "client": "***",
+     "passport_requirements_satisfied": "***"
     },
     {
-     "client": "RECEIVER",
-     "passport_requirements_satisfied": false
+     "client": "***",
+     "passport_requirements_satisfied": "***"
     }
    ]
   }
