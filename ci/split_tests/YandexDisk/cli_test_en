@@ -164,6 +164,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_Authorization'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_GetDiskInfo'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_CreateFolder'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_UploadByUrlAndGetObject'],
