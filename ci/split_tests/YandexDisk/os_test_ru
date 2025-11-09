@@ -91,6 +91,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'ЯДиск_Авторизация'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'ЯДиск_ПолучитьИнформациюОДиске'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'ЯДиск_СоздатьПапку'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект'],

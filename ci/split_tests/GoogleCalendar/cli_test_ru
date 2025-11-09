@@ -164,7 +164,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГВ_Авторизация'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_Авторизация'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_ПолучитьСписокКалендарей'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_СоздатьУдалитьКалендарь'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_СоздатьУдалитьСобытие'],

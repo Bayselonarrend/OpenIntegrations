@@ -91,7 +91,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GW_Auth'],
+						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GD_Authorization'],
 						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GD_GetCatalogList'],
 						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GD_UploadDeleteFile'],
 						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GD_CreateDeleteComment'],
