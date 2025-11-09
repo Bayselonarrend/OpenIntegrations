@@ -9,7 +9,7 @@
     "contexts": null,
     "paths": null,
     "tests": [
-"OPI_Tests.GW_Auth",
+"OPI_Tests.GT_Authorization",
 "OPI_Tests.GT_CreateTable",
 "OPI_Tests.GT_FillClearCells"
     ]

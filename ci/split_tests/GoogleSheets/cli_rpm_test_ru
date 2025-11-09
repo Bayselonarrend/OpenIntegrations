@@ -84,7 +84,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГВ_Авторизация'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГТ_Авторизация'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГТ_СоздатьТаблицу'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГТ_ЗаполнитьОчиститьЯчейки'],
 					]

@@ -91,7 +91,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GW_Auth'],
+						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GT_Authorization'],
 						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GT_CreateTable'],
 						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GT_FillClearCells'],
 					]
