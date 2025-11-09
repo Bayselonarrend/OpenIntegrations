@@ -94,7 +94,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GW_Auth'],
+						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GC_Authorization'],
 						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GC_GetCalendarList'],
 						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GC_CreateDeleteCalendar'],
 						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GC_CreateDeleteEvent'],

@@ -356,6 +356,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_Authorization'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_GetDiskInfo'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_CreateFolder'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'YDisk_UploadByUrlAndGetObject'],
@@ -399,7 +400,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GW_Auth'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GC_Authorization'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GC_GetCalendarList'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GC_CreateDeleteCalendar'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GC_CreateDeleteEvent'],
@@ -419,7 +420,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GW_Auth'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GD_Authorization'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GD_GetCatalogList'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GD_UploadDeleteFile'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GD_CreateDeleteComment'],
@@ -440,7 +441,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GW_Auth'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GT_Authorization'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GT_CreateTable'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GT_FillClearCells'],
 					]

@@ -353,6 +353,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_Авторизация'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ПолучитьИнформациюОДиске'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_СоздатьПапку'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект'],
@@ -396,7 +397,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГВ_Авторизация'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_Авторизация'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_ПолучитьСписокКалендарей'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_СоздатьУдалитьКалендарь'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_СоздатьУдалитьСобытие'],
@@ -416,7 +417,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГВ_Авторизация'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГД_Авторизация'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГД_ПолучитьСписокКаталогов'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГД_ЗагрузитьУдалитьФайл'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГД_СоздатьУдалитьКомментарий'],
@@ -437,7 +438,7 @@ pipeline {
 			steps {
 				script {
 					def tests = [
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГВ_Авторизация'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГТ_Авторизация'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГТ_СоздатьТаблицу'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГТ_ЗаполнитьОчиститьЯчейки'],
 					]
