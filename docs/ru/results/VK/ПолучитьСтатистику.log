@@ -1,30 +1,12 @@
 ﻿{
  "response": [
   {
-   "period_from": 1762646400,
-   "period_to": 1762732799,
-   "reach": {
-    "cities": [],
-    "countries": [],
-    "mobile_reach": 0,
-    "reach": 0,
-    "reach_subscribers": 0
-   },
-   "visitors": {
-    "cities": [],
-    "countries": [],
-    "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
-   }
-  },
-  {
    "activity": {
     "comments": 1,
     "likes": 1
    },
-   "period_from": 1762560000,
-   "period_to": 1762646399,
+   "period_from": 1762732800,
+   "period_to": 1762819199,
    "reach": {
     "age": [
      {
@@ -151,17 +133,28 @@
    },
    "visitors": {
     "cities": [],
-    "countries": [
-     {
-      "code": "BR",
-      "count": 1,
-      "name": "Бразилия",
-      "value": 43
-     }
-    ],
+    "countries": [],
     "mobile_views": 0,
-    "views": 1,
-    "visitors": 1
+    "views": 0,
+    "visitors": 0
+   }
+  },
+  {
+   "period_from": 1762646400,
+   "period_to": 1762732799,
+   "reach": {
+    "cities": [],
+    "countries": [],
+    "mobile_reach": 0,
+    "reach": 0,
+    "reach_subscribers": 0
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [],
+    "mobile_views": 0,
+    "views": 0,
+    "visitors": 0
    }
   }
  ]
