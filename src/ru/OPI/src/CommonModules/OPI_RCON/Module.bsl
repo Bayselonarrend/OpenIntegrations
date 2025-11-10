@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_RCON.os
+// OneScript: ./OInt/core/Modules/OPI_RCON.os
 // Lib: RCON
 // CLI: rcon
 // Keywords: rcon, remote console

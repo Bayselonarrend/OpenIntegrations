@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Bitrix24.os
+// OneScript: ./OInt/core/Modules/OPI_Bitrix24.os
 // Lib: Bitrix24
 // CLI: bitrix24
 // Keywords: bitrix24, b24, bitrix

@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_GoogleCalendar.os
+// OneScript: ./OInt/core/Modules/OPI_GoogleCalendar.os
 // Lib: Google Calendar
 // CLI: gcalendar
 // Keywords: google calendar, googlecalendar, gcalendar
