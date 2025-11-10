@@ -10277,6 +10277,20 @@ Function Check_HTTPClient_SplitArraysInURL(Val Result, Val Option)
 
 EndFunction
 
+Function Check_HTTPClient_SendDataInParts(Val Result, Val Option)
+    Return Result;
+EndFunction
+
+Function Check_HTTPClient_SendPart(Val Result, Val Option)
+
+    ExpectsThat(Result["data"]).Равно("data for");
+    ExpectsThat(Result["headers"]["Content-Length"]).Равно("8");
+    ExpectsThat(Result["headers"]["Content-Range"]).Равно("bytes 5-12/21");
+
+    Return Result;
+
+EndFunction
+
 Function Check_OpenAI_GetResponse(Val Result, Val Option)
 
     ExpectsThat(Result["id"]).Заполнено();
@@ -12771,6 +12785,7 @@ Function GetSecretKeyArray()
     SecretsArray.Add("sender");
     SecretsArray.Add("chat");
     SecretsArray.Add("invite");
+    SecretsArray.Add("origin");
 
     Return SecretsArray;
 

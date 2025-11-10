@@ -83,6 +83,7 @@ Var RequestProxy; // Request proxy settings
 Var RequestOutputFile; // Path to the file for saving the request result
 Var RequestBodyFile; // Path to the file with the request body
 Var RequestBodyStream; // Request body stream
+Var RequestReadBodyStream; // Reading stream for body binary data
 Var RequestDataWriter; // Request body data writing
 Var RequestDataReader; // Reading request body data
 Var RequestDataType; // MIME type for Content-Type
@@ -1310,8 +1311,8 @@ Function SendDataInParts(Val ChunkSize = 5242880, Val Method = "PUT") Export
         Repeats   = 0;
         TotalSize = RequestBody.Size();
 
-        RequestDataReader = New DataReader(RequestBody);
-        RequestBodyStream = RequestDataReader.SourceStream();
+        RequestBodyStream       = RequestBody.OpenStreamForRead();
+        RequestDataReader = New DataReader(RequestBodyStream);
 
         KBytes = 1024;
         MByte  = KBytes * KBytes;
@@ -1361,11 +1362,12 @@ Function SendPart(Val StartPosition, Val ByteCount, Val Method = "PUT") Export
 
         OPI_TypeConversion.GetLine(Method);
 
-        RequestDataReader = ?(RequestDataReader = Undefined, New DataReader(RequestBody), RequestDataReader);
-        RequestBodyStream = ?(RequestBodyStream = Undefined, RequestDataReader.SourceStream(), RequestBodyStream);
+        RequestReadBodyStream   = ?(RequestReadBodyStream = Undefined, RequestBody.OpenStreamForRead(), RequestReadBodyStream);
+        RequestDataReader = ?(RequestDataReader = Undefined, New DataReader(RequestReadBodyStream), RequestDataReader);
 
-        RequestBodyStream = New MemoryStream;
-        RequestBodyStream.Seek(StartPosition, PositionInStream.Start);
+        If Not RequestReadBodyStream.CurrentPosition() = StartPosition Then
+            RequestReadBodyStream.Seek(StartPosition, PositionInStream.Start);
+        EndIf;
 
         Result = RequestDataReader.Read(ByteCount);
 
@@ -1658,10 +1660,11 @@ Function SetBodyFromBinaryData(Val Value)
 
     OPI_TypeConversion.GetBinaryData(Value, True, False);
 
-    RequestBody       = Value;
-    RequestBodyStream = Undefined;
-    RequestDataReader = Undefined;
-    RequestDataWriter = Undefined;
+    RequestBody        = Value;
+    RequestBodyStream  = Undefined;
+    RequestReadBodyStream = Undefined;
+    RequestDataReader  = Undefined;
+    RequestDataWriter  = Undefined;
 
     Return ThisObject;
 
@@ -1673,6 +1676,7 @@ Function SetBodyFromString(Val Value, Val WriteBOM = False)
 
         RequestBody       = Value;
         RequestBodyStream = Undefined;
+        RequestReadBodyStream   = Undefined;
         RequestDataReader = Undefined;
         RequestDataWriter = Undefined;
 
@@ -1685,6 +1689,7 @@ Function SetBodyFromString(Val Value, Val WriteBOM = False)
 
         RequestBody       = GetBinaryDataFromString(Value, Encoding, WriteBOM);
         RequestBodyStream = Undefined;
+        RequestReadBodyStream   = Undefined;
         RequestDataReader = Undefined;
         RequestDataWriter = Undefined;
 
@@ -2168,14 +2173,14 @@ Function CheckPartUpload()
             PartsRequired      = 2;
 
             If ArrayOfInformation.Count() = PartsRequired Then
-                RequestBodyStream.Seek(Number(ArrayOfInformation[1]) + 1, PositionInStream.Start);
+                RequestReadBodyStream.Seek(Number(ArrayOfInformation[1]) + 1 , PositionInStream.Start);
             Else
-                RequestBodyStream.Seek(RequestBodyCurrentSend.Size()    , PositionInStream.Current);
+                RequestReadBodyStream.Seek(RequestBodyCurrentSend.Size()     , PositionInStream.Current);
             EndIf;
 
         Else
 
-            RequestBodyStream.Seek(RequestBodyCurrentSend.Size(), PositionInStream.Current);
+            RequestReadBodyStream.Seek(RequestBodyCurrentSend.Size(), PositionInStream.Current);
 
         EndIf;
 

@@ -2702,11 +2702,14 @@ Procedure HTTP_RequestProcessing() Export
 
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
 
     HTTPClient_ProcessRequest(TestParameters);
     HTTPClient_ExecuteRequest(TestParameters);
     HTTPClient_ReturnRequest(TestParameters);
     HTTPClient_ReturnConnection(TestParameters);
+    HTTPClient_SendDataInParts(TestParameters);
+    HTTPClient_SendPart(TestParameters);
 
 EndProcedure
 
@@ -25866,6 +25869,50 @@ Procedure HTTPClient_SplitArraysInURL(FunctionParameters)
     Result.Insert("PHP"          , SeparationPhp);
 
     Process(Result, "HTTPClient", "SplitArraysInURL");
+
+EndProcedure
+
+Procedure HTTPClient_SendDataInParts(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/put";
+
+    ChunkSize = 524288;
+    Image     = FunctionParameters["Picture"]; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Image)
+        .SendDataInParts(ChunkSize) // <---
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Process(Result, "HTTPClient", "SendDataInParts");
+
+EndProcedure
+
+Procedure HTTPClient_SendPart(FunctionParameters)
+
+    URL = FunctionParameters["HTTP_URL"];
+    URL = URL + "/put";
+
+    ChunkSize = 524288;
+    Data      = GetBinaryDataFromString("Some data for sending");
+
+    // Sending only "data for"
+    StartPosition = 5;
+    Bytes = 8;
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Data)
+        .SendPart(StartPosition, Bytes) // <---
+        .ReturnResponseAsJSONObject();
+
+    // END
+
+    Process(Result, "HTTPClient", "SendPart");
 
 EndProcedure
 
