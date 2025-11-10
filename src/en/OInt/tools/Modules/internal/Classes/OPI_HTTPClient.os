@@ -1328,7 +1328,6 @@ Function SendDataInParts(Val ChunkSize = 5242880, Val Method = "PUT") Export
             OPI_Tools.ProgressInformation(RequestBodyStream.CurrentPosition(), TotalSize, "MB", MByte);
 
             RunGarbageCollection();
-            FreeObject(CurrentData);
 
         EndDo;
 
@@ -2264,7 +2263,6 @@ Procedure WriteBinaryData(DataWriter, Val BinaryData)
 
         DataWriter.Write(CurrentData);
 
-        FreeObject(CurrentData);
         RunGarbageCollection();
 
         CurrentPosition = CurrentPosition + CurrentSize;
