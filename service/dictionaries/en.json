@@ -11142,5 +11142,8 @@
 "Перечень необходимых данных в виде структуры содержится в функции *ПолучитьСтандартныеПараметры()*. Вы можете указывать значения параметров прямо в ней или же передавать их структурой при вызове любых других методов библиотеки в качестве необязательного параметра *Параметры* (последний во всех методах билиотеки). В последнем случае стандартные параметры будут перезаписаны по ключам теми, которые переданы при вызове метода. Перезаписаны будут только совпадающие по ключам данные. Если какой то параметр есть в наборе стандартных, но не был передан при вызове метода, то он сохранит стандартное значение": "The list of necessary data in the form of a structure is contained in the function *GetStandardParameters()*. You can specify parameter values directly within it or pass them as a structure when calling any other library methods as an optional parameter *Parameters* (the last one in all library methods). In the latter case, the standard parameters will be overwritten by the ones passed during the method call. Only the data with matching keys will be overwritten. If a parameter exists in the standard set but was not passed during the method call, it will retain its default value",
 "ЧислоБайт": "Bytes",
 "НачальнаяПозиция": "StartPosition",
-"Отправляем только \"data for": "Sending only \"data for"
+"Отправляем только \"data for": "Sending only \"data for",
+"Поток чтения двоичных данных тела": "Reading stream for body binary data",
+"ЗапросПотокЧтенияТела": "RequestReadBodyStream",
+"ОткрытьПотокДляЧтения": "OpenStreamForRead"
 }
