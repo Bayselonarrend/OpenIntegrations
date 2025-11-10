@@ -693,9 +693,25 @@
 
 КонецФункции
 
+Функция ЭтоCLI() Экспорт
+
+    Если ЭтоOneScript() Тогда
+
+        ЭтоCLI = Неопределено;
+        ЭтоCLI = ПолучитьПеременнуюСреды("OINT_CLI");
+        ЭтоCLI = ?(ЗначениеЗаполнено(ЭтоCLI), ЭтоCLI, "NO");
+
+        Возврат ЭтоCLI = "YES";
+
+    КонецЕсли;
+
+    Возврат Ложь;
+
+КонецФункции
+
 Процедура ИнформацияОПрогрессе(Знач Текущее, Знач Всего, Знач ЕдИзм, Знач Делитель = 1) Экспорт
 
-    Если Не ЭтоOneScript() Тогда
+    Если Не ЭтоCLI() Тогда
         Возврат;
     КонецЕсли;
 
@@ -848,7 +864,7 @@
 
 КонецПроцедуры
 
-Процедура УдалитьФайлВПопытке(Знач Путь, Знач ТекстСообщения) Экспорт
+Процедура УдалитьФайлВПопытке(Знач Путь, Знач ТекстСообщения = "Не удалось удалить файл") Экспорт
 
     Попытка
         УдалитьФайлы(Путь);
@@ -1312,6 +1328,10 @@ Function IsOneScript() Export
 	Return ЭтоOneScript();
 EndFunction
 
+Function IsCLI() Export
+	Return ЭтоCLI();
+EndFunction
+
 Procedure ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1) Export
 	ИнформацияОПрогрессе(Current, Total, Unit, Divider);
 EndProcedure
@@ -1340,7 +1360,7 @@ Procedure StreamToStart(CurrentStream) Export
 	ПотокВНачало(CurrentStream);
 EndProcedure
 
-Procedure RemoveFileWithTry(Val Path, Val MessageText) Export
+Procedure RemoveFileWithTry(Val Path, Val MessageText = "Failed to delete file") Export
 	УдалитьФайлВПопытке(Path, MessageText);
 EndProcedure
 

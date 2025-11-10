@@ -706,7 +706,9 @@ Procedure YDisk_UploadDeleteFile() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Big"             , TestParameters);
 
+    YandexDisk_UploadFileInParts(TestParameters);
     YandexDisk_UploadFile(TestParameters);
 
 EndProcedure
@@ -5969,6 +5971,47 @@ Procedure YandexDisk_CancelObjectPublication(FunctionParameters)
 
 EndProcedure
 
+Procedure YandexDisk_UploadFileInParts(FunctionParameters)
+
+    Path = "/big.zip";
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    File  = FunctionParameters["Big"]; // URL, Binary or File path
+
+    ChunkSize = 67108864;
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path", Path);
+    Options.Insert("file", File);
+    Options.Insert("psize", ChunkSize);
+    Options.Insert("rewrite", Истина);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "UploadFileInParts", Options);
+
+    // END
+
+    Process(Result, "YandexDisk", "UploadFileInParts", , File);
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path", Path);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DownloadFile", Options);
+
+    Process(Result, "YandexDisk", "UploadFileInParts", "Downloading", File);
+
+    Options = New Structure;
+    Options.Insert("token", Token);
+    Options.Insert("path", Path);
+    Options.Insert("can", Ложь);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("yadisk", "DeleteObject", Options);
+
+    Process(Result, "YandexDisk", "UploadFileInParts", "Deletion");
+
+EndProcedure
+
 #EndRegion
 
 #Region Viber
@@ -6935,9 +6978,9 @@ EndProcedure
 
 Procedure GoogleDrive_UploadFile(FunctionParameters)
 
-    Token     = FunctionParameters["Google_Token"];
-    Image     = FunctionParameters["Picture"];
+    Token  = FunctionParameters["Google_Token"];
     Directory = FunctionParameters["GD_Catalog"];
+    Image  = FunctionParameters["Picture"]; // URL, Binary Data or File path
 
     Clear       = False;
     Options = New Structure;
@@ -6971,6 +7014,14 @@ Procedure GoogleDrive_UploadFile(FunctionParameters)
         Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "UploadFile", Options);
 
         Process(Result, "GoogleDrive", "UploadFile", "Big", FunctionParameters, Description);
+
+        Options = New Structure;
+        Options.Insert("token", Token);
+        Options.Insert("object", Result);
+
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "DownloadFile", Options);
+
+        Process(Result, "GoogleDrive", "UploadFile", "Check", FunctionParameters, Description);
 
     EndIf;
 

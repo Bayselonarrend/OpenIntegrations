@@ -693,9 +693,25 @@ Function IsOneScript() Export
 
 EndFunction
 
+Function IsCLI() Export
+
+    If IsOneScript() Then
+
+        IsCLI          = Undefined;
+        // !OInt IsCLI = GetEnvironmentVariable("OINT_CLI");
+        IsCLI          = ?(ValueIsFilled(IsCLI), IsCLI, "NO");
+
+        Return IsCLI = "YES";
+
+    EndIf;
+
+    Return False;
+
+EndFunction
+
 Procedure ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1) Export
 
-    If Not IsOneScript() Then
+    If Not IsCLI() Then
         Return;
     EndIf;
 
@@ -848,7 +864,7 @@ Procedure StreamToStart(CurrentStream) Export
 
 EndProcedure
 
-Procedure RemoveFileWithTry(Val Path, Val MessageText) Export
+Procedure RemoveFileWithTry(Val Path, Val MessageText = "Failed to delete file") Export
 
     Try
         DeleteFiles(Path);

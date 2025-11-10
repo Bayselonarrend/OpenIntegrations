@@ -261,6 +261,40 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library   = "yadisk";
     NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "GetFileUploadLink";
+    NewLine.SearchMethod  = "GETFILEUPLOADLINK";
+    NewLine.Parameter     = "--token";
+    NewLine.ParameterTrim = "-t";
+    NewLine.Description     = "Token";
+    NewLine.Region      = "File and folder management";
+    NewLine.MethodDescription   = "Gets a link for manual file upload to Disk";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "GetFileUploadLink";
+    NewLine.SearchMethod  = "GETFILEUPLOADLINK";
+    NewLine.Parameter     = "--path";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Path for saving the file to disk";
+    NewLine.Region      = "File and folder management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "GetFileUploadLink";
+    NewLine.SearchMethod  = "GETFILEUPLOADLINK";
+    NewLine.Parameter     = "--rewrite";
+    NewLine.ParameterTrim = "-r";
+    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val. - False)";
+    NewLine.Region      = "File and folder management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
     NewLine.Method        = "DownloadFile";
     NewLine.SearchMethod  = "DOWNLOADFILE";
     NewLine.Parameter     = "--token";
@@ -435,6 +469,62 @@ Function GetComposition() Export
     NewLine.Module       = "OPI_YandexDisk";
     NewLine.Method        = "UploadFile";
     NewLine.SearchMethod  = "UPLOADFILE";
+    NewLine.Parameter     = "--rewrite";
+    NewLine.ParameterTrim = "-r";
+    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val. - False)";
+    NewLine.Region      = "File and folder management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "UploadFileInParts";
+    NewLine.SearchMethod  = "UPLOADFILEINPARTS";
+    NewLine.Parameter     = "--token";
+    NewLine.ParameterTrim = "-t";
+    NewLine.Description     = "Token";
+    NewLine.Region      = "File and folder management";
+    NewLine.MethodDescription   = "Uploads a file to disk at the specified path in parts";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "UploadFileInParts";
+    NewLine.SearchMethod  = "UPLOADFILEINPARTS";
+    NewLine.Parameter     = "--path";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Path for saving the file to disk";
+    NewLine.Region      = "File and folder management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "UploadFileInParts";
+    NewLine.SearchMethod  = "UPLOADFILEINPARTS";
+    NewLine.Parameter     = "--file";
+    NewLine.ParameterTrim = "-f";
+    NewLine.Description     = "File for upload";
+    NewLine.Region      = "File and folder management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "UploadFileInParts";
+    NewLine.SearchMethod  = "UPLOADFILEINPARTS";
+    NewLine.Parameter     = "--psize";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Part size when uploading (optional, def. val. - 268435456)";
+    NewLine.Region      = "File and folder management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "yadisk";
+    NewLine.Module       = "OPI_YandexDisk";
+    NewLine.Method        = "UploadFileInParts";
+    NewLine.SearchMethod  = "UPLOADFILEINPARTS";
     NewLine.Parameter     = "--rewrite";
     NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val. - False)";
