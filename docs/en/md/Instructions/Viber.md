@@ -1,63 +1,45 @@
 ﻿---
 id: Viber
 sidebar_class_name: Viber
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Viber]
 ---
 
 <img src={require('../../static/img/APIs/Viber.png').default} width='64px' />
 
 # Viber
 
-This section is dedicated to the library for working with Viber API. On this page, all the steps necessary to start working are described
+This section covers the library for working with Viber API in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 :::warning
-Starting from February 5, 2024, this method of creating bots is no longer valid: Rakuten has canceled the ability to create bots for free, and now working with the API requires verification under a commercial model. More details [here](https://help.viber.com/hc/en-us/articles/15247629658525-Bot-commercial-model)
+As of 02/05/2024, this method of creating bots is no longer valid: Rakuten has discontinued the ability to create bots for free, and now working with the API requires verification under a commercial model. Learn more [here](https://help.viber.com/hc/en-us/articles/15247629658525-Bot-commercial-model)
 :::
 
 :::caution
-The methods of this library have not been tested since 10.01.2025
+Methods in this library have not been tested since 01/10/2025
 :::
 
-## Getting started
+### Getting Started
 
-For Viber, there are two REST APIs: one for working with channels and the other for chatbots. In both cases, the main parameters are **Token** and **UserID**
+Viber has two REST API variants: for working with channels and for chat bots. In both cases, the main parameters for operation are **Token** and **UserID**.
 
-- If you need to manage a channel:
-	1. Open the Viber app and create a new channel
-	
-	![BF](../../static/img/Docs/Viber/1.png)
-	
-	2. After creation, go to the channel settings -> For developers, and copy the **Token**
-	
-	![BF](../../static/img/Docs/Viber/2.png)
-	
-	3. Set webhook (see Set webhook)
-	4. **UserID** - your ID (channel administrator). See Get Channel Information for details
-	
+### Channel Management
+
+1. Open the Viber application and create a new channel
+2. After creation, go to channel settings -> For developers, and copy the channel **Token**
+3. Set up a Webhook to receive updates. See [Set webhook](/docs/Viber/Settings-and-information/Set-webhook)
+4. **UserID** - your ID or the channel administrator's ID. See [Get channel information](/docs/Viber/Settings-and-information/Get-channel-information)
+
  <br/>
 
-- If you need a chatbot:
-	1. Go to the link [https://partners.viber.com/account/create-bot-account](https://partners.viber.com/account/create-bot-account) and authorize yourself with your phone number linked to Viber
-	
-	![BF](../../static/img/Docs/Viber/3.png)
-	
-	2. Select the option to create a new bot
-	
-	![BF](../../static/img/Docs/Viber/4.png)
-	
-	3. In the bot creation menu, fill in all the required fields
-	
-	![BF](../../static/img/Docs/Viber/5.png)
-	
-	4. Copy the **Token**
-	
-	![BF](../../static/img/Docs/Viber/6.png)
-	
-	4. To find your new bot, you can scan the QR code on the creation page or in the settings (chat bots section) within the Viber app. 
-	
-	![BF](../../static/img/Docs/Viber/7.png)
-	
-	5. You cannot start a conversation with the bot right now. First, you need to set up a webhook. See Set Webhook
-	6. After launch, the **User ID** will be the ID of the specific person engaging with the bot. You can obtain it from processing incoming messages via Webhook
+### Chat Bot Management
 
+1. Go to the [Viber Partner Cabinet](https://partners.viber.com/account/create-bot-account) and log in with your phone number linked to Viber
+2. Select the option to create a new bot
+3. Fill in all required fields in the bot creation menu
+4. Copy the **Token**
+5. Get information about your bot by scanning the QR code on the creation page or in the settings (bots section) in the Viber application
+6. Set up a Webhook to receive updates. See [Set webhook](/docs/Viber/Settings-and-information/Set-webhook)
 
-	**Important**: The ID of the same user in chat and channel is different. You cannot use the ID obtained from a message to the bot to invoke channel management methods and vice versa
+When working with a chat bot, the **UserID** will be the ID of the specific person you're communicating with. This can be obtained when processing incoming messages via Webhook.
+
+**Important:** The ID of the same user for chat and channel have different values. You cannot use an ID obtained from a bot message to call channel management methods and vice versa.
