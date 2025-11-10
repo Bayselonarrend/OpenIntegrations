@@ -8,7 +8,7 @@ keywords: [1C, 1C:Enterprise, 1C:Enterprise 8.3, API, Integration, Services, Dat
 
 # SFTP
 
-This section is dedicated to the library for working with SFTP. On this page, all the steps necessary to start working are described
+This section covers the library for working with SFTP protocol in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 <div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
 

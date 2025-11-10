@@ -14,90 +14,58 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 Если вы уже используете ОПИ для работы с другими сервисами Google Workspaсe и выполняли стартовую настройку, то пункты **Создание проекта** и **Настройка OAuth** можно пропустить. Необходимо лишь **включить сервис Google Sheets** в своем проекте и **заново получить токен** (последние два пункта инструкции). 
 :::
 
-## Начало работы
+### Начало работы
 
-<hr/>
+Для начала работы необходимо создать аккаунт и новый проект на [главной странице консоли Google Cloud](https://console.cloud.google.com/), после чего подключить сервис Sheets на [его странице в Marketplace](https://console.cloud.google.com/marketplace/product/google/sheets.googleapis.com) 
 
-### Создание проекта
+Далее необходимо получить токен доступа для авторизации при вызове функций библиотеки. Сделать это можно одним из двух способов:
 
-1. Перейдите на [главную страницу Google Cloud](https://console.cloud.google.com) и создайте проект
+### Авторизация через Service Account
 
-![BF](../../static/img/Docs/GoogleCalendar/1.png)
+Получить токен доступа можно при помощи секретного ключа Service Account. Для этого необходимо:
 
-2. Выберите созданный проект и в боковом меню перейдите APIs and Services -> OAuth consent screen
+1. Выбрать проект и в боковом меню перейти в раздел *IAM & Admin -> Service Accounts*
+2. Нажать *Create service account* и заполнить необходимые поля для создания нового аккаунта
+3. В списке аккаунтов найти созданный и нажать *Actions* (три точки) в правой части записи
+4. Выбрать пункт *Manage keys*
+5. Нажать *Add key -> Create new key*
+6. Выбрать *JSON* и скачать данные полученного ключа
 
-![BF](../../static/img/Docs/GoogleCalendar/2.png)
+Далее полученный JSON файл необходимо передать (как коллекцию, путь к файлу или двоичные данные) в функцию `ПолучитьТокенServiceАккаунта`. Также при вызове этой функции можно указать доступы и время жизни полученного токена. По истечении времени жизни, новый токен может быть получен повторным вызовом функции `ПолучитьТокенServiceАккаунта`
 
-3. Выберите пункт External
+### OAuth авторизация
 
-![BF](../../static/img/Docs/GoogleCalendar/3.png)
+OAuth авторизация позволяет получать временный обновляемый токен доступа для конкретного пользователя Google через страницу авторизации. Для активации OAuth авторизации в проекте необходимо выполнить следуюшие действия:
 
-4. Заполните поля App name, User support email и Email addresses (все поля со звездочками)
+1. Выберите проект и в боковом меню перейдите в раздел *APIs and Services -> OAuth consent screen*
+2. Выберите пункт *External*
+3. Заполните необходимую информацию в предложенных полях
+4. Нажмите *Save and continue* по окончанию процесса настройки
+5. Нажмите *Publish App*
+6. В боковом меню выберите пункт *Credentials -> Create Credentials -> OAuth client ID*
+7. Введите имя и выберите *Application type - Desktop app*
+8. Сохраните **ClientID** и **Client Secret**
 
-![BF](../../static/img/Docs/GoogleCalendar/4.png)
+После получения клиентского ID, необходимо получить URL для авторизации. Сделать это можно передав ClientID в функцию `СформироватьСсылкуПолученияКода`. Полученную в результате выполнения функцию ссылку необходимо открыть в барузере, авторизоваться со своим аккаунтом Google, после чего быстро передать код доступа из URL (текст в адресной строке после `code=`) в функцию `ПолучитьТокенПоКоду` 
 
-5. Нажимайте далее и Save and continue на последней вкладке
-
-![BF](../../static/img/Docs/GoogleCalendar/5.png)
-
-6. Нажмите Publish App
-
-![BF](../../static/img/Docs/GoogleCalendar/6.png)
-
-<hr/>
-
-### Настройка OAuth
-
-1. В боковом меню выберите пункт Credentials -> Create Credentials -> OAuth client ID
-
-![BF](../../static/img/Docs/GoogleCalendar/7.png)
-
-2. Введите имя и выберите Application type - Desktop app
-
-![BF](../../static/img/Docs/GoogleCalendar/8.png)
-
-3. Сохраните ClientID и Client Secret
-
-![BF](../../static/img/Docs/GoogleCalendar/9.png)
-
-<hr/>
-
-### Включение сервиса Google Sheets
-
-1. Перейдите на [страницу Sheets в Marketplace](https://console.cloud.google.com/marketplace/product/google/sheets.googleapis.com) 
-
-2. Нажмите Enable
-
-![BF](../../static/img/Docs/GoogleSheets/1.png)
-
-<hr/>
-
-### Получение Токена
-
-1. Передайте ClientID в функцию OPI_GoogleWorkspace.СформироватьСсылкуПолученияКода() с булево параметрами используемых вами сервисов. Результатом функции будет URL, который необходимо открыть в браузере. Авторизуйтесь при помощи своего аккаунта Google
-
-![BF](../../static/img/Docs/GoogleCalendar/10.png)
-
-2. Скопируйте код из URL после авторизации
-
-![BF](../../static/img/Docs/GoogleCalendar/11.png)
 
 :::important
-**Время жизни кода крайне мало.** После его получения нужно выполнить шаг 3 максимально быстро. Лучше всего заранее подготовить обработку с полем для ввода и кнопкой (в 1С), либо же использовать CLI версию ОПИ. В случае истечения срока жизни кода до выполнения пункта 3, будет получена ошибка `invalid_grant`
+**Время жизни кода крайне мало.** После перехода по ссылке из функции `СформироватьСсылкуПолученияКода` и авторизации со своим аккаунтом Google, необходимо максимально быстро передать его в функцию `ПолучитьТокенПоКоду`. Лучше всего заранее подготовить обработку с полем для ввода и кнопкой (в 1С), либо же использовать CLI версию ОПИ. В случае истечения срока жизни кода до выполнения функции `ПолучитьТокенПоКоду`, будет получена ошибка `invalid_grant`
 :::
 
-3. Используйте полученный код, ClientID и Client Secret для вызова функции OPI_GoogleWorkspace.ПолучитьТокенПоКоду(ClientID, ClientSecret, Code)
+В результате функции будет структура, содержащая `access_token` и `refresh_token`: первый служит для использования при вызове остальных функций библиотеки, а второй - для получения нового `access_token` по истечению срока его действия (при помощи функции `ОбновитьТокен`)
 
-```json title="Результат функции ПолучитьТокенПоКоду(), если перевести его в JSON"
+`refresh_token` не изменяется при получении нового `access_token` и может быть использован многократно
+
+```json title="Результат функции ПолучитьТокенПоКоду в виде JSON"
 
 {
  "token_type": "Bearer",
  "refresh_token": "1//09au6OES3JN9oCgYIARAAGAkSNwF-L9Ir1B7uawfwafT1wE0FKO519Xj6JxawfawfyjMyJ_QlUZYLHZqw",
- "scope": "https://www.googleapis.com/auth/...",
+ "scope": "https://www.googleapis.com/auth/sheets",
  "expires_in": 3599,
  "access_token": "ya29.a0AfB_byA344tXkIawdawdwadadhyZQV8bSZn_snNXtY2HLb7l71awdawdawdad-ASgpzyOSWIvEmPruhUa_1yCCq6jvoD0r_q-fNEsARrH8zpJ3c6LNGWvwdg8CXsSxYaCgYKAWkSawfwafawfrCK0EP5kZY_A0171"
 }
 
 ```
 
-4. Используйте **access_token** для передачи в качестве параметра Токен при вызове функций библиотеки, а refresh_token - для получения нового access_token (функция OPI_GoogleWorkspace.ОбновитьТокен(ClientID, ClientSecret, RefreshToken)), когда время жизни старого истечет. При обновлении токена refresh_token не обновляется - вы можете использовать его один и тот же для получения нового access_token каждый раз.

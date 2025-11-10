@@ -8,7 +8,7 @@ sidebar_class_name: HTTP
 # HTTP (Client)
 
 
-This section is dedicated to the library for working with the HTTP client. On this page, all the steps necessary to start working are described
+This section covers the library for working with HTTP(s) protocol in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 ## Getting started
 
