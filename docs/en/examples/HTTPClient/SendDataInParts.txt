@@ -1,0 +1,11 @@
+﻿    URL = "https://bin.openintegrations.dev";
+    URL = URL + "/put";
+
+    ChunkSize = 524288;
+    Image     = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(Image)
+        .SendDataInParts(ChunkSize) // <---
+        .ReturnResponseAsJSONObject();

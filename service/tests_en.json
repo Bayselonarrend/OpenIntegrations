@@ -5670,6 +5670,16 @@
 "variant": ""
 },
 {
+"lib": "HTTPClient",
+"name": "SendDataInParts",
+"variant": ""
+},
+{
+"lib": "HTTPClient",
+"name": "SendPart",
+"variant": ""
+},
+{
 "lib": "OpenAI",
 "name": "GetResponse",
 "variant": ""
