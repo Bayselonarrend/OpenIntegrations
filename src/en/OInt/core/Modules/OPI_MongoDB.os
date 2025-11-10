@@ -402,9 +402,9 @@ EndFunction
 
 Function ProcessCollectionForOperation(Val Data)
 
-    ProcessedData = Type(TypeOf(Data));
+    ProcessedData = New(TypeOf(Data));
 
-    If OPI_Tools.ThisIsCollection(ProcessedData) Then
+    If OPI_Tools.ThisIsCollection(ProcessedData, True) Then
 
         For Each DataPart In Data Do
 

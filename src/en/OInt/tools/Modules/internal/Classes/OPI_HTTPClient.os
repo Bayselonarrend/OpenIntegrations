@@ -1311,7 +1311,7 @@ Function SendDataInParts(Val ChunkSize = 5242880, Val Method = "PUT") Export
         Repeats   = 0;
         TotalSize = RequestBody.Size();
 
-        RequestBodyStream       = RequestBody.OpenStreamForRead();
+        RequestBodyStream = RequestBody.OpenStreamForRead();
         RequestDataReader = New DataReader(RequestBodyStream);
 
         KBytes = 1024;
@@ -1362,8 +1362,8 @@ Function SendPart(Val StartPosition, Val ByteCount, Val Method = "PUT") Export
 
         OPI_TypeConversion.GetLine(Method);
 
-        RequestReadBodyStream   = ?(RequestReadBodyStream = Undefined, RequestBody.OpenStreamForRead(), RequestReadBodyStream);
-        RequestDataReader = ?(RequestDataReader = Undefined, New DataReader(RequestReadBodyStream), RequestDataReader);
+        RequestReadBodyStream = ?(RequestReadBodyStream = Undefined, RequestBody.OpenStreamForRead(), RequestReadBodyStream);
+        RequestDataReader     = ?(RequestDataReader = Undefined, New DataReader(RequestReadBodyStream), RequestDataReader);
 
         If Not RequestReadBodyStream.CurrentPosition() = StartPosition Then
             RequestReadBodyStream.Seek(StartPosition, StreamPosition.Start);
@@ -1660,11 +1660,11 @@ Function SetBodyFromBinaryData(Val Value)
 
     OPI_TypeConversion.GetBinaryData(Value, True, False);
 
-    RequestBody        = Value;
-    RequestBodyStream  = Undefined;
+    RequestBody           = Value;
+    RequestBodyStream     = Undefined;
     RequestReadBodyStream = Undefined;
-    RequestDataReader  = Undefined;
-    RequestDataWriter  = Undefined;
+    RequestDataReader     = Undefined;
+    RequestDataWriter     = Undefined;
 
     Return ЭтотОбъект;
 
@@ -1674,11 +1674,11 @@ Function SetBodyFromString(Val Value, Val WriteBOM = False)
 
     If TypeOf(Value) = Type("BinaryData") Then
 
-        RequestBody       = Value;
-        RequestBodyStream = Undefined;
-        RequestReadBodyStream   = Undefined;
-        RequestDataReader = Undefined;
-        RequestDataWriter = Undefined;
+        RequestBody           = Value;
+        RequestBodyStream     = Undefined;
+        RequestReadBodyStream = Undefined;
+        RequestDataReader     = Undefined;
+        RequestDataWriter     = Undefined;
 
     Else
 
@@ -1687,11 +1687,11 @@ Function SetBodyFromString(Val Value, Val WriteBOM = False)
         OPI_TypeConversion.GetLine(Value);
         OPI_TypeConversion.GetBoolean(WriteBOM);
 
-        RequestBody       = GetBinaryDataFromString(Value, Encoding, WriteBOM);
-        RequestBodyStream = Undefined;
-        RequestReadBodyStream   = Undefined;
-        RequestDataReader = Undefined;
-        RequestDataWriter = Undefined;
+        RequestBody           = GetBinaryDataFromString(Value, Encoding, WriteBOM);
+        RequestBodyStream     = Undefined;
+        RequestReadBodyStream = Undefined;
+        RequestDataReader     = Undefined;
+        RequestDataWriter     = Undefined;
 
     EndIf;
 
