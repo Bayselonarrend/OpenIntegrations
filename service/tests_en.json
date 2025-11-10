@@ -715,6 +715,21 @@
 "variant": ""
 },
 {
+"lib": "YandexDisk",
+"name": "UploadFileInParts",
+"variant": ""
+},
+{
+"lib": "YandexDisk",
+"name": "UploadFileInParts",
+"variant": "Downloading"
+},
+{
+"lib": "YandexDisk",
+"name": "UploadFileInParts",
+"variant": "Deletion"
+},
+{
 "lib": "Viber",
 "name": "SetWebhook",
 "variant": ""

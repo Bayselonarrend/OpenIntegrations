@@ -705,7 +705,9 @@ Procedure YDisk_UploadDeleteFile() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Big"             , TestParameters);
 
+    YandexDisk_UploadFileInParts(TestParameters);
     YandexDisk_UploadFile(TestParameters);
 
 EndProcedure
@@ -5245,6 +5247,31 @@ Procedure YandexDisk_CancelObjectPublication(FunctionParameters)
 
 EndProcedure
 
+Procedure YandexDisk_UploadFileInParts(FunctionParameters)
+
+    Path = "/big.zip";
+
+    Token = FunctionParameters["YandexDisk_Token"];
+    File  = FunctionParameters["Big"]; // URL, Binary or File path
+
+    ChunkSize = 67108864;
+
+    Result = OPI_YandexDisk.UploadFileInParts(Token, Path, File, ChunkSize, True);
+
+    // END
+
+    Process(Result, "YandexDisk", "UploadFileInParts", , File);
+
+    Result = OPI_YandexDisk.DownloadFile(Token, Path);
+
+    Process(Result, "YandexDisk", "UploadFileInParts", "Downloading", File);
+
+    Result = OPI_YandexDisk.DeleteObject(Token, Path, False);
+
+    Process(Result, "YandexDisk", "UploadFileInParts", "Deletion");
+
+EndProcedure
+
 #EndRegion
 
 #Region Viber
@@ -5971,9 +5998,9 @@ EndProcedure
 
 Procedure GoogleDrive_UploadFile(FunctionParameters)
 
-    Token     = FunctionParameters["Google_Token"];
-    Image     = FunctionParameters["Picture"];
+    Token  = FunctionParameters["Google_Token"];
     Directory = FunctionParameters["GD_Catalog"];
+    Image  = FunctionParameters["Picture"]; // URL, Binary Data or File path
 
     Clear       = False;
     Description = OPI_GoogleDrive.GetFileDescription(Clear);
@@ -5994,6 +6021,10 @@ Procedure GoogleDrive_UploadFile(FunctionParameters)
         Result = OPI_GoogleDrive.UploadFile(Token, BigFile, Description);
 
         Process(Result, "GoogleDrive", "UploadFile", "Big", FunctionParameters, Description);
+
+        Result = OPI_GoogleDrive.DownloadFile(Token, Result["id"]);
+
+        Process(Result, "GoogleDrive", "UploadFile", "Check", FunctionParameters, Description);
 
     EndIf;
 

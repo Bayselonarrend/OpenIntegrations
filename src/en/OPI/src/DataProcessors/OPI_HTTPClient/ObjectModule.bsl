@@ -59,6 +59,7 @@ Var Log; // Array of messages about actions within the processing
 Var Request; // HTTPRequest object
 Var Connection; // HTTPConnection object
 Var Settings; // Additional settings structure
+Var Repeats; // Number of retries on error in complex requests
 
 Var RequestURL; // Request URL
 Var RequestServer; // Server from the request URL
@@ -73,6 +74,7 @@ Var RequestMethod; // HTTP method used
 Var RequestURLParams; // URL parameters structure
 Var RequestBody; // Request body data
 Var RequestBodyCollection; // Data of body in view of collection, if maybe
+Var RequestBodyCurrentSend; // Part of the common body data for the current send
 Var RequestHeaders; // Request headers mapping
 Var RequestUser; // User for basic authorization
 Var RequestPassword; // Password for basic authorization
@@ -82,8 +84,10 @@ Var RequestOutputFile; // Path to the file for saving the request result
 Var RequestBodyFile; // Path to the file with the request body
 Var RequestBodyStream; // Request body stream
 Var RequestDataWriter; // Request body data writing
+Var RequestDataReader; // Reading request body data
 Var RequestDataType; // MIME type for Content-Type
 Var RequestTypeSetManualy; // Flag to disable automatic Content-Type detection
+Var RequestPartSize; // Part size for partial upload
 Var BodyTemporaryFile; // Flag to delete the body file if it was created automatically
 
 // Authorization
@@ -95,7 +99,6 @@ Var AuthData; // Credentials structure
 
 Var Response; // HTTPResponse object
 Var ResponseStatusCode; // Response status code
-Var ResponseBody; // Response body data
 Var ResponseHeaders; // Response headers mapping
 
 // Multipart
@@ -136,6 +139,8 @@ Function Initialize(Val URL = "") Export
     RequestBodyCollection = New Structure;
     RequestHeaders        = New Map;
     RequestTimeout        = 3600;
+    RequestPartSize          = 5242880;
+    Repeats                  = 0;
 
     RequestTypeSetManualy = False;
 
@@ -1245,7 +1250,6 @@ Function ProcessRequest(Val Method, Val Start = True) Export
         AddLog("ProcessRequest: place the body in the HTTPRequest object");
         If SetRequestBody().Error Then Return ThisObject; EndIf;
 
-        GuaranteeBodyCollection();
         CompleteHeaders();
 
         If Start Then
@@ -1277,6 +1281,120 @@ Function ExecuteRequest(Forced = False) Export
         AddLog("ExecuteRequest: executing");
 
         Return ExecuteMethod(0, Forced);
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Send data in parts !NOCLI
+// Sends the body in multiple requests with the Content-Range header
+//
+// Parameters:
+// ChunkSize - Number - Size of one part for sending - part
+// Method - String - Request HTTP method - method
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function SendDataInParts(Val ChunkSize = 5242880, Val Method = "PUT") Export
+
+    Try
+
+        If StopExecution() Then Return ThisObject; EndIf;
+
+        If TypeOf(RequestBody) <> Type("BinaryData") Then
+            Raise "Body not set";
+        EndIf;
+
+        Repeats      = 0;
+        TotalSize = RequestBody.Size();
+
+        RequestDataReader = New DataReader(RequestBody);
+        RequestBodyStream = RequestDataReader.SourceStream();
+
+        KBytes = 1024;
+        MByte  = KBytes * KBytes;
+
+        While RequestBodyStream.CurrentPosition() < TotalSize Do
+
+            SendPart(RequestBodyStream.CurrentPosition(), ChunkSize, Method);
+            Check = CheckPartUpload();
+
+            If Check <> Undefined Then
+                Return Check;
+            EndIf;
+
+            OPI_Tools.ProgressInformation(RequestBodyStream.CurrentPosition(), TotalSize, "MB", MByte);
+
+            // !OInt RunGarbageCollection();
+            // !OInt FreeObject(CurrentData);
+
+        EndDo;
+
+        OPI_Tools.ProgressInformation(TotalSize, TotalSize, "MB", MByte);
+
+        Return ThisObject;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Send part !NOCLI
+// Sends a request with the specified part of the body and the Content-Range header
+//
+// Parameters:
+// StartPosition - Number - Start position in request body - start
+// ByteCount - Number - Number of bytes from the specified start position for sending - bytes
+// Method - String - Request HTTP method - method
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function SendPart(Val StartPosition, Val ByteCount, Val Method = "PUT") Export
+
+    Try
+
+        If StopExecution() Then Return ThisObject; EndIf;
+
+        If TypeOf(RequestBody) <> Type("BinaryData") Then
+            Raise "Body not set";
+        EndIf;
+
+        OPI_TypeConversion.GetLine(Method);
+
+        RequestDataReader = ?(RequestDataReader = Undefined, New DataReader(RequestBody), RequestDataReader);
+        RequestBodyStream = ?(RequestBodyStream = Undefined, RequestDataReader.SourceStream(), RequestBodyStream);
+
+        RequestBodyStream = New MemoryStream;
+        RequestBodyStream.Seek(StartPosition, PositionInStream.Start);
+
+        Result = RequestDataReader.Read(ByteCount);
+
+        RequestBodyCurrentSend = Result.GetBinaryData();
+        CurrentSize            = RequestBodyCurrentSend.Size();
+
+        If Not ValueIsFilled(RequestBodyCurrentSend) Or CurrentSize = 0 Then
+            Return ThisObject;
+        EndIf;
+
+        EndPosition = StartPosition + CurrentSize - 1;
+
+        StreamHeader = "bytes "
+            + OPI_Tools.NumberToString(StartPosition)
+            + "-"
+            + OPI_Tools.NumberToString(EndPosition)
+            + "/"
+            + OPI_Tools.NumberToString(RequestBody.Size());
+
+        AdditionalHeaders = New Map;
+        AdditionalHeaders.Insert("Content-Length", OPI_Tools.NumberToString(CurrentSize));
+        AdditionalHeaders.Insert("Content-Range" , StreamHeader);
+
+        SetHeaders(AdditionalHeaders).ProcessRequest(Method, True);
+
+        Return ThisObject;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -1542,7 +1660,11 @@ EndFunction
 Function SetBodyFromBinaryData(Val Value)
 
     OPI_TypeConversion.GetBinaryData(Value, True, False);
-    RequestBody = Value;
+
+    RequestBody    = Value;
+    RequestBodyStream = Undefined;
+    RequestDataReader = Undefined;
+    RequestDataWriter = Undefined;
 
     Return ThisObject;
 
@@ -1553,6 +1675,9 @@ Function SetBodyFromString(Val Value, Val WriteBOM = False)
     If TypeOf(Value) = Type("BinaryData") Then
 
         RequestBody = Value;
+        RequestBodyStream = Undefined;
+        RequestDataReader = Undefined;
+        RequestDataWriter = Undefined;
 
     Else
 
@@ -1562,6 +1687,9 @@ Function SetBodyFromString(Val Value, Val WriteBOM = False)
         OPI_TypeConversion.GetBoolean(WriteBOM);
 
         RequestBody = GetBinaryDataFromString(Value, Encoding, WriteBOM);
+        RequestBodyStream = Undefined;
+        RequestDataReader = Undefined;
+        RequestDataWriter = Undefined;
 
     EndIf;
 
@@ -1881,8 +2009,10 @@ Function SetRequestBody()
         Request.SetBodyFileName(RequestBodyFile);
     Else
 
+        RequestBodyCurrent = ?(RequestBodyCurrentSend = Undefined, RequestBody, RequestBodyCurrentSend);
+
         If TypeOf(RequestBody) = Type("BinaryData") Then
-            Request.SetBodyFromBinaryData(RequestBody);
+            Request.SetBodyFromBinaryData(RequestBodyCurrent);
         EndIf;
 
     EndIf;
@@ -1923,6 +2053,9 @@ Function ExecuteMethod(Val RedirectCount = 0, Val Forced = False)
         ExecuteMethod(RedirectCount + 1, Forced);
 
     EndIf;
+
+    ResponseStatusCode = Response.StatusCode;
+    ResponseHeaders    = Response.Headers;
 
     Return ThisObject;
 
@@ -2018,6 +2151,50 @@ Function GetRequestBodyAsBinaryData()
     EndIf;
 
     Return Data;
+
+EndFunction
+
+Function CheckPartUpload()
+
+    SuccessCode         = 200;
+    RequestErrorCode = 400;
+    ServerErrorCode     = 500;
+
+    If ResponseStatusCode >= SuccessCode And ResponseStatusCode < RequestErrorCode Then
+
+        UploadedData = ResponseHeaders.Get("Range");
+
+        If ValueIsFilled(UploadedData) Then
+
+            UploadedData = StrReplace(UploadedData, "bytes=", "");
+            ArrayOfInformation = StrSplit(UploadedData, "-", False);
+            PartsRequired      = 2;
+
+            If ArrayOfInformation.Count() = PartsRequired Then
+                RequestBodyStream.Seek(Number(ArrayOfInformation[1]) + 1, PositionInStream.Start);
+            Else
+                RequestBodyStream.Seek(RequestBodyCurrentSend.Size(), PositionInStream.Current);
+            EndIf;
+
+        Else
+
+            RequestBodyStream.Seek(RequestBodyCurrentSend.Size(), PositionInStream.Current);
+
+        EndIf;
+
+    ElsIf ResponseStatusCode >= ServerErrorCode Then
+
+        If Repeats < 3 Then
+            Repeats = Repeats + 1;
+        Else
+            Return ThisObject;
+        EndIf;
+
+    Else
+        Return ThisObject;
+    EndIf;
+
+    Return Undefined;
 
 EndFunction
 
@@ -2626,6 +2803,8 @@ Function AddOAuthV1Header()
     If GetSetting("BodyFieldsAtOAuth") Then
 
         AddLog("AddOAuthV1Header: adding body fields to the signature string");
+
+        GuaranteeBodyCollection();
 
         For Each Field In RequestBodyCollection Do
 
