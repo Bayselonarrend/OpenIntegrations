@@ -516,7 +516,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFILEINPARTS";
     NewLine.Parameter     = "--psize";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Part size when uploading (optional, def. val. - 268435456)";
+    NewLine.Description     = "Part size when uploading (optional, def. val. - 33554432)";
     NewLine.Region      = "File and folder management";
 
 
