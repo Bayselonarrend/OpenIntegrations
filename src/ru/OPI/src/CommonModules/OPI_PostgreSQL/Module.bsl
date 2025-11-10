@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_PostgreSQL.os
+// OneScript: ./OInt/core/Modules/OPI_PostgreSQL.os
 // Lib: PostgreSQL
 // CLI: postgres
 // Keywords: postgresql, postgre sql, postgres
