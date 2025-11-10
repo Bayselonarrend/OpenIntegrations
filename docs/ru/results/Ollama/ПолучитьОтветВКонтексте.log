@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-11-08T22:49:43.517293745Z",
+ "created_at": "2025-11-10T18:42:21.862426074Z",
  "message": {
   "role": "assistant",
-  "content": "1C:Enterprise has been released several times since its original release in 2001, including the most recent version (1C:Enterprise 9) which was released in 2017. The exact release date for each version may vary depending on the country and region, as well as any licensing restrictions or customizations made by the user."
+  "content": "The first version of 1C:Enterprise was released in 1986. It has since undergone several updates and maintenance releases, with the current stable release being 2020.1. The current stable release provides a range of features and functionalities that have been refined over time to meet the needs of modern businesses. Updates typically occur quarterly or semi-annually, depending on the release cycle of 1C:Enterprise."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 10759691800,
- "load_duration": 17647871,
- "prompt_eval_count": 168,
- "prompt_eval_duration": 3072550263,
- "eval_count": 78,
- "eval_duration": 7661257708
+ "total_duration": 9603692579,
+ "load_duration": 17262259,
+ "prompt_eval_count": 169,
+ "prompt_eval_duration": 3012998662,
+ "eval_count": 99,
+ "eval_duration": 6570630035
 }
