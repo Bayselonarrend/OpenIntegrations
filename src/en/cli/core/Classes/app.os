@@ -21,6 +21,8 @@ Procedure MainHandler()
 	Debugging        = False;
 	Testing   = False;
 
+	SetEnvironmentVariable("OINT_CLI", "YES");
+
 	CurrentDirectory = CurrentScript().Path;
 	CurrentDirectory = StrReplace(CurrentDirectory, "\", "/");
 
