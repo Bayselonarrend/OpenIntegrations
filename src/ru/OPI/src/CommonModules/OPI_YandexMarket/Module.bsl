@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_YandexMarket.os
+// OneScript: ./OInt/core/Modules/OPI_YandexMarket.os
 // Lib: Yandex Market
 // CLI: yamarket
 // Depends: OPI_YandexID

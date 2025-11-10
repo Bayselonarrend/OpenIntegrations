@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/internal/Modules/internal/Modules/OPI_BuildHash.os
+// OneScript: ./OInt/tools/Modules/internal/Modules/internal/Modules/OPI_BuildHash.os
 
 // MIT License
 
