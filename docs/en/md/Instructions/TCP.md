@@ -7,7 +7,7 @@ sidebar_class_name: TCP
 
 # TCP (Client)
 
-This section is dedicated to the library for working with the TCP. On this page, all the steps necessary to start working are described
+This section covers the library for working with TCP protocol in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 <div class="theme-admonition theme-admonition-info admonition_node_modules-@docusaurus-theme-classic-lib-theme-Admonition-Layout-styles-module alert alert--info">
 
