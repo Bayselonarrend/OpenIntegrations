@@ -447,13 +447,13 @@
 Функция ЗагрузитьФайлЧастями(Знач Токен
     , Знач Путь
     , Знач Файл
-    , Знач РазмерЧасти = 268435456
+    , Знач РазмерЧасти = 33554432
     , Знач Перезаписывать = Ложь) Экспорт
 
     OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Файл);
     OPI_ПреобразованиеТипов.ПолучитьЧисло(РазмерЧасти);
 
-    РазмерЧасти = ?(ЗначениеЗаполнено(РазмерЧасти), РазмерЧасти, 268435456);
+    РазмерЧасти = ?(ЗначениеЗаполнено(РазмерЧасти), РазмерЧасти, 33554432);
 
     Ответ = ПолучитьСсылкуЗагрузкиФайла(Токен, Путь, Перезаписывать);
     URL   = Ответ.Получить("href");
@@ -794,7 +794,7 @@ Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export
 	Return ЗагрузитьФайл(Token, Path, File, Overwrite);
 EndFunction
 
-Function UploadFileInParts(Val Token, Val Path, Val File, Val ChunkSize = 268435456, Val Overwrite = False) Export
+Function UploadFileInParts(Val Token, Val Path, Val File, Val ChunkSize = 33554432, Val Overwrite = False) Export
 	Return ЗагрузитьФайлЧастями(Token, Path, File, ChunkSize, Overwrite);
 EndFunction
 

@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_MySQL.os
+﻿// OneScript: ./OInt/core/Modules/OPI_MySQL.os
 // Lib: MySQL
 // CLI: mysql
 // Keywords: mysql, my sql

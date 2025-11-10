@@ -2447,17 +2447,15 @@ Function Check_YandexDisk_UploadFileInParts(Val Result, Val Option, File = "")
 
     If Option = "Downloading" Then
 
-        OPI_TypeConversion.GetFileOnDisk(File, "zip");
-        FileObject = New File(File["Path"]);
+        OPI_TypeConversion.GetBinaryData(File);
 
         ExpectsThat(Result).ИмеетТип("BinaryData").Заполнено();
-        ExpectsThat(Result.Size()).Равно(FileObject.Size());
+        ExpectsThat(Result.Size()).Равно(File.Size());
 
-        ReadingZip = New ZipFileReader(FileObject.FullName);
-        ExpectsThat(ReadingZip.Items.Count() > 0).Равно(True);
-        ReadingZip.Close();
+        HashOrigianl = GetStringFromBinaryData(OPI_Cryptography.Hash(File, HashFunction.SHA256));
+        HashCheck    = GetStringFromBinaryData(OPI_Cryptography.Hash(Result, HashFunction.SHA256));
 
-        OPI_Tools.RemoveFileWithTry(FileObject.FullName);
+        ExpectsThat(HashCheck).Равно(HashOrigianl);
 
     ElsIf Option = "Deletion" Then
 
@@ -3181,17 +3179,15 @@ Function Check_GoogleDrive_UploadFile(Val Result, Val Option, Parameters = "", D
 
         File = Parameters["Big"];
 
-        OPI_TypeConversion.GetFileOnDisk(File, "zip");
-        FileObject = New File(File["Path"]);
+        OPI_TypeConversion.GetBinaryData(File);
 
         ExpectsThat(Result).ИмеетТип("BinaryData").Заполнено();
-        ExpectsThat(Result.Size()).Равно(FileObject.Size());
+        ExpectsThat(Result.Size()).Равно(File.Size());
 
-        ReadingZip = New ZipFileReader(FileObject.FullName);
-        ExpectsThat(ReadingZip.Items.Count() > 0).Равно(True);
-        ReadingZip.Close();
+        HashOrigianl = GetStringFromBinaryData(OPI_Cryptography.Hash(File, HashFunction.SHA256));
+        HashCheck    = GetStringFromBinaryData(OPI_Cryptography.Hash(Result, HashFunction.SHA256));
 
-        OPI_Tools.RemoveFileWithTry(FileObject.FullName);
+        ExpectsThat(HashCheck).Равно(HashOrigianl);
 
     Else
 

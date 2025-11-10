@@ -139,8 +139,8 @@ Function Initialize(Val URL = "") Export
     RequestBodyCollection = New Structure;
     RequestHeaders        = New Map;
     RequestTimeout        = 3600;
-    RequestPartSize          = 5242880;
-    Repeats                  = 0;
+    RequestPartSize       = 5242880;
+    Repeats               = 0;
 
     RequestTypeSetManualy = False;
 
@@ -1307,7 +1307,7 @@ Function SendDataInParts(Val ChunkSize = 5242880, Val Method = "PUT") Export
             Raise "Body not set";
         EndIf;
 
-        Repeats      = 0;
+        Repeats   = 0;
         TotalSize = RequestBody.Size();
 
         RequestDataReader = New DataReader(RequestBody);
@@ -1328,11 +1328,8 @@ Function SendDataInParts(Val ChunkSize = 5242880, Val Method = "PUT") Export
             OPI_Tools.ProgressInformation(RequestBodyStream.CurrentPosition(), TotalSize, "MB", MByte);
 
             // !OInt RunGarbageCollection();
-            // !OInt FreeObject(CurrentData);
 
         EndDo;
-
-        OPI_Tools.ProgressInformation(TotalSize, TotalSize, "MB", MByte);
 
         Return ThisObject;
 
@@ -1661,7 +1658,7 @@ Function SetBodyFromBinaryData(Val Value)
 
     OPI_TypeConversion.GetBinaryData(Value, True, False);
 
-    RequestBody    = Value;
+    RequestBody       = Value;
     RequestBodyStream = Undefined;
     RequestDataReader = Undefined;
     RequestDataWriter = Undefined;
@@ -1674,7 +1671,7 @@ Function SetBodyFromString(Val Value, Val WriteBOM = False)
 
     If TypeOf(Value) = Type("BinaryData") Then
 
-        RequestBody = Value;
+        RequestBody       = Value;
         RequestBodyStream = Undefined;
         RequestDataReader = Undefined;
         RequestDataWriter = Undefined;
@@ -1686,7 +1683,7 @@ Function SetBodyFromString(Val Value, Val WriteBOM = False)
         OPI_TypeConversion.GetLine(Value);
         OPI_TypeConversion.GetBoolean(WriteBOM);
 
-        RequestBody = GetBinaryDataFromString(Value, Encoding, WriteBOM);
+        RequestBody       = GetBinaryDataFromString(Value, Encoding, WriteBOM);
         RequestBodyStream = Undefined;
         RequestDataReader = Undefined;
         RequestDataWriter = Undefined;
@@ -2156,9 +2153,9 @@ EndFunction
 
 Function CheckPartUpload()
 
-    SuccessCode         = 200;
+    SuccessCode      = 200;
     RequestErrorCode = 400;
-    ServerErrorCode     = 500;
+    ServerErrorCode  = 500;
 
     If ResponseStatusCode >= SuccessCode And ResponseStatusCode < RequestErrorCode Then
 
@@ -2173,7 +2170,7 @@ Function CheckPartUpload()
             If ArrayOfInformation.Count() = PartsRequired Then
                 RequestBodyStream.Seek(Number(ArrayOfInformation[1]) + 1, PositionInStream.Start);
             Else
-                RequestBodyStream.Seek(RequestBodyCurrentSend.Size(), PositionInStream.Current);
+                RequestBodyStream.Seek(RequestBodyCurrentSend.Size()    , PositionInStream.Current);
             EndIf;
 
         Else
