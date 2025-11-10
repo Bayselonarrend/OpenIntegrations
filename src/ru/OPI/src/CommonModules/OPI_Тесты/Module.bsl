@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
+﻿// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
 
 // MIT License
 
@@ -6000,7 +6000,7 @@
 Процедура GoogleDrive_ЗагрузитьФайл(ПараметрыФункции)
 
     Токен    = ПараметрыФункции["Google_Token"];
-    Каталог     = ПараметрыФункции["GD_Catalog"];
+    Каталог  = ПараметрыФункции["GD_Catalog"];
     Картинка = ПараметрыФункции["Picture"];      // URL, Двоичные данные или Путь к файлу
 
     Пустая   = Ложь;

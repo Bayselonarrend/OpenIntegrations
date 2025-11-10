@@ -447,13 +447,13 @@ EndFunction
 Function UploadFileInParts(Val Token
     , Val Path
     , Val File
-    , Val ChunkSize = 268435456
+    , Val ChunkSize = 33554432
     , Val Overwrite = False) Export
 
     OPI_TypeConversion.GetBinaryData(File);
     OPI_TypeConversion.GetNumber(ChunkSize);
 
-    ChunkSize = ?(ValueIsFilled(ChunkSize), ChunkSize, 268435456);
+    ChunkSize = ?(ValueIsFilled(ChunkSize), ChunkSize, 33554432);
 
     Response = GetFileUploadLink(Token, Path, Overwrite);
     URL      = Response.Get("href");

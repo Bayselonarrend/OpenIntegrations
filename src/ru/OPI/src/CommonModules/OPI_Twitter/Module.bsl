@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_Twitter.os
+﻿// OneScript: ./OInt/core/Modules/OPI_Twitter.os
 // Lib: Twitter
 // CLI: twitter
 // Keywords: twitter, x

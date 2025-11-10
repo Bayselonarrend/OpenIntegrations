@@ -706,7 +706,7 @@ Procedure YDisk_UploadDeleteFile() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("YandexDisk_Token", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("Big"             , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Audio"           , TestParameters);
 
     YandexDisk_UploadFileInParts(TestParameters);
     YandexDisk_UploadFile(TestParameters);
@@ -5973,12 +5973,12 @@ EndProcedure
 
 Procedure YandexDisk_UploadFileInParts(FunctionParameters)
 
-    Path = "/big.zip";
+    Path = "/song.mp3";
 
     Token = FunctionParameters["YandexDisk_Token"];
-    File  = FunctionParameters["Big"]; // URL, Binary or File path
+    File  = FunctionParameters["Audio"]; // URL, Binary or File path
 
-    ChunkSize = 67108864;
+    ChunkSize = 1048576; // 1 MB
 
     Options = New Structure;
     Options.Insert("token", Token);
@@ -6978,9 +6978,9 @@ EndProcedure
 
 Procedure GoogleDrive_UploadFile(FunctionParameters)
 
-    Token  = FunctionParameters["Google_Token"];
+    Token     = FunctionParameters["Google_Token"];
     Directory = FunctionParameters["GD_Catalog"];
-    Image  = FunctionParameters["Picture"]; // URL, Binary Data or File path
+    Image     = FunctionParameters["Picture"]; // URL, Binary Data or File path
 
     Clear       = False;
     Options = New Structure;
