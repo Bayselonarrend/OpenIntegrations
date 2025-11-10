@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
+﻿// OneScript: ./OInt/tests/Modules/internal/OPI_Тесты.os
 
 // MIT License
 
@@ -24720,7 +24720,7 @@
     Адрес  = "127.0.0.1:1234";
     Логин  = ПараметрыФункции["MongoDB_User"];
     Пароль = ПараметрыФункции["MongoDB_Password"];
-    
+
     Адрес = OPI_ПолучениеДанныхТестов.ПолучитьLocalhost() + ":" + ПараметрыФункции["MongoDB_Port"]; // SKIP
 
     ПараметрыПодключения = Новый Структура("authSource", "admin");

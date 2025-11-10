@@ -33,10 +33,9 @@ import TabItem from '@theme/TabItem';
     Address  = "127.0.0.1:1234";
     Login    = "bayselonarrend";
     Password = "12we...";
-    Base     = "main";
 
     ConnectionParams = New Structure("authSource", "admin");
-    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, Base, Login, Password, ConnectionParams);
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
 
     Command = "listDatabases";
     Data    = New Structure("nameOnly", True);

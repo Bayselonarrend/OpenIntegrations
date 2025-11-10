@@ -3235,7 +3235,7 @@ Function GetTwitterAuthData()
 
     ServerToken = OPI_TestDataRetrieval.GetParameter("Access_Token");
 
-    URL = "https://hut.openintegrations.dev/melezh/get_twitter_token";
+    URL = OPI_TestDataRetrieval.GetParameter("Twitter_TokenURL");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -24720,12 +24720,11 @@ Procedure MongoDB_ExecuteCommand(FunctionParameters)
     Address  = "127.0.0.1:1234";
     Login    = FunctionParameters["MongoDB_User"];
     Password = FunctionParameters["MongoDB_Password"];
-    Base     = FunctionParameters["MongoDB_DB"];
 
     Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
 
     ConnectionParams = New Structure("authSource", "admin");
-    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, Base, Login, Password, ConnectionParams);
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
 
     Command = "listDatabases";
     Data    = New Structure("nameOnly", True);
