@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_SQLite.os
+// OneScript: ./OInt/core/Modules/OPI_SQLite.os
 // Lib: SQLite
 // CLI: sqlite
 // Keywords: sqlite
