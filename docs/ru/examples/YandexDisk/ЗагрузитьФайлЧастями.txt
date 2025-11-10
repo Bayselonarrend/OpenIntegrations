@@ -1,0 +1,8 @@
+﻿    Путь = "/big.zip";
+
+    Токен = "y0__xCOranuBRj1uTsgs8z_iRV...";
+    Файл  = "https://hut.openintegrations.dev/test_data/big.zip"; // URL, Двоичные или Путь к файлу
+
+    РазмерЧасти = 67108864;
+
+    Результат = OPI_YandexDisk.ЗагрузитьФайлЧастями(Токен, Путь, Файл, РазмерЧасти, Истина);

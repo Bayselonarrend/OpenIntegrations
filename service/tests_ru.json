@@ -715,6 +715,21 @@
 "variant": ""
 },
 {
+"lib": "YandexDisk",
+"name": "ЗагрузитьФайлЧастями",
+"variant": ""
+},
+{
+"lib": "YandexDisk",
+"name": "ЗагрузитьФайлЧастями",
+"variant": "Скачивание"
+},
+{
+"lib": "YandexDisk",
+"name": "ЗагрузитьФайлЧастями",
+"variant": "Удаление"
+},
+{
 "lib": "Viber",
 "name": "УстановитьWebhook",
 "variant": ""

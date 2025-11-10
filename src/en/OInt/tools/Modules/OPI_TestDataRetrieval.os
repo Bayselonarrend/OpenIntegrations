@@ -60,6 +60,7 @@
 // Uncomment if OneScript is executed
 #Use "./internal"
 #Use asserts
+
 #Region Internal
 
 Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
@@ -2441,6 +2442,38 @@ Function Check_YandexDisk_UploadFile(Val Result, Val Option)
 
 EndFunction
 
+Function Check_YandexDisk_UploadFileInParts(Val Result, Val Option, File = "")
+
+    If Option = "Downloading" Then
+
+        OPI_TypeConversion.GetFileOnDisk(File, "zip");
+        FileObject = New File(File["Path"]);
+
+        ExpectsThat(Result).ИмеетТип("BinaryData").Заполнено();
+        ExpectsThat(Result.Size()).Равно(FileObject.Size());
+
+        ReadingZip = New ZipFileReader(FileObject.FullName);
+        ExpectsThat(ReadingZip.Items.Count() > 0).Равно(True);
+        ReadingZip.Close();
+
+        OPI_Tools.RemoveFileWithTry(FileObject.FullName);
+
+    ElsIf Option = "Deletion" Then
+
+        If Not Lower(String(Result)) = "null" Then
+            ExpectsThat(ValueIsFilled(Result)).Равно(False);
+        EndIf;
+
+    Else
+        ExpectsThat(Result["status"] >= 200 And Result["status"] < 300).Равно(True);
+    EndIf;
+
+    OPI_Tools.Pause(2);
+
+    Return Result;
+
+EndFunction
+
 Function Check_YandexDisk_CreateObjectCopy(Val Result, Val Option, Parameters = "", Path = "")
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
@@ -3133,17 +3166,38 @@ EndFunction
 
 Function Check_GoogleDrive_UploadFile(Val Result, Val Option, Parameters = "", Description = "")
 
-    ExpectsThat(Result["mimeType"]).Равно(Description["MIME"]);
-    ExpectsThat(Result["name"]).Равно(Description["Name"]);
-
-    Identifier = Result["id"];
-
     If Not ValueIsFilled(Option) Then
+
+        ExpectsThat(Result["mimeType"]).Равно(Description["MIME"]);
+        ExpectsThat(Result["name"]).Равно(Description["Name"]);
+
+        Identifier = Result["id"];
 
         WriteParameter("GD_File", Identifier);
         OPI_Tools.AddField("GD_File", Identifier, "String", Parameters);
 
+    ElsIf Option = "Check" Then
+
+        File = Parameters["Big"];
+
+        OPI_TypeConversion.GetFileOnDisk(File, "zip");
+        FileObject = New File(File["Path"]);
+
+        ExpectsThat(Result).ИмеетТип("BinaryData").Заполнено();
+        ExpectsThat(Result.Size()).Равно(FileObject.Size());
+
+        ReadingZip = New ZipFileReader(FileObject.FullName);
+        ExpectsThat(ReadingZip.Items.Count() > 0).Равно(True);
+        ReadingZip.Close();
+
+        OPI_Tools.RemoveFileWithTry(FileObject.FullName);
+
     Else
+
+        ExpectsThat(Result["mimeType"]).Равно(Description["MIME"]);
+        ExpectsThat(Result["name"]).Равно(Description["Name"]);
+
+        Identifier = Result["id"];
 
         ArrayOfDeletions = Parameters["ArrayOfDeletions"];
         ArrayOfDeletions.Add(Identifier);

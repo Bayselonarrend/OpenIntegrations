@@ -253,6 +253,33 @@ Function GetDownloadLink(Val Token, Val Path) Export
 
 EndFunction
 
+// Get file upload link
+// Gets a link for manual file upload to Disk
+//
+// Parameters:
+// Token - String - Token - token
+// Path - String - Path for saving the file to disk - path
+// Overwrite - Boolean - Overwrite if a file with the same name already exists - rewrite
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Yandex
+Function GetFileUploadLink(Val Token, Val Path, Val Overwrite = False) Export
+
+    OPI_TypeConversion.GetLine(Path);
+    OPI_TypeConversion.GetBoolean(Overwrite);
+
+    Headers = OPI_YandexID.GetAuthorizationHeader(Token);
+
+    Parameters = New Structure;
+    Parameters.Insert("path"      , Path);
+    Parameters.Insert("overwrite" , Overwrite);
+
+    Response = OPI_HTTPRequests.Get("https://cloud-api.yandex.net/v1/disk/resources/upload", Parameters, Headers);
+
+    Return Response;
+
+EndFunction
+
 // Download file
 // Downloads a file at the specified path
 //
@@ -387,26 +414,75 @@ EndFunction
 // Map Of KeyAndValue - serialized JSON response from Yandex
 Function UploadFile(Val Token, Val Path, Val File, Val Overwrite = False) Export
 
-    OPI_TypeConversion.GetLine(Path);
-    OPI_TypeConversion.GetBoolean(Overwrite);
-    OPI_TypeConversion.GetBinaryData(File);
-
     Headers = OPI_YandexID.GetAuthorizationHeader(Token);
-    Href    = "href";
-    File    = New Structure("file", File);
 
-    Parameters = New Structure;
-    Parameters.Insert("path"      , Path);
-    Parameters.Insert("overwrite" , Overwrite);
+    OPI_TypeConversion.GetBinaryData(File);
+    File = New Structure("file", File);
 
-    Response = OPI_HTTPRequests.Get("https://cloud-api.yandex.net/v1/disk/resources/upload", Parameters, Headers);
-    URL      = Response[Href];
+    Response = GetFileUploadLink(Token, Path, Overwrite);
+    URL      = Response.Get("href");
 
     If Not ValueIsFilled(URL) Then
         Return Response;
     EndIf;
 
     Response = OPI_HTTPRequests.PutMultipart(URL, New Structure(), File, "multipart", Headers);
+
+    Return Response;
+
+EndFunction
+
+// Upload file in parts
+// Uploads a file to disk at the specified path in parts
+//
+// Parameters:
+// Token - String - Token - token
+// Path - String - Path for saving the file to disk - path
+// File - String, BinaryData - File for upload - file
+// ChunkSize - Number - Part size when uploading - psize
+// Overwrite - Boolean - Overwrite if a file with the same name already exists - rewrite
+//
+// Returns:
+// Map Of KeyAndValue - serialized JSON response from Yandex
+Function UploadFileInParts(Val Token
+    , Val Path
+    , Val File
+    , Val ChunkSize = 268435456
+    , Val Overwrite = False) Export
+
+    OPI_TypeConversion.GetBinaryData(File);
+    OPI_TypeConversion.GetNumber(ChunkSize);
+
+    ChunkSize = ?(ValueIsFilled(ChunkSize), ChunkSize, 268435456);
+
+    Response = GetFileUploadLink(Token, Path, Overwrite);
+    URL      = Response.Get("href");
+
+    If Not ValueIsFilled(URL) Then
+        Return Response;
+    EndIf;
+
+    RequestResult = OPI_HTTPRequests.NewRequest()
+        .Initialize(URL)
+        .SetBinaryBody(File)
+        .SendDataInParts(ChunkSize);
+
+    ResponseObject = RequestResult.ReturnResponse(True, True);
+    ResponseJSON   = RequestResult.ReturnResponseAsJSONObject(True, True);
+    ResponseString = RequestResult.ReturnResponseAsString(True, True);
+
+    If ValueIsFilled(ResponseJSON) Then
+        Return ResponseJSON;
+    Else
+
+       Response = New Map;
+       Response.Insert("status", ResponseObject.StatusCode);
+
+       If ValueIsFilled(ResponseString) Then
+           Response.Insert("data", ResponseString);
+       EndIf;
+
+    EndIf;
 
     Return Response;
 

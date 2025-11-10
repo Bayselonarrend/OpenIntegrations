@@ -693,9 +693,25 @@ Function IsOneScript() Export
 
 EndFunction
 
+Function IsCLI() Export
+
+    If IsOneScript() Then
+
+        IsCLI = Undefined;
+        IsCLI = GetEnvironmentVariable("OINT_CLI");
+        IsCLI = ?(ValueIsFilled(IsCLI), IsCLI, "NO");
+
+        Return IsCLI = "YES";
+
+    EndIf;
+
+    Return False;
+
+EndFunction
+
 Procedure ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1) Export
 
-    If Not IsOneScript() Then
+    If Not IsCLI() Then
         Return;
     EndIf;
 
@@ -848,7 +864,7 @@ Procedure StreamToStart(CurrentStream) Export
 
 EndProcedure
 
-Procedure RemoveFileWithTry(Val Path, Val MessageText) Export
+Procedure RemoveFileWithTry(Val Path, Val MessageText = "Failed to delete file") Export
 
     Try
         DeleteFiles(Path);
@@ -1312,6 +1328,10 @@ Function ЭтоOneScript() Export
 	Return IsOneScript();
 EndFunction
 
+Function ЭтоCLI() Export
+	Return IsCLI();
+EndFunction
+
 Procedure ИнформацияОПрогрессе(Val Текущее, Val Всего, Val ЕдИзм, Val Делитель = 1) Export
 	ProgressInformation(Текущее, Всего, ЕдИзм, Делитель);
 EndProcedure
@@ -1340,7 +1360,7 @@ Procedure ПотокВНачало(ТекущийПоток) Export
 	StreamToStart(ТекущийПоток);
 EndProcedure
 
-Procedure УдалитьФайлВПопытке(Val Путь, Val ТекстСообщения) Export
+Procedure УдалитьФайлВПопытке(Val Путь, Val ТекстСообщения = "Не удалось удалить файл") Export
 	RemoveFileWithTry(Путь, ТекстСообщения);
 EndProcedure
 
