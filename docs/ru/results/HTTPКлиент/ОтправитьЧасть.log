@@ -1,0 +1,25 @@
+﻿{
+ "args": {},
+ "data": "data for",
+ "files": {},
+ "form": {},
+ "headers": {
+  "Accept": "*/*",
+  "Accept-Charset": "utf-8",
+  "Accept-Encoding": "gzip",
+  "Connection": "Keep-Alive",
+  "Content-Length": "8",
+  "Content-Range": "bytes 5-12/21",
+  "Content-Type": "application/octet-stream",
+  "Host": "localhost:2424",
+  "Max-Forwards": "10",
+  "User-Agent": "1Script v$2.0.0.0",
+  "X-Arr-Log-Id": "b34bcef4-bdeb-4ecf-9b2d-52fd2970bdf7",
+  "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
+  "X-Forwarded-Host": "bin.openintegrations.dev",
+  "X-Original-Url": "***"
+ },
+ "json": null,
+ "origin": "***",
+ "url": "https://bin.openintegrations.dev/put"
+}
