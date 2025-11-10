@@ -81,7 +81,7 @@
     "image_192": "https://avatars.slack-edge.com/2024-04-15/6965308574562_65215daf7a4a35eddf9c_192.png",
     "image_512": "https://avatars.slack-edge.com/2024-04-15/6965308574562_65215daf7a4a35eddf9c_512.png",
     "image_1024": "https://avatars.slack-edge.com/2024-04-15/6965308574562_65215daf7a4a35eddf9c_1024.png",
-    "image_original": "https://avatars.slack-edge.com/2024-04-15/6965308574562_65215daf7a4a35eddf9c_original.png",
+    "image_original": "***",
     "is_custom_image": true,
     "first_name": "Антон",
     "last_name": "Титовец",
@@ -146,7 +146,7 @@
    }
   }
  ],
- "cache_ts": 1762640754,
+ "cache_ts": 1762798091,
  "response_metadata": {
   "next_cursor": ""
  }
