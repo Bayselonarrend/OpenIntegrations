@@ -1,62 +1,39 @@
 ﻿---
 id: Bitrix24
 sidebar_class_name: Bitrix24
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Bitrix24]
 ---
 
 <img src={require('../../static/img/APIs/Bitrix24.png').default} width='64px' />
 
 # Bitrix24
 
-This section is dedicated to the library for working with Bitrix24 API. On this page, all the steps necessary to start working are described
+This section covers the library for working with Bitrix24 API in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
-## Getting started
+### Getting Started
 
-There are two ways to work with Bitrix24 via API: via **Webhook** and via **local application**. For both options you need:
+To start working with Bitrix24 via API, you need to obtain authorization data. This can be done in one of two ways: by creating a **Webhook** or by creating a **local application**. Both methods are described below.
 
-1. Go to **Developers** in the **Applications** section of the sidebar
+### Working via Webhook
 
-![BF](../../static/img/Docs/Bitrix24/1.png)
+1. Go to the *For Developers* subsection in the *Applications* section of the sidebar
+2. Select the *Other* option
+3. Choose *Incoming Webhook*
+4. Configure the required permissions in *Rights Settings* and save the webhook URL. It will be used as the **URL** parameter when executing library methods. The optional **Token** parameter will remain empty in this case.
 
-2. Select **Other**
+### Working via Local Application
 
-![BF](../../static/img/Docs/Bitrix24/2.png)
+1. Go to the *For Developers* subsection in the *Applications* section of the Bitrix24 sidebar
+2. Select the *Other* option
+3. Choose *Local Application*
+4. Select the handler URL. If the application does not involve authorization of other users but only manages Bitrix through a single administrator account, you can use any address, such as https://localhost.
+5. Check the **Uses only API** box (if only the library method calling functionality is needed) and configure the required permissions
+6. Save the application **key** and **secret**
+7. Pass the application key to the `GetAppAuthLink` function and navigate to the obtained link in your browser
+8. Log in and copy the received code from the address bar or obtain it from the handler whose address was specified in step 4
+9. Pass the obtained code, along with the application key and secret, to the `GetToken` function
+10. Save the obtained **access** and **refresh tokens**
 
-<hr/><br/>
-
-### To work via Webhook
-
-1. Select **Incoming Webhook**
-	
-![BF](../../static/img/Docs/Bitrix24/3.png)
-
-2. Fill in the necessary permissions in **Permissions Settings** and save the URL of the webhook. This will be used to execute library methods as the **URL** parameter. The optional **Token** parameter will always remain empty in this case
-
-![BF](../../static/img/Docs/Bitrix24/4.png)
-
-<hr/><br/>
-
-## To work via Local Application
-
-1. Select **Local Application**
-	
-![BF](../../static/img/Docs/Bitrix24/5.png)
-
-2. Select the path of the handler (if the application does not imply authorization of other users, but only Bitrix management through one administrator account, you can choose any address, for example https://localhost), tick **Use only API** (if you need only the functionality of calling library methods) and fill in the necessary permissions
-
-![BF](../../static/img/Docs/Bitrix24/6.png)
-
-3. Save the **application key** and **application code**
-
-![BF](../../static/img/Docs/Bitrix24/7.png)
-
-4. Using the application key, call the **GetAppAuthLink** function and follow the received link in the browser. After authorization, copy the received code from the address bar (or get it to the handler whose address was specified in point 2)
-
-![BF](../../static/img/Docs/Bitrix24/8.png)
-
-5. Pass the received code, along with the application key and secret, to the **GetToken** function. Save the received **access** and **refresh tokens**
-
-6. Tokens have a limited lifetime. To get a new token, you can use the **UpdateToken** function, passing here the refresh token, key and application secret. The refresh creates not only a new access token, but also a refresh token as well
-
-
-
-
+:::important
+Token lifetime is limited. To obtain a new token, you can use the **RefreshToken** function by passing the refresh token, key, and application secret. When refreshing, not only a new access token but also a new refresh token is created - it must be saved again.
+:::

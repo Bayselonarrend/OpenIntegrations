@@ -1,41 +1,32 @@
 ﻿---
 id: Telegram
 sidebar_class_name: Telegram
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Telegram]
 ---
 
 <img src={require('../../static/img/APIs/Telegram.png').default} width='64px' />
 
 # Telegram
 
-This section is dedicated to the library for working with Telegram API. On this page, all the steps necessary to start working are described
+This section covers the library for working with Telegram Bot API in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
-## Getting started
+### Getting Started
 
-- Create a Telegram bot
+1. Start a conversation with [@BotFather](https://t.me/BotFather) to create a new bot
+2. Select the `/newbot` command
+3. Complete the new bot creation procedure, choose a display name and username
+4. Save the **token** received upon completion of creation
 
-	1. All actions with the Telegram API are carried out through bots. To create a new bot, you need to start a conversation with [@BotFather](https://t.me/BotFather)
+```
+1234567890:AAXcxHjoAmgkhgae67fmnghjfmggkTRFkgf
+```
 
-	![BF](../../static/img/Docs/Telegram/2.png)
+You can then use this token to perform actions on behalf of the bot in available chats. The chat for performing actions is determined by its `id` - this can be a Telegram user ID or a channel name starting with the `@` symbol. To perform actions in channels, the bot must be appointed as its administrator.
 
-	2. Choose */newbot* command
-	
-	![BF](../../static/img/Docs/Telegram/3.png)
-	
-	3. BotFather will prompt you to choose a name and a username for the bot, after which the creation process will be completed
-	
-- Save the **token** that BotFather sent you after completing the bot creation
-	
-	![BF](../../static/img/Docs/Telegram/1.png)
-	
-- (Optional) Determine the purpose of the interaction
- 
-	The bot you created can now be used in two ways
-	
-	- Like a chat-bot
-	- For automating channel management
-	
-	Depending on the chosen path, the way to obtain the **ChatID** (the parameter responsible for identifying the interaction object) will differ.
-	
-	In the case of a chat bot, the chat ID will be the user ID with whom the bot is conversing. If the bot is to be used for channel management, after adding it as an administrator, you can use the channel's name with @ (e.g., @MyChannel) instead of the chat ID
-	
-	The token and chat ID are the primary parameters for all methods of working with the Telegram API
+### Data Retrieval
+
+After creating the bot, you can retrieve bot event data in one of two ways:
+
+- By sending requests to the Telegram server (polling). For this, you need to regularly call the `GetUpdates` method, which allows collecting information about new events in any chat that the bot has access to.
+
+- Using Webhook. For this, you need to create an HTTP service with a public address and SSL certificate, then pass it to the `SetWebhook` function. Telegram will automatically send data about new events to the specified address, where these events can be processed.

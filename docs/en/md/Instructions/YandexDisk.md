@@ -1,56 +1,44 @@
 ﻿---
 id: YandexDisk
 sidebar_class_name: YandexDisk
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, YandexDisk, Yandex.Disk, Yandex Disk]
 ---
 
 <img src={require('../../static/img/APIs/YandexDisk.png').default} width='64px' />
 
 # Yandex Disk
 
-This section is dedicated to the library for working with Yandex Disk API. On this page, all the steps necessary to start working are described
+This section covers the library for working with Yandex Disk API in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
-## Getting started
+## Getting Started
 
-To start working, you need to obtain an access token for the disk:
+To get started, you need to obtain an access token for the disk:
 
-1. Go to [app creation page](https://oauth.yandex.ru/client/new/) 
+1. Go to the [application creation page](https://oauth.yandex.ru/client/new/)
+2. Enter the service name, select *Web Services* as the platform. You can specify any Redirect URI or choose *Insert URL for debugging* - it won't be needed for working with the library.
+3. In the *Data Access* field, add permissions as shown in the screenshot below, then click *Create Application*
+4. Save the **ClientID** and **Client secret** from the application page
+5. Call the `GetConfirmationCode` function, passing ClientID as a parameter. The function will return a Yandex server response containing the following fields:
 
-![BF](../../static/img/Docs/YandexDisk/1.png)
+	- **user_code** - will need to be entered in the browser
+	- **device_code** - will need to be passed to another function
+	- **verification_url** - URL that needs to be opened in the browser
 
-2. Enter the service name, select *Web services* as the platform. You can specify any *Redirect URI* or select the Insert debugging URL option - it will not be needed for working with the library.
+```json title="Result of the GetConfirmationCode function in JSON format"
+{
+ "verification_url": "https://ya.ru/device",
+ "user_code": "gjehyruw",
+ "interval": 5,
+ "expires_in": 300,
+ "device_code": "12207cafec1b40ad8d0052af3faf0d12"
+}
+```
 
-![BF](../../static/img/Docs/YandexDisk/3.png)
+6. Open the URL from **verification_url** in your browser. Enter the **user_code** from step 5 in the field that appears
 
-3. In the **Data Access** field, add permissions as shown in the screenshot below, then click **Create Application**
+7. After entering the code in step 6, call the `ConvertCodeToToken` function, passing the *ClientID* and *ClientSecret* from step 4, as well as the *device_code* from step 5. Save the obtained **access_token** and **refresh_token**
 
-![BF](../../static/img/Docs/YandexDisk/2.png)
-
-4. Save **ClientID** and **ClientSecret** from the application page
-
-![BF](../../static/img/Docs/YandexDisk/4.png)
-
-5. Call the function *OPI_YandexID.GetConfirmationCode()*, passing ClientID as a parameter. It will return a response from the Yandex server, which will contain the fields:
-		- **user_code** - you will need to enter in the browser
-		- **device_code** - you will need to pass to another function
-		- **verification_url** - the URL that needs to be opened in the browser
-<br/>
-		```json title="The result of the function GetConfirmationCode(), if convert it to JSON"
-			{
-			 "verification_url": "https://ya.ru/device",
-			 "user_code": "gjehyruw",
-			 "interval": 5,
-			 "expires_in": 300,
-			 "device_code": "12207cafec1b40ad8d0052af3faf0d12"
-			}
-		```
-
-6. Open the URL from **verification_url** in the browser. Most likely, it will be https://ya.ru/device. In the field that appears, enter the **user_code** from step 5
-
-![BF](../../static/img/Docs/YandexDisk/5.png)
-
-7. After entering the code in step 6, call the function *OPI_YandexID.ConvertCodeToToken()*, passing **ClientID** and **ClientSecret** from step 4, as well as **device_code** from step 5. Save the obtained **access_token** and **refresh_token**
-
-```json title="The result of the function ConvertCodeToToken(), if convert it to JSON"
+```json title="Result of the ConvertCodeToToken function in JSON format"
 {
  "token_type": "bearer",
  "refresh_token": "1:Tj6nD2vgE2L8jwSm:YgWjQXPv6_y3e07GW70ig2AOyEXoRVsKKpApGHq2EOg7pfx0MKrXiCrfLBFtzgQawdawdwadad3Sasa9z2H0vSeZKNmZmA",
@@ -59,4 +47,4 @@ To start working, you need to obtain an access token for the disk:
 }
 ```
 
-**access_token** is used in all other functions of the library, and with the help of **refresh_token**, it can be refreshed when its lifespan is nearing the end (using the function *RefreshToken()*)
+**access_token** is used for authorization in all other library functions. **refresh_token** must be passed to the `RefreshToken` function to obtain a new access_token when the previous one's lifetime is about to expire.
