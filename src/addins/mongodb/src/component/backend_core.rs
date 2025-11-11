@@ -127,7 +127,9 @@ async fn execute_operation(
     let mut command = Document::new();
 
     if let Some(value) = &params.argument {
-        command.insert(&params.operation, json_value_to_bson(value));
+
+        command.insert(&params.operation, json_value_to_bson(value)?);
+
     } else {
         command.insert(&params.operation, 1);
     }
@@ -135,7 +137,7 @@ async fn execute_operation(
     if let Some(Value::Object(data_map)) = &params.data {
         for (key, value) in data_map {
             if key != &params.operation {
-                command.insert(key, json_value_to_bson(value));
+                command.insert(key, json_value_to_bson(value)?);
             }
         }
     }
