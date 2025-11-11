@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_MongoDB.os
+// OneScript: ./OInt/core/Modules/OPI_MongoDB.os
 // Lib: MongoDB
 // CLI: mongodb
 // Keywords: mongodb, mongo, nosql

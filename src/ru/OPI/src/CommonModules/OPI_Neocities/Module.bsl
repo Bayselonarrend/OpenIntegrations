@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Neocities.os
+// OneScript: ./OInt/core/Modules/OPI_Neocities.os
 // Lib: Neocities
 // CLI: neocities
 // Keywords: neocities
