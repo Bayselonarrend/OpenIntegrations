@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_YandexDisk.os
+// OneScript: ./OInt/core/Modules/OPI_YandexDisk.os
 // Lib: Yandex Disk
 // CLI: yadisk
 // Keywords: yandexdisk, yandex.disk, yandex disk, yandex drive, yadisk, ya disk

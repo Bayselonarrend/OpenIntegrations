@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_ЗапросыSQL.os
+// OneScript: ./OInt/tools/Modules/OPI_ЗапросыSQL.os
 
 // MIT License
 
