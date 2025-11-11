@@ -1,56 +1,137 @@
+use std::time::SystemTime;
 use serde_json::{Number, Value};
 use mongodb::bson::{Bson, Document};
 use mongodb::bson;
 use base64::{Engine as _, engine::{general_purpose}};
+use dateparser::parse;
+use regex::Regex as StdRegex;
 
-pub fn json_value_to_bson(value: &Value) -> Bson {
-    match value {
-
+pub fn json_value_to_bson(value: &Value) -> Result<Bson, String> {
+    let result = match value {
         Value::String(s) => Bson::String(s.clone()),
         Value::Number(n) if n.is_i64() => Bson::Int64(n.as_i64().unwrap()),
         Value::Number(n) if n.is_f64() => Bson::Double(n.as_f64().unwrap()),
         Value::Bool(b) => Bson::Boolean(*b),
         Value::Null => Bson::Null,
-
         Value::Array(arr) => {
-            Bson::Array(arr.iter().map(json_value_to_bson).collect())
+            let converted: Result<Vec<_>, _> = arr.iter().map(json_value_to_bson).collect();
+            Bson::Array(converted?)
         },
-
         Value::Object(obj) => {
 
-            if let Some(oid) = obj.get("__OPI_OID__") {
+            if let Some(str) = obj.get("__OPI_STRING__"){
+                return Ok(Bson::String(str.to_string()))
+            }
+
+            if let Some(int32) = obj.get("__OPI_INT32__") {
+                let value = match int32.as_i64(){
+                    Some(i) => i as i32,
+                    None => return Err(format!("Can't parse I64: {}", int32))
+                };
+                return Ok(Bson::Int32(value))
+            }
+
+            if let Some(int64) = obj.get("__OPI_INT64__") {
+                return Ok(Bson::Int64(int64.as_i64().ok_or(format!("Can't parse I64: {}", int64))?))
+            }
+
+            if let Some(double) = obj.get("__OPI_DOUBLE__") {
+                return Ok(Bson::Double(double.as_f64().ok_or(format!("Can't parse Double: {}", double))?))
+            }
+
+            if let Some(b) = obj.get("__OPI_BOOLEAN__") {
+                return Ok(Bson::Boolean(b.as_bool().ok_or(format!("Can't parse Bool: {}", b))?))
+            }
+
+            if let Some(datetime) = obj.get("__OPI_DATETIME__").or_else(|| obj.get("__OPI_TIMESTAMP__")) {
+                return if let Some(dt) = datetime.as_str() {
+                    let dtp = parse(dt).map_err(|e| format!("Can't parse DateTime: {}: {}", dt, e))?;
+                    Ok(Bson::DateTime(bson::DateTime::from_system_time(SystemTime::from(dtp))))
+                } else {
+                    Err(format!("Can't parse DateTime or Timestamp: {}", datetime))
+                }
+            }
+
+            if let Some(oid) = obj.get("__OPI_OBJECTID__") {
                 if let Some(oid_str) = oid.as_str() {
-                    if let Ok(oid) = oid_str.parse::<bson::oid::ObjectId>() {
-                        return Bson::ObjectId(oid);
+                    return if let Ok(oid) = oid_str.parse::<bson::oid::ObjectId>() {
+                        Ok(Bson::ObjectId(oid))
+                    } else {
+                        Err(format!("Can't parse ObjectID: {}", oid_str))
                     }
                 }
+            }
+
+            if let Some(regexp) = obj.get("__OPI_REGEXP__") {
+                return if let Value::Object(ref regexp_obj) = regexp {
+
+                    let pattern = regexp_obj.get("pattern")
+                        .and_then(|v| v.as_str())
+                        .ok_or("Missing or invalid 'pattern' field in REGEXP object")?
+                        .to_string();
+
+                    StdRegex::new(&pattern)
+                        .map_err(|e| format!("Invalid regex pattern '{}': {}", pattern, e))?;
+
+                    let options = regexp_obj.get("options")
+                        .and_then(|v| v.as_str())
+                        .unwrap_or("")
+                        .to_string();
+
+                    Ok(Bson::RegularExpression(bson::Regex {
+                        pattern,
+                        options,
+                    }))
+                } else {
+                    Err("Value of REGEXP must be an object with 'pattern' and 'options'".to_string())
+                }
+            }
+
+            if let Some(s) = obj.get("__OPI_JS__"){
+                return Ok(Bson::JavaScriptCode(s.to_string()))
+            }
+
+            if let Some(s) = obj.get("__OPI_SYMBOL__"){
+                return Ok(Bson::Symbol(s.to_string()))
+            }
+
+            if let Some(_) = obj.get("__OPI_MINKEY__") {
+                return Ok(Bson::MinKey)
+            }
+
+            if let Some(_) = obj.get("__OPI_MAXKEY__") {
+                return Ok(Bson::MaxKey)
+            }
+
+            if let Some(_) = obj.get("__OPI_NULL__"){
+                return Ok(Bson::Null)
             }
 
             if let Some(binary) = obj.get("__OPI_BINARY__") {
                 if let Some(base64_str) = binary.as_str() {
-                    if let Ok(bytes) = general_purpose::STANDARD.decode(base64_str) {
-                        return Bson::Binary(bson::Binary {
+                    return if let Ok(bytes) = general_purpose::STANDARD.decode(base64_str) {
+                        Ok(Bson::Binary(bson::Binary {
                             bytes,
                             subtype: bson::spec::BinarySubtype::Generic
-                        });
+                        }))
+                    } else {
+                        Err(format!("Can't parse B64 binary: {}", base64_str))
                     }
                 }
             }
 
-            if let Some(timestamp) = obj.get("__OPI_DATE__") {
-                if let Some(ts) = timestamp.as_i64() {
-                    return Bson::DateTime(bson::DateTime::from_millis(ts));
-                }
+            let mut doc = Document::new();
+            for (k, v) in obj.iter() {
+                let bson_value = json_value_to_bson(v)?; // если ошибка — сразу возвращаем
+                doc.insert(k.clone(), bson_value);
             }
 
-            let doc: Document = obj.iter()
-                .map(|(k, v)| (k.clone(), json_value_to_bson(v)))
-                .collect();
             Bson::Document(doc)
         },
-
         _ => Bson::Null,
-    }
+    };
+
+    Ok(result)
 }
 
 pub fn bson_to_json_value(bson: &Bson) -> Value {
@@ -67,8 +148,8 @@ pub fn bson_to_json_value(bson: &Bson) -> Value {
         Bson::JavaScriptCode(js) => Value::String(js.to_string()),
         Bson::Symbol(s) => Value::String(s.to_string()),
         Bson::Timestamp(ts) => Value::String(ts.to_string()),
-        Bson::MaxKey => Value::String("MaxKey".to_string()),
-        Bson::MinKey => Value::String("MinKey".to_string()),
+        Bson::MaxKey => Value::String("<<MaxKey>>".to_string()),
+        Bson::MinKey => Value::String("<<MinKey>>".to_string()),
         Bson::Null => Value::Null,
         Bson::Array(arr) => {
             Value::Array(arr.iter().map(bson_to_json_value).collect())
@@ -80,21 +161,18 @@ pub fn bson_to_json_value(bson: &Bson) -> Value {
             }
             Value::Object(map)
         },
-
         Bson::JavaScriptCodeWithScope(jss) => {
             let mut map = serde_json::Map::new();
             map.insert("scope".to_string(), Value::String(jss.scope.to_string()));
             map.insert("code".to_string(), Value::String(jss.code.to_string()));
             Value::Object(map)
         }
-
-            Bson::Binary(bin) => {
+        Bson::Binary(bin) => {
             let mut map = serde_json::Map::new();
             let base64 = general_purpose::STANDARD.encode(&bin.bytes);
             map.insert("__B64_BINARY__".to_string(), Value::String(base64));
             Value::Object(map)
         },
-
         _ => Value::Null,
     }
 }
