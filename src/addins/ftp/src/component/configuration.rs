@@ -11,10 +11,3 @@ pub struct FtpSettings {
     pub password: Option<String>,
     pub advanced_resolve: bool
 }
-
-#[derive(Deserialize,Serialize,Clone)]
-pub struct FtpTlsSettings {
-    pub use_tls: bool,
-    pub accept_invalid_certs: bool,
-    pub ca_cert_path: Option<String>,
-}

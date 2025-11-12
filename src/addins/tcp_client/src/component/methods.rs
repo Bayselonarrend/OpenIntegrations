@@ -3,7 +3,6 @@ use std::net::{Shutdown};
 use std::time::{Duration, Instant};
 use crate::component::{AddIn, Connection};
 
-/// Отправляет данные
 pub fn send(add_in: &mut AddIn, data: Vec<u8>, timeout_ms: i32) -> bool {
 
     let connection = match &mut add_in.connection {
@@ -54,7 +53,6 @@ pub fn receive(
     end_marker: Vec<u8>,
     timeout_ms: i32,
 ) -> Vec<u8> {
-
 
     let connection = match &mut add_in.connection {
         Some(connection) => connection,
@@ -120,18 +118,15 @@ pub fn receive(
             },
         }
     }
-
     result
 }
 
-/// Закрывает соединение
 pub fn disconnect(add_in: &mut AddIn) -> bool {
     add_in.connection = None;
     true
 }
 
 pub fn close_output(add_in: &mut AddIn) -> bool {
-
     let connection = match &mut add_in.connection {
         Some(connection) => connection,
         None => {

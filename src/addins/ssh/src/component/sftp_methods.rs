@@ -1,10 +1,10 @@
 use std::io::{BufReader, Cursor, Read, copy, Write};
 use std::path::{Path, PathBuf};
 use std::str::FromStr;
+use common_utils::utils::{json_error, json_success};
 use serde_json::{json, Value};
 use ssh2::{FileStat, RenameFlags, Sftp};
 use crate::component::{AddIn};
-use crate::component::format_json_error;
 
 impl AddIn{
 
@@ -30,14 +30,14 @@ impl AddIn{
 
                 let mode_oct = match oct(mode){
                     Ok(mode) => mode,
-                    Err(e) => return format_json_error(&e.to_string())
+                    Err(e) => return json_error(&e)
                 };
 
                 let result = s.mkdir(path.as_ref(), mode_oct).map_err(|err| err.to_string());
 
                 match result{
-                    Ok(_) => json!({"result": true}).to_string(),
-                    Err(e) => format_json_error(&e.to_string())
+                    Ok(_) => json_success(),
+                    Err(e) => json_error(&e)
                 }
             },
             None => json!({"result": false, "error": "Init SFTP first"}).to_string()
@@ -48,8 +48,8 @@ impl AddIn{
         match &self.sftp{
             Some(s) => {
                 match s.rmdir(path.as_ref()) {
-                    Ok(_) => json!({"result": true}).to_string(),
-                    Err(e) => format_json_error(&e.to_string())
+                    Ok(_) => json_success(),
+                    Err(e) => json_error(&e)
                 }
             },
             None => json!({"result": false, "error": "Init SFTP first"}).to_string()
@@ -68,17 +68,14 @@ impl AddIn{
         match sftp.readdir(path) {
             Ok(contents) => {
                 for item in contents {
-
                     let object_pb = item.0;
                     let object_info = &item.1;
-
-
                     data.push(form_file_info(&object_pb, object_info));
                 }
 
                 json!({"result": true, "data": data}).to_string()
             },
-            Err(err) =>  format_json_error(&err.to_string()),
+            Err(err) =>  json_error(&err),
         }
     }
 
@@ -91,7 +88,7 @@ impl AddIn{
 
         let pb = match PathBuf::from_str(path){
             Ok(pb) => pb,
-            Err(err) => return format_json_error(&err.to_string()),
+            Err(err) => return json_error(&err),
         };
 
         match sftp.stat(pb.as_path()) {
@@ -101,7 +98,7 @@ impl AddIn{
                     "data": form_file_info(&pb, &stat)
                 }).to_string()
             },
-            Err(err) => format_json_error(&err.to_string()),
+            Err(err) => json_error(&err),
         }
     }
 
@@ -112,7 +109,7 @@ impl AddIn{
 
                 let file = match std::fs::File::open(file) {
                     Ok(f) => f,
-                    Err(e) => return format_json_error(format!("File error: {}", e).as_str())
+                    Err(e) => return json_error(format!("File error: {}", e))
                 };
 
                 let mut buf_reader = BufReader::new(file);
@@ -120,26 +117,25 @@ impl AddIn{
 
                 match result{
                     Ok(d) => json!({"result": true, "bytes": d}).to_string(),
-                    Err(e) => format_json_error(&e.to_string())
+                    Err(e) => json_error(&e)
                 }
             },
-            None => json!({"result": false, "error": "Init SFTP first"}).to_string()
+            None => json_error("Init SFTP first")
         }
     }
 
     pub fn upload_data(&mut self, data: &[u8], path: &str) -> String {
         match &self.sftp{
             Some(s) => {
-
                 let mut cursor = Cursor::new(data);
                 let result = upload_from_reader(s, path, &mut cursor);
 
                 match result{
                     Ok(d) => json!({"result": true, "bytes": d}).to_string(),
-                    Err(e) => format_json_error(&e.to_string())
+                    Err(e) => json_error(&e)
                 }
             },
-            None => json!({"result": false, "error": "Init SFTP first"}).to_string()
+            None => json_error("Init SFTP first")
         }
     }
 
@@ -147,11 +143,11 @@ impl AddIn{
         match &self.sftp{
             Some(s) => {
                 match s.unlink(path.as_ref()){
-                    Ok(_) => json!({"result": true}).to_string(),
-                    Err(e) => format_json_error(&e.to_string())
+                    Ok(_) => json_success(),
+                    Err(e) => json_error(&e)
                 }
             },
-            None => json!({"result": false, "error": "Init SFTP first"}).to_string()
+            None => json_error("Init SFTP first")
         }
     }
 
@@ -159,22 +155,21 @@ impl AddIn{
 
         let sftp = match &self.sftp {
             Some(s) => s,
-            None => return json!({"result": false, "error": "Init SFTP first"}).to_string()
+            None => return json_error("Init SFTP first")
         };
 
         let mut file =  match std::fs::File::create(file_path){
             Ok(f) => f,
-            Err(e) => return format_json_error(format!("File error: {}", e).as_str())
+            Err(e) => return json_error(format!("File error: {}", e))
         };
 
         match download_to_writer(sftp, path, &mut file){
             Ok(b) => json!({"result": true, "bytes": b, "filepath": file_path}).to_string(),
-            Err(e) => format_json_error(&e)
+            Err(e) => json_error(&e)
         }
     }
 
     pub fn download_to_vec(&mut self, path: &str) -> Result<Vec<u8>, String> {
-
         match &self.sftp{
             Some(s) => {
 
@@ -182,17 +177,14 @@ impl AddIn{
 
                 match download_to_writer(s, path, &mut buffer){
                     Ok(_) => Ok(buffer),
-                    Err(e) => Err(format_json_error(&e))
+                    Err(e) => Err(json_error(&e))
                 }
-
             },
-            None => Err(json!({"result": false, "error": "Init SFTP first"}).to_string())
+            None => Err(json_error("Init SFTP first"))
         }
-
     }
 
     pub fn rename_object(&mut self, path: &str, new_path: &str, overwrite: bool) -> String {
-
         match &self.sftp{
             Some(s) => {
 
@@ -202,11 +194,11 @@ impl AddIn{
                 };
 
                 match s.rename(path.as_ref(), new_path.as_ref(), flags) {
-                    Ok(_) => json!({"result": true}).to_string(),
-                    Err(e) => format_json_error(&e.to_string())
+                    Ok(_) => json_success(),
+                    Err(e) => json_error(&e)
                 }
             },
-            None => json!({"result": false, "error": "Init SFTP first"}).to_string()
+            None => json_error("Init SFTP first")
         }
     }
 
@@ -253,7 +245,6 @@ fn form_file_info(path: &PathBuf, data: &FileStat) -> Value{
 
     let object_path = path.to_str().unwrap_or("").to_string();
     let object_perm = data.perm.unwrap_or(0);
-
 
     let object_filename = path
         .file_name()
