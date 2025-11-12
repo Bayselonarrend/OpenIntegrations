@@ -10,9 +10,11 @@ use std::string::String;
 use std::time::{Duration, Instant};
 use base64::Engine;
 use base64::engine::general_purpose;
-use common_tcp::config::ProxySettings;
+use common_tcp::proxy_settings::ProxySettings;
+use common_tcp::tls_settings::TlsSettings;
+use common_utils::utils::{json_error, json_success};
 use suppaftp::types::Response;
-use crate::component::configuration::{FtpSettings, FtpTlsSettings};
+use crate::component::configuration::FtpSettings;
 use crate::component::{passive_establish, tls_establish};
 
 pub enum FtpClient {
@@ -84,14 +86,14 @@ impl FtpClient {
 
                 match stream.login(user, pass){
                     Ok(_) => Ok(FtpClient::Secure(stream)),
-                    Err(e) => Err(format_json_error(&e.to_string()))
+                    Err(e) => Err(json_error(&e))
                 }
 
             }
             FtpClient::Insecure(mut stream) => {
                 match stream.login(user, pass){
                     Ok(_) => Ok(FtpClient::Insecure(stream)),
-                    Err(e) => Err(format_json_error(&e.to_string()))
+                    Err(e) => Err(json_error(&e))
                 }
             }
         }
@@ -115,8 +117,8 @@ impl FtpClient {
         };
 
         match result {
-            Ok(_) => json!({"result": true}).to_string(),
-            Err(e) => format_json_error(&e.to_string())
+            Ok(_) => json_success(),
+            Err(e) => json_error(&e)
         }
     }
 
@@ -128,8 +130,8 @@ impl FtpClient {
         };
 
         match result {
-            Ok(_) => json!({"result": true}).to_string(),
-            Err(e) => format_json_error(&e.to_string())
+            Ok(_) => json_success(),
+            Err(e) => json_error(&e)
         }
     }
 
@@ -156,7 +158,7 @@ impl FtpClient {
                 }
                 json!({"result": true, "count": count, "data": objects}).to_string()
             },
-            Err(e) => format_json_error(&e.to_string())
+            Err(e) => json_error(&e)
         }
     }
 
@@ -168,7 +170,7 @@ impl FtpClient {
     pub fn upload_file(&mut self, path: &str, filepath: &str) -> String {
         let file = match std::fs::File::open(filepath) {
             Ok(f) => f,
-            Err(e) => return format_json_error(format!("File error: {}", e))
+            Err(e) => return json_error(format!("File error: {}", e))
         };
 
         let mut buf_reader = BufReader::new(file);
@@ -180,7 +182,7 @@ impl FtpClient {
 
         let mut file =  match std::fs::File::create(file_path){
             Ok(f) => f,
-            Err(e) => return format_json_error(format!("File error: {}", e))
+            Err(e) => return json_error(format!("File error: {}", e))
         };
 
         match self.download_to_writer(path, &mut file){
@@ -203,8 +205,8 @@ impl FtpClient {
         };
 
         match result {
-            Ok(_) => json!({"result": true}).to_string(),
-            Err(e) => format_json_error(&e.to_string())
+            Ok(_) => json_success(),
+            Err(e) => json_error(&e)
         }
     }
 
@@ -212,7 +214,7 @@ impl FtpClient {
 
         match self.get_size(path) {
             Ok(b) => json!({"result": true, "bytes": b}).to_string(),
-            Err(e) => format_json_error(&e.to_string())
+            Err(e) => json_error(&e)
         }
 
     }
@@ -225,8 +227,8 @@ impl FtpClient {
         };
 
         match result {
-            Ok(_) => json!({"result": true}).to_string(),
-            Err(e) => format_json_error(&e.to_string())
+            Ok(_) => json_success(),
+            Err(e) => json_error(&e)
         }
     }
 
@@ -239,7 +241,7 @@ impl FtpClient {
 
         match result {
             Ok(r) => process_ftp_response(r),
-            Err(e) => format_json_error(&e.to_string())
+            Err(e) => json_error(&e)
         }
     }
 
@@ -252,7 +254,7 @@ impl FtpClient {
 
         match result {
             Ok(r) => process_ftp_response(r),
-            Err(e) => format_json_error(&e.to_string())
+            Err(e) => json_error(&e)
         }
     }
 
@@ -279,7 +281,7 @@ impl FtpClient {
 
         match result {
             Ok(f) => json!({"result": true, "data": f}).to_string(),
-            Err(e) => format_json_error(&e.to_string())
+            Err(e) => json_error(&e)
         }
 
     }
@@ -292,7 +294,7 @@ impl FtpClient {
 
         match result {
             Ok(p) => json!({"result": true, "path": p}).to_string(),
-            Err(e) => format_json_error(&e.to_string())
+            Err(e) => json_error(&e)
         }
     }
 
@@ -304,8 +306,8 @@ impl FtpClient {
         };
 
         match result {
-            Ok(_) => json!({"result": true}).to_string(),
-            Err(e) => format_json_error(&e.to_string())
+            Ok(_) => json_success(),
+            Err(e) => json_error(&e)
         }
     }
 
@@ -321,18 +323,18 @@ impl FtpClient {
                 let mut data_stream = match $stream.put_with_stream($path)
                     .map_err(|e| format!("Data stream error: {}", e)){
                     Ok(stream) => stream,
-                    Err(e) => return format_json_error(&e.to_string())
+                    Err(e) => return json_error(e)
                 };
 
                 let bytes = match copy($reader, &mut data_stream) {
                     Ok(b) => {
                         match wait_for_writable(&mut data_stream, Duration::from_secs(5)){
                             Ok(_) => {},
-                            Err(e) => return format_json_error(e)
+                            Err(e) => return json_error(e)
                         };
                         b
                     },
-                    Err(e) => return format_json_error(format!("Upload error: {}", &e.to_string()))
+                    Err(e) => return json_error(format!("Upload error: {}", &e.to_string()))
                 };
 
                 $stream.finalize_put_stream(data_stream)
@@ -348,7 +350,7 @@ impl FtpClient {
 
         match result {
             Ok(b) => json!({"result": true, "bytes": b}).to_string(),
-            Err(e) => format_json_error(&e.to_string())
+            Err(e) => json_error(&e)
         }
     }
 
@@ -373,7 +375,7 @@ impl FtpClient {
 
         match result {
             Ok(b) => Ok(b),
-            Err(e) => Err(format_json_error(e))
+            Err(e) => Err(json_error(e))
         }
 
     }
@@ -389,7 +391,7 @@ impl FtpClient {
 
 pub fn configure_ftp_client(
     ftp_settings: &FtpSettings,
-    tls_settings: Option<&FtpTlsSettings>,
+    tls_settings: Option<&TlsSettings>,
     proxy_settings: Option<&ProxySettings>,
     tcp_stream: TcpStream,
 ) -> Result<FtpClient, String> {
@@ -400,17 +402,17 @@ pub fn configure_ftp_client(
     if tls_settings.is_some_and(|s| s.use_tls) {
         let tls = tls_settings.unwrap();
         let tls_connector = tls_establish::get_tls_connector(tls)
-            .map_err(|e| format_json_error(&e.to_string()))?;
+            .map_err(|e| json_error(&e))?;
 
         let mut ftp_stream = RustlsFtpStream::connect_with_stream(tcp_stream)
-            .map_err(|e| format_json_error(&e.to_string()))?;
+            .map_err(|e| json_error(&e))?;
 
         ftp_stream.set_mode(mode);
         ftp_stream.set_passive_nat_workaround(true);
 
         let mut secure_stream = ftp_stream
             .into_secure(RustlsConnector::from(tls_connector), &ftp_settings.domain)
-            .map_err(|e| format_json_error(&e.to_string()))?;
+            .map_err(|e| json_error(&e))?;
 
         if passive_proxy {
             let ftp_settings_clone = ftp_settings.clone();
@@ -425,7 +427,7 @@ pub fn configure_ftp_client(
 
     } else {
         let mut ftp_stream = FtpStream::connect_with_stream(tcp_stream)
-            .map_err(|e| format_json_error(&e.to_string()))?;
+            .map_err(|e| json_error(e))?;
 
         ftp_stream.set_mode(mode);
         ftp_stream.set_passive_nat_workaround(true);
@@ -443,21 +445,11 @@ pub fn configure_ftp_client(
     }
 }
 
-fn format_json_error<E: ToString>(error: E) -> String {
-    let error_message = error.to_string();
-    let json_obj = json!({
-        "result": false,
-        "error": error_message,
-    });
-    json_obj.to_string()
-}
-
 fn wait_for_writable<S>(stream: &mut S, timeout: Duration) -> Result<(), String>
 where
     S: Write
 {
     let start = Instant::now();
-
     loop {
         match stream.write(&[]) {
             Ok(_) => return Ok(()),

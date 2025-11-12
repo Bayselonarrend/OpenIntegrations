@@ -26,3 +26,4 @@ rustls = { version = "0.23.28", features = ["ring"] }
 rustls-pemfile = "2.2.0"
 httparse = "1.10.1"
 common-tcp = { path = "../!commons/common-tcp" }
+common-utils = { path = "../!commons/common-utils" }

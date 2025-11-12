@@ -22,8 +22,9 @@ base64 = "0.22.1"
 chrono = "0.4.39"
 uuid = { version = "1.12.1", features = ["v4"] }
 postgres-native-tls = "0.5"
-native-tls = "0.2.14"
 dateparser = "0.2.1"
-dashmap = "7.0.0-rc2"
+common-tcp = { path = "../!commons/common-tcp" }
+common-utils = { path = "../!commons/common-utils" }
+common-dataset = { path = "../!commons/common-dataset" }
 
 

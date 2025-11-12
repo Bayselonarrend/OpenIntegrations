@@ -1,13 +1,13 @@
 mod backend;
-mod dataset;
 
 use addin1c::{name, Variant};
 use crate::core::getset;
 use serde_json::json;
 use std::sync::{Arc, Mutex};
-use crate::component::dataset::Datasets;
+use common_dataset::dataset::Datasets;
+use common_tcp::tls_settings::TlsSettings;
+use common_utils::utils::{json_error, json_success};
 
-// МЕТОДЫ КОМПОНЕНТЫ
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
     name!("Close"),
@@ -61,81 +61,66 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
 
             let result = match obj.datasets.init_query(&text, force, from_file){
                 Ok(key) => json!({"result": true, "key": key}).to_string(),
-                Err(e) => format_json_error(&e)
+                Err(e) => json_error(&e)
             };
-
             Box::new(result)
         },
-
         5 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             let filepath = params[1].get_string().unwrap_or("".to_string());
-
             let result = match obj.datasets.result_as_file(&key, &filepath){
-                Ok(_) => json!({"result": true}).to_string(),
-                Err(e) => format_json_error(&e)
+                Ok(_) => json_success(),
+                Err(e) => json_error(&e)
             };
 
             Box::new(result)
         },
-
         6 => {
             let key = params[0].get_string().unwrap_or("".to_string());
-
             let result = obj.datasets.result_as_string(&key)
-                .unwrap_or_else(|e| format_json_error(&e));
+                .unwrap_or_else(|e| json_error(&e));
 
             Box::new(result)
 
         },
-
         7 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             let filepath = params[1].get_string().unwrap_or("".to_string());
 
             let result = match obj.datasets.params_from_file(&key, &filepath){
                 Ok(_) => json!({"result": true}).to_string(),
-                Err(e) => format_json_error(&e)
+                Err(e) => json_error(&e)
             };
 
             Box::new(result)
         },
-
         8 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             let json = params[1].get_string().unwrap_or("".to_string());
-
             let result = match obj.datasets.params_from_string(&key, &json){
-                Ok(_) => json!({"result": true}).to_string(),
-                Err(e) => format_json_error(&e)
+                Ok(_) => json_success(),
+                Err(e) => json_error(&e)
             };
-
             Box::new(result)
-
         },
-
         9 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             obj.datasets.remove(&key);
-            Box::new(json!({"result": true}).to_string())
+            Box::new(json_success())
         },
-
         10 => {
             let input = params[0].get_string().unwrap_or("".to_string());
             let output = params[1].get_string().unwrap_or("".to_string());
-
             let result = match obj.datasets.batch_query_init(&input, &output){
-                Ok(_) => json!({"result": true}).to_string(),
-                Err(e) => format_json_error(&e)
+                Ok(_) => json_success(),
+                Err(e) => json_error(&e)
             };
-
             Box::new(result)
         },
         _ => Box::new(false),
     }
 }
 
-// ПОЛЯ КОМПОНЕНТЫ
 pub const PROPS: &[&[u16]] = &[
     name!("ConnectionString")
 ];
@@ -144,9 +129,7 @@ pub struct AddIn {
     connection_string: String,
     backend: Arc<Mutex<backend::MSSQLBackend>>,
     initialized: bool,
-    use_tls: bool,
-    accept_invalid_certs: bool,
-    ca_cert_path: String,
+    tls: Option<TlsSettings>,
     datasets: Datasets,
 }
 
@@ -156,108 +139,86 @@ impl AddIn {
             connection_string: String::new(),
             backend: Arc::new(Mutex::new(backend::MSSQLBackend::new())),
             initialized: false,
-            use_tls: false,
-            accept_invalid_certs: false,
-            ca_cert_path: String::new(),
+            tls: None,
             datasets: Datasets::new(),
         }
     }
 
     pub fn initialize(&mut self) -> String {
         if self.connection_string.is_empty() {
-            return Self::error("Empty connection string!");
+            return json_error("Empty connection string!");
         }
 
         if self.initialized {
-            return Self::error("Client already initialized!");
+            return json_error("Client already initialized!");
         }
 
         let result = match self.backend.lock(){
             Ok(b) => {
                 b.connect(
                 self.connection_string.clone(),
-                self.use_tls,
-                self.accept_invalid_certs,
-                self.ca_cert_path.clone(),
+                self.tls.clone(),
             )},
-            Err(e) => Self::error(&e.to_string())
+            Err(e) => json_error(&e.to_string())
         };
 
         if result.contains("\"result\":true") {
             self.initialized = true;
         }
-
         result
     }
 
     pub fn close_connection(&mut self) -> String {
-
         match self.backend.lock() {
             Ok(mut guard) => {
                 guard.shutdown();
             }
             Err(e) => {
-                return format_json_error(format!("Failed to acquire backend lock during close: {}", e).as_str());
+                return json_error(format!("Failed to acquire backend lock during close: {}", e));
             }
         }
 
         self.backend = Arc::new(Mutex::new(backend::MSSQLBackend::new()));
         self.initialized = false;
-
-        json!({"result": true}).to_string()
+        json_success()
     }
 
     pub fn execute_query(&self, key: &str) -> String {
         match self.backend.lock(){
             Ok(backend) => {
-
                 let query = match self.datasets.get_query(key){
                     Some(q) => q,
-                    None => return Self::error(format!("No query found by key: {}", key).as_str()),
+                    None => return json_error(format!("No query found by key: {}", key)),
                 };
 
                 let params = query.params;
                 let text = query.text;
                 let force_result = query.force_result;
-
                 let backend_result = backend.execute_query(text, params, force_result);
 
                 match backend_result {
                     Ok(result) => {
                         match result {
                             Some(data) => {
-
                                 self.datasets.set_results(&key, data);
                                 json!({"result": true, "data": true}).to_string()
-
                             },
                             None => json!({"result": true, "data": false}).to_string()
                         }
                     },
-                    Err(e) => Self::error(&e.to_string()),
+                    Err(e) => json_error(&e),
                 }
             },
-            Err(e) => Self::error(&e.to_string()),
+            Err(e) => json_error(&e),
         }
     }
 
     pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
         if self.initialized {
-            return Self::error("TLS settings can only be set before the connection is established");
+            return json_error("TLS settings can only be set before the connection is established");
         }
-
-        self.use_tls = use_tls;
-        self.accept_invalid_certs = accept_invalid_certs;
-        self.ca_cert_path = ca_cert_path.to_string();
-
-        json!({"result": true}).to_string()
-    }
-
-    fn error(message: &str) -> String {
-        json!({
-            "result": false,
-            "error": message
-        }).to_string()
+        self.tls = Some(TlsSettings::new(use_tls, accept_invalid_certs, ca_cert_path));
+        json_success()
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
@@ -272,6 +233,3 @@ impl AddIn {
     }
 }
 
-pub fn format_json_error(error: &str) -> String {
-    json!({"result": false, "error": error}).to_string()
-}

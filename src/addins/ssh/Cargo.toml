@@ -18,11 +18,11 @@ addin1c = "0.5.0"
 serde_json = "1.0.140"
 serde = { version = "1.0.219", features = ["derive"] }
 common-tcp = { path = "../!commons/common-tcp" }
+common-utils = { path = "../!commons/common-utils" }
 
 [target.'cfg(all(windows, target_env = "msvc"))'.dependencies.ssh2]
 version = "0.9.5"
 features = ["vendored-openssl", "openssl-on-win32"]
 
-# Для всех остальных платформ (Linux, macOS, Windows GNU)
 [target.'cfg(not(all(windows, target_env = "msvc")))'.dependencies.ssh2]
 version = "0.9.5"
