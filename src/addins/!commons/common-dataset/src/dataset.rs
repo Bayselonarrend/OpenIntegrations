@@ -130,7 +130,6 @@ impl Datasets {
         Ok(())
     }
 
-
     pub fn remove(&self, key: &str) {
         self.data.remove(key);
     }

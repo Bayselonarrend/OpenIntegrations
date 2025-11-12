@@ -1,10 +1,11 @@
 use postgres::types::{ToSql};
 use serde_json::{Value, json, Map};
 use base64::{engine::general_purpose, Engine as _};
-use crate::component::{format_json_error, AddIn};
+use crate::component::AddIn;
 use std::collections::HashMap;
 use std::net::IpAddr;
 use chrono::{NaiveDate, NaiveTime, FixedOffset, NaiveDateTime, DateTime};
+use common_utils::utils::json_error;
 use uuid::Uuid;
 use dateparser::parse;
 
@@ -12,17 +13,17 @@ pub fn execute_query(add_in: &mut AddIn, key: &str) -> String {
 
     let client_arc = match add_in.get_connection() {
         Some(c) => c,
-        None => return format_json_error("No connection initialized"),
+        None => return json_error("No connection initialized"),
     };
 
     let mut client = match client_arc.lock(){
         Ok(c) => c,
-        Err(_) => return format_json_error("Cannot acquire client lock"),
+        Err(_) => return json_error("Cannot acquire client lock"),
     };
 
     let query = match add_in.datasets.get_query(key){
         Some(q) => q,
-        None => return format_json_error(format!("No query found by key: {}", key).as_str()),
+        None => return json_error(format!("No query found by key: {}", key).as_str()),
     };
 
     let params = query.params;
@@ -31,7 +32,7 @@ pub fn execute_query(add_in: &mut AddIn, key: &str) -> String {
 
     let params_ref = match process_params(&params){
         Ok(params) => params,
-        Err(e) => return format_json_error(&e.to_string()),
+        Err(e) => return json_error(&e.to_string()),
     };
 
     let params_unboxed: Vec<_> = params_ref.iter().map(AsRef::as_ref).collect();
@@ -45,12 +46,12 @@ pub fn execute_query(add_in: &mut AddIn, key: &str) -> String {
                 json!({"result": true, "data": true}).to_string()
 
             }
-            Err(e) => format_json_error(&e.to_string()),
+            Err(e) => json_error(&e.to_string()),
         }
     } else {
         match client.execute(&text, &params_unboxed.as_slice()) {
             Ok(_) => json!({"result": true, "data": false}).to_string(),
-            Err(e) => format_json_error(&e.to_string()),
+            Err(e) => json_error(&e.to_string()),
         }
     }
 }
@@ -325,7 +326,6 @@ fn process_sql_value(column_name: &str, column_type: &str, row: &postgres::Row) 
     };
     Ok(value)
 }
-
 
 fn parse_date(input: &str) -> Result<NaiveDateTime, String> {
     parse(input)

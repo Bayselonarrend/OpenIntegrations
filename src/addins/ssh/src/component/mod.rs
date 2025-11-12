@@ -3,14 +3,11 @@ mod sftp_methods;
 mod ssh_methods;
 
 use addin1c::{name, Variant};
-use serde_json::json;
+use common_utils::utils::json_error;
 use crate::core::getset;
 use ssh2::{Session, Sftp};
 use crate::component::ssh_settings::SshConf;
 
-// МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
-
-// Синонимы
 pub const METHODS: &[&[u16]] = &[
     name!("SetSettings"),
     name!("SetProxy"),
@@ -32,7 +29,6 @@ pub const METHODS: &[&[u16]] = &[
     name!("GetFileInfo"),
 ];
 
-// Число параметров функций компоненты
 pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 1,
@@ -57,8 +53,6 @@ pub fn get_params_amount(num: usize) -> usize {
     }
 }
 
-// Соответствие функций Rust функциям компоненты
-// Вызовы должны быть обернуты в Box::new
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
 
     match num {
@@ -89,7 +83,6 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         7 => {
             let path = params[0].get_string().unwrap_or("".to_string());
             let mode = params[1].get_i32().unwrap_or(0);
-
             Box::new(obj.make_directory(&path, mode))
         },
         8 => {
@@ -103,17 +96,14 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         10 => {
             let file = params[0].get_string().unwrap_or("".to_string());
             let path = params[1].get_string().unwrap_or("".to_string());
-
             Box::new(obj.upload_file(&file, &path))
         },
         11 => {
-
             let data = match params[0].get_blob(){
                 Ok(b) => b,
                 Err(e) => return Box::new(
-                    format_json_error(format!("Blob error: {}", e.to_string()).as_str()))
+                    json_error(format!("Blob error: {}", e.to_string())))
             };
-
             let path = params[1].get_string().unwrap_or("".to_string());
             Box::new(obj.upload_data(data, &path))
         },
@@ -125,16 +115,12 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.sftp.is_some())
         },
         14 => {
-
             let path = params[0].get_string().unwrap_or("".to_string());
             let filepath = params[1].get_string().unwrap_or("".to_string());
-
             Box::new(obj.download_to_file(&path, &filepath))
         },
-
         15 => {
             let path = params[0].get_string().unwrap_or("".to_string());
-
             match obj.download_to_vec(&path) {
                 Ok(v) => Box::new(v),
                 Err(e) => Box::new(e)
@@ -144,24 +130,17 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let path = params[0].get_string().unwrap_or("".to_string());
             let new_path = params[1].get_string().unwrap_or("".to_string());
             let overwrite = params[2].get_bool().unwrap_or(false);
-
             Box::new(obj.rename_object(&path, &new_path, overwrite))
         },
         17 => {
             let path = params[0].get_string().unwrap_or("".to_string());
-
             Box::new(obj.get_file_info(&path))
         }
-        _ => Box::new(false), // Неверный номер команды
+        _ => Box::new(false),
     }
 
 }
 
-// -------------------------------------------------------------------------------------------------
-
-// ПОЛЯ КОМПОНЕНТЫ ---------------------------------------------------------------------------------
-
-// Синонимы
 pub const PROPS: &[&[u16]] = &[];
 
 pub struct AddIn {
@@ -187,14 +166,6 @@ impl AddIn {
     }
     pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType { self.get_field_ptr(index) as *mut _ }
 }
-// -------------------------------------------------------------------------------------------------
-
-
-pub fn format_json_error(error: &str) -> String {
-    json!({"result": false, "error": error}).to_string()
-}
-
-// УНИЧТОЖЕНИЕ ОБЪЕКТА -----------------------------------------------------------------------------
 
 impl Drop for AddIn {
     fn drop(&mut self) {}

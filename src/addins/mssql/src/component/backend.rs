@@ -9,6 +9,8 @@ use uuid::Uuid;
 use base64::{engine::general_purpose, Engine as _};
 use std::f64;
 use chrono::*;
+use common_tcp::tls_settings::TlsSettings;
+use common_utils::utils::json_error;
 use tiberius::numeric::Decimal;
 use tiberius::ColumnType;
 use tiberius::xml::XmlData;
@@ -22,9 +24,7 @@ pub struct MSSQLBackend {
 enum BackendCommand {
     Connect {
         conn_str: String,
-        use_tls: bool,
-        accept_invalid_certs: bool,
-        ca_cert_path: String,
+        tls: Option<TlsSettings>,
         response: Sender<String>,
     },
     Execute {
@@ -51,19 +51,20 @@ impl MSSQLBackend {
             while let Ok(cmd) = rx.recv() {
 
                 match cmd {
-                    BackendCommand::Connect { conn_str, use_tls, accept_invalid_certs, ca_cert_path, response } => {
+                    BackendCommand::Connect { conn_str, tls, response } => {
 
                         let result = rt.block_on(async {
                             let mut config = Config::from_ado_string(&conn_str)?;
 
-                            if use_tls {
-                                if accept_invalid_certs {
-                                    config.trust_cert();
-                                } else if !ca_cert_path.is_empty() {
-                                    config.trust_cert_ca(&ca_cert_path);
+                            if let Some(tls) = &tls {
+                                if tls.enabled(){
+                                    if tls.accept_invalid_certs {
+                                        config.trust_cert();
+                                    } else if !tls.ca_cert_path.is_empty() {
+                                        config.trust_cert_ca(&tls.ca_cert_path);
+                                    }
                                 }
                             }
-
                             let tcp = TcpStream::connect(config.get_addr()).await?;
                             tcp.set_nodelay(true)?;
                             Client::connect(config, tcp.compat_write()).await
@@ -86,7 +87,7 @@ impl MSSQLBackend {
                                 Some(client)
                             },
                             Err(e) => {
-                                let _ =  response.send(json!({"result": false, "error": e.to_string()}).to_string());
+                                let _ =  response.send(json_error(&e));
                                 None
                             }
                         };
@@ -103,7 +104,6 @@ impl MSSQLBackend {
 
                         let _ = response.send(result);
                     }
-
                     BackendCommand::Shutdown => break,
                 }
             }
@@ -115,29 +115,24 @@ impl MSSQLBackend {
         }
     }
 
-    pub fn connect(&self, conn_str: String, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: String) -> String {
+    pub fn connect(&self, conn_str: String, tls: Option<TlsSettings>) -> String {
 
         let (response_tx, response_rx) = mpsc::channel();
         let sending = self.tx.send(BackendCommand::Connect {
             conn_str,
-            use_tls,
-            accept_invalid_certs,
-            ca_cert_path,
+            tls,
             response: response_tx,
         });
-
         match sending{
             Err(e) => {return format!("Sending error: {}", e.to_string())}
             _ => {}
         };
-
         response_rx.recv().unwrap_or_else(|e| format!("Response receiver error: {}", e.to_string()))
     }
 
     pub fn execute_query(&self, query: String, params_json: Vec<Value>, force_result: bool) -> Result<Option<Vec<Value>>, String> {
 
         let (response_tx, response_rx) = mpsc::channel::<Result<Option<Vec<Value>>, String>>();
-
         let sending = self.tx.send(BackendCommand::Execute {
             query,
             params_json,
@@ -178,7 +173,6 @@ impl MSSQLBackend {
 
         let mut params = params_json;
         let params_array = Self::process_mssql_params(&mut params);
-
         let normalized_query = query.trim_start().to_uppercase();
         let params_refs: Vec<&dyn ToSql> = params_array.iter().map(|b| b.as_ref()).collect();
 

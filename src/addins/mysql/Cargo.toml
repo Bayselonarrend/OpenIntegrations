@@ -21,5 +21,6 @@ base64 = "0.22.1"
 chrono = "0.4.40"
 mysql_common = "0.34.1"
 dateparser = "0.2.1"
-dashmap = "7.0.0-rc2"
-uuid = { version = "1.16.0", features = ["v4"] }
+common-tcp = { path = "../!commons/common-tcp" }
+common-utils = { path = "../!commons/common-utils" }
+common-dataset = { path = "../!commons/common-dataset" }
