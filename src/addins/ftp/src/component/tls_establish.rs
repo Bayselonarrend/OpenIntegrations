@@ -3,13 +3,13 @@ use rustls::pki_types::{CertificateDer, ServerName, UnixTime};
 use rustls::{ClientConfig, DigitallySignedStruct};
 use std::fmt::{Debug, Formatter};
 use std::sync::Arc;
+use common_tcp::tls_settings::TlsSettings;
 use rustls::crypto::ring;
 use suppaftp::RustlsConnector;
-use crate::component::configuration::FtpTlsSettings;
 
 pub struct NoCertificateVerification;
 
-pub fn get_tls_connector(tls_settings: &FtpTlsSettings) -> Result<RustlsConnector, String> {
+pub fn get_tls_connector(tls_settings: &TlsSettings) -> Result<RustlsConnector, String> {
 
     let _ = ring::default_provider()
         .install_default();
@@ -17,9 +17,9 @@ pub fn get_tls_connector(tls_settings: &FtpTlsSettings) -> Result<RustlsConnecto
     let mut root_store =
         rustls::RootCertStore::from_iter(webpki_roots::TLS_SERVER_ROOTS.iter().cloned());
 
-    if tls_settings.ca_cert_path.is_some() {
+    if !tls_settings.ca_cert_path.is_empty() {
 
-        let cert_data = std::fs::read(&tls_settings.ca_cert_path.clone().unwrap())
+        let cert_data = std::fs::read(&tls_settings.ca_cert_path)
             .map_err(|e| format!("Failed to read CA cert file: {}", e))?;
 
         let mut cursor = std::io::Cursor::new(cert_data);

@@ -1,15 +1,13 @@
 mod methods;
-mod dataset;
 
 use addin1c::{name, Variant};
 use std::sync::{Mutex, Arc};
 use crate::core::getset;
 use rusqlite::{Connection, OpenFlags};
 use serde_json::json;
-use crate::component::dataset::Datasets;
-// МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
+use common_dataset::dataset::Datasets;
+use common_utils::utils::{json_error, json_success};
 
-// Синонимы
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
     name!("Close"),
@@ -22,10 +20,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("SetParamsFromString"),
     name!("RemoveQueryDataset"),
     name!("BatchQuery")
-
 ];
 
-// Число параметров функций компоненты
 pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 0,
@@ -43,12 +39,9 @@ pub fn get_params_amount(num: usize) -> usize {
     }
 }
 
-// Соответствие функций Rust функциям компоненты
-// Вызовы должны быть обернуты в Box::new
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
 
     match num {
-
         0 => Box::new(obj.initialize()),
         1 => Box::new(obj.close_connection()),
         2 => {
@@ -58,100 +51,73 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         3 => {
             let path = params[0].get_string().unwrap_or("".to_string());
             let point = params[1].get_string().unwrap_or("".to_string());
-
             Box::new(methods::load_extension(obj, path, point))
         },
         4 => {
-
             let text = params[0].get_string().unwrap_or("".to_string());
             let force = params[1].get_bool().unwrap_or(false);
             let from_file = params[2].get_bool().unwrap_or(false);
-
             let result = match obj.datasets.init_query(&text, force, from_file){
                 Ok(key) => json!({"result": true, "key": key}).to_string(),
-                Err(e) => format_json_error(&e)
+                Err(e) => json_error(&e)
             };
-
             Box::new(result)
         },
-
         5 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             let filepath = params[1].get_string().unwrap_or("".to_string());
-
             let result = match obj.datasets.result_as_file(&key, &filepath){
-                Ok(_) => json!({"result": true}).to_string(),
-                Err(e) => format_json_error(&e)
+                Ok(_) => json_success(),
+                Err(e) => json_error(&e)
             };
-
             Box::new(result)
         },
-
         6 => {
             let key = params[0].get_string().unwrap_or("".to_string());
-
             let result = obj.datasets.result_as_string(&key)
-                .unwrap_or_else(|e| format_json_error(&e));
-
+                .unwrap_or_else(|e| json_error(&e));
             Box::new(result)
-
         },
-
         7 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             let filepath = params[1].get_string().unwrap_or("".to_string());
-
             let result = match obj.datasets.params_from_file(&key, &filepath){
-                Ok(_) => json!({"result": true}).to_string(),
-                Err(e) => format_json_error(&e)
+                Ok(_) => json_success(),
+                Err(e) => json_error(&e)
             };
-
             Box::new(result)
         },
-
         8 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             let json = params[1].get_string().unwrap_or("".to_string());
-
             let result = match obj.datasets.params_from_string(&key, &json){
-                Ok(_) => json!({"result": true}).to_string(),
-                Err(e) => format_json_error(&e)
+                Ok(_) => json_success(),
+                Err(e) => json_error(&e)
             };
-
             Box::new(result)
-
         },
-
         9 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             obj.datasets.remove(&key);
-            Box::new(json!({"result": true}).to_string())
+            Box::new(json_success())
         },
         10 => {
             let input = params[0].get_string().unwrap_or("".to_string());
             let output = params[1].get_string().unwrap_or("".to_string());
-
             let result = match obj.datasets.batch_query_init(&input, &output){
-                Ok(_) => json!({"result": true}).to_string(),
-                Err(e) => format_json_error(&e)
+                Ok(_) => json_success(),
+                Err(e) => json_error(&e)
             };
-
             Box::new(result)
         },
-        _ => Box::new(false), // Неверный номер команды
+        _ => Box::new(false),
     }
 
 }
 
-// -------------------------------------------------------------------------------------------------
-
-// ПОЛЯ КОМПОНЕНТЫ ---------------------------------------------------------------------------------
-
-// Синонимы
 pub const PROPS: &[&[u16]] = &[
     name!("Database")
 ];
-
 
 pub struct AddIn {
     connection_string: String,
@@ -160,7 +126,6 @@ pub struct AddIn {
 }
 
 impl AddIn {
-    /// Создает новый объект
     pub fn new() -> Self {
         AddIn {
             connection_string: String::new(),
@@ -186,7 +151,6 @@ impl AddIn {
                 r#"{"result": true}"#.to_string()
             }
             Err(e) => {
-
                 let detailed_error = match e {
                     rusqlite::Error::SqliteFailure(err, msg) => {
                         format!(
@@ -198,11 +162,7 @@ impl AddIn {
                     }
                     _ => e.to_string(),
                 };
-
-                json!({
-                    "result": false,
-                    "error": detailed_error
-                    }).to_string()
+                json_error(detailed_error)
             }
         }
     }
@@ -216,28 +176,14 @@ impl AddIn {
             match Arc::try_unwrap(conn) {
                 Ok(conn_mutex) => match conn_mutex.into_inner() {
                     Ok(conn) => match conn.close() {
-                        Ok(_) => json!({"result": true}).to_string(),
-                        Err((_conn, err)) => json!({
-                            "result": false,
-                            "error": err.to_string()
-                        }).to_string(),
+                        Ok(_) => json_success(),
+                        Err((_conn, err)) => json_error(&err),
                     },
-                    Err(_) => json!({
-                        "result": false,
-                        "error": "Failed to acquire connection lock"
-                    }).to_string(),
+                    Err(_) => json_error("Failed to acquire connection lock"),
                 },
-                Err(_) => json!({
-                    "result": false,
-                    "error": "Connection is still in use by other threads"
-                }).to_string(),
+                Err(_) => json_error("Connection is still in use by other threads"),
             }
-        } else {
-            json!({
-                "result": false,
-                "error": "Connection already closed"
-            }).to_string()
-        }
+        } else { json_error("Connection already closed") }
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
@@ -248,16 +194,7 @@ impl AddIn {
     }
     pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType { self.get_field_ptr(index) as *mut _ }
 }
-// -------------------------------------------------------------------------------------------------
 
-
-pub fn format_json_error(error: &str) -> String {
-    json!({"result": false, "error": error}).to_string()
-}
-
-// УНИЧТОЖЕНИЕ ОБЪЕКТА -----------------------------------------------------------------------------
-
-// Обработка удаления объекта
 impl Drop for AddIn {
     fn drop(&mut self) {}
 }

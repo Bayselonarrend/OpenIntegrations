@@ -2,33 +2,26 @@ mod methods;
 
 use addin1c::{name, Variant};
 use crate::core::getset;
-use std::net::TcpStream;
+use std::net::{SocketAddr};
 use crate::component::methods::disconnect;
-use native_tls::{TlsStream};
 use serde_json::json;
-use std::fs::File;
-use std::io::Read;
+use common_tcp::proxy_settings::ProxySettings;
+use common_tcp::tcp_establish::{create_connection, resolve_to_socket_addr, Connection};
+use common_tcp::tls_settings::TlsSettings;
+use common_utils::utils::{json_error, json_success};
 
-pub enum Connection {
-    Plain(TcpStream),
-    Tls(TlsStream<TcpStream>),
-}
-
-// МЕТОДЫ КОМПОНЕНТЫ -------------------------------------------------------------------------------
-
-// Синонимы
 pub const METHODS: &[&[u16]] = &[
-    name!("Connect"),     // 0
-    name!("Disconnect"),  // 1
-    name!("Read"),        // 2
-    name!("Send"),        // 3
-    name!("CloseOutput"), // 4
-    name!("SetTLS"),      // 5
-    name!("GetLastError"),// 6
-    name!("SetAddress"),  // 7
+    name!("Connect"),          // 0
+    name!("Disconnect"),       // 1
+    name!("Read"),             // 2
+    name!("Send"),             // 3
+    name!("CloseOutput"),      // 4
+    name!("SetTLS"),           // 5
+    name!("GetLastError"),     // 6
+    name!("SetAddress"),       // 7
+    name!("SetProxySettings"), // 8
 ];
 
-// Число параметров функций компоненты
 pub fn get_params_amount(num: usize) -> usize {
     match num {
         0 => 0,
@@ -38,175 +31,128 @@ pub fn get_params_amount(num: usize) -> usize {
         4 => 0,
         5 => 3,
         6 => 0,
-        7 => 2,
+        7 => 1,
+        8 => 1,
         _ => 0,
     }
 }
 
-// Соответствие функций Rust функциям компоненты
-// Вызовы должны быть обернуты в Box::new
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
 
     let empty_array: [u8; 0] = [];
 
     match num {
-
         0 => Box::new(obj.connect()),
-        1 => {
-            disconnect(obj);
-            Box::new(true) // Возвращаем true для обозначения успешного выполнения
-        },
+        1 => Box::new(disconnect(obj)),
         2 => {
-
             let maxsize = params[0].get_i32().unwrap_or(0);
             let marker = params[1].get_blob().unwrap_or(&empty_array);
             let timeout = params[2].get_i32().unwrap_or(0);
-
             Box::new(methods::receive(obj, maxsize, marker.to_vec(), timeout))
-
         },
         3 => {
-
             let data = params[0].get_blob().unwrap_or(&empty_array);
             let timeout = params[1].get_i32().unwrap_or(0);
-
             Box::new(methods::send(obj, data.to_vec(), timeout))
-
         },
-        4 => Box::new(methods::close_output(obj))
-,
+        4 => Box::new(methods::close_output(obj)),
         5 => {
-
             let use_tls = params[0].get_bool().unwrap_or(false);
             let accept_invalid_certs = params[1].get_bool().unwrap_or(false);
             let ca_cert_path = params[2].get_string().unwrap_or("".to_string());
-
             Box::new(obj.set_tls(use_tls, accept_invalid_certs, &ca_cert_path))
-
         },
         6 => Box::new(obj.last_error.clone()),
 
         7 => {
             let addr = params[0].get_string().unwrap_or("".to_string());
-            let host = params[1].get_string().unwrap_or("".to_string());
-
-            Box::new(obj.set_address(&addr, &host))
+            Box::new(obj.set_address(&addr))
+        },
+        8 => {
+            let json = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.set_proxy(&json))
         }
-
-        _ => Box::new(false), // Неверный номер команды
+        _ => Box::new(false),
     }
 
 }
 
-// -------------------------------------------------------------------------------------------------
-
-// ПОЛЯ КОМПОНЕНТЫ ---------------------------------------------------------------------------------
-
-// Синонимы
 pub const PROPS: &[&[u16]] = &[
     name!("Address")
 ];
 
-
 pub struct AddIn {
-    address: String,
-    host: String,
+    address_str: String,
+    address: Option<SocketAddr>,
     connection: Option<Connection>,
-    use_tls: bool,
-    accept_invalid_certs: bool,
-    ca_cert_path: String,
+    tls: Option<TlsSettings>,
+    proxy: Option<ProxySettings>,
     last_error: String,
 }
 
 impl AddIn {
-    /// Создает новый объект
     pub fn new() -> Self {
         AddIn {
-            address: String::new(),
-            host: String::new(),
+            address_str: String::new(),
+            address: None,
             connection: None,
-            use_tls: false,
-            accept_invalid_certs: false,
-            ca_cert_path: String::new(),
+            tls: None,
+            proxy: None,
             last_error: String::new(),
         }
     }
 
-    pub fn set_address(&mut self, address: &str, host: &str) -> bool{
-        self.address = address.to_string();
-        self.host = host.to_string();
-        true
+    pub fn set_address(&mut self, address: &str) -> String{
+        match resolve_to_socket_addr(address){
+            Ok(a) => {
+                self.address = Some(a);
+                self.address_str = a.to_string();
+                json_success()
+            },
+            Err(e) => {
+                json_error(&e)
+            }
+        }
     }
 
-    /// Подключается к серверу
+    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
+        if self.connection.is_some() {
+            return json_error("TLS settings can only be set before the connection is established");
+        };
+        self.tls = Some(TlsSettings::new(use_tls, accept_invalid_certs, ca_cert_path));
+        json!({"result": true}).to_string()
+    }
+
+    pub fn set_proxy(&mut self, data: &str) -> String{
+        if self.connection.is_some() {
+            return json_error("Proxy settings can only be set before the connection is established");
+        };
+        self.proxy = match ProxySettings::from_json(data){
+            Ok(p) => Some(p),
+            Err(e) => return json_error(&e)
+        };
+
+        json!({"result": true}).to_string()
+    }
+
     pub fn connect(&mut self) -> bool {
-        if self.address.is_empty() {
-            self.save_error("No address found!");
-            return false; // Ошибка: пустой адрес
-        }
 
-        match TcpStream::connect(&self.address) {
-            Ok(tcp_stream) => {
-                if self.use_tls {
-
-                    let mut builder = native_tls::TlsConnector::builder();
-
-                    if !self.ca_cert_path.is_empty() {
-                        let mut cert_data = Vec::new();
-                        let mut cert_file = match File::open(&self.ca_cert_path) {
-                            Ok(file) => file,
-                            Err(e) => {
-                                self.save_error(&e.to_string());
-                                return false
-                            },
-                        };
-
-                        match cert_file.read_to_end(&mut cert_data) {
-                            Ok(_) => {},
-                            Err(e) => {
-                                self.save_error(&e.to_string());
-                                return false;
-                            }
-                        }
-
-                        let cert = match native_tls::Certificate::from_pem(&cert_data) {
-                            Ok(cert) => cert,
-                            Err(e) => {
-                                self.save_error(&e.to_string());
-                                return false;
-                            }
-                        };
-
-                        builder.add_root_certificate(cert);
-                    }
-
-                    if self.accept_invalid_certs {
-                        builder.danger_accept_invalid_certs(true);
-                    }
-
-                    let connector = match builder.build() {
-                        Ok(connector) => connector,
-                        Err(e) => {
-                            self.save_error(&e.to_string());
-                            return false;
-                        }
-                    };
-
-                    match connector.connect(&self.host, tcp_stream) {
-                        Ok(tls_stream) => {
-                            self.connection = Some(Connection::Tls(tls_stream));
-                            true
-                        }
-                        Err(e) => {
-                            self.save_error(&e.to_string());
-                            false
-                        }
-                    }
-                } else {
-                    self.connection = Some(Connection::Plain(tcp_stream));
-                    true
-                }
+        let addr = match self.address{
+            Some(a) => a,
+            None => {
+                self.save_error("No address found!");
+                return false;
             }
+        };
+
+        let host = addr.ip().to_string();
+        let port = addr.port();
+
+        match create_connection(&host, port, &self.proxy, &self.tls) {
+            Ok(conn) => {
+                self.connection = Some(conn);
+                true
+            },
             Err(e) => {
                 self.save_error(&e.to_string());
                 false
@@ -214,36 +160,15 @@ impl AddIn {
         }
     }
 
-    pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
-
-        if self.connection.is_some() {
-            return Self::process_error("TLS settings can only be set before the connection is established");
-        }
-
-        self.use_tls = use_tls;
-        self.accept_invalid_certs = accept_invalid_certs;
-        self.ca_cert_path = ca_cert_path.to_string();
-
-        json!({"result": true}).to_string()
-    }
-
-    fn process_error(e: &str) -> String{
-        json!({
-            "result": false,
-            "error": e
-        }).to_string()
-    }
-
     pub fn save_error(&mut self, e: &str){
-        self.last_error = Self::process_error(e);
+        self.last_error = json_error(e);
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
         match index {
-            0 => &self.address as &dyn getset::ValueType as *const _,
+            0 => &self.address_str as &dyn getset::ValueType as *const _,
             _ => panic!("Index out of bounds"),
         }
     }
     pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType { self.get_field_ptr(index) as *mut _ }
 }
-// -------------------------------------------------------------------------------------------------

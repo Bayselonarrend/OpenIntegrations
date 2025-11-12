@@ -1,13 +1,13 @@
 use std::io::Read;
 use std::path::Path;
 use common_tcp::tcp_establish::create_tcp_connection;
+use common_utils::utils::{json_error, json_success};
 use serde_json::json;
 use ssh2::{MethodType, Session};
-use crate::component::{format_json_error, AddIn};
+use crate::component::AddIn;
 use crate::component::ssh_settings::{SshAuthTypes, SshConf};
 
 impl AddIn{
-
     pub fn set_settings(&mut self, settings: String) -> String{
 
         let mut conf = self.conf.take().unwrap_or_else(|| SshConf::new());
@@ -15,11 +15,10 @@ impl AddIn{
         match conf.set_settings(settings) {
             Ok(_) => {
                 self.conf = Some(conf);
-                json!({"result": true}).to_string()
+                json_success()
             },
-            Err(e) => format_json_error(&e),
+            Err(e) => json_error(&e),
         }
-
     }
 
     pub fn set_proxy(&mut self, proxy: String) -> String{
@@ -29,9 +28,9 @@ impl AddIn{
         match conf.set_proxy(proxy) {
             Ok(_) => {
                 self.conf = Some(conf);
-                json!({"result": true}).to_string()
+                json_success()
             },
-            Err(e) => format_json_error(&e),
+            Err(e) => json_error(&e),
         }
 
     }
@@ -40,12 +39,12 @@ impl AddIn{
 
         let conf_data = match &self.conf{
             Some(conf_data) => conf_data,
-            None => return format_json_error("No configuration found")
+            None => return json_error("No configuration found")
         };
 
         let settings = match &conf_data.set {
             Some(settings) => settings,
-            None => return format_json_error("No settings found")
+            None => return json_error("No settings found")
         };
 
         let username= &settings.username;
@@ -57,11 +56,10 @@ impl AddIn{
 
         let tcp = match create_tcp_connection(&settings.host, settings.port, proxy){
             Ok(tcp) => tcp,
-            Err(e) => return format_json_error(format!("TCP error: {}", e.to_string()).as_str())
+            Err(e) => return json_error(format!("TCP error: {}", e.to_string()))
         };
 
         ssh2::init();
-
         let mut identities = vec![];
         let methods;
         let banner;
@@ -72,10 +70,9 @@ impl AddIn{
                 methods = sess.auth_methods(username).unwrap_or("").to_string();
                 banner = sess.banner().unwrap_or("").to_string();
                 kex = sess.methods(MethodType::Kex).unwrap_or("").to_string();
-
                 sess
             },
-            Err(e) => return format_json_error(format!("Session error: {}", e.to_string()).as_str())
+            Err(e) => return json_error(format!("Session error: {}", e.to_string()))
         };
 
         match sess.agent(){
@@ -113,7 +110,7 @@ impl AddIn{
 
                 let path = match key_path{
                     Some(key_path) => key_path.as_ref(),
-                    None => return format_json_error("No key path provided with PK auth type")
+                    None => return json_error("No key path provided with PK auth type")
                 };
 
                 let pub_path = match pub_path{
@@ -127,16 +124,15 @@ impl AddIn{
         };
 
         if let Err(e) = auth_success{
-            return format_json_error(format!("Auth error: {}", e.to_string()).as_str());
+            return json_error(format!("Auth error: {}", e.to_string()));
         };
 
         if !sess.authenticated(){
-            return format_json_error("Authentication failed with no errors");
+            return json_error("Authentication failed with no errors");
         }
 
         self.inner = Some(sess);
-
-        json!({"result": true}).to_string()
+        json_success()
 
     }
 
@@ -144,16 +140,16 @@ impl AddIn{
 
         let session = match &self.inner{
             Some(sess) => sess,
-            None => return format_json_error("No session"),
+            None => return json_error("No session"),
         };
 
         let mut channel = match session.channel_session(){
             Ok(channel) => channel,
-            Err(e) => return format_json_error(&e.to_string())
+            Err(e) => return json_error(&e)
         };
 
         if let Err(e) = channel.exec(command){
-            return format_json_error(&e.to_string());
+            return json_error(&e);
         };
 
         let mut stdout = String::new();
@@ -177,25 +173,22 @@ impl AddIn{
         };
 
         json!({"result": true, "exit_code": code, "stdout": stdout, "stderr": stderr}).to_string()
-
     }
 
     pub fn get_configuration(&mut self) -> String{
-
         let conf = match &self.conf{
             Some(conf) => conf,
-            None => return format_json_error("No configuration found")
+            None => return json_error("No configuration found")
         };
-
         json!({"result": true, "conf": conf}).to_string()
     }
 
     pub fn disconnect(&mut self) -> String{
         if let Some(_conn) = self.inner.take() {
             self.sftp.take();
-            json!({"result": true}).to_string()
+            json_success()
         } else {
-            json!({"result": false, "error": "No session"}).to_string()
+            json_error("No session")
         }
     }
 }

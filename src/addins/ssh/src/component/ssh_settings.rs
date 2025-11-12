@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use common_tcp::config::ProxySettings;
+use common_tcp::proxy_settings::ProxySettings;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum SshAuthTypes{
@@ -21,7 +21,6 @@ pub struct SshSettings {
     pub key_path: Option<String>,
     pub pub_path: Option<String>,
     pub passphrase: Option<String>,
-
 }
 
 #[derive(Deserialize,Serialize,Clone)]
@@ -51,5 +50,4 @@ impl SshConf {
             Err(e) => Err(e.to_string())
         }
     }
-
 }

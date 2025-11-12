@@ -3,7 +3,7 @@ use std::time::Duration;
 use suppaftp::FtpError;
 use crate::component::configuration::FtpSettings;
 use std::vec::IntoIter;
-use common_tcp::config::ProxySettings;
+use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tcp_establish::create_tcp_connection;
 
 pub fn make_passive_proxy_stream(
@@ -23,7 +23,6 @@ pub fn make_passive_proxy_stream(
     };
 
     let corrected_addr = if let Some(domain) = redirect {
-
         match get_socket_addr(domain, addr.port()) {
             Ok(mut addrs) => addrs.next().unwrap_or(addr),
             Err(_) => addr,
@@ -37,24 +36,17 @@ pub fn make_passive_proxy_stream(
             std::io::Error::new(std::io::ErrorKind::Other, e))){
 
         Ok(tcp_connection) => {
-
             let w_timeout = Some(Duration::from_secs(ftp_settings.write_timeout));
             let r_timeout = Some(Duration::from_secs(ftp_settings.read_timeout));
-
             let _ = tcp_connection.set_write_timeout(w_timeout);
             let _ = tcp_connection.set_read_timeout(r_timeout);
-
             Ok(tcp_connection)
-
         },
         Err(e) => Err(e)
     }
 }
 
-pub fn create_tcp_connection_for_passive(
-    proxy_settings: &Option<ProxySettings>,
-    addr: SocketAddr) -> Result<TcpStream, String> {
-
+pub fn create_tcp_connection_for_passive(proxy_settings: &Option<ProxySettings>, addr: SocketAddr) -> Result<TcpStream, String> {
     let ip = addr.ip().to_string();
     create_tcp_connection(ip.as_str(), addr.port(), proxy_settings)
 }
