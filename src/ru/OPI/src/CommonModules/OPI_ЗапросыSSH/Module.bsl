@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tools/Modules/OPI_ЗапросыSSH.os
+﻿// OneScript: ./OInt/tools/Modules/OPI_ЗапросыSSH.os
 
 // MIT License
 

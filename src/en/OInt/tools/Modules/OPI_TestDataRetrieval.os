@@ -397,6 +397,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "MSS_ORM"                             , "ORM"                             , MSSQL);
     NewTest(TestTable, "Mongo_CommonMethods"                 , "Common methods"                  , MongoDB);
     NewTest(TestTable, "Mong_DatabaseManagement"             , "Database management"             , MongoDB);
+    NewTest(TestTable, "Mongo_CollectionManagement"          , "Collections management"          , MongoDB);
     NewTest(TestTable, "GAPI_GroupManagement"                , "Group management"                , GreenAPI);
     NewTest(TestTable, "GAPI_MessageSending"                 , "Messages sending"                , GreenAPI);
     NewTest(TestTable, "GAPI_NotificationsReceiving"         , "Notifications receiving"         , GreenAPI);
@@ -10277,7 +10278,10 @@ Function Check_HTTPClient_SplitArraysInURL(Val Result, Val Option)
 EndFunction
 
 Function Check_HTTPClient_SendDataInParts(Val Result, Val Option)
+
+    ExpectsThat(Result).ИмеетТип("Map");
     Return Result;
+
 EndFunction
 
 Function Check_HTTPClient_SendPart(Val Result, Val Option)
@@ -12108,6 +12112,48 @@ Function Check_MongoDB_GetDatabase(Val Result, Val Option)
     ExpectsThat(Result["result"]).Равно(True);
     ExpectsThat(Result["data"]["ok"]).Равно(1);
     ExpectsThat(Result["data"]["db"]).Равно("test_db");
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_GetListOfBases(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"]["databases"]).ИмеетТип("Array").Заполнено();
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_CreateCollection(Val Result, Val Option)
+
+    If Option = "Existing" Then
+        ExpectsThat(Result["result"]).Равно(False);
+        ExpectsThat(StrFind(Result["error"], "already exists") > 0).Равно(True);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"]["ok"]).Равно(1);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_DeleteCollection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"]["ok"]).Равно(1);
+    ExpectsThat(Result["data"]["ns"]).Равно("test_database.test_collection");
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_GetCollectionList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"]["ok"]).Равно(1);
 
     Return Result;
 

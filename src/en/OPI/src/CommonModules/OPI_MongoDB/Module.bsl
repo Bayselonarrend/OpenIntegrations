@@ -275,7 +275,9 @@ EndFunction
 // Map Of KeyAndValue - Operation result
 Function GetDatabase(Val Connection, Val Base = Undefined) Export
 
-    OPI_TypeConversion.GetLine(Base);
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
 
     Result = ExecuteCommand(Connection, "dbStats", , Base);
     Return Result;
@@ -293,7 +295,9 @@ EndFunction
 // Map Of KeyAndValue - Operation result
 Function DeleteDatabase(Val Connection, Val Base = Undefined) Export
 
-    OPI_TypeConversion.GetLine(Base);
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
 
     Result = ExecuteCommand(Connection, "dropDatabase", , Base);
     Return Result;
@@ -303,6 +307,26 @@ EndFunction
 #EndRegion
 
 #Region CollectionManagement
+
+// Get collection list
+// Gets a list of database collections
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Base - String - Database name. Current database if not specified - db
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function GetCollectionList(Val Connection, Val Base = Undefined) Export
+
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
+
+    Result = ExecuteCommand(Connection, "listCollections", , Base);
+    Return Result;
+
+EndFunction
 
 // Create collection
 // Creates a new collection with the specified parameters
@@ -330,7 +354,7 @@ Function CreateCollection(Val Connection
         OPI_TypeConversion.GetLine(Base);
     EndIf;
 
-    Result = ExecuteCommand(Connection, "createCollection", Name, Base, Parameters);
+    Result = ExecuteCommand(Connection, "create", Name, Base, Parameters);
     Return Result;
 
 EndFunction
@@ -360,11 +384,64 @@ EndFunction
 
 #EndRegion
 
+#Region DocumentsManagement
+
+// Insert documents
+// Inserts new documents into the collection
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Collection - String - Collection name - coll
+// Values - Array Of Arbitrary - Array of docs objects - docs
+// Base - String - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional insert options - params
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function InsertDocuments(Val Connection
+    , Val Collection
+    , Val Values
+    , Val Base = Undefined
+    , Val Parameters = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Collection);
+    OPI_TypeConversion.GetArray(Values);
+
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
+
+    If Parameters <> Undefined Then
+        OPI_TypeConversion.GetKeyValueCollection(Parameters);
+    Else
+        Parameters = New Structure;
+    EndIf;
+
+    DocsArray = New Array;
+
+    For Each Element In Values Do
+
+        CurrentElement = Element;
+        OPI_TypeConversion.GetKeyValueCollection(CurrentElement);
+        DocsArray.Add(CurrentElement);
+
+    EndDo;
+
+    Parameters.Insert("documents", DocsArray);
+
+    Result = ExecuteCommand(Connection, "insert", Collection, Base, Parameters);
+
+    Return Result;
+
+EndFunction
+
+#EndRegion
+
 #EndRegion
 
 #Region Private
 
-Function ProcessDataForOperation(Val Data)
+Function ProcessDataForOperation(Val Data, Covered = False)
 
     Try
 
@@ -375,6 +452,7 @@ Function ProcessDataForOperation(Val Data)
     Except
 
         ProcessedData = Data;
+        CurrentKey    = Undefined;
 
         If OPI_Tools.ThisIsCollection(ProcessedData) Then
 
@@ -382,16 +460,22 @@ Function ProcessDataForOperation(Val Data)
 
         ElsIf TypeOf(ProcessedData) = Type("BinaryData") Then
 
-            ProcessedData = New Structure("__OPI_BINARY__", GetBase64StringFromBinaryData(ProcessedData));
+            ProcessedData = GetBase64StringFromBinaryData(ProcessedData);
+            CurrentKey    = "__OPI_BINARY__";
 
         ElsIf TypeOf(ProcessedData) = Type("Date") Then
 
-            ProcessedData = New Structure("__OPI_DATE__", OPI_Tools.DateRFC3339(ProcessedData));
+            ProcessedData = OPI_Tools.DateRFC3339(ProcessedData);
+            CurrentKey    = "__OPI_DATETIME__";
 
         ElsIf Not TypeOf(ProcessedData) = Type("Number") And Not TypeOf(ProcessedData) = Type("Boolean") Then
 
             OPI_TypeConversion.GetLine(ProcessedData);
 
+        EndIf;
+
+        If ValueIsFilled(CurrentKey) And Not Covered Then
+            ProcessedData = New Structure(CurrentKey, ProcessedData);
         EndIf;
 
     EndTry;
@@ -409,7 +493,8 @@ Function ProcessCollectionForOperation(Val Data)
         For Each DataPart In Data Do
 
             CurrentKey   = String(DataPart.Key);
-            CurrentValue = ProcessDataForOperation(DataPart.Value);
+            Covered      = StrStartsWith(CurrentKey, "__OPI_");
+            CurrentValue = ProcessDataForOperation(DataPart.Value, Covered);
 
             ProcessedData.Insert(CurrentKey, CurrentValue);
 

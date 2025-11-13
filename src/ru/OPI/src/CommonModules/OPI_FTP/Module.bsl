@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_FTP.os
+﻿// OneScript: ./OInt/core/Modules/OPI_FTP.os
 // Lib: FTP
 // CLI: ftp
 // Keywords: ftp, ftps
