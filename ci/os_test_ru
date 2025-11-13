@@ -330,6 +330,7 @@ pipeline {
 					def tests = [
 						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Mongo_ОсновныеМетоды'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Mongo_РаботаСБазами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'Mongo_РаботаСКоллекциями'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
