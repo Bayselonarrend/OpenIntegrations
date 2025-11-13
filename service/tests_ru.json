@@ -6563,5 +6563,30 @@
 "lib": "MongoDB",
 "name": "ПолучитьБазуДанных",
 "variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "ПолучитьСписокБаз",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "СоздатьКоллекцию",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "СоздатьКоллекцию",
+"variant": "Существующая"
+},
+{
+"lib": "MongoDB",
+"name": "УдалитьКоллекцию",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "ПолучитьСписокКоллекций",
+"variant": ""
 }
 ]
