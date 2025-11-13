@@ -10,7 +10,8 @@
     "paths": null,
     "tests": [
 "OPI_Tests.Mongo_CommonMethods",
-"OPI_Tests.Mong_DatabaseManagement"
+"OPI_Tests.Mong_DatabaseManagement",
+"OPI_Tests.Mongo_CollectionManagement"
     ]
   },
   "settings": {
