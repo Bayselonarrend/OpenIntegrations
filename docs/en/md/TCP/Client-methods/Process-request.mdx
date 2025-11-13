@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, Val Tls = "") Export`
+`Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, Val Tls = "", Val Proxy = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -20,6 +20,7 @@ import TabItem from '@theme/TabItem';
   | Data | --data | String, BinaryData | &#x2716; | Data or text to be sent |
   | ResponseString | --string | Boolean | &#x2716; | An attribute of receiving the response as a string |
   | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+  | Proxy | --proxy | Structure Of KeyAndValue | &#x2716; | Proxy settings, if required. See GetProxySettings |
 
   
   Returns:  BinaryData, String - Response or error information
@@ -39,9 +40,16 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     Result = OPI_TCP.ProcessRequest(Address, Data);
 
     Address = "tcpbin.com:4243";
-    Tls     = OPI_TCP.GetTLSSettings(True);
 
-    Result = OPI_TCP.ProcessRequest(Address, Data, , Tls);
+    ProxtUser     = "proxyuser";
+    ProxyPassword = "12we...";
+    ProxyAddress  = "127.0.0.1";
+    ProxyPort     = "1080";
+
+    Proxy = OPI_TCP.GetProxySettings(ProxyAddress, ProxyPort, "socks5", ProxtUser, ProxyPassword);
+    Tls   = OPI_TCP.GetTLSSettings(True);
+
+    Result = OPI_TCP.ProcessRequest(Address, Data, , Tls, Proxy);
 ```
  
 

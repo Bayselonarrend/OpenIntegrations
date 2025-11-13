@@ -66,6 +66,73 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library   = "tcp";
     NewLine.Module       = "OPI_TCP";
+    NewLine.Method        = "ProcessRequest";
+    NewLine.SearchMethod  = "PROCESSREQUEST";
+    NewLine.Parameter     = "--proxy";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Proxy settings, if required. See GetProxySettings (optional, def. val. - Empty value)";
+    NewLine.Region      = "Client methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "tcp";
+    NewLine.Module       = "OPI_TCP";
+    NewLine.Method        = "GetProxySettings";
+    NewLine.SearchMethod  = "GETPROXYSETTINGS";
+    NewLine.Parameter     = "--addr";
+    NewLine.ParameterTrim = "-a";
+    NewLine.Description     = "Proxy address";
+    NewLine.Region      = "Client methods";
+    NewLine.MethodDescription   = "Creates a structure of proxy server settings for the connection";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "tcp";
+    NewLine.Module       = "OPI_TCP";
+    NewLine.Method        = "GetProxySettings";
+    NewLine.SearchMethod  = "GETPROXYSETTINGS";
+    NewLine.Parameter     = "--port";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Proxy port";
+    NewLine.Region      = "Client methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "tcp";
+    NewLine.Module       = "OPI_TCP";
+    NewLine.Method        = "GetProxySettings";
+    NewLine.SearchMethod  = "GETPROXYSETTINGS";
+    NewLine.Parameter     = "--type";
+    NewLine.ParameterTrim = "-t";
+    NewLine.Description     = "Proxy type: socks5, socks4, http (optional, def. val. - socks5)";
+    NewLine.Region      = "Client methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "tcp";
+    NewLine.Module       = "OPI_TCP";
+    NewLine.Method        = "GetProxySettings";
+    NewLine.SearchMethod  = "GETPROXYSETTINGS";
+    NewLine.Parameter     = "--login";
+    NewLine.ParameterTrim = "-l";
+    NewLine.Description     = "Authorization login, if required (optional, def. val. - Empty value)";
+    NewLine.Region      = "Client methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "tcp";
+    NewLine.Module       = "OPI_TCP";
+    NewLine.Method        = "GetProxySettings";
+    NewLine.SearchMethod  = "GETPROXYSETTINGS";
+    NewLine.Parameter     = "--pass";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Authorization password, if required (optional, def. val. - Empty value)";
+    NewLine.Region      = "Client methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "tcp";
+    NewLine.Module       = "OPI_TCP";
     NewLine.Method        = "GetTlsSettings";
     NewLine.SearchMethod  = "GETTLSSETTINGS";
     NewLine.Parameter     = "--trust";
