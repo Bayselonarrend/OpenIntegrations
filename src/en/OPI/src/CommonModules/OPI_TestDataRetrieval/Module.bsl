@@ -7772,6 +7772,16 @@ Function Check_TCP_GetLastError(Val Result, Val Option)
 
 EndFunction
 
+Function Check_TCP_GetProxySettings(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Result["password"] = "***";
+
+    Return Result;
+
+EndFunction
+
 Function Check_SQLite_CreateConnection(Val Result, Val Option)
 
     If Option  = "Closing" Then
