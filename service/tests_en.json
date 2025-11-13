@@ -4180,6 +4180,11 @@
 "variant": ""
 },
 {
+"lib": "TCP",
+"name": "GetProxySettings",
+"variant": ""
+},
+{
 "lib": "SQLite",
 "name": "CreateConnection",
 "variant": ""

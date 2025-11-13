@@ -4,6 +4,13 @@
     Result = OPI_TCP.ProcessRequest(Address, Data);
 
     Address = "tcpbin.com:4243";
-    Tls     = OPI_TCP.GetTLSSettings(True);
 
-    Result = OPI_TCP.ProcessRequest(Address, Data, , Tls);
+    ProxtUser     = "proxyuser";
+    ProxyPassword = "12we...";
+    ProxyAddress  = "127.0.0.1";
+    ProxyPort     = "1080";
+
+    Proxy = OPI_TCP.GetProxySettings(ProxyAddress, ProxyPort, "socks5", ProxtUser, ProxyPassword);
+    Tls   = OPI_TCP.GetTLSSettings(True);
+
+    Result = OPI_TCP.ProcessRequest(Address, Data, , Tls, Proxy);

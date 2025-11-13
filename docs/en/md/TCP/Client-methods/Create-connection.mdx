@@ -12,12 +12,13 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function CreateConnection(Val Address, Val Tls = "") Export`
+`Function CreateConnection(Val Address, Val Tls = "", Val Proxy = "") Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Address | - | String | &#x2714; | Address and port |
   | Tls | - | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+  | Proxy | - | Structure Of KeyAndValue | &#x2716; | Proxy settings, if required. See GetProxySettings |
 
   
   Returns:  Map Of KeyAndValue, Arbitrary - Returns TCP client object on successful connection or error information
@@ -37,9 +38,18 @@ import TabItem from '@theme/TabItem';
 
     OPI_TCP.CloseConnection(Connection);
 
-    Address    = "tcpbin.com:4243";
-    Tls        = OPI_TCP.GetTLSSettings(True);
-    Connection = OPI_TCP.CreateConnection(Address, TLS);
+    Address = "tcpbin.com:4243";
+    Tls     = OPI_TCP.GetTLSSettings(True);
+
+    ProxtUser     = "proxyuser";
+    ProxyPassword = "12we...";
+    ProxyAddress  = "127.0.0.1";
+    ProxyPort     = "1080";
+
+    Proxy = OPI_TCP.GetProxySettings(ProxyAddress, ProxyPort, "socks5", ProxtUser, ProxyPassword);
+    Tls   = OPI_TCP.GetTLSSettings(True);
+
+    Connection = OPI_TCP.CreateConnection(Address, TLS, Proxy);
 ```
  
 

@@ -2246,6 +2246,10 @@ Procedure TC_Client() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("TCP_Address"   , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("TCP_AddressTLS", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Proxy_User"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Proxy_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Socks5_IP"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Socks5_Port"   , TestParameters);
 
     TCP_CreateConnection(TestParameters);
     TCP_CloseConnection(TestParameters);
@@ -2256,6 +2260,7 @@ Procedure TC_Client() Export
     TCP_ProcessRequest(TestParameters);
     TCP_GetTLSSettings(TestParameters);
     TCP_GetLastError(TestParameters);
+    TCP_GetProxySettings(TestParameters);
 
 EndProcedure
 
@@ -14819,9 +14824,20 @@ Procedure TCP_CreateConnection(FunctionParameters)
 
     OPI_TCP.CloseConnection(Connection);
 
-    Address    = "tcpbin.com:4243";
-    Tls        = OPI_TCP.GetTLSSettings(True);
-    Connection = OPI_TCP.CreateConnection(Address, TLS);
+    Address = "tcpbin.com:4243";
+    Tls     = OPI_TCP.GetTLSSettings(True);
+
+    ProxtUser     = FunctionParameters["Proxy_User"];
+    ProxyPassword = FunctionParameters["Proxy_Password"];
+    ProxyAddress  = FunctionParameters["Socks5_IP"];
+    ProxyPort     = FunctionParameters["Socks5_Port"];
+
+    ProxyAddress = ?(ProxyAddress = "127.0.0.1", OPI_TestDataRetrieval.GetLocalhost(), ProxyAddress); // SKIP
+
+    Proxy = OPI_TCP.GetProxySettings(ProxyAddress, ProxyPort, "socks5", ProxtUser, ProxyPassword);
+    Tls   = OPI_TCP.GetTLSSettings(True);
+
+    Connection = OPI_TCP.CreateConnection(Address, TLS, Proxy);
 
     // END
 
@@ -14914,9 +14930,18 @@ Procedure TCP_ProcessRequest(FunctionParameters)
     Process(Result, "TCP", "ProcessRequest", , "Echo this!" + Chars.LF); // SKIP
 
     Address = FunctionParameters["TCP_AddressTLS"];
-    Tls     = OPI_TCP.GetTLSSettings(True);
 
-    Result = OPI_TCP.ProcessRequest(Address, Data, , Tls);
+    ProxtUser     = FunctionParameters["Proxy_User"];
+    ProxyPassword = FunctionParameters["Proxy_Password"];
+    ProxyAddress  = FunctionParameters["Socks5_IP"];
+    ProxyPort     = FunctionParameters["Socks5_Port"];
+
+    ProxyAddress = ?(ProxyAddress = "127.0.0.1", OPI_TestDataRetrieval.GetLocalhost(), ProxyAddress); // SKIP
+
+    Proxy = OPI_TCP.GetProxySettings(ProxyAddress, ProxyPort, "socks5", ProxtUser, ProxyPassword);
+    Tls   = OPI_TCP.GetTLSSettings(True);
+
+    Result = OPI_TCP.ProcessRequest(Address, Data, , Tls, Proxy);
 
     // END
 
@@ -15006,6 +15031,23 @@ Procedure TCP_GetLastError(FunctionParameters)
     // END
 
     Process(Result, "TCP", "GetLastError");
+
+EndProcedure
+
+Procedure TCP_GetProxySettings(FunctionParameters)
+
+    ProxyType = "socks5"; // http, socks5, socks4
+
+    ProxyAddress  = FunctionParameters["Proxy_IP"];
+    ProxyPort     = FunctionParameters["Proxy_Port"];
+    ProxyLogin    = FunctionParameters["Proxy_User"];
+    ProxyPassword = FunctionParameters["Proxy_Password"];
+
+    Result = OPI_TCP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    // END
+
+    Process(Result, "TCP", "GetProxySettings");
 
 EndProcedure
 

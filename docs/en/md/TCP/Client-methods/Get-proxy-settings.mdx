@@ -1,0 +1,46 @@
+﻿---
+sidebar_position: 9
+description: Get proxy settings and other functions to work with TCP in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, TCP]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get proxy settings
+ Creates a structure of proxy server settings for the connection
+
+
+
+`Function GetProxySettings(Val Address, Val Port, Val View = "socks5", Val Login = Undefined, Val Password = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Address | --addr | String | &#x2714; | Proxy address |
+  | Port | --port | Number | &#x2714; | Proxy port |
+  | View | --type | String | &#x2716; | Proxy type: socks5, socks4, http |
+  | Login | --login | String, Undefined | &#x2716; | Authorization login, if required |
+  | Password | --pass | String, Undefined | &#x2716; | Authorization password, if required |
+
+  
+  Returns:  Structure Of KeyAndValue - Proxy settings structure
+
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    ProxyType = "socks5"; // http, socks5, socks4
+
+    ProxyAddress  = "127.0.0.1";
+    ProxyPort     = "8071";
+    ProxyLogin    = "proxyuser";
+    ProxyPassword = "12we...";
+
+    Result = OPI_TCP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+```
+ 
+
+
+
+

@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function DisableRequestsHandler(Val Project, Val HandlersKey) Export`
+`Function DisableSheduledTask(Val Project, Val HandlersKey) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
@@ -28,27 +28,5 @@ import TabItem from '@theme/TabItem';
 
  
 
- <Tabs>
-  
-    <TabItem value="bash" label="Bash" default>
-        ```bash
-            melezh  DisableRequestsHandler \
-              --proj "/proj.melezh" \
-              --handler "cead35dfd"
-        ```
-    </TabItem>
-  
-    <TabItem value="bat" label="CMD/Bat" default>
-        ```batch
-            melezh  DisableRequestsHandler ^
-              --proj "/proj.melezh" ^
-              --handler "cead35dfd"
-        ```
-    </TabItem>
-</Tabs>
 
-```json title="Result"
-{
- "result": true
-}
-```
+
