@@ -27,7 +27,13 @@ pipeline {
         }
         stage('Melezh - Docker') {
             steps {
-                build job: 'Melezh/MelezhDocker', wait: true
+                build job: 'Melezh/MelezhDocker', wait: true,
+                    parameters: [
+                            [$class: 'StringParameterValue', name: 'VERSION', value: 'draft'],
+                            [$class: 'StringParameterValue', name: 'MELEZH_VERSION', value: '0.7.0'],
+                            [$class: 'StringParameterValue', name: 'OINT_VERSION', value: '1.30.0'],
+                            [$class: 'StringParameterValue', name: 'OINT_BUILD_ID', value: 'lastSuccessfulBuild']
+                    ]
             }
         }
 
