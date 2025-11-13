@@ -96,6 +96,7 @@ pipeline {
 					def tests = [
 						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'Mongo_CommonMethods'],
 						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'Mong_DatabaseManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'Mongo_CollectionManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
