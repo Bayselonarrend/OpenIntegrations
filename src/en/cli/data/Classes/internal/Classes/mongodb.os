@@ -191,6 +191,29 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library   = "mongodb";
     NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetCollectionList";
+    NewLine.SearchMethod  = "GETCOLLECTIONLIST";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Collection management";
+    NewLine.MethodDescription   = "Gets a list of database collections";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetCollectionList";
+    NewLine.SearchMethod  = "GETCOLLECTIONLIST";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Collection management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
     NewLine.Method        = "CreateCollection";
     NewLine.SearchMethod  = "CREATECOLLECTION";
     NewLine.Parameter     = "--dbc";
@@ -265,6 +288,62 @@ Function GetComposition() Export
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
     NewLine.Region      = "Collection management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "InsertDocuments";
+    NewLine.SearchMethod  = "INSERTDOCUMENTS";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Documents management";
+    NewLine.MethodDescription   = "Inserts new documents into the collection";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "InsertDocuments";
+    NewLine.SearchMethod  = "INSERTDOCUMENTS";
+    NewLine.Parameter     = "--coll";
+    NewLine.ParameterTrim = "-c";
+    NewLine.Description     = "Collection name";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "InsertDocuments";
+    NewLine.SearchMethod  = "INSERTDOCUMENTS";
+    NewLine.Parameter     = "--docs";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Array of docs objects";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "InsertDocuments";
+    NewLine.SearchMethod  = "INSERTDOCUMENTS";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "InsertDocuments";
+    NewLine.SearchMethod  = "INSERTDOCUMENTS";
+    NewLine.Parameter     = "--params";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Additional insert options (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
 
     Return CompositionTable;
 EndFunction
