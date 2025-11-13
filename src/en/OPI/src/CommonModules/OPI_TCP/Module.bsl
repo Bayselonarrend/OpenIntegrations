@@ -59,13 +59,12 @@ Function CreateConnection(Val Address, Val Tls = "") Export
     OPI_TypeConversion.GetLine(Address);
     OPI_Tools.RestoreEscapeSequences(Address);
 
-    Domain = OPI_Tools.GetDomain(Address);
-
     TCPClient = OPI_AddIns.GetAddIn("TCPClient");
-    Success   = TCPClient.SetAddress(Address, Domain);
+    Success   = TCPClient.SetAddress(Address);
+    Success   = OPI_Tools.JsonToStructure(Success);
 
-    If Not Success Then
-        Return GetLastError(TCPClient);
+    If Not Success["result"] Then
+        Return Success;
     EndIf;
 
     Tls = OPI_AddIns.SetTls(TCPClient, Tls);

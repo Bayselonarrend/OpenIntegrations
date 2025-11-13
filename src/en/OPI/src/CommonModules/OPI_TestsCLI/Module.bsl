@@ -3205,6 +3205,36 @@ Procedure Mong_DatabaseManagement() Export
     OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
 
     MongoDB_GetDatabase(TestParameters);
+    MongoDB_GetListOfBases(TestParameters);
+
+EndProcedure
+
+Procedure Mongo_CollectionManagement() Export
+
+    TestParameters = New Structure;
+
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Port"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_User"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
+
+    MongoDB_CreateCollection(TestParameters);
+    MongoDB_GetCollectionList(TestParameters);
+    MongoDB_DeleteCollection(TestParameters);
+
+EndProcedure
+
+Procedure Mongo_DocumentsManagement() Export
+
+    TestParameters = New Structure;
+
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Port"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_User"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
+
+    MongoDB_InsertDocuments(TestParameters);
 
 EndProcedure
 
@@ -32645,6 +32675,190 @@ Procedure MongoDB_GetDatabase(FunctionParameters)
     // END
 
     Process(Result, "MongoDB", "GetDatabase");
+
+EndProcedure
+
+Procedure MongoDB_GetListOfBases(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("usr", Login);
+    Options.Insert("pwd", Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetListOfBases", Options);
+
+    // END
+
+    Process(Result, "MongoDB", "GetListOfBases");
+
+EndProcedure
+
+Procedure MongoDB_CreateCollection(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("usr", Login);
+    Options.Insert("pwd", Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Name = "test_collection";
+    Base = "test_database";
+
+    Parameters = New Map;
+    Expression = New Map;
+    GroupAnd   = New Array;;
+
+    Condition1 = New Map; // Total >= 0
+    Items1     = New Array;
+    Items1.Add("$total");
+    Items1.Add(0);
+    Condition1.Insert("$gte", Items1);
+
+    Condition2 = New Map; // Status <= 3
+    Items2     = New Array;
+    Items2.Add("$status");
+    Items2.Add(3);
+    Condition2.Insert("$lte", Items2);
+
+    GroupAnd.Add(Condition1);
+    GroupAnd.Add(Condition2);
+
+    Expression.Insert("$expr", GroupAnd);
+    Parameters.Insert("validator", Expression);
+
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+    Options.Insert("name", Name);
+    Options.Insert("db", Base);
+    Options.Insert("params", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateCollection", Options);
+
+    // END
+
+    Process(Result, "MongoDB", "CreateCollection");
+
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+    Options.Insert("name", Name);
+    Options.Insert("db", Base);
+    Options.Insert("params", Parameters);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "CreateCollection", Options);
+
+    Process(Result, "MongoDB", "CreateCollection", "Existing");
+
+EndProcedure
+
+Procedure MongoDB_DeleteCollection(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("usr", Login);
+    Options.Insert("pwd", Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Collection = "test_collection";
+    Base       = "test_database";
+
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+    Options.Insert("coll", Collection);
+    Options.Insert("db", Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "DeleteCollection", Options);
+
+    // END
+
+    Process(Result, "MongoDB", "DeleteCollection");
+
+EndProcedure
+
+Procedure MongoDB_GetCollectionList(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("usr", Login);
+    Options.Insert("pwd", Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Base = "test_database";
+
+    Options = New Structure;
+    Options.Insert("dbc", Connection);
+    Options.Insert("db", Base);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetCollectionList", Options);
+
+    // END
+
+    Process(Result, "MongoDB", "GetCollectionList");
+
+EndProcedure
+
+Procedure MongoDB_InsertDocuments(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("usr", Login);
+    Options.Insert("pwd", Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    DocsArray = New Array;
 
 EndProcedure
 

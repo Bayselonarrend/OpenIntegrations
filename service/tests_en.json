@@ -6563,5 +6563,30 @@
 "lib": "MongoDB",
 "name": "GetDatabase",
 "variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "GetListOfBases",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "CreateCollection",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "CreateCollection",
+"variant": "Existing"
+},
+{
+"lib": "MongoDB",
+"name": "DeleteCollection",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "GetCollectionList",
+"variant": ""
 }
 ]

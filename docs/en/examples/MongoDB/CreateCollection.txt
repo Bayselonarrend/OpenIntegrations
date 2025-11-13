@@ -1,0 +1,34 @@
+﻿    Address  = "127.0.0.1:1234";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Name = "test_collection";
+    Base = "test_database";
+
+    Parameters = New Map;
+    Expression = New Map;
+    GroupAnd   = New Array;;
+
+    Condition1 = New Map; // Total >= 0
+    Items1     = New Array;
+    Items1.Add("$total");
+    Items1.Add(0);
+    Condition1.Insert("$gte", Items1);
+
+    Condition2 = New Map; // Status <= 3
+    Items2     = New Array;
+    Items2.Add("$status");
+    Items2.Add(3);
+    Condition2.Insert("$lte", Items2);
+
+    GroupAnd.Add(Condition1);
+    GroupAnd.Add(Condition2);
+
+    Expression.Insert("$expr", GroupAnd);
+    Parameters.Insert("validator", Expression);
+
+    Result = OPI_MongoDB.CreateCollection(Connection, Name, Base, Parameters);
