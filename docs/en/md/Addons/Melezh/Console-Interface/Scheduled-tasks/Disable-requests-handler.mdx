@@ -1,0 +1,54 @@
+﻿---
+sidebar_position: 7
+description: Disable scheduled task and other functions to work with Melezh in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Disable scheduled task
+ Disables scheduled task by ID
+
+
+
+`Function DisableRequestsHandler(Val Project, Val HandlersKey) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Project | --proj | String | &#x2714; | Project filepath |
+  | TaskID | --task | String | &#x2714; | Task ID |
+
+  
+  Returns:  Structure Of KeyAndValue - Switching result
+
+<br/>
+
+
+
+ 
+
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  DisableRequestsHandler \
+              --proj "/proj.melezh" \
+              --handler "cead35dfd"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  DisableRequestsHandler ^
+              --proj "/proj.melezh" ^
+              --handler "cead35dfd"
+        ```
+    </TabItem>
+</Tabs>
+
+```json title="Result"
+{
+ "result": true
+}
+```
