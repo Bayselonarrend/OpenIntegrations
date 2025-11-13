@@ -44,8 +44,10 @@ pub fn tcp_to_tls(host: &str, tcp_stream: TcpStream, tls: &TlsSettings) -> Resul
 
 pub fn resolve_to_socket_addr(input: &str) -> Result<SocketAddr, String> {
 
-    if let Ok(addr) = input.parse::<SocketAddr>() {
-        return Ok(addr);
+    if let Ok(mut addr) = input.to_socket_addrs() {
+        if let Some(addr) = addr.next() {
+            return Ok(addr);
+        }
     }
 
     let parsed_url = if let Ok(url) = Url::parse(input) {
