@@ -1,0 +1,55 @@
+﻿---
+sidebar_position: 4
+description: Get documents and other functions to work with MongoDB in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MongoDB]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get documents
+ Gets collection documents
+
+
+
+`Function GetDocuments(Val Connection, Val Collection, Val Base = Undefined, Val Filter = Undefined, Val Sort = Undefined, Val Parameters = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --dbc | String, Arbitrary | &#x2714; | Connection or connection string |
+  | Collection | --coll | String | &#x2714; | Collection name |
+  | Base | --db | String | &#x2716; | Database name. Current database if not specified |
+  | Filter | --filter | Structure Of KeyAndValue | &#x2716; | Document filter |
+  | Sort | --sort | Structure Of KeyAndValue | &#x2716; | Selection sorting |
+  | Parameters | --params | Structure Of KeyAndValue | &#x2716; | Additional retrieval parameters |
+
+  
+  Returns:  Map Of KeyAndValue - Operation result
+
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1:1234";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "main";
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Collection = "new_collection";
+
+    Filter     = New Structure("stringField", """Text""");
+    Sort       = New Structure("doubleField", -1);
+    Parameters = New Structure("limit", 2);
+
+    Result = OPI_MongoDB.GetDocuments(Connection, Collection, Base, Filter, Sort, Parameters);
+```
+ 
+
+
+
+
