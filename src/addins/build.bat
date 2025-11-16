@@ -57,7 +57,7 @@ if errorlevel 1 goto :error
 
 echo "MAIN ---" > dependencies.log
 wsl -d OracleLinux_8_7 ldd %OUTPUT_DIR%/AddIn_x64_linux.so >> dependencies.log
-wsl -d OracleLinux_8_7 strings %OUTPUT_DIR%/AddIn_x64_linux.so >> dependencies.log
+wsl -d OracleLinux_8_7 bash -c "strings %OUTPUT_DIR%/AddIn_x64_linux.so | grep GLIBC_" >> dependencies.log
 
 :: Архивация
 powershell -Command "Compress-Archive -Path '%OUTPUT_DIR%\*' -Force -DestinationPath '%LIB_NAME%.zip'"
