@@ -19,8 +19,12 @@ pub fn json_value_to_bson(value: &Value) -> Result<Bson, String> {
         },
         Value::Object(obj) => {
 
-            if let Some(str) = obj.get("__OPI_STRING__"){
-                return Ok(Bson::String(str.to_string()))
+            if let Some(str_value) = obj.get("__OPI_STRING__") {
+                return if let Value::String(s) = str_value {
+                    Ok(Bson::String(s.clone()))
+                } else {
+                    Ok(Bson::String(str_value.to_string()))
+                }
             }
 
             if let Some(int32) = obj.get("__OPI_INT32__") {
@@ -87,12 +91,20 @@ pub fn json_value_to_bson(value: &Value) -> Result<Bson, String> {
                 }
             }
 
-            if let Some(s) = obj.get("__OPI_JS__"){
-                return Ok(Bson::JavaScriptCode(s.to_string()))
+            if let Some(js_value) = obj.get("__OPI_JS__") {
+                return if let Value::String(s) = js_value {
+                    Ok(Bson::JavaScriptCode(s.clone()))
+                } else {
+                    Ok(Bson::JavaScriptCode(js_value.to_string()))
+                }
             }
 
-            if let Some(s) = obj.get("__OPI_SYMBOL__"){
-                return Ok(Bson::Symbol(s.to_string()))
+            if let Some(symbol_value) = obj.get("__OPI_SYMBOL__") {
+                return if let Value::String(s) = symbol_value {
+                    Ok(Bson::Symbol(s.clone()))
+                } else {
+                    Ok(Bson::Symbol(symbol_value.to_string()))
+                }
             }
 
             if let Some(_) = obj.get("__OPI_MINKEY__") {
