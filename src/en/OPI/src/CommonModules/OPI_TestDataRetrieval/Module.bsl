@@ -398,6 +398,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "Mongo_CommonMethods"                 , "Common methods"                  , MongoDB);
     NewTest(TestTable, "Mong_DatabaseManagement"             , "Database management"             , MongoDB);
     NewTest(TestTable, "Mongo_CollectionManagement"          , "Collections management"          , MongoDB);
+    NewTest(TestTable, "Mongo_DocumentsManagement"           , "DocumentsManagement"             , MongoDB);
     NewTest(TestTable, "GAPI_GroupManagement"                , "Group management"                , GreenAPI);
     NewTest(TestTable, "GAPI_MessageSending"                 , "Messages sending"                , GreenAPI);
     NewTest(TestTable, "GAPI_NotificationsReceiving"         , "Notifications receiving"         , GreenAPI);
@@ -12166,6 +12167,21 @@ Function Check_MongoDB_GetCollectionList(Val Result, Val Option)
     ExpectsThat(Result["result"]).Равно(True);
     ExpectsThat(Result["data"]["ok"]).Равно(1);
 
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_InsertDocuments(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"]["ok"]).Равно(1);
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_GetDocuments(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
     Return Result;
 
 EndFunction

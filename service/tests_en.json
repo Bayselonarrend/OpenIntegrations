@@ -6593,5 +6593,15 @@
 "lib": "MongoDB",
 "name": "GetCollectionList",
 "variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "InsertDocuments",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "GetDocuments",
+"variant": ""
 }
 ]

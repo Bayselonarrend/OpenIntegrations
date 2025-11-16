@@ -411,6 +411,9 @@ Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
     ElsIf Type = "Collection" Then
         OPI_TypeConversion.GetCollection(Value);
 
+    ElsIf Type = "KeyAndValue" Then
+        OPI_TypeConversion.GetKeyValueCollection(Value);
+
     ElsIf Type = "Boolean" Then
         OPI_TypeConversion.GetBoolean(Value);
 

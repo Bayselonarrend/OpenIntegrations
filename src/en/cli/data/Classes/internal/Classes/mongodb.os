@@ -345,6 +345,207 @@ Function GetComposition() Export
     NewLine.Description     = "Additional insert options (optional, def. val. - Empty value)";
     NewLine.Region      = "Documents management";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetCursor";
+    NewLine.SearchMethod  = "GETCURSOR";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Documents management";
+    NewLine.MethodDescription   = "Gets a cursor for batch retrieval of collection documents";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetCursor";
+    NewLine.SearchMethod  = "GETCURSOR";
+    NewLine.Parameter     = "--coll";
+    NewLine.ParameterTrim = "-c";
+    NewLine.Description     = "Collection name";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetCursor";
+    NewLine.SearchMethod  = "GETCURSOR";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetCursor";
+    NewLine.SearchMethod  = "GETCURSOR";
+    NewLine.Parameter     = "--filter";
+    NewLine.ParameterTrim = "-f";
+    NewLine.Description     = "Document filter (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetCursor";
+    NewLine.SearchMethod  = "GETCURSOR";
+    NewLine.Parameter     = "--sort";
+    NewLine.ParameterTrim = "-s";
+    NewLine.Description     = "Selection sorting (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetCursor";
+    NewLine.SearchMethod  = "GETCURSOR";
+    NewLine.Parameter     = "--params";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Additional retrieval parameters (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocumentBatch";
+    NewLine.SearchMethod  = "GETDOCUMENTBATCH";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Documents management";
+    NewLine.MethodDescription   = "Gets the next batch of cursor documents";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocumentBatch";
+    NewLine.SearchMethod  = "GETDOCUMENTBATCH";
+    NewLine.Parameter     = "--coll";
+    NewLine.ParameterTrim = "-c";
+    NewLine.Description     = "Collection name";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocumentBatch";
+    NewLine.SearchMethod  = "GETDOCUMENTBATCH";
+    NewLine.Parameter     = "--cursor";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Cursor ID";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocumentBatch";
+    NewLine.SearchMethod  = "GETDOCUMENTBATCH";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocumentBatch";
+    NewLine.SearchMethod  = "GETDOCUMENTBATCH";
+    NewLine.Parameter     = "--limit";
+    NewLine.ParameterTrim = "-l";
+    NewLine.Description     = "Amount of records in the batch (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocumentBatch";
+    NewLine.SearchMethod  = "GETDOCUMENTBATCH";
+    NewLine.Parameter     = "--time";
+    NewLine.ParameterTrim = "-t";
+    NewLine.Description     = "Maximum lock time during awaitData (in ms.) (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocuments";
+    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Documents management";
+    NewLine.MethodDescription   = "Gets collection documents";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocuments";
+    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Parameter     = "--coll";
+    NewLine.ParameterTrim = "-c";
+    NewLine.Description     = "Collection name";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocuments";
+    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocuments";
+    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Parameter     = "--filter";
+    NewLine.ParameterTrim = "-f";
+    NewLine.Description     = "Document filter (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocuments";
+    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Parameter     = "--sort";
+    NewLine.ParameterTrim = "-s";
+    NewLine.Description     = "Selection sorting (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocuments";
+    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Parameter     = "--params";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Additional retrieval parameters (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
     Return CompositionTable;
 EndFunction
 

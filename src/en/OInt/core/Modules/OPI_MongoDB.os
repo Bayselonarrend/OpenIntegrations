@@ -435,6 +435,139 @@ Function InsertDocuments(Val Connection
 
 EndFunction
 
+// Get cursor
+// Gets a cursor for batch retrieval of collection documents
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Collection - String - Collection name - coll
+// Base - String - Database name. Current database if not specified - db
+// Filter - Structure Of KeyAndValue - Document filter - filter
+// Sort - Structure Of KeyAndValue - Selection sorting - sort
+// Parameters - Structure Of KeyAndValue - Additional retrieval parameters - params
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function GetCursor(Val Connection
+    , Val Collection
+    , Val Base = Undefined
+    , Val Filter = Undefined
+    , Val Sort = Undefined
+    , Val Parameters = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Collection);
+
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
+
+    If Parameters <> Undefined Then
+        OPI_TypeConversion.GetKeyValueCollection(Parameters);
+    Else
+        Parameters = New Structure;
+    EndIf;
+
+    OPI_Tools.AddField("filter", Filter , "KeyAndValue", Parameters);
+    OPI_Tools.AddField("sort"  , Sort   , "KeyAndValue", Parameters);
+
+    Result = ExecuteCommand(Connection, "find", Collection, Base, Parameters);
+
+    Return Result;
+
+EndFunction
+
+// Get document batch
+// Gets the next batch of cursor documents
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Collection - String - Collection name - coll
+// CursorID - Number - Cursor ID - cursor
+// Base - String - Database name. Current database if not specified - db
+// BatchSize - Number - Amount of records in the batch - limit
+// Waiting - Number - Maximum lock time during awaitData (in ms.) - time
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function GetDocumentBatch(Val Connection
+    , Val Collection
+    , Val CursorID
+    , Val Base = Undefined
+    , Val BatchSize = Undefined
+    , Val Waiting = Undefined) Export
+
+    OPI_TypeConversion.GetNumber(CursorID);
+
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
+
+    Parameters = New Structure;
+    OPI_Tools.AddField("collection", Collection , "String", Parameters);
+    OPI_Tools.AddField("batchSize" , BatchSize  , "Number", Parameters);
+    OPI_Tools.AddField("maxTimeMS" , BatchSize  , "Number", Parameters);
+
+    Result = ExecuteCommand(Connection, "getMore", CursorID, Base, Parameters);
+
+    Return Result;
+
+EndFunction
+
+// Get documents
+// Gets collection documents
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Collection - String - Collection name - coll
+// Base - String - Database name. Current database if not specified - db
+// Filter - Structure Of KeyAndValue - Document filter - filter
+// Sort - Structure Of KeyAndValue - Selection sorting - sort
+// Parameters - Structure Of KeyAndValue - Additional retrieval parameters - params
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function GetDocuments(Val Connection
+    , Val Collection
+    , Val Base = Undefined
+    , Val Filter = Undefined
+    , Val Sort = Undefined
+    , Val Parameters = Undefined) Export
+
+    Cursor = GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
+
+    If Not Cursor["result"] Then
+        Return Cursor;
+    EndIf;
+
+    DocsArray       = Cursor["firstBatch"];
+    CursorID        = Cursor["cursor"]["id"];
+    ContinueGetting = CursorID > 0;
+
+    While ContinueGetting Do
+
+        Package = GetDocumentBatch(Connection, Collection, CursorID, Base);
+        Success = Package["result"];
+
+        If Not Success Then
+            Return Package;
+        EndIf;
+
+        ContinueGetting = Package["cursor"]["id"] > 0;
+
+        For Each Record In Package["cursor"]["nextBatch"] Do
+            DocsArray.Add(Record);
+        EndDo;
+
+    EndDo;
+
+    Result = New Map;
+    Result.Insert("result", True);
+    Result.Insert("data"  , DocsArray);
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
@@ -467,6 +600,10 @@ Function ProcessDataForOperation(Val Data, Covered = False)
 
             ProcessedData = OPI_Tools.DateRFC3339(ProcessedData);
             CurrentKey    = "__OPI_DATETIME__";
+
+        ElsIf ProcessedData = Undefined Then
+
+            CurrentKey = "__OPI_NULL__";
 
         ElsIf Not TypeOf(ProcessedData) = Type("Number") And Not TypeOf(ProcessedData) = Type("Boolean") Then
 
@@ -562,6 +699,18 @@ EndFunction
 
 Function ВставитьДокументы(Val Соединение, Val Коллекция, Val Значения, Val База = Undefined, Val Параметры = Undefined) Export
 	Return InsertDocuments(Соединение, Коллекция, Значения, База, Параметры);
+EndFunction
+
+Function ПолучитьКурсор(Val Соединение, Val Коллекция, Val База = Undefined, Val Фильтр = Undefined, Val Сортировка = Undefined, Val Параметры = Undefined) Export
+	Return GetCursor(Соединение, Коллекция, База, Фильтр, Сортировка, Параметры);
+EndFunction
+
+Function ПолучитьПакетДокументов(Val Соединение, Val Коллекция, Val IDКурсора, Val База = Undefined, Val РазмерПакета = Undefined, Val Ожидание = Undefined) Export
+	Return GetDocumentBatch(Соединение, Коллекция, IDКурсора, База, РазмерПакета, Ожидание);
+EndFunction
+
+Function ПолучитьДокументы(Val Соединение, Val Коллекция, Val База = Undefined, Val Фильтр = Undefined, Val Сортировка = Undefined, Val Параметры = Undefined) Export
+	Return GetDocuments(Соединение, Коллекция, База, Фильтр, Сортировка, Параметры);
 EndFunction
 
 #EndRegion
