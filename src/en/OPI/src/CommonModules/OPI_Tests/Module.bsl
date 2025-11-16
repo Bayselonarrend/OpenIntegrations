@@ -3239,6 +3239,7 @@ Procedure Mongo_DocumentsManagement() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture"         , TestParameters);
 
     MongoDB_InsertDocuments(TestParameters);
+    MongoDB_GetDocuments(TestParameters);
 
 EndProcedure
 
@@ -24955,6 +24956,7 @@ Procedure MongoDB_InsertDocuments(FunctionParameters)
     Address  = "127.0.0.1:1234";
     Login    = FunctionParameters["MongoDB_User"];
     Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
 
     Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
 
@@ -24962,7 +24964,99 @@ Procedure MongoDB_InsertDocuments(FunctionParameters)
     ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
-    DocsArray = New Array;
+    Collection = "new_collection";
+    DocsArray  = New Array;
+
+    // With implicit type casting
+    DocumentStructure = New Structure;
+
+    TestArray = New Array;
+    TestArray.Add("Value1");
+    TestArray.Add("Value2");
+
+    TestStructure = New Structure("text,number", "Text", 10);
+    TestBinary    = GetBinaryDataFromString("Text");
+    CurrentDate   = OPI_Tools.GetCurrentDate();
+
+    DocumentStructure.Insert("stringField", "Text");
+    DocumentStructure.Insert("intField"   , 200);
+    DocumentStructure.Insert("doubleField", 123.456);
+    DocumentStructure.Insert("boolField"  , True);
+    DocumentStructure.Insert("arrayField" , TestArray);
+    DocumentStructure.Insert("docField"   , TestStructure);
+    DocumentStructure.Insert("dateField"  , CurrentDate);
+    DocumentStructure.Insert("binaryField", TestBinary);
+    DocumentStructure.Insert("nullField");
+
+    DocsArray.Add(DocumentStructure);
+
+    // With explicit type casting
+
+    RegExp = New Structure("pattern,options", "[a-z]+@[a-z]+\.[a-z]+", "i");
+    JSCode = "const result = [1, 2, 3].map(x => x * 2).filter(x => x > 3);";
+
+    DocumentStructure.Insert("stringField", New Structure("__OPI_STRING__"   , "Text"));
+    DocumentStructure.Insert("oidField"   , New Structure("__OPI_OBJECTID__" , "63ceed18f71dda7d8cf21e8e"));
+    DocumentStructure.Insert("jsField"    , New Structure("__OPI_JS__"       , JSCode));
+    DocumentStructure.Insert("symbolField", New Structure("__OPI_SYMBOL__"   , "Y"));
+    DocumentStructure.Insert("int32Field" , New Structure("__OPI_INT32__"    , 10));
+    DocumentStructure.Insert("int64Field" , New Structure("__OPI_INT64__"    , 1000));
+    DocumentStructure.Insert("doubleField", New Structure("__OPI_DOUBLE__"   , 124.456));
+    DocumentStructure.Insert("boolField"  , New Structure("__OPI_BOOLEAN__"  , True));
+    DocumentStructure.Insert("dateField"  , New Structure("__OPI_DATETIME__" , "1763204141"));
+    DocumentStructure.Insert("tsField"    , New Structure("__OPI_TIMESTAMP__", CurrentDate));
+    DocumentStructure.Insert("regexpField", New Structure("__OPI_REGEXP__"   , RegExp));
+    DocumentStructure.Insert("binaryField", New Structure("__OPI_BINARY__"   , TestBinary));
+    DocumentStructure.Insert("nullField"  , New Structure("__OPI_NULL__"));
+    DocumentStructure.Insert("minkeyField", New Structure("__OPI_MINKEY__"));
+    DocumentStructure.Insert("maxkeyField", New Structure("__OPI_MAXKEY__"));
+
+    TestArray = New Array;
+    TestArray.Add(New Structure("__OPI_SYMBOL__", "A"));
+    TestArray.Add(New Structure("__OPI_MINKEY__"));
+
+    TestStructure = New Structure("code,number"
+        , New Structure("__OPI_JS__", "const result = 1")
+        , New Structure("__OPI_DOUBLE", 10));
+
+    // Documents and arrays are not wrapped in a structure
+    DocumentStructure.Insert("docField" , TestStructure);
+    DocumentStructure.Insert("arrayField" , TestArray);
+
+    DocsArray.Add(DocumentStructure);
+
+    Result = OPI_MongoDB.InsertDocuments(Connection, Collection, DocsArray, Base);
+
+    // END
+
+    Process(Result, "MongoDB", "InsertDocuments");
+
+EndProcedure
+
+Procedure MongoDB_GetDocuments(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Collection = "new_collection";
+
+    Filter     = New Structure("stringField", """Text""");
+    Sort       = New Structure("doubleField", -1);
+    Parameters = New Structure("limit", 2);
+
+    Result = OPI_MongoDB.GetDocuments(Connection, Collection, Base, Filter, Sort, Parameters);
+
+    // END
+
+    Process(Result, "MongoDB", "GetDocuments");
 
 EndProcedure
 

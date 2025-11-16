@@ -6593,5 +6593,15 @@
 "lib": "MongoDB",
 "name": "ПолучитьСписокКоллекций",
 "variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "ВставитьДокументы",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "ПолучитьДокументы",
+"variant": ""
 }
 ]

@@ -1,0 +1,38 @@
+﻿---
+sidebar_position: 3
+description: Get document batch and other functions to work with MongoDB in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MongoDB]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get document batch
+ Gets the next batch of cursor documents
+
+
+
+`Function GetDocumentBatch(Val Connection, Val Collection, Val CursorID, Val Base = Undefined, Val BatchSize = Undefined, Val Waiting = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --dbc | String, Arbitrary | &#x2714; | Connection or connection string |
+  | Collection | --coll | String | &#x2714; | Collection name |
+  | CursorID | --cursor | Number | &#x2714; | Cursor ID |
+  | Base | --db | String | &#x2716; | Database name. Current database if not specified |
+  | BatchSize | --limit | Number | &#x2716; | Amount of records in the batch |
+  | Waiting | --time | Number | &#x2716; | Maximum lock time during awaitData (in ms.) |
+
+  
+  Returns:  Map Of KeyAndValue - Operation result
+
+<br/>
+
+
+
+
+ 
+
+
+
+
