@@ -1,0 +1,47 @@
+﻿{
+ "result": true,
+ "data": {
+  "cursor": {
+   "id": 0,
+   "ns": "test_database.$cmd.listCollections",
+   "firstBatch": [
+    {
+     "name": "test_collection",
+     "type": "collection",
+     "options": {
+      "validator": {
+       "$expr": [
+        {
+         "$gte": [
+          "***",
+          "***"
+         ]
+        },
+        {
+         "$lte": [
+          "***",
+          "***"
+         ]
+        }
+       ]
+      }
+     },
+     "info": {
+      "readOnly": false,
+      "uuid": {
+       "__B64_BINARY__": "4WBU1C4lRrSH/rv4AcT7YA=="
+      }
+     },
+     "idIndex": {
+      "v": 2,
+      "key": {
+       "_id": 1
+      },
+      "name": "_id_"
+     }
+    }
+   ]
+  },
+  "ok": 1
+ }
+}
