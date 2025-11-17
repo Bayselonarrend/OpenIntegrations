@@ -1,0 +1,20 @@
+﻿{
+ "result": true,
+ "data": {
+  "databases": [
+   {
+    "name": "admin"
+   },
+   {
+    "name": "config"
+   },
+   {
+    "name": "local"
+   },
+   {
+    "name": "test_db"
+   }
+  ],
+  "ok": 1
+ }
+}

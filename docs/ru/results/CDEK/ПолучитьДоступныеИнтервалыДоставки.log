@@ -1,7 +1,7 @@
 ﻿{
  "date_intervals": [
   {
-   "date": "2025-11-12",
+   "date": "2025-11-19",
    "time_intervals": [
     {
      "start_time": "09:00:00",
@@ -22,7 +22,7 @@
    ]
   },
   {
-   "date": "2025-11-19",
+   "date": "2025-11-26",
    "time_intervals": [
     {
      "start_time": "09:00:00",
