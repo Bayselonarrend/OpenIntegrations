@@ -1,0 +1,41 @@
+﻿    Address  = "127.0.0.1:1234";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "main";
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Collection = "new_collection";
+
+    Filter     = New Structure("stringField", "Text");
+    Sort       = New Structure("doubleField", -1);
+    Parameters = New Structure("limit,batchSize", 2, 1);
+
+    Cursor = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
+
+    If Not Cursor["result"] Then
+        Raise Cursor["error"];
+    EndIf;
+
+    Cursor          = Cursor["data"]["cursor"];
+    DocsArray       = Cursor["firstBatch"];
+    CursorID        = Cursor["id"];
+    ContinueGetting = CursorID > 0;
+
+    While ContinueGetting Do
+
+        Result = OPI_MongoDB.GetDocumentBatch(Connection, Collection, CursorID, Base); // <---
+
+        If Not Result["result"] Then
+            Raise Result["error"];
+        EndIf;
+
+        ContinueGetting = Result["data"]["cursor"]["id"] > 0;
+
+        For Each Record In Result["data"]["cursor"]["nextBatch"] Do
+            DocsArray.Add(Record);
+        EndDo;
+
+    EndDo;
