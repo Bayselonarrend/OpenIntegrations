@@ -30,7 +30,24 @@ import TabItem from '@theme/TabItem';
 
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1:1234";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "main";
 
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Collection = "new_collection";
+
+    Filter     = New Structure("stringField", "Text");
+    Sort       = New Structure("doubleField", -1);
+    Parameters = New Structure("limit,batchSize", 2, 1);
+
+    Result = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
+```
  
 
 

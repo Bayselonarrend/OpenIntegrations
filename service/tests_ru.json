@@ -6603,5 +6603,15 @@
 "lib": "MongoDB",
 "name": "ПолучитьДокументы",
 "variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "ПолучитьКурсор",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "ПолучитьПакетДокументов",
+"variant": ""
 }
 ]

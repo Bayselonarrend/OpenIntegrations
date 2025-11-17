@@ -12186,6 +12186,20 @@ Function Check_MongoDB_GetDocuments(Val Result, Val Option)
 
 EndFunction
 
+Function Check_MongoDB_GetCursor(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_GetDocumentBatch(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region ReportPortal

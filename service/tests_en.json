@@ -6603,5 +6603,15 @@
 "lib": "MongoDB",
 "name": "GetDocuments",
 "variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "GetCursor",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "GetDocumentBatch",
+"variant": ""
 }
 ]

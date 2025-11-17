@@ -1,4 +1,4 @@
-// OneScript: ./OInt/core/Modules/OPI_MongoDB.os
+﻿// OneScript: ./OInt/core/Modules/OPI_MongoDB.os
 // Lib: MongoDB
 // CLI: mongodb
 // Keywords: mongodb, mongo, nosql
@@ -539,7 +539,7 @@
         Возврат Курсор;
     КонецЕсли;
 
-	Курсор            = Курсор["data"]["cursor"];
+    Курсор               = Курсор["data"]["cursor"];
     МассивДокументов  = Курсор["firstBatch"];
     IDКурсора         = Курсор["id"];
     ПродолжатьВыборку = IDКурсора > 0;

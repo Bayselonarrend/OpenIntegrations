@@ -11,6 +11,6 @@
 
     Filter     = New Structure("stringField", "Text");
     Sort       = New Structure("doubleField", -1);
-    Parameters = New Structure("limit", 2);
+    Parameters = New Structure("limit,batchSize", 2, 1);
 
-    Result = OPI_MongoDB.GetDocuments(Connection, Collection, Base, Filter, Sort, Parameters);
+    Result = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);

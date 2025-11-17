@@ -34,6 +34,7 @@
     DocsArray.Add(DocumentStructure);
 
     // With explicit type casting
+    DocumentStructure = New Structure;
 
     RegExp = New Structure("pattern,options", "[a-z]+@[a-z]+\.[a-z]+", "i");
     JSCode = "const result = [1, 2, 3].map(x => x * 2).filter(x => x > 3);";
@@ -60,7 +61,7 @@
 
     TestStructure = New Structure("code,number"
         , New Structure("__OPI_JS__", "const result = 1")
-        , New Structure("__OPI_DOUBLE", 10));
+        , New Structure("__OPI_DOUBLE__", 10));
 
     // Documents and arrays are not wrapped in a structure
     DocumentStructure.Insert("docField" , TestStructure);
