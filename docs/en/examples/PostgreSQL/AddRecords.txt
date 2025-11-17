@@ -50,6 +50,7 @@
     RecordStructure.Insert("date_field"       , New Structure("DATE"                    , CurrentDate));
     RecordStructure.Insert("time_field"       , New Structure("TIME"                    , CurrentDate));
     RecordStructure.Insert("uuid_field"       , New Structure("UUID"                    , New UUID));
+    RecordStructure.Insert("numeric_field"    , New Structure("NUMERIC"                 , "15.2"));
 
     RecordsArray.Add(RecordStructure);
 

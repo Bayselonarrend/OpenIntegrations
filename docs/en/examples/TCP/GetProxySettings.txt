@@ -1,7 +1,7 @@
 ﻿    ProxyType = "socks5"; // http, socks5, socks4
 
     ProxyAddress  = "127.0.0.1";
-    ProxyPort     = "8071";
+    ProxyPort     = "1080";
     ProxyLogin    = "proxyuser";
     ProxyPassword = "12we...";
 

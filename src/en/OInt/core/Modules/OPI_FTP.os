@@ -45,7 +45,7 @@
 
 #Region CommonMethods
 
-// Create Connection !NOCLI
+// Create connection !NOCLI
 // Creates an FTP connection with the specified settings
 //
 // Parameters:

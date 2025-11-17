@@ -45,7 +45,7 @@
 
 #Region ClientMethods
 
-// Create Connection !NOCLI
+// Create connection !NOCLI
 // Creates a TCP connection
 //
 // Parameters:

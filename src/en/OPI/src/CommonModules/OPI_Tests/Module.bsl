@@ -15040,8 +15040,8 @@ Procedure TCP_GetProxySettings(FunctionParameters)
 
     ProxyType = "socks5"; // http, socks5, socks4
 
-    ProxyAddress  = FunctionParameters["Proxy_IP"];
-    ProxyPort     = FunctionParameters["Proxy_Port"];
+    ProxyAddress  = FunctionParameters["Socks5_IP"];
+    ProxyPort     = FunctionParameters["Socks5_Port"];
     ProxyLogin    = FunctionParameters["Proxy_User"];
     ProxyPassword = FunctionParameters["Proxy_Password"];
 
@@ -15929,6 +15929,7 @@ Procedure PostgreSQL_CreateTable(FunctionParameters)
     ColoumnsStruct.Insert("date_field"       , "DATE");
     ColoumnsStruct.Insert("time_field"       , "TIME");
     ColoumnsStruct.Insert("uuid_field"       , "UUID");
+    ColoumnsStruct.Insert("numeric_field"    , "NUMERIC(15, 2)");
 
     OPI_PostgreSQL.DeleteTable(Table, ConnectionString, TLSSettings); // SKIP
 
@@ -16056,6 +16057,7 @@ Procedure PostgreSQL_AddRecords(FunctionParameters)
     RecordStructure.Insert("date_field"       , New Structure("DATE"                    , CurrentDate));
     RecordStructure.Insert("time_field"       , New Structure("TIME"                    , CurrentDate));
     RecordStructure.Insert("uuid_field"       , New Structure("UUID"                    , New UUID));
+    RecordStructure.Insert("numeric_field"    , New Structure("NUMERIC"                 , "15.2"));
 
     RecordsArray.Add(RecordStructure);
 
