@@ -52,6 +52,7 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
   | OID | 🟢 | - | Число |
   | REAL | 🟢 | - | Число |
   | DOUBLE PRECISION | 🟢 | DOUBLE_PRECISION | Число |
+  | NUMERIC | 🟢 | DECIMAL | Число, Строка |
   | VARCHAR | 🟢 | - | Строка |
   | TEXT | 🟢 | - | Строка |
   | CHAR | 🟢 | - | Строка |

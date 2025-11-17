@@ -38,3 +38,30 @@ For a simple scenario with standard settings, there is also the `ProcessRequest`
 ## TLS
 
 The library supports TLS mode. To enable it, you must configure TLS settings using the `GetTlsSettings` function and pass them as the corresponding parameter to the `CreateConnection` or `ProcessRequest` function. If the TLS parameter is not provided when calling these functions, the connection will be initialized in an unsecured mode.
+
+## Proxy Usage
+
+The client supports establishing connections through a proxy server. Proxy settings can be obtained using the `GetProxySettings` function. The resulting structure must then be passed to either `CreateConnection` or `ProcessRequest` when initiating work
+
+```bsl
+
+    ...
+
+    ProxyType = "http"; // http, socks5, socks4
+
+    ProxyAddress  = FunctionParameters["Proxy_IP"];
+    ProxyPort     = FunctionParameters["Proxy_Port"];
+    ProxyLogin    = FunctionParameters["Proxy_User"];
+    ProxyPassword = FunctionParameters["Proxy_Password"];
+
+    ProxySettings = OPI_TCP.GetProxySettings(ProxyAddress, ProxyPort, ProxyType, ProxyLogin, ProxyPassword);
+
+    Connection = OPI_TCP.CreateConnection(Address, TLSSettings, ProxySettings);
+
+```
+
+Support is provided for socks4, socks5, and http proxy servers
+
+:::warning
+Operation via http-proxy is experimental and may be unstable depending on the proxy server’s implementation, configuration, and capabilities. It is recommended to use socks-proxy whenever possible for stable traffic transmission
+:::
