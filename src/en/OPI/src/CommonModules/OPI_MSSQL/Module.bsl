@@ -47,7 +47,7 @@
 
 #Region CommonMethods
 
-// Create Connection !NOCLI
+// Create connection !NOCLI
 // Creates a connection to the specified base
 //
 // Parameters:

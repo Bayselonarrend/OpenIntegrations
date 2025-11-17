@@ -46,7 +46,7 @@
 
 #Region CommonMethods
 
-// Create Connection !NOCLI
+// Create connection !NOCLI
 // Creates a connection to the specified base
 //
 // Parameters:
@@ -503,9 +503,9 @@ Function GetDocumentBatch(Val Connection
     EndIf;
 
     Parameters = New Structure;
-    OPI_Tools.AddField("collection", Collection , "String", Parameters);
-    OPI_Tools.AddField("batchSize" , BatchSize  , "Number", Parameters);
-    OPI_Tools.AddField("maxTimeMS" , BatchSize  , "Number", Parameters);
+    OPI_Tools.AddField("collection", Collection , "String" , Parameters);
+    OPI_Tools.AddField("batchSize" , BatchSize  , "Number" , Parameters);
+    OPI_Tools.AddField("maxTimeMS" , BatchSize  , "Number" , Parameters);
 
     Result = ExecuteCommand(Connection, "getMore", CursorID, Base, Parameters);
 

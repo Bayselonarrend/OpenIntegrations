@@ -45,7 +45,7 @@
 
 #Region CommandsExecution
 
-// Create Connection !NOCLI
+// Create connection !NOCLI
 // Opens a new RCON connection
 //
 // Parameters:
