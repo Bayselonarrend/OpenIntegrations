@@ -8142,7 +8142,7 @@ EndFunction
 Function Check_PostgreSQL_GetTableInformation(Val Result, Val Option)
 
     If Not ValueIsFilled(Option) Then
-        ExpectsThat(Result["data"].Count()).Равно(25);
+        ExpectsThat(Result["data"].Count()).Равно(26);
     Else
         ExpectsThat(Result["data"].Count()).Равно(0);
     EndIf;

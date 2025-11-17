@@ -45,7 +45,7 @@
 
 #Region CommonMethods
 
-// Create Connection !NOCLI
+// Create connection !NOCLI
 // Creates a new SSH session
 //
 // Note
@@ -57,7 +57,7 @@
 // Proxy - Structure Of KeyAndValue - Proxy settings structure, if necessary - proxy
 //
 // Returns:
-// Arbitrary, Map of KeyAndValue - Create Connection
+// Arbitrary, Map of KeyAndValue - Create connection
 Function CreateConnection(Val SSHSettings, Val Proxy = "") Export
 
     Return OPI_SSHRequests.CreateConnection(SSHSettings, Proxy);
