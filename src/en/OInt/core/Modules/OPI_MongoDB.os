@@ -539,8 +539,9 @@ Function GetDocuments(Val Connection
         Return Cursor;
     EndIf;
 
+    Cursor             = Cursor["data"]["cursor"];
     DocsArray       = Cursor["firstBatch"];
-    CursorID        = Cursor["cursor"]["id"];
+    CursorID        = Cursor["id"];
     ContinueGetting = CursorID > 0;
 
     While ContinueGetting Do

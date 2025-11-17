@@ -3240,6 +3240,8 @@ Procedure Mongo_DocumentsManagement() Export
 
     MongoDB_InsertDocuments(TestParameters);
     MongoDB_GetDocuments(TestParameters);
+    MongoDB_GetCursor(TestParameters);
+    MongoDB_GetDocumentBatch(TestParameters);
 
 EndProcedure
 
@@ -24992,6 +24994,7 @@ Procedure MongoDB_InsertDocuments(FunctionParameters)
     DocsArray.Add(DocumentStructure);
 
     // With explicit type casting
+    DocumentStructure = New Structure;
 
     RegExp = New Structure("pattern,options", "[a-z]+@[a-z]+\.[a-z]+", "i");
     JSCode = "const result = [1, 2, 3].map(x => x * 2).filter(x => x > 3);";
@@ -25018,13 +25021,15 @@ Procedure MongoDB_InsertDocuments(FunctionParameters)
 
     TestStructure = New Structure("code,number"
         , New Structure("__OPI_JS__", "const result = 1")
-        , New Structure("__OPI_DOUBLE", 10));
+        , New Structure("__OPI_DOUBLE__", 10));
 
     // Documents and arrays are not wrapped in a structure
     DocumentStructure.Insert("docField" , TestStructure);
     DocumentStructure.Insert("arrayField" , TestArray);
 
     DocsArray.Add(DocumentStructure);
+
+    OPI_MongoDB.DeleteCollection(Connection, Collection, Base); // SKIP
 
     Result = OPI_MongoDB.InsertDocuments(Connection, Collection, DocsArray, Base);
 
@@ -25049,7 +25054,7 @@ Procedure MongoDB_GetDocuments(FunctionParameters)
 
     Collection = "new_collection";
 
-    Filter     = New Structure("stringField", """Text""");
+    Filter     = New Structure("stringField", "Text");
     Sort       = New Structure("doubleField", -1);
     Parameters = New Structure("limit", 2);
 
@@ -25058,6 +25063,85 @@ Procedure MongoDB_GetDocuments(FunctionParameters)
     // END
 
     Process(Result, "MongoDB", "GetDocuments");
+
+EndProcedure
+
+Procedure MongoDB_GetCursor(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Collection = "new_collection";
+
+    Filter     = New Structure("stringField", "Text");
+    Sort       = New Structure("doubleField", -1);
+    Parameters = New Structure("limit,batchSize", 2, 1);
+
+    Result = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
+
+    // END
+
+    Process(Result, "MongoDB", "GetCursor");
+
+EndProcedure
+
+Procedure MongoDB_GetDocumentBatch(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Collection = "new_collection";
+
+    Filter     = New Structure("stringField", "Text");
+    Sort       = New Structure("doubleField", -1);
+    Parameters = New Structure("limit,batchSize", 2, 1);
+
+    Cursor = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
+
+    If Not Cursor["result"] Then
+        Raise Cursor["error"];
+    EndIf;
+
+    Cursor          = Cursor["data"]["cursor"];
+    DocsArray       = Cursor["firstBatch"];
+    CursorID        = Cursor["id"];
+    ContinueGetting = CursorID > 0;
+
+    While ContinueGetting Do
+
+        Result = OPI_MongoDB.GetDocumentBatch(Connection, Collection, CursorID, Base); // <---
+
+        If Not Result["result"] Then
+            Raise Result["error"];
+        EndIf;
+
+        ContinueGetting = Result["data"]["cursor"]["id"] > 0;
+
+        For Each Record In Result["data"]["cursor"]["nextBatch"] Do
+            DocsArray.Add(Record);
+        EndDo;
+
+    EndDo;
+
+    // END
+
+    Process(Result, "MongoDB", "GetDocumentBatch");
 
 EndProcedure
 
