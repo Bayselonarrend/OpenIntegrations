@@ -134,8 +134,15 @@ pub fn json_value_to_bson(value: &Value) -> Result<Bson, String> {
 
             let mut doc = Document::new();
             for (k, v) in obj.iter() {
-                let bson_value = json_value_to_bson(v)?; // если ошибка — сразу возвращаем
-                doc.insert(k.clone(), bson_value);
+                let bson_value = json_value_to_bson(v)?;
+
+                let transformed_key = if k.starts_with("__$") {
+                    k.strip_prefix("__").unwrap_or(k).to_string()
+                } else {
+                    k.clone()
+                };
+
+                doc.insert(transformed_key, bson_value);
             }
 
             Bson::Document(doc)
