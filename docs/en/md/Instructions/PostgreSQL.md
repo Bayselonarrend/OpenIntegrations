@@ -51,6 +51,7 @@ The PostgreSQL connector supports the use of positional parameters. All values p
   | OID | 🟢 | - | Number |
   | REAL | 🟢 | - | Number |
   | DOUBLE PRECISION | 🟢 | DOUBLE_PRECISION | Number |
+  | NUMERIC | 🟢 | DECIMAL | Number, String |
   | VARCHAR | 🟢 | - | String |
   | TEXT | 🟢 | - | String |
   | CHAR | 🟢 | - | String |

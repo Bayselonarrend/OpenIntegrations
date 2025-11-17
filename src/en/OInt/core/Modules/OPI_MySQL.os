@@ -204,7 +204,7 @@ EndFunction
 // Forms settings for using TLS
 //
 // Note
-// Tls settings can only be set when a connection is created: explicitly, by using the `OpenConnection` function^^
+// Tls settings can only be set when a connection is created: explicitly, by using the `CreateConnection` function^^
 // or implicit, when passing the connection string to ORM methods.
 // Passing Tls settings together with passing an already created connection to the `Connection` parameter will be ignored
 //

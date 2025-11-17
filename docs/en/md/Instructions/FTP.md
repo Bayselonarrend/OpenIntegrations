@@ -21,14 +21,14 @@ Please review the ["About external components"](/docs/Start/Component-requiremen
 
 This library provides various methods for working with FTP(s) on the client side. Each method accepts a `Connection` as its first parameter, which can be initialized in one of two ways:
 
-1. Using the `OpenConnection` function. In this case, a component object is returned that supports a single connection for multiple requests.
+1. Using the `CreateConnection` function. In this case, a component object is returned that supports a single connection for multiple requests.
 2. Using the `GetConnectionConfiguration` function. In this case, only a connection description structure is returned. Each function receiving this structure as the `Connection` parameter will internally create a new connection and close it upon completion
 
-When performing multiple sequential requests to an FTP server, it is recommended to use a full connection obtained via the `OpenConnection` function
+When performing multiple sequential requests to an FTP server, it is recommended to use a full connection obtained via the `CreateConnection` function
 
 ## Proxy Usage
 
-The client supports establishing connections through a proxy server. Proxy settings can be obtained using the `GetProxySettings` function. The resulting structure must then be passed to either `OpenConnection` or `GetConnectionConfiguration` when initiating work
+The client supports establishing connections through a proxy server. Proxy settings can be obtained using the `GetProxySettings` function. The resulting structure must then be passed to either `CreateConnection` or `GetConnectionConfiguration` when initiating work
 
 ```bsl
 
@@ -55,7 +55,7 @@ Operation via http-proxy is experimental and may be unstable depending on the pr
 
 ## FTPS (TLS)
 
-The client also supports secure connections via TLS. To enable it, pass the TLS settings structure to `OpenConnection` or `GetConnectionConfiguration` when initiating work. The TLS settings structure can be obtained using the `GetTlsSettings` function
+The client also supports secure connections via TLS. To enable it, pass the TLS settings structure to `CreateConnection` or `GetConnectionConfiguration` when initiating work. The TLS settings structure can be obtained using the `GetTlsSettings` function
 
 
 ```bsl
