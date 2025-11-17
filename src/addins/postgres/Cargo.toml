@@ -23,6 +23,7 @@ chrono = "0.4.39"
 uuid = { version = "1.12.1", features = ["v4"] }
 postgres-native-tls = "0.5"
 dateparser = "0.2.1"
+rust_decimal = { version = "1.37.2" , features = ["db-postgres", "serde-float", "serde-str"] }
 common-tcp = { path = "../!commons/common-tcp" }
 common-utils = { path = "../!commons/common-utils" }
 common-dataset = { path = "../!commons/common-dataset" }
