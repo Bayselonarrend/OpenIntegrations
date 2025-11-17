@@ -2,7 +2,7 @@
  "rows": 4,
  "counters": [
   {
-   "id": 105221148,
+   "id": 105350676,
    "status": "Active",
    "owner_login": "bayselonarrend",
    "code_status": "CS_ERR_UNKNOWN",
@@ -43,7 +43,7 @@
     "ytm": false,
     "ssr": true
    },
-   "create_time": "2025-11-10T21:20:46+03:00",
+   "create_time": "2025-11-17T08:43:35+03:00",
    "time_zone_name": "Europe/Moscow",
    "time_zone_offset": 180,
    "partner_id": 0,
