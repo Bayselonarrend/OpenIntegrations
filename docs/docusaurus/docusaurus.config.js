@@ -50,7 +50,34 @@ const config = {
   ],
 
   plugins: [
+  './plugins/course-protection',
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'legal',
+        path: 'legal',
+        routeBasePath: 'legal',
+        sidebarPath: require.resolve('./sidebars-legal.js'),
+      },
+    ],
 
+        [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'courses',
+        path: 'courses',
+        routeBasePath: 'courses',
+        sidebarPath: require.resolve('./courses/sidebars.js')
+      },
+    ],
+    [
+      '@docusaurus/plugin-sitemap',
+      {
+        ignorePatterns: [
+          '/courses/**', 
+        ],
+      },
+    ],
 
 
     ['docusaurus-plugin-yandex-metrica', {
@@ -64,16 +91,12 @@ const config = {
     }]],
 
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      // Replace with your project's social card
       docs: {
         sidebar: {
           autoCollapseCategories: true
         }
       },
-
-
       metadata: [
         { name: 'description', content: 'Открытый пакет интеграций - набор инструментов для интеграции с некоторыми популярными API посредством CLI, 1C:Enterprise или OneScript' },
         { name: 'keywords', content: '1С, OneScript, библиотеки, расширение, CLI, 1С:Предприятие, обмен, http, сервисы, интеграция, Telegram, Bitrix24, CDEK, VK, VK Teams, Viber, S3, Twitter, Notion, Яндекс Диск, Google Drive, Календарь Google, Google Таблицы, Slack, Airtable, Dropbox, Neocities, MySQL, SQLite, PostgreSQL, Ollama, TCP, RCON' },
@@ -134,6 +157,12 @@ window.yaContextCb.push(() => {
             position: 'right',
             className: 'navbar-boosty-link', // Класс для кастомизации
             'aria-label': 'Boosty',
+          },
+          {
+            to: '/courses',
+            label: 'Обучение',
+            position: 'left',
+            'aria-label': 'Download',
           },
           {
             to: '/download',

@@ -1,0 +1,506 @@
+.layoutWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.pageContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContent {
+  flex: 1;
+  padding-bottom: 2rem; /* Отступ перед футером */
+}
+
+/* Остальные ваши существующие стили остаются без изменений */
+.coursesHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0;
+}
+
+.coursesIcon {
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
+  color: #004943;
+  margin-top: 0.31rem;
+  margin-right: 10px;
+}
+
+.coursesTitle {
+  margin: 0;
+  font-weight: 350;
+  color: inherit;
+}
+
+.coursesSubtitle {
+  margin: 0.1rem 0 0;
+  font-weight: lighter;
+  color: #555;
+}
+
+/* Фильтры */
+.filtersSection {
+  margin: 2rem 0;
+}
+
+.searchBox {
+  position: relative;
+  max-width: 400px;
+  margin-bottom: 1.5rem;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: #666;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: #004943;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.categoryButton {
+  padding: 8px 16px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: white;
+  color: #555;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.categoryButton:hover {
+  border-color: #004943;
+  color: #004943;
+}
+
+.categoryButtonActive {
+  background: #004943;
+  border-color: #004943;
+  color: white;
+}
+
+.categoryButtonActive:hover {
+  color: white;
+  background: #025a53;
+}
+
+/* Сетка курсов */
+.coursesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.courseCard {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.courseCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.courseBanner {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+
+.courseBanner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.courseContent {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.courseHeader {
+  margin-bottom: 1rem;
+}
+
+.courseTitle {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.tag {
+  font-size: 0.75rem;
+  color: #666;
+  background: #f5f5f5;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.courseDescription {
+  flex: 1;
+  margin: 0 0 1.5rem 0;
+  color: #555;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.courseActions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+/* Кнопки */
+.freeButton,
+.buyButton,
+.subscriptionButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.freeButton {
+  background: #e8f5e8;
+  color: #2e7d32;
+  border: 1px solid #c8e6c9;
+}
+
+.freeButton:hover {
+  background: #d4edda;
+  color: #1b5e20;
+}
+
+.buyButton {
+  background: #004943;
+  color: white; /* Вместо lightgray */
+  font-weight: 500; /* Вместо 100 */
+  font-size: 0.95rem; /* Вместо 1em */
+  font-style: normal;
+  font-family: inherit; /* Добавьте это */
+  text-rendering: optimizeLegibility; /* Улучшает четкость */
+  -webkit-font-smoothing: antialiased; /* Для Mac */
+  -moz-osx-font-smoothing: grayscale; /* Для Firefox */
+}
+
+.buyButton:hover {
+  background: #00302a;
+  text-decoration: none;
+  color: white;
+}
+
+.subscriptionButton {
+  background: #e3f2fd;
+  color: #1565c0;
+  border: 1px solid #bbdefb;
+}
+
+.subscriptionButton:hover {
+  background: #bbdefb;
+  color: #0d47a1;
+}
+
+.buttonIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.noResults {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .coursesGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .courseActions {
+    flex-direction: column;
+  }
+  
+  .categories {
+    justify-content: center;
+  }
+}
+
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modalOverlayVisible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 16px;
+  padding: 0;
+  max-width: 640px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: between;
+  align-items: center;
+  padding: 1.5rem 1.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  flex: 1;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #666;
+  line-height: 1;
+}
+
+.modalBody {
+  padding: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.subscriptionDescription {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.featureCard {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  background: #fafafa;
+}
+
+.featureIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.featureTitle {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.featureDescription {
+  margin: 0;
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.modalFooter {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #eee;
+  background: #fafafa;
+}
+
+.secondaryButton {
+  flex: 1;
+  padding: 12px 24px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  color: #666;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.primaryButton {
+  flex: 2;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: #004943;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.primaryButton:hover {
+  background: #00302a;
+  color: white;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .modalFooter {
+    flex-direction: column;
+  }
+  
+  .modalContent {
+    width: 95%;
+    margin: 1rem;
+  }
+}
+
+/* Стили для модалки покупки */
+.courseBannerModal {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.courseBannerModal img {
+  width: 100%;
+  height: auto;
+}
+
+.courseDescriptionModal h3 {
+  margin: 1rem 0 0.5rem 0;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.courseDetails {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.detailItem {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.courseProgram {
+  margin: 1.5rem 0;
+}
+
+.courseProgram h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.programList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.programList li {
+  padding: 0.3rem 0;
+  color: #555;
+}
+
+.accessInfo {
+  margin: 1.5rem 0 0 0;
+  padding: 1rem;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+}
+
+.accessInfo h4 {
+  margin: 0 0 0.5rem 0;
+  color: #856404;
+  font-size: 1rem;
+}
+
+.accessInfo p {
+  margin: 0;
+  color: #856404;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
