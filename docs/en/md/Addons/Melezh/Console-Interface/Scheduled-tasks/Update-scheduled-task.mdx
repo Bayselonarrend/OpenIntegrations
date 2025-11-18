@@ -29,5 +29,29 @@ import TabItem from '@theme/TabItem';
 
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  UpdateScheduledTask \
+              --proj "/proj.melezh" \
+              --task 1 \
+              --cron "0 8 8 * * * *"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  UpdateScheduledTask ^
+              --proj "/proj.melezh" ^
+              --task 1 ^
+              --cron "0 8 8 * * * *"
+        ```
+    </TabItem>
+</Tabs>
 
-
+```json title="Result"
+{
+ "result": true
+}
+```

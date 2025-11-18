@@ -33,5 +33,32 @@ Schedule format:<br/>sec min hour day of month month day of week year<br/>0 30 9
 
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            melezh  AddScheduledTask \
+              --proj "/proj.melezh" \
+              --handler "my-key" \
+              --cron "0 7 10 * * * *"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            melezh  AddScheduledTask ^
+              --proj "/proj.melezh" ^
+              --handler "my-key" ^
+              --cron "0 7 10 * * * *"
+        ```
+    </TabItem>
+</Tabs>
 
-
+```json title="Result"
+{
+ "result": true,
+ "rows": 1,
+ "errors": [],
+ "id": "1"
+}
+```
