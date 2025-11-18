@@ -1,0 +1,85 @@
+.footer {
+  background: #ffff;
+  border-top: 1px solid #e9ecef;
+  padding: 2rem 0;
+  margin-top: auto; /* Важно для прижатия к низу */
+  width: 100%;
+}
+
+.footerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footerMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.copyright {
+  color: #6c757d;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.link {
+  color: #6c757d;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #004943;
+  text-decoration: underline;
+}
+
+.separator {
+  color: #dee2e6;
+  font-size: 0.9rem;
+}
+
+.legalInfo {
+  border-top: 1px solid #e9ecef;
+  padding-top: 1rem;
+}
+
+.legalInfo p {
+  margin: 0;
+  color: #6c757d;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .footer {
+    padding: 1.5rem 0;
+  }
+  
+  .footerMain {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .legalInfo p {
+    font-size: 0.75rem;
+    text-align: left;
+  }
+}
