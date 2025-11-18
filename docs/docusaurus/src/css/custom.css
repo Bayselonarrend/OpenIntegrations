@@ -412,7 +412,7 @@ li > a.menu__link {
 .VKTeams a::before,
 .YandexDisk a::before,
 .HTTP a::before,
-.HTTP a::before,{
+.HTTP a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
 }
