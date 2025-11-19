@@ -35,12 +35,9 @@ const CoursesPage = () => {
   const SubscriptionModal = () => (
     <div className={`${styles.modalOverlay} ${showSubscriptionModal ? styles.modalOverlayVisible : ''}`}
          onClick={() => setShowSubscriptionModal(false)}>
-      <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+      <div className={styles.modalFeaturesContent} onClick={(e) => e.stopPropagation()}>
         <div className={styles.modalHeader}>
-          <h2>{subscriptionInfo.title}</h2>
-          <button className={styles.closeButton} onClick={() => setShowSubscriptionModal(false)}>
-            ×
-          </button>
+          <h1>{subscriptionInfo.title}</h1>
         </div>
         
         <div className={styles.modalBody}>
@@ -49,7 +46,10 @@ const CoursesPage = () => {
           <div className={styles.featuresGrid}>
             {subscriptionInfo.features.map((feature, index) => (
               <div key={index} className={styles.featureCard}>
-                <div className={styles.featureIcon}>{feature.icon}</div>
+                <svg className={styles.featureIcon} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={0.8} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d={feature.icon} />
+                </svg>
+
                 <h3 className={styles.featureTitle}>{feature.title}</h3>
                 <p className={styles.featureDescription}>{feature.description}</p>
               </div>
@@ -121,7 +121,7 @@ const CoursesPage = () => {
             <div className={styles.courseProgram}>
               <h3>Что вы получите:</h3>
               <ul className={styles.programList}>
-                <li>✓ Полный доступ к</li>
+                <li>✓ Полный доступ к текстовому материалу</li>
                 <li>✓ Обновления контента бесплатно</li>
               </ul>
             </div>

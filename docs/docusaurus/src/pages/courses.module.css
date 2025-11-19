@@ -305,7 +305,19 @@
   background: white;
   border-radius: 16px;
   padding: 0;
-  max-width: 640px;
+  max-width: 670px;
+  width: 90%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.modalFeaturesContent {
+  background: white;
+  border-radius: 16px;
+  padding: 0;
+  max-width: 840px;
   width: 90%;
   max-height: 90vh;
   overflow: hidden;
@@ -351,21 +363,34 @@
 .featuresGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem;
+  gap: 1rem;
   margin-bottom: 2rem;
 }
 
 .featureCard {
   text-align: center;
-  padding: 1.5rem 1rem;
-  border: 1px solid #eee;
+  background: white;
+  border: 1px solid #ddd;
   border-radius: 12px;
-  background: #fafafa;
+  padding: 1.2rem;
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.7),
+    0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover {
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.7),
+    0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
 .featureIcon {
-  font-size: 2.5rem;
+  width: 4rem;
+  height: 4rem;
+  flex-shrink: 0;
   margin-bottom: 1rem;
+  color: #004943;
 }
 
 .featureTitle {
@@ -416,6 +441,7 @@
 .primaryButton:hover {
   background: #00302a;
   color: white;
+  text-decoration: none;
 }
 
 /* Адаптивность */
