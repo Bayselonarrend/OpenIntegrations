@@ -158,12 +158,12 @@ window.yaContextCb.push(() => {
             className: 'navbar-boosty-link', // Класс для кастомизации
             'aria-label': 'Boosty',
           },
-          {
+          /*{
             to: '/courses',
             label: 'Обучение',
             position: 'left',
             'aria-label': 'Download',
-          },
+          },*/
           {
             to: '/download',
             label: 'Скачать',

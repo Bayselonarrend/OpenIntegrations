@@ -135,10 +135,10 @@ const CoursesPage = () => {
               <p>Если вы столкнулись с проблемой, то можете связаться со мной одним из следующих способов:</p>
               <ul>
                 <li>
-                  <b>Email:</b> support@openintegrations.dev
+                  <span>Email:</span> <a href={"mailto:support@openintegrations.dev"}>support@openintegrations.dev</a>
                 </li>
                 <li>
-                  <b>Telegram:</b> @bayselonarrend
+                  <span>Telegram:</span> <a href={"https://t.me/bayselonarrend"}>@bayselonarrend</a>
                 </li>
               </ul>
             </div>
