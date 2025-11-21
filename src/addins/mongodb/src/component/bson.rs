@@ -136,8 +136,11 @@ pub fn json_value_to_bson(value: &Value) -> Result<Bson, String> {
             for (k, v) in obj.iter() {
                 let bson_value = json_value_to_bson(v)?;
 
-                let transformed_key = if k.starts_with("__$") {
-                    k.strip_prefix("__").unwrap_or(k).to_string()
+                let transformed_key = if k.starts_with("__4") {
+                    match k.strip_prefix("__4"){
+                        Some(key) => "$".to_string() + key,
+                        None => k.to_string(),
+                    }
                 } else {
                     k.clone()
                 };
