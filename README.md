@@ -13,7 +13,6 @@
 [![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/2/736878759.json)](https://openyellow.org/grid?data=top&repo=736878759)
 [![OneScript](media/oscript.svg)](https://github.com/EvilBeaver/OneScript)
 [![OneScript](media/boosty.svg)](https://boosty.to/bayselonarrend)
-
 <br>
 
 **OpenIntegrations** — это набор инструментов для работы с внешними API, доступный в виде библиотеки (расширения) для 1С:Предприятие / OneScript и кроссплатформенного консольного приложения для Windows и Linux. Проект предоставляет готовые методы для выполнения прикладных задач (отправки сообщения, создания документа, SQL-запросов и пр.) в более чем 30 сервисах и технологиях, включая Telegram, VK, Bitrix24, Google и Yandex-сервисы, а также различные СУБД и протоколы обмена
