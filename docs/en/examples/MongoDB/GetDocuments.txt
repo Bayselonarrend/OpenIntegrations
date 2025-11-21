@@ -9,8 +9,9 @@
 
     Collection = "new_collection";
 
-    Filter     = New Structure("stringField", "Text");
-    Sort       = New Structure("doubleField", -1);
+    // __4 = $
+    Filter = New Structure("stringField,doubleField", "Text", New Structure("__4gte, __4lte", 100, 150));
+    Sort = New Structure("doubleField", -1);
     Parameters = New Structure("limit", 2);
 
     Result = OPI_MongoDB.GetDocuments(Connection, Collection, Base, Filter, Sort, Parameters);
