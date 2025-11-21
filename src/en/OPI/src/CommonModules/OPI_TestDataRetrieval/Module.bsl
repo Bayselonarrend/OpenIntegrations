@@ -1255,6 +1255,30 @@ Function GetMySQLParameterOptions() Export
 
 EndFunction
 
+Function GetTagArray(Index) Export
+
+    TagsArray = New Array;
+
+    If Index <= 3 Then
+        TagsArray.Add("new");
+    EndIf;
+
+    If Index % 2 = 0 Then
+        TagsArray.Add("sale");
+    EndIf;
+
+    If Index % 3 = 0 Then
+        TagsArray.Add("popular");
+    EndIf;
+
+    If Index >= 12 Then
+        TagsArray.Add("hit");
+    EndIf;
+
+    Return TagsArray;
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
@@ -12181,7 +12205,80 @@ EndFunction
 
 Function Check_MongoDB_GetDocuments(Val Result, Val Option)
 
-    ExpectsThat(Result["result"]).Равно(True);
+    If Not ValueIsFilled(Option) Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"].Count() > 0).Равно(True);
+        ExpectsThat(Result["data"][0]["stringField"]).Равно("Text");
+
+    ElsIf Option = 1 Then
+        // Category and price range filter
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"].Count() > 0).Равно(True);
+
+        For Each Document In Result["data"] Do
+            ExpectsThat(Document["category"]).Равно("electronics");
+            ExpectsThat(Document["price"] >= 100).Равно(True);
+            ExpectsThat(Document["price"] <= 400).Равно(True);
+        EndDo;
+
+        If Result["data"].Count() > 1 Then
+            ExpectsThat(Result["data"][0]["price"] <= Result["data"][1]["price"]).Равно(True);
+        EndIf;
+
+    ElsIf Option = 2 Then
+        ExpectsThat(Result["result"]).Равно(True);
+
+        For Each Document In Result["data"] Do
+            ExpectsThat(Document["inStock"]).Равно(True);
+            ExpectsThat(Document["rating"] >= 4).Равно(True);
+        EndDo;
+
+        If Result["data"].Count() > 1 Then
+            ExpectsThat(Result["data"][0]["rating"] >= Result["data"][1]["rating"]).Равно(True);
+        EndIf;
+
+    ElsIf Option = 3 Then
+        ExpectsThat(Result["result"]).Равно(True);
+
+        For Each Document In Result["data"] Do
+
+            Found         = False;
+            For Each Tag In Document["tags"] Do
+                If StrFind(Tag, "sale") > 0 Then
+                    Found = True;
+                    Break;
+                EndIf;
+            EndDo;
+
+            ExpectsThat(Found).Равно(True);
+
+        EndDo;
+
+    ElsIf Option = 4 Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        For Each Document In Result["data"] Do
+            ExpectsThat(Document["details"]["supplier"]).Равно("Supplier A");
+            ExpectsThat(Document["details"]["weightKg"] < 3).Равно(True);
+        EndDo;
+
+    ElsIf Option = 5 Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+        For Each Document In Result["data"] Do
+            ExpectsThat(Document["productName"] = Undefined).Равно(False);
+            ExpectsThat(Document["price"]       = Undefined).Равно(False);
+            ExpectsThat(Document["rating"]      = Undefined).Равно(False);
+            ExpectsThat(Document["category"]).Равно(Undefined);
+            ExpectsThat(Document["inStock"]).Равно(Undefined);
+            ExpectsThat(Document["details"]).Равно(Undefined);
+        EndDo;
+
+    EndIf;
+
     Return Result;
 
 EndFunction

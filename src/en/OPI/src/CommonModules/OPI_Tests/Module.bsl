@@ -25038,6 +25038,64 @@ Procedure MongoDB_InsertDocuments(FunctionParameters)
 
     Process(Result, "MongoDB", "InsertDocuments");
 
+    DocsArray = New Array;
+
+    CategoryMap = New Map;
+    CategoryMap.Insert(1, "electronics");
+    CategoryMap.Insert(2, "clothing");
+    CategoryMap.Insert(3, "books");
+    CategoryMap.Insert(4, "products");
+
+    SupplierMap = New Map;
+    SupplierMap.Insert(1, "Supplier A");
+    SupplierMap.Insert(2, "Supplier B");
+    SupplierMap.Insert(3, "Supplier C");
+
+    For N = 1 To 15 Do
+
+        DocumentStructure = New Structure;
+
+        DocumentStructure.Insert("productName", "Product " + N);
+        DocumentStructure.Insert("category"   , CategoryMap.Get(N % 4));
+        DocumentStructure.Insert("price"      , 50 + (N * 30));
+        DocumentStructure.Insert("quantity"   , 5 + (N % 10));
+        DocumentStructure.Insert("rating"     , Max(1, N % 6));
+        DocumentStructure.Insert("inStock"    , N % 3 > 0);
+        DocumentStructure.Insert("tags"       , OPI_TestDataRetrieval.GetTagArray(N));
+        DocumentStructure.Insert("createdDate", OPI_Tools.GetCurrentDate() - (N * 86400));
+
+        Details = New Structure;
+        Details.Insert("supplier"  , SupplierMap.Get(N % 3));
+        Details.Insert("weightKg"  , N * 0.3);
+        Details.Insert("dimensions", New Structure("length,width,height", N * 8, N * 4, N * 2));
+        DocumentStructure.Insert("details", Details);
+
+        DocsArray.Add(DocumentStructure);
+
+    EndDo;
+
+    DocumentWithZero = New Structure;
+    DocumentWithZero.Insert("productName", "Item with zero price");
+    DocumentWithZero.Insert("category"   , "books");
+    DocumentWithZero.Insert("price"      , 0);
+    DocumentWithZero.Insert("quantity"   , 1);
+    DocumentWithZero.Insert("rating"     , 4);
+    DocumentWithZero.Insert("inStock"    , True);
+    DocumentWithZero.Insert("tags"       , New Array);
+    DocsArray.Add(DocumentWithZero);
+
+    DocumentWithoutCategory = New Structure;
+    DocumentWithoutCategory.Insert("productName", "Item without category");
+    DocumentWithoutCategory.Insert("price"      , 250);
+    DocumentWithoutCategory.Insert("quantity"   , 3);
+    DocumentWithoutCategory.Insert("rating"     , 3);
+    DocumentWithoutCategory.Insert("inStock"    , False);
+    DocsArray.Add(DocumentWithoutCategory);
+
+    Result = OPI_MongoDB.InsertDocuments(Connection, Collection, DocsArray, Base);
+
+    Process(Result, "MongoDB", "InsertDocuments");
+
 EndProcedure
 
 Procedure MongoDB_GetDocuments(FunctionParameters)
@@ -25055,8 +25113,9 @@ Procedure MongoDB_GetDocuments(FunctionParameters)
 
     Collection = "new_collection";
 
-    Filter     = New Structure("stringField", "Text");
-    Sort       = New Structure("doubleField", -1);
+    // __4 = $
+    Filter = New Structure("stringField,doubleField", "Text", New Structure("__4gte, __4lte", 100, 150));
+    Sort = New Structure("doubleField", -1);
     Parameters = New Structure("limit", 2);
 
     Result = OPI_MongoDB.GetDocuments(Connection, Collection, Base, Filter, Sort, Parameters);
@@ -25064,6 +25123,49 @@ Procedure MongoDB_GetDocuments(FunctionParameters)
     // END
 
     Process(Result, "MongoDB", "GetDocuments");
+
+    // 1: Category and price range
+    Filter = New Structure("category,price", "electronics", New Structure("__4gte,__4lte", 100, 400));
+    Sort = New Structure("price", 1);
+    Parameters = New Structure("limit", 5);
+
+    Result = OPI_MongoDB.GetDocuments(Connection, Collection, Base, Filter, Sort, Parameters);
+
+    Process(Result, "MongoDB", "GetDocuments", 1);
+
+    // 2: Stock and rating
+    Filter = New Structure("inStock,rating", True, New Structure("__4gte", 4));
+    Sort = New Structure("rating,price", -1, 1);
+
+    Result = OPI_MongoDB.GetDocuments(Connection, Collection, Base, Filter, Sort);
+
+    Process(Result, "MongoDB", "GetDocuments", 2);
+
+    // 3: By tags array
+    Filter = New Structure("tags", "sale");
+    Sort = New Structure("createdDate", -1);
+
+    Result = OPI_MongoDB.GetDocuments(Connection, Collection, Base, Filter, Sort);
+
+    Process(Result, "MongoDB", "GetDocuments", 3);
+
+    // 4: By nested fields
+    Filter = New Map;
+    Filter.Insert("details.supplier", "Supplier A");
+    Filter.Insert("details.weightKg", New Structure("__4lt", 3));
+
+    Result = OPI_MongoDB.GetDocuments(Connection, Collection, Base, Filter);
+
+    Process(Result, "MongoDB", "GetDocuments", 4);
+
+    // 5: Projection
+    Filter = New Structure("category", "books");
+    Sort = New Structure("price", -1);
+    Parameters = New Structure("projection", New Structure("productName,price,rating", 1, 1, 1));
+
+    Result = OPI_MongoDB.GetDocuments(Connection, Collection, Base, Filter, Sort, Parameters);
+
+    Process(Result, "MongoDB", "GetDocuments", 5);
 
 EndProcedure
 
