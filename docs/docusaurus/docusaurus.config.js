@@ -50,6 +50,8 @@ const config = {
   ],
 
   plugins: [
+
+    /*
   './plugins/course-protection',
     [
       '@docusaurus/plugin-content-docs',
@@ -78,7 +80,7 @@ const config = {
         ],
       },
     ],
-
+    */
 
     ['docusaurus-plugin-yandex-metrica', {
       counterID: '97292922',
