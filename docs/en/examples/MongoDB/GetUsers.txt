@@ -1,0 +1,18 @@
+﻿    Address  = "127.0.0.1:1234";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "main";
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    UserName = "newuser";
+
+    Result = OPI_MongoDB.GetUsers(Connection, UserName, Base);
+
+    ArrayOfUsers = New Array;
+    ArrayOfUsers.Add(New Structure("user,db", "bayselonarrend", "admin"));
+    ArrayOfUsers.Add(New Structure("user,db", "newuser"       , "main"));
+
+    Result = OPI_MongoDB.GetUsers(Connection, ArrayOfUsers, Base, True, True);
