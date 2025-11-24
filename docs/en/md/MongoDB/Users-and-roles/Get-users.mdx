@@ -1,0 +1,60 @@
+﻿---
+sidebar_position: 3
+description: Get users and other functions to work with MongoDB in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MongoDB]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get users
+ Gets data of one or more users
+
+
+
+`Function GetUsers(Val Connection, Val Users, Val Base = Undefined, Val GetPassword = False, Val GetPrivileges = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --dbc | String, Arbitrary | &#x2714; | Connection or connection string |
+  | Users | --usrs | Arbitrary | &#x2714; | Username, structure, or array of user structures |
+  | Base | --db | String | &#x2716; | Database name. Current database if not specified |
+  | GetPassword | --spwd | Boolean | &#x2716; | Adds user password hash to the returned data |
+  | GetPrivileges | --sprv | Boolean | &#x2716; | Adds a list of user privileges to the returned data |
+
+  
+  Returns:  Map Of KeyAndValue - Operation result
+
+<br/>
+
+:::tip
+The user can be specified in one of the following formats:<br/>String: `name of user`<br/>Structure: `{ user: &lt;name&gt;, db: &lt;database&gt; }`<br/>Array: `[ { user: &lt;name&gt;, db: &lt;база data&gt; }, { user: &lt;name&gt;, db: &lt;база data&gt; }, ... ]`
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1:1234";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "main";
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    UserName = "newuser";
+
+    Result = OPI_MongoDB.GetUsers(Connection, UserName, Base);
+
+    ArrayOfUsers = New Array;
+    ArrayOfUsers.Add(New Structure("user,db", "bayselonarrend", "admin"));
+    ArrayOfUsers.Add(New Structure("user,db", "newuser"       , "main"));
+
+    Result = OPI_MongoDB.GetUsers(Connection, ArrayOfUsers, Base, True, True);
+```
+ 
+
+
+
+

@@ -399,6 +399,7 @@ Function GetTestTable() Export
     NewTest(TestTable, "Mong_DatabaseManagement"             , "Database management"             , MongoDB);
     NewTest(TestTable, "Mongo_CollectionManagement"          , "Collections management"          , MongoDB);
     NewTest(TestTable, "Mongo_DocumentsManagement"           , "DocumentsManagement"             , MongoDB);
+    NewTest(TestTable, "Mongo_UsersAndRoles"                 , "Users and roles"                 , MongoDB);
     NewTest(TestTable, "GAPI_GroupManagement"                , "Group management"                , GreenAPI);
     NewTest(TestTable, "GAPI_MessageSending"                 , "Messages sending"                , GreenAPI);
     NewTest(TestTable, "GAPI_NotificationsReceiving"         , "Notifications receiving"         , GreenAPI);
@@ -12284,7 +12285,32 @@ EndFunction
 
 Function Check_MongoDB_GetCursor(Val Result, Val Option)
 
-    ExpectsThat(Result["result"]).Равно(True);
+    If Not ValueIsFilled(Option) Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"]["cursor"]["firstBatch"].Count()).Равно(1);
+        ExpectsThat(Result["data"]["cursor"]["id"]).Bigger(0);
+
+    ElsIf Option = 1 Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"]["cursor"]["firstBatch"].Count() <= 3).Равно(True);
+
+        For Each Document In Result["data"]["cursor"]["firstBatch"] Do
+            ExpectsThat(Document["inStock"]).Равно(True);
+        EndDo;
+
+    ElsIf Option = 2 Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"]["cursor"]["firstBatch"].Count() <= 2).Равно(True);
+
+        For Each Document In Result["data"]["cursor"]["firstBatch"] Do
+            ExpectsThat(Document["category"]).Равно("clothing");
+        EndDo;
+
+    EndIf;
+
     Return Result;
 
 EndFunction
@@ -12292,6 +12318,243 @@ EndFunction
 Function Check_MongoDB_GetDocumentBatch(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_UpdateDocuments(Val Result, Val Option)
+
+    Option = String(Option);
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        ExpectsThat(Result["data"].Count() > 0).Равно(True);
+        ExpectsThat(Result["data"][0]["doubleField"]).Равно(999);
+
+    ElsIf Option = "Check 1" Then
+
+        ExpectsThat(Result["data"].Count() > 0).Равно(True);
+
+        For Each Doc In Result["data"] Do
+
+            ExpectsThat(Doc["price"]).Равно(777);
+            ExpectsThat(Doc["inStock"]).Равно(False);
+            ExpectsThat(Doc["rating"]).Равно(5);
+
+        EndDo;
+
+    ElsIf Option = "Check 2" Then
+
+        ExpectsThat(Result["data"].Count() > 0).Равно(True);
+        ExpectsThat(Result["data"][0]["quantity"] > 10).Равно(True);
+
+    ElsIf Option = "Check 3" Then
+
+        ExpectsThat(Result["data"].Count() > 0).Равно(True);
+
+        For Each Doc In Result["data"] Do
+
+            Found = False;
+
+            For Each Tag In Doc["tags"] Do
+                If Tag    = "updated" Then
+                    Found = True;
+                    Break;
+                EndIf;
+            EndDo;
+
+            ExpectsThat(Found).Равно(True);
+
+        EndDo;
+
+    ElsIf Option = "Check 4" Then
+
+        ExpectsThat(Result["data"].Count() > 0).Равно(True);
+
+        For Each Doc In Result["data"] Do
+
+            ExpectsThat(Doc["details"]["supplier"]).Равно("Supplier A+");
+            ExpectsThat(Doc["details"]["weightKg"]).Равно(2.5);
+
+        EndDo;
+
+    ElsIf Option = "Check 5" Then
+
+        ExpectsThat(Result["data"].Count() > 0).Равно(True);
+        ExpectsThat(Result["data"][0]["productName"]).Равно("New product");
+        ExpectsThat(Result["data"][0]["price"]).Равно(1999);
+
+    ElsIf Option = "Check 6" Then
+
+        ExpectsThat(Result["data"].Count() > 0).Равно(True);
+
+        For Each Doc In Result["data"] Do
+            ExpectsThat(Doc["rating"]).Равно(Undefined);
+        EndDo;
+
+    ElsIf Option = "Check 7" Then
+
+        ExpectsThat(Result["data"].Count() > 0).Равно(True);
+
+        For Each Doc In Result["data"] Do
+
+            ExpectsThat(Doc["inStock"]).Равно(False);
+
+            Found = False;
+
+            For Each Tag In Doc["tags"] Do
+                If Tag    = "discount" Then
+                    Found = True;
+                    Break;
+                EndIf;
+            EndDo;
+
+            ExpectsThat(Found).Равно(True);
+
+        EndDo;
+
+    ElsIf Option = "Check 8_1" Then
+
+        ExpectsThat(Result["data"].Count() > 0).Равно(True);
+
+        For Each Doc In Result["data"] Do
+
+            ExpectsThat(Doc["price"]).Равно(888);
+            ExpectsThat(Doc["discounted"]).Равно(True);
+
+        EndDo;
+
+    ElsIf Option = "Check 8_2" Then
+
+        ExpectsThat(Result["data"].Count() > 0).Равно(True);
+
+        For Each Doc In Result["data"] Do
+
+            Found = False;
+
+            For Each Tag In Doc["tags"] Do
+                If Tag    = "mass_update" Then
+                    Found = True;
+                    Break;
+                EndIf;
+            EndDo;
+
+            ExpectsThat(Found).Равно(True);
+
+        EndDo;
+
+    ElsIf Option = "Check 8_3" Then
+
+        ExpectsThat(Result["data"].Count() > 0).Равно(True);
+        ExpectsThat(Result["data"][0]["productName"]).Равно("Special item from array");
+        ExpectsThat(Result["data"][0]["price"]).Равно(1111);
+
+    ElsIf Option = "Check 8_4" Then
+
+        ExpectsThat(Result["data"].Count() > 0).Равно(True);
+        For Each Doc In Result["data"] Do
+            ExpectsThat(Doc["needsImprovement"]).Равно(True);
+        EndDo;
+
+    ElsIf Option = "Obtaining" Then
+
+        ExpectsThat(Result["data"].Count()).Равно(0);
+
+    ElsIf Option = "Getting new" Then
+
+        For Each Element In Result["data"] Do
+            ExpectsThat(Element["doubleField"]).Равно(999);
+        EndDo;
+
+    ElsIf Option = "5" Then
+
+        ExpectsThat(Result["data"]["upserted"].Count() > 0 Or Result["data"]["nModified"] > 0).Равно(True);
+
+    Else
+        ExpectsThat(Result["data"]["nModified"] > 0).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_GetDocumentUpdateStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result
+
+EndFunction
+
+Function Check_MongoDB_DeleteDocuments(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option    = "Check" Then
+        ExpectsThat(Result["data"].Count()).Равно(1);
+    ElsIf Option = "Precheck" Then
+        ExpectsThat(Result["data"].Count()).Равно(2);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_CreateUser(Val Result, Val Option)
+
+    If Option = "Existing" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_UpdateUser(Val Result, Val Option)
+
+    If Option = "Nonexistent" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_DeleteUser(Val Result, Val Option)
+
+    If Option = "Again" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_GetUsers(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Not ValueIsFilled(Option) Then
+        ExpectsThat(Result["data"].Count()).Равно(2);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_GetDatabaseUsers(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"]["users"].Count()).Равно(1);
+
     Return Result;
 
 EndFunction

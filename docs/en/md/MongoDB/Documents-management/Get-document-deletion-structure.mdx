@@ -1,0 +1,35 @@
+﻿---
+sidebar_position: 8
+description: Get document deletion structure and other functions to work with MongoDB in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MongoDB]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get document deletion structure
+ Forms data structure for update
+
+
+
+`Function GetDocumentDeletionStructure(Val Filter, Val Count = 0, Collation = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Filter | --query | Structure Of KeyAndValue | &#x2714; | Document filter |
+  | Count | --limit | Number | &#x2716; | Deletion limit: 1 > first document, 0 > all documents |
+  | Collation | --cltn | Structure Of KeyAndValue | &#x2716; | Special field comparison rules |
+
+  
+  Returns:  Structure - Get document deletion structure
+
+<br/>
+
+
+
+
+ 
+
+
+
+

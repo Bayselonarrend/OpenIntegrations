@@ -435,6 +435,167 @@ Function InsertDocuments(Val Connection
 
 EndFunction
 
+// Update documents
+// Updates document data in the collection
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Collection - String - Collection name - coll
+// Updates - Array of Structure - Update array. See GetDocumentUpdateStructure - updates
+// Base - String - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional insert options - params
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function UpdateDocuments(Val Connection
+    , Val Collection
+    , Val Updates
+    , Val Base = Undefined
+    , Val Parameters = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Collection);
+    OPI_TypeConversion.GetArray(Updates);
+
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
+
+    If Parameters <> Undefined Then
+        OPI_TypeConversion.GetKeyValueCollection(Parameters);
+    Else
+        Parameters = New Structure;
+    EndIf;
+
+    UpdateArray = New Array;
+
+    For Each Element In Updates Do
+
+        CurrentElement = Element;
+        OPI_TypeConversion.GetKeyValueCollection(CurrentElement);
+        UpdateArray.Add(CurrentElement);
+
+    EndDo;
+
+    Parameters.Insert("updates", UpdateArray);
+
+    Result = ExecuteCommand(Connection, "update", Collection, Base, Parameters);
+
+    Return Result;
+
+EndFunction
+
+// Get documents
+// Gets collection documents
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Collection - String - Collection name - coll
+// Base - String - Database name. Current database if not specified - db
+// Filter - Structure Of KeyAndValue - Document filter - query
+// Sort - Structure Of KeyAndValue - Selection sorting - sort
+// Parameters - Structure Of KeyAndValue - Additional retrieval parameters - params
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function GetDocuments(Val Connection
+    , Val Collection
+    , Val Base = Undefined
+    , Val Filter = Undefined
+    , Val Sort = Undefined
+    , Val Parameters = Undefined) Export
+
+    Cursor = GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
+
+    If Not Cursor["result"] Then
+        Return Cursor;
+    EndIf;
+
+    Cursor          = Cursor["data"]["cursor"];
+    DocsArray       = Cursor["firstBatch"];
+    CursorID        = Cursor["id"];
+    ContinueGetting = CursorID > 0;
+
+    While ContinueGetting Do
+
+        Package = GetDocumentBatch(Connection, Collection, CursorID, Base);
+        Success = Package["result"];
+        Data    = Package["data"];
+
+        If Not Success Then
+            Return Package;
+        EndIf;
+
+        Cursor = Data["cursor"];
+
+        If Cursor = Undefined Then
+            Return Package;
+        EndIf;
+
+        ContinueGetting = Cursor["id"] > 0;
+
+        For Each Record In Cursor["nextBatch"] Do
+            DocsArray.Add(Record);
+        EndDo;
+
+    EndDo;
+
+    Result = New Map;
+    Result.Insert("result", True);
+    Result.Insert("data"  , DocsArray);
+
+    Return Result;
+
+EndFunction
+
+// Delete documents
+// Deletes collection documents
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Collection - String - Collection name - coll
+// Deletions - Array of Structure - Deletion array. See GetDocumentDeletionStructure - deletes
+// Base - String - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional insert options - params
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function DeleteDocuments(Val Connection
+    , Val Collection
+    , Val Deletions
+    , Val Base = Undefined
+    , Val Parameters = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Collection);
+    OPI_TypeConversion.GetArray(Deletions);
+
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
+
+    If Parameters <> Undefined Then
+        OPI_TypeConversion.GetKeyValueCollection(Parameters);
+    Else
+        Parameters = New Structure;
+    EndIf;
+
+    UpdateArray = New Array;
+
+    For Each Element In Deletions Do
+
+        CurrentElement = Element;
+        OPI_TypeConversion.GetKeyValueCollection(CurrentElement);
+        UpdateArray.Add(CurrentElement);
+
+    EndDo;
+
+    Parameters.Insert("deletes", UpdateArray);
+
+    Result = ExecuteCommand(Connection, "delete", Collection, Base, Parameters);
+
+    Return Result;
+
+EndFunction
+
 // Get cursor
 // Gets a cursor for batch retrieval of collection documents
 //
@@ -442,7 +603,7 @@ EndFunction
 // Connection - String, Arbitrary - Connection or connection string - dbc
 // Collection - String - Collection name - coll
 // Base - String - Database name. Current database if not specified - db
-// Filter - Structure Of KeyAndValue - Document filter - filter
+// Filter - Structure Of KeyAndValue - Document filter - query
 // Sort - Structure Of KeyAndValue - Selection sorting - sort
 // Parameters - Structure Of KeyAndValue - Additional retrieval parameters - params
 //
@@ -513,58 +674,204 @@ Function GetDocumentBatch(Val Connection
 
 EndFunction
 
-// Get documents
-// Gets collection documents
+// Get document update structure
+// Forms data structure for updating documents
+//
+// Parameters:
+// Filter - Structure Of KeyAndValue - Document filter - query
+// Data - Structure Of KeyAndValue - New document data for update - data
+// UpdateAll - Boolean - True > updates all documents by filter, False > only one - multi
+// Insert - Boolean - Insert a new document if no document was found - upsert
+// Collation - Structure Of KeyAndValue - Special field comparison rules - cltn
+//
+// Returns:
+// Structure Of KeyAndValue - Result of connection termination
+Function GetDocumentUpdateStructure(Val Filter
+    , Val Data
+    , Val UpdateAll = True
+    , Val Insert = False
+    , Val Collation = Undefined) Export
+
+    UpdatesStructure = New Structure;
+
+    OPI_Tools.AddField("q"        , Filter    , "KeyAndValue", UpdatesStructure);
+    OPI_Tools.AddField("u"        , Data      , "KeyAndValue", UpdatesStructure);
+    OPI_Tools.AddField("multi"    , UpdateAll , "Boolean"    , UpdatesStructure);
+    OPI_Tools.AddField("upsert"   , Insert    , "Boolean"    , UpdatesStructure);
+    OPI_Tools.AddField("collation", Collation , "KeyAndValue", UpdatesStructure);
+
+    Return UpdatesStructure;
+
+EndFunction
+
+// Get document deletion structure
+// Forms data structure for update
+//
+// Parameters:
+// Filter - Structure Of KeyAndValue - Document filter - query
+// Count - Number - Deletion limit: 1 > first document, 0 > all documents - limit
+// Collation - Structure Of KeyAndValue - Special field comparison rules - cltn
+//
+// Returns:
+// Structure - Get document deletion structure
+Function GetDocumentDeletionStructure(Val Filter, Val Count = 0, Collation = Undefined) Export
+
+    DeletionStructure = New Structure;
+
+    OPI_Tools.AddField("q"        , Filter   , "KeyAndValue", DeletionStructure);
+    OPI_Tools.AddField("collation", Collation, "KeyAndValue", DeletionStructure);
+
+    OPI_TypeConversion.GetNumber(Count);
+    DeletionStructure.Insert("limit", Count);
+
+    Return DeletionStructure;
+
+EndFunction
+
+#EndRegion
+
+#Region UsersAndRoles
+
+// Create user
+// Creates a new user
 //
 // Parameters:
 // Connection - String, Arbitrary - Connection or connection string - dbc
-// Collection - String - Collection name - coll
+// Name - String - Users name - name
+// UserRoles - Array Of Arbitrary - Array of roles as strings or structures specifying the DB - roles
 // Base - String - Database name. Current database if not specified - db
-// Filter - Structure Of KeyAndValue - Document filter - filter
-// Sort - Structure Of KeyAndValue - Selection sorting - sort
-// Parameters - Structure Of KeyAndValue - Additional retrieval parameters - params
+// Password - String - Users password - pwd
+// Parameters - Structure Of KeyAndValue - Additional creation parameters - params
 //
 // Returns:
 // Map Of KeyAndValue - Operation result
-Function GetDocuments(Val Connection
-    , Val Collection
+Function CreateUser(Val Connection
+    , Val Name
+    , Val UserRoles
     , Val Base = Undefined
-    , Val Filter = Undefined
-    , Val Sort = Undefined
+    , Val Password = Undefined
     , Val Parameters = Undefined) Export
 
-    Cursor = GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
+    Return CreateOrUpdateUser("createUser", Connection, Name, UserRoles, Base, Password, Parameters);
 
-    If Not Cursor["result"] Then
-        Return Cursor;
+EndFunction
+
+// Update user
+// Modifies existing user data
+//
+// Note
+// The passed roles completely replace the user's role list
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Name - String - Users name - name
+// UserRoles - Array Of Arbitrary - Array of roles as strings or structures specifying the DB - roles
+// Base - String - Database name. Current database if not specified - db
+// Password - String - Users password - pwd
+// Parameters - Structure Of KeyAndValue - Additional parameters - params
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function UpdateUser(Val Connection
+    , Val Name
+    , Val UserRoles = Undefined
+    , Val Base = Undefined
+    , Val Password = Undefined
+    , Val Parameters = Undefined) Export
+
+    Return CreateOrUpdateUser("updateUser", Connection, Name, UserRoles, Base, Password, Parameters);
+
+EndFunction
+
+// Get users
+// Gets data of one or more users
+//
+// Note
+// The user can be specified in one of the following formats:^
+// String: `name of user`^
+// Structure: `{ user: <name>, db: <database> }`^
+// Array: `[ { user: <name>, db: <база data> }, { user: <name>, db: <база data> }, ... ]`
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Users - Arbitrary - Username, structure, or array of user structures - usrs
+// Base - String - Database name. Current database if not specified - db
+// GetPassword - Boolean - Adds user password hash to the returned data - spwd
+// GetPrivileges - Boolean - Adds a list of user privileges to the returned data - sprv
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function GetUsers(Val Connection
+    , Val Users
+    , Val Base = Undefined
+    , Val GetPassword = False
+    , Val GetPrivileges = False) Export
+
+    OPI_TypeConversion.GetArray(Users);
+
+    If Users.Count() = 1 Then
+        Users        = Users[0];
     EndIf;
 
-    Cursor          = Cursor["data"]["cursor"];
-    DocsArray       = Cursor["firstBatch"];
-    CursorID        = Cursor["id"];
-    ContinueGetting = CursorID > 0;
+    Parameters = New Structure;
+    OPI_Tools.AddField("showCredentials", GetPassword  , "Boolean", Parameters);
+    OPI_Tools.AddField("showPrivileges" , GetPrivileges, "Boolean", Parameters);
 
-    While ContinueGetting Do
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
 
-        Package = GetDocumentBatch(Connection, Collection, CursorID, Base);
-        Success = Package["result"];
+    Result = ExecuteCommand(Connection, "usersInfo", Users, Base, Parameters);
+    Return Result;
 
-        If Not Success Then
-            Return Package;
-        EndIf;
+EndFunction
 
-        ContinueGetting = Package["cursor"]["id"] > 0;
+// Get database users
+// Gets information about all database users
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Base - String - Database name. Current database if not specified - db
+// GetPassword - Boolean - Adds user password hash to the returned data - spwd
+// GetPrivileges - Boolean - Adds a list of user privileges to the returned data - sprv
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function GetDatabaseUsers(Val Connection
+    , Val Base = Undefined
+    , Val GetPassword = False
+    , Val GetPrivileges = False) Export
 
-        For Each Record In Package["cursor"]["nextBatch"] Do
-            DocsArray.Add(Record);
-        EndDo;
+    Return GetUsers(Connection, 1, Base, GetPassword, GetPrivileges);
 
-    EndDo;
+EndFunction
 
-    Result = New Map;
-    Result.Insert("result", True);
-    Result.Insert("data"  , DocsArray);
+// Delete user
+// Deletes user by name
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Name - String - Users name - name
+// Base - String - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional deletion parameters - params
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function DeleteUser(Val Connection, Val Name, Val Base = Undefined, Val Parameters = Undefined) Export
 
+    OPI_TypeConversion.GetLine(Name);
+
+    If Parameters <> Undefined Then
+        OPI_TypeConversion.GetKeyValueCollection(Parameters);
+    Else
+        Parameters = New Structure;
+    EndIf;
+
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
+
+    Result = ExecuteCommand(Connection, "dropUser", Name, Base, Parameters);
     Return Result;
 
 EndFunction
@@ -650,6 +957,41 @@ Function ProcessCollectionForOperation(Val Data)
 
 EndFunction
 
+Function CreateOrUpdateUser(Val DBCommand
+    , Val Connection
+    , Val Name
+    , Val UserRoles  = Undefined
+    , Val Base       = Undefined
+    , Val Password   = Undefined
+    , Val Parameters = Undefined)
+
+    OPI_TypeConversion.GetLine(Name);
+
+    If Parameters <> Undefined Then
+        OPI_TypeConversion.GetKeyValueCollection(Parameters);
+    Else
+        Parameters = New Structure;
+    EndIf;
+
+    If UserRoles <> Undefined Then
+        OPI_TypeConversion.GetArray(UserRoles);
+        Parameters.Insert("roles", UserRoles);
+    EndIf;
+
+    If Password <> Undefined Then
+        OPI_TypeConversion.GetLine(Password);
+        Parameters.Insert("pwd", Password);
+    EndIf;
+
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
+
+    Result = ExecuteCommand(Connection, DBCommand, Name, Base, Parameters);
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region Alternate
@@ -702,6 +1044,18 @@ Function ВставитьДокументы(Val Соединение, Val Кол
 	Return InsertDocuments(Соединение, Коллекция, Значения, База, Параметры);
 EndFunction
 
+Function ОбновитьДокументы(Val Соединение, Val Коллекция, Val Обновления, Val База = Undefined, Val Параметры = Undefined) Export
+	Return UpdateDocuments(Соединение, Коллекция, Обновления, База, Параметры);
+EndFunction
+
+Function ПолучитьДокументы(Val Соединение, Val Коллекция, Val База = Undefined, Val Фильтр = Undefined, Val Сортировка = Undefined, Val Параметры = Undefined) Export
+	Return GetDocuments(Соединение, Коллекция, База, Фильтр, Сортировка, Параметры);
+EndFunction
+
+Function УдалитьДокументы(Val Соединение, Val Коллекция, Val Удаления, Val База = Undefined, Val Параметры = Undefined) Export
+	Return DeleteDocuments(Соединение, Коллекция, Удаления, База, Параметры);
+EndFunction
+
 Function ПолучитьКурсор(Val Соединение, Val Коллекция, Val База = Undefined, Val Фильтр = Undefined, Val Сортировка = Undefined, Val Параметры = Undefined) Export
 	Return GetCursor(Соединение, Коллекция, База, Фильтр, Сортировка, Параметры);
 EndFunction
@@ -710,8 +1064,32 @@ Function ПолучитьПакетДокументов(Val Соединение
 	Return GetDocumentBatch(Соединение, Коллекция, IDКурсора, База, РазмерПакета, Ожидание);
 EndFunction
 
-Function ПолучитьДокументы(Val Соединение, Val Коллекция, Val База = Undefined, Val Фильтр = Undefined, Val Сортировка = Undefined, Val Параметры = Undefined) Export
-	Return GetDocuments(Соединение, Коллекция, База, Фильтр, Сортировка, Параметры);
+Function ПолучитьСтруктуруОбновленияДокументов(Val Фильтр, Val Данные, Val ОбновитьВсе = True, Val Вставлять = False, Val Сопоставление = Undefined) Export
+	Return GetDocumentUpdateStructure(Фильтр, Данные, ОбновитьВсе, Вставлять, Сопоставление);
+EndFunction
+
+Function ПолучитьСтруктуруУдаленияДокументов(Val Фильтр, Val Количество = 0, Сопоставление = Undefined) Export
+	Return GetDocumentDeletionStructure(Фильтр, Количество, Сопоставление);
+EndFunction
+
+Function СоздатьПользователя(Val Соединение, Val Имя, Val РолиПользователя, Val База = Undefined, Val Пароль = Undefined, Val Параметры = Undefined) Export
+	Return CreateUser(Соединение, Имя, РолиПользователя, База, Пароль, Параметры);
+EndFunction
+
+Function ИзменитьПользователя(Val Соединение, Val Имя, Val РолиПользователя = Undefined, Val База = Undefined, Val Пароль = Undefined, Val Параметры = Undefined) Export
+	Return UpdateUser(Соединение, Имя, РолиПользователя, База, Пароль, Параметры);
+EndFunction
+
+Function ПолучитьПользователей(Val Соединение, Val Пользователи, Val База = Undefined, Val ПолучатьПароль = False, Val ПолучатьПривелегии = False) Export
+	Return GetUsers(Соединение, Пользователи, База, ПолучатьПароль, ПолучатьПривелегии);
+EndFunction
+
+Function ПолучитьПользователейБазы(Val Соединение, Val База = Undefined, Val ПолучатьПароль = False, Val ПолучатьПривелегии = False) Export
+	Return GetDatabaseUsers(Соединение, База, ПолучатьПароль, ПолучатьПривелегии);
+EndFunction
+
+Function УдалитьПользователя(Val Соединение, Val Имя, Val База = Undefined, Val Параметры = Undefined) Export
+	Return DeleteUser(Соединение, Имя, База, Параметры);
 EndFunction
 
 #EndRegion

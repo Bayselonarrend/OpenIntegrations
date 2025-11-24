@@ -1,0 +1,15 @@
+﻿    Address  = "127.0.0.1:1234";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "main";
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Collection = "new_collection";
+
+    Filter   = New Structure("stringField,doubleField", "Text", 999);
+    Deletion = OPI_MongoDB.GetDocumentDeletionStructure(Filter, 1); // Array or single
+
+    Result = OPI_MongoDB.DeleteDocuments(Connection, Collection, Deletion, Base);
