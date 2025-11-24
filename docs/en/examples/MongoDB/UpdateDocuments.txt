@@ -1,0 +1,17 @@
+﻿    Address  = "127.0.0.1:1234";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "main";
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Collection = "new_collection";
+
+    // __4 = $
+    Filter = New Structure("stringField,doubleField", "Text", New Structure("__4gte, __4lte", 100, 150));
+    Data = New Structure( "__4set", New Structure("doubleField", 999));
+
+    Updating = OPI_MongoDB.GetDocumentUpdateStructure(Filter, Data); // Array or single
+    Result   = OPI_MongoDB.UpdateDocuments(Connection, Collection, Updating, Base);

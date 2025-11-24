@@ -6613,5 +6613,140 @@
 "lib": "MongoDB",
 "name": "GetDocumentBatch",
 "variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "UpdateDocuments",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "UpdateDocuments",
+"variant": "Obtaining"
+},
+{
+"lib": "MongoDB",
+"name": "UpdateDocuments",
+"variant": "Getting new"
+},
+{
+"lib": "MongoDB",
+"name": "UpdateDocuments",
+"variant": "Check 1"
+},
+{
+"lib": "MongoDB",
+"name": "UpdateDocuments",
+"variant": "Check 2"
+},
+{
+"lib": "MongoDB",
+"name": "UpdateDocuments",
+"variant": "Check 3"
+},
+{
+"lib": "MongoDB",
+"name": "UpdateDocuments",
+"variant": "Check 4"
+},
+{
+"lib": "MongoDB",
+"name": "UpdateDocuments",
+"variant": "Check 5"
+},
+{
+"lib": "MongoDB",
+"name": "UpdateDocuments",
+"variant": "Check 6"
+},
+{
+"lib": "MongoDB",
+"name": "UpdateDocuments",
+"variant": "Check 7"
+},
+{
+"lib": "MongoDB",
+"name": "UpdateDocuments",
+"variant": "Check 8_1"
+},
+{
+"lib": "MongoDB",
+"name": "UpdateDocuments",
+"variant": "Check 8_2"
+},
+{
+"lib": "MongoDB",
+"name": "UpdateDocuments",
+"variant": "Check 8_3"
+},
+{
+"lib": "MongoDB",
+"name": "UpdateDocuments",
+"variant": "Check 8_4"
+},
+{
+"lib": "MongoDB",
+"name": "GetDocumentUpdateStructure",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "DeleteDocuments",
+"variant": "Precheck"
+},
+{
+"lib": "MongoDB",
+"name": "DeleteDocuments",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "DeleteDocuments",
+"variant": "Check"
+},
+{
+"lib": "MongoDB",
+"name": "CreateUser",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "CreateUser",
+"variant": "Existing"
+},
+{
+"lib": "MongoDB",
+"name": "UpdateUser",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "UpdateUser",
+"variant": "Nonexistent"
+},
+{
+"lib": "MongoDB",
+"name": "DeleteUser",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "DeleteUser",
+"variant": "Again"
+},
+{
+"lib": "MongoDB",
+"name": "GetUsers",
+"variant": "Simple"
+},
+{
+"lib": "MongoDB",
+"name": "GetUsers",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "GetDatabaseUsers",
+"variant": ""
 }
 ]
