@@ -1,0 +1,56 @@
+﻿---
+sidebar_position: 1
+description: Create user and other functions to work with MongoDB in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MongoDB]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Create user
+ Creates a new user
+
+
+
+`Function CreateUser(Val Connection, Val Name, Val UserRoles, Val Base = Undefined, Val Password = Undefined, Val Parameters = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --dbc | String, Arbitrary | &#x2714; | Connection or connection string |
+  | Name | --name | String | &#x2714; | Users name |
+  | UserRoles | --roles | Array Of Arbitrary | &#x2714; | Array of roles as strings or structures specifying the DB |
+  | Base | --db | String | &#x2716; | Database name. Current database if not specified |
+  | Password | --pwd | String | &#x2716; | Users password |
+  | Parameters | --params | Structure Of KeyAndValue | &#x2716; | Additional creation parameters |
+
+  
+  Returns:  Map Of KeyAndValue - Operation result
+
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1:1234";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "main";
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    RoleArray = New Array;
+    RoleArray.Add("read");
+    RoleArray.Add("userAdmin");
+
+    UserName     = "newuser";
+    UserPassword = "1234";
+
+    Result = OPI_MongoDB.CreateUser(Connection, UserName, RoleArray, Base, UserPassword);
+```
+ 
+
+
+
+

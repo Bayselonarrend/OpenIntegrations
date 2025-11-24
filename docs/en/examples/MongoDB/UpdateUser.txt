@@ -1,0 +1,16 @@
+﻿    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    RoleArray = New Array;
+    RoleArray.Add("readWrite");
+
+    UserName     = "newuser";
+    UserPassword = "4321";
+
+    Result = OPI_MongoDB.UpdateUser(Connection, UserName, RoleArray, Base, UserPassword);

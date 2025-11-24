@@ -1,0 +1,43 @@
+﻿---
+sidebar_position: 7
+description: Get document update structure and other functions to work with MongoDB in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MongoDB]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get document update structure
+ Forms data structure for updating documents
+
+
+
+`Function GetDocumentUpdateStructure(Val Filter, Val Data, Val UpdateAll = True, Val Insert = False, Val Collation = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Filter | --query | Structure Of KeyAndValue | &#x2714; | Document filter |
+  | Data | --data | Structure Of KeyAndValue | &#x2714; | New document data for update |
+  | UpdateAll | --multi | Boolean | &#x2716; | True > updates all documents by filter, False > only one |
+  | Insert | --upsert | Boolean | &#x2716; | Insert a new document if no document was found |
+  | Collation | --cltn | Structure Of KeyAndValue | &#x2716; | Special field comparison rules |
+
+  
+  Returns:  Structure Of KeyAndValue - Result of connection termination
+
+<br/>
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    // __4 = $
+    Filter = New Structure("stringField,doubleField", "Text", New Structure("__4gte, __4lte", 100, 150));
+    Data = New Structure( "__4set", New Structure("doubleField", 999));
+
+    Result = OPI_MongoDB.GetDocumentUpdateStructure(Filter, Data, True, True);
+```
+ 
+
+
+
+

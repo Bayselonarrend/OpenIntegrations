@@ -349,6 +349,185 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library   = "mongodb";
     NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateDocuments";
+    NewLine.SearchMethod  = "UPDATEDOCUMENTS";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Documents management";
+    NewLine.MethodDescription   = "Updates document data in the collection";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateDocuments";
+    NewLine.SearchMethod  = "UPDATEDOCUMENTS";
+    NewLine.Parameter     = "--coll";
+    NewLine.ParameterTrim = "-c";
+    NewLine.Description     = "Collection name";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateDocuments";
+    NewLine.SearchMethod  = "UPDATEDOCUMENTS";
+    NewLine.Parameter     = "--updates";
+    NewLine.ParameterTrim = "-u";
+    NewLine.Description     = "Update array. See GetDocumentUpdateStructure";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateDocuments";
+    NewLine.SearchMethod  = "UPDATEDOCUMENTS";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateDocuments";
+    NewLine.SearchMethod  = "UPDATEDOCUMENTS";
+    NewLine.Parameter     = "--params";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Additional insert options (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocuments";
+    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Documents management";
+    NewLine.MethodDescription   = "Gets collection documents";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocuments";
+    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Parameter     = "--coll";
+    NewLine.ParameterTrim = "-c";
+    NewLine.Description     = "Collection name";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocuments";
+    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocuments";
+    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Parameter     = "--query";
+    NewLine.ParameterTrim = "-q";
+    NewLine.Description     = "Document filter (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocuments";
+    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Parameter     = "--sort";
+    NewLine.ParameterTrim = "-s";
+    NewLine.Description     = "Selection sorting (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocuments";
+    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Parameter     = "--params";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Additional retrieval parameters (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "DeleteDocuments";
+    NewLine.SearchMethod  = "DELETEDOCUMENTS";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Documents management";
+    NewLine.MethodDescription   = "Deletes collection documents";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "DeleteDocuments";
+    NewLine.SearchMethod  = "DELETEDOCUMENTS";
+    NewLine.Parameter     = "--coll";
+    NewLine.ParameterTrim = "-c";
+    NewLine.Description     = "Collection name";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "DeleteDocuments";
+    NewLine.SearchMethod  = "DELETEDOCUMENTS";
+    NewLine.Parameter     = "--deletes";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Deletion array. See GetDocumentDeletionStructure";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "DeleteDocuments";
+    NewLine.SearchMethod  = "DELETEDOCUMENTS";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "DeleteDocuments";
+    NewLine.SearchMethod  = "DELETEDOCUMENTS";
+    NewLine.Parameter     = "--params";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Additional insert options (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
     NewLine.Method        = "GetCursor";
     NewLine.SearchMethod  = "GETCURSOR";
     NewLine.Parameter     = "--dbc";
@@ -385,8 +564,8 @@ Function GetComposition() Export
     NewLine.Module       = "OPI_MongoDB";
     NewLine.Method        = "GetCursor";
     NewLine.SearchMethod  = "GETCURSOR";
-    NewLine.Parameter     = "--filter";
-    NewLine.ParameterTrim = "-f";
+    NewLine.Parameter     = "--query";
+    NewLine.ParameterTrim = "-q";
     NewLine.Description     = "Document filter (optional, def. val. - Empty value)";
     NewLine.Region      = "Documents management";
 
@@ -483,68 +662,371 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library   = "mongodb";
     NewLine.Module       = "OPI_MongoDB";
-    NewLine.Method        = "GetDocuments";
-    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Method        = "GetDocumentUpdateStructure";
+    NewLine.SearchMethod  = "GETDOCUMENTUPDATESTRUCTURE";
+    NewLine.Parameter     = "--query";
+    NewLine.ParameterTrim = "-q";
+    NewLine.Description     = "Document filter";
+    NewLine.Region      = "Documents management";
+    NewLine.MethodDescription   = "Forms data structure for updating documents";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocumentUpdateStructure";
+    NewLine.SearchMethod  = "GETDOCUMENTUPDATESTRUCTURE";
+    NewLine.Parameter     = "--data";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "New document data for update";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocumentUpdateStructure";
+    NewLine.SearchMethod  = "GETDOCUMENTUPDATESTRUCTURE";
+    NewLine.Parameter     = "--multi";
+    NewLine.ParameterTrim = "-m";
+    NewLine.Description     = "True > updates all documents by filter, False > only one (optional, def. val. - True)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocumentUpdateStructure";
+    NewLine.SearchMethod  = "GETDOCUMENTUPDATESTRUCTURE";
+    NewLine.Parameter     = "--upsert";
+    NewLine.ParameterTrim = "-u";
+    NewLine.Description     = "Insert a new document if no document was found (optional, def. val. - False)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocumentUpdateStructure";
+    NewLine.SearchMethod  = "GETDOCUMENTUPDATESTRUCTURE";
+    NewLine.Parameter     = "--cltn";
+    NewLine.ParameterTrim = "-c";
+    NewLine.Description     = "Special field comparison rules (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocumentDeletionStructure";
+    NewLine.SearchMethod  = "GETDOCUMENTDELETIONSTRUCTURE";
+    NewLine.Parameter     = "--query";
+    NewLine.ParameterTrim = "-q";
+    NewLine.Description     = "Document filter";
+    NewLine.Region      = "Documents management";
+    NewLine.MethodDescription   = "Forms data structure for update";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocumentDeletionStructure";
+    NewLine.SearchMethod  = "GETDOCUMENTDELETIONSTRUCTURE";
+    NewLine.Parameter     = "--limit";
+    NewLine.ParameterTrim = "-l";
+    NewLine.Description     = "Deletion limit: 1 > first document, 0 > all documents (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDocumentDeletionStructure";
+    NewLine.SearchMethod  = "GETDOCUMENTDELETIONSTRUCTURE";
+    NewLine.Parameter     = "--cltn";
+    NewLine.ParameterTrim = "-c";
+    NewLine.Description     = "Special field comparison rules (optional, def. val. - Empty value)";
+    NewLine.Region      = "Documents management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "CreateUser";
+    NewLine.SearchMethod  = "CREATEUSER";
     NewLine.Parameter     = "--dbc";
     NewLine.ParameterTrim = "-d";
     NewLine.Description     = "Connection or connection string";
-    NewLine.Region      = "Documents management";
-    NewLine.MethodDescription   = "Gets collection documents";
+    NewLine.Region      = "Users and roles";
+    NewLine.MethodDescription   = "Creates a new user";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library   = "mongodb";
     NewLine.Module       = "OPI_MongoDB";
-    NewLine.Method        = "GetDocuments";
-    NewLine.SearchMethod  = "GETDOCUMENTS";
-    NewLine.Parameter     = "--coll";
-    NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Collection name";
-    NewLine.Region      = "Documents management";
+    NewLine.Method        = "CreateUser";
+    NewLine.SearchMethod  = "CREATEUSER";
+    NewLine.Parameter     = "--name";
+    NewLine.ParameterTrim = "-n";
+    NewLine.Description     = "Users name";
+    NewLine.Region      = "Users and roles";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library   = "mongodb";
     NewLine.Module       = "OPI_MongoDB";
-    NewLine.Method        = "GetDocuments";
-    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Method        = "CreateUser";
+    NewLine.SearchMethod  = "CREATEUSER";
+    NewLine.Parameter     = "--roles";
+    NewLine.ParameterTrim = "-r";
+    NewLine.Description     = "Array of roles as strings or structures specifying the DB";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "CreateUser";
+    NewLine.SearchMethod  = "CREATEUSER";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
-    NewLine.Region      = "Documents management";
+    NewLine.Region      = "Users and roles";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library   = "mongodb";
     NewLine.Module       = "OPI_MongoDB";
-    NewLine.Method        = "GetDocuments";
-    NewLine.SearchMethod  = "GETDOCUMENTS";
-    NewLine.Parameter     = "--filter";
-    NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Document filter (optional, def. val. - Empty value)";
-    NewLine.Region      = "Documents management";
+    NewLine.Method        = "CreateUser";
+    NewLine.SearchMethod  = "CREATEUSER";
+    NewLine.Parameter     = "--pwd";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Users password (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library   = "mongodb";
     NewLine.Module       = "OPI_MongoDB";
-    NewLine.Method        = "GetDocuments";
-    NewLine.SearchMethod  = "GETDOCUMENTS";
-    NewLine.Parameter     = "--sort";
+    NewLine.Method        = "CreateUser";
+    NewLine.SearchMethod  = "CREATEUSER";
+    NewLine.Parameter     = "--params";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Additional creation parameters (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateUser";
+    NewLine.SearchMethod  = "UPDATEUSER";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Users and roles";
+    NewLine.MethodDescription   = "Modifies existing user data";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateUser";
+    NewLine.SearchMethod  = "UPDATEUSER";
+    NewLine.Parameter     = "--name";
+    NewLine.ParameterTrim = "-n";
+    NewLine.Description     = "Users name";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateUser";
+    NewLine.SearchMethod  = "UPDATEUSER";
+    NewLine.Parameter     = "--roles";
+    NewLine.ParameterTrim = "-r";
+    NewLine.Description     = "Array of roles as strings or structures specifying the DB (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateUser";
+    NewLine.SearchMethod  = "UPDATEUSER";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateUser";
+    NewLine.SearchMethod  = "UPDATEUSER";
+    NewLine.Parameter     = "--pwd";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Users password (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateUser";
+    NewLine.SearchMethod  = "UPDATEUSER";
+    NewLine.Parameter     = "--params";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Additional parameters (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetUsers";
+    NewLine.SearchMethod  = "GETUSERS";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Users and roles";
+    NewLine.MethodDescription   = "Gets data of one or more users";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetUsers";
+    NewLine.SearchMethod  = "GETUSERS";
+    NewLine.Parameter     = "--usrs";
+    NewLine.ParameterTrim = "-u";
+    NewLine.Description     = "Username, structure, or array of user structures";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetUsers";
+    NewLine.SearchMethod  = "GETUSERS";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetUsers";
+    NewLine.SearchMethod  = "GETUSERS";
+    NewLine.Parameter     = "--spwd";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Selection sorting (optional, def. val. - Empty value)";
-    NewLine.Region      = "Documents management";
+    NewLine.Description     = "Adds user password hash to the returned data (optional, def. val. - False)";
+    NewLine.Region      = "Users and roles";
 
 
     NewLine = CompositionTable.Add();
     NewLine.Library   = "mongodb";
     NewLine.Module       = "OPI_MongoDB";
-    NewLine.Method        = "GetDocuments";
-    NewLine.SearchMethod  = "GETDOCUMENTS";
+    NewLine.Method        = "GetUsers";
+    NewLine.SearchMethod  = "GETUSERS";
+    NewLine.Parameter     = "--sprv";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Adds a list of user privileges to the returned data (optional, def. val. - False)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDatabaseUsers";
+    NewLine.SearchMethod  = "GETDATABASEUSERS";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Users and roles";
+    NewLine.MethodDescription   = "Gets information about all database users";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDatabaseUsers";
+    NewLine.SearchMethod  = "GETDATABASEUSERS";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDatabaseUsers";
+    NewLine.SearchMethod  = "GETDATABASEUSERS";
+    NewLine.Parameter     = "--spwd";
+    NewLine.ParameterTrim = "-s";
+    NewLine.Description     = "Adds user password hash to the returned data (optional, def. val. - False)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetDatabaseUsers";
+    NewLine.SearchMethod  = "GETDATABASEUSERS";
+    NewLine.Parameter     = "--sprv";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Adds a list of user privileges to the returned data (optional, def. val. - False)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "DeleteUser";
+    NewLine.SearchMethod  = "DELETEUSER";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Users and roles";
+    NewLine.MethodDescription   = "Deletes user by name";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "DeleteUser";
+    NewLine.SearchMethod  = "DELETEUSER";
+    NewLine.Parameter     = "--name";
+    NewLine.ParameterTrim = "-n";
+    NewLine.Description     = "Users name";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "DeleteUser";
+    NewLine.SearchMethod  = "DELETEUSER";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "DeleteUser";
+    NewLine.SearchMethod  = "DELETEUSER";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Additional retrieval parameters (optional, def. val. - Empty value)";
-    NewLine.Region      = "Documents management";
+    NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
 
     Return CompositionTable;
 EndFunction

@@ -4,7 +4,7 @@
     Result = OPI_Bitrix24.DeleteCalendarEvent(URL, EventID);
 
     URL     = "b24-ar17wx.bitrix24.by";
-    Token   = "53100369006e9f06006b12e400000001000...";
+    Token   = "ed182469006e9f06006b12e400000001000...";
     EventID = "2966";
 
     Result = OPI_Bitrix24.DeleteCalendarEvent(URL, EventID, Token);

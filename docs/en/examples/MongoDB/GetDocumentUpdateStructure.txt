@@ -1,0 +1,5 @@
+﻿    // __4 = $
+    Filter = New Structure("stringField,doubleField", "Text", New Structure("__4gte, __4lte", 100, 150));
+    Data = New Structure( "__4set", New Structure("doubleField", 999));
+
+    Result = OPI_MongoDB.GetDocumentUpdateStructure(Filter, Data, True, True);
