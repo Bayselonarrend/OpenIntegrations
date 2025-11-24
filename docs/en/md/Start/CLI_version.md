@@ -2,53 +2,53 @@
 sidebar_position: 2
 ---
 
-# Working with CLI app
+# Working with CLI application
 
-OInt CLI - a command-line application that allows you to use methods of the Open Integration Package independently of 1C and OneScript
+**OInt CLI** is a command-line application that allows using Open Integration Package methods independently of 1C and OneScript.
 
-## First start
+## First Launch
 
-To get started, you need to call the command `oint` from the command prompt/terminal. If app was installed from packages (Linux) or installer (Windows, after reboot), you can do this from any place without additional actions. When using the portable version (single executable file), `oint` needs to be run with the full path to the file. In Linux distributions, you may also need to execute `chmod +x <path to file>/oint beforehand` 
-
-To run the portable version in RHEL/Fedora/CentOS (distributions using rpm packages), use the command <br/>`mono <path to oint>/oint "$@"`
+To start working with the console application, you need to run the `oint` command from the command line/terminal. When installed from Linux packages or Windows installer (after reboot), this can be done from anywhere without additional configuration. If `oint` is installed as an OPM package, calling from anywhere is available provided that the `bin` subdirectory of the OneScript directory is in the `PATH`.
 
 ![demo](./img/1.gif)
 
 ## Help
 
-After the launching of application, you'll see the initial page with a list of available libraries. To view the list of available methods for a specific library, simply type `oint` followed by its name. For example, `oint telegram`. Similarly, you can get details about a specific method by using the command `oint <library> <method>`, for example, `oint telegram SendMessage`
+When launching the application without additional options, the initial `oint` page will be displayed in the terminal window, showing basic information about the application as well as a list of all available commands (libraries). To view the list of available methods for a specific library, you need to call the `oint` command again, passing the library name as the second argument - for example, `oint telegram`. Similarly, you can get detailed information about a specific method: for this, you need to call a command of the form `oint <library> <method>` - for example, `oint telegram SendTextMessage`.
 
->**Important:** Library names are case-sensitive and should be written in lowercase. Method names are not case-sensitive
+>**Important:** Library names are case-sensitive and are written in lowercase. Method names are not case-sensitive.
 
-![demo](./img/2.gif) 
+![demo](./img/2.gif)
 
-## Using methods
-Like most other programs intended for use in bat/sh scripts, each separate action of Oint CLI is called by a full command line of the following form:
+## Using Methods
+Like most other programs aimed at use in bat/sh scripts, each separate action in Oint CLI is performed by calling a full command string of the following form:
 
 ```powershell
- oint <library> <method> --option1 "Value" --option2 "Value"...
+    oint <library> <method> --param1 "Value" --param2 "Value"...
 ```
 
-When it comes to parameters, most often the data passed there are strings. This can be text, file paths, URLs, etc. However, in OInt, there are methods that accept other, less obvious types of data. These can be:
+Parameters in the call string can be of one of the following types:
 
- + Dates are passed as strings in ISO 8601 format
- + Arrays are passed as strings in the form`"['Val1','Val2','Val3']"`
- + JSON is passed as a path to a .json file or a string in JSON format with single quotes
+  + String - passed as a string in quotes or without them
+  + Number - passed as a string without quotes, consisting of digits and (if necessary) a decimal separator. The decimal separator is `.`
+  + Date - passed as a string in ISO 8601 format
+  + Array - passed as a string in JSON array format. For example, `"['Value1','Value2','Value3']"`
+  + JSON object (structure) - passed as a file path or string in JSON format
 
-After executing the requested action, the program outputs the result and exits. By default, the output is displayed in the console, but you can redirect it to a file using either the standard method `>` or by using the common parameter `--out`. The difference between these two methods lies in the encoding of the saved file: when using `>`, it will be the encoding of the shell, whereas when using `--out`, it will be UTF-8 (used internally by OInt). Additionally, using `--out` is mandatory for methods returning binary data in the response (such as downloading a file from Google Drive, for example)
+After executing the requested action, the program outputs the result and terminates. By default, output goes to the console, but there is an option to redirect it for writing to a file - both by the standard method `>` and using the application's general parameter `--out`. The difference between these two methods is the encoding of the saved file: when using `>` it will be the shell encoding, while when using `--out` it will be UTF-8 (used internally by OInt). Also, using `--out` is mandatory for methods that return binary data in the response (such as downloading files from cloud storage).
 
-![demo](./img/3.gif) 
+![demo](./img/3.gif)
 
-## Escape sequences
+## Control Sequences
 
-The standard escape sequences `\n`, `\r`, `\v`, and `\f` may be used in the passed parameters. These are converted to line breaks, carriage returns, vertical tabs, and form feeds, respectively, in all arguments, except:
+The use of standard control sequences is allowed in passed parameters: `\n`, `\r`, `\v`, and `\f`. They are converted to line feed, carriage return, vertical tab, and form feed characters respectively, in all arguments except:
 
-+ Array parameters and JSON-formatted parameters (i.e., those beginning with `{` or `[`)
-+ File paths, if a file on that path exists
-+ Standard `--out` parameter
++ Array parameters and parameters in JSON format (i.e., starting with `{` or `[`)
++ File paths, if the file at that path exists
++ The standard parameter `--out`
 
-In order to avoid esapce sequence conversions where they should not be, it is necessary to escape them with a second character `\` (e.g., `\n`).
+To avoid control sequence conversion where it shouldn't occur, you need to escape them with a second `\` character (for example, `\\n`).
 
 <hr/>
 
-You can find all further information you might need for work in other sections of this documentation, as well as in the built-in help of OInt CLI
+All further information you may need for work can be found in other sections of this documentation, as well as in the built-in help of OInt CLI
