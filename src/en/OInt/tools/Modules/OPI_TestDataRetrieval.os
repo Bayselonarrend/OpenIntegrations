@@ -12571,6 +12571,46 @@ Function Check_MongoDB_DeleteDatabase(Val Result, Val Option)
 
 EndFunction
 
+Function Check_MongoDB_CreateRole(Val Result, Val Option)
+
+    If Option = "Existing" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_DeleteRole(Val Result, Val Option)
+
+    If Option = "Again" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_GetRolePrivilegeStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result
+
+EndFunction
+
+Function Check_MongoDB_GetDocumentDeletionStructure(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region ReportPortal
@@ -12954,6 +12994,10 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
             EndIf;
 
         EndIf;
+
+        Value = Value["ConnectionString"];
+
+    ElsIf AddInName = "OPI_MongoDB" Then
 
         Value = Value["ConnectionString"];
 
