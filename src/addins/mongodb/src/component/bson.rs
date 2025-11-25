@@ -47,12 +47,25 @@ pub fn json_value_to_bson(value: &Value) -> Result<Bson, String> {
                 return Ok(Bson::Boolean(b.as_bool().ok_or(format!("Can't parse Bool: {}", b))?))
             }
 
-            if let Some(datetime) = obj.get("__OPI_DATETIME__").or_else(|| obj.get("__OPI_TIMESTAMP__")) {
+            if let Some(datetime) = obj.get("__OPI_DATETIME__") {
                 return if let Some(dt) = datetime.as_str() {
                     let dtp = parse(dt).map_err(|e| format!("Can't parse DateTime: {}: {}", dt, e))?;
                     Ok(Bson::DateTime(bson::DateTime::from_system_time(SystemTime::from(dtp))))
                 } else {
-                    Err(format!("Can't parse DateTime or Timestamp: {}", datetime))
+                    Err(format!("Can't parse DateTime: {}", datetime))
+                }
+            }
+
+            if let Some(timestamp) = obj.get("__OPI_TIMESTAMP__") {
+                return if let Some(ts) = timestamp.as_str() {
+                    let dtp = parse(ts).map_err(|e| format!("Can't parse Timestamp: {}: {}", ts, e))?;
+                    let bson_ts = bson::Timestamp{
+                        time: dtp.timestamp() as u32,
+                        increment: 0,
+                    };
+                    Ok(Bson::Timestamp(bson_ts))
+                } else {
+                    Err(format!("Can't parse Timestamp: {}", timestamp))
                 }
             }
 
