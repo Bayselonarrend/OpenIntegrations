@@ -737,7 +737,7 @@ EndFunction
 //
 // Note
 // Role can be defined in one of the following formats:^
-// Structure: `{ role: "<name>", db: "<database>" }`^
+// Structure: `{ role: "name", db: "database" }`^
 // String: `name рoлand`
 //
 // Parameters:
@@ -767,7 +767,7 @@ EndFunction
 // Note
 // The passed roles completely replace the user's role list
 // Role can be defined in one of the following formats:^
-// Structure: `{ role: "<name>", db: "<database>" }`^
+// Structure: `{ role: "name", db: "database" }`^
 // String: `name рoлand`
 //
 // Parameters:
@@ -889,17 +889,14 @@ EndFunction
 //
 // Note
 // Role can be defined in one of the following formats:^
-// Structure: `{ role: "<name>", db: "<database>" }`^
+// Structure: `{ role: "name", db: "database" }`^
 // String: `name рoлand`
-// Privilege can be defined in one of the following formats:^
-// Structure for collection: `{ db: <database>, collection: <collection name> }`
-// Structure for toлаwithтера: `{ cluster : true }`
 //
 // Parameters:
 // Connection - String, Arbitrary - Connection or connection string - dbc
 // Name - String - Role name - name
 // Base - String - Database name. Current database if not specified - db
-// PrivilegesArray - Array of Structure - Array of role privileges - prvl
+// PrivilegesArray - Array of Structure - Array of privileges. See GetRolePrivilegeStructure - prvl - prvl
 // RoleArray - Array Of Arbitrary - Array of roles based on strings or structures specifying the database - roles
 // Parameters - Structure Of KeyAndValue - Additional deletion parameters - params
 //
@@ -922,17 +919,14 @@ EndFunction
 // Note
 // The passed roles and privileges completely replace the current role data
 // Role can be defined in one of the following formats:^
-// Structure: `{ role: "<name>", db: "<database>" }`^
+// Structure: `{ role: "name", db: "database" }`^
 // String: `name рoлand`
-// Privilege can be defined in one of the following formats:^
-// Structure for collection: `{ db: <database>, collection: <collection name> }`
-// Structure for toлаwithтера: `{ cluster : true }`
 //
 // Parameters:
 // Connection - String, Arbitrary - Connection or connection string - dbc
 // Name - String - Role name - name
 // Base - String - Database name. Current database if not specified - db
-// PrivilegesArray - Array of Structure - Array of role privileges - prvl
+// PrivilegesArray - Array of Structure - Array of privileges. See GetRolePrivilegeStructure - prvl
 // RoleArray - Array Of Arbitrary - Array of roles based on strings or structures specifying the database - roles
 // Parameters - Structure Of KeyAndValue - Additional deletion parameters - params
 //
@@ -946,6 +940,60 @@ Function UpdateRole(Val Connection
     , Val Parameters = Undefined) Export
 
     Return CreateOrUpdateRole("updateRole", Connection, Name, Base, PrivilegesArray, RoleArray, Parameters);
+
+EndFunction
+
+// Delete role
+// Deletes an existing role
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Name - String - Role name - name
+// Base - String - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional deletion parameters - params
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function DeleteRole(Val Connection, Val Name, Val Base = Undefined, Val Parameters = Undefined) Export
+
+    OPI_TypeConversion.GetLine(Name);
+
+    If Parameters <> Undefined Then
+        OPI_TypeConversion.GetKeyValueCollection(Parameters);
+    Else
+        Parameters = New Structure;
+    EndIf;
+
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
+
+    Result = ExecuteCommand(Connection, "dropRole", Name, Base, Parameters);
+    Return Result;
+
+EndFunction
+
+// Get role privilege structure
+// Forms the privilege information structure for use when working with roles
+//
+// Note
+// Resource can be defined in one of the following formats:^
+// Structure for collection: `{ db: "database", collection: "collection name" }`
+// Structure for toлаwithтера: `{ cluster : true }`
+//
+// Parameters:
+// Resource - Structure Of KeyAndValue - Privilege resource - res
+// ActionsArray - Array Of String - Array of available privilege actions - act
+//
+// Returns:
+// Structure - Privilege structure
+Function GetRolePrivilegeStructure(Val Resource, Val ActionsArray) Export
+
+    PrivilegeStructure = New Structure;
+    OPI_Tools.AddField("resource", Resource    , "KeyAndValue", PrivilegeStructure);
+    OPI_Tools.AddField("actions" , ActionsArray, "Array"      , PrivilegeStructure);
+
+    Return PrivilegeStructure;
 
 EndFunction
 

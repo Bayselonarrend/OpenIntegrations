@@ -1,0 +1,9 @@
+﻿    Base     = "main";
+    Resource = New Structure("db,collection", Base, "new_collection");
+    Actions  = New Array;
+
+    Actions.Add("find");
+    Actions.Add("insert");
+    Actions.Add("update");
+
+    Result = OPI_MongoDB.GetRolePrivilegeStructure(Resource, Actions);
