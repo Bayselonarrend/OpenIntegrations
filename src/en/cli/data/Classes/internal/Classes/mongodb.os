@@ -1028,6 +1028,140 @@ Function GetComposition() Export
     NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
     NewLine.Region      = "Users and roles";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "CreateRole";
+    NewLine.SearchMethod  = "CREATEROLE";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Users and roles";
+    NewLine.MethodDescription   = "Creates a new role";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "CreateRole";
+    NewLine.SearchMethod  = "CREATEROLE";
+    NewLine.Parameter     = "--name";
+    NewLine.ParameterTrim = "-n";
+    NewLine.Description     = "Role name";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "CreateRole";
+    NewLine.SearchMethod  = "CREATEROLE";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "CreateRole";
+    NewLine.SearchMethod  = "CREATEROLE";
+    NewLine.Parameter     = "--prvl";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Array of role privileges (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "CreateRole";
+    NewLine.SearchMethod  = "CREATEROLE";
+    NewLine.Parameter     = "--roles";
+    NewLine.ParameterTrim = "-r";
+    NewLine.Description     = "Array of roles based on strings or structures specifying the database (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "CreateRole";
+    NewLine.SearchMethod  = "CREATEROLE";
+    NewLine.Parameter     = "--params";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateRole";
+    NewLine.SearchMethod  = "UPDATEROLE";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Users and roles";
+    NewLine.MethodDescription   = "Modifies the data of an existing role";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateRole";
+    NewLine.SearchMethod  = "UPDATEROLE";
+    NewLine.Parameter     = "--name";
+    NewLine.ParameterTrim = "-n";
+    NewLine.Description     = "Role name";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateRole";
+    NewLine.SearchMethod  = "UPDATEROLE";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateRole";
+    NewLine.SearchMethod  = "UPDATEROLE";
+    NewLine.Parameter     = "--prvl";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Array of role privileges (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateRole";
+    NewLine.SearchMethod  = "UPDATEROLE";
+    NewLine.Parameter     = "--roles";
+    NewLine.ParameterTrim = "-r";
+    NewLine.Description     = "Array of roles based on strings or structures specifying the database (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "UpdateRole";
+    NewLine.SearchMethod  = "UPDATEROLE";
+    NewLine.Parameter     = "--params";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
     Return CompositionTable;
 EndFunction
 
