@@ -3210,6 +3210,7 @@ Procedure Mong_DatabaseManagement() Export
 
     MongoDB_GetDatabase(TestParameters);
     MongoDB_GetListOfBases(TestParameters);
+    MongoDB_DeleteDatabase(TestParameters);
 
 EndProcedure
 
@@ -24878,6 +24879,27 @@ Procedure MongoDB_GetListOfBases(FunctionParameters)
     // END
 
     Process(Result, "MongoDB", "GetListOfBases");
+
+EndProcedure
+
+Procedure MongoDB_DeleteDatabase(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Result = OPI_MongoDB.DeleteDatabase(Connection, Base);
+
+    // END
+
+    Process(Result, "MongoDB", "DeleteDatabase");
 
 EndProcedure
 
