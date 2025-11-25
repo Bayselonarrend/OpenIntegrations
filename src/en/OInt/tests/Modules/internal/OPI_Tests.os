@@ -3246,6 +3246,7 @@ Procedure Mongo_DocumentsManagement() Export
     MongoDB_UpdateDocuments(TestParameters);
     MongoDB_DeleteDocuments(TestParameters);
     MongoDB_GetDocumentUpdateStructure(TestParameters);
+    MongoDB_GetDocumentDeletionStructure(TestParameters);
 
 EndProcedure
 
@@ -3263,6 +3264,9 @@ Procedure Mongo_UsersAndRoles() Export
     MongoDB_GetUsers(TestParameters);
     MongoDB_GetDatabaseUsers(TestParameters);
     MongoDB_DeleteUser(TestParameters);
+    MongoDB_CreateRole(TestParameters);
+    MongoDB_DeleteRole(TestParameters);
+    MongoDB_GetRolePrivilegeStructure(TestParameters);
 
 EndProcedure
 
@@ -25527,6 +25531,17 @@ Procedure MongoDB_GetDocumentUpdateStructure(FunctionParameters)
 
 EndProcedure
 
+Procedure MongoDB_GetDocumentDeletionStructure(FunctionParameters)
+
+    Filter = New Structure("stringField,doubleField", "Text", 999);
+    Result = OPI_MongoDB.GetDocumentDeletionStructure(Filter, 1); // Array or single
+
+    // END
+
+    Process(Result, "MongoDB", "GetDocumentDeletionStructure");
+
+EndProcedure
+
 Procedure MongoDB_DeleteDocuments(FunctionParameters)
 
     Address  = "127.0.0.1:1234";
@@ -25701,6 +25716,94 @@ Procedure MongoDB_GetDatabaseUsers(FunctionParameters)
     // END
 
     Process(Result, "MongoDB", "GetDatabaseUsers");
+
+EndProcedure
+
+Procedure MongoDB_CreateRole(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    RoleArray = New Array;
+    RoleArray.Add("read");
+    RoleArray.Add("userAdmin");
+
+    Resource = New Structure("db,collection", Base, "new_collection");
+    Actions  = New Array;
+
+    Actions.Add("find");
+    Actions.Add("insert");
+    Actions.Add("update");
+
+    Privilege = OPI_MongoDB.GetRolePrivilegeStructure(Resource, Actions);
+
+    PrivilegesArray = New Array;
+    PrivilegesArray.Add(Privilege);
+
+    RoleName = "newrole";
+
+    Result = OPI_MongoDB.CreateRole(Connection, RoleName, Base, PrivilegesArray, RoleArray);
+
+    // END
+
+    Process(Result, "MongoDB", "CreateRole");
+
+    Result = OPI_MongoDB.CreateRole(Connection, RoleName, Base, PrivilegesArray, RoleArray);
+
+    Process(Result, "MongoDB", "CreateRole", "Existing");
+
+EndProcedure
+
+Procedure MongoDB_DeleteRole(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    RoleName = "newrole";
+
+    Result = OPI_MongoDB.DeleteRole(Connection, RoleName, Base);
+
+    // END
+
+    Process(Result, "MongoDB", "DeleteRole");
+
+    Result = OPI_MongoDB.DeleteRole(Connection, RoleName, Base);
+
+    Process(Result, "MongoDB", "DeleteRole", "Again");
+
+EndProcedure
+
+Procedure MongoDB_GetRolePrivilegeStructure(FunctionParameters)
+
+    Base     = FunctionParameters["MongoDB_DB"];
+    Resource = New Structure("db,collection", Base, "new_collection");
+    Actions  = New Array;
+
+    Actions.Add("find");
+    Actions.Add("insert");
+    Actions.Add("update");
+
+    Result = OPI_MongoDB.GetRolePrivilegeStructure(Resource, Actions);
+
+    // END
+
+    Process(Result, "MongoDB", "GetRolePrivilegeStructure");
 
 EndProcedure
 

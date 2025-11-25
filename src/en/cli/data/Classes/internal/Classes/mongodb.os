@@ -1070,7 +1070,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEROLE";
     NewLine.Parameter     = "--prvl";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Array of role privileges (optional, def. val. - Empty value)";
+    NewLine.Description     = "prvl (optional, def. val. - Empty value)";
     NewLine.Region      = "Users and roles";
 
 
@@ -1137,7 +1137,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEROLE";
     NewLine.Parameter     = "--prvl";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Array of role privileges (optional, def. val. - Empty value)";
+    NewLine.Description     = "Array of privileges. See GetRolePrivilegeStructure (optional, def. val. - Empty value)";
     NewLine.Region      = "Users and roles";
 
 
@@ -1160,6 +1160,74 @@ Function GetComposition() Export
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "DeleteRole";
+    NewLine.SearchMethod  = "DELETEROLE";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Users and roles";
+    NewLine.MethodDescription   = "Deletes an existing role";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "DeleteRole";
+    NewLine.SearchMethod  = "DELETEROLE";
+    NewLine.Parameter     = "--name";
+    NewLine.ParameterTrim = "-n";
+    NewLine.Description     = "Role name";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "DeleteRole";
+    NewLine.SearchMethod  = "DELETEROLE";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "DeleteRole";
+    NewLine.SearchMethod  = "DELETEROLE";
+    NewLine.Parameter     = "--params";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
+    NewLine.Region      = "Users and roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetRolePrivilegeStructure";
+    NewLine.SearchMethod  = "GETROLEPRIVILEGESTRUCTURE";
+    NewLine.Parameter     = "--res";
+    NewLine.ParameterTrim = "-r";
+    NewLine.Description     = "Privilege resource";
+    NewLine.Region      = "Users and roles";
+    NewLine.MethodDescription   = "Forms the privilege information structure for use when working with roles";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetRolePrivilegeStructure";
+    NewLine.SearchMethod  = "GETROLEPRIVILEGESTRUCTURE";
+    NewLine.Parameter     = "--act";
+    NewLine.ParameterTrim = "-a";
+    NewLine.Description     = "Array of available privilege actions";
     NewLine.Region      = "Users and roles";
 
     Return CompositionTable;

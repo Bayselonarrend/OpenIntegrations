@@ -1,0 +1,2 @@
+﻿    Filter = New Structure("stringField,doubleField", "Text", 999);
+    Result = OPI_MongoDB.GetDocumentDeletionStructure(Filter, 1); // Array or single

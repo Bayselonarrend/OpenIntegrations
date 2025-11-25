@@ -19,7 +19,7 @@ import TabItem from '@theme/TabItem';
   | Connection | --dbc | String, Arbitrary | &#x2714; | Connection or connection string |
   | Name | --name | String | &#x2714; | Role name |
   | Base | --db | String | &#x2716; | Database name. Current database if not specified |
-  | PrivilegesArray | --prvl | Array of Structure | &#x2716; | Array of role privileges |
+  | PrivilegesArray | --prvl | Array of Structure | &#x2716; | prvl |
   | RoleArray | --roles | Array Of Arbitrary | &#x2716; | Array of roles based on strings or structures specifying the database |
   | Parameters | --params | Structure Of KeyAndValue | &#x2716; | Additional deletion parameters |
 
@@ -29,16 +29,41 @@ import TabItem from '@theme/TabItem';
 <br/>
 
 :::tip
-Role can be defined in one of the following formats:<br/>Structure: `{ role: "&lt;name&gt;", db: "&lt;database&gt;" }`<br/>String: `name рoлand`
-
-Privilege can be defined in one of the following formats:<br/>Structure for collection: `{ db: &lt;database&gt;, collection: &lt;collection name&gt; }`
-
-Structure for toлаwithтера: `{ cluster : true }`
+Role can be defined in one of the following formats:<br/>Structure: `{ role: "name", db: "database" }`<br/>String: `name рoлand`
 :::
 <br/>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    Address  = "127.0.0.1:1234";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "main";
 
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    RoleArray = New Array;
+    RoleArray.Add("read");
+    RoleArray.Add("userAdmin");
+
+    Resource = New Structure("db,collection", Base, "new_collection");
+    Actions  = New Array;
+
+    Actions.Add("find");
+    Actions.Add("insert");
+    Actions.Add("update");
+
+    Privilege = OPI_MongoDB.GetRolePrivilegeStructure(Resource, Actions);
+
+    PrivilegesArray = New Array;
+    PrivilegesArray.Add(Privilege);
+
+    RoleName = "newrole";
+
+    Result = OPI_MongoDB.CreateRole(Connection, RoleName, Base, PrivilegesArray, RoleArray);
+```
  
 
 
