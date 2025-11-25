@@ -27,7 +27,10 @@ import TabItem from '@theme/TabItem';
 
 
 
-
+```bsl title="1C:Enterprise/OneScript code example"
+    Filter = New Structure("stringField,doubleField", "Text", 999);
+    Result = OPI_MongoDB.GetDocumentDeletionStructure(Filter, 1); // Array or single
+```
  
 
 

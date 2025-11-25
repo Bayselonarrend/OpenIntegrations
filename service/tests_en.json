@@ -6696,6 +6696,11 @@
 },
 {
 "lib": "MongoDB",
+"name": "GetDocumentDeletionStructure",
+"variant": ""
+},
+{
+"lib": "MongoDB",
 "name": "DeleteDocuments",
 "variant": "Precheck"
 },
@@ -6752,6 +6757,31 @@
 {
 "lib": "MongoDB",
 "name": "GetDatabaseUsers",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "CreateRole",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "CreateRole",
+"variant": "Existing"
+},
+{
+"lib": "MongoDB",
+"name": "DeleteRole",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "DeleteRole",
+"variant": "Again"
+},
+{
+"lib": "MongoDB",
+"name": "GetRolePrivilegeStructure",
 "variant": ""
 }
 ]
