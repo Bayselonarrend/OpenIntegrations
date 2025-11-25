@@ -53,21 +53,21 @@ MongoDB использует JSON-подобный формат документ
 
 | Ключ структуры / объекта JSON | Тип MongoDB (BSON) |
 |-|-|
-| __OPI_STRING__ | String |
-| __OPI_INT32__ | Int32 |
-| __OPI_INT64__ | Int64 |
-| __OPI_DOUBLE__ | Double |
-| __OPI_BOOLEAN__ | Boolean |
-| __OPI_DATETIME__ | DateTime |
-| __OPI_TIMESTAMP__ | Timestamp |
-| __OPI_OBJECTID__ | ObjectID |
-| __OPI_REGEXP__ | RegularExpression |
-| __OPI_JS__ | JavaScriptCode |
-| __OPI_SYMBOL__ | Symbol |
-| __OPI_MINKEY__ | MinKey |
-| __OPI_MAXKEY__ | MaxKey |
-| __OPI_NULL__ | Null |
-| __OPI_BINARY__ | Binary |
+| \_\_OPI_STRING\_\_ | String |
+| \_\_OPI_INT32\_\_ | Int32 |
+| \_\_OPI_INT64\_\_ | Int64 |
+| \_\_OPI_DOUBLE\_\_ | Double |
+| \_\_OPI_BOOLEAN\_\_ | Boolean |
+| \_\_OPI_DATETIME\_\_ | DateTime |
+| \_\_OPI_TIMESTAMP\_\_ | Timestamp |
+| \_\_OPI_OBJECTID\_\_ | ObjectID |
+| \_\_OPI_REGEXP\_\_ | RegularExpression |
+| \_\_OPI_JS\_\_ | JavaScriptCode |
+| \_\_OPI_SYMBOL\_\_ | Symbol |
+| \_\_OPI_MINKEY\_\_ | MinKey |
+| \_\_OPI_MAXKEY\_\_ | MaxKey |
+| \_\_OPI_NULL\_\_ | Null |
+| \_\_OPI_BINARY\_\_ | Binary |
 
 Передаваемые значения с типами `Структура`, `Соответствие` и `Массив` не требуют указания типа и всегда приводятся как `Document` и `Array` соответственно
 
