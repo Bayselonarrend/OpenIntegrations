@@ -335,6 +335,7 @@ pipeline {
 						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'Mong_DatabaseManagement'],
 						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'Mongo_CollectionManagement'],
 						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'Mongo_DocumentsManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'Mongo_UsersAndRoles'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

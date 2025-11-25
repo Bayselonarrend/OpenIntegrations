@@ -735,6 +735,11 @@ EndFunction
 // Create user
 // Creates a new user
 //
+// Note
+// Role can be defined in one of the following formats:^
+// Structure: `{ role: "<name>", db: "<database>" }`^
+// String: `name рoлand`
+//
 // Parameters:
 // Connection - String, Arbitrary - Connection or connection string - dbc
 // Name - String - Users name - name
@@ -761,6 +766,9 @@ EndFunction
 //
 // Note
 // The passed roles completely replace the user's role list
+// Role can be defined in one of the following formats:^
+// Structure: `{ role: "<name>", db: "<database>" }`^
+// String: `name рoлand`
 //
 // Parameters:
 // Connection - String, Arbitrary - Connection or connection string - dbc
@@ -876,6 +884,71 @@ Function DeleteUser(Val Connection, Val Name, Val Base = Undefined, Val Paramete
 
 EndFunction
 
+// Create role
+// Creates a new role
+//
+// Note
+// Role can be defined in one of the following formats:^
+// Structure: `{ role: "<name>", db: "<database>" }`^
+// String: `name рoлand`
+// Privilege can be defined in one of the following formats:^
+// Structure for collection: `{ db: <database>, collection: <collection name> }`
+// Structure for toлаwithтера: `{ cluster : true }`
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Name - String - Role name - name
+// Base - String - Database name. Current database if not specified - db
+// PrivilegesArray - Array of Structure - Array of role privileges - prvl
+// RoleArray - Array Of Arbitrary - Array of roles based on strings or structures specifying the database - roles
+// Parameters - Structure Of KeyAndValue - Additional deletion parameters - params
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function CreateRole(Val Connection
+    , Val Name
+    , Val Base = Undefined
+    , Val PrivilegesArray = Undefined
+    , Val RoleArray = Undefined
+    , Val Parameters = Undefined) Export
+
+    Return CreateOrUpdateRole("createRole", Connection, Name, Base, PrivilegesArray, RoleArray, Parameters);
+
+EndFunction
+
+// Update role
+// Modifies the data of an existing role
+//
+// Note
+// The passed roles and privileges completely replace the current role data
+// Role can be defined in one of the following formats:^
+// Structure: `{ role: "<name>", db: "<database>" }`^
+// String: `name рoлand`
+// Privilege can be defined in one of the following formats:^
+// Structure for collection: `{ db: <database>, collection: <collection name> }`
+// Structure for toлаwithтера: `{ cluster : true }`
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Name - String - Role name - name
+// Base - String - Database name. Current database if not specified - db
+// PrivilegesArray - Array of Structure - Array of role privileges - prvl
+// RoleArray - Array Of Arbitrary - Array of roles based on strings or structures specifying the database - roles
+// Parameters - Structure Of KeyAndValue - Additional deletion parameters - params
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function UpdateRole(Val Connection
+    , Val Name
+    , Val Base = Undefined
+    , Val PrivilegesArray = Undefined
+    , Val RoleArray = Undefined
+    , Val Parameters = Undefined) Export
+
+    Return CreateOrUpdateRole("updateRole", Connection, Name, Base, PrivilegesArray, RoleArray, Parameters);
+
+EndFunction
+
 #EndRegion
 
 #EndRegion
@@ -981,6 +1054,41 @@ Function CreateOrUpdateUser(Val DBCommand
     If Password <> Undefined Then
         OPI_TypeConversion.GetLine(Password);
         Parameters.Insert("pwd", Password);
+    EndIf;
+
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
+
+    Result = ExecuteCommand(Connection, DBCommand, Name, Base, Parameters);
+    Return Result;
+
+EndFunction
+
+Function CreateOrUpdateRole(Val DBCommand
+    , Val Connection
+    , Val Name
+    , Val Base            = Undefined
+    , Val PrivilegesArray = Undefined
+    , Val RoleArray       = Undefined
+    , Val Parameters      = Undefined)
+
+    OPI_TypeConversion.GetLine(Name);
+
+    If Parameters <> Undefined Then
+        OPI_TypeConversion.GetKeyValueCollection(Parameters);
+    Else
+        Parameters = New Structure;
+    EndIf;
+
+    If RoleArray <> Undefined Then
+        OPI_TypeConversion.GetArray(RoleArray);
+        Parameters.Insert("roles", RoleArray);
+    EndIf;
+
+    If PrivilegesArray <> Undefined Then
+        OPI_TypeConversion.GetArray(PrivilegesArray);
+        Parameters.Insert("privileges", PrivilegesArray);
     EndIf;
 
     If Base <> Undefined Then

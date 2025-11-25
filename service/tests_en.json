@@ -6576,6 +6576,11 @@
 },
 {
 "lib": "MongoDB",
+"name": "DeleteDatabase",
+"variant": ""
+},
+{
+"lib": "MongoDB",
 "name": "CreateCollection",
 "variant": ""
 },

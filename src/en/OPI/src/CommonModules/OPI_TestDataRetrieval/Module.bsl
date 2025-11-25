@@ -12560,6 +12560,18 @@ Function Check_MongoDB_GetDatabaseUsers(Val Result, Val Option)
 
 EndFunction
 
+Function Check_MongoDB_DeleteDatabase(Val Result, Val Option)
+
+    If Option = "Non-existent" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region ReportPortal
