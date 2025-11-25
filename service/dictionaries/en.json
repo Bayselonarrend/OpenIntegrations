@@ -10346,7 +10346,7 @@
 "Изменяет свойства существующей стадии канбана или Моего плана": "Changes the properties of the existing kanban or My plan stage",
 "Открывает новый диалог с одним или несколькими пользователями": "Opens a new dialog with one or more users",
 "ДополнитьЗаголовки: формирование заголовка Bearer авторизации": "CompleteHeaders: generating Bearer Authorization Header",
-"Ползователь может быть указан в одном из сдедующих форматов:^": "The user can be specified in one of the following formats:^",
+"Пользователь может быть указан в одном из сдедующих форматов:^": "The user can be specified in one of the following formats:^",
 "Иднтификатор следующей страницы данных из предыдущего запроса": "Next page identifier of data from the previous request",
 "Получение квитанции к заказу](@api-docs.cdek.ru/36967287.html": "Receiving order receipt](@api-docs.cdek.ru/36969694.html",
 "Смещение для получение вложенных объектов не из начала списка": "Offset for getting nested objects not from the beginning of the list",
