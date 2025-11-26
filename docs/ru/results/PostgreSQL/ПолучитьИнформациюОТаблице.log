@@ -80,13 +80,6 @@
   {
    "character_maximum_length": null,
    "column_default": null,
-   "column_name": "json_field",
-   "data_type": "json",
-   "is_nullable": "YES"
-  },
-  {
-   "character_maximum_length": null,
-   "column_default": null,
    "column_name": "jsonb_field",
    "data_type": "jsonb",
    "is_nullable": "YES"
@@ -115,6 +108,13 @@
   {
    "character_maximum_length": null,
    "column_default": null,
+   "column_name": "numeric_field",
+   "data_type": "numeric",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
    "column_name": "bytea_field",
    "data_type": "bytea",
    "is_nullable": "YES"
@@ -138,6 +138,13 @@
    "column_default": null,
    "column_name": "ip_field",
    "data_type": "inet",
+   "is_nullable": "YES"
+  },
+  {
+   "character_maximum_length": null,
+   "column_default": null,
+   "column_name": "json_field",
+   "data_type": "json",
    "is_nullable": "YES"
   },
   {

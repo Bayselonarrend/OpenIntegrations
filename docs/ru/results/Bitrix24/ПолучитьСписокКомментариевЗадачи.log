@@ -2,31 +2,31 @@
  "result": [
   {
    "POST_MESSAGE_HTML": null,
-   "ID": "20312",
+   "ID": "20356",
    "AUTHOR_ID": "1",
    "AUTHOR_NAME": "Антон Титовец",
    "AUTHOR_EMAIL": "",
-   "POST_DATE": "2025-11-17T08:35:29+03:00",
+   "POST_DATE": "2025-11-26T19:17:17+00:00",
    "POST_MESSAGE": "Задача изменена, не расходимся"
   },
   {
    "POST_MESSAGE_HTML": null,
-   "ID": "20314",
+   "ID": "20358",
    "AUTHOR_ID": "1",
    "AUTHOR_NAME": "Антон Титовец",
    "AUTHOR_EMAIL": "",
-   "POST_DATE": "2025-11-17T08:35:29+03:00",
+   "POST_DATE": "2025-11-26T19:17:18+00:00",
    "POST_MESSAGE": "Задача изменена, расходимся"
   }
  ],
  "time": {
-  "start": 1763357734,
-  "finish": 1763357734.38176,
-  "duration": 0.381762027740478,
+  "start": 1764184644,
+  "finish": 1764184644.9175,
+  "duration": 0.917495012283325,
   "processing": 0,
-  "date_start": "2025-11-17T08:35:34+03:00",
-  "date_finish": "2025-11-17T08:35:34+03:00",
-  "operating_reset_at": 1763358334,
+  "date_start": "2025-11-26T19:17:24+00:00",
+  "date_finish": "2025-11-26T19:17:24+00:00",
+  "operating_reset_at": 1764185244,
   "operating": 0
  }
 }
