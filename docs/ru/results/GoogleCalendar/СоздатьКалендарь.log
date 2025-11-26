@@ -1,9 +1,10 @@
 ﻿{
  "kind": "calendar#calendar",
- "etag": "\"fomzCKO0B_OjoXcHye0wh6qy0qc\"",
- "id": "5d285248f189b295bfc05880197b458d90cb01f6faf3bcc2908f6a74c57b1b09@group.calendar.google.com",
+ "etag": "\"iTuLWGmnadI5TOtJFnIaoZvkp28\"",
+ "id": "dbc3805c0679558b9fdb8aaf890e12676ee4ef9923f54ff1eee6551da338beb5@group.calendar.google.com",
  "summary": "Тестовый календарь",
  "timeZone": "Europe/Moscow",
+ "dataOwner": "bayselonarrend@gmail.com",
  "conferenceProperties": {
   "allowedConferenceSolutionTypes": [
    "***"

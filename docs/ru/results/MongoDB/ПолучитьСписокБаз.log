@@ -4,7 +4,7 @@
   "databases": [
    {
     "name": "admin",
-    "sizeOnDisk": 102400,
+    "sizeOnDisk": 188416,
     "empty": false
    },
    {
@@ -14,7 +14,12 @@
    },
    {
     "name": "local",
-    "sizeOnDisk": 73728,
+    "sizeOnDisk": 81920,
+    "empty": false
+   },
+   {
+    "name": "main",
+    "sizeOnDisk": 40960,
     "empty": false
    },
    {
@@ -23,7 +28,7 @@
     "empty": false
    }
   ],
-  "totalSize": 278528,
+  "totalSize": 413696,
   "totalSizeMb": 0,
   "ok": 1
  }
