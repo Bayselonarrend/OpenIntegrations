@@ -384,6 +384,8 @@ EndFunction
 
 #Region Collections
 
+// BSLLS:CognitiveComplexity-off
+
 Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
 
     Filled = ValueIsFilled(Value);
@@ -444,6 +446,8 @@ Procedure AddField(Val Name, Val Value, Val Type, Collection) Export
     Collection.Insert(Name, Value);
 
 EndProcedure
+
+// BSLLS:CognitiveComplexity-on
 
 Procedure AddKeyValue(Table, Val Key, Val Value) Export
 

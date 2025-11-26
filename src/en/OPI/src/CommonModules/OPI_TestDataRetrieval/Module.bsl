@@ -12109,9 +12109,9 @@ Function Check_MongoDB_GenerateConnectionString(Val Result, Val Option, Paramete
     Password = Parameters["MongoDB_Password"];
     Base     = Parameters["MongoDB_DB"];
 
-    StringTemplate = "mongodb://%1:%2@%3/%4?authSource=admin";
+    StringTemplate = "mongodb://%1:" + "%2@%3/%4?authSource=admin";
     CheckString  = StrTemplate(StringTemplate, Login, Password, Address, Base);
-    ReturnString = StrTemplate(StringTemplate, Login, "***", Address, Base);;
+    ReturnString = StrTemplate(StringTemplate, Login, "***", Address, Base);
     ExpectsThat(CheckString).Равно(Result);
 
     Return ReturnString;
@@ -12485,7 +12485,7 @@ Function Check_MongoDB_GetDocumentUpdateStructure(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
-    Return Result
+    Return Result;
 
 EndFunction
 
@@ -12600,7 +12600,7 @@ Function Check_MongoDB_GetRolePrivilegeStructure(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
-    Return Result
+    Return Result;
 
 EndFunction
 
@@ -13249,7 +13249,10 @@ Function ReplaceSecretsRecursively(Value, Val Indicators)
 
                 For Each Indication In Indicators Do
 
-                    If StrFind(Lower(CurrentKey), Lower(Indication)) > 0 Then
+                    CurrentKeyN = Lower(CurrentKey);
+                    AttributeN  = Lower(Indication);
+
+                    If StrFind(CurrentKeyN, AttributeN) > 0 Then
                         CurrentValue = ReplaceSecretsRecursively(CurrentValue, Indicators);
                         Break;
                     EndIf;

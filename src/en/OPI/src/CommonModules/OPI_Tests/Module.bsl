@@ -49,6 +49,9 @@
 // BSLLS:MagicDate-off
 // BSLLS:MissingParameterDescription-off
 // BSLLS:NumberOfOptionalParams-off
+// BSLLS:MethodSize-off
+// BSLLS:NestedConstructorsInStructureDeclaration-off
+// BSLLS:NumberOfValuesInStructureConstructor-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -4138,7 +4141,6 @@ Procedure VK_CreateTokenRetrievalLink(FunctionParameters)
 EndProcedure
 
 Procedure VK_GetAuthParameters(FunctionParameters)
-
 
     GroupID = FunctionParameters["VK_GroupID"];
     AppID   = FunctionParameters["VK_AppID"];
@@ -24924,7 +24926,7 @@ Procedure MongoDB_CreateCollection(FunctionParameters)
 
     Parameters = New Map;
     Expression = New Map;
-    GroupAnd   = New Array;;
+    GroupAnd   = New Array;
 
     Condition1 = New Map; // Total >= 0
     Items1     = New Array;
