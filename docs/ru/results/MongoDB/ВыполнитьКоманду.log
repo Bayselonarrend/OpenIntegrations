@@ -12,6 +12,9 @@
     "name": "local"
    },
    {
+    "name": "main"
+   },
+   {
     "name": "test_db"
    }
   ],

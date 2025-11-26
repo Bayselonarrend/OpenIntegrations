@@ -1,0 +1,7 @@
+﻿{
+ "q": {
+  "stringField": "Текст",
+  "doubleField": 999
+ },
+ "limit": 1
+}

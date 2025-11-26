@@ -9,7 +9,7 @@
    },
    "char_field": "A",
    "charn_field": "AAA",
-   "date_field": "2025-11-17",
+   "date_field": "2025-11-26",
    "dp_field": 1.0002,
    "int_field": 100,
    "ip_field": "127.0.0.1",
@@ -22,6 +22,7 @@
     "value": 10
    },
    "name_field": "Vitaly",
+   "numeric_field": "15.20",
    "oid_field": 24576,
    "oldchar_field": 1,
    "real_field": 15.1999998092651,
@@ -29,10 +30,10 @@
    "smallint_field": 5,
    "smallserial_field": 6,
    "text_field": "Some text",
-   "time_field": "08:20:28",
-   "ts_field": "2025-11-17T08:20:28",
-   "tswtz_field": "2025-11-17T06:20:28.061216+03:00",
-   "uuid_field": "a8446e90-a17a-42f7-8718-be57fb0db546",
+   "time_field": "18:58:34",
+   "ts_field": "2025-11-26T18:58:34",
+   "tswtz_field": "2025-11-26T13:58:34.160668+00:00",
+   "uuid_field": "af4830d0-a2c3-42c8-8edc-34bac885d4c0",
    "varchar_field": "Some varchar"
   }
  ],

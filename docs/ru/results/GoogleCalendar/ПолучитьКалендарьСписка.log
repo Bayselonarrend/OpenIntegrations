@@ -1,10 +1,11 @@
 ﻿{
  "kind": "calendar#calendarListEntry",
- "etag": "\"1763357249210047\"",
- "id": "d1eb3184a9a7fa5cd837f6ac0f6daa18f7699a0040fa596f58231695b0fbde6a@group.calendar.google.com",
+ "etag": "\"1764184102664607\"",
+ "id": "f599793167a2f206a33c0f495f0a5dae023846a534988bf6e8f281b41912698f@group.calendar.google.com",
  "summary": "Новое наименование",
  "description": "Новое описание",
  "timeZone": "Europe/Moscow",
+ "dataOwner": "bayselonarrend@gmail.com",
  "colorId": "6",
  "backgroundColor": "#ffd800",
  "foregroundColor": "#000000",
