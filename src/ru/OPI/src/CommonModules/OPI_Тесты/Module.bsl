@@ -49,6 +49,9 @@
 // BSLLS:MagicDate-off
 // BSLLS:MissingParameterDescription-off
 // BSLLS:NumberOfOptionalParams-off
+// BSLLS:MethodSize-off
+// BSLLS:NestedConstructorsInStructureDeclaration-off
+// BSLLS:NumberOfValuesInStructureConstructor-off
 
 //@skip-check undefined-variable
 //@skip-check wrong-string-literal-content
@@ -4138,7 +4141,6 @@
 КонецПроцедуры
 
 Процедура VK_ПолучитьПараметрыАвторизации(ПараметрыФункции)
-
 
     IDГруппы     = ПараметрыФункции["VK_GroupID"];
     IDПриложения = ПараметрыФункции["VK_AppID"];
@@ -24924,7 +24926,7 @@
 
     Параметры = Новый Соответствие;
     Выражение = Новый Соответствие;
-    ГруппаИ   = Новый Массив;;
+    ГруппаИ   = Новый Массив;
 
     Условие1  = Новый Соответствие; // Итог >= 0
     Элементы1 = Новый Массив;
