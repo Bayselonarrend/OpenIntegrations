@@ -34,6 +34,7 @@
 // BSLLS:UsingServiceTag-off
 // BSLLS:LineLength-off
 // BSLLS:UsingSynchronousCalls-off
+// BSLLS:DuplicateStringLiteral-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -130,7 +131,6 @@ Function GenerateConnectionString(Val Address
     , Val Login = ""
     , Val Password = ""
     , Val Parameters = Undefined) Export
-
 
     OPI_TypeConversion.GetLine(Address);
     OPI_TypeConversion.GetLine(Base);
@@ -1034,9 +1034,11 @@ Function ProcessDataForOperation(Val Data, Covered = False)
 
             CurrentKey = "__OPI_NULL__";
 
-        ElsIf Not TypeOf(ProcessedData) = Type("Number") And Not TypeOf(ProcessedData) = Type("Boolean") Then
+        Else
 
-            OPI_TypeConversion.GetLine(ProcessedData);
+            If Not TypeOf(ProcessedData) = Type("Number") And Not TypeOf(ProcessedData) = Type("Boolean") Then
+                OPI_TypeConversion.GetLine(ProcessedData);
+            EndIf;
 
         EndIf;
 

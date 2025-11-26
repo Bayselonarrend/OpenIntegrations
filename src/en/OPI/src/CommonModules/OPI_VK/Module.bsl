@@ -37,6 +37,7 @@
 // BSLLS:UnusedLocalVariable-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:MagicNumber-off
+// BSLLS:LineLength-off
 
 //@skip-check method-too-many-params
 //@skip-check wrong-string-literal-content
@@ -80,16 +81,18 @@ EndFunction
 // Structure - Get auth parameters
 Function GetAuthParameters(Val GroupID, Val AppID, Val AuthToken) Export
 
+    String_ = "String";
+
     OPI_TypeConversion.GetLine(GroupID);
 
     AuthParameters = New Structure;
 
-    OPI_Tools.AddField("v"            , "5.131"       , "String", AuthParameters);
-    OPI_Tools.AddField("from_group"   , "1"           , "String", AuthParameters);
-    OPI_Tools.AddField("group_id"     , GroupID       , "String", AuthParameters);
-    OPI_Tools.AddField("owner_id"     , "-" + GroupID , "String", AuthParameters);
-    OPI_Tools.AddField("app_id"       , AppID         , "String", AuthParameters);
-    OPI_Tools.AddField("access_token" , AuthToken     , "String", AuthParameters);
+    OPI_Tools.AddField("v"            , "5.131"       , String_, AuthParameters);
+    OPI_Tools.AddField("from_group"   , "1"           , String_, AuthParameters);
+    OPI_Tools.AddField("group_id"     , GroupID       , String_, AuthParameters);
+    OPI_Tools.AddField("owner_id"     , "-" + GroupID , String_, AuthParameters);
+    OPI_Tools.AddField("app_id"       , AppID         , String_, AuthParameters);
+    OPI_Tools.AddField("access_token" , AuthToken     , String_, AuthParameters);
 
     Return AuthParameters;
 
