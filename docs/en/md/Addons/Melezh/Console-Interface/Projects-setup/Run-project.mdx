@@ -12,12 +12,13 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function RunProject(Val Port, Val Project) Export`
+`Function RunProject(Val Port, Val Project, Val Create = False) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Port | --port | Number | &#x2714; | Server startup port |
   | Project | --proj | String | &#x2714; | Project filepath |
+  | Create | --create | Boolean | &#x2716; | Create a new project if it doesnt exist |
 
   
   Returns:  Structure Of KeyAndValue - Server shutdown result
