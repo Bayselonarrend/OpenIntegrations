@@ -44,6 +44,7 @@
 // BSLLS:CommentedCode-off
 // BSLLS:CyclomaticComplexity-off
 // BSLLS:LineLength-off
+// BSLLS:NestedStatements-off
 
 //@skip-check use-non-recommended-method
 //@skip-check module-structure-top-region
@@ -13251,7 +13252,7 @@
 
                     ТекущийКлючН = нРег(ТекущийКлюч);
                     ПризнакН     = нРег(Признак);
-
+                    
                     Если СтрНайти(ТекущийКлючН, ПризнакН) > 0 Тогда
                         ТекущееЗначение = ЗаменитьСекретыРекурсивно(ТекущееЗначение, Признаки);
                         Прервать;
