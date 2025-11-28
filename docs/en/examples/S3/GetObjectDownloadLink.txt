@@ -8,5 +8,5 @@
     Name = "picture.jpg";
 
     Directory = True; // Formation URL in path-style
-    Bucket = "opi-dirbucket4";
+    Bucket = "opi-dirbucket5";
     Result = OPI_S3.GetObjectDownloadLink(Name, Bucket, BasicData, 7200, , Directory);
