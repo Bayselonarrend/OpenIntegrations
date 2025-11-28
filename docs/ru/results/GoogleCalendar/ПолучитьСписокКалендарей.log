@@ -935,5 +935,43 @@
     "hangoutsMeet"
    ]
   }
+ },
+ {
+  "kind": "calendar#calendarListEntry",
+  "etag": "\"1764315070720591\"",
+  "id": "a5522de86b9ead48e7bca1fef5ac18cdbc36942eb2b997cf8a0a9b573d01bb08@group.calendar.google.com",
+  "summary": "Новое наименование",
+  "description": "Новое описание",
+  "timeZone": "Europe/Moscow",
+  "dataOwner": "bayselonarrend@gmail.com",
+  "colorId": "6",
+  "backgroundColor": "#ffd800",
+  "foregroundColor": "#000000",
+  "accessRole": "owner",
+  "defaultReminders": [],
+  "conferenceProperties": {
+   "allowedConferenceSolutionTypes": [
+    "hangoutsMeet"
+   ]
+  }
+ },
+ {
+  "kind": "calendar#calendarListEntry",
+  "etag": "\"1764323866008159\"",
+  "id": "7b38edc4fff3969c1ff7ba9c2e0a691a07c7b1087936c2948b8b6c0482c2b5ba@group.calendar.google.com",
+  "summary": "Новое наименование",
+  "description": "Новое описание",
+  "timeZone": "Europe/Moscow",
+  "dataOwner": "bayselonarrend@gmail.com",
+  "colorId": "6",
+  "backgroundColor": "#ffd800",
+  "foregroundColor": "#000000",
+  "accessRole": "owner",
+  "defaultReminders": [],
+  "conferenceProperties": {
+   "allowedConferenceSolutionTypes": [
+    "hangoutsMeet"
+   ]
+  }
  }
 ]
