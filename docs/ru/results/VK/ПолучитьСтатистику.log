@@ -5,8 +5,8 @@
     "comments": 1,
     "likes": 1
    },
-   "period_from": 1764115200,
-   "period_to": 1764201599,
+   "period_from": 1764288000,
+   "period_to": 1764374399,
    "reach": {
     "age": [
      {
@@ -140,8 +140,8 @@
    }
   },
   {
-   "period_from": 1764028800,
-   "period_to": 1764115199,
+   "period_from": 1764201600,
+   "period_to": 1764287999,
    "reach": {
     "cities": [],
     "countries": [],
