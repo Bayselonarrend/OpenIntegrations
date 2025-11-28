@@ -916,5 +916,24 @@
     "hangoutsMeet"
    ]
   }
+ },
+ {
+  "kind": "calendar#calendarListEntry",
+  "etag": "\"1764184102664607\"",
+  "id": "f599793167a2f206a33c0f495f0a5dae023846a534988bf6e8f281b41912698f@group.calendar.google.com",
+  "summary": "Новое наименование",
+  "description": "Новое описание",
+  "timeZone": "Europe/Moscow",
+  "dataOwner": "bayselonarrend@gmail.com",
+  "colorId": "6",
+  "backgroundColor": "#ffd800",
+  "foregroundColor": "#000000",
+  "accessRole": "owner",
+  "defaultReminders": [],
+  "conferenceProperties": {
+   "allowedConferenceSolutionTypes": [
+    "hangoutsMeet"
+   ]
+  }
  }
 ]

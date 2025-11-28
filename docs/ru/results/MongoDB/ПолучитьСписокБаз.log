@@ -9,7 +9,7 @@
    },
    {
     "name": "config",
-    "sizeOnDisk": 61440,
+    "sizeOnDisk": 86016,
     "empty": false
    },
    {
@@ -23,12 +23,17 @@
     "empty": false
    },
    {
+    "name": "openyellow",
+    "sizeOnDisk": 286720,
+    "empty": false
+   },
+   {
     "name": "test_db",
     "sizeOnDisk": 40960,
     "empty": false
    }
   ],
-  "totalSize": 413696,
+  "totalSize": 724992,
   "totalSizeMb": 0,
   "ok": 1
  }
