@@ -8,7 +8,7 @@
     Наименование = "fileChunked.mp3";
 
     Каталог = Истина; // Формирование URL в path-style
-    Бакет = "opi-dirbucket4";
+    Бакет = "opi-dirbucket5";
     Начало     = OPI_S3.ИнициализироватьЗагрузкуЧастями(Наименование, Бакет, ОсновныеДанные, , Каталог);
     IDЗагрузки = Начало["response"]["InitiateMultipartUploadResult"]["UploadId"];
 
