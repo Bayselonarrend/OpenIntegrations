@@ -6771,6 +6771,11 @@
 },
 {
 "lib": "MongoDB",
+"name": "UpdateRole",
+"variant": ""
+},
+{
+"lib": "MongoDB",
 "name": "DeleteRole",
 "variant": ""
 },
@@ -6782,6 +6787,11 @@
 {
 "lib": "MongoDB",
 "name": "GetRolePrivilegeStructure",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "GetRoles",
 "variant": ""
 }
 ]

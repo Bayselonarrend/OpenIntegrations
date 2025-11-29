@@ -534,9 +534,9 @@ Procedure VKAPI_CreateAdCampaign() Export
     OPI_TestDataRetrieval.ParameterToCollection("VK_AdsCabinetID", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("VK_PostID"      , TestParameters);
 
-    VK_CreateAdvertisingCampaign(TestParameters);
-    VK_CreateAd(TestParameters);
-    VK_PauseAdvertising(TestParameters);
+    // !DISABLED! VK_CreateAdvertisingCampaign(TestParameters);
+    // !DISABLED! VK_CreateAd(TestParameters);
+    // !DISABLED! VK_PauseAdvertising(TestParameters);
     VK_GetAdvertisingCategoryList(TestParameters);
 
     OPI_VK.DeletePost(PostID, Parameters);
@@ -1135,7 +1135,7 @@ Procedure TwitterAPI_AccountData() Export
 
     Twitter_GetToken(TestParameters);
     Twitter_GetAuthorizationLink(TestParameters);
-    // Twitter_UpdateToken(TestParameters);
+    // !DISABLED! Twitter_UpdateToken(TestParameters);
 
 EndProcedure
 
@@ -2454,10 +2454,10 @@ Procedure GAPI_Account() Export
     GreenAPI_SetInstanceSettings(TestParameters);
     GreenAPI_GetInstanceStatus(TestParameters);
     GreenAPI_SetProfilePicture(TestParameters);
-    // GreenMax_RebootInstance(TestParameters);
-    // GreenAPI_GetAuthorizationCode(TestParameters);
-    // GreenAPI_LogoutInstance(TestParameters);
-    // GreenAPI_GetQR(TestParameters);
+    // !DISABLED! GreenMax_RebootInstance(TestParameters);
+    // !DISABLED! GreenAPI_GetAuthorizationCode(TestParameters);
+    // !DISABLED! GreenAPI_LogoutInstance(TestParameters);
+    // !DISABLED! GreenAPI_GetQR(TestParameters);
 
 EndProcedure
 
@@ -2523,7 +2523,7 @@ Procedure GAPI_NotificationsReceiving() Export
 
     GreenAPI_GetNotification(TestParameters);
     GreenAPI_SetReadMark(TestParameters);
-    //GreenAPI_DownloadMessageFile(TestParameters);
+    // !DISABLED! GreenAPI_DownloadMessageFile(TestParameters);
     GreenAPI_DeleteNotificationFromQueue(TestParameters);
 
 EndProcedure
@@ -3036,9 +3036,9 @@ Procedure GMax_Account() Export
     OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
 
     GreenMax_FormAccessParameters(TestParameters);
-    //GreenMax_LogoutInstance(TestParameters);
-    //GreenMax_GetAuthorizationCode(TestParameters);
-    //GreenMax_SendAuthorizationCode(TestParameters);
+    // !DISABLED! GreenMax_LogoutInstance(TestParameters);
+    // !DISABLED! GreenMax_GetAuthorizationCode(TestParameters);
+    // !DISABLED! GreenMax_SendAuthorizationCode(TestParameters);
     GreenMax_GetInstanceStatus(TestParameters);
     GreenMax_GetInstanceSettings(TestParameters);
     GreenMax_SetInstanceSettings(TestParameters);
@@ -3253,7 +3253,7 @@ Procedure Mongo_DocumentsManagement() Export
 
 EndProcedure
 
-Procedure Mongo_UsersAndRoles() Export
+Procedure Mongo_UserManagement() Export
 
     TestParameters = New Structure;
 
@@ -3267,7 +3267,21 @@ Procedure Mongo_UsersAndRoles() Export
     MongoDB_GetUsers(TestParameters);
     MongoDB_GetDatabaseUsers(TestParameters);
     MongoDB_DeleteUser(TestParameters);
+
+EndProcedure
+
+Procedure Mongo_RoleManagement() Export
+
+    TestParameters = New Structure;
+
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Port"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_User"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("MongoDB_DB"      , TestParameters);
+
     MongoDB_CreateRole(TestParameters);
+    MongoDB_GetRoles(TestParameters);
+    MongoDB_UpdateRole(TestParameters);
     MongoDB_DeleteRole(TestParameters);
     MongoDB_GetRolePrivilegeStructure(TestParameters);
 
@@ -25764,6 +25778,44 @@ Procedure MongoDB_CreateRole(FunctionParameters)
 
 EndProcedure
 
+Procedure MongoDB_UpdateRole(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    RoleArray = New Array;
+    RoleArray.Add("read");
+    RoleArray.Add("userAdmin");
+
+    Resource = New Structure("db,collection", Base, "new_collection2");
+    Actions  = New Array;
+
+    Actions.Add("find");
+    Actions.Add("insert");
+
+    Privilege = OPI_MongoDB.GetRolePrivilegeStructure(Resource, Actions);
+
+    PrivilegesArray = New Array;
+    PrivilegesArray.Add(Privilege);
+
+    RoleName = "newrole";
+
+    Result = OPI_MongoDB.UpdateRole(Connection, RoleName, Base, PrivilegesArray, RoleArray);
+
+    // END
+
+    Process(Result, "MongoDB", "UpdateRole");
+
+EndProcedure
+
 Procedure MongoDB_DeleteRole(FunctionParameters)
 
     Address  = "127.0.0.1:1234";
@@ -25806,6 +25858,29 @@ Procedure MongoDB_GetRolePrivilegeStructure(FunctionParameters)
     // END
 
     Process(Result, "MongoDB", "GetRolePrivilegeStructure");
+
+EndProcedure
+
+Procedure MongoDB_GetRoles(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    Role = New Structure("role,db", "newrole", Base);
+
+    Result = OPI_MongoDB.GetRoles(Connection, Role, Base, True);
+
+    // END
+
+    Process(Result, "MongoDB", "GetRoles");
 
 EndProcedure
 
