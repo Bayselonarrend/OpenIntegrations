@@ -757,7 +757,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--dbc";
     NewLine.ParameterTrim = "-d";
     NewLine.Description     = "Connection or connection string";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
     NewLine.MethodDescription   = "Creates a new user";
 
 
@@ -769,7 +769,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--name";
     NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Users name";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -780,7 +780,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--roles";
     NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Array of roles as strings or structures specifying the DB";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -791,7 +791,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -802,7 +802,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--pwd";
     NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Users password (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -813,7 +813,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Additional creation parameters (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -824,7 +824,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--dbc";
     NewLine.ParameterTrim = "-d";
     NewLine.Description     = "Connection or connection string";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
     NewLine.MethodDescription   = "Modifies existing user data";
 
 
@@ -836,7 +836,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--name";
     NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Users name";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -847,7 +847,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--roles";
     NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Array of roles as strings or structures specifying the DB (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -858,7 +858,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -869,7 +869,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--pwd";
     NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Users password (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -880,7 +880,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Additional parameters (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -891,7 +891,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--dbc";
     NewLine.ParameterTrim = "-d";
     NewLine.Description     = "Connection or connection string";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
     NewLine.MethodDescription   = "Gets data of one or more users";
 
 
@@ -903,7 +903,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--usrs";
     NewLine.ParameterTrim = "-u";
     NewLine.Description     = "Username, structure, or array of user structures";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -914,7 +914,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -925,7 +925,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--spwd";
     NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Adds user password hash to the returned data (optional, def. val. - False)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -936,7 +936,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--sprv";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Adds a list of user privileges to the returned data (optional, def. val. - False)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -947,7 +947,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--dbc";
     NewLine.ParameterTrim = "-d";
     NewLine.Description     = "Connection or connection string";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
     NewLine.MethodDescription   = "Gets information about all database users";
 
 
@@ -959,7 +959,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -970,7 +970,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--spwd";
     NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Adds user password hash to the returned data (optional, def. val. - False)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -981,7 +981,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--sprv";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Adds a list of user privileges to the returned data (optional, def. val. - False)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -992,7 +992,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--dbc";
     NewLine.ParameterTrim = "-d";
     NewLine.Description     = "Connection or connection string";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
     NewLine.MethodDescription   = "Deletes user by name";
 
 
@@ -1004,7 +1004,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--name";
     NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Users name";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -1015,7 +1015,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -1026,7 +1026,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Users management";
 
 
     NewLine = CompositionTable.Add();
@@ -1037,7 +1037,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--dbc";
     NewLine.ParameterTrim = "-d";
     NewLine.Description     = "Connection or connection string";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
     NewLine.MethodDescription   = "Creates a new role";
 
 
@@ -1049,7 +1049,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--name";
     NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Role name";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
 
 
     NewLine = CompositionTable.Add();
@@ -1060,7 +1060,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
 
 
     NewLine = CompositionTable.Add();
@@ -1071,7 +1071,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--prvl";
     NewLine.ParameterTrim = "-p";
     NewLine.Description     = "prvl (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
 
 
     NewLine = CompositionTable.Add();
@@ -1082,7 +1082,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--roles";
     NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Array of roles based on strings or structures specifying the database (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
 
 
     NewLine = CompositionTable.Add();
@@ -1093,7 +1093,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
 
 
     NewLine = CompositionTable.Add();
@@ -1104,7 +1104,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--dbc";
     NewLine.ParameterTrim = "-d";
     NewLine.Description     = "Connection or connection string";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
     NewLine.MethodDescription   = "Modifies the data of an existing role";
 
 
@@ -1116,7 +1116,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--name";
     NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Role name";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
 
 
     NewLine = CompositionTable.Add();
@@ -1127,7 +1127,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
 
 
     NewLine = CompositionTable.Add();
@@ -1138,7 +1138,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--prvl";
     NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Array of privileges. See GetRolePrivilegeStructure (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
 
 
     NewLine = CompositionTable.Add();
@@ -1149,7 +1149,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--roles";
     NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Array of roles based on strings or structures specifying the database (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
 
 
     NewLine = CompositionTable.Add();
@@ -1160,7 +1160,52 @@ Function GetComposition() Export
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetRoles";
+    NewLine.SearchMethod  = "GETROLES";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Role management";
+    NewLine.MethodDescription   = "Gets information about the specified fields";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetRoles";
+    NewLine.SearchMethod  = "GETROLES";
+    NewLine.Parameter     = "--roles";
+    NewLine.ParameterTrim = "-r";
+    NewLine.Description     = "Role or list of roles";
+    NewLine.Region      = "Role management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetRoles";
+    NewLine.SearchMethod  = "GETROLES";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Role management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GetRoles";
+    NewLine.SearchMethod  = "GETROLES";
+    NewLine.Parameter     = "--sprv";
+    NewLine.ParameterTrim = "-s";
+    NewLine.Description     = "Adds a list of role privileges to the returned data (optional, def. val. - False)";
+    NewLine.Region      = "Role management";
 
 
     NewLine = CompositionTable.Add();
@@ -1171,7 +1216,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--dbc";
     NewLine.ParameterTrim = "-d";
     NewLine.Description     = "Connection or connection string";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
     NewLine.MethodDescription   = "Deletes an existing role";
 
 
@@ -1183,7 +1228,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--name";
     NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Role name";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
 
 
     NewLine = CompositionTable.Add();
@@ -1194,7 +1239,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
     NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
 
 
     NewLine = CompositionTable.Add();
@@ -1205,7 +1250,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
 
 
     NewLine = CompositionTable.Add();
@@ -1216,7 +1261,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--res";
     NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Privilege resource";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
     NewLine.MethodDescription   = "Forms the privilege information structure for use when working with roles";
 
 
@@ -1228,7 +1273,7 @@ Function GetComposition() Export
     NewLine.Parameter     = "--act";
     NewLine.ParameterTrim = "-a";
     NewLine.Description     = "Array of available privilege actions";
-    NewLine.Region      = "Users and roles";
+    NewLine.Region      = "Role management";
 
     Return CompositionTable;
 EndFunction
