@@ -2,22 +2,22 @@
  "status": 200,
  "response": {
   "InitiateMultipartUploadResult": {
-   "Bucket": "opi-gpbucket4",
+   "Bucket": "opi-dirbucket5",
    "Key": "***",
-   "UploadId": "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjIzYzYyM2MxLTUxMTQtNGJlOS1iMDFiLThjZDU5MzdhMDYwYQ"
+   "UploadId": "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjg2NGFiZDY5LWZmZmEtNDk1Ni04YzQ2LWU4MTNiNGQzNWRkMQ"
   }
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Wed, 26 Nov 2025 19:38:12 GMT",
+  "Date": "Fri, 28 Nov 2025 10:51:24 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
-  "X-Amz-Request-Id": "187BA5B8F32559DD",
+  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
+  "X-Amz-Request-Id": "187C2622A291E213",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
-  "Content-Length": "325",
+  "Content-Length": "326",
   "Content-Type": "application/xml"
  }
 }

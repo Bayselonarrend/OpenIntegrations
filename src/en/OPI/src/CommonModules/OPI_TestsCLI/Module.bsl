@@ -17835,8 +17835,8 @@ Procedure S3_CreateBucket(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Name = "opi-dirbucket4";
-    Name = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Name = "opi-dirbucket5";
+    Name = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Result = OPI_S3.DeleteBucket(Name, BasicData, Directory); // SKIP
     Process(Result, "S3", "CreateBucket", "Deletion"); // SKIP
@@ -17872,8 +17872,8 @@ Procedure S3_DeleteBucket(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Name = "opi-dirbucket4";
-    Name = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Name = "opi-dirbucket5";
+    Name = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -17931,8 +17931,8 @@ Procedure S3_HeadBucket(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Name = "opi-dirbucket4";
-    Name = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Name = "opi-dirbucket5";
+    Name = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -17975,8 +17975,8 @@ Procedure S3_GetBucketEncryption(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Name = "opi-dirbucket4";
-    Name = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Name = "opi-dirbucket5";
+    Name = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -18009,8 +18009,8 @@ Procedure S3_DeleteBucketEncryption(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Name = "opi-dirbucket4";
-    Name = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Name = "opi-dirbucket5";
+    Name = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -18043,8 +18043,8 @@ Procedure S3_PutBucketEncryption(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Name = "opi-dirbucket4";
-    Name = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Name = "opi-dirbucket5";
+    Name = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     XmlConfig = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
                       | <Rule>
@@ -18092,8 +18092,8 @@ Procedure S3_GetBucketTagging(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Name = "opi-dirbucket4";
-    Name = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Name = "opi-dirbucket5";
+    Name = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -18130,8 +18130,8 @@ Procedure S3_PutBucketTagging(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Name = "opi-dirbucket4";
-    Name = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Name = "opi-dirbucket5";
+    Name = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -18164,8 +18164,8 @@ Procedure S3_DeleteBucketTagging(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Name = "opi-dirbucket4";
-    Name = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Name = "opi-dirbucket5";
+    Name = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -18197,8 +18197,8 @@ Procedure S3_GetBucketVersioning(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Name = "opi-dirbucket4";
-    Name = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Name = "opi-dirbucket5";
+    Name = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -18231,8 +18231,8 @@ Procedure S3_PutBucketVersioning(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Name = "opi-dirbucket4";
-    Name = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Name = "opi-dirbucket5";
+    Name = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -18265,8 +18265,8 @@ Procedure S3_PutObject(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Name   = "picture.jpg";
     Entity = FunctionParameters["Picture"]; // URL, Path or Binary Data
@@ -18325,8 +18325,8 @@ Procedure S3_UploadFullObject(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -18365,8 +18365,8 @@ Procedure S3_DeleteObject(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -18402,8 +18402,8 @@ Procedure S3_HeadObject(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -18441,8 +18441,8 @@ Procedure S3_CopyObject(FunctionParameters)
     DestinationBucket = "newbucket2";
 
     DestinationPath = "new_picture.jpg";
-    SourceBucket    = "opi-dirbucket4";
-    SourceBucket    = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    SourceBucket    = "opi-dirbucket5";
+    SourceBucket    = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("sname", SourcePath);
@@ -18482,8 +18482,8 @@ Procedure S3_PutObjectTagging(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     TagStructure = New Structure;
 
@@ -18525,8 +18525,8 @@ Procedure S3_GetObjectTagging(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -18562,8 +18562,8 @@ Procedure S3_DeleteObjectTagging(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -18597,8 +18597,8 @@ Procedure S3_ListObjects(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("bucket", Bucket);
@@ -18631,8 +18631,8 @@ Procedure S3_ListObjectVersions(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Prefix = "pic";
     Options = New Structure;
@@ -18673,8 +18673,8 @@ Procedure S3_GetObject(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -18749,8 +18749,8 @@ Procedure S3_InitPartsUpload(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
     Entity = OPI_HTTPRequests.Get(Entity);
@@ -18844,8 +18844,8 @@ Procedure S3_FinishPartsUpload(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
     Entity = OPI_HTTPRequests.Get(Entity);
@@ -18939,8 +18939,8 @@ Procedure S3_UploadObjectPart(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Entity = FunctionParameters["Audio"]; // URL, Path or Binary Data
     Entity = OPI_HTTPRequests.Get(Entity);
@@ -19035,8 +19035,8 @@ Procedure S3_AbortMultipartUpload(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);
@@ -19086,8 +19086,8 @@ Procedure S3_GetObjectDownloadLink(FunctionParameters)
     Directory = True; // Formation URL in path-style
     Directory = FunctionParameters["Directory"]; // SKIP
 
-    Bucket = "opi-dirbucket4";
-    Bucket = ?(Directory, "opi-dirbucket4", "opi-gpbucket4"); // SKIP
+    Bucket = "opi-dirbucket5";
+    Bucket = ?(Directory, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
 
     Options = New Structure;
     Options.Insert("name", Name);

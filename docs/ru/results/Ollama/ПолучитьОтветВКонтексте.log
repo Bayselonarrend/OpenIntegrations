@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-11-28T07:51:12.183058056Z",
+ "created_at": "2025-11-28T11:01:40.523050628Z",
  "message": {
   "role": "assistant",
-  "content": "I do not have access to real-time information. However, according to the official website of 1c:enterprise (https://www.1c-enterprise.com/products), the first version of 1c:enterprise was released in 2003. It has since been updated several times with new features and improvements. It is currently available as a cloud-based solution, allowing businesses to access it from anywhere with an internet connection."
+  "content": "The first version of 1C:Enterprise was released in 1987, and it was based on IBM's mainframe operating system. The current version of 1C:Enterprise is known as 1C:Oracle Cloud. The latest version of 1C:Enterprise, which runs as a part of Oracle Cloud Infrastructure (OCI), was released in 2019 and has been upgraded to support multiple languages and currencies."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 16620152480,
- "load_duration": 23924379,
- "prompt_eval_count": 185,
- "prompt_eval_duration": 5228236577,
- "eval_count": 97,
- "eval_duration": 11353642660
+ "total_duration": 17438461864,
+ "load_duration": 21744960,
+ "prompt_eval_count": 209,
+ "prompt_eval_duration": 6208426879,
+ "eval_count": 101,
+ "eval_duration": 11204622566
 }
