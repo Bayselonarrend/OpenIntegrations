@@ -1,26 +1,26 @@
 ﻿{
  "result": {
-  "ID": "3102",
-  "PARENT_ID": "3102",
+  "ID": "3110",
+  "PARENT_ID": "3110",
   "DELETED": "N",
   "CAL_TYPE": "user",
   "OWNER_ID": "1",
   "NAME": "Новое событие",
-  "DATE_FROM": "29.11.2025 10:43:00",
-  "DATE_TO": "29.11.2025 11:43:00",
+  "DATE_FROM": "29.11.2025 10:32:00",
+  "DATE_TO": "29.11.2025 11:32:00",
   "ORIGINAL_DATE_FROM": "***",
   "TZ_FROM": "Europe/Minsk",
   "TZ_TO": "Europe/Minsk",
   "TZ_OFFSET_FROM": "10800",
   "TZ_OFFSET_TO": "10800",
-  "DATE_FROM_TS_UTC": "1764391362",
-  "DATE_TO_TS_UTC": "1766997780",
+  "DATE_FROM_TS_UTC": "1764390736",
+  "DATE_TO_TS_UTC": "1766997120",
   "DT_SKIP_TIME": "N",
   "DT_LENGTH": 3600,
   "EVENT_TYPE": null,
   "CREATED_BY": "1",
-  "DATE_CREATE": "28.11.2025 10:42:43",
-  "TIMESTAMP_X": "28.11.2025 10:42:43",
+  "DATE_CREATE": "28.11.2025 13:32:19",
+  "TIMESTAMP_X": "28.11.2025 13:32:19",
   "DESCRIPTION": "Описание события",
   "PRIVATE_EVENT": "1",
   "ACCESSIBILITY": "quest",
@@ -55,7 +55,7 @@
    "UNTIL_TS": 1765238400
   },
   "EXDATE": "",
-  "DAV_XML_ID": "20251129T074300Z-54bf048858f1e45eaa21c82139b4bab1@b24-ar17wx.bitrix24.by",
+  "DAV_XML_ID": "20251129T073200Z-bae37f4bf6b515f73fb2947e994ff396@b24-ar17wx.bitrix24.by",
   "G_EVENT_ID": "",
   "DAV_EXCH_LABEL": "",
   "CAL_DAV_LABEL": "",
@@ -66,25 +66,25 @@
   ],
   "RECURRENCE_ID": null,
   "RELATIONS": "",
-  "SECTION_ID": "1678",
+  "SECTION_ID": "1682",
   "SYNC_STATUS": null,
   "UF_CRM_CAL_EVENT": false,
   "UF_WEBDAV_CAL_EVENT": false,
   "SECTION_DAV_XML_ID": null,
-  "DATE_FROM_FORMATTED": "Sat Nov 29 2025 10:43:00",
-  "DATE_TO_FORMATTED": "Sat Nov 29 2025 11:43:00",
+  "DATE_FROM_FORMATTED": "Sat Nov 29 2025 10:32:00",
+  "DATE_TO_FORMATTED": "Sat Nov 29 2025 11:32:00",
   "IS_DAYLIGHT_SAVING_TZ": "N",
-  "SECT_ID": "1678",
+  "SECT_ID": "1682",
   "OPTIONS": null,
   "ATTENDEE_LIST": [
    {
     "id": 1,
-    "entryId": "3102",
+    "entryId": "3110",
     "status": "H"
    },
    {
     "id": 10,
-    "entryId": "3104",
+    "entryId": "3112",
     "status": "Q"
    }
   ],
@@ -105,13 +105,13 @@
   "~USER_OFFSET_TO": 0
  },
  "time": {
-  "start": 1764315766,
-  "finish": 1764315766.7747,
-  "duration": 0.774696111679077,
+  "start": 1764325950,
+  "finish": 1764325950.16901,
+  "duration": 0.16900897026062,
   "processing": 0,
-  "date_start": "2025-11-28T10:42:46+03:00",
-  "date_finish": "2025-11-28T10:42:46+03:00",
-  "operating_reset_at": 1764316366,
-  "operating": 0.139004945755005
+  "date_start": "2025-11-28T10:32:30+00:00",
+  "date_finish": "2025-11-28T10:32:30+00:00",
+  "operating_reset_at": 1764326550,
+  "operating": 0
  }
 }
