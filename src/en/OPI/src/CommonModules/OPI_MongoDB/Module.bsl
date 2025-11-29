@@ -730,7 +730,7 @@ EndFunction
 
 #EndRegion
 
-#Region UsersAndRoles
+#Region UsersManagement
 
 // Create user
 // Creates a new user
@@ -884,6 +884,10 @@ Function DeleteUser(Val Connection, Val Name, Val Base = Undefined, Val Paramete
 
 EndFunction
 
+#EndRegion
+
+#Region RoleManagement
+
 // Create role
 // Creates a new role
 //
@@ -940,6 +944,39 @@ Function UpdateRole(Val Connection
     , Val Parameters = Undefined) Export
 
     Return CreateOrUpdateRole("updateRole", Connection, Name, Base, PrivilegesArray, RoleArray, Parameters);
+
+EndFunction
+
+// Get roles
+// Gets information about the specified fields
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// RoleArray - Arbitrary - Role or list of roles - roles
+// Base - String - Database name. Current database if not specified - db
+// GetPrivileges - Boolean - Adds a list of role privileges to the returned data - sprv
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function GetRoles(Val Connection
+    , Val RoleArray
+    , Val Base = Undefined
+    , Val GetPrivileges = False) Export
+
+    OPI_TypeConversion.GetArray(RoleArray);
+
+    If RoleArray.Count() = 1 Then
+        RoleArray        = RoleArray[0];
+    EndIf;
+
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
+
+    Parameters = New Structure("showPrivileges", GetPrivileges);
+
+    Result = ExecuteCommand(Connection, "rolesInfo", RoleArray, Base, Parameters);
+    Return Result;
 
 EndFunction
 

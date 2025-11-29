@@ -400,7 +400,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "Mong_DatabaseManagement"             , "Database management"             , MongoDB);
     NewTest(TestTable, "Mongo_CollectionManagement"          , "Collections management"          , MongoDB);
     NewTest(TestTable, "Mongo_DocumentsManagement"           , "DocumentsManagement"             , MongoDB);
-    NewTest(TestTable, "Mongo_UsersAndRoles"                 , "Users and roles"                 , MongoDB);
+    NewTest(TestTable, "Mongo_UserManagement"                , "Users management"                , MongoDB);
+    NewTest(TestTable, "Mongo_RoleManagement"                , "Role management"                 , MongoDB);
     NewTest(TestTable, "GAPI_GroupManagement"                , "Group management"                , GreenAPI);
     NewTest(TestTable, "GAPI_MessageSending"                 , "Messages sending"                , GreenAPI);
     NewTest(TestTable, "GAPI_NotificationsReceiving"         , "Notifications receiving"         , GreenAPI);
@@ -3014,7 +3015,12 @@ EndFunction
 Function Check_GoogleCalendar_DeleteCalendarFromList(Val Result, Val Option)
 
     If Not Lower(String(Result)) = "null" Then
-        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+
+        If ValueIsFilled(Result) Then
+            ExpectsThat(Result["error"]["message"])
+                .Равно("Data owner of a calendar cannot remove calendar list entry for that calendar.");
+        EndIf;
+
     EndIf;
 
     Return Result;
@@ -12584,6 +12590,14 @@ Function Check_MongoDB_CreateRole(Val Result, Val Option)
 
 EndFunction
 
+Function Check_MongoDB_UpdateRole(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_MongoDB_DeleteRole(Val Result, Val Option)
 
     If Option = "Again" Then
@@ -12591,6 +12605,15 @@ Function Check_MongoDB_DeleteRole(Val Result, Val Option)
     Else
         ExpectsThat(Result["result"]).Равно(True);
     EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_GetRoles(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"]["roles"].Count()).Равно(1);
 
     Return Result;
 
