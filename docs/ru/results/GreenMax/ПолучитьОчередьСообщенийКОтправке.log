@@ -1,20 +1,9 @@
 ﻿[
  {
-  "messageID": "1764316092405",
+  "messageID": "1764327514414",
   "type": "sendFileByUrl",
   "body": {
-   "chatId": "-69249929838677",
-   "urlFile": "https://hut.openintegrations.dev/test_data/picture.jpg",
-   "fileName": "photo.jpg",
-   "typingTime": null,
-   "typingType": "text"
-  }
- },
- {
-  "messageID": "1764316092779",
-  "type": "sendFileByUrl",
-  "body": {
-   "chatId": "-69249929838677",
+   "chatId": "-69253802033237",
    "urlFile": "https://hut.openintegrations.dev/test_data/video.mp4",
    "fileName": "vid.mp4",
    "caption": "Описание файла",
