@@ -13,7 +13,8 @@
 "OPI_Tests.Mong_DatabaseManagement",
 "OPI_Tests.Mongo_CollectionManagement",
 "OPI_Tests.Mongo_DocumentsManagement",
-"OPI_Tests.Mongo_UsersAndRoles"
+"OPI_Tests.Mongo_UserManagement",
+"OPI_Tests.Mongo_RoleManagement"
     ]
   },
   "settings": {
