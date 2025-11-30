@@ -168,7 +168,8 @@ pipeline {
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mong_DatabaseManagement'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_CollectionManagement'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_DocumentsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_UsersAndRoles'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_UserManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_RoleManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
