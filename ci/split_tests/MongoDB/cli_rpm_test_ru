@@ -88,7 +88,8 @@ pipeline {
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_РаботаСБазами'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_РаботаСКоллекциями'],
 						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_РаботаСДокументами'],
-						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_ПользователиИРоли'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_УправлениеПользователями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_УправлениеРолями'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {

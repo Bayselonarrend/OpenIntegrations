@@ -51,6 +51,9 @@ pipeline {
       	stage('Prepare'){
          		steps{
                     sh 'cd ./src/en/OInt && opm build && opm install oint-1.30.0.ospx && rm oint-1.30.0.ospx'
+              		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+              			sh 'gpg --quiet --batch --yes --decrypt --passphrase="$GPGKEY" --output ./data.json ./data.json.gpg'
+            		}
          		}
       	}
         stage('Create ReportPortal launch'){
@@ -85,7 +88,8 @@ pipeline {
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mong_DatabaseManagement'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_CollectionManagement'],
 						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_DocumentsManagement'],
-						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_UsersAndRoles'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_UserManagement'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'Mongo_RoleManagement'],
 					]
 					for (test in tests) {
 						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
