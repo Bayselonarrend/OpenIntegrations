@@ -1010,6 +1010,60 @@ Function DeleteRole(Val Connection, Val Name, Val Base = Undefined, Val Paramete
 
 EndFunction
 
+// Grant roles
+// Grants selected roles to a user
+//
+// Note
+// Role can be defined in one of the following formats:^
+// Structure: `{ role: "name", db: "database" }`^
+// String: `name рoлand`
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// User - String - Users name - user
+// RoleArray - Array Of Arbitrary - Role or role array - roles
+// Base - String - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional deletion parameters - params
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function GrantRoles(Val Connection
+    , Val User
+    , Val RoleArray
+    , Val Base = Undefined
+    , Val Parameters = Undefined) Export
+
+    Return GrantRevokeRole("grantRolesToUser", Connection, User, RoleArray, Base, Parameters);
+
+EndFunction
+
+// Revoke roles
+// Revokes selected roles from a user
+//
+// Note
+// Role can be defined in one of the following formats:^
+// Structure: `{ role: "name", db: "database" }`^
+// String: `name рoлand`
+//
+// Parameters:
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// User - String - Users name - user
+// RoleArray - Array Of Arbitrary - Role or role array - roles
+// Base - String - Database name. Current database if not specified - db
+// Parameters - Structure Of KeyAndValue - Additional deletion parameters - params
+//
+// Returns:
+// Map Of KeyAndValue - Operation result
+Function RevokeRoles(Val Connection
+    , Val User
+    , Val RoleArray
+    , Val Base = Undefined
+    , Val Parameters = Undefined) Export
+
+    Return GrantRevokeRole("revokeRolesFromUser", Connection, User, RoleArray, Base, Parameters);
+
+EndFunction
+
 // Get role privilege structure
 // Forms the privilege information structure for use when working with roles
 //
@@ -1187,6 +1241,32 @@ Function CreateOrUpdateRole(Val DBCommand
 
 EndFunction
 
+Function GrantRevokeRole(Val DBCommand
+    , Val Connection
+    , Val User
+    , Val RoleArray
+    , Val Base       = Undefined
+    , Val Parameters = Undefined)
+
+    OPI_TypeConversion.GetLine(User);
+
+    If Parameters <> Undefined Then
+        OPI_TypeConversion.GetKeyValueCollection(Parameters);
+    Else
+        Parameters = New Structure;
+    EndIf;
+
+    OPI_Tools.AddField("roles", RoleArray, "Array", Parameters);
+
+    If Base <> Undefined Then
+        OPI_TypeConversion.GetLine(Base);
+    EndIf;
+
+    Result = ExecuteCommand(Connection, DBCommand, User, Base, Parameters);
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region Alternate
@@ -1301,6 +1381,14 @@ EndFunction
 
 Function УдалитьРоль(Val Соединение, Val Имя, Val База = Undefined, Val Параметры = Undefined) Export
 	Return DeleteRole(Соединение, Имя, База, Параметры);
+EndFunction
+
+Function НазначитьРоли(Val Соединение, Val Пользователь, Val МассивРолей, Val База = Undefined, Val Параметры = Undefined) Export
+	Return GrantRoles(Соединение, Пользователь, МассивРолей, База, Параметры);
+EndFunction
+
+Function СнятьРоли(Val Соединение, Val Пользователь, Val МассивРолей, Val База = Undefined, Val Параметры = Undefined) Export
+	Return RevokeRoles(Соединение, Пользователь, МассивРолей, База, Параметры);
 EndFunction
 
 Function ПолучитьСтруктуруПривелегииРоли(Val Ресурс, Val МассивДействий) Export

@@ -1,26 +1,25 @@
 ﻿---
-sidebar_position: 1
-description: Create role and other functions to work with MongoDB in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+sidebar_position: 6
+description: Revoke roles and other functions to work with MongoDB in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, MongoDB]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Create role
- Creates a new role
+# Revoke roles
+ Revokes selected roles from a user
 
 
 
-`Function CreateRole(Val Connection, Val Name, Val Base = Undefined, Val PrivilegesArray = Undefined, Val RoleArray = Undefined, Val Parameters = Undefined) Export`
+`Function RevokeRoles(Val Connection, Val User, Val RoleArray, Val Base = Undefined, Val Parameters = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Connection | --dbc | String, Arbitrary | &#x2714; | Connection or connection string |
-  | Name | --name | String | &#x2714; | Role name |
+  | User | --user | String | &#x2714; | Users name |
+  | RoleArray | --roles | Array Of Arbitrary | &#x2714; | Role or role array |
   | Base | --db | String | &#x2716; | Database name. Current database if not specified |
-  | PrivilegesArray | --prvl | Array of Structure | &#x2716; | prvl |
-  | RoleArray | --roles | Array Of Arbitrary | &#x2716; | Array of roles based on strings or structures specifying the database |
   | Parameters | --params | Structure Of KeyAndValue | &#x2716; | Additional deletion parameters |
 
   
@@ -44,25 +43,10 @@ Role can be defined in one of the following formats:<br/>Structure: `{ role: "na
     ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
-    RoleArray = New Array;
-    RoleArray.Add("read");
-    RoleArray.Add("userAdmin");
+    User = "bayselonarrend";
+    Role = New Structure("role,db", "newrole", Base);
 
-    Resource = New Structure("db,collection", Base, "new_collection");
-    Actions  = New Array;
-
-    Actions.Add("find");
-    Actions.Add("insert");
-    Actions.Add("update");
-
-    Privilege = OPI_MongoDB.GetRolePrivilegeStructure(Resource, Actions);
-
-    PrivilegesArray = New Array;
-    PrivilegesArray.Add(Privilege);
-
-    RoleName = "newrole";
-
-    Result = OPI_MongoDB.CreateRole(Connection, RoleName, Base, PrivilegesArray, RoleArray);
+    Result = OPI_MongoDB.RevokeRoles(Connection, User, Role, Base);
 ```
  
 

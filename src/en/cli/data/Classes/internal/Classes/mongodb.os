@@ -1256,6 +1256,118 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library   = "mongodb";
     NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GrantRoles";
+    NewLine.SearchMethod  = "GRANTROLES";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Role management";
+    NewLine.MethodDescription   = "Grants selected roles to a user";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GrantRoles";
+    NewLine.SearchMethod  = "GRANTROLES";
+    NewLine.Parameter     = "--user";
+    NewLine.ParameterTrim = "-u";
+    NewLine.Description     = "Users name";
+    NewLine.Region      = "Role management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GrantRoles";
+    NewLine.SearchMethod  = "GRANTROLES";
+    NewLine.Parameter     = "--roles";
+    NewLine.ParameterTrim = "-r";
+    NewLine.Description     = "Role or role array";
+    NewLine.Region      = "Role management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GrantRoles";
+    NewLine.SearchMethod  = "GRANTROLES";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Role management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "GrantRoles";
+    NewLine.SearchMethod  = "GRANTROLES";
+    NewLine.Parameter     = "--params";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
+    NewLine.Region      = "Role management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "RevokeRoles";
+    NewLine.SearchMethod  = "REVOKEROLES";
+    NewLine.Parameter     = "--dbc";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Connection or connection string";
+    NewLine.Region      = "Role management";
+    NewLine.MethodDescription   = "Revokes selected roles from a user";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "RevokeRoles";
+    NewLine.SearchMethod  = "REVOKEROLES";
+    NewLine.Parameter     = "--user";
+    NewLine.ParameterTrim = "-u";
+    NewLine.Description     = "Users name";
+    NewLine.Region      = "Role management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "RevokeRoles";
+    NewLine.SearchMethod  = "REVOKEROLES";
+    NewLine.Parameter     = "--roles";
+    NewLine.ParameterTrim = "-r";
+    NewLine.Description     = "Role or role array";
+    NewLine.Region      = "Role management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "RevokeRoles";
+    NewLine.SearchMethod  = "REVOKEROLES";
+    NewLine.Parameter     = "--db";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Region      = "Role management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
+    NewLine.Method        = "RevokeRoles";
+    NewLine.SearchMethod  = "REVOKEROLES";
+    NewLine.Parameter     = "--params";
+    NewLine.ParameterTrim = "-p";
+    NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
+    NewLine.Region      = "Role management";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "mongodb";
+    NewLine.Module       = "OPI_MongoDB";
     NewLine.Method        = "GetRolePrivilegeStructure";
     NewLine.SearchMethod  = "GETROLEPRIVILEGESTRUCTURE";
     NewLine.Parameter     = "--res";

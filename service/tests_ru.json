@@ -6793,5 +6793,15 @@
 "lib": "MongoDB",
 "name": "ПолучитьРоли",
 "variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "НазначитьРоли",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "СнятьРоли",
+"variant": ""
 }
 ]
