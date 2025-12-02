@@ -1,0 +1,2 @@
+oint gcalendar СформироватьСсылкуПолученияКода \
+  --id "345925493105-641q49rl4oflrtr46fkgqf5upiltr4bg.apps.googleusercontent.com"

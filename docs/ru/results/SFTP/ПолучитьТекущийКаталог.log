@@ -1,4 +1,7 @@
 ﻿{
  "result": true,
- "path": "/config"
+ "path": "/config",
+ "close_connection": {
+  "result": true
+ }
 }

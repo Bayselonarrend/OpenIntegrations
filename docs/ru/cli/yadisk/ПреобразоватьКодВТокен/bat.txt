@@ -1,0 +1,4 @@
+oint yadisk ПреобразоватьКодВТокен ^
+  --id "cc2ce9d60deb4975be58866d32dbe7aa" ^
+  --secret "***" ^
+  --device "12345678"

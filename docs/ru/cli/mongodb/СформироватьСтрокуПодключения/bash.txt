@@ -1,0 +1,7 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint mongodb СформироватьСтрокуПодключения \
+  --addr "127.0.0.1:27017" \
+  --usr "bayselonarrend" \
+  --pwd "12we3456!2154" \
+  --params "{'authSource':'admin'}"

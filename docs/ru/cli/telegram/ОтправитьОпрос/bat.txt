@@ -1,6 +1,6 @@
 oint telegram ОтправитьОпрос ^
   --token "***" ^
-  --chat "@testsichee" ^
+  --chat "***" ^
   --question "Какой ваш любимый цвет?" ^
   --options "['Красный','Желтый','Зеленый','Синий']" ^
   --anonymous true
