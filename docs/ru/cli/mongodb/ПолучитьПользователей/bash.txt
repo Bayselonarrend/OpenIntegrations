@@ -1,0 +1,8 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint mongodb ПолучитьПользователей \
+  --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" \
+  --usrs "[{'user':'bayselonarrend','db':'admin'},{'user':'newuser','db':'main'}]" \
+  --db "main" \
+  --spwd true \
+  --sprv true

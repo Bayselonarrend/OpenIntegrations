@@ -1,4 +1,4 @@
 oint vkteams ИсключитьПользователейЧата ^
   --token "***" ^
-  --chatid "689203963@chat.agent" ^
+  --chatid "***" ^
   --members 1011987091

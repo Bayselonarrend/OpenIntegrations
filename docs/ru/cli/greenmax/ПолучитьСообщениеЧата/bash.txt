@@ -2,5 +2,5 @@
 
 oint greenmax ПолучитьСообщениеЧата \
   --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
-  --chat "12345678" \
+  --chat "***" \
   --message "2761480287806"

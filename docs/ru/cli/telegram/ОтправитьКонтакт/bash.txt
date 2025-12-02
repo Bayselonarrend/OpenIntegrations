@@ -1,6 +1,6 @@
 oint telegram ОтправитьКонтакт \
   --token "***" \
-  --chat "@testsichee" \
+  --chat "***" \
   --name "Петр" \
   --surname "Петров" \
   --phone "***"

@@ -1,0 +1,5 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint mongodb ПолучитьСтруктуруПривелегииРоли ^
+  --res "{'db':'admin','collection':'new_collection'}" ^
+  --act "['find','insert','update']"

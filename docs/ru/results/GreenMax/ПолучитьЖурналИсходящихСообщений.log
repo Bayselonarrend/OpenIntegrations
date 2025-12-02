@@ -1,11 +1,11 @@
 ﻿[
  {
   "type": "outgoing",
-  "idMessage": "1764327510066",
-  "timestamp": 1764327510,
+  "idMessage": "1764693990075",
+  "timestamp": 1764693990,
   "typeMessage": "imageMessage",
-  "chatId": "-69253802033237",
-  "downloadUrl": "https://mediaout-3100.storage.yandexcloud.net/3100309139/a97a1c1e-6524-4f8d-aa89-c2163274f533.jpg",
+  "chatId": "-69389120372821",
+  "downloadUrl": "https://mediaout-3100.storage.yandexcloud.net/3100309139/37181887-2b06-4ec8-9373-30fb25efc759.jpg",
   "caption": "Описание файла",
   "fileName": "photo.jpg",
   "jpegThumbnail": "UklGRvgBAABXRUJQVlA4IOwBAADwCgCdASoyACYAAUAmJYwC7NEi26VoDwT8xB/ScUr4wDxM/4Bq9/7l/UC+jSyuGNjR/nd+I42sIZfXav7EIAoB3MeAdBEgl58tkqFHL4ied/Cd9ogQFtjPrcML5F72L+AA/vX41ZdOHu9NLDZhqPsz1GI5WcPnL+G8cTPu4+FDM0EdyS+ud8JaLepEEOz/VInh1AspI3vwFJrnpwZfd3wMBVIYfP8kjg+kDKi9JhT9X2f03DQVFc2DOoqBUIwe+mhjlNWtltwdXJGY6vsVTecmLfR3BcwnxrFKgYVFq+ll1fJSbyMWo2ENhkZFQgVX49/MmUblS/H8j11IIygSiWeWs66Lbqehk7vr7yYUSjWmDYmlpsT6+sl8/6KEjq53OcL/1QzlaGML4CeELUw6QgG3Q6kbaMTyF8T8qwv4nLMe+7v0vb9YirtDpRw6BRNc+Ac2VzhqPkdofUu4sJ5d3rF58zHmZBQN+7nr50P8wnrA1/4McyHKo+slgx8oixxKNUNc7LnuCZuXurUyNVPhCuYMhbLeNxgzIDFeO2TNjInyKw3Mzuo/e6Wsn95ggvkXTRMROKC4/Sh94Zb3YRuQdMEmmDrkTYhzOb5lMQUBHbbqoek44klC80RFndJKcP0CjWuNqN9Sl7clTkn1wAA=",
@@ -23,10 +23,10 @@
  },
  {
   "type": "outgoing",
-  "idMessage": "1764327506872",
-  "timestamp": 1764327508,
+  "idMessage": "1764693979929",
+  "timestamp": 1764693982,
   "typeMessage": "extendedTextMessage",
-  "chatId": "-69253802033237",
+  "chatId": "-69389120372821",
   "textMessage": "Текст сообщения",
   "extendedTextMessage": {
    "text": "Текст сообщения",

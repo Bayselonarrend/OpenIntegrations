@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/2uhhpcys.hys.bin",
- "result": true
+ "filepath": "/tmp/1zsg5ze5.pdi.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

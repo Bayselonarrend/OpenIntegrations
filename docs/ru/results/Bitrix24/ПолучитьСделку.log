@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "5546",
+  "ID": "5554",
   "TITLE": "Плановая продажа",
   "TYPE_ID": "GOODS",
   "STAGE_ID": "NEW",
@@ -18,8 +18,8 @@
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2025-11-28T10:32:01+00:00",
-  "DATE_MODIFY": "2025-11-28T10:32:01+00:00",
+  "DATE_CREATE": "2025-12-02T16:13:03+00:00",
+  "DATE_MODIFY": "2025-12-02T16:13:03+00:00",
   "OPENED": "Y",
   "CLOSED": "N",
   "COMMENTS": null,
@@ -36,8 +36,8 @@
   "ORIGINATOR_ID": "***",
   "ORIGIN_ID": "***",
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2025-11-28T10:32:01+00:00",
-  "LAST_ACTIVITY_TIME": "2025-11-28T10:32:01+00:00",
+  "MOVED_TIME": "2025-12-02T16:13:03+00:00",
+  "LAST_ACTIVITY_TIME": "2025-12-02T16:13:03+00:00",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
@@ -47,13 +47,13 @@
   "LAST_ACTIVITY_BY": "1"
  },
  "time": {
-  "start": 1764325924,
-  "finish": 1764325924.06372,
-  "duration": 0.0637240409851074,
+  "start": 1764691993,
+  "finish": 1764691993.42544,
+  "duration": 0.425435066223144,
   "processing": 0,
-  "date_start": "2025-11-28T10:32:04+00:00",
-  "date_finish": "2025-11-28T10:32:04+00:00",
-  "operating_reset_at": 1764326524,
+  "date_start": "2025-12-02T16:13:13+00:00",
+  "date_finish": "2025-12-02T16:13:13+00:00",
+  "operating_reset_at": 1764692593,
   "operating": 0
  }
 }

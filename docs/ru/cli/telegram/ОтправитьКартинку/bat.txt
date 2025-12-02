@@ -2,7 +2,7 @@
 
 oint telegram ОтправитьКартинку ^
   --token "***" ^
-  --chat "@testsichee" ^
+  --chat "***" ^
   --text "Строковое значение" ^
   --picture "https://hut.openintegrations.dev/test_data/picture.jpg" ^
   --keyboard "{'inline_keyboard':[[{'text':'Кнопка1','callback_data':'Кнопка1'}],[{'text':'Кнопка2','callback_data':'Кнопка2'}],[{'text':'Кнопка3','callback_data':'Кнопка3'}]],'rows':'1'}"

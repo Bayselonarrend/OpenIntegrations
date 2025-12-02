@@ -1,4 +1,4 @@
 oint vkteams УстановитьОписаниеЧата \
   --token "***" \
-  --chatid "689203963@chat.agent" \
+  --chatid "***" \
   --text "Новое описание"
