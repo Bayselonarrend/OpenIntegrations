@@ -1,5 +1,5 @@
 oint bitrix24 ОтправитьСообщение ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --chat 10 ^
+  --chat "***" ^
   --text "Текст сообщения" ^
   --token "***"

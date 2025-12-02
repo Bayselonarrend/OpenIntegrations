@@ -2,8 +2,8 @@
 
 oint vkteams ОтправитьТекстовоеСообщение ^
   --token "***" ^
-  --chatid "689203963@chat.agent" ^
+  --chatid "***" ^
   --text "<b>Полужирный текст сообщения</b>" ^
-  --reply "7567095844218880455" ^
+  --reply "7567354422724936211" ^
   --keyboard "[[{'text':'Кнопка1','callbackData':'НажатиеКнопки1','style':'attention'},{'text':'Кнопка2','url':'https://openintegrations.dev','style':'base'}],[{'text':'Кнопка1','callbackData':'НажатиеКнопки1','style':'attention'},{'text':'Кнопка2','url':'https://openintegrations.dev','style':'base'}]]" ^
   --parsemod "HTML"

@@ -1,3 +1,3 @@
 oint vkteams ПолучитьЗапросыВступленияЧата ^
   --token "***" ^
-  --chatid "AoLI0egLWBSLR1Ngn2w"
+  --chatid "***"

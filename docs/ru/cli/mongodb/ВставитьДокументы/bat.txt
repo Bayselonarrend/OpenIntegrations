@@ -1,0 +1,7 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint mongodb ВставитьДокументы ^
+  --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
+  --coll "new_collection" ^
+  --docs "[{'stringField':'Текст','intField':'200','doubleField':'123.456','boolField':true,'arrayField':['Значение1','Значение2'],'docField':{'text':'Текст','number':'10'},'dateField':'12/02/2025 15:33:00','binaryField':'/tmp/a3lhcjka.5w1','nullField':null},{'stringField':{'__OPI_STRING__':'Текст'},'oidField':{'__OPI_OBJECTID__':'63ceed18f71dda7d8cf21e8e'},'jsField':{'__OPI_JS__':'const result = [1, 2, 3].map(x => x * 2).filter(x => x > 3);'},'symbolField':{'__OPI_SYMBOL__':'Y'},'int32Field':{'__OPI_INT32__':'10'},'int64Field':{'__OPI_INT64__':'1000'},'doubleField':{'__OPI_DOUBLE__':'124.456'},'boolField':{'__OPI_BOOLEAN__':true},'dateField':{'__OPI_DATETIME__':'1763204141'},'tsField':{'__OPI_TIMESTAMP__':'12/02/2025 15:33:00'},'regexpField':{'__OPI_REGEXP__':{'pattern':'[a-z]+@[a-z]+\\.[a-z]+','options':'i'}},'binaryField':{'__OPI_BINARY__':'/tmp/pcyxpyvy.wiq'},'nullField':{'__OPI_NULL__':null},'minkeyField':{'__OPI_MINKEY__':null},'maxkeyField':{'__OPI_MAXKEY__':null},'docField':{'code':{'__OPI_JS__':'const result = 1'},'number':{'__OPI_DOUBLE__':'10'}},'arrayField':[{'__OPI_SYMBOL__':'A'},{'__OPI_MINKEY__':null}]}]" ^
+  --db "main"
