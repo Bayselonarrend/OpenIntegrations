@@ -10,7 +10,7 @@
 # Открытый пакет интеграций
 
 ![Версия](https://img.shields.io/badge/Версия_1С-8.3.10-yellow)
-[![OpenYellow](https://openyellow.openintegrations.dev/data/badges/736878759.svg)](https://openyellow.openintegrations.dev/grid?filter=top&repo=736878759)
+[![OpenYellow](https://openyellow.openintegrations.dev/data/badges/736878759.svg)](https://openyellow.org/grid?filter=top&repo=736878759)
 [![OneScript](media/oscript.svg)](https://github.com/EvilBeaver/OneScript)
 [![OneScript](media/boosty.svg)](https://boosty.to/bayselonarrend)
 <br>
