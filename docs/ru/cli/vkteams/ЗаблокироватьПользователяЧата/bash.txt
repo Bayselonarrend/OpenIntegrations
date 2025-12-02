@@ -1,5 +1,5 @@
 oint vkteams ЗаблокироватьПользователяЧата \
   --token "***" \
-  --chatid "689203963@chat.agent" \
+  --chatid "***" \
   --userid 1011987091 \
   --dellast true

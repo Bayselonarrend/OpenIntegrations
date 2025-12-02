@@ -1,4 +1,4 @@
 oint vkteams УстановитьЗаголовокЧата ^
   --token "***" ^
-  --chatid "689203963@chat.agent" ^
+  --chatid "***" ^
   --text "Новый заголовок"

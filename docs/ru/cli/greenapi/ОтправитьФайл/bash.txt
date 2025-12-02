@@ -2,8 +2,8 @@
 
 oint greenapi ОтправитьФайл \
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-  --chat "120363410406221140@g.us" \
+  --chat "***" \
   --file "https://hut.openintegrations.dev/test_data/video.mp4" \
   --filename "vid.mp4" \
   --caption "Описание файла" \
-  --quoted "BAE52D58FA5D0FDA"
+  --quoted "3EB0095D88160BA6E0DE28"

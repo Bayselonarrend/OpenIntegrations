@@ -1,5 +1,5 @@
 oint telegram ПереслатьСообщение ^
   --token "***" ^
-  --message "22444" ^
+  --message "22851" ^
   --from "@testsichee" ^
   --to "461699897"
