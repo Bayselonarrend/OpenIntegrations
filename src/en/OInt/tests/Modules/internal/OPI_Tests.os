@@ -3281,6 +3281,8 @@ Procedure Mongo_RoleManagement() Export
 
     MongoDB_CreateRole(TestParameters);
     MongoDB_GetRoles(TestParameters);
+    MongoDB_GrantRoles(TestParameters);
+    MongoDB_RevokeRoles(TestParameters);
     MongoDB_UpdateRole(TestParameters);
     MongoDB_DeleteRole(TestParameters);
     MongoDB_GetRolePrivilegeStructure(TestParameters);
@@ -25740,7 +25742,7 @@ Procedure MongoDB_CreateRole(FunctionParameters)
     Address  = "127.0.0.1:1234";
     Login    = FunctionParameters["MongoDB_User"];
     Password = FunctionParameters["MongoDB_Password"];
-    Base     = FunctionParameters["MongoDB_DB"];
+    Base     = "admin";
 
     Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
 
@@ -25766,6 +25768,7 @@ Procedure MongoDB_CreateRole(FunctionParameters)
 
     RoleName = "newrole";
 
+    OPI_MongoDB.DeleteRole(Connection, RoleName, Base); // SKIP
     Result = OPI_MongoDB.CreateRole(Connection, RoleName, Base, PrivilegesArray, RoleArray);
 
     // END
@@ -25783,7 +25786,7 @@ Procedure MongoDB_UpdateRole(FunctionParameters)
     Address  = "127.0.0.1:1234";
     Login    = FunctionParameters["MongoDB_User"];
     Password = FunctionParameters["MongoDB_Password"];
-    Base     = FunctionParameters["MongoDB_DB"];
+    Base     = "admin";
 
     Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
 
@@ -25821,7 +25824,7 @@ Procedure MongoDB_DeleteRole(FunctionParameters)
     Address  = "127.0.0.1:1234";
     Login    = FunctionParameters["MongoDB_User"];
     Password = FunctionParameters["MongoDB_Password"];
-    Base     = FunctionParameters["MongoDB_DB"];
+    Base     = "admin";
 
     Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
 
@@ -25866,7 +25869,7 @@ Procedure MongoDB_GetRoles(FunctionParameters)
     Address  = "127.0.0.1:1234";
     Login    = FunctionParameters["MongoDB_User"];
     Password = FunctionParameters["MongoDB_Password"];
-    Base     = FunctionParameters["MongoDB_DB"];
+    Base     = "admin";
 
     Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
 
@@ -25881,6 +25884,54 @@ Procedure MongoDB_GetRoles(FunctionParameters)
     // END
 
     Process(Result, "MongoDB", "GetRoles");
+
+EndProcedure
+
+Procedure MongoDB_GrantRoles(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = "admin";
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    User = "bayselonarrend";
+    Role = New Structure("role,db", "newrole", Base);
+
+    Result = OPI_MongoDB.GrantRoles(Connection, User, Role, Base);
+
+    // END
+
+    Process(Result, "MongoDB", "GrantRoles");
+
+EndProcedure
+
+Procedure MongoDB_RevokeRoles(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = "admin";
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
+    Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
+
+    User = "bayselonarrend";
+    Role = New Structure("role,db", "newrole", Base);
+
+    Result = OPI_MongoDB.RevokeRoles(Connection, User, Role, Base);
+
+    // END
+
+    Process(Result, "MongoDB", "RevokeRoles");
 
 EndProcedure
 
