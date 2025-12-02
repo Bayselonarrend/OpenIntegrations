@@ -6793,5 +6793,15 @@
 "lib": "MongoDB",
 "name": "GetRoles",
 "variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "GrantRoles",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "RevokeRoles",
+"variant": ""
 }
 ]

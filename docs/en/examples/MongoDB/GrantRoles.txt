@@ -7,6 +7,7 @@
     ConnectionString = OPI_MongoDB.GenerateConnectionString(Address, , Login, Password, ConnectionParams);
     Connection       = OPI_MongoDB.CreateConnection(ConnectionString);
 
+    User = "bayselonarrend";
     Role = New Structure("role,db", "newrole", Base);
 
-    Result = OPI_MongoDB.GetRoles(Connection, Role, Base, True);
+    Result = OPI_MongoDB.GrantRoles(Connection, User, Role, Base);

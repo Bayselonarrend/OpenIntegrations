@@ -12611,6 +12611,22 @@ Function Check_MongoDB_DeleteRole(Val Result, Val Option)
 
 EndFunction
 
+Function Check_MongoDB_GrantRoles(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_RevokeRoles(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_MongoDB_GetRoles(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
