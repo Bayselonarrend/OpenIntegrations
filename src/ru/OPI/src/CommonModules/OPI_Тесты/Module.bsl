@@ -13925,8 +13925,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Наименование = "opi-dirbucket5";
-    Наименование = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Наименование = "opi-dirbucket6";
+    Наименование = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.УдалитьБакет(Наименование, ОсновныеДанные, Каталог); // SKIP
     Обработать(Результат, "S3", "СоздатьБакет", "Удаление");                // SKIP
@@ -13951,8 +13951,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Наименование = "opi-dirbucket5";
-    Наименование = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Наименование = "opi-dirbucket6";
+    Наименование = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.УдалитьБакет(Наименование, ОсновныеДанные, Каталог);
 
@@ -13990,8 +13990,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Наименование = "opi-dirbucket5";
-    Наименование = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Наименование = "opi-dirbucket6";
+    Наименование = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.ПроверитьДоступностьБакета(Наименование, ОсновныеДанные, Каталог);
 
@@ -14017,8 +14017,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Наименование = "opi-dirbucket5";
-    Наименование = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Наименование = "opi-dirbucket6";
+    Наименование = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.ПолучитьШифрованиеБакета(Наименование, ОсновныеДанные, Каталог);
 
@@ -14040,8 +14040,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Наименование = "opi-dirbucket5";
-    Наименование = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Наименование = "opi-dirbucket6";
+    Наименование = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.УдалитьШифрованиеБакета(Наименование, ОсновныеДанные, Каталог);
 
@@ -14063,8 +14063,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Наименование = "opi-dirbucket5";
-    Наименование = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Наименование = "opi-dirbucket6";
+    Наименование = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     XMLКонфигурация = "<ServerSideEncryptionConfiguration xmlns=""http://s3.amazonaws.com/doc/2006-03-01/"">
                       | <Rule>
@@ -14100,8 +14100,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Наименование = "opi-dirbucket5";
-    Наименование = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Наименование = "opi-dirbucket6";
+    Наименование = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.ПолучитьТегиБакета(Наименование, ОсновныеДанные, Каталог);
 
@@ -14127,8 +14127,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Наименование = "opi-dirbucket5";
-    Наименование = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Наименование = "opi-dirbucket6";
+    Наименование = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.УстановитьТегиБакета(Наименование, ОсновныеДанные, СтруктураТегов);
 
@@ -14150,8 +14150,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Наименование = "opi-dirbucket5";
-    Наименование = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Наименование = "opi-dirbucket6";
+    Наименование = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.УдалитьТегиБакета(Наименование, ОсновныеДанные);
 
@@ -14173,8 +14173,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Наименование = "opi-dirbucket5";
-    Наименование = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Наименование = "opi-dirbucket6";
+    Наименование = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.ПолучитьНастройкийВерсионированияБакета(Наименование, ОсновныеДанные);
 
@@ -14197,8 +14197,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Наименование = "opi-dirbucket5";
-    Наименование = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Наименование = "opi-dirbucket6";
+    Наименование = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.УстановитьНастройкиВерсионированияБакета(Наименование, ОсновныеДанные, Статус);
 
@@ -14220,8 +14220,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Наименование = "picture.jpg";
     Содержимое   = ПараметрыФункции["Picture"]; // URL, Путь или Двоичные данные
@@ -14260,8 +14260,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.ЗагрузитьОбъектЦеликом(Наименование, Бакет, Содержимое, ОсновныеДанные, , Каталог);
 
@@ -14287,8 +14287,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.УдалитьОбъект(Наименование, Бакет, ОсновныеДанные, , , Каталог);
 
@@ -14312,8 +14312,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.ПолучитьОписаниеОбъекта(Наименование, Бакет, ОсновныеДанные, , , Каталог);
 
@@ -14339,8 +14339,8 @@
     БакетИсточник = "newbucket2";
 
     ПутьПриемник  = "new_picture.jpg";
-    БакетПриемник = "opi-dirbucket5";
-    БакетПриемник = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    БакетПриемник = "opi-dirbucket6";
+    БакетПриемник = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.КопироватьОбъект(ПутьИсточник, БакетИсточник, ПутьПриемник, БакетПриемник, ОсновныеДанные, , Каталог);
 
@@ -14366,8 +14366,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     СтруктураТегов = Новый Структура;
 
@@ -14396,8 +14396,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.ПолучитьТегиОбъекта(Наименование, Бакет, ОсновныеДанные, , , Каталог);
 
@@ -14421,8 +14421,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.УдалитьТегиОбъекта(Наименование, Бакет, ОсновныеДанные, , , Каталог);
 
@@ -14444,8 +14444,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.ПолучитьСписокОбъектов(Бакет, ОсновныеДанные, , , , Каталог);
 
@@ -14467,8 +14467,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Префикс   = "pic";
     Результат = OPI_S3.ПолучитьСписокВерсийОбъектов(Бакет, ОсновныеДанные, Префикс, , , Каталог);
@@ -14497,8 +14497,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.ПолучитьОбъект(Наименование, Бакет, ОсновныеДанные, , , , Каталог);
 
@@ -14544,8 +14544,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Содержимое = ПараметрыФункции["Audio"]; // URL, Путь или Двоичные данные
     Содержимое = OPI_ЗапросыHTTP.Get(Содержимое);
@@ -14619,8 +14619,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Содержимое = ПараметрыФункции["Audio"]; // URL, Путь или Двоичные данные
     Содержимое = OPI_ЗапросыHTTP.Get(Содержимое);
@@ -14694,8 +14694,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Содержимое = ПараметрыФункции["Audio"]; // URL, Путь или Двоичные данные
     Содержимое = OPI_ЗапросыHTTP.Get(Содержимое);
@@ -14770,8 +14770,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Начало     = OPI_S3.ИнициализироватьЗагрузкуЧастями(Наименование, Бакет, ОсновныеДанные, , Каталог);
     IDЗагрузки = Начало["response"]["InitiateMultipartUploadResult"]["UploadId"];
@@ -14802,8 +14802,8 @@
     Каталог = Истина; // Формирование URL в path-style
     Каталог = ПараметрыФункции["Directory"]; // SKIP
 
-    Бакет = "opi-dirbucket5";
-    Бакет = ?(Каталог, "opi-dirbucket5", "opi-gpbucket5"); // SKIP
+    Бакет = "opi-dirbucket6";
+    Бакет = ?(Каталог, "opi-dirbucket6", "opi-gpbucket6"); // SKIP
 
     Результат = OPI_S3.ПолучитьСсылкуСкачиванияОбъекта(Наименование, Бакет, ОсновныеДанные, 7200, , Каталог);
 
@@ -25055,7 +25055,6 @@
     СтруктураДокумента.Вставить("arrayField" , ТестовыйМассив);
     СтруктураДокумента.Вставить("docField"   , ТестоваяСтруктура);
     СтруктураДокумента.Вставить("dateField"  , ТекущаяДата);
-    СтруктураДокумента.Вставить("binaryField", ТестовыеДвоичные);
     СтруктураДокумента.Вставить("nullField");
 
     МассивДокументов.Добавить(СтруктураДокумента);
