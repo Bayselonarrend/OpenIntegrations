@@ -218,7 +218,7 @@ Function GenerateConnectionString(Val Address
         StringTemplate = "Server=%1%2;%3IntegratedSecurity=True;";
         ConnectionString = StrTemplate(StringTemplate, Address, PortBlock, DBBlock);
     Else
-        StringTemplate = "Server=%1%2;%3User Id=%4;Password=%5;";
+        StringTemplate = "Server=%1%2;%3User Id=%4;Password=""%5"";";
         ConnectionString = StrTemplate(StringTemplate, Address, PortBlock, DBBlock, Login, Password);
     EndIf;
 
