@@ -27,6 +27,8 @@
     FilterStructure.Insert("value", New Structure("NVARCHAR", "127.0.0.1"));
     FilterStructure.Insert("raw"  , False);
 
+    Filters.Add(FilterStructure);
+
     // When using the connection string, a new connection is initialised,
     // which will be closed after the function is executed.
     // If several operations are performed, it is desirable to use one connection,

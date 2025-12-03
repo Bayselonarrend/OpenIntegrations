@@ -1736,8 +1736,8 @@ Function ProcessParameter(CurrentParameter, TypesStructure, AsObject = True)
 
     EndIf;
 
-    If AsObject Then
-        CurrentParameter = New Structure(CurrentKey, CurrentParameter);
+    If AsObject And Not CurrentParameter = Undefined Then
+        CurrentParameter                 = New Structure(CurrentKey, CurrentParameter);
     EndIf;
 
     Return CurrentParameter;
@@ -1778,6 +1778,7 @@ Function DefineParameterType(Val CurrentParameter)
     SimpleComparison.Add("Boolean");
     SimpleComparison.Add("Date");
     SimpleComparison.Add("String");
+    SimpleComparison.Add("Undefined");
 
     If CurrentType                     = Type("Number") Then
         Return ?(Int(CurrentParameter) = CurrentParameter, "Whole", "Float");

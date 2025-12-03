@@ -28,7 +28,6 @@
     DocumentStructure.Insert("arrayField" , TestArray);
     DocumentStructure.Insert("docField"   , TestStructure);
     DocumentStructure.Insert("dateField"  , CurrentDate);
-    DocumentStructure.Insert("binaryField", TestBinary);
     DocumentStructure.Insert("nullField");
 
     DocsArray.Add(DocumentStructure);

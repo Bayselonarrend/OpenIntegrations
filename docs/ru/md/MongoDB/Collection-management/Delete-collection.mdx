@@ -43,6 +43,26 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint mongodb УдалитьКоллекцию \
+              --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" \
+              --coll "test_collection" \
+              --db "test_database"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint mongodb УдалитьКоллекцию ^
+              --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
+              --coll "test_collection" ^
+              --db "test_database"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

@@ -40,7 +40,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint gcalendar УдалитьКалендарьИзСписка \
               --token "***" \
-              --calendar "914176c90502cb2dd73108baf0217b41e337599f7cf8583e254f8f9fefc3b091@group.calendar.google.com"
+              --calendar "4b60eaeef16424b59fe2b5e8cd8169b534ab9f8e7ab143c618e389911dd264ba@group.calendar.google.com"
         ```
     </TabItem>
   
@@ -48,12 +48,24 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint gcalendar УдалитьКалендарьИзСписка ^
               --token "***" ^
-              --calendar "914176c90502cb2dd73108baf0217b41e337599f7cf8583e254f8f9fefc3b091@group.calendar.google.com"
+              --calendar "4b60eaeef16424b59fe2b5e8cd8169b534ab9f8e7ab143c618e389911dd264ba@group.calendar.google.com"
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Результат"
-{}
+{
+ "error": {
+  "errors": [
+   {
+    "domain": "calendar",
+    "reason": "cannotUnsubscribeFromOwnedCalendar",
+    "message": "Data owner of a calendar cannot remove calendar list entry for that calendar."
+   }
+  ],
+  "code": 403,
+  "message": "Data owner of a calendar cannot remove calendar list entry for that calendar."
+ }
+}
 ```
