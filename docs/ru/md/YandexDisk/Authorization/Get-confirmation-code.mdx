@@ -32,14 +32,30 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint yadisk ПолучитьКодПодтверждения \
+              --id "cc2ce9d60deb4975be58866d32dbe7aa"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint yadisk ПолучитьКодПодтверждения ^
+              --id "cc2ce9d60deb4975be58866d32dbe7aa"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"
 {
- "device_code": "aa2f048a9ee24ec2a6a16adf327ae916",
+ "device_code": "03d6c8c7bad645138726bff142021bf2",
  "expires_in": 300,
  "interval": 5,
- "user_code": "3qd2hoqb",
+ "user_code": "tkbq6kvl",
  "verification_url": "https://ya.ru/device"
 }
 ```

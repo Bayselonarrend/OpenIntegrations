@@ -47,7 +47,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьДоговоренностьОДоставке \
               --token "***" \
-              --uuid "5aceee7a-6d4c-423b-8d92-9704a64e4dfa" \
+              --uuid "6f4a0355-17e1-4b48-bf31-5f3a0770eca7" \
               --testapi "***"
         ```
     </TabItem>
@@ -56,7 +56,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьДоговоренностьОДоставке ^
               --token "***" ^
-              --uuid "5aceee7a-6d4c-423b-8d92-9704a64e4dfa" ^
+              --uuid "6f4a0355-17e1-4b48-bf31-5f3a0770eca7" ^
               --testapi "***"
         ```
     </TabItem>
@@ -67,8 +67,8 @@ import TabItem from '@theme/TabItem';
 {
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "08a272e3-a38b-41c8-aebd-a8a9f0263a07",
-  "date": "2025-12-12",
+  "order_uuid": "8e44d5f7-2551-4f0f-837b-999b8730e02b",
+  "date": "2025-12-16",
   "time_from": "10:00",
   "time_to": "17:00",
   "comment": "Офис группы компаний",
@@ -85,30 +85,31 @@ import TabItem from '@theme/TabItem';
    "address": "ул. Блюхера, 33",
    "postal_code": "109004"
   },
-  "uuid": "9e6f0f38-fa75-4877-9ecf-8c108a64b812",
+  "uuid": "6f4a0355-17e1-4b48-bf31-5f3a0770eca7",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2025-11-28T10:37:01+00:00"
+    "date_time": "2025-12-02T16:23:58+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2025-11-28T10:37:00+00:00"
+    "date_time": "2025-12-02T16:23:57+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "d5c0d7da-623e-41f3-bdeb-047c6eac4609",
+   "request_uuid": "cea83b85-5021-4d4f-b91a-f2fd64278959",
    "type": "CREATE",
-   "date_time": "2025-11-28T10:37:00+00:00",
+   "date_time": "2025-12-02T16:23:57+00:00",
    "state": "INVALID",
    "errors": [
     {
      "code": "delivery_date_too_late",
-     "message": "Указанная дата доставки не может быть позднее 2025-12-09"
+     "additional_code": "0x1E0EBE20",
+     "message": "Указанная дата доставки не может быть позднее 2025-12-12"
     }
    ]
   }

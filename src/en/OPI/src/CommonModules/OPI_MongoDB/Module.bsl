@@ -964,6 +964,7 @@ Function GetRoles(Val Connection
     , Val GetPrivileges = False) Export
 
     OPI_TypeConversion.GetArray(RoleArray);
+    OPI_TypeConversion.GetBoolean(GetPrivileges);
 
     If RoleArray.Count() = 1 Then
         RoleArray        = RoleArray[0];
@@ -1151,11 +1152,18 @@ Function ProcessCollectionForOperation(Val Data)
 
         For Each DataPart In Data Do
 
-            CurrentKey   = String(DataPart.Key);
-            Covered      = StrStartsWith(CurrentKey, "__OPI_");
-            CurrentValue = ProcessDataForOperation(DataPart.Value, Covered);
+            CurrentKey = String(DataPart.Key);
+            Covered    = StrStartsWith(CurrentKey, "__OPI_");
 
-            ProcessedData.Insert(CurrentKey, CurrentValue);
+            CurrentValue = DataPart.Value;
+
+            If CurrentKey = "__OPI_BINARY__" Then
+                OPI_TypeConversion.GetBinaryData(CurrentValue);
+            EndIf;
+
+            ProcessedValue = ProcessDataForOperation(CurrentValue, Covered);
+
+            ProcessedData.Insert(CurrentKey, ProcessedValue);
 
         EndDo;
 
