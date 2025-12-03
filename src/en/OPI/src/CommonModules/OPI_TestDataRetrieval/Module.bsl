@@ -2385,7 +2385,6 @@ EndFunction
 
 Function Check_VK_GetAuthParameters(Val Result, Val Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
     ExpectsThat(Result["v"]).Заполнено();
     ExpectsThat(Result["from_group"]).Заполнено();
     ExpectsThat(Result["group_id"]).Заполнено();

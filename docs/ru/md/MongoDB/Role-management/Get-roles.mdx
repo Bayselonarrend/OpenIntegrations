@@ -44,6 +44,32 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mongodb ПолучитьРоли \
+              --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" \
+              --roles "{'role':'newrole','db':'admin'}" \
+              --db "admin" \
+              --sprv true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mongodb ПолучитьРоли ^
+              --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
+              --roles "{'role':'newrole','db':'admin'}" ^
+              --db "admin" ^
+              --sprv true
+        ```
+    </TabItem>
+</Tabs>
 
 
 

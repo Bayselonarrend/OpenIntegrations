@@ -42,7 +42,7 @@ import TabItem from '@theme/TabItem';
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
 
     Каталог = Истина; // Формирование URL в path-style
-    Наименование = "opi-dirbucket5";
+    Наименование = "opi-dirbucket6";
     Результат = OPI_S3.ПроверитьДоступностьБакета(Наименование, ОсновныеДанные, Каталог);
 
     Результат = OPI_S3.ПроверитьДоступностьБакета(Наименование, ОсновныеДанные, Каталог, "1234");
@@ -56,7 +56,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint s3 ПроверитьДоступностьБакета \
-              --name "opi-dirbucket4" \
+              --name "opi-dirbucket5" \
               --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
               --dir true \
               --account "1234"
@@ -68,7 +68,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint s3 ПроверитьДоступностьБакета ^
-              --name "opi-dirbucket4" ^
+              --name "opi-dirbucket5" ^
               --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
               --dir true ^
               --account "1234"
@@ -83,12 +83,12 @@ import TabItem from '@theme/TabItem';
  "response": {},
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Fri, 28 Nov 2025 10:41:50 GMT",
+  "Date": "Tue, 02 Dec 2025 16:32:08 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
-  "X-Amz-Request-Id": "187C259CF6FA6C40",
+  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
+  "X-Amz-Request-Id": "187D730CDB3D993F",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "0",

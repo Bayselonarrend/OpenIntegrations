@@ -92,9 +92,9 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint sftp СохранитьФайл \
-              --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'/tmp/0qbfjuwg.zix.tmp','username':'bayselonarrend'}}" \
+              --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'password','host':'172.33.0.13','key_path':null,'passphrase':null,'password':'***','port':'2222','pub_path':null,'username':'bayselonarrend'}}" \
               --path "pic_from_disk.png" \
-              --file "/tmp/5gdvkqag.qft.bin"
+              --file "/tmp/dorjcuir.11b.bin"
         ```
     </TabItem>
   
@@ -103,9 +103,9 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint sftp СохранитьФайл ^
-              --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'/tmp/0qbfjuwg.zix.tmp','username':'bayselonarrend'}}" ^
+              --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'password','host':'172.33.0.13','key_path':null,'passphrase':null,'password':'***','port':'2222','pub_path':null,'username':'bayselonarrend'}}" ^
               --path "pic_from_disk.png" ^
-              --file "/tmp/5gdvkqag.qft.bin"
+              --file "/tmp/dorjcuir.11b.bin"
         ```
     </TabItem>
 </Tabs>
@@ -114,7 +114,10 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "bytes": 2114023,
- "filepath": "/tmp/2uhhpcys.hys.bin",
- "result": true
+ "filepath": "/tmp/1zsg5ze5.pdi.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
 ```
