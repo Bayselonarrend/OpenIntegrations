@@ -47,7 +47,7 @@ This is a service method. A `PutObject` method is intended for the common scenar
     Name = "fileChunked.mp3";
 
     Directory = True; // Formation URL in path-style
-    Bucket = "opi-dirbucket5";
+    Bucket = "opi-dirbucket6";
     Start    = OPI_S3.InitPartsUpload(Name, Bucket, BasicData, , Directory);
     UploadID = Start["response"]["InitiateMultipartUploadResult"]["UploadId"];
 
