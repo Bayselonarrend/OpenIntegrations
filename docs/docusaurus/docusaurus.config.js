@@ -195,27 +195,6 @@ window.yaContextCb.push(() => {
       },
       footer: {
         style: 'light',
-        links: [
-          {
-            title: 'Документация',
-            items: [
-              {
-                label: 'Описания методов',
-                to: '/docs/Instructions/Start',
-              },
-            ],
-          },
-          {
-            title: 'Ресурсы',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/Bayselonarrend/OpenIntegrations',
-              },
-            ],
-          },
-        ],
-
       },
       prism: {
         theme: prismThemes.github,

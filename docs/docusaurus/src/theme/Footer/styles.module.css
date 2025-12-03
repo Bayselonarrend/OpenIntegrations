@@ -1,0 +1,42 @@
+.footer {
+  background-color: #f5f5f5;
+  border-top: 1px solid #e0e0e0;
+  padding: 2rem 0;
+  margin-top: 3rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.copyright {
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.disclaimer {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 1.5rem 0;
+  }
+
+  .copyright {
+    font-size: 0.9rem;
+  }
+
+  .disclaimer {
+    font-size: 0.8rem;
+  }
+}
