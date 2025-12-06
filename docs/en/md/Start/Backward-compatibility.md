@@ -27,3 +27,7 @@ However, there are cases when it becomes necessary to introduce so-called **"bre
 ### 1.28.0 -> 1.29.0
 
 **Ozon**: The Ozon Seller API library has been removed and its support is discontinued. If you are already using this library in your project, you need to preserve it separately before updating
+
+### 1.29.0 -> 1.30.0
+
+**Telegram**: Fixed and unified string decoding and special character replacement processing for all message types. When updating from a previous version, be sure to check the places where the Telegram library is used! You need to manually remove any calls to the DecodeString function if you added such in your code for emoji processing. This procedure is now handled within the library code for all messages.
