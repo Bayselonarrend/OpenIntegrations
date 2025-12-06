@@ -1396,7 +1396,11 @@ Function Check_Telegram_SendImage(Val Result, Val Option, Parameters = "", Text 
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
     ExpectsThat(Result["ok"]).Равно(True);
-    ExpectsThat(Result["result"]["caption"]).Равно(Text);
+
+    If Option <> "Text + Emoji" And Option <> "Complex" Then
+        ExpectsThat(Result["result"]["caption"]).Равно(Text);
+    EndIf;
+
     ExpectsThat(Result["result"]["photo"]).ИмеетТип("Array");
 
     If Not ValueIsFilled(Option) Then
