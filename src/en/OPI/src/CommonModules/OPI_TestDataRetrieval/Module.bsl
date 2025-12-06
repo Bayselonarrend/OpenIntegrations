@@ -13155,13 +13155,17 @@ Function FormOption(Val Name, Val Value, Embedded = False)
 
     If TypeOf(Value) = Type("Array") Then
 
-        If String(Value[0]) = ValueAsString Then
-            Value           = ValueAsString;
-        Else
+        If Not Value.Count() = 0 Then
 
-            For N        = 0 To Value.UBound() Do
-                Value[N] = FormOption("", Value[N], True);
-            EndDo;
+            If String(Value[0]) = ValueAsString Then
+                Value           = ValueAsString;
+            Else
+
+                For N        = 0 To Value.UBound() Do
+                    Value[N] = FormOption("", Value[N], True);
+                EndDo;
+
+            EndIf;
 
         EndIf;
 
