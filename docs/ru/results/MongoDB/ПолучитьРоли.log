@@ -1,0 +1,107 @@
+﻿{
+ "result": true,
+ "data": {
+  "roles": [
+   {
+    "_id": "admin.newrole",
+    "role": "newrole",
+    "db": "admin",
+    "privileges": [
+     {
+      "resource": {
+       "db": "admin",
+       "collection": "new_collection"
+      },
+      "actions": [
+       "***",
+       "***",
+       "***"
+      ]
+     }
+    ],
+    "roles": [
+     {
+      "role": "read",
+      "db": "admin"
+     },
+     {
+      "role": "userAdmin",
+      "db": "admin"
+     }
+    ],
+    "inheritedRoles": [
+     {
+      "role": "read",
+      "db": "admin"
+     },
+     {
+      "role": "userAdmin",
+      "db": "admin"
+     }
+    ],
+    "inheritedPrivileges": [
+     {
+      "resource": {
+       "db": "admin",
+       "collection": "new_collection"
+      },
+      "actions": [
+       "***",
+       "***",
+       "***"
+      ]
+     },
+     {
+      "resource": {
+       "db": "admin",
+       "collection": ""
+      },
+      "actions": [
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***"
+      ]
+     },
+     {
+      "resource": {
+       "db": "admin",
+       "collection": "system.js"
+      },
+      "actions": [
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***",
+       "***"
+      ]
+     }
+    ],
+    "isBuiltin": false
+   }
+  ],
+  "ok": 1
+ }
+}

@@ -6,11 +6,11 @@
     "Tag": [
      {
       "Key": "***",
-      "Value": "SomeValue"
+      "Value": "AnotherOne"
      },
      {
       "Key": "***",
-      "Value": "AnotherOne"
+      "Value": "SomeValue"
      }
     ]
    }
@@ -18,12 +18,12 @@
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Tue, 02 Dec 2025 16:33:20 GMT",
+  "Date": "Sat, 06 Dec 2025 17:52:07 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
   "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
-  "X-Amz-Request-Id": "187D731DB1C72C66",
+  "X-Amz-Request-Id": "187EB1BC9EECCA47",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "141",

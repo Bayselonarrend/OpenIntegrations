@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение ^
   --token "***" ^
   --chatid "***" ^
-  --file "/tmp/eclddj4u.5xd"
+  --file "C:\Users\bayse\AppData\Local\Temp\f3bnqupy.z3v"
