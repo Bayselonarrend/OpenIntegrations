@@ -172,3 +172,9 @@ impl AddIn {
     }
     pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType { self.get_field_ptr(index) as *mut _ }
 }
+
+impl Drop for AddIn {
+    fn drop(&mut self) {
+        disconnect(self);
+    }
+}

@@ -9,12 +9,6 @@ use crate::component::cal_func;
 use crate::component::AddIn;
 
 
-// Обработка удаления объекта
-impl Drop for AddIn {
-    fn drop(&mut self) {}
-}
-
-// Определение класса
 impl RawAddin for AddIn {
 
     fn register_extension_as(&mut self) -> &'static [u16] {
