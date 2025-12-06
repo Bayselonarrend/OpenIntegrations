@@ -2,7 +2,7 @@
 
 oint notion ИзменитьСвойстваБазы ^
   --token "***" ^
-  --base "2bd82aa7-fc4e-8181-b16b-c3c42bc0f2c0" ^
+  --base "2c182aa7-fc4e-81c4-b840-c7d5be4e261c" ^
   --props "{'Почта':'rich_text','Сайт':null}" ^
   --title "Тестовый заголовок" ^
   --description "Тестовое описание"

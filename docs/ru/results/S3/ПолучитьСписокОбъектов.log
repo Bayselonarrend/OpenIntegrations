@@ -2,14 +2,14 @@
  "status": 200,
  "response": {
   "ListBucketResult": {
-   "Name": "opi-dirbucket5",
+   "Name": "opi-dirbucket6",
    "Prefix": {},
    "KeyCount": "***",
    "MaxKeys": "***",
    "IsTruncated": "false",
    "Contents": {
     "Key": "***",
-    "LastModified": "2025-11-28T10:50:07.184Z",
+    "LastModified": "2025-12-06T18:14:14.898Z",
     "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
     "Size": "2114023",
     "StorageClass": "STANDARD"
@@ -18,12 +18,12 @@
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Fri, 28 Nov 2025 10:53:12 GMT",
+  "Date": "Sat, 06 Dec 2025 18:28:17 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
   "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
-  "X-Amz-Request-Id": "187C263BDFD7032A",
+  "X-Amz-Request-Id": "187EB3B5C908E394",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "452",
