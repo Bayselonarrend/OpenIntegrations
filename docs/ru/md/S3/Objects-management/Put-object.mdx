@@ -69,11 +69,11 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint s3 ЗагрузитьОбъект \
-              --name "picture.jpg" \
-              --bucket "opi-gpbucket5" \
-              --data "https://hut.openintegrations.dev/test_data/picture.jpg" \
-              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-              --dir false
+              --name "fileChunked.mp3" \
+              --bucket "opi-dirbucket6" \
+              --data "https://hut.openintegrations.dev/test_data/song.mp3" \
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'5242880'}" \
+              --dir true
         ```
     </TabItem>
   
@@ -82,11 +82,11 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint s3 ЗагрузитьОбъект ^
-              --name "picture.jpg" ^
-              --bucket "opi-gpbucket5" ^
-              --data "https://hut.openintegrations.dev/test_data/picture.jpg" ^
-              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-              --dir false
+              --name "fileChunked.mp3" ^
+              --bucket "opi-dirbucket6" ^
+              --data "https://hut.openintegrations.dev/test_data/song.mp3" ^
+              --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'5242880'}" ^
+              --dir true
         ```
     </TabItem>
 </Tabs>
@@ -98,13 +98,13 @@ import TabItem from '@theme/TabItem';
  "response": {},
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Fri, 28 Nov 2025 10:50:12 GMT",
+  "Date": "Sat, 06 Dec 2025 18:14:44 GMT",
   "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
   "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
-  "X-Amz-Request-Id": "187C260F636F78DB",
+  "X-Amz-Request-Id": "187EB2EBE035FE09",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "0",
