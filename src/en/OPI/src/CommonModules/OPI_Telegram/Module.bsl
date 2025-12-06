@@ -311,12 +311,9 @@ Function SendTextMessage(Val Token
     , Val RepliedID = 0) Export
 
     OPI_TypeConversion.GetLine(Token);
-    OPI_TypeConversion.GetLine(Text);
-    OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
+    PrepareString(Text, Markup);
 
     String_ = "String";
-
-    Text = DecodeString(Text, StringEncodingMethod.URLInURLEncoding);
 
     Parameters = New Structure;
     OPI_Tools.AddField("parse_mode"         , Markup   , String_      , Parameters);
@@ -504,7 +501,7 @@ Function SendMediaGroup(Val Token
     OPI_TypeConversion.GetLine(ChatID);
     OPI_TypeConversion.GetCollection(FileMapping);
 
-    OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
+    PrepareString(Text, Markup);
 
     URL        = "api.telegram.org/bot" + Token + "/sendMediaGroup";
     Media      = New Array;
@@ -757,7 +754,7 @@ Function ReplaceMessageText(Val Token
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(Text);
 
-    OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
+    PrepareString(Text, Markup);
 
     String_ = "String";
 
@@ -799,7 +796,7 @@ Function ReplaceMessageCaption(Val Token
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(Description);
 
-    OPI_Tools.ReplaceSpecialCharacters(Description, Markup);
+    PrepareString(Description, Markup);
 
     String_ = "String";
 
@@ -1311,9 +1308,8 @@ Function SendFile(Val Token
     OPI_TypeConversion.GetLine(Token);
     OPI_TypeConversion.GetLine(ChatID);
     OPI_TypeConversion.GetLine(View);
-    OPI_TypeConversion.GetLine(Text);
 
-    OPI_Tools.ReplaceSpecialCharacters(Text, Markup);
+    PrepareString(Text, Markup);
 
     If Not ValueIsFilled(FileName) Then
         FileName = ConvertFileData(File, View, "");
@@ -1565,6 +1561,52 @@ Procedure AddChatIdentifier(Val ChatID, Parameters)
 
     OPI_TypeConversion.GetNumber(TopicID);
     Parameters.Insert("chat_id", ChatID);
+
+EndProcedure
+
+Procedure PrepareString(Text, Markup = "Markdown") Export
+
+    OPI_TypeConversion.GetLine(Text);
+    ReplaceSpecialCharacters(Text, Markup);
+
+    Text = DecodeString(Text, StringEncodingMethod.URLInURLEncoding);
+
+EndProcedure
+
+Procedure ReplaceSpecialCharacters(Text, Markup) Export
+
+    OPI_TypeConversion.GetLine(Markup);
+
+    CharacterMapping = New Map;
+
+    If Markup = "HTML" Then
+
+        CharacterMapping.Insert("&", "&amp;");
+
+    ElsIf Markup = "MarkdownV2" Then
+
+        CharacterMapping.Insert("-", "\-");
+        CharacterMapping.Insert("+", "\+");
+        CharacterMapping.Insert("#", "\#");
+        CharacterMapping.Insert("=", "\=");
+        CharacterMapping.Insert("{", "\{");
+        CharacterMapping.Insert("}", "\}");
+        CharacterMapping.Insert(".", "\.");
+
+    Else
+        Return;
+    EndIf;
+
+    Marker = "╗█▓█╗";
+
+    Text = StrReplace(Text, "\", Marker);
+
+    For Each ArraySymbol In CharacterMapping Do
+        Text = StrReplace(Text, ArraySymbol.Key, ArraySymbol.Value);
+    EndDo;
+
+    Text = StrReplace(Text, Marker + "\", "\");
+    Text = StrReplace(Text, Marker      , "\");
 
 EndProcedure
 

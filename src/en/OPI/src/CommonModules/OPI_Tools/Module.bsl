@@ -789,36 +789,6 @@ EndProcedure
 
 #Region Service
 
-Procedure ReplaceSpecialCharacters(Text, Markup = "Markdown") Export
-
-    OPI_TypeConversion.GetLine(Markup);
-
-    CharacterMapping = New Map;
-
-    If Markup = "HTML" Then
-
-        CharacterMapping.Insert("&", "&amp;");
-
-    ElsIf Markup = "MarkdownV2" Then
-
-        CharacterMapping.Insert("-", "\-");
-        CharacterMapping.Insert("+", "\+");
-        CharacterMapping.Insert("#", "\#");
-        CharacterMapping.Insert("=", "\=");
-        CharacterMapping.Insert("{", "\{");
-        CharacterMapping.Insert("}", "\}");
-        CharacterMapping.Insert(".", "\.");
-
-    Else
-        Return;
-    EndIf;
-
-    For Each ArraySymbol In CharacterMapping Do
-        Text = StrReplace(Text, ArraySymbol.Key, ArraySymbol.Value);
-    EndDo;
-
-EndProcedure
-
 Procedure Pause(Val Seconds) Export
 
     Connection = New HTTPConnection("1C.ru", 11111, , , , Seconds);
