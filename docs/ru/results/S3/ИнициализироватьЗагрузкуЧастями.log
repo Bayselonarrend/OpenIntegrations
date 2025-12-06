@@ -2,19 +2,19 @@
  "status": 200,
  "response": {
   "InitiateMultipartUploadResult": {
-   "Bucket": "opi-dirbucket5",
+   "Bucket": "opi-dirbucket6",
    "Key": "***",
-   "UploadId": "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjg2NGFiZDY5LWZmZmEtNDk1Ni04YzQ2LWU4MTNiNGQzNWRkMQ"
+   "UploadId": "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjg4YWQxOGY4LTZmY2QtNDQzYy05MWI0LWUwZDBlMzJkYWY1NA"
   }
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Fri, 28 Nov 2025 10:51:24 GMT",
+  "Date": "Sat, 06 Dec 2025 18:18:56 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
   "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
-  "X-Amz-Request-Id": "187C2622A291E213",
+  "X-Amz-Request-Id": "187EB33334EF7E97",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "326",

@@ -1,7 +1,7 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-12-02T16:51:28.065827809Z",
- "response": "1C:Enterprise is a comprehensive enterprise resource planning (ERP) software system developed by Oracle Corporation. It provides businesses with a unified platform for managing all aspects of their operations, including accounting, inventory management, supply chain management, and human resources. 1C:Enterprise can be used to streamline the day-to-day functions in an organization, improving efficiency, productivity, and customer service. It is widely regarded as a leading ERP software system and has been adopted by many companies across industries such as manufacturing, retail, finance, healthcare, and more.",
+ "created_at": "2025-12-06T18:40:51.574444986Z",
+ "response": "1C:Enterprise is a software program that has been developed by the Ukrainian company 1C Company for business management, accounting, and analytics. It was first released in 2009 as an open-source project and later became available to registered users. It offers various features such as financial management, inventory control, sales and marketing, supply chain management, and more. The software is designed to support a wide range of industries and businesses, including manufacturing, retail, and service sectors.",
  "done": true,
  "done_reason": "stop",
  "context": [
@@ -160,28 +160,12 @@
   "***",
   "***",
   "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
   "***"
  ],
- "total_duration": 31449822064,
- "load_duration": 7547696095,
+ "total_duration": 57013258864,
+ "load_duration": 17219086434,
  "prompt_eval_count": 43,
- "prompt_eval_duration": 2800325289,
- "eval_count": 131,
- "eval_duration": 21093698261
+ "prompt_eval_duration": 2725094086,
+ "eval_count": 111,
+ "eval_duration": 37056283820
 }
