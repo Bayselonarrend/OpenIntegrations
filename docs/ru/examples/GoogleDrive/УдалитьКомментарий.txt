@@ -1,5 +1,5 @@
-﻿    Токен         = "ya29.a0ATi6K2uY8n6JcYTuNGrzFcX36FJUFwhFyaGo6-PmkOm0nW-CGqJIU64vS84vYPvvnpvRfmljtw8T2GJJdoIrSu9UPxgD3zsdS9ErV2l9nFGePF7v8AoKtVEXz...";
-    Идентификатор = "1eIaXdN1uuiRmSxjvsm5aLKr3l3xGySnL";
-    ИДКомментария = "AAABwmKYaEQ";
+﻿    Токен         = "ya29.a0Aa7pCA9HmzgZEkq54PPxcOv3YwmxB06X5P1hziYRwJBG39_HYrkw3AnoIOjnPrxnLbowBUPTJfJ1HADjMltLrqmlbkWxku2e1koE6Sd3fLw8WLNBL1VcRwE-G...";
+    Идентификатор = "1gqXlqH6VeY9muzj7ypiGaNvaR6E5SQc_";
+    ИДКомментария = "AAABxCAb3wo";
 
     Результат = OPI_GoogleDrive.УдалитьКомментарий(Токен, Идентификатор, ИДКомментария);
