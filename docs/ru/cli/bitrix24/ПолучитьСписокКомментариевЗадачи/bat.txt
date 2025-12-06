@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьСписокКомментариевЗадачи ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --task "8812" ^
+  --task "8842" ^
   --token "***"

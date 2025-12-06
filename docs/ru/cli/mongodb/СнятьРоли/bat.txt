@@ -1,0 +1,7 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint mongodb СнятьРоли ^
+  --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
+  --user "bayselonarrend" ^
+  --roles "{'role':'newrole','db':'admin'}" ^
+  --db "admin"
