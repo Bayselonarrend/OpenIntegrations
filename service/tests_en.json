@@ -51,6 +51,11 @@
 },
 {
 "lib": "Telegram",
+"name": "SendTextMessage",
+"variant": "Complex"
+},
+{
+"lib": "Telegram",
 "name": "FormKeyboardFromButtonArray",
 "variant": ""
 },
@@ -78,6 +83,16 @@
 "lib": "Telegram",
 "name": "SendImage",
 "variant": "Keyboard collection"
+},
+{
+"lib": "Telegram",
+"name": "SendImage",
+"variant": "Text + Emoji"
+},
+{
+"lib": "Telegram",
+"name": "SendImage",
+"variant": "Complex"
 },
 {
 "lib": "Telegram",

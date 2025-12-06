@@ -798,7 +798,7 @@ EndFunction
 // The user can be specified in one of the following formats:^
 // String: `name of user`^
 // Structure: `{ user: <name>, db: <database> }`^
-// Array: `[ { user: <name>, db: <база data> }, { user: <name>, db: <база data> }, ... ]`
+// Array: `[ { user: <name>, db: <бaзa data> }, { user: <name>, db: <бaзa data> }, ... ]`
 //
 // Parameters:
 // Connection - String, Arbitrary - Connection or connection string - dbc
@@ -1071,7 +1071,7 @@ EndFunction
 // Note
 // Resource can be defined in one of the following formats:^
 // Structure for collection: `{ db: "database", collection: "collection name" }`
-// Structure for toлаwithтера: `{ cluster : true }`
+// Structure for toлawithтерa: `{ cluster : true }`
 //
 // Parameters:
 // Resource - Structure Of KeyAndValue - Privilege resource - res

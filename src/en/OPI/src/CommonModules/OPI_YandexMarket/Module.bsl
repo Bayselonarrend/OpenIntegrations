@@ -190,7 +190,7 @@ EndFunction
 // Gets the list of products of the selected market (campaign)
 //
 // Note
-// Method at API documentation: [Information o productх, that размещены in заданbutм магазandnot](@https://yandex.ru/dev/market/partner-api/doc/ru/reference/assortment/getCampaignOffers)
+// Method at API documentation: [Information o productх, that рaзмещены in зaдaнbutм мaгaзandnot](@https://yandex.ru/dev/market/partner-api/doc/ru/reference/assortment/getCampaignOffers)
 //
 // Parameters:
 // Token - String - Authorization token (Api-Key) - token
