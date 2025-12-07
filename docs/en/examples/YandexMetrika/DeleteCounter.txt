@@ -1,4 +1,4 @@
 ﻿    Token     = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
-    CounterID = "105708252";
+    CounterID = "105715195";
 
     Result = OPI_YandexMetrika.DeleteCounter(Token, CounterID);

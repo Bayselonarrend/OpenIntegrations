@@ -29,7 +29,7 @@ import TabItem from '@theme/TabItem';
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Параметры = ПолучитьПараметрыВК();
 
-    Вариант = "9411";
+    Вариант = "9417";
 
     Результат = OPI_VK.УдалитьВариантСвойстваТовара(Вариант, Параметры);
 ```
@@ -42,7 +42,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk УдалитьВариантСвойстваТовара \
-              --option 9414 \
+              --option 9420 \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -52,7 +52,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk УдалитьВариантСвойстваТовара ^
-              --option 9414 ^
+              --option 9420 ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>

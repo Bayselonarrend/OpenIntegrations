@@ -35,17 +35,17 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    IDЗадачи = "8834";
-    IDСтадии = "3260";
+    IDЗадачи = "8853";
+    IDСтадии = "3267";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Результат = OPI_Bitrix24.ПеренестиЗадачуВСтадиюКанбана(URL, IDЗадачи, IDСтадии);
 
-    IDСтадии = "3262";
+    IDСтадии = "3269";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "0b353469006e9f06006b12e400000001000...";
+    Токен = "fb563569006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПеренестиЗадачуВСтадиюКанбана(URL, IDЗадачи, IDСтадии, , , Токен);
 ```
@@ -57,8 +57,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПеренестиЗадачуВСтадиюКанбана \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8844" \
-              --stage 3266 \
+              --task "8862" \
+              --stage 3272 \
               --token "***"
         ```
     </TabItem>
@@ -67,8 +67,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПеренестиЗадачуВСтадиюКанбана ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8844" ^
-              --stage 3266 ^
+              --task "8862" ^
+              --stage 3272 ^
               --token "***"
         ```
     </TabItem>
@@ -79,13 +79,13 @@ import TabItem from '@theme/TabItem';
 {
  "result": true,
  "time": {
-  "start": 1765042239,
-  "finish": 1765042239.85957,
-  "duration": 0.859572887420654,
+  "start": 1765113811,
+  "finish": 1765113811.84682,
+  "duration": 0.846822023391724,
   "processing": 0,
-  "date_start": "2025-12-06T20:30:39+03:00",
-  "date_finish": "2025-12-06T20:30:39+03:00",
-  "operating_reset_at": 1765042839,
+  "date_start": "2025-12-07T16:23:31+03:00",
+  "date_finish": "2025-12-07T16:23:31+03:00",
+  "operating_reset_at": 1765114411,
   "operating": 0
  }
 }

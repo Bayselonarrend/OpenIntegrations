@@ -37,15 +37,15 @@ import TabItem from '@theme/TabItem';
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
-    IDПодразделения = "3006";
+    IDПодразделения = "3013";
     IDРодителя      = 7;
 
     Результат = OPI_Bitrix24.ИзменитьПодразделение(URL, IDПодразделения, , IDРодителя);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "0b353469006e9f06006b12e400000001000...";
+    Токен = "fb563569006e9f06006b12e400000001000...";
 
-    IDПодразделения = "3008";
+    IDПодразделения = "3015";
     Наименование    = "Новое подразделение";
     IDРодителя      = 1;
     IDРуководителя  = 10;
@@ -65,7 +65,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ИзменитьПодразделение \
               --url "b24-ar17wx.bitrix24.by" \
-              --depid 3012 \
+              --depid 3018 \
               --title "Новое подразделение" \
               --parentid 1 \
               --headid 10 \
@@ -77,7 +77,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ИзменитьПодразделение ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --depid 3012 ^
+              --depid 3018 ^
               --title "Новое подразделение" ^
               --parentid 1 ^
               --headid 10 ^
@@ -91,14 +91,14 @@ import TabItem from '@theme/TabItem';
 {
  "result": true,
  "time": {
-  "start": 1765042548,
-  "finish": 1765042549.04596,
-  "duration": 1.04596209526062,
-  "processing": 1,
-  "date_start": "2025-12-06T20:35:48+03:00",
-  "date_finish": "2025-12-06T20:35:49+03:00",
-  "operating_reset_at": 1765043148,
-  "operating": 0.178485155105591
+  "start": 1765114119,
+  "finish": 1765114119.5713,
+  "duration": 0.571295976638794,
+  "processing": 0,
+  "date_start": "2025-12-07T16:28:39+03:00",
+  "date_finish": "2025-12-07T16:28:39+03:00",
+  "operating_reset_at": 1765114719,
+  "operating": 0.211632013320923
  }
 }
 ```

@@ -1,5 +1,5 @@
 ﻿    Token   = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Page    = "2c182aa7-fc4e-81ad-a9f6-ee86731f28ae";
+    Page    = "2c282aa7-fc4e-8163-9f10-d0ece6955133";
     Icon    = "https://hut.openintegrations.dev/test_data/picture.jpg";
     Cover   = "https://hut.openintegrations.dev/test_data/picture2.jpg";
     Archive = False;
