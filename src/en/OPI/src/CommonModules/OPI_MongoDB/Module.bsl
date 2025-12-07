@@ -516,7 +516,7 @@ Function GetDocuments(Val Connection
         Return Connector;
     EndIf;
 
-    Cursor = GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
+    Cursor = GetCursor(Connector, Collection, Base, Filter, Sort, Parameters);
 
     If Not Cursor["result"] Then
         Return Cursor;
@@ -529,7 +529,7 @@ Function GetDocuments(Val Connection
 
     While ContinueGetting Do
 
-        Package = GetDocumentBatch(Connection, Collection, CursorID, Base);
+        Package = GetDocumentBatch(Connector, Collection, CursorID, Base);
         Success = Package["result"];
         Data    = Package["data"];
 
