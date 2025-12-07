@@ -504,6 +504,18 @@ Function GetDocuments(Val Connection
     , Val Sort = Undefined
     , Val Parameters = Undefined) Export
 
+    If IsConnector(Connection) Then
+        CloseConnection = False;
+        Connector       = Connection;
+    Else
+        CloseConnection = True;
+        Connector       = CreateConnection(Connection);
+    EndIf;
+
+    If Not IsConnector(Connector) Then
+        Return Connector;
+    EndIf;
+
     Cursor = GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
 
     If Not Cursor["result"] Then
@@ -538,6 +550,10 @@ Function GetDocuments(Val Connection
         EndDo;
 
     EndDo;
+
+    If CloseConnection Then
+        CloseConnection(Connector);
+    EndIf;
 
     Result = New Map;
     Result.Insert("result", True);
