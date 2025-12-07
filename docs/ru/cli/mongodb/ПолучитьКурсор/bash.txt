@@ -1,0 +1,9 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint mongodb ПолучитьКурсор \
+  --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" \
+  --coll "new_collection" \
+  --db "main" \
+  --query "{'stringField':'Текст'}" \
+  --sort "{'doubleField':'-1'}" \
+  --params "{'limit':'2','batchSize':'1'}"
