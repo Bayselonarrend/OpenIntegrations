@@ -33351,15 +33351,7 @@ Procedure MongoDB_GetCursor(FunctionParameters)
     Sort       = New Structure("doubleField", -1);
     Parameters = New Structure("limit,batchSize", 2, 1);
 
-    Options = New Structure;
-    Options.Insert("dbc", Connection);
-    Options.Insert("coll", Collection);
-    Options.Insert("db", Base);
-    Options.Insert("query", Filter);
-    Options.Insert("sort", Sort);
-    Options.Insert("params", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetCursor", Options);
+    Result = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
 
     // END
 
@@ -33370,15 +33362,7 @@ Procedure MongoDB_GetCursor(FunctionParameters)
     Sort = New Structure("price", 1);
     Parameters = New Structure("limit,batchSize", 8, 3);
 
-    Options = New Structure;
-    Options.Insert("dbc", Connection);
-    Options.Insert("coll", Collection);
-    Options.Insert("db", Base);
-    Options.Insert("query", Filter);
-    Options.Insert("sort", Sort);
-    Options.Insert("params", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetCursor", Options);
+    Result = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
 
     Process(Result, "MongoDB", "GetCursor", 1);
 
@@ -33387,15 +33371,7 @@ Procedure MongoDB_GetCursor(FunctionParameters)
     Sort = New Structure("rating", -1);
     Parameters = New Structure("batchSize", 2);
 
-    Options = New Structure;
-    Options.Insert("dbc", Connection);
-    Options.Insert("coll", Collection);
-    Options.Insert("db", Base);
-    Options.Insert("query", Filter);
-    Options.Insert("sort", Sort);
-    Options.Insert("params", Parameters);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetCursor", Options);
+    Result = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
 
     Process(Result, "MongoDB", "GetCursor", 2);
 
@@ -33426,15 +33402,7 @@ Procedure MongoDB_GetDocumentBatch(FunctionParameters)
     Sort       = New Structure("doubleField", -1);
     Parameters = New Structure("limit,batchSize", 2, 1);
 
-    Options = New Structure;
-    Options.Insert("dbc", Connection);
-    Options.Insert("coll", Collection);
-    Options.Insert("db", Base);
-    Options.Insert("query", Filter);
-    Options.Insert("sort", Sort);
-    Options.Insert("params", Parameters);
-
-    Cursor = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GetCursor", Options);
+    Cursor = OPI_MongoDB.GetCursor(Connection, Collection, Base, Filter, Sort, Parameters);
 
     If Not Cursor["result"] Then
         Raise Cursor["error"];
