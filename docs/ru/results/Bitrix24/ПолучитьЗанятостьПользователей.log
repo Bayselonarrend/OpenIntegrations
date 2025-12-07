@@ -2,12 +2,12 @@
  "result": {
   "1": [
    {
-    "ID": "3138",
+    "ID": "3152",
     "NAME": "[Под вопросом]",
-    "DATE_FROM": "07.12.2025 20:38:00",
-    "DATE_TO": "07.12.2025 21:38:00",
-    "DATE_FROM_TS_UTC": "1765118280",
-    "DATE_TO_TS_UTC": "1767724680",
+    "DATE_FROM": "08.12.2025 16:31:00",
+    "DATE_TO": "08.12.2025 17:31:00",
+    "DATE_FROM_TS_UTC": "1765189860",
+    "DATE_TO_TS_UTC": "1767796260",
     "~USER_OFFSET_FROM": 0,
     "~USER_OFFSET_TO": 0,
     "DT_SKIP_TIME": "N",
@@ -18,12 +18,12 @@
     "EVENT_TYPE": null
    },
    {
-    "ID": "3142",
+    "ID": "3156",
     "NAME": "[Под вопросом]",
-    "DATE_FROM": "07.12.2025 20:38:00",
-    "DATE_TO": "07.12.2025 21:38:00",
-    "DATE_FROM_TS_UTC": "1765118280",
-    "DATE_TO_TS_UTC": "1767724680",
+    "DATE_FROM": "08.12.2025 16:31:00",
+    "DATE_TO": "08.12.2025 17:31:00",
+    "DATE_FROM_TS_UTC": "1765189860",
+    "DATE_TO_TS_UTC": "1767796260",
     "~USER_OFFSET_FROM": 0,
     "~USER_OFFSET_TO": 0,
     "DT_SKIP_TIME": "N",
@@ -36,13 +36,13 @@
   ]
  },
  "time": {
-  "start": 1765042713,
-  "finish": 1765042713.65262,
-  "duration": 0.652620077133179,
+  "start": 1765114276,
+  "finish": 1765114276.1935,
+  "duration": 0.193499088287354,
   "processing": 0,
-  "date_start": "2025-12-06T20:38:33+03:00",
-  "date_finish": "2025-12-06T20:38:33+03:00",
-  "operating_reset_at": 1765043313,
+  "date_start": "2025-12-07T16:31:16+03:00",
+  "date_finish": "2025-12-07T16:31:16+03:00",
+  "operating_reset_at": 1765114876,
   "operating": 0
  }
 }

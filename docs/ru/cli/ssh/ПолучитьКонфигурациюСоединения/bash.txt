@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint ssh ПолучитьКонфигурациюСоединения \
-  --set "{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\cxdyjnac.rq1.tmp'}" \
+  --set "{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\0p4fvxpj.4ka.tmp'}" \
   --proxy "{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}"
