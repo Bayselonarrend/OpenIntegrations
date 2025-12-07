@@ -5,7 +5,7 @@
     Result = OPI_VKTeams.SendTextMessage(Token, ChatID, Text);
 
     ChatID  = "689203963@chat.agent";
-    ReplyID = "7580728259394945750";
+    ReplyID = "7581046984623014652";
     Text    = "<b>Bold text</b>";
     Markup  = "HTML";
 
