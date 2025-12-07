@@ -1,11 +1,11 @@
 ﻿{
  "kind": "calendar#event",
- "etag": "\"3530225444456318\"",
- "id": "6ein7tj2ima5v3qi1m3e1qjn0k",
+ "etag": "\"3530271673902398\"",
+ "id": "le5v3un76bfco859qgiqqmr9is",
  "status": "cancelled",
- "htmlLink": "https://www.google.com/calendar/event?eid=NmVpbjd0ajJpbWE1djNxaTFtM2UxcWpuMGsgMTNmMzQ5OWMxYmFhNjA2MTRjMDI0MzhiYzAzZTBmYzIzZjE2NWY2MGM3Y2Q3ZmU2YWQxNmZhMzgzYTNjYTM3NEBn",
- "created": "2025-12-07T13:05:19Z",
- "updated": "2025-12-07T13:05:22.228Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=bGU1djN1bjc2YmZjbzg1OXFnaXFxbXI5aXMgYjc4NTQxMWI4MzIzMzE5MWM3MmRmNjk4NGFlYTg2MTY5ZWI0ZDUzYzg3NTE3M2Y3OGIxMGUzOGYyNTg0OGE5YUBn",
+ "created": "2025-12-07T19:30:34Z",
+ "updated": "2025-12-07T19:30:36.951Z",
  "summary": "Новое событие",
  "description": "Новое описание события",
  "location": "В офисе",
@@ -16,14 +16,14 @@
   "email": "bayselonarrend@gmail.com"
  },
  "start": {
-  "dateTime": "2025-12-07T19:05:18+03:00",
+  "dateTime": "2025-12-08T01:30:32+03:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2025-12-07T20:05:18+03:00",
+  "dateTime": "2025-12-08T02:30:32+03:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "6ein7tj2ima5v3qi1m3e1qjn0k@google.com",
+ "iCalUID": "le5v3un76bfco859qgiqqmr9is@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true

@@ -1,21 +1,21 @@
 ﻿{
- "path": "disk:/39a7b7a7-5659-475b-be49-fcbdca083f3c.png",
+ "path": "disk:/ef868d53-6cf0-4fb3-9f02-7b1949173fde.png",
  "type": "file",
- "name": "39a7b7a7-5659-475b-be49-fcbdca083f3c.png",
- "created": "2025-12-07T15:59:42+03:00",
- "modified": "2025-12-07T16:00:03+03:00",
+ "name": "ef868d53-6cf0-4fb3-9f02-7b1949173fde.png",
+ "created": "2025-12-07T22:27:32+03:00",
+ "modified": "2025-12-07T22:27:54+03:00",
  "size": 2114023,
  "mime_type": "multipart",
  "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
  "sha256": "89f8eb42a35208a17c85036e17237b0aa0657e1841efa6171dc5acbc0dea9e18",
  "media_type": "image",
- "resource_id": "1573541518:da5ded448d9102ede6375d6f69400d271dbb0cf988ea38b6925b2f44cb7ab408",
- "revision": 1765112403333547,
+ "resource_id": "1573541518:9719170a489cded74823d13960217fd461840c9a759be495ab7b7e00a634157a",
+ "revision": 1765135674647778,
  "comment_ids": {
-  "public_resource": "1573541518:da5ded448d9102ede6375d6f69400d271dbb0cf988ea38b6925b2f44cb7ab408",
-  "private_resource": "1573541518:da5ded448d9102ede6375d6f69400d271dbb0cf988ea38b6925b2f44cb7ab408"
+  "public_resource": "1573541518:9719170a489cded74823d13960217fd461840c9a759be495ab7b7e00a634157a",
+  "private_resource": "1573541518:9719170a489cded74823d13960217fd461840c9a759be495ab7b7e00a634157a"
  },
  "exif": {},
  "antivirus_status": "clean",
- "file": "https://downloader.disk.yandex.ru/disk/a87be8211a864342fc26c40724422d3c42e004a1024295a6ff6f8de0a1003c12/6935b293/Kdpe3dFisZLPovVA4r-aBmpkby3AOQiLsayEHYapOMw2ylFGSbZZrsWtGPTvHxG_-QDrqSGFBOOsS3b3gKT1zA%3D%3D?uid=1573541518&filename=39a7b7a7-5659-475b-be49-fcbdca083f3c.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v3&etag=9e0176f87f6565a22f78e0f9b39a4d78"
+ "file": "https://downloader.disk.yandex.ru/disk/1edfbbb341b9d1b94260fcb233a9d59f9c47a986905ba14ccd43b010554b73a8/69360d7b/Kdpe3dFisZLPovVA4r-aBmpkby3AOQiLsayEHYapOMw2ylFGSbZZrsWtGPTvHxG_-QDrqSGFBOOsS3b3gKT1zA%3D%3D?uid=1573541518&filename=ef868d53-6cf0-4fb3-9f02-7b1949173fde.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v3&etag=9e0176f87f6565a22f78e0f9b39a4d78"
 }

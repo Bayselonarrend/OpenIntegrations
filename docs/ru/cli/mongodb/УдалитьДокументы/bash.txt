@@ -1,0 +1,7 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint mongodb УдалитьДокументы \
+  --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" \
+  --coll "new_collection" \
+  --deletes "{'q':{'stringField':'Текст','doubleField':'999'},'limit':'1'}" \
+  --db "main"

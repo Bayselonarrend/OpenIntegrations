@@ -2,7 +2,7 @@
 
 oint s3 ПолучитьСсылкуСкачиванияОбъекта \
   --name "picture.jpg" \
-  --bucket "opi-dirbucket6" \
+  --bucket "opi-gpbucket6" \
   --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
   --expires 7200 \
-  --dir true
+  --dir false

@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение ^
   --token "***" ^
   --chatid "***" ^
-  --file "C:\Users\bayse\AppData\Local\Temp\phrlfomc.mae"
+  --file "C:\Users\bayse\AppData\Local\Temp\d50u032q.l13"
