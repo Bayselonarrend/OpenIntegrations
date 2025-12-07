@@ -1,0 +1,9 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint mongodb ПолучитьДокументы ^
+  --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
+  --coll "new_collection" ^
+  --db "main" ^
+  --query "{'category':'книги'}" ^
+  --sort "{'price':'-1'}" ^
+  --params "{'projection':{'productName':'1','price':'1','rating':'1'}}"

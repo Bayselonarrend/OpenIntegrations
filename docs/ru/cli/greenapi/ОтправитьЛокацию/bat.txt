@@ -4,4 +4,4 @@ oint greenapi ОтправитьЛокацию ^
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
   --chat "***" ^
   --loc "{'latitude':'53.908522','longitude':'27.574821'}" ^
-  --quoted "3EB0DB1DB153964439536E"
+  --quoted "3EB0A0DC6D06323E1FAAA5"
