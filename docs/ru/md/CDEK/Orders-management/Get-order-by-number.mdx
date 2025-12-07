@@ -33,9 +33,9 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUwMjk1OTEsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUxMDM3OTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
 
-    НомерЗаказа = "353ecb75-5579-4336-ac2f-0e2713f631ca";
+    НомерЗаказа = "3283ed94-9647-4693-825a-82ac3839315e";
     Результат   = OPI_CDEK.ПолучитьЗаказПоНомеру(Токен, НомерЗаказа, Истина, Истина);
 ```
     
@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьЗаказПоНомеру \
               --token "***" \
-              --number "4b37f46a-3f21-4af3-b9e3-7ef3e4572691" \
+              --number "8c99f86b-6ce1-4618-ade5-5e5bd28b128d" \
               --internal true \
               --testapi "***"
         ```
@@ -56,7 +56,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьЗаказПоНомеру ^
               --token "***" ^
-              --number "4b37f46a-3f21-4af3-b9e3-7ef3e4572691" ^
+              --number "8c99f86b-6ce1-4618-ade5-5e5bd28b128d" ^
               --internal true ^
               --testapi "***"
         ```
@@ -67,34 +67,28 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "1dd8c57e-a50d-43fd-9f95-dfb136e284c0",
+  "uuid": "73d91a4f-83c1-4957-b136-3bdf7a7306af",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1106688401",
-  "number": "4b37f46a-3f21-4af3-b9e3-7ef3e4572691",
+  "number": "8c99f86b-6ce1-4618-ade5-5e5bd28b128d",
   "tariff_code": 139,
   "comment": "Новый заказ",
-  "items_cost_currency": "RUB",
-  "recipient_currency": "RUB",
   "delivery_recipient_cost": {
-   "value": 50,
-   "vat_sum": 0
+   "value": 50
   },
   "delivery_recipient_cost_adv": [
    {
     "threshold": 200,
-    "sum": 3000,
-    "vat_sum": 0
+    "sum": 3000
    }
   ],
   "sender": {
-   "company": "Тестирование Интеграции ИМ",
    "name": "Петров Петр",
    "contragent_type": "LEGAL_ENTITY",
    "phones": [
     {
-     "number": "79529287654"
+     "number": "+79529287654"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -103,11 +97,10 @@ import TabItem from '@theme/TabItem';
    "name": "Тестирование Интеграции ИМ"
   },
   "recipient": {
-   "company": "Иванов Иван",
    "name": "Иванов Иван",
    "phones": [
     {
-     "number": "79134637228"
+     "number": "+79134637228"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -142,78 +135,59 @@ import TabItem from '@theme/TabItem';
   },
   "services": [
    {
-    "code": "INSURANCE",
-    "parameter": "600.00",
-    "sum": 4.5,
-    "total_sum": 5.4,
-    "discount_percent": 0,
-    "discount_sum": 0,
-    "vat_rate": 20,
-    "vat_sum": 0.9
-   },
-   {
     "code": "SECURE_PACKAGE_A2",
-    "parameter": "10",
-    "sum": 500,
-    "total_sum": 600,
-    "discount_percent": 0,
-    "discount_sum": 0,
-    "vat_rate": 20,
-    "vat_sum": 100
+    "parameter": "10"
    }
   ],
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001338254",
     "weight": 4000,
     "length": 10,
     "width": "***",
-    "weight_volume": 200,
-    "weight_calc": 4000,
     "height": 10,
-    "comment": "приложена опись",
+    "comment": "Упаковка",
     "items": [
      {
       "name": "Товар",
       "ware_key": "***",
       "payment": {
-       "value": 3000,
-       "vat_sum": 0
+       "value": 3000
       },
       "weight": 700,
-      "weight_gross": 700,
       "amount": 2,
-      "delivery_amount": 0,
       "url": "www.item.ru",
       "return_item_detail": {},
       "excise": false,
       "cost": 300
      }
-    ],
-    "package_id": "21aaca7f-cc2c-404a-b64c-0e109988b6ff"
+    ]
    }
   ],
   "statuses": [
    {
-    "code": "CREATED",
-    "name": "Создан",
-    "date_time": "2025-12-06T20:43:28+03:00",
-    "city": "Офис СДЭК",
-    "deleted": false
-   },
-   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-12-06T20:43:27+03:00",
+    "date_time": "2025-12-07T16:35:51+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
   ],
   "is_client_return": "***",
-  "delivery_mode": "1",
-  "has_reverse_order": false,
   "delivery_detail": {
-   "delivery_sum": 1315,
-...
+   "total_sum": 0,
+   "payment_info": []
+  },
+  "calls": {}
+ },
+ "requests": [
+  {
+   "request_uuid": "5d3a04ba-7da8-4354-9d1f-bf89042ac594",
+   "type": "CREATE",
+   "date_time": "2025-12-07T16:35:52+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
 ```
