@@ -1,6 +1,6 @@
 oint vkteams ОтправитьФайл ^
   --token "***" ^
   --chatid "***" ^
-  --file "C:\Users\bayse\AppData\Local\Temp\apnjlyaj.1n3" ^
+  --file "C:\Users\bayse\AppData\Local\Temp\snm1salv.qpt" ^
   --text "Подпись к файлу" ^
   --filename "ВажныйДокумент.docx"
