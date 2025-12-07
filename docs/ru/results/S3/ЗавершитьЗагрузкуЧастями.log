@@ -2,24 +2,24 @@
  "status": 200,
  "response": {
   "CompleteMultipartUploadResult": {
-   "Location": "https://storage-155.s3hoster.by/opi-dirbucket6/fileChunked.mp3",
-   "Bucket": "opi-dirbucket6",
+   "Location": "https://opi-gpbucket6.storage-155.s3hoster.by/fileChunked.mp3",
+   "Bucket": "opi-gpbucket6",
    "Key": "***",
    "ETag": "\"22c09aeeb42144b375de8a4c1a1bb573-2\""
   }
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Sun, 07 Dec 2025 13:49:45 GMT",
+  "Date": "Sun, 07 Dec 2025 20:24:35 GMT",
   "ETag": "\"22c09aeeb42144b375de8a4c1a1bb573-2\"",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
-  "X-Amz-Request-Id": "187EF315E874B787",
+  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
+  "X-Amz-Request-Id": "187F08A1519EDF31",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
-  "Content-Length": "347",
+  "Content-Length": "345",
   "Content-Type": "application/xml"
  }
 }

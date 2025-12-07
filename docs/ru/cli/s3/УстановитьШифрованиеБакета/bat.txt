@@ -3,5 +3,5 @@
 oint s3 УстановитьШифрованиеБакета ^
   --name "opi-dirbucket6" ^
   --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-  --conf "C:\Users\bayse\AppData\Local\Temp\3jqv2sme.gr4.xml" ^
+  --conf "C:\Users\bayse\AppData\Local\Temp\ie3hej3z.gzx.xml" ^
   --dir true
