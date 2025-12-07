@@ -1,5 +1,5 @@
 ﻿    Токен        = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Страница     = "2c182aa7-fc4e-81ad-a9f6-ee86731f28ae";
+    Страница     = "2c282aa7-fc4e-8163-9f10-d0ece6955133";
     Иконка       = "https://hut.openintegrations.dev/test_data/picture.jpg";
     Обложка      = "https://hut.openintegrations.dev/test_data/picture2.jpg";
     Архивировать = Ложь;

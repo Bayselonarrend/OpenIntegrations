@@ -1,12 +1,12 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID = "3434";
+    ChatID = "3441";
 
     Image = "https://hut.openintegrations.dev/test_data/picture2.jpg";
 
     Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "0b353469006e9f06006b12e400000001000...";
-    ChatID = "3436";
+    Token  = "fb563569006e9f06006b12e400000001000...";
+    ChatID = "3443";
 
     Result = OPI_Bitrix24.ChangeChatPicture(URL, ChatID, Image, Token);

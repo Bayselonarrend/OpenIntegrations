@@ -34,8 +34,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен        = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUwMjk1OTEsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID         = "7634fbe3-2906-4e3e-816a-7d2eb5dc785f";
+    Токен        = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUxMDM3OTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID         = "3ae84401-4b85-4b64-a9b4-cb599fa2ea0a";
     ПВЗ          = "NSK27";
     ДатаПередачи = OPI_Инструменты.ПолучитьТекущуюДату() + 60 * 60 * 24;
 
@@ -49,8 +49,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek СоздатьПреалерт \
               --token "***" \
-              --uuids "1dd8c57e-a50d-43fd-9f95-dfb136e284c0" \
-              --date "2025-12-07T20:44:00.4949758" \
+              --uuids "73d91a4f-83c1-4957-b136-3bdf7a7306af" \
+              --date "2025-12-08T16:36:23.2567304" \
               --point "NSK27" \
               --testapi "***"
         ```
@@ -60,8 +60,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek СоздатьПреалерт ^
               --token "***" ^
-              --uuids "1dd8c57e-a50d-43fd-9f95-dfb136e284c0" ^
-              --date "2025-12-07T20:44:00.4949758" ^
+              --uuids "73d91a4f-83c1-4957-b136-3bdf7a7306af" ^
+              --date "2025-12-08T16:36:23.2567304" ^
               --point "NSK27" ^
               --testapi "***"
         ```
@@ -72,13 +72,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "0c29282d-2a09-4c06-b474-0784a5b52ca6"
+  "uuid": "5a2b3fa5-3b37-4e20-97a9-112dce7236ca"
  },
  "requests": [
   {
-   "request_uuid": "7445b4a9-2162-489f-b5f3-e4a966217e62",
+   "request_uuid": "a2f52c8e-e3ba-4ba1-a90b-b7bb9f8abc7a",
    "type": "CREATE",
-   "date_time": "2025-12-06T20:44:02+03:00",
+   "date_time": "2025-12-07T16:36:24+03:00",
    "state": "ACCEPTED"
   }
  ],

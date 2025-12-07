@@ -1,6 +1,6 @@
 ﻿    Parameters       = GetVKParameters();
     ImageDescription = "AutoTestImage";
-    AlbumID          = "310959725";
+    AlbumID          = "310962574";
 
     Image = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, File path or Binary Data
 

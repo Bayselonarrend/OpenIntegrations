@@ -596,7 +596,7 @@ Function DeleteDocuments(Val Connection
 
 EndFunction
 
-// Get cursor
+// Get cursor !NOCLI
 // Gets a cursor for batch retrieval of collection documents
 //
 // Parameters:
@@ -637,7 +637,7 @@ Function GetCursor(Val Connection
 
 EndFunction
 
-// Get document batch
+// Get document batch !NOCLI
 // Gets the next batch of cursor documents
 //
 // Parameters:
