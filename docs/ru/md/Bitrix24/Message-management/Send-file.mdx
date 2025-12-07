@@ -35,7 +35,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЧата   = "3434";
+    IDЧата   = "3441";
     Файл     = "https://hut.openintegrations.dev/test_data/document.docx"; // Двоичные данные, URL или путь к файлу
     Описание = "Очень важный файл";
 
@@ -48,8 +48,8 @@ import TabItem from '@theme/TabItem';
     Результат = OPI_Bitrix24.ОтправитьФайл(URL, IDЧата, IDФайла, Описание);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Токен  = "0b353469006e9f06006b12e400000001000...";
-    IDЧата = "3436";
+    Токен  = "fb563569006e9f06006b12e400000001000...";
+    IDЧата = "3443";
 
     Каталог    = OPI_Bitrix24.ПолучитьКаталогФайловЧата(URL, IDЧата, Токен);
     IDКаталога = Каталог["result"]["ID"];
@@ -68,7 +68,7 @@ import TabItem from '@theme/TabItem';
             oint bitrix24 ОтправитьФайл \
               --url "b24-ar17wx.bitrix24.by" \
               --chat "***" \
-              --fileid 47350 \
+              --fileid 47456 \
               --description "Очень важный файл" \
               --token "***"
         ```
@@ -79,7 +79,7 @@ import TabItem from '@theme/TabItem';
             oint bitrix24 ОтправитьФайл ^
               --url "b24-ar17wx.bitrix24.by" ^
               --chat "***" ^
-              --fileid 47350 ^
+              --fileid 47456 ^
               --description "Очень важный файл" ^
               --token "***"
         ```
@@ -91,8 +91,8 @@ import TabItem from '@theme/TabItem';
 {
  "result": {
   "FILES": {
-   "upload47350": {
-    "id": 47350,
+   "upload47456": {
+    "id": 47456,
     "chatId": "***",
     "date": {},
     "type": "file",
@@ -105,20 +105,20 @@ import TabItem from '@theme/TabItem';
     "authorId": 1,
     "authorName": "Антон Титовец",
     "urlPreview": "",
-    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47350&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
-    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47350&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
+    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47456&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
+    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47456&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
     "viewerAttrs": {
      "viewer": "",
      "viewerType": "cloud-document",
-     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47350&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
+     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47456&exact=N&fileName=%D0%92%D0%B0%D0%B6%D0%BD%D1%8B%D0%B9%20%D0%B4%D0%BE%D0%BA%D1%83%D0%BC%D0%B5%D0%BD%D1%82.docx",
      "viewerTypeClass": "BX.Disk.Viewer.UnifiedLinkItem",
      "viewerSeparateItem": true,
      "viewerExtension": "disk.viewer.unified-link-item",
-     "objectId": "47350",
+     "objectId": "47456",
      "imChatId": "***",
      "title": "Важный документ.docx",
-     "unifiedLink": "https://b24-ar17wx.bitrix24.by/disk/file/O28G5fZMEa6e1i4LkIHG",
-     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"47350\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
+     "unifiedLink": "https://b24-ar17wx.bitrix24.by/disk/file/CK5ymV0YYoOt4bReY4IU",
+     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"47456\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
     },
     "mediaUrl": {
      "preview": {
@@ -134,8 +134,8 @@ import TabItem from '@theme/TabItem';
    "***"
   ],
   "FILE_MODELS": {
-   "upload47350": {
-    "id": 47350,
+   "upload47456": {
+    "id": 47456,
     "name": "Важный документ.docx",
     "createTime": {},
     "updateTime": {},
@@ -143,34 +143,34 @@ import TabItem from '@theme/TabItem';
     "code": null,
     "xmlId": null,
     "storageId": 6,
-    "realObjectId": 47350,
-    "parentId": 47346,
+    "realObjectId": 47456,
+    "parentId": 47452,
     "deletedType": 0,
     "createdBy": "1",
     "updatedBy": "1",
     "deletedBy": "0",
-    "uniqueCode": "O28G5fZMEa6e1i4LkIHG",
+    "uniqueCode": "CK5ymV0YYoOt4bReY4IU",
     "typeFile": 4,
     "globalContentVersion": 2,
-    "fileId": 32084,
+    "fileId": 32158,
     "size": 24071,
-    "etag": "70bd30975ce3189c6d4d36f027a934b3",
+    "etag": "3bb19a2554f0b138509bce1e3aeedebe",
     "links": {
-     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=47350",
-     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=47350&action=showObjectInGrid&ncc=1"
+     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=47456",
+     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=47456&action=showObjectInGrid&ncc=1"
     }
    }
   },
-  "MESSAGE_ID": 68634
+  "MESSAGE_ID": 68812
  },
  "time": {
-  "start": 1765042469,
-  "finish": 1765042469.18994,
-  "duration": 0.189937114715576,
+  "start": 1765114042,
+  "finish": 1765114042.25626,
+  "duration": 0.256263017654419,
   "processing": 0,
-  "date_start": "2025-12-06T20:34:29+03:00",
-  "date_finish": "2025-12-06T20:34:29+03:00",
-  "operating_reset_at": 1765043069,
+  "date_start": "2025-12-07T16:27:22+03:00",
+  "date_finish": "2025-12-07T16:27:22+03:00",
+  "operating_reset_at": 1765114642,
   "operating": 0
  }
 }

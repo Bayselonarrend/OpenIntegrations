@@ -1,6 +1,6 @@
 ﻿    Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "461699897";
     ChannelID = "@testsichee";
-    MessageID = "22962";
+    MessageID = "23007";
 
     Result = OPI_Telegram.ForwardMessage(Token, MessageID, ChannelID, ChatID);

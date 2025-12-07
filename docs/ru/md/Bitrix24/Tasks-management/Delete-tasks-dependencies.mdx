@@ -34,20 +34,20 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    IDИсточника = "8828";
-    IDПриемника = "8830";
+    IDИсточника = "8847";
+    IDПриемника = "8849";
     ТипСвязи    = 0;
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Результат = OPI_Bitrix24.УдалитьЗависимостьЗадач(URL, IDИсточника, IDПриемника, ТипСвязи);
 
-    IDИсточника = "8830";
-    IDПриемника = "8828";
+    IDИсточника = "8849";
+    IDПриемника = "8847";
     ТипСвязи    = 2;
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "0b353469006e9f06006b12e400000001000...";
+    Токен = "fb563569006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.УдалитьЗависимостьЗадач(URL, IDИсточника, IDПриемника, ТипСвязи, Токен);
 ```
@@ -59,8 +59,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 УдалитьЗависимостьЗадач \
               --url "b24-ar17wx.bitrix24.by" \
-              --taskfrom "8840" \
-              --taskto "8838" \
+              --taskfrom "8858" \
+              --taskto "8856" \
               --linktype 2 \
               --token "***"
         ```
@@ -70,8 +70,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 УдалитьЗависимостьЗадач ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --taskfrom "8840" ^
-              --taskto "8838" ^
+              --taskfrom "8858" ^
+              --taskto "8856" ^
               --linktype 2 ^
               --token "***"
         ```
@@ -83,13 +83,13 @@ import TabItem from '@theme/TabItem';
 {
  "result": [],
  "time": {
-  "start": 1765041896,
-  "finish": 1765041896.47328,
-  "duration": 0.473274946212769,
+  "start": 1765113475,
+  "finish": 1765113475.15837,
+  "duration": 0.158370971679688,
   "processing": 0,
-  "date_start": "2025-12-06T20:24:56+03:00",
-  "date_finish": "2025-12-06T20:24:56+03:00",
-  "operating_reset_at": 1765042496,
+  "date_start": "2025-12-07T16:17:55+03:00",
+  "date_finish": "2025-12-07T16:17:55+03:00",
+  "operating_reset_at": 1765114075,
   "operating": 0
  }
 }
