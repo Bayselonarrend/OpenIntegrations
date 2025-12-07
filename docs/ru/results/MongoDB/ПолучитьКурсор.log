@@ -4,7 +4,7 @@
   "cursor": {
    "firstBatch": [
     {
-     "_id": "6935a4da9402ea890b5130f4",
+     "_id": "6935b53e9402ea890b513352",
      "stringField": "Текст",
      "oidField": "63ceed18f71dda7d8cf21e8e",
      "jsField": "const result = [1, 2, 3].map(x => x * 2).filter(x => x > 3);",
@@ -14,7 +14,7 @@
      "doubleField": 124.456,
      "boolField": true,
      "dateField": "2025-11-15T10:55:41Z",
-     "tsField": "Timestamp(1765134088, 0)",
+     "tsField": "Timestamp(1765138284, 0)",
      "regexpField": "/[a-z]+@[a-z]+\\.[a-z]+/i",
      "binaryField": {
       "__B64_BINARY__": "0KLQtdC60YHRgg=="
@@ -32,7 +32,7 @@
      ]
     }
    ],
-   "id": 5442630259543428474,
+   "id": 8666392472303311748,
    "ns": "main.new_collection"
   },
   "ok": 1
