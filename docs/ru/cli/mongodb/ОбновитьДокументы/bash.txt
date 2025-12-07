@@ -1,0 +1,7 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint mongodb ОбновитьДокументы \
+  --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" \
+  --coll "new_collection" \
+  --updates "{'q':{'stringField':'Текст','doubleField':{'__4gte':'100','__4lte':'150'}},'u':{'__4set':{'doubleField':'999'}},'multi':true,'upsert':false}" \
+  --db "main"
