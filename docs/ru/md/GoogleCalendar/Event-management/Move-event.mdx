@@ -29,10 +29,10 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен   = "ya29.a0Aa7pCA9HmzgZEkq54PPxcOv3YwmxB06X5P1hziYRwJBG39_HYrkw3AnoIOjnPrxnLbowBUPTJfJ1HADjMltLrqmlbkWxku2e1koE6Sd3fLw8WLNBL1VcRwE-G...";
-    Событие = "0os8mqpd154kr17f522m3ttp98";
+    Токен   = "ya29.a0Aa7pCA8bot9XU4KMtkCAXIoQSq7kc5tvbdIy8tPMA-RiXX8fMT2c_gWk5JNmVN6UcUOrwdkD1Om1ZMu5UtLz3gpC0NRoKxfRGaGcjScSEk9hl1h2Uew-mk5Ao...";
+    Событие = "ukudd6gb9d09i2800nfct33k24";
 
-    КалендарьИсточник = "e6c00c8dd7007474d97d164f337dfdab0da5dcd9091343dd52ecbb8c44036490@group.calendar.google.com";
+    КалендарьИсточник = "becf9f2918fa839f8b073f8b0e538f698be87bb73868621cba843f3756e66981@group.calendar.google.com";
     КалендарьПриемник = "bayselonarrend@gmail.com";
 
     Результат = OPI_GoogleCalendar.ПереместитьСобытие(Токен, КалендарьИсточник, КалендарьПриемник, Событие);
@@ -45,9 +45,9 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint gcalendar ПереместитьСобытие \
               --token "***" \
-              --from "f5a589c69f01bb516e3989529fdada2d1190fece0e5b21a0994770ea92168e63@group.calendar.google.com" \
+              --from "13f3499c1baa60614c02438bc03e0fc23f165f60c7cd7fe6ad16fa383a3ca374@group.calendar.google.com" \
               --to "bayselonarrend@gmail.com" \
-              --event "28uaaramfd78cfvssnmcee70c4"
+              --event "6ein7tj2ima5v3qi1m3e1qjn0k"
         ```
     </TabItem>
   
@@ -55,9 +55,9 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint gcalendar ПереместитьСобытие ^
               --token "***" ^
-              --from "f5a589c69f01bb516e3989529fdada2d1190fece0e5b21a0994770ea92168e63@group.calendar.google.com" ^
+              --from "13f3499c1baa60614c02438bc03e0fc23f165f60c7cd7fe6ad16fa383a3ca374@group.calendar.google.com" ^
               --to "bayselonarrend@gmail.com" ^
-              --event "28uaaramfd78cfvssnmcee70c4"
+              --event "6ein7tj2ima5v3qi1m3e1qjn0k"
         ```
     </TabItem>
 </Tabs>
@@ -66,12 +66,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "kind": "calendar#event",
- "etag": "\"3530082256339262\"",
- "id": "28uaaramfd78cfvssnmcee70c4",
+ "etag": "\"3530225444456318\"",
+ "id": "6ein7tj2ima5v3qi1m3e1qjn0k",
  "status": "cancelled",
- "htmlLink": "https://www.google.com/calendar/event?eid=Mjh1YWFyYW1mZDc4Y2Z2c3NubWNlZTcwYzQgZjVhNTg5YzY5ZjAxYmI1MTZlMzk4OTUyOWZkYWRhMmQxMTkwZmVjZTBlNWIyMWEwOTk0NzcwZWE5MjE2OGU2M0Bn",
- "created": "2025-12-06T17:12:05Z",
- "updated": "2025-12-06T17:12:08.169Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=NmVpbjd0ajJpbWE1djNxaTFtM2UxcWpuMGsgMTNmMzQ5OWMxYmFhNjA2MTRjMDI0MzhiYzAzZTBmYzIzZjE2NWY2MGM3Y2Q3ZmU2YWQxNmZhMzgzYTNjYTM3NEBn",
+ "created": "2025-12-07T13:05:19Z",
+ "updated": "2025-12-07T13:05:22.228Z",
  "summary": "Новое событие",
  "description": "Новое описание события",
  "location": "В офисе",
@@ -82,14 +82,14 @@ import TabItem from '@theme/TabItem';
   "email": "bayselonarrend@gmail.com"
  },
  "start": {
-  "dateTime": "2025-12-06T23:12:04+03:00",
+  "dateTime": "2025-12-07T19:05:18+03:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2025-12-07T00:12:04+03:00",
+  "dateTime": "2025-12-07T20:05:18+03:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "28uaaramfd78cfvssnmcee70c4@google.com",
+ "iCalUID": "6ein7tj2ima5v3qi1m3e1qjn0k@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true

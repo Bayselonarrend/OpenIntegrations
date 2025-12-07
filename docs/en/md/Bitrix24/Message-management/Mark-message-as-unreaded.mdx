@@ -34,19 +34,19 @@ Method at API documentation: [im.dialog.unread](https://dev.1c-bitrix.ru/learnin
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID = "3434";
+    ChatID = "3441";
 
     OPI_TypeConversion.GetLine(ChatID);
 
     ChatString = "chat" + ChatID;
-    MessageID  = "68548";
+    MessageID  = "68723";
 
     Result = OPI_Bitrix24.MarkMessageAsUnreaded(URL, ChatString, MessageID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "0b353469006e9f06006b12e400000001000...";
+    Token     = "fb563569006e9f06006b12e400000001000...";
     UserID    = 10;
-    MessageID = "68550";
+    MessageID = "68725";
 
     Result = OPI_Bitrix24.MarkMessageAsUnreaded(URL, UserID, MessageID, Token);
 ```
