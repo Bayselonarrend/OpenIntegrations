@@ -4,6 +4,4 @@ oint mongodb ПолучитьДокументы ^
   --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
   --coll "new_collection" ^
   --db "main" ^
-  --query "{'stringField':'Текст','doubleField':'999'}" ^
-  --sort "{'doubleField':'-1'}" ^
-  --params "{'limit':'2','batchSize':'1'}"
+  --query "{'stringField':'Текст','doubleField':'999'}"

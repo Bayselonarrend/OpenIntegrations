@@ -2,7 +2,7 @@
 
 oint s3 УстановитьТегиОбъекта \
   --name "picture.jpg" \
-  --bucket "opi-dirbucket6" \
+  --bucket "opi-gpbucket6" \
   --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
   --tagset "{'MyTag1':'SomeValue','MyTag2':'AnotherOne'}" \
-  --dir true
+  --dir false
