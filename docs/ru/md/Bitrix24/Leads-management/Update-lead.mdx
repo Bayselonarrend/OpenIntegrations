@@ -39,7 +39,7 @@ import TabItem from '@theme/TabItem';
     СтруктураПолей.Вставить("TITLE"          , "Суперклиент");
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЛида = "2790";
+    IDЛида = "2797";
 
     Результат = OPI_Bitrix24.ИзменитьЛид(URL, IDЛида, СтруктураПолей);
 
@@ -47,8 +47,8 @@ import TabItem from '@theme/TabItem';
     СтруктураПолей.Вставить("LAST_NAME", "Евгеньев");
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Токен  = "0b353469006e9f06006b12e400000001000...";
-    IDЛида = "2792";
+    Токен  = "fb563569006e9f06006b12e400000001000...";
+    IDЛида = "2799";
 
     Результат = OPI_Bitrix24.ИзменитьЛид(URL, IDЛида, СтруктураПолей, Токен);
 ```
@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьЛид \
               --url "b24-ar17wx.bitrix24.by" \
-              --lead 2796 \
+              --lead 2802 \
               --fields "{'ADDRESS':'ул. Лермонтова, д. 20','ADDRESS_COUNTRY':'Беларусь','TITLE':'Суперклиент','NAME':'Евгений','LAST_NAME':'Евгеньев'}" \
               --token "***"
         ```
@@ -74,7 +74,7 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьЛид ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --lead 2796 ^
+              --lead 2802 ^
               --fields "{'ADDRESS':'ул. Лермонтова, д. 20','ADDRESS_COUNTRY':'Беларусь','TITLE':'Суперклиент','NAME':'Евгений','LAST_NAME':'Евгеньев'}" ^
               --token "***"
         ```
@@ -86,14 +86,14 @@ import TabItem from '@theme/TabItem';
 {
  "result": true,
  "time": {
-  "start": 1765042625,
-  "finish": 1765042625.51068,
-  "duration": 0.51067590713501,
+  "start": 1765114191,
+  "finish": 1765114191.64981,
+  "duration": 0.649813890457153,
   "processing": 0,
-  "date_start": "2025-12-06T20:37:05+03:00",
-  "date_finish": "2025-12-06T20:37:05+03:00",
-  "operating_reset_at": 1765043225,
-  "operating": 0.150959968566895
+  "date_start": "2025-12-07T16:29:51+03:00",
+  "date_finish": "2025-12-07T16:29:51+03:00",
+  "operating_reset_at": 1765114791,
+  "operating": 0.137660026550293
  }
 }
 ```
