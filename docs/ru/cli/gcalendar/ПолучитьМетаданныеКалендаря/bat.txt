@@ -1,3 +1,3 @@
 oint gcalendar ПолучитьМетаданныеКалендаря ^
   --token "***" ^
-  --calendar "ee86d881ebb4c053215a80bbc35196af0a07ef8d5de052844118cc80ba4d37be@group.calendar.google.com"
+  --calendar "3dbe85e1898b7a0ffa46591ae17372003231fc45cc53fdccf3dbf551054695a3@group.calendar.google.com"

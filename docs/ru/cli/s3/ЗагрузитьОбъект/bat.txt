@@ -2,7 +2,7 @@
 
 oint s3 ЗагрузитьОбъект ^
   --name "fileChunked.mp3" ^
-  --bucket "opi-dirbucket6" ^
+  --bucket "opi-gpbucket6" ^
   --data "https://hut.openintegrations.dev/test_data/song.mp3" ^
   --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'5242880'}" ^
-  --dir true
+  --dir false
