@@ -47,7 +47,7 @@ import TabItem from '@theme/TabItem';
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
 
     Каталог = Истина; // Формирование URL в path-style
-    Бакет = "opi-dirbucket6";
+    Бакет = "";
     Наименование = "picture.jpg";
     Содержимое   = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
 
@@ -70,10 +70,10 @@ import TabItem from '@theme/TabItem';
             
             oint s3 ЗагрузитьОбъект \
               --name "fileChunked.mp3" \
-              --bucket "opi-dirbucket6" \
+              --bucket "opi-gpbucket6" \
               --data "https://hut.openintegrations.dev/test_data/song.mp3" \
               --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'5242880'}" \
-              --dir true
+              --dir false
         ```
     </TabItem>
   
@@ -83,10 +83,10 @@ import TabItem from '@theme/TabItem';
             
             oint s3 ЗагрузитьОбъект ^
               --name "fileChunked.mp3" ^
-              --bucket "opi-dirbucket6" ^
+              --bucket "opi-gpbucket6" ^
               --data "https://hut.openintegrations.dev/test_data/song.mp3" ^
               --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'5242880'}" ^
-              --dir true
+              --dir false
         ```
     </TabItem>
 </Tabs>
@@ -98,13 +98,13 @@ import TabItem from '@theme/TabItem';
  "response": {},
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Sun, 07 Dec 2025 13:47:28 GMT",
+  "Date": "Sun, 07 Dec 2025 20:14:32 GMT",
   "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
-  "X-Amz-Request-Id": "187EF2F61B3A8C71",
+  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
+  "X-Amz-Request-Id": "187F081346CD29BA",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "0",

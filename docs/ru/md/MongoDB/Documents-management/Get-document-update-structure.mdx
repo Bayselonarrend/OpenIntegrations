@@ -38,6 +38,32 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mongodb ПолучитьСтруктуруОбновленияДокументов \
+              --query "{'stringField':'Текст','doubleField':{'__4gte':'100','__4lte':'150'}}" \
+              --data "{'__4set':{'doubleField':'999'}}" \
+              --multi true \
+              --upsert true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint mongodb ПолучитьСтруктуруОбновленияДокументов ^
+              --query "{'stringField':'Текст','doubleField':{'__4gte':'100','__4lte':'150'}}" ^
+              --data "{'__4set':{'doubleField':'999'}}" ^
+              --multi true ^
+              --upsert true
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Результат"

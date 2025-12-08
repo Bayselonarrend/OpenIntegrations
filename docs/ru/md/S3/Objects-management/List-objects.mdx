@@ -43,7 +43,7 @@ import TabItem from '@theme/TabItem';
     ОсновныеДанные = OPI_S3.ПолучитьСтруктуруДанных(URL, AccessKey, SecretKey, Region);
 
     Каталог = Истина; // Формирование URL в path-style
-    Бакет = "opi-dirbucket6";
+    Бакет = "";
     Результат = OPI_S3.ПолучитьСписокОбъектов(Бакет, ОсновныеДанные, , , , Каталог);
 ```
     
@@ -55,9 +55,9 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint s3 ПолучитьСписокОбъектов \
-              --bucket "opi-dirbucket6" \
+              --bucket "opi-gpbucket6" \
               --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-              --dir true
+              --dir false
         ```
     </TabItem>
   
@@ -66,9 +66,9 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint s3 ПолучитьСписокОбъектов ^
-              --bucket "opi-dirbucket6" ^
+              --bucket "opi-gpbucket6" ^
               --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-              --dir true
+              --dir false
         ```
     </TabItem>
 </Tabs>
@@ -79,14 +79,14 @@ import TabItem from '@theme/TabItem';
  "status": 200,
  "response": {
   "ListBucketResult": {
-   "Name": "opi-dirbucket6",
+   "Name": "opi-gpbucket6",
    "Prefix": {},
    "KeyCount": "***",
    "MaxKeys": "***",
    "IsTruncated": "false",
    "Contents": {
     "Key": "***",
-    "LastModified": "2025-12-07T13:47:27.175Z",
+    "LastModified": "2025-12-07T20:14:27.618Z",
     "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
     "Size": "2114023",
     "StorageClass": "STANDARD"
@@ -95,15 +95,15 @@ import TabItem from '@theme/TabItem';
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Sun, 07 Dec 2025 13:51:06 GMT",
+  "Date": "Sun, 07 Dec 2025 20:26:18 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
   "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
-  "X-Amz-Request-Id": "187EF32A316CD7E3",
+  "X-Amz-Request-Id": "187F08BB0FD63951",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
-  "Content-Length": "452",
+  "Content-Length": "451",
   "Content-Type": "application/xml"
  }
 }

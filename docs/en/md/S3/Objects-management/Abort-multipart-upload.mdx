@@ -47,7 +47,7 @@ This is a service method. A `PutObject` method is intended for the common scenar
     Name = "fileChunked.mp3";
 
     Directory = True; // Formation URL in path-style
-    Bucket = "opi-dirbucket6";
+    Bucket = "";
     Start    = OPI_S3.InitPartsUpload(Name, Bucket, BasicData, , Directory);
     UploadID = Start["response"]["InitiateMultipartUploadResult"]["UploadId"];
 
@@ -91,12 +91,12 @@ This is a service method. A `PutObject` method is intended for the common scenar
  "response": {},
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Fri, 31 Oct 2025 12:18:01 GMT",
+  "Date": "Mon, 08 Dec 2025 05:19:39 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
-  "X-Amz-Request-Id": "1873929CF03C283C",
+  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
+  "X-Amz-Request-Id": "187F25D5CB7AFF85",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Type": "text/plain; charset=utf-8"

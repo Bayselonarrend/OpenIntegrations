@@ -71,30 +71,40 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/docs/ap
  "body": {
   "typeWebhook": "outgoingAPIMessageReceived",
   "instanceData": {
-   "idInstance": 7105187566,
-   "wid": "1234567890@c.us",
+   "idInstance": "***",
+   "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1761846799,
-  "idMessage": "BAE5506506B24B5B",
+  "timestamp": 1765101384,
+  "idMessage": "3EB08C25D18AFB00749EE3",
   "senderData": {
-   "chatId": "120363410406221140@g.us",
-   "chatName": "",
-   "sender": "1234567890@c.us",
-   "senderName": "",
-   "senderContactName": ""
+   "chatId": "***",
+   "chatName": "***",
+   "sender": "***",
+   "senderName": "***",
+   "senderContactName": "***"
   },
   "messageData": {
-   "typeMessage": "imageMessage",
-   "fileMessageData": {
-    "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/2e17faa5-2e49-4b98-b76a-d463b8911292.jpg",
-    "caption": "File description",
-    "fileName": "2e17faa5-2e49-4b98-b76a-d463b8911292.jpg",
-    "jpegThumbnail": "",
-    "isAnimated": false,
-    "mimeType": "image/jpeg",
-    "forwardingScore": 0,
-    "isForwarded": false
+   "typeMessage": "quotedMessage",
+   "extendedTextMessageData": {
+    "text": "Новое сообщение",
+    "stanzaId": "3EB0D3B2EBAFCD19423B99",
+    "participant": "1234567890@c.us"
+   },
+   "quotedMessage": {
+    "stanzaId": "3EB0D3B2EBAFCD19423B99",
+    "participant": "1234567890@c.us",
+    "typeMessage": "extendedTextMessage",
+    "textMessage": "Новое сообщение",
+    "extendedTextMessage": {
+     "text": "Новое сообщение",
+     "description": "",
+     "title": "",
+     "previewType": "None",
+     "jpegThumbnail": "",
+     "forwardingScore": 0,
+     "isForwarded": false
+    }
    }
   }
  }
