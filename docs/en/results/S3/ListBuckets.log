@@ -9,8 +9,8 @@
    "Buckets": {
     "Bucket": [
      {
-      "Name": "f4ac8b7d",
-      "CreationDate": "2025-12-08T11:17:39.466Z"
+      "Name": "c96ef929",
+      "CreationDate": "2025-12-08T15:00:36.653Z"
      },
      {
       "Name": "newbucket2",
@@ -22,12 +22,12 @@
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Mon, 08 Dec 2025 11:20:15 GMT",
+  "Date": "Mon, 08 Dec 2025 15:00:58 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
   "X-Amz-Id-2": "0eb49e91e4cb899a0af3fcfe75973892594fa8211551eba0f72840fc567c152b",
-  "X-Amz-Request-Id": "187F39834C5FC98D",
+  "X-Amz-Request-Id": "187F458EAC480FBC",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "459",

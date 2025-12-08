@@ -2,5 +2,5 @@
 
 oint greenapi RevokeAdminRights ^
  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
- --group "120363406876759354@g.us" ^
+ --group "120363421465093867@g.us" ^
  --user "123123123@c.us"

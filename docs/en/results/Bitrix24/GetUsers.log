@@ -19,7 +19,7 @@
    "external_auth_id": "socservices",
    "status": "online",
    "idle": false,
-   "last_activity_date": "2024-07-13T21:36:23+03:00",
+   "last_activity_date": "2024-07-13T18:36:23+00:00",
    "mobile_last_date": false,
    "desktop_last_date": false,
    "absent": false,
@@ -36,13 +36,13 @@
   }
  },
  "time": {
-  "start": 1765191419,
-  "finish": 1765191419.98836,
-  "duration": 0.988356113433838,
+  "start": 1765204474,
+  "finish": 1765204474.70843,
+  "duration": 0.708434104919434,
   "processing": 0,
-  "date_start": "2025-12-08T13:56:59+03:00",
-  "date_finish": "2025-12-08T13:56:59+03:00",
-  "operating_reset_at": 1765192019,
+  "date_start": "2025-12-08T14:34:34+00:00",
+  "date_finish": "2025-12-08T14:34:34+00:00",
+  "operating_reset_at": 1765205074,
   "operating": 0
  }
 }
