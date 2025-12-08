@@ -26,8 +26,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
-<br/>
-
 :::tip
 You can mention a user by appending their userId to the text in the following format @[userId]
 
@@ -69,9 +67,9 @@ Method at API documentation: [GET /messages/sendText](https://teams.vk.com/botap
             
             oint vkteams SendTextMessage \
              --token "***" \
-             --chatid "689203963@chat.agent" \
+             --chatid "***" \
              --text "<b>Bold text</b>" \
-             --reply "7567032304472703393" \
+             --reply "7567354422724936211" \
              --keyboard "[[{'text':'Button1','callbackData':'ButtonEvent1','style':'attention'},{'text':'Button2','url':'https://openintegrations.dev','style':'base'}],[{'text':'Button1','callbackData':'ButtonEvent1','style':'attention'},{'text':'Button2','url':'https://openintegrations.dev','style':'base'}]]" \
              --parsemod "HTML"
         ```
@@ -83,9 +81,9 @@ Method at API documentation: [GET /messages/sendText](https://teams.vk.com/botap
             
             oint vkteams SendTextMessage ^
              --token "***" ^
-             --chatid "689203963@chat.agent" ^
+             --chatid "***" ^
              --text "<b>Bold text</b>" ^
-             --reply "7567032304472703393" ^
+             --reply "7567354422724936211" ^
              --keyboard "[[{'text':'Button1','callbackData':'ButtonEvent1','style':'attention'},{'text':'Button2','url':'https://openintegrations.dev','style':'base'}],[{'text':'Button1','callbackData':'ButtonEvent1','style':'attention'},{'text':'Button2','url':'https://openintegrations.dev','style':'base'}]]" ^
              --parsemod "HTML"
         ```
@@ -95,7 +93,7 @@ Method at API documentation: [GET /messages/sendText](https://teams.vk.com/botap
 
 ```json title="Result"
 {
- "msgId": "7567067518909563316",
+ "msgId": "7581441335635231560",
  "ok": true
 }
 ```

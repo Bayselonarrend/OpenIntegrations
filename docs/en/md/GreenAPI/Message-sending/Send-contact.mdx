@@ -24,8 +24,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Green API
 
-<br/>
-
 :::tip
 Method at API documentation: [SendContact](https://green-api.com/docs/api/sending/SendContact/)
 :::
@@ -61,9 +59,9 @@ Method at API documentation: [SendContact](https://green-api.com/docs/api/sendin
             
             oint greenapi SendContact \
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-             --chat "120363410406221140@g.us" \
+             --chat "***" \
              --contact "{'phoneContact':'79001234568','company':'Bicycle'}" \
-             --quoted "BAE5E44740B9ED9C"
+             --quoted "3EB022959C2D6133046981"
         ```
     </TabItem>
   
@@ -73,9 +71,9 @@ Method at API documentation: [SendContact](https://green-api.com/docs/api/sendin
             
             oint greenapi SendContact ^
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
-             --chat "120363410406221140@g.us" ^
+             --chat "***" ^
              --contact "{'phoneContact':'79001234568','company':'Bicycle'}" ^
-             --quoted "BAE5E44740B9ED9C"
+             --quoted "3EB022959C2D6133046981"
         ```
     </TabItem>
 </Tabs>
@@ -83,6 +81,6 @@ Method at API documentation: [SendContact](https://green-api.com/docs/api/sendin
 
 ```json title="Result"
 {
- "idMessage": "3EB07039F34957909C2488"
+ "idMessage": "3EB022959C2D6133046981"
 }
 ```

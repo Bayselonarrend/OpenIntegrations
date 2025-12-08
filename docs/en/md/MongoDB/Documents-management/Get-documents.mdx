@@ -26,8 +26,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - Operation result
 
-<br/>
-
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
@@ -51,6 +49,32 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint mongodb GetDocuments \
+             --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" \
+             --coll "new_collection" \
+             --db "main" \
+             --query "{'category':'electronics'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint mongodb GetDocuments ^
+             --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
+             --coll "new_collection" ^
+             --db "main" ^
+             --query "{'category':'electronics'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
@@ -58,7 +82,7 @@ import TabItem from '@theme/TabItem';
  "result": true,
  "data": [
   {
-   "_id": "69364f5d9402ea890b513a25",
+   "_id": "6936a8939402ea890b513c40",
    "stringField": "Text",
    "oidField": "63ceed18f71dda7d8cf21e8e",
    "jsField": "const result = [1, 2, 3].map(x => x * 2).filter(x => x > 3);",
@@ -68,7 +92,7 @@ import TabItem from '@theme/TabItem';
    "doubleField": 124.456,
    "boolField": true,
    "dateField": "2025-11-15T10:55:41Z",
-   "tsField": "Timestamp(1765166941, 0)",
+   "tsField": "Timestamp(1765200577, 0)",
    "regexpField": "/[a-z]+@[a-z]+\\.[a-z]+/i",
    "binaryField": {
     "__B64_BINARY__": "VGV4dA=="
@@ -86,7 +110,7 @@ import TabItem from '@theme/TabItem';
    ]
   },
   {
-   "_id": "69364f5d9402ea890b513a24",
+   "_id": "6936a8939402ea890b513c3f",
    "stringField": "Text",
    "intField": 200,
    "doubleField": 123.456,
@@ -99,7 +123,7 @@ import TabItem from '@theme/TabItem';
     "text": "Text",
     "number": 10
    },
-   "dateField": "2025-12-08T04:09:01.088Z",
+   "dateField": "2025-12-08T13:29:37.35Z",
    "nullField": null
   }
  ]

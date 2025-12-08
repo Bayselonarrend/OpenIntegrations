@@ -23,8 +23,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
-<br/>
-
 :::tip
 Method at API documentation: [tasks.task.renew](https://dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_renew.php)
 :::
@@ -51,7 +49,7 @@ Method at API documentation: [tasks.task.renew](https://dev.1c-bitrix.ru/rest_he
         ```bash
             oint bitrix24 RenewTask \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "8670" \
+             --task "8888" \
              --token "***"
         ```
     </TabItem>
@@ -60,7 +58,7 @@ Method at API documentation: [tasks.task.renew](https://dev.1c-bitrix.ru/rest_he
         ```batch
             oint bitrix24 RenewTask ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "8670" ^
+             --task "8888" ^
              --token "***"
         ```
     </TabItem>
@@ -71,7 +69,7 @@ Method at API documentation: [tasks.task.renew](https://dev.1c-bitrix.ru/rest_he
 {
  "result": {
   "task": {
-   "id": "8878",
+   "id": "8888",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -84,19 +82,19 @@ Method at API documentation: [tasks.task.renew](https://dev.1c-bitrix.ru/rest_he
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-12-08T04:22:03+00:00",
+   "createdDate": "2025-12-08T13:49:58+03:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2025-12-08T04:22:23+00:00",
+   "changedDate": "2025-12-08T13:51:05+03:00",
    "statusChangedBy": "1",
    "closedBy": "0",
    "closedDate": null,
-   "activityDate": "2025-12-08T04:22:23+00:00",
+   "activityDate": "2025-12-08T13:51:05+03:00",
    "dateStart": null,
-   "deadline": "2025-12-09T04:22:00+00:00",
-   "startDatePlan": "2025-12-08T04:22:03+00:00",
-   "endDatePlan": "2025-12-08T21:00:00+00:00",
-   "guid": "{aba28ebd-4109-4077-97c0-11c9b756bbd7}",
+   "deadline": "2025-12-09T16:49:00+03:00",
+   "startDatePlan": "2025-12-08T13:49:58+03:00",
+   "endDatePlan": "2025-12-09T00:00:00+03:00",
+   "guid": "{6b2fc8b6-b85c-41fe-b95c-1146056cf524}",
    "xmlId": null,
    "commentsCount": "3",
    "serviceCommentsCount": "3",
@@ -108,14 +106,14 @@ Method at API documentation: [tasks.task.renew](https://dev.1c-bitrix.ru/rest_he
    "timeEstimate": "0",
    "timeSpentInLogs": null,
    "matchWorkTime": "N",
-   "forumTopicId": "5730",
+   "forumTopicId": "5736",
    "forumId": "11",
    "siteId": "s1",
    "subordinate": "Y",
    "exchangeModified": null,
    "exchangeId": null,
    "outlookVersion": "7",
-   "viewedDate": "2025-12-08T04:22:23+00:00",
+   "viewedDate": "2025-12-08T13:51:05+03:00",
    "sorting": null,
    "durationFact": null,
    "isMuted": "N",
@@ -125,7 +123,7 @@ Method at API documentation: [tasks.task.renew](https://dev.1c-bitrix.ru/rest_he
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2025-12-08T04:22:23+00:00",
+   "statusChangedDate": "2025-12-08T13:51:05+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -206,14 +204,14 @@ Method at API documentation: [tasks.task.renew](https://dev.1c-bitrix.ru/rest_he
   }
  },
  "time": {
-  "start": 1765167743,
-  "finish": 1765167743.84727,
-  "duration": 0.8472740650177,
+  "start": 1765191065,
+  "finish": 1765191065.54422,
+  "duration": 0.54422402381897,
   "processing": 0,
-  "date_start": "2025-12-08T04:22:23+00:00",
-  "date_finish": "2025-12-08T04:22:23+00:00",
-  "operating_reset_at": 1765168343,
-  "operating": 0.322978973388672
+  "date_start": "2025-12-08T13:51:05+03:00",
+  "date_finish": "2025-12-08T13:51:05+03:00",
+  "operating_reset_at": 1765191665,
+  "operating": 0.419142007827759
  }
 }
 ```

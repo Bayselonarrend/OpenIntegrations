@@ -24,8 +24,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue, BinaryData - serialized JSON response from CDEK or a PDF file
 
-<br/>
-
 :::tip
 The receipt must be previously created. See CreateReceipt
 
@@ -69,39 +67,45 @@ Method at API documentation: [Receiving order receipt](https://api-docs.cdek.ru/
 ```json title="Result"
 {
  "entity": {
-  "uuid": "fe0421c4-7a85-4fae-812d-3aee31c939cb",
+  "uuid": "65b71dcd-8786-415a-ae17-c4e641bd9273",
   "orders": [
    {
-    "order_uuid": "3c80df8f-efd1-48ce-bd28-56bcd628eb82"
+    "order_uuid": "811c4afa-115a-4dc0-92ce-52149ec659d8"
    }
   ],
   "copy_count": 1,
   "type": "tpl_russia",
-  "url": "https://api.edu.cdek.ru/v2/print/orders/fe0421c4-7a85-4fae-812d-3aee31c939cb.pdf",
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-31T12:02:57+00:00"
+    "date_time": "2025-12-08T14:08:52+03:00"
    },
    {
-    "code": "PROCESSING",
-    "name": "Формируется",
-    "date_time": "2025-10-31T12:02:57+00:00"
-   },
-   {
-    "code": "READY",
-    "name": "Сформирован",
-    "date_time": "2025-10-31T12:02:58+00:00"
+    "code": "INVALID",
+    "name": "Некорректный запрос",
+    "date_time": "2025-12-08T14:08:53+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "e6376b27-dfdc-45ec-b76a-7aceeac4b6e2",
+   "request_uuid": "94834a2d-1f2d-4c97-98ce-d51e5f774ed3",
    "type": "CREATE",
-   "date_time": "2025-10-31T12:02:57+00:00",
-   "state": "SUCCESSFUL"
+   "date_time": "2025-12-08T14:08:52+03:00",
+   "state": "INVALID",
+   "errors": [
+    {
+     "code": "v2_orders_number_is_empty",
+     "message": "Entity is empty. All orders are incorrect"
+    }
+   ],
+   "warnings": [
+    {
+     "code": "v2_order_invalid",
+     "message": "Order is invalid 811c4afa-115a-4dc0-92ce-52149ec659d8"
+    }
+   ]
   }
  ],
  "related_entities": []
