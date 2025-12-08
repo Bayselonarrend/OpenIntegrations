@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "2c382aa7-fc4e-81bb-849d-d097177bfc56",
- "created_time": "2025-12-08T14:17:00Z",
- "last_edited_time": "2025-12-08T14:17:00Z",
+ "id": "2c382aa7-fc4e-81a8-843b-d8d1f8fef93e",
+ "created_time": "2025-12-08T21:28:00Z",
+ "last_edited_time": "2025-12-08T21:28:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,24 +15,33 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "2c382aa7-fc4e-81b9-b86b-e09328d4aeee"
+  "database_id": "2c382aa7-fc4e-81cd-b78f-e615ca486825"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
+  "Status": {
+   "id": "DmLV",
+   "type": "select",
+   "select": {
+    "id": "932b7ae6-b0db-47fe-9bc8-9f6ded3d528f",
+    "name": "New",
+    "color": "green"
+   }
+  },
   "Active": {
-   "id": "%3AhWG",
+   "id": "Do%3EN",
    "type": "checkbox",
    "checkbox": true
   },
-  "Number": {
-   "id": "FPe%3C",
-   "type": "number",
-   "number": 1
+  "User": {
+   "id": "H%7Dll",
+   "type": "people",
+   "people": []
   },
   "Email": {
-   "id": "LKoW",
+   "id": "L%40yo",
    "type": "rich_text",
    "rich_text": [
     {
@@ -54,26 +63,8 @@
     }
    ]
   },
-  "CreationDate": {
-   "id": "Oc%60E",
-   "type": "date",
-   "date": {
-    "start": "2025-12-08T02:17:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Status": {
-   "id": "QXWM",
-   "type": "select",
-   "select": {
-    "id": "63a96a16-c50f-4bc1-8615-4858b4724b77",
-    "name": "New",
-    "color": "green"
-   }
-  },
   "Image": {
-   "id": "bRce",
+   "id": "ek%3FP",
    "type": "files",
    "files": [
     {
@@ -85,8 +76,22 @@
     }
    ]
   },
+  "CreationDate": {
+   "id": "es%3FH",
+   "type": "date",
+   "date": {
+    "start": "2025-12-08T09:28:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
+  "Number": {
+   "id": "flCL",
+   "type": "number",
+   "number": 1
+  },
   "Description": {
-   "id": "bo%3DU",
+   "id": "g%5BJi",
    "type": "rich_text",
    "rich_text": [
     {
@@ -109,14 +114,9 @@
    ]
   },
   "Phone": {
-   "id": "gRbZ",
+   "id": "xZ%3EV",
    "type": "phone_number",
    "phone_number": "***"
-  },
-  "User": {
-   "id": "~Hjo",
-   "type": "people",
-   "people": []
   },
   "Name": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/LLC-Vector-2c382aa7fc4e81bb849dd097177bfc56",
+ "url": "https://www.notion.so/LLC-Vector-2c382aa7fc4e81a8843bd8d1f8fef93e",
  "public_url": null,
- "request_id": "a880b231-bdbe-4c7e-94a9-5385a71e3908"
+ "request_id": "1a5fe918-9f5a-4997-9ea9-8c77ee0c07e5"
 }
