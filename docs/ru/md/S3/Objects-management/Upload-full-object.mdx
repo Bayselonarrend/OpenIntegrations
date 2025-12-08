@@ -50,7 +50,7 @@ import TabItem from '@theme/TabItem';
     Содержимое   = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
 
     Каталог = Истина; // Формирование URL в path-style
-    Бакет = "opi-dirbucket6";
+    Бакет = "";
     Результат = OPI_S3.ЗагрузитьОбъектЦеликом(Наименование, Бакет, Содержимое, ОсновныеДанные, , Каталог);
 ```
     
@@ -63,10 +63,10 @@ import TabItem from '@theme/TabItem';
             
             oint s3 ЗагрузитьОбъектЦеликом \
               --name "pictureSmall.jpg" \
-              --bucket "opi-dirbucket6" \
+              --bucket "opi-gpbucket6" \
               --data "https://hut.openintegrations.dev/test_data/picture.jpg" \
               --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-              --dir true
+              --dir false
         ```
     </TabItem>
   
@@ -76,10 +76,10 @@ import TabItem from '@theme/TabItem';
             
             oint s3 ЗагрузитьОбъектЦеликом ^
               --name "pictureSmall.jpg" ^
-              --bucket "opi-dirbucket6" ^
+              --bucket "opi-gpbucket6" ^
               --data "https://hut.openintegrations.dev/test_data/picture.jpg" ^
               --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-              --dir true
+              --dir false
         ```
     </TabItem>
 </Tabs>
@@ -91,13 +91,13 @@ import TabItem from '@theme/TabItem';
  "response": {},
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Sun, 07 Dec 2025 13:48:10 GMT",
+  "Date": "Sun, 07 Dec 2025 20:16:33 GMT",
   "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
   "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
-  "X-Amz-Request-Id": "187EF2FFB6AA1E18",
+  "X-Amz-Request-Id": "187F082F2176D882",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "0",

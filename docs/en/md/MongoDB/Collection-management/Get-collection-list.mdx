@@ -43,4 +43,52 @@ import TabItem from '@theme/TabItem';
 
 
 
-
+```json title="Result"
+{
+ "result": true,
+ "data": {
+  "cursor": {
+   "id": 0,
+   "ns": "test_database.$cmd.listCollections",
+   "firstBatch": [
+    {
+     "name": "test_collection",
+     "type": "collection",
+     "options": {
+      "validator": {
+       "$expr": [
+        {
+         "$gte": [
+          "***",
+          "***"
+         ]
+        },
+        {
+         "$lte": [
+          "***",
+          "***"
+         ]
+        }
+       ]
+      }
+     },
+     "info": {
+      "readOnly": false,
+      "uuid": {
+       "__B64_BINARY__": "tF+xVnGIS0KC9jO6oKAq4Q=="
+      }
+     },
+     "idIndex": {
+      "v": 2,
+      "key": {
+       "_id": 1
+      },
+      "name": "_id_"
+     }
+    }
+   ]
+  },
+  "ok": 1
+ }
+}
+```

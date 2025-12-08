@@ -48,7 +48,7 @@ import TabItem from '@theme/TabItem';
     БакетИсточник = "newbucket2";
 
     ПутьПриемник  = "new_picture.jpg";
-    БакетПриемник = "opi-dirbucket6";
+    БакетПриемник = "";
     Результат = OPI_S3.КопироватьОбъект(ПутьИсточник, БакетИсточник, ПутьПриемник, БакетПриемник, ОсновныеДанные, , Каталог);
 ```
     
@@ -63,9 +63,9 @@ import TabItem from '@theme/TabItem';
               --sname "picture.jpg" \
               --sbucket "newbucket2" \
               --name "new_picture.jpg" \
-              --bucket "opi-dirbucket6" \
+              --bucket "opi-gpbucket6" \
               --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-              --dir true
+              --dir false
         ```
     </TabItem>
   
@@ -77,9 +77,9 @@ import TabItem from '@theme/TabItem';
               --sname "picture.jpg" ^
               --sbucket "newbucket2" ^
               --name "new_picture.jpg" ^
-              --bucket "opi-dirbucket6" ^
+              --bucket "opi-gpbucket6" ^
               --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-              --dir true
+              --dir false
         ```
     </TabItem>
 </Tabs>
@@ -90,19 +90,19 @@ import TabItem from '@theme/TabItem';
  "status": 200,
  "response": {
   "CopyObjectResult": {
-   "LastModified": "2025-12-07T13:50:11.593Z",
+   "LastModified": "2025-12-07T20:25:24.881Z",
    "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\""
   }
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Sun, 07 Dec 2025 13:50:26 GMT",
+  "Date": "Sun, 07 Dec 2025 20:25:35 GMT",
   "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
-  "X-Amz-Request-Id": "187EF31A17B29389",
+  "X-Amz-Id-2": "e602da57d0c30b8c7034fcfe129917205f80f7bab979408e71da5d1441c85e79",
+  "X-Amz-Request-Id": "187F08ACE5E52DB5",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "232",
