@@ -20,8 +20,6 @@ import TabItem from '@theme/TabItem';
   
   Returns: @ВозвращаемоеЗначение
 
-<br/>
-
 @Примечание
 
 @Вызов1С
