@@ -443,15 +443,15 @@
   }
  ],
  "next": 49,
- "total": 1509,
+ "total": 1511,
  "time": {
-  "start": 1765191193,
-  "finish": 1765191193.97581,
-  "duration": 0.975809097290039,
+  "start": 1765204226,
+  "finish": 1765204226.51607,
+  "duration": 0.516068935394287,
   "processing": 0,
-  "date_start": "2025-12-08T13:53:13+03:00",
-  "date_finish": "2025-12-08T13:53:13+03:00",
-  "operating_reset_at": 1765191793,
+  "date_start": "2025-12-08T14:30:26+00:00",
+  "date_finish": "2025-12-08T14:30:26+00:00",
+  "operating_reset_at": 1765204826,
   "operating": 0
  }
 }

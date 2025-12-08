@@ -2,4 +2,4 @@ oint telegram SendVideo \
  --token "***" \
  --chat "***" \
  --text "Строковое значение" \
- --video "C:\Users\bayse\AppData\Local\Temp\jr4ymosk.m3j"
+ --video "/tmp/wsv0il3s.fjz"

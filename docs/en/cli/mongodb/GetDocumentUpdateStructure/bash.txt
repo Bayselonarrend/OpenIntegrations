@@ -1,5 +1,7 @@
 # JSON data can also be passed as a path to a .json file
 
 oint mongodb GetDocumentUpdateStructure \
- --query "{'productName':'Item 1'}" \
- --data "{'__4inc':{'quantity':'10'}}"
+ --query "{'stringField':'Text','doubleField':{'__4gte':'100','__4lte':'150'}}" \
+ --data "{'__4set':{'doubleField':'999'}}" \
+ --multi true \
+ --upsert true

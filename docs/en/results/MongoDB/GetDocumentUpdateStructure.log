@@ -1,0 +1,16 @@
+﻿{
+ "q": {
+  "stringField": "Text",
+  "doubleField": {
+   "__4gte": 100,
+   "__4lte": 150
+  }
+ },
+ "u": {
+  "__4set": {
+   "doubleField": 999
+  }
+ },
+ "multi": true,
+ "upsert": true
+}
