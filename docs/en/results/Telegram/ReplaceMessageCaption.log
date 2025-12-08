@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 17744,
+  "message_id": 18080,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,42 +15,42 @@
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1761909042,
-  "edit_date": 1761909062,
+  "date": 1765165061,
+  "edit_date": 1765165086,
   "photo": [
    {
-    "file_id": "AgACAgIAAxkDAAJDlGj8qc1B91BiqhJhGAJrM2u0yJmDAALw9zEborvpS7N-L5L1PXT9AQADAgADcwADNgQ",
-    "file_unique_id": "AQAD8PcxG6K76Ut4",
+    "file_id": "AgACAgIAAxkDAAJGFWkwFfFE2BisPlbDM5TGPXaGd7OzAALoD2sbAAGqgEm_2MFZf9KMjgEAAwIAA3MAAzYE",
+    "file_unique_id": "AQAD6A9rGwABqoBJeA",
     "file_size": 1568,
-    "width": 90,
+    "width": "***",
     "height": 67
    },
    {
-    "file_id": "AgACAgIAAxkDAAJDlGj8qc1B91BiqhJhGAJrM2u0yJmDAALw9zEborvpS7N-L5L1PXT9AQADAgADbQADNgQ",
-    "file_unique_id": "AQAD8PcxG6K76Uty",
+    "file_id": "AgACAgIAAxkDAAJGFWkwFfFE2BisPlbDM5TGPXaGd7OzAALoD2sbAAGqgEm_2MFZf9KMjgEAAwIAA20AAzYE",
+    "file_unique_id": "AQAD6A9rGwABqoBJcg",
     "file_size": 21633,
-    "width": 320,
+    "width": "***",
     "height": 240
    },
    {
-    "file_id": "AgACAgIAAxkDAAJDlGj8qc1B91BiqhJhGAJrM2u0yJmDAALw9zEborvpS7N-L5L1PXT9AQADAgADeAADNgQ",
-    "file_unique_id": "AQAD8PcxG6K76Ut9",
+    "file_id": "AgACAgIAAxkDAAJGFWkwFfFE2BisPlbDM5TGPXaGd7OzAALoD2sbAAGqgEm_2MFZf9KMjgEAAwIAA3gAAzYE",
+    "file_unique_id": "AQAD6A9rGwABqoBJfQ",
     "file_size": 99260,
-    "width": 800,
+    "width": "***",
     "height": 600
    },
    {
-    "file_id": "AgACAgIAAxkDAAJDlGj8qc1B91BiqhJhGAJrM2u0yJmDAALw9zEborvpS7N-L5L1PXT9AQADAgADeQADNgQ",
-    "file_unique_id": "AQAD8PcxG6K76Ut-",
+    "file_id": "AgACAgIAAxkDAAJGFWkwFfFE2BisPlbDM5TGPXaGd7OzAALoD2sbAAGqgEm_2MFZf9KMjgEAAwIAA3kAAzYE",
+    "file_unique_id": "AQAD6A9rGwABqoBJfg",
     "file_size": 218651,
-    "width": 1280,
+    "width": "***",
     "height": 960
    },
    {
-    "file_id": "AgACAgIAAxkDAAJDlGj8qc1B91BiqhJhGAJrM2u0yJmDAALw9zEborvpS7N-L5L1PXT9AQADAgADdwADNgQ",
-    "file_unique_id": "AQAD8PcxG6K76Ut8",
+    "file_id": "AgACAgIAAxkDAAJGFWkwFfFE2BisPlbDM5TGPXaGd7OzAALoD2sbAAGqgEm_2MFZf9KMjgEAAwIAA3cAAzYE",
+    "file_unique_id": "AQAD6A9rGwABqoBJfA",
     "file_size": 650214,
-    "width": 2560,
+    "width": "***",
     "height": 1920
    }
   ],

@@ -1,168 +1,85 @@
 ﻿{
  "entity": {
-  "uuid": "3c80df8f-efd1-48ce-bd28-56bcd628eb82",
+  "uuid": "4336f0b2-ad33-41b4-a3cd-760e3b678e8a",
   "type": 1,
-  "is_return": false,
-  "is_reverse": false,
-  "cdek_number": "1106631933",
-  "number": "34e9706a-f47f-4348-bd4d-116bf6c5517d",
+  "number": "991cd44b-de7b-4289-b7cd-f551aedc8324",
   "tariff_code": 139,
   "comment": "New order",
-  "items_cost_currency": "RUB",
-  "recipient_currency": "RUB",
   "delivery_recipient_cost": {
-   "value": 50,
-   "vat_sum": 0
+   "value": 50
   },
   "delivery_recipient_cost_adv": [
    {
     "threshold": 200,
-    "sum": 3000,
-    "vat_sum": 0
+    "sum": 3000
    }
   ],
   "sender": {
-   "company": "Тестирование Интеграции ИМ",
-   "name": "Petrov Petr",
-   "contragent_type": "LEGAL_ENTITY",
-   "phones": [
-    {
-     "number": "79529287654"
-    }
-   ],
-   "passport_requirements_satisfied": false
-  },
-  "seller": {
-   "name": "Тестирование Интеграции ИМ"
+   "name": "Petrov Petr"
   },
   "recipient": {
-   "company": "Ivaniv Ivan",
    "name": "Ivaniv Ivan",
    "phones": [
     {
-     "number": "79134637228"
+     "number": "+79134637228"
     }
-   ],
-   "passport_requirements_satisfied": false
+   ]
   },
   "from_location": {
    "code": 44,
-   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
-   "city": "Москва",
-   "fias_guid": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
-   "country_code": "RU",
-   "country": "Россия",
-   "region": "Москва",
-   "region_code": 81,
-   "sub_region": "Москва",
-   "longitude": 37.61556,
-   "latitude": 55.75222,
+   "city": "Moscow",
    "address": "Ave. Leningradsky, 4"
   },
   "to_location": {
    "code": 270,
-   "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2",
-   "city": "Новосибирск",
-   "kladr_code": "5400000100000",
-   "country_code": "RU",
-   "country": "Россия",
-   "region": "Новосибирская область",
-   "region_code": 23,
-   "sub_region": "городской округ Новосибирск",
-   "longitude": 82.906928,
-   "latitude": 55.028739,
+   "city": "Novosibirsk",
    "address": "st. Bluchera, 32"
   },
   "services": [
    {
-    "code": "INSURANCE",
-    "parameter": "600.00",
-    "sum": 4.5,
-    "total_sum": 5.4,
-    "discount_percent": 0,
-    "discount_sum": 0,
-    "vat_rate": 20,
-    "vat_sum": 0.9
-   },
-   {
     "code": "SECURE_PACKAGE_A2",
-    "parameter": "10",
-    "sum": 500,
-    "total_sum": 600,
-    "discount_percent": 0,
-    "discount_sum": 0,
-    "vat_rate": 20,
-    "vat_sum": 100
+    "parameter": "10"
    }
   ],
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001259184",
     "weight": 4000,
     "length": 10,
-    "width": 10,
-    "weight_volume": 200,
-    "weight_calc": 4000,
+    "width": "***",
     "height": 10,
-    "comment": "приложена опись",
+    "comment": "Packaging",
     "items": [
      {
       "name": "Product",
-      "ware_key": "00055",
+      "ware_key": "***",
       "payment": {
-       "value": 3000,
-       "vat_sum": 0
+       "value": 3000
       },
       "weight": 700,
-      "weight_gross": 700,
       "amount": 2,
-      "delivery_amount": 0,
       "url": "www.item.ru",
-      "return_item_detail": {},
-      "excise": false,
       "cost": 300
      }
-    ],
-    "package_id": "49c05b9d-3595-4319-ac84-58b1590f6b66"
+    ]
    }
   ],
   "statuses": [
    {
-    "code": "CREATED",
-    "name": "Создан",
-    "date_time": "2025-10-31T12:02:34+00:00",
-    "city": "Офис СДЭК",
-    "deleted": false
-   },
-   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-31T12:02:33+00:00",
+    "date_time": "2025-12-08T04:29:57+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
-  ],
-  "is_client_return": false,
-  "delivery_mode": "1",
-  "has_reverse_order": false,
-  "delivery_detail": {
-   "delivery_sum": 1315,
-   "total_sum": 2183.4,
-   "payment_info": [],
-   "delivery_vat_rate": 20,
-   "delivery_vat_sum": 263,
-   "delivery_discount_percent": 0,
-   "delivery_discount_sum": 0
-  },
-  "calls": {}
+  ]
  },
  "requests": [
   {
-   "request_uuid": "7263cc09-bff3-4191-bda5-70e0e0c52bec",
+   "request_uuid": "c24f5e8e-55ce-42e4-941c-ef5a1cabf2cf",
    "type": "CREATE",
-   "date_time": "2025-10-31T12:02:34+00:00",
-   "state": "SUCCESSFUL"
+   "date_time": "2025-12-08T04:29:57+00:00",
+   "state": "ACCEPTED"
   }
  ],
  "related_entities": []

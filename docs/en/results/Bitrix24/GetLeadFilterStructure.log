@@ -11,7 +11,7 @@
  "DATE_MODIFY": "<date of change>",
  "EMAIL": "<email address>",
  "HAS_EMAIL": "<Email is filled (Y|N)>",
- "HAS_PHONE": "<phone field is filled (Y|N)>",
+ "HAS_PHONE": "***",
  "IS_RETURN_CUSTOMER": "<reused lead flag (Y|N)>",
  "MODIFY_BY_ID": "<author ID of the last change>",
  "MOVED_BY_ID": "<identifier of the author of moving the lead to the current stage>",
