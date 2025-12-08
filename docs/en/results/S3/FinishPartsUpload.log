@@ -2,21 +2,21 @@
  "status": 200,
  "response": {
   "CompleteMultipartUploadResult": {
-   "Location": "https://storage-564.s3hoster.by/068e9bf7/fileChunked.mp3",
-   "Bucket": "068e9bf7",
+   "Location": "https://storage-564.s3hoster.by/e8abebe2/fileChunked.mp3",
+   "Bucket": "e8abebe2",
    "Key": "***",
    "ETag": "\"22c09aeeb42144b375de8a4c1a1bb573-2\""
   }
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Mon, 08 Dec 2025 15:21:10 GMT",
+  "Date": "Mon, 08 Dec 2025 21:51:23 GMT",
   "ETag": "\"22c09aeeb42144b375de8a4c1a1bb573-2\"",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "9db21855adaa63c98221e7a7db59c17bf693f4833027894c70082214acf3a007",
-  "X-Amz-Request-Id": "187F46A831342BC8",
+  "X-Amz-Id-2": "c2a299fbb3d6b004a6478b9b6d90c505d645df682f7a22b96b88f100b6280168",
+  "X-Amz-Request-Id": "187F5BF3D3E9ADEC",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "335",
