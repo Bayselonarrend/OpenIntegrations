@@ -1180,6 +1180,9 @@ EndFunction
 
 Function GetS3ParameterOptions() Export
 
+    GpBucket  = Left(String(New UUID), 8);
+    DirBucket = Left(String(New UUID), 8);
+
     OptionArray = New Array;
 
     TestParametersMain = New Structure;
@@ -1188,6 +1191,9 @@ Function GetS3ParameterOptions() Export
     ParameterToCollection("S3_URL"      , TestParametersMain);
     ParameterToCollection("Picture"     , TestParametersMain);
     ParameterToCollection("Audio"       , TestParametersMain);
+
+    TestParametersMain.Insert("S3_GPB", GpBucket);
+    TestParametersMain.Insert("S3_DB" , DirBucket);
 
     TestParameters = OPI_Tools.CopyCollection(TestParametersMain);
     TestParameters.Insert("Directory", False);
@@ -12299,7 +12305,7 @@ Function Check_MongoDB_GetCursor(Val Result, Val Option)
 
         ExpectsThat(Result["result"]).Равно(True);
         ExpectsThat(Result["data"]["cursor"]["firstBatch"].Count()).Равно(1);
-        ExpectsThat(Result["data"]["cursor"]["id"]).Bigger(0);
+        ExpectsThat(Result["data"]["cursor"]["id"] > 0).Равно(True);
 
     ElsIf Option = 1 Then
 

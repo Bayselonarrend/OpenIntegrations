@@ -1367,7 +1367,7 @@ Function SendPart(Val StartPosition, Val ByteCount, Val Method = "PUT") Export
         RequestDataReader     = ?(RequestDataReader = Undefined, New DataReader(RequestReadBodyStream), RequestDataReader);
 
         If Not RequestReadBodyStream.CurrentPosition() = StartPosition Then
-            RequestReadBodyStream.Seek(StartPosition, StreamPosition.Start);
+            RequestReadBodyStream.Seek(StartPosition, StreamPosition.Begin);
         EndIf;
 
         Result = RequestDataReader.Read(ByteCount);
@@ -2174,7 +2174,7 @@ Function CheckPartUpload()
             PartsRequired      = 2;
 
             If ArrayOfInformation.Count() = PartsRequired Then
-                RequestReadBodyStream.Seek(Number(ArrayOfInformation[1]) + 1 , StreamPosition.Start);
+                RequestReadBodyStream.Seek(Number(ArrayOfInformation[1]) + 1 , StreamPosition.Begin);
             Else
                 RequestReadBodyStream.Seek(RequestBodyCurrentSend.Size()     , StreamPosition.Current);
             EndIf;

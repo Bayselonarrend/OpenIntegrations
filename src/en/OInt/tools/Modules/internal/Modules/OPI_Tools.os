@@ -835,7 +835,7 @@ Procedure StreamToStart(CurrentStream) Export
         Return;
     EndIf;
 
-    StartPosition = StreamPosition.Start;
+    StartPosition = StreamPosition.Begin;
 
     CurrentStream.Seek(0, StartPosition);
 

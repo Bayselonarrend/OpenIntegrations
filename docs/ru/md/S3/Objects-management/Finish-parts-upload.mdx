@@ -48,7 +48,7 @@ import TabItem from '@theme/TabItem';
     Наименование = "fileChunked.mp3";
 
     Каталог = Истина; // Формирование URL в path-style
-    Бакет = "opi-dirbucket6";
+    Бакет = "";
     Содержимое = "https://hut.openintegrations.dev/test_data/song.mp3"; // URL, Путь или Двоичные данные
     Содержимое = OPI_ЗапросыHTTP.Get(Содержимое);
 
@@ -105,11 +105,11 @@ import TabItem from '@theme/TabItem';
             
             oint s3 ЗавершитьЗагрузкуЧастями \
               --name "fileChunked.mp3" \
-              --bucket "opi-dirbucket6" \
+              --bucket "opi-gpbucket6" \
               --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-              --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmRmZjRiZDFkLWIyMzQtNGVkZi05Y2ZlLTM1NjdhYjNlMjI3Ng" \
+              --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjRhZjFlZjdjLTdmZDItNDA5OC1iZDY4LTc3OTVkMTY0MDk3MA" \
               --tags "['\"566e2d464b39b91eb8b5d89fb9f1a318\"','\"adb76a9a9ff8226ed08fb6f343102908\"']" \
-              --dir true
+              --dir false
         ```
     </TabItem>
   
@@ -119,11 +119,11 @@ import TabItem from '@theme/TabItem';
             
             oint s3 ЗавершитьЗагрузкуЧастями ^
               --name "fileChunked.mp3" ^
-              --bucket "opi-dirbucket6" ^
+              --bucket "opi-gpbucket6" ^
               --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-              --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLmRmZjRiZDFkLWIyMzQtNGVkZi05Y2ZlLTM1NjdhYjNlMjI3Ng" ^
+              --upload "MDk2NGE5MDUtNDcxZS00ZDljLTkzYjMtODM5ZDM4NGMyMWVhLjRhZjFlZjdjLTdmZDItNDA5OC1iZDY4LTc3OTVkMTY0MDk3MA" ^
               --tags "['\"566e2d464b39b91eb8b5d89fb9f1a318\"','\"adb76a9a9ff8226ed08fb6f343102908\"']" ^
-              --dir true
+              --dir false
         ```
     </TabItem>
 </Tabs>
@@ -134,24 +134,24 @@ import TabItem from '@theme/TabItem';
  "status": 200,
  "response": {
   "CompleteMultipartUploadResult": {
-   "Location": "https://storage-155.s3hoster.by/opi-dirbucket6/fileChunked.mp3",
-   "Bucket": "opi-dirbucket6",
+   "Location": "https://opi-gpbucket6.storage-155.s3hoster.by/fileChunked.mp3",
+   "Bucket": "opi-gpbucket6",
    "Key": "***",
    "ETag": "\"22c09aeeb42144b375de8a4c1a1bb573-2\""
   }
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Sun, 07 Dec 2025 13:49:45 GMT",
+  "Date": "Sun, 07 Dec 2025 20:24:35 GMT",
   "ETag": "\"22c09aeeb42144b375de8a4c1a1bb573-2\"",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
-  "X-Amz-Request-Id": "187EF315E874B787",
+  "X-Amz-Id-2": "057275ee0636b36a8256f409a6ff665de46bfaa1f0d5faf2d1b4f312e55c34fa",
+  "X-Amz-Request-Id": "187F08A1519EDF31",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
-  "Content-Length": "347",
+  "Content-Length": "345",
   "Content-Type": "application/xml"
  }
 }

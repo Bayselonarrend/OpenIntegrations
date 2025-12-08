@@ -9,5 +9,5 @@
     Entity = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
 
     Directory = True; // Formation URL in path-style
-    Bucket = "opi-dirbucket6";
+    Bucket = "";
     Result = OPI_S3.UploadFullObject(Name, Bucket, Entity, BasicData, , Directory);

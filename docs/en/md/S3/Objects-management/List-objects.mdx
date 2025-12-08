@@ -43,7 +43,7 @@ Method at AWS documentation: [ListObjectsV2](https://docs.aws.amazon.com/AmazonS
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
     Directory = True; // Formation URL in path-style
-    Bucket = "opi-dirbucket6";
+    Bucket = "";
     Result = OPI_S3.ListObjects(Bucket, BasicData, , , , Directory);
 ```
  
@@ -79,14 +79,14 @@ Method at AWS documentation: [ListObjectsV2](https://docs.aws.amazon.com/AmazonS
  "status": 200,
  "response": {
   "ListBucketResult": {
-   "Name": "opi-dirbucket4",
+   "Name": "opi-dirbucket6",
    "Prefix": {},
-   "KeyCount": "1",
-   "MaxKeys": "250",
+   "KeyCount": "***",
+   "MaxKeys": "***",
    "IsTruncated": "false",
    "Contents": {
-    "Key": "picture.jpg",
-    "LastModified": "2025-10-31T12:14:44.469Z",
+    "Key": "***",
+    "LastModified": "2025-12-08T05:06:55.392Z",
     "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
     "Size": "2114023",
     "StorageClass": "STANDARD"
@@ -95,12 +95,12 @@ Method at AWS documentation: [ListObjectsV2](https://docs.aws.amazon.com/AmazonS
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Fri, 31 Oct 2025 12:18:19 GMT",
+  "Date": "Mon, 08 Dec 2025 05:21:20 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
   "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
-  "X-Amz-Request-Id": "187392A10FDFF3A1",
+  "X-Amz-Request-Id": "187F25ED616E2C3B",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "452",
