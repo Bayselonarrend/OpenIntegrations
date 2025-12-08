@@ -1,0 +1,4 @@
+oint yadisk RefreshToken ^
+ --id "cc2ce9d60deb4975be58866d32dbe7aa" ^
+ --secret "***" ^
+ --refresh "***"

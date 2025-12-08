@@ -1,5 +1,5 @@
 oint s3 GetBasicDataStructure \
- --url "storage-155.s3hoster.by" \
- --access "BRN5RKJE67YCVDZRRQVI" \
+ --url "storage-564.s3hoster.by" \
+ --access "H71HC7EBMR30IOA3DFNE" \
  --secret "***" \
  --region "BTC"
