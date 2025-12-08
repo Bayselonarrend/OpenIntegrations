@@ -1,0 +1,6 @@
+oint yadisk UploadFileInParts \
+ --token "***" \
+ --path "/song.mp3" \
+ --file "https://hut.openintegrations.dev/test_data/song.mp3" \
+ --psize 1048576 \
+ --rewrite true

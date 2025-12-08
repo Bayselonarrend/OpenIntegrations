@@ -1,4 +1,4 @@
 oint bitrix24 LeaveChat ^
  --url "b24-ar17wx.bitrix24.by" ^
- --chat 3372 ^
+ --chat "***" ^
  --token "***"

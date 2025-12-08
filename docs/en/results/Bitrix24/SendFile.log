@@ -1,8 +1,8 @@
 ﻿{
  "result": {
   "FILES": {
-   "upload47564": {
-    "id": 47564,
+   "upload47618": {
+    "id": 47618,
     "chatId": "***",
     "date": {},
     "type": "file",
@@ -15,20 +15,20 @@
     "authorId": 1,
     "authorName": "Антон Титовец",
     "urlPreview": "",
-    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47564&exact=N&fileName=Imortant%20doc.docx",
-    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47564&exact=N&fileName=Imortant%20doc.docx",
+    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47618&exact=N&fileName=Imortant%20doc.docx",
+    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47618&exact=N&fileName=Imortant%20doc.docx",
     "viewerAttrs": {
      "viewer": "",
      "viewerType": "cloud-document",
-     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47564&exact=N&fileName=Imortant%20doc.docx",
+     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47618&exact=N&fileName=Imortant%20doc.docx",
      "viewerTypeClass": "BX.Disk.Viewer.UnifiedLinkItem",
      "viewerSeparateItem": true,
      "viewerExtension": "disk.viewer.unified-link-item",
-     "objectId": "47564",
+     "objectId": "47618",
      "imChatId": "***",
      "title": "Imortant doc.docx",
-     "unifiedLink": "https://b24-ar17wx.bitrix24.by/disk/file/w5HO2d84E5qBZWdflID9",
-     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"47564\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
+     "unifiedLink": "https://b24-ar17wx.bitrix24.by/disk/file/Kw4yjo2xCOn2L619GL5L",
+     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"47618\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
     },
     "mediaUrl": {
      "preview": {
@@ -44,8 +44,8 @@
    "***"
   ],
   "FILE_MODELS": {
-   "upload47564": {
-    "id": 47564,
+   "upload47618": {
+    "id": 47618,
     "name": "Imortant doc.docx",
     "createTime": {},
     "updateTime": {},
@@ -53,34 +53,34 @@
     "code": null,
     "xmlId": null,
     "storageId": 6,
-    "realObjectId": 47564,
-    "parentId": 47560,
+    "realObjectId": 47618,
+    "parentId": 47614,
     "deletedType": 0,
     "createdBy": "1",
     "updatedBy": "1",
     "deletedBy": "0",
-    "uniqueCode": "w5HO2d84E5qBZWdflID9",
+    "uniqueCode": "Kw4yjo2xCOn2L619GL5L",
     "typeFile": 4,
     "globalContentVersion": 2,
-    "fileId": 32238,
+    "fileId": 32276,
     "size": 24071,
-    "etag": "a86bd09b40ad366bdbc8d28a73868e61",
+    "etag": "53cf41957e536b25c6433516a14047c3",
     "links": {
-     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=47564",
-     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=47564&action=showObjectInGrid&ncc=1"
+     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=47618",
+     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=47618&action=showObjectInGrid&ncc=1"
     }
    }
   },
-  "MESSAGE_ID": 69000
+  "MESSAGE_ID": 69084
  },
  "time": {
-  "start": 1765167944,
-  "finish": 1765167944.87167,
-  "duration": 0.871670007705688,
+  "start": 1765191581,
+  "finish": 1765191581.78441,
+  "duration": 0.784405946731567,
   "processing": 0,
-  "date_start": "2025-12-08T04:25:44+00:00",
-  "date_finish": "2025-12-08T04:25:44+00:00",
-  "operating_reset_at": 1765168544,
+  "date_start": "2025-12-08T13:59:41+03:00",
+  "date_finish": "2025-12-08T13:59:41+03:00",
+  "operating_reset_at": 1765192181,
   "operating": 0
  }
 }

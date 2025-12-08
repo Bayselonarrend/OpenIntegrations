@@ -1,5 +1,5 @@
 oint bitrix24 SetUserParticipationStatus \
  --url "b24-ar17wx.bitrix24.by" \
- --event 3006 \
+ --event 3180 \
  --status "Y" \
  --token "***"
