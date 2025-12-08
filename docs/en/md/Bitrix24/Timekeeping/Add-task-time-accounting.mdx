@@ -27,8 +27,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
-<br/>
-
 :::tip
 Method at API documentation: [task.elapseditem.add](https://dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/add.php)
 :::
@@ -67,11 +65,11 @@ Method at API documentation: [task.elapseditem.add](https://dev.1c-bitrix.ru/res
         ```bash
             oint bitrix24 AddTaskTimeAccounting \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "8676" \
+             --task "8894" \
              --amount 7200 \
              --user 10 \
              --text "Time spent on work" \
-             --date "2025-09-30T20:19:18.3429581" \
+             --date "2025-11-08T13:56:01.130609" \
              --token "***"
         ```
     </TabItem>
@@ -80,11 +78,11 @@ Method at API documentation: [task.elapseditem.add](https://dev.1c-bitrix.ru/res
         ```batch
             oint bitrix24 AddTaskTimeAccounting ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "8676" ^
+             --task "8894" ^
              --amount 7200 ^
              --user 10 ^
              --text "Time spent on work" ^
-             --date "2025-09-30T20:19:18.3429581" ^
+             --date "2025-11-08T13:56:01.130609" ^
              --token "***"
         ```
     </TabItem>
@@ -93,15 +91,15 @@ Method at API documentation: [task.elapseditem.add](https://dev.1c-bitrix.ru/res
 
 ```json title="Result"
 {
- "result": 3266,
+ "result": 3270,
  "time": {
-  "start": 1765167855,
-  "finish": 1765167855.98905,
-  "duration": 0.989051103591919,
+  "start": 1765191362,
+  "finish": 1765191362.95962,
+  "duration": 0.95961594581604,
   "processing": 0,
-  "date_start": "2025-12-08T04:24:15+00:00",
-  "date_finish": "2025-12-08T04:24:15+00:00",
-  "operating_reset_at": 1765168455,
+  "date_start": "2025-12-08T13:56:02+03:00",
+  "date_finish": "2025-12-08T13:56:02+03:00",
+  "operating_reset_at": 1765191962,
   "operating": 0
  }
 }

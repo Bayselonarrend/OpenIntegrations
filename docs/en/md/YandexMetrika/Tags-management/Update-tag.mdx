@@ -23,8 +23,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Yandex
 
-<br/>
-
 :::tip
 Method at API documentation: [Changing a tag](https://yandex.ru/dev/metrika/en/management/openapi/label/updateLabel)
 :::
@@ -46,7 +44,7 @@ Method at API documentation: [Changing a tag](https://yandex.ru/dev/metrika/en/m
         ```bash
             oint metrika UpdateTag \
              --token "***" \
-             --label "320556" \
+             --label "321175" \
              --title "New tag title"
         ```
     </TabItem>
@@ -55,7 +53,7 @@ Method at API documentation: [Changing a tag](https://yandex.ru/dev/metrika/en/m
         ```batch
             oint metrika UpdateTag ^
              --token "***" ^
-             --label "320556" ^
+             --label "321175" ^
              --title "New tag title"
         ```
     </TabItem>
@@ -65,7 +63,7 @@ Method at API documentation: [Changing a tag](https://yandex.ru/dev/metrika/en/m
 ```json title="Result"
 {
  "label": {
-  "id": 321162,
+  "id": 321175,
   "name": "New tag title"
  }
 }

@@ -23,8 +23,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Structure - Get auth parameters
 
-<br/>
-
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
@@ -36,6 +34,26 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint vk GetAuthParameters \
+             --group "218861756" \
+             --app "51694790" \
+             --token "***"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint vk GetAuthParameters ^
+             --group "218861756" ^
+             --app "51694790" ^
+             --token "***"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

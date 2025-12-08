@@ -22,8 +22,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Structure Of KeyAndValue - Connection settings structure
 
-<br/>
-
 :::tip
 Can be passed as the `Connection` parameter in other functions instead of the actual connection from the `CreateConnection` function.
 
@@ -88,7 +86,7 @@ It is not recommended to use the connection configuration for multiple requests 
             # JSON data can also be passed as a path to a .json file
             
             oint sftp GetConnectionConfiguration \
-             --set "{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\vipxbxrz.y0f.tmp'}" \
+             --set "{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\spwtrptd.puh.tmp'}" \
              --proxy "{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}"
         ```
     </TabItem>
@@ -98,7 +96,7 @@ It is not recommended to use the connection configuration for multiple requests 
             :: JSON data can also be passed as a path to a .json file
             
             oint sftp GetConnectionConfiguration ^
-             --set "{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\vipxbxrz.y0f.tmp'}" ^
+             --set "{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\spwtrptd.puh.tmp'}" ^
              --proxy "{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}"
         ```
     </TabItem>
@@ -115,7 +113,7 @@ It is not recommended to use the connection configuration for multiple requests 
   "password": "***"
  },
  "proxy": {
-  "server": "host.docker.internal",
+  "server": "127.0.0.1",
   "port": 1080,
   "proxy_type": "socks5",
   "login": "proxyuser",

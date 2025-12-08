@@ -25,8 +25,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Airtable
 
-<br/>
-
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
@@ -58,7 +56,7 @@ import TabItem from '@theme/TabItem';
             
             oint airtable CreateTable \
              --token "***" \
-             --base "appSvHTETQWodBcs7" \
+             --base "appDAPUgejRUkRN89" \
              --title "TestTable2" \
              --fieldsdata "[{'name':'Number','type':'number','options':{'precision':'0'}},{'name':'String','type':'richText'},{'name':'Attachment','type':'multipleAttachments'},{'name':'Checkbox','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Date','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Phone','type':'phoneNumber'},{'name':'Email','type':'email'},{'name':'Link','type':'url'}]" \
              --description "NewTable"
@@ -71,7 +69,7 @@ import TabItem from '@theme/TabItem';
             
             oint airtable CreateTable ^
              --token "***" ^
-             --base "appSvHTETQWodBcs7" ^
+             --base "appDAPUgejRUkRN89" ^
              --title "TestTable2" ^
              --fieldsdata "[{'name':'Number','type':'number','options':{'precision':'0'}},{'name':'String','type':'richText'},{'name':'Attachment','type':'multipleAttachments'},{'name':'Checkbox','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Date','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Phone','type':'phoneNumber'},{'name':'Email','type':'email'},{'name':'Link','type':'url'}]" ^
              --description "NewTable"
@@ -82,22 +80,22 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Result"
 {
- "id": "tblDYzkywIhkmgrnY",
+ "id": "tbl4rSoQmWJlCCINH",
  "name": "TestTable2",
  "description": "NewTable",
- "primaryFieldId": "fld6FE3ayLhTHSt2z",
+ "primaryFieldId": "fldvnvJ8oeCOGLCCa",
  "fields": [
   {
    "type": "number",
    "options": {
     "precision": 0
    },
-   "id": "fld6FE3ayLhTHSt2z",
+   "id": "fldvnvJ8oeCOGLCCa",
    "name": "Number"
   },
   {
    "type": "richText",
-   "id": "fld3oHyo4e7UEWsU2",
+   "id": "fldaWwmDqXCBj8DWj",
    "name": "String"
   },
   {
@@ -105,7 +103,7 @@ import TabItem from '@theme/TabItem';
    "options": {
     "isReversed": false
    },
-   "id": "fldD1iYDa4UxLKNpC",
+   "id": "fld61hKftv4lVdcSn",
    "name": "Attachment"
   },
   {
@@ -114,7 +112,7 @@ import TabItem from '@theme/TabItem';
     "icon": "check",
     "color": "yellowBright"
    },
-   "id": "fldiBEXCZw7cpWqY8",
+   "id": "fldSO08buAFtDBrVY",
    "name": "Checkbox"
   },
   {
@@ -125,28 +123,28 @@ import TabItem from '@theme/TabItem';
      "format": "YYYY-MM-DD"
     }
    },
-   "id": "fld1B4SXrplcrFo9m",
+   "id": "fldUqug2S3pNJt95t",
    "name": "Date"
   },
   {
    "type": "phoneNumber",
-   "id": "fld8nSdz9nvj53ARH",
+   "id": "fld721mMtynNwxnoO",
    "name": "Phone"
   },
   {
    "type": "email",
-   "id": "fldREXmZ0KOyaIpyi",
+   "id": "fldRdZuUfelY9AQLh",
    "name": "Email"
   },
   {
    "type": "url",
-   "id": "fldcAGBOYRfPouCcV",
+   "id": "fldS1uTnpyxZ0XoKX",
    "name": "Link"
   }
  ],
  "views": [
   {
-   "id": "viw90F7j65a2fdk7P",
+   "id": "viwPjrCMjrBcq4xn2",
    "name": "Grid view",
    "type": "grid"
   }

@@ -25,8 +25,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
-<br/>
-
 :::tip
 Method at API documentation: [editMessageText](https://core.telegram.org/bots/api#editmessagetext)
 :::
@@ -49,8 +47,8 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
         ```bash
             oint telegram ReplaceMessageText \
              --token "***" \
-             --chat "@testsichee" \
-             --message "22392" \
+             --chat "***" \
+             --message "23100" \
              --text "<b>Bold text</b>" \
              --parsemode "HTML"
         ```
@@ -60,8 +58,8 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
         ```batch
             oint telegram ReplaceMessageText ^
              --token "***" ^
-             --chat "@testsichee" ^
-             --message "22392" ^
+             --chat "***" ^
+             --message "23100" ^
              --text "<b>Bold text</b>" ^
              --parsemode "HTML"
         ```
@@ -73,7 +71,7 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
 {
  "ok": true,
  "result": {
-  "message_id": 23077,
+  "message_id": 23100,
   "sender_chat": {
    "id": -1001893407333,
    "title": "Тестовый канал",
@@ -86,8 +84,8 @@ Method at API documentation: [editMessageText](https://core.telegram.org/bots/ap
    "username": "testsichee",
    "type": "channel"
   },
-  "date": 1765165045,
-  "edit_date": 1765165049,
+  "date": 1765185978,
+  "edit_date": 1765185991,
   "text": "New message text"
  }
 }

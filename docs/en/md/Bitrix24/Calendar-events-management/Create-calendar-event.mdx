@@ -23,8 +23,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
-<br/>
-
 :::tip
 Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-add.html)
 :::
@@ -112,7 +110,7 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
             
             oint bitrix24 CreateCalendarEvent \
              --url "b24-ar17wx.bitrix24.by" \
-             --fields "{'type':'user','ownerId':'1','from':'10/31/2025 8:25:32 PM','to':'10/31/2025 9:25:32 PM','section':'1630','name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%%23000000>','text_color':'%%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'11/10/2025 8:25:32 PM'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" \
+             --fields "{'type':'user','ownerId':'1','from':'12/9/2025 2:03:10 PM','to':'12/9/2025 3:03:10 PM','section':'1716','name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%%23000000>','text_color':'%%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'12/19/2025 2:03:10 PM'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'***','allow_invite':'***','hide_guests':'N'}}" \
              --token "***"
         ```
     </TabItem>
@@ -123,7 +121,7 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
             
             oint bitrix24 CreateCalendarEvent ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --fields "{'type':'user','ownerId':'1','from':'10/31/2025 8:25:32 PM','to':'10/31/2025 9:25:32 PM','section':'1630','name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%%23000000>','text_color':'%%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'11/10/2025 8:25:32 PM'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'Y','allow_invite':'N','hide_guests':'N'}}" ^
+             --fields "{'type':'user','ownerId':'1','from':'12/9/2025 2:03:10 PM','to':'12/9/2025 3:03:10 PM','section':'1716','name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%%23000000>','text_color':'%%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'12/19/2025 2:03:10 PM'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'***','allow_invite':'***','hide_guests':'N'}}" ^
              --token "***"
         ```
     </TabItem>
@@ -132,16 +130,16 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
 
 ```json title="Result"
 {
- "result": 3172,
+ "result": 3180,
  "time": {
-  "start": 1765168021,
-  "finish": 1765168021.25157,
-  "duration": 0.251565933227539,
+  "start": 1765191794,
+  "finish": 1765191794.74232,
+  "duration": 0.742316961288452,
   "processing": 0,
-  "date_start": "2025-12-08T04:27:01+00:00",
-  "date_finish": "2025-12-08T04:27:01+00:00",
-  "operating_reset_at": 1765168621,
-  "operating": 0.177593946456909
+  "date_start": "2025-12-08T14:03:14+03:00",
+  "date_finish": "2025-12-08T14:03:14+03:00",
+  "operating_reset_at": 1765192394,
+  "operating": 0.17150092124939
  }
 }
 ```
