@@ -24,8 +24,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
-<br/>
-
 :::tip
 Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/get.php)
 :::
@@ -55,8 +53,8 @@ Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/r
         ```bash
             oint bitrix24 GetTasksChecklistElement \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "8670" \
-             --element 6124 \
+             --task "8888" \
+             --element 6298 \
              --token "***"
         ```
     </TabItem>
@@ -65,8 +63,8 @@ Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/r
         ```batch
             oint bitrix24 GetTasksChecklistElement ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "8670" ^
-             --element 6124 ^
+             --task "8888" ^
+             --element 6298 ^
              --token "***"
         ```
     </TabItem>
@@ -76,9 +74,9 @@ Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/r
 ```json title="Result"
 {
  "result": {
-  "ID": "6290",
-  "TASK_ID": "8878",
-  "PARENT_ID": "6288",
+  "ID": "6298",
+  "TASK_ID": "8888",
+  "PARENT_ID": "6296",
   "CREATED_BY": "1",
   "TITLE": "New elements text",
   "SORT_INDEX": "1",
@@ -90,13 +88,13 @@ Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/r
   "ATTACHMENTS": []
  },
  "time": {
-  "start": 1765167757,
-  "finish": 1765167757.46719,
-  "duration": 0.467190027236938,
+  "start": 1765191115,
+  "finish": 1765191115.24122,
+  "duration": 0.241215944290161,
   "processing": 0,
-  "date_start": "2025-12-08T04:22:37+00:00",
-  "date_finish": "2025-12-08T04:22:37+00:00",
-  "operating_reset_at": 1765168357,
+  "date_start": "2025-12-08T13:51:55+03:00",
+  "date_finish": "2025-12-08T13:51:55+03:00",
+  "operating_reset_at": 1765191715,
   "operating": 0
  }
 }

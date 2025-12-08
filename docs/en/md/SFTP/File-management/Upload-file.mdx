@@ -23,8 +23,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - Processing result
 
-<br/>
-
 :::tip
 Parameters with Binary data type can also accept file paths on disk and URLs
 :::
@@ -98,8 +96,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             # JSON data can also be passed as a path to a .json file
             
             oint sftp UploadFile \
-             --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\cxo4rd4t.bdi.tmp','username':'bayselonarrend'}}" \
-             --file "C:\Users\bayse\AppData\Local\Temp\jcw5sxeu.s0l" \
+             --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\wz2mxfhx.z1d.tmp','username':'bayselonarrend'}}" \
+             --file "C:\Users\bayse\AppData\Local\Temp\tah44k4h.ij0" \
              --path "files_folder/pic_from_binary.png"
         ```
     </TabItem>
@@ -109,8 +107,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             :: JSON data can also be passed as a path to a .json file
             
             oint sftp UploadFile ^
-             --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\cxo4rd4t.bdi.tmp','username':'bayselonarrend'}}" ^
-             --file "C:\Users\bayse\AppData\Local\Temp\jcw5sxeu.s0l" ^
+             --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\wz2mxfhx.z1d.tmp','username':'bayselonarrend'}}" ^
+             --file "C:\Users\bayse\AppData\Local\Temp\tah44k4h.ij0" ^
              --path "files_folder/pic_from_binary.png"
         ```
     </TabItem>
@@ -120,6 +118,9 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```json title="Result"
 {
  "bytes": 2114023,
- "result": true
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
 ```

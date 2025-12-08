@@ -24,8 +24,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Google
 
-<br/>
-
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
@@ -49,9 +47,9 @@ import TabItem from '@theme/TabItem';
             
             oint gcalendar EditEvent \
              --token "***" \
-             --calendar "313c8f09201e93c0d539b3ad93aac84472eab7926cee7dbf3beb6ae5fc9b4fa4@group.calendar.google.com" \
+             --calendar "c4fc466acedffc47133e93bc879194cb2408df52ec1b5a283300d5bfbdee3f81@group.calendar.google.com" \
              --props "{'Description':'New event description'}" \
-             --event "coohs74193vs8bpj0l8a26qkc0"
+             --event "ika50tgcc3n39oqtd0egr45024"
         ```
     </TabItem>
   
@@ -61,9 +59,9 @@ import TabItem from '@theme/TabItem';
             
             oint gcalendar EditEvent ^
              --token "***" ^
-             --calendar "313c8f09201e93c0d539b3ad93aac84472eab7926cee7dbf3beb6ae5fc9b4fa4@group.calendar.google.com" ^
+             --calendar "c4fc466acedffc47133e93bc879194cb2408df52ec1b5a283300d5bfbdee3f81@group.calendar.google.com" ^
              --props "{'Description':'New event description'}" ^
-             --event "coohs74193vs8bpj0l8a26qkc0"
+             --event "ika50tgcc3n39oqtd0egr45024"
         ```
     </TabItem>
 </Tabs>
@@ -72,12 +70,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "kind": "calendar#event",
- "etag": "\"3530334519494110\"",
- "id": "e9m6quvepftdk4u3alttpjsfp0",
+ "etag": "\"3530380516300798\"",
+ "id": "ika50tgcc3n39oqtd0egr45024",
  "status": "confirmed",
- "htmlLink": "https://www.google.com/calendar/event?eid=ZTltNnF1dmVwZnRkazR1M2FsdHRwanNmcDAgY2YyMzJhYWY3ZTkyNmY2OWY3ZjQ3YmIxODE3YzRjOWJiNGY2MjJhN2I3OGM3YWYxMmExZmIxYTcyNDBkNzY1M0Bn",
- "created": "2025-12-08T04:14:18Z",
- "updated": "2025-12-08T04:14:19.747Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=aWthNTB0Z2NjM24zOW9xdGQwZWdyNDUwMjQgYzRmYzQ2NmFjZWRmZmM0NzEzM2U5M2JjODc5MTk0Y2IyNDA4ZGY1MmVjMWI1YTI4MzMwMGQ1YmZiZGVlM2Y4MUBn",
+ "created": "2025-12-08T10:37:35Z",
+ "updated": "2025-12-08T10:37:38.15Z",
  "summary": "New event",
  "description": "New event description",
  "location": "InOffice",
@@ -85,19 +83,19 @@ import TabItem from '@theme/TabItem';
   "email": "bayselonarrend@gmail.com"
  },
  "organizer": {
-  "email": "cf232aaf7e926f69f7f47bb1817c4c9bb4f622a7b78c7af12a1fb1a7240d7653@group.calendar.google.com",
+  "email": "c4fc466acedffc47133e93bc879194cb2408df52ec1b5a283300d5bfbdee3f81@group.calendar.google.com",
   "displayName": "TestCalendar",
   "self": true
  },
  "start": {
-  "dateTime": "2025-12-08T04:14:18+00:00",
+  "dateTime": "2025-12-08T16:37:33+03:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2025-12-08T05:14:18+00:00",
+  "dateTime": "2025-12-08T17:37:33+03:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "e9m6quvepftdk4u3alttpjsfp0@google.com",
+ "iCalUID": "ika50tgcc3n39oqtd0egr45024@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true

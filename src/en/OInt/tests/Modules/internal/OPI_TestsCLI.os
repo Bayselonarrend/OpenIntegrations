@@ -33532,7 +33532,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Process(CheckResult, "MongoDB", "UpdateDocuments", "Check 1");
 
     // Number inc
-    Filter = New Structure("productName", "Item 1");
+    Filter = New Structure("productName", "Product 1");
     Data = New Structure("__4inc", New Structure("quantity", 10));
 
     Options = New Structure;
@@ -33549,7 +33549,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateDocuments", Options);
     Process(Result, "MongoDB", "UpdateDocuments", 2);
 
-    Filter      = New Structure("productName", "Item 1");
+    Filter      = New Structure("productName", "Product 1");
     Options = New Structure;
     Options.Insert("dbc", Connection);
     Options.Insert("coll", Collection);
@@ -33560,7 +33560,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Process(CheckResult, "MongoDB", "UpdateDocuments", "Check 2");
 
     // Array insertion
-    Filter = New Structure("productName", "Item 2");
+    Filter = New Structure("productName", "Product 2");
     Data = New Structure("__4push", New Structure("tags", "updated"));
 
     Options = New Structure;
@@ -33577,7 +33577,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateDocuments", Options);
     Process(Result, "MongoDB", "UpdateDocuments", 3);
 
-    Filter      = New Structure("productName", "Item 2", "tags", "updated");
+    Filter      = New Structure("productName", "Product 2", "tags", "updated");
     Options = New Structure;
     Options.Insert("dbc", Connection);
     Options.Insert("coll", Collection);
@@ -33664,7 +33664,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Process(CheckResult, "MongoDB", "UpdateDocuments", "Check 5");
 
     // Field removing
-    Filter = New Structure("productName", "Item 3");
+    Filter = New Structure("productName", "Product 3");
     Data = New Structure("__4unset", New Structure("rating", ""));
 
     Options = New Structure;
@@ -33681,7 +33681,7 @@ Procedure MongoDB_UpdateDocuments(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "UpdateDocuments", Options);
     Process(Result, "MongoDB", "UpdateDocuments", 6);
 
-    Filter      = New Structure("productName", "Item 3");
+    Filter      = New Structure("productName", "Product 3");
     Parameters  = New Structure("projection", New Structure("productName,rating", 1, 1));
     Options = New Structure;
     Options.Insert("dbc", Connection);

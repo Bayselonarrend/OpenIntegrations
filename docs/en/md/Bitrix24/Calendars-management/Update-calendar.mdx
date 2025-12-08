@@ -24,8 +24,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
-<br/>
-
 :::tip
 Method at API documentation: [calendar.section.update](https://apidocs.bitrix24.ru/api-reference/calendar/calendar-section-update.html)
 :::
@@ -62,7 +60,7 @@ Method at API documentation: [calendar.section.update](https://apidocs.bitrix24.
             
             oint bitrix24 UpdateCalendar \
              --url "b24-ar17wx.bitrix24.by" \
-             --calendar 1630 \
+             --calendar 1716 \
              --fields "{'type':'user','ownerId':'1','name':'New calendar name','description':'This calendar has been changed'}" \
              --token "***"
         ```
@@ -74,7 +72,7 @@ Method at API documentation: [calendar.section.update](https://apidocs.bitrix24.
             
             oint bitrix24 UpdateCalendar ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --calendar 1630 ^
+             --calendar 1716 ^
              --fields "{'type':'user','ownerId':'1','name':'New calendar name','description':'This calendar has been changed'}" ^
              --token "***"
         ```
@@ -84,15 +82,15 @@ Method at API documentation: [calendar.section.update](https://apidocs.bitrix24.
 
 ```json title="Result"
 {
- "result": 1712,
+ "result": 1716,
  "time": {
-  "start": 1765168018,
-  "finish": 1765168018.67153,
-  "duration": 0.671528100967407,
+  "start": 1765191785,
+  "finish": 1765191785.45144,
+  "duration": 0.451443910598755,
   "processing": 0,
-  "date_start": "2025-12-08T04:26:58+00:00",
-  "date_finish": "2025-12-08T04:26:58+00:00",
-  "operating_reset_at": 1765168618,
+  "date_start": "2025-12-08T14:03:05+03:00",
+  "date_finish": "2025-12-08T14:03:05+03:00",
+  "operating_reset_at": 1765192385,
   "operating": 0
  }
 }

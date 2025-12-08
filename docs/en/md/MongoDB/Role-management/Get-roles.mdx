@@ -24,8 +24,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - Operation result
 
-<br/>
-
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
@@ -44,6 +42,32 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint mongodb GetRoles \
+             --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" \
+             --roles "{'role':'newrole','db':'admin'}" \
+             --db "admin" \
+             --sprv true
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint mongodb GetRoles ^
+             --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
+             --roles "{'role':'newrole','db':'admin'}" ^
+             --db "admin" ^
+             --sprv true
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
@@ -70,11 +94,11 @@ import TabItem from '@theme/TabItem';
     ],
     "roles": [
      {
-      "role": "read",
+      "role": "userAdmin",
       "db": "admin"
      },
      {
-      "role": "userAdmin",
+      "role": "read",
       "db": "admin"
      }
     ],

@@ -25,8 +25,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK Teams
 
-<br/>
-
 :::tip
 Only the chatId from events can be passed to the FromChatID (the code from the chat link is not suitable))
 
@@ -55,9 +53,9 @@ Method at API documentation: [GET /messages/sendText](https://teams.vk.com/botap
         ```bash
             oint vkteams ForwardMessage \
              --token "***" \
-             --messageid "7567067518909563316" \
+             --messageid "7581441335635231560" \
              --fromid "689203963@chat.agent" \
-             --chatid "AoLI0egLWBSLR1Ngn2w" \
+             --chatid "***" \
              --text "Additional text"
         ```
     </TabItem>
@@ -66,9 +64,9 @@ Method at API documentation: [GET /messages/sendText](https://teams.vk.com/botap
         ```batch
             oint vkteams ForwardMessage ^
              --token "***" ^
-             --messageid "7567067518909563316" ^
+             --messageid "7581441335635231560" ^
              --fromid "689203963@chat.agent" ^
-             --chatid "AoLI0egLWBSLR1Ngn2w" ^
+             --chatid "***" ^
              --text "Additional text"
         ```
     </TabItem>
@@ -77,7 +75,7 @@ Method at API documentation: [GET /messages/sendText](https://teams.vk.com/botap
 
 ```json title="Result"
 {
- "msgId": "7567067703593151913",
+ "msgId": "7581441524613787415",
  "ok": true
 }
 ```

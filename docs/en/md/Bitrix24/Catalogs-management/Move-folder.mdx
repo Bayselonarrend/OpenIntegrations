@@ -24,8 +24,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
-<br/>
-
 :::tip
 Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_moveto.php)
 :::
@@ -55,8 +53,8 @@ Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_
         ```bash
             oint bitrix24 MoveFolder \
              --url "b24-ar17wx.bitrix24.by" \
-             --folderid 46410 \
-             --tagetid 46406 \
+             --folderid 47594 \
+             --tagetid 47590 \
              --token "***"
         ```
     </TabItem>
@@ -65,8 +63,8 @@ Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_
         ```batch
             oint bitrix24 MoveFolder ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --folderid 46410 ^
-             --tagetid 46406 ^
+             --folderid 47594 ^
+             --tagetid 47590 ^
              --token "***"
         ```
     </TabItem>
@@ -76,16 +74,16 @@ Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_
 ```json title="Result"
 {
  "result": {
-  "ID": "47540",
+  "ID": "47594",
   "NAME": "New subfolder 2",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": "47540",
-  "PARENT_ID": 47536,
+  "REAL_OBJECT_ID": "47594",
+  "PARENT_ID": 47590,
   "DELETED_TYPE": "0",
-  "CREATE_TIME": "2025-12-08T04:23:45+00:00",
-  "UPDATE_TIME": "2025-12-08T04:23:47+00:00",
+  "CREATE_TIME": "2025-12-08T13:54:35+03:00",
+  "UPDATE_TIME": "2025-12-08T13:54:43+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -93,13 +91,13 @@ Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New folder 2/New subfolder 2"
  },
  "time": {
-  "start": 1765167838,
-  "finish": 1765167838.10665,
-  "duration": 0.106648921966553,
+  "start": 1765191312,
+  "finish": 1765191312.5167,
+  "duration": 0.516697883605957,
   "processing": 0,
-  "date_start": "2025-12-08T04:23:58+00:00",
-  "date_finish": "2025-12-08T04:23:58+00:00",
-  "operating_reset_at": 1765168438,
+  "date_start": "2025-12-08T13:55:12+03:00",
+  "date_finish": "2025-12-08T13:55:12+03:00",
+  "operating_reset_at": 1765191912,
   "operating": 0
  }
 }

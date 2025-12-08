@@ -25,8 +25,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
-<br/>
-
 :::tip
 Method at API documentation: [sendPoll](https://core.telegram.org/bots/api#sendpoll)
 :::
@@ -57,7 +55,7 @@ Method at API documentation: [sendPoll](https://core.telegram.org/bots/api#sendp
         ```bash
             oint telegram SendPoll \
              --token "***" \
-             --chat "@testsichee" \
+             --chat "***" \
              --question "What's your favorite color?" \
              --options "['Red','Yellow','Green','Blue']" \
              --anonymous true
@@ -68,7 +66,7 @@ Method at API documentation: [sendPoll](https://core.telegram.org/bots/api#sendp
         ```batch
             oint telegram SendPoll ^
              --token "***" ^
-             --chat "@testsichee" ^
+             --chat "***" ^
              --question "What's your favorite color?" ^
              --options "['Red','Yellow','Green','Blue']" ^
              --anonymous true
@@ -81,7 +79,7 @@ Method at API documentation: [sendPoll](https://core.telegram.org/bots/api#sendp
 {
  "ok": true,
  "result": {
-  "message_id": 18092,
+  "message_id": 18110,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -95,9 +93,9 @@ Method at API documentation: [sendPoll](https://core.telegram.org/bots/api#sendp
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1765165234,
+  "date": 1765186263,
   "poll": {
-   "id": "5309948749005460370",
+   "id": "5312200548819146542",
    "question": "What's your favorite color?",
    "options": [
     {

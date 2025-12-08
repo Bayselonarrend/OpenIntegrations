@@ -23,8 +23,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Green API
 
-<br/>
-
 :::tip
 Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/journals/GetChatHistory/)
 :::
@@ -52,7 +50,7 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
             
             oint greenapi GetChatHistory \
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
-             --chat "120363410406221140@g.us"
+             --chat "***"
         ```
     </TabItem>
   
@@ -62,7 +60,7 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
             
             oint greenapi GetChatHistory ^
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
-             --chat "120363410406221140@g.us"
+             --chat "***"
         ```
     </TabItem>
 </Tabs>
@@ -72,8 +70,20 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
 [
  {
   "type": "outgoing",
-  "idMessage": "3EB0C481F30377B441958C",
-  "timestamp": 1765171662,
+  "idMessage": "3EB015ED575C9964CAF8BB",
+  "timestamp": 1765193458,
+  "typeMessage": "deletedMessage",
+  "chatId": "120363410406221140@g.us",
+  "deletedMessageData": {
+   "stanzaId": "3EB0DA768FECDD566E3A4F"
+  },
+  "statusMessage": "sent",
+  "sendByApi": true
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "3EB0296F0AF65D7FAB033A",
+  "timestamp": 1765193453,
   "typeMessage": "extendedTextMessage",
   "chatId": "120363410406221140@g.us",
   "textMessage": "New message",
@@ -95,8 +105,8 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB0085CB4C7E6C7609BEE",
-  "timestamp": 1765171661,
+  "idMessage": "3EB0273596D53FE9DA0A09",
+  "timestamp": 1765193441,
   "typeMessage": "contactMessage",
   "chatId": "120363410406221140@g.us",
   "contact": {
@@ -106,7 +116,7 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
    "isForwarded": false
   },
   "quotedMessage": {
-   "stanzaId": "3EB07039F34957909C2488",
+   "stanzaId": "3EB022959C2D6133046981",
    "participant": "1234567890@c.us",
    "typeMessage": "contactMessage",
    "contact": {
@@ -129,8 +139,8 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB07039F34957909C2488",
-  "timestamp": 1765171660,
+  "idMessage": "3EB022959C2D6133046981",
+  "timestamp": 1765193437,
   "typeMessage": "contactMessage",
   "chatId": "120363410406221140@g.us",
   "contact": {
@@ -148,8 +158,8 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB0A3B59DF24EDB2D0F92",
-  "timestamp": 1765171659,
+  "idMessage": "3EB03BB324C068D806A80A",
+  "timestamp": 1765193432,
   "typeMessage": "locationMessage",
   "chatId": "120363410406221140@g.us",
   "location": {
@@ -162,7 +172,7 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
    "isForwarded": false
   },
   "quotedMessage": {
-   "stanzaId": "3EB05B70982D3B86CDA702",
+   "stanzaId": "3EB0A6D599D0DC92AA54A7",
    "participant": "1234567890@c.us",
    "typeMessage": "locationMessage",
    "location": {
@@ -188,8 +198,8 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
  },
  {
   "type": "outgoing",
-  "idMessage": "3EB05B70982D3B86CDA702",
-  "timestamp": 1765171658,
+  "idMessage": "3EB0A6D599D0DC92AA54A7",
+  "timestamp": 1765193429,
   "typeMessage": "locationMessage",
   "chatId": "120363410406221140@g.us",
   "location": {
@@ -207,17 +217,5 @@ Method at API documentation: [GetChatHistory](https://green-api.com/docs/api/jou
   "editedMessageId": "",
   "isEdited": false,
   "isDeleted": false
- },
- {
-  "type": "outgoing",
-  "idMessage": "3EB07F686D562F9B0E466A",
-  "timestamp": 1765171657,
-  "typeMessage": "pollMessage",
-  "chatId": "120363410406221140@g.us",
-  "pollMessageData": {
-   "name": "What's your favorite color?",
-   "options": [
-    {
-     "optionName": "Red"
 ...
 ```

@@ -22,8 +22,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Green API
 
-<br/>
-
 :::tip
 Once the notification has been successfully accepted, you must remove it from the queue using the `DeleteNotificationFromQueue` method
 
@@ -75,8 +73,8 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/docs/ap
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1765101384,
-  "idMessage": "3EB08C25D18AFB00749EE3",
+  "timestamp": 1765115624,
+  "idMessage": "3EB0631F5E9A4C1E15C428",
   "senderData": {
    "chatId": "***",
    "chatName": "***",
@@ -85,26 +83,15 @@ Method at API documentation: [ReceiveNotification](https://green-api.com/docs/ap
    "senderContactName": "***"
   },
   "messageData": {
-   "typeMessage": "quotedMessage",
+   "typeMessage": "extendedTextMessage",
    "extendedTextMessageData": {
     "text": "Новое сообщение",
-    "stanzaId": "3EB0D3B2EBAFCD19423B99",
-    "participant": "1234567890@c.us"
-   },
-   "quotedMessage": {
-    "stanzaId": "3EB0D3B2EBAFCD19423B99",
-    "participant": "1234567890@c.us",
-    "typeMessage": "extendedTextMessage",
-    "textMessage": "Новое сообщение",
-    "extendedTextMessage": {
-     "text": "Новое сообщение",
-     "description": "",
-     "title": "",
-     "previewType": "None",
-     "jpegThumbnail": "",
-     "forwardingScore": 0,
-     "isForwarded": false
-    }
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
    }
   }
  }

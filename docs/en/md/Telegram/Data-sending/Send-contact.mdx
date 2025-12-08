@@ -26,8 +26,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
-<br/>
-
 :::tip
 Method at API documentation: [sendContact](https://core.telegram.org/bots/api#sendcontact)
 :::
@@ -54,7 +52,7 @@ Method at API documentation: [sendContact](https://core.telegram.org/bots/api#se
         ```bash
             oint telegram SendContact \
              --token "***" \
-             --chat "@testsichee" \
+             --chat "***" \
              --name "Петр" \
              --surname "Петров" \
              --phone "***"
@@ -65,7 +63,7 @@ Method at API documentation: [sendContact](https://core.telegram.org/bots/api#se
         ```batch
             oint telegram SendContact ^
              --token "***" ^
-             --chat "@testsichee" ^
+             --chat "***" ^
              --name "Петр" ^
              --surname "Петров" ^
              --phone "***"
@@ -78,7 +76,7 @@ Method at API documentation: [sendContact](https://core.telegram.org/bots/api#se
 {
  "ok": true,
  "result": {
-  "message_id": 18091,
+  "message_id": 18109,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -92,7 +90,7 @@ Method at API documentation: [sendContact](https://core.telegram.org/bots/api#se
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1765165209,
+  "date": 1765186235,
   "contact": {
    "phone_number": "***",
    "first_name": "Петр",

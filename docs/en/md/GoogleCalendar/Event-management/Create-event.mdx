@@ -23,8 +23,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  String, Arbitrary, HTTPResponse, BinaryData, Undefined - Google server response
 
-<br/>
-
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
@@ -63,8 +61,8 @@ import TabItem from '@theme/TabItem';
             
             oint gcalendar CreateEvent \
              --token "***" \
-             --calendar "313c8f09201e93c0d539b3ad93aac84472eab7926cee7dbf3beb6ae5fc9b4fa4@group.calendar.google.com" \
-             --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'10/30/2025 8:02:07 PM','EndDate':'10/30/2025 9:02:07 PM','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
+             --calendar "c4fc466acedffc47133e93bc879194cb2408df52ec1b5a283300d5bfbdee3f81@group.calendar.google.com" \
+             --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'12/8/2025 1:37:33 PM','EndDate':'12/8/2025 2:37:33 PM','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
         ```
     </TabItem>
   
@@ -74,8 +72,8 @@ import TabItem from '@theme/TabItem';
             
             oint gcalendar CreateEvent ^
              --token "***" ^
-             --calendar "313c8f09201e93c0d539b3ad93aac84472eab7926cee7dbf3beb6ae5fc9b4fa4@group.calendar.google.com" ^
-             --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'10/30/2025 8:02:07 PM','EndDate':'10/30/2025 9:02:07 PM','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
+             --calendar "c4fc466acedffc47133e93bc879194cb2408df52ec1b5a283300d5bfbdee3f81@group.calendar.google.com" ^
+             --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'12/8/2025 1:37:33 PM','EndDate':'12/8/2025 2:37:33 PM','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
         ```
     </TabItem>
 </Tabs>
@@ -84,12 +82,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "kind": "calendar#event",
- "etag": "\"3530334517604222\"",
- "id": "e9m6quvepftdk4u3alttpjsfp0",
+ "etag": "\"3530380510836030\"",
+ "id": "ika50tgcc3n39oqtd0egr45024",
  "status": "confirmed",
- "htmlLink": "https://www.google.com/calendar/event?eid=ZTltNnF1dmVwZnRkazR1M2FsdHRwanNmcDAgY2YyMzJhYWY3ZTkyNmY2OWY3ZjQ3YmIxODE3YzRjOWJiNGY2MjJhN2I3OGM3YWYxMmExZmIxYTcyNDBkNzY1M0Bn",
- "created": "2025-12-08T04:14:18Z",
- "updated": "2025-12-08T04:14:18.802Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=aWthNTB0Z2NjM24zOW9xdGQwZWdyNDUwMjQgYzRmYzQ2NmFjZWRmZmM0NzEzM2U5M2JjODc5MTk0Y2IyNDA4ZGY1MmVjMWI1YTI4MzMwMGQ1YmZiZGVlM2Y4MUBn",
+ "created": "2025-12-08T10:37:35Z",
+ "updated": "2025-12-08T10:37:35.418Z",
  "summary": "New event",
  "description": "TestEventDescription",
  "location": "InOffice",
@@ -97,19 +95,19 @@ import TabItem from '@theme/TabItem';
   "email": "bayselonarrend@gmail.com"
  },
  "organizer": {
-  "email": "cf232aaf7e926f69f7f47bb1817c4c9bb4f622a7b78c7af12a1fb1a7240d7653@group.calendar.google.com",
+  "email": "c4fc466acedffc47133e93bc879194cb2408df52ec1b5a283300d5bfbdee3f81@group.calendar.google.com",
   "displayName": "TestCalendar",
   "self": true
  },
  "start": {
-  "dateTime": "2025-12-08T04:14:18+00:00",
+  "dateTime": "2025-12-08T16:37:33+03:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2025-12-08T05:14:18+00:00",
+  "dateTime": "2025-12-08T17:37:33+03:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "e9m6quvepftdk4u3alttpjsfp0@google.com",
+ "iCalUID": "ika50tgcc3n39oqtd0egr45024@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true

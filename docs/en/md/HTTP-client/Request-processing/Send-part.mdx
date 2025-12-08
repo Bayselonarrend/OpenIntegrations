@@ -23,8 +23,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
 
-<br/>
-
 
 :::caution
 **NOCLI:** this method is not available in CLI version
@@ -53,4 +51,30 @@ import TabItem from '@theme/TabItem';
 
 
 
-
+```json title="Result"
+{
+ "args": {},
+ "data": "data for",
+ "files": {},
+ "form": {},
+ "headers": {
+  "Accept": "*/*",
+  "Accept-Charset": "utf-8",
+  "Accept-Encoding": "gzip",
+  "Connection": "Keep-Alive",
+  "Content-Length": "8",
+  "Content-Range": "bytes 5-12/21",
+  "Content-Type": "application/octet-stream",
+  "Host": "localhost:2424",
+  "Max-Forwards": "10",
+  "User-Agent": "1Script v$2.0.0.0",
+  "X-Arr-Log-Id": "98e31772-6455-4ca1-bb04-c20604091c73",
+  "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
+  "X-Forwarded-Host": "bin.openintegrations.dev",
+  "X-Original-Url": "***"
+ },
+ "json": null,
+ "origin": "***",
+ "url": "https://bin.openintegrations.dev/put"
+}
+```

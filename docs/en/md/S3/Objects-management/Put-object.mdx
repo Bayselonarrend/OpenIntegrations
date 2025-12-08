@@ -26,8 +26,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Structure Of KeyAndValue - serialized JSON response from storage
 
-<br/>
-
 :::tip
 Method at AWS documentation (default): [PutObject](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)<br/>Method at AWS documentation (multipart): [Multipart upload](https://docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
 
@@ -69,11 +67,11 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             # JSON data can also be passed as a path to a .json file
             
             oint s3 PutObject \
-             --name "fileChunked.mp3" \
-             --bucket "opi-dirbucket4" \
-             --data "https://hut.openintegrations.dev/test_data/song.mp3" \
-             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'5242880'}" \
-             --dir true
+             --name "picture.jpg" \
+             --bucket "cd01a1f0" \
+             --data "https://hut.openintegrations.dev/test_data/picture.jpg" \
+             --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+             --dir false
         ```
     </TabItem>
   
@@ -82,11 +80,11 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             :: JSON data can also be passed as a path to a .json file
             
             oint s3 PutObject ^
-             --name "fileChunked.mp3" ^
-             --bucket "opi-dirbucket4" ^
-             --data "https://hut.openintegrations.dev/test_data/song.mp3" ^
-             --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'5242880'}" ^
-             --dir true
+             --name "picture.jpg" ^
+             --bucket "cd01a1f0" ^
+             --data "https://hut.openintegrations.dev/test_data/picture.jpg" ^
+             --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+             --dir false
         ```
     </TabItem>
 </Tabs>
