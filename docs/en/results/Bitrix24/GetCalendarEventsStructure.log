@@ -21,7 +21,7 @@
   "COUNT": "<number of repetitions>",
   "INTERVAL": "<repetition interval>",
   "BYDAY": [
-   "<days of the week: SU, MO, TU, WE, TH, FR, SA>"
+   "***"
   ],
   "UNTIL": "<repetition end date>"
  },
@@ -37,8 +37,8 @@
  "host": "<The identifier of the event organiser. If is_meeting = Y>",
  "meeting": {
   "notify": "<flag for notification of confirmation or cancellation of participants>",
-  "reinvite": "<flag for requesting re-confirmation of participation when editing an event>",
-  "allow_invite": "<flag to allow participants to invite others to the event>",
+  "reinvite": "***",
+  "allow_invite": "***",
   "hide_guests": "<flag to hide the list of participants>"
  }
 }

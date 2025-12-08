@@ -21,7 +21,7 @@
     "DELETE_FAVORITE": false,
     "RATE": true,
     "TAKE": false,
-    "EDIT.ORIGINATOR": false,
+    "EDIT.ORIGINATOR": "***",
     "CHECKLIST.REORDER": true,
     "ELAPSEDTIME.ADD": true,
     "DAYPLAN.TIMER.TOGGLE": false,
@@ -50,7 +50,7 @@
     "DELETE_FAVORITE": false,
     "RATE": false,
     "TAKE": false,
-    "EDIT.ORIGINATOR": false,
+    "EDIT.ORIGINATOR": "***",
     "CHECKLIST.REORDER": false,
     "ELAPSEDTIME.ADD": false,
     "DAYPLAN.TIMER.TOGGLE": false,
@@ -62,13 +62,13 @@
   }
  },
  "time": {
-  "start": 1761911596,
-  "finish": 1761911596.42245,
-  "duration": 0.422449111938477,
+  "start": 1765167752,
+  "finish": 1765167752.93076,
+  "duration": 0.930754899978638,
   "processing": 0,
-  "date_start": "2025-10-31T11:53:16+00:00",
-  "date_finish": "2025-10-31T11:53:16+00:00",
-  "operating_reset_at": 1761912196,
+  "date_start": "2025-12-08T04:22:32+00:00",
+  "date_finish": "2025-12-08T04:22:32+00:00",
+  "operating_reset_at": 1765168352,
   "operating": 0
  }
 }

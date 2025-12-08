@@ -1,0 +1,40 @@
+﻿{
+ "result": true,
+ "data": {
+  "databases": [
+   {
+    "name": "admin",
+    "sizeOnDisk": 262144,
+    "empty": false
+   },
+   {
+    "name": "config",
+    "sizeOnDisk": 61440,
+    "empty": false
+   },
+   {
+    "name": "local",
+    "sizeOnDisk": 81920,
+    "empty": false
+   },
+   {
+    "name": "main",
+    "sizeOnDisk": 73728,
+    "empty": false
+   },
+   {
+    "name": "openyellow",
+    "sizeOnDisk": 286720,
+    "empty": false
+   },
+   {
+    "name": "test_db",
+    "sizeOnDisk": 40960,
+    "empty": false
+   }
+  ],
+  "totalSize": 806912,
+  "totalSizeMb": 0,
+  "ok": 1
+ }
+}
