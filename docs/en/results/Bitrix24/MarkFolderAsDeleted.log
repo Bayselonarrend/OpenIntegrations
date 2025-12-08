@@ -1,29 +1,29 @@
 ﻿{
  "result": {
-  "ID": "47592",
+  "ID": "47646",
   "NAME": "New catalog",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": "47592",
+  "REAL_OBJECT_ID": "47646",
   "PARENT_ID": "3",
   "DELETED_TYPE": "3",
-  "CREATE_TIME": "2025-12-08T13:54:20+03:00",
-  "UPDATE_TIME": "2025-12-08T13:54:55+03:00",
-  "DELETE_TIME": "2025-12-08T13:55:14+03:00",
+  "CREATE_TIME": "2025-12-08T14:31:41+00:00",
+  "UPDATE_TIME": "2025-12-08T14:32:22+00:00",
+  "DELETE_TIME": "2025-12-08T14:32:44+00:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog"
  },
  "time": {
-  "start": 1765191316,
-  "finish": 1765191316.3875,
-  "duration": 0.387500047683716,
+  "start": 1765204367,
+  "finish": 1765204367.22227,
+  "duration": 0.222270011901855,
   "processing": 0,
-  "date_start": "2025-12-08T13:55:16+03:00",
-  "date_finish": "2025-12-08T13:55:16+03:00",
-  "operating_reset_at": 1765191916,
+  "date_start": "2025-12-08T14:32:47+00:00",
+  "date_finish": "2025-12-08T14:32:47+00:00",
+  "operating_reset_at": 1765204967,
   "operating": 0
  }
 }

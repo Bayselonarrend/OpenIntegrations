@@ -3,4 +3,4 @@
 oint s3 HeadObject \
  --name "pictureU.jpg" \
  --bucket "newbucket2" \
- --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+ --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"

@@ -6,4 +6,4 @@ oint greenapi SendFileByURL ^
  --url "https://hut.openintegrations.dev/test_data/video.mp4" ^
  --filename "vid.mp4" ^
  --caption "File description" ^
- --quoted "3EB0F18194E96E6BF1F887"
+ --quoted "3EB0EC0FD01B4275703546"

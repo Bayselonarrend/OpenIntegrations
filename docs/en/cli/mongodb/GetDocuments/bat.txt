@@ -4,4 +4,4 @@ oint mongodb GetDocuments ^
  --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
  --coll "new_collection" ^
  --db "main" ^
- --query "{'category':'electronics'}"
+ --query "{'stringField':'Text','doubleField':'999'}"
