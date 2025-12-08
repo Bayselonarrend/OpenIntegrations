@@ -2,6 +2,6 @@
 
 oint greenapi SendContact \
  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
- --chat "120363410406221140@g.us" \
+ --chat "***" \
  --contact "{'phoneContact':'79001234568','company':'Bicycle'}" \
- --quoted "BAE5E44740B9ED9C"
+ --quoted "3EB022959C2D6133046981"

@@ -2,7 +2,7 @@
  "result": true,
  "data": [
   {
-   "_id": "69364f5d9402ea890b513a25",
+   "_id": "6936a8939402ea890b513c40",
    "stringField": "Text",
    "oidField": "63ceed18f71dda7d8cf21e8e",
    "jsField": "const result = [1, 2, 3].map(x => x * 2).filter(x => x > 3);",
@@ -12,7 +12,7 @@
    "doubleField": 124.456,
    "boolField": true,
    "dateField": "2025-11-15T10:55:41Z",
-   "tsField": "Timestamp(1765166941, 0)",
+   "tsField": "Timestamp(1765200577, 0)",
    "regexpField": "/[a-z]+@[a-z]+\\.[a-z]+/i",
    "binaryField": {
     "__B64_BINARY__": "VGV4dA=="
@@ -30,7 +30,7 @@
    ]
   },
   {
-   "_id": "69364f5d9402ea890b513a24",
+   "_id": "6936a8939402ea890b513c3f",
    "stringField": "Text",
    "intField": 200,
    "doubleField": 123.456,
@@ -43,7 +43,7 @@
     "text": "Text",
     "number": 10
    },
-   "dateField": "2025-12-08T04:09:01.088Z",
+   "dateField": "2025-12-08T13:29:37.35Z",
    "nullField": null
   }
  ]

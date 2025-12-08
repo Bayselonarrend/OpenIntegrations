@@ -1,0 +1,7 @@
+:: JSON data can also be passed as a path to a .json file
+
+oint mongodb CreateCollection ^
+ --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
+ --name "test_collection" ^
+ --db "test_database" ^
+ --params "{'validator':{'$expr':[{'$gte':['$total','0']},{'$lte':['$status','3']}]}}"

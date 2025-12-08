@@ -1,5 +1,5 @@
 oint telegram SendLocation \
  --token "***" \
- --chat "@testsichee" \
+ --chat "***" \
  --lat "48.87373649724122" \
  --long "48.87373649724122"

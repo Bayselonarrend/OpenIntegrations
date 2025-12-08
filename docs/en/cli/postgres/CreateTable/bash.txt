@@ -2,6 +2,6 @@
 
 oint postgres CreateTable \
  --table "somename" \
- --cols "{'bool_field':'BOOL','oldchar_field':'\"char\"','smallint_field':'SMALLINT','smallserial_field':'SMALLSERIAL','int_field':'INT','serial_field':'SERIAL','oid_field':'OID','bigint_field':'BIGINT','bigserial_field':'BIGSERIAL','real_field':'REAL','dp_field':'DOUBLE PRECISION','text_field':'TEXT','varchar_field':'VARCHAR','charn_field':'CHAR(3)','char_field':'CHAR','name_field':'NAME','bytea_field':'BYTEA','ts_field':'TIMESTAMP','tswtz_field':'TIMESTAMP WITH TIME ZONE','ip_field':'INET','json_field':'JSON','jsonb_field':'JSONB','date_field':'DATE','time_field':'TIME','uuid_field':'UUID','wtf_field':'WTF'}" \
+ --cols "{'bool_field':'BOOL','oldchar_field':'\"char\"','smallint_field':'SMALLINT','smallserial_field':'SMALLSERIAL','int_field':'INT','serial_field':'SERIAL','oid_field':'OID','bigint_field':'BIGINT','bigserial_field':'BIGSERIAL','real_field':'REAL','dp_field':'DOUBLE PRECISION','text_field':'TEXT','varchar_field':'VARCHAR','charn_field':'CHAR(3)','char_field':'CHAR','name_field':'NAME','bytea_field':'BYTEA','ts_field':'TIMESTAMP','tswtz_field':'TIMESTAMP WITH TIME ZONE','ip_field':'INET','json_field':'JSON','jsonb_field':'JSONB','date_field':'DATE','time_field':'TIME','uuid_field':'UUID','numeric_field':'NUMERIC(15, 2)','wtf_field':'WTF'}" \
  --dbc "postgresql://bayselonarrend:***@127.0.0.1:5432/" \
  --tls "{'use_tls':true,'accept_invalid_certs':true}"

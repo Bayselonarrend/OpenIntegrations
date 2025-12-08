@@ -2,4 +2,4 @@
 
 oint greenmax GetContactInformation ^
  --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
- --chat "87654321"
+ --chat "***"

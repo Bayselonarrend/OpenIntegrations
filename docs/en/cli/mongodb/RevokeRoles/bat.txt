@@ -1,0 +1,7 @@
+:: JSON data can also be passed as a path to a .json file
+
+oint mongodb RevokeRoles ^
+ --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
+ --user "bayselonarrend" ^
+ --roles "{'role':'newrole','db':'admin'}" ^
+ --db "admin"

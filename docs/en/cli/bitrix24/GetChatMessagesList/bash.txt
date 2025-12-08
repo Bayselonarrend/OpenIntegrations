@@ -1,5 +1,5 @@
 oint bitrix24 GetChatMessagesList \
  --url "b24-ar17wx.bitrix24.by" \
- --chat 10 \
+ --chat "***" \
  --first 0 \
  --token "***"

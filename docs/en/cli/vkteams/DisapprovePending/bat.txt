@@ -1,3 +1,3 @@
 oint vkteams DisapprovePending ^
  --token "***" ^
- --chatid "689203963@chat.agent"
+ --chatid "***"

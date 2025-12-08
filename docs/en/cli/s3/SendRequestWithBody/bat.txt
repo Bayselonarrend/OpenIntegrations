@@ -2,5 +2,5 @@
 
 oint s3 SendRequestWithBody ^
  --method "PUT" ^
- --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+ --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
  --body "C:\test_data\document.docx"

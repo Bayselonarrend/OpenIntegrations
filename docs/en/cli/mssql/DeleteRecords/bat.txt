@@ -2,6 +2,6 @@
 
 oint mssql DeleteRecords ^
  --table "test_data" ^
- --filter "[{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':false,'union':'AND'}]" ^
+ --filter "[{'field':'gender','type':'=','value':{'NVARCHAR':'Male'},'raw':false,'union':'AND'},{'field':'ip_address','type':'=','value':{'NVARCHAR':'127.0.0.1'},'raw':false}]" ^
  --dbc "Server=127.0.0.1;Database=***;User Id=SA;Password=***;" ^
  --tls "{'use_tls':true,'accept_invalid_certs':true}"

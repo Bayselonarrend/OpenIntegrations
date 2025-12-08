@@ -2,4 +2,4 @@
 
 oint greenapi ArchiveChat \
  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
- --chat "120363410406221140@g.us"
+ --chat "***"

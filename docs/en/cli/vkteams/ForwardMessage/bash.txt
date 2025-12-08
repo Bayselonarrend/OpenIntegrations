@@ -1,6 +1,6 @@
 oint vkteams ForwardMessage \
  --token "***" \
- --messageid "7567067518909563316" \
+ --messageid "7581441335635231560" \
  --fromid "689203963@chat.agent" \
- --chatid "AoLI0egLWBSLR1Ngn2w" \
+ --chatid "***" \
  --text "Additional text"

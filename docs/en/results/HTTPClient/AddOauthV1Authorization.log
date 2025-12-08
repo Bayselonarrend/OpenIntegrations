@@ -4,16 +4,16 @@
   "Accept": "*/*",
   "Accept-Charset": "utf-8",
   "Accept-Encoding": "gzip",
-  "Authorization": "OAuth oauth_consumer_key=\"***\",oauth_token=\"***\",oauth_signature_method=\"HMAC-SHA256\",oauth_timestamp=\"1761854741\",oauth_nonce=\"1761854741\",oauth_version=\"1.0\",oauth_signature=apHr%2BD5Y1MZlN0evK6sMjMHcLzopBvikffiXBHysfdw%3D",
+  "Authorization": "OAuth oauth_consumer_key=\"***\",oauth_token=\"***\",oauth_signature_method=\"HMAC-SHA256\",oauth_timestamp=\"1765201495\",oauth_nonce=\"1765201495\",oauth_version=\"1.0\",oauth_signature=8vdvhJNZYmaXuZrVybQDcETAT4A3xtAs%2B9VeOnznHHo%3D",
   "Connection": "Keep-Alive",
   "Content-Length": "0",
   "Host": "localhost:2424",
   "Max-Forwards": "10",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Arr-Log-Id": "4cf87154-a0ea-4585-a7ce-7644cfdd61ae",
+  "X-Arr-Log-Id": "263e8182-f648-4209-bc33-82a6423e1c16",
   "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
   "X-Forwarded-Host": "bin.openintegrations.dev",
-  "X-Original-Url": "/get"
+  "X-Original-Url": "***"
  },
  "origin": "***",
  "url": "https://bin.openintegrations.dev/get"
