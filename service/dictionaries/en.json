@@ -2980,6 +2980,7 @@
 "ПолучитьСостав": "GetComposition",
 "ШаблонПроверки": "CheckTemplate",
 "ПозицияВПотоке": "PositionInStream",
+"ПозицияВПотоке.Начало": "PositionInStream.Begin",
 "ТаблицаСправка": "HelpTable",
 "ЗначениеДанных": "DataValue",
 "ДропБоксРабота": "DropboxWork",
