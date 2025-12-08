@@ -1,5 +1,5 @@
 oint telegram SendGif \
  --token "***" \
- --chat "@testsichee" \
+ --chat "***" \
  --text "Строковое значение" \
- --gif "C:\Users\bayse\AppData\Local\Temp\tqwy2iea.fsj"
+ --gif "C:\Users\bayse\AppData\Local\Temp\l2vp153b.kjw"

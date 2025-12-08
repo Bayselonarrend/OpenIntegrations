@@ -1,0 +1,29 @@
+﻿{
+ "result": true,
+ "data": {
+  "cursor": {
+   "nextBatch": [
+    {
+     "_id": "6936a8939402ea890b513c3f",
+     "stringField": "Text",
+     "intField": 200,
+     "doubleField": 123.456,
+     "boolField": true,
+     "arrayField": [
+      "***",
+      "***"
+     ],
+     "docField": {
+      "text": "Text",
+      "number": 10
+     },
+     "dateField": "2025-12-08T13:29:37.35Z",
+     "nullField": null
+    }
+   ],
+   "id": 0,
+   "ns": "main.new_collection"
+  },
+  "ok": 1
+ }
+}

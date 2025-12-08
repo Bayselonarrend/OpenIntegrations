@@ -2,8 +2,8 @@
 
 oint greenapi SendFile ^
  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
- --chat "120363410406221140@g.us" ^
+ --chat "***" ^
  --file "https://hut.openintegrations.dev/test_data/video.mp4" ^
  --filename "vid.mp4" ^
  --caption "File description" ^
- --quoted "BAE567CCD78F0903"
+ --quoted "3EB0E940C11A88A8A213BF"

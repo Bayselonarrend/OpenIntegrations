@@ -1,5 +1,5 @@
 oint bitrix24 MarkMessageAsUnreaded \
  --url "b24-ar17wx.bitrix24.by" \
- --chat 10 \
- --message 16 \
+ --chat "***" \
+ --message 4286 \
  --token "***"

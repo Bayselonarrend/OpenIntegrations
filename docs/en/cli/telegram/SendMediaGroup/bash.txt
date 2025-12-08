@@ -2,6 +2,6 @@
 
 oint telegram SendMediaGroup \
  --token "***" \
- --chat "@testsichee" \
+ --chat "***" \
  --text "Строковое значение" \
- --media "{'https://hut.openintegrations.dev/test_data/document.docx':'document','C:\\Users\\bayse\\AppData\\Local\\Temp\\r3htsmor.1bm.docx':'document'}"
+ --media "{'https://hut.openintegrations.dev/test_data/document.docx':'document','C:\\Users\\bayse\\AppData\\Local\\Temp\\tk35qb2u.i0y.docx':'document'}"

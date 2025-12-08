@@ -2,5 +2,5 @@
 
 oint greenmax ChangeGroupSettings \
  --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
- --chat "-68929070366805" \
+ --chat "***" \
  --set "{'allowParticipantsEditGroupSettings':true,'allowParticipantsPinMessages':false,'allowParticipantsAddMembers':false}"

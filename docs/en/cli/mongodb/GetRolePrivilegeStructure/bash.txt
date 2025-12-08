@@ -1,0 +1,5 @@
+# JSON data can also be passed as a path to a .json file
+
+oint mongodb GetRolePrivilegeStructure \
+ --res "{'db':'main','collection':'new_collection'}" \
+ --act "['find','insert','update']"

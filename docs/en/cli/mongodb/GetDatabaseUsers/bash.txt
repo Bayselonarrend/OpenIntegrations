@@ -1,0 +1,3 @@
+oint mongodb GetDatabaseUsers \
+ --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" \
+ --db "main"

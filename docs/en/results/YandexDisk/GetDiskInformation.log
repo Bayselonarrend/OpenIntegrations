@@ -1,6 +1,6 @@
 ﻿{
  "total_space": 220117073920,
- "used_space": 4099553879,
+ "used_space": 4101667902,
  "trash_size": 2400736808,
  "max_file_size": 53687091200,
  "paid_max_file_size": 53687091200,
@@ -23,17 +23,17 @@
   "calendar": "disk:/Материалы встреч"
  },
  "is_paid": true,
- "revision": 1765135722892406,
+ "revision": 1765167179170377,
  "user": {
   "uid": "1573541518",
   "login": "bayselonarrend",
   "display_name": "bayselonarrend",
   "country": "by",
   "is_child": false,
-  "reg_time": "2024-02-01T12:13:41+00:00"
+  "reg_time": "2024-02-01T15:13:41+03:00"
  },
  "unlimited_autoupload_enabled": false,
- "reg_time": "2024-02-01T12:13:41+00:00",
+ "reg_time": "2024-02-01T15:13:41+03:00",
  "is_idm_managed_public_access": false,
  "is_idm_managed_folder_address_access": false,
  "payment_flow": true,

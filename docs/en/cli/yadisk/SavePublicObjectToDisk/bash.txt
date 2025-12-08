@@ -1,3 +1,3 @@
 oint yadisk SavePublicObjectToDisk \
  --token "***" \
- --url "https://yadi.sk/d/WNo9S2b3fw_KLg"
+ --url "https://yadi.sk/d/ylKVLs5phZ1Olg"

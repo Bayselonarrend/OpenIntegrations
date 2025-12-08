@@ -1,4 +1,4 @@
 oint bitrix24 DeletePost \
  --url "b24-ar17wx.bitrix24.by" \
- --postid 3306 \
+ --postid 3392 \
  --token "***"
