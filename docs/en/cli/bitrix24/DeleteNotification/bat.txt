@@ -1,4 +1,4 @@
 oint bitrix24 DeleteNotification ^
  --url "b24-ar17wx.bitrix24.by" ^
- --notif 69090 ^
+ --notif 69182 ^
  --token "***"

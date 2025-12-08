@@ -1,6 +1,6 @@
 oint vkteams EditMessageText \
  --token "***" \
  --chatid "***" \
- --messageid "7581441335635231560" \
+ --messageid "7581497719965893467" \
  --text "<b>New bold message text</b>" \
  --parsemod "HTML"

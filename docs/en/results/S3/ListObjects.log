@@ -2,14 +2,14 @@
  "status": 200,
  "response": {
   "ListBucketResult": {
-   "Name": "opi-dirbucket6",
+   "Name": "068e9bf7",
    "Prefix": {},
    "KeyCount": "***",
    "MaxKeys": "***",
    "IsTruncated": "false",
    "Contents": {
     "Key": "***",
-    "LastModified": "2025-12-08T05:06:55.392Z",
+    "LastModified": "2025-12-08T15:17:20.599Z",
     "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
     "Size": "2114023",
     "StorageClass": "STANDARD"
@@ -18,15 +18,15 @@
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Mon, 08 Dec 2025 05:21:20 GMT",
+  "Date": "Mon, 08 Dec 2025 15:23:15 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "93c576aa54c960b355da9e2934476635fe3243f5df9dbb4db8b7c0d94bec7cd1",
-  "X-Amz-Request-Id": "187F25ED616E2C3B",
+  "X-Amz-Id-2": "c2a299fbb3d6b004a6478b9b6d90c505d645df682f7a22b96b88f100b6280168",
+  "X-Amz-Request-Id": "187F46C60B8D247B",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
-  "Content-Length": "452",
+  "Content-Length": "446",
   "Content-Type": "application/xml"
  }
 }
