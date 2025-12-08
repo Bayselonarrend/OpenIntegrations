@@ -1,7 +1,7 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-12-08T11:38:12.981164823Z",
- "response": "1C:Enterprise is a comprehensive ERP system designed for mid-sized and larger manufacturing businesses across various industries such as automotive, consumer goods, and industrial products. The product was developed by the company Prologic Technologies and is offered in both Windows and Linux versions. 1C:Enterprise is known for its advanced features such as inventory management, production planning, supply chain management, accounting, finance, and customer relationship management (CRM) functionality. It also has a robust reporting capability and offers mobile applications for remote access to the system.",
+ "created_at": "2025-12-08T21:58:21.688922837Z",
+ "response": "1C:Enterprise is a commercial ERP (enterprise resource planning) software developed by the Russian company 1Capital. It is an integrated system for managing business processes, covering financial accounting, supply chain management, sales and marketing, human resources, manufacturing operations, and other areas. The software has been widely used in Russia, Ukraine, Kazakhstan, Belarus, Armenia, Azerbaijan, Georgia, Uzbekistan, Tajikistan, Kyrgyzstan, and Moldova, among others.",
  "done": true,
  "done_reason": "stop",
  "context": [
@@ -159,21 +159,12 @@
   "***",
   "***",
   "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
-  "***",
   "***"
  ],
- "total_duration": 31559076165,
- "load_duration": 8135212818,
+ "total_duration": 21259963063,
+ "load_duration": 7821188377,
  "prompt_eval_count": 43,
- "prompt_eval_duration": 3458579344,
- "eval_count": 123,
- "eval_duration": 19939634929
+ "prompt_eval_duration": 3829801225,
+ "eval_count": 116,
+ "eval_duration": 9593148592
 }

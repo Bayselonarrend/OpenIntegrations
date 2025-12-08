@@ -1,10 +1,9 @@
 ﻿{
  "entity": {
-  "uuid": "9e0cac40-5f79-4a13-a7c0-6886c6fa383b",
-  "cdek_number": "1106691347",
-  "order_uuid": "1dc2ad04-cc29-4135-87b1-a8fcee035cb8",
+  "uuid": "81fa519f-fca8-4477-a93d-3b4720680d0e",
+  "cdek_number": "1106691669",
+  "order_uuid": "e916b749-f270-42bf-8cd6-213235f4ef19",
   "intake_date": "2025-12-09",
-  "intake_number": "13310675",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -15,11 +14,10 @@
   "comment": "Comment to courier",
   "sender": {
    "company": "Company",
-   "name": "Company",
-   "contragent_type": "LEGAL_ENTITY",
+   "name": "Ivaniv Ivan",
    "phones": [
     {
-     "number": "79589441654"
+     "number": "+79589441654"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -38,40 +36,17 @@
    "latitude": 55.75222,
    "address": "st. Bluchera, 32"
   },
-  "to_location": {
-   "code": 44,
-   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
-   "city": "Москва",
-   "country_code": "RU",
-   "country": "Россия",
-   "region": "Москва",
-   "region_code": 81,
-   "longitude": 37.831928,
-   "latitude": 55.644399,
-   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
-   "postal_code": "140091"
-  },
   "need_call": false,
   "statuses": [
    {
-    "code": "READY_FOR_APPOINTMENT",
-    "name": "Готова к назначению",
-    "date_time": "2025-12-08T14:51:51+00:00"
-   },
-   {
-    "code": "CREATED",
-    "name": "Создан",
-    "date_time": "2025-12-08T14:51:51+00:00"
-   },
-   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-12-08T14:51:51+00:00"
+    "date_time": "2025-12-08T21:42:21+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "58c13ac3-eb79-42a5-8ae8-1d88bf592403",
+    "package_id": "ad785f83-0570-4cdd-b92e-567075c83fab",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -81,10 +56,10 @@
  },
  "requests": [
   {
-   "request_uuid": "ae5fd50e-f203-4b90-b688-e3186c94370d",
+   "request_uuid": "dd583591-35d2-4309-b38a-996b0934da6a",
    "type": "CREATE",
-   "date_time": "2025-12-08T14:51:49+00:00",
-   "state": "SUCCESSFUL"
+   "date_time": "2025-12-08T21:42:19+00:00",
+   "state": "ACCEPTED"
   }
  ]
 }

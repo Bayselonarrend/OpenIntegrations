@@ -2053,7 +2053,7 @@
    }
   },
   {
-   "ID": "1718",
+   "ID": "1730",
    "NAME": "New calendar name",
    "GAPI_CALENDAR_ID": "***",
    "DESCRIPTION": "This calendar has been changed",
@@ -2062,13 +2062,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1718&sign=a14f39e0ba9f535651878bb835292b61&bx_hit_hash=CarBQ7ITvu3CR6BSXenovoxxxd7vc26Q"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1730&sign=a97695d9697ba3579ae2a1298b11141d&bx_hit_hash=CarBQ7ITvu3CR6BSXenovoxxxd7vc26Q"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2025-12-08 17:41:00",
-   "TIMESTAMP_X": "2025-12-08 17:41:00",
+   "DATE_CREATE": "2025-12-09 00:38:00",
+   "TIMESTAMP_X": "2025-12-09 00:38:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": "***",
    "PAGE_TOKEN": "***",
@@ -2089,7 +2089,7 @@
    }
   },
   {
-   "ID": "1720",
+   "ID": "1732",
    "NAME": "New calendar name",
    "GAPI_CALENDAR_ID": "***",
    "DESCRIPTION": "This calendar has been changed",
@@ -2098,13 +2098,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1720&sign=f9df950cedfe79453aa5a91e1491aadc&bx_hit_hash=CarBQ7ITvu3CR6BSXenovoxxxd7vc26Q"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1732&sign=eca51c25437d876ff5bf4fec4a684cbc&bx_hit_hash=CarBQ7ITvu3CR6BSXenovoxxxd7vc26Q"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2025-12-08 17:41:00",
-   "TIMESTAMP_X": "2025-12-08 17:41:00",
+   "DATE_CREATE": "2025-12-09 00:38:00",
+   "TIMESTAMP_X": "2025-12-09 00:38:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": "***",
    "PAGE_TOKEN": "***",
@@ -2126,13 +2126,13 @@
   }
  ],
  "time": {
-  "start": 1765204879,
-  "finish": 1765204879.85882,
-  "duration": 0.858824014663696,
+  "start": 1765229893,
+  "finish": 1765229893.77145,
+  "duration": 0.771450042724609,
   "processing": 0,
-  "date_start": "2025-12-08T14:41:19+00:00",
-  "date_finish": "2025-12-08T14:41:19+00:00",
-  "operating_reset_at": 1765205479,
+  "date_start": "2025-12-08T21:38:13+00:00",
+  "date_finish": "2025-12-08T21:38:13+00:00",
+  "operating_reset_at": 1765230493,
   "operating": 0
  }
 }
