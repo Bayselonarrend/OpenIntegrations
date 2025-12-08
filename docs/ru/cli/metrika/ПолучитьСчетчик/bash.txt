@@ -1,3 +1,3 @@
 oint metrika ПолучитьСчетчик \
   --token "***" \
-  --counter "105721593"
+  --counter "105737900"

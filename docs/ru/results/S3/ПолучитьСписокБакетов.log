@@ -9,32 +9,12 @@
    "Buckets": {
     "Bucket": [
      {
+      "Name": "81a2c06c",
+      "CreationDate": "2025-12-08T20:02:41.293Z"
+     },
+     {
       "Name": "newbucket2",
-      "CreationDate": "2024-11-13T18:59:09.139Z"
-     },
-     {
-      "Name": "opi-dirbucket3",
-      "CreationDate": "2025-10-21T10:59:21.083Z"
-     },
-     {
-      "Name": "opi-dirbucket4",
-      "CreationDate": "2025-11-24T07:58:02.464Z"
-     },
-     {
-      "Name": "opi-dirbucket6",
-      "CreationDate": "2025-12-07T20:10:45.337Z"
-     },
-     {
-      "Name": "opi-gpbucket4",
-      "CreationDate": "2025-11-26T19:32:29.737Z"
-     },
-     {
-      "Name": "opi-gpbucket5",
-      "CreationDate": "2025-12-02T16:36:24.318Z"
-     },
-     {
-      "Name": "opi-newbucket2",
-      "CreationDate": "2024-11-14T06:04:12.769Z"
+      "CreationDate": "2025-12-08T08:02:33.122Z"
      }
     ]
    }
@@ -42,15 +22,15 @@
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Sun, 07 Dec 2025 20:11:03 GMT",
+  "Date": "Mon, 08 Dec 2025 20:02:47 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "0757065d17b69556603743b9ea63f04bc7b9f349245bbff6b0ba901258e9c169",
-  "X-Amz-Request-Id": "187F07E6181A4DF6",
+  "X-Amz-Id-2": "0eb49e91e4cb899a0af3fcfe75973892594fa8211551eba0f72840fc567c152b",
+  "X-Amz-Request-Id": "187F56071C5B3055",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
-  "Content-Length": "948",
+  "Content-Length": "459",
   "Content-Type": "application/xml"
  }
 }
