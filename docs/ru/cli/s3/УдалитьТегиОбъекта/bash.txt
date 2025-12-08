@@ -2,6 +2,6 @@
 
 oint s3 УдалитьТегиОбъекта \
   --name "picture.jpg" \
-  --bucket "opi-gpbucket6" \
-  --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-  --dir false
+  --bucket "a72c0726" \
+  --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+  --dir true

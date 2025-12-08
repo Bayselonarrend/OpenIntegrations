@@ -1,4 +1,4 @@
 oint bitrix24 ПрекратитьНаблюдатьЗаЗадачей ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --task "8868" ^
+  --task "8918" ^
   --token "***"

@@ -2,5 +2,5 @@
 
 oint ollama ОтправитьBlob ^
   --url "https://hut.openintegrations.dev/ollama" ^
-  --data "C:\Users\bayse\AppData\Local\Temp\bhpkw3xm.gw1" ^
+  --data "/tmp/isbqrhmv.43s" ^
   --headers "{'Authorization':'***'}"
