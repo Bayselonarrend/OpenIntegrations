@@ -23,8 +23,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
-<br/>
-
 :::tip
 Method at API documentation: [user.add](https://dev.1c-bitrix.ru/rest_help/users/user_add.php)
 
@@ -70,7 +68,7 @@ If you want to add an intranet user, you must pass UF_DEPARTMENT field: [...]
             
             oint bitrix24 CreateUser \
              --url "b24-ar17wx.bitrix24.by" \
-             --fields "{'EMAIL':'c7205c64-a18e-4ab1-b417-d42ac5404c86@exepmple.org','NAME':'Vitaly','LAST_NAME':'Alpaca','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':'1'}" \
+             --fields "{'EMAIL':'8e1a1ffa-6434-4a06-afa9-f07cfde4b72f@exepmple.org','NAME':'Vitaly','LAST_NAME':'Alpaca','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':'1'}" \
              --token "***"
         ```
     </TabItem>
@@ -81,7 +79,7 @@ If you want to add an intranet user, you must pass UF_DEPARTMENT field: [...]
             
             oint bitrix24 CreateUser ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --fields "{'EMAIL':'c7205c64-a18e-4ab1-b417-d42ac5404c86@exepmple.org','NAME':'Vitaly','LAST_NAME':'Alpaca','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':'1'}" ^
+             --fields "{'EMAIL':'8e1a1ffa-6434-4a06-afa9-f07cfde4b72f@exepmple.org','NAME':'Vitaly','LAST_NAME':'Alpaca','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':'1'}" ^
              --token "***"
         ```
     </TabItem>
@@ -90,16 +88,16 @@ If you want to add an intranet user, you must pass UF_DEPARTMENT field: [...]
 
 ```json title="Result"
 {
- "result": 3020,
+ "result": 3024,
  "time": {
-  "start": 1765167981,
-  "finish": 1765167982.39252,
-  "duration": 1.39251804351807,
-  "processing": 1,
-  "date_start": "2025-12-08T04:26:21+00:00",
-  "date_finish": "2025-12-08T04:26:22+00:00",
-  "operating_reset_at": 1765168581,
-  "operating": 0.772911071777344
+  "start": 1765191682,
+  "finish": 1765191684.52157,
+  "duration": 2.52156805992126,
+  "processing": 2,
+  "date_start": "2025-12-08T14:01:22+03:00",
+  "date_finish": "2025-12-08T14:01:24+03:00",
+  "operating_reset_at": 1765192282,
+  "operating": 1.58083391189575
  }
 }
 ```

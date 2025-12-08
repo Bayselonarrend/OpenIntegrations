@@ -23,8 +23,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  String - Keyboard JSON
 
-<br/>
-
 :::tip
 About keyboards in the API documentation: [InlineKeyboardMarkup](https://core.telegram.org/bots/api#inlinekeyboardmarkup)
 :::
@@ -62,5 +60,27 @@ About keyboards in the API documentation: [InlineKeyboardMarkup](https://core.te
 
 
 ```json title="Result"
-"{'keyboard':[[{'text':'Button1','callback_data':'Button1'}],[{'text':'Button2','callback_data':'Button2'}],[{'text':'Button3','callback_data':'Button3'}]],'resize_keyboard':true}"
+{
+ "keyboard": [
+  [
+   {
+    "text": "Button1",
+    "callback_data": "Button1"
+   }
+  ],
+  [
+   {
+    "text": "Button2",
+    "callback_data": "Button2"
+   }
+  ],
+  [
+   {
+    "text": "Button3",
+    "callback_data": "Button3"
+   }
+  ]
+ ],
+ "resize_keyboard": "***"
+}
 ```

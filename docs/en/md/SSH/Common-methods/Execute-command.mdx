@@ -22,8 +22,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - Processing result
 
-<br/>
-
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
@@ -86,7 +84,7 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint ssh ExecuteCommand \
-             --conn "{'set':{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\vipxbxrz.y0f.tmp'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}}" \
+             --conn "{'set':{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\spwtrptd.puh.tmp'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}}" \
              --comm "whoami"
         ```
     </TabItem>
@@ -96,7 +94,7 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint ssh ExecuteCommand ^
-             --conn "{'set':{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\vipxbxrz.y0f.tmp'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}}" ^
+             --conn "{'set':{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\spwtrptd.puh.tmp'},'proxy':{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}}" ^
              --comm "whoami"
         ```
     </TabItem>
@@ -108,6 +106,9 @@ import TabItem from '@theme/TabItem';
  "exit_code": "0",
  "result": true,
  "stderr": "",
- "stdout": "bayselonarrend"
+ "stdout": "bayselonarrend",
+ "close_connection": {
+  "result": true
+ }
 }
 ```

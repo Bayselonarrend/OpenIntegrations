@@ -24,8 +24,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from VK
 
-<br/>
-
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
@@ -45,7 +43,7 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint vk WriteComment \
-             --post 10369 \
+             --post 10598 \
              --wall "-218861756" \
              --text "NewComment" \
              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
@@ -57,7 +55,7 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint vk WriteComment ^
-             --post 10369 ^
+             --post 10598 ^
              --wall "-218861756" ^
              --text "NewComment" ^
              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
@@ -69,7 +67,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "response": {
-  "comment_id": 10590,
+  "comment_id": 10600,
   "parents_stack": []
  }
 }

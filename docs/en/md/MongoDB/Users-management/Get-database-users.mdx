@@ -24,8 +24,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - Operation result
 
-<br/>
-
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
@@ -42,6 +40,24 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            oint mongodb GetDatabaseUsers \
+             --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" \
+             --db "main"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            oint mongodb GetDatabaseUsers ^
+             --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
+             --db "main"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
@@ -52,7 +68,7 @@ import TabItem from '@theme/TabItem';
    {
     "_id": "main.newuser",
     "userId": {
-     "__B64_BINARY__": "LC7z7Ra2S1Cem9LfyGKlLA=="
+     "__B64_BINARY__": "c+9xwWNwREej/11g6XtbCg=="
     },
     "user": "newuser",
     "db": "main",

@@ -25,8 +25,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from CDEK
 
-<br/>
-
 :::tip
 Available receipt types (languages): tpl_china, tpl_armenia, tpl_russia, tpl_english, tpl_italian, tpl_korean, tpl_latvian, tpl_lithuanian, tpl_german, tpl_turkish, tpl_czech, tpl_thailand, tpl_invoice
 
@@ -53,7 +51,7 @@ Method at API documentation: [Creating order receipt](https://api-docs.cdek.ru/3
         ```bash
             oint cdek CreateReceipt \
              --token "***" \
-             --uuids "30b65bfe-a4ac-46b8-96db-c692076c609b" \
+             --uuids "811c4afa-115a-4dc0-92ce-52149ec659d8" \
              --type "tpl_russia" \
              --count 1 \
              --testapi "***"
@@ -64,7 +62,7 @@ Method at API documentation: [Creating order receipt](https://api-docs.cdek.ru/3
         ```batch
             oint cdek CreateReceipt ^
              --token "***" ^
-             --uuids "30b65bfe-a4ac-46b8-96db-c692076c609b" ^
+             --uuids "811c4afa-115a-4dc0-92ce-52149ec659d8" ^
              --type "tpl_russia" ^
              --count 1 ^
              --testapi "***"
@@ -76,13 +74,13 @@ Method at API documentation: [Creating order receipt](https://api-docs.cdek.ru/3
 ```json title="Result"
 {
  "entity": {
-  "uuid": "cdae7264-8314-424e-a3c6-2a35daa0a6b2"
+  "uuid": "65b71dcd-8786-415a-ae17-c4e641bd9273"
  },
  "requests": [
   {
-   "request_uuid": "0ab34550-f4a8-445d-8bd4-cafc48765902",
+   "request_uuid": "94834a2d-1f2d-4c97-98ce-d51e5f774ed3",
    "type": "CREATE",
-   "date_time": "2025-12-08T04:30:21+00:00",
+   "date_time": "2025-12-08T14:08:52+03:00",
    "state": "ACCEPTED"
   }
  ],

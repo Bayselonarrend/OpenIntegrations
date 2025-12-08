@@ -25,8 +25,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Airtable
 
-<br/>
-
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
@@ -46,8 +44,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint airtable ModifyTable \
              --token "***" \
-             --base "appSvHTETQWodBcs7" \
-             --table "tblyaw6xgylz1eTkq" \
+             --base "appDAPUgejRUkRN89" \
+             --table "tbl4rSoQmWJlCCINH" \
              --title "Test table 2 (change.)" \
              --description "New table (change.)"
         ```
@@ -57,8 +55,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint airtable ModifyTable ^
              --token "***" ^
-             --base "appSvHTETQWodBcs7" ^
-             --table "tblyaw6xgylz1eTkq" ^
+             --base "appDAPUgejRUkRN89" ^
+             --table "tbl4rSoQmWJlCCINH" ^
              --title "Test table 2 (change.)" ^
              --description "New table (change.)"
         ```
@@ -68,13 +66,13 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Result"
 {
- "id": "tblDYzkywIhkmgrnY",
+ "id": "tbl4rSoQmWJlCCINH",
  "name": "Test table 2 (change.)",
  "description": "New table (change.)",
- "primaryFieldId": "fld6FE3ayLhTHSt2z",
+ "primaryFieldId": "fldvnvJ8oeCOGLCCa",
  "fields": [
   {
-   "id": "fld6FE3ayLhTHSt2z",
+   "id": "fldvnvJ8oeCOGLCCa",
    "name": "Number",
    "type": "number",
    "options": {
@@ -82,12 +80,12 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "id": "fld3oHyo4e7UEWsU2",
+   "id": "fldaWwmDqXCBj8DWj",
    "name": "String",
    "type": "richText"
   },
   {
-   "id": "fldD1iYDa4UxLKNpC",
+   "id": "fld61hKftv4lVdcSn",
    "name": "Attachment",
    "type": "multipleAttachments",
    "options": {
@@ -95,7 +93,7 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "id": "fldiBEXCZw7cpWqY8",
+   "id": "fldSO08buAFtDBrVY",
    "name": "Checkbox",
    "type": "checkbox",
    "options": {
@@ -104,7 +102,7 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "id": "fld1B4SXrplcrFo9m",
+   "id": "fldUqug2S3pNJt95t",
    "name": "Date",
    "type": "date",
    "options": {
@@ -115,24 +113,24 @@ import TabItem from '@theme/TabItem';
    }
   },
   {
-   "id": "fld8nSdz9nvj53ARH",
+   "id": "fld721mMtynNwxnoO",
    "name": "Phone",
    "type": "phoneNumber"
   },
   {
-   "id": "fldREXmZ0KOyaIpyi",
+   "id": "fldRdZuUfelY9AQLh",
    "name": "Email",
    "type": "email"
   },
   {
-   "id": "fldcAGBOYRfPouCcV",
+   "id": "fldS1uTnpyxZ0XoKX",
    "name": "Link",
    "type": "url"
   }
  ],
  "views": [
   {
-   "id": "viw90F7j65a2fdk7P",
+   "id": "viwPjrCMjrBcq4xn2",
    "name": "Grid view",
    "type": "grid"
   }

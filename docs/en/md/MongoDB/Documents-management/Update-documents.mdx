@@ -25,8 +25,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - Operation result
 
-<br/>
-
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
@@ -50,6 +48,41 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint mongodb UpdateDocuments \
+             --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" \
+             --coll "new_collection" \
+             --updates "{'q':{'productName':'Item 1'},'u':{'__4inc':{'quantity':'10'}},'multi':true,'upsert':false}" \
+             --db "main"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint mongodb UpdateDocuments ^
+             --dbc "mongodb://bayselonarrend:12we3456!2154@127.0.0.1:27017/?authSource=admin" ^
+             --coll "new_collection" ^
+             --updates "{'q':{'productName':'Item 1'},'u':{'__4inc':{'quantity':'10'}},'multi':true,'upsert':false}" ^
+             --db "main"
+        ```
+    </TabItem>
+</Tabs>
 
 
-
+```json title="Result"
+{
+ "result": true,
+ "data": {
+  "n": 2,
+  "nModified": 2,
+  "ok": 1
+ }
+}
+```

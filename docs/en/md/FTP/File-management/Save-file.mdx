@@ -23,8 +23,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - Processing result
 
-<br/>
-
 :::tip
 FTP Command: `RETR`
 :::
@@ -84,9 +82,9 @@ FTP Command: `RETR`
             # JSON data can also be passed as a path to a .json file
             
             oint ftp SaveFile \
-             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
+             --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'}}" \
              --path "new_dir/pic_from_disk.png" \
-             --file "C:\Users\bayse\AppData\Local\Temp\0lxpxiub.abt.bin"
+             --file "C:\Users\bayse\AppData\Local\Temp\4sa1edbi.rcs.bin"
         ```
     </TabItem>
   
@@ -95,9 +93,9 @@ FTP Command: `RETR`
             :: JSON data can also be passed as a path to a .json file
             
             oint ftp SaveFile ^
-             --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'},'tls':{'accept_invalid_certs':true,'ca_cert_path':null,'use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
+             --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'120','write_timeout':'120'}}" ^
              --path "new_dir/pic_from_disk.png" ^
-             --file "C:\Users\bayse\AppData\Local\Temp\0lxpxiub.abt.bin"
+             --file "C:\Users\bayse\AppData\Local\Temp\4sa1edbi.rcs.bin"
         ```
     </TabItem>
 </Tabs>

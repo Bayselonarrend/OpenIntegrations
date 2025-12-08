@@ -23,8 +23,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from CDEK
 
-<br/>
-
 :::tip
 Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.html)
 :::
@@ -45,7 +43,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
         ```bash
             oint cdek GetOrder \
              --token "***" \
-             --uuid "30b65bfe-a4ac-46b8-96db-c692076c609b" \
+             --uuid "811c4afa-115a-4dc0-92ce-52149ec659d8" \
              --testapi "***"
         ```
     </TabItem>
@@ -54,7 +52,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
         ```batch
             oint cdek GetOrder ^
              --token "***" ^
-             --uuid "30b65bfe-a4ac-46b8-96db-c692076c609b" ^
+             --uuid "811c4afa-115a-4dc0-92ce-52149ec659d8" ^
              --testapi "***"
         ```
     </TabItem>
@@ -64,9 +62,9 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
 ```json title="Result"
 {
  "entity": {
-  "uuid": "4336f0b2-ad33-41b4-a3cd-760e3b678e8a",
+  "uuid": "811c4afa-115a-4dc0-92ce-52149ec659d8",
   "type": 1,
-  "number": "991cd44b-de7b-4289-b7cd-f551aedc8324",
+  "number": "226f473e-dbb3-46ee-9663-3ee02569a9a4",
   "tariff_code": 139,
   "comment": "New order",
   "delivery_recipient_cost": {
@@ -132,7 +130,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-12-08T04:29:57+00:00",
+    "date_time": "2025-12-08T14:08:24+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
@@ -140,9 +138,9 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
  },
  "requests": [
   {
-   "request_uuid": "c24f5e8e-55ce-42e4-941c-ef5a1cabf2cf",
+   "request_uuid": "9b32720f-0acd-4ade-9d3a-2f4e024236f1",
    "type": "CREATE",
-   "date_time": "2025-12-08T04:29:57+00:00",
+   "date_time": "2025-12-08T14:08:24+03:00",
    "state": "ACCEPTED"
   }
  ],

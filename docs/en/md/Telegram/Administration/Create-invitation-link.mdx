@@ -25,8 +25,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON response from Telegram
 
-<br/>
-
 :::tip
 Method at API documentation: [createChatInviteLink](https://core.telegram.org/bots/api#createchatinvitelink)
 :::
@@ -53,9 +51,9 @@ Method at API documentation: [createChatInviteLink](https://core.telegram.org/bo
         ```bash
             oint telegram CreateInvitationLink \
              --token "***" \
-             --chat "@testsichee" \
-             --title "Link 10/30/2025 7:08:36 PM" \
-             --expire "2025-10-31T19:08:36.4065581" \
+             --chat "***" \
+             --title "Link 12/8/2025 12:32:05 PM" \
+             --expire "2025-12-09T12:32:05.9240679" \
              --limit 200
         ```
     </TabItem>
@@ -64,9 +62,9 @@ Method at API documentation: [createChatInviteLink](https://core.telegram.org/bo
         ```batch
             oint telegram CreateInvitationLink ^
              --token "***" ^
-             --chat "@testsichee" ^
-             --title "Link 10/30/2025 7:08:36 PM" ^
-             --expire "2025-10-31T19:08:36.4065581" ^
+             --chat "***" ^
+             --title "Link 12/8/2025 12:32:05 PM" ^
+             --expire "2025-12-09T12:32:05.9240679" ^
              --limit 200
         ```
     </TabItem>
@@ -78,14 +76,14 @@ Method at API documentation: [createChatInviteLink](https://core.telegram.org/bo
  "ok": true,
  "result": {
   "invite_link": "***",
-  "name": "Link 12/08/2025 03:40:59",
+  "name": "Link 12/8/2025 12:32:05 PM",
   "creator": {
    "id": 6129457865,
    "is_bot": true,
    "first_name": "Бот Виталий",
    "username": "sicheebot"
   },
-  "expire_date": 1765248060,
+  "expire_date": 1765279926,
   "member_limit": 200,
   "creates_join_request": false,
   "is_primary": false,

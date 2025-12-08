@@ -23,8 +23,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Map Of KeyAndValue - serialized JSON of answer from Bitrix24 API
 
-<br/>
-
 :::tip
 Method at API documentation: [task.checklistitem.getlist](https://dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/getlist.php)
 :::
@@ -51,7 +49,7 @@ Method at API documentation: [task.checklistitem.getlist](https://dev.1c-bitrix.
         ```bash
             oint bitrix24 GetTasksChecklist \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "8670" \
+             --task "8888" \
              --token "***"
         ```
     </TabItem>
@@ -60,7 +58,7 @@ Method at API documentation: [task.checklistitem.getlist](https://dev.1c-bitrix.
         ```batch
             oint bitrix24 GetTasksChecklist ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "8670" ^
+             --task "8888" ^
              --token "***"
         ```
     </TabItem>
@@ -71,8 +69,8 @@ Method at API documentation: [task.checklistitem.getlist](https://dev.1c-bitrix.
 {
  "result": [
   {
-   "ID": "6288",
-   "TASK_ID": "8878",
+   "ID": "6296",
+   "TASK_ID": "8888",
    "PARENT_ID": 0,
    "CREATED_BY": "1",
    "TITLE": "BX_CHECKLIST_1",
@@ -85,9 +83,9 @@ Method at API documentation: [task.checklistitem.getlist](https://dev.1c-bitrix.
    "ATTACHMENTS": []
   },
   {
-   "ID": "6290",
-   "TASK_ID": "8878",
-   "PARENT_ID": "6288",
+   "ID": "6298",
+   "TASK_ID": "8888",
+   "PARENT_ID": "6296",
    "CREATED_BY": "1",
    "TITLE": "New elements text",
    "SORT_INDEX": "1",
@@ -100,13 +98,13 @@ Method at API documentation: [task.checklistitem.getlist](https://dev.1c-bitrix.
   }
  ],
  "time": {
-  "start": 1765167756,
-  "finish": 1765167756.27428,
-  "duration": 0.274282932281494,
+  "start": 1765191111,
+  "finish": 1765191111.33089,
+  "duration": 0.330888986587524,
   "processing": 0,
-  "date_start": "2025-12-08T04:22:36+00:00",
-  "date_finish": "2025-12-08T04:22:36+00:00",
-  "operating_reset_at": 1765168356,
+  "date_start": "2025-12-08T13:51:51+03:00",
+  "date_finish": "2025-12-08T13:51:51+03:00",
+  "operating_reset_at": 1765191711,
   "operating": 0
  }
 }

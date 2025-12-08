@@ -28,8 +28,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  Structure Of KeyAndValue - Connection settings structure
 
-<br/>
-
 :::tip
 When `IPResolve = True`, the connection address returned by the server in passive mode after `PASV` will be replaced with the IP from the `Host` field, in cases when a proxy is used or the server returns `127.0.0.1` (only if an IP address is specified in the `Host` field))
 :::
@@ -51,8 +49,8 @@ When `IPResolve = True`, the connection address returned by the server in passiv
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint ftp GetConnectionSettings \
-             --host "172.33.0.11" \
-             --port 21 \
+             --host "127.0.0.1" \
+             --port 2121 \
              --login "bayselonarrend" \
              --pass "***"
         ```
@@ -61,8 +59,8 @@ When `IPResolve = True`, the connection address returned by the server in passiv
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint ftp GetConnectionSettings ^
-             --host "172.33.0.11" ^
-             --port 21 ^
+             --host "127.0.0.1" ^
+             --port 2121 ^
              --login "bayselonarrend" ^
              --pass "***"
         ```

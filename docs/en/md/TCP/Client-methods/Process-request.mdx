@@ -25,8 +25,6 @@ import TabItem from '@theme/TabItem';
   
   Returns:  BinaryData, String - Response or error information
 
-<br/>
-
 :::tip
 Parameters with Binary data type can also accept file paths on disk and URLs
 :::
@@ -62,7 +60,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             oint tcp ProcessRequest \
              --address "tcpbin.com:4243" \
              --data "Echo this!\n" \
-             --tls "{'use_tls':true,'accept_invalid_certs':true}"
+             --tls "{'use_tls':true,'accept_invalid_certs':true}" \
+             --proxy "{'server':'127.0.0.1','port':'1080','proxy_type':'socks5','login':'proxyuser','password':'***'}"
         ```
     </TabItem>
   
@@ -73,7 +72,8 @@ Parameters with Binary data type can also accept file paths on disk and URLs
             oint tcp ProcessRequest ^
              --address "tcpbin.com:4243" ^
              --data "Echo this!\n" ^
-             --tls "{'use_tls':true,'accept_invalid_certs':true}"
+             --tls "{'use_tls':true,'accept_invalid_certs':true}" ^
+             --proxy "{'server':'127.0.0.1','port':'1080','proxy_type':'socks5','login':'proxyuser','password':'***'}"
         ```
     </TabItem>
 </Tabs>
