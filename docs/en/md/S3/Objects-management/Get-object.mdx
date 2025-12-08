@@ -48,7 +48,7 @@ You can use the `ChunkSize` field in the basic data to specify the minimum file 
     Name = "picture.jpg";
 
     Directory = True; // Formation URL in path-style
-    Bucket = "opi-dirbucket6";
+    Bucket = "";
     Result = OPI_S3.GetObject(Name, Bucket, BasicData, , , , Directory);
 
     TempFile = GetTempFileName();
