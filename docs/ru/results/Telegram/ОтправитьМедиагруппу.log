@@ -2,7 +2,7 @@
  "ok": true,
  "result": [
   {
-   "message_id": 18070,
+   "message_id": 18160,
    "from": {
     "id": 6129457865,
     "is_bot": true,
@@ -16,8 +16,8 @@
     "username": "bayselonarrend",
     "type": "private"
    },
-   "date": 1765131848,
-   "media_group_id": "14121054791099874",
+   "date": 1765217350,
+   "media_group_id": "14121738802800754",
    "photo": [
     {
      "file_id": "AgACAgIAAxkDAAJGFWkwFfFE2BisPlbDM5TGPXaGd7OzAALoD2sbAAGqgEm_2MFZf9KMjgEAAwIAA3MAAzYE",
@@ -58,7 +58,7 @@
    "caption": "Строковое значение"
   },
   {
-   "message_id": 18071,
+   "message_id": 18161,
    "from": {
     "id": 6129457865,
     "is_bot": true,
@@ -72,8 +72,8 @@
     "username": "bayselonarrend",
     "type": "private"
    },
-   "date": 1765131848,
-   "media_group_id": "14121054791099874",
+   "date": 1765217350,
+   "media_group_id": "14121738802800754",
    "video": {
     "duration": 5,
     "width": "***",
@@ -81,21 +81,21 @@
     "file_name": "video1",
     "mime_type": "video/mp4",
     "thumbnail": {
-     "file_id": "AAMCAgADFQdpNcZINSeAaNzI23JzUsP54MZqMQACuJMAAhHVqEkUWunApqdXuAEAB20AAzYE",
-     "file_unique_id": "AQADuJMAAhHVqEly",
+     "file_id": "AAMCAgADFQdpNxRGRX2Jmo-lM7Va6UQdjAAB32IAAvOdAAJBurhJdL1I9ix4AAGgAQAHbQADNgQ",
+     "file_unique_id": "AQAD850AAkG6uEly",
      "file_size": 20106,
      "width": "***",
      "height": 240
     },
     "thumb": {
-     "file_id": "AAMCAgADFQdpNcZINSeAaNzI23JzUsP54MZqMQACuJMAAhHVqEkUWunApqdXuAEAB20AAzYE",
-     "file_unique_id": "AQADuJMAAhHVqEly",
+     "file_id": "AAMCAgADFQdpNxRGRX2Jmo-lM7Va6UQdjAAB32IAAvOdAAJBurhJdL1I9ix4AAGgAQAHbQADNgQ",
+     "file_unique_id": "AQAD850AAkG6uEly",
      "file_size": 20106,
      "width": "***",
      "height": 240
     },
-    "file_id": "BAACAgIAAxUHaTXGSDUngGjcyNtyc1LD-eDGajEAAriTAAIR1ahJFFrpwKanV7g2BA",
-    "file_unique_id": "AgADuJMAAhHVqEk",
+    "file_id": "BAACAgIAAxUHaTcURkV9iZqPpTO1WulEHYwAAd9iAALznQACQbq4SXS9SPYseAABoDYE",
+    "file_unique_id": "AgAD850AAkG6uEk",
     "file_size": 1137878
    }
   }
