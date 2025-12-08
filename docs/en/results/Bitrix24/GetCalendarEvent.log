@@ -1,26 +1,26 @@
 ﻿{
  "result": {
-  "ID": "3046",
-  "PARENT_ID": "3046",
+  "ID": "3172",
+  "PARENT_ID": "3172",
   "DELETED": "N",
   "CAL_TYPE": "user",
   "OWNER_ID": "1",
   "NAME": "New event",
-  "DATE_FROM": "01.11.2025 11:59:00",
-  "DATE_TO": "01.11.2025 12:59:00",
-  "ORIGINAL_DATE_FROM": null,
+  "DATE_FROM": "09.12.2025 04:27:00",
+  "DATE_TO": "09.12.2025 05:27:00",
+  "ORIGINAL_DATE_FROM": "***",
   "TZ_FROM": "Europe/Minsk",
   "TZ_TO": "Europe/Minsk",
   "TZ_OFFSET_FROM": "10800",
   "TZ_OFFSET_TO": "10800",
-  "DATE_FROM_TS_UTC": "1761976769",
-  "DATE_TO_TS_UTC": "1764583140",
+  "DATE_FROM_TS_UTC": "1765232820",
+  "DATE_TO_TS_UTC": "1767839220",
   "DT_SKIP_TIME": "N",
   "DT_LENGTH": 3600,
   "EVENT_TYPE": null,
   "CREATED_BY": "1",
-  "DATE_CREATE": "31.10.2025 14:59:30",
-  "TIMESTAMP_X": "31.10.2025 14:59:30",
+  "DATE_CREATE": "08.12.2025 07:27:01",
+  "TIMESTAMP_X": "08.12.2025 07:27:01",
   "DESCRIPTION": "Event description",
   "PRIVATE_EVENT": "1",
   "ACCESSIBILITY": "quest",
@@ -31,8 +31,8 @@
   "MEETING": {
    "HOST_NAME": "Антон Титовец",
    "NOTIFY": true,
-   "REINVITE": false,
-   "ALLOW_INVITE": true,
+   "REINVITE": "***",
+   "ALLOW_INVITE": "***",
    "HIDE_GUESTS": true,
    "MEETING_CREATOR": 1,
    "LANGUAGE_ID": "ru",
@@ -50,46 +50,46 @@
    "FREQ": "DAILY",
    "COUNT": 3,
    "INTERVAL": 10,
-   "UNTIL": "11.11.2025",
-   "~UNTIL": "11.11.2025",
-   "UNTIL_TS": 1762819200
+   "UNTIL": "19.12.2025",
+   "~UNTIL": "19.12.2025",
+   "UNTIL_TS": 1766102400
   },
   "EXDATE": "",
-  "DAV_XML_ID": "20251101T085900Z-8274cbbce4ef4a01dd0fe75ba3e8aa39@b24-ar17wx.bitrix24.by",
+  "DAV_XML_ID": "20251209T012700Z-66f363f355c0d09403cd9430df32ff25@b24-ar17wx.bitrix24.by",
   "G_EVENT_ID": "",
   "DAV_EXCH_LABEL": "",
   "CAL_DAV_LABEL": "",
   "VERSION": "1",
   "ATTENDEES_CODES": [
-   "U1",
-   "U10"
+   "***",
+   "***"
   ],
   "RECURRENCE_ID": null,
   "RELATIONS": "",
-  "SECTION_ID": "1650",
+  "SECTION_ID": "1712",
   "SYNC_STATUS": null,
   "UF_CRM_CAL_EVENT": false,
   "UF_WEBDAV_CAL_EVENT": false,
   "SECTION_DAV_XML_ID": null,
-  "DATE_FROM_FORMATTED": "Sat Nov 01 2025 11:59:00",
-  "DATE_TO_FORMATTED": "Sat Nov 01 2025 12:59:00",
+  "DATE_FROM_FORMATTED": "Tue Dec 09 2025 04:27:00",
+  "DATE_TO_FORMATTED": "Tue Dec 09 2025 05:27:00",
   "IS_DAYLIGHT_SAVING_TZ": "N",
-  "SECT_ID": "1650",
+  "SECT_ID": "1712",
   "OPTIONS": null,
   "ATTENDEE_LIST": [
    {
     "id": 1,
-    "entryId": "3046",
+    "entryId": "3172",
     "status": "H"
    },
    {
     "id": 10,
-    "entryId": "3048",
+    "entryId": "3174",
     "status": "Q"
    }
   ],
   "COLLAB_ID": null,
-  "~RRULE_DESCRIPTION": "каждый 10-й день, от 01.11.2025 до 11.11.2025",
+  "~RRULE_DESCRIPTION": "каждый 10-й день, от 09.12.2025 до 19.12.2025",
   "attendeesEntityList": [
    {
     "entityId": "user",
@@ -105,13 +105,13 @@
   "~USER_OFFSET_TO": 0
  },
  "time": {
-  "start": 1761911975,
-  "finish": 1761911975.88151,
-  "duration": 0.881509065628052,
+  "start": 1765168024,
+  "finish": 1765168024.62159,
+  "duration": 0.621588945388794,
   "processing": 0,
-  "date_start": "2025-10-31T11:59:35+00:00",
-  "date_finish": "2025-10-31T11:59:35+00:00",
-  "operating_reset_at": 1761912575,
+  "date_start": "2025-12-08T04:27:04+00:00",
+  "date_finish": "2025-12-08T04:27:04+00:00",
+  "operating_reset_at": 1765168624,
   "operating": 0
  }
 }

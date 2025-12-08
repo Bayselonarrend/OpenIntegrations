@@ -1,15 +1,15 @@
 ﻿{
  "entity": {
-  "uuid": "33cdf7bf-7b9e-4a4f-aaf6-6acb86b4639a",
-  "cdek_number": "1106631936",
-  "order_uuid": "6cd89323-fe74-4d8a-8d0b-1c5049785fb3",
-  "intake_date": "2025-11-01",
+  "uuid": "3969b935-d318-40c8-a1e2-408d3af2f906",
+  "cdek_number": "1106690732",
+  "order_uuid": "0e4fd082-d650-408b-83d2-2be2ff926b96",
+  "intake_date": "2025-12-09",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
   "weight": 1000,
   "length": 10,
-  "width": 10,
+  "width": "***",
   "height": 10,
   "comment": "Comment to courier",
   "sender": {
@@ -20,7 +20,7 @@
      "number": "+79589441654"
     }
    ],
-   "passport_requirements_satisfied": false
+   "passport_requirements_satisfied": "***"
   },
   "from_location": {
    "code": 44,
@@ -41,25 +41,24 @@
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-10-31T12:03:53+00:00"
+    "date_time": "2025-12-08T04:31:12+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "8e3adaa4-e16a-48e6-807f-c2f78aadd3cb",
+    "package_id": "2980c3bf-8733-4d75-a1d4-f2b18cf3b1bf",
     "weight": 1000,
     "length": 10,
-    "width": 10,
+    "width": "***",
     "height": 10
    }
-  ],
-  "contragent_uuid": "ed75ecf4-30ed-4153-afe9-eb80bb512f22"
+  ]
  },
  "requests": [
   {
-   "request_uuid": "08a64bce-c8f8-4e17-a57c-41f7a7b7af4d",
+   "request_uuid": "f783f3db-f549-4e7f-96e5-77c55830faa0",
    "type": "CREATE",
-   "date_time": "2025-10-31T12:03:52+00:00",
+   "date_time": "2025-12-08T04:31:10+00:00",
    "state": "ACCEPTED"
   }
  ]

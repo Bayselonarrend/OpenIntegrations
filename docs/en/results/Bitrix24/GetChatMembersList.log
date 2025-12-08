@@ -24,13 +24,15 @@
    "desktop_last_date": false,
    "absent": false,
    "departments": [
-    1,
-    640,
-    2960
+    "***",
+    "***",
+    "***"
    ],
-   "phones": false,
+   "phones": "***",
    "bot_data": null,
-   "type": "user"
+   "type": "user",
+   "website": "",
+   "email": "iscript13@gmail.com"
   },
   {
    "id": 1,
@@ -51,29 +53,31 @@
    "external_auth_id": "socservices",
    "status": "online",
    "idle": false,
-   "last_activity_date": "2025-10-30T14:19:41+00:00",
+   "last_activity_date": "2025-11-11T07:46:41+00:00",
    "mobile_last_date": false,
    "desktop_last_date": false,
    "absent": false,
    "departments": [
-    1,
-    638,
-    2960
+    "***",
+    "***",
+    "***"
    ],
-   "phones": false,
+   "phones": "***",
    "bot_data": null,
-   "type": "user"
+   "type": "user",
+   "website": "",
+   "email": "no-reply@bitrix24.com"
   }
  ],
  "total": 2,
  "time": {
-  "start": 1761911866,
-  "finish": 1761911866.86797,
-  "duration": 0.867969036102295,
+  "start": 1765167932,
+  "finish": 1765167932.41207,
+  "duration": 0.412070035934448,
   "processing": 0,
-  "date_start": "2025-10-31T11:57:46+00:00",
-  "date_finish": "2025-10-31T11:57:46+00:00",
-  "operating_reset_at": 1761912466,
+  "date_start": "2025-12-08T04:25:32+00:00",
+  "date_finish": "2025-12-08T04:25:32+00:00",
+  "operating_reset_at": 1765168532,
   "operating": 0
  }
 }

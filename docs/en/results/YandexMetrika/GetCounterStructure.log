@@ -66,7 +66,7 @@
    "name": "<lable name>"
   }
  ],
- "measurement_tokens": "<active token list>",
+ "measurement_tokens": "***",
  "mirrors2": [
   {
    "site": "<full site domain>"
