@@ -3,12 +3,12 @@
  "recipient": {
   "company": "<Company name>",
   "name": "<Full name of contact person>",
-  "passport_series": "<Passport series>",
-  "passport_number": "<Passport number>",
-  "passport_date_of_issue": "<Date of issue of passport>",
-  "passport_organization": "<Passport issuing authority>",
+  "passport_series": "***",
+  "passport_number": "***",
+  "passport_date_of_issue": "***",
+  "passport_organization": "***",
   "tin": "<TIN>",
-  "passport_date_of_birth": "<Birth date>",
+  "passport_date_of_birth": "***",
   "email": "<Email as RFC 2822>",
   "contragent_type": "<Sender type: LEGAL_ENTITY, INDIVIDUAL >",
   "phones": [
@@ -23,13 +23,13 @@
    "number": "<Package number>",
    "weight": "<Total weight (grams)>",
    "length": "<Package Dimensions. Length (cm)>",
-   "width": "<Package Dimensions. Width (cm)>",
+   "width": "***",
    "height": "<Package Dimensions. Height (cm)>",
    "comment": "<Package withommentary>",
    "items": [
     {
      "name": "<Product name>",
-     "ware_key": "<Product ID/article>",
+     "ware_key": "***",
      "marking": "<Product marking>",
      "payment": {
       "value": "<Amount of cash on delivery, including VAT>",
@@ -52,7 +52,7 @@
  ],
  "additional_order_types": "<Additional order type>",
  "comment": "<Order comment>",
- "developer_key": "<Developer key (for module developers)>",
+ "developer_key": "***",
  "shipment_point": "<Code of CDEK POZ for self carriage by the customer>",
  "delivery_point": "<Code of CDEK office to which the package will be delivered>",
  "date_invoice": "<Invoice date>",
@@ -62,12 +62,12 @@
   "company": "<Company name>",
   "name": "<Full name of contact person>",
   "email": "<Email for alerts as RFC 2822>",
-  "passport_series": "<Passport series>",
-  "passport_number": "<Passport number>",
-  "passport_date_of_issue": "<Date of issue of passport>",
-  "passport_organization": "<Passport issuing authority>",
+  "passport_series": "***",
+  "passport_number": "***",
+  "passport_date_of_issue": "***",
+  "passport_organization": "***",
   "tin": "<TIN>",
-  "passport_date_of_birth": "<Birth date>",
+  "passport_date_of_birth": "***",
   "contragent_type": "<Sender type: LEGAL_ENTITY, INDIVIDUAL>",
   "phones": [
    {
@@ -109,7 +109,7 @@
   "parameter": "<Additional service parameter>"
  },
  "print": "<Need to generate a document>",
- "is_client_return": "<Customer refund>",
+ "is_client_return": "***",
  "accompanying_number": "<Number of the accompanying consignment note>",
- "widget_token": "<Token received from widget.cdek.ru>"
+ "widget_token": "***"
 }

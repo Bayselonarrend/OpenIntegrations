@@ -1,0 +1,11 @@
+﻿{
+ "resource": {
+  "db": "main",
+  "collection": "new_collection"
+ },
+ "actions": [
+  "***",
+  "***",
+  "***"
+ ]
+}

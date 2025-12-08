@@ -1,6 +1,6 @@
 ﻿{
- "access_token": "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R7Mmm2AR70JDsd2DOlzaCYU1ZP7JfgvLl7rGPfq7amzIAkrFddW0RaYTuRrP157vVV2N5wPabwOLXQ5yPAaCgYKAZYSARMSFQHGX2Mi76j0ToHJc4lXpc1ciCowrg0209",
+ "access_token": "***",
  "expires_in": 3599,
  "scope": "https://www.googleapis.com/auth/drive https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/calendar",
- "token_type": "Bearer"
+ "token_type": "***"
 }
