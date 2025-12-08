@@ -1,6 +1,6 @@
 oint bitrix24 СоздатьПодразделение \
   --url "b24-ar17wx.bitrix24.by" \
   --title "Подчиненное подразделение" \
-  --parentid 3020 \
+  --parentid 3040 \
   --headid 1 \
   --token "***"

@@ -1,7 +1,7 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint s3 ПолучитьСписокВерсийОбъектов \
-  --bucket "opi-gpbucket6" \
-  --basic "{'URL':'storage-155.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+  --bucket "a72c0726" \
+  --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
   --prefix "pic" \
-  --dir false
+  --dir true
