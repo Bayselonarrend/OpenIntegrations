@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-12-08T20:41:03.711046722Z",
+ "created_at": "2025-12-09T21:16:06.809913817Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was launched in 2003. It has been continously upgraded with new releases since then, each one being an improvement on the previous release. The latest major release is 19.5 (as of August 2021), which includes significant improvements in areas such as user experience, productivity, and scalability. In terms of timeline, a typical upgrade cycle for a 1C:Enterprise software release is around one to two years. However, the exact timeline may vary depending on various factors, such as the complexity of the platform or the needs of the businesses being served by the solution."
+  "content": "The first version of 1C:Enterprise was released in 1995. However, the software has undergone significant updates and improvements over the years. The latest versions are still available today, with newer releases being made regularly. The current version is 10.13, which was released on July 27, 2021."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 23984079750,
- "load_duration": 14211200,
- "prompt_eval_count": 219,
- "prompt_eval_duration": 8997611529,
- "eval_count": 141,
- "eval_duration": 14963762628
+ "total_duration": 20425090131,
+ "load_duration": 16714183,
+ "prompt_eval_count": 515,
+ "prompt_eval_duration": 14510308250,
+ "eval_count": 77,
+ "eval_duration": 5881249940
 }
