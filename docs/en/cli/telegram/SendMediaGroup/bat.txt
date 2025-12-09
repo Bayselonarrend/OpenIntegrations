@@ -4,4 +4,4 @@ oint telegram SendMediaGroup ^
  --token "***" ^
  --chat "***" ^
  --text "Строковое значение" ^
- --media "{'https://hut.openintegrations.dev/test_data/document.docx':'document','/tmp/rhk31aod.enj.docx':'document'}"
+ --media "{'https://hut.openintegrations.dev/test_data/document.docx':'document','/tmp/mxwnjsi2.nuu.docx':'document'}"

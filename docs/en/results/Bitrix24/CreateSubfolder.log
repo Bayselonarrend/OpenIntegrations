@@ -1,15 +1,15 @@
 ﻿{
  "result": {
-  "ID": 47974,
+  "ID": 48028,
   "NAME": "New subfolder",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": 47974,
-  "PARENT_ID": "47970",
+  "REAL_OBJECT_ID": 48028,
+  "PARENT_ID": "48024",
   "DELETED_TYPE": 0,
-  "CREATE_TIME": "2025-12-09T19:42:04+03:00",
-  "UPDATE_TIME": "2025-12-09T19:42:04+03:00",
+  "CREATE_TIME": "2025-12-09T18:49:41+00:00",
+  "UPDATE_TIME": "2025-12-09T18:49:41+00:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -17,13 +17,13 @@
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog/New subfolder"
  },
  "time": {
-  "start": 1765298524,
-  "finish": 1765298524.06259,
-  "duration": 0.0625898838043213,
+  "start": 1765306181,
+  "finish": 1765306181.3777,
+  "duration": 0.377696990966797,
   "processing": 0,
-  "date_start": "2025-12-09T19:42:04+03:00",
-  "date_finish": "2025-12-09T19:42:04+03:00",
-  "operating_reset_at": 1765299124,
+  "date_start": "2025-12-09T18:49:41+00:00",
+  "date_finish": "2025-12-09T18:49:41+00:00",
+  "operating_reset_at": 1765306781,
   "operating": 0
  }
 }
