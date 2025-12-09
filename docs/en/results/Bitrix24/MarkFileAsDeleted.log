@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "47964",
+  "ID": "48018",
   "NAME": "New file name.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
@@ -8,25 +8,25 @@
   "PARENT_ID": "3",
   "DELETED_TYPE": "3",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "32526",
+  "FILE_ID": "32570",
   "SIZE": "805189",
-  "CREATE_TIME": "2025-12-09T19:41:34+03:00",
-  "UPDATE_TIME": "2025-12-09T19:41:34+03:00",
-  "DELETE_TIME": "2025-12-09T19:41:58+03:00",
+  "CREATE_TIME": "2025-12-09T18:48:26+00:00",
+  "UPDATE_TIME": "2025-12-09T18:48:26+00:00",
+  "DELETE_TIME": "2025-12-09T18:49:08+00:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=005f3869006e9f06006b12e4000000010000079960e47cece573dd985f987ebf3a0256&token=disk%7CaWQ9NDc5NjQmXz1ZM0FjdnlBSXA1b0todFVRWTY0ams3d0JtMWpPSHBKZA%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EYzVOalFtWHoxWk0wRmpkbmxCU1hBMWIwdG9kRlZSV1RZMGFtczNkMEp0TVdwUFNIQktaQT09fDAwNWYzODY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3OTk2MGU0N2NlY2U1NzNkZDk4NWY5ODdlYmYzYTAyNTYi.n3dTSabnsSnICjmKOReEZM7wYWoS8yfJggwcP9wtw1E%3D",
-  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New file name.jpgi17652985184788i"
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=d07b3869006e9f06006b12e400000001000007544bbda85e25d605e741e143536f0bfe&token=disk%7CaWQ9NDgwMTgmXz1oMXM3WDVHUHNDU1NwQzA1U2JUNWNCZElTSThFZmpITQ%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EZ3dNVGdtWHoxb01YTTNXRFZIVUhORFUxTndRekExVTJKVU5XTkNaRWxUU1RoRlptcElUUT09fGQwN2IzODY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3NTQ0YmJkYTg1ZTI1ZDYwNWU3NDFlMTQzNTM2ZjBiZmUi.qbNu582xX7s1CRU6ZQDfT3ZbNnywSPs5HZkNvAB%2BwH4%3D",
+  "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New file name.jpgi17653061486186i"
  },
  "time": {
-  "start": 1765298518,
-  "finish": 1765298518.93326,
-  "duration": 0.933258056640625,
+  "start": 1765306150,
+  "finish": 1765306150.95541,
+  "duration": 0.955413103103638,
   "processing": 0,
-  "date_start": "2025-12-09T19:41:58+03:00",
-  "date_finish": "2025-12-09T19:41:58+03:00",
-  "operating_reset_at": 1765299118,
+  "date_start": "2025-12-09T18:49:10+00:00",
+  "date_finish": "2025-12-09T18:49:10+00:00",
+  "operating_reset_at": 1765306750,
   "operating": 0
  }
 }

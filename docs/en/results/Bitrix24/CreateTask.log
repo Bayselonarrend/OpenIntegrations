@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "8958",
+   "id": "8968",
    "parentId": null,
    "title": "New task",
    "description": "New task description",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-12-09T19:40:42+03:00",
+   "createdDate": "2025-12-09T18:44:24+00:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2025-12-09T19:40:42+03:00",
+   "changedDate": "2025-12-09T18:44:24+00:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2025-12-09T19:40:42+03:00",
+   "activityDate": "2025-12-09T18:44:24+00:00",
    "dateStart": null,
-   "deadline": "2025-12-10T22:40:00+03:00",
+   "deadline": "2025-12-10T18:44:00+00:00",
    "startDatePlan": null,
    "endDatePlan": null,
-   "guid": "{3726c539-1b36-45d2-bc37-c429d74e7677}",
+   "guid": "{bf9b0b61-899e-42b1-85d7-9dd48d944374}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2025-12-09T19:40:42+03:00",
+   "statusChangedDate": "2025-12-09T18:44:24+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1765298442,
-  "finish": 1765298442.92183,
-  "duration": 0.921828985214234,
+  "start": 1765305864,
+  "finish": 1765305864.92597,
+  "duration": 0.925970077514648,
   "processing": 0,
-  "date_start": "2025-12-09T19:40:42+03:00",
-  "date_finish": "2025-12-09T19:40:42+03:00",
-  "operating_reset_at": 1765299042,
-  "operating": 0.134768009185791
+  "date_start": "2025-12-09T18:44:24+00:00",
+  "date_finish": "2025-12-09T18:44:24+00:00",
+  "operating_reset_at": 1765306464,
+  "operating": 0.133396148681641
  }
 }

@@ -3,4 +3,4 @@
 oint sqlite CreateTable \
  --table "test1" \
  --cols "{'id':'INTEGER PRIMARY KEY','[An obscure column]':'TEXT'}" \
- --db "/tmp/l3i0qa4n.pj1.sqlite"
+ --db "/tmp/hpdvpuqr.cdk.sqlite"

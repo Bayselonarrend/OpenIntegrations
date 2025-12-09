@@ -1,4 +1,4 @@
 oint slack DeleteMessage \
  --token "***" \
  --channel "C06UFNUTKUL" \
- --stamp "1765203504.723769"
+ --stamp "1765305340.502329"
