@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "2c382aa7-fc4e-81a8-843b-d8d1f8fef93e",
- "created_time": "2025-12-08T21:28:00Z",
- "last_edited_time": "2025-12-08T21:28:00Z",
+ "id": "2c482aa7-fc4e-81b8-a516-ec44c2f38fed",
+ "created_time": "2025-12-09T16:36:00Z",
+ "last_edited_time": "2025-12-09T16:36:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,33 +15,28 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "2c382aa7-fc4e-81cd-b78f-e615ca486825"
+  "database_id": "2c482aa7-fc4e-8107-8222-c805440e2c2e"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Status": {
-   "id": "DmLV",
-   "type": "select",
-   "select": {
-    "id": "932b7ae6-b0db-47fe-9bc8-9f6ded3d528f",
-    "name": "New",
-    "color": "green"
+  "Phone": {
+   "id": "AB%3E%3F",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
+  "CreationDate": {
+   "id": "BUxS",
+   "type": "date",
+   "date": {
+    "start": "2025-12-09T10:36:00+03:00",
+    "end": null,
+    "time_zone": null
    }
   },
-  "Active": {
-   "id": "Do%3EN",
-   "type": "checkbox",
-   "checkbox": true
-  },
-  "User": {
-   "id": "H%7Dll",
-   "type": "people",
-   "people": []
-  },
   "Email": {
-   "id": "L%40yo",
+   "id": "HqB%5E",
    "type": "rich_text",
    "rich_text": [
     {
@@ -63,8 +58,13 @@
     }
    ]
   },
+  "User": {
+   "id": "JunA",
+   "type": "people",
+   "people": []
+  },
   "Image": {
-   "id": "ek%3FP",
+   "id": "NEwb",
    "type": "files",
    "files": [
     {
@@ -76,22 +76,8 @@
     }
    ]
   },
-  "CreationDate": {
-   "id": "es%3FH",
-   "type": "date",
-   "date": {
-    "start": "2025-12-08T09:28:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
-  "Number": {
-   "id": "flCL",
-   "type": "number",
-   "number": 1
-  },
   "Description": {
-   "id": "g%5BJi",
+   "id": "PScP",
    "type": "rich_text",
    "rich_text": [
     {
@@ -113,10 +99,24 @@
     }
    ]
   },
-  "Phone": {
-   "id": "xZ%3EV",
-   "type": "phone_number",
-   "phone_number": "***"
+  "Status": {
+   "id": "SrBD",
+   "type": "select",
+   "select": {
+    "id": "9417f4ad-8ddb-483a-8bbb-b96409d7a6b6",
+    "name": "New",
+    "color": "green"
+   }
+  },
+  "Active": {
+   "id": "o%5CA%3E",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "Number": {
+   "id": "q%7Bj_",
+   "type": "number",
+   "number": 1
   },
   "Name": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/LLC-Vector-2c382aa7fc4e81a8843bd8d1f8fef93e",
+ "url": "https://www.notion.so/LLC-Vector-2c482aa7fc4e81b8a516ec44c2f38fed",
  "public_url": null,
- "request_id": "1a5fe918-9f5a-4997-9ea9-8c77ee0c07e5"
+ "request_id": "fb014de6-271f-4a79-b0a2-d59a4a744876"
 }
