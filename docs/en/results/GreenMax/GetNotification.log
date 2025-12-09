@@ -8,8 +8,8 @@
    "wid": "***",
    "typeInstance": "v3"
   },
-  "timestamp": 1765260499,
-  "idMessage": "1765260420884",
+  "timestamp": 1765295038,
+  "idMessage": "1765295010859",
   "status": "failed",
   "description": "MessageError: Вы не можете отправить сообщение в этом чате"
  }
