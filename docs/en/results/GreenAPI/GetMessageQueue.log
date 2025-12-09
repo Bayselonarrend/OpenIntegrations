@@ -1,29 +1,6 @@
 ﻿[
  {
-  "messageID": "3EB054E4FA9FF0ECC1A890",
-  "type": "sendLocation",
-  "body": {
-   "chatId": "120363410406221140@g.us",
-   "latitude": 53.908522,
-   "longitude": 27.574821,
-   "address": "Victory Square, Minsk",
-   "nameLocation": "Victory sq.",
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB0FF97BCE1A079C037AE",
-  "type": "sendLocation",
-  "body": {
-   "chatId": "120363410406221140@g.us",
-   "quotedMessageId": "3EB054E4FA9FF0ECC1A890",
-   "latitude": 53.908522,
-   "longitude": 27.574821,
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB06679D42B33DD01C054",
+  "messageID": "3EB069242F0C9E097FDD43",
   "type": "sendContact",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -38,7 +15,7 @@
   }
  },
  {
-  "messageID": "3EB046BEA69192D1E233D7",
+  "messageID": "3EB061961F741069335B9D",
   "type": "sendContact",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -46,30 +23,30 @@
     "phoneContact": 79001234568,
     "company": "Bicycle"
    },
-   "quotedMessageId": "3EB06679D42B33DD01C054",
+   "quotedMessageId": "3EB069242F0C9E097FDD43",
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "3EB0C73F5B6CA040BF3270"
+   "3EB0ECCE8BD2DA0411365D"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "120363410406221140@g.us",
    "chatIdFrom": "120363410406221140@g.us",
    "messages": [
-    "3EB0C1EC8837ED76CE8392"
+    "3EB0C67F46297121A50E1D"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB015843B19C1C71D0ED0",
+  "messageID": "3EB0BDE3BECABF0A6D196C",
   "type": "editMessage",
   "body": {
    "chatId": "120363410406221140@g.us",
-   "idMessage": "3EB0C1EC8837ED76CE8392",
+   "idMessage": "3EB0C67F46297121A50E1D",
    "message": "New message text",
    "linkPreview": true
   }
