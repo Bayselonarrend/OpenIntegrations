@@ -1,7 +1,7 @@
 ﻿{
  "data": [
   {
-   "accessed": 1765219471,
+   "accessed": 1765311359,
    "extension": "",
    "gid": 1000,
    "is_directory": true,
@@ -27,7 +27,7 @@
      "uid": 1000
     },
     {
-     "accessed": 1765219472,
+     "accessed": 1765311359,
      "extension": "",
      "gid": 1000,
      "is_directory": true,
@@ -55,7 +55,7 @@
      ]
     },
     {
-     "accessed": 1765219472,
+     "accessed": 1765311359,
      "extension": "",
      "gid": 1000,
      "is_directory": true,
@@ -98,8 +98,5 @@
    ]
   }
  ],
- "result": true,
- "close_connection": {
-  "result": true
- }
+ "result": true
 }

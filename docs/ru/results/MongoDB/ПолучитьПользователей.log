@@ -702,7 +702,7 @@
    {
     "_id": "main.newuser",
     "userId": {
-     "__B64_BINARY__": "18brRsNwSo+rRQjsaKmdkA=="
+     "__B64_BINARY__": "xWQUugGzSpqNz9vALcdrXg=="
     },
     "user": "newuser",
     "db": "main",
@@ -713,13 +713,13 @@
     "credentials": {
      "SCRAM-SHA-1": {
       "iterationCount": 10000,
-      "salt": "VyQZXMvDRvN3Sf24v7QZyA==",
+      "salt": "uYVpHz4hUBaeZGUZnE0LqQ==",
       "storedKey": "***",
       "serverKey": "***"
      },
      "SCRAM-SHA-256": {
       "iterationCount": 15000,
-      "salt": "EpVXUumokb4jLOBiKXe1syCPZVIM0ionoMp2zg==",
+      "salt": "/IRyGj7kcMLnZuw+REsAWr9TIAp2KjwnqODVEQ==",
       "storedKey": "***",
       "serverKey": "***"
      }
