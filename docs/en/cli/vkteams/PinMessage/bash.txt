@@ -1,4 +1,4 @@
 oint vkteams PinMessage \
  --token "***" \
  --chatid "***" \
- --messageid "7581497719965893467"
+ --messageid "7581935080780612576"

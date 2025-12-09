@@ -1,7 +1,7 @@
 oint bitrix24 UpdateKanbansStage \
  --url "b24-ar17wx.bitrix24.by" \
  --title "New stage name 2" \
- --stage 3288 \
+ --stage 3316 \
  --color "000000" \
  --prevstage 6 \
  --admin true \

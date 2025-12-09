@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "C:\\Users\\bayse\\AppData\\Local\\Temp\\tya41sa2.emw.bin",
- "result": true
+ "filepath": "/tmp/qzg0iybe.2el.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

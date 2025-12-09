@@ -1,5 +1,5 @@
 :: JSON data can also be passed as a path to a .json file
 
 oint vk DeleteImage ^
- --pictureid 457260916 ^
+ --pictureid 457261031 ^
  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

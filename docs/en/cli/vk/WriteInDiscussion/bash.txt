@@ -1,6 +1,6 @@
 # JSON data can also be passed as a path to a .json file
 
 oint vk WriteInDiscussion \
- --topic 54501547 \
+ --topic 54503140 \
  --text "I like yellow more" \
  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
