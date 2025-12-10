@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "48180",
+  "ID": "48234",
   "NAME": "Картинка1.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
@@ -8,25 +8,25 @@
   "PARENT_ID": "3",
   "DELETED_TYPE": "0",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "32684",
+  "FILE_ID": "32722",
   "SIZE": "805189",
-  "CREATE_TIME": "2025-12-10T07:31:28+00:00",
-  "UPDATE_TIME": "2025-12-10T07:31:28+00:00",
+  "CREATE_TIME": "2025-12-10T10:21:33+00:00",
+  "UPDATE_TIME": "2025-12-10T10:21:33+00:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "0",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=732f3969006e9f06006b12e40000000100000773d11cde97eb553f6fda7021a3247ba1&token=disk%7CaWQ9NDgxODAmXz1BT0pnc25oU0ozclQ1eENscEdVcEwzRVF6dURzSFJmZA%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EZ3hPREFtWHoxQlQwcG5jMjVvVTBvemNsUTFlRU5zY0VkVmNFd3pSVkY2ZFVSelNGSm1aQT09fDczMmYzOTY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3NzNkMTFjZGU5N2ViNTUzZjZmZGE3MDIxYTMyNDdiYTEi.dWZYF0rxt5FrpJybVEzCK9ao3BWMfsXSpOdsaXh0jr4%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=8b563969006e9f06006b12e40000000100000779a9e1bd09010fd85fbc9b2de1817992&token=disk%7CaWQ9NDgyMzQmXz11TFhsTHR0VEtSUGdaaldCMFhZQmhOc1A4bDJVSjFUMA%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EZ3lNelFtWHoxMVRGaHNUSFIwVkV0U1VHZGFhbGRDTUZoWlFtaE9jMUE0YkRKVlNqRlVNQT09fDhiNTYzOTY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3NzlhOWUxYmQwOTAxMGZkODVmYmM5YjJkZTE4MTc5OTIi.Z1WszlFoDORWc3dAy1ke3j2k%2FsjnD15VqPmI1hdy%2Fy0%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Картинка1.jpg"
  },
  "time": {
-  "start": 1765351891,
-  "finish": 1765351891.10146,
-  "duration": 0.101463079452515,
+  "start": 1765362103,
+  "finish": 1765362103.56392,
+  "duration": 0.563916921615601,
   "processing": 0,
-  "date_start": "2025-12-10T07:31:31+00:00",
-  "date_finish": "2025-12-10T07:31:31+00:00",
-  "operating_reset_at": 1765352491,
+  "date_start": "2025-12-10T10:21:43+00:00",
+  "date_finish": "2025-12-10T10:21:43+00:00",
+  "operating_reset_at": 1765362703,
   "operating": 0
  }
 }

@@ -1,8 +1,8 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint s3 ЗагрузитьОбъект ^
-  --name "fileChunked.mp3" ^
-  --bucket "a72c0726" ^
-  --data "https://hut.openintegrations.dev/test_data/song.mp3" ^
-  --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'5242880'}" ^
-  --dir true
+  --name "picture.jpg" ^
+  --bucket "111d12fc" ^
+  --data "https://hut.openintegrations.dev/test_data/picture.jpg" ^
+  --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+  --dir false

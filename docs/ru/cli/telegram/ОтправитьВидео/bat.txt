@@ -2,4 +2,4 @@ oint telegram ОтправитьВидео ^
   --token "***" ^
   --chat "***" ^
   --text "Строковое значение" ^
-  --video "/tmp/zdikq1w0.lse"
+  --video "/tmp/bmb0n0ux.knm"
