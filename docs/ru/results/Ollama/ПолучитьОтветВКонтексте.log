@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-12-10T11:02:22.119104731Z",
+ "created_at": "2025-12-10T12:36:27.713392452Z",
  "message": {
   "role": "assistant",
-  "content": "Yes, the first version of 1C:Enterprise was released in late 2005 or early 2006. It marked a significant upgrade over previous versions and offered many new features, as well as improvements to existing modules and additions to the suite's functionality. The latest version of 1C:Enterprise is currently being developed and expected to launch in late 2021 or early 2022."
+  "content": "The first version of 1C:Enterprise was released in 2004. It underwent several major updates and upgrades throughout its lifespan, including the following:\n\n- 2006: The software received significant improvements to its user interface, including new features such as mobile applications for iOS and Android devices.\n\n- 2012: In response to customer feedback, 1C:Enterprise was updated with a redesigned user interface that streamlined the application's navigation and made it easier to use for novice users.\n\n- 2015: The system received enhancements focused on improving its integration capabilities, including the ability to integrate with third-party software and services.\n\n- 2018: In a bid to stay ahead of competing products in the marketplace, 1C:Enterprise was revised again, this time focusing on improving its security features and protecting business data from cyber threats.\n\nThe latest version of 1C:Enterprise is 1C:Cloud, which was released in January 2020. It includes the same robust set of functionalities as the previous versions, but it also offers a cloud-based platform that provides users with access to all their business data from anywhere and at any time."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 20325034060,
- "load_duration": 15692038,
- "prompt_eval_count": 258,
- "prompt_eval_duration": 8014039000,
- "eval_count": 97,
- "eval_duration": 12285437808
+ "total_duration": 38370603125,
+ "load_duration": 22233365,
+ "prompt_eval_count": 260,
+ "prompt_eval_duration": 7392049426,
+ "eval_count": 284,
+ "eval_duration": 30946417199
 }
