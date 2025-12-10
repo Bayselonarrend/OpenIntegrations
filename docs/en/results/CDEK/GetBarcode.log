@@ -1,9 +1,9 @@
 ﻿{
  "entity": {
-  "uuid": "c0b78cb3-26ae-4dab-9138-2ee06b3583bf",
+  "uuid": "ffa243b5-a031-4393-b07a-28f5f7cb3e58",
   "orders": [
    {
-    "order_uuid": "a3b7ce05-d121-4272-8c90-f21ab824b799"
+    "order_uuid": "9e15fe3c-2071-4ed8-9ded-70df723825d3"
    }
   ],
   "copy_count": 1,
@@ -13,20 +13,20 @@
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-12-08T14:50:28+00:00"
+    "date_time": "2025-12-10T20:09:25+00:00"
    },
    {
     "code": "INVALID",
     "name": "Некорректный запрос",
-    "date_time": "2025-12-08T14:50:29+00:00"
+    "date_time": "2025-12-10T20:09:26+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "5fd6dc89-336e-4e8e-8a14-33cda813b0d6",
+   "request_uuid": "f181961f-7fe0-4991-a8b9-d51ba75f9a43",
    "type": "CREATE",
-   "date_time": "2025-12-08T14:50:28+00:00",
+   "date_time": "2025-12-10T20:09:25+00:00",
    "state": "INVALID",
    "errors": [
     {
@@ -37,7 +37,7 @@
    "warnings": [
     {
      "code": "v2_order_invalid",
-     "message": "Order is invalid a3b7ce05-d121-4272-8c90-f21ab824b799"
+     "message": "Order is invalid 9e15fe3c-2071-4ed8-9ded-70df723825d3"
     }
    ]
   }
