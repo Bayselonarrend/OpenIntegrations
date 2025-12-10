@@ -7,8 +7,8 @@
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1765294934,
-  "idMessage": "3EB0C594976ACEBEC1A706",
+  "timestamp": 1765294946,
+  "idMessage": "3EB09B72DF52644AFB1181",
   "senderData": {
    "chatId": "***",
    "chatName": "***",
@@ -17,13 +17,14 @@
    "senderContactName": "***"
   },
   "messageData": {
-   "typeMessage": "extendedTextMessage",
-   "extendedTextMessageData": {
-    "text": "New message",
-    "description": "",
-    "title": "",
-    "previewType": "None",
+   "typeMessage": "imageMessage",
+   "fileMessageData": {
+    "downloadUrl": "https://do-media-7105.fra1.digitaloceanspaces.com/7105187566/ad853d16-db83-4eb7-938d-e4b0be420b29.jpg",
+    "caption": "File description",
+    "fileName": "ad853d16-db83-4eb7-938d-e4b0be420b29.jpg",
     "jpegThumbnail": "",
+    "isAnimated": false,
+    "mimeType": "image/jpeg",
     "forwardingScore": 0,
     "isForwarded": false
    }
