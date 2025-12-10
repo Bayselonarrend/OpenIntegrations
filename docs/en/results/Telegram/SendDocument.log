@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 18229,
+  "message_id": 18264,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,12 +15,12 @@
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1765300669,
+  "date": 1765340365,
   "document": {
    "file_name": "document.docx",
    "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-   "file_id": "BQACAgIAAxkDAAJHNWk4Wb1U2YqnnFmVQ1RUf1hK4IKaAALZjwACiuzASZmTTBVdJxfrNgQ",
-   "file_unique_id": "AgAD2Y8AAorswEk",
+   "file_id": "BQACAgIAAxkDAAJHWGk49M1_GPP3L8g93yY2AdQPd98nAAJ7hAACiuzISQABHmGY9AhUrzYE",
+   "file_unique_id": "AgADe4QAAorsyEk",
    "file_size": 24069
   },
   "caption": "Строковое значение"
