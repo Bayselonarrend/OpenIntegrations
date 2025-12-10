@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "2c582aa7-fc4e-81ca-b516-ddf6500c7e8e",
- "created_time": "2025-12-10T10:08:00Z",
- "last_edited_time": "2025-12-10T10:08:00Z",
+ "id": "2c582aa7-fc4e-819a-b184-f0cc9ede10a9",
+ "created_time": "2025-12-10T11:49:00Z",
+ "last_edited_time": "2025-12-10T11:49:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,14 +15,14 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "2c582aa7-fc4e-812e-873b-ec5b0846ecff"
+  "database_id": "2c582aa7-fc4e-8153-90ff-d0fb1859d22f"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
   "Описание": {
-   "id": "%3ANPZ",
+   "id": "KIHO",
    "type": "rich_text",
    "rich_text": [
     {
@@ -44,31 +44,8 @@
     }
    ]
   },
-  "Статус": {
-   "id": "CdkJ",
-   "type": "select",
-   "select": {
-    "id": "5245eedb-bb67-4c51-a3cc-d230ac0b3511",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
-  "Номер": {
-   "id": "GMK%3C",
-   "type": "number",
-   "number": 1
-  },
-  "Дата создания": {
-   "id": "SCPX",
-   "type": "date",
-   "date": {
-    "start": "2025-12-10T10:08:00+00:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
   "Картинка": {
-   "id": "XIQn",
+   "id": "Xey~",
    "type": "files",
    "files": [
     {
@@ -80,13 +57,46 @@
     }
    ]
   },
+  "Дата создания": {
+   "id": "Za%3Bv",
+   "type": "date",
+   "date": {
+    "start": "2025-12-10T05:49:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
   "Телефон": {
-   "id": "%5D~F%7C",
+   "id": "%5BUsB",
    "type": "phone_number",
    "phone_number": "***"
   },
+  "Статус": {
+   "id": "%5Cpbs",
+   "type": "select",
+   "select": {
+    "id": "3b7d2fda-9a28-4911-80e7-1713a0933a3f",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Пользователь": {
+   "id": "%5D%5CEr",
+   "type": "people",
+   "people": []
+  },
+  "Активен": {
+   "id": "ljsz",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "Номер": {
+   "id": "%7C%5EFk",
+   "type": "number",
+   "number": 1
+  },
   "Почта": {
-   "id": "agyv",
+   "id": "~Nd%5D",
    "type": "rich_text",
    "rich_text": [
     {
@@ -107,16 +117,6 @@
      "href": null
     }
    ]
-  },
-  "Пользователь": {
-   "id": "n%40~%60",
-   "type": "people",
-   "people": []
-  },
-  "Активен": {
-   "id": "u%3AaG",
-   "type": "checkbox",
-   "checkbox": true
   },
   "Имя": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/2c582aa7fc4e81cab516ddf6500c7e8e",
+ "url": "https://www.notion.so/2c582aa7fc4e819ab184f0cc9ede10a9",
  "public_url": null,
- "request_id": "119f9af2-cb82-4561-a8b4-03a8e9e0be86"
+ "request_id": "193ae32c-2316-468e-a758-4c71f4826616"
 }
