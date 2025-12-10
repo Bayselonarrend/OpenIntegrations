@@ -4,5 +4,5 @@ oint bitrix24 GetCalendarEvents ^
  --url "b24-ar17wx.bitrix24.by" ^
  --owner 1 ^
  --type "user" ^
- --filter "{'from':'12/11/2025 5:25:11 PM','to':'12/12/2025 5:25:11 PM','section':['1770','1772']}" ^
+ --filter "{'from':'12/11/2025 20:03:39','to':'12/12/2025 20:03:39','section':['1778','1780']}" ^
  --token "***"
