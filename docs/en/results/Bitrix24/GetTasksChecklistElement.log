@@ -1,8 +1,8 @@
 ﻿{
  "result": {
-  "ID": "6378",
-  "TASK_ID": "8988",
-  "PARENT_ID": "6376",
+  "ID": "6410",
+  "TASK_ID": "9028",
+  "PARENT_ID": "6408",
   "CREATED_BY": "1",
   "TITLE": "New elements text",
   "SORT_INDEX": "1",
@@ -14,13 +14,13 @@
   "ATTACHMENTS": []
  },
  "time": {
-  "start": 1765343214,
-  "finish": 1765343214.80197,
-  "duration": 0.801970958709717,
+  "start": 1765376066,
+  "finish": 1765376066.69294,
+  "duration": 0.692943096160889,
   "processing": 0,
-  "date_start": "2025-12-10T05:06:54+00:00",
-  "date_finish": "2025-12-10T05:06:54+00:00",
-  "operating_reset_at": 1765343814,
+  "date_start": "2025-12-10T17:14:26+03:00",
+  "date_finish": "2025-12-10T17:14:26+03:00",
+  "operating_reset_at": 1765376666,
   "operating": 0
  }
 }
