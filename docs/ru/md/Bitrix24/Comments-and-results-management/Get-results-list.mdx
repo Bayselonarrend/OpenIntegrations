@@ -31,12 +31,12 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "8851";
+    IDЗадачи = "8950";
 
     Результат = OPI_Bitrix24.ПолучитьСписокРезультатов(URL, IDЗадачи);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "fb563569006e9f06006b12e400000001000...";
+    Токен = "b9473869006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПолучитьСписокРезультатов(URL, IDЗадачи, Токен);
 ```
@@ -48,7 +48,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьСписокРезультатов \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8870" \
+              --task "9010" \
               --token "***"
         ```
     </TabItem>
@@ -57,7 +57,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьСписокРезультатов ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8870" ^
+              --task "9010" ^
               --token "***"
         ```
     </TabItem>
@@ -68,24 +68,24 @@ import TabItem from '@theme/TabItem';
 {
  "result": [
   {
-   "id": 3294,
-   "taskId": 8870,
-   "commentId": 20554,
+   "id": 3354,
+   "taskId": 9020,
+   "commentId": 20884,
    "createdBy": 1,
-   "createdAt": "2025-12-07T22:45:00+03:00",
-   "updatedAt": "2025-12-07T22:45:00+03:00",
+   "createdAt": "2025-12-10T14:54:58+03:00",
+   "updatedAt": "2025-12-10T14:54:58+03:00",
    "status": 0,
    "text": "Задача изменена, расходимся",
    "formattedText": "Задача изменена, расходимся",
    "files": []
   },
   {
-   "id": 3292,
-   "taskId": 8870,
-   "commentId": 20552,
+   "id": 3352,
+   "taskId": 9020,
+   "commentId": 20882,
    "createdBy": 1,
-   "createdAt": "2025-12-07T22:44:58+03:00",
-   "updatedAt": "2025-12-07T22:44:58+03:00",
+   "createdAt": "2025-12-10T14:54:57+03:00",
+   "updatedAt": "2025-12-10T14:54:57+03:00",
    "status": 0,
    "text": "Задача изменена, не расходимся",
    "formattedText": "Задача изменена, не расходимся",
@@ -93,13 +93,13 @@ import TabItem from '@theme/TabItem';
   }
  ],
  "time": {
-  "start": 1765136713,
-  "finish": 1765136714.01539,
-  "duration": 1.01538610458374,
+  "start": 1765367701,
+  "finish": 1765367701.67969,
+  "duration": 0.679687023162842,
   "processing": 0,
-  "date_start": "2025-12-07T22:45:13+03:00",
-  "date_finish": "2025-12-07T22:45:14+03:00",
-  "operating_reset_at": 1765137314,
+  "date_start": "2025-12-10T14:55:01+03:00",
+  "date_finish": "2025-12-10T14:55:01+03:00",
+  "operating_reset_at": 1765368301,
   "operating": 0
  }
 }

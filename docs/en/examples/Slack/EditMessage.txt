@@ -1,6 +1,6 @@
 ﻿    Token     = "xoxb-6965308400114-696804637...";
     Channel   = "C06UFNUTKUL";
-    Timestamp = "1765099094.644329";
+    Timestamp = "1765291669.028989";
 
     Text = "TestMessage2";
 

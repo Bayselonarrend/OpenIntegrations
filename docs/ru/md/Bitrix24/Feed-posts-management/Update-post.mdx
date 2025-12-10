@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
     Текст     = "Новый текст новости";
     Заголовок = "Новый заголовок новости";
     Картинка1 = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Путь или Двоичные данные
-    IDНовости = "3377";
+    IDНовости = "3416";
 
     Файлы = Новый Соответствие;
     Файлы.Вставить("1.png", Картинка1);
@@ -47,8 +47,8 @@ import TabItem from '@theme/TabItem';
     Результат = OPI_Bitrix24.ИзменитьНовость(URL, IDНовости, Текст, , Файлы, Заголовок);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Токен     = "fb563569006e9f06006b12e400000001000...";
-    IDНовости = "3375";
+    Токен     = "b9473869006e9f06006b12e400000001000...";
+    IDНовости = "3414";
 
     Результат = OPI_Bitrix24.ИзменитьНовость(URL, IDНовости, Текст, , Файлы, Заголовок, Токен);
 ```
@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьНовость \
               --url "b24-ar17wx.bitrix24.by" \
-              --postid 3382 \
+              --postid 3438 \
               --text "Новый текст новости" \
               --files "{'1.png':'https://hut.openintegrations.dev/test_data/picture.jpg'}" \
               --title "Новый заголовок новости" \
@@ -76,7 +76,7 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьНовость ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --postid 3382 ^
+              --postid 3438 ^
               --text "Новый текст новости" ^
               --files "{'1.png':'https://hut.openintegrations.dev/test_data/picture.jpg'}" ^
               --title "Новый заголовок новости" ^
@@ -88,16 +88,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 3382,
+ "result": 3442,
  "time": {
-  "start": 1765136518,
-  "finish": 1765136519.4762,
-  "duration": 1.47620105743408,
-  "processing": 0,
-  "date_start": "2025-12-07T22:41:58+03:00",
-  "date_finish": "2025-12-07T22:41:59+03:00",
-  "operating_reset_at": 1765137119,
-  "operating": 0.460548877716064
+  "start": 1765367649,
+  "finish": 1765367650.1038,
+  "duration": 1.10379910469055,
+  "processing": 1,
+  "date_start": "2025-12-10T14:54:09+03:00",
+  "date_finish": "2025-12-10T14:54:10+03:00",
+  "operating_reset_at": 1765368249,
+  "operating": 0.368281126022339
  }
 }
 ```

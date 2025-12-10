@@ -32,7 +32,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL            = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDПользователя = "3007";
+    IDПользователя = "3046";
     Почта          = Строка(Новый УникальныйИдентификатор) + "@exepmple.org";
 
     // Полную структуру можно получить функцией ПолучитьСтурктуруПользователя
@@ -44,8 +44,8 @@ import TabItem from '@theme/TabItem';
     Результат = OPI_Bitrix24.ИзменитьПользователя(URL, IDПользователя, СтруктураПользователя);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Токен          = "fb563569006e9f06006b12e400000001000...";
-    IDПользователя = "3009";
+    Токен          = "b9473869006e9f06006b12e400000001000...";
+    IDПользователя = "3048";
     Почта          = Строка(Новый УникальныйИдентификатор) + "@exepmple.org";
 
     СтруктураПользователя = Новый Структура;
@@ -66,8 +66,8 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьПользователя \
               --url "b24-ar17wx.bitrix24.by" \
-              --userid 3016 \
-              --fields "{'EMAIL':'e134395b-fa05-4553-9058-b10f4df2500f@exepmple.org','NAME':'Олег','LAST_NAME':'Лама','UF_DEPARTMENT':'7'}" \
+              --userid 3072 \
+              --fields "{'EMAIL':'7d68de74-97bd-4b5d-84c6-4d85970b87d3@exepmple.org','NAME':'Олег','LAST_NAME':'Лама','UF_DEPARTMENT':'7'}" \
               --token "***"
         ```
     </TabItem>
@@ -78,8 +78,8 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьПользователя ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --userid 3016 ^
-              --fields "{'EMAIL':'e134395b-fa05-4553-9058-b10f4df2500f@exepmple.org','NAME':'Олег','LAST_NAME':'Лама','UF_DEPARTMENT':'7'}" ^
+              --userid 3072 ^
+              --fields "{'EMAIL':'7d68de74-97bd-4b5d-84c6-4d85970b87d3@exepmple.org','NAME':'Олег','LAST_NAME':'Лама','UF_DEPARTMENT':'7'}" ^
               --token "***"
         ```
     </TabItem>
@@ -90,14 +90,14 @@ import TabItem from '@theme/TabItem';
 {
  "result": true,
  "time": {
-  "start": 1765137218,
-  "finish": 1765137218.91604,
-  "duration": 0.916043043136597,
+  "start": 1765367889,
+  "finish": 1765367889.31393,
+  "duration": 0.3139328956604,
   "processing": 0,
-  "date_start": "2025-12-07T22:53:38+03:00",
-  "date_finish": "2025-12-07T22:53:38+03:00",
-  "operating_reset_at": 1765137818,
-  "operating": 0.207099914550781
+  "date_start": "2025-12-10T14:58:09+03:00",
+  "date_finish": "2025-12-10T14:58:09+03:00",
+  "operating_reset_at": 1765368489,
+  "operating": 0.269586086273193
  }
 }
 ```

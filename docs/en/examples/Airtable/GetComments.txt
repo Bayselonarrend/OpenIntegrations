@@ -1,6 +1,6 @@
 ﻿    Token  = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base   = "app75bKGXvVuTKvZc";
-    Table  = "tblaPoZYjuXbNTgTl";
-    Record = "recHBOJWTDXEPFrcK";
+    Base   = "appsIJ6arwBpekC5t";
+    Table  = "tblQhuDmCnKbhbMvi";
+    Record = "recQk5m81MaRAgf4n";
 
     Result = OPI_Airtable.GetComments(Token, Base, Table, Record);

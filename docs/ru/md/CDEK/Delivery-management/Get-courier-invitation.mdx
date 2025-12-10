@@ -32,8 +32,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUxMDM3OTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "212bbed7-c99e-4a3e-ad5e-1591023fdbbc";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUyOTY1MTUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID  = "2f3cc73c-9f57-4bb9-a857-6eca8c863756";
 
     Результат = OPI_CDEK.ПолучитьЗаявкуНаВызовКурьера(Токен, UUID, Истина);
 ```
@@ -45,7 +45,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьЗаявкуНаВызовКурьера \
               --token "***" \
-              --uuid "1bce5e04-a45b-4a0d-8f69-96242f8337c5" \
+              --uuid "c7abef17-a84c-4448-a767-8205f348e1d4" \
               --testapi "***"
         ```
     </TabItem>
@@ -54,7 +54,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьЗаявкуНаВызовКурьера ^
               --token "***" ^
-              --uuid "1bce5e04-a45b-4a0d-8f69-96242f8337c5" ^
+              --uuid "c7abef17-a84c-4448-a767-8205f348e1d4" ^
               --testapi "***"
         ```
     </TabItem>
@@ -64,11 +64,11 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "1bce5e04-a45b-4a0d-8f69-96242f8337c5",
-  "cdek_number": "1106690372",
-  "order_uuid": "4bf48958-4504-44bc-8bab-eeb5fd01384f",
-  "intake_date": "2025-12-08",
-  "intake_number": "13310663",
+  "uuid": "6ff61a95-7e01-47e0-9447-aeb97a3f08e3",
+  "cdek_number": "1106697447",
+  "order_uuid": "79bc0112-f75e-43a4-a950-a328d289d058",
+  "intake_date": "2025-12-11",
+  "intake_number": "13310705",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Консолидированный груз",
@@ -84,6 +84,9 @@ import TabItem from '@theme/TabItem';
    "phones": [
     {
      "number": "79589441654"
+    },
+    {
+     "number": "+79589441654"
     }
    ],
    "passport_requirements_satisfied": "***"
@@ -120,22 +123,22 @@ import TabItem from '@theme/TabItem';
    {
     "code": "READY_FOR_APPOINTMENT",
     "name": "Готова к назначению",
-    "date_time": "2025-12-07T23:01:47+03:00"
+    "date_time": "2025-12-10T15:02:31+03:00"
    },
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2025-12-07T23:01:47+03:00"
+    "date_time": "2025-12-10T15:02:31+03:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-12-07T23:01:47+03:00"
+    "date_time": "2025-12-10T15:02:31+03:00"
    }
   ],
   "packages": [
    {
-    "package_id": "eaefe474-2db6-4c94-adcd-322e33cf1b0d",
+    "package_id": "ee9eeffb-4d0d-4e56-904d-9975f47df3c9",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -145,9 +148,9 @@ import TabItem from '@theme/TabItem';
  },
  "requests": [
   {
-   "request_uuid": "52ffeec9-bf8d-4bf1-8f15-9686039fbc2f",
+   "request_uuid": "09aaf864-8029-40a1-a506-6b926be60fbc",
    "type": "CREATE",
-   "date_time": "2025-12-07T23:01:46+03:00",
+   "date_time": "2025-12-10T15:02:29+03:00",
    "state": "SUCCESSFUL"
   }
  ]

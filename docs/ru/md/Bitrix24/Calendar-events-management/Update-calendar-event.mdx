@@ -32,7 +32,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDСобытия = "3145";
+    IDСобытия = "3224";
 
     СтруктураСобытия = Новый Структура;
 
@@ -46,9 +46,9 @@ import TabItem from '@theme/TabItem';
     Результат = OPI_Bitrix24.ИзменитьСобытиеКалендаря(URL, IDСобытия, СтруктураСобытия);
 
     URL         = "b24-ar17wx.bitrix24.by";
-    Токен       = "fb563569006e9f06006b12e400000001000...";
-    IDСобытия   = "3149";
-    IDКалендаря = "1701";
+    Токен       = "b9473869006e9f06006b12e400000001000...";
+    IDСобытия   = "3228";
+    IDКалендаря = "1740";
 
     Результат = OPI_Bitrix24.ИзменитьСобытиеКалендаря(URL, IDСобытия, СтруктураСобытия, Токен);
 ```
@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьСобытиеКалендаря \
               --url "b24-ar17wx.bitrix24.by" \
-              --event 3164 \
+              --event 3276 \
               --fields "{'ownerId':'1','type':'user','name':'Измененное событие','description':'Новое описание события','importance':'low','private_event':'Y'}" \
               --token "***"
         ```
@@ -74,7 +74,7 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьСобытиеКалендаря ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --event 3164 ^
+              --event 3276 ^
               --fields "{'ownerId':'1','type':'user','name':'Измененное событие','description':'Новое описание события','importance':'low','private_event':'Y'}" ^
               --token "***"
         ```
@@ -84,16 +84,16 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 3164,
+ "result": 3284,
  "time": {
-  "start": 1765137337,
-  "finish": 1765137337.44093,
-  "duration": 0.440926074981689,
+  "start": 1765367926,
+  "finish": 1765367926.96988,
+  "duration": 0.969878911972046,
   "processing": 0,
-  "date_start": "2025-12-07T22:55:37+03:00",
-  "date_finish": "2025-12-07T22:55:37+03:00",
-  "operating_reset_at": 1765137937,
-  "operating": 0.158406019210815
+  "date_start": "2025-12-10T14:58:46+03:00",
+  "date_finish": "2025-12-10T14:58:46+03:00",
+  "operating_reset_at": 1765368526,
+  "operating": 0.170881986618042
  }
 }
 ```

@@ -33,7 +33,7 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID      = "3441";
+    ChatID      = "3480";
     File        = "https://hut.openintegrations.dev/test_data/document.docx"; // Binary Data, URL or path to file
     Description = "Very important file";
 
@@ -46,8 +46,8 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
     Result = OPI_Bitrix24.SendFile(URL, ChatID, FileID, Description);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "fb563569006e9f06006b12e400000001000...";
-    ChatID = "3443";
+    Token  = "b9473869006e9f06006b12e400000001000...";
+    ChatID = "3482";
 
     Directory = OPI_Bitrix24.GetChatFilesFolder(URL, ChatID, Token);
     FolderID  = Directory["result"]["ID"];
@@ -66,7 +66,7 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
             oint bitrix24 SendFile \
              --url "b24-ar17wx.bitrix24.by" \
              --chat "***" \
-             --fileid 47618 \
+             --fileid 48374 \
              --description "Very important file" \
              --token "***"
         ```
@@ -77,7 +77,7 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
             oint bitrix24 SendFile ^
              --url "b24-ar17wx.bitrix24.by" ^
              --chat "***" ^
-             --fileid 47618 ^
+             --fileid 48374 ^
              --description "Very important file" ^
              --token "***"
         ```
@@ -89,8 +89,8 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
 {
  "result": {
   "FILES": {
-   "upload47618": {
-    "id": 47618,
+   "upload48374": {
+    "id": 48374,
     "chatId": "***",
     "date": {},
     "type": "file",
@@ -103,20 +103,20 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
     "authorId": 1,
     "authorName": "Антон Титовец",
     "urlPreview": "",
-    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47618&exact=N&fileName=Imortant%20doc.docx",
-    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47618&exact=N&fileName=Imortant%20doc.docx",
+    "urlShow": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=48374&exact=N&fileName=Imortant%20doc.docx",
+    "urlDownload": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=48374&exact=N&fileName=Imortant%20doc.docx",
     "viewerAttrs": {
      "viewer": "",
      "viewerType": "cloud-document",
-     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=47618&exact=N&fileName=Imortant%20doc.docx",
+     "src": "https://b24-ar17wx.bitrix24.by/bitrix/services/main/ajax.php?action=disk.api.file.download&SITE_ID=s1&humanRE=1&fileId=48374&exact=N&fileName=Imortant%20doc.docx",
      "viewerTypeClass": "BX.Disk.Viewer.UnifiedLinkItem",
      "viewerSeparateItem": true,
      "viewerExtension": "disk.viewer.unified-link-item",
-     "objectId": "47618",
+     "objectId": "48374",
      "imChatId": "***",
      "title": "Imortant doc.docx",
-     "unifiedLink": "https://b24-ar17wx.bitrix24.by/disk/file/Kw4yjo2xCOn2L619GL5L",
-     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"47618\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
+     "unifiedLink": "https://b24-ar17wx.bitrix24.by/disk/file/X21OIal2RClV9nqBC0vq",
+     "actions": "[{\"type\":\"download\"},{\"type\":\"copyToMe\",\"text\":\"Сохранить на Диск\",\"action\":\"BXIM.disk.saveToDiskAction\",\"params\":{\"fileId\":\"48374\"},\"extension\":\"disk.viewer.actions\",\"buttonIconClass\":\"ui-btn-icon-cloud\"}]"
     },
     "mediaUrl": {
      "preview": {
@@ -132,8 +132,8 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
    "***"
   ],
   "FILE_MODELS": {
-   "upload47618": {
-    "id": 47618,
+   "upload48374": {
+    "id": 48374,
     "name": "Imortant doc.docx",
     "createTime": {},
     "updateTime": {},
@@ -141,34 +141,34 @@ Method at API documentation: [im.disk.file.commit](https://dev.1c-bitrix.ru/lear
     "code": null,
     "xmlId": null,
     "storageId": 6,
-    "realObjectId": 47618,
-    "parentId": 47614,
+    "realObjectId": 48374,
+    "parentId": 48370,
     "deletedType": 0,
     "createdBy": "1",
     "updatedBy": "1",
     "deletedBy": "0",
-    "uniqueCode": "Kw4yjo2xCOn2L619GL5L",
+    "uniqueCode": "X21OIal2RClV9nqBC0vq",
     "typeFile": 4,
     "globalContentVersion": 2,
-    "fileId": 32276,
+    "fileId": 32818,
     "size": 24071,
-    "etag": "53cf41957e536b25c6433516a14047c3",
+    "etag": "aeaef65c5afeaeae7f6e2c611f2b450a",
     "links": {
-     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=47618",
-     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=47618&action=showObjectInGrid&ncc=1"
+     "download": "/bitrix/services/main/ajax.php?action=disk.file.download&SITE_ID=s1&fileId=48374",
+     "showInGrid": "/bitrix/tools/disk/focus.php?objectId=48374&action=showObjectInGrid&ncc=1"
     }
    }
   },
-  "MESSAGE_ID": 69084
+  "MESSAGE_ID": 70280
  },
  "time": {
-  "start": 1765191581,
-  "finish": 1765191581.78441,
-  "duration": 0.784405946731567,
+  "start": 1765376502,
+  "finish": 1765376502.1094,
+  "duration": 0.109401941299438,
   "processing": 0,
-  "date_start": "2025-12-08T13:59:41+03:00",
-  "date_finish": "2025-12-08T13:59:41+03:00",
-  "operating_reset_at": 1765192181,
+  "date_start": "2025-12-10T17:21:42+03:00",
+  "date_finish": "2025-12-10T17:21:42+03:00",
+  "operating_reset_at": 1765377102,
   "operating": 0
  }
 }

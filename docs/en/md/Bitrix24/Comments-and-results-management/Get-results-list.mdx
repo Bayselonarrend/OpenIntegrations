@@ -31,12 +31,12 @@ Method at API documentation: [tasks.task.result.list](https://dev.1c-bitrix.ru/r
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "8851";
+    TaskID = "8950";
 
     Result = OPI_Bitrix24.GetResultsList(URL, TaskID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "fb563569006e9f06006b12e400000001000...";
+    Token = "b9473869006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetResultsList(URL, TaskID, Token);
 ```
@@ -48,7 +48,7 @@ Method at API documentation: [tasks.task.result.list](https://dev.1c-bitrix.ru/r
         ```bash
             oint bitrix24 GetResultsList \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "8890" \
+             --task "9030" \
              --token "***"
         ```
     </TabItem>
@@ -57,7 +57,7 @@ Method at API documentation: [tasks.task.result.list](https://dev.1c-bitrix.ru/r
         ```batch
             oint bitrix24 GetResultsList ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "8890" ^
+             --task "9030" ^
              --token "***"
         ```
     </TabItem>
@@ -68,24 +68,24 @@ Method at API documentation: [tasks.task.result.list](https://dev.1c-bitrix.ru/r
 {
  "result": [
   {
-   "id": 3302,
-   "taskId": 8890,
-   "commentId": 20598,
+   "id": 3358,
+   "taskId": 9030,
+   "commentId": 20906,
    "createdBy": 1,
-   "createdAt": "2025-12-08T13:52:33+03:00",
-   "updatedAt": "2025-12-08T13:52:33+03:00",
+   "createdAt": "2025-12-10T17:15:03+03:00",
+   "updatedAt": "2025-12-10T17:15:03+03:00",
    "status": 0,
    "text": "The task has been changed, let's split up",
    "formattedText": "The task has been changed, let's split up",
    "files": []
   },
   {
-   "id": 3300,
-   "taskId": 8890,
-   "commentId": 20596,
+   "id": 3356,
+   "taskId": 9030,
+   "commentId": 20904,
    "createdBy": 1,
-   "createdAt": "2025-12-08T13:52:31+03:00",
-   "updatedAt": "2025-12-08T13:52:31+03:00",
+   "createdAt": "2025-12-10T17:15:01+03:00",
+   "updatedAt": "2025-12-10T17:15:01+03:00",
    "status": 0,
    "text": "The task has been changed, do not split up",
    "formattedText": "The task has been changed, do not split up",
@@ -93,13 +93,13 @@ Method at API documentation: [tasks.task.result.list](https://dev.1c-bitrix.ru/r
   }
  ],
  "time": {
-  "start": 1765191166,
-  "finish": 1765191166.62302,
-  "duration": 0.623018980026245,
+  "start": 1765376116,
+  "finish": 1765376116.65382,
+  "duration": 0.65381908416748,
   "processing": 0,
-  "date_start": "2025-12-08T13:52:46+03:00",
-  "date_finish": "2025-12-08T13:52:46+03:00",
-  "operating_reset_at": 1765191766,
+  "date_start": "2025-12-10T17:15:16+03:00",
+  "date_finish": "2025-12-10T17:15:16+03:00",
+  "operating_reset_at": 1765376716,
   "operating": 0
  }
 }

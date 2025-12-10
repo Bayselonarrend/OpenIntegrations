@@ -61,5 +61,43 @@ import TabItem from '@theme/TabItem';
 
 
 ```json title="Результат"
-{}
+[
+ {
+  "messageID": "3EB0F3E740A80CF30A00D2",
+  "type": "sendContact",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "contact": {
+    "phoneContact": 79001234568,
+    "company": "Велосипед"
+   },
+   "quotedMessageId": "3EB04EB99ACCB2D849237F",
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "3EB0EFFB2A68B665E7167F"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "chatIdFrom": "120363410406221140@g.us",
+   "messages": [
+    "3EB00C8D72DBA045D570A0"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0617BF1B9A847AB9E25",
+  "type": "editMessage",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "idMessage": "3EB00C8D72DBA045D570A0",
+   "message": "Новый текст сообщения",
+   "linkPreview": true
+  }
+ }
+]
 ```

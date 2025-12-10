@@ -27,8 +27,8 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     ТекущаяДата  = OPI_Инструменты.ПолучитьТекущуюДату();
-    Токен        = "ya29.a0Aa7pCA8bot9XU4KMtkCAXIoQSq7kc5tvbdIy8tPMA-RiXX8fMT2c_gWk5JNmVN6UcUOrwdkD1Om1ZMu5UtLz3gpC0NRoKxfRGaGcjScSEk9hl1h2Uew-mk5Ao...";
-    Календарь    = "becf9f2918fa839f8b073f8b0e538f698be87bb73868621cba843f3756e66981@group.calendar.google.com";
+    Токен        = "ya29.a0Aa7pCA9tGLvUQzW3431iWt4ev2zEnfNinK3cfCHJ38wU1CkKMigpwMI2e3mkhjbd-WpPshKKCgRPPPpwlsM4-aPlexNO24AZd93P72lvFJeta1Qdmefe_-qfg...";
+    Календарь    = "4def676a718372b5291eb671a518e50be86229036a995134af08390af1ca58ae@group.calendar.google.com";
     Наименование = "Новое событие";
     Описание     = "Описание тестового события";
     Час          = 3600;
@@ -61,8 +61,8 @@ import TabItem from '@theme/TabItem';
             
             oint gcalendar СоздатьСобытие \
               --token "***" \
-              --calendar "b785411b83233191c72df6984aea86169eb4d53c875173f78b10e38f25848a9a@group.calendar.google.com" \
-              --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'12/7/2025 10:30:32 PM','ДатаОкончания':'12/7/2025 11:30:32 PM','МассивURLФайловВложений':{'Картинка1':'https://hut.openintegrations.dev/test_data/picture.jpg','Картинка2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
+              --calendar "d78d6affe85845e85065235171c86275ac8aff3fd6b5dd5a1a665aa30e772d58@group.calendar.google.com" \
+              --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'12/10/2025 10:04:26','ДатаОкончания':'12/10/2025 11:04:26','МассивURLФайловВложений':{'Картинка1':'https://hut.openintegrations.dev/test_data/picture.jpg','Картинка2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
         ```
     </TabItem>
   
@@ -72,8 +72,8 @@ import TabItem from '@theme/TabItem';
             
             oint gcalendar СоздатьСобытие ^
               --token "***" ^
-              --calendar "b785411b83233191c72df6984aea86169eb4d53c875173f78b10e38f25848a9a@group.calendar.google.com" ^
-              --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'12/7/2025 10:30:32 PM','ДатаОкончания':'12/7/2025 11:30:32 PM','МассивURLФайловВложений':{'Картинка1':'https://hut.openintegrations.dev/test_data/picture.jpg','Картинка2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
+              --calendar "d78d6affe85845e85065235171c86275ac8aff3fd6b5dd5a1a665aa30e772d58@group.calendar.google.com" ^
+              --props "{'Описание':'Описание тестового события','Заголовок':'Новое событие','МестоПроведения':'В офисе','ДатаНачала':'12/10/2025 10:04:26','ДатаОкончания':'12/10/2025 11:04:26','МассивURLФайловВложений':{'Картинка1':'https://hut.openintegrations.dev/test_data/picture.jpg','Картинка2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'ОтправлятьУведомления':true}"
         ```
     </TabItem>
 </Tabs>
@@ -82,12 +82,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "kind": "calendar#event",
- "etag": "\"3530271669351678\"",
- "id": "le5v3un76bfco859qgiqqmr9is",
+ "etag": "\"3530734479067550\"",
+ "id": "9ve21qlmqc1fed5vo1682tua84",
  "status": "confirmed",
- "htmlLink": "https://www.google.com/calendar/event?eid=bGU1djN1bjc2YmZjbzg1OXFnaXFxbXI5aXMgYjc4NTQxMWI4MzIzMzE5MWM3MmRmNjk4NGFlYTg2MTY5ZWI0ZDUzYzg3NTE3M2Y3OGIxMGUzOGYyNTg0OGE5YUBn",
- "created": "2025-12-07T19:30:34Z",
- "updated": "2025-12-07T19:30:34.675Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=OXZlMjFxbG1xYzFmZWQ1dm8xNjgydHVhODQgOWYwNDM5MWVmNGRlODk1MGFlZWQ1MTI4M2MxYTQ5YTZiMmE1ZTBlNzlhZTdkMjRkZjc4Y2IzYTdhNWY3MjJjM0Bn",
+ "created": "2025-12-10T11:47:19Z",
+ "updated": "2025-12-10T11:47:19.533Z",
  "summary": "Новое событие",
  "description": "Описание тестового события",
  "location": "В офисе",
@@ -95,19 +95,19 @@ import TabItem from '@theme/TabItem';
   "email": "bayselonarrend@gmail.com"
  },
  "organizer": {
-  "email": "b785411b83233191c72df6984aea86169eb4d53c875173f78b10e38f25848a9a@group.calendar.google.com",
+  "email": "9f04391ef4de8950aeed51283c1a49a6b2a5e0e79ae7d24df78cb3a7a5f722c3@group.calendar.google.com",
   "displayName": "Тестовый календарь",
   "self": true
  },
  "start": {
-  "dateTime": "2025-12-08T01:30:32+03:00",
+  "dateTime": "2025-12-10T17:47:19+03:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2025-12-08T02:30:32+03:00",
+  "dateTime": "2025-12-10T18:47:19+03:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "le5v3un76bfco859qgiqqmr9is@google.com",
+ "iCalUID": "9ve21qlmqc1fed5vo1682tua84@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true

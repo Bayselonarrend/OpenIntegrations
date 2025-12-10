@@ -1,5 +1,5 @@
 ﻿    URL    = "tests.openintegrations.dev";
-    Token  = "test-key_KHloe92iSYSlGIYGcD4K8B8GPLq...";
+    Token  = "test-key_rPEM34hlSHWBuh3iVV-gpcwghOe...";
     UserID = "1";
     KeyID  = "1...";
 
