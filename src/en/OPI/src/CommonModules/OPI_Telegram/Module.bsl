@@ -1559,7 +1559,6 @@ Procedure AddChatIdentifier(Val ChatID, Parameters)
 
     EndIf;
 
-    OPI_TypeConversion.GetNumber(TopicID);
     Parameters.Insert("chat_id", ChatID);
 
 EndProcedure
