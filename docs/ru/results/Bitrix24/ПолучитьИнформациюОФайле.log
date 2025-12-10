@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "48072",
+  "ID": "48180",
   "NAME": "Картинка1.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
@@ -8,25 +8,25 @@
   "PARENT_ID": "3",
   "DELETED_TYPE": "0",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "32608",
+  "FILE_ID": "32684",
   "SIZE": "805189",
-  "CREATE_TIME": "2025-12-09T20:40:56+00:00",
-  "UPDATE_TIME": "2025-12-09T20:40:56+00:00",
+  "CREATE_TIME": "2025-12-10T07:31:28+00:00",
+  "UPDATE_TIME": "2025-12-10T07:31:28+00:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "0",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=07973869006e9f06006b12e400000001000007c79f774c5977be8a909511f450faa89e&token=disk%7CaWQ9NDgwNzImXz12eE95MjM5alV3d2cwRGN0Vzk4Tno2SGdUdHVGNjRsUQ%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EZ3dOekltWHoxMmVFOTVNak01YWxWM2QyY3dSR04wVnprNFRubzJTR2RVZEhWR05qUnNVUT09fDA3OTczODY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3Yzc5Zjc3NGM1OTc3YmU4YTkwOTUxMWY0NTBmYWE4OWUi.Jc2c2gZECJmFksMpHgJvUmS5HVBGOLpv10uz%2FqQOd2s%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=732f3969006e9f06006b12e40000000100000773d11cde97eb553f6fda7021a3247ba1&token=disk%7CaWQ9NDgxODAmXz1BT0pnc25oU0ozclQ1eENscEdVcEwzRVF6dURzSFJmZA%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EZ3hPREFtWHoxQlQwcG5jMjVvVTBvemNsUTFlRU5zY0VkVmNFd3pSVkY2ZFVSelNGSm1aQT09fDczMmYzOTY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3NzNkMTFjZGU5N2ViNTUzZjZmZGE3MDIxYTMyNDdiYTEi.dWZYF0rxt5FrpJybVEzCK9ao3BWMfsXSpOdsaXh0jr4%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Картинка1.jpg"
  },
  "time": {
-  "start": 1765312858,
-  "finish": 1765312858.97974,
-  "duration": 0.979737997055054,
+  "start": 1765351891,
+  "finish": 1765351891.10146,
+  "duration": 0.101463079452515,
   "processing": 0,
-  "date_start": "2025-12-09T20:40:58+00:00",
-  "date_finish": "2025-12-09T20:40:58+00:00",
-  "operating_reset_at": 1765313458,
+  "date_start": "2025-12-10T07:31:31+00:00",
+  "date_finish": "2025-12-10T07:31:31+00:00",
+  "operating_reset_at": 1765352491,
   "operating": 0
  }
 }
