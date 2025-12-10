@@ -1,6 +1,6 @@
 ﻿{
  "result": {
-  "ID": "5728",
+  "ID": "5744",
   "TITLE": "Planned sale",
   "TYPE_ID": "GOODS",
   "STAGE_ID": "NEW",
@@ -13,13 +13,13 @@
   "COMPANY_ID": "1",
   "CONTACT_ID": "3",
   "QUOTE_ID": null,
-  "BEGINDATE": "2024-01-01T03:00:00+03:00",
-  "CLOSEDATE": "2030-01-01T03:00:00+03:00",
+  "BEGINDATE": "2024-01-01T00:00:00+00:00",
+  "CLOSEDATE": "2030-01-01T00:00:00+00:00",
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2025-12-10T17:24:16+03:00",
-  "DATE_MODIFY": "2025-12-10T17:24:16+03:00",
+  "DATE_CREATE": "2025-12-10T20:02:36+00:00",
+  "DATE_MODIFY": "2025-12-10T20:02:36+00:00",
   "OPENED": "Y",
   "CLOSED": "N",
   "COMMENTS": null,
@@ -36,8 +36,8 @@
   "ORIGINATOR_ID": "***",
   "ORIGIN_ID": "***",
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2025-12-10T17:24:16+03:00",
-  "LAST_ACTIVITY_TIME": "2025-12-10T17:24:16+03:00",
+  "MOVED_TIME": "2025-12-10T20:02:36+00:00",
+  "LAST_ACTIVITY_TIME": "2025-12-10T20:02:36+00:00",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
@@ -47,13 +47,13 @@
   "LAST_ACTIVITY_BY": "1"
  },
  "time": {
-  "start": 1765376663,
-  "finish": 1765376663.18664,
-  "duration": 0.186636924743652,
+  "start": 1765396964,
+  "finish": 1765396964.17775,
+  "duration": 0.177752017974854,
   "processing": 0,
-  "date_start": "2025-12-10T17:24:23+03:00",
-  "date_finish": "2025-12-10T17:24:23+03:00",
-  "operating_reset_at": 1765377263,
+  "date_start": "2025-12-10T20:02:44+00:00",
+  "date_finish": "2025-12-10T20:02:44+00:00",
+  "operating_reset_at": 1765397564,
   "operating": 0
  }
 }

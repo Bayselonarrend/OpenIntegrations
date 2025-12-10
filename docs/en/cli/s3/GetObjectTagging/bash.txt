@@ -2,6 +2,6 @@
 
 oint s3 GetObjectTagging \
  --name "picture.jpg" \
- --bucket "03e6b32e" \
+ --bucket "d09ba45c" \
  --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
  --dir true
