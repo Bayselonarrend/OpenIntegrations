@@ -32,14 +32,14 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "8946";
-    UserID = "3048";
+    TaskID = "9036";
+    UserID = "3084";
 
     Result = OPI_Bitrix24.DelegateTask(URL, TaskID, UserID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "b9473869006e9f06006b12e400000001000...";
-    TaskID = "8948";
+    Token  = "6ad03969006e9f06006b12e400000001000...";
+    TaskID = "9038";
 
     Result = OPI_Bitrix24.DelegateTask(URL, TaskID, UserID, Token);
 ```
@@ -51,7 +51,7 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
         ```bash
             oint bitrix24 DelegateTask \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "9028" \
+             --task "9048" \
              --user 2960 \
              --token "***"
         ```
@@ -61,7 +61,7 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
         ```batch
             oint bitrix24 DelegateTask ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "9028" ^
+             --task "9048" ^
              --user 2960 ^
              --token "***"
         ```
@@ -73,7 +73,7 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
 {
  "result": {
   "task": {
-   "id": "9028",
+   "id": "9048",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -86,19 +86,19 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-12-10T17:12:38+03:00",
+   "createdDate": "2025-12-10T19:49:11+00:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2025-12-10T17:13:17+03:00",
-   "statusChangedBy": null,
-   "closedBy": null,
+   "changedDate": "2025-12-10T19:49:59+00:00",
+   "statusChangedBy": "1",
+   "closedBy": "0",
    "closedDate": null,
-   "activityDate": "2025-12-10T17:13:18+03:00",
+   "activityDate": "2025-12-10T19:49:59+00:00",
    "dateStart": null,
-   "deadline": "2025-12-11T20:12:00+03:00",
-   "startDatePlan": "2025-12-10T17:12:38+03:00",
-   "endDatePlan": "2025-12-11T00:00:00+03:00",
-   "guid": "{3a8fd391-536b-479a-a324-d23331dfa382}",
+   "deadline": "2025-12-11T19:49:00+00:00",
+   "startDatePlan": "2025-12-10T19:49:11+00:00",
+   "endDatePlan": "2025-12-10T21:00:00+00:00",
+   "guid": "{2df2631f-de86-45ab-af6f-f290ffc1c57d}",
    "xmlId": null,
    "commentsCount": "1",
    "serviceCommentsCount": "1",
@@ -110,14 +110,14 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
    "timeEstimate": "0",
    "timeSpentInLogs": null,
    "matchWorkTime": "N",
-   "forumTopicId": "5820",
+   "forumTopicId": "5832",
    "forumId": "11",
    "siteId": "s1",
    "subordinate": "Y",
    "exchangeModified": null,
    "exchangeId": null,
    "outlookVersion": "4",
-   "viewedDate": "2025-12-10T17:13:18+03:00",
+   "viewedDate": "2025-12-10T19:49:59+00:00",
    "sorting": null,
    "durationFact": null,
    "isMuted": "N",
@@ -127,7 +127,7 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2025-12-10T17:13:17+03:00",
+   "statusChangedDate": "2025-12-10T19:49:59+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -208,14 +208,14 @@ Method at API documentation: [tasks.task.delegate](https://dev.1c-bitrix.ru/rest
   }
  },
  "time": {
-  "start": 1765375997,
-  "finish": 1765375998.28932,
-  "duration": 1.28932404518127,
-  "processing": 1,
-  "date_start": "2025-12-10T17:13:17+03:00",
-  "date_finish": "2025-12-10T17:13:18+03:00",
-  "operating_reset_at": 1765376597,
-  "operating": 0.393383979797363
+  "start": 1765396199,
+  "finish": 1765396199.8938,
+  "duration": 0.893798112869263,
+  "processing": 0,
+  "date_start": "2025-12-10T19:49:59+00:00",
+  "date_finish": "2025-12-10T19:49:59+00:00",
+  "operating_reset_at": 1765396799,
+  "operating": 0.349463939666748
  }
 }
 ```

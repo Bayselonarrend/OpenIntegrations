@@ -32,16 +32,16 @@ Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/r
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID    = "8946";
-    ElementID = "6342";
+    TaskID    = "9036";
+    ElementID = "6414";
 
     Result = OPI_Bitrix24.GetTasksChecklistElement(URL, TaskID, ElementID);
 
-    TaskID    = "8948";
-    ElementID = "6346";
+    TaskID    = "9038";
+    ElementID = "6418";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "b9473869006e9f06006b12e400000001000...";
+    Token = "6ad03969006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetTasksChecklistElement(URL, TaskID, ElementID, Token);
 ```
@@ -53,8 +53,8 @@ Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/r
         ```bash
             oint bitrix24 GetTasksChecklistElement \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "9028" \
-             --element 6410 \
+             --task "9048" \
+             --element 6426 \
              --token "***"
         ```
     </TabItem>
@@ -63,8 +63,8 @@ Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/r
         ```batch
             oint bitrix24 GetTasksChecklistElement ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "9028" ^
-             --element 6410 ^
+             --task "9048" ^
+             --element 6426 ^
              --token "***"
         ```
     </TabItem>
@@ -74,9 +74,9 @@ Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/r
 ```json title="Result"
 {
  "result": {
-  "ID": "6410",
-  "TASK_ID": "9028",
-  "PARENT_ID": "6408",
+  "ID": "6426",
+  "TASK_ID": "9048",
+  "PARENT_ID": "6424",
   "CREATED_BY": "1",
   "TITLE": "New elements text",
   "SORT_INDEX": "1",
@@ -88,13 +88,13 @@ Method at API documentation: [task.checklistitem.get](https://dev.1c-bitrix.ru/r
   "ATTACHMENTS": []
  },
  "time": {
-  "start": 1765376066,
-  "finish": 1765376066.69294,
-  "duration": 0.692943096160889,
+  "start": 1765396282,
+  "finish": 1765396282.36474,
+  "duration": 0.364734888076782,
   "processing": 0,
-  "date_start": "2025-12-10T17:14:26+03:00",
-  "date_finish": "2025-12-10T17:14:26+03:00",
-  "operating_reset_at": 1765376666,
+  "date_start": "2025-12-10T19:51:22+00:00",
+  "date_finish": "2025-12-10T19:51:22+00:00",
+  "operating_reset_at": 1765396882,
   "operating": 0
  }
 }
