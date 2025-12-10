@@ -32,14 +32,14 @@ Method at API documentation: [task.commentitem.get](https://dev.1c-bitrix.ru/res
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CommentID = "20728";
-    TaskID    = "8950";
+    CommentID = "20926";
+    TaskID    = "9040";
 
     Result = OPI_Bitrix24.GetTaskComment(URL, TaskID, CommentID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "b9473869006e9f06006b12e400000001000...";
-    CommentID = "20730";
+    Token     = "6ad03969006e9f06006b12e400000001000...";
+    CommentID = "20928";
 
     Result = OPI_Bitrix24.GetTaskComment(URL, TaskID, CommentID, Token);
 ```
@@ -51,8 +51,8 @@ Method at API documentation: [task.commentitem.get](https://dev.1c-bitrix.ru/res
         ```bash
             oint bitrix24 GetTaskComment \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "9030" \
-             --comment 20906 \
+             --task "9050" \
+             --comment 20950 \
              --token "***"
         ```
     </TabItem>
@@ -61,8 +61,8 @@ Method at API documentation: [task.commentitem.get](https://dev.1c-bitrix.ru/res
         ```batch
             oint bitrix24 GetTaskComment ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "9030" ^
-             --comment 20906 ^
+             --task "9050" ^
+             --comment 20950 ^
              --token "***"
         ```
     </TabItem>
@@ -73,21 +73,21 @@ Method at API documentation: [task.commentitem.get](https://dev.1c-bitrix.ru/res
 {
  "result": {
   "POST_MESSAGE_HTML": null,
-  "ID": "20906",
+  "ID": "20950",
   "AUTHOR_ID": "1",
   "AUTHOR_NAME": "Антон Титовец",
   "AUTHOR_EMAIL": "",
-  "POST_DATE": "2025-12-10T17:15:03+03:00",
+  "POST_DATE": "2025-12-10T19:52:04+00:00",
   "POST_MESSAGE": "The task has been changed, let's split up"
  },
  "time": {
-  "start": 1765376128,
-  "finish": 1765376128.88273,
-  "duration": 0.882728099822998,
+  "start": 1765396354,
+  "finish": 1765396354.43793,
+  "duration": 0.437927961349487,
   "processing": 0,
-  "date_start": "2025-12-10T17:15:28+03:00",
-  "date_finish": "2025-12-10T17:15:28+03:00",
-  "operating_reset_at": 1765376728,
+  "date_start": "2025-12-10T19:52:34+00:00",
+  "date_finish": "2025-12-10T19:52:34+00:00",
+  "operating_reset_at": 1765396954,
   "operating": 0
  }
 }

@@ -37,7 +37,7 @@ Binary data can also be transferred as a structure `{'blob':File path}`
     PictureFile = GetTempFileName("png");
     Image.Write(PictureFile); // PictureFile - File to disk
 
-    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_7739_2c.sqlite";
+    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_2812_2c.sqlite";
     Table = "test";
 
     DataArray = New Array;
@@ -74,7 +74,7 @@ Binary data can also be transferred as a structure `{'blob':File path}`
             oint sqlite AddRecords \
              --table "test1" \
              --rows "{'[An obscure column]':'yo'}" \
-             --db "C:\Users\bayse\AppData\Local\Temp\f1ck3wxm.3uy.sqlite"
+             --db "/tmp/d2zko3pj.q0q.sqlite"
         ```
     </TabItem>
   
@@ -85,7 +85,7 @@ Binary data can also be transferred as a structure `{'blob':File path}`
             oint sqlite AddRecords ^
              --table "test1" ^
              --rows "{'[An obscure column]':'yo'}" ^
-             --db "C:\Users\bayse\AppData\Local\Temp\f1ck3wxm.3uy.sqlite"
+             --db "/tmp/d2zko3pj.q0q.sqlite"
         ```
     </TabItem>
 </Tabs>

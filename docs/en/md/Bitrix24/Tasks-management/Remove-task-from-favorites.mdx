@@ -31,13 +31,13 @@ Method at API documentation: [tasks.task.favorite.remove](https://dev.1c-bitrix.
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "8946";
+    TaskID = "9036";
 
     Result = OPI_Bitrix24.RemoveTaskFromFavorites(URL, TaskID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "b9473869006e9f06006b12e400000001000...";
-    TaskID = "8948";
+    Token  = "6ad03969006e9f06006b12e400000001000...";
+    TaskID = "9038";
 
     Result = OPI_Bitrix24.RemoveTaskFromFavorites(URL, TaskID, Token);
 ```
@@ -49,7 +49,7 @@ Method at API documentation: [tasks.task.favorite.remove](https://dev.1c-bitrix.
         ```bash
             oint bitrix24 RemoveTaskFromFavorites \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "9028" \
+             --task "9048" \
              --token "***"
         ```
     </TabItem>
@@ -58,7 +58,7 @@ Method at API documentation: [tasks.task.favorite.remove](https://dev.1c-bitrix.
         ```batch
             oint bitrix24 RemoveTaskFromFavorites ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "9028" ^
+             --task "9048" ^
              --token "***"
         ```
     </TabItem>
@@ -69,14 +69,14 @@ Method at API documentation: [tasks.task.favorite.remove](https://dev.1c-bitrix.
 {
  "result": true,
  "time": {
-  "start": 1765375993,
-  "finish": 1765375993.54712,
-  "duration": 0.547125101089478,
+  "start": 1765396194,
+  "finish": 1765396194.67414,
+  "duration": 0.674141883850098,
   "processing": 0,
-  "date_start": "2025-12-10T17:13:13+03:00",
-  "date_finish": "2025-12-10T17:13:13+03:00",
-  "operating_reset_at": 1765376593,
-  "operating": 0.28037691116333
+  "date_start": "2025-12-10T19:49:54+00:00",
+  "date_finish": "2025-12-10T19:49:54+00:00",
+  "operating_reset_at": 1765396794,
+  "operating": 0
  }
 }
 ```

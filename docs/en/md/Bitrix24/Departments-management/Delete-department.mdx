@@ -31,13 +31,13 @@ Method at API documentation: [department.delete](https://dev.1c-bitrix.ru/rest_h
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL          = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    DepartmentID = "3054";
+    DepartmentID = "3090";
 
     Result = OPI_Bitrix24.DeleteDepartment(URL, DepartmentID);
 
     URL          = "b24-ar17wx.bitrix24.by";
-    Token        = "b9473869006e9f06006b12e400000001000...";
-    DepartmentID = "3052";
+    Token        = "6ad03969006e9f06006b12e400000001000...";
+    DepartmentID = "3088";
 
     Result = OPI_Bitrix24.DeleteDepartment(URL, DepartmentID, Token);
 ```
@@ -49,7 +49,7 @@ Method at API documentation: [department.delete](https://dev.1c-bitrix.ru/rest_h
         ```bash
             oint bitrix24 DeleteDepartment \
              --url "b24-ar17wx.bitrix24.by" \
-             --depid 3084 \
+             --depid 3092 \
              --token "***"
         ```
     </TabItem>
@@ -58,7 +58,7 @@ Method at API documentation: [department.delete](https://dev.1c-bitrix.ru/rest_h
         ```batch
             oint bitrix24 DeleteDepartment ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --depid 3084 ^
+             --depid 3092 ^
              --token "***"
         ```
     </TabItem>
@@ -69,14 +69,14 @@ Method at API documentation: [department.delete](https://dev.1c-bitrix.ru/rest_h
 {
  "result": true,
  "time": {
-  "start": 1765376577,
-  "finish": 1765376577.29577,
-  "duration": 0.295766115188599,
+  "start": 1765396864,
+  "finish": 1765396864.81338,
+  "duration": 0.813383102416992,
   "processing": 0,
-  "date_start": "2025-12-10T17:22:57+03:00",
-  "date_finish": "2025-12-10T17:22:57+03:00",
-  "operating_reset_at": 1765377177,
-  "operating": 0.267090797424316
+  "date_start": "2025-12-10T20:01:04+00:00",
+  "date_finish": "2025-12-10T20:01:04+00:00",
+  "operating_reset_at": 1765397464,
+  "operating": 0.276808023452759
  }
 }
 ```

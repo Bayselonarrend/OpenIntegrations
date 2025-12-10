@@ -31,7 +31,7 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CalendarID = "1738";
+    CalendarID = "1774";
 
     Tomorrow = OPI_Tools.GetCurrentDate() + 86400;
     Hour     = 3600;
@@ -93,8 +93,8 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
     Result = OPI_Bitrix24.CreateCalendarEvent(URL, EventStucture);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "b9473869006e9f06006b12e400000001000...";
-    CalendarID = "1740";
+    Token      = "6ad03969006e9f06006b12e400000001000...";
+    CalendarID = "1776";
 
     EventStucture.Insert("section", CalendarID);
 
@@ -110,7 +110,7 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
             
             oint bitrix24 CreateCalendarEvent \
              --url "b24-ar17wx.bitrix24.by" \
-             --fields "{'type':'user','ownerId':'1','from':'12/11/2025 5:24:51 PM','to':'12/11/2025 6:24:51 PM','section':'1772','name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%%23000000>','text_color':'%%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'12/21/2025 5:24:51 PM'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'***','allow_invite':'***','hide_guests':'N'}}" \
+             --fields "{'type':'user','ownerId':'1','from':'12/11/2025 20:03:17','to':'12/11/2025 21:03:17','section':'1780','name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'12/21/2025 20:03:17'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'***','allow_invite':'***','hide_guests':'N'}}" \
              --token "***"
         ```
     </TabItem>
@@ -121,7 +121,7 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
             
             oint bitrix24 CreateCalendarEvent ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --fields "{'type':'user','ownerId':'1','from':'12/11/2025 5:24:51 PM','to':'12/11/2025 6:24:51 PM','section':'1772','name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%%23000000>','text_color':'%%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'12/21/2025 5:24:51 PM'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'***','allow_invite':'***','hide_guests':'N'}}" ^
+             --fields "{'type':'user','ownerId':'1','from':'12/11/2025 20:03:17','to':'12/11/2025 21:03:17','section':'1780','name':'New event','skip_time':'N','timezone_from':'Europe/Minsk','timezone_to':'Europe/Minsk','description':'Event description','color':'%23000000>','text_color':'%23FFFFFF','accessibility':'quest','importance':'normal','private_event':'Y','rrule':{'FREQ':'DAILY','COUNT':'3','INTERVAL':'10','BYDAY':['SA','MO'],'UNTIL':'12/21/2025 20:03:17'},'is_meeting':'Y','location':'Office','remind':[{'type':'day','count':'1'}],'attendees':['1','10'],'host':'1','meeting':{'notify':'Y','reinvite':'***','allow_invite':'***','hide_guests':'N'}}" ^
              --token "***"
         ```
     </TabItem>
@@ -130,16 +130,16 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
 
 ```json title="Result"
 {
- "result": 3292,
+ "result": 3308,
  "time": {
-  "start": 1765376695,
-  "finish": 1765376696.09749,
-  "duration": 1.09748601913452,
+  "start": 1765397001,
+  "finish": 1765397002.03848,
+  "duration": 1.03847503662109,
   "processing": 1,
-  "date_start": "2025-12-10T17:24:55+03:00",
-  "date_finish": "2025-12-10T17:24:56+03:00",
-  "operating_reset_at": 1765377295,
-  "operating": 0.16142201423645
+  "date_start": "2025-12-10T20:03:21+00:00",
+  "date_finish": "2025-12-10T20:03:22+00:00",
+  "operating_reset_at": 1765397601,
+  "operating": 0.173085927963257
  }
 }
 ```

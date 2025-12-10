@@ -32,8 +32,8 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUyOTY1MTUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "2f3cc73c-9f57-4bb9-a857-6eca8c863756";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUzOTcwNTYsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID  = "8fe3fbe8-b2a0-4ee9-a5e0-93831f4eab2d";
 
     Result = OPI_CDEK.GetCourierInvitation(Token, UUID, True);
 ```
@@ -45,7 +45,7 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
         ```bash
             oint cdek GetCourierInvitation \
              --token "***" \
-             --uuid "b8e90f97-08f3-4bce-812b-6e589c25d3eb" \
+             --uuid "2a75c7f0-9f49-4667-802c-eeed87903e84" \
              --testapi "***"
         ```
     </TabItem>
@@ -54,7 +54,7 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
         ```batch
             oint cdek GetCourierInvitation ^
              --token "***" ^
-             --uuid "b8e90f97-08f3-4bce-812b-6e589c25d3eb" ^
+             --uuid "2a75c7f0-9f49-4667-802c-eeed87903e84" ^
              --testapi "***"
         ```
     </TabItem>
@@ -64,11 +64,11 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
 ```json title="Result"
 {
  "entity": {
-  "uuid": "b8e90f97-08f3-4bce-812b-6e589c25d3eb",
-  "cdek_number": "1106697762",
-  "order_uuid": "1c75e7a2-80ad-4397-ade9-b4baa5ec3564",
+  "uuid": "2a75c7f0-9f49-4667-802c-eeed87903e84",
+  "cdek_number": "1106698346",
+  "order_uuid": "8540317e-49dc-429d-8f1b-6831dc06e6d8",
   "intake_date": "2025-12-11",
-  "intake_number": "13310709",
+  "intake_number": "13310711",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -120,22 +120,22 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
    {
     "code": "READY_FOR_APPOINTMENT",
     "name": "Готова к назначению",
-    "date_time": "2025-12-10T17:31:22+03:00"
+    "date_time": "2025-12-10T20:10:27+00:00"
    },
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2025-12-10T17:31:22+03:00"
+    "date_time": "2025-12-10T20:10:27+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-12-10T17:31:21+03:00"
+    "date_time": "2025-12-10T20:10:27+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "a71e64cc-b1ab-44d5-9d15-b8399b8d4ada",
+    "package_id": "6c999a23-5ba3-42c6-8d36-8cf845bb86ec",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -145,9 +145,9 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
  },
  "requests": [
   {
-   "request_uuid": "00de5480-cdb1-4060-b508-a9dc4b48b34d",
+   "request_uuid": "dc6b1e76-a459-4b07-9035-50a0c2c50b5f",
    "type": "CREATE",
-   "date_time": "2025-12-10T17:31:20+03:00",
+   "date_time": "2025-12-10T20:10:25+00:00",
    "state": "SUCCESSFUL"
   }
  ]

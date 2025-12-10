@@ -1,13 +1,13 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID = "3480";
+    ChatID = "3516";
 
     Title = "New chat title";
 
     Result = OPI_Bitrix24.ChangeChatTitle(URL, ChatID, Title);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "b9473869006e9f06006b12e400000001000...";
-    ChatID = "3482";
+    Token  = "6ad03969006e9f06006b12e400000001000...";
+    ChatID = "3518";
 
     Title = "Another title";
 

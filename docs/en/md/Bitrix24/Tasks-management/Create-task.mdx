@@ -49,7 +49,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
     Result = OPI_Bitrix24.CreateTask(URL, TaskData);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "b9473869006e9f06006b12e400000001000...";
+    Token = "6ad03969006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CreateTask(URL, TaskData, Token);
 ```
@@ -63,7 +63,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
             
             oint bitrix24 CreateTask \
              --url "b24-ar17wx.bitrix24.by" \
-             --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'12/11/2025 5:12:34 PM','RESPONSIBLE_ID':'1'}" \
+             --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'12/11/2025 19:49:06','RESPONSIBLE_ID':'1'}" \
              --token "***"
         ```
     </TabItem>
@@ -74,7 +74,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
             
             oint bitrix24 CreateTask ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'12/11/2025 5:12:34 PM','RESPONSIBLE_ID':'1'}" ^
+             --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'12/11/2025 19:49:06','RESPONSIBLE_ID':'1'}" ^
              --token "***"
         ```
     </TabItem>
@@ -85,7 +85,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
 {
  "result": {
   "task": {
-   "id": "9028",
+   "id": "9048",
    "parentId": null,
    "title": "New task",
    "description": "New task description",
@@ -98,19 +98,19 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-12-10T17:12:38+03:00",
+   "createdDate": "2025-12-10T19:49:11+00:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2025-12-10T17:12:38+03:00",
+   "changedDate": "2025-12-10T19:49:11+00:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2025-12-10T17:12:38+03:00",
+   "activityDate": "2025-12-10T19:49:11+00:00",
    "dateStart": null,
-   "deadline": "2025-12-11T20:12:00+03:00",
+   "deadline": "2025-12-11T19:49:00+00:00",
    "startDatePlan": null,
    "endDatePlan": null,
-   "guid": "{3a8fd391-536b-479a-a324-d23331dfa382}",
+   "guid": "{2df2631f-de86-45ab-af6f-f290ffc1c57d}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -139,7 +139,7 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2025-12-10T17:12:38+03:00",
+   "statusChangedDate": "2025-12-10T19:49:11+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -220,14 +220,14 @@ Method at API documentation: [tasks.task.add](https://dev.1c-bitrix.ru/rest_help
   }
  },
  "time": {
-  "start": 1765375958,
-  "finish": 1765375958.61864,
-  "duration": 0.618642091751099,
+  "start": 1765396151,
+  "finish": 1765396151.97944,
+  "duration": 0.979434967041016,
   "processing": 0,
-  "date_start": "2025-12-10T17:12:38+03:00",
-  "date_finish": "2025-12-10T17:12:38+03:00",
-  "operating_reset_at": 1765376558,
-  "operating": 0.173300981521606
+  "date_start": "2025-12-10T19:49:11+00:00",
+  "date_finish": "2025-12-10T19:49:11+00:00",
+  "operating_reset_at": 1765396751,
+  "operating": 0.151575088500977
  }
 }
 ```

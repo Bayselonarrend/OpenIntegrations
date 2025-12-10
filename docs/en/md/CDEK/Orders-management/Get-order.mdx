@@ -30,8 +30,8 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUyOTY1MTUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "d4cf64a9-e943-4be4-a72f-3aec0317c77a";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUzOTcwNTYsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID  = "50fbb719-69d4-4ded-93ca-ff7d005c9fae";
 
     Result = OPI_CDEK.GetOrder(Token, UUID, True);
 ```
@@ -43,7 +43,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
         ```bash
             oint cdek GetOrder \
              --token "***" \
-             --uuid "31a61fb2-0851-4cb7-922e-227239df0719" \
+             --uuid "9e15fe3c-2071-4ed8-9ded-70df723825d3" \
              --testapi "***"
         ```
     </TabItem>
@@ -52,7 +52,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
         ```batch
             oint cdek GetOrder ^
              --token "***" ^
-             --uuid "31a61fb2-0851-4cb7-922e-227239df0719" ^
+             --uuid "9e15fe3c-2071-4ed8-9ded-70df723825d3" ^
              --testapi "***"
         ```
     </TabItem>
@@ -62,9 +62,9 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
 ```json title="Result"
 {
  "entity": {
-  "uuid": "31a61fb2-0851-4cb7-922e-227239df0719",
+  "uuid": "9e15fe3c-2071-4ed8-9ded-70df723825d3",
   "type": 1,
-  "number": "39c38783-eb58-42c5-b17b-d660db0c4488",
+  "number": "03e987ac-3fea-462a-9650-56de28f5e1df",
   "tariff_code": 139,
   "comment": "New order",
   "delivery_recipient_cost": {
@@ -130,7 +130,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-12-10T17:29:55+03:00",
+    "date_time": "2025-12-10T20:08:53+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
@@ -138,9 +138,9 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
  },
  "requests": [
   {
-   "request_uuid": "b260c505-ce78-4cc8-96ed-1f95fbd303ad",
+   "request_uuid": "1868796e-a192-4287-ba89-6881bd28a878",
    "type": "CREATE",
-   "date_time": "2025-12-10T17:29:55+03:00",
+   "date_time": "2025-12-10T20:08:53+00:00",
    "state": "ACCEPTED"
   }
  ],
