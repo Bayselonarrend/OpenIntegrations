@@ -30,7 +30,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен       = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUxMDM3OTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    Токен       = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUyOTY1MTUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
     ТекущаяДата = OPI_Инструменты.ПолучитьТекущуюДату();
 
     ОписаниеЗаявки = Новый Структура;
@@ -84,7 +84,7 @@ import TabItem from '@theme/TabItem';
             
             oint cdek СоздатьЗаявкуНаВызовКурьера \
               --token "***" \
-              --intake "{'intake_date':'2025-12-08','intake_time_from':'10:00','intake_time_to':'17:00','name':'Консолидированный груз','weight':'1000','length':'10','width':'10','height':'10','comment':'Комментарий курьеру','need_call':false,'sender':{'company':'Компания','name':'Иванов Иван','phones':[{'number':'+79589441654'}]},'from_location':{'code':'44','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Москва','sub_region':'Москва','city':'Москва','kladr_code':'7700000000000','address':'ул. Блюхера, 32'}}" \
+              --intake "{'intake_date':'2025-12-11','intake_time_from':'10:00','intake_time_to':'17:00','name':'Консолидированный груз','weight':'1000','length':'10','width':'10','height':'10','comment':'Комментарий курьеру','need_call':false,'sender':{'company':'Компания','name':'Иванов Иван','phones':[{'number':'+79589441654'}]},'from_location':{'code':'44','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Москва','sub_region':'Москва','city':'Москва','kladr_code':'7700000000000','address':'ул. Блюхера, 32'}}" \
               --testapi "***"
         ```
     </TabItem>
@@ -95,7 +95,7 @@ import TabItem from '@theme/TabItem';
             
             oint cdek СоздатьЗаявкуНаВызовКурьера ^
               --token "***" ^
-              --intake "{'intake_date':'2025-12-08','intake_time_from':'10:00','intake_time_to':'17:00','name':'Консолидированный груз','weight':'1000','length':'10','width':'10','height':'10','comment':'Комментарий курьеру','need_call':false,'sender':{'company':'Компания','name':'Иванов Иван','phones':[{'number':'+79589441654'}]},'from_location':{'code':'44','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Москва','sub_region':'Москва','city':'Москва','kladr_code':'7700000000000','address':'ул. Блюхера, 32'}}" ^
+              --intake "{'intake_date':'2025-12-11','intake_time_from':'10:00','intake_time_to':'17:00','name':'Консолидированный груз','weight':'1000','length':'10','width':'10','height':'10','comment':'Комментарий курьеру','need_call':false,'sender':{'company':'Компания','name':'Иванов Иван','phones':[{'number':'+79589441654'}]},'from_location':{'code':'44','fias_guid':'0c5b2444-70a0-4932-980c-b4dc0d3f02b5','postal_code':'109004','longitude':'37.6204','latitude':'55.754','country_code':'RU','region':'Москва','sub_region':'Москва','city':'Москва','kladr_code':'7700000000000','address':'ул. Блюхера, 32'}}" ^
               --testapi "***"
         ```
     </TabItem>
@@ -105,13 +105,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "1bce5e04-a45b-4a0d-8f69-96242f8337c5"
+  "uuid": "6ff61a95-7e01-47e0-9447-aeb97a3f08e3"
  },
  "requests": [
   {
-   "request_uuid": "52ffeec9-bf8d-4bf1-8f15-9686039fbc2f",
+   "request_uuid": "09aaf864-8029-40a1-a506-6b926be60fbc",
    "type": "CREATE",
-   "date_time": "2025-12-07T23:01:46+03:00",
+   "date_time": "2025-12-10T15:02:29+03:00",
    "state": "ACCEPTED"
   }
  ],

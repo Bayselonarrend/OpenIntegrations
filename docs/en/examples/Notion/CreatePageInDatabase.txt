@@ -1,5 +1,5 @@
 ﻿    Token  = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Base   = "2c282aa7-fc4e-81e4-a227-c768107e4f09";
+    Base   = "2c482aa7-fc4e-81f8-a88b-f24b337e5d4f";
     Image_ = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Binary Data or File path
 
     Image = New Map;

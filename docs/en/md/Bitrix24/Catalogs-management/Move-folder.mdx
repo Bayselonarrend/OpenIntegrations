@@ -31,17 +31,17 @@ Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    DestinationID = "47375";
-    FolderID      = "47381";
+    DestinationID = "47914";
+    FolderID      = "47920";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Result = OPI_Bitrix24.MoveFolder(URL, FolderID, DestinationID);
 
-    FolderID = "47379";
+    FolderID = "47918";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "fb563569006e9f06006b12e400000001000...";
+    Token = "b9473869006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MoveFolder(URL, FolderID, DestinationID, Token);
 ```
@@ -53,8 +53,8 @@ Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_
         ```bash
             oint bitrix24 MoveFolder \
              --url "b24-ar17wx.bitrix24.by" \
-             --folderid 47594 \
-             --tagetid 47590 \
+             --folderid 48350 \
+             --tagetid 48346 \
              --token "***"
         ```
     </TabItem>
@@ -63,8 +63,8 @@ Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_
         ```batch
             oint bitrix24 MoveFolder ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --folderid 47594 ^
-             --tagetid 47590 ^
+             --folderid 48350 ^
+             --tagetid 48346 ^
              --token "***"
         ```
     </TabItem>
@@ -74,16 +74,16 @@ Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_
 ```json title="Result"
 {
  "result": {
-  "ID": "47594",
+  "ID": "48350",
   "NAME": "New subfolder 2",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": "47594",
-  "PARENT_ID": 47590,
+  "REAL_OBJECT_ID": "48350",
+  "PARENT_ID": 48346,
   "DELETED_TYPE": "0",
-  "CREATE_TIME": "2025-12-08T13:54:35+03:00",
-  "UPDATE_TIME": "2025-12-08T13:54:43+03:00",
+  "CREATE_TIME": "2025-12-10T17:17:00+03:00",
+  "UPDATE_TIME": "2025-12-10T17:17:08+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -91,13 +91,13 @@ Method at API documentation: [disk.folder.moveto](https://dev.1c-bitrix.ru/rest_
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New folder 2/New subfolder 2"
  },
  "time": {
-  "start": 1765191312,
-  "finish": 1765191312.5167,
-  "duration": 0.516697883605957,
+  "start": 1765376256,
+  "finish": 1765376256.3973,
+  "duration": 0.397303104400635,
   "processing": 0,
-  "date_start": "2025-12-08T13:55:12+03:00",
-  "date_finish": "2025-12-08T13:55:12+03:00",
-  "operating_reset_at": 1765191912,
+  "date_start": "2025-12-10T17:17:36+03:00",
+  "date_finish": "2025-12-10T17:17:36+03:00",
+  "operating_reset_at": 1765376856,
   "operating": 0
  }
 }

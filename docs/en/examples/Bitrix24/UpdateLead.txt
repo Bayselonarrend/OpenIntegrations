@@ -4,7 +4,7 @@
     FieldsStructure.Insert("TITLE"          , "SuperClient");
 
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    LeadID = "2797";
+    LeadID = "2836";
 
     Result = OPI_Bitrix24.UpdateLead(URL, LeadID, FieldsStructure);
 
@@ -12,7 +12,7 @@
     FieldsStructure.Insert("LAST_NAME", "Evgeniev");
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "fb563569006e9f06006b12e400000001000...";
-    LeadID = "2799";
+    Token  = "b9473869006e9f06006b12e400000001000...";
+    LeadID = "2838";
 
     Result = OPI_Bitrix24.UpdateLead(URL, LeadID, FieldsStructure, Token);

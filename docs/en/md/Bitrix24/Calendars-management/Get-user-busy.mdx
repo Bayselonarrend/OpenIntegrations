@@ -33,7 +33,7 @@ Method at API documentation: [calendar.accessibility.get](https://apidocs.bitrix
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CalendarID = "1699";
+    CalendarID = "1738";
 
     User = 1;
 
@@ -46,8 +46,8 @@ Method at API documentation: [calendar.accessibility.get](https://apidocs.bitrix
     Result = OPI_Bitrix24.GetUserBusy(URL, User, StartDate, EndDate);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "fb563569006e9f06006b12e400000001000...";
-    CalendarID = "1701";
+    Token      = "b9473869006e9f06006b12e400000001000...";
+    CalendarID = "1740";
 
     Result = OPI_Bitrix24.GetUserBusy(URL, User, StartDate, EndDate, Token);
 ```
@@ -60,8 +60,8 @@ Method at API documentation: [calendar.accessibility.get](https://apidocs.bitrix
             oint bitrix24 GetUserBusy \
              --url "b24-ar17wx.bitrix24.by" \
              --users 1 \
-             --from "2025-12-08T14:03:38.0580684" \
-             --to "2025-12-15T14:03:38.0580684" \
+             --from "2025-12-10T17:25:18.2482235" \
+             --to "2025-12-17T17:25:18.2482235" \
              --token "***"
         ```
     </TabItem>
@@ -71,8 +71,8 @@ Method at API documentation: [calendar.accessibility.get](https://apidocs.bitrix
             oint bitrix24 GetUserBusy ^
              --url "b24-ar17wx.bitrix24.by" ^
              --users 1 ^
-             --from "2025-12-08T14:03:38.0580684" ^
-             --to "2025-12-15T14:03:38.0580684" ^
+             --from "2025-12-10T17:25:18.2482235" ^
+             --to "2025-12-17T17:25:18.2482235" ^
              --token "***"
         ```
     </TabItem>
@@ -84,12 +84,12 @@ Method at API documentation: [calendar.accessibility.get](https://apidocs.bitrix
  "result": {
   "1": [
    {
-    "ID": "3176",
+    "ID": "3288",
     "NAME": "[Под вопросом]",
-    "DATE_FROM": "09.12.2025 14:03:00",
-    "DATE_TO": "09.12.2025 15:03:00",
-    "DATE_FROM_TS_UTC": "1765267380",
-    "DATE_TO_TS_UTC": "1767873780",
+    "DATE_FROM": "11.12.2025 17:25:00",
+    "DATE_TO": "11.12.2025 18:25:00",
+    "DATE_FROM_TS_UTC": "1765452300",
+    "DATE_TO_TS_UTC": "1768058700",
     "~USER_OFFSET_FROM": 0,
     "~USER_OFFSET_TO": 0,
     "DT_SKIP_TIME": "N",
@@ -100,12 +100,12 @@ Method at API documentation: [calendar.accessibility.get](https://apidocs.bitrix
     "EVENT_TYPE": null
    },
    {
-    "ID": "3180",
+    "ID": "3292",
     "NAME": "[Под вопросом]",
-    "DATE_FROM": "09.12.2025 14:03:00",
-    "DATE_TO": "09.12.2025 15:03:00",
-    "DATE_FROM_TS_UTC": "1765267380",
-    "DATE_TO_TS_UTC": "1767873780",
+    "DATE_FROM": "11.12.2025 17:25:00",
+    "DATE_TO": "11.12.2025 18:25:00",
+    "DATE_FROM_TS_UTC": "1765452300",
+    "DATE_TO_TS_UTC": "1768058700",
     "~USER_OFFSET_FROM": 0,
     "~USER_OFFSET_TO": 0,
     "DT_SKIP_TIME": "N",
@@ -118,13 +118,13 @@ Method at API documentation: [calendar.accessibility.get](https://apidocs.bitrix
   ]
  },
  "time": {
-  "start": 1765191822,
-  "finish": 1765191822.37777,
-  "duration": 0.37777304649353,
+  "start": 1765376721,
+  "finish": 1765376721.7894,
+  "duration": 0.789397954940796,
   "processing": 0,
-  "date_start": "2025-12-08T14:03:42+03:00",
-  "date_finish": "2025-12-08T14:03:42+03:00",
-  "operating_reset_at": 1765192422,
+  "date_start": "2025-12-10T17:25:21+03:00",
+  "date_finish": "2025-12-10T17:25:21+03:00",
+  "operating_reset_at": 1765377321,
   "operating": 0
  }
 }

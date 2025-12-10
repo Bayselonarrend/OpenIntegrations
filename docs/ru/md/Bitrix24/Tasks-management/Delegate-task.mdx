@@ -32,14 +32,14 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL            = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи       = "8847";
-    IDПользователя = "3009";
+    IDЗадачи       = "8946";
+    IDПользователя = "3048";
 
     Результат = OPI_Bitrix24.ДелегироватьЗадачу(URL, IDЗадачи, IDПользователя);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Токен    = "fb563569006e9f06006b12e400000001000...";
-    IDЗадачи = "8849";
+    Токен    = "b9473869006e9f06006b12e400000001000...";
+    IDЗадачи = "8948";
 
     Результат = OPI_Bitrix24.ДелегироватьЗадачу(URL, IDЗадачи, IDПользователя, Токен);
 ```
@@ -51,7 +51,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ДелегироватьЗадачу \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8868" \
+              --task "9008" \
               --user 2960 \
               --token "***"
         ```
@@ -61,7 +61,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ДелегироватьЗадачу ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8868" ^
+              --task "9008" ^
               --user 2960 ^
               --token "***"
         ```
@@ -73,7 +73,7 @@ import TabItem from '@theme/TabItem';
 {
  "result": {
   "task": {
-   "id": "8868",
+   "id": "9018",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -86,19 +86,19 @@ import TabItem from '@theme/TabItem';
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-12-07T22:42:32+03:00",
+   "createdDate": "2025-12-10T14:54:19+03:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2025-12-07T22:43:13+03:00",
+   "changedDate": "2025-12-10T14:54:29+03:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2025-12-07T22:43:13+03:00",
+   "activityDate": "2025-12-10T14:54:29+03:00",
    "dateStart": null,
-   "deadline": "2025-12-09T01:42:00+03:00",
-   "startDatePlan": "2025-12-07T22:42:32+03:00",
-   "endDatePlan": "2025-12-08T00:00:00+03:00",
-   "guid": "{b67cb0c1-d58e-4bbb-97ea-bb90099b0e9b}",
+   "deadline": "2025-12-11T17:54:00+03:00",
+   "startDatePlan": "2025-12-10T14:54:19+03:00",
+   "endDatePlan": "2025-12-11T00:00:00+03:00",
+   "guid": "{8cf320fd-8413-4cf1-aaa9-098f914d3bc0}",
    "xmlId": null,
    "commentsCount": "1",
    "serviceCommentsCount": "1",
@@ -110,14 +110,14 @@ import TabItem from '@theme/TabItem';
    "timeEstimate": "0",
    "timeSpentInLogs": null,
    "matchWorkTime": "N",
-   "forumTopicId": "5724",
+   "forumTopicId": "5814",
    "forumId": "11",
    "siteId": "s1",
    "subordinate": "Y",
    "exchangeModified": null,
    "exchangeId": null,
    "outlookVersion": "4",
-   "viewedDate": "2025-12-07T22:43:13+03:00",
+   "viewedDate": "2025-12-10T14:54:29+03:00",
    "sorting": null,
    "durationFact": null,
    "isMuted": "N",
@@ -127,7 +127,7 @@ import TabItem from '@theme/TabItem';
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2025-12-07T22:43:13+03:00",
+   "statusChangedDate": "2025-12-10T14:54:29+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -208,14 +208,14 @@ import TabItem from '@theme/TabItem';
   }
  },
  "time": {
-  "start": 1765136593,
-  "finish": 1765136593.63144,
-  "duration": 0.631434917449951,
+  "start": 1765367669,
+  "finish": 1765367669.7827,
+  "duration": 0.782705068588257,
   "processing": 0,
-  "date_start": "2025-12-07T22:43:13+03:00",
-  "date_finish": "2025-12-07T22:43:13+03:00",
-  "operating_reset_at": 1765137193,
-  "operating": 0.388836145401001
+  "date_start": "2025-12-10T14:54:29+03:00",
+  "date_finish": "2025-12-10T14:54:29+03:00",
+  "operating_reset_at": 1765368269,
+  "operating": 0.420215845108032
  }
 }
 ```

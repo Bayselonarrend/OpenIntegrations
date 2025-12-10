@@ -54,8 +54,8 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint twitter СоздатьПроизвольныйТвит \
-              --text "Тестовый твиттa3e99301-567b-4899-a7a6-2359807fcb6f" \
-              --media "['1997736970169053184','1997736979790712832']" \
+              --text "Тестовый твитт9167c899-1086-46fb-ac5a-0ac2144a50ea" \
+              --media "['1998681004483940352','1998681014651035649']" \
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -65,8 +65,8 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint twitter СоздатьПроизвольныйТвит ^
-              --text "Тестовый твиттa3e99301-567b-4899-a7a6-2359807fcb6f" ^
-              --media "['1997736970169053184','1997736979790712832']" ^
+              --text "Тестовый твитт9167c899-1086-46fb-ac5a-0ac2144a50ea" ^
+              --media "['1998681004483940352','1998681014651035649']" ^
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -75,12 +75,9 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "data": {
-  "edit_history_tweet_ids": [
-   "***"
-  ],
-  "id": "1997736992168149007",
-  "text": "Тестовый твиттa3e99301-567b-4899-a7a6-2359807fcb6f https://t.co/brjrIOU2eV"
- }
+ "title": "Too Many Requests",
+ "detail": "Too Many Requests",
+ "type": "about:blank",
+ "status": 429
 }
 ```

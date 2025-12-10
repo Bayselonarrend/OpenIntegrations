@@ -31,12 +31,12 @@ Method at API documentation: [disk.folder.get](https://dev.1c-bitrix.ru/rest_hel
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    FolderID = "47377";
+    FolderID = "47916";
 
     Result = OPI_Bitrix24.GetFolderInformation(URL, FolderID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "fb563569006e9f06006b12e400000001000...";
+    Token = "b9473869006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetFolderInformation(URL, FolderID, Token);
 ```
@@ -48,7 +48,7 @@ Method at API documentation: [disk.folder.get](https://dev.1c-bitrix.ru/rest_hel
         ```bash
             oint bitrix24 GetFolderInformation \
              --url "b24-ar17wx.bitrix24.by" \
-             --folderid 47592 \
+             --folderid 48348 \
              --token "***"
         ```
     </TabItem>
@@ -57,7 +57,7 @@ Method at API documentation: [disk.folder.get](https://dev.1c-bitrix.ru/rest_hel
         ```batch
             oint bitrix24 GetFolderInformation ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --folderid 47592 ^
+             --folderid 48348 ^
              --token "***"
         ```
     </TabItem>
@@ -67,16 +67,16 @@ Method at API documentation: [disk.folder.get](https://dev.1c-bitrix.ru/rest_hel
 ```json title="Result"
 {
  "result": {
-  "ID": "47592",
+  "ID": "48348",
   "NAME": "New catalog",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": "47592",
+  "REAL_OBJECT_ID": "48348",
   "PARENT_ID": "3",
   "DELETED_TYPE": "0",
-  "CREATE_TIME": "2025-12-08T13:54:20+03:00",
-  "UPDATE_TIME": "2025-12-08T13:54:20+03:00",
+  "CREATE_TIME": "2025-12-10T17:16:45+03:00",
+  "UPDATE_TIME": "2025-12-10T17:16:45+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -84,13 +84,13 @@ Method at API documentation: [disk.folder.get](https://dev.1c-bitrix.ru/rest_hel
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/New catalog"
  },
  "time": {
-  "start": 1765191269,
-  "finish": 1765191269.32602,
-  "duration": 0.326025009155273,
+  "start": 1765376213,
+  "finish": 1765376213.84854,
+  "duration": 0.848535060882568,
   "processing": 0,
-  "date_start": "2025-12-08T13:54:29+03:00",
-  "date_finish": "2025-12-08T13:54:29+03:00",
-  "operating_reset_at": 1765191869,
+  "date_start": "2025-12-10T17:16:53+03:00",
+  "date_finish": "2025-12-10T17:16:53+03:00",
+  "operating_reset_at": 1765376813,
   "operating": 0
  }
 }

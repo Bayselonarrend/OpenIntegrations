@@ -31,7 +31,7 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/33828
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUxMDM3OTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUyOTY1MTUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
 
     OrderDescription = New Structure;
 
@@ -120,7 +120,7 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/33828
             
             oint cdek CreateOrder \
              --token "***" \
-             --order "{'from_location':{'code':'44','city':'Moscow','address':'Ave. Leningradsky, 4'},'to_location':{'code':'270','city':'Novosibirsk','address':'st. Bluchera, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Product','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Packaging','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Ivaniv Ivan'},'sender':{'name':'Petrov Petr'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'8672909a-3875-4a7b-9616-5abb586e7457','comment':'New order','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" \
+             --order "{'from_location':{'code':'44','city':'Moscow','address':'Ave. Leningradsky, 4'},'to_location':{'code':'270','city':'Novosibirsk','address':'st. Bluchera, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Product','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Packaging','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Ivaniv Ivan'},'sender':{'name':'Petrov Petr'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'c730fcc3-be86-4317-8e65-da6557a4002e','comment':'New order','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" \
              --ostore true \
              --testapi "***"
         ```
@@ -132,7 +132,7 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/33828
             
             oint cdek CreateOrder ^
              --token "***" ^
-             --order "{'from_location':{'code':'44','city':'Moscow','address':'Ave. Leningradsky, 4'},'to_location':{'code':'270','city':'Novosibirsk','address':'st. Bluchera, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Product','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Packaging','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Ivaniv Ivan'},'sender':{'name':'Petrov Petr'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'8672909a-3875-4a7b-9616-5abb586e7457','comment':'New order','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" ^
+             --order "{'from_location':{'code':'44','city':'Moscow','address':'Ave. Leningradsky, 4'},'to_location':{'code':'270','city':'Novosibirsk','address':'st. Bluchera, 32'},'packages':[{'items':[{'payment':{'value':'3000'},'ware_key':'***','name':'Product','cost':'300','amount':'2','weight':'700','url':'www.item.ru'}],'number':'bar-001','comment':'Packaging','height':'10','length':'10','weight':'4000','width':'10'}],'recipient':{'phones':[{'number':'+79134637228'}],'name':'Ivaniv Ivan'},'sender':{'name':'Petrov Petr'},'services':[{'code':'SECURE_PACKAGE_A2','parameter':'10'}],'number':'c730fcc3-be86-4317-8e65-da6557a4002e','comment':'New order','tariff_code':'139','delivery_recipient_cost':{'value':'50'},'delivery_recipient_cost_adv':{'sum':'3000','threshold':'200'}}" ^
              --ostore true ^
              --testapi "***"
         ```
@@ -143,13 +143,13 @@ Method at API documentation: [Order registration](https://api-docs.cdek.ru/33828
 ```json title="Result"
 {
  "entity": {
-  "uuid": "a090e2bd-cc68-4312-b385-46ce2e3cb6c5"
+  "uuid": "2e6c3f4b-39ba-4f35-82ed-e071c2cfaea2"
  },
  "requests": [
   {
-   "request_uuid": "758bfe51-377c-4f53-a5e1-89cd711532cf",
+   "request_uuid": "89b4bcbf-a364-4ec2-ac65-a38cd0f74407",
    "type": "CREATE",
-   "date_time": "2025-12-08T14:09:24+03:00",
+   "date_time": "2025-12-10T17:30:53+03:00",
    "state": "ACCEPTED"
   }
  ],

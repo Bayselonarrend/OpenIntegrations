@@ -1,5 +1,5 @@
 ﻿    Token   = "xoxb-6965308400114-696804637...";
     Channel = "C06UFNUTKUL";
-    FileID  = "F0A1LFTHNMD";
+    FileID  = "F0A2GSVTYR0";
 
     Result = OPI_Slack.SendExternalFile(Token, FileID, Channel);

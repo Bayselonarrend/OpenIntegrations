@@ -27,8 +27,8 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="1C:Enterprise/OneScript code example"
     CurrentDate = OPI_Tools.GetCurrentDate();
-    Token       = "ya29.a0Aa7pCA8bot9XU4KMtkCAXIoQSq7kc5tvbdIy8tPMA-RiXX8fMT2c_gWk5JNmVN6UcUOrwdkD1Om1ZMu5UtLz3gpC0NRoKxfRGaGcjScSEk9hl1h2Uew-mk5Ao...";
-    Calendar    = "becf9f2918fa839f8b073f8b0e538f698be87bb73868621cba843f3756e66981@group.calendar.google.com";
+    Token       = "ya29.a0Aa7pCA9tGLvUQzW3431iWt4ev2zEnfNinK3cfCHJ38wU1CkKMigpwMI2e3mkhjbd-WpPshKKCgRPPPpwlsM4-aPlexNO24AZd93P72lvFJeta1Qdmefe_-qfg...";
+    Calendar    = "4def676a718372b5291eb671a518e50be86229036a995134af08390af1ca58ae@group.calendar.google.com";
     Name        = "New event";
     Description = "TestEventDescription";
     Hour        = 3600;
@@ -61,8 +61,8 @@ import TabItem from '@theme/TabItem';
             
             oint gcalendar CreateEvent \
              --token "***" \
-             --calendar "c4fc466acedffc47133e93bc879194cb2408df52ec1b5a283300d5bfbdee3f81@group.calendar.google.com" \
-             --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'12/8/2025 1:37:33 PM','EndDate':'12/8/2025 2:37:33 PM','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
+             --calendar "ad8c4fc2a7ca8e76471dedfdcf050c98c452ba8c50a6b46aaf1b85b526ac35ad@group.calendar.google.com" \
+             --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'12/10/2025 5:00:40 PM','EndDate':'12/10/2025 6:00:40 PM','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
         ```
     </TabItem>
   
@@ -72,8 +72,8 @@ import TabItem from '@theme/TabItem';
             
             oint gcalendar CreateEvent ^
              --token "***" ^
-             --calendar "c4fc466acedffc47133e93bc879194cb2408df52ec1b5a283300d5bfbdee3f81@group.calendar.google.com" ^
-             --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'12/8/2025 1:37:33 PM','EndDate':'12/8/2025 2:37:33 PM','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
+             --calendar "ad8c4fc2a7ca8e76471dedfdcf050c98c452ba8c50a6b46aaf1b85b526ac35ad@group.calendar.google.com" ^
+             --props "{'Description':'TestEventDescription','Title':'New event','Venue':'InOffice','StartDate':'12/10/2025 5:00:40 PM','EndDate':'12/10/2025 6:00:40 PM','ArrayOfAttachmentURLs':{'Image1':'https://hut.openintegrations.dev/test_data/picture.jpg','Image2':'https://hut.openintegrations.dev/test_data/picture2.jpg'},'SendNotifications':true}"
         ```
     </TabItem>
 </Tabs>
@@ -82,12 +82,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "kind": "calendar#event",
- "etag": "\"3530380510836030\"",
- "id": "ika50tgcc3n39oqtd0egr45024",
+ "etag": "\"3530750484190494\"",
+ "id": "oppu5o99vqur60bjlp9ula672o",
  "status": "confirmed",
- "htmlLink": "https://www.google.com/calendar/event?eid=aWthNTB0Z2NjM24zOW9xdGQwZWdyNDUwMjQgYzRmYzQ2NmFjZWRmZmM0NzEzM2U5M2JjODc5MTk0Y2IyNDA4ZGY1MmVjMWI1YTI4MzMwMGQ1YmZiZGVlM2Y4MUBn",
- "created": "2025-12-08T10:37:35Z",
- "updated": "2025-12-08T10:37:35.418Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=b3BwdTVvOTl2cXVyNjBiamxwOXVsYTY3Mm8gYWQ4YzRmYzJhN2NhOGU3NjQ3MWRlZGZkY2YwNTBjOThjNDUyYmE4YzUwYTZiNDZhYWYxYjg1YjUyNmFjMzVhZEBn",
+ "created": "2025-12-10T14:00:41Z",
+ "updated": "2025-12-10T14:00:42.095Z",
  "summary": "New event",
  "description": "TestEventDescription",
  "location": "InOffice",
@@ -95,19 +95,19 @@ import TabItem from '@theme/TabItem';
   "email": "bayselonarrend@gmail.com"
  },
  "organizer": {
-  "email": "c4fc466acedffc47133e93bc879194cb2408df52ec1b5a283300d5bfbdee3f81@group.calendar.google.com",
+  "email": "ad8c4fc2a7ca8e76471dedfdcf050c98c452ba8c50a6b46aaf1b85b526ac35ad@group.calendar.google.com",
   "displayName": "TestCalendar",
   "self": true
  },
  "start": {
-  "dateTime": "2025-12-08T16:37:33+03:00",
+  "dateTime": "2025-12-10T20:00:40+03:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2025-12-08T17:37:33+03:00",
+  "dateTime": "2025-12-10T21:00:40+03:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "ika50tgcc3n39oqtd0egr45024@google.com",
+ "iCalUID": "oppu5o99vqur60bjlp9ula672o@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true
