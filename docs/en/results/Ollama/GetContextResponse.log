@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-12-10T06:25:31.233289491Z",
+ "created_at": "2025-12-10T15:18:29.00820505Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in 2000. At that time, it was one of the most advanced accounting and finance software solutions available for businesses with between two to ten employees. It offered a wide range of features and was compatible with Microsoft Windows operating systems. The latest version of 1C:Enterprise is now available and continues to offer an extensive set of tools for small and medium-sized businesses looking for a professional accounting software solution."
+  "content": "The first version of 1C:Enterprise has not been released yet. It is currently in development status and has not yet been officially launched by its developers, 1C Company. However, it is widely expected to be a major product release in the future, with various features, improvements, and updates being added and integrated over time."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 18170899699,
- "load_duration": 18402949,
- "prompt_eval_count": 178,
- "prompt_eval_duration": 4373322860,
- "eval_count": 105,
- "eval_duration": 13775359160
+ "total_duration": 10168370372,
+ "load_duration": 19151514,
+ "prompt_eval_count": 193,
+ "prompt_eval_duration": 3783003690,
+ "eval_count": 70,
+ "eval_duration": 6359150018
 }
