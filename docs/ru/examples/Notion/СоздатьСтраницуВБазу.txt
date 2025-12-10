@@ -1,5 +1,5 @@
 ﻿    Токен     = "secret_9RsfMrRMqZwqp0Zl0B...";
-    База      = "2c482aa7-fc4e-81f8-a88b-f24b337e5d4f";
+    База      = "2c582aa7-fc4e-8189-8d86-cb479d8efdf9";
     Картинка_ = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Двоичные данные или Путь к файлу
 
     Картинка = Новый Соответствие;

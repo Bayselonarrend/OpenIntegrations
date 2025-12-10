@@ -36,7 +36,7 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
 ```bsl title="1C:Enterprise/OneScript code example"
     Name    = "New stage name";
     Color   = "000000";
-    StageID = "3306";
+    StageID = "3342";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
@@ -44,10 +44,10 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
 
     Name    = "New stage name 2";
     Color   = "000000";
-    StageID = "3308";
+    StageID = "3344";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "b9473869006e9f06006b12e400000001000...";
+    Token = "6ad03969006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.UpdateKanbansStage(URL, Name, StageID, Color, 6, True, Token);
 ```
@@ -60,7 +60,7 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
             oint bitrix24 UpdateKanbansStage \
              --url "b24-ar17wx.bitrix24.by" \
              --title "New stage name 2" \
-             --stage 3340 \
+             --stage 3348 \
              --color "000000" \
              --prevstage 6 \
              --admin true \
@@ -73,7 +73,7 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
             oint bitrix24 UpdateKanbansStage ^
              --url "b24-ar17wx.bitrix24.by" ^
              --title "New stage name 2" ^
-             --stage 3340 ^
+             --stage 3348 ^
              --color "000000" ^
              --prevstage 6 ^
              --admin true ^
@@ -87,13 +87,13 @@ Method at API documentation: [task.stages.update](https://dev.1c-bitrix.ru/rest_
 {
  "result": true,
  "time": {
-  "start": 1765376289,
-  "finish": 1765376289.09681,
-  "duration": 0.0968129634857178,
+  "start": 1765396538,
+  "finish": 1765396538.12855,
+  "duration": 0.128550052642822,
   "processing": 0,
-  "date_start": "2025-12-10T17:18:09+03:00",
-  "date_finish": "2025-12-10T17:18:09+03:00",
-  "operating_reset_at": 1765376889,
+  "date_start": "2025-12-10T19:55:38+00:00",
+  "date_finish": "2025-12-10T19:55:38+00:00",
+  "operating_reset_at": 1765397138,
   "operating": 0
  }
 }

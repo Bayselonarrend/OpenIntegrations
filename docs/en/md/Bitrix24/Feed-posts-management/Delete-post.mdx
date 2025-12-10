@@ -30,14 +30,14 @@ Method at API documentation: [log.blogpost.delete](https://dev.1c-bitrix.ru/rest
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    PostID = "3414";
+    PostID = "3450";
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Result = OPI_Bitrix24.DeletePost(URL, PostID);
 
-    PostID = "3416";
+    PostID = "3452";
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "b9473869006e9f06006b12e400000001000...";
+    Token  = "6ad03969006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.DeletePost(URL, PostID, Token);
 ```
@@ -49,7 +49,7 @@ Method at API documentation: [log.blogpost.delete](https://dev.1c-bitrix.ru/rest
         ```bash
             oint bitrix24 DeletePost \
              --url "b24-ar17wx.bitrix24.by" \
-             --postid 3448 \
+             --postid 3456 \
              --token "***"
         ```
     </TabItem>
@@ -58,7 +58,7 @@ Method at API documentation: [log.blogpost.delete](https://dev.1c-bitrix.ru/rest
         ```batch
             oint bitrix24 DeletePost ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --postid 3448 ^
+             --postid 3456 ^
              --token "***"
         ```
     </TabItem>
@@ -69,14 +69,14 @@ Method at API documentation: [log.blogpost.delete](https://dev.1c-bitrix.ru/rest
 {
  "result": true,
  "time": {
-  "start": 1765375947,
-  "finish": 1765375947.27375,
-  "duration": 0.273750066757202,
+  "start": 1765396137,
+  "finish": 1765396137.68017,
+  "duration": 0.680172920227051,
   "processing": 0,
-  "date_start": "2025-12-10T17:12:27+03:00",
-  "date_finish": "2025-12-10T17:12:27+03:00",
-  "operating_reset_at": 1765376547,
-  "operating": 0.214927911758423
+  "date_start": "2025-12-10T19:48:57+00:00",
+  "date_finish": "2025-12-10T19:48:57+00:00",
+  "operating_reset_at": 1765396737,
+  "operating": 0.160048961639404
  }
 }
 ```

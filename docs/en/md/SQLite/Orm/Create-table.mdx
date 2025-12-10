@@ -26,7 +26,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_7739_2c.sqlite";
+    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_2812_2c.sqlite";
     Table = "test";
 
     ColoumnsStruct = New Structure;
@@ -51,7 +51,7 @@ import TabItem from '@theme/TabItem';
             oint sqlite CreateTable \
              --table "test1" \
              --cols "{'id':'INTEGER PRIMARY KEY','[An obscure column]':'TEXT'}" \
-             --db "C:\Users\bayse\AppData\Local\Temp\f1ck3wxm.3uy.sqlite"
+             --db "/tmp/d2zko3pj.q0q.sqlite"
         ```
     </TabItem>
   
@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
             oint sqlite CreateTable ^
              --table "test1" ^
              --cols "{'id':'INTEGER PRIMARY KEY','[An obscure column]':'TEXT'}" ^
-             --db "C:\Users\bayse\AppData\Local\Temp\f1ck3wxm.3uy.sqlite"
+             --db "/tmp/d2zko3pj.q0q.sqlite"
         ```
     </TabItem>
 </Tabs>

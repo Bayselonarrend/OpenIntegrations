@@ -46,7 +46,7 @@ If you want to add an intranet user, you must pass UF_DEPARTMENT field: [...]
     Result = OPI_Bitrix24.CreateUser(URL, UserStructure);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "b9473869006e9f06006b12e400000001000...";
+    Token = "6ad03969006e9f06006b12e400000001000...";
     Email = String(New UUID) + "@exepmple.org";
 
     UserStructure = New Structure;
@@ -68,7 +68,7 @@ If you want to add an intranet user, you must pass UF_DEPARTMENT field: [...]
             
             oint bitrix24 CreateUser \
              --url "b24-ar17wx.bitrix24.by" \
-             --fields "{'EMAIL':'3b1bc75c-17a0-40c6-9d61-574abcb2221b@exepmple.org','NAME':'Vitaly','LAST_NAME':'Alpaca','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':'1'}" \
+             --fields "{'EMAIL':'324689a6-7a52-4eb2-80bb-20a8552cdff7@exepmple.org','NAME':'Vitaly','LAST_NAME':'Alpaca','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':'1'}" \
              --token "***"
         ```
     </TabItem>
@@ -79,7 +79,7 @@ If you want to add an intranet user, you must pass UF_DEPARTMENT field: [...]
             
             oint bitrix24 CreateUser ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --fields "{'EMAIL':'3b1bc75c-17a0-40c6-9d61-574abcb2221b@exepmple.org','NAME':'Vitaly','LAST_NAME':'Alpaca','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':'1'}" ^
+             --fields "{'EMAIL':'324689a6-7a52-4eb2-80bb-20a8552cdff7@exepmple.org','NAME':'Vitaly','LAST_NAME':'Alpaca','PERSONAL_MOBILE':'88003553535','UF_DEPARTMENT':'1'}" ^
              --token "***"
         ```
     </TabItem>
@@ -88,16 +88,16 @@ If you want to add an intranet user, you must pass UF_DEPARTMENT field: [...]
 
 ```json title="Result"
 {
- "result": 3080,
+ "result": 3088,
  "time": {
-  "start": 1765376594,
-  "finish": 1765376595.28911,
-  "duration": 1.28910994529724,
+  "start": 1765396883,
+  "finish": 1765396884.78705,
+  "duration": 1.78704595565796,
   "processing": 1,
-  "date_start": "2025-12-10T17:23:14+03:00",
-  "date_finish": "2025-12-10T17:23:15+03:00",
-  "operating_reset_at": 1765377194,
-  "operating": 0.959870100021362
+  "date_start": "2025-12-10T20:01:23+00:00",
+  "date_finish": "2025-12-10T20:01:24+00:00",
+  "operating_reset_at": 1765397483,
+  "operating": 0.862886190414429
  }
 }
 ```

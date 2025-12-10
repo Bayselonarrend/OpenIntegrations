@@ -32,14 +32,14 @@ Method at API documentation: [calendar.meeting.status.set](https://apidocs.bitri
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    EventID = "3224";
+    EventID = "3296";
     Status  = "Y";
 
     Result = OPI_Bitrix24.SetUserParticipationStatus(URL, EventID, Status);
 
     URL     = "b24-ar17wx.bitrix24.by";
-    Token   = "b9473869006e9f06006b12e400000001000...";
-    EventID = "3228";
+    Token   = "6ad03969006e9f06006b12e400000001000...";
+    EventID = "3300";
 
     Result = OPI_Bitrix24.SetUserParticipationStatus(URL, EventID, Status, Token);
 ```
@@ -51,7 +51,7 @@ Method at API documentation: [calendar.meeting.status.set](https://apidocs.bitri
         ```bash
             oint bitrix24 SetUserParticipationStatus \
              --url "b24-ar17wx.bitrix24.by" \
-             --event 3292 \
+             --event 3308 \
              --status "Y" \
              --token "***"
         ```
@@ -61,7 +61,7 @@ Method at API documentation: [calendar.meeting.status.set](https://apidocs.bitri
         ```batch
             oint bitrix24 SetUserParticipationStatus ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --event 3292 ^
+             --event 3308 ^
              --status "Y" ^
              --token "***"
         ```
@@ -73,13 +73,13 @@ Method at API documentation: [calendar.meeting.status.set](https://apidocs.bitri
 {
  "result": true,
  "time": {
-  "start": 1765376700,
-  "finish": 1765376700.37023,
-  "duration": 0.370232105255127,
+  "start": 1765397006,
+  "finish": 1765397006.93872,
+  "duration": 0.938719034194946,
   "processing": 0,
-  "date_start": "2025-12-10T17:25:00+03:00",
-  "date_finish": "2025-12-10T17:25:00+03:00",
-  "operating_reset_at": 1765377300,
+  "date_start": "2025-12-10T20:03:26+00:00",
+  "date_finish": "2025-12-10T20:03:26+00:00",
+  "operating_reset_at": 1765397606,
   "operating": 0
  }
 }

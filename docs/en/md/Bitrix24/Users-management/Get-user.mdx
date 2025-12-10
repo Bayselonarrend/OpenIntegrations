@@ -31,13 +31,13 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    UserID = "3046";
+    UserID = "3082";
 
     Result = OPI_Bitrix24.GetUser(URL, UserID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "b9473869006e9f06006b12e400000001000...";
-    UserID = "3048";
+    Token  = "6ad03969006e9f06006b12e400000001000...";
+    UserID = "3084";
 
     Result = OPI_Bitrix24.GetUser(URL, UserID, Token);
 ```
@@ -49,7 +49,7 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
         ```bash
             oint bitrix24 GetUser \
              --url "b24-ar17wx.bitrix24.by" \
-             --userid 3080 \
+             --userid 3088 \
              --token "***"
         ```
     </TabItem>
@@ -58,7 +58,7 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
         ```batch
             oint bitrix24 GetUser ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --userid 3080 ^
+             --userid 3088 ^
              --token "***"
         ```
     </TabItem>
@@ -69,14 +69,14 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
 {
  "result": [
   {
-   "ID": "3080",
-   "XML_ID": "69162170",
+   "ID": "3088",
+   "XML_ID": "69171002",
    "ACTIVE": true,
    "NAME": "Oleg",
    "LAST_NAME": "Lama",
-   "EMAIL": "596b6957-4a31-443d-a393-9860fc670ac6@exepmple.org",
+   "EMAIL": "d9549ff7-1fb5-4100-b377-2610aed436e9@exepmple.org",
    "LAST_LOGIN": "",
-   "DATE_REGISTER": "2025-12-10T03:00:00+03:00",
+   "DATE_REGISTER": "2025-12-10T00:00:00+00:00",
    "IS_ONLINE": "N",
    "TIMESTAMP_X": {},
    "PERSONAL_GENDER": "",
@@ -91,13 +91,13 @@ Method at API documentation: [user.get](https://dev.1c-bitrix.ru/rest_help/users
  ],
  "total": 1,
  "time": {
-  "start": 1765376607,
-  "finish": 1765376607.34856,
-  "duration": 0.348555088043213,
+  "start": 1765396900,
+  "finish": 1765396900.06474,
+  "duration": 0.0647389888763428,
   "processing": 0,
-  "date_start": "2025-12-10T17:23:27+03:00",
-  "date_finish": "2025-12-10T17:23:27+03:00",
-  "operating_reset_at": 1765377207,
+  "date_start": "2025-12-10T20:01:40+00:00",
+  "date_finish": "2025-12-10T20:01:40+00:00",
+  "operating_reset_at": 1765397500,
   "operating": 0
  }
 }
