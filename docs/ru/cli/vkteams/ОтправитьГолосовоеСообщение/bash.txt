@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение \
   --token "***" \
   --chatid "***" \
-  --file "/tmp/qshzimgb.cd0"
+  --file "/tmp/3jlezqz1.npr"

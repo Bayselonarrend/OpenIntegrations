@@ -1,3 +1,3 @@
 oint notion ПолучитьСтраницу ^
   --token "***" ^
-  --page "2c382aa7-fc4e-81ed-900a-ecce9a6fffa1"
+  --page "2c582aa7-fc4e-814b-8d66-f25a4ee0e996"
