@@ -1,8 +1,8 @@
 oint bitrix24 AddTaskTimeAccounting \
  --url "b24-ar17wx.bitrix24.by" \
- --task "8974" \
+ --task "9034" \
  --amount 7200 \
  --user 10 \
  --text "Time spent on work" \
- --date "2025-11-09T18:51:15.7623617" \
+ --date "2025-11-10T17:18:19.1795118" \
  --token "***"
