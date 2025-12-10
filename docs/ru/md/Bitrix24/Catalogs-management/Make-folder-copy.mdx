@@ -31,18 +31,18 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    IDПриемника = "47379";
-    IDКаталога  = "47381";
+    IDПриемника = "47918";
+    IDКаталога  = "47920";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Результат = OPI_Bitrix24.СкопироватьКаталог(URL, IDКаталога, IDПриемника);
 
-    IDПриемника = "47381";
-    IDКаталога  = "47379";
+    IDПриемника = "47920";
+    IDКаталога  = "47918";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "fb563569006e9f06006b12e400000001000...";
+    Токен = "b9473869006e9f06006b12e400000001000...";
 ```
     
 
@@ -52,8 +52,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 СкопироватьКаталог \
               --url "https://b24-ar17wx.bitrix24.by/rest/1/***" \
-              --folderid 47488 \
-              --tagetid 47486
+              --folderid 48244 \
+              --tagetid 48242
         ```
     </TabItem>
   
@@ -61,8 +61,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 СкопироватьКаталог ^
               --url "https://b24-ar17wx.bitrix24.by/rest/1/***" ^
-              --folderid 47488 ^
-              --tagetid 47486
+              --folderid 48244 ^
+              --tagetid 48242
         ```
     </TabItem>
 </Tabs>
@@ -71,16 +71,16 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": 47490,
+  "ID": 48300,
   "NAME": "Новый подкаталог",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": 47490,
-  "PARENT_ID": "47486",
+  "REAL_OBJECT_ID": 48300,
+  "PARENT_ID": "48296",
   "DELETED_TYPE": 0,
-  "CREATE_TIME": "2025-12-07T22:47:10+03:00",
-  "UPDATE_TIME": "2025-12-07T22:47:10+03:00",
+  "CREATE_TIME": "2025-12-10T14:55:47+03:00",
+  "UPDATE_TIME": "2025-12-10T14:55:47+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -88,13 +88,13 @@ import TabItem from '@theme/TabItem';
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/Новый каталог/Новый подкаталог 2/Новый подкаталог"
  },
  "time": {
-  "start": 1765136830,
-  "finish": 1765136830.10444,
-  "duration": 0.10444188117981,
+  "start": 1765367747,
+  "finish": 1765367747.95777,
+  "duration": 0.957771062850952,
   "processing": 0,
-  "date_start": "2025-12-07T22:47:10+03:00",
-  "date_finish": "2025-12-07T22:47:10+03:00",
-  "operating_reset_at": 1765137430,
+  "date_start": "2025-12-10T14:55:47+03:00",
+  "date_finish": "2025-12-10T14:55:47+03:00",
+  "operating_reset_at": 1765368347,
   "operating": 0
  }
 }

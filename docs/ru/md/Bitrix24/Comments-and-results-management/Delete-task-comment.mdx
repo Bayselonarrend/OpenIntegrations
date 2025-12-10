@@ -32,14 +32,14 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL           = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи      = "8851";
-    IDКомментария = "20509";
+    IDЗадачи      = "8950";
+    IDКомментария = "20728";
 
     Результат = OPI_Bitrix24.УдалитьКомментарийЗадачи(URL, IDЗадачи, IDКомментария);
 
     URL           = "b24-ar17wx.bitrix24.by";
-    Токен         = "fb563569006e9f06006b12e400000001000...";
-    IDКомментария = "20511";
+    Токен         = "b9473869006e9f06006b12e400000001000...";
+    IDКомментария = "20730";
 
     Результат = OPI_Bitrix24.УдалитьКомментарийЗадачи(URL, IDЗадачи, IDКомментария, Токен);
 ```
@@ -51,8 +51,8 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 УдалитьКомментарийЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "8870" \
-              --comment 20554 \
+              --task "9010" \
+              --comment 20862 \
               --token "***"
         ```
     </TabItem>
@@ -61,8 +61,8 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 УдалитьКомментарийЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "8870" ^
-              --comment 20554 ^
+              --task "9010" ^
+              --comment 20862 ^
               --token "***"
         ```
     </TabItem>
@@ -73,14 +73,14 @@ import TabItem from '@theme/TabItem';
 {
  "result": true,
  "time": {
-  "start": 1765136730,
-  "finish": 1765136730.84404,
-  "duration": 0.844034910202026,
+  "start": 1765367705,
+  "finish": 1765367705.51513,
+  "duration": 0.515127897262573,
   "processing": 0,
-  "date_start": "2025-12-07T22:45:30+03:00",
-  "date_finish": "2025-12-07T22:45:30+03:00",
-  "operating_reset_at": 1765137330,
-  "operating": 0
+  "date_start": "2025-12-10T14:55:05+03:00",
+  "date_finish": "2025-12-10T14:55:05+03:00",
+  "operating_reset_at": 1765368305,
+  "operating": 0.10276198387146
  }
 }
 ```

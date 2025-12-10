@@ -28,13 +28,13 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL            = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDПользователя = "3007";
+    IDПользователя = "3046";
 
     Результат = OPI_Bitrix24.ИзменитьСтатусПользователя(URL, IDПользователя, Истина);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Токен          = "fb563569006e9f06006b12e400000001000...";
-    IDПользователя = "3009";
+    Токен          = "b9473869006e9f06006b12e400000001000...";
+    IDПользователя = "3048";
 
     Результат = OPI_Bitrix24.ИзменитьСтатусПользователя(URL, IDПользователя, Истина, Токен);
 ```
@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ИзменитьСтатусПользователя \
               --url "b24-ar17wx.bitrix24.by" \
-              --userid 3016 \
+              --userid 3072 \
               --fire true \
               --token "***"
         ```
@@ -56,7 +56,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ИзменитьСтатусПользователя ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --userid 3016 ^
+              --userid 3072 ^
               --fire true ^
               --token "***"
         ```
@@ -68,14 +68,14 @@ import TabItem from '@theme/TabItem';
 {
  "result": true,
  "time": {
-  "start": 1765137228,
-  "finish": 1765137228.84246,
-  "duration": 0.842459917068481,
+  "start": 1765367891,
+  "finish": 1765367891.43562,
+  "duration": 0.435616016387939,
   "processing": 0,
-  "date_start": "2025-12-07T22:53:48+03:00",
-  "date_finish": "2025-12-07T22:53:48+03:00",
-  "operating_reset_at": 1765137828,
-  "operating": 0.393547773361206
+  "date_start": "2025-12-10T14:58:11+03:00",
+  "date_finish": "2025-12-10T14:58:11+03:00",
+  "operating_reset_at": 1765368491,
+  "operating": 0.59982419013977
  }
 }
 ```
