@@ -31,13 +31,13 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "8946";
+    TaskID = "9036";
 
     Result = OPI_Bitrix24.DeferTask(URL, TaskID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "b9473869006e9f06006b12e400000001000...";
-    TaskID = "8948";
+    Token  = "6ad03969006e9f06006b12e400000001000...";
+    TaskID = "9038";
 
     Result = OPI_Bitrix24.DeferTask(URL, TaskID, Token);
 ```
@@ -49,7 +49,7 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
         ```bash
             oint bitrix24 DeferTask \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "9028" \
+             --task "9048" \
              --token "***"
         ```
     </TabItem>
@@ -58,7 +58,7 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
         ```batch
             oint bitrix24 DeferTask ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "9028" ^
+             --task "9048" ^
              --token "***"
         ```
     </TabItem>
@@ -69,7 +69,7 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
 {
  "result": {
   "task": {
-   "id": "9028",
+   "id": "9048",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -82,19 +82,19 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-12-10T17:12:38+03:00",
+   "createdDate": "2025-12-10T19:49:11+00:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2025-12-10T17:13:22+03:00",
+   "changedDate": "2025-12-10T19:50:04+00:00",
    "statusChangedBy": "1",
    "closedBy": "0",
    "closedDate": null,
-   "activityDate": "2025-12-10T17:13:18+03:00",
+   "activityDate": "2025-12-10T19:49:59+00:00",
    "dateStart": null,
-   "deadline": "2025-12-11T20:12:00+03:00",
-   "startDatePlan": "2025-12-10T17:12:38+03:00",
-   "endDatePlan": "2025-12-11T00:00:00+03:00",
-   "guid": "{3a8fd391-536b-479a-a324-d23331dfa382}",
+   "deadline": "2025-12-11T19:49:00+00:00",
+   "startDatePlan": "2025-12-10T19:49:11+00:00",
+   "endDatePlan": "2025-12-10T21:00:00+00:00",
+   "guid": "{2df2631f-de86-45ab-af6f-f290ffc1c57d}",
    "xmlId": null,
    "commentsCount": "1",
    "serviceCommentsCount": "1",
@@ -106,14 +106,14 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
    "timeEstimate": "0",
    "timeSpentInLogs": null,
    "matchWorkTime": "N",
-   "forumTopicId": "5820",
+   "forumTopicId": "5832",
    "forumId": "11",
    "siteId": "s1",
    "subordinate": "Y",
    "exchangeModified": null,
    "exchangeId": null,
    "outlookVersion": "5",
-   "viewedDate": "2025-12-10T17:13:18+03:00",
+   "viewedDate": "2025-12-10T19:49:59+00:00",
    "sorting": null,
    "durationFact": null,
    "isMuted": "N",
@@ -123,7 +123,7 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "6",
-   "statusChangedDate": "2025-12-10T17:13:22+03:00",
+   "statusChangedDate": "2025-12-10T19:50:04+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -204,14 +204,14 @@ Method at API documentation: [tasks.task.defer](https://dev.1c-bitrix.ru/rest_he
   }
  },
  "time": {
-  "start": 1765376002,
-  "finish": 1765376002.77103,
-  "duration": 0.771034002304077,
-  "processing": 0,
-  "date_start": "2025-12-10T17:13:22+03:00",
-  "date_finish": "2025-12-10T17:13:22+03:00",
-  "operating_reset_at": 1765376602,
-  "operating": 0.200625896453857
+  "start": 1765396204,
+  "finish": 1765396205.11755,
+  "duration": 1.11754989624023,
+  "processing": 1,
+  "date_start": "2025-12-10T19:50:04+00:00",
+  "date_finish": "2025-12-10T19:50:05+00:00",
+  "operating_reset_at": 1765396804,
+  "operating": 0.231636047363281
  }
 }
 ```

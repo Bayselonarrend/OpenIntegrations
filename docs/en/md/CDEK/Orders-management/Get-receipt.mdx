@@ -35,8 +35,8 @@ Method at API documentation: [Receiving order receipt](https://api-docs.cdek.ru/
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUyOTY1MTUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "493ffe3d-3bbf-4776-b35a-afb3c640af26";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUzOTcwNTYsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    UUID  = "6b4731d4-6715-4ad7-a21e-087d8c178ebe";
 
     Result = OPI_CDEK.GetReceipt(Token, UUID, , True); // Server response with a URL
 ```
@@ -67,10 +67,10 @@ Method at API documentation: [Receiving order receipt](https://api-docs.cdek.ru/
 ```json title="Result"
 {
  "entity": {
-  "uuid": "866e2dc0-4cb9-4581-b7f1-ef5809e86749",
+  "uuid": "e22c3284-e811-4eb3-8bbb-36460e42250e",
   "orders": [
    {
-    "order_uuid": "a3b7ce05-d121-4272-8c90-f21ab824b799"
+    "order_uuid": "9e15fe3c-2071-4ed8-9ded-70df723825d3"
    }
   ],
   "copy_count": 1,
@@ -79,31 +79,32 @@ Method at API documentation: [Receiving order receipt](https://api-docs.cdek.ru/
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-12-08T14:50:23+00:00"
+    "date_time": "2025-12-10T20:09:22+00:00"
    },
    {
     "code": "INVALID",
     "name": "Некорректный запрос",
-    "date_time": "2025-12-08T14:50:24+00:00"
+    "date_time": "2025-12-10T20:09:23+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "85b771aa-bc2a-4d7f-ad42-088f5fe629ed",
+   "request_uuid": "8d30cd85-bd7d-4b50-952f-b1ca1c468102",
    "type": "CREATE",
-   "date_time": "2025-12-08T14:50:23+00:00",
+   "date_time": "2025-12-10T20:09:22+00:00",
    "state": "INVALID",
    "errors": [
     {
      "code": "v2_orders_number_is_empty",
+     "additional_code": "0x1E0EBE20",
      "message": "Entity is empty. All orders are incorrect"
     }
    ],
    "warnings": [
     {
      "code": "v2_order_invalid",
-     "message": "Order is invalid a3b7ce05-d121-4272-8c90-f21ab824b799"
+     "message": "Order is invalid 9e15fe3c-2071-4ed8-9ded-70df723825d3"
     }
    ]
   }

@@ -1,6 +1,6 @@
 ﻿    Parameters = GetVKParameters();
 
     Name     = "Color (change.)";
-    Property = "5109";
+    Property = "5124";
 
     Result = OPI_VK.EditProductProperty(Name, Property, Parameters);

@@ -4,7 +4,7 @@
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     ChatID    = "120363410406221140@g.us";
-    MessageID = "3EB0C594976ACEBEC1A706";
+    MessageID = "3EB05EA43320C6336EF896";
     Text      = "New message text";
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);

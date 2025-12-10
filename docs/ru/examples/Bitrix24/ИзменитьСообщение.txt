@@ -1,13 +1,13 @@
 ﻿    URL         = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDСообщения = "69618";
+    IDСообщения = "70382";
 
     Текст = "Новый текст сообщения";
 
     Результат = OPI_Bitrix24.ИзменитьСообщение(URL, IDСообщения, Текст);
 
     URL         = "b24-ar17wx.bitrix24.by";
-    Токен       = "b9473869006e9f06006b12e400000001000...";
-    IDСообщения = "69620";
+    Токен       = "6ad03969006e9f06006b12e400000001000...";
+    IDСообщения = "70384";
 
     Картинка = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
     Файл     = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
