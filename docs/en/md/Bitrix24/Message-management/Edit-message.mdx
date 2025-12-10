@@ -33,15 +33,15 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    MessageID = "68723";
+    MessageID = "69618";
 
     Text = "New message text";
 
     Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "fb563569006e9f06006b12e400000001000...";
-    MessageID = "68725";
+    Token     = "b9473869006e9f06006b12e400000001000...";
+    MessageID = "69620";
 
     Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
@@ -62,7 +62,7 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
             
             oint bitrix24 EditMessage \
              --url "b24-ar17wx.bitrix24.by" \
-             --message 69080 \
+             --message 70276 \
              --text "New message text" \
              --blocks "[{'IMAGE':{'NAME':'Image1','LINK':'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg'}},{'FILE':{'NAME':'File1.docx','LINK':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx'}}]" \
              --token "***"
@@ -75,7 +75,7 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
             
             oint bitrix24 EditMessage ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --message 69080 ^
+             --message 70276 ^
              --text "New message text" ^
              --blocks "[{'IMAGE':{'NAME':'Image1','LINK':'https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg'}},{'FILE':{'NAME':'File1.docx','LINK':'https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx'}}]" ^
              --token "***"
@@ -88,13 +88,13 @@ Method at API documentation: [im.message.update](https://dev.1c-bitrix.ru/learni
 {
  "result": true,
  "time": {
-  "start": 1765191546,
-  "finish": 1765191546.40384,
-  "duration": 0.40383791923523,
+  "start": 1765376469,
+  "finish": 1765376469.94772,
+  "duration": 0.9477219581604,
   "processing": 0,
-  "date_start": "2025-12-08T13:59:06+03:00",
-  "date_finish": "2025-12-08T13:59:06+03:00",
-  "operating_reset_at": 1765192146,
+  "date_start": "2025-12-10T17:21:09+03:00",
+  "date_finish": "2025-12-10T17:21:09+03:00",
+  "operating_reset_at": 1765377069,
   "operating": 0
  }
 }

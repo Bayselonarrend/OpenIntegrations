@@ -31,7 +31,7 @@ Method at API documentation: [Changing a tag](https://yandex.ru/dev/metrika/en/m
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
-    TagID = "321156";
+    TagID = "321205";
     Name  = "New tag title";
 
     Result = OPI_YandexMetrika.UpdateTag(Token, TagID, Name);
@@ -44,7 +44,7 @@ Method at API documentation: [Changing a tag](https://yandex.ru/dev/metrika/en/m
         ```bash
             oint metrika UpdateTag \
              --token "***" \
-             --label "321175" \
+             --label "321233" \
              --title "New tag title"
         ```
     </TabItem>
@@ -53,7 +53,7 @@ Method at API documentation: [Changing a tag](https://yandex.ru/dev/metrika/en/m
         ```batch
             oint metrika UpdateTag ^
              --token "***" ^
-             --label "321175" ^
+             --label "321233" ^
              --title "New tag title"
         ```
     </TabItem>
@@ -63,7 +63,7 @@ Method at API documentation: [Changing a tag](https://yandex.ru/dev/metrika/en/m
 ```json title="Result"
 {
  "label": {
-  "id": 321175,
+  "id": 321233,
   "name": "New tag title"
  }
 }

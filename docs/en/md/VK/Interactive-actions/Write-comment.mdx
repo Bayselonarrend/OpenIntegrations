@@ -29,7 +29,7 @@ import TabItem from '@theme/TabItem';
 ```bsl title="1C:Enterprise/OneScript code example"
     Parameters = GetVKParameters();
     Text       = "NewComment";
-    PostID     = "10566";
+    PostID     = "10652";
     WallID     = Parameters["owner_id"];
 
     Result = OPI_VK.WriteComment(PostID, WallID, Text, Parameters);
@@ -43,7 +43,7 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint vk WriteComment \
-             --post 10598 \
+             --post 10729 \
              --wall "-218861756" \
              --text "NewComment" \
              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
@@ -55,7 +55,7 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint vk WriteComment ^
-             --post 10598 ^
+             --post 10729 ^
              --wall "-218861756" ^
              --text "NewComment" ^
              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
@@ -67,7 +67,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "response": {
-  "comment_id": 10600,
+  "comment_id": 10731,
   "parents_stack": []
  }
 }

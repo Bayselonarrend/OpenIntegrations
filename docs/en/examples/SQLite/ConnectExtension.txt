@@ -4,7 +4,7 @@
         Extension = "https://hut.openintegrations.dev/test_data/uuid.so"; // URL, Path or Binary Data
     EndIf;
 
-    Base       = "C:\Users\bayse\AppData\Local\Temp\v8_95F4_2c.sqlite";
+    Base       = "C:\Users\bayse\AppData\Local\Temp\v8_7739_2c.sqlite";
     EntryPoint = "sqlite3_uuid_init";
 
     Connection = OPI_SQLite.CreateConnection(Base);

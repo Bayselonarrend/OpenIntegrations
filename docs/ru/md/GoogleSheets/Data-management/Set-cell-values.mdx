@@ -28,8 +28,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "ya29.a0Aa7pCA8bot9XU4KMtkCAXIoQSq7kc5tvbdIy8tPMA-RiXX8fMT2c_gWk5JNmVN6UcUOrwdkD1Om1ZMu5UtLz3gpC0NRoKxfRGaGcjScSEk9hl1h2Uew-mk5Ao...";
-    Книга = "1uRZFN5ZA9K5DY0pR3n0J_EG3OgTNI78w7X5Ub-ztNks";
+    Токен = "ya29.a0Aa7pCA9tGLvUQzW3431iWt4ev2zEnfNinK3cfCHJ38wU1CkKMigpwMI2e3mkhjbd-WpPshKKCgRPPPpwlsM4-aPlexNO24AZd93P72lvFJeta1Qdmefe_-qfg...";
+    Книга = "1i0qUBuDeySpBSOv9Az_qhQfmHwl4YY0JvuenEodZlno";
     Лист  = "Лист2";
 
     СоответствиеЗначений = Новый Соответствие;
@@ -54,7 +54,7 @@ import TabItem from '@theme/TabItem';
             
             oint gsheets УстановитьЗначенияЯчеек \
               --token "***" \
-              --spreadsheet "1I7wkWaOlSvHo8CRqUfMdxDbpXaw3bYNA0XLOKn_mpJY" \
+              --spreadsheet "1P4abNboAHMp-sGkIWeay00QMlxSHLwcMRkVAsmOP9TM" \
               --data "{'A1':'Это A1','A2':'Это A2','B2':'Это B2','B3':'Это B3','A3':'Это A3','A4':'Это A4','B1':'Это B1','B4':'Это B4'}" \
               --sheetname "Лист2"
         ```
@@ -66,7 +66,7 @@ import TabItem from '@theme/TabItem';
             
             oint gsheets УстановитьЗначенияЯчеек ^
               --token "***" ^
-              --spreadsheet "1I7wkWaOlSvHo8CRqUfMdxDbpXaw3bYNA0XLOKn_mpJY" ^
+              --spreadsheet "1P4abNboAHMp-sGkIWeay00QMlxSHLwcMRkVAsmOP9TM" ^
               --data "{'A1':'Это A1','A2':'Это A2','B2':'Это B2','B3':'Это B3','A3':'Это A3','A4':'Это A4','B1':'Это B1','B4':'Это B4'}" ^
               --sheetname "Лист2"
         ```
@@ -76,63 +76,63 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "spreadsheetId": "1I7wkWaOlSvHo8CRqUfMdxDbpXaw3bYNA0XLOKn_mpJY",
+ "spreadsheetId": "1i5iGcyMfc9yKhPbdWdlhybxaM-ZhYSmKhkqPVaUtZPg",
  "totalUpdatedRows": 4,
  "totalUpdatedColumns": 2,
  "totalUpdatedCells": 8,
  "totalUpdatedSheets": 1,
  "responses": [
   {
-   "spreadsheetId": "1I7wkWaOlSvHo8CRqUfMdxDbpXaw3bYNA0XLOKn_mpJY",
+   "spreadsheetId": "1i5iGcyMfc9yKhPbdWdlhybxaM-ZhYSmKhkqPVaUtZPg",
    "updatedRange": "'Лист2'!A1",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1I7wkWaOlSvHo8CRqUfMdxDbpXaw3bYNA0XLOKn_mpJY",
+   "spreadsheetId": "1i5iGcyMfc9yKhPbdWdlhybxaM-ZhYSmKhkqPVaUtZPg",
    "updatedRange": "'Лист2'!A2",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1I7wkWaOlSvHo8CRqUfMdxDbpXaw3bYNA0XLOKn_mpJY",
+   "spreadsheetId": "1i5iGcyMfc9yKhPbdWdlhybxaM-ZhYSmKhkqPVaUtZPg",
    "updatedRange": "'Лист2'!B2",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1I7wkWaOlSvHo8CRqUfMdxDbpXaw3bYNA0XLOKn_mpJY",
+   "spreadsheetId": "1i5iGcyMfc9yKhPbdWdlhybxaM-ZhYSmKhkqPVaUtZPg",
    "updatedRange": "'Лист2'!B3",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1I7wkWaOlSvHo8CRqUfMdxDbpXaw3bYNA0XLOKn_mpJY",
+   "spreadsheetId": "1i5iGcyMfc9yKhPbdWdlhybxaM-ZhYSmKhkqPVaUtZPg",
    "updatedRange": "'Лист2'!A3",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1I7wkWaOlSvHo8CRqUfMdxDbpXaw3bYNA0XLOKn_mpJY",
+   "spreadsheetId": "1i5iGcyMfc9yKhPbdWdlhybxaM-ZhYSmKhkqPVaUtZPg",
    "updatedRange": "'Лист2'!A4",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1I7wkWaOlSvHo8CRqUfMdxDbpXaw3bYNA0XLOKn_mpJY",
+   "spreadsheetId": "1i5iGcyMfc9yKhPbdWdlhybxaM-ZhYSmKhkqPVaUtZPg",
    "updatedRange": "'Лист2'!B1",
    "updatedRows": 1,
    "updatedColumns": 1,
    "updatedCells": 1
   },
   {
-   "spreadsheetId": "1I7wkWaOlSvHo8CRqUfMdxDbpXaw3bYNA0XLOKn_mpJY",
+   "spreadsheetId": "1i5iGcyMfc9yKhPbdWdlhybxaM-ZhYSmKhkqPVaUtZPg",
    "updatedRange": "'Лист2'!B4",
    "updatedRows": 1,
    "updatedColumns": 1,

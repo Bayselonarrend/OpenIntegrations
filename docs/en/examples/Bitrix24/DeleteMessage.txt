@@ -1,10 +1,10 @@
 ﻿    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    MessageID = "68723";
+    MessageID = "69618";
 
     Result = OPI_Bitrix24.DeleteMessage(URL, MessageID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "fb563569006e9f06006b12e400000001000...";
-    MessageID = "68725";
+    Token     = "b9473869006e9f06006b12e400000001000...";
+    MessageID = "69620";
 
     Result = OPI_Bitrix24.DeleteMessage(URL, MessageID, Token);

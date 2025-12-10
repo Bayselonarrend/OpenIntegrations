@@ -31,9 +31,9 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUxMDM3OTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUyOTY1MTUsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
 
-    OrderNumber = "3283ed94-9647-4693-825a-82ac3839315e";
+    OrderNumber = "94a880cc-ae21-499b-97a5-8f2e2a449c9f";
     Result      = OPI_CDEK.GetOrderByNumber(Token, OrderNumber, True, True);
 ```
  
@@ -44,7 +44,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
         ```bash
             oint cdek GetOrderByNumber \
              --token "***" \
-             --number "226f473e-dbb3-46ee-9663-3ee02569a9a4" \
+             --number "39c38783-eb58-42c5-b17b-d660db0c4488" \
              --internal true \
              --testapi "***"
         ```
@@ -54,7 +54,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
         ```batch
             oint cdek GetOrderByNumber ^
              --token "***" ^
-             --number "226f473e-dbb3-46ee-9663-3ee02569a9a4" ^
+             --number "39c38783-eb58-42c5-b17b-d660db0c4488" ^
              --internal true ^
              --testapi "***"
         ```
@@ -65,11 +65,11 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
 ```json title="Result"
 {
  "entity": {
-  "uuid": "811c4afa-115a-4dc0-92ce-52149ec659d8",
+  "uuid": "31a61fb2-0851-4cb7-922e-227239df0719",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "number": "226f473e-dbb3-46ee-9663-3ee02569a9a4",
+  "number": "39c38783-eb58-42c5-b17b-d660db0c4488",
   "tariff_code": 139,
   "comment": "New order",
   "delivery_recipient_cost": {
@@ -166,7 +166,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-12-08T14:08:23+03:00",
+    "date_time": "2025-12-10T17:29:54+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
@@ -180,9 +180,9 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
  },
  "requests": [
   {
-   "request_uuid": "9b32720f-0acd-4ade-9d3a-2f4e024236f1",
+   "request_uuid": "b260c505-ce78-4cc8-96ed-1f95fbd303ad",
    "type": "CREATE",
-   "date_time": "2025-12-08T14:08:24+03:00",
+   "date_time": "2025-12-10T17:29:55+03:00",
    "state": "ACCEPTED"
   }
  ],

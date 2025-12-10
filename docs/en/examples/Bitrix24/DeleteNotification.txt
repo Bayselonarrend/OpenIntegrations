@@ -1,10 +1,10 @@
 ﻿    URL            = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    NotificationID = "68733";
+    NotificationID = "69628";
 
     Result = OPI_Bitrix24.DeleteNotification(URL, NotificationID);
 
     URL            = "b24-ar17wx.bitrix24.by";
-    Token          = "fb563569006e9f06006b12e400000001000...";
-    NotificationID = "68735";
+    Token          = "b9473869006e9f06006b12e400000001000...";
+    NotificationID = "69630";
 
     Result = OPI_Bitrix24.DeleteNotification(URL, NotificationID, Token);

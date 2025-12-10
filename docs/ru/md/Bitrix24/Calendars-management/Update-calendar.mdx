@@ -40,13 +40,13 @@ import TabItem from '@theme/TabItem';
     СтруктураКалендаря.Вставить("description", "Этот календарь был изменен");
 
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDКалендаря = "1699";
+    IDКалендаря = "1738";
 
     Результат = OPI_Bitrix24.ИзменитьКалендарь(URL, IDКалендаря, СтруктураКалендаря);
 
     URL         = "b24-ar17wx.bitrix24.by";
-    Токен       = "fb563569006e9f06006b12e400000001000...";
-    IDКалендаря = "1701";
+    Токен       = "b9473869006e9f06006b12e400000001000...";
+    IDКалендаря = "1740";
 
     Результат = OPI_Bitrix24.ИзменитьКалендарь(URL, IDКалендаря, СтруктураКалендаря, Токен);
 ```
@@ -60,7 +60,7 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьКалендарь \
               --url "b24-ar17wx.bitrix24.by" \
-              --calendar 1708 \
+              --calendar 1764 \
               --fields "{'type':'user','ownerId':'1','name':'Новое имя календаря','description':'Этот календарь был изменен'}" \
               --token "***"
         ```
@@ -72,7 +72,7 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьКалендарь ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --calendar 1708 ^
+              --calendar 1764 ^
               --fields "{'type':'user','ownerId':'1','name':'Новое имя календаря','description':'Этот календарь был изменен'}" ^
               --token "***"
         ```
@@ -82,15 +82,15 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": 1708,
+ "result": 1768,
  "time": {
-  "start": 1765137306,
-  "finish": 1765137306.95224,
-  "duration": 0.952239990234375,
+  "start": 1765367919,
+  "finish": 1765367919.57672,
+  "duration": 0.576721906661987,
   "processing": 0,
-  "date_start": "2025-12-07T22:55:06+03:00",
-  "date_finish": "2025-12-07T22:55:06+03:00",
-  "operating_reset_at": 1765137906,
+  "date_start": "2025-12-10T14:58:39+03:00",
+  "date_finish": "2025-12-10T14:58:39+03:00",
+  "operating_reset_at": 1765368519,
   "operating": 0
  }
 }

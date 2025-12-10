@@ -28,8 +28,8 @@ import TabItem from '@theme/TabItem';
 ```bsl title="1C:Enterprise/OneScript code example"
     Parameters = GetVKParameters();
 
-    Item1 = "12352643";
-    Item2 = "12352644";
+    Item1 = "12362365";
+    Item2 = "12362367";
 
     ProductsArray = New Array;
     ProductsArray.Add(Item1);
@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
             # JSON data can also be passed as a path to a .json file
             
             oint vk GroupProducts \
-             --items "['12356926','12356928']" \
+             --items "['12368043','12368046']" \
              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -56,7 +56,7 @@ import TabItem from '@theme/TabItem';
             :: JSON data can also be passed as a path to a .json file
             
             oint vk GroupProducts ^
-             --items "['12356926','12356928']" ^
+             --items "['12368043','12368046']" ^
              --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -66,7 +66,7 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "response": {
-  "item_group_id": 489676
+  "item_group_id": 489690
  }
 }
 ```

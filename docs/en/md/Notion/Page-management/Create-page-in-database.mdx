@@ -27,7 +27,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Token  = "secret_9RsfMrRMqZwqp0Zl0B...";
-    Base   = "2c282aa7-fc4e-81e4-a227-c768107e4f09";
+    Base   = "2c482aa7-fc4e-81f8-a88b-f24b337e5d4f";
     Image_ = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Binary Data or File path
 
     Image = New Map;
@@ -57,8 +57,8 @@ import TabItem from '@theme/TabItem';
             
             oint notion CreatePageInDatabase \
              --token "***" \
-             --base "2c382aa7-fc4e-8111-953b-c3c8b82bf217" \
-             --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'12/8/2025 1:41:26 PM','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
+             --base "2c582aa7-fc4e-8124-be55-db548fb58437" \
+             --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'12/10/2025 5:04:27 PM','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
         ```
     </TabItem>
   
@@ -68,8 +68,8 @@ import TabItem from '@theme/TabItem';
             
             oint notion CreatePageInDatabase ^
              --token "***" ^
-             --base "2c382aa7-fc4e-8111-953b-c3c8b82bf217" ^
-             --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'12/8/2025 1:41:26 PM','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
+             --base "2c582aa7-fc4e-8124-be55-db548fb58437" ^
+             --data "{'Name':'LLC Vector','Description':'OurFirstClient','Number':'1','CreationDate':'12/10/2025 5:04:27 PM','Image':{'Logo':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Active':true,'Website':'https://vector.ru','Email':'mail@vector.ru','Phone':'***','Status':'New'}"
         ```
     </TabItem>
 </Tabs>
@@ -78,9 +78,9 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "object": "page",
- "id": "2c382aa7-fc4e-8128-a34f-e3f631253602",
- "created_time": "2025-12-08T10:41:00Z",
- "last_edited_time": "2025-12-08T10:41:00Z",
+ "id": "2c582aa7-fc4e-81db-b280-f974ac291e0c",
+ "created_time": "2025-12-10T14:04:00Z",
+ "last_edited_time": "2025-12-10T14:04:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -93,19 +93,27 @@ import TabItem from '@theme/TabItem';
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "2c382aa7-fc4e-8111-953b-c3c8b82bf217"
+  "database_id": "2c582aa7-fc4e-8124-be55-db548fb58437"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "User": {
-   "id": "%3EJ%7BS",
-   "type": "people",
-   "people": []
+  "Image": {
+   "id": "MN%3EG",
+   "type": "files",
+   "files": [
+    {
+     "name": "Logo",
+     "type": "external",
+     "external": {
+      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
+     }
+    }
+   ]
   },
   "Description": {
-   "id": "Dfhb",
+   "id": "VA%3El",
    "type": "rich_text",
    "rich_text": [
     {
@@ -127,35 +135,46 @@ import TabItem from '@theme/TabItem';
     }
    ]
   },
-  "Image": {
-   "id": "E%5Egi",
-   "type": "files",
-   "files": [
-    {
-     "name": "Logo",
-     "type": "external",
-     "external": {
-      "url": "https://hut.openintegrations.dev/test_data/picture.jpg"
-     }
-    }
-   ]
+  "Phone": {
+   "id": "%5BHT%3F",
+   "type": "phone_number",
+   "phone_number": "***"
   },
-  "Number": {
-   "id": "IRi~",
-   "type": "number",
-   "number": 1
+  "Active": {
+   "id": "%5CarY",
+   "type": "checkbox",
+   "checkbox": true
+  },
+  "User": {
+   "id": "%5DDAC",
+   "type": "people",
+   "people": []
   },
   "CreationDate": {
-   "id": "YhCi",
+   "id": "c%3B_V",
    "type": "date",
    "date": {
-    "start": "2025-12-08T04:41:00+03:00",
+    "start": "2025-12-10T08:04:00+03:00",
     "end": null,
     "time_zone": null
    }
   },
+  "Status": {
+   "id": "ct%5DH",
+   "type": "select",
+   "select": {
+    "id": "11ed691b-a333-41ae-8356-bec2c8c3b0ad",
+    "name": "New",
+    "color": "green"
+   }
+  },
+  "Number": {
+   "id": "iG%5EB",
+   "type": "number",
+   "number": 1
+  },
   "Email": {
-   "id": "%5B%7Bst",
+   "id": "to%40y",
    "type": "rich_text",
    "rich_text": [
     {
@@ -176,25 +195,6 @@ import TabItem from '@theme/TabItem';
      "href": null
     }
    ]
-  },
-  "Phone": {
-   "id": "%5EQyZ",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Active": {
-   "id": "hUZS",
-   "type": "checkbox",
-   "checkbox": true
-  },
-  "Status": {
-   "id": "%7D%3A~%7D",
-   "type": "select",
-   "select": {
-    "id": "1a564d22-befc-451f-8402-0e03f00cc10c",
-    "name": "New",
-    "color": "green"
-   }
   },
   "Name": {
    "id": "title",
@@ -220,8 +220,8 @@ import TabItem from '@theme/TabItem';
    ]
   }
  },
- "url": "https://www.notion.so/LLC-Vector-2c382aa7fc4e8128a34fe3f631253602",
+ "url": "https://www.notion.so/LLC-Vector-2c582aa7fc4e81dbb280f974ac291e0c",
  "public_url": null,
- "request_id": "288ff18e-a872-4e5a-8851-99069fc7e0b5"
+ "request_id": "a1037846-15c2-472f-911c-83f988c4aa65"
 }
 ```
