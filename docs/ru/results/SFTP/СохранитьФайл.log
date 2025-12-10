@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/xukbmduy.r3j.bin",
- "result": true
+ "filepath": "/tmp/u3yml4b4.vzp.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
