@@ -502,7 +502,7 @@
     // Мировая гигокорпорация Илона Маска, кстати, напоминаю ;)
 
     // P.S Далее часто упоминается "страница настроек Twitter Developer" - это
-    // https://developer.twitter.com/en/portal/dashboard и выбор конкретного проекта из списка (значек c ключем)
+    // https://developer.twitter.com/en/portal/dashboard и выбор конкретного проекта из списка (значок c ключом)
 
     Параметры_ = Новый Соответствие;
     Разрешения = "tweet.read tweet.write tweet.moderate.write users.read "
