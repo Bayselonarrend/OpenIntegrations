@@ -47,7 +47,7 @@
 // Get markets list
 // Gets the list of shops in the cabinet by token
 //
-// Note
+// Note:
 // Method at API documentation: [List of users shops](@yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaigns)
 //
 // Parameters:
@@ -76,7 +76,7 @@ EndFunction
 // Get market
 // Gets information about a market (campaign) by ID
 //
-// Note
+// Note:
 // Method at API documentation: [Market information](@yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaign)
 //
 // Parameters:
@@ -101,7 +101,7 @@ EndFunction
 // Get business settings
 // Gets the values of cabinet (business) settings by ID
 //
-// Note
+// Note:
 // Method at API documentation: [Cabinet settings](@yandex.ru/dev/market/partner-api/doc/ru/reference/businesses/getBusinessSettings)
 //
 // Parameters:
@@ -127,7 +127,7 @@ EndFunction
 // Get campaign settings
 // Gets market (campaign) settings by ID
 //
-// Note
+// Note:
 // Method at API documentation: [Market settings](@yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaignSettings)
 //
 // Parameters:
@@ -157,7 +157,7 @@ EndFunction
 // Add update products
 // Adds or updates product information in the catalogue
 //
-// Note
+// Note:
 // Method at API documentation: [Adding products to the catalogue and changing information about them](@yandex.ru/dev/market/partner-api/doc/ru/reference/business-assortment/updateOfferMappings)
 //
 // Parameters:
@@ -189,8 +189,8 @@ EndFunction
 // Get campaign products
 // Gets the list of products of the selected market (campaign)
 //
-// Note
-// Method at API documentation: [Information o productх, that рaзмещены in зaдaнbutм мaгaзandnot](@https://yandex.ru/dev/market/partner-api/doc/ru/reference/assortment/getCampaignOffers)
+// Note:
+// Method at API documentation: [Information about products that are placed in a selected market](@yandex.ru/dev/market/partner-api/doc/ru/reference/assortment/getCampaignOffers)
 //
 // Parameters:
 // Token - String - Authorization token (Api-Key) - token
@@ -262,7 +262,7 @@ EndFunction
 // Get product structure
 // Gets the structure of product standard fields
 //
-// Note
+// Note:
 // Description in the API documentation: [UpdateOfferDTO](@https://yandex.ru/dev/market/partner-api/doc/ru/reference/business-assortment/updateOfferMappings#updateofferdto)
 //
 // Parameters:

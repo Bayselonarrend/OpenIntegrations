@@ -24,9 +24,7 @@ import TabItem from '@theme/TabItem';
   Returns:  Structure Of KeyAndValue - Connection settings structure
 
 :::tip
-Can be passed as the `Connection` parameter in other functions instead of the actual connection from the `CreateConnection` function.
-
-At the same time, a new connection will be opened and closed within the called function
+Can be passed as the `Connection` parameter in other functions instead of the actual connection from the `CreateConnection` function. At the same time, a new connection will be opened and closed within the called function
 
 Using the connection configuration is not recommended for multiple requests to the FTP server. This functionality is primarily intended for the CLI version of OInt, where maintaining a connection between calls is not possible
 :::

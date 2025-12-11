@@ -155,7 +155,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDTEXTMESSAGE";
     NewLine.Parameter     = "--keyboard";
     NewLine.ParameterTrim = "-k";
-    NewLine.Description     = "See CreateKeyboardFromArrayButton (optional, def. val. - Empty value)";
+    NewLine.Description     = "See CreateKeyboardFromArrayButton (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -211,7 +211,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDIMAGE";
     NewLine.Parameter     = "--description";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Image annotation (optional, def. val. - Empty value)";
+    NewLine.Description     = "Image annotation (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -278,7 +278,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--size";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "File size. If not filled in > determined automatically by downloading the file (optional, def. val. - Empty value)";
+    NewLine.Description     = "File size. If not filled in > determined automatically by downloading the file (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -458,7 +458,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEKEYBOARDFROMARRAYBUTTON";
     NewLine.Parameter     = "--color";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "HEX color of buttons with # at the beginning (optional, def. val. - #2db9b9)";
+    NewLine.Description     = "HEX color of buttons with # at the beginning (optional, def. val.. - #2db9b9)";
     NewLine.Region      = "Message sending";
 
     Return CompositionTable;

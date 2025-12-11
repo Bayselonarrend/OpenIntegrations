@@ -129,7 +129,7 @@ EndFunction
 // Server time
 // Get current server time
 //
-// Note
+// Note:
 // Method at API documentation: [server_time](@dev.1c-bitrix.ru/rest_help/general/server_time.php)
 //
 // Parameters:
@@ -154,7 +154,7 @@ EndFunction
 // Create post
 // Create a new post at news feed
 //
-// Note
+// Note:
 // Method at API documentation: [log.blogpost.add](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_add.php)
 //
 // Parameters:
@@ -207,7 +207,7 @@ EndFunction
 // Update post
 // Change post data
 //
-// Note
+// Note:
 // Method at API documentation: [log.blogpost.update](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_update.php)
 //
 // Parameters:
@@ -258,7 +258,7 @@ EndFunction
 // Delete post
 // Remove post from a news feed
 //
-// Note
+// Note:
 // Method at API documentation: [log.blogpost.delete](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_delete.php)
 //
 // Parameters:
@@ -282,7 +282,7 @@ EndFunction
 // Get list of important post viewers
 // Return list of important post viewers ids
 //
-// Note
+// Note:
 // Method at API documentation: [log.blogpost.getusers.important](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_getusers_important.php)
 //
 // Parameters:
@@ -306,7 +306,7 @@ EndFunction
 // Get posts
 // Gen post or array of post with ID or rights selection
 //
-// Note
+// Note:
 // Method at API documentation: [log.blogpost.get](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_get.php)
 //
 // Parameters:
@@ -333,7 +333,7 @@ EndFunction
 // Add comment to post
 // Adds a comment to the post
 //
-// Note
+// Note:
 // Method at API documentation: [log.blogcomment.add](@dev.1c-bitrix.ru/rest_help/log/log_blogcomment_add.php)
 //
 // Parameters:
@@ -360,7 +360,7 @@ EndFunction
 // Add new recipients to a post
 // Adds new groups or users to the recipients
 //
-// Note
+// Note:
 // Method at API documentation: [log.blogpost.share](@dev.1c-bitrix.ru/rest_help/log/log_blogpost_share.php)
 //
 // Parameters:
@@ -391,7 +391,7 @@ EndFunction
 // Get task
 // Get task by ID
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.get](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_get.php)
 //
 // Parameters:
@@ -411,7 +411,7 @@ EndFunction
 // Get tasks list
 // Get tasks list (50 at one response max) with or without filtering
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.list](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_list.php)
 //
 // Parameters:
@@ -439,7 +439,7 @@ EndFunction
 // Create task
 // Create new task by fields structure
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.add](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_add.php)
 //
 // Parameters:
@@ -463,7 +463,7 @@ EndFunction
 // Update task
 // Update a task
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.update](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_update.php)
 //
 // Parameters:
@@ -489,7 +489,7 @@ EndFunction
 // Delete task
 // Delete task by ID
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_delete.php)
 //
 // Parameters:
@@ -509,7 +509,7 @@ EndFunction
 // Attach file to the topic
 // Attaches a file to the selected task
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.files.attach](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_files_attach.php)
 //
 // Parameters:
@@ -535,7 +535,7 @@ EndFunction
 // Approve task
 // Approve task by ID
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.approve](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_approve.php)
 //
 // Parameters:
@@ -555,7 +555,7 @@ EndFunction
 // Disapprove task
 // Disapprove task by ID
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.disapprove](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_disapprove.php)
 //
 // Parameters:
@@ -575,7 +575,7 @@ EndFunction
 // Complete task
 // Complete task by ID
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.complete](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_complete.php)
 //
 // Parameters:
@@ -595,7 +595,7 @@ EndFunction
 // Renew task
 // Returns a task to work by ID
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.renew](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_renew.php)
 //
 // Parameters:
@@ -615,7 +615,7 @@ EndFunction
 // Defer task
 // Defer task by ID
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.defer](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_defer.php)
 //
 // Parameters:
@@ -635,7 +635,7 @@ EndFunction
 // Pause task
 // Pause a task by ID
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.pause](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_pause.php)
 //
 // Parameters:
@@ -655,7 +655,7 @@ EndFunction
 // Start a task
 // Start a task by ID
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.start](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_start.php)
 //
 // Parameters:
@@ -675,7 +675,7 @@ EndFunction
 // Start watching a task
 // Start watching a task by ID
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.startwatch](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_startwatch.php)
 //
 // Parameters:
@@ -695,7 +695,7 @@ EndFunction
 // Stop watching the task
 // Stop watching a task by ID
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.stopwatch](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_stopwatch.php)
 //
 // Parameters:
@@ -715,7 +715,7 @@ EndFunction
 // Delegate task
 // Delegate task to another user
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.delegate](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_delegate.php)
 //
 // Parameters:
@@ -741,7 +741,7 @@ EndFunction
 // Add task to favorites list
 // Add task to favorites list
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.favorite.add](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_favorite_add.php)
 //
 // Parameters:
@@ -761,7 +761,7 @@ EndFunction
 // Remove task from favorites list
 // Delete task from favorites list
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.favorite.remove](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_favorite_remove.php)
 //
 // Parameters:
@@ -781,7 +781,7 @@ EndFunction
 // Get task history
 // Get history of task changing
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.history.list](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_history_list.php)
 //
 // Parameters:
@@ -801,7 +801,7 @@ EndFunction
 // Check task accesses for users
 // Checks the availability of the task for users
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.getaccess](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getaccess.php)
 //
 // Parameters:
@@ -827,7 +827,7 @@ EndFunction
 // Mute task
 // Mute task by ID
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.mute](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/mute_unmute.php)
 //
 // Parameters:
@@ -847,7 +847,7 @@ EndFunction
 // Unmute task
 // Unmute task by ID
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.unmute](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/mute_unmute.php)
 //
 // Parameters:
@@ -867,7 +867,7 @@ EndFunction
 // Create tasks dependencies
 // Creates the dependency of one task to another
 //
-// Note
+// Note:
 // Method at API documentation: [task.dependence.add](@dev.1c-bitrix.ru/rest_help/tasks/task/dependence/task_dependence_add.php)
 //
 // Parameters:
@@ -899,7 +899,7 @@ EndFunction
 // Delete tasks dependencies
 // Removes the dependency of one task to another
 //
-// Note
+// Note:
 // Method at API documentation: [task.dependence.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/dependence/task_dependence_delete.php)
 //
 // Parameters:
@@ -931,7 +931,7 @@ EndFunction
 // Get users daily tasks plan
 // Gets the task plan for the current users day
 //
-// Note
+// Note:
 // Method at API documentation: [task.planner.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/planner/getlist.php)
 //
 // Parameters:
@@ -953,7 +953,7 @@ EndFunction
 // Get task fields structure
 // Gets a structure with a description of the fields for creating a task
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.getFields](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_getFields.php)
 //
 // Parameters:
@@ -974,7 +974,7 @@ EndFunction
 // Get structure of tasks filter
 // Return filter structure for GetTasksList
 //
-// Note
+// Note:
 // Returning fields as a map allows you to specify the filtering type before the filtered field name
 // Types of filtration: !, <, <=, >, >=. For example: !ID:3 (ID not equal to 3)
 //
@@ -1011,7 +1011,7 @@ Function GetTasksFilterStructure(Val Clear = False, Val AsMap = False) Export
     FilterStructure.Insert("REAL_STATUS"      , "<task status>");
     FilterStructure.Insert("MARK"             , "<mark>");
     FilterStructure.Insert("SITE_ID"          , "<site identifier>");
-    FilterStructure.Insert("ADD_IN_REPORT"    , "<task in the report (Y|N)>");
+    FilterStructure.Insert("ADD_IN_REPORT"    , "<task in the report (Y|N))>");
     FilterStructure.Insert("DATE_START"       , "<start date>");
     FilterStructure.Insert("DEADLINE"         , "<deadline>");
     FilterStructure.Insert("CREATED_DATE"     , "<date of creation>");
@@ -1020,7 +1020,7 @@ Function GetTasksFilterStructure(Val Clear = False, Val AsMap = False) Export
     FilterStructure.Insert("ACCOMPLICE"       , "<co-executor identifier>");
     FilterStructure.Insert("AUDITOR"          , "<auditor identifier>");
     FilterStructure.Insert("DEPENDS_ON"       , "<previous task identifier>");
-    FilterStructure.Insert("ONLY_ROOT_TASKS"  , "<only tasks that are not subtasks (Y|N)>");
+    FilterStructure.Insert("ONLY_ROOT_TASKS"  , "<only tasks that are not subtasks (Y|N))>");
     FilterStructure.Insert("STAGE_ID"         , "<stage>");
     FilterStructure.Insert("UF_CRM_TASK"      , "<CRM elements>");
     FilterStructure.Insert("STATUS"
@@ -1042,7 +1042,7 @@ EndFunction
 // Get list of custom task fields
 // Gets list of custom task fields
 //
-// Note
+// Note:
 // Method at API documentation: [task.item.userfield.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/getlist.php)
 //
 // Parameters:
@@ -1064,7 +1064,7 @@ EndFunction
 // Add custom task field
 // Adds a new custom field to be added to the task
 //
-// Note
+// Note:
 // Method at API documentation: [task.item.userfield.add](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/add.php)
 //
 // Parameters:
@@ -1108,7 +1108,7 @@ EndFunction
 // Update custom task field
 // Updates a custom task field data
 //
-// Note
+// Note:
 // Method at API documentation: [task.item.userfield.update](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/update.php)
 //
 // Parameters:
@@ -1149,7 +1149,7 @@ EndFunction
 // Gets a custom task field
 // Get custom task field data
 //
-// Note
+// Note:
 // Method at API documentation: [task.item.userfield.get](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/get.php)
 //
 // Parameters:
@@ -1174,7 +1174,7 @@ EndFunction
 // Delete custom task field
 // Deletes a custom task field
 //
-// Note
+// Note:
 // Method at API documentation: [task.item.userfield.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/userfield/delete.php)
 //
 // Parameters:
@@ -1203,7 +1203,7 @@ EndFunction
 // Add tasks checklist element
 // Adds new element of tasks checklist
 //
-// Note
+// Note:
 // Method at API documentation: [task.checklistitem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/add.php)
 //
 // Parameters:
@@ -1239,7 +1239,7 @@ EndFunction
 // Update tasks checklist element
 // Updates text of element of tasks checklist
 //
-// Note
+// Note:
 // Method at API documentation: [task.checklistitem.update](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/update.php)
 //
 // Parameters:
@@ -1273,7 +1273,7 @@ EndFunction
 // Delete tasks checklist element
 // Deletes element from tasks checklist
 //
-// Note
+// Note:
 // Method at API documentation: [task.checklistitem.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/delete.php)
 //
 // Parameters:
@@ -1295,7 +1295,7 @@ EndFunction
 // Get tasks checklist
 // Gets the list of elements on the task checklist
 //
-// Note
+// Note:
 // Method at API documentation: [task.checklistitem.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/getlist.php)
 //
 // Parameters:
@@ -1320,7 +1320,7 @@ EndFunction
 // Get tasks checklist element
 // Gets tasks checklist element by ID
 //
-// Note
+// Note:
 // Method at API documentation: [task.checklistitem.get](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/get.php)
 //
 // Parameters:
@@ -1342,7 +1342,7 @@ EndFunction
 // Complete tasks checklist element
 // Mark an element as completed
 //
-// Note
+// Note:
 // Method at API documentation: [task.checklistitem.complete](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/complete.php)
 //
 // Parameters:
@@ -1364,7 +1364,7 @@ EndFunction
 // Renew tasks checklist element
 // Unmark an element as completed
 //
-// Note
+// Note:
 // Method at API documentation: [task.checklistitem.renew](@dev.1c-bitrix.ru/rest_help/tasks/task/checklistitem/renew.php)
 //
 // Parameters:
@@ -1390,7 +1390,7 @@ EndFunction
 // Get comments list for a task
 // Get user comments list for a task
 //
-// Note
+// Note:
 // Method at API documentation: [task.commentitem.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/getlist.php)
 //
 // Parameters:
@@ -1410,7 +1410,7 @@ EndFunction
 // Get task comment
 // Gets task comment data by ID
 //
-// Note
+// Note:
 // Method at API documentation: [task.commentitem.get](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/get.php)
 //
 // Parameters:
@@ -1436,7 +1436,7 @@ EndFunction
 // Add comment to task
 // Create new comment to the task
 //
-// Note
+// Note:
 // Method at API documentation: [task.commentitem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/add.php)
 //
 // Parameters:
@@ -1466,7 +1466,7 @@ EndFunction
 // Update task comment
 // Changes task comment text
 //
-// Note
+// Note:
 // Method at API documentation: [task.commentitem.update](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/update.php)
 //
 // Parameters:
@@ -1500,7 +1500,7 @@ EndFunction
 // Delete comment
 // Delete task comment by ID
 //
-// Note
+// Note:
 // Method at API documentation: [task.commentitem.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/delete.php)
 //
 // Parameters:
@@ -1527,7 +1527,7 @@ EndFunction
 // Get results list
 // Gets results list for task
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.result.list](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_result.list.php)
 //
 // Parameters:
@@ -1547,7 +1547,7 @@ EndFunction
 // Create result from comment
 // Create task result from comment
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.result.addFromComment](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_result_addFromComment.php)
 //
 // Parameters:
@@ -1571,7 +1571,7 @@ EndFunction
 // Delete result from comment
 // Deletes task result, created from a comment
 //
-// Note
+// Note:
 // Method at API documentation: [tasks.task.result.deleteFromComment](@dev.1c-bitrix.ru/rest_help/tasks/task/tasks/tasks_task_result_deleteFromComment.php)
 //
 // Parameters:
@@ -1633,7 +1633,7 @@ EndFunction
 // Add kanban stage
 // Add new stage of kanban or My Plan
 //
-// Note
+// Note:
 // Method at API documentation: [task.stages.add](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_add.php)
 //
 // Parameters:
@@ -1679,7 +1679,7 @@ EndFunction
 // Change kanban stage
 // Changes the properties of the existing kanban or My plan stage
 //
-// Note
+// Note:
 // Method at API documentation: [task.stages.update](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_update.php)
 //
 // Parameters:
@@ -1723,7 +1723,7 @@ EndFunction
 // ID of the stage to be deleted
 // Removes a kanban (My Plan) stage, provided there are no tasks in it
 //
-// Note
+// Note:
 // Method at API documentation: [task.stages.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_delete.php)
 //
 // Parameters:
@@ -1752,7 +1752,7 @@ EndFunction
 // Get kanban stages
 // Get kanban (My Plan) stages info
 //
-// Note
+// Note:
 // Method at API documentation: [task.stages.get](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_get.php)
 //
 // Parameters:
@@ -1782,7 +1782,7 @@ EndFunction
 // Move task to kanban stage
 // Move task to another kanban stage
 //
-// Note
+// Note:
 // Method at API documentation: [task.stages.movetask](@dev.1c-bitrix.ru/rest_help/tasks/task/kanban/task_stages_movetask.php)
 //
 // Parameters:
@@ -1833,7 +1833,7 @@ EndFunction
 // Add task time accounting
 // Adds information about the user's time spent to the task
 //
-// Note
+// Note:
 // Method at API documentation: [task.elapseditem.add](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/add.php)
 //
 // Parameters:
@@ -1877,7 +1877,7 @@ EndFunction
 // Delete task time accounting
 // Deletes record of time accounting
 //
-// Note
+// Note:
 // Method at API documentation: [task.elapseditem.delete](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/delete.php)
 //
 // Parameters:
@@ -1904,7 +1904,7 @@ EndFunction
 // Get task time accounting list
 // Get list of time accounting records for task
 //
-// Note
+// Note:
 // Method at API documentation: [task.elapseditem.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/getlist.php)
 //
 // Parameters:
@@ -1929,7 +1929,7 @@ EndFunction
 // Get task time accounting
 // Get time accounting record data
 //
-// Note
+// Note:
 // Method at API documentation: [task.elapseditem.get](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/get.php)
 //
 // Parameters:
@@ -1956,7 +1956,7 @@ EndFunction
 // Update task time accounting
 // Update time accounting record data
 //
-// Note
+// Note:
 // Method at API documentation: [task.elapseditem.update](@dev.1c-bitrix.ru/rest_help/tasks/task/elapseditem/update.php)
 //
 // Parameters:
@@ -2000,7 +2000,7 @@ EndFunction
 // Start timekeeping
 // Starts user timekeeping
 //
-// Note
+// Note:
 // Method at API documentation: [timeman.open](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_open.php)
 //
 // Parameters:
@@ -2033,7 +2033,7 @@ EndFunction
 // Stop timekeeping
 // Stops user timekeeping
 //
-// Note
+// Note:
 // Method at API documentation: [timeman.close](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_close.php)
 //
 // Parameters:
@@ -2066,7 +2066,7 @@ EndFunction
 // Stop timekeeping
 // Pauses user timekeeping
 //
-// Note
+// Note:
 // Method at API documentation: [timeman.pause](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_pause.php)
 //
 // Parameters:
@@ -2091,7 +2091,7 @@ EndFunction
 // Get timekeeping status
 // Gets user timekeeping status
 //
-// Note
+// Note:
 // Method at API documentation: [timeman.status](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_status.php)
 //
 // Parameters:
@@ -2116,7 +2116,7 @@ EndFunction
 // Get timekeeping settings
 // Gets user timekeeping settings
 //
-// Note
+// Note:
 // Method at API documentation: [timeman.settings](@dev.1c-bitrix.ru/rest_help/timeman/base/timeman_settings.php)
 //
 // Parameters:
@@ -2145,7 +2145,7 @@ EndFunction
 // Get list of storages
 // Get list of available files storages
 //
-// Note
+// Note:
 // Method at API documentation: [disk.storage.getlist](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_getlist.php)
 //
 // Parameters:
@@ -2166,7 +2166,7 @@ EndFunction
 // Get storage for application data
 // Get information about storage with which the application can work to store its data
 //
-// Note
+// Note:
 // Method at API documentation: [disk.storage.getforapp](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_getforapp.php)
 //
 // Parameters:
@@ -2187,7 +2187,7 @@ EndFunction
 // Get storage
 // Get information about storage
 //
-// Note
+// Note:
 // Method at API documentation: [disk.storage.get](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_get.php)
 //
 // Parameters:
@@ -2207,7 +2207,7 @@ EndFunction
 // Rename storage
 // Change storage name (for app storage only, see. GetAppStorage)
 //
-// Note
+// Note:
 // Method at API documentation: [disk.storage.rename](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_rename.php)
 //
 // Parameters:
@@ -2234,7 +2234,7 @@ EndFunction
 // Get a list of child storage objects
 // Get a list of files and folders, located at the root of the storage
 //
-// Note
+// Note:
 // Method at API documentation: [disk.storage.getchildren](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_getchildren.php)
 //
 // Parameters:
@@ -2254,7 +2254,7 @@ EndFunction
 // Create folder at the storage
 // Create new foldera at the storage
 //
-// Note
+// Note:
 // Method at API documentation: [disk.storage.addfolder](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_addfolder.php)
 //
 // Parameters:
@@ -2289,7 +2289,7 @@ EndFunction
 // Get information about folder
 // Get folder information
 //
-// Note
+// Note:
 // Method at API documentation: [disk.folder.get](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_get.php)
 //
 // Parameters:
@@ -2309,7 +2309,7 @@ EndFunction
 // Create new subfolder
 // Create new folder inside another folder
 //
-// Note
+// Note:
 // Method at API documentation: [disk.folder.addsubfolder](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_addsubfolder.php)
 //
 // Parameters:
@@ -2340,7 +2340,7 @@ EndFunction
 // Copy folder
 // Copy one folder to another
 //
-// Note
+// Note:
 // Method at API documentation: [disk.folder.copyto](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_copyto.php)
 //
 // Parameters:
@@ -2367,7 +2367,7 @@ EndFunction
 // Move folder
 // Moves one folder inside another
 //
-// Note
+// Note:
 // Method at API documentation: [disk.folder.moveto](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_moveto.php)
 //
 // Parameters:
@@ -2394,7 +2394,7 @@ EndFunction
 // Delete folder
 // Remove folder with subfolders
 //
-// Note
+// Note:
 // Method at API documentation: [disk.folder.deletetree](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_deletetree.php)
 //
 // Parameters:
@@ -2414,7 +2414,7 @@ EndFunction
 // Get external link for folder
 // Get external link to folder
 //
-// Note
+// Note:
 // Method at API documentation: [disk.folder.getExternalLink](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_getexternallink.php)
 //
 // Parameters:
@@ -2434,7 +2434,7 @@ EndFunction
 // Get folder child elements
 // Get folder child elements
 //
-// Note
+// Note:
 // Method at API documentation: [disk.folder.getchildren](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_getchildren.php)
 //
 // Parameters:
@@ -2460,7 +2460,7 @@ EndFunction
 // Mark folder as deleted
 // Move folder to recycle bin
 //
-// Note
+// Note:
 // Method at API documentation: [disk.folder.markdeleted](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_markdeleted.php)
 //
 // Parameters:
@@ -2480,7 +2480,7 @@ EndFunction
 // Restore folder
 // Resotre folder form recycle bin
 //
-// Note
+// Note:
 // Method at API documentation: [disk.folder.restore](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_restore.php)
 //
 // Parameters:
@@ -2500,7 +2500,7 @@ EndFunction
 // Rename folder
 // Change folder name
 //
-// Note
+// Note:
 // Method at API documentation: [disk.folder.rename](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_rename.php)
 //
 // Parameters:
@@ -2527,7 +2527,7 @@ EndFunction
 // Get fields structure for folder items filter
 // Returns filter structure for child folder items
 //
-// Note
+// Note:
 // Method at API documentation: [disk.folder.getfields](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_getfields.php)
 //
 // Parameters:
@@ -2570,7 +2570,7 @@ EndFunction
 // Upload file to a storage
 // Upload file to storage root
 //
-// Note
+// Note:
 // Method at API documentation: [disk.storage.uploadfile](@dev.1c-bitrix.ru/rest_help/disk/storage/disk_storage_uploadfile.php)
 //
 // Parameters:
@@ -2619,7 +2619,7 @@ EndFunction
 // Upload file to the folder
 // Upload local file to the folder
 //
-// Note
+// Note:
 // Method at API documentation: [disk.folder.uploadfile](@dev.1c-bitrix.ru/rest_help/disk/folder/disk_folder_uploadfile.php)
 //
 // Parameters:
@@ -2669,7 +2669,7 @@ EndFunction
 // Get information about file
 // Get information about file by ID
 //
-// Note
+// Note:
 // Method at API documentation: [disk.file.get](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_get.php)
 //
 // Parameters:
@@ -2689,7 +2689,7 @@ EndFunction
 // Delete file
 // Delete file by ID
 //
-// Note
+// Note:
 // Method at API documentation: [disk.file.delete](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_delete.php)
 //
 // Parameters:
@@ -2709,7 +2709,7 @@ EndFunction
 // Get external link for a file
 // Get external link to file
 //
-// Note
+// Note:
 // The method has suddenly disappeared from the API on the cloud Bitrix24 where it was being tested (09/24). It might still work on other versions, but it's not guaranteed
 // Method at API documentation: [disk.file.getExternalLink](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_getexternallink.php)
 //
@@ -2730,7 +2730,7 @@ EndFunction
 // Mark file as deleted
 // Move file to recycle bin
 //
-// Note
+// Note:
 // Method at API documentation: [disk.file.markdeleted](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_markdeleted.php)
 //
 // Parameters:
@@ -2750,7 +2750,7 @@ EndFunction
 // Restore file
 // Restore file from recycle bin
 //
-// Note
+// Note:
 // Method at API documentation: [disk.file.restore](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_restore.php)
 //
 // Parameters:
@@ -2770,7 +2770,7 @@ EndFunction
 // Copy file
 // Copy file from one destination to another
 //
-// Note
+// Note:
 // Method at API documentation: [disk.file.copyto](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_copyto.php)
 //
 // Parameters:
@@ -2797,7 +2797,7 @@ EndFunction
 // Move file
 // Move file from one destination to another
 //
-// Note
+// Note:
 // Method at API documentation: [disk.file.moveto](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_moveto.php)
 //
 // Parameters:
@@ -2824,7 +2824,7 @@ EndFunction
 // Rename file
 // Changes the name of an existing file
 //
-// Note
+// Note:
 // Method at API documentation: [disk.file.rename](@dev.1c-bitrix.ru/rest_help/disk/file/disk_file_rename.php)
 //
 // Parameters:
@@ -2855,7 +2855,7 @@ EndFunction
 // Create chat
 // Creates a new chat based on the field structure
 //
-// Note
+// Note:
 // Method at API documentation: [im.chat.add](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12093)
 //
 // Parameters:
@@ -2884,7 +2884,7 @@ EndFunction
 // Get chats users
 // Gets the list of chat users by ID
 //
-// Note
+// Note:
 // Method at API documentation: [im.chat.user.list](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12095)
 //
 // Parameters:
@@ -2904,7 +2904,7 @@ EndFunction
 // Leave chat
 // Removes the current user from the chat room
 //
-// Note
+// Note:
 // Method at API documentation: [im.chat.leave](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12101)
 //
 // Parameters:
@@ -2924,7 +2924,7 @@ EndFunction
 // Get users
 // Get users information for dialog
 //
-// Note
+// Note:
 // Method at API documentation: [im.user.list.get ](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11493)
 //
 // Parameters:
@@ -2949,7 +2949,7 @@ EndFunction
 // Add users to chat
 // Adds users to the chat by ID array
 //
-// Note
+// Note:
 // Method at API documentation: [im.chat.user.add](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12097)
 //
 // Parameters:
@@ -2984,7 +2984,7 @@ EndFunction
 // Delete user from chat
 // Deletes user from chat
 //
-// Note
+// Note:
 // Method at API documentation: [im.chat.user.delete](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12099)
 //
 // Parameters:
@@ -3011,7 +3011,7 @@ EndFunction
 // Change chat title
 // Change text of chat title
 //
-// Note
+// Note:
 // Method at API documentation: [im.chat.updateTitle](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12105)
 //
 // Parameters:
@@ -3038,7 +3038,7 @@ EndFunction
 // Change chat color
 // Chat chat color for mobile app
 //
-// Note
+// Note:
 // Method at API documentation: [im.chat.updateTitle](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12105)
 // Available colours: RED, GREEN, MINT, LIGHT_BLUE, DARK_BLUE, PURPLE, AQUA, PINK, LIME, BROWN, AZURE, KHAKI, SAND, MARENGO, GRAY, GRAPHITE
 //
@@ -3066,7 +3066,7 @@ EndFunction
 // Change chat picture
 // Setup new chat picture
 //
-// Note
+// Note:
 // Method at API documentation: [im.chat.updateAvatar](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12109)
 //
 // Parameters:
@@ -3096,7 +3096,7 @@ EndFunction
 // Change chat owner
 // Change chat owner
 //
-// Note
+// Note:
 // Method at API documentation: [im.chat.setOwner](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12111)
 //
 // Parameters:
@@ -3123,7 +3123,7 @@ EndFunction
 // Disable chat notifications
 // Disable chat notifications
 //
-// Note
+// Note:
 // Method at API documentation: [im.chat.mute](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=11473)
 //
 // Parameters:
@@ -3143,7 +3143,7 @@ EndFunction
 // Enable chat notifications
 // Enable chat notifications
 //
-// Note
+// Note:
 // Method at API documentation: [im.chat.mute](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=11473)
 //
 // Parameters:
@@ -3163,7 +3163,7 @@ EndFunction
 // Get chat messages list
 // Gets a list of 20 chat or dialog messages, depending on the FirstID and LastID specified
 //
-// Note
+// Note:
 // Method at API documentation: [im.dialog.messages.get](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=11479)
 //
 // Parameters:
@@ -3201,7 +3201,7 @@ EndFunction
 // Get dialog
 // Get chat data by ID
 //
-// Note
+// Note:
 // Method at API documentation: [im.dialog.get](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12886)
 //
 // Parameters:
@@ -3226,7 +3226,7 @@ EndFunction
 // Get chat members list
 // Get chat members list
 //
-// Note
+// Note:
 // Method at API documentation: [im.dialog.users.list](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=23800)
 //
 // Parameters:
@@ -3251,7 +3251,7 @@ EndFunction
 // Send write notification
 // Send Writing... status to dialog...
 //
-// Note
+// Note:
 // Method at API documentation: [im.dialog.writing](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=23802)
 //
 // Parameters:
@@ -3276,7 +3276,7 @@ EndFunction
 // Get user status
 // Gets the status (online) of the current user
 //
-// Note
+// Note:
 // Method at API documentation: [im.user.status.get](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11497)
 //
 // Parameters:
@@ -3298,7 +3298,7 @@ EndFunction
 // Set user status
 // Sets the status (online) of the current user
 //
-// Note
+// Note:
 // Method at API documentation: [im.user.status.set](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11499)
 //
 // Parameters:
@@ -3323,7 +3323,7 @@ EndFunction
 // Read all
 // Mark all message as readed
 //
-// Note
+// Note:
 // Method at API documentation: [im.dialog.read.all](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=23804)
 //
 // Parameters:
@@ -3344,7 +3344,7 @@ EndFunction
 // Get chat files folder
 // Get information about folder for chat files
 //
-// Note
+// Note:
 // Method at API documentation: [im.disk.folder.get](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11483)
 //
 // Parameters:
@@ -3401,7 +3401,7 @@ EndFunction
 // Send message
 // Send message to dialog
 //
-// Note
+// Note:
 // Method at API documentation: [im.message.add](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12115)
 //
 // Parameters:
@@ -3430,7 +3430,7 @@ EndFunction
 // Edit message
 // Edit dialog message content
 //
-// Note
+// Note:
 // Method at API documentation: [im.message.update](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12117)
 //
 // Parameters:
@@ -3459,7 +3459,7 @@ EndFunction
 // Set message reaction
 // Set or remove reaction mark on the message
 //
-// Note
+// Note:
 // Method at API documentation: [im.message.like](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12121)
 //
 // Parameters:
@@ -3484,7 +3484,7 @@ EndFunction
 // Delete message
 // Deletes a dialog message
 //
-// Note
+// Note:
 // Method at API documentation: [im.message.delete](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12119)
 //
 // Parameters:
@@ -3509,7 +3509,7 @@ EndFunction
 // Send file
 // Send disk file to chat
 //
-// Note
+// Note:
 // Method at API documentation: [im.disk.file.commit](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=11485)
 //
 // Parameters:
@@ -3540,7 +3540,7 @@ EndFunction
 // Mark message as readed
 // Mark current and all previous messages as readed
 //
-// Note
+// Note:
 // Method at API documentation: [im.dialog.read](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12053)
 //
 // Parameters:
@@ -3567,7 +3567,7 @@ EndFunction
 // Mark message as unreaded
 // Mark current and all messages after as unreaded
 //
-// Note
+// Note:
 // Method at API documentation: [im.dialog.unread](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&LESSON_ID=12055)
 //
 // Parameters:
@@ -3594,7 +3594,7 @@ EndFunction
 // Get picture block
 // Make picture block for SendMessage method
 //
-// Note
+// Note:
 // Blocks at API documentation: [Link](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&CHAPTER_ID=07867)
 //
 // Parameters:
@@ -3617,7 +3617,7 @@ EndFunction
 // Get file block
 // Make file block for SendMessage method
 //
-// Note
+// Note:
 // Blocks at API documentation: [Link](@dev.1c-bitrix.ru/learning/course/?COURSE_ID=93&CHAPTER_ID=07867)
 //
 // Parameters:
@@ -3644,7 +3644,7 @@ EndFunction
 // Create personal notification
 // Creates a personal notification to the user
 //
-// Note
+// Note:
 // Method at API documentation: [im.notify.personal.add](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=12129)
 //
 // Parameters:
@@ -3682,7 +3682,7 @@ EndFunction
 // Create system notification
 // Creates a system notification to the user
 //
-// Note
+// Note:
 // Method at API documentation: [im.notify.system.add](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=12131)
 //
 // Parameters:
@@ -3720,7 +3720,7 @@ EndFunction
 // Delete notification
 // Delete notification by ID
 //
-// Note
+// Note:
 // Method at API documentation: [im.notify.delete](@dev.1c-bitrix.ru/learning/course/index.php?COURSE_ID=93&LESSON_ID=12133)
 //
 // Parameters:
@@ -3749,7 +3749,7 @@ EndFunction
 // Create department
 // Creates a new department
 //
-// Note
+// Note:
 // Method at API documentation: [department.add](@dev.1c-bitrix.ru/rest_help/departments/department_add.php)
 //
 // Parameters:
@@ -3784,7 +3784,7 @@ EndFunction
 // Update department
 // Update an existing department
 //
-// Note
+// Note:
 // Method at API documentation: [department.update](@dev.1c-bitrix.ru/rest_help/departments/department_update.php)
 //
 // Parameters:
@@ -3822,7 +3822,7 @@ EndFunction
 // Get departments
 // Gets a list of departments by ID or filter
 //
-// Note
+// Note:
 // Method at API documentation: [department.get](@dev.1c-bitrix.ru/rest_help/departments/department_get.php)
 //
 // Parameters:
@@ -3860,7 +3860,7 @@ EndFunction
 // Delete department
 // Delets department by ID
 //
-// Note
+// Note:
 // Method at API documentation: [department.delete](@dev.1c-bitrix.ru/rest_help/departments/department_delete.php)
 //
 // Parameters:
@@ -3889,7 +3889,7 @@ EndFunction
 // Get current user
 // Get current user data
 //
-// Note
+// Note:
 // Method at API documentation: [user.current](@dev.1c-bitrix.ru/rest_help/users/user_current.php)
 //
 // Parameters:
@@ -3911,7 +3911,7 @@ EndFunction
 // Get user
 // Gets user information by ID
 //
-// Note
+// Note:
 // Method at API documentation: [user.get](@dev.1c-bitrix.ru/rest_help/users/user_get.php)
 //
 // Parameters:
@@ -3936,7 +3936,7 @@ EndFunction
 // Create user
 // Create new user by fields structure
 //
-// Note
+// Note:
 // Method at API documentation: [user.add](@dev.1c-bitrix.ru/rest_help/users/user_add.php)
 // If you want to add an extranet user, you must pass in the fields: EXTRANET: Y and SONET_GROUP_ID: [...]
 // If you want to add an intranet user, you must pass UF_DEPARTMENT field: [...]
@@ -3967,7 +3967,7 @@ EndFunction
 // Update user
 // Updates user data
 //
-// Note
+// Note:
 // Method at API documentation: [user.update](@dev.1c-bitrix.ru/rest_help/users/user_update.php)
 //
 // Parameters:
@@ -4026,7 +4026,7 @@ EndFunction
 // Find users
 // Gets the list of users according to the specified filter
 //
-// Note
+// Note:
 // Method at API documentation: [user.update](@dev.1c-bitrix.ru/rest_help/users/user_update.php)
 //
 // Parameters:
@@ -4051,7 +4051,7 @@ EndFunction
 // Get user fields structure
 // Gets the field structure for creating or modifying user information
 //
-// Note
+// Note:
 // Method at API documentation: [user.fields](@dev.1c-bitrix.ru/rest_help/users/user_fields.php)
 //
 // Parameters:
@@ -4107,7 +4107,7 @@ EndFunction
 // Create lead
 // Creates a new lead by fields structure
 //
-// Note
+// Note:
 // Method at API documentation: [crm.lead.add](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_add.php)
 //
 // Parameters:
@@ -4132,7 +4132,7 @@ EndFunction
 // Delete lead
 // Deletes a lead by ID
 //
-// Note
+// Note:
 // Method at API documentation: [crm.lead.delete](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_delete.php)
 //
 // Parameters:
@@ -4152,7 +4152,7 @@ EndFunction
 // Get lead
 // Gets a lead by ID
 //
-// Note
+// Note:
 // Method at API documentation: [crm.lead.get](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_get.php)
 //
 // Parameters:
@@ -4172,7 +4172,7 @@ EndFunction
 // Get leads list
 // Gets a list of leads (50 per request max) with or without filtering
 //
-// Note
+// Note:
 // Method at API documentation: [crm.lead.list](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_list.php)
 //
 // Parameters:
@@ -4199,7 +4199,7 @@ EndFunction
 // Update lead
 // Modifies an existing lead
 //
-// Note
+// Note:
 // Method at API documentation: [crm.lead.update](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_update.php)
 //
 // Parameters:
@@ -4226,7 +4226,7 @@ EndFunction
 // Get lead structure
 // Gets a structure with field descriptions for creating a lead
 //
-// Note
+// Note:
 // Method at API documentation: [crm.lead.fields](@dev.1c-bitrix.ru/rest_help/crm/leads/crm_lead_fields.php)
 //
 // Parameters:
@@ -4280,7 +4280,7 @@ Function GetLeadFilterStructure(Val Clear = False) Export
     FilterStructure.Insert("OPENED"             , "<feature is available for all (Y|N)>");
     FilterStructure.Insert("OPPORTUNITY"        , "<expected amount>");
     FilterStructure.Insert("STATUS_ID"          , "<status identifier>");
-    FilterStructure.Insert("TITLE"              , "<lead name (can be searched using the template [%_])>");
+    FilterStructure.Insert("TITLE"              , "<lead name (can be searched using the template [% [%_])>");
 
     If Clear Then
         For Each Field In FilterStructure Do
@@ -4300,7 +4300,7 @@ EndFunction
 // Create deal
 // Creates a new deal by field structure
 //
-// Note
+// Note:
 // Method at API documentation: [crm.deal.add](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_add.php)
 //
 // Parameters:
@@ -4325,7 +4325,7 @@ EndFunction
 // Delete deal
 // Deletes deal by ID
 //
-// Note
+// Note:
 // Method at API documentation: [crm.deal.delete](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_delete.php)
 //
 // Parameters:
@@ -4345,7 +4345,7 @@ EndFunction
 // Get deal
 // Gets deal by ID
 //
-// Note
+// Note:
 // Method at API documentation: [crm.deal.get](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_get.php)
 //
 // Parameters:
@@ -4365,7 +4365,7 @@ EndFunction
 // Get deals list
 // Gets the list of deals (50 pcs per query max) with or without filtering
 //
-// Note
+// Note:
 // Method at API documentation: [crm.deal.list](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_list.php)
 //
 // Parameters:
@@ -4392,7 +4392,7 @@ EndFunction
 // Update deal
 // Modifies an existing deal
 //
-// Note
+// Note:
 // Method at API documentation: [crm.deal.update](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_update.php)
 //
 // Parameters:
@@ -4419,7 +4419,7 @@ EndFunction
 // Get deal structure
 // Gets a structure with field descriptions for creating a deal
 //
-// Note
+// Note:
 // Method at API documentation: [crm.deal.fields](@dev.1c-bitrix.ru/rest_help/crm/cdeals/crm_deal_fields.php)
 //
 // Parameters:
@@ -4476,7 +4476,7 @@ Function GetDealsFilterStructure(Val Clear = False) Export
     FilterStructure.Insert("PROBABILITY"        , "<probability>");
     FilterStructure.Insert("REQUISITE_ID"       , "<prop identifier>");
     FilterStructure.Insert("STAGE_ID"           , "<stage identifier>");
-    FilterStructure.Insert("TITLE"              , "<deal name (can be searched using the template [%_])>");
+    FilterStructure.Insert("TITLE"              , "<deal name (can be searched using the template [% [%_])>");
     FilterStructure.Insert("TYPE_ID"            , "<deal type>");
 
     If Clear Then
@@ -4497,7 +4497,7 @@ EndFunction
 // Get list of calendars
 // Gets a list of calendars of the specified owner
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.section.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-section-get.html)
 //
 // Parameters:
@@ -4524,7 +4524,7 @@ EndFunction
 // Create calendar
 // Creates a new calendar
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.section.add](@apidocs.bitrix24.ru/api-reference/calendar/calendar-section-add.html)
 //
 // Parameters:
@@ -4553,7 +4553,7 @@ EndFunction
 // Edit calendar
 // Changes the calendar settings
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.section.update](@apidocs.bitrix24.ru/api-reference/calendar/calendar-section-update.html)
 //
 // Parameters:
@@ -4585,7 +4585,7 @@ EndFunction
 // Delete calendar
 // Deletes an existing calendar
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.section.delete](@apidocs.bitrix24.ru/api-reference/calendar/calendar-section-delete.html)
 //
 // Parameters:
@@ -4616,7 +4616,7 @@ EndFunction
 // Get user busy
 // Gets an array of user events in the specified interval
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.accessibility.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-accessibility-get.html)
 //
 // Parameters:
@@ -4648,7 +4648,7 @@ EndFunction
 // Get custom calendar settings
 // Gets the current users custom calendar settings
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.user.settings.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-user-settings-get.html)
 //
 // Parameters:
@@ -4669,7 +4669,7 @@ EndFunction
 // Set custom calendar settings
 // Sets new custom calendar settings
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.user.settings.set](@apidocs.bitrix24.ru/api-reference/calendar/calendar-user-settings-set.html)
 //
 // Parameters:
@@ -4694,7 +4694,7 @@ EndFunction
 // Get calendar settings structure
 // Gets the structure of the default calendar settings
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.settings.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-settings-get.html)
 //
 // Parameters:
@@ -4807,7 +4807,7 @@ EndFunction
 // Create calendar event
 // Creates a new calendar event
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.event.add](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-add.html)
 //
 // Parameters:
@@ -4836,7 +4836,7 @@ EndFunction
 // Update calendar event
 // Modifies calendar event data
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.event.update](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-update.html)
 //
 // Parameters:
@@ -4867,7 +4867,7 @@ EndFunction
 // Get calendar event
 // Gets a calendar event by ID
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.event.getbyid](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-get-by-id.html)
 //
 // Parameters:
@@ -4887,7 +4887,7 @@ EndFunction
 // Get calendar events
 // Gets events of calendars with or without filters
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.event.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-get.html)
 //
 // Parameters:
@@ -4945,7 +4945,7 @@ EndFunction
 // Delete calendar event
 // Deletes an event from the calendar
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.event.delete](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-event-delete.html)
 //
 // Parameters:
@@ -4965,7 +4965,7 @@ EndFunction
 // Get user participation status
 // Gets the event participation status of the current user
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.meeting.status.get](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-meeting-status-get.html)
 //
 // Parameters:
@@ -4985,7 +4985,7 @@ EndFunction
 // Set user participation status
 // Sets the event participation status for the current user
 //
-// Note
+// Note:
 // Method at API documentation: [calendar.meeting.status.set](@apidocs.bitrix24.ru/api-reference/calendar/calendar-event/calendar-meeting-status-set.html)
 //
 // Parameters:

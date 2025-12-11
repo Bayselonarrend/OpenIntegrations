@@ -48,7 +48,7 @@
 // Get site data
 // Gets information about a site by its name or token
 //
-// Note
+// Note:
 // Neocities API docs: [neocities.org/api](@neocities.org/api)
 //
 // Parameters:
@@ -75,7 +75,7 @@ EndFunction
 // Get token
 // Receives authorization token by login and password
 //
-// Note
+// Note:
 // Neocities API docs: [neocities.org/api](@neocities.org/api)
 //
 // Parameters:
@@ -122,7 +122,7 @@ EndFunction
 // Upload file
 // Upload single file to Neocities
 //
-// Note
+// Note:
 // Neocities API docs: [neocities.org/api](@neocities.org/api)
 //
 // Parameters:
@@ -152,7 +152,7 @@ EndFunction
 // Upload files
 // Uploads multiple files to Neocities
 //
-// Note
+// Note:
 // Neocities API docs: [neocities.org/api](@neocities.org/api)
 //
 // Parameters:
@@ -211,7 +211,7 @@ EndFunction
 // Delete selected files
 // Deletes a file or multiple files from Neocities
 //
-// Note
+// Note:
 // Neocities API docs: [neocities.org/api](@neocities.org/api)
 //
 // Parameters:
@@ -247,7 +247,7 @@ EndFunction
 // Get list of files
 // Gets a list of files with or without directory selection
 //
-// Note
+// Note:
 // Neocities API docs: [neocities.org/api](@neocities.org/api)
 //
 // Parameters:
@@ -273,7 +273,7 @@ EndFunction
 // Synchronize folders
 // Creates a copy of the local directory at the selected path on the Neocities server
 //
-// Note
+// Note:
 // Neocities API docs: [neocities.org/api](@neocities.org/api)
 // The method deletes files on the server if they do not exist in the local directory
 //

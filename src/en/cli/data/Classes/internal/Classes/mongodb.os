@@ -37,7 +37,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GENERATECONNECTIONSTRING";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Database, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -48,7 +48,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GENERATECONNECTIONSTRING";
     NewLine.Parameter     = "--usr";
     NewLine.ParameterTrim = "-u";
-    NewLine.Description     = "Username for authorization (optional, def. val. - Empty value)";
+    NewLine.Description     = "Username for authorization (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -59,7 +59,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GENERATECONNECTIONSTRING";
     NewLine.Parameter     = "--pwd";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Password for authorization (optional, def. val. - Empty value)";
+    NewLine.Description     = "Password for authorization (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -70,7 +70,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GENERATECONNECTIONSTRING";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Additional connection parameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional connection parameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -104,7 +104,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EXECUTECOMMAND";
     NewLine.Parameter     = "--arg";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Command argument (optional, def. val. - 1)";
+    NewLine.Description     = "Command argument (optional, def. val.. - 1)";
     NewLine.Region      = "Common methods";
 
 
@@ -115,7 +115,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EXECUTECOMMAND";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database in which the operation needs to be performed (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database in which the operation needs to be performed (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -126,7 +126,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EXECUTECOMMAND";
     NewLine.Parameter     = "--data";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Main data fields for performing the operation (optional, def. val. - Empty value)";
+    NewLine.Description     = "Main data fields for performing the operation (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -161,7 +161,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDATABASE";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Working with databases";
 
 
@@ -184,7 +184,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEDATABASE";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Working with databases";
 
 
@@ -207,7 +207,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCOLLECTIONLIST";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Collection management";
 
 
@@ -241,7 +241,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECOLLECTION";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Collection management";
 
 
@@ -252,7 +252,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECOLLECTION";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Additional creation parameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional creation parameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Collection management";
 
 
@@ -286,7 +286,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETECOLLECTION";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Collection management";
 
 
@@ -331,7 +331,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "INSERTDOCUMENTS";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Documents management";
 
 
@@ -342,7 +342,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "INSERTDOCUMENTS";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Additional insert options (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional insert options (optional, def. val.. - Empty value)";
     NewLine.Region      = "Documents management";
 
 
@@ -387,7 +387,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEDOCUMENTS";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Documents management";
 
 
@@ -398,7 +398,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEDOCUMENTS";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Additional insert options (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional insert options (optional, def. val.. - Empty value)";
     NewLine.Region      = "Documents management";
 
 
@@ -432,7 +432,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDOCUMENTS";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Documents management";
 
 
@@ -443,7 +443,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDOCUMENTS";
     NewLine.Parameter     = "--query";
     NewLine.ParameterTrim = "-q";
-    NewLine.Description     = "Document filter (optional, def. val. - Empty value)";
+    NewLine.Description     = "Document filter (optional, def. val.. - Empty value)";
     NewLine.Region      = "Documents management";
 
 
@@ -454,7 +454,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDOCUMENTS";
     NewLine.Parameter     = "--sort";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Selection sorting (optional, def. val. - Empty value)";
+    NewLine.Description     = "Selection sorting (optional, def. val.. - Empty value)";
     NewLine.Region      = "Documents management";
 
 
@@ -465,7 +465,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDOCUMENTS";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Additional retrieval parameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional retrieval parameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Documents management";
 
 
@@ -510,7 +510,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEDOCUMENTS";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Documents management";
 
 
@@ -521,7 +521,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEDOCUMENTS";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Additional insert options (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional insert options (optional, def. val.. - Empty value)";
     NewLine.Region      = "Documents management";
 
 
@@ -555,7 +555,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDOCUMENTUPDATESTRUCTURE";
     NewLine.Parameter     = "--multi";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "True > updates all documents by filter, False > only one (optional, def. val. - True)";
+    NewLine.Description     = "True > updates all documents by filter, False > only one (optional, def. val.. - True)";
     NewLine.Region      = "Documents management";
 
 
@@ -566,7 +566,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDOCUMENTUPDATESTRUCTURE";
     NewLine.Parameter     = "--upsert";
     NewLine.ParameterTrim = "-u";
-    NewLine.Description     = "Insert a new document if no document was found (optional, def. val. - False)";
+    NewLine.Description     = "Insert a new document if no document was found (optional, def. val.. - False)";
     NewLine.Region      = "Documents management";
 
 
@@ -577,7 +577,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDOCUMENTUPDATESTRUCTURE";
     NewLine.Parameter     = "--cltn";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Special field comparison rules (optional, def. val. - Empty value)";
+    NewLine.Description     = "Special field comparison rules (optional, def. val.. - Empty value)";
     NewLine.Region      = "Documents management";
 
 
@@ -600,7 +600,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDOCUMENTDELETIONSTRUCTURE";
     NewLine.Parameter     = "--limit";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "Deletion limit: 1 > first document, 0 > all documents (optional, def. val. - Empty value)";
+    NewLine.Description     = "Deletion limit: 1 > first document, 0 > all documents (optional, def. val.. - Empty value)";
     NewLine.Region      = "Documents management";
 
 
@@ -611,7 +611,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDOCUMENTDELETIONSTRUCTURE";
     NewLine.Parameter     = "--cltn";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Special field comparison rules (optional, def. val. - Empty value)";
+    NewLine.Description     = "Special field comparison rules (optional, def. val.. - Empty value)";
     NewLine.Region      = "Documents management";
 
 
@@ -656,7 +656,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEUSER";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -667,7 +667,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEUSER";
     NewLine.Parameter     = "--pwd";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Users password (optional, def. val. - Empty value)";
+    NewLine.Description     = "Users password (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -678,7 +678,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEUSER";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Additional creation parameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional creation parameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -712,7 +712,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEUSER";
     NewLine.Parameter     = "--roles";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Array of roles as strings or structures specifying the DB (optional, def. val. - Empty value)";
+    NewLine.Description     = "Array of roles as strings or structures specifying the DB (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -723,7 +723,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEUSER";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -734,7 +734,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEUSER";
     NewLine.Parameter     = "--pwd";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Users password (optional, def. val. - Empty value)";
+    NewLine.Description     = "Users password (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -745,7 +745,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEUSER";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Additional parameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional parameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -779,7 +779,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSERS";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -790,7 +790,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSERS";
     NewLine.Parameter     = "--spwd";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Adds user password hash to the returned data (optional, def. val. - False)";
+    NewLine.Description     = "Adds user password hash to the returned data (optional, def. val.. - False)";
     NewLine.Region      = "Users management";
 
 
@@ -801,7 +801,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSERS";
     NewLine.Parameter     = "--sprv";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Adds a list of user privileges to the returned data (optional, def. val. - False)";
+    NewLine.Description     = "Adds a list of user privileges to the returned data (optional, def. val.. - False)";
     NewLine.Region      = "Users management";
 
 
@@ -824,7 +824,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDATABASEUSERS";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -835,7 +835,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDATABASEUSERS";
     NewLine.Parameter     = "--spwd";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Adds user password hash to the returned data (optional, def. val. - False)";
+    NewLine.Description     = "Adds user password hash to the returned data (optional, def. val.. - False)";
     NewLine.Region      = "Users management";
 
 
@@ -846,7 +846,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDATABASEUSERS";
     NewLine.Parameter     = "--sprv";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Adds a list of user privileges to the returned data (optional, def. val. - False)";
+    NewLine.Description     = "Adds a list of user privileges to the returned data (optional, def. val.. - False)";
     NewLine.Region      = "Users management";
 
 
@@ -880,7 +880,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEUSER";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -891,7 +891,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEUSER";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional deletion parameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -925,7 +925,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEROLE";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 
@@ -936,7 +936,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEROLE";
     NewLine.Parameter     = "--prvl";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "prvl (optional, def. val. - Empty value)";
+    NewLine.Description     = "prvl (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 
@@ -947,7 +947,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEROLE";
     NewLine.Parameter     = "--roles";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Array of roles based on strings or structures specifying the database (optional, def. val. - Empty value)";
+    NewLine.Description     = "Array of roles based on strings or structures specifying the database (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 
@@ -958,7 +958,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEROLE";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional deletion parameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 
@@ -992,7 +992,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEROLE";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 
@@ -1003,7 +1003,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEROLE";
     NewLine.Parameter     = "--prvl";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Array of privileges. See GetRolePrivilegeStructure (optional, def. val. - Empty value)";
+    NewLine.Description     = "Array of privileges. See GetRolePrivilegeStructure (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 
@@ -1014,7 +1014,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEROLE";
     NewLine.Parameter     = "--roles";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Array of roles based on strings or structures specifying the database (optional, def. val. - Empty value)";
+    NewLine.Description     = "Array of roles based on strings or structures specifying the database (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 
@@ -1025,7 +1025,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEROLE";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional deletion parameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 
@@ -1059,7 +1059,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETROLES";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 
@@ -1070,7 +1070,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETROLES";
     NewLine.Parameter     = "--sprv";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Adds a list of role privileges to the returned data (optional, def. val. - False)";
+    NewLine.Description     = "Adds a list of role privileges to the returned data (optional, def. val.. - False)";
     NewLine.Region      = "Role management";
 
 
@@ -1104,7 +1104,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEROLE";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 
@@ -1115,7 +1115,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEROLE";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional deletion parameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 
@@ -1160,7 +1160,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GRANTROLES";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 
@@ -1171,7 +1171,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GRANTROLES";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional deletion parameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 
@@ -1216,7 +1216,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "REVOKEROLES";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database name. Current database if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database name. Current database if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 
@@ -1227,7 +1227,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "REVOKEROLES";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Additional deletion parameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional deletion parameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Role management";
 
 

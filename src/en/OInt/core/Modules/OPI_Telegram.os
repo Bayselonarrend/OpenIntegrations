@@ -49,7 +49,7 @@
 // Get bot information
 // Executes the request, returning basic bot information: name, id, ability to add the bot to groups, etc..
 //
-// Note
+// Note:
 // Method at API documentation: [getMe](@core.telegram.org/bots/api#getme)
 //
 // Parameters:
@@ -71,7 +71,7 @@ EndFunction
 // Get updates
 // Executes a request, returning information about bot events. Used in polling mode
 //
-// Note
+// Note:
 // Method at API documentation: [getUpdates](@core.telegram.org/bots/api#getupdates)
 //
 // Parameters:
@@ -99,7 +99,7 @@ EndFunction
 // Set Webhook
 // Set webhook URL for bot event handling in webhook mode
 //
-// Note
+// Note:
 // Method at API documentation: [setWebhook](@core.telegram.org/bots/api#setwebhook)
 //
 // Parameters:
@@ -125,7 +125,7 @@ EndFunction
 // Delete webhook
 // Deletes the bot event handler URL for webhook operation
 //
-// Note
+// Note:
 // Method at API documentation: [deleteWebhook](@core.telegram.org/bots/api#deletewebhook)
 //
 // Parameters:
@@ -147,7 +147,7 @@ EndFunction
 // Download file
 // Download file from Telegram servers
 //
-// Note
+// Note:
 // Method at API documentation: [getFile](@core.telegram.org/bots/api#getfile)
 //
 // Parameters:
@@ -290,7 +290,7 @@ EndFunction
 // Send text message
 // Sends a text message to a chat or channel
 //
-// Note
+// Note:
 // Method at API documentation: [sendMessage](@core.telegram.org/bots/api#sendmessage)
 //
 // Parameters:
@@ -333,7 +333,7 @@ EndFunction
 // Send image
 // Sends an image to a chat or channel
 //
-// Note
+// Note:
 // Method at API documentation: [sendPhoto](@core.telegram.org/bots/api#sendphoto)
 //
 // Parameters:
@@ -360,7 +360,7 @@ EndFunction
 // Send video
 // Sends a video to a chat or channel
 //
-// Note
+// Note:
 // Method at API documentation: [sendVideo](@core.telegram.org/bots/api#sendvideo)
 //
 // Parameters:
@@ -387,7 +387,7 @@ EndFunction
 // Send audio
 // Sends an audio file to a chat or channel
 //
-// Note
+// Note:
 // Method at API documentation: [sendAudio](@core.telegram.org/bots/api#sendaudio)
 //
 // Parameters:
@@ -414,7 +414,7 @@ EndFunction
 // Send document
 // Sends a document to a chat or channel
 //
-// Note
+// Note:
 // Method at API documentation: [sendDocument](@core.telegram.org/bots/api#senddocument)
 //
 // Parameters:
@@ -443,7 +443,7 @@ EndFunction
 // Send GIF
 // Sends a GIF to a chat or channel
 //
-// Note
+// Note:
 // Method at API documentation: [sendAnimation](@core.telegram.org/bots/api#sendanimation)
 //
 // Parameters:
@@ -470,7 +470,7 @@ EndFunction
 // Send media group
 // Sends a set of files to a chat or channel. Media types: audio, document, photo, video
 //
-// Note
+// Note:
 // Method at API documentation: [sendMediaGroup](@core.telegram.org/bots/api#sendmediagroup)
 //
 // Parameters:
@@ -493,7 +493,7 @@ Function SendMediaGroup(Val Token
     // FileMapping
     // Key - File, Value - Type
     // Types: audio, document, photo, video
-    // Different types cannot be mixed!
+    // Different types cannot be mixed!!
 
     String_ = "String";
 
@@ -524,7 +524,7 @@ EndFunction
 // Send location
 // Sends location by geographic latitude and longitude to a chat or channel
 //
-// Note
+// Note:
 // Method at API documentation: [sendLocation](@core.telegram.org/bots/api#sendlocation)
 //
 // Parameters:
@@ -561,7 +561,7 @@ EndFunction
 // Send contact
 // Sends a contact with name and phone number
 //
-// Note
+// Note:
 // Method at API documentation: [sendContact](@core.telegram.org/bots/api#sendcontact)
 //
 // Parameters:
@@ -600,7 +600,7 @@ EndFunction
 // Send poll
 // Sends a poll with answer options
 //
-// Note
+// Note:
 // Method at API documentation: [sendPoll](@core.telegram.org/bots/api#sendpoll)
 //
 // Parameters:
@@ -639,7 +639,7 @@ EndFunction
 // Forward message
 // Forwards a message between chats or within a chat
 //
-// Note
+// Note:
 // Method at API documentation: [forwardMessage](@core.telegram.org/bots/api#forwardmessage)
 //
 // Parameters:
@@ -674,7 +674,7 @@ EndFunction
 // Delete message
 // Delete message from chat or channel
 //
-// Note
+// Note:
 // Method at API documentation: [deleteMessage](@core.telegram.org/bots/api#deletemessage)
 //
 // Parameters:
@@ -702,7 +702,7 @@ EndFunction
 // Replace message keyboard
 // Replaces the message keyboard with a new one
 //
-// Note
+// Note:
 // Method at API documentation: [editMessageReplyMarkup](@core.telegram.org/bots/api#editmessagereplymarkup)
 //
 // Parameters:
@@ -733,7 +733,7 @@ EndFunction
 // Replace message text
 // Replaces the message text with a new one
 //
-// Note
+// Note:
 // Method at API documentation: [editMessageText](@core.telegram.org/bots/api#editmessagetext)
 //
 // Parameters:
@@ -775,7 +775,7 @@ EndFunction
 // Replace message caption
 // Replaces text in a message with media attachments
 //
-// Note
+// Note:
 // Method at API documentation: [editMessageCaption](@core.telegram.org/bots/api#editmessagecaption)
 //
 // Parameters:
@@ -817,7 +817,7 @@ EndFunction
 // Generate keyboard from array of buttons
 // Generates a simple JSON keyboard from an array of buttons for a message or bottom panel
 //
-// Note
+// Note:
 // About keyboards in the API documentation: [InlineKeyboardMarkup](@core.telegram.org/bots/api#inlinekeyboardmarkup)
 //
 // Parameters:
@@ -860,7 +860,7 @@ EndFunction
 // Ban
 // Bans a user in the selected chat
 //
-// Note
+// Note:
 // Method at API documentation: [banChatMember](@core.telegram.org/bots/api#banchatmember)
 //
 // Parameters:
@@ -891,7 +891,7 @@ EndFunction
 // Unban
 // Unbans a previously banned user
 //
-// Note
+// Note:
 // Method at API documentation: [unbanChatMember](@core.telegram.org/bots/api#unbanchatmember)
 //
 // Parameters:
@@ -923,7 +923,7 @@ EndFunction
 // Create invitation link
 // Creates a link for joining a closed chat
 //
-// Note
+// Note:
 // Method at API documentation: [createChatInviteLink](@core.telegram.org/bots/api#createchatinvitelink)
 //
 // Parameters:
@@ -962,7 +962,7 @@ EndFunction
 // Pin message
 // Pins a message in the chat header
 //
-// Note
+// Note:
 // Method at API documentation: [pinChatMessage](@core.telegram.org/bots/api#pinchatmessage)
 //
 // Parameters:
@@ -994,7 +994,7 @@ EndFunction
 // Unpin message
 // Unpins a message in the chat header
 //
-// Note
+// Note:
 // Method at API documentation: [unpinChatMessage](@core.telegram.org/bots/api#unpinchatmessage)
 //
 // Parameters:
@@ -1025,7 +1025,7 @@ EndFunction
 // Get participant count
 // Gets the total number of chat participants
 //
-// Note
+// Note:
 // Method at API documentation: [getChatMemberCount](@core.telegram.org/bots/api#getchatmembercount)
 //
 // Parameters:
@@ -1057,7 +1057,7 @@ EndFunction
 // Get avatar icon list
 // Gets the mapping of Emoji IDs for setting as forum theme icons
 //
-// Note
+// Note:
 // Method at API documentation: [getForumTopicIconStickers](@core.telegram.org/bots/api#getforumtopiciconstickers)
 //
 // Parameters:
@@ -1091,7 +1091,7 @@ EndFunction
 // Create forum topic
 // Creates a new topic in the group with theme functionality enabled
 //
-// Note
+// Note:
 // Method at API documentation: [createForumTopic](@core.telegram.org/bots/api#createforumtopic)
 //
 // Parameters:
@@ -1111,7 +1111,7 @@ EndFunction
 // Edit forum topic
 // Creates a new topic in the group with theme functionality enabled
 //
-// Note
+// Note:
 // Method at API documentation: [editForumTopic](@core.telegram.org/bots/api#editforumtopic)
 //
 // Parameters:
@@ -1135,7 +1135,7 @@ EndFunction
 // Close forum topic
 // Closes the topic for new messages
 //
-// Note
+// Note:
 // Method at API documentation: [closeForumTopic](@core.telegram.org/bots/api#closeforumtopic)
 //
 // Parameters:
@@ -1154,7 +1154,7 @@ EndFunction
 // Open forum topic
 // Reopens a previously closed forum topic
 //
-// Note
+// Note:
 // Method at API documentation: [reopenForumTopic](@core.telegram.org/bots/api#reopenforumtopic)
 //
 // Parameters:
@@ -1173,7 +1173,7 @@ EndFunction
 // Delete forum topic
 // Deletes a forum topic
 //
-// Note
+// Note:
 // Method at API documentation: [deleteForumTopic](@core.telegram.org/bots/api#deleteforumtopic)
 //
 // Parameters:
@@ -1192,7 +1192,7 @@ EndFunction
 // Hide main forum topic
 // Hides the main forum topic
 //
-// Note
+// Note:
 // Method at API documentation: [hideGeneralForumTopic](@core.telegram.org/bots/api#hidegeneralforumtopic)
 //
 // Parameters:
@@ -1210,7 +1210,7 @@ EndFunction
 // Show main forum topic
 // Shows a previously hidden main forum topic
 //
-// Note
+// Note:
 // Method at API documentation: [unhideGeneralForumTopic](@core.telegram.org/bots/api#unhidegeneralforumtopic)
 //
 // Parameters:
@@ -1228,7 +1228,7 @@ EndFunction
 // Edit main forum topic name
 // Edits the name of the main forum topic
 //
-// Note
+// Note:
 // Method at API documentation: [editGeneralForumTopic](@core.telegram.org/bots/api#editgeneralforumtopic)
 //
 // Parameters:
@@ -1257,7 +1257,7 @@ EndFunction
 // Clear topics pinned messages list
 // Clears the list of pinned messages in the forum topic
 //
-// Note
+// Note:
 // Method at API documentation: [unpinAllForumTopicMessages](@core.telegram.org/bots/api#unpinallforumtopicmessages)
 //
 // Parameters:
@@ -1509,7 +1509,7 @@ Procedure ConvertFilesToMedia(FileMapping, Text, Media)
     OPI_TypeConversion.GetLine(Text);
 
     If TypeOf(FileMapping) <> Type("Map") Then
-        Raise("Failed to Retrieve Information from JSON media!");
+        Raise("Failed to Retrieve Information from JSON media!!");
         Return;
     EndIf;
 

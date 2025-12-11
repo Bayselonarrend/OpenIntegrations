@@ -4,7 +4,7 @@
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     ChatID = "120363410406221140@g.us";
-    Text   = "What's your favorite color?";
+    Text   = "What's your favorite color??";
 
     Variants = New Array;
     Variants.Add("Red");

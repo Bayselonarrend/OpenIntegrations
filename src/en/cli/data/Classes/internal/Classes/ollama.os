@@ -37,7 +37,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETVERSION";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -82,7 +82,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETRESPONSE";
     NewLine.Parameter     = "--options";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Additional parameters. See GetRequestParametersStructure (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional parameters. See GetRequestParametersStructure (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -93,7 +93,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETRESPONSE";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -138,7 +138,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONTEXTRESPONSE";
     NewLine.Parameter     = "--options";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Additional parameters. See GetRequestParametersStructure (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional parameters. See GetRequestParametersStructure (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -149,7 +149,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONTEXTRESPONSE";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -194,7 +194,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETEMBEDDINGS";
     NewLine.Parameter     = "--options";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Additional parameters. See GetEmbeddingsParameterStructure (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional parameters. See GetEmbeddingsParameterStructure (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -205,7 +205,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETEMBEDDINGS";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -216,7 +216,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETREQUESTPARAMETERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Requests processing";
     NewLine.MethodDescription   = "Gets the structure of additional parameters for request processing";
 
@@ -228,7 +228,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETEMBEDDINGSPARAMETERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Requests processing";
     NewLine.MethodDescription   = "Gets the structure of additional parameters for processing embeddings requests";
 
@@ -240,7 +240,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONTEXTPARAMETERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Requests processing";
     NewLine.MethodDescription   = "Gets the structure of additional parameters to process the request in context";
 
@@ -275,7 +275,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONTEXTMESSAGESTRUCTURE";
     NewLine.Parameter     = "--images";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "List of pictures in Base64 format (for multimodal models like llava) (optional, def. val. - Empty value)";
+    NewLine.Description     = "List of pictures in Base64 format (for multimodal models like llava) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -286,7 +286,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONTEXTMESSAGESTRUCTURE";
     NewLine.Parameter     = "--tools";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "List of tools in JSON format that the model should use (optional, def. val. - Empty value)";
+    NewLine.Description     = "List of tools in JSON format that the model should use (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -309,7 +309,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETMODELLIST";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Models management";
 
 
@@ -332,7 +332,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTRUNNINGMODELS";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Models management";
 
 
@@ -366,7 +366,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETMODELINFORMATION";
     NewLine.Parameter     = "--verbose";
     NewLine.ParameterTrim = "-v";
-    NewLine.Description     = "Return full model information (optional, def. val. - True)";
+    NewLine.Description     = "Return full model information (optional, def. val.. - True)";
     NewLine.Region      = "Models management";
 
 
@@ -377,7 +377,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETMODELINFORMATION";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Models management";
 
 
@@ -422,7 +422,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEMODEL";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Models management";
 
 
@@ -467,7 +467,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "COPYMODEL";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Models management";
 
 
@@ -501,7 +501,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEMODEL";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Models management";
 
 
@@ -535,7 +535,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LOADMODELTOMEMORY";
     NewLine.Parameter     = "--keep";
     NewLine.ParameterTrim = "-k";
-    NewLine.Description     = "Model hold time in seconds (optional, def. val. - 300)";
+    NewLine.Description     = "Model hold time in seconds (optional, def. val.. - 300)";
     NewLine.Region      = "Models management";
 
 
@@ -546,7 +546,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LOADMODELTOMEMORY";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Models management";
 
 
@@ -580,7 +580,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UNLOADMODELFROMMEMORY";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Models management";
 
 
@@ -614,7 +614,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUSHMODEL";
     NewLine.Parameter     = "--insecure";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "Allows an unsecured connection to the library (optional, def. val. - False)";
+    NewLine.Description     = "Allows an unsecured connection to the library (optional, def. val.. - False)";
     NewLine.Region      = "Models management";
 
 
@@ -625,7 +625,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUSHMODEL";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Models management";
 
 
@@ -659,7 +659,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PULLMODEL";
     NewLine.Parameter     = "--insecure";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "Allows an unsecured connection to the library (optional, def. val. - False)";
+    NewLine.Description     = "Allows an unsecured connection to the library (optional, def. val.. - False)";
     NewLine.Region      = "Models management";
 
 
@@ -670,7 +670,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PULLMODEL";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Models management";
 
 
@@ -681,7 +681,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETMODELSETTINGSSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Models management";
     NewLine.MethodDescription   = "Gets the settings structure for creating a new model";
 
@@ -716,7 +716,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUSHBLOB";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Working with blob";
 
 
@@ -750,7 +750,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CHECKBLOB";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Working with blob";
 
     Return CompositionTable;

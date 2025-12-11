@@ -125,7 +125,7 @@ EndFunction
 // Create bucket
 // Creates a new bucket with the specified name
 //
-// Note
+// Note:
 // Method at AWS documentation: [CreateBucket](@docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html)
 //
 // Parameters:
@@ -146,7 +146,7 @@ EndFunction
 // Delete bucket
 // Deletes the bucket by name
 //
-// Note
+// Note:
 // Method at AWS documentation: [DeleteBucket](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucket.html)
 //
 // Parameters:
@@ -167,7 +167,7 @@ EndFunction
 // Head bucket
 // Checks if the bucket is available for the current account or account by ID
 //
-// Note
+// Note:
 // Method at AWS documentation: [HeadBucket](@docs.aws.amazon.com/AmazonS3/latest/API/API_HeadBucket.html)
 //
 // Parameters:
@@ -201,7 +201,7 @@ EndFunction
 // Put bucket encryption
 // Sets bucket encryption by XML configuration
 //
-// Note
+// Note:
 // Method at AWS documentation: [PutBucketEncryption](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketEncryption.html)
 //
 // Parameters:
@@ -239,7 +239,7 @@ EndFunction
 // Get bucket encryption
 // Gets the previously set bucket encryption configuration
 //
-// Note
+// Note:
 // Method at AWS documentation: [GetBucketEncryption](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketEncryption.html)
 //
 // Parameters:
@@ -273,7 +273,7 @@ EndFunction
 // Delete bucket encryption
 // Deletes the bucket encryption configuration
 //
-// Note
+// Note:
 // Method at AWS documentation: [DeleteBucketEncryption](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketEncryption.html)
 //
 // Parameters:
@@ -307,7 +307,7 @@ EndFunction
 // Put bucket tagging
 // Sets the tag set for the bucket
 //
-// Note
+// Note:
 // Setting up a new set removes all existing bucket tags
 // Method at AWS documentation: [PutBucketTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketTagging.html)
 //
@@ -347,7 +347,7 @@ EndFunction
 // Get bucket tagging
 // Gets the bucket tag set
 //
-// Note
+// Note:
 // Method at AWS documentation: [GetBucketTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketTagging.html)
 //
 // Parameters:
@@ -380,7 +380,7 @@ EndFunction
 // Delete bucket tagging
 // Deletes the bucket tag set
 //
-// Note
+// Note:
 // Method at AWS documentation: [DeleteBucketTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketTagging.html)
 //
 // Parameters:
@@ -413,7 +413,7 @@ EndFunction
 // Put bucket versioning
 // Sets the versioning settings for bucket objects
 //
-// Note
+// Note:
 // Method at AWS documentation: [PutBucketVersioning](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketVersioning.html)
 //
 // Parameters:
@@ -454,7 +454,7 @@ EndFunction
 // Get bucket versioning
 // Gets the values of versioning settings of objects in the bucket
 //
-// Note
+// Note:
 // Method at AWS documentation: [GetBucketVersioning](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetBucketVersioning.html)
 //
 // Parameters:
@@ -487,7 +487,7 @@ EndFunction
 // List buckets
 // Gets a list of buckets. It is possible to use filters if they are provided by your service
 //
-// Note
+// Note:
 // Method at AWS documentation: [ListBuckets](@docs.aws.amazon.com/AmazonS3/latest/API/API_ListBuckets.html)
 //
 // Parameters:
@@ -533,10 +533,10 @@ EndFunction
 // Put object
 // Uploads the file to the bucket
 //
-// Note
+// Note:
 // Method at AWS documentation (default): [PutObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)^
 // Method at AWS documentation (multipart): [Multipart upload](@docs.aws.amazon.com/AmazonS3/latest/userguide/mpuoverview.html)
-// You can use the `ChunkSize` field in the basic data to specify the minimum file and chunk size for a chunked upload^^
+// You can use the `ChunkSize` field in the basic data to specify the minimum file and chunk size for a chunked upload.^^
 // For example, `ChunkSize=X` means that all files larger than `X` (in bytes) will be downloaded in chunks, where one chunk will be of size `X`.^^
 // Chunk upload is used for large files. Default `ChunkSize` - 20971520 bytes (20 MB)
 //
@@ -598,7 +598,7 @@ EndFunction
 // Upload full object
 // Upload object with single request
 //
-// Note
+// Note:
 // Method at AWS documentation: [PutObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
 // This is a service method. A `PutObject` method is intended for the common scenario of files uploading^
 // Using this method for large files may cause errors
@@ -633,7 +633,7 @@ EndFunction
 // Init parts upload
 // Initializes the multipart object uploading
 //
-// Note
+// Note:
 // Method at AWS documentation: [CreateMultipartUpload](@docs.aws.amazon.com/AmazonS3/latest/API/API_CreateMultipartUpload.html)
 // This is a service method. A `PutObject` method is intended for the common scenario of files uploading^
 // Using multipart upload for files < 5 MB or when the size of a single chunk is < 5 MB will result in an error
@@ -668,7 +668,7 @@ EndFunction
 // Upload object part
 // Uploads a part of an object for multipart uploading
 //
-// Note
+// Note:
 // Method at AWS documentation: [UploadPart](@docs.aws.amazon.com/AmazonS3/latest/API/API_UploadPart.html)
 // This is a service method. A `PutObject` method is intended for the common scenario of files uploading
 //
@@ -712,7 +712,7 @@ EndFunction
 // Finish parts upload
 // Confirms the multipart uploading finish
 //
-// Note
+// Note:
 // Method at AWS documentation: [CompleteMultipartUpload](@docs.aws.amazon.com/AmazonS3/latest/API/API_CompleteMultipartUpload.html)
 // This is a service method. A `PutObject` method is intended for the common scenario of files uploading
 //
@@ -767,7 +767,7 @@ EndFunction
 // Abort multipart upload
 // Aborts the multipart uploading of the object
 //
-// Note
+// Note:
 // Method at AWS documentation: [AbortMultipartUpload](@docs.aws.amazon.com/AmazonS3/latest/API/API_AbortMultipartUpload.html)
 // This is a service method. A `PutObject` method is intended for the common scenario of files uploading^
 //
@@ -803,7 +803,7 @@ EndFunction
 // Head object
 // Receives information about the properties of the object in the baquette
 //
-// Note
+// Note:
 // Object metadata is contained in the headers
 // Method at AWS documentation: [GetObjectAttributes](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html)
 //
@@ -837,9 +837,9 @@ EndFunction
 // Get object
 // Gets the contents of the object from the bucket
 //
-// Note
+// Note:
 // Method at AWS documentation: [GetObjectAttributes](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAttributes.html)
-// You can use the `ChunkSize` field in the basic data to specify the minimum file and chunk size for a chunked upload^^
+// You can use the `ChunkSize` field in the basic data to specify the minimum file and chunk size for a chunked upload.^^
 // For example, `ChunkSize=X` means that all files larger than `X` (in bytes) will be downloaded in chunks, where one chunk will be of size `X`.^^
 // Chunk upload is used for large files. Default `ChunkSize` - 20971520 bytes (20 MB)
 //
@@ -901,7 +901,7 @@ EndFunction
 // Delete object
 // Removes the object from the bucket
 //
-// Note
+// Note:
 // Method at AWS documentation: [DeleteObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObject.html)
 //
 // Parameters:
@@ -947,7 +947,7 @@ EndFunction
 // Copy object
 // Copies an object from one location to another
 //
-// Note
+// Note:
 // Method at AWS documentation: [CopyObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_CopyObject.html)
 //
 // Parameters:
@@ -990,7 +990,7 @@ EndFunction
 // Put object tagging
 // Sets the tag set of the object
 //
-// Note
+// Note:
 // Setting up a new set removes all existing object tags
 // Method at AWS documentation: [PutObjectTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectTagging.html)
 //
@@ -1034,7 +1034,7 @@ EndFunction
 // Get object tagging
 // Gets the tag set of the object
 //
-// Note
+// Note:
 // Method at AWS documentation: [GetObjectTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectTagging.html)
 //
 // Parameters:
@@ -1078,7 +1078,7 @@ EndFunction
 // Delete object tagging
 // Deletes an objects tag set
 //
-// Note
+// Note:
 // Method at AWS documentation: [DeleteObjectTagging](@docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteObjectTagging.html)
 //
 // Parameters:
@@ -1122,7 +1122,7 @@ EndFunction
 // List objects
 // Gets the list of objects in the selected bucket
 //
-// Note
+// Note:
 // Method at AWS documentation: [ListObjectsV2](@docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html)
 //
 // Parameters:
@@ -1167,7 +1167,7 @@ EndFunction
 // List object versions
 // Gets a list of all versions of objects in the selected bucket
 //
-// Note
+// Note:
 // Method at AWS documentation: [ListObjectVersions](@docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectVersions.html)
 //
 // Parameters:
@@ -1212,7 +1212,7 @@ EndFunction
 // Get object download link
 // Get presigned link for object retrieving without authorization
 //
-// Note
+// Note:
 // In Headers you need to add all x-amz headers that will be used when accessing the received URL
 // Process at AWS documentation: [Download and upload objects with presigned URLs](@docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html)
 //
@@ -1248,7 +1248,7 @@ EndFunction
 // Get object upload link
 // Gets a direct link to upload (put) an object without additional authorization
 //
-// Note
+// Note:
 // In Headers you need to add all x-amz headers that will be used when accessing the received URL
 // Process at AWS documentation: [Download and upload objects with presigned URLs](@docs.aws.amazon.com/AmazonS3/latest/userguide/using-presigned-url.html)
 //
@@ -1607,7 +1607,7 @@ Function GetObjectInChunks(Val BasicData
                 If N = Attempts Then
 
                     Message(ErrorDescription());
-                    Raise "Failed to retrieve the file!";
+                    Raise "Failed to retrieve the file!!";
 
                 Else
                     Message("Chunk upload error " + String(N) + "/" + String(Attempts));

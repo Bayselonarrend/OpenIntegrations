@@ -48,7 +48,7 @@
 // Create connection !NOCLI
 // Creates a new SSH session
 //
-// Note
+// Note:
 // Get the connection configuration using the functions `GetSettingsLoginPassword`,^^
 // `GetSettingsPrivateKey`, `GetSettingsViaAgent`
 //
@@ -67,8 +67,8 @@ EndFunction
 // Get connection configuration
 // Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions
 //
-// Note
-// Can be passed as the `Connection` parameter in other functions instead of the actual connection from the `CreateConnection` function.
+// Note:
+// Can be passed as the `Connection` parameter in other functions instead of the actual connection from the `CreateConnection` function.^^
 // At the same time, a new connection will be opened and closed within the called function
 // It is not recommended to use the connection configuration for multiple requests to the SSH server.^^
 // This functionality is primarily intended for the CLI version of OInt, where maintaining a connection between calls is not possible

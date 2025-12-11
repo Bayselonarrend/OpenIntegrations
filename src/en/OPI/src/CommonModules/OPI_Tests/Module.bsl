@@ -3462,7 +3462,7 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
 
     Process(Result, "Telegram", "SendTextMessage", "Keyboard structure");
 
-    Text = "%F0%9F%94%A5 *New release\!*
+    Text = "%F0%9F%94%A5 *New release\!!*
     |
     |%F0%9F%8F%B0 *Repository*: [240596448/devtools](https://github.com/240596448/devtools)
     |%F0%9F%94%A2 *Version*: \{0.6.0}
@@ -3545,7 +3545,7 @@ Procedure Telegram_SendImage(FunctionParameters)
 
     Process(Result, "Telegram", "SendImage", "Text + Emoji");
 
-    Text = "%F0%9F%94%A5 *New release\!*
+    Text = "%F0%9F%94%A5 *New release\!!*
     |
     |%F0%9F%8F%B0 *Repository*: [240596448/devtools](https://github.com/240596448/devtools)
     |%F0%9F%94%A2 *Version*: \{0.6.0}
@@ -3561,7 +3561,7 @@ Procedure Telegram_SendImage(FunctionParameters)
 
     Process(Result, "Telegram", "SendImage", "Complex");
 
-    OPI_Tools.RemoveFileWithTry(ImagePath, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(ImagePath, "Failed to delete the temporary file after the test!!");
 
     OPI_Tools.Pause(5);
 
@@ -3595,7 +3595,7 @@ Procedure Telegram_SendVideo(FunctionParameters)
 
     // END
 
-    OPI_Tools.RemoveFileWithTry(VideoPath, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(VideoPath, "Failed to delete the temporary file after the test!!");
     Process(Result, "Telegram", "SendVideo", "Binary", FunctionParameters, Text);
 
     OPI_Tools.Pause(5);
@@ -3630,7 +3630,7 @@ Procedure Telegram_SendAudio(FunctionParameters)
 
     // END
 
-    OPI_Tools.RemoveFileWithTry(AudioPath, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(AudioPath, "Failed to delete the temporary file after the test!!");
     Process(Result, "Telegram", "SendAudio", "Binary", FunctionParameters, Text);
 
     OPI_Tools.Pause(5);
@@ -3670,7 +3670,7 @@ Procedure Telegram_SendDocument(FunctionParameters)
 
     // END
 
-    OPI_Tools.RemoveFileWithTry(DocumentPath, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(DocumentPath, "Failed to delete the temporary file after the test!!");
     Process(Result, "Telegram", "SendDocument", "Binary", FunctionParameters, Text);
 
     OPI_Tools.Pause(5);
@@ -3705,7 +3705,7 @@ Procedure Telegram_SendGif(FunctionParameters)
 
     // END
 
-    OPI_Tools.RemoveFileWithTry(GifPath, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(GifPath, "Failed to delete the temporary file after the test!!");
     Process(Result, "Telegram", "SendGif", "Binary", FunctionParameters, Text);
 
     OPI_Tools.Pause(5);
@@ -3750,9 +3750,9 @@ Procedure Telegram_SendMediaGroup(FunctionParameters)
 
     Result = OPI_Telegram.SendMediaGroup(Token, ChannelID, Text, MediaGroup);
 
-    OPI_Tools.RemoveFileWithTry(VideoPath   , "Failed to delete the temporary file after the test!");
-    OPI_Tools.RemoveFileWithTry(ImagePath   , "Failed to delete the temporary file after the test!");
-    OPI_Tools.RemoveFileWithTry(DocumentPath, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(VideoPath   , "Failed to delete the temporary file after the test!!");
+    OPI_Tools.RemoveFileWithTry(ImagePath   , "Failed to delete the temporary file after the test!!");
+    OPI_Tools.RemoveFileWithTry(DocumentPath, "Failed to delete the temporary file after the test!!");
 
     Process(Result, "Telegram", "SendMediaGroup", "Documents");
 
@@ -3808,7 +3808,7 @@ Procedure Telegram_SendPoll(FunctionParameters)
     Token     = FunctionParameters["Telegram_Token"];
     ChatID    = FunctionParameters["Telegram_ChatID"];
     ChannelID = FunctionParameters["Telegram_ChannelID"];
-    Question  = "What's your favorite color?";
+    Question  = "What's your favorite color??";
 
     AnswersArray = New Array;
     AnswersArray.Add("Red");
@@ -4243,7 +4243,7 @@ Procedure VK_CreatePost(FunctionParameters)
 
     Process(Result, "VK", "CreatePost", "Path", FunctionParameters);
 
-    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
@@ -4290,14 +4290,14 @@ Procedure VK_CreateCompositePost(FunctionParameters)
     // END
 
     Process(Result, "VK", "CreateCompositePost");
-    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
 Procedure VK_CreatePoll(FunctionParameters)
 
     Parameters = GetVKParameters();
-    Question   = "What's your favorite color?";
+    Question   = "What's your favorite color??";
 
     OptionArray = New Array;
     OptionArray.Add("Red");
@@ -4401,15 +4401,15 @@ Procedure VK_CreateStory(FunctionParameters)
 
     Process(Result, "VK", "CreateStory", "Path");
 
-    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
 Procedure VK_CreateDiscussion(FunctionParameters)
 
     Parameters = GetVKParameters();
-    Name       = "Discussing: Which color is better?";
-    Message    = "Red, yellow, blue, or some other?";
+    Name       = "Discussing: Which color is better??";
+    Message    = "Red, yellow, blue, or some other??";
 
     Result = OPI_VK.CreateDiscussion(Name, Message, Parameters);
 
@@ -5213,7 +5213,7 @@ Procedure YandexDisk_UploadFile(FunctionParameters)
 
     // END
 
-    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
     Process(Result, "YandexDisk", "UploadFile");
 
@@ -7982,7 +7982,7 @@ Procedure Dropbox_UploadFile(FunctionParameters)
 
     Process(Result, "Dropbox", "UploadFile", , Path);
 
-    OPI_Tools.RemoveFileWithTry(ImagePath, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(ImagePath, "Failed to delete the temporary file after the test!!");
 
     If Not OPI_Tools.IsOneScript() And FunctionParameters.Property("Big") Then
 
@@ -12546,7 +12546,7 @@ Procedure VKTeams_SendFile(FunctionParameters)
 
     Process(Result, "VKTeams", "SendFile", , FunctionParameters);
 
-    OPI_Tools.RemoveFileWithTry(FilePath, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(FilePath, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
@@ -12641,7 +12641,7 @@ Procedure VKTeams_SendVoice(FunctionParameters)
 
     Process(Result, "VKTeams", "SendVoice", , FunctionParameters);
 
-    OPI_Tools.RemoveFileWithTry(FilePath, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(FilePath, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
@@ -12699,7 +12699,7 @@ Procedure VKTeams_ChangeChatPicture(FunctionParameters)
 
     Process(Result, "VKTeams", "ChangeChatPicture");
 
-    OPI_Tools.RemoveFileWithTry(FilePath, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(FilePath, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
@@ -12921,7 +12921,7 @@ Procedure VKTeams_AnswerButtonEvent(FunctionParameters)
                 If callbackData["callbackData"] = "ButtonEvent1" Then
 
                     EventID = callbackData["queryId"];
-                    Result  = OPI_VKTeams.AnswerButtonEvent(Token, EventID, "Get it!");
+                    Result  = OPI_VKTeams.AnswerButtonEvent(Token, EventID, "Get it!!");
 
                     Process(Result, "VKTeams", "AnswerButtonEvent"); // SKIP
 
@@ -14562,8 +14562,8 @@ Procedure S3_GetObject(FunctionParameters)
 
     Process(Result, "S3", "GetObject", "Big BD", 34432400);
 
-    OPI_Tools.RemoveFileWithTry(BigTempFile, "Failed to delete the temporary file after the test!");
-    OPI_Tools.RemoveFileWithTry(TempFile   , "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(BigTempFile, "Failed to delete the temporary file after the test!!");
+    OPI_Tools.RemoveFileWithTry(TempFile   , "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
@@ -15378,7 +15378,7 @@ Procedure SQLite_AddRecords(FunctionParameters)
     Result = OPI_SQLite.AddRecords("test1", RowMap, , Base);
     Process(Result, "SQLite", "AddRecords", "An obscure column");
 
-    OPI_Tools.RemoveFileWithTry(PictureFile, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(PictureFile, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
@@ -18111,7 +18111,7 @@ Procedure GreenAPI_SendPoll(FunctionParameters)
     ApiTokenInstance = FunctionParameters["GreenAPI_Token"];
 
     ChatID = FunctionParameters["GreenAPI_TestGroupID"];
-    Text   = "What's your favorite color?";
+    Text   = "What's your favorite color??";
 
     Variants = New Array;
     Variants.Add("Red");
@@ -19224,7 +19224,7 @@ Procedure HTTPClient_SetResponseFile(FunctionParameters)
 
     Process(CheckResult, "HTTPClient", "SetResponseFile", "Body", TFN);
 
-    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
@@ -19237,7 +19237,7 @@ Procedure HTTPClient_SetDataType(FunctionParameters)
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
-        .SetStringBody("# Hello world!")
+        .SetStringBody("# Hello world!!")
         .SetDataType(MIMEType) // <---
         .ProcessRequest("POST")
         .ReturnResponseAsJSONObject();
@@ -19294,7 +19294,7 @@ Procedure HTTPClient_SetStringBody(FunctionParameters)
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
 
-    Text     = "Hello world!";
+    Text     = "Hello world!!";
     Encoding = "Windows-1251";
 
     Result = OPI_HTTPRequests.NewRequest()
@@ -19449,7 +19449,7 @@ Procedure HTTPClient_UseEncoding(FunctionParameters)
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
 
-    Text     = "Hello world!";
+    Text     = "Hello world!!";
     Encoding = "Windows-1251";
 
     Result = OPI_HTTPRequests.NewRequest()
@@ -19917,7 +19917,7 @@ Procedure HTTPClient_ReturnResponseFilename(FunctionParameters)
 
     Process(Result, "HTTPClient", "ReturnResponseFilename", , TFN);
 
-    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
@@ -20348,7 +20348,7 @@ Procedure OpenAI_CreateTranscription(FunctionParameters)
 
     // END
 
-    OPI_Tools.RemoveFileWithTry(Audio, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(Audio, "Failed to delete the temporary file after the test!!");
 
     Process(Result, "OpenAI", "CreateTranscription");
 
@@ -21686,7 +21686,7 @@ Procedure FTP_UploadFile(FunctionParameters)
 
     EndDo;
 
-    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
@@ -22067,7 +22067,7 @@ Procedure FTP_SaveFile(FunctionParameters)
 
     EndDo;
 
-    OPI_Tools.RemoveFileWithTry(FileName, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(FileName, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
@@ -23352,7 +23352,7 @@ Procedure SFTP_UploadFile(FunctionParameters)
 
     EndDo;
 
-    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
@@ -23784,7 +23784,7 @@ Procedure SFTP_SaveFile(FunctionParameters)
 
     EndDo;
 
-    OPI_Tools.RemoveFileWithTry(FileName, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(FileName, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 

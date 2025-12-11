@@ -1,7 +1,7 @@
 ﻿    Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "461699897";
     ChannelID = "@testsichee";
-    Question  = "What's your favorite color?";
+    Question  = "What's your favorite color??";
 
     AnswersArray = New Array;
     AnswersArray.Add("Red");

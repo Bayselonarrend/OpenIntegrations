@@ -1,5 +1,5 @@
 ﻿    Parameters = GetVKParameters();
-    Question   = "What's your favorite color?";
+    Question   = "What's your favorite color??";
 
     OptionArray = New Array;
     OptionArray.Add("Red");

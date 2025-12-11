@@ -39,7 +39,7 @@ If the data type is not set manually, it will be matched during the process of s
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
-        .SetStringBody("# Hello world!")
+        .SetStringBody("# Hello world!!")
         .SetDataType(MIMEType) // <---
         .ProcessRequest("POST")
         .ReturnResponseAsJSONObject();
