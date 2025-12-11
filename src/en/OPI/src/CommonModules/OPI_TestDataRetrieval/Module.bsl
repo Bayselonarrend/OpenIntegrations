@@ -120,7 +120,7 @@ Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True)
         WriteCLICall(Library, Method, WriteOptions);
     EndIf;
 
-    OPI_Tools.RemoveFileWithTry(ResultFile, "Failed to delete the temporary file after the test!");
+    OPI_Tools.RemoveFileWithTry(ResultFile, "Failed to delete the temporary file after the test!!");
 
     Return Result;
 
@@ -582,7 +582,7 @@ Function GetFilePath(Val Path) Export
         Path   = TFN;
         Binary = New BinaryData(Path);
 
-        OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!");
+        OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
     Else
 
@@ -8724,7 +8724,7 @@ Function Check_GreenAPI_GetAccountInformation(Val Result, Val Option)
         Result["deviceId"] = "***";
         Result["phone"]    = "***";
     Except
-        Message("Failed to replace the secrets!");
+        Message("Failed to replace the secrets!!");
     EndTry;
 
     ExpectsThat(Result["deviceId"]).Заполнено();
@@ -8836,7 +8836,7 @@ Function Check_GreenAPI_GetGroupInformation(Val Result, Val Option)
         Result["owner"]                 = "***";
         Result["participants"][0]["id"] = "***";
     Except
-        Message("Failed to replace the secrets!");
+        Message("Failed to replace the secrets!!");
     EndTry;
 
     ExpectsThat(Result["groupId"]).Заполнено();
@@ -8860,7 +8860,7 @@ Function Check_GreenAPI_AddGroupMember(Val Result, Val Option)
     Try
         Result["addParticipant"] = True;
     Except
-        Message("Failed to replace the secrets!");
+        Message("Failed to replace the secrets!!");
     EndTry;
 
     ExpectsThat(Result["addParticipant"]).Равно(True);
@@ -8874,7 +8874,7 @@ Function Check_GreenAPI_ExcludeGroupMember(Val Result, Val Option)
     Try
         Result["removeParticipant"] = True;
     Except
-        Message("Failed to replace the secrets!");
+        Message("Failed to replace the secrets!!");
     EndTry;
 
     ExpectsThat(Result["removeParticipant"]).Равно(True);
@@ -8888,7 +8888,7 @@ Function Check_GreenAPI_SetAdminRights(Val Result, Val Option)
     Try
         Result["setGroupAdmin"] = True;
     Except
-        Message("Failed to replace the secrets!");
+        Message("Failed to replace the secrets!!");
     EndTry;
 
     ExpectsThat(Result["setGroupAdmin"]).Равно(True);
@@ -8902,7 +8902,7 @@ Function Check_GreenAPI_RevokeAdminRights(Val Result, Val Option)
     Try
         Result["removeAdmin"] = True;
     Except
-        Message("Failed to replace the secrets!");
+        Message("Failed to replace the secrets!!");
     EndTry;
 
     ExpectsThat(Result["removeAdmin"]).Равно(True);
@@ -9734,7 +9734,7 @@ Function Check_HTTPClient_SetStringBody(Val Result, Val Option)
         EndTry;
     EndTry;
 
-    Text     = "Hello world!";
+    Text     = "Hello world!!";
     Encoding = "Windows-1251";
 
     ExpectsThat(Result["headers"]["Content-Type"]).Равно("text/plain; charset=" + Encoding);

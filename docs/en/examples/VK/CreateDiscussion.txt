@@ -1,5 +1,5 @@
 ﻿    Parameters = GetVKParameters();
-    Name       = "Discussing: Which color is better?";
-    Message    = "Red, yellow, blue, or some other?";
+    Name       = "Discussing: Which color is better??";
+    Message    = "Red, yellow, blue, or some other??";
 
     Result = OPI_VK.CreateDiscussion(Name, Message, Parameters);

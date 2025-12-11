@@ -124,7 +124,7 @@ EndFunction
 // Execute SQL query
 // Executes an arbitrary SQL query
 //
-// Note
+// Note:
 // Query parameters are specified as an array of structures of the following type: `{'Type': 'Value'}`.^^
 // List of available types is described on the initial page of the MSSQL library documentation
 // Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword^^
@@ -174,7 +174,7 @@ EndFunction
 // Generate connection string
 // Forms a connection string from the passed data
 //
-// Note
+// Note:
 // This function allows you to quickly assemble a basic connection string.^^
 // In case you need more flexible configuration, you can also form (obtain) this connection string on your own (ADO format)
 //
@@ -229,7 +229,7 @@ EndFunction
 // Get TLS Settings
 // Forms settings for using TLS
 //
-// Note
+// Note:
 // Tls settings can only be set when a connection is created: explicitly, by using the `CreateConnection` function^^
 // or implicit, when passing the connection string to ORM methods.
 // Passing Tls settings together with passing an already created connection to the `Connection` parameter will be ignored
@@ -298,7 +298,7 @@ EndFunction
 // Create table
 // Creates an empty table in the database
 //
-// Note
+// Note:
 // List of available types is described on the initial page of the MSSQL library documentation
 //
 // Parameters:
@@ -356,7 +356,7 @@ EndFunction
 // Ensure table
 // Creates a new table if it does not exist or updates the composition of columns in an existing table
 //
-// Note
+// Note:
 // As a result of changing the table structure, data may be lost!^^
 // It is recommended to test this method on test data beforehand
 // This function does not update the data type of existing columns
@@ -430,7 +430,7 @@ EndFunction
 // Add rows
 // Adds new rows to the table
 //
-// Note
+// Note:
 // Record data is specified as an array of structures of the following type:^
 // `{'Field name 1': {'Type': 'Value'}, 'Field name 2': {'Type': 'Value'},...}`
 // List of available types is described on the initial page of the MSSQL library documentation
@@ -489,7 +489,7 @@ EndFunction
 // Update records
 // Updates the value of records by selected criteria
 //
-// Note
+// Note:
 // Record data is specified as an array of structures of the following type:^
 // `{'Field name 1': {'Type': 'Value'}, 'Field name 2': {'Type': 'Value'},...}`
 // List of available types is described on the initial page of the MSSQL library documentation
@@ -535,10 +535,10 @@ EndFunction
 // Get records filter strucutre
 // Gets the template structure for filtering records in ORM queries
 //
-// Note
+// Note:
 // The use of the `raw` feature is necessary for compound constructions like `BEETWEEN`.^^
 // For example: with `raw:false` the filter `type:BETWEEN` `value:10 AND 20` will be interpolated as `BETWEEN ?1 `^^
-// where `?1 = "10 AND 20,"' which would cause an error.
+// where `?1 = "10 AND 20,"' which would cause an error..^^
 // In such a case, you must use `raw:true` to set the condition directly in the query text
 //
 // Parameters:

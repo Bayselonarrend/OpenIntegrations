@@ -25,7 +25,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETAUTHORIZATIONLINK";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data and settings";
     NewLine.MethodDescription   = "Forms a link for authorization via the browser
     |    Data structure for option --auth:
@@ -75,7 +75,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTOKEN";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data and settings";
 
 
@@ -86,7 +86,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "REFRESHTOKEN";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data and settings";
     NewLine.MethodDescription   = "Updates the v2 token using the refresh_token
     |    Data structure for option --auth:
@@ -111,7 +111,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECUSTOMTWEET";
     NewLine.Parameter     = "--text";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Tweet text (optional, def. val. - Empty value)";
+    NewLine.Description     = "Tweet text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tweets";
     NewLine.MethodDescription   = "Creates a tweet with custom content
     |    Data structure for option --auth:
@@ -136,7 +136,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECUSTOMTWEET";
     NewLine.Parameter     = "--media";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "Array of binary data or file paths (optional, def. val. - Empty value)";
+    NewLine.Description     = "Array of binary data or file paths (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tweets";
 
 
@@ -147,7 +147,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECUSTOMTWEET";
     NewLine.Parameter     = "--options";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Array of poll options, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Array of poll options, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tweets";
 
 
@@ -158,7 +158,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECUSTOMTWEET";
     NewLine.Parameter     = "--dur";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Poll duration if necessary (poll without duration is not created) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Poll duration if necessary (poll without duration is not created) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tweets";
 
 
@@ -169,7 +169,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECUSTOMTWEET";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tweets";
 
 
@@ -205,7 +205,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATETEXTTWEET";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tweets";
 
 
@@ -252,7 +252,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEIMAGETWEET";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tweets";
 
 
@@ -299,7 +299,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEGIFTWEET";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tweets";
 
 
@@ -346,7 +346,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEVIDEOTWEET";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tweets";
 
 
@@ -404,7 +404,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPOLLTWEET";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tweets";
 
 
@@ -451,7 +451,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADATTACHMENTSARRAY";
     NewLine.Parameter     = "--auth";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization data. See GetStandardParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tweets";
 
     Return CompositionTable;

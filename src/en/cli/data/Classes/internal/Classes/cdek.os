@@ -48,7 +48,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTOKEN";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
 
@@ -82,7 +82,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCASHBOXCHECKSBYDATE";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
 
@@ -116,7 +116,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDELIVERYCASHREGISTRY";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
 
@@ -150,7 +150,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDELIVERYCASHTRANSFERS";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
 
@@ -173,7 +173,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOFFICELIST";
     NewLine.Parameter     = "--filter";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Office filter. See GetOfficeFilterDescription (optional, def. val. - Empty value)";
+    NewLine.Description     = "Office filter. See GetOfficeFilterDescription (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -184,7 +184,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOFFICELIST";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
 
@@ -207,7 +207,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETREGIONSLIST";
     NewLine.Parameter     = "--countries";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Array of country codes in ISO_31661_alpha2 format for selection (optional, def. val. - Empty value)";
+    NewLine.Description     = "Array of country codes in ISO_31661_alpha2 format for selection (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -218,7 +218,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETREGIONSLIST";
     NewLine.Parameter     = "--page";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Result page (optional, def. val. - Empty value)";
+    NewLine.Description     = "Result page (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -229,7 +229,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETREGIONSLIST";
     NewLine.Parameter     = "--lang";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "Language: rus, eng, zho (optional, def. val. - rus)";
+    NewLine.Description     = "Language: rus, eng, zho (optional, def. val.. - rus)";
     NewLine.Region      = "Common methods";
 
 
@@ -240,7 +240,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETREGIONSLIST";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
 
@@ -251,7 +251,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOFFICEFILTERDESCRIPTION";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
     NewLine.MethodDescription   = "Gets an empty layout of the filter for getting the list of offices in the GetOfficeList function";
 
@@ -286,7 +286,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEORDER";
     NewLine.Parameter     = "--ostore";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag of Online store order type (optional, def. val. - False)";
+    NewLine.Description     = "Flag of Online store order type (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -297,7 +297,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEORDER";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -342,7 +342,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEORDER";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -376,7 +376,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEORDER";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -410,7 +410,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETORDER";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -444,7 +444,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETORDERBYNUMBER";
     NewLine.Parameter     = "--internal";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "Type of order number. True > number in the customer base, False > CDEK number (optional, def. val. - False)";
+    NewLine.Description     = "Type of order number. True > number in the customer base, False > CDEK number (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -455,7 +455,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETORDERBYNUMBER";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -500,7 +500,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECUSTOMERREFUND";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -534,7 +534,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEREFUSAL";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -568,7 +568,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATERECEIPT";
     NewLine.Parameter     = "--type";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Receipt type (language) (optional, def. val. - tpl_russia)";
+    NewLine.Description     = "Receipt type (language) (optional, def. val.. - tpl_russia)";
     NewLine.Region      = "Orders management";
 
 
@@ -579,7 +579,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATERECEIPT";
     NewLine.Parameter     = "--count";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Number of copies of one receipt per sheet (optional, def. val. - 2)";
+    NewLine.Description     = "Number of copies of one receipt per sheet (optional, def. val.. - 2)";
     NewLine.Region      = "Orders management";
 
 
@@ -590,7 +590,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATERECEIPT";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -624,7 +624,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETRECEIPT";
     NewLine.Parameter     = "--getfile";
     NewLine.ParameterTrim = "-g";
-    NewLine.Description     = "True > PDF file data will be received, False > receives CDEK server response (optional, def. val. - False)";
+    NewLine.Description     = "True > PDF file data will be received, False > receives CDEK server response (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -635,7 +635,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETRECEIPT";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -669,7 +669,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEBARCODE";
     NewLine.Parameter     = "--count";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Number of copies (optional, def. val. - 1)";
+    NewLine.Description     = "Number of copies (optional, def. val.. - 1)";
     NewLine.Region      = "Orders management";
 
 
@@ -680,7 +680,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEBARCODE";
     NewLine.Parameter     = "--format";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Print format: A4, A5, A6, A7 (optional, def. val. - A4)";
+    NewLine.Description     = "Print format: A4, A5, A6, A7 (optional, def. val.. - A4)";
     NewLine.Region      = "Orders management";
 
 
@@ -691,7 +691,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEBARCODE";
     NewLine.Parameter     = "--lang";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "Barcode language: RUS, ENG (optional, def. val. - RUS)";
+    NewLine.Description     = "Barcode language: RUS, ENG (optional, def. val.. - RUS)";
     NewLine.Region      = "Orders management";
 
 
@@ -702,7 +702,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEBARCODE";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -736,7 +736,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETBARCODE";
     NewLine.Parameter     = "--getfile";
     NewLine.ParameterTrim = "-g";
-    NewLine.Description     = "True > PDF file data will be received, False > receives CDEK server response (optional, def. val. - False)";
+    NewLine.Description     = "True > PDF file data will be received, False > receives CDEK server response (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -747,7 +747,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETBARCODE";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -803,7 +803,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPREALERT";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -837,7 +837,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPREALERT";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -871,7 +871,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPASSPORTDATASTATUS";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -905,7 +905,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCASHBOXCHECK";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -916,7 +916,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETORDERDESCRIPTION";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
     NewLine.MethodDescription   = "Gets the layout of order for the CreateOrder function";
 
@@ -928,7 +928,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETORDERDESCRIPTION";
     NewLine.Parameter     = "--required";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "True > only required fields will be in the set (optional, def. val. - False)";
+    NewLine.Description     = "True > only required fields will be in the set (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -939,7 +939,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETORDERDESCRIPTION";
     NewLine.Parameter     = "--ostore";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Flag of including fields in the layout exclusively for online store orders (optional, def. val. - False)";
+    NewLine.Description     = "Flag of including fields in the layout exclusively for online store orders (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
 
@@ -973,7 +973,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETAVAILABLEDELIVERYINTERVALS";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
 
 
@@ -1007,7 +1007,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECOURIERINVITATION";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
 
 
@@ -1041,7 +1041,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCOURIERINVITATION";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
 
 
@@ -1074,7 +1074,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETECOURIERINVITATION";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
 
 
@@ -1108,7 +1108,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "REGISTERDELIVERYAPPOINTMENT";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
 
 
@@ -1142,7 +1142,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDELIVERYAPPOINTMENT";
     NewLine.Parameter     = "--testapi";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Flag to use test API for requests (optional, def. val. - False)";
+    NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
 
 
@@ -1153,7 +1153,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCOURIERINVITATIONSDESCRIPTION";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
     NewLine.MethodDescription   = "Gets the layout for creating a request for courier call in the CreateCourierInvitation function";
 
@@ -1165,7 +1165,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCOURIERINVITATIONSDESCRIPTION";
     NewLine.Parameter     = "--required";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "True > only required fields will be in the set (optional, def. val. - False)";
+    NewLine.Description     = "True > only required fields will be in the set (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
 
 
@@ -1176,7 +1176,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETAPPOINTMENTDESCRIPTION";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
     NewLine.MethodDescription   = "Gets the layout to create about delivery in the RegisterDeliveryAppointment function";
 
@@ -1188,7 +1188,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETAPPOINTMENTDESCRIPTION";
     NewLine.Parameter     = "--required";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "True > only required fields will be in the set (optional, def. val. - False)";
+    NewLine.Description     = "True > only required fields will be in the set (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
 
     Return CompositionTable;

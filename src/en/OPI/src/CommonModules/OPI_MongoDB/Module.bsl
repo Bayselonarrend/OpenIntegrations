@@ -751,7 +751,7 @@ EndFunction
 // Create user
 // Creates a new user
 //
-// Note
+// Note:
 // Role can be defined in one of the following formats:^
 // Structure: `{ role: "name", db: "database" }`^
 // String: `name рoлand`
@@ -780,7 +780,7 @@ EndFunction
 // Update user
 // Modifies existing user data
 //
-// Note
+// Note:
 // The passed roles completely replace the user's role list
 // Role can be defined in one of the following formats:^
 // Structure: `{ role: "name", db: "database" }`^
@@ -810,11 +810,11 @@ EndFunction
 // Get users
 // Gets data of one or more users
 //
-// Note
+// Note:
 // The user can be specified in one of the following formats:^
 // String: `name of user`^
 // Structure: `{ user: <name>, db: <database> }`^
-// Array: `[ { user: <name>, db: <бaзa data> }, { user: <name>, db: <бaзa data> }, ... ]`
+// Array: `[ { user: <name>, db: <бafor data> }, { user: <name>, db: <бafor data> }, ... ]`
 //
 // Parameters:
 // Connection - String, Arbitrary - Connection or connection string - dbc
@@ -907,7 +907,7 @@ EndFunction
 // Create role
 // Creates a new role
 //
-// Note
+// Note:
 // Role can be defined in one of the following formats:^
 // Structure: `{ role: "name", db: "database" }`^
 // String: `name рoлand`
@@ -936,7 +936,7 @@ EndFunction
 // Update role
 // Modifies the data of an existing role
 //
-// Note
+// Note:
 // The passed roles and privileges completely replace the current role data
 // Role can be defined in one of the following formats:^
 // Structure: `{ role: "name", db: "database" }`^
@@ -1030,7 +1030,7 @@ EndFunction
 // Grant roles
 // Grants selected roles to a user
 //
-// Note
+// Note:
 // Role can be defined in one of the following formats:^
 // Structure: `{ role: "name", db: "database" }`^
 // String: `name рoлand`
@@ -1057,7 +1057,7 @@ EndFunction
 // Revoke roles
 // Revokes selected roles from a user
 //
-// Note
+// Note:
 // Role can be defined in one of the following formats:^
 // Structure: `{ role: "name", db: "database" }`^
 // String: `name рoлand`
@@ -1084,7 +1084,7 @@ EndFunction
 // Get role privilege structure
 // Forms the privilege information structure for use when working with roles
 //
-// Note
+// Note:
 // Resource can be defined in one of the following formats:^
 // Structure for collection: `{ db: "database", collection: "collection name" }`
 // Structure for toлawithтерa: `{ cluster : true }`
