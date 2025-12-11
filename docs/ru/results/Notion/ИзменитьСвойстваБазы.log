@@ -1,9 +1,9 @@
 ﻿{
  "object": "database",
- "id": "2c582aa7-fc4e-8153-90ff-d0fb1859d22f",
+ "id": "2c682aa7-fc4e-8142-a766-c3cc5ea317bd",
  "cover": null,
  "icon": null,
- "created_time": "2025-12-10T11:49:00Z",
+ "created_time": "2025-12-11T07:04:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -12,7 +12,7 @@
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2025-12-10T11:49:00Z",
+ "last_edited_time": "2025-12-11T07:04:00Z",
  "title": [
   {
    "type": "text",
@@ -53,78 +53,15 @@
  ],
  "is_inline": false,
  "properties": {
-  "Описание": {
-   "id": "KIHO",
-   "name": "Описание",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
-  },
-  "Картинка": {
-   "id": "Xey~",
-   "name": "Картинка",
-   "description": null,
-   "type": "files",
-   "files": {}
-  },
-  "Дата создания": {
-   "id": "Za%3Bv",
-   "name": "Дата создания",
-   "description": null,
-   "type": "date",
-   "date": {}
-  },
-  "Телефон": {
-   "id": "%5BUsB",
-   "name": "Телефон",
-   "description": null,
-   "type": "phone_number",
-   "phone_number": {}
-  },
-  "Статус": {
-   "id": "%5Cpbs",
-   "name": "Статус",
-   "description": null,
-   "type": "select",
-   "select": {
-    "options": [
-     {
-      "id": "3b7d2fda-9a28-4911-80e7-1713a0933a3f",
-      "name": "Новый",
-      "color": "green",
-      "description": null
-     },
-     {
-      "id": "2cbd7887-a6be-4de7-838e-4eb4182ce285",
-      "name": "В работе",
-      "color": "yellow",
-      "description": null
-     },
-     {
-      "id": "1a443dc3-f6aa-47d1-a33a-dc2b7ca8b082",
-      "name": "Удаленный",
-      "color": "red",
-      "description": null
-     }
-    ]
-   }
-  },
-  "Пользователь": {
-   "id": "%5D%5CEr",
-   "name": "Пользователь",
-   "description": null,
-   "type": "people",
-   "people": {}
-  },
   "Активен": {
-   "id": "ljsz",
+   "id": "FPL%7C",
    "name": "Активен",
    "description": null,
    "type": "checkbox",
    "checkbox": {}
   },
   "Номер": {
-   "id": "%7C%5EFk",
+   "id": "LUeO",
    "name": "Номер",
    "description": null,
    "type": "number",
@@ -132,12 +69,75 @@
     "format": "number"
    }
   },
+  "Описание": {
+   "id": "Mkcs",
+   "name": "Описание",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
+  "Дата создания": {
+   "id": "YIrx",
+   "name": "Дата создания",
+   "description": null,
+   "type": "date",
+   "date": {}
+  },
+  "Пользователь": {
+   "id": "ZIF%3D",
+   "name": "Пользователь",
+   "description": null,
+   "type": "people",
+   "people": {}
+  },
   "Почта": {
-   "id": "~Nd%5D",
+   "id": "bsi%3C",
    "name": "Почта",
    "description": null,
    "type": "rich_text",
    "rich_text": {}
+  },
+  "Картинка": {
+   "id": "mT%3AZ",
+   "name": "Картинка",
+   "description": null,
+   "type": "files",
+   "files": {}
+  },
+  "Телефон": {
+   "id": "mmQ_",
+   "name": "Телефон",
+   "description": null,
+   "type": "phone_number",
+   "phone_number": {}
+  },
+  "Статус": {
+   "id": "r%3FCY",
+   "name": "Статус",
+   "description": null,
+   "type": "select",
+   "select": {
+    "options": [
+     {
+      "id": "fe9f2a41-56d5-4800-ad6f-24b72d5243cf",
+      "name": "Новый",
+      "color": "green",
+      "description": null
+     },
+     {
+      "id": "cbff84ef-c028-4686-92ff-35aa07c7acab",
+      "name": "В работе",
+      "color": "yellow",
+      "description": null
+     },
+     {
+      "id": "a046e190-aeb6-48cf-b472-4683428b40f4",
+      "name": "Удаленный",
+      "color": "red",
+      "description": null
+     }
+    ]
+   }
   },
   "Имя": {
    "id": "title",
@@ -151,9 +151,9 @@
   "type": "page_id",
   "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
  },
- "url": "https://www.notion.so/2c582aa7fc4e815390ffd0fb1859d22f",
+ "url": "https://www.notion.so/2c682aa7fc4e8142a766c3cc5ea317bd",
  "public_url": null,
  "archived": false,
  "in_trash": false,
- "request_id": "4f50f082-b888-4e79-a471-0254c472d7ec"
+ "request_id": "a21bde40-09de-4d62-93c2-7548a38db870"
 }

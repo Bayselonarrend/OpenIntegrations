@@ -3,5 +3,5 @@
 oint greenapi ИзменитьТекстСообщения ^
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
   --chat "***" ^
-  --message "3EB0A5CB8FFC0B67E26DE3" ^
+  --message "3EB045EE158CD0B44CE8AE" ^
   --text "Новый текст сообщения"
