@@ -2052,7 +2052,7 @@
    "***"
   ]
  ],
- "total_duration": 679467023,
- "load_duration": 24558962,
- "prompt_eval_count": 22
+ "total_duration": 1228218213,
+ "load_duration": 27377039,
+ "prompt_eval_count": 15
 }

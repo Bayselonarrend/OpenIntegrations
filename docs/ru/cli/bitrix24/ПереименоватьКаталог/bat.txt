@@ -1,5 +1,5 @@
 oint bitrix24 ПереименоватьКаталог ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --folderid 48240 ^
+  --folderid 48510 ^
   --title "Новый каталог" ^
   --token "***"
