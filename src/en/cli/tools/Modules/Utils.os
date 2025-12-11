@@ -49,7 +49,7 @@ Function ConvertBase64ToBinary(Val Entry) Export
 	InputFile = New File(Entry);
 
 	If Not InputFile.Exists() Then
-		Raise("Input File Not Found!");
+		Raise("Input File Not Found!!");
 	EndIf;
 
 	TextDocument = New TextDocument();

@@ -116,7 +116,7 @@ EndFunction
 // Read binary data !NOCLI
 // Reads data from the specified connection
 //
-// Note
+// Note:
 // When working with an infinite stream of incoming data, it is obligatory to specify the MaxSize parameter, because^^
 // endless data retrieval can cause hang-ups
 // If the connection is closed, an error occurs, or EOF is detected, the read is terminated in either case
@@ -152,7 +152,7 @@ EndFunction
 // Read line !NOCLI
 // Reads data from the specified connection as a string
 //
-// Note
+// Note:
 // If the connection is closed, an error occurs, or EOF is detected, the read is terminated in either case
 //
 // Parameters:
@@ -331,7 +331,7 @@ EndFunction
 // Get TLS Settings
 // Forms settings for using TLS
 //
-// Note
+// Note:
 // Tls settings can only be set when a connection is created: explicitly, by using the `CreateConnection` function^^
 // or implicit, when passing the connection string to the `ProcessRequest` method
 //

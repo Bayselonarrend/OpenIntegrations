@@ -282,7 +282,7 @@ Procedure ReportResult(Val Text, Val Status = "")
 	If ValueIsFilled(OutputFile) Then
 		Text = WriteValueToFile(Text, OutputFile);
 	ElsIf TypeOf(Text) = Type("BinaryData") Then
-		Text = "It Seems Binary Data Was Received in Response! "
+		Text = "It Seems Binary Data Was Received in Response!! "
 		    + "Next time, use the --out option to specify the path for saving";
 		Status = MessageStatus.Information;
 	Else 

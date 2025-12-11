@@ -49,7 +49,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETWORKSPACELIST";
     NewLine.Parameter     = "--cursor";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty value)";
+    NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val.. - Empty value)";
     NewLine.Region      = "Management and settings";
 
 
@@ -72,7 +72,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSERLIST";
     NewLine.Parameter     = "--cursor";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty value)";
+    NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val.. - Empty value)";
     NewLine.Region      = "Management and settings";
 
 
@@ -106,7 +106,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDMESSAGE";
     NewLine.Parameter     = "--text";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Message text (optional, def. val. - Empty value)";
+    NewLine.Description     = "Message text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -117,7 +117,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDMESSAGE";
     NewLine.Parameter     = "--date";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Sending date for delayed message (optional, def. val. - Empty value)";
+    NewLine.Description     = "Sending date for delayed message (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -128,7 +128,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDMESSAGE";
     NewLine.Parameter     = "--blocks";
     NewLine.ParameterTrim = "-b";
-    NewLine.Description     = "JSON array of block descriptions (optional, def. val. - Empty value)";
+    NewLine.Description     = "JSON array of block descriptions (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -163,7 +163,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDEPHEMERALMESSAGE";
     NewLine.Parameter     = "--text";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Message text (optional, def. val. - Empty value)";
+    NewLine.Description     = "Message text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -174,7 +174,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDEPHEMERALMESSAGE";
     NewLine.Parameter     = "--user";
     NewLine.ParameterTrim = "-u";
-    NewLine.Description     = "User ID (optional, def. val. - Empty value)";
+    NewLine.Description     = "User ID (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -185,7 +185,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDEPHEMERALMESSAGE";
     NewLine.Parameter     = "--blocks";
     NewLine.ParameterTrim = "-b";
-    NewLine.Description     = "JSON array of block descriptions (optional, def. val. - Empty value)";
+    NewLine.Description     = "JSON array of block descriptions (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -230,7 +230,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITMESSAGE";
     NewLine.Parameter     = "--text";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "New message text (optional, def. val. - Empty value)";
+    NewLine.Description     = "New message text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -241,7 +241,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITMESSAGE";
     NewLine.Parameter     = "--blocks";
     NewLine.ParameterTrim = "-b";
-    NewLine.Description     = "JSON array of block descriptions (optional, def. val. - Empty value)";
+    NewLine.Description     = "JSON array of block descriptions (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -286,7 +286,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEMESSAGE";
     NewLine.Parameter     = "--issheduled";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "Indicator of deleting a delayed message (optional, def. val. - False)";
+    NewLine.Description     = "Indicator of deleting a delayed message (optional, def. val.. - False)";
     NewLine.Region      = "Message management";
 
 
@@ -320,7 +320,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDELAYEDMESSAGELIST";
     NewLine.Parameter     = "--cursor";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty value)";
+    NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -399,7 +399,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETMESSAGEREPLYLIST";
     NewLine.Parameter     = "--cursor";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty value)";
+    NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -422,7 +422,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHANNELLIST";
     NewLine.Parameter     = "--notarchived";
     NewLine.ParameterTrim = "-n";
-    NewLine.Description     = "Indicator of excluding archived channels (optional, def. val. - False)";
+    NewLine.Description     = "Indicator of excluding archived channels (optional, def. val.. - False)";
     NewLine.Region      = "Channel management";
 
 
@@ -433,7 +433,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHANNELLIST";
     NewLine.Parameter     = "--cursor";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty value)";
+    NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val.. - Empty value)";
     NewLine.Region      = "Channel management";
 
 
@@ -467,7 +467,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHANNELUSERLIST";
     NewLine.Parameter     = "--cursor";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty value)";
+    NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val.. - Empty value)";
     NewLine.Region      = "Channel management";
 
 
@@ -501,7 +501,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECHANNEL";
     NewLine.Parameter     = "--private";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Create channel as private (optional, def. val. - False)";
+    NewLine.Description     = "Create channel as private (optional, def. val.. - False)";
     NewLine.Region      = "Channel management";
 
 
@@ -855,7 +855,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILESLIST";
     NewLine.Parameter     = "--channel";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Channel for selection (optional, def. val. - Empty value)";
+    NewLine.Description     = "Channel for selection (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -866,7 +866,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILESLIST";
     NewLine.Parameter     = "--page";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Page number (optional, def. val. - 1)";
+    NewLine.Description     = "Page number (optional, def. val.. - 1)";
     NewLine.Region      = "File management";
 
 
@@ -922,7 +922,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFILE";
     NewLine.Parameter     = "--channel";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Channel ID (optional, def. val. - Empty value)";
+    NewLine.Description     = "Channel ID (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -1037,7 +1037,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETEXTERNALFILELIST";
     NewLine.Parameter     = "--channel";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Channel for selection (optional, def. val. - Empty value)";
+    NewLine.Description     = "Channel for selection (optional, def. val.. - Empty value)";
     NewLine.Region      = "External files management";
 
 
@@ -1048,7 +1048,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETEXTERNALFILELIST";
     NewLine.Parameter     = "--cursor";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val. - Empty value)";
+    NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val.. - Empty value)";
     NewLine.Region      = "External files management";
 
 
@@ -1185,7 +1185,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GENERATEIMAGEBLOCK";
     NewLine.Parameter     = "--alt";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Alternate text of the image (optional, def. val. - Empty value)";
+    NewLine.Description     = "Alternate text of the image (optional, def. val.. - Empty value)";
     NewLine.Region      = "Block formation";
 
     Return CompositionTable;

@@ -47,7 +47,7 @@
 // Create tag
 // Creates a tag with the specified name
 //
-// Note
+// Note:
 // Method at API documentation: [Creating a tag](@yandex.ru/dev/metrika/en/management/openapi/label/createLabel)
 //
 // Parameters:
@@ -73,7 +73,7 @@ EndFunction
 // Update tag
 // Changes the tag name by ID
 //
-// Note
+// Note:
 // Method at API documentation: [Changing a tag](@yandex.ru/dev/metrika/en/management/openapi/label/updateLabel)
 //
 // Parameters:
@@ -102,7 +102,7 @@ EndFunction
 // Get tag
 // Gets the tag by ID
 //
-// Note
+// Note:
 // Method at API documentation: [Tag information](@yandex.ru/dev/metrika/en/management/openapi/label/getLabel)
 //
 // Parameters:
@@ -127,7 +127,7 @@ EndFunction
 // Delete tag
 // Deletes a tag by ID
 //
-// Note
+// Note:
 // Method at API documentation: [Deleting a tag](@yandex.ru/dev/metrika/en/management/openapi/label/deleteLabel)
 //
 // Parameters:
@@ -152,7 +152,7 @@ EndFunction
 // Get tags list
 // Gets a list of the users tags
 //
-// Note
+// Note:
 // Method at API documentation: [List of user tags](@yandex.ru/dev/metrika/en/management/openapi/label/getLabels)
 //
 // Parameters:
@@ -178,7 +178,7 @@ EndFunction
 // Create counter
 // Creates a counter by field description
 //
-// Note
+// Note:
 // Method at API documentation: [Creating a counter](@yandex.ru/dev/metrika/en/management/openapi/counter/addCounter)
 //
 // Parameters:
@@ -204,7 +204,7 @@ EndFunction
 // Update counter
 // Changes counter field values by ID
 //
-// Note
+// Note:
 // Method at API documentation: [Changing a counter](@yandex.ru/dev/metrika/en/management/openapi/counter/editCounter)
 //
 // Parameters:
@@ -233,7 +233,7 @@ EndFunction
 // Get counter
 // Gets information about the counter by ID
 //
-// Note
+// Note:
 // Method at API documentation: [Counter information](@yandex.ru/dev/metrika/en/management/openapi/counter/counter)
 //
 // Parameters:
@@ -258,7 +258,7 @@ EndFunction
 // Delete counter
 // Deletes a counter by ID
 //
-// Note
+// Note:
 // Method at API documentation: [Deleting a counter](@yandex.ru/dev/metrika/en/management/openapi/counter/deleteCounter)
 //
 // Parameters:
@@ -283,7 +283,7 @@ EndFunction
 // Restore counter
 // Restores a previously deleted counter by ID
 //
-// Note
+// Note:
 // Method at API documentation: [Restoring a counter](@yandex.ru/dev/metrika/en/management/openapi/counter/undeleteCounter)
 //
 // Parameters:
@@ -309,7 +309,7 @@ EndFunction
 // Get counters list
 // Gets a list of available counters with or without filtering
 //
-// Note
+// Note:
 // Method at API documentation: [List of available counters](@yandex.ru/dev/metrika/en/management/openapi/counter/counters)
 //
 // Parameters:
@@ -340,7 +340,7 @@ EndFunction
 // Get counter structure
 // Gets the structure of standard fields for counter creation
 //
-// Note
+// Note:
 // Description in the API documentation: [Creating a counter](@yandex.ru/dev/metrika/en/management/openapi/counter/addCounter)
 //
 // Parameters:
@@ -517,7 +517,7 @@ EndFunction
 // Get counter filter structure
 // Gets the structure of filter fields to get the list of counters
 //
-// Note
+// Note:
 // Description in the API documentation: [List of available counters](@yandex.ru/dev/metrika/en/management/openapi/counter/counters)
 //
 // Parameters:
@@ -560,7 +560,7 @@ EndFunction
 // Get actions list
 // Gets the list of actions of the selected counter
 //
-// Note
+// Note:
 // Method at API documentation: [List of actions](@yandex.ru/dev/metrika/en/management/openapi/operation/operations)
 //
 // Parameters:

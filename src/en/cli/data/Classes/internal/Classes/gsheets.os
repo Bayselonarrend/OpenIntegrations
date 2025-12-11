@@ -37,7 +37,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--calendar";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Calendar methods permission (optional, def. val. - True)";
+    NewLine.Description     = "Calendar methods permission (optional, def. val.. - True)";
     NewLine.Region      = "Authorization";
 
 
@@ -48,7 +48,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--drive";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Drive methods permission (optional, def. val. - True)";
+    NewLine.Description     = "Drive methods permission (optional, def. val.. - True)";
     NewLine.Region      = "Authorization";
 
 
@@ -59,7 +59,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--sheets";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Sheets methods permission (optional, def. val. - True)";
+    NewLine.Description     = "Sheets methods permission (optional, def. val.. - True)";
     NewLine.Region      = "Authorization";
 
 
@@ -161,7 +161,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSERVICEACCOUNTTOKEN";
     NewLine.Parameter     = "--exp";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "Token lifetime in seconds (optional, def. val. - 3600)";
+    NewLine.Description     = "Token lifetime in seconds (optional, def. val.. - 3600)";
     NewLine.Region      = "Authorization";
 
 
@@ -417,7 +417,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SETCELLVALUES";
     NewLine.Parameter     = "--sheetname";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Sheet name (first sheet by default) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Sheet name (first sheet by default) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data management";
 
 
@@ -428,7 +428,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SETCELLVALUES";
     NewLine.Parameter     = "--dim";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Main dimension when filling the array range (optional, def. val. - COLUMNS)";
+    NewLine.Description     = "Main dimension when filling the array range (optional, def. val.. - COLUMNS)";
     NewLine.Region      = "Data management";
 
 
@@ -473,7 +473,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CLEARCELLS";
     NewLine.Parameter     = "--sheetname";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Sheet name (first sheet by default) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Sheet name (first sheet by default) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data management";
 
 
@@ -507,7 +507,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCELLVALUES";
     NewLine.Parameter     = "--cells";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Array of A1 type cells to get (whole sheet if not filled) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Array of A1 type cells to get (whole sheet if not filled) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data management";
 
 
@@ -518,7 +518,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCELLVALUES";
     NewLine.Parameter     = "--sheetname";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Sheet name (first sheet by default) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Sheet name (first sheet by default) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data management";
 
     Return CompositionTable;

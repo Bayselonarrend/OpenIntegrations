@@ -190,7 +190,7 @@
 // Получает список товаров выбранного магазина
 //
 // Примечание:
-// Метод в документации API: [Информация о товарах, которые размещены в заданном магазине](@https://yandex.ru/dev/market/partner-api/doc/ru/reference/assortment/getCampaignOffers)
+// Метод в документации API: [Информация о товарах, которые размещены в заданном магазине](@yandex.ru/dev/market/partner-api/doc/ru/reference/assortment/getCampaignOffers)
 //
 // Параметры:
 //  Токен         - Строка                      - Токен авторизации (Api-Key)                  - token

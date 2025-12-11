@@ -46,7 +46,7 @@
 // Check token
 // Checks if the bot token is functional
 //
-// Note
+// Note:
 // Method at API documentation: [GET /self/get](@teams.vk.com/botapi/#/self/get_self_get)
 //
 // Parameters:
@@ -68,7 +68,7 @@ EndFunction
 // Get events
 // Receives bot events in Polling mode
 //
-// Note
+// Note:
 // Method at API documentation: [GET /events/get](@teams.vk.com/botapi/#/events/get_events_get)
 //
 // Parameters:
@@ -96,7 +96,7 @@ EndFunction
 // Get information about file
 // Gets information about a file by ID
 //
-// Note
+// Note:
 // Method at API documentation: [GET /files/getInfo](@teams.vk.com/botapi/#/files/get_files_getInfo)
 //
 // Parameters:
@@ -125,7 +125,7 @@ EndFunction
 // Send text message
 // Sends a text message to a chat
 //
-// Note
+// Note:
 // You can mention a user by appending their userId to the text in the following format @[userId]
 // Method at API documentation: [GET /messages/sendText](@teams.vk.com/botapi/#/messages/get_messages_sendText)
 //
@@ -166,7 +166,7 @@ EndFunction
 // Send file
 // Sends the file to the chat
 //
-// Note
+// Note:
 // Method at API documentation: [POST /messages/sendFile](@teams.vk.com/botapi/#/messages/post_messages_sendFile)
 //
 // Parameters:
@@ -219,7 +219,7 @@ EndFunction
 // Send voice
 // Sends an audio file as a voice message
 //
-// Note
+// Note:
 // If you want the client to display this file as a playable voice message, it must be in aac, ogg, or m4a format
 // Method at API documentation: [POST /messages/sendVoice](@teams.vk.com/botapi/#/messages/post_messages_sendVoice)
 //
@@ -268,7 +268,7 @@ EndFunction
 // Change the message text
 // Changes the text of an existing message
 //
-// Note
+// Note:
 // You can mention a user by appending their userId to the text in the following format @[userId]
 // Method at API documentation: [GET /messages/editText](@teams.vk.com/botapi/#/messages/get_messages_editText)
 //
@@ -306,7 +306,7 @@ EndFunction
 // Delete message
 // Deletes a message by ID
 //
-// Note
+// Note:
 // Method at API documentation: [GET /messages/deleteMessages](@teams.vk.com/botapi/#/messages/get_messages_deleteMessages)
 //
 // Parameters:
@@ -333,7 +333,7 @@ EndFunction
 // Resend file
 // Sends a previously uploaded file by ID
 //
-// Note
+// Note:
 // Method at API documentation: [GET /messages/sendFile](@teams.vk.com/botapi/#/messages/get_messages_sendFile)
 //
 // Parameters:
@@ -370,7 +370,7 @@ EndFunction
 // Resend voice
 // Sends a previously uploaded voice message by ID
 //
-// Note
+// Note:
 // Method at API documentation: [GET /messages/sendVoice](@teams.vk.com/botapi/#/messages/get_messages_sendVoice)
 //
 // Parameters:
@@ -397,7 +397,7 @@ EndFunction
 // Forward message
 // Forwards an existing message to the current dialog box
 //
-// Note
+// Note:
 // Only the chatId from events can be passed to the FromChatID (the code from the chat link is not suitable))
 // Method at API documentation: [GET /messages/sendText](@teams.vk.com/botapi/#/messages/get_messages_sendText)
 //
@@ -431,7 +431,7 @@ EndFunction
 // Pin message
 // Pins the selected message in the chat room
 //
-// Note
+// Note:
 // To call this method, the bot must be an administrator in the chat room
 // Method at API documentation: [GET /chats/pinMessage](@teams.vk.com/botapi/#/chats/get_chats_pinMessage)
 //
@@ -459,7 +459,7 @@ EndFunction
 // Unpin message
 // Unpins a previously pinned chat message
 //
-// Note
+// Note:
 // To call this method, the bot must be an administrator in the chat room
 // Method at API documentation: [GET /chats/unpinMessage](@teams.vk.com/botapi/#/chats/get_chats_unpinMessage)
 //
@@ -487,7 +487,7 @@ EndFunction
 // Answer button event
 // Returns a response to the user when a keyboard button is pressed
 //
-// Note
+// Note:
 // This method call should be used in response to receiving a callbackQuery event
 // Method at API documentation: [GET /messages/answerCallbackQuery](@teams.vk.com/botapi/#/messages/get_messages_answerCallbackQuery)
 //
@@ -525,7 +525,7 @@ EndFunction
 // Make action button
 // Forms an action button for the message keyboard
 //
-// Note
+// Note:
 // Used for `SendTextMessage` function
 //
 // Parameters:
@@ -557,7 +557,7 @@ EndFunction
 // Remove chat members
 // Removes users from the chat
 //
-// Note
+// Note:
 // Method at API documentation: [GET /chats/members/delete](@teams.vk.com/botapi/#/chats/get_chats_members_delete)
 //
 // Parameters:
@@ -602,7 +602,7 @@ EndFunction
 // Change chat picture
 // Changes the chat avatar picture
 //
-// Note
+// Note:
 // Method at API documentation: [POST ​/chats​/avatar​/set](@teams.vk.com/botapi/#/chats/post_chats_avatar_set)
 //
 // Parameters:
@@ -633,7 +633,7 @@ EndFunction
 // Get information about the chat room
 // Gets basic information about the chat
 //
-// Note
+// Note:
 // Method at API documentation: [GET /chats/getInfo](@teams.vk.com/botapi/#/chats/get_chats_getInfo)
 //
 // Parameters:
@@ -654,7 +654,7 @@ EndFunction
 // Get chat admins
 // Gets the list of chat administrators
 //
-// Note
+// Note:
 // Method at API documentation: [GET /chats/getAdmins](@teams.vk.com/botapi/#/chats/get_chats_getAdmins)
 //
 // Parameters:
@@ -675,7 +675,7 @@ EndFunction
 // Get chat members
 // Gets the list of chat members
 //
-// Note
+// Note:
 // Method at API documentation: [GET /chats/getMembers](@teams.vk.com/botapi/#/chats/get_chats_getMembers)
 //
 // Parameters:
@@ -697,7 +697,7 @@ EndFunction
 // Get chat blocked users
 // Gets the list of blocked chat users
 //
-// Note
+// Note:
 // To call this method, the bot must be an administrator in the chat room.
 // Method at API documentation: [GET ​/chats​/getBlockedUsers](@teams.vk.com/botapi/#/chats/get_chats_getBlockedUsers)
 //
@@ -719,7 +719,7 @@ EndFunction
 // Get chat join requests
 // Gets a list of requests to join the chat room
 //
-// Note
+// Note:
 // To call this method, the bot must be an administrator in the chat room.
 // Method at API documentation: [GET ​​/chats​/getPendingUsers](@teams.vk.com/botapi/#/chats/get_chats_getPendingUsers)
 //
@@ -741,7 +741,7 @@ EndFunction
 // Block chat user
 // Blocks the selected user in chat
 //
-// Note
+// Note:
 // To call this method, the bot must be an administrator in the chat room.
 // Method at API documentation: [GET ​​/chats​/blockUser](@teams.vk.com/botapi/#/chats/get_chats_blockUser)
 //
@@ -774,7 +774,7 @@ EndFunction
 // Unblock chat user
 // Unblocks a previously blocked user in the chat room
 //
-// Note
+// Note:
 // To call this method, the bot must be an administrator in the chat room.
 // Method at API documentation: [GET ​​/chats/unblockUser](@teams.vk.com/botapi/#/chats/get_chats_unblockUser)
 //
@@ -802,7 +802,7 @@ EndFunction
 // Approve pending
 // Confirms the user's request to join a private chat room
 //
-// Note
+// Note:
 // To call this method, the bot must be an administrator in the chat room.
 // Method at API documentation: [GET ​​/chats/resolvePending](@teams.vk.com/botapi/#/chats/get_chats_resolvePending)
 //
@@ -824,7 +824,7 @@ EndFunction
 // Disapprove pending
 // Rejects the user's request to join a private chat room
 //
-// Note
+// Note:
 // To call this method, the bot must be an administrator in the chat room.
 // Method at API documentation: [GET ​​/chats/resolvePending](@teams.vk.com/botapi/#/chats/get_chats_resolvePending)
 //
@@ -846,7 +846,7 @@ EndFunction
 // Set chat title
 // Sets new chat title
 //
-// Note
+// Note:
 // To call this method, the bot must be an administrator in the chat room.
 // Method at API documentation: [GET ​​/chats/setTitle](@teams.vk.com/botapi/#/chats/get_chats_setTitle)
 //
@@ -868,7 +868,7 @@ EndFunction
 // Set chat description
 // Sets new chat description
 //
-// Note
+// Note:
 // To call this method, the bot must be an administrator in the chat room.
 // Method at API documentation: [GET ​​/chats/setAbout](@teams.vk.com/botapi/#/chats/get_chats_setAbout)
 //
@@ -890,7 +890,7 @@ EndFunction
 // Set chat rules
 // Sets new chat rules
 //
-// Note
+// Note:
 // To call this method, the bot must be an administrator in the chat room.
 // Method at API documentation: [GET /chats/setRules](@teams.vk.com/botapi/#/chats/get_chats_setRules)
 //

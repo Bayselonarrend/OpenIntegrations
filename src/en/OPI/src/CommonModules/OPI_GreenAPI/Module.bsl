@@ -49,7 +49,7 @@
 // Form access parameters
 // Forms the structure of basic authorization data
 //
-// Note
+// Note:
 // More details in the API documentation: [Get access parameters to instance](@green-api.com/en/docs/before-start/#parameters)
 //
 // Parameters:
@@ -77,7 +77,7 @@ EndFunction
 // Get account information
 // Gets account information
 //
-// Note
+// Note:
 // Method at API documentation: [GetWaSettings](@green-api.com/docs/api/account/GetWaSettings/)
 //
 // Parameters:
@@ -97,7 +97,7 @@ EndFunction
 // Get instance settings
 // Gets the current instance settings
 //
-// Note
+// Note:
 // Method at API documentation: [GetSettings](@green-api.com/docs/api/account/GetSettings/)
 //
 // Parameters:
@@ -141,7 +141,7 @@ EndFunction
 // Get instance status
 // Gets instance status
 //
-// Note
+// Note:
 // Method at API documentation: [GetStateInstance](@green-api.com/docs/api/account/GetStateInstance/)
 //
 // Parameters:
@@ -161,7 +161,7 @@ EndFunction
 // Reboot instance
 // Restarts the instance
 //
-// Note
+// Note:
 // Method at API documentation: [Reboot](@green-api.com/docs/api/account/Reboot/)
 //
 // Parameters:
@@ -181,7 +181,7 @@ EndFunction
 // Logout instance
 // Unlogging the instance
 //
-// Note
+// Note:
 // Method at API documentation: [Logout](@green-api.com/docs/api/account/Logout/)
 //
 // Parameters:
@@ -201,7 +201,7 @@ EndFunction
 // Get QR
 // Receives authorization QR code
 //
-// Note
+// Note:
 // Method at API documentation: [QR](@green-api.com/docs/api/account/QR/)
 //
 // Parameters:
@@ -231,7 +231,7 @@ EndFunction
 // Get authorization code
 // Receives the authorization code for phone number linking
 //
-// Note
+// Note:
 // Method at API documentation: [GetAuthorizationCode](@green-api.com/docs/api/account/GetAuthorizationCode/)
 //
 // Parameters:
@@ -256,7 +256,7 @@ EndFunction
 // Set profile picture
 // Sets a new profile picture
 //
-// Note
+// Note:
 // Method at API documentation: [SetProfilePicture](@green-api.com/docs/api/account/SetProfilePicture/)
 //
 // Parameters:
@@ -282,7 +282,7 @@ EndFunction
 // Archive chat
 // Archives the selected chat
 //
-// Note
+// Note:
 // Method at API documentation: [ArchiveChat](@green-api.com/docs/api/service/archiveChat/)
 //
 // Parameters:
@@ -300,7 +300,7 @@ EndFunction
 // Unarchive chat
 // Unarchives the selected chat
 //
-// Note
+// Note:
 // Method at API documentation: [UnarchiveChat](@green-api.com/docs/api/service/unarchiveChat/)
 //
 // Parameters:
@@ -363,7 +363,7 @@ EndFunction
 // Get group information
 // Gets group chat data
 //
-// Note
+// Note:
 // Method at API documentation: [GetGroupData](@green-api.com/docs/api/groups/GetGroupData/)
 //
 // Parameters:
@@ -388,7 +388,7 @@ EndFunction
 // Create group
 // Creates a new group chat
 //
-// Note
+// Note:
 // Method at API documentation: [CreateGroup](@green-api.com/docs/api/groups/CreateGroup/)
 //
 // Parameters:
@@ -419,7 +419,7 @@ EndFunction
 // Update group name
 // Changes the name of an existing group
 //
-// Note
+// Note:
 // Method at API documentation: [UpdateGroupName](@green-api.com/docs/api/groups/UpdateGroupName/)
 //
 // Parameters:
@@ -446,7 +446,7 @@ EndFunction
 // Add group member
 // Adds a participant to a group chat
 //
-// Note
+// Note:
 // Method at API documentation: [AddGroupParticipant](@green-api.com/docs/api/groups/AddGroupParticipant/)
 //
 // Parameters:
@@ -467,7 +467,7 @@ EndFunction
 // Exclude group member
 // Excludes a member from the group
 //
-// Note
+// Note:
 // Method at API documentation: [RemoveGroupParticipant](@green-api.com/docs/api/groups/RemoveGroupParticipant/)
 //
 // Parameters:
@@ -488,7 +488,7 @@ EndFunction
 // Set admin rights
 // Assigns the user as the group administrator
 //
-// Note
+// Note:
 // Method at API documentation: [SetGroupAdmin](@green-api.com/docs/api/groups/SetGroupAdmin/)
 //
 // Parameters:
@@ -509,7 +509,7 @@ EndFunction
 // Revoke admin rights
 // Revokes administrator rights from the user
 //
-// Note
+// Note:
 // Method at API documentation: [RemoveAdmin](@green-api.com/docs/api/groups/RemoveAdmin/)
 //
 // Parameters:
@@ -530,7 +530,7 @@ EndFunction
 // Leave group
 // Logs the current account out of group chat
 //
-// Note
+// Note:
 // Method at API documentation: [LeaveGroup](@green-api.com/docs/api/groups/LeaveGroup/)
 //
 // Parameters:
@@ -555,7 +555,7 @@ EndFunction
 // Set group picture
 // Sets the group chat picture
 //
-// Note
+// Note:
 // Method at API documentation: [SetGroupPicture](@green-api.com/docs/api/groups/SetGroupPicture/)
 //
 // Parameters:
@@ -590,7 +590,7 @@ EndFunction
 // Send text message
 // Sends a text message to the selected chat room
 //
-// Note
+// Note:
 // Method at API documentation: [SendMessage](@green-api.com/docs/api/sending/SendMessage/)
 //
 // Parameters:
@@ -620,7 +620,7 @@ EndFunction
 // Send file
 // Sends the file to the selected chat room
 //
-// Note
+// Note:
 // Method at API documentation: [SendFileByUpload](@green-api.com/docs/api/sending/SendFileByUpload/)
 //
 // Parameters:
@@ -663,7 +663,7 @@ EndFunction
 // Send file by URL
 // Sends a file from web to the selected chat room
 //
-// Note
+// Note:
 // Method at API documentation: [SendFileByUrl](@green-api.com/docs/api/sending/SendFileByUrl/)
 //
 // Parameters:
@@ -702,7 +702,7 @@ EndFunction
 // Send poll
 // Sends a poll with answer choices to the selected chat room
 //
-// Note
+// Note:
 // Method at API documentation: [SendPoll](@green-api.com/docs/api/sending/SendPoll/)
 //
 // Parameters:
@@ -748,7 +748,7 @@ EndFunction
 // Send location
 // Sends location data to the specified chat room
 //
-// Note
+// Note:
 // Method at API documentation: [SendPoll](@green-api.com/docs/api/sending/SendPoll/)
 //
 // Parameters:
@@ -782,7 +782,7 @@ EndFunction
 // Send contact
 // Sends a contact with a phone number to the selected chat room
 //
-// Note
+// Note:
 // Method at API documentation: [SendContact](@green-api.com/docs/api/sending/SendContact/)
 //
 // Parameters:
@@ -811,7 +811,7 @@ EndFunction
 // Forward messages
 // Sends messages from one chat room to another
 //
-// Note
+// Note:
 // Method at API documentation: [ForwardMessages](@green-api.com/docs/api/sending/ForwardMessages/)
 //
 // Parameters:
@@ -840,7 +840,7 @@ EndFunction
 // Change the message text
 // Changes the text of the message
 //
-// Note
+// Note:
 // Method at API documentation: [EditMessage](@green-api.com/docs/api/service/EditMessage/)
 //
 // Parameters:
@@ -870,7 +870,7 @@ EndFunction
 // Delete message
 // Deletes a message in the selected chat room
 //
-// Note
+// Note:
 // Method at API documentation: [DeleteMessage](@green-api.com/docs/api/service/deleteMessage/)
 //
 // Parameters:
@@ -958,7 +958,7 @@ EndFunction
 // Get notification
 // Receives one notification from the queue
 //
-// Note
+// Note:
 // Once the notification has been successfully accepted, you must remove it from the queue using the `DeleteNotificationFromQueue` method
 // Method at API documentation: [ReceiveNotification](@green-api.com/docs/api/receiving/technology-http-api/ReceiveNotification/)
 //
@@ -984,7 +984,7 @@ EndFunction
 // Delete notification from queue
 // Deletes the notification from the queue after successful receipt
 //
-// Note
+// Note:
 // Method at API documentation: [DeleteNotification](@green-api.com/docs/api/receiving/technology-http-api/DeleteNotification/)
 //
 // Parameters:
@@ -1009,7 +1009,7 @@ EndFunction
 // Download message file
 // Gets a link to download a file from an incoming message
 //
-// Note
+// Note:
 // Method at API documentation: [DownloadFile](@green-api.com/docs/api/receiving/files/DownloadFile/)
 //
 // Parameters:
@@ -1036,7 +1036,7 @@ EndFunction
 // Set read mark
 // Sets the Read mark for a message or all chat messages
 //
-// Note
+// Note:
 // Method at API documentation: [ReadChat](@green-api.com/docs/api/marks/ReadChat/)
 //
 // Parameters:
@@ -1067,7 +1067,7 @@ EndFunction
 // Get message queue
 // Gets the list of messages in the queue to be sent
 //
-// Note
+// Note:
 // Method at API documentation: [ShowMessagesQueue](@green-api.com/docs/api/queues/ShowMessagesQueue/)
 //
 // Parameters:
@@ -1087,7 +1087,7 @@ EndFunction
 // Clear message queue
 // Clears the queue of messages to be sent
 //
-// Note
+// Note:
 // Method at API documentation: [ClearMessagesQueue](@green-api.com/docs/api/queues/ClearMessagesQueue/)
 //
 // Parameters:
@@ -1111,7 +1111,7 @@ EndFunction
 // Get chat history
 // Retrieves the chat message history
 //
-// Note
+// Note:
 // Method at API documentation: [GetChatHistory](@green-api.com/docs/api/journals/GetChatHistory/)
 //
 // Parameters:
@@ -1138,7 +1138,7 @@ EndFunction
 // Get message
 // Gets information about the chat message by ID
 //
-// Note
+// Note:
 // Method at API documentation: [GetMessage](@green-api.com/docs/api/journals/GetMessage/)
 //
 // Parameters:
@@ -1165,7 +1165,7 @@ EndFunction
 // Get incoming message log
 // Gets the list of incoming messages of the instance for the specified period
 //
-// Note
+// Note:
 // Method at API documentation: [LastIncomingMessages](@green-api.com/docs/api/journals/LastIncomingMessages/)
 //
 // Parameters:
@@ -1194,7 +1194,7 @@ EndFunction
 // Get outgoing message log
 // Gets the list of outgoing messages of the instance for the specified period
 //
-// Note
+// Note:
 // Method at API documentation: [LastOutgoingMessages](@green-api.com/docs/api/journals/LastOutgoingMessages/)
 //
 // Parameters:

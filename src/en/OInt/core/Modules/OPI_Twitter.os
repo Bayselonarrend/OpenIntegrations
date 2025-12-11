@@ -136,7 +136,7 @@ EndFunction
 // Handle incoming request after authorization !NOCLI
 // Method for insertion into an http service, the address of which is specified in redirect_uri
 //
-// Note
+// Note:
 // Calls the token acquisition method, as for obtaining a token from the code received^^
 // on redirect_uri after authorization via the browser is only 30 seconds
 //

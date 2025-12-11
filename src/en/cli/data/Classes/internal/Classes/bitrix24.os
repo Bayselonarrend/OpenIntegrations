@@ -128,7 +128,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SERVERTIME";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Settings and administartion";
 
 
@@ -162,7 +162,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPOST";
     NewLine.Parameter     = "--vision";
     NewLine.ParameterTrim = "-v";
-    NewLine.Description     = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group (optional, def. val. - UA)";
+    NewLine.Description     = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group (optional, def. val.. - UA)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -173,7 +173,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPOST";
     NewLine.Parameter     = "--files";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Key > file name, value > path or binary data (optional, def. val. - Empty value)";
+    NewLine.Description     = "Key > file name, value > path or binary data (optional, def. val.. - Empty value)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -184,7 +184,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPOST";
     NewLine.Parameter     = "--title";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Post title (optional, def. val. - Empty value)";
+    NewLine.Description     = "Post title (optional, def. val.. - Empty value)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -195,7 +195,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPOST";
     NewLine.Parameter     = "--important";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "Mark post as important (optional, def. val. - False)";
+    NewLine.Description     = "Mark post as important (optional, def. val.. - False)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -206,7 +206,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPOST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -251,7 +251,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEPOST";
     NewLine.Parameter     = "--vision";
     NewLine.ParameterTrim = "-v";
-    NewLine.Description     = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group (optional, def. val. - UA)";
+    NewLine.Description     = "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group (optional, def. val.. - UA)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -262,7 +262,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEPOST";
     NewLine.Parameter     = "--files";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Key > file name, value > path or binary data (optional, def. val. - Empty value)";
+    NewLine.Description     = "Key > file name, value > path or binary data (optional, def. val.. - Empty value)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -273,7 +273,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEPOST";
     NewLine.Parameter     = "--title";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Post title (optional, def. val. - Empty value)";
+    NewLine.Description     = "Post title (optional, def. val.. - Empty value)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -284,7 +284,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEPOST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -318,7 +318,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEPOST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -352,7 +352,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETIMPORTANTPOSTVIEWERS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -375,7 +375,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPOSTS";
     NewLine.Parameter     = "--postid";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Id of important post (optional, def. val. - Empty value)";
+    NewLine.Description     = "Id of important post (optional, def. val.. - Empty value)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -386,7 +386,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPOSTS";
     NewLine.Parameter     = "--sel";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Post selection by rights: UA all, SGn work group, Un user, DRn depart, Gn group (optional, def. val. - UA)";
+    NewLine.Description     = "Post selection by rights: UA all, SGn work group, Un user, DRn depart, Gn group (optional, def. val.. - UA)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -397,7 +397,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPOSTS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -442,7 +442,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDPOSTCOMMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -487,7 +487,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDPOSTRECIPIENTS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -521,7 +521,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -544,7 +544,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKSLIST";
     NewLine.Parameter     = "--filter";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Lead filter structure. See GetLeadFilterStructure (optional, def. val. - Empty value)";
+    NewLine.Description     = "Lead filter structure. See GetLeadFilterStructure (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -555,7 +555,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKSLIST";
     NewLine.Parameter     = "--offset";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Offset of tasks list (optional, def. val. - Empty value)";
+    NewLine.Description     = "Offset of tasks list (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -566,7 +566,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKSLIST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -577,7 +577,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKSLIST";
     NewLine.Parameter     = "--select";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "A list of task fields in the response. All non calculable by default (optional, def. val. - Empty value)";
+    NewLine.Description     = "A list of task fields in the response. All non calculable by default (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -611,7 +611,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATETASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -656,7 +656,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATETASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -690,7 +690,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETETASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -735,7 +735,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ATTACHFILETOTOPIC";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -769,7 +769,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "APPROVETASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -803,7 +803,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DISAPPROVETASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -837,7 +837,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "COMPLETETASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -871,7 +871,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "RENEWTASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -905,7 +905,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DEFERTASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -939,7 +939,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PAUSETASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -973,7 +973,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "STARTTASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1007,7 +1007,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "STARTWATCHINGTASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1041,7 +1041,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "STOPWATCHINGTASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1086,7 +1086,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELEGATETASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1120,7 +1120,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDTASKTOFAVORITES";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1154,7 +1154,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "REMOVETASKFROMFAVORITES";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1188,7 +1188,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKHISTORY";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1222,7 +1222,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CHECKTASKACCESSES";
     NewLine.Parameter     = "--users";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "User IDs for access checking (optional, def. val. - Empty value)";
+    NewLine.Description     = "User IDs for access checking (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1233,7 +1233,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CHECKTASKACCESSES";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1267,7 +1267,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MUTETASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1301,7 +1301,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UNMUTETASK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1357,7 +1357,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATETASKSDEPENDENCIES";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1413,7 +1413,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETETASKSDEPENDENCIES";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1436,7 +1436,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDAILYPLAN";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1459,7 +1459,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKFIELDSSTRUCTURE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1470,7 +1470,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKSFILTERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Tasks management";
     NewLine.MethodDescription   = "Return filter structure for GetTasksList";
 
@@ -1482,7 +1482,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKSFILTERSTRUCTURE";
     NewLine.Parameter     = "--map";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val. - False)";
+    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val.. - False)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1505,7 +1505,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCUSTOMTASKFIELDSLIST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Customs tasks fields management";
 
 
@@ -1550,7 +1550,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDCUSTOMTASKFIELD";
     NewLine.Parameter     = "--externalid";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "Text identifier for external integration (optional, def. val. - Empty value)";
+    NewLine.Description     = "Text identifier for external integration (optional, def. val.. - Empty value)";
     NewLine.Region      = "Customs tasks fields management";
 
 
@@ -1561,7 +1561,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDCUSTOMTASKFIELD";
     NewLine.Parameter     = "--title";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Field title (optional, def. val. - Empty value)";
+    NewLine.Description     = "Field title (optional, def. val.. - Empty value)";
     NewLine.Region      = "Customs tasks fields management";
 
 
@@ -1572,7 +1572,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDCUSTOMTASKFIELD";
     NewLine.Parameter     = "--label";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "Form label. Key: en or ru, Value: Lable text (optional, def. val. - Empty value)";
+    NewLine.Description     = "Form label. Key: en or ru, Value: Lable text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Customs tasks fields management";
 
 
@@ -1583,7 +1583,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDCUSTOMTASKFIELD";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Customs tasks fields management";
 
 
@@ -1617,7 +1617,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATECUSTOMTASKFIELD";
     NewLine.Parameter     = "--externalid";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "Text identifier for external integration (optional, def. val. - Empty value)";
+    NewLine.Description     = "Text identifier for external integration (optional, def. val.. - Empty value)";
     NewLine.Region      = "Customs tasks fields management";
 
 
@@ -1628,7 +1628,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATECUSTOMTASKFIELD";
     NewLine.Parameter     = "--title";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Field title (optional, def. val. - Empty value)";
+    NewLine.Description     = "Field title (optional, def. val.. - Empty value)";
     NewLine.Region      = "Customs tasks fields management";
 
 
@@ -1639,7 +1639,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATECUSTOMTASKFIELD";
     NewLine.Parameter     = "--label";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "Form label. Key: en or ru, Value: Lable text (optional, def. val. - Empty value)";
+    NewLine.Description     = "Form label. Key: en or ru, Value: Lable text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Customs tasks fields management";
 
 
@@ -1650,7 +1650,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATECUSTOMTASKFIELD";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Customs tasks fields management";
 
 
@@ -1684,7 +1684,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCUSTOMTASKFIELD";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Customs tasks fields management";
 
 
@@ -1718,7 +1718,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETECUSTOMTASKFIELD";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Customs tasks fields management";
 
 
@@ -1763,7 +1763,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDTASKSCHECKLISTELEMENT";
     NewLine.Parameter     = "--complete";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Mark as completed (optional, def. val. - False)";
+    NewLine.Description     = "Mark as completed (optional, def. val.. - False)";
     NewLine.Region      = "Tasks checklists management";
 
 
@@ -1774,7 +1774,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDTASKSCHECKLISTELEMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks checklists management";
 
 
@@ -1830,7 +1830,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATETASKSCHECKLISTELEMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks checklists management";
 
 
@@ -1875,7 +1875,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETETASKSCHECKLISTELEMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks checklists management";
 
 
@@ -1909,7 +1909,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKSCHECKLIST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks checklists management";
 
 
@@ -1954,7 +1954,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKSCHECKLISTELEMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks checklists management";
 
 
@@ -1999,7 +1999,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "COMPLETETASKSCHECKLISTELEMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks checklists management";
 
 
@@ -2044,7 +2044,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "RENEWTASKSCHECKLISTELEMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Tasks checklists management";
 
 
@@ -2078,7 +2078,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKCOMMENTSLIST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Comments and results management";
 
 
@@ -2123,7 +2123,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKCOMMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Comments and results management";
 
 
@@ -2168,7 +2168,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDTASKCOMMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Comments and results management";
 
 
@@ -2224,7 +2224,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATETASKCOMMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Comments and results management";
 
 
@@ -2269,7 +2269,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETETASKCOMMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Comments and results management";
 
 
@@ -2303,7 +2303,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETRESULTSLIST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Comments and results management";
 
 
@@ -2337,7 +2337,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATERESULTFROMCOMMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Comments and results management";
 
 
@@ -2371,7 +2371,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETERESULTFROMCOMMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Comments and results management";
 
 
@@ -2382,7 +2382,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCOMMENTSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Comments and results management";
     NewLine.MethodDescription   = "Get comment fields structure";
 
@@ -2417,7 +2417,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDKANBANSTAGE";
     NewLine.Parameter     = "--color";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "HEX of new stage color (optional, def. val. - FFD800)";
+    NewLine.Description     = "HEX of new stage color (optional, def. val.. - FFD800)";
     NewLine.Region      = "Kanban";
 
 
@@ -2428,7 +2428,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDKANBANSTAGE";
     NewLine.Parameter     = "--prevstage";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "ID of the stage after which a new stage should be inserted (at the beginning by default.) (optional, def. val. - Empty value)";
+    NewLine.Description     = "ID of the stage after which a new stage should be inserted (at the beginning by default.) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Kanban";
 
 
@@ -2439,7 +2439,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDKANBANSTAGE";
     NewLine.Parameter     = "--entityid";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "ID of kanban owner (group or user) (optional, def. val. - Empty value)";
+    NewLine.Description     = "ID of kanban owner (group or user) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Kanban";
 
 
@@ -2450,7 +2450,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDKANBANSTAGE";
     NewLine.Parameter     = "--admin";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - False)";
+    NewLine.Description     = "Allows you to add stages without checking permissions (for administrators) (optional, def. val.. - False)";
     NewLine.Region      = "Kanban";
 
 
@@ -2461,7 +2461,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDKANBANSTAGE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Kanban";
 
 
@@ -2506,7 +2506,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEKANBANSSTAGE";
     NewLine.Parameter     = "--color";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "HEX of new stage color (optional, def. val. - Empty value)";
+    NewLine.Description     = "HEX of new stage color (optional, def. val.. - Empty value)";
     NewLine.Region      = "Kanban";
 
 
@@ -2517,7 +2517,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEKANBANSSTAGE";
     NewLine.Parameter     = "--prevstage";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Stage ID, after which the selected stage should be inserted (optional, def. val. - Empty value)";
+    NewLine.Description     = "Stage ID, after which the selected stage should be inserted (optional, def. val.. - Empty value)";
     NewLine.Region      = "Kanban";
 
 
@@ -2528,7 +2528,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEKANBANSSTAGE";
     NewLine.Parameter     = "--admin";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - False)";
+    NewLine.Description     = "Allows you to add stages without checking permissions (for administrators) (optional, def. val.. - False)";
     NewLine.Region      = "Kanban";
 
 
@@ -2539,7 +2539,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEKANBANSSTAGE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Kanban";
 
 
@@ -2573,7 +2573,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEKANBANSTAGE";
     NewLine.Parameter     = "--admin";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Allows you to add stages without checking permissions (for administrators) (optional, def. val. - False)";
+    NewLine.Description     = "Allows you to add stages without checking permissions (for administrators) (optional, def. val.. - False)";
     NewLine.Region      = "Kanban";
 
 
@@ -2584,7 +2584,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEKANBANSTAGE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Kanban";
 
 
@@ -2607,7 +2607,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETKANBANSTAGES";
     NewLine.Parameter     = "--entityid";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "ID of kanban owner (group or user) (optional, def. val. - Empty value)";
+    NewLine.Description     = "ID of kanban owner (group or user) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Kanban";
 
 
@@ -2618,7 +2618,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETKANBANSTAGES";
     NewLine.Parameter     = "--admin";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Allows you to get stages without checking permissions (for administrators) (optional, def. val. - False)";
+    NewLine.Description     = "Allows you to get stages without checking permissions (for administrators) (optional, def. val.. - False)";
     NewLine.Region      = "Kanban";
 
 
@@ -2629,7 +2629,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETKANBANSTAGES";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Kanban";
 
 
@@ -2674,7 +2674,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MOVETASKTOKANBANSTAGE";
     NewLine.Parameter     = "--before";
     NewLine.ParameterTrim = "-b";
-    NewLine.Description     = "ID of the task to put the selected one in front of (if After not filled) (optional, def. val. - Empty value)";
+    NewLine.Description     = "ID of the task to put the selected one in front of (if After not filled) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Kanban";
 
 
@@ -2685,7 +2685,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MOVETASKTOKANBANSTAGE";
     NewLine.Parameter     = "--after";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "ID of the task to be followed by the selected (if Prev not filled) (optional, def. val. - Empty value)";
+    NewLine.Description     = "ID of the task to be followed by the selected (if Prev not filled) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Kanban";
 
 
@@ -2696,7 +2696,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MOVETASKTOKANBANSTAGE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Kanban";
 
 
@@ -2741,7 +2741,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDTASKTIMEACCOUNTING";
     NewLine.Parameter     = "--user";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "ID of user for time accounting (optional, def. val. - Empty value)";
+    NewLine.Description     = "ID of user for time accounting (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -2752,7 +2752,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDTASKTIMEACCOUNTING";
     NewLine.Parameter     = "--text";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Comment text (optional, def. val. - Empty value)";
+    NewLine.Description     = "Comment text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -2763,7 +2763,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDTASKTIMEACCOUNTING";
     NewLine.Parameter     = "--date";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Date the record was set (optional, def. val. - Empty value)";
+    NewLine.Description     = "Date the record was set (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -2774,7 +2774,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDTASKTIMEACCOUNTING";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -2819,7 +2819,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETETASKTIMEACCOUNTING";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -2853,7 +2853,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKTIMEACCOUNTINGLIST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -2898,7 +2898,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKTIMEACCOUNTING";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -2954,7 +2954,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATETASKTIMEACCOUNTING";
     NewLine.Parameter     = "--text";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Comment text (optional, def. val. - Empty value)";
+    NewLine.Description     = "Comment text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -2965,7 +2965,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATETASKTIMEACCOUNTING";
     NewLine.Parameter     = "--date";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Date the record was set (optional, def. val. - Empty value)";
+    NewLine.Description     = "Date the record was set (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -2976,7 +2976,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATETASKTIMEACCOUNTING";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -2999,7 +2999,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "STARTTIMEKEEPING";
     NewLine.Parameter     = "--userid";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Description     = "Users ID. Current by default (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -3010,7 +3010,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "STARTTIMEKEEPING";
     NewLine.Parameter     = "--time";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Start time. The date must match the current. Current time by default. (optional, def. val. - Empty value)";
+    NewLine.Description     = "Start time. The date must match the current. Current time by default. (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -3021,7 +3021,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "STARTTIMEKEEPING";
     NewLine.Parameter     = "--report";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Reason for change. Required when Time is specified and free schedule is disabled (optional, def. val. - Empty value)";
+    NewLine.Description     = "Reason for change. Required when Time is specified and free schedule is disabled (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -3032,7 +3032,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "STARTTIMEKEEPING";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -3055,7 +3055,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "STOPTIMEKEEPING";
     NewLine.Parameter     = "--userid";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Description     = "Users ID. Current by default (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -3066,7 +3066,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "STOPTIMEKEEPING";
     NewLine.Parameter     = "--time";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Stop time. The date must match the current. Current time by default. (optional, def. val. - Empty value)";
+    NewLine.Description     = "Stop time. The date must match the current. Current time by default. (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -3077,7 +3077,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "STOPTIMEKEEPING";
     NewLine.Parameter     = "--report";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Reason for change. Required when Time is specified and free schedule is disabled (optional, def. val. - Empty value)";
+    NewLine.Description     = "Reason for change. Required when Time is specified and free schedule is disabled (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -3088,7 +3088,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "STOPTIMEKEEPING";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -3111,7 +3111,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PAUSETIMEKEEPING";
     NewLine.Parameter     = "--userid";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Description     = "Users ID. Current by default (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -3122,7 +3122,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PAUSETIMEKEEPING";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -3145,7 +3145,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTIMEKEEPINGSTATUS";
     NewLine.Parameter     = "--userid";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Description     = "Users ID. Current by default (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -3156,7 +3156,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTIMEKEEPINGSTATUS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -3179,7 +3179,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTIMEKEEPINGSETTINGS";
     NewLine.Parameter     = "--userid";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Users ID. Current by default (optional, def. val. - Empty value)";
+    NewLine.Description     = "Users ID. Current by default (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -3190,7 +3190,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTIMEKEEPINGSETTINGS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Timekeeping";
 
 
@@ -3213,7 +3213,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSTORAGESLIST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Storages management";
 
 
@@ -3236,7 +3236,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETAPPSTORAGE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Storages management";
 
 
@@ -3270,7 +3270,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSTORAGE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Storages management";
 
 
@@ -3315,7 +3315,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "RENAMESTORAGE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Storages management";
 
 
@@ -3349,7 +3349,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSTORAGEOBJECTS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Storages management";
 
 
@@ -3394,7 +3394,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATESTORAGEFOLDER";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Storages management";
 
 
@@ -3428,7 +3428,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFOLDERINFORMATION";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Catalogs management";
 
 
@@ -3473,7 +3473,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATESUBFOLDER";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Catalogs management";
 
 
@@ -3518,7 +3518,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MAKEFOLDERCOPY";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Catalogs management";
 
 
@@ -3563,7 +3563,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MOVEFOLDER";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Catalogs management";
 
 
@@ -3597,7 +3597,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEFOLDER";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Catalogs management";
 
 
@@ -3631,7 +3631,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFOLDEREXTERNALLINK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Catalogs management";
 
 
@@ -3665,7 +3665,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFOLDERITEMS";
     NewLine.Parameter     = "--filter";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Items filter. See GetFolderFilterStructure (optional, def. val. - Empty value)";
+    NewLine.Description     = "Items filter. See GetFolderFilterStructure (optional, def. val.. - Empty value)";
     NewLine.Region      = "Catalogs management";
 
 
@@ -3676,7 +3676,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFOLDERITEMS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Catalogs management";
 
 
@@ -3710,7 +3710,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MARKFOLDERASDELETED";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Catalogs management";
 
 
@@ -3744,7 +3744,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "RESTOREFOLDER";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Catalogs management";
 
 
@@ -3789,7 +3789,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "RENAMEFOLDER";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Catalogs management";
 
 
@@ -3812,7 +3812,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFOLDERFILTERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty values, False > field types at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty values, False > field types at values (optional, def. val.. - False)";
     NewLine.Region      = "Catalogs management";
 
 
@@ -3823,7 +3823,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFOLDERFILTERSTRUCTURE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Catalogs management";
 
 
@@ -3879,7 +3879,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFILETOSTORAGE";
     NewLine.Parameter     = "--rights";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Rights array if required (optional, def. val. - Empty value)";
+    NewLine.Description     = "Rights array if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -3890,7 +3890,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFILETOSTORAGE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -3946,7 +3946,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFILETOFOLDER";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -3980,7 +3980,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILEINFORMATION";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -4014,7 +4014,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEFILE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -4048,7 +4048,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILEEXTERNALLINK";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -4082,7 +4082,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MARKFILEASDELETED";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -4116,7 +4116,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "RESTOREFILE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -4161,7 +4161,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MAKEFILECOPY";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -4206,7 +4206,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MOVEFILETOFOLDER";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -4251,7 +4251,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "RENAMEFILE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -4285,7 +4285,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECHAT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4319,7 +4319,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHATUSERS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4353,7 +4353,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LEAVECHAT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4387,7 +4387,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSERS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4432,7 +4432,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDUSERSTOCHAT";
     NewLine.Parameter     = "--hide";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Hide old messages from new members (optional, def. val. - False)";
+    NewLine.Description     = "Hide old messages from new members (optional, def. val.. - False)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4443,7 +4443,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDUSERSTOCHAT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4488,7 +4488,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEUSERFROMCHAT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4533,7 +4533,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CHANGECHATTITLE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4578,7 +4578,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CHANGECHATCOLOR";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4623,7 +4623,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CHANGECHATPICTURE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4668,7 +4668,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CHANGECHATOWNER";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4702,7 +4702,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DISABLECHATNOTIFICATIONS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4736,7 +4736,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ENABLECHATNOTIFICATIONS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4770,7 +4770,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHATMESSAGESLIST";
     NewLine.Parameter     = "--last";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "Id of last message (optional, def. val. - Empty value)";
+    NewLine.Description     = "Id of last message (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4781,7 +4781,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHATMESSAGESLIST";
     NewLine.Parameter     = "--first";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "ID of first message (optional, def. val. - Empty value)";
+    NewLine.Description     = "ID of first message (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4792,7 +4792,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHATMESSAGESLIST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4826,7 +4826,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDIALOG";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4860,7 +4860,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHATMEMBERSLIST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4894,7 +4894,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDWRITINGNOTIFICATION";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4917,7 +4917,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSERSTATUS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4951,7 +4951,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SETUSERSTATUS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -4974,7 +4974,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "READALL";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -5008,7 +5008,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHATFILESFOLDER";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -5019,7 +5019,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHATSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty values, False > field types at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty values, False > field types at values (optional, def. val.. - False)";
     NewLine.Region      = "Chats and dialogs management";
     NewLine.MethodDescription   = "Get chat fields structure";
 
@@ -5065,7 +5065,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDMESSAGE";
     NewLine.Parameter     = "--blocks";
     NewLine.ParameterTrim = "-b";
-    NewLine.Description     = "Array of attachments (optional, def. val. - Empty value)";
+    NewLine.Description     = "Array of attachments (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -5076,7 +5076,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDMESSAGE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -5110,7 +5110,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITMESSAGE";
     NewLine.Parameter     = "--text";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "New message text (optional, def. val. - Empty value)";
+    NewLine.Description     = "New message text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -5121,7 +5121,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITMESSAGE";
     NewLine.Parameter     = "--blocks";
     NewLine.ParameterTrim = "-b";
-    NewLine.Description     = "New blocks array (optional, def. val. - Empty value)";
+    NewLine.Description     = "New blocks array (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -5132,7 +5132,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITMESSAGE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -5166,7 +5166,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SETMESSAGEREACTION";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -5200,7 +5200,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEMESSAGE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -5245,7 +5245,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--description";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "File description (optional, def. val. - Empty value)";
+    NewLine.Description     = "File description (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -5256,7 +5256,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -5301,7 +5301,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MARKMESSAGEASREADED";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -5346,7 +5346,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MARKMESSAGEASUNREADED";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
 
@@ -5437,7 +5437,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPERSONALNOTIFICATION";
     NewLine.Parameter     = "--tag";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Uniqueness Tag. If already exist, other notif. will be deleted (optional, def. val. - Empty value)";
+    NewLine.Description     = "Uniqueness Tag. If already exist, other notif. will be deleted (optional, def. val.. - Empty value)";
     NewLine.Region      = "Notifications management";
 
 
@@ -5448,7 +5448,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPERSONALNOTIFICATION";
     NewLine.Parameter     = "--blocks";
     NewLine.ParameterTrim = "-b";
-    NewLine.Description     = "Array of attachments (optional, def. val. - Empty value)";
+    NewLine.Description     = "Array of attachments (optional, def. val.. - Empty value)";
     NewLine.Region      = "Notifications management";
 
 
@@ -5459,7 +5459,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPERSONALNOTIFICATION";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Notifications management";
 
 
@@ -5504,7 +5504,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATESYSTEMNOTIFICATION";
     NewLine.Parameter     = "--tag";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Uniqueness Tag. If already exist, other notif. will be deleted (optional, def. val. - Empty value)";
+    NewLine.Description     = "Uniqueness Tag. If already exist, other notif. will be deleted (optional, def. val.. - Empty value)";
     NewLine.Region      = "Notifications management";
 
 
@@ -5515,7 +5515,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATESYSTEMNOTIFICATION";
     NewLine.Parameter     = "--blocks";
     NewLine.ParameterTrim = "-b";
-    NewLine.Description     = "Array of attachments (optional, def. val. - Empty value)";
+    NewLine.Description     = "Array of attachments (optional, def. val.. - Empty value)";
     NewLine.Region      = "Notifications management";
 
 
@@ -5526,7 +5526,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATESYSTEMNOTIFICATION";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Notifications management";
 
 
@@ -5560,7 +5560,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETENOTIFICATION";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Notifications management";
 
 
@@ -5594,7 +5594,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEDEPARTMENT";
     NewLine.Parameter     = "--parentid";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "ID of parent department (optional, def. val. - Empty value)";
+    NewLine.Description     = "ID of parent department (optional, def. val.. - Empty value)";
     NewLine.Region      = "Departments management";
 
 
@@ -5605,7 +5605,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEDEPARTMENT";
     NewLine.Parameter     = "--headid";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "ID of department manager (optional, def. val. - Empty value)";
+    NewLine.Description     = "ID of department manager (optional, def. val.. - Empty value)";
     NewLine.Region      = "Departments management";
 
 
@@ -5616,7 +5616,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEDEPARTMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Departments management";
 
 
@@ -5650,7 +5650,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEDEPARTMENT";
     NewLine.Parameter     = "--title";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Department name (optional, def. val. - Empty value)";
+    NewLine.Description     = "Department name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Departments management";
 
 
@@ -5661,7 +5661,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEDEPARTMENT";
     NewLine.Parameter     = "--parentid";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "ID of parent department (optional, def. val. - Empty value)";
+    NewLine.Description     = "ID of parent department (optional, def. val.. - Empty value)";
     NewLine.Region      = "Departments management";
 
 
@@ -5672,7 +5672,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEDEPARTMENT";
     NewLine.Parameter     = "--headid";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "ID of department manager (optional, def. val. - Empty value)";
+    NewLine.Description     = "ID of department manager (optional, def. val.. - Empty value)";
     NewLine.Region      = "Departments management";
 
 
@@ -5683,7 +5683,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEDEPARTMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Departments management";
 
 
@@ -5706,7 +5706,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDEPARTMENTS";
     NewLine.Parameter     = "--depid";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Selection by department ID (optional, def. val. - Empty value)";
+    NewLine.Description     = "Selection by department ID (optional, def. val.. - Empty value)";
     NewLine.Region      = "Departments management";
 
 
@@ -5717,7 +5717,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDEPARTMENTS";
     NewLine.Parameter     = "--title";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Filter by name (optional, def. val. - Empty value)";
+    NewLine.Description     = "Filter by name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Departments management";
 
 
@@ -5728,7 +5728,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDEPARTMENTS";
     NewLine.Parameter     = "--parentid";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Filter by parent ID (optional, def. val. - Empty value)";
+    NewLine.Description     = "Filter by parent ID (optional, def. val.. - Empty value)";
     NewLine.Region      = "Departments management";
 
 
@@ -5739,7 +5739,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDEPARTMENTS";
     NewLine.Parameter     = "--headid";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Filter by manager ID (optional, def. val. - Empty value)";
+    NewLine.Description     = "Filter by manager ID (optional, def. val.. - Empty value)";
     NewLine.Region      = "Departments management";
 
 
@@ -5750,7 +5750,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDEPARTMENTS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Departments management";
 
 
@@ -5784,7 +5784,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEDEPARTMENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Departments management";
 
 
@@ -5807,7 +5807,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCURRENTUSER";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -5841,7 +5841,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSER";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -5875,7 +5875,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEUSER";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -5920,7 +5920,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEUSER";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -5954,7 +5954,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CHANGEUSERSTATUS";
     NewLine.Parameter     = "--fire";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "True > Deactivation, False > Activation (optional, def. val. - True)";
+    NewLine.Description     = "True > Deactivation, False > Activation (optional, def. val.. - True)";
     NewLine.Region      = "Users management";
 
 
@@ -5965,7 +5965,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CHANGEUSERSTATUS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -5999,7 +5999,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FINDUSERS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -6022,7 +6022,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSERFIELDSSTRUCTURE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Users management";
 
 
@@ -6033,7 +6033,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSERFILTERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Users management";
     NewLine.MethodDescription   = "Returns the field structure for filtering users in the FindUsers method";
 
@@ -6068,7 +6068,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATELEAD";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Leads management";
 
 
@@ -6102,7 +6102,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETELEAD";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Leads management";
 
 
@@ -6136,7 +6136,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLEAD";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Leads management";
 
 
@@ -6159,7 +6159,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLEADSLIST";
     NewLine.Parameter     = "--filter";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Lead filter structure. See GetLeadFilterStructure (optional, def. val. - Empty value)";
+    NewLine.Description     = "Lead filter structure. See GetLeadFilterStructure (optional, def. val.. - Empty value)";
     NewLine.Region      = "Leads management";
 
 
@@ -6170,7 +6170,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLEADSLIST";
     NewLine.Parameter     = "--offset";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Offset from the beginning of the list to get leads > 50 recursively (optional, def. val. - Empty value)";
+    NewLine.Description     = "Offset from the beginning of the list to get leads > 50 recursively (optional, def. val.. - Empty value)";
     NewLine.Region      = "Leads management";
 
 
@@ -6181,7 +6181,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLEADSLIST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Leads management";
 
 
@@ -6226,7 +6226,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATELEAD";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Leads management";
 
 
@@ -6249,7 +6249,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLEADSTRUCTURE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Leads management";
 
 
@@ -6260,7 +6260,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLEADFILTERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Leads management";
     NewLine.MethodDescription   = "Returns the field structure for filtering leads in the GetLeadsList method";
 
@@ -6295,7 +6295,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEDEAL";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Deals management";
 
 
@@ -6329,7 +6329,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEDEAL";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Deals management";
 
 
@@ -6363,7 +6363,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDEAL";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Deals management";
 
 
@@ -6386,7 +6386,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDEALSLIST";
     NewLine.Parameter     = "--filter";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Deals filter structure. See GetDealsFilterStructure (optional, def. val. - Empty value)";
+    NewLine.Description     = "Deals filter structure. See GetDealsFilterStructure (optional, def. val.. - Empty value)";
     NewLine.Region      = "Deals management";
 
 
@@ -6397,7 +6397,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDEALSLIST";
     NewLine.Parameter     = "--offset";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Offset from the beginning of the list to retrieve deals > 50 pcs recursively (optional, def. val. - Empty value)";
+    NewLine.Description     = "Offset from the beginning of the list to retrieve deals > 50 pcs recursively (optional, def. val.. - Empty value)";
     NewLine.Region      = "Deals management";
 
 
@@ -6408,7 +6408,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDEALSLIST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Deals management";
 
 
@@ -6453,7 +6453,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEDEAL";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Deals management";
 
 
@@ -6476,7 +6476,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDEALSTRUCTURE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Deals management";
 
 
@@ -6487,7 +6487,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDEALSFILTERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Deals management";
     NewLine.MethodDescription   = "Returns the field structure for filtering deals in the GetDealsList method";
 
@@ -6533,7 +6533,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCALENDARLIST";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendars management";
 
 
@@ -6567,7 +6567,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECALENDAR";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendars management";
 
 
@@ -6612,7 +6612,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATECALENDAR";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendars management";
 
 
@@ -6668,7 +6668,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETECALENDAR";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendars management";
 
 
@@ -6724,7 +6724,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSERBUSY";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendars management";
 
 
@@ -6747,7 +6747,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCUSTOMCALENDARSETTINGS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendars management";
 
 
@@ -6781,7 +6781,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SETCUSTOMCALENDARSETTINGS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendars management";
 
 
@@ -6804,7 +6804,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCALENDARSETTINGSSTRUCTURE";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendars management";
 
 
@@ -6815,7 +6815,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCALEDNARCUSTOMSETTINGSSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Calendars management";
     NewLine.MethodDescription   = "Gets an empty structure for setting custom calendar settings";
 
@@ -6827,7 +6827,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCALENDARSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Calendars management";
     NewLine.MethodDescription   = "Returns the structure of the calendar description fields";
 
@@ -6862,7 +6862,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECALENDAREVENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendar events management";
 
 
@@ -6907,7 +6907,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATECALENDAREVENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendar events management";
 
 
@@ -6941,7 +6941,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCALENDAREVENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendar events management";
 
 
@@ -6986,7 +6986,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCALENDAREVENTS";
     NewLine.Parameter     = "--filter";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Events filter. See GetCalendarEventsFilterStructure (optional, def. val. - Empty value)";
+    NewLine.Description     = "Events filter. See GetCalendarEventsFilterStructure (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendar events management";
 
 
@@ -6997,7 +6997,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCALENDAREVENTS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendar events management";
 
 
@@ -7031,7 +7031,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETECALENDAREVENT";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendar events management";
 
 
@@ -7065,7 +7065,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSERPARTICIPATIONSTATUS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendar events management";
 
 
@@ -7110,7 +7110,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SETUSERPARTICIPATIONSTATUS";
     NewLine.Parameter     = "--token";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Access token, when app auth method used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Access token, when app auth method used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendar events management";
 
 
@@ -7121,7 +7121,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCALENDAREVENTSSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Calendar events management";
     NewLine.MethodDescription   = "Returns the structure of the calendar event fields";
 
@@ -7133,7 +7133,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCALENDAREVENTSFILTERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Calendar events management";
     NewLine.MethodDescription   = "Gets the filter structure for the function GetCalendarEvents";
 

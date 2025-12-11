@@ -37,7 +37,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EXECUTESQLQUERY";
     NewLine.Parameter     = "--params";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Array of positional parameters of the request (optional, def. val. - Empty value)";
+    NewLine.Description     = "Array of positional parameters of the request (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -48,7 +48,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EXECUTESQLQUERY";
     NewLine.Parameter     = "--force";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Includes an attempt to retrieve the result, even for nonSELECT queries (optional, def. val. - False)";
+    NewLine.Description     = "Includes an attempt to retrieve the result, even for nonSELECT queries (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
 
@@ -59,7 +59,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EXECUTESQLQUERY";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Existing connection or path to the base. In memory, if not filled (optional, def. val. - Empty value)";
+    NewLine.Description     = "Existing connection or path to the base. In memory, if not filled (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -70,7 +70,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EXECUTESQLQUERY";
     NewLine.Parameter     = "--exts";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "Extensions: Key > filepath or extension data, Value > entry point (optional, def. val. - Empty value)";
+    NewLine.Description     = "Extensions: Key > filepath or extension data, Value > entry point (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -93,7 +93,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTABLEINFORMATION";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Description     = "Existing connection or database path (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -127,7 +127,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATETABLE";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Description     = "Existing connection or database path (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -172,7 +172,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDTABLECOLUMN";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Description     = "Existing connection or database path (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -206,7 +206,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETETABLECOLUMN";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Description     = "Existing connection or database path (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -240,7 +240,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ENSURETABLE";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Description     = "Existing connection or database path (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -274,7 +274,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDRECORDS";
     NewLine.Parameter     = "--trn";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "True > adding records to transactions with rollback on error (optional, def. val. - True)";
+    NewLine.Description     = "True > adding records to transactions with rollback on error (optional, def. val.. - True)";
     NewLine.Region      = "Orm";
 
 
@@ -285,7 +285,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDRECORDS";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Description     = "Existing connection or database path (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -308,7 +308,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETRECORDS";
     NewLine.Parameter     = "--fields";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Fields for selection (optional, def. val. - *)";
+    NewLine.Description     = "Fields for selection (optional, def. val.. - *)";
     NewLine.Region      = "Orm";
 
 
@@ -319,7 +319,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETRECORDS";
     NewLine.Parameter     = "--filter";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
+    NewLine.Description     = "Filters array. See GetRecordsFilterStrucutre (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -330,7 +330,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETRECORDS";
     NewLine.Parameter     = "--order";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Sorting: Key > field name, Value > direction (ASC, DESC) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Sorting: Key > field name, Value > direction (ASC, DESC) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -341,7 +341,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETRECORDS";
     NewLine.Parameter     = "--limit";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "Limiting the number of received strings (optional, def. val. - Empty value)";
+    NewLine.Description     = "Limiting the number of received strings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -352,7 +352,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETRECORDS";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Description     = "Existing connection or database path (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -386,7 +386,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATERECORDS";
     NewLine.Parameter     = "--filter";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
+    NewLine.Description     = "Filters array. See GetRecordsFilterStrucutre (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -397,7 +397,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATERECORDS";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Description     = "Existing connection or database path (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -420,7 +420,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETERECORDS";
     NewLine.Parameter     = "--filter";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Filters array. See GetRecordsFilterStrucutre (optional, def. val. - Empty value)";
+    NewLine.Description     = "Filters array. See GetRecordsFilterStrucutre (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -431,7 +431,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETERECORDS";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Description     = "Existing connection or database path (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -454,7 +454,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETETABLE";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Description     = "Existing connection or database path (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -477,7 +477,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CLEARTABLE";
     NewLine.Parameter     = "--db";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Existing connection or database path (optional, def. val. - Empty value)";
+    NewLine.Description     = "Existing connection or database path (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
 
@@ -488,7 +488,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETRECORDSFILTERSTRUCUTRE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Orm";
     NewLine.MethodDescription   = "Gets the template structure for filtering records in ORM queries";
 

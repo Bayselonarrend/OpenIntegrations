@@ -37,7 +37,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSITEDATA";
     NewLine.Parameter     = "--sitename";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Site name (login) for information. Current, if not filled in (optional, def. val. - Empty value)";
+    NewLine.Description     = "Site name (login) for information. Current, if not filled in (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data retrieving";
 
 
@@ -128,7 +128,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFILES";
     NewLine.Parameter     = "--singly";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "True > sends files in separate requests (optional, def. val. - False)";
+    NewLine.Description     = "True > sends files in separate requests (optional, def. val.. - False)";
     NewLine.Region      = "File management";
 
 
@@ -174,7 +174,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILESLIST";
     NewLine.Parameter     = "--path";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Selection of files by catalog. All if not filled in (optional, def. val. - Empty value)";
+    NewLine.Description     = "Selection of files by catalog. All if not filled in (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -208,7 +208,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SYNCHRONIZEFOLDERS";
     NewLine.Parameter     = "--remote";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Remote receiver catalog. Root by default (optional, def. val. - Empty value)";
+    NewLine.Description     = "Remote receiver catalog. Root by default (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
     Return CompositionTable;

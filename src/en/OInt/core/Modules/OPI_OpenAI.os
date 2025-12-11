@@ -50,7 +50,7 @@
 // Get response
 // Generates a response for a given text query
 //
-// Note
+// Note:
 // Method at API documentation: [Create chat completion](@platform.openai.com/docs/api-reference/chat/create)
 //
 // Parameters:
@@ -84,7 +84,7 @@ EndFunction
 // Get images
 // Generates images based on the specified description
 //
-// Note
+// Note:
 // Method at API documentation: [Create image](@platform.openai.com/docs/api-reference/images/create)
 //
 // Parameters:
@@ -120,7 +120,7 @@ EndFunction
 // Get embeddings
 // Gets the embeddings for the given entries
 //
-// Note
+// Note:
 // Method at API documentation: [Create embeddings](@platform.openai.com/docs/api-reference/embeddings/create)
 //
 // Parameters:
@@ -177,7 +177,7 @@ EndFunction
 // Get user message
 // Gets the structure of a message from the user for use in a request
 //
-// Note
+// Note:
 // Is a shorthand for the function `GetMessageStructure`
 //
 // Parameters:
@@ -193,7 +193,7 @@ EndFunction
 // Get assistant message
 // Gets the structure of a message from the assistant for use in a request
 //
-// Note
+// Note:
 // Is a shorthand for the function `GetMessageStructure`
 //
 // Parameters:
@@ -208,7 +208,7 @@ EndFunction
 // Get system message
 // Gets the structure of a system message for use in a request
 //
-// Note
+// Note:
 // Is a shorthand for the function `GetMessageStructure`
 //
 // Parameters:
@@ -254,7 +254,7 @@ EndFunction
 // Get image description structure
 // Get image description structure for generation
 //
-// Note
+// Note:
 // The set of fields and their interpretation may vary depending on the model used
 //
 // Parameters:
@@ -293,7 +293,7 @@ EndFunction
 // Get assistants list
 // Retrieves a list of assistants with or without filtering
 //
-// Note
+// Note:
 // Method at API documentation: [List assistants](@platform.openai.com/docs/api-reference/assistants/listAssistants)
 //
 // Parameters:
@@ -333,7 +333,7 @@ EndFunction
 // Create assistant
 // Creates an assistant based on the model and instruction
 //
-// Note
+// Note:
 // Method at API documentation: [Create assistant](@platform.openai.com/docs/api-reference/assistants/createAssistant)
 //
 // Parameters:
@@ -376,7 +376,7 @@ EndFunction
 // Retrieve assistant
 // Retrieves information about an assistant by ID
 //
-// Note
+// Note:
 // Method at API documentation: [Retrieve assistant](@platform.openai.com/docs/api-reference/assistants/getAssistant)
 //
 // Parameters:
@@ -403,7 +403,7 @@ EndFunction
 // Delete assistant
 // Deletes a previously created assistant
 //
-// Note
+// Note:
 // Method at API documentation: [Delete assistant](@platform.openai.com/docs/api-reference/assistants/deleteAssistant)
 //
 // Parameters:
@@ -434,7 +434,7 @@ EndFunction
 // Get list of files
 // Get a list of files with or without filtering
 //
-// Note
+// Note:
 // Method at API documentation: [List files](@platform.openai.com/docs/api-reference/files/list)
 //
 // Parameters:
@@ -474,7 +474,7 @@ EndFunction
 // Upload file
 // Uploads a file for further use in other requests
 //
-// Note
+// Note:
 // Method at API documentation: [Upload file](@platform.openai.com/docs/api-reference/files/create)
 //
 // Parameters:
@@ -508,7 +508,7 @@ EndFunction
 // Get information about file
 // Gets information about the file
 //
-// Note
+// Note:
 // Method at API documentation: [Retrieve file](@platform.openai.com/docs/api-reference/files/retrieve)
 //
 // Parameters:
@@ -535,7 +535,7 @@ EndFunction
 // Download file
 // Get file data from the server
 //
-// Note
+// Note:
 // Method at API documentation: [Retrieve file content](@platform.openai.com/docs/api-reference/files/retrieve-contents)
 //
 // Parameters:
@@ -562,7 +562,7 @@ EndFunction
 // Delete file
 // Deletes a previously uploaded file
 //
-// Note
+// Note:
 // Method at API documentation: [Delete file](@platform.openai.com/docs/api-reference/files/delete)
 //
 // Parameters:
@@ -593,7 +593,7 @@ EndFunction
 // Generate speech
 // Generates audio with the specified text for speech synthesis
 //
-// Note
+// Note:
 // Method at API documentation: [Create speech](@platform.openai.com/docs/api-reference/audio/createSpeech)
 // Available voices may vary depending on the selected model
 // The audio file format of the response can be changed by adding `response_format` in additional parameters.^^
@@ -639,7 +639,7 @@ EndFunction
 // Create transcription
 // Creates a text transcription for the selected audio file
 //
-// Note
+// Note:
 // Method at API documentation: [Create transcription](@platform.openai.com/docs/api-reference/audio/createTranscription)
 //
 // Parameters:
@@ -686,7 +686,7 @@ EndFunction
 // Get model list
 // Receives a list of available models
 //
-// Note
+// Note:
 // Method at API documentation: [List models](@platform.openai.com/docs/api-reference/models/list)
 //
 // Parameters:
