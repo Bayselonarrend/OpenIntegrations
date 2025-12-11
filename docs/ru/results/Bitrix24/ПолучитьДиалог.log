@@ -12,7 +12,7 @@
   "type": "private",
   "counter": 0,
   "user_counter": 0,
-  "message_count": 770,
+  "message_count": 774,
   "unread_id": 0,
   "restrictions": {
    "avatar": true,
@@ -25,7 +25,7 @@
    "send": true,
    "user_list": true
   },
-  "last_message_id": 70116,
+  "last_message_id": 70480,
   "last_id": 3854,
   "marked_id": 0,
   "disk_folder_id": 0,
@@ -65,20 +65,20 @@
   ],
   "manager_list": [],
   "last_message_views": {
-   "message_id": 70116,
+   "message_id": 70480,
    "first_viewers": [],
    "count_of_viewers": 0
   },
   "dialog_id": "10"
  },
  "time": {
-  "start": 1765367837,
-  "finish": 1765367837.61657,
-  "duration": 0.61657190322876,
+  "start": 1765437726,
+  "finish": 1765437726.17772,
+  "duration": 0.177716016769409,
   "processing": 0,
-  "date_start": "2025-12-10T14:57:17+03:00",
-  "date_finish": "2025-12-10T14:57:17+03:00",
-  "operating_reset_at": 1765368437,
+  "date_start": "2025-12-11T10:22:06+03:00",
+  "date_finish": "2025-12-11T10:22:06+03:00",
+  "operating_reset_at": 1765438326,
   "operating": 0
  }
 }
