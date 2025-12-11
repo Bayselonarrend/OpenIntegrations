@@ -34,6 +34,7 @@ src/en/cli/data/Classes/internal/Classes/** linguist-vendored
 *.bmp binary
 *.webp binary
 *.pdn binary
+*.luac binary
 
 *.sh text eol=lf
 *.bash text eol=lf
