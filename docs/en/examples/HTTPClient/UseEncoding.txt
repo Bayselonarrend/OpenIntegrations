@@ -1,7 +1,7 @@
 ﻿    URL = "https://bin.openintegrations.dev";
     URL = URL + "/post";
 
-    Text     = "Hello world!";
+    Text     = "Hello world!!";
     Encoding = "Windows-1251";
 
     Result = OPI_HTTPRequests.NewRequest()

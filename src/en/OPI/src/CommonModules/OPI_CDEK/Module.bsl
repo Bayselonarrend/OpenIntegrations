@@ -48,7 +48,7 @@
 // Get token
 // Gets a token based on account ID and password
 //
-// Note
+// Note:
 // Method at API documentation: [Client authorization](@api-docs.cdek.ru/33828799.html)
 //
 // Parameters:
@@ -78,7 +78,7 @@ EndFunction
 // Get cashbox checks by date
 // Gets information about checks for a specified date
 //
-// Note
+// Note:
 // Method at API documentation: [Cashbox check information](@api-docs.cdek.ru/68258028.html)
 //
 // Parameters:
@@ -105,7 +105,7 @@ EndFunction
 // Get delivery cash registry
 // Receives registers of imposed payments, for which the client was transferred the payment
 //
-// Note
+// Note:
 // Method at API documentation: [Cash on delivery registry information](@api-docs.cdek.ru/107254821.html)
 //
 // Parameters:
@@ -132,7 +132,7 @@ EndFunction
 // Get delivery cash transfers
 // Gets information about orders for which cash on delivery was transferred to the online store
 //
-// Note
+// Note:
 // Method at API documentation: [Cash on delivery transfer information](@api-docs.cdek.ru/71060213.html)
 //
 // Parameters:
@@ -159,7 +159,7 @@ EndFunction
 // Get office list
 // Gets a list of offices with or without a filter
 //
-// Note
+// Note:
 // Method at API documentation: [List of pickup points](@api-docs.cdek.ru/36990336.html)
 //
 // Parameters:
@@ -185,7 +185,7 @@ EndFunction
 // Get regions list
 // Gets the list of available regions
 //
-// Note
+// Note:
 // Method at API documentation: [List of Regions](@api-docs.cdek.ru/33829453.html)
 //
 // Parameters:
@@ -220,7 +220,7 @@ EndFunction
 // Get office filter description
 // Gets an empty layout of the filter for getting the list of offices in the GetOfficeList function
 //
-// Note
+// Note:
 // Required fields may depend on the type of order or nesting. Be sure to read the CDEK documentation
 // Field descriptions in the documentation: [List of pickup points](@api-docs.cdek.ru/36990336.html)
 //
@@ -272,7 +272,7 @@ EndFunction
 // Create order
 // Creates an order based on field descriptions
 //
-// Note
+// Note:
 // Method at API documentation: [Order registration](@api-docs.cdek.ru/33828802.html)
 //
 // Parameters:
@@ -302,7 +302,7 @@ EndFunction
 // Update order
 // Changes the field values of the selected order
 //
-// Note
+// Note:
 // Method at API documentation: [Update an order](@api-docs.cdek.ru/36989543.html)
 //
 // Parameters:
@@ -331,7 +331,7 @@ EndFunction
 // Delete order
 // Deletes order by UUID
 //
-// Note
+// Note:
 // Method at API documentation: [Deleting an order](@api-docs.cdek.ru/33828855.html)
 //
 // Parameters:
@@ -357,7 +357,7 @@ EndFunction
 // Get order
 // Gets the order by UUID
 //
-// Note
+// Note:
 // Method at API documentation: [Order details](@api-docs.cdek.ru/33828849.html)
 //
 // Parameters:
@@ -383,7 +383,7 @@ EndFunction
 // Get order by number
 // Receives the order by CDEK number or number from customer IB
 //
-// Note
+// Note:
 // Method at API documentation: [Order details](@api-docs.cdek.ru/33828849.html)
 //
 // Parameters:
@@ -415,7 +415,7 @@ EndFunction
 // Create customer refund
 // Processes customer returns for online store orders
 //
-// Note
+// Note:
 // This method is used if the direct order was delivered by CDEK and the recipient wants to return it in full
 // If the order was delivered by another service, or you need to return not all items, you must use the CreateOrder method with is_client_return = true
 // Method at API documentation: [Registration of refusal](@api-docs.cdek.ru/55327686.html)
@@ -447,7 +447,7 @@ EndFunction
 // Create refusal
 // Creates an order refusal to return to the online store
 //
-// Note
+// Note:
 // Method at API documentation: [Registration of refusal](@api-docs.cdek.ru/55327686.html)
 //
 // Parameters:
@@ -473,7 +473,7 @@ EndFunction
 // Create receipt
 // Generates pdf receipts for orders
 //
-// Note
+// Note:
 // Available receipt types (languages): tpl_china, tpl_armenia, tpl_russia, tpl_english, tpl_italian, tpl_korean, tpl_latvian, tpl_lithuanian, tpl_german, tpl_turkish, tpl_czech, tpl_thailand, tpl_invoice
 // It is recommended to specify at least 2 copies per sheet (parameter CopiesPerSheet): one to be glued on the shipment, the other to be kept by the sender
 // Method at API documentation: [Creating order receipt](@api-docs.cdek.ru/36969649.html)
@@ -521,7 +521,7 @@ EndFunction
 // Get receipt
 // Gets a receipt for the order
 //
-// Note
+// Note:
 // The receipt must be previously created. See CreateReceipt
 // A link to the receipt file for orders is available within 1 hour
 // Method at API documentation: [Receiving order receipt](@api-docs.cdek.ru/36969694.html)
@@ -569,7 +569,7 @@ EndFunction
 // Create barcode
 // Generates a PDF barcode CP for orders
 //
-// Note
+// Note:
 // Method at API documentation: [Creating barcode CP for the order](@api-docs.cdek.ru/36969713.html)
 //
 // Parameters:
@@ -618,7 +618,7 @@ EndFunction
 // Get barcode
 // Gets the barcode CP for the order
 //
-// Note
+// Note:
 // The barcode must be previously created. See CreateBarcode
 // The link to the file with the barcode CP is available within 1 hour
 // Method at API documentation: [Receiving barcode CP for the order](@api-docs.cdek.ru/36969722.html)
@@ -666,7 +666,7 @@ EndFunction
 // Create prealert
 // Creates a prealert for the order list
 //
-// Note
+// Note:
 // Method at API documentation: [Registration of Prealert document](@api-docs.cdek.ru/78935159.html)
 //
 // Parameters:
@@ -712,7 +712,7 @@ EndFunction
 // Get prealert
 // Gets a previously created prealert
 //
-// Note
+// Note:
 // The prealert must be previously created. See CreatePrealert
 // Method at API documentation: [Details of prealert document](@api-docs.cdek.ru/78935281.html)
 //
@@ -739,7 +739,7 @@ EndFunction
 // Get passport data status
 // Receives information on passport data processing status for international orders
 //
-// Note
+// Note:
 // Method at API documentation: [Passport data information](@api-docs.cdek.ru/55343134.html)
 //
 // Parameters:
@@ -766,7 +766,7 @@ EndFunction
 // Get cashbox check
 // Receives check information on an order
 //
-// Note
+// Note:
 // Method at API documentation: [Cashbox check information](@api-docs.cdek.ru/68258028.html)
 //
 // Parameters:
@@ -793,7 +793,7 @@ EndFunction
 // Get order description
 // Gets the layout of order for the CreateOrder function
 //
-// Note
+// Note:
 // Required fields may depend on the type of order or nesting. Be sure to read the CDEK documentation
 // Field descriptions in the documentation: [Order registration](@api-docs.cdek.ru/33828802.html)
 //
@@ -997,7 +997,7 @@ EndFunction
 // Get available delivery intervals
 // Gets available delivery intervals for order
 //
-// Note
+// Note:
 // Method at API documentation: [Getting delivery intervals (RU)](@api-docs.cdek.ru/154160502.html)
 //
 // Parameters:
@@ -1024,7 +1024,7 @@ EndFunction
 // Create courier invitation
 // Creates a new request to call a courier to pick up a shipment
 //
-// Note
+// Note:
 // Method at API documentation: [Registration of refusal](@api-docs.cdek.ru/55327686.html)
 //
 // Parameters:
@@ -1050,7 +1050,7 @@ EndFunction
 // Get withourier invitation
 // Gets withourier invitation by UUID
 //
-// Note
+// Note:
 // The invitation must be previously created. See CreateCourierInvitation
 // Method at API documentation: [Details of a courier invitation(@api-docs.cdek.ru/33828865.html)
 //
@@ -1076,7 +1076,7 @@ EndFunction
 
 // Delete courier invitation
 //
-// Note
+// Note:
 // Method at API documentation: [Deleting a courier invitation](@api-docs.cdek.ru/33828880.html)
 //
 // Parameters:
@@ -1102,7 +1102,7 @@ EndFunction
 // Register delivery appointment
 // Fixes the delivery date, time and address agreed with the customer
 //
-// Note
+// Note:
 // Method at API documentation: [Registration of delivery appointment](@api-docs.cdek.ru/36989576.html)
 //
 // Parameters:
@@ -1128,7 +1128,7 @@ EndFunction
 // Get delivery appointment
 // Receives information about the delivery date, time and address agreed with the customer
 //
-// Note
+// Note:
 // The appointment must be previously created. See RegisterDeliveryAppointment
 // Method at API documentation: [Information about delivery appointment](@api-docs.cdek.ru/36989601.html)
 //
@@ -1155,7 +1155,7 @@ EndFunction
 // Get courier invitations description
 // Gets the layout for creating a request for courier call in the CreateCourierInvitation function
 //
-// Note
+// Note:
 // Required fields may depend on the type of order or nesting. Be sure to read the CDEK documentation
 // Field descriptions in the documentation: [Registration of a courier invitation](@api-docs.cdek.ru/33828859.html)
 //
@@ -1243,7 +1243,7 @@ EndFunction
 // Get appointment description
 // Gets the layout to create about delivery in the RegisterDeliveryAppointment function
 //
-// Note
+// Note:
 // Required fields may depend on the type of order or nesting. Be sure to read the CDEK documentation
 // Field descriptions in the documentation: [Registration of delivery appointment](@api-docs.cdek.ru/36989576.html)
 //

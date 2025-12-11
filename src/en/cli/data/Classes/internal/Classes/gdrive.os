@@ -37,7 +37,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--calendar";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Calendar methods permission (optional, def. val. - True)";
+    NewLine.Description     = "Calendar methods permission (optional, def. val.. - True)";
     NewLine.Region      = "Authorization";
 
 
@@ -48,7 +48,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--drive";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Drive methods permission (optional, def. val. - True)";
+    NewLine.Description     = "Drive methods permission (optional, def. val.. - True)";
     NewLine.Region      = "Authorization";
 
 
@@ -59,7 +59,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--sheets";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Sheets methods permission (optional, def. val. - True)";
+    NewLine.Description     = "Sheets methods permission (optional, def. val.. - True)";
     NewLine.Region      = "Authorization";
 
 
@@ -161,7 +161,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSERVICEACCOUNTTOKEN";
     NewLine.Parameter     = "--exp";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "Token lifetime in seconds (optional, def. val. - 3600)";
+    NewLine.Description     = "Token lifetime in seconds (optional, def. val.. - 3600)";
     NewLine.Region      = "Authorization";
 
 
@@ -207,7 +207,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDIRECTORIESLIST";
     NewLine.Parameter     = "--querry";
     NewLine.ParameterTrim = "-q";
-    NewLine.Description     = "Filter by name (optional, def. val. - Empty value)";
+    NewLine.Description     = "Filter by name (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and directory management";
 
 
@@ -218,7 +218,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDIRECTORIESLIST";
     NewLine.Parameter     = "--depth";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Adds a list of files to the directory fields (optional, def. val. - False)";
+    NewLine.Description     = "Adds a list of files to the directory fields (optional, def. val.. - False)";
     NewLine.Region      = "File and directory management";
 
 
@@ -241,7 +241,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILESLIST";
     NewLine.Parameter     = "--querry";
     NewLine.ParameterTrim = "-q";
-    NewLine.Description     = "Filter by name (optional, def. val. - Empty value)";
+    NewLine.Description     = "Filter by name (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and directory management";
 
 
@@ -252,7 +252,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILESLIST";
     NewLine.Parameter     = "--catalog";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Filter by parent directory ID (optional, def. val. - Empty value)";
+    NewLine.Description     = "Filter by parent directory ID (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and directory management";
 
 
@@ -328,7 +328,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEFOLDER";
     NewLine.Parameter     = "--catalog";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Parent (optional, def. val. - Empty value)";
+    NewLine.Description     = "Parent (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and directory management";
 
 
@@ -362,7 +362,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DOWNLOADFILE";
     NewLine.Parameter     = "--out";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "File save path (optional, def. val. - Empty value)";
+    NewLine.Description     = "File save path (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and directory management";
 
 
@@ -396,7 +396,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "COPYOBJECT";
     NewLine.Parameter     = "--title";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "New object name (optional, def. val. - Empty value)";
+    NewLine.Description     = "New object name (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and directory management";
 
 
@@ -407,7 +407,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "COPYOBJECT";
     NewLine.Parameter     = "--catalog";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "New parent directory (optional, def. val. - Empty value)";
+    NewLine.Description     = "New parent directory (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and directory management";
 
 
@@ -452,7 +452,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEFILE";
     NewLine.Parameter     = "--title";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "New file name (if necessary) (optional, def. val. - Empty value)";
+    NewLine.Description     = "New file name (if necessary) (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and directory management";
 
 
@@ -486,7 +486,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILEDESCRIPTION";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "File and directory management";
     NewLine.MethodDescription   = "Gets a blank description template for uploading a file";
 

@@ -37,7 +37,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PROCESSREQUEST";
     NewLine.Parameter     = "--data";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Data or text to be sent (optional, def. val. - Empty value)";
+    NewLine.Description     = "Data or text to be sent (optional, def. val.. - Empty value)";
     NewLine.Region      = "Client methods";
 
 
@@ -48,7 +48,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PROCESSREQUEST";
     NewLine.Parameter     = "--string";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "An attribute of receiving the response as a string (optional, def. val. - True)";
+    NewLine.Description     = "An attribute of receiving the response as a string (optional, def. val.. - True)";
     NewLine.Region      = "Client methods";
 
 
@@ -59,7 +59,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PROCESSREQUEST";
     NewLine.Parameter     = "--tls";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Client methods";
 
 
@@ -70,7 +70,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PROCESSREQUEST";
     NewLine.Parameter     = "--proxy";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Proxy settings, if required. See GetProxySettings (optional, def. val. - Empty value)";
+    NewLine.Description     = "Proxy settings, if required. See GetProxySettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Client methods";
 
 
@@ -104,7 +104,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--type";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Proxy type: socks5, socks4, http (optional, def. val. - socks5)";
+    NewLine.Description     = "Proxy type: socks5, socks4, http (optional, def. val.. - socks5)";
     NewLine.Region      = "Client methods";
 
 
@@ -115,7 +115,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--login";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "Authorization login, if required (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization login, if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "Client methods";
 
 
@@ -126,7 +126,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--pass";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Authorization password, if required (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization password, if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "Client methods";
 
 
@@ -149,7 +149,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTLSSETTINGS";
     NewLine.Parameter     = "--cert";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Path to the root PEM file of the certificate if it is not in the system repository (optional, def. val. - Empty value)";
+    NewLine.Description     = "Path to the root PEM file of the certificate if it is not in the system repository (optional, def. val.. - Empty value)";
     NewLine.Region      = "Client methods";
 
     Return CompositionTable;

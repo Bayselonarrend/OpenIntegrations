@@ -37,7 +37,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONNECTIONCONFIGURATION";
     NewLine.Parameter     = "--proxy";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Proxy settings, if required. See GetProxySettings (optional, def. val. - Empty value)";
+    NewLine.Description     = "Proxy settings, if required. See GetProxySettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -82,7 +82,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEPATH";
     NewLine.Parameter     = "--rw";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Overwrite if an object already exists at the target path (optional, def. val. - False)";
+    NewLine.Description     = "Overwrite if an object already exists at the target path (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
 
@@ -128,7 +128,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSETTINGSLOGINPASSWORD";
     NewLine.Parameter     = "--pass";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "SSH user password (optional, def. val. - Empty value)";
+    NewLine.Description     = "SSH user password (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -184,7 +184,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSETTINGSPRIVATEKEY";
     NewLine.Parameter     = "--pub";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Path to public key file (optional, def. val. - Empty value)";
+    NewLine.Description     = "Path to public key file (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -195,7 +195,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSETTINGSPRIVATEKEY";
     NewLine.Parameter     = "--pass";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Private key password (passphrase) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Private key password (passphrase) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -263,7 +263,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--type";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Proxy type: socks5, socks4, http (optional, def. val. - socks5)";
+    NewLine.Description     = "Proxy type: socks5, socks4, http (optional, def. val.. - socks5)";
     NewLine.Region      = "Common methods";
 
 
@@ -274,7 +274,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--login";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "Authorization login, if required (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization login, if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -285,7 +285,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--pass";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Authorization password, if required (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization password, if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -308,7 +308,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTOBJECTS";
     NewLine.Parameter     = "--path";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Path to search directory (optional, def. val. - Empty value)";
+    NewLine.Description     = "Path to search directory (optional, def. val.. - Empty value)";
     NewLine.Region      = "Directory management";
 
 
@@ -319,7 +319,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTOBJECTS";
     NewLine.Parameter     = "--rcv";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Get information about objects in nested directories (optional, def. val. - False)";
+    NewLine.Description     = "Get information about objects in nested directories (optional, def. val.. - False)";
     NewLine.Region      = "Directory management";
 
 
@@ -353,7 +353,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATENEWDIRECTORY";
     NewLine.Parameter     = "--mode";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "Access mode to the directory in POSIX numeric format (as in chmod) (optional, def. val. - 700)";
+    NewLine.Description     = "Access mode to the directory in POSIX numeric format (as in chmod) (optional, def. val.. - 700)";
     NewLine.Region      = "Directory management";
 
 

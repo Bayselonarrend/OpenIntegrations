@@ -257,7 +257,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETINSTANCESETTINGSSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Account";
     NewLine.MethodDescription   = "Gets the structure template for instance settings";
 
@@ -315,7 +315,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEGROUP";
     NewLine.Parameter     = "--members";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "Chat members array (optional, def. val. - Empty value)";
+    NewLine.Description     = "Chat members array (optional, def. val.. - Empty value)";
     NewLine.Region      = "Group management";
 
 
@@ -587,7 +587,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDTEXTMESSAGE";
     NewLine.Parameter     = "--quoted";
     NewLine.ParameterTrim = "-q";
-    NewLine.Description     = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Replying message id if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -643,7 +643,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--caption";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Message text below the file (optional, def. val. - Empty value)";
+    NewLine.Description     = "Message text below the file (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -654,7 +654,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--quoted";
     NewLine.ParameterTrim = "-q";
-    NewLine.Description     = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Replying message id if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -710,7 +710,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILEBYURL";
     NewLine.Parameter     = "--caption";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Message text below the file (optional, def. val. - Empty value)";
+    NewLine.Description     = "Message text below the file (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -721,7 +721,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILEBYURL";
     NewLine.Parameter     = "--quoted";
     NewLine.ParameterTrim = "-q";
-    NewLine.Description     = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Replying message id if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -777,7 +777,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDPOLL";
     NewLine.Parameter     = "--multi";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "Allows to select more than one answer choice (optional, def. val. - False)";
+    NewLine.Description     = "Allows to select more than one answer choice (optional, def. val.. - False)";
     NewLine.Region      = "Message sending";
 
 
@@ -788,7 +788,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDPOLL";
     NewLine.Parameter     = "--quoted";
     NewLine.ParameterTrim = "-q";
-    NewLine.Description     = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Replying message id if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -833,7 +833,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDLOCATION";
     NewLine.Parameter     = "--quoted";
     NewLine.ParameterTrim = "-q";
-    NewLine.Description     = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Replying message id if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -878,7 +878,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDCONTACT";
     NewLine.Parameter     = "--quoted";
     NewLine.ParameterTrim = "-q";
-    NewLine.Description     = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Replying message id if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -1013,7 +1013,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEMESSAGE";
     NewLine.Parameter     = "--sender";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Delete for sender only (optional, def. val. - False)";
+    NewLine.Description     = "Delete for sender only (optional, def. val.. - False)";
     NewLine.Region      = "Message sending";
 
 
@@ -1036,7 +1036,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONTACTDESCRIPTION";
     NewLine.Parameter     = "--name";
     NewLine.ParameterTrim = "-n";
-    NewLine.Description     = "Contact name (optional, def. val. - Empty value)";
+    NewLine.Description     = "Contact name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -1047,7 +1047,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONTACTDESCRIPTION";
     NewLine.Parameter     = "--surname";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Contact last name (optional, def. val. - Empty value)";
+    NewLine.Description     = "Contact last name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -1058,7 +1058,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONTACTDESCRIPTION";
     NewLine.Parameter     = "--midname";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "Contacts patronymic or middle name (optional, def. val. - Empty value)";
+    NewLine.Description     = "Contacts patronymic or middle name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -1069,7 +1069,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONTACTDESCRIPTION";
     NewLine.Parameter     = "--company";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Name of the contact company (optional, def. val. - Empty value)";
+    NewLine.Description     = "Name of the contact company (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -1103,7 +1103,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLOCATIONDESCRIPTION";
     NewLine.Parameter     = "--addr";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Location address (optional, def. val. - Empty value)";
+    NewLine.Description     = "Location address (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -1114,7 +1114,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLOCATIONDESCRIPTION";
     NewLine.Parameter     = "--name";
     NewLine.ParameterTrim = "-n";
-    NewLine.Description     = "Location name (optional, def. val. - Empty value)";
+    NewLine.Description     = "Location name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -1137,7 +1137,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETNOTIFICATION";
     NewLine.Parameter     = "--timeout";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Timeout for waiting for new messages when the queue is empty (optional, def. val. - 5)";
+    NewLine.Description     = "Timeout for waiting for new messages when the queue is empty (optional, def. val.. - 5)";
     NewLine.Region      = "Notifications receiving";
 
 
@@ -1228,7 +1228,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SETREADMARK";
     NewLine.Parameter     = "--message";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "Message ID. All messages, if not filled in (optional, def. val. - Empty value)";
+    NewLine.Description     = "Message ID. All messages, if not filled in (optional, def. val.. - Empty value)";
     NewLine.Region      = "Notifications receiving";
 
 
@@ -1286,7 +1286,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHATHISTORY";
     NewLine.Parameter     = "--count";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Number of messages to receive (optional, def. val. - 100)";
+    NewLine.Description     = "Number of messages to receive (optional, def. val.. - 100)";
     NewLine.Region      = "Message logs";
 
 
@@ -1343,7 +1343,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETINCOMINGMESSAGELOG";
     NewLine.Parameter     = "--period";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Time in minutes for which messages need to be received (optional, def. val. - 1440)";
+    NewLine.Description     = "Time in minutes for which messages need to be received (optional, def. val.. - 1440)";
     NewLine.Region      = "Message logs";
 
 
@@ -1366,7 +1366,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOUTGOINGMESSAGELOG";
     NewLine.Parameter     = "--period";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Time in minutes for which messages need to be received (optional, def. val. - 1440)";
+    NewLine.Description     = "Time in minutes for which messages need to be received (optional, def. val.. - 1440)";
     NewLine.Region      = "Message logs";
 
     Return CompositionTable;

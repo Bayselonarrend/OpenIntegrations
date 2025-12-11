@@ -70,7 +70,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETRESPONSE";
     NewLine.Parameter     = "--options";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -81,7 +81,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETRESPONSE";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -137,7 +137,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETIMAGES";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -193,7 +193,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETEMBEDDINGS";
     NewLine.Parameter     = "--options";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -204,7 +204,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETEMBEDDINGS";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -238,7 +238,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETMESSAGESTRUCTURE";
     NewLine.Parameter     = "--name";
     NewLine.ParameterTrim = "-n";
-    NewLine.Description     = "Name of participant in conversation (optional, def. val. - Empty value)";
+    NewLine.Description     = "Name of participant in conversation (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -261,7 +261,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSERMESSAGE";
     NewLine.Parameter     = "--name";
     NewLine.ParameterTrim = "-n";
-    NewLine.Description     = "Name of participant in conversation (optional, def. val. - Empty value)";
+    NewLine.Description     = "Name of participant in conversation (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -319,7 +319,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETIMAGEMESSAGESTRUCTURE";
     NewLine.Parameter     = "--prompt";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Input text query for image processing (optional, def. val. - Empty value)";
+    NewLine.Description     = "Input text query for image processing (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -353,7 +353,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETIMAGEDESCRIPTIONSTRUCTURE";
     NewLine.Parameter     = "--bg";
     NewLine.ParameterTrim = "-b";
-    NewLine.Description     = "Generation background option: transparent, opaque, auto (optional, def. val. - Empty value)";
+    NewLine.Description     = "Generation background option: transparent, opaque, auto (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -364,7 +364,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETIMAGEDESCRIPTIONSTRUCTURE";
     NewLine.Parameter     = "--size";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Size option for generated images (optional, def. val. - Empty value)";
+    NewLine.Description     = "Size option for generated images (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -375,7 +375,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETIMAGEDESCRIPTIONSTRUCTURE";
     NewLine.Parameter     = "--options";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 
 
@@ -409,7 +409,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETASSISTANTSLIST";
     NewLine.Parameter     = "--limit";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "Maximum number of assistants returned (optional, def. val. - 20)";
+    NewLine.Description     = "Maximum number of assistants returned (optional, def. val.. - 20)";
     NewLine.Region      = "Assistants";
 
 
@@ -420,7 +420,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETASSISTANTSLIST";
     NewLine.Parameter     = "--options";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Assistants";
 
 
@@ -431,7 +431,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETASSISTANTSLIST";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Assistants";
 
 
@@ -476,7 +476,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEASSISTANT";
     NewLine.Parameter     = "--name";
     NewLine.ParameterTrim = "-n";
-    NewLine.Description     = "Assistant name (optional, def. val. - Empty value)";
+    NewLine.Description     = "Assistant name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Assistants";
 
 
@@ -487,7 +487,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEASSISTANT";
     NewLine.Parameter     = "--inst";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "System instruction for the assistant (optional, def. val. - Empty value)";
+    NewLine.Description     = "System instruction for the assistant (optional, def. val.. - Empty value)";
     NewLine.Region      = "Assistants";
 
 
@@ -498,7 +498,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEASSISTANT";
     NewLine.Parameter     = "--options";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Assistants";
 
 
@@ -509,7 +509,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEASSISTANT";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Assistants";
 
 
@@ -554,7 +554,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "RETRIEVEASSISTANT";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Assistants";
 
 
@@ -599,7 +599,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEASSISTANT";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Assistants";
 
 
@@ -633,7 +633,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILESLIST";
     NewLine.Parameter     = "--limit";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "Maximum number of assistants returned (optional, def. val. - 10000)";
+    NewLine.Description     = "Maximum number of assistants returned (optional, def. val.. - 10000)";
     NewLine.Region      = "File management";
 
 
@@ -644,7 +644,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILESLIST";
     NewLine.Parameter     = "--options";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -655,7 +655,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILESLIST";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -722,7 +722,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFILE";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -767,7 +767,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILEINFORMATION";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -812,7 +812,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DOWNLOADFILE";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -857,7 +857,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEFILE";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "File management";
 
 
@@ -913,7 +913,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GENERATESPEECH";
     NewLine.Parameter     = "--voice";
     NewLine.ParameterTrim = "-v";
-    NewLine.Description     = "Voice type: alloy, ash, ballad, coral, echo, etc.. (optional, def. val. - alloy)";
+    NewLine.Description     = "Voice type: alloy, ash, ballad, coral, echo, etc.. (optional, def. val.. - alloy)";
     NewLine.Region      = "Audio processing";
 
 
@@ -924,7 +924,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GENERATESPEECH";
     NewLine.Parameter     = "--options";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Audio processing";
 
 
@@ -935,7 +935,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GENERATESPEECH";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Audio processing";
 
 
@@ -991,7 +991,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATETRANSCRIPTION";
     NewLine.Parameter     = "--type";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "MIME type of audio file (optional, def. val. - audio/mpeg)";
+    NewLine.Description     = "MIME type of audio file (optional, def. val.. - audio/mpeg)";
     NewLine.Region      = "Audio processing";
 
 
@@ -1002,7 +1002,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATETRANSCRIPTION";
     NewLine.Parameter     = "--options";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request parameters, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Audio processing";
 
 
@@ -1013,7 +1013,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATETRANSCRIPTION";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Audio processing";
 
 
@@ -1047,7 +1047,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETMODELLIST";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Models management";
 
     Return CompositionTable;

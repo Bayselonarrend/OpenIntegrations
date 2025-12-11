@@ -239,7 +239,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEITEM";
     NewLine.Parameter     = "--parent";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "ID of the parent item, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "ID of the parent item, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Results management";
 
 
@@ -362,7 +362,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLAUNCHSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Results management";
     NewLine.MethodDescription   = "Gets the launch parameters structure";
 
@@ -374,7 +374,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLAUNCHSTRUCTURE";
     NewLine.Parameter     = "--map";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val. - False)";
+    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val.. - False)";
     NewLine.Region      = "Results management";
 
 
@@ -385,7 +385,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETITEMSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Results management";
     NewLine.MethodDescription   = "Gets the test item parameter structure";
 
@@ -397,7 +397,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETITEMSTRUCTURE";
     NewLine.Parameter     = "--map";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val. - False)";
+    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val.. - False)";
     NewLine.Region      = "Results management";
 
 
@@ -408,7 +408,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETITEMCOMPLETIONSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Results management";
     NewLine.MethodDescription   = "Gets the parameter structure for completing the test item execution";
 
@@ -420,7 +420,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETITEMCOMPLETIONSTRUCTURE";
     NewLine.Parameter     = "--map";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val. - False)";
+    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val.. - False)";
     NewLine.Region      = "Results management";
 
 
@@ -443,7 +443,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLAUNCHCOMPLETIONSTRUCTURE";
     NewLine.Parameter     = "--status";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Completion status: passed, failed, stopped, skipped, interrupted, cancelled (optional, def. val. - Empty value)";
+    NewLine.Description     = "Completion status: passed, failed, stopped, skipped, interrupted, cancelled (optional, def. val.. - Empty value)";
     NewLine.Region      = "Results management";
 
 
@@ -454,7 +454,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLAUNCHCOMPLETIONSTRUCTURE";
     NewLine.Parameter     = "--descr";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Launch description. Overwrites the one specified during creation (optional, def. val. - Empty value)";
+    NewLine.Description     = "Launch description. Overwrites the one specified during creation (optional, def. val.. - Empty value)";
     NewLine.Region      = "Results management";
 
 
@@ -465,7 +465,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLAUNCHCOMPLETIONSTRUCTURE";
     NewLine.Parameter     = "--attr";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Launch attributes. Overwrites the one specified during creation (optional, def. val. - Empty value)";
+    NewLine.Description     = "Launch attributes. Overwrites the one specified during creation (optional, def. val.. - Empty value)";
     NewLine.Region      = "Results management";
 
 
@@ -555,7 +555,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLOGSTRUCTURE";
     NewLine.Parameter     = "--text";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Log text information (optional, def. val. - Empty value)";
+    NewLine.Description     = "Log text information (optional, def. val.. - Empty value)";
     NewLine.Region      = "Log recording";
 
 
@@ -566,7 +566,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLOGSTRUCTURE";
     NewLine.Parameter     = "--level";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Information level: error, warn, info, debug, trace, fatal, unknown (optional, def. val. - info)";
+    NewLine.Description     = "Information level: error, warn, info, debug, trace, fatal, unknown (optional, def. val.. - info)";
     NewLine.Region      = "Log recording";
 
     Return CompositionTable;

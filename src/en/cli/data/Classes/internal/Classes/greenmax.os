@@ -245,7 +245,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CHECKACCOUNT";
     NewLine.Parameter     = "--force";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Ignore cache on repeated verification request (optional, def. val. - False)";
+    NewLine.Description     = "Ignore cache on repeated verification request (optional, def. val.. - False)";
     NewLine.Region      = "Account";
 
 
@@ -268,7 +268,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONTACTLIST";
     NewLine.Parameter     = "--count";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Contact count to retrieve. All if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Contact count to retrieve. All if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Account";
 
 
@@ -337,7 +337,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETINSTANCESETTINGSSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Account";
     NewLine.MethodDescription   = "Gets the structure template for instance settings";
 
@@ -667,7 +667,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETGROUPSETTINGSSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Group management";
     NewLine.MethodDescription   = "Returns the structure of group chat settings fields";
 
@@ -679,7 +679,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETGROUPSETTINGSSTRUCTURE";
     NewLine.Parameter     = "--map";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "True > returns settings fields as a mapping (optional, def. val. - False)";
+    NewLine.Description     = "True > returns settings fields as a mapping (optional, def. val.. - False)";
     NewLine.Region      = "Group management";
 
 
@@ -724,7 +724,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDTEXTMESSAGE";
     NewLine.Parameter     = "--typing";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Time to show the typing indicator before sending (in ms.) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Time to show the typing indicator before sending (in ms.) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -780,7 +780,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--caption";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Message text below the file (optional, def. val. - Empty value)";
+    NewLine.Description     = "Message text below the file (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -791,7 +791,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--typing";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Time to show typing indicator before sending (in ms.) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Time to show typing indicator before sending (in ms.) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -802,7 +802,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--ttype";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Typing type: text, recording, video, image, file (optional, def. val. - file)";
+    NewLine.Description     = "Typing type: text, recording, video, image, file (optional, def. val.. - file)";
     NewLine.Region      = "Message sending";
 
 
@@ -858,7 +858,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILEBYURL";
     NewLine.Parameter     = "--caption";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Message text below the file (optional, def. val. - Empty value)";
+    NewLine.Description     = "Message text below the file (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -869,7 +869,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILEBYURL";
     NewLine.Parameter     = "--typing";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Time to show typing indicator before sending (in ms.) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Time to show typing indicator before sending (in ms.) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -880,7 +880,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILEBYURL";
     NewLine.Parameter     = "--ttype";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Typing type: text, recording, video, image, file (optional, def. val. - file)";
+    NewLine.Description     = "Typing type: text, recording, video, image, file (optional, def. val.. - file)";
     NewLine.Region      = "Message sending";
 
 
@@ -903,7 +903,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETNOTIFICATION";
     NewLine.Parameter     = "--timeout";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Timeout for waiting for a notification if the queue is empty (optional, def. val. - 5)";
+    NewLine.Description     = "Timeout for waiting for a notification if the queue is empty (optional, def. val.. - 5)";
     NewLine.Region      = "Notifications";
 
 
@@ -914,7 +914,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETNOTIFICATION";
     NewLine.Parameter     = "--del";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Delete notification from the queue after retrieval (optional, def. val. - False)";
+    NewLine.Description     = "Delete notification from the queue after retrieval (optional, def. val.. - False)";
     NewLine.Region      = "Notifications";
 
 
@@ -971,7 +971,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHATMESSAGEHISTORY";
     NewLine.Parameter     = "--count";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Number of messages to receive (optional, def. val. - 100)";
+    NewLine.Description     = "Number of messages to receive (optional, def. val.. - 100)";
     NewLine.Region      = "Message history";
 
 
@@ -1028,7 +1028,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETINCOMINGMESSAGELOG";
     NewLine.Parameter     = "--span";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Time in minutes for which messages need to be received (optional, def. val. - 1440)";
+    NewLine.Description     = "Time in minutes for which messages need to be received (optional, def. val.. - 1440)";
     NewLine.Region      = "Message history";
 
 
@@ -1051,7 +1051,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOUTGOINGMESSAGELOG";
     NewLine.Parameter     = "--span";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Time in minutes for which messages need to be received (optional, def. val. - 1440)";
+    NewLine.Description     = "Time in minutes for which messages need to be received (optional, def. val.. - 1440)";
     NewLine.Region      = "Message history";
 
 
@@ -1085,7 +1085,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MARKMESSAGESASREAD";
     NewLine.Parameter     = "--message";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "Message ID. All messages, unless specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Message ID. All messages, unless specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message history";
 
 

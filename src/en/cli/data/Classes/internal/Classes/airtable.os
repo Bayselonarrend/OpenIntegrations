@@ -37,7 +37,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLISTOFBASES";
     NewLine.Parameter     = "--offset";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Next page identifier of the base list from the previous request (optional, def. val. - Empty value)";
+    NewLine.Description     = "Next page identifier of the base list from the previous request (optional, def. val.. - Empty value)";
     NewLine.Region      = "Working with databases";
 
 
@@ -188,7 +188,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATETABLE";
     NewLine.Parameter     = "--description";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Table description (optional, def. val. - Empty value)";
+    NewLine.Description     = "Table description (optional, def. val.. - Empty value)";
     NewLine.Region      = "Table management";
 
 
@@ -233,7 +233,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MODIFYTABLE";
     NewLine.Parameter     = "--title";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "New name (optional, def. val. - Empty value)";
+    NewLine.Description     = "New name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Table management";
 
 
@@ -244,7 +244,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MODIFYTABLE";
     NewLine.Parameter     = "--description";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "New description (optional, def. val. - Empty value)";
+    NewLine.Description     = "New description (optional, def. val.. - Empty value)";
     NewLine.Region      = "Table management";
 
 
@@ -347,7 +347,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MODIFYFIELD";
     NewLine.Parameter     = "--title";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "New name (optional, def. val. - Empty value)";
+    NewLine.Description     = "New name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Working with fields";
 
 
@@ -358,7 +358,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MODIFYFIELD";
     NewLine.Parameter     = "--description";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "New description (optional, def. val. - Empty value)";
+    NewLine.Description     = "New description (optional, def. val.. - Empty value)";
     NewLine.Region      = "Working with fields";
 
 
@@ -393,7 +393,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETNUMBERFIELD";
     NewLine.Parameter     = "--precision";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Number of decimal places (optional, def. val. - Empty value)";
+    NewLine.Description     = "Number of decimal places (optional, def. val.. - Empty value)";
     NewLine.Region      = "Working with fields";
 
 
@@ -510,7 +510,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLISTOFRECORDS";
     NewLine.Parameter     = "--offset";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Next page identifier of data from the previous request (optional, def. val. - Empty value)";
+    NewLine.Description     = "Next page identifier of data from the previous request (optional, def. val.. - Empty value)";
     NewLine.Region      = "Record management";
 
 
@@ -701,7 +701,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCOMMENTS";
     NewLine.Parameter     = "--offset";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Next page identifier of data from the previous request (optional, def. val. - Empty value)";
+    NewLine.Description     = "Next page identifier of data from the previous request (optional, def. val.. - Empty value)";
     NewLine.Region      = "Comment management";
 
 

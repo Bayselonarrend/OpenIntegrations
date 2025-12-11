@@ -50,7 +50,7 @@
 // Get version
 // Gets a version of Ollama
 //
-// Note
+// Note:
 // Method at API documentation: [Version](@github.com/ollama/ollama/blob/main/docs/api.md#version)
 //
 // Parameters:
@@ -74,7 +74,7 @@ EndFunction
 // Get response
 // Generates a response for a given text query
 //
-// Note
+// Note:
 // Method at API documentation: [Generate a completion](@github.com/ollama/ollama/blob/main/docs/api.md#generate-a-completion)
 //
 // Parameters:
@@ -109,7 +109,7 @@ EndFunction
 // Get context response
 // Receives the next response from the model according to the message history
 //
-// Note
+// Note:
 // Method at API documentation: [Generate a chat completion](@github.com/ollama/ollama/blob/main/docs/api.md#generate-a-chat-completion)
 //
 // Parameters:
@@ -143,7 +143,7 @@ EndFunction
 // Get embeddings
 // Gets the embeddings for the given entries
 //
-// Note
+// Note:
 // Method at API documentation: [Generate Embeddings](@github.com/ollama/ollama/blob/main/docs/api.md#generate-embeddings)
 //
 // Parameters:
@@ -190,7 +190,7 @@ Function GetRequestParameterStructure(Val Clear = False) Export
     FieldsStructure.Insert("options"   , "<additional model parameters listed in the Modelfile documentation>");
     FieldsStructure.Insert("system"    , "<system message (overrides what is defined in Modelfile)>");
     FieldsStructure.Insert("template"  , "<prompt template (overrides what is defined in Modelfile)>");
-    FieldsStructure.Insert("raw"       , "<true > disable formatting prompt>");
+    FieldsStructure.Insert("raw"       , "<true > disable prompt formatting>");
     FieldsStructure.Insert("keep_alive", "<how long the model will remain loaded in memory after a request>");
     FieldsStructure.Insert("suffix"    , "<text after the model's response>");
     FieldsStructure.Insert("images"    , "<list of images in Base64 format (for multimodal models like llava)>");
@@ -288,7 +288,7 @@ EndFunction
 // Get model list
 // Gets a list of local models
 //
-// Note
+// Note:
 // Method at API documentation: [List Local Models](@github.com/ollama/ollama/blob/main/docs/api.md#list-local-models)
 //
 // Parameters:
@@ -312,7 +312,7 @@ EndFunction
 // List running models
 // Gets a list of running models
 //
-// Note
+// Note:
 // Method at API documentation: [List Running Models](@github.com/ollama/ollama/blob/main/docs/api.md#list-running-models)
 //
 // Parameters:
@@ -336,7 +336,7 @@ EndFunction
 // Get model information
 // Gets information about the model
 //
-// Note
+// Note:
 // Method at API documentation: [Show Model Information](@github.com/ollama/ollama/blob/main/docs/api.md#show-model-information)
 //
 // Parameters:
@@ -367,7 +367,7 @@ EndFunction
 // Create model
 // Creates a new model with the specified settings
 //
-// Note
+// Note:
 // Method at API documentation: [Create a Model](@github.com/ollama/ollama/blob/main/docs/api.md#create-a-model)
 //
 // Parameters:
@@ -399,7 +399,7 @@ EndFunction
 // Copy model
 // Copies an existing model
 //
-// Note
+// Note:
 // Method at API documentation: [Copy a Model](@github.com/ollama/ollama/blob/main/docs/api.md#copy-a-model)
 //
 // Parameters:
@@ -431,7 +431,7 @@ EndFunction
 // Delete model
 // Deletes an existing model
 //
-// Note
+// Note:
 // Method at API documentation: [Delete a Model](@github.com/ollama/ollama/blob/main/docs/api.md#delete-a-model)
 //
 // Parameters:
@@ -461,7 +461,7 @@ EndFunction
 // Load model to memory
 // Loads the selected model into RAM
 //
-// Note
+// Note:
 // Method at API documentation: [Load a model](@github.com/ollama/ollama/blob/main/docs/api.md#load-a-model)
 //
 // Parameters:
@@ -491,7 +491,7 @@ EndFunction
 // Unload model from memory
 // Unloads the selected model from memory
 //
-// Note
+// Note:
 // Method at API documentation: [Unload a model](@github.com/ollama/ollama/blob/main/docs/api.md#unload-a-model)
 //
 // Parameters:
@@ -521,7 +521,7 @@ EndFunction
 // Push model
 // Uploads the model to the model library
 //
-// Note
+// Note:
 // Method at API documentation: [Push a Model](@github.com/ollama/ollama/blob/main/docs/api.md#push-a-model)
 // The model name must follow the format <namespace>/<model>:<tag>^
 // Registration on ollama.ai and adding a public key is required.
@@ -555,7 +555,7 @@ EndFunction
 // Pull model
 // Downloads a model from the library
 //
-// Note
+// Note:
 // Method at API documentation: [Pull a Model](@github.com/ollama/ollama/blob/main/docs/api.md#pull-a-model)
 //
 // Parameters:
@@ -623,7 +623,7 @@ EndFunction
 // Push BLOB
 // Sends binary data to the Ollama server
 //
-// Note
+// Note:
 // Method at API documentation: [Push a Blob](@github.com/ollama/ollama/blob/main/docs/api.md#push-a-blob)
 //
 // Parameters:
@@ -661,7 +661,7 @@ EndFunction
 // Check BLOB
 // Checks the existence of a BLOB by its SHA256 digest
 //
-// Note
+// Note:
 // Method at API documentation: [Check if a Blob Exists](@github.com/ollama/ollama/blob/main/docs/api.md#check-if-a-blob-exists)
 //
 // Parameters:

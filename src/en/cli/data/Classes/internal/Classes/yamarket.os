@@ -37,7 +37,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETMARKETSLIST";
     NewLine.Parameter     = "--page";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Issue page number of the list (optional, def. val. - 1)";
+    NewLine.Description     = "Issue page number of the list (optional, def. val.. - 1)";
     NewLine.Region      = "Campaigns and business";
 
 
@@ -151,7 +151,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDUPDATEPRODUCTS";
     NewLine.Parameter     = "--pmedia";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "A flag of using only your own product images (optional, def. val. - False)";
+    NewLine.Description     = "A flag of using only your own product images (optional, def. val.. - False)";
     NewLine.Region      = "Product management";
 
 
@@ -185,7 +185,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCAMPAIGNPRODUCTS";
     NewLine.Parameter     = "--filters";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Product filters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Product filters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Product management";
 
 
@@ -196,7 +196,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCAMPAIGNPRODUCTS";
     NewLine.Parameter     = "--page";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Next page token in case of a large selection (optional, def. val. - Empty value)";
+    NewLine.Description     = "Next page token in case of a large selection (optional, def. val.. - Empty value)";
     NewLine.Region      = "Product management";
 
 
@@ -230,7 +230,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETBUSINESSPRODUCTS";
     NewLine.Parameter     = "--filters";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Product filters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Product filters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Product management";
 
 
@@ -241,7 +241,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETBUSINESSPRODUCTS";
     NewLine.Parameter     = "--page";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Next page token in case of a large selection (optional, def. val. - Empty value)";
+    NewLine.Description     = "Next page token in case of a large selection (optional, def. val.. - Empty value)";
     NewLine.Region      = "Product management";
 
 
@@ -252,7 +252,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPRODUCTSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Product management";
     NewLine.MethodDescription   = "Gets the structure of product standard fields";
 

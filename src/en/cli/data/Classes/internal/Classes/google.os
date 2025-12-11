@@ -37,7 +37,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--calendar";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Calendar methods permission (optional, def. val. - True)";
+    NewLine.Description     = "Calendar methods permission (optional, def. val.. - True)";
     NewLine.Region      = "Public";
 
 
@@ -48,7 +48,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--drive";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Drive methods permission (optional, def. val. - True)";
+    NewLine.Description     = "Drive methods permission (optional, def. val.. - True)";
     NewLine.Region      = "Public";
 
 
@@ -59,7 +59,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--sheets";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Sheets methods permission (optional, def. val. - True)";
+    NewLine.Description     = "Sheets methods permission (optional, def. val.. - True)";
     NewLine.Region      = "Public";
 
 
@@ -161,7 +161,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSERVICEACCOUNTTOKEN";
     NewLine.Parameter     = "--exp";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "Token lifetime in seconds (optional, def. val. - 3600)";
+    NewLine.Description     = "Token lifetime in seconds (optional, def. val.. - 3600)";
     NewLine.Region      = "Public";
 
     Return CompositionTable;

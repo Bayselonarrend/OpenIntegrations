@@ -37,7 +37,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONNECTIONCONFIGURATION";
     NewLine.Parameter     = "--proxy";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Proxy settings, if required. See GetProxySettings (optional, def. val. - Empty value)";
+    NewLine.Description     = "Proxy settings, if required. See GetProxySettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -48,7 +48,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONNECTIONCONFIGURATION";
     NewLine.Parameter     = "--tls";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val. - Empty value)";
+    NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -210,7 +210,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONNECTIONSETTINGS";
     NewLine.Parameter     = "--port";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Server port (optional, def. val. - 21)";
+    NewLine.Description     = "Server port (optional, def. val.. - 21)";
     NewLine.Region      = "Common methods";
 
 
@@ -221,7 +221,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONNECTIONSETTINGS";
     NewLine.Parameter     = "--login";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "Username for authorization, if required (optional, def. val. - Empty value)";
+    NewLine.Description     = "Username for authorization, if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -232,7 +232,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONNECTIONSETTINGS";
     NewLine.Parameter     = "--pass";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "User password for authorization, if required (optional, def. val. - Empty value)";
+    NewLine.Description     = "User password for authorization, if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -243,7 +243,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONNECTIONSETTINGS";
     NewLine.Parameter     = "--passive";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Passive connection mode (optional, def. val. - True)";
+    NewLine.Description     = "Passive connection mode (optional, def. val.. - True)";
     NewLine.Region      = "Common methods";
 
 
@@ -254,7 +254,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONNECTIONSETTINGS";
     NewLine.Parameter     = "--rtout";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Read timeout (optional, def. val. - 120)";
+    NewLine.Description     = "Read timeout (optional, def. val.. - 120)";
     NewLine.Region      = "Common methods";
 
 
@@ -265,7 +265,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONNECTIONSETTINGS";
     NewLine.Parameter     = "--wtout";
     NewLine.ParameterTrim = "-w";
-    NewLine.Description     = "Write timeout (optional, def. val. - 120)";
+    NewLine.Description     = "Write timeout (optional, def. val.. - 120)";
     NewLine.Region      = "Common methods";
 
 
@@ -276,7 +276,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONNECTIONSETTINGS";
     NewLine.Parameter     = "--ipresl";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "Advanced passive mode address resolution (optional, def. val. - True)";
+    NewLine.Description     = "Advanced passive mode address resolution (optional, def. val.. - True)";
     NewLine.Region      = "Common methods";
 
 
@@ -310,7 +310,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--type";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Proxy type: socks5, socks4, http (optional, def. val. - socks5)";
+    NewLine.Description     = "Proxy type: socks5, socks4, http (optional, def. val.. - socks5)";
     NewLine.Region      = "Common methods";
 
 
@@ -321,7 +321,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--login";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "Authorization login, if required (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization login, if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -332,7 +332,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--pass";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Authorization password, if required (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization password, if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -355,7 +355,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTLSSETTINGS";
     NewLine.Parameter     = "--cert";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Path to the root PEM file of the certificate if it is not in the system repository (optional, def. val. - Empty value)";
+    NewLine.Description     = "Path to the root PEM file of the certificate if it is not in the system repository (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -378,7 +378,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTOBJECTS";
     NewLine.Parameter     = "--path";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Path to search directory (optional, def. val. - Empty value)";
+    NewLine.Description     = "Path to search directory (optional, def. val.. - Empty value)";
     NewLine.Region      = "Directory management";
 
 
@@ -389,7 +389,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTOBJECTS";
     NewLine.Parameter     = "--rcv";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Get information about objects in nested directories (optional, def. val. - False)";
+    NewLine.Description     = "Get information about objects in nested directories (optional, def. val.. - False)";
     NewLine.Region      = "Directory management";
 
 

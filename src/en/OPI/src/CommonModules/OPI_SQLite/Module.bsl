@@ -116,9 +116,9 @@ EndFunction
 // Execute SQL query
 // Executes an arbitrary SQL query
 //
-// Note
+// Note:
 // Available parameter types: String, Number, Date, Boolean, BinaryData.^^
-// Binary data can also be passed as a `{'blob':File path}` structure. Binary data (BLOB) values are returned^^
+// Binary data can also be passed as a `{'blob':File path}` structure. Binary data (BLOB) values are returned)^^
 // as `{'blob':Base64 string}`
 // Without specifying the `ForcifyResult` flag, result data is returned only for queries beginning with `SELECT` keyword^^
 // For other queries, `result:true` or `false` with error text is returned
@@ -156,7 +156,7 @@ Function ExecuteSQLQuery(Val QueryText
 
     If ValueIsFilled(Extensions) Then
 
-        OPI_TypeConversion.GetKeyValueCollection(Extensions, "Incorrect collection of extensions!");
+        OPI_TypeConversion.GetKeyValueCollection(Extensions, "Incorrect collection of extensions!!");
 
         For Each Extension In Extensions Do
 
@@ -184,7 +184,7 @@ EndFunction
 // Connect extension !NOCLI
 // Connects the SQLite extension for the specified connection
 //
-// Note
+// Note:
 // The extension is active only for the current connection. You must reconnect it each time a new connection is established
 // Similar to using the `Extensions` parameter (`exts` in CLI) of the `ExecuteSQLQuery` function
 //
@@ -305,7 +305,7 @@ EndFunction
 // Ensure table
 // Creates a new table if it does not exist or updates the composition of columns in an existing table
 //
-// Note
+// Note:
 // As a result of changing the table structure, data may be lost!^^
 // It is recommended to test this method on test data beforehand
 // This function does not update the data type of existing columns
@@ -327,7 +327,7 @@ EndFunction
 // Add rows
 // Adds new rows to the table
 //
-// Note
+// Note:
 // Binary data can also be transferred as a structure `{'blob':File path}`
 //
 // Parameters:
@@ -348,7 +348,7 @@ EndFunction
 // Get records
 // Gets records from the selected table
 //
-// Note
+// Note:
 // Values of the Binary data type (BLOB) are returned as `{'blob':Base64 string}`
 //
 // Parameters:
@@ -443,10 +443,10 @@ EndFunction
 // Get records filter strucutre
 // Gets the template structure for filtering records in ORM queries
 //
-// Note
+// Note:
 // The use of the `raw` feature is necessary for compound constructions like `BEETWEEN`.^^
 // For example: with `raw:false` the filter `type:BETWEEN` `value:10 AND 20` will be interpolated as `BETWEEN ?1 `^^
-// where `?1 = "10 AND 20,"' which would cause an error.
+// where `?1 = "10 AND 20,"' which would cause an error..^^
 // In such a case, you must use `raw:true` to set the condition directly in the query text
 //
 // Parameters:

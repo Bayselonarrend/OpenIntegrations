@@ -93,8 +93,8 @@ EndFunction
 // Get connection configuration
 // Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions
 //
-// Note
-// Can be passed as the `Connection` parameter in other functions instead of the actual connection from the `CreateConnection` function.
+// Note:
+// Can be passed as the `Connection` parameter in other functions instead of the actual connection from the `CreateConnection` function.^^
 // At the same time, a new connection will be opened and closed within the called function
 // Using the connection configuration is not recommended for multiple requests to the FTP server.^^
 // This functionality is primarily intended for the CLI version of OInt, where maintaining a connection between calls is not possible
@@ -173,7 +173,7 @@ EndFunction
 // Get protocol feature list
 // Gets a list of FTP protocol features supported by the server
 //
-// Note
+// Note:
 // FTP Command: `FEAT`
 //
 // Parameters:
@@ -203,7 +203,7 @@ EndFunction
 // Ping
 // Checks the connection activity and resets the timeout until its automatic closure
 //
-// Note
+// Note:
 // FTP Command: `NOOP`
 //
 // Parameters:
@@ -230,7 +230,7 @@ EndFunction
 // Execute custom command
 // Executes a specific (SITE) server command and returns the response
 //
-// Note
+// Note:
 // The result can be returned as text or Base64 binary data in the structure `{"BYTES": <B64 string>}`
 // FTP Command: `SITE`
 //
@@ -298,7 +298,7 @@ EndFunction
 // Get object size
 // Get the size of a file or directory if it exists
 //
-// Note
+// Note:
 // FTP Command: `SIZE`
 //
 // Parameters:
@@ -333,7 +333,7 @@ EndFunction
 // Update path
 // Changes the object's path to the specified one
 //
-// Note
+// Note:
 // The ability to move an object from one directory to another by changing the path depends on the server settings
 // FTP Command: `RNFR + RNTO`
 //
@@ -387,7 +387,7 @@ EndFunction
 // Get connection settings
 // Creates a structure of FTP connection settings
 //
-// Note
+// Note:
 // When `IPResolve = True`, the connection address returned by the server in passive mode after `PASV` will be replaced with the IP^^
 // from the `Host` field, in cases when a proxy is used or the server returns `127.0.0.1` (only if an IP address is specified in the `Host` field))
 //
@@ -465,7 +465,7 @@ EndFunction
 // Get TLS Settings
 // Forms settings for using TLS
 //
-// Note
+// Note:
 // Tls settings can only be set when a connection is created: explicitly, by using the `CreateConnection` function^^
 // or implicit, when passing settings
 //
@@ -488,7 +488,7 @@ EndFunction
 // List objects
 // Gets information about the contents of a directory at the specified path
 //
-// Note
+// Note:
 // FTP Command: `LIST`
 //
 // Parameters:
@@ -537,7 +537,7 @@ EndFunction
 // Create new directory
 // Creates a directory at the specified path
 //
-// Note
+// Note:
 // FTP Command: `MKD`
 //
 // Parameters:
@@ -572,7 +572,7 @@ EndFunction
 // Delete directory
 // Deletes an existing directory
 //
-// Note
+// Note:
 // FTP Command: `RMD`
 //
 // Parameters:
@@ -605,7 +605,7 @@ EndFunction
 // Get current directory
 // Gets the current directory from which relative paths are calculated
 //
-// Note
+// Note:
 // FTP Command: `PWD`
 //
 // Parameters:
@@ -635,7 +635,7 @@ EndFunction
 // Change current directory !NOCLI
 // Changes the current directory from which relative paths are calculated
 //
-// Note
+// Note:
 // FTP Command: `CWD`
 //
 // Parameters:
@@ -674,7 +674,7 @@ EndFunction
 // Upload file
 // Uploads a file from disk or binary data to the FTP server
 //
-// Note
+// Note:
 // FTP Command: `STOR`
 //
 // Parameters:
@@ -747,7 +747,7 @@ EndFunction
 // Delete file
 // Delete file from server
 //
-// Note
+// Note:
 // FTP Command: `DELE`
 //
 // Parameters:
@@ -782,7 +782,7 @@ EndFunction
 // Save file
 // Saves the file from the server to the specified path
 //
-// Note
+// Note:
 // FTP Command: `RETR`
 //
 // Parameters:
@@ -821,7 +821,7 @@ EndFunction
 // Get file data !NOCLI
 // Gets file from server as binary data
 //
-// Note
+// Note:
 // FTP Command: `RETR`
 //
 // Parameters:

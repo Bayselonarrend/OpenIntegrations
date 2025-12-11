@@ -118,7 +118,7 @@ Var LineSeparator; // Body line separator
 // Initialize !NOCLI
 // Initializes a new empty request
 //
-// Note
+// Note:
 // The function must be called first when creating a new processor object
 // The URL can be set later using the `SetURL` function
 //
@@ -268,7 +268,7 @@ EndFunction
 // Set data type !NOCLI
 // Sets the Content-Type of the request
 //
-// Note
+// Note:
 // If the data type is not set manually, it will be matched during the process of setting the request body
 //
 // Parameters:
@@ -330,7 +330,7 @@ EndFunction
 // Set timeout !NOCLI
 // Sets the connection timeout
 //
-// Note
+// Note:
 // Default timeout is 3600 seconds
 //
 // Parameters:
@@ -388,7 +388,7 @@ EndFunction
 // Use encoding !NOCLI
 // Sets the encoding of the request body
 //
-// Note
+// Note:
 // UTF-8 is used by default
 //
 // Parameters:
@@ -418,7 +418,7 @@ EndFunction
 // Use Gzip compression !NOCLI
 // Enables or disables the header for receiving data from the server in compressed form
 //
-// Note
+// Note:
 // By default, the response from the server is requested with gzip compression
 //
 // Parameters:
@@ -448,7 +448,7 @@ EndFunction
 // Use body fields at OAuth !NOCLI
 // Includes or excludes body fields when calculating the OAuth signature depending on server requirements
 //
-// Note
+// Note:
 // By default, the body data is used in the signature calculation if it was set using the `SetFormBody` function
 //
 // Parameters:
@@ -478,7 +478,7 @@ EndFunction
 // Use URL encoding !NOCLI
 // Enables or disables standard encoding of special characters in URLs
 //
-// Note
+// Note:
 // URL encoding is enabled by default
 //
 // Parameters:
@@ -508,7 +508,7 @@ EndFunction
 // Split arrays in URL
 // Defines the representation of arrays in URL parameters: as a whole JSON array or separate parameters for each element
 //
-// Note
+// Note:
 // By default, arrays are interpreted as a single parameter with JSON array in value
 // By default, square brackets to parameter keys are not set when array splitting is performed
 //
@@ -750,7 +750,7 @@ EndFunction
 // Start Multipart body !NOCLI
 // Initializes writing data to the body in multipart format
 //
-// Note
+// Note:
 // The `AddMultipartFormDataFile` and `AddMultipartFormDataField` methods are used for further body formation
 //
 // Parameters:
@@ -822,7 +822,7 @@ EndFunction
 // Add Multipart file !NOCLI
 // Adds a file block to the multipart/form-data body
 //
-// Note
+// Note:
 // The Multipart record must first be initialized using the `StartMultipartBody` function
 //
 // Parameters:
@@ -876,7 +876,7 @@ EndFunction
 // Add Multipart field !NOCLI
 // Adds a form field to the multipart/form-data body
 //
-// Note
+// Note:
 // The Multipart record must first be initialized using the `StartMultipartBody` function
 //
 // Parameters:
@@ -936,7 +936,7 @@ EndFunction
 // Add data as Related !NOCLI
 // Adds data to the multipart/related body
 //
-// Note
+// Note:
 // The Multipart record must first be initialized using the `StartMultipartBody` function
 //
 // Parameters:
@@ -1150,7 +1150,7 @@ EndFunction
 // Add OAuth V1 authorization
 // Adds data for OAuth v1 authorization
 //
-// Note
+// Note:
 // By default, HMAC-SHA256 is used to create the signature. To change the algorithm, you can use^^
 // `SetOAuthV1Algorithm`
 //
@@ -1226,7 +1226,7 @@ EndFunction
 // Process request !NOCLI
 // Creates a request based on the entered data with or without execution
 //
-// Note
+// Note:
 // `ExecuteRequest=False` can be used to get ready^^
 // HTTPConnection and HTTPConnection objects without executing them. See `ReturnRequest` and `ReturnConnection`.
 //
@@ -1464,7 +1464,7 @@ EndFunction
 // Return response as JSON object !NOCLI
 // Returns the response body as a collection from JSON
 //
-// Note
+// Note:
 // If it is not possible to obtain a collection from the body, binary data will be returned
 //
 // Parameters:

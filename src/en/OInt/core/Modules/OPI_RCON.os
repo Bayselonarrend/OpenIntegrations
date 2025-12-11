@@ -90,7 +90,7 @@ EndFunction
 // Execute command
 // Executes the command on the server
 //
-// Note
+// Note:
 // When passing connection parameters, a new connection will be created and closed within the execution of a single command.^^
 // To execute several commands (in OS and 1C versions), it is recommended to use a connection created in advance (see CreateConnection)
 //

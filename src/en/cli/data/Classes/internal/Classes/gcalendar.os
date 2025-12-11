@@ -37,7 +37,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--calendar";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Calendar methods permission (optional, def. val. - True)";
+    NewLine.Description     = "Calendar methods permission (optional, def. val.. - True)";
     NewLine.Region      = "Authorization";
 
 
@@ -48,7 +48,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--drive";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Drive methods permission (optional, def. val. - True)";
+    NewLine.Description     = "Drive methods permission (optional, def. val.. - True)";
     NewLine.Region      = "Authorization";
 
 
@@ -59,7 +59,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--sheets";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Sheets methods permission (optional, def. val. - True)";
+    NewLine.Description     = "Sheets methods permission (optional, def. val.. - True)";
     NewLine.Region      = "Authorization";
 
 
@@ -161,7 +161,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSERVICEACCOUNTTOKEN";
     NewLine.Parameter     = "--exp";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "Token lifetime in seconds (optional, def. val. - 3600)";
+    NewLine.Description     = "Token lifetime in seconds (optional, def. val.. - 3600)";
     NewLine.Region      = "Authorization";
 
 
@@ -241,7 +241,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITCALENDARMETADATA";
     NewLine.Parameter     = "--title";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "New name (optional, def. val. - Empty value)";
+    NewLine.Description     = "New name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendar metadata management";
 
 
@@ -252,7 +252,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITCALENDARMETADATA";
     NewLine.Parameter     = "--description";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "New calendar description (optional, def. val. - Empty value)";
+    NewLine.Description     = "New calendar description (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendar metadata management";
 
 
@@ -424,7 +424,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITLISTCALENDAR";
     NewLine.Parameter     = "--hidden";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Hidden calendar (optional, def. val. - False)";
+    NewLine.Description     = "Hidden calendar (optional, def. val.. - False)";
     NewLine.Region      = "Calendar list management";
 
 
@@ -435,7 +435,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETEVENTDESCRIPTION";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
     NewLine.Region      = "Event management";
     NewLine.MethodDescription   = "Gets an empty layout to create the event";
 

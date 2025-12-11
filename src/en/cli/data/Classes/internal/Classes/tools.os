@@ -38,7 +38,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PARSEJSON";
     NewLine.Parameter     = "--nesting";
     NewLine.ParameterTrim = "-n";
-    NewLine.Description     = "Parsing depth limit. Full depth by default (optional, def. val. - Empty value)";
+    NewLine.Description     = "Parsing depth limit. Full depth by default (optional, def. val.. - Empty value)";
     NewLine.Region      = "Service";
 
 
@@ -49,7 +49,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PARSEJSON";
     NewLine.Parameter     = "--name";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Field name to retrieve. Displays the entire list if not specified (optional, def. val. - Empty value)";
+    NewLine.Description     = "Field name to retrieve. Displays the entire list if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Service";
 
 
@@ -60,7 +60,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PARSEJSON";
     NewLine.Parameter     = "--enc";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "Encoding of JSON Data (optional, def. val. - UTF-8)";
+    NewLine.Description     = "Encoding of JSON Data (optional, def. val.. - UTF-8)";
     NewLine.Region      = "Service";
 
 

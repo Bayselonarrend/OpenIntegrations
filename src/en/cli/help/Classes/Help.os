@@ -174,7 +174,7 @@ Procedure DisplayExceptionMessage(Val Reason, Val OutputFile = "") Export
 		Code   = 2;
 		
 	Else
-		Text = "Unexpected Error! " + Reason;
+		Text = "Unexpected Error!: " + Reason;
 		Code   = 99;
 	EndIf;
 

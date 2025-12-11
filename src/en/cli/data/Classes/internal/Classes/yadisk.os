@@ -186,7 +186,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEOBJECT";
     NewLine.Parameter     = "--can";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "To cart (optional, def. val. - True)";
+    NewLine.Description     = "To cart (optional, def. val.. - True)";
     NewLine.Region      = "File and folder management";
 
 
@@ -231,7 +231,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEOBJECTCOPY";
     NewLine.Parameter     = "--rewrite";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val. - False)";
+    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - False)";
     NewLine.Region      = "File and folder management";
 
 
@@ -288,7 +288,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILEUPLOADLINK";
     NewLine.Parameter     = "--rewrite";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val. - False)";
+    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - False)";
     NewLine.Region      = "File and folder management";
 
 
@@ -322,7 +322,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DOWNLOADFILE";
     NewLine.Parameter     = "--out";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "File save path (optional, def. val. - Empty value)";
+    NewLine.Description     = "File save path (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and folder management";
 
 
@@ -348,7 +348,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILESLIST";
     NewLine.Parameter     = "--amount";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Number of returned objects (optional, def. val. - Empty value)";
+    NewLine.Description     = "Number of returned objects (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and folder management";
 
 
@@ -359,7 +359,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILESLIST";
     NewLine.Parameter     = "--offset";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Offset for getting objects not from the beginning of the list (optional, def. val. - Empty value)";
+    NewLine.Description     = "Offset for getting objects not from the beginning of the list (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and folder management";
 
 
@@ -370,7 +370,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILESLIST";
     NewLine.Parameter     = "--type";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Filter by file type (optional, def. val. - Empty value)";
+    NewLine.Description     = "Filter by file type (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and folder management";
 
 
@@ -381,7 +381,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILESLIST";
     NewLine.Parameter     = "--datesort";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > sort by date, False > alphabetically (optional, def. val. - False)";
+    NewLine.Description     = "True > sort by date, False > alphabetically (optional, def. val.. - False)";
     NewLine.Region      = "File and folder management";
 
 
@@ -426,7 +426,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MOVEOBJECT";
     NewLine.Parameter     = "--rewrite";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val. - False)";
+    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - False)";
     NewLine.Region      = "File and folder management";
 
 
@@ -471,7 +471,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFILE";
     NewLine.Parameter     = "--rewrite";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val. - False)";
+    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - False)";
     NewLine.Region      = "File and folder management";
 
 
@@ -516,7 +516,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFILEINPARTS";
     NewLine.Parameter     = "--psize";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Part size when uploading (optional, def. val. - 33554432)";
+    NewLine.Description     = "Part size when uploading (optional, def. val.. - 33554432)";
     NewLine.Region      = "File and folder management";
 
 
@@ -527,7 +527,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFILEINPARTS";
     NewLine.Parameter     = "--rewrite";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val. - False)";
+    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - False)";
     NewLine.Region      = "File and folder management";
 
 
@@ -630,7 +630,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPUBLISHEDOBJECTSLIST";
     NewLine.Parameter     = "--amount";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Number of returned objects (optional, def. val. - Empty value)";
+    NewLine.Description     = "Number of returned objects (optional, def. val.. - Empty value)";
     NewLine.Region      = "Manage public access";
 
 
@@ -641,7 +641,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPUBLISHEDOBJECTSLIST";
     NewLine.Parameter     = "--offset";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Offset for getting objects not from the beginning of the list (optional, def. val. - Empty value)";
+    NewLine.Description     = "Offset for getting objects not from the beginning of the list (optional, def. val.. - Empty value)";
     NewLine.Region      = "Manage public access";
 
 
@@ -675,7 +675,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPUBLICOBJECT";
     NewLine.Parameter     = "--amount";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Number of returned nested objects (for catalog) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Number of returned nested objects (for catalog) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Manage public access";
 
 
@@ -686,7 +686,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPUBLICOBJECT";
     NewLine.Parameter     = "--offset";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Offset for getting nested objects not from the beginning of the list (optional, def. val. - Empty value)";
+    NewLine.Description     = "Offset for getting nested objects not from the beginning of the list (optional, def. val.. - Empty value)";
     NewLine.Region      = "Manage public access";
 
 
@@ -720,7 +720,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDOWNLOADLINKFORPUBLICOBJECT";
     NewLine.Parameter     = "--path";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Path inside the object (optional, def. val. - Empty value)";
+    NewLine.Description     = "Path inside the object (optional, def. val.. - Empty value)";
     NewLine.Region      = "Manage public access";
 
 
@@ -754,7 +754,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SAVEPUBLICOBJECTTODISK";
     NewLine.Parameter     = "--from";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Path within public catalog (folders only) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Path within public catalog (folders only) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Manage public access";
 
 
@@ -765,7 +765,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SAVEPUBLICOBJECTTODISK";
     NewLine.Parameter     = "--to";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "File save path (optional, def. val. - Empty value)";
+    NewLine.Description     = "File save path (optional, def. val.. - Empty value)";
     NewLine.Region      = "Manage public access";
 
     Return CompositionTable;

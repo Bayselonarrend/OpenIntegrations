@@ -200,7 +200,7 @@ EndFunction
 
 Procedure ShowCommandsHelp() Export
 	
-	Message("Available commands");
+	Message("Available commands:");
 
 	AvailableCommands = HelpAvailableCommand();
 	

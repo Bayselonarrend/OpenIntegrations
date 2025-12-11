@@ -49,7 +49,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUPDATES";
     NewLine.Parameter     = "--timeout";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Waiting time for new events (optional, def. val. - Empty value)";
+    NewLine.Description     = "Waiting time for new events (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data retrieval and settings";
 
 
@@ -60,7 +60,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUPDATES";
     NewLine.Parameter     = "--offset";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Offset in the list of received messages (optional, def. val. - Empty value)";
+    NewLine.Description     = "Offset in the list of received messages (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data retrieval and settings";
 
 
@@ -163,7 +163,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDTEXTMESSAGE";
     NewLine.Parameter     = "--keyboard";
     NewLine.ParameterTrim = "-k";
-    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data sending";
 
 
@@ -174,7 +174,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDTEXTMESSAGE";
     NewLine.Parameter     = "--parsemode";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
+    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val.. - Markdown)";
     NewLine.Region      = "Data sending";
 
 
@@ -185,7 +185,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDTEXTMESSAGE";
     NewLine.Parameter     = "--reply";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Reply to message ID (optional, def. val. - Empty value)";
+    NewLine.Description     = "Reply to message ID (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data sending";
 
 
@@ -241,7 +241,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDIMAGE";
     NewLine.Parameter     = "--keyboard";
     NewLine.ParameterTrim = "-k";
-    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data sending";
 
 
@@ -252,7 +252,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDIMAGE";
     NewLine.Parameter     = "--parsemode";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
+    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val.. - Markdown)";
     NewLine.Region      = "Data sending";
 
 
@@ -308,7 +308,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDVIDEO";
     NewLine.Parameter     = "--keyboard";
     NewLine.ParameterTrim = "-k";
-    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data sending";
 
 
@@ -319,7 +319,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDVIDEO";
     NewLine.Parameter     = "--parsemode";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
+    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val.. - Markdown)";
     NewLine.Region      = "Data sending";
 
 
@@ -375,7 +375,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDAUDIO";
     NewLine.Parameter     = "--keyboard";
     NewLine.ParameterTrim = "-k";
-    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data sending";
 
 
@@ -386,7 +386,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDAUDIO";
     NewLine.Parameter     = "--parsemode";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
+    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val.. - Markdown)";
     NewLine.Region      = "Data sending";
 
 
@@ -442,7 +442,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDDOCUMENT";
     NewLine.Parameter     = "--keyboard";
     NewLine.ParameterTrim = "-k";
-    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data sending";
 
 
@@ -453,7 +453,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDDOCUMENT";
     NewLine.Parameter     = "--parsemode";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
+    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val.. - Markdown)";
     NewLine.Region      = "Data sending";
 
 
@@ -464,7 +464,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDDOCUMENT";
     NewLine.Parameter     = "--filename";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Custom displayed file name with extension, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Custom displayed file name with extension, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data sending";
 
 
@@ -520,7 +520,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDGIF";
     NewLine.Parameter     = "--keyboard";
     NewLine.ParameterTrim = "-k";
-    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data sending";
 
 
@@ -531,7 +531,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDGIF";
     NewLine.Parameter     = "--parsemode";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
+    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val.. - Markdown)";
     NewLine.Region      = "Data sending";
 
 
@@ -594,7 +594,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDMEDIAGROUP";
     NewLine.Parameter     = "--keyboard";
     NewLine.ParameterTrim = "-k";
-    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data sending";
 
 
@@ -605,7 +605,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDMEDIAGROUP";
     NewLine.Parameter     = "--parsemode";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Markdown)";
+    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val.. - Markdown)";
     NewLine.Region      = "Data sending";
 
 
@@ -661,7 +661,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDLOCATION";
     NewLine.Parameter     = "--keyboard";
     NewLine.ParameterTrim = "-k";
-    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data sending";
 
 
@@ -728,7 +728,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDCONTACT";
     NewLine.Parameter     = "--keyboard";
     NewLine.ParameterTrim = "-k";
-    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val. - Empty value)";
+    NewLine.Description     = "Keyboard. See FormKeyboardFromButtonArray (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data sending";
 
 
@@ -784,7 +784,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDPOLL";
     NewLine.Parameter     = "--anonymous";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Survey anonymity flag (optional, def. val. - True)";
+    NewLine.Description     = "Survey anonymity flag (optional, def. val.. - True)";
     NewLine.Region      = "Data sending";
 
 
@@ -964,7 +964,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "REPLACEMESSAGETEXT";
     NewLine.Parameter     = "--parsemode";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data sending";
 
 
@@ -1020,7 +1020,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "REPLACEMESSAGECAPTION";
     NewLine.Parameter     = "--parsemode";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data sending";
 
 
@@ -1043,7 +1043,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMKEYBOARDFROMBUTTONARRAY";
     NewLine.Parameter     = "--under";
     NewLine.ParameterTrim = "-u";
-    NewLine.Description     = "Keyboard under the message or on the bottom panel (optional, def. val. - False)";
+    NewLine.Description     = "Keyboard under the message or on the bottom panel (optional, def. val.. - False)";
     NewLine.Region      = "Data sending";
 
 
@@ -1054,7 +1054,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMKEYBOARDFROMBUTTONARRAY";
     NewLine.Parameter     = "--column";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "True > buttons are displayed in a column, False > in a row (optional, def. val. - True)";
+    NewLine.Description     = "True > buttons are displayed in a column, False > in a row (optional, def. val.. - True)";
     NewLine.Region      = "Data sending";
 
 
@@ -1156,7 +1156,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEINVITATIONLINK";
     NewLine.Parameter     = "--title";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Invitation title (optional, def. val. - Empty value)";
+    NewLine.Description     = "Invitation title (optional, def. val.. - Empty value)";
     NewLine.Region      = "Administration";
 
 
@@ -1167,7 +1167,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEINVITATIONLINK";
     NewLine.Parameter     = "--expire";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "Link expiration date (permanent if not specified) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Link expiration date (permanent if not specified) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Administration";
 
 
@@ -1178,7 +1178,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEINVITATIONLINK";
     NewLine.Parameter     = "--limit";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "User limit (infinite if not specified) (optional, def. val. - Empty value)";
+    NewLine.Description     = "User limit (infinite if not specified) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Administration";
 
 
@@ -1326,7 +1326,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEFORUMTOPIC";
     NewLine.Parameter     = "--icon";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "See GetAvatarIconList (optional, def. val. - Empty value)";
+    NewLine.Description     = "See GetAvatarIconList (optional, def. val.. - Empty value)";
     NewLine.Region      = "Forum topic management";
 
 
@@ -1371,7 +1371,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITFORUMTOPIC";
     NewLine.Parameter     = "--title";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "New title (optional, def. val. - Empty value)";
+    NewLine.Description     = "New title (optional, def. val.. - Empty value)";
     NewLine.Region      = "Forum topic management";
 
 
@@ -1382,7 +1382,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITFORUMTOPIC";
     NewLine.Parameter     = "--icon";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "See GetAvatarIconList (optional, def. val. - Empty value)";
+    NewLine.Description     = "See GetAvatarIconList (optional, def. val.. - Empty value)";
     NewLine.Region      = "Forum topic management";
 
 
@@ -1416,7 +1416,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CLOSEFORUMTOPIC";
     NewLine.Parameter     = "--topic";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Topic ID (optional, def. val. - Empty value)";
+    NewLine.Description     = "Topic ID (optional, def. val.. - Empty value)";
     NewLine.Region      = "Forum topic management";
 
 
@@ -1450,7 +1450,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "OPENFORUMTOPIC";
     NewLine.Parameter     = "--topic";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Topic ID (optional, def. val. - Empty value)";
+    NewLine.Description     = "Topic ID (optional, def. val.. - Empty value)";
     NewLine.Region      = "Forum topic management";
 
 
@@ -1598,7 +1598,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CLEARTOPICPINNEDMESSAGESLIST";
     NewLine.Parameter     = "--topic";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Topic ID. Main if not filled (optional, def. val. - Empty value)";
+    NewLine.Description     = "Topic ID. Main if not filled (optional, def. val.. - Empty value)";
     NewLine.Region      = "Forum topic management";
 
     Return CompositionTable;

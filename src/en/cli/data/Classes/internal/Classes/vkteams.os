@@ -60,7 +60,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETEVENTS";
     NewLine.Parameter     = "--timeout";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Connection hold time for Long Polling (optional, def. val. - Empty value)";
+    NewLine.Description     = "Connection hold time for Long Polling (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -128,7 +128,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDTEXTMESSAGE";
     NewLine.Parameter     = "--reply";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Replying message id if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -139,7 +139,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDTEXTMESSAGE";
     NewLine.Parameter     = "--keyboard";
     NewLine.ParameterTrim = "-k";
-    NewLine.Description     = "Buttons to the message if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Buttons to the message if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -150,7 +150,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDTEXTMESSAGE";
     NewLine.Parameter     = "--parsemod";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Markup type for message text: MarkdownV2 or HTML (optional, def. val. - MarkdownV2)";
+    NewLine.Description     = "Markup type for message text: MarkdownV2 or HTML (optional, def. val.. - MarkdownV2)";
     NewLine.Region      = "Message sending";
 
 
@@ -195,7 +195,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--text";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "File caption (optional, def. val. - Empty value)";
+    NewLine.Description     = "File caption (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -206,7 +206,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--filename";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Displayed file name (optional, def. val. - Empty value)";
+    NewLine.Description     = "Displayed file name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -217,7 +217,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--parsemod";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Markup type for message text: MarkdownV2 or HTML (optional, def. val. - MarkdownV2)";
+    NewLine.Description     = "Markup type for message text: MarkdownV2 or HTML (optional, def. val.. - MarkdownV2)";
     NewLine.Region      = "Message sending";
 
 
@@ -228,7 +228,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--type";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Content type for sending (optional, def. val. - image/jpeg)";
+    NewLine.Description     = "Content type for sending (optional, def. val.. - image/jpeg)";
     NewLine.Region      = "Message sending";
 
 
@@ -273,7 +273,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDVOICE";
     NewLine.Parameter     = "--type";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Audio type: aac, ogg or m4a (optional, def. val. - m4a)";
+    NewLine.Description     = "Audio type: aac, ogg or m4a (optional, def. val.. - m4a)";
     NewLine.Region      = "Message sending";
 
 
@@ -284,7 +284,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDVOICE";
     NewLine.Parameter     = "--reply";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Replying message id if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Replying message id if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -295,7 +295,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDVOICE";
     NewLine.Parameter     = "--keyboard";
     NewLine.ParameterTrim = "-k";
-    NewLine.Description     = "Buttons to the message if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Buttons to the message if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -351,7 +351,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITMESSAGETEXT";
     NewLine.Parameter     = "--parsemod";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Markup type for message text: MarkdownV2 or HTML (optional, def. val. - MarkdownV2)";
+    NewLine.Description     = "Markup type for message text: MarkdownV2 or HTML (optional, def. val.. - MarkdownV2)";
     NewLine.Region      = "Message sending";
 
 
@@ -430,7 +430,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "RESENDFILE";
     NewLine.Parameter     = "--text";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "File caption (optional, def. val. - Empty value)";
+    NewLine.Description     = "File caption (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -441,7 +441,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "RESENDFILE";
     NewLine.Parameter     = "--parsemod";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Markup type for message text: MarkdownV2 or HTML (optional, def. val. - MarkdownV2)";
+    NewLine.Description     = "Markup type for message text: MarkdownV2 or HTML (optional, def. val.. - MarkdownV2)";
     NewLine.Region      = "Message sending";
 
 
@@ -531,7 +531,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORWARDMESSAGE";
     NewLine.Parameter     = "--text";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Additional message text (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional message text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -633,7 +633,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ANSWERBUTTONEVENT";
     NewLine.Parameter     = "--text";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Answer text (optional, def. val. - Empty value)";
+    NewLine.Description     = "Answer text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -644,7 +644,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ANSWERBUTTONEVENT";
     NewLine.Parameter     = "--url";
     NewLine.ParameterTrim = "-u";
-    NewLine.Description     = "URL to be opened by the client application (optional, def. val. - Empty value)";
+    NewLine.Description     = "URL to be opened by the client application (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -655,7 +655,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ANSWERBUTTONEVENT";
     NewLine.Parameter     = "--showalert";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Display the answer as an alert) (optional, def. val. - False)";
+    NewLine.Description     = "Display the answer as an alert) (optional, def. val.. - False)";
     NewLine.Region      = "Message sending";
 
 
@@ -678,7 +678,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MAKEACTIONBUTTON";
     NewLine.Parameter     = "--data";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "The value returned in the event. Only if the URL is not filled (optional, def. val. - Empty value)";
+    NewLine.Description     = "The value returned in the event. Only if the URL is not filled (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -689,7 +689,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MAKEACTIONBUTTON";
     NewLine.Parameter     = "--url";
     NewLine.ParameterTrim = "-u";
-    NewLine.Description     = "URL to create the page open button. Only if the Value is not filled in (optional, def. val. - Empty value)";
+    NewLine.Description     = "URL to create the page open button. Only if the Value is not filled in (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
 
@@ -700,7 +700,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MAKEACTIONBUTTON";
     NewLine.Parameter     = "--style";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Button style: primary, attention or base (optional, def. val. - base)";
+    NewLine.Description     = "Button style: primary, attention or base (optional, def. val.. - base)";
     NewLine.Region      = "Message sending";
 
 
@@ -848,7 +848,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHATMEMBERS";
     NewLine.Parameter     = "--cursor";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Next page marker from the previous request (optional, def. val. - Empty value)";
+    NewLine.Description     = "Next page marker from the previous request (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chat management";
 
 
@@ -939,7 +939,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "BLOCKCHATUSER";
     NewLine.Parameter     = "--dellast";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Delete last messages before blocking (optional, def. val. - False)";
+    NewLine.Description     = "Delete last messages before blocking (optional, def. val.. - False)";
     NewLine.Region      = "Chat management";
 
 
@@ -1007,7 +1007,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "APPROVEPENDING";
     NewLine.Parameter     = "--userid";
     NewLine.ParameterTrim = "-u";
-    NewLine.Description     = "User ID. For all active requests if not filled in (optional, def. val. - Empty value)";
+    NewLine.Description     = "User ID. For all active requests if not filled in (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chat management";
 
 
@@ -1041,7 +1041,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DISAPPROVEPENDING";
     NewLine.Parameter     = "--userid";
     NewLine.ParameterTrim = "-u";
-    NewLine.Description     = "User ID. For all active requests if not filled in (optional, def. val. - Empty value)";
+    NewLine.Description     = "User ID. For all active requests if not filled in (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chat management";
 
 

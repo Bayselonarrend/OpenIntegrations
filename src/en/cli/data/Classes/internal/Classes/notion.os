@@ -153,7 +153,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITPAGEPROPERTIES";
     NewLine.Parameter     = "--data";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Map of editable parameters (optional, def. val. - Empty value)";
+    NewLine.Description     = "Map of editable parameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Page management";
 
 
@@ -164,7 +164,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITPAGEPROPERTIES";
     NewLine.Parameter     = "--icon";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "URL of the page icon image (optional, def. val. - Empty value)";
+    NewLine.Description     = "URL of the page icon image (optional, def. val.. - Empty value)";
     NewLine.Region      = "Page management";
 
 
@@ -175,7 +175,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITPAGEPROPERTIES";
     NewLine.Parameter     = "--cover";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "URL of the page cover image (optional, def. val. - Empty value)";
+    NewLine.Description     = "URL of the page cover image (optional, def. val.. - Empty value)";
     NewLine.Region      = "Page management";
 
 
@@ -186,7 +186,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITPAGEPROPERTIES";
     NewLine.Parameter     = "--archive";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Archive page or not (boolean) (optional, def. val. - False)";
+    NewLine.Description     = "Archive page or not (boolean) (optional, def. val.. - False)";
     NewLine.Region      = "Page management";
 
 
@@ -246,7 +246,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEDATABASE";
     NewLine.Parameter     = "--props";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Database properties (optional, def. val. - Empty value)";
+    NewLine.Description     = "Database properties (optional, def. val.. - Empty value)";
     NewLine.Region      = "Database management";
 
 
@@ -318,7 +318,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITDATABASEPROPERTIES";
     NewLine.Parameter     = "--props";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "New or modified database properties (optional, def. val. - Empty value)";
+    NewLine.Description     = "New or modified database properties (optional, def. val.. - Empty value)";
     NewLine.Region      = "Database management";
 
 
@@ -329,7 +329,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITDATABASEPROPERTIES";
     NewLine.Parameter     = "--title";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "New database title (optional, def. val. - Empty value)";
+    NewLine.Description     = "New database title (optional, def. val.. - Empty value)";
     NewLine.Region      = "Database management";
 
 
@@ -340,7 +340,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITDATABASEPROPERTIES";
     NewLine.Parameter     = "--description";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "New database description (optional, def. val. - Empty value)";
+    NewLine.Description     = "New database description (optional, def. val.. - Empty value)";
     NewLine.Region      = "Database management";
 
 
@@ -385,7 +385,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEBLOCK";
     NewLine.Parameter     = "--prev";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Block ID after which to insert the new one (optional, def. val. - Empty value)";
+    NewLine.Description     = "Block ID after which to insert the new one (optional, def. val.. - Empty value)";
     NewLine.Region      = "Blocks management";
 
 
@@ -419,7 +419,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "RETURNBLOCK";
     NewLine.Parameter     = "--core";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "True > service fields are deleted, only the block itself remains (optional, def. val. - True)";
+    NewLine.Description     = "True > service fields are deleted, only the block itself remains (optional, def. val.. - True)";
     NewLine.Region      = "Blocks management";
 
 

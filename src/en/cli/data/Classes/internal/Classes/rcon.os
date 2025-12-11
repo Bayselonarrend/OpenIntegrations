@@ -71,7 +71,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCONNECTIONPARAMETERS";
     NewLine.Parameter     = "--rtout";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Response timeout (in seconds) (optional, def. val. - 30)";
+    NewLine.Description     = "Response timeout (in seconds) (optional, def. val.. - 30)";
     NewLine.Region      = "Commands execution";
 
 
@@ -82,7 +82,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCONNECTIONPARAMETERS";
     NewLine.Parameter     = "--wtout";
     NewLine.ParameterTrim = "-w";
-    NewLine.Description     = "Request sending timeout (in seconds) (optional, def. val. - 30)";
+    NewLine.Description     = "Request sending timeout (in seconds) (optional, def. val.. - 30)";
     NewLine.Region      = "Commands execution";
 
     Return CompositionTable;

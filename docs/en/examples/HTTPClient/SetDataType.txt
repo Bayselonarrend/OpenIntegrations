@@ -5,7 +5,7 @@
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
-        .SetStringBody("# Hello world!")
+        .SetStringBody("# Hello world!!")
         .SetDataType(MIMEType) // <---
         .ProcessRequest("POST")
         .ReturnResponseAsJSONObject();

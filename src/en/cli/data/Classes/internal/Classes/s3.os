@@ -70,7 +70,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETBASICDATASTRUCTURE";
     NewLine.Parameter     = "--service";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Type of service, if different from s3 (optional, def. val. - s3)";
+    NewLine.Description     = "Type of service, if different from s3 (optional, def. val.. - s3)";
     NewLine.Region      = "Common methods";
 
 
@@ -104,7 +104,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDREQUESTWITHOUTBODY";
     NewLine.Parameter     = "--binary";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Disables an attempt to convert the response to JSON (optional, def. val. - False)";
+    NewLine.Description     = "Disables an attempt to convert the response to JSON (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
 
@@ -115,7 +115,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDREQUESTWITHOUTBODY";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -160,7 +160,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDREQUESTWITHBODY";
     NewLine.Parameter     = "--binary";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Disables an attempt to convert the response to JSON (optional, def. val. - False)";
+    NewLine.Description     = "Disables an attempt to convert the response to JSON (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
 
@@ -171,7 +171,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDREQUESTWITHBODY";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -205,7 +205,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEBUCKET";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Buckets management";
 
 
@@ -216,7 +216,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEBUCKET";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -250,7 +250,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEBUCKET";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Buckets management";
 
 
@@ -261,7 +261,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEBUCKET";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -295,7 +295,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "HEADBUCKET";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Buckets management";
 
 
@@ -306,7 +306,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "HEADBUCKET";
     NewLine.Parameter     = "--account";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Account ID to verify that hes the bucket owner (optional, def. val. - Empty value)";
+    NewLine.Description     = "Account ID to verify that hes the bucket owner (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -317,7 +317,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "HEADBUCKET";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -362,7 +362,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUTBUCKETENCRYPTION";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Buckets management";
 
 
@@ -373,7 +373,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUTBUCKETENCRYPTION";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -407,7 +407,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETBUCKETENCRYPTION";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Buckets management";
 
 
@@ -418,7 +418,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETBUCKETENCRYPTION";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -452,7 +452,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEBUCKETENCRYPTION";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Buckets management";
 
 
@@ -463,7 +463,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEBUCKETENCRYPTION";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -508,7 +508,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUTBUCKETTAGGING";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Buckets management";
 
 
@@ -519,7 +519,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUTBUCKETTAGGING";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -553,7 +553,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETBUCKETTAGGING";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Buckets management";
 
 
@@ -564,7 +564,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETBUCKETTAGGING";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -598,7 +598,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEBUCKETTAGGING";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Buckets management";
 
 
@@ -609,7 +609,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEBUCKETTAGGING";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -643,7 +643,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUTBUCKETVERSIONING";
     NewLine.Parameter     = "--status";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Enable and disable versioning, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Enable and disable versioning, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -654,7 +654,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUTBUCKETVERSIONING";
     NewLine.Parameter     = "--mfad";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "Enable and disable MFA deletion, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Enable and disable MFA deletion, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -665,7 +665,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUTBUCKETVERSIONING";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Buckets management";
 
 
@@ -676,7 +676,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUTBUCKETVERSIONING";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -710,7 +710,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETBUCKETVERSIONING";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Buckets management";
 
 
@@ -721,7 +721,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETBUCKETVERSIONING";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -744,7 +744,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTBUCKETS";
     NewLine.Parameter     = "--prefix";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Filtering by prefix, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Filtering by prefix, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -755,7 +755,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTBUCKETS";
     NewLine.Parameter     = "--region";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Selection by bucket region, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Selection by bucket region, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -766,7 +766,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTBUCKETS";
     NewLine.Parameter     = "--ctoken";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Page token if pagination is used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Page token if pagination is used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -777,7 +777,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTBUCKETS";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Buckets management";
 
 
@@ -833,7 +833,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUTOBJECT";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -844,7 +844,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUTOBJECT";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -900,7 +900,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFULLOBJECT";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -911,7 +911,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFULLOBJECT";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -956,7 +956,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "INITPARTSUPLOAD";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -967,7 +967,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "INITPARTSUPLOAD";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -1045,7 +1045,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADOBJECTPART";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -1112,7 +1112,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FINISHPARTSUPLOAD";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1123,7 +1123,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FINISHPARTSUPLOAD";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -1179,7 +1179,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ABORTMULTIPARTUPLOAD";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1190,7 +1190,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ABORTMULTIPARTUPLOAD";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -1235,7 +1235,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "HEADOBJECT";
     NewLine.Parameter     = "--ver";
     NewLine.ParameterTrim = "-v";
-    NewLine.Description     = "Token for receiving a specific version of an object (optional, def. val. - Empty value)";
+    NewLine.Description     = "Token for receiving a specific version of an object (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1246,7 +1246,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "HEADOBJECT";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1257,7 +1257,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "HEADOBJECT";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -1302,7 +1302,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOBJECT";
     NewLine.Parameter     = "--ver";
     NewLine.ParameterTrim = "-v";
-    NewLine.Description     = "Token for receiving a specific version of an object (optional, def. val. - Empty value)";
+    NewLine.Description     = "Token for receiving a specific version of an object (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1313,7 +1313,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOBJECT";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1324,7 +1324,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOBJECT";
     NewLine.Parameter     = "--out";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Path to directly write a file to disk (optional, def. val. - Empty value)";
+    NewLine.Description     = "Path to directly write a file to disk (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1335,7 +1335,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOBJECT";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -1380,7 +1380,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEOBJECT";
     NewLine.Parameter     = "--ver";
     NewLine.ParameterTrim = "-v";
-    NewLine.Description     = "Token for deleting a specific version of an object (optional, def. val. - Empty value)";
+    NewLine.Description     = "Token for deleting a specific version of an object (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1391,7 +1391,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEOBJECT";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1402,7 +1402,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEOBJECT";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -1469,7 +1469,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "COPYOBJECT";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1480,7 +1480,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "COPYOBJECT";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -1536,7 +1536,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUTOBJECTTAGGING";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1547,7 +1547,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUTOBJECTTAGGING";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -1592,7 +1592,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOBJECTTAGGING";
     NewLine.Parameter     = "--ver";
     NewLine.ParameterTrim = "-v";
-    NewLine.Description     = "Token for retrieving data of a specific version of an object (optional, def. val. - Empty value)";
+    NewLine.Description     = "Token for retrieving data of a specific version of an object (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1603,7 +1603,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOBJECTTAGGING";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1614,7 +1614,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOBJECTTAGGING";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -1659,7 +1659,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEOBJECTTAGGING";
     NewLine.Parameter     = "--ver";
     NewLine.ParameterTrim = "-v";
-    NewLine.Description     = "Token for deleting data of a specific version of an object (optional, def. val. - Empty value)";
+    NewLine.Description     = "Token for deleting data of a specific version of an object (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1670,7 +1670,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEOBJECTTAGGING";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1681,7 +1681,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEOBJECTTAGGING";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -1715,7 +1715,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTOBJECTS";
     NewLine.Parameter     = "--prefix";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Filtering by prefix, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Filtering by prefix, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1726,7 +1726,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTOBJECTS";
     NewLine.Parameter     = "--ctoken";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Page token if pagination is used (optional, def. val. - Empty value)";
+    NewLine.Description     = "Page token if pagination is used (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1737,7 +1737,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTOBJECTS";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1748,7 +1748,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTOBJECTS";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -1782,7 +1782,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTOBJECTVERSIONS";
     NewLine.Parameter     = "--prefix";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Filtering by prefix, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Filtering by prefix, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1793,7 +1793,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTOBJECTVERSIONS";
     NewLine.Parameter     = "--ver";
     NewLine.ParameterTrim = "-v";
-    NewLine.Description     = "Version ID for the beginning of the list (optional, def. val. - Empty value)";
+    NewLine.Description     = "Version ID for the beginning of the list (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1804,7 +1804,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTOBJECTVERSIONS";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1815,7 +1815,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTOBJECTVERSIONS";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -1860,7 +1860,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOBJECTDOWNLOADLINK";
     NewLine.Parameter     = "--expires";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "Link lifetime in seconds. 604800 max. (optional, def. val. - 3600)";
+    NewLine.Description     = "Link lifetime in seconds. 604800 max. (optional, def. val.. - 3600)";
     NewLine.Region      = "Objects management";
 
 
@@ -1871,7 +1871,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOBJECTDOWNLOADLINK";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1882,7 +1882,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOBJECTDOWNLOADLINK";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
 
@@ -1927,7 +1927,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOBJECTUPLOADLINK";
     NewLine.Parameter     = "--expires";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "Link lifetime in seconds. 604800 max. (optional, def. val. - 3600)";
+    NewLine.Description     = "Link lifetime in seconds. 604800 max. (optional, def. val.. - 3600)";
     NewLine.Region      = "Objects management";
 
 
@@ -1938,7 +1938,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOBJECTUPLOADLINK";
     NewLine.Parameter     = "--headers";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Additional request headers, if necessary (optional, def. val. - Empty value)";
+    NewLine.Description     = "Additional request headers, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Objects management";
 
 
@@ -1949,7 +1949,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOBJECTUPLOADLINK";
     NewLine.Parameter     = "--dir";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val. - False)";
+    NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
     Return CompositionTable;

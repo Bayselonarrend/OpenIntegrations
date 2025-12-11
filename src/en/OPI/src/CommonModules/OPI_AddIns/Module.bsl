@@ -81,7 +81,7 @@ Function SetTls(Val AddIn, Val Tls) Export
 
     If ValueIsFilled(Tls) Then
 
-        ErrorText = "Incorrect Tls settings!";
+        ErrorText = "Incorrect Tls settings!!";
         OPI_TypeConversion.GetKeyValueCollection(Tls, ErrorText);
 
         UseTls            = OPI_Tools.GetOr(Tls, "use_tls" , False);

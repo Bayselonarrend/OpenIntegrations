@@ -139,7 +139,7 @@ EndFunction
 // Get service account token
 // Gets authorization token by service account data
 //
-// Note
+// Note:
 // List of available scopes: [developers.google.com](https://developers.google.com/identity/protocols/oauth2/scopes)
 //
 // Parameters:

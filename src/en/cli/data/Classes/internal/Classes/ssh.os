@@ -37,7 +37,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONNECTIONCONFIGURATION";
     NewLine.Parameter     = "--proxy";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Proxy settings, if required. See GetProxySettings (optional, def. val. - Empty value)";
+    NewLine.Description     = "Proxy settings, if required. See GetProxySettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -106,7 +106,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSETTINGSLOGINPASSWORD";
     NewLine.Parameter     = "--pass";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "SSH user password (optional, def. val. - Empty value)";
+    NewLine.Description     = "SSH user password (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -162,7 +162,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSETTINGSPRIVATEKEY";
     NewLine.Parameter     = "--pub";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Path to public key file (optional, def. val. - Empty value)";
+    NewLine.Description     = "Path to public key file (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -173,7 +173,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETSETTINGSPRIVATEKEY";
     NewLine.Parameter     = "--pass";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Private key password (passphrase) (optional, def. val. - Empty value)";
+    NewLine.Description     = "Private key password (passphrase) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -241,7 +241,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--type";
     NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "Proxy type: socks5, socks4, http (optional, def. val. - socks5)";
+    NewLine.Description     = "Proxy type: socks5, socks4, http (optional, def. val.. - socks5)";
     NewLine.Region      = "Common methods";
 
 
@@ -252,7 +252,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--login";
     NewLine.ParameterTrim = "-l";
-    NewLine.Description     = "Authorization login, if required (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization login, if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
@@ -263,7 +263,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--pass";
     NewLine.ParameterTrim = "";
-    NewLine.Description     = "Authorization password, if required (optional, def. val. - Empty value)";
+    NewLine.Description     = "Authorization password, if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
     Return CompositionTable;
