@@ -1403,7 +1403,7 @@
 ".HasType(": ".ИмеетТип(",
 "Массив360": "Array360",
 "ИмяПакета": "PackageName",
-"Параметры": "Parameters:",
+"Параметры": "Parameters",
 "Тесты CLI": "CLI Tests",
 "Изменение": "Change",
 "ЧтениеZip": "ReadingZip",
