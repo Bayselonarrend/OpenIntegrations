@@ -1,5 +1,5 @@
 oint airtable УдалитьЗаписи \
   --token "***" \
-  --base "appdBvJ5EouBLnkvA" \
-  --table "tbluSOBqZnoGjkSWx" \
-  --records "reck3Uk1Sh885HNgc"
+  --base "appsphUJMca93aBEQ" \
+  --table "tbl9SiN0pC2CyNlHH" \
+  --records "recql3QwTVGjh2sV7"
