@@ -7,6 +7,7 @@ use std::str::FromStr;
 use chrono::{DateTime, Utc};
 use serde::Serialize;
 use std::string::String;
+use std::sync::Arc;
 use std::time::{Duration, Instant};
 use base64::Engine;
 use base64::engine::general_purpose;
@@ -15,7 +16,7 @@ use common_tcp::tls_settings::TlsSettings;
 use common_utils::utils::{json_error, json_success};
 use suppaftp::types::Response;
 use crate::component::configuration::FtpSettings;
-use crate::component::{passive_establish, tls_establish};
+use crate::component::passive_establish;
 
 pub enum FtpClient {
     Secure(RustlsFtpStream),
@@ -400,9 +401,11 @@ pub fn configure_ftp_client(
     let passive_proxy = ftp_settings.passive && proxy_settings.is_some();
 
     if tls_settings.is_some_and(|s| s.use_tls) {
+
         let tls = tls_settings.unwrap();
-        let tls_connector = tls_establish::get_tls_connector(tls)
-            .map_err(|e| json_error(&e))?;
+        let config = tls.get_rustls_config().map_err(|e| json_error(&e))?;
+
+        let tls_connector = RustlsConnector::from(Arc::new(config));
 
         let mut ftp_stream = RustlsFtpStream::connect_with_stream(tcp_stream)
             .map_err(|e| json_error(&e))?;

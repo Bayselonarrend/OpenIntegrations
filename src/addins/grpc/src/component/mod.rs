@@ -1,12 +1,16 @@
 mod backend_core;
-mod grpc_client;
+mod connection;
+mod proto_loader;
+mod message_converter;
+mod grpc_caller;
+mod introspection;
+mod client_state;
 
 use addin1c::{name, Variant};
 use crate::core::getset;
 use common_utils::utils::{json_error, json_success};
 use common_tcp::tls_settings::TlsSettings;
 use std::sync::{Arc, Mutex};
-use serde_json::json;
 
 
 pub const METHODS: &[&[u16]] = &[
@@ -207,13 +211,6 @@ impl AddIn {
         };
 
         guard.get_method_info(service_name, method_name).unwrap_or_else(|e| json_error(&e))
-    }
-
-    pub fn get_tls_settings(&self) -> String {
-        match &self.tls {
-            Some(tls) => tls.get_settings(),
-            None => json!({"use_tls": false, "ca_cert_path": "", "accept_invalid_certs": false}).to_string()
-        }
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {

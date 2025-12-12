@@ -4,17 +4,22 @@ use std::time::Duration;
 use socks::{Socks4Stream, Socks5Stream};
 use base64::{Engine as _, engine::general_purpose};
 use std::fmt::Write as FmtWrite;
-use native_tls::TlsStream;
 use url::Url;
 use crate::proxy_settings::ProxySettings;
-use crate::tcp_establish::Connection::Plain;
+
+#[cfg(feature = "native-tls")]
 use crate::tls_settings::TlsSettings;
+
+#[cfg(feature = "native-tls")]
+use native_tls::TlsStream;
 
 pub enum Connection {
     Plain(TcpStream),
+    #[cfg(feature = "native-tls")]
     Tls(TlsStream<TcpStream>),
 }
 
+#[cfg(feature = "native-tls")]
 pub fn create_connection(host: &str, port: u16, proxy_settings: &Option<ProxySettings>, tls_settings: &Option<TlsSettings>) -> Result<Connection, String> {
 
     let tcp_connection = create_tcp_connection(host, port, proxy_settings)?;
@@ -25,8 +30,14 @@ pub fn create_connection(host: &str, port: u16, proxy_settings: &Option<ProxySet
             return Ok(Connection::Tls(tls_connection));
         }
     }
-    Ok(Plain(tcp_connection))
+    Ok(Connection::Plain(tcp_connection))
 
+}
+
+#[cfg(feature = "native-tls")]
+pub fn tcp_to_tls(host: &str, tcp_stream: TcpStream, tls: &TlsSettings) -> Result<TlsStream<TcpStream>, String> {
+    let connector = TlsSettings::get_connector(tls)?;
+    connector.connect(host, tcp_stream).map_err(|e| e.to_string())
 }
 
 pub fn create_tcp_connection(host: &str, port: u16, proxy_settings: &Option<ProxySettings>) -> Result<TcpStream, String> {
@@ -35,11 +46,6 @@ pub fn create_tcp_connection(host: &str, port: u16, proxy_settings: &Option<Prox
         Some(s) => connect_via_proxy(&s, target_addr),
         None => connect_direct(target_addr)
     }
-}
-
-pub fn tcp_to_tls(host: &str, tcp_stream: TcpStream, tls: &TlsSettings) -> Result<TlsStream<TcpStream>, String> {
-    let connector = TlsSettings::get_connector(tls)?;
-    connector.connect(host, tcp_stream).map_err(|e| e.to_string())
 }
 
 pub fn resolve_to_socket_addr(input: &str) -> Result<SocketAddr, String> {
