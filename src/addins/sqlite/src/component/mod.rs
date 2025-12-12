@@ -7,6 +7,7 @@ use rusqlite::{Connection, OpenFlags};
 use serde_json::json;
 use common_dataset::dataset::Datasets;
 use common_utils::utils::{json_error, json_success};
+use common_binary::vault::{BinaryInput, BinaryVault};
 
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),
@@ -19,7 +20,9 @@ pub const METHODS: &[&[u16]] = &[
     name!("SetParamsFromFile"),
     name!("SetParamsFromString"),
     name!("RemoveQueryDataset"),
-    name!("BatchQuery")
+    name!("BatchQuery"),
+    name!("LoadBinaryToVault"),
+    name!("LoadFileToVault"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -35,6 +38,8 @@ pub fn get_params_amount(num: usize) -> usize {
         8 => 2,
         9 => 1,
         10 => 2,
+        11 => 1,
+        12 => 1,
         _ => 0,
     }
 }
@@ -110,6 +115,22 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             };
             Box::new(result)
         },
+        11 => {
+            let binary = params[0].get_blob().unwrap_or(!vec![]);
+            let result = match obj.binary_vault.store(BinaryInput::from(binary)){
+                Ok(_) => json_success(),
+                Err(e) => json_error(&e)
+            };
+            Box::new(result)
+        },
+        12 => {
+            let file = params[0].get_string().unwrap_or("".to_string());
+            let result = match obj.binary_vault.store(BinaryInput::from(file)){
+                Ok(_) => json_success(),
+                Err(e) => json_error(&e)
+            };
+            Box::new(result)
+        }
         _ => Box::new(false),
     }
 
@@ -123,6 +144,7 @@ pub struct AddIn {
     connection_string: String,
     connection: Option<Arc<Mutex<Connection>>>,
     datasets: Datasets,
+    binary_vault: BinaryVault
 }
 
 impl AddIn {
@@ -131,6 +153,7 @@ impl AddIn {
             connection_string: String::new(),
             connection: None,
             datasets: Datasets::new(),
+            binary_vault: BinaryVault::new()
         }
     }
 

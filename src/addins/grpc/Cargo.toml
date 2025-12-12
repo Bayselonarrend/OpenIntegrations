@@ -1,0 +1,32 @@
+[package]
+name = "opi_grpc"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = "fat"       # Enable Link Time Optimization
+codegen-units = 1 # Reduce number of codegen units to increase optimizations.
+panic = "abort"   # Abort on panic
+strip = true      # Automatically strip symbols from the binary.
+opt-level = "z"
+
+[dependencies]
+addin1c = "0.5.0"
+serde_json = "1.0"
+common-utils = { path = "../!commons/common-utils" }
+common-tcp = { path = "../!commons/common-tcp" }
+tonic = { version = "0.12.3", features = ["tls", "channel"] }
+prost = "0.13.3"
+prost-types = "0.13.3"
+tokio = { version = "1.45.1", features = ["rt-multi-thread", "macros"] }
+serde = { version = "1.0.228", features = ["derive"] }
+base64 = "0.22.1"
+# Для динамической работы с protobuf
+prost-reflect = "0.14.2"
+protox = "0.7.1"
+
+[build-dependencies]
+tonic-build = "0.12.3"
