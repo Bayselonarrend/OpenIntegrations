@@ -1,0 +1,71 @@
+use serde_json::Value;
+use std::collections::HashMap;
+use std::time::Duration;
+use tonic::transport::Channel;
+use tonic::Request;
+use tonic::metadata::{MetadataValue, MetadataKey, Ascii};
+use prost_reflect::{DescriptorPool, DynamicMessage};
+use prost::Message;
+use crate::component::message_converter::{json_to_dynamic_message, dynamic_message_to_json};
+
+#[derive(serde::Deserialize)]
+pub struct CallParams {
+    pub service: String,
+    pub method: String,
+    pub request: Option<Value>,
+    pub timeout_ms: Option<u64>,
+}
+
+pub async fn execute_grpc_call(
+    channel: &Channel,
+    descriptor_pool: &DescriptorPool,
+    metadata: &HashMap<String, String>,
+    params: &CallParams,
+) -> Result<Value, String> {
+
+    let service = descriptor_pool
+        .get_service_by_name(&params.service)
+        .ok_or_else(|| format!("Service '{}' not found", params.service))?;
+
+    let method = service
+        .methods()
+        .find(|m| m.name() == params.method)
+        .ok_or_else(|| format!("Method '{}' not found in service '{}'", params.method, params.service))?;
+
+    let request_message = if let Some(request_data) = &params.request {
+        json_to_dynamic_message(request_data, &method.input())?
+    } else {
+        DynamicMessage::new(method.input())
+    };
+
+    let request_bytes = request_message.encode_to_vec();
+
+    let mut grpc_request = Request::new(request_bytes);
+
+    for (key, value) in metadata {
+        if let (Ok(metadata_key), Ok(metadata_value)) = (
+            MetadataKey::<Ascii>::from_bytes(key.as_bytes()),
+            MetadataValue::try_from(value.as_str())
+        ) {
+            grpc_request.metadata_mut().insert(metadata_key, metadata_value);
+        }
+    }
+
+    if let Some(timeout_ms) = params.timeout_ms {
+        grpc_request.set_timeout(Duration::from_millis(timeout_ms));
+    }
+
+    let path = format!("/{}/{}", service.full_name(), method.name());
+
+    let mut client = tonic::client::Grpc::new(channel.clone());
+    let response = client
+        .unary(grpc_request, path.parse().unwrap(), tonic::codec::ProstCodec::default())
+        .await
+        .map_err(|e| format!("gRPC call failed: {}", e))?;
+
+    let response_bytes: Vec<u8> = response.into_inner();
+    let response_message = DynamicMessage::decode(method.output(), response_bytes.as_ref())
+        .map_err(|e| format!("Failed to decode response: {}", e))?;
+
+    dynamic_message_to_json(&response_message)
+}

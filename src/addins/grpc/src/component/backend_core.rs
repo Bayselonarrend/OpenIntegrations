@@ -1,24 +1,18 @@
-use serde_json::{json, Value};
+use serde_json::json;
 use std::sync::mpsc::{self, Sender};
 use std::thread::{self, JoinHandle};
 use std::collections::HashMap;
-use serde::{Deserialize, Serialize};
 use common_utils::utils::json_error;
 use common_tcp::tls_settings::TlsSettings;
-use tonic::transport::{Channel, ClientTlsConfig};
-use tonic::Request;
+use crate::component::client_state::ClientState;
+use super::connection;
+use super::proto_loader;
+use super::grpc_caller::{self, CallParams};
+use super::introspection;
 
 pub struct GrpcBackend {
     pub(crate) tx: Sender<BackendCommand>,
     thread_handle: Option<JoinHandle<()>>,
-}
-
-#[derive(Serialize, Deserialize)]
-pub struct CallParams {
-    pub service: String,
-    pub method: String,
-    pub request: Option<Value>,
-    pub timeout_ms: Option<u64>,
 }
 
 pub enum BackendCommand {
@@ -70,7 +64,19 @@ impl GrpcBackend {
                 while let Ok(cmd) = rx.recv() {
                     match cmd {
                         BackendCommand::Connect { address, tls_settings, response } => {
-                            let result = rt.block_on(handle_connect(&mut client_state, &address, &tls_settings));
+                            let result = rt.block_on(async {
+
+                                match connection::establish_connection(&address, &tls_settings).await {
+                                    Ok(channel) => {
+                                        client_state.connected = true;
+                                        client_state.address = address;
+                                        client_state.tls_settings = tls_settings;
+                                        client_state.channel = Some(channel);
+                                        Ok(())
+                                    },
+                                    Err(e) => Err(e)
+                                }
+                            });
                             let response_msg = match result {
                                 Ok(_) => "".to_string(),
                                 Err(e) => e,
@@ -82,7 +88,14 @@ impl GrpcBackend {
                             let _ = response.send("".to_string());
                         }
                         BackendCommand::Call { params, response } => {
-                            let result = rt.block_on(handle_call(&client_state, &params));
+                            let result = if !client_state.connected {
+                                Err("Not connected to gRPC server".to_string())
+                            } else if let (Some(channel), Some(descriptor_pool)) = (&client_state.channel, &client_state.descriptor_pool) {
+                                rt.block_on(grpc_caller::execute_grpc_call(channel, descriptor_pool, &client_state.metadata, &params))
+                            } else {
+                                Err("No active connection or proto files loaded".to_string())
+                            };
+                            
                             let response_msg = match result {
                                 Ok(data) => json!({"result": true, "data": data}).to_string(),
                                 Err(e) => json_error(&e),
@@ -90,7 +103,13 @@ impl GrpcBackend {
                             let _ = response.send(response_msg);
                         }
                         BackendCommand::LoadProto { content, response } => {
-                            let result = handle_load_proto(&mut client_state, &content);
+                            let result = match proto_loader::load_proto_content(&content) {
+                                Ok(descriptor_pool) => {
+                                    client_state.descriptor_pool = Some(descriptor_pool);
+                                    Ok(())
+                                },
+                                Err(e) => Err(e)
+                            };
                             let response_msg = match result {
                                 Ok(_) => "".to_string(),
                                 Err(e) => e,
@@ -102,25 +121,37 @@ impl GrpcBackend {
                             let _ = response.send("".to_string());
                         }
                         BackendCommand::ListServices { response } => {
-                            let result = handle_list_services(&client_state);
+                            let result = if let Some(descriptor_pool) = &client_state.descriptor_pool {
+                                introspection::list_services(descriptor_pool)
+                            } else {
+                                Err("No proto files loaded. Call LoadProto first.".to_string())
+                            };
                             let response_msg = match result {
-                                Ok(data) => json!({"result": true, "services": data}).to_string(),
+                                Ok(data) => json!({"result": true, "data": data}).to_string(),
                                 Err(e) => json_error(&e),
                             };
                             let _ = response.send(response_msg);
                         }
                         BackendCommand::ListMethods { service_name, response } => {
-                            let result = handle_list_methods(&client_state, &service_name);
+                            let result = if let Some(descriptor_pool) = &client_state.descriptor_pool {
+                                introspection::list_methods(descriptor_pool, &service_name)
+                            } else {
+                                Err("No proto files loaded. Call LoadProto first.".to_string())
+                            };
                             let response_msg = match result {
-                                Ok(data) => json!({"result": true, "methods": data}).to_string(),
+                                Ok(data) => json!({"result": true, "data": data}).to_string(),
                                 Err(e) => json_error(&e),
                             };
                             let _ = response.send(response_msg);
                         }
                         BackendCommand::GetMethodInfo { service_name, method_name, response } => {
-                            let result = handle_get_method_info(&client_state, &service_name, &method_name);
+                            let result = if let Some(descriptor_pool) = &client_state.descriptor_pool {
+                                introspection::get_method_info(descriptor_pool, &service_name, &method_name)
+                            } else {
+                                Err("No proto files loaded. Call LoadProto first.".to_string())
+                            };
                             let response_msg = match result {
-                                Ok(data) => json!({"result": true, "info": data}).to_string(),
+                                Ok(data) => json!({"result": true, "data": data}).to_string(),
                                 Err(e) => json_error(&e),
                             };
                             let _ = response.send(response_msg);
@@ -253,151 +284,6 @@ impl GrpcBackend {
 
         response_rx.recv()
             .map_err(|e| format!("Failed to receive get_method_info response: {}", e))
-    }
-}
-
-struct ClientState {
-    connected: bool,
-    address: String,
-    tls_settings: Option<TlsSettings>,
-    metadata: HashMap<String, String>,
-    proto_descriptors: Vec<u8>, // Для хранения скомпилированных proto файлов
-    services: Vec<String>, // Список доступных сервисов
-}
-
-impl ClientState {
-    fn new() -> Self {
-        Self {
-            connected: false,
-            address: String::new(),
-            tls_settings: None,
-            metadata: HashMap::new(),
-            proto_descriptors: Vec::new(),
-            services: Vec::new(),
-        }
-    }
-
-    fn disconnect(&mut self) {
-        self.connected = false;
-        self.address.clear();
-        self.metadata.clear();
-    }
-
-    fn set_metadata(&mut self, metadata: HashMap<String, String>) {
-        self.metadata = metadata;
-    }
-}
-
-async fn handle_connect(
-    client_state: &mut ClientState,
-    address: &str,
-    tls_settings: &Option<TlsSettings>,
-) -> Result<(), String> {
-    // Здесь будет логика подключения к gRPC серверу
-    // Пока что просто симулируем успешное подключение
-    client_state.connected = true;
-    client_state.address = address.to_string();
-    client_state.tls_settings = tls_settings.clone();
-    
-    // TODO: Реализовать реальное подключение через tonic
-    // let use_tls = tls_settings.as_ref().map_or(false, |tls| tls.enabled());
-    // let channel = if use_tls {
-    //     Channel::from_shared(address.to_string())
-    //         .map_err(|e| format!("Invalid address: {}", e))?
-    //         .tls_config(ClientTlsConfig::new())
-    //         .map_err(|e| format!("TLS config error: {}", e))?
-    //         .connect()
-    //         .await
-    //         .map_err(|e| format!("Connection failed: {}", e))?
-    // } else {
-    //     Channel::from_shared(address.to_string())
-    //         .map_err(|e| format!("Invalid address: {}", e))?
-    //         .connect()
-    //         .await
-    //         .map_err(|e| format!("Connection failed: {}", e))?
-    // };
-
-    Ok(())
-}
-
-async fn handle_call(
-    _client_state: &ClientState,
-    params: &CallParams,
-) -> Result<Value, String> {
-    if !_client_state.connected {
-        return Err("Not connected to gRPC server".to_string());
-    }
-
-    // TODO: Реализовать реальный вызов gRPC метода
-    // Пока что возвращаем заглушку
-    Ok(json!({
-        "service": params.service,
-        "method": params.method,
-        "response": "Mock response - gRPC call not implemented yet"
-    }))
-}
-
-fn handle_load_proto(
-    _client_state: &mut ClientState,
-    _content: &str,
-) -> Result<(), String> {
-    // TODO: Реализовать загрузку и компиляцию proto файлов
-    // Пока что просто возвращаем успех
-    Ok(())
-}
-
-fn handle_list_services(
-    client_state: &ClientState,
-) -> Result<Vec<String>, String> {
-    if !client_state.connected {
-        return Err("Not connected to gRPC server".to_string());
-    }
-    
-    // TODO: Реализовать получение списка сервисов из загруженных proto файлов
-    // Пока что возвращаем заглушку
-    Ok(vec!["ExampleService".to_string(), "HealthService".to_string()])
-}
-
-fn handle_list_methods(
-    client_state: &ClientState,
-    service_name: &str,
-) -> Result<Vec<String>, String> {
-    if !client_state.connected {
-        return Err("Not connected to gRPC server".to_string());
-    }
-    
-    // TODO: Реализовать получение списка методов для конкретного сервиса
-    // Пока что возвращаем заглушку
-    match service_name {
-        "ExampleService" => Ok(vec!["SayHello".to_string(), "ListFeatures".to_string()]),
-        "HealthService" => Ok(vec!["Check".to_string(), "Watch".to_string()]),
-        _ => Err(format!("Service '{}' not found", service_name))
-    }
-}
-
-fn handle_get_method_info(
-    client_state: &ClientState,
-    service_name: &str,
-    method_name: &str,
-) -> Result<Value, String> {
-    if !client_state.connected {
-        return Err("Not connected to gRPC server".to_string());
-    }
-    
-    // TODO: Реализовать получение информации о методе (схема запроса/ответа)
-    // Пока что возвращаем заглушку
-    match (service_name, method_name) {
-        ("ExampleService", "SayHello") => Ok(json!({
-            "request_type": "HelloRequest",
-            "response_type": "HelloResponse",
-            "request_schema": {
-                "name": "string"
-            },
-            "response_schema": {
-                "message": "string"
-            }
-        })),
-        _ => Err(format!("Method '{}.{}' not found", service_name, method_name))
     }
 }
 
