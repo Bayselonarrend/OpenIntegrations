@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="da672e8a-de00-410c-9266-18eaa90731a3">
+  <name>OPI_GRPC</name>
+  <synonym>
+    <key>ru</key>
+    <value>gRPC (ОПИ)</value>
+  </synonym>
+  <comment>Модуль для работы с gRPC из набора ОПИ</comment>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>

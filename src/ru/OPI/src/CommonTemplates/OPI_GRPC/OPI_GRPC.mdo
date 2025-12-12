@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="001ee925-45d3-4147-9491-f5043eaa3694">
+  <name>OPI_GRPC</name>
+  <synonym>
+    <key>ru</key>
+    <value>Компонента gRPC (ОПИ)</value>
+  </synonym>
+  <templateType>BinaryData</templateType>
+</mdclass:CommonTemplate>
