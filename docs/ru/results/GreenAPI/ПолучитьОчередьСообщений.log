@@ -1,1 +1,39 @@
-﻿{}
+﻿[
+ {
+  "messageID": "3EB0265E95AF75D01DC750",
+  "type": "sendContact",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "contact": {
+    "phoneContact": 79001234568,
+    "company": "Велосипед"
+   },
+   "quotedMessageId": "3EB08096A3ACD2FF34BF69",
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "3EB0BA3CBEEE497D5D4B8E"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "chatIdFrom": "120363410406221140@g.us",
+   "messages": [
+    "3EB065E07A61541CE6E943"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0DBF60C7C562D3B5BFE",
+  "type": "editMessage",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "idMessage": "3EB065E07A61541CE6E943",
+   "message": "Новый текст сообщения",
+   "linkPreview": true
+  }
+ }
+]
