@@ -1,0 +1,4 @@
+﻿    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .MaxAttempts(10)
+        .ReturnSettings();

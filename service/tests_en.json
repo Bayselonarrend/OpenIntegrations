@@ -5700,6 +5700,36 @@
 "variant": ""
 },
 {
+"lib": "HTTPClient",
+"name": "MaxAttempts",
+"variant": ""
+},
+{
+"lib": "HTTPClient",
+"name": "MaxRedirects",
+"variant": ""
+},
+{
+"lib": "HTTPClient",
+"name": "ReturnSettings",
+"variant": ""
+},
+{
+"lib": "HTTPClient",
+"name": "ReturnSettings",
+"variant": "Single"
+},
+{
+"lib": "HTTPClient",
+"name": "ReturnSettings",
+"variant": "Array"
+},
+{
+"lib": "HTTPClient",
+"name": "ReturnSettings",
+"variant": "Nonexistent"
+},
+{
 "lib": "OpenAI",
 "name": "GetResponse",
 "variant": ""

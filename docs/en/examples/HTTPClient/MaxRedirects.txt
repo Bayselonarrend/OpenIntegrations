@@ -1,0 +1,4 @@
+﻿    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .MaxRedirects(15)
+        .ReturnSettings();

@@ -2680,6 +2680,9 @@ Procedure HTTP_Settings() Export
     HTTPClient_UseBodyFiledsAtOAuth(TestParameters);
     HTTPClient_UseURLEncoding(TestParameters);
     HTTPClient_SplitArraysInURL(TestParameters);
+    HTTPClient_MaxRedirects(TestParameters);
+    HTTPClient_MaxAttempts(TestParameters);
+    HTTPClient_ReturnSettings(TestParameters);
 
 EndProcedure
 
@@ -26117,6 +26120,67 @@ Procedure HTTPClient_SendPart(FunctionParameters)
     // END
 
     Process(Result, "HTTPClient", "SendPart");
+
+EndProcedure
+
+Procedure HTTPClient_MaxAttempts(FunctionParameters)
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .MaxAttempts(10)
+        .ReturnSettings();
+
+    // END
+
+    Process(Result, "HTTPClient", "MaxAttempts");
+
+EndProcedure
+
+Procedure HTTPClient_MaxRedirects(FunctionParameters)
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .MaxRedirects(15)
+        .ReturnSettings();
+
+    // END
+
+    Process(Result, "HTTPClient", "MaxRedirects");
+
+EndProcedure
+
+Procedure HTTPClient_ReturnSettings(FunctionParameters)
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .ReturnSettings();
+
+    // END
+
+    Process(Result, "HTTPClient", "ReturnSettings");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .ReturnSettings("EncodeRequestBody");
+
+    Process(Result, "HTTPClient", "ReturnSettings", "Single");
+
+    SettingArray = New Array;
+    SettingArray.Add("MaxAttempts");
+    SettingArray.Add("MaxRedirects");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .MaxAttempts(5)
+        .ReturnSettings(SettingArray);
+
+    Process(Result, "HTTPClient", "ReturnSettings", "Array");
+
+    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .ReturnSettings("AAA");
+
+    Process(Result, "HTTPClient", "ReturnSettings", "Nonexistent");
 
 EndProcedure
 
