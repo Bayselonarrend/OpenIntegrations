@@ -9938,6 +9938,50 @@ Function Check_HTTPClient_UseGzipCompression(Val Result, Val Option)
 
 EndFunction
 
+Function Check_HTTPClient_MaxAttempts(Val Result, Val Option)
+
+    ExpectsThat(Result["MaxAttempts"]).Равно(10);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_MaxRedirects(Val Result, Val Option)
+
+    ExpectsThat(Result["MaxRedirects"]).Равно(15);
+
+    Return Result;
+
+EndFunction
+
+Function Check_HTTPClient_ReturnSettings(Val Result, Val Option)
+
+    If Option = "Single" Then
+
+        ExpectsThat(Result).Равно("UTF-8");
+
+    ElsIf Option = "Nonexistent" Then
+
+        ExpectsThat(ValueIsFilled(Result)).Равно(False);
+
+    Else
+
+        ExpectsThat(Result).ИмеетТип("Structure");
+
+        If Option = "Array" Then
+
+            ExpectsThat(Result.Count()).Равно(2);
+            ExpectsThat(ValueIsFilled(Result["MaxAttempts"])).Равно(True);
+            ExpectsThat(ValueIsFilled(Result["MaxRedirects"])).Равно(True);
+
+        EndIf;
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_HTTPClient_UseBodyFiledsAtOAuth(Val Result, Val Option, LogAsString = "")
 
     If Option = "Enabled" Then
