@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     // Скачиваем новый deb-пакет oint
-                    sh 'wget -O oint_1.30.0_all_en.deb https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.30.0/oint_1.30.0_all_en.deb '
+                    sh 'wget -O oint_1.31.0_all_en.deb https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.31.0/oint_1.31.0_all_en.deb '
                 }
             }
         }
@@ -34,14 +34,14 @@ pipeline {
             steps {
                 script {
                     // Устанавливаем скаченный пакет
-                    sh 'dpkg -i oint_1.30.0_all_en.deb'
+                    sh 'dpkg -i oint_1.31.0_all_en.deb'
                 }
             }
         }
 
       	stage('Prepare'){
          		steps{
-                    sh 'cd ./src/en/OInt && opm build && opm install oint-1.30.0.ospx && rm oint-1.30.0.ospx'
+                    sh 'cd ./src/en/OInt && opm build && opm install oint-1.31.0.ospx && rm oint-1.31.0.ospx'
             		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
               			sh 'gpg --quiet --batch --yes --decrypt --passphrase="$GPGKEY" --output ./data.json ./data.json.gpg'
             		}

@@ -7,8 +7,8 @@ pipeline {
             steps {
 
 
-                    powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install -f oint-1.30.0.ospx; del oint-1.30.0.ospx'
-                    powershell encoding: 'UTF-8', script:'cd ./src/ru/cli; opm build; opm install -f oint-cli-1.30.0.ospx; del oint-cli-1.30.0.ospx'
+                    powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install -f oint-1.31.0.ospx; del oint-1.31.0.ospx'
+                    powershell encoding: 'UTF-8', script:'cd ./src/ru/cli; opm build; opm install -f oint-cli-1.31.0.ospx; del oint-cli-1.31.0.ospx'
                     
                     
             }

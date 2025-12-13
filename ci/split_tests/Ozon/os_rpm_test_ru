@@ -50,7 +50,7 @@ pipeline {
 
       	stage('Prepare'){
          		steps{
-					sh 'cd ./src/ru/OInt && opm build && opm install oint-1.30.0.ospx && rm oint-1.30.0.ospx'
+					sh 'cd ./src/ru/OInt && opm build && opm install oint-1.31.0.ospx && rm oint-1.31.0.ospx'
             		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
               			sh 'gpg --quiet --batch --yes --decrypt --passphrase="$GPGKEY" --output ./data.json ./data.json.gpg'
             		}
