@@ -1,4 +1,7 @@
-﻿// OneScript: ./OInt/tools/Modules/internal/Modules/internal/Modules/OPI_BuildHash.os
+﻿// OneScript: ./OInt/core/Modules/OPI_GRPC.os
+// Lib: gRPC
+// CLI: grpc
+// Keywords: grpc
 
 // MIT License
 
@@ -22,18 +25,28 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-// BSLLS:CommonModuleMissingAPI-off
-// BSLLS:CodeOutOfRegion-off
-// BSLLS:UsingServiceTag-off
-
 // https://github.com/Bayselonarrend/OpenIntegrations
 
+// BSLLS:Typo-off
+// BSLLS:LatinAndCyrillicSymbolInWord-off
+// BSLLS:IncorrectLineBreak-off
+// BSLLS:NumberOfOptionalParams-off
+// BSLLS:UsingServiceTag-off
+// BSLLS:LineLength-off
+// BSLLS:UsingSynchronousCalls-off
+// BSLLS:DuplicateStringLiteral-off
+
+//@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
+//@skip-check wrong-string-literal-content
+//@skip-check method-too-many-params
+//@skip-check constructor-function-return-section
+//@skip-check doc-comment-collection-item-type
 
-Function GetHashSum() Export
+#Region Public
 
-    LastBuildHash  = "7D847BCBB915F7303E7CCB526A8299E52EBB64B658769C49319C49D791B67334";
+#Region CommonMethods
 
-    Return LastBuildHash;
+#EndRegion
 
-EndFunction
+#EndRegion

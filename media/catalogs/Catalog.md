@@ -33,4 +33,5 @@
 |![VKTeams](../VKTeams.png)| `VKTeams`| vkteams, vk teams |
 |![Yandex Disk](../YandexDisk.png)| `Yandex Disk`| yandexdisk, yandex.disk, yandex disk, yandex drive, yadisk, ya disk |
 |![HTTP-client](../HTTP.png)| `HTTP-client`| http, https |
+|![gRPC (в разработке)](../default.png)| `gRPC (в разработке)`| grpc |
 |![HTTP-клиент](../HTTP.png)| `HTTP-клиент`| http, https |

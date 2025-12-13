@@ -32,5 +32,6 @@
 "VKTeams",
 "YandexDisk",
 "HTTP",
+"gRPC",
 "HTTP"
 ]
