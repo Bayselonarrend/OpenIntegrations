@@ -52,7 +52,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -147,6 +146,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12358614",
      "-218861756_12352321",
      "-218861756_12316439",
@@ -155,8 +155,7 @@
      "-218861756_11699243",
      "-218861756_11311308",
      "-218861756_11311305",
-     "-218861756_11311277",
-     "-218861756_11311275"
+     "-218861756_11311277"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -168,7 +167,263 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
+  "photos": [
+   {
+    "album_id": -53,
+    "date": 1765253597,
+    "id": 40,
+    "owner_id": -218861756,
+    "access_key": "28acb5841dc5f72f9e",
+    "sizes": [
+     {
+      "height": 54,
+      "type": "s",
+      "width": 72,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/3sgX-RVO10s5Q8FUuDfZd3fMSnBwVdaZkOZWzkbdbK6RdLSSSloZSOWnG5ntIGSpg24yT_KfPaWAZohzutENSsh8.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
+     },
+     {
+      "height": 120,
+      "type": "m",
+      "width": 160,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/3sgX-RVO10s5Q8FUuDfZd3fMSnBwVdaZkOZWzkbdbK6RdLSSSloZSOWnG5ntIGSpg24yT_KfPaWAZohzutENSsh8.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
+     },
+     {
+      "height": 480,
+      "type": "x",
+      "width": 640,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/3sgX-RVO10s5Q8FUuDfZd3fMSnBwVdaZkOZWzkbdbK6RdLSSSloZSOWnG5ntIGSpg24yT_KfPaWAZohzutENSsh8.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
+     },
+     {
+      "height": 810,
+      "type": "y",
+      "width": 1080,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/3sgX-RVO10s5Q8FUuDfZd3fMSnBwVdaZkOZWzkbdbK6RdLSSSloZSOWnG5ntIGSpg24yT_KfPaWAZohzutENSsh8.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
+     },
+     {
+      "height": 960,
+      "type": "z",
+      "width": 1280,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/3sgX-RVO10s5Q8FUuDfZd3fMSnBwVdaZkOZWzkbdbK6RdLSSSloZSOWnG5ntIGSpg24yT_KfPaWAZohzutENSsh8.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
+     },
+     {
+      "height": 1920,
+      "type": "w",
+      "width": 2560,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/3sgX-RVO10s5Q8FUuDfZd3fMSnBwVdaZkOZWzkbdbK6RdLSSSloZSOWnG5ntIGSpg24yT_KfPaWAZohzutENSsh8.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
+     },
+     {
+      "height": 81,
+      "type": "o",
+      "width": 108,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/3sgX-RVO10s5Q8FUuDfZd3fMSnBwVdaZkOZWzkbdbK6RdLSSSloZSOWnG5ntIGSpg24yT_KfPaWAZohzutENSsh8.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
+     },
+     {
+      "height": 180,
+      "type": "p",
+      "width": 240,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/3sgX-RVO10s5Q8FUuDfZd3fMSnBwVdaZkOZWzkbdbK6RdLSSSloZSOWnG5ntIGSpg24yT_KfPaWAZohzutENSsh8.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
+     },
+     {
+      "height": 270,
+      "type": "q",
+      "width": 360,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/3sgX-RVO10s5Q8FUuDfZd3fMSnBwVdaZkOZWzkbdbK6RdLSSSloZSOWnG5ntIGSpg24yT_KfPaWAZohzutENSsh8.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
+     },
+     {
+      "height": 405,
+      "type": "r",
+      "width": 540,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/3sgX-RVO10s5Q8FUuDfZd3fMSnBwVdaZkOZWzkbdbK6RdLSSSloZSOWnG5ntIGSpg24yT_KfPaWAZohzutENSsh8.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
+     },
+     {
+      "height": 1920,
+      "type": "base",
+      "width": 2560,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/3sgX-RVO10s5Q8FUuDfZd3fMSnBwVdaZkOZWzkbdbK6RdLSSSloZSOWnG5ntIGSpg24yT_KfPaWAZohzutENSsh8.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
+     }
+    ],
+    "text": "",
+    "user_id": 100,
+    "web_view_token": "fb06828b4a5bf9ac78",
+    "has_tags": false,
+    "orig_photo": {
+     "height": 1920,
+     "type": "base",
+     "url": "https://sun9-73.userapi.com/s/v1/ig2/3sgX-RVO10s5Q8FUuDfZd3fMSnBwVdaZkOZWzkbdbK6RdLSSSloZSOWnG5ntIGSpg24yT_KfPaWAZohzutENSsh8.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
+     "width": 2560
+    }
+   },
+   {
+    "album_id": -53,
+    "date": 1765253600,
+    "id": 41,
+    "owner_id": -218861756,
+    "access_key": "42e8e7aba0b16ee499",
+    "sizes": [
+     {
+      "height": 54,
+      "type": "s",
+      "width": 72,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/_9v6MNuMJz0AzU3VIBYhjc7n5yCDZmnh55Vxx0bBZ9xRudxy_IUBo9pYkEHiV5hoK3OvuP-S0eXPXQvKQQCd309-.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
+     },
+     {
+      "height": 120,
+      "type": "m",
+      "width": 160,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/_9v6MNuMJz0AzU3VIBYhjc7n5yCDZmnh55Vxx0bBZ9xRudxy_IUBo9pYkEHiV5hoK3OvuP-S0eXPXQvKQQCd309-.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
+     },
+     {
+      "height": 480,
+      "type": "x",
+      "width": 640,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/_9v6MNuMJz0AzU3VIBYhjc7n5yCDZmnh55Vxx0bBZ9xRudxy_IUBo9pYkEHiV5hoK3OvuP-S0eXPXQvKQQCd309-.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
+     },
+     {
+      "height": 810,
+      "type": "y",
+      "width": 1080,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/_9v6MNuMJz0AzU3VIBYhjc7n5yCDZmnh55Vxx0bBZ9xRudxy_IUBo9pYkEHiV5hoK3OvuP-S0eXPXQvKQQCd309-.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
+     },
+     {
+      "height": 960,
+      "type": "z",
+      "width": 1280,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/_9v6MNuMJz0AzU3VIBYhjc7n5yCDZmnh55Vxx0bBZ9xRudxy_IUBo9pYkEHiV5hoK3OvuP-S0eXPXQvKQQCd309-.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
+     },
+     {
+      "height": 1920,
+      "type": "w",
+      "width": 2560,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/_9v6MNuMJz0AzU3VIBYhjc7n5yCDZmnh55Vxx0bBZ9xRudxy_IUBo9pYkEHiV5hoK3OvuP-S0eXPXQvKQQCd309-.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
+     },
+     {
+      "height": 81,
+      "type": "o",
+      "width": 108,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/_9v6MNuMJz0AzU3VIBYhjc7n5yCDZmnh55Vxx0bBZ9xRudxy_IUBo9pYkEHiV5hoK3OvuP-S0eXPXQvKQQCd309-.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
+     },
+     {
+      "height": 180,
+      "type": "p",
+      "width": 240,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/_9v6MNuMJz0AzU3VIBYhjc7n5yCDZmnh55Vxx0bBZ9xRudxy_IUBo9pYkEHiV5hoK3OvuP-S0eXPXQvKQQCd309-.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
+     },
+     {
+      "height": 270,
+      "type": "q",
+      "width": 360,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/_9v6MNuMJz0AzU3VIBYhjc7n5yCDZmnh55Vxx0bBZ9xRudxy_IUBo9pYkEHiV5hoK3OvuP-S0eXPXQvKQQCd309-.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
+     },
+     {
+      "height": 405,
+      "type": "r",
+      "width": 540,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/_9v6MNuMJz0AzU3VIBYhjc7n5yCDZmnh55Vxx0bBZ9xRudxy_IUBo9pYkEHiV5hoK3OvuP-S0eXPXQvKQQCd309-.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
+     },
+     {
+      "height": 1920,
+      "type": "base",
+      "width": 2560,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/_9v6MNuMJz0AzU3VIBYhjc7n5yCDZmnh55Vxx0bBZ9xRudxy_IUBo9pYkEHiV5hoK3OvuP-S0eXPXQvKQQCd309-.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
+     }
+    ],
+    "text": "",
+    "user_id": 100,
+    "web_view_token": "c366c0fd9420c4e0e9",
+    "has_tags": false,
+    "orig_photo": {
+     "height": 1920,
+     "type": "base",
+     "url": "https://sun9-73.userapi.com/s/v1/ig2/_9v6MNuMJz0AzU3VIBYhjc7n5yCDZmnh55Vxx0bBZ9xRudxy_IUBo9pYkEHiV5hoK3OvuP-S0eXPXQvKQQCd309-.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
+     "width": 2560
+    }
+   },
+   {
+    "album_id": -53,
+    "date": 1765253601,
+    "id": 42,
+    "owner_id": -218861756,
+    "access_key": "409efcdeaae797ee77",
+    "sizes": [
+     {
+      "height": 40,
+      "type": "s",
+      "width": 72,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/oJOmDKApbzTiLy-wz6R1OVijxuvUa2zyuJK87t1byv6iXNlLmX7dvEbZv1Llp4YeQHge3-pXX6hNw9z5SC-4MIGs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=72x0"
+     },
+     {
+      "height": 90,
+      "type": "m",
+      "width": 160,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/oJOmDKApbzTiLy-wz6R1OVijxuvUa2zyuJK87t1byv6iXNlLmX7dvEbZv1Llp4YeQHge3-pXX6hNw9z5SC-4MIGs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=160x0"
+     },
+     {
+      "height": 360,
+      "type": "x",
+      "width": 640,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/oJOmDKApbzTiLy-wz6R1OVijxuvUa2zyuJK87t1byv6iXNlLmX7dvEbZv1Llp4YeQHge3-pXX6hNw9z5SC-4MIGs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=640x0"
+     },
+     {
+      "height": 607,
+      "type": "y",
+      "width": 1080,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/oJOmDKApbzTiLy-wz6R1OVijxuvUa2zyuJK87t1byv6iXNlLmX7dvEbZv1Llp4YeQHge3-pXX6hNw9z5SC-4MIGs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1080x0"
+     },
+     {
+      "height": 720,
+      "type": "z",
+      "width": 1280,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/oJOmDKApbzTiLy-wz6R1OVijxuvUa2zyuJK87t1byv6iXNlLmX7dvEbZv1Llp4YeQHge3-pXX6hNw9z5SC-4MIGs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1280x0"
+     },
+     {
+      "height": 1080,
+      "type": "w",
+      "width": 1920,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/oJOmDKApbzTiLy-wz6R1OVijxuvUa2zyuJK87t1byv6iXNlLmX7dvEbZv1Llp4YeQHge3-pXX6hNw9z5SC-4MIGs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0"
+     },
+     {
+      "height": 61,
+      "type": "o",
+      "width": 108,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/oJOmDKApbzTiLy-wz6R1OVijxuvUa2zyuJK87t1byv6iXNlLmX7dvEbZv1Llp4YeQHge3-pXX6hNw9z5SC-4MIGs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=108x0"
+     },
+     {
+      "height": 135,
+      "type": "p",
+      "width": 240,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/oJOmDKApbzTiLy-wz6R1OVijxuvUa2zyuJK87t1byv6iXNlLmX7dvEbZv1Llp4YeQHge3-pXX6hNw9z5SC-4MIGs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=240x0"
+     },
+     {
+      "height": 202,
+      "type": "q",
+      "width": 360,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/oJOmDKApbzTiLy-wz6R1OVijxuvUa2zyuJK87t1byv6iXNlLmX7dvEbZv1Llp4YeQHge3-pXX6hNw9z5SC-4MIGs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=360x0"
+     },
+     {
+      "height": 304,
+      "type": "r",
+      "width": 540,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/oJOmDKApbzTiLy-wz6R1OVijxuvUa2zyuJK87t1byv6iXNlLmX7dvEbZv1Llp4YeQHge3-pXX6hNw9z5SC-4MIGs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=540x0"
+     },
+     {
+      "height": 1080,
+      "type": "base",
+      "width": 1920,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/oJOmDKApbzTiLy-wz6R1OVijxuvUa2zyuJK87t1byv6iXNlLmX7dvEbZv1Llp4YeQHge3-pXX6hNw9z5SC-4MIGs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu"
+     }
+    ],
+    "text": "",
+    "user_id": 100,
+    "web_view_token": "ccefb264465d213fbc",
+    "has_tags": false,
+    "orig_photo": {
+     "height": 1080,
+     "type": "base",
+     "url": "https://sun9-11.userapi.com/s/v1/ig2/oJOmDKApbzTiLy-wz6R1OVijxuvUa2zyuJK87t1byv6iXNlLmX7dvEbZv1Llp4YeQHge3-pXX6hNw9z5SC-4MIGs.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu",
+     "width": 1920
+    }
+   }
+  ],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -202,7 +457,7 @@
   "item_type": 0,
   "is_owner": true,
   "is_adult": false,
-  "thumb_photo": "",
+  "thumb_photo": "https://sun9-73.userapi.com/impg/otl1czQzAl3AkYXjhOpdB3ITA1pXVNZdcgo6Rw/mH3GCxrnIOw.jpg?size=400x400&quality=95&background=ffffff&crop=0.125,0,0.75,1&sign=db503e830a1de7e83cb3e71ba6522b30&c_uniq_tag=Q4s9lxiqDNIG6WxPEWb6BL3HlXY5DAR9lfaC9Asijm4&type=market_thumb",
   "cart_quantity": 0,
   "sku": "12345",
   "reject_info": {
@@ -262,6 +517,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12352321",
      "-218861756_12316439",
@@ -270,8 +526,7 @@
      "-218861756_11699243",
      "-218861756_11311308",
      "-218861756_11311305",
-     "-218861756_11311277",
-     "-218861756_11311275"
+     "-218861756_11311277"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -283,7 +538,263 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
+  "photos": [
+   {
+    "album_id": -53,
+    "date": 1765217926,
+    "id": 28,
+    "owner_id": -218861756,
+    "access_key": "ef8549c2e7600063cd",
+    "sizes": [
+     {
+      "height": 54,
+      "type": "s",
+      "width": 72,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/BPX8Lum4YLv0fRkbe9DgYGme2ClWme64eVFOIbtiArDw1hkm6fkN_FabcGBpQUoBIzoYJLXc9sVGHCzg5kXLW7ok.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
+     },
+     {
+      "height": 120,
+      "type": "m",
+      "width": 160,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/BPX8Lum4YLv0fRkbe9DgYGme2ClWme64eVFOIbtiArDw1hkm6fkN_FabcGBpQUoBIzoYJLXc9sVGHCzg5kXLW7ok.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
+     },
+     {
+      "height": 480,
+      "type": "x",
+      "width": 640,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/BPX8Lum4YLv0fRkbe9DgYGme2ClWme64eVFOIbtiArDw1hkm6fkN_FabcGBpQUoBIzoYJLXc9sVGHCzg5kXLW7ok.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
+     },
+     {
+      "height": 810,
+      "type": "y",
+      "width": 1080,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/BPX8Lum4YLv0fRkbe9DgYGme2ClWme64eVFOIbtiArDw1hkm6fkN_FabcGBpQUoBIzoYJLXc9sVGHCzg5kXLW7ok.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
+     },
+     {
+      "height": 960,
+      "type": "z",
+      "width": 1280,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/BPX8Lum4YLv0fRkbe9DgYGme2ClWme64eVFOIbtiArDw1hkm6fkN_FabcGBpQUoBIzoYJLXc9sVGHCzg5kXLW7ok.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
+     },
+     {
+      "height": 1920,
+      "type": "w",
+      "width": 2560,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/BPX8Lum4YLv0fRkbe9DgYGme2ClWme64eVFOIbtiArDw1hkm6fkN_FabcGBpQUoBIzoYJLXc9sVGHCzg5kXLW7ok.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
+     },
+     {
+      "height": 81,
+      "type": "o",
+      "width": 108,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/BPX8Lum4YLv0fRkbe9DgYGme2ClWme64eVFOIbtiArDw1hkm6fkN_FabcGBpQUoBIzoYJLXc9sVGHCzg5kXLW7ok.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
+     },
+     {
+      "height": 180,
+      "type": "p",
+      "width": 240,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/BPX8Lum4YLv0fRkbe9DgYGme2ClWme64eVFOIbtiArDw1hkm6fkN_FabcGBpQUoBIzoYJLXc9sVGHCzg5kXLW7ok.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
+     },
+     {
+      "height": 270,
+      "type": "q",
+      "width": 360,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/BPX8Lum4YLv0fRkbe9DgYGme2ClWme64eVFOIbtiArDw1hkm6fkN_FabcGBpQUoBIzoYJLXc9sVGHCzg5kXLW7ok.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
+     },
+     {
+      "height": 405,
+      "type": "r",
+      "width": 540,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/BPX8Lum4YLv0fRkbe9DgYGme2ClWme64eVFOIbtiArDw1hkm6fkN_FabcGBpQUoBIzoYJLXc9sVGHCzg5kXLW7ok.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
+     },
+     {
+      "height": 1920,
+      "type": "base",
+      "width": 2560,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/BPX8Lum4YLv0fRkbe9DgYGme2ClWme64eVFOIbtiArDw1hkm6fkN_FabcGBpQUoBIzoYJLXc9sVGHCzg5kXLW7ok.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
+     }
+    ],
+    "text": "",
+    "user_id": 100,
+    "web_view_token": "041284faf766544915",
+    "has_tags": false,
+    "orig_photo": {
+     "height": 1920,
+     "type": "base",
+     "url": "https://sun9-73.userapi.com/s/v1/ig2/BPX8Lum4YLv0fRkbe9DgYGme2ClWme64eVFOIbtiArDw1hkm6fkN_FabcGBpQUoBIzoYJLXc9sVGHCzg5kXLW7ok.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
+     "width": 2560
+    }
+   },
+   {
+    "album_id": -53,
+    "date": 1765217929,
+    "id": 29,
+    "owner_id": -218861756,
+    "access_key": "aae4ba5017d0e4d0b3",
+    "sizes": [
+     {
+      "height": 54,
+      "type": "s",
+      "width": 72,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/iw-lvMt_xCvy12S--ZkPHqLVQbM24NCtxNlcu5cu10YrVVnXdaj59ItRWWbGQSTCAvVPJUA77SOY6fCvwb4oYI4G.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
+     },
+     {
+      "height": 120,
+      "type": "m",
+      "width": 160,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/iw-lvMt_xCvy12S--ZkPHqLVQbM24NCtxNlcu5cu10YrVVnXdaj59ItRWWbGQSTCAvVPJUA77SOY6fCvwb4oYI4G.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
+     },
+     {
+      "height": 480,
+      "type": "x",
+      "width": 640,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/iw-lvMt_xCvy12S--ZkPHqLVQbM24NCtxNlcu5cu10YrVVnXdaj59ItRWWbGQSTCAvVPJUA77SOY6fCvwb4oYI4G.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
+     },
+     {
+      "height": 810,
+      "type": "y",
+      "width": 1080,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/iw-lvMt_xCvy12S--ZkPHqLVQbM24NCtxNlcu5cu10YrVVnXdaj59ItRWWbGQSTCAvVPJUA77SOY6fCvwb4oYI4G.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
+     },
+     {
+      "height": 960,
+      "type": "z",
+      "width": 1280,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/iw-lvMt_xCvy12S--ZkPHqLVQbM24NCtxNlcu5cu10YrVVnXdaj59ItRWWbGQSTCAvVPJUA77SOY6fCvwb4oYI4G.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
+     },
+     {
+      "height": 1920,
+      "type": "w",
+      "width": 2560,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/iw-lvMt_xCvy12S--ZkPHqLVQbM24NCtxNlcu5cu10YrVVnXdaj59ItRWWbGQSTCAvVPJUA77SOY6fCvwb4oYI4G.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
+     },
+     {
+      "height": 81,
+      "type": "o",
+      "width": 108,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/iw-lvMt_xCvy12S--ZkPHqLVQbM24NCtxNlcu5cu10YrVVnXdaj59ItRWWbGQSTCAvVPJUA77SOY6fCvwb4oYI4G.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
+     },
+     {
+      "height": 180,
+      "type": "p",
+      "width": 240,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/iw-lvMt_xCvy12S--ZkPHqLVQbM24NCtxNlcu5cu10YrVVnXdaj59ItRWWbGQSTCAvVPJUA77SOY6fCvwb4oYI4G.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
+     },
+     {
+      "height": 270,
+      "type": "q",
+      "width": 360,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/iw-lvMt_xCvy12S--ZkPHqLVQbM24NCtxNlcu5cu10YrVVnXdaj59ItRWWbGQSTCAvVPJUA77SOY6fCvwb4oYI4G.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
+     },
+     {
+      "height": 405,
+      "type": "r",
+      "width": 540,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/iw-lvMt_xCvy12S--ZkPHqLVQbM24NCtxNlcu5cu10YrVVnXdaj59ItRWWbGQSTCAvVPJUA77SOY6fCvwb4oYI4G.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
+     },
+     {
+      "height": 1920,
+      "type": "base",
+      "width": 2560,
+      "url": "https://sun9-73.userapi.com/s/v1/ig2/iw-lvMt_xCvy12S--ZkPHqLVQbM24NCtxNlcu5cu10YrVVnXdaj59ItRWWbGQSTCAvVPJUA77SOY6fCvwb4oYI4G.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
+     }
+    ],
+    "text": "",
+    "user_id": 100,
+    "web_view_token": "577175d5f54bf1f7a6",
+    "has_tags": false,
+    "orig_photo": {
+     "height": 1920,
+     "type": "base",
+     "url": "https://sun9-73.userapi.com/s/v1/ig2/iw-lvMt_xCvy12S--ZkPHqLVQbM24NCtxNlcu5cu10YrVVnXdaj59ItRWWbGQSTCAvVPJUA77SOY6fCvwb4oYI4G.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
+     "width": 2560
+    }
+   },
+   {
+    "album_id": -53,
+    "date": 1765217931,
+    "id": 30,
+    "owner_id": -218861756,
+    "access_key": "622d778b2228fc042f",
+    "sizes": [
+     {
+      "height": 40,
+      "type": "s",
+      "width": 72,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/ryFPwMXQO5-MW-WfmhYV9_B6oKbieau-wp6F5hyyLATk3Ge90RD68hAXVMuuegXHZ4PFQ2TOMwXYx3bxU9UxbCGi.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=72x0"
+     },
+     {
+      "height": 90,
+      "type": "m",
+      "width": 160,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/ryFPwMXQO5-MW-WfmhYV9_B6oKbieau-wp6F5hyyLATk3Ge90RD68hAXVMuuegXHZ4PFQ2TOMwXYx3bxU9UxbCGi.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=160x0"
+     },
+     {
+      "height": 360,
+      "type": "x",
+      "width": 640,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/ryFPwMXQO5-MW-WfmhYV9_B6oKbieau-wp6F5hyyLATk3Ge90RD68hAXVMuuegXHZ4PFQ2TOMwXYx3bxU9UxbCGi.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=640x0"
+     },
+     {
+      "height": 607,
+      "type": "y",
+      "width": 1080,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/ryFPwMXQO5-MW-WfmhYV9_B6oKbieau-wp6F5hyyLATk3Ge90RD68hAXVMuuegXHZ4PFQ2TOMwXYx3bxU9UxbCGi.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1080x0"
+     },
+     {
+      "height": 720,
+      "type": "z",
+      "width": 1280,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/ryFPwMXQO5-MW-WfmhYV9_B6oKbieau-wp6F5hyyLATk3Ge90RD68hAXVMuuegXHZ4PFQ2TOMwXYx3bxU9UxbCGi.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1280x0"
+     },
+     {
+      "height": 1080,
+      "type": "w",
+      "width": 1920,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/ryFPwMXQO5-MW-WfmhYV9_B6oKbieau-wp6F5hyyLATk3Ge90RD68hAXVMuuegXHZ4PFQ2TOMwXYx3bxU9UxbCGi.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0"
+     },
+     {
+      "height": 61,
+      "type": "o",
+      "width": 108,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/ryFPwMXQO5-MW-WfmhYV9_B6oKbieau-wp6F5hyyLATk3Ge90RD68hAXVMuuegXHZ4PFQ2TOMwXYx3bxU9UxbCGi.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=108x0"
+     },
+     {
+      "height": 135,
+      "type": "p",
+      "width": 240,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/ryFPwMXQO5-MW-WfmhYV9_B6oKbieau-wp6F5hyyLATk3Ge90RD68hAXVMuuegXHZ4PFQ2TOMwXYx3bxU9UxbCGi.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=240x0"
+     },
+     {
+      "height": 202,
+      "type": "q",
+      "width": 360,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/ryFPwMXQO5-MW-WfmhYV9_B6oKbieau-wp6F5hyyLATk3Ge90RD68hAXVMuuegXHZ4PFQ2TOMwXYx3bxU9UxbCGi.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=360x0"
+     },
+     {
+      "height": 304,
+      "type": "r",
+      "width": 540,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/ryFPwMXQO5-MW-WfmhYV9_B6oKbieau-wp6F5hyyLATk3Ge90RD68hAXVMuuegXHZ4PFQ2TOMwXYx3bxU9UxbCGi.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=540x0"
+     },
+     {
+      "height": 1080,
+      "type": "base",
+      "width": 1920,
+      "url": "https://sun9-11.userapi.com/s/v1/ig2/ryFPwMXQO5-MW-WfmhYV9_B6oKbieau-wp6F5hyyLATk3Ge90RD68hAXVMuuegXHZ4PFQ2TOMwXYx3bxU9UxbCGi.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu"
+     }
+    ],
+    "text": "",
+    "user_id": 100,
+    "web_view_token": "c3045e759da5a2d236",
+    "has_tags": false,
+    "orig_photo": {
+     "height": 1080,
+     "type": "base",
+     "url": "https://sun9-11.userapi.com/s/v1/ig2/ryFPwMXQO5-MW-WfmhYV9_B6oKbieau-wp6F5hyyLATk3Ge90RD68hAXVMuuegXHZ4PFQ2TOMwXYx3bxU9UxbCGi.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu",
+     "width": 1920
+    }
+   }
+  ],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -330,7 +841,7 @@
   "item_type": 0,
   "is_owner": true,
   "is_adult": false,
-  "thumb_photo": "",
+  "thumb_photo": "https://sun9-73.userapi.com/impg/otl1czQzAl3AkYXjhOpdB3ITA1pXVNZdcgo6Rw/xO7JHintefI.jpg?size=400x400&quality=95&background=ffffff&crop=0.125,0,0.75,1&sign=4c8a3877feec2f58d45283dbefc96103&c_uniq_tag=6NzkHXUJ1snSMaJtQ2K6itUSX-7rP5dpuYP0FHeEYzQ&type=market_thumb",
   "is_main_variant": true,
   "property_values": [
    {
@@ -398,6 +909,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12316439",
@@ -406,8 +918,7 @@
      "-218861756_11699243",
      "-218861756_11311308",
      "-218861756_11311305",
-     "-218861756_11311277",
-     "-218861756_11311275"
+     "-218861756_11311277"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -419,7 +930,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -513,6 +1023,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -521,8 +1032,7 @@
      "-218861756_11699243",
      "-218861756_11311308",
      "-218861756_11311305",
-     "-218861756_11311277",
-     "-218861756_11311275"
+     "-218861756_11311277"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -534,7 +1044,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -629,6 +1138,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -637,8 +1147,7 @@
      "-218861756_11699243",
      "-218861756_11311308",
      "-218861756_11311305",
-     "-218861756_11311277",
-     "-218861756_11311275"
+     "-218861756_11311277"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -650,7 +1159,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -744,6 +1252,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -752,8 +1261,7 @@
      "-218861756_11699243",
      "-218861756_11311308",
      "-218861756_11311305",
-     "-218861756_11311277",
-     "-218861756_11311275"
+     "-218861756_11311277"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -771,7 +1279,7 @@
     "date": 1757682103,
     "id": 457258892,
     "owner_id": -218861756,
-    "access_key": "dd89352c4d51aa47cf",
+    "access_key": "cd13e9665d5697fed2",
     "sizes": [
      {
       "height": 54,
@@ -842,7 +1350,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "9c0e54677975be43de",
+    "web_view_token": "569b3e4d266fe0ce24",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -856,7 +1364,7 @@
     "date": 1757682105,
     "id": 457258893,
     "owner_id": -218861756,
-    "access_key": "52965be8dbef7154e9",
+    "access_key": "ed7a933698b0463259",
     "sizes": [
      {
       "height": 54,
@@ -927,7 +1435,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "e36459bcd4e946c2ba",
+    "web_view_token": "8dc71a89df7df42bfe",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -941,7 +1449,7 @@
     "date": 1757682106,
     "id": 457258894,
     "owner_id": -218861756,
-    "access_key": "b57976e2bf743cf56e",
+    "access_key": "4bbd483d38e9206206",
     "sizes": [
      {
       "height": 40,
@@ -1012,7 +1520,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "61b28a84ab23a7b38a",
+    "web_view_token": "38f81dfd6173b20b9d",
     "has_tags": false,
     "orig_photo": {
      "height": 1080,
@@ -1095,398 +1603,6 @@
    }
   },
   "description": "Описание товара",
-  "id": 11699243,
-  "owner_id": -218861756,
-  "price": {
-   "amount": "100",
-   "currency": {
-    "id": 643,
-    "name": "RUB",
-    "title": "₽"
-   },
-   "text": "1 ₽",
-   "discount_rate": -93,
-   "old_amount": "1500",
-   "old_amount_text": "15 ₽"
-  },
-  "title": "Тестовый товар (со свойством)",
-  "other_items": [
-   {
-    "title": "Другие товары сообщества",
-    "view_type": 1,
-    "item_ids": [
-     "-218861756_12359884",
-     "-218861756_12358614",
-     "-218861756_12352321",
-     "-218861756_12316439",
-     "-218861756_12309777",
-     "-218861756_11825634",
-     "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277",
-     "-218861756_11311275"
-    ],
-    "referrer_item_type": "other_goods"
-   }
-  ],
-  "dimensions": {
-   "width": 20,
-   "height": 30,
-   "length": 40
-  },
-  "weight": 100,
-  "albums_ids": [],
-  "photos": [
-   {
-    "album_id": -53,
-    "date": 1755502135,
-    "id": 457258161,
-    "owner_id": -218861756,
-    "access_key": "9d6dd1d3f32bf0ac33",
-    "sizes": [
-     {
-      "height": 54,
-      "type": "s",
-      "width": 72,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
-     },
-     {
-      "height": 120,
-      "type": "m",
-      "width": 160,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
-     },
-     {
-      "height": 480,
-      "type": "x",
-      "width": 640,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
-     },
-     {
-      "height": 810,
-      "type": "y",
-      "width": 1080,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
-     },
-     {
-      "height": 960,
-      "type": "z",
-      "width": 1280,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
-     },
-     {
-      "height": 1920,
-      "type": "w",
-      "width": 2560,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
-     },
-     {
-      "height": 81,
-      "type": "o",
-      "width": 108,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
-     },
-     {
-      "height": 180,
-      "type": "p",
-      "width": 240,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
-     },
-     {
-      "height": 270,
-      "type": "q",
-      "width": 360,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
-     },
-     {
-      "height": 405,
-      "type": "r",
-      "width": 540,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
-     },
-     {
-      "height": 1920,
-      "type": "base",
-      "width": 2560,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
-     }
-    ],
-    "text": "",
-    "user_id": 100,
-    "web_view_token": "0806cd775f103ee881",
-    "has_tags": false,
-    "orig_photo": {
-     "height": 1920,
-     "type": "base",
-     "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
-     "width": 2560
-    }
-   },
-   {
-    "album_id": -53,
-    "date": 1755502138,
-    "id": 457258162,
-    "owner_id": -218861756,
-    "access_key": "fc92ec065f3335c618",
-    "sizes": [
-     {
-      "height": 54,
-      "type": "s",
-      "width": 72,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
-     },
-     {
-      "height": 120,
-      "type": "m",
-      "width": 160,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
-     },
-     {
-      "height": 480,
-      "type": "x",
-      "width": 640,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
-     },
-     {
-      "height": 810,
-      "type": "y",
-      "width": 1080,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
-     },
-     {
-      "height": 960,
-      "type": "z",
-      "width": 1280,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
-     },
-     {
-      "height": 1920,
-      "type": "w",
-      "width": 2560,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
-     },
-     {
-      "height": 81,
-      "type": "o",
-      "width": 108,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
-     },
-     {
-      "height": 180,
-      "type": "p",
-      "width": 240,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
-     },
-     {
-      "height": 270,
-      "type": "q",
-      "width": 360,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
-     },
-     {
-      "height": 405,
-      "type": "r",
-      "width": 540,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
-     },
-     {
-      "height": 1920,
-      "type": "base",
-      "width": 2560,
-      "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
-     }
-    ],
-    "text": "",
-    "user_id": 100,
-    "web_view_token": "b145a382e3e6840d4b",
-    "has_tags": false,
-    "orig_photo": {
-     "height": 1920,
-     "type": "base",
-     "url": "https://sun9-13.userapi.com/s/v1/ig2/GXcMMrwvSWeeqcghoIQCdfrWHtCNlY11pwVdd6fxrjztK8suPQj1MRPM1I3G-V5mtzyxR9MfCt0RfKFMwEK1VAwA.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
-     "width": 2560
-    }
-   },
-   {
-    "album_id": -53,
-    "date": 1755502139,
-    "id": 457258163,
-    "owner_id": -218861756,
-    "access_key": "98e0ed593ccb77e0a9",
-    "sizes": [
-     {
-      "height": 40,
-      "type": "s",
-      "width": 72,
-      "url": "https://sun9-7.userapi.com/s/v1/ig2/IzV600jQa653D0ECRz7dlH2x_cAmV-MBHB99uyeErgfovge_fUxZ1LZHfmhF9xp2vqdpx6n1bf58BWqwHQeMbsQY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=72x0"
-     },
-     {
-      "height": 90,
-      "type": "m",
-      "width": 160,
-      "url": "https://sun9-7.userapi.com/s/v1/ig2/IzV600jQa653D0ECRz7dlH2x_cAmV-MBHB99uyeErgfovge_fUxZ1LZHfmhF9xp2vqdpx6n1bf58BWqwHQeMbsQY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=160x0"
-     },
-     {
-      "height": 360,
-      "type": "x",
-      "width": 640,
-      "url": "https://sun9-7.userapi.com/s/v1/ig2/IzV600jQa653D0ECRz7dlH2x_cAmV-MBHB99uyeErgfovge_fUxZ1LZHfmhF9xp2vqdpx6n1bf58BWqwHQeMbsQY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=640x0"
-     },
-     {
-      "height": 607,
-      "type": "y",
-      "width": 1080,
-      "url": "https://sun9-7.userapi.com/s/v1/ig2/IzV600jQa653D0ECRz7dlH2x_cAmV-MBHB99uyeErgfovge_fUxZ1LZHfmhF9xp2vqdpx6n1bf58BWqwHQeMbsQY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1080x0"
-     },
-     {
-      "height": 720,
-      "type": "z",
-      "width": 1280,
-      "url": "https://sun9-7.userapi.com/s/v1/ig2/IzV600jQa653D0ECRz7dlH2x_cAmV-MBHB99uyeErgfovge_fUxZ1LZHfmhF9xp2vqdpx6n1bf58BWqwHQeMbsQY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1280x0"
-     },
-     {
-      "height": 1080,
-      "type": "w",
-      "width": 1920,
-      "url": "https://sun9-7.userapi.com/s/v1/ig2/IzV600jQa653D0ECRz7dlH2x_cAmV-MBHB99uyeErgfovge_fUxZ1LZHfmhF9xp2vqdpx6n1bf58BWqwHQeMbsQY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=1920x0"
-     },
-     {
-      "height": 61,
-      "type": "o",
-      "width": 108,
-      "url": "https://sun9-7.userapi.com/s/v1/ig2/IzV600jQa653D0ECRz7dlH2x_cAmV-MBHB99uyeErgfovge_fUxZ1LZHfmhF9xp2vqdpx6n1bf58BWqwHQeMbsQY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=108x0"
-     },
-     {
-      "height": 135,
-      "type": "p",
-      "width": 240,
-      "url": "https://sun9-7.userapi.com/s/v1/ig2/IzV600jQa653D0ECRz7dlH2x_cAmV-MBHB99uyeErgfovge_fUxZ1LZHfmhF9xp2vqdpx6n1bf58BWqwHQeMbsQY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=240x0"
-     },
-     {
-      "height": 202,
-      "type": "q",
-      "width": 360,
-      "url": "https://sun9-7.userapi.com/s/v1/ig2/IzV600jQa653D0ECRz7dlH2x_cAmV-MBHB99uyeErgfovge_fUxZ1LZHfmhF9xp2vqdpx6n1bf58BWqwHQeMbsQY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=360x0"
-     },
-     {
-      "height": 304,
-      "type": "r",
-      "width": 540,
-      "url": "https://sun9-7.userapi.com/s/v1/ig2/IzV600jQa653D0ECRz7dlH2x_cAmV-MBHB99uyeErgfovge_fUxZ1LZHfmhF9xp2vqdpx6n1bf58BWqwHQeMbsQY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu&cs=540x0"
-     },
-     {
-      "height": 1080,
-      "type": "base",
-      "width": 1920,
-      "url": "https://sun9-7.userapi.com/s/v1/ig2/IzV600jQa653D0ECRz7dlH2x_cAmV-MBHB99uyeErgfovge_fUxZ1LZHfmhF9xp2vqdpx6n1bf58BWqwHQeMbsQY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu"
-     }
-    ],
-    "text": "",
-    "user_id": 100,
-    "web_view_token": "02ea66a9b541a8f2ec",
-    "has_tags": false,
-    "orig_photo": {
-     "height": 1080,
-     "type": "base",
-     "url": "https://sun9-7.userapi.com/s/v1/ig2/IzV600jQa653D0ECRz7dlH2x_cAmV-MBHB99uyeErgfovge_fUxZ1LZHfmhF9xp2vqdpx6n1bf58BWqwHQeMbsQY.jpg?quality=95&as=32x18,48x27,72x40,108x61,160x90,240x135,360x202,480x270,540x304,640x360,720x405,1080x607,1280x720,1440x810,1920x1080&from=bu",
-     "width": 1920
-    }
-   }
-  ],
-  "can_comment": 1,
-  "show_comments": 1,
-  "show_reviews": 1,
-  "can_repost": 1,
-  "likes": {
-   "count": 0,
-   "user_likes": 0
-  },
-  "reposts": {
-   "count": 0
-  },
-  "views_count": 0,
-  "variants_grid": [
-   {
-    "name": "Цвет (изм.)",
-    "type": "text",
-    "variants": [
-     {
-      "variant_id": 7478,
-      "name": "Новое имя варианта",
-      "item_id": 11699243,
-      "is_selected": true
-     }
-    ]
-   }
-  ],
-  "owner_info": {
-   "avatar": [],
-   "name": "Test",
-   "category": "Батарейки",
-   "category_url": "/market-218861756",
-   "is_corporated_market": false,
-   "market_type": "pro"
-  },
-  "can_edit": true,
-  "can_delete": true,
-  "can_recover": false,
-  "can_show_convert_to_service": true,
-  "promotion": {
-   "is_available": false
-  },
-  "labels": [],
-  "date": 1755502139,
-  "item_type": 0,
-  "is_owner": true,
-  "is_adult": false,
-  "thumb_photo": "https://sun56-1.userapi.com/impg/dkt9Gp_vHbqgkPvg_8_uE9_jljEWSZYhOAD88Q/9UZ1g0ruwi8.jpg?crop=0.125,0,0.75,1&size=0x400&quality=95&sign=529dbb241bed44b77483a88fda6aad9b&c_uniq_tag=ylGcWZPwHZi0DRkjY8c0g5613tATS2xB8ce17D6PeH0",
-  "is_main_variant": true,
-  "property_values": [
-   {
-    "variant_id": 7478,
-    "variant_name": "Новое имя варианта",
-    "property_name": "Цвет (изм.)"
-   }
-  ],
-  "cart_quantity": 0,
-  "sku": "12345",
-  "reject_info": {
-   "title": "Отредактируйте товар, чтобы опубликовать в Маркете ВКонтакте",
-   "description": "Товар отклонён. Чтобы добавить его в «Маркет», укажите реальную цену товара или стоимость оказания услуги.",
-   "moderation_status": 2,
-   "info_link": "[https://vk.com/faq20323|Правила Маркета ВКонтакте]",
-   "write_to_support_link": "https://vk.com/im?media=&sel=-215808305&ref=ProductId%3D-218861756_11699243",
-   "in_progress": false,
-   "buttons": [
-    {
-     "type": "market_edit",
-     "url": "https://vk.com/app7702617#owner_id=-218861756&item_id=11699243&type=market"
-    },
-    {
-     "type": "market_delete"
-    }
-   ]
-  },
-  "item_rating": {
-   "rating": 0,
-   "reviews_count": 0,
-   "reviews_count_text": "Нет отзывов"
-  },
-  "has_group_access": true,
-  "market_url": "https://vk.com/market/product/testovy-tovar-so-svoystvom-218861756-11699243"
- },
- {
-  "availability": 0,
-  "category": {
-   "inner_type": "market_market_category_old",
-   "id": 20173,
-   "name": "Батарейки",
-   "section": {
-    "id": 10016,
-    "name": "Канцелярские товары"
-   }
-  },
-  "description": "Описание товара",
   "id": 11311308,
   "owner_id": -218861756,
   "price": {
@@ -1507,6 +1623,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -1515,8 +1632,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311305",
-     "-218861756_11311277",
-     "-218861756_11311275"
+     "-218861756_11311277"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -1534,7 +1650,7 @@
     "date": 1750140737,
     "id": 457256387,
     "owner_id": -218861756,
-    "access_key": "afb55c4f35b4378aaf",
+    "access_key": "8b7d705bc25c656321",
     "sizes": [
      {
       "height": 54,
@@ -1605,7 +1721,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "a868f6e65eff69bfe2",
+    "web_view_token": "f39f6078e05daf63d2",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -1619,7 +1735,7 @@
     "date": 1750140742,
     "id": 457256388,
     "owner_id": -218861756,
-    "access_key": "a5a75d549f3eaa472a",
+    "access_key": "eec22d3c635c275a99",
     "sizes": [
      {
       "height": 54,
@@ -1690,7 +1806,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "d461250cda62c92872",
+    "web_view_token": "4c287e8168528a0da0",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -1704,7 +1820,7 @@
     "date": 1750140745,
     "id": 457256389,
     "owner_id": -218861756,
-    "access_key": "f09b347094eba3eb1f",
+    "access_key": "7d446ac35a2959e015",
     "sizes": [
      {
       "height": 40,
@@ -1775,7 +1891,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "513d74e0b5ba30a923",
+    "web_view_token": "d0516fae25545da2a6",
     "has_tags": false,
     "orig_photo": {
      "height": 1080,
@@ -1899,6 +2015,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -1907,8 +2024,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -1926,7 +2042,7 @@
     "date": 1750078398,
     "id": 457256290,
     "owner_id": -218861756,
-    "access_key": "2de8040cf7c793e58c",
+    "access_key": "2e77cbebaf1523b0bb",
     "sizes": [
      {
       "height": 54,
@@ -1997,7 +2113,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "b057b532a7d0e47600",
+    "web_view_token": "b5f97d12467f996eca",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -2011,7 +2127,7 @@
     "date": 1750078402,
     "id": 457256291,
     "owner_id": -218861756,
-    "access_key": "12a616b20ddfc251b3",
+    "access_key": "6da3a87fb7ebea8bbf",
     "sizes": [
      {
       "height": 54,
@@ -2082,7 +2198,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "21223ed5fee6be8ddc",
+    "web_view_token": "411c4658c43a6482ae",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -2096,7 +2212,7 @@
     "date": 1750078404,
     "id": 457256292,
     "owner_id": -218861756,
-    "access_key": "188d0771b939333cf5",
+    "access_key": "282268bce853d11919",
     "sizes": [
      {
       "height": 40,
@@ -2167,7 +2283,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "1f0eda2e1e32f54b15",
+    "web_view_token": "e5b3ac4372993f69ef",
     "has_tags": false,
     "orig_photo": {
      "height": 1080,
@@ -2291,6 +2407,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -2299,8 +2416,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -2318,7 +2434,7 @@
     "date": 1750078390,
     "id": 457256287,
     "owner_id": -218861756,
-    "access_key": "00f22d103476c3752d",
+    "access_key": "8620c188db06cd9258",
     "sizes": [
      {
       "height": 54,
@@ -2389,7 +2505,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "5ca0bee4cf999a95d8",
+    "web_view_token": "1ffebd0455ea28fab2",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -2403,7 +2519,7 @@
     "date": 1750078392,
     "id": 457256288,
     "owner_id": -218861756,
-    "access_key": "ee3ce17dd8c878839a",
+    "access_key": "9ef0515fb3efe1e9f2",
     "sizes": [
      {
       "height": 54,
@@ -2474,7 +2590,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "a4f1ca93090e7987f4",
+    "web_view_token": "d72999c25229cabcab",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -2488,7 +2604,7 @@
     "date": 1750078395,
     "id": 457256289,
     "owner_id": -218861756,
-    "access_key": "3dbee910972e0fb2ce",
+    "access_key": "d1e0b1e4a2804b3b6f",
     "sizes": [
      {
       "height": 40,
@@ -2559,7 +2675,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "b07324dc012106e8f4",
+    "web_view_token": "b304e8936bf4394b0e",
     "has_tags": false,
     "orig_photo": {
      "height": 1080,
@@ -2683,6 +2799,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -2691,8 +2808,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -2704,7 +2820,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -2782,6 +2897,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -2790,8 +2906,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -2809,7 +2924,7 @@
     "date": 1717343323,
     "id": 457244189,
     "owner_id": -218861756,
-    "access_key": "4432bc0fce97fa3392",
+    "access_key": "2033f8eb0e7d846a48",
     "sizes": [
      {
       "height": 54,
@@ -2880,7 +2995,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "3e0cc5dd768b3c456e",
+    "web_view_token": "9d0be7c09da86c1bae",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -2894,7 +3009,7 @@
     "date": 1717343325,
     "id": 457244190,
     "owner_id": -218861756,
-    "access_key": "0fed4bf7bddf5553ff",
+    "access_key": "4431757dcd04f1914a",
     "sizes": [
      {
       "height": 54,
@@ -2965,7 +3080,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "24a8ee46007a8be577",
+    "web_view_token": "e1c815fd0260beb32b",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -2979,7 +3094,7 @@
     "date": 1717343327,
     "id": 457244191,
     "owner_id": -218861756,
-    "access_key": "c32f566c448061eba1",
+    "access_key": "90471fc92b2cee1e11",
     "sizes": [
      {
       "height": 54,
@@ -3050,7 +3165,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "89dce4ea1be5ac6d0c",
+    "web_view_token": "989006d5cb8f6c4971",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -3174,6 +3289,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -3182,8 +3298,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -3201,7 +3316,7 @@
     "date": 1717343311,
     "id": 457244186,
     "owner_id": -218861756,
-    "access_key": "58dee5909d163cc69f",
+    "access_key": "e430449196aacf0e86",
     "sizes": [
      {
       "height": 54,
@@ -3272,7 +3387,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "4240771da4a78bf28a",
+    "web_view_token": "422cff27656f7b26d4",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -3286,7 +3401,7 @@
     "date": 1717343313,
     "id": 457244187,
     "owner_id": -218861756,
-    "access_key": "36d98218167d433e97",
+    "access_key": "e7155b45e31310df8b",
     "sizes": [
      {
       "height": 54,
@@ -3357,7 +3472,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "abe9204653d51efe6f",
+    "web_view_token": "ed8df1647d3453ddec",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -3371,7 +3486,7 @@
     "date": 1717343315,
     "id": 457244188,
     "owner_id": -218861756,
-    "access_key": "d22a86f14e2107d7ae",
+    "access_key": "d71e8e8c75d1522afc",
     "sizes": [
      {
       "height": 54,
@@ -3442,7 +3557,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "0e922167c0429cb071",
+    "web_view_token": "bfb8ca90e2f295da3c",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -3566,6 +3681,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -3574,8 +3690,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -3587,7 +3702,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -3682,6 +3796,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -3690,8 +3805,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -3703,7 +3817,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -3781,6 +3894,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -3789,8 +3903,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -3804,7 +3917,6 @@
   "albums_ids": [
    116
   ],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -3882,6 +3994,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -3890,8 +4003,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -3903,7 +4015,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -3981,6 +4092,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -3989,8 +4101,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -4002,7 +4113,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -4097,6 +4207,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -4105,8 +4216,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -4118,7 +4228,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -4196,6 +4305,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -4204,8 +4314,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -4217,7 +4326,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -4311,6 +4419,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -4319,8 +4428,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -4332,7 +4440,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -4426,6 +4533,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -4434,8 +4542,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -4447,7 +4554,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -4525,6 +4631,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -4533,8 +4640,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -4552,7 +4658,7 @@
     "date": 1710580636,
     "id": 457241037,
     "owner_id": -218861756,
-    "access_key": "e5f845606a5de77efe",
+    "access_key": "d238d7e481559b5565",
     "sizes": [
      {
       "height": 54,
@@ -4623,7 +4729,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "0b56a8352650114bb3",
+    "web_view_token": "59ec700fa35f316a05",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -4637,7 +4743,7 @@
     "date": 1710580638,
     "id": 457241038,
     "owner_id": -218861756,
-    "access_key": "066463f7d2b26228e4",
+    "access_key": "a9a7221fd3b24a9e6f",
     "sizes": [
      {
       "height": 54,
@@ -4708,7 +4814,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "d8dd270b51fc040ef0",
+    "web_view_token": "1ccaa757a098f3bcc3",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -4722,7 +4828,7 @@
     "date": 1710580640,
     "id": 457241039,
     "owner_id": -218861756,
-    "access_key": "051f9e3208da5a2009",
+    "access_key": "316cfbe901fba995cd",
     "sizes": [
      {
       "height": 54,
@@ -4793,7 +4899,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "ce6db7d0e7f6957581",
+    "web_view_token": "aaf6aeabfc5cb02d50",
     "has_tags": false,
     "orig_photo": {
      "height": 1920,
@@ -4876,379 +4982,6 @@
    }
   },
   "description": "Описание товара",
-  "id": 8760574,
-  "owner_id": -218861756,
-  "price": {
-   "amount": "100",
-   "currency": {
-    "id": 643,
-    "name": "RUB",
-    "title": "₽"
-   },
-   "text": "1 ₽",
-   "discount_rate": -93,
-   "old_amount": "1500",
-   "old_amount_text": "15 ₽"
-  },
-  "title": "Тестовый товар измененный",
-  "other_items": [
-   {
-    "title": "Другие товары сообщества",
-    "view_type": 1,
-    "item_ids": [
-     "-218861756_12359884",
-     "-218861756_12358614",
-     "-218861756_12352321",
-     "-218861756_12316439",
-     "-218861756_12309777",
-     "-218861756_11825634",
-     "-218861756_11699243",
-     "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
-    ],
-    "referrer_item_type": "other_goods"
-   }
-  ],
-  "dimensions": {
-   "width": 20,
-   "height": 30,
-   "length": 40
-  },
-  "weight": 100,
-  "albums_ids": [
-   43
-  ],
-  "photos": [
-   {
-    "album_id": -53,
-    "date": 1710424878,
-    "id": 457240784,
-    "owner_id": -218861756,
-    "access_key": "77624b3a142ed19015",
-    "sizes": [
-     {
-      "height": 54,
-      "type": "s",
-      "width": 72,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
-     },
-     {
-      "height": 120,
-      "type": "m",
-      "width": 160,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
-     },
-     {
-      "height": 480,
-      "type": "x",
-      "width": 640,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
-     },
-     {
-      "height": 810,
-      "type": "y",
-      "width": 1080,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
-     },
-     {
-      "height": 960,
-      "type": "z",
-      "width": 1280,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
-     },
-     {
-      "height": 1920,
-      "type": "w",
-      "width": 2560,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
-     },
-     {
-      "height": 81,
-      "type": "o",
-      "width": 108,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
-     },
-     {
-      "height": 180,
-      "type": "p",
-      "width": 240,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
-     },
-     {
-      "height": 270,
-      "type": "q",
-      "width": 360,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
-     },
-     {
-      "height": 405,
-      "type": "r",
-      "width": 540,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
-     },
-     {
-      "height": 1920,
-      "type": "base",
-      "width": 2560,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
-     }
-    ],
-    "text": "",
-    "user_id": 100,
-    "web_view_token": "e11831a7d0a9d90d1d",
-    "has_tags": false,
-    "orig_photo": {
-     "height": 1920,
-     "type": "base",
-     "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
-     "width": 2560
-    }
-   },
-   {
-    "album_id": -53,
-    "date": 1710424880,
-    "id": 457240785,
-    "owner_id": -218861756,
-    "access_key": "4b9826f6312641f6bc",
-    "sizes": [
-     {
-      "height": 54,
-      "type": "s",
-      "width": 72,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
-     },
-     {
-      "height": 120,
-      "type": "m",
-      "width": 160,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
-     },
-     {
-      "height": 480,
-      "type": "x",
-      "width": 640,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
-     },
-     {
-      "height": 810,
-      "type": "y",
-      "width": 1080,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
-     },
-     {
-      "height": 960,
-      "type": "z",
-      "width": 1280,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
-     },
-     {
-      "height": 1920,
-      "type": "w",
-      "width": 2560,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
-     },
-     {
-      "height": 81,
-      "type": "o",
-      "width": 108,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
-     },
-     {
-      "height": 180,
-      "type": "p",
-      "width": 240,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
-     },
-     {
-      "height": 270,
-      "type": "q",
-      "width": 360,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
-     },
-     {
-      "height": 405,
-      "type": "r",
-      "width": 540,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
-     },
-     {
-      "height": 1920,
-      "type": "base",
-      "width": 2560,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
-     }
-    ],
-    "text": "",
-    "user_id": 100,
-    "web_view_token": "f061c3a667369a97b4",
-    "has_tags": false,
-    "orig_photo": {
-     "height": 1920,
-     "type": "base",
-     "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
-     "width": 2560
-    }
-   },
-   {
-    "album_id": -53,
-    "date": 1710424883,
-    "id": 457240786,
-    "owner_id": -218861756,
-    "access_key": "70f96e6bd4ee310505",
-    "sizes": [
-     {
-      "height": 54,
-      "type": "s",
-      "width": 72,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=72x0"
-     },
-     {
-      "height": 120,
-      "type": "m",
-      "width": 160,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=160x0"
-     },
-     {
-      "height": 480,
-      "type": "x",
-      "width": 640,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=640x0"
-     },
-     {
-      "height": 810,
-      "type": "y",
-      "width": 1080,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1080x0"
-     },
-     {
-      "height": 960,
-      "type": "z",
-      "width": 1280,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=1280x0"
-     },
-     {
-      "height": 1920,
-      "type": "w",
-      "width": 2560,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=2560x0"
-     },
-     {
-      "height": 81,
-      "type": "o",
-      "width": 108,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=108x0"
-     },
-     {
-      "height": 180,
-      "type": "p",
-      "width": 240,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=240x0"
-     },
-     {
-      "height": 270,
-      "type": "q",
-      "width": 360,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=360x0"
-     },
-     {
-      "height": 405,
-      "type": "r",
-      "width": 540,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&cs=540x0"
-     },
-     {
-      "height": 1920,
-      "type": "base",
-      "width": 2560,
-      "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu"
-     }
-    ],
-    "text": "",
-    "user_id": 100,
-    "web_view_token": "6f05bb9463297209c6",
-    "has_tags": false,
-    "orig_photo": {
-     "height": 1920,
-     "type": "base",
-     "url": "https://sun9-54.userapi.com/s/v1/ig2/e4ZX_DT_8xngp18GKCyG-GVMSa1BWzqcyyjXW29mGv9Cv-4ZnUN_5uNHU_lGzsbZZkmKueH3EZNpTM0eQLyrdCOI.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu",
-     "width": 2560
-    }
-   }
-  ],
-  "can_comment": 1,
-  "show_comments": 1,
-  "show_reviews": 1,
-  "can_repost": 1,
-  "likes": {
-   "count": 0,
-   "user_likes": 0
-  },
-  "reposts": {
-   "count": 0
-  },
-  "views_count": 0,
-  "variants_grid": [],
-  "owner_info": {
-   "avatar": [],
-   "name": "Test",
-   "category": "Измененная подборка",
-   "category_url": "/market-218861756?section=album_43",
-   "is_corporated_market": false,
-   "market_type": "pro"
-  },
-  "can_edit": true,
-  "can_delete": true,
-  "can_recover": false,
-  "can_show_convert_to_service": true,
-  "promotion": {
-   "is_available": false
-  },
-  "labels": [],
-  "date": 1710424883,
-  "item_type": 0,
-  "is_owner": true,
-  "is_adult": false,
-  "thumb_photo": "https://sun56-1.userapi.com/impg/BwU7f2hxHDL77LAGxCQkGP3Alk5cSXaL9-PEjw/EtEHdllWxAQ.jpg?crop=0.125,0,0.75,1&size=0x400&quality=95&sign=362e98d21b167b0bd5879c56fcb16fdc&c_uniq_tag=e_MC9MSwwzBCvyKRFR5mLGRqIfEWBIOrZ_6cOdq9TBI",
-  "cart_quantity": 0,
-  "sku": "12345",
-  "reject_info": {
-   "title": "Отредактируйте товар, чтобы опубликовать в Маркете ВКонтакте",
-   "description": "Товар отклонён. Чтобы добавить его в «Маркет», укажите реальную цену товара или стоимость оказания услуги.",
-   "moderation_status": 2,
-   "info_link": "[https://vk.com/faq20323|Правила Маркета ВКонтакте]",
-   "write_to_support_link": "https://vk.com/im?media=&sel=-215808305&ref=ProductId%3D-218861756_8760574",
-   "in_progress": false,
-   "buttons": [
-    {
-     "type": "market_edit",
-     "url": "https://vk.com/app7702617#owner_id=-218861756&item_id=8760574&type=market"
-    },
-    {
-     "type": "market_delete"
-    }
-   ]
-  },
-  "item_rating": {
-   "rating": 0,
-   "reviews_count": 0,
-   "reviews_count_text": "Нет отзывов"
-  },
-  "has_group_access": true,
-  "market_url": "https://vk.com/market/product/testovy-tovar-izmenenny-218861756-8760574"
- },
- {
-  "availability": 0,
-  "category": {
-   "inner_type": "market_market_category_old",
-   "id": 20173,
-   "name": "Батарейки",
-   "section": {
-    "id": 10016,
-    "name": "Канцелярские товары"
-   }
-  },
-  "description": "Описание товара",
   "id": 8735489,
   "owner_id": -218861756,
   "price": {
@@ -5269,6 +5002,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -5277,8 +5011,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -5290,7 +5023,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -5384,6 +5116,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -5392,8 +5125,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -5405,7 +5137,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -5483,6 +5214,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -5491,8 +5223,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -5504,7 +5235,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -5582,6 +5312,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -5590,8 +5321,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -5603,7 +5333,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -5697,6 +5426,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -5705,8 +5435,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -5718,7 +5447,6 @@
   },
   "weight": 100,
   "albums_ids": [],
-  "photos": [],
   "can_comment": 1,
   "show_comments": 1,
   "show_reviews": 1,
@@ -5812,6 +5540,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -5820,8 +5549,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -5839,7 +5567,7 @@
     "date": 1708161926,
     "id": 457239776,
     "owner_id": -218861756,
-    "access_key": "a7341d1045c13dbea6",
+    "access_key": "2b50b396cf777fe422",
     "sizes": [
      {
       "height": 72,
@@ -5898,7 +5626,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "e1746ffe8a93308bab",
+    "web_view_token": "ca6ef5eb5214576b82",
     "has_tags": false,
     "orig_photo": {
      "height": 1024,
@@ -5912,7 +5640,7 @@
     "date": 1708161928,
     "id": 457239777,
     "owner_id": -218861756,
-    "access_key": "4fc20c51c80c126712",
+    "access_key": "8db604b78903e0f548",
     "sizes": [
      {
       "height": 72,
@@ -5971,7 +5699,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "ac371e5d335612dbea",
+    "web_view_token": "e5d3e29aabd929beac",
     "has_tags": false,
     "orig_photo": {
      "height": 1024,
@@ -6074,6 +5802,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -6082,8 +5811,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -6101,7 +5829,7 @@
     "date": 1708083980,
     "id": 457239700,
     "owner_id": -218861756,
-    "access_key": "866dc1174ba41c2ba9",
+    "access_key": "288b5737321e43cc19",
     "sizes": [
      {
       "height": 72,
@@ -6160,7 +5888,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "882f882e2efc3ba63d",
+    "web_view_token": "9c0dbb456e19ae5096",
     "has_tags": false,
     "orig_photo": {
      "height": 1024,
@@ -6174,7 +5902,7 @@
     "date": 1708083981,
     "id": 457239701,
     "owner_id": -218861756,
-    "access_key": "150edbf7f534722c73",
+    "access_key": "b19d5ccf1fee164da6",
     "sizes": [
      {
       "height": 72,
@@ -6233,7 +5961,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "3caaca445693cf64a3",
+    "web_view_token": "d59344e9fa9054b68a",
     "has_tags": false,
     "orig_photo": {
      "height": 1024,
@@ -6247,7 +5975,7 @@
     "date": 1708083983,
     "id": 457239702,
     "owner_id": -218861756,
-    "access_key": "2e6964728978ae573d",
+    "access_key": "2ca951532d07abb429",
     "sizes": [
      {
       "height": 72,
@@ -6306,7 +6034,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "cb43cf9f229bccb1ed",
+    "web_view_token": "d4a583f333ddf375fb",
     "has_tags": false,
     "orig_photo": {
      "height": 1024,
@@ -6409,6 +6137,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -6417,8 +6146,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -6436,7 +6164,7 @@
     "date": 1708083965,
     "id": 457239697,
     "owner_id": -218861756,
-    "access_key": "318631857353922122",
+    "access_key": "2f52a8d8ac8ceb451f",
     "sizes": [
      {
       "height": 72,
@@ -6495,7 +6223,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "45bd60483e5f703cf1",
+    "web_view_token": "f024be13938cdc1ace",
     "has_tags": false,
     "orig_photo": {
      "height": 1024,
@@ -6509,7 +6237,7 @@
     "date": 1708083967,
     "id": 457239698,
     "owner_id": -218861756,
-    "access_key": "fa8212b08ac292abea",
+    "access_key": "656d6e2a707db4e6b1",
     "sizes": [
      {
       "height": 72,
@@ -6568,7 +6296,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "bbe060c7eebbb3e679",
+    "web_view_token": "707c3a41686ea81aab",
     "has_tags": false,
     "orig_photo": {
      "height": 1024,
@@ -6582,7 +6310,7 @@
     "date": 1708083968,
     "id": 457239699,
     "owner_id": -218861756,
-    "access_key": "8984c46cbdc9d69e84",
+    "access_key": "4728c52f9fe4521267",
     "sizes": [
      {
       "height": 72,
@@ -6641,7 +6369,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "8df70246c87614cd7a",
+    "web_view_token": "e5aaffc702d3ed3410",
     "has_tags": false,
     "orig_photo": {
      "height": 1024,
@@ -6744,6 +6472,7 @@
     "title": "Другие товары сообщества",
     "view_type": 1,
     "item_ids": [
+     "-218861756_12365726",
      "-218861756_12359884",
      "-218861756_12358614",
      "-218861756_12352321",
@@ -6752,8 +6481,7 @@
      "-218861756_11825634",
      "-218861756_11699243",
      "-218861756_11311308",
-     "-218861756_11311305",
-     "-218861756_11311277"
+     "-218861756_11311305"
     ],
     "referrer_item_type": "other_goods"
    }
@@ -6773,7 +6501,7 @@
     "date": 1708079308,
     "id": 457239678,
     "owner_id": -218861756,
-    "access_key": "382b0566d67d1de088",
+    "access_key": "404dd9db7a3703a23f",
     "sizes": [
      {
       "height": 72,
@@ -6832,7 +6560,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "6bb22d3e0fc3c3544d",
+    "web_view_token": "c2ec9f88ec2566acd2",
     "has_tags": false,
     "orig_photo": {
      "height": 1024,
@@ -6846,7 +6574,7 @@
     "date": 1708079309,
     "id": 457239679,
     "owner_id": -218861756,
-    "access_key": "85a9a228e6bab9808f",
+    "access_key": "bbd669a01eb4e1fc5e",
     "sizes": [
      {
       "height": 72,
@@ -6905,7 +6633,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "c5c14587ec59b737bf",
+    "web_view_token": "f25ba084d696359592",
     "has_tags": false,
     "orig_photo": {
      "height": 1024,
@@ -6919,7 +6647,7 @@
     "date": 1708079310,
     "id": 457239680,
     "owner_id": -218861756,
-    "access_key": "f3d47c38b0a84a8f09",
+    "access_key": "6922a059be83c6d2dc",
     "sizes": [
      {
       "height": 72,
@@ -6978,7 +6706,7 @@
     ],
     "text": "",
     "user_id": 100,
-    "web_view_token": "a56c8dd5883672e761",
+    "web_view_token": "b4d24a05334195bb28",
     "has_tags": false,
     "orig_photo": {
      "height": 1024,
