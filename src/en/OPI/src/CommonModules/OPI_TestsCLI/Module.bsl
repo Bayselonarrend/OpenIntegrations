@@ -3199,6 +3199,8 @@ Procedure Mongo_CommonMethods() Export
 
     MongoDB_GenerateConnectionString(TestParameters);
     MongoDB_CreateConnection(TestParameters);
+    MongoDB_CloseConnection(TestParameters);
+    MongoDB_IsConnector(TestParameters);
     MongoDB_ExecuteCommand(TestParameters);
 
 EndProcedure
@@ -32778,6 +32780,62 @@ Procedure MongoDB_CreateConnection(FunctionParameters)
     Result = OPI_MongoDB.CloseConnection(Result);
 
     Process(Result, "MongoDB", "CreateConnection", "Closing");
+
+EndProcedure
+
+Procedure MongoDB_CloseConnection(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("db", Base);
+    Options.Insert("usr", Login);
+    Options.Insert("pwd", Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+
+    Connection = OPI_MongoDB.CreateConnection(ConnectionString);
+    Result     = OPI_MongoDB.CloseConnection(Result);
+
+    // END
+
+    Process(Result, "MongoDB", "CloseConnection");
+
+EndProcedure
+
+Procedure MongoDB_IsConnector(FunctionParameters)
+
+    Address  = "127.0.0.1:1234";
+    Login    = FunctionParameters["MongoDB_User"];
+    Password = FunctionParameters["MongoDB_Password"];
+    Base     = FunctionParameters["MongoDB_DB"];
+
+    Address = OPI_TestDataRetrieval.GetLocalhost() + ":" + FunctionParameters["MongoDB_Port"]; // SKIP
+
+    ConnectionParams = New Structure("authSource", "admin");
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("db", Base);
+    Options.Insert("usr", Login);
+    Options.Insert("pwd", Password);
+    Options.Insert("params", ConnectionParams);
+
+    ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
+
+    Connection = OPI_MongoDB.CreateConnection(ConnectionString);
+    Result     = OPI_MongoDB.IsConnector(Connection);
+
+    // END
+
+    Process(Result, "MongoDB", "IsConnector");
 
 EndProcedure
 
