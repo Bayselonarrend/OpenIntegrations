@@ -13,7 +13,7 @@
   "Host": "localhost:2424",
   "Max-Forwards": "10",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Arr-Log-Id": "2b9ce74c-dc28-413a-9e9a-abd44d2a96e0",
+  "X-Arr-Log-Id": "a3a3ea9c-e0a3-4874-bfda-c5f57ba1a2e6",
   "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
   "X-Forwarded-Host": "bin.openintegrations.dev",
   "X-Original-Url": "***"
@@ -22,9 +22,9 @@
   "Поле1": 10,
   "Поле2": "Текст",
   "Поле3": [
-   "***",
-   "***",
-   "***"
+   null,
+   null,
+   null
   ]
  },
  "origin": "***",
