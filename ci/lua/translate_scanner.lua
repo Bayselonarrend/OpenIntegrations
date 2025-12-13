@@ -1,11 +1,11 @@
--- Модуль для рекурсивного сканирования файлов на наличие кириллицы
-local lfs = require("lfs")
-
--- Основная функция сканирования
-function scan_directory_for_cyrillic(directory_path, extensions)
+function scan_directory_for_cyrillic(directory_path, extensions, translation_dict_path)
     local results = {}
     
-    -- Нормализуем расширения (добавляем точку если нет)
+    local translation_dict = {}
+    if translation_dict_path then
+        translation_dict = load_translation_dictionary(translation_dict_path)
+    end
+    
     local normalized_extensions = {}
     for _, ext in ipairs(extensions) do
         if string.sub(ext, 1, 1) ~= "." then
@@ -14,135 +14,137 @@ function scan_directory_for_cyrillic(directory_path, extensions)
         normalized_extensions[string.lower(ext)] = true
     end
     
-    -- Рекурсивно сканируем директорию
-    scan_directory_recursive(directory_path, normalized_extensions, results)
+    local files = get_all_files(directory_path)
     
-    return results
-end
-
--- Рекурсивное сканирование директории
-function scan_directory_recursive(path, extensions, results)
-    local attr = lfs.attributes(path)
-    if not attr then
-        print("Ошибка: не удается получить доступ к " .. path)
-        return
-    end
-    
-    if attr.mode == "directory" then
-        -- Сканируем содержимое директории
-        for file in lfs.dir(path) do
-            if file ~= "." and file ~= ".." then
-                local file_path = path .. "/" .. file
-                scan_directory_recursive(file_path, extensions, results)
-            end
-        end
-    elseif attr.mode == "file" then
-        -- Проверяем расширение файла
-        local file_ext = string.lower(get_file_extension(path))
-        if extensions[file_ext] then
-            -- Сканируем файл на кириллицу
-            local cyrillic_found = scan_file_for_cyrillic(path)
-            if #cyrillic_found > 0 then
-                table.insert(results, {
-                    file = path,
-                    cyrillic_strings = cyrillic_found
-                })
+    for _, file_path in ipairs(files) do
+        local file_ext = string.lower(get_file_extension(file_path))
+        if normalized_extensions[file_ext] then
+            local cyrillic_lines = scan_file_for_cyrillic_with_dict(file_path, false, translation_dict)
+            for i, line in ipairs(cyrillic_lines) do
+                local key = file_path .. ":" .. i
+                results[key] = line
             end
         end
     end
-end
-
--- Получение расширения файла
-function get_file_extension(filename)
-    local ext = filename:match("^.+(%..+)$")
-    return ext or ""
-end
-
--- Сканирование файла на наличие кириллицы
-function scan_file_for_cyrillic(file_path)
-    local cyrillic_strings = {}
     
-    local file = io.open(file_path, "r")
-    if not file then
-        print("Ошибка: не удается открыть файл " .. file_path)
-        return cyrillic_strings
-    end
+    local seen_values = {}
+    local deduplicated = {}
     
-    local line_number = 0
-    for line in file:lines() do
-        line_number = line_number + 1
-        
-        if has_cyrillic(line) then
-            table.insert(cyrillic_strings, {
-                line_number = line_number,
-                content = line
-            })
+    for key, value in pairs(results) do
+        if not seen_values[value] then
+            seen_values[value] = true
+            deduplicated[key] = value
         end
     end
     
-    file:close()
-    return cyrillic_strings
+    return deduplicated
 end
 
--- Проверка наличия кириллицы в строке
-function has_cyrillic(text)
-    local cyrillic_pattern = "[а-яё]"
-    return string.find(string.lower(text), cyrillic_pattern) ~= nil
-end
-
--- Функция для красивого вывода результатов
-function print_scan_results(results)
-    if #results == 0 then
-        print("Кириллица не найдена в файлах с указанными расширениями.")
-        return
-    end
-    
-    print("Найдено файлов с кириллицей: " .. #results)
-    print(string.rep("=", 50))
-    
-    for _, result in ipairs(results) do
-        print("Файл: " .. result.file)
-        print("Строк с кириллицей: " .. #result.cyrillic_strings)
-        
-        -- Показываем первые 3 строки с кириллицей
-        local max_lines = math.min(3, #result.cyrillic_strings)
-        for i = 1, max_lines do
-            local line_info = result.cyrillic_strings[i]
-            print("  Строка " .. line_info.line_number .. ": " .. string.sub(line_info.content, 1, 100))
-        end
-        
-        if #result.cyrillic_strings > 3 then
-            print("  ... и еще " .. (#result.cyrillic_strings - 3) .. " строк")
-        end
-        
-        print(string.rep("-", 30))
-    end
-end
-
--- Функция для получения только списка файлов с кириллицей
-function get_files_with_cyrillic(directory_path, extensions)
-    local results = scan_directory_for_cyrillic(directory_path, extensions)
+function get_all_files(directory_path)
     local files = {}
+    local command
     
-    for _, result in ipairs(results) do
-        table.insert(files, result.file)
+    if package.config:sub(1,1) == '\\' then
+        -- Windows
+        command = 'dir "' .. directory_path .. '" /s /b /a-d'
+    else
+        -- Unix/Linux
+        command = 'find "' .. directory_path .. '" -type f'
+    end
+    
+    local handle = io.popen(command)
+    if handle then
+        for line in handle:lines() do
+            table.insert(files, line)
+        end
+        handle:close()
     end
     
     return files
 end
 
--- Функция для подсчета общего количества строк с кириллицей
-function count_cyrillic_lines(directory_path, extensions)
-    local results = scan_directory_for_cyrillic(directory_path, extensions)
-    local total_files = #results
-    local total_lines = 0
-    
-    for _, result in ipairs(results) do
-        total_lines = total_lines + #result.cyrillic_strings
+function get_file_extension(filename)
+    local ext = filename:match("^.+(%..+)$")
+    return ext or ""
+end
+
+function load_translation_dictionary(json_path)
+    local file = io.open(json_path, "r")
+    if not file then
+        return {}
     end
     
-    return {
-        files_count = total_files,
-        lines_count = total_lines
-    }
+    local content = file:read("*all")
+    file:close()
+    
+    local dict = {}
+    for key, value in string.gmatch(content, '"([^"]+)"%s*:%s*"([^"]+)"') do
+        dict[key] = value
+    end
+
+    return dict
+end
+
+function table_length(t)
+    local count = 0
+    for _ in pairs(t) do count = count + 1 end
+    return count
+end
+
+function has_untranslated_cyrillic(line, translation_dict)
+    local cleaned_line = line
+    
+    for key, value in pairs(translation_dict) do
+        if has_cyrillic(key) then
+            cleaned_line = string.gsub(cleaned_line, key, "")
+        end
+        if has_cyrillic(value) then
+            cleaned_line = string.gsub(cleaned_line, value, "")
+        end
+    end
+    
+    return has_cyrillic(cleaned_line)
+end
+
+function scan_file_for_cyrillic_with_dict(file_path, show_progress, translation_dict)
+    local cyrillic_lines = {}
+    
+    local file = io.open(file_path, "r")
+    if not file then
+        return cyrillic_lines
+    end
+    
+    for line in file:lines() do
+
+        if has_cyrillic(line) then
+            if table_length(translation_dict) == 0 or has_untranslated_cyrillic(line, translation_dict) then
+                table.insert(cyrillic_lines, line)
+            end
+        end
+    end
+    
+    file:close()
+    return cyrillic_lines
+end
+
+function scan_file_for_cyrillic(file_path, show_progress)
+    return scan_file_for_cyrillic_with_dict(file_path, show_progress, {})
+end
+
+function has_cyrillic(text)
+    for i = 1, string.len(text) do
+        local byte = string.byte(text, i)
+        if byte >= 208 and byte <= 209 then
+            local next_byte = string.byte(text, i + 1)
+            if next_byte then
+                local unicode = (byte - 208) * 64 + (next_byte - 128)
+                if (unicode >= 16 and unicode <= 47) or  -- А-Я
+                   (unicode >= 48 and unicode <= 79) or  -- а-я  
+                   unicode == 81 or unicode == 113 then  -- Ё, ё
+                    return true
+                end
+            end
+        end
+    end
+    return false
 end
