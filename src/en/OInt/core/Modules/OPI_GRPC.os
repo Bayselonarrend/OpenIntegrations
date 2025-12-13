@@ -43,13 +43,13 @@
 //@skip-check constructor-function-return-section
 //@skip-check doc-comment-collection-item-type
 
-#Область ПрограммныйИнтерфейс
+#Region Public
 
-#Область ОсновныеМетоды
+#Region CommonMethods
 
-#КонецОбласти
+#EndRegion
 
-#КонецОбласти
+#EndRegion
 
 #Region Alternate
 
