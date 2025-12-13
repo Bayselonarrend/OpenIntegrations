@@ -7,10 +7,10 @@
  "trashed": false,
  "explicitlyTrashed": false,
  "parents": [
-  "***"
+  null
  ],
  "spaces": [
-  "***"
+  null
  ],
  "version": "3",
  "webViewLink": "https://drive.google.com/drive/folders/191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM",
@@ -117,7 +117,7 @@
   }
  ],
  "permissionIds": [
-  "***"
+  null
  ],
  "folderColorRgb": "#8f8f8f",
  "quotaBytesUsed": "0",

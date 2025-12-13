@@ -1,14 +1,14 @@
 ﻿{
  "result": [
   {
-   "ID": "3096",
-   "XML_ID": "69260826",
+   "ID": "3100",
+   "XML_ID": "69267026",
    "ACTIVE": true,
    "NAME": "Олег",
    "LAST_NAME": "Лама",
-   "EMAIL": "0c6df453-f377-4b4f-9e30-0ee026940c35@exepmple.org",
+   "EMAIL": "60b587d3-b563-44ff-a6a7-56e954e84386@exepmple.org",
    "LAST_LOGIN": "",
-   "DATE_REGISTER": "2025-12-13T03:00:00+03:00",
+   "DATE_REGISTER": "2025-12-14T03:00:00+03:00",
    "IS_ONLINE": "N",
    "TIMESTAMP_X": {},
    "PERSONAL_GENDER": "",
@@ -16,20 +16,20 @@
    "PERSONAL_MOBILE": "88003553535",
    "UF_EMPLOYMENT_DATE": "",
    "UF_DEPARTMENT": [
-    "***"
+    null
    ],
    "USER_TYPE": "employee"
   }
  ],
  "total": 1,
  "time": {
-  "start": 1765622439,
-  "finish": 1765622439.57202,
-  "duration": 0.572021007537842,
+  "start": 1765668844,
+  "finish": 1765668844.28454,
+  "duration": 0.284537076950073,
   "processing": 0,
-  "date_start": "2025-12-13T13:40:39+03:00",
-  "date_finish": "2025-12-13T13:40:39+03:00",
-  "operating_reset_at": 1765623039,
+  "date_start": "2025-12-14T02:34:04+03:00",
+  "date_finish": "2025-12-14T02:34:04+03:00",
+  "operating_reset_at": 1765669444,
   "operating": 0
  }
 }

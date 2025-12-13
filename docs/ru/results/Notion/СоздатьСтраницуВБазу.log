@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "2c882aa7-fc4e-81ec-a9b9-c8e56ebedd3c",
- "created_time": "2025-12-13T10:31:00Z",
- "last_edited_time": "2025-12-13T10:31:00Z",
+ "id": "2c882aa7-fc4e-817f-a9e9-e393807f0a83",
+ "created_time": "2025-12-13T23:26:00Z",
+ "last_edited_time": "2025-12-13T23:26:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,14 +15,43 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "2c882aa7-fc4e-81dd-aef1-fb5b2ba0aaea"
+  "database_id": "2c882aa7-fc4e-817f-bd43-db5ffe933116"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
+  "Статус": {
+   "id": "Brwn",
+   "type": "select",
+   "select": {
+    "id": "e34865a6-d997-4133-836a-02b2a65e4642",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Пользователь": {
+   "id": "F%3FDs",
+   "type": "people",
+   "people": []
+  },
+  "Телефон": {
+   "id": "OMdY",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
+  "Номер": {
+   "id": "R~a%3D",
+   "type": "number",
+   "number": 1
+  },
+  "Активен": {
+   "id": "ZB_i",
+   "type": "checkbox",
+   "checkbox": true
+  },
   "Почта": {
-   "id": "%3AqMF",
+   "id": "%5DGW%3A",
    "type": "rich_text",
    "rich_text": [
     {
@@ -44,23 +73,8 @@
     }
    ]
   },
-  "Пользователь": {
-   "id": "%3CIjj",
-   "type": "people",
-   "people": []
-  },
-  "Телефон": {
-   "id": "%3FI%7DK",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Номер": {
-   "id": "%3FNu%7C",
-   "type": "number",
-   "number": 1
-  },
   "Описание": {
-   "id": "EX%3FA",
+   "id": "fv%5Ef",
    "type": "rich_text",
    "rich_text": [
     {
@@ -83,21 +97,16 @@
    ]
   },
   "Дата создания": {
-   "id": "M%5EaA",
+   "id": "iroR",
    "type": "date",
    "date": {
-    "start": "2025-12-13T04:31:00+03:00",
+    "start": "2025-12-14T05:26:00+03:00",
     "end": null,
     "time_zone": null
    }
   },
-  "Активен": {
-   "id": "%5Cyjp",
-   "type": "checkbox",
-   "checkbox": true
-  },
   "Картинка": {
-   "id": "bpsM",
+   "id": "kMPH",
    "type": "files",
    "files": [
     {
@@ -108,15 +117,6 @@
      }
     }
    ]
-  },
-  "Статус": {
-   "id": "oHGD",
-   "type": "select",
-   "select": {
-    "id": "04d81cd4-a717-4d40-a28e-19844eefce57",
-    "name": "Новый",
-    "color": "green"
-   }
   },
   "Имя": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/2c882aa7fc4e81eca9b9c8e56ebedd3c",
+ "url": "https://www.notion.so/2c882aa7fc4e817fa9e9e393807f0a83",
  "public_url": null,
- "request_id": "32212382-9edc-45d7-9143-ea5a98db9bf9"
+ "request_id": "fa8db7bd-a45d-44f5-9cd1-df4f9e434ccd"
 }

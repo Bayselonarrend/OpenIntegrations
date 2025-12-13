@@ -1,12 +1,12 @@
 ﻿{
- "spreadsheetId": "1AFQIjhkWET2vHxIltPOcRZ_O6EooSKNAyDsCDKrYLcQ",
+ "spreadsheetId": "1Gsb3EIlOfAigRcJ3aYNf3PStpAYYLOCjt_Su4CwtGjY",
  "valueRanges": [
   {
    "range": "'Лист2'!B2",
    "majorDimension": "ROWS",
    "values": [
     [
-     "***"
+     null
     ]
    ]
   },
@@ -15,7 +15,7 @@
    "majorDimension": "ROWS",
    "values": [
     [
-     "***"
+     null
     ]
    ]
   },
@@ -24,7 +24,7 @@
    "majorDimension": "ROWS",
    "values": [
     [
-     "***"
+     null
     ]
    ]
   }

@@ -322,13 +322,13 @@
     "title": "DURATION_TYPE",
     "type": "enum",
     "values": [
-     "***",
-     "***",
-     "***",
-     "***",
-     "***",
-     "***",
-     "***"
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
     ],
     "default": "days"
    },
@@ -384,13 +384,13 @@
   }
  },
  "time": {
-  "start": 1765622210,
-  "finish": 1765622210.57458,
-  "duration": 0.574575901031494,
+  "start": 1765668629,
+  "finish": 1765668629.41467,
+  "duration": 0.414671897888184,
   "processing": 0,
-  "date_start": "2025-12-13T13:36:50+03:00",
-  "date_finish": "2025-12-13T13:36:50+03:00",
-  "operating_reset_at": 1765622810,
+  "date_start": "2025-12-14T02:30:29+03:00",
+  "date_finish": "2025-12-14T02:30:29+03:00",
+  "operating_reset_at": 1765669229,
   "operating": 0
  }
 }

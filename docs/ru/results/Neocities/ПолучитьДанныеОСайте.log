@@ -2,15 +2,15 @@
  "result": "success",
  "info": {
   "sitename": "2athenaeum",
-  "views": 152427,
-  "hits": 412046,
+  "views": 152450,
+  "hits": 412094,
   "created_at": "Sat, 31 Dec 2022 11:53:53 -0000",
-  "last_updated": "Sat, 13 Dec 2025 10:43:33 -0000",
+  "last_updated": "Sat, 13 Dec 2025 23:36:51 -0000",
   "domain": null,
   "tags": [
-   "***",
-   "***",
-   "***"
+   null,
+   null,
+   null
   ]
  }
 }
