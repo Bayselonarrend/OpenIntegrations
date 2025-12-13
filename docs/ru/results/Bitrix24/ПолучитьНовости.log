@@ -1,7 +1,7 @@
 ﻿{
  "result": [
   {
-   "ID": "3464",
+   "ID": "3468",
    "BLOG_ID": "1",
    "PUBLISH_STATUS": "P",
    "TITLE": "Новый заголовок новости",
@@ -11,7 +11,7 @@
    "CODE": null,
    "MICRO": "N",
    "DETAIL_TEXT": "Новый текст новости",
-   "DATE_PUBLISH": "2025-12-13T13:36:35+03:00",
+   "DATE_PUBLISH": "2025-12-14T02:30:15+03:00",
    "CATEGORY_ID": null,
    "HAS_SOCNET_ALL": "N",
    "HAS_TAGS": "N",
@@ -50,19 +50,19 @@
      "USER_TYPE_ID": "file",
      "CLASS_NAME": "Bitrix\\Main\\UserField\\Types\\FileType",
      "EDIT_CALLBACK": [
-      "***",
-      "***"
+      null,
+      null
      ],
      "VIEW_CALLBACK": [
-      "***",
-      "***"
+      null,
+      null
      ],
      "USE_FIELD_COMPONENT": true,
      "DESCRIPTION": "Файл",
      "BASE_TYPE": "file"
     },
     "VALUE": false,
-    "ENTITY_VALUE_ID": 3464,
+    "ENTITY_VALUE_ID": 3468,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -93,7 +93,7 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3464,
+    "ENTITY_VALUE_ID": 3468,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -126,19 +126,19 @@
      "USER_TYPE_ID": "integer",
      "CLASS_NAME": "Bitrix\\Main\\UserField\\Types\\IntegerType",
      "EDIT_CALLBACK": [
-      "***",
-      "***"
+      null,
+      null
      ],
      "VIEW_CALLBACK": [
-      "***",
-      "***"
+      null,
+      null
      ],
      "USE_FIELD_COMPONENT": true,
      "DESCRIPTION": "Целое число",
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3464,
+    "ENTITY_VALUE_ID": 3468,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -172,18 +172,18 @@
      "DESCRIPTION": "Файл (Диск)",
      "BASE_TYPE": "int",
      "TAG": [
-      "***",
-      "***"
+      null,
+      null
      ]
     },
     "VALUE": [
-     "***",
-     "***",
-     "***"
+     null,
+     null,
+     null
     ],
-    "ENTITY_VALUE_ID": 3464,
+    "ENTITY_VALUE_ID": 3468,
     "VALUE_EXISTS": true,
-    "VALUE_RAW": "a:3:{i:0;i:13606;i:1;i:13608;i:2;i:13610;}",
+    "VALUE_RAW": "a:3:{i:0;i:13622;i:1;i:13624;i:2;i:13626;}",
     "CUSTOM_DATA": {
      "PHOTO_TEMPLATE": ""
     }
@@ -213,24 +213,24 @@
      "DESCRIPTION": "Письмо (email)",
      "BASE_TYPE": "int",
      "VIEW_CALLBACK": [
-      "***",
-      "***"
+      null,
+      null
      ],
      "EDIT_CALLBACK": [
-      "***",
-      "***"
+      null,
+      null
      ],
      "onBeforeSave": [
-      "***",
-      "***"
+      null,
+      null
      ],
      "onDelete": [
-      "***",
-      "***"
+      null,
+      null
      ]
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3464,
+    "ENTITY_VALUE_ID": 3468,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -263,19 +263,19 @@
      "USER_TYPE_ID": "integer",
      "CLASS_NAME": "Bitrix\\Main\\UserField\\Types\\IntegerType",
      "EDIT_CALLBACK": [
-      "***",
-      "***"
+      null,
+      null
      ],
      "VIEW_CALLBACK": [
-      "***",
-      "***"
+      null,
+      null
      ],
      "USE_FIELD_COMPONENT": true,
      "DESCRIPTION": "Целое число",
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3464,
+    "ENTITY_VALUE_ID": 3468,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -310,19 +310,19 @@
      "USER_TYPE_ID": "datetime",
      "CLASS_NAME": "Bitrix\\Main\\UserField\\Types\\DateTimeType",
      "EDIT_CALLBACK": [
-      "***",
-      "***"
+      null,
+      null
      ],
      "VIEW_CALLBACK": [
-      "***",
-      "***"
+      null,
+      null
      ],
      "USE_FIELD_COMPONENT": true,
      "DESCRIPTION": "Дата со временем",
      "BASE_TYPE": "datetime"
     },
     "VALUE": "",
-    "ENTITY_VALUE_ID": 3464,
+    "ENTITY_VALUE_ID": 3468,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -361,27 +361,27 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3464,
+    "ENTITY_VALUE_ID": 3468,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
    },
    "FILES": [
-    "***",
-    "***",
-    "***"
+    null,
+    null,
+    null
    ]
   }
  ],
  "total": 1,
  "time": {
-  "start": 1765622202,
-  "finish": 1765622202.46827,
-  "duration": 0.468270063400269,
+  "start": 1765668622,
+  "finish": 1765668622.82151,
+  "duration": 0.821513891220093,
   "processing": 0,
-  "date_start": "2025-12-13T13:36:42+03:00",
-  "date_finish": "2025-12-13T13:36:42+03:00",
-  "operating_reset_at": 1765622802,
+  "date_start": "2025-12-14T02:30:22+03:00",
+  "date_finish": "2025-12-14T02:30:22+03:00",
+  "operating_reset_at": 1765669222,
   "operating": 0
  }
 }
