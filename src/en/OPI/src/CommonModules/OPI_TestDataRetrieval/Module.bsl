@@ -5062,15 +5062,17 @@ EndFunction
 
 Function Check_Bitrix24_ApproveTask(Val Result, Val Option)
 
-    ExpectsThat(Result["result"]["task"]).Заполнено();
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["error_description"]).Равно("Action on the task is not allowed");
 
-    Return Result;
+    Return Undefined;
 
 EndFunction
 
 Function Check_Bitrix24_DisapproveTask(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(Result["error_description"]).Равно("Action on the task is not allowed");
 
     Return Undefined;
 
@@ -5564,9 +5566,10 @@ EndFunction
 
 Function Check_Bitrix24_UpdateTaskComment(Val Result, Val Option)
 
-    ExpectsThat(Result["result"]).ИмеетТип("Boolean").Равно(True);
+    ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+    ExpectsThat(StrFind(Result["error_description"], "not allowed") > 0).Равно(True);
 
-    Return Result;
+    Return Undefined;
 
 EndFunction
 
@@ -12147,6 +12150,22 @@ Function Check_MongoDB_CreateConnection(Val Result, Val Option)
 
 EndFunction
 
+Function Check_MongoDB_CloseConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_MongoDB_IsConnector(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_MongoDB_ExecuteCommand(Val Result, Val Option)
 
     If Option  = "Connection" Then
@@ -13277,14 +13296,14 @@ Function TestResultAsText(Val Result)
 
 EndFunction
 
-Function ReplaceSecretsRecursively(Value, Val Indicators)
+Function ReplaceSecretsRecursively(Value, Val Indicators, Val Hide = False)
 
     If TypeOf(Value) = Type("Array") Then
 
         Value_ = New Array;
 
         For Each Element In Value Do
-            Value_.Add(ReplaceSecretsRecursively(Element, Indicators));
+            Value_.Add(ReplaceSecretsRecursively(Element, Indicators, Hide));
         EndDo;
 
     ElsIf OPI_Tools.ThisIsCollection(Value, True) Then
@@ -13306,7 +13325,7 @@ Function ReplaceSecretsRecursively(Value, Val Indicators)
                     AttributeN  = Lower(Indication);
 
                     If StrFind(CurrentKeyN, AttributeN) > 0 Then
-                        CurrentValue = ReplaceSecretsRecursively(CurrentValue, Indicators);
+                        CurrentValue = ReplaceSecretsRecursively(CurrentValue, Indicators, True);
                         Break;
                     EndIf;
 
@@ -13319,7 +13338,11 @@ Function ReplaceSecretsRecursively(Value, Val Indicators)
         EndDo;
 
     Else
-        Value_ = "***";
+
+        If Hide Then
+            Value_ = "***";
+        EndIf;
+
     EndIf;
 
     Return Value_;
