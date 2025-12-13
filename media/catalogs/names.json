@@ -9,6 +9,7 @@
 "GoogleSheets",
 "GreenAPI",
 "GreenMax",
+"gRPC",
 "MongoDB",
 "MSSQL",
 "MySQL",
@@ -32,6 +33,5 @@
 "VKTeams",
 "YandexDisk",
 "HTTP",
-"gRPC",
 "HTTP"
 ]
