@@ -389,6 +389,7 @@ li > a.menu__link {
 .GoogleSheets a::before,
 .GreenAPI a::before,
 .GreenMax a::before,
+.gRPC a::before,
 .MongoDB a::before,
 .MSSQL a::before,
 .MySQL a::before,
@@ -412,7 +413,6 @@ li > a.menu__link {
 .VKTeams a::before,
 .YandexDisk a::before,
 .HTTP a::before,
-.gRPC a::before,
 .HTTP a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
@@ -456,6 +456,10 @@ li > a.menu__link {
 
 .GreenMax > div > a::before{
   content: url(../../static/img/APIs/small/GreenMax.png);
+}
+
+.gRPC > div > a::before{
+  content: url(../../static/img/APIs/small/gRPC.png);
 }
 
 .MongoDB > div > a::before{
@@ -548,10 +552,6 @@ li > a.menu__link {
 
 .HTTP > div > a::before{
   content: url(../../static/img/APIs/small/HTTP.png);
-}
-
-.gRPC > div > a::before{
-  content: url(../../static/img/APIs/small/gRPC.png);
 }
 
 .HTTP > div > a::before{
