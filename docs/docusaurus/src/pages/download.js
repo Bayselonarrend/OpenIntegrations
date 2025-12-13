@@ -17,8 +17,8 @@ const DownloadPage = () => {
         {
           name: 'CFE (расширение)',
           files: {
-            ru: 'OpenIntegrations_1.30.0_ru.cfe',
-            en: 'OpenIntegrations_1.30.0_en.cfe',
+            ru: 'OpenIntegrations_1.31.0_ru.cfe',
+            en: 'OpenIntegrations_1.31.0_en.cfe',
           },
           desc: 'Файл расширения 1С в формате .cfe',
         },
@@ -46,24 +46,24 @@ const DownloadPage = () => {
         {
           name: 'Windows Installer',
           files: {
-            ru: 'oint_1.30.0_installer_ru.exe',
-            en: 'oint_1.30.0_installer_en.exe',
+            ru: 'oint_1.31.0_installer_ru.exe',
+            en: 'oint_1.31.0_installer_en.exe',
           },
           desc: 'Windows установщик CLI приложения с аддоном Melezh',
         },
         {
           name: 'Debian / Ubuntu (.deb)',
           files: {
-            ru: 'oint_1.30.0_all_ru.deb',
-            en: 'oint_1.30.0_all_en.deb',
+            ru: 'oint_1.31.0_all_ru.deb',
+            en: 'oint_1.31.0_all_en.deb',
           },
           desc: 'Пакет CLI приложения для систем на базе Debian',
         },
         {
           name: 'Fedora / RHEL (.rpm)',
           files: {
-            ru: 'oint-1.30.0-1.noarch_ru.rpm',
-            en: 'oint-1.30.0-1.noarch_en.rpm',
+            ru: 'oint-1.31.0-1.noarch_ru.rpm',
+            en: 'oint-1.31.0-1.noarch_en.rpm',
           },
           desc: 'Пакет CLI приложения для систем на базе RHEL',
         },
@@ -75,16 +75,16 @@ const DownloadPage = () => {
         {
           name: 'Пакет oint (.ospx)',
           files: {
-            ru: 'oint-1.30.0_ru.ospx',
-            en: 'oint-1.30.0_en.ospx',
+            ru: 'oint-1.31.0_ru.ospx',
+            en: 'oint-1.31.0_en.ospx',
           },
           desc: 'Пакет библиотеки для OneScript',
         },
         {
           name: 'Пакет oint-cli (.ospx)',
           files: {
-            ru: 'oint-cli-1.30.0_ru.ospx',
-            en: 'oint-cli-1.30.0_en.ospx',
+            ru: 'oint-cli-1.31.0_ru.ospx',
+            en: 'oint-cli-1.31.0_en.ospx',
           },
           desc: 'Пакет CLI-приложения для OneScript',
         },
@@ -148,7 +148,7 @@ const DownloadPage = () => {
               Скачать последнюю версию
             </Heading>
             <p className={styles.downloadSubtitle}>
-              Текущая версия: 1.30.0 | Выберите подходящий язык и вариант поставки
+              Текущая версия: 1.31.0 | Выберите подходящий язык и вариант поставки
             </p>
           </div>
         </div>

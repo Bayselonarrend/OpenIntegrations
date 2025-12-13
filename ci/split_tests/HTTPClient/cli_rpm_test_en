@@ -34,7 +34,7 @@ pipeline {
             steps {
                 script {
                     // Скачиваем новый rpm-пакет oint
-                    sh 'wget -O oint-1.30.0-1.noarch_en.rpm https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.30.0/oint-1.30.0-1.noarch_en.rpm '
+                    sh 'wget -O oint-1.31.0-1.noarch_en.rpm https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.31.0/oint-1.31.0-1.noarch_en.rpm '
                 }
             }
         }
@@ -43,14 +43,14 @@ pipeline {
             steps {
                 script {
                     // Устанавливаем скаченный пакет
-                    sh 'rpm -ivh --replacepkgs oint-1.30.0-1.noarch_en.rpm'
+                    sh 'rpm -ivh --replacepkgs oint-1.31.0-1.noarch_en.rpm'
                 }
             }
         }
 
       	stage('Prepare'){
          		steps{
-                    sh 'cd ./src/en/OInt && opm build && opm install oint-1.30.0.ospx && rm oint-1.30.0.ospx'
+                    sh 'cd ./src/en/OInt && opm build && opm install oint-1.31.0.ospx && rm oint-1.31.0.ospx'
             		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
               			sh 'gpg --quiet --batch --yes --decrypt --passphrase="$GPGKEY" --output ./data.json ./data.json.gpg'
             		}
