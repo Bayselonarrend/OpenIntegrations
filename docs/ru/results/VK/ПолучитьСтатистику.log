@@ -1,9 +1,27 @@
 ﻿{
  "response": [
   {
+   "period_from": 1765670400,
+   "period_to": 1765756799,
+   "reach": {
+    "cities": [],
+    "countries": [],
+    "mobile_reach": 0,
+    "reach": 0,
+    "reach_subscribers": 0
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [],
+    "mobile_views": 0,
+    "views": 0,
+    "visitors": 0
+   }
+  },
+  {
    "activity": {
-    "comments": 1,
-    "likes": 1
+    "comments": 2,
+    "likes": 2
    },
    "period_from": 1765584000,
    "period_to": 1765670399,
@@ -130,24 +148,6 @@
       "count": 0
      }
     ]
-   },
-   "visitors": {
-    "cities": [],
-    "countries": [],
-    "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
-   }
-  },
-  {
-   "period_from": 1765497600,
-   "period_to": 1765583999,
-   "reach": {
-    "cities": [],
-    "countries": [],
-    "mobile_reach": 0,
-    "reach": 0,
-    "reach_subscribers": 0
    },
    "visitors": {
     "cities": [],
