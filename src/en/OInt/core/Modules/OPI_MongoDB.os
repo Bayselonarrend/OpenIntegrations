@@ -754,7 +754,7 @@ EndFunction
 // Note:
 // Role can be defined in one of the following formats:^
 // Structure: `{ role: "name", db: "database" }`^
-// String: `name рoлand`
+// String: `role name`
 //
 // Parameters:
 // Connection - String, Arbitrary - Connection or connection string - dbc
@@ -784,7 +784,7 @@ EndFunction
 // The passed roles completely replace the user's role list
 // Role can be defined in one of the following formats:^
 // Structure: `{ role: "name", db: "database" }`^
-// String: `name рoлand`
+// String: `role name`
 //
 // Parameters:
 // Connection - String, Arbitrary - Connection or connection string - dbc
@@ -814,7 +814,7 @@ EndFunction
 // The user can be specified in one of the following formats:^
 // String: `name of user`^
 // Structure: `{ user: <name>, db: <database> }`^
-// Array: `[ { user: <name>, db: <бafor data> }, { user: <name>, db: <бafor data> }, ... ]`
+// Array: `[ { user: <name>, db: <database> }, { user: <name>, db: <database> }, ... ]`
 //
 // Parameters:
 // Connection - String, Arbitrary - Connection or connection string - dbc
@@ -910,7 +910,7 @@ EndFunction
 // Note:
 // Role can be defined in one of the following formats:^
 // Structure: `{ role: "name", db: "database" }`^
-// String: `name рoлand`
+// String: `role name`
 //
 // Parameters:
 // Connection - String, Arbitrary - Connection or connection string - dbc
@@ -940,7 +940,7 @@ EndFunction
 // The passed roles and privileges completely replace the current role data
 // Role can be defined in one of the following formats:^
 // Structure: `{ role: "name", db: "database" }`^
-// String: `name рoлand`
+// String: `role name`
 //
 // Parameters:
 // Connection - String, Arbitrary - Connection or connection string - dbc
@@ -1033,7 +1033,7 @@ EndFunction
 // Note:
 // Role can be defined in one of the following formats:^
 // Structure: `{ role: "name", db: "database" }`^
-// String: `name рoлand`
+// String: `role name`
 //
 // Parameters:
 // Connection - String, Arbitrary - Connection or connection string - dbc
@@ -1060,7 +1060,7 @@ EndFunction
 // Note:
 // Role can be defined in one of the following formats:^
 // Structure: `{ role: "name", db: "database" }`^
-// String: `name рoлand`
+// String: `role name`
 //
 // Parameters:
 // Connection - String, Arbitrary - Connection or connection string - dbc
@@ -1087,7 +1087,7 @@ EndFunction
 // Note:
 // Resource can be defined in one of the following formats:^
 // Structure for collection: `{ db: "database", collection: "collection name" }`
-// Structure for toлawithтерa: `{ cluster : true }`
+// Structure for cluster: `{ cluster : true }`
 //
 // Parameters:
 // Resource - Structure Of KeyAndValue - Privilege resource - res
