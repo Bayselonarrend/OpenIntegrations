@@ -1,0 +1,3 @@
+﻿    Result = OPI_HTTPRequests.NewRequest()
+        .Initialize()
+        .ReturnSettings();

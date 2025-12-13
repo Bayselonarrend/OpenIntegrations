@@ -512,7 +512,7 @@ Function UseURLEncoding(Val Flag) Export
 
 EndFunction
 
-// Retry count !NOCLI
+// Max attempts !NOCLI
 // Sets the maximum number of retry attempts for request submission on code 5**
 //
 // Note:
@@ -523,13 +523,13 @@ EndFunction
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
-Function RetryCount(Val Value) Export
+Function MaxAttempts(Val Value) Export
 
     Try
 
         If StopExecution() Then Return ЭтотОбъект; EndIf;
 
-        AddLog("RetryCount: set value");
+        AddLog("MaxAttempts: setting the value");
 
         OPI_TypeConversion.GetNumber(Value);
         SetSetting("MaxAttempts", Value);
@@ -542,7 +542,7 @@ Function RetryCount(Val Value) Export
 
 EndFunction
 
-// Redirect count !NOCLI
+// Max redirects !NOCLI
 // Sets the maximum number of allowed redirects
 //
 // Note:
@@ -553,13 +553,13 @@ EndFunction
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
-Function RedirectCount(Val Value) Export
+Function MaxRedirects(Val Value) Export
 
     Try
 
         If StopExecution() Then Return ЭтотОбъект; EndIf;
 
-        AddLog("RedirectCount: set value");
+        AddLog("MaxRedirects: setting the value");
 
         OPI_TypeConversion.GetNumber(Value);
         SetSetting("MaxRedirects", Value);
@@ -606,6 +606,60 @@ Function SplitArraysInURL(Val Flag, Val SquareBrackets = Undefined) Export
         SetSetting("SplitArrayParams", Flag);
 
         Return ЭтотОбъект;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Return settings
+//
+// Parameters:
+// Filter - String, Array of String - Filter by setting name or names for retrieval - filter
+//
+// Returns:
+// Arbitrary - Settings structure, specific setting value, or handler object (on error)
+Function ReturnSettings(Val Filter = Undefined) Export
+
+    Try
+
+        If StopExecution() Then Return ЭтотОбъект; EndIf;
+
+        AddLog("ReturnSettings: getting the value");
+
+        CurrentSettings = OPI_Tools.CopyCollection(Settings);
+
+        If Filter <> Undefined Then
+
+            OPI_TypeConversion.GetArray(Filter);
+
+            If Filter.Count() = 1 Then
+
+                CurrentSettings = OPI_Tools.GetOr(CurrentSettings, String(Filter[0]), Undefined);
+
+            Else
+
+                FilterList = New ValueList();
+                FilterList.LoadValues(Filter);
+
+                CurrentSettings_ = New Structure;
+
+                For Each Setting In CurrentSettings Do
+
+                    If FilterList.FindByValue(Setting.Key) <> Undefined Then
+                        CurrentSettings_.Insert(Setting.Key, Setting.Value);
+                    EndIf;
+
+                EndDo;
+
+                CurrentSettings = CurrentSettings_;
+
+            EndIf;
+
+        EndIf;
+
+        Return CurrentSettings;
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -3233,16 +3287,20 @@ Function ИспользоватьКодированиеURL(Val Флаг) Export
 	Return UseURLEncoding(Флаг);
 EndFunction
 
-Function КоличествоПопыток(Val Значение) Export
-	Return RetryCount(Значение);
+Function МаксимумПопыток(Val Значение) Export
+	Return MaxAttempts(Значение);
 EndFunction
 
-Function КоличествоПереадресаций(Val Значение) Export
-	Return RedirectCount(Значение);
+Function МаксимумПереадресаций(Val Значение) Export
+	Return MaxRedirects(Значение);
 EndFunction
 
 Function РазделятьМассивыВURL(Val Флаг, Val КвадратныеСкобки = Undefined) Export
 	Return SplitArraysInURL(Флаг, КвадратныеСкобки);
+EndFunction
+
+Function ВернутьНастройки(Val Отбор = Undefined) Export
+	Return ReturnSettings(Отбор);
 EndFunction
 
 Function УстановитьДвоичноеТело(Val Данные, Val УстанавливатьПустое = False) Export
