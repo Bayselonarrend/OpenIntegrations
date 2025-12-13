@@ -13,7 +13,7 @@ pipeline {
 	stages {
 		stage('Decrypt Data') {
             steps {
-                powershell encoding: 'UTF-8', script:'cd ./src/en/OInt; opm build; opm install oint-1.30.0.ospx; del oint-1.30.0.ospx'
+                powershell encoding: 'UTF-8', script:'cd ./src/en/OInt; opm build; opm install oint-1.31.0.ospx; del oint-1.31.0.ospx'
                 withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
                     bat encoding: 'UTF-8', script:'gpg --quiet --batch --yes --decrypt --passphrase="%GPGKEY%" --output ./data.json ./data.json.gpg'
                 }
@@ -80,7 +80,7 @@ pipeline {
         stage('Download Installer') {
             steps {
                 powershell encoding: 'UTF-8', script: '''
-                    $url = "https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.30.0/oint_1.30.0_installer_en.exe "
+                    $url = "https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.31.0/oint_1.31.0_installer_en.exe "
                     $output = "$env:USERPROFILE\\Downloads\\oint_installer.exe"
                     Invoke-WebRequest -Uri $url -OutFile $output
                     Write-Host "Инсталлер скачан в: $output"
