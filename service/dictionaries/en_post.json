@@ -28,5 +28,11 @@
 "Base-Project: OpenIntegrations":"Base-Project: OpenIntegrationsENG",
 "(\"https://example.com/path\")": "(\"https://example.com/путь\")",
 "\"cyrillic\"":"\"кириллица\"",
-"=cyrillic":"=кириллица"
+"=cyrillic":"=кириллица",
+"!ForLuaCheck1": "ЭтотОбъект",
+"!ForLuaCheck2": "кириллица",
+"!ForLuaCheck3": "путь",
+"!ForLuaCheck4": "Ожидаем",
+"!ForLuaCheck5": "Ожидаем.Что"
+
 }
