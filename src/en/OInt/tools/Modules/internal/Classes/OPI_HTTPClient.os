@@ -129,7 +129,7 @@ Var LineSeparator; // Body line separator
 // DataProcessorObject.OPI_HTTPClient - This processor object
 Function Initialize(Val URL = "") Export
 
-    If Initialized Then
+    If ValueIsFilled(Initialized) Then
         ResetObjectFields();
     EndIf;
 
