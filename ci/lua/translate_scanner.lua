@@ -91,14 +91,21 @@ function table_length(t)
     return count
 end
 
+-- Экранирование специальных символов для string.gsub
+function escape_pattern(text)
+    return string.gsub(text, "([%.%+%-%*%?%[%]%^%$%(%)%%])", "%%%1")
+end
+
 function has_untranslated_cyrillic(line, translation_dict)
     local cleaned_line = line
     
     for key, value in pairs(translation_dict) do
         if has_cyrillic(key) then
-            cleaned_line = string.gsub(cleaned_line, key, "")
+            local escaped_key = escape_pattern(key)
+            cleaned_line = string.gsub(cleaned_line, escaped_key, "")
         end
         if has_cyrillic(value) then
+            local escaped_value = escape_pattern(value)
             cleaned_line = string.gsub(cleaned_line, value, "")
         end
     end
