@@ -129,6 +129,10 @@ Var LineSeparator; // Body line separator
 // DataProcessorObject.OPI_HTTPClient - This processor object
 Function Initialize(Val URL = "") Export
 
+    If Initialized Then
+        ResetObjectFields();
+    EndIf;
+
     Log = New Array;
 
     AddLog("Initialize: setting of default values");
@@ -149,7 +153,6 @@ Function Initialize(Val URL = "") Export
     BodyTemporaryFile = False;
 
     ResponseStatusCode = 0;
-    ResponseBody       = Undefined;
     ResponseHeaders    = New Map;
 
     Multipart = False;
@@ -374,9 +377,13 @@ Function GetLog(Val AsString = False) Export
     OPI_TypeConversion.GetBoolean(AsString);
 
     If Not ValueIsFilled(Log) Then
-        Return ?(AsString, ""           , New Array);
+
+        Return ?(AsString, "", New Array);
+
     Else
+
         Return ?(AsString, StrConcat(Log, Chars.LF), Log);
+
     EndIf;
 
 EndFunction
@@ -496,6 +503,66 @@ Function UseURLEncoding(Val Flag) Export
         OPI_TypeConversion.GetBoolean(Flag);
 
         SetSetting("URLencoding", Flag);
+
+        Return ЭтотОбъект;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Retry count !NOCLI
+// Sets the maximum number of retry attempts for request submission on code 5**
+//
+// Note:
+// By default: `0`
+//
+// Parameters:
+// Value - Number - Retry count - val
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function RetryCount(Val Value) Export
+
+    Try
+
+        If StopExecution() Then Return ЭтотОбъект; EndIf;
+
+        AddLog("RetryCount: set value");
+
+        OPI_TypeConversion.GetNumber(Value);
+        SetSetting("MaxAttempts", Value);
+
+        Return ЭтотОбъект;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Redirect count !NOCLI
+// Sets the maximum number of allowed redirects
+//
+// Note:
+// By default: `5`
+//
+// Parameters:
+// Value - Number - Redirect count - val
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function RedirectCount(Val Value) Export
+
+    Try
+
+        If StopExecution() Then Return ЭтотОбъект; EndIf;
+
+        AddLog("RedirectCount: set value");
+
+        OPI_TypeConversion.GetNumber(Value);
+        SetSetting("MaxRedirects", Value);
 
         Return ЭтотОбъект;
 
@@ -1282,7 +1349,7 @@ Function ExecuteRequest(Forced = False) Export
 
         AddLog("ExecuteRequest: executing");
 
-        Return ExecuteMethod(0, Forced);
+        Return ExecuteMethod(0, 0, Forced);
 
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
@@ -2024,7 +2091,7 @@ Function SetRequestBody()
 
 EndFunction
 
-Function ExecuteMethod(Val RedirectCount = 0, Val Forced = False)
+Function ExecuteMethod(Val RedirectCount = 0, Val ErrorCount = 0, Val Forced = False)
 
     OPI_TypeConversion.GetBoolean(Forced);
 
@@ -2040,7 +2107,7 @@ Function ExecuteMethod(Val RedirectCount = 0, Val Forced = False)
 
     If ThisIsRedirection(Response) Then
 
-        MaximumNumberOfRedirects = 5;
+        MaximumNumberOfRedirects = GetSetting("MaxRedirects");
 
         If RedirectCount = MaximumNumberOfRedirects Then
             Error("ExecuteMethod: the number of redirects has been exceeded");
@@ -2053,7 +2120,20 @@ Function ExecuteMethod(Val RedirectCount = 0, Val Forced = False)
         CreateConnection();
         Request.ResourceAddress = RequestAdress;
 
-        ExecuteMethod(RedirectCount + 1, Forced);
+        ExecuteMethod(RedirectCount + 1, ErrorCount, Forced);
+
+    EndIf;
+
+    If ThisIsServerError(Response) Then
+
+        MaximumRetryCount = GetSetting("MaxAttempts");
+
+        If ErrorCount = MaximumRetryCount Then
+            Error("ExecuteMethod: exceeded number of server errors");
+            Return ЭтотОбъект;
+        EndIf;
+
+        ExecuteMethod(RedirectCount, ErrorCount + 1, Forced);
 
     EndIf;
 
@@ -2103,10 +2183,21 @@ Function ThisIsRedirection(Val Response)
     Redirection  = 300;
     RequestError = 400;
 
-    ThisIsRedirection = Response.StatusCode >= Redirection And Response.StatusCode < RequestError And ValueIsFilled(
-        Response.Headers["Location"]);
+    ThisIsRedirection = Response.StatusCode >= Redirection
+        And Response.StatusCode < RequestError
+        And ValueIsFilled(Response.Headers["Location"]);
 
     Return ThisIsRedirection;
+
+EndFunction
+
+Function ThisIsServerError(Val Response)
+
+    ServerError = 500;
+
+    ThisIsServerError = Response.StatusCode >= ServerError;
+
+    Return ThisIsServerError;
 
 EndFunction
 
@@ -3008,6 +3099,8 @@ Procedure SetDefaultSettings()
     Settings.Insert("URLencoding"          , True);
     Settings.Insert("EncodeRequestBody"    , "UTF-8");
     Settings.Insert("BodyFieldsAtOAuth"    , False);
+    Settings.Insert("MaxAttempts"          , 0);
+    Settings.Insert("MaxRedirects"         , 5);
 
 EndProcedure
 
@@ -3036,6 +3129,51 @@ Procedure GuaranteeBodyCollection()
         RequestBodyCollection = ?(ValueIsFilled(RequestBodyCollection), RequestBodyCollection, New Structure);
 
     EndIf;
+
+EndProcedure
+
+Procedure ResetObjectFields()
+
+    Request                = Undefined;
+    Connection             = Undefined;
+    Settings               = Undefined;
+    Repeats                = Undefined;
+    RequestURL             = Undefined;
+    RequestServer          = Undefined;
+    RequestPort            = Undefined;
+    RequestAdress          = Undefined;
+    RequestAdressFull      = Undefined;
+    RequestSection         = Undefined;
+    RequestProtected       = Undefined;
+    RequestDomain          = Undefined;
+    RequestMethod          = Undefined;
+    RequestURLParams       = Undefined;
+    RequestBody            = Undefined;
+    RequestBodyCollection  = Undefined;
+    RequestBodyCurrentSend = Undefined;
+    RequestHeaders         = Undefined;
+    RequestUser            = Undefined;
+    RequestPassword        = Undefined;
+    RequestTimeout         = Undefined;
+    RequestProxy           = Undefined;
+    RequestOutputFile      = Undefined;
+    RequestBodyFile        = Undefined;
+    RequestBodyStream      = Undefined;
+    RequestReadBodyStream  = Undefined;
+    RequestDataWriter      = Undefined;
+    RequestDataReader      = Undefined;
+    RequestDataType        = Undefined;
+    RequestTypeSetManualy  = Undefined;
+    RequestPartSize        = Undefined;
+    BodyTemporaryFile      = Undefined;
+    AuthType               = Undefined;
+    AuthData               = Undefined;
+    Response               = Undefined;
+    ResponseStatusCode     = Undefined;
+    ResponseHeaders        = Undefined;
+    Multipart              = Undefined;
+    Boundary               = Undefined;
+    LineSeparator          = Undefined;
 
 EndProcedure
 
@@ -3093,6 +3231,14 @@ EndFunction
 
 Function ИспользоватьКодированиеURL(Val Флаг) Export
 	Return UseURLEncoding(Флаг);
+EndFunction
+
+Function КоличествоПопыток(Val Значение) Export
+	Return RetryCount(Значение);
+EndFunction
+
+Function КоличествоПереадресаций(Val Значение) Export
+	Return RedirectCount(Значение);
 EndFunction
 
 Function РазделятьМассивыВURL(Val Флаг, Val КвадратныеСкобки = Undefined) Export

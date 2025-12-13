@@ -6571,6 +6571,16 @@
 },
 {
 "lib": "MongoDB",
+"name": "CloseConnection",
+"variant": ""
+},
+{
+"lib": "MongoDB",
+"name": "IsConnector",
+"variant": ""
+},
+{
+"lib": "MongoDB",
 "name": "ExecuteCommand",
 "variant": "Connection"
 },
