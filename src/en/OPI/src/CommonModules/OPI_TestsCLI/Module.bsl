@@ -32867,7 +32867,7 @@ Procedure MongoDB_CloseConnection(FunctionParameters)
     ConnectionString = OPI_TestDataRetrieval.ExecuteTestCLI("mongodb", "GenerateConnectionString", Options);
 
     Connection = OPI_MongoDB.CreateConnection(ConnectionString);
-    Result     = OPI_MongoDB.CloseConnection(Result);
+    Result     = OPI_MongoDB.CloseConnection(Connection);
 
     // END
 
