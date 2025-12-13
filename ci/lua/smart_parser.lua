@@ -1,42 +1,32 @@
--- Умный парсер строк на слова и фразы
 local separators = {" ", "\t", "\n", "(", ")", "[", "]", "{", "}", ",", ".", ";", ":", "=", "+", "-", "*", "/", "\\", "!", "?", "@", "#", "%", "^", "&", "_", "|"}
 
--- Основная функция разбора строки
 function parse_string_to_words(input_string)
     local words = {}
     
-    -- Пропускаем специальные комментарии
     if string.match(input_string, "^// !OInt") then
         return words
     end
     
-    -- Обработка комментариев
     if string.match(input_string, "^//") then
         return parse_comment(input_string)
     end
     
-    -- Обработка строк с кавычками (только кавычки требуют особой обработки)
     if string.find(input_string, '"') then
         return parse_expression(input_string)
     end
     
-    -- Обычная строка кода
     return parse_code_line(input_string)
 end
 
--- Парсинг комментариев
 function parse_comment(comment_string)
     local words = {}
     
-    -- Убираем // и лишние пробелы
     local clean_comment = string.gsub(comment_string, "^%s*//+%s*", "")
     
-    -- Пропускаем служебные комментарии
     if string.find(clean_comment, "!DISABLED!") or string.find(clean_comment, "!CODE!") then
         return words
     end
     
-    -- Разбиваем по специальным разделителям комментариев
     clean_comment = string.gsub(clean_comment, " %- ", " | ")
     clean_comment = string.gsub(clean_comment, ": %[", " | ")
     
@@ -44,9 +34,7 @@ function parse_comment(comment_string)
     for _, part in ipairs(parts) do
         local normalized = normalize_word(part)
         if normalized ~= "" then
-            -- Для комментариев проверяем наличие кириллицы во всей фразе, а не только в отдельных словах
             if has_cyrillic_in_phrase(normalized) then
-                -- Проверяем, нет ли уже такого слова
                 local exists = false
                 for _, existing in ipairs(words) do
                     if existing == normalized then
@@ -64,13 +52,11 @@ function parse_comment(comment_string)
     return words
 end
 
--- Проверка наличия кириллицы в фразе (может содержать латиницу + кириллицу)
 function has_cyrillic_in_phrase(text)
     local cyrillic_pattern = "[а-яё]"
     return string.find(string.lower(text), cyrillic_pattern) ~= nil
 end
 
--- Парсинг выражений с кавычками и тегами
 function parse_expression(expression_string)
     local words = {}
     local current_pos = 1
@@ -83,14 +69,14 @@ function parse_expression(expression_string)
         
         if char == '"' then
             if in_quotes then
-                -- Конец строки в кавычках
+
                 if current_word ~= "" then
                     add_word_if_valid(words, current_word)
                     current_word = ""
                 end
                 in_quotes = false
             else
-                -- Начало строки в кавычках
+
                 if current_word ~= "" then
                     parse_and_add_code_words(words, current_word)
                     current_word = ""
@@ -111,20 +97,20 @@ function parse_expression(expression_string)
                 current_word = ""
                 in_tag = false
             else
-                -- Если не в теге, то > это обычный разделитель
+
                 if current_word ~= "" then
                     parse_and_add_code_words(words, current_word)
                     current_word = ""
                 end
             end
         elseif in_quotes then
-            -- Внутри кавычек - сохраняем все как есть
+
             current_word = current_word .. char
         elseif in_tag then
-            -- Внутри тега - сохраняем все как есть
+
             current_word = current_word .. char
         else
-            -- Обычный символ вне кавычек и тегов - проверяем разделители
+
             if is_separator(char) then
                 if current_word ~= "" then
                     add_word_if_valid(words, current_word)
