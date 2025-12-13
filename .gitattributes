@@ -2,16 +2,11 @@ src/ru/OPI/src/CommonModules/OPI_Тесты/** linguist-vendored
 src/ru/OPI/src/CommonModules/OPI_ТестыCLI/** linguist-vendored
 src/ru/OInt/** linguist-vendored
 src/en/** linguist-vendored
-service/** linguist-vendored
-ci/** linguist-vendored
 media/** linguist-vendored
 docs/** linguist-vendored
 
 src/ru/cli/data/Classes/internal/Classes/** linguist-vendored
 src/en/cli/data/Classes/internal/Classes/** linguist-vendored
-
-*.iss linguist-vendored
-*.bat linguist-vendored
 
 * text=auto
 * text eol=lf
