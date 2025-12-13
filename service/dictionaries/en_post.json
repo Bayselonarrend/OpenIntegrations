@@ -34,6 +34,6 @@
 "!ForLuaCheck3": "путь",
 "!ForLuaCheck4": "Ожидаем",
 "!ForLuaCheck5": "Что",
-"!ForLuaCheck6": "ОжидаетЧто"
-
+"!ForLuaCheck6": "ОжидаетЧто",
+"!ForLuaCheck7": "Module.ОжидаетЧто(Value)"
 }
