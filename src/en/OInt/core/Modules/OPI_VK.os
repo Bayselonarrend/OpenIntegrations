@@ -527,6 +527,12 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
         Return GetStringFromBinaryData(Response);
     EndIf;
 
+    Photo = Response.Get(Method["Photo"]);
+
+    If Not ValueIsFilled(Photo) Then
+        Return Response;
+    EndIf;
+
     FillPhotoUploadParameters(Method, Response, Parameters);
 
     Response = OPI_HTTPRequests.Get(Save, Parameters);
