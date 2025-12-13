@@ -127,11 +127,10 @@ begin
   AddonDescription.Top := 85;
   AddonDescription.AutoSize := True;
     
-  // Флажок размещается относительно текста описания
   AddonCheckBox := TNewCheckBox.Create(WizardForm);
   AddonCheckBox.Parent := AddonTaskPage.Surface;
   AddonCheckBox.Left := 2;
-  AddonCheckBox.Top := AddonDescription.Top + AddonDescription.Height + 15; 
+  AddonCheckBox.Top := AddonDescription.Top + AddonDescription.Height + 5; 
   AddonCheckBox.Width := 300;
   AddonCheckBox.Caption := 'Install Melezh';
   AddonCheckBox.Checked := True;
