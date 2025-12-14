@@ -4,6 +4,7 @@ use addin1c::{name, Variant};
 use crate::core::getset;
 use serde_json::json;
 use std::sync::{Arc, Mutex};
+use common_binary::vault::BinaryInput;
 use common_dataset::dataset::Datasets;
 use common_tcp::tls_settings::TlsSettings;
 use common_utils::utils::{json_error, json_success};
@@ -19,7 +20,10 @@ pub const METHODS: &[&[u16]] = &[
     name!("SetParamsFromFile"),
     name!("SetParamsFromString"),
     name!("RemoveQueryDataset"),
-    name!("BatchQuery")
+    name!("BatchQuery"),
+    name!("LoadBinaryToVault"),
+    name!("LoadFileToVault"),
+    name!("LoadBase64ToVault"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -35,11 +39,17 @@ pub fn get_params_amount(num: usize) -> usize {
         8 => 2,
         9 => 1,
         10 => 2,
+        11 => 1,
+        12 => 1,
+        13 => 1,
         _ => 0,
     }
 }
 
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
+
+    let empty_array: [u8; 0] = [];
+
     match num {
         0 => Box::new(obj.initialize()),
         1 => Box::new(obj.close_connection()),
@@ -117,6 +127,51 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             };
             Box::new(result)
         },
+        11 => {
+            let binary = params[0].get_blob().unwrap_or(&empty_array);
+
+            let result = match obj.backend.lock() {
+                Ok(lock) => {
+                    match lock.binary_vault.store(BinaryInput::Bytes(Vec::from(binary))){
+                        Ok(key) => json!({"result": true, "key": key}).to_string(),
+                        Err(e) => json_error(&e)
+                    }
+                },
+                Err(e) => json_error(&e)
+            };
+
+            Box::new(result)
+        },
+        12 => {
+            let file = params[0].get_string().unwrap_or("".to_string());
+
+            let result = match obj.backend.lock() {
+                Ok(lock) => {
+                    match lock.binary_vault.store(BinaryInput::FilePath(file)){
+                        Ok(key) => json!({"result": true, "key": key}).to_string(),
+                        Err(e) => json_error(&e)
+                    }
+                },
+                Err(e) => json_error(&e)
+            };
+
+            Box::new(result)
+        },
+        13 => {
+            let base64 = params[0].get_string().unwrap_or("".to_string());
+
+            let result = match obj.backend.lock() {
+                Ok(lock) => {
+                    match lock.binary_vault.store(BinaryInput::Base64(base64)){
+                        Ok(key) => json!({"result": true, "key": key}).to_string(),
+                        Err(e) => json_error(&e)
+                    }
+                },
+                Err(e) => json_error(&e)
+            };
+
+            Box::new(result)
+        }
         _ => Box::new(false),
     }
 }

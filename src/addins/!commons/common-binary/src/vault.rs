@@ -52,6 +52,7 @@ impl BinaryVault {
         match input {
             BinaryInput::Bytes(data) => Ok(self.store_bytes(data)),
             BinaryInput::FilePath(path) => self.store_file(path),
+            BinaryInput::Base64(base64_str) => self.store_base64(&base64_str),
         }
     }
 
@@ -74,6 +75,13 @@ impl BinaryVault {
         Ok(self.store_bytes(data))
     }
 
+    pub fn store_base64(&self, base64_str: &str) -> Result<VaultKey, VaultError> {
+        use base64::prelude::*;
+        let data = BASE64_STANDARD.decode(base64_str)
+            .map_err(|e| VaultError::IoError(io::Error::new(io::ErrorKind::InvalidData, e)))?;
+        Ok(self.store_bytes(data))
+    }
+
     fn generate_key(&self) -> VaultKey {
         let mut counter = self.counter.lock().unwrap();
         *counter += 1;
@@ -86,6 +94,7 @@ impl BinaryVault {
 pub enum BinaryInput {
     Bytes(Vec<u8>),
     FilePath(String),
+    Base64(String),
 }
 
 impl From<Vec<u8>> for BinaryInput {

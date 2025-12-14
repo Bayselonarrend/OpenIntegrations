@@ -6,6 +6,7 @@ use postgres::{Client, NoTls};
 use serde_json::json;
 use postgres_native_tls::MakeTlsConnector;
 use std::sync::{Arc, Mutex};
+use common_binary::vault::{BinaryInput, BinaryVault};
 use common_dataset::dataset::Datasets;
 use common_tcp::tls_settings::TlsSettings;
 use common_utils::utils::{json_error, json_success};
@@ -22,7 +23,10 @@ pub const METHODS: &[&[u16]] = &[
     name!("SetParamsFromString"),
     name!("RemoveQueryDataset"),
     name!("BatchQuery"),
-    name!("GetTLSSettings")
+    name!("GetTLSSettings"),
+    name!("LoadBinaryToVault"),
+    name!("LoadFileToVault"),
+    name!("LoadBase64ToVault"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -39,11 +43,16 @@ pub fn get_params_amount(num: usize) -> usize {
         9 => 1,
         10 => 2,
         11 => 0,
+        12 => 1,
+        13 => 1,
+        14 => 1,
         _ => 0,
     }
 }
 
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
+
+    let empty_array: [u8; 0] = [];
 
     match num {
         0 => Box::new(obj.initialize()),
@@ -126,6 +135,30 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
                 None => "".to_string()
             };
             Box::new(result)
+        },
+        12 => {
+            let binary = params[0].get_blob().unwrap_or(&empty_array);
+            let result = match obj.binary_vault.store(BinaryInput::Bytes(Vec::from(binary))){
+                Ok(key) => json!({"result": true, "key": key}).to_string(),
+                Err(e) => json_error(&e)
+            };
+            Box::new(result)
+        },
+        13 => {
+            let file = params[0].get_string().unwrap_or("".to_string());
+            let result = match obj.binary_vault.store(BinaryInput::FilePath(file)){
+                Ok(key) => json!({"result": true, "key": key}).to_string(),
+                Err(e) => json_error(&e)
+            };
+            Box::new(result)
+        },
+        14 => {
+            let base64 = params[0].get_string().unwrap_or("".to_string());
+            let result = match obj.binary_vault.store(BinaryInput::Base64(base64)){
+                Ok(key) => json!({"result": true, "key": key}).to_string(),
+                Err(e) => json_error(&e)
+            };
+            Box::new(result)
         }
         _ => Box::new(false),
     }
@@ -142,6 +175,7 @@ pub struct AddIn {
     client: Option<Arc<Mutex<Client>>>,
     tls: Option<TlsSettings>,
     datasets: Datasets,
+    binary_vault: BinaryVault
 }
 
 impl AddIn {
@@ -152,6 +186,7 @@ impl AddIn {
             client: None,
             tls: None,
             datasets: Datasets::new(),
+            binary_vault: BinaryVault::new()
         }
     }
 
