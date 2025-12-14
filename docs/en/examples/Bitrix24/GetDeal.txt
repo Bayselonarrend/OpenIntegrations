@@ -1,10 +1,10 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    DealID = "5736";
+    DealID = "5792";
 
     Result = OPI_Bitrix24.GetDeal(URL, DealID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "83583d69006e9f06006b12e400000001000...";
-    DealID = "5736";
+    Token  = "0bad3e69006e9f06006b12e400000001000...";
+    DealID = "5792";
 
     Result = OPI_Bitrix24.GetDeal(URL, DealID, Token);
