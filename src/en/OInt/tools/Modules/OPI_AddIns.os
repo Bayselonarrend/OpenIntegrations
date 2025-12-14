@@ -47,6 +47,8 @@
 
 #Region Internal
 
+#Region Main
+
 Function GetAddIn(Val AddInName, Val Class = "Main") Export
 
     AddIn     = Undefined;
@@ -74,6 +76,27 @@ Function IsAddIn(Val Value) Export
     Return StrStartsWith(ValeType, "AddIn.");
 
 EndFunction
+
+Function FileTransferRequired() Export
+
+    // BSLLS:CommentedCode-off
+
+    // Components in 1C on Linux cannot reliably send and receive data larger than 30 KB
+    // https://github.com/Bayselonarrend/OpenIntegrations/issues/72
+
+    // UPD: NoIsolated works
+
+    // Return Not OPI_Tools.IsWindows() And Not OPI_Tools.IsOneScript();
+
+    // BSLLS:CommentedCode-on
+
+    Return False;
+
+EndFunction
+
+#EndRegion
+
+#Region TCP
 
 Function SetTls(Val AddIn, Val Tls) Export
 
@@ -138,22 +161,43 @@ Function GetProxySettings(Val Address
 
 EndFunction
 
-Function FileTransferRequired() Export
+#EndRegion
 
-    // BSLLS:CommentedCode-off
+#Region InternalStorage
 
-    // Components in 1C on Linux cannot reliably send and receive data larger than 30 KB
-    // https://github.com/Bayselonarrend/OpenIntegrations/issues/72
+Function PutData(Val AddIn, Val Value) Export
 
-    // UPD: NoIsolated works
+    Processed = False;
 
-    // Return Not OPI_Tools.IsWindows() And Not OPI_Tools.IsOneScript();
+    If TypeOf(Value) = Type("String") Then
 
-    // BSLLS:CommentedCode-on
+        DataFile = New File(Value);
 
-    Return False;
+        If DataFile.Exists() Then
+            Result    = AddIn.LoadFileToVault(DataFile.FullName);
+            Result    = OPI_Tools.JsonToStructure(Result);
+            Processed = True;
+        Else
+            Result    = AddIn.LoadBase64ToVault(Value);
+            Result    = OPI_Tools.JsonToStructure(Result);
+            Processed = Result["result"];
+        EndIf;
+
+    EndIf;
+
+    If Not Processed Then
+
+        OPI_TypeConversion.GetBinaryData(Value, True, True);
+        Result = AddIn.LoadBinaryToVault(Value);
+        Result = OPI_Tools.JsonToStructure(Result);
+
+    EndIf;
+
+    Return Result;
 
 EndFunction
+
+#EndRegion
 
 #EndRegion
 
@@ -302,6 +346,10 @@ Function ЭтоКомпонента(Val Значение) Export
 	Return IsAddIn(Значение);
 EndFunction
 
+Function ТребуетсяПередачаЧерезФайл() Export
+	Return FileTransferRequired();
+EndFunction
+
 Function УстановитьTls(Val Компонета, Val Tls) Export
 	Return SetTls(Компонета, Tls);
 EndFunction
@@ -314,8 +362,8 @@ Function ПолучитьНастройкиПрокси(Val Адрес, Val По
 	Return GetProxySettings(Адрес, Порт, Вид, Логин, Пароль);
 EndFunction
 
-Function ТребуетсяПередачаЧерезФайл() Export
-	Return FileTransferRequired();
+Function ПоместитьДанные(Val Компонента, Val Значение) Export
+	Return PutData(Компонента, Значение);
 EndFunction
 
 Function КаталогКомпонентOS() Export

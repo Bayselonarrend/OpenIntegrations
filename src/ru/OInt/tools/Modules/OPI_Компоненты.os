@@ -47,6 +47,8 @@
 
 #Область СлужебныйПрограммныйИнтерфейс
 
+#Область Основные
+
 Функция ПолучитьКомпоненту(Знач ИмяКомпоненты, Знач Класс = "Main") Экспорт
 
     Компонента    = Неопределено;
@@ -74,6 +76,27 @@
     Возврат СтрНачинаетсяС(ТипЗначения, "AddIn.");
 
 КонецФункции
+
+Функция ТребуетсяПередачаЧерезФайл() Экспорт
+
+    // BSLLS:CommentedCode-off
+
+    // Компоненты в 1С на Linux не могут стабильно отдавать и принимать данные свыше 30 КБ
+    // https://github.com/Bayselonarrend/OpenIntegrations/issues/72
+
+    // UPD: В неизолированном режиме не падает
+
+    // Возврат Не OPI_Инструменты.ЭтоWindows() И Не OPI_Инструменты.ЭтоOneScript();
+
+    // BSLLS:CommentedCode-on
+
+    Возврат Ложь;
+
+КонецФункции
+
+#КонецОбласти
+
+#Область TCP
 
 Функция УстановитьTls(Знач Компонета, Знач Tls) Экспорт
 
@@ -138,22 +161,43 @@
 
 КонецФункции
 
-Функция ТребуетсяПередачаЧерезФайл() Экспорт
+#КонецОбласти
 
-    // BSLLS:CommentedCode-off
+#Область ВнутреннееХранилище
 
-    // Компоненты в 1С на Linux не могут стабильно отдавать и принимать данные свыше 30 КБ
-    // https://github.com/Bayselonarrend/OpenIntegrations/issues/72
+Функция ПоместитьДанные(Знач Компонента, Знач Значение) Экспорт
 
-    // UPD: В неизолированном режиме не падает
+    Обработано = Ложь;
 
-    // Возврат Не OPI_Инструменты.ЭтоWindows() И Не OPI_Инструменты.ЭтоOneScript();
+    Если ТипЗнч(Значение) = Тип("Строка") Тогда
 
-    // BSLLS:CommentedCode-on
+        ФайлДанных = Новый Файл(Значение);
 
-    Возврат Ложь;
+        Если ФайлДанных.Существует() Тогда
+            Результат  = Компонента.LoadFileToVault(ФайлДанных.ПолноеИмя);
+            Результат  = OPI_Инструменты.JsonВСтруктуру(Результат);
+            Обработано = Истина;
+        Иначе
+            Результат  = Компонента.LoadBase64ToVault(Значение);
+            Результат  = OPI_Инструменты.JsonВСтруктуру(Результат);
+            Обработано = Результат["result"];
+        КонецЕсли;
+
+    КонецЕсли;
+
+    Если Не Обработано Тогда
+
+        OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Значение, Истина, Истина);
+        Результат = Компонента.LoadBinaryToVault(Значение);
+        Результат = OPI_Инструменты.JsonВСтруктуру(Результат);
+
+    КонецЕсли;
+
+    Возврат Результат;
 
 КонецФункции
+
+#КонецОбласти
 
 #КонецОбласти
 
@@ -302,6 +346,10 @@ Function IsAddIn(Val Value) Export
 	Return ЭтоКомпонента(Value);
 EndFunction
 
+Function FileTransferRequired() Export
+	Return ТребуетсяПередачаЧерезФайл();
+EndFunction
+
 Function SetTls(Val AddIn, Val Tls) Export
 	Return УстановитьTls(AddIn, Tls);
 EndFunction
@@ -314,8 +362,8 @@ Function GetProxySettings(Val Address, Val Port, Val View = "socks5", Val Login 
 	Return ПолучитьНастройкиПрокси(Address, Port, View, Login, Password);
 EndFunction
 
-Function FileTransferRequired() Export
-	Return ТребуетсяПередачаЧерезФайл();
+Function PutData(Val AddIn, Val Value) Export
+	Return ПоместитьДанные(AddIn, Value);
 EndFunction
 
 Function AddInsFolderOS() Export

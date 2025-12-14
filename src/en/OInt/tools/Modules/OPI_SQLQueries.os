@@ -376,7 +376,7 @@ Function ExecuteQueryWithProcessing(Connector, Val QueryText, Val ForceResult, V
 
 EndFunction
 
-Function ProcessParameters(Val Parameters, Val TypesStructure) Export
+Function ProcessParameters(Val AddIn, Val Parameters, Val TypesStructure) Export
 
     If Not ValueIsFilled(Parameters) Then
         Return New Array;
@@ -388,7 +388,7 @@ Function ProcessParameters(Val Parameters, Val TypesStructure) Export
 
         CurrentParameter = Parameters[N];
 
-        CurrentParameter = ProcessParameter(CurrentParameter, TypesStructure);
+        CurrentParameter = ProcessParameter(AddIn, CurrentParameter, TypesStructure);
 
         Parameters[N] = CurrentParameter;
 
@@ -1162,7 +1162,9 @@ Function AddRow(Val Module, Val Table, Val Record, Val Connection, Val ExecuteNo
         Result = Module.ExecuteSQLQuery(Request, ValuesArray, , Connection);
     Else
 
-        Parameters = ProcessParameters(ValuesArray, Module.GetTypesStructure());
+        Parameters = ProcessParameters(Connection
+            , ValuesArray
+            , Module.GetTypesStructure());
 
         Result = New Map;
         Result.Insert("text"        , Request);
@@ -1697,14 +1699,14 @@ Function ProcessQueryResult(Val Connector, Val QueryKey, Val ExecutionResult)
 
 EndFunction
 
-Function ProcessParameter(CurrentParameter, TypesStructure, AsObject = True)
+Function ProcessParameter(Val AddIn, CurrentParameter, TypesStructure, AsObject = True)
 
     CurrentType = DefineParameterType(CurrentParameter);
     CurrentKey  = TypesStructure.Get(CurrentType);
 
     If CurrentType = "BinaryData" Then
 
-        CurrentParameter = Base64String(CurrentParameter);
+        CurrentParameter = ProcessBlob(AddIn, CurrentParameter);
 
     ElsIf CurrentType = "UUID" Then
 
@@ -1716,7 +1718,11 @@ Function ProcessParameter(CurrentParameter, TypesStructure, AsObject = True)
 
     ElsIf OPI_Tools.ThisIsCollection(CurrentParameter) Then
 
-        ProcessCollectionParameter(CurrentType, TypesStructure, CurrentParameter, CurrentKey);
+        ProcessCollectionParameter(AddIn
+            , CurrentType
+            , TypesStructure
+            , CurrentParameter
+            , CurrentKey);
 
     ElsIf CurrentType = "Whole" Or CurrentType = "Float" Then
 
@@ -1744,24 +1750,15 @@ Function ProcessParameter(CurrentParameter, TypesStructure, AsObject = True)
 
 EndFunction
 
-Function ProcessBlob(Val Value)
+Function ProcessBlob(Val AddIn, Val Value)
 
-    If TypeOf(Value) = Type("BinaryData") Then
-        Value        = Base64String(Value);
-    Else
+    Result = OPI_AddIns.PutData(AddIn, Value);
 
-        DataFile = New File(String(Value));
-
-        If DataFile.Exists() Then
-
-            CurrentData = New BinaryData(String(Value));
-            Value       = Base64String(CurrentData);
-
-        EndIf;
-
+    If Not Result["result"] Then
+        Raise StrTemplate("Binary data transfer error: %1", Result["error"]);
     EndIf;
 
-    Return Value;
+    Return Result["key"];
 
 EndFunction
 
@@ -1798,7 +1795,11 @@ Function DefineParameterType(Val CurrentParameter)
 
 EndFunction
 
-Procedure ProcessCollectionParameter(Val CurrentType, Val TypesStructure, CurrentParameter, CurrentKey)
+Procedure ProcessCollectionParameter(Val AddIn
+    , Val CurrentType
+    , Val TypesStructure
+    , CurrentParameter
+    , CurrentKey)
 
     CollectionsTypes = TypesStructure.Get("Collections");
     BinaryType       = TypesStructure.Get("BinaryData");
@@ -1806,6 +1807,7 @@ Procedure ProcessCollectionParameter(Val CurrentType, Val TypesStructure, Curren
 
     If CurrentType = "Structure" Or CurrentType = "Map" Then
 
+        //@skip-check bsl-legacy-check-for-each-statetement-collection
         For Each ParamElement In CurrentParameter Do
 
             CurrentKey   = Upper(ParamElement.Key);
@@ -1815,9 +1817,9 @@ Procedure ProcessCollectionParameter(Val CurrentType, Val TypesStructure, Curren
                 CurrentParameter = CurrentValue;
 
             ElsIf CurrentKey     = BinaryType Then
-                CurrentParameter = ProcessBlob(CurrentValue);
+                CurrentParameter = ProcessBlob(AddIn, CurrentValue);
             Else
-                CurrentParameter = ProcessParameter(CurrentValue, TypesStructure, False);
+                CurrentParameter = ProcessParameter(AddIn, CurrentValue, TypesStructure, False);
             EndIf;
 
             Break;
@@ -1899,8 +1901,8 @@ Function ВыполнитьЗапросСОбработкой(Коннектор
 	Return ExecuteQueryWithProcessing(Коннектор, ТекстЗапроса, ФорсироватьРезультат, Параметры);
 EndFunction
 
-Function ОбработатьПараметры(Val Параметры, Val СтруктураТипов) Export
-	Return ProcessParameters(Параметры, СтруктураТипов);
+Function ОбработатьПараметры(Val Компонента, Val Параметры, Val СтруктураТипов) Export
+	Return ProcessParameters(Компонента, Параметры, СтруктураТипов);
 EndFunction
 
 Procedure ДобавитьКолонку(Схема, Val Имя, Val Тип) Export

@@ -159,7 +159,7 @@ Function ExecuteSQLQuery(Val QueryText
     OPI_TypeConversion.GetLine(QueryText, True);
     OPI_TypeConversion.GetBoolean(ForceResult);
 
-    Parameters_ = OPI_SQLQueries.ProcessParameters(Parameters, GetTypesStructure());
+    Parameters_ = OPI_SQLQueries.ProcessParameters(Connector, Parameters, GetTypesStructure());
     Result      = OPI_SQLQueries.ExecuteQueryWithProcessing(Connector, QueryText, ForceResult, Parameters_);
 
     If CloseConnection Then
