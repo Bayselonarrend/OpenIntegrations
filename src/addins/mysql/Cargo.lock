@@ -150,6 +150,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "common-binary"
+version = "0.1.0"
+dependencies = [
+ "base64",
+ "serde_json",
+]
+
+[[package]]
 name = "common-dataset"
 version = "0.1.0"
 dependencies = [
@@ -929,6 +937,7 @@ dependencies = [
  "addin1c",
  "base64",
  "chrono",
+ "common-binary",
  "common-dataset",
  "common-tcp",
  "common-utils",

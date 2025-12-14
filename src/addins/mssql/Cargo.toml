@@ -27,3 +27,4 @@ thread-id = "5.0.0"
 common-tcp = { path = "../!commons/common-tcp" }
 common-utils = { path = "../!commons/common-utils" }
 common-dataset = { path = "../!commons/common-dataset" }
+common-binary = { path = "../!commons/common-binary" }
