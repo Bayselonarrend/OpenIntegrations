@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-12-13T23:48:40.037051365Z",
+ "created_at": "2025-12-14T18:19:08.196632825Z",
  "message": {
   "role": "assistant",
-  "content": "1C:Enterprise was released as a major update to the original 1C product in 2003. It brought significant improvements to both the software and the user experience, making it an even more valuable tool for mid-sized and large companies across various industries. The first version of 1C:Enterprise was launched back in 1998, and there have been numerous updates and subsequent releases since then to keep it up to date with new technologies and industry standards while maintaining its unique strengths."
+  "content": "1C:Enterprise was released in 2009. The latest version (13) was released on March 3, 2020, and is available for purchase. It's a comprehensive ERP software that covers various business functions such as accounting, HR management, sales & distribution, manufacturing, inventory management, and SCM, among others. The latest version of 1C:Enterprise brings new features and enhancements to existing functionality, making it more flexible and efficient than previous versions."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 17377370241,
- "load_duration": 18237954,
- "prompt_eval_count": 202,
- "prompt_eval_duration": 6445266240,
- "eval_count": 111,
- "eval_duration": 10907483081
+ "total_duration": 18131946601,
+ "load_duration": 18759243,
+ "prompt_eval_count": 245,
+ "prompt_eval_duration": 8071469663,
+ "eval_count": 113,
+ "eval_duration": 10036490097
 }
