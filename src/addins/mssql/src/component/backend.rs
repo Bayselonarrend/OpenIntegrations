@@ -8,7 +8,9 @@ use chrono::{NaiveDate, NaiveDateTime, NaiveTime, DateTime, Utc};
 use uuid::Uuid;
 use base64::{engine::general_purpose, Engine as _};
 use std::f64;
+use std::str::FromStr;
 use chrono::*;
+use common_binary::vault::{BinaryVault, VaultKey};
 use common_tcp::tls_settings::TlsSettings;
 use common_utils::utils::json_error;
 use tiberius::numeric::Decimal;
@@ -18,7 +20,8 @@ use dateparser::parse;
 
 pub struct MSSQLBackend {
     tx: Sender<BackendCommand>,
-    thread_handle: Option<JoinHandle<()>>,  // Изменено на Option
+    thread_handle: Option<JoinHandle<()>>,
+    pub(crate) binary_vault: BinaryVault
 }
 
 enum BackendCommand {
@@ -39,6 +42,9 @@ enum BackendCommand {
 impl MSSQLBackend {
     pub fn new() -> Self {
         let (tx, rx) = mpsc::channel();
+
+        let binary_vault = BinaryVault::new();
+        let vault_clone = binary_vault.clone();
 
         let thread_handle = thread::Builder::new()
             .name("opi_mssql_backend".to_string())
@@ -96,7 +102,7 @@ impl MSSQLBackend {
                     BackendCommand::Execute { query, params_json, force_result, response } => {
                         let result = if let Some(client) = &mut client {
                             rt.block_on(async {
-                                Self::execute_query_internal(client, &query, params_json, force_result).await
+                                Self::execute_query_internal(&vault_clone, client, &query, params_json, force_result).await
                             })
                         } else {
                             Err("Not connected".to_string())
@@ -112,6 +118,7 @@ impl MSSQLBackend {
         Self {
             tx,
             thread_handle: Some(thread_handle),
+            binary_vault
         }
     }
 
@@ -165,6 +172,7 @@ impl MSSQLBackend {
     }
 
     async fn execute_query_internal(
+        binary_vault: &BinaryVault,
         client: &mut Client<Compat<TcpStream>>,
         query: &str,
         params_json: Vec<Value>,
@@ -172,7 +180,7 @@ impl MSSQLBackend {
     ) -> Result<Option<Vec<Value>>, String> {
 
         let mut params = params_json;
-        let params_array = Self::process_mssql_params(&mut params);
+        let params_array = Self::process_mssql_params(&binary_vault, &mut params)?;
         let normalized_query = query.trim_start().to_uppercase();
         let params_refs: Vec<&dyn ToSql> = params_array.iter().map(|b| b.as_ref()).collect();
 
@@ -310,7 +318,7 @@ impl MSSQLBackend {
         }
     }
 
-    fn process_mssql_params(json_array: &mut Vec<Value>) -> Vec<Box<dyn ToSql>> {
+    fn process_mssql_params(binary_vault: &BinaryVault, json_array: &mut Vec<Value>) -> Result<Vec<Box<dyn ToSql>>, String> {
         let mut result = Vec::new();
 
         for item in json_array.iter_mut() {
@@ -373,16 +381,18 @@ impl MSSQLBackend {
                                 }
                             },
                             "BYTES" => {
-                                match value.as_str() {
-                                    Some(b64) => {
-                                        let cleaned = b64.replace(&['\n', '\r', ' '][..], "");
-                                        match general_purpose::STANDARD.decode(cleaned) {
-                                            Ok(decoded) => Box::new(decoded),
-                                            Err(e) => Box::new(e.to_string().into_bytes())
-                                        }
+
+                                match value.as_str(){
+                                    Some(key) => {
+
+                                        let binary = binary_vault
+                                            .retrieve(&VaultKey::from_str(key).unwrap_or_default());
+
+                                        Box::new(binary.map_err(|e| e.to_string())?)
                                     },
-                                    None => Box::new("Not a Base64 value passed".as_bytes().to_vec())
+                                    None => Box::new("Not a binary vault key passed".as_bytes().to_vec()),
                                 }
+
                             },
                             "UUID" => {
                                 match value.as_str().and_then(|s| Uuid::parse_str(s).ok()) {
@@ -436,7 +446,7 @@ impl MSSQLBackend {
             };
             result.push(param);
         }
-        result
+        Ok(result)
     }
 
     fn parse_date_tz(input: &str) -> Result<DateTime<FixedOffset>, String> {

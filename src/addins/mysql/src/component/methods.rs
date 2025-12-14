@@ -3,11 +3,13 @@ use crate::component::AddIn;
 use base64::{engine::general_purpose, Engine as _};
 use mysql::prelude::Queryable;
 use std::collections::HashMap;
+use std::str::FromStr;
 use chrono::*;
 use common_utils::utils::json_error;
 use mysql_common::packets::Column;
 use dateparser::parse;
 use mysql::consts::ColumnType;
+use common_binary::vault::{BinaryVault, VaultKey};
 
 pub fn execute_query(
     add_in: &mut AddIn,
@@ -27,7 +29,12 @@ pub fn execute_query(
     let mut params = query.params;
     let text = query.text;
     let force_result = query.force_result;
-    let params_array = process_mysql_params(&mut params);
+
+    let params_array = match process_mysql_params(&add_in.binary_vault, &mut params){
+        Ok(params_array) => params_array,
+        Err(e) => return json_error(&e),
+    };
+
     let result = if text.trim_start().to_uppercase().starts_with("SELECT") || force_result == true {
 
         let mut rows: Vec<mysql::Row> = match conn.exec(text, params_array){
@@ -150,7 +157,7 @@ fn is_text_type(column: &Column) -> bool {
     }
 }
 
-fn process_mysql_params(json_array: &mut Vec<Value>) -> Vec<mysql::Value> {
+fn process_mysql_params(binary_vault: &BinaryVault, json_array: &mut Vec<Value>) -> Result<Vec<mysql::Value>, String> {
 
     let mut result = Vec::new();
 
@@ -162,14 +169,19 @@ fn process_mysql_params(json_array: &mut Vec<Value>) -> Vec<mysql::Value> {
                     match key.to_uppercase().as_str(){
                         "BYTES" => {
                             match value.as_str(){
-                                Some(b64) => {
-                                    let cleaned_base64 = b64.replace(&['\n', '\r', ' '][..], "");
-                                    match general_purpose::STANDARD.decode(cleaned_base64) {
-                                        Ok(decoded_blob) => mysql::Value::Bytes(decoded_blob),
-                                        Err(e) => mysql::Value::Bytes(e.to_string().into_bytes())
-                                    }
+                                Some(key) => {
+
+                                    let key_obj = &VaultKey::from_str(key)
+                                        .map_err(|e| e.to_string())?;
+
+                                    let binary = binary_vault
+                                        .retrieve(key_obj)
+                                        .map_err(|e| e.to_string())?;
+
+                                    mysql::Value::Bytes(binary)
+
                                 },
-                                None => mysql::Value::Bytes("Not a Base64 value passed".as_bytes().to_vec()),
+                                None => return Err("Not a binary vault key passed".to_string()),
                             }
                         },
                         "UINT" => mysql::Value::UInt(value.as_u64().unwrap_or(0)),
@@ -202,5 +214,5 @@ fn process_mysql_params(json_array: &mut Vec<Value>) -> Vec<mysql::Value> {
             _ => mysql::Value::from(item.clone())
         })
     };
-    result
+    Ok(result)
 }

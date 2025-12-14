@@ -178,23 +178,11 @@ fn process_object(addin: &AddIn, object: &Map<String, Value>) -> Result<SqlValue
             .map(|v| SqlValue::from(v))
             .unwrap_or(SqlValue::from(0)),
         "BLOB" => {
-
-            let cleaned_base64 = value
-                .as_str()
-                .unwrap_or("")
-                .replace(&['\n', '\r', ' '][..], "");
-
-            match general_purpose::STANDARD.decode(cleaned_base64) {
-                Ok(decoded_blob) => SqlValue::Blob(decoded_blob),
-                Err(e) => SqlValue::Blob(e.to_string().into_bytes())
-            }
-        },
-        "BINARY" => {
             let key = value.as_str().ok_or("Binary vault ket must be string")?;
             let binary = addin
                 .binary_vault
-                .retrieve(VaultKey::from_str(key).unwrap_or_default())
-                .map_err("Value not found in binary vault!")?;
+                .retrieve(&VaultKey::from_str(key).unwrap_or_default())
+                .map_err(|_| {"Value not found in binary vault!".to_string() })?;
             SqlValue::Blob(binary)
         },
         _ => SqlValue::from(value.as_str().unwrap_or("").to_string())

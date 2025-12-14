@@ -6,6 +6,7 @@ use std::collections::HashMap;
 use std::net::IpAddr;
 use std::str::FromStr;
 use chrono::{NaiveDate, NaiveTime, FixedOffset, NaiveDateTime, DateTime};
+use common_binary::vault::{BinaryVault, VaultKey};
 use common_utils::utils::json_error;
 use uuid::Uuid;
 use dateparser::parse;
@@ -33,7 +34,7 @@ pub fn execute_query(add_in: &mut AddIn, key: &str) -> String {
     let text = query.text;
     let force_result = query.force_result;
 
-    let params_ref = match process_params(&params){
+    let params_ref = match process_params(&add_in.binary_vault, &params){
         Ok(params) => params,
         Err(e) => return json_error(&e.to_string()),
     };
@@ -59,7 +60,8 @@ pub fn execute_query(add_in: &mut AddIn, key: &str) -> String {
     }
 }
 
-fn process_params(params: &Vec<Value>) -> Result<Vec<Box<dyn ToSql + Sync>>, String> {
+fn process_params(binary_vault: &BinaryVault, params: &Vec<Value>) -> Result<Vec<Box<dyn ToSql + Sync>>, String> {
+
     let mut result = Vec::new();
     for param in params {
         let processed: Box<dyn ToSql + Sync> = match param {
@@ -75,7 +77,7 @@ fn process_params(params: &Vec<Value>) -> Result<Vec<Box<dyn ToSql + Sync>>, Str
                 }
             }
             Value::String(s) => Box::new(s.clone()),
-            Value::Object(obj) => process_object(obj)?,
+            Value::Object(obj) => process_object(binary_vault, obj)?,
             _ => return Err("Unsupported parameter type".to_string()),
         };
         result.push(processed);
@@ -83,7 +85,8 @@ fn process_params(params: &Vec<Value>) -> Result<Vec<Box<dyn ToSql + Sync>>, Str
     Ok(result)
 }
 
-fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, String> {
+fn process_object(binary_vault: &BinaryVault, object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, String> {
+
     if object.len() != 1 {
         return Err("Object must have exactly one key-value pair specifying the type and value".to_string());
     }
@@ -151,16 +154,18 @@ fn process_object(object: &Map<String, Value>) -> Result<Box<dyn ToSql + Sync>, 
             .and_then(|v| i8::try_from(v).ok())
             .map(|v| Box::new(v) as Box<dyn ToSql + Sync>)
             .ok_or_else(|| "Invalid value for \"char\"".to_string()),
-        "BYTEA" => value
-            .as_str()
-            .map(|blob_str| {
-                // Очистка строки base64 от лишних символов
-                let cleaned_base64 = blob_str.replace(&['\n', '\r', ' '][..], "");
-                general_purpose::STANDARD.decode(&cleaned_base64)
-            })
-            .and_then(|res| res.ok())
-            .map(|v| Box::new(v) as Box<dyn ToSql + Sync>)
-            .ok_or_else(|| "Invalid base64 value for BYTEA".to_string()),
+        "BYTEA" => {
+            let key_str = value.as_str()
+                .ok_or_else(|| "Invalid value for BYTEA: expected a string key".to_string())?;
+
+            let key_obj = VaultKey::from_str(key_str)
+                .map_err(|e| format!("Invalid vault key format: {}", e))?;
+
+            match binary_vault.retrieve(&key_obj) {
+                Ok(data) => Ok(Box::new(data) as Box<dyn ToSql + Sync>),
+                Err(e) => Err(format!("Failed to retrieve binary data from vault: {}", e)),
+            }
+        },
         "HSTORE" => value
             .as_object()
             .map(|obj| {
