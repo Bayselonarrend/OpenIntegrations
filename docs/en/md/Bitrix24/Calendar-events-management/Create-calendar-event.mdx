@@ -31,7 +31,7 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    CalendarID = "1774";
+    CalendarID = "1802";
 
     Tomorrow = OPI_Tools.GetCurrentDate() + 86400;
     Hour     = 3600;
@@ -93,8 +93,8 @@ Method at API documentation: [calendar.event.add](https://apidocs.bitrix24.ru/ap
     Result = OPI_Bitrix24.CreateCalendarEvent(URL, EventStucture);
 
     URL        = "b24-ar17wx.bitrix24.by";
-    Token      = "83583d69006e9f06006b12e400000001000...";
-    CalendarID = "1776";
+    Token      = "0bad3e69006e9f06006b12e400000001000...";
+    CalendarID = "1804";
 
     EventStucture.Insert("section", CalendarID);
 

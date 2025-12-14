@@ -1,7 +1,7 @@
 ﻿    Text   = "New post text";
     Title  = "New post title";
     Image1 = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
-    PostID = "3452";
+    PostID = "3480";
 
     Files = New Map;
     Files.Insert("1.png", Image1);
@@ -11,7 +11,7 @@
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "83583d69006e9f06006b12e400000001000...";
-    PostID = "3450";
+    Token  = "0bad3e69006e9f06006b12e400000001000...";
+    PostID = "3478";
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title, Token);

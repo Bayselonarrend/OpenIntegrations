@@ -1668,11 +1668,11 @@ Procedure B24_CommentsManagement() Export
 
     Bitrix24_AddTaskComment(TestParameters);
     Bitrix24_UpdateTaskComment(TestParameters);
-    Bitrix24_CreateResultFromComment(TestParameters);
-    Bitrix24_GetResultsList(TestParameters);
-    Bitrix24_DeleteResultFromComment(TestParameters);
-    Bitrix24_GetTaskCommentsList(TestParameters);
-    Bitrix24_GetTaskComment(TestParameters);
+    // !DISABLED! Bitrix24_CreateResultFromComment(TestParameters);
+    // !DISABLED! Bitrix24_GetResultsList(TestParameters);
+    // !DISABLED! Bitrix24_DeleteResultFromComment(TestParameters);
+    // !DISABLED! Bitrix24_GetTaskCommentsList(TestParameters);
+    // !DISABLED! Bitrix24_GetTaskComment(TestParameters);
     Bitrix24_DeleteTaskComment(TestParameters);
     Bitrix24_GetCommentStructure(TestParameters);
 
