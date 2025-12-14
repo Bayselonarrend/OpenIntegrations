@@ -1,4 +1,4 @@
-﻿    FolderID  = "48402";
+﻿    FolderID  = "48780";
     Name      = "New subfolder";
     Filename2 = "New subfolder 2";
 
@@ -7,6 +7,6 @@
     Result = OPI_Bitrix24.CreateSubfolder(URL, FolderID, Filename2);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "83583d69006e9f06006b12e400000001000...";
+    Token = "0bad3e69006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CreateSubfolder(URL, FolderID, Name, Token);

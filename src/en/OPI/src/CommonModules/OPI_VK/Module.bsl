@@ -497,45 +497,46 @@ Function UploadPhotoToServer(Val Image, Val Parameters = "", Val View = "Post") 
 
     Files.Insert(ImageKey, Image);
 
-    For N = 1 To 5 Do
+    Response = OPI_HTTPRequests.Get(Upload, Parameters);
+    Result   = Response[Response_];
 
-        Response = OPI_HTTPRequests.Get(Upload, Parameters);
-        Result   = Response[Response_];
+    If ValueIsFilled(Result) Then
 
-        If ValueIsFilled(Result) Then
+        URL = Result["upload_url"];
 
-            URL = Result["upload_url"];
-
-            If Not ValueIsFilled(URL) Then
-                Return Response;
-            EndIf;
-
-        Else
+        If Not ValueIsFilled(URL) Then
             Return Response;
         EndIf;
 
-        Parameters.Insert("upload_url", URL);
+    Else
+        Return Response;
+    EndIf;
+
+    Parameters.Insert("upload_url", URL);
+
+    For N = 1 To 5 Do
+
         Response = OPI_HTTPRequests.PostMultipart(URL, Parameters, Files);
 
-        If TypeOf(Response) = Type("Map") Then
+        If TypeOf(Response) <> Type("Map") Then
+            Continue;
+        EndIf;
+
+        Success = FillPhotoUploadParameters(Method, Response, Parameters);
+
+        If Not Success Then
+            Continue;
+        Else
             Break;
         EndIf;
 
     EndDo;
 
-    If TypeOf(Response) <> Type("Map") Then
+    Response = OPI_HTTPRequests.Get(Save, Parameters);
+
+    If TypeOf(Response) = Type("BinaryData") Then
         Return GetStringFromBinaryData(Response);
     EndIf;
-
-    Photo = Response.Get(Method["Photo"]);
-
-    If Not ValueIsFilled(Photo) Then
-        Return Response;
-    EndIf;
-
-    FillPhotoUploadParameters(Method, Response, Parameters);
-
-    Response = OPI_HTTPRequests.Get(Save, Parameters);
 
     Return Response;
 
@@ -2045,7 +2046,7 @@ Function AddImageParameter(Val Image, Val SelectionID, Parameters)
 
 EndFunction
 
-Procedure FillPhotoUploadParameters(Val Method, Val Response, Parameters)
+Function FillPhotoUploadParameters(Val Method, Val Response, Parameters)
 
     Response_      = "response";
     Way            = Method["Way"];
@@ -2058,6 +2059,12 @@ Procedure FillPhotoUploadParameters(Val Method, Val Response, Parameters)
         Serv  = "server";
         Aid   = "aid";
         Photo = Method["Photo"];
+
+        PhotoID = Response[Photo];
+
+        If Not ValueIsFilled(PhotoID) Then
+            Return False;
+        EndIf;
 
         Parameters.Insert(Hash , Response[Hash]);
         Parameters.Insert(Photo, Response[Photo]);
@@ -2078,15 +2085,33 @@ Procedure FillPhotoUploadParameters(Val Method, Val Response, Parameters)
 
     ElsIf Way = NewMethod Then
 
+        If Not ValueIsFilled(Response["album_id"]) Or Not ValueIsFilled(Response["meta"]) Then
+            Return False;
+        EndIf;
+
         Parameters.Insert("upload_response", Response);
 
     Else
 
-        Parameters.Insert("upload_results", Response[Response_]["upload_result"]);
+        UploadResponse = Response[Response_];
+
+        If Not ValueIsFilled(UploadResponse) Then
+            Return False;
+        EndIf;
+
+        UploadResult = UploadResponse["upload_result"];
+
+        If Not ValueIsFilled(UploadResult) Then
+            Return False;
+        EndIf;
+
+        Parameters.Insert("upload_results", UploadResult);
 
     EndIf;
 
-EndProcedure
+    Return True;
+
+EndFunction
 
 Procedure FillProductRequestFields(Val ProductDescription, Parameters)
 
