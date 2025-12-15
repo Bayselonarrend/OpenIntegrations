@@ -855,6 +855,7 @@ dependencies = [
  "base64",
  "common-tcp",
  "common-utils",
+ "http",
  "hyper-rustls",
  "prost 0.14.1",
  "prost-reflect",
