@@ -1,8 +1,7 @@
 @echo off
 
-:: Установить переменную
-set CARGO_NAME=opi_sqlite
-set LIB_NAME=OPI_SQLite
+set CARGO_NAME=opi_grpc
+set LIB_NAME=OPI_GRPC
 set ADDIN_DIR=%~dp0
 
 call ../build.bat
