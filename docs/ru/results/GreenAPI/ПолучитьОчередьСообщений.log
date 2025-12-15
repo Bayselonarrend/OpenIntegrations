@@ -1,17 +1,17 @@
 ﻿[
  {
-  "messageID": "3EB0FC37235A1789E037F5",
+  "messageID": "3EB0727C0579AE9ED71AC5",
   "type": "sendLocation",
   "body": {
    "chatId": "120363410406221140@g.us",
-   "quotedMessageId": "3EB00F586B758564303EDE",
+   "quotedMessageId": "3EB0A54CBD45859E87FD5B",
    "latitude": 53.908522,
    "longitude": 27.574821,
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB00E6338D5BF8C7D369F",
+  "messageID": "3EB0DF87694737E9A83D49",
   "type": "sendContact",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -26,7 +26,7 @@
   }
  },
  {
-  "messageID": "3EB00DBBB782F8118EFB0C",
+  "messageID": "3EB0B31B6A05409252F076",
   "type": "sendContact",
   "body": {
    "chatId": "120363410406221140@g.us",
@@ -34,30 +34,30 @@
     "phoneContact": 79001234568,
     "company": "Велосипед"
    },
-   "quotedMessageId": "3EB00E6338D5BF8C7D369F",
+   "quotedMessageId": "3EB0DF87694737E9A83D49",
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "3EB06D6D834C950AA628F3"
+   "3EB0B44521A2AB715F332A"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "120363410406221140@g.us",
    "chatIdFrom": "120363410406221140@g.us",
    "messages": [
-    "3EB036B6803D1A9A96DA3A"
+    "3EB0A3E800A4A0EDF3378D"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB0ADE9646A8DB895A4E0",
+  "messageID": "3EB0FD1FA97CB5742EDA70",
   "type": "editMessage",
   "body": {
    "chatId": "120363410406221140@g.us",
-   "idMessage": "3EB036B6803D1A9A96DA3A",
+   "idMessage": "3EB0A3E800A4A0EDF3378D",
    "message": "Новый текст сообщения",
    "linkPreview": true
   }
