@@ -23,7 +23,6 @@ pub const METHODS: &[&[u16]] = &[
     name!("ListServices"),      // 6
     name!("ListMethods"),       // 7
     name!("GetMethodInfo"),     // 8
-    name!("GetTLSSettings"),    // 9
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
