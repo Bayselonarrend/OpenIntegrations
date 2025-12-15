@@ -22,8 +22,16 @@ impl TlsSettings {
         let _ = ring::default_provider()
             .install_default();
 
-        let mut root_store =
-            rustls::RootCertStore::from_iter(webpki_roots::TLS_SERVER_ROOTS.iter().cloned());
+        let mut root_store = rustls::RootCertStore::empty();
+        
+        // Добавляем webpki корневые сертификаты
+        root_store.extend(webpki_roots::TLS_SERVER_ROOTS.iter().cloned());
+        
+        // Добавляем нативные системные корневые сертификаты
+        let native_certs = rustls_native_certs::load_native_certs();
+        for cert in native_certs.certs {
+            let _ = root_store.add(cert);
+        }
 
         if !self.ca_cert_path.is_empty() {
             let cert_data = std::fs::read(&self.ca_cert_path)
