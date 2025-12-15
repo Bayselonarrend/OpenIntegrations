@@ -41,9 +41,10 @@ impl TlsSettings {
             }
         }
 
-        let mut config = ClientConfig::builder()
-            .with_root_certificates(root_store)
-            .with_no_client_auth();
+        let config_builder = ClientConfig::builder()
+            .with_root_certificates(root_store);
+
+        let mut config = config_builder.with_no_client_auth();
 
         if self.accept_invalid_certs {
             config.dangerous().set_certificate_verifier(Arc::new(NoCertificateVerification));
