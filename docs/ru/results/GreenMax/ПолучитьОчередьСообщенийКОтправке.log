@@ -1,9 +1,9 @@
 ﻿[
  {
-  "messageID": "1765669537352",
+  "messageID": "1765736160918",
   "type": "sendFileByUrl",
   "body": {
-   "chatId": "-69668034838613",
+   "chatId": "-69683242860629",
    "urlFile": "https://hut.openintegrations.dev/test_data/video.mp4",
    "fileName": "vid.mp4",
    "caption": "Описание файла",

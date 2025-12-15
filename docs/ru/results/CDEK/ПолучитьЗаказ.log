@@ -1,8 +1,8 @@
 ﻿{
  "entity": {
-  "uuid": "e0e5ff63-36eb-4dee-9855-3878a967317a",
+  "uuid": "246461ae-83de-422e-9215-166202bcd93e",
   "type": 1,
-  "number": "8fb509b2-d9d1-41a7-a786-f5d0280db4e4",
+  "number": "33f35937-bb41-43c6-99c3-63f3dfa65a17",
   "tariff_code": 139,
   "comment": "Новый заказ",
   "delivery_recipient_cost": {
@@ -68,7 +68,7 @@
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-12-14T02:37:10+03:00",
+    "date_time": "2025-12-14T20:43:58+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
@@ -76,9 +76,9 @@
  },
  "requests": [
   {
-   "request_uuid": "b185d7ce-ae41-42bf-8344-62a55ef96c5b",
+   "request_uuid": "6ad59261-0f11-4482-9421-3235d83d33d7",
    "type": "CREATE",
-   "date_time": "2025-12-14T02:37:10+03:00",
+   "date_time": "2025-12-14T20:43:58+03:00",
    "state": "ACCEPTED"
   }
  ],
