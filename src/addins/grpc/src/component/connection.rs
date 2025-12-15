@@ -32,21 +32,9 @@ async fn establish_rustls_connection(
     let host = uri.host().ok_or("No host in URI")?;
     let port = uri.port_u16().unwrap_or(if scheme == "https" { 443 } else { 80 });
 
-    if scheme == "http" {
-        let endpoint = Endpoint::from_shared(address.to_string())
-            .map_err(|e| format!("Invalid address: {}", e))?;
-
-        return endpoint
-            .connect()
-            .await
-            .map_err(|e| format!("HTTP connection failed: {}. Address: {}, Host: {}, Port: {}", e, address, host, port));
-    }
-
-    // Создаем rustls конфигурацию
     let rustls_config = tls_settings.get_rustls_config()
         .map_err(|e| format!("Failed to create rustls config: {}", e))?;
 
-    // Создаем hyper-rustls коннектор
     let connector = hyper_rustls::HttpsConnectorBuilder::new()
         .with_tls_config(rustls_config)
         .https_or_http()
@@ -60,5 +48,5 @@ async fn establish_rustls_connection(
     endpoint
         .connect_with_connector(connector)
         .await
-        .map_err(|e| format!("HTTPS connection failed: transport error: {}. Address: {}, Host: {}, Port: {}", e, address, host, port))
+        .map_err(|e| format!("HTTPS connection failed: {}. Address: {}, Host: {}, Port: {}", e, address, host, port))
 }
