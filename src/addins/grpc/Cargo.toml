@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [lib]
-crate-type = ["cdylib"]
+crate-type = ["cdylib", "rlib"]
 
 [profile.release]
 lto = "fat"       # Enable Link Time Optimization
@@ -18,7 +18,7 @@ addin1c = "0.5.0"
 serde_json = "1.0"
 common-utils = { path = "../!commons/common-utils" }
 common-tcp = { path = "../!commons/common-tcp", default-features = false, features = ["rustls"] }
-tonic = { version = "0.13.1", features = ["_tls-any", "channel"] }
+tonic = { version = "0.13.1", features = ["transport", "channel"] }
 prost = "0.14.1"
 tokio = { version = "1.45.1", features = ["rt-multi-thread", "macros"] }
 serde = { version = "1.0.219", features = ["derive"] }
