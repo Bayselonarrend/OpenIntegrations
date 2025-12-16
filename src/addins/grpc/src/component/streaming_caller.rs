@@ -3,12 +3,12 @@ use std::collections::HashMap;
 use std::time::Duration;
 use tonic::transport::Channel;
 use tonic::{Request, Streaming};
-use tonic::metadata::{MetadataValue, MetadataKey, Ascii};
 use prost_reflect::{DescriptorPool, DynamicMessage, MethodDescriptor};
 use prost::Message;
 use tokio::sync::mpsc;
 use tonic::codegen::tokio_stream;
 use crate::component::message_converter::{json_to_dynamic_message, dynamic_message_to_json};
+use crate::component::grpc_caller::{apply_metadata, create_request_message};
 use futures::StreamExt;
 use crate::component::stream_manager::{StreamInfo, StreamManager};
 
@@ -27,15 +27,11 @@ pub async fn start_server_stream(
     stream_manager: &StreamManager,
     params: &StreamCallParams,
 ) -> Result<String, String> {
+
     let method_desc = get_method_descriptor(descriptor_pool, &params.service, &params.method)?;
-
-    let request_message = if let Some(request_data) = &params.request {
-        json_to_dynamic_message(request_data, &method_desc.input())?
-    } else {
-        DynamicMessage::new(method_desc.input())
-    };
-
+    let request_message = create_request_message(&params.request, &method_desc.input())?;
     let request_bytes = request_message.encode_to_vec();
+
     let mut grpc_request = Request::new(request_bytes);
 
     apply_metadata(&mut grpc_request, metadata)?;
@@ -54,18 +50,8 @@ pub async fn start_server_stream(
         .into_inner();
 
     let (tx, rx) = mpsc::unbounded_channel();
-    let output_desc = method_desc.output();
-
-    tokio::spawn(async move {
-        let mut stream = response;
-        while let Ok(Some(bytes)) = stream.message().await {
-            if let Ok(message) = DynamicMessage::decode(output_desc.clone(), bytes.as_ref()) {
-                if tx.send(message).is_err() {
-                    break;
-                }
-            }
-        }
-    });
+    
+    spawn_response_handler(response, method_desc.output(), tx);
 
     let stream_info = StreamInfo::new_server_stream(rx, method_desc.output());
     let stream_id = stream_manager.add_stream(stream_info).await;
@@ -171,17 +157,7 @@ pub async fn start_bidi_stream(
         .map_err(|e| format!("gRPC bidi stream failed: {}", e))?
         .into_inner();
 
-    let output_desc = method_desc.output();
-    tokio::spawn(async move {
-        let mut stream = response;
-        while let Ok(Some(bytes)) = stream.message().await {
-            if let Ok(message) = DynamicMessage::decode(output_desc.clone(), bytes.as_ref()) {
-                if tx_recv.send(message).is_err() {
-                    break;
-                }
-            }
-        }
-    });
+    spawn_response_handler(response, method_desc.output(), tx_recv);
 
     let stream_info = StreamInfo::new_bidi_stream(
         tx_send,
@@ -192,6 +168,22 @@ pub async fn start_bidi_stream(
     let stream_id = stream_manager.add_stream(stream_info).await;
 
     Ok(stream_id)
+}
+
+fn spawn_response_handler(
+    mut response: Streaming<Vec<u8>>,
+    output_descriptor: prost_reflect::MessageDescriptor,
+    sender: mpsc::UnboundedSender<DynamicMessage>,
+) {
+    tokio::spawn(async move {
+        while let Ok(Some(bytes)) = response.message().await {
+            if let Ok(message) = DynamicMessage::decode(output_descriptor.clone(), bytes.as_ref()) {
+                if sender.send(message).is_err() {
+                    break;
+                }
+            }
+        }
+    });
 }
 
 pub async fn send_stream_message(
@@ -229,10 +221,9 @@ pub async fn finish_client_stream_and_get_response(
     stream_manager: &StreamManager,
     stream_id: &str,
 ) -> Result<Value, String> {
-    // First, finish sending
+
     stream_manager.finish_sending(stream_id).await?;
-    
-    // Then get the final response
+
     match stream_manager.get_final_response(stream_id).await? {
         Some(message) => {
             let json_message = dynamic_message_to_json(&message)?;
@@ -259,17 +250,4 @@ fn get_method_descriptor<'a>(
     Ok(method)
 }
 
-fn apply_metadata(
-    request: &mut Request<impl Send>,
-    metadata: &HashMap<String, String>,
-) -> Result<(), String> {
-    for (key, value) in metadata {
-        if let (Ok(metadata_key), Ok(metadata_value)) = (
-            MetadataKey::<Ascii>::from_bytes(key.as_bytes()),
-            MetadataValue::try_from(value.as_str())
-        ) {
-            request.metadata_mut().insert(metadata_key, metadata_value);
-        }
-    }
-    Ok(())
-}
+

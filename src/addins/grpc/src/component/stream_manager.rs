@@ -21,6 +21,7 @@ pub struct StreamInfo {
     pub can_send: bool,
     pub can_receive: bool,
     pub input_descriptor: Option<MessageDescriptor>,
+    #[allow(dead_code)]
     pub output_descriptor: Option<MessageDescriptor>,
     pub final_response: Arc<Mutex<Option<oneshot::Receiver<Result<DynamicMessage, String>>>>>,
 }
@@ -238,5 +239,14 @@ impl StreamManager {
         let stream_info = stream.lock().await;
         stream_info.input_descriptor.clone()
             .ok_or_else(|| "No input descriptor available for this stream".to_string())
+    }
+    #[allow(dead_code)]
+    pub async fn get_output_descriptor(&self, stream_id: &str) -> Result<MessageDescriptor, String> {
+        let stream = self.get_stream(stream_id).await
+            .ok_or_else(|| format!("Stream '{}' not found", stream_id))?;
+        
+        let stream_info = stream.lock().await;
+        stream_info.output_descriptor.clone()
+            .ok_or_else(|| "No output descriptor available for this stream".to_string())
     }
 }
