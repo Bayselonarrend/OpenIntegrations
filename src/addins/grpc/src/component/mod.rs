@@ -25,7 +25,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("ListServices"),         // 6
     name!("ListMethods"),          // 7
     name!("GetMethodInfo"),        // 8
-    name!("CallServerStream"),     // 9
+    name!("StartServerStream"),    // 9
     name!("StartClientStream"),    // 10
     name!("StartBidiStream"),      // 11
     name!("SendMessage"),          // 12
@@ -47,7 +47,7 @@ pub fn get_params_amount(num: usize) -> usize {
         6 => 0,  // ListServices
         7 => 1,  // ListMethods
         8 => 2,  // GetMethodInfo
-        9 => 1,  // CallServerStream
+        9 => 1,  // StartServerStream
         10 => 1, // StartClientStream
         11 => 1, // StartBidiStream
         12 => 2, // SendMessage

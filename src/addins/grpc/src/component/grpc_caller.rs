@@ -16,6 +16,32 @@ pub struct CallParams {
     pub timeout_ms: Option<u64>,
 }
 
+pub fn apply_metadata<T>(
+    request: &mut Request<T>,
+    metadata: &HashMap<String, String>,
+) -> Result<(), String> {
+    for (key, value) in metadata {
+        if let (Ok(metadata_key), Ok(metadata_value)) = (
+            MetadataKey::<Ascii>::from_bytes(key.as_bytes()),
+            MetadataValue::try_from(value.as_str())
+        ) {
+            request.metadata_mut().insert(metadata_key, metadata_value);
+        }
+    }
+    Ok(())
+}
+
+pub fn create_request_message(
+    request_data: &Option<Value>,
+    message_descriptor: &prost_reflect::MessageDescriptor,
+) -> Result<DynamicMessage, String> {
+    if let Some(data) = request_data {
+        json_to_dynamic_message(data, message_descriptor)
+    } else {
+        Ok(DynamicMessage::new(message_descriptor.clone()))
+    }
+}
+
 pub async fn execute_grpc_call(
     channel: &Channel,
     descriptor_pool: &DescriptorPool,
@@ -32,24 +58,13 @@ pub async fn execute_grpc_call(
         .find(|m| m.name() == params.method)
         .ok_or_else(|| format!("Method '{}' not found in service '{}'", params.method, params.service))?;
 
-    let request_message = if let Some(request_data) = &params.request {
-        json_to_dynamic_message(request_data, &method.input())?
-    } else {
-        DynamicMessage::new(method.input())
-    };
+    let request_message = create_request_message(&params.request, &method.input())?;
 
     let request_bytes = request_message.encode_to_vec();
 
     let mut grpc_request = Request::new(request_bytes);
 
-    for (key, value) in metadata {
-        if let (Ok(metadata_key), Ok(metadata_value)) = (
-            MetadataKey::<Ascii>::from_bytes(key.as_bytes()),
-            MetadataValue::try_from(value.as_str())
-        ) {
-            grpc_request.metadata_mut().insert(metadata_key, metadata_value);
-        }
-    }
+    apply_metadata(&mut grpc_request, metadata)?;
 
     if let Some(timeout_ms) = params.timeout_ms {
         grpc_request.set_timeout(Duration::from_millis(timeout_ms));
