@@ -12,6 +12,7 @@ pub struct ClientState {
     pub(crate) channel: Option<Channel>,
     pub(crate) descriptor_pool: Option<DescriptorPool>,
     pub(crate) stream_manager: StreamManager,
+    pub(crate) proto_files: HashMap<String, String>,
 }
 
 impl ClientState {
@@ -24,6 +25,7 @@ impl ClientState {
             channel: None,
             descriptor_pool: None,
             stream_manager: StreamManager::new(),
+            proto_files: HashMap::new(),
         }
     }
 
