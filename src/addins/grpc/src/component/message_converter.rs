@@ -6,7 +6,6 @@ pub fn json_to_dynamic_message(json_value: &Value, message_desc: &MessageDescrip
 
     if let Value::Object(obj) = json_value {
         for (field_name, field_value) in obj {
-            // Skip null values - they represent absent fields
             if field_value.is_null() {
                 continue;
             }
@@ -15,7 +14,6 @@ pub fn json_to_dynamic_message(json_value: &Value, message_desc: &MessageDescrip
                 let prost_value = json_value_to_prost_value(field_value, &field_desc)?;
                 message.set_field(&field_desc, prost_value);
             }
-            // Note: Unknown fields are silently ignored (protobuf behavior)
         }
     }
 
@@ -38,14 +36,11 @@ fn json_value_to_prost_value(json_value: &Value, field_desc: &prost_reflect::Fie
         };
     }
 
-    // Handle map fields
     if field_desc.is_map() {
         return match json_value {
             Value::Object(obj) => {
                 let mut map = std::collections::HashMap::new();
                 for (key, value) in obj {
-                    // For maps, we need to handle key and value types
-                    // This is simplified - proper implementation would need map entry descriptor
                     let val_value = json_value_to_prost_value_scalar(value, field_desc)?;
                     map.insert(prost_reflect::MapKey::String(key.clone()), val_value);
                 }
@@ -55,7 +50,6 @@ fn json_value_to_prost_value(json_value: &Value, field_desc: &prost_reflect::Fie
         };
     }
 
-    // Handle scalar/singular fields
     json_value_to_prost_value_scalar(json_value, field_desc)
 }
 
