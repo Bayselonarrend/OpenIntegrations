@@ -2,6 +2,7 @@ use std::collections::HashMap;
 use common_tcp::tls_settings::TlsSettings;
 use prost_reflect::DescriptorPool;
 use tonic::transport::Channel;
+use crate::component::stream_manager::StreamManager;
 
 pub struct ClientState {
     pub(crate) connected: bool,
@@ -10,6 +11,7 @@ pub struct ClientState {
     pub(crate) metadata: HashMap<String, String>,
     pub(crate) channel: Option<Channel>,
     pub(crate) descriptor_pool: Option<DescriptorPool>,
+    pub(crate) stream_manager: StreamManager,
 }
 
 impl ClientState {
@@ -21,6 +23,7 @@ impl ClientState {
             metadata: HashMap::new(),
             channel: None,
             descriptor_pool: None,
+            stream_manager: StreamManager::new(),
         }
     }
 
