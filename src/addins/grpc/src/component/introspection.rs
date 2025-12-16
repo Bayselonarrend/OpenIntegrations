@@ -61,18 +61,23 @@ fn message_to_json_schema(message_desc: &MessageDescriptor) -> Value {
     for field in message_desc.fields() {
         let field_name = field.name().to_string();
         let field_type = match field.kind() {
-            prost_reflect::Kind::Double => "number",
-            prost_reflect::Kind::Float => "number", 
-            prost_reflect::Kind::Int32 | prost_reflect::Kind::Int64 => "integer",
-            prost_reflect::Kind::Uint32 | prost_reflect::Kind::Uint64 => "integer",
-            prost_reflect::Kind::Sint32 | prost_reflect::Kind::Sint64 => "integer",
-            prost_reflect::Kind::Fixed32 | prost_reflect::Kind::Fixed64 => "integer",
-            prost_reflect::Kind::Sfixed32 | prost_reflect::Kind::Sfixed64 => "integer",
-            prost_reflect::Kind::Bool => "boolean",
+            prost_reflect::Kind::Double => "double",
+            prost_reflect::Kind::Float => "float",
+            prost_reflect::Kind::Int32 => "int32",
+            prost_reflect::Kind::Int64 => "int64",
+            prost_reflect::Kind::Uint32 => "uint32",
+            prost_reflect::Kind::Uint64 => "uint64",
+            prost_reflect::Kind::Sint32 => "sint32",
+            prost_reflect::Kind::Sint64 => "sint64",
+            prost_reflect::Kind::Fixed32 => "fixed32",
+            prost_reflect::Kind::Fixed64 => "fixed64",
+            prost_reflect::Kind::Sfixed32 => "sfixed32",
+            prost_reflect::Kind::Sfixed64 => "sfixed64",
+            prost_reflect::Kind::Bool => "bool",
             prost_reflect::Kind::String => "string",
-            prost_reflect::Kind::Bytes => "binary",
-            prost_reflect::Kind::Message(_) => "object",
-            prost_reflect::Kind::Enum(_) => "string",
+            prost_reflect::Kind::Bytes => "bytes",
+            prost_reflect::Kind::Message(_) => "message",
+            prost_reflect::Kind::Enum(_) => "enum",
         };
         
         fields.insert(field_name, json!({

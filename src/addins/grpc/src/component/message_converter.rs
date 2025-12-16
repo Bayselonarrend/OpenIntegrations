@@ -19,6 +19,44 @@ pub fn json_to_dynamic_message(json_value: &Value, message_desc: &MessageDescrip
 fn json_value_to_prost_value(json_value: &Value, field_desc: &prost_reflect::FieldDescriptor) -> Result<prost_reflect::Value, String> {
     use prost_reflect::{Value as ProstValue, Kind};
 
+    // Handle repeated fields (arrays)
+    if field_desc.is_list() {
+        return match json_value {
+            Value::Array(arr) => {
+                let list: Result<Vec<ProstValue>, String> = arr.iter()
+                    .map(|item| json_value_to_prost_value_scalar(item, field_desc))
+                    .collect();
+                Ok(ProstValue::List(list?))
+            },
+            _ => Err(format!("Expected array for repeated field '{}'", field_desc.name())),
+        };
+    }
+
+    // Handle map fields
+    if field_desc.is_map() {
+        return match json_value {
+            Value::Object(obj) => {
+                let mut map = std::collections::HashMap::new();
+                for (key, value) in obj {
+                    // For maps, we need to handle key and value types
+                    // This is simplified - proper implementation would need map entry descriptor
+                    let key_value = ProstValue::String(key.clone());
+                    let val_value = json_value_to_prost_value_scalar(value, field_desc)?;
+                    map.insert(prost_reflect::MapKey::String(key.clone()), val_value);
+                }
+                Ok(ProstValue::Map(map))
+            },
+            _ => Err(format!("Expected object for map field '{}'", field_desc.name())),
+        };
+    }
+
+    // Handle scalar/singular fields
+    json_value_to_prost_value_scalar(json_value, field_desc)
+}
+
+fn json_value_to_prost_value_scalar(json_value: &Value, field_desc: &prost_reflect::FieldDescriptor) -> Result<prost_reflect::Value, String> {
+    use prost_reflect::{Value as ProstValue, Kind};
+
     match field_desc.kind() {
         Kind::Double => match json_value {
             Value::Number(n) => Ok(ProstValue::F64(n.as_f64().unwrap_or(0.0))),
