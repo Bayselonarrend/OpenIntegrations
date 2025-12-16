@@ -6,10 +6,16 @@ pub fn json_to_dynamic_message(json_value: &Value, message_desc: &MessageDescrip
 
     if let Value::Object(obj) = json_value {
         for (field_name, field_value) in obj {
+            // Skip null values - they represent absent fields
+            if field_value.is_null() {
+                continue;
+            }
+
             if let Some(field_desc) = message_desc.get_field_by_name(field_name) {
                 let prost_value = json_value_to_prost_value(field_value, &field_desc)?;
                 message.set_field(&field_desc, prost_value);
             }
+            // Note: Unknown fields are silently ignored (protobuf behavior)
         }
     }
 
@@ -17,7 +23,7 @@ pub fn json_to_dynamic_message(json_value: &Value, message_desc: &MessageDescrip
 }
 
 fn json_value_to_prost_value(json_value: &Value, field_desc: &prost_reflect::FieldDescriptor) -> Result<prost_reflect::Value, String> {
-    use prost_reflect::{Value as ProstValue, Kind};
+    use prost_reflect::Value as ProstValue;
 
     // Handle repeated fields (arrays)
     if field_desc.is_list() {
@@ -40,7 +46,6 @@ fn json_value_to_prost_value(json_value: &Value, field_desc: &prost_reflect::Fie
                 for (key, value) in obj {
                     // For maps, we need to handle key and value types
                     // This is simplified - proper implementation would need map entry descriptor
-                    let key_value = ProstValue::String(key.clone());
                     let val_value = json_value_to_prost_value_scalar(value, field_desc)?;
                     map.insert(prost_reflect::MapKey::String(key.clone()), val_value);
                 }

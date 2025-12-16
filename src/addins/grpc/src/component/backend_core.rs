@@ -29,7 +29,11 @@ pub enum BackendCommand {
         response: Sender<String>,
     },
     LoadProto {
+        filename: String,
         content: String,
+        response: Sender<String>,
+    },
+    CompileProtos {
         response: Sender<String>,
     },
     SetMetadata {
@@ -139,13 +143,23 @@ impl GrpcBackend {
                             };
                             let _ = response.send(response_msg);
                         }
-                        BackendCommand::LoadProto { content, response } => {
-                            let result = match proto_loader::load_proto_content(&content) {
-                                Ok(descriptor_pool) => {
-                                    client_state.descriptor_pool = Some(descriptor_pool);
-                                    Ok(())
-                                },
-                                Err(e) => Err(e)
+                        BackendCommand::LoadProto { filename, content, response } => {
+                            // Just add proto file to collection, don't compile yet
+                            client_state.proto_files.insert(filename, content);
+                            let _ = response.send("".to_string());
+                        }
+                        BackendCommand::CompileProtos { response } => {
+                            // Compile all accumulated proto files
+                            let result = if client_state.proto_files.is_empty() {
+                                Err("No proto files loaded. Call LoadProto first.".to_string())
+                            } else {
+                                match proto_loader::load_proto_files(client_state.proto_files.clone()) {
+                                    Ok(descriptor_pool) => {
+                                        client_state.descriptor_pool = Some(descriptor_pool);
+                                        Ok(())
+                                    },
+                                    Err(e) => Err(e)
+                                }
                             };
                             let response_msg = match result {
                                 Ok(_) => "".to_string(),
@@ -417,16 +431,34 @@ impl GrpcBackend {
             .map_err(|e| format!("Failed to receive call response: {}", e))
     }
 
-    pub fn load_proto(&self, content: &str) -> Result<(), String> {
+    pub fn load_proto(&self, filename: &str, content: &str) -> Result<(), String> {
         let (response_tx, response_rx) = mpsc::channel();
         
         self.tx.send(BackendCommand::LoadProto {
+            filename: filename.to_string(),
             content: content.to_string(),
             response: response_tx,
         }).map_err(|e| format!("Failed to send load_proto command: {}", e))?;
 
         let response = response_rx.recv()
             .map_err(|e| format!("Failed to receive load_proto response: {}", e))?;
+
+        if response.is_empty() {
+            Ok(())
+        } else {
+            Err(response)
+        }
+    }
+
+    pub fn compile_protos(&self) -> Result<(), String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        
+        self.tx.send(BackendCommand::CompileProtos {
+            response: response_tx,
+        }).map_err(|e| format!("Failed to send compile_protos command: {}", e))?;
+
+        let response = response_rx.recv()
+            .map_err(|e| format!("Failed to receive compile_protos response: {}", e))?;
 
         if response.is_empty() {
             Ok(())
