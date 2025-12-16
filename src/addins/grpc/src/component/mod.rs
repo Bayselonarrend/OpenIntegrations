@@ -25,7 +25,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("ListServices"),         // 6
     name!("ListMethods"),          // 7
     name!("GetMethodInfo"),        // 8
-    name!("StartServerStream"),    // 9
+    name!("CallServerStream"),     // 9
     name!("StartClientStream"),    // 10
     name!("StartBidiStream"),      // 11
     name!("SendMessage"),          // 12
@@ -34,6 +34,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("FinishClientStream"),   // 15
     name!("GetStreamStatus"),      // 16
     name!("CloseStream"),          // 17
+    name!("CompileProtos"),        // 18
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -41,7 +42,7 @@ pub fn get_params_amount(num: usize) -> usize {
         0 => 0,  // Connect
         1 => 0,  // Disconnect
         2 => 1,  // Call
-        3 => 1,  // LoadProto
+        3 => 2,  // LoadProto
         4 => 1,  // SetMetadata
         5 => 3,  // SetTLS
         6 => 0,  // ListServices
@@ -56,6 +57,7 @@ pub fn get_params_amount(num: usize) -> usize {
         15 => 1, // FinishClientStream
         16 => 1, // GetStreamStatus
         17 => 1, // CloseStream
+        18 => 0, // CompileProtos
         _ => 0,
     }
 }
@@ -69,8 +71,9 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.call(&request_json))
         },
         3 => {
-            let proto_content = params[0].get_string().unwrap_or("".to_string());
-            Box::new(obj.load_proto(&proto_content))
+            let filename = params[0].get_string().unwrap_or("main.proto".to_string());
+            let proto_content = params[1].get_string().unwrap_or("".to_string());
+            Box::new(obj.load_proto(&filename, &proto_content))
         },
         4 => {
             let metadata_json = params[0].get_string().unwrap_or("".to_string());
@@ -129,6 +132,7 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let stream_id = params[0].get_string().unwrap_or("".to_string());
             Box::new(obj.close_stream(&stream_id))
         },
+        18 => Box::new(obj.compile_protos()),
         _ => Box::new(false),
     }
 }
@@ -209,13 +213,25 @@ impl AddIn {
         guard.call(request_json).unwrap_or_else(|e| json_error(&e))
     }
 
-    pub fn load_proto(&mut self, proto_content: &str) -> String {
+    pub fn load_proto(&mut self, filename: &str, proto_content: &str) -> String {
         let guard = match self.backend.lock() {
             Ok(lock) => lock,
             Err(e) => return json_error(&e.to_string())
         };
 
-        match guard.load_proto(proto_content) {
+        match guard.load_proto(filename, proto_content) {
+            Ok(_) => json_success(),
+            Err(e) => json_error(&e)
+        }
+    }
+
+    pub fn compile_protos(&mut self) -> String {
+        let guard = match self.backend.lock() {
+            Ok(lock) => lock,
+            Err(e) => return json_error(&e.to_string())
+        };
+
+        match guard.compile_protos() {
             Ok(_) => json_success(),
             Err(e) => json_error(&e)
         }
@@ -361,6 +377,8 @@ impl AddIn {
 
         guard.close_stream(stream_id).unwrap_or_else(|e| json_error(&e))
     }
+
+
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
         match index {
