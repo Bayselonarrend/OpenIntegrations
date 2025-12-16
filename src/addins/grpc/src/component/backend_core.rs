@@ -144,7 +144,7 @@ impl GrpcBackend {
                             let _ = response.send(response_msg);
                         }
                         BackendCommand::LoadProto { filename, content, response } => {
-                            // Just add proto file to collection, don't compile yet
+
                             client_state.proto_files.insert(filename, content);
                             let _ = response.send("".to_string());
                         }
