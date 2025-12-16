@@ -5,6 +5,8 @@ mod message_converter;
 mod grpc_caller;
 mod introspection;
 mod client_state;
+mod stream_manager;
+mod streaming_caller;
 
 use addin1c::{name, Variant};
 use crate::core::getset;
@@ -14,28 +16,46 @@ use std::sync::{Arc, Mutex};
 
 
 pub const METHODS: &[&[u16]] = &[
-    name!("Connect"),           // 0
-    name!("Disconnect"),        // 1
-    name!("Call"),              // 2
-    name!("LoadProto"),         // 3
-    name!("SetMetadata"),       // 4
-    name!("SetTLS"),            // 5
-    name!("ListServices"),      // 6
-    name!("ListMethods"),       // 7
-    name!("GetMethodInfo"),     // 8
+    name!("Connect"),              // 0
+    name!("Disconnect"),           // 1
+    name!("Call"),                 // 2
+    name!("LoadProto"),            // 3
+    name!("SetMetadata"),          // 4
+    name!("SetTLS"),               // 5
+    name!("ListServices"),         // 6
+    name!("ListMethods"),          // 7
+    name!("GetMethodInfo"),        // 8
+    name!("CallServerStream"),     // 9
+    name!("StartClientStream"),    // 10
+    name!("StartBidiStream"),      // 11
+    name!("SendMessage"),          // 12
+    name!("GetNextMessage"),       // 13
+    name!("FinishSending"),        // 14
+    name!("FinishClientStream"),   // 15
+    name!("GetStreamStatus"),      // 16
+    name!("CloseStream"),          // 17
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
     match num {
-        0 => 0, // Connect
-        1 => 0, // Disconnect
-        2 => 1, // Call
-        3 => 1, // LoadProto
-        4 => 1, // SetMetadata
-        5 => 3, // SetTLS
-        6 => 0, // ListServices
-        7 => 1, // ListMethods
-        8 => 2, // GetMethodInfo
+        0 => 0,  // Connect
+        1 => 0,  // Disconnect
+        2 => 1,  // Call
+        3 => 1,  // LoadProto
+        4 => 1,  // SetMetadata
+        5 => 3,  // SetTLS
+        6 => 0,  // ListServices
+        7 => 1,  // ListMethods
+        8 => 2,  // GetMethodInfo
+        9 => 1,  // CallServerStream
+        10 => 1, // StartClientStream
+        11 => 1, // StartBidiStream
+        12 => 2, // SendMessage
+        13 => 1, // GetNextMessage
+        14 => 1, // FinishSending
+        15 => 1, // FinishClientStream
+        16 => 1, // GetStreamStatus
+        17 => 1, // CloseStream
         _ => 0,
     }
 }
@@ -71,6 +91,43 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let service_name = params[0].get_string().unwrap_or("".to_string());
             let method_name = params[1].get_string().unwrap_or("".to_string());
             Box::new(obj.get_method_info(&service_name, &method_name))
+        },
+        9 => {
+            let request_json = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.call_server_stream(&request_json))
+        },
+        10 => {
+            let request_json = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.start_client_stream(&request_json))
+        },
+        11 => {
+            let request_json = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.start_bidi_stream(&request_json))
+        },
+        12 => {
+            let stream_id = params[0].get_string().unwrap_or("".to_string());
+            let message_json = params[1].get_string().unwrap_or("".to_string());
+            Box::new(obj.send_message(&stream_id, &message_json))
+        },
+        13 => {
+            let stream_id = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.get_next_message(&stream_id))
+        },
+        14 => {
+            let stream_id = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.finish_sending(&stream_id))
+        },
+        15 => {
+            let stream_id = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.finish_client_stream(&stream_id))
+        },
+        16 => {
+            let stream_id = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.get_stream_status(&stream_id))
+        },
+        17 => {
+            let stream_id = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.close_stream(&stream_id))
         },
         _ => Box::new(false),
     }
@@ -210,6 +267,99 @@ impl AddIn {
         };
 
         guard.get_method_info(service_name, method_name).unwrap_or_else(|e| json_error(&e))
+    }
+
+    pub fn call_server_stream(&mut self, request_json: &str) -> String {
+        if !self.initialized {
+            return json_error("Connection not initialized!");
+        }
+
+        let guard = match self.backend.lock() {
+            Ok(lock) => lock,
+            Err(e) => return json_error(&e.to_string())
+        };
+
+        guard.call_server_stream(request_json).unwrap_or_else(|e| json_error(&e))
+    }
+
+    pub fn start_client_stream(&mut self, request_json: &str) -> String {
+        if !self.initialized {
+            return json_error("Connection not initialized!");
+        }
+
+        let guard = match self.backend.lock() {
+            Ok(lock) => lock,
+            Err(e) => return json_error(&e.to_string())
+        };
+
+        guard.start_client_stream(request_json).unwrap_or_else(|e| json_error(&e))
+    }
+
+    pub fn start_bidi_stream(&mut self, request_json: &str) -> String {
+        if !self.initialized {
+            return json_error("Connection not initialized!");
+        }
+
+        let guard = match self.backend.lock() {
+            Ok(lock) => lock,
+            Err(e) => return json_error(&e.to_string())
+        };
+
+        guard.start_bidi_stream(request_json).unwrap_or_else(|e| json_error(&e))
+    }
+
+    pub fn send_message(&mut self, stream_id: &str, message_json: &str) -> String {
+        let guard = match self.backend.lock() {
+            Ok(lock) => lock,
+            Err(e) => return json_error(&e.to_string())
+        };
+
+        guard.send_message(stream_id, message_json).unwrap_or_else(|e| json_error(&e))
+    }
+
+    pub fn get_next_message(&mut self, stream_id: &str) -> String {
+        let guard = match self.backend.lock() {
+            Ok(lock) => lock,
+            Err(e) => return json_error(&e.to_string())
+        };
+
+        guard.get_next_message(stream_id).unwrap_or_else(|e| json_error(&e))
+    }
+
+    pub fn finish_sending(&mut self, stream_id: &str) -> String {
+        let guard = match self.backend.lock() {
+            Ok(lock) => lock,
+            Err(e) => return json_error(&e.to_string())
+        };
+
+        guard.finish_sending(stream_id).unwrap_or_else(|e| json_error(&e))
+    }
+
+    pub fn finish_client_stream(&mut self, stream_id: &str) -> String {
+        let guard = match self.backend.lock() {
+            Ok(lock) => lock,
+            Err(e) => return json_error(&e.to_string())
+        };
+
+        guard.finish_client_stream(stream_id).unwrap_or_else(|e| json_error(&e))
+    }
+
+    pub fn get_stream_status(&mut self, stream_id: &str) -> String {
+        let guard = match self.backend.lock() {
+            Ok(lock) => lock,
+            Err(e) => return json_error(&e.to_string())
+        };
+
+        guard.get_stream_status(stream_id).unwrap_or_else(|e| json_error(&e))
+    }
+
+    pub fn close_stream(&mut self, stream_id: &str) -> String {
+        let guard = match self.backend.lock() {
+            Ok(lock) => lock,
+            Err(e) => return json_error(&e.to_string())
+        };
+
+        guard.close_stream(stream_id).unwrap_or_else(|e| json_error(&e))
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {

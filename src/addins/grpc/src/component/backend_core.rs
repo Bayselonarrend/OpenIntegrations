@@ -48,6 +48,43 @@ pub enum BackendCommand {
         method_name: String,
         response: Sender<String>,
     },
+    CallServerStream {
+        params_json: String,
+        response: Sender<String>,
+    },
+    StartClientStream {
+        params_json: String,
+        response: Sender<String>,
+    },
+    StartBidiStream {
+        params_json: String,
+        response: Sender<String>,
+    },
+    SendMessage {
+        stream_id: String,
+        message_json: String,
+        response: Sender<String>,
+    },
+    GetNextMessage {
+        stream_id: String,
+        response: Sender<String>,
+    },
+    FinishSending {
+        stream_id: String,
+        response: Sender<String>,
+    },
+    FinishClientStream {
+        stream_id: String,
+        response: Sender<String>,
+    },
+    GetStreamStatus {
+        stream_id: String,
+        response: Sender<String>,
+    },
+    CloseStream {
+        stream_id: String,
+        response: Sender<String>,
+    },
     Shutdown,
 }
 
@@ -152,6 +189,171 @@ impl GrpcBackend {
                             };
                             let response_msg = match result {
                                 Ok(data) => json!({"result": true, "data": data}).to_string(),
+                                Err(e) => json_error(&e),
+                            };
+                            let _ = response.send(response_msg);
+                        }
+                        BackendCommand::CallServerStream { params_json, response } => {
+                            use crate::component::streaming_caller;
+                            
+                            let result = if !client_state.connected {
+                                Err("Not connected to gRPC server".to_string())
+                            } else if let (Some(channel), Some(descriptor_pool)) = (&client_state.channel, &client_state.descriptor_pool) {
+                                let params: streaming_caller::StreamCallParams = match serde_json::from_str(&params_json) {
+                                    Ok(p) => p,
+                                    Err(e) => {
+                                        let _ = response.send(json_error(&format!("Invalid params: {}", e)));
+                                        continue;
+                                    }
+                                };
+                                rt.block_on(streaming_caller::start_server_stream(
+                                    channel,
+                                    descriptor_pool,
+                                    &client_state.metadata,
+                                    &client_state.stream_manager,
+                                    &params
+                                ))
+                            } else {
+                                Err("No active connection or proto files loaded".to_string())
+                            };
+                            
+                            let response_msg = match result {
+                                Ok(stream_id) => json!({"result": true, "streamId": stream_id}).to_string(),
+                                Err(e) => json_error(&e),
+                            };
+                            let _ = response.send(response_msg);
+                        }
+                        BackendCommand::StartClientStream { params_json, response } => {
+                            use crate::component::streaming_caller;
+                            
+                            let result = if !client_state.connected {
+                                Err("Not connected to gRPC server".to_string())
+                            } else if let (Some(channel), Some(descriptor_pool)) = (&client_state.channel, &client_state.descriptor_pool) {
+                                let params: streaming_caller::StreamCallParams = match serde_json::from_str(&params_json) {
+                                    Ok(p) => p,
+                                    Err(e) => {
+                                        let _ = response.send(json_error(&format!("Invalid params: {}", e)));
+                                        continue;
+                                    }
+                                };
+                                rt.block_on(streaming_caller::start_client_stream(
+                                    channel,
+                                    descriptor_pool,
+                                    &client_state.metadata,
+                                    &client_state.stream_manager,
+                                    &params
+                                ))
+                            } else {
+                                Err("No active connection or proto files loaded".to_string())
+                            };
+                            
+                            let response_msg = match result {
+                                Ok(stream_id) => json!({"result": true, "streamId": stream_id}).to_string(),
+                                Err(e) => json_error(&e),
+                            };
+                            let _ = response.send(response_msg);
+                        }
+                        BackendCommand::StartBidiStream { params_json, response } => {
+                            use crate::component::streaming_caller;
+                            
+                            let result = if !client_state.connected {
+                                Err("Not connected to gRPC server".to_string())
+                            } else if let (Some(channel), Some(descriptor_pool)) = (&client_state.channel, &client_state.descriptor_pool) {
+                                let params: streaming_caller::StreamCallParams = match serde_json::from_str(&params_json) {
+                                    Ok(p) => p,
+                                    Err(e) => {
+                                        let _ = response.send(json_error(&format!("Invalid params: {}", e)));
+                                        continue;
+                                    }
+                                };
+                                rt.block_on(streaming_caller::start_bidi_stream(
+                                    channel,
+                                    descriptor_pool,
+                                    &client_state.metadata,
+                                    &client_state.stream_manager,
+                                    &params
+                                ))
+                            } else {
+                                Err("No active connection or proto files loaded".to_string())
+                            };
+                            
+                            let response_msg = match result {
+                                Ok(stream_id) => json!({"result": true, "streamId": stream_id}).to_string(),
+                                Err(e) => json_error(&e),
+                            };
+                            let _ = response.send(response_msg);
+                        }
+                        BackendCommand::SendMessage { stream_id, message_json, response } => {
+                            use crate::component::streaming_caller;
+
+                            let result = rt.block_on(async {
+                                let message_value: serde_json::Value = serde_json::from_str(&message_json)
+                                    .map_err(|e| format!("Invalid message JSON: {}", e))?;
+                                
+                                streaming_caller::send_stream_message(
+                                    &client_state.stream_manager,
+                                    &stream_id,
+                                    &message_value
+                                ).await
+                            });
+                            
+                            let response_msg = match result {
+                                Ok(_) => json!({"result": true}).to_string(),
+                                Err(e) => json_error(&e),
+                            };
+                            let _ = response.send(response_msg);
+                        }
+                        BackendCommand::GetNextMessage { stream_id, response } => {
+                            use crate::component::streaming_caller;
+                            
+                            let result = rt.block_on(streaming_caller::get_next_message(
+                                &client_state.stream_manager,
+                                &stream_id
+                            ));
+                            
+                            let response_msg = match result {
+                                Ok(data) => json!({"result": true, "data": data}).to_string(),
+                                Err(e) => json_error(&e),
+                            };
+                            let _ = response.send(response_msg);
+                        }
+                        BackendCommand::FinishSending { stream_id, response } => {
+                            let result = rt.block_on(client_state.stream_manager.finish_sending(&stream_id));
+                            
+                            let response_msg = match result {
+                                Ok(_) => json!({"result": true}).to_string(),
+                                Err(e) => json_error(&e),
+                            };
+                            let _ = response.send(response_msg);
+                        }
+                        BackendCommand::FinishClientStream { stream_id, response } => {
+                            use crate::component::streaming_caller;
+                            
+                            let result = rt.block_on(streaming_caller::finish_client_stream_and_get_response(
+                                &client_state.stream_manager,
+                                &stream_id
+                            ));
+                            
+                            let response_msg = match result {
+                                Ok(data) => json!({"result": true, "data": data}).to_string(),
+                                Err(e) => json_error(&e),
+                            };
+                            let _ = response.send(response_msg);
+                        }
+                        BackendCommand::GetStreamStatus { stream_id, response } => {
+                            let result = rt.block_on(client_state.stream_manager.get_status(&stream_id));
+                            
+                            let response_msg = match result {
+                                Ok(data) => json!({"result": true, "data": data}).to_string(),
+                                Err(e) => json_error(&e),
+                            };
+                            let _ = response.send(response_msg);
+                        }
+                        BackendCommand::CloseStream { stream_id, response } => {
+                            let result = rt.block_on(client_state.stream_manager.close_stream(&stream_id));
+                            
+                            let response_msg = match result {
+                                Ok(_) => json!({"result": true}).to_string(),
                                 Err(e) => json_error(&e),
                             };
                             let _ = response.send(response_msg);
@@ -284,6 +486,115 @@ impl GrpcBackend {
 
         response_rx.recv()
             .map_err(|e| format!("Failed to receive get_method_info response: {}", e))
+    }
+
+    pub fn call_server_stream(&self, params_json: &str) -> Result<String, String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        
+        self.tx.send(BackendCommand::CallServerStream {
+            params_json: params_json.to_string(),
+            response: response_tx,
+        }).map_err(|e| format!("Failed to send call_server_stream command: {}", e))?;
+
+        response_rx.recv()
+            .map_err(|e| format!("Failed to receive call_server_stream response: {}", e))
+    }
+
+    pub fn start_client_stream(&self, params_json: &str) -> Result<String, String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        
+        self.tx.send(BackendCommand::StartClientStream {
+            params_json: params_json.to_string(),
+            response: response_tx,
+        }).map_err(|e| format!("Failed to send start_client_stream command: {}", e))?;
+
+        response_rx.recv()
+            .map_err(|e| format!("Failed to receive start_client_stream response: {}", e))
+    }
+
+    pub fn start_bidi_stream(&self, params_json: &str) -> Result<String, String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        
+        self.tx.send(BackendCommand::StartBidiStream {
+            params_json: params_json.to_string(),
+            response: response_tx,
+        }).map_err(|e| format!("Failed to send start_bidi_stream command: {}", e))?;
+
+        response_rx.recv()
+            .map_err(|e| format!("Failed to receive start_bidi_stream response: {}", e))
+    }
+
+    pub fn send_message(&self, stream_id: &str, message_json: &str) -> Result<String, String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        
+        self.tx.send(BackendCommand::SendMessage {
+            stream_id: stream_id.to_string(),
+            message_json: message_json.to_string(),
+            response: response_tx,
+        }).map_err(|e| format!("Failed to send send_message command: {}", e))?;
+
+        response_rx.recv()
+            .map_err(|e| format!("Failed to receive send_message response: {}", e))
+    }
+
+    pub fn get_next_message(&self, stream_id: &str) -> Result<String, String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        
+        self.tx.send(BackendCommand::GetNextMessage {
+            stream_id: stream_id.to_string(),
+            response: response_tx,
+        }).map_err(|e| format!("Failed to send get_next_message command: {}", e))?;
+
+        response_rx.recv()
+            .map_err(|e| format!("Failed to receive get_next_message response: {}", e))
+    }
+
+    pub fn finish_sending(&self, stream_id: &str) -> Result<String, String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        
+        self.tx.send(BackendCommand::FinishSending {
+            stream_id: stream_id.to_string(),
+            response: response_tx,
+        }).map_err(|e| format!("Failed to send finish_sending command: {}", e))?;
+
+        response_rx.recv()
+            .map_err(|e| format!("Failed to receive finish_sending response: {}", e))
+    }
+
+    pub fn finish_client_stream(&self, stream_id: &str) -> Result<String, String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        
+        self.tx.send(BackendCommand::FinishClientStream {
+            stream_id: stream_id.to_string(),
+            response: response_tx,
+        }).map_err(|e| format!("Failed to send finish_client_stream command: {}", e))?;
+
+        response_rx.recv()
+            .map_err(|e| format!("Failed to receive finish_client_stream response: {}", e))
+    }
+
+    pub fn get_stream_status(&self, stream_id: &str) -> Result<String, String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        
+        self.tx.send(BackendCommand::GetStreamStatus {
+            stream_id: stream_id.to_string(),
+            response: response_tx,
+        }).map_err(|e| format!("Failed to send get_stream_status command: {}", e))?;
+
+        response_rx.recv()
+            .map_err(|e| format!("Failed to receive get_stream_status response: {}", e))
+    }
+
+    pub fn close_stream(&self, stream_id: &str) -> Result<String, String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        
+        self.tx.send(BackendCommand::CloseStream {
+            stream_id: stream_id.to_string(),
+            response: response_tx,
+        }).map_err(|e| format!("Failed to send close_stream command: {}", e))?;
+
+        response_rx.recv()
+            .map_err(|e| format!("Failed to receive close_stream response: {}", e))
     }
 }
 
