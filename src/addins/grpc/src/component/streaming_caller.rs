@@ -69,8 +69,7 @@ pub async fn start_client_stream(
     let method_desc = get_method_descriptor(descriptor_pool, &params.service, &params.method)?;
 
     let (tx, rx) = mpsc::unbounded_channel::<DynamicMessage>();
-    
-    // Convert DynamicMessage stream to Vec<u8> stream
+
     let byte_stream = tokio_stream::wrappers::UnboundedReceiverStream::new(rx)
         .map(|msg| msg.encode_to_vec());
     
@@ -87,7 +86,6 @@ pub async fn start_client_stream(
     let (response_tx, response_rx) = tokio::sync::oneshot::channel();
     let output_desc = method_desc.output();
 
-    // Start the client streaming call
     tokio::spawn(async move {
         let result: Result<tonic::Response<Vec<u8>>, tonic::Status> = client.client_streaming(
             grpc_request,
@@ -132,8 +130,7 @@ pub async fn start_bidi_stream(
 
     let (tx_send, rx_send) = mpsc::unbounded_channel::<DynamicMessage>();
     let (tx_recv, rx_recv) = mpsc::unbounded_channel();
-    
-    // Convert DynamicMessage stream to Vec<u8> stream
+
     let byte_stream = tokio_stream::wrappers::UnboundedReceiverStream::new(rx_send)
         .map(|msg| msg.encode_to_vec());
     
