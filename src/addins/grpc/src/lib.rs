@@ -1,6 +1,4 @@
 pub mod component;
-mod core;
-
 
 use std::{
     ffi::{c_int, c_long, c_void},

@@ -43,7 +43,7 @@ pub fn create_request_message(
 }
 
 pub async fn execute_grpc_call(
-    channel: &mut Channel,
+    mut channel: Channel,
     descriptor_pool: &DescriptorPool,
     metadata: &HashMap<String, String>,
     params: &CallParams,
@@ -72,10 +72,9 @@ pub async fn execute_grpc_call(
 
     let path = format!("/{}/{}", service.full_name(), method.name());
 
-    // Use std::mem::replace to take the ready channel instead of cloning
-    // See: https://docs.rs/tower/latest/tower/trait.Service.html#be-careful-when-cloning-inner-services
-    let clone = channel.clone();
-    let ready_channel = std::mem::replace(channel, clone);
+    use tower::ServiceExt;
+    let ready_channel = channel.ready().await
+        .map_err(|e| format!("Failed to ready channel: {}", e))?;
     
     let mut client = tonic::client::Grpc::new(ready_channel);
     let response = client
