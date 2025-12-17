@@ -9,11 +9,13 @@ mod stream_manager;
 mod streaming_caller;
 
 use addin1c::{name, Variant};
-use crate::core::getset;
+use common_core::getset;
 use common_utils::utils::{json_error, json_success};
 use common_tcp::tls_settings::TlsSettings;
 use std::sync::{Arc, Mutex};
+use common_core::impl_raw_addin;
 
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),              // 0

@@ -22,6 +22,7 @@ common-core = { path = "../!commons/common-core" }
 tonic = { version = "0.13.1", features = ["transport", "channel"] }
 prost = "0.14.1"
 tokio = { version = "1.45.1", features = ["rt-multi-thread", "macros", "sync"] }
+tower = "0.5"
 tokio-stream = { version = "0.1", features = ["sync"] }
 serde = { version = "1.0.219", features = ["derive"] }
 base64 = "0.22.1"

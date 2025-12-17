@@ -129,12 +129,28 @@ impl GrpcBackend {
                             let _ = response.send("".to_string());
                         }
                         BackendCommand::Call { params, response } => {
-                            // Защита от panic в Call - перехватываем, чтобы backend thread не упал
+
                             let panic_result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
                                 if !client_state.connected {
                                     Err("Not connected to gRPC server".to_string())
-                                } else if let (Some(channel), Some(descriptor_pool)) = (&mut client_state.channel, &client_state.descriptor_pool) {
-                                    rt.block_on(grpc_caller::execute_grpc_call(channel, descriptor_pool, &client_state.metadata, &params))
+                                } else if let Some(descriptor_pool) = &client_state.descriptor_pool {
+
+                                    let channel_result = rt.block_on(connection::establish_connection(
+                                        &client_state.address,
+                                        &client_state.tls_settings
+                                    ));
+                                    
+                                    match channel_result {
+                                        Ok(channel) => {
+                                            rt.block_on(grpc_caller::execute_grpc_call(
+                                                channel,
+                                                descriptor_pool,
+                                                &client_state.metadata,
+                                                &params
+                                            ))
+                                        },
+                                        Err(e) => Err(format!("Failed to establish connection: {}", e))
+                                    }
                                 } else {
                                     Err("No active connection or proto files loaded".to_string())
                                 }
@@ -166,7 +182,7 @@ impl GrpcBackend {
                             let _ = response.send("".to_string());
                         }
                         BackendCommand::CompileProtos { response } => {
-                            // Compile all accumulated proto files
+
                             let result = if client_state.proto_files.is_empty() {
                                 Err("No proto files loaded. Call LoadProto first.".to_string())
                             } else {

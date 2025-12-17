@@ -93,7 +93,6 @@ pub async fn start_client_stream(
             tonic::codec::ProstCodec::default()
         ).await;
         
-        // Send final response
         let final_result = match result {
             Ok(response) => {
                 let bytes = response.into_inner();
