@@ -1,21 +1,11 @@
 pub mod getset;
+pub mod from_variant;
+
+// Реэкспортируем зависимости
+pub use addin1c;
+pub use from_variant::FromVariant;
 
 /// Извлекает сообщение об ошибке из panic payload
-/// 
-/// # Примеры
-/// 
-/// ```rust
-/// use common_core::extract_panic_message;
-/// 
-/// let result = std::panic::catch_unwind(|| {
-///     panic!("Something went wrong");
-/// });
-/// 
-/// if let Err(panic_info) = result {
-///     let msg = extract_panic_message(&panic_info);
-///     println!("Panic: {}", msg);
-/// }
-/// ```
 pub fn extract_panic_message(panic_info: &Box<dyn std::any::Any + Send>) -> String {
     if let Some(s) = panic_info.downcast_ref::<&str>() {
         s.to_string()
@@ -26,22 +16,60 @@ pub fn extract_panic_message(panic_info: &Box<dyn std::any::Any + Send>) -> Stri
     }
 }
 
+/// Макрос для генерации экспортируемых функций Native API
+#[macro_export]
+macro_rules! impl_addin_exports {
+    ($addin_type:ty) => {
+        use std::{
+            ffi::{c_int, c_long, c_void},
+            sync::atomic::{AtomicI32, Ordering},
+        };
+        use $crate::addin1c::{create_component, destroy_component, name, AttachType, Variant};
+
+        pub static mut PLATFORM_CAPABILITIES: AtomicI32 = AtomicI32::new(-1);
+
+        #[allow(non_snake_case)]
+        #[no_mangle]
+        pub unsafe extern "C" fn GetClassObject(_name: *const u16, component: *mut *mut c_void) -> c_long {
+            let addin = <$addin_type>::new();
+            create_component(component, addin)
+        }
+
+        #[allow(non_snake_case)]
+        #[no_mangle]
+        pub unsafe extern "C" fn DestroyObject(component: *mut *mut c_void) -> c_long {
+            destroy_component(component)
+        }
+
+        #[allow(non_snake_case)]
+        #[no_mangle]
+        pub extern "C" fn GetClassNames() -> *const u16 {
+            $crate::addin1c::name!("Main").as_ptr()
+        }
+
+        #[allow(non_snake_case)]
+        #[no_mangle]
+        #[allow(static_mut_refs)]
+        pub unsafe extern "C" fn SetPlatformCapabilities(capabilities: c_int) -> c_int {
+            PLATFORM_CAPABILITIES.store(capabilities, Ordering::Relaxed);
+            3
+        }
+
+        #[allow(non_snake_case)]
+        #[no_mangle]
+        pub extern "C" fn GetAttachType() -> $crate::addin1c::AttachType {
+            $crate::addin1c::AttachType::Any
+        }
+    };
+}
+
 /// Макрос для генерации реализации RawAddin с защитой от panic
-/// 
-/// # Использование
-/// 
-/// ```rust
-/// use common_core::impl_raw_addin;
-/// use crate::component::{AddIn, METHODS, PROPS, get_params_amount, cal_func};
-/// 
-/// impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
-/// ```
 #[macro_export]
 macro_rules! impl_raw_addin {
-    ($addin_type:ty, $methods:expr, $props:expr, $get_params_fn:expr, $cal_func_fn:expr) => {
-        impl addin1c::RawAddin for $addin_type {
+    ($addin_type:ty, $methods:expr, $props:expr, $get_params_amount:expr, $cal_func_fn:expr) => {
+        impl $crate::addin1c::RawAddin for $addin_type {
             fn register_extension_as(&mut self) -> &'static [u16] {
-                addin1c::name!("Main")
+                $crate::addin1c::name!("Main")
             }
 
             fn get_n_props(&mut self) -> usize {
@@ -56,12 +84,12 @@ macro_rules! impl_raw_addin {
                 $props.get(num).copied()
             }
 
-            fn get_prop_val(&mut self, num: usize, val: &mut addin1c::Variant) -> bool {
+            fn get_prop_val(&mut self, num: usize, val: &mut $crate::addin1c::Variant) -> bool {
                 let field: &dyn $crate::getset::ValueType = &self[num];
                 field.get_value(val)
             }
 
-            fn set_prop_val(&mut self, num: usize, val: &addin1c::Variant) -> bool {
+            fn set_prop_val(&mut self, num: usize, val: &$crate::addin1c::Variant) -> bool {
                 let field: &mut dyn $crate::getset::ValueType = &mut self[num];
                 field.set_value(val);
                 true
@@ -88,14 +116,14 @@ macro_rules! impl_raw_addin {
             }
 
             fn get_n_params(&mut self, num: usize) -> usize {
-                $get_params_fn(num)
+                $get_params_amount(num)
             }
 
             fn get_param_def_value(
                 &mut self,
                 _method_num: usize,
                 _param_num: usize,
-                _value: addin1c::Variant,
+                _value: $crate::addin1c::Variant,
             ) -> bool {
                 true
             }
@@ -104,15 +132,15 @@ macro_rules! impl_raw_addin {
                 true
             }
 
-            fn call_as_proc(&mut self, _num: usize, _params: &mut [addin1c::Variant]) -> bool {
+            fn call_as_proc(&mut self, _num: usize, _params: &mut [$crate::addin1c::Variant]) -> bool {
                 false
             }
 
             fn call_as_func(
                 &mut self,
                 num: usize,
-                params: &mut [addin1c::Variant],
-                ret_value: &mut addin1c::Variant,
+                params: &mut [$crate::addin1c::Variant],
+                ret_value: &mut $crate::addin1c::Variant,
             ) -> bool {
                 // Защита от panic - перехватываем и возвращаем ошибку в 1С
                 let result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
