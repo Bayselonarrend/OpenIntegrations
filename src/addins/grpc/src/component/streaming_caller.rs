@@ -92,7 +92,7 @@ pub async fn start_client_stream(
             path.parse().unwrap(),
             tonic::codec::ProstCodec::default()
         ).await;
-        
+
         let final_result = match result {
             Ok(response) => {
                 let bytes = response.into_inner();

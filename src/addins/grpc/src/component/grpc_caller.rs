@@ -43,7 +43,7 @@ pub fn create_request_message(
 }
 
 pub async fn execute_grpc_call(
-    mut channel: Channel,
+    channel: &mut Channel,
     descriptor_pool: &DescriptorPool,
     metadata: &HashMap<String, String>,
     params: &CallParams,

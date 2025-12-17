@@ -1,11 +1,17 @@
 use prost_reflect::DescriptorPool;
 
 pub fn load_proto_files(files: std::collections::HashMap<String, String>) -> Result<DescriptorPool, String> {
-    let temp_dir = std::env::temp_dir().join("opi_grpc_protos");
 
-    if temp_dir.exists() {
-        let _ = std::fs::remove_dir_all(&temp_dir);
-    }
+    let pid = std::process::id();
+    let timestamp = std::time::SystemTime::now()
+        .duration_since(std::time::UNIX_EPOCH)
+        .unwrap()
+        .as_nanos();
+    let random = uuid::Uuid::new_v4().to_string();
+    
+    let temp_dir = std::env::temp_dir()
+        .join(format!("opi_grpc_protos_{}_{}_{}",pid, timestamp, random));
+
     std::fs::create_dir_all(&temp_dir)
         .map_err(|e| format!("Failed to create temp directory: {}", e))?;
     
@@ -31,6 +37,8 @@ pub fn load_proto_files(files: std::collections::HashMap<String, String>) -> Res
 
     let file_descriptor_set = protox::compile(&proto_paths, [&temp_dir])
         .map_err(|e| format!("Failed to compile protos: {}", e))?;
+
+    let _ = std::fs::remove_dir_all(&temp_dir);
 
     DescriptorPool::from_file_descriptor_set(file_descriptor_set)
         .map_err(|e| format!("Failed to create descriptor pool: {}", e))
