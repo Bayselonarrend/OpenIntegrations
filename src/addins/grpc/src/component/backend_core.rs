@@ -129,46 +129,21 @@ impl GrpcBackend {
                             let _ = response.send("".to_string());
                         }
                         BackendCommand::Call { params, response } => {
-
                             let panic_result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+
                                 if !client_state.connected {
                                     Err("Not connected to gRPC server".to_string())
-                                } else if let Some(descriptor_pool) = &client_state.descriptor_pool {
-
-                                    let channel_result = rt.block_on(connection::establish_connection(
-                                        &client_state.address,
-                                        &client_state.tls_settings
-                                    ));
-                                    
-                                    match channel_result {
-                                        Ok(channel) => {
-                                            rt.block_on(grpc_caller::execute_grpc_call(
-                                                channel,
-                                                descriptor_pool,
-                                                &client_state.metadata,
-                                                &params
-                                            ))
-                                        },
-                                        Err(e) => Err(format!("Failed to establish connection: {}", e))
-                                    }
+                                } else if let (Some(channel), Some(descriptor_pool)) = (&mut client_state.channel, &client_state.descriptor_pool) {
+                                    rt.block_on(grpc_caller::execute_grpc_call(channel, descriptor_pool, &client_state.metadata, &params))
                                 } else {
                                     Err("No active connection or proto files loaded".to_string())
                                 }
                             }));
                             
-                            let result = match panic_result {
-                                Ok(r) => r,
-                                Err(panic_info) => {
-                                    let panic_msg = if let Some(s) = panic_info.downcast_ref::<&str>() {
-                                        format!("Panic: {}", s)
-                                    } else if let Some(s) = panic_info.downcast_ref::<String>() {
-                                        format!("Panic: {}", s)
-                                    } else {
-                                        "Unknown panic occurred".to_string()
-                                    };
-                                    Err(format!("Backend panic in Call: {}", panic_msg))
-                                }
-                            };
+                            let result = panic_result.unwrap_or_else(|panic_info| {
+                                let panic_msg = common_core::extract_panic_message(&panic_info);
+                                Err(format!("Backend panic in Call: {}", panic_msg))
+                            });
                             
                             let response_msg = match result {
                                 Ok(data) => json!({"result": true, "data": data}).to_string(),
