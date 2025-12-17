@@ -24,12 +24,14 @@ pub struct StreamInfo {
     #[allow(dead_code)]
     pub output_descriptor: Option<MessageDescriptor>,
     pub final_response: Arc<Mutex<Option<oneshot::Receiver<Result<DynamicMessage, String>>>>>,
+    pub timeout_ms: Option<u64>,
 }
 
 impl StreamInfo {
     pub fn new_server_stream(
         receiver: mpsc::UnboundedReceiver<DynamicMessage>,
         output_descriptor: MessageDescriptor,
+        timeout_ms: Option<u64>,
     ) -> Self {
         Self {
             stream_id: Uuid::new_v4().to_string(),
@@ -42,6 +44,7 @@ impl StreamInfo {
             input_descriptor: None,
             output_descriptor: Some(output_descriptor),
             final_response: Arc::new(Mutex::new(None)),
+            timeout_ms,
         }
     }
 
@@ -50,6 +53,7 @@ impl StreamInfo {
         input_descriptor: MessageDescriptor,
         output_descriptor: MessageDescriptor,
         response_receiver: oneshot::Receiver<Result<DynamicMessage, String>>,
+        timeout_ms: Option<u64>,
     ) -> Self {
         Self {
             stream_id: Uuid::new_v4().to_string(),
@@ -62,6 +66,7 @@ impl StreamInfo {
             input_descriptor: Some(input_descriptor),
             output_descriptor: Some(output_descriptor),
             final_response: Arc::new(Mutex::new(Some(response_receiver))),
+            timeout_ms,
         }
     }
 
@@ -70,6 +75,7 @@ impl StreamInfo {
         receiver: mpsc::UnboundedReceiver<DynamicMessage>,
         input_descriptor: MessageDescriptor,
         output_descriptor: MessageDescriptor,
+        timeout_ms: Option<u64>,
     ) -> Self {
         Self {
             stream_id: Uuid::new_v4().to_string(),
@@ -82,6 +88,7 @@ impl StreamInfo {
             input_descriptor: Some(input_descriptor),
             output_descriptor: Some(output_descriptor),
             final_response: Arc::new(Mutex::new(None)),
+            timeout_ms,
         }
     }
 
@@ -158,21 +165,44 @@ impl StreamManager {
         }
 
         let receiver_arc = stream_info.receiver.clone();
+        let timeout_ms = stream_info.timeout_ms;
         drop(stream_info);
 
         let mut receiver_guard = receiver_arc.lock().await;
         let receiver = receiver_guard.as_mut()
             .ok_or_else(|| "Stream receiver not available".to_string())?;
 
-        match receiver.try_recv() {
-            Ok(message) => Ok(Some(message)),
-            Err(mpsc::error::TryRecvError::Empty) => Ok(None),
-            Err(mpsc::error::TryRecvError::Disconnected) => {
-                drop(receiver_guard);
-                let mut stream_info = stream.lock().await;
-                stream_info.is_active = false;
-                stream_info.can_receive = false;
-                Ok(None)
+        // Если есть timeout, используем его
+        if let Some(timeout) = timeout_ms {
+            let duration = std::time::Duration::from_millis(timeout);
+            match tokio::time::timeout(duration, receiver.recv()).await {
+                Ok(Some(message)) => Ok(Some(message)),
+                Ok(None) => {
+                    // Stream действительно закрыт (сервер закрыл соединение)
+                    drop(receiver_guard);
+                    let mut stream_info = stream.lock().await;
+                    stream_info.is_active = false;
+                    stream_info.can_receive = false;
+                    Ok(None)
+                },
+                Err(_) => {
+                    // Timeout - сообщение не пришло за отведённое время
+                    // Stream остаётся активным, можно попробовать ещё раз
+                    Err("Timeout waiting for message".to_string())
+                },
+            }
+        } else {
+            // Без timeout - используем try_recv как раньше
+            match receiver.try_recv() {
+                Ok(message) => Ok(Some(message)),
+                Err(mpsc::error::TryRecvError::Empty) => Ok(None),
+                Err(mpsc::error::TryRecvError::Disconnected) => {
+                    drop(receiver_guard);
+                    let mut stream_info = stream.lock().await;
+                    stream_info.is_active = false;
+                    stream_info.can_receive = false;
+                    Ok(None)
+                }
             }
         }
     }
