@@ -1,5 +1,31 @@
 pub mod getset;
 
+/// Извлекает сообщение об ошибке из panic payload
+/// 
+/// # Примеры
+/// 
+/// ```rust
+/// use common_core::extract_panic_message;
+/// 
+/// let result = std::panic::catch_unwind(|| {
+///     panic!("Something went wrong");
+/// });
+/// 
+/// if let Err(panic_info) = result {
+///     let msg = extract_panic_message(&panic_info);
+///     println!("Panic: {}", msg);
+/// }
+/// ```
+pub fn extract_panic_message(panic_info: &Box<dyn std::any::Any + Send>) -> String {
+    if let Some(s) = panic_info.downcast_ref::<&str>() {
+        s.to_string()
+    } else if let Some(s) = panic_info.downcast_ref::<String>() {
+        s.clone()
+    } else {
+        "Unknown panic occurred".to_string()
+    }
+}
+
 /// Макрос для генерации реализации RawAddin с защитой от panic
 /// 
 /// # Использование
@@ -100,13 +126,8 @@ macro_rules! impl_raw_addin {
                     }
                     Err(panic_info) => {
                         // Panic произошёл - извлекаем сообщение и возвращаем как ошибку
-                        let error_msg = if let Some(s) = panic_info.downcast_ref::<&str>() {
-                            format!("Internal error (panic): {}", s)
-                        } else if let Some(s) = panic_info.downcast_ref::<String>() {
-                            format!("Internal error (panic): {}", s)
-                        } else {
-                            "Internal error: unknown panic occurred".to_string()
-                        };
+                        let panic_msg = $crate::extract_panic_message(&panic_info);
+                        let error_msg = format!("Internal error (panic): {}", panic_msg);
 
                         // Возвращаем ошибку как строку в 1С
                         let s: Vec<u16> = error_msg.encode_utf16().collect();
