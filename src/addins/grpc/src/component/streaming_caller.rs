@@ -53,7 +53,7 @@ pub async fn start_server_stream(
     
     spawn_response_handler(response, method_desc.output(), tx);
 
-    let stream_info = StreamInfo::new_server_stream(rx, method_desc.output());
+    let stream_info = StreamInfo::new_server_stream(rx, method_desc.output(), params.timeout_ms);
     let stream_id = stream_manager.add_stream(stream_info).await;
 
     Ok(stream_id)
@@ -111,7 +111,8 @@ pub async fn start_client_stream(
         tx,
         method_desc.input(),
         method_desc.output(),
-        response_rx
+        response_rx,
+        params.timeout_ms
     );
     let stream_id = stream_manager.add_stream(stream_info).await;
 
@@ -159,7 +160,8 @@ pub async fn start_bidi_stream(
         tx_send,
         rx_recv,
         method_desc.input(),
-        method_desc.output()
+        method_desc.output(),
+        params.timeout_ms
     );
     let stream_id = stream_manager.add_stream(stream_info).await;
 
