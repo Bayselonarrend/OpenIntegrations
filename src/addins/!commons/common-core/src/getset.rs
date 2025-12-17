@@ -1,6 +1,5 @@
 use addin1c::{Variant, Tm};
 
-
 pub trait ValueType {
     fn get_value(&self, val: &mut Variant) -> bool;
     fn set_value(&mut self, val: &Variant);
