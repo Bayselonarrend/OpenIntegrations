@@ -27,7 +27,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("ListServices"),         // 6
     name!("ListMethods"),          // 7
     name!("GetMethodInfo"),        // 8
-    name!("CallServerStream"),     // 9
+    name!("StartServerStream"),    // 9
     name!("StartClientStream"),    // 10
     name!("StartBidiStream"),      // 11
     name!("SendMessage"),          // 12
