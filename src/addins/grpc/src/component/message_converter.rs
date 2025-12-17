@@ -23,7 +23,6 @@ pub fn json_to_dynamic_message(json_value: &Value, message_desc: &MessageDescrip
 fn json_value_to_prost_value(json_value: &Value, field_desc: &prost_reflect::FieldDescriptor) -> Result<prost_reflect::Value, String> {
     use prost_reflect::Value as ProstValue;
 
-    // Handle repeated fields (arrays)
     if field_desc.is_list() {
         return match json_value {
             Value::Array(arr) => {
@@ -169,7 +168,7 @@ fn prost_value_to_json_value(prost_value: &prost_reflect::Value, field_desc: &pr
         ProstValue::Map(map) => {
             let mut json_map = serde_json::Map::new();
             for (key, value) in map {
-                let key_str = format!("{:?}", key); // Простое преобразование в строку
+                let key_str = format!("{:?}", key);
                 let json_value = prost_value_to_json_value(value, field_desc)?;
                 json_map.insert(key_str, json_value);
             }
