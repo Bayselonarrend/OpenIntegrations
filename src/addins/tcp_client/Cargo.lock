@@ -46,6 +46,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
 
 [[package]]
+name = "common-core"
+version = "0.1.0"
+dependencies = [
+ "addin1c",
+]
+
+[[package]]
 name = "common-tcp"
 version = "0.1.0"
 dependencies = [
@@ -359,7 +366,7 @@ dependencies = [
 name = "opi_tcpclient"
 version = "0.1.0"
 dependencies = [
- "addin1c",
+ "common-core",
  "common-tcp",
  "common-utils",
  "serde_json",

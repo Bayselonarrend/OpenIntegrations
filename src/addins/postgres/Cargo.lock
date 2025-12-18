@@ -246,6 +246,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "common-core"
+version = "0.1.0"
+dependencies = [
+ "addin1c",
+]
+
+[[package]]
 name = "common-dataset"
 version = "0.1.0"
 dependencies = [
@@ -867,10 +874,10 @@ dependencies = [
 name = "opi_postgres"
 version = "0.1.0"
 dependencies = [
- "addin1c",
  "base64",
  "chrono",
  "common-binary",
+ "common-core",
  "common-dataset",
  "common-tcp",
  "common-utils",

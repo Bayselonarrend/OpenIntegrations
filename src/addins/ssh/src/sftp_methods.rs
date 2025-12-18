@@ -4,7 +4,7 @@ use std::str::FromStr;
 use common_utils::utils::{json_error, json_success};
 use serde_json::{json, Value};
 use ssh2::{FileStat, RenameFlags, Sftp};
-use crate::component::{AddIn};
+use crate::AddIn;
 
 impl AddIn{
 

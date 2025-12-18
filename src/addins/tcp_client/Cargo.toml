@@ -7,13 +7,15 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [profile.release]
-lto = true        # Enable Link Time Optimization
-codegen-units = 1 # Reduce number of codegen units to increase optimizations.
-panic = "abort"   # Abort on panic
-strip = true      # Automatically strip symbols from the binary.
+lto = "fat"
+codegen-units = 1
+panic = "unwind"
+strip = true
+opt-level = "z"
 
 [dependencies]
-addin1c = "0.5.0"
-serde_json = "1.0.140"
+common-core = { path = "../!commons/common-core" }
 common-tcp = { path = "../!commons/common-tcp" }
 common-utils = { path = "../!commons/common-utils" }
+
+serde_json = "1.0.140"

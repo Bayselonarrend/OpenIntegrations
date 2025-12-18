@@ -16,6 +16,10 @@ use std::sync::{Arc, Mutex};
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
+pub const PROPS: &[&[u16]] = &[
+    name!("ServerAddress"),
+];
+
 pub const METHODS: &[&[u16]] = &[
     name!("Connect"),              // 0
     name!("Disconnect"),           // 1
@@ -137,10 +141,6 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         _ => Box::new(false),
     }
 }
-
-pub const PROPS: &[&[u16]] = &[
-    name!("ServerAddress"),
-];
 
 pub struct AddIn {
     server_address: String,

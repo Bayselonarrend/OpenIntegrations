@@ -1,7 +1,7 @@
 use std::net::{SocketAddr, TcpStream, ToSocketAddrs};
 use std::time::Duration;
 use suppaftp::FtpError;
-use crate::component::configuration::FtpSettings;
+use crate::configuration::FtpSettings;
 use std::vec::IntoIter;
 use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tcp_establish::create_tcp_connection;

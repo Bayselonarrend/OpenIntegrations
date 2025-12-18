@@ -7,14 +7,19 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [profile.release]
-lto = "fat"       # Enable Link Time Optimization
-codegen-units = 1 # Reduce number of codegen units to increase optimizations.
-panic = "abort"   # Abort on panic
-strip = true      # Automatically strip symbols from the binary.
+lto = "fat"
+codegen-units = 1
+panic = "unwind"
+strip = true
 opt-level = "z"
 
 [dependencies]
-addin1c = "0.5.0"
+common-core = { path = "../!commons/common-core" }
+common-tcp = { path = "../!commons/common-tcp" }
+common-utils = { path = "../!commons/common-utils" }
+common-dataset = { path = "../!commons/common-dataset" }
+common-binary = { path = "../!commons/common-binary" }
+
 tiberius = { version = "0.12", features = ["chrono", "rust_decimal"] }
 tokio = { version = "1.0", features = ["full"] }
 tokio-util = { version = "0.7", features = ["compat"] }
@@ -24,7 +29,3 @@ base64 = "0.21"
 uuid = { version = "1.17.0", features = ["v4"] }
 dateparser = "0.2.1"
 thread-id = "5.0.0"
-common-tcp = { path = "../!commons/common-tcp" }
-common-utils = { path = "../!commons/common-utils" }
-common-dataset = { path = "../!commons/common-dataset" }
-common-binary = { path = "../!commons/common-binary" }

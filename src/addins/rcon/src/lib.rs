@@ -1,49 +1,75 @@
-pub mod component;
-mod core;
+mod methods;
+mod settings;
 
+use common_utils::utils::json_error;
+use rcon_client::RCONClient;
+use settings::ConnectionSettings;
+use common_core::*;
 
-use std::{
-    ffi::{c_int, c_long, c_void},
-    sync::atomic::{AtomicI32, Ordering},
-};
+impl_addin_exports!(AddIn);
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
-use component::AddIn;
-use addin1c::{create_component, destroy_component, name, AttachType};
+pub const METHODS: &[&[u16]] = &[
+    name!("Connect"),     // 0
+    name!("Command"),     // 1
+    name!("GetSettings")  // 2
+];
 
-pub static mut PLATFORM_CAPABILITIES: AtomicI32 = AtomicI32::new(-1);
-
-#[allow(non_snake_case)]
-#[no_mangle]
-pub unsafe extern "C" fn GetClassObject(_name: *const u16, component: *mut *mut c_void) -> c_long {
-
-    let addin = AddIn::new();
-    create_component(component, addin)
-
+pub fn get_params_amount(num: usize) -> usize {
+    match num {
+        0 => 4,
+        1 => 1,
+        2 => 0,
+        _ => 0,
+    }
 }
 
-#[allow(non_snake_case)]
-#[no_mangle]
-pub unsafe extern "C" fn DestroyObject(component: *mut *mut c_void) -> c_long {
-    destroy_component(component)
+pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
+
+    match num {
+        0 => {
+            let url = params[0].get_string().unwrap_or("".to_string());
+            let password = params[1].get_string().unwrap_or("".to_string());
+            let read_timeout = params[2].get_i32().unwrap_or(0);
+            let write_timeout = params[3].get_i32().unwrap_or(0);
+
+            obj.settings = Some(ConnectionSettings::new(&url, &password, read_timeout, write_timeout));
+            Box::new(obj.connect())
+        },
+        1 => {
+            let command = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.execute_command(&command))
+        },
+        2 => {
+            Box::new(match &obj.settings{
+                Some(settings) =>  settings.get_settings(),
+                None => json_error("No connection settings found")
+            })
+        }
+        _ => Box::new(false), // Неверный номер команды
+    }
 }
 
-#[allow(non_snake_case)]
-#[no_mangle]
-pub extern "C" fn GetClassNames() -> *const u16 {
-    // small strings for performance
-    name!("Main").as_ptr()
+pub const PROPS: &[&[u16]] = &[];
+
+pub struct AddIn {
+    client: Option<RCONClient>,
+    settings: Option<ConnectionSettings>
 }
 
-#[allow(non_snake_case)]
-#[no_mangle]
-#[allow(static_mut_refs)]
-pub unsafe extern "C" fn SetPlatformCapabilities(capabilities: c_int) -> c_int {
-    PLATFORM_CAPABILITIES.store(capabilities, Ordering::Relaxed);
-    3
+impl AddIn {
+    pub fn new() -> Self {
+        AddIn {
+            client: None,
+            settings: None
+        }
+    }
+
+    pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
+        match index {
+            _ => panic!("Index out of bounds"),
+        }
+    }
+    pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType { self.get_field_ptr(index) as *mut _ }
 }
 
-#[allow(non_snake_case)]
-#[no_mangle]
-pub extern "C" fn GetAttachType() -> AttachType {
-    AttachType::Any
-}

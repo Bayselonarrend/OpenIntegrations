@@ -4,8 +4,8 @@ use common_tcp::tcp_establish::create_tcp_connection;
 use common_utils::utils::{json_error, json_success};
 use serde_json::json;
 use ssh2::{MethodType, Session};
-use crate::component::AddIn;
-use crate::component::ssh_settings::{SshAuthTypes, SshConf};
+use crate::AddIn;
+use crate::ssh_settings::{SshAuthTypes, SshConf};
 
 impl AddIn{
     pub fn set_settings(&mut self, settings: String) -> String{
