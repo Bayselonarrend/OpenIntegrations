@@ -7,10 +7,10 @@ use prost_reflect::{DescriptorPool, DynamicMessage, MethodDescriptor};
 use prost::Message;
 use tokio::sync::mpsc;
 use tonic::codegen::tokio_stream;
-use crate::component::message_converter::{json_to_dynamic_message, dynamic_message_to_json};
-use crate::component::grpc_caller::{apply_metadata, create_request_message};
+use crate::message_converter::{json_to_dynamic_message, dynamic_message_to_json};
+use crate::grpc_caller::{apply_metadata, create_request_message};
 use futures::StreamExt;
-use crate::component::stream_manager::{StreamInfo, StreamManager};
+use crate::stream_manager::{StreamInfo, StreamManager};
 
 #[derive(serde::Deserialize)]
 pub struct StreamCallParams {

@@ -1,49 +1,68 @@
-pub mod component;
-mod core;
+mod methods;
 
+use common_core::*;
+use methods::*;
 
-use std::{
-    ffi::{c_int, c_long, c_void},
-    sync::atomic::{AtomicI32, Ordering},
-};
+impl_addin_exports!(AddIn);
+impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, call_func);
 
-use component::AddIn;
-use addin1c::{create_component, destroy_component, name, AttachType};
+pub const METHODS: &[&[u16]] = &[
+    name!("HmacSha1"),
+    name!("HmacSha256"),
+    name!("RsaSha1"),
+    name!("RsaSha256"),
+];
 
-pub static mut PLATFORM_CAPABILITIES: AtomicI32 = AtomicI32::new(-1);
+pub fn get_params_amount(num: usize) -> usize {
+    match num {
+        0 => 2,
+        1 => 2,
+        2 => 2,
+        3 => 2,
+        _ => 0,
+    }
+}
 
-#[allow(non_snake_case)]
-#[no_mangle]
-pub unsafe extern "C" fn GetClassObject(_name: *const u16, component: *mut *mut c_void) -> c_long {
+pub fn call_func(_obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
 
-    let addin = AddIn::new();
-    create_component(component, addin)
+    let key = params[0].get_blob().unwrap_or_default();
+    let data = params[1].get_blob().unwrap_or_default();
+
+    match num {
+        0 => box_result(hmac_sha1(key, data)),
+        1 => box_result(hmac_sha256(key, data)),
+        2 => box_result(rsa_sha1(key, data)),
+        3 => box_result(rsa_sha256(key, data)),
+        _ => Box::new(false), // Неверный номер команды
+    }
 
 }
 
-#[allow(non_snake_case)]
-#[no_mangle]
-pub unsafe extern "C" fn DestroyObject(component: *mut *mut c_void) -> c_long {
-    destroy_component(component)
+fn box_result(result:  Result<Vec<u8>, String>) -> Box<dyn getset::ValueType> {
+    match result {
+        Ok(data) => Box::new(data),
+        Err(e) => Box::new(e),
+    }
 }
 
-#[allow(non_snake_case)]
-#[no_mangle]
-pub extern "C" fn GetClassNames() -> *const u16 {
-    // small strings for performance
-    name!("Main").as_ptr()
+pub const PROPS: &[&[u16]] = &[];
+
+
+pub struct AddIn {
 }
 
-#[allow(non_snake_case)]
-#[no_mangle]
-#[allow(static_mut_refs)]
-pub unsafe extern "C" fn SetPlatformCapabilities(capabilities: c_int) -> c_int {
-    PLATFORM_CAPABILITIES.store(capabilities, Ordering::Relaxed);
-    3
+impl AddIn {
+    pub fn new() -> Self { AddIn {} }
+
+    pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
+        match index {
+            _ => panic!("Index out of bounds"),
+        }
+    }
+    pub fn get_field_ptr_mut(&mut self, index: usize) -> *mut dyn getset::ValueType { self.get_field_ptr(index) as *mut _ }
 }
 
-#[allow(non_snake_case)]
-#[no_mangle]
-pub extern "C" fn GetAttachType() -> AttachType {
-    AttachType::Any
+impl Drop for AddIn {
+    fn drop(&mut self) {}
 }
+
