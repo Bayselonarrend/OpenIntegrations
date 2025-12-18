@@ -213,6 +213,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "common-binary"
+version = "0.1.0"
+dependencies = [
+ "base64 0.22.1",
+ "serde_json",
+]
+
+[[package]]
+name = "common-core"
+version = "0.1.0"
+dependencies = [
+ "addin1c",
+]
+
+[[package]]
+name = "common-utils"
+version = "0.1.0"
+dependencies = [
+ "serde_json",
+]
+
+[[package]]
 name = "const-random"
 version = "0.1.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1066,8 +1088,10 @@ checksum = "42f5e15c9953c5e4ccceeb2e7382a716482c34515315f7b03532b8b4e8393d2d"
 name = "opi_mongodb"
 version = "0.1.0"
 dependencies = [
- "addin1c",
  "base64 0.22.1",
+ "common-binary",
+ "common-core",
+ "common-utils",
  "dateparser",
  "mongodb",
  "regex",
