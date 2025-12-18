@@ -2,7 +2,7 @@ use std::collections::HashMap;
 use common_tcp::tls_settings::TlsSettings;
 use prost_reflect::DescriptorPool;
 use tonic::transport::Channel;
-use crate::component::stream_manager::StreamManager;
+use crate::stream_manager::StreamManager;
 
 pub struct ClientState {
     pub(crate) connected: bool,
