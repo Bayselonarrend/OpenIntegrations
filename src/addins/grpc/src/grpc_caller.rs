@@ -6,7 +6,7 @@ use tonic::Request;
 use tonic::metadata::{MetadataValue, MetadataKey, Ascii};
 use prost_reflect::{DescriptorPool, DynamicMessage};
 use prost::Message;
-use crate::component::message_converter::{json_to_dynamic_message, dynamic_message_to_json};
+use crate::message_converter::{json_to_dynamic_message, dynamic_message_to_json};
 
 #[derive(serde::Deserialize)]
 pub struct CallParams {
