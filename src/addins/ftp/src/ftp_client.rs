@@ -15,8 +15,8 @@ use common_tcp::proxy_settings::ProxySettings;
 use common_tcp::tls_settings::TlsSettings;
 use common_utils::utils::{json_error, json_success};
 use suppaftp::types::Response;
-use crate::component::configuration::FtpSettings;
-use crate::component::passive_establish;
+use crate::configuration::FtpSettings;
+use crate::passive_establish;
 
 pub enum FtpClient {
     Secure(RustlsFtpStream),

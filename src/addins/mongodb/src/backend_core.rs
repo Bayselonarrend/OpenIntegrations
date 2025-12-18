@@ -1,15 +1,17 @@
 use serde_json::{json, Value};
 use std::sync::mpsc::{self, Sender};
 use std::thread::{self, JoinHandle};
+use common_binary::vault::BinaryVault;
 use mongodb::bson::{Bson, Document};
 use mongodb::Client;
 use serde::{Deserialize, Serialize};
-use crate::component::bson::{bson_to_json_value, json_value_to_bson};
-use crate::component::format_json_error;
+use crate::bson::{bson_to_json_value, json_value_to_bson};
+use crate::format_json_error;
 
 pub struct MongoBackend {
     pub(crate) tx: Sender<BackendCommand>,
     thread_handle: Option<JoinHandle<()>>,
+    pub(crate) binary_vault: BinaryVault
 }
 
 #[derive(Serialize, Deserialize)]
@@ -39,6 +41,9 @@ impl MongoBackend {
     pub fn new() -> Self {
         let (tx, rx) = mpsc::channel();
 
+        let binary_vault = BinaryVault::new();
+        let vault_clone = binary_vault.clone();
+
         let thread_handle = thread::Builder::new()
             .name("opi_mongodb_backend".to_string())
             .spawn(move || {
@@ -66,6 +71,7 @@ impl MongoBackend {
                             }
 
                             let result = rt.block_on(execute_operation(
+                                &vault_clone,
                                 client.as_ref().unwrap(),
                                 &params
                             ));
@@ -97,6 +103,7 @@ impl MongoBackend {
         Self {
             tx,
             thread_handle: Some(thread_handle),
+            binary_vault
         }
     }
 }
@@ -115,6 +122,7 @@ async fn handle_connect(connection_string: &str) -> Result<Client, String> {
 }
 
 async fn execute_operation(
+    binary_vault: &BinaryVault,
     client: &Client,
     params: &ExecuteParams,
 ) -> Result<String, String> {
@@ -128,7 +136,7 @@ async fn execute_operation(
 
     if let Some(value) = &params.argument {
 
-        command.insert(&params.operation, json_value_to_bson(value)?);
+        command.insert(&params.operation, json_value_to_bson(binary_vault, value)?);
 
     } else {
         command.insert(&params.operation, 1);
@@ -137,7 +145,7 @@ async fn execute_operation(
     if let Some(Value::Object(data_map)) = &params.data {
         for (key, value) in data_map {
             if key != &params.operation {
-                command.insert(key, json_value_to_bson(value)?);
+                command.insert(key, json_value_to_bson(binary_vault, value)?);
             }
         }
     }

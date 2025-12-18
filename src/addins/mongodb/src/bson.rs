@@ -1,12 +1,14 @@
+use std::str::FromStr;
 use std::time::SystemTime;
 use serde_json::{Number, Value};
 use mongodb::bson::{Bson, Document};
 use mongodb::bson;
 use base64::{Engine as _, engine::{general_purpose}};
+use common_binary::vault::{BinaryVault, VaultKey};
 use dateparser::parse;
 use regex::Regex as StdRegex;
 
-pub fn json_value_to_bson(value: &Value) -> Result<Bson, String> {
+pub fn json_value_to_bson(binary_vault: &BinaryVault, value: &Value) -> Result<Bson, String> {
     let result = match value {
         Value::String(s) => Bson::String(s.clone()),
         Value::Number(n) if n.is_i64() => Bson::Int64(n.as_i64().unwrap()),
@@ -14,7 +16,8 @@ pub fn json_value_to_bson(value: &Value) -> Result<Bson, String> {
         Value::Bool(b) => Bson::Boolean(*b),
         Value::Null => Bson::Null,
         Value::Array(arr) => {
-            let converted: Result<Vec<_>, _> = arr.iter().map(json_value_to_bson).collect();
+            let converted: Result<Vec<_>, _> = arr.iter()
+                .map(| el| json_value_to_bson(binary_vault, el)).collect();
             Bson::Array(converted?)
         },
         Value::Object(obj) => {
@@ -133,21 +136,22 @@ pub fn json_value_to_bson(value: &Value) -> Result<Bson, String> {
             }
 
             if let Some(binary) = obj.get("__OPI_BINARY__") {
-                if let Some(base64_str) = binary.as_str() {
-                    return if let Ok(bytes) = general_purpose::STANDARD.decode(base64_str) {
-                        Ok(Bson::Binary(bson::Binary {
-                            bytes,
-                            subtype: bson::spec::BinarySubtype::Generic
-                        }))
-                    } else {
-                        Err(format!("Can't parse B64 binary: {}", base64_str))
-                    }
+                if let Some(key) = binary.as_str() {
+
+                    let bytes = binary_vault
+                        .retrieve(&VaultKey::from_str(key).unwrap_or_default())
+                        .map_err(|e| e.to_string())?;
+
+                    return Ok(Bson::Binary(bson::Binary {
+                        bytes,
+                        subtype: bson::spec::BinarySubtype::Generic
+                    }))
                 }
             }
 
             let mut doc = Document::new();
             for (k, v) in obj.iter() {
-                let bson_value = json_value_to_bson(v)?;
+                let bson_value = json_value_to_bson(binary_vault, v)?;
 
                 let transformed_key = if k.starts_with("__4") {
                     match k.strip_prefix("__4"){

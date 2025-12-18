@@ -6,6 +6,8 @@ use methods::*;
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, call_func);
 
+pub const PROPS: &[&[u16]] = &[];
+
 pub const METHODS: &[&[u16]] = &[
     name!("HmacSha1"),
     name!("HmacSha256"),
@@ -33,7 +35,7 @@ pub fn call_func(_obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dy
         1 => box_result(hmac_sha256(key, data)),
         2 => box_result(rsa_sha1(key, data)),
         3 => box_result(rsa_sha256(key, data)),
-        _ => Box::new(false), // Неверный номер команды
+        _ => Box::new(false),
     }
 
 }
@@ -45,11 +47,7 @@ fn box_result(result:  Result<Vec<u8>, String>) -> Box<dyn getset::ValueType> {
     }
 }
 
-pub const PROPS: &[&[u16]] = &[];
-
-
-pub struct AddIn {
-}
+pub struct AddIn {}
 
 impl AddIn {
     pub fn new() -> Self { AddIn {} }
