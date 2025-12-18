@@ -4,7 +4,7 @@ use std::thread::{self, JoinHandle};
 use std::collections::HashMap;
 use common_utils::utils::json_error;
 use common_tcp::tls_settings::TlsSettings;
-use crate::component::client_state::ClientState;
+use crate::client_state::ClientState;
 use super::connection;
 use super::proto_loader;
 use super::grpc_caller::{self, CallParams};
@@ -216,7 +216,7 @@ impl GrpcBackend {
                             let _ = response.send(response_msg);
                         }
                         BackendCommand::CallServerStream { params_json, response } => {
-                            use crate::component::streaming_caller;
+                            use crate::streaming_caller;
                             
                             let result = if !client_state.connected {
                                 Err("Not connected to gRPC server".to_string())
@@ -246,7 +246,7 @@ impl GrpcBackend {
                             let _ = response.send(response_msg);
                         }
                         BackendCommand::StartClientStream { params_json, response } => {
-                            use crate::component::streaming_caller;
+                            use crate::streaming_caller;
                             
                             let result = if !client_state.connected {
                                 Err("Not connected to gRPC server".to_string())
@@ -276,7 +276,7 @@ impl GrpcBackend {
                             let _ = response.send(response_msg);
                         }
                         BackendCommand::StartBidiStream { params_json, response } => {
-                            use crate::component::streaming_caller;
+                            use crate::streaming_caller;
                             
                             let result = if !client_state.connected {
                                 Err("Not connected to gRPC server".to_string())
@@ -306,7 +306,7 @@ impl GrpcBackend {
                             let _ = response.send(response_msg);
                         }
                         BackendCommand::SendMessage { stream_id, message_json, response } => {
-                            use crate::component::streaming_caller;
+                            use crate::streaming_caller;
 
                             let result = rt.block_on(async {
                                 let message_value: serde_json::Value = serde_json::from_str(&message_json)
@@ -326,7 +326,7 @@ impl GrpcBackend {
                             let _ = response.send(response_msg);
                         }
                         BackendCommand::GetNextMessage { stream_id, response } => {
-                            use crate::component::streaming_caller;
+                            use crate::streaming_caller;
                             
                             let result = rt.block_on(streaming_caller::get_next_message(
                                 &client_state.stream_manager,
@@ -349,7 +349,7 @@ impl GrpcBackend {
                             let _ = response.send(response_msg);
                         }
                         BackendCommand::FinishClientStream { stream_id, response } => {
-                            use crate::component::streaming_caller;
+                            use crate::streaming_caller;
                             
                             let result = rt.block_on(streaming_caller::finish_client_stream_and_get_response(
                                 &client_state.stream_manager,

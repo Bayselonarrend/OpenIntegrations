@@ -9,12 +9,13 @@ crate-type = ["cdylib"]
 [profile.release]
 lto = "fat"       # Enable Link Time Optimization
 codegen-units = 1 # Reduce number of codegen units to increase optimizations.
-panic = "abort"   # Abort on panic
+panic = "unwind"   # Abort on panic
 strip = true      # Automatically strip symbols from the binary.
 opt-level = "z"
 
 [dependencies]
-addin1c = "0.5.0"
+common-core = { path = "../!commons/common-core" }
+
 hmac = "0.12"
 sha1 = { version = "0.10", features = ["oid"] }
 sha2 = { version = "0.10", features = ["oid"] }

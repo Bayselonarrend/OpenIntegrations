@@ -916,7 +916,6 @@ checksum = "d05e27ee213611ffe7d6348b942e8f942b37114c00cc03cec254295a4a17852e"
 name = "opi_grpc"
 version = "0.1.0"
 dependencies = [
- "addin1c",
  "base64",
  "common-core",
  "common-tcp",
