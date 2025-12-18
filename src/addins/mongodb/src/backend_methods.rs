@@ -1,5 +1,5 @@
 use std::sync::mpsc;
-use crate::component::backend_core::{BackendCommand, ExecuteParams, MongoBackend};
+use crate::backend_core::{BackendCommand, ExecuteParams, MongoBackend};
 
 impl MongoBackend {
     pub fn connect(&self, connection_string: &str) -> Result<(), String> {

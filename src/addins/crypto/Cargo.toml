@@ -7,10 +7,10 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [profile.release]
-lto = "fat"       # Enable Link Time Optimization
-codegen-units = 1 # Reduce number of codegen units to increase optimizations.
-panic = "unwind"   # Abort on panic
-strip = true      # Automatically strip symbols from the binary.
+lto = "fat"
+codegen-units = 1
+panic = "unwind"
+strip = true
 opt-level = "z"
 
 [dependencies]

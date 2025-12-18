@@ -1,7 +1,7 @@
 use postgres::types::{ToSql};
 use serde_json::{Value, json, Map};
 use base64::{engine::general_purpose, Engine as _};
-use crate::component::AddIn;
+
 use std::collections::HashMap;
 use std::net::IpAddr;
 use std::str::FromStr;
@@ -12,52 +12,57 @@ use uuid::Uuid;
 use dateparser::parse;
 use rust_decimal::Decimal;
 use rust_decimal::prelude::FromPrimitive;
+use crate::AddIn;
 
-pub fn execute_query(add_in: &mut AddIn, key: &str) -> String {
+impl AddIn{
 
-    let client_arc = match add_in.get_connection() {
-        Some(c) => c,
-        None => return json_error("No connection initialized"),
-    };
+    pub fn execute_query(&mut self, key: &str) -> String {
 
-    let mut client = match client_arc.lock(){
-        Ok(c) => c,
-        Err(_) => return json_error("Cannot acquire client lock"),
-    };
+        let client_arc = match self.get_connection() {
+            Some(c) => c,
+            None => return json_error("No connection initialized"),
+        };
 
-    let query = match add_in.datasets.get_query(key){
-        Some(q) => q,
-        None => return json_error(format!("No query found by key: {}", key).as_str()),
-    };
+        let mut client = match client_arc.lock(){
+            Ok(c) => c,
+            Err(_) => return json_error("Cannot acquire client lock"),
+        };
 
-    let params = query.params;
-    let text = query.text;
-    let force_result = query.force_result;
+        let query = match self.datasets.get_query(key){
+            Some(q) => q,
+            None => return json_error(format!("No query found by key: {}", key).as_str()),
+        };
 
-    let params_ref = match process_params(&add_in.binary_vault, &params){
-        Ok(params) => params,
-        Err(e) => return json_error(&e.to_string()),
-    };
+        let params = query.params;
+        let text = query.text;
+        let force_result = query.force_result;
 
-    let params_unboxed: Vec<_> = params_ref.iter().map(AsRef::as_ref).collect();
+        let params_ref = match process_params(&self.binary_vault, &params){
+            Ok(params) => params,
+            Err(e) => return json_error(&e.to_string()),
+        };
 
-    if text.trim_start().to_uppercase().starts_with("SELECT") || force_result {
-        match client.query(&text, &params_unboxed) {
-            Ok(rows) => {
+        let params_unboxed: Vec<_> = params_ref.iter().map(AsRef::as_ref).collect();
 
-                let processed_rows = rows_to_json(rows);
-                add_in.datasets.set_results(key, processed_rows);
-                json!({"result": true, "data": true}).to_string()
+        if text.trim_start().to_uppercase().starts_with("SELECT") || force_result {
+            match client.query(&text, &params_unboxed) {
+                Ok(rows) => {
 
+                    let processed_rows = rows_to_json(rows);
+                    self.datasets.set_results(key, processed_rows);
+                    json!({"result": true, "data": true}).to_string()
+
+                }
+                Err(e) => json_error(&e.to_string()),
             }
-            Err(e) => json_error(&e.to_string()),
-        }
-    } else {
-        match client.execute(&text, &params_unboxed.as_slice()) {
-            Ok(_) => json!({"result": true, "data": false}).to_string(),
-            Err(e) => json_error(&e.to_string()),
+        } else {
+            match client.execute(&text, &params_unboxed.as_slice()) {
+                Ok(_) => json!({"result": true, "data": false}).to_string(),
+                Err(e) => json_error(&e.to_string()),
+            }
         }
     }
+
 }
 
 fn process_params(binary_vault: &BinaryVault, params: &Vec<Value>) -> Result<Vec<Box<dyn ToSql + Sync>>, String> {
