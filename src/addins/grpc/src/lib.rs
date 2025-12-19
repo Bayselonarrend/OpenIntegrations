@@ -394,5 +394,20 @@ impl AddIn {
 }
 
 impl Drop for AddIn {
-    fn drop(&mut self) {}
+    fn drop(&mut self) {
+        // Если есть активное подключение, корректно отключаемся
+        if self.initialized {
+            if let Ok(guard) = self.backend.lock() {
+                // Закрываем все активные стримы
+                let _ = guard.close_all_streams();
+                
+                // Отключаемся от сервера
+                let _ = guard.disconnect();
+            }
+            self.initialized = false;
+        }
+        
+        // GrpcBackend::drop() автоматически завершит backend поток
+        // когда Arc будет освобожден
+    }
 }

@@ -89,6 +89,9 @@ pub enum BackendCommand {
         stream_id: String,
         response: Sender<String>,
     },
+    CloseAllStreams {
+        response: Sender<String>,
+    },
     Shutdown,
 }
 
@@ -218,26 +221,32 @@ impl GrpcBackend {
                         BackendCommand::CallServerStream { params_json, response } => {
                             use crate::streaming_caller;
                             
-                            let result = if !client_state.connected {
-                                Err("Not connected to gRPC server".to_string())
-                            } else if let (Some(channel), Some(descriptor_pool)) = (&client_state.channel, &client_state.descriptor_pool) {
-                                let params: streaming_caller::StreamCallParams = match serde_json::from_str(&params_json) {
-                                    Ok(p) => p,
-                                    Err(e) => {
-                                        let _ = response.send(json_error(&format!("Invalid params: {}", e)));
-                                        continue;
-                                    }
-                                };
-                                rt.block_on(streaming_caller::start_server_stream(
-                                    channel,
-                                    descriptor_pool,
-                                    &client_state.metadata,
-                                    &client_state.stream_manager,
-                                    &params
-                                ))
-                            } else {
-                                Err("No active connection or proto files loaded".to_string())
-                            };
+                            let panic_result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                                if !client_state.connected {
+                                    Err("Not connected to gRPC server".to_string())
+                                } else if let (Some(channel), Some(descriptor_pool)) = (&client_state.channel, &client_state.descriptor_pool) {
+                                    let params: streaming_caller::StreamCallParams = match serde_json::from_str(&params_json) {
+                                        Ok(p) => p,
+                                        Err(e) => {
+                                            return Err(format!("Invalid params: {}", e));
+                                        }
+                                    };
+                                    rt.block_on(streaming_caller::start_server_stream(
+                                        channel,
+                                        descriptor_pool,
+                                        &client_state.metadata,
+                                        &client_state.stream_manager,
+                                        &params
+                                    ))
+                                } else {
+                                    Err("No active connection or proto files loaded".to_string())
+                                }
+                            }));
+                            
+                            let result = panic_result.unwrap_or_else(|panic_info| {
+                                let panic_msg = common_core::extract_panic_message(&panic_info);
+                                Err(format!("Backend panic in CallServerStream: {}", panic_msg))
+                            });
                             
                             let response_msg = match result {
                                 Ok(stream_id) => json!({"result": true, "streamId": stream_id}).to_string(),
@@ -248,26 +257,32 @@ impl GrpcBackend {
                         BackendCommand::StartClientStream { params_json, response } => {
                             use crate::streaming_caller;
                             
-                            let result = if !client_state.connected {
-                                Err("Not connected to gRPC server".to_string())
-                            } else if let (Some(channel), Some(descriptor_pool)) = (&client_state.channel, &client_state.descriptor_pool) {
-                                let params: streaming_caller::StreamCallParams = match serde_json::from_str(&params_json) {
-                                    Ok(p) => p,
-                                    Err(e) => {
-                                        let _ = response.send(json_error(&format!("Invalid params: {}", e)));
-                                        continue;
-                                    }
-                                };
-                                rt.block_on(streaming_caller::start_client_stream(
-                                    channel,
-                                    descriptor_pool,
-                                    &client_state.metadata,
-                                    &client_state.stream_manager,
-                                    &params
-                                ))
-                            } else {
-                                Err("No active connection or proto files loaded".to_string())
-                            };
+                            let panic_result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                                if !client_state.connected {
+                                    Err("Not connected to gRPC server".to_string())
+                                } else if let (Some(channel), Some(descriptor_pool)) = (&client_state.channel, &client_state.descriptor_pool) {
+                                    let params: streaming_caller::StreamCallParams = match serde_json::from_str(&params_json) {
+                                        Ok(p) => p,
+                                        Err(e) => {
+                                            return Err(format!("Invalid params: {}", e));
+                                        }
+                                    };
+                                    rt.block_on(streaming_caller::start_client_stream(
+                                        channel,
+                                        descriptor_pool,
+                                        &client_state.metadata,
+                                        &client_state.stream_manager,
+                                        &params
+                                    ))
+                                } else {
+                                    Err("No active connection or proto files loaded".to_string())
+                                }
+                            }));
+                            
+                            let result = panic_result.unwrap_or_else(|panic_info| {
+                                let panic_msg = common_core::extract_panic_message(&panic_info);
+                                Err(format!("Backend panic in StartClientStream: {}", panic_msg))
+                            });
                             
                             let response_msg = match result {
                                 Ok(stream_id) => json!({"result": true, "streamId": stream_id}).to_string(),
@@ -278,26 +293,32 @@ impl GrpcBackend {
                         BackendCommand::StartBidiStream { params_json, response } => {
                             use crate::streaming_caller;
                             
-                            let result = if !client_state.connected {
-                                Err("Not connected to gRPC server".to_string())
-                            } else if let (Some(channel), Some(descriptor_pool)) = (&client_state.channel, &client_state.descriptor_pool) {
-                                let params: streaming_caller::StreamCallParams = match serde_json::from_str(&params_json) {
-                                    Ok(p) => p,
-                                    Err(e) => {
-                                        let _ = response.send(json_error(&format!("Invalid params: {}", e)));
-                                        continue;
-                                    }
-                                };
-                                rt.block_on(streaming_caller::start_bidi_stream(
-                                    channel,
-                                    descriptor_pool,
-                                    &client_state.metadata,
-                                    &client_state.stream_manager,
-                                    &params
-                                ))
-                            } else {
-                                Err("No active connection or proto files loaded".to_string())
-                            };
+                            let panic_result = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                                if !client_state.connected {
+                                    Err("Not connected to gRPC server".to_string())
+                                } else if let (Some(channel), Some(descriptor_pool)) = (&client_state.channel, &client_state.descriptor_pool) {
+                                    let params: streaming_caller::StreamCallParams = match serde_json::from_str(&params_json) {
+                                        Ok(p) => p,
+                                        Err(e) => {
+                                            return Err(format!("Invalid params: {}", e));
+                                        }
+                                    };
+                                    rt.block_on(streaming_caller::start_bidi_stream(
+                                        channel,
+                                        descriptor_pool,
+                                        &client_state.metadata,
+                                        &client_state.stream_manager,
+                                        &params
+                                    ))
+                                } else {
+                                    Err("No active connection or proto files loaded".to_string())
+                                }
+                            }));
+                            
+                            let result = panic_result.unwrap_or_else(|panic_info| {
+                                let panic_msg = common_core::extract_panic_message(&panic_info);
+                                Err(format!("Backend panic in StartBidiStream: {}", panic_msg))
+                            });
                             
                             let response_msg = match result {
                                 Ok(stream_id) => json!({"result": true, "streamId": stream_id}).to_string(),
@@ -334,7 +355,7 @@ impl GrpcBackend {
                             ));
                             
                             let response_msg = match result {
-                                Ok(data) => json!({"result": true, "data": data}).to_string(),
+                                Ok(data) => data.to_string(),
                                 Err(e) => json_error(&e),
                             };
                             let _ = response.send(response_msg);
@@ -377,6 +398,15 @@ impl GrpcBackend {
                             let response_msg = match result {
                                 Ok(_) => json!({"result": true}).to_string(),
                                 Err(e) => json_error(&e),
+                            };
+                            let _ = response.send(response_msg);
+                        }
+                        BackendCommand::CloseAllStreams { response } => {
+                            let result = rt.block_on(client_state.stream_manager.close_all_streams());
+                            
+                            let response_msg = match result {
+                                Ok(_) => "".to_string(),
+                                Err(e) => e,
                             };
                             let _ = response.send(response_msg);
                         }
@@ -635,6 +665,19 @@ impl GrpcBackend {
 
         response_rx.recv()
             .map_err(|e| format!("Failed to receive close_stream response: {}", e))
+    }
+
+    pub fn close_all_streams(&self) -> Result<(), String> {
+        let (response_tx, response_rx) = mpsc::channel();
+        
+        self.tx.send(BackendCommand::CloseAllStreams {
+            response: response_tx,
+        }).map_err(|e| format!("Failed to send close_all_streams command: {}", e))?;
+
+        response_rx.recv()
+            .map_err(|e| format!("Failed to receive close_all_streams response: {}", e))?;
+
+        Ok(())
     }
 }
 
