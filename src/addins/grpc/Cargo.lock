@@ -214,6 +214,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "common-binary"
+version = "0.1.0"
+dependencies = [
+ "base64",
+ "serde_json",
+]
+
+[[package]]
 name = "common-core"
 version = "0.1.0"
 dependencies = [
@@ -917,6 +925,7 @@ name = "opi_grpc"
 version = "0.1.0"
 dependencies = [
  "base64",
+ "common-binary",
  "common-core",
  "common-tcp",
  "common-utils",

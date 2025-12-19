@@ -4,6 +4,7 @@ use std::thread::{self, JoinHandle};
 use std::collections::HashMap;
 use common_utils::utils::json_error;
 use common_tcp::tls_settings::TlsSettings;
+use common_binary::vault::BinaryVault;
 use crate::client_state::ClientState;
 use super::connection;
 use super::proto_loader;
@@ -13,6 +14,7 @@ use super::introspection;
 pub struct GrpcBackend {
     pub(crate) tx: Sender<BackendCommand>,
     thread_handle: Option<JoinHandle<()>>,
+    pub(crate) binary_vault: BinaryVault,
 }
 
 pub enum BackendCommand {
@@ -98,6 +100,9 @@ pub enum BackendCommand {
 impl GrpcBackend {
     pub fn new() -> Self {
         let (tx, rx) = mpsc::channel();
+        
+        let binary_vault = BinaryVault::new();
+        let vault_clone = binary_vault.clone();
 
         let thread_handle = thread::Builder::new()
             .name("opi_grpc_backend".to_string())
@@ -137,7 +142,7 @@ impl GrpcBackend {
                                 if !client_state.connected {
                                     Err("Not connected to gRPC server".to_string())
                                 } else if let (Some(channel), Some(descriptor_pool)) = (&mut client_state.channel, &client_state.descriptor_pool) {
-                                    rt.block_on(grpc_caller::execute_grpc_call(channel, descriptor_pool, &client_state.metadata, &params))
+                                    rt.block_on(grpc_caller::execute_grpc_call(&vault_clone, channel, descriptor_pool, &client_state.metadata, &params))
                                 } else {
                                     Err("No active connection or proto files loaded".to_string())
                                 }
@@ -232,6 +237,7 @@ impl GrpcBackend {
                                         }
                                     };
                                     rt.block_on(streaming_caller::start_server_stream(
+                                        &vault_clone,
                                         channel,
                                         descriptor_pool,
                                         &client_state.metadata,
@@ -268,6 +274,7 @@ impl GrpcBackend {
                                         }
                                     };
                                     rt.block_on(streaming_caller::start_client_stream(
+                                        &vault_clone,
                                         channel,
                                         descriptor_pool,
                                         &client_state.metadata,
@@ -304,6 +311,7 @@ impl GrpcBackend {
                                         }
                                     };
                                     rt.block_on(streaming_caller::start_bidi_stream(
+                                        &vault_clone,
                                         channel,
                                         descriptor_pool,
                                         &client_state.metadata,
@@ -334,6 +342,7 @@ impl GrpcBackend {
                                     .map_err(|e| format!("Invalid message JSON: {}", e))?;
                                 
                                 streaming_caller::send_stream_message(
+                                    &vault_clone,
                                     &client_state.stream_manager,
                                     &stream_id,
                                     &message_value
@@ -350,6 +359,7 @@ impl GrpcBackend {
                             use crate::streaming_caller;
                             
                             let result = rt.block_on(streaming_caller::get_next_message(
+                                &vault_clone,
                                 &client_state.stream_manager,
                                 &stream_id
                             ));
@@ -373,6 +383,7 @@ impl GrpcBackend {
                             use crate::streaming_caller;
                             
                             let result = rt.block_on(streaming_caller::finish_client_stream_and_get_response(
+                                &vault_clone,
                                 &client_state.stream_manager,
                                 &stream_id
                             ));
@@ -419,6 +430,7 @@ impl GrpcBackend {
         Self {
             tx,
             thread_handle: Some(thread_handle),
+            binary_vault,
         }
     }
 
