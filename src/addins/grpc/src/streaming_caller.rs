@@ -41,7 +41,11 @@ pub async fn start_server_stream(
     }
 
     let path = format!("/{}/{}", method_desc.parent_service().full_name(), method_desc.name());
+    
     let mut client = tonic::client::Grpc::new(channel.clone());
+
+    client.ready().await
+        .map_err(|e| format!("Failed to ready client: {}", e))?;
     
     let response: Streaming<Vec<u8>> = client
         .server_streaming(grpc_request, path.parse().unwrap(), tonic::codec::ProstCodec::default())
@@ -51,9 +55,10 @@ pub async fn start_server_stream(
 
     let (tx, rx) = mpsc::unbounded_channel();
     
-    spawn_response_handler(response, method_desc.output(), tx);
+    let handler_abort_handle = spawn_response_handler(response, method_desc.output(), tx);
 
-    let stream_info = StreamInfo::new_server_stream(rx, method_desc.output(), params.timeout_ms);
+    let mut stream_info = StreamInfo::new_server_stream(rx, method_desc.output(), params.timeout_ms);
+    stream_info.add_task_handle(handler_abort_handle);
     let stream_id = stream_manager.add_stream(stream_info).await;
 
     Ok(stream_id)
@@ -81,12 +86,16 @@ pub async fn start_client_stream(
     }
 
     let path = format!("/{}/{}", method_desc.parent_service().full_name(), method_desc.name());
+    
     let mut client = tonic::client::Grpc::new(channel.clone());
+
+    client.ready().await
+        .map_err(|e| format!("Failed to ready client: {}", e))?;
 
     let (response_tx, response_rx) = tokio::sync::oneshot::channel();
     let output_desc = method_desc.output();
 
-    tokio::spawn(async move {
+    let task = tokio::spawn(async move {
         let result: Result<tonic::Response<Vec<u8>>, tonic::Status> = client.client_streaming(
             grpc_request,
             path.parse().unwrap(),
@@ -107,13 +116,14 @@ pub async fn start_client_stream(
         let _ = response_tx.send(final_result);
     });
 
-    let stream_info = StreamInfo::new_client_stream(
+    let mut stream_info = StreamInfo::new_client_stream(
         tx,
         method_desc.input(),
         method_desc.output(),
         response_rx,
         params.timeout_ms
     );
+    stream_info.add_task_handle(task.abort_handle());
     let stream_id = stream_manager.add_stream(stream_info).await;
 
     Ok(stream_id)
@@ -142,7 +152,11 @@ pub async fn start_bidi_stream(
     }
 
     let path = format!("/{}/{}", method_desc.parent_service().full_name(), method_desc.name());
+    
     let mut client = tonic::client::Grpc::new(channel.clone());
+
+    client.ready().await
+        .map_err(|e| format!("Failed to ready client: {}", e))?;
 
     let response: Streaming<Vec<u8>> = client
         .streaming(
@@ -154,15 +168,16 @@ pub async fn start_bidi_stream(
         .map_err(|e| format!("gRPC bidi stream failed: {}", e))?
         .into_inner();
 
-    spawn_response_handler(response, method_desc.output(), tx_recv);
+    let handler_abort_handle = spawn_response_handler(response, method_desc.output(), tx_recv);
 
-    let stream_info = StreamInfo::new_bidi_stream(
+    let mut stream_info = StreamInfo::new_bidi_stream(
         tx_send,
         rx_recv,
         method_desc.input(),
         method_desc.output(),
         params.timeout_ms
     );
+    stream_info.add_task_handle(handler_abort_handle);
     let stream_id = stream_manager.add_stream(stream_info).await;
 
     Ok(stream_id)
@@ -172,8 +187,8 @@ fn spawn_response_handler(
     mut response: Streaming<Vec<u8>>,
     output_descriptor: prost_reflect::MessageDescriptor,
     sender: mpsc::UnboundedSender<DynamicMessage>,
-) {
-    tokio::spawn(async move {
+) -> tokio::task::AbortHandle {
+    let task = tokio::spawn(async move {
         while let Ok(Some(bytes)) = response.message().await {
             if let Ok(message) = DynamicMessage::decode(output_descriptor.clone(), bytes.as_ref()) {
                 if sender.send(message).is_err() {
@@ -182,6 +197,7 @@ fn spawn_response_handler(
             }
         }
     });
+    task.abort_handle()
 }
 
 pub async fn send_stream_message(
@@ -202,12 +218,14 @@ pub async fn get_next_message(
         Some(message) => {
             let json_message = dynamic_message_to_json(&message)?;
             Ok(serde_json::json!({
+                "result": true,
                 "hasMore": true,
                 "message": json_message
             }))
         }
         None => {
             Ok(serde_json::json!({
+                "result": true,
                 "hasMore": false,
                 "message": null
             }))
