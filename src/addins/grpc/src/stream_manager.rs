@@ -1,6 +1,7 @@
 use std::collections::HashMap;
 use std::sync::Arc;
 use tokio::sync::{mpsc, Mutex, oneshot};
+use tokio::task::AbortHandle;
 use prost_reflect::{DynamicMessage, MessageDescriptor};
 use serde_json::{json, Value};
 use uuid::Uuid;
@@ -25,6 +26,7 @@ pub struct StreamInfo {
     pub output_descriptor: Option<MessageDescriptor>,
     pub final_response: Arc<Mutex<Option<oneshot::Receiver<Result<DynamicMessage, String>>>>>,
     pub timeout_ms: Option<u64>,
+    pub task_handles: Vec<AbortHandle>,
 }
 
 impl StreamInfo {
@@ -45,6 +47,7 @@ impl StreamInfo {
             output_descriptor: Some(output_descriptor),
             final_response: Arc::new(Mutex::new(None)),
             timeout_ms,
+            task_handles: Vec::new(),
         }
     }
 
@@ -67,6 +70,7 @@ impl StreamInfo {
             output_descriptor: Some(output_descriptor),
             final_response: Arc::new(Mutex::new(Some(response_receiver))),
             timeout_ms,
+            task_handles: Vec::new(),
         }
     }
 
@@ -89,6 +93,7 @@ impl StreamInfo {
             output_descriptor: Some(output_descriptor),
             final_response: Arc::new(Mutex::new(None)),
             timeout_ms,
+            task_handles: Vec::new(),
         }
     }
 
@@ -100,6 +105,10 @@ impl StreamInfo {
             "canSend": self.can_send,
             "canReceive": self.can_receive,
         })
+    }
+
+    pub fn add_task_handle(&mut self, handle: AbortHandle) {
+        self.task_handles.push(handle);
     }
 }
 
@@ -228,6 +237,12 @@ impl StreamManager {
         stream_info.can_receive = false;
         drop(stream_info.sender.take());
         
+        // Отменяем все фоновые задачи
+        for handle in &stream_info.task_handles {
+            handle.abort();
+        }
+        stream_info.task_handles.clear();
+        
         drop(stream_info);
         self.remove_stream(stream_id).await;
         
@@ -278,5 +293,29 @@ impl StreamManager {
         let stream_info = stream.lock().await;
         stream_info.output_descriptor.clone()
             .ok_or_else(|| "No output descriptor available for this stream".to_string())
+    }
+
+    pub async fn close_all_streams(&self) -> Result<(), String> {
+        let mut streams = self.streams.lock().await;
+        
+        // Закрываем все стримы
+        for (_, stream_arc) in streams.iter() {
+            let mut stream_info = stream_arc.lock().await;
+            stream_info.is_active = false;
+            stream_info.can_send = false;
+            stream_info.can_receive = false;
+            drop(stream_info.sender.take());
+            
+            // Отменяем все фоновые задачи
+            for handle in &stream_info.task_handles {
+                handle.abort();
+            }
+            stream_info.task_handles.clear();
+        }
+        
+        // Очищаем коллекцию
+        streams.clear();
+        
+        Ok(())
     }
 }
