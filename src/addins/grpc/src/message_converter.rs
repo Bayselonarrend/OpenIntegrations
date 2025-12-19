@@ -1,7 +1,9 @@
 use serde_json::{json, Value};
 use prost_reflect::{DynamicMessage, MessageDescriptor, ReflectMessage};
+use common_binary::vault::{BinaryVault, VaultKey};
+use std::str::FromStr;
 
-pub fn json_to_dynamic_message(json_value: &Value, message_desc: &MessageDescriptor) -> Result<DynamicMessage, String> {
+pub fn json_to_dynamic_message(binary_vault: &BinaryVault, json_value: &Value, message_desc: &MessageDescriptor) -> Result<DynamicMessage, String> {
     let mut message = DynamicMessage::new(message_desc.clone());
 
     if let Value::Object(obj) = json_value {
@@ -11,7 +13,7 @@ pub fn json_to_dynamic_message(json_value: &Value, message_desc: &MessageDescrip
             }
 
             if let Some(field_desc) = message_desc.get_field_by_name(field_name) {
-                let prost_value = json_value_to_prost_value(field_value, &field_desc)?;
+                let prost_value = json_value_to_prost_value(binary_vault, field_value, &field_desc)?;
                 message.set_field(&field_desc, prost_value);
             }
         }
@@ -20,14 +22,14 @@ pub fn json_to_dynamic_message(json_value: &Value, message_desc: &MessageDescrip
     Ok(message)
 }
 
-fn json_value_to_prost_value(json_value: &Value, field_desc: &prost_reflect::FieldDescriptor) -> Result<prost_reflect::Value, String> {
+fn json_value_to_prost_value(binary_vault: &BinaryVault, json_value: &Value, field_desc: &prost_reflect::FieldDescriptor) -> Result<prost_reflect::Value, String> {
     use prost_reflect::Value as ProstValue;
 
     if field_desc.is_list() {
         return match json_value {
             Value::Array(arr) => {
                 let list: Result<Vec<ProstValue>, String> = arr.iter()
-                    .map(|item| json_value_to_prost_value_scalar(item, field_desc))
+                    .map(|item| json_value_to_prost_value_scalar(binary_vault, item, field_desc))
                     .collect();
                 Ok(ProstValue::List(list?))
             },
@@ -40,7 +42,7 @@ fn json_value_to_prost_value(json_value: &Value, field_desc: &prost_reflect::Fie
             Value::Object(obj) => {
                 let mut map = std::collections::HashMap::new();
                 for (key, value) in obj {
-                    let val_value = json_value_to_prost_value_scalar(value, field_desc)?;
+                    let val_value = json_value_to_prost_value_scalar(binary_vault, value, field_desc)?;
                     map.insert(prost_reflect::MapKey::String(key.clone()), val_value);
                 }
                 Ok(ProstValue::Map(map))
@@ -49,10 +51,10 @@ fn json_value_to_prost_value(json_value: &Value, field_desc: &prost_reflect::Fie
         };
     }
 
-    json_value_to_prost_value_scalar(json_value, field_desc)
+    json_value_to_prost_value_scalar(binary_vault, json_value, field_desc)
 }
 
-fn json_value_to_prost_value_scalar(json_value: &Value, field_desc: &prost_reflect::FieldDescriptor) -> Result<prost_reflect::Value, String> {
+fn json_value_to_prost_value_scalar(binary_vault: &BinaryVault, json_value: &Value, field_desc: &prost_reflect::FieldDescriptor) -> Result<prost_reflect::Value, String> {
     use prost_reflect::{Value as ProstValue, Kind};
 
     match field_desc.kind() {
@@ -90,15 +92,31 @@ fn json_value_to_prost_value_scalar(json_value: &Value, field_desc: &prost_refle
         },
         Kind::Bytes => match json_value {
             Value::String(s) => {
+                // Сначала пробуем загрузить из файла
+                if let Ok(bytes) = std::fs::read(s) {
+                    return Ok(ProstValue::Bytes(bytes.into()));
+                }
+                
+                // Если не файл, пробуем декодировать как base64
                 use base64::Engine;
-                let bytes = base64::engine::general_purpose::STANDARD.decode(s).map_err(|_| "Invalid base64 for bytes field")?;
+                let bytes = base64::engine::general_purpose::STANDARD.decode(s)
+                    .map_err(|_| format!("Failed to read as file or decode as base64: {}", s))?;
                 Ok(ProstValue::Bytes(bytes.into()))
             },
-            _ => Err("Expected base64 string for bytes field".to_string()),
+            Value::Object(obj) => {
+                if let Some(Value::String(key)) = obj.get("BYTES") {
+                    let vault_key = VaultKey::from_str(key).map_err(|e| format!("Invalid vault key: {}", e))?;
+                    let bytes = binary_vault.retrieve(&vault_key).map_err(|e| format!("Failed to retrieve from vault: {}", e))?;
+                    Ok(ProstValue::Bytes(bytes.into()))
+                } else {
+                    Err("Expected {\"BYTES\": \"vault_key\"} for bytes field".to_string())
+                }
+            },
+            _ => Err("Expected base64 string or {\"BYTES\": \"vault_key\"} for bytes field".to_string()),
         },
         Kind::Message(msg_desc) => match json_value {
             Value::Object(_) => {
-                let sub_message = json_to_dynamic_message(json_value, &msg_desc)?;
+                let sub_message = json_to_dynamic_message(binary_vault, json_value, &msg_desc)?;
                 Ok(ProstValue::Message(sub_message))
             },
             _ => Err("Expected object for message field".to_string()),
@@ -117,13 +135,13 @@ fn json_value_to_prost_value_scalar(json_value: &Value, field_desc: &prost_refle
     }
 }
 
-pub fn dynamic_message_to_json(message: &DynamicMessage) -> Result<Value, String> {
+pub fn dynamic_message_to_json(binary_vault: &BinaryVault, message: &DynamicMessage) -> Result<Value, String> {
     let mut result = serde_json::Map::new();
 
     for field_desc in message.descriptor().fields() {
         if message.has_field(&field_desc) {
             let field_value = message.get_field(&field_desc);
-            let json_value = prost_value_to_json_value(&field_value, &field_desc)?;
+            let json_value = prost_value_to_json_value(binary_vault, &field_value, &field_desc)?;
             result.insert(field_desc.name().to_string(), json_value);
         }
     }
@@ -131,7 +149,7 @@ pub fn dynamic_message_to_json(message: &DynamicMessage) -> Result<Value, String
     Ok(Value::Object(result))
 }
 
-fn prost_value_to_json_value(prost_value: &prost_reflect::Value, field_desc: &prost_reflect::FieldDescriptor) -> Result<Value, String> {
+fn prost_value_to_json_value(binary_vault: &BinaryVault, prost_value: &prost_reflect::Value, field_desc: &prost_reflect::FieldDescriptor) -> Result<Value, String> {
     use prost_reflect::{Value as ProstValue, Kind};
 
     match prost_value {
@@ -144,8 +162,13 @@ fn prost_value_to_json_value(prost_value: &prost_reflect::Value, field_desc: &pr
         ProstValue::F64(f) => Ok(json!(f)),
         ProstValue::String(s) => Ok(Value::String(s.clone())),
         ProstValue::Bytes(b) => {
-            use base64::Engine;
-            Ok(Value::String(base64::engine::general_purpose::STANDARD.encode(b)))
+            // Сохраняем bytes в vault и возвращаем ключ в формате {"BYTES": "vault_key"}
+            use common_binary::vault::BinaryInput;
+            let vault_key = binary_vault.store(BinaryInput::Bytes(b.to_vec()))
+                .map_err(|e| format!("Failed to store bytes in vault: {}", e))?;
+            let mut obj = serde_json::Map::new();
+            obj.insert("BYTES".to_string(), Value::String(vault_key));
+            Ok(Value::Object(obj))
         },
         ProstValue::EnumNumber(n) => {
             if let Kind::Enum(enum_desc) = field_desc.kind() {
@@ -158,10 +181,10 @@ fn prost_value_to_json_value(prost_value: &prost_reflect::Value, field_desc: &pr
                 Ok(Value::Number((*n).into()))
             }
         },
-        ProstValue::Message(msg) => dynamic_message_to_json(msg),
+        ProstValue::Message(msg) => dynamic_message_to_json(binary_vault, msg),
         ProstValue::List(list) => {
             let json_list: Result<Vec<Value>, String> = list.iter()
-                .map(|item| prost_value_to_json_value(item, field_desc))
+                .map(|item| prost_value_to_json_value(binary_vault, item, field_desc))
                 .collect();
             Ok(Value::Array(json_list?))
         },
@@ -169,7 +192,7 @@ fn prost_value_to_json_value(prost_value: &prost_reflect::Value, field_desc: &pr
             let mut json_map = serde_json::Map::new();
             for (key, value) in map {
                 let key_str = format!("{:?}", key);
-                let json_value = prost_value_to_json_value(value, field_desc)?;
+                let json_value = prost_value_to_json_value(binary_vault, value, field_desc)?;
                 json_map.insert(key_str, json_value);
             }
             Ok(Value::Object(json_map))

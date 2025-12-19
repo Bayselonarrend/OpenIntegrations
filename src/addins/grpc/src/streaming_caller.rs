@@ -7,6 +7,7 @@ use prost_reflect::{DescriptorPool, DynamicMessage, MethodDescriptor};
 use prost::Message;
 use tokio::sync::mpsc;
 use tonic::codegen::tokio_stream;
+use common_binary::vault::BinaryVault;
 use crate::message_converter::{json_to_dynamic_message, dynamic_message_to_json};
 use crate::grpc_caller::{apply_metadata, create_request_message};
 use futures::StreamExt;
@@ -21,6 +22,7 @@ pub struct StreamCallParams {
 }
 
 pub async fn start_server_stream(
+    binary_vault: &BinaryVault,
     channel: &Channel,
     descriptor_pool: &DescriptorPool,
     metadata: &HashMap<String, String>,
@@ -29,7 +31,7 @@ pub async fn start_server_stream(
 ) -> Result<String, String> {
 
     let method_desc = get_method_descriptor(descriptor_pool, &params.service, &params.method)?;
-    let request_message = create_request_message(&params.request, &method_desc.input())?;
+    let request_message = create_request_message(binary_vault, &params.request, &method_desc.input())?;
     let request_bytes = request_message.encode_to_vec();
 
     let mut grpc_request = Request::new(request_bytes);
@@ -65,6 +67,7 @@ pub async fn start_server_stream(
 }
 
 pub async fn start_client_stream(
+    _binary_vault: &BinaryVault,
     channel: &Channel,
     descriptor_pool: &DescriptorPool,
     metadata: &HashMap<String, String>,
@@ -92,9 +95,11 @@ pub async fn start_client_stream(
     client.ready().await
         .map_err(|e| format!("Failed to ready client: {}", e))?;
 
-    let (response_tx, response_rx) = tokio::sync::oneshot::channel();
+    // Создаем канал для финального ответа (как в server stream)
+    let (response_tx, response_rx) = mpsc::unbounded_channel();
     let output_desc = method_desc.output();
 
+    // Запускаем задачу, которая будет ждать ответа от сервера
     let task = tokio::spawn(async move {
         let result: Result<tonic::Response<Vec<u8>>, tonic::Status> = client.client_streaming(
             grpc_request,
@@ -102,25 +107,32 @@ pub async fn start_client_stream(
             tonic::codec::ProstCodec::default()
         ).await;
 
-        let final_result = match result {
+        match result {
             Ok(response) => {
                 let bytes = response.into_inner();
                 match DynamicMessage::decode(output_desc, bytes.as_ref()) {
-                    Ok(message) => Ok(message),
-                    Err(e) => Err(format!("Failed to decode response: {}", e)),
+                    Ok(message) => {
+                        // Отправляем финальный ответ в канал
+                        let _ = response_tx.send(message);
+                    },
+                    Err(e) => {
+                        eprintln!("Failed to decode client stream response: {}", e);
+                    }
                 }
             },
-            Err(e) => Err(format!("Client stream error: {}", e)),
-        };
-        
-        let _ = response_tx.send(final_result);
+            Err(e) => {
+                eprintln!("Client stream error: {}", e);
+            }
+        }
+        // Канал автоматически закроется когда response_tx будет удален
     });
 
+    // Создаем StreamInfo с receiver для финального ответа
     let mut stream_info = StreamInfo::new_client_stream(
         tx,
+        response_rx,
         method_desc.input(),
         method_desc.output(),
-        response_rx,
         params.timeout_ms
     );
     stream_info.add_task_handle(task.abort_handle());
@@ -130,6 +142,7 @@ pub async fn start_client_stream(
 }
 
 pub async fn start_bidi_stream(
+    _binary_vault: &BinaryVault,
     channel: &Channel,
     descriptor_pool: &DescriptorPool,
     metadata: &HashMap<String, String>,
@@ -201,25 +214,36 @@ fn spawn_response_handler(
 }
 
 pub async fn send_stream_message(
+    binary_vault: &BinaryVault,
     stream_manager: &StreamManager,
     stream_id: &str,
     message_json: &Value,
 ) -> Result<(), String> {
     let input_descriptor = stream_manager.get_input_descriptor(stream_id).await?;
-    let message = json_to_dynamic_message(message_json, &input_descriptor)?;
+    let message = json_to_dynamic_message(binary_vault, message_json, &input_descriptor)?;
     stream_manager.send_message(stream_id, message).await
 }
 
 pub async fn get_next_message(
+    binary_vault: &BinaryVault,
     stream_manager: &StreamManager,
     stream_id: &str,
 ) -> Result<Value, String> {
     match stream_manager.receive_message(stream_id).await? {
         Some(message) => {
-            let json_message = dynamic_message_to_json(&message)?;
+            let json_message = dynamic_message_to_json(binary_vault, &message)?;
+            
+            // Проверяем, можно ли еще получать сообщения после этого
+            let has_more = stream_manager.get_stream(stream_id).await
+                .and_then(|stream| {
+                    // Используем try_lock чтобы не блокироваться
+                    stream.try_lock().ok().map(|info| info.can_receive)
+                })
+                .unwrap_or(false);
+            
             Ok(serde_json::json!({
                 "result": true,
-                "hasMore": true,
+                "hasMore": has_more,
                 "message": json_message
             }))
         }
@@ -234,15 +258,17 @@ pub async fn get_next_message(
 }
 
 pub async fn finish_client_stream_and_get_response(
+    binary_vault: &BinaryVault,
     stream_manager: &StreamManager,
     stream_id: &str,
 ) -> Result<Value, String> {
-
+    // Закрываем отправку
     stream_manager.finish_sending(stream_id).await?;
 
-    match stream_manager.get_final_response(stream_id).await? {
+    // Получаем финальный ответ через обычный receive_message
+    match stream_manager.receive_message(stream_id).await? {
         Some(message) => {
-            let json_message = dynamic_message_to_json(&message)?;
+            let json_message = dynamic_message_to_json(binary_vault, &message)?;
             Ok(json_message)
         }
         None => Err("No final response received".to_string()),
