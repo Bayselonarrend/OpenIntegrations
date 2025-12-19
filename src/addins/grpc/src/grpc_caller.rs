@@ -6,6 +6,7 @@ use tonic::Request;
 use tonic::metadata::{MetadataValue, MetadataKey, Ascii};
 use prost_reflect::{DescriptorPool, DynamicMessage};
 use prost::Message;
+use common_binary::vault::BinaryVault;
 use crate::message_converter::{json_to_dynamic_message, dynamic_message_to_json};
 
 #[derive(serde::Deserialize)]
@@ -32,17 +33,19 @@ pub fn apply_metadata<T>(
 }
 
 pub fn create_request_message(
+    binary_vault: &BinaryVault,
     request_data: &Option<Value>,
     message_descriptor: &prost_reflect::MessageDescriptor,
 ) -> Result<DynamicMessage, String> {
     if let Some(data) = request_data {
-        json_to_dynamic_message(data, message_descriptor)
+        json_to_dynamic_message(binary_vault, data, message_descriptor)
     } else {
         Ok(DynamicMessage::new(message_descriptor.clone()))
     }
 }
 
 pub async fn execute_grpc_call(
+    binary_vault: &BinaryVault,
     channel: &mut Channel,
     descriptor_pool: &DescriptorPool,
     metadata: &HashMap<String, String>,
@@ -58,7 +61,7 @@ pub async fn execute_grpc_call(
         .find(|m| m.name() == params.method)
         .ok_or_else(|| format!("Method '{}' not found in service '{}'", params.method, params.service))?;
 
-    let request_message = create_request_message(&params.request, &method.input())?;
+    let request_message = create_request_message(binary_vault, &params.request, &method.input())?;
 
     let request_bytes = request_message.encode_to_vec();
 
@@ -86,5 +89,5 @@ pub async fn execute_grpc_call(
     let response_message = DynamicMessage::decode(method.output(), response_bytes.as_ref())
         .map_err(|e| format!("Failed to decode response: {}", e))?;
 
-    dynamic_message_to_json(&response_message)
+    dynamic_message_to_json(binary_vault, &response_message)
 }

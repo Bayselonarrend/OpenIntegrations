@@ -11,35 +11,35 @@ mod streaming_caller;
 use common_core::*;
 use common_utils::utils::{json_error, json_success};
 use common_tcp::tls_settings::TlsSettings;
+use common_binary::vault::VaultKey;
 use std::sync::{Arc, Mutex};
+use std::str::FromStr;
 
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
 
-pub const PROPS: &[&[u16]] = &[
-    name!("ServerAddress"),
-];
-
 pub const METHODS: &[&[u16]] = &[
-    name!("Connect"),              // 0
-    name!("Disconnect"),           // 1
-    name!("Call"),                 // 2
-    name!("LoadProto"),            // 3
-    name!("SetMetadata"),          // 4
-    name!("SetTLS"),               // 5
-    name!("ListServices"),         // 6
-    name!("ListMethods"),          // 7
-    name!("GetMethodInfo"),        // 8
-    name!("StartServerStream"),    // 9
-    name!("StartClientStream"),    // 10
-    name!("StartBidiStream"),      // 11
-    name!("SendMessage"),          // 12
-    name!("GetNextMessage"),       // 13
-    name!("FinishSending"),        // 14
-    name!("FinishClientStream"),   // 15
-    name!("GetStreamStatus"),      // 16
-    name!("CloseStream"),          // 17
-    name!("CompileProtos"),        // 18
+    name!("Connect"),
+    name!("Disconnect"),
+    name!("Call"),
+    name!("LoadProto"),
+    name!("SetMetadata"),
+    name!("SetTLS"),
+    name!("ListServices"),
+    name!("ListMethods"),
+    name!("GetMethodInfo"),
+    name!("StartServerStream"),
+    name!("StartClientStream"),
+    name!("StartBidiStream"),
+    name!("SendMessage"),
+    name!("GetNextMessage"),
+    name!("FinishSending"),
+    name!("FinishClientStream"),
+    name!("GetStreamStatus"),
+    name!("CloseStream"),
+    name!("CompileProtos"),
+    name!("StoreBytes"),
+    name!("RetrieveBytes"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -63,9 +63,15 @@ pub fn get_params_amount(num: usize) -> usize {
         16 => 1, // GetStreamStatus
         17 => 1, // CloseStream
         18 => 0, // CompileProtos
+        19 => 1, // StoreBytes
+        20 => 1, // RetrieveBytes
         _ => 0,
     }
 }
+
+pub const PROPS: &[&[u16]] = &[
+    name!("ServerAddress"),
+];
 
 pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn getset::ValueType> {
     match num {
@@ -138,6 +144,14 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             Box::new(obj.close_stream(&stream_id))
         },
         18 => Box::new(obj.compile_protos()),
+        19 => {
+            let bytes = params[0].get_blob().unwrap_or_default();
+            Box::new(obj.store_bytes(Vec::from(bytes)))
+        },
+        20 => {
+            let key = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.retrieve_bytes(&key))
+        },
         _ => Box::new(false),
     }
 }
@@ -379,7 +393,33 @@ impl AddIn {
         guard.close_stream(stream_id).unwrap_or_else(|e| json_error(&e))
     }
 
+    pub fn store_bytes(&mut self, bytes: Vec<u8>) -> String {
+        use common_binary::vault::BinaryInput;
+        
+        let guard = match self.backend.lock() {
+            Ok(lock) => lock,
+            Err(e) => return json_error(&e.to_string())
+        };
 
+        match guard.binary_vault.store(BinaryInput::Bytes(bytes)) {
+            Ok(key) => key,
+            Err(e) => json_error(&format!("Failed to store bytes: {}", e))
+        }
+    }
+
+    pub fn retrieve_bytes(&mut self, key_str: &str) -> Vec<u8> {
+        let guard = match self.backend.lock() {
+            Ok(lock) => lock,
+            Err(_) => return Vec::new()
+        };
+
+        let key = match VaultKey::from_str(key_str) {
+            Ok(k) => k,
+            Err(_) => return Vec::new()
+        };
+
+        guard.binary_vault.retrieve(&key).unwrap_or_default()
+    }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
         match index {

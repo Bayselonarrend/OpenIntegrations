@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 use std::sync::Arc;
-use tokio::sync::{mpsc, Mutex, oneshot};
+use tokio::sync::{mpsc, Mutex};
 use tokio::task::AbortHandle;
 use prost_reflect::{DynamicMessage, MessageDescriptor};
 use serde_json::{json, Value};
@@ -22,9 +22,7 @@ pub struct StreamInfo {
     pub can_send: bool,
     pub can_receive: bool,
     pub input_descriptor: Option<MessageDescriptor>,
-    #[allow(dead_code)]
     pub output_descriptor: Option<MessageDescriptor>,
-    pub final_response: Arc<Mutex<Option<oneshot::Receiver<Result<DynamicMessage, String>>>>>,
     pub timeout_ms: Option<u64>,
     pub task_handles: Vec<AbortHandle>,
 }
@@ -45,7 +43,6 @@ impl StreamInfo {
             can_receive: true,
             input_descriptor: None,
             output_descriptor: Some(output_descriptor),
-            final_response: Arc::new(Mutex::new(None)),
             timeout_ms,
             task_handles: Vec::new(),
         }
@@ -53,22 +50,21 @@ impl StreamInfo {
 
     pub fn new_client_stream(
         sender: mpsc::UnboundedSender<DynamicMessage>,
+        receiver: mpsc::UnboundedReceiver<DynamicMessage>,
         input_descriptor: MessageDescriptor,
         output_descriptor: MessageDescriptor,
-        response_receiver: oneshot::Receiver<Result<DynamicMessage, String>>,
         timeout_ms: Option<u64>,
     ) -> Self {
         Self {
             stream_id: Uuid::new_v4().to_string(),
             stream_type: StreamType::ClientStream,
             sender: Some(sender),
-            receiver: Arc::new(Mutex::new(None)),
+            receiver: Arc::new(Mutex::new(Some(receiver))),
             is_active: true,
             can_send: true,
             can_receive: false,
             input_descriptor: Some(input_descriptor),
             output_descriptor: Some(output_descriptor),
-            final_response: Arc::new(Mutex::new(Some(response_receiver))),
             timeout_ms,
             task_handles: Vec::new(),
         }
@@ -91,7 +87,6 @@ impl StreamInfo {
             can_receive: true,
             input_descriptor: Some(input_descriptor),
             output_descriptor: Some(output_descriptor),
-            final_response: Arc::new(Mutex::new(None)),
             timeout_ms,
             task_handles: Vec::new(),
         }
@@ -147,18 +142,35 @@ impl StreamManager {
         let stream_info = stream.lock().await;
         
         if !stream_info.can_send {
-            return Err("Stream does not support sending".to_string());
+            return Err(format!("Stream '{}' does not support sending (can_send=false)", stream_id));
         }
 
         if !stream_info.is_active {
-            return Err("Stream is not active".to_string());
+            return Err(format!("Stream '{}' is not active", stream_id));
         }
 
         let sender = stream_info.sender.as_ref()
-            .ok_or_else(|| "Stream sender not available".to_string())?;
+            .ok_or_else(|| format!("Stream '{}' sender not available (already dropped)", stream_id))?;
 
-        sender.send(message)
-            .map_err(|_| "Failed to send message: receiver dropped".to_string())?;
+        let stream_type = stream_info.stream_type.clone();
+        
+        // Пытаемся отправить сообщение
+        let send_result = sender.send(message);
+        
+        // Если отправка не удалась, значит receiver закрыт (сервер закрыл поток)
+        if send_result.is_err() {
+            drop(stream_info);
+            
+            // Для client stream: если сервер закрыл поток, переключаем флаги
+            if matches!(stream_type, StreamType::ClientStream) {
+                let mut stream_info = stream.lock().await;
+                stream_info.can_send = false;
+                stream_info.can_receive = true; // Теперь можно получить финальный ответ
+                drop(stream_info.sender.take());
+            }
+            
+            return Err(format!("Failed to send message to stream '{}': server closed the stream", stream_id));
+        }
 
         Ok(())
     }
@@ -167,27 +179,27 @@ impl StreamManager {
         let stream = self.get_stream(stream_id).await
             .ok_or_else(|| format!("Stream '{}' not found", stream_id))?;
         
-        let stream_info = stream.lock().await;
-        
-        if !stream_info.can_receive {
-            return Err("Stream does not support receiving".to_string());
-        }
-
-        let receiver_arc = stream_info.receiver.clone();
-        let timeout_ms = stream_info.timeout_ms;
-        drop(stream_info);
+        let (receiver_arc, timeout_ms) = {
+            let stream_info = stream.lock().await;
+            
+            if !stream_info.can_receive {
+                return Err("Stream does not support receiving".to_string());
+            }
+            
+            (stream_info.receiver.clone(), stream_info.timeout_ms)
+        };
 
         let mut receiver_guard = receiver_arc.lock().await;
         let receiver = receiver_guard.as_mut()
             .ok_or_else(|| "Stream receiver not available".to_string())?;
 
-        // Если есть timeout, используем его
+        // Единая логика для всех типов stream
         if let Some(timeout) = timeout_ms {
             let duration = std::time::Duration::from_millis(timeout);
             match tokio::time::timeout(duration, receiver.recv()).await {
                 Ok(Some(message)) => Ok(Some(message)),
                 Ok(None) => {
-                    // Stream действительно закрыт (сервер закрыл соединение)
+                    // Stream закрыт
                     drop(receiver_guard);
                     let mut stream_info = stream.lock().await;
                     stream_info.is_active = false;
@@ -195,13 +207,12 @@ impl StreamManager {
                     Ok(None)
                 },
                 Err(_) => {
-                    // Timeout - сообщение не пришло за отведённое время
-                    // Stream остаётся активным, можно попробовать ещё раз
+                    // Timeout
                     Err("Timeout waiting for message".to_string())
                 },
             }
         } else {
-            // Без timeout - используем try_recv как раньше
+            // Без timeout
             match receiver.try_recv() {
                 Ok(message) => Ok(Some(message)),
                 Err(mpsc::error::TryRecvError::Empty) => Ok(None),
@@ -221,8 +232,17 @@ impl StreamManager {
             .ok_or_else(|| format!("Stream '{}' not found", stream_id))?;
         
         let mut stream_info = stream.lock().await;
-        stream_info.can_send = false;
-        drop(stream_info.sender.take());
+
+        // Удаление sender закрывает канал, что сигнализирует gRPC серверу
+        // о завершении отправки сообщений от клиента
+        if matches!(stream_info.stream_type, StreamType::ClientStream) {
+            stream_info.can_send = false;
+            stream_info.can_receive = true; // Теперь можно получить финальный ответ
+            drop(stream_info.sender.take());
+        } else {
+            stream_info.can_send = false;
+            drop(stream_info.sender.take());
+        }
         
         Ok(())
     }
@@ -252,29 +272,31 @@ impl StreamManager {
     pub async fn get_status(&self, stream_id: &str) -> Result<Value, String> {
         let stream = self.get_stream(stream_id).await
             .ok_or_else(|| format!("Stream '{}' not found", stream_id))?;
-        
+
+        let (stream_type, should_update_flags) = {
+            let stream_info = stream.lock().await;
+            
+            let sender_closed = stream_info.sender
+                .as_ref()
+                .map(|s| s.is_closed())
+                .unwrap_or(true);
+            
+            let should_update = stream_info.can_send && sender_closed;
+            
+            (stream_info.stream_type.clone(), should_update)
+        };
+
+        if should_update_flags {
+            let mut stream_info = stream.lock().await;
+            stream_info.can_send = false;
+
+            if matches!(stream_type, StreamType::ClientStream) {
+                stream_info.can_receive = true;
+            }
+        }
+
         let stream_info = stream.lock().await;
         Ok(stream_info.get_status())
-    }
-
-    pub async fn get_final_response(&self, stream_id: &str) -> Result<Option<DynamicMessage>, String> {
-        let stream = self.get_stream(stream_id).await
-            .ok_or_else(|| format!("Stream '{}' not found", stream_id))?;
-        
-        let stream_info = stream.lock().await;
-        let response_arc = stream_info.final_response.clone();
-        drop(stream_info);
-
-        let mut response_guard = response_arc.lock().await;
-        if let Some(receiver) = response_guard.take() {
-            match receiver.await {
-                Ok(Ok(message)) => Ok(Some(message)),
-                Ok(Err(e)) => Err(e),
-                Err(_) => Err("Failed to receive final response".to_string()),
-            }
-        } else {
-            Err("No final response available for this stream".to_string())
-        }
     }
 
     pub async fn get_input_descriptor(&self, stream_id: &str) -> Result<MessageDescriptor, String> {
