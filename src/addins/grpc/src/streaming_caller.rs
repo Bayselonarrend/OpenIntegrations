@@ -95,11 +95,9 @@ pub async fn start_client_stream(
     client.ready().await
         .map_err(|e| format!("Failed to ready client: {}", e))?;
 
-    // Создаем канал для финального ответа (как в server stream)
     let (response_tx, response_rx) = mpsc::unbounded_channel();
     let output_desc = method_desc.output();
 
-    // Запускаем задачу, которая будет ждать ответа от сервера
     let task = tokio::spawn(async move {
         let result: Result<tonic::Response<Vec<u8>>, tonic::Status> = client.client_streaming(
             grpc_request,
@@ -124,10 +122,8 @@ pub async fn start_client_stream(
                 eprintln!("Client stream error: {}", e);
             }
         }
-        // Канал автоматически закроется когда response_tx будет удален
     });
 
-    // Создаем StreamInfo с receiver для финального ответа
     let mut stream_info = StreamInfo::new_client_stream(
         tx,
         response_rx,
@@ -236,7 +232,6 @@ pub async fn get_next_message(
             // Проверяем, можно ли еще получать сообщения после этого
             let has_more = stream_manager.get_stream(stream_id).await
                 .and_then(|stream| {
-                    // Используем try_lock чтобы не блокироваться
                     stream.try_lock().ok().map(|info| info.can_receive)
                 })
                 .unwrap_or(false);
@@ -262,10 +257,9 @@ pub async fn finish_client_stream_and_get_response(
     stream_manager: &StreamManager,
     stream_id: &str,
 ) -> Result<Value, String> {
-    // Закрываем отправку
+
     stream_manager.finish_sending(stream_id).await?;
 
-    // Получаем финальный ответ через обычный receive_message
     match stream_manager.receive_message(stream_id).await? {
         Some(message) => {
             let json_message = dynamic_message_to_json(binary_vault, &message)?;
