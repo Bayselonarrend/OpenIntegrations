@@ -5,43 +5,13 @@ use tonic::transport::Channel;
 use tonic::{Request, Streaming};
 use prost_reflect::{DescriptorPool, DynamicMessage, MethodDescriptor};
 use prost::Message;
-use tokio::sync::{mpsc, oneshot};
+use tokio::sync::mpsc;
 use common_binary::vault::BinaryVault;
+use crate::ack_stream::AckStream;
 use crate::message_converter::{json_to_dynamic_message, dynamic_message_to_json};
 use crate::grpc_caller::{apply_metadata, create_request_message};
-use crate::stream_manager::{StreamInfo, StreamManager, MessageWithAck};
-use std::pin::Pin;
-use std::task::{Context, Poll};
-use futures::Stream;
+use crate::stream_manager::{StreamInfo, StreamManager, StreamMessage};
 
-struct AckStream {
-    receiver: mpsc::Receiver<MessageWithAck>,
-    current_ack: Option<oneshot::Sender<()>>,
-}
-
-impl Stream for AckStream {
-    type Item = Vec<u8>;
-
-    fn poll_next(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Option<Self::Item>> {
-        // Отправляем подтверждение для предыдущего сообщения
-        if let Some(ack) = self.current_ack.take() {
-            let _ = ack.send(());
-        }
-
-        // Получаем следующее сообщение
-        match self.receiver.poll_recv(cx) {
-            Poll::Ready(Some(msg_with_ack)) => {
-                let bytes = msg_with_ack.message.encode_to_vec();
-                self.current_ack = Some(msg_with_ack.ack);
-                Poll::Ready(Some(bytes))
-            }
-            Poll::Ready(None) => {
-                Poll::Ready(None)
-            }
-            Poll::Pending => Poll::Pending,
-        }
-    }
-}
 
 #[derive(serde::Deserialize)]
 pub struct StreamCallParams {
@@ -110,16 +80,12 @@ pub async fn start_client_stream(
     stream_manager: &StreamManager,
     params: &StreamCallParams,
 ) -> Result<String, String> {
+
     let method_desc = get_method_descriptor(descriptor_pool, &params.service, &params.method)?;
-
-    let (ack_tx, ack_rx) = mpsc::channel::<MessageWithAck>(1);
-
-    let ack_stream = AckStream {
-        receiver: ack_rx,
-        current_ack: None,
-    };
-    
+    let (ack_tx, ack_rx) = mpsc::channel::<StreamMessage>(1);
+    let ack_stream = AckStream::new(ack_rx);
     let mut grpc_request = Request::new(ack_stream);
+
     apply_metadata(&mut grpc_request, metadata)?;
     
     if let Some(timeout_ms) = params.timeout_ms {
@@ -186,13 +152,10 @@ pub async fn start_bidi_stream(
 ) -> Result<String, String> {
     let method_desc = get_method_descriptor(descriptor_pool, &params.service, &params.method)?;
 
-    let (ack_tx, ack_rx) = mpsc::channel::<MessageWithAck>(1);
+    let (ack_tx, ack_rx) = mpsc::channel::<StreamMessage>(1);
     let (tx_recv, rx_recv) = mpsc::channel(1);
 
-    let ack_stream = AckStream {
-        receiver: ack_rx,
-        current_ack: None,
-    };
+    let ack_stream = AckStream::new(ack_rx);
     
     let mut grpc_request = Request::new(ack_stream);
     apply_metadata(&mut grpc_request, metadata)?;
