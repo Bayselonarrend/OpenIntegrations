@@ -3,7 +3,6 @@ use std::sync::Arc;
 use tokio::sync::{mpsc, Mutex};
 use tokio::task::AbortHandle;
 use prost_reflect::{DynamicMessage, MessageDescriptor};
-use serde_json::{json, Value};
 use uuid::Uuid;
 
 #[derive(Clone, Debug)]
@@ -18,9 +17,6 @@ pub struct StreamInfo {
     pub stream_type: StreamType,
     pub sender: Option<mpsc::UnboundedSender<DynamicMessage>>,
     pub receiver: Arc<Mutex<Option<mpsc::UnboundedReceiver<DynamicMessage>>>>,
-    pub is_active: bool,
-    pub can_send: bool,
-    pub can_receive: bool,
     pub input_descriptor: Option<MessageDescriptor>,
     pub output_descriptor: Option<MessageDescriptor>,
     pub timeout_ms: Option<u64>,
@@ -38,9 +34,6 @@ impl StreamInfo {
             stream_type: StreamType::ServerStream,
             sender: None,
             receiver: Arc::new(Mutex::new(Some(receiver))),
-            is_active: true,
-            can_send: false,
-            can_receive: true,
             input_descriptor: None,
             output_descriptor: Some(output_descriptor),
             timeout_ms,
@@ -60,9 +53,6 @@ impl StreamInfo {
             stream_type: StreamType::ClientStream,
             sender: Some(sender),
             receiver: Arc::new(Mutex::new(Some(receiver))),
-            is_active: true,
-            can_send: true,
-            can_receive: false,
             input_descriptor: Some(input_descriptor),
             output_descriptor: Some(output_descriptor),
             timeout_ms,
@@ -82,26 +72,12 @@ impl StreamInfo {
             stream_type: StreamType::BidiStream,
             sender: Some(sender),
             receiver: Arc::new(Mutex::new(Some(receiver))),
-            is_active: true,
-            can_send: true,
-            can_receive: true,
             input_descriptor: Some(input_descriptor),
             output_descriptor: Some(output_descriptor),
             timeout_ms,
             task_handle: None,
         }
     }
-
-    pub fn get_status(&self) -> Value {
-        json!({
-            "streamId": self.stream_id,
-            "streamType": format!("{:?}", self.stream_type),
-            "isActive": self.is_active,
-            "canSend": self.can_send,
-            "canReceive": self.can_receive,
-        })
-    }
-
     pub fn add_task_handle(&mut self, handle: AbortHandle) {
         self.task_handle = Some(handle);
     }
@@ -139,37 +115,23 @@ impl StreamManager {
         let stream = self.get_stream(stream_id).await
             .ok_or_else(|| format!("Stream '{}' not found", stream_id))?;
         
-        let stream_info = stream.lock().await;
-        
-        if !stream_info.can_send {
-            return Err(format!("Stream '{}' does not support sending (can_send=false)", stream_id));
+        let sender = {
+            let stream_info = stream.lock().await;
+
+            stream_info.sender.as_ref()
+                .ok_or_else(|| format!("Stream '{}' does not support sending", stream_id))?
+                .clone()
+        };
+
+        // Проверяем, не закрыт ли канал
+        if sender.is_closed() {
+            return Err(format!("Stream '{}' is closed", stream_id));
         }
 
-        if !stream_info.is_active {
-            return Err(format!("Stream '{}' is not active", stream_id));
-        }
-
-        let sender = stream_info.sender.as_ref()
-            .ok_or_else(|| format!("Stream '{}' sender not available (already dropped)", stream_id))?;
-
-        let stream_type = stream_info.stream_type.clone();
-
-        let send_result = sender.send(message);
-
-        if send_result.is_err() {
-            drop(stream_info);
-
-            if matches!(stream_type, StreamType::ClientStream) {
-                let mut stream_info = stream.lock().await;
-                stream_info.can_send = false;
-                stream_info.can_receive = true;
-                drop(stream_info.sender.take());
-            }
-            
-            return Err(format!("Failed to send message to stream '{}': server closed the stream", stream_id));
-        }
-
-        Ok(())
+        // Пытаемся отправить
+        sender.send(message).map_err(|_| {
+            format!("Stream '{}' is closed", stream_id)
+        })
     }
 
     pub async fn receive_message(&self, stream_id: &str) -> Result<Option<DynamicMessage>, String> {
@@ -178,11 +140,6 @@ impl StreamManager {
         
         let (receiver_arc, timeout_ms) = {
             let stream_info = stream.lock().await;
-            
-            if !stream_info.can_receive {
-                return Err("Stream does not support receiving".to_string());
-            }
-            
             (stream_info.receiver.clone(), stream_info.timeout_ms)
         };
 
@@ -196,9 +153,6 @@ impl StreamManager {
                 Ok(Some(message)) => Ok(Some(message)),
                 Ok(None) => {
                     drop(receiver_guard);
-                    let mut stream_info = stream.lock().await;
-                    stream_info.is_active = false;
-                    stream_info.can_receive = false;
                     Ok(None)
                 },
                 Err(_) => {
@@ -211,9 +165,6 @@ impl StreamManager {
                 Err(mpsc::error::TryRecvError::Empty) => Ok(None),
                 Err(mpsc::error::TryRecvError::Disconnected) => {
                     drop(receiver_guard);
-                    let mut stream_info = stream.lock().await;
-                    stream_info.is_active = false;
-                    stream_info.can_receive = false;
                     Ok(None)
                 }
             }
@@ -227,11 +178,8 @@ impl StreamManager {
         let mut stream_info = stream.lock().await;
 
         if matches!(stream_info.stream_type, StreamType::ClientStream) {
-            stream_info.can_send = false;
-            stream_info.can_receive = true;
             drop(stream_info.sender.take());
         } else {
-            stream_info.can_send = false;
             drop(stream_info.sender.take());
         }
         
@@ -243,9 +191,6 @@ impl StreamManager {
             .ok_or_else(|| format!("Stream '{}' not found", stream_id))?;
         
         let mut stream_info = stream.lock().await;
-        stream_info.is_active = false;
-        stream_info.can_send = false;
-        stream_info.can_receive = false;
         drop(stream_info.sender.take());
         
         // Отменяем фоновую задачу
@@ -257,36 +202,6 @@ impl StreamManager {
         self.remove_stream(stream_id).await;
         
         Ok(())
-    }
-
-    pub async fn get_status(&self, stream_id: &str) -> Result<Value, String> {
-        let stream = self.get_stream(stream_id).await
-            .ok_or_else(|| format!("Stream '{}' not found", stream_id))?;
-
-        let (stream_type, should_update_flags) = {
-            let stream_info = stream.lock().await;
-            
-            let sender_closed = stream_info.sender
-                .as_ref()
-                .map(|s| s.is_closed())
-                .unwrap_or(true);
-            
-            let should_update = stream_info.can_send && sender_closed;
-            
-            (stream_info.stream_type.clone(), should_update)
-        };
-
-        if should_update_flags {
-            let mut stream_info = stream.lock().await;
-            stream_info.can_send = false;
-
-            if matches!(stream_type, StreamType::ClientStream) {
-                stream_info.can_receive = true;
-            }
-        }
-
-        let stream_info = stream.lock().await;
-        Ok(stream_info.get_status())
     }
 
     pub async fn get_input_descriptor(&self, stream_id: &str) -> Result<MessageDescriptor, String> {
@@ -312,9 +227,6 @@ impl StreamManager {
 
         for (_, stream_arc) in streams.iter() {
             let mut stream_info = stream_arc.lock().await;
-            stream_info.is_active = false;
-            stream_info.can_send = false;
-            stream_info.can_receive = false;
             drop(stream_info.sender.take());
             
             // Отменяем фоновую задачу

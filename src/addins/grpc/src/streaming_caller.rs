@@ -99,25 +99,26 @@ pub async fn start_client_stream(
     let output_desc = method_desc.output();
 
     let task = tokio::spawn(async move {
-        let result: Result<tonic::Response<Vec<u8>>, tonic::Status> = client.client_streaming(
-            grpc_request,
-            path.parse().unwrap(),
-            tonic::codec::ProstCodec::default()
-        ).await;
+        let result: Result<tonic::Response<Vec<u8>>, tonic::Status> = client
+            .client_streaming(
+                grpc_request,
+                path.parse().unwrap(),
+                tonic::codec::ProstCodec::default(),
+            )
+            .await;
 
         match result {
             Ok(response) => {
                 let bytes = response.into_inner();
                 match DynamicMessage::decode(output_desc, bytes.as_ref()) {
                     Ok(message) => {
-                        // Отправляем финальный ответ в канал
                         let _ = response_tx.send(message);
-                    },
+                    }
                     Err(e) => {
                         eprintln!("Failed to decode client stream response: {}", e);
                     }
                 }
-            },
+            }
             Err(e) => {
                 eprintln!("Client stream error: {}", e);
             }
@@ -228,24 +229,15 @@ pub async fn get_next_message(
     match stream_manager.receive_message(stream_id).await? {
         Some(message) => {
             let json_message = dynamic_message_to_json(binary_vault, &message)?;
-            
-            // Проверяем, можно ли еще получать сообщения после этого
-            let has_more = stream_manager.get_stream(stream_id).await
-                .and_then(|stream| {
-                    stream.try_lock().ok().map(|info| info.can_receive)
-                })
-                .unwrap_or(false);
-            
+
             Ok(serde_json::json!({
                 "result": true,
-                "hasMore": has_more,
                 "message": json_message
             }))
         }
         None => {
             Ok(serde_json::json!({
                 "result": true,
-                "hasMore": false,
                 "message": null
             }))
         }
