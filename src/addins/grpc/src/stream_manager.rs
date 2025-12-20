@@ -24,7 +24,7 @@ pub struct StreamInfo {
     pub input_descriptor: Option<MessageDescriptor>,
     pub output_descriptor: Option<MessageDescriptor>,
     pub timeout_ms: Option<u64>,
-    pub task_handles: Vec<AbortHandle>,
+    pub task_handle: Option<AbortHandle>,
 }
 
 impl StreamInfo {
@@ -44,7 +44,7 @@ impl StreamInfo {
             input_descriptor: None,
             output_descriptor: Some(output_descriptor),
             timeout_ms,
-            task_handles: Vec::new(),
+            task_handle: None,
         }
     }
 
@@ -66,7 +66,7 @@ impl StreamInfo {
             input_descriptor: Some(input_descriptor),
             output_descriptor: Some(output_descriptor),
             timeout_ms,
-            task_handles: Vec::new(),
+            task_handle: None,
         }
     }
 
@@ -88,7 +88,7 @@ impl StreamInfo {
             input_descriptor: Some(input_descriptor),
             output_descriptor: Some(output_descriptor),
             timeout_ms,
-            task_handles: Vec::new(),
+            task_handle: None,
         }
     }
 
@@ -103,7 +103,7 @@ impl StreamInfo {
     }
 
     pub fn add_task_handle(&mut self, handle: AbortHandle) {
-        self.task_handles.push(handle);
+        self.task_handle = Some(handle);
     }
 }
 
@@ -153,19 +153,16 @@ impl StreamManager {
             .ok_or_else(|| format!("Stream '{}' sender not available (already dropped)", stream_id))?;
 
         let stream_type = stream_info.stream_type.clone();
-        
-        // Пытаемся отправить сообщение
+
         let send_result = sender.send(message);
-        
-        // Если отправка не удалась, значит receiver закрыт (сервер закрыл поток)
+
         if send_result.is_err() {
             drop(stream_info);
-            
-            // Для client stream: если сервер закрыл поток, переключаем флаги
+
             if matches!(stream_type, StreamType::ClientStream) {
                 let mut stream_info = stream.lock().await;
                 stream_info.can_send = false;
-                stream_info.can_receive = true; // Теперь можно получить финальный ответ
+                stream_info.can_receive = true;
                 drop(stream_info.sender.take());
             }
             
@@ -193,13 +190,11 @@ impl StreamManager {
         let receiver = receiver_guard.as_mut()
             .ok_or_else(|| "Stream receiver not available".to_string())?;
 
-        // Единая логика для всех типов stream
         if let Some(timeout) = timeout_ms {
             let duration = std::time::Duration::from_millis(timeout);
             match tokio::time::timeout(duration, receiver.recv()).await {
                 Ok(Some(message)) => Ok(Some(message)),
                 Ok(None) => {
-                    // Stream закрыт
                     drop(receiver_guard);
                     let mut stream_info = stream.lock().await;
                     stream_info.is_active = false;
@@ -207,12 +202,10 @@ impl StreamManager {
                     Ok(None)
                 },
                 Err(_) => {
-                    // Timeout
                     Err("Timeout waiting for message".to_string())
                 },
             }
         } else {
-            // Без timeout
             match receiver.try_recv() {
                 Ok(message) => Ok(Some(message)),
                 Err(mpsc::error::TryRecvError::Empty) => Ok(None),
@@ -233,11 +226,9 @@ impl StreamManager {
         
         let mut stream_info = stream.lock().await;
 
-        // Удаление sender закрывает канал, что сигнализирует gRPC серверу
-        // о завершении отправки сообщений от клиента
         if matches!(stream_info.stream_type, StreamType::ClientStream) {
             stream_info.can_send = false;
-            stream_info.can_receive = true; // Теперь можно получить финальный ответ
+            stream_info.can_receive = true;
             drop(stream_info.sender.take());
         } else {
             stream_info.can_send = false;
@@ -257,11 +248,10 @@ impl StreamManager {
         stream_info.can_receive = false;
         drop(stream_info.sender.take());
         
-        // Отменяем все фоновые задачи
-        for handle in &stream_info.task_handles {
+        // Отменяем фоновую задачу
+        if let Some(handle) = &stream_info.task_handle {
             handle.abort();
         }
-        stream_info.task_handles.clear();
         
         drop(stream_info);
         self.remove_stream(stream_id).await;
@@ -319,8 +309,7 @@ impl StreamManager {
 
     pub async fn close_all_streams(&self) -> Result<(), String> {
         let mut streams = self.streams.lock().await;
-        
-        // Закрываем все стримы
+
         for (_, stream_arc) in streams.iter() {
             let mut stream_info = stream_arc.lock().await;
             stream_info.is_active = false;
@@ -328,14 +317,12 @@ impl StreamManager {
             stream_info.can_receive = false;
             drop(stream_info.sender.take());
             
-            // Отменяем все фоновые задачи
-            for handle in &stream_info.task_handles {
+            // Отменяем фоновую задачу
+            if let Some(handle) = &stream_info.task_handle {
                 handle.abort();
             }
-            stream_info.task_handles.clear();
         }
-        
-        // Очищаем коллекцию
+
         streams.clear();
         
         Ok(())
