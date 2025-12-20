@@ -7,6 +7,7 @@ mod introspection;
 mod client_state;
 mod stream_manager;
 mod streaming_caller;
+mod ack_stream;
 
 use common_core::*;
 use common_utils::utils::{json_error, json_success};

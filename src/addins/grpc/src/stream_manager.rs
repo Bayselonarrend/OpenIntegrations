@@ -5,14 +5,14 @@ use tokio::task::AbortHandle;
 use prost_reflect::{DynamicMessage, MessageDescriptor};
 use uuid::Uuid;
 
-pub struct MessageWithAck {
+pub struct StreamMessage {
     pub message: DynamicMessage,
     pub ack: oneshot::Sender<()>,
 }
 
 pub struct StreamInfo {
     pub stream_id: String,
-    pub sender: Option<mpsc::Sender<MessageWithAck>>,
+    pub sender: Option<mpsc::Sender<StreamMessage>>,
     pub receiver: Arc<Mutex<Option<mpsc::Receiver<DynamicMessage>>>>,
     pub input_descriptor: Option<MessageDescriptor>,
     pub output_descriptor: Option<MessageDescriptor>,
@@ -22,7 +22,7 @@ pub struct StreamInfo {
 
 impl StreamInfo {
     pub fn new(
-        sender: Option<mpsc::Sender<MessageWithAck>>,
+        sender: Option<mpsc::Sender<StreamMessage>>,
         receiver: mpsc::Receiver<DynamicMessage>,
         input_descriptor: Option<MessageDescriptor>,
         output_descriptor: Option<MessageDescriptor>,
@@ -91,7 +91,7 @@ impl StreamManager {
         }
 
         let (ack_tx, ack_rx) = oneshot::channel();
-        let msg_with_ack = MessageWithAck {
+        let msg_with_ack = StreamMessage {
             message,
             ack: ack_tx,
         };
@@ -173,8 +173,7 @@ impl StreamManager {
         
         let mut stream_info = stream.lock().await;
         drop(stream_info.sender.take());
-        
-        // Отменяем фоновую задачу
+
         if let Some(handle) = &stream_info.task_handle {
             handle.abort();
         }
