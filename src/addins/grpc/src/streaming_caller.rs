@@ -14,7 +14,6 @@ use std::pin::Pin;
 use std::task::{Context, Poll};
 use futures::Stream;
 
-// Stream wrapper который отправляет подтверждение после каждого poll
 struct AckStream {
     receiver: mpsc::Receiver<MessageWithAck>,
     current_ack: Option<oneshot::Sender<()>>,
@@ -90,7 +89,13 @@ pub async fn start_server_stream(
     
     let handler_abort_handle = spawn_response_handler(response, method_desc.output(), tx);
 
-    let mut stream_info = StreamInfo::new_server_stream(rx, method_desc.output(), params.timeout_ms);
+    let mut stream_info = StreamInfo::new(
+        None,
+        rx,
+        None,
+        Some(method_desc.output()),
+        params.timeout_ms
+    );
     stream_info.add_task_handle(handler_abort_handle);
     let stream_id = stream_manager.add_stream(stream_info).await;
 
@@ -107,7 +112,6 @@ pub async fn start_client_stream(
 ) -> Result<String, String> {
     let method_desc = get_method_descriptor(descriptor_pool, &params.service, &params.method)?;
 
-    let (tx, _rx) = mpsc::channel::<DynamicMessage>(1);
     let (ack_tx, ack_rx) = mpsc::channel::<MessageWithAck>(1);
 
     let ack_stream = AckStream {
@@ -159,12 +163,11 @@ pub async fn start_client_stream(
         }
     });
 
-    let mut stream_info = StreamInfo::new_client_stream(
-        tx,
-        ack_tx,
+    let mut stream_info = StreamInfo::new(
+        Some(ack_tx),
         response_rx,
-        method_desc.input(),
-        method_desc.output(),
+        Some(method_desc.input()),
+        Some(method_desc.output()),
         params.timeout_ms
     );
     stream_info.add_task_handle(task.abort_handle());
@@ -183,7 +186,6 @@ pub async fn start_bidi_stream(
 ) -> Result<String, String> {
     let method_desc = get_method_descriptor(descriptor_pool, &params.service, &params.method)?;
 
-    let (tx_send, _rx_send) = mpsc::channel::<DynamicMessage>(1);
     let (ack_tx, ack_rx) = mpsc::channel::<MessageWithAck>(1);
     let (tx_recv, rx_recv) = mpsc::channel(1);
 
@@ -218,12 +220,11 @@ pub async fn start_bidi_stream(
 
     let handler_abort_handle = spawn_response_handler(response, method_desc.output(), tx_recv);
 
-    let mut stream_info = StreamInfo::new_bidi_stream(
-        tx_send,
-        ack_tx,
+    let mut stream_info = StreamInfo::new(
+        Some(ack_tx),
         rx_recv,
-        method_desc.input(),
-        method_desc.output(),
+        Some(method_desc.input()),
+        Some(method_desc.output()),
         params.timeout_ms
     );
     stream_info.add_task_handle(handler_abort_handle);

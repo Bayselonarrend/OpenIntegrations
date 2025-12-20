@@ -10,19 +10,9 @@ pub struct MessageWithAck {
     pub ack: oneshot::Sender<()>,
 }
 
-#[derive(Clone, Debug)]
-pub enum StreamType {
-    ServerStream,
-    ClientStream,
-    BidiStream,
-}
-
 pub struct StreamInfo {
     pub stream_id: String,
-    pub stream_type: StreamType,
-    pub sender: Option<mpsc::Sender<DynamicMessage>>,
-    #[allow(dead_code)]
-    pub ack_sender: Option<mpsc::Sender<MessageWithAck>>,
+    pub sender: Option<mpsc::Sender<MessageWithAck>>,
     pub receiver: Arc<Mutex<Option<mpsc::Receiver<DynamicMessage>>>>,
     pub input_descriptor: Option<MessageDescriptor>,
     pub output_descriptor: Option<MessageDescriptor>,
@@ -31,65 +21,24 @@ pub struct StreamInfo {
 }
 
 impl StreamInfo {
-    pub fn new_server_stream(
+    pub fn new(
+        sender: Option<mpsc::Sender<MessageWithAck>>,
         receiver: mpsc::Receiver<DynamicMessage>,
-        output_descriptor: MessageDescriptor,
+        input_descriptor: Option<MessageDescriptor>,
+        output_descriptor: Option<MessageDescriptor>,
         timeout_ms: Option<u64>,
     ) -> Self {
         Self {
             stream_id: Uuid::new_v4().to_string(),
-            stream_type: StreamType::ServerStream,
-            sender: None,
-            ack_sender: None,
+            sender,
             receiver: Arc::new(Mutex::new(Some(receiver))),
-            input_descriptor: None,
-            output_descriptor: Some(output_descriptor),
+            input_descriptor,
+            output_descriptor,
             timeout_ms,
             task_handle: None,
         }
     }
 
-    pub fn new_client_stream(
-        sender: mpsc::Sender<DynamicMessage>,
-        ack_sender: mpsc::Sender<MessageWithAck>,
-        receiver: mpsc::Receiver<DynamicMessage>,
-        input_descriptor: MessageDescriptor,
-        output_descriptor: MessageDescriptor,
-        timeout_ms: Option<u64>,
-    ) -> Self {
-        Self {
-            stream_id: Uuid::new_v4().to_string(),
-            stream_type: StreamType::ClientStream,
-            sender: Some(sender),
-            ack_sender: Some(ack_sender),
-            receiver: Arc::new(Mutex::new(Some(receiver))),
-            input_descriptor: Some(input_descriptor),
-            output_descriptor: Some(output_descriptor),
-            timeout_ms,
-            task_handle: None,
-        }
-    }
-
-    pub fn new_bidi_stream(
-        sender: mpsc::Sender<DynamicMessage>,
-        ack_sender: mpsc::Sender<MessageWithAck>,
-        receiver: mpsc::Receiver<DynamicMessage>,
-        input_descriptor: MessageDescriptor,
-        output_descriptor: MessageDescriptor,
-        timeout_ms: Option<u64>,
-    ) -> Self {
-        Self {
-            stream_id: Uuid::new_v4().to_string(),
-            stream_type: StreamType::BidiStream,
-            sender: Some(sender),
-            ack_sender: Some(ack_sender),
-            receiver: Arc::new(Mutex::new(Some(receiver))),
-            input_descriptor: Some(input_descriptor),
-            output_descriptor: Some(output_descriptor),
-            timeout_ms,
-            task_handle: None,
-        }
-    }
     pub fn add_task_handle(&mut self, handle: AbortHandle) {
         self.task_handle = Some(handle);
     }
@@ -127,48 +76,43 @@ impl StreamManager {
         let stream = self.get_stream(stream_id).await
             .ok_or_else(|| format!("Stream '{}' not found", stream_id))?;
         
-        let (ack_sender, timeout_ms) = {
+        let (sender, timeout_ms) = {
             let stream_info = stream.lock().await;
 
-            let ack_sender = stream_info.ack_sender.as_ref()
+            let sender = stream_info.sender.as_ref()
                 .ok_or_else(|| format!("Stream '{}' does not support sending", stream_id))?
                 .clone();
             
-            (ack_sender, stream_info.timeout_ms)
+            (sender, stream_info.timeout_ms)
         };
 
-        if ack_sender.is_closed() {
+        if sender.is_closed() {
             return Err("Closed".to_string());
         }
 
-        // Создаем oneshot канал для подтверждения
         let (ack_tx, ack_rx) = oneshot::channel();
         let msg_with_ack = MessageWithAck {
             message,
             ack: ack_tx,
         };
 
-        // Отправляем сообщение
         if let Some(timeout) = timeout_ms {
             let duration = std::time::Duration::from_millis(timeout);
-            
-            // Отправляем сообщение с таймаутом
-            tokio::time::timeout(duration, ack_sender.send(msg_with_ack))
+
+            tokio::time::timeout(duration, sender.send(msg_with_ack))
                 .await
                 .map_err(|_| "Timeout")?
                 .map_err(|_| "Closed".to_string())?;
-            
-            // Ждем подтверждения с таймаутом
+
             tokio::time::timeout(duration, ack_rx)
                 .await
                 .map_err(|_| "Timeout")?
                 .map_err(|_| "Closed".to_string())?;
         } else {
-            // Отправляем сообщение
-            ack_sender.send(msg_with_ack).await
+
+            sender.send(msg_with_ack).await
                 .map_err(|_| "Closed".to_string())?;
-            
-            // Ждем подтверждения
+
             ack_rx.await
                 .map_err(|_| "Closed".to_string())?;
         }
@@ -218,12 +162,7 @@ impl StreamManager {
             .ok_or_else(|| format!("Stream '{}' not found", stream_id))?;
         
         let mut stream_info = stream.lock().await;
-
-        if matches!(stream_info.stream_type, StreamType::ClientStream) {
-            drop(stream_info.sender.take());
-        } else {
-            drop(stream_info.sender.take());
-        }
+        drop(stream_info.sender.take());
         
         Ok(())
     }
