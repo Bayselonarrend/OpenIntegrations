@@ -5,13 +5,44 @@ use tonic::transport::Channel;
 use tonic::{Request, Streaming};
 use prost_reflect::{DescriptorPool, DynamicMessage, MethodDescriptor};
 use prost::Message;
-use tokio::sync::mpsc;
-use tonic::codegen::tokio_stream;
+use tokio::sync::{mpsc, oneshot};
 use common_binary::vault::BinaryVault;
 use crate::message_converter::{json_to_dynamic_message, dynamic_message_to_json};
 use crate::grpc_caller::{apply_metadata, create_request_message};
-use futures::StreamExt;
-use crate::stream_manager::{StreamInfo, StreamManager};
+use crate::stream_manager::{StreamInfo, StreamManager, MessageWithAck};
+use std::pin::Pin;
+use std::task::{Context, Poll};
+use futures::Stream;
+
+// Stream wrapper который отправляет подтверждение после каждого poll
+struct AckStream {
+    receiver: mpsc::Receiver<MessageWithAck>,
+    current_ack: Option<oneshot::Sender<()>>,
+}
+
+impl Stream for AckStream {
+    type Item = Vec<u8>;
+
+    fn poll_next(mut self: Pin<&mut Self>, cx: &mut Context<'_>) -> Poll<Option<Self::Item>> {
+        // Отправляем подтверждение для предыдущего сообщения
+        if let Some(ack) = self.current_ack.take() {
+            let _ = ack.send(());
+        }
+
+        // Получаем следующее сообщение
+        match self.receiver.poll_recv(cx) {
+            Poll::Ready(Some(msg_with_ack)) => {
+                let bytes = msg_with_ack.message.encode_to_vec();
+                self.current_ack = Some(msg_with_ack.ack);
+                Poll::Ready(Some(bytes))
+            }
+            Poll::Ready(None) => {
+                Poll::Ready(None)
+            }
+            Poll::Pending => Poll::Pending,
+        }
+    }
+}
 
 #[derive(serde::Deserialize)]
 pub struct StreamCallParams {
@@ -55,7 +86,7 @@ pub async fn start_server_stream(
         .map_err(|e| format!("gRPC server stream failed: {}", e))?
         .into_inner();
 
-    let (tx, rx) = mpsc::unbounded_channel();
+    let (tx, rx) = mpsc::channel(1);
     
     let handler_abort_handle = spawn_response_handler(response, method_desc.output(), tx);
 
@@ -76,12 +107,15 @@ pub async fn start_client_stream(
 ) -> Result<String, String> {
     let method_desc = get_method_descriptor(descriptor_pool, &params.service, &params.method)?;
 
-    let (tx, rx) = mpsc::unbounded_channel::<DynamicMessage>();
+    let (tx, _rx) = mpsc::channel::<DynamicMessage>(1);
+    let (ack_tx, ack_rx) = mpsc::channel::<MessageWithAck>(1);
 
-    let byte_stream = tokio_stream::wrappers::UnboundedReceiverStream::new(rx)
-        .map(|msg| msg.encode_to_vec());
+    let ack_stream = AckStream {
+        receiver: ack_rx,
+        current_ack: None,
+    };
     
-    let mut grpc_request = Request::new(byte_stream);
+    let mut grpc_request = Request::new(ack_stream);
     apply_metadata(&mut grpc_request, metadata)?;
     
     if let Some(timeout_ms) = params.timeout_ms {
@@ -95,7 +129,7 @@ pub async fn start_client_stream(
     client.ready().await
         .map_err(|e| format!("Failed to ready client: {}", e))?;
 
-    let (response_tx, response_rx) = mpsc::unbounded_channel();
+    let (response_tx, response_rx) = mpsc::channel(1);
     let output_desc = method_desc.output();
 
     let task = tokio::spawn(async move {
@@ -112,7 +146,7 @@ pub async fn start_client_stream(
                 let bytes = response.into_inner();
                 match DynamicMessage::decode(output_desc, bytes.as_ref()) {
                     Ok(message) => {
-                        let _ = response_tx.send(message);
+                        let _ = response_tx.send(message).await;
                     }
                     Err(e) => {
                         eprintln!("Failed to decode client stream response: {}", e);
@@ -127,6 +161,7 @@ pub async fn start_client_stream(
 
     let mut stream_info = StreamInfo::new_client_stream(
         tx,
+        ack_tx,
         response_rx,
         method_desc.input(),
         method_desc.output(),
@@ -148,13 +183,16 @@ pub async fn start_bidi_stream(
 ) -> Result<String, String> {
     let method_desc = get_method_descriptor(descriptor_pool, &params.service, &params.method)?;
 
-    let (tx_send, rx_send) = mpsc::unbounded_channel::<DynamicMessage>();
-    let (tx_recv, rx_recv) = mpsc::unbounded_channel();
+    let (tx_send, _rx_send) = mpsc::channel::<DynamicMessage>(1);
+    let (ack_tx, ack_rx) = mpsc::channel::<MessageWithAck>(1);
+    let (tx_recv, rx_recv) = mpsc::channel(1);
 
-    let byte_stream = tokio_stream::wrappers::UnboundedReceiverStream::new(rx_send)
-        .map(|msg| msg.encode_to_vec());
+    let ack_stream = AckStream {
+        receiver: ack_rx,
+        current_ack: None,
+    };
     
-    let mut grpc_request = Request::new(byte_stream);
+    let mut grpc_request = Request::new(ack_stream);
     apply_metadata(&mut grpc_request, metadata)?;
     
     if let Some(timeout_ms) = params.timeout_ms {
@@ -182,6 +220,7 @@ pub async fn start_bidi_stream(
 
     let mut stream_info = StreamInfo::new_bidi_stream(
         tx_send,
+        ack_tx,
         rx_recv,
         method_desc.input(),
         method_desc.output(),
@@ -196,12 +235,12 @@ pub async fn start_bidi_stream(
 fn spawn_response_handler(
     mut response: Streaming<Vec<u8>>,
     output_descriptor: prost_reflect::MessageDescriptor,
-    sender: mpsc::UnboundedSender<DynamicMessage>,
+    sender: mpsc::Sender<DynamicMessage>,
 ) -> tokio::task::AbortHandle {
     let task = tokio::spawn(async move {
         while let Ok(Some(bytes)) = response.message().await {
             if let Ok(message) = DynamicMessage::decode(output_descriptor.clone(), bytes.as_ref()) {
-                if sender.send(message).is_err() {
+                if sender.send(message).await.is_err() {
                     break;
                 }
             }
