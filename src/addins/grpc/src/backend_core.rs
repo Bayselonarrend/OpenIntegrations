@@ -83,10 +83,6 @@ pub enum BackendCommand {
         stream_id: String,
         response: Sender<String>,
     },
-    GetStreamStatus {
-        stream_id: String,
-        response: Sender<String>,
-    },
     CloseStream {
         stream_id: String,
         response: Sender<String>,
@@ -394,15 +390,6 @@ impl GrpcBackend {
                             };
                             let _ = response.send(response_msg);
                         }
-                        BackendCommand::GetStreamStatus { stream_id, response } => {
-                            let result = rt.block_on(client_state.stream_manager.get_status(&stream_id));
-                            
-                            let response_msg = match result {
-                                Ok(data) => json!({"result": true, "data": data}).to_string(),
-                                Err(e) => json_error(&e),
-                            };
-                            let _ = response.send(response_msg);
-                        }
                         BackendCommand::CloseStream { stream_id, response } => {
                             let result = rt.block_on(client_state.stream_manager.close_stream(&stream_id));
                             
@@ -653,18 +640,6 @@ impl GrpcBackend {
 
         response_rx.recv()
             .map_err(|e| format!("Failed to receive finish_client_stream response: {}", e))
-    }
-
-    pub fn get_stream_status(&self, stream_id: &str) -> Result<String, String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::GetStreamStatus {
-            stream_id: stream_id.to_string(),
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send get_stream_status command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive get_stream_status response: {}", e))
     }
 
     pub fn close_stream(&self, stream_id: &str) -> Result<String, String> {
