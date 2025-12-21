@@ -116,15 +116,15 @@ pub async fn start_client_stream(
                 let bytes = response.into_inner();
                 match DynamicMessage::decode(output_desc, bytes.as_ref()) {
                     Ok(message) => {
-                        let _ = response_tx.send(message).await;
+                        let _ = response_tx.send(Ok(message)).await;
                     }
                     Err(e) => {
-                        eprintln!("Failed to decode client stream response: {}", e);
+                        let _ = response_tx.send(Err(format!("Failed to decode client stream response: {}", e))).await;
                     }
                 }
             }
             Err(e) => {
-                eprintln!("Client stream error: {}", e);
+                let _ = response_tx.send(Err(format!("Client stream error: {}", e))).await;
             }
         }
     });
@@ -199,14 +199,21 @@ pub async fn start_bidi_stream(
 fn spawn_response_handler(
     mut response: Streaming<Vec<u8>>,
     output_descriptor: prost_reflect::MessageDescriptor,
-    sender: mpsc::Sender<DynamicMessage>,
+    sender: mpsc::Sender<Result<DynamicMessage, String>>,
 ) -> tokio::task::AbortHandle {
     let task = tokio::spawn(async move {
         while let Ok(Some(bytes)) = response.message().await {
-            if let Ok(message) = DynamicMessage::decode(output_descriptor.clone(), bytes.as_ref()) {
-                if sender.send(message).await.is_err() {
-                    break;
+
+            let sending = match DynamicMessage::decode(output_descriptor.clone(), bytes.as_ref()){
+                Ok(message) => {
+                    sender.send(Ok(message)).await
+                },
+                Err(e) => {
+                    sender.send(Err(format!("Failed to decode client stream response: {}", e))).await
                 }
+            };
+            if sending.is_err() {
+                break;
             }
         }
     });
