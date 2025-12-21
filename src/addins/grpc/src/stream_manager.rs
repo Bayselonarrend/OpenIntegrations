@@ -3,6 +3,7 @@ use std::sync::Arc;
 use tokio::sync::{mpsc, oneshot, Mutex};
 use tokio::task::AbortHandle;
 use prost_reflect::{DynamicMessage, MessageDescriptor};
+use tokio::sync::mpsc::Receiver;
 use uuid::Uuid;
 
 pub struct StreamMessage {
@@ -13,7 +14,7 @@ pub struct StreamMessage {
 pub struct StreamInfo {
     pub stream_id: String,
     pub sender: Option<mpsc::Sender<StreamMessage>>,
-    pub receiver: Arc<Mutex<Option<mpsc::Receiver<DynamicMessage>>>>,
+    pub receiver: Arc<Mutex<Option<Receiver<Result<DynamicMessage, String>>>>>,
     pub input_descriptor: Option<MessageDescriptor>,
     pub output_descriptor: Option<MessageDescriptor>,
     pub timeout_ms: Option<u64>,
@@ -23,7 +24,7 @@ pub struct StreamInfo {
 impl StreamInfo {
     pub fn new(
         sender: Option<mpsc::Sender<StreamMessage>>,
-        receiver: mpsc::Receiver<DynamicMessage>,
+        receiver: Receiver<Result<DynamicMessage, String>>,
         input_descriptor: Option<MessageDescriptor>,
         output_descriptor: Option<MessageDescriptor>,
         timeout_ms: Option<u64>,
@@ -82,7 +83,7 @@ impl StreamManager {
             let sender = stream_info.sender.as_ref()
                 .ok_or_else(|| format!("Stream '{}' does not support sending", stream_id))?
                 .clone();
-            
+
             (sender, stream_info.timeout_ms)
         };
 
@@ -99,6 +100,11 @@ impl StreamManager {
         if let Some(timeout) = timeout_ms {
             let duration = std::time::Duration::from_millis(timeout);
 
+            tokio::time::timeout(duration, sender.reserve())
+                .await
+                .map_err(|_| "Timeout")?
+                .map_err(|_| "Closed".to_string())?;
+
             tokio::time::timeout(duration, sender.send(msg_with_ack))
                 .await
                 .map_err(|_| "Timeout")?
@@ -109,6 +115,9 @@ impl StreamManager {
                 .map_err(|_| "Timeout")?
                 .map_err(|_| "Closed".to_string())?;
         } else {
+
+            sender.reserve().await
+                .map_err(|_| "Closed".to_string())?;
 
             sender.send(msg_with_ack).await
                 .map_err(|_| "Closed".to_string())?;
@@ -136,7 +145,12 @@ impl StreamManager {
         if let Some(timeout) = timeout_ms {
             let duration = std::time::Duration::from_millis(timeout);
             match tokio::time::timeout(duration, receiver.recv()).await {
-                Ok(Some(message)) => Ok(Some(message)),
+                Ok(Some(message)) => {
+                    match message {
+                        Ok(m) => Ok(Some(m)),
+                        Err(e) => Err(e),
+                    }
+                },
                 Ok(None) => {
                     drop(receiver_guard);
                     Err("Closed".to_string())
@@ -147,7 +161,12 @@ impl StreamManager {
             }
         } else {
             match receiver.try_recv() {
-                Ok(message) => Ok(Some(message)),
+                Ok(message) => {
+                    match message {
+                        Ok(m) => Ok(Some(m)),
+                        Err(e) => Err(e),
+                    }
+                },
                 Err(mpsc::error::TryRecvError::Empty) => Ok(None),
                 Err(mpsc::error::TryRecvError::Disconnected) => {
                     drop(receiver_guard);
