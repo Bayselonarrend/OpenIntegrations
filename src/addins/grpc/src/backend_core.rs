@@ -79,10 +79,6 @@ pub enum BackendCommand {
         stream_id: String,
         response: Sender<String>,
     },
-    FinishClientStream {
-        stream_id: String,
-        response: Sender<String>,
-    },
     CloseStream {
         stream_id: String,
         response: Sender<String>,
@@ -129,6 +125,7 @@ impl GrpcBackend {
                             let _ = response.send(response_msg);
                         }
                         BackendCommand::Disconnect { response } => {
+                            let _ = rt.block_on(client_state.stream_manager.close_all_streams());
                             client_state.disconnect();
                             let _ = response.send("".to_string());
                         }
@@ -375,21 +372,6 @@ impl GrpcBackend {
                             };
                             let _ = response.send(response_msg);
                         }
-                        BackendCommand::FinishClientStream { stream_id, response } => {
-                            use crate::streaming_caller;
-                            
-                            let result = rt.block_on(streaming_caller::finish_client_stream_and_get_response(
-                                &vault_clone,
-                                &client_state.stream_manager,
-                                &stream_id
-                            ));
-                            
-                            let response_msg = match result {
-                                Ok(data) => json!({"result": true, "data": data}).to_string(),
-                                Err(e) => json_error(&e),
-                            };
-                            let _ = response.send(response_msg);
-                        }
                         BackendCommand::CloseStream { stream_id, response } => {
                             let result = rt.block_on(client_state.stream_manager.close_stream(&stream_id));
                             
@@ -628,18 +610,6 @@ impl GrpcBackend {
 
         response_rx.recv()
             .map_err(|e| format!("Failed to receive finish_sending response: {}", e))
-    }
-
-    pub fn finish_client_stream(&self, stream_id: &str) -> Result<String, String> {
-        let (response_tx, response_rx) = mpsc::channel();
-        
-        self.tx.send(BackendCommand::FinishClientStream {
-            stream_id: stream_id.to_string(),
-            response: response_tx,
-        }).map_err(|e| format!("Failed to send finish_client_stream command: {}", e))?;
-
-        response_rx.recv()
-            .map_err(|e| format!("Failed to receive finish_client_stream response: {}", e))
     }
 
     pub fn close_stream(&self, stream_id: &str) -> Result<String, String> {
