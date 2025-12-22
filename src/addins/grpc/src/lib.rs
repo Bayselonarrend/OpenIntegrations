@@ -35,7 +35,6 @@ pub const METHODS: &[&[u16]] = &[
     name!("SendMessage"),
     name!("GetNextMessage"),
     name!("FinishSending"),
-    name!("FinishClientStream"),
     name!("CloseStream"),
     name!("CompileProtos"),
     name!("StoreBytes"),
@@ -59,11 +58,10 @@ pub fn get_params_amount(num: usize) -> usize {
         12 => 2, // SendMessage
         13 => 1, // GetNextMessage
         14 => 1, // FinishSending
-        15 => 1, // FinishClientStream
-        16 => 1, // CloseStream
-        17 => 0, // CompileProtos
-        18 => 1, // StoreBytes
-        19 => 1, // RetrieveBytes
+        15 => 1, // CloseStream
+        16 => 0, // CompileProtos
+        17 => 1, // StoreBytes
+        18 => 1, // RetrieveBytes
         _ => 0,
     }
 }
@@ -132,18 +130,14 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         },
         15 => {
             let stream_id = params[0].get_string().unwrap_or("".to_string());
-            Box::new(obj.finish_client_stream(&stream_id))
-        },
-        16 => {
-            let stream_id = params[0].get_string().unwrap_or("".to_string());
             Box::new(obj.close_stream(&stream_id))
         },
-        17 => Box::new(obj.compile_protos()),
-        18 => {
+        16 => Box::new(obj.compile_protos()),
+        17 => {
             let bytes = params[0].get_blob().unwrap_or_default();
             Box::new(obj.store_bytes(Vec::from(bytes)))
         },
-        19 => {
+        18 => {
             let key = params[0].get_string().unwrap_or("".to_string());
             Box::new(obj.retrieve_bytes(&key))
         },
@@ -359,15 +353,6 @@ impl AddIn {
         };
 
         guard.finish_sending(stream_id).unwrap_or_else(|e| json_error(&e))
-    }
-
-    pub fn finish_client_stream(&mut self, stream_id: &str) -> String {
-        let guard = match self.backend.lock() {
-            Ok(lock) => lock,
-            Err(e) => return json_error(&e.to_string())
-        };
-
-        guard.finish_client_stream(stream_id).unwrap_or_else(|e| json_error(&e))
     }
 
     pub fn close_stream(&mut self, stream_id: &str) -> String {
