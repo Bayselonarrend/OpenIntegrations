@@ -228,7 +228,8 @@ pub async fn send_stream_message(
 ) -> Result<(), String> {
     let input_descriptor = stream_manager.get_input_descriptor(stream_id).await?;
     let message = json_to_dynamic_message(binary_vault, message_json, &input_descriptor)?;
-    stream_manager.send_message(stream_id, message).await
+    let result = stream_manager.send_message(stream_id, message).await;
+    result
 }
 
 pub async fn get_next_message(
@@ -251,23 +252,6 @@ pub async fn get_next_message(
                 "message": null
             }))
         }
-    }
-}
-
-pub async fn finish_client_stream_and_get_response(
-    binary_vault: &BinaryVault,
-    stream_manager: &StreamManager,
-    stream_id: &str,
-) -> Result<Value, String> {
-
-    stream_manager.finish_sending(stream_id).await?;
-
-    match stream_manager.receive_message(stream_id).await? {
-        Some(message) => {
-            let json_message = dynamic_message_to_json(binary_vault, &message)?;
-            Ok(json_message)
-        }
-        None => Err("No final response received".to_string()),
     }
 }
 
