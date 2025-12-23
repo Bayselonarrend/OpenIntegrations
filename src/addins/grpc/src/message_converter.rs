@@ -139,11 +139,9 @@ pub fn dynamic_message_to_json(binary_vault: &BinaryVault, message: &DynamicMess
     let mut result = serde_json::Map::new();
 
     for field_desc in message.descriptor().fields() {
-        if message.has_field(&field_desc) {
-            let field_value = message.get_field(&field_desc);
-            let json_value = prost_value_to_json_value(binary_vault, &field_value, &field_desc)?;
-            result.insert(field_desc.name().to_string(), json_value);
-        }
+        let field_value = message.get_field(&field_desc);
+        let json_value = prost_value_to_json_value(binary_vault, &field_value, &field_desc)?;
+        result.insert(field_desc.name().to_string(), json_value);
     }
 
     Ok(Value::Object(result))
