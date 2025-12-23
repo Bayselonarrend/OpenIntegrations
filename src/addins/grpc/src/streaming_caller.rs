@@ -159,29 +159,44 @@ pub async fn start_bidi_stream(
     
     let mut grpc_request = Request::new(ack_stream);
     apply_metadata(&mut grpc_request, metadata)?;
-    
-    if let Some(timeout_ms) = params.timeout_ms {
-        grpc_request.set_timeout(Duration::from_millis(timeout_ms));
-    }
 
-    let path = format!("/{}/{}", method_desc.parent_service().full_name(), method_desc.name());
+    let path_str = format!("/{}/{}", method_desc.parent_service().full_name(), method_desc.name());
+    let path = path_str.parse().unwrap();
     
     let mut client = tonic::client::Grpc::new(channel.clone());
 
     client.ready().await
         .map_err(|e| format!("Failed to ready client: {}", e))?;
 
-    let response: Streaming<Vec<u8>> = client
-        .streaming(
-            grpc_request,
-            path.parse().unwrap(),
-            tonic::codec::ProstCodec::default()
-        )
-        .await
-        .map_err(|e| format!("gRPC bidi stream failed: {}", e))?
-        .into_inner();
+    let output_desc = method_desc.output();
 
-    let handler_abort_handle = spawn_response_handler(response, method_desc.output(), tx_recv);
+    let task = tokio::spawn(async move {
+        let result: Result<tonic::Response<Streaming<Vec<u8>>>, tonic::Status> = client
+            .streaming(
+                grpc_request,
+                path,
+                tonic::codec::ProstCodec::default()
+            )
+            .await;
+
+        match result {
+            Ok(response) => {
+                let mut stream = response.into_inner();
+                while let Ok(Some(bytes)) = stream.message().await {
+                    let sending = match DynamicMessage::decode(output_desc.clone(), bytes.as_ref()) {
+                        Ok(message) => tx_recv.send(Ok(message)).await,
+                        Err(e) => tx_recv.send(Err(format!("Failed to decode bidi stream response: {}", e))).await,
+                    };
+                    if sending.is_err() {
+                        break;
+                    }
+                }
+            }
+            Err(e) => {
+                let _ = tx_recv.send(Err(format!("gRPC bidi stream failed: {}", e))).await;
+            }
+        }
+    });
 
     let mut stream_info = StreamInfo::new(
         Some(ack_tx),
@@ -190,7 +205,7 @@ pub async fn start_bidi_stream(
         Some(method_desc.output()),
         params.timeout_ms
     );
-    stream_info.add_task_handle(handler_abort_handle);
+    stream_info.add_task_handle(task.abort_handle());
     let stream_id = stream_manager.add_stream(stream_info).await;
 
     Ok(stream_id)
