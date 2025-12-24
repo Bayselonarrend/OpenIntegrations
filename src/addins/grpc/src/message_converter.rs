@@ -2,6 +2,7 @@ use serde_json::{json, Value};
 use prost_reflect::{DynamicMessage, MessageDescriptor, ReflectMessage};
 use common_binary::vault::{BinaryVault, VaultKey};
 use std::str::FromStr;
+use base64::Engine;
 
 pub fn json_to_dynamic_message(binary_vault: &BinaryVault, json_value: &Value, message_desc: &MessageDescriptor) -> Result<DynamicMessage, String> {
     let mut message = DynamicMessage::new(message_desc.clone());
@@ -92,15 +93,21 @@ fn json_value_to_prost_value_scalar(binary_vault: &BinaryVault, json_value: &Val
         },
         Kind::Bytes => match json_value {
             Value::String(s) => {
-                // Сначала пробуем загрузить из файла
+
+                if let Ok(bytes) = binary_vault.retrieve(&VaultKey::from_str(s).unwrap_or_default()) {
+                    return Ok(ProstValue::Bytes(bytes.into()))
+                }
+
                 if let Ok(bytes) = std::fs::read(s) {
                     return Ok(ProstValue::Bytes(bytes.into()));
                 }
-                
-                // Если не файл, пробуем декодировать как base64
-                use base64::Engine;
-                let bytes = base64::engine::general_purpose::STANDARD.decode(s)
-                    .map_err(|_| format!("Failed to read as file or decode as base64: {}", s))?;
+
+                let cleaned_base64 = s
+                    .as_str()
+                    .replace(&['\n', '\r', ' '][..], "");
+
+                let bytes = base64::engine::general_purpose::STANDARD.decode(cleaned_base64)
+                    .map_err(|_| format!("'{}' is not a valid vault key, file path, or base64", s))?;
                 Ok(ProstValue::Bytes(bytes.into()))
             },
             Value::Object(obj) => {
@@ -160,7 +167,6 @@ fn prost_value_to_json_value(binary_vault: &BinaryVault, prost_value: &prost_ref
         ProstValue::F64(f) => Ok(json!(f)),
         ProstValue::String(s) => Ok(Value::String(s.clone())),
         ProstValue::Bytes(b) => {
-            // Сохраняем bytes в vault и возвращаем ключ в формате {"BYTES": "vault_key"}
             use common_binary::vault::BinaryInput;
             let vault_key = binary_vault.store(BinaryInput::Bytes(b.to_vec()))
                 .map_err(|e| format!("Failed to store bytes in vault: {}", e))?;
