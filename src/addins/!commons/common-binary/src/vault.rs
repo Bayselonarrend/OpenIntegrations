@@ -77,7 +77,10 @@ impl BinaryVault {
 
     pub fn store_base64(&self, base64_str: &str) -> Result<VaultKey, VaultError> {
         use base64::prelude::*;
-        let data = BASE64_STANDARD.decode(base64_str)
+
+        let cleaned_base64 = base64_str.replace(&['\n', '\r', ' '][..], "");
+
+        let data = BASE64_STANDARD.decode(cleaned_base64)
             .map_err(|e| VaultError::IoError(io::Error::new(io::ErrorKind::InvalidData, e)))?;
         Ok(self.store_bytes(data))
     }
