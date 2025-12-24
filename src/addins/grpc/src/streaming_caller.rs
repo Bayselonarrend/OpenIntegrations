@@ -182,13 +182,24 @@ pub async fn start_bidi_stream(
         match result {
             Ok(response) => {
                 let mut stream = response.into_inner();
-                while let Ok(Some(bytes)) = stream.message().await {
-                    let sending = match DynamicMessage::decode(output_desc.clone(), bytes.as_ref()) {
-                        Ok(message) => tx_recv.send(Ok(message)).await,
-                        Err(e) => tx_recv.send(Err(format!("Failed to decode bidi stream response: {}", e))).await,
-                    };
-                    if sending.is_err() {
-                        break;
+                loop {
+                    match stream.message().await {
+                        Ok(Some(bytes)) => {
+                            let sending = match DynamicMessage::decode(output_desc.clone(), bytes.as_ref()) {
+                                Ok(message) => tx_recv.send(Ok(message)).await,
+                                Err(e) => tx_recv.send(Err(format!("Failed to decode bidi stream response: {}", e))).await,
+                            };
+                            if sending.is_err() {
+                                break;
+                            }
+                        }
+                        Ok(None) => {
+                            break;
+                        }
+                        Err(status) => {
+                            let _ = tx_recv.send(Err(format!("gRPC error: {}", status))).await;
+                            break;
+                        }
                     }
                 }
             }
@@ -217,18 +228,24 @@ fn spawn_response_handler(
     sender: mpsc::Sender<Result<DynamicMessage, String>>,
 ) -> tokio::task::AbortHandle {
     let task = tokio::spawn(async move {
-        while let Ok(Some(bytes)) = response.message().await {
-
-            let sending = match DynamicMessage::decode(output_descriptor.clone(), bytes.as_ref()){
-                Ok(message) => {
-                    sender.send(Ok(message)).await
-                },
-                Err(e) => {
-                    sender.send(Err(format!("Failed to decode client stream response: {}", e))).await
+        loop {
+            match response.message().await {
+                Ok(Some(bytes)) => {
+                    let sending = match DynamicMessage::decode(output_descriptor.clone(), bytes.as_ref()) {
+                        Ok(message) => sender.send(Ok(message)).await,
+                        Err(e) => sender.send(Err(format!("Failed to decode response: {}", e))).await,
+                    };
+                    if sending.is_err() {
+                        break;
+                    }
                 }
-            };
-            if sending.is_err() {
-                break;
+                Ok(None) => {
+                    break;
+                }
+                Err(status) => {
+                    let _ = sender.send(Err(format!("gRPC error: {}", status))).await;
+                    break;
+                }
             }
         }
     });

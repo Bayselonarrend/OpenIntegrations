@@ -12,9 +12,8 @@ mod ack_stream;
 use common_core::*;
 use common_utils::utils::{json_error, json_success};
 use common_tcp::tls_settings::TlsSettings;
-use common_binary::vault::VaultKey;
 use std::sync::{Arc, Mutex};
-use std::str::FromStr;
+use serde_json::json;
 
 impl_addin_exports!(AddIn);
 impl_raw_addin!(AddIn, METHODS, PROPS, get_params_amount, cal_func);
@@ -37,8 +36,7 @@ pub const METHODS: &[&[u16]] = &[
     name!("FinishSending"),
     name!("CloseStream"),
     name!("CompileProtos"),
-    name!("StoreBytes"),
-    name!("RetrieveBytes"),
+    name!("LoadBinaryToVault"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -60,8 +58,7 @@ pub fn get_params_amount(num: usize) -> usize {
         14 => 1, // FinishSending
         15 => 1, // CloseStream
         16 => 0, // CompileProtos
-        17 => 1, // StoreBytes
-        18 => 1, // RetrieveBytes
+        17 => 1, // LoadBase64ToVault
         _ => 0,
     }
 }
@@ -136,10 +133,6 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
         17 => {
             let bytes = params[0].get_blob().unwrap_or_default();
             Box::new(obj.store_bytes(Vec::from(bytes)))
-        },
-        18 => {
-            let key = params[0].get_string().unwrap_or("".to_string());
-            Box::new(obj.retrieve_bytes(&key))
         },
         _ => Box::new(false),
     }
@@ -373,23 +366,9 @@ impl AddIn {
         };
 
         match guard.binary_vault.store(BinaryInput::Bytes(bytes)) {
-            Ok(key) => key,
+            Ok(key) => json!({"result": true, "key": key}).to_string(),
             Err(e) => json_error(&format!("Failed to store bytes: {}", e))
         }
-    }
-
-    pub fn retrieve_bytes(&mut self, key_str: &str) -> Vec<u8> {
-        let guard = match self.backend.lock() {
-            Ok(lock) => lock,
-            Err(_) => return Vec::new()
-        };
-
-        let key = match VaultKey::from_str(key_str) {
-            Ok(k) => k,
-            Err(_) => return Vec::new()
-        };
-
-        guard.binary_vault.retrieve(&key).unwrap_or_default()
     }
 
     pub fn get_field_ptr(&self, index: usize) -> *const dyn getset::ValueType {
@@ -406,19 +385,12 @@ impl AddIn {
 
 impl Drop for AddIn {
     fn drop(&mut self) {
-        // Если есть активное подключение, корректно отключаемся
         if self.initialized {
             if let Ok(guard) = self.backend.lock() {
-                // Закрываем все активные стримы
                 let _ = guard.close_all_streams();
-                
-                // Отключаемся от сервера
                 let _ = guard.disconnect();
             }
             self.initialized = false;
         }
-        
-        // GrpcBackend::drop() автоматически завершит backend поток
-        // когда Arc будет освобожден
     }
 }
