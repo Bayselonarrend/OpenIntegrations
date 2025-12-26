@@ -28,25 +28,27 @@ async fn establish_rustls_connection(
     let uri = address.parse::<http::Uri>()
         .map_err(|e| format!("Invalid URI: {}", e))?;
 
-    let scheme = uri.scheme_str().unwrap_or("https");
     let host = uri.host().ok_or("No host in URI")?;
-    let port = uri.port_u16().unwrap_or(if scheme == "https" { 443 } else { 80 });
+    let port = uri.port_u16().unwrap_or(443);
+
+    // Force https scheme when TLS is enabled
+    let https_address = format!("https://{}:{}", host, port);
 
     let rustls_config = tls_settings.get_rustls_config()
         .map_err(|e| format!("Failed to create rustls config: {}", e))?;
 
     let connector = hyper_rustls::HttpsConnectorBuilder::new()
         .with_tls_config(rustls_config)
-        .https_or_http()
+        .https_only()
         .enable_http1()
         .enable_http2()
         .build();
 
-    let endpoint = Endpoint::from_shared(address.to_string())
+    let endpoint = Endpoint::from_shared(https_address.clone())
         .map_err(|e| format!("Invalid address: {}", e))?;
 
     endpoint
         .connect_with_connector(connector)
         .await
-        .map_err(|e| format!("HTTPS connection failed: {}. Address: {}, Host: {}, Port: {}", e, address, host, port))
+        .map_err(|e| format!("HTTPS connection failed: {}. Address: {}, Host: {}, Port: {}", e, https_address, host, port))
 }

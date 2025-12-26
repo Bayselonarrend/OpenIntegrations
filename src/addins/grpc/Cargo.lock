@@ -925,6 +925,7 @@ name = "opi_grpc"
 version = "0.1.0"
 dependencies = [
  "base64",
+ "bytes",
  "common-binary",
  "common-core",
  "common-tcp",
