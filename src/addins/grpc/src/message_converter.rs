@@ -3,6 +3,7 @@ use prost_reflect::{DynamicMessage, MessageDescriptor, ReflectMessage};
 use common_binary::vault::{BinaryVault, VaultKey};
 use std::str::FromStr;
 use base64::Engine;
+use base64::engine::general_purpose;
 
 pub fn json_to_dynamic_message(binary_vault: &BinaryVault, json_value: &Value, message_desc: &MessageDescriptor) -> Result<DynamicMessage, String> {
     let mut message = DynamicMessage::new(message_desc.clone());
@@ -61,10 +62,12 @@ fn json_value_to_prost_value_scalar(binary_vault: &BinaryVault, json_value: &Val
     match field_desc.kind() {
         Kind::Double => match json_value {
             Value::Number(n) => Ok(ProstValue::F64(n.as_f64().unwrap_or(0.0))),
+            Value::String(s) => Ok(ProstValue::F64(s.parse().unwrap_or(0.0))),
             _ => Err("Expected number for double field".to_string()),
         },
         Kind::Float => match json_value {
             Value::Number(n) => Ok(ProstValue::F32(n.as_f64().unwrap_or(0.0) as f32)),
+            Value::String(s) => Ok(ProstValue::F32(s.parse().unwrap_or(0.0))),
             _ => Err("Expected number for float field".to_string()),
         },
         Kind::Int32 | Kind::Sint32 | Kind::Sfixed32 => match json_value {
@@ -167,12 +170,10 @@ fn prost_value_to_json_value(binary_vault: &BinaryVault, prost_value: &prost_ref
         ProstValue::F64(f) => Ok(json!(f)),
         ProstValue::String(s) => Ok(Value::String(s.clone())),
         ProstValue::Bytes(b) => {
-            use common_binary::vault::BinaryInput;
-            let vault_key = binary_vault.store(BinaryInput::Bytes(b.to_vec()))
-                .map_err(|e| format!("Failed to store bytes in vault: {}", e))?;
-            let mut obj = serde_json::Map::new();
-            obj.insert("BYTES".to_string(), Value::String(vault_key));
-            Ok(Value::Object(obj))
+            let base64_string = general_purpose::STANDARD.encode(b);
+            let mut blob_object = serde_json::Map::new();
+            blob_object.insert("BYTES".to_string(), Value::String(base64_string));
+            Ok(Value::Object(blob_object))
         },
         ProstValue::EnumNumber(n) => {
             if let Kind::Enum(enum_desc) = field_desc.kind() {

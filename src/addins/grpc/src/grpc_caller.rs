@@ -7,6 +7,7 @@ use tonic::metadata::{MetadataValue, MetadataKey, Ascii};
 use prost_reflect::{DescriptorPool, DynamicMessage};
 use prost::Message;
 use common_binary::vault::BinaryVault;
+use crate::identity_codec::IdentityCodec;
 use crate::message_converter::{json_to_dynamic_message, dynamic_message_to_json};
 
 #[derive(serde::Deserialize)]
@@ -81,7 +82,7 @@ pub async fn execute_grpc_call(
     
     let mut client = tonic::client::Grpc::new(ready_channel);
     let response = client
-        .unary(grpc_request, path.parse().unwrap(), tonic::codec::ProstCodec::default())
+        .unary(grpc_request, path.parse().unwrap(), IdentityCodec)
         .await
         .map_err(|e| format!("gRPC call failed: {}", e))?;
 
