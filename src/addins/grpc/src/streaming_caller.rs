@@ -10,6 +10,7 @@ use common_binary::vault::BinaryVault;
 use crate::ack_stream::AckStream;
 use crate::message_converter::{json_to_dynamic_message, dynamic_message_to_json};
 use crate::grpc_caller::{apply_metadata, create_request_message};
+use crate::identity_codec::IdentityCodec;
 use crate::stream_manager::{StreamInfo, StreamManager, StreamMessage};
 
 
@@ -50,7 +51,7 @@ pub async fn start_server_stream(
         .map_err(|e| format!("Failed to ready client: {}", e))?;
     
     let response: Streaming<Vec<u8>> = client
-        .server_streaming(grpc_request, path.parse().unwrap(), tonic::codec::ProstCodec::default())
+        .server_streaming(grpc_request, path.parse().unwrap(), IdentityCodec)
         .await
         .map_err(|e| format!("gRPC server stream failed: {}", e))?
         .into_inner();
@@ -107,7 +108,7 @@ pub async fn start_client_stream(
             .client_streaming(
                 grpc_request,
                 path.parse().unwrap(),
-                tonic::codec::ProstCodec::default(),
+                IdentityCodec,
             )
             .await;
 
@@ -175,7 +176,7 @@ pub async fn start_bidi_stream(
             .streaming(
                 grpc_request,
                 path,
-                tonic::codec::ProstCodec::default()
+                IdentityCodec
             )
             .await;
 
