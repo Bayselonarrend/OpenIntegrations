@@ -3,6 +3,6 @@
     Result = OPI_Bitrix24.GetCalendarSettingsStructure(URL);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "0bad3e69006e9f06006b12e400000001000...";
+    Token = "ed182469006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetCalendarSettingsStructure(URL, Token);

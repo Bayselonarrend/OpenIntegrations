@@ -1,4 +1,4 @@
 ﻿    Токен   = "001.3501506236.091...";
-    IDФайла = "afpeLkSyQg0bUyw4140Kcm6939c3c61bd";
+    IDФайла = "mr07tGTMXmUl8LEzxWKEwO69240bd71bd";
 
     Результат = OPI_VKTeams.ПолучитьИнформациюОФайле(Токен, IDФайла);

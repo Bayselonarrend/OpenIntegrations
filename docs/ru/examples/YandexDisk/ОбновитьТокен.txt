@@ -1,5 +1,5 @@
 ﻿    ClientID     = "cc2ce9d60deb4975be58866d32dbe7aa";
     ClientSecret = "7cc0b903d33e41c1...";
-    RefreshToken = "2:AAA:AAAAAF3KVo4:1:7lDA887FZi3e_EYF:4LGI1j1d3RMVs-4532KZK7ZQbG0F...";
+    RefreshToken = "2:AAA:AAAAAF3KVo4:1:zCVNHTnEV2kCE6wo:rQT_Xf1Kf6xHhRqt43CVdFo_z2gu...";
 
     Результат = OPI_YandexDisk.ОбновитьТокен(ClientID, ClientSecret, RefreshToken);

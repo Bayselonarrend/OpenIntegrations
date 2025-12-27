@@ -35,8 +35,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjUzOTcwNTYsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "6e00366c-d89e-4f38-b036-b6bb11a4cc0f";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjM5NzM2NzQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "1e46c94b-a568-4e1c-87ea-dc424e324f65";
 
     Результат = OPI_CDEK.ПолучитьШтрихкод(Токен, UUID, , Истина); // Ответ сервера с ссылкой
 ```
@@ -71,10 +71,10 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "ec667dcc-372b-435b-820e-3fbc9ef9d18f",
+  "uuid": "e51ce5ec-1bab-4498-ae91-7d8f7adc645c",
   "orders": [
    {
-    "order_uuid": "985b94ab-7abe-4ac7-957b-6d42ea389b0d"
+    "order_uuid": "246461ae-83de-422e-9215-166202bcd93e"
    }
   ],
   "copy_count": 1,
@@ -84,20 +84,20 @@ import TabItem from '@theme/TabItem';
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-12-10T10:38:14+00:00"
+    "date_time": "2025-12-14T20:44:22+03:00"
    },
    {
     "code": "INVALID",
     "name": "Некорректный запрос",
-    "date_time": "2025-12-10T10:38:15+00:00"
+    "date_time": "2025-12-14T20:44:23+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "ef839ed9-3e62-430d-b4ea-3289c64dd243",
+   "request_uuid": "9158570e-75ca-4c01-9578-f86e34fe25f3",
    "type": "CREATE",
-   "date_time": "2025-12-10T10:38:14+00:00",
+   "date_time": "2025-12-14T20:44:22+03:00",
    "state": "INVALID",
    "errors": [
     {
@@ -108,7 +108,7 @@ import TabItem from '@theme/TabItem';
    "warnings": [
     {
      "code": "v2_order_invalid",
-     "message": "Order is invalid 985b94ab-7abe-4ac7-957b-6d42ea389b0d"
+     "message": "Order is invalid 246461ae-83de-422e-9215-166202bcd93e"
     }
    ]
   }

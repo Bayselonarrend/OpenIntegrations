@@ -2154,27 +2154,57 @@ Function ExecuteMethod(Val RedirectCount = 0, Val ErrorCount = 0, Val Forced = F
     EndIf;
 
     If ValueIsFilled(RequestOutputFile) Then
+
+        LogText = StrTemplate("ExecuteMethod: sending request with response written to file %1", RequestOutputFile);
+        AddLog(LogText);
+
         Response = Connection.CallHTTPMethod(RequestMethod, Request, RequestOutputFile);
+
     Else
+
+        AddLog("ExecuteMethod: sending request");
         Response = Connection.CallHTTPMethod(RequestMethod, Request);
+
     EndIf;
+
+    LogText = StrTemplate("ExecuteMethod: response received, code %1", Response.StatusCode);
+    AddLog(LogText);
 
     If ThisIsRedirection(Response) Then
 
         MaximumNumberOfRedirects = GetSetting("MaxRedirects");
 
-        If RedirectCount = MaximumNumberOfRedirects Then
-            Error("ExecuteMethod: the number of redirects has been exceeded");
-            Return ThisObject;
+        If RedirectCount < MaximumNumberOfRedirects Then
+
+            URL = Response.Headers["Location"];
+
+            If ValueIsFilled(URL) Then
+
+                NewRedirectCount = RedirectCount + 1;
+
+                LogText = StrTemplate("ExecuteMethod: redirection %1/%2, moving to %3"
+                    , NewRedirectCount
+                    , MaximumNumberOfRedirects
+                    , URL);
+
+                AddLog(LogText);
+                SetURL(URL);
+                CreateConnection();
+
+                Request.ResourceAddress = RequestAdress;
+
+                ExecuteMethod(NewRedirectCount, ErrorCount, Forced);
+
+            Else
+
+                LogText = StrTemplate("ExecuteMethod: redirection %1, Location missing, termination");
+                AddLog(LogText);
+
+            EndIf;
+
+        Else
+            AddLog("ExecuteMethod: maximum number of redirections reached, termination");
         EndIf;
-
-        URL = Response.Headers["Location"];
-        SetURL(URL);
-
-        CreateConnection();
-        Request.ResourceAddress = RequestAdress;
-
-        ExecuteMethod(RedirectCount + 1, ErrorCount, Forced);
 
     EndIf;
 
@@ -2182,12 +2212,21 @@ Function ExecuteMethod(Val RedirectCount = 0, Val ErrorCount = 0, Val Forced = F
 
         MaximumRetryCount = GetSetting("MaxAttempts");
 
-        If ErrorCount = MaximumRetryCount Then
-            Error("ExecuteMethod: exceeded number of server errors");
-            Return ThisObject;
-        EndIf;
+        If ErrorCount < MaximumRetryCount Then
 
-        ExecuteMethod(RedirectCount, ErrorCount + 1, Forced);
+            NewErrorCount = ErrorCount + 1;
+
+            LogText = StrTemplate("ExecuteMethod: server error, retry attempt %1/%2"
+                , NewErrorCount
+                , MaximumRetryCount);
+
+            AddLog(LogText);
+
+            ExecuteMethod(RedirectCount, NewErrorCount, Forced);
+
+        Else
+            AddLog("ExecuteMethod: maximum number of server errors reached, termination");
+        EndIf;
 
     EndIf;
 

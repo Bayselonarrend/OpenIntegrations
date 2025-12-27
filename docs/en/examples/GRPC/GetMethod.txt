@@ -1,0 +1,11 @@
+﻿    Address = "https://grpcb.in:9001";
+    Scheme  = "https://hut.openintegrations.dev/test_data/grpcbin.proto"; // String, path to file or URL
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Service    = "grpcbin.GRPCBin";
+    Method     = "Index";
+
+    Result = OPI_GRPC.GetMethod(Connection, Service, Method);

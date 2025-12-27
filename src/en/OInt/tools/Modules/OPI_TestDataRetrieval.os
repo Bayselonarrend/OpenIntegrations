@@ -165,6 +165,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("HTTPClient"     , 5);
     Sections.Insert("OpenAI"         , 5);
     Sections.Insert("ReportPortal"   , 5);
+    Sections.Insert("GRPC"           , 5);
 
     Return Sections;
 
@@ -212,6 +213,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("HTTPClient"     , StandardDependencies);
     Sections.Insert("OpenAI"         , StandardDependencies);
     Sections.Insert("ReportPortal"   , StandardDependencies);
+    Sections.Insert("GRPC"           , StandardDependencies);
 
     Return Sections;
 
@@ -254,6 +256,7 @@ Function GetTestTable() Export
     SSH       = "SSH";
     SFTP      = "SFTP";
     GreenMax  = "GreenMax";
+    GRPC      = "GRPC";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -438,6 +441,9 @@ Function GetTestTable() Export
     NewTest(TestTable, "SF_CommonMethods"                    , "Common methods"                  , SFTP);
     NewTest(TestTable, "SF_DirectoryManagement"              , "Directory management"            , SFTP);
     NewTest(TestTable, "SF_FileManagement"                   , "Files management"                , SFTP);
+    NewTest(TestTable, "GR_CommonMethods"                    , "Common methods"                  , GRPC);
+    NewTest(TestTable, "GR_Introspection"                    , "Introspection"                   , GRPC);
+    NewTest(TestTable, "GR_Streaming"                        , "Streaming"                       , GRPC);
 
     Return TestTable;
 
@@ -12718,6 +12724,131 @@ EndFunction
 Function Check_MongoDB_GetDocumentDeletionStructure(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_CreateConnection(Val Result, Val Option)
+
+    If Option    = "Closing" Then
+        ExpectsThat(Result["result"]).Равно(True);
+    ElsIf Option = "Error" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        Result   = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_GRPC.Main");
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_GetServiceList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"].Count()).Равно(1);
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_GetMethodList(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"].Count() > 3).Равно(True);
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_GetMethod(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_ExecuteMethod(Val Result, Val Option, Data = Undefined)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    FieldList = StrSplit("f_bytes,f_bytess", ",");
+    ExpectsThat(OPI_Tools.CompareTwoCollections(Result["message"], Data, FieldList)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_InitializeServerStream(Val Result, Val Option)
+
+    If Option = "Array" Then
+        ExpectsThat(Result.Count() > 0).Равно(True);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_InitializeClientStream(Val Result, Val Option, SendCount = Undefined)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(SendCount).Равно(10);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_InitializeBidirectionalStream(Val Result, Val Option, ResultArray = Undefined)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(ResultArray.Count()).Равно(10);
+
+    For N = 0 To ResultArray.Count() - 1 Do
+        ExpectsThat(ResultArray[N]["f_int32"]).Равно(N + 1);
+    EndDo;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_SendMessage(Val Result, Val Option, Closing = Undefined)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Closing["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_GetMessage(Val Result, Val Option, Closing = Undefined, Data = Undefined)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Closing["result"]).Равно(True);
+
+    FieldList = StrSplit("f_bytes,f_bytess", ",");
+    ExpectsThat(OPI_Tools.CompareTwoCollections(Result["message"], Data, FieldList)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_CloseStream(Val Result, Val Option)
+
+    If Option = "Sending" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_ProcessServerStream(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"].Count()).Равно(3);
 
     Return Result;
 

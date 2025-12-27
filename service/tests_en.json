@@ -6858,5 +6858,95 @@
 "lib": "MongoDB",
 "name": "RevokeRoles",
 "variant": ""
+},
+{
+"lib": "GRPC",
+"name": "CreateConnection",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "CreateConnection",
+"variant": "Closing"
+},
+{
+"lib": "GRPC",
+"name": "CreateConnection",
+"variant": "No TLS"
+},
+{
+"lib": "GRPC",
+"name": "CreateConnection",
+"variant": "Error"
+},
+{
+"lib": "GRPC",
+"name": "ExecuteMethod",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "ExecuteMethod",
+"variant": "Empty"
+},
+{
+"lib": "GRPC",
+"name": "GetServiceList",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "GetMethodList",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "GetMethod",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "InitializeServerStream",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "InitializeServerStream",
+"variant": "Array"
+},
+{
+"lib": "GRPC",
+"name": "InitializeClientStream",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "InitializeBidirectionalStream",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "SendMessage",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "GetMessage",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "CloseStream",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "CloseStream",
+"variant": "Sending"
+},
+{
+"lib": "GRPC",
+"name": "ProcessServerStream",
+"variant": ""
 }
 ]
