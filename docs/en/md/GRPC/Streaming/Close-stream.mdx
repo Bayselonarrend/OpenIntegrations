@@ -1,0 +1,80 @@
+﻿---
+sidebar_position: 7
+description: Close stream  and other functions to work with GRPC in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GRPC]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Close stream 
+ Close stream by ID
+
+
+
+`Function CloseStream(Val Connection, Val StreamID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | - | Arbitrary | &#x2714; | Connection object |
+  | StreamID | - | String | &#x2714; | Stream Identifier |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address = "https://grpcb.in:9001";
+
+    Proto1 = "https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto"; // String, path to file or URL
+    Proto2 = "https://hut.openintegrations.dev/test_data/mt.proto"; // String, path to file or URL
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1); // Primary
+    Scheme.Insert("my_types.proto", Proto2); // For import in primary
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Service = "grpcbin.GRPCBin";
+    Method  = "DummyServerStream";
+
+    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+
+    If Not OPI_GRPC.IsConnector(Connection) Then
+        Raise Connection["error"];
+    EndIf;
+
+    StingsArray = New Array;
+    StingsArray.Add("one");
+    StingsArray.Add("two");
+    StingsArray.Add("three");
+
+    Data = New Map;
+    Data.Insert("f_string" , "Test message");
+    Data.Insert("f_int32"  , 123);
+    Data.Insert("f_bool"   , True);
+    Data.Insert("f_strings", StingsArray);
+    Data.Insert("f_sub"    , New Structure("f_string", "Nested value"));
+
+    Result = OPI_GRPC.InitializeServerStream(Connection, Service, Method, Data);
+
+    If Not Result["result"] Then
+        Raise Result["error"];
+    Else
+        StreamID = Result["streamId"];
+    EndIf;
+
+    Result = OPI_GRPC.CloseStream(Connection, StreamID); // <---
+```
+ 
+
+
+
+

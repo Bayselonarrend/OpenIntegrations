@@ -673,6 +673,63 @@ Function GetOr(Val Collection, Val Field, Val DefaultValue) Export
 
 EndFunction
 
+Function CompareTwoCollections(Val FirstCollection, Val SecondCollection, Val ExcludedFields = Undefined) Export
+
+    If TypeOf(FirstCollection) <> TypeOf(SecondCollection) Then
+        If Not (ThisIsCollection(FirstCollection, True) And ThisIsCollection(SecondCollection, True)) Then
+            Return False;
+        EndIf;
+    EndIf;
+
+    ExcludedList = New ValueList();
+
+    If Not ExcludedFields = Undefined Then
+        OPI_TypeConversion.GetArray(ExcludedFields);
+        ExcludedList.LoadValues(ExcludedFields);
+    EndIf;
+
+    Try
+
+        If ThisIsCollection(FirstCollection, True) Then
+
+            For Each CollectionItem In FirstCollection Do
+
+                If ExcludedList.FindByValue(CollectionItem.Key) <> Undefined Then
+                    Continue;
+                EndIf;
+
+                If Not CompareTwoCollections(CollectionItem.Value, SecondCollection[CollectionItem.Key]) Then
+                    Return False;
+                EndIf;
+
+            EndDo;
+
+        ElsIf ThisIsCollection(FirstCollection) Then
+
+            For N = 0 To FirstCollection.UBound() Do
+
+                If Not CompareTwoCollections(FirstCollection[N], SecondCollection[N]) Then
+                    Return False;
+                EndIf;
+
+            EndDo;
+
+        Else
+
+             If FirstCollection <> SecondCollection Then
+                 Return False;
+             EndIf;
+
+        EndIf;
+
+    Except
+        Return False;
+    EndTry;
+
+    Return True;
+
+EndFunction
+
 #EndRegion
 
 #Region OneScript
