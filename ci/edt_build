@@ -71,12 +71,12 @@ pipeline {
         stage('Update') {
             steps {
                 script {
-                    timeout(time: 2, unit: 'MINUTES') {
+                    timeout(time: 5, unit: 'MINUTES') {
                         bat encoding: 'UTF-8', script: "chcp 65001 >nul && \"${env.ONEC_PATH}1cv8.exe\" DESIGNER /IBName \"${env.IB_RU}\" /LoadConfigFromFiles ./build/OPI_RU -Extension OpenIntegrations"
                         bat encoding: 'UTF-8', script: "chcp 65001 >nul && \"${env.ONEC_PATH}1cv8.exe\" DESIGNER /IBName \"${env.IB_RU}\" /UpdateDBCfg -Extension OpenIntegrations -SessionTerminate force"
                         bat encoding: 'UTF-8', script: "chcp 65001 >nul && \"${env.ONEC_PATH}1cv8.exe\" DESIGNER /IBName \"${env.IB_RU}\" /UpdateDBCfg -SessionTerminate force"
                     }
-                    timeout(time: 2, unit: 'MINUTES') {
+                    timeout(time: 5, unit: 'MINUTES') {
                         bat encoding: 'UTF-8', script: "chcp 65001 >nul && \"${env.ONEC_PATH}1cv8.exe\" DESIGNER /IBName \"${env.IB_EN}\" /LoadConfigFromFiles ./build/OPI_EN -Extension OpenIntegrations"
                         bat encoding: 'UTF-8', script: "chcp 65001 >nul && \"${env.ONEC_PATH}1cv8.exe\" DESIGNER /IBName \"${env.IB_EN}\" /UpdateDBCfg -Extension OpenIntegrations -SessionTerminate force"
                         bat encoding: 'UTF-8', script: "chcp 65001 >nul && \"${env.ONEC_PATH}1cv8.exe\" DESIGNER /IBName \"${env.IB_EN}\" /UpdateDBCfg -SessionTerminate force"
