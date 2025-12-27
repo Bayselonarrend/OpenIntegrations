@@ -34744,7 +34744,7 @@ Procedure GRPC_ExecuteMethod(FunctionParameters)
     Data.Insert("f_bool"   , True);
     Data.Insert("f_enum"   , "ENUM_1");
     Data.Insert("f_bytes"  , File);
-    Data.Insert("f_sub"    , New Structure("f_string", "Nested value"));
+    Data.Insert("f_sub"    , New Structure("f_string" , "Nested value"));
     Data.Insert("f_strings", StingsArray);
     Data.Insert("f_int32s" , NumberArray);
     Data.Insert("f_int64s" , NumberArray);
@@ -34752,7 +34752,7 @@ Procedure GRPC_ExecuteMethod(FunctionParameters)
     Data.Insert("f_bytess" , BinaryDataArray);
     Data.Insert("f_subs"   , StructuresArray);
     Data.Insert("f_bools"  , BoolArray);
-    Data.Insert("f_enums"  , StrSplit("ENUM_1,ENUM_2", ","));
+    Data.Insert("f_enums"  , StrSplit("ENUM_1,ENUM_2" , ","));
 
     Options = New Structure;
     Options.Insert("conn", Connection);
@@ -35016,9 +35016,9 @@ Procedure GRPC_InitializeClientStream(FunctionParameters)
 
             Error = CurrentSend["error"];
 
-            If Error      = "Timeout" Then
+            If Error         = "Timeout" Then
                 Continue;
-            ElsIf Error   = "Closed" Then
+            ElsIf Error      = "Closed" Then
                 FinalMessage = OPI_GRPC.GetMessage(Connection, StreamID);
                 Break;
             Else
@@ -35027,7 +35027,7 @@ Procedure GRPC_InitializeClientStream(FunctionParameters)
 
         Else
 
-            If Counter    = 10 Then
+            If Counter       = 10 Then
                 Completion   = OPI_GRPC.CompleteSend(Connection, StreamID);
                 FinalMessage = OPI_GRPC.GetMessage(Connection, StreamID);
                 Break;

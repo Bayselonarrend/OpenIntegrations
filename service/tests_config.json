@@ -35,5 +35,6 @@
 "ReportPortal": true,
 "HTTPClient": true,
 "BuildCheck": true,
-"MongoDB": true
+"MongoDB": true,
+"GRPC": true
 }

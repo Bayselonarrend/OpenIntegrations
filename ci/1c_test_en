@@ -701,6 +701,23 @@ pipeline {
 				}
 			}
 		}
+		stage('Testing-GRPC') {
+            when {
+                expression { return shouldRunStage('GRPC') }
+            }
+			steps {
+				script {
+					def tests = [
+						['GRPC', './service/yaxunit_conf/en/GRPC.json'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
 
 	}
 	post{

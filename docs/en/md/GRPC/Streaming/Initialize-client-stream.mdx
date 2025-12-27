@@ -85,9 +85,9 @@ import TabItem from '@theme/TabItem';
 
             Error = CurrentSend["error"];
 
-            If Error      = "Timeout" Then
+            If Error         = "Timeout" Then
                 Continue;
-            ElsIf Error   = "Closed" Then
+            ElsIf Error      = "Closed" Then
                 FinalMessage = OPI_GRPC.GetMessage(Connection, StreamID);
                 Break;
             Else
@@ -96,7 +96,7 @@ import TabItem from '@theme/TabItem';
 
         Else
 
-            If Counter    = 10 Then
+            If Counter       = 10 Then
                 Completion   = OPI_GRPC.CompleteSend(Connection, StreamID);
                 FinalMessage = OPI_GRPC.GetMessage(Connection, StreamID);
                 Break;
