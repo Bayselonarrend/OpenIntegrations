@@ -1,0 +1,40 @@
+﻿---
+sidebar_position: 3
+description: Set metadata  and other functions to work with GRPC in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GRPC]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Set metadata 
+ Sets new connection metadata
+
+
+
+`Function SetMetadata(Val Connection, Val Metadata) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | - | Arbitrary | &#x2714; | Existing connection |
+  | Metadata | - | Structure Of KeyAndValue | &#x2714; | Metadata list |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+:::tip
+Replaces the metadata set during connection creation
+:::
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+
+ 
+
+
+
+

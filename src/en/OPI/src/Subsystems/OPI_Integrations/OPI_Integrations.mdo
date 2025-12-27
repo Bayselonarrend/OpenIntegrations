@@ -6,7 +6,6 @@
     <value>Integrations</value>
   </synonym>
   <includeHelpInContents>true</includeHelpInContents>
-  <includeInCommandInterface>true</includeInCommandInterface>
   <content>CommonModule.OPI_Tools</content>
   <content>CommonModule.OPI_Cryptography</content>
   <content>CommonModule.OPI_TypeConversion</content>

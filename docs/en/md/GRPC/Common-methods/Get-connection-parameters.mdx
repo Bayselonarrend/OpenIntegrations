@@ -1,0 +1,39 @@
+﻿---
+sidebar_position: 6
+description: Get connection parameters and other functions to work with GRPC in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GRPC]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get connection parameters
+ Forms a structure of parameters for creating a connection
+
+
+
+`Function GetConnectionParameters(Val Address, Val Proto = Undefined, Val Metadata = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Address | --addr | String | &#x2714; | Connection address (with protocol) |
+  | Proto | --proto | Arbitrary | &#x2716; | Schema or schema structure: Key > file name (for import), Value > schema as a string or file path |
+  | Metadata | --meta | Structure Of KeyAndValue | &#x2716; | Metadata structure, if necessary |
+
+  
+  Returns:  Structure Of KeyAndValue - Connection parameters
+
+:::tip
+Proto file name is used to allow further specification of this Proto in the import of another Proto It does not have to be a real file path. Proto files that are not involved in the import of other Protos can have arbitrary file names
+
+If the Proto value is not an object (a key value collection), it will be interpreted as `{"main.proto": &lt;passed value&gt;}`
+:::
+<br/>
+
+
+
+ 
+
+
+
+

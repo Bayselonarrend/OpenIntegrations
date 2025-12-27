@@ -1,0 +1,41 @@
+﻿---
+sidebar_position: 1
+description: Get service list and other functions to work with GRPC in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GRPC]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get service list
+ Gets a list of available services
+
+
+
+`Function GetServiceList(Val Connection, Val Tls = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --conn | Arbitrary | &#x2714; | Existing connection or connection parameters |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address = "https://grpcb.in:9001";
+    Scheme  = "https://hut.openintegrations.dev/test_data/grpcbin.proto"; // String, path to file or URL
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Result     = OPI_GRPC.GetServiceList(Connection);
+```
+ 
+
+
+
+

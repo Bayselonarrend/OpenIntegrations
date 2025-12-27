@@ -1,6 +1,6 @@
 ﻿    Parameters = GetVKParameters();
     Text       = "NewComment";
-    PostID     = "10796";
+    PostID     = "10501";
     WallID     = Parameters["owner_id"];
 
     Result = OPI_VK.WriteComment(PostID, WallID, Text, Parameters);
