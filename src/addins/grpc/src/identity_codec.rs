@@ -1,5 +1,8 @@
 use bytes::Buf;
 
+// Кастомный кодек нужен потому, что сообщение сериализуется заранее
+// и нужно избегать двойной сериализации в байты, которую делает default кодек
+
 #[derive(Debug, Clone, Copy, Default)]
 pub struct IdentityCodec;
 
