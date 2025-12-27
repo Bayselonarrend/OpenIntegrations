@@ -103,13 +103,13 @@
    "permissionDetails": [
     {
      "permissionType": "file",
-     "role": "owner",
-     "inherited": false
+     "role": "writer",
+     "inherited": true
     },
     {
      "permissionType": "file",
-     "role": "writer",
-     "inherited": true
+     "role": "owner",
+     "inherited": false
     }
    ],
    "deleted": false,
