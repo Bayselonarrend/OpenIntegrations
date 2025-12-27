@@ -38,6 +38,8 @@ pub const METHODS: &[&[u16]] = &[
     name!("CloseStream"),
     name!("CompileProtos"),
     name!("LoadBinaryToVault"),
+    name!("GetSettings"),
+    name!("StoreSettings"),
 ];
 
 pub fn get_params_amount(num: usize) -> usize {
@@ -60,6 +62,8 @@ pub fn get_params_amount(num: usize) -> usize {
         15 => 1, // CloseStream
         16 => 0, // CompileProtos
         17 => 1, // LoadBase64ToVault
+        18 => 0, // GetSettings
+        19 => 1, // StoreSettings
         _ => 0,
     }
 }
@@ -135,12 +139,20 @@ pub fn cal_func(obj: &mut AddIn, num: usize, params: &mut [Variant]) -> Box<dyn 
             let bytes = params[0].get_blob().unwrap_or_default();
             Box::new(obj.store_bytes(Vec::from(bytes)))
         },
+        18 => {
+            Box::new(obj.get_settings())
+        },
+        19 => {
+            let settings = params[0].get_string().unwrap_or("".to_string());
+            Box::new(obj.store_settings(settings))
+        }
         _ => Box::new(false),
     }
 }
 
 pub struct AddIn {
     server_address: String,
+    stored_settings: String,
     tls: Option<TlsSettings>,
     backend: Arc<Mutex<backend_core::GrpcBackend>>,
     initialized: bool,
@@ -150,6 +162,7 @@ impl AddIn {
     pub fn new() -> Self {
         Self {
             server_address: String::new(),
+            stored_settings: String::new(),
             tls: None,
             backend: Arc::new(Mutex::new(backend_core::GrpcBackend::new())),
             initialized: false,
@@ -245,6 +258,15 @@ impl AddIn {
             Ok(_) => json_success(),
             Err(e) => json_error(&e)
         }
+    }
+
+    pub fn get_settings(&self) -> String {
+        self.stored_settings.clone()
+    }
+
+    pub fn store_settings(&mut self, settings: String) -> String {
+        self.stored_settings = settings;
+        json_success()
     }
 
     pub fn set_tls(&mut self, use_tls: bool, accept_invalid_certs: bool, ca_cert_path: &str) -> String {
