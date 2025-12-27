@@ -1,0 +1,137 @@
+def runCommand(String command) {
+    if (isUnix()) {
+        sh(script: command)
+    } else {
+        bat(script: command)
+    }
+}
+
+def runLibraryTest(String libraryName, String configPath) {
+    catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
+        script {
+            runCommand("\"C:/Program Files/1cv8/8.3.18.1208/bin/1cv8c.exe\" /IBConnectionString \"Srvr=\"\"DEVSRV\"\";Ref=\"\"OpenIntegrationsEng\"\";\" /C\"RunUnitTests=${configPath}\"")
+        
+            timeout(time: 60, unit: 'MINUTES') {
+                waitUntil {
+                    fileExists "./test_results/${libraryName}.code"
+                }
+            }
+
+            if (fileExists("./test_results/${libraryName}.report")) {
+                def reportContent = readFile("./test_results/${libraryName}.report")
+                echo "=== ${libraryName} report content ==="
+                echo reportContent
+                echo "=========================="
+            } else {
+                echo "WARNING: ${libraryName}.report file not found"
+            }
+
+            def exitCode = readFile("./test_results/${libraryName}.code").trim().replaceAll("[^0-9]", "")
+            echo "Exit code for ${libraryName}: ${exitCode}"
+            if (exitCode != "0") {
+                error "Tests ${libraryName} failed with exit code: ${exitCode}"
+            }
+        }
+    }
+}
+
+def shouldRunStage(stageName) {
+    try {
+        if (!env.STAGES_CONFIG) {
+            echo "[WARN] STAGES_CONFIG not set. Assuming stage '${stageName}' is ENABLED."
+            return true
+        }
+        def config = readJSON text: env.STAGES_CONFIG
+        def value = config[stageName]
+        if (value == null) {
+            echo "[WARN] Stage '${stageName}' not found in config. Defaulting to DISABLED."
+            return false
+        }
+        return value == true
+    } catch (Exception e) {
+        echo "[ERROR] Failed to parse STAGES_CONFIG: ${e.message}"
+        echo "Raw config: ${env.STAGES_CONFIG}"
+        // Решите: включать stage по умолчанию или нет?
+        return false // или true — по вашему усмотрению
+    }
+}
+
+
+pipeline {
+	agent {
+		label 'windows'
+	}
+	stages {
+
+		stage('Prepare Test Results Directory') {
+            steps {
+                script {
+                    runCommand '''
+                        if exist ".\\test_results" (
+                            rmdir /s /q ".\\test_results"
+                        )
+                        mkdir ".\\test_results"
+                    '''
+                }
+            }
+        }
+
+		stage('Create ReportPortal launch'){
+				steps{
+					bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/rp_start.os "1C:Enterprise"'
+				}
+		}
+
+        stage('Read stages config') {
+            steps {
+                script {
+                    def configText = readFile './service/tests_config.json'
+                    env.STAGES_CONFIG = configText
+                }
+            }
+        }
+
+		stage('Testing-BuildCheck') {
+            when {
+                expression { return shouldRunStage('BuildCheck') }
+            }
+			steps {
+				script {
+					def tests = [
+						['BuildCheck', './service/yaxunit_conf/en/BuildCheck.json'],
+					]
+					for (test in tests) {
+							runLibraryTest(test[0], test[1])
+					}
+				}
+			}
+		}
+		stage('Testing-GRPC') {
+            when {
+                expression { return shouldRunStage('GRPC') }
+            }
+			steps {
+				script {
+					def tests = [
+						['GRPC', './service/yaxunit_conf/en/GRPC.json'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+
+	}
+	post{
+		always{
+			script {
+				catchError() {   
+				    runCommand('oscript ./ci/os/rp_stop.os "en"')
+			    }	
+			}
+		}
+	}
+}

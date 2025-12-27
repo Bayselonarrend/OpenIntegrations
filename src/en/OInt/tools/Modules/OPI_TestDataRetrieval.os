@@ -13252,7 +13252,7 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
 
         Value = Value["Address"];
 
-    ElsIf AddInName = "OPI_RCON" Then
+    ElsIf AddInName = "OPI_RCON" Or AddInName = "OPI_GRPC" Then
 
         Value = Value.GetSettings();
         OPI_TypeConversion.GetKeyValueCollection(Value);

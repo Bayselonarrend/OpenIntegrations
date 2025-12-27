@@ -820,6 +820,25 @@ pipeline {
 				}
 			}
 		}
+		stage('Testing-GRPC') {
+            when {
+                expression { return shouldRunStage('GRPC') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'GR_ОсновныеМетоды'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'GR_Интроспекция'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os', 'GR_Стриминг'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
 
 	}
 	post{
