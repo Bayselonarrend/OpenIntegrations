@@ -33,16 +33,16 @@ Method at API documentation: [task.commentitem.update](https://dev.1c-bitrix.ru/
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID    = "9122";
-    CommentID = "71338";
+    TaskID    = "8772";
+    CommentID = "20334";
 
     Text = "The task has been changed, do not split up";
 
     Result = OPI_Bitrix24.UpdateTaskComment(URL, TaskID, CommentID, Text);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "0bad3e69006e9f06006b12e400000001000...";
-    CommentID = "71340";
+    Token     = "ed182469006e9f06006b12e400000001000...";
+    CommentID = "20336";
 
     Text = "The task has been changed, let's split up";
 

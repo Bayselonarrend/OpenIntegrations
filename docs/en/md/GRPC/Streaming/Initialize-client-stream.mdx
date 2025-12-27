@@ -1,0 +1,113 @@
+﻿---
+sidebar_position: 2
+description: Initialize client stream  and other functions to work with GRPC in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GRPC]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Initialize client stream 
+ Initializes a new client stream
+
+
+
+`Function InitializeClientStream(Val Connection, Val Service, Val Method, Val Timeout = 10000) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | - | Arbitrary | &#x2714; | Connection object |
+  | Service | - | String | &#x2714; | Service name |
+  | Method | - | String | &#x2714; | Method name |
+  | Timeout | - | Number | &#x2716; | Timeout (in ms) |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address = "https://grpcb.in:9001";
+
+    Proto1 = "https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto"; // String, path to file or URL
+    Proto2 = "https://hut.openintegrations.dev/test_data/mt.proto"; // String, path to file or URL
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1); // Primary
+    Scheme.Insert("my_types.proto", Proto2); // For import in primary
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Service = "grpcbin.GRPCBin";
+    Method  = "DummyClientStream";
+
+    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+
+    If Not OPI_GRPC.IsConnector(Connection) Then
+        Raise Connection["error"];
+    EndIf;
+
+    StingsArray = New Array;
+    StingsArray.Add("one");
+    StingsArray.Add("two");
+    StingsArray.Add("three");
+
+    Data = New Map;
+    Data.Insert("f_string" , "Test message");
+    Data.Insert("f_int32"  , 123);
+    Data.Insert("f_bool"   , True);
+    Data.Insert("f_strings", StingsArray);
+    Data.Insert("f_sub"    , New Structure("f_string", "Nested value"));
+
+    Result = OPI_GRPC.InitializeClientStream(Connection, Service, Method); // <---
+
+    If Not Result["result"] Then
+        Raise Result["error"];
+    Else
+        StreamID = Result["streamId"];
+    EndIf;
+
+    FinalMessage = Undefined;
+
+    Counter = 0;
+    While True Do
+
+        CurrentSend = OPI_GRPC.SendMessage(Connection, StreamID, Data);
+        Counter     = Counter + 1;
+
+        If Not CurrentSend["result"] Then
+
+            Error = CurrentSend["error"];
+
+            If Error      = "Timeout" Then
+                Continue;
+            ElsIf Error   = "Closed" Then
+                FinalMessage = OPI_GRPC.GetMessage(Connection, StreamID);
+                Break;
+            Else
+                Raise StrTemplate("%1 (sent messages %2)", Error, Counter);
+            EndIf;
+
+        Else
+
+            If Counter    = 10 Then
+                Completion   = OPI_GRPC.CompleteSend(Connection, StreamID);
+                FinalMessage = OPI_GRPC.GetMessage(Connection, StreamID);
+                Break;
+            EndIf;
+
+        EndIf;
+
+    EndDo;
+```
+ 
+
+
+
+
