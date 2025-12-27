@@ -1,7 +1,7 @@
 ﻿{
  "result": [
   {
-   "ID": "48826",
+   "ID": "48880",
    "NAME": "Картинка2.jpg",
    "CODE": null,
    "STORAGE_ID": "3",
@@ -9,19 +9,19 @@
    "PARENT_ID": "3",
    "DELETED_TYPE": "0",
    "GLOBAL_CONTENT_VERSION": "1",
-   "FILE_ID": "33158",
+   "FILE_ID": "33218",
    "SIZE": "2114023",
-   "CREATE_TIME": "2025-12-14T20:38:03+03:00",
-   "UPDATE_TIME": "2025-12-14T20:38:03+03:00",
+   "CREATE_TIME": "2025-12-28T02:10:12+03:00",
+   "UPDATE_TIME": "2025-12-28T02:10:12+03:00",
    "DELETE_TIME": null,
    "CREATED_BY": "1",
    "UPDATED_BY": "1",
    "DELETED_BY": "0",
-   "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=c5033f69006e9f06006b12e4000000010000078292a55cff811d45291b236121048f1c&token=disk%7CaWQ9NDg4MjYmXz1NZ29iMFdiekJkRTVkYUpCM01DdE5wYUVzazNya1FwWg%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EZzRNalltWHoxTloyOWlNRmRpZWtKa1JUVmtZVXBDTTAxRGRFNXdZVVZ6YXpOeWExRndXZz09fGM1MDMzZjY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3ODI5MmE1NWNmZjgxMWQ0NTI5MWIyMzYxMjEwNDhmMWMi.dbn28d9Pq8W7RJzSoxWP8Jc7h1zricmlIfOGzZmxcxg%3D",
+   "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=1a755069006e9f06006b12e400000001000007871b5ee5e485d74c40e5feab46ac83e0&token=disk%7CaWQ9NDg4ODAmXz1rMmljQkE3ZEYyU1VQdk14R2podlBlRUt1d2kzcTNIMg%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EZzRPREFtWHoxck1tbGpRa0UzWkVZeVUxVlFkazE0UjJwb2RsQmxSVXQxZDJremNUTklNZz09fDFhNzU1MDY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3ODcxYjVlZTVlNDg1ZDc0YzQwZTVmZWFiNDZhYzgzZTAi.51LOE6xT9bqWxru2TJmj6KTP%2FfAsS9JOKjktGnLDy6s%3D",
    "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Картинка2.jpg"
   },
   {
-   "ID": "48828",
+   "ID": "48882",
    "NAME": "Картинка1.jpg",
    "CODE": null,
    "STORAGE_ID": "3",
@@ -29,27 +29,27 @@
    "PARENT_ID": "3",
    "DELETED_TYPE": "0",
    "GLOBAL_CONTENT_VERSION": "1",
-   "FILE_ID": "33160",
+   "FILE_ID": "33220",
    "SIZE": "805189",
-   "CREATE_TIME": "2025-12-14T20:38:04+03:00",
-   "UPDATE_TIME": "2025-12-14T20:38:04+03:00",
+   "CREATE_TIME": "2025-12-28T02:10:13+03:00",
+   "UPDATE_TIME": "2025-12-28T02:10:13+03:00",
    "DELETE_TIME": null,
    "CREATED_BY": "1",
    "UPDATED_BY": "1",
    "DELETED_BY": "0",
-   "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=c5033f69006e9f06006b12e4000000010000078292a55cff811d45291b236121048f1c&token=disk%7CaWQ9NDg4MjgmXz1OU3VJZW9WOEJlUWthYlU2ZGh0SjZIWGRqSkNIUDZkcA%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EZzRNamdtWHoxT1UzVkpaVzlXT0VKbFVXdGhZbFUyWkdoMFNqWklXR1JxU2tOSVVEWmtjQT09fGM1MDMzZjY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3ODI5MmE1NWNmZjgxMWQ0NTI5MWIyMzYxMjEwNDhmMWMi.1JI0a4vGlc3jRkUBmcGPcUhk7TZ8PQGtTVWyO%2BbFzzo%3D",
+   "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=1a755069006e9f06006b12e400000001000007871b5ee5e485d74c40e5feab46ac83e0&token=disk%7CaWQ9NDg4ODImXz1yUk5xempPdUhwOGF3MDQ3bzZPZWpXQjJEOFpXOEpQUw%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EZzRPREltWHoxeVVrNXhlbXBQZFVod09HRjNNRFEzYnpaUFpXcFhRakpFT0ZwWE9FcFFVdz09fDFhNzU1MDY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3ODcxYjVlZTVlNDg1ZDc0YzQwZTVmZWFiNDZhYzgzZTAi.L%2F2sdz4ZX1%2BNdrsO7nZWGGEudLG9zON72OLmroQeGY4%3D",
    "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Картинка1.jpg"
   }
  ],
  "total": 2,
  "time": {
-  "start": 1765733885,
-  "finish": 1765733885.39733,
-  "duration": 0.397332906723022,
+  "start": 1766877014,
+  "finish": 1766877014.12668,
+  "duration": 0.12667989730835,
   "processing": 0,
-  "date_start": "2025-12-14T20:38:05+03:00",
-  "date_finish": "2025-12-14T20:38:05+03:00",
-  "operating_reset_at": 1765734485,
+  "date_start": "2025-12-28T02:10:14+03:00",
+  "date_finish": "2025-12-28T02:10:14+03:00",
+  "operating_reset_at": 1766877614,
   "operating": 0
  }
 }

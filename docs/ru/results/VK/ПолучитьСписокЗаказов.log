@@ -69,7 +69,7 @@
      "item_type": 0,
      "is_owner": true,
      "is_adult": false,
-     "thumb_photo": "https://sun56-2.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/wosvBQJa9bQ.jpg?crop=0,0,1,1&size=0x400&quality=95&sign=6068bf9db412cd491d405a90737e5208&c_uniq_tag=k-olNZ8Ykr5YbvQQiBDDJlj5UeQvopai5F2oAP29As8",
+     "thumb_photo": "https://sun9-32.userapi.com/impg/XRrzu8dbsPmwF35EnWBibiQ-Sgo7O5rgWY4fUg/wosvBQJa9bQ.jpg?size=0x400&quality=95&background=ffffff&crop=0.084,0,0.833,1&sign=f7b75b6331f5b6bb3541894e0d8c6ad3&c_uniq_tag=XzE_g5H4q_K98uPa2Swq6SxC25lon5ayBfQeQ62ObtM&type=market_thumb",
      "cart_quantity": 0,
      "sku": "12 345",
      "reject_info": {
@@ -155,7 +155,7 @@
       }
      ],
      "text": "",
-     "web_view_token": "36c2d31106aa11a966",
+     "web_view_token": "99820caaa0a3df7836",
      "has_tags": false,
      "orig_photo": {
       "height": 1024,

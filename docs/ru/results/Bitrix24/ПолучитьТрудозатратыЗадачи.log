@@ -1,24 +1,24 @@
 ﻿{
  "result": {
-  "ID": "3362",
-  "TASK_ID": "9136",
+  "ID": "3366",
+  "TASK_ID": "9146",
   "USER_ID": "10",
   "COMMENT_TEXT": "Трудозатраты по обработке",
   "SECONDS": "7200",
   "MINUTES": "120",
   "SOURCE": "2",
-  "CREATED_DATE": "2025-11-14T20:38:57+03:00",
+  "CREATED_DATE": "2025-11-28T02:11:08+03:00",
   "DATE_START": "",
   "DATE_STOP": ""
  },
  "time": {
-  "start": 1765733938,
-  "finish": 1765733938.28912,
-  "duration": 0.289114952087402,
+  "start": 1766877069,
+  "finish": 1766877069.71604,
+  "duration": 0.716037034988403,
   "processing": 0,
-  "date_start": "2025-12-14T20:38:58+03:00",
-  "date_finish": "2025-12-14T20:38:58+03:00",
-  "operating_reset_at": 1765734538,
+  "date_start": "2025-12-28T02:11:09+03:00",
+  "date_finish": "2025-12-28T02:11:09+03:00",
+  "operating_reset_at": 1766877669,
   "operating": 0
  }
 }
