@@ -103,5 +103,7 @@
   <commonModules>CommonModule.OPI_Тесты</commonModules>
   <commonModules>CommonModule.OPI_ТестыCLI</commonModules>
   <commonModules>CommonModule.OPI_BuildHash</commonModules>
+  <commonModules>CommonModule.OPI_Redis</commonModules>
+  <commonModules>CommonModule.OPI_RedisТесты</commonModules>
   <dataProcessors>DataProcessor.OPI_HTTPКлиент</dataProcessors>
 </mdclass:Configuration>

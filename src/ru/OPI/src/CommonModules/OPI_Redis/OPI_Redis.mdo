@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="f7be9be0-f7dd-4653-8db5-d9d3f4883ed1">
+  <name>OPI_Redis</name>
+  <synonym>
+    <key>ru</key>
+    <value>Redis (ОПИ)</value>
+  </synonym>
+  <comment>Модуль для работы с Redis из набора ОПИ</comment>
+  <server>true</server>
+  <externalConnection>true</externalConnection>
+  <clientOrdinaryApplication>true</clientOrdinaryApplication>
+</mdclass:CommonModule>
