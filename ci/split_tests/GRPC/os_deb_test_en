@@ -1,0 +1,160 @@
+def runCommand(String command) {
+    if (isUnix()) {
+        sh(script: command)
+    } else {
+        bat(script: command)
+    }
+}
+
+pipeline {
+    agent {
+        label 'Deb-Agent'  // Имя или метка агента
+    }
+	stages {
+
+        stage('Read stages config') {
+            steps {
+                script {
+                    def configText = readFile './service/tests_config.json'
+                    env.STAGES_CONFIG = configText
+                }
+            }
+        }
+
+		stage('Remove OInt from OneScript Lib') {
+			steps {
+				script {
+					try {
+						// Удаление каталога /opt/onescript/lib/oint, если существует
+						sh '''
+							DIR_PATH="/opt/onescript/lib/oint"
+
+							if [ -d "$DIR_PATH" ]; then
+								echo "Каталог oint найден. Удаляем..."
+								rm -rf "$DIR_PATH"
+								echo "Каталог oint успешно удален."
+							else
+								echo "Каталог oint не найден. Пропускаем удаление."
+							fi
+						'''
+
+						// Проверяем, что каталог действительно удален
+						sh '''
+							DIR_PATH="/opt/onescript/lib/oint"
+
+							if [ -d "$DIR_PATH" ]; then
+								echo "Ошибка: Каталог oint всё ещё существует после попытки удаления!"
+								exit 1
+							else
+								echo "Проверка: Каталог oint отсутствует после удаления."
+							fi
+						'''
+					} catch (Exception e) {
+						echo "Произошла ошибка при удалении каталога oint: ${e.getMessage()}"
+						currentBuild.result = 'FAILURE'
+						error("Удаление каталога oint завершено с ошибкой.")
+					}
+				}
+			}
+		}
+
+      	stage('Prepare'){
+         		steps{
+					sh 'cd ./src/en/OInt && opm build && opm install oint-1.31.0.ospx && rm oint-1.31.0.ospx'
+            		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+              			sh 'gpg --quiet --batch --yes --decrypt --passphrase="$GPGKEY" --output ./data.json ./data.json.gpg'
+            		}
+         		}
+      	}
+		stage('Create ReportPortal launch'){
+				steps{
+					sh 'oscript ./ci/os/rp_start.os'
+				}
+		}
+
+		stage('Testing-BuildCheck') {
+            when {
+                expression { return shouldRunStage('BuildCheck') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'CheckIBToLastBuildCompliance'],
+					]
+					for (test in tests) {
+							runLibraryTest(test[0], test[1])
+					}
+				}
+			}
+		}
+		stage('Testing-GRPC') {
+            when {
+                expression { return shouldRunStage('GRPC') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GR_CommonMethods'],
+						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GR_Introspection'],
+						['./src/en/OInt/tests/Modules/internal/OPI_Tests.os', 'GR_Streaming'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+
+	}
+	post{
+		always{
+			script {
+				catchError() {   
+				    runCommand('oscript ./ci/os/rp_stop.os "en"')
+			    }
+				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+					sh "git config user.email vitaly.the.alpaca@gmail.com"
+					sh 'git config user.name "Vitaly the Alpaca (bot)"'
+					sh "git config --global core.ignorecase true"
+					sh "git add ."
+					sh 'git commit -m "Test data update (Jenkins)"'
+					sh "git push origin HEAD:main"
+				}
+			}
+		}
+	}
+}
+
+def shouldRunStage(stageName) {
+    try {
+        if (!env.STAGES_CONFIG) {
+            echo "[WARN] STAGES_CONFIG not set. Assuming stage '${stageName}' is ENABLED."
+            return true
+        }
+        def config = readJSON text: env.STAGES_CONFIG
+        def value = config[stageName]
+        if (value == null) {
+            echo "[WARN] Stage '${stageName}' not found in config. Defaulting to DISABLED."
+            return false
+        }
+        return value == true
+    } catch (Exception e) {
+        echo "[ERROR] Failed to parse STAGES_CONFIG: ${e.message}"
+        echo "Raw config: ${env.STAGES_CONFIG}"
+        // Решите: включать stage по умолчанию или нет?
+        return false // или true — по вашему усмотрению
+    }
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    try {
+        echo "Executing: 1testrunner -run \"${configPath}\" \"${libraryName}\""
+        runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
+        echo "Test ${libraryName} completed successfully"
+    } catch (Exception e) {
+        echo "ERROR in test ${libraryName}: ${e.getMessage()}"
+        throw e 
+    }
+}

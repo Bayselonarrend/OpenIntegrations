@@ -1,0 +1,230 @@
+def runCommand(String command) {
+    if (isUnix()) {
+        sh(script: command)
+    } else {
+        bat(script: command)
+    }
+}
+
+pipeline {
+	agent {
+		label 'windows'
+	}
+	stages {
+
+        stage('Read stages config') {
+            steps {
+                script {
+                    def configText = readFile './service/tests_config.json'
+                    env.STAGES_CONFIG = configText
+                }
+            }
+        }
+
+		stage('Decrypt Data') {
+            steps {
+                powershell encoding: 'UTF-8', script:'cd ./src/en/OInt; opm build; opm install oint-1.31.0.ospx; del oint-1.31.0.ospx'
+                withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+                    bat encoding: 'UTF-8', script:'gpg --quiet --batch --yes --decrypt --passphrase="%GPGKEY%" --output ./data.json ./data.json.gpg'
+                }
+            }
+        }
+
+        stage('Remove oint.bat if exists') {
+            steps {
+                powershell encoding: 'UTF-8', script: '''
+                    $batFile = "C:\\Program Files\\OneScript\\bin\\oint.bat"
+                    if (Test-Path $batFile) {
+                        Remove-Item -Path $batFile -Force
+                        Write-Host "Файл oint.bat удален."
+                    } else {
+                        Write-Host "Файл oint.bat не найден, пропускаем удаление."
+                    }
+                '''
+
+                // Проверяем, что файл действительно удален
+                powershell encoding: 'UTF-8', script: '''
+                    $batFile = "C:\\Program Files\\OneScript\\bin\\oint.bat"
+                    if (Test-Path $batFile) {
+                        Write-Error "Ошибка: Файл oint.bat не удален!"
+                        exit 1
+                    } else {
+                        Write-Host "Проверка: oint.bat успешно удален или отсутствовал."
+                    }
+                '''
+            }
+        }
+
+        stage('Uninstall OInt if installed') {
+            steps {
+                powershell encoding: 'UTF-8', script: '''
+                    $uninstallerPath = "C:\\Program Files (x86)\\OInt\\unins000.exe"
+                    if (Test-Path $uninstallerPath) {
+                        Write-Host "OInt найден. Запускаем удаление..."
+                        Start-Process -FilePath $uninstallerPath -ArgumentList "/VERYSILENT /NORESTART" -Wait
+                        Write-Host "Удаление OInt завершено."
+                    } else {
+                        Write-Host "OInt не установлен. Пропускаем этап удаления."
+                    }
+                '''
+
+                // Проверяем, что oint.bat в C:\Program Files (x86)\OInt\bin\oint.bat удален
+                powershell encoding: 'UTF-8', script: '''
+                    $batFile = "C:\\Program Files (x86)\\OInt\\bin\\oint.bat"
+                    if (Test-Path $batFile) {
+                        Write-Error "Ошибка: oint.bat всё ещё существует после uninstall!"
+                        exit 1
+                    } else {
+                        Write-Host "Проверка: oint.bat после uninstall отсутствует."
+                    }
+                '''
+            }
+        }
+
+        stage('Prepare Download Dir') {
+            steps {
+                bat 'if not exist "%USERPROFILE%\\Downloads" mkdir "%USERPROFILE%\\Downloads"'
+            }
+        }
+
+        stage('Download Installer') {
+            steps {
+                powershell encoding: 'UTF-8', script: '''
+                    $url = "https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.31.0/oint_1.31.0_installer_en.exe "
+                    $output = "$env:USERPROFILE\\Downloads\\oint_installer.exe"
+                    Invoke-WebRequest -Uri $url -OutFile $output
+                    Write-Host "Инсталлер скачан в: $output"
+                '''
+            }
+        }
+
+        stage('Install OInt') {
+            steps {
+                powershell encoding: 'UTF-8', script: '''
+                    $installerPath = "$env:USERPROFILE\\Downloads\\oint_installer.exe"
+                    Write-Host "Запускаем установку: $installerPath"
+                    Start-Process -FilePath $installerPath -ArgumentList "/VERYSILENT /NORESTART" -NoNewWindow -Wait
+                    Write-Host "Установка завершена."
+                '''
+            }
+        }
+
+        stage('Verify Installation') {
+            steps {
+                // Проверяем наличие oint.bat в C:\Program Files (x86)\OInt\bin\
+                powershell encoding: 'UTF-8', script: '''
+                    $batFile = "C:\\Program Files (x86)\\OInt\\bin\\oint.bat"
+                    if (-not (Test-Path $batFile)) {
+                        Write-Error "Ошибка: oint.bat не найден после установки!"
+                        exit 1
+                    } else {
+                        Write-Host "Проверка: oint.bat найден после установки."
+                    }
+                '''
+
+                // Проверяем, что where oint выводит нужный путь
+                powershell encoding: 'UTF-8', script: '''
+                    $result = (Get-Command oint -ErrorAction SilentlyContinue).Source
+                    $expectedPath = "C:\\Program Files (x86)\\OInt\\bin\\oint.bat"
+
+                    if ($result -ne $expectedPath) {
+                        Write-Error "Ошибка: Команда 'where oint' указывает не на тот путь: $result"
+                        exit 1
+                    } else {
+                        Write-Host "Проверка: 'where oint' указывает на правильный путь: $result"
+                    }
+                '''
+            }
+        }
+        stage('Create ReportPortal launch'){
+				steps{
+					bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/rp_start.os "CLI"'
+				}
+		}
+
+		stage('Testing-BuildCheck') {
+            when {
+                expression { return shouldRunStage('BuildCheck') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'CheckIBToLastBuildCompliance'],
+					]
+					for (test in tests) {
+							runLibraryTest(test[0], test[1])
+					}
+				}
+			}
+		}
+		stage('Testing-GRPC') {
+            when {
+                expression { return shouldRunStage('GRPC') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GR_CommonMethods'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GR_Introspection'],
+						['./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os', 'GR_Streaming'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+
+	}
+	post{
+		always{
+			script {
+                catchError() {   
+				    runCommand('oscript ./ci/os/rp_stop.os "en"')
+			    }
+				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+					bat "git config user.email vitaly.the.alpaca@gmail.com"
+					bat 'git config user.name "Vitaly the Alpaca (bot)"'
+					bat "git config --global core.ignorecase true"
+					bat "git add ."
+					bat 'git commit -m "Test data update (Jenkins)"'
+					bat "git push origin HEAD:main"
+				}
+			}
+		}
+	}
+}
+
+def shouldRunStage(stageName) {
+    try {
+        if (!env.STAGES_CONFIG) {
+            echo "[WARN] STAGES_CONFIG not set. Assuming stage '${stageName}' is ENABLED."
+            return true
+        }
+        def config = readJSON text: env.STAGES_CONFIG
+        def value = config[stageName]
+        if (value == null) {
+            echo "[WARN] Stage '${stageName}' not found in config. Defaulting to DISABLED."
+            return false
+        }
+        return value == true
+    } catch (Exception e) {
+        echo "[ERROR] Failed to parse STAGES_CONFIG: ${e.message}"
+        echo "Raw config: ${env.STAGES_CONFIG}"
+        // Решите: включать stage по умолчанию или нет?
+        return false // или true — по вашему усмотрению
+    }
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    try {
+        echo "Executing: 1testrunner -run \"${configPath}\" \"${libraryName}\""
+        runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
+        echo "Test ${libraryName} completed successfully"
+    } catch (Exception e) {
+        echo "ERROR in test ${libraryName}: ${e.getMessage()}"
+        throw e 
+    }
+}

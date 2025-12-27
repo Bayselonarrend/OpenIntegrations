@@ -75,6 +75,9 @@ Function CreateConnection(Val Parameters, Val Tls = Undefined) Export
     Connector               = OPI_AddIns.GetAddIn("GRPC");
     Connector.ServerAddress = String(Address);
 
+    ParametersString = OPI_Tools.JSONString(Parameters);
+    Connector.StoreSettings(ParametersString);
+
     Tls = OPI_AddIns.SetTls(Connector, Tls);
 
     If Not OPI_Tools.GetOr(Tls, "result", False) Then
@@ -496,7 +499,7 @@ Function SendMessage(Val Connection, Val StreamID, Val Request) Export
     OPI_TypeConversion.GetLine(StreamID);
 
     ProcessedRequest = ProcessRequestBeforeSending(Connection, Request);
-    ProcessedRequest    = OPI_Tools.JSONString(ProcessedRequest);
+    ProcessedRequest = OPI_Tools.JSONString(ProcessedRequest);
 
     Result = Connection.SendMessage(StreamID, ProcessedRequest);
     Result = OPI_Tools.JsonToStructure(Result);

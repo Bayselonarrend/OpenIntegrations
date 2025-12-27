@@ -1,0 +1,150 @@
+def runCommand(String command) {
+    if (isUnix()) {
+        sh(script: command)
+    } else {
+        bat(script: command)
+    }
+}
+
+pipeline {
+    agent {
+        label 'Rpm-Agent'  // Имя или метка агента
+    }
+	stages {
+
+        stage('Read stages config') {
+            steps {
+                script {
+                    def configText = readFile './service/tests_config.json'
+                    env.STAGES_CONFIG = configText
+                }
+            }
+        }
+
+        stage('Remove oint') {
+            steps {
+                script {
+                    // Удаляем oint, если он установлен
+                    sh 'rpm -e oint || echo "oint not installed"'
+                }
+            }
+        }
+
+        stage('Download oint package') {
+            steps {
+                script {
+                    // Скачиваем новый rpm-пакет oint
+                    sh 'wget -O oint-1.31.0-1.noarch_ru.rpm https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.31.0/oint-1.31.0-1.noarch_ru.rpm '
+                }
+            }
+        }
+
+        stage('Install oint package') {
+            steps {
+                script {
+                    // Устанавливаем скаченный пакет
+                    sh 'rpm -ivh --replacepkgs oint-1.31.0-1.noarch_ru.rpm'
+                }
+            }
+        }
+
+      	stage('Prepare'){
+         		steps{
+                    sh 'cd ./src/ru/OInt && opm build && opm install oint-1.31.0.ospx && rm oint-1.31.0.ospx'
+            		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+              			sh 'gpg --quiet --batch --yes --decrypt --passphrase="$GPGKEY" --output ./data.json ./data.json.gpg'
+            		}
+         		}
+      	}
+        stage('Create ReportPortal launch'){
+				steps{
+					sh 'oscript ./ci/os/rp_start.os "CLI"'
+				}
+		}
+
+		stage('Testing-BuildCheck') {
+            when {
+                expression { return shouldRunStage('BuildCheck') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
+					]
+					for (test in tests) {
+							runLibraryTest(test[0], test[1])
+					}
+				}
+			}
+		}
+		stage('Testing-GRPC') {
+            when {
+                expression { return shouldRunStage('GRPC') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GR_ОсновныеМетоды'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GR_Интроспекция'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GR_Стриминг'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+
+	}
+	post{
+		always{
+			script {
+                catchError() {   
+				    runCommand('oscript ./ci/os/rp_stop.os "ru"')
+			    }
+				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+					sh "git config user.email vitaly.the.alpaca@gmail.com"
+					sh 'git config user.name "Vitaly the Alpaca (bot)"'
+					sh "git config --global core.ignorecase true"
+					sh "git add ."
+					sh 'git commit -m "Test data update (Jenkins)"'
+					sh "git push origin HEAD:main"
+				}
+			}
+		}
+	}
+}
+
+def shouldRunStage(stageName) {
+    try {
+        if (!env.STAGES_CONFIG) {
+            echo "[WARN] STAGES_CONFIG not set. Assuming stage '${stageName}' is ENABLED."
+            return true
+        }
+        def config = readJSON text: env.STAGES_CONFIG
+        def value = config[stageName]
+        if (value == null) {
+            echo "[WARN] Stage '${stageName}' not found in config. Defaulting to DISABLED."
+            return false
+        }
+        return value == true
+    } catch (Exception e) {
+        echo "[ERROR] Failed to parse STAGES_CONFIG: ${e.message}"
+        echo "Raw config: ${env.STAGES_CONFIG}"
+        // Решите: включать stage по умолчанию или нет?
+        return false // или true — по вашему усмотрению
+    }
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    try {
+        echo "Executing: 1testrunner -run \"${configPath}\" \"${libraryName}\""
+        runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
+        echo "Test ${libraryName} completed successfully"
+    } catch (Exception e) {
+        echo "ERROR in test ${libraryName}: ${e.getMessage()}"
+        throw e 
+    }
+}
