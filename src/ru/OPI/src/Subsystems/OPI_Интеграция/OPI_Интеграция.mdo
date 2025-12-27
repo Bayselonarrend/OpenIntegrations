@@ -6,7 +6,6 @@
     <value>Интеграция</value>
   </synonym>
   <includeHelpInContents>true</includeHelpInContents>
-  <includeInCommandInterface>true</includeInCommandInterface>
   <content>CommonModule.OPI_Инструменты</content>
   <content>CommonModule.OPI_Криптография</content>
   <content>CommonModule.OPI_ПреобразованиеТипов</content>
