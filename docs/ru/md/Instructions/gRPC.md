@@ -6,4 +6,4 @@ keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, 
 
 <img src={require('../../static/img/APIs/GRPC.png').default} width='64px' />
 
-# GRPC
+# gRPC
