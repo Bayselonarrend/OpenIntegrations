@@ -152,20 +152,22 @@ EndFunction
 // Map Of KeyAndValue - Processing result
 Function SetMetadata(Val Connection, Val Metadata) Export
 
-    If IsConnector(Connection) Then
+    If Not IsConnector(Connection) Then
 
-        OPI_TypeConversion.GetKeyValueCollection(Metadata);
+        ErrorMap = New Map;
+        ErrorMap.Insert("result", False);
+        ErrorMap.Insert("error" , "Implicit connection opening is senseless in this case");
 
-        MetadataAsString = OPI_Tools.JSONString(Metadata);
-
-        Result = Connection.SetMetadata(MetadataAsString);
-        Result = OPI_Tools.JsonToStructure(Result);
-
-    Else
-
-        Result = New Structure("result,error", False, "Invalid connection object passed");
+        Return ErrorMap;
 
     EndIf;
+
+    OPI_TypeConversion.GetKeyValueCollection(Metadata);
+
+    MetadataAsString = OPI_Tools.JSONString(Metadata);
+
+    Result = Connection.SetMetadata(MetadataAsString);
+    Result = OPI_Tools.JsonToStructure(Result);
 
     Return Result;
 
@@ -683,6 +685,86 @@ Function ProcessServerStream(Val Connection
     ResultMap.Insert("data"  , MessagesArray);
 
     Return ResultMap;
+
+EndFunction
+
+// Process client stream
+// Initializes client thread, passes message array, and receives final response
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection parameters - conn
+// Service - String - Service name - service
+// Method - String - Method name - method
+// Requests - Array of Structure - Request data array or single request - data
+// Timeout - Number - Timeout for individual operation (in ms)) - tout
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function ProcessClientStream(Val Connection
+    , Val Service
+    , Val Method
+    , Val Requests
+    , Val Timeout = 10000
+    , Val Tls = Undefined) Export
+
+    If IsConnector(Connection) Then
+        CloseConnection = False;
+        Connector       = Connection;
+    Else
+        CloseConnection = True;
+        Connector       = CreateConnection(Connection, Tls);
+    EndIf;
+
+    If Not IsConnector(Connector) Then
+        Return Connector;
+    EndIf;
+
+    Initialization = InitializeStream("client", Connector, Service, Method, Undefined, Timeout);
+
+    If Not Initialization["result"] Then
+        Return Initialization;
+    EndIf;
+
+    OPI_TypeConversion.GetArray(Requests);
+
+    StreamID = Initialization["streamId"];
+    Counter  = 0;
+
+    For Each Request In Requests Do
+
+        CurrentSend = SendMessage(Connector, StreamID, Request);
+
+        Counter = Counter + 1;
+
+        If Not CurrentSend["result"] Then
+
+            Error     = CurrentSend["error"];
+            Obtaining = GetMessage(Connector, StreamID);
+
+            ErrorMap = New Map;
+            ErrorMap.Insert("result"         , False);
+            ErrorMap.Insert("error"          , Error);
+            ErrorMap.Insert("messages_sent"  , Counter);
+            ErrorMap.Insert("final_retrieval", Obtaining);
+
+        EndIf;
+
+    EndDo;
+
+    ChannelClosing = CompleteSend(Connector, StreamID);
+
+    Result = GetMessage(Connector, StreamID);
+    Result.Insert("messages_sent" , Counter);
+    Result.Insert("finish_sending", ChannelClosing);
+
+    CloseStream(Connector, StreamID);
+
+    If CloseConnection Then
+        CloseConnection(Connector);
+    EndIf;
+
+    Return Result;
 
 EndFunction
 

@@ -7,7 +7,8 @@
     Scheme.Insert("main.proto"    , Proto1); // Primary
     Scheme.Insert("my_types.proto", Proto2); // For import in primary
 
-    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Meta       = New Structure("somekey", "somevalue");
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme, Meta);
     Tls        = OPI_GRPC.GetTlsSettings(True);
 
     Result = OPI_GRPC.CreateConnection(Parameters, Tls);

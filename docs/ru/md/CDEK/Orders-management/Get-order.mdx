@@ -62,88 +62,153 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "246461ae-83de-422e-9215-166202bcd93e",
+  "uuid": "b25293e1-292f-4234-8e1b-590096d917ec",
   "type": 1,
-  "number": "33f35937-bb41-43c6-99c3-63f3dfa65a17",
+  "is_return": false,
+  "is_reverse": false,
+  "cdek_number": "1106858453",
+  "number": "2b78d4a6-7422-41f0-b033-96ac935e36dd",
   "tariff_code": 139,
   "comment": "Новый заказ",
+  "items_cost_currency": "RUB",
+  "recipient_currency": "RUB",
   "delivery_recipient_cost": {
-   "value": 50
+   "value": 50,
+   "vat_sum": 0
   },
   "delivery_recipient_cost_adv": [
    {
     "threshold": 200,
-    "sum": 3000
+    "sum": 3000,
+    "vat_sum": 0
    }
   ],
   "sender": {
-   "name": "Петров Петр"
+   "company": "Тестирование Интеграции ИМ",
+   "name": "Петров Петр",
+   "contragent_type": "LEGAL_ENTITY",
+   "phones": [
+    {
+     "number": "79529287654"
+    }
+   ],
+   "passport_requirements_satisfied": "***"
+  },
+  "seller": {
+   "name": "Тестирование Интеграции ИМ"
   },
   "recipient": {
+   "company": "Иванов Иван",
    "name": "Иванов Иван",
    "phones": [
     {
-     "number": "+79134637228"
+     "number": "79134637228"
     }
-   ]
+   ],
+   "passport_requirements_satisfied": "***"
   },
   "from_location": {
    "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
    "city": "Москва",
+   "fias_guid": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "sub_region": "Москва",
+   "longitude": 37.61556,
+   "latitude": 55.75222,
    "address": "пр. Ленинградский, д.4"
   },
   "to_location": {
    "code": 270,
+   "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2",
    "city": "Новосибирск",
+   "kladr_code": "5400000100000",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Новосибирская область",
+   "region_code": 23,
+   "sub_region": "городской округ Новосибирск",
+   "longitude": 82.906928,
+   "latitude": 55.028739,
    "address": "ул. Блюхера, 32"
   },
   "services": [
    {
     "code": "SECURE_PACKAGE_A2",
-    "parameter": "10"
+    "parameter": "10",
+    "sum": 500,
+    "total_sum": 600,
+    "discount_percent": 0,
+    "discount_sum": 0,
+    "vat_rate": 20,
+    "vat_sum": 100
+   },
+   {
+    "code": "INSURANCE",
+    "parameter": "600.00",
+    "sum": 4.5,
+    "total_sum": 5.4,
+    "discount_percent": 0,
+    "discount_sum": 0,
+    "vat_rate": 20,
+    "vat_sum": 0.9
    }
   ],
   "packages": [
    {
     "number": "bar-001",
+    "barcode": "000001520761",
     "weight": 4000,
     "length": 10,
     "width": "***",
+    "weight_volume": 200,
+    "weight_calc": 4000,
     "height": 10,
-    "comment": "Упаковка",
+    "comment": "приложена опись",
     "items": [
      {
       "name": "Товар",
       "ware_key": "***",
       "payment": {
-       "value": 3000
+       "value": 3000,
+       "vat_sum": 0
       },
       "weight": 700,
+      "weight_gross": 700,
       "amount": 2,
+      "delivery_amount": 0,
       "url": "www.item.ru",
+      "return_item_detail": {},
+      "excise": false,
       "cost": 300
      }
-    ]
+    ],
+    "package_id": "5807178a-3833-4ee7-ad9e-646b47d3254f"
    }
   ],
   "statuses": [
    {
+    "code": "CREATED",
+    "name": "Создан",
+    "date_time": "2025-12-28T02:16:15+03:00",
+    "city": "Офис СДЭК",
+    "deleted": false
+   },
+   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-12-14T20:43:58+03:00",
+    "date_time": "2025-12-28T02:16:14+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
-  ]
- },
- "requests": [
-  {
-   "request_uuid": "6ad59261-0f11-4482-9421-3235d83d33d7",
-   "type": "CREATE",
-   "date_time": "2025-12-14T20:43:58+03:00",
-   "state": "ACCEPTED"
-  }
- ],
- "related_entities": []
-}
+  ],
+  "is_client_return": "***",
+  "delivery_mode": "1",
+  "has_reverse_order": false,
+  "delivery_detail": {
+   "delivery_sum": 1315,
+...
 ```
