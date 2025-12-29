@@ -3067,6 +3067,7 @@ Procedure GMax_GroupManagement() Export
     OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Token"      , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenMax_Phone"      , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("GreenMax_AccountID"  , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("GreenMax_MainGroupID", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture"             , TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture3"            , TestParameters);
 
@@ -3310,6 +3311,7 @@ Procedure GR_CommonMethods() Export
     OPI_TestDataRetrieval.ParameterToCollection("Document"         , TestParameters);
 
     GRPC_CreateConnection(TestParameters);
+    GRPC_SetMetadata(TestParameters);
     GRPC_ExecuteMethod(TestParameters);
 
 EndProcedure
@@ -3344,6 +3346,7 @@ Procedure GR_Streaming() Export
     GRPC_GetMessage(TestParameters);
     GRPC_CloseStream(TestParameters);
     GRPC_ProcessServerStream(TestParameters);
+    GRPC_ProcessClientStream(TestParameters);
 
 EndProcedure
 
@@ -32287,7 +32290,7 @@ Procedure GreenMax_SetAdminRights(FunctionParameters)
     ChatID   = 12345678;
     MemberID = 87654321;
 
-    ChatID   = FunctionParameters["GreenMax_GroupID"]; // SKIP
+    ChatID   = FunctionParameters["GreenMax_MainGroupID"]; // SKIP
     MemberID = FunctionParameters["GreenMax_ContactID"]; // SKIP
 
     Options = New Structure;
@@ -32320,7 +32323,7 @@ Procedure GreenMax_RevokeAdminRights(FunctionParameters)
     ChatID   = 12345678;
     MemberID = 87654321;
 
-    ChatID   = FunctionParameters["GreenMax_GroupID"]; // SKIP
+    ChatID   = FunctionParameters["GreenMax_MainGroupID"]; // SKIP
     MemberID = FunctionParameters["GreenMax_ContactID"]; // SKIP
 
     Options = New Structure;
@@ -34638,9 +34641,11 @@ Procedure GRPC_CreateConnection(FunctionParameters)
     Scheme.Insert("main.proto"    , Proto1); // Primary
     Scheme.Insert("my_types.proto", Proto2); // For import in primary
 
+    Meta       = New Structure("somekey", "somevalue");
     Options = New Structure;
     Options.Insert("addr", Address);
     Options.Insert("proto", Scheme);
+    Options.Insert("meta", Meta);
 
     Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
     Options = New Structure;
@@ -34682,7 +34687,7 @@ Procedure GRPC_CreateConnection(FunctionParameters)
 
 EndProcedure
 
-Procedure GRPC_ExecuteMethod(FunctionParameters)
+Procedure GRPC_SetMetadata(FunctionParameters)
 
     Address = FunctionParameters["GRPC_Address"];
 
@@ -34696,6 +34701,53 @@ Procedure GRPC_ExecuteMethod(FunctionParameters)
     Options = New Structure;
     Options.Insert("addr", Address);
     Options.Insert("proto", Scheme);
+
+    Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
+    Options = New Structure;
+    Options.Insert("trust", Истина);
+
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
+
+    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+
+    Meta   = New Structure("somekey", "somevalue");
+    Result = OPI_GRPC.SetMetadata(Connection, Meta);
+
+    // END
+
+    Process(Result, "GRPC", "SetMetadata");
+
+    Service = "grpcbin.GRPCBin";
+    Method  = "HeadersUnary";
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("service", Service);
+    Options.Insert("method", Method);
+    Options.Insert("data", Неопределено);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ExecuteMethod", Options);
+
+    Process(Result, "GRPC", "SetMetadata", "Check");
+
+EndProcedure
+
+Procedure GRPC_ExecuteMethod(FunctionParameters)
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"]; // String, path to file or URL
+    Proto2 = FunctionParameters["GRPC_ProtoTS"]; // String, path to file or URL
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1); // Primary
+    Scheme.Insert("my_types.proto", Proto2); // For import in primary
+
+    Meta       = New Structure("somekey", "somevalue");
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("proto", Scheme);
+    Options.Insert("meta", Meta);
 
     Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
     Options = New Structure;
@@ -34775,6 +34827,30 @@ Procedure GRPC_ExecuteMethod(FunctionParameters)
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ExecuteMethod", Options);
 
     Process(Result, "GRPC", "ExecuteMethod", "Empty");
+
+    Method = "HeadersUnary";
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("service", Service);
+    Options.Insert("method", Method);
+    Options.Insert("data", Неопределено);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ExecuteMethod", Options);
+
+    Process(Result, "GRPC", "ExecuteMethod", "Meta");
+
+    Meta = New Structure("anotherkey", "anothervalue");
+    OPI_GRPC.SetMetadata(Connection, Meta);
+
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("service", Service);
+    Options.Insert("method", Method);
+    Options.Insert("data", Неопределено);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ExecuteMethod", Options);
+
+    Process(Result, "GRPC", "ExecuteMethod", "Meta 2");
 
 EndProcedure
 
@@ -35382,6 +35458,70 @@ Procedure GRPC_ProcessServerStream(FunctionParameters)
     // END
 
     Process(Result, "GRPC", "ProcessServerStream");
+
+EndProcedure
+
+Procedure GRPC_ProcessClientStream(FunctionParameters)
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"]; // String, path to file or URL
+    Proto2 = FunctionParameters["GRPC_ProtoTS"]; // String, path to file or URL
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1); // Primary
+    Scheme.Insert("my_types.proto", Proto2); // For import in primary
+
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("proto", Scheme);
+
+    Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
+    Options = New Structure;
+    Options.Insert("trust", Истина);
+
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
+
+    Service = "grpcbin.GRPCBin";
+    Method  = "DummyClientStream";
+
+    Data = New Map;
+    Data.Insert("f_string" , "Test message");
+    Data.Insert("f_int32"  , 123);
+    Data.Insert("f_bool"   , True);
+    Data.Insert("f_sub"    , New Structure("f_string", "Nested value"));
+
+    ArrayOfRequests = New Array;
+
+    For N = 1 To 10 Do
+        ArrayOfRequests.Add(Data);
+    EndDo;
+
+    Options = New Structure;
+    Options.Insert("conn", Parameters);
+    Options.Insert("service", Service);
+    Options.Insert("method", Method);
+    Options.Insert("data", ArrayOfRequests);
+    Options.Insert("tls", Tls);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ProcessClientStream", Options);
+
+    // END
+
+    Process(Result, "GRPC", "ProcessClientStream");
+
+    ArrayOfRequests.Delete(ArrayOfRequests.UBound());
+
+    Options = New Structure;
+    Options.Insert("conn", Parameters);
+    Options.Insert("service", Service);
+    Options.Insert("method", Method);
+    Options.Insert("data", ArrayOfRequests);
+    Options.Insert("tls", Tls);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ProcessClientStream", Options);
+
+    Process(Result, "GRPC", "ProcessClientStream", "Error");
 
 EndProcedure
 

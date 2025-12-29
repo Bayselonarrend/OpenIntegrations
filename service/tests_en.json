@@ -6881,6 +6881,16 @@
 },
 {
 "lib": "GRPC",
+"name": "SetMetadata",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "SetMetadata",
+"variant": "Check"
+},
+{
+"lib": "GRPC",
 "name": "ExecuteMethod",
 "variant": ""
 },
@@ -6888,6 +6898,16 @@
 "lib": "GRPC",
 "name": "ExecuteMethod",
 "variant": "Empty"
+},
+{
+"lib": "GRPC",
+"name": "ExecuteMethod",
+"variant": "Meta"
+},
+{
+"lib": "GRPC",
+"name": "ExecuteMethod",
+"variant": "Meta 2"
 },
 {
 "lib": "GRPC",
@@ -6948,5 +6968,15 @@
 "lib": "GRPC",
 "name": "ProcessServerStream",
 "variant": ""
+},
+{
+"lib": "GRPC",
+"name": "ProcessClientStream",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "ProcessClientStream",
+"variant": "Error"
 }
 ]

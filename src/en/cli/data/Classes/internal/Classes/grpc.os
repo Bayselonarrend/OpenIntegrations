@@ -321,6 +321,73 @@ Function GetComposition() Export
     NewLine.Description     = "Maximum messages to retrieve. Unlimited by default (optional, def. val.. - Empty value)";
     NewLine.Region      = "Streaming";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "grpc";
+    NewLine.Module       = "OPI_GRPC";
+    NewLine.Method        = "ProcessClientStream";
+    NewLine.SearchMethod  = "PROCESSCLIENTSTREAM";
+    NewLine.Parameter     = "--conn";
+    NewLine.ParameterTrim = "-c";
+    NewLine.Description     = "Existing connection or connection parameters";
+    NewLine.Region      = "Streaming";
+    NewLine.MethodDescription   = "Initializes client thread, passes message array, and receives final response";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "grpc";
+    NewLine.Module       = "OPI_GRPC";
+    NewLine.Method        = "ProcessClientStream";
+    NewLine.SearchMethod  = "PROCESSCLIENTSTREAM";
+    NewLine.Parameter     = "--service";
+    NewLine.ParameterTrim = "-s";
+    NewLine.Description     = "Service name";
+    NewLine.Region      = "Streaming";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "grpc";
+    NewLine.Module       = "OPI_GRPC";
+    NewLine.Method        = "ProcessClientStream";
+    NewLine.SearchMethod  = "PROCESSCLIENTSTREAM";
+    NewLine.Parameter     = "--method";
+    NewLine.ParameterTrim = "-m";
+    NewLine.Description     = "Method name";
+    NewLine.Region      = "Streaming";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "grpc";
+    NewLine.Module       = "OPI_GRPC";
+    NewLine.Method        = "ProcessClientStream";
+    NewLine.SearchMethod  = "PROCESSCLIENTSTREAM";
+    NewLine.Parameter     = "--data";
+    NewLine.ParameterTrim = "-d";
+    NewLine.Description     = "Request data array or single request";
+    NewLine.Region      = "Streaming";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "grpc";
+    NewLine.Module       = "OPI_GRPC";
+    NewLine.Method        = "ProcessClientStream";
+    NewLine.SearchMethod  = "PROCESSCLIENTSTREAM";
+    NewLine.Parameter     = "--tout";
+    NewLine.ParameterTrim = "-t";
+    NewLine.Description     = "Timeout for individual operation (in ms)) (optional, def. val.. - 10000)";
+    NewLine.Region      = "Streaming";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "grpc";
+    NewLine.Module       = "OPI_GRPC";
+    NewLine.Method        = "ProcessClientStream";
+    NewLine.SearchMethod  = "PROCESSCLIENTSTREAM";
+    NewLine.Parameter     = "--tls";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
+    NewLine.Region      = "Streaming";
+
     Return CompositionTable;
 EndFunction
 

@@ -1,0 +1,28 @@
+﻿    Address = "https://grpcb.in:9001";
+
+    Proto1 = "https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto"; // String, path to file or URL
+    Proto2 = "https://hut.openintegrations.dev/test_data/mt.proto"; // String, path to file or URL
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1); // Primary
+    Scheme.Insert("my_types.proto", Proto2); // For import in primary
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Service = "grpcbin.GRPCBin";
+    Method  = "DummyClientStream";
+
+    Data = New Map;
+    Data.Insert("f_string" , "Test message");
+    Data.Insert("f_int32"  , 123);
+    Data.Insert("f_bool"   , True);
+    Data.Insert("f_sub"    , New Structure("f_string", "Nested value"));
+
+    ArrayOfRequests = New Array;
+
+    For N = 1 To 10 Do
+        ArrayOfRequests.Add(Data);
+    EndDo;
+
+    Result = OPI_GRPC.ProcessClientStream(Parameters, Service, Method, ArrayOfRequests, , Tls);
