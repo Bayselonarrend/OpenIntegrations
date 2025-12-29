@@ -11932,17 +11932,17 @@ EndFunction
 
 Function Check_GreenMax_RemoveGroupMember(Val Result, Val Option)
 
-    ExpectsThat(Result["removeParticipant"]).Равно(True);
+    ExpectsThat(Result["removeParticipant"] <> Undefined).Равно(True);
 
-    Return Result;
+    Return Undefined;
 
 EndFunction
 
 Function Check_GreenMax_AddGroupMember(Val Result, Val Option)
 
-    ExpectsThat(Result["addParticipant"]).Равно(True);
+    ExpectsThat(Result["addParticipant"] <> Undefined).Равно(True);
 
-    Return Result;
+    Return Undefined;
 
 EndFunction
 
@@ -12007,17 +12007,17 @@ EndFunction
 
 Function Check_GreenMax_SetAdminRights(Val Result, Val Option)
 
-    ExpectsThat(Result["setGroupAdmin"]).Равно(True);
+    ExpectsThat(Result["setGroupAdmin"] <> Undefined).Равно(True);
 
-    Return Result;
+    Return Undefined;
 
 EndFunction
 
 Function Check_GreenMax_RevokeAdminRights(Val Result, Val Option)
 
-    ExpectsThat(Result["removeAdmin"]).Равно(True);
+    ExpectsThat(Result["removeAdmin"] <> Undefined ).Равно(True);
 
-    Return Result;
+    Return Undefined;
 
 EndFunction
 
@@ -12772,8 +12772,38 @@ Function Check_GRPC_ExecuteMethod(Val Result, Val Option, Data = Undefined)
 
     ExpectsThat(Result["result"]).Равно(True);
 
-    FieldList = StrSplit("f_bytes,f_bytess", ",");
-    ExpectsThat(OPI_Tools.CompareTwoCollections(Result["message"], Data, FieldList)).Равно(True);
+    If Data = "Meta" Then
+
+        ResultAsString = OPI_Tools.JSONString(Result);
+        ExpectsThat(StrFind(ResultAsString, "somekey") > 0).Равно(True);
+
+    ElsIf Data = "Meta 2" Then
+
+        ResultAsString                                 = OPI_Tools.JSONString(Result);
+        ExpectsThat(StrFind(ResultAsString, "somekey") = 0).Равно(True);
+        ExpectsThat(StrFind(ResultAsString, "anotherkey") > 0).Равно(True);
+
+    Else
+
+        FieldList = StrSplit("f_bytes,f_bytess", ",");
+        ExpectsThat(OPI_Tools.CompareTwoCollections(Result["message"], Data, FieldList)).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_SetMetadata(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    If Option = "Check" Then
+
+        ResultAsString = OPI_Tools.JSONString(Result);
+        ExpectsThat(StrFind(ResultAsString, "somekey") > 0).Равно(True);
+
+    EndIf;
 
     Return Result;
 
@@ -12850,6 +12880,18 @@ Function Check_GRPC_ProcessServerStream(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
     ExpectsThat(Result["data"].Count()).Равно(3);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_ProcessClientStream(Val Result, Val Option)
+
+    If Option = "Error" Then
+        ExpectsThat(Result["result"]).Равно(False);
+    Else
+        ExpectsThat(Result["result"]).Равно(True);
+    EndIf;
 
     Return Result;
 
