@@ -1,0 +1,65 @@
+﻿---
+sidebar_position: 9
+description: Process client stream and other functions to work with GRPC in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GRPC]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Process client stream
+ Initializes client thread, passes message array, and receives final response
+
+
+
+`Function ProcessClientStream(Val Connection, Val Service, Val Method, Val Requests, Val Timeout = 10000, Val Tls = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | --conn | Arbitrary | &#x2714; | Existing connection or connection parameters |
+  | Service | --service | String | &#x2714; | Service name |
+  | Method | --method | String | &#x2714; | Method name |
+  | Requests | --data | Array of Structure | &#x2714; | Request data array or single request |
+  | Timeout | --tout | Number | &#x2716; | Timeout for individual operation (in ms)) |
+  | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    Address = "https://grpcb.in:9001";
+
+    Proto1 = "https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto"; // String, path to file or URL
+    Proto2 = "https://hut.openintegrations.dev/test_data/mt.proto"; // String, path to file or URL
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1); // Primary
+    Scheme.Insert("my_types.proto", Proto2); // For import in primary
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Service = "grpcbin.GRPCBin";
+    Method  = "DummyClientStream";
+
+    Data = New Map;
+    Data.Insert("f_string" , "Test message");
+    Data.Insert("f_int32"  , 123);
+    Data.Insert("f_bool"   , True);
+    Data.Insert("f_sub"    , New Structure("f_string", "Nested value"));
+
+    ArrayOfRequests = New Array;
+
+    For N = 1 To 10 Do
+        ArrayOfRequests.Add(Data);
+    EndDo;
+
+    Result = OPI_GRPC.ProcessClientStream(Parameters, Service, Method, ArrayOfRequests, , Tls);
+```
+ 
+
+
+
+
