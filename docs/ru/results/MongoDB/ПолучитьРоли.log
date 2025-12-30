@@ -31,11 +31,11 @@
     ],
     "inheritedRoles": [
      {
-      "role": "read",
+      "role": "userAdmin",
       "db": "admin"
      },
      {
-      "role": "userAdmin",
+      "role": "read",
       "db": "admin"
      }
     ],

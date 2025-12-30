@@ -1,0 +1,28 @@
+﻿{
+ "data": {
+  "is_client_streaming": "***",
+  "is_server_streaming": false,
+  "request_schema": {
+   "fields": {},
+   "type": "object"
+  },
+  "request_type": "grpcbin.EmptyMessage",
+  "response_schema": {
+   "fields": {
+    "description": {
+     "number": 1,
+     "required": true,
+     "type": "string"
+    },
+    "endpoints": {
+     "number": 2,
+     "required": true,
+     "type": "message"
+    }
+   },
+   "type": "object"
+  },
+  "response_type": "grpcbin.IndexReply"
+ },
+ "result": true
+}
