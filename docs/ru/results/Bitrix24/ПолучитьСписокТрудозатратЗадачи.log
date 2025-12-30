@@ -1,39 +1,39 @@
 ﻿{
  "result": [
   {
-   "ID": "3364",
-   "TASK_ID": "9146",
+   "ID": "3368",
+   "TASK_ID": "9156",
    "USER_ID": "1",
    "COMMENT_TEXT": "",
    "SECONDS": "3600",
    "MINUTES": "60",
    "SOURCE": "2",
-   "CREATED_DATE": "2025-12-28T02:11:08+03:00",
+   "CREATED_DATE": "2025-12-30T11:04:23+03:00",
    "DATE_START": "",
    "DATE_STOP": ""
   },
   {
-   "ID": "3366",
-   "TASK_ID": "9146",
+   "ID": "3370",
+   "TASK_ID": "9156",
    "USER_ID": "10",
    "COMMENT_TEXT": "Трудозатраты по обработке",
    "SECONDS": "7200",
    "MINUTES": "120",
    "SOURCE": "2",
-   "CREATED_DATE": "2025-11-28T02:11:08+03:00",
+   "CREATED_DATE": "2025-11-30T11:04:24+03:00",
    "DATE_START": "",
    "DATE_STOP": ""
   }
  ],
  "total": 2,
  "time": {
-  "start": 1766877070,
-  "finish": 1766877070.5068,
-  "duration": 0.506798982620239,
+  "start": 1767081865,
+  "finish": 1767081865.77823,
+  "duration": 0.778227090835571,
   "processing": 0,
-  "date_start": "2025-12-28T02:11:10+03:00",
-  "date_finish": "2025-12-28T02:11:10+03:00",
-  "operating_reset_at": 1766877670,
+  "date_start": "2025-12-30T11:04:25+03:00",
+  "date_finish": "2025-12-30T11:04:25+03:00",
+  "operating_reset_at": 1767082465,
   "operating": 0
  }
 }
