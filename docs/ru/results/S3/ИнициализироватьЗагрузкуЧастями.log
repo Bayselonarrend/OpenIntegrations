@@ -2,19 +2,19 @@
  "status": 200,
  "response": {
   "InitiateMultipartUploadResult": {
-   "Bucket": "e3e7eafa",
+   "Bucket": "d0f08671",
    "Key": "***",
-   "UploadId": "NjdmMzY2OTktYjA2ZC00MTViLTkwOGUtZDM2NmI5MDk1NTllLmRjYWY4ZjY1LTA0MDMtNGRiNS05ZWY2LTAyNzQ1MjVkZTE1Nw"
+   "UploadId": "NjdmMzY2OTktYjA2ZC00MTViLTkwOGUtZDM2NmI5MDk1NTllLjY5YmI4YjhmLTAxY2MtNGM4MS05MDU1LWRhZjYwYWJhMjhjZA"
   }
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Sat, 27 Dec 2025 23:24:58 GMT",
+  "Date": "Tue, 30 Dec 2025 08:15:33 GMT",
   "Server": "MinIO",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "9db21855adaa63c98221e7a7db59c17bf693f4833027894c70082214acf3a007",
-  "X-Amz-Request-Id": "188536164345F512",
+  "X-Amz-Id-2": "ce258a107703b2b071aa1a8145ffe6228f368a6d9b7af539b99dbf83a96b1e00",
+  "X-Amz-Request-Id": "1885F033956D96CE",
   "X-Content-Type-Options": "nosniff",
   "X-XSS-Protection": "1; mode=block",
   "Content-Length": "320",
