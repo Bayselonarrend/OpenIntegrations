@@ -1,7 +1,7 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-12-14T18:18:28.074935492Z",
- "response": "1C:Enterprise is an enterprise resource planning (ERP) software designed for midsize and large businesses. It is a comprehensive suite of applications that helps manage finance, human resources, supply chain management, inventory control, customer relationship management (CRM), sales management, and operations. 1C:Enterprise includes ERP, CRM, HRMS, BI, eCommerce, payroll management, mobile app development, and business intelligence tools. It offers a single solution to manage all business processes in a centralized environment, reducing the need for multiple systems and improving efficiency, profitability, and customer satisfaction.",
+ "created_at": "2025-12-30T08:23:51.239794913Z",
+ "response": "1C:Enterprise is a suite of business applications owned by International Business Machines (IBM). It provides various business functions such as finance, HR, inventory management, and supply chain management. The suite is known for its robust capabilities in financial reporting, accounting, procurement, inventory management, distribution, and logistics, among others. 1C:Enterprise is a comprehensive set of software applications designed to meet diverse business needs. It offers seamless integration with IBM's mainframe platforms, which provide reliable computing power and optimized performance for critical business processes. 1C:Enterprise can be deployed on both Unix and Linux operating systems, enabling flexible deployment options.",
  "done": true,
  "done_reason": "stop",
  "context": [
@@ -181,12 +181,23 @@
   null,
   null,
   null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
+  null,
   null
  ],
- "total_duration": 31821928863,
- "load_duration": 11369413231,
+ "total_duration": 32236237988,
+ "load_duration": 10370819418,
  "prompt_eval_count": 43,
- "prompt_eval_duration": 1868798179,
- "eval_count": 135,
- "eval_duration": 18574358519
+ "prompt_eval_duration": 4800221000,
+ "eval_count": 147,
+ "eval_duration": 17047604264
 }

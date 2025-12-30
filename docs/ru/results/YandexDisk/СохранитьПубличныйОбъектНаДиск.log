@@ -1,21 +1,21 @@
 ﻿{
- "path": "disk:/Загрузки/86e83b55-10ad-4e0a-a5d2-2444c1a94214.png",
+ "path": "disk:/Загрузки/d790170a-b814-4534-a9b7-3e0be2fe8c49.png",
  "type": "file",
- "name": "86e83b55-10ad-4e0a-a5d2-2444c1a94214.png",
- "created": "2025-12-28T02:01:03+03:00",
- "modified": "2025-12-28T02:01:03+03:00",
+ "name": "d790170a-b814-4534-a9b7-3e0be2fe8c49.png",
+ "created": "2025-12-30T10:53:59+03:00",
+ "modified": "2025-12-30T10:53:59+03:00",
  "size": 2114023,
  "mime_type": "multipart",
  "md5": "9e0176f87f6565a22f78e0f9b39a4d78",
  "sha256": "89f8eb42a35208a17c85036e17237b0aa0657e1841efa6171dc5acbc0dea9e18",
  "media_type": "image",
- "resource_id": "1573541518:075eb021821a7ae5230c6a98b205766922dcea1ae7a56eefd7c3d95ad36fee72",
- "revision": 1766876463850189,
+ "resource_id": "1573541518:1b0a15a7aaff02dd2c95482b002f731af582330948a9024f6ada15b67bc07561",
+ "revision": 1767081239931089,
  "comment_ids": {
-  "public_resource": "1573541518:075eb021821a7ae5230c6a98b205766922dcea1ae7a56eefd7c3d95ad36fee72",
-  "private_resource": "1573541518:075eb021821a7ae5230c6a98b205766922dcea1ae7a56eefd7c3d95ad36fee72"
+  "public_resource": "1573541518:1b0a15a7aaff02dd2c95482b002f731af582330948a9024f6ada15b67bc07561",
+  "private_resource": "1573541518:1b0a15a7aaff02dd2c95482b002f731af582330948a9024f6ada15b67bc07561"
  },
  "exif": {},
  "antivirus_status": "clean",
- "file": "https://downloader.disk.yandex.ru/disk/d16a795ce7db12f99de56fd01243526e5eed7d07ef83c7f2039fafbae3173ec1/69509d70/Kdpe3dFisZLPovVA4r-aBmpkby3AOQiLsayEHYapOMw2ylFGSbZZrsWtGPTvHxG_-QDrqSGFBOOsS3b3gKT1zA%3D%3D?uid=1573541518&filename=86e83b55-10ad-4e0a-a5d2-2444c1a94214.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v3&etag=9e0176f87f6565a22f78e0f9b39a4d78"
+ "file": "https://downloader.disk.yandex.ru/disk/d290fb3616051b2a56d18bf564cbd0167e09b4ba53db5cad6ebdeab61e1efa6e/6953bd58/gwThwhLBKYvLhQCNnqAHinZLB5iWyA8Sy6trmQw_iw6hiaWAZj8TUW5_olKuRFHbvv-Erz_cxPqAv4bK3J0RRQ%3D%3D?uid=1573541518&filename=d790170a-b814-4534-a9b7-3e0be2fe8c49.png&disposition=attachment&hash=&limit=0&content_type=multipart&owner_uid=1573541518&fsize=2114023&hid=03d7263840468e281bd0b238a26e7d0d&media_type=image&tknv=v3&etag=9e0176f87f6565a22f78e0f9b39a4d78"
 }
