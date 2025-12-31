@@ -12744,6 +12744,38 @@ Function Check_GRPC_CreateConnection(Val Result, Val Option)
 
 EndFunction
 
+Function Check_GRPC_CloseConnection(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_IsConnector(Val Result, Val Option)
+
+    ExpectsThat(Result).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_GetConnectionParameters(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_GetTlsSettings(Val Result, Val Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 Function Check_GRPC_GetServiceList(Val Result, Val Option)
 
     ExpectsThat(Result["result"]).Равно(True);
@@ -12891,6 +12923,15 @@ Function Check_GRPC_ProcessClientStream(Val Result, Val Option)
     Else
         ExpectsThat(Result["result"]).Равно(True);
     EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_GRPC_ProcessBidirectionalStream(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(Result["data"].Count()).Равно(10);
 
     Return Result;
 

@@ -1,0 +1,15 @@
+﻿    Address = "https://grpcb.in:9001";
+
+    Proto1 = "https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto"; // String, path to file or URL
+    Proto2 = "https://hut.openintegrations.dev/test_data/mt.proto"; // String, path to file or URL
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1); // Primary
+    Scheme.Insert("my_types.proto", Proto2); // For import in primary
+
+    Meta       = New Structure("somekey", "somevalue");
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme, Meta);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Result     = OPI_GRPC.IsConnector(Connection);

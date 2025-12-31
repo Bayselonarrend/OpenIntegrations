@@ -6881,6 +6881,26 @@
 },
 {
 "lib": "GRPC",
+"name": "CloseConnection",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "IsConnector",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "GetConnectionParameters",
+"variant": ""
+},
+{
+"lib": "GRPC",
+"name": "GetTlsSettings",
+"variant": ""
+},
+{
+"lib": "GRPC",
 "name": "SetMetadata",
 "variant": ""
 },
@@ -6978,5 +6998,10 @@
 "lib": "GRPC",
 "name": "ProcessClientStream",
 "variant": "Error"
+},
+{
+"lib": "GRPC",
+"name": "ProcessBidirectionalStream",
+"variant": ""
 }
 ]

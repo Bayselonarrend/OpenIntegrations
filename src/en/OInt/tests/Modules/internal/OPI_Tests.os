@@ -3310,8 +3310,12 @@ Procedure GR_CommonMethods() Export
     OPI_TestDataRetrieval.ParameterToCollection("Document"         , TestParameters);
 
     GRPC_CreateConnection(TestParameters);
+    GRPC_CloseConnection(TestParameters);
+    GRPC_IsConnector(TestParameters);
     GRPC_SetMetadata(TestParameters);
     GRPC_ExecuteMethod(TestParameters);
+    GRPC_GetTlsSettings(TestParameters);
+    GRPC_GetConnectionParameters(TestParameters);
 
 EndProcedure
 
@@ -3346,6 +3350,7 @@ Procedure GR_Streaming() Export
     GRPC_CloseStream(TestParameters);
     GRPC_ProcessServerStream(TestParameters);
     GRPC_ProcessClientStream(TestParameters);
+    GRPC_ProcessBidirectionalStream(TestParameters);
 
 EndProcedure
 
@@ -26181,6 +26186,84 @@ Procedure GRPC_CreateConnection(FunctionParameters)
 
 EndProcedure
 
+Procedure GRPC_CloseConnection(FunctionParameters)
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"]; // String, path to file or URL
+    Proto2 = FunctionParameters["GRPC_ProtoTS"]; // String, path to file or URL
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1); // Primary
+    Scheme.Insert("my_types.proto", Proto2); // For import in primary
+
+    Meta       = New Structure("somekey", "somevalue");
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme, Meta);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Result     = OPI_GRPC.CloseConnection(Connection);
+
+    // END
+
+    Process(Result, "GRPC", "CloseConnection");
+
+EndProcedure
+
+Procedure GRPC_IsConnector(FunctionParameters)
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"]; // String, path to file or URL
+    Proto2 = FunctionParameters["GRPC_ProtoTS"]; // String, path to file or URL
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1); // Primary
+    Scheme.Insert("my_types.proto", Proto2); // For import in primary
+
+    Meta       = New Structure("somekey", "somevalue");
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme, Meta);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+    Result     = OPI_GRPC.IsConnector(Connection);
+
+    // END
+
+    Process(Result, "GRPC", "IsConnector");
+
+EndProcedure
+
+Procedure GRPC_GetConnectionParameters(FunctionParameters)
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"]; // String, path to file or URL
+    Proto2 = FunctionParameters["GRPC_ProtoTS"]; // String, path to file or URL
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1); // Primary
+    Scheme.Insert("my_types.proto", Proto2); // For import in primary
+
+    Meta   = New Structure("somekey", "somevalue");
+    Result = OPI_GRPC.GetConnectionParameters(Address, Scheme, Meta);
+
+    // END
+
+    Process(Result, "GRPC", "GetConnectionParameters");
+
+EndProcedure
+
+Procedure GRPC_GetTlsSettings(FunctionParameters)
+
+    Result = OPI_GRPC.GetTlsSettings(True);
+
+    // END
+
+    Process(Result, "GRPC", "GetTlsSettings");
+
+EndProcedure
+
 Procedure GRPC_SetMetadata(FunctionParameters)
 
     Address = FunctionParameters["GRPC_Address"];
@@ -26860,6 +26943,51 @@ Procedure GRPC_ProcessClientStream(FunctionParameters)
     Result = OPI_GRPC.ProcessClientStream(Parameters, Service, Method, ArrayOfRequests, , Tls);
 
     Process(Result, "GRPC", "ProcessClientStream", "Error");
+
+EndProcedure
+
+Procedure GRPC_ProcessBidirectionalStream(FunctionParameters)
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"]; // String, path to file or URL
+    Proto2 = FunctionParameters["GRPC_ProtoTS"]; // String, path to file or URL
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1); // Primary
+    Scheme.Insert("my_types.proto", Proto2); // For import in primary
+
+    Parameters = OPI_GRPC.GetConnectionParameters(Address, Scheme);
+    Tls        = OPI_GRPC.GetTlsSettings(True);
+
+    StingsArray = New Array;
+    StingsArray.Add("one");
+    StingsArray.Add("two");
+    StingsArray.Add("three");
+
+    Data = New Map;
+    Data.Insert("f_string" , "Test message");
+    Data.Insert("f_bool"   , True);
+    Data.Insert("f_strings", StingsArray);
+    Data.Insert("f_sub"    , New Structure("f_string", "Nested value"));
+
+    Service = "grpcbin.GRPCBin";
+    Method  = "DummyBidirectionalStreamStream";
+
+    ExchangeOrder = New Array;
+
+    For N = 1 To 10 Do
+
+        ExchangeOrder.Add(Data); // Single send
+        ExchangeOrder.Add(Undefined); // Single get
+
+    EndDo;
+
+    Result = OPI_GRPC.ProcessBidirectionalStream(Parameters, Service, Method, ExchangeOrder, , Tls);
+
+    // END
+
+    Process(Result, "GRPC", "ProcessBidirectionalStream");
 
 EndProcedure
 
