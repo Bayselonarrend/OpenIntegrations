@@ -388,6 +388,84 @@ Function GetComposition() Export
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Streaming";
 
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "grpc";
+    NewLine.Module       = "OPI_GRPC";
+    NewLine.Method        = "ProcessBidirectionalStream";
+    NewLine.SearchMethod  = "PROCESSBIDIRECTIONALSTREAM";
+    NewLine.Parameter     = "--conn";
+    NewLine.ParameterTrim = "-c";
+    NewLine.Description     = "Existing connection or connection parameters";
+    NewLine.Region      = "Streaming";
+    NewLine.MethodDescription   = "Initializes a bidirectional stream, then passes and sends messages in the specified order";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "grpc";
+    NewLine.Module       = "OPI_GRPC";
+    NewLine.Method        = "ProcessBidirectionalStream";
+    NewLine.SearchMethod  = "PROCESSBIDIRECTIONALSTREAM";
+    NewLine.Parameter     = "--service";
+    NewLine.ParameterTrim = "-s";
+    NewLine.Description     = "Service name";
+    NewLine.Region      = "Streaming";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "grpc";
+    NewLine.Module       = "OPI_GRPC";
+    NewLine.Method        = "ProcessBidirectionalStream";
+    NewLine.SearchMethod  = "PROCESSBIDIRECTIONALSTREAM";
+    NewLine.Parameter     = "--method";
+    NewLine.ParameterTrim = "-m";
+    NewLine.Description     = "Method name";
+    NewLine.Region      = "Streaming";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "grpc";
+    NewLine.Module       = "OPI_GRPC";
+    NewLine.Method        = "ProcessBidirectionalStream";
+    NewLine.SearchMethod  = "PROCESSBIDIRECTIONALSTREAM";
+    NewLine.Parameter     = "--exch";
+    NewLine.ParameterTrim = "-e";
+    NewLine.Description     = "Array of request data and Undefined where retrieval is needed";
+    NewLine.Region      = "Streaming";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "grpc";
+    NewLine.Module       = "OPI_GRPC";
+    NewLine.Method        = "ProcessBidirectionalStream";
+    NewLine.SearchMethod  = "PROCESSBIDIRECTIONALSTREAM";
+    NewLine.Parameter     = "--tout";
+    NewLine.ParameterTrim = "-t";
+    NewLine.Description     = "Timeout for individual operation (in ms)) (optional, def. val.. - 10000)";
+    NewLine.Region      = "Streaming";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "grpc";
+    NewLine.Module       = "OPI_GRPC";
+    NewLine.Method        = "ProcessBidirectionalStream";
+    NewLine.SearchMethod  = "PROCESSBIDIRECTIONALSTREAM";
+    NewLine.Parameter     = "--tls";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
+    NewLine.Region      = "Streaming";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "grpc";
+    NewLine.Module       = "OPI_GRPC";
+    NewLine.Method        = "ProcessBidirectionalStream";
+    NewLine.SearchMethod  = "PROCESSBIDIRECTIONALSTREAM";
+    NewLine.Parameter     = "--cnt";
+    NewLine.ParameterTrim = "";
+    NewLine.Description     = "Continue receiving after processing the exchange order (optional, def. val.. - True)";
+    NewLine.Region      = "Streaming";
+
     Return CompositionTable;
 EndFunction
 

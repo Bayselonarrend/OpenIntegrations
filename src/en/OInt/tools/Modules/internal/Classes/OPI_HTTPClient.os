@@ -2193,6 +2193,10 @@ Function ExecuteMethod(Val RedirectCount = 0, Val ErrorCount = 0, Val Forced = F
 
                 Request.ResourceAddress = RequestAdress;
 
+                If OPI_Tools.IsOneScript() Then
+                    FormRequest();
+                EndIf;
+
                 ExecuteMethod(NewRedirectCount, ErrorCount, Forced);
 
             Else
@@ -2221,6 +2225,10 @@ Function ExecuteMethod(Val RedirectCount = 0, Val ErrorCount = 0, Val Forced = F
                 , MaximumRetryCount);
 
             AddLog(LogText);
+
+            If OPI_Tools.IsOneScript() Then
+                FormRequest();
+            EndIf;
 
             ExecuteMethod(RedirectCount, NewErrorCount, Forced);
 

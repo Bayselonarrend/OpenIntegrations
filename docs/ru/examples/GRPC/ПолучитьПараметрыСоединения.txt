@@ -1,0 +1,11 @@
+﻿    Адрес = "https://grpcb.in:9001";
+
+    Proto1 = "https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto"; // Строка, путь к файлу или URL
+    Proto2 = "https://hut.openintegrations.dev/test_data/mt.proto";     // Строка, путь к файлу или URL
+
+    Схемы = Новый Соответствие;
+    Схемы.Вставить("main.proto"    , Proto1); // Основной
+    Схемы.Вставить("my_types.proto", Proto2); // Для импорта в основной
+
+    Мета      = Новый Структура("somekey", "somevalue");
+    Результат = OPI_GRPC.ПолучитьПараметрыСоединения(Адрес, Схемы, Мета);
