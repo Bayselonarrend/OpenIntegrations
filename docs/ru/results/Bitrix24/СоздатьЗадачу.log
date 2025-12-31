@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "9150",
+   "id": "9160",
    "parentId": null,
    "title": "Новая задача",
    "description": "Новое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2025-12-30T11:02:24+03:00",
+   "createdDate": "2025-12-31T16:48:41+03:00",
    "responsibleId": "1",
    "changedBy": "1",
-   "changedDate": "2025-12-30T11:02:24+03:00",
+   "changedDate": "2025-12-31T16:48:41+03:00",
    "statusChangedBy": null,
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2025-12-30T11:02:24+03:00",
+   "activityDate": "2025-12-31T16:48:41+03:00",
    "dateStart": null,
-   "deadline": "2025-12-31T14:02:00+03:00",
+   "deadline": "2026-01-01T19:48:00+03:00",
    "startDatePlan": null,
    "endDatePlan": null,
-   "guid": "{e694272c-d0ee-4363-9e13-e091756bbe4a}",
+   "guid": "{d611d881-1139-4f78-8f09-2e894d2da3f9}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2025-12-30T11:02:24+03:00",
+   "statusChangedDate": "2025-12-31T16:48:41+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1767081744,
-  "finish": 1767081744.68944,
-  "duration": 0.689438104629516,
+  "start": 1767188921,
+  "finish": 1767188921.44659,
+  "duration": 0.446593999862671,
   "processing": 0,
-  "date_start": "2025-12-30T11:02:24+03:00",
-  "date_finish": "2025-12-30T11:02:24+03:00",
-  "operating_reset_at": 1767082344,
-  "operating": 0.184318065643311
+  "date_start": "2025-12-31T16:48:41+03:00",
+  "date_finish": "2025-12-31T16:48:41+03:00",
+  "operating_reset_at": 1767189521,
+  "operating": 0.183233976364136
  }
 }
