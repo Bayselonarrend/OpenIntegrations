@@ -9,87 +9,51 @@
    "Buckets": {
     "Bucket": [
      {
-      "Name": "0043dc57",
-      "CreationDate": "2025-12-10T12:16:42.347Z"
+      "Name": "054f6224",
+      "CreationDate": "2025-12-30T11:00:55.265Z"
      },
      {
-      "Name": "03e6b32e",
-      "CreationDate": "0001-01-01T00:00:00.000Z"
+      "Name": "849c783e",
+      "CreationDate": "2025-12-30T11:04:35.912Z"
      },
      {
-      "Name": "0b6dd8d4",
-      "CreationDate": "2025-12-13T23:38:52.353Z"
+      "Name": "bb0ae2ba",
+      "CreationDate": "2025-12-30T11:08:02.140Z"
      },
      {
-      "Name": "111d12fc",
-      "CreationDate": "2025-12-10T10:48:59.244Z"
+      "Name": "f3c71677",
+      "CreationDate": "2025-12-30T11:15:55.150Z"
      },
      {
-      "Name": "3710964c",
-      "CreationDate": "2025-12-10T05:30:37.981Z"
-     },
-     {
-      "Name": "44dae1f5",
-      "CreationDate": "2025-12-13T10:55:09.608Z"
-     },
-     {
-      "Name": "5f9dba1e",
-      "CreationDate": "2025-12-11T08:06:13.652Z"
-     },
-     {
-      "Name": "608bea92",
-      "CreationDate": "2025-12-13T10:45:44.959Z"
-     },
-     {
-      "Name": "7102090d",
-      "CreationDate": "2025-12-14T17:45:59.638Z"
-     },
-     {
-      "Name": "7d06b5b0",
-      "CreationDate": "2025-12-30T08:12:58.371Z"
-     },
-     {
-      "Name": "a142a2a0",
-      "CreationDate": "2025-12-09T19:24:00.705Z"
-     },
-     {
-      "Name": "cd01a1f0",
-      "CreationDate": "0001-01-01T00:00:00.000Z"
-     },
-     {
-      "Name": "e4850a7d",
-      "CreationDate": "2025-12-10T07:53:08.485Z"
-     },
-     {
-      "Name": "f51703d3",
-      "CreationDate": "2025-12-14T18:09:16.388Z"
-     },
-     {
-      "Name": "facb0f6a",
-      "CreationDate": "0001-01-01T00:00:00.000Z"
-     },
-     {
-      "Name": "fadf489a",
-      "CreationDate": "2025-12-09T16:53:36.822Z"
+      "Name": "f65a0238",
+      "CreationDate": "2025-12-31T13:58:25.354Z"
      },
      {
       "Name": "newbucket2",
-      "CreationDate": "2025-12-08T08:02:33.122Z"
+      "CreationDate": "2025-12-30T11:02:52.150Z"
+     },
+     {
+      "Name": "testbucket",
+      "CreationDate": "2025-12-30T10:53:22.664Z"
      }
     ]
    }
   }
  },
  "headers": {
-  "Date": "Tue, 30 Dec 2025 08:13:01 GMT",
-  "Server": "MinIO",
+  "Accept-Ranges": "bytes",
+  "Vary": "Accept-Encoding",
+  "Server": "Microsoft-IIS/10.0",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "ce258a107703b2b071aa1a8145ffe6228f368a6d9b7af539b99dbf83a96b1e00",
-  "X-Amz-Request-Id": "1885F010494002C0",
+  "X-Amz-Id-2": "dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8",
+  "X-Amz-Request-Id": "1886517E1137E26B",
   "X-Content-Type-Options": "nosniff",
+  "X-Ratelimit-Limit": "967",
+  "X-Ratelimit-Remaining": "967",
   "X-XSS-Protection": "1; mode=block",
-  "Content-Length": 1824,
-  "Content-Type": "application/xml"
+  "X-Powered-By": "ARR/3.0",
+  "Date": "Wed, 31 Dec 2025 13:58:25 GMT",
+  "Content-Type": "application/xml",
+  "Content-Length": "916"
  }
 }

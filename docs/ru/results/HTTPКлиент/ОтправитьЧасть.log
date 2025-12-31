@@ -11,10 +11,10 @@
   "Content-Length": "8",
   "Content-Range": "bytes 5-12/21",
   "Content-Type": "application/octet-stream",
-  "Host": "localhost:2424",
+  "Host": "bin.openintegrations.dev",
   "Max-Forwards": "10",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Arr-Log-Id": "c429b951-203a-4506-ab0d-b2f1f308959c",
+  "X-Arr-Log-Id": "339fec6f-c808-4c42-8c2f-79e3220eaecd",
   "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
   "X-Forwarded-Host": "bin.openintegrations.dev",
   "X-Original-Url": "***"
