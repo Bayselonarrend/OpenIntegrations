@@ -2,14 +2,14 @@
  "status": 200,
  "response": {
   "ListBucketResult": {
-   "Name": "d0f08671",
+   "Name": "967c3eed",
    "Prefix": {},
    "KeyCount": "***",
    "MaxKeys": "***",
    "IsTruncated": "false",
    "Contents": {
     "Key": "***",
-    "LastModified": "2025-12-30T08:14:53.581Z",
+    "LastModified": "2025-12-31T14:00:19.011Z",
     "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
     "Size": "2114023",
     "StorageClass": "STANDARD"
@@ -18,15 +18,18 @@
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Tue, 30 Dec 2025 08:19:52 GMT",
-  "Server": "MinIO",
+  "Vary": "Accept-Encoding",
+  "Server": "Microsoft-IIS/10.0",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "c2a299fbb3d6b004a6478b9b6d90c505d645df682f7a22b96b88f100b6280168",
-  "X-Amz-Request-Id": "1885F07006BAC775",
+  "X-Amz-Id-2": "dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8",
+  "X-Amz-Request-Id": "1886519D498C7694",
   "X-Content-Type-Options": "nosniff",
+  "X-Ratelimit-Limit": "967",
+  "X-Ratelimit-Remaining": "967",
   "X-XSS-Protection": "1; mode=block",
-  "Content-Length": "446",
-  "Content-Type": "application/xml"
+  "X-Powered-By": "ARR/3.0",
+  "Date": "Wed, 31 Dec 2025 14:00:39 GMT",
+  "Content-Type": "application/xml",
+  "Content-Length": "446"
  }
 }

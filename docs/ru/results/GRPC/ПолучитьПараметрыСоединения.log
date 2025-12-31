@@ -1,0 +1,10 @@
+﻿{
+ "address": "https://grpcb.in:9001",
+ "metadata": {
+  "somekey": "***"
+ },
+ "proto": {
+  "main.proto": "https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto",
+  "my_types.proto": "https://hut.openintegrations.dev/test_data/mt.proto"
+ }
+}
