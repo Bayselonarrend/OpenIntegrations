@@ -10,10 +10,10 @@
   "Connection": "Keep-Alive",
   "Content-Length": "96",
   "Content-Type": "application/json; charset=utf-8",
-  "Host": "localhost:2424",
+  "Host": "bin.openintegrations.dev",
   "Max-Forwards": "10",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Arr-Log-Id": "4498b9ab-fc22-41b8-b957-362fdfec4fcd",
+  "X-Arr-Log-Id": "930af8d0-c46f-4f04-9e24-19fc4c925735",
   "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
   "X-Forwarded-Host": "bin.openintegrations.dev",
   "X-Original-Url": "***"

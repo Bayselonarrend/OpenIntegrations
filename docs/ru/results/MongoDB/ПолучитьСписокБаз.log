@@ -19,7 +19,7 @@
    },
    {
     "name": "main",
-    "sizeOnDisk": 40960,
+    "sizeOnDisk": 73728,
     "empty": false
    },
    {
@@ -33,7 +33,7 @@
     "empty": false
    }
   ],
-  "totalSize": 778240,
+  "totalSize": 811008,
   "totalSizeMb": 0,
   "ok": 1
  }

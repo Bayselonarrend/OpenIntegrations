@@ -7,10 +7,10 @@
   "Authorization": "Basic dXNlcjpwYXNzd29yZA==",
   "Connection": "Keep-Alive",
   "Content-Length": "0",
-  "Host": "localhost:2424",
+  "Host": "bin.openintegrations.dev",
   "Max-Forwards": "10",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Arr-Log-Id": "169431bc-2310-4d8d-b214-d05e3599330c",
+  "X-Arr-Log-Id": "dbd781d1-98fb-48cb-bf76-f9274fa21066",
   "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
   "X-Forwarded-Host": "bin.openintegrations.dev",
   "X-Original-Url": "***"

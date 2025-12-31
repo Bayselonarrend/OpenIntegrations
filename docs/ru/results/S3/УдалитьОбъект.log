@@ -3,14 +3,16 @@
  "response": {},
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Tue, 30 Dec 2025 08:20:34 GMT",
-  "Server": "MinIO",
+  "Vary": "Accept-Encoding",
+  "Server": "Microsoft-IIS/10.0",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "ce258a107703b2b071aa1a8145ffe6228f368a6d9b7af539b99dbf83a96b1e00",
-  "X-Amz-Request-Id": "1885F079A91A70F8",
+  "X-Amz-Id-2": "dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8",
+  "X-Amz-Request-Id": "188651A98EB19B38",
   "X-Content-Type-Options": "nosniff",
+  "X-Ratelimit-Limit": "967",
+  "X-Ratelimit-Remaining": "967",
   "X-XSS-Protection": "1; mode=block",
-  "Content-Type": "text/plain; charset=utf-8"
+  "X-Powered-By": "ARR/3.0",
+  "Date": "Wed, 31 Dec 2025 14:01:32 GMT"
  }
 }
