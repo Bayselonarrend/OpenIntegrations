@@ -1325,8 +1325,8 @@ Function СформироватьСтрокуПодключения(Val Адре
 	Return GenerateConnectionString(Адрес, База, Логин, Пароль, Параметры);
 EndFunction
 
-Function ВыполнитьКоманду(Val Соединение, Val Комманда, Val Аргумент = 1, Val База = Undefined, Val Данные = Undefined) Export
-	Return ExecuteCommand(Соединение, Комманда, Аргумент, База, Данные);
+Function ВыполнитьКоманду(Val Соединение, Val Команда, Val Аргумент = 1, Val База = Undefined, Val Данные = Undefined) Export
+	Return ExecuteCommand(Соединение, Команда, Аргумент, База, Данные);
 EndFunction
 
 Function ПолучитьСписокБаз(Val Соединение) Export

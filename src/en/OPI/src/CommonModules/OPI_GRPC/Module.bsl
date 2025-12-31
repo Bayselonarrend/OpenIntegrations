@@ -240,7 +240,7 @@ EndFunction
 // It does not have to be a real file path.^^
 // Proto files that are not involved in the import of other Protos can have arbitrary file names
 // If the Proto value is not an object (a key value collection), it will be interpreted as^^
-// `{"main.proto": <passed value>}`
+// `{"main.proto": passed value}`
 //
 // Parameters:
 // Address - String - Connection address (with protocol) - addr
@@ -757,6 +757,120 @@ Function ProcessClientStream(Val Connection
     Result = GetMessage(Connector, StreamID);
     Result.Insert("messages_sent" , Counter);
     Result.Insert("finish_sending", ChannelClosing);
+
+    CloseStream(Connector, StreamID);
+
+    If CloseConnection Then
+        CloseConnection(Connector);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+// Process bidirectional stream
+// Initializes a bidirectional stream, then passes and sends messages in the specified order
+//
+// Note:
+// Example: Retrieving a message after every two sent messages and three more at the end (null in 1C = Undefined))^
+// ExchangeOrder: `[{Message1}, {Message2}, null, {Message3}, ... {MessageN}, null, null, null, null, null]`
+//
+// Parameters:
+// Connection - Arbitrary - Existing connection or connection parameters - conn
+// Service - String - Service name - service
+// Method - String - Method name - method
+// ExchangeOrder - Array Of Arbitrary - Array of request data and Undefined where retrieval is needed - exch
+// Timeout - Number - Timeout for individual operation (in ms)) - tout
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// ContinueReceiving - Boolean - Continue receiving after processing the exchange order - cnt
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function ProcessBidirectionalStream(Val Connection
+    , Val Service
+    , Val Method
+    , Val ExchangeOrder
+    , Val Timeout = 10000
+    , Val Tls = Undefined
+    , Val ContinueReceiving = True) Export
+
+    If IsConnector(Connection) Then
+        CloseConnection = False;
+        Connector       = Connection;
+    Else
+        CloseConnection = True;
+        Connector       = CreateConnection(Connection, Tls);
+    EndIf;
+
+    If Not IsConnector(Connector) Then
+        Return Connector;
+    EndIf;
+
+    Initialization = InitializeStream("bidi", Connector, Service, Method, Undefined, Timeout);
+
+    If Not Initialization["result"] Then
+        Return Initialization;
+    EndIf;
+
+    OPI_TypeConversion.GetArray(ExchangeOrder);
+    OPI_TypeConversion.GetBoolean(ContinueReceiving);
+
+    StreamID      = Initialization["streamId"];
+    ReceivedArray = New Array;
+
+    For Each Action In ExchangeOrder Do
+
+        IsRettrieve = Action = Undefined;
+
+        If IsRettrieve Then
+            CurrentOperation = GetMessage(Connector, StreamID);
+        Else
+            CurrentOperation = SendMessage(Connector, StreamID, Action);
+        EndIf;
+
+        If Not CurrentOperation["result"] Then
+
+            Error = CurrentOperation["error"];
+
+            ErrorMap = New Map;
+            ErrorMap.Insert("result", False);
+            ErrorMap.Insert("error" , Error);
+            ErrorMap.Insert("data"  , ReceivedArray);
+
+        Else
+
+            If IsRettrieve Then
+                ReceivedArray.Add(CurrentOperation["message"]);
+            EndIf;
+
+        EndIf;
+
+    EndDo;
+
+    ChannelClosing = CompleteSend(Connector, StreamID);
+
+    Result = New Map;
+    Result.Insert("result"        , True);
+    Result.Insert("finish_sending", ChannelClosing);
+
+    If ContinueReceiving Then
+
+        While True Do
+
+            CurrentOperation = GetMessage(Connector, StreamID);
+
+            If CurrentOperation["result"] Then
+                ReceivedArray.Add(CurrentOperation["message"]);
+            Else
+                Result.Insert("final_retrieval", CurrentOperation);
+                Break;
+            EndIf;
+
+        EndDo;
+
+    EndIf;
+
+    Result.Insert("data", ReceivedArray);
 
     CloseStream(Connector, StreamID);
 
