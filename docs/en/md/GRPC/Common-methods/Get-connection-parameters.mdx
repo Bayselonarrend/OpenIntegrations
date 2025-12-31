@@ -26,12 +26,24 @@ import TabItem from '@theme/TabItem';
 :::tip
 Proto file name is used to allow further specification of this Proto in the import of another Proto It does not have to be a real file path. Proto files that are not involved in the import of other Protos can have arbitrary file names
 
-If the Proto value is not an object (a key value collection), it will be interpreted as `{"main.proto": &lt;passed value&gt;}`
+If the Proto value is not an object (a key value collection), it will be interpreted as `{"main.proto": passed value}`
 :::
 <br/>
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    Address = "https://grpcb.in:9001";
 
+    Proto1 = "https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto"; // String, path to file or URL
+    Proto2 = "https://hut.openintegrations.dev/test_data/mt.proto"; // String, path to file or URL
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1); // Primary
+    Scheme.Insert("my_types.proto", Proto2); // For import in primary
+
+    Meta   = New Structure("somekey", "somevalue");
+    Result = OPI_GRPC.GetConnectionParameters(Address, Scheme, Meta);
+```
  
 
 

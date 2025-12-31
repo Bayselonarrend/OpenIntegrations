@@ -673,10 +673,14 @@ Function GetOr(Val Collection, Val Field, Val DefaultValue) Export
 
 EndFunction
 
-Function CompareTwoCollections(Val FirstCollection, Val SecondCollection, Val ExcludedFields = Undefined) Export
+Function CompareTwoCollections(Val FirstCollection
+    , Val SecondCollection
+    , Val ExcludedFields = Undefined
+    , Val ParrentField   = "Root") Export
 
     If TypeOf(FirstCollection) <> TypeOf(SecondCollection) Then
         If Not (ThisIsCollection(FirstCollection, True) And ThisIsCollection(SecondCollection, True)) Then
+            DebugInfo(StrTemplate("%1: Collections types are not equal", ParrentField), True);
             Return False;
         EndIf;
     EndIf;
@@ -698,7 +702,11 @@ Function CompareTwoCollections(Val FirstCollection, Val SecondCollection, Val Ex
                     Continue;
                 EndIf;
 
-                If Not CompareTwoCollections(CollectionItem.Value, SecondCollection[CollectionItem.Key]) Then
+                CurrentKey   = CollectionItem.Key;
+                CurrentValue = CollectionItem.Value;
+                CurrentField = StrTemplate("%1.%2", ParrentField, String(CollectionItem.Key));
+
+                If Not CompareTwoCollections(CurrentValue, SecondCollection[CurrentKey], , CurrentField) Then
                     Return False;
                 EndIf;
 
@@ -708,7 +716,9 @@ Function CompareTwoCollections(Val FirstCollection, Val SecondCollection, Val Ex
 
             For N = 0 To FirstCollection.UBound() Do
 
-                If Not CompareTwoCollections(FirstCollection[N], SecondCollection[N]) Then
+                CurrentField = StrTemplate("%1.%2", ParrentField, String(N));
+
+                If Not CompareTwoCollections(FirstCollection[N], SecondCollection[N], , CurrentField) Then
                     Return False;
                 EndIf;
 
@@ -717,12 +727,14 @@ Function CompareTwoCollections(Val FirstCollection, Val SecondCollection, Val Ex
         Else
 
              If FirstCollection <> SecondCollection Then
+                 DebugInfo(StrTemplate("%1: Values ​​are not equal", ParrentField), True);
                  Return False;
              EndIf;
 
         EndIf;
 
     Except
+        DebugInfo(StrTemplate("Exception: %1", DetailErrorDescription(ErrorInfo())));
         Return False;
     EndTry;
 
@@ -813,7 +825,7 @@ Procedure ProgressInformation(Val Current, Val Total, Val Unit, Val Divider = 1)
 
 EndProcedure
 
-Procedure DebugInfo(Val Text) Export
+Procedure DebugInfo(Val Text, Val Forced = False) Export
 
     If Not IsOneScript() Then
         Return;
@@ -829,7 +841,7 @@ Procedure DebugInfo(Val Text) Export
        IsDebug = "NO";
     EndTry;
 
-    If IsDebug = "YES" Then
+    If IsDebug = "YES" Or Forced Then
 
         // BSLLS:DeprecatedMessage-off
 
