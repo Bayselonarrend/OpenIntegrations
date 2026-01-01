@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "9180",
+   "id": "9190",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-01-01T19:06:31+03:00",
+   "createdDate": "2026-01-01T23:08:02+00:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-01-01T19:06:41+03:00",
+   "changedDate": "2026-01-01T23:08:16+00:00",
    "statusChangedBy": "1",
    "closedBy": null,
    "closedDate": null,
-   "activityDate": "2026-01-01T19:06:41+03:00",
+   "activityDate": "2026-01-01T23:08:16+00:00",
    "dateStart": null,
-   "deadline": "2026-01-02T22:06:00+03:00",
-   "startDatePlan": "2026-01-01T19:06:31+03:00",
-   "endDatePlan": "2026-01-02T00:00:00+03:00",
-   "guid": "{5aeb266b-e9ef-486d-8e4a-5438f9fe9032}",
+   "deadline": "2026-01-02T23:08:00+00:00",
+   "startDatePlan": "2026-01-01T23:08:02+00:00",
+   "endDatePlan": "2026-01-02T21:00:00+00:00",
+   "guid": "{e0ef0287-c1df-4782-90a5-4f63973e3144}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "6",
-   "statusChangedDate": "2026-01-01T19:06:41+03:00",
+   "statusChangedDate": "2026-01-01T23:08:16+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1767283601,
-  "finish": 1767283601.3307,
-  "duration": 0.330694913864136,
-  "processing": 0,
-  "date_start": "2026-01-01T19:06:41+03:00",
-  "date_finish": "2026-01-01T19:06:41+03:00",
-  "operating_reset_at": 1767284201,
-  "operating": 0.183876037597656
+  "start": 1767308895,
+  "finish": 1767308896.13562,
+  "duration": 1.13562393188477,
+  "processing": 1,
+  "date_start": "2026-01-01T23:08:15+00:00",
+  "date_finish": "2026-01-01T23:08:16+00:00",
+  "operating_reset_at": 1767309495,
+  "operating": 0.167232990264893
  }
 }
