@@ -12889,8 +12889,9 @@ Function Check_GRPC_GetMessage(Val Result, Val Option, Closing = Undefined, Data
     ExpectsThat(Result["result"]).Равно(True);
     ExpectsThat(Closing["result"]).Равно(True);
 
-    FieldList = StrSplit("f_bytes,f_bytess", ",");
-    ExpectsThat(OPI_Tools.CompareTwoCollections(Result["message"], Data, FieldList)).Равно(True);
+    FieldList = StrSplit("f_bytes,f_bytess,f_float", ",");
+    ExpectsThat(Left(String(Result["message"]["f_float"])        , 4)).Равно(Left(String(Data["f_float"]), 4));
+    ExpectsThat(OPI_Tools.CompareTwoCollections(Result["message"], Data                                  , FieldList)).Равно(True);
 
     Return Result;
 
