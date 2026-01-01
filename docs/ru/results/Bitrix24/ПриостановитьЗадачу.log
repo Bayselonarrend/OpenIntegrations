@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "9170",
+   "id": "9180",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-01-01T10:49:24+00:00",
+   "createdDate": "2026-01-01T19:06:31+03:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-01-01T10:49:51+00:00",
+   "changedDate": "2026-01-01T19:07:02+03:00",
    "statusChangedBy": "1",
    "closedBy": "1",
    "closedDate": null,
-   "activityDate": "2026-01-01T10:49:51+00:00",
-   "dateStart": "2026-01-01T10:49:47+00:00",
-   "deadline": "2026-01-02T10:49:00+00:00",
-   "startDatePlan": "2026-01-01T10:49:24+00:00",
-   "endDatePlan": "2026-01-01T21:00:00+00:00",
-   "guid": "{27ae68e6-c9e6-42de-9900-55e98c7162c6}",
+   "activityDate": "2026-01-01T19:07:02+03:00",
+   "dateStart": "2026-01-01T19:06:59+03:00",
+   "deadline": "2026-01-02T22:06:00+03:00",
+   "startDatePlan": "2026-01-01T19:06:31+03:00",
+   "endDatePlan": "2026-01-02T00:00:00+03:00",
+   "guid": "{5aeb266b-e9ef-486d-8e4a-5438f9fe9032}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "2",
-   "statusChangedDate": "2026-01-01T10:49:51+00:00",
+   "statusChangedDate": "2026-01-01T19:07:02+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1767264591,
-  "finish": 1767264591.82432,
-  "duration": 0.824320077896118,
+  "start": 1767283622,
+  "finish": 1767283622.22006,
+  "duration": 0.220055103302002,
   "processing": 0,
-  "date_start": "2026-01-01T10:49:51+00:00",
-  "date_finish": "2026-01-01T10:49:51+00:00",
-  "operating_reset_at": 1767265191,
-  "operating": 0.168761014938354
+  "date_start": "2026-01-01T19:07:02+03:00",
+  "date_finish": "2026-01-01T19:07:02+03:00",
+  "operating_reset_at": 1767284222,
+  "operating": 0.193908929824829
  }
 }
