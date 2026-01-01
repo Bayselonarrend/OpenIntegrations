@@ -26785,7 +26785,7 @@ Procedure GRPC_GetMessage(FunctionParameters)
     Data.Insert("f_string" , "Test message");
     Data.Insert("f_int32"  , 123);
     Data.Insert("f_int64"  , 123);
-    Data.Insert("f_float"  , 123.22000122070312);
+    Data.Insert("f_float"  , "123.22000122070312");
     Data.Insert("f_bool"   , True);
     Data.Insert("f_enum"   , "ENUM_1");
     Data.Insert("f_bytes"  , File);
