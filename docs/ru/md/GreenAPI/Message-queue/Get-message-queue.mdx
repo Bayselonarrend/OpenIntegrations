@@ -63,41 +63,153 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 [
  {
-  "messageID": "3EB010127E87DB65AF1015",
+  "messageID": "3EB05D8D4338501DE76AAC",
+  "type": "sendMessage",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "message": "Новое сообщение",
+   "quotedMessageId": "3EB07E013D237999B38B39",
+   "linkPreview": true,
+   "typingTime": null,
+   "typePreview": "small"
+  }
+ },
+ {
+  "messageID": "3EB017A91F13153DCB293B",
+  "type": "sendFileByUrl",
+  "body": {
+   "fileName": "photo.jpg",
+   "chatId": "120363410406221140@g.us",
+   "caption": "Описание файла",
+   "archive": false,
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/b77615f5-c711-4d5b-b2a3-30f679a4489f.jpg",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "3EB0D938A90FF5B9FE759F",
+  "type": "sendFileByUrl",
+  "body": {
+   "fileName": "vid.mp4",
+   "chatId": "120363410406221140@g.us",
+   "quotedMessageId": "3EB017A91F13153DCB293B",
+   "caption": "Описание файла",
+   "archive": false,
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/e1382d21-2b78-4c46-9b4c-0eb669caf4ef.mp4",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "3EB003381E41BD1D0F2BF9",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "urlFile": "https://hut.openintegrations.dev/test_data/picture.jpg",
+   "fileName": "photo.jpg",
+   "caption": "Описание файла",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "3EB0471E6957430C16C2B8",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "urlFile": "https://hut.openintegrations.dev/test_data/video.mp4",
+   "fileName": "vid.mp4",
+   "caption": "Описание файла",
+   "quotedMessageId": "3EB003381E41BD1D0F2BF9",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "3EB08F2EB0995BDEB50C0D",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0239DACDBAEE07AD9B9",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": true,
+   "quotedMessageId": "3EB08F2EB0995BDEB50C0D",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0EA99CC0AA96E62E7CA",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "address": "Площадь Победы, Минск",
+   "nameLocation": "пл. Победы",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0F405EEB34A413E9C55",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "120363410406221140@g.us",
+   "quotedMessageId": "3EB0EA99CC0AA96E62E7CA",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0CA1A0A79A8871E6992",
   "type": "sendContact",
   "body": {
    "chatId": "120363410406221140@g.us",
    "contact": {
     "phoneContact": 79001234568,
+    "firstName": "Артем",
+    "middleName": "Евпаторийский",
+    "lastName": "Петрович",
     "company": "Велосипед"
    },
-   "quotedMessageId": "3EB07A496D9655B984CB82",
    "typingTime": null
   }
  },
  {
-  "messagesIDs": [
-   "3EB02AE34488031297FFCE"
-  ],
-  "type": "ForwardMessages",
+  "messageID": "3EB0CD0214D5FFE76C3597",
+  "type": "sendContact",
   "body": {
-   "chatId": "120363410406221140@g.us",
-   "chatIdFrom": "120363410406221140@g.us",
-   "messages": [
-    "3EB014FD3FCB6A7893E910"
-   ],
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB0A4B722BF39425DA9C9",
-  "type": "editMessage",
-  "body": {
-   "chatId": "120363410406221140@g.us",
-   "idMessage": "3EB014FD3FCB6A7893E910",
-   "message": "Новый текст сообщения",
-   "linkPreview": true
-  }
- }
-]
+...
 ```
