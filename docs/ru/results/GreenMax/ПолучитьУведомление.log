@@ -7,8 +7,8 @@
    "wid": "***",
    "typeInstance": "v3"
   },
-  "timestamp": 1767189827,
-  "idMessage": "1767189825532",
+  "timestamp": 1767189830,
+  "idMessage": "1767189829810",
   "senderData": {
    "chatId": "***",
    "chatName": "***",
@@ -18,13 +18,14 @@
    "senderPhoneNumber": "***"
   },
   "messageData": {
-   "typeMessage": "extendedTextMessage",
-   "extendedTextMessageData": {
-    "text": "Текст сообщения",
-    "description": "",
-    "title": "",
-    "previewType": "None",
-    "jpegThumbnail": "",
+   "typeMessage": "imageMessage",
+   "fileMessageData": {
+    "downloadUrl": "https://mediaout-3100.storage.yandexcloud.net/3100309139/2dcc398f-32dc-470e-a884-e79b2bdaa6a9.jpg",
+    "caption": "Описание файла",
+    "fileName": "photo.jpg",
+    "jpegThumbnail": "UklGRvgBAABXRUJQVlA4IOwBAADwCgCdASoyACYAAUAmJYwC7NEi26VoDwT8xB/ScUr4wDxM/4Bq9/7l/UC+jSyuGNjR/nd+I42sIZfXav7EIAoB3MeAdBEgl58tkqFHL4ied/Cd9ogQFtjPrcML5F72L+AA/vX41ZdOHu9NLDZhqPsz1GI5WcPnL+G8cTPu4+FDM0EdyS+ud8JaLepEEOz/VInh1AspI3vwFJrnpwZfd3wMBVIYfP8kjg+kDKi9JhT9X2f03DQVFc2DOoqBUIwe+mhjlNWtltwdXJGY6vsVTecmLfR3BcwnxrFKgYVFq+ll1fJSbyMWo2ENhkZFQgVX49/MmUblS/H8j11IIygSiWeWs66Lbqehk7vr7yYUSjWmDYmlpsT6+sl8/6KEjq53OcL/1QzlaGML4CeELUw6QgG3Q6kbaMTyF8T8qwv4nLMe+7v0vb9YirtDpRw6BRNc+Ac2VzhqPkdofUu4sJ5d3rF58zHmZBQN+7nr50P8wnrA1/4McyHKo+slgx8oixxKNUNc7LnuCZuXurUyNVPhCuYMhbLeNxgzIDFeO2TNjInyKw3Mzuo/e6Wsn95ggvkXTRMROKC4/Sh94Zb3YRuQdMEmmDrkTYhzOb5lMQUBHbbqoek44klC80RFndJKcP0CjWuNqN9Sl7clTkn1wAA=",
+    "isAnimated": false,
+    "mimeType": "image/jpeg",
     "forwardingScore": 0,
     "isForwarded": false
    }
