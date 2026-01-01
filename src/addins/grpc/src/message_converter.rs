@@ -166,8 +166,8 @@ fn prost_value_to_json_value(binary_vault: &BinaryVault, prost_value: &prost_ref
         ProstValue::I64(i) => Ok(Value::Number((*i).into())),
         ProstValue::U32(u) => Ok(Value::Number((*u).into())),
         ProstValue::U64(u) => Ok(Value::Number((*u).into())),
-        ProstValue::F32(f) => Ok(json!(f.to_string())),
-        ProstValue::F64(f) => Ok(json!(f.to_string())),
+        ProstValue::F32(f) => Ok(json!(f)),
+        ProstValue::F64(f) => Ok(json!(f)),
         ProstValue::String(s) => Ok(Value::String(s.clone())),
         ProstValue::Bytes(b) => {
             let base64_string = general_purpose::STANDARD.encode(b);
