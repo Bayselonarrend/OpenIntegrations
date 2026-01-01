@@ -1,8 +1,8 @@
 ﻿{
  "entity": {
   "cdek_number": "1106207236",
-  "order_uuid": "14894d2a-33ba-48bb-acef-1e5a59b96784",
-  "date": "2026-01-14",
+  "order_uuid": "84de8aaf-3742-4bf6-92ca-94044972db3d",
+  "date": "2026-01-15",
   "time_from": "10:00",
   "time_to": "17:00",
   "comment": "Офис группы компаний",
@@ -19,30 +19,30 @@
    "address": "ул. Блюхера, 33",
    "postal_code": "109004"
   },
-  "uuid": "7c99601b-548a-4d7f-b01b-4913b5171196",
+  "uuid": "d07b740a-3e26-4b06-9a60-ac4180f33619",
   "statuses": [
    {
     "code": "INVALID",
     "name": "Некорректна",
-    "date_time": "2025-12-31T16:57:15+03:00"
+    "date_time": "2026-01-01T10:58:49+00:00"
    },
    {
     "code": "ACCEPTED",
     "name": "Принята",
-    "date_time": "2025-12-31T16:57:14+03:00"
+    "date_time": "2026-01-01T10:58:48+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "284249f1-ed58-4078-9256-4432456d37b6",
+   "request_uuid": "3ca652d7-a78b-490e-bc48-5048f720b84d",
    "type": "CREATE",
-   "date_time": "2025-12-31T16:57:14+03:00",
+   "date_time": "2026-01-01T10:58:48+00:00",
    "state": "INVALID",
    "errors": [
     {
      "code": "delivery_date_too_late",
-     "message": "Указанная дата доставки не может быть позднее 2026-01-12"
+     "message": "Указанная дата доставки не может быть позднее 2026-01-13"
     }
    ]
   }
