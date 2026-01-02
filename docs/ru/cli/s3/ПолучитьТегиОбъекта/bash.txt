@@ -2,6 +2,6 @@
 
 oint s3 ПолучитьТегиОбъекта \
   --name "picture.jpg" \
-  --bucket "765ecf15" \
+  --bucket "c8886e8b" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
   --dir true
