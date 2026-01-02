@@ -2,4 +2,4 @@
 
 oint s3 ОтправитьЗапросБезТела \
   --method "GET" \
-  --basic "{'URL':'storage-564.s3hoster.by/opi-newbucket2','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
+  --basic "{'URL':'s3.openintegrations.dev/opi-newbucket2','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
