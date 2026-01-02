@@ -39,7 +39,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint twitter СоздатьТекстовыйТвит \
-              --text "Тестовый твитт29029698-df18-4c19-9b6e-f6e3ef11974e" \
+              --text "Тестовый твиттc6954c93-5433-4d31-92b7-88393a1df0b0" \
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -49,7 +49,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint twitter СоздатьТекстовыйТвит ^
-              --text "Тестовый твитт29029698-df18-4c19-9b6e-f6e3ef11974e" ^
+              --text "Тестовый твиттc6954c93-5433-4d31-92b7-88393a1df0b0" ^
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -58,12 +58,9 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "data": {
-  "edit_history_tweet_ids": [
-   null
-  ],
-  "id": "2006856553442210255",
-  "text": "Тестовый твиттbaf5e3bf-daf1-4c43-8039-d1c1317a05a2"
- }
+ "title": "Too Many Requests",
+ "detail": "Too Many Requests",
+ "type": "about:blank",
+ "status": 429
 }
 ```

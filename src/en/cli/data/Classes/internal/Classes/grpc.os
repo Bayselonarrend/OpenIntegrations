@@ -59,7 +59,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EXECUTEMETHOD";
     NewLine.Parameter     = "--data";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Request data";
+    NewLine.Description     = "Request data (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 
