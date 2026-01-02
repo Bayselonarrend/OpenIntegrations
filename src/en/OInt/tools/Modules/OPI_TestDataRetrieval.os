@@ -13304,7 +13304,7 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
 
     AddInName = Upper(StrSplit(ValeType, ".")[1]);
 
-    If AddInName = "OPI_PostgreSQL" Or AddInName = "OPI_MySQL" Or AddInName = "OPI_MSSQL" Then
+    If AddInName = "OPI_POSTGRESQL" Or AddInName = "OPI_MYSQL" Or AddInName = "OPI_MSSQL" Then
 
         If AddInName = "OPI_MSSQL" Then
 
@@ -13324,15 +13324,15 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
 
         Value = Value["ConnectionString"];
 
-    ElsIf AddInName = "OPI_MongoDB" Then
+    ElsIf AddInName = "OPI_MONGODB" Then
 
         Value = Value["ConnectionString"];
 
-    ElsIf AddInName = "OPI_SQLite" Then
+    ElsIf AddInName = "OPI_SQLITE" Then
 
         Value = Value["Database"];
 
-    ElsIf AddInName = "OPI_TCPClient" Then
+    ElsIf AddInName = "OPI_TCPCLIENT" Then
 
         Value = Value["Address"];
 
