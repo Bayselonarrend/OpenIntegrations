@@ -1,0 +1,9 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
+oint grpc ОбработатьСерверныйПоток ^
+  --conn "{'address':'https://grpcb.in:9001','proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto','my_types.proto':'https://hut.openintegrations.dev/test_data/mt.proto'}}" ^
+  --service "grpcbin.GRPCBin" ^
+  --method "DummyServerStream" ^
+  --data "{'f_string':'Test message','f_int32':'123','f_bool':true,'f_sub':{'f_string':'Nested value'}}" ^
+  --tls "{'use_tls':true,'accept_invalid_certs':true}" ^
+  --count 3
