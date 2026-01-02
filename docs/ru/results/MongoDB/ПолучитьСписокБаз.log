@@ -18,6 +18,11 @@
     "empty": false
    },
    {
+    "name": "main",
+    "sizeOnDisk": 73728,
+    "empty": false
+   },
+   {
     "name": "openyellow",
     "sizeOnDisk": 286720,
     "empty": false
@@ -28,7 +33,7 @@
     "empty": false
    }
   ],
-  "totalSize": 741376,
+  "totalSize": 815104,
   "totalSizeMb": 0,
   "ok": 1
  }

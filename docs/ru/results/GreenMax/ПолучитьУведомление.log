@@ -1,15 +1,34 @@
 ﻿{
  "receiptId": 1,
  "body": {
-  "typeWebhook": "outgoingMessageStatus",
-  "chatId": "***",
+  "typeWebhook": "outgoingAPIMessageReceived",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "v3"
   },
-  "timestamp": 1767284802,
-  "idMessage": "1767284717605",
-  "status": "notInGroup"
+  "timestamp": 1767309991,
+  "idMessage": "1767309890282",
+  "senderData": {
+   "chatId": "***",
+   "chatName": "***",
+   "sender": "***",
+   "senderName": "***",
+   "senderContactName": "***",
+   "senderPhoneNumber": "***"
+  },
+  "messageData": {
+   "typeMessage": "imageMessage",
+   "fileMessageData": {
+    "downloadUrl": "https://hut.openintegrations.dev/test_data/picture.jpg",
+    "caption": "",
+    "fileName": "photo.jpg",
+    "jpegThumbnail": "UklGRvgBAABXRUJQVlA4IOwBAADwCgCdASoyACYAAUAmJYwC7NEi26VoDwT8xB/ScUr4wDxM/4Bq9/7l/UC+jSyuGNjR/nd+I42sIZfXav7EIAoB3MeAdBEgl58tkqFHL4ied/Cd9ogQFtjPrcML5F72L+AA/vX41ZdOHu9NLDZhqPsz1GI5WcPnL+G8cTPu4+FDM0EdyS+ud8JaLepEEOz/VInh1AspI3vwFJrnpwZfd3wMBVIYfP8kjg+kDKi9JhT9X2f03DQVFc2DOoqBUIwe+mhjlNWtltwdXJGY6vsVTecmLfR3BcwnxrFKgYVFq+ll1fJSbyMWo2ENhkZFQgVX49/MmUblS/H8j11IIygSiWeWs66Lbqehk7vr7yYUSjWmDYmlpsT6+sl8/6KEjq53OcL/1QzlaGML4CeELUw6QgG3Q6kbaMTyF8T8qwv4nLMe+7v0vb9YirtDpRw6BRNc+Ac2VzhqPkdofUu4sJ5d3rF58zHmZBQN+7nr50P8wnrA1/4McyHKo+slgx8oixxKNUNc7LnuCZuXurUyNVPhCuYMhbLeNxgzIDFeO2TNjInyKw3Mzuo/e6Wsn95ggvkXTRMROKC4/Sh94Zb3YRuQdMEmmDrkTYhzOb5lMQUBHbbqoek44klC80RFndJKcP0CjWuNqN9Sl7clTkn1wAA=",
+    "isAnimated": false,
+    "mimeType": "image/jpeg",
+    "forwardingScore": 0,
+    "isForwarded": false
+   }
+  }
  }
 }
