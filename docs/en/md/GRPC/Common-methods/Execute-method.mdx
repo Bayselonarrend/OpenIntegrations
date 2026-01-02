@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function ExecuteMethod(Val Connection, Val Service, Val Method, Val Request, Val Timeout = 10000, Val Tls = Undefined) Export`
+`Function ExecuteMethod(Val Connection, Val Service, Val Method, Val Request = Undefined, Val Timeout = 10000, Val Tls = Undefined) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Connection | --conn | Arbitrary | &#x2714; | Existing connection or connection parameters |
   | Service | --service | String | &#x2714; | Service name |
   | Method | --method | String | &#x2714; | Method name |
-  | Request | --data | Structure Of KeyAndValue | &#x2714; | Request data |
+  | Request | --data | Structure Of KeyAndValue | &#x2716; | Request data |
   | Timeout | --tout | Number | &#x2716; | Timeout (in ms) |
   | Tls | --tls | Structure Of KeyAndValue | &#x2716; | TLS settings, if necessary. See GetTlsSettings |
 

@@ -60,9 +60,9 @@ import TabItem from '@theme/TabItem';
             oint s3 ПолучитьСсылкуЗагрузкиОбъекта \
               --name "pictureU.jpg" \
               --bucket "newbucket2" \
-              --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+              --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
               --expires 7200 \
-              --dir false
+              --dir true
         ```
     </TabItem>
   
@@ -73,14 +73,14 @@ import TabItem from '@theme/TabItem';
             oint s3 ПолучитьСсылкуЗагрузкиОбъекта ^
               --name "pictureU.jpg" ^
               --bucket "newbucket2" ^
-              --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+              --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
               --expires 7200 ^
-              --dir false
+              --dir true
         ```
     </TabItem>
 </Tabs>
 
 
 ```json title="Результат"
-"s3.openintegrations.dev/newbucket2/pictureU.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bayselonarrend%2F20260101%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20260101T232136Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=a32cf37098b0c51ec1727f8fd93022a6ce6111c88ef97b434a19a3a1003b31c3"
+"s3.openintegrations.dev/newbucket2/pictureU.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bayselonarrend%2F20260102%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20260102T152944Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=01a04242dbfecc5608e48e598425ec7cb3f2c39319ea7d9be874ae0809d53336"
 ```
