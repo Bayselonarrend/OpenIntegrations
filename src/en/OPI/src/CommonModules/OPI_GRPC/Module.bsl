@@ -189,7 +189,7 @@ EndFunction
 Function ExecuteMethod(Val Connection
     , Val Service
     , Val Method
-    , Val Request
+    , Val Request = Undefined
     , Val Timeout = 10000
     , Val Tls = Undefined) Export
 
@@ -207,7 +207,7 @@ Function ExecuteMethod(Val Connection
 
     CallStructureAsString = FormCallString(Connector, Service, Method, Timeout, Request);
 
-    Result = Connection.Call(CallStructureAsString);
+    Result = Connector.Call(CallStructureAsString);
     Result = OPI_Tools.JsonToStructure(Result);
 
     If CloseConnection Then
@@ -323,7 +323,7 @@ Function GetServiceList(Val Connection, Val Tls = Undefined) Export
         Return Connector;
     EndIf;
 
-    Result = Connection.ListServices();
+    Result = Connector.ListServices();
     Result = OPI_Tools.JsonToStructure(Result);
 
     If CloseConnection Then
@@ -360,7 +360,7 @@ Function GetMethodList(Val Connection, Val Service, Val Tls = Undefined) Export
 
     OPI_TypeConversion.GetLine(Service);
 
-    Result = Connection.ListMethods(Service);
+    Result = Connector.ListMethods(Service);
     Result = OPI_Tools.JsonToStructure(Result);
 
     If CloseConnection Then
@@ -399,7 +399,7 @@ Function GetMethod(Val Connection, Val Service, Val Method, Val Tls = Undefined)
     OPI_TypeConversion.GetLine(Service);
     OPI_TypeConversion.GetLine(Method);
 
-    Result = Connection.GetMethodInfo(Service, Method);
+    Result = Connector.GetMethodInfo(Service, Method);
     Result = OPI_Tools.JsonToStructure(Result);
 
     If CloseConnection Then
