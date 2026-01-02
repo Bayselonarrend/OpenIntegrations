@@ -30,10 +30,10 @@
    "smallint_field": 5,
    "smallserial_field": 6,
    "text_field": "Some text",
-   "time_field": "17:30:33",
-   "ts_field": "2026-01-02T17:30:33",
-   "tswtz_field": "2026-01-02T18:30:33.082823+03:00",
-   "uuid_field": "2e42be42-8fcb-4bb6-986d-af7c95b1d84b",
+   "time_field": "22:25:54",
+   "ts_field": "2026-01-02T22:25:54",
+   "tswtz_field": "2026-01-02T23:25:54.019255+03:00",
+   "uuid_field": "fec89f8d-d10b-4507-a18a-3c34e100979e",
    "varchar_field": "Some varchar"
   }
  ],

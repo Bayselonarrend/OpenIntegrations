@@ -1,11 +1,11 @@
 ﻿{
  "ok": true,
  "channel": "C06UFNUTKUL",
- "ts": "1767365699.072259",
+ "ts": "1767383471.365099",
  "message": {
   "user": "U06UG1CAYH2",
   "type": "message",
-  "ts": "1767365699.072259",
+  "ts": "1767383471.365099",
   "bot_id": "B06TZ0MJV5M",
   "app_id": "A06TYNH45RV",
   "text": "Тестовое сообщение 1",
@@ -27,7 +27,7 @@
   "blocks": [
    {
     "type": "rich_text",
-    "block_id": "pz1Yt",
+    "block_id": "Hnv",
     "elements": [
      {
       "type": "rich_text_section",
