@@ -1,4 +1,4 @@
 oint slack ПригласитьПользователейВКанал \
   --token "***" \
-  --channel "C0A3RGXETEC" \
+  --channel "C0A6GRUV89Y" \
   --users "U06UABH3APP"

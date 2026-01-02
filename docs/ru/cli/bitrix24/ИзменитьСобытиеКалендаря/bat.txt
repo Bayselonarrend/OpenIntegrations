@@ -2,6 +2,6 @@
 
 oint bitrix24 ИзменитьСобытиеКалендаря ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --event 3316 ^
+  --event 3420 ^
   --fields "{'ownerId':'1','type':'user','name':'Измененное событие','description':'Новое описание события','importance':'low','private_event':'Y'}" ^
   --token "***"
