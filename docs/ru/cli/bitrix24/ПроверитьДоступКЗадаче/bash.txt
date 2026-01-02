@@ -1,5 +1,5 @@
 oint bitrix24 ПроверитьДоступКЗадаче \
   --url "b24-ar17wx.bitrix24.by" \
-  --task "9058" \
+  --task "9200" \
   --users "['1','10']" \
   --token "***"

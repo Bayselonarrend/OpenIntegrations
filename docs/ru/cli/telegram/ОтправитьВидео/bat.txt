@@ -2,4 +2,4 @@ oint telegram ОтправитьВидео ^
   --token "***" ^
   --chat "***" ^
   --text "Строковое значение" ^
-  --video "C:\Users\bayse\AppData\Local\Temp\4gckcila.ocg"
+  --video "C:\Users\bayse\AppData\Local\Temp\iogqneps.t1n"
