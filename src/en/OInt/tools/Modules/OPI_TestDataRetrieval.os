@@ -13302,7 +13302,7 @@ EndFunction
 
 Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
 
-    AddInName = StrSplit(ValeType, ".")[1];
+    AddInName = Upper(StrSplit(ValeType, ".")[1]);
 
     If AddInName = "OPI_PostgreSQL" Or AddInName = "OPI_MySQL" Or AddInName = "OPI_MSSQL" Then
 
@@ -13339,8 +13339,11 @@ Function ProcessAddInParamCLI(Val Value, Val ValeType, AddOptions)
     ElsIf AddInName = "OPI_RCON" Or AddInName = "OPI_GRPC" Then
 
         Value = Value.GetSettings();
+
+        Message(Value);
+
         OPI_TypeConversion.GetKeyValueCollection(Value);
-        TFN   = GetTempFileName();
+        TFN = GetTempFileName();
         OPI_Tools.WriteJSONFile(TFN, Value);
 
         Value = TFN;
