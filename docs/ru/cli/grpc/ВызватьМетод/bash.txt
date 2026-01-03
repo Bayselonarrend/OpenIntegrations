@@ -1,7 +1,7 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint grpc ВызватьМетод \
-  --conn "{'address':'https://grpcb.in:9001','proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto','my_types.proto':'https://hut.openintegrations.dev/test_data/mt.proto'}}" \
+  --conn "{'address':'https://grpcb.in:9001','metadata':{'somekey':'***'},'proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto','my_types.proto':'https://hut.openintegrations.dev/test_data/mt.proto'}}" \
   --service "grpcbin.GRPCBin" \
-  --method "HeadersUnary" \
-  --tls "{'use_tls':true,'accept_invalid_certs':true}"
+  --method "DummyUnary" \
+  --data "{'f_string':'Test message','f_int32':'123','f_int64':'123','f_float':'123.220001220703','f_bool':true,'f_enum':'ENUM_1','f_bytes':'C:\\Users\\bayse\\AppData\\Local\\Temp\\zxlqopdi.3xo','f_sub':{'f_string':'Nested value'},'f_strings':['one','two','three'],'f_int32s':['1','10','100'],'f_int64s':['1','10','100'],'f_floats':['1','10','100'],'f_bytess':['C:\\Users\\bayse\\AppData\\Local\\Temp\\roktazx4.oz2','C:\\Users\\bayse\\AppData\\Local\\Temp\\z4ukw5f3.4su'],'f_subs':[{'f_string':'Nested value 1'},{'f_string':'Nested value 2'}],'f_bools':[true,false],'f_enums':['ENUM_1','ENUM_2']}"
