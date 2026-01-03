@@ -34824,19 +34824,23 @@ Procedure GRPC_SetMetadata(FunctionParameters)
 
     Process(Result, "GRPC", "SetMetadata");
 
-    Service = "grpcbin.GRPCBin";
-    Method  = "HeadersUnary";
+    If Not OPI_TestDataRetrieval.IsCLITest() Then
 
-    Options = New Structure;
-    Options.Insert("conn", Connection);
-    Options.Insert("service", Service);
-    Options.Insert("method", Method);
-    Options.Insert("data", Неопределено);
-    Options.Insert("tls", Tls);
+        Service = "grpcbin.GRPCBin";
+        Method  = "HeadersUnary";
 
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ExecuteMethod", Options);
+        Options = New Structure;
+        Options.Insert("conn", Connection);
+        Options.Insert("service", Service);
+        Options.Insert("method", Method);
+        Options.Insert("data", Неопределено);
+        Options.Insert("tls", Tls);
 
-    Process(Result, "GRPC", "SetMetadata", "Check");
+        Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ExecuteMethod", Options);
+
+        Process(Result, "GRPC", "SetMetadata", "Check");
+
+     EndIf;
 
 EndProcedure
 
