@@ -34832,6 +34832,7 @@ Procedure GRPC_SetMetadata(FunctionParameters)
     Options.Insert("service", Service);
     Options.Insert("method", Method);
     Options.Insert("data", Неопределено);
+    Options.Insert("tls", Tls);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ExecuteMethod", Options);
 
