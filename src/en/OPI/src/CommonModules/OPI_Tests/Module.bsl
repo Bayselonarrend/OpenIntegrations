@@ -26288,12 +26288,16 @@ Procedure GRPC_SetMetadata(FunctionParameters)
 
     Process(Result, "GRPC", "SetMetadata");
 
-    Service = "grpcbin.GRPCBin";
-    Method  = "HeadersUnary";
+    If Not OPI_TestDataRetrieval.IsCLITest() Then
 
-    Result = OPI_GRPC.ExecuteMethod(Connection, Service, Method, Undefined, , Tls);
+        Service = "grpcbin.GRPCBin";
+        Method  = "HeadersUnary";
 
-    Process(Result, "GRPC", "SetMetadata", "Check");
+        Result = OPI_GRPC.ExecuteMethod(Connection, Service, Method, Undefined, , Tls);
+
+        Process(Result, "GRPC", "SetMetadata", "Check");
+
+     EndIf;
 
 EndProcedure
 

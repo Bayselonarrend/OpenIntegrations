@@ -636,6 +636,12 @@ Function ProcessServerStream(Val Connection
         Return Connector;
     EndIf;
 
+    MessageCountDefined = MessageCount <> Undefined;
+
+    If MessageCountDefined Then
+        OPI_TypeConversion.GetNumber(MessageCount);
+    EndIf;
+
     Initialization = InitializeStream("server", Connector, Service, Method, Request, Timeout);
 
     If Not Initialization["result"] Then
@@ -648,7 +654,7 @@ Function ProcessServerStream(Val Connection
     Counter = 0;
     While True Do
 
-        If MessageCount <> Undefined Then
+        If MessageCountDefined Then
             If Counter >= MessageCount Then
                 Break;
             EndIf;

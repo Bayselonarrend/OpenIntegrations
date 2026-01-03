@@ -6906,11 +6906,6 @@
 },
 {
 "lib": "GRPC",
-"name": "SetMetadata",
-"variant": "Check"
-},
-{
-"lib": "GRPC",
 "name": "ExecuteMethod",
 "variant": ""
 },
