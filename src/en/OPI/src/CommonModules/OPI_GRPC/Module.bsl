@@ -76,7 +76,9 @@ Function CreateConnection(Val Parameters, Val Tls = Undefined) Export
     Connector.ServerAddress = String(Address);
 
     ParametersString = OPI_Tools.JSONString(Parameters);
-    Connector.StoreSettings(ParametersString);
+
+    //@skip-check module-unused-local-variable
+    SettingsSaving = Connector.StoreSettings(ParametersString);
 
     Tls = OPI_AddIns.SetTls(Connector, Tls);
 
