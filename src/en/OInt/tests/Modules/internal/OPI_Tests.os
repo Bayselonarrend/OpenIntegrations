@@ -26370,21 +26370,14 @@ Procedure GRPC_ExecuteMethod(FunctionParameters)
 
     Process(Result, "GRPC", "ExecuteMethod");
 
-    Result = OPI_GRPC.ExecuteMethod(Connection, Service, Method, Undefined);
+    Result = OPI_GRPC.ExecuteMethod(Parameters, Service, Method, Undefined, , Tls);
 
     Process(Result, "GRPC", "ExecuteMethod", "Empty");
 
     Method = "HeadersUnary";
-    Result = OPI_GRPC.ExecuteMethod(Connection, Service, Method, Undefined);
+    Result = OPI_GRPC.ExecuteMethod(Parameters, Service, Method, Undefined, , Tls);
 
     Process(Result, "GRPC", "ExecuteMethod", "Meta");
-
-    Meta = New Structure("anotherkey", "anothervalue");
-    OPI_GRPC.SetMetadata(Connection, Meta);
-
-    Result = OPI_GRPC.ExecuteMethod(Connection, Service, Method, Undefined);
-
-    Process(Result, "GRPC", "ExecuteMethod", "Meta 2");
 
 EndProcedure
 
