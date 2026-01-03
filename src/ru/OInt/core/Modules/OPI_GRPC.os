@@ -76,7 +76,9 @@
     Коннектор.ServerAddress = Строка(Адрес);
 
     ПараметрыСтрокой = OPI_Инструменты.JSONСтрокой(Параметры);
-    Коннектор.StoreSettings(ПараметрыСтрокой);
+
+    //@skip-check module-unused-local-variable
+    СохранениеНастроек = Коннектор.StoreSettings(ПараметрыСтрокой);
 
     Tls = OPI_Компоненты.УстановитьTls(Коннектор, Tls);
 
