@@ -1,7 +1,7 @@
 oint bitrix24 ИзменитьСтадиюКанбана \
   --url "b24-ar17wx.bitrix24.by" \
   --title "Новое имя стадии стадии 2" \
-  --stage 3408 \
+  --stage 3412 \
   --color "000000" \
   --prevstage 6 \
   --admin true \
