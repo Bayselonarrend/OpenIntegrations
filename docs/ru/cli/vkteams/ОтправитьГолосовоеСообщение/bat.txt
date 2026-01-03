@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение ^
   --token "***" ^
   --chatid "***" ^
-  --file "C:\Users\bayse\AppData\Local\Temp\kpopve3y.zpf"
+  --file "/tmp/oydct2fi.jvh"

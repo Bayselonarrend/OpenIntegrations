@@ -33,13 +33,13 @@
   "timezoneDefaultName": ""
  },
  "time": {
-  "start": 1767384586,
-  "finish": 1767384586.85992,
-  "duration": 0.859922885894775,
+  "start": 1767470187,
+  "finish": 1767470187.72918,
+  "duration": 0.729185104370117,
   "processing": 0,
-  "date_start": "2026-01-02T23:09:46+03:00",
-  "date_finish": "2026-01-02T23:09:46+03:00",
-  "operating_reset_at": 1767385186,
+  "date_start": "2026-01-03T19:56:27+00:00",
+  "date_finish": "2026-01-03T19:56:27+00:00",
+  "operating_reset_at": 1767470787,
   "operating": 0
  }
 }
