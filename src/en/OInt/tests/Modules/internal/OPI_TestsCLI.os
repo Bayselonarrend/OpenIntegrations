@@ -34930,10 +34930,11 @@ Procedure GRPC_ExecuteMethod(FunctionParameters)
     Process(Result, "GRPC", "ExecuteMethod");
 
     Options = New Structure;
-    Options.Insert("conn", Connection);
+    Options.Insert("conn", Parameters);
     Options.Insert("service", Service);
     Options.Insert("method", Method);
     Options.Insert("data", Неопределено);
+    Options.Insert("tls", Tls);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ExecuteMethod", Options);
 
@@ -34941,27 +34942,15 @@ Procedure GRPC_ExecuteMethod(FunctionParameters)
 
     Method = "HeadersUnary";
     Options = New Structure;
-    Options.Insert("conn", Connection);
+    Options.Insert("conn", Parameters);
     Options.Insert("service", Service);
     Options.Insert("method", Method);
     Options.Insert("data", Неопределено);
+    Options.Insert("tls", Tls);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ExecuteMethod", Options);
 
     Process(Result, "GRPC", "ExecuteMethod", "Meta");
-
-    Meta = New Structure("anotherkey", "anothervalue");
-    OPI_GRPC.SetMetadata(Connection, Meta);
-
-    Options = New Structure;
-    Options.Insert("conn", Connection);
-    Options.Insert("service", Service);
-    Options.Insert("method", Method);
-    Options.Insert("data", Неопределено);
-
-    Result = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "ExecuteMethod", Options);
-
-    Process(Result, "GRPC", "ExecuteMethod", "Meta 2");
 
 EndProcedure
 
