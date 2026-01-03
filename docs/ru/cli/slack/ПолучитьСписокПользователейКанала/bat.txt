@@ -1,3 +1,3 @@
 oint slack ПолучитьСписокПользователейКанала ^
   --token "***" ^
-  --channel "C0A6G3R5Y4W"
+  --channel "C0A6K9JBRP0"
