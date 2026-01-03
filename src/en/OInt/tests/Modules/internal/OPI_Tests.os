@@ -26318,8 +26318,6 @@ Procedure GRPC_ExecuteMethod(FunctionParameters)
     Service = "grpcbin.GRPCBin";
     Method  = "DummyUnary";
 
-    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
-
     StingsArray = New Array;
     StingsArray.Add("one");
     StingsArray.Add("two");
@@ -26366,7 +26364,7 @@ Procedure GRPC_ExecuteMethod(FunctionParameters)
     Data.Insert("f_bools"  , BoolArray);
     Data.Insert("f_enums"  , StrSplit("ENUM_1,ENUM_2" , ","));
 
-    Result = OPI_GRPC.ExecuteMethod(Connection, Service, Method, Data);
+    Result = OPI_GRPC.ExecuteMethod(Parameters, Service, Method, Data, , Tls);
 
     // END
 
