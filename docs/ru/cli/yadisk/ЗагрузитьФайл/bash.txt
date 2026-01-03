@@ -1,5 +1,5 @@
 oint yadisk ЗагрузитьФайл \
   --token "***" \
-  --path "/4a3bc4a4-af4c-4bae-bf7d-6df294b7cd41.png" \
-  --file "C:\Users\bayse\AppData\Local\Temp\3dhrgetu.toy.png" \
+  --path "/7fda3912-d1c6-47f9-987b-72f74fe1c681.png" \
+  --file "/tmp/ghey4noa.lqf.png" \
   --rewrite true
