@@ -2,58 +2,28 @@ import React, { useEffect, useState } from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { usePluginData } from '@docusaurus/useGlobalData';
 import Layout from '@theme/Layout';
 import AlternatingFeatures from '@site/src/components/AlternatingFeatures';
 import Heading from '@theme/Heading';
 import styles from './index.module.css';
 
-const iconList = [
-  '/img/APIs/Airtable.png',
-  '/img/APIs/VK.png',
-  '/img/APIs/Neocities.png',
-  '/img/APIs/Telegram.png',
-  '/img/APIs/Viber.png',
-  '/img/APIs/Bitrix24.png',
-  '/img/APIs/CDEK.png',
-  '/img/APIs/Dropbox.png',
-  '/img/APIs/GoogleCalendar.png',
-  '/img/APIs/GoogleDrive.png',
-  '/img/APIs/GoogleSheets.png',
-  '/img/APIs/GreenAPI.png',
-  '/img/APIs/HTTP.png',
-  '/img/APIs/MSSQL.png',
-  '/img/APIs/MySQL.png',
-  '/img/APIs/Notion.png',
-  '/img/APIs/OpenAI.png',
-  '/img/APIs/Twitter.png',
-  '/img/APIs/PostgreSQL.png',
-  '/img/APIs/RCON.png',
-  '/img/APIs/S3.png',
-  '/img/APIs/Slack.png',
-  '/img/APIs/SQLite.png',
-  '/img/APIs/TCP.png',
-  '/img/APIs/VKTeams.png',
-  '/img/APIs/FTP.png',
-  '/img/APIs/sftp.png',
-  '/img/APIs/SSH.png',
-];
-
 const FallingIcons = () => {
+  const { iconList } = usePluginData('api-icons-plugin');
   const [columns, setColumns] = useState(12);
   const [iconCount, setIconCount] = useState(60);
-  const [iconDensity] = useState(0.6); // Плотность иконок (0.1-1.0)
+  const [iconDensity] = useState(0.6); 
 
   useEffect(() => {
     const updateLayout = () => {
-      // Адаптивное количество колонок
+
       const width = window.innerWidth;
       const newColumns = width < 768 ? 6 : width < 1024 ? 9 : 12;
       setColumns(newColumns);
 
-      // Адаптивное количество иконок на основе плотности
       const area = width * window.innerHeight;
       const newIconCount = Math.floor(area / (2000 * (1.1 - iconDensity)));
-      setIconCount(Math.min(newIconCount, 100)); // Ограничиваем максимум 100 иконками
+      setIconCount(Math.min(newIconCount, 100)); 
     };
 
     updateLayout();
@@ -68,7 +38,6 @@ const FallingIcons = () => {
   for (let i = 0; i < iconCount; i++) {
     const randomIcon = iconList[Math.floor(Math.random() * iconList.length)];
     
-    // Выбираем колонку с наименьшим количеством иконок
     let column = 0;
     let minCount = columnCounts[0];
     for (let c = 1; c < columns; c++) {
@@ -79,7 +48,6 @@ const FallingIcons = () => {
     }
     columnCounts[column]++;
     
-    // Распределяем иконки внутри колонки
     const positionInColumn = columnCounts[column];
     const left = (column / columns) * 100 + (Math.random() * 100 / columns) - 5;
     const duration = 15 + Math.random() * 10;
@@ -144,7 +112,6 @@ function HomepageHeader() {
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
 
-  // Данные спонсоров: логотип, название, описание, ссылка
   const sponsors = [
     {
       name: 'GreenAPI',
