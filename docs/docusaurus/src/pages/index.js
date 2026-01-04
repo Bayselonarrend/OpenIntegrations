@@ -110,7 +110,7 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-  const { siteConfig } = useDocusaurusContext();
+  const [showSponsorModal, setShowSponsorModal] = useState(false);
 
   const sponsors = [
     {
@@ -168,8 +168,72 @@ export default function Home() {
                 </a>
               ))}
             </div>
+            <div className={styles.becomeSponsorWrapper}>
+              <button 
+                className={styles.becomeSponsorBtn}
+                onClick={() => setShowSponsorModal(true)}
+              >
+                Стать спонсором
+              </button>
+            </div>
           </div>
         </section>
+
+        {showSponsorModal && (
+          <div 
+            className={`${styles.modalOverlay} ${styles.modalOverlayVisible}`} 
+            onClick={() => setShowSponsorModal(false)}
+          >
+            <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+              <div className={styles.modalScrollable}>
+                <div className={styles.modalIconWrapper}>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="0.8"
+                    stroke="currentColor"
+                    className={styles.modalIcon}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                    />
+                  </svg>
+                </div>
+                <h1>Станьте спонсором проекта</h1>
+                <p className={styles.sponsorModalText}>
+                  Открытый Пакет Интеграций — это бесплатный open-source проект, который развивается благодаря поддержке сообщества. Мы не используем платные версии и не размещаем рекламу в документации, чтобы сохранить удобство использования для всех
+                </p>
+                <p className={styles.sponsorModalText}>
+                  Ваша поддержка поможет нам продолжать разработку новых интеграций, улучшать документацию и поддерживать актуальность библиотек. Взамен логотип вашей компании будет размещён в блоке спонсоров на главной странице сайта (при желании), а поддержка по работе с проектом будет оказываться вам в приоритетном порядке
+                </p>
+                <p className={styles.sponsorModalText}>
+                  Стоимость спонсорской подписки для компаний: <strong>7 500 ₽</strong> в месяц. Также вы можете поддержать проект единоразово или выбрать другой уровень подписки с другим набором бонусов на Boosty. Мы будем рады любой помощи!
+                </p>
+                <hr className={styles.modalDivider} />
+                <div className={styles.modalButtonsRow}>
+                  <Link
+                    className={styles.sponsorModalBtn}
+                    to="https://boosty.to/bayselonarrend/purchase/3429871?ssource=DIRECT&share=subscription_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Оформить подписку на Boosty
+                  </Link>
+                  <button 
+                    className={styles.closeButtonSquare} 
+                    onClick={() => setShowSponsorModal(false)}
+                    aria-label="Закрыть"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
     </Layout>
   );
