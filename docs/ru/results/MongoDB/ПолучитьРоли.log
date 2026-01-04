@@ -13,9 +13,9 @@
        "collection": "new_collection"
       },
       "actions": [
-       null,
-       null,
-       null
+       "find",
+       "insert",
+       "update"
       ]
      }
     ],
@@ -46,9 +46,9 @@
        "collection": "new_collection"
       },
       "actions": [
-       null,
-       null,
-       null
+       "find",
+       "insert",
+       "update"
       ]
      },
      {
@@ -57,27 +57,27 @@
        "collection": ""
       },
       "actions": [
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null
+       "changeCustomData",
+       "changePassword",
+       "changeStream",
+       "collStats",
+       "createRole",
+       "createUser",
+       "dbHash",
+       "dbStats",
+       "dropRole",
+       "dropUser",
+       "find",
+       "grantRole",
+       "killCursors",
+       "listCollections",
+       "listIndexes",
+       "listSearchIndexes",
+       "planCacheRead",
+       "revokeRole",
+       "setAuthenticationRestriction",
+       "viewRole",
+       "viewUser"
       ]
      },
      {
@@ -86,16 +86,16 @@
        "collection": "system.js"
       },
       "actions": [
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null,
-       null
+       "changeStream",
+       "collStats",
+       "dbHash",
+       "dbStats",
+       "find",
+       "killCursors",
+       "listCollections",
+       "listIndexes",
+       "listSearchIndexes",
+       "planCacheRead"
       ]
      }
     ],

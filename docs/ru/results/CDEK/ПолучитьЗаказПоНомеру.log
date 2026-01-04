@@ -1,11 +1,11 @@
 ﻿{
  "entity": {
-  "uuid": "0d491d2a-fb64-47ec-8ccb-271a17b6cd06",
+  "uuid": "c31c5b41-8533-4f51-9d21-7ca31a4347e0",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1106860058",
-  "number": "669c007d-7dd4-4f4c-9ba8-ba1248714a41",
+  "cdek_number": "1106860130",
+  "number": "2dfaf94d-7171-435f-a20b-b52174097824",
   "tariff_code": 139,
   "comment": "Новый заказ",
   "items_cost_currency": "RUB",
@@ -98,7 +98,7 @@
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001522610",
+    "barcode": "000001522682",
     "weight": 4000,
     "length": 10,
     "width": "***",
@@ -124,21 +124,21 @@
       "cost": 300
      }
     ],
-    "package_id": "969bf6ef-3d51-4c0b-ab39-5e19c4efdcf6"
+    "package_id": "83f76422-980b-4dde-8f1e-fa50c84a5b8a"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-01-03T20:01:50+00:00",
+    "date_time": "2026-01-04T19:05:33+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-01-03T20:01:48+00:00",
+    "date_time": "2026-01-04T19:05:31+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
@@ -159,9 +159,9 @@
  },
  "requests": [
   {
-   "request_uuid": "fe612a3b-d86f-4691-a300-135b6935bd61",
+   "request_uuid": "071ec356-782a-4e5a-85b9-b2c47fd98067",
    "type": "CREATE",
-   "date_time": "2026-01-03T20:01:49+00:00",
+   "date_time": "2026-01-04T19:05:32+00:00",
    "state": "SUCCESSFUL"
   }
  ],
