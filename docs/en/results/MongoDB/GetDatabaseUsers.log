@@ -5,7 +5,7 @@
    {
     "_id": "main.newuser",
     "userId": {
-     "__B64_BINARY__": "AaZFReKtRNSAdCzS4J1CeQ=="
+     "__B64_BINARY__": "oHg3iXdcRAOeRhSZ15ahXw=="
     },
     "user": "newuser",
     "db": "main",
@@ -16,8 +16,8 @@
      }
     ],
     "mechanisms": [
-     "***",
-     "***"
+     null,
+     null
     ]
    }
   ],

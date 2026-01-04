@@ -13,19 +13,19 @@
        "collection": "new_collection"
       },
       "actions": [
-       "***",
-       "***",
-       "***"
+       null,
+       null,
+       null
       ]
      }
     ],
     "roles": [
      {
-      "role": "read",
+      "role": "userAdmin",
       "db": "admin"
      },
      {
-      "role": "userAdmin",
+      "role": "read",
       "db": "admin"
      }
     ],
@@ -46,9 +46,9 @@
        "collection": "new_collection"
       },
       "actions": [
-       "***",
-       "***",
-       "***"
+       null,
+       null,
+       null
       ]
      },
      {
@@ -57,27 +57,27 @@
        "collection": ""
       },
       "actions": [
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***"
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null
       ]
      },
      {
@@ -86,16 +86,16 @@
        "collection": "system.js"
       },
       "actions": [
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***",
-       "***"
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null,
+       null
       ]
      }
     ],

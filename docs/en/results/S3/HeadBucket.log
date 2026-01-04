@@ -3,14 +3,17 @@
  "response": {},
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Wed, 10 Dec 2025 20:15:40 GMT",
-  "Server": "MinIO",
+  "Vary": "Accept-Encoding",
+  "Server": "Microsoft-IIS/10.0",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "ce258a107703b2b071aa1a8145ffe6228f368a6d9b7af539b99dbf83a96b1e00",
-  "X-Amz-Request-Id": "187FF3E447AC9CF5",
+  "X-Amz-Id-2": "dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8",
+  "X-Amz-Request-Id": "18875FCE2A4C08FF",
   "X-Content-Type-Options": "nosniff",
+  "X-Ratelimit-Limit": "3093",
+  "X-Ratelimit-Remaining": "3093",
   "X-XSS-Protection": "1; mode=block",
+  "X-Powered-By": "ARR/3.0",
+  "Date": "Sun, 04 Jan 2026 00:31:57 GMT",
   "Content-Length": "0",
   "Content-Type": "application/xml"
  }

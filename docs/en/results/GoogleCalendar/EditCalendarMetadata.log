@@ -1,14 +1,14 @@
 ﻿{
  "kind": "calendar#calendar",
- "etag": "\"OY0408d4jf66FCa71utYq0O1mw8\"",
- "id": "03997e17b4c902c3a4a9d00cbce74d84f74447c1924226d9190c8b1d41aabce0@group.calendar.google.com",
+ "etag": "\"pV4FP1kluMzCJcDIk9FHhiLe5BY\"",
+ "id": "5701a16a1c5095d94aa2d2d6d94e21a953f436252f5b748af18b685bc1d7701d@group.calendar.google.com",
  "summary": "New name",
  "description": "New description",
  "timeZone": "Europe/Moscow",
  "dataOwner": "bayselonarrend@gmail.com",
  "conferenceProperties": {
   "allowedConferenceSolutionTypes": [
-   "***"
+   null
   ]
  }
 }
