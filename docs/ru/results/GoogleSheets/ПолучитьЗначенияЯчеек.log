@@ -1,12 +1,12 @@
 ﻿{
- "spreadsheetId": "1gdHbAlju22EzoVpoklVChHsT0PZcZilz0_B3ZS3tmqE",
+ "spreadsheetId": "1I5wB0vr3mHD7moTddMdMmKZ1ymfoZ9ah16HPf8V-luM",
  "valueRanges": [
   {
    "range": "'Лист2'!B2",
    "majorDimension": "ROWS",
    "values": [
     [
-     null
+     "Это B2"
     ]
    ]
   },
@@ -15,7 +15,7 @@
    "majorDimension": "ROWS",
    "values": [
     [
-     null
+     "Это A3"
     ]
    ]
   },
@@ -24,7 +24,7 @@
    "majorDimension": "ROWS",
    "values": [
     [
-     null
+     "Это B4"
     ]
    ]
   }
