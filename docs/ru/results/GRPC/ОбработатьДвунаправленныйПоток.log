@@ -25,9 +25,9 @@
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"
@@ -51,9 +51,9 @@
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"
@@ -77,9 +77,9 @@
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"
@@ -103,9 +103,9 @@
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"
@@ -129,9 +129,9 @@
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"
@@ -155,9 +155,9 @@
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"
@@ -181,9 +181,9 @@
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"
@@ -207,9 +207,9 @@
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"
@@ -233,9 +233,9 @@
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"
@@ -259,9 +259,9 @@
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"
