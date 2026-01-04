@@ -87,7 +87,7 @@ import TabItem from '@theme/TabItem';
             
             oint ftp ЗагрузитьФайл \
               --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'1000','write_timeout':'1000'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" \
-              --file "C:\Users\bayse\AppData\Local\Temp\ao2nzesm.2cj" \
+              --file "/tmp/2t5ia0th.f2x" \
               --path "pic_from_binary.png"
         ```
     </TabItem>
@@ -98,7 +98,7 @@ import TabItem from '@theme/TabItem';
             
             oint ftp ЗагрузитьФайл ^
               --conn "{'set':{'advanced_resolve':true,'domain':'172.33.0.11','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'1000','write_timeout':'1000'},'tls':{'accept_invalid_certs':true,'ca_cert_path':'','use_tls':true},'proxy':{'login':'proxyuser','password':'***','port':'1080','proxy_type':'socks5','server':'127.0.0.1'}}" ^
-              --file "C:\Users\bayse\AppData\Local\Temp\ao2nzesm.2cj" ^
+              --file "/tmp/2t5ia0th.f2x" ^
               --path "pic_from_binary.png"
         ```
     </TabItem>
@@ -108,6 +108,9 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "bytes": 2114023,
- "result": true
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
 ```
