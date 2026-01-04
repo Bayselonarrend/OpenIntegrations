@@ -1,6 +1,6 @@
 ﻿{
  "parents": [
-  "***"
+  null
  ],
  "lastModifyingUser": {
   "displayName": "Антон Титовец",
@@ -34,7 +34,7 @@
   }
  ],
  "spaces": [
-  "***"
+  null
  ],
  "capabilities": {
   "canAcceptOwnership": false,
@@ -58,8 +58,8 @@
   "canModifyOwnerContentRestriction": false,
   "canModifyLabels": false,
   "canMoveChildrenWithinDrive": true,
-  "canMoveItemIntoTeamDrive": true,
-  "canMoveItemOutOfDrive": true,
+  "canMoveItemIntoTeamDrive": false,
+  "canMoveItemOutOfDrive": false,
   "canMoveItemWithinDrive": true,
   "canReadLabels": false,
   "canReadRevisions": false,
@@ -72,7 +72,7 @@
   "canUntrash": true
  },
  "permissionIds": [
-  "***"
+  null
  ],
  "linkShareMetadata": {
   "securityUpdateEligible": false,
@@ -94,9 +94,9 @@
  "mimeType": "application/vnd.google-apps.folder",
  "description": "",
  "starred": false,
- "trashed": false,
- "explicitlyTrashed": false,
- "version": "2",
+ "trashed": true,
+ "explicitlyTrashed": true,
+ "version": "3",
  "webViewLink": "https://drive.google.com/drive/folders/1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP",
  "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder",
  "hasThumbnail": false,
