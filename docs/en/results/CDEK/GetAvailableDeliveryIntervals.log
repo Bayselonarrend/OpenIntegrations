@@ -1,7 +1,28 @@
 ﻿{
  "date_intervals": [
   {
-   "date": "2025-11-05",
+   "date": "2026-01-07",
+   "time_intervals": [
+    {
+     "start_time": "09:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "09:00:00",
+     "end_time": "14:00:00"
+    },
+    {
+     "start_time": "14:00:00",
+     "end_time": "18:00:00"
+    },
+    {
+     "start_time": "18:00:00",
+     "end_time": "22:00:00"
+    }
+   ]
+  },
+  {
+   "date": "2026-01-14",
    "time_intervals": [
     {
      "start_time": "09:00:00",

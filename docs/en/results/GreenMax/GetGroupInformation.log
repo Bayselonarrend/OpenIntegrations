@@ -3,22 +3,17 @@
  "owner": "39888725",
  "subject": "New group",
  "description": "",
- "creation": 1765401017,
+ "creation": 1767487088,
  "groupInviteLink": "***",
  "allowParticipantsAddMembers": true,
  "allowParticipantsEditGroupSettings": true,
  "allowParticipantsPinMessages": true,
- "size": 2,
+ "size": 1,
  "participants": [
   {
    "chatId": "***",
    "isAdmin": true,
    "isSuperAdmin": true
-  },
-  {
-   "chatId": "***",
-   "isAdmin": false,
-   "isSuperAdmin": false
   }
  ]
 }
