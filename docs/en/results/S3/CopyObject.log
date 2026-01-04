@@ -2,22 +2,27 @@
  "status": 200,
  "response": {
   "CopyObjectResult": {
-   "LastModified": "2025-12-10T20:43:55.388Z",
+   "LastModified": "2026-01-04T00:34:15.605Z",
    "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\""
   }
  },
  "headers": {
   "Accept-Ranges": "bytes",
-  "Date": "Wed, 10 Dec 2025 20:44:04 GMT",
   "ETag": "\"9e0176f87f6565a22f78e0f9b39a4d78\"",
-  "Server": "MinIO",
+  "Vary": "Accept-Encoding",
+  "Server": "Microsoft-IIS/10.0",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "Vary": "Origin, Accept-Encoding",
-  "X-Amz-Id-2": "ce258a107703b2b071aa1a8145ffe6228f368a6d9b7af539b99dbf83a96b1e00",
-  "X-Amz-Request-Id": "187FF56BFC407F27",
+  "X-Amz-Checksum-Crc64nvme": "p+vCtK1YeeU=",
+  "X-Amz-Checksum-Type": "FULL_OBJECT",
+  "X-Amz-Id-2": "dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8",
+  "X-Amz-Request-Id": "18875FEE3CB6B04F",
   "X-Content-Type-Options": "nosniff",
+  "X-Ratelimit-Limit": "3093",
+  "X-Ratelimit-Remaining": "3093",
   "X-XSS-Protection": "1; mode=block",
-  "Content-Length": "232",
-  "Content-Type": "application/xml"
+  "X-Powered-By": "ARR/3.0",
+  "Date": "Sun, 04 Jan 2026 00:34:15 GMT",
+  "Content-Type": "application/xml",
+  "Content-Length": "232"
  }
 }

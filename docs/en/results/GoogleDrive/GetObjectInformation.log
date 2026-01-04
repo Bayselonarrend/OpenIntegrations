@@ -5,15 +5,15 @@
  "mimeType": "application/vnd.google-apps.folder",
  "description": "",
  "starred": false,
- "trashed": false,
- "explicitlyTrashed": false,
+ "trashed": true,
+ "explicitlyTrashed": true,
  "parents": [
-  "***"
+  null
  ],
  "spaces": [
-  "***"
+  null
  ],
- "version": "2",
+ "version": "3",
  "webViewLink": "https://drive.google.com/drive/folders/1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP",
  "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder",
  "hasThumbnail": false,
@@ -76,8 +76,8 @@
   "canModifyOwnerContentRestriction": false,
   "canModifyLabels": false,
   "canMoveChildrenWithinDrive": true,
-  "canMoveItemIntoTeamDrive": true,
-  "canMoveItemOutOfDrive": true,
+  "canMoveItemIntoTeamDrive": false,
+  "canMoveItemOutOfDrive": false,
   "canMoveItemWithinDrive": true,
   "canReadLabels": false,
   "canReadRevisions": false,
@@ -104,13 +104,13 @@
    "permissionDetails": [
     {
      "permissionType": "file",
-     "role": "owner",
-     "inherited": false
+     "role": "writer",
+     "inherited": true
     },
     {
      "permissionType": "file",
-     "role": "writer",
-     "inherited": true
+     "role": "owner",
+     "inherited": false
     }
    ],
    "deleted": false,
@@ -118,7 +118,7 @@
   }
  ],
  "permissionIds": [
-  "***"
+  null
  ],
  "folderColorRgb": "#8f8f8f",
  "quotaBytesUsed": "0",

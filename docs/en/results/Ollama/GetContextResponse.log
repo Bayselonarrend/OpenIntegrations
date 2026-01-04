@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2025-12-10T21:16:37.243820912Z",
+ "created_at": "2026-01-04T00:41:56.738584484Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise (also known as 1C:ERP) was released in 2003, and it has since been re-released multiple times under various names. In 2006, Xeroon acquired the open-source project from its original developer and renamed it to 1C:Enterprise Enterprise Business Solutions (later renamed to 1C:ERP for short) after acquiring the company. The first version of 1C:ERP was released in 2007, and since then, it has been re-released multiple times as part of larger business solutions offered by Xeroon or as a standalone software solution for use on various platforms."
+  "content": "Yes, the first version of 1C:Enterprise was released in 1995. However, as technology evolves and new versions of the software are developed, they may be released at different times or with changes to their features and capabilities. Updates to existing versions may also occur periodically with improvements, bug fixes, or new functionality added. The timeline for releasing a new version of 1C:Enterprise may vary depending on the company's development priorities, market demand, and the overall advancement of technology in the software industry."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 23156842641,
- "load_duration": 24642952,
- "prompt_eval_count": 233,
- "prompt_eval_duration": 8106765442,
- "eval_count": 157,
- "eval_duration": 15015938122
+ "total_duration": 18496927782,
+ "load_duration": 19742956,
+ "prompt_eval_count": 183,
+ "prompt_eval_duration": 3924091898,
+ "eval_count": 118,
+ "eval_duration": 14542374700
 }

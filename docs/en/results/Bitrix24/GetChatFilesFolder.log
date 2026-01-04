@@ -1,15 +1,15 @@
 ﻿{
  "result": {
-  "ID": 48478
+  "ID": 49366
  },
  "time": {
-  "start": 1765396763,
-  "finish": 1765396763.71823,
-  "duration": 0.718230962753296,
+  "start": 1767486313,
+  "finish": 1767486313.35449,
+  "duration": 0.35448694229126,
   "processing": 0,
-  "date_start": "2025-12-10T19:59:23+00:00",
-  "date_finish": "2025-12-10T19:59:23+00:00",
-  "operating_reset_at": 1765397363,
+  "date_start": "2026-01-04T00:25:13+00:00",
+  "date_finish": "2026-01-04T00:25:13+00:00",
+  "operating_reset_at": 1767486913,
   "operating": 0
  }
 }

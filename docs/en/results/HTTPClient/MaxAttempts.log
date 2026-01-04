@@ -1,0 +1,10 @@
+﻿{
+ "gzip": true,
+ "SplitArrayParams": false,
+ "ArraysSquareBrackets": false,
+ "URLencoding": true,
+ "EncodeRequestBody": "UTF-8",
+ "BodyFieldsAtOAuth": false,
+ "MaxAttempts": 10,
+ "MaxRedirects": 5
+}
