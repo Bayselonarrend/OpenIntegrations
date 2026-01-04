@@ -50,6 +50,7 @@ const config = {
   ],
 
   plugins: [
+    './plugins/api-icons-plugin',
 
     /*
   './plugins/course-protection',
