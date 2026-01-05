@@ -35,6 +35,7 @@
 // BSLLS:LineLength-off
 // BSLLS:UsingSynchronousCalls-off
 // BSLLS:DuplicateStringLiteral-off
+// BSLLS:MagicNumber-off
 
 //@skip-check module-structure-top-region
 //@skip-check module-structure-method-in-regions
@@ -75,10 +76,7 @@ Function CreateConnection(Val Parameters, Val Tls = Undefined) Export
     Connector               = OPI_AddIns.GetAddIn("GRPC");
     Connector.ServerAddress = String(Address);
 
-    ParametersString = OPI_Tools.JSONString(Parameters);
-
-    //@skip-check module-unused-local-variable
-    SettingsSaving = Connector.StoreSettings(ParametersString);
+    SaveSettingsAtAddIn(Connector, Parameters);
 
     Tls = OPI_AddIns.SetTls(Connector, Tls);
 
@@ -1033,7 +1031,6 @@ Function ProcessValueForRequest(Val AddIn, Value)
 
         EndDo;
 
-
     ElsIf TypeOf(Value) = Type("BinaryData") Then
 
         Result = OPI_AddIns.PutData(AddIn, Value);
@@ -1051,6 +1048,15 @@ Function ProcessValueForRequest(Val AddIn, Value)
     EndIf;
 
     Return ProcessedValue;
+
+EndFunction
+
+Function SaveSettingsAtAddIn(Connector, Val Parameters)
+
+    ParametersString = OPI_Tools.JSONString(Parameters);
+    SettingsSaving   = Connector.StoreSettings(ParametersString);
+
+    Return SettingsSaving;
 
 EndFunction
 
