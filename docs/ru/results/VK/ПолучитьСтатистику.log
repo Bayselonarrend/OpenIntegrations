@@ -2,11 +2,11 @@
  "response": [
   {
    "activity": {
-    "comments": 1,
-    "likes": 1
+    "comments": 4,
+    "likes": 4
    },
-   "period_from": 1767484800,
-   "period_to": 1767571199,
+   "period_from": 1767571200,
+   "period_to": 1767657599,
    "reach": {
     "age": [
      {
@@ -133,19 +133,26 @@
    },
    "visitors": {
     "cities": [],
-    "countries": [],
+    "countries": [
+     {
+      "code": "ID",
+      "count": 1,
+      "name": "Индонезия",
+      "value": 81
+     }
+    ],
     "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
+    "views": 1,
+    "visitors": 1
    }
   },
   {
    "activity": {
-    "comments": 2,
-    "likes": 2
+    "comments": 1,
+    "likes": 1
    },
-   "period_from": 1767398400,
-   "period_to": 1767484799,
+   "period_from": 1767484800,
+   "period_to": 1767571199,
    "reach": {
     "age": [
      {
