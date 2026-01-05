@@ -13,14 +13,14 @@
        "$expr": [
         {
          "$gte": [
-          null,
-          null
+          "$total",
+          0
          ]
         },
         {
          "$lte": [
-          null,
-          null
+          "$status",
+          3
          ]
         }
        ]
@@ -29,7 +29,7 @@
      "info": {
       "readOnly": false,
       "uuid": {
-       "__B64_BINARY__": "J5/ew1UrQcKZZ3gsYOMXww=="
+       "__B64_BINARY__": "s7+MCJmKRwSng0kBgtxl3g=="
       }
      },
      "idIndex": {

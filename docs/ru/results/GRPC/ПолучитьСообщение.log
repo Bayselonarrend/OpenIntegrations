@@ -19,17 +19,17 @@
   "f_floats": [],
   "f_int32": 123,
   "f_int32s": [
-   null,
-   null,
-   null
+   1,
+   10,
+   100
   ],
   "f_int64": 123,
   "f_int64s": [],
   "f_string": "Test message",
   "f_strings": [
-   null,
-   null,
-   null
+   "one",
+   "two",
+   "three"
   ],
   "f_sub": {
    "f_string": "Nested value"

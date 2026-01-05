@@ -1,7 +1,7 @@
 ﻿{
  "result": [
   {
-   "ID": "3520",
+   "ID": "3528",
    "BLOG_ID": "1",
    "PUBLISH_STATUS": "P",
    "TITLE": "Новый заголовок новости",
@@ -11,7 +11,7 @@
    "CODE": null,
    "MICRO": "N",
    "DETAIL_TEXT": "Новый текст новости",
-   "DATE_PUBLISH": "2026-01-03T19:38:59+00:00",
+   "DATE_PUBLISH": "2026-01-04T18:57:14+00:00",
    "CATEGORY_ID": null,
    "HAS_SOCNET_ALL": "N",
    "HAS_TAGS": "N",
@@ -50,19 +50,19 @@
      "USER_TYPE_ID": "file",
      "CLASS_NAME": "Bitrix\\Main\\UserField\\Types\\FileType",
      "EDIT_CALLBACK": [
-      null,
-      null
+      "Bitrix\\Main\\UserField\\Types\\FileType",
+      "renderEdit"
      ],
      "VIEW_CALLBACK": [
-      null,
-      null
+      "Bitrix\\Main\\UserField\\Types\\FileType",
+      "renderView"
      ],
      "USE_FIELD_COMPONENT": true,
      "DESCRIPTION": "Файл",
      "BASE_TYPE": "file"
     },
     "VALUE": false,
-    "ENTITY_VALUE_ID": 3520,
+    "ENTITY_VALUE_ID": 3528,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -93,7 +93,7 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3520,
+    "ENTITY_VALUE_ID": 3528,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -126,19 +126,19 @@
      "USER_TYPE_ID": "integer",
      "CLASS_NAME": "Bitrix\\Main\\UserField\\Types\\IntegerType",
      "EDIT_CALLBACK": [
-      null,
-      null
+      "Bitrix\\Main\\UserField\\Types\\IntegerType",
+      "renderEdit"
      ],
      "VIEW_CALLBACK": [
-      null,
-      null
+      "Bitrix\\Main\\UserField\\Types\\IntegerType",
+      "renderView"
      ],
      "USE_FIELD_COMPONENT": true,
      "DESCRIPTION": "Целое число",
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3520,
+    "ENTITY_VALUE_ID": 3528,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -172,18 +172,18 @@
      "DESCRIPTION": "Файл (Диск)",
      "BASE_TYPE": "int",
      "TAG": [
-      null,
-      null
+      "DISK FILE ID",
+      "DOCUMENT ID"
      ]
     },
     "VALUE": [
-     null,
-     null,
-     null
+     13858,
+     13860,
+     13862
     ],
-    "ENTITY_VALUE_ID": 3520,
+    "ENTITY_VALUE_ID": 3528,
     "VALUE_EXISTS": true,
-    "VALUE_RAW": "a:3:{i:0;i:13830;i:1;i:13832;i:2;i:13834;}",
+    "VALUE_RAW": "a:3:{i:0;i:13858;i:1;i:13860;i:2;i:13862;}",
     "CUSTOM_DATA": {
      "PHOTO_TEMPLATE": ""
     }
@@ -213,24 +213,24 @@
      "DESCRIPTION": "Письмо (email)",
      "BASE_TYPE": "int",
      "VIEW_CALLBACK": [
-      null,
-      null
+      "Bitrix\\Mail\\MessageUserType",
+      "getPublicView"
      ],
      "EDIT_CALLBACK": [
-      null,
-      null
+      "Bitrix\\Mail\\MessageUserType",
+      "getPublicEdit"
      ],
      "onBeforeSave": [
-      null,
-      null
+      "Bitrix\\Mail\\MessageUserType",
+      "onBeforeSave"
      ],
      "onDelete": [
-      null,
-      null
+      "Bitrix\\Mail\\MessageUserType",
+      "onDelete"
      ]
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3520,
+    "ENTITY_VALUE_ID": 3528,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -263,19 +263,19 @@
      "USER_TYPE_ID": "integer",
      "CLASS_NAME": "Bitrix\\Main\\UserField\\Types\\IntegerType",
      "EDIT_CALLBACK": [
-      null,
-      null
+      "Bitrix\\Main\\UserField\\Types\\IntegerType",
+      "renderEdit"
      ],
      "VIEW_CALLBACK": [
-      null,
-      null
+      "Bitrix\\Main\\UserField\\Types\\IntegerType",
+      "renderView"
      ],
      "USE_FIELD_COMPONENT": true,
      "DESCRIPTION": "Целое число",
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3520,
+    "ENTITY_VALUE_ID": 3528,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -310,19 +310,19 @@
      "USER_TYPE_ID": "datetime",
      "CLASS_NAME": "Bitrix\\Main\\UserField\\Types\\DateTimeType",
      "EDIT_CALLBACK": [
-      null,
-      null
+      "Bitrix\\Main\\UserField\\Types\\DateTimeType",
+      "renderEdit"
      ],
      "VIEW_CALLBACK": [
-      null,
-      null
+      "Bitrix\\Main\\UserField\\Types\\DateTimeType",
+      "renderView"
      ],
      "USE_FIELD_COMPONENT": true,
      "DESCRIPTION": "Дата со временем",
      "BASE_TYPE": "datetime"
     },
     "VALUE": "",
-    "ENTITY_VALUE_ID": 3520,
+    "ENTITY_VALUE_ID": 3528,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
@@ -361,27 +361,27 @@
      "BASE_TYPE": "int"
     },
     "VALUE": null,
-    "ENTITY_VALUE_ID": 3520,
+    "ENTITY_VALUE_ID": 3528,
     "VALUE_EXISTS": true,
     "VALUE_RAW": null,
     "CUSTOM_DATA": []
    },
    "FILES": [
-    null,
-    null,
-    null
+    13858,
+    13860,
+    13862
    ]
   }
  ],
  "total": 1,
  "time": {
-  "start": 1767469160,
-  "finish": 1767469160.40705,
-  "duration": 0.407049894332886,
+  "start": 1767553041,
+  "finish": 1767553041.40481,
+  "duration": 0.404813051223755,
   "processing": 0,
-  "date_start": "2026-01-03T19:39:20+00:00",
-  "date_finish": "2026-01-03T19:39:20+00:00",
-  "operating_reset_at": 1767469760,
+  "date_start": "2026-01-04T18:57:21+00:00",
+  "date_finish": "2026-01-04T18:57:21+00:00",
+  "operating_reset_at": 1767553641,
   "operating": 0
  }
 }
