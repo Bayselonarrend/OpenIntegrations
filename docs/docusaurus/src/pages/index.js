@@ -111,6 +111,17 @@ function HomepageHeader() {
 
 export default function Home() {
   const [showSponsorModal, setShowSponsorModal] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const openModal = () => {
+    setShowSponsorModal(true);
+    setTimeout(() => setIsModalVisible(true), 10);
+  };
+
+  const closeModal = () => {
+    setIsModalVisible(false);
+    setTimeout(() => setShowSponsorModal(false), 300);
+  };
 
   const sponsors = [
     {
@@ -171,7 +182,7 @@ export default function Home() {
             <div className={styles.becomeSponsorWrapper}>
               <button 
                 className={styles.becomeSponsorBtn}
-                onClick={() => setShowSponsorModal(true)}
+                onClick={openModal}
               >
                 Стать спонсором
               </button>
@@ -181,8 +192,8 @@ export default function Home() {
 
         {showSponsorModal && (
           <div 
-            className={`${styles.modalOverlay} ${styles.modalOverlayVisible}`} 
-            onClick={() => setShowSponsorModal(false)}
+            className={`${styles.modalOverlay} ${isModalVisible ? styles.modalOverlayVisible : ''}`} 
+            onClick={closeModal}
           >
             <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
               <div className={styles.modalScrollable}>
@@ -204,7 +215,7 @@ export default function Home() {
                 </div>
                 <h1>Станьте спонсором проекта</h1>
                 <p className={styles.sponsorModalText}>
-                  Открытый Пакет Интеграций — это бесплатный open-source проект, который развивается благодаря поддержке сообщества. Мы не используем платные версии и не размещаем рекламу в документации, чтобы сохранить удобство использования для всех
+                  <strong>Открытый Пакет Интеграций</strong> — это бесплатный open-source проект, который развивается благодаря поддержке сообщества. Мы не используем платные версии и не размещаем рекламу в документации, чтобы сохранить удобство использования для всех
                 </p>
                 <p className={styles.sponsorModalText}>
                   Ваша поддержка поможет нам продолжать разработку новых интеграций, улучшать документацию и поддерживать актуальность библиотек. Взамен логотип вашей компании будет размещён в блоке спонсоров на главной странице сайта (при желании), а поддержка по работе с проектом будет оказываться вам в приоритетном порядке
@@ -224,7 +235,7 @@ export default function Home() {
                   </Link>
                   <button 
                     className={styles.closeButtonSquare} 
-                    onClick={() => setShowSponsorModal(false)}
+                    onClick={closeModal}
                     aria-label="Закрыть"
                   >
                     ×
