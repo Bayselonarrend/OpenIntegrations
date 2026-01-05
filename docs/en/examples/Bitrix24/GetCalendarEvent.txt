@@ -1,10 +1,10 @@
 ﻿    URL     = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    EventID = "3082";
+    EventID = "3456";
 
     Result = OPI_Bitrix24.GetCalendarEvent(URL, EventID);
 
     URL     = "b24-ar17wx.bitrix24.by";
-    Token   = "ed182469006e9f06006b12e400000001000...";
-    EventID = "3086";
+    Token   = "d49a5b69006e9f06006b12e400000001000...";
+    EventID = "3460";
 
     Result = OPI_Bitrix24.GetCalendarEvent(URL, EventID, Token);
