@@ -3,18 +3,18 @@
   {
    "bigint_field": 20000000000,
    "bit_field": 1,
-   "date_field": "2026-01-04",
-   "datetime_field": "2026-01-04T18:42:04",
-   "dto_field": "2026-01-04T08:42:04.589940100+00:00",
+   "date_field": "2026-01-05",
+   "datetime_field": "2026-01-05T20:14:18",
+   "dto_field": "2026-01-05T10:14:18.795409700+00:00",
    "float24_field": 10.1234569549561,
    "float53_field": 10.1234567891235,
    "int_field": 200000,
    "numeric_field": 5.333,
    "nvarchar_field": "Some text",
    "smallint_field": 2000,
-   "time_field": "18:42:04",
+   "time_field": "20:14:18",
    "tinyint_field": 5,
-   "uid_field": "39513e0e-36a4-4aa9-a4eb-4959831db933",
+   "uid_field": "f5a2a97e-9e8b-4325-a276-0ecd1a9a53ca",
    "varbinary_field": {
     "BYTES": "/9j/4VTBRX..."
    },
