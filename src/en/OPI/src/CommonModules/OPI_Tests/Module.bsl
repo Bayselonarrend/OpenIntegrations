@@ -3527,7 +3527,7 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
 
     Process(Result, "Telegram", "SendTextMessage", "Keyboard structure");
 
-    Text = "%F0%9F%94%A5 *New release\!!*
+    Text = "%F0%9F%94%A5 *New release\!*
     |
     |%F0%9F%8F%B0 *Repository*: [240596448/devtools](https://github.com/240596448/devtools)
     |%F0%9F%94%A2 *Version*: \{0.6.0}
@@ -3610,7 +3610,7 @@ Procedure Telegram_SendImage(FunctionParameters)
 
     Process(Result, "Telegram", "SendImage", "Text + Emoji");
 
-    Text = "%F0%9F%94%A5 *New release\!!*
+    Text = "%F0%9F%94%A5 *New release\!*
     |
     |%F0%9F%8F%B0 *Repository*: [240596448/devtools](https://github.com/240596448/devtools)
     |%F0%9F%94%A2 *Version*: \{0.6.0}
