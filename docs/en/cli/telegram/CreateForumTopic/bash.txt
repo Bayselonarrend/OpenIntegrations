@@ -1,5 +1,5 @@
 oint telegram CreateForumTopic \
  --token "***" \
  --forum "-1001971186208" \
- --title "TestTopic 65b9a653-521f-4be9-8158-8d3567b829a3" \
+ --title "TestTopic 8a9b20bf-af0d-4114-90d3-d38c1bb0bb4c" \
  --icon "5357419403325481346"

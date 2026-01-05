@@ -2,7 +2,7 @@
 
 oint airtable CreateTable ^
  --token "***" ^
- --base "appidQvVmqjZFVsTD" ^
+ --base "app6dPwdLZJLzXK4O" ^
  --title "TestTable2" ^
  --fieldsdata "[{'name':'Number','type':'number','options':{'precision':'0'}},{'name':'String','type':'richText'},{'name':'Attachment','type':'multipleAttachments'},{'name':'Checkbox','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Date','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Phone','type':'phoneNumber'},{'name':'Email','type':'email'},{'name':'Link','type':'url'}]" ^
  --description "NewTable"
