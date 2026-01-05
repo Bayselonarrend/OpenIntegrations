@@ -2201,7 +2201,7 @@ Function ExecuteMethod(Val RedirectCount = 0, Val ErrorCount = 0, Val Forced = F
 
             Else
 
-                LogText = StrTemplate("ExecuteMethod: redirection %1, Location missing, termination");
+                LogText = "ExecuteMethod: redirection, Location missing, termination";
                 AddLog(LogText);
 
             EndIf;
