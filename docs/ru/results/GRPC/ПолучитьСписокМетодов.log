@@ -1,15 +1,15 @@
 ﻿{
  "data": [
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null
+  "Index",
+  "Empty",
+  "DummyUnary",
+  "DummyServerStream",
+  "DummyClientStream",
+  "DummyBidirectionalStreamStream",
+  "SpecificError",
+  "RandomError",
+  "HeadersUnary",
+  "NoResponseUnary"
  ],
  "result": true
 }

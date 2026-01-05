@@ -5069,7 +5069,7 @@ EndFunction
 Function Check_Bitrix24_ApproveTask(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["error_description"]).Равно("Action on the task is not allowed");
+    ExpectsThat(Result["error"]).Равно("1048582");
 
     Return Undefined;
 
@@ -5078,7 +5078,7 @@ EndFunction
 Function Check_Bitrix24_DisapproveTask(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map").Заполнено();
-    ExpectsThat(Result["error_description"]).Равно("Action on the task is not allowed");
+    ExpectsThat(Result["error"]).Равно("1048582");
 
     Return Undefined;
 
@@ -13603,6 +13603,14 @@ Function ReplaceSecretsRecursively(Value, Val Indicators, Val Hide = False)
 
         If Hide Then
             Value_ = "***";
+        Else
+            Value_ = Value;
+        EndIf;
+
+        If TypeOf(Value_) = Type("String") Then
+            If StrLen(Value_) > 100 Then
+                Value_    = Left(Value_, 100) + "...";
+            EndIf;
         EndIf;
 
     EndIf;
@@ -13758,7 +13766,7 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library, Val Overwrite = True)
             CreateDirectory(LibraryLogPath);
         EndIf;
 
-        If OPI_Tools.ThisIsCollection(Data, True) Then
+        If OPI_Tools.ThisIsCollection(Data) Then
 
             SecretsArray = GetSecretKeyArray();
             Data         = ReplaceSecretsRecursively(Data, SecretsArray);
