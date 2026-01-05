@@ -2,6 +2,6 @@
 
 oint airtable CreateField ^
  --token "***" ^
- --base "appidQvVmqjZFVsTD" ^
- --table "tblgACqM6MItBZaHD" ^
- --fielddata "{'name':'4bc4ca91-1146-4cc1-b103-9a13d52465b0','type':'number','options':{'precision':'0'}}"
+ --base "app6dPwdLZJLzXK4O" ^
+ --table "tbleGL1JWay6KejJ7" ^
+ --fielddata "{'name':'7355a6e5-0d10-456d-addc-5ed77133d93c','type':'number','options':{'precision':'0'}}"

@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2026-01-05T16:13:14.417468295Z",
+ "created_at": "2026-01-05T22:33:44.321406871Z",
  "message": {
   "role": "assistant",
-  "content": "The original version of 1C:Enterprise was released in 2005. However, it underwent several updates and expansions through time until its current version, 1C:Modern (formerly known as 1C:Intelligent Enterprise), was released in 2016. This latest version offers a range of enhancements and additions over the previous versions, such as new features for accounting, inventory management, project portfolio management, and more."
+  "content": "1C:Enterprise has undergone several major releases since its initial launch in 2005. The latest version (10) was released in November 2018 and provides significant improvements to its user experience, including new features and functionality updates. In addition to the release of version 10, 1C:Enterprise also underwent several minor updates and patches throughout its lifecycle, ensuring a stable and reliable platform for users."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 16809462286,
- "load_duration": 14749385,
- "prompt_eval_count": 207,
- "prompt_eval_duration": 4441851806,
- "eval_count": 107,
- "eval_duration": 12347881644
+ "total_duration": 16442609331,
+ "load_duration": 15860584,
+ "prompt_eval_count": 187,
+ "prompt_eval_duration": 6404487699,
+ "eval_count": 98,
+ "eval_duration": 10018041029
 }

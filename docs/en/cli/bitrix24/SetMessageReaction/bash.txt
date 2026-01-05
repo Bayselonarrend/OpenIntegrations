@@ -1,4 +1,4 @@
 oint bitrix24 SetMessageReaction \
  --url "b24-ar17wx.bitrix24.by" \
- --message 73420 \
+ --message 73826 \
  --token "***"
