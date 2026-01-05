@@ -1,16 +1,16 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID = "3410";
+    ChatID = "3802";
 
     OPI_TypeConversion.GetLine(ChatID);
 
     ChatString = "chat" + ChatID;
-    MessageID  = "68030";
+    MessageID  = "73158";
 
     Result = OPI_Bitrix24.MarkMessageAsUnreaded(URL, ChatString, MessageID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "ed182469006e9f06006b12e400000001000...";
+    Token     = "d49a5b69006e9f06006b12e400000001000...";
     UserID    = 10;
-    MessageID = "68032";
+    MessageID = "73160";
 
     Result = OPI_Bitrix24.MarkMessageAsUnreaded(URL, UserID, MessageID, Token);
