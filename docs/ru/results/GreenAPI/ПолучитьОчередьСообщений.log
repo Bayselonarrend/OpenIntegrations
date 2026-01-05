@@ -1,1 +1,54 @@
-﻿[]
+﻿[
+ {
+  "messageID": "3EB045A1F3AE743F2D2F8A",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "firstName": "Артем",
+    "middleName": "Евпаторийский",
+    "lastName": "Петрович",
+    "company": "Велосипед"
+   },
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0F68CE3934BEADAB3DB",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "company": "Велосипед"
+   },
+   "quotedMessageId": "3EB045A1F3AE743F2D2F8A",
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "3EB06840046D5F3C439357"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "***",
+   "chatIdFrom": "***",
+   "messages": [
+    "3EB0042900C4CF410BD6CB"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB09C9B6F62FFF98B1708",
+  "type": "editMessage",
+  "body": {
+   "chatId": "***",
+   "idMessage": "3EB0042900C4CF410BD6CB",
+   "message": "Новый текст сообщения",
+   "linkPreview": true
+  }
+ }
+]
