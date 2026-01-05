@@ -3,6 +3,6 @@
     Result = OPI_Bitrix24.GetDealStructure(URL);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "ed182469006e9f06006b12e400000001000...";
+    Token = "d49a5b69006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetDealStructure(URL, Token);
