@@ -5,7 +5,7 @@
    {
     "_id": "main.newuser",
     "userId": {
-     "__B64_BINARY__": "oHg3iXdcRAOeRhSZ15ahXw=="
+     "__B64_BINARY__": "hBKChw3NRnaf/Fsx6WDfGA=="
     },
     "user": "newuser",
     "db": "main",
@@ -16,8 +16,8 @@
      }
     ],
     "mechanisms": [
-     null,
-     null
+     "SCRAM-SHA-1",
+     "SCRAM-SHA-256"
     ]
    }
   ],

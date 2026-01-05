@@ -13,7 +13,7 @@
   "Host": "bin.openintegrations.dev",
   "Max-Forwards": "10",
   "User-Agent": "1Script v$2.0.0.0",
-  "X-Arr-Log-Id": "f90b329e-4999-4abf-a32e-45e9719cba5a",
+  "X-Arr-Log-Id": "9705977c-3976-4f1f-84cb-7a7dc3a221e9",
   "X-Arr-Ssl": "2048|256|C=BE, O=GlobalSign nv-sa, CN=GlobalSign GCC R6 AlphaSSL CA 2025|CN=*.openintegrations.dev",
   "X-Forwarded-Host": "bin.openintegrations.dev",
   "X-Original-Url": "***"
@@ -22,9 +22,9 @@
   "Field1": 10,
   "Field2": "Text",
   "Field3": [
-   null,
-   null,
-   null
+   "A",
+   "B",
+   "C"
   ]
  },
  "origin": "***",

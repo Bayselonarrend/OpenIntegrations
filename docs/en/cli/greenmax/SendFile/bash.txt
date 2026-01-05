@@ -3,8 +3,6 @@
 oint greenmax SendFile \
  --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
  --chat "***" \
- --file "https://hut.openintegrations.dev/test_data/video.mp4" \
- --filename "vid.mp4" \
- --caption "File description" \
- --typing 1000 \
- --ttype "video"
+ --file "https://hut.openintegrations.dev/test_data/picture.jpg" \
+ --filename "photo.jpg" \
+ --caption "File description"

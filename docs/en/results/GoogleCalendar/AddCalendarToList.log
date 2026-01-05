@@ -1,20 +1,20 @@
 ﻿{
  "kind": "calendar#calendarListEntry",
- "etag": "\"1767485650055439\"",
- "id": "5701a16a1c5095d94aa2d2d6d94e21a953f436252f5b748af18b685bc1d7701d@group.calendar.google.com",
+ "etag": "\"1767625838050575\"",
+ "id": "490d64499b829262742ebe28ab7c121107dcbb462acc9dceb76bdddd7b3bf9ca@group.calendar.google.com",
  "summary": "New name",
  "description": "New description",
  "timeZone": "Europe/Moscow",
  "dataOwner": "bayselonarrend@gmail.com",
- "colorId": "17",
- "backgroundColor": "#9a9cff",
+ "colorId": "16",
+ "backgroundColor": "#4986e7",
  "foregroundColor": "#000000",
  "selected": true,
  "accessRole": "owner",
  "defaultReminders": [],
  "conferenceProperties": {
   "allowedConferenceSolutionTypes": [
-   null
+   "hangoutsMeet"
   ]
  }
 }

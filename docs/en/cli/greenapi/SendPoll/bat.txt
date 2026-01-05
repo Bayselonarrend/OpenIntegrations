@@ -3,7 +3,7 @@
 oint greenapi SendPoll ^
  --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
  --chat "***" ^
- --text "What's your favorite color?" ^
+ --text "What's your favorite color??" ^
  --options "['Red','Yellow','Green']" ^
  --multi true ^
- --quoted "3EB0DE8616BD3A27F17FB3"
+ --quoted "3EB009287DA54BBC28198F"
