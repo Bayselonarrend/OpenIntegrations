@@ -2,6 +2,6 @@
 
 oint bitrix24 ИзменитьЛид \
   --url "b24-ar17wx.bitrix24.by" \
-  --lead 2942 \
+  --lead 2970 \
   --fields "{'ADDRESS':'ул. Лермонтова, д. 20','ADDRESS_COUNTRY':'Беларусь','TITLE':'Суперклиент','NAME':'Евгений','LAST_NAME':'Евгеньев'}" \
   --token "***"

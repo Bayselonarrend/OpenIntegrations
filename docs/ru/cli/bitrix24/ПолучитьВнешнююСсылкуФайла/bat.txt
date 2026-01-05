@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьВнешнююСсылкуФайла ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --fileid 49286 ^
+  --fileid 49662 ^
   --token "***"

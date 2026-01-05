@@ -2,14 +2,14 @@
  "ok": true,
  "result": {
   "invite_link": "***",
-  "name": "Ссылка 1/5/2026 7:52:16 PM",
+  "name": "Ссылка 1/5/2026 9:01:36 PM",
   "creator": {
    "id": 6129457865,
    "is_bot": true,
    "first_name": "Бот Виталий",
    "username": "sicheebot"
   },
-  "expire_date": 1767725536,
+  "expire_date": 1767729696,
   "member_limit": 200,
   "creates_join_request": false,
   "is_primary": false,

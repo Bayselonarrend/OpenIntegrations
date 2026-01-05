@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьСделку ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --deal 5872 ^
+  --deal 5928 ^
   --token "***"

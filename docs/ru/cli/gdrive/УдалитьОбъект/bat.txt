@@ -1,3 +1,3 @@
 oint gdrive УдалитьОбъект ^
   --token "***" ^
-  --object "1aD5B3WUftF8lq0Uwol3Bu-YKG1iIirSg"
+  --object "1QRfGi1ni6P03qeR28QA-57U_zjh23POU"
