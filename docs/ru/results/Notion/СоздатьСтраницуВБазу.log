@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "2df82aa7-fc4e-81d5-9b46-cda38db03b36",
- "created_time": "2026-01-05T17:23:00Z",
- "last_edited_time": "2026-01-05T17:23:00Z",
+ "id": "2df82aa7-fc4e-812b-9ffa-f04f5c3c3223",
+ "created_time": "2026-01-05T19:13:00Z",
+ "last_edited_time": "2026-01-05T19:13:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,23 +15,14 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "2df82aa7-fc4e-819d-9898-c71af75e08cb"
+  "database_id": "2df82aa7-fc4e-81c2-9157-ccf4426c52db"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Статус": {
-   "id": "%40d%3Bi",
-   "type": "select",
-   "select": {
-    "id": "23835808-4efd-45ee-aa73-3a383811e2b7",
-    "name": "Новый",
-    "color": "green"
-   }
-  },
   "Описание": {
-   "id": "%40lS_",
+   "id": "%3Ccot",
    "type": "rich_text",
    "rich_text": [
     {
@@ -53,18 +44,13 @@
     }
    ]
   },
-  "Телефон": {
-   "id": "Bm~%5E",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Активен": {
-   "id": "Jxhi",
-   "type": "checkbox",
-   "checkbox": true
+  "Номер": {
+   "id": "B%3ENt",
+   "type": "number",
+   "number": 1
   },
   "Картинка": {
-   "id": "_pJn",
+   "id": "EMwO",
    "type": "files",
    "files": [
     {
@@ -76,8 +62,13 @@
     }
    ]
   },
+  "Телефон": {
+   "id": "Nl%3ED",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
   "Почта": {
-   "id": "awqV",
+   "id": "RcaZ",
    "type": "rich_text",
    "rich_text": [
     {
@@ -99,24 +90,33 @@
     }
    ]
   },
+  "Статус": {
+   "id": "X_tb",
+   "type": "select",
+   "select": {
+    "id": "fa1eb85b-958c-4186-b6db-1ff3f022f9fb",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
   "Пользователь": {
-   "id": "bUL%7C",
+   "id": "b%7Cs_",
    "type": "people",
    "people": []
   },
+  "Активен": {
+   "id": "iS%7DM",
+   "type": "checkbox",
+   "checkbox": true
+  },
   "Дата создания": {
-   "id": "mudH",
+   "id": "lnv%5E",
    "type": "date",
    "date": {
-    "start": "2026-01-05T11:23:00+03:00",
+    "start": "2026-01-05T13:13:00+03:00",
     "end": null,
     "time_zone": null
    }
-  },
-  "Номер": {
-   "id": "%7BnhX",
-   "type": "number",
-   "number": 1
   },
   "Имя": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/2df82aa7fc4e81d59b46cda38db03b36",
+ "url": "https://www.notion.so/2df82aa7fc4e812b9ffaf04f5c3c3223",
  "public_url": null,
- "request_id": "12212f0a-6fc2-4a64-8f57-1455cf476972"
+ "request_id": "cae7e6a6-e756-43c8-90fc-8bda4d6e3aa4"
 }
