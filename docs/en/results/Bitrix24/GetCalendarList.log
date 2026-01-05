@@ -2053,7 +2053,7 @@
    }
   },
   {
-   "ID": "1862",
+   "ID": "1874",
    "NAME": "New calendar name",
    "GAPI_CALENDAR_ID": "***",
    "DESCRIPTION": "This calendar has been changed",
@@ -2062,13 +2062,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1862&sign=22354a875c09b8ae13f571a138fe55bd&bx_hit_hash=M77nYEUhypJX5zJBIW2iJO6vHlZcebbA"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1874&sign=e994d5d321845f0241f163d8b4eb1217&bx_hit_hash=M77nYEUhypJX5zJBIW2iJO6vHlZcebbA"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2026-01-05 18:42:00",
-   "TIMESTAMP_X": "2026-01-05 18:42:00",
+   "DATE_CREATE": "2026-01-06 01:05:00",
+   "TIMESTAMP_X": "2026-01-06 01:05:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": "***",
    "PAGE_TOKEN": "***",
@@ -2089,7 +2089,7 @@
    }
   },
   {
-   "ID": "1864",
+   "ID": "1876",
    "NAME": "New calendar name",
    "GAPI_CALENDAR_ID": "***",
    "DESCRIPTION": "This calendar has been changed",
@@ -2098,13 +2098,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1864&sign=2a5d3a6e405925890da3d1614fa71bcb&bx_hit_hash=M77nYEUhypJX5zJBIW2iJO6vHlZcebbA"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1876&sign=56f9c2feb281ab879886f793a7b4b2ce&bx_hit_hash=M77nYEUhypJX5zJBIW2iJO6vHlZcebbA"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2026-01-05 18:42:00",
-   "TIMESTAMP_X": "2026-01-05 18:42:00",
+   "DATE_CREATE": "2026-01-06 01:05:00",
+   "TIMESTAMP_X": "2026-01-06 01:05:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": "***",
    "PAGE_TOKEN": "***",
@@ -2126,13 +2126,13 @@
   }
  ],
  "time": {
-  "start": 1767627727,
-  "finish": 1767627727.86868,
-  "duration": 0.868680953979492,
+  "start": 1767650716,
+  "finish": 1767650716.8352,
+  "duration": 0.835195064544678,
   "processing": 0,
-  "date_start": "2026-01-05T15:42:07+00:00",
-  "date_finish": "2026-01-05T15:42:07+00:00",
-  "operating_reset_at": 1767628327,
+  "date_start": "2026-01-05T22:05:16+00:00",
+  "date_finish": "2026-01-05T22:05:16+00:00",
+  "operating_reset_at": 1767651316,
   "operating": 0
  }
 }

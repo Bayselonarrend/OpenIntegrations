@@ -1,5 +1,5 @@
 # JSON data can also be passed as a path to a .json file
 
 oint sftp DeleteFile \
- --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'/tmp/0qh0bxw0.fjx.tmp','username':'bayselonarrend'}}" \
+ --conn "{'proxy':{'login':'proxyuser','password':'***','port':'8071','proxy_type':'http','server':'127.0.0.1'},'set':{'auth_type':'private_key','host':'172.33.0.13','key_path':'***','passphrase':null,'password':null,'port':'2222','pub_path':'/tmp/svd2b5ps.uph.tmp','username':'bayselonarrend'}}" \
  --path "files_folder/pic_from_binary.png"
