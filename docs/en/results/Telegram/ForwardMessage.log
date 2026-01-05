@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 18739,
+  "message_id": 18811,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,7 +15,7 @@
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1767483596,
+  "date": 1767621445,
   "forward_origin": {
    "type": "channel",
    "chat": {
@@ -24,8 +24,8 @@
     "username": "testsichee",
     "type": "channel"
    },
-   "message_id": 23958,
-   "date": 1767483411
+   "message_id": 24048,
+   "date": 1767621156
   },
   "forward_from_chat": {
    "id": -1001893407333,
@@ -33,18 +33,15 @@
    "username": "testsichee",
    "type": "channel"
   },
-  "forward_from_message_id": 23958,
-  "forward_date": 1767483411,
-  "text": "Строковое значение",
-  "reply_markup": {
-   "inline_keyboard": [
-    [
-     {
-      "text": "💬 Перейти к обсуждению (0)",
-      "url": "https://t.me/c/2404672933/10057?thread=10057"
-     }
-    ]
-   ]
-  }
+  "forward_from_message_id": 24048,
+  "forward_date": 1767621156,
+  "text": "Bold text",
+  "entities": [
+   {
+    "offset": 0,
+    "length": 9,
+    "type": "bold"
+   }
+  ]
  }
 }

@@ -21,7 +21,7 @@
   "COUNT": "<number of repetitions>",
   "INTERVAL": "<repetition interval>",
   "BYDAY": [
-   null
+   "<days of the week: SU, MO, TU, WE, TH, FR, SA>"
   ],
   "UNTIL": "<repetition end date>"
  },

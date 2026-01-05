@@ -1,5 +1,5 @@
 oint bitrix24 DeleteTasksChecklistElement ^
  --url "b24-ar17wx.bitrix24.by" ^
- --task "9048" ^
- --element 6426 ^
+ --task "9270" ^
+ --element 6586 ^
  --token "***"
