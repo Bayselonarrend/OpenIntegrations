@@ -67,10 +67,10 @@ Method at API documentation: [Receiving order receipt](https://api-docs.cdek.ru/
 ```json title="Result"
 {
  "entity": {
-  "uuid": "e22c3284-e811-4eb3-8bbb-36460e42250e",
+  "uuid": "788065bf-bdb4-4137-9b4f-f05536488625",
   "orders": [
    {
-    "order_uuid": "9e15fe3c-2071-4ed8-9ded-70df723825d3"
+    "order_uuid": "09d50991-5cd5-4d7b-b424-a27c9160371c"
    }
   ],
   "copy_count": 1,
@@ -79,34 +79,16 @@ Method at API documentation: [Receiving order receipt](https://api-docs.cdek.ru/
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2025-12-10T20:09:22+00:00"
-   },
-   {
-    "code": "INVALID",
-    "name": "Некорректный запрос",
-    "date_time": "2025-12-10T20:09:23+00:00"
+    "date_time": "2026-01-04T00:29:52+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "8d30cd85-bd7d-4b50-952f-b1ca1c468102",
+   "request_uuid": "6a89a729-c5d8-4aa9-9841-b95f9a1f9811",
    "type": "CREATE",
-   "date_time": "2025-12-10T20:09:22+00:00",
-   "state": "INVALID",
-   "errors": [
-    {
-     "code": "v2_orders_number_is_empty",
-     "additional_code": "0x1E0EBE20",
-     "message": "Entity is empty. All orders are incorrect"
-    }
-   ],
-   "warnings": [
-    {
-     "code": "v2_order_invalid",
-     "message": "Order is invalid 9e15fe3c-2071-4ed8-9ded-70df723825d3"
-    }
-   ]
+   "date_time": "2026-01-04T00:29:52+00:00",
+   "state": "ACCEPTED"
   }
  ],
  "related_entities": []

@@ -4,8 +4,8 @@
   "collection": "new_collection"
  },
  "actions": [
-  null,
-  null,
-  null
+  "find",
+  "insert",
+  "update"
  ]
 }
