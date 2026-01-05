@@ -233,11 +233,13 @@ Function ExecuteRequestWithBody(Val URL
     , Val FullResponse      = False
     , Val ResponseFile      = Undefined)
 
+    Attempts = 5;
+
     HttpClient = NewRequest()
         .Initialize(URL)
         .SetHeaders(AdditionalHeaders)
         .SetResponseFile(ResponseFile)
-        .MaxAttempts(5);
+        .MaxAttempts(Attempts);
 
     If JSON Then
         HttpClient.SetJsonBody(Parameters);
@@ -264,12 +266,14 @@ Function ExecuteRequestWithoutBody(Val URL
     , Val ResponseFile      = Undefined
     , Val FullResponse      = False)
 
+    Attempts = 5;
+
     HttpClient = NewRequest()
         .Initialize(URL)
         .SetURLParams(Parameters)
         .SetHeaders(AdditionalHeaders)
         .SetResponseFile(ResponseFile)
-        .MaxAttempts(5)
+        .MaxAttempts(Attempts)
         .ProcessRequest(View);
 
     If FullResponse Then
@@ -290,11 +294,13 @@ Function ExecuteMultipartRequest(Val URL
     , Val AdditionalHeaders = ""
     , Val ResponseFile      = Undefined)
 
+    Attempts = 5;
+
     HttpClient = NewRequest()
         .Initialize(URL)
         .SetHeaders(AdditionalHeaders)
         .SetResponseFile(ResponseFile)
-        .MaxAttempts(5)
+        .MaxAttempts(Attempts)
         .StartMultipartBody();
 
     //@skip-check bsl-legacy-check-for-each-statetement-collection

@@ -3530,10 +3530,10 @@ Procedure Telegram_SendTextMessage(FunctionParameters)
     |
     |%F0%9F%8F%B0 *Repository*: [240596448/devtools](https://github.com/240596448/devtools)
     |%F0%9F%94%A2 *Version*: \{0.6.0}
-    |%F0%9F%93%85 *Date release*: 6 december 2025.
+    |%F0%9F%93%85 *Date release*: 6 december 2025 y.
     |
     |>*AI summary*
-    |>Devtools — this tool for automation work with configurations\extensions 1C:Enterprise and integration with Git. Application allows dump and upload objects, a also synchronize change between Git and repository 1C. In release 0.6.0 realized optimization logic work and added logging, that contributes stability and simplifies analysis work applications.
+    |>Devtools - this tool for automation work with configurations\extensions 1C:Enterprise and integration with Git. Application allows dump and upload objects, a also synchronize change between Git and repository 1C. In release 0.6.0 realized optimization logic work and added logging, that contributes stability and simplifies analysis work applications.
     |
     |
     |_Not forget put %E2%AD%90 liked projects_";
@@ -3613,10 +3613,10 @@ Procedure Telegram_SendImage(FunctionParameters)
     |
     |%F0%9F%8F%B0 *Repository*: [240596448/devtools](https://github.com/240596448/devtools)
     |%F0%9F%94%A2 *Version*: \{0.6.0}
-    |%F0%9F%93%85 *Date release*: 6 december 2025.
+    |%F0%9F%93%85 *Date release*: 6 december 2025 y.
     |
     |>*AI summary*
-    |>Devtools — this tool for automation work with configurations\extensions 1C:Enterprise and integration with Git. Application allows dump and upload objects, a also synchronize change between Git and repository 1C. In release 0.6.0 realized optimization logic work and added logging, that contributes stability and simplifies analysis work applications.
+    |>Devtools - this tool for automation work with configurations\extensions 1C:Enterprise and integration with Git. Application allows dump and upload objects, a also synchronize change between Git and repository 1C. In release 0.6.0 realized optimization logic work and added logging, that contributes stability and simplifies analysis work applications.
     |
     |
     |_Not forget put %E2%AD%90 liked projects_";
