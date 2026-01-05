@@ -1,3 +1,3 @@
 oint slack GetChannel \
  --token "***" \
- --channel "C0A2MHCL9EF"
+ --channel "C0A6NSAH0KV"

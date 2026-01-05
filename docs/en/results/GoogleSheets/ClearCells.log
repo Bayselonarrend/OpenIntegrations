@@ -1,8 +1,8 @@
 ﻿{
- "spreadsheetId": "1HKxkU9VEjEggcNerR8caGDP7Z4F_KaQCvYNKsok2cM0",
+ "spreadsheetId": "1U53I0Jiwg4MKAIrk1yNolgrJqFVR36hd_w_YPAUqxoQ",
  "clearedRanges": [
-  null,
-  null,
-  null
+  "Sheet2!B2",
+  "Sheet2!A3",
+  "Sheet2!B4"
  ]
 }

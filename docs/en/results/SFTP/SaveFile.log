@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/0pbyokdg.xit.bin",
- "result": true
+ "filepath": "/tmp/omtjw51r.aks.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

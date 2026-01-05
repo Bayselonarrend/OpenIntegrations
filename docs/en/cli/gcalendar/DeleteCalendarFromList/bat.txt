@@ -1,3 +1,3 @@
 oint gcalendar DeleteCalendarFromList ^
  --token "***" ^
- --calendar "03997e17b4c902c3a4a9d00cbce74d84f74447c1924226d9190c8b1d41aabce0@group.calendar.google.com"
+ --calendar "490d64499b829262742ebe28ab7c121107dcbb462acc9dceb76bdddd7b3bf9ca@group.calendar.google.com"
