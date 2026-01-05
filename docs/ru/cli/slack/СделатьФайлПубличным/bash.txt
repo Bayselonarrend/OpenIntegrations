@@ -1,3 +1,3 @@
 oint slack СделатьФайлПубличным \
   --token "***" \
-  --fileid "F0A7FKRJVCY"
+  --fileid "F0A6TK7GF4M"
