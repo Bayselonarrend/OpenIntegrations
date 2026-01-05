@@ -1,0 +1,5 @@
+:: JSON data can also be passed as a path to a .json file
+
+oint grpc GetMethodList ^
+ --conn "{'address':'https://grpcb.in:9001','proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin.proto'}}" ^
+ --service "grpcbin.GRPCBin"

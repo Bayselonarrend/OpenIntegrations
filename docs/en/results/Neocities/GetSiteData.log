@@ -2,15 +2,15 @@
  "result": "success",
  "info": {
   "sitename": "2athenaeum",
-  "views": 153582,
-  "hits": 415341,
+  "views": 153611,
+  "hits": 415417,
   "created_at": "Sat, 31 Dec 2022 11:53:53 -0000",
-  "last_updated": "Sun, 04 Jan 2026 00:29:04 -0000",
+  "last_updated": "Mon, 05 Jan 2026 15:47:07 -0000",
   "domain": null,
   "tags": [
-   null,
-   null,
-   null
+   "literature",
+   "books",
+   "library"
   ]
  }
 }

@@ -1,13 +1,13 @@
 ﻿{
  "kind": "calendar#calendar",
- "etag": "\"qg5jPYCTIW7FYk0EpO6HDXeyrJY\"",
- "id": "2f25ef24f7c9bc41a299eaf53f39b7e3cc40317cf8710a086f2481601de2c34c@group.calendar.google.com",
+ "etag": "\"gn4kVQ0MVsGNr9gDLsVr1rqKP-U\"",
+ "id": "2a2f191eb332cae292ec5cda252dc2f0b445b19209bc27e94926342c52613b98@group.calendar.google.com",
  "summary": "TestCalendar",
  "timeZone": "Europe/Moscow",
  "dataOwner": "bayselonarrend@gmail.com",
  "conferenceProperties": {
   "allowedConferenceSolutionTypes": [
-   null
+   "hangoutsMeet"
   ]
  }
 }

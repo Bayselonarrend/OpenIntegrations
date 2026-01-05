@@ -1,6 +1,6 @@
 ﻿{
  "parents": [
-  null
+  "0AN2vrbrhqfJrUk9PVA"
  ],
  "lastModifyingUser": {
   "displayName": "Антон Титовец",
@@ -34,7 +34,7 @@
   }
  ],
  "spaces": [
-  null
+  "drive"
  ],
  "capabilities": {
   "canAcceptOwnership": false,
@@ -72,7 +72,7 @@
   "canUntrash": true
  },
  "permissionIds": [
-  null
+  "07468399490707249352"
  ],
  "linkShareMetadata": {
   "securityUpdateEligible": false,

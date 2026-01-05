@@ -1,6 +1,6 @@
 # JSON data can also be passed as a path to a .json file
 
 oint vk CreateDiscussion \
- --title "Discussing: Which color is better?" \
- --text "Red, yellow, blue, or some other?" \
+ --title "Discussing: Which color is better??" \
+ --text "Red, yellow, blue, or some other??" \
  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

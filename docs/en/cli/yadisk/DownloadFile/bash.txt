@@ -1,3 +1,3 @@
 oint yadisk DownloadFile \
  --token "***" \
- --path "/0a714c37-2cbb-4495-8618-c434a1404410.png"
+ --path "/ef93d2a8-547b-4ec8-94c0-fe437d04f95b.png"

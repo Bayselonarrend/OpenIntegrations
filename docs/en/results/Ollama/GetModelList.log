@@ -3,7 +3,7 @@
   {
    "name": "mario:latest",
    "model": "mario:latest",
-   "modified_at": "2026-01-04T00:44:29.872588362Z",
+   "modified_at": "2026-01-05T16:16:42.61432219Z",
    "size": 637700145,
    "digest": "83472d32997e219d78e3e480763e7b72beca170aaa02f3f2e2dbf613c248dee4",
    "details": {
@@ -11,7 +11,7 @@
     "format": "gguf",
     "family": "llama",
     "families": [
-     null
+     "llama"
     ],
     "parameter_size": "1.1B",
     "quantization_level": "Q4_0"
@@ -20,7 +20,7 @@
   {
    "name": "bayselonarrend/tinyllama:latest",
    "model": "bayselonarrend/tinyllama:latest",
-   "modified_at": "2026-01-04T00:44:28.089067434Z",
+   "modified_at": "2026-01-05T16:16:35.032143403Z",
    "size": 637700138,
    "digest": "2644915ede352ea7bdfaff0bfac0be74c719d5d5202acb63a6fb095b52f394a4",
    "details": {
@@ -28,7 +28,7 @@
     "format": "gguf",
     "family": "llama",
     "families": [
-     null
+     "llama"
     ],
     "parameter_size": "1B",
     "quantization_level": "Q4_0"
@@ -37,7 +37,7 @@
   {
    "name": "tinyllama:latest",
    "model": "tinyllama:latest",
-   "modified_at": "2026-01-04T00:44:26.969293006Z",
+   "modified_at": "2026-01-05T16:16:30.719590559Z",
    "size": 637700138,
    "digest": "2644915ede352ea7bdfaff0bfac0be74c719d5d5202acb63a6fb095b52f394a4",
    "details": {
@@ -45,7 +45,7 @@
     "format": "gguf",
     "family": "llama",
     "families": [
-     null
+     "llama"
     ],
     "parameter_size": "1B",
     "quantization_level": "Q4_0"

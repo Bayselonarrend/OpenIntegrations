@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/wobp1cra.uw2.bin",
- "result": true
+ "filepath": "/tmp/nanazjif.x1l.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }

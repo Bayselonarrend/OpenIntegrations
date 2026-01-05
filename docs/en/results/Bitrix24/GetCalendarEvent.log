@@ -1,26 +1,26 @@
 ﻿{
  "result": {
-  "ID": "3444",
-  "PARENT_ID": "3444",
+  "ID": "3476",
+  "PARENT_ID": "3476",
   "DELETED": "N",
   "CAL_TYPE": "user",
   "OWNER_ID": "1",
   "NAME": "New event",
-  "DATE_FROM": "05.01.2026 00:27:00",
-  "DATE_TO": "05.01.2026 01:27:00",
+  "DATE_FROM": "06.01.2026 15:42:00",
+  "DATE_TO": "06.01.2026 16:42:00",
   "ORIGINAL_DATE_FROM": "***",
   "TZ_FROM": "Europe/Minsk",
   "TZ_TO": "Europe/Minsk",
   "TZ_OFFSET_FROM": "10800",
   "TZ_OFFSET_TO": "10800",
-  "DATE_FROM_TS_UTC": "1767551192",
-  "DATE_TO_TS_UTC": "1770157620",
+  "DATE_FROM_TS_UTC": "1767692528",
+  "DATE_TO_TS_UTC": "1770298920",
   "DT_SKIP_TIME": "N",
   "DT_LENGTH": 3600,
   "EVENT_TYPE": null,
   "CREATED_BY": "1",
-  "DATE_CREATE": "04.01.2026 03:26:33",
-  "TIMESTAMP_X": "04.01.2026 03:26:33",
+  "DATE_CREATE": "05.01.2026 18:42:13",
+  "TIMESTAMP_X": "05.01.2026 18:42:13",
   "DESCRIPTION": "Event description",
   "PRIVATE_EVENT": "1",
   "ACCESSIBILITY": "quest",
@@ -50,46 +50,46 @@
    "FREQ": "DAILY",
    "COUNT": 3,
    "INTERVAL": 10,
-   "UNTIL": "15.01.2026",
-   "~UNTIL": "15.01.2026",
-   "UNTIL_TS": 1768435200
+   "UNTIL": "16.01.2026",
+   "~UNTIL": "16.01.2026",
+   "UNTIL_TS": 1768521600
   },
   "EXDATE": "",
-  "DAV_XML_ID": "20260104T212700Z-e29008d320dd733c1804fee4305dc152@b24-ar17wx.bitrix24.by",
+  "DAV_XML_ID": "20260106T124200Z-b9a044721d3fa26c80f3b7347e136d74@b24-ar17wx.bitrix24.by",
   "G_EVENT_ID": "",
   "DAV_EXCH_LABEL": "",
   "CAL_DAV_LABEL": "",
   "VERSION": "1",
   "ATTENDEES_CODES": [
-   null,
-   null
+   "U1",
+   "U10"
   ],
   "RECURRENCE_ID": null,
   "RELATIONS": "",
-  "SECTION_ID": "1848",
+  "SECTION_ID": "1864",
   "SYNC_STATUS": null,
   "UF_CRM_CAL_EVENT": false,
   "UF_WEBDAV_CAL_EVENT": false,
   "SECTION_DAV_XML_ID": null,
-  "DATE_FROM_FORMATTED": "Mon Jan 05 2026 00:27:00",
-  "DATE_TO_FORMATTED": "Mon Jan 05 2026 01:27:00",
+  "DATE_FROM_FORMATTED": "Tue Jan 06 2026 15:42:00",
+  "DATE_TO_FORMATTED": "Tue Jan 06 2026 16:42:00",
   "IS_DAYLIGHT_SAVING_TZ": "N",
-  "SECT_ID": "1848",
+  "SECT_ID": "1864",
   "OPTIONS": null,
   "ATTENDEE_LIST": [
    {
     "id": 1,
-    "entryId": "3444",
+    "entryId": "3476",
     "status": "H"
    },
    {
     "id": 10,
-    "entryId": "3446",
+    "entryId": "3478",
     "status": "Q"
    }
   ],
   "COLLAB_ID": null,
-  "~RRULE_DESCRIPTION": "каждый 10-й день, от 05.01.2026 до 15.01.2026",
+  "~RRULE_DESCRIPTION": "каждый 10-й день, от 06.01.2026 до 16.01.2026",
   "attendeesEntityList": [
    {
     "entityId": "user",
@@ -105,13 +105,13 @@
   "~USER_OFFSET_TO": 0
  },
  "time": {
-  "start": 1767486396,
-  "finish": 1767486396.6033,
-  "duration": 0.603298902511597,
+  "start": 1767627749,
+  "finish": 1767627749.13575,
+  "duration": 0.135747909545898,
   "processing": 0,
-  "date_start": "2026-01-04T00:26:36+00:00",
-  "date_finish": "2026-01-04T00:26:36+00:00",
-  "operating_reset_at": 1767486996,
+  "date_start": "2026-01-05T15:42:29+00:00",
+  "date_finish": "2026-01-05T15:42:29+00:00",
+  "operating_reset_at": 1767628349,
   "operating": 0
  }
 }

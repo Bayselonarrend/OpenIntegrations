@@ -1,9 +1,9 @@
 ﻿{
  "data": {
-  "id": "2007600117038071951",
-  "text": "TestTweet5c0a980d-18de-4c6d-9c4c-52bd40aa0b48 https://t.co/DrYDKKvCyq",
+  "text": "TestTweetdb9a08a4-70e4-4abb-94c1-85944811a97f https://t.co/WAI6nBxfRX",
   "edit_history_tweet_ids": [
-   null
-  ]
+   "2008179136833958070"
+  ],
+  "id": "2008179136833958070"
  }
 }
