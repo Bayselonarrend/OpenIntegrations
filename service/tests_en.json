@@ -6993,5 +6993,10 @@
 "lib": "GRPC",
 "name": "ProcessBidirectionalStream",
 "variant": ""
+},
+{
+"lib": "GRPC",
+"name": "CompleteSend",
+"variant": ""
 }
 ]

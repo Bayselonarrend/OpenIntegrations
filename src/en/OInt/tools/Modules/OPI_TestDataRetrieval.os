@@ -12938,6 +12938,14 @@ Function Check_GRPC_ProcessBidirectionalStream(Val Result, Val Option)
 
 EndFunction
 
+Function Check_GRPC_CompleteSend(Val Result, Val Option)
+
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region ReportPortal

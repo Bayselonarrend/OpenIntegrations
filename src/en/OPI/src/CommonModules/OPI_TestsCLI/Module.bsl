@@ -3352,6 +3352,7 @@ Procedure GR_Streaming() Export
     GRPC_ProcessServerStream(TestParameters);
     GRPC_ProcessClientStream(TestParameters);
     GRPC_ProcessBidirectionalStream(TestParameters);
+    GRPC_CompleteSend(TestParameters);
 
 EndProcedure
 
@@ -35681,6 +35682,52 @@ Procedure GRPC_ProcessBidirectionalStream(FunctionParameters)
     // END
 
     Process(Result, "GRPC", "ProcessBidirectionalStream");
+
+EndProcedure
+
+Procedure GRPC_CompleteSend(FunctionParameters)
+
+    Address = FunctionParameters["GRPC_Address"];
+
+    Proto1 = FunctionParameters["GRPC_ProtoImport"]; // String, path to file or URL
+    Proto2 = FunctionParameters["GRPC_ProtoTS"]; // String, path to file or URL
+
+    Scheme = New Map;
+    Scheme.Insert("main.proto"    , Proto1); // Primary
+    Scheme.Insert("my_types.proto", Proto2); // For import in primary
+
+    Options = New Structure;
+    Options.Insert("addr", Address);
+    Options.Insert("proto", Scheme);
+
+    Parameters = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetConnectionParameters", Options);
+    Options = New Structure;
+    Options.Insert("trust", Истина);
+
+    Tls = OPI_TestDataRetrieval.ExecuteTestCLI("grpc", "GetTlsSettings", Options);
+
+    Service = "grpcbin.GRPCBin";
+    Method  = "DummyClientStream";
+
+    Connection = OPI_GRPC.CreateConnection(Parameters, Tls);
+
+    If Not OPI_GRPC.IsConnector(Connection) Then
+        Raise Connection["error"];
+    EndIf;
+
+    Result = OPI_GRPC.InitializeClientStream(Connection, Service, Method);
+
+    If Not Result["result"] Then
+        Raise Result["error"];
+    Else
+        StreamID = Result["streamId"];
+    EndIf;
+
+    Result = OPI_GRPC.CompleteSend(Connection, StreamID);
+
+    // END
+
+    Process(Result, "GRPC", "CompleteSend");
 
 EndProcedure
 
