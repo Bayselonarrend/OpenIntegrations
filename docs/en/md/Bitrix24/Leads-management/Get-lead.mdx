@@ -31,13 +31,13 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    LeadID = "2956";
+    LeadID = "2996";
 
     Result = OPI_Bitrix24.GetLead(URL, LeadID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "b3bd5b69006e9f06006b12e400000001000...";
-    LeadID = "2958";
+    Token  = "bafe5c69006e9f06006b12e400000001000...";
+    LeadID = "2998";
 
     Result = OPI_Bitrix24.GetLead(URL, LeadID, Token);
 ```
@@ -49,7 +49,7 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
         ```bash
             oint bitrix24 GetLead \
              --url "b24-ar17wx.bitrix24.by" \
-             --lead 2974 \
+             --lead 2994 \
              --token "***"
         ```
     </TabItem>
@@ -58,7 +58,7 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
         ```batch
             oint bitrix24 GetLead ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --lead 2974 ^
+             --lead 2994 ^
              --token "***"
         ```
     </TabItem>
@@ -68,7 +68,7 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
 ```json title="Result"
 {
  "result": {
-  "ID": "2986",
+  "ID": "3006",
   "TITLE": "MegaClient",
   "HONORIFIC": null,
   "NAME": "Ivan",
@@ -76,7 +76,7 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
   "LAST_NAME": "Ivanov",
   "COMPANY_TITLE": null,
   "COMPANY_ID": null,
-  "CONTACT_ID": "2986",
+  "CONTACT_ID": "3006",
   "IS_RETURN_CUSTOMER": "N",
   "BIRTHDATE": "",
   "SOURCE_ID": "CALL",
@@ -94,15 +94,15 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
   "ASSIGNED_BY_ID": "1",
   "CREATED_BY_ID": "1",
   "MODIFY_BY_ID": "1",
-  "DATE_CREATE": "2026-01-06T05:39:04+00:00",
-  "DATE_MODIFY": "2026-01-06T05:39:05+00:00",
+  "DATE_CREATE": "2026-01-06T14:24:16+00:00",
+  "DATE_MODIFY": "2026-01-06T14:24:16+00:00",
   "DATE_CLOSED": "2026-01-05T21:00:00+00:00",
   "STATUS_SEMANTIC_ID": "S",
   "OPENED": "Y",
   "ORIGINATOR_ID": "***",
   "ORIGIN_ID": "***",
   "MOVED_BY_ID": "1",
-  "MOVED_TIME": "2026-01-06T05:39:05+00:00",
+  "MOVED_TIME": "2026-01-06T14:24:16+00:00",
   "ADDRESS": "Pushkin st., b. 10",
   "ADDRESS_2": null,
   "ADDRESS_CITY": null,
@@ -111,7 +111,7 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
   "ADDRESS_PROVINCE": null,
   "ADDRESS_COUNTRY": "Russia",
   "ADDRESS_COUNTRY_CODE": null,
-  "ADDRESS_LOC_ADDR_ID": "5974",
+  "ADDRESS_LOC_ADDR_ID": "6014",
   "UTM_SOURCE": null,
   "UTM_MEDIUM": null,
   "UTM_CAMPAIGN": null,
@@ -119,16 +119,16 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
   "UTM_TERM": null,
   "LAST_COMMUNICATION_TIME": null,
   "LAST_ACTIVITY_BY": "1",
-  "LAST_ACTIVITY_TIME": "2026-01-06T05:39:04+00:00",
+  "LAST_ACTIVITY_TIME": "2026-01-06T14:24:16+00:00",
   "EMAIL": [
    {
-    "ID": "17906",
+    "ID": "18026",
     "VALUE_TYPE": "HOME",
     "VALUE": "yo@example.com",
     "TYPE_ID": "EMAIL"
    },
    {
-    "ID": "17908",
+    "ID": "18028",
     "VALUE_TYPE": "WORK",
     "VALUE": "hi@example.com",
     "TYPE_ID": "EMAIL"
@@ -136,7 +136,7 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
   ],
   "PHONE": [
    {
-    "ID": "17910",
+    "ID": "18030",
     "VALUE_TYPE": "WORK",
     "VALUE": "88005553535",
     "TYPE_ID": "PHONE"
@@ -144,13 +144,13 @@ Method at API documentation: [crm.lead.get](https://dev.1c-bitrix.ru/rest_help/c
   ]
  },
  "time": {
-  "start": 1767677946,
-  "finish": 1767677946.4757,
-  "duration": 0.475694894790649,
+  "start": 1767709458,
+  "finish": 1767709458.5234,
+  "duration": 0.523396968841553,
   "processing": 0,
-  "date_start": "2026-01-06T05:39:06+00:00",
-  "date_finish": "2026-01-06T05:39:06+00:00",
-  "operating_reset_at": 1767678546,
+  "date_start": "2026-01-06T14:24:18+00:00",
+  "date_finish": "2026-01-06T14:24:18+00:00",
+  "operating_reset_at": 1767710058,
   "operating": 0
  }
 }

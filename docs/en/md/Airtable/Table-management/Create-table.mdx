@@ -29,7 +29,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="1C:Enterprise/OneScript code example"
     Token = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    Base  = "app98brwyD5keMXMu";
+    Base  = "appUIQ8XPNF3PZhGa";
 
     FieldArray = New Array;
     FieldArray.Add(OPI_Airtable.GetNumberField("Number"));
@@ -56,7 +56,7 @@ import TabItem from '@theme/TabItem';
             
             oint airtable CreateTable \
              --token "***" \
-             --base "app6dPwdLZJLzXK4O" \
+             --base "appL8GhM4GHV7TKqd" \
              --title "TestTable2" \
              --fieldsdata "[{'name':'Number','type':'number','options':{'precision':'0'}},{'name':'String','type':'richText'},{'name':'Attachment','type':'multipleAttachments'},{'name':'Checkbox','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Date','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Phone','type':'phoneNumber'},{'name':'Email','type':'email'},{'name':'Link','type':'url'}]" \
              --description "NewTable"
@@ -69,7 +69,7 @@ import TabItem from '@theme/TabItem';
             
             oint airtable CreateTable ^
              --token "***" ^
-             --base "app6dPwdLZJLzXK4O" ^
+             --base "appL8GhM4GHV7TKqd" ^
              --title "TestTable2" ^
              --fieldsdata "[{'name':'Number','type':'number','options':{'precision':'0'}},{'name':'String','type':'richText'},{'name':'Attachment','type':'multipleAttachments'},{'name':'Checkbox','type':'checkbox','options':{'icon':'check','color':'yellowBright'}},{'name':'Date','type':'date','options':{'dateFormat':{'format':'YYYY-MM-DD','name':'iso'}}},{'name':'Phone','type':'phoneNumber'},{'name':'Email','type':'email'},{'name':'Link','type':'url'}]" ^
              --description "NewTable"
@@ -80,22 +80,22 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Result"
 {
- "id": "tbl4eU7oLrAh39PRH",
+ "id": "tblgfls6ZNkPmbJXx",
  "name": "TestTable2",
  "description": "NewTable",
- "primaryFieldId": "fldosK2mrx2s6NU7t",
+ "primaryFieldId": "fldXL9gX8UPFkzE6p",
  "fields": [
   {
    "type": "number",
    "options": {
     "precision": 0
    },
-   "id": "fldosK2mrx2s6NU7t",
+   "id": "fldXL9gX8UPFkzE6p",
    "name": "Number"
   },
   {
    "type": "richText",
-   "id": "fldXP7ZbxMDGJMlt2",
+   "id": "fldfGpNqqwGkTYIlh",
    "name": "String"
   },
   {
@@ -103,7 +103,7 @@ import TabItem from '@theme/TabItem';
    "options": {
     "isReversed": false
    },
-   "id": "fldSzEBVhfHMv02Fk",
+   "id": "flduutycAi4N943uy",
    "name": "Attachment"
   },
   {
@@ -112,7 +112,7 @@ import TabItem from '@theme/TabItem';
     "icon": "check",
     "color": "yellowBright"
    },
-   "id": "fld2wVgK4wq4EwMBV",
+   "id": "fldxE823UzkYFnWAy",
    "name": "Checkbox"
   },
   {
@@ -123,28 +123,28 @@ import TabItem from '@theme/TabItem';
      "format": "YYYY-MM-DD"
     }
    },
-   "id": "fldoAsSSuWKzt907w",
+   "id": "fldY4pwy8KRdrkK3s",
    "name": "Date"
   },
   {
    "type": "phoneNumber",
-   "id": "fld8veBUkZQ5wpx39",
+   "id": "fldDXzJvNonHF4Siy",
    "name": "Phone"
   },
   {
    "type": "email",
-   "id": "fld3kLCx9ieMudimN",
+   "id": "fldVRiZ6zbHgUSNeb",
    "name": "Email"
   },
   {
    "type": "url",
-   "id": "fldtlY12WmzqmXbmY",
+   "id": "fldmIaNptArCPnxpP",
    "name": "Link"
   }
  ],
  "views": [
   {
-   "id": "viwfK5Ov8fo8mp5od",
+   "id": "viwSlgR0NUbAm9oaL",
    "name": "Grid view",
    "type": "grid"
   }

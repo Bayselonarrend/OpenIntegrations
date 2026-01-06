@@ -30,10 +30,10 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен       = "patNn4BXW66Yx3pdj.5b93c53cab554a8387de02d...";
-    База        = "app98brwyD5keMXMu";
-    Таблица     = "tblS0kOHAteNKoMU2";
-    Запись      = "reccAX2GCZZPAHlmR";
-    Комментарий = "comwAEB8EpI4Mc9zz";
+    База        = "appUIQ8XPNF3PZhGa";
+    Таблица     = "tblvfl4HSemaVTUHp";
+    Запись      = "rechf0iSMkdeMYVGc";
+    Комментарий = "comdHry8fireBoAfh";
 
     Текст     = "Тестовый комментарий (изм.)";
     Результат = OPI_Airtable.ИзменитьКомментарий(Токен, База, Таблица, Запись, Комментарий, Текст);
@@ -46,10 +46,10 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint airtable ИзменитьКомментарий \
               --token "***" \
-              --base "appGAQ62FQ67EQTpM" \
-              --table "tblYSq6ggiHWq3H4l" \
-              --record "rec6ijMb4XidEMM9G" \
-              --comment "comMhukKONqgIZyN4" \
+              --base "appOzaEi8N38lKmJ4" \
+              --table "tblq2mKr9Z4IytbLm" \
+              --record "recHotiH2c8F7Zu7P" \
+              --comment "com2akEj4CyYE3WrD" \
               --text "Тестовый комментарий (изм.)"
         ```
     </TabItem>
@@ -58,10 +58,10 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint airtable ИзменитьКомментарий ^
               --token "***" ^
-              --base "appGAQ62FQ67EQTpM" ^
-              --table "tblYSq6ggiHWq3H4l" ^
-              --record "rec6ijMb4XidEMM9G" ^
-              --comment "comMhukKONqgIZyN4" ^
+              --base "appOzaEi8N38lKmJ4" ^
+              --table "tblq2mKr9Z4IytbLm" ^
+              --record "recHotiH2c8F7Zu7P" ^
+              --comment "com2akEj4CyYE3WrD" ^
               --text "Тестовый комментарий (изм.)"
         ```
     </TabItem>
@@ -70,14 +70,14 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "id": "comay0qw0BrXcpvCj",
+ "id": "com8LQGNktjyGgu6P",
  "author": {
   "id": "usrFlaAHlTfYWAbVW",
   "email": "bayselonarrend@gmail.com",
   "name": "Антон Титовец"
  },
  "text": "Тестовый комментарий (изм.)",
- "createdTime": "2026-01-06T04:20:19Z",
- "lastUpdatedTime": "2026-01-06T04:20:20.523Z"
+ "createdTime": "2026-01-06T19:29:35Z",
+ "lastUpdatedTime": "2026-01-06T19:29:35.948Z"
 }
 ```

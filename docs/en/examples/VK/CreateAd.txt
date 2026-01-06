@@ -3,7 +3,7 @@
     CampaignNumber = "0";
     DailyLimit     = 150;
     CategoryNumber = 126;
-    PostID         = "10946";
+    PostID         = "11056";
     AccountID      = "1607951446";
 
     Result = OPI_VK.CreateAd(CampaignNumber
