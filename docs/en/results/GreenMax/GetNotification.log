@@ -1,16 +1,33 @@
 ﻿{
  "receiptId": 1,
  "body": {
-  "typeWebhook": "outgoingMessageStatus",
-  "chatId": "***",
+  "typeWebhook": "outgoingAPIMessageReceived",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "v3"
   },
-  "timestamp": 1767678765,
-  "idMessage": "1767678717555",
-  "status": "failed",
-  "description": "MessageError: Вы не можете отправить сообщение в этом чате"
+  "timestamp": 1767705420,
+  "idMessage": "1767705418847",
+  "senderData": {
+   "chatId": "***",
+   "chatName": "***",
+   "sender": "***",
+   "senderName": "***",
+   "senderContactName": "***",
+   "senderPhoneNumber": "***"
+  },
+  "messageData": {
+   "typeMessage": "extendedTextMessage",
+   "extendedTextMessageData": {
+    "text": "Текст сообщения",
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
+   }
+  }
  }
 }
