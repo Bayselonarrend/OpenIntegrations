@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьИсториюЗадачи \
   --url "b24-ar17wx.bitrix24.by" \
-  --task "9370" \
+  --task "9420" \
   --token "***"

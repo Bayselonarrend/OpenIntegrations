@@ -1,6 +1,6 @@
 oint vkteams ОтправитьФайл \
   --token "***" \
   --chatid "***" \
-  --file "/tmp/ceyw1gs3.jml" \
+  --file "C:\Users\bayse\AppData\Local\Temp\kcrcjpuv.xpa" \
   --text "Подпись к файлу" \
   --filename "ВажныйДокумент.docx"
