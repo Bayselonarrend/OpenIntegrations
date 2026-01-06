@@ -58,8 +58,8 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
             
             oint s3 GetObjectDownloadLink \
              --name "picture.jpg" \
-             --bucket "d09ba45c" \
-             --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+             --bucket "3d0d4317" \
+             --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
              --expires 7200 \
              --dir true
         ```
@@ -71,8 +71,8 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
             
             oint s3 GetObjectDownloadLink ^
              --name "picture.jpg" ^
-             --bucket "d09ba45c" ^
-             --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+             --bucket "3d0d4317" ^
+             --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
              --expires 7200 ^
              --dir true
         ```
@@ -81,5 +81,5 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
 
 
 ```json title="Result"
-"s3.openintegrations.dev/b253bb1a/picture.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bayselonarrend%2F20260104%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20260104T003531Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=947cdde91fe9c81842d10b8d22630ca77337e8f328c92ffbe8f8723dc6f24a0c"
+"s3.openintegrations.dev/5611e67b/picture.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bayselonarrend%2F20260106%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20260106T054836Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=d2ae6774ecdc261568b490daa638cde5bd8fe8e835f1eacda927f0549124e8a7"
 ```

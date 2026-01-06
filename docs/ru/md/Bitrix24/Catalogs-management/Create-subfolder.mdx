@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    IDКаталога    = "49452";
+    IDКаталога    = "49506";
     Наименование  = "Новый подкаталог";
     Наименование2 = "Новый подкаталог 2";
 
@@ -40,7 +40,7 @@ import TabItem from '@theme/TabItem';
     Результат = OPI_Bitrix24.СоздатьПодкаталог(URL, IDКаталога, Наименование2);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "d49a5b69006e9f06006b12e400000001000...";
+    Токен = "b3bd5b69006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.СоздатьПодкаталог(URL, IDКаталога, Наименование, Токен);
 ```
@@ -52,7 +52,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 СоздатьПодкаталог \
               --url "b24-ar17wx.bitrix24.by" \
-              --folderid 49292 \
+              --folderid 49776 \
               --title "Новый подкаталог" \
               --token "***"
         ```
@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 СоздатьПодкаталог ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --folderid 49292 ^
+              --folderid 49776 ^
               --title "Новый подкаталог" ^
               --token "***"
         ```
@@ -73,16 +73,16 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": 49402,
+  "ID": 49834,
   "NAME": "Новый подкаталог",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": 49402,
-  "PARENT_ID": "49398",
+  "REAL_OBJECT_ID": 49834,
+  "PARENT_ID": "49830",
   "DELETED_TYPE": 0,
-  "CREATE_TIME": "2026-01-04T18:59:07+00:00",
-  "UPDATE_TIME": "2026-01-04T18:59:07+00:00",
+  "CREATE_TIME": "2026-01-06T04:24:58+00:00",
+  "UPDATE_TIME": "2026-01-06T04:24:58+00:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -90,13 +90,13 @@ import TabItem from '@theme/TabItem';
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/Новый каталог/Новый подкаталог"
  },
  "time": {
-  "start": 1767553147,
-  "finish": 1767553147.45196,
-  "duration": 0.451965093612671,
+  "start": 1767673498,
+  "finish": 1767673498.56332,
+  "duration": 0.563324928283691,
   "processing": 0,
-  "date_start": "2026-01-04T18:59:07+00:00",
-  "date_finish": "2026-01-04T18:59:07+00:00",
-  "operating_reset_at": 1767553747,
+  "date_start": "2026-01-06T04:24:58+00:00",
+  "date_finish": "2026-01-06T04:24:58+00:00",
+  "operating_reset_at": 1767674098,
   "operating": 0
  }
 }

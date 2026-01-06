@@ -1,4 +1,4 @@
-﻿    Токен         = "ya29.a0Aa7pCA-72HNDipOcSookUxszZU3z8HaXVC5fcd1xEZo7zJ9TdoMJK1chHamNsIYIufZaL2ueeR4f0YaCoH604BPaXAnyfvShJPIfQ_MGe6pOq5yrx6RY2fgz1...";
-    Идентификатор = "191iyaa6-2BCNRPOF0F8mQ0TuNWPNesdM";
+﻿    Токен         = "ya29.a0Aa7pCA9eJTeR8V9Fb04d79YIrrhFld6DWll5KQbiOhRecTSKl4C78d_5r62vfftqw25WFf_amIF9p7olHu-HWsfErzXHb0JjbHK4ttecMEHdWqnQhaIkHWllv...";
+    Идентификатор = "1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP";
 
     Результат = OPI_GoogleDrive.ПолучитьИнформациюОбОбъекте(Токен, Идентификатор);
