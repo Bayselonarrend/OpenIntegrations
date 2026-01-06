@@ -2,6 +2,6 @@
 
 oint bitrix24 ИзменитьСделку \
   --url "b24-ar17wx.bitrix24.by" \
-  --deal 5994 \
+  --deal 6034 \
   --fields "{'TITLE':'Будущая сделка в RUB','CURRENCY_ID':'RUB','OPPORTUNITY':'50000','BEGINDATE':'2025-01-01'}" \
   --token "***"

@@ -1,6 +1,6 @@
 oint bitrix24 УдалитьЗависимостьЗадач \
   --url "b24-ar17wx.bitrix24.by" \
-  --taskfrom "9370" \
-  --taskto "9368" \
+  --taskfrom "9420" \
+  --taskto "9418" \
   --linktype 2 \
   --token "***"
