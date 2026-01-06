@@ -1,4 +1,4 @@
 oint vkteams ИзменитьАватарЧата \
   --token "***" \
   --chatid "***" \
-  --file "/tmp/k5a5gfpk.z2p"
+  --file "C:\Users\bayse\AppData\Local\Temp\g3kb2usi.rlw"
