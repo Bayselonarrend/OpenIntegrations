@@ -1,4 +1,4 @@
 oint bitrix24 DeleteFolder \
  --url "b24-ar17wx.bitrix24.by" \
- --folderid 49722 \
+ --folderid 49992 \
  --token "***"

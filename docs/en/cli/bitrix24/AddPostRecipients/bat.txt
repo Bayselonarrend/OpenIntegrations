@@ -1,5 +1,5 @@
 oint bitrix24 AddPostRecipients ^
  --url "b24-ar17wx.bitrix24.by" ^
- --postid 3552 ^
+ --postid 3572 ^
  --vision "UA" ^
  --token "***"

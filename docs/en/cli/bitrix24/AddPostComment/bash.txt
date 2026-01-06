@@ -1,5 +1,5 @@
 oint bitrix24 AddPostComment \
  --url "b24-ar17wx.bitrix24.by" \
- --postid 3552 \
+ --postid 3572 \
  --text "Another comment" \
  --token "***"
