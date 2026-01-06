@@ -12,7 +12,7 @@
   "type": "private",
   "counter": 0,
   "user_counter": 0,
-  "message_count": 807,
+  "message_count": 809,
   "unread_id": 0,
   "restrictions": {
    "avatar": true,
@@ -25,7 +25,7 @@
    "send": true,
    "user_list": true
   },
-  "last_message_id": 75000,
+  "last_message_id": 75256,
   "last_id": 3854,
   "marked_id": 0,
   "disk_folder_id": 0,
@@ -35,7 +35,7 @@
   "entity_data_2": "",
   "entity_data_3": "",
   "mute_list": [],
-  "date_create": "2024-06-15T16:48:49+00:00",
+  "date_create": "2024-06-15T19:48:49+03:00",
   "message_type": "P",
   "public": "",
   "role": "member",
@@ -65,20 +65,20 @@
   ],
   "manager_list": [],
   "last_message_views": {
-   "message_id": 75000,
+   "message_id": 75256,
    "first_viewers": [],
    "count_of_viewers": 0
   },
   "dialog_id": "10"
  },
  "time": {
-  "start": 1767714154,
-  "finish": 1767714154.46021,
-  "duration": 0.460208892822266,
+  "start": 1767722185,
+  "finish": 1767722185.35464,
+  "duration": 0.354643106460571,
   "processing": 0,
-  "date_start": "2026-01-06T15:42:34+00:00",
-  "date_finish": "2026-01-06T15:42:34+00:00",
-  "operating_reset_at": 1767714754,
+  "date_start": "2026-01-06T20:56:25+03:00",
+  "date_finish": "2026-01-06T20:56:25+03:00",
+  "operating_reset_at": 1767722785,
   "operating": 0
  }
 }
