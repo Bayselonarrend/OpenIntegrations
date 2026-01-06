@@ -31,12 +31,12 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL        = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDКаталога = "49506";
+    IDКаталога = "50046";
 
     Результат = OPI_Bitrix24.ПолучитьИнформациюОКаталоге(URL, IDКаталога);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Токен = "b3bd5b69006e9f06006b12e400000001000...";
+    Токен = "bafe5c69006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПолучитьИнформациюОКаталоге(URL, IDКаталога, Токен);
 ```
@@ -48,7 +48,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьИнформациюОКаталоге \
               --url "b24-ar17wx.bitrix24.by" \
-              --folderid 49776 \
+              --folderid 50370 \
               --token "***"
         ```
     </TabItem>
@@ -57,7 +57,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьИнформациюОКаталоге ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --folderid 49776 ^
+              --folderid 50370 ^
               --token "***"
         ```
     </TabItem>
@@ -67,16 +67,16 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": "49830",
+  "ID": "50478",
   "NAME": "Новый каталог",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": "49830",
+  "REAL_OBJECT_ID": "50478",
   "PARENT_ID": "3",
   "DELETED_TYPE": "0",
-  "CREATE_TIME": "2026-01-06T04:24:54+00:00",
-  "UPDATE_TIME": "2026-01-06T04:24:54+00:00",
+  "CREATE_TIME": "2026-01-06T22:33:47+03:00",
+  "UPDATE_TIME": "2026-01-06T22:33:47+03:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -84,13 +84,13 @@ import TabItem from '@theme/TabItem';
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/Новый каталог"
  },
  "time": {
-  "start": 1767673496,
-  "finish": 1767673496.30541,
-  "duration": 0.305406093597412,
+  "start": 1767728028,
+  "finish": 1767728028.94383,
+  "duration": 0.943825960159302,
   "processing": 0,
-  "date_start": "2026-01-06T04:24:56+00:00",
-  "date_finish": "2026-01-06T04:24:56+00:00",
-  "operating_reset_at": 1767674096,
+  "date_start": "2026-01-06T22:33:48+03:00",
+  "date_finish": "2026-01-06T22:33:48+03:00",
+  "operating_reset_at": 1767728628,
   "operating": 0
  }
 }

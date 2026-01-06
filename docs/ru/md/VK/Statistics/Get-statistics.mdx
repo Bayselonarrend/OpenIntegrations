@@ -43,8 +43,8 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику \
-              --datefrom "2026-01-05T00:00:00" \
-              --dateto "2026-01-05T23:59:59" \
+              --datefrom "2026-01-06T00:00:00" \
+              --dateto "2026-01-06T23:59:59" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -54,8 +54,8 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику ^
-              --datefrom "2026-01-05T00:00:00" ^
-              --dateto "2026-01-05T23:59:59" ^
+              --datefrom "2026-01-06T00:00:00" ^
+              --dateto "2026-01-06T23:59:59" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -66,6 +66,10 @@ import TabItem from '@theme/TabItem';
 {
  "response": [
   {
+   "activity": {
+    "comments": 13,
+    "likes": 13
+   },
    "period_from": 1767657600,
    "period_to": 1767743999,
    "reach": {
@@ -209,9 +213,5 @@ import TabItem from '@theme/TabItem';
    "period_to": 1767657599,
    "reach": {
     "age": [
-     {
-      "value": "12-18",
-      "count": 0
-     },
 ...
 ```
