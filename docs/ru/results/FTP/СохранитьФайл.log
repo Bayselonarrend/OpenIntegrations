@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/brgxbv0x.cak.bin",
- "result": true
+ "filepath": "/tmp/mfmhhmpx.oe0.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
