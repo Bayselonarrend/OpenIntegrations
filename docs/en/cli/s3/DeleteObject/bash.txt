@@ -2,6 +2,6 @@
 
 oint s3 DeleteObject \
  --name "picture.jpg" \
- --bucket "3d0d4317" \
+ --bucket "04428a9b" \
  --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
  --dir true

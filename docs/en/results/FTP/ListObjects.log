@@ -4,8 +4,8 @@
   {
    "is_directory": true,
    "is_symlink": false,
-   "list_string": "drwxr-sr-x    3 1000     1000         4096 Jan 06 05:04 new_dir",
-   "modified": "2026-01-06T05:04:00+00:00",
+   "list_string": "drwxr-sr-x    3 1000     1000         4096 Jan 06 08:40 new_dir",
+   "modified": "2026-01-06T08:40:00+00:00",
    "name": "new_dir",
    "size": 4096,
    "symlink_path": "",
@@ -14,8 +14,8 @@
     {
      "is_directory": true,
      "is_symlink": false,
-     "list_string": "drwxr-sr-x    2 1000     1000         4096 Jan 06 05:04 another_one",
-     "modified": "2026-01-06T05:04:00+00:00",
+     "list_string": "drwxr-sr-x    2 1000     1000         4096 Jan 06 08:40 another_one",
+     "modified": "2026-01-06T08:40:00+00:00",
      "name": "another_one",
      "size": 4096,
      "symlink_path": "",
@@ -24,5 +24,8 @@
     }
    ]
   }
- ]
+ ],
+ "close_connection": {
+  "result": true
+ }
 }

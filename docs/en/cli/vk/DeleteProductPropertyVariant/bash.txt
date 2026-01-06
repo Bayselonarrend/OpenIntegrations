@@ -1,5 +1,5 @@
 # JSON data can also be passed as a path to a .json file
 
 oint vk DeleteProductPropertyVariant \
- --option 9845 \
+ --option 9870 \
  --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

@@ -1,6 +1,6 @@
 oint bitrix24 UpdateTasksChecklistElement \
  --url "b24-ar17wx.bitrix24.by" \
- --task "9300" \
- --element 6610 \
+ --task "9350" \
+ --element 6650 \
  --text "New elements text" \
  --token "***"

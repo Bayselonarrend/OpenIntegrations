@@ -2,5 +2,5 @@
 
 oint bitrix24 CreateTask ^
  --url "b24-ar17wx.bitrix24.by" ^
- --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'01/06/2026 21:51:03','RESPONSIBLE_ID':'1'}" ^
+ --fields "{'TITLE':'New task','DESCRIPTION':'New task description','PRIORITY':'2','DEADLINE':'01/07/2026 09:58:05','RESPONSIBLE_ID':'1'}" ^
  --token "***"
