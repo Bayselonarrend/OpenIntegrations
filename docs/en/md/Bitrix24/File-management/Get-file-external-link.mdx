@@ -33,12 +33,12 @@ Method at API documentation: [disk.file.getExternalLink](https://dev.1c-bitrix.r
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    FileID = "49446";
+    FileID = "49500";
 
     Result = OPI_Bitrix24.GetFileExternalLink(URL, FileID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "d49a5b69006e9f06006b12e400000001000...";
+    Token = "b3bd5b69006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetFileExternalLink(URL, FileID, Token);
 ```
@@ -50,7 +50,7 @@ Method at API documentation: [disk.file.getExternalLink](https://dev.1c-bitrix.r
         ```bash
             oint bitrix24 GetFileExternalLink \
              --url "b24-ar17wx.bitrix24.by" \
-             --fileid 48450 \
+             --fileid 49716 \
              --token "***"
         ```
     </TabItem>
@@ -59,7 +59,7 @@ Method at API documentation: [disk.file.getExternalLink](https://dev.1c-bitrix.r
         ```batch
             oint bitrix24 GetFileExternalLink ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --fileid 48450 ^
+             --fileid 49716 ^
              --token "***"
         ```
     </TabItem>

@@ -25,8 +25,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен     = "ya29.a0Aa7pCA-72HNDipOcSookUxszZU3z8HaXVC5fcd1xEZo7zJ9TdoMJK1chHamNsIYIufZaL2ueeR4f0YaCoH604BPaXAnyfvShJPIfQ_MGe6pOq5yrx6RY2fgz1...";
-    Календарь = "e760d86ec1d7f7271d57d70aff50bf1941e0078d24fc7b2ad11de38874efce83@group.calendar.google.com";
+    Токен     = "ya29.a0Aa7pCA9eJTeR8V9Fb04d79YIrrhFld6DWll5KQbiOhRecTSKl4C78d_5r62vfftqw25WFf_amIF9p7olHu-HWsfErzXHb0JjbHK4ttecMEHdWqnQhaIkHWllv...";
+    Календарь = "12c69698653bd6057b445328a998a2ed2db9dcfa0b2b9633324726f3c2399af9@group.calendar.google.com";
 
     Результат = OPI_GoogleCalendar.ПолучитьКалендарьСписка(Токен, Календарь);
 ```
@@ -38,7 +38,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint gcalendar ПолучитьКалендарьСписка \
               --token "***" \
-              --calendar "37ae0750ae129d5461861a49488b026784f2be9d17a51eb5c439d38e6e6211a3@group.calendar.google.com"
+              --calendar "f0054506b2940456a983768137b9e3ee3e058e33f0d3216ff3c18599703a7e66@group.calendar.google.com"
         ```
     </TabItem>
   
@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint gcalendar ПолучитьКалендарьСписка ^
               --token "***" ^
-              --calendar "37ae0750ae129d5461861a49488b026784f2be9d17a51eb5c439d38e6e6211a3@group.calendar.google.com"
+              --calendar "f0054506b2940456a983768137b9e3ee3e058e33f0d3216ff3c18599703a7e66@group.calendar.google.com"
         ```
     </TabItem>
 </Tabs>
@@ -55,8 +55,8 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "kind": "calendar#calendarListEntry",
- "etag": "\"1767552539130655\"",
- "id": "aafdfe1ca19b3ee3c0adcb9a6a4ce13a6fe7e21c4d98cbeec573289750c1429c@group.calendar.google.com",
+ "etag": "\"1767672825488287\"",
+ "id": "4809a8add345622a38c6125c751a6c64c1d2133ceec4795dc37d5045613785ef@group.calendar.google.com",
  "summary": "Новое наименование",
  "description": "Новое описание",
  "timeZone": "Europe/Moscow",
@@ -64,6 +64,7 @@ import TabItem from '@theme/TabItem';
  "colorId": "6",
  "backgroundColor": "#ffd800",
  "foregroundColor": "#000000",
+ "selected": true,
  "accessRole": "owner",
  "defaultReminders": [],
  "conferenceProperties": {

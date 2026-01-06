@@ -456,8 +456,8 @@ Function InitializeClientStream(Val Connection
 
 EndFunction
 
-// Initialize client stream !NOCLI
-// Initializes a new client stream
+// Initialize bidirectional stream !NOCLI
+// Initializes a new bidirectional stream
 //
 // Parameters:
 // Connection - Arbitrary - Connection object - conn

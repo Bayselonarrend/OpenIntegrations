@@ -30,8 +30,8 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc2MTE1NjIsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "8f4f4aba-163b-4d9e-955c-0ba2dbca28c8";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc2MjA0OTEsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "e85cdd6e-7ea3-4728-be32-14fe34bcbc69";
 
     Result = OPI_CDEK.GetOrder(Token, UUID, True);
 ```
@@ -43,7 +43,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
         ```bash
             oint cdek GetOrder \
              --token "***" \
-             --uuid "9e15fe3c-2071-4ed8-9ded-70df723825d3" \
+             --uuid "349bb5f0-4c0c-4f3e-8042-5a1c5c52e74d" \
              --testapi "***"
         ```
     </TabItem>
@@ -52,7 +52,7 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
         ```batch
             oint cdek GetOrder ^
              --token "***" ^
-             --uuid "9e15fe3c-2071-4ed8-9ded-70df723825d3" ^
+             --uuid "349bb5f0-4c0c-4f3e-8042-5a1c5c52e74d" ^
              --testapi "***"
         ```
     </TabItem>
@@ -62,12 +62,12 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
 ```json title="Result"
 {
  "entity": {
-  "uuid": "09d50991-5cd5-4d7b-b424-a27c9160371c",
+  "uuid": "b4321466-ae48-4d98-af68-a2cf2ef2fbb7",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1106860062",
-  "number": "08487e82-2b5d-40ed-aa7d-39719c23a6fd",
+  "cdek_number": "1106860217",
+  "number": "cea54363-66f4-4e00-90a7-9c8464513ef3",
   "tariff_code": 139,
   "comment": "New order",
   "items_cost_currency": "RUB",
@@ -137,16 +137,6 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
   },
   "services": [
    {
-    "code": "INSURANCE",
-    "parameter": "600.00",
-    "sum": 4.5,
-    "total_sum": 5.4,
-    "discount_percent": 0,
-    "discount_sum": 0,
-    "vat_rate": 20,
-    "vat_sum": 0.9
-   },
-   {
     "code": "SECURE_PACKAGE_A2",
     "parameter": "10",
     "sum": 500,
@@ -155,12 +145,22 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
     "discount_sum": 0,
     "vat_rate": 20,
     "vat_sum": 100
+   },
+   {
+    "code": "INSURANCE",
+    "parameter": "600.00",
+    "sum": 4.5,
+    "total_sum": 5.4,
+    "discount_percent": 0,
+    "discount_sum": 0,
+    "vat_rate": 20,
+    "vat_sum": 0.9
    }
   ],
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001522614",
+    "barcode": "000001522769",
     "weight": 4000,
     "length": 10,
     "width": "***",
@@ -186,21 +186,21 @@ Method at API documentation: [Order details](https://api-docs.cdek.ru/33828849.h
       "cost": 300
      }
     ],
-    "package_id": "67796280-ea90-48db-b8d7-8332aca6a004"
+    "package_id": "17e7f38c-f27f-48cf-904d-a51adab8afd1"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-01-04T00:29:29+00:00",
+    "date_time": "2026-01-06T05:42:27+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-01-04T00:29:27+00:00",
+    "date_time": "2026-01-06T05:42:26+00:00",
     "city": "Офис СДЭК",
     "deleted": false
    }

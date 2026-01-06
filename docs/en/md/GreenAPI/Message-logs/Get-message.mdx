@@ -36,7 +36,7 @@ Method at API documentation: [GetMessage](https://green-api.com/docs/api/journal
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     ChatID    = "120363410406221140@g.us";
-    MessageID = "3EB06B46CD8C174F342786";
+    MessageID = "3EB00CE2030AC5285D9B18";
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.GetMessage(AccessParameters, ChatID, MessageID);
@@ -52,7 +52,7 @@ Method at API documentation: [GetMessage](https://green-api.com/docs/api/journal
             oint greenapi GetMessage \
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
              --chat "***" \
-             --msg "3EB061F20B14D7DE3DDFFA"
+             --msg "3EB07DF3AD175A1F2546CB"
         ```
     </TabItem>
   
@@ -63,7 +63,7 @@ Method at API documentation: [GetMessage](https://green-api.com/docs/api/journal
             oint greenapi GetMessage ^
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
              --chat "***" ^
-             --msg "3EB061F20B14D7DE3DDFFA"
+             --msg "3EB07DF3AD175A1F2546CB"
         ```
     </TabItem>
 </Tabs>
@@ -72,13 +72,13 @@ Method at API documentation: [GetMessage](https://green-api.com/docs/api/journal
 ```json title="Result"
 {
  "type": "outgoing",
- "idMessage": "3EB05FE6C82CCA28460509",
- "timestamp": 1767487033,
+ "idMessage": "3EB04AF65A50A0F20AAE53",
+ "timestamp": 1767678618,
  "typeMessage": "extendedTextMessage",
  "chatId": "***",
- "textMessage": "New message text",
+ "textMessage": "New message",
  "extendedTextMessage": {
-  "text": "New message text",
+  "text": "New message",
   "description": "",
   "title": "",
   "previewType": "None",
@@ -88,9 +88,9 @@ Method at API documentation: [GetMessage](https://green-api.com/docs/api/journal
  },
  "statusMessage": "sent",
  "sendByApi": "***",
- "deletedMessageId": "3EB0920F36DEAEC9825CE2",
- "editedMessageId": "3EB0CA04BE8438F72E7166",
- "isEdited": true,
+ "deletedMessageId": "3EB0662B62E4216BCF8B16",
+ "editedMessageId": "",
+ "isEdited": false,
  "isDeleted": true
 }
 ```

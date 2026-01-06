@@ -60,7 +60,7 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
             oint s3 GetObjectUploadLink \
              --name "pictureU.jpg" \
              --bucket "newbucket2" \
-             --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+             --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
              --expires 7200 \
              --dir true
         ```
@@ -73,7 +73,7 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
             oint s3 GetObjectUploadLink ^
              --name "pictureU.jpg" ^
              --bucket "newbucket2" ^
-             --basic "{'URL':'storage-564.s3hoster.by','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+             --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
              --expires 7200 ^
              --dir true
         ```
@@ -82,5 +82,5 @@ Process at AWS documentation: [Download and upload objects with presigned URLs](
 
 
 ```json title="Result"
-"s3.openintegrations.dev/newbucket2/pictureU.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bayselonarrend%2F20260104%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20260104T003534Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=36d6325531922a9df21ee00c9df67f2b7178667b2c1175d92dfc01b42066cc05"
+"s3.openintegrations.dev/newbucket2/pictureU.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=bayselonarrend%2F20260106%2FBTC%2Fs3%2Faws4_request&X-Amz-Date=20260106T054839Z&X-Amz-Expires=7200&X-Amz-SignedHeaders=host&X-Amz-Signature=f49eed5352ea936ededd4f1256f2dcdb141bf50882ac81244fa874b45ca2c5e8"
 ```

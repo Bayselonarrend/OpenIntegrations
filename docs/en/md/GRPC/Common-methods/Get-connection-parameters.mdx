@@ -46,6 +46,28 @@ If the Proto value is not an object (a key value collection), it will be interpr
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint grpc GetConnectionParameters \
+             --addr "https://grpcb.in:9001" \
+             --proto "{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto','my_types.proto':'https://hut.openintegrations.dev/test_data/mt.proto'}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint grpc GetConnectionParameters ^
+             --addr "https://grpcb.in:9001" ^
+             --proto "{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto','my_types.proto':'https://hut.openintegrations.dev/test_data/mt.proto'}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"

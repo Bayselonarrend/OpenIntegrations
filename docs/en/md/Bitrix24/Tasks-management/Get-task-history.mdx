@@ -31,13 +31,13 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "9248";
+    TaskID = "9258";
 
     Result = OPI_Bitrix24.GetTaskHistory(URL, TaskID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "d49a5b69006e9f06006b12e400000001000...";
-    TaskID = "9250";
+    Token  = "b3bd5b69006e9f06006b12e400000001000...";
+    TaskID = "9260";
 
     Result = OPI_Bitrix24.GetTaskHistory(URL, TaskID, Token);
 ```
@@ -49,7 +49,7 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
         ```bash
             oint bitrix24 GetTaskHistory \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "9048" \
+             --task "9300" \
              --token "***"
         ```
     </TabItem>
@@ -58,7 +58,7 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
         ```batch
             oint bitrix24 GetTaskHistory ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "9048" ^
+             --task "9300" ^
              --token "***"
         ```
     </TabItem>
@@ -70,8 +70,8 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
  "result": {
   "list": [
    {
-    "id": 114774,
-    "createdDate": "2025-12-10T19:49:11+00:00",
+    "id": 117610,
+    "createdDate": "2026-01-06T05:34:44+00:00",
     "field": "NEW",
     "value": {
      "from": null,
@@ -86,12 +86,12 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": 114776,
-    "createdDate": "2025-12-10T19:49:14+00:00",
+    "id": 117612,
+    "createdDate": "2026-01-06T05:34:44+00:00",
     "field": "START_DATE_PLAN",
     "value": {
      "from": "",
-     "to": "1765396151"
+     "to": "1767677684"
     },
     "user": {
      "id": 1,
@@ -102,12 +102,12 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": 114778,
-    "createdDate": "2025-12-10T19:49:14+00:00",
+    "id": 117614,
+    "createdDate": "2026-01-06T05:34:44+00:00",
     "field": "END_DATE_PLAN",
     "value": {
      "from": "",
-     "to": "1765400400"
+     "to": "1767733200"
     },
     "user": {
      "id": 1,
@@ -118,24 +118,8 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": 114780,
-    "createdDate": "2025-12-10T19:49:14+00:00",
-    "field": "DURATION_PLAN_SECONDS",
-    "value": {
-     "from": "",
-     "to": "4249"
-    },
-    "user": {
-     "id": 1,
-     "name": "Антон",
-     "lastName": "Титовец",
-     "secondName": "",
-     "login": "VKuser657846756"
-    }
-   },
-   {
-    "id": 114794,
-    "createdDate": "2025-12-10T19:49:28+00:00",
+    "id": 117626,
+    "createdDate": "2026-01-06T05:34:48+00:00",
     "field": "TITLE",
     "value": {
      "from": "New task",
@@ -150,8 +134,8 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": 114796,
-    "createdDate": "2025-12-10T19:49:28+00:00",
+    "id": 117628,
+    "createdDate": "2026-01-06T05:34:48+00:00",
     "field": "DESCRIPTION",
     "value": {
      "from": "",
@@ -166,8 +150,8 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": 114798,
-    "createdDate": "2025-12-10T19:49:28+00:00",
+    "id": 117630,
+    "createdDate": "2026-01-06T05:34:48+00:00",
     "field": "PRIORITY",
     "value": {
      "from": "2",
@@ -182,8 +166,8 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": 114804,
-    "createdDate": "2025-12-10T19:49:59+00:00",
+    "id": 117634,
+    "createdDate": "2026-01-06T05:34:56+00:00",
     "field": "RESPONSIBLE_ID",
     "value": {
      "from": "1",
@@ -198,12 +182,12 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": 114806,
-    "createdDate": "2025-12-10T19:49:59+00:00",
-    "field": "COMMENT",
+    "id": 117638,
+    "createdDate": "2026-01-06T05:34:57+00:00",
+    "field": "STATUS",
     "value": {
-     "from": null,
-     "to": "20936"
+     "from": "2",
+     "to": "6"
     },
     "user": {
      "id": 1,
@@ -214,7 +198,23 @@ Method at API documentation: [tasks.task.history.list](https://dev.1c-bitrix.ru/
     }
    },
    {
-    "id": 114810,
-    "createdDate": "2025-12-10T19:50:04+00:00",
+    "id": 117642,
+    "createdDate": "2026-01-06T05:34:59+00:00",
+    "field": "STATUS",
+    "value": {
+     "from": "6",
+     "to": "5"
+    },
+    "user": {
+     "id": 1,
+     "name": "Антон",
+     "lastName": "Титовец",
+     "secondName": "",
+     "login": "VKuser657846756"
+    }
+   },
+   {
+    "id": 117646,
+    "createdDate": "2026-01-06T05:35:03+00:00",
 ...
 ```

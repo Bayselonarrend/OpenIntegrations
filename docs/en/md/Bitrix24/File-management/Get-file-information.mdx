@@ -31,12 +31,12 @@ Method at API documentation: [disk.file.get](https://dev.1c-bitrix.ru/rest_help/
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    FileID = "49446";
+    FileID = "49500";
 
     Result = OPI_Bitrix24.GetFileInformation(URL, FileID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "d49a5b69006e9f06006b12e400000001000...";
+    Token = "b3bd5b69006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.GetFileInformation(URL, FileID, Token);
 ```
@@ -48,7 +48,7 @@ Method at API documentation: [disk.file.get](https://dev.1c-bitrix.ru/rest_help/
         ```bash
             oint bitrix24 GetFileInformation \
              --url "b24-ar17wx.bitrix24.by" \
-             --fileid 48450 \
+             --fileid 49716 \
              --token "***"
         ```
     </TabItem>
@@ -57,7 +57,7 @@ Method at API documentation: [disk.file.get](https://dev.1c-bitrix.ru/rest_help/
         ```batch
             oint bitrix24 GetFileInformation ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --fileid 48450 ^
+             --fileid 49716 ^
              --token "***"
         ```
     </TabItem>
@@ -67,7 +67,7 @@ Method at API documentation: [disk.file.get](https://dev.1c-bitrix.ru/rest_help/
 ```json title="Result"
 {
  "result": {
-  "ID": "49338",
+  "ID": "49878",
   "NAME": "Picture1.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
@@ -75,25 +75,25 @@ Method at API documentation: [disk.file.get](https://dev.1c-bitrix.ru/rest_help/
   "PARENT_ID": "3",
   "DELETED_TYPE": "0",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "33546",
+  "FILE_ID": "33926",
   "SIZE": "805189",
-  "CREATE_TIME": "2026-01-04T00:22:47+00:00",
-  "UPDATE_TIME": "2026-01-04T00:22:47+00:00",
+  "CREATE_TIME": "2026-01-06T05:35:43+00:00",
+  "UPDATE_TIME": "2026-01-06T05:35:43+00:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "0",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=a6c05969006e9f06006b12e400000001000007bca61d79589f7c9f7a3cd4dcdec59f4e&token=disk%7CaWQ9NDkzMzgmXz1QU2x6OVd5UHNDeG5NZXk4NjZxdFU4dmFyekR2Zk82bA%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5Ea3pNemdtWHoxUVUyeDZPVmQ1VUhORGVHNU5aWGs0TmpaeGRGVTRkbUZ5ZWtSMlprODJiQT09fGE2YzA1OTY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3YmNhNjFkNzk1ODlmN2M5ZjdhM2NkNGRjZGVjNTlmNGUi.D9SggFuriokcYfUTeWIMF3jj40lFg2xtfr66qlZltCk%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=e5ac5c69006e9f06006b12e4000000010000071feff3d75bc02e8be4a12950d514c7a2&token=disk%7CaWQ9NDk4NzgmXz0xV1hRM1EwWnBmN2w4Wk5TQk95cTZXUVRFYkVhQ1lJRw%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EazROemdtWHoweFYxaFJNMUV3V25CbU4ydzRXazVUUWs5NWNUWlhVVlJGWWtWaFExbEpSdz09fGU1YWM1YzY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3MWZlZmYzZDc1YmMwMmU4YmU0YTEyOTUwZDUxNGM3YTIi.y889wjTpbSYjDpbBz4cDZX40Ly98R29F6Dri%2F6W%2B6zs%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/Picture1.jpg"
  },
  "time": {
-  "start": 1767486169,
-  "finish": 1767486169.2973,
-  "duration": 0.29729700088501,
+  "start": 1767677746,
+  "finish": 1767677746.55452,
+  "duration": 0.554516077041626,
   "processing": 0,
-  "date_start": "2026-01-04T00:22:49+00:00",
-  "date_finish": "2026-01-04T00:22:49+00:00",
-  "operating_reset_at": 1767486769,
+  "date_start": "2026-01-06T05:35:46+00:00",
+  "date_finish": "2026-01-06T05:35:46+00:00",
+  "operating_reset_at": 1767678346,
   "operating": 0
  }
 }
