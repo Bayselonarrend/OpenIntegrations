@@ -47,8 +47,10 @@ The project code is organized as a set of independent modules, each responsible 
     <a href="https://en.openintegrations.dev/docs/Instructions/SFTP/"><img src="media/sftp.png?6" width="40"></a>
   <a href="https://en.openintegrations.dev/docs/Instructions/TCP/"><img src="media/TCP.png?6" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/HTTP/"><img src="media/HTTP.png?6" width="40"></a>
+    <a href="https://en.openintegrations.dev/docs/Instructions/GRPC/"><img src="media/gRPC.png?6" width="40"></a>
+    <a href="https://en.openintegrations.dev/docs/Instructions/SSH/"><img src="media/SSH.png?6" width="40"></a>
     <a href="https://en.openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png?6" width="40"></a>
-       <a href="https://en.openintegrations.dev/docs/Instructions/SSH/"><img src="media/SSH.png?6" width="40"></a>
+       
    
 </div>
 <br>
