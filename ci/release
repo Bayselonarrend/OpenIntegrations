@@ -1,14 +1,33 @@
 pipeline {
-	agent {
-		label 'windows'
-	}
+    agent {
+        label 'windows'
+    }
     stages {
-
         stage('Release') {
             steps {
-                    powershell encoding: 'UTF-8', script:'Remove-Item -Path "./Melezh" -Recurse -Force'
-                    bat 'oscript ./ci/os/releasemaker.os'
-                    archiveArtifacts artifacts: '1.31.0/*'
+                powershell encoding: 'UTF-8', script:'Remove-Item -Path "./Melezh" -Recurse -Force'
+                bat 'oscript ./ci/os/releasemaker.os'
+            }
+        }
+        
+        stage('Validate Artifacts') {
+            steps {
+                script {
+                    def artifacts = findFiles(glob: '1.31.0/*')
+                    def count = artifacts.size()
+                    
+                    if (count != 16) {
+                        error("Ожидается 16 артефактов, но найдено ${count}")
+                    } else {
+                        echo "✓ Найдено ${count} артефактов (ожидалось 16)"
+                    }
+                }
+            }
+        }
+        
+        stage('Archive') {
+            steps {
+                archiveArtifacts artifacts: '1.31.0/*'
             }
         }
     }
