@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "9330",
+   "id": "9350",
    "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-01-06T05:34:44+00:00",
+   "createdDate": "2026-01-06T09:58:10+00:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-01-06T05:35:04+00:00",
+   "changedDate": "2026-01-06T09:59:26+00:00",
    "statusChangedBy": "1",
    "closedBy": "1",
    "closedDate": null,
-   "activityDate": "2026-01-06T05:35:04+00:00",
-   "dateStart": "2026-01-06T05:35:04+00:00",
-   "deadline": "2026-01-07T05:34:00+00:00",
-   "startDatePlan": "2026-01-06T05:34:44+00:00",
+   "activityDate": "2026-01-06T09:59:26+00:00",
+   "dateStart": "2026-01-06T09:59:26+00:00",
+   "deadline": "2026-01-07T09:58:00+00:00",
+   "startDatePlan": "2026-01-06T09:58:10+00:00",
    "endDatePlan": "2026-01-06T21:00:00+00:00",
-   "guid": "{948592c9-2843-4cd4-b0c2-d8786f447670}",
+   "guid": "{2e4acf13-2964-4faa-83a5-d86dc0bb205a}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "3",
-   "statusChangedDate": "2026-01-06T05:35:04+00:00",
+   "statusChangedDate": "2026-01-06T09:59:26+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1767677704,
-  "finish": 1767677704.71711,
-  "duration": 0.717108011245728,
+  "start": 1767693566,
+  "finish": 1767693566.52477,
+  "duration": 0.524765968322754,
   "processing": 0,
-  "date_start": "2026-01-06T05:35:04+00:00",
-  "date_finish": "2026-01-06T05:35:04+00:00",
-  "operating_reset_at": 1767678304,
-  "operating": 0.187481880187988
+  "date_start": "2026-01-06T09:59:26+00:00",
+  "date_finish": "2026-01-06T09:59:26+00:00",
+  "operating_reset_at": 1767694166,
+  "operating": 0.203712940216064
  }
 }

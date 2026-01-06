@@ -1,4 +1,4 @@
 oint bitrix24 DisapproveTask ^
  --url "b24-ar17wx.bitrix24.by" ^
- --task "9300" ^
+ --task "9350" ^
  --token "***"

@@ -1,6 +1,6 @@
 ﻿{
  "response": {
-  "id": 311253908,
+  "id": 311255325,
   "owner_id": -218861756,
   "size": 0,
   "title": "AlbumFromAutoTest",
@@ -8,10 +8,10 @@
   "feed_has_pinned": 0,
   "can_upload": 1,
   "comments_disabled": 0,
-  "created": 1767675367,
+  "created": 1767687991,
   "description": "NewAlbumFromAutoTest",
   "thumb_id": 0,
-  "updated": 1767675367,
+  "updated": 1767687991,
   "upload_by_admins_only": 1
  }
 }
