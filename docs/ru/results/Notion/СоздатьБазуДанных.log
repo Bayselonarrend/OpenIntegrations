@@ -1,9 +1,9 @@
 ﻿{
  "object": "database",
- "id": "2e082aa7-fc4e-8111-a16f-c516b872bc82",
+ "id": "2e082aa7-fc4e-81e0-860e-faf4f600d76a",
  "cover": null,
  "icon": null,
- "created_time": "2026-01-06T12:25:00Z",
+ "created_time": "2026-01-06T15:33:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -12,7 +12,7 @@
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
  },
- "last_edited_time": "2026-01-06T12:25:00Z",
+ "last_edited_time": "2026-01-06T15:33:00Z",
  "title": [
   {
    "type": "text",
@@ -35,15 +35,36 @@
  "description": [],
  "is_inline": false,
  "properties": {
-  "Пользователь": {
-   "id": "Co%7CW",
-   "name": "Пользователь",
+  "Почта": {
+   "id": "%3Ciu%7B",
+   "name": "Почта",
    "description": null,
-   "type": "people",
-   "people": {}
+   "type": "email",
+   "email": {}
+  },
+  "Описание": {
+   "id": "PsPb",
+   "name": "Описание",
+   "description": null,
+   "type": "rich_text",
+   "rich_text": {}
+  },
+  "Активен": {
+   "id": "Rs%3A%5B",
+   "name": "Активен",
+   "description": null,
+   "type": "checkbox",
+   "checkbox": {}
+  },
+  "Телефон": {
+   "id": "UH%60p",
+   "name": "Телефон",
+   "description": null,
+   "type": "phone_number",
+   "phone_number": {}
   },
   "Номер": {
-   "id": "Wg%3F%3D",
+   "id": "ULzJ",
    "name": "Номер",
    "description": null,
    "type": "number",
@@ -51,48 +72,41 @@
     "format": "number"
    }
   },
-  "Телефон": {
-   "id": "%60TB_",
-   "name": "Телефон",
+  "Дата создания": {
+   "id": "%60rFk",
+   "name": "Дата создания",
    "description": null,
-   "type": "phone_number",
-   "phone_number": {}
+   "type": "date",
+   "date": {}
   },
-  "Почта": {
-   "id": "ht%3C%40",
-   "name": "Почта",
+  "Пользователь": {
+   "id": "fLQU",
+   "name": "Пользователь",
    "description": null,
-   "type": "email",
-   "email": {}
-  },
-  "Картинка": {
-   "id": "j%5DtV",
-   "name": "Картинка",
-   "description": null,
-   "type": "files",
-   "files": {}
+   "type": "people",
+   "people": {}
   },
   "Статус": {
-   "id": "keQP",
+   "id": "rNho",
    "name": "Статус",
    "description": null,
    "type": "select",
    "select": {
     "options": [
      {
-      "id": "53bf99ed-4c36-4d6d-a0b8-bef7c8cfb018",
+      "id": "a10afd18-ea47-4c07-ae10-22f6c6ebe98f",
       "name": "Новый",
       "color": "green",
       "description": null
      },
      {
-      "id": "c3dfc7ac-143c-454e-855f-57c3d3d73194",
+      "id": "ac216763-04fd-4ac6-9ad1-ae3cf22bda3c",
       "name": "В работе",
       "color": "yellow",
       "description": null
      },
      {
-      "id": "efa647f4-94b8-41e3-8d74-93cbad2bf3ec",
+      "id": "b56b8d84-15c6-4e43-ae14-f3b9cef71290",
       "name": "Удаленный",
       "color": "red",
       "description": null
@@ -100,29 +114,15 @@
     ]
    }
   },
-  "Дата создания": {
-   "id": "qRRc",
-   "name": "Дата создания",
+  "Картинка": {
+   "id": "uo%60Z",
+   "name": "Картинка",
    "description": null,
-   "type": "date",
-   "date": {}
-  },
-  "Активен": {
-   "id": "s%3Aps",
-   "name": "Активен",
-   "description": null,
-   "type": "checkbox",
-   "checkbox": {}
-  },
-  "Описание": {
-   "id": "s%7DUL",
-   "name": "Описание",
-   "description": null,
-   "type": "rich_text",
-   "rich_text": {}
+   "type": "files",
+   "files": {}
   },
   "Сайт": {
-   "id": "zhV%5D",
+   "id": "%7BuIR",
    "name": "Сайт",
    "description": null,
    "type": "url",
@@ -140,9 +140,9 @@
   "type": "page_id",
   "page_id": "5dd94c34-fab0-4bff-986b-7511c0779f77"
  },
- "url": "https://www.notion.so/2e082aa7fc4e8111a16fc516b872bc82",
+ "url": "https://www.notion.so/2e082aa7fc4e81e0860efaf4f600d76a",
  "public_url": null,
  "archived": false,
  "in_trash": false,
- "request_id": "e643f397-470e-4089-bff0-480c4de313dc"
+ "request_id": "8a2a6836-ff83-4a39-98d0-eea1a4fe48fa"
 }
