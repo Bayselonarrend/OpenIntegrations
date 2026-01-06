@@ -2,7 +2,7 @@
 
 oint s3 PutObjectTagging \
  --name "picture.jpg" \
- --bucket "3d0d4317" \
+ --bucket "04428a9b" \
  --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
  --tagset "{'MyTag1':'SomeValue','MyTag2':'AnotherOne'}" \
  --dir true

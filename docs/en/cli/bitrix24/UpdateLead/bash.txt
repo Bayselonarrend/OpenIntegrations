@@ -2,6 +2,6 @@
 
 oint bitrix24 UpdateLead \
  --url "b24-ar17wx.bitrix24.by" \
- --lead 2974 \
+ --lead 2994 \
  --fields "{'ADDRESS':'Lermontov st., b. 20','ADDRESS_COUNTRY':'Belarus','TITLE':'SuperClient','NAME':'Evgeniy','LAST_NAME':'Evgeniev'}" \
  --token "***"
