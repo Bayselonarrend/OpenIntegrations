@@ -1,12 +1,1 @@
-﻿[
- {
-  "messageID": "3EB0C268C193B05AD7D366",
-  "type": "editMessage",
-  "body": {
-   "chatId": "***",
-   "idMessage": "3EB0FAB8A32B9AC25571C3",
-   "message": "Новый текст сообщения",
-   "linkPreview": true
-  }
- }
-]
+﻿{}
