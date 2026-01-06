@@ -1,1 +1,39 @@
-﻿{}
+﻿[
+ {
+  "messageID": "3EB043BED65DCC060A7792",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "company": "Bicycle"
+   },
+   "quotedMessageId": "3EB04A26912579F842D9D3",
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "3EB0DE0BCA3F0E5C4E3ECD"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "***",
+   "chatIdFrom": "***",
+   "messages": [
+    "3EB05528815B0E1DCC983C"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0BEB9BD3101211A2EBA",
+  "type": "editMessage",
+  "body": {
+   "chatId": "***",
+   "idMessage": "3EB05528815B0E1DCC983C",
+   "message": "New message text",
+   "linkPreview": true
+  }
+ }
+]
