@@ -39,21 +39,43 @@ import TabItem from '@theme/TabItem';
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint grpc GetMethodList \
+             --conn "{'address':'https://grpcb.in:9001','proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin.proto'}}" \
+             --service "grpcbin.GRPCBin"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint grpc GetMethodList ^
+             --conn "{'address':'https://grpcb.in:9001','proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin.proto'}}" ^
+             --service "grpcbin.GRPCBin"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
 {
  "data": [
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null,
-  null
+  "Index",
+  "Empty",
+  "DummyUnary",
+  "DummyServerStream",
+  "DummyClientStream",
+  "DummyBidirectionalStreamStream",
+  "SpecificError",
+  "RandomError",
+  "HeadersUnary",
+  "NoResponseUnary"
  ],
  "result": true
 }

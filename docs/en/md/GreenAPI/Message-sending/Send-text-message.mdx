@@ -53,7 +53,8 @@ Method at API documentation: [SendMessage](https://green-api.com/docs/api/sendin
             oint greenapi SendTextMessage \
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
              --chat "***" \
-             --text "New message"
+             --text "New message" \
+             --quoted "3EB07DF3AD175A1F2546CB"
         ```
     </TabItem>
   
@@ -64,7 +65,8 @@ Method at API documentation: [SendMessage](https://green-api.com/docs/api/sendin
             oint greenapi SendTextMessage ^
              --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
              --chat "***" ^
-             --text "New message"
+             --text "New message" ^
+             --quoted "3EB07DF3AD175A1F2546CB"
         ```
     </TabItem>
 </Tabs>
@@ -72,6 +74,6 @@ Method at API documentation: [SendMessage](https://green-api.com/docs/api/sendin
 
 ```json title="Result"
 {
- "idMessage": "3EB05FE6C82CCA28460509"
+ "idMessage": "3EB04AF65A50A0F20AAE53"
 }
 ```

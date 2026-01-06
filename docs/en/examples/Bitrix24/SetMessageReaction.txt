@@ -1,10 +1,10 @@
 ﻿    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    MessageID = "73158";
+    MessageID = "73284";
 
     Result = OPI_Bitrix24.SetMessageReaction(URL, MessageID);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "d49a5b69006e9f06006b12e400000001000...";
-    MessageID = "73160";
+    Token     = "b3bd5b69006e9f06006b12e400000001000...";
+    MessageID = "73286";
 
     Result = OPI_Bitrix24.SetMessageReaction(URL, MessageID, Token);

@@ -40,14 +40,14 @@ Parameters with Binary data type can also accept file paths on disk and URLs
     Image2 = "https://hut.openintegrations.dev/test_data/picture.jpg"; // Local path, URL or Binary Data
     Image  = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // Local path, URL or Binary Data
 
-    DestinationID = "49452";
+    DestinationID = "49506";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Result = OPI_Bitrix24.UploadFileToFolder(URL, Filename2, Image2, DestinationID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "d49a5b69006e9f06006b12e400000001000...";
+    Token = "b3bd5b69006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.UploadFileToFolder(URL, Name, Image, DestinationID, Token);
 ```
@@ -61,7 +61,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
              --url "b24-ar17wx.bitrix24.by" \
              --title "Imortant doc.docx" \
              --file "https://hut.openintegrations.dev/test_data/document.docx" \
-             --folderid 48478 \
+             --folderid 49744 \
              --token "***"
         ```
     </TabItem>
@@ -72,7 +72,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
              --url "b24-ar17wx.bitrix24.by" ^
              --title "Imortant doc.docx" ^
              --file "https://hut.openintegrations.dev/test_data/document.docx" ^
-             --folderid 48478 ^
+             --folderid 49744 ^
              --token "***"
         ```
     </TabItem>
@@ -82,23 +82,23 @@ Parameters with Binary data type can also accept file paths on disk and URLs
 ```json title="Result"
 {
  "result": {
-  "ID": 49356,
+  "ID": 49896,
   "NAME": "Picture1.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "file",
-  "PARENT_ID": "49344",
+  "PARENT_ID": "49884",
   "DELETED_TYPE": 0,
   "GLOBAL_CONTENT_VERSION": 1,
-  "FILE_ID": 33552,
+  "FILE_ID": 33932,
   "SIZE": "805191",
-  "CREATE_TIME": "2026-01-04T00:23:25+00:00",
-  "UPDATE_TIME": "2026-01-04T00:23:25+00:00",
+  "CREATE_TIME": "2026-01-06T05:36:22+00:00",
+  "UPDATE_TIME": "2026-01-06T05:36:22+00:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": null,
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=a6c05969006e9f06006b12e400000001000007bca61d79589f7c9f7a3cd4dcdec59f4e&token=disk%7CaWQ9NDkzNTYmXz1ITXNKVDdQRTh0Q080ekVRZFdNMnF5RmVURGtZaExUUg%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5Ea3pOVFltWHoxSVRYTktWRGRRUlRoMFEwODBla1ZSWkZkTk1uRjVSbVZVUkd0WmFFeFVVZz09fGE2YzA1OTY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3YmNhNjFkNzk1ODlmN2M5ZjdhM2NkNGRjZGVjNTlmNGUi.fD7hTIpIowArY%2F2PpSHOpSWvRS7dBLqBYK%2B%2Fz0z864c%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=e5ac5c69006e9f06006b12e4000000010000071feff3d75bc02e8be4a12950d514c7a2&token=disk%7CaWQ9NDk4OTYmXz1rcHRlZTByaDdpd1p5cG82SEdOWENQcGpGampBZjBPaA%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EazRPVFltWHoxcmNIUmxaVEJ5YURkcGQxcDVjRzgyU0VkT1dFTlFjR3BHYW1wQlpqQlBhQT09fGU1YWM1YzY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3MWZlZmYzZDc1YmMwMmU4YmU0YTEyOTUwZDUxNGM3YTIi.5auT%2F0z1w8H%2FsMr%2F9EfyMAGmW%2BjQVp5uZZi1pF4stL8%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New catalog/Picture1.jpg"
  }
 }

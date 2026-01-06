@@ -73,6 +73,34 @@ Example: Retrieving a message after every two sent messages and three more at th
 ```
  
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON data can also be passed as a path to a .json file
+            
+            oint grpc ProcessBidirectionalStream \
+             --conn "{'address':'https://grpcb.in:9001','proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto','my_types.proto':'https://hut.openintegrations.dev/test_data/mt.proto'}}" \
+             --service "grpcbin.GRPCBin" \
+             --method "DummyBidirectionalStreamStream" \
+             --exch "[{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null]" \
+             --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON data can also be passed as a path to a .json file
+            
+            oint grpc ProcessBidirectionalStream ^
+             --conn "{'address':'https://grpcb.in:9001','proto':{'main.proto':'https://hut.openintegrations.dev/test_data/grpcbin_with_import.proto','my_types.proto':'https://hut.openintegrations.dev/test_data/mt.proto'}}" ^
+             --service "grpcbin.GRPCBin" ^
+             --method "DummyBidirectionalStreamStream" ^
+             --exch "[{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null,{'f_string':'Test message','f_bool':true,'f_strings':['one','two','three'],'f_sub':{'f_string':'Nested value'}},null]" ^
+             --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 ```json title="Result"
@@ -103,9 +131,9 @@ Example: Retrieving a message after every two sent messages and three more at th
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"
@@ -129,9 +157,9 @@ Example: Retrieving a message after every two sent messages and three more at th
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"
@@ -155,9 +183,9 @@ Example: Retrieving a message after every two sent messages and three more at th
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"
@@ -181,9 +209,9 @@ Example: Retrieving a message after every two sent messages and three more at th
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"
@@ -207,9 +235,9 @@ Example: Retrieving a message after every two sent messages and three more at th
    "f_int64s": [],
    "f_string": "Test message",
    "f_strings": [
-    null,
-    null,
-    null
+    "one",
+    "two",
+    "three"
    ],
    "f_sub": {
     "f_string": "Nested value"

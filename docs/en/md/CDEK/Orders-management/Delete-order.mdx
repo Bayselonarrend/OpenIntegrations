@@ -30,8 +30,8 @@ Method at API documentation: [Deleting an order](https://api-docs.cdek.ru/338288
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc2MTE1NjIsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "8f4f4aba-163b-4d9e-955c-0ba2dbca28c8";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc2MjA0OTEsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "e85cdd6e-7ea3-4728-be32-14fe34bcbc69";
 
     Result = OPI_CDEK.DeleteOrder(Token, UUID, True);
 ```
@@ -43,7 +43,7 @@ Method at API documentation: [Deleting an order](https://api-docs.cdek.ru/338288
         ```bash
             oint cdek DeleteOrder \
              --token "***" \
-             --uuid "0387cdd8-1d6f-4906-ab7d-713f1f1b7544" \
+             --uuid "374a815a-d158-4774-b244-7e64ffc1b403" \
              --testapi "***"
         ```
     </TabItem>
@@ -52,7 +52,7 @@ Method at API documentation: [Deleting an order](https://api-docs.cdek.ru/338288
         ```batch
             oint cdek DeleteOrder ^
              --token "***" ^
-             --uuid "0387cdd8-1d6f-4906-ab7d-713f1f1b7544" ^
+             --uuid "374a815a-d158-4774-b244-7e64ffc1b403" ^
              --testapi "***"
         ```
     </TabItem>
@@ -62,13 +62,13 @@ Method at API documentation: [Deleting an order](https://api-docs.cdek.ru/338288
 ```json title="Result"
 {
  "entity": {
-  "uuid": "59db523d-2888-418a-8766-ba6078007551"
+  "uuid": "b7b65784-c2e9-47ed-9ee4-8aa41caf3eca"
  },
  "requests": [
   {
-   "request_uuid": "30107f3e-45a8-49dd-86cc-7a2e48543afc",
+   "request_uuid": "b9ae5391-904a-419b-b125-11cb16cb707b",
    "type": "DELETE",
-   "date_time": "2026-01-04T00:31:15+00:00",
+   "date_time": "2026-01-06T05:44:16+00:00",
    "state": "ACCEPTED"
   }
  ],

@@ -36,8 +36,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc2MTE1NjIsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "8f4f4aba-163b-4d9e-955c-0ba2dbca28c8";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc2MjA0OTEsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "e85cdd6e-7ea3-4728-be32-14fe34bcbc69";
     Тип   = "tpl_russia";
     Копий = 1;
 
@@ -51,7 +51,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek СформироватьКвитанцию \
               --token "***" \
-              --uuids "0d491d2a-fb64-47ec-8ccb-271a17b6cd06" \
+              --uuids "f8c76b39-dd91-4000-bfbb-5944f8dd856c" \
               --type "tpl_russia" \
               --count 1 \
               --testapi "***"
@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek СформироватьКвитанцию ^
               --token "***" ^
-              --uuids "0d491d2a-fb64-47ec-8ccb-271a17b6cd06" ^
+              --uuids "f8c76b39-dd91-4000-bfbb-5944f8dd856c" ^
               --type "tpl_russia" ^
               --count 1 ^
               --testapi "***"
@@ -74,13 +74,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "03763b03-08d8-488f-a73c-46e5fa6a9629"
+  "uuid": "84573dfd-df5a-416d-ba5e-ff1992d51212"
  },
  "requests": [
   {
-   "request_uuid": "3f0dfae9-4d55-43d5-86e8-579b6090c457",
+   "request_uuid": "cf83e1e5-138a-4987-ad3a-3044eb416431",
    "type": "CREATE",
-   "date_time": "2026-01-04T19:05:56+00:00",
+   "date_time": "2026-01-06T04:31:40+00:00",
    "state": "ACCEPTED"
   }
  ],

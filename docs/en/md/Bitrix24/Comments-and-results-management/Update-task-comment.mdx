@@ -33,16 +33,16 @@ Method at API documentation: [task.commentitem.update](https://dev.1c-bitrix.ru/
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID    = "9252";
-    CommentID = "73108";
+    TaskID    = "9262";
+    CommentID = "73234";
 
     Text = "The task has been changed, do not split up";
 
     Result = OPI_Bitrix24.UpdateTaskComment(URL, TaskID, CommentID, Text);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "d49a5b69006e9f06006b12e400000001000...";
-    CommentID = "73110";
+    Token     = "b3bd5b69006e9f06006b12e400000001000...";
+    CommentID = "73236";
 
     Text = "The task has been changed, let's split up";
 
@@ -56,8 +56,8 @@ Method at API documentation: [task.commentitem.update](https://dev.1c-bitrix.ru/
         ```bash
             oint bitrix24 UpdateTaskComment \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "9050" \
-             --comment 20950 \
+             --task "9302" \
+             --comment 73776 \
              --text "The task has been changed, let's split up" \
              --token "***"
         ```
@@ -67,8 +67,8 @@ Method at API documentation: [task.commentitem.update](https://dev.1c-bitrix.ru/
         ```batch
             oint bitrix24 UpdateTaskComment ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "9050" ^
-             --comment 20950 ^
+             --task "9302" ^
+             --comment 73776 ^
              --text "The task has been changed, let's split up" ^
              --token "***"
         ```

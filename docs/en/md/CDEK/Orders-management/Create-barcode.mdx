@@ -33,8 +33,8 @@ Method at API documentation: [Creating barcode CP for the order](https://api-doc
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token  = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc2MTE1NjIsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID   = "8f4f4aba-163b-4d9e-955c-0ba2dbca28c8";
+    Token  = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc2MjA0OTEsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID   = "e85cdd6e-7ea3-4728-be32-14fe34bcbc69";
     Format = "A5";
     Copies = 1;
 
@@ -48,7 +48,7 @@ Method at API documentation: [Creating barcode CP for the order](https://api-doc
         ```bash
             oint cdek CreateBarcode \
              --token "***" \
-             --uuids "9e15fe3c-2071-4ed8-9ded-70df723825d3" \
+             --uuids "349bb5f0-4c0c-4f3e-8042-5a1c5c52e74d" \
              --count 1 \
              --format "A5" \
              --testapi "***"
@@ -59,7 +59,7 @@ Method at API documentation: [Creating barcode CP for the order](https://api-doc
         ```batch
             oint cdek CreateBarcode ^
              --token "***" ^
-             --uuids "9e15fe3c-2071-4ed8-9ded-70df723825d3" ^
+             --uuids "349bb5f0-4c0c-4f3e-8042-5a1c5c52e74d" ^
              --count 1 ^
              --format "A5" ^
              --testapi "***"
@@ -71,13 +71,13 @@ Method at API documentation: [Creating barcode CP for the order](https://api-doc
 ```json title="Result"
 {
  "entity": {
-  "uuid": "58768740-4bb6-4e8d-8e98-08f8bf472a76"
+  "uuid": "55cd0c25-caf8-4c69-b990-dd9505b757e8"
  },
  "requests": [
   {
-   "request_uuid": "4e0713e0-16e3-4d9d-8a50-67ce621a24a7",
+   "request_uuid": "07235d45-e0a2-4858-a2af-fec6e971bc9c",
    "type": "CREATE",
-   "date_time": "2026-01-04T00:29:53+00:00",
+   "date_time": "2026-01-06T05:42:51+00:00",
    "state": "ACCEPTED"
   }
  ],

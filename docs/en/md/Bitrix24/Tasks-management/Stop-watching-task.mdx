@@ -31,13 +31,13 @@ Method at API documentation: [tasks.task.stopwatch](https://dev.1c-bitrix.ru/res
 
 ```bsl title="1C:Enterprise/OneScript code example"
     URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "9248";
+    TaskID = "9258";
 
     Result = OPI_Bitrix24.StopWatchingTask(URL, TaskID);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "d49a5b69006e9f06006b12e400000001000...";
-    TaskID = "9250";
+    Token  = "b3bd5b69006e9f06006b12e400000001000...";
+    TaskID = "9260";
 
     Result = OPI_Bitrix24.StopWatchingTask(URL, TaskID, Token);
 ```
@@ -49,7 +49,7 @@ Method at API documentation: [tasks.task.stopwatch](https://dev.1c-bitrix.ru/res
         ```bash
             oint bitrix24 StopWatchingTask \
              --url "b24-ar17wx.bitrix24.by" \
-             --task "9048" \
+             --task "9300" \
              --token "***"
         ```
     </TabItem>
@@ -58,7 +58,7 @@ Method at API documentation: [tasks.task.stopwatch](https://dev.1c-bitrix.ru/res
         ```batch
             oint bitrix24 StopWatchingTask ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --task "9048" ^
+             --task "9300" ^
              --token "***"
         ```
     </TabItem>
@@ -69,93 +69,68 @@ Method at API documentation: [tasks.task.stopwatch](https://dev.1c-bitrix.ru/res
 {
  "result": {
   "task": {
-   "id": "9048",
+   "id": "9330",
+   "parentId": null,
    "title": "Another task title",
    "description": "Another task description",
-   "descriptionInBbcode": "Y",
-   "declineReason": "",
-   "priority": "1",
-   "notViewed": "N",
-   "statusComplete": "1",
-   "multitask": "N",
-   "stageId": "0",
-   "responsibleId": "2960",
-   "responsibleName": "Oleg",
-   "responsibleLastName": "Lama",
-   "responsibleSecondName": null,
-   "responsibleLogin": "10ecac6d-d2d0-4ec2-990d-d665731c2338@exepmple.org",
-   "responsibleWorkPosition": null,
-   "responsiblePhoto": null,
-   "dateStart": "2025-12-10T19:50:31+00:00",
-   "durationFact": null,
-   "timeEstimate": "0",
-   "timeSpentInLogs": null,
-   "replicate": "N",
-   "deadline": "2025-12-11T19:49:00+00:00",
-   "deadlineOrig": "11.12.2025 22:49:00",
-   "startDatePlan": "2025-12-10T19:49:11+00:00",
-   "endDatePlan": "2025-12-10T21:00:00+00:00",
-   "createdBy": "1",
-   "createdByName": "Антон",
-   "createdByLastName": "Титовец",
-   "createdBySecondName": null,
-   "createdByLogin": "VKuser657846756",
-   "createdByWorkPosition": null,
-   "createdByPhoto": "30",
-   "createdDate": "2025-12-10T19:49:11+00:00",
-   "changedBy": "1",
-   "changedDate": "2025-12-10T19:50:36+00:00",
-   "statusChangedBy": "1",
-   "closedBy": "0",
-   "closedDate": null,
-   "activityDate": "2025-12-10T19:50:26+00:00",
-   "guid": "{2df2631f-de86-45ab-af6f-f290ffc1c57d}",
-   "xmlId": null,
    "mark": null,
+   "priority": "1",
+   "multitask": "N",
+   "notViewed": "N",
+   "replicate": "N",
+   "stageId": "0",
+   "sprintId": null,
+   "backlogId": null,
+   "createdBy": "1",
+   "createdDate": "2026-01-06T05:34:44+00:00",
+   "responsibleId": "2960",
+   "changedBy": "1",
+   "changedDate": "2026-01-06T05:35:06+00:00",
+   "statusChangedBy": "1",
+   "closedBy": "1",
+   "closedDate": null,
+   "activityDate": "2026-01-06T05:35:04+00:00",
+   "dateStart": "2026-01-06T05:35:04+00:00",
+   "deadline": "2026-01-07T05:34:00+00:00",
+   "startDatePlan": "2026-01-06T05:34:44+00:00",
+   "endDatePlan": "2026-01-06T21:00:00+00:00",
+   "guid": "{948592c9-2843-4cd4-b0c2-d8786f447670}",
+   "xmlId": null,
+   "commentsCount": null,
+   "serviceCommentsCount": null,
    "allowChangeDeadline": "N",
    "allowTimeTracking": "N",
-   "matchWorkTime": "N",
    "taskControl": "N",
    "addInReport": "N",
-   "forumTopicId": "5832",
-   "parentId": null,
-   "commentsCount": "3",
-   "serviceCommentsCount": "3",
-   "forumId": "11",
+   "forkedByTemplateId": null,
+   "timeEstimate": "0",
+   "timeSpentInLogs": null,
+   "matchWorkTime": "N",
+   "forumTopicId": null,
+   "forumId": null,
    "siteId": "s1",
    "subordinate": "Y",
    "exchangeModified": null,
    "exchangeId": null,
    "outlookVersion": "9",
-   "viewedDate": "2025-12-10T19:50:26+00:00",
-   "deadlineCounted": "0",
-   "forkedByTemplateId": null,
+   "viewedDate": null,
    "sorting": null,
-   "durationPlanSeconds": null,
-   "durationTypeAll": "days",
-   "scenarioName": [
-    "***"
-   ],
-   "isRegular": "N",
-   "flowId": "***",
+   "durationFact": null,
    "isMuted": "N",
    "isPinned": "N",
    "isPinnedInGroup": "N",
-   "ufCrmTask": false,
-   "ufTaskWebdavFiles": false,
-   "ufMailMessage": null,
+   "flowId": "***",
+   "chatId": "***",
+   "descriptionInBbcode": "Y",
    "status": "3",
-   "statusChangedDate": "2025-12-10T19:50:31+00:00",
+   "statusChangedDate": "2026-01-06T05:35:04+00:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
    "groupId": "0",
    "auditors": [],
    "accomplices": [],
-   "tags": [],
    "checklist": [],
-   "files": [],
-   "dependsOn": [],
    "group": [],
    "creator": {
     "id": "1",
@@ -216,5 +191,27 @@ Method at API documentation: [tasks.task.stopwatch](https://dev.1c-bitrix.ru/res
      "sortIndex": null,
      "displaySortIndex": "",
      "isComplete": false,
-...
+     "isImportant": false,
+     "completedCount": 0,
+     "members": [],
+     "attachments": [],
+     "nodeId": null
+    },
+    "action": [],
+    "descendants": []
+   },
+   "checkListCanAdd": true
+  }
+ },
+ "time": {
+  "start": 1767677707,
+  "finish": 1767677707.43844,
+  "duration": 0.438443899154663,
+  "processing": 0,
+  "date_start": "2026-01-06T05:35:07+00:00",
+  "date_finish": "2026-01-06T05:35:07+00:00",
+  "operating_reset_at": 1767678307,
+  "operating": 0
+ }
+}
 ```

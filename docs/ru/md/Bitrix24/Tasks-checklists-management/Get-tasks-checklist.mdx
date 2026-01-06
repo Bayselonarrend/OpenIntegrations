@@ -31,13 +31,13 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDЗадачи = "9248";
+    IDЗадачи = "9258";
 
     Результат = OPI_Bitrix24.ПолучитьЧеклистЗадачи(URL, IDЗадачи);
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Токен    = "d49a5b69006e9f06006b12e400000001000...";
-    IDЗадачи = "9250";
+    Токен    = "b3bd5b69006e9f06006b12e400000001000...";
+    IDЗадачи = "9260";
 
     Результат = OPI_Bitrix24.ПолучитьЧеклистЗадачи(URL, IDЗадачи, Токен);
 ```
@@ -49,7 +49,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПолучитьЧеклистЗадачи \
               --url "b24-ar17wx.bitrix24.by" \
-              --task "9220" \
+              --task "9310" \
               --token "***"
         ```
     </TabItem>
@@ -58,7 +58,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПолучитьЧеклистЗадачи ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --task "9220" ^
+              --task "9310" ^
               --token "***"
         ```
     </TabItem>
@@ -69,8 +69,8 @@ import TabItem from '@theme/TabItem';
 {
  "result": [
   {
-   "ID": "6560",
-   "TASK_ID": "9240",
+   "ID": "6624",
+   "TASK_ID": "9320",
    "PARENT_ID": 0,
    "CREATED_BY": "1",
    "TITLE": "BX_CHECKLIST_1",
@@ -83,9 +83,9 @@ import TabItem from '@theme/TabItem';
    "ATTACHMENTS": []
   },
   {
-   "ID": "6562",
-   "TASK_ID": "9240",
-   "PARENT_ID": "6560",
+   "ID": "6626",
+   "TASK_ID": "9320",
+   "PARENT_ID": "6624",
    "CREATED_BY": "1",
    "TITLE": "Новый текст пункта чек-листа",
    "SORT_INDEX": "1",
@@ -98,13 +98,13 @@ import TabItem from '@theme/TabItem';
   }
  ],
  "time": {
-  "start": 1767553084,
-  "finish": 1767553084.38964,
-  "duration": 0.389636993408203,
+  "start": 1767673436,
+  "finish": 1767673436.82885,
+  "duration": 0.828849077224731,
   "processing": 0,
-  "date_start": "2026-01-04T18:58:04+00:00",
-  "date_finish": "2026-01-04T18:58:04+00:00",
-  "operating_reset_at": 1767553684,
+  "date_start": "2026-01-06T04:23:56+00:00",
+  "date_finish": "2026-01-06T04:23:56+00:00",
+  "operating_reset_at": 1767674036,
   "operating": 0
  }
 }

@@ -1,12 +1,12 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "9248";
+    TaskID = "9258";
 
     Text = "Checklist element";
 
     Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, True);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "d49a5b69006e9f06006b12e400000001000...";
-    TaskID = "9250";
+    Token  = "b3bd5b69006e9f06006b12e400000001000...";
+    TaskID = "9260";
 
     Result = OPI_Bitrix24.AddTasksChecklistElement(URL, TaskID, Text, , Token);
