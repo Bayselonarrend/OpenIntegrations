@@ -34,14 +34,14 @@ import TabItem from '@theme/TabItem';
     Наименование  = "Новый каталог";
     Наименование2 = "Новый каталог 2";
 
-    IDКаталога2 = "49450";
+    IDКаталога2 = "49504";
     URL         = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Результат = OPI_Bitrix24.ПереименоватьКаталог(URL, IDКаталога2, Наименование2);
 
-    IDКаталога = "49452";
+    IDКаталога = "49506";
     URL        = "b24-ar17wx.bitrix24.by";
-    Токен      = "d49a5b69006e9f06006b12e400000001000...";
+    Токен      = "b3bd5b69006e9f06006b12e400000001000...";
 
     Результат = OPI_Bitrix24.ПереименоватьКаталог(URL, IDКаталога, Наименование, Токен);
 ```
@@ -53,7 +53,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint bitrix24 ПереименоватьКаталог \
               --url "b24-ar17wx.bitrix24.by" \
-              --folderid 49292 \
+              --folderid 49776 \
               --title "Новый каталог" \
               --token "***"
         ```
@@ -63,7 +63,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint bitrix24 ПереименоватьКаталог ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --folderid 49292 ^
+              --folderid 49776 ^
               --title "Новый каталог" ^
               --token "***"
         ```
@@ -74,16 +74,16 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "result": {
-  "ID": "49398",
+  "ID": "49830",
   "NAME": "Новый каталог",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "folder",
-  "REAL_OBJECT_ID": "49398",
+  "REAL_OBJECT_ID": "49830",
   "PARENT_ID": "3",
   "DELETED_TYPE": "0",
-  "CREATE_TIME": "2026-01-04T18:59:03+00:00",
-  "UPDATE_TIME": "2026-01-04T18:59:03+00:00",
+  "CREATE_TIME": "2026-01-06T04:24:54+00:00",
+  "UPDATE_TIME": "2026-01-06T04:24:54+00:00",
   "DELETE_TIME": null,
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
@@ -91,13 +91,13 @@ import TabItem from '@theme/TabItem';
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/path/Новый каталог"
  },
  "time": {
-  "start": 1767553144,
-  "finish": 1767553144.11515,
-  "duration": 0.115145921707153,
+  "start": 1767673495,
+  "finish": 1767673495.24262,
+  "duration": 0.242624044418335,
   "processing": 0,
-  "date_start": "2026-01-04T18:59:04+00:00",
-  "date_finish": "2026-01-04T18:59:04+00:00",
-  "operating_reset_at": 1767553744,
+  "date_start": "2026-01-06T04:24:55+00:00",
+  "date_finish": "2026-01-06T04:24:55+00:00",
+  "operating_reset_at": 1767674095,
   "operating": 0
  }
 }

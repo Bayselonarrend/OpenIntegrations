@@ -32,8 +32,8 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc2MTE1NjIsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJjb250cmFjdDrQmNCcLdCg0KQt0JPQm9CTLTIyIiwiYWNjb3VudC1sYW5nOnJ1cyIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "ae7e44cf-9291-40f1-8b02-0923d06b04e1";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc2MjA0OTEsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "52fb58b7-5d3c-47e2-81ab-e1b2b368241a";
 
     Result = OPI_CDEK.GetCourierInvitation(Token, UUID, True);
 ```
@@ -45,7 +45,7 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
         ```bash
             oint cdek GetCourierInvitation \
              --token "***" \
-             --uuid "2a75c7f0-9f49-4667-802c-eeed87903e84" \
+             --uuid "e4a67813-fa05-4faa-98b7-ec59705fc7d6" \
              --testapi "***"
         ```
     </TabItem>
@@ -54,7 +54,7 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
         ```batch
             oint cdek GetCourierInvitation ^
              --token "***" ^
-             --uuid "2a75c7f0-9f49-4667-802c-eeed87903e84" ^
+             --uuid "e4a67813-fa05-4faa-98b7-ec59705fc7d6" ^
              --testapi "***"
         ```
     </TabItem>
@@ -64,10 +64,8 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
 ```json title="Result"
 {
  "entity": {
-  "uuid": "7b9bfce5-b2d1-4618-a22e-86c5be6f8182",
-  "cdek_number": "1106860064",
-  "order_uuid": "d1d4c4c4-25c0-48ad-8047-2aab8528c086",
-  "intake_date": "2026-01-05",
+  "uuid": "b5a99212-9b73-43a0-b20c-68698ebecad7",
+  "intake_date": "2026-01-07",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -83,46 +81,35 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
     {
      "number": "+79589441654"
     }
-   ],
-   "passport_requirements_satisfied": "***"
+   ]
   },
   "from_location": {
    "code": 44,
-   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
-   "city": "Москва",
+   "city": "Moscow",
    "fias_guid": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
+   "kladr_code": "7700000000000",
    "country_code": "RU",
-   "country": "Россия",
-   "region": "Москва",
-   "region_code": 81,
-   "sub_region": "Москва",
-   "longitude": 37.61556,
-   "latitude": 55.75222,
-   "address": "st. Bluchera, 32"
+   "region": "Moscow",
+   "sub_region": "Moscow",
+   "longitude": 37.6204,
+   "latitude": 55.754,
+   "address": "st. Bluchera, 32",
+   "postal_code": "109004"
   },
   "need_call": false,
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-01-04T00:30:49+00:00"
-   }
-  ],
-  "packages": [
-   {
-    "package_id": "ccd237d1-456c-4bdd-8dce-51b20e5a94cd",
-    "weight": 1000,
-    "length": 10,
-    "width": "***",
-    "height": 10
+    "date_time": "2026-01-06T05:43:49+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "08d82890-bba0-4adb-afb6-c9db8c8244bb",
+   "request_uuid": "0f873313-7558-458f-a596-419a96de9b18",
    "type": "CREATE",
-   "date_time": "2026-01-04T00:30:48+00:00",
+   "date_time": "2026-01-06T05:43:45+00:00",
    "state": "ACCEPTED"
   }
  ]

@@ -36,7 +36,7 @@ import TabItem from '@theme/TabItem';
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     IDЧата      = "120363410406221140@g.us";
-    IDСообщения = "3EB06B46CD8C174F342786";
+    IDСообщения = "3EB00CE2030AC5285D9B18";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Результат        = OPI_GreenAPI.ПолучитьСообщение(ПараметрыДоступа, IDЧата, IDСообщения);
@@ -52,7 +52,7 @@ import TabItem from '@theme/TabItem';
             oint greenapi ПолучитьСообщение \
               --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
               --chat "***" \
-              --msg "3EB048E441D4DF9619FB92"
+              --msg "3EB03F003F64A0243085AA"
         ```
     </TabItem>
   
@@ -63,7 +63,7 @@ import TabItem from '@theme/TabItem';
             oint greenapi ПолучитьСообщение ^
               --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
               --chat "***" ^
-              --msg "3EB048E441D4DF9619FB92"
+              --msg "3EB03F003F64A0243085AA"
         ```
     </TabItem>
 </Tabs>
@@ -72,13 +72,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "type": "outgoing",
- "idMessage": "3EB01E1E3BF15FF6AE5D96",
- "timestamp": 1767554018,
+ "idMessage": "3EB0FAB8A32B9AC25571C3",
+ "timestamp": 1767674312,
  "typeMessage": "extendedTextMessage",
  "chatId": "***",
- "textMessage": "Новый текст сообщения",
+ "textMessage": "Новое сообщение",
  "extendedTextMessage": {
-  "text": "Новый текст сообщения",
+  "text": "Новое сообщение",
   "description": "",
   "title": "",
   "previewType": "None",
@@ -88,9 +88,9 @@ import TabItem from '@theme/TabItem';
  },
  "statusMessage": "sent",
  "sendByApi": "***",
- "deletedMessageId": "3EB0960DF1C5224181FEE2",
- "editedMessageId": "3EB0466E60F53156A2A046",
- "isEdited": true,
+ "deletedMessageId": "3EB0CE4B5E6229B508D52D",
+ "editedMessageId": "",
+ "isEdited": false,
  "isDeleted": true
 }
 ```
