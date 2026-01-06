@@ -1,13 +1,36 @@
 ﻿[
  {
   "type": "outgoing",
-  "idMessage": "1767723925528",
-  "timestamp": 1767723927,
+  "idMessage": "1767728836598",
+  "timestamp": 1767728838,
   "typeMessage": "extendedTextMessage",
   "chatId": "***",
   "textMessage": "Текст сообщения",
   "extendedTextMessage": {
    "text": "Текст сообщения",
+   "description": "",
+   "title": "",
+   "previewType": "None",
+   "jpegThumbnail": "",
+   "forwardingScore": 0,
+   "isForwarded": false
+  },
+  "statusMessage": "delivered",
+  "sendByApi": "***",
+  "deletedMessageId": "",
+  "editedMessageId": "",
+  "isEdited": false,
+  "isDeleted": false
+ },
+ {
+  "type": "outgoing",
+  "idMessage": "1767727866832",
+  "timestamp": 1767727868,
+  "typeMessage": "extendedTextMessage",
+  "chatId": "***",
+  "textMessage": "Message text",
+  "extendedTextMessage": {
+   "text": "Message text",
    "description": "",
    "title": "",
    "previewType": "None",
