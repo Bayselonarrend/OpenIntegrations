@@ -1,4 +1,4 @@
 ﻿    Token  = "001.3501506236.091...";
-    FileID = "U3PpmtkcVw2G3gbNQfwhJm695bb1121bd";
+    FileID = "WX4eQGm8XPm6LeTKNvzZ3G695cf2081bd";
 
     Result = OPI_VKTeams.GetFileInformation(Token, FileID);

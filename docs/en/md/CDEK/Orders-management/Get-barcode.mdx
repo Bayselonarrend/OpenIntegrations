@@ -35,8 +35,8 @@ Method at API documentation: [Receiving barcode CP for the order](https://api-do
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc2MjA0OTEsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID  = "327556a0-7034-4ffa-9ce6-cbdc8073fd92";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc3MDI2NTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "d1ba1259-e692-408e-8fb7-9315399f92f5";
 
     Result = OPI_CDEK.GetBarcode(Token, UUID, , True); // Server response with a URL
 ```
@@ -71,10 +71,10 @@ Method at API documentation: [Receiving barcode CP for the order](https://api-do
 ```json title="Result"
 {
  "entity": {
-  "uuid": "55cd0c25-caf8-4c69-b990-dd9505b757e8",
+  "uuid": "3d9afb6c-4ac6-48ed-8d1e-bd151f6de382",
   "orders": [
    {
-    "order_uuid": "b4321466-ae48-4d98-af68-a2cf2ef2fbb7"
+    "order_uuid": "8969dc56-4158-41a5-bc1d-39a0deeb3099"
    }
   ],
   "copy_count": 1,
@@ -84,15 +84,15 @@ Method at API documentation: [Receiving barcode CP for the order](https://api-do
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-01-06T05:42:51+00:00"
+    "date_time": "2026-01-06T14:28:11+00:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "07235d45-e0a2-4858-a2af-fec6e971bc9c",
+   "request_uuid": "52d9edfd-09db-4589-bf09-f6ce213546d2",
    "type": "CREATE",
-   "date_time": "2026-01-06T05:42:51+00:00",
+   "date_time": "2026-01-06T14:28:11+00:00",
    "state": "ACCEPTED"
   }
  ],

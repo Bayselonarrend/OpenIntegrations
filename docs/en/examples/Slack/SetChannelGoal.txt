@@ -1,5 +1,5 @@
 ﻿    Token   = "xoxb-6965308400114-696804637...";
-    Channel = "C0A6ML14CGK";
+    Channel = "C0A71GA0Y66";
     Purpose = "TestGoal";
 
     Result = OPI_Slack.SetChannelGoal(Token, Channel, Purpose);

@@ -31,8 +31,8 @@ Method at API documentation: [Update an order](https://api-docs.cdek.ru/36989543
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc2MjA0OTEsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID  = "e85cdd6e-7ea3-4728-be32-14fe34bcbc69";
+    Token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc3MDI2NTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "3db27065-465c-4df9-9745-ba68d3b0ded3";
 
     OrderDescription = New Structure("comment", "NewComment");
 
@@ -48,7 +48,7 @@ Method at API documentation: [Update an order](https://api-docs.cdek.ru/36989543
             
             oint cdek UpdateOrder \
              --token "***" \
-             --uuid "349bb5f0-4c0c-4f3e-8042-5a1c5c52e74d" \
+             --uuid "736aef31-7f81-46b3-b545-805dd763d79d" \
              --order "{'comment':'NewComment'}" \
              --testapi "***"
         ```
@@ -60,7 +60,7 @@ Method at API documentation: [Update an order](https://api-docs.cdek.ru/36989543
             
             oint cdek UpdateOrder ^
              --token "***" ^
-             --uuid "349bb5f0-4c0c-4f3e-8042-5a1c5c52e74d" ^
+             --uuid "736aef31-7f81-46b3-b545-805dd763d79d" ^
              --order "{'comment':'NewComment'}" ^
              --testapi "***"
         ```
@@ -71,13 +71,13 @@ Method at API documentation: [Update an order](https://api-docs.cdek.ru/36989543
 ```json title="Result"
 {
  "entity": {
-  "uuid": "b4321466-ae48-4d98-af68-a2cf2ef2fbb7"
+  "uuid": "8969dc56-4158-41a5-bc1d-39a0deeb3099"
  },
  "requests": [
   {
-   "request_uuid": "a6bd239c-7250-4f46-9e2c-f5883105fdae",
+   "request_uuid": "670489f2-4921-4590-958f-da1be86e9a72",
    "type": "UPDATE",
-   "date_time": "2026-01-06T05:43:17+00:00",
+   "date_time": "2026-01-06T14:28:36+00:00",
    "state": "ACCEPTED"
   }
  ],
