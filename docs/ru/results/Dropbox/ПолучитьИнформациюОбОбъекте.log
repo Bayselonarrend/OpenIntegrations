@@ -3,10 +3,10 @@
  "name": "pic.png",
  "path_lower": "/new/pic.png",
  "path_display": "/New/pic.png",
- "id": "id:kJU6-a-pT48AAAAAAABlVw",
+ "id": "id:kJU6-a-pT48AAAAAAABl5g",
  "client_modified": "***",
- "server_modified": "2026-01-06T04:20:39Z",
- "rev": "647b07f880fadbd841553",
+ "server_modified": "2026-01-06T12:30:17Z",
+ "rev": "647b7568ea1b4bd841553",
  "size": 2114023,
  "is_downloadable": true,
  "content_hash": "0f3b18c255b0f252bd326cacc04c15c3aa57bd6b8234adb65aa7bb2987a65492"
