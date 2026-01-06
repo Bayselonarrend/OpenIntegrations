@@ -31,9 +31,9 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc2MjA0OTEsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc3MDI2NTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
 
-    НомерЗаказа = "5ddadc8b-8b6b-44cf-b88d-db938d4b8169";
+    НомерЗаказа = "d6100745-0639-4374-97dd-fcd4dc56c9b8";
     Результат   = OPI_CDEK.ПолучитьЗаказПоНомеру(Токен, НомерЗаказа, Истина, Истина);
 ```
     
@@ -44,7 +44,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьЗаказПоНомеру \
               --token "***" \
-              --number "a10bd4ee-6b90-48c9-82dc-5db24d27662f" \
+              --number "26403e0f-ed44-4d46-8766-5ba0f44ae073" \
               --internal true \
               --testapi "***"
         ```
@@ -54,7 +54,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьЗаказПоНомеру ^
               --token "***" ^
-              --number "a10bd4ee-6b90-48c9-82dc-5db24d27662f" ^
+              --number "26403e0f-ed44-4d46-8766-5ba0f44ae073" ^
               --internal true ^
               --testapi "***"
         ```
@@ -65,12 +65,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "cf724bcc-dbfd-4c04-9b24-f37c8b15ad3a",
+  "uuid": "adbad632-8032-4f05-9763-f845b2405484",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1106860209",
-  "number": "da18379a-24d0-459b-a01e-82c8fcd58b7b",
+  "cdek_number": "1106860253",
+  "number": "17e453a6-5261-4121-b230-89cb5102c682",
   "tariff_code": 139,
   "comment": "Новый заказ",
   "items_cost_currency": "RUB",
@@ -140,16 +140,6 @@ import TabItem from '@theme/TabItem';
   },
   "services": [
    {
-    "code": "SECURE_PACKAGE_A2",
-    "parameter": "10",
-    "sum": 500,
-    "total_sum": 600,
-    "discount_percent": 0,
-    "discount_sum": 0,
-    "vat_rate": 20,
-    "vat_sum": 100
-   },
-   {
     "code": "INSURANCE",
     "parameter": "600.00",
     "sum": 4.5,
@@ -158,12 +148,22 @@ import TabItem from '@theme/TabItem';
     "discount_sum": 0,
     "vat_rate": 20,
     "vat_sum": 0.9
+   },
+   {
+    "code": "SECURE_PACKAGE_A2",
+    "parameter": "10",
+    "sum": 500,
+    "total_sum": 600,
+    "discount_percent": 0,
+    "discount_sum": 0,
+    "vat_rate": 20,
+    "vat_sum": 100
    }
   ],
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001522761",
+    "barcode": "000001522805",
     "weight": 4000,
     "length": 10,
     "width": "***",
@@ -189,21 +189,21 @@ import TabItem from '@theme/TabItem';
       "cost": 300
      }
     ],
-    "package_id": "1542b50c-c22d-4950-9ced-8cea1714b4d9"
+    "package_id": "2092afe2-6e35-4daa-8086-5bdd42d8f06b"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-01-06T04:31:16+00:00",
+    "date_time": "2026-01-06T22:39:56+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-01-06T04:31:15+00:00",
+    "date_time": "2026-01-06T22:39:54+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }

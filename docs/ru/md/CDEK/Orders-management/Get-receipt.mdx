@@ -35,8 +35,8 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc2MjA0OTEsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJhcGktdmVyc2lvbjoxLjEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
-    UUID  = "815cee9c-0414-4779-ba47-7e4ba273df35";
+    Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3Njc3MDI2NTksImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJzb2xpZC1hZGRyZ...";
+    UUID  = "e104e10a-80df-4c9c-a22d-071cd666b99a";
 
     Результат = OPI_CDEK.ПолучитьКвитанцию(Токен, UUID, , Истина); // Ответ сервера с ссылкой
 ```
@@ -71,10 +71,10 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "84573dfd-df5a-416d-ba5e-ff1992d51212",
+  "uuid": "02c17618-c88d-405a-af9d-5cb2f88fe016",
   "orders": [
    {
-    "order_uuid": "cf724bcc-dbfd-4c04-9b24-f37c8b15ad3a"
+    "order_uuid": "adbad632-8032-4f05-9763-f845b2405484"
    }
   ],
   "copy_count": 1,
@@ -83,15 +83,15 @@ import TabItem from '@theme/TabItem';
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-01-06T04:31:40+00:00"
+    "date_time": "2026-01-06T22:40:19+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "cf83e1e5-138a-4987-ad3a-3044eb416431",
+   "request_uuid": "d523410c-d5b0-4e6b-a3ea-744445240e62",
    "type": "CREATE",
-   "date_time": "2026-01-06T04:31:40+00:00",
+   "date_time": "2026-01-06T22:40:19+03:00",
    "state": "ACCEPTED"
   }
  ],

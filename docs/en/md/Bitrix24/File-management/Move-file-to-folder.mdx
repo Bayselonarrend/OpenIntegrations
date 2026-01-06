@@ -31,17 +31,17 @@ Method at API documentation: [disk.file.moveto](https://dev.1c-bitrix.ru/rest_he
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    FolderID = "49508";
-    FileID   = "49500";
+    FolderID = "50048";
+    FileID   = "50040";
 
     URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Result = OPI_Bitrix24.MoveFileToFolder(URL, FileID, FolderID);
 
-    FolderID = "49510";
+    FolderID = "50050";
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "b3bd5b69006e9f06006b12e400000001000...";
+    Token = "bafe5c69006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.MoveFileToFolder(URL, FileID, FolderID, Token);
 ```
@@ -53,8 +53,8 @@ Method at API documentation: [disk.file.moveto](https://dev.1c-bitrix.ru/rest_he
         ```bash
             oint bitrix24 MoveFileToFolder \
              --url "b24-ar17wx.bitrix24.by" \
-             --fileid 49716 \
-             --folderid 49726 \
+             --fileid 49986 \
+             --folderid 49996 \
              --token "***"
         ```
     </TabItem>
@@ -63,8 +63,8 @@ Method at API documentation: [disk.file.moveto](https://dev.1c-bitrix.ru/rest_he
         ```batch
             oint bitrix24 MoveFileToFolder ^
              --url "b24-ar17wx.bitrix24.by" ^
-             --fileid 49716 ^
-             --folderid 49726 ^
+             --fileid 49986 ^
+             --folderid 49996 ^
              --token "***"
         ```
     </TabItem>
@@ -74,33 +74,33 @@ Method at API documentation: [disk.file.moveto](https://dev.1c-bitrix.ru/rest_he
 ```json title="Result"
 {
  "result": {
-  "ID": "49878",
+  "ID": "50148",
   "NAME": "New file name.jpg",
   "CODE": null,
   "STORAGE_ID": "3",
   "TYPE": "file",
-  "PARENT_ID": 49888,
+  "PARENT_ID": 50158,
   "DELETED_TYPE": "0",
   "GLOBAL_CONTENT_VERSION": "1",
-  "FILE_ID": "33926",
+  "FILE_ID": "34116",
   "SIZE": "805189",
-  "CREATE_TIME": "2026-01-06T05:35:43+00:00",
-  "UPDATE_TIME": "2026-01-06T05:36:10+00:00",
-  "DELETE_TIME": "2026-01-06T05:36:09+00:00",
+  "CREATE_TIME": "2026-01-06T14:20:51+00:00",
+  "UPDATE_TIME": "2026-01-06T14:21:17+00:00",
+  "DELETE_TIME": "2026-01-06T14:21:16+00:00",
   "CREATED_BY": "1",
   "UPDATED_BY": "1",
   "DELETED_BY": "1",
-  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=e5ac5c69006e9f06006b12e4000000010000071feff3d75bc02e8be4a12950d514c7a2&token=disk%7CaWQ9NDk4NzgmXz02bmN0dWtrY1JxOXlvWVA5NTF2c3NjOTRnQ2tPemN3cg%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5EazROemdtWHowMmJtTjBkV3RyWTFKeE9YbHZXVkE1TlRGMmMzTmpPVFJuUTJ0UGVtTjNjZz09fGU1YWM1YzY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3MWZlZmYzZDc1YmMwMmU4YmU0YTEyOTUwZDUxNGM3YTIi.Abn9MoYoXrWf0OV2CK2eygv3DiG3FsAs8isyFb5tIcs%3D",
+  "DOWNLOAD_URL": "https://b24-ar17wx.bitrix24.by/rest/download.json?auth=f1275d69006e9f06006b12e40000000100000700d4c784b853d7dc8415d8cad417d1fd&token=disk%7CaWQ9NTAxNDgmXz04RUJwTTFQNW1uVzhEUEhDZ3ozVFoxQWJzRXlyRDRTcg%3D%3D%7CImRvd25sb2FkfGRpc2t8YVdROU5UQXhORGdtWHowNFJVSndUVEZRTlcxdVZ6aEVVRWhEWjNvelZGb3hRV0p6UlhseVJEUlRjZz09fGYxMjc1ZDY5MDA2ZTlmMDYwMDZiMTJlNDAwMDAwMDAxMDAwMDA3MDBkNGM3ODRiODUzZDdkYzg0MTVkOGNhZDQxN2QxZmQi.IMVgs%2FpqhbGCzy1S1Rya13imU2sROIqQauXvxwH0AVI%3D",
   "DETAIL_URL": "https://b24-ar17wx.bitrix24.by/docs/file/New catalog/New subfolder/New file name.jpg"
  },
  "time": {
-  "start": 1767677777,
-  "finish": 1767677777.87188,
-  "duration": 0.871884107589722,
+  "start": 1767709284,
+  "finish": 1767709284.88085,
+  "duration": 0.880850076675415,
   "processing": 0,
-  "date_start": "2026-01-06T05:36:17+00:00",
-  "date_finish": "2026-01-06T05:36:17+00:00",
-  "operating_reset_at": 1767678377,
+  "date_start": "2026-01-06T14:21:24+00:00",
+  "date_finish": "2026-01-06T14:21:24+00:00",
+  "operating_reset_at": 1767709884,
   "operating": 0
  }
 }

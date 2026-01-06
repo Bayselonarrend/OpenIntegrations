@@ -27,10 +27,10 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "ya29.a0Aa7pCA9eJTeR8V9Fb04d79YIrrhFld6DWll5KQbiOhRecTSKl4C78d_5r62vfftqw25WFf_amIF9p7olHu-HWsfErzXHb0JjbHK4ttecMEHdWqnQhaIkHWllv...";
-    Event = "gado4dlbar39uj2io1gqfsf9h0";
+    Token = "ya29.a0Aa7pCA_GKuTstHik6bj1MJWZFLq6Rw5mQEZ6UpvNp9rgAbC-k5fpzhJPU_c4cEvVXwDo6GAXMYcBuPpzfZoPNP2pKbXWwL-bwnzotcuHaeGL9ZoSxPM95kRPm...";
+    Event = "nfvagukkh3e3juj875j87q06r4";
 
-    SourceCalendar = "12c69698653bd6057b445328a998a2ed2db9dcfa0b2b9633324726f3c2399af9@group.calendar.google.com";
+    SourceCalendar = "820a0b504e49dc31b520578e608186d90ce12d730bb5b46b48f372df1a63cd0b@group.calendar.google.com";
     TargetCalendar = "bayselonarrend@gmail.com";
 
     Result = OPI_GoogleCalendar.MoveEvent(Token, SourceCalendar, TargetCalendar, Event);
@@ -43,9 +43,9 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint gcalendar MoveEvent \
              --token "***" \
-             --from "f3e7208ec8ac220aac5924761ae2e35d3ddaf127f4d43599f30d98c63df492e5@group.calendar.google.com" \
+             --from "5dc505b0e5364916bc52d29666d983f134053dd851988631da000b3b7cddda42@group.calendar.google.com" \
              --to "bayselonarrend@gmail.com" \
-             --event "78hlm0lb9dbvpqvq8pobq4b42g"
+             --event "uhb3kui7vagj0m5ap5qtro6lbs"
         ```
     </TabItem>
   
@@ -53,9 +53,9 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint gcalendar MoveEvent ^
              --token "***" ^
-             --from "f3e7208ec8ac220aac5924761ae2e35d3ddaf127f4d43599f30d98c63df492e5@group.calendar.google.com" ^
+             --from "5dc505b0e5364916bc52d29666d983f134053dd851988631da000b3b7cddda42@group.calendar.google.com" ^
              --to "bayselonarrend@gmail.com" ^
-             --event "78hlm0lb9dbvpqvq8pobq4b42g"
+             --event "uhb3kui7vagj0m5ap5qtro6lbs"
         ```
     </TabItem>
 </Tabs>
@@ -64,12 +64,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Result"
 {
  "kind": "calendar#event",
- "etag": "\"3535354474457406\"",
- "id": "9mbd0ejlkhcgn9ntakv75udru8",
+ "etag": "\"3535417424035870\"",
+ "id": "mm4dvlnceblpc5s2h8c4uo6hv0",
  "status": "cancelled",
- "htmlLink": "https://www.google.com/calendar/event?eid=OW1iZDBlamxraGNnbjludGFrdjc1dWRydTggY2IzNDRlN2VkMTY0M2FlMGI3N2Y1NjkwMjMyYThiYzk4MDIyODZiNTU3NzU2N2Q5MWMxMTg3MDQ3M2ViY2YzOEBn",
- "created": "2026-01-06T05:27:15Z",
- "updated": "2026-01-06T05:27:17.228Z",
+ "htmlLink": "https://www.google.com/calendar/event?eid=bW00ZHZsbmNlYmxwYzVzMmg4YzR1bzZodjAgNzRkYjA1MTRiN2Y2ZWQ3MzdiY2VkNWQyZTI0MDlhODQ5MjkwNWUzZTBkM2ViMTM4ZWRlMjQ4MDJkMjVjNjk1M0Bn",
+ "created": "2026-01-06T14:11:50Z",
+ "updated": "2026-01-06T14:11:52.017Z",
  "summary": "New event",
  "description": "New event description",
  "location": "InOffice",
@@ -80,14 +80,14 @@ import TabItem from '@theme/TabItem';
   "email": "bayselonarrend@gmail.com"
  },
  "start": {
-  "dateTime": "2026-01-06T05:27:15+00:00",
+  "dateTime": "2026-01-06T14:11:50+00:00",
   "timeZone": "Europe/Moscow"
  },
  "end": {
-  "dateTime": "2026-01-06T06:27:15+00:00",
+  "dateTime": "2026-01-06T15:11:50+00:00",
   "timeZone": "Europe/Moscow"
  },
- "iCalUID": "9mbd0ejlkhcgn9ntakv75udru8@google.com",
+ "iCalUID": "mm4dvlnceblpc5s2h8c4uo6hv0@google.com",
  "sequence": 0,
  "reminders": {
   "useDefault": true

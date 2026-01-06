@@ -1,5 +1,5 @@
 ﻿    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    ChatID = "3816";
+    ChatID = "3956";
 
     UserIDs = New Array;
     UserIDs.Add(10);
@@ -8,8 +8,8 @@
     Result = OPI_Bitrix24.AddUsersToChat(URL, ChatID, UserIDs);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "b3bd5b69006e9f06006b12e400000001000...";
-    ChatID = "3818";
+    Token  = "bafe5c69006e9f06006b12e400000001000...";
+    ChatID = "3958";
     UserID = 10;
 
     Result = OPI_Bitrix24.AddUsersToChat(URL, ChatID, UserID, True, Token);

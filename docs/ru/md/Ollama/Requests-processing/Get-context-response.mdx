@@ -71,7 +71,7 @@ import TabItem from '@theme/TabItem';
               --url "https://hut.openintegrations.dev/ollama" \
               --model "tinyllama" \
               --msgs "[{'role':'user','content':'Hello!'}]" \
-              --options "{'options':{'seed':'555','temperature':'10'}}" \
+              --options "{'options':{'seed':'101','temperature':'0'}}" \
               --headers "{'Authorization':'***'}"
         ```
     </TabItem>
@@ -84,7 +84,7 @@ import TabItem from '@theme/TabItem';
               --url "https://hut.openintegrations.dev/ollama" ^
               --model "tinyllama" ^
               --msgs "[{'role':'user','content':'Hello!'}]" ^
-              --options "{'options':{'seed':'555','temperature':'10'}}" ^
+              --options "{'options':{'seed':'101','temperature':'0'}}" ^
               --headers "{'Authorization':'***'}"
         ```
     </TabItem>
@@ -94,18 +94,18 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "model": "tinyllama",
- "created_at": "2026-01-06T04:42:37.401059575Z",
+ "created_at": "2026-01-06T19:51:53.281044985Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in the late 1980s or early 1990s, although its development was ongoing. As of today, the latest version (16.2) is still under development and is not generally available yet. However, some modules have already been released for testing and evaluation purposes."
+  "content": "The first version of 1C:Enterprise was released in 2005. The product has been continuously updated since then with various improvements, updates, and bug fixes to meet the evolving needs of its customers and users. Recently, the latest version of 1C:Enterprise (19.6) has been released."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 11889291932,
- "load_duration": 15443443,
- "prompt_eval_count": 177,
- "prompt_eval_duration": 1885634718,
- "eval_count": 76,
- "eval_duration": 9980858044
+ "total_duration": 15581160405,
+ "load_duration": 20370632,
+ "prompt_eval_count": 248,
+ "prompt_eval_duration": 8410367790,
+ "eval_count": 73,
+ "eval_duration": 7142918126
 }
 ```

@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
     СтруктураПолей.Вставить("OPPORTUNITY", 50000);
 
     URL      = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    IDСделки = "5904";
+    IDСделки = "5984";
 
     Результат = OPI_Bitrix24.ИзменитьСделку(URL, IDСделки, СтруктураПолей);
 
@@ -45,8 +45,8 @@ import TabItem from '@theme/TabItem';
     СтруктураПолей.Вставить("BEGINDATE", "2025-01-01");
 
     URL      = "b24-ar17wx.bitrix24.by";
-    Токен    = "b3bd5b69006e9f06006b12e400000001000...";
-    IDСделки = "5906";
+    Токен    = "bafe5c69006e9f06006b12e400000001000...";
+    IDСделки = "5986";
 
     Результат = OPI_Bitrix24.ИзменитьСделку(URL, IDСделки, СтруктураПолей, Токен);
 ```
@@ -60,7 +60,7 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьСделку \
               --url "b24-ar17wx.bitrix24.by" \
-              --deal 5946 \
+              --deal 6034 \
               --fields "{'TITLE':'Будущая сделка в RUB','CURRENCY_ID':'RUB','OPPORTUNITY':'50000','BEGINDATE':'2025-01-01'}" \
               --token "***"
         ```
@@ -72,7 +72,7 @@ import TabItem from '@theme/TabItem';
             
             oint bitrix24 ИзменитьСделку ^
               --url "b24-ar17wx.bitrix24.by" ^
-              --deal 5946 ^
+              --deal 6034 ^
               --fields "{'TITLE':'Будущая сделка в RUB','CURRENCY_ID':'RUB','OPPORTUNITY':'50000','BEGINDATE':'2025-01-01'}" ^
               --token "***"
         ```
@@ -84,14 +84,14 @@ import TabItem from '@theme/TabItem';
 {
  "result": true,
  "time": {
-  "start": 1767673684,
-  "finish": 1767673684.20442,
-  "duration": 0.204416990280151,
+  "start": 1767728219,
+  "finish": 1767728219.70302,
+  "duration": 0.703022956848144,
   "processing": 0,
-  "date_start": "2026-01-06T04:28:04+00:00",
-  "date_finish": "2026-01-06T04:28:04+00:00",
-  "operating_reset_at": 1767674284,
-  "operating": 0.169186115264893
+  "date_start": "2026-01-06T22:36:59+03:00",
+  "date_finish": "2026-01-06T22:36:59+03:00",
+  "operating_reset_at": 1767728819,
+  "operating": 0.142351865768433
  }
 }
 ```
