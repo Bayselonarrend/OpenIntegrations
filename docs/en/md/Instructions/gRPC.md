@@ -7,7 +7,7 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 <img src={require('../../static/img/APIs/GRPC.png').default} width='64px' />
 
-# GRPC
+# gRPC
 
 This section covers the library for working with gRPC in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
