@@ -58,6 +58,7 @@
   <commonModules>CommonModule.OPI_Airtable</commonModules>
   <commonModules>CommonModule.OPI_Bitrix24</commonModules>
   <commonModules>CommonModule.OPI_CDEK</commonModules>
+  <commonModules>CommonModule.OPI_ClickHouse</commonModules>
   <commonModules>CommonModule.OPI_Dropbox</commonModules>
   <commonModules>CommonModule.OPI_FTP</commonModules>
   <commonModules>CommonModule.OPI_GoogleCalendar</commonModules>
