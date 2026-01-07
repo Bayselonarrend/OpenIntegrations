@@ -647,8 +647,13 @@ Procedure WriteParameter(Parameter, Value) Export
 
 EndProcedure
 
-Procedure ProcessTestingResult(Val Result, Val Method, Val Library, Val Option = "",
-    AddParam1                                                                  = Undefined, AddParam2 = Undefined, AddParam3 = Undefined) Export
+Procedure ProcessTestingResult(Val Result
+    , Val Method
+    , Val Library
+    , Val Option = ""
+    , AddParam1  = Undefined
+    , AddParam2  = Undefined
+    , AddParam3  = Undefined) Export
 
     // BSLLS:UnusedLocalVariable-off
     //
@@ -13602,6 +13607,8 @@ Function ReplaceSecretsRecursively(Value, Val Indicators, Val Hide = False)
 
             EndIf;
 
+            TruncateString(Value_, 100);
+
             Value_.Insert(CurrentKey, CurrentValue);
 
         EndDo;
@@ -13614,11 +13621,7 @@ Function ReplaceSecretsRecursively(Value, Val Indicators, Val Hide = False)
             Value_ = Value;
         EndIf;
 
-        If TypeOf(Value_) = Type("String") Then
-            If StrLen(Value_) > 100 Then
-                Value_    = Left(Value_, 100) + "...";
-            EndIf;
-        EndIf;
+        TruncateString(Value_, 100);
 
     EndIf;
 
@@ -13789,6 +13792,16 @@ Procedure WriteLogFile(Val Data, Val Method, Val Library, Val Overwrite = True)
     Except
         Message("Failed to write log file!: " + ErrorDescription());
     EndTry;
+
+EndProcedure
+
+Procedure TruncateString(Value, Val SymbolCount)
+
+    If TypeOf(Value) = Type("String") Then
+        If StrLen(Value) > SymbolCount Then
+            Value    = Left(Value, SymbolCount) + "...";
+        EndIf;
+    EndIf;
 
 EndProcedure
 
