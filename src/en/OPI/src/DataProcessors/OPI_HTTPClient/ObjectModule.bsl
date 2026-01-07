@@ -513,7 +513,7 @@ Function UseURLEncoding(Val Flag) Export
 EndFunction
 
 // Max attempts !NOCLI
-// Sets the maximum number of retry attempts for request submission on code 5**
+// Sets the maximum number of retry attempts for sending a request in case of 5** codes or client internal errors
 //
 // Note:
 // By default: `0`
@@ -2153,22 +2153,65 @@ Function ExecuteMethod(Val RedirectCount = 0, Val ErrorCount = 0, Val Forced = F
         Return Error("ExecuteMethod: the request was not generated before execution");
     EndIf;
 
-    If ValueIsFilled(RequestOutputFile) Then
+    Try
 
-        LogText = StrTemplate("ExecuteMethod: sending request with response written to file %1", RequestOutputFile);
+        If ValueIsFilled(RequestOutputFile) Then
+
+            LogText = StrTemplate("ExecuteMethod: sending request with response written to file %1", RequestOutputFile);
+            AddLog(LogText);
+
+            Response = Connection.CallHTTPMethod(RequestMethod, Request, RequestOutputFile);
+
+        Else
+
+            AddLog("ExecuteMethod: sending request");
+            Response = Connection.CallHTTPMethod(RequestMethod, Request);
+
+        EndIf;
+
+        LogText = StrTemplate("ExecuteMethod: response received, code %1", Response.StatusCode);
         AddLog(LogText);
 
-        Response = Connection.CallHTTPMethod(RequestMethod, Request, RequestOutputFile);
+    Except
+
+        LogText = StrTemplate("ExecuteMethod: internal error - %1", ErrorDescription());
+        AddLog(LogText);
+
+        Response = Undefined;
+
+    EndTry;
+
+    NeedsResend = CheckResendNecessity(RedirectCount, ErrorCount);
+
+    If NeedsResend Then
+
+        If OPI_Tools.IsOneScript() Then
+            FormRequest();
+        EndIf;
+
+        ExecuteMethod(RedirectCount, ErrorCount, Forced);
 
     Else
 
-        AddLog("ExecuteMethod: sending request");
-        Response = Connection.CallHTTPMethod(RequestMethod, Request);
+        If Response = Undefined Then
+
+            ResponseStatusCode = 0;
+            ResponseHeaders    = New Map;
+
+        Else
+
+            ResponseStatusCode = Response.StatusCode;
+            ResponseHeaders    = Response.Headers;
+
+        EndIf;
 
     EndIf;
 
-    LogText = StrTemplate("ExecuteMethod: response received, code %1", Response.StatusCode);
-    AddLog(LogText);
+    Return ThisObject;
+
+EndFunction
+
+Function CheckResendNecessity(RedirectCount, ErrorCount)
 
     If ThisIsRedirection(Response) Then
 
@@ -2180,10 +2223,10 @@ Function ExecuteMethod(Val RedirectCount = 0, Val ErrorCount = 0, Val Forced = F
 
             If ValueIsFilled(URL) Then
 
-                NewRedirectCount = RedirectCount + 1;
+                RedirectCount = RedirectCount + 1;
 
                 LogText = StrTemplate("ExecuteMethod: redirection %1/%2, moving to %3"
-                    , NewRedirectCount
+                    , RedirectCount
                     , MaximumNumberOfRedirects
                     , URL);
 
@@ -2193,55 +2236,57 @@ Function ExecuteMethod(Val RedirectCount = 0, Val ErrorCount = 0, Val Forced = F
 
                 Request.ResourceAddress = RequestAdress;
 
-                If OPI_Tools.IsOneScript() Then
-                    FormRequest();
-                EndIf;
-
-                ExecuteMethod(NewRedirectCount, ErrorCount, Forced);
+                Return True;
 
             Else
 
                 LogText = "ExecuteMethod: redirection, Location missing, termination";
                 AddLog(LogText);
+                Return False;
 
             EndIf;
 
         Else
             AddLog("ExecuteMethod: maximum number of redirections reached, termination");
+            Return False;
         EndIf;
 
     EndIf;
 
-    If ThisIsServerError(Response) Then
+    ThisIsServerError = ThisIsServerError(Response);
+    IsInternalError   = IsInternalError(Response);
 
-        MaximumRetryCount = GetSetting("MaxAttempts");
+    If ThisIsServerError Or IsInternalError Then
+
+        If ThisIsServerError Then
+            RepeatTemplate = "ExecuteMethod: server error, retry attempt %1/%2";
+        Else
+            RepeatTemplate = "ExecuteMethod: client internal error, retrying %1/%2";
+        EndIf;
+
+        CompletionTemplate = "ExecuteMethod: maximum number of errors reached, terminating";
+        MaximumRetryCount  = GetSetting("MaxAttempts");
 
         If ErrorCount < MaximumRetryCount Then
 
-            NewErrorCount = ErrorCount + 1;
+            ErrorCount = ErrorCount + 1;
 
-            LogText = StrTemplate("ExecuteMethod: server error, retry attempt %1/%2"
-                , NewErrorCount
+            LogText = StrTemplate(RepeatTemplate
+                , ErrorCount
                 , MaximumRetryCount);
 
             AddLog(LogText);
 
-            If OPI_Tools.IsOneScript() Then
-                FormRequest();
-            EndIf;
-
-            ExecuteMethod(RedirectCount, NewErrorCount, Forced);
+            Return True;
 
         Else
-            AddLog("ExecuteMethod: maximum number of server errors reached, termination");
+            AddLog(CompletionTemplate);
+            Return False;
         EndIf;
 
     EndIf;
 
-    ResponseStatusCode = Response.StatusCode;
-    ResponseHeaders    = Response.Headers;
-
-    Return ThisObject;
+    Return False;
 
 EndFunction
 
@@ -2281,6 +2326,10 @@ EndFunction
 
 Function ThisIsRedirection(Val Response)
 
+    If Response = Undefined Then
+        Return False;
+    EndIf;
+
     Redirection  = 300;
     RequestError = 400;
 
@@ -2294,11 +2343,23 @@ EndFunction
 
 Function ThisIsServerError(Val Response)
 
+    If Response = Undefined Then
+        Return False;
+    EndIf;
+
     ServerError = 500;
 
     ThisIsServerError = Response.StatusCode >= ServerError;
 
     Return ThisIsServerError;
+
+EndFunction
+
+Function IsInternalError(Val Response)
+
+    IsInternalError = Response = Undefined;
+
+    Return IsInternalError;
 
 EndFunction
 
