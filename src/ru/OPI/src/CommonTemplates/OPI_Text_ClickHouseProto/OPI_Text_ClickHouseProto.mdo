@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mdclass:CommonTemplate xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="08ef3dc1-77e4-405d-b2eb-1badf6faa3f9">
+  <name>OPI_Text_ClickHouseProto</name>
+  <synonym>
+    <key>ru</key>
+    <value>Текст Proto-файла для ClickHouse (ОПИ)</value>
+  </synonym>
+  <templateType>TextDocument</templateType>
+</mdclass:CommonTemplate>
