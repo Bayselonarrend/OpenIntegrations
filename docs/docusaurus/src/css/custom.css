@@ -413,6 +413,7 @@ li > a.menu__link {
 .VKTeams a::before,
 .YandexDisk a::before,
 .HTTP a::before,
+.ClickHouse a::before,
 .HTTP a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
@@ -552,6 +553,10 @@ li > a.menu__link {
 
 .HTTP > div > a::before{
   content: url(../../static/img/APIs/small/HTTP.png);
+}
+
+.ClickHouse > div > a::before{
+  content: url(../../static/img/APIs/small/ClickHouse.png);
 }
 
 .HTTP > div > a::before{
