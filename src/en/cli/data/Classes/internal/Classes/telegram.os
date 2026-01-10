@@ -48,7 +48,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetUpdates";
     NewLine.SearchMethod  = "GETUPDATES";
     NewLine.Parameter     = "--timeout";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-m";
     NewLine.Description     = "Waiting time for new events (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data retrieval and settings";
 
@@ -151,7 +151,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendTextMessage";
     NewLine.SearchMethod  = "SENDTEXTMESSAGE";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Message text";
     NewLine.Region      = "Data sending";
 
@@ -218,7 +218,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendImage";
     NewLine.SearchMethod  = "SENDIMAGE";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Message text";
     NewLine.Region      = "Data sending";
 
@@ -251,7 +251,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendImage";
     NewLine.SearchMethod  = "SENDIMAGE";
     NewLine.Parameter     = "--parsemode";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Text processing type (HTML, Markdown, MarkdownV2) (optional, def. val.. - Markdown)";
     NewLine.Region      = "Data sending";
 
@@ -285,7 +285,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendVideo";
     NewLine.SearchMethod  = "SENDVIDEO";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Message text";
     NewLine.Region      = "Data sending";
 
@@ -352,7 +352,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendAudio";
     NewLine.SearchMethod  = "SENDAUDIO";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Message text";
     NewLine.Region      = "Data sending";
 
@@ -419,7 +419,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendDocument";
     NewLine.SearchMethod  = "SENDDOCUMENT";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Message text";
     NewLine.Region      = "Data sending";
 
@@ -497,7 +497,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendGif";
     NewLine.SearchMethod  = "SENDGIF";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Message text";
     NewLine.Region      = "Data sending";
 
@@ -571,7 +571,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendMediaGroup";
     NewLine.SearchMethod  = "SENDMEDIAGROUP";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Message text";
     NewLine.Region      = "Data sending";
 
@@ -649,7 +649,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendLocation";
     NewLine.SearchMethod  = "SENDLOCATION";
     NewLine.Parameter     = "--long";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Geographic longitude";
     NewLine.Region      = "Data sending";
 
@@ -828,7 +828,7 @@ Function GetComposition() Export
     NewLine.Method        = "ForwardMessage";
     NewLine.SearchMethod  = "FORWARDMESSAGE";
     NewLine.Parameter     = "--to";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-o";
     NewLine.Description     = "Target chat ID or ChatID*TopicID";
     NewLine.Region      = "Data sending";
 
@@ -952,7 +952,7 @@ Function GetComposition() Export
     NewLine.Method        = "ReplaceMessageText";
     NewLine.SearchMethod  = "REPLACEMESSAGETEXT";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "New message text";
     NewLine.Region      = "Data sending";
 
@@ -1008,7 +1008,7 @@ Function GetComposition() Export
     NewLine.Method        = "ReplaceMessageCaption";
     NewLine.SearchMethod  = "REPLACEMESSAGECAPTION";
     NewLine.Parameter     = "--caption";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-n";
     NewLine.Description     = "New message description";
     NewLine.Region      = "Data sending";
 
@@ -1155,7 +1155,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateInvitationLink";
     NewLine.SearchMethod  = "CREATEINVITATIONLINK";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-i";
     NewLine.Description     = "Invitation title (optional, def. val.. - Empty value)";
     NewLine.Region      = "Administration";
 
@@ -1314,7 +1314,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateForumTopic";
     NewLine.SearchMethod  = "CREATEFORUMTOPIC";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Topic title";
     NewLine.Region      = "Forum topic management";
 
@@ -1359,7 +1359,7 @@ Function GetComposition() Export
     NewLine.Method        = "EditForumTopic";
     NewLine.SearchMethod  = "EDITFORUMTOPIC";
     NewLine.Parameter     = "--topic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Topic ID";
     NewLine.Region      = "Forum topic management";
 
@@ -1370,7 +1370,7 @@ Function GetComposition() Export
     NewLine.Method        = "EditForumTopic";
     NewLine.SearchMethod  = "EDITFORUMTOPIC";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "New title (optional, def. val.. - Empty value)";
     NewLine.Region      = "Forum topic management";
 
@@ -1415,7 +1415,7 @@ Function GetComposition() Export
     NewLine.Method        = "CloseForumTopic";
     NewLine.SearchMethod  = "CLOSEFORUMTOPIC";
     NewLine.Parameter     = "--topic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Topic ID (optional, def. val.. - Empty value)";
     NewLine.Region      = "Forum topic management";
 
@@ -1449,7 +1449,7 @@ Function GetComposition() Export
     NewLine.Method        = "OpenForumTopic";
     NewLine.SearchMethod  = "OPENFORUMTOPIC";
     NewLine.Parameter     = "--topic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Topic ID (optional, def. val.. - Empty value)";
     NewLine.Region      = "Forum topic management";
 
@@ -1483,7 +1483,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeleteForumTopic";
     NewLine.SearchMethod  = "DELETEFORUMTOPIC";
     NewLine.Parameter     = "--topic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Topic ID";
     NewLine.Region      = "Forum topic management";
 
@@ -1563,7 +1563,7 @@ Function GetComposition() Export
     NewLine.Method        = "EditMainForumTopicName";
     NewLine.SearchMethod  = "EDITMAINFORUMTOPICNAME";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "New main topic name";
     NewLine.Region      = "Forum topic management";
 
@@ -1597,7 +1597,7 @@ Function GetComposition() Export
     NewLine.Method        = "ClearTopicPinnedMessagesList";
     NewLine.SearchMethod  = "CLEARTOPICPINNEDMESSAGESLIST";
     NewLine.Parameter     = "--topic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Topic ID. Main if not filled (optional, def. val.. - Empty value)";
     NewLine.Region      = "Forum topic management";
 

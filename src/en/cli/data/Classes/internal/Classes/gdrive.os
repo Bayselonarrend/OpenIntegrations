@@ -316,7 +316,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateFolder";
     NewLine.SearchMethod  = "CREATEFOLDER";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Folder name";
     NewLine.Region      = "File and directory management";
 
@@ -361,7 +361,7 @@ Function GetComposition() Export
     NewLine.Method        = "DownloadFile";
     NewLine.SearchMethod  = "DOWNLOADFILE";
     NewLine.Parameter     = "--out";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-u";
     NewLine.Description     = "File save path (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and directory management";
 
@@ -395,7 +395,7 @@ Function GetComposition() Export
     NewLine.Method        = "CopyObject";
     NewLine.SearchMethod  = "COPYOBJECT";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "New object name (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and directory management";
 
@@ -451,7 +451,7 @@ Function GetComposition() Export
     NewLine.Method        = "UpdateFile";
     NewLine.SearchMethod  = "UPDATEFILE";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "New file name (if necessary) (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and directory management";
 
@@ -520,7 +520,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateComment";
     NewLine.SearchMethod  = "CREATECOMMENT";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Comment text";
     NewLine.Region      = "Comment management";
 

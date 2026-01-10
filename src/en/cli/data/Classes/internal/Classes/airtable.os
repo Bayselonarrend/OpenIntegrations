@@ -108,7 +108,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateDatabase";
     NewLine.SearchMethod  = "CREATEDATABASE";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "New base name";
     NewLine.Region      = "Working with databases";
 
@@ -119,7 +119,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateDatabase";
     NewLine.SearchMethod  = "CREATEDATABASE";
     NewLine.Parameter     = "--tablesdata";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-b";
     NewLine.Description     = "Table description: Key > name, Value > array of fields";
     NewLine.Region      = "Working with databases";
 
@@ -165,7 +165,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateTable";
     NewLine.SearchMethod  = "CREATETABLE";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "New table name";
     NewLine.Region      = "Table management";
 
@@ -221,7 +221,7 @@ Function GetComposition() Export
     NewLine.Method        = "ModifyTable";
     NewLine.SearchMethod  = "MODIFYTABLE";
     NewLine.Parameter     = "--table";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Table identifier";
     NewLine.Region      = "Table management";
 
@@ -232,7 +232,7 @@ Function GetComposition() Export
     NewLine.Method        = "ModifyTable";
     NewLine.SearchMethod  = "MODIFYTABLE";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-i";
     NewLine.Description     = "New name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Table management";
 
@@ -279,7 +279,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateField";
     NewLine.SearchMethod  = "CREATEFIELD";
     NewLine.Parameter     = "--table";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Table identifier";
     NewLine.Region      = "Working with fields";
 
@@ -324,7 +324,7 @@ Function GetComposition() Export
     NewLine.Method        = "ModifyField";
     NewLine.SearchMethod  = "MODIFYFIELD";
     NewLine.Parameter     = "--table";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Table identifier";
     NewLine.Region      = "Working with fields";
 
@@ -346,7 +346,7 @@ Function GetComposition() Export
     NewLine.Method        = "ModifyField";
     NewLine.SearchMethod  = "MODIFYFIELD";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-i";
     NewLine.Description     = "New name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Working with fields";
 
@@ -498,7 +498,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetListOfRecords";
     NewLine.SearchMethod  = "GETLISTOFRECORDS";
     NewLine.Parameter     = "--table";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Table identifier";
     NewLine.Region      = "Record management";
 
@@ -543,7 +543,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetRecord";
     NewLine.SearchMethod  = "GETRECORD";
     NewLine.Parameter     = "--table";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Table identifier";
     NewLine.Region      = "Record management";
 
@@ -588,7 +588,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreatePosts";
     NewLine.SearchMethod  = "CREATEPOSTS";
     NewLine.Parameter     = "--table";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Table identifier";
     NewLine.Region      = "Record management";
 
@@ -633,7 +633,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeleteRecords";
     NewLine.SearchMethod  = "DELETERECORDS";
     NewLine.Parameter     = "--table";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Table identifier";
     NewLine.Region      = "Record management";
 
@@ -678,7 +678,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetComments";
     NewLine.SearchMethod  = "GETCOMMENTS";
     NewLine.Parameter     = "--table";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Table identifier";
     NewLine.Region      = "Comment management";
 
@@ -734,7 +734,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateComment";
     NewLine.SearchMethod  = "CREATECOMMENT";
     NewLine.Parameter     = "--table";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Table identifier";
     NewLine.Region      = "Comment management";
 
@@ -756,7 +756,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateComment";
     NewLine.SearchMethod  = "CREATECOMMENT";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Comment text";
     NewLine.Region      = "Comment management";
 
@@ -790,7 +790,7 @@ Function GetComposition() Export
     NewLine.Method        = "EditComment";
     NewLine.SearchMethod  = "EDITCOMMENT";
     NewLine.Parameter     = "--table";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Table identifier";
     NewLine.Region      = "Comment management";
 
@@ -823,7 +823,7 @@ Function GetComposition() Export
     NewLine.Method        = "EditComment";
     NewLine.SearchMethod  = "EDITCOMMENT";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "New comment text";
     NewLine.Region      = "Comment management";
 
@@ -857,7 +857,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeleteComment";
     NewLine.SearchMethod  = "DELETECOMMENT";
     NewLine.Parameter     = "--table";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Table identifier";
     NewLine.Region      = "Comment management";
 

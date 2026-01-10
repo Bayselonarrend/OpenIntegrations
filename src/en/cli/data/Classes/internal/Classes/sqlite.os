@@ -160,7 +160,7 @@ Function GetComposition() Export
     NewLine.Method        = "AddTableColumn";
     NewLine.SearchMethod  = "ADDTABLECOLUMN";
     NewLine.Parameter     = "--type";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Column data type";
     NewLine.Region      = "Orm";
 
@@ -273,7 +273,7 @@ Function GetComposition() Export
     NewLine.Method        = "AddRecords";
     NewLine.SearchMethod  = "ADDRECORDS";
     NewLine.Parameter     = "--trn";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-n";
     NewLine.Description     = "True > adding records to transactions with rollback on error (optional, def. val.. - True)";
     NewLine.Region      = "Orm";
 
@@ -318,7 +318,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetRecords";
     NewLine.SearchMethod  = "GETRECORDS";
     NewLine.Parameter     = "--filter";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Filters array. See GetRecordsFilterStrucutre (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 

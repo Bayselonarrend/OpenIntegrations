@@ -105,7 +105,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendMessage";
     NewLine.SearchMethod  = "SENDMESSAGE";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Message text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
@@ -162,7 +162,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendEphemeralMessage";
     NewLine.SearchMethod  = "SENDEPHEMERALMESSAGE";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Message text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
@@ -229,7 +229,7 @@ Function GetComposition() Export
     NewLine.Method        = "EditMessage";
     NewLine.SearchMethod  = "EDITMESSAGE";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "New message text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
@@ -319,7 +319,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetDelayedMessageList";
     NewLine.SearchMethod  = "GETDELAYEDMESSAGELIST";
     NewLine.Parameter     = "--cursor";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
@@ -398,7 +398,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetMessageReplyList";
     NewLine.SearchMethod  = "GETMESSAGEREPLYLIST";
     NewLine.Parameter     = "--cursor";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message management";
 
@@ -466,7 +466,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetChannelUserList";
     NewLine.SearchMethod  = "GETCHANNELUSERLIST";
     NewLine.Parameter     = "--cursor";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val.. - Empty value)";
     NewLine.Region      = "Channel management";
 
@@ -489,7 +489,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateChannel";
     NewLine.SearchMethod  = "CREATECHANNEL";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Channel name";
     NewLine.Region      = "Channel management";
 
@@ -717,7 +717,7 @@ Function GetComposition() Export
     NewLine.Method        = "SetChannelTopic";
     NewLine.SearchMethod  = "SETCHANNELTOPIC";
     NewLine.Parameter     = "--theme";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-h";
     NewLine.Description     = "Channel topic";
     NewLine.Region      = "Channel management";
 
@@ -785,7 +785,7 @@ Function GetComposition() Export
     NewLine.Method        = "RenameChannel";
     NewLine.SearchMethod  = "RENAMECHANNEL";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "New channel name";
     NewLine.Region      = "Channel management";
 
@@ -899,7 +899,7 @@ Function GetComposition() Export
     NewLine.Method        = "UploadFile";
     NewLine.SearchMethod  = "UPLOADFILE";
     NewLine.Parameter     = "--filename";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "File name with extension";
     NewLine.Region      = "File management";
 
@@ -910,7 +910,7 @@ Function GetComposition() Export
     NewLine.Method        = "UploadFile";
     NewLine.SearchMethod  = "UPLOADFILE";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-i";
     NewLine.Description     = "File name in Slack";
     NewLine.Region      = "File management";
 
@@ -1047,7 +1047,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetExternalFileList";
     NewLine.SearchMethod  = "GETEXTERNALFILELIST";
     NewLine.Parameter     = "--cursor";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Pointer from the previous request, if the result rows > 100 (optional, def. val.. - Empty value)";
     NewLine.Region      = "External files management";
 
@@ -1104,7 +1104,7 @@ Function GetComposition() Export
     NewLine.Method        = "AddExternalFile";
     NewLine.SearchMethod  = "ADDEXTERNALFILE";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "File title for Slack";
     NewLine.Region      = "External files management";
 

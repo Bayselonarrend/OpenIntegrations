@@ -723,7 +723,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendTextMessage";
     NewLine.SearchMethod  = "SENDTEXTMESSAGE";
     NewLine.Parameter     = "--typing";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Time to show the typing indicator before sending (in ms.) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
@@ -768,7 +768,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendFile";
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--filename";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Name of the file with the extension";
     NewLine.Region      = "Message sending";
 
@@ -779,7 +779,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendFile";
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--caption";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Message text below the file (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
@@ -801,7 +801,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendFile";
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--ttype";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-y";
     NewLine.Description     = "Typing type: text, recording, video, image, file (optional, def. val.. - file)";
     NewLine.Region      = "Message sending";
 
@@ -857,7 +857,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendFileByURL";
     NewLine.SearchMethod  = "SENDFILEBYURL";
     NewLine.Parameter     = "--caption";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Message text below the file (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
@@ -879,7 +879,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendFileByURL";
     NewLine.SearchMethod  = "SENDFILEBYURL";
     NewLine.Parameter     = "--ttype";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-y";
     NewLine.Description     = "Typing type: text, recording, video, image, file (optional, def. val.. - file)";
     NewLine.Region      = "Message sending";
 
@@ -970,7 +970,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetChatMessageHistory";
     NewLine.SearchMethod  = "GETCHATMESSAGEHISTORY";
     NewLine.Parameter     = "--count";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Number of messages to receive (optional, def. val.. - 100)";
     NewLine.Region      = "Message history";
 

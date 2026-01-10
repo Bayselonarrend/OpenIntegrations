@@ -631,7 +631,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendFile";
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--filename";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Name of the file with the extension";
     NewLine.Region      = "Message sending";
 
@@ -642,7 +642,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendFile";
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--caption";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Message text below the file (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
@@ -709,7 +709,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendFileByURL";
     NewLine.SearchMethod  = "SENDFILEBYURL";
     NewLine.Parameter     = "--caption";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Message text below the file (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
@@ -866,7 +866,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendContact";
     NewLine.SearchMethod  = "SENDCONTACT";
     NewLine.Parameter     = "--contact";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Contact description. See GetContactDescription";
     NewLine.Region      = "Message sending";
 
@@ -1091,7 +1091,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetLocationDescription";
     NewLine.SearchMethod  = "GETLOCATIONDESCRIPTION";
     NewLine.Parameter     = "--long";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-g";
     NewLine.Description     = "Geographic longitude";
     NewLine.Region      = "Message sending";
 
@@ -1285,7 +1285,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetChatHistory";
     NewLine.SearchMethod  = "GETCHATHISTORY";
     NewLine.Parameter     = "--count";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Number of messages to receive (optional, def. val.. - 100)";
     NewLine.Region      = "Message logs";
 

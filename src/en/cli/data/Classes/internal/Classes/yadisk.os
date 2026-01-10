@@ -219,7 +219,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateObjectCopy";
     NewLine.SearchMethod  = "CREATEOBJECTCOPY";
     NewLine.Parameter     = "--to";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-o";
     NewLine.Description     = "Destination path for the copy";
     NewLine.Region      = "File and folder management";
 
@@ -369,7 +369,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetFilesList";
     NewLine.SearchMethod  = "GETFILESLIST";
     NewLine.Parameter     = "--type";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Filter by file type (optional, def. val.. - Empty value)";
     NewLine.Region      = "File and folder management";
 
@@ -414,7 +414,7 @@ Function GetComposition() Export
     NewLine.Method        = "MoveObject";
     NewLine.SearchMethod  = "MOVEOBJECT";
     NewLine.Parameter     = "--to";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-o";
     NewLine.Description     = "Destination path for moving";
     NewLine.Region      = "File and folder management";
 
@@ -515,7 +515,7 @@ Function GetComposition() Export
     NewLine.Method        = "UploadFileInParts";
     NewLine.SearchMethod  = "UPLOADFILEINPARTS";
     NewLine.Parameter     = "--psize";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Part size when uploading (optional, def. val.. - 33554432)";
     NewLine.Region      = "File and folder management";
 
@@ -764,7 +764,7 @@ Function GetComposition() Export
     NewLine.Method        = "SavePublicObjectToDisk";
     NewLine.SearchMethod  = "SAVEPUBLICOBJECTTODISK";
     NewLine.Parameter     = "--to";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-o";
     NewLine.Description     = "File save path (optional, def. val.. - Empty value)";
     NewLine.Region      = "Manage public access";
 

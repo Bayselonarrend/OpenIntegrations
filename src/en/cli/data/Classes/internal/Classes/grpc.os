@@ -80,7 +80,7 @@ Function GetComposition() Export
     NewLine.Method        = "ExecuteMethod";
     NewLine.SearchMethod  = "EXECUTEMETHOD";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
@@ -306,7 +306,7 @@ Function GetComposition() Export
     NewLine.Method        = "ProcessServerStream";
     NewLine.SearchMethod  = "PROCESSSERVERSTREAM";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Streaming";
 
@@ -317,7 +317,7 @@ Function GetComposition() Export
     NewLine.Method        = "ProcessServerStream";
     NewLine.SearchMethod  = "PROCESSSERVERSTREAM";
     NewLine.Parameter     = "--count";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Maximum messages to retrieve. Unlimited by default (optional, def. val.. - Empty value)";
     NewLine.Region      = "Streaming";
 
@@ -384,7 +384,7 @@ Function GetComposition() Export
     NewLine.Method        = "ProcessClientStream";
     NewLine.SearchMethod  = "PROCESSCLIENTSTREAM";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Streaming";
 
@@ -451,7 +451,7 @@ Function GetComposition() Export
     NewLine.Method        = "ProcessBidirectionalStream";
     NewLine.SearchMethod  = "PROCESSBIDIRECTIONALSTREAM";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Streaming";
 
@@ -462,7 +462,7 @@ Function GetComposition() Export
     NewLine.Method        = "ProcessBidirectionalStream";
     NewLine.SearchMethod  = "PROCESSBIDIRECTIONALSTREAM";
     NewLine.Parameter     = "--cnt";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Continue receiving after processing the exchange order (optional, def. val.. - True)";
     NewLine.Region      = "Streaming";
 

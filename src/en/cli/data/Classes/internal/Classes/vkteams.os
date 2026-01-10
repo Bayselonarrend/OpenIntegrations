@@ -59,7 +59,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetEvents";
     NewLine.SearchMethod  = "GETEVENTS";
     NewLine.Parameter     = "--timeout";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-m";
     NewLine.Description     = "Connection hold time for Long Polling (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
@@ -116,7 +116,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendTextMessage";
     NewLine.SearchMethod  = "SENDTEXTMESSAGE";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Message text";
     NewLine.Region      = "Message sending";
 
@@ -194,7 +194,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendFile";
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "File caption (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
@@ -205,7 +205,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendFile";
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--filename";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Displayed file name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
@@ -227,7 +227,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendFile";
     NewLine.SearchMethod  = "SENDFILE";
     NewLine.Parameter     = "--type";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-y";
     NewLine.Description     = "Content type for sending (optional, def. val.. - image/jpeg)";
     NewLine.Region      = "Message sending";
 
@@ -272,7 +272,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendVoice";
     NewLine.SearchMethod  = "SENDVOICE";
     NewLine.Parameter     = "--type";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Audio type: aac, ogg or m4a (optional, def. val.. - m4a)";
     NewLine.Region      = "Message sending";
 
@@ -339,7 +339,7 @@ Function GetComposition() Export
     NewLine.Method        = "EditMessageText";
     NewLine.SearchMethod  = "EDITMESSAGETEXT";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "New message text";
     NewLine.Region      = "Message sending";
 
@@ -429,7 +429,7 @@ Function GetComposition() Export
     NewLine.Method        = "ResendFile";
     NewLine.SearchMethod  = "RESENDFILE";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "File caption (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
@@ -530,7 +530,7 @@ Function GetComposition() Export
     NewLine.Method        = "ForwardMessage";
     NewLine.SearchMethod  = "FORWARDMESSAGE";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Additional message text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
@@ -632,7 +632,7 @@ Function GetComposition() Export
     NewLine.Method        = "AnswerButtonEvent";
     NewLine.SearchMethod  = "ANSWERBUTTONEVENT";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Answer text (optional, def. val.. - Empty value)";
     NewLine.Region      = "Message sending";
 
@@ -847,7 +847,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetChatMembers";
     NewLine.SearchMethod  = "GETCHATMEMBERS";
     NewLine.Parameter     = "--cursor";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Next page marker from the previous request (optional, def. val.. - Empty value)";
     NewLine.Region      = "Chat management";
 
@@ -1074,7 +1074,7 @@ Function GetComposition() Export
     NewLine.Method        = "SetChatTitle";
     NewLine.SearchMethod  = "SETCHATTITLE";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Title text";
     NewLine.Region      = "Chat management";
 
@@ -1108,7 +1108,7 @@ Function GetComposition() Export
     NewLine.Method        = "SetChatDescription";
     NewLine.SearchMethod  = "SETCHATDESCRIPTION";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Description text";
     NewLine.Region      = "Chat management";
 
@@ -1142,7 +1142,7 @@ Function GetComposition() Export
     NewLine.Method        = "SetChatRules";
     NewLine.SearchMethod  = "SETCHATRULES";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Rules Text";
     NewLine.Region      = "Chat management";
 

@@ -47,7 +47,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreatePage";
     NewLine.SearchMethod  = "CREATEPAGE";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Page title";
     NewLine.Region      = "Page management";
 
@@ -234,7 +234,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateDatabase";
     NewLine.SearchMethod  = "CREATEDATABASE";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Database title";
     NewLine.Region      = "Database management";
 
@@ -245,7 +245,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateDatabase";
     NewLine.SearchMethod  = "CREATEDATABASE";
     NewLine.Parameter     = "--props";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Database properties (optional, def. val.. - Empty value)";
     NewLine.Region      = "Database management";
 
@@ -328,7 +328,7 @@ Function GetComposition() Export
     NewLine.Method        = "EditDatabaseProperties";
     NewLine.SearchMethod  = "EDITDATABASEPROPERTIES";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "New database title (optional, def. val.. - Empty value)";
     NewLine.Region      = "Database management";
 
@@ -384,7 +384,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateBlock";
     NewLine.SearchMethod  = "CREATEBLOCK";
     NewLine.Parameter     = "--prev";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Block ID after which to insert the new one (optional, def. val.. - Empty value)";
     NewLine.Region      = "Blocks management";
 

@@ -125,7 +125,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetProxySettings";
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--pass";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Authorization password, if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "Client methods";
 

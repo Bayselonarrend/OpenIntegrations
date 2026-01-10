@@ -59,7 +59,7 @@ Function GetComposition() Export
     NewLine.Method        = "ExecuteCommand";
     NewLine.SearchMethod  = "EXECUTECOMMAND";
     NewLine.Parameter     = "--comm";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-m";
     NewLine.Description     = "Command text";
     NewLine.Region      = "Common methods";
 
@@ -105,7 +105,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetSettingsLoginPassword";
     NewLine.SearchMethod  = "GETSETTINGSLOGINPASSWORD";
     NewLine.Parameter     = "--pass";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "SSH user password (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
@@ -161,7 +161,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetSettingsPrivateKey";
     NewLine.SearchMethod  = "GETSETTINGSPRIVATEKEY";
     NewLine.Parameter     = "--pub";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-b";
     NewLine.Description     = "Path to public key file (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
@@ -172,7 +172,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetSettingsPrivateKey";
     NewLine.SearchMethod  = "GETSETTINGSPRIVATEKEY";
     NewLine.Parameter     = "--pass";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Private key password (passphrase) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
@@ -262,7 +262,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetProxySettings";
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--pass";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Authorization password, if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
