@@ -81,7 +81,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetPermanentToken";
     NewLine.SearchMethod  = "GETPERMANENTTOKEN";
     NewLine.Parameter     = "--user";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "User ID";
     NewLine.Region      = "Authorization";
 
@@ -126,7 +126,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeletePermanentToken";
     NewLine.SearchMethod  = "DELETEPERMANENTTOKEN";
     NewLine.Parameter     = "--user";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "User ID";
     NewLine.Region      = "Authorization";
 
@@ -182,7 +182,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateLaunch";
     NewLine.SearchMethod  = "CREATELAUNCH";
     NewLine.Parameter     = "--params";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Launch parameters. See GetLaunchStructure";
     NewLine.Region      = "Results management";
 
@@ -227,7 +227,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateItem";
     NewLine.SearchMethod  = "CREATEITEM";
     NewLine.Parameter     = "--params";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Item parameters. See GetItemStructure";
     NewLine.Region      = "Results management";
 
@@ -238,7 +238,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateItem";
     NewLine.SearchMethod  = "CREATEITEM";
     NewLine.Parameter     = "--parent";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-n";
     NewLine.Description     = "ID of the parent item, if necessary (optional, def. val.. - Empty value)";
     NewLine.Region      = "Results management";
 
@@ -294,7 +294,7 @@ Function GetComposition() Export
     NewLine.Method        = "FinishLaunch";
     NewLine.SearchMethod  = "FINISHLAUNCH";
     NewLine.Parameter     = "--params";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Completion parameters. See GetLaunchCompletionStructure";
     NewLine.Region      = "Results management";
 
@@ -350,7 +350,7 @@ Function GetComposition() Export
     NewLine.Method        = "FinishItem";
     NewLine.SearchMethod  = "FINISHITEM";
     NewLine.Parameter     = "--params";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Completion parameters. See GetItemCompletionStructure";
     NewLine.Region      = "Results management";
 
@@ -509,7 +509,7 @@ Function GetComposition() Export
     NewLine.Method        = "WriteLog";
     NewLine.SearchMethod  = "WRITELOG";
     NewLine.Parameter     = "--params";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Execution information. See GetLogStructure";
     NewLine.Region      = "Log recording";
 
@@ -554,7 +554,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetLogStructure";
     NewLine.SearchMethod  = "GETLOGSTRUCTURE";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Log text information (optional, def. val.. - Empty value)";
     NewLine.Region      = "Log recording";
 
@@ -565,7 +565,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetLogStructure";
     NewLine.SearchMethod  = "GETLOGSTRUCTURE";
     NewLine.Parameter     = "--level";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-v";
     NewLine.Description     = "Information level: error, warn, info, debug, trace, fatal, unknown (optional, def. val.. - info)";
     NewLine.Region      = "Log recording";
 
