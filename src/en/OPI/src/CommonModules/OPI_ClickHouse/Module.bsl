@@ -400,7 +400,7 @@ Function ExecuteRequestViaHTTP(Val Connection, Val Request, Val Session)
         Try
 
             ResponseObject = HTTPClient.ReturnResponse(, True);
-            ResponseCode            = ResponseObject.StatusCode;
+            ResponseCode   = ResponseObject.StatusCode;
 
             Response = New Map();
             Response.Insert("status", ResponseObject.StatusCode);

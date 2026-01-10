@@ -1,0 +1,33 @@
+﻿---
+sidebar_position: 6
+description: Get session settings and other functions to work with ClickHouse in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ClickHouse]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get session settings
+ Forms the session settings structure for executing the request
+
+
+
+`Function GetSessionSettings(Val SessionID = Undefined, Val CheckSession = Undefined, Val Timeout = 60) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | SessionID | --id | String | &#x2716; | Session ID. A new unique identifier if not specified (a new session will be created) |
+  | CheckSession | --check | Boolean | &#x2716; | Check for session existence. True when ID is specified and false when not, unless otherwise specified |
+  | Timeout | --timeout | Number | &#x2716; | Session lifetime in seconds |
+
+  
+  Returns:  Structure Of KeyAndValue - Session settings structure
+
+
+
+
+ 
+
+
+
+
