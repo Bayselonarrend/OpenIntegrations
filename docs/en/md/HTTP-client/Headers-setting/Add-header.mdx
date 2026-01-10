@@ -12,12 +12,13 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Function AddHeader(Val Name, Val Value) Export`
+`Function AddHeader(Val Name, Val Value, Val IgnoreEmpty = False) Export`
 
   | Parameter | CLI option | Type | Required | Description |
   |-|-|-|-|-|
   | Name | - | String | &#x2714; | Header key |
   | Value | - | String | &#x2714; | Header value |
+  | IgnoreEmpty | - | Boolean | &#x2716; | Do not add header if empty value is passed |
 
   
   Returns:  DataProcessorObject.OPI_HTTPClient - This processor object
