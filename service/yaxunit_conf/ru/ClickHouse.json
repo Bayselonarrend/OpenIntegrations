@@ -1,0 +1,29 @@
+{
+  "reportPath": "./test_results/ClickHouse.report",
+  "closeAfterTests": true,
+  "filter": {
+    "extensions": null,
+    "modules": null,
+    "suites": null,
+    "tags": null,
+    "contexts": null,
+    "paths": null,
+    "tests": [
+"OPI_Тесты.CH_ОсновныеМетоды",
+"OPI_Тесты.CH_GRPC"
+    ]
+  },
+  "settings": {
+    "ВТранзакции": false
+  },
+  "reportFormat": "dumpjson",
+  "showReport": false,
+  "logging": {
+    "file": "",
+    "console": false,
+    "enable": null,
+    "level": "info"
+  },
+  "exitCode": "./test_results/ClickHouse.code",
+  "ПодключатьВнешниеКомпоненты": true
+}

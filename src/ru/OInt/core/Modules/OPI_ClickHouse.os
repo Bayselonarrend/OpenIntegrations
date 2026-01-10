@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_ClickHouse.os
+// OneScript: ./OInt/core/Modules/OPI_ClickHouse.os
 // Lib: ClickHouse
 // CLI: clickhouse
 // Keywords: clickhouse
@@ -400,7 +400,7 @@
         Попытка
 
             ОтветОбъект = HTTPКлиент.ВернутьОтвет(, Истина);
-            ОтветКод             = ОтветОбъект.КодСостояния;
+            ОтветКод    = ОтветОбъект.КодСостояния;
 
             Ответ = Новый Соответствие();
             Ответ.Вставить("status", ОтветОбъект.КодСостояния);
@@ -677,3 +677,39 @@
 #КонецОбласти
 
 #КонецОбласти
+
+#Region Alternate
+
+Function ExecuteRequest(Val Connection, Val Request, Val Session = Undefined) Export
+	Return ВыполнитьЗапрос(Connection, Request, Session);
+EndFunction
+
+Function GetHTTPConnectionSettings(Val Address, Val Authorization = Undefined, Val AdditionalHeaders = Undefined) Export
+	Return ПолучитьНастройкиСоединенияHTTP(Address, Authorization, AdditionalHeaders);
+EndFunction
+
+Function GetGRPCConnectionSettings(Val Address, Val Authorization = Undefined, Val Meta = Undefined, Val Tls = Undefined) Export
+	Return ПолучитьНастройкиСоединенияGRPC(Address, Authorization, Meta, Tls);
+EndFunction
+
+Function GetRequestSettings(Val Text, Val Database = Undefined, Val RequestID = Undefined, Val Data = Undefined, Val ResponseFormat = "JSON", Val ExternalTables = Undefined, Val Settings = Undefined) Export
+	Return ПолучитьНастройкиЗапроса(Text, Database, RequestID, Data, ResponseFormat, ExternalTables, Settings);
+EndFunction
+
+Function GetExternalTableStructure(Val Name, Val ColoumnsStruct, Val Data = Undefined, Val DataFormat = Undefined) Export
+	Return ПолучитьСтруктуруВнешнейТаблицы(Name, ColoumnsStruct, Data, DataFormat);
+EndFunction
+
+Function GetSessionSettings(Val SessionID = Undefined, Val CheckSession = Undefined, Val Timeout = 60) Export
+	Return ПолучитьНастройкиСессии(SessionID, CheckSession, Timeout);
+EndFunction
+
+Function CreateGRPCConnection(Val ConnectionSettings) Export
+	Return ОткрытьСоединениеGRPC(ConnectionSettings);
+EndFunction
+
+Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
+	Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
+EndFunction
+
+#EndRegion

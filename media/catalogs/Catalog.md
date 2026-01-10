@@ -3,6 +3,7 @@
 |![Airtable](../Airtable.png)| `Airtable`| airtable |
 |![Bitrix24](../Bitrix24.png)| `Bitrix24`| bitrix24, b24, bitrix |
 |![CDEK](../CDEK.png)| `CDEK`| cdek |
+|![ClickHouse (в разработке)](../default.png)| `ClickHouse (в разработке)`| clickhouse |
 |![Dropbox](../Dropbox.png)| `Dropbox`| dropbox |
 |![FTP](../FTP.png)| `FTP`| ftp, ftps |
 |![Google Calendar](../GoogleCalendar.png)| `Google Calendar`| google calendar, googlecalendar, gcalendar |
@@ -34,5 +35,4 @@
 |![VKTeams](../VKTeams.png)| `VKTeams`| vkteams, vk teams |
 |![Yandex Disk](../YandexDisk.png)| `Yandex Disk`| yandexdisk, yandex.disk, yandex disk, yandex drive, yadisk, ya disk |
 |![HTTP-client](../HTTP.png)| `HTTP-client`| http, https |
-|![ClickHouse (в разработке)](../default.png)| `ClickHouse (в разработке)`| clickhouse |
 |![HTTP-клиент](../HTTP.png)| `HTTP-клиент`| http, https |

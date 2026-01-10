@@ -35772,7 +35772,11 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     Authorization = New Structure(Login, Password);
 
-    Connection = OPI_ClickHouse.GetHTTPConnectionSettings(URL, Authorization);
+    Options = New Structure;
+    Options.Insert("url", URL);
+    Options.Insert("auth", Authorization);
+
+    Connection = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetHTTPConnectionSettings", Options);
 
     // Request (simple)
 
@@ -35788,8 +35792,15 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
     Request = OPI_ClickHouse.GetRequestSettings("DROP TABLE events"); // SKIP
     Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request); // SKIP
 
-    Request = OPI_ClickHouse.GetRequestSettings(QueryText);
-    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+    Options = New Structure;
+    Options.Insert("query", QueryText);
+
+    Request = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("req", Request);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
     Process(Result, "ClickHouse", "ExecuteRequest", "Simple"); // SKIP
 
@@ -35830,8 +35841,19 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
     Database  = "default";
     RequestID = String(New UUID());
 
-    Request = OPI_ClickHouse.GetRequestSettings(QueryText, Database, RequestID, Data, DataFormat);
-    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+    Options = New Structure;
+    Options.Insert("query", QueryText);
+    Options.Insert("db", Database);
+    Options.Insert("id", RequestID);
+    Options.Insert("data", Data);
+    Options.Insert("format", DataFormat);
+
+    Request = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("req", Request);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
     // END
 
@@ -35848,7 +35870,11 @@ Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
 
     Authorization = New Structure(Login, Password);
 
-    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Options = New Structure;
+    Options.Insert("url", URL);
+    Options.Insert("auth", Authorization);
+
+    ConnectionSettings = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetGRPCConnectionSettings", Options);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
 
     Process(Connection, "ClickHouse", "CreateGRPCConnection"); // SKIP
@@ -35864,8 +35890,15 @@ Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
     |) ENGINE = MergeTree()
     |ORDER BY (timestamp, id)";
 
-    Request = OPI_ClickHouse.GetRequestSettings(QueryText);
-    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+    Options = New Structure;
+    Options.Insert("query", QueryText);
+
+    Request = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("req", Request);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
     Process(Result, "ClickHouse", "CreateGRPCConnection", "Simple"); // SKIP
 
@@ -35906,8 +35939,19 @@ Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
     Database  = "default";
     RequestID = String(New UUID());
 
-    Request = OPI_ClickHouse.GetRequestSettings(QueryText, Database, RequestID, Data, DataFormat);
-    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+    Options = New Structure;
+    Options.Insert("query", QueryText);
+    Options.Insert("db", Database);
+    Options.Insert("id", RequestID);
+    Options.Insert("data", Data);
+    Options.Insert("format", DataFormat);
+
+    Request = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetRequestSettings", Options);
+    Options = New Structure;
+    Options.Insert("conn", Connection);
+    Options.Insert("req", Request);
+
+    Result = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "ExecuteRequest", Options);
 
     // END
 

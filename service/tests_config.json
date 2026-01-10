@@ -36,5 +36,6 @@
 "HTTPClient": true,
 "BuildCheck": true,
 "MongoDB": true,
-"GRPC": true
+"GRPC": true,
+"ClickHouse": true
 }

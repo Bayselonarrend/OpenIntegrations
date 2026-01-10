@@ -2,6 +2,7 @@
 "Airtable",
 "Bitrix24",
 "CDEK",
+"ClickHouse",
 "Dropbox",
 "FTP",
 "GoogleCalendar",
@@ -33,6 +34,5 @@
 "VKTeams",
 "YandexDisk",
 "HTTP",
-"ClickHouse",
 "HTTP"
 ]
