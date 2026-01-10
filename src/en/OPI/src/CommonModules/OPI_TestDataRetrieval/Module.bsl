@@ -166,6 +166,7 @@ Function GetTestingSectionMapping() Export
     Sections.Insert("OpenAI"         , 5);
     Sections.Insert("ReportPortal"   , 5);
     Sections.Insert("GRPC"           , 5);
+    Sections.Insert("ClickHouse"     , 5);
 
     Return Sections;
 
@@ -214,6 +215,7 @@ Function GetTestingSectionMappingGA() Export
     Sections.Insert("OpenAI"         , StandardDependencies);
     Sections.Insert("ReportPortal"   , StandardDependencies);
     Sections.Insert("GRPC"           , StandardDependencies);
+    Sections.Insert("ClickHouse"     , StandardDependencies);
 
     Return Sections;
 
@@ -257,6 +259,7 @@ Function GetTestTable() Export
     SFTP      = "SFTP";
     GreenMax  = "GreenMax";
     GRPC      = "GRPC";
+    CH        = "ClickHouse";
 
     TestTable = New ValueTable;
     TestTable.Columns.Add("Method");
@@ -444,6 +447,8 @@ Function GetTestTable() Export
     NewTest(TestTable, "GR_CommonMethods"                    , "Common methods"                  , GRPC);
     NewTest(TestTable, "GR_Introspection"                    , "Introspection"                   , GRPC);
     NewTest(TestTable, "GR_Streaming"                        , "Streaming"                       , GRPC);
+    NewTest(TestTable, "CH_CommonMethods"                    , "Common methods"                  , CH);
+    NewTest(TestTable, "CH_GRPC"                             , "GRPC"                            , CH);
 
     Return TestTable;
 
@@ -12950,6 +12955,20 @@ Function Check_GRPC_CompleteSend(Val Result, Val Option)
 
     Return Result;
 
+EndFunction
+
+Function Check_ClickHouse_ExecuteRequest(Val Result, Option)
+
+    If TypeOf(Result["body"]) = Type("BinaryData") Then
+        Result.Insert("body", GetStringFromBinaryData(Result["body"]));
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_CreateGRPCConnection(Val Result, Option)
+    Return Result;
 EndFunction
 
 #EndRegion

@@ -206,7 +206,7 @@ Function SetURL(Val URL) Export
 EndFunction
 
 // Set URL params !NOCLI
-// Sets a collection of URL parameters
+// Sets a collection of query parameters in the URL
 //
 // Parameters:
 // Value - Arbitrary - Structure or map of URL parameters - params
@@ -226,6 +226,51 @@ Function SetURLParams(Val Value) Export
         OPI_TypeConversion.GetKeyValueCollection(Value, ErrorText);
 
         RequestURLParams = OPI_Tools.CopyCollection(Value);
+
+        Return ЭтотОбъект;
+
+    Except
+        Return Error(DetailErrorDescription(ErrorInfo()));
+    EndTry;
+
+EndFunction
+
+// Add URL parameter !NOCLI
+// Adds a query parameter to the URL in the request
+//
+// Note:
+// The parameter value will be converted to a string
+//
+// Parameters:
+// Name - String - Request parameter key - key
+// Value - Arbitrary - Request parameter value - value
+// IgnoreEmpty - Boolean - Do not add parameter if empty value is passed - skipempty
+//
+// Returns:
+// DataProcessorObject.OPI_HTTPClient - This processor object
+Function AddURLParameter(Val Name, Val Value, Val IgnoreEmpty = False) Export
+
+    Try
+
+        If StopExecution() Then Return ЭтотОбъект; EndIf;
+
+        If Not ValueIsFilled(Name) Then
+            AddLog("AddURLParameter: Empty key passed - skipping");
+            Return ЭтотОбъект;
+        EndIf;
+
+        OPI_TypeConversion.GetBoolean(IgnoreEmpty);
+
+        If IgnoreEmpty And Not ValueIsFilled(String(Value)) Then
+            AddLog(StrTemplate("AddURLParameter: empty parameter ignored, key - %1", Name));
+            Return ЭтотОбъект;
+        EndIf;
+
+        OPI_TypeConversion.GetLine(Name);
+
+        AddLog(StrTemplate("AddURLParameter: adding parameter, key - %1", Name));
+
+        RequestURLParams.Insert(Name, Value);
 
         Return ЭтотОбъект;
 
@@ -951,17 +996,29 @@ EndFunction
 // FileName - String - File name with extension - filename
 // Data - BinaryData, String - File data to be written - data
 // DataType - String - MIME type of data - mime
+// IgnoreEmpty - Boolean - Do not add file if empty data is passed - skipempty
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
-Function AddMultipartFormDataFile(Val FieldName, Val FileName, Val Data, Val DataType = "") Export
+Function AddMultipartFormDataFile(Val FieldName
+    , Val FileName
+    , Val Data
+    , Val DataType = ""
+    , Val IgnoreEmpty = False) Export
 
     Try
 
         If StopExecution() Then Return ЭтотОбъект; EndIf;
         If Not Multipart Then Return Error("AddMultipartFile: Multipart record not initialized"); EndIf;
 
-        OPI_TypeConversion.GetBinaryData(Data);
+        OPI_TypeConversion.GetBinaryData(Data, True, True);
+        OPI_TypeConversion.GetBoolean(IgnoreEmpty);
+
+        If IgnoreEmpty And Data.Size = 0 Then
+            AddLog(StrTemplate("AddMultipartFormDataFile: empty file ignored, field %1", FieldName));
+            Return ЭтотОбъект;
+        EndIf;
+
         OPI_TypeConversion.GetLine(FieldName);
         OPI_TypeConversion.GetLine(FileName);
 
@@ -1150,18 +1207,27 @@ EndFunction
 // Parameters:
 // Name - String - Header key - header
 // Value - String - Header value - value
+// IgnoreEmpty - Boolean - Do not add header if empty value is passed - skipempty
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
-Function AddHeader(Val Name, Val Value) Export
+Function AddHeader(Val Name, Val Value, Val IgnoreEmpty = False) Export
 
     Try
 
         If StopExecution() Then Return ЭтотОбъект; EndIf;
+
+        If IgnoreEmpty And String(Value) = "" Then
+            AddLog(StrTemplate("AddHeader: empty header ignored, key %1", Name));
+            Return ЭтотОбъект;
+        EndIf;
+
         If Not ValueIsFilled(Value) Then Value = New Map; EndIf;
 
         OPI_TypeConversion.GetLine(Name);
         OPI_TypeConversion.GetLine(Value);
+        OPI_TypeConversion.GetBoolean(IgnoreEmpty);
+
 
         AddLog("AddHeader: header setting");
 
@@ -1172,6 +1238,7 @@ Function AddHeader(Val Name, Val Value) Export
     Except
         Return Error(DetailErrorDescription(ErrorInfo()));
     EndTry;
+
 EndFunction
 
 #EndRegion
@@ -3359,6 +3426,10 @@ Function УстановитьПараметрыURL(Val Значение) Export
 	Return SetURLParams(Значение);
 EndFunction
 
+Function ДобавитьПараметрURL(Val Имя, Val Значение, Val ИгнорироватьПустой = False) Export
+	Return AddURLParameter(Имя, Значение, ИгнорироватьПустой);
+EndFunction
+
 Function УстановитьФайлОтвета(Val Значение) Export
 	Return SetResponseFile(Значение);
 EndFunction
@@ -3431,8 +3502,8 @@ Function НачатьЗаписьТелаMultipart(ИспользоватьФа�
 	Return StartMultipartBody(ИспользоватьФайл, Вид);
 EndFunction
 
-Function ДобавитьФайлMultipartFormData(Val ИмяПоля, Val ИмяФайла, Val Данные, Val ТипДанных = "") Export
-	Return AddMultipartFormDataFile(ИмяПоля, ИмяФайла, Данные, ТипДанных);
+Function ДобавитьФайлMultipartFormData(Val ИмяПоля, Val ИмяФайла, Val Данные, Val ТипДанных = "", Val ИгнорироватьПустой = False) Export
+	Return AddMultipartFormDataFile(ИмяПоля, ИмяФайла, Данные, ТипДанных, ИгнорироватьПустой);
 EndFunction
 
 Function ДобавитьПолеMultipartFormData(Val ИмяПоля, Val Значение) Export
@@ -3447,8 +3518,8 @@ Function УстановитьЗаголовки(Val Значение, Val Пол
 	Return SetHeaders(Значение, ПолнаяЗамена);
 EndFunction
 
-Function ДобавитьЗаголовок(Val Имя, Val Значение) Export
-	Return AddHeader(Имя, Значение);
+Function ДобавитьЗаголовок(Val Имя, Val Значение, Val ИгнорироватьПустой = False) Export
+	Return AddHeader(Имя, Значение, ИгнорироватьПустой);
 EndFunction
 
 Function ДобавитьBasicАвторизацию(Val Пользователь, Val Пароль) Export

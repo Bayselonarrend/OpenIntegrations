@@ -3358,6 +3358,32 @@ EndProcedure
 
 #EndRegion
 
+#Region ClickHouse
+
+Procedure CH_CommonMethods() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Address" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_User"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Password", TestParameters);
+
+    ClickHouse_ExecuteRequest(TestParameters);
+
+EndProcedure
+
+Procedure CH_GRPC() Export
+
+    TestParameters = New Structure;
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_AddressGRPC", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_User"       , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Password"   , TestParameters);
+
+    ClickHouse_CreateGRPCConnection(TestParameters);
+
+EndProcedure
+
+#EndRegion
+
 #EndRegion
 
 #EndRegion
@@ -35728,6 +35754,164 @@ Procedure GRPC_CompleteSend(FunctionParameters)
     // END
 
     Process(Result, "GRPC", "CompleteSend");
+
+EndProcedure
+
+#EndRegion
+
+#Region ClickHouse
+
+Procedure ClickHouse_ExecuteRequest(FunctionParameters)
+
+    // Connection settings
+
+    URL = FunctionParameters["ClickHouse_Address"];
+
+    Login    = FunctionParameters["ClickHouse_User"];
+    Password = FunctionParameters["ClickHouse_Password"];
+
+    Authorization = New Structure(Login, Password);
+
+    Connection = OPI_ClickHouse.GetHTTPConnectionSettings(URL, Authorization);
+
+    // Request (simple)
+
+    QueryText = "CREATE TABLE events (
+    | id UInt64,
+    | timestamp DateTime,
+    | user_id UInt32,
+    | event_type String,
+    | payload String
+    |) ENGINE = MergeTree()
+    |ORDER BY (timestamp, id)";
+
+    Request = OPI_ClickHouse.GetRequestSettings("DROP TABLE events"); // SKIP
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request); // SKIP
+
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    Process(Result, "ClickHouse", "ExecuteRequest", "Simple"); // SKIP
+
+    // Request (with data)
+
+    QueryText = "INSERT INTO events FORMAT JSON";
+
+    DataFormat = "JSON";
+    DataArray  = New Array;
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+
+    Record1 = New Structure;
+    Record1.Insert("id"        , 1);
+    Record1.Insert("timestamp" , CurrentDate);
+    Record1.Insert("user_id"   , 100);
+    Record1.Insert("event_type", "click");
+    Record1.Insert("payload"   , "{}");
+
+    Record2 = New Structure;
+    Record2.Insert("id"        , 2);
+    Record2.Insert("timestamp" , CurrentDate);
+    Record2.Insert("user_id"   , 200);
+    Record2.Insert("event_type", "hover");
+    Record2.Insert("payload"   , "{}");
+
+    DataArray.Add(Record1);
+    DataArray.Add(Record2);
+
+    Meta = New Array;
+    Meta.Add(New Structure("name,type", "id"        , "UInt64"));
+    Meta.Add(New Structure("name,type", "timestamp" , "DateTime"));
+    Meta.Add(New Structure("name,type", "user_id"   , "UInt32"));
+    Meta.Add(New Structure("name,type", "event_type", "String"));
+    Meta.Add(New Structure("name,type", "payload"   , "String"));
+
+    Data      = New Structure("meta,data", Meta, DataArray);
+    Database  = "default";
+    RequestID = String(New UUID());
+
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText, Database, RequestID, Data, DataFormat);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    // END
+
+    Process(Result, "ClickHouse", "ExecuteRequest");
+
+EndProcedure
+
+Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
+
+    URL = FunctionParameters["ClickHouse_AddressGRPC"];
+
+    Login    = FunctionParameters["ClickHouse_User"];
+    Password = FunctionParameters["ClickHouse_Password"];
+
+    Authorization = New Structure(Login, Password);
+
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    Process(Connection, "ClickHouse", "CreateGRPCConnection"); // SKIP
+
+    // Request (simple)
+
+    QueryText = "CREATE TABLE events (
+    | id UInt64,
+    | timestamp DateTime,
+    | user_id UInt32,
+    | event_type String,
+    | payload String
+    |) ENGINE = MergeTree()
+    |ORDER BY (timestamp, id)";
+
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    Process(Result, "ClickHouse", "CreateGRPCConnection", "Simple"); // SKIP
+
+    // Request (with data)
+
+    QueryText = "INSERT INTO events FORMAT JSON";
+
+    DataFormat = "JSON";
+    DataArray  = New Array;
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+
+    Record1 = New Structure;
+    Record1.Insert("id"        , 1);
+    Record1.Insert("timestamp" , CurrentDate);
+    Record1.Insert("user_id"   , 100);
+    Record1.Insert("event_type", "click");
+    Record1.Insert("payload"   , "{}");
+
+    Record2 = New Structure;
+    Record2.Insert("id"        , 2);
+    Record2.Insert("timestamp" , CurrentDate);
+    Record2.Insert("user_id"   , 200);
+    Record2.Insert("event_type", "hover");
+    Record2.Insert("payload"   , "{}");
+
+    DataArray.Add(Record1);
+    DataArray.Add(Record2);
+
+    Meta = New Array;
+    Meta.Add(New Structure("name,type", "id"        , "UInt64"));
+    Meta.Add(New Structure("name,type", "timestamp" , "DateTime"));
+    Meta.Add(New Structure("name,type", "user_id"   , "UInt32"));
+    Meta.Add(New Structure("name,type", "event_type", "String"));
+    Meta.Add(New Structure("name,type", "payload"   , "String"));
+
+    Data      = New Structure("meta,data", Meta, DataArray);
+    Database  = "default";
+    RequestID = String(New UUID());
+
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText, Database, RequestID, Data, DataFormat);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    // END
+
+    Process(Result, "ClickHouse", "CreateGRPCConnection", "Complex");
 
 EndProcedure
 
