@@ -6998,5 +6998,30 @@
 "lib": "GRPC",
 "name": "ЗавершитьОтправку",
 "variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "ВыполнитьЗапрос",
+"variant": "Простой"
+},
+{
+"lib": "ClickHouse",
+"name": "ВыполнитьЗапрос",
+"variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "ОткрытьСоединениеGRPC",
+"variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "ОткрытьСоединениеGRPC",
+"variant": "Простой"
+},
+{
+"lib": "ClickHouse",
+"name": "ОткрытьСоединениеGRPC",
+"variant": "Сложный"
 }
 ]

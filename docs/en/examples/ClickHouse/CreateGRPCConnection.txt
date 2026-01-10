@@ -1,0 +1,63 @@
+﻿    URL = "http://localhost:9101";
+
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    Authorization = New Structure(Login, Password);
+
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    // Request (simple)
+
+    QueryText = "CREATE TABLE events (
+    | id UInt64,
+    | timestamp DateTime,
+    | user_id UInt32,
+    | event_type String,
+    | payload String
+    |) ENGINE = MergeTree()
+    |ORDER BY (timestamp, id)";
+
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    // Request (with data)
+
+    QueryText = "INSERT INTO events FORMAT JSON";
+
+    DataFormat = "JSON";
+    DataArray  = New Array;
+
+    CurrentDate = OPI_Tools.GetCurrentDate();
+
+    Record1 = New Structure;
+    Record1.Insert("id"        , 1);
+    Record1.Insert("timestamp" , CurrentDate);
+    Record1.Insert("user_id"   , 100);
+    Record1.Insert("event_type", "click");
+    Record1.Insert("payload"   , "{}");
+
+    Record2 = New Structure;
+    Record2.Insert("id"        , 2);
+    Record2.Insert("timestamp" , CurrentDate);
+    Record2.Insert("user_id"   , 200);
+    Record2.Insert("event_type", "hover");
+    Record2.Insert("payload"   , "{}");
+
+    DataArray.Add(Record1);
+    DataArray.Add(Record2);
+
+    Meta = New Array;
+    Meta.Add(New Structure("name,type", "id"        , "UInt64"));
+    Meta.Add(New Structure("name,type", "timestamp" , "DateTime"));
+    Meta.Add(New Structure("name,type", "user_id"   , "UInt32"));
+    Meta.Add(New Structure("name,type", "event_type", "String"));
+    Meta.Add(New Structure("name,type", "payload"   , "String"));
+
+    Data      = New Structure("meta,data", Meta, DataArray);
+    Database  = "default";
+    RequestID = String(New UUID());
+
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText, Database, RequestID, Data, DataFormat);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
