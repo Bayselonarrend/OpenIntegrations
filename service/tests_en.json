@@ -6998,5 +6998,30 @@
 "lib": "GRPC",
 "name": "CompleteSend",
 "variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "ExecuteRequest",
+"variant": "Simple"
+},
+{
+"lib": "ClickHouse",
+"name": "ExecuteRequest",
+"variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "CreateGRPCConnection",
+"variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "CreateGRPCConnection",
+"variant": "Simple"
+},
+{
+"lib": "ClickHouse",
+"name": "CreateGRPCConnection",
+"variant": "Complex"
 }
 ]
