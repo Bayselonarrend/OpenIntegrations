@@ -428,7 +428,7 @@ Procedure ConvertSourceToValue(Value, TryB64)
         If TryB64 Then
             Value = Base64Value(Value);
         Else
-            Raise "value is not a file path or valid Base64 string";
+            Raise "The value is not a file path or Base64 string";
         EndIf;
 
     EndIf;
