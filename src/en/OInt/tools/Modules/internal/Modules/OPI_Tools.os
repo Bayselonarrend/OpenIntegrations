@@ -1112,7 +1112,7 @@ Function GetTextTemplate(Val TemplateName) Export
 
     Else
 
-        Value = GetCommonTemplate(TemplateName).GetText();
+        //Value = GetCommonTemplate(TemplateName).GetText();
 
     EndIf;
 
