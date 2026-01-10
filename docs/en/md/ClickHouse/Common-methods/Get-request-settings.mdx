@@ -1,0 +1,43 @@
+﻿---
+sidebar_position: 4
+description: Get request settings and other functions to work with ClickHouse in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ClickHouse]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get request settings
+ Forms the request description structure
+
+
+
+`Function GetRequestSettings(Val Text, Val Database = Undefined, Val RequestID = Undefined, Val Data = Undefined, Val ResponseFormat = "JSON", Val ExternalTables = Undefined, Val Settings = Undefined) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Text | --query | String | &#x2714; | Request text |
+  | Database | --db | String | &#x2716; | Database |
+  | RequestID | --id | String | &#x2716; | Unique request ID, if necessary |
+  | Data | --data | Arbitrary | &#x2716; | String, file, or binary data of the request |
+  | ResponseFormat | --format | String | &#x2716; | Response format: JSON, CSV, TSV, etc.. |
+  | ExternalTables | --ext | Array of Structure | &#x2716; | External tables data. See GetExternalTablesStructure |
+  | Settings | --settings | Map Of KeyAndValue | &#x2716; | Additional query parameters of the request |
+
+  
+  Returns:  Structure Of KeyAndValue - Request structure
+
+:::tip
+When using the `http` transport, you cannot use `Data` and `External Tables` simultaneously
+
+The response body can be returned as a collection (for JSON) or as binary data (for other formats). In the CLI version, binary data will be represented as a Base64 string
+:::
+<br/>
+
+
+
+ 
+
+
+
+

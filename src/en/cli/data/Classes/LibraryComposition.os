@@ -27,6 +27,7 @@ Procedure InitializeCommonLists() Export
     ModuleCommandMapping.Insert("airtable", "OPI_Airtable");
     ModuleCommandMapping.Insert("bitrix24", "OPI_Bitrix24");
     ModuleCommandMapping.Insert("cdek", "OPI_CDEK");
+    ModuleCommandMapping.Insert("clickhouse", "OPI_ClickHouse");
     ModuleCommandMapping.Insert("dropbox", "OPI_Dropbox");
     ModuleCommandMapping.Insert("ftp", "OPI_FTP");
     ModuleCommandMapping.Insert("gcalendar", "OPI_GoogleCalendar");
