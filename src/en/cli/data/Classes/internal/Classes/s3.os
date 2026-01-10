@@ -69,7 +69,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetBasicDataStructure";
     NewLine.SearchMethod  = "GETBASICDATASTRUCTURE";
     NewLine.Parameter     = "--service";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-v";
     NewLine.Description     = "Type of service, if different from s3 (optional, def. val.. - s3)";
     NewLine.Region      = "Common methods";
 
@@ -103,7 +103,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendRequestWithoutBody";
     NewLine.SearchMethod  = "SENDREQUESTWITHOUTBODY";
     NewLine.Parameter     = "--binary";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Disables an attempt to convert the response to JSON (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
@@ -148,7 +148,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendRequestWithBody";
     NewLine.SearchMethod  = "SENDREQUESTWITHBODY";
     NewLine.Parameter     = "--body";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-d";
     NewLine.Description     = "Binary data or file of request body data";
     NewLine.Region      = "Common methods";
 
@@ -159,7 +159,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendRequestWithBody";
     NewLine.SearchMethod  = "SENDREQUESTWITHBODY";
     NewLine.Parameter     = "--binary";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Disables an attempt to convert the response to JSON (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
@@ -821,7 +821,7 @@ Function GetComposition() Export
     NewLine.Method        = "PutObject";
     NewLine.SearchMethod  = "PUTOBJECT";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -843,7 +843,7 @@ Function GetComposition() Export
     NewLine.Method        = "PutObject";
     NewLine.SearchMethod  = "PUTOBJECT";
     NewLine.Parameter     = "--dir";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
@@ -888,7 +888,7 @@ Function GetComposition() Export
     NewLine.Method        = "UploadFullObject";
     NewLine.SearchMethod  = "UPLOADFULLOBJECT";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -910,7 +910,7 @@ Function GetComposition() Export
     NewLine.Method        = "UploadFullObject";
     NewLine.SearchMethod  = "UPLOADFULLOBJECT";
     NewLine.Parameter     = "--dir";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "True > Path style URL, False > Virtual hosted style URL (optional, def. val.. - False)";
     NewLine.Region      = "Objects management";
 
@@ -944,7 +944,7 @@ Function GetComposition() Export
     NewLine.Method        = "InitPartsUpload";
     NewLine.SearchMethod  = "INITPARTSUPLOAD";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -1000,7 +1000,7 @@ Function GetComposition() Export
     NewLine.Method        = "UploadObjectPart";
     NewLine.SearchMethod  = "UPLOADOBJECTPART";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -1078,7 +1078,7 @@ Function GetComposition() Export
     NewLine.Method        = "FinishPartsUpload";
     NewLine.SearchMethod  = "FINISHPARTSUPLOAD";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -1156,7 +1156,7 @@ Function GetComposition() Export
     NewLine.Method        = "AbortMultipartUpload";
     NewLine.SearchMethod  = "ABORTMULTIPARTUPLOAD";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -1223,7 +1223,7 @@ Function GetComposition() Export
     NewLine.Method        = "HeadObject";
     NewLine.SearchMethod  = "HEADOBJECT";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -1290,7 +1290,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetObject";
     NewLine.SearchMethod  = "GETOBJECT";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -1368,7 +1368,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeleteObject";
     NewLine.SearchMethod  = "DELETEOBJECT";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -1424,7 +1424,7 @@ Function GetComposition() Export
     NewLine.Method        = "CopyObject";
     NewLine.SearchMethod  = "COPYOBJECT";
     NewLine.Parameter     = "--sbucket";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-c";
     NewLine.Description     = "Source bucket name";
     NewLine.Region      = "Objects management";
 
@@ -1457,7 +1457,7 @@ Function GetComposition() Export
     NewLine.Method        = "CopyObject";
     NewLine.SearchMethod  = "COPYOBJECT";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-a";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -1513,7 +1513,7 @@ Function GetComposition() Export
     NewLine.Method        = "PutObjectTagging";
     NewLine.SearchMethod  = "PUTOBJECTTAGGING";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -1580,7 +1580,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetObjectTagging";
     NewLine.SearchMethod  = "GETOBJECTTAGGING";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -1647,7 +1647,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeleteObjectTagging";
     NewLine.SearchMethod  = "DELETEOBJECTTAGGING";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -1703,7 +1703,7 @@ Function GetComposition() Export
     NewLine.Method        = "ListObjects";
     NewLine.SearchMethod  = "LISTOBJECTS";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -1770,7 +1770,7 @@ Function GetComposition() Export
     NewLine.Method        = "ListObjectVersions";
     NewLine.SearchMethod  = "LISTOBJECTVERSIONS";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -1848,7 +1848,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetObjectDownloadLink";
     NewLine.SearchMethod  = "GETOBJECTDOWNLOADLINK";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 
@@ -1915,7 +1915,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetObjectUploadLink";
     NewLine.SearchMethod  = "GETOBJECTUPLOADLINK";
     NewLine.Parameter     = "--basic";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Basic request data. See GetBasicDataStructure";
     NewLine.Region      = "Objects management";
 

@@ -125,7 +125,7 @@ Function GetComposition() Export
     NewLine.Method        = "GenerateConnectionString";
     NewLine.SearchMethod  = "GENERATECONNECTIONSTRING";
     NewLine.Parameter     = "--port";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Server port (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
@@ -272,7 +272,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateTable";
     NewLine.SearchMethod  = "CREATETABLE";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
@@ -306,7 +306,7 @@ Function GetComposition() Export
     NewLine.Method        = "AddTableColumn";
     NewLine.SearchMethod  = "ADDTABLECOLUMN";
     NewLine.Parameter     = "--type";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Column data type";
     NewLine.Region      = "Orm";
 
@@ -328,7 +328,7 @@ Function GetComposition() Export
     NewLine.Method        = "AddTableColumn";
     NewLine.SearchMethod  = "ADDTABLECOLUMN";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
@@ -373,7 +373,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeleteTableColumn";
     NewLine.SearchMethod  = "DELETETABLECOLUMN";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
@@ -418,7 +418,7 @@ Function GetComposition() Export
     NewLine.Method        = "EnsureTable";
     NewLine.SearchMethod  = "ENSURETABLE";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
@@ -452,7 +452,7 @@ Function GetComposition() Export
     NewLine.Method        = "ClearTable";
     NewLine.SearchMethod  = "CLEARTABLE";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
@@ -486,7 +486,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeleteTable";
     NewLine.SearchMethod  = "DELETETABLE";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
@@ -520,7 +520,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetTableInformation";
     NewLine.SearchMethod  = "GETTABLEINFORMATION";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
@@ -554,7 +554,7 @@ Function GetComposition() Export
     NewLine.Method        = "AddRecords";
     NewLine.SearchMethod  = "ADDRECORDS";
     NewLine.Parameter     = "--trn";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-n";
     NewLine.Description     = "True > adding records to transactions with rollback on error (optional, def. val.. - True)";
     NewLine.Region      = "Orm";
 
@@ -576,7 +576,7 @@ Function GetComposition() Export
     NewLine.Method        = "AddRecords";
     NewLine.SearchMethod  = "ADDRECORDS";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
@@ -610,7 +610,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetRecords";
     NewLine.SearchMethod  = "GETRECORDS";
     NewLine.Parameter     = "--filter";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Filters array. See GetRecordsFilterStrucutre (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
@@ -654,7 +654,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetRecords";
     NewLine.SearchMethod  = "GETRECORDS";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
@@ -710,7 +710,7 @@ Function GetComposition() Export
     NewLine.Method        = "UpdateRecords";
     NewLine.SearchMethod  = "UPDATERECORDS";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 
@@ -755,7 +755,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeleteRecords";
     NewLine.SearchMethod  = "DELETERECORDS";
     NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "TLS settings, if necessary. See GetTlsSettings (optional, def. val.. - Empty value)";
     NewLine.Region      = "Orm";
 

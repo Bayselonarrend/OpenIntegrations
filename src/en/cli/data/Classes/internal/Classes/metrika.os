@@ -36,7 +36,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateTag";
     NewLine.SearchMethod  = "CREATETAG";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Tag title";
     NewLine.Region      = "Tags management";
 
@@ -70,7 +70,7 @@ Function GetComposition() Export
     NewLine.Method        = "UpdateTag";
     NewLine.SearchMethod  = "UPDATETAG";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-i";
     NewLine.Description     = "New name";
     NewLine.Region      = "Tags management";
 

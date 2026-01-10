@@ -183,7 +183,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateCalendar";
     NewLine.SearchMethod  = "CREATECALENDAR";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Name of the created calendar";
     NewLine.Region      = "Calendar metadata management";
 
@@ -240,7 +240,7 @@ Function GetComposition() Export
     NewLine.Method        = "EditCalendarMetadata";
     NewLine.SearchMethod  = "EDITCALENDARMETADATA";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "New name (optional, def. val.. - Empty value)";
     NewLine.Region      = "Calendar metadata management";
 
@@ -576,7 +576,7 @@ Function GetComposition() Export
     NewLine.Method        = "MoveEvent";
     NewLine.SearchMethod  = "MOVEEVENT";
     NewLine.Parameter     = "--to";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-o";
     NewLine.Description     = "ID of the target calendar";
     NewLine.Region      = "Event management";
 

@@ -121,7 +121,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendTextMessage";
     NewLine.SearchMethod  = "SENDTEXTMESSAGE";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Message text";
     NewLine.Region      = "Message sending";
 
@@ -367,7 +367,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendLocation";
     NewLine.SearchMethod  = "SENDLOCATION";
     NewLine.Parameter     = "--long";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-n";
     NewLine.Description     = "Geographic longitude";
     NewLine.Region      = "Message sending";
 
@@ -423,7 +423,7 @@ Function GetComposition() Export
     NewLine.Method        = "SendLink";
     NewLine.SearchMethod  = "SENDLINK";
     NewLine.Parameter     = "--user";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "User ID. For channel > administrator, for bot > recipient";
     NewLine.Region      = "Message sending";
 

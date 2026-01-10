@@ -183,7 +183,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateSpreadsheet";
     NewLine.SearchMethod  = "CREATESPREADSHEET";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "Name";
     NewLine.Region      = "Spreadsheets management";
 
@@ -251,7 +251,7 @@ Function GetComposition() Export
     NewLine.Method        = "EditSpreadsheetTitle";
     NewLine.SearchMethod  = "EDITSPREADSHEETTITLE";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "New name";
     NewLine.Region      = "Spreadsheets management";
 
@@ -285,7 +285,7 @@ Function GetComposition() Export
     NewLine.Method        = "AddSheet";
     NewLine.SearchMethod  = "ADDSHEET";
     NewLine.Parameter     = "--title";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "NewSheetName";
     NewLine.Region      = "Working with sheets";
 
@@ -319,7 +319,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeleteSheet";
     NewLine.SearchMethod  = "DELETESHEET";
     NewLine.Parameter     = "--sheet";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-h";
     NewLine.Description     = "IdentifierOfSheetToDelete";
     NewLine.Region      = "Working with sheets";
 
@@ -353,7 +353,7 @@ Function GetComposition() Export
     NewLine.Method        = "CopySheet";
     NewLine.SearchMethod  = "COPYSHEET";
     NewLine.Parameter     = "--to";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-o";
     NewLine.Description     = "Destination spreadsheet ID";
     NewLine.Region      = "Working with sheets";
 
@@ -416,7 +416,7 @@ Function GetComposition() Export
     NewLine.Method        = "SetCellValues";
     NewLine.SearchMethod  = "SETCELLVALUES";
     NewLine.Parameter     = "--sheetname";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-h";
     NewLine.Description     = "Sheet name (first sheet by default) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data management";
 
@@ -427,7 +427,7 @@ Function GetComposition() Export
     NewLine.Method        = "SetCellValues";
     NewLine.SearchMethod  = "SETCELLVALUES";
     NewLine.Parameter     = "--dim";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-m";
     NewLine.Description     = "Main dimension when filling the array range (optional, def. val.. - COLUMNS)";
     NewLine.Region      = "Data management";
 
@@ -472,7 +472,7 @@ Function GetComposition() Export
     NewLine.Method        = "ClearCells";
     NewLine.SearchMethod  = "CLEARCELLS";
     NewLine.Parameter     = "--sheetname";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-h";
     NewLine.Description     = "Sheet name (first sheet by default) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data management";
 
@@ -517,7 +517,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetCellValues";
     NewLine.SearchMethod  = "GETCELLVALUES";
     NewLine.Parameter     = "--sheetname";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-h";
     NewLine.Description     = "Sheet name (first sheet by default) (optional, def. val.. - Empty value)";
     NewLine.Region      = "Data management";
 

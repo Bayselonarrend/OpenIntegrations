@@ -48,7 +48,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetToken";
     NewLine.SearchMethod  = "GETTOKEN";
     NewLine.Parameter     = "--appsecret";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Application secret";
     NewLine.Region      = "Account and authorization";
 
@@ -82,7 +82,7 @@ Function GetComposition() Export
     NewLine.Method        = "RefreshToken";
     NewLine.SearchMethod  = "REFRESHTOKEN";
     NewLine.Parameter     = "--appsecret";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Application secret";
     NewLine.Region      = "Account and authorization";
 
@@ -366,7 +366,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeleteObject";
     NewLine.SearchMethod  = "DELETEOBJECT";
     NewLine.Parameter     = "--permanently";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Delete object without the possibility of recovery (optional, def. val.. - False)";
     NewLine.Region      = "File and directory management";
 
@@ -400,7 +400,7 @@ Function GetComposition() Export
     NewLine.Method        = "CopyObject";
     NewLine.SearchMethod  = "COPYOBJECT";
     NewLine.Parameter     = "--to";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-o";
     NewLine.Description     = "Target path for the new object";
     NewLine.Region      = "File and directory management";
 
@@ -434,7 +434,7 @@ Function GetComposition() Export
     NewLine.Method        = "MoveObject";
     NewLine.SearchMethod  = "MOVEOBJECT";
     NewLine.Parameter     = "--to";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-o";
     NewLine.Description     = "Target path for the new object";
     NewLine.Region      = "File and directory management";
 
@@ -628,7 +628,7 @@ Function GetComposition() Export
     NewLine.Method        = "AddTag";
     NewLine.SearchMethod  = "ADDTAG";
     NewLine.Parameter     = "--tag";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-g";
     NewLine.Description     = "Tag text";
     NewLine.Region      = "Tags management";
 
@@ -662,7 +662,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeleteTag";
     NewLine.SearchMethod  = "DELETETAG";
     NewLine.Parameter     = "--tag";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-g";
     NewLine.Description     = "Tag text";
     NewLine.Region      = "Tags management";
 
