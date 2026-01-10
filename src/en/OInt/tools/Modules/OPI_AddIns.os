@@ -290,14 +290,11 @@ EndFunction
 
 Function AddInsFolderOS() Export
 
-    BinDir = StrReplace(BinDir(), "\", "/");
-
-    PathParts = StrSplit(BinDir, "/");
-    PathParts.Delete(PathParts.UBound());
+    LibraryDirectory = OPI_Tools.GetLibraryDirectory();
 
     // BSLLS:UsingHardcodePath-off
 
-    AddInsFolder = StrConcat(PathParts, "/") + "/lib/oint/addins/";
+    AddInsFolder = StrTemplate("%1/%2/", LibraryDirectory, "addins");
 
     // BSLLS:UsingHardcodePath-on
 

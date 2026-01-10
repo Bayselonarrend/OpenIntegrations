@@ -566,6 +566,7 @@ EndFunction
 
 Function FindMissingCollectionFields(Val Collection, Val Fields) Export
 
+    OPI_TypeConversion.GetArray(Fields);
     MissingFieldsArray = New Array;
 
     For Each Field In Fields Do
@@ -782,6 +783,30 @@ Function IsCLI() Export
     EndIf;
 
     Return False;
+
+EndFunction
+
+Function GetLibraryDirectory() Export
+
+    ScriptDirectory = "";
+
+    // !OInt ScriptDirectory = CurrentScript().Path;
+
+    If Not ValueIsFilled(ScriptDirectory) Then
+        Return "";
+    EndIf;
+
+    ScriptDirectory = StrReplace(ScriptDirectory, "\", "/");
+    PartsArray      = StrSplit(ScriptDirectory, "/");
+
+    PartsArray.Delete(PartsArray.UBound());
+    PartsArray.Delete(PartsArray.UBound());
+    PartsArray.Delete(PartsArray.UBound());
+    PartsArray.Delete(PartsArray.UBound());
+
+    Path = StrConcat(PartsArray, "/");
+
+    Return Path;
 
 EndFunction
 
@@ -1073,6 +1098,25 @@ Function ThisIsCollection(Val Value, Val KeyValue = False) Export
     Return (ValeType = Type("Array") And Not KeyValue)
         Or ValeType  = Type("Structure")
         Or ValeType  = Type("Map");
+
+EndFunction
+
+Function GetTextTemplate(Val TemplateName) Export
+
+    If IsOneScript() Then
+
+        LibraryDirectory = GetLibraryDirectory();
+        FileName         = StrTemplate("%1.txt", TemplateName);
+        TemplatePath     = StrTemplate("%1/%2/%3", LibraryDirectory, "templates", FileName);
+        Value            = GetStringFromBinaryData(New BinaryData(TemplatePath));
+
+    Else
+
+        Value = GetCommonTemplate(TemplateName).GetText();
+
+    EndIf;
+
+    Return Value;
 
 EndFunction
 
