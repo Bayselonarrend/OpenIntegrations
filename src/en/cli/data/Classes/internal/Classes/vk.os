@@ -124,7 +124,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreatePost";
     NewLine.SearchMethod  = "CREATEPOST";
     NewLine.Parameter     = "--auth";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-h";
     NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Community management";
 
@@ -188,7 +188,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateCompositePost";
     NewLine.SearchMethod  = "CREATECOMPOSITEPOST";
     NewLine.Parameter     = "--auth";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-h";
     NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Community management";
 
@@ -356,7 +356,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeleteAlbum";
     NewLine.SearchMethod  = "DELETEALBUM";
     NewLine.Parameter     = "--auth";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-t";
     NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Community management";
 
@@ -451,7 +451,7 @@ Function GetComposition() Export
     NewLine.Method        = "SaveImageToAlbum";
     NewLine.SearchMethod  = "SAVEIMAGETOALBUM";
     NewLine.Parameter     = "--auth";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-t";
     NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Community management";
 
@@ -546,7 +546,7 @@ Function GetComposition() Export
     NewLine.Method        = "UploadVideoToServer";
     NewLine.SearchMethod  = "UPLOADVIDEOTOSERVER";
     NewLine.Parameter     = "--auth";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-h";
     NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Community management";
 
@@ -619,7 +619,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateDiscussion";
     NewLine.SearchMethod  = "CREATEDISCUSSION";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Text of the first message";
     NewLine.Region      = "Discussion management";
 
@@ -734,7 +734,7 @@ Function GetComposition() Export
     NewLine.Method        = "WriteInDiscussion";
     NewLine.SearchMethod  = "WRITEINDISCUSSION";
     NewLine.Parameter     = "--text";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-x";
     NewLine.Description     = "Message text";
     NewLine.Region      = "Discussion management";
 
@@ -851,7 +851,7 @@ Function GetComposition() Export
     NewLine.Method        = "MakeRepost";
     NewLine.SearchMethod  = "MAKEREPOST";
     NewLine.Parameter     = "--auth";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-h";
     NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Interactive actions";
 
@@ -1030,7 +1030,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetStatistics";
     NewLine.SearchMethod  = "GETSTATISTICS";
     NewLine.Parameter     = "--dateto";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-t";
     NewLine.Description     = "End date of the period";
     NewLine.Region      = "Statistics";
 
@@ -1156,7 +1156,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateAd";
     NewLine.SearchMethod  = "CREATEAD";
     NewLine.Parameter     = "--category";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-t";
     NewLine.Description     = "Advertising category number";
     NewLine.Region      = "Ad account management";
 
@@ -1178,7 +1178,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateAd";
     NewLine.SearchMethod  = "CREATEAD";
     NewLine.Parameter     = "--cabinet";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-b";
     NewLine.Description     = "Advertising account ID";
     NewLine.Region      = "Ad account management";
 
@@ -1231,7 +1231,7 @@ Function GetComposition() Export
     NewLine.Method        = "PauseAdvertising";
     NewLine.SearchMethod  = "PAUSEADVERTISING";
     NewLine.Parameter     = "--auth";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-t";
     NewLine.Description     = "Authorization parameters. See GetAuthParameters (optional, def. val.. - Empty value)";
     NewLine.Region      = "Ad account management";
 

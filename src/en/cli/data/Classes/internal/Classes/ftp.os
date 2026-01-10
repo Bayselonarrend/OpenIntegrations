@@ -106,7 +106,7 @@ Function GetComposition() Export
     NewLine.Method        = "ExecuteCustomCommand";
     NewLine.SearchMethod  = "EXECUTECUSTOMCOMMAND";
     NewLine.Parameter     = "--cmd";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-m";
     NewLine.Description     = "Text of the executed command";
     NewLine.Region      = "Common methods";
 
@@ -129,7 +129,7 @@ Function GetComposition() Export
     NewLine.Method        = "ExecuteArbitraryCommand";
     NewLine.SearchMethod  = "EXECUTEARBITRARYCOMMAND";
     NewLine.Parameter     = "--cmd";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-m";
     NewLine.Description     = "Text of the executed command";
     NewLine.Region      = "Common methods";
 
@@ -231,7 +231,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetConnectionSettings";
     NewLine.SearchMethod  = "GETCONNECTIONSETTINGS";
     NewLine.Parameter     = "--pass";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "User password for authorization, if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
@@ -242,7 +242,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetConnectionSettings";
     NewLine.SearchMethod  = "GETCONNECTIONSETTINGS";
     NewLine.Parameter     = "--passive";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-v";
     NewLine.Description     = "Passive connection mode (optional, def. val.. - True)";
     NewLine.Region      = "Common methods";
 
@@ -331,7 +331,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetProxySettings";
     NewLine.SearchMethod  = "GETPROXYSETTINGS";
     NewLine.Parameter     = "--pass";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Authorization password, if required (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 

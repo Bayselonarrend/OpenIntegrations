@@ -81,7 +81,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetCashboxChecksByDate";
     NewLine.SearchMethod  = "GETCASHBOXCHECKSBYDATE";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
@@ -115,7 +115,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetDeliveryCashRegistry";
     NewLine.SearchMethod  = "GETDELIVERYCASHREGISTRY";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
@@ -149,7 +149,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetDeliveryCashTransfers";
     NewLine.SearchMethod  = "GETDELIVERYCASHTRANSFERS";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
@@ -183,7 +183,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetOfficeList";
     NewLine.SearchMethod  = "GETOFFICELIST";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
@@ -239,7 +239,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetRegionsList";
     NewLine.SearchMethod  = "GETREGIONSLIST";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Common methods";
 
@@ -285,7 +285,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateOrder";
     NewLine.SearchMethod  = "CREATEORDER";
     NewLine.Parameter     = "--ostore";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag of Online store order type (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -296,7 +296,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateOrder";
     NewLine.SearchMethod  = "CREATEORDER";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -341,7 +341,7 @@ Function GetComposition() Export
     NewLine.Method        = "UpdateOrder";
     NewLine.SearchMethod  = "UPDATEORDER";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -375,7 +375,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeleteOrder";
     NewLine.SearchMethod  = "DELETEORDER";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -409,7 +409,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetOrder";
     NewLine.SearchMethod  = "GETORDER";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -454,7 +454,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetOrderByNumber";
     NewLine.SearchMethod  = "GETORDERBYNUMBER";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -488,7 +488,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateCustomerRefund";
     NewLine.SearchMethod  = "CREATECUSTOMERREFUND";
     NewLine.Parameter     = "--tariff";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-r";
     NewLine.Description     = "Tariff code (from those available under the contract)";
     NewLine.Region      = "Orders management";
 
@@ -499,7 +499,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateCustomerRefund";
     NewLine.SearchMethod  = "CREATECUSTOMERREFUND";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -533,7 +533,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateRefusal";
     NewLine.SearchMethod  = "CREATEREFUSAL";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -567,7 +567,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateReceipt";
     NewLine.SearchMethod  = "CREATERECEIPT";
     NewLine.Parameter     = "--type";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "Receipt type (language) (optional, def. val.. - tpl_russia)";
     NewLine.Region      = "Orders management";
 
@@ -589,7 +589,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateReceipt";
     NewLine.SearchMethod  = "CREATERECEIPT";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -634,7 +634,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetReceipt";
     NewLine.SearchMethod  = "GETRECEIPT";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -701,7 +701,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateBarcode";
     NewLine.SearchMethod  = "CREATEBARCODE";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -746,7 +746,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetBarcode";
     NewLine.SearchMethod  = "GETBARCODE";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -802,7 +802,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreatePrealert";
     NewLine.SearchMethod  = "CREATEPREALERT";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -836,7 +836,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetPrealert";
     NewLine.SearchMethod  = "GETPREALERT";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -870,7 +870,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetPassportDataStatus";
     NewLine.SearchMethod  = "GETPASSPORTDATASTATUS";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -904,7 +904,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetCashboxCheck";
     NewLine.SearchMethod  = "GETCASHBOXCHECK";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Orders management";
 
@@ -972,7 +972,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetAvailableDeliveryIntervals";
     NewLine.SearchMethod  = "GETAVAILABLEDELIVERYINTERVALS";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
 
@@ -1006,7 +1006,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateCourierInvitation";
     NewLine.SearchMethod  = "CREATECOURIERINVITATION";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
 
@@ -1040,7 +1040,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetCourierInvitation";
     NewLine.SearchMethod  = "GETCOURIERINVITATION";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
 
@@ -1073,7 +1073,7 @@ Function GetComposition() Export
     NewLine.Method        = "DeleteCourierInvitation";
     NewLine.SearchMethod  = "DELETECOURIERINVITATION";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
 
@@ -1107,7 +1107,7 @@ Function GetComposition() Export
     NewLine.Method        = "RegisterDeliveryAppointment";
     NewLine.SearchMethod  = "REGISTERDELIVERYAPPOINTMENT";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
 
@@ -1141,7 +1141,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetDeliveryAppointment";
     NewLine.SearchMethod  = "GETDELIVERYAPPOINTMENT";
     NewLine.Parameter     = "--testapi";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Flag to use test API for requests (optional, def. val.. - False)";
     NewLine.Region      = "Delivery management";
 

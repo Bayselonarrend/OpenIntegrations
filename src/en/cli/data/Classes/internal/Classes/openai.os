@@ -58,7 +58,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetResponse";
     NewLine.SearchMethod  = "GETRESPONSE";
     NewLine.Parameter     = "--msgs";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Conversation messages. See GetMessageStructure";
     NewLine.Region      = "Requests processing";
 
@@ -990,7 +990,7 @@ Function GetComposition() Export
     NewLine.Method        = "CreateTranscription";
     NewLine.SearchMethod  = "CREATETRANSCRIPTION";
     NewLine.Parameter     = "--type";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-p";
     NewLine.Description     = "MIME type of audio file (optional, def. val.. - audio/mpeg)";
     NewLine.Region      = "Audio processing";
 

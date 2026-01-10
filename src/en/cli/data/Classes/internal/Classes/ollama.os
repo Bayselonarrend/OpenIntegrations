@@ -126,7 +126,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetContextResponse";
     NewLine.SearchMethod  = "GETCONTEXTRESPONSE";
     NewLine.Parameter     = "--msgs";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-s";
     NewLine.Description     = "Messages log. See GetContextMessageStructure";
     NewLine.Region      = "Requests processing";
 
@@ -285,7 +285,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetContextMessageStructure";
     NewLine.SearchMethod  = "GETCONTEXTMESSAGESTRUCTURE";
     NewLine.Parameter     = "--tools";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-l";
     NewLine.Description     = "List of tools in JSON format that the model should use (optional, def. val.. - Empty value)";
     NewLine.Region      = "Requests processing";
 

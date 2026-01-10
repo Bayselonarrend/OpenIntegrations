@@ -48,7 +48,7 @@ Function GetComposition() Export
     NewLine.Method        = "ParseJSON";
     NewLine.SearchMethod  = "PARSEJSON";
     NewLine.Parameter     = "--name";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-m";
     NewLine.Description     = "Field name to retrieve. Displays the entire list if not specified (optional, def. val.. - Empty value)";
     NewLine.Region      = "Service";
 

@@ -171,7 +171,7 @@ Function GetComposition() Export
     NewLine.Method        = "GetRequestSettings";
     NewLine.SearchMethod  = "GETREQUESTSETTINGS";
     NewLine.Parameter     = "--data";
-    NewLine.ParameterTrim = "";
+    NewLine.ParameterTrim = "-t";
     NewLine.Description     = "String, file, or binary data of the request (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
