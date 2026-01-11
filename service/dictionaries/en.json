@@ -8816,7 +8816,7 @@
 "идентификатор категории на Маркете": "category identifier on the Market",
 "Строка, Структура Из КлючИЗначение": "String, Structure Of KeyAndValue",
 "Отсутствуют необходимые поля схемы": "Required schema fields are missing",
-"ПРЕОБРАЗОВАТЬBASE64ВДВОИЧНЫЕДАННЫЕ": "CONVERTBASE64TOBINARY",
+"ПРЕОБРАЗОВАТЬBASE64ВДВОИЧНЫЕ": "CONVERTBASE64TOBINARY",
 "СоздатьРезультатИзКомментария (хук": "CreateResultFromComment (wh",
 "Идентификатор обновляемого объекта": "Identifier of the object to update",
 "ПеренестиЗадачуВСтадиюКанбана (хук": "MoveTaskToKanbanStage (wh",
