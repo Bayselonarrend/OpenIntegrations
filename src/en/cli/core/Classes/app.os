@@ -18,7 +18,7 @@ Var CurrentCommand;    // Name current commands
 
 Procedure MainHandler()
 	
-	Debugging        = False;
+	Debugging        = True;
 	Testing   = False;
 
 	SetEnvironmentVariable("OINT_CLI", "YES");
@@ -69,8 +69,12 @@ Procedure FormCommand()
 
 	EndIf;
 	
-	Command           = Parser.CommandDescription(CurrentCommand);
-	CurrentIndex     = OPIObject.GetIndexData(CurrentCommand);
+	Command = Parser.CommandDescription(CurrentCommand);
+
+	Debugging       = False;
+	CurrentIndex = OPIObject.GetIndexData(CurrentCommand);
+	Debugging       = True;
+
 	ParametersTable = CurrentIndex["Composition"];
 
 	If Not ParametersTable = Undefined Then
@@ -375,9 +379,9 @@ Try
 Except
 	
 	If Debugging Then
-		Information = ErrorDescription();
+		Information = DetailErrorDescription(ErrorInfo());
 	Else
-		Information = BriefErrorDescription(ErrorInfo());
+		Information = ErrorInfo().Description;
 	EndIf;
 
 	Help.DisplayExceptionMessage(Information, OutputFile);
