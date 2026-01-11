@@ -68,7 +68,7 @@ Function GetComposition() Export
     NewLine.Library   = "tools";
     NewLine.Module       = "Utils";
     NewLine.Method        = "ConvertBase64ToBinary";
-    NewLine.SearchMethod  = "ПРЕОБРAЗОInATЬBASE64InДInОAndЧNЫЕ";
+    NewLine.SearchMethod  = "CONVERTBASE64TOBINARY";
     NewLine.Parameter     = "--in";
     NewLine.ParameterTrim = "-i";
     NewLine.Description     = "Base64 File";
