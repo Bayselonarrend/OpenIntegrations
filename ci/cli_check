@@ -3,7 +3,7 @@ pipeline {
         label 'windows'
     }
     stages {
-        stage('Release') {
+        stage('Check') {
             steps {
                 bat 'oscript ./ci/os/cli_check.os'
             }
