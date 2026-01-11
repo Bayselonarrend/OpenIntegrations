@@ -9,6 +9,11 @@ pipeline {
                 build job: 'OpiBuild/OpiMain', wait: true
             }
         }
+        stage('OpenIntegrations - CLI check') {
+            steps {
+                build job: 'OpiBuild/OpiCliCheck', wait: false
+            }
+        }
         stage('Melezh - Main + Release') {
             steps {
                 build job: 'Melezh/MelezhRelease', wait: true
