@@ -56,14 +56,22 @@ Procedure DisplayStartPage(Val ModuleCommandMapping, Val Version) Export
 	Консоль.Write(CommandList); 
 
 	Консоль.TextColor = ConsoleColor.White;
-	ColorOutput.WriteLine("
+	OffsetLength       = 11;
+	NewLineTab  = "           ";
+
+	StandardOptionsDescription = StrTemplate("
 		|
 		| (Standard options:|#color=Yellow)
 		|
-		|  (--help|#color=Green)  - displays help on the current command or method. Similar to calling a command without options
-		|  (--debug|#color=Green) - a flag responsible for providing more detailed information during program operation
-		|  (--out|#color=Green)   - the path to the result saving file (particularly binary data)
-		|");
+		|  (--help|#color=Green)  -%1
+		|  (--debug|#color=Green) -%2
+		|  (--out|#color=Green)   -%3
+		|"
+		, GetWidthSplittedDescription("displays help on the current command or method. Similar to calling a command without options", NewLineTab, OffsetLength)
+		, GetWidthSplittedDescription("a flag responsible for providing more detailed information during program operation", NewLineTab, OffsetLength)
+		, GetWidthSplittedDescription("the path to the result saving file (particularly binary data)", NewLineTab, OffsetLength));
+
+	ColorOutput.WriteLine(StandardOptionsDescription);
 	
 	Консоль.TextColor = ConsoleColor.Yellow;
 	ColorOutput.WriteLine(" Full documentation can be found at: (https://openintegrations.dev|#color=Cyan)" + Chars.LF);
@@ -142,6 +150,7 @@ Procedure DisplayParameterHelp(Val ParametersTable) Export
 	HelpText = StrTemplate("
 	| (##|#color=Green) Method (%1|#color=Cyan)
 	| (##|#color=Green) %2
+	|
 	|%3
 	|", MethodName, MethodDescription, FullParamsDescription); 
 
@@ -198,7 +207,7 @@ Function GetFullParamsDescription(ParametersTable)
 	MaximumLength 	     = 0;
 	OptionListsMap = New Map();
 	FullDescriptionsArray     = New Array;
-	ParameterDescriptionTemplate  = "    (%1|#color=Yellow) - %2";
+	ParameterDescriptionTemplate  = "    (%1|#color=Yellow) -%2";
 
 	For Each MethodParameter In ParametersTable Do
 
@@ -219,7 +228,7 @@ Function GetFullParamsDescription(ParametersTable)
 		
 	EndDo;
 
-	NewLineTabLength = MaximumLength + 3;
+	NewLineTabLength = MaximumLength + 5;
 	NewLineTab       = "";
 	
 	For N = 0 To NewLineTabLength Do
@@ -237,7 +246,7 @@ Function GetFullParamsDescription(ParametersTable)
 		DescriptionArray = StrSplit(MethodParameter["Description"], Chars.LF);
 		
 		Try
-			CurrentDescription = GetWidthSplittedDescription(DescriptionArray, NewLineTab);
+			CurrentDescription = GetWidthSplittedDescription(DescriptionArray, NewLineTab, NewLineTabLength);
 		Except
 
 			If DescriptionArray.Count() = 1 Then
@@ -259,12 +268,19 @@ Function GetFullParamsDescription(ParametersTable)
 
 EndFunction
 
-Function GetWidthSplittedDescription(DescriptionLinesArray, NewLineTab)
+Function GetWidthSplittedDescription(DescriptionLinesArray, NewLineTab, OffsetLength)
 
-	ConsoleWidth     = Консоль.Width;
-	AvailableLength   = Консоль.Width - NewLineTab;
+	If Not TypeOf(DescriptionLinesArray) = Type("Array") Then
+		DescriptionLinesArray_ = New Array;
+		DescriptionLinesArray_.Add(DescriptionLinesArray);
+		DescriptionLinesArray = DescriptionLinesArray_;
+	EndIf;
 
-	If AvailableLength < 0 Then
+	ConsoleWidth         = Консоль.Width;
+	AvailableStringLength = Консоль.Width - OffsetLength - 4;
+	ThirdPartOfAvailble       = Round(AvailableStringLength / 3);
+
+	If AvailableStringLength < 0 Then
 		Raise "Adaptive width unavailable";
 	EndIf;
 
@@ -272,25 +288,26 @@ Function GetWidthSplittedDescription(DescriptionLinesArray, NewLineTab)
 
 	For Each DescriptionString In DescriptionLinesArray Do
 
-		WordArray    = StrSplit(DescriptionString, " ");
+		WordArray    = StrSplit(TrimAll(DescriptionString), " ");
 		CurrentRow = "";
 
 		N = 0;
 
 		While N <= WordArray.UBound() Do
 
-			Word       = WordArray[N];
+			Word       = WordArray[N];		
 			NewLine = StrTemplate("%1 %2", CurrentRow, Word);
 
-			If AvailableLength <= NewLine Then
+			If AvailableStringLength >= StrLen(NewLine) Then
 				CurrentRow = NewLine;
 			Else
 
-				If CurrentRow = "" Then
+				If CurrentRow = "" Or StrLen(Word) > ThirdPartOfAvailble Then
 
-					SymbolCount = AvailableLength - 1;
-					CurrentRow = Left(Word, SymbolCount) + "-";
-					WordArray[N] = Right(Word, StrLen(Word) - AvailableLength);
+					SymbolCount = AvailableStringLength - StrLen(CurrentRow) - 1;
+					LeftPart    = Left(Word, SymbolCount);
+					CurrentRow = CurrentRow + LeftPart + "-";
+					WordArray[N] = Right(Word, StrLen(Word) - StrLen(LeftPart));
 				
 				EndIf;
 
