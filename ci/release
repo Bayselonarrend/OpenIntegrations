@@ -13,7 +13,7 @@ pipeline {
         stage('Validate Artifacts') {
             steps {
                 script {
-                    def artifacts = findFiles(glob: '1.31.0/*')
+                    def artifacts = findFiles(glob: '1.32.0/*')
                     def count = artifacts.size()
                     
                     if (count != 16) {
@@ -27,7 +27,7 @@ pipeline {
         
         stage('Archive') {
             steps {
-                archiveArtifacts artifacts: '1.31.0/*'
+                archiveArtifacts artifacts: '1.32.0/*'
             }
         }
     }
