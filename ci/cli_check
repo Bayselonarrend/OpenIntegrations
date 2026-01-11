@@ -1,0 +1,12 @@
+pipeline {
+    agent {
+        label 'windows'
+    }
+    stages {
+        stage('Release') {
+            steps {
+                bat 'oscript ./ci/os/cli_check.os'
+            }
+        }
+    }
+}
