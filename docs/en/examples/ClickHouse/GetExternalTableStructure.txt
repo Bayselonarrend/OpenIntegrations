@@ -1,0 +1,15 @@
+﻿    // Minimal structure
+
+    TableName      = "external_data";
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("id"  , "UInt64");
+    ColoumnsStruct.Insert("name", "String");
+
+    Result = OPI_ClickHouse.GetExternalTableStructure(TableName, ColoumnsStruct);
+
+    // With TSV data
+
+    TableData = StrTemplate("1%1Test
+    |2%2Test2", Chars.Tab);
+
+    Result = OPI_ClickHouse.GetExternalTableStructure(TableName, ColoumnsStruct, TableData, "TSV");

@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 1
+sidebar_position: 2
 description: Create GRPC connection  and other functions to work with ClickHouse in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ClickHouse]
 ---
@@ -36,12 +36,14 @@ import TabItem from '@theme/TabItem';
 
     Authorization = New Structure(Login, Password);
 
+    // Connection creation
+
     ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
 
-    // Request (simple)
+    // Request via open connection (table creation)
 
-    QueryText = "CREATE TABLE events (
+    QueryText = "CREATE TABLE IF NOT EXISTS events_grpc (
     | id UInt64,
     | timestamp DateTime,
     | user_id UInt32,
@@ -53,9 +55,9 @@ import TabItem from '@theme/TabItem';
     Request = OPI_ClickHouse.GetRequestSettings(QueryText);
     Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
 
-    // Request (with data)
+    // Data insertion
 
-    QueryText = "INSERT INTO events FORMAT JSON";
+    QueryText = "INSERT INTO events_grpc FORMAT JSON";
 
     DataFormat = "JSON";
     DataArray  = New Array;
@@ -69,15 +71,7 @@ import TabItem from '@theme/TabItem';
     Record1.Insert("event_type", "click");
     Record1.Insert("payload"   , "{}");
 
-    Record2 = New Structure;
-    Record2.Insert("id"        , 2);
-    Record2.Insert("timestamp" , CurrentDate);
-    Record2.Insert("user_id"   , 200);
-    Record2.Insert("event_type", "hover");
-    Record2.Insert("payload"   , "{}");
-
     DataArray.Add(Record1);
-    DataArray.Add(Record2);
 
     Meta = New Array;
     Meta.Add(New Structure("name,type", "id"        , "UInt64"));
@@ -87,10 +81,36 @@ import TabItem from '@theme/TabItem';
     Meta.Add(New Structure("name,type", "payload"   , "String"));
 
     Data      = New Structure("meta,data", Meta, DataArray);
-    Database  = "default";
     RequestID = String(New UUID());
 
-    Request = OPI_ClickHouse.GetRequestSettings(QueryText, Database, RequestID, Data, DataFormat);
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText, "default", RequestID, Data, DataFormat);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    // Selection
+
+    SelectionText = "SELECT * FROM events_grpc";
+
+    Request = OPI_ClickHouse.GetRequestSettings(SelectionText, , , , "JSON");
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    // Request with external table via gRPC
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("id"  , "UInt64");
+    ColoumnsStruct.Insert("name", "String");
+
+    Tab       = Chars.Tab;
+    TableData = "1" + Tab + "John
+    |2" + Tab + "Jane";
+
+    ExternalTable = OPI_ClickHouse.GetExternalTableStructure("ext_grpc", ColoumnsStruct, TableData, "TSV");
+
+    ExternalTablesArray = New Array;
+    ExternalTablesArray.Add(ExternalTable);
+
+    QueryText = "SELECT * FROM ext_grpc";
+
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON", ExternalTablesArray);
     Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
 ```
  

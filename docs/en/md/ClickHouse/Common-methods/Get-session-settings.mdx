@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 6
+sidebar_position: 5
 description: Get session settings and other functions to work with ClickHouse in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ClickHouse]
 ---
@@ -25,7 +25,13 @@ import TabItem from '@theme/TabItem';
 
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    SessionID = String(New UUID);
+    Check     = True;
+    Timeout   = 120;
 
+    Result = OPI_ClickHouse.GetSessionSettings(SessionID, Check, Timeout);
+```
  
 
 

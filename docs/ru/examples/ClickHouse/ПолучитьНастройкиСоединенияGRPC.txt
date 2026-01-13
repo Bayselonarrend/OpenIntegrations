@@ -1,0 +1,33 @@
+﻿    URL = "http://localhost:9101";
+
+    // Без авторизации
+
+    Результат = OPI_ClickHouse.ПолучитьНастройкиСоединенияGRPC(URL);
+
+    // С basic авторизацией
+
+    Логин  = "bayselonarrend";
+    Пароль = "12we...";
+
+    Авторизация = Новый Структура(Логин, Пароль);
+
+    Результат = OPI_ClickHouse.ПолучитьНастройкиСоединенияGRPC(URL, Авторизация);
+
+    // С JWT авторизацией
+
+    JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test";
+
+    Результат = OPI_ClickHouse.ПолучитьНастройкиСоединенияGRPC(URL, JWT);
+
+    // С метаданными
+
+    Meta = Новый Соответствие;
+    Meta.Вставить("custom-meta", "value");
+
+    Результат = OPI_ClickHouse.ПолучитьНастройкиСоединенияGRPC(URL, Авторизация, Meta);
+
+    // С TLS настройками
+
+    Tls = OPI_ClickHouse.ПолучитьНастройкиTls(Истина);
+
+    Результат = OPI_ClickHouse.ПолучитьНастройкиСоединенияGRPC(URL, Авторизация, , Tls);

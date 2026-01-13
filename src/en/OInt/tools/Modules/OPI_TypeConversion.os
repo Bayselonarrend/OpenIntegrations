@@ -41,7 +41,8 @@
 
 Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export
 
-    If Value = Undefined Then
+    If Value  = Undefined Then
+        Value = GetBinaryDataFromString("");
         Return;
     EndIf;
 
@@ -98,11 +99,15 @@ Procedure GetBinaryOrStream(Value) Export
 
 EndProcedure
 
-Procedure GetCollection(Value, ByNetwork = True) Export
+Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
+
+    Success = False;
 
     If Value = Undefined Then
         Return;
     EndIf;
+
+    Success = True;
 
     Try
 
@@ -147,6 +152,7 @@ Procedure GetCollection(Value, ByNetwork = True) Export
 
             If (Not ThisIsCollection(Value)) Or Not ValueIsFilled(Value) Then
 
+                Success           = False;
                 Value = InitialValue;
                 OPI_Tools.ValueToArray(Value);
 
@@ -158,6 +164,7 @@ Procedure GetCollection(Value, ByNetwork = True) Export
 
     Except
 
+        Success     = False;
         Value = InitialValue;
         OPI_Tools.ValueToArray(Value);
 
@@ -426,8 +433,24 @@ Procedure ConvertSourceToValue(Value, TryB64)
     Else
 
         If TryB64 Then
-            Value = Base64Value(Value);
+
+            Value_ = Base64Value(Value);
+
+            If TypeOf(Value_) = Type("BinaryData") Then
+                Success       = Value_.Size() <> 0;
+            Else
+                Success       = False;
+            EndIf;
+
+            If Success Then
+                Value = Value_;
+            EndIf;
+
         Else
+            Success = False;
+        EndIf;
+
+        If Not Success Then
             Raise "The value is not a file path or Base64 string";
         EndIf;
 
@@ -447,8 +470,8 @@ Procedure ПолучитьДвоичныеИлиПоток(Значение) Exp
 	GetBinaryOrStream(Значение);
 EndProcedure
 
-Procedure ПолучитьКоллекцию(Значение, ПоСети = True) Export
-	GetCollection(Значение, ПоСети);
+Procedure ПолучитьКоллекцию(Значение, ПоСети = True, Успех = False) Export
+	GetCollection(Значение, ПоСети, Успех);
 EndProcedure
 
 Procedure ПолучитьКоллекциюКлючИЗначение(Значение, Val СообщениеОшибки = "Указанное значение не является подходящей коллекцией!") Export

@@ -3362,11 +3362,17 @@ EndProcedure
 Procedure CH_CommonMethods() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Address" , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_User"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Password", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Address"    , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_AddressGRPC", TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_User"       , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Password"   , TestParameters);
 
     ClickHouse_ExecuteRequest(TestParameters);
+    ClickHouse_GetHTTPConnectionSettings(TestParameters);
+    ClickHouse_GetGRPCConnectionSettings(TestParameters);
+    ClickHouse_GetRequestSettings(TestParameters);
+    ClickHouse_GetExternalTableStructure(TestParameters);
+    ClickHouse_GetSessionSettings(TestParameters);
 
 EndProcedure
 
@@ -3378,6 +3384,7 @@ Procedure CH_GRPC() Export
     OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Password"   , TestParameters);
 
     ClickHouse_CreateGRPCConnection(TestParameters);
+    ClickHouse_GetTlsSettings(TestParameters);
 
 EndProcedure
 
@@ -27069,9 +27076,9 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     Connection = OPI_ClickHouse.GetHTTPConnectionSettings(URL, Authorization);
 
-    // Request (simple)
+    // Request (table creation)
 
-    QueryText = "CREATE TABLE events (
+    QueryText = "CREATE TABLE IF NOT EXISTS events (
     | id UInt64,
     | timestamp DateTime,
     | user_id UInt32,
@@ -27080,15 +27087,15 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
     |) ENGINE = MergeTree()
     |ORDER BY (timestamp, id)";
 
-    Request = OPI_ClickHouse.GetRequestSettings("DROP TABLE events"); // SKIP
+    Request = OPI_ClickHouse.GetRequestSettings("DROP TABLE IF EXISTS events"); // SKIP
     Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request); // SKIP
 
     Request = OPI_ClickHouse.GetRequestSettings(QueryText);
     Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
 
-    Process(Result, "ClickHouse", "ExecuteRequest", "Simple"); // SKIP
+    Process(Result, "ClickHouse", "ExecuteRequest", "TableCreation"); // SKIP
 
-    // Request (with data)
+    // Request (data insertion)
 
     QueryText = "INSERT INTO events FORMAT JSON";
 
@@ -27127,6 +27134,89 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     Request = OPI_ClickHouse.GetRequestSettings(QueryText, Database, RequestID, Data, DataFormat);
     Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    Process(Result, "ClickHouse", "ExecuteRequest", "DataInsert"); // SKIP
+
+    // Request with external table
+
+    TableName      = "ext_users";
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("id"  , "UInt64");
+    ColoumnsStruct.Insert("name", "String");
+
+    Tab       = Chars.Tab;
+    TableData = "1" + Tab + "John
+    |2" + Tab + "Jane
+    |3" + Tab + "Bob";
+
+    ExternalTable = OPI_ClickHouse.GetExternalTableStructure(TableName, ColoumnsStruct, TableData, "TSV");
+
+    ExternalTablesArray = New Array;
+    ExternalTablesArray.Add(ExternalTable);
+
+    QueryText = "SELECT * FROM ext_users WHERE id > 1";
+
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON", ExternalTablesArray);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    Process(Result, "ClickHouse", "ExecuteRequest", "ExternalTable"); // SKIP
+
+    // Selection
+
+    SelectionText = "SELECT * FROM events";
+
+    Request = OPI_ClickHouse.GetRequestSettings(SelectionText, , , , "JSON");
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    // END
+
+    Process(Result, "ClickHouse", "ExecuteRequest"); // SKIP
+
+    Request = OPI_ClickHouse.GetRequestSettings(SelectionText, , , , "CSV");
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    Process(Result, "ClickHouse", "ExecuteRequest", "CSVSelection");
+
+    Request = OPI_ClickHouse.GetRequestSettings(SelectionText, , , , "TSV");
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    Process(Result, "ClickHouse", "ExecuteRequest", "TSVSelection");
+
+    Request = OPI_ClickHouse.GetRequestSettings(SelectionText, , , , "JSONCompact");
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    Process(Result, "ClickHouse", "ExecuteRequest", "JSONCompactSelection");
+
+    QueryText = "SELECT 1 AS result";
+
+    AdditionalSettings = New Map;
+    AdditionalSettings.Insert("max_threads", "4");
+
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON", , AdditionalSettings);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    Process(Result, "ClickHouse", "ExecuteRequest", "AdditionalSettings");
+
+    Session = OPI_ClickHouse.GetSessionSettings(String(New UUID()));
+
+    QueryText = "CREATE TEMPORARY TABLE temp_session_test (id UInt64, value String)";
+
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request, Session);
+
+    Process(Result, "ClickHouse", "ExecuteRequest", "SessionCreation");
+
+    QueryText = "INSERT INTO temp_session_test VALUES (1, 'test1'), (2, 'test2')";
+
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request, Session);
+
+    Process(Result, "ClickHouse", "ExecuteRequest", "SessionInsert");
+
+    QueryText = "SELECT * FROM temp_session_test";
+
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON");
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request, Session);
 
     // END
 
@@ -27143,14 +27233,16 @@ Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
 
     Authorization = New Structure(Login, Password);
 
+    // Connection creation
+
     ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
 
-    Process(Connection, "ClickHouse", "CreateGRPCConnection"); // SKIP
+    Process(Connection, "ClickHouse", "CreateGRPCConnection", "Openning"); // SKIP
 
-    // Request (simple)
+    // Request via open connection (table creation)
 
-    QueryText = "CREATE TABLE events (
+    QueryText = "CREATE TABLE IF NOT EXISTS events_grpc (
     | id UInt64,
     | timestamp DateTime,
     | user_id UInt32,
@@ -27159,14 +27251,17 @@ Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
     |) ENGINE = MergeTree()
     |ORDER BY (timestamp, id)";
 
+    Request = OPI_ClickHouse.GetRequestSettings("DROP TABLE IF EXISTS events_grpc"); // SKIP
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request); // SKIP
+
     Request = OPI_ClickHouse.GetRequestSettings(QueryText);
     Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
 
-    Process(Result, "ClickHouse", "CreateGRPCConnection", "Simple"); // SKIP
+    Process(Result, "ClickHouse", "CreateGRPCConnection", "TableCreation"); // SKIP
 
-    // Request (with data)
+    // Data insertion
 
-    QueryText = "INSERT INTO events FORMAT JSON";
+    QueryText = "INSERT INTO events_grpc FORMAT JSON";
 
     DataFormat = "JSON";
     DataArray  = New Array;
@@ -27180,15 +27275,7 @@ Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
     Record1.Insert("event_type", "click");
     Record1.Insert("payload"   , "{}");
 
-    Record2 = New Structure;
-    Record2.Insert("id"        , 2);
-    Record2.Insert("timestamp" , CurrentDate);
-    Record2.Insert("user_id"   , 200);
-    Record2.Insert("event_type", "hover");
-    Record2.Insert("payload"   , "{}");
-
     DataArray.Add(Record1);
-    DataArray.Add(Record2);
 
     Meta = New Array;
     Meta.Add(New Structure("name,type", "id"        , "UInt64"));
@@ -27198,15 +27285,228 @@ Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
     Meta.Add(New Structure("name,type", "payload"   , "String"));
 
     Data      = New Structure("meta,data", Meta, DataArray);
-    Database  = "default";
     RequestID = String(New UUID());
 
-    Request = OPI_ClickHouse.GetRequestSettings(QueryText, Database, RequestID, Data, DataFormat);
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText, "default", RequestID, Data, DataFormat);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    Process(Result, "ClickHouse", "CreateGRPCConnection", "DataInsert"); // SKIP
+
+    // Selection
+
+    SelectionText = "SELECT * FROM events_grpc";
+
+    Request = OPI_ClickHouse.GetRequestSettings(SelectionText, , , , "JSON");
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    Process(Result, "ClickHouse", "CreateGRPCConnection", "Selection"); // SKIP
+
+    // Request with external table via gRPC
+
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("id"  , "UInt64");
+    ColoumnsStruct.Insert("name", "String");
+
+    Tab       = Chars.Tab;
+    TableData = "1" + Tab + "John
+    |2" + Tab + "Jane";
+
+    ExternalTable = OPI_ClickHouse.GetExternalTableStructure("ext_grpc", ColoumnsStruct, TableData, "TSV");
+
+    ExternalTablesArray = New Array;
+    ExternalTablesArray.Add(ExternalTable);
+
+    QueryText = "SELECT * FROM ext_grpc";
+
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON", ExternalTablesArray);
     Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
 
     // END
 
-    Process(Result, "ClickHouse", "CreateGRPCConnection", "Complex");
+    Process(Result, "ClickHouse", "CreateGRPCConnection");
+
+EndProcedure
+
+Procedure ClickHouse_GetHTTPConnectionSettings(FunctionParameters)
+
+    URL = FunctionParameters["ClickHouse_Address"];
+
+    // No authorization
+
+    Result = OPI_ClickHouse.GetHTTPConnectionSettings(URL);
+
+    Process(Result, "ClickHouse", "GetHTTPConnectionSettings", "NoAuthorization"); // SKIP
+
+    // With basic authorization
+
+    Login    = FunctionParameters["ClickHouse_User"];
+    Password = FunctionParameters["ClickHouse_Password"];
+
+    Authorization = New Structure(Login, Password);
+
+    Result = OPI_ClickHouse.GetHTTPConnectionSettings(URL, Authorization);
+
+    Process(Result, "ClickHouse", "GetHTTPConnectionSettings", "BasicAuthorization"); // SKIP
+
+    // With JWT authorization
+
+    JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test";
+
+    Result = OPI_ClickHouse.GetHTTPConnectionSettings(URL, JWT);
+
+    Process(Result, "ClickHouse", "GetHTTPConnectionSettings", "JWTAuthorization"); // SKIP
+
+    // With additional headers
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("X-Custom-Header", "CustomValue");
+
+    Result = OPI_ClickHouse.GetHTTPConnectionSettings(URL, Authorization, AdditionalHeaders);
+
+    // END
+
+    Process(Result, "ClickHouse", "GetHTTPConnectionSettings");
+
+EndProcedure
+
+Procedure ClickHouse_GetGRPCConnectionSettings(FunctionParameters)
+
+    URL = FunctionParameters["ClickHouse_AddressGRPC"];
+
+    // No authorization
+
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL);
+
+    Process(Result, "ClickHouse", "GetGRPCConnectionSettings", "NoAuthorization"); // SKIP
+
+    // With basic authorization
+
+    Login    = FunctionParameters["ClickHouse_User"];
+    Password = FunctionParameters["ClickHouse_Password"];
+
+    Authorization = New Structure(Login, Password);
+
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+
+    Process(Result, "ClickHouse", "GetGRPCConnectionSettings", "BasicAuthorization"); // SKIP
+
+    // With JWT authorization
+
+    JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test";
+
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, JWT);
+
+    Process(Result, "ClickHouse", "GetGRPCConnectionSettings", "JWTAuthorization"); // SKIP
+
+    // With metadata
+
+    Meta = New Map;
+    Meta.Insert("custom-meta", "value");
+
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization, Meta);
+
+    Process(Result, "ClickHouse", "GetGRPCConnectionSettings", "WithMetadata"); // SKIP
+
+    // With TLS settings
+
+    Tls = OPI_ClickHouse.GetTlsSettings(True);
+
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization, , Tls);
+
+    // END
+
+    Process(Result, "ClickHouse", "GetGRPCConnectionSettings");
+
+EndProcedure
+
+Procedure ClickHouse_GetRequestSettings(FunctionParameters)
+
+    // Minimal request
+
+    QueryText = "SELECT 1";
+
+    Result = OPI_ClickHouse.GetRequestSettings(QueryText);
+
+    Process(Result, "ClickHouse", "GetRequestSettings", "Minimal"); // SKIP
+
+    // Full request
+
+    RequestID      = String(New UUID());
+    Data           = New Structure("meta,data", New Array, New Array);
+    Database       = "default";
+    ResponseFormat = "CSV";
+
+    AdditionalSettings = New Map;
+    AdditionalSettings.Insert("max_threads", "4");
+
+    ColoumnsStruct = New Structure("id,name", "UInt64", "String");
+    ExternalTable  = OPI_ClickHouse.GetExternalTableStructure("ext", ColoumnsStruct);
+
+    TableArray = New Array;
+    TableArray.Add(ExternalTable);
+
+    Result = OPI_ClickHouse.GetRequestSettings(QueryText
+        , Database
+        , RequestID
+        , Data
+        , ResponseFormat
+        , TableArray
+        , AdditionalSettings);
+
+    // END
+
+    Process(Result, "ClickHouse", "GetRequestSettings");
+
+EndProcedure
+
+Procedure ClickHouse_GetExternalTableStructure(FunctionParameters)
+
+    // Minimal structure
+
+    TableName      = "external_data";
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("id"  , "UInt64");
+    ColoumnsStruct.Insert("name", "String");
+
+    Result = OPI_ClickHouse.GetExternalTableStructure(TableName, ColoumnsStruct);
+
+    Process(Result, "ClickHouse", "GetExternalTableStructure", "Minimal"); // SKIP
+
+
+    // With TSV data
+
+    TableData = StrTemplate("1%1Test
+    |2%2Test2", Chars.Tab);
+
+    Result = OPI_ClickHouse.GetExternalTableStructure(TableName, ColoumnsStruct, TableData, "TSV");
+
+    // END
+
+    Process(Result, "ClickHouse", "GetExternalTableStructure");
+
+EndProcedure
+
+Procedure ClickHouse_GetSessionSettings(FunctionParameters)
+
+    SessionID = String(New UUID);
+    Check     = True;
+    Timeout   = 120;
+
+    Result = OPI_ClickHouse.GetSessionSettings(SessionID, Check, Timeout);
+
+    // END
+
+    Process(Result, "ClickHouse", "GetSessionSettings");
+
+EndProcedure
+
+Procedure ClickHouse_GetTlsSettings(FunctionParameters)
+
+    Result = OPI_ClickHouse.GetTlsSettings(False);
+
+    // END
+
+    Process(Result, "ClickHouse", "GetTlsSettings");
 
 EndProcedure
 
