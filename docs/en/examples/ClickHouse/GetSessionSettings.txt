@@ -1,0 +1,5 @@
+﻿    SessionID = String(New UUID);
+    Check     = True;
+    Timeout   = 120;
+
+    Result = OPI_ClickHouse.GetSessionSettings(SessionID, Check, Timeout);

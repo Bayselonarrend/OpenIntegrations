@@ -89,51 +89,6 @@ Function GetComposition() Export
     NewLine = CompositionTable.Add();
     NewLine.Library   = "clickhouse";
     NewLine.Module       = "OPI_ClickHouse";
-    NewLine.Method        = "GetGRPCConnectionSettings";
-    NewLine.SearchMethod  = "GETGRPCCONNECTIONSETTINGS";
-    NewLine.Parameter     = "--url";
-    NewLine.ParameterTrim = "-u";
-    NewLine.Description     = "Connection address with protocol and port";
-    NewLine.Region      = "Common methods";
-    NewLine.MethodDescription   = "Gets the settings structure for gRPC connection";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Library   = "clickhouse";
-    NewLine.Module       = "OPI_ClickHouse";
-    NewLine.Method        = "GetGRPCConnectionSettings";
-    NewLine.SearchMethod  = "GETGRPCCONNECTIONSETTINGS";
-    NewLine.Parameter     = "--auth";
-    NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Authorization: string for JWT, structure for basic (optional, def. val.. - Empty value)";
-    NewLine.Region      = "Common methods";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Library   = "clickhouse";
-    NewLine.Module       = "OPI_ClickHouse";
-    NewLine.Method        = "GetGRPCConnectionSettings";
-    NewLine.SearchMethod  = "GETGRPCCONNECTIONSETTINGS";
-    NewLine.Parameter     = "--meta";
-    NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "gRPC metadata structure, if necessary (optional, def. val.. - Empty value)";
-    NewLine.Region      = "Common methods";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Library   = "clickhouse";
-    NewLine.Module       = "OPI_ClickHouse";
-    NewLine.Method        = "GetGRPCConnectionSettings";
-    NewLine.SearchMethod  = "GETGRPCCONNECTIONSETTINGS";
-    NewLine.Parameter     = "--tls";
-    NewLine.ParameterTrim = "-t";
-    NewLine.Description     = "TLS settings. See GetTlsSettings (optional, def. val.. - Empty value)";
-    NewLine.Region      = "Common methods";
-
-
-    NewLine = CompositionTable.Add();
-    NewLine.Library   = "clickhouse";
-    NewLine.Module       = "OPI_ClickHouse";
     NewLine.Method        = "GetRequestSettings";
     NewLine.SearchMethod  = "GETREQUESTSETTINGS";
     NewLine.Parameter     = "--query";
@@ -286,6 +241,51 @@ Function GetComposition() Export
     NewLine.ParameterTrim = "-t";
     NewLine.Description     = "Session lifetime in seconds (optional, def. val.. - 60)";
     NewLine.Region      = "Common methods";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "clickhouse";
+    NewLine.Module       = "OPI_ClickHouse";
+    NewLine.Method        = "GetGRPCConnectionSettings";
+    NewLine.SearchMethod  = "GETGRPCCONNECTIONSETTINGS";
+    NewLine.Parameter     = "--url";
+    NewLine.ParameterTrim = "-u";
+    NewLine.Description     = "Connection address with protocol and port";
+    NewLine.Region      = "Grpc";
+    NewLine.MethodDescription   = "Gets the settings structure for gRPC connection";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "clickhouse";
+    NewLine.Module       = "OPI_ClickHouse";
+    NewLine.Method        = "GetGRPCConnectionSettings";
+    NewLine.SearchMethod  = "GETGRPCCONNECTIONSETTINGS";
+    NewLine.Parameter     = "--auth";
+    NewLine.ParameterTrim = "-a";
+    NewLine.Description     = "Authorization: string for JWT, structure for basic (optional, def. val.. - Empty value)";
+    NewLine.Region      = "Grpc";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "clickhouse";
+    NewLine.Module       = "OPI_ClickHouse";
+    NewLine.Method        = "GetGRPCConnectionSettings";
+    NewLine.SearchMethod  = "GETGRPCCONNECTIONSETTINGS";
+    NewLine.Parameter     = "--meta";
+    NewLine.ParameterTrim = "-m";
+    NewLine.Description     = "gRPC metadata structure, if necessary (optional, def. val.. - Empty value)";
+    NewLine.Region      = "Grpc";
+
+
+    NewLine = CompositionTable.Add();
+    NewLine.Library   = "clickhouse";
+    NewLine.Module       = "OPI_ClickHouse";
+    NewLine.Method        = "GetGRPCConnectionSettings";
+    NewLine.SearchMethod  = "GETGRPCCONNECTIONSETTINGS";
+    NewLine.Parameter     = "--tls";
+    NewLine.ParameterTrim = "-t";
+    NewLine.Description     = "TLS settings. See GetTlsSettings (optional, def. val.. - Empty value)";
+    NewLine.Region      = "Grpc";
 
 
     NewLine = CompositionTable.Add();

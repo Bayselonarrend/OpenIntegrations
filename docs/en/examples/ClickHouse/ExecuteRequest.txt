@@ -9,9 +9,9 @@
 
     Connection = OPI_ClickHouse.GetHTTPConnectionSettings(URL, Authorization);
 
-    // Request (simple)
+    // Request (table creation)
 
-    QueryText = "CREATE TABLE events (
+    QueryText = "CREATE TABLE IF NOT EXISTS events (
     | id UInt64,
     | timestamp DateTime,
     | user_id UInt32,
@@ -23,7 +23,7 @@
     Request = OPI_ClickHouse.GetRequestSettings(QueryText);
     Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
 
-    // Request (with data)
+    // Request (data insertion)
 
     QueryText = "INSERT INTO events FORMAT JSON";
 
@@ -61,4 +61,33 @@
     RequestID = String(New UUID());
 
     Request = OPI_ClickHouse.GetRequestSettings(QueryText, Database, RequestID, Data, DataFormat);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    // Request with external table
+
+    TableName      = "ext_users";
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("id"  , "UInt64");
+    ColoumnsStruct.Insert("name", "String");
+
+    Tab       = Chars.Tab;
+    TableData = "1" + Tab + "John
+    |2" + Tab + "Jane
+    |3" + Tab + "Bob";
+
+    ExternalTable = OPI_ClickHouse.GetExternalTableStructure(TableName, ColoumnsStruct, TableData, "TSV");
+
+    ExternalTablesArray = New Array;
+    ExternalTablesArray.Add(ExternalTable);
+
+    QueryText = "SELECT * FROM ext_users WHERE id > 1";
+
+    Request = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON", ExternalTablesArray);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    // Selection
+
+    SelectionText = "SELECT * FROM events";
+
+    Request = OPI_ClickHouse.GetRequestSettings(SelectionText, , , , "JSON");
     Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
