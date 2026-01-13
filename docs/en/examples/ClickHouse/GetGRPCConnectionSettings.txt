@@ -1,0 +1,33 @@
+﻿    URL = "http://localhost:9101";
+
+    // No authorization
+
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL);
+
+    // With basic authorization
+
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    Authorization = New Structure(Login, Password);
+
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+
+    // With JWT authorization
+
+    JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test";
+
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, JWT);
+
+    // With metadata
+
+    Meta = New Map;
+    Meta.Insert("custom-meta", "value");
+
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization, Meta);
+
+    // With TLS settings
+
+    Tls = OPI_ClickHouse.GetTlsSettings(True);
+
+    Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization, , Tls);
