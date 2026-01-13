@@ -12963,12 +12963,216 @@ Function Check_ClickHouse_ExecuteRequest(Val Result, Option)
         Result.Insert("body", GetStringFromBinaryData(Result["body"]));
     EndIf;
 
+    If Option = "TableCreation" Or Option = "DataInsert" Then
+
+        ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["status"]).Равно(200);
+
+    ElsIf Option = "JSONSelection" Or Option = "JSONCompactSelection" Then
+
+        ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["status"]).Равно(200);
+        ExpectsThat(Result["body"]).ИмеетТип("Map");
+
+    ElsIf Option = "CSVSelection" Or Option = "TSVSelection" Then
+
+        ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["status"]).Равно(200);
+        ExpectsThat(Result["body"]).ИмеетТип("String");
+
+    ElsIf Option = "ExternalTable" Then
+
+        ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["body"]).ИмеетТип("Map");
+        ExpectsThat(Result["body"]["rows"]).Равно(2);
+
+    ElsIf Option = "AdditionalSettings" Then
+
+        ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["body"]).ИмеетТип("Map");
+
+    ElsIf Option = "SessionCreation" Or Option = "SessionInsert" Then
+
+        ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["status"]).Равно(200);
+
+    Else
+
+        // Primary variant - Selection from session temporary table
+        ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["body"]).ИмеетТип("Map");
+        ExpectsThat(Result["body"]["rows"]).Равно(2);
+
+    EndIf;
+
     Return Result;
 
 EndFunction
 
 Function Check_ClickHouse_CreateGRPCConnection(Val Result, Option)
+
+    If Option = "Openning" Then
+
+        Result = String(TypeOf(Result));
+        ExpectsThat(Result).Равно("AddIn.OPI_GRPC.Main");
+
+    ElsIf Option = "TableCreation" Or Option = "DataInsert" Then
+
+        ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    ElsIf Option = "Selection" Then
+
+        ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    Else
+
+        ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+
+    EndIf;
+
     Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_GetHTTPConnectionSettings(Val Result, Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    ExpectsThat(Result.Property("address")).Равно(True);
+    ExpectsThat(Result.Property("transport")).Равно(True);
+    ExpectsThat(Result["transport"]).Равно("http");
+
+    If Option = "NoAuthorization" Then
+
+        ExpectsThat(Result.Property("auth_type")).Равно(False);
+
+    ElsIf Option = "BasicAuthorization" Then
+
+        ExpectsThat(Result["auth_type"]).Равно("basic");
+        ExpectsThat(Result.Property("user")).Равно(True);
+        ExpectsThat(Result.Property("password")).Равно(True);
+
+    ElsIf Option = "JWTAuthorization" Then
+
+        ExpectsThat(Result["auth_type"]).Равно("jwt");
+        ExpectsThat(Result.Property("token")).Равно(True);
+
+    ElsIf Not ValueIsFilled(Option) Then
+
+        ExpectsThat(Result.Property("headers")).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_GetGRPCConnectionSettings(Val Result, Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    ExpectsThat(Result.Property("address")).Равно(True);
+    ExpectsThat(Result.Property("transport")).Равно(True);
+    ExpectsThat(Result["transport"]).Равно("grpc");
+
+    If Option = "NoAuthorization" Then
+
+        ExpectsThat(Result.Property("auth_type")).Равно(False);
+
+    ElsIf Option = "BasicAuthorization" Then
+
+        ExpectsThat(Result["auth_type"]).Равно("basic");
+        ExpectsThat(Result.Property("user")).Равно(True);
+        ExpectsThat(Result.Property("password")).Равно(True);
+
+    ElsIf Option = "JWTAuthorization" Then
+
+        ExpectsThat(Result["auth_type"]).Равно("jwt");
+        ExpectsThat(Result.Property("token")).Равно(True);
+
+    ElsIf Option = "WithMetadata" Then
+
+        ExpectsThat(Result.Property("metadata")).Равно(True);
+
+    ElsIf Not ValueIsFilled(Option) Then
+
+        ExpectsThat(Result.Property("tls")).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_GetRequestSettings(Val Result, Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    ExpectsThat(Result.Property("query")).Равно(True);
+
+    If Option = "Minimal" Then
+
+        ExpectsThat(Result["query"]).Равно("SELECT 1");
+
+    Else
+
+        ExpectsThat(Result["database"]).Равно("default");
+        ExpectsThat(Result["id"]).Заполнено();
+        ExpectsThat(Result.Property("data")).Равно(True);
+        ExpectsThat(Result["format"]).Равно("CSV");
+        ExpectsThat(Result.Property("external_tables")).Равно(True);
+        ExpectsThat(Result["external_tables"]).ИмеетТип("Array");
+        ExpectsThat(Result.Property("settings")).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_GetExternalTableStructure(Val Result, Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    ExpectsThat(Result.Property("name")).Равно(True);
+    ExpectsThat(Result.Property("cols")).Равно(True);
+    ExpectsThat(Result["name"]).Равно("external_data");
+
+    If Option = "Minimal" Then
+
+        ExpectsThat(Result.Property("data")).Равно(False);
+
+    ElsIf Option = "TSV" Or Not ValueIsFilled(Option) Then
+
+        ExpectsThat(Result["format"]).Равно("TSV");
+        ExpectsThat(Result.Property("data")).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_GetSessionSettings(Val Result, Option)
+
+    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
+    ExpectsThat(Result["check"]).Равно(True);
+    ExpectsThat(Result["timeout"]).Равно(120);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_GetTlsSettings(Val Result, Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    Return Result;
+
 EndFunction
 
 #EndRegion

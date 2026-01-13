@@ -7002,7 +7002,17 @@
 {
 "lib": "ClickHouse",
 "name": "ExecuteRequest",
-"variant": "Simple"
+"variant": "TableCreation"
+},
+{
+"lib": "ClickHouse",
+"name": "ExecuteRequest",
+"variant": "DataInsert"
+},
+{
+"lib": "ClickHouse",
+"name": "ExecuteRequest",
+"variant": "ExternalTable"
 },
 {
 "lib": "ClickHouse",
@@ -7011,17 +7021,132 @@
 },
 {
 "lib": "ClickHouse",
+"name": "ExecuteRequest",
+"variant": "CSVSelection"
+},
+{
+"lib": "ClickHouse",
+"name": "ExecuteRequest",
+"variant": "TSVSelection"
+},
+{
+"lib": "ClickHouse",
+"name": "ExecuteRequest",
+"variant": "JSONCompactSelection"
+},
+{
+"lib": "ClickHouse",
+"name": "ExecuteRequest",
+"variant": "AdditionalSettings"
+},
+{
+"lib": "ClickHouse",
+"name": "ExecuteRequest",
+"variant": "SessionCreation"
+},
+{
+"lib": "ClickHouse",
+"name": "ExecuteRequest",
+"variant": "SessionInsert"
+},
+{
+"lib": "ClickHouse",
+"name": "CreateGRPCConnection",
+"variant": "Openning"
+},
+{
+"lib": "ClickHouse",
+"name": "CreateGRPCConnection",
+"variant": "TableCreation"
+},
+{
+"lib": "ClickHouse",
+"name": "CreateGRPCConnection",
+"variant": "DataInsert"
+},
+{
+"lib": "ClickHouse",
+"name": "CreateGRPCConnection",
+"variant": "Selection"
+},
+{
+"lib": "ClickHouse",
 "name": "CreateGRPCConnection",
 "variant": ""
 },
 {
 "lib": "ClickHouse",
-"name": "CreateGRPCConnection",
-"variant": "Simple"
+"name": "GetHTTPConnectionSettings",
+"variant": "NoAuthorization"
 },
 {
 "lib": "ClickHouse",
-"name": "CreateGRPCConnection",
-"variant": "Complex"
+"name": "GetHTTPConnectionSettings",
+"variant": "BasicAuthorization"
+},
+{
+"lib": "ClickHouse",
+"name": "GetHTTPConnectionSettings",
+"variant": "JWTAuthorization"
+},
+{
+"lib": "ClickHouse",
+"name": "GetHTTPConnectionSettings",
+"variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "GetGRPCConnectionSettings",
+"variant": "NoAuthorization"
+},
+{
+"lib": "ClickHouse",
+"name": "GetGRPCConnectionSettings",
+"variant": "BasicAuthorization"
+},
+{
+"lib": "ClickHouse",
+"name": "GetGRPCConnectionSettings",
+"variant": "JWTAuthorization"
+},
+{
+"lib": "ClickHouse",
+"name": "GetGRPCConnectionSettings",
+"variant": "WithMetadata"
+},
+{
+"lib": "ClickHouse",
+"name": "GetGRPCConnectionSettings",
+"variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "GetRequestSettings",
+"variant": "Minimal"
+},
+{
+"lib": "ClickHouse",
+"name": "GetRequestSettings",
+"variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "GetExternalTableStructure",
+"variant": "Minimal"
+},
+{
+"lib": "ClickHouse",
+"name": "GetExternalTableStructure",
+"variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "GetSessionSettings",
+"variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "GetTlsSettings",
+"variant": ""
 }
 ]

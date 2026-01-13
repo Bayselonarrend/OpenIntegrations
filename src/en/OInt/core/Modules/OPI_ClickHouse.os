@@ -125,38 +125,6 @@ Function GetHTTPConnectionSettings(Val Address
 
 EndFunction
 
-// Get gRPC connection settings
-// Gets the settings structure for gRPC connection
-//
-// Parameters:
-// Address - String - Connection address with protocol and port - url
-// Authorization - String, Structure Of KeyAndValue - Authorization: string for JWT, structure for basic - auth
-// Meta - Structure Of KeyAndValue - gRPC metadata structure, if necessary - meta
-// Tls - Structure Of KeyAndValue - TLS settings. See GetTlsSettings - tls
-//
-// Returns:
-// Structure Of KeyAndValue - Connection settings structure
-Function GetGRPCConnectionSettings(Val Address
-    , Val Authorization = Undefined
-    , Val Meta = Undefined
-    , Val Tls = Undefined) Export
-
-    ConnectionSettings = New Structure;
-    OPI_Tools.AddField("address"  , Address , "String"     , ConnectionSettings);
-    OPI_Tools.AddField("tls"      , Tls     , "KeyAndValue", ConnectionSettings);
-    OPI_Tools.AddField("metadata" , Meta    , "KeyAndValue", ConnectionSettings);
-    OPI_Tools.AddField("transport", "grpc"  , "String"     , ConnectionSettings);
-
-    If Authorization = Undefined Then
-        Return ConnectionSettings;
-    EndIf;
-
-    CompleteAuthorizationSettings(Authorization, ConnectionSettings);
-
-    Return ConnectionSettings;
-
-EndFunction
-
 // Get request settings
 // Forms the request description structure
 //
@@ -240,10 +208,6 @@ Function GetSessionSettings(Val SessionID = Undefined
     SessionSettings = New Structure;
     HasSessionID    = SessionID <> Undefined;
 
-    If HasSessionID Then
-        SessionID = String(New UUID());
-    EndIf;
-
     If CheckSession  = Undefined Then
         CheckSession = HasSessionID;
     EndIf;
@@ -259,6 +223,38 @@ EndFunction
 #EndRegion
 
 #Region GRPC
+
+// Get gRPC connection settings
+// Gets the settings structure for gRPC connection
+//
+// Parameters:
+// Address - String - Connection address with protocol and port - url
+// Authorization - String, Structure Of KeyAndValue - Authorization: string for JWT, structure for basic - auth
+// Meta - Structure Of KeyAndValue - gRPC metadata structure, if necessary - meta
+// Tls - Structure Of KeyAndValue - TLS settings. See GetTlsSettings - tls
+//
+// Returns:
+// Structure Of KeyAndValue - Connection settings structure
+Function GetGRPCConnectionSettings(Val Address
+    , Val Authorization = Undefined
+    , Val Meta = Undefined
+    , Val Tls = Undefined) Export
+
+    ConnectionSettings = New Structure;
+    OPI_Tools.AddField("address"  , Address , "String"     , ConnectionSettings);
+    OPI_Tools.AddField("tls"      , Tls     , "KeyAndValue", ConnectionSettings);
+    OPI_Tools.AddField("metadata" , Meta    , "KeyAndValue", ConnectionSettings);
+    OPI_Tools.AddField("transport", "grpc"  , "String"     , ConnectionSettings);
+
+    If Authorization = Undefined Then
+        Return ConnectionSettings;
+    EndIf;
+
+    CompleteAuthorizationSettings(Authorization, ConnectionSettings);
+
+    Return ConnectionSettings;
+
+EndFunction
 
 // Create GRPC connection !NOCLI
 // Opens a GRPC connection for working with ClickHouse
@@ -301,6 +297,56 @@ Function CreateGRPCConnection(Val ConnectionSettings) Export
     EndIf;
 
     Return Connection;
+
+EndFunction
+
+// Open client GRPC stream !NOCLI
+// Initializes a client stream for exchange
+//
+// Parameters:
+// Connection - Arbitrary - GRPC connection object - conn
+// Timeout - Number - Timeout (in ms) - tout
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function OpenClientGRPCStream(Val Connection, Val Timeout = 10000) Export
+
+    Return OpenGRPCStream(Connection, "client", , , Timeout);
+
+EndFunction
+
+// Open server GRPC stream !NOCLI
+// Initializes a server stream for exchange
+//
+// Parameters:
+// Connection - Arbitrary - GRPC connection object - conn
+// Request - Structure Of KeyAndValue - Request data. See GetRequestSettings - req
+// Session - Structure Of KeyAndValue - Session settings. See GetSessionSettings - session
+// Timeout - Number - Timeout (in ms) - tout
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function OpenServerGRPCStream(Val Connection
+    , Val Request = Undefined
+    , Val Session = Undefined
+    , Val Timeout = 10000) Export
+
+    Return OpenGRPCStream(Connection, "server", Request, Session, Timeout);
+
+EndFunction
+
+// Open bidirectional GRPC stream !NOCLI
+// Initializes a bidirectional stream for exchange
+//
+// Parameters:
+// Connection - Arbitrary - GRPC connection object - conn
+// Timeout - Number - Timeout (in ms) - tout
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function OpenBidirectionalGRPCStream(Val Connection, Val Timeout = 10000) Export
+
+    Return OpenGRPCStream(Connection, "bidi", , , Timeout);
 
 EndFunction
 
@@ -355,6 +401,23 @@ Procedure CompleteAuthorizationSettings(Val Authorization, ConnectionSettings)
 
 EndProcedure
 
+Function IsValidJSONFormat(Val Format)
+
+    Return Format = "JSON"
+        Or Format = "JSONCompact"
+        Or Format = "JSONColumns"
+        Or Format = "JSONColumnsWithMetadata";
+
+EndFunction
+
+Function IsStringFormat(Val Format)
+
+    Return StrFind(Format, "CSV") > 0
+        Or StrFind(Format, "TSV") > 0
+        Or StrFind(Format, "Pretty") > 0;
+
+EndFunction
+
 #EndRegion
 
 #Region HTTP
@@ -384,17 +447,17 @@ Function ExecuteRequestViaHTTP(Val Connection, Val Request, Val Session)
         .AddHeader("X-ClickHouse-Database", Database, True)
         .SetBinaryBody(Data);
 
-    SetAdditionalHTTPParameters(HTTPClient, Request);
-    SetAdditionalHTTPHeaders(HTTPClient, Connection);
     SetHTTPAuthorization(HTTPClient, Connection);
     SetHTTPExternalTables(HTTPClient, ExternalTables);
+    SetHTTPSession(HTTPClient, Session);
+    SetAdditionalHTTPParameters(HTTPClient, Request);
+    SetAdditionalHTTPHeaders(HTTPClient, Connection);
+
 
     HTTPClient.ProcessRequest("POST", True);
 
     If HTTPClient.Error Then
-
         Response = FormatHTTPErrorResponse(HTTPClient);
-
     Else
 
         Try
@@ -407,8 +470,15 @@ Function ExecuteRequestViaHTTP(Val Connection, Val Request, Val Session)
 
             If ResponseCode < 300 Then
 
-                Result       = True;
-                ResponseBody = HTTPClient.ReturnResponseAsJSONObject();
+                Result = True;
+
+                If IsValidJSONFormat(DataFormat) Then
+                    ResponseBody = HTTPClient.ReturnResponseAsJSONObject();
+                ElsIf IsStringFormat(DataFormat) Then
+                    ResponseBody = HTTPClient.ReturnResponseAsString();
+                Else
+                    ResponseBody = HTTPClient.ReturnResponseAsBinaryData();
+                EndIf;
 
                 If OPI_Tools.IsCLI() Then
 
@@ -488,7 +558,7 @@ Procedure SetHTTPAuthorization(HTTPClient, Val Connection)
 
     ElsIf Authorization = "basic" Then
 
-        Login    = OPI_Tools.GetOr(Connection, "user", Undefined);
+        Login    = OPI_Tools.GetOr(Connection, "user" , Undefined);
         Password = OPI_Tools.GetOr(Connection, "password", Undefined);
 
         HTTPClient
@@ -542,9 +612,30 @@ Procedure SetHTTPExternalTables(HTTPClient, Val ExternalTables)
         HTTPClient
             .AddURLParameter(FormatParameterName   , TableFormat    , True)
             .AddURLParameter(StructureParameterName, ColumnsAsString, True)
+
             .AddMultipartFormDataFile(TableName, FileName, TableData, FileDataType, True);
 
     EndDo;
+
+EndProcedure
+
+Procedure SetHTTPSession(HTTPClient, Val Session)
+
+    If Not ValueIsFilled(Session) Then
+        Return;
+    EndIf;
+
+    ErrorText = "An incorrect session information structure was passed";
+    OPI_TypeConversion.GetKeyValueCollection(Session, ErrorText);
+
+    SessionID = OPI_Tools.GetOr(Session, "id" , Undefined);
+    Check     = OPI_Tools.GetOr(Session, "check" , Undefined);
+    Timeout   = OPI_Tools.GetOr(Session, "timeout", Undefined);
+
+    HTTPClient
+        .AddURLParameter("session_id"     , SessionID, True)
+        .AddURLParameter("session_check"  , Check    , True)
+        .AddURLParameter("session_timeout", Timeout  , True);
 
 EndProcedure
 
@@ -568,6 +659,64 @@ Function ExecuteRequestViaGRPC(Val Connection, Val Request, Val Session)
         Return Connector;
     EndIf;
 
+    GRPCRequest = FormGRPCRequest(ConnectionSettings, Request, Session);
+
+    Service = GetGRPCServiceName();
+    Method  = "ExecuteQuery";
+    Result  = OPI_GRPC.ExecuteMethod(Connector, Service, Method, GRPCRequest);
+
+    ProcessGRPCResponse(Result);
+
+    If CloseConnection Then
+        OPI_GRPC.CloseConnection(Connector);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function OpenGRPCStream(Connection
+    , Val View
+    , Val Request = Undefined
+    , Val Session = Undefined
+    , Val Timeout = 10000)
+
+    Service = GetGRPCServiceName();
+
+    If View = "client" Then
+
+        Method = "ExecuteQueryWithStreamInput";
+        Result = OPI_GRPC.InitializeClientStream(Connection, Service, Method, Timeout);
+
+    ElsIf View = "server" Then
+
+        Method      = "ExecuteQueryWithStreamOutput";
+        GRPCRequest = FormGRPCRequest(Connection, Request, Session);
+        Result      = OPI_GRPC.InitializeServerStream(Connection, Service, Method, GRPCRequest, Timeout);
+
+    Else
+
+        Method = "ExecuteQueryWithStreamIO";
+        Result = OPI_GRPC.InitializeBidirectionalStream(Connection, Service, Method, Timeout);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function FormGRPCRequest(Val Connection, Val Request, Val Session)
+
+    If Request = Undefined Then
+        Return Request;
+    EndIf;
+
+    If OPI_GRPC.IsConnector(Connection) Then
+        ConnectionSettings = OPI_Tools.JsonToStructure(Connection.GetSettings());
+    Else
+        ConnectionSettings = Connection;
+    EndIf;
+
     Data               = OPI_Tools.GetOr(Request, "data" , Undefined);
     RequestID          = OPI_Tools.GetOr(Request, "id" , Undefined);
     QueryText          = OPI_Tools.GetOr(Request, "query" , Undefined);
@@ -586,16 +735,15 @@ Function ExecuteRequestViaGRPC(Val Connection, Val Request, Val Session)
 
     SetGRPCAuthorization(GRPCRequest, ConnectionSettings);
     SetGRPCExternalTables(GRPCRequest, ExternalTables);
+    SetGRPCSession(GRPCRequest, Session);
 
-    Service = "clickhouse.grpc.ClickHouse";
-    Method  = "ExecuteQuery";
-    Result  = OPI_GRPC.ExecuteMethod(Connector, Service, Method, GRPCRequest);
+    Return GRPCRequest;
 
-    If CloseConnection Then
-        OPI_GRPC.CloseConnection(Connector);
-    EndIf;
+EndFunction
 
-    Return Result;
+Function GetGRPCServiceName()
+
+    Return "clickhouse.grpc.ClickHouse";
 
 EndFunction
 
@@ -643,6 +791,10 @@ Procedure SetGRPCExternalTables(GRPCRequest, Val ExternalTables)
         TableData    = OPI_Tools.GetOr(Table, "data" , Undefined);
         TableColumns = OPI_Tools.GetOr(Table, "cols" , Undefined);
 
+        If TableData <> Undefined Then
+            OPI_TypeConversion.GetBinaryData(TableData, True);
+        EndIf;
+
         ErrorText = StrTemplate("Incorrect structure of columns for the table ""%1""", TableName);
         OPI_TypeConversion.GetKeyValueCollection(TableColumns, ErrorText);
 
@@ -674,6 +826,68 @@ Procedure SetGRPCExternalTables(GRPCRequest, Val ExternalTables)
 
 EndProcedure
 
+Procedure SetGRPCSession(GRPCRequest, Val Session)
+
+    If Not ValueIsFilled(Session) Then
+        Return;
+    EndIf;
+
+    ErrorText = "An incorrect session information structure was passed";
+    OPI_TypeConversion.GetKeyValueCollection(Session, ErrorText);
+
+    SessionID = OPI_Tools.GetOr(Session, "id" , Undefined);
+    Check     = OPI_Tools.GetOr(Session, "check" , Undefined);
+    Timeout   = OPI_Tools.GetOr(Session, "timeout", Undefined);
+
+    OPI_Tools.AddField("session_id"     , SessionID, "String" , GRPCRequest);
+    OPI_Tools.AddField("session_check"  , Check    , "Boolean", GRPCRequest);
+    OPI_Tools.AddField("session_timeout", Timeout  , "Number" , GRPCRequest);
+
+EndProcedure
+
+Procedure ProcessGRPCResponse(Response)
+
+    If Not OPI_Tools.GetOr(Response, "result", False) Then
+        Return;
+    EndIf;
+
+    Format = OPI_Tools.GetOr(Response, "output_format", Undefined);
+
+    If Not ValueIsFilled(Format) Then
+        Return;
+    EndIf;
+
+    B64String = OPI_Tools.CollectionFieldExists(Response, "data.output.BYTES");
+
+    If ValueIsFilled(B64String) Then
+
+        If IsValidJSONFormat(Format) Then
+
+            Value   = GetBinaryDataFromBase64String(B64String);
+            Success = False;
+            OPI_TypeConversion.GetCollection(Value, , Success);
+
+            If Not Success Then
+                Value = GetStringFromBinaryData(Value);
+            EndIf;
+
+        ElsIf IsStringFormat(Format) Then
+
+            Value = GetBinaryDataFromBase64String(B64String);
+            Value = GetStringFromBinaryData(Value);
+
+        Else
+
+            Return;
+
+        EndIf;
+
+        Response["data"]["output"] = Value;
+
+    EndIf;
+
+EndProcedure
+
 #EndRegion
 
 #EndRegion
@@ -688,10 +902,6 @@ Function ПолучитьНастройкиСоединенияHTTP(Val Адре
 	Return GetHTTPConnectionSettings(Адрес, Авторизация, ДопЗаголовки);
 EndFunction
 
-Function ПолучитьНастройкиСоединенияGRPC(Val Адрес, Val Авторизация = Undefined, Val Meta = Undefined, Val Tls = Undefined) Export
-	Return GetGRPCConnectionSettings(Адрес, Авторизация, Meta, Tls);
-EndFunction
-
 Function ПолучитьНастройкиЗапроса(Val Текст, Val БазаДанных = Undefined, Val IDЗапроса = Undefined, Val Данные = Undefined, Val ФорматОтвета = "JSON", Val ВнешниеТаблицы = Undefined, Val Настройки = Undefined) Export
 	Return GetRequestSettings(Текст, БазаДанных, IDЗапроса, Данные, ФорматОтвета, ВнешниеТаблицы, Настройки);
 EndFunction
@@ -704,8 +914,24 @@ Function ПолучитьНастройкиСессии(Val IDСессии = Und
 	Return GetSessionSettings(IDСессии, ПроверятьСессию, Таймаут);
 EndFunction
 
+Function ПолучитьНастройкиСоединенияGRPC(Val Адрес, Val Авторизация = Undefined, Val Meta = Undefined, Val Tls = Undefined) Export
+	Return GetGRPCConnectionSettings(Адрес, Авторизация, Meta, Tls);
+EndFunction
+
 Function ОткрытьСоединениеGRPC(Val НастройкиСоединения) Export
 	Return CreateGRPCConnection(НастройкиСоединения);
+EndFunction
+
+Function ОткрытьКлиентскийПотокGRPC(Val Соединение, Val Таймаут = 10000) Export
+	Return OpenClientGRPCStream(Соединение, Таймаут);
+EndFunction
+
+Function ОткрытьСерверныйПотокGRPC(Val Соединение, Val Запрос = Undefined, Val Сессия = Undefined, Val Таймаут = 10000) Export
+	Return OpenServerGRPCStream(Соединение, Запрос, Сессия, Таймаут);
+EndFunction
+
+Function ОткрытьДвунаправленныйПотокGRPC(Val Соединение, Val Таймаут = 10000) Export
+	Return OpenBidirectionalGRPCStream(Соединение, Таймаут);
 EndFunction
 
 Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export

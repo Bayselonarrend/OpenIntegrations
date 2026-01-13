@@ -1,0 +1,29 @@
+﻿    // Minimal request
+
+    QueryText = "SELECT 1";
+
+    Result = OPI_ClickHouse.GetRequestSettings(QueryText);
+
+    // Full request
+
+    RequestID      = String(New UUID());
+    Data           = New Structure("meta,data", New Array, New Array);
+    Database       = "default";
+    ResponseFormat = "CSV";
+
+    AdditionalSettings = New Map;
+    AdditionalSettings.Insert("max_threads", "4");
+
+    ColoumnsStruct = New Structure("id,name", "UInt64", "String");
+    ExternalTable  = OPI_ClickHouse.GetExternalTableStructure("ext", ColoumnsStruct);
+
+    TableArray = New Array;
+    TableArray.Add(ExternalTable);
+
+    Result = OPI_ClickHouse.GetRequestSettings(QueryText
+        , Database
+        , RequestID
+        , Data
+        , ResponseFormat
+        , TableArray
+        , AdditionalSettings);

@@ -1,5 +1,5 @@
 ﻿---
-sidebar_position: 5
+sidebar_position: 4
 description: Get external table structure and other functions to work with ClickHouse in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ClickHouse]
 ---
@@ -26,7 +26,23 @@ import TabItem from '@theme/TabItem';
 
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    // Minimal structure
 
+    TableName      = "external_data";
+    ColoumnsStruct = New Structure;
+    ColoumnsStruct.Insert("id"  , "UInt64");
+    ColoumnsStruct.Insert("name", "String");
+
+    Result = OPI_ClickHouse.GetExternalTableStructure(TableName, ColoumnsStruct);
+
+    // With TSV data
+
+    TableData = StrTemplate("1%1Test
+    |2%2Test2", Chars.Tab);
+
+    Result = OPI_ClickHouse.GetExternalTableStructure(TableName, ColoumnsStruct, TableData, "TSV");
+```
  
 
 

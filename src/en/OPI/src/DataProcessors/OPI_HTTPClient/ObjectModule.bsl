@@ -1014,7 +1014,7 @@ Function AddMultipartFormDataFile(Val FieldName
         OPI_TypeConversion.GetBinaryData(Data, True, True);
         OPI_TypeConversion.GetBoolean(IgnoreEmpty);
 
-        If IgnoreEmpty And Data.Size = 0 Then
+        If IgnoreEmpty And Data.Size() = 0 Then
             AddLog(StrTemplate("AddMultipartFormDataFile: empty file ignored, field %1", FieldName));
             Return ThisObject;
         EndIf;

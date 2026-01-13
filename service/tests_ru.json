@@ -7002,7 +7002,17 @@
 {
 "lib": "ClickHouse",
 "name": "ВыполнитьЗапрос",
-"variant": "Простой"
+"variant": "СозданиеТаблицы"
+},
+{
+"lib": "ClickHouse",
+"name": "ВыполнитьЗапрос",
+"variant": "ВставкаДанных"
+},
+{
+"lib": "ClickHouse",
+"name": "ВыполнитьЗапрос",
+"variant": "ВнешняяТаблица"
 },
 {
 "lib": "ClickHouse",
@@ -7011,17 +7021,132 @@
 },
 {
 "lib": "ClickHouse",
+"name": "ВыполнитьЗапрос",
+"variant": "ВыборкаCSV"
+},
+{
+"lib": "ClickHouse",
+"name": "ВыполнитьЗапрос",
+"variant": "ВыборкаTSV"
+},
+{
+"lib": "ClickHouse",
+"name": "ВыполнитьЗапрос",
+"variant": "ВыборкаJSONCompact"
+},
+{
+"lib": "ClickHouse",
+"name": "ВыполнитьЗапрос",
+"variant": "ДопНастройки"
+},
+{
+"lib": "ClickHouse",
+"name": "ВыполнитьЗапрос",
+"variant": "СессияСоздание"
+},
+{
+"lib": "ClickHouse",
+"name": "ВыполнитьЗапрос",
+"variant": "СессияВставка"
+},
+{
+"lib": "ClickHouse",
+"name": "ОткрытьСоединениеGRPC",
+"variant": "Открытие"
+},
+{
+"lib": "ClickHouse",
+"name": "ОткрытьСоединениеGRPC",
+"variant": "СозданиеТаблицы"
+},
+{
+"lib": "ClickHouse",
+"name": "ОткрытьСоединениеGRPC",
+"variant": "ВставкаДанных"
+},
+{
+"lib": "ClickHouse",
+"name": "ОткрытьСоединениеGRPC",
+"variant": "Выборка"
+},
+{
+"lib": "ClickHouse",
 "name": "ОткрытьСоединениеGRPC",
 "variant": ""
 },
 {
 "lib": "ClickHouse",
-"name": "ОткрытьСоединениеGRPC",
-"variant": "Простой"
+"name": "ПолучитьНастройкиСоединенияHTTP",
+"variant": "БезАвторизации"
 },
 {
 "lib": "ClickHouse",
-"name": "ОткрытьСоединениеGRPC",
-"variant": "Сложный"
+"name": "ПолучитьНастройкиСоединенияHTTP",
+"variant": "BasicАвторизация"
+},
+{
+"lib": "ClickHouse",
+"name": "ПолучитьНастройкиСоединенияHTTP",
+"variant": "JWTАвторизация"
+},
+{
+"lib": "ClickHouse",
+"name": "ПолучитьНастройкиСоединенияHTTP",
+"variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "ПолучитьНастройкиСоединенияGRPC",
+"variant": "БезАвторизации"
+},
+{
+"lib": "ClickHouse",
+"name": "ПолучитьНастройкиСоединенияGRPC",
+"variant": "BasicАвторизация"
+},
+{
+"lib": "ClickHouse",
+"name": "ПолучитьНастройкиСоединенияGRPC",
+"variant": "JWTАвторизация"
+},
+{
+"lib": "ClickHouse",
+"name": "ПолучитьНастройкиСоединенияGRPC",
+"variant": "СМетаданными"
+},
+{
+"lib": "ClickHouse",
+"name": "ПолучитьНастройкиСоединенияGRPC",
+"variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "ПолучитьНастройкиЗапроса",
+"variant": "Минимальный"
+},
+{
+"lib": "ClickHouse",
+"name": "ПолучитьНастройкиЗапроса",
+"variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "ПолучитьСтруктуруВнешнейТаблицы",
+"variant": "Минимальная"
+},
+{
+"lib": "ClickHouse",
+"name": "ПолучитьСтруктуруВнешнейТаблицы",
+"variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "ПолучитьНастройкиСессии",
+"variant": ""
+},
+{
+"lib": "ClickHouse",
+"name": "ПолучитьНастройкиTls",
+"variant": ""
 }
 ]

@@ -25,7 +25,35 @@ import TabItem from '@theme/TabItem';
 
 
 
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "http://localhost:8123";
 
+    // No authorization
+
+    Result = OPI_ClickHouse.GetHTTPConnectionSettings(URL);
+
+    // With basic authorization
+
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    Authorization = New Structure(Login, Password);
+
+    Result = OPI_ClickHouse.GetHTTPConnectionSettings(URL, Authorization);
+
+    // With JWT authorization
+
+    JWT = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.test";
+
+    Result = OPI_ClickHouse.GetHTTPConnectionSettings(URL, JWT);
+
+    // With additional headers
+
+    AdditionalHeaders = New Map;
+    AdditionalHeaders.Insert("X-Custom-Header", "CustomValue");
+
+    Result = OPI_ClickHouse.GetHTTPConnectionSettings(URL, Authorization, AdditionalHeaders);
+```
  
 
 
