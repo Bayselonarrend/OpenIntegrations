@@ -149,7 +149,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETREQUESTSETTINGS";
     NewLine.Parameter     = "--ext";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "External tables data. See GetExternalTablesStructure (optional, def. val.. - Empty value)";
+    NewLine.Description     = "External tables data. See GetExternalTableStructure (optional, def. val.. - Empty value)";
     NewLine.Region      = "Common methods";
 
 

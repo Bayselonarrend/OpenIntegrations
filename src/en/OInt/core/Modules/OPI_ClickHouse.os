@@ -139,7 +139,7 @@ EndFunction
 // RequestID - String - Unique request ID, if necessary - id
 // Data - Arbitrary - String, file, or binary data of the request - data
 // ResponseFormat - String - Response format: JSON, CSV, TSV, etc.. - format
-// ExternalTables - Array of Structure - External tables data. See GetExternalTablesStructure - ext
+// ExternalTables - Array of Structure - External tables data. See GetExternalTableStructure - ext
 // Settings - Map Of KeyAndValue - Additional query parameters of the request - settings
 //
 // Returns:
