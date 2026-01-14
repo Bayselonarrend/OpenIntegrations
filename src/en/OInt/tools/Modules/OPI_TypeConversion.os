@@ -152,8 +152,8 @@ Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
 
             If (Not ThisIsCollection(Value)) Or Not ValueIsFilled(Value) Then
 
-                Success           = False;
-                Value = InitialValue;
+                Success = False;
+                Value   = InitialValue;
                 OPI_Tools.ValueToArray(Value);
 
             EndIf;
@@ -164,8 +164,8 @@ Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
 
     Except
 
-        Success     = False;
-        Value = InitialValue;
+        Success = False;
+        Value   = InitialValue;
         OPI_Tools.ValueToArray(Value);
 
     EndTry;
