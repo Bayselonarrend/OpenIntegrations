@@ -34,6 +34,7 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
+// Раскомментировать, если выполняется OneScript
 #Использовать "./internal"
 
 #Область СлужебныйПрограммныйИнтерфейс

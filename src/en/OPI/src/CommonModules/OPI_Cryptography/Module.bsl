@@ -34,6 +34,9 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
+// Uncomment if OneScript is executed
+// #Use "./internal"
+
 #Region Internal
 
 Function CreateSignature(Val SignKey, Val SignatureData, Val Algorithm, Val HashFunc) Export

@@ -34,7 +34,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
-#Использовать "./internal"
+// Uncomment if OneScript is executed
+#Use "./internal"
 
 #Region Internal
 
