@@ -1,3 +1,4 @@
+#Use "../../../oint/tools"
 
 Var ModuleCommandMapping;
 Var Version;
