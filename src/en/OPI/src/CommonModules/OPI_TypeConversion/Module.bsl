@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_TypeConversion.os
+﻿// OneScript: ./OInt/tools/Modules/internal/Modules/internal/Modules/OPI_TypeConversion.os
 
 // MIT License
 
@@ -36,7 +36,6 @@
 //@skip-check undefined-function-or-procedure
 //@skip-check wrong-string-literal-content
 
-// #Use "./internal"
 #Region Internal
 
 Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export
@@ -54,7 +53,7 @@ Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export
 
         ElsIf ThisIsCollection(Value) Then
 
-            Value = OPI_Tools.JSONString(Value);
+            Value = JSONString(Value);
             Value = GetBinaryDataFromString(Value);
 
         Else
@@ -87,7 +86,7 @@ Procedure GetBinaryOrStream(Value) Export
     EndIf;
 
     ValueES = Value;
-    OPI_Tools.RestoreEscapeSequences(ValueES);
+    RestoreEscapeSequences(ValueES);
 
     File = New File(ValueES);
 
@@ -122,11 +121,11 @@ Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
             If TypeOf(Value) = Type("BinaryData") Then
                 Value        = GetStringFromBinaryData(Value);
             Else
-                Value        = OPI_Tools.NumberToString(Value);
+                Value        = NumberToString(Value);
             EndIf;
 
             ValueES = Value;
-            OPI_Tools.RestoreEscapeSequences(ValueES);
+            RestoreEscapeSequences(ValueES);
 
             File       = New File(ValueES);
             JSONReader = New JSONReader;
@@ -154,7 +153,7 @@ Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
 
                 Success = False;
                 Value   = InitialValue;
-                OPI_Tools.ValueToArray(Value);
+                ValueToArray(Value);
 
             EndIf;
 
@@ -166,7 +165,7 @@ Procedure GetCollection(Value, ByNetwork = True, Success = False) Export
 
         Success = False;
         Value   = InitialValue;
-        OPI_Tools.ValueToArray(Value);
+        ValueToArray(Value);
 
     EndTry;
 
@@ -192,7 +191,7 @@ Procedure GetArray(Value) Export
     GetCollection(Value);
 
     If Not TypeOf(Value) = Type("Array") Then
-        OPI_Tools.ValueToArray(Value);
+        ValueToArray(Value);
     EndIf;
 
 EndProcedure
@@ -231,14 +230,14 @@ Procedure GetLine(Value, Val FromSource = False) Export
 
         If ThisIsSymbolic(Value) Then
 
-            Value = OPI_Tools.NumberToString(Value);
+            Value = NumberToString(Value);
 
             If Not FromSource Then
                 Return;
             EndIf;
 
             ValueES = Value;
-            OPI_Tools.RestoreEscapeSequences(ValueES);
+            RestoreEscapeSequences(ValueES);
 
             File = New File(ValueES);
 
@@ -256,7 +255,7 @@ Procedure GetLine(Value, Val FromSource = False) Export
 
             Else
 
-                Value = OPI_Tools.NumberToString(Value);
+                Value = NumberToString(Value);
 
             EndIf;
 
@@ -266,7 +265,7 @@ Procedure GetLine(Value, Val FromSource = False) Export
 
         ElsIf ThisIsCollection(Value) Then
 
-            Value = OPI_Tools.JSONString(Value);
+            Value = JSONString(Value);
 
         ElsIf TypeOf(Value) = Type("XMLWriter") Then
 
@@ -365,7 +364,7 @@ EndProcedure
 Procedure GetFileOnDisk(Value, Val Extension = "tmp") Export
 
     ReturnStructure = New Structure("Path,Temporary", "", False);
-    ValueAsString   = OPI_Tools.NumberToString(Value);
+    ValueAsString   = NumberToString(Value);
     ValueFile       = New File(ValueAsString);
 
     If ValueFile.Exists() Then
@@ -394,6 +393,96 @@ Procedure GetFileOnDisk(Value, Val Extension = "tmp") Export
 
 EndProcedure
 
+Procedure RestoreEscapeSequences(Text) Export
+
+    GetLine(Text);
+
+    CharacterMapping = GetEscapeSequencesMap();
+
+    For Each Symbol In CharacterMapping Do
+
+        Text = StrReplace(Text, Symbol.Value, Symbol.Key);
+
+    EndDo;
+
+EndProcedure
+
+Procedure ReplaceEscapeSequences(Text) Export
+
+    GetLine(Text);
+
+    CharacterMapping = GetEscapeSequencesMap();
+
+    For Each Symbol In CharacterMapping Do
+
+        Text = StrReplace(Text, Symbol.Key        , Symbol.Value);
+        Text = StrReplace(Text, "\" + Symbol.Value, Symbol.Key);
+
+    EndDo;
+
+EndProcedure
+
+Procedure ValueToArray(Value) Export
+
+    If TypeOf(Value) = Type("Array") Then
+        Return;
+    EndIf;
+
+    Value_ = New Array;
+    Value_.Add(Value);
+
+    Value = Value_;
+
+EndProcedure
+
+Function JSONString(Val Data
+    , Val Escaping     = "None"
+    , Val LineBreaks   = True
+    , Val DoubleQuotes = True) Export
+
+    LineBreak = ?(LineBreaks, JSONLineBreak.Windows, JSONLineBreak.None);
+
+    JSONParameters = New JSONWriterSettings(LineBreak
+        , " "
+        , DoubleQuotes
+        , JSONCharactersEscapeMode[Escaping]
+        , False
+        , False
+        , False
+        , False);
+
+    Try
+
+        JSONWriter = New JSONWriter;
+        JSONWriter.SetString(JSONParameters);
+
+        WriteJSON(JSONWriter, Data);
+        Return JSONWriter.Close();
+
+    Except
+        Return "NOT JSON: " + String(Data);
+    EndTry;
+
+EndFunction
+
+Function NumberToString(Val Value) Export
+
+    If TypeOf(Value) = Type("Number") Then
+
+        If Value   = 0 Then
+            Value_ = "0";
+        Else
+            Value_ = Format(Value, "NG=0");
+        EndIf;
+
+    Else
+        Value_ = String(Value);
+    EndIf;
+
+    Return Value_;
+
+EndFunction
+
 #EndRegion
 
 #Region Private
@@ -414,10 +503,23 @@ Function ThisIsSymbolic(Val Value)
 
 EndFunction
 
+Function GetEscapeSequencesMap()
+
+    CharacterMapping = New Map;
+
+    CharacterMapping.Insert("\n" , Chars.LF);
+    CharacterMapping.Insert("\r" , Chars.CR);
+    CharacterMapping.Insert("\f" , Chars.FF);
+    CharacterMapping.Insert("\v" , Chars.VTab);
+
+    Return CharacterMapping;
+
+EndFunction
+
 Procedure ConvertSourceToValue(Value, TryB64)
 
     ValueES = Value;
-    OPI_Tools.RestoreEscapeSequences(ValueES);
+    RestoreEscapeSequences(ValueES);
 
     File = New File(ValueES);
 

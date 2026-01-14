@@ -27197,7 +27197,8 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     Process(Result, "ClickHouse", "ExecuteRequest", "AdditionalSettings");
 
-    Session = OPI_ClickHouse.GetSessionSettings(String(New UUID()));
+    UUID    = String(New UUID());
+    Session = OPI_ClickHouse.GetSessionSettings(UUID);
 
     QueryText = "CREATE TEMPORARY TABLE temp_session_test (id UInt64, value String)";
 
