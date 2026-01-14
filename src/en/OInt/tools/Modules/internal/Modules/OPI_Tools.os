@@ -236,28 +236,7 @@ Function JSONString(Val Data
     , Val LineBreaks   = True
     , Val DoubleQuotes = True) Export
 
-    LineBreak = ?(LineBreaks, JSONLineBreak.Windows, JSONLineBreak.None);
-
-    JSONParameters = New JSONWriterSettings(LineBreak
-        , " "
-        , DoubleQuotes
-        , JSONCharactersEscapeMode[Escaping]
-        , False
-        , False
-        , False
-        , False);
-
-    Try
-
-        JSONWriter = New JSONWriter;
-        JSONWriter.SetString(JSONParameters);
-
-        WriteJSON(JSONWriter, Data);
-        Return JSONWriter.Close();
-
-    Except
-        Return "NOT JSON: " + String(Data);
-    EndTry;
+    Return OPI_TypeConversion.JSONString(Data, Escaping, LineBreaks, DoubleQuotes);
 
 EndFunction
 
@@ -509,14 +488,7 @@ EndProcedure
 
 Procedure ValueToArray(Value) Export
 
-    If TypeOf(Value) = Type("Array") Then
-        Return;
-    EndIf;
-
-    Value_ = New Array;
-    Value_.Add(Value);
-
-    Value = Value_;
+    OPI_TypeConversion.ValueToArray(Value);
 
 EndProcedure
 
@@ -896,30 +868,13 @@ EndProcedure
 
 Procedure ReplaceEscapeSequences(Text) Export
 
-    OPI_TypeConversion.GetLine(Text);
-
-    CharacterMapping = GetEscapeSequencesMap();
-
-    For Each Symbol In CharacterMapping Do
-
-        Text = StrReplace(Text, Symbol.Key        , Symbol.Value);
-        Text = StrReplace(Text, "\" + Symbol.Value, Symbol.Key);
-
-    EndDo;
+    OPI_TypeConversion.ReplaceEscapeSequences(Text);
 
 EndProcedure
 
 Procedure RestoreEscapeSequences(Text) Export
 
-    OPI_TypeConversion.GetLine(Text);
-
-    CharacterMapping = GetEscapeSequencesMap();
-
-    For Each Symbol In CharacterMapping Do
-
-        Text = StrReplace(Text, Symbol.Value, Symbol.Key);
-
-    EndDo;
+    OPI_TypeConversion.RestoreEscapeSequences(Text);
 
 EndProcedure
 
@@ -954,19 +909,7 @@ EndProcedure
 
 Function NumberToString(Val Value) Export
 
-    If TypeOf(Value) = Type("Number") Then
-
-        If Value   = 0 Then
-            Value_ = "0";
-        Else
-            Value_ = Format(Value, "NG=0");
-        EndIf;
-
-    Else
-        Value_ = String(Value);
-    EndIf;
-
-    Return Value_;
+    Return OPI_TypeConversion.NumberToString(Value);
 
 EndFunction
 
@@ -1287,19 +1230,6 @@ EndFunction
 Function RelevantNodeType(Val NodeType)
 
     Return NodeType = XMLNodeType.StartElement Or NodeType = XMLNodeType.EndElement Or NodeType = XMLNodeType.Text;
-
-EndFunction
-
-Function GetEscapeSequencesMap()
-
-    CharacterMapping = New Map;
-
-    CharacterMapping.Insert("\n" , Chars.LF);
-    CharacterMapping.Insert("\r" , Chars.CR);
-    CharacterMapping.Insert("\f" , Chars.FF);
-    CharacterMapping.Insert("\v" , Chars.VTab);
-
-    Return CharacterMapping;
 
 EndFunction
 
