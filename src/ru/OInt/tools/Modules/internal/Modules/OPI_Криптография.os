@@ -34,6 +34,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
+#Использовать "./internal"
+
 #Область СлужебныйПрограммныйИнтерфейс
 
 Функция СоздатьПодпись(Знач КлючПодписи, Знач ДанныеПодписи, Знач Алгоритм, Знач ФункцияХеша) Экспорт

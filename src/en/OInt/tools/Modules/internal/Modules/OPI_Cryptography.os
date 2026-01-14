@@ -34,6 +34,8 @@
 //@skip-check module-structure-method-in-regions
 //@skip-check wrong-string-literal-content
 
+#Использовать "./internal"
+
 #Region Internal
 
 Function CreateSignature(Val SignKey, Val SignatureData, Val Algorithm, Val HashFunc) Export
