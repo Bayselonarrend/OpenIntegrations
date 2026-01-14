@@ -10,6 +10,7 @@ Var OutputFile;        // Path redirection output in file
 Var ParametersTable; // Table parameters current libraries
 Var CurrentCommand;    // Name current commands
 Var OintTemplate;        // Template paths to oint
+Var OPI_Tools;   // Module tools
 
 #Region Private
 
@@ -128,9 +129,7 @@ Function GetProcessingResult(Val Command, Val Parameters)
 
 	If CurrentCommand = "hashsum" Then
 
-		ToolsPath = StrTemplate(OintTemplate, "tools/Modules/internal/Modules/OPI_Tools.os");
-		OPI_Tools  = LoadScript(ToolsPath);
-
+		AttachToolsModule();
 		Return OPI_Tools.GetLastBuildHashSum();
 
 	EndIf;
@@ -169,6 +168,7 @@ Function GetProcessingResult(Val Command, Val Parameters)
 	EndIf;
 
 	If Not Testing Then
+		AttachToolsModule();
 		Execute(ExecutionText);
 	EndIf;
 
@@ -306,6 +306,15 @@ Procedure ReportResult(Val Text, Val Status = "")
 	
 EndProcedure
 
+Procedure AttachToolsModule()
+
+	If OPI_Tools = Undefined Then
+		ToolsPath = StrTemplate(OintTemplate, "tools/Modules/internal/Modules/OPI_Tools.os");
+		OPI_Tools  = LoadScript(ToolsPath);
+	EndIf;
+
+EndProcedure
+
 Function WriteValueToFile(Val Value, Val Path)
 	
 	StandardUnit = 1024;
@@ -350,7 +359,6 @@ Function EmptyOutput(Output)
 	EndIf;
 	
 EndFunction
-
 
 Function JSONString(Val Data)
 
