@@ -1,6 +1,4 @@
-﻿#Use "../../../oint/tools"
-
-Var Debugging;           // Flag output debug information
+﻿Var Debugging;           // Flag output debug information
 Var Testing;      // Flag disconnection of sending data after processing
 
 Var Parser;            // Object parser incoming data 
@@ -11,6 +9,7 @@ Var OutputFile;        // Path redirection output in file
 
 Var ParametersTable; // Table parameters current libraries
 Var CurrentCommand;    // Name current commands
+Var OintTemplate;        // Template paths to oint
 
 #Region Private
 
@@ -32,6 +31,11 @@ Procedure MainHandler()
 
 	AccessTemplate = StrConcat(PathParts, "/") + "/%1";
 
+	PathParts.Delete(PathParts.UBound());
+	PathParts.Add("oint");
+
+	OintTemplate = StrConcat(PathParts, "/") + "/%1";
+	
 	Parser         = LoadScript(StrTemplate(AccessTemplate, "env/Classes/CommandLineArgumentParser.os"));
 	OPIObject      = LoadScript(StrTemplate(AccessTemplate, "data/Classes/LibraryComposition.os"));
 
@@ -123,7 +127,12 @@ EndProcedure
 Function GetProcessingResult(Val Command, Val Parameters)
 
 	If CurrentCommand = "hashsum" Then
+
+		ToolsPath = StrTemplate(OintTemplate, "tools/Modules/internal/Modules/OPI_Tools.os");
+		OPI_Tools  = LoadScript(ToolsPath);
+
 		Return OPI_Tools.GetLastBuildHashSum();
+
 	EndIf;
 
 	Method     = TrimAll(Parameters["Method"]);

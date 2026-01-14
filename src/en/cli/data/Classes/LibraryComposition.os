@@ -1,4 +1,3 @@
-#Use "./internal"
 
 Var ModuleCommandMapping;
 Var Version;
