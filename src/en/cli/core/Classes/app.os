@@ -10,7 +10,7 @@ Var OutputFile;        // Path redirection output in file
 Var ParametersTable; // Table parameters current libraries
 Var CurrentCommand;    // Name current commands
 Var OintTemplate;        // Template paths to oint
-Var OPI_Tools;   // Module tools
+Var Responsible;       // Object module of executor
 
 #Region Private
 
@@ -129,8 +129,8 @@ Function GetProcessingResult(Val Command, Val Parameters)
 
 	If CurrentCommand = "hashsum" Then
 
-		AttachToolsModule();
-		Return OPI_Tools.GetLastBuildHashSum();
+		AttachExecutor();
+		Return Responsible.GetLastBuildHashSum();
 
 	EndIf;
 
@@ -168,8 +168,8 @@ Function GetProcessingResult(Val Command, Val Parameters)
 	EndIf;
 
 	If Not Testing Then
-		AttachToolsModule();
-		Execute(ExecutionText);
+		AttachExecutor();
+		Responsible.ExecuteScript(ExecutionText, Response);
 	EndIf;
 
 	Return Response;
@@ -306,11 +306,18 @@ Procedure ReportResult(Val Text, Val Status = "")
 	
 EndProcedure
 
-Procedure AttachToolsModule()
+Procedure AttachExecutor()
 
-	If OPI_Tools = Undefined Then
-		ToolsPath = StrTemplate(OintTemplate, "tools/Modules/internal/Modules/OPI_Tools.os");
-		OPI_Tools  = LoadScript(ToolsPath);
+	If Responsible = Undefined Then
+
+		CurrentScriptFolder = StrReplace(CurrentScript().Path, "\", "/");
+
+		ExecutorPath  = StrTemplate("%1/%2"
+			, CurrentScriptFolder
+			, "internal/Modules/Executor.os");
+
+		Responsible  = LoadScript(ExecutorPath);
+
 	EndIf;
 
 EndProcedure
