@@ -35980,8 +35980,9 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     Process(Result, "ClickHouse", "ExecuteRequest", "AdditionalSettings");
 
+    UUID    = String(New UUID());
     Options = New Structure;
-    Options.Insert("id", String);
+    Options.Insert("id", UUID);
 
     Session = OPI_TestDataRetrieval.ExecuteTestCLI("clickhouse", "GetSessionSettings", Options);
 
