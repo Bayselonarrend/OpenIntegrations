@@ -14,8 +14,6 @@ Procedure OnObjectCreate()
     CurrentDirectory = CurrentScript().Path;
     AccessTemplate  = CombinePath(CurrentDirectory, "internal", "Classes", "%1.os");
 
-    PackagesDirectory = StrReplace(GetSystemOptionValue("lib.system"), "\", "/");
-
 EndProcedure
 
 Procedure InitializeCommonLists() Export
@@ -127,6 +125,10 @@ EndFunction
 
 Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val Dynamically = True) Export
 
+    If PackagesDirectory = Undefined Then
+        DefinePackagesDirectory();
+    EndIf;
+
     Module             = GetCommandModuleMapping().Get(Command);
     IndexObject      = GetIndexData(Command);
     
@@ -212,6 +214,24 @@ Procedure CompleteCompositionCache(Val Library, Val ParametersTable, Command = "
 
 EndProcedure
 
+Procedure SetPackagesDirectory(Val Path) Export
+   PackagesDirectory = Path;
+EndProcedure
+
+Procedure DefinePackagesDirectory()
+
+   CurrentDirectory = CurrentScript().Path;
+   CurrentDirectory = StrReplace(CurrentDirectory, "\", "/");
+
+   PathParts      = StrSplit(CurrentDirectory, "/");
+   PathParts.Delete(PathParts.UBound());
+   PathParts.Delete(PathParts.UBound());
+   PathParts.Delete(PathParts.UBound());
+
+   PackagesDirectory = StrConcat(PathParts, "/");
+
+EndProcedure
+
 Function RequiresProcessingOfEscapeSequences(Val ParameterName, Val ParameterValue)
 
     ParamFile         = New File(ParameterValue);
@@ -252,6 +272,10 @@ EndFunction
 
 Procedure ДополнитьКэшСостава(Val Библиотека, Val ТаблицаПараметров, Команда = "") Export
 	CompleteCompositionCache(Библиотека, ТаблицаПараметров, Команда);
+EndProcedure
+
+Procedure УстановитьКаталогПакетов(Val Путь) Export
+	SetPackagesDirectory(Путь);
 EndProcedure
 
 #EndRegion
