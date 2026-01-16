@@ -1,9 +1,20 @@
 ﻿Var ColorOutput;
+Var ConsoleWidth;
+Var UseAdaptiveOutput;
 
 #Region Internal
 
 Procedure OnObjectCreate(AccessTemplate)
-	ColorOutput = LoadScript(StrTemplate(AccessTemplate, "env/Modules/ColorOutput.os"));
+
+	ColorOutput  = LoadScript(StrTemplate(AccessTemplate, "env/Modules/ColorOutput.os"));
+
+	Try
+		ConsoleWidth = Консоль.Width;
+		UseAdaptiveOutput = True;
+	Except
+		UseAdaptiveOutput = False;
+	EndTry;
+
 EndProcedure
 
 Procedure DisplayStartPage(Val ModuleCommandMapping, Val Version) Export
@@ -243,11 +254,14 @@ Function GetFullParamsDescription(ParametersTable)
 			CurrentOptionList = CurrentOptionList + " ";
 		EndDo;
 
-		DescriptionArray = StrSplit(MethodParameter["Description"], Chars.LF);
+		DescriptionArray  = StrSplit(MethodParameter["Description"], Chars.LF);
+		CurrentDescription = Undefined;
 		
-		Try
+		If UseAdaptiveOutput Then
 			CurrentDescription = GetWidthSplittedDescription(DescriptionArray, NewLineTab, NewLineTabLength);
-		Except
+		EndIf;
+
+		If CurrentDescription = Undefined Then
 
 			If DescriptionArray.Count() = 1 Then
 				CurrentDescription = DescriptionArray[0];
@@ -255,7 +269,7 @@ Function GetFullParamsDescription(ParametersTable)
 				CurrentDescription = StrConcat(DescriptionArray, Chars.LF + NewLineTab);
 			EndIf;
 
-		EndTry;
+		EndIf;;
 
 		CurrentFullDescription = StrTemplate(ParameterDescriptionTemplate, CurrentOptionList, CurrentDescription);
 		FullDescriptionsArray.Add(CurrentFullDescription);
@@ -276,12 +290,11 @@ Function GetWidthSplittedDescription(DescriptionLinesArray, NewLineTab, OffsetLe
 		DescriptionLinesArray = DescriptionLinesArray_;
 	EndIf;
 
-	ConsoleWidth         = Консоль.Width;
-	AvailableStringLength = Консоль.Width - OffsetLength - 4;
+	AvailableStringLength = ConsoleWidth - OffsetLength - 4;
 	ThirdPartOfAvailble       = Round(AvailableStringLength / 3);
 
 	If AvailableStringLength < 0 Then
-		Raise "Adaptive width unavailable";
+		Return Undefined;
 	EndIf;
 
 	SplitsArray = New Array;
