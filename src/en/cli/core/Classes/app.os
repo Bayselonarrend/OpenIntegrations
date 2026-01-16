@@ -421,6 +421,10 @@ Except
 		Information = ErrorInfo().Description;
 	EndIf;
 
-	Help.DisplayExceptionMessage(Information, OutputFile);
+	Try
+		Help.DisplayExceptionMessage(Information, OutputFile);	
+	Except
+		Raise Information
+	EndTry;
 
 EndTry;
