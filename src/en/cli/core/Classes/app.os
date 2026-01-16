@@ -9,8 +9,11 @@ Var OutputFile;        // Path redirection output in file
 
 Var ParametersTable; // Table parameters current libraries
 Var CurrentCommand;    // Name current commands
-Var OintTemplate;        // Template paths to oint
-Var Responsible;       // Object module of executor
+
+Var OintTemplate;     
+Var AccessTemplate;
+Var PackagesDirectory;
+Var Responsible;       
 
 #Region Private
 
@@ -23,22 +26,11 @@ Procedure MainHandler()
 
 	SetEnvironmentVariable("OINT_CLI", "YES");
 
-	CurrentDirectory = CurrentScript().Path;
-	CurrentDirectory = StrReplace(CurrentDirectory, "\", "/");
-
-	PathParts      = StrSplit(CurrentDirectory, "/");
-	PathParts.Delete(PathParts.UBound());
-	PathParts.Delete(PathParts.UBound());
-
-	AccessTemplate = StrConcat(PathParts, "/") + "/%1";
-
-	PathParts.Delete(PathParts.UBound());
-	PathParts.Add("oint");
-
-	OintTemplate = StrConcat(PathParts, "/") + "/%1";
+	DefinePathsTemplates();
 	
 	Parser         = LoadScript(StrTemplate(AccessTemplate, "env/Classes/CommandLineArgumentParser.os"));
 	OPIObject      = LoadScript(StrTemplate(AccessTemplate, "data/Classes/LibraryComposition.os"));
+	OPIObject.SetPackagesDirectory(PackagesDirectory);
 
 	AttachScript(StrTemplate(AccessTemplate, "help/Classes/Help.os"), "Help");
 	Help = New Help(AccessTemplate);
@@ -198,6 +190,27 @@ Procedure AddCommandParameters(Parser, Command);
 		Parser.AddNamedCommandParameter(Command, Parameter);
 	EndDo;
 	
+EndProcedure
+
+Procedure DefinePathsTemplates()
+
+	CurrentDirectory = CurrentScript().Path;
+	CurrentDirectory = StrReplace(CurrentDirectory, "\", "/");
+
+	PathParts      = StrSplit(CurrentDirectory, "/");
+	PathParts.Delete(PathParts.UBound());
+	PathParts.Delete(PathParts.UBound());
+
+	AccessTemplate = StrConcat(PathParts, "/") + "/%1";
+
+	PathParts.Delete(PathParts.UBound());
+
+	PackagesDirectory = StrConcat(PathParts, "/");
+	
+	PathParts.Add("oint");
+
+	OintTemplate = StrConcat(PathParts, "/") + "/%1";
+
 EndProcedure
 
 Procedure ProcessJSONOutput(Output)
