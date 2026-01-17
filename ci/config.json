@@ -1,0 +1,181 @@
+{
+    "primary": {
+        "description": "Primary project data",
+        "value": {
+            "version": {
+                "description": "Current project version",
+                "value": "1.32.0"
+            }
+        }
+    },
+    "local_machine": {
+        "description": "Paths and information for processing on local machine",
+        "value": {
+            "engineLinux": {
+                "description": "OneScript engine for CLI packs (Linux)",
+                "value": "C:/engine/linux"
+            },
+            "engineWindows": {
+                "description": "OneScript engine for CLI packs (Windows)",
+                "value": "C:/engine/windows"
+            },
+            "onec_path": {
+                "description": "1C:Enterprise exe path",
+                "value": "C:/Program Files/1cv8/8.3.18.1208/bin/"
+            },
+            "server_name": {
+                "description": "Build server name",
+                "value": "DEVSRV"
+            },
+            "edt_projects_path": {
+                "description": "EDT projects directory",
+                "value": "C:/Users/bayse/AppData/Local/1C/1cedtstart/projects"
+            },
+            "jenkins_host": {
+                "description": "Jenkins URL",
+                "value": "https://jenkins.openintegrations.dev"
+            }
+        }
+    },
+    "paths": {
+        "description": "Special directories paths",
+        "value": {
+            "root": {
+                "description": "Source code root directory",
+                "value": "./src/"
+            },
+            "packageSrc": {
+                "description": "OneScript package directory",
+                "value": "./src/OInt/"
+            },
+            "packagedefSrc": {
+                "description": "Packagedef file path",
+                "value": "./src/OInt/packagedef"
+            },
+            "configurationSrc": {
+                "description": "1C configuration directory",
+                "value": "./src/OPI/src/"
+            },
+            "dictionariesSrc": {
+                "description": "Translation dictionaries directory",
+                "value": "./service/dictionaries/"
+            },
+            "workflowsSrc": {
+                "description": "GitHub Actions workflows directory",
+                "value": "./.github/workflows/"
+            },
+            "jenkinsSrc": {
+                "description": "Jenkinsfiles directory",
+                "value": "./ci/"
+            },
+            "paramsExamplesSrc": {
+                "description": "CLI tips directory",
+                "value": "./service/params_examples/"
+            }
+        }
+    },
+    "docs": {
+        "description": "Docs generation settings",
+        "value": {
+            "codeExamplesSrc": {
+                "description": "Docs code examples directory",
+                "value": "./docs/ru/examples/"
+            },
+            "testValuesSrc": {
+                "description": "Docs values directory",
+                "value": "./docs/ru/examples/"
+            }
+        }
+    },
+    "tests": {
+        "description": "Testing data",
+        "value": {
+            "tests_availability": {
+                "description": "Enabled and disabled tests categories",
+                "value": {
+                    "Telegram": true,
+                    "VK": true,
+                    "Viber": true,
+                    "Twitter": true,
+                    "FTP": true,
+                    "SSH": true,
+                    "SFTP": true,
+                    "PostgreSQL": true,
+                    "MySQL": true,
+                    "MSSQL": true,
+                    "SQLite": true,
+                    "RCON": true,
+                    "YandexDisk": true,
+                    "GoogleWorkspace": true,
+                    "GoogleCalendar": true,
+                    "GoogleDrive": true,
+                    "GoogleSheets": true,
+                    "Notion": true,
+                    "Slack": true,
+                    "Airtable": true,
+                    "Dropbox": true,
+                    "Bitrix24": true,
+                    "VkTeams": true,
+                    "Neocities": true,
+                    "CDEK": true,
+                    "YandexMetrika": true,
+                    "S3": true,
+                    "TCP": true,
+                    "GreenAPI": true,
+                    "GreenMax": true,
+                    "Ollama": true,
+                    "HTTPКлиент": true,
+                    "OpenAI": false,
+                    "ReportPortal": true,
+                    "HTTPClient": true,
+                    "BuildCheck": true,
+                    "MongoDB": true,
+                    "GRPC": true,
+                    "ClickHouse": true
+                }
+            }
+        }
+    },
+    "localization": {
+        "description": "Localization data",
+        "value": {
+            "mainLang": {
+                "description": "Main project language",
+                "value": "ru"
+            },
+            "langs_vars": {
+                "ru": {
+                    "description": "Language defined data for Russian",
+                    "value": {
+                        "edt_project": "OpenIntegrations_Ru",
+                        "ib_name": "OpenIntegrations"
+                    }
+                },
+                "en": {
+                    "description": "Language defined data for English",
+                    "value": {
+                        "edt_project": "OpenIntegrations_En",
+                        "ib_name": "OpenIntegrationsEng"
+                    }
+                }
+            }
+        }
+    },
+    "replacements": {
+        "description": "Dictionary of values replacements",
+        "value": {
+            "oscriptConvertation": {
+                "description": "Replacements for 1C to OneScript conversion",
+                "value": {
+                    "// #Использовать": "#Использовать",
+                    "//#Использовать": "#Использовать",
+                    "УстановитьБезопасныйРежим(Истина);": "",
+                    "УстановитьБезопасныйРежим(Ложь);": "",
+                    "// !OInt ": "",
+                    "#КонецЕсли": "// #КонецЕсли",
+                    "#Если": "// #Если"
+                }
+            }
+        }
+    }
+}
