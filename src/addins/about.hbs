@@ -1,0 +1,9 @@
+{{#each licenses}}
+{{#each used_by}}
+{{#with crate}}
+{{#unless (or (eq name "windows-sys") (eq name "windows_x86_64_msvc") (eq name "windows_x86_64_gnu") (eq name "windows_i686_msvc") (eq name "windows_i686_gnu") (eq name "windows-targets") (eq name "windows_aarch64_msvc") (eq name "windows_aarch64_gnullvm") (eq name "windows_i686_gnullvm") (eq name "windows_x86_64_gnullvm"))}}
+{{name}}|{{version}}|{{#if authors}}{{#each authors}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}{{/if}}|{{license}}|{{#if repository}}{{repository}}{{/if}}
+{{/unless}}
+{{/with}}
+{{/each}}
+{{/each}}
