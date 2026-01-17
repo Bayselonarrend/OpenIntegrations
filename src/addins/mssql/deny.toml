@@ -1,8 +1,5 @@
-# Общая конфигурация cargo-deny для всех Rust проектов
-# Все проекты под лицензией MIT
-
 [licenses]
-# Разрешаем только лицензии, совместимые с MIT
+
 allow = [
     "MIT",
     "Apache-2.0",
@@ -21,16 +18,14 @@ allow = [
     "MPL-2.0",
 ]
 
-# Уверенность в определении лицензии
+unused-allowed-license = "allow"
 confidence-threshold = 0.8
 
 [bans]
-# Запрещаем множественные версии одного крейта
 multiple-versions = "warn"
-# Отклоняем крейты с известными проблемами
 deny = []
 
 [sources]
-# Разрешаем только crates.io и git репозитории
 unknown-registry = "deny"
 unknown-git = "warn"
+

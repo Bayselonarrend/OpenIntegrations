@@ -15,10 +15,10 @@ strip = true
 opt-level = "z"
 
 [dependencies]
-common-core = { path = "../!commons/common-core" }
-common-dataset = { path = "../!commons/common-dataset" }
-common-utils = { path = "../!commons/common-utils" }
-common-binary = { path = "../!commons/common-binary" }
+common-core = { path = "../commons/common-core" }
+common-dataset = { path = "../commons/common-dataset" }
+common-utils = { path = "../commons/common-utils" }
+common-binary = { path = "../commons/common-binary" }
 
 rusqlite = {  version = "0.32.1", features = ["bundled", "load_extension"]}
 serde_json = "1.0"

@@ -15,9 +15,9 @@ strip = true
 opt-level = "z"
 
 [dependencies]
-common-core = { path = "../!commons/common-core" }
-common-tcp = { path = "../!commons/common-tcp", features = ["rustls"], default-features = false }
-common-utils = { path = "../!commons/common-utils" }
+common-core = { path = "../commons/common-core" }
+common-tcp = { path = "../commons/common-tcp", features = ["rustls"], default-features = false }
+common-utils = { path = "../commons/common-utils" }
 
 suppaftp = { version = "6.3.0", features = ["rustls", "secure"] }
 serde_json = "1.0"
