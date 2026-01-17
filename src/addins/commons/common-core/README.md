@@ -16,7 +16,7 @@
 
 ```toml
 [dependencies]
-common-core = { path = "../!commons/common-core" }
+common-core = { path = "../commons/common-core" }
 ```
 
 ## Использование

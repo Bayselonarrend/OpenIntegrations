@@ -7,17 +7,16 @@ echo.
 set "FAILED=0"
 set "SUCCESS=0"
 
-:: Проверяем проекты на текущем уровне
 for /d %%P in (*) do (
     if exist "%%P\Cargo.toml" (
         echo [%%P] Checking licenses...
         cd %%P
         cargo deny check licenses
         if !ERRORLEVEL! EQU 0 (
-            echo [%%P] ✓ OK
+            echo [%%P] OK
             set /a SUCCESS+=1
         ) else (
-            echo [%%P] ✗ FAILED
+            echo [%%P] FAILED
             set /a FAILED+=1
         )
         cd ..
@@ -25,7 +24,6 @@ for /d %%P in (*) do (
     )
 )
 
-:: Проверяем вложенные директории
 for /d %%D in (*) do (
     if exist "%%D\" (
         for /d %%P in ("%%D\*") do (
@@ -34,10 +32,10 @@ for /d %%D in (*) do (
                 cd "%%P"
                 cargo deny check licenses
                 if !ERRORLEVEL! EQU 0 (
-                    echo [%%D\%%~nxP] ✓ OK
+                    echo [%%D\%%~nxP] OK
                     set /a SUCCESS+=1
                 ) else (
-                    echo [%%D\%%~nxP] ✗ FAILED
+                    echo [%%D\%%~nxP] FAILED
                     set /a FAILED+=1
                 )
                 cd ..\..

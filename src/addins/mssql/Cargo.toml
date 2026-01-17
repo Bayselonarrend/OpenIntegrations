@@ -15,11 +15,11 @@ strip = true
 opt-level = "z"
 
 [dependencies]
-common-core = { path = "../!commons/common-core" }
-common-tcp = { path = "../!commons/common-tcp" }
-common-utils = { path = "../!commons/common-utils" }
-common-dataset = { path = "../!commons/common-dataset" }
-common-binary = { path = "../!commons/common-binary" }
+common-core = { path = "../commons/common-core" }
+common-tcp = { path = "../commons/common-tcp" }
+common-utils = { path = "../commons/common-utils" }
+common-dataset = { path = "../commons/common-dataset" }
+common-binary = { path = "../commons/common-binary" }
 
 tiberius = { version = "0.12", features = ["chrono", "rust_decimal"] }
 tokio = { version = "1.0", features = ["full"] }
