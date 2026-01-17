@@ -8,7 +8,7 @@
             }
         }
     },
-    "local_machine": {
+    "local": {
         "description": "Paths and information for processing on local machine",
         "value": {
             "engineLinux": {
@@ -19,26 +19,26 @@
                 "description": "OneScript engine for CLI packs (Windows)",
                 "value": "C:/engine/windows"
             },
-            "onec_path": {
+            "onecPath": {
                 "description": "1C:Enterprise exe path",
                 "value": "C:/Program Files/1cv8/8.3.18.1208/bin/"
             },
-            "server_name": {
+            "serverName": {
                 "description": "Build server name",
                 "value": "DEVSRV"
             },
-            "edt_projects_path": {
+            "edtProjectsPath": {
                 "description": "EDT projects directory",
                 "value": "C:/Users/bayse/AppData/Local/1C/1cedtstart/projects"
             },
-            "jenkins_host": {
+            "jenkinsHost": {
                 "description": "Jenkins URL",
                 "value": "https://jenkins.openintegrations.dev"
             }
         }
     },
     "paths": {
-        "description": "Special directories paths",
+        "description": "Special repository directories paths",
         "value": {
             "root": {
                 "description": "Source code root directory",
@@ -143,19 +143,52 @@
                 "description": "Main project language",
                 "value": "ru"
             },
-            "langs_vars": {
+            "langs": {
+                "description": "Localization languages",
+                "value": [
+                    "en",
+                    "ru"
+                ]
+            },
+            "langsVars": {
                 "ru": {
                     "description": "Language defined data for Russian",
                     "value": {
                         "edt_project": "OpenIntegrations_Ru",
-                        "ib_name": "OpenIntegrations"
+                        "ib_name": "OpenIntegrations",
+                        "methodString": "Метод",
+                        "synonymString": "Синоним",
+                        "sectionsString": "Раздел",
+                        "testsModule": "OPI_Тесты",
+                        "testsModuleCLI": "OPI_ТестыCLI",
+                        "testsTableMethod": "OPI_ПолучениеДанныхТестов.ПолучитьТаблицуТестов()",
+                        "testsSectionsMethod": "OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестирования()",
+                        "testsSectionsMethodGA": "OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестированияGA()",
+                        "codeExamplesSrc": "./docs/ru/examples/",
+                        "testValuesSrc": "./docs/ru/data/",
+                        "testsModulePath": "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os",
+                        "testsCliModulePath": "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os",
+                        "testsRegionName": "АтомарныеТесты"
                     }
                 },
                 "en": {
                     "description": "Language defined data for English",
                     "value": {
                         "edt_project": "OpenIntegrations_En",
-                        "ib_name": "OpenIntegrationsEng"
+                        "ib_name": "OpenIntegrationsEng",
+                        "methodString": "Method",
+                        "synonymString": "Synonym",
+                        "sectionsString": "Section",
+                        "testsModule": "OPI_Tests",
+                        "testsModuleCLI": "OPI_TestsCLI",
+                        "testsTableMethod": "OPI_TestDataRetrieval.GetTestTable()",
+                        "testsSectionsMethod": "OPI_TestDataRetrieval.GetTestingSectionMapping()",
+                        "testsSectionsMethodGA": "OPI_TestDataRetrieval.GetTestingSectionMappingGA()",
+                        "codeExamplesSrc": "./docs/en/examples/",
+                        "testValuesSrc": "./docs/en/data/",
+                        "testsModulePath": "./src/en/OInt/tests/Modules/internal/OPI_Tests.os",
+                        "testsCliModulePath": "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os",
+                        "testsRegionName": "AtomicTests"
                     }
                 }
             }
