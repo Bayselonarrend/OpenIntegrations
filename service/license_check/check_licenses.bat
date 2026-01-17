@@ -1,16 +1,29 @@
 @echo off
 setlocal enabledelayedexpansion
 
+set "SCRIPT_DIR=%~dp0"
+set "ROOT_DIR=%SCRIPT_DIR%..\.."
+set "ADDINS_DIR=%ROOT_DIR%\src\addins"
+
+where cargo-deny >nul 2>&1
+if !ERRORLEVEL! NEQ 0 (
+    echo cargo-deny not found!
+    echo Call: cargo install cargo-deny
+    exit /b 1
+)
+
 echo Checking licenses for Rust projects
 echo.
 
 set "FAILED=0"
 set "SUCCESS=0"
 
+cd /d "%ADDINS_DIR%"
+
 for /d %%P in (*) do (
     if exist "%%P\Cargo.toml" (
         echo [%%P] Checking licenses...
-        cd %%P
+        pushd "%%P"
         cargo deny check licenses
         if !ERRORLEVEL! EQU 0 (
             echo [%%P] OK
@@ -19,7 +32,7 @@ for /d %%P in (*) do (
             echo [%%P] FAILED
             set /a FAILED+=1
         )
-        cd ..
+        popd
         echo.
     )
 )
@@ -29,7 +42,7 @@ for /d %%D in (*) do (
         for /d %%P in ("%%D\*") do (
             if exist "%%P\Cargo.toml" (
                 echo [%%D\%%~nxP] Checking licenses...
-                cd "%%P"
+                pushd "%%P"
                 cargo deny check licenses
                 if !ERRORLEVEL! EQU 0 (
                     echo [%%D\%%~nxP] OK
@@ -38,7 +51,7 @@ for /d %%D in (*) do (
                     echo [%%D\%%~nxP] FAILED
                     set /a FAILED+=1
                 )
-                cd ..\..
+                popd
                 echo.
             )
         )

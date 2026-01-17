@@ -3,13 +3,18 @@ setlocal enabledelayedexpansion
 
 echo Sync deny.toml
 
-set "SOURCE_FILE=%CD%\deny.toml"
+set "SCRIPT_DIR=%~dp0"
+set "ROOT_DIR=%SCRIPT_DIR%..\.."
+set "ADDINS_DIR=%ROOT_DIR%\src\addins"
+set "SOURCE_FILE=%SCRIPT_DIR%deny.toml"
 set "COPIED=0"
 
 if not exist "%SOURCE_FILE%" (
     echo [ERROR] Original deny.toml not found!
     exit /b 1
 )
+
+cd /d "%ADDINS_DIR%"
 
 for /d %%P in (*) do (
     if exist "%%P\Cargo.toml" (
