@@ -15,10 +15,10 @@ strip = true
 opt-level = "z"
 
 [dependencies]
-common-utils = { path = "../!commons/common-utils" }
-common-core = { path = "../!commons/common-core" }
-common-tcp = { path = "../!commons/common-tcp", default-features = false, features = ["rustls"] }
-common-binary = { path = "../!commons/common-binary" }
+common-utils = { path = "../commons/common-utils" }
+common-core = { path = "../commons/common-core" }
+common-tcp = { path = "../commons/common-tcp", default-features = false, features = ["rustls"] }
+common-binary = { path = "../commons/common-binary" }
 
 serde = { version = "1.0.219", features = ["derive"] }
 serde_json = "1.0"
