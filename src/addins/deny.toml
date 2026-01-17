@@ -1,0 +1,27 @@
+# Общая конфигурация cargo-deny для всех Rust проектов
+# Все проекты под лицензией MIT
+
+[licenses]
+
+allow = [
+    "MIT",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "Zlib",
+]
+
+# Уверенность в определении лицензии
+confidence-threshold = 0.8
+
+[bans]
+# Запрещаем множественные версии одного крейта
+multiple-versions = "warn"
+# Отклоняем крейты с известными проблемами
+deny = []
+
+[sources]
+# Разрешаем только crates.io и git репозитории
+unknown-registry = "deny"
+unknown-git = "warn"
