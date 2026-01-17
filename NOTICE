@@ -1,447 +1,530 @@
-Открытый пакет интеграций (OpenIntegrations)
-Copyright (c) 2024 Anton Tsitavets
+OpenIntegrations / Открытый пакет интеграций
+Copyright (c) 2024-2026 Anton Tsitavets
 Licensed under the MIT License
 
-Используется код из проекта vbondarevsky/Connector
+Dependencies and imports:
+
+vbondarevsky/Connector
  * Copyright 2017-2023 Vladimir Bondarevskiy 
  * Licensed under the Apache License, Version 2.0
  * https://github.com/vbondarevsky/Connector/
 
-Используется код из проекта БСП
+БСП
  * Copyright (c) 2019, ООО 1С-Софт
  * Licensed under the Attribution 4.0 International (CC BY 4.0)
  * https://v8.1c.ru/tekhnologii/standartnye-biblioteki/1s-biblioteka-standartnykh-podsistem/
 
-Документация создана при помощи Docusaurus
+Docusaurus
  * Copyright (c) Facebook, Inc. and its affiliates.
  * Licensed under the MIT License
  * https://github.com/facebook/docusaurus
 
-Тестирование версии для 1С производится при помощи YaxUNIT
+YaxUNIT
  * Copyright © 2023 BIA-Technologies Limited Liability Company
  * Licensed under the Apache License, Version 2.0
  * https://github.com/bia-technologies/yaxunit
 
-Тестирование версии для OneScript производится при помощи 1testrunner
+1testrunner
  * by Artur Ayukhanov (artbear)
  * -
  * https://github.com/artbear/1testrunner
 
-Тесты версии для OneScript используют текучие утверждения из пакета asserts
+asserts
  * by oscript-library
  * -
  * https://github.com/oscript-library/asserts
 
-Для оформления OInt CLI используется пакет coloratos
+coloratos
 * by Vladimir Nadulich (240596448)
 * -
 * https://github.com/240596448/coloratos
 
-========================================
-Rust зависимости из аддинов:
-========================================
+cmdline
+ * by oscript-library
+ * -
+ * https://github.com/oscript-library/cmdline
 
-﻿Используется библиотека addin1c v0.5.0
+﻿addin1c v0.5.0
  * 
  * Licensed under the MIT
  * https://github.com/medigor/addin1c
 
-Используется библиотека ahash v0.8.11
+ahash v0.8.11
  * Tom Kaitchuck &lt;Tom.Kaitchuck@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/tkaitchuck/ahash
 
-Используется библиотека autocfg v1.4.0
+autocfg v1.4.0
  * Josh Stone &lt;cuviper@gmail.com&gt;
  * Licensed under the Apache-2.0 OR MIT
  * https://github.com/cuviper/autocfg
 
-Используется библиотека autocfg v1.5.0
+autocfg v1.5.0
  * Josh Stone &lt;cuviper@gmail.com&gt;
  * Licensed under the Apache-2.0 OR MIT
  * https://github.com/cuviper/autocfg
 
-Используется библиотека base64 v0.22.1
+base64 v0.22.1
  * Marshall Pierce &lt;marshall@mpierce.org&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/marshallpierce/rust-base64
 
-Используется библиотека base64ct v1.7.3
+base64ct v1.7.3
  * RustCrypto Developers
  * Licensed under the Apache-2.0 OR MIT
  * https://github.com/RustCrypto/formats
 
-Используется библиотека bitflags v2.6.0
+bitflags v2.10.0
  * The Rust Project Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/bitflags/bitflags
 
-Используется библиотека block-buffer v0.10.4
+bitflags v2.6.0
+ * The Rust Project Developers
+ * Licensed under the MIT OR Apache-2.0
+ * https://github.com/bitflags/bitflags
+
+block-buffer v0.10.4
  * RustCrypto Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/RustCrypto/utils
 
-Используется библиотека cc v1.2.5
+cc v1.2.5
  * Alex Crichton &lt;alex@alexcrichton.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-lang/cc-rs
 
-Используется библиотека cfg-if v1.0.0
+cfg-if v1.0.0
  * Alex Crichton &lt;alex@alexcrichton.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/alexcrichton/cfg-if
 
-Используется библиотека common-binary v0.1.0
+cfg-if v1.0.4
+ * Alex Crichton &lt;alex@alexcrichton.com&gt;
+ * Licensed under the MIT OR Apache-2.0
+ * https://github.com/rust-lang/cfg-if
+
+common-binary v0.1.0
  * 
  * Licensed under the MIT
  * 
 
-Используется библиотека common-core v0.1.0
+common-core v0.1.0
  * 
  * Licensed under the MIT
  * 
 
-Используется библиотека common-dataset v0.1.0
+common-dataset v0.1.0
  * 
  * Licensed under the MIT
  * 
 
-Используется библиотека common-utils v0.1.0
+common-utils v0.1.0
  * 
  * Licensed under the MIT
  * 
 
-Используется библиотека const-oid v0.9.6
+const-oid v0.9.6
  * RustCrypto Developers
  * Licensed under the Apache-2.0 OR MIT
  * https://github.com/RustCrypto/formats/tree/master/const-oid
 
-Используется библиотека cpufeatures v0.2.17
+cpufeatures v0.2.17
  * RustCrypto Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/RustCrypto/utils
 
-Используется библиотека crossbeam-utils v0.8.21
+crossbeam-utils v0.8.21
  * 
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/crossbeam-rs/crossbeam
 
-Используется библиотека crypto-common v0.1.6
+crypto-common v0.1.6
  * RustCrypto Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/RustCrypto/traits
 
-Используется библиотека dashmap v7.0.0-rc2
+dashmap v7.0.0-rc2
  * Joel Wejdenstål &lt;jwejdenstal@icloud.com&gt;
  * Licensed under the MIT
  * https://github.com/xacrimon/dashmap
 
-Используется библиотека der v0.7.10
+der v0.7.10
  * RustCrypto Developers
  * Licensed under the Apache-2.0 OR MIT
  * https://github.com/RustCrypto/formats/tree/master/der
 
-Используется библиотека digest v0.10.7
+digest v0.10.7
  * RustCrypto Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/RustCrypto/traits
 
-Используется библиотека equivalent v1.0.2
+equivalent v1.0.2
  * 
  * Licensed under the Apache-2.0 OR MIT
  * https://github.com/indexmap-rs/equivalent
 
-Используется библиотека fallible-iterator v0.3.0
+fallible-iterator v0.3.0
  * Steven Fackler &lt;sfackler@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/sfackler/rust-fallible-iterator
 
-Используется библиотека fallible-streaming-iterator v0.1.9
+fallible-streaming-iterator v0.1.9
  * Steven Fackler &lt;sfackler@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/sfackler/fallible-streaming-iterator
 
-Используется библиотека generic-array v0.14.7
+generic-array v0.14.7
  * Bartłomiej Kamiński &lt;fizyk20@gmail.com&gt;, Aaron Trent &lt;novacrazy@gmail.com&gt;
  * Licensed under the MIT
  * https://github.com/fizyk20/generic-array.git
 
-Используется библиотека getrandom v0.2.15
+getrandom v0.2.15
  * The Rand Project Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-random/getrandom
 
-Используется библиотека getrandom v0.3.3
+getrandom v0.3.3
  * The Rand Project Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-random/getrandom
 
-Используется библиотека hashbrown v0.14.5
+getrandom v0.3.4
+ * The Rand Project Developers
+ * Licensed under the MIT OR Apache-2.0
+ * https://github.com/rust-random/getrandom
+
+hashbrown v0.14.5
  * Amanieu d&#x27;Antras &lt;amanieu@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-lang/hashbrown
 
-Используется библиотека hashbrown v0.15.5
+hashbrown v0.15.5
  * Amanieu d&#x27;Antras &lt;amanieu@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-lang/hashbrown
 
-Используется библиотека hashlink v0.9.1
+hashlink v0.9.1
  * kyren &lt;kerriganw@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/kyren/hashlink
 
-Используется библиотека hmac v0.12.1
+hmac v0.12.1
  * RustCrypto Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/RustCrypto/MACs
 
-Используется библиотека itoa v1.0.14
+itoa v1.0.14
  * David Tolnay &lt;dtolnay@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/dtolnay/itoa
 
-Используется библиотека lazy_static v1.5.0
+itoa v1.0.15
+ * David Tolnay &lt;dtolnay@gmail.com&gt;
+ * Licensed under the MIT OR Apache-2.0
+ * https://github.com/dtolnay/itoa
+
+lazy_static v1.5.0
  * Marvin Löbel &lt;loebel.marvin@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-lang-nursery/lazy-static.rs
 
-Используется библиотека libc v0.2.171
+libc v0.2.171
  * The Rust Project Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-lang/libc
 
-Используется библиотека libc v0.2.174
+libc v0.2.174
  * The Rust Project Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-lang/libc
 
-Используется библиотека libm v0.2.15
+libc v0.2.177
+ * The Rust Project Developers
+ * Licensed under the MIT OR Apache-2.0
+ * https://github.com/rust-lang/libc
+
+libm v0.2.15
  * Jorge Aparicio &lt;jorge@japaric.io&gt;
  * Licensed under the MIT
  * https://github.com/rust-lang/compiler-builtins
 
-Используется библиотека libsqlite3-sys v0.30.1
+libsqlite3-sys v0.30.1
  * The rusqlite developers
  * Licensed under the MIT
  * https://github.com/rusqlite/rusqlite
 
-Используется библиотека lock_api v0.4.13
+lock_api v0.4.13
  * Amanieu d&#x27;Antras &lt;amanieu@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/Amanieu/parking_lot
 
-Используется библиотека memchr v2.7.4
+lock_api v0.4.14
+ * Amanieu d&#x27;Antras &lt;amanieu@gmail.com&gt;
+ * Licensed under the MIT OR Apache-2.0
+ * https://github.com/Amanieu/parking_lot
+
+memchr v2.7.4
  * Andrew Gallant &lt;jamslam@gmail.com&gt;, bluss
  * Licensed under the Unlicense OR MIT
  * https://github.com/BurntSushi/memchr
 
-Используется библиотека num-bigint-dig v0.8.6
+memchr v2.7.6
+ * Andrew Gallant &lt;jamslam@gmail.com&gt;, bluss
+ * Licensed under the Unlicense OR MIT
+ * https://github.com/BurntSushi/memchr
+
+num-bigint-dig v0.8.6
  * dignifiedquire &lt;dignifiedquire@gmail.com&gt;, The Rust Project Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/dignifiedquire/num-bigint
 
-Используется библиотека num-integer v0.1.46
+num-integer v0.1.46
  * The Rust Project Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-num/num-integer
 
-Используется библиотека num-iter v0.1.45
+num-iter v0.1.45
  * The Rust Project Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-num/num-iter
 
-Используется библиотека num-traits v0.2.19
+num-traits v0.2.19
  * The Rust Project Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-num/num-traits
 
-Используется библиотека once_cell v1.20.2
+once_cell v1.20.2
  * Aleksey Kladov &lt;aleksey.kladov@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/matklad/once_cell
 
-Используется библиотека opi_sqlite v0.1.0
+opi_crypto v0.1.0
  * 
  * Licensed under the MIT
  * 
 
-Используется библиотека parking_lot_core v0.9.11
+opi_sqlite v0.1.0
+ * 
+ * Licensed under the MIT
+ * 
+
+parking_lot_core v0.9.11
  * Amanieu d&#x27;Antras &lt;amanieu@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/Amanieu/parking_lot
 
-Используется библиотека pem-rfc7468 v0.7.0
+parking_lot_core v0.9.12
+ * Amanieu d&#x27;Antras &lt;amanieu@gmail.com&gt;
+ * Licensed under the MIT OR Apache-2.0
+ * https://github.com/Amanieu/parking_lot
+
+pem-rfc7468 v0.7.0
  * RustCrypto Developers
  * Licensed under the Apache-2.0 OR MIT
  * https://github.com/RustCrypto/formats/tree/master/pem-rfc7468
 
-Используется библиотека pkcs1 v0.7.5
+pkcs1 v0.7.5
  * RustCrypto Developers
  * Licensed under the Apache-2.0 OR MIT
  * https://github.com/RustCrypto/formats/tree/master/pkcs1
 
-Используется библиотека pkcs8 v0.10.2
+pkcs8 v0.10.2
  * RustCrypto Developers
  * Licensed under the Apache-2.0 OR MIT
  * https://github.com/RustCrypto/formats/tree/master/pkcs8
 
-Используется библиотека pkg-config v0.3.31
+pkg-config v0.3.31
  * Alex Crichton &lt;alex@alexcrichton.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-lang/pkg-config-rs
 
-Используется библиотека ppv-lite86 v0.2.21
+ppv-lite86 v0.2.21
  * The CryptoCorrosion Contributors
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/cryptocorrosion/cryptocorrosion
 
-Используется библиотека rand_chacha v0.3.1
+rand_chacha v0.3.1
  * The Rand Project Developers, The Rust Project Developers, The CryptoCorrosion Contributors
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-random/rand
 
-Используется библиотека rand_core v0.6.4
+rand_core v0.6.4
  * The Rand Project Developers, The Rust Project Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-random/rand
 
-Используется библиотека rand v0.8.5
+rand v0.8.5
  * The Rand Project Developers, The Rust Project Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/rust-random/rand
 
-Используется библиотека redox_syscall v0.5.17
+redox_syscall v0.5.17
  * Jeremy Soller &lt;jackpot51@gmail.com&gt;
  * Licensed under the MIT
  * https://gitlab.redox-os.org/redox-os/syscall
 
-Используется библиотека r-efi v5.3.0
+redox_syscall v0.5.18
+ * Jeremy Soller &lt;jackpot51@gmail.com&gt;
+ * Licensed under the MIT
+ * https://gitlab.redox-os.org/redox-os/syscall
+
+r-efi v5.3.0
  * 
  * Licensed under the MIT OR Apache-2.0 OR LGPL-2.1-or-later
  * https://github.com/r-efi/r-efi
 
-Используется библиотека rsa v0.9.10
+rsa v0.9.10
  * RustCrypto Developers, dignifiedquire &lt;dignifiedquire@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/RustCrypto/RSA
 
-Используется библиотека rusqlite v0.32.1
+rusqlite v0.32.1
  * The rusqlite developers
  * Licensed under the MIT
  * https://github.com/rusqlite/rusqlite
 
-Используется библиотека ryu v1.0.18
+ryu v1.0.18
  * David Tolnay &lt;dtolnay@gmail.com&gt;
  * Licensed under the Apache-2.0 OR BSL-1.0
  * https://github.com/dtolnay/ryu
 
-Используется библиотека scopeguard v1.2.0
+ryu v1.0.20
+ * David Tolnay &lt;dtolnay@gmail.com&gt;
+ * Licensed under the Apache-2.0 OR BSL-1.0
+ * https://github.com/dtolnay/ryu
+
+scopeguard v1.2.0
  * bluss
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/bluss/scopeguard
 
-Используется библиотека serde_core v1.0.228
+serde_core v1.0.228
  * Erick Tryzelaar &lt;erick.tryzelaar@gmail.com&gt;, David Tolnay &lt;dtolnay@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/serde-rs/serde
 
-Используется библиотека serde_json v1.0.145
+serde_json v1.0.145
  * Erick Tryzelaar &lt;erick.tryzelaar@gmail.com&gt;, David Tolnay &lt;dtolnay@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/serde-rs/json
 
-Используется библиотека sha1 v0.10.6
+sha1 v0.10.6
  * RustCrypto Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/RustCrypto/hashes
 
-Используется библиотека sha2 v0.10.8
+sha2 v0.10.8
  * RustCrypto Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/RustCrypto/hashes
 
-Используется библиотека shlex v1.3.0
+shlex v1.3.0
  * comex &lt;comexk@gmail.com&gt;, Fenhl &lt;fenhl@fenhl.net&gt;, Adrian Taylor &lt;adetaylor@chromium.org&gt;, Alex Touchet &lt;alextouchet@outlook.com&gt;, Daniel Parks &lt;dp+git@oxidized.org&gt;, Garrett Berg &lt;googberg@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/comex/rust-shlex
 
-Используется библиотека signature v2.2.0
+signature v2.2.0
  * RustCrypto Developers
  * Licensed under the Apache-2.0 OR MIT
  * https://github.com/RustCrypto/traits/tree/master/signature
 
-Используется библиотека smallvec v1.13.2
+smallvec v1.13.2
  * The Servo Project Developers
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/servo/rust-smallvec
 
-Используется библиотека spin v0.9.8
+smallvec v1.15.1
+ * The Servo Project Developers
+ * Licensed under the MIT OR Apache-2.0
+ * https://github.com/servo/rust-smallvec
+
+spin v0.9.8
  * Mathijs van de Nes &lt;git@mathijs.vd-nes.nl&gt;, John Ericson &lt;git@JohnEricson.me&gt;, Joshua Barretto &lt;joshua.s.barretto@gmail.com&gt;
  * Licensed under the MIT
  * https://github.com/mvdnes/spin-rs.git
 
-Используется библиотека spki v0.7.3
+spki v0.7.3
  * RustCrypto Developers
  * Licensed under the Apache-2.0 OR MIT
  * https://github.com/RustCrypto/formats/tree/master/spki
 
-Используется библиотека subtle v2.6.1
+subtle v2.6.1
  * Isis Lovecruft &lt;isis@patternsinthevoid.net&gt;, Henry de Valence &lt;hdevalence@hdevalence.ca&gt;
  * Licensed under the BSD-3-Clause
  * https://github.com/dalek-cryptography/subtle
 
-Используется библиотека typenum v1.18.0
+typenum v1.18.0
  * Paho Lurie-Gregg &lt;paho@paholg.com&gt;, Andre Bogus &lt;bogusandre@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/paholg/typenum
 
-Используется библиотека utf16_lit v2.0.2
+utf16_lit v2.0.2
  * Lokathor &lt;zefria@gmail.com&gt;
  * Licensed under the Zlib OR Apache-2.0 OR MIT
  * https://github.com/Lokathor/utf16_lit
 
-Используется библиотека uuid v1.17.0
+uuid v1.17.0
  * Ashley Mannix&lt;ashleymannix@live.com.au&gt;, Dylan DPC&lt;dylan.dpc@gmail.com&gt;, Hunar Roop Kahlon&lt;hunar.roop@gmail.com&gt;
  * Licensed under the Apache-2.0 OR MIT
  * https://github.com/uuid-rs/uuid
 
-Используется библиотека vcpkg v0.2.15
+uuid v1.18.1
+ * Ashley Mannix&lt;ashleymannix@live.com.au&gt;, Dylan DPC&lt;dylan.dpc@gmail.com&gt;, Hunar Roop Kahlon&lt;hunar.roop@gmail.com&gt;
+ * Licensed under the Apache-2.0 OR MIT
+ * https://github.com/uuid-rs/uuid
+
+vcpkg v0.2.15
  * Jim McGrath &lt;jimmc2@gmail.com&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/mcgoo/vcpkg-rs
 
-Используется библиотека version_check v0.9.5
+version_check v0.9.5
  * Sergio Benitez &lt;sb@sergio.bz&gt;
  * Licensed under the MIT OR Apache-2.0
  * https://github.com/SergioBenitez/version_check
 
-Используется библиотека wasi v0.11.0+wasi-snapshot-preview1
+wasi v0.11.0+wasi-snapshot-preview1
  * The Cranelift Project Developers
  * Licensed under the Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
  * https://github.com/bytecodealliance/wasi
 
-Используется библиотека wasi v0.14.2+wasi-0.2.4
+wasi v0.14.2+wasi-0.2.4
  * The Cranelift Project Developers
  * Licensed under the Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
  * https://github.com/bytecodealliance/wasi-rs
 
-Используется библиотека wit-bindgen-rt v0.39.0
+wasip2 v1.0.1+wasi-0.2.4
+ * 
+ * Licensed under the Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
+ * https://github.com/bytecodealliance/wasi-rs
+
+windows-link v0.2.1
+ * 
+ * Licensed under the MIT OR Apache-2.0
+ * https://github.com/microsoft/windows-rs
+
+wit-bindgen v0.46.0
+ * Alex Crichton &lt;alex@alexcrichton.com&gt;
+ * Licensed under the Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
+ * https://github.com/bytecodealliance/wit-bindgen
+
+wit-bindgen-rt v0.39.0
  * 
  * Licensed under the Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT
  * https://github.com/bytecodealliance/wit-bindgen
 
-Используется библиотека zerocopy v0.7.35
+zerocopy v0.7.35
  * Joshua Liebow-Feeser &lt;joshlf@google.com&gt;
  * Licensed under the BSD-2-Clause OR Apache-2.0 OR MIT
  * https://github.com/google/zerocopy
 
-Используется библиотека zerocopy v0.8.23
+zerocopy v0.8.23
  * Joshua Liebow-Feeser &lt;joshlf@google.com&gt;, Jack Wrenn &lt;jswrenn@amazon.com&gt;
  * Licensed under the BSD-2-Clause OR Apache-2.0 OR MIT
  * https://github.com/google/zerocopy
 
-Используется библиотека zeroize v1.8.1
+zeroize v1.8.1
  * The RustCrypto Project Developers
  * Licensed under the Apache-2.0 OR MIT
  * https://github.com/RustCrypto/utils/tree/master/zeroize

@@ -1,38 +1,45 @@
-Открытый пакет интеграций (OpenIntegrations)
-Copyright (c) 2024 Anton Tsitavets
+OpenIntegrations / Открытый пакет интеграций
+Copyright (c) 2024-2026 Anton Tsitavets
 Licensed under the MIT License
 
-Используется код из проекта vbondarevsky/Connector
+Dependencies and imports:
+
+vbondarevsky/Connector
  * Copyright 2017-2023 Vladimir Bondarevskiy 
  * Licensed under the Apache License, Version 2.0
  * https://github.com/vbondarevsky/Connector/
 
-Используется код из проекта БСП
+БСП
  * Copyright (c) 2019, ООО 1С-Софт
  * Licensed under the Attribution 4.0 International (CC BY 4.0)
  * https://v8.1c.ru/tekhnologii/standartnye-biblioteki/1s-biblioteka-standartnykh-podsistem/
 
-Документация создана при помощи Docusaurus
+Docusaurus
  * Copyright (c) Facebook, Inc. and its affiliates.
  * Licensed under the MIT License
  * https://github.com/facebook/docusaurus
 
-Тестирование версии для 1С производится при помощи YaxUNIT
+YaxUNIT
  * Copyright © 2023 BIA-Technologies Limited Liability Company
  * Licensed under the Apache License, Version 2.0
  * https://github.com/bia-technologies/yaxunit
 
-Тестирование версии для OneScript производится при помощи 1testrunner
+1testrunner
  * by Artur Ayukhanov (artbear)
  * -
  * https://github.com/artbear/1testrunner
 
-Тесты версии для OneScript используют текучие утверждения из пакета asserts
+asserts
  * by oscript-library
  * -
  * https://github.com/oscript-library/asserts
 
-Для оформления OInt CLI используется пакет coloratos
+coloratos
 * by Vladimir Nadulich (240596448)
 * -
 * https://github.com/240596448/coloratos
+
+cmdline
+ * by oscript-library
+ * -
+ * https://github.com/oscript-library/cmdline
