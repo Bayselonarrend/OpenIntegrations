@@ -151,133 +151,136 @@
                 ]
             },
             "langsVars": {
-                "ru": {
-                    "description": "Language defined data for Russian",
-                    "value": {
-                        "edt_project": {
-                            "description": "1C:EDT project name",
-                            "value": "OpenIntegrations_Ru"
-                        },
-                        "ib_name": {
-                            "description": "1C infobase name",
-                            "value": "OpenIntegrations"
-                        },
-                        "methodString": {
-                            "description": "Method word translation",
-                            "value": "Метод"
-                        },
-                        "synonymString": {
-                            "description": "Synonym word translation",
-                            "value": "Синоним"
-                        },
-                        "sectionsString": {
-                            "description": "Section word translation",
-                            "value": "Раздел"
-                        },
-                        "testsModule": {
-                            "description": "Main tests module name",
-                            "value": "OPI_Тесты"
-                        },
-                        "testsModuleCLI": {
-                            "description": "CLI test module name",
-                            "value": "OPI_ТестыCLI"
-                        },
-                        "testsTableMethod": {
-                            "description": "Test table retrieve method",
-                            "value": "OPI_ПолучениеДанныхТестов.ПолучитьТаблицуТестов()"
-                        },
-                        "testsSectionsMethod": {
-                            "description": "Test selections array retrieve method (for Jenkins)",
-                            "value": "OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестирования()"
-                        },
-                        "testsSectionsMethodGA": {
-                            "dictionaries": "Test selections array retrieve method (for Github Actions)",
-                            "value": "OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестированияGA()"
-                        },
-                        "codeExamplesSrc": {
-                            "description": "Docs code examples directory",
-                            "value": "./docs/ru/examples/"
-                        },
-                        "testValuesSrc": {
-                            "description": "Docs test values directory",
-                            "value": "./docs/ru/data/"
-                        },
-                        "testsModulePath": {
-                            "description": "Main tests module path",
-                            "values": "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os"
-                        },
-                        "testsCliModulePath": {
-                            "description": "CLI test module path",
-                            "value": "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os"
-                        },
-                        "testsRegionName": {
-                            "description": "Atomic test retrieve method",
-                            "value": "АтомарныеТесты"
+                "description": "Language defined data",
+                "value": {
+                    "ru": {
+                        "description": "Language defined data for Russian",
+                        "value": {
+                            "edt_project": {
+                                "description": "1C:EDT project name",
+                                "value": "OpenIntegrations_Ru"
+                            },
+                            "ib_name": {
+                                "description": "1C infobase name",
+                                "value": "OpenIntegrations"
+                            },
+                            "methodString": {
+                                "description": "Method word translation",
+                                "value": "Метод"
+                            },
+                            "synonymString": {
+                                "description": "Synonym word translation",
+                                "value": "Синоним"
+                            },
+                            "sectionsString": {
+                                "description": "Section word translation",
+                                "value": "Раздел"
+                            },
+                            "testsModule": {
+                                "description": "Main tests module name",
+                                "value": "OPI_Тесты"
+                            },
+                            "testsModuleCLI": {
+                                "description": "CLI test module name",
+                                "value": "OPI_ТестыCLI"
+                            },
+                            "testsTableMethod": {
+                                "description": "Test table retrieve method",
+                                "value": "OPI_ПолучениеДанныхТестов.ПолучитьТаблицуТестов()"
+                            },
+                            "testsSectionsMethod": {
+                                "description": "Test selections array retrieve method (for Jenkins)",
+                                "value": "OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестирования()"
+                            },
+                            "testsSectionsMethodGA": {
+                                "dictionaries": "Test selections array retrieve method (for Github Actions)",
+                                "value": "OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестированияGA()"
+                            },
+                            "codeExamplesSrc": {
+                                "description": "Docs code examples directory",
+                                "value": "./docs/ru/examples/"
+                            },
+                            "testValuesSrc": {
+                                "description": "Docs test values directory",
+                                "value": "./docs/ru/data/"
+                            },
+                            "testsModulePath": {
+                                "description": "Main tests module path",
+                                "value": "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os"
+                            },
+                            "testsCliModulePath": {
+                                "description": "CLI test module path",
+                                "value": "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os"
+                            },
+                            "testsRegionName": {
+                                "description": "Atomic test retrieve method",
+                                "value": "АтомарныеТесты"
+                            }
                         }
-                    }
-                },
-                "en": {
-                    "description": "Language defined data for English",
-                    "value": {
-                                                "edt_project": {
-                            "description": "1C:EDT project name",
-                            "value": "OpenIntegrations_En"
-                        },
-                        "ib_name": {
-                            "description": "1C infobase name",
-                            "value": "OpenIntegrationsEng"
-                        },
-                        "methodString": {
-                            "description": "Method word translation",
-                            "value": "Method"
-                        },
-                        "synonymString": {
-                            "description": "Synonym word translation",
-                            "value": "Synonym"
-                        },
-                        "sectionsString": {
-                            "description": "Section word translation",
-                            "value": "Section"
-                        },
-                        "testsModule": {
-                            "description": "Main tests module name",
-                            "value": "OPI_Tests"
-                        },
-                        "testsModuleCLI": {
-                            "description": "CLI test module name",
-                            "value": "OPI_TestsCLI"
-                        },
-                        "testsTableMethod": {
-                            "description": "Test table retrieve method",
-                            "value": "OPI_TestDataRetrieval.GetTestTable()"
-                        },
-                        "testsSectionsMethod": {
-                            "description": "Test selections array retrieve method (for Jenkins)",
-                            "value": "OPI_TestDataRetrieval.GetTestingSectionMapping()"
-                        },
-                        "testsSectionsMethodGA": {
-                            "dictionaries": "Test selections array retrieve method (for Github Actions)",
-                            "value": "OPI_TestDataRetrieval.GetTestingSectionMappingGA()"
-                        },
-                        "codeExamplesSrc": {
-                            "description": "Docs code examples directory",
-                            "value": "./docs/en/examples/"
-                        },
-                        "testValuesSrc": {
-                            "description": "Docs test values directory",
-                            "value": "./docs/en/data/"
-                        },
-                        "testsModulePath": {
-                            "description": "Main tests module path",
-                            "values": "./src/en/OInt/tests/Modules/internal/OPI_Tests.os"
-                        },
-                        "testsCliModulePath": {
-                            "description": "CLI test module path",
-                            "value": "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os"
-                        },
-                        "testsRegionName": {
-                            "description": "Atomic test retrieve method",
-                            "value": "AtomicTests"
+                    },
+                    "en": {
+                        "description": "Language defined data for English",
+                        "value": {
+                            "edt_project": {
+                                "description": "1C:EDT project name",
+                                "value": "OpenIntegrations_En"
+                            },
+                            "ib_name": {
+                                "description": "1C infobase name",
+                                "value": "OpenIntegrationsEng"
+                            },
+                            "methodString": {
+                                "description": "Method word translation",
+                                "value": "Method"
+                            },
+                            "synonymString": {
+                                "description": "Synonym word translation",
+                                "value": "Synonym"
+                            },
+                            "sectionsString": {
+                                "description": "Section word translation",
+                                "value": "Section"
+                            },
+                            "testsModule": {
+                                "description": "Main tests module name",
+                                "value": "OPI_Tests"
+                            },
+                            "testsModuleCLI": {
+                                "description": "CLI test module name",
+                                "value": "OPI_TestsCLI"
+                            },
+                            "testsTableMethod": {
+                                "description": "Test table retrieve method",
+                                "value": "OPI_TestDataRetrieval.GetTestTable()"
+                            },
+                            "testsSectionsMethod": {
+                                "description": "Test selections array retrieve method (for Jenkins)",
+                                "value": "OPI_TestDataRetrieval.GetTestingSectionMapping()"
+                            },
+                            "testsSectionsMethodGA": {
+                                "dictionaries": "Test selections array retrieve method (for Github Actions)",
+                                "value": "OPI_TestDataRetrieval.GetTestingSectionMappingGA()"
+                            },
+                            "codeExamplesSrc": {
+                                "description": "Docs code examples directory",
+                                "value": "./docs/en/examples/"
+                            },
+                            "testValuesSrc": {
+                                "description": "Docs test values directory",
+                                "value": "./docs/en/data/"
+                            },
+                            "testsModulePath": {
+                                "description": "Main tests module path",
+                                "value": "./src/en/OInt/tests/Modules/internal/OPI_Tests.os"
+                            },
+                            "testsCliModulePath": {
+                                "description": "CLI test module path",
+                                "value": "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os"
+                            },
+                            "testsRegionName": {
+                                "description": "Atomic test retrieve method",
+                                "value": "AtomicTests"
+                            }
                         }
                     }
                 }
