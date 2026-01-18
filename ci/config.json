@@ -5,23 +5,39 @@
             "version": {
                 "description": "Current project version",
                 "value": "1.32.0"
+            },
+            "repoUrl": {
+                "description": "Repository URL",
+                "value": "https://github.com/Bayselonarrend/OpenIntegrations"
             }
         }
     },
     "local": {
         "description": "Paths and information for processing on local machine",
         "value": {
-            "engineLinux": {
-                "description": "OneScript engine for CLI packs (Linux)",
-                "value": "C:/engine/linux"
-            },
             "engineWindows": {
                 "description": "OneScript engine for CLI packs (Windows)",
                 "value": "C:/engine/windows"
             },
+            "engineLinux": {
+                "description": "OneScript engine for CLI packs (Linux)",
+                "value": "C:/engine/linux"
+            },
+            "engineLinuxWsl": {
+                "description": "OneScript engine for CLI packs (Linux, at WSL)",
+                "value": "/mnt/c/engine/linux/"
+            },
             "onecPath": {
                 "description": "1C:Enterprise exe path",
                 "value": "C:/Program Files/1cv8/8.3.18.1208/bin/1cv8c.exe"
+            },
+            "osPath": {
+                "description": "OneScript exe path",
+                "value": "C:/Program Files/OneScript/"
+            },
+            "ghcliPath": {
+                "description": "GitHub CLI exe path",
+                "value": "C:/Program Files/GitHub CLI/gh.exe"
             },
             "serverName": {
                 "description": "Build server name",
@@ -51,7 +67,7 @@
             "addinsSrc": {
                 "description": "AddIns directory",
                 "value": "./src/addins/"
-            },            
+            },
             "packageSrc": {
                 "description": "OneScript package directory",
                 "value": "./src/ru/OInt/"
@@ -80,13 +96,9 @@
                 "description": "CLI tips directory",
                 "value": "./service/params_examples/"
             },
-            "templatesSrc":{
+            "templatesSrc": {
                 "description": "CI template files directory",
                 "value": "./service/templates/"
-            },
-            "licenseCheckSrc": {
-                "description": "Licenses check files directory",
-                "value": "./service/license_check/"
             }
         }
     },
@@ -157,6 +169,15 @@
                     "GRPC": true,
                     "ClickHouse": true
                 }
+            }
+        }
+    },
+    "release": {
+        "description": "Release producing data",
+        "value": {
+            "artifactsCount": {
+                "description": "Release artifacts (files) count",
+                "value": 16
             }
         }
     },
