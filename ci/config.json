@@ -48,6 +48,10 @@
                 "description": "Source code root directory",
                 "value": "./src/"
             },
+            "addinsSrc": {
+                "description": "AddIns directory",
+                "value": "./src/addins/"
+            },            
             "packageSrc": {
                 "description": "OneScript package directory",
                 "value": "./src/ru/OInt/"
@@ -75,6 +79,14 @@
             "paramsExamplesSrc": {
                 "description": "CLI tips directory",
                 "value": "./service/params_examples/"
+            },
+            "templatesSrc":{
+                "description": "CI template files directory",
+                "value": "./service/templates/"
+            },
+            "licenseCheckSrc": {
+                "description": "Licenses check files directory",
+                "value": "./service/license_check/"
             }
         }
     },
