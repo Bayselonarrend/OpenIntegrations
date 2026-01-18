@@ -5,14 +5,7 @@ pipeline {
     stages {
         stage('Deploy') {
             steps {
-                catchError() {
-                    bat encoding: 'UTF-8', script:'chcp 65001 & rmdir /s /q "docs/docusaurus/build"'
-                    bat encoding: 'UTF-8', script:'chcp 65001 & rmdir /s /q "docs/docusaurus/node_modules"' 
-                }
-                
-                bat encoding: 'UTF-8', script:'chcp 65001 & xcopy "docs/ru/md" "docs/docusaurus/docs" /s /e /i /y'
-                bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & npm install'
-                bat encoding: 'UTF-8', script:'chcp 65001 & cd docs/docusaurus & npm run build'
+                bat encoding: 'UTF-8', script:'oscript ./ci/os/DocsDeployScript test ru'
             }
         }
     }
