@@ -52,7 +52,7 @@
 	КаталогMelezh = Новый Файл(ПутьMelezh);
 
 	Если КаталогMelezh.Существует() Тогда
-		CommonTools.ЗапуститьВнешнееПриложение("git gc --auto --quiet", "ПутьMelezh");
+		CommonTools.ЗапуститьВнешнееПриложение("git gc --auto --quiet", ПутьMelezh);
 		УдалитьФайлы(ПутьMelezh);
 	КонецЕсли;
 
