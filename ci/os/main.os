@@ -35,7 +35,7 @@
 		Обработчик = Новый CLIMethods(ДанныеПроекта);
 		Обработчик = Новый AlternativeNamesMethods(ДанныеПроекта);
 		Обработчик = Новый CLITestsMethods(ДанныеПроекта);
-		Обработчик = Новый JenkinsTestMethods(ДанныеПроекта);
+		Обработчик = Новый JenkinsTestsMethods(ДанныеПроекта);
 		Обработчик = Новый APICatalogGenerator(ДанныеПроекта);
 		Обработчик = Новый TestIndexGenerator(ДанныеПроекта);
 		Обработчик = Новый HashSumGenerator(ДанныеПроекта);
