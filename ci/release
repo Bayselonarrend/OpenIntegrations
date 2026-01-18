@@ -6,7 +6,7 @@ pipeline {
         stage('Release') {
             steps {
                 powershell encoding: 'UTF-8', script:'Remove-Item -Path "./Melezh" -Recurse -Force'
-                bat 'oscript ./ci/os/ReleaseFactory.os'
+                bat 'oscript ./ci/os/internal/Classes/ReleaseFactory.os'
             }
         }
         

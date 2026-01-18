@@ -65,7 +65,7 @@ pipeline {
       	}
 		stage('Create ReportPortal launch'){
 				steps{
-					bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/ReportPortalMethods.os start "OneScript"'
+					bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/internal/Classes/ReportPortalMethods.os start "OneScript"'
 				}
 		}
 
@@ -76,7 +76,7 @@ pipeline {
 		always{
 			script {
 				catchError() {   
-				    runCommand('oscript ./ci/os/ReportPortalMethods.os stop')
+				    runCommand('oscript ./ci/os/internal/Classes/ReportPortalMethods.os stop')
 			    }
 				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
 					bat "git config user.email vitaly.the.alpaca@gmail.com"

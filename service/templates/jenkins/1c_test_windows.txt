@@ -78,7 +78,7 @@ pipeline {
 
 		stage('Create ReportPortal launch'){
 				steps{
-					bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/ReportPortalMethods.os start "1C:Enterprise"'
+					bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/internal/Classes/ReportPortalMethods.os start "1C:Enterprise"'
 				}
 		}
 
@@ -98,7 +98,7 @@ pipeline {
 		always{
 			script {
 				catchError() {   
-				    runCommand('oscript ./ci/os/ReportPortalMethods.os stop')
+				    runCommand('oscript ./ci/os/internal/Classes/ReportPortalMethods.os stop')
 			    }	
 			}
 		}
