@@ -39,6 +39,10 @@
                 "description": "GitHub CLI exe path",
                 "value": "C:/Program Files/GitHub CLI/gh.exe"
             },
+            "innoPath": {
+                "description": "Inno Setup exe path",
+                "value": "C:/Program Files (x86)/Inno Setup 6/Compil32.exe"
+            },
             "serverName": {
                 "description": "Build server name",
                 "value": "DEVSRV"
