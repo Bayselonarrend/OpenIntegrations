@@ -52,8 +52,8 @@
 	КаталогMelezh = Новый Файл(ПутьMelezh);
 
 	Если КаталогMelezh.Существует() Тогда
-		CommonTools.ЗапуститьВнешнееПриложение("git gc --auto --quiet", ПутьMelezh);
-		УдалитьФайлы(ПутьMelezh);
+		ПереместитьФайл(ПутьMelezh, "MelezhTemp");
+		УдалитьФайлы("MelezhTemp");
 	КонецЕсли;
 
 	CommonTools.ЗапуститьВнешнееПриложение("git clone https://github.com/bayselonarrend/Melezh");
