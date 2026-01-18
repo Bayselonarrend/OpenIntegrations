@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Deploy') {
             steps {
-                bat encoding: 'UTF-8', script:'oscript ./ci/os/DocsDeployScript release en'
+                bat encoding: 'UTF-8', script:'oscript ./ci/os/DocsDeployScript.os release en'
             }
         }
     }
