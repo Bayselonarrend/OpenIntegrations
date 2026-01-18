@@ -43,4 +43,4 @@ sidebar_position: 5
   opm install -f <путь к файлу ospx>
 ```
 
-Сборка Windows-установщика, пакетов для Linux, а также других производных вариантов поставки, осуществляется при помощи комплексного скрипта сборки, который также находится внутри репозитория. Ознакомится с ним можно по пути [`/ci/os/ReleaseFactory.os`](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/ci/os/ReleaseFactory.os). Сами по себе, эти варианты поставки представляют собой те же `opsx` пакеты, но поставляемые вместе с движком OneScript в одном наборе
+Сборка Windows-установщика, пакетов для Linux, а также других производных вариантов поставки, осуществляется при помощи комплексного скрипта сборки, который также находится внутри репозитория. Ознакомится с ним можно по пути [`/ci/os/internal/Classes/ReleaseFactory.os`](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/ci/os/internal/Classes/ReleaseFactory.os). Сами по себе, эти варианты поставки представляют собой те же `opsx` пакеты, но поставляемые вместе с движком OneScript в одном наборе
