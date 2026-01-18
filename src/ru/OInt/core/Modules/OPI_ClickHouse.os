@@ -891,7 +891,6 @@
 #КонецОбласти
 
 #КонецОбласти
-
 #Region Alternate
 
 Function ExecuteRequest(Val Connection, Val Request, Val Session = Undefined) Export

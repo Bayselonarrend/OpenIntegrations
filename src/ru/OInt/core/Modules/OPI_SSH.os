@@ -210,7 +210,6 @@
 #КонецОбласти
 
 #КонецОбласти
-
 #Region Alternate
 
 Function CreateConnection(Val SSHSettings, Val Proxy = "") Export

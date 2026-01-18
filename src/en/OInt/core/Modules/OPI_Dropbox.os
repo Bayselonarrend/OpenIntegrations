@@ -986,7 +986,6 @@ Function GetOwnAccount(Val Token)
 EndFunction
 
 #EndRegion
-
 #Region Alternate
 
 Function ПолучитьСсылкуАвторизации(Val КлючПриложения) Export

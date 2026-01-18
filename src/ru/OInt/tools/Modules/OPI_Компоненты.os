@@ -332,7 +332,6 @@
 КонецПроцедуры
 
 #КонецОбласти
-
 #Region Alternate
 
 Function GetAddIn(Val AddInName, Val Class = "Main") Export

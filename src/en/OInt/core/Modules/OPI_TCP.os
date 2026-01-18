@@ -350,7 +350,6 @@ EndFunction
 #EndRegion
 
 #EndRegion
-
 #Region Alternate
 
 Function ОткрытьСоединение(Val Адрес, Val Tls = "", Val Прокси = "") Export

@@ -245,7 +245,6 @@ EndFunction
 #EndRegion
 
 #EndRegion
-
 #Region Alternate
 
 Function СоздатьПодпись(Val КлючПодписи, Val ДанныеПодписи, Val Алгоритм, Val ФункцияХеша) Export

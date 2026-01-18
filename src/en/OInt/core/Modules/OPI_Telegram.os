@@ -1610,7 +1610,6 @@ Procedure ReplaceSpecialCharacters(Text, Markup) Export
 EndProcedure
 
 #EndRegion
-
 #Region Alternate
 
 Function ПолучитьИнформациюБота(Val Токен) Export
