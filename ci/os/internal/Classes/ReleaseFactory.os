@@ -48,10 +48,11 @@
 		СоздатьКаталог(ПутьВыгрузки);
 	КонецЕсли;
 	
-	КаталогMelezh = Новый Файл("./Melezh/");
+	ПутьMelezh    = "Melezh";
+	КаталогMelezh = Новый Файл(ПутьMelezh);
 
 	Если КаталогMelezh.Существует() Тогда
-		УдалитьФайлы(КаталогMelezh);
+		УдалитьФайлы(ПутьMelezh);
 	КонецЕсли;
 
 	CommonTools.ЗапуститьВнешнееПриложение("git clone https://github.com/bayselonarrend/Melezh");
