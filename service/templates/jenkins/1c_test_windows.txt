@@ -9,7 +9,7 @@ def runCommand(String command) {
 def runLibraryTest(String libraryName, String configPath) {
     catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {   
         script {
-            runCommand("\"%3\" /IBConnectionString \"Srvr=\"\"%4\"\";Ref=\"\"%5\"\";\" /C\"RunUnitTests=${configPath}\"")
+            runCommand("\"%2\" /IBConnectionString \"Srvr=\"\"%3\"\";Ref=\"\"%4\"\";\" /C\"RunUnitTests=${configPath}\"")
         
             timeout(time: 60, unit: 'MINUTES') {
                 waitUntil {
@@ -78,7 +78,7 @@ pipeline {
 
 		stage('Create ReportPortal launch'){
 				steps{
-					bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/rp_start.os "1C:Enterprise"'
+					bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/ReportPortalMethods.os start "1C:Enterprise"'
 				}
 		}
 
@@ -91,14 +91,14 @@ pipeline {
             }
         }
 
-%2
+%1
 
 	}
 	post{
 		always{
 			script {
 				catchError() {   
-				    runCommand('oscript ./ci/os/rp_stop.os "%1"')
+				    runCommand('oscript ./ci/os/ReportPortalMethods.os stop')
 			    }	
 			}
 		}
