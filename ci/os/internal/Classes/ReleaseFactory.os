@@ -48,14 +48,6 @@
 		СоздатьКаталог(ПутьВыгрузки);
 	КонецЕсли;
 	
-	ПутьMelezh    = "Melezh";
-	КаталогMelezh = Новый Файл(ПутьMelezh);
-
-	Если КаталогMelezh.Существует() Тогда
-		ПереместитьФайл(ПутьMelezh, "MelezhTemp");
-		УдалитьФайлы("MelezhTemp");
-	КонецЕсли;
-
 	CommonTools.ЗапуститьВнешнееПриложение("git clone https://github.com/bayselonarrend/Melezh");
 	
 	МассивЛокализаций = Новый Массив();
