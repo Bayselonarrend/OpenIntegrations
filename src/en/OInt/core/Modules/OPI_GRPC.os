@@ -1061,7 +1061,6 @@ Function SaveSettingsAtAddIn(Connector, Val Parameters)
 EndFunction
 
 #EndRegion
-
 #Region Alternate
 
 Function ОткрытьСоединение(Val Параметры, Val Tls = Undefined) Export

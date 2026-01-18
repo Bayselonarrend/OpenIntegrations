@@ -128,7 +128,6 @@ Function GetAuthorizationHeader(Val Token) Export
 EndFunction
 
 #EndRegion
-
 #Region Alternate
 
 Function ПолучитьКодПодтверждения(Val ClientId) Export

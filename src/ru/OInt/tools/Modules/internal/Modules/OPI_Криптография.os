@@ -245,7 +245,6 @@
 #КонецОбласти
 
 #КонецОбласти
-
 #Region Alternate
 
 Function CreateSignature(Val SignKey, Val SignatureData, Val Algorithm, Val HashFunc) Export

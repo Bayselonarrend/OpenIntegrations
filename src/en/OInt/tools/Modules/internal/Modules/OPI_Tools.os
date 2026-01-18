@@ -1266,7 +1266,6 @@ Function CopyCollectionArray(Val Collection)
 EndFunction
 
 #EndRegion
-
 #Region Alternate
 
 Function ПараметрыЗапросаВСтроку(Val Параметры, Val ОтдельныеЭлементыМассивов = False, Val Начало = True) Export
