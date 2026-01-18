@@ -43,4 +43,4 @@ As a result of executing this command, an `.ospx` file will be created, which ca
   opm install -f <path to ospx file>
 ```
 
-Building the Windows installer, Linux packages, and other derived distribution variants is done using a comprehensive build script that is also located within the repository. You can review it at the path [`/ci/os/ReleaseFactory.os`](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/ci/os/ReleaseFactory.os). By themselves, these distribution variants represent the same `ospx` packages, but delivered together with the OneScript engine in one package.
+Building the Windows installer, Linux packages, and other derived distribution variants is done using a comprehensive build script that is also located within the repository. You can review it at the path [`/ci/os/internal/Classes/ReleaseFactory.os`](https://github.com/Bayselonarrend/OpenIntegrations/blob/main/ci/os/internal/Classes/ReleaseFactory.os). By themselves, these distribution variants represent the same `ospx` packages, but delivered together with the OneScript engine in one package.

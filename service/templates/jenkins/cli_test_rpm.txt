@@ -58,7 +58,7 @@ pipeline {
       	}
         stage('Create ReportPortal launch'){
 				steps{
-					sh 'oscript ./ci/os/ReportPortalMethods.os start "CLI"'
+					sh 'oscript ./ci/os/internal/Classes/ReportPortalMethods.os start "CLI"'
 				}
 		}
 
@@ -69,7 +69,7 @@ pipeline {
 		always{
 			script {
                 catchError() {   
-				    runCommand('oscript ./ci/os/ReportPortalMethods.os stop')
+				    runCommand('oscript ./ci/os/internal/Classes/ReportPortalMethods.os stop')
 			    }
 				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
 					sh "git config user.email vitaly.the.alpaca@gmail.com"
