@@ -730,7 +730,6 @@
 КонецПроцедуры
 
 #КонецОбласти
-
 #Region Alternate
 
 Function GetVersion(Val URL, Val AdditionalHeaders = "") Export

@@ -561,7 +561,6 @@
 КонецПроцедуры
 
 #КонецОбласти
-
 #Region Alternate
 
 Procedure GetBinaryData(Value, Val Force = False, Val TryB64 = True) Export

@@ -5234,7 +5234,6 @@ Function ChatNotificationsSwitch(Val URL, Val ChatID, Val Off, Val Token = "")
 EndFunction
 
 #EndRegion
-
 #Region Alternate
 
 Function ПолучитьСсылкуАвторизацииПриложения(Val Домен, Val ClientID) Export
