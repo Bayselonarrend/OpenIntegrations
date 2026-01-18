@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Check') {
             steps {
-                bat 'oscript ./ci/os/cli_check.os'
+                bat 'oscript ./ci/os/CLIOutputInspector.os'
             }
         }
     }
