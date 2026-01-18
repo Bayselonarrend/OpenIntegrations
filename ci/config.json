@@ -29,7 +29,7 @@
             },
             "onecPath": {
                 "description": "1C:Enterprise exe path",
-                "value": "C:/Program Files/1cv8/8.3.18.1208/bin/1cv8c.exe"
+                "value": "C:/Program Files/1cv8/8.3.18.1208/bin/1cv8.exe"
             },
             "osPath": {
                 "description": "OneScript exe path",
