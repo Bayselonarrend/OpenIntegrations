@@ -34,6 +34,10 @@
             "jenkinsHost": {
                 "description": "Jenkins URL",
                 "value": "https://jenkins.openintegrations.dev"
+            },
+            "rcloneConf": {
+                "description": "rclone configuration name for web site deploying",
+                "value": "hoster"
             }
         }
     },
@@ -77,13 +81,21 @@
     "docs": {
         "description": "Docs generation settings",
         "value": {
-            "codeExamplesSrc": {
-                "description": "Docs code examples directory",
-                "value": "./docs/ru/examples/"
+            "deployMainSrc": {
+                "description": "Primary docs workspace directory",
+                "value": "./docs/docusaurus/"
             },
-            "testValuesSrc": {
-                "description": "Docs values directory",
-                "value": "./docs/ru/examples/"
+            "deployDocsSrc": {
+                "description": "MD files at workspace docs directory",
+                "value": "./docs/docusaurus/docs/"
+            },
+            "deployBuildSrc": {
+                "description": "Deploy-ready docs directory",
+                "value": "./docs/docusaurus/build/"
+            },
+            "deployModulesSrc": {
+                "description": "Node modules directory",
+                "value": "./docs/docusaurus/node_modules/"
             }
         }
     },
@@ -196,6 +208,10 @@
                                 "dictionaries": "Test selections array retrieve method (for Github Actions)",
                                 "value": "OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестированияGA()"
                             },
+                            "docsMdSrc": {
+                                "description": "Docs MD files directory",
+                                "value": "./docs/ru/md"
+                            },
                             "codeExamplesSrc": {
                                 "description": "Docs code examples directory",
                                 "value": "./docs/ru/examples/"
@@ -215,6 +231,10 @@
                             "testsRegionName": {
                                 "description": "Atomic test retrieve method",
                                 "value": "АтомарныеТесты"
+                            },
+                            "remoteDocsSrc": {
+                                "description": "Docs directory on remote server (hosting)",
+                                "value": "public_html"
                             }
                         }
                     },
@@ -261,6 +281,10 @@
                                 "dictionaries": "Test selections array retrieve method (for Github Actions)",
                                 "value": "OPI_TestDataRetrieval.GetTestingSectionMappingGA()"
                             },
+                            "docsMdSrc": {
+                                "description": "Docs MD files directory",
+                                "value": "./docs/en/md"
+                            },
                             "codeExamplesSrc": {
                                 "description": "Docs code examples directory",
                                 "value": "./docs/en/examples/"
@@ -280,6 +304,10 @@
                             "testsRegionName": {
                                 "description": "Atomic test retrieve method",
                                 "value": "AtomicTests"
+                            },
+                            "remoteDocsSrc": {
+                                "description": "Docs directory on remote server (hosting)",
+                                "value": "public_html_en"
                             }
                         }
                     }
