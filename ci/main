@@ -19,7 +19,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                    bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/MainProcesingScript.os'
+                    bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/MainProcessingScript.os'
             }
         }
 
