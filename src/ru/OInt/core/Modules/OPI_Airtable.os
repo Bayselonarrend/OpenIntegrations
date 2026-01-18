@@ -693,7 +693,6 @@
 КонецПроцедуры
 
 #КонецОбласти
-
 #Region Alternate
 
 Function GetListOfBases(Val Token, Val Indent = "") Export

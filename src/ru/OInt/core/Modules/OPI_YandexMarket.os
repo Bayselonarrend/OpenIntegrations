@@ -426,7 +426,6 @@
 КонецФункции
 
 #КонецОбласти
-
 #Region Alternate
 
 Function GetMarketsList(Val Token, Val Page = 1) Export

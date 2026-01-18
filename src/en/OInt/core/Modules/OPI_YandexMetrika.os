@@ -586,7 +586,6 @@ EndFunction
 #EndRegion
 
 #EndRegion
-
 #Region Alternate
 
 Function СоздатьМетку(Val Токен, Val Наименование) Export

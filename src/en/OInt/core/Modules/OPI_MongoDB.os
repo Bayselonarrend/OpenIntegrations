@@ -1306,7 +1306,6 @@ Function PutBinaryData(AddIn, Val Value)
 EndFunction
 
 #EndRegion
-
 #Region Alternate
 
 Function ОткрытьСоединение(Val СтрокаПодключения) Export

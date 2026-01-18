@@ -738,7 +738,6 @@ Procedure ProcessListObtainResult(Result, Connection, Val Recursively)
 EndProcedure
 
 #EndRegion
-
 #Region Alternate
 
 Function ОткрытьСоединение(Val НастройкиSSH, Val Прокси = "") Export

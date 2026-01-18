@@ -1141,7 +1141,6 @@ Procedure ProcessObjectList(ObjectList, Val Path, Val Connection, Val Recursivel
 EndProcedure
 
 #EndRegion
-
 #Region Alternate
 
 Function ОткрытьСоединение(Val НастройкиFTP, Val Прокси = Undefined, Val Tls = Undefined) Export
