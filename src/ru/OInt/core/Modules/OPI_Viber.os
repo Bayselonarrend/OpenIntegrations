@@ -403,6 +403,7 @@
 КонецФункции
 
 #КонецОбласти
+
 #Region Alternate
 
 Function SetWebhook(Val Token, Val URL) Export

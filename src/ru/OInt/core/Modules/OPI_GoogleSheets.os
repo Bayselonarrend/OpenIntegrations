@@ -499,6 +499,7 @@
 КонецПроцедуры
 
 #КонецОбласти
+
 #Region Alternate
 
 Function FormCodeRetrievalLink(Val ClientID, Val Calendar = True, Val Drive = True, Val Sheets = True) Export

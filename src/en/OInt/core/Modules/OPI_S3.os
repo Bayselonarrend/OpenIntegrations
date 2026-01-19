@@ -1969,6 +1969,7 @@ EndProcedure
 #EndRegion
 
 #EndRegion
+
 #Region Alternate
 
 Function ПолучитьСтруктуруДанных(Val URL, Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export

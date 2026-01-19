@@ -730,6 +730,7 @@ Procedure HeadersProcessing(AdditionalHeaders)
 EndProcedure
 
 #EndRegion
+
 #Region Alternate
 
 Function ПолучитьВерсию(Val URL, Val ДопЗаголовки = "") Export

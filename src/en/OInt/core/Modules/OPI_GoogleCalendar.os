@@ -735,6 +735,7 @@ Procedure GetEventsListRecursively(Val Headers, Val Calendar, ArrayOfEvents, Pag
 EndProcedure
 
 #EndRegion
+
 #Region Alternate
 
 Function СформироватьСсылкуПолученияКода(Val ClientID, Val Calendar = True, Val Drive = True, Val Sheets = True) Export

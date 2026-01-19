@@ -584,6 +584,7 @@ Function GetTypesStructure() Export
 EndFunction
 
 #EndRegion
+
 #Region Alternate
 
 Function ОткрытьСоединение(Val СтрокаПодключения = "", Val Tls = "") Export

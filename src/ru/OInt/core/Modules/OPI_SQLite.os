@@ -499,6 +499,7 @@
 КонецФункции
 
 #КонецОбласти
+
 #Region Alternate
 
 Function CreateConnection(Val Base = "") Export
