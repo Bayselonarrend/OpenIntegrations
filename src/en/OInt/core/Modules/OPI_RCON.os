@@ -161,6 +161,7 @@ EndFunction
 #EndRegion
 
 #EndRegion
+
 #Region Alternate
 
 Function ОткрытьСоединение(Val ПараметрыСоединения) Export
