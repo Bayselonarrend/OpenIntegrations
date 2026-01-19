@@ -122,7 +122,7 @@
 		
 	КонецЦикла;
 
-	CommonTools.ЗапуститьВнешнееПриложение("Release creating complete!");
+	CommonTools.СообщитьПроцесс("Release creating complete!");
 		
 КонецПроцедуры
 
