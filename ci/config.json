@@ -136,11 +136,11 @@
             },
             "jenkinsSplit": {
                 "description": "Jenkins path for split tests",
-                "value": ""
+                "value": "/job/OPITest/job/OpiSplitTests"
             },
             "jenkinsFull": {
                 "description": "Jenkins path for full tests",
-                "value": ""
+                "value": "/job/OPITest/job/OpiFullTest"
             },
             "availability": {
                 "description": "Enabled and disabled tests categories",

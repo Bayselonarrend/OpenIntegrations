@@ -57,7 +57,7 @@
 	ПутьJenkinsFull            = ДанныеПроекта.ПолучитьЗначениеНастройки("tests.jenkinsFull");
 	ПутьJenkinsSplit           = ДанныеПроекта.ПолучитьЗначениеНастройки("tests.jenkinsSplit");
 
-	КаталогWorkflowТестов     = КаталогWorkflow + "jenkins_full_tests";
+	КаталогWorkflowТестов     = КаталогWorkflow + "jenkins_full_tests/";
 	ШаблонКонфигурацииYaxUnit = КаталогКонфигурацииYaxUnit + "template.txt";
 	ШаблонКонфигурацииYaxUnit = Новый ДвоичныеДанные(ШаблонКонфигурацииYaxUnit);
 	ШаблонКонфигурацииYaxUnit = ПолучитьСтрокуИзДвоичныхДанных(ШаблонКонфигурацииYaxUnit);
