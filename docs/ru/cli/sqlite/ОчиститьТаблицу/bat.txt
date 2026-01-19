@@ -1,3 +1,3 @@
 oint sqlite ОчиститьТаблицу ^
   --table "test" ^
-  --db "C:\Users\bayse\AppData\Local\Temp\yznym23x.3yn.sqlite"
+  --db "C:\Users\bayse\AppData\Local\Temp\uq4fklct.rjb.sqlite"

@@ -1,3 +1,3 @@
 oint slack ПолучитьКанал \
   --token "***" \
-  --channel "C0A7YDVDM6C"
+  --channel "C0AA18R2BRP"
