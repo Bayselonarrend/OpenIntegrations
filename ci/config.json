@@ -130,7 +130,19 @@
     "tests": {
         "description": "Testing data",
         "value": {
-            "tests_availability": {
+            "yaxunitConf": {
+                "description": "YaxUnit configurations directory",
+                "value": "./service/yaxunit_conf/"
+            },
+            "jenkinsSplit": {
+                "description": "Jenkins path for split tests",
+                "value": ""
+            },
+            "jenkinsFull": {
+                "description": "Jenkins path for full tests",
+                "value": ""
+            },
+            "availability": {
                 "description": "Enabled and disabled tests categories",
                 "value": {
                     "Telegram": true,
