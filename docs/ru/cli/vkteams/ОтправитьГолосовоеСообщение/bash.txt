@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение \
   --token "***" \
   --chatid "***" \
-  --file "C:\Users\bayse\AppData\Local\Temp\zh1gvv0j.1gb"
+  --file "C:\Users\bayse\AppData\Local\Temp\wmretwje.jt4"
