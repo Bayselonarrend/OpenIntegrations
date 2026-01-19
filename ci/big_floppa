@@ -47,5 +47,12 @@ pipeline {
                 build job: 'Melezh/MelezhTests', wait: true
             }
         }
+
+        stage('Docs - Test update') {
+            steps {
+                build job: 'OpiDocs/OpiDocsTestRu', wait: true
+                build job: 'OpiDocs/OpiDocsTestEn', wait: true
+            }
+        }
     }
 }
