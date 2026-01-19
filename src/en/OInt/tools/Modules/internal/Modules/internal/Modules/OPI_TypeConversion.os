@@ -561,6 +561,7 @@ Procedure ConvertSourceToValue(Value, TryB64)
 EndProcedure
 
 #EndRegion
+
 #Region Alternate
 
 Procedure ПолучитьДвоичныеДанные(Значение, Val Безусловно = False, Val ПопыткаB64 = True) Export

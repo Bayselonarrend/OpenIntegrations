@@ -2262,6 +2262,7 @@ Procedure GetOrderListRecursively(ArrayOfOrders, Parameters, Shift = 0)
 EndProcedure
 
 #EndRegion
+
 #Region Alternate
 
 Function СоздатьСсылкуПолученияТокена(Val App_id) Export

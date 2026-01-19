@@ -499,6 +499,7 @@ Function GetTypesStructure() Export
 EndFunction
 
 #EndRegion
+
 #Region Alternate
 
 Function ОткрытьСоединение(Val База = "") Export

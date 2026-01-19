@@ -332,6 +332,7 @@ Procedure FormAddInException(Val Error)
 EndProcedure
 
 #EndRegion
+
 #Region Alternate
 
 Function ПолучитьКомпоненту(Val ИмяКомпоненты, Val Класс = "Main") Export
