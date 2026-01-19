@@ -7,8 +7,8 @@
    "wid": "***",
    "typeInstance": "v3"
   },
-  "timestamp": 1767727868,
-  "idMessage": "1767727866832",
+  "timestamp": 1768851788,
+  "idMessage": "1768851786088",
   "senderData": {
    "chatId": "***",
    "chatName": "***",
@@ -20,7 +20,7 @@
   "messageData": {
    "typeMessage": "extendedTextMessage",
    "extendedTextMessageData": {
-    "text": "Message text",
+    "text": "Текст сообщения",
     "description": "",
     "title": "",
     "previewType": "None",

@@ -1,4 +1,4 @@
 oint bitrix24 УдалитьСтадиюКанбана ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --stage 3492 ^
+  --stage 3504 ^
   --token "***"

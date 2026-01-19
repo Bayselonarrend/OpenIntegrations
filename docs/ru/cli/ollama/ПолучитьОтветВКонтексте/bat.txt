@@ -4,5 +4,5 @@ oint ollama ПолучитьОтветВКонтексте ^
   --url "https://hut.openintegrations.dev/ollama" ^
   --model "tinyllama" ^
   --msgs "[{'role':'user','content':'Hello!'}]" ^
-  --options "{'options':{'seed':'101','temperature':'0'}}" ^
+  --options "{'options':{'seed':'555','temperature':'10'}}" ^
   --headers "{'Authorization':'***'}"
