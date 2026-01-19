@@ -1,3 +1,4 @@
+#Использовать "."
 #Использовать "./internal"
 #Использовать "./internal/Classes/internal"
 
@@ -37,6 +38,8 @@
 	Обработчик = Новый TestIndexGenerator(ДанныеПроекта);
 	Обработчик = Новый HashSumGenerator(ДанныеПроекта);
 	Обработчик = Новый DocsGenerator();
+	Обработчик = Новый DocsDeployScript("test", "ru");
+	Обработчик = Новый DocsDeployScript("test", "en");
 
 	CommonTools.СообщитьПроцесс("Processing complete!");
 
