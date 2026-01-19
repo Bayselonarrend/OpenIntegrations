@@ -771,6 +771,7 @@
 КонецФункции
 
 #КонецОбласти
+
 #Region Alternate
 
 Function GetResponse(Val URL, Val Token, Val Model, Val Messages, Val AdditionalParameters = "", Val AdditionalHeaders = "") Export

@@ -1218,6 +1218,7 @@
 КонецФункции
 
 #КонецОбласти
+
 #Region Alternate
 
 Function FormAccessParameters(Val ApiUrl, Val MediaUrl, Val IdInstance, Val ApiTokenInstance) Export

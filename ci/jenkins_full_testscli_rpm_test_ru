@@ -1,0 +1,901 @@
+def runCommand(String command) {
+    if (isUnix()) {
+        sh(script: command)
+    } else {
+        bat(script: command)
+    }
+}
+
+pipeline {
+    agent {
+        label 'Rpm-Agent'  // Имя или метка агента
+    }
+	stages {
+
+        stage('Read stages config') {
+            steps {
+                script {
+                    def configText = readFile './service/tests_config.json'
+                    env.STAGES_CONFIG = configText
+                }
+            }
+        }
+
+        stage('Remove oint') {
+            steps {
+                script {
+                    // Удаляем oint, если он установлен
+                    sh 'rpm -e oint || echo "oint not installed"'
+                }
+            }
+        }
+
+        stage('Download oint package') {
+            steps {
+                script {
+                    // Скачиваем новый rpm-пакет oint
+                    sh 'wget -O oint-1.32.0-1.noarch_ru.rpm https://jenkins.openintegrations.dev/job/OpiBuild/job/OpiRelease/lastSuccessfulBuild/artifact/1.32.0/oint-1.32.0-1.noarch_ru.rpm '
+                }
+            }
+        }
+
+        stage('Install oint package') {
+            steps {
+                script {
+                    // Устанавливаем скаченный пакет
+                    sh 'rpm -ivh --replacepkgs oint-1.32.0-1.noarch_ru.rpm'
+                }
+            }
+        }
+
+      	stage('Prepare'){
+         		steps{
+                    sh 'cd ./src/ru/OInt && opm build && opm install oint-1.32.0.ospx && rm oint-1.32.0.ospx'
+            		withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+              			sh 'gpg --quiet --batch --yes --decrypt --passphrase="$GPGKEY" --output ./data.json ./data.json.gpg'
+            		}
+         		}
+      	}
+        stage('Create ReportPortal launch'){
+				steps{
+					sh 'oscript ./ci/os/internal/Classes/ReportPortalMethods.os start "CLI"'
+				}
+		}
+
+		stage('Testing-BuildCheck') {
+            when {
+                expression { return shouldRunStage('BuildCheck') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ПроверитьСоответствиеИБПоследнейСборке'],
+					]
+					for (test in tests) {
+							runLibraryTest(test[0], test[1])
+					}
+				}
+			}
+		}
+		stage('Testing-Telegram') {
+            when {
+                expression { return shouldRunStage('Telegram') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ПолучитьИнформациюБота'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ПолучитьОбновления'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_УстановитьWebhook'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьТекстовоеСообщение'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьКартинку'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьВидео'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьАудио'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьДокумент'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьГифку'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьМедиагруппу'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьМестоположение'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьКонтакт'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ОтправитьОпрос'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ПереслатьСообщение'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_БанРазбан'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_СоздатьСсылкуПриглашение'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ЗакрепитьОткрепитьСообщение'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ПолучитьЧислоУчастников'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ПолучитьСписокАватаровФорума'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_СоздатьУдалитьТемуФорума'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_ИзменитьИмяГлавнойТемы'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Телеграм_СкрытьПоказатьГлавнуюТему'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-VK') {
+            when {
+                expression { return shouldRunStage('VK') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьСсылкуТокена'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьУдалитьПост'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьСоставнойПост'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьОпрос'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СохранитьУдалитьКартинку'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьИсторию'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_МетодыОбсуждений'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ЛайкРепостКоммент'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ПолучитьСтатистику'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ПолучитьСтатистикуПостов'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьРекламнуюКампанию'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ОтправитьСообщение'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ПолучитьКатегорииТоваров'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьТоварПодборку'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_СоздатьТоварСоСвойствами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ПолучитьСписокТоваров'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ПолучитьСписокПодборок'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ПолучитьСписокСвойств'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ПолучитьСписокЗаказов'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВК_ЗагрузитьВидео'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-Viber') {
+            when {
+                expression { return shouldRunStage('Viber') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Вайбер_ПолучениеИнформации'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Вайбер_ОтправкаСообщений'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-Twitter') {
+            when {
+                expression { return shouldRunStage('Twitter') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Твиттер_ДанныеАккаунта'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Твиттер_Твиты'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-FTP') {
+            when {
+                expression { return shouldRunStage('FTP') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'FT_РаботаСДиректориями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'FT_РаботаСФайлами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'FT_ОсновныеМетоды'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-SSH') {
+            when {
+                expression { return shouldRunStage('SSH') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'SShell_ОсновныеМетоды'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-SFTP') {
+            when {
+                expression { return shouldRunStage('SFTP') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'SF_ОсновныеМетоды'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'SF_РаботаСДиректориями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'SF_РаботаСФайлами'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-PostgreSQL') {
+            when {
+                expression { return shouldRunStage('PostgreSQL') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Postgres_ОсновныеМетоды'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Postgres_ORM'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-MySQL') {
+            when {
+                expression { return shouldRunStage('MySQL') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'MYS_ОсновныеМетоды'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'MYS_ORM'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-MSSQL') {
+            when {
+                expression { return shouldRunStage('MSSQL') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'MSS_ОсновныеМетоды'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'MSS_ORM'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-SQLite') {
+            when {
+                expression { return shouldRunStage('SQLite') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'SQLL_ОсновныеМетоды'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'SQLL_ORM'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-MongoDB') {
+            when {
+                expression { return shouldRunStage('MongoDB') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_ОсновныеМетоды'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_РаботаСБазами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_РаботаСКоллекциями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_РаботаСДокументами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_УправлениеПользователями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Mongo_УправлениеРолями'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-RCON') {
+            when {
+                expression { return shouldRunStage('RCON') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'RC_ВыполнениеКоманд'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-YandexDisk') {
+            when {
+                expression { return shouldRunStage('YandexDisk') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_Авторизация'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ПолучитьИнформациюОДиске'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_СоздатьПапку'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ЗагрузитьПоАдресуПолучитьОбъект'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ЗагрузитьУдалитьФайл'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_СоздатьКопиюОбъекта'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ПолучитьСсылкуНаСкачивание'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ПолучитьСписокФайлов'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ПереместитьОбъект'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ДействияПубличныхОбъектов'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯДиск_ПолучитьСписокОпубликованных'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-GoogleWorkspace') {
+            when {
+                expression { return shouldRunStage('GoogleWorkspace') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГВ_Авторизация'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-GoogleCalendar') {
+            when {
+                expression { return shouldRunStage('GoogleCalendar') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_Авторизация'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_ПолучитьСписокКалендарей'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_СоздатьУдалитьКалендарь'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГК_СоздатьУдалитьСобытие'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-GoogleDrive') {
+            when {
+                expression { return shouldRunStage('GoogleDrive') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГД_Авторизация'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГД_ПолучитьСписокКаталогов'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГД_ЗагрузитьУдалитьФайл'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГД_СоздатьУдалитьКомментарий'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГД_СоздатьКаталог'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-GoogleSheets') {
+            when {
+                expression { return shouldRunStage('GoogleSheets') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГТ_Авторизация'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГТ_СоздатьТаблицу'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ГТ_ЗаполнитьОчиститьЯчейки'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-Notion') {
+            when {
+                expression { return shouldRunStage('Notion') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'НоушнАпи_СоздатьСтраницу'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'НоушнАпи_СоздатьИзменитьБазу'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'НоушнАпи_СоздатьУдалитьБлок'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'НоушнАпи_ПолучитьПользователей'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-Slack') {
+            when {
+                expression { return shouldRunStage('Slack') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ПолучитьИнформацию'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ОтправитьУдалитьСообщение'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_СоздатьАрхивироватьКанал'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ОткрытьЗакрытьДиалог'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ЗагрузитьУдалитьФайл'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Слак_ЗагрузитьУдалитьВФ'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-Airtable') {
+            when {
+                expression { return shouldRunStage('Airtable') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'АТ_СоздатьБазу'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'АТ_СоздатьТаблицу'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'АТ_СоздатьПоле'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'АТ_СоздатьУдалитьЗаписи'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-Dropbox') {
+            when {
+                expression { return shouldRunStage('Dropbox') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ДропБокс_ПолучитьОбновитьТокен'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ДропБокс_ЗагрузитьФайл'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ДропБокс_ЗагрузитьФайлПоURL'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ДропБокс_СоздатьКаталог'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ДропБокс_СоздатьУдалитьТег'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ДропБокс_ПолучитьАккаунт'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ДропБокс_РаботаСДоступами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ДропБокс_ПолучитьСписокФайловПапки'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-Bitrix24') {
+            when {
+                expression { return shouldRunStage('Bitrix24') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСТокеном'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_СерверноеВремя'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСНовостями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСЗадачами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСКомментариями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСДиском'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_Канбан'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_УчетРабочегоВремени'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСЧатами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСУведомлениями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСПолямиЗадач'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_УправлениеПодразделениями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_УправлениеПользователями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСЛидами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСоСделками'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'Б24_РаботаСКалендарями'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-VkTeams') {
+            when {
+                expression { return shouldRunStage('VkTeams') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВКТ_ОтправкаСообщений'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВКТ_ОбщиеМетоды'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ВКТ_УправлениеЧатами'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-Neocities') {
+            when {
+                expression { return shouldRunStage('Neocities') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'НС_РаботаСФайлами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'НС_ПолучениеДанных'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-CDEK') {
+            when {
+                expression { return shouldRunStage('CDEK') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'СдэкАПИ_ОбщиеМетоды'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'СдэкАПИ_РаботаСЗаказами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'СдэкАПИ_РаботаСЗаявкамиНаВызовКурьера'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-YandexMetrika') {
+            when {
+                expression { return shouldRunStage('YandexMetrika') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯМетрика_УправлениеМетками'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯМетрика_УправлениеСчетчиками'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'ЯМетрика_УправлениеОперациями'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-S3') {
+            when {
+                expression { return shouldRunStage('S3') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'AWS_ОбщиеМетоды'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'AWS_РаботаСБакетами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'AWS_РаботаСОбъектами'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-TCP') {
+            when {
+                expression { return shouldRunStage('TCP') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'TC_Клиент'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-GreenAPI') {
+            when {
+                expression { return shouldRunStage('GreenAPI') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GAPI_УправлениеГруппами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GAPI_ОтправкаСообщений'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GAPI_ПолучениеУведомлений'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GAPI_ОчередьСообщений'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GAPI_ЖурналыСообщений'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GAPI_Аккаунт'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-GreenMax') {
+            when {
+                expression { return shouldRunStage('GreenMax') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_РаботаСГруппами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_ОтправкаСообщений'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_Уведомления'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_ИсторияСообщений'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_Очереди'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GMax_Аккаунт'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-Ollama') {
+            when {
+                expression { return shouldRunStage('Ollama') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'OLLM_ОбработкаЗапросов'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'OLLM_РаботаСМоделями'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'OLLM_РаботаСBlob'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-HTTPКлиент') {
+            when {
+                expression { return shouldRunStage('HTTPКлиент') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'HTTP_Инициализация'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'HTTP_УстановкаТела'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'HTTP_Настройки'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'HTTP_УстановкаЗаголовков'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'HTTP_Авторизация'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'HTTP_ОбработкаЗапроса'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'HTTP_ПолучениеОтвета'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-OpenAI') {
+            when {
+                expression { return shouldRunStage('OpenAI') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'OAI_ОбработкаЗапросов'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'OAI_Ассистенты'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'OAI_РаботаСФайлами'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'OAI_РаботаСАудио'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'OAI_РаботаСМоделями'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-ReportPortal') {
+            when {
+                expression { return shouldRunStage('ReportPortal') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'RPortal_Авторизация'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-GRPC') {
+            when {
+                expression { return shouldRunStage('GRPC') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GR_ОсновныеМетоды'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GR_Интроспекция'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'GR_Стриминг'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+		stage('Testing-ClickHouse') {
+            when {
+                expression { return shouldRunStage('ClickHouse') }
+            }
+			steps {
+				script {
+					def tests = [
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'CH_ОсновныеМетоды'],
+						['./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os', 'CH_GRPC'],
+					]
+					for (test in tests) {
+						catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+							runLibraryTest(test[0], test[1])
+						}
+					}
+				}
+			}
+		}
+
+	}
+	post{
+		always{
+			script {
+                catchError() {   
+				    runCommand('oscript ./ci/os/internal/Classes/ReportPortalMethods.os stop')
+			    }
+				withCredentials([gitUsernamePassword(credentialsId: 'gitmain', gitToolName: 'Default')]) {
+					sh "git config user.email vitaly.the.alpaca@gmail.com"
+					sh 'git config user.name "Vitaly the Alpaca (bot)"'
+					sh "git config --global core.ignorecase true"
+					sh "git add ."
+					sh 'git commit -m "Test data update (Jenkins)"'
+					sh "git push origin HEAD:main"
+				}
+			}
+		}
+	}
+}
+
+def shouldRunStage(stageName) {
+    try {
+        if (!env.STAGES_CONFIG) {
+            echo "[WARN] STAGES_CONFIG not set. Assuming stage '${stageName}' is ENABLED."
+            return true
+        }
+        def config = readJSON text: env.STAGES_CONFIG
+        def value = config[stageName]
+        if (value == null) {
+            echo "[WARN] Stage '${stageName}' not found in config. Defaulting to DISABLED."
+            return false
+        }
+        return value == true
+    } catch (Exception e) {
+        echo "[ERROR] Failed to parse STAGES_CONFIG: ${e.message}"
+        echo "Raw config: ${env.STAGES_CONFIG}"
+        // Решите: включать stage по умолчанию или нет?
+        return false // или true — по вашему усмотрению
+    }
+}
+
+def runLibraryTest(String configPath, String libraryName) {
+    try {
+        echo "Executing: 1testrunner -run \"${configPath}\" \"${libraryName}\""
+        runCommand("1testrunner -run \"${configPath}\" \"${libraryName}\"")
+        echo "Test ${libraryName} completed successfully"
+    } catch (Exception e) {
+        echo "ERROR in test ${libraryName}: ${e.getMessage()}"
+        throw e 
+    }
+}
