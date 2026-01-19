@@ -38,7 +38,7 @@
 	Обработчик = Новый HashSumGenerator(ДанныеПроекта);
 	Обработчик = Новый DocsGenerator();
 
-	CommonTools.СообщитьПроцесс("Обработка завершена!");
+	CommonTools.СообщитьПроцесс("Processing complete!");
 
 КонецПроцедуры
 

@@ -22,7 +22,7 @@
 	
 	ФайлыМодулей    = ОпределитьНаборФайловДляСловаря(Корень + ОсновнойЯзык);
 	
-	CommonTools.СообщитьПроцесс("Актуализация словарей");
+	CommonTools.СообщитьПроцесс("Dictionaries actualization");
 	
 	Lua = Новый Lua();
 	Lua.ВыполнитьБайтКодФайла("./ci/lua/smart_parser.luac");
@@ -45,7 +45,7 @@
 	КонецЦикла;
 	
 	Если ЕстьНовыеСлова Тогда
-		CommonTools.СообщитьПроцесс("В словарях есть новые слова без перевода. Перевод и создание CLI не выполнено!");
+		CommonTools.СообщитьПроцесс("Dictionaries contain new words without translation. Translation and CLI creation not completed!");
 		ЗавершитьРаботу(111);
 	КонецЕсли;
 	
