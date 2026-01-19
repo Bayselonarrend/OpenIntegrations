@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьПользователя ^
   --url "b24-ar17wx.bitrix24.by" ^
-  --userid 3232 ^
+  --userid 3244 ^
   --token "***"
