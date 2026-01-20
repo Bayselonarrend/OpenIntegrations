@@ -60,9 +60,11 @@ import TabItem from '@theme/TabItem';
             oint greenmax ОтправитьФайл \
               --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" \
               --chat "***" \
-              --file "https://hut.openintegrations.dev/test_data/picture.jpg" \
-              --filename "photo.jpg" \
-              --caption "Описание файла"
+              --file "https://hut.openintegrations.dev/test_data/video.mp4" \
+              --filename "vid.mp4" \
+              --caption "Описание файла" \
+              --typing 1000 \
+              --ttype "video"
         ```
     </TabItem>
   
@@ -73,9 +75,11 @@ import TabItem from '@theme/TabItem';
             oint greenmax ОтправитьФайл ^
               --access "{'apiUrl':'***','mediaUrl':'https://3100.api.green-api.com/v3','idInstance':'3100309139','apiTokenInstance':'***'}" ^
               --chat "***" ^
-              --file "https://hut.openintegrations.dev/test_data/picture.jpg" ^
-              --filename "photo.jpg" ^
-              --caption "Описание файла"
+              --file "https://hut.openintegrations.dev/test_data/video.mp4" ^
+              --filename "vid.mp4" ^
+              --caption "Описание файла" ^
+              --typing 1000 ^
+              --ttype "video"
         ```
     </TabItem>
 </Tabs>
@@ -83,7 +87,7 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "idMessage": "1767674400424",
- "urlFile": "https://mediaout-3100.storage.yandexcloud.net/3100309139/15a8c88d-c517-4aca-a888-f9f631083c42.jpg"
+ "idMessage": "1768851791472",
+ "urlFile": "https://mediaout-3100.storage.yandexcloud.net/3100309139/b7e72367-0911-4295-8743-10ef3b8f399a.jpg"
 }
 ```
