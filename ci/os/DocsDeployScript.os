@@ -68,6 +68,7 @@
 
 	Исключение
 		
+		CommonTools.СообщитьПроцесс(ОписаниеОшибки());
 		CommonTools.СообщитьПроцесс("Docs processing terminated");
 
 		Успех = Ложь;
