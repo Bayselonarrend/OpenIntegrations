@@ -45,8 +45,8 @@
 
 	Попытка
 
-		CommonTools.ЗапуститьВнешнееПриложение("npm.cmd install"  , КаталогОсновной);
-		CommonTools.ЗапуститьВнешнееПриложение("npm.cmd run build", КаталогОсновной);
+		CommonTools.ЗапуститьВнешнееПриложение("npx.cmd install"  , КаталогОсновной);
+		CommonTools.ЗапуститьВнешнееПриложение("npx.cmd run build", КаталогОсновной);
 
 		Если Вариант = "release" Тогда
 
