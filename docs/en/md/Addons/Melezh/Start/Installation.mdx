@@ -1,24 +1,48 @@
 ---
 id: Installation
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Integration, Services, Exchange, OneScript, CLI]
 title: Installation
 sidebar_position: 1
 ---
 
-To start working with Melezh, you need to complete the installation process and then create and configure a project. This section describes the Melezh installation procedure for different environments. The installation method depends on your operating system and the availability of Docker or OneScript with OPM package manager:
+To start working with Melezh, you need to go through the installation procedure, after which you can create and configure a project. This section describes the process of installing Melezh on a specific device. The choice of one method or another depends on the operating system, as well as the availability of Docker or OneScript with the OPM package manager:
 
-## OneScript (Recommended)
+## Installation in a container (recommended)
 
-Melezh and OInt are primarily distributed as packages for [OneScript](https://github.com/EvilBeaver/OneScript) and can be installed using the OPM package manager. The Russian version of the package can be installed from the cloud package hub using the following console command:
+The easiest way to run Melezh with all necessary dependencies is using Docker. This can be done in one of the following ways:
+
++ Get the image from GHCR and run the container:
+
+```bash
+    Instead of -deb you can specify -rpm to use rpm-based distribution
+    Instead of -ru you can specify -en to get the English version
+    Instead of latest you can specify a specific version of Melezh
+    Port 1921 - main port of Melezh http-server
+    Port 1931 - debug port for connecting OneScript Debug Adapter for VS Code during operation. See Debugging section for details
+    
+    docker pull ghcr.io/bayselonarrend/melezh:latest-deb-en
+    docker run -d -p 1921:1921 -p 1931:1931 --name melezh ghcr.io/bayselonarrend/melezh:latest-deb-en
+```
+
++ Download the zip archive with Dockerfile (`melezh-docker-ru.zip` or `melezh-docker-en.zip`) from the repository release on Github. The archive needs to be unpacked, after which you should run one of the installation scripts located there - `bat` or `sh`, depending on the OS being used
+
+<br>
+
+## Installation on local machine
+
+You can also install Melezh as a OneScript package or application on a local machine in one of the following ways:
+
+### OneScript
+
+Melezh and OInt are primarily packages for [OneScript](https://github.com/EvilBeaver/OneScript), which can be installed using the OPM package manager. The Russian version of the package can be installed from the cloud package hub using the console command:
 
 ```bash
 opm install melezh
 ```
 
-This package includes dependencies for both OInt and OInt CLI - they will be installed automatically.
+This package already has dependencies on OInt and OInt CLI - they will be installed automatically 
 
-Alternatively, both English and Russian versions can be installed from local `.ospx` package files available in the releases of their respective repositories:
-- [Melezh](https://github.com/Bayselonarrend/OpenIntegrations)
-- [OpenIntegrations](https://github.com/Bayselonarrend/OpenIntegrations)
+In addition to getting from the cloud, both English and Russian versions can be installed from local `.ospx` package files, which are located in the releases of the corresponding repositories [Melezh](https://github.com/Bayselonarrend/OpenIntegrations) and [OpenIntegrations](https://github.com/Bayselonarrend/OpenIntegrations):
 
 ```bash
 opm install -f oint-x.x.x_lang.ospx
@@ -27,42 +51,27 @@ opm install -f melezh-x.x.x_lang.ospx
 ```
 
 :::warning
-Melezh is compatible with any `oint` version above 1.24.0, but requires language version matching: both Melezh and OInt are available in two language variants (Russian and English) that cannot be mixed. The Russian version of Melezh can only be installed on top of the Russian OInt, and the English version requires the English OInt respectively.
+Each version of `melezh` is compatible with the corresponding version of `oint` provided the package languages match. For example, the Russian version of Melezh 0.8.0 is compatible with the Russian version of `oint` 1.31.0, version 0.9.0 - with 1.32.0, etc. The latest version of Melezh is always compatible with the latest version of `oint` and is always released simultaneously with it. When updating `melezh` to a newer version, the `oint` and `oint-cli` packages must also be updated. The same applies in reverse
 :::
 
-<br/><hr/>
+<hr/>
 
+### Windows
 
-## Docker 
+Installing Melezh on Windows is done during the installation of `oint` - the main console application of the Open Integration Package. Simply download the `oint` installers from the [OpenIntegrations](https://github.com/Bayselonarrend/OpenIntegrations) repository release (v >= 1.24.0), then during installation, check the box on the page asking about additional Melezh installation:
 
-You can run Melezh in a Docker container using one of these methods:
-
-+ Pull the image from GHCR and run the container:
-
-```bash
-    # Use -deb or -rpm for different distros
-    # Use -ru or -en for language version
-    # Replace 'latest' with specific version if needed
-    # Change port in -p argument as needed
-    
-    docker pull ghcr.io/bayselonarrend/melezh:latest-deb-en
-    docker run -d -p 1921:1921 --name melezh ghcr.io/bayselonarrend/melezh:latest-deb-en
-```
-
-+ Download the Dockerfile zip archive (`melezh-docker-ru.zip` or `melezh-docker-en.zip`) from GitHub releases. Extract the archive and run the appropriate setup script based on your operating system (`bat` for Windows or `sh` for Linux).
+![Melezh Installation](../../../../static/img/Docs/Melezh/ru/1.png)
 
 <hr/>
 
-## Windows
+### Linux
 
-On Windows, Melezh is installed as part of the `oint` setup - the main console application of the Open Integration Package. Simply download the `oint` installers (version 1.24.0 or higher) from the [OpenIntegrations](https://github.com/Bayselonarrend/OpenIntegrations) releases, and during installation, check the box when prompted about additional Melezh installation:
+To install Melezh on devices with Linux OS, `.deb` and `.rpm` packages are available in the Melezh repository releases. Both depend on the `oint` package, which in corresponding (`.deb` or `.rpm`) variants can be found in the [OpenIntegrations](https://github.com/Bayselonarrend/OpenIntegrations) repository releases
 
-![Melezh](../../../../static/img/Docs/Melezh/en/1.png)
+As with OneScript packages, it is important to maintain correspondence of version numbers and language versions
 
-<hr/>
 
-## Linux
 
-For Linux systems, Melezh provides `.deb` and `.rpm` packages in its GitHub releases. Both package formats require the `oint` package as a dependency, which is available in corresponding formats from the [OpenIntegrations](https://github.com/Bayselonarrend/OpenIntegrations) repository releases.
 
-As with OneScript packages, it's crucial to maintain language version consistency: **Russian Melezh** requires **Russian OInt**, while **English Melezh** must be paired with **English OInt**.
+
+
