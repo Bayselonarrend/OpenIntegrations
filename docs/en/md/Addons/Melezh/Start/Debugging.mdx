@@ -1,0 +1,89 @@
+---
+id: Debugging
+keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Integration, Services, Exchange, OneScript, CLI]
+title: Debugging
+sidebar_position: 5
+---
+
+This section contains information about configuring and debugging Melezh-based projects
+
+### Enabling Melezh debugging in a container
+
+:::tip
+Works in Melezh starting from version `0.9.0` when using OneScript Debug Adapter `>=1.1.0`
+:::
+
+In Melezh Docker images, debug port 1931 is configured by default for [OneScript Debug Adapter](https://marketplace.visualstudio.com/items?itemName=EvilBeaver.oscript-debug). This port needs to be forwarded to the local machine, after which you should create a 'launch.json' in VS Code with the following content:
+
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Melezh Attach",
+            "type": "oscript",
+            "request": "attach",
+            "debugPort": 1831,
+            "pathsMapping": {
+                "remotePath": "/app",
+                "localPath": "D:/Repos/Melezh"
+            }
+        },
+    ]
+}
+```
+The remote directory `/app` is the main Melezh workspace directory inside the container, where the project file, log directory are stored and from which relative paths in settings are calculated. It is recommended to specify it as a volume on the local machine (`D:/Repos/Melezh` from the example) when creating the container and create a subdirectory there for extensions that need to be debugged. This will be sufficient for debugging extensions and editing them "on the fly". To debug all of Melezh, including internal systems, you need to connect or recreate the Melezh directory structure on the local machine, since during debugging the base for calculating paths to modules is determined by the `remotePath` and `localPath` fields. All relative paths to debugged files after these base paths on the local machine and in the container must match. For example, with the 'launch.json' file from the example, the module `/app/my_extension/extension.os` can be debugged on the local machine by working with the module `D:/Repos/Melezh/my_extension/extension.os` in the code editor
+
+### Debugging on local machine
+
+To start debugging on a local machine, you can either run Melezh through the adapter in VS Code (the Melezh process will be terminated at the end of debugging), or, as in the case of working with a Docker container, allocate a permanent port to connect the debugger to it as needed
+
+**To start debugging Melezh through VS Code**, you need to open the main Melezh installation directory as a project and create a `launch.json` with the following content:
+
+```json
+{
+    "name": "Debug Melezh UI",
+    "type": "oscript",
+    "request": "launch",
+    "program": "${workspaceRoot}/core/Classes/app.os",
+    "args": ["ЗапуститьПроект", "--port", "1921", "--proj", "D:/test_proj.melezh", "--debug"],
+    "cwd": "${workspaceRoot}",
+    "env": {},
+    "runtimeExecutable": null,
+    "runtimeArgs": [],
+    "debugPort": 2801
+}
+```
+
++ In the `program` field, you need to specify the path to the `core/Classes/app.os` file in the Melezh directory
++ In the `args` field, you need to replace `port` and `proj` with your startup port and path to the debugged project file respectively
+
+:::important
+If Melezh was installed from the Windows installer or Linux package, then OneScript may not be present on the target machine as a separate application registered in PATH. In this case, you can install OneScript separately, or specify in the `runtimeExecutable` field the path to the built-in OneScript engine inside Melezh
+
+On Linux: `usr/share/oint/bin/oscript`
+On Windows: `{OInt installation directory}\OInt\share\oint\bin\oscript.exe`
+:::
+
+After starting debugging in VS Code, you can set breakpoints both in the main Melezh scripts and in custom extension files
+
+**To run Melezh with a permanent debug port**, you need to:
+
+ - If Melezh was installed from the Windows installer or Linux package, then it is sufficient to set the `MELEZH_DEBUG` environment variable with the preferred port number before running `melezh`, through which the debugger will be available later
+
+ - If Melezh was installed as an OPM package, then you need to modify the `melezh.bat/melezh.sh` file in `OneScript/bin`, adding `-debug -port="Port number" -noWait` between `oscript` and the path to `app.os`. For example:
+
+ ```bash
+oscript -debug -port="1931" -noWait /usr/share/oint/lib/melezh/core/Classes/app.os "$@"
+ ```
+
+ You can connect to the process for debugging after starting Melezh using Debug Adapter with `launch.json` of the following form:
+
+ ```json
+{
+    "name": "Melezh Attach",
+    "type": "oscript",
+    "request": "attach",
+    "debugPort": 1931
+}
+ ```
