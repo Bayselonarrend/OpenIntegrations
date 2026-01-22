@@ -151,8 +151,8 @@
 
 	CommonTools.СообщитьПроцесс("Saving...");
 
-	ДокументNotice.Записать("./NOTICE");
-	ДокументTPL.Записать("./THIRD-PARTY-LICENSES");
+	CommonTools.ЗаписатьТекст(ДокументNotice, "./NOTICE");
+	CommonTools.ЗаписатьТекст(ДокументTPL, "./THIRD-PARTY-LICENSES");
 
 	CommonTools.СообщитьПроцесс("Generating complete");
 
