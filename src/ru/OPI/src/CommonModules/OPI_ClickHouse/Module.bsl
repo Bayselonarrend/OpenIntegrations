@@ -3,6 +3,10 @@
 // CLI: clickhouse
 // Keywords: clickhouse
 
+// DocsCategory: Database
+// DocsNameRU: ClickHouse 
+// DocsNameEN: ClickHouse
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

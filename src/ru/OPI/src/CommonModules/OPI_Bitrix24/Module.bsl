@@ -3,6 +3,10 @@
 // CLI: bitrix24
 // Keywords: bitrix24, b24, bitrix
 
+// DocsCategory: CRM
+// DocsNameRU: Bitrix24 
+// DocsNameEN: Bitrix24
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

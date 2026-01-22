@@ -3,6 +3,10 @@
 // CLI: slack
 // Keywords: slack
 
+// DocsCategory: Messenger
+// DocsNameRU: Slack 
+// DocsNameEN: Slack
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

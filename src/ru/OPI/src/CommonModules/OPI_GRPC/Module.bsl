@@ -3,6 +3,10 @@
 // CLI: grpc
 // Keywords: grpc
 
+// DocsCategory: Exchange
+// DocsNameRU: gRPC
+// DocsNameEN: gRPC
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

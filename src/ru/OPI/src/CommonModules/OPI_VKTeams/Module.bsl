@@ -3,6 +3,10 @@
 // CLI: vkteams
 // Keywords: vkteams, vk teams
 
+// DocsCategory: Messenger
+// DocsNameRU: VK Teams 
+// DocsNameEN: VK Teams
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

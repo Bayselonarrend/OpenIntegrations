@@ -3,6 +3,10 @@
 // CLI: openai
 // Keywords: openai, localai, ai llm
 
+// DocsCategory: AI
+// DocsNameRU: OpenAI 
+// DocsNameEN: OpenAI
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

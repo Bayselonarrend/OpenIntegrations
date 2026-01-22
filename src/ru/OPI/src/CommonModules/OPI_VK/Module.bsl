@@ -3,6 +3,10 @@
 // CLI: vk
 // Keywords: vk, vkontakte
 
+// DocsCategory: Social
+// DocsNameRU: VK 
+// DocsNameEN: VK
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets
