@@ -3,6 +3,10 @@
 // CLI: cdek
 // Keywords: cdek
 
+// DocsCategory: Commerce
+// DocsNameRU: CDEK 
+// DocsNameEN: CDEK
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

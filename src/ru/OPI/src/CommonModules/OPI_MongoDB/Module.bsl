@@ -3,6 +3,10 @@
 // CLI: mongodb
 // Keywords: mongodb, mongo, nosql
 
+// DocsCategory: Database
+// DocsNameRU: MongoDB 
+// DocsNameEN: MongoDB
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

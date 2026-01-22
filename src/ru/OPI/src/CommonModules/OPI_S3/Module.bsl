@@ -3,6 +3,10 @@
 // CLI: s3
 // Keywords: s3, minio, aws, simple storage service
 
+// DocsCategory: Folder
+// DocsNameRU: AWS S3 
+// DocsNameEN: AWS S3
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

@@ -3,6 +3,10 @@
 // CLI: ollama
 // Keywords: ollama, ai llm
 
+// DocsCategory: AI
+// DocsNameRU: Ollama 
+// DocsNameEN: Ollama
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

@@ -3,6 +3,10 @@
 // CLI: dropbox
 // Keywords: dropbox
 
+// DocsCategory: Folder
+// DocsNameRU: Dropbox 
+// DocsNameEN: Dropbox
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

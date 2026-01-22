@@ -3,6 +3,10 @@
 // CLI: tcp
 // Keywords: tcp
 
+// DocsCategory: Exchange
+// DocsNameRU: TCP 
+// DocsNameEN: TCP
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

@@ -1,8 +1,12 @@
 ﻿// OneScript: ./OInt/core/Modules/OPI_GoogleDrive.os
-// Lib: Google Drive
+// Lib: GoogleDrive
 // CLI: gdrive
 // Keywords: google drive, googledrive, gdrive, google disk
 // Depends: OPI_GoogleWorkspace
+
+// DocsCategory: Folder
+// DocsNameRU: Google Drive 
+// DocsNameEN: Google Drive
 
 // MIT License
 
