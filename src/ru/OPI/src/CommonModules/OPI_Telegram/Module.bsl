@@ -3,6 +3,10 @@
 // CLI: telegram
 // Keywords: telegram
 
+// DocsCategory: Messenger
+// DocsNameRU: Telegram 
+// DocsNameEN: Telegram
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

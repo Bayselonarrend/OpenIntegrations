@@ -1,0 +1,8 @@
+    {
+      type: 'category',
+      label: '%1',
+      className: '%2',
+      items: [
+        %3
+      ],
+    },

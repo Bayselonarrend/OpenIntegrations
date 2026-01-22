@@ -3,6 +3,10 @@
 // CLI: rcon
 // Keywords: rcon, remote console
 
+// DocsCategory: Exchange
+// DocsNameRU: RCON 
+// DocsNameEN: RCON
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

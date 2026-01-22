@@ -3,6 +3,10 @@
 // CLI: sftp
 // Keywords: sftp
 
+// DocsCategory: Exchange
+// DocsNameRU: SFTP 
+// DocsNameEN: SFTP
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

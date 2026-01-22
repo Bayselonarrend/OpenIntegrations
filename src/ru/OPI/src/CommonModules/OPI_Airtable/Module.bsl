@@ -3,6 +3,10 @@
 // CLI: airtable
 // Keywords: airtable
 
+// DocsCategory: Database
+// DocsNameRU: Airtable 
+// DocsNameEN: Airtable
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

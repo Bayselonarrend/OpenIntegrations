@@ -3,6 +3,10 @@
 // CLI: mysql
 // Keywords: mysql, my sql
 
+// DocsCategory: Database
+// DocsNameRU: MySQL 
+// DocsNameEN: MySQL
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets
