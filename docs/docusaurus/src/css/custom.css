@@ -400,7 +400,6 @@ li > a.menu__link {
 .OpenAI a::before,
 .PostgreSQL a::before,
 .RCON a::before,
-.ReportPortal a::before,
 .S3 a::before,
 .SFTP a::before,
 .Slack a::before,
@@ -413,7 +412,6 @@ li > a.menu__link {
 .VK a::before,
 .VKTeams a::before,
 .YandexDisk a::before,
-.HTTP a::before,
 .HTTP a::before{
   padding-right: 0.7rem;
   padding-top: 0.4rem;
@@ -503,10 +501,6 @@ li > a.menu__link {
   content: url(../../static/img/APIs/small/RCON.png);
 }
 
-.ReportPortal > div > a::before{
-  content: url(../../static/img/APIs/small/ReportPortal.png);
-}
-
 .S3 > div > a::before{
   content: url(../../static/img/APIs/small/S3.png);
 }
@@ -553,10 +547,6 @@ li > a.menu__link {
 
 .YandexDisk > div > a::before{
   content: url(../../static/img/APIs/small/YandexDisk.png);
-}
-
-.HTTP > div > a::before{
-  content: url(../../static/img/APIs/small/HTTP.png);
 }
 
 .HTTP > div > a::before{
