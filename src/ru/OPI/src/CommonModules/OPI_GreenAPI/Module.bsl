@@ -3,6 +3,10 @@
 // CLI: greenapi
 // Keywords: greenapi, whatsapp
 
+// DocsCategory: Messenger
+// DocsNameRU: GreenAPI (WhatsApp) 
+// DocsNameEN: GreenAPI (WhatsApp)
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets
