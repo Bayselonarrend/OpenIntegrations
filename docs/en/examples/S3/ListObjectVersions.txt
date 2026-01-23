@@ -1,4 +1,4 @@
-﻿    URL       = "s3.openintegrations.dev";
+    URL       = "s3.openintegrations.dev";
     AccessKey = "bayselo...";
     SecretKey = "12we34...";
     Region    = "BTC";
@@ -6,6 +6,6 @@
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
     Directory = True; // Formation URL in path-style
-    Bucket = "";
+    Bucket = "w567hjy1";
     Prefix = "pic";
     Result = OPI_S3.ListObjectVersions(Bucket, BasicData, Prefix, , , Directory);

@@ -1,1 +1,1 @@
-﻿    Result = OPI_Ollama.GetContextMessageStructure("user", "Hello!");
+    Result = OPI_Ollama.GetContextMessageStructure("user", "Hello!");

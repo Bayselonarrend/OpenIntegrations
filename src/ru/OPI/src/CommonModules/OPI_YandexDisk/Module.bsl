@@ -1,11 +1,11 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_YandexDisk.os
+// OneScript: ./OInt/core/Modules/OPI_YandexDisk.os
 // Lib: YandexDisk
 // CLI: yadisk
 // Keywords: yandexdisk, yandex.disk, yandex disk, yandex drive, yadisk, ya disk
 // Depends: OPI_YandexID
 
 // DocsCategory: Folder
-// DocsNameRU: Yandex.Disk 
+// DocsNameRU: Yandex.Disk
 // DocsNameEN: Yandex.Disk
 
 // MIT License

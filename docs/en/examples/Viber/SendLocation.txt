@@ -1,4 +1,4 @@
-﻿    Latitude  = "48.87373649724122";
+    Latitude  = "48.87373649724122";
     Longitude = "2.2954639195323967";
 
     UserID           = "d3jxe61Z4W73nmNkjYGgZg==";

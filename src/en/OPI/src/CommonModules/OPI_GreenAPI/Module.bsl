@@ -1,7 +1,11 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_GreenAPI.os
+// OneScript: ./OInt/core/Modules/OPI_GreenAPI.os
 // Lib: GreenAPI
 // CLI: greenapi
 // Keywords: greenapi, whatsapp
+
+// DocsCategory: Messenger
+// DocsNameRU: GreenAPI (WhatsApp)
+// DocsNameEN: GreenAPI (WhatsApp)
 
 // MIT License
 

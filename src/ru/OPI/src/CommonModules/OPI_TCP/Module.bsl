@@ -1,10 +1,10 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_TCP.os
+// OneScript: ./OInt/core/Modules/OPI_TCP.os
 // Lib: TCP
 // CLI: tcp
 // Keywords: tcp
 
 // DocsCategory: Exchange
-// DocsNameRU: TCP 
+// DocsNameRU: TCP
 // DocsNameEN: TCP
 
 // MIT License

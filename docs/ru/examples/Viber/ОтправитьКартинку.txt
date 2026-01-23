@@ -1,4 +1,4 @@
-﻿    Описание = "Тестовое сообщение";
+    Описание = "Тестовое сообщение";
     URL      = "https://hut.openintegrations.dev/test_data/picture.jpg";
 
     IDПользователя = "d3jxe61Z4W73nmNkjYGgZg==";

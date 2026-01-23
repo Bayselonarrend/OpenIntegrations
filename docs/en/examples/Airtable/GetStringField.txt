@@ -1,1 +1,1 @@
-﻿    Result = OPI_Airtable.GetStringField("String");
+    Result = OPI_Airtable.GetStringField("String");

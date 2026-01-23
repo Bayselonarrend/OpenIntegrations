@@ -1,1 +1,1 @@
-﻿    Result = OPI_Ollama.GetContextParameterStructure();
+    Result = OPI_Ollama.GetContextParameterStructure();

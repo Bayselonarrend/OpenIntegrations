@@ -1,1 +1,1 @@
-﻿    Result = OPI_PostgreSQL.GetTLSSettings(True);
+    Result = OPI_PostgreSQL.GetTLSSettings(True);

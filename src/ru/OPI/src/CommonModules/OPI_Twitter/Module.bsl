@@ -1,10 +1,10 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Twitter.os
+// OneScript: ./OInt/core/Modules/OPI_Twitter.os
 // Lib: Twitter
 // CLI: twitter
 // Keywords: twitter, x
 
 // DocsCategory: Social
-// DocsNameRU: Twitter (X) 
+// DocsNameRU: Twitter (X)
 // DocsNameEN: Twitter (X)
 
 // MIT License

@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_ReportPortal.os
+// OneScript: ./OInt/core/Modules/OPI_ReportPortal.os
 // Lib: ReportPortal
 // CLI: rportal
 // Keywords: reportportal

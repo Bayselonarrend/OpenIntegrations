@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_YandexID.os
+// OneScript: ./OInt/core/Modules/OPI_YandexID.os
 // Lib: YandexID
 // CLI: yandex
 

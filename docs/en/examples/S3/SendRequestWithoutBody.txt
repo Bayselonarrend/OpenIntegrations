@@ -1,4 +1,4 @@
-﻿    URL       = "s3.openintegrations.dev" + "/opi-newbucket2";
+    URL       = "s3.openintegrations.dev" + "/opi-newbucket2";
     AccessKey = "bayselo...";
     SecretKey = "12we34...";
     Region    = "BTC";

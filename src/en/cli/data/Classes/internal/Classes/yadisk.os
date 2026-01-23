@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -187,7 +187,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEOBJECT";
     NewLine.Parameter     = "--can";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "To cart (optional, def. val.. - True)";
+    NewLine.Description     = "To cart (optional, def. val.. - Yes)";
     NewLine.Region      = "File and folder management";
 
 
@@ -232,7 +232,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEOBJECTCOPY";
     NewLine.Parameter     = "--rewrite";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - False)";
+    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - No)";
     NewLine.Region      = "File and folder management";
 
 
@@ -289,7 +289,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILEUPLOADLINK";
     NewLine.Parameter     = "--rewrite";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - False)";
+    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - No)";
     NewLine.Region      = "File and folder management";
 
 
@@ -382,7 +382,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILESLIST";
     NewLine.Parameter     = "--datesort";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "True > sort by date, False > alphabetically (optional, def. val.. - False)";
+    NewLine.Description     = "True > sort by date, False > alphabetically (optional, def. val.. - No)";
     NewLine.Region      = "File and folder management";
 
 
@@ -427,7 +427,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MOVEOBJECT";
     NewLine.Parameter     = "--rewrite";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - False)";
+    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - No)";
     NewLine.Region      = "File and folder management";
 
 
@@ -472,7 +472,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFILE";
     NewLine.Parameter     = "--rewrite";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - False)";
+    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - No)";
     NewLine.Region      = "File and folder management";
 
 
@@ -528,7 +528,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFILEINPARTS";
     NewLine.Parameter     = "--rewrite";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - False)";
+    NewLine.Description     = "Overwrite if a file with the same name already exists (optional, def. val.. - No)";
     NewLine.Region      = "File and folder management";
 
 

@@ -1,7 +1,11 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_GreenMax.os
+// OneScript: ./OInt/core/Modules/OPI_GreenMax.os
 // Lib: GreenMax
 // CLI: greenmax
 // Keywords: greenapi, max
+
+// DocsCategory: Messenger
+// DocsNameRU: GreenAPI (Max)
+// DocsNameEN: GreenAPI (Max)
 
 // MIT License
 

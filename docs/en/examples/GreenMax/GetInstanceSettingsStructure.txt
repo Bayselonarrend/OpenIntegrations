@@ -1,1 +1,1 @@
-﻿    Result = OPI_GreenMax.GetInstanceSettingsStructure();
+    Result = OPI_GreenMax.GetInstanceSettingsStructure();

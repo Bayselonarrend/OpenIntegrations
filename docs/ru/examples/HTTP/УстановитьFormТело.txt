@@ -1,4 +1,4 @@
-﻿    URL = "https://bin.openintegrations.dev";
+    URL = "https://bin.openintegrations.dev";
     URL = URL + "/post";
 
     Данные = Новый Структура("Поле1,Поле2", "10", "Текст");

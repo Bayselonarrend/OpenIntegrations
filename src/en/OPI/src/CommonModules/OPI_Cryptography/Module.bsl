@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Cryptography.os
+// OneScript: ./OInt/tools/Modules/internal/Modules/OPI_Cryptography.os
 
 // MIT License
 

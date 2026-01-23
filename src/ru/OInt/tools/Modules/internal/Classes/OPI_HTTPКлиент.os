@@ -1,7 +1,11 @@
 // OneScript: ./OInt/tools/Modules/internal/Classes/OPI_HTTPКлиент.os
-// Lib: HTTP-клиент
+// Lib: HTTP
 // CLI: none
 // Keywords: http, https
+
+// DocsCategory: Exchange
+// DocsNameRU: HTTP
+// DocsNameEN: HTTP
 
 // MIT License
 

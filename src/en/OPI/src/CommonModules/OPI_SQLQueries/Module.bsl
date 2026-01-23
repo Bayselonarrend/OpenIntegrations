@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_SQLQueries.os
+// OneScript: ./OInt/tools/Modules/OPI_SQLQueries.os
 
 // MIT License
 

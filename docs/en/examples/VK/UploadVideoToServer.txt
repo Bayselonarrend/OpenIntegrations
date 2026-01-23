@@ -1,4 +1,4 @@
-﻿    Parameters = GetVKParameters();
+    Parameters = GetVKParameters();
 
     Video       = "https://hut.openintegrations.dev/test_data/video.mp4"; // URL, Binary Data or File path
     Name        = "NewVideo";

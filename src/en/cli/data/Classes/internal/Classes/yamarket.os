@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -152,7 +152,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDUPDATEPRODUCTS";
     NewLine.Parameter     = "--pmedia";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "A flag of using only your own product images (optional, def. val.. - False)";
+    NewLine.Description     = "A flag of using only your own product images (optional, def. val.. - No)";
     NewLine.Region      = "Product management";
 
 
@@ -253,7 +253,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPRODUCTSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Product management";
     NewLine.MethodDescription   = "Gets the structure of product standard fields";
 

@@ -3,6 +3,10 @@
 // CLI: notion
 // Keywords: notion
 
+// DocsCategory: Calendar
+// DocsNameRU: Notion
+// DocsNameEN: Notion
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

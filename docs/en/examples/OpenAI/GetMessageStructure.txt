@@ -1,1 +1,1 @@
-﻿    Result = OPI_OpenAI.GetMessageStructure("user", "What is 1C:Enterprise?");
+    Result = OPI_OpenAI.GetMessageStructure("user", "What is 1C:Enterprise?");

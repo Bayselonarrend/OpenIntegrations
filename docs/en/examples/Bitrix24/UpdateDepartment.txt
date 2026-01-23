@@ -1,14 +1,14 @@
-﻿    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
 
-    DepartmentID = "3212";
+    DepartmentID = "2962";
     ParentID     = 7;
 
     Result = OPI_Bitrix24.UpdateDepartment(URL, DepartmentID, , ParentID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "bafe5c69006e9f06006b12e400000001000...";
+    Token = "a5b00469006e9f06006b12e400000001000...";
 
-    DepartmentID = "3214";
+    DepartmentID = "2964";
     Name         = "New department";
     ParentID     = 1;
     HeadID       = 10;

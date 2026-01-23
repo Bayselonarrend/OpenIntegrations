@@ -1,4 +1,4 @@
-﻿    Адрес = "https://grpcb.in:9001";
+    Адрес = "https://grpcb.in:9001";
     Схема = "https://hut.openintegrations.dev/test_data/grpcbin.proto"; // Строка, путь к файлу или URL
 
     Параметры = OPI_GRPC.ПолучитьПараметрыСоединения(Адрес, Схема);

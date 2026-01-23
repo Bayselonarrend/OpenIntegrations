@@ -1,8 +1,12 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_MSSQL.os
+// OneScript: ./OInt/core/Modules/OPI_MSSQL.os
 // Lib: MSSQL
 // CLI: mssql
 // Keywords: mssql, ms sql
 // Depends: OPI_MSSQL
+
+// DocsCategory: Database
+// DocsNameRU: MS SQL
+// DocsNameEN: MS SQL
 
 // MIT License
 

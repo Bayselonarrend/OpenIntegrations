@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -104,7 +104,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPOST";
     NewLine.Parameter     = "--ad";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Sign ""This is an ad"" (optional, def. val.. - False)";
+    NewLine.Description     = "Sign ""This is an ad"" (optional, def. val.. - No)";
     NewLine.Region      = "Community management";
 
 
@@ -168,7 +168,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECOMPOSITEPOST";
     NewLine.Parameter     = "--ad";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Sign ""This is an ad"" (optional, def. val.. - False)";
+    NewLine.Description     = "Sign ""This is an ad"" (optional, def. val.. - No)";
     NewLine.Region      = "Community management";
 
 
@@ -663,7 +663,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CLOSEDISCUSSION";
     NewLine.Parameter     = "--remove";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Delete completely (True) or close (optional, def. val.. - False)";
+    NewLine.Description     = "Delete completely (True) or close (optional, def. val.. - No)";
     NewLine.Region      = "Discussion management";
 
 
@@ -842,7 +842,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "MAKEREPOST";
     NewLine.Parameter     = "--ad";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Sign of an advertising post (optional, def. val.. - False)";
+    NewLine.Description     = "Sign of an advertising post (optional, def. val.. - No)";
     NewLine.Region      = "Interactive actions";
 
 
@@ -1554,7 +1554,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETPRODUCTDESCRIPTION";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Product management";
     NewLine.MethodDescription   = "Gets the description template for creating a product";
 
@@ -1648,7 +1648,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPRODUCTCOLLECTION";
     NewLine.Parameter     = "--main";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "Main (optional, def. val.. - False)";
+    NewLine.Description     = "Main (optional, def. val.. - No)";
     NewLine.Region      = "Product selection management";
 
 
@@ -1659,7 +1659,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPRODUCTCOLLECTION";
     NewLine.Parameter     = "--hidden";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Hidden (optional, def. val.. - False)";
+    NewLine.Description     = "Hidden (optional, def. val.. - No)";
     NewLine.Region      = "Product selection management";
 
 
@@ -1723,7 +1723,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITPRODUCTCOLLECTION";
     NewLine.Parameter     = "--main";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "Main (optional, def. val.. - False)";
+    NewLine.Description     = "Main (optional, def. val.. - No)";
     NewLine.Region      = "Product selection management";
 
 
@@ -1734,7 +1734,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITPRODUCTCOLLECTION";
     NewLine.Parameter     = "--hidden";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Hidden (optional, def. val.. - False)";
+    NewLine.Description     = "Hidden (optional, def. val.. - No)";
     NewLine.Region      = "Product selection management";
 
 

@@ -1,1 +1,1 @@
-﻿    Result = OPI_Ollama.GetEmbeddingsParameterStructure();
+    Result = OPI_Ollama.GetEmbeddingsParameterStructure();

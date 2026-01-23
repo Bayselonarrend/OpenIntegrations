@@ -1,4 +1,4 @@
-﻿    Token = "xoxb-6965308400114-696804637...";
+    Token = "xoxb-6965308400114-696804637...";
     User  = "U06UABH3APP";
 
     Result = OPI_Slack.OpenDialog(Token, User);

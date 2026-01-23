@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -38,7 +38,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--calendar";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Calendar methods permission (optional, def. val.. - True)";
+    NewLine.Description     = "Calendar methods permission (optional, def. val.. - Yes)";
     NewLine.Region      = "Authorization";
 
 
@@ -49,7 +49,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--drive";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Drive methods permission (optional, def. val.. - True)";
+    NewLine.Description     = "Drive methods permission (optional, def. val.. - Yes)";
     NewLine.Region      = "Authorization";
 
 
@@ -60,7 +60,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--sheets";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Sheets methods permission (optional, def. val.. - True)";
+    NewLine.Description     = "Sheets methods permission (optional, def. val.. - Yes)";
     NewLine.Region      = "Authorization";
 
 
@@ -219,7 +219,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDIRECTORIESLIST";
     NewLine.Parameter     = "--depth";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Adds a list of files to the directory fields (optional, def. val.. - False)";
+    NewLine.Description     = "Adds a list of files to the directory fields (optional, def. val.. - No)";
     NewLine.Region      = "File and directory management";
 
 
@@ -487,7 +487,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFILEDESCRIPTION";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "File and directory management";
     NewLine.MethodDescription   = "Gets a blank description template for uploading a file";
 

@@ -1,4 +1,4 @@
-﻿    Путь = "/song.mp3";
+    Путь = "/song.mp3";
 
     Токен = "y0__xCOranuBRj1uTsgs8z_iRV...";
     Файл  = "https://hut.openintegrations.dev/test_data/song.mp3"; // URL, Двоичные или Путь к файлу
