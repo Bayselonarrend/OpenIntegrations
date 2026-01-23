@@ -1,9 +1,57 @@
 {
-	"module": "airtable",
+	"module": "OPI_Airtable",
 	"library": "airtable",
-	"depends": {
-		"OPI_Airtable": "%1/oint/core/Modules/OPI_Airtable.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Working with databases",
+			"methods": [
+				"GetListOfBases",
+				"GetDatabaseTables",
+				"CreateDatabase"
+			]
+		},
+		{
+			"name": "Table management",
+			"methods": [
+				"CreateTable",
+				"ModifyTable"
+			]
+		},
+		{
+			"name": "Working with fields",
+			"methods": [
+				"CreateField",
+				"ModifyField",
+				"GetStringField",
+				"GetNumberField",
+				"GetAttachmentField",
+				"GetCheckboxField",
+				"GetDateField",
+				"GetEmailField",
+				"GetPhoneField",
+				"GetLinkField"
+			]
+		},
+		{
+			"name": "Record management",
+			"methods": [
+				"GetListOfRecords",
+				"GetRecord",
+				"CreatePosts",
+				"DeleteRecords"
+			]
+		},
+		{
+			"name": "Comment management",
+			"methods": [
+				"GetComments",
+				"CreateComment",
+				"EditComment",
+				"DeleteComment"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "GetListOfBases",
@@ -73,14 +121,14 @@
 					"types": "String",
 					"description": "New base name",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--tablesdata",
 					"types": "Map Of KeyAndValue",
 					"description": "Table description: Key > name, Value > array of fields",
 					"default": "",
-					"short": "-t"
+					"short": "-b"
 				}
 			],
 			"region": "Working with databases"
@@ -109,7 +157,7 @@
 					"types": "String",
 					"description": "New table name",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--fieldsdata",
@@ -152,14 +200,14 @@
 					"types": "String",
 					"description": "Table identifier",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New name",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-i"
 				},
 				{
 					"name": "--description",
@@ -195,7 +243,7 @@
 					"types": "String",
 					"description": "Table identifier",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--fielddata",
@@ -231,7 +279,7 @@
 					"types": "String",
 					"description": "Table identifier",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--field",
@@ -245,7 +293,7 @@
 					"types": "String",
 					"description": "New name",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-i"
 				},
 				{
 					"name": "--description",
@@ -408,7 +456,7 @@
 					"types": "String",
 					"description": "Table identifier",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--offset",
@@ -444,7 +492,7 @@
 					"types": "String",
 					"description": "Table identifier",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--record",
@@ -480,7 +528,7 @@
 					"types": "String",
 					"description": "Table identifier",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--data",
@@ -516,7 +564,7 @@
 					"types": "String",
 					"description": "Table identifier",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--records",
@@ -552,7 +600,7 @@
 					"types": "String",
 					"description": "Table identifier",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--record",
@@ -595,7 +643,7 @@
 					"types": "String",
 					"description": "Table identifier",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--record",
@@ -609,7 +657,7 @@
 					"types": "String",
 					"description": "Comment text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				}
 			],
 			"region": "Comment management"
@@ -638,7 +686,7 @@
 					"types": "String",
 					"description": "Table identifier",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--record",
@@ -659,7 +707,7 @@
 					"types": "String",
 					"description": "New comment text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				}
 			],
 			"region": "Comment management"
@@ -688,7 +736,7 @@
 					"types": "String",
 					"description": "Table identifier",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--record",

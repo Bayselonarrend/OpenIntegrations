@@ -1,9 +1,17 @@
 {
-	"module": "yandex",
+	"module": "OPI_YandexID",
 	"library": "yandex",
-	"depends": {
-		"OPI_YandexID": "%1/oint/core/Modules/OPI_YandexID.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Программный интерфейс",
+			"methods": [
+				"ПолучитьКодПодтверждения",
+				"ПреобразоватьКодВТокен",
+				"ОбновитьТокен"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "ПолучитьКодПодтверждения",
@@ -77,13 +85,6 @@
 				}
 			],
 			"region": "Программный интерфейс"
-		},
-		{
-			"name": "ПолучитьЗаголовокАвторизации",
-			"id": "ПОЛУЧИТЬЗАГОЛОВОКАВТОРИЗАЦИИ",
-			"description": "",
-			"params": [],
-			"region": "Служебный программный интерфейс"
 		}
 	]
 }

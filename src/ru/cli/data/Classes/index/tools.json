@@ -1,7 +1,16 @@
 {
-	"module": "tools",
+	"module": "Utils",
 	"library": "tools",
-	"depends": {},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Служебный программный интерфейс",
+			"methods": [
+				"РазложитьJSON",
+				"ПреобразоватьBase64ВДвоичные"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "РазложитьJSON",
@@ -27,7 +36,7 @@
 					"types": "Строка",
 					"description": "Имя поля для получения. Выводит весь список, если не указано",
 					"default": "Пустое значение",
-					"short": "-n"
+					"short": "-m"
 				},
 				{
 					"name": "--enc",

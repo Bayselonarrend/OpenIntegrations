@@ -4351,12 +4351,12 @@
 	},
 	{
 		"lib": "SQLite",
-		"name": "GetRecordsFilterStrucutre",
+		"name": "GetRecordsFilterStructure",
 		"variant": ""
 	},
 	{
 		"lib": "SQLite",
-		"name": "GetRecordsFilterStrucutre",
+		"name": "GetRecordsFilterStructure",
 		"variant": "Clear"
 	},
 	{
@@ -4646,12 +4646,12 @@
 	},
 	{
 		"lib": "PostgreSQL",
-		"name": "GetRecordsFilterStrucutre",
+		"name": "GetRecordsFilterStructure",
 		"variant": ""
 	},
 	{
 		"lib": "PostgreSQL",
-		"name": "GetRecordsFilterStrucutre",
+		"name": "GetRecordsFilterStructure",
 		"variant": "Clear"
 	},
 	{
@@ -4881,12 +4881,12 @@
 	},
 	{
 		"lib": "MySQL",
-		"name": "GetRecordsFilterStrucutre",
+		"name": "GetRecordsFilterStructure",
 		"variant": ""
 	},
 	{
 		"lib": "MySQL",
-		"name": "GetRecordsFilterStrucutre",
+		"name": "GetRecordsFilterStructure",
 		"variant": "Clear"
 	},
 	{
@@ -6076,12 +6076,12 @@
 	},
 	{
 		"lib": "MSSQL",
-		"name": "GetRecordsFilterStrucutre",
+		"name": "GetRecordsFilterStructure",
 		"variant": ""
 	},
 	{
 		"lib": "MSSQL",
-		"name": "GetRecordsFilterStrucutre",
+		"name": "GetRecordsFilterStructure",
 		"variant": "Clear"
 	},
 	{

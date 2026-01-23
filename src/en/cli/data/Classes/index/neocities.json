@@ -1,9 +1,26 @@
 {
-	"module": "neocities",
+	"module": "OPI_Neocities",
 	"library": "neocities",
-	"depends": {
-		"OPI_Neocities": "%1/oint/core/Modules/OPI_Neocities.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Data retrieving",
+			"methods": [
+				"GetSiteData",
+				"GetToken"
+			]
+		},
+		{
+			"name": "File management",
+			"methods": [
+				"UploadFile",
+				"UploadFiles",
+				"DeleteSelectedFiles",
+				"GetFilesList",
+				"SynchronizeFolders"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "GetSiteData",

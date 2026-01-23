@@ -1,7 +1,16 @@
 {
-	"module": "tools",
+	"module": "Utils",
 	"library": "tools",
-	"depends": {},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Internal",
+			"methods": [
+				"ParseJSON",
+				"ConvertBase64ToBinary"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "ParseJSON",
@@ -27,7 +36,7 @@
 					"types": "String",
 					"description": "Field name to retrieve. Displays the entire list if not specified",
 					"default": "Пустое значение",
-					"short": "-n"
+					"short": "-m"
 				},
 				{
 					"name": "--enc",

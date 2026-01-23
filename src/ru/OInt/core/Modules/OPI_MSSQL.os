@@ -672,7 +672,7 @@ Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "", Val Tls
 	Return УдалитьЗаписи(Table, Filters, Connection, Tls);
 EndFunction
 
-Function GetRecordsFilterStrucutre(Val Clear = False) Export
+Function GetRecordsFilterStructure(Val Clear = False) Export
 	Return ПолучитьСтруктуруФильтраЗаписей(Clear);
 EndFunction
 

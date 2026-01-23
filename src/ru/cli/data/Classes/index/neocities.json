@@ -1,9 +1,26 @@
 {
-	"module": "neocities",
+	"module": "OPI_Neocities",
 	"library": "neocities",
-	"depends": {
-		"OPI_Neocities": "%1/oint/core/Modules/OPI_Neocities.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Получение данных",
+			"methods": [
+				"ПолучитьДанныеОСайте",
+				"ПолучитьТокен"
+			]
+		},
+		{
+			"name": "Работа с файлами",
+			"methods": [
+				"ЗагрузитьФайл",
+				"ЗагрузитьФайлы",
+				"УдалитьВыбранныеФайлы",
+				"ПолучитьСписокФайлов",
+				"СинхронизироватьКаталоги"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "ПолучитьДанныеОСайте",

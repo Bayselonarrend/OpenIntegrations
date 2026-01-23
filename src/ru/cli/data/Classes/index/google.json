@@ -1,9 +1,18 @@
 {
-	"module": "google",
+	"module": "OPI_GoogleWorkspace",
 	"library": "google",
-	"depends": {
-		"OPI_GoogleWorkspace": "%1/oint/core/Modules/OPI_GoogleWorkspace.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Программный интерфейс",
+			"methods": [
+				"СформироватьСсылкуПолученияКода",
+				"ПолучитьТокенПоКоду",
+				"ОбновитьТокен",
+				"ПолучитьТокенServiceАккаунта"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "СформироватьСсылкуПолученияКода",
@@ -127,13 +136,6 @@
 				}
 			],
 			"region": "Программный интерфейс"
-		},
-		{
-			"name": "ПолучитьЗаголовокАвторизации",
-			"id": "ПОЛУЧИТЬЗАГОЛОВОКАВТОРИЗАЦИИ",
-			"description": "",
-			"params": [],
-			"region": "Служебный программный интерфейс"
 		}
 	]
 }

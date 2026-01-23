@@ -7975,7 +7975,7 @@ Function Check_SQLite_GetTableInformation(Val Result, Val Option)
 
 EndFunction
 
-Function Check_SQLite_GetRecordsFilterStrucutre(Val Result, Val Option)
+Function Check_SQLite_GetRecordsFilterStructure(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
@@ -8315,7 +8315,7 @@ Function Check_PostgreSQL_DisableAllDatabaseConnections(Val Result, Val Option)
 
 EndFunction
 
-Function Check_PostgreSQL_GetRecordsFilterStrucutre(Val Result, Val Option)
+Function Check_PostgreSQL_GetRecordsFilterStructure(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
@@ -8598,7 +8598,7 @@ Function Check_MySQL_ClearTable(Val Result, Val Option)
 
 EndFunction
 
-Function Check_MySQL_GetRecordsFilterStrucutre(Val Result, Val Option)
+Function Check_MySQL_GetRecordsFilterStructure(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 
@@ -10892,7 +10892,7 @@ Function Check_MSSQL_EnsureTable(Val Result, Val Option, ColoumnsStruct = "")
 
 EndFunction
 
-Function Check_MSSQL_GetRecordsFilterStrucutre(Val Result, Val Option)
+Function Check_MSSQL_GetRecordsFilterStructure(Val Result, Val Option)
 
     ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
 

@@ -1,17 +1,9 @@
 {
-	"module": "rcon",
+	"module": "OPI_RCON",
 	"library": "rcon",
-	"depends": {
-		"OPI_RCON": "%1/oint/core/Modules/OPI_RCON.os"
-	},
+	"self_depend": true,
+	"regions": [],
 	"methods": [
-		{
-			"name": "CreateConnection",
-			"id": "CREATECONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Commands execution"
-		},
 		{
 			"name": "ExecuteCommand",
 			"id": "EXECUTECOMMAND",
@@ -68,13 +60,6 @@
 					"short": "-w"
 				}
 			],
-			"region": "Commands execution"
-		},
-		{
-			"name": "IsConnector",
-			"id": "ISCONNECTOR",
-			"description": "",
-			"params": [],
 			"region": "Commands execution"
 		}
 	]

@@ -1,9 +1,56 @@
 {
-	"module": "s3",
+	"module": "OPI_S3",
 	"library": "s3",
-	"depends": {
-		"OPI_S3": "%1/oint/core/Modules/OPI_S3.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Common methods",
+			"methods": [
+				"GetBasicDataStructure",
+				"SendRequestWithoutBody",
+				"SendRequestWithBody"
+			]
+		},
+		{
+			"name": "Buckets management",
+			"methods": [
+				"CreateBucket",
+				"DeleteBucket",
+				"HeadBucket",
+				"PutBucketEncryption",
+				"GetBucketEncryption",
+				"DeleteBucketEncryption",
+				"PutBucketTagging",
+				"GetBucketTagging",
+				"DeleteBucketTagging",
+				"PutBucketVersioning",
+				"GetBucketVersioning",
+				"ListBuckets"
+			]
+		},
+		{
+			"name": "Objects management",
+			"methods": [
+				"PutObject",
+				"UploadFullObject",
+				"InitPartsUpload",
+				"UploadObjectPart",
+				"FinishPartsUpload",
+				"AbortMultipartUpload",
+				"HeadObject",
+				"GetObject",
+				"DeleteObject",
+				"CopyObject",
+				"PutObjectTagging",
+				"GetObjectTagging",
+				"DeleteObjectTagging",
+				"ListObjects",
+				"ListObjectVersions",
+				"GetObjectDownloadLink",
+				"GetObjectUploadLink"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "GetBasicDataStructure",
@@ -43,7 +90,7 @@
 					"types": "String",
 					"description": "Type of service, if different from s3",
 					"default": "s3",
-					"short": "-s"
+					"short": "-v"
 				}
 			],
 			"region": "Common methods"
@@ -72,7 +119,7 @@
 					"types": "Boolean",
 					"description": "Disables an attempt to convert the response to JSON",
 					"default": false,
-					"short": "-b"
+					"short": "-n"
 				},
 				{
 					"name": "--headers",
@@ -108,14 +155,14 @@
 					"types": "String, BinaryData",
 					"description": "Binary data or file of request body data",
 					"default": "",
-					"short": "-b"
+					"short": "-d"
 				},
 				{
 					"name": "--binary",
 					"types": "Boolean",
 					"description": "Disables an attempt to convert the response to JSON",
 					"default": false,
-					"short": "-b"
+					"short": "-n"
 				},
 				{
 					"name": "--headers",
@@ -632,7 +679,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--headers",
@@ -646,7 +693,7 @@
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
 					"default": false,
-					"short": "-d"
+					"short": "-r"
 				}
 			],
 			"region": "Objects management"
@@ -682,7 +729,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--headers",
@@ -696,7 +743,7 @@
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
 					"default": false,
-					"short": "-d"
+					"short": "-r"
 				}
 			],
 			"region": "Objects management"
@@ -725,7 +772,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--headers",
@@ -768,7 +815,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--upload",
@@ -825,7 +872,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--upload",
@@ -882,7 +929,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--upload",
@@ -932,7 +979,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--ver",
@@ -982,7 +1029,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--ver",
@@ -1039,7 +1086,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--ver",
@@ -1082,7 +1129,7 @@
 					"types": "String",
 					"description": "Source bucket name",
 					"default": "",
-					"short": "-s"
+					"short": "-b"
 				},
 				{
 					"name": "--name",
@@ -1096,14 +1143,14 @@
 					"types": "String",
 					"description": "Destination bucket name",
 					"default": "",
-					"short": "-b"
+					"short": "-c"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-a"
 				},
 				{
 					"name": "--headers",
@@ -1146,7 +1193,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--tagset",
@@ -1196,7 +1243,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--ver",
@@ -1246,7 +1293,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--ver",
@@ -1289,7 +1336,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--prefix",
@@ -1339,7 +1386,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--prefix",
@@ -1396,7 +1443,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--expires",
@@ -1446,7 +1493,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
 					"default": "",
-					"short": "-b"
+					"short": "-s"
 				},
 				{
 					"name": "--expires",

@@ -1,10 +1,27 @@
 {
-	"module": "yamarket",
+	"module": "OPI_YandexMarket",
 	"library": "yamarket",
-	"depends": {
-		"OPI_YandexID": "%1/oint/core/Modules/OPI_YandexID.os",
-		"OPI_YandexMarket": "%1/oint/core/Modules/OPI_YandexMarket.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Кабинеты и магазины",
+			"methods": [
+				"ПолучитьСписокМагазинов",
+				"ПолучитьМагазин",
+				"ПолучитьНастройкиКабинета",
+				"ПолучитьНастройкиМагазина"
+			]
+		},
+		{
+			"name": "Работа с товарами",
+			"methods": [
+				"ДобавитьОбновитьТовары",
+				"ПолучитьТоварыМагазина",
+				"ПолучитьТоварыКабинета",
+				"ПолучитьСтруктуруТовара"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "ПолучитьСписокМагазинов",

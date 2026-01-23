@@ -1,9 +1,57 @@
 {
-	"module": "dropbox",
+	"module": "OPI_Dropbox",
 	"library": "dropbox",
-	"depends": {
-		"OPI_Dropbox": "%1/oint/core/Modules/OPI_Dropbox.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Account and authorization",
+			"methods": [
+				"GetAuthorizationLink",
+				"GetToken",
+				"RefreshToken",
+				"GetAccountInformation",
+				"GetSpaceUsageData"
+			]
+		},
+		{
+			"name": "File and directory management",
+			"methods": [
+				"GetObjectInformation",
+				"GetListOfFolderFiles",
+				"GetPreview",
+				"UploadFile",
+				"UploadFileByURL",
+				"GetUploadStatusByURL",
+				"DeleteObject",
+				"CopyObject",
+				"MoveObject",
+				"CreateFolder",
+				"DownloadFile",
+				"DownloadFolder",
+				"GetObjectVersionList",
+				"RestoreObjectToVersion"
+			]
+		},
+		{
+			"name": "Tags management",
+			"methods": [
+				"GetTagList",
+				"AddTag",
+				"DeleteTag"
+			]
+		},
+		{
+			"name": "Shared access settings",
+			"methods": [
+				"PublishFolder",
+				"CancelFolderPublication",
+				"AddUsersToFile",
+				"AddUsersToFolder",
+				"GetAsynchronousChangeStatus",
+				"CancelFilePublication"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "GetAuthorizationLink",
@@ -37,7 +85,7 @@
 					"types": "String",
 					"description": "Application secret",
 					"default": "",
-					"short": "-a"
+					"short": "-p"
 				},
 				{
 					"name": "--code",
@@ -66,7 +114,7 @@
 					"types": "String",
 					"description": "Application secret",
 					"default": "",
-					"short": "-a"
+					"short": "-p"
 				},
 				{
 					"name": "--refresh",
@@ -313,7 +361,7 @@
 					"types": "String",
 					"description": "Delete object without the possibility of recovery",
 					"default": false,
-					"short": "-p"
+					"short": "-r"
 				}
 			],
 			"region": "File and directory management"
@@ -342,7 +390,7 @@
 					"types": "String",
 					"description": "Target path for the new object",
 					"default": "",
-					"short": "-t"
+					"short": "-o"
 				}
 			],
 			"region": "File and directory management"
@@ -371,7 +419,7 @@
 					"types": "String",
 					"description": "Target path for the new object",
 					"default": "",
-					"short": "-t"
+					"short": "-o"
 				}
 			],
 			"region": "File and directory management"
@@ -546,7 +594,7 @@
 					"types": "String",
 					"description": "Tag text",
 					"default": "",
-					"short": "-t"
+					"short": "-g"
 				}
 			],
 			"region": "Tags management"
@@ -575,7 +623,7 @@
 					"types": "String",
 					"description": "Tag text",
 					"default": "",
-					"short": "-t"
+					"short": "-g"
 				}
 			],
 			"region": "Tags management"
@@ -739,13 +787,6 @@
 				}
 			],
 			"region": "Shared access settings"
-		},
-		{
-			"name": "PostBinary",
-			"id": "POSTBINARY",
-			"description": "",
-			"params": [],
-			"region": "Private"
 		}
 	]
 }

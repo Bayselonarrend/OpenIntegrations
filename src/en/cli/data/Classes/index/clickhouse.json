@@ -1,10 +1,26 @@
 {
-	"module": "clickhouse",
+	"module": "OPI_ClickHouse",
 	"library": "clickhouse",
-	"depends": {
-		"OPI_ClickHouse": "%1/oint/core/Modules/OPI_ClickHouse.os",
-		"OPI_GRPC": "%1/oint/core/Modules/OPI_GRPC.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Common methods",
+			"methods": [
+				"ExecuteRequest",
+				"GetHTTPConnectionSettings",
+				"GetRequestSettings",
+				"GetExternalTableStructure",
+				"GetSessionSettings"
+			]
+		},
+		{
+			"name": "Grpc",
+			"methods": [
+				"GetGRPCConnectionSettings",
+				"GetTlsSettings"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "ExecuteRequest",
@@ -95,7 +111,7 @@
 					"types": "Arbitrary",
 					"description": "String, file, or binary data of the request",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-t"
 				},
 				{
 					"name": "--format",
@@ -220,34 +236,6 @@
 					"short": "-t"
 				}
 			],
-			"region": "Grpc"
-		},
-		{
-			"name": "CreateGRPCConnection",
-			"id": "CREATEGRPCCONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Grpc"
-		},
-		{
-			"name": "OpenClientGRPCStream",
-			"id": "OPENCLIENTGRPCSTREAM",
-			"description": "",
-			"params": [],
-			"region": "Grpc"
-		},
-		{
-			"name": "OpenServerGRPCStream",
-			"id": "OPENSERVERGRPCSTREAM",
-			"description": "",
-			"params": [],
-			"region": "Grpc"
-		},
-		{
-			"name": "OpenBidirectionalGRPCStream",
-			"id": "OPENBIDIRECTIONALGRPCSTREAM",
-			"description": "",
-			"params": [],
 			"region": "Grpc"
 		},
 		{

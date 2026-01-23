@@ -1,9 +1,81 @@
 {
-	"module": "slack",
+	"module": "OPI_Slack",
 	"library": "slack",
-	"depends": {
-		"OPI_Slack": "%1/oint/core/Modules/OPI_Slack.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Management and settings",
+			"methods": [
+				"GetBotInformation",
+				"GetWorkspaceList",
+				"GetUserList"
+			]
+		},
+		{
+			"name": "Message management",
+			"methods": [
+				"SendMessage",
+				"SendEphemeralMessage",
+				"EditMessage",
+				"DeleteMessage",
+				"GetDelayedMessageList",
+				"GetMessageLink",
+				"GetMessageReplyList"
+			]
+		},
+		{
+			"name": "Channel management",
+			"methods": [
+				"GetChannelList",
+				"GetChannelUserList",
+				"CreateChannel",
+				"ArchiveChannel",
+				"GetChannel",
+				"GetChannelHistory",
+				"InviteUsersToChannel",
+				"KickUserFromChannel",
+				"JoinChannel",
+				"LeaveChannel",
+				"SetChannelTopic",
+				"SetChannelGoal",
+				"RenameChannel"
+			]
+		},
+		{
+			"name": "Dialog management",
+			"methods": [
+				"OpenDialog",
+				"CloseDialog"
+			]
+		},
+		{
+			"name": "File management",
+			"methods": [
+				"GetFilesList",
+				"UploadFile",
+				"GetFileData",
+				"DeleteFile",
+				"MakeFilePublic",
+				"MakeFilePrivate"
+			]
+		},
+		{
+			"name": "External files management",
+			"methods": [
+				"GetExternalFileList",
+				"GetExternalFile",
+				"AddExternalFile",
+				"SendExternalFile",
+				"DeleteExternalFile"
+			]
+		},
+		{
+			"name": "Block formation",
+			"methods": [
+				"GenerateImageBlock"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "GetBotInformation",
@@ -88,7 +160,7 @@
 					"types": "String",
 					"description": "Message text",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--date",
@@ -131,7 +203,7 @@
 					"types": "String",
 					"description": "Message text",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--user",
@@ -181,7 +253,7 @@
 					"types": "String",
 					"description": "New message text",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--blocks",
@@ -253,7 +325,7 @@
 					"types": "String",
 					"description": "Pointer from the previous request, if the result rows > 100",
 					"default": "Пустое значение",
-					"short": "-c"
+					"short": "-r"
 				}
 			],
 			"region": "Message management"
@@ -318,7 +390,7 @@
 					"types": "String",
 					"description": "Pointer from the previous request, if the result rows > 100",
 					"default": "Пустое значение",
-					"short": "-c"
+					"short": "-r"
 				}
 			],
 			"region": "Message management"
@@ -376,7 +448,7 @@
 					"types": "String",
 					"description": "Pointer from the previous request, if the result rows > 100",
 					"default": "Пустое значение",
-					"short": "-c"
+					"short": "-r"
 				}
 			],
 			"region": "Channel management"
@@ -398,7 +470,7 @@
 					"types": "String",
 					"description": "Channel name",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--private",
@@ -602,7 +674,7 @@
 					"types": "String",
 					"description": "Channel topic",
 					"default": "",
-					"short": "-t"
+					"short": "-h"
 				}
 			],
 			"region": "Channel management"
@@ -660,7 +732,7 @@
 					"types": "String",
 					"description": "New channel name",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Channel management"
@@ -762,14 +834,14 @@
 					"types": "String",
 					"description": "File name with extension",
 					"default": "",
-					"short": "-f"
+					"short": "-l"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "File name in Slack",
 					"default": "",
-					"short": "-t"
+					"short": "-i"
 				},
 				{
 					"name": "--channel",
@@ -893,7 +965,7 @@
 					"types": "String",
 					"description": "Pointer from the previous request, if the result rows > 100",
 					"default": "Пустое значение",
-					"short": "-c"
+					"short": "-r"
 				}
 			],
 			"region": "External files management"
@@ -944,7 +1016,7 @@
 					"types": "String",
 					"description": "File title for Slack",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "External files management"

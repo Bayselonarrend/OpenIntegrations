@@ -1,52 +1,9 @@
 {
-	"module": "tcp",
+	"module": "OPI_TCP",
 	"library": "tcp",
-	"depends": {
-		"OPI_TCP": "%1/oint/core/Modules/OPI_TCP.os"
-	},
+	"self_depend": false,
+	"regions": [],
 	"methods": [
-		{
-			"name": "CreateConnection",
-			"id": "CREATECONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Client methods"
-		},
-		{
-			"name": "CloseConnection",
-			"id": "CLOSECONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Client methods"
-		},
-		{
-			"name": "ReadBinaryData",
-			"id": "READBINARYDATA",
-			"description": "",
-			"params": [],
-			"region": "Client methods"
-		},
-		{
-			"name": "ReadLine",
-			"id": "READLINE",
-			"description": "",
-			"params": [],
-			"region": "Client methods"
-		},
-		{
-			"name": "SendBinaryData",
-			"id": "SENDBINARYDATA",
-			"description": "",
-			"params": [],
-			"region": "Client methods"
-		},
-		{
-			"name": "SendLine",
-			"id": "SENDLINE",
-			"description": "",
-			"params": [],
-			"region": "Client methods"
-		},
 		{
 			"name": "ProcessRequest",
 			"id": "PROCESSREQUEST",
@@ -91,13 +48,6 @@
 			"region": "Client methods"
 		},
 		{
-			"name": "GetLastError",
-			"id": "GETLASTERROR",
-			"description": "",
-			"params": [],
-			"region": "Client methods"
-		},
-		{
 			"name": "GetProxySettings",
 			"id": "GETPROXYSETTINGS",
 			"description": "Creates a structure of proxy server settings for the connection",
@@ -135,7 +85,7 @@
 					"types": "String, Undefined",
 					"description": "Authorization password, if required",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-s"
 				}
 			],
 			"region": "Client methods"

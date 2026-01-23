@@ -1,9 +1,81 @@
 {
-	"module": "greenmax",
+	"module": "OPI_GreenMax",
 	"library": "greenmax",
-	"depends": {
-		"OPI_GreenMax": "%1/oint/core/Modules/OPI_GreenMax.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Account",
+			"methods": [
+				"FormAccessParameters",
+				"GetAccountInformation",
+				"GetInstanceSettings",
+				"SetInstanceSettings",
+				"GetAuthorizationCode",
+				"SendAuthorizationCode",
+				"GetInstanceStatus",
+				"SetProfilePicture",
+				"LogoutInstance",
+				"RebootInstance",
+				"CheckAccount",
+				"GetContactList",
+				"GetContactInformation",
+				"GetChatList",
+				"GetChatAvatar",
+				"GetInstanceSettingsStructure"
+			]
+		},
+		{
+			"name": "Group management",
+			"methods": [
+				"CreateGroup",
+				"GetGroupInformation",
+				"UpdateGroupName",
+				"SetGroupPicture",
+				"ChangeGroupSettings",
+				"AddGroupMember",
+				"RemoveGroupMember",
+				"SetAdminRights",
+				"RevokeAdminRights",
+				"LeaveGroup",
+				"GetGroupSettingsStructure"
+			]
+		},
+		{
+			"name": "Message sending",
+			"methods": [
+				"SendTextMessage",
+				"SendFile",
+				"SendFileByURL"
+			]
+		},
+		{
+			"name": "Notifications",
+			"methods": [
+				"GetNotification",
+				"DeleteNotification"
+			]
+		},
+		{
+			"name": "Message history",
+			"methods": [
+				"GetChatMessageHistory",
+				"GetChatMessage",
+				"GetIncomingMessageLog",
+				"GetOutgoingMessageLog",
+				"MarkMessagesAsRead"
+			]
+		},
+		{
+			"name": "Queues",
+			"methods": [
+				"GetOutgoingMessageCount",
+				"GetOutgoingMessageQueue",
+				"ClearOutgoingMessageQueue",
+				"GetIncomingNotificationCount",
+				"ClearIncomingNotificationQueue"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "FormAccessParameters",
@@ -658,7 +730,7 @@
 					"types": "Number",
 					"description": "Time to show the typing indicator before sending (in ms.)",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-p"
 				}
 			],
 			"region": "Message sending"
@@ -694,14 +766,14 @@
 					"types": "String",
 					"description": "Name of the file with the extension",
 					"default": "",
-					"short": "-f"
+					"short": "-l"
 				},
 				{
 					"name": "--caption",
 					"types": "String",
 					"description": "Message text below the file",
 					"default": "Пустое значение",
-					"short": "-c"
+					"short": "-p"
 				},
 				{
 					"name": "--typing",
@@ -715,7 +787,7 @@
 					"types": "String",
 					"description": "Typing type: text, recording, video, image, file",
 					"default": "file",
-					"short": "-t"
+					"short": "-y"
 				}
 			],
 			"region": "Message sending"
@@ -758,7 +830,7 @@
 					"types": "String",
 					"description": "Message text below the file",
 					"default": "Пустое значение",
-					"short": "-c"
+					"short": "-p"
 				},
 				{
 					"name": "--typing",
@@ -772,7 +844,7 @@
 					"types": "String",
 					"description": "Typing type: text, recording, video, image, file",
 					"default": "file",
-					"short": "-t"
+					"short": "-y"
 				}
 			],
 			"region": "Message sending"
@@ -852,7 +924,7 @@
 					"types": "Number",
 					"description": "Number of messages to receive",
 					"default": 100,
-					"short": "-c"
+					"short": "-n"
 				}
 			],
 			"region": "Message history"

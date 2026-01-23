@@ -1,9 +1,55 @@
 {
-	"module": "openai",
+	"module": "OPI_OpenAI",
 	"library": "openai",
-	"depends": {
-		"OPI_OpenAI": "%1/oint/core/Modules/OPI_OpenAI.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Requests processing",
+			"methods": [
+				"GetResponse",
+				"GetImages",
+				"GetEmbeddings",
+				"GetMessageStructure",
+				"GetUserMessage",
+				"GetAssistantMessage",
+				"GetSystemMessage",
+				"GetImageMessageStructure",
+				"GetImageDescriptionStructure"
+			]
+		},
+		{
+			"name": "Assistants",
+			"methods": [
+				"GetAssistantsList",
+				"CreateAssistant",
+				"RetrieveAssistant",
+				"DeleteAssistant"
+			]
+		},
+		{
+			"name": "File management",
+			"methods": [
+				"GetFilesList",
+				"UploadFile",
+				"GetFileInformation",
+				"DownloadFile",
+				"DeleteFile"
+			]
+		},
+		{
+			"name": "Audio processing",
+			"methods": [
+				"GenerateSpeech",
+				"CreateTranscription"
+			]
+		},
+		{
+			"name": "Models management",
+			"methods": [
+				"GetModelList"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "GetResponse",
@@ -36,7 +82,7 @@
 					"types": "String, Array of String",
 					"description": "Conversation messages. See GetMessageStructure",
 					"default": "",
-					"short": "-m"
+					"short": "-s"
 				},
 				{
 					"name": "--options",
@@ -769,7 +815,7 @@
 					"types": "String",
 					"description": "MIME type of audio file",
 					"default": "audio/mpeg",
-					"short": "-t"
+					"short": "-p"
 				},
 				{
 					"name": "--options",
