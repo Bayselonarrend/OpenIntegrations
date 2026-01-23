@@ -1,0 +1,518 @@
+{
+	"module": "gdrive",
+	"library": "gdrive",
+	"depends": {
+		"OPI_GoogleDrive": "%1/oint/core/Modules/OPI_GoogleDrive.os",
+		"OPI_GoogleWorkspace": "%1/oint/core/Modules/OPI_GoogleWorkspace.os"
+	},
+	"methods": [
+		{
+			"name": "СформироватьСсылкуПолученияКода",
+			"id": "СФОРМИРОВАТЬССЫЛКУПОЛУЧЕНИЯКОДА",
+			"description": "Возвращает URL для авторизации в браузере",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--calendar",
+					"types": "Булево",
+					"description": "разрешение на методы Calendar",
+					"default": true,
+					"short": "-c"
+				},
+				{
+					"name": "--drive",
+					"types": "Булево",
+					"description": "разрешение на методы Drive",
+					"default": true,
+					"short": "-d"
+				},
+				{
+					"name": "--sheets",
+					"types": "Булево",
+					"description": "разрешение на методы Sheets",
+					"default": true,
+					"short": "-s"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "ПолучитьТокенПоКоду",
+			"id": "ПОЛУЧИТЬТОКЕНПОКОДУ",
+			"description": "Получает токен по коду из авторизации в бразуере",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "Строка",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--code",
+					"types": "Строка",
+					"description": "Code из браузера",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "ОбновитьТокен",
+			"id": "ОБНОВИТЬТОКЕН",
+			"description": "Обновляет токен по Refresh token",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "Строка",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--refresh",
+					"types": "Строка",
+					"description": "Refresh token",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "ПолучитьТокенServiceАккаунта",
+			"id": "ПОЛУЧИТЬТОКЕНSERVICEАККАУНТА",
+			"description": "Получает токен авторизации по данным service аккаунта\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--auth",
+					"types": "Произвольный",
+					"description": "JSON данные авторизации как файл, коллекция или двоичные данные",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--scope",
+					"types": "Массив Из Строка",
+					"description": "Область действия (scope) или массив областей",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--exp",
+					"types": "Число",
+					"description": "Время жизни токена в секундах",
+					"default": 3600,
+					"short": "-e"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "ПолучитьИнформациюОбОбъекте",
+			"id": "ПОЛУЧИТЬИНФОРМАЦИЮОБОБЪЕКТЕ",
+			"description": "Получает информацию о папке или файле по ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "Строка",
+					"description": "Идентификатор файла или каталога",
+					"default": "",
+					"short": "-o"
+				}
+			],
+			"region": "Работа с файлами и каталогами"
+		},
+		{
+			"name": "ПолучитьСписокКаталогов",
+			"id": "ПОЛУЧИТЬСПИСОККАТАЛОГОВ",
+			"description": "Получает список каталогов диска",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--querry",
+					"types": "Строка",
+					"description": "Отбор по имени",
+					"default": "Пустое значение",
+					"short": "-q"
+				},
+				{
+					"name": "--depth",
+					"types": "Булево",
+					"description": "Добавляет список файлов к полям каталога",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с файлами и каталогами"
+		},
+		{
+			"name": "ПолучитьСписокФайлов",
+			"id": "ПОЛУЧИТЬСПИСОКФАЙЛОВ",
+			"description": "Получает список файлов",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--querry",
+					"types": "Строка",
+					"description": "Отбор по имени",
+					"default": "Пустое значение",
+					"short": "-q"
+				},
+				{
+					"name": "--catalog",
+					"types": "Строка",
+					"description": "Отбор по ID каталога родителя",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с файлами и каталогами"
+		},
+		{
+			"name": "ЗагрузитьФайл",
+			"id": "ЗАГРУЗИТЬФАЙЛ",
+			"description": "Загружает файл на диск",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--file",
+					"types": "ДвоичныеДанные,Строка",
+					"description": "Загружаемый файл",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--props",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "См. ПолучитьОписаниеФайла",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Работа с файлами и каталогами"
+		},
+		{
+			"name": "СоздатьПапку",
+			"id": "СОЗДАТЬПАПКУ",
+			"description": "Создает пустой каталог на диске",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Имя папки",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--catalog",
+					"types": "Строка",
+					"description": "Родитель",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с файлами и каталогами"
+		},
+		{
+			"name": "СкачатьФайл",
+			"id": "СКАЧАТЬФАЙЛ",
+			"description": "Получает файл по ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "Строка",
+					"description": "Идентификатор файла",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--out",
+					"types": "Строка",
+					"description": "Путь сохранения файла",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "Работа с файлами и каталогами"
+		},
+		{
+			"name": "СкопироватьОбъект",
+			"id": "СКОПИРОВАТЬОБЪЕКТ",
+			"description": "Копирует файл или каталог",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "Строка",
+					"description": "Идентификатор объекта",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Новое имя объекта",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--catalog",
+					"types": "Строка",
+					"description": "Новый каталог размещения",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с файлами и каталогами"
+		},
+		{
+			"name": "ОбновитьФайл",
+			"id": "ОБНОВИТЬФАЙЛ",
+			"description": "Обновляет двоичные данные файла",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "Строка",
+					"description": "Идентификатор обновляемого объекта",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--file",
+					"types": "ДвоичныеДанные,Строка",
+					"description": "Файл источник обновления",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Новое имя файла (если необходимо)",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с файлами и каталогами"
+		},
+		{
+			"name": "УдалитьОбъект",
+			"id": "УДАЛИТЬОБЪЕКТ",
+			"description": "Удаляет файл или каталог по ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "Строка",
+					"description": "Идентификатор объекта для удаления",
+					"default": "",
+					"short": "-o"
+				}
+			],
+			"region": "Работа с файлами и каталогами"
+		},
+		{
+			"name": "ПолучитьОписаниеФайла",
+			"id": "ПОЛУЧИТЬОПИСАНИЕФАЙЛА",
+			"description": "Получает шаблон пустого описания для загрузки файла",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Булево",
+					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Работа с файлами и каталогами"
+		},
+		{
+			"name": "СоздатьКомментарий",
+			"id": "СОЗДАТЬКОММЕНТАРИЙ",
+			"description": "Создает комментарий к файлу или каталогу",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "Строка",
+					"description": "Идентификатор объекта, для которого необходим комментарий",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст комментария",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с комментариями"
+		},
+		{
+			"name": "ПолучитьКомментарий",
+			"id": "ПОЛУЧИТЬКОММЕНТАРИЙ",
+			"description": "Получает комментарий по ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "Строка",
+					"description": "Идентификатор файла или каталога размещения комментария",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--comment",
+					"types": "Строка",
+					"description": "Идентификатор комментария",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с комментариями"
+		},
+		{
+			"name": "ПолучитьСписокКомментариев",
+			"id": "ПОЛУЧИТЬСПИСОККОММЕНТАРИЕВ",
+			"description": "Получает список всех комментариев объекта",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "Строка",
+					"description": "Идентификатор объекта",
+					"default": "",
+					"short": "-o"
+				}
+			],
+			"region": "Работа с комментариями"
+		},
+		{
+			"name": "УдалитьКомментарий",
+			"id": "УДАЛИТЬКОММЕНТАРИЙ",
+			"description": "Удаляет комментарий по ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "Строка",
+					"description": "Идентификатор файла или каталога размещения комментария",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--comment",
+					"types": "Строка",
+					"description": "Идентификатор комментария",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с комментариями"
+		}
+	]
+}

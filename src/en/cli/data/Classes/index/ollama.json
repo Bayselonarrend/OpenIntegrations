@@ -1,0 +1,632 @@
+{
+	"module": "ollama",
+	"library": "ollama",
+	"depends": {
+		"OPI_Ollama": "%1/oint/core/Modules/OPI_Ollama.os"
+	},
+	"methods": [
+		{
+			"name": "GetVersion",
+			"id": "GETVERSION",
+			"description": "Gets a version of Ollama",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetResponse",
+			"id": "GETRESPONSE",
+			"description": "Generates a response for a given text query",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--prompt",
+					"types": "String",
+					"description": "Request text",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--options",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional parameters. See GetRequestParametersStructure",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetContextResponse",
+			"id": "GETCONTEXTRESPONSE",
+			"description": "Receives the next response from the model according to the message history",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--msgs",
+					"types": "Array of Structure",
+					"description": "Messages log. See GetContextMessageStructure",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--options",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional parameters. See GetRequestParametersStructure",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetEmbeddings",
+			"id": "GETEMBEDDINGS",
+			"description": "Gets the embeddings for the given entries",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--input",
+					"types": "Array Of String",
+					"description": "String or array of request strings",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--options",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional parameters. See GetEmbeddingsParameterStructure",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetRequestParameterStructure",
+			"id": "GETREQUESTPARAMETERSTRUCTURE",
+			"description": "Gets the structure of additional parameters for request processing",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetEmbeddingsParameterStructure",
+			"id": "GETEMBEDDINGSPARAMETERSTRUCTURE",
+			"description": "Gets the structure of additional parameters for processing embeddings requests",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetContextParameterStructure",
+			"id": "GETCONTEXTPARAMETERSTRUCTURE",
+			"description": "Gets the structure of additional parameters to process the request in context",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetContextMessageStructure",
+			"id": "GETCONTEXTMESSAGESTRUCTURE",
+			"description": "Gets the message structure for a list of request messages in context",
+			"params": [
+				{
+					"name": "--role",
+					"types": "String",
+					"description": "Message source: system, user, assistant, tool",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--images",
+					"types": "Array Of String",
+					"description": "List of pictures in Base64 format (for multimodal models like llava)",
+					"default": "Пустое значение",
+					"short": "-i"
+				},
+				{
+					"name": "--tools",
+					"types": "Array Of String",
+					"description": "List of tools in JSON format that the model should use",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetModelList",
+			"id": "GETMODELLIST",
+			"description": "Gets a list of local models",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Models management"
+		},
+		{
+			"name": "ListRunningModels",
+			"id": "LISTRUNNINGMODELS",
+			"description": "Gets a list of running models",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Models management"
+		},
+		{
+			"name": "GetModelInformation",
+			"id": "GETMODELINFORMATION",
+			"description": "Gets information about the model",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--verbose",
+					"types": "Boolean",
+					"description": "Return full model information",
+					"default": true,
+					"short": "-v"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Models management"
+		},
+		{
+			"name": "CreateModel",
+			"id": "CREATEMODEL",
+			"description": "Creates a new model with the specified settings",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--settings",
+					"types": "Structure Of KeyAndValue",
+					"description": "Model settings. See GetModelSettingsStructure",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Models management"
+		},
+		{
+			"name": "CopyModel",
+			"id": "COPYMODEL",
+			"description": "Copies an existing model",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Name of existing model",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "The name of the new model",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Models management"
+		},
+		{
+			"name": "DeleteModel",
+			"id": "DELETEMODEL",
+			"description": "Deletes an existing model",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Models management"
+		},
+		{
+			"name": "LoadModelToMemory",
+			"id": "LOADMODELTOMEMORY",
+			"description": "Loads the selected model into RAM",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--keep",
+					"types": "Number",
+					"description": "Model hold time in seconds",
+					"default": 300,
+					"short": "-k"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Models management"
+		},
+		{
+			"name": "UnloadModelFromMemory",
+			"id": "UNLOADMODELFROMMEMORY",
+			"description": "Unloads the selected model from memory",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Models management"
+		},
+		{
+			"name": "PushModel",
+			"id": "PUSHMODEL",
+			"description": "Uploads the model to the model library",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--insecure",
+					"types": "Boolean",
+					"description": "Allows an unsecured connection to the library",
+					"default": false,
+					"short": "-i"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Models management"
+		},
+		{
+			"name": "PullModel",
+			"id": "PULLMODEL",
+			"description": "Downloads a model from the library",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--insecure",
+					"types": "Boolean",
+					"description": "Allows an unsecured connection to the library",
+					"default": false,
+					"short": "-i"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Models management"
+		},
+		{
+			"name": "GetModelSettingsStructure",
+			"id": "GETMODELSETTINGSSTRUCTURE",
+			"description": "Gets the settings structure for creating a new model",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Models management"
+		},
+		{
+			"name": "PushBlob",
+			"id": "PUSHBLOB",
+			"description": "Sends binary data to the Ollama server",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--data",
+					"types": "String, BinaryData",
+					"description": "File data or filepath",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Working with blob"
+		},
+		{
+			"name": "CheckBlob",
+			"id": "CHECKBLOB",
+			"description": "Checks the existence of a BLOB by its SHA256 digest",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Ollama server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--digest",
+					"types": "String",
+					"description": "SHA256 BLOB digest",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Working with blob"
+		}
+	]
+}

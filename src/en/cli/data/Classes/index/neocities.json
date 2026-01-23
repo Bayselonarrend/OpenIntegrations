@@ -1,0 +1,184 @@
+{
+	"module": "neocities",
+	"library": "neocities",
+	"depends": {
+		"OPI_Neocities": "%1/oint/core/Modules/OPI_Neocities.os"
+	},
+	"methods": [
+		{
+			"name": "GetSiteData",
+			"id": "GETSITEDATA",
+			"description": "Gets information about a site by its name or token",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--sitename",
+					"types": "String",
+					"description": "Site name (login) for information. Current, if not filled in",
+					"default": "Пустое значение",
+					"short": "-s"
+				}
+			],
+			"region": "Data retrieving"
+		},
+		{
+			"name": "GetToken",
+			"id": "GETTOKEN",
+			"description": "Receives authorization token by login and password",
+			"params": [
+				{
+					"name": "--login",
+					"types": "String",
+					"description": "Users login",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--password",
+					"types": "String",
+					"description": "Users password",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Data retrieving"
+		},
+		{
+			"name": "UploadFile",
+			"id": "UPLOADFILE",
+			"description": "Upload single file to Neocities",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "File path on Neocities",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--file",
+					"types": "String, BinaryData",
+					"description": "URL, path or file data",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "UploadFiles",
+			"id": "UPLOADFILES",
+			"description": "Uploads multiple files to Neocities",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--files",
+					"types": "Map Of KeyAndValue",
+					"description": "Files: Key > destination path on NC, Value > file",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--singly",
+					"types": "Boolean",
+					"description": "True > sends files in separate requests",
+					"default": false,
+					"short": "-s"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "DeleteSelectedFiles",
+			"id": "DELETESELECTEDFILES",
+			"description": "Deletes a file or multiple files from Neocities",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--paths",
+					"types": "String, Array of String",
+					"description": "Path or multiple paths of the files to be deleted",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "GetFilesList",
+			"id": "GETFILESLIST",
+			"description": "Gets a list of files with or without directory selection",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Selection of files by catalog. All if not filled in",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "SynchronizeFolders",
+			"id": "SYNCHRONIZEFOLDERS",
+			"description": "Creates a copy of the local directory at the selected path on the Neocities server",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--local",
+					"types": "String",
+					"description": "Local source catalog",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--remote",
+					"types": "String",
+					"description": "Remote receiver catalog. Root by default",
+					"default": "Пустое значение",
+					"short": "-r"
+				}
+			],
+			"region": "File management"
+		}
+	]
+}

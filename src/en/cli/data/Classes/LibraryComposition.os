@@ -1,29 +1,22 @@
 Var ModuleCommandMapping;
 Var Version;
 Var IndexCache;
-Var AccessTemplate;
+Var CurrentDirectory;
 Var PackagesDirectory;
 
 
 Procedure OnObjectCreate()
     
-    InitializeCommonLists();
-    
     CurrentDirectory = CurrentScript().Path;
-    AccessTemplate = CombinePath(CurrentDirectory, "internal", "Classes", "%1.os");
+    InitializeCommonLists();  
     
 EndProcedure
 
 Procedure InitializeCommonLists() Export
     
-    CurrentDirectory = CurrentScript().Path;
-    DataFile = CombinePath(CurrentDirectory, "index", "lib.json");
+    DataFile = CombinePath(CurrentDirectory, "index", "lib.json");  
+    Data = ReadJSONFile(DataFile);
     
-    JSONReader = New JSONReader();
-    JSONReader.OpenFile(DataFile);
-    Data = ReadJSON(JSONReader, True);
-    JSONReader.Close();
-
     IndexCache = New Map();
     ModuleCommandMapping = Data["modules"];
     Version = Data["version"];
@@ -45,16 +38,11 @@ Function GetIndexData(Val Command) Export
     If IndexInformation = Undefined Then
         
         Try
-            CompositionObject = LoadScript(StrTemplate(AccessTemplate, Command));
+
+            IndexPath = CombinePath(CurrentDirectory, "index", Command + ".json");
+            ModuleData = ReadJSONFile(IndexPath);        
             
-            Composition = CompositionObject.GetComposition();
-            ConnectionString = CompositionObject.GetConnectionString();
-            
-            IndexInformation = New Structure;
-            IndexInformation.Insert("Composition" , Composition);
-            IndexInformation.Insert("ConnectionString", ConnectionString);
-            
-            IndexCache.Insert(Command, IndexInformation);
+            IndexCache.Insert(Command, ModuleData);
             
         Except
             Raise StrTemplate("Invalid command name: %1", Command)
@@ -62,72 +50,58 @@ Function GetIndexData(Val Command) Export
         
     EndIf;
     
-    Return IndexInformation;
+    Return ModuleData;
     
 EndFunction
 
 Function GetFullComposition() Export
     
-    CommonTable = Undefined;
-    
     For Each Command In ModuleCommandMapping Do
-        
-        IndexObject = GetIndexData(Command.Key);
-        CurrentTable = IndexObject["Composition"];
-        
-        If CommonTable = Undefined Then
-            CommonTable = CurrentTable;
-        Else
-            For Each TableRow In CurrentTable Do
-                FillPropertyValues(CommonTable.Add(), TableRow);
-            EndDo;
-        EndIf;
-        
+        GetIndexData(Command.Key);
     EndDo;
     
-    Return CommonTable;
+    Return IndexCache;
     
 EndFunction
 
-
-Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val Dynamically = True) Export
+Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Export
     
     If PackagesDirectory = Undefined Then
         DefinePackagesDirectory();
     EndIf;
     
-    Module = GetCommandModuleMapping().Get(Command);
+    Module = ModuleCommandMapping.Get(Command);
     IndexObject = GetIndexData(Command);
+    MethodParameters = Undefined;
     
     If Not ValueIsFilled(Module) Then
         Return New Structure("Error,Result", True, "Command");
     EndIf;
     
-    CommandSelection = New Structure("SearchMethod", Upper(Method));
-    MethodParameters = IndexObject["Composition"].FindRows(CommandSelection);
-    
-    If Dynamically Then
-        ExecutionText = StrTemplate(IndexObject["ConnectionString"], PackagesDirectory);
-    Else
-        ExecutionText = "";
-    EndIf;
-    
-    If Not ValueIsFilled(MethodParameters) Then
+    For Each Method In IndexObject["methods"] Do
+        If Method["id"] = Upper(Method) Then
+            MethodParameters = Method["params"];
+            Break;
+        EndIf;
+    EndDo;
+
+    If MethodParameters = Undefined Then
         Return New Structure("Error,Result", True, "Method");
     EndIf;
     
+    ExecutionText = "";
     CallString = Module + "." + Method + "(";
     Counter = 0;
     
     For Each RequiredParameter In MethodParameters Do
         
-        ParameterName = RequiredParameter.Parameter;
-        ParameterNameTrim = RequiredParameter.ParameterTrim;
+        ParameterName = RequiredParameter["name"];
+        ParameterNameTrim = RequiredParameter["short"];
         
         ParameterValue = PassedParameters.Get(ParameterName);
         ParameterValue = ?(ParameterValue = Undefined
-        , PassedParameters.Get(ParameterNameTrim)
-        , ParameterValue);
+            , PassedParameters.Get(ParameterNameTrim)
+            , ParameterValue);
         
         If ValueIsFilled(ParameterValue) Then
             
@@ -210,6 +184,17 @@ Function RequiresProcessingOfEscapeSequences(Val ParameterName, Val ParameterVal
     And Not ParameterName = "Parameter_out";
     
 EndFunction
+
+Function ReadJSONFile(Val Path)
+    
+    JSONReader = New JSONReader();
+    JSONReader.OpenFile(Path);
+    Data = ReadJSON(JSONReader, True);
+    JSONReader.Close();
+
+    Return Data;
+
+EndFunction
 #Region Alternate
 
 Procedure ИнициализироватьОсновныеСписки() Export
@@ -232,8 +217,8 @@ Function ПолучитьПолныйСостав() Export
 	Return GetFullComposition();
 EndFunction
 
-Function СформироватьСтрокуВызоваМетода(Val ПереданныеПараметры, Val Команда, Val Метод, Val Динамически = True) Export
-	Return FormMethodCallString(ПереданныеПараметры, Команда, Метод, Динамически);
+Function СформироватьСтрокуВызоваМетода(Val ПереданныеПараметры, Val Команда, Val Метод) Export
+	Return FormMethodCallString(ПереданныеПараметры, Команда, Метод);
 EndFunction
 
 Procedure ДополнитьКэшСостава(Val Библиотека, Val ТаблицаПараметров, Команда = "") Export

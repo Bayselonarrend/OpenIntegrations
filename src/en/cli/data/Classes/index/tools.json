@@ -1,0 +1,58 @@
+{
+	"module": "tools",
+	"library": "tools",
+	"depends": {},
+	"methods": [
+		{
+			"name": "ParseJSON",
+			"id": "PARSEJSON",
+			"description": "Displays the values that can be obtained from the passed JSON and returns\n    |    Specific Value When Specifying Field Name",
+			"params": [
+				{
+					"name": "--json",
+					"types": "String",
+					"description": "JSON data",
+					"default": "",
+					"short": "-j"
+				},
+				{
+					"name": "--nesting",
+					"types": "Number",
+					"description": "Parsing depth limit. Full depth by default",
+					"default": "Пустое значение",
+					"short": "-n"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Field name to retrieve. Displays the entire list if not specified",
+					"default": "Пустое значение",
+					"short": "-n"
+				},
+				{
+					"name": "--enc",
+					"types": "String",
+					"description": "Encoding of JSON Data",
+					"default": "UTF-8",
+					"short": "-e"
+				}
+			],
+			"region": "Internal"
+		},
+		{
+			"name": "ConvertBase64ToBinary",
+			"id": "CONVERTBASE64TOBINARY",
+			"description": "Convert file with Base64 string to binary file",
+			"params": [
+				{
+					"name": "--in",
+					"types": "String",
+					"description": "Base64 File",
+					"default": "",
+					"short": "-i"
+				}
+			],
+			"region": "Internal"
+		}
+	]
+}

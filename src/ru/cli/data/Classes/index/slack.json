@@ -1,0 +1,1026 @@
+{
+	"module": "slack",
+	"library": "slack",
+	"depends": {
+		"OPI_Slack": "%1/oint/core/Modules/OPI_Slack.os"
+	},
+	"methods": [
+		{
+			"name": "ПолучитьИнформациюОБоте",
+			"id": "ПОЛУЧИТЬИНФОРМАЦИЮОБОТЕ",
+			"description": "Получает основную информацию о боте",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Управление и настройки"
+		},
+		{
+			"name": "ПолучитьСписокРабочихОбластей",
+			"id": "ПОЛУЧИТЬСПИСОКРАБОЧИХОБЛАСТЕЙ",
+			"description": "Получает список рабочих областей, в которых подключен бот",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--cursor",
+					"types": "Строка",
+					"description": "Указатель из предыдущего запроса, если строк результата > 100",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Управление и настройки"
+		},
+		{
+			"name": "ПолучитьСписокПользователей",
+			"id": "ПОЛУЧИТЬСПИСОКПОЛЬЗОВАТЕЛЕЙ",
+			"description": "Получает список пользователей рабочей области",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--cursor",
+					"types": "Строка",
+					"description": "Указатель из предыдущего запроса, если строк результата > 100",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Управление и настройки"
+		},
+		{
+			"name": "ОтправитьСообщение",
+			"id": "ОТПРАВИТЬСООБЩЕНИЕ",
+			"description": "Отправляет сообщение в выбранный час\n\n    Дата указывается в формате ISO 8601:\n    \"2024-04-07\"\n    \"2024-04-07T13:34:42+00:00\" \n    \"2024-04-07T13:34:42Z\"\n\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "Идентификатор канала",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст сообщения",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--date",
+					"types": "Дата",
+					"description": "Дата отправки для отложенного сообщения",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--blocks",
+					"types": "Массив Из Структура",
+					"description": "JSON массива описаний блоков",
+					"default": "Пустое значение",
+					"short": "-b"
+				}
+			],
+			"region": "Работа с сообщениями"
+		},
+		{
+			"name": "ОтправитьЭфемерноеСообщение",
+			"id": "ОТПРАВИТЬЭФЕМЕРНОЕСООБЩЕНИЕ",
+			"description": "Отправляет сообщение, которое приходит в канал, но видно\n    |    только конкретному пользователю\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "Идентификатор канала",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст сообщения",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--user",
+					"types": "Строка",
+					"description": "ID пользователя",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--blocks",
+					"types": "Массив Из Структура",
+					"description": "JSON массива описаний блоков",
+					"default": "Пустое значение",
+					"short": "-b"
+				}
+			],
+			"region": "Работа с сообщениями"
+		},
+		{
+			"name": "ИзменитьСообщение",
+			"id": "ИЗМЕНИТЬСООБЩЕНИЕ",
+			"description": "Изменяет состав существующего сообщения\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "Идентификатор канала",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--stamp",
+					"types": "Строка",
+					"description": "Временная отметка сообщения",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Новый текст сообщения",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--blocks",
+					"types": "Массив Из Структура",
+					"description": "JSON массива описаний блоков",
+					"default": "Пустое значение",
+					"short": "-b"
+				}
+			],
+			"region": "Работа с сообщениями"
+		},
+		{
+			"name": "УдалитьСообщение",
+			"id": "УДАЛИТЬСООБЩЕНИЕ",
+			"description": "Удаляет сообщение канала по timestamp",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "Идентификатор канала",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--stamp",
+					"types": "Строка",
+					"description": "Временная отметка или ID сообщения",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--issheduled",
+					"types": "Булево",
+					"description": "Признак удаления отложенного сообщения",
+					"default": false,
+					"short": "-i"
+				}
+			],
+			"region": "Работа с сообщениями"
+		},
+		{
+			"name": "ПолучитьСписокОтложенныхСообщений",
+			"id": "ПОЛУЧИТЬСПИСОКОТЛОЖЕННЫХСООБЩЕНИЙ",
+			"description": "Получает список отложенных сообщений канала",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "Идентификатор канала",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--cursor",
+					"types": "Строка",
+					"description": "Указатель из предыдущего запроса, если строк результата > 100",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с сообщениями"
+		},
+		{
+			"name": "ПолучитьСсылкуНаСообщение",
+			"id": "ПОЛУЧИТЬССЫЛКУНАСООБЩЕНИЕ",
+			"description": "Получает постоянный UTL к сообщению канала",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "Идентификатор канала",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--stamp",
+					"types": "Строка",
+					"description": "Временная отметка или ID сообщения",
+					"default": "",
+					"short": "-s"
+				}
+			],
+			"region": "Работа с сообщениями"
+		},
+		{
+			"name": "ПолучитьСписокОтветовНаСообщение",
+			"id": "ПОЛУЧИТЬСПИСОКОТВЕТОВНАСООБЩЕНИЕ",
+			"description": "Получает массив сообщений, которые являются ответом на указанное",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "Идентификатор канала",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--stamp",
+					"types": "Строка",
+					"description": "Временная отметка или ID сообщения",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--cursor",
+					"types": "Строка",
+					"description": "Указатель из предыдущего запроса, если строк результата > 100",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с сообщениями"
+		},
+		{
+			"name": "ПолучитьСписокКаналов",
+			"id": "ПОЛУЧИТЬСПИСОККАНАЛОВ",
+			"description": "Получает список доступных каналов",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--notarchived",
+					"types": "Булево",
+					"description": "Признак исключения архивированных каналов",
+					"default": false,
+					"short": "-n"
+				},
+				{
+					"name": "--cursor",
+					"types": "Строка",
+					"description": "Указатель из предыдущего запроса, если строк результата > 100",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с каналами"
+		},
+		{
+			"name": "ПолучитьСписокПользователейКанала",
+			"id": "ПОЛУЧИТЬСПИСОКПОЛЬЗОВАТЕЛЕЙКАНАЛА",
+			"description": "Получает список пользователей указанного канала",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "Идентификатор канала",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--cursor",
+					"types": "Строка",
+					"description": "Указатель из предыдущего запроса, если строк результата > 100",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с каналами"
+		},
+		{
+			"name": "СоздатьКанал",
+			"id": "СОЗДАТЬКАНАЛ",
+			"description": "Создает новый канал",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Наименование канала",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--private",
+					"types": "Булево",
+					"description": "Создать канал приватным",
+					"default": false,
+					"short": "-p"
+				}
+			],
+			"region": "Работа с каналами"
+		},
+		{
+			"name": "АрхивироватьКанал",
+			"id": "АРХИВИРОВАТЬКАНАЛ",
+			"description": "Архивирует активный канал",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "ID канала",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с каналами"
+		},
+		{
+			"name": "ПолучитьКанал",
+			"id": "ПОЛУЧИТЬКАНАЛ",
+			"description": "Получает информацию о канале",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "ID канала",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с каналами"
+		},
+		{
+			"name": "ПолучитьИсториюКанала",
+			"id": "ПОЛУЧИТЬИСТОРИЮКАНАЛА",
+			"description": "Получает информацию событиях канала",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "ID канала",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с каналами"
+		},
+		{
+			"name": "ПригласитьПользователейВКанал",
+			"id": "ПРИГЛАСИТЬПОЛЬЗОВАТЕЛЕЙВКАНАЛ",
+			"description": "Добавляет указанных пользователей в канал\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "ID канала",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--users",
+					"types": "Массив Из Строка",
+					"description": "Массив ID пользователей",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Работа с каналами"
+		},
+		{
+			"name": "ВыгнатьПользователяИзКанала",
+			"id": "ВЫГНАТЬПОЛЬЗОВАТЕЛЯИЗКАНАЛА",
+			"description": "Удаляет указанного пользователя из канала",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "ID канала",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--user",
+					"types": "Строка",
+					"description": "ID пользователя",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Работа с каналами"
+		},
+		{
+			"name": "ВступитьВКанал",
+			"id": "ВСТУПИТЬВКАНАЛ",
+			"description": "Добавляет текущего бота в канал",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "ID канала",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с каналами"
+		},
+		{
+			"name": "ПокинутьКанал",
+			"id": "ПОКИНУТЬКАНАЛ",
+			"description": "Удаляет текущего бота из канала",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "ID канала",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с каналами"
+		},
+		{
+			"name": "УстановитьТемуКанала",
+			"id": "УСТАНОВИТЬТЕМУКАНАЛА",
+			"description": "Устанавливает тему канала",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "ID канала",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--theme",
+					"types": "Строка",
+					"description": "Тема канала",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с каналами"
+		},
+		{
+			"name": "УстановитьЦельКанала",
+			"id": "УСТАНОВИТЬЦЕЛЬКАНАЛА",
+			"description": "Устанавливает цель (описание) канала",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "ID канала",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--purpose",
+					"types": "Строка",
+					"description": "Цель канала",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Работа с каналами"
+		},
+		{
+			"name": "ПереименоватьКанал",
+			"id": "ПЕРЕИМЕНОВАТЬКАНАЛ",
+			"description": "Изменяет название канала",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "ID канала",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Новое название канала",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с каналами"
+		},
+		{
+			"name": "ОткрытьДиалог",
+			"id": "ОТКРЫТЬДИАЛОГ",
+			"description": "Открывает новый диалог с одним или несколькими пользователями\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--users",
+					"types": "Массив из Строка",
+					"description": "Массив ID пользователей",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Работа с диалогами"
+		},
+		{
+			"name": "ЗакрытьДиалог",
+			"id": "ЗАКРЫТЬДИАЛОГ",
+			"description": "Закрывает существующий диалог",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--conv",
+					"types": "Строка",
+					"description": "ID диалога",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с диалогами"
+		},
+		{
+			"name": "ПолучитьСписокФайлов",
+			"id": "ПОЛУЧИТЬСПИСОКФАЙЛОВ",
+			"description": "Получает список файлов бота или канала",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "Канал для отбора",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--page",
+					"types": "Число, Строка",
+					"description": "Номер страницы",
+					"default": 1,
+					"short": "-p"
+				}
+			],
+			"region": "Работа с файлами"
+		},
+		{
+			"name": "ЗагрузитьФайл",
+			"id": "ЗАГРУЗИТЬФАЙЛ",
+			"description": "Загружает файл на сервера Slack",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--file",
+					"types": "Строка,ДвоичныеДанные",
+					"description": "Файл для загрузки",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--filename",
+					"types": "Строка",
+					"description": "Имя файла с расширением",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Имя файла в Slack",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "ID канала",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с файлами"
+		},
+		{
+			"name": "ПолучитьДанныеФайла",
+			"id": "ПОЛУЧИТЬДАННЫЕФАЙЛА",
+			"description": "Получает информацию о файле",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "Строка",
+					"description": "Идентификатор файла",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Работа с файлами"
+		},
+		{
+			"name": "УдалитьФайл",
+			"id": "УДАЛИТЬФАЙЛ",
+			"description": "Удаляет файл на Slack",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "Строка",
+					"description": "Идентификатор файла",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Работа с файлами"
+		},
+		{
+			"name": "СделатьФайлПубличным",
+			"id": "СДЕЛАТЬФАЙЛПУБЛИЧНЫМ",
+			"description": "Создает публичный URL для файла. Требует токен пользователя",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен пользователя",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "Строка",
+					"description": "Идентификатор файла",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Работа с файлами"
+		},
+		{
+			"name": "СделатьФайлПриватным",
+			"id": "СДЕЛАТЬФАЙЛПРИВАТНЫМ",
+			"description": "Удаляет публичный URL у файла. Требует токен пользователя",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен пользователя",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "Строка",
+					"description": "Идентификатор файла",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Работа с файлами"
+		},
+		{
+			"name": "ПолучитьСписокВнешнихФайлов",
+			"id": "ПОЛУЧИТЬСПИСОКВНЕШНИХФАЙЛОВ",
+			"description": "Получает список внешних файлов пользователя или канала",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "Строка",
+					"description": "Канал для отбора",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--cursor",
+					"types": "Строка",
+					"description": "Указатель из предыдущего запроса, если строк результата > 100",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с удаленными файлами"
+		},
+		{
+			"name": "ПолучитьВнешнийФайл",
+			"id": "ПОЛУЧИТЬВНЕШНИЙФАЙЛ",
+			"description": "Получает информацию о внешнем файле",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "Строка",
+					"description": "Идентификатор файла",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Работа с удаленными файлами"
+		},
+		{
+			"name": "ДобавитьВнешнийФайл",
+			"id": "ДОБАВИТЬВНЕШНИЙФАЙЛ",
+			"description": "Добавляет новый внешний файл",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL к внешнему файлу",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Заголовок файла для Slack",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с удаленными файлами"
+		},
+		{
+			"name": "ОтправитьВнешнийФайл",
+			"id": "ОТПРАВИТЬВНЕШНИЙФАЙЛ",
+			"description": "Отправляет внейшний файл по списку каналов\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "Строка",
+					"description": "Идентификатор файла",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--channels",
+					"types": "Массив Из Строка",
+					"description": "Массив каналов для отправки",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с удаленными файлами"
+		},
+		{
+			"name": "УдалитьВнешнийФайл",
+			"id": "УДАЛИТЬВНЕШНИЙФАЙЛ",
+			"description": "Удаляет внешний файл из Slack",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "Строка",
+					"description": "Идентификатор файла",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Работа с удаленными файлами"
+		},
+		{
+			"name": "СформироватьБлокКартинку",
+			"id": "СФОРМИРОВАТЬБЛОККАРТИНКУ",
+			"description": "Формирует блок с картинкой для добавления в массив блоков сообщения",
+			"params": [
+				{
+					"name": "--picture",
+					"types": "Строка",
+					"description": "URL картинки",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--alt",
+					"types": "Строка",
+					"description": "Альтернативный текст картинки",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Формирование блоков"
+		}
+	]
+}

@@ -1,0 +1,422 @@
+{
+	"module": "gsheets",
+	"library": "gsheets",
+	"depends": {
+		"OPI_GoogleSheets": "%1/oint/core/Modules/OPI_GoogleSheets.os",
+		"OPI_GoogleWorkspace": "%1/oint/core/Modules/OPI_GoogleWorkspace.os"
+	},
+	"methods": [
+		{
+			"name": "СформироватьСсылкуПолученияКода",
+			"id": "СФОРМИРОВАТЬССЫЛКУПОЛУЧЕНИЯКОДА",
+			"description": "Возвращает URL для авторизации в браузере",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--calendar",
+					"types": "Булево",
+					"description": "разрешение на методы Calendar",
+					"default": true,
+					"short": "-c"
+				},
+				{
+					"name": "--drive",
+					"types": "Булево",
+					"description": "разрешение на методы Drive",
+					"default": true,
+					"short": "-d"
+				},
+				{
+					"name": "--sheets",
+					"types": "Булево",
+					"description": "разрешение на методы Sheets",
+					"default": true,
+					"short": "-s"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "ПолучитьТокенПоКоду",
+			"id": "ПОЛУЧИТЬТОКЕНПОКОДУ",
+			"description": "Получает токен по коду из авторизации в бразуере",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "Строка",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--code",
+					"types": "Строка",
+					"description": "Code из браузера",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "ОбновитьТокен",
+			"id": "ОБНОВИТЬТОКЕН",
+			"description": "Обновляет токен по Refresh token",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "Строка",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--refresh",
+					"types": "Строка",
+					"description": "Refresh token",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "ПолучитьТокенServiceАккаунта",
+			"id": "ПОЛУЧИТЬТОКЕНSERVICEАККАУНТА",
+			"description": "Получает токен авторизации по данным service аккаунта\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--auth",
+					"types": "Произвольный",
+					"description": "JSON данные авторизации как файл, коллекция или двоичные данные",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--scope",
+					"types": "Массив Из Строка",
+					"description": "Область действия (scope) или массив областей",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--exp",
+					"types": "Число",
+					"description": "Время жизни токена в секундах",
+					"default": 3600,
+					"short": "-e"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "СоздатьКнигу",
+			"id": "СОЗДАТЬКНИГУ",
+			"description": "Создает новую книгу\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Наименование",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--sheets",
+					"types": "Массив из Строка",
+					"description": "Массив имен для добавления новых листов в книгу",
+					"default": "",
+					"short": "-s"
+				}
+			],
+			"region": "Работа с книгами"
+		},
+		{
+			"name": "ПолучитьКнигу",
+			"id": "ПОЛУЧИТЬКНИГУ",
+			"description": "Получает информацию о книге по ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--spreadsheet",
+					"types": "Строка",
+					"description": "Идентификатор книги",
+					"default": "",
+					"short": "-s"
+				}
+			],
+			"region": "Работа с книгами"
+		},
+		{
+			"name": "ИзменитьНаименованиеКниги",
+			"id": "ИЗМЕНИТЬНАИМЕНОВАНИЕКНИГИ",
+			"description": "Изменяет наименование существующей книги",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--spreadsheet",
+					"types": "Строка",
+					"description": "ID книги",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Новое наименование",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с книгами"
+		},
+		{
+			"name": "ДобавитьЛист",
+			"id": "ДОБАВИТЬЛИСТ",
+			"description": "Добавляет новый лист в книгу",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--spreadsheet",
+					"types": "Строка",
+					"description": "Идентификатор книги",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Наименование нового листа",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с листами"
+		},
+		{
+			"name": "УдалитьЛист",
+			"id": "УДАЛИТЬЛИСТ",
+			"description": "Удаляет лист из книги",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--spreadsheet",
+					"types": "Строка",
+					"description": "Идентификатор книги",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--sheet",
+					"types": "Строка",
+					"description": "Идентификатор удаляемого листа",
+					"default": "",
+					"short": "-s"
+				}
+			],
+			"region": "Работа с листами"
+		},
+		{
+			"name": "КопироватьЛист",
+			"id": "КОПИРОВАТЬЛИСТ",
+			"description": "Копирует лист из одной книги в другую",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--from",
+					"types": "Строка",
+					"description": "ID книги источника",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--to",
+					"types": "Строка",
+					"description": "ID книги приемника",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--sheet",
+					"types": "Строка",
+					"description": "ID копируемого листа",
+					"default": "",
+					"short": "-s"
+				}
+			],
+			"region": "Работа с листами"
+		},
+		{
+			"name": "УстановитьЗначенияЯчеек",
+			"id": "УСТАНОВИТЬЗНАЧЕНИЯЯЧЕЕК",
+			"description": "Устанавливает значения ячеек листа",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--spreadsheet",
+					"types": "Строка",
+					"description": "ID книги",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--data",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Данные заполнения, где ключ это имя ячейки вида A1",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--sheetname",
+					"types": "Строка",
+					"description": "Имя листа (первый лист по умолчанию)",
+					"default": "Пустое значение",
+					"short": "-s"
+				},
+				{
+					"name": "--dim",
+					"types": "Строка",
+					"description": "Основное измерение при заполнении диапазона массивом",
+					"default": "COLUMNS",
+					"short": "-d"
+				}
+			],
+			"region": "Работа с данными"
+		},
+		{
+			"name": "ОчиститьЯчейки",
+			"id": "ОЧИСТИТЬЯЧЕЙКИ",
+			"description": "Очищает значение в ячейках\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--spreadsheet",
+					"types": "Строка",
+					"description": "ID книги",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--cells",
+					"types": "Массив из Строка",
+					"description": "Массив ячеек вида А1 для очистки",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--sheetname",
+					"types": "Строка",
+					"description": "Имя листа (первый лист по умолчанию)",
+					"default": "Пустое значение",
+					"short": "-s"
+				}
+			],
+			"region": "Работа с данными"
+		},
+		{
+			"name": "ПолучитьЗначенияЯчеек",
+			"id": "ПОЛУЧИТЬЗНАЧЕНИЯЯЧЕЕК",
+			"description": "Получает значения ячеек таблицы\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--spreadsheet",
+					"types": "Строка",
+					"description": "ID книги",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--cells",
+					"types": "Массив из Строка",
+					"description": "Массив ячеек вида А1 для получения (весь лист, если не заполнено)",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--sheetname",
+					"types": "Строка",
+					"description": "Имя листа (первый лист по умолчанию)",
+					"default": "Пустое значение",
+					"short": "-s"
+				}
+			],
+			"region": "Работа с данными"
+		}
+	]
+}

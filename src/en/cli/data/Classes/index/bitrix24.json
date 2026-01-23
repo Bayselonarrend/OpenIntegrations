@@ -1,0 +1,5858 @@
+{
+	"module": "bitrix24",
+	"library": "bitrix24",
+	"depends": {
+		"OPI_Bitrix24": "%1/oint/core/Modules/OPI_Bitrix24.os"
+	},
+	"methods": [
+		{
+			"name": "GetAppAuthLink",
+			"id": "GETAPPAUTHLINK",
+			"description": "Forms a link for authorization via the browser",
+			"params": [
+				{
+					"name": "--domain",
+					"types": "String",
+					"description": "Current Bitrix URL (like 'portal.bitrix24.com')",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--clientid",
+					"types": "String",
+					"description": "Client ID from app settings",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Settings and administartion"
+		},
+		{
+			"name": "GetToken",
+			"id": "GETTOKEN",
+			"description": "Get token by auth code",
+			"params": [
+				{
+					"name": "--clientid",
+					"types": "String",
+					"description": "Client ID from app settings",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--clientsecret",
+					"types": "String",
+					"description": "Client secret from app settings",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--code",
+					"types": "String",
+					"description": "Code from browser auth page",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Settings and administartion"
+		},
+		{
+			"name": "RefreshToken",
+			"id": "REFRESHTOKEN",
+			"description": "Update token by refresh token",
+			"params": [
+				{
+					"name": "--clientid",
+					"types": "String",
+					"description": "Client ID from app settings",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--clientsecret",
+					"types": "String",
+					"description": "Client secret from app settings",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--refresh",
+					"types": "String",
+					"description": "Refresh token",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Settings and administartion"
+		},
+		{
+			"name": "ServerTime",
+			"id": "SERVERTIME",
+			"description": "Get current server time",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Settings and administartion"
+		},
+		{
+			"name": "CreatePost",
+			"id": "CREATEPOST",
+			"description": "Create a new post at news feed",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Text of post",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--vision",
+					"types": "String",
+					"description": "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group",
+					"default": "UA",
+					"short": "-v"
+				},
+				{
+					"name": "--files",
+					"types": "Map Of KeyAndValue",
+					"description": "Key > file name, value > path or binary data",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Post title",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--important",
+					"types": "Boolean",
+					"description": "Mark post as important",
+					"default": false,
+					"short": "-i"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Feed posts management"
+		},
+		{
+			"name": "UpdatePost",
+			"id": "UPDATEPOST",
+			"description": "Change post data",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--postid",
+					"types": "String, Number",
+					"description": "Post ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Text of post",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--vision",
+					"types": "String",
+					"description": "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group",
+					"default": "UA",
+					"short": "-v"
+				},
+				{
+					"name": "--files",
+					"types": "Map Of KeyAndValue",
+					"description": "Key > file name, value > path or binary data",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Post title",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Feed posts management"
+		},
+		{
+			"name": "DeletePost",
+			"id": "DELETEPOST",
+			"description": "Remove post from a news feed",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--postid",
+					"types": "String, Number",
+					"description": "Id of post to remove",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Feed posts management"
+		},
+		{
+			"name": "GetImportantPostViewers",
+			"id": "GETIMPORTANTPOSTVIEWERS",
+			"description": "Return list of important post viewers ids",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--postid",
+					"types": "String, Number",
+					"description": "Id of important post",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Feed posts management"
+		},
+		{
+			"name": "GetPosts",
+			"id": "GETPOSTS",
+			"description": "Gen post or array of post with ID or rights selection",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--postid",
+					"types": "String, Number",
+					"description": "Id of important post",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--sel",
+					"types": "String",
+					"description": "Post selection by rights: UA all, SGn work group, Un user, DRn depart, Gn group",
+					"default": "UA",
+					"short": "-s"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Feed posts management"
+		},
+		{
+			"name": "AddPostComment",
+			"id": "ADDPOSTCOMMENT",
+			"description": "Adds a comment to the post",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--postid",
+					"types": "String, Number",
+					"description": "Post ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Comment text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Feed posts management"
+		},
+		{
+			"name": "AddPostRecipients",
+			"id": "ADDPOSTRECIPIENTS",
+			"description": "Adds new groups or users to the recipients",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--postid",
+					"types": "String, Number",
+					"description": "Post ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--vision",
+					"types": "String",
+					"description": "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group",
+					"default": "",
+					"short": "-v"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Feed posts management"
+		},
+		{
+			"name": "GetTask",
+			"id": "GETTASK",
+			"description": "Get task by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "GetTasksList",
+			"id": "GETTASKSLIST",
+			"description": "Get tasks list (50 at one response max) with or without filtering",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--filter",
+					"types": "Structure of KeyAndValue",
+					"description": "Lead filter structure. See GetLeadFilterStructure",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--offset",
+					"types": "Number, String",
+					"description": "Offset of tasks list",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--select",
+					"types": "String, Array of String",
+					"description": "A list of task fields in the response. All non calculable by default",
+					"default": "Пустое значение",
+					"short": "-s"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "CreateTask",
+			"id": "CREATETASK",
+			"description": "Create new task by fields structure",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "Task fields structure. See GetTaskFieldsStructure",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "UpdateTask",
+			"id": "UPDATETASK",
+			"description": "Update a task",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "Task fields structure",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "DeleteTask",
+			"id": "DELETETASK",
+			"description": "Delete task by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "AttachFileToTopic",
+			"id": "ATTACHFILETOTOPIC",
+			"description": "Attaches a file to the selected task",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "Number, String",
+					"description": "File ID",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "ApproveTask",
+			"id": "APPROVETASK",
+			"description": "Approve task by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "DisapproveTask",
+			"id": "DISAPPROVETASK",
+			"description": "Disapprove task by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "CompleteTask",
+			"id": "COMPLETETASK",
+			"description": "Complete task by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "RenewTask",
+			"id": "RENEWTASK",
+			"description": "Returns a task to work by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "DeferTask",
+			"id": "DEFERTASK",
+			"description": "Defer task by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "PauseTask",
+			"id": "PAUSETASK",
+			"description": "Pause a task by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "StartTask",
+			"id": "STARTTASK",
+			"description": "Start a task by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "StartWatchingTask",
+			"id": "STARTWATCHINGTASK",
+			"description": "Start watching a task by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "StopWatchingTask",
+			"id": "STOPWATCHINGTASK",
+			"description": "Stop watching a task by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "DelegateTask",
+			"id": "DELEGATETASK",
+			"description": "Delegate task to another user",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--user",
+					"types": "Number, String",
+					"description": "ID of responsible user",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "AddTaskToFavorites",
+			"id": "ADDTASKTOFAVORITES",
+			"description": "Add task to favorites list",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "RemoveTaskFromFavorites",
+			"id": "REMOVETASKFROMFAVORITES",
+			"description": "Delete task from favorites list",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "GetTaskHistory",
+			"id": "GETTASKHISTORY",
+			"description": "Get history of task changing",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "CheckTaskAccesses",
+			"id": "CHECKTASKACCESSES",
+			"description": "Checks the availability of the task for users",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--users",
+					"types": "Array of String",
+					"description": "User IDs for access checking",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "MuteTask",
+			"id": "MUTETASK",
+			"description": "Mute task by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "UnmuteTask",
+			"id": "UNMUTETASK",
+			"description": "Unmute task by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "CreateTasksDependencies",
+			"id": "CREATETASKSDEPENDENCIES",
+			"description": "Creates the dependency of one task to another",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--taskfrom",
+					"types": "String, Number",
+					"description": "From task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--taskto",
+					"types": "String, Number",
+					"description": "To task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--linktype",
+					"types": "String, Number",
+					"description": "Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "DeleteTasksDependencies",
+			"id": "DELETETASKSDEPENDENCIES",
+			"description": "Removes the dependency of one task to another",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--taskfrom",
+					"types": "String, Number",
+					"description": "From task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--taskto",
+					"types": "String, Number",
+					"description": "To task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--linktype",
+					"types": "String, Number",
+					"description": "Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "GetDailyPlan",
+			"id": "GETDAILYPLAN",
+			"description": "Gets the task plan for the current users day",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "GetTaskFieldsStructure",
+			"id": "GETTASKFIELDSSTRUCTURE",
+			"description": "Gets a structure with a description of the fields for creating a task",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "GetTasksFilterStructure",
+			"id": "GETTASKSFILTERSTRUCTURE",
+			"description": "Return filter structure for GetTasksList",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				},
+				{
+					"name": "--map",
+					"types": "Boolean",
+					"description": "True > returns the filter fields as a map",
+					"default": false,
+					"short": "-m"
+				}
+			],
+			"region": "Tasks management"
+		},
+		{
+			"name": "GetCustomTaskFieldsList",
+			"id": "GETCUSTOMTASKFIELDSLIST",
+			"description": "Gets list of custom task fields",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Customs tasks fields management"
+		},
+		{
+			"name": "AddCustomTaskField",
+			"id": "ADDCUSTOMTASKFIELD",
+			"description": "Adds a new custom field to be added to the task",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--type",
+					"types": "String",
+					"description": "Field type: string, double, date, boolean",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fieldname",
+					"types": "String",
+					"description": "Text identifier (name) of the field",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--externalid",
+					"types": "String",
+					"description": "Text identifier for external integration",
+					"default": "Пустое значение",
+					"short": "-e"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Field title",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--label",
+					"types": "Structure Of KeyAndValue",
+					"description": "Form label. Key: en or ru, Value: Lable text",
+					"default": "Пустое значение",
+					"short": "-l"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Customs tasks fields management"
+		},
+		{
+			"name": "UpdateCustomTaskField",
+			"id": "UPDATECUSTOMTASKFIELD",
+			"description": "Updates a custom task field data",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fieldid",
+					"types": "String, Number",
+					"description": "Field ID for updating",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--externalid",
+					"types": "String",
+					"description": "Text identifier for external integration",
+					"default": "Пустое значение",
+					"short": "-e"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Field title",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--label",
+					"types": "Structure Of KeyAndValue",
+					"description": "Form label. Key: en or ru, Value: Lable text",
+					"default": "Пустое значение",
+					"short": "-l"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Customs tasks fields management"
+		},
+		{
+			"name": "GetCustomTaskField",
+			"id": "GETCUSTOMTASKFIELD",
+			"description": "Get custom task field data",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fieldid",
+					"types": "String, Number",
+					"description": "Field ID for retrieval",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Customs tasks fields management"
+		},
+		{
+			"name": "DeleteCustomTaskField",
+			"id": "DELETECUSTOMTASKFIELD",
+			"description": "Deletes a custom task field",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fieldid",
+					"types": "String, Number",
+					"description": "Field ID for deletion",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Customs tasks fields management"
+		},
+		{
+			"name": "AddTasksChecklistElement",
+			"id": "ADDTASKSCHECKLISTELEMENT",
+			"description": "Adds new element of tasks checklist",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Text (title) of checklist element",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--complete",
+					"types": "Boolean",
+					"description": "Mark as completed",
+					"default": false,
+					"short": "-c"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks checklists management"
+		},
+		{
+			"name": "UpdateTasksChecklistElement",
+			"id": "UPDATETASKSCHECKLISTELEMENT",
+			"description": "Updates text of element of tasks checklist",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--element",
+					"types": "Number, String",
+					"description": "Checklist element ID",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Text (title) of checklist element",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks checklists management"
+		},
+		{
+			"name": "DeleteTasksChecklistElement",
+			"id": "DELETETASKSCHECKLISTELEMENT",
+			"description": "Deletes element from tasks checklist",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--element",
+					"types": "Number, String",
+					"description": "ID of deleted element",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks checklists management"
+		},
+		{
+			"name": "GetTasksChecklist",
+			"id": "GETTASKSCHECKLIST",
+			"description": "Gets the list of elements on the task checklist",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks checklists management"
+		},
+		{
+			"name": "GetTasksChecklistElement",
+			"id": "GETTASKSCHECKLISTELEMENT",
+			"description": "Gets tasks checklist element by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--element",
+					"types": "Number, String",
+					"description": "Element ID",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks checklists management"
+		},
+		{
+			"name": "CompleteTasksChecklistElement",
+			"id": "COMPLETETASKSCHECKLISTELEMENT",
+			"description": "Mark an element as completed",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--element",
+					"types": "Number, String",
+					"description": "Element ID",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks checklists management"
+		},
+		{
+			"name": "RenewTasksChecklistElement",
+			"id": "RENEWTASKSCHECKLISTELEMENT",
+			"description": "Unmark an element as completed",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--element",
+					"types": "Number, String",
+					"description": "Element ID",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Tasks checklists management"
+		},
+		{
+			"name": "GetTaskCommentsList",
+			"id": "GETTASKCOMMENTSLIST",
+			"description": "Get user comments list for a task",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Comments and results management"
+		},
+		{
+			"name": "GetTaskComment",
+			"id": "GETTASKCOMMENT",
+			"description": "Gets task comment data by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--comment",
+					"types": "Number, String",
+					"description": "CommentID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Comments and results management"
+		},
+		{
+			"name": "AddTaskComment",
+			"id": "ADDTASKCOMMENT",
+			"description": "Create new comment to the task",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Comment text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Comments and results management"
+		},
+		{
+			"name": "UpdateTaskComment",
+			"id": "UPDATETASKCOMMENT",
+			"description": "Changes task comment text",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--comment",
+					"types": "Number, String",
+					"description": "CommentID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Comment text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Comments and results management"
+		},
+		{
+			"name": "DeleteTaskComment",
+			"id": "DELETETASKCOMMENT",
+			"description": "Delete task comment by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--comment",
+					"types": "Number, String",
+					"description": "ID of comment to remove",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Comments and results management"
+		},
+		{
+			"name": "GetResultsList",
+			"id": "GETRESULTSLIST",
+			"description": "Gets results list for task",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "Number, String",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Comments and results management"
+		},
+		{
+			"name": "CreateResultFromComment",
+			"id": "CREATERESULTFROMCOMMENT",
+			"description": "Create task result from comment",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--comment",
+					"types": "Number, String",
+					"description": "CommentID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Comments and results management"
+		},
+		{
+			"name": "DeleteResultFromComment",
+			"id": "DELETERESULTFROMCOMMENT",
+			"description": "Deletes task result, created from a comment",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--comment",
+					"types": "Number, String",
+					"description": "CommentID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Comments and results management"
+		},
+		{
+			"name": "GetCommentStructure",
+			"id": "GETCOMMENTSTRUCTURE",
+			"description": "Get comment fields structure",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Comments and results management"
+		},
+		{
+			"name": "AddKanbanStage",
+			"id": "ADDKANBANSTAGE",
+			"description": "Add new stage of kanban or My Plan",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New stage name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--color",
+					"types": "String",
+					"description": "HEX of new stage color",
+					"default": "FFD800",
+					"short": "-c"
+				},
+				{
+					"name": "--prevstage",
+					"types": "String, Number",
+					"description": "ID of the stage after which a new stage should be inserted (at the beginning by default.)",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--entityid",
+					"types": "String, Number",
+					"description": "ID of kanban owner (group or user)",
+					"default": "Пустое значение",
+					"short": "-e"
+				},
+				{
+					"name": "--admin",
+					"types": "Boolean",
+					"description": "Allows you to add stages without checking permissions (for administrators)",
+					"default": false,
+					"short": "-a"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Kanban"
+		},
+		{
+			"name": "UpdateKanbansStage",
+			"id": "UPDATEKANBANSSTAGE",
+			"description": "Changes the properties of the existing kanban or My plan stage",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New stages name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--stage",
+					"types": "String, Number",
+					"description": "Stage ID for change",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--color",
+					"types": "String",
+					"description": "HEX of new stage color",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--prevstage",
+					"types": "String, Number",
+					"description": "Stage ID, after which the selected stage should be inserted",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--admin",
+					"types": "Boolean",
+					"description": "Allows you to add stages without checking permissions (for administrators)",
+					"default": false,
+					"short": "-a"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Kanban"
+		},
+		{
+			"name": "DeleteKanbanStage",
+			"id": "DELETEKANBANSTAGE",
+			"description": "Removes a kanban (My Plan) stage, provided there are no tasks in it",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--stage",
+					"types": "String, Number",
+					"description": "ID of stage to dele",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--admin",
+					"types": "Boolean",
+					"description": "Allows you to add stages without checking permissions (for administrators)",
+					"default": false,
+					"short": "-a"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Kanban"
+		},
+		{
+			"name": "GetKanbanStages",
+			"id": "GETKANBANSTAGES",
+			"description": "Get kanban (My Plan) stages info",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--entityid",
+					"types": "String, Number",
+					"description": "ID of kanban owner (group or user)",
+					"default": "Пустое значение",
+					"short": "-e"
+				},
+				{
+					"name": "--admin",
+					"types": "Boolean",
+					"description": "Allows you to get stages without checking permissions (for administrators)",
+					"default": false,
+					"short": "-a"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Kanban"
+		},
+		{
+			"name": "MoveTaskToKanbanStage",
+			"id": "MOVETASKTOKANBANSTAGE",
+			"description": "Move task to another kanban stage",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "String, Number",
+					"description": "ID of task to move",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--stage",
+					"types": "String, Number",
+					"description": "Stage ID",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--before",
+					"types": "String, Number",
+					"description": "ID of the task to put the selected one in front of (if After not filled)",
+					"default": "Пустое значение",
+					"short": "-b"
+				},
+				{
+					"name": "--after",
+					"types": "String, Number",
+					"description": "ID of the task to be followed by the selected (if Prev not filled)",
+					"default": "Пустое значение",
+					"short": "-a"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Kanban"
+		},
+		{
+			"name": "AddTaskTimeAccounting",
+			"id": "ADDTASKTIMEACCOUNTING",
+			"description": "Adds information about the user's time spent to the task",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "String, Number",
+					"description": "ID of task for time accounting",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--amount",
+					"types": "String, Number",
+					"description": "Time spent in seconds",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--user",
+					"types": "String, Number",
+					"description": "ID of user for time accounting",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Comment text",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--date",
+					"types": "String",
+					"description": "Date the record was set",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Timekeeping"
+		},
+		{
+			"name": "DeleteTaskTimeAccounting",
+			"id": "DELETETASKTIMEACCOUNTING",
+			"description": "Deletes record of time accounting",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "String, Number",
+					"description": "ID of task for time accounting",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--record",
+					"types": "String, Number",
+					"description": "Time record ID",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Timekeeping"
+		},
+		{
+			"name": "GetTaskTimeAccountingList",
+			"id": "GETTASKTIMEACCOUNTINGLIST",
+			"description": "Get list of time accounting records for task",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "String, Number",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Timekeeping"
+		},
+		{
+			"name": "GetTaskTimeAccounting",
+			"id": "GETTASKTIMEACCOUNTING",
+			"description": "Get time accounting record data",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "String, Number",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--record",
+					"types": "String, Number",
+					"description": "Time record ID",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Timekeeping"
+		},
+		{
+			"name": "UpdateTaskTimeAccounting",
+			"id": "UPDATETASKTIMEACCOUNTING",
+			"description": "Update time accounting record data",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--task",
+					"types": "String, Number",
+					"description": "Task ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--record",
+					"types": "String, Number",
+					"description": "Time record ID",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--amount",
+					"types": "String, Number",
+					"description": "Time spent in seconds",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Comment text",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--date",
+					"types": "String",
+					"description": "Date the record was set",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Timekeeping"
+		},
+		{
+			"name": "StartTimekeeping",
+			"id": "STARTTIMEKEEPING",
+			"description": "Starts user timekeeping",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--userid",
+					"types": "String, Number",
+					"description": "Users ID. Current by default",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--time",
+					"types": "Date",
+					"description": "Start time. The date must match the current. Current time by default.",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--report",
+					"types": "String",
+					"description": "Reason for change. Required when Time is specified and free schedule is disabled",
+					"default": "Пустое значение",
+					"short": "-r"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Timekeeping"
+		},
+		{
+			"name": "StopTimekeeping",
+			"id": "STOPTIMEKEEPING",
+			"description": "Stops user timekeeping",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--userid",
+					"types": "String, Number",
+					"description": "Users ID. Current by default",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--time",
+					"types": "Date",
+					"description": "Stop time. The date must match the current. Current time by default.",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--report",
+					"types": "String",
+					"description": "Reason for change. Required when Time is specified and free schedule is disabled",
+					"default": "Пустое значение",
+					"short": "-r"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Timekeeping"
+		},
+		{
+			"name": "PauseTimekeeping",
+			"id": "PAUSETIMEKEEPING",
+			"description": "Pauses user timekeeping",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--userid",
+					"types": "String, Number",
+					"description": "Users ID. Current by default",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Timekeeping"
+		},
+		{
+			"name": "GetTimekeepingStatus",
+			"id": "GETTIMEKEEPINGSTATUS",
+			"description": "Gets user timekeeping status",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--userid",
+					"types": "String, Number",
+					"description": "Users ID. Current by default",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Timekeeping"
+		},
+		{
+			"name": "GetTimekeepingSettings",
+			"id": "GETTIMEKEEPINGSETTINGS",
+			"description": "Gets user timekeeping settings",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--userid",
+					"types": "String, Number",
+					"description": "Users ID. Current by default",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Timekeeping"
+		},
+		{
+			"name": "GetStoragesList",
+			"id": "GETSTORAGESLIST",
+			"description": "Get list of available files storages",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Storages management"
+		},
+		{
+			"name": "GetAppStorage",
+			"id": "GETAPPSTORAGE",
+			"description": "Get information about storage with which the application can work to store its data",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Storages management"
+		},
+		{
+			"name": "GetStorage",
+			"id": "GETSTORAGE",
+			"description": "Get information about storage",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--storageid",
+					"types": "String, Number",
+					"description": "Storage ID",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Storages management"
+		},
+		{
+			"name": "RenameStorage",
+			"id": "RENAMESTORAGE",
+			"description": "Change storage name (for app storage only, see. GetAppStorage)",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--storageid",
+					"types": "String, Number",
+					"description": "Storage ID",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New storage name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Storages management"
+		},
+		{
+			"name": "GetStorageObjects",
+			"id": "GETSTORAGEOBJECTS",
+			"description": "Get a list of files and folders, located at the root of the storage",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--storageid",
+					"types": "String, Number",
+					"description": "Storage ID",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Storages management"
+		},
+		{
+			"name": "CreateStorageFolder",
+			"id": "CREATESTORAGEFOLDER",
+			"description": "Create new foldera at the storage",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--storageid",
+					"types": "String",
+					"description": "Storage ID",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Folder name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Storages management"
+		},
+		{
+			"name": "GetFolderInformation",
+			"id": "GETFOLDERINFORMATION",
+			"description": "Get folder information",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--folderid",
+					"types": "String, Number",
+					"description": "Folder identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Catalogs management"
+		},
+		{
+			"name": "CreateSubfolder",
+			"id": "CREATESUBFOLDER",
+			"description": "Create new folder inside another folder",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--folderid",
+					"types": "String, Number",
+					"description": "Parent folder identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Name of new folder",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Catalogs management"
+		},
+		{
+			"name": "MakeFolderCopy",
+			"id": "MAKEFOLDERCOPY",
+			"description": "Copy one folder to another",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--folderid",
+					"types": "String, Number",
+					"description": "Folder identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--tagetid",
+					"types": "String, Number",
+					"description": "ID of target folder",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Catalogs management"
+		},
+		{
+			"name": "MoveFolder",
+			"id": "MOVEFOLDER",
+			"description": "Moves one folder inside another",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--folderid",
+					"types": "String, Number",
+					"description": "Folder identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--tagetid",
+					"types": "String, Number",
+					"description": "ID of target folder",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Catalogs management"
+		},
+		{
+			"name": "DeleteFolder",
+			"id": "DELETEFOLDER",
+			"description": "Remove folder with subfolders",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--folderid",
+					"types": "String, Number",
+					"description": "ID of folder to be deleted",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Catalogs management"
+		},
+		{
+			"name": "GetFolderExternalLink",
+			"id": "GETFOLDEREXTERNALLINK",
+			"description": "Get external link to folder",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--folderid",
+					"types": "String, Number",
+					"description": "Folder identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Catalogs management"
+		},
+		{
+			"name": "GetFolderItems",
+			"id": "GETFOLDERITEMS",
+			"description": "Get folder child elements",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--folderid",
+					"types": "String, Number",
+					"description": "Folder identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--filter",
+					"types": "Structure of KeyAndValue",
+					"description": "Items filter. See GetFolderFilterStructure",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Catalogs management"
+		},
+		{
+			"name": "MarkFolderAsDeleted",
+			"id": "MARKFOLDERASDELETED",
+			"description": "Move folder to recycle bin",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--folderid",
+					"types": "String, Number",
+					"description": "Folder identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Catalogs management"
+		},
+		{
+			"name": "RestoreFolder",
+			"id": "RESTOREFOLDER",
+			"description": "Resotre folder form recycle bin",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--folderid",
+					"types": "String, Number",
+					"description": "Folder identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Catalogs management"
+		},
+		{
+			"name": "RenameFolder",
+			"id": "RENAMEFOLDER",
+			"description": "Change folder name",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--folderid",
+					"types": "String, Number",
+					"description": "Folder identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New folders name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Catalogs management"
+		},
+		{
+			"name": "GetFolderFilterStructure",
+			"id": "GETFOLDERFILTERSTRUCTURE",
+			"description": "Returns filter structure for child folder items",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty values, False > field types at values",
+					"default": false,
+					"short": "-e"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Catalogs management"
+		},
+		{
+			"name": "UploadFileToStorage",
+			"id": "UPLOADFILETOSTORAGE",
+			"description": "Upload file to storage root",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "File name with extension",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--file",
+					"types": "String, BinaryData",
+					"description": "File for upload",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--storageid",
+					"types": "String",
+					"description": "Storage id",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--rights",
+					"types": "String",
+					"description": "Rights array if required",
+					"default": "Пустое значение",
+					"short": "-r"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "UploadFileToFolder",
+			"id": "UPLOADFILETOFOLDER",
+			"description": "Upload local file to the folder",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "File name with extension",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--file",
+					"types": "String, BinaryData",
+					"description": "File for upload",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--folderid",
+					"types": "String",
+					"description": "Folder identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "GetFileInformation",
+			"id": "GETFILEINFORMATION",
+			"description": "Get information about file by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fileid",
+					"types": "String, Number",
+					"description": "File identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "DeleteFile",
+			"id": "DELETEFILE",
+			"description": "Delete file by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fileid",
+					"types": "String, Number",
+					"description": "ID of removing file",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "GetFileExternalLink",
+			"id": "GETFILEEXTERNALLINK",
+			"description": "Get external link to file",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fileid",
+					"types": "String, Number",
+					"description": "File identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "MarkFileAsDeleted",
+			"id": "MARKFILEASDELETED",
+			"description": "Move file to recycle bin",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fileid",
+					"types": "String, Number",
+					"description": "File identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "RestoreFile",
+			"id": "RESTOREFILE",
+			"description": "Restore file from recycle bin",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fileid",
+					"types": "String, Number",
+					"description": "File identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "MakeFileCopy",
+			"id": "MAKEFILECOPY",
+			"description": "Copy file from one destination to another",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fileid",
+					"types": "String, Number",
+					"description": "Original file ID",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--folderid",
+					"types": "String, Number",
+					"description": "ID of copy destination folder",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "MoveFileToFolder",
+			"id": "MOVEFILETOFOLDER",
+			"description": "Move file from one destination to another",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fileid",
+					"types": "String, Number",
+					"description": "File ID",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--folderid",
+					"types": "String, Number",
+					"description": "ID of new destination folder",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "RenameFile",
+			"id": "RENAMEFILE",
+			"description": "Changes the name of an existing file",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fileid",
+					"types": "String, Number",
+					"description": "File identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New folders name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "CreateChat",
+			"id": "CREATECHAT",
+			"description": "Creates a new chat based on the field structure",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "Chat fields structure. See GetChatStructure",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "GetChatUsers",
+			"id": "GETCHATUSERS",
+			"description": "Gets the list of chat users by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "LeaveChat",
+			"id": "LEAVECHAT",
+			"description": "Removes the current user from the chat room",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "GetUsers",
+			"id": "GETUSERS",
+			"description": "Get users information for dialog",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--users",
+					"types": "Array of String, Number",
+					"description": "Usesr ID or array of users IDs",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "AddUsersToChat",
+			"id": "ADDUSERSTOCHAT",
+			"description": "Adds users to the chat by ID array",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--users",
+					"types": "Array of string, number",
+					"description": "New members IDs",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--hide",
+					"types": "Boolean",
+					"description": "Hide old messages from new members",
+					"default": false,
+					"short": "-h"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "DeleteUserFromChat",
+			"id": "DELETEUSERFROMCHAT",
+			"description": "Deletes user from chat",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--user",
+					"types": "String, Number",
+					"description": "User ID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "ChangeChatTitle",
+			"id": "CHANGECHATTITLE",
+			"description": "Change text of chat title",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New title",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "ChangeChatColor",
+			"id": "CHANGECHATCOLOR",
+			"description": "Chat chat color for mobile app",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--color",
+					"types": "String",
+					"description": "New chat color",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "ChangeChatPicture",
+			"id": "CHANGECHATPICTURE",
+			"description": "Setup new chat picture",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--picture",
+					"types": "String, BinaryData",
+					"description": "Picture data",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "ChangeChatOwner",
+			"id": "CHANGECHATOWNER",
+			"description": "Change chat owner",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--user",
+					"types": "String, Number",
+					"description": "User ID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "DisableChatNotifications",
+			"id": "DISABLECHATNOTIFICATIONS",
+			"description": "Disable chat notifications",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "EnableChatNotifications",
+			"id": "ENABLECHATNOTIFICATIONS",
+			"description": "Enable chat notifications",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "GetChatMessagesList",
+			"id": "GETCHATMESSAGESLIST",
+			"description": "Gets a list of 20 chat or dialog messages, depending on the FirstID and LastID specified",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID (as chatXXX) or User ID (as XXX)",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--last",
+					"types": "String, Number",
+					"description": "Id of last message",
+					"default": "Пустое значение",
+					"short": "-l"
+				},
+				{
+					"name": "--first",
+					"types": "String, Number",
+					"description": "ID of first message",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "GetDialog",
+			"id": "GETDIALOG",
+			"description": "Get chat data by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID (as chatXXX) or User ID (as XXX)",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "GetChatMembersList",
+			"id": "GETCHATMEMBERSLIST",
+			"description": "Get chat members list",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID (as chatXXX) or User ID (as XXX)",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "SendWritingNotification",
+			"id": "SENDWRITINGNOTIFICATION",
+			"description": "Send Writing... status to dialog...",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID (as chatXXX) or User ID (as XXX)",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "GetUserStatus",
+			"id": "GETUSERSTATUS",
+			"description": "Gets the status (online) of the current user",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "SetUserStatus",
+			"id": "SETUSERSTATUS",
+			"description": "Sets the status (online) of the current user",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--status",
+					"types": "String, Number",
+					"description": "Status value: online, dnd, away",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "ReadAll",
+			"id": "READALL",
+			"description": "Mark all message as readed",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "GetChatFilesFolder",
+			"id": "GETCHATFILESFOLDER",
+			"description": "Get information about folder for chat files",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "GetChatStructure",
+			"id": "GETCHATSTRUCTURE",
+			"description": "Get chat fields structure",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty values, False > field types at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Chats and dialogs management"
+		},
+		{
+			"name": "SendMessage",
+			"id": "SENDMESSAGE",
+			"description": "Send message to dialog",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID (as chatXXX) or User ID (as XXX)",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--blocks",
+					"types": "Array of Structure",
+					"description": "Array of attachments",
+					"default": "Пустое значение",
+					"short": "-b"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "EditMessage",
+			"id": "EDITMESSAGE",
+			"description": "Edit dialog message content",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--message",
+					"types": "String, Number",
+					"description": "ID of the message to be edited",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "New message text",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--blocks",
+					"types": "Array of Structure",
+					"description": "New blocks array",
+					"default": "Пустое значение",
+					"short": "-b"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "SetMessageReaction",
+			"id": "SETMESSAGEREACTION",
+			"description": "Set or remove reaction mark on the message",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--message",
+					"types": "String, Number",
+					"description": "Message ID",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "DeleteMessage",
+			"id": "DELETEMESSAGE",
+			"description": "Deletes a dialog message",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--message",
+					"types": "String, Number",
+					"description": "ID of the message to be deleted",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "SendFile",
+			"id": "SENDFILE",
+			"description": "Send disk file to chat",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--fileid",
+					"types": "String, Number",
+					"description": "File ID from UploadFileToFolder method",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--description",
+					"types": "String",
+					"description": "File description",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "MarkMessageAsReaded",
+			"id": "MARKMESSAGEASREADED",
+			"description": "Mark current and all previous messages as readed",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID (as chatXXX) or User ID (as XXX)",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "String, Number",
+					"description": "Id of last readed message",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "MarkMessageAsUnreaded",
+			"id": "MARKMESSAGEASUNREADED",
+			"description": "Mark current and all messages after as unreaded",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Chat ID (as chatXXX) or User ID (as XXX)",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "String, Number",
+					"description": "ID of last unreaded message",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "GetPictureBlock",
+			"id": "GETPICTUREBLOCK",
+			"description": "Make picture block for SendMessage method",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Picture name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of sending picture",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "GetFileBlock",
+			"id": "GETFILEBLOCK",
+			"description": "Make file block for SendMessage method",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Picture name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "File URL",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "CreatePersonalNotification",
+			"id": "CREATEPERSONALNOTIFICATION",
+			"description": "Creates a personal notification to the user",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--user",
+					"types": "String, Number",
+					"description": "User ID for sending the notification",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Notification text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--tag",
+					"types": "String",
+					"description": "Uniqueness Tag. If already exist, other notif. will be deleted",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--blocks",
+					"types": "Array of Structure",
+					"description": "Array of attachments",
+					"default": "Пустое значение",
+					"short": "-b"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Notifications management"
+		},
+		{
+			"name": "CreateSystemNotification",
+			"id": "CREATESYSTEMNOTIFICATION",
+			"description": "Creates a system notification to the user",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--user",
+					"types": "String, Number",
+					"description": "User ID for sending the notification",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Notification text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--tag",
+					"types": "String",
+					"description": "Uniqueness Tag. If already exist, other notif. will be deleted",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--blocks",
+					"types": "Array of Structure",
+					"description": "Array of attachments",
+					"default": "Пустое значение",
+					"short": "-b"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Notifications management"
+		},
+		{
+			"name": "DeleteNotification",
+			"id": "DELETENOTIFICATION",
+			"description": "Delete notification by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--notif",
+					"types": "String, Number",
+					"description": "Notification ID",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Notifications management"
+		},
+		{
+			"name": "CreateDepartment",
+			"id": "CREATEDEPARTMENT",
+			"description": "Creates a new department",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Department name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--parentid",
+					"types": "String, Number",
+					"description": "ID of parent department",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--headid",
+					"types": "String, Number",
+					"description": "ID of department manager",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Departments management"
+		},
+		{
+			"name": "UpdateDepartment",
+			"id": "UPDATEDEPARTMENT",
+			"description": "Update an existing department",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--depid",
+					"types": "String, Number",
+					"description": "Department ID",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Department name",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--parentid",
+					"types": "String, Number",
+					"description": "ID of parent department",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--headid",
+					"types": "String, Number",
+					"description": "ID of department manager",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Departments management"
+		},
+		{
+			"name": "GetDepartments",
+			"id": "GETDEPARTMENTS",
+			"description": "Gets a list of departments by ID or filter",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--depid",
+					"types": "String, Number",
+					"description": "Selection by department ID",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Filter by name",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--parentid",
+					"types": "String, Number",
+					"description": "Filter by parent ID",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--headid",
+					"types": "String, Number",
+					"description": "Filter by manager ID",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Departments management"
+		},
+		{
+			"name": "DeleteDepartment",
+			"id": "DELETEDEPARTMENT",
+			"description": "Delets department by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--depid",
+					"types": "String, Number",
+					"description": "Department ID for deletion",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Departments management"
+		},
+		{
+			"name": "GetCurrentUser",
+			"id": "GETCURRENTUSER",
+			"description": "Get current user data",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "GetUser",
+			"id": "GETUSER",
+			"description": "Gets user information by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--userid",
+					"types": "String, Number",
+					"description": "User ID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "CreateUser",
+			"id": "CREATEUSER",
+			"description": "Create new user by fields structure",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "New user data. See. GetUserFieldsStructure",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "UpdateUser",
+			"id": "UPDATEUSER",
+			"description": "Updates user data",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--userid",
+					"types": "String, Number",
+					"description": "User ID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "New user data. See. GetUserFieldsStructure",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "ChangeUserStatus",
+			"id": "CHANGEUSERSTATUS",
+			"description": "Activates or deactivates (fire) the selected user",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--userid",
+					"types": "String, Number",
+					"description": "User ID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fire",
+					"types": "Boolean",
+					"description": "True > Deactivation, False > Activation",
+					"default": true,
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "FindUsers",
+			"id": "FINDUSERS",
+			"description": "Gets the list of users according to the specified filter",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--filter",
+					"types": "Structure Of KeyAndValue",
+					"description": "Filter. See GetUserFilterStructure",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "GetUserFieldsStructure",
+			"id": "GETUSERFIELDSSTRUCTURE",
+			"description": "Gets the field structure for creating or modifying user information",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "GetUserFilterStructure",
+			"id": "GETUSERFILTERSTRUCTURE",
+			"description": "Returns the field structure for filtering users in the FindUsers method",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "CreateLead",
+			"id": "CREATELEAD",
+			"description": "Creates a new lead by fields structure",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "Lead fields structure. See GetLeadStructure",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Leads management"
+		},
+		{
+			"name": "DeleteLead",
+			"id": "DELETELEAD",
+			"description": "Deletes a lead by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--lead",
+					"types": "Number, String",
+					"description": "Lead ID",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Leads management"
+		},
+		{
+			"name": "GetLead",
+			"id": "GETLEAD",
+			"description": "Gets a lead by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--lead",
+					"types": "Number, String",
+					"description": "Lead ID",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Leads management"
+		},
+		{
+			"name": "GetLeadsList",
+			"id": "GETLEADSLIST",
+			"description": "Gets a list of leads (50 per request max) with or without filtering",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--filter",
+					"types": "Structure of KeyAndValue",
+					"description": "Lead filter structure. See GetLeadFilterStructure",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--offset",
+					"types": "Number, String",
+					"description": "Offset from the beginning of the list to get leads > 50 recursively",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Leads management"
+		},
+		{
+			"name": "UpdateLead",
+			"id": "UPDATELEAD",
+			"description": "Modifies an existing lead",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--lead",
+					"types": "Number, String",
+					"description": "Lead ID",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "Structure of lead fields",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Leads management"
+		},
+		{
+			"name": "GetLeadStructure",
+			"id": "GETLEADSTRUCTURE",
+			"description": "Gets a structure with field descriptions for creating a lead",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Leads management"
+		},
+		{
+			"name": "GetLeadFilterStructure",
+			"id": "GETLEADFILTERSTRUCTURE",
+			"description": "Returns the field structure for filtering leads in the GetLeadsList method",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Leads management"
+		},
+		{
+			"name": "CreateDeal",
+			"id": "CREATEDEAL",
+			"description": "Creates a new deal by field structure",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "Deal fields structure. See. GetDealStructure",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Deals management"
+		},
+		{
+			"name": "DeleteDeal",
+			"id": "DELETEDEAL",
+			"description": "Deletes deal by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--deal",
+					"types": "Number, String",
+					"description": "Deal ID",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Deals management"
+		},
+		{
+			"name": "GetDeal",
+			"id": "GETDEAL",
+			"description": "Gets deal by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--deal",
+					"types": "Number, String",
+					"description": "Deal ID",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Deals management"
+		},
+		{
+			"name": "GetDealsList",
+			"id": "GETDEALSLIST",
+			"description": "Gets the list of deals (50 pcs per query max) with or without filtering",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--filter",
+					"types": "Structure of KeyAndValue",
+					"description": "Deals filter structure. See GetDealsFilterStructure",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--offset",
+					"types": "Number, String",
+					"description": "Offset from the beginning of the list to retrieve deals > 50 pcs recursively",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Deals management"
+		},
+		{
+			"name": "UpdateDeal",
+			"id": "UPDATEDEAL",
+			"description": "Modifies an existing deal",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--deal",
+					"types": "Number, String",
+					"description": "Deal ID",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "Deal fields structure",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Deals management"
+		},
+		{
+			"name": "GetDealStructure",
+			"id": "GETDEALSTRUCTURE",
+			"description": "Gets a structure with field descriptions for creating a deal",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Deals management"
+		},
+		{
+			"name": "GetDealsFilterStructure",
+			"id": "GETDEALSFILTERSTRUCTURE",
+			"description": "Returns the field structure for filtering deals in the GetDealsList method",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Deals management"
+		},
+		{
+			"name": "GetCalendarList",
+			"id": "GETCALENDARLIST",
+			"description": "Gets a list of calendars of the specified owner",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--owner",
+					"types": "String, Number",
+					"description": "Calendar owner ID",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--type",
+					"types": "String",
+					"description": "Calendar type: user, group, company_calendar, location, etc.",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendars management"
+		},
+		{
+			"name": "CreateCalendar",
+			"id": "CREATECALENDAR",
+			"description": "Creates a new calendar",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "Calendar fields structure. See GetCalendarStructure",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendars management"
+		},
+		{
+			"name": "UpdateCalendar",
+			"id": "UPDATECALENDAR",
+			"description": "Changes the calendar settings",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--calendar",
+					"types": "String, Number",
+					"description": "Calendar ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "Deal fields structure. See. GetDealStructure",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendars management"
+		},
+		{
+			"name": "DeleteCalendar",
+			"id": "DELETECALENDAR",
+			"description": "Deletes an existing calendar",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--calendar",
+					"types": "String, Number",
+					"description": "Calendar ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--owner",
+					"types": "String, Number",
+					"description": "Calendar owner ID",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--type",
+					"types": "String",
+					"description": "Calendar type: user, group",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendars management"
+		},
+		{
+			"name": "GetUserBusy",
+			"id": "GETUSERBUSY",
+			"description": "Gets an array of user events in the specified interval",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--users",
+					"types": "Number, Array Of Number",
+					"description": "IDs of users or a single user",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--from",
+					"types": "Date",
+					"description": "Start date of the period",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--to",
+					"types": "Date",
+					"description": "End date of the period",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendars management"
+		},
+		{
+			"name": "GetCustomCalendarSettings",
+			"id": "GETCUSTOMCALENDARSETTINGS",
+			"description": "Gets the current users custom calendar settings",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendars management"
+		},
+		{
+			"name": "SetCustomCalendarSettings",
+			"id": "SETCUSTOMCALENDARSETTINGS",
+			"description": "Sets new custom calendar settings",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--settings",
+					"types": "Structure Of KeyAndValue",
+					"description": "Settings structure. See GetCalednarCustomSettingsStructure",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendars management"
+		},
+		{
+			"name": "GetCalendarSettingsStructure",
+			"id": "GETCALENDARSETTINGSSTRUCTURE",
+			"description": "Gets the structure of the default calendar settings",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendars management"
+		},
+		{
+			"name": "GetCalednarCustomSettingsStructure",
+			"id": "GETCALEDNARCUSTOMSETTINGSSTRUCTURE",
+			"description": "Gets an empty structure for setting custom calendar settings",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Calendars management"
+		},
+		{
+			"name": "GetCalendarStructure",
+			"id": "GETCALENDARSTRUCTURE",
+			"description": "Returns the structure of the calendar description fields",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Calendars management"
+		},
+		{
+			"name": "CreateCalendarEvent",
+			"id": "CREATECALENDAREVENT",
+			"description": "Creates a new calendar event",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "Event description. See GetCalendarEventsStructure",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendar events management"
+		},
+		{
+			"name": "UpdateCalendarEvent",
+			"id": "UPDATECALENDAREVENT",
+			"description": "Modifies calendar event data",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--event",
+					"types": "Number",
+					"description": "Calednar event ID",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "Event description. See GetCalendarEventsStructure",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendar events management"
+		},
+		{
+			"name": "GetCalendarEvent",
+			"id": "GETCALENDAREVENT",
+			"description": "Gets a calendar event by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--event",
+					"types": "Number",
+					"description": "Event ID to retrieve",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendar events management"
+		},
+		{
+			"name": "GetCalendarEvents",
+			"id": "GETCALENDAREVENTS",
+			"description": "Gets events of calendars with or without filters",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--owner",
+					"types": "String, Number",
+					"description": "Calendar owner ID",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--type",
+					"types": "String",
+					"description": "Calendar type: user, group, company_calendar",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--filter",
+					"types": "Structure Of KeyAndValue",
+					"description": "Events filter. See GetCalendarEventsFilterStructure",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendar events management"
+		},
+		{
+			"name": "DeleteCalendarEvent",
+			"id": "DELETECALENDAREVENT",
+			"description": "Deletes an event from the calendar",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--event",
+					"types": "Number",
+					"description": "ID of the event to be deleted",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendar events management"
+		},
+		{
+			"name": "GetUserParticipationStatus",
+			"id": "GETUSERPARTICIPATIONSTATUS",
+			"description": "Gets the event participation status of the current user",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--event",
+					"types": "Number",
+					"description": "Calednar event ID",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendar events management"
+		},
+		{
+			"name": "SetUserParticipationStatus",
+			"id": "SETUSERPARTICIPATIONSTATUS",
+			"description": "Sets the event participation status for the current user",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL of webhook or a Bitrix24 domain, when token used",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--event",
+					"types": "Number",
+					"description": "Calednar event ID",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--status",
+					"types": "String",
+					"description": "Participation status: Y (agreed), N (refused), Q (did not answer)",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token, when app auth method used",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Calendar events management"
+		},
+		{
+			"name": "GetCalendarEventsStructure",
+			"id": "GETCALENDAREVENTSSTRUCTURE",
+			"description": "Returns the structure of the calendar event fields",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Calendar events management"
+		},
+		{
+			"name": "GetCalendarEventsFilterStructure",
+			"id": "GETCALENDAREVENTSFILTERSTRUCTURE",
+			"description": "Gets the filter structure for the function GetCalendarEvents",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Calendar events management"
+		}
+	]
+}

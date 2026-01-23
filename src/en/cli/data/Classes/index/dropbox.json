@@ -1,0 +1,751 @@
+{
+	"module": "dropbox",
+	"library": "dropbox",
+	"depends": {
+		"OPI_Dropbox": "%1/oint/core/Modules/OPI_Dropbox.os"
+	},
+	"methods": [
+		{
+			"name": "GetAuthorizationLink",
+			"id": "GETAUTHORIZATIONLINK",
+			"description": "Generates an authorization link for browser transition",
+			"params": [
+				{
+					"name": "--appkey",
+					"types": "String",
+					"description": "Application key",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Account and authorization"
+		},
+		{
+			"name": "GetToken",
+			"id": "GETTOKEN",
+			"description": "Gets token based on the code from the GetAuthorizationLink page",
+			"params": [
+				{
+					"name": "--appkey",
+					"types": "String",
+					"description": "Application key",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--appsecret",
+					"types": "String",
+					"description": "Application secret",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--code",
+					"types": "String",
+					"description": "Code from the authorization page",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Account and authorization"
+		},
+		{
+			"name": "RefreshToken",
+			"id": "REFRESHTOKEN",
+			"description": "Gets a new token based on the refresh token",
+			"params": [
+				{
+					"name": "--appkey",
+					"types": "String",
+					"description": "Application key",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--appsecret",
+					"types": "String",
+					"description": "Application secret",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--refresh",
+					"types": "String",
+					"description": "Refresh token",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Account and authorization"
+		},
+		{
+			"name": "GetAccountInformation",
+			"id": "GETACCOUNTINFORMATION",
+			"description": "Gets account information",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--account",
+					"types": "String",
+					"description": "Account ID. Current token account if not filled",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Account and authorization"
+		},
+		{
+			"name": "GetSpaceUsageData",
+			"id": "GETSPACEUSAGEDATA",
+			"description": "Gets information on the amount of used disk space",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Account and authorization"
+		},
+		{
+			"name": "GetObjectInformation",
+			"id": "GETOBJECTINFORMATION",
+			"description": "Gets information about a file or directory",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to the object",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--detail",
+					"types": "Boolean",
+					"description": "Add information fields for mediafiles",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "GetListOfFolderFiles",
+			"id": "GETLISTOFFOLDERFILES",
+			"description": "Gets the list of the first files in the directory or continues getting the next ones when the cursor is specified",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to the directory. Optional if the cursor is specified",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--detail",
+					"types": "Boolean",
+					"description": "Add information fields for mediafiles",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--cursor",
+					"types": "String",
+					"description": "Cursor from the previous request to get the next set of files",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "GetPreview",
+			"id": "GETPREVIEW",
+			"description": "Gets PDF or HTML preview of the object (for documents only)",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to the object",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "UploadFile",
+			"id": "UPLOADFILE",
+			"description": "Uploads a file to the cloud drive",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--file",
+					"types": "String, BinaryData",
+					"description": "Data file for upload",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Save path on Dropbox",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--overwrite",
+					"types": "Boolean",
+					"description": "Overwrite file in case of path conflicts",
+					"default": false,
+					"short": "-o"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "UploadFileByURL",
+			"id": "UPLOADFILEBYURL",
+			"description": "Uploads a file to the cloud drive by fetching it from the specified URL",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL source of the file",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Save path on Dropbox",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "GetUploadStatusByURL",
+			"id": "GETUPLOADSTATUSBYURL",
+			"description": "Gets the upload status of the file by URL",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--job",
+					"types": "String",
+					"description": "ID of async jsob from UploadFileByURL response",
+					"default": "",
+					"short": "-j"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "DeleteObject",
+			"id": "DELETEOBJECT",
+			"description": "Deletes an object from the cloud drive",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to the object to delete",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--permanently",
+					"types": "String",
+					"description": "Delete object without the possibility of recovery",
+					"default": false,
+					"short": "-p"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "CopyObject",
+			"id": "COPYOBJECT",
+			"description": "Copies a file or directory to the selected path",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--from",
+					"types": "String",
+					"description": "Path to the original object",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--to",
+					"types": "String",
+					"description": "Target path for the new object",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "MoveObject",
+			"id": "MOVEOBJECT",
+			"description": "Moves an object to the selected path",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--from",
+					"types": "String",
+					"description": "Path to the original object",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--to",
+					"types": "String",
+					"description": "Target path for the new object",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "CreateFolder",
+			"id": "CREATEFOLDER",
+			"description": "Creates an empty directory at the selected path",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Target path for creating the directory",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "DownloadFile",
+			"id": "DOWNLOADFILE",
+			"description": "Downloads a file by the specified path or ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path or ID of the file",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "DownloadFolder",
+			"id": "DOWNLOADFOLDER",
+			"description": "Downloads a zip archive with the contents of the specified directory",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path or ID of the directory",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "GetObjectVersionList",
+			"id": "GETOBJECTVERSIONLIST",
+			"description": "Gets the list of versions (revisions) of the object",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to the object",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--amount",
+					"types": "String, Number",
+					"description": "Number of the latest versions of the object to display",
+					"default": 10,
+					"short": "-a"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "RestoreObjectToVersion",
+			"id": "RESTOREOBJECTTOVERSION",
+			"description": "Restores object state to required version (revision)",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to the object",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--rev",
+					"types": "String",
+					"description": "ID of the version (revision) for restoration",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "GetTagList",
+			"id": "GETTAGLIST",
+			"description": "Gets the list of tags of the selected files",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--paths",
+					"types": "String, Array of String",
+					"description": "Path or set of paths to the files",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Tags management"
+		},
+		{
+			"name": "AddTag",
+			"id": "ADDTAG",
+			"description": "Add new tag to file or folder",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to the object for which the tag needs to be created",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--tag",
+					"types": "String",
+					"description": "Tag text",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Tags management"
+		},
+		{
+			"name": "DeleteTag",
+			"id": "DELETETAG",
+			"description": "Deletes the text tag of a file or directory",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to the object whose tag needs to be deleted",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--tag",
+					"types": "String",
+					"description": "Tag text",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Tags management"
+		},
+		{
+			"name": "PublishFolder",
+			"id": "PUBLISHFOLDER",
+			"description": "Sets the directory to public access mode",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to the target directory",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Shared access settings"
+		},
+		{
+			"name": "CancelFolderPublication",
+			"id": "CANCELFOLDERPUBLICATION",
+			"description": "Cancels the public access mode for the directory",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--folder",
+					"types": "String",
+					"description": "ID of the public catalog (shared folder ID)",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Shared access settings"
+		},
+		{
+			"name": "AddUsersToFile",
+			"id": "ADDUSERSTOFILE",
+			"description": "Defines access to the file for third-party users",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "String",
+					"description": "ID of the file to be accessed",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--emails",
+					"types": "String, Array of String",
+					"description": "List of email addresses of users being added",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--readonly",
+					"types": "Boolean",
+					"description": "Prohibits file editing for the external user",
+					"default": true,
+					"short": "-r"
+				}
+			],
+			"region": "Shared access settings"
+		},
+		{
+			"name": "AddUsersToFolder",
+			"id": "ADDUSERSTOFOLDER",
+			"description": "Grants external users access to the directory",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--folder",
+					"types": "String",
+					"description": "ID of the public catalog (shared folder ID)",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--emails",
+					"types": "String, Array of String",
+					"description": "List of email addresses of users being added",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--readonly",
+					"types": "Boolean",
+					"description": "Prohibits file editing for the external user",
+					"default": true,
+					"short": "-r"
+				}
+			],
+			"region": "Shared access settings"
+		},
+		{
+			"name": "GetAsynchronousChangeStatus",
+			"id": "GETASYNCHRONOUSCHANGESTATUS",
+			"description": "Get async job status for access changes",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--job",
+					"types": "String",
+					"description": "AsynchronousJobID",
+					"default": "",
+					"short": "-j"
+				}
+			],
+			"region": "Shared access settings"
+		},
+		{
+			"name": "CancelFilePublication",
+			"id": "CANCELFILEPUBLICATION",
+			"description": "Prohibits access to the file for external users",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "String",
+					"description": "ID of the file to be accessed",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Shared access settings"
+		},
+		{
+			"name": "PostBinary",
+			"id": "POSTBINARY",
+			"description": "",
+			"params": [],
+			"region": "Private"
+		}
+	]
+}
