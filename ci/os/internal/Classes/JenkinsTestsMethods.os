@@ -57,7 +57,7 @@
 	ПутьJenkinsFull            = ДанныеПроекта.ПолучитьЗначениеНастройки("tests.jenkinsFull");
 	ПутьJenkinsSplit           = ДанныеПроекта.ПолучитьЗначениеНастройки("tests.jenkinsSplit");
 
-	КаталогWorkflowТестов     = КаталогWorkflow + "jenkins_full_tests/";
+	КаталогWorkflowТестов     = КаталогWorkflow + "tests_full/";
 	ШаблонКонфигурацииYaxUnit = КаталогКонфигурацииYaxUnit + "template.txt";
 	ШаблонКонфигурацииYaxUnit = Новый ДвоичныеДанные(ШаблонКонфигурацииYaxUnit);
 	ШаблонКонфигурацииYaxUnit = ПолучитьСтрокуИзДвоичныхДанных(ШаблонКонфигурацииYaxUnit);
@@ -134,7 +134,7 @@
 			ПутьJenkinsБиблиотеки  = ПутьJenkinsSplit + "/job/" + ИмяБиблиотеки;
 
 			СоздатьПапкуJenkins(ПутьJenkinsSplit, ИмяБиблиотеки, ИмяБиблиотеки);
-			СформироватьWorflow(СтрШаблон("%1%2/%3/", КаталогWorkflow, "jenkins_split_tests", ИмяБиблиотеки)
+			СформироватьWorflow(СтрШаблон("%1%2/%3/", КаталогWorkflow, "tests_split", ИмяБиблиотеки)
 				, Язык
 				, ТекущийСписок
 				, ПутьJenkinsБиблиотеки);
@@ -171,13 +171,13 @@
 		СоздатьКаталог(КаталогWorkflow);
 	КонецЕсли;
 	
-	ФайлJenkinsOS    = КаталогWorkflow + "os_test_" + Язык;
-	ФайлJenkinsOSRPM = КаталогWorkflow + "os_rpm_test_" + Язык;
-	ФайлJenkinsOSDEB = КаталогWorkflow + "os_deb_test_" + Язык;
-	ФайлWindowsCLI   = КаталогWorkflow + "cli_test_" + Язык;
-	ФайлRpmCLI       = КаталогWorkflow + "cli_rpm_test_" + Язык;
-	ФайлDebCLI       = КаталогWorkflow + "cli_deb_test_" + Язык;
-	ФайлWindows1c    = КаталогWorkflow + "1c_test_" + Язык;
+	ФайлJenkinsOS    = СтрШаблон("%1/os_test_%2.jenkinsfile", КаталогWorkflow, Язык);
+	ФайлJenkinsOSRPM = СтрШаблон("%1/os_rpm_test_%2.jenkinsfile", КаталогWorkflow, Язык);
+	ФайлJenkinsOSDEB = СтрШаблон("%1/os_deb_test_%2.jenkinsfile", КаталогWorkflow, Язык);
+	ФайлWindowsCLI   = СтрШаблон("%1/cli_test_%2.jenkinsfile", КаталогWorkflow, Язык);
+	ФайлRpmCLI       = СтрШаблон("%1/cli_rpm_test_%2.jenkinsfile", КаталогWorkflow, Язык);
+	ФайлDebCLI       = СтрШаблон("%1/cli_deb_test_%2.jenkinsfile", КаталогWorkflow, Язык);
+	ФайлWindows1c    = СтрШаблон("%1/1c_test_%2.jenkinsfile", КаталогWorkflow, Язык);
 
 	ТекстВыполненияOS  = ПолучитьТекстВыполненияOs(ТаблицаТестов, СписокБиблиотек, МодульТестов, Язык);
 	ТекстВыполненияCLI = ПолучитьТекстВыполненияOs(ТаблицаТестов, СписокБиблиотек, МодульТестовCLI, Язык);

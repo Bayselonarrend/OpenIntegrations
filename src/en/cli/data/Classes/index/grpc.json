@@ -1,31 +1,34 @@
 {
-	"module": "grpc",
+	"module": "OPI_GRPC",
 	"library": "grpc",
-	"depends": {
-		"OPI_GRPC": "%1/oint/core/Modules/OPI_GRPC.os"
-	},
+	"self_depend": true,
+	"regions": [
+		{
+			"name": "Common methods",
+			"methods": [
+				"ExecuteMethod",
+				"GetConnectionParameters",
+				"GetTlsSettings"
+			]
+		},
+		{
+			"name": "Introspection",
+			"methods": [
+				"GetServiceList",
+				"GetMethodList",
+				"GetMethod"
+			]
+		},
+		{
+			"name": "Streaming",
+			"methods": [
+				"ProcessServerStream",
+				"ProcessClientStream",
+				"ProcessBidirectionalStream"
+			]
+		}
+	],
 	"methods": [
-		{
-			"name": "CreateConnection",
-			"id": "CREATECONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
-		{
-			"name": "CloseConnection",
-			"id": "CLOSECONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
-		{
-			"name": "SetMetadata",
-			"id": "SETMETADATA",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
 		{
 			"name": "ExecuteMethod",
 			"id": "EXECUTEMETHOD",
@@ -71,16 +74,9 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
-			"region": "Common methods"
-		},
-		{
-			"name": "IsConnector",
-			"id": "ISCONNECTOR",
-			"description": "",
-			"params": [],
 			"region": "Common methods"
 		},
 		{
@@ -222,55 +218,6 @@
 			"region": "Introspection"
 		},
 		{
-			"name": "InitializeServerStream",
-			"id": "INITIALIZESERVERSTREAM",
-			"description": "",
-			"params": [],
-			"region": "Streaming"
-		},
-		{
-			"name": "InitializeClientStream",
-			"id": "INITIALIZECLIENTSTREAM",
-			"description": "",
-			"params": [],
-			"region": "Streaming"
-		},
-		{
-			"name": "InitializeBidirectionalStream",
-			"id": "INITIALIZEBIDIRECTIONALSTREAM",
-			"description": "",
-			"params": [],
-			"region": "Streaming"
-		},
-		{
-			"name": "SendMessage",
-			"id": "SENDMESSAGE",
-			"description": "",
-			"params": [],
-			"region": "Streaming"
-		},
-		{
-			"name": "GetMessage",
-			"id": "GETMESSAGE",
-			"description": "",
-			"params": [],
-			"region": "Streaming"
-		},
-		{
-			"name": "CompleteSend",
-			"id": "COMPLETESEND",
-			"description": "",
-			"params": [],
-			"region": "Streaming"
-		},
-		{
-			"name": "CloseStream",
-			"id": "CLOSESTREAM",
-			"description": "",
-			"params": [],
-			"region": "Streaming"
-		},
-		{
 			"name": "ProcessServerStream",
 			"id": "PROCESSSERVERSTREAM",
 			"description": "Initializes the server stream and returns an array of received messages",
@@ -315,14 +262,14 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--count",
 					"types": "Number",
 					"description": "Maximum messages to retrieve. Unlimited by default",
 					"default": "Пустое значение",
-					"short": "-c"
+					"short": "-n"
 				}
 			],
 			"region": "Streaming"
@@ -372,7 +319,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Streaming"
@@ -422,14 +369,14 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--cnt",
 					"types": "Boolean",
 					"description": "Continue receiving after processing the exchange order",
 					"default": true,
-					"short": "-c"
+					"short": "-n"
 				}
 			],
 			"region": "Streaming"

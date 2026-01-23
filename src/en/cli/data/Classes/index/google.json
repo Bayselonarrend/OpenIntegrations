@@ -1,9 +1,18 @@
 {
-	"module": "google",
+	"module": "OPI_GoogleWorkspace",
 	"library": "google",
-	"depends": {
-		"OPI_GoogleWorkspace": "%1/oint/core/Modules/OPI_GoogleWorkspace.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Public",
+			"methods": [
+				"FormCodeRetrievalLink",
+				"GetTokenByCode",
+				"RefreshToken",
+				"GetServiceAccountToken"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "FormCodeRetrievalLink",
@@ -127,13 +136,6 @@
 				}
 			],
 			"region": "Public"
-		},
-		{
-			"name": "GetAuthorizationHeader",
-			"id": "GETAUTHORIZATIONHEADER",
-			"description": "",
-			"params": [],
-			"region": "Internal"
 		}
 	]
 }

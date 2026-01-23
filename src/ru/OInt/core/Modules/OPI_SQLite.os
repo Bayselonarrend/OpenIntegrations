@@ -570,7 +570,7 @@ Function ClearTable(Val Table, Val Connection = "") Export
 	Return ОчиститьТаблицу(Table, Connection);
 EndFunction
 
-Function GetRecordsFilterStrucutre(Val Clear = False) Export
+Function GetRecordsFilterStructure(Val Clear = False) Export
 	Return ПолучитьСтруктуруФильтраЗаписей(Clear);
 EndFunction
 

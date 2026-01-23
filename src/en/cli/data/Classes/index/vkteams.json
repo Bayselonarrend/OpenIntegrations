@@ -1,10 +1,53 @@
 {
-	"module": "vkteams",
+	"module": "OPI_VKTeams",
 	"library": "vkteams",
-	"depends": {
-		"OPI_VK": "%1/oint/core/Modules/OPI_VK.os",
-		"OPI_VKTeams": "%1/oint/core/Modules/OPI_VKTeams.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Common methods",
+			"methods": [
+				"CheckToken",
+				"GetEvents",
+				"GetFileInformation"
+			]
+		},
+		{
+			"name": "Message sending",
+			"methods": [
+				"SendTextMessage",
+				"SendFile",
+				"SendVoice",
+				"EditMessageText",
+				"DeleteMessage",
+				"ResendFile",
+				"ResendVoice",
+				"ForwardMessage",
+				"PinMessage",
+				"UnpinMessage",
+				"AnswerButtonEvent",
+				"MakeActionButton"
+			]
+		},
+		{
+			"name": "Chat management",
+			"methods": [
+				"RemoveChatMembers",
+				"ChangeChatPicture",
+				"GetChatInfo",
+				"GetChatAdmins",
+				"GetChatMembers",
+				"GetChatBlockedUsers",
+				"GetChatJoinRequests",
+				"BlockChatUser",
+				"UnblockChatUser",
+				"ApprovePending",
+				"DisapprovePending",
+				"SetChatTitle",
+				"SetChatDescription",
+				"SetChatRules"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "CheckToken",
@@ -45,7 +88,7 @@
 					"types": "String, Number",
 					"description": "Connection hold time for Long Polling",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-m"
 				}
 			],
 			"region": "Common methods"
@@ -96,7 +139,7 @@
 					"types": "String",
 					"description": "Message text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--reply",
@@ -153,14 +196,14 @@
 					"types": "String",
 					"description": "File caption",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--filename",
 					"types": "String",
 					"description": "Displayed file name",
 					"default": "Пустое значение",
-					"short": "-f"
+					"short": "-l"
 				},
 				{
 					"name": "--parsemod",
@@ -174,7 +217,7 @@
 					"types": "String",
 					"description": "Content type for sending",
 					"default": "image/jpeg",
-					"short": "-t"
+					"short": "-y"
 				}
 			],
 			"region": "Message sending"
@@ -210,7 +253,7 @@
 					"types": "String",
 					"description": "Audio type: aac, ogg or m4a",
 					"default": "m4a",
-					"short": "-t"
+					"short": "-p"
 				},
 				{
 					"name": "--reply",
@@ -260,7 +303,7 @@
 					"types": "String",
 					"description": "New message text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--parsemod",
@@ -332,7 +375,7 @@
 					"types": "String",
 					"description": "File caption",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--parsemod",
@@ -411,7 +454,7 @@
 					"types": "String",
 					"description": "Additional message text",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-x"
 				}
 			],
 			"region": "Message sending"
@@ -498,7 +541,7 @@
 					"types": "String",
 					"description": "Answer text",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--url",
@@ -679,7 +722,7 @@
 					"types": "String",
 					"description": "Next page marker from the previous request",
 					"default": "Пустое значение",
-					"short": "-c"
+					"short": "-r"
 				}
 			],
 			"region": "Chat management"
@@ -875,7 +918,7 @@
 					"types": "String",
 					"description": "Title text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				}
 			],
 			"region": "Chat management"
@@ -904,7 +947,7 @@
 					"types": "String",
 					"description": "Description text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				}
 			],
 			"region": "Chat management"
@@ -933,7 +976,7 @@
 					"types": "String",
 					"description": "Rules Text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				}
 			],
 			"region": "Chat management"

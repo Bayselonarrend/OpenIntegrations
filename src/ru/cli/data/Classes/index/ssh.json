@@ -1,17 +1,9 @@
 {
-	"module": "ssh",
+	"module": "OPI_SSH",
 	"library": "ssh",
-	"depends": {
-		"OPI_SSH": "%1/oint/core/Modules/OPI_SSH.os"
-	},
+	"self_depend": false,
+	"regions": [],
 	"methods": [
-		{
-			"name": "ОткрытьСоединение",
-			"id": "ОТКРЫТЬСОЕДИНЕНИЕ",
-			"description": "",
-			"params": [],
-			"region": "Основные методы"
-		},
 		{
 			"name": "ПолучитьКонфигурациюСоединения",
 			"id": "ПОЛУЧИТЬКОНФИГУРАЦИЮСОЕДИНЕНИЯ",
@@ -51,23 +43,9 @@
 					"types": "Строка",
 					"description": "Текст команды",
 					"default": "",
-					"short": "-c"
+					"short": "-m"
 				}
 			],
-			"region": "Основные методы"
-		},
-		{
-			"name": "ЗакрытьСоединение",
-			"id": "ЗАКРЫТЬСОЕДИНЕНИЕ",
-			"description": "",
-			"params": [],
-			"region": "Основные методы"
-		},
-		{
-			"name": "ЭтоКоннектор",
-			"id": "ЭТОКОННЕКТОР",
-			"description": "",
-			"params": [],
 			"region": "Основные методы"
 		},
 		{
@@ -101,7 +79,7 @@
 					"types": "Строка",
 					"description": "Пароль пользователя SSH",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-s"
 				}
 			],
 			"region": "Основные методы"
@@ -144,14 +122,14 @@
 					"types": "Строка",
 					"description": "Путь к файлу публичного ключ",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-b"
 				},
 				{
 					"name": "--pass",
 					"types": "Строка",
 					"description": "Пароль (passphrase) приватного ключа",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-s"
 				}
 			],
 			"region": "Основные методы"
@@ -223,7 +201,7 @@
 					"types": "Строка, Неопределено",
 					"description": "Пароль для авторизации, если необходимо",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-s"
 				}
 			],
 			"region": "Основные методы"

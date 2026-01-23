@@ -1,17 +1,44 @@
 {
-	"module": "ftp",
+	"module": "OPI_FTP",
 	"library": "ftp",
-	"depends": {
-		"OPI_FTP": "%1/oint/core/Modules/OPI_FTP.os"
-	},
-	"methods": [
+	"self_depend": true,
+	"regions": [
 		{
-			"name": "CreateConnection",
-			"id": "CREATECONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
+			"name": "Common methods",
+			"methods": [
+				"GetConnectionConfiguration",
+				"GetWelcomeMessage",
+				"GetProtocolFeatureList",
+				"Ping",
+				"ExecuteCustomCommand",
+				"ExecuteArbitraryCommand",
+				"GetObjectSize",
+				"UpdatePath",
+				"GetConnectionSettings",
+				"GetProxySettings",
+				"GetTlsSettings"
+			]
 		},
+		{
+			"name": "Directory management",
+			"methods": [
+				"ListObjects",
+				"CreateNewDirectory",
+				"DeleteDirectory",
+				"ClearDirectory",
+				"GetCurrentDirectory"
+			]
+		},
+		{
+			"name": "File management",
+			"methods": [
+				"UploadFile",
+				"DeleteFile",
+				"SaveFile"
+			]
+		}
+	],
+	"methods": [
 		{
 			"name": "GetConnectionConfiguration",
 			"id": "GETCONNECTIONCONFIGURATION",
@@ -39,13 +66,6 @@
 					"short": "-t"
 				}
 			],
-			"region": "Common methods"
-		},
-		{
-			"name": "CloseConnection",
-			"id": "CLOSECONNECTION",
-			"description": "",
-			"params": [],
 			"region": "Common methods"
 		},
 		{
@@ -110,7 +130,7 @@
 					"types": "String",
 					"description": "Text of the executed command",
 					"default": "",
-					"short": "-c"
+					"short": "-m"
 				}
 			],
 			"region": "Common methods"
@@ -132,7 +152,7 @@
 					"types": "String",
 					"description": "Text of the executed command",
 					"default": "",
-					"short": "-c"
+					"short": "-m"
 				}
 			],
 			"region": "Common methods"
@@ -189,13 +209,6 @@
 			"region": "Common methods"
 		},
 		{
-			"name": "IsConnector",
-			"id": "ISCONNECTOR",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
-		{
 			"name": "GetConnectionSettings",
 			"id": "GETCONNECTIONSETTINGS",
 			"description": "Creates a structure of FTP connection settings",
@@ -226,14 +239,14 @@
 					"types": "String, Undefined",
 					"description": "User password for authorization, if required",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-s"
 				},
 				{
 					"name": "--passive",
 					"types": "Boolean",
 					"description": "Passive connection mode",
 					"default": true,
-					"short": "-p"
+					"short": "-v"
 				},
 				{
 					"name": "--rtout",
@@ -297,7 +310,7 @@
 					"types": "String, Undefined",
 					"description": "Authorization password, if required",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-s"
 				}
 			],
 			"region": "Common methods"
@@ -435,13 +448,6 @@
 			"region": "Directory management"
 		},
 		{
-			"name": "ChangeCurrentDirectory",
-			"id": "CHANGECURRENTDIRECTORY",
-			"description": "",
-			"params": [],
-			"region": "Directory management"
-		},
-		{
 			"name": "UploadFile",
 			"id": "UPLOADFILE",
 			"description": "Uploads a file from disk or binary data to the FTP server",
@@ -519,13 +525,6 @@
 					"short": "-f"
 				}
 			],
-			"region": "File management"
-		},
-		{
-			"name": "GetFileData",
-			"id": "GETFILEDATA",
-			"description": "",
-			"params": [],
 			"region": "File management"
 		}
 	]

@@ -1,9 +1,116 @@
 {
-	"module": "vk",
+	"module": "OPI_VK",
 	"library": "vk",
-	"depends": {
-		"OPI_VK": "%1/oint/core/Modules/OPI_VK.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Authorization",
+			"methods": [
+				"CreateTokenRetrievalLink",
+				"GetAuthParameters"
+			]
+		},
+		{
+			"name": "Community management",
+			"methods": [
+				"CreatePost",
+				"CreateCompositePost",
+				"DeletePost",
+				"CreatePoll",
+				"CreateAlbum",
+				"DeleteAlbum",
+				"CreateStory",
+				"SaveImageToAlbum",
+				"DeleteImage",
+				"UploadVideoToServer",
+				"UploadPhotoToServer"
+			]
+		},
+		{
+			"name": "Discussion management",
+			"methods": [
+				"CreateDiscussion",
+				"CloseDiscussion",
+				"OpenDiscussion",
+				"WriteInDiscussion"
+			]
+		},
+		{
+			"name": "Interactive actions",
+			"methods": [
+				"LikePost",
+				"MakeRepost",
+				"WriteMessage",
+				"WriteComment",
+				"ShortenLink"
+			]
+		},
+		{
+			"name": "Statistics",
+			"methods": [
+				"GetStatistics",
+				"GetPostStatistics"
+			]
+		},
+		{
+			"name": "Ad account management",
+			"methods": [
+				"CreateAdvertisingCampaign",
+				"CreateAd",
+				"PauseAdvertising",
+				"GetAdvertisingCategoryList"
+			]
+		},
+		{
+			"name": "Product management",
+			"methods": [
+				"GetProductCategoryList",
+				"GetProductList",
+				"GetProductsByID",
+				"AddProduct",
+				"EditProduct",
+				"DeleteProduct",
+				"GroupProducts",
+				"GetProductDescription"
+			]
+		},
+		{
+			"name": "Product selection management",
+			"methods": [
+				"GetSelectionList",
+				"GetSelectionsByID",
+				"CreateProductCollection",
+				"EditProductCollection",
+				"AddProductToCollection",
+				"RemoveProductFromSelection",
+				"DeleteSelection"
+			]
+		},
+		{
+			"name": "Product properties management",
+			"methods": [
+				"GetPropertyList",
+				"CreateProductProperty",
+				"EditProductProperty",
+				"DeleteProductProperty",
+				"AddProductPropertyVariant",
+				"EditProductPropertyVariant",
+				"DeleteProductPropertyVariant"
+			]
+		},
+		{
+			"name": "Order management",
+			"methods": [
+				"GetOrderList"
+			]
+		},
+		{
+			"name": "Others",
+			"methods": [
+				"FormKeyboard"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "CreateTokenRetrievalLink",
@@ -87,7 +194,7 @@
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
 					"default": "Пустое значение",
-					"short": "-a"
+					"short": "-h"
 				}
 			],
 			"region": "Community management"
@@ -130,7 +237,7 @@
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
 					"default": "Пустое значение",
-					"short": "-a"
+					"short": "-h"
 				}
 			],
 			"region": "Community management"
@@ -246,7 +353,7 @@
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
 					"default": "Пустое значение",
-					"short": "-a"
+					"short": "-t"
 				}
 			],
 			"region": "Community management"
@@ -311,7 +418,7 @@
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
 					"default": "Пустое значение",
-					"short": "-a"
+					"short": "-t"
 				}
 			],
 			"region": "Community management"
@@ -376,7 +483,7 @@
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
 					"default": "Пустое значение",
-					"short": "-a"
+					"short": "-h"
 				}
 			],
 			"region": "Community management"
@@ -427,7 +534,7 @@
 					"types": "String",
 					"description": "Text of the first message",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--auth",
@@ -507,7 +614,7 @@
 					"types": "String",
 					"description": "Message text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--auth",
@@ -586,7 +693,7 @@
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
 					"default": "Пустое значение",
-					"short": "-a"
+					"short": "-h"
 				}
 			],
 			"region": "Interactive actions"
@@ -709,7 +816,7 @@
 					"types": "Date",
 					"description": "End date of the period",
 					"default": "",
-					"short": "-d"
+					"short": "-t"
 				},
 				{
 					"name": "--auth",
@@ -796,7 +903,7 @@
 					"types": "String, Number",
 					"description": "Advertising category number",
 					"default": "",
-					"short": "-c"
+					"short": "-t"
 				},
 				{
 					"name": "--post",
@@ -810,7 +917,7 @@
 					"types": "String, Number",
 					"description": "Advertising account ID",
 					"default": "",
-					"short": "-c"
+					"short": "-b"
 				},
 				{
 					"name": "--auth",
@@ -846,7 +953,7 @@
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
 					"default": "Пустое значение",
-					"short": "-a"
+					"short": "-t"
 				}
 			],
 			"region": "Ad account management"

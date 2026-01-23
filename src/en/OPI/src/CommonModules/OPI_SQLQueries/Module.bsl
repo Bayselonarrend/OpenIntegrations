@@ -148,7 +148,7 @@ Function EnsureTable(Val Module
 
     Result_ = "result";
 
-    ResultStrucutre = New Structure(Result_, True);
+    ResultStructure = New Structure(Result_, True);
 
     Connection  = CreateConnection(Module, Connection, Tls);
     ProblemStep = ProcessRecordsStart(Module, True, Connection);
@@ -168,7 +168,7 @@ Function EnsureTable(Val Module
         TableColumns = TableDescription["data"];
 
         If Not ValueIsFilled(TableColumns) Then
-            ResultStrucutre = CreateTable(Module, Table, ColoumnsStruct, Connection, Tls);
+            ResultStructure = CreateTable(Module, Table, ColoumnsStruct, Connection, Tls);
         Else
 
             Error = NormalizeTable(Module, Table, ColoumnsStruct, TableColumns, Connection, Tls);
@@ -180,19 +180,19 @@ Function EnsureTable(Val Module
         EndIf;
 
         Completion = Module.ExecuteSQLQuery("COMMIT;", , , Connection);
-        ResultStrucutre.Insert("commit", Completion);
+        ResultStructure.Insert("commit", Completion);
 
     Except
 
         Rollback = Module.ExecuteSQLQuery("ROLLBACK;", , , Connection);
 
-        ResultStrucutre.Insert(Result_   , False);
-        ResultStrucutre.Insert("error"   , ErrorDescription());
-        ResultStrucutre.Insert("rollback", Rollback);
+        ResultStructure.Insert(Result_   , False);
+        ResultStructure.Insert("error"   , ErrorDescription());
+        ResultStructure.Insert("rollback", Rollback);
 
     EndTry;
 
-    Return ResultStrucutre;
+    Return ResultStructure;
 
 EndFunction
 
@@ -214,9 +214,9 @@ Function AddRecords(Val Module
     EndIf;
 
     ProcessedStructure = ProcessRecords(Module, Table, DataArray, Transaction, Connection);
-    ResultStrucutre    = ProcessRecordsEnd(ProcessedStructure, Module, Transaction, Connection);
+    ResultStructure    = ProcessRecordsEnd(ProcessedStructure, Module, Transaction, Connection);
 
-    Return ResultStrucutre;
+    Return ResultStructure;
 
 EndFunction
 
@@ -334,7 +334,7 @@ Function GetTableStructure(Val Module, Val Table, Val Connection = "", Val Tls =
 
 EndFunction
 
-Function GetRecordsFilterStrucutre(Val Clear = False) Export
+Function GetRecordsFilterStructure(Val Clear = False) Export
 
     FilterStructure = New Structure;
 
@@ -1198,7 +1198,7 @@ EndFunction
 
 Function ProcessRecordsEnd(Val ProcessedStructure, Val Module, Val Transaction, Val Connection)
 
-    ResultStrucutre = New Structure;
+    ResultStructure = New Structure;
 
     ErrorsArray  = ProcessedStructure["ErrorsArray"];
     SuccessCount = ProcessedStructure["SuccessCount"];
@@ -1210,22 +1210,22 @@ Function ProcessRecordsEnd(Val ProcessedStructure, Val Module, Val Transaction, 
             Rollback = Module.ExecuteSQLQuery("ROLLBACK;", , , Connection);
 
             SuccessCount = 0;
-            ResultStrucutre.Insert("rollback", Rollback);
+            ResultStructure.Insert("rollback", Rollback);
 
         Else
 
             Completion = Module.ExecuteSQLQuery("COMMIT;", , , Connection);
-            ResultStrucutre.Insert("commit", Completion);
+            ResultStructure.Insert("commit", Completion);
 
         EndIf;
 
     EndIf;
 
-    ResultStrucutre.Insert("result", ErrorsArray.Count() = 0);
-    ResultStrucutre.Insert("rows"  , SuccessCount);
-    ResultStrucutre.Insert("errors", ErrorsArray);
+    ResultStructure.Insert("result", ErrorsArray.Count() = 0);
+    ResultStructure.Insert("rows"  , SuccessCount);
+    ResultStructure.Insert("errors", ErrorsArray);
 
-    Return ResultStrucutre;
+    Return ResultStructure;
 
 EndFunction
 

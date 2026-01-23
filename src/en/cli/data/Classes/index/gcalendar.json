@@ -1,10 +1,50 @@
 {
-	"module": "gcalendar",
+	"module": "OPI_GoogleCalendar",
 	"library": "gcalendar",
-	"depends": {
-		"OPI_GoogleCalendar": "%1/oint/core/Modules/OPI_GoogleCalendar.os",
-		"OPI_GoogleWorkspace": "%1/oint/core/Modules/OPI_GoogleWorkspace.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Authorization",
+			"methods": [
+				"FormCodeRetrievalLink",
+				"GetTokenByCode",
+				"RefreshToken",
+				"GetServiceAccountToken"
+			]
+		},
+		{
+			"name": "Calendar metadata management",
+			"methods": [
+				"CreateCalendar",
+				"GetCalendarMetadata",
+				"EditCalendarMetadata",
+				"ClearMainCalendar",
+				"DeleteCalendar"
+			]
+		},
+		{
+			"name": "Calendar list management",
+			"methods": [
+				"GetCalendarList",
+				"AddCalendarToList",
+				"GetListCalendar",
+				"DeleteCalendarFromList",
+				"EditListCalendar"
+			]
+		},
+		{
+			"name": "Event management",
+			"methods": [
+				"GetEventDescription",
+				"GetEventList",
+				"GetEvent",
+				"CreateEvent",
+				"MoveEvent",
+				"EditEvent",
+				"DeleteEvent"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "FormCodeRetrievalLink",
@@ -146,7 +186,7 @@
 					"types": "String",
 					"description": "Name of the created calendar",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Calendar metadata management"
@@ -197,7 +237,7 @@
 					"types": "String",
 					"description": "New name",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--description",
@@ -489,7 +529,7 @@
 					"types": "String",
 					"description": "ID of the target calendar",
 					"default": "",
-					"short": "-t"
+					"short": "-o"
 				},
 				{
 					"name": "--event",

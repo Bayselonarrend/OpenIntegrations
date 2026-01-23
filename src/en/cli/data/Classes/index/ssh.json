@@ -1,17 +1,9 @@
 {
-	"module": "ssh",
+	"module": "OPI_SSH",
 	"library": "ssh",
-	"depends": {
-		"OPI_SSH": "%1/oint/core/Modules/OPI_SSH.os"
-	},
+	"self_depend": true,
+	"regions": [],
 	"methods": [
-		{
-			"name": "CreateConnection",
-			"id": "CREATECONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
 		{
 			"name": "GetConnectionConfiguration",
 			"id": "GETCONNECTIONCONFIGURATION",
@@ -51,23 +43,9 @@
 					"types": "String",
 					"description": "Command text",
 					"default": "",
-					"short": "-c"
+					"short": "-m"
 				}
 			],
-			"region": "Common methods"
-		},
-		{
-			"name": "CloseConnection",
-			"id": "CLOSECONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
-		{
-			"name": "IsConnector",
-			"id": "ISCONNECTOR",
-			"description": "",
-			"params": [],
 			"region": "Common methods"
 		},
 		{
@@ -101,7 +79,7 @@
 					"types": "String",
 					"description": "SSH user password",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-s"
 				}
 			],
 			"region": "Common methods"
@@ -144,14 +122,14 @@
 					"types": "String",
 					"description": "Path to public key file",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-b"
 				},
 				{
 					"name": "--pass",
 					"types": "String",
 					"description": "Private key password (passphrase)",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-s"
 				}
 			],
 			"region": "Common methods"
@@ -223,7 +201,7 @@
 					"types": "String, Undefined",
 					"description": "Authorization password, if required",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-s"
 				}
 			],
 			"region": "Common methods"

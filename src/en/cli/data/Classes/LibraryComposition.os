@@ -38,11 +38,11 @@ Function GetIndexData(Val Command) Export
     If IndexInformation = Undefined Then
         
         Try
-
-            IndexPath = CombinePath(CurrentDirectory, "index", Command + ".json");
-            ModuleData = ReadJSONFile(IndexPath);        
             
-            IndexCache.Insert(Command, ModuleData);
+            IndexPath = CombinePath(CurrentDirectory, "index", Command + ".json");
+            IndexInformation = ReadJSONFile(IndexPath);        
+            
+            IndexCache.Insert(Command, IndexInformation);
             
         Except
             Raise StrTemplate("Invalid command name: %1", Command)
@@ -50,8 +50,25 @@ Function GetIndexData(Val Command) Export
         
     EndIf;
     
-    Return ModuleData;
+    Return IndexInformation;
     
+EndFunction
+
+Function GetMethodData(Val Command, Val Method) Export
+    
+    MethodInfo = Undefined;
+    CurrentIndex = GetIndexData(Command);
+    SearchMethod = Upper(Method);
+    
+    For Each IndexMethod In CurrentIndex["methods"] Do
+        If IndexMethod["id"] = SearchMethod Then
+            MethodInfo = IndexMethod;
+            Break;
+        EndIf;
+    EndDo;
+    
+    Return MethodInfo;
+
 EndFunction
 
 Function GetFullComposition() Export
@@ -64,34 +81,28 @@ Function GetFullComposition() Export
     
 EndFunction
 
-Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Export
+Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val Dynamically = True) Export
     
     If PackagesDirectory = Undefined Then
         DefinePackagesDirectory();
     EndIf;
     
     Module = ModuleCommandMapping.Get(Command);
-    IndexObject = GetIndexData(Command);
-    MethodParameters = Undefined;
     
     If Not ValueIsFilled(Module) Then
         Return New Structure("Error,Result", True, "Command");
     EndIf;
     
-    For Each Method In IndexObject["methods"] Do
-        If Method["id"] = Upper(Method) Then
-            MethodParameters = Method["params"];
-            Break;
-        EndIf;
-    EndDo;
-
-    If MethodParameters = Undefined Then
+    CommandData = GetIndexData(Command);
+    MethodData = GetMethodData(Command, Method);
+    
+    If MethodData = Undefined Then
         Return New Structure("Error,Result", True, "Method");
     EndIf;
     
+    MethodParameters = MethodData["params"];
     ExecutionText = "";
-    CallString = Module + "." + Method + "(";
-    Counter = 0;
+    CallString = StrTemplate("%1.%2(", Module, Method);
     
     For Each RequiredParameter In MethodParameters Do
         
@@ -100,8 +111,8 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Exp
         
         ParameterValue = PassedParameters.Get(ParameterName);
         ParameterValue = ?(ParameterValue = Undefined
-            , PassedParameters.Get(ParameterNameTrim)
-            , ParameterValue);
+        , PassedParameters.Get(ParameterNameTrim)
+        , ParameterValue);
         
         If ValueIsFilled(ParameterValue) Then
             
@@ -121,7 +132,6 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Exp
             EndIf;
             
             CallString = CallString + ParameterName + ", ";
-            Counter = Counter + 1;
             
         Else
             CallString = CallString + " , ";
@@ -134,6 +144,25 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method) Exp
     CallString = CallString + ");";
     CallString = "Response = " + CallString;
     ExecutionText = ExecutionText + Chars.LF + CallString;
+
+    If Dynamically Then
+
+        InitializationTemplate = "Context = New Structure;
+        |Context.Insert(""%1"", Undefined);
+        |%1 = LoadScript(""%2/oint/core/Modules/%1.os"", Context);";
+
+        If CommandData["self_depend"] Then
+
+            InitializationTemplate = InitializationTemplate + "
+            |Context.Insert(""%1"", %1);
+            |%1 = LoadScript(""%2/oint/core/Modules/%1.os"", Context);
+            |";
+
+        EndIf;
+
+        ExecutionText = StrTemplate(InitializationTemplate, Module, PackagesDirectory) + ExecutionText;
+
+    EndIf;
     
     ReturnStructure = New Structure("Error,Result", False, ExecutionText);
     
@@ -191,9 +220,9 @@ Function ReadJSONFile(Val Path)
     JSONReader.OpenFile(Path);
     Data = ReadJSON(JSONReader, True);
     JSONReader.Close();
-
+    
     Return Data;
-
+    
 EndFunction
 #Region Alternate
 
@@ -213,12 +242,16 @@ Function ПолучитьИнформациюИндекса(Val Команда) 
 	Return GetIndexData(Команда);
 EndFunction
 
+Function ПолучитьИнформациюОМетоде(Val Команда, Val Метод) Export
+	Return GetMethodData(Команда, Метод);
+EndFunction
+
 Function ПолучитьПолныйСостав() Export
 	Return GetFullComposition();
 EndFunction
 
-Function СформироватьСтрокуВызоваМетода(Val ПереданныеПараметры, Val Команда, Val Метод) Export
-	Return FormMethodCallString(ПереданныеПараметры, Команда, Метод);
+Function СформироватьСтрокуВызоваМетода(Val ПереданныеПараметры, Val Команда, Val Метод, Val Динамически = True) Export
+	Return FormMethodCallString(ПереданныеПараметры, Команда, Метод, Динамически);
 EndFunction
 
 Procedure ДополнитьКэшСостава(Val Библиотека, Val ТаблицаПараметров, Команда = "") Export

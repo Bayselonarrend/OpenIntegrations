@@ -2315,7 +2315,7 @@ Procedure SQLL_ORM() Export
     SQLite_EnsureTable(TestParameters);
     SQLite_ClearTable(TestParameters);
     SQLite_DeleteTable(TestParameters);
-    SQLite_GetRecordsFilterStrucutre(TestParameters);
+    SQLite_GetRecordsFilterStructure(TestParameters);
 
     OPI_TestDataRetrieval.WriteParameter("SQLite_DB", Base);
     OPI_Tools.AddField("SQLite_DB", Base, "String", TestParameters);
@@ -2331,7 +2331,7 @@ Procedure SQLL_ORM() Export
     SQLite_EnsureTable(TestParameters);
     SQLite_ClearTable(TestParameters);
     SQLite_DeleteTable(TestParameters);
-    SQLite_GetRecordsFilterStrucutre(TestParameters);
+    SQLite_GetRecordsFilterStructure(TestParameters);
 
     OPI_Tools.RemoveFileWithTry(Base, "Database file deletion error");
 
@@ -2378,7 +2378,7 @@ Procedure Postgres_ORM() Export
         PostgreSQL_DeleteTable(TestParameters);
         PostgreSQL_DisableAllDatabaseConnections(TestParameters);
         PostgreSQL_DeleteDatabase(TestParameters);
-        PostgreSQL_GetRecordsFilterStrucutre(TestParameters);
+        PostgreSQL_GetRecordsFilterStructure(TestParameters);
 
     EndDo;
 
@@ -2424,7 +2424,7 @@ Procedure MYS_ORM() Export
         MySQL_EnsureTable(TestParameters);
         MySQL_DeleteTable(TestParameters);
         MySQL_DeleteDatabase(TestParameters);
-        MySQL_GetRecordsFilterStrucutre(TestParameters);
+        MySQL_GetRecordsFilterStructure(TestParameters);
 
     EndDo;
 
@@ -2852,7 +2852,7 @@ Procedure MSS_ORM() Export
     MSSQL_EnsureTable(TestParameters);
     MSSQL_DeleteTable(TestParameters);
     MSSQL_DeleteDatabase(TestParameters);
-    MSSQL_GetRecordsFilterStrucutre(TestParameters);
+    MSSQL_GetRecordsFilterStructure(TestParameters);
 
 EndProcedure
 
@@ -15437,16 +15437,16 @@ Procedure SQLite_AddRecords(FunctionParameters)
     RowStructure2.Insert("created_at", OPI_Tools.GetCurrentDate()); // DATETIME
     RowStructure2.Insert("data"      , New Structure("blob", Image)); // BLOB
 
-    RowStrucutre1 = New Structure;
-    RowStrucutre1.Insert("name"      , "Lesha"); // TEXT
-    RowStrucutre1.Insert("age"       , 20); // INTEGER
-    RowStrucutre1.Insert("salary"    , 200.20); // REAL
-    RowStrucutre1.Insert("is_active" , False); // BOOL
-    RowStrucutre1.Insert("created_at", OPI_Tools.GetCurrentDate()); // DATETIME
-    RowStrucutre1.Insert("data"      , New Structure("blob", PictureFile)); // BLOB
+    RowStructure1 = New Structure;
+    RowStructure1.Insert("name"      , "Lesha"); // TEXT
+    RowStructure1.Insert("age"       , 20); // INTEGER
+    RowStructure1.Insert("salary"    , 200.20); // REAL
+    RowStructure1.Insert("is_active" , False); // BOOL
+    RowStructure1.Insert("created_at", OPI_Tools.GetCurrentDate()); // DATETIME
+    RowStructure1.Insert("data"      , New Structure("blob", PictureFile)); // BLOB
 
     DataArray.Add(RowStructure2);
-    DataArray.Add(RowStrucutre1);
+    DataArray.Add(RowStructure1);
 
     Result = OPI_SQLite.AddRecords(Table, DataArray, , Base);
 
@@ -15458,8 +15458,8 @@ Procedure SQLite_AddRecords(FunctionParameters)
 
     Process(Result, "SQLite", "AddRecords", "No transaction");
 
-    RowStrucutre1.Insert("error", "Lesha");
-    DataArray.Add(RowStrucutre1);
+    RowStructure1.Insert("error", "Lesha");
+    DataArray.Add(RowStructure1);
 
     Result = OPI_SQLite.AddRecords(Table, DataArray, , Base);
     Process(Result, "SQLite", "AddRecords", "Field error");
@@ -15620,17 +15620,17 @@ Procedure SQLite_GetTableInformation(FunctionParameters)
 
 EndProcedure
 
-Procedure SQLite_GetRecordsFilterStrucutre(FunctionParameters)
+Procedure SQLite_GetRecordsFilterStructure(FunctionParameters)
 
-    Result = OPI_SQLite.GetRecordsFilterStrucutre();
+    Result = OPI_SQLite.GetRecordsFilterStructure();
 
     // END
 
-    Process(Result, "SQLite", "GetRecordsFilterStrucutre");
+    Process(Result, "SQLite", "GetRecordsFilterStructure");
 
-    Result = OPI_SQLite.GetRecordsFilterStrucutre(True);
+    Result = OPI_SQLite.GetRecordsFilterStructure(True);
 
-    Process(Result, "SQLite", "GetRecordsFilterStrucutre", "Clear");
+    Process(Result, "SQLite", "GetRecordsFilterStructure", "Clear");
 
 EndProcedure
 
@@ -16636,17 +16636,17 @@ Procedure PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
 
 EndProcedure
 
-Procedure PostgreSQL_GetRecordsFilterStrucutre(FunctionParameters)
+Procedure PostgreSQL_GetRecordsFilterStructure(FunctionParameters)
 
-    Result = OPI_PostgreSQL.GetRecordsFilterStrucutre();
+    Result = OPI_PostgreSQL.GetRecordsFilterStructure();
 
     // END
 
-    Process(Result, "PostgreSQL", "GetRecordsFilterStrucutre");
+    Process(Result, "PostgreSQL", "GetRecordsFilterStructure");
 
-    Result = OPI_PostgreSQL.GetRecordsFilterStrucutre(True);
+    Result = OPI_PostgreSQL.GetRecordsFilterStructure(True);
 
-    Process(Result, "PostgreSQL", "GetRecordsFilterStrucutre", "Clear");
+    Process(Result, "PostgreSQL", "GetRecordsFilterStructure", "Clear");
 
 EndProcedure
 
@@ -17521,17 +17521,17 @@ Procedure MySQL_ClearTable(FunctionParameters)
 
 EndProcedure
 
-Procedure MySQL_GetRecordsFilterStrucutre(FunctionParameters)
+Procedure MySQL_GetRecordsFilterStructure(FunctionParameters)
 
-    Result = OPI_MySQL.GetRecordsFilterStrucutre();
+    Result = OPI_MySQL.GetRecordsFilterStructure();
 
     // END
 
-    Process(Result, "MySQL", "GetRecordsFilterStrucutre");
+    Process(Result, "MySQL", "GetRecordsFilterStructure");
 
-    Result = OPI_MySQL.GetRecordsFilterStrucutre(True);
+    Result = OPI_MySQL.GetRecordsFilterStructure(True);
 
-    Process(Result, "MySQL", "GetRecordsFilterStrucutre", "Clear");
+    Process(Result, "MySQL", "GetRecordsFilterStructure", "Clear");
 
 EndProcedure
 
@@ -21324,17 +21324,17 @@ Procedure MSSQL_EnsureTable(FunctionParameters)
 
 EndProcedure
 
-Procedure MSSQL_GetRecordsFilterStrucutre(FunctionParameters)
+Procedure MSSQL_GetRecordsFilterStructure(FunctionParameters)
 
-    Result = OPI_MSSQL.GetRecordsFilterStrucutre();
+    Result = OPI_MSSQL.GetRecordsFilterStructure();
 
     // END
 
-    Process(Result, "MSSQL", "GetRecordsFilterStrucutre");
+    Process(Result, "MSSQL", "GetRecordsFilterStructure");
 
-    Result = OPI_MSSQL.GetRecordsFilterStrucutre(True);
+    Result = OPI_MSSQL.GetRecordsFilterStructure(True);
 
-    Process(Result, "MSSQL", "GetRecordsFilterStrucutre", "Clear");
+    Process(Result, "MSSQL", "GetRecordsFilterStructure", "Clear");
 
 EndProcedure
 

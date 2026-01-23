@@ -1,9 +1,82 @@
 {
-	"module": "greenapi",
+	"module": "OPI_GreenAPI",
 	"library": "greenapi",
-	"depends": {
-		"OPI_GreenAPI": "%1/oint/core/Modules/OPI_GreenAPI.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Account",
+			"methods": [
+				"FormAccessParameters",
+				"GetAccountInformation",
+				"GetInstanceSettings",
+				"SetInstanceSettings",
+				"GetInstanceStatus",
+				"RebootInstance",
+				"LogoutInstance",
+				"GetQR",
+				"GetAuthorizationCode",
+				"SetProfilePicture",
+				"ArchiveChat",
+				"UnarchiveChat",
+				"GetInstanceSettingsStructure"
+			]
+		},
+		{
+			"name": "Group management",
+			"methods": [
+				"GetGroupInformation",
+				"CreateGroup",
+				"UpdateGroupName",
+				"AddGroupMember",
+				"ExcludeGroupMember",
+				"SetAdminRights",
+				"RevokeAdminRights",
+				"LeaveGroup",
+				"SetGroupPicture"
+			]
+		},
+		{
+			"name": "Message sending",
+			"methods": [
+				"SendTextMessage",
+				"SendFile",
+				"SendFileByURL",
+				"SendPoll",
+				"SendLocation",
+				"SendContact",
+				"ForwardMessages",
+				"EditMessageText",
+				"DeleteMessage",
+				"GetContactDescription",
+				"GetLocationDescription"
+			]
+		},
+		{
+			"name": "Notifications receiving",
+			"methods": [
+				"GetNotification",
+				"DeleteNotificationFromQueue",
+				"DownloadMessageFile",
+				"SetReadMark"
+			]
+		},
+		{
+			"name": "Message queue",
+			"methods": [
+				"GetMessageQueue",
+				"ClearMessageQueue"
+			]
+		},
+		{
+			"name": "Message logs",
+			"methods": [
+				"GetChatHistory",
+				"GetMessage",
+				"GetIncomingMessageLog",
+				"GetOutgoingMessageLog"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "FormAccessParameters",
@@ -570,14 +643,14 @@
 					"types": "String",
 					"description": "Name of the file with the extension",
 					"default": "",
-					"short": "-f"
+					"short": "-l"
 				},
 				{
 					"name": "--caption",
 					"types": "String",
 					"description": "Message text below the file",
 					"default": "Пустое значение",
-					"short": "-c"
+					"short": "-p"
 				},
 				{
 					"name": "--quoted",
@@ -627,7 +700,7 @@
 					"types": "String",
 					"description": "Message text below the file",
 					"default": "Пустое значение",
-					"short": "-c"
+					"short": "-p"
 				},
 				{
 					"name": "--quoted",
@@ -749,7 +822,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Contact description. See GetContactDescription",
 					"default": "",
-					"short": "-c"
+					"short": "-n"
 				},
 				{
 					"name": "--quoted",
@@ -929,7 +1002,7 @@
 					"types": "Number",
 					"description": "Geographic longitude",
 					"default": "",
-					"short": "-l"
+					"short": "-n"
 				},
 				{
 					"name": "--addr",
@@ -943,7 +1016,7 @@
 					"types": "String",
 					"description": "Location name",
 					"default": "Пустое значение",
-					"short": "-n"
+					"short": "-m"
 				}
 			],
 			"region": "Message sending"
@@ -1104,7 +1177,7 @@
 					"types": "Number",
 					"description": "Number of messages to receive",
 					"default": 100,
-					"short": "-c"
+					"short": "-n"
 				}
 			],
 			"region": "Message logs"
