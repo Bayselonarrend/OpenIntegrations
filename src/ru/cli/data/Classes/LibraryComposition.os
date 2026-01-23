@@ -1,4 +1,3 @@
-
 Перем СоответствиеКомандМодулей;
 Перем Версия;
 Перем КэшированиеИндексов;
@@ -211,39 +210,38 @@
     И Не ИмяПараметра = "Параметр_out";
     
 КонецФункции
-
 #Region Alternate
 
 Procedure InitializeCommonLists() Export
-    ИнициализироватьОсновныеСписки();
+	ИнициализироватьОсновныеСписки();
 EndProcedure
 
 Function GetVersion() Export
-    Return ПолучитьВерсию();
+	Return ПолучитьВерсию();
 EndFunction
 
 Function GetCommandModuleMapping() Export
-    Return ПолучитьСоответствиеКомандМодулей();
+	Return ПолучитьСоответствиеКомандМодулей();
 EndFunction
 
 Function GetIndexData(Val Command) Export
-    Return ПолучитьИнформациюИндекса(Command);
+	Return ПолучитьИнформациюИндекса(Command);
 EndFunction
 
 Function GetFullComposition() Export
-    Return ПолучитьПолныйСостав();
+	Return ПолучитьПолныйСостав();
 EndFunction
 
 Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val Dynamically = True) Export
-    Return СформироватьСтрокуВызоваМетода(PassedParameters, Command, Method, Dynamically);
+	Return СформироватьСтрокуВызоваМетода(PassedParameters, Command, Method, Dynamically);
 EndFunction
 
 Procedure CompleteCompositionCache(Val Library, Val ParametersTable, Command = "") Export
-    ДополнитьКэшСостава(Library, ParametersTable, Command);
+	ДополнитьКэшСостава(Library, ParametersTable, Command);
 EndProcedure
 
 Procedure SetPackagesDirectory(Val Path) Export
-    УстановитьКаталогПакетов(Path);
+	УстановитьКаталогПакетов(Path);
 EndProcedure
 
 #EndRegion

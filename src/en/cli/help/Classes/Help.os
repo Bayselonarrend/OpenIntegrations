@@ -6,10 +6,10 @@ Var UseAdaptiveOutput;
 
 Procedure OnObjectCreate(AccessTemplate)
 
-	ColorOutput  = LoadScript(StrTemplate(AccessTemplate, "env/Modules/ColorOutput.os"));
+	ColorOutput = LoadScript(StrTemplate(AccessTemplate, "env/Modules/ColorOutput.os"));
 
 	Try
-		ConsoleWidth = Консоль.Width;
+		ConsoleWidth = Console.Width;
 		UseAdaptiveOutput = True;
 	Except
 		UseAdaptiveOutput = False;
@@ -26,18 +26,18 @@ Procedure DisplayStartPage(Val ModuleCommandMapping, Val Version) Export
 	EndDo;
 
 	ExtraCharacters = 2;
-	CommandList  = Left(CommandList, StrLen(CommandList) - ExtraCharacters);
+	CommandList = Left(CommandList, StrLen(CommandList) - ExtraCharacters);
 
-	Консоль.TextColor = ConsoleColor.Green;
-	Консоль.WriteLine("");
+	Console.TextColor = ConsoleColor.Green;
+	Console.WriteLine("");
 
-	Консоль.TextColor = ConsoleColor.Yellow;
+	Console.TextColor = ConsoleColor.Yellow;
 	ColorOutput.Write("
-		|    _______ _____________  ___  _______
-		|    __  __ ___/__  _/_ /  |  / /___  __/
-		|    _  / / / __  /  __      / __  /   
-		|    / /_/ / __/ /   _  /|  /  _  /    
-		|    \____/  /___/   /_/ |_/   /_/     
+		| _______ _____________ ___ _______
+		| __ __ ___/__ _/_ / | / /___ __/
+		| _ / / / __ / __ / __ /   
+		| / /_/ / __/ / _ /| / _ /    
+		| \____/ /___/ /_/ |_/ /_/     
 		|                          
 		|
 		| Welcome in (OInt|#color=White) v (" + Version + "|#color=Green)!
@@ -58,25 +58,25 @@ Procedure DisplayStartPage(Val ModuleCommandMapping, Val Version) Export
 		+ "(Value|#color=White)"
 		+ "(""|#color=Green) ");
 
-	Консоль.Write("
+	Console.Write("
 		|
 		| Call libraries without method or method without parameters returns help
 		| List available libraries: "); 
 		
-	Консоль.TextColor = ConsoleColor.White;
-	Консоль.Write(CommandList); 
+	Console.TextColor = ConsoleColor.White;
+	Console.Write(CommandList); 
 
-	Консоль.TextColor = ConsoleColor.White;
-	OffsetLength       = 11;
-	NewLineTab  = "           ";
+	Console.TextColor = ConsoleColor.White;
+	OffsetLength = 11;
+	NewLineTab = " ";
 
 	StandardOptionsDescription = StrTemplate("
 		|
 		| (Standard options:|#color=Yellow)
 		|
-		|  (--help|#color=Green)  -%1
-		|  (--debug|#color=Green) -%2
-		|  (--out|#color=Green)   -%3
+		| (--help|#color=Green) -%1
+		| (--debug|#color=Green) -%2
+		| (--out|#color=Green) -%3
 		|"
 		, GetWidthSplittedDescription("displays help on the current command or method. Similar to calling a command without options", NewLineTab, OffsetLength)
 		, GetWidthSplittedDescription("a flag responsible for providing more detailed information during program operation", NewLineTab, OffsetLength)
@@ -84,11 +84,11 @@ Procedure DisplayStartPage(Val ModuleCommandMapping, Val Version) Export
 
 	ColorOutput.WriteLine(StandardOptionsDescription);
 	
-	Консоль.TextColor = ConsoleColor.Yellow;
+	Console.TextColor = ConsoleColor.Yellow;
 	ColorOutput.WriteLine(" Full documentation can be found at: (https://openintegrations.dev|#color=Cyan)" + Chars.LF);
 
-	Консоль.WriteLine("");
-	Консоль.TextColor = ConsoleColor.White;
+	Console.WriteLine("");
+	Console.TextColor = ConsoleColor.White;
 
 	Exit(0);
 	
@@ -96,26 +96,26 @@ EndProcedure
 
 Procedure DisplayMethodHelp(Val Command, Val ParametersTable) Export
 
-	Консоль.TextColor = ConsoleColor.White;
+	Console.TextColor = ConsoleColor.White;
 	ColorOutput.WriteLine(Chars.LF + " (##|#color=Green) Library - (" + Command + "|#color=Cyan)");
 
 	ParametersTable.GroupBy("Method,Region");
 	
 	ColorOutput.WriteLine(" (##|#color=Green) Available methods: " + Chars.LF);
-	Консоль.TextColor = ConsoleColor.White;
+	Console.TextColor = ConsoleColor.White;
 
-	CurrentRegion       = "";
-	Counter              = 0;
+	CurrentRegion = "";
+	Counter = 0;
 	NumberOfParameters = ParametersTable.Count();
 
 	For each MethodLine In ParametersTable Do
 
-		First    = False;
+		First = False;
 		Last = False;
 
 		If CurrentRegion <> MethodLine.Region Then
 			CurrentRegion = MethodLine.Region;
-			ColorOutput.WriteLine("    (o|#color=Yellow) (" + CurrentRegion + "|#color=Cyan)");
+			ColorOutput.WriteLine(" (o|#color=Yellow) (" + CurrentRegion + "|#color=Cyan)");
 			First = True;
 		EndIf;
 
@@ -130,18 +130,18 @@ Procedure DisplayMethodHelp(Val Command, Val ParametersTable) Export
 		ElsIf First Then
 			Label = "└─┬─";
 		ElsIf Last Then
-			Label = "  └─";
+			Label = " └─";
 		Else
-			Label = "  ├─";
+			Label = " ├─";
 		EndIf;
 		
-		ColorOutput.WriteLine("    (" + Label + "|#color=Yellow) " + MethodLine.Method);
+		ColorOutput.WriteLine(" (" + Label + "|#color=Yellow) " + MethodLine.Method);
 
 		Counter = Counter + 1;
 	EndDo;
 
 	Message(Chars.LF);
-	Консоль.TextColor = ConsoleColor.White;
+	Console.TextColor = ConsoleColor.White;
 
 	Exit(0);
 
@@ -153,7 +153,7 @@ Procedure DisplayParameterHelp(Val ParametersTable) Export
 		DisplayExceptionMessage("Method");
 	EndIf;
 
-	MethodName      = ParametersTable[0].Method;
+	MethodName = ParametersTable[0].Method;
 	MethodDescription = ParametersTable[0].MethodDescription;
 	
 	FullParamsDescription = GetFullParamsDescription(ParametersTable);
@@ -177,15 +177,15 @@ Procedure DisplayExceptionMessage(Val Reason, Val OutputFile = "") Export
 
 	If Reason = "Command" Then
 		Text = "Incorrect command! Check input correctness";
-		Code   = 1;
+		Code = 1;
 
 	ElsIf Reason = "Method" Then
 		Text = "Incorrect method! Check input correctness";
-		Code   = 2;
+		Code = 2;
 		
 	Else
 		Text = "Unexpected Error!: " + Reason;
-		Code   = 99;
+		Code = 99;
 	EndIf;
 
 	Text = Chars.LF + Text + Chars.LF;
@@ -215,14 +215,14 @@ EndProcedure
 
 Function GetFullParamsDescription(ParametersTable)
 
-	MaximumLength 	     = 0;
+	MaximumLength 	 = 0;
 	OptionListsMap = New Map();
-	FullDescriptionsArray     = New Array;
-	ParameterDescriptionTemplate  = "    (%1|#color=Yellow) -%2";
+	FullDescriptionsArray = New Array;
+	ParameterDescriptionTemplate = " (%1|#color=Yellow) -%2";
 
 	For Each MethodParameter In ParametersTable Do
 
-		OptionFull      = MethodParameter["Parameter"];
+		OptionFull = MethodParameter["Parameter"];
 		SplittedOption = MethodParameter["ParameterTrim"];
 
 		CurrentOptionList = ?(ValueIsFilled(SplittedOption)
@@ -240,7 +240,7 @@ Function GetFullParamsDescription(ParametersTable)
 	EndDo;
 
 	NewLineTabLength = MaximumLength + 5;
-	NewLineTab       = "";
+	NewLineTab = "";
 	
 	For N = 0 To NewLineTabLength Do
 		NewLineTab = NewLineTab + " ";
@@ -254,7 +254,7 @@ Function GetFullParamsDescription(ParametersTable)
 			CurrentOptionList = CurrentOptionList + " ";
 		EndDo;
 
-		DescriptionArray  = StrSplit(MethodParameter["Description"], Chars.LF);
+		DescriptionArray = StrSplit(MethodParameter["Description"], Chars.LF);
 		CurrentDescription = Undefined;
 		
 		If UseAdaptiveOutput Then
@@ -291,7 +291,7 @@ Function GetWidthSplittedDescription(DescriptionLinesArray, NewLineTab, OffsetLe
 	EndIf;
 
 	AvailableStringLength = ConsoleWidth - OffsetLength - 4;
-	ThirdPartOfAvailble       = Round(AvailableStringLength / 3);
+	ThirdPartOfAvailble = Round(AvailableStringLength / 3);
 
 	If AvailableStringLength < 0 Then
 		Return Undefined;
@@ -301,14 +301,14 @@ Function GetWidthSplittedDescription(DescriptionLinesArray, NewLineTab, OffsetLe
 
 	For Each DescriptionString In DescriptionLinesArray Do
 
-		WordArray    = StrSplit(TrimAll(DescriptionString), " ");
+		WordArray = StrSplit(TrimAll(DescriptionString), " ");
 		CurrentRow = "";
 
 		N = 0;
 
 		While N <= WordArray.UBound() Do
 
-			Word       = WordArray[N];		
+			Word = WordArray[N];		
 			NewLine = StrTemplate("%1 %2", CurrentRow, Word);
 
 			If AvailableStringLength >= StrLen(NewLine) Then
@@ -318,7 +318,7 @@ Function GetWidthSplittedDescription(DescriptionLinesArray, NewLineTab, OffsetLe
 				If CurrentRow = "" Or StrLen(Word) > ThirdPartOfAvailble Then
 
 					SymbolCount = AvailableStringLength - StrLen(CurrentRow) - 1;
-					LeftPart    = Left(Word, SymbolCount);
+					LeftPart = Left(Word, SymbolCount);
 					CurrentRow = CurrentRow + LeftPart + "-";
 					WordArray[N] = Right(Word, StrLen(Word) - StrLen(LeftPart));
 				

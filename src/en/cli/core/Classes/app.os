@@ -1,14 +1,14 @@
-Var Debugging;           // Flag output debug information
-Var Testing;      // Flag disconnection of sending data after processing
+Var Debugging; // Flag output debug information
+Var Testing; // Flag disconnection of sending data after processing
 
-Var Parser;            // Object parser incoming data 
-Var OPIObject;         // Object work with methods OPI
-Var Help;           // Object output reference information
+Var Parser; // Object parser incoming data 
+Var OPIObject; // Object work with methods OPI
+Var Help; // Object output reference information
 
-Var OutputFile;        // Path redirection output in file
+Var OutputFile; // Path redirection output in file
 
 Var ParametersTable; // Table parameters current libraries
-Var CurrentCommand;    // Name current commands
+Var CurrentCommand; // Name current commands
 
 Var OintTemplate;     
 Var AccessTemplate;
@@ -21,15 +21,15 @@ Var Responsible;
 
 Procedure MainHandler()
 	
-	Debugging        = True;
-	Testing   = False;
+	Debugging = True;
+	Testing = False;
 
 	SetEnvironmentVariable("OINT_CLI", "YES");
 
 	DefinePathsTemplates();
 	
-	Parser         = LoadScript(StrTemplate(AccessTemplate, "env/Classes/CommandLineArgumentParser.os"));
-	OPIObject      = LoadScript(StrTemplate(AccessTemplate, "data/Classes/LibraryComposition.os"));
+	Parser = LoadScript(StrTemplate(AccessTemplate, "env/Classes/CommandLineArgumentParser.os"));
+	OPIObject = LoadScript(StrTemplate(AccessTemplate, "data/Classes/LibraryComposition.os"));
 	OPIObject.SetPackagesDirectory(PackagesDirectory);
 
 	AttachScript(StrTemplate(AccessTemplate, "help/Classes/Help.os"), "Help");
@@ -58,7 +58,7 @@ Procedure FormCommand()
 	If CurrentCommand = Undefined Then
 
 		AllCommands = OPIObject.GetCommandModuleMapping();
-		Version     = OPIObject.GetVersion();
+		Version = OPIObject.GetVersion();
 
 		Help.DisplayStartPage(AllCommands, Version);
 
@@ -68,9 +68,9 @@ Procedure FormCommand()
 	
 	Command = Parser.CommandDescription(CurrentCommand);
 
-	Debugging       = False;
+	Debugging = False;
 	CurrentIndex = OPIObject.GetIndexData(CurrentCommand);
-	Debugging       = True;
+	Debugging = True;
 
 	ParametersTable = CurrentIndex["Composition"];
 
@@ -96,8 +96,8 @@ EndProcedure
 Procedure ExecuteCommandProcessing(Val Data)
 	
 	CurrentCommand = Data["Command"];
-	Parameters      = Data["ParameterValues"];
-	Output		   = "";
+	Parameters = Data["ParameterValues"];
+	Output		 = "";
 
 	SetDebugMode(Parameters);
 	SetTestMode(Parameters);
@@ -126,8 +126,8 @@ Function GetProcessingResult(Val Command, Val Parameters)
 
 	EndIf;
 
-	Method     = TrimAll(Parameters["Method"]);
-	Response     = "Function Returned Empty Value";
+	Method = TrimAll(Parameters["Method"]);
+	Response = "Function Returned Empty Value";
 
 	NumberOfStandardParameters = 4;
 
@@ -137,8 +137,8 @@ Function GetProcessingResult(Val Command, Val Parameters)
 
 	If Parameters.Count() = NumberOfStandardParameters Or Parameters["--help"] Then
 
-		CommandSelection      = New Structure("SearchMethod", Upper(Method));
-		MethodParameters   = ParametersTable.FindRows(CommandSelection);
+		CommandSelection = New Structure("SearchMethod", Upper(Method));
+		MethodParameters = ParametersTable.FindRows(CommandSelection);
 	
 		If Not ValueIsFilled(MethodParameters) Then
 			Help.DisplayExceptionMessage("Method", OutputFile);
@@ -179,7 +179,7 @@ Procedure AddCommandParameters(Parser, Command);
 	TableForUse = ParametersTable.Copy(, Fields);
 	TableForUse.GroupBy(Fields);
 
-	ParameterArray     = TableForUse.UnloadColumn("Parameter");
+	ParameterArray = TableForUse.UnloadColumn("Parameter");
 	ParameterArrayTrim = TableForUse.UnloadColumn("ParameterTrim");
 	
 	For Each Parameter In ParameterArray Do
@@ -197,7 +197,7 @@ Procedure DefinePathsTemplates()
 	CurrentDirectory = CurrentScript().Path;
 	CurrentDirectory = StrReplace(CurrentDirectory, "\", "/");
 
-	PathParts      = StrSplit(CurrentDirectory, "/");
+	PathParts = StrSplit(CurrentDirectory, "/");
 	PathParts.Delete(PathParts.UBound());
 	PathParts.Delete(PathParts.UBound());
 
@@ -232,10 +232,10 @@ EndProcedure
 Procedure SetDebugMode(Val Parameters)
 
 	If Parameters["--debug"] Then
-		Debugging         = True;
+		Debugging = True;
 		EnvironmentVariable = "YES";
 	Else
-		Debugging         = False;
+		Debugging = False;
 		EnvironmentVariable = "NO"
 	EndIf;
 
@@ -325,11 +325,11 @@ Procedure AttachExecutor()
 
 		CurrentScriptFolder = StrReplace(CurrentScript().Path, "\", "/");
 
-		ExecutorPath  = StrTemplate("%1/%2"
+		ExecutorPath = StrTemplate("%1/%2"
 			, CurrentScriptFolder
 			, "internal/Modules/Executor.os");
 
-		Responsible  = LoadScript(ExecutorPath);
+		Responsible = LoadScript(ExecutorPath);
 
 	EndIf;
 
@@ -338,8 +338,8 @@ EndProcedure
 Function WriteValueToFile(Val Value, Val Path)
 	
 	StandardUnit = 1024;
-	DataUnit      = StandardUnit * StandardUnit;
-	Value           = ?(TypeOf(Value) = Type("BinaryData"), Value, String(Value));
+	DataUnit = StandardUnit * StandardUnit;
+	Value = ?(TypeOf(Value) = Type("BinaryData"), Value, String(Value));
 
 	If TypeOf(Value) = Type("String") Then 
 

@@ -11,7 +11,7 @@ Procedure OnObjectCreate()
 
 	mParams = NewParamsTable();
 	mPositionParams = NewParamsTable();
-	mCommands   = New Map;
+	mCommands = New Map;
 	
 EndProcedure
 
@@ -136,7 +136,7 @@ Function Parse(Val InputParamsArray) Export
 		EndDo;
 		
 		mPositionParamsPosition = 0;
-		mTokenListPosition        = 0;
+		mTokenListPosition = 0;
 		
 		ParseResult = ParseArgs(mParams, mPositionParams);
 		
@@ -183,12 +183,12 @@ Function HelpAvailableCommand() Export
 	HelpTable.Columns.Add("Parameters");
 	
 	For Each KeyAndValue In mCommands Do
-		StrHelp      = HelpTable.Add();
+		StrHelp = HelpTable.Add();
 		CommandDescription = KeyAndValue.Value;
 		
-		StrHelp.Command   = CommandDescription.Command;
+		StrHelp.Command = CommandDescription.Command;
 		StrHelp.Explanation = CommandDescription.Explanation;
-		ParamsHelp  = ParamsHelpTable(CommandDescription.NamedParams,
+		ParamsHelp = ParamsHelpTable(CommandDescription.NamedParams,
 			CommandDescription.PositionParams, True);
 		StrHelp.Parameters = ParamsHelp;
 		
@@ -205,7 +205,7 @@ Procedure ShowCommandsHelp() Export
 	AvailableCommands = HelpAvailableCommand();
 	
 	MaxWidth = 0;
-	Field = "               ";
+	Field = " ";
 	For Each Command In AvailableCommands Do
 		CurrentWidth = StrLen(Command.Command);
 		If CurrentWidth > MaxWidth Then
@@ -413,8 +413,8 @@ EndFunction
 
 Function AddPramToTable(Val Table, Val Name, Val Explanation, Val Flag, Val Global = False)
 	StrParam = Table.Add();
-	StrParam.Name       = String(Name);
-	StrParam.IsFlag   = Flag;
+	StrParam.Name = String(Name);
+	StrParam.IsFlag = Flag;
 	StrParam.Explanation = Explanation;
 	StrParam.IsGlobalParam = Global;
 	StrParam.ThisIsCollection = False;
