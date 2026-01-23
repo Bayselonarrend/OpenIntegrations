@@ -1,0 +1,821 @@
+{
+	"module": "openai",
+	"library": "openai",
+	"depends": {
+		"OPI_OpenAI": "%1/oint/core/Modules/OPI_OpenAI.os"
+	},
+	"methods": [
+		{
+			"name": "ПолучитьОтвет",
+			"id": "ПОЛУЧИТЬОТВЕТ",
+			"description": "Генерирует ответ по заданному текстовому запросу\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--model",
+					"types": "Строка",
+					"description": "Имя модели",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--msgs",
+					"types": "Строка, Массив Из Строка",
+					"description": "Сообщения разговора. См. ПолучитьСтруктуруСообщения",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--options",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Доп. параметры запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Обработка запросов"
+		},
+		{
+			"name": "ПолучитьКартинки",
+			"id": "ПОЛУЧИТЬКАРТИНКИ",
+			"description": "Генерирует картинки по указанному описанию",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--model",
+					"types": "Строка",
+					"description": "Имя модели",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--descr",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Параметры генерации. См. ПолучитьСтруктуруОписанияКартинок",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Обработка запросов"
+		},
+		{
+			"name": "ПолучитьПредставления",
+			"id": "ПОЛУЧИТЬПРЕДСТАВЛЕНИЯ",
+			"description": "Получает представления (embeddings) для заданных вводных\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--model",
+					"types": "Строка",
+					"description": "Имя модели",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--input",
+					"types": "Массив Из Строка",
+					"description": "Строка или массив строк запросов",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--options",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Доп. параметры запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Обработка запросов"
+		},
+		{
+			"name": "ПолучитьСтруктуруСообщения",
+			"id": "ПОЛУЧИТЬСТРУКТУРУСООБЩЕНИЯ",
+			"description": "Получает структуру произвольного сообщения для списка сообщений запроса",
+			"params": [
+				{
+					"name": "--role",
+					"types": "Строка",
+					"description": "Источник сообщения: system, user, assistant и др.",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст сообщения",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Имя участника разговора",
+					"default": "Пустое значение",
+					"short": "-n"
+				}
+			],
+			"region": "Обработка запросов"
+		},
+		{
+			"name": "ПолучитьСообщениеПользователя",
+			"id": "ПОЛУЧИТЬСООБЩЕНИЕПОЛЬЗОВАТЕЛЯ",
+			"description": "Получает структуру сообщения от лица пользователя для использования в запросе",
+			"params": [
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст сообщения",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Имя участника разговора",
+					"default": "Пустое значение",
+					"short": "-n"
+				}
+			],
+			"region": "Обработка запросов"
+		},
+		{
+			"name": "ПолучитьСообщениеАссистента",
+			"id": "ПОЛУЧИТЬСООБЩЕНИЕАССИСТЕНТА",
+			"description": "Получает структуру сообщения от лица ассистента для использования в запросе",
+			"params": [
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст сообщения",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Обработка запросов"
+		},
+		{
+			"name": "ПолучитьСообщениеСистемы",
+			"id": "ПОЛУЧИТЬСООБЩЕНИЕСИСТЕМЫ",
+			"description": "Получает структуру системного сообщения для использования в запросе",
+			"params": [
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст сообщения",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Обработка запросов"
+		},
+		{
+			"name": "ПолучитьСтруктуруСообщенияКартинки",
+			"id": "ПОЛУЧИТЬСТРУКТУРУСООБЩЕНИЯКАРТИНКИ",
+			"description": "Получает структура сообщения на основе изображения для списка сообщений запроса",
+			"params": [
+				{
+					"name": "--role",
+					"types": "Строка",
+					"description": "Источник сообщения: system, user, developer",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--file",
+					"types": "Строка",
+					"description": "ID файла картинки. См. ЗагрузитьФайл",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--prompt",
+					"types": "Строка",
+					"description": "Вводный текст запроса для обработки картинки",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Обработка запросов"
+		},
+		{
+			"name": "ПолучитьСтруктуруОписанияКартинок",
+			"id": "ПОЛУЧИТЬСТРУКТУРУОПИСАНИЯКАРТИНОК",
+			"description": "Получить структуру описания картинок для генерации",
+			"params": [
+				{
+					"name": "--prompt",
+					"types": "Строка",
+					"description": "Текстовое описание картинки для генерации",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--amount",
+					"types": "Число",
+					"description": "Количество изображений для генерации",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--bg",
+					"types": "Строка",
+					"description": "Вариант генерации фона: transparent, opaque, auto",
+					"default": "Пустое значение",
+					"short": "-b"
+				},
+				{
+					"name": "--size",
+					"types": "Строка",
+					"description": "Вариант размера сгенерированных изображений",
+					"default": "Пустое значение",
+					"short": "-s"
+				},
+				{
+					"name": "--options",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Доп. параметры запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "Обработка запросов"
+		},
+		{
+			"name": "ПолучитьСписокАссистентов",
+			"id": "ПОЛУЧИТЬСПИСОКАССИСТЕНТОВ",
+			"description": "Получает список ассистентов с отбором или без",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--limit",
+					"types": "Число",
+					"description": "Максимальное число возвращаемых ассистентов",
+					"default": 20,
+					"short": "-l"
+				},
+				{
+					"name": "--options",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Доп. параметры запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Ассистенты"
+		},
+		{
+			"name": "СоздатьАссистента",
+			"id": "СОЗДАТЬАССИСТЕНТА",
+			"description": "Создает ассистента по модели и инструкции",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--model",
+					"types": "Строка",
+					"description": "Имя модели",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Имя ассистента",
+					"default": "Пустое значение",
+					"short": "-n"
+				},
+				{
+					"name": "--inst",
+					"types": "Строка",
+					"description": "Системная инструкция для ассистента",
+					"default": "Пустое значение",
+					"short": "-i"
+				},
+				{
+					"name": "--options",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Доп. параметры запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Ассистенты"
+		},
+		{
+			"name": "ПолучитьАссистента",
+			"id": "ПОЛУЧИТЬАССИСТЕНТА",
+			"description": "Получает информацию об ассистенте по ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "ID ассистента",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Ассистенты"
+		},
+		{
+			"name": "УдалитьАссистента",
+			"id": "УДАЛИТЬАССИСТЕНТА",
+			"description": "Удаляет ранее созданного ассистента",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "ID ассистента",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Ассистенты"
+		},
+		{
+			"name": "ПолучитьСписокФайлов",
+			"id": "ПОЛУЧИТЬСПИСОКФАЙЛОВ",
+			"description": "Получает список файлов с отбором или без",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--limit",
+					"types": "Число",
+					"description": "Максимальное число возвращаемых ассистентов",
+					"default": 10000,
+					"short": "-l"
+				},
+				{
+					"name": "--options",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Доп. параметры запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с файлами"
+		},
+		{
+			"name": "ЗагрузитьФайл",
+			"id": "ЗАГРУЗИТЬФАЙЛ",
+			"description": "Загружает файл для дальнейшего использования в других запросах",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Имя файла с раширением",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--data",
+					"types": "Строка, ДвоичныеДанные",
+					"description": "Путь к файлу или данные",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--purpose",
+					"types": "Строка",
+					"description": "Назначение файла: assistants, batch, vision, user_data, evals",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с файлами"
+		},
+		{
+			"name": "ПолучитьИнформациюОФайле",
+			"id": "ПОЛУЧИТЬИНФОРМАЦИЮОФАЙЛЕ",
+			"description": "Получает информацию о файле",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "ID файла",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с файлами"
+		},
+		{
+			"name": "СкачатьФайл",
+			"id": "СКАЧАТЬФАЙЛ",
+			"description": "Получает данные файла с сервера",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "ID файла",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с файлами"
+		},
+		{
+			"name": "УдалитьФайл",
+			"id": "УДАЛИТЬФАЙЛ",
+			"description": "Удаляет ранее загруженный файл",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "ID файла",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с файлами"
+		},
+		{
+			"name": "СгенерироватьРечь",
+			"id": "СГЕНЕРИРОВАТЬРЕЧЬ",
+			"description": "Генерирует аудио с озвучиванием указанного текста",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--model",
+					"types": "Строка",
+					"description": "Имя модели",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--input",
+					"types": "Строка",
+					"description": "Текст для озвучивания",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--voice",
+					"types": "Строка",
+					"description": "Вид голоса: alloy, ash, ballad, coral, echo и др.",
+					"default": "alloy",
+					"short": "-v"
+				},
+				{
+					"name": "--options",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Доп. параметры запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с аудио"
+		},
+		{
+			"name": "СоздатьТранскрипцию",
+			"id": "СОЗДАТЬТРАНСКРИПЦИЮ",
+			"description": "Создает текстовую транскрипцию для выбранного аудио файла",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--model",
+					"types": "Строка",
+					"description": "Имя модели",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--audio",
+					"types": "Строка, ДвоичныеДанные",
+					"description": "Аудио файл",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--type",
+					"types": "Строка",
+					"description": "MIME тип аудио файла",
+					"default": "audio/mpeg",
+					"short": "-t"
+				},
+				{
+					"name": "--options",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Доп. параметры запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с аудио"
+		},
+		{
+			"name": "ПолучитьСписокМоделей",
+			"id": "ПОЛУЧИТЬСПИСОКМОДЕЛЕЙ",
+			"description": "Получает список доступных моделей",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL сервера OpenAI",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен авторизации OpenAI",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Доп. заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с моделями"
+		}
+	]
+}

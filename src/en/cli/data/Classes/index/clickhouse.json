@@ -1,0 +1,276 @@
+{
+	"module": "clickhouse",
+	"library": "clickhouse",
+	"depends": {
+		"OPI_ClickHouse": "%1/oint/core/Modules/OPI_ClickHouse.os",
+		"OPI_GRPC": "%1/oint/core/Modules/OPI_GRPC.os"
+	},
+	"methods": [
+		{
+			"name": "ExecuteRequest",
+			"id": "EXECUTEREQUEST",
+			"description": "Executes a request with the specified parameters",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Connection settings or object (for gRPC)",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--req",
+					"types": "Structure Of KeyAndValue",
+					"description": "Request data. See GetRequestSettings",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--session",
+					"types": "Structure Of KeyAndValue",
+					"description": "Session settings. See GetSessionSettings",
+					"default": "Пустое значение",
+					"short": "-s"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetHTTPConnectionSettings",
+			"id": "GETHTTPCONNECTIONSETTINGS",
+			"description": "Gets the settings structure for HTTP connection",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Connection address with protocol and port",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--auth",
+					"types": "String, Structure Of KeyAndValue",
+					"description": "Authorization: string for JWT, structure for basic",
+					"default": "Пустое значение",
+					"short": "-a"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetRequestSettings",
+			"id": "GETREQUESTSETTINGS",
+			"description": "Forms the request description structure",
+			"params": [
+				{
+					"name": "--query",
+					"types": "String",
+					"description": "Request text",
+					"default": "",
+					"short": "-q"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Unique request ID, if necessary",
+					"default": "Пустое значение",
+					"short": "-i"
+				},
+				{
+					"name": "--data",
+					"types": "Arbitrary",
+					"description": "String, file, or binary data of the request",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--format",
+					"types": "String",
+					"description": "Response format: JSON, CSV, TSV, etc..",
+					"default": "JSON",
+					"short": "-f"
+				},
+				{
+					"name": "--ext",
+					"types": "Array of Structure",
+					"description": "External tables data. See GetExternalTableStructure",
+					"default": "Пустое значение",
+					"short": "-e"
+				},
+				{
+					"name": "--settings",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional query parameters of the request",
+					"default": "Пустое значение",
+					"short": "-s"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetExternalTableStructure",
+			"id": "GETEXTERNALTABLESTRUCTURE",
+			"description": "Gets the description structure of the external table of the request",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Table name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--cols",
+					"types": "Structure Of KeyAndValue",
+					"description": "Table column structure: Key > name, Value > data type",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--data",
+					"types": "Arbitrary",
+					"description": "String, file, or binary data of the table",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--format",
+					"types": "String",
+					"description": "Data format: CVS, TVS, JSON, etc..",
+					"default": "Пустое значение",
+					"short": "-f"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetSessionSettings",
+			"id": "GETSESSIONSETTINGS",
+			"description": "Forms the session settings structure for executing the request",
+			"params": [
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Session ID. A new unique identifier if not specified (a new session will be created)",
+					"default": "Пустое значение",
+					"short": "-i"
+				},
+				{
+					"name": "--check",
+					"types": "Boolean",
+					"description": "Check for session existence. True when ID is specified and false when not, unless otherwise specified",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--timeout",
+					"types": "Number",
+					"description": "Session lifetime in seconds",
+					"default": 60,
+					"short": "-t"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetGRPCConnectionSettings",
+			"id": "GETGRPCCONNECTIONSETTINGS",
+			"description": "Gets the settings structure for gRPC connection",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Connection address with protocol and port",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--auth",
+					"types": "String, Structure Of KeyAndValue",
+					"description": "Authorization: string for JWT, structure for basic",
+					"default": "Пустое значение",
+					"short": "-a"
+				},
+				{
+					"name": "--meta",
+					"types": "Structure Of KeyAndValue",
+					"description": "gRPC metadata structure, if necessary",
+					"default": "Пустое значение",
+					"short": "-m"
+				},
+				{
+					"name": "--tls",
+					"types": "Structure Of KeyAndValue",
+					"description": "TLS settings. See GetTlsSettings",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Grpc"
+		},
+		{
+			"name": "CreateGRPCConnection",
+			"id": "CREATEGRPCCONNECTION",
+			"description": "",
+			"params": [],
+			"region": "Grpc"
+		},
+		{
+			"name": "OpenClientGRPCStream",
+			"id": "OPENCLIENTGRPCSTREAM",
+			"description": "",
+			"params": [],
+			"region": "Grpc"
+		},
+		{
+			"name": "OpenServerGRPCStream",
+			"id": "OPENSERVERGRPCSTREAM",
+			"description": "",
+			"params": [],
+			"region": "Grpc"
+		},
+		{
+			"name": "OpenBidirectionalGRPCStream",
+			"id": "OPENBIDIRECTIONALGRPCSTREAM",
+			"description": "",
+			"params": [],
+			"region": "Grpc"
+		},
+		{
+			"name": "GetTlsSettings",
+			"id": "GETTLSSETTINGS",
+			"description": "Forms settings for using TLS",
+			"params": [
+				{
+					"name": "--trust",
+					"types": "Boolean",
+					"description": "Allows to work with invalid certificates, including self signed",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--cert",
+					"types": "String",
+					"description": "Path to the root PEM file of the certificate if it is not in the system repository",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Grpc"
+		}
+	]
+}

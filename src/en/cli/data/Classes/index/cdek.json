@@ -1,0 +1,985 @@
+{
+	"module": "cdek",
+	"library": "cdek",
+	"depends": {
+		"OPI_CDEK": "%1/oint/core/Modules/OPI_CDEK.os"
+	},
+	"methods": [
+		{
+			"name": "GetToken",
+			"id": "GETTOKEN",
+			"description": "Gets a token based on account ID and password",
+			"params": [
+				{
+					"name": "--account",
+					"types": "String",
+					"description": "Client identifier (Account)",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--pass",
+					"types": "String",
+					"description": "Secret key (Password)",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetCashboxChecksByDate",
+			"id": "GETCASHBOXCHECKSBYDATE",
+			"description": "Gets information about checks for a specified date",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--date",
+					"types": "Date",
+					"description": "Date for which data should be retrieved",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetDeliveryCashRegistry",
+			"id": "GETDELIVERYCASHREGISTRY",
+			"description": "Receives registers of imposed payments, for which the client was transferred the payment",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--date",
+					"types": "Date",
+					"description": "Date for which data should be retrieved",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetDeliveryCashTransfers",
+			"id": "GETDELIVERYCASHTRANSFERS",
+			"description": "Gets information about orders for which cash on delivery was transferred to the online store",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--date",
+					"types": "Date",
+					"description": "Date for which data should be retrieved",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetOfficeList",
+			"id": "GETOFFICELIST",
+			"description": "Gets a list of offices with or without a filter",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--filter",
+					"types": "Structure Of KeyAndValue",
+					"description": "Office filter. See GetOfficeFilterDescription",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetRegionsList",
+			"id": "GETREGIONSLIST",
+			"description": "Gets the list of available regions",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--countries",
+					"types": "Array Of String",
+					"description": "Array of country codes in ISO_31661_alpha2 format for selection",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--page",
+					"types": "Number",
+					"description": "Result page",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--lang",
+					"types": "String",
+					"description": "Language: rus, eng, zho",
+					"default": "rus",
+					"short": "-l"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetOfficeFilterDescription",
+			"id": "GETOFFICEFILTERDESCRIPTION",
+			"description": "Gets an empty layout of the filter for getting the list of offices in the GetOfficeList function",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "CreateOrder",
+			"id": "CREATEORDER",
+			"description": "Creates an order based on field descriptions",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--order",
+					"types": "Structure Of KeyAndValue",
+					"description": "Set of order fields. See GetOrderDescription",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--ostore",
+					"types": "Boolean",
+					"description": "Flag of Online store order type",
+					"default": false,
+					"short": "-o"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "UpdateOrder",
+			"id": "UPDATEORDER",
+			"description": "Changes the field values of the selected order",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "Order UUID for updating",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--order",
+					"types": "Structure Of KeyAndValue",
+					"description": "Set of changing order fields",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "DeleteOrder",
+			"id": "DELETEORDER",
+			"description": "Deletes order by UUID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "Order UUID for deletion",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "GetOrder",
+			"id": "GETORDER",
+			"description": "Gets the order by UUID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "Order UUID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "GetOrderByNumber",
+			"id": "GETORDERBYNUMBER",
+			"description": "Receives the order by CDEK number or number from customer IB",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--number",
+					"types": "String",
+					"description": "Order number",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--internal",
+					"types": "Boolean",
+					"description": "Type of order number. True > number in the customer base, False > CDEK number",
+					"default": false,
+					"short": "-i"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "CreateCustomerRefund",
+			"id": "CREATECUSTOMERREFUND",
+			"description": "Processes customer returns for online store orders",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "Order UUID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--tariff",
+					"types": "Number",
+					"description": "Tariff code (from those available under the contract)",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "CreateRefusal",
+			"id": "CREATEREFUSAL",
+			"description": "Creates an order refusal to return to the online store",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "Order UUID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "CreateReceipt",
+			"id": "CREATERECEIPT",
+			"description": "Generates pdf receipts for orders",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuids",
+					"types": "String, Array of String",
+					"description": "One or an array of order UUIDs",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--type",
+					"types": "String",
+					"description": "Receipt type (language)",
+					"default": "tpl_russia",
+					"short": "-t"
+				},
+				{
+					"name": "--count",
+					"types": "Number",
+					"description": "Number of copies of one receipt per sheet",
+					"default": 2,
+					"short": "-c"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "GetReceipt",
+			"id": "GETRECEIPT",
+			"description": "Gets a receipt for the order",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "UUID of the receipt received during its creation",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--getfile",
+					"types": "Boolean",
+					"description": "True > PDF file data will be received, False > receives CDEK server response",
+					"default": false,
+					"short": "-g"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "CreateBarcode",
+			"id": "CREATEBARCODE",
+			"description": "Generates a PDF barcode CP for orders",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuids",
+					"types": "String, Array of String",
+					"description": "One or an array of order UUIDs",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--count",
+					"types": "Number",
+					"description": "Number of copies",
+					"default": 1,
+					"short": "-c"
+				},
+				{
+					"name": "--format",
+					"types": "String",
+					"description": "Print format: A4, A5, A6, A7",
+					"default": "A4",
+					"short": "-f"
+				},
+				{
+					"name": "--lang",
+					"types": "String",
+					"description": "Barcode language: RUS, ENG",
+					"default": "RUS",
+					"short": "-l"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "GetBarcode",
+			"id": "GETBARCODE",
+			"description": "Gets the barcode CP for the order",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "The UID of the barcode received when the barcode was created",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--getfile",
+					"types": "Boolean",
+					"description": "True > PDF file data will be received, False > receives CDEK server response",
+					"default": false,
+					"short": "-g"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "CreatePrealert",
+			"id": "CREATEPREALERT",
+			"description": "Creates a prealert for the order list",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuids",
+					"types": "String, Array of String",
+					"description": "One or an array of order UUIDs",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--date",
+					"types": "Date",
+					"description": "Planned date of transfer of orders to CDEK",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--point",
+					"types": "String",
+					"description": "Code of shipment point to which it is planned to transfer orders",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "GetPrealert",
+			"id": "GETPREALERT",
+			"description": "Gets a previously created prealert",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "Prealert UUID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "GetPassportDataStatus",
+			"id": "GETPASSPORTDATASTATUS",
+			"description": "Receives information on passport data processing status for international orders",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "Order UUID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "GetCashboxCheck",
+			"id": "GETCASHBOXCHECK",
+			"description": "Receives check information on an order",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "Order UUID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "GetOrderDescription",
+			"id": "GETORDERDESCRIPTION",
+			"description": "Gets the layout of order for the CreateOrder function",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				},
+				{
+					"name": "--required",
+					"types": "Boolean",
+					"description": "True > only required fields will be in the set",
+					"default": false,
+					"short": "-r"
+				},
+				{
+					"name": "--ostore",
+					"types": "Boolean",
+					"description": "Flag of including fields in the layout exclusively for online store orders",
+					"default": false,
+					"short": "-o"
+				}
+			],
+			"region": "Orders management"
+		},
+		{
+			"name": "GetAvailableDeliveryIntervals",
+			"id": "GETAVAILABLEDELIVERYINTERVALS",
+			"description": "Gets available delivery intervals for order",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "Order UUID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Delivery management"
+		},
+		{
+			"name": "CreateCourierInvitation",
+			"id": "CREATECOURIERINVITATION",
+			"description": "Creates a new request to call a courier to pick up a shipment",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--intake",
+					"types": "Structure Of KeyAndValue",
+					"description": "Invitations description. See GetCourierInvitationsDescription",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Delivery management"
+		},
+		{
+			"name": "GetCourierInvitation",
+			"id": "GETCOURIERINVITATION",
+			"description": "Gets withourier invitation by UUID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "UUID of the invitation",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Delivery management"
+		},
+		{
+			"name": "DeleteCourierInvitation",
+			"id": "DELETECOURIERINVITATION",
+			"description": "",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "UUID of the invitation for deletion",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Delivery management"
+		},
+		{
+			"name": "RegisterDeliveryAppointment",
+			"id": "REGISTERDELIVERYAPPOINTMENT",
+			"description": "Fixes the delivery date, time and address agreed with the customer",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--appt",
+					"types": "Structure Of KeyAndValue",
+					"description": "Appointment description. See GetAppointmentDescription",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Delivery management"
+		},
+		{
+			"name": "GetDeliveryAppointment",
+			"id": "GETDELIVERYAPPOINTMENT",
+			"description": "Receives information about the delivery date, time and address agreed with the customer",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--uuid",
+					"types": "String",
+					"description": "Appointment UUID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--testapi",
+					"types": "Boolean",
+					"description": "Flag to use test API for requests",
+					"default": false,
+					"short": "-t"
+				}
+			],
+			"region": "Delivery management"
+		},
+		{
+			"name": "GetCourierInvitationsDescription",
+			"id": "GETCOURIERINVITATIONSDESCRIPTION",
+			"description": "Gets the layout for creating a request for courier call in the CreateCourierInvitation function",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				},
+				{
+					"name": "--required",
+					"types": "Boolean",
+					"description": "True > only required fields will be in the set",
+					"default": false,
+					"short": "-r"
+				}
+			],
+			"region": "Delivery management"
+		},
+		{
+			"name": "GetAppointmentDescription",
+			"id": "GETAPPOINTMENTDESCRIPTION",
+			"description": "Gets the layout to create about delivery in the RegisterDeliveryAppointment function",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				},
+				{
+					"name": "--required",
+					"types": "Boolean",
+					"description": "True > only required fields will be in the set",
+					"default": false,
+					"short": "-r"
+				}
+			],
+			"region": "Delivery management"
+		}
+	]
+}

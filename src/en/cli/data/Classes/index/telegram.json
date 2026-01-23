@@ -1,0 +1,1306 @@
+{
+	"module": "telegram",
+	"library": "telegram",
+	"depends": {
+		"OPI_Telegram": "%1/oint/core/Modules/OPI_Telegram.os"
+	},
+	"methods": [
+		{
+			"name": "GetBotInformation",
+			"id": "GETBOTINFORMATION",
+			"description": "Executes the request, returning basic bot information: name, id, ability to add the bot to groups, etc..",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Data retrieval and settings"
+		},
+		{
+			"name": "GetUpdates",
+			"id": "GETUPDATES",
+			"description": "Executes a request, returning information about bot events. Used in polling mode",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--timeout",
+					"types": "Number",
+					"description": "Waiting time for new events",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--offset",
+					"types": "Number",
+					"description": "Offset in the list of received messages",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "Data retrieval and settings"
+		},
+		{
+			"name": "SetWebhook",
+			"id": "SETWEBHOOK",
+			"description": "Set webhook URL for bot event handling in webhook mode",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Request handling address from Telegram (with https:)",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Data retrieval and settings"
+		},
+		{
+			"name": "DeleteWebhook",
+			"id": "DELETEWEBHOOK",
+			"description": "Deletes the bot event handler URL for webhook operation",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Data retrieval and settings"
+		},
+		{
+			"name": "DownloadFile",
+			"id": "DOWNLOADFILE",
+			"description": "Download file from Telegram servers",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "String",
+					"description": "File ID for downloading",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Data retrieval and settings"
+		},
+		{
+			"name": "ProcessTMAData",
+			"id": "PROCESSTMADATA",
+			"description": "",
+			"params": [],
+			"region": "Data retrieval and settings"
+		},
+		{
+			"name": "SendTextMessage",
+			"id": "SENDTEXTMESSAGE",
+			"description": "Sends a text message to a chat or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID or ChatID*TopicID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--keyboard",
+					"types": "String, Structure Of KeyAndValue",
+					"description": "Keyboard. See FormKeyboardFromButtonArray",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemode",
+					"types": "String",
+					"description": "Text processing type (HTML, Markdown, MarkdownV2)",
+					"default": "Markdown",
+					"short": "-p"
+				},
+				{
+					"name": "--reply",
+					"types": "String, Number",
+					"description": "Reply to message ID",
+					"default": "Пустое значение",
+					"short": "-r"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "SendImage",
+			"id": "SENDIMAGE",
+			"description": "Sends an image to a chat or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID or ChatID*TopicID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--picture",
+					"types": "BinaryData, String",
+					"description": "Image file",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--keyboard",
+					"types": "String, Structure Of KeyAndValue",
+					"description": "Keyboard. See FormKeyboardFromButtonArray",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemode",
+					"types": "String",
+					"description": "Text processing type (HTML, Markdown, MarkdownV2)",
+					"default": "Markdown",
+					"short": "-p"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "SendVideo",
+			"id": "SENDVIDEO",
+			"description": "Sends a video to a chat or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID or ChatID*TopicID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--video",
+					"types": "BinaryData, String",
+					"description": "Video file",
+					"default": "",
+					"short": "-v"
+				},
+				{
+					"name": "--keyboard",
+					"types": "String, Structure Of KeyAndValue",
+					"description": "Keyboard. See FormKeyboardFromButtonArray",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemode",
+					"types": "String",
+					"description": "Text processing type (HTML, Markdown, MarkdownV2)",
+					"default": "Markdown",
+					"short": "-p"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "SendAudio",
+			"id": "SENDAUDIO",
+			"description": "Sends an audio file to a chat or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID or ChatID*TopicID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--audio",
+					"types": "BinaryData, String",
+					"description": "Audio file",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--keyboard",
+					"types": "String, Structure Of KeyAndValue",
+					"description": "Keyboard. See FormKeyboardFromButtonArray",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemode",
+					"types": "String",
+					"description": "Text processing type (HTML, Markdown, MarkdownV2)",
+					"default": "Markdown",
+					"short": "-p"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "SendDocument",
+			"id": "SENDDOCUMENT",
+			"description": "Sends a document to a chat or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID or ChatID*TopicID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--doc",
+					"types": "BinaryData, String",
+					"description": "Document file",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--keyboard",
+					"types": "String, Structure Of KeyAndValue",
+					"description": "Keyboard. See FormKeyboardFromButtonArray",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemode",
+					"types": "String",
+					"description": "Text processing type (HTML, Markdown, MarkdownV2)",
+					"default": "Markdown",
+					"short": "-p"
+				},
+				{
+					"name": "--filename",
+					"types": "String",
+					"description": "Custom displayed file name with extension, if necessary",
+					"default": "Пустое значение",
+					"short": "-f"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "SendGif",
+			"id": "SENDGIF",
+			"description": "Sends a GIF to a chat or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID or ChatID*TopicID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--gif",
+					"types": "BinaryData, String",
+					"description": "GIF file",
+					"default": "",
+					"short": "-g"
+				},
+				{
+					"name": "--keyboard",
+					"types": "String, Structure Of KeyAndValue",
+					"description": "Keyboard. See FormKeyboardFromButtonArray",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemode",
+					"types": "String",
+					"description": "Text processing type (HTML, Markdown, MarkdownV2)",
+					"default": "Markdown",
+					"short": "-p"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "SendMediaGroup",
+			"id": "SENDMEDIAGROUP",
+			"description": "Sends a set of files to a chat or channel. Media types: audio, document, photo, video",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID or ChatID*TopicID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--media",
+					"types": "Map of KeyAndValue",
+					"description": "File collection: Key > File, Value > Media Type",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--keyboard",
+					"types": "String",
+					"description": "Keyboard. See FormKeyboardFromButtonArray",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemode",
+					"types": "String",
+					"description": "Text processing type (HTML, Markdown, MarkdownV2)",
+					"default": "Markdown",
+					"short": "-p"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "SendLocation",
+			"id": "SENDLOCATION",
+			"description": "Sends location by geographic latitude and longitude to a chat or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID or ChatID*TopicID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--lat",
+					"types": "String, Number",
+					"description": "Geographic latitude",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--long",
+					"types": "String, Number",
+					"description": "Geographic longitude",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--keyboard",
+					"types": "String, Structure Of KeyAndValue",
+					"description": "Keyboard. See FormKeyboardFromButtonArray",
+					"default": "Пустое значение",
+					"short": "-k"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "SendContact",
+			"id": "SENDCONTACT",
+			"description": "Sends a contact with name and phone number",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID or ChatID*TopicID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Contact name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--surname",
+					"types": "String",
+					"description": "Contact last name",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--phone",
+					"types": "String",
+					"description": "Contact phone number",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--keyboard",
+					"types": "String, Structure Of KeyAndValue",
+					"description": "Keyboard. See FormKeyboardFromButtonArray",
+					"default": "Пустое значение",
+					"short": "-k"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "SendPoll",
+			"id": "SENDPOLL",
+			"description": "Sends a poll with answer options",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID or ChatID*TopicID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--question",
+					"types": "String",
+					"description": "Poll question",
+					"default": "",
+					"short": "-q"
+				},
+				{
+					"name": "--options",
+					"types": "Array of String",
+					"description": "Array of answer options",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--anonymous",
+					"types": "Boolean",
+					"description": "Survey anonymity flag",
+					"default": true,
+					"short": "-a"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "ForwardMessage",
+			"id": "FORWARDMESSAGE",
+			"description": "Forwards a message between chats or within a chat",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--message",
+					"types": "String, Number",
+					"description": "Original message ID",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--from",
+					"types": "String, Number",
+					"description": "Chat ID of the original message",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--to",
+					"types": "String, Number",
+					"description": "Target chat ID or ChatID*TopicID",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "DeleteMessage",
+			"id": "DELETEMESSAGE",
+			"description": "Delete message from chat or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "String, Number",
+					"description": "ID of message to delete",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "ReplaceMessageKeyboard",
+			"id": "REPLACEMESSAGEKEYBOARD",
+			"description": "Replaces the message keyboard with a new one",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "String, Number",
+					"description": "ID of message to delete",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--keyboard",
+					"types": "String, Structure Of KeyAndValue",
+					"description": "Keyboard. See FormKeyboardFromButtonArray",
+					"default": "",
+					"short": "-k"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "ReplaceMessageText",
+			"id": "REPLACEMESSAGETEXT",
+			"description": "Replaces the message text with a new one",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "String, Number",
+					"description": "ID of message to delete",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "New message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--parsemode",
+					"types": "String",
+					"description": "Text processing type (HTML, Markdown, MarkdownV2)",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "ReplaceMessageCaption",
+			"id": "REPLACEMESSAGECAPTION",
+			"description": "Replaces text in a message with media attachments",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "String, Number",
+					"description": "ID of message to delete",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--caption",
+					"types": "String",
+					"description": "New message description",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--parsemode",
+					"types": "String",
+					"description": "Text processing type (HTML, Markdown, MarkdownV2)",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "FormKeyboardFromButtonArray",
+			"id": "FORMKEYBOARDFROMBUTTONARRAY",
+			"description": "Generates a simple JSON keyboard from an array of buttons for a message or bottom panel",
+			"params": [
+				{
+					"name": "--buttons",
+					"types": "Array of String",
+					"description": "Array of buttons",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--under",
+					"types": "Boolean",
+					"description": "Keyboard under the message or on the bottom panel",
+					"default": false,
+					"short": "-u"
+				},
+				{
+					"name": "--column",
+					"types": "Boolean",
+					"description": "True > buttons are displayed in a column, False > in a row",
+					"default": true,
+					"short": "-c"
+				}
+			],
+			"region": "Data sending"
+		},
+		{
+			"name": "Ban",
+			"id": "BAN",
+			"description": "Bans a user in the selected chat",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID or ChatID*TopicID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--user",
+					"types": "String, Number",
+					"description": "Target user ID",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Administration"
+		},
+		{
+			"name": "Unban",
+			"id": "UNBAN",
+			"description": "Unbans a previously banned user",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID or ChatID*TopicID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--user",
+					"types": "String, Number",
+					"description": "Target user ID",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Administration"
+		},
+		{
+			"name": "CreateInvitationLink",
+			"id": "CREATEINVITATIONLINK",
+			"description": "Creates a link for joining a closed chat",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID or ChatID*TopicID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Invitation title",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--expire",
+					"types": "Date",
+					"description": "Link expiration date (permanent if not specified)",
+					"default": "Пустое значение",
+					"short": "-e"
+				},
+				{
+					"name": "--limit",
+					"types": "Number",
+					"description": "User limit (infinite if not specified)",
+					"default": "Пустое значение",
+					"short": "-l"
+				}
+			],
+			"region": "Administration"
+		},
+		{
+			"name": "PinMessage",
+			"id": "PINMESSAGE",
+			"description": "Pins a message in the chat header",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "String, Number",
+					"description": "Target message ID",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Administration"
+		},
+		{
+			"name": "UnpinMessage",
+			"id": "UNPINMESSAGE",
+			"description": "Unpins a message in the chat header",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "String, Number",
+					"description": "Target message ID",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Administration"
+		},
+		{
+			"name": "GetParticipantCount",
+			"id": "GETPARTICIPANTCOUNT",
+			"description": "Gets the total number of chat participants",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "String, Number",
+					"description": "Target chat ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Administration"
+		},
+		{
+			"name": "GetAvatarIconList",
+			"id": "GETAVATARICONLIST",
+			"description": "Gets the mapping of Emoji IDs for setting as forum theme icons",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Forum topic management"
+		},
+		{
+			"name": "CreateForumTopic",
+			"id": "CREATEFORUMTOPIC",
+			"description": "Creates a new topic in the group with theme functionality enabled",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "String, Number",
+					"description": "Topic creation chat ID",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Topic title",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--icon",
+					"types": "String",
+					"description": "See GetAvatarIconList",
+					"default": "Пустое значение",
+					"short": "-i"
+				}
+			],
+			"region": "Forum topic management"
+		},
+		{
+			"name": "EditForumTopic",
+			"id": "EDITFORUMTOPIC",
+			"description": "Creates a new topic in the group with theme functionality enabled",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "String, Number",
+					"description": "Topic creation chat ID",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--topic",
+					"types": "String, Number",
+					"description": "Topic ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New title",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--icon",
+					"types": "String",
+					"description": "See GetAvatarIconList",
+					"default": "Пустое значение",
+					"short": "-i"
+				}
+			],
+			"region": "Forum topic management"
+		},
+		{
+			"name": "CloseForumTopic",
+			"id": "CLOSEFORUMTOPIC",
+			"description": "Closes the topic for new messages",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "String, Number",
+					"description": "Topic chat ID",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--topic",
+					"types": "String, Number",
+					"description": "Topic ID",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Forum topic management"
+		},
+		{
+			"name": "OpenForumTopic",
+			"id": "OPENFORUMTOPIC",
+			"description": "Reopens a previously closed forum topic",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "String, Number",
+					"description": "Topic chat ID",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--topic",
+					"types": "String, Number",
+					"description": "Topic ID",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Forum topic management"
+		},
+		{
+			"name": "DeleteForumTopic",
+			"id": "DELETEFORUMTOPIC",
+			"description": "Deletes a forum topic",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "String, Number",
+					"description": "Topic chat ID",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--topic",
+					"types": "String, Number",
+					"description": "Topic ID",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Forum topic management"
+		},
+		{
+			"name": "HideMainForumTopic",
+			"id": "HIDEMAINFORUMTOPIC",
+			"description": "Hides the main forum topic",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "String, Number",
+					"description": "Topic chat ID",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Forum topic management"
+		},
+		{
+			"name": "ShowMainForumTopic",
+			"id": "SHOWMAINFORUMTOPIC",
+			"description": "Shows a previously hidden main forum topic",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "String, Number",
+					"description": "Topic chat ID",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Forum topic management"
+		},
+		{
+			"name": "EditMainForumTopicName",
+			"id": "EDITMAINFORUMTOPICNAME",
+			"description": "Edits the name of the main forum topic",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "String, Number",
+					"description": "Topic chat ID",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New main topic name",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Forum topic management"
+		},
+		{
+			"name": "ClearTopicPinnedMessagesList",
+			"id": "CLEARTOPICPINNEDMESSAGESLIST",
+			"description": "Clears the list of pinned messages in the forum topic",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "String, Number",
+					"description": "Topic chat ID",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--topic",
+					"types": "String, Number",
+					"description": "Topic ID. Main if not filled",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Forum topic management"
+		},
+		{
+			"name": "PrepareString",
+			"id": "PREPARESTRING",
+			"description": "",
+			"params": [],
+			"region": "Private"
+		},
+		{
+			"name": "ReplaceSpecialCharacters",
+			"id": "REPLACESPECIALCHARACTERS",
+			"description": "",
+			"params": [],
+			"region": "Private"
+		}
+	]
+}

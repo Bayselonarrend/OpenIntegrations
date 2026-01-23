@@ -1,0 +1,370 @@
+{
+	"module": "viber",
+	"library": "viber",
+	"depends": {
+		"OPI_Viber": "%1/oint/core/Modules/OPI_Viber.os"
+	},
+	"methods": [
+		{
+			"name": "SetWebhook",
+			"id": "SETWEBHOOK",
+			"description": "IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to have a free URL for this.,\n    |    which will return 200 and a genuine SSL certificate. If there is a certificate and the database is published\n    |    on the server - you can use an HTTP service. Information about new messages will also be sent there\n    |    Viber periodically knocks on the Webhook address, so if it is inactive, everything will stop working",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Viber Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL for setting up Webhook",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Settings and information"
+		},
+		{
+			"name": "GetChannelInformation",
+			"id": "GETCHANNELINFORMATION",
+			"description": "Here you can get the channel's user IDs. Bot IDs need to be obtained from the Webhook arrivals\n    |    The user ID from channel information is not suitable for sending messages through the bot - they are different",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Settings and information"
+		},
+		{
+			"name": "GetUserData",
+			"id": "GETUSERDATA",
+			"description": "Gets user information by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--user",
+					"types": "String, Number",
+					"description": "Viber User ID",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Settings and information"
+		},
+		{
+			"name": "GetOnlineUsers",
+			"id": "GETONLINEUSERS",
+			"description": "Gets the status of a user or multiple users by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Viber Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--users",
+					"types": "String,Number,Array of String,Number",
+					"description": "Viber User(s) ID",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Settings and information"
+		},
+		{
+			"name": "SendTextMessage",
+			"id": "SENDTEXTMESSAGE",
+			"description": "Sends a text message to a chat or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--user",
+					"types": "String, Number",
+					"description": "User ID. For channel > administrator, for bot > recipient",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--ischannel",
+					"types": "Boolean",
+					"description": "Sending to channel or bot chat",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--keyboard",
+					"types": "Structure Of String",
+					"description": "See CreateKeyboardFromArrayButton",
+					"default": "Пустое значение",
+					"short": "-k"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "SendImage",
+			"id": "SENDIMAGE",
+			"description": "Sends an image to a chat or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--picture",
+					"types": "String",
+					"description": "Image URL",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--user",
+					"types": "String, Number",
+					"description": "User ID. For channel > administrator, for bot > recipient",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--ischannel",
+					"types": "boolean",
+					"description": "Sending to channel or bot chat",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--description",
+					"types": "String",
+					"description": "Image annotation",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "SendFile",
+			"id": "SENDFILE",
+			"description": "Sends a file (document) to a chat or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--file",
+					"types": "String",
+					"description": "File URL",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--user",
+					"types": "String, Number",
+					"description": "User ID. For channel > administrator, for bot > recipient",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--ischannel",
+					"types": "Boolean",
+					"description": "Sending to channel or bot chat",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--ext",
+					"types": "String",
+					"description": "File extension",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--size",
+					"types": "Number",
+					"description": "File size. If not filled in > determined automatically by downloading the file",
+					"default": "Пустое значение",
+					"short": "-s"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "SendContact",
+			"id": "SENDCONTACT",
+			"description": "Sends a contact with a phone number to a chat or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Contact name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--phone",
+					"types": "String",
+					"description": "Phone number",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--user",
+					"types": "String, Number",
+					"description": "User ID. For channel > administrator, for bot > recipient",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--ischannel",
+					"types": "Boolean",
+					"description": "Sending to channel or bot chat",
+					"default": "",
+					"short": "-i"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "SendLocation",
+			"id": "SENDLOCATION",
+			"description": "Sends geographic coordinates to a chat or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--lat",
+					"types": "String, Number",
+					"description": "Geographic latitude",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--long",
+					"types": "String, Number",
+					"description": "Geographic longitude",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--user",
+					"types": "String, Number",
+					"description": "User ID. For channel > administrator, for bot > recipient",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--ischannel",
+					"types": "Boolean",
+					"description": "Sending to channel or bot chat",
+					"default": "",
+					"short": "-i"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "SendLink",
+			"id": "SENDLINK",
+			"description": "Sends a URL with a preview to a chat or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "SentLink",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--user",
+					"types": "String, Number",
+					"description": "User ID. For channel > administrator, for bot > recipient",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--ischannel",
+					"types": "Boolean",
+					"description": "Sending to channel or bot chat",
+					"default": "",
+					"short": "-i"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "CreateKeyboardFromArrayButton",
+			"id": "CREATEKEYBOARDFROMARRAYBUTTON",
+			"description": "Returns a keyboard structure for messages",
+			"params": [
+				{
+					"name": "--buttons",
+					"types": "Array of String",
+					"description": "Array of buttons",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--color",
+					"types": "String",
+					"description": "HEX color of buttons with # at the beginning",
+					"default": "#2db9b9",
+					"short": "-c"
+				}
+			],
+			"region": "Message sending"
+		}
+	]
+}

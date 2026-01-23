@@ -1,0 +1,1476 @@
+{
+	"module": "s3",
+	"library": "s3",
+	"depends": {
+		"OPI_S3": "%1/oint/core/Modules/OPI_S3.os"
+	},
+	"methods": [
+		{
+			"name": "GetBasicDataStructure",
+			"id": "GETBASICDATASTRUCTURE",
+			"description": "Returns the basic data for request in structured form",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL: domain for common methods or full URL with parameters for direct request sending",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--access",
+					"types": "String",
+					"description": "Access key for authorization",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--secret",
+					"types": "String",
+					"description": "Secret key for authorization",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--region",
+					"types": "String",
+					"description": "Service region",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--service",
+					"types": "String",
+					"description": "Type of service, if different from s3",
+					"default": "s3",
+					"short": "-s"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "SendRequestWithoutBody",
+			"id": "SENDREQUESTWITHOUTBODY",
+			"description": "Sends a simple http request without a body",
+			"params": [
+				{
+					"name": "--method",
+					"types": "String",
+					"description": "HTTP method",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data (with full URL). See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--binary",
+					"types": "Boolean",
+					"description": "Disables an attempt to convert the response to JSON",
+					"default": false,
+					"short": "-b"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "SendRequestWithBody",
+			"id": "SENDREQUESTWITHBODY",
+			"description": "Send http request with body",
+			"params": [
+				{
+					"name": "--method",
+					"types": "String",
+					"description": "HTTP method",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data (with full URL). See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--body",
+					"types": "String, BinaryData",
+					"description": "Binary data or file of request body data",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--binary",
+					"types": "Boolean",
+					"description": "Disables an attempt to convert the response to JSON",
+					"default": false,
+					"short": "-b"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "CreateBucket",
+			"id": "CREATEBUCKET",
+			"description": "Creates a new bucket with the specified name",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Buckets management"
+		},
+		{
+			"name": "DeleteBucket",
+			"id": "DELETEBUCKET",
+			"description": "Deletes the bucket by name",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Buckets management"
+		},
+		{
+			"name": "HeadBucket",
+			"id": "HEADBUCKET",
+			"description": "Checks if the bucket is available for the current account or account by ID",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--account",
+					"types": "String",
+					"description": "Account ID to verify that hes the bucket owner",
+					"default": "Пустое значение",
+					"short": "-a"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Buckets management"
+		},
+		{
+			"name": "PutBucketEncryption",
+			"id": "PUTBUCKETENCRYPTION",
+			"description": "Sets bucket encryption by XML configuration",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--conf",
+					"types": "String",
+					"description": "XML string or file of encryption configuration",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Buckets management"
+		},
+		{
+			"name": "GetBucketEncryption",
+			"id": "GETBUCKETENCRYPTION",
+			"description": "Gets the previously set bucket encryption configuration",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Buckets management"
+		},
+		{
+			"name": "DeleteBucketEncryption",
+			"id": "DELETEBUCKETENCRYPTION",
+			"description": "Deletes the bucket encryption configuration",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Buckets management"
+		},
+		{
+			"name": "PutBucketTagging",
+			"id": "PUTBUCKETTAGGING",
+			"description": "Sets the tag set for the bucket",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--tagset",
+					"types": "Structure Of KeyAndValue",
+					"description": "Set of tags (key and value)",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Buckets management"
+		},
+		{
+			"name": "GetBucketTagging",
+			"id": "GETBUCKETTAGGING",
+			"description": "Gets the bucket tag set",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Buckets management"
+		},
+		{
+			"name": "DeleteBucketTagging",
+			"id": "DELETEBUCKETTAGGING",
+			"description": "Deletes the bucket tag set",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Buckets management"
+		},
+		{
+			"name": "PutBucketVersioning",
+			"id": "PUTBUCKETVERSIONING",
+			"description": "Sets the versioning settings for bucket objects",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--status",
+					"types": "Boolean",
+					"description": "Enable and disable versioning, if necessary",
+					"default": "Пустое значение",
+					"short": "-s"
+				},
+				{
+					"name": "--mfad",
+					"types": "Boolean",
+					"description": "Enable and disable MFA deletion, if necessary",
+					"default": "Пустое значение",
+					"short": "-m"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Buckets management"
+		},
+		{
+			"name": "GetBucketVersioning",
+			"id": "GETBUCKETVERSIONING",
+			"description": "Gets the values of versioning settings of objects in the bucket",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Buckets management"
+		},
+		{
+			"name": "ListBuckets",
+			"id": "LISTBUCKETS",
+			"description": "Gets a list of buckets. It is possible to use filters if they are provided by your service",
+			"params": [
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--prefix",
+					"types": "String",
+					"description": "Filtering by prefix, if necessary",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--region",
+					"types": "String",
+					"description": "Selection by bucket region, if necessary",
+					"default": "Пустое значение",
+					"short": "-r"
+				},
+				{
+					"name": "--ctoken",
+					"types": "String",
+					"description": "Page token if pagination is used",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Buckets management"
+		},
+		{
+			"name": "PutObject",
+			"id": "PUTOBJECT",
+			"description": "Uploads the file to the bucket",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Name of the object in the bucket",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Name of the bucket to put the object",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--data",
+					"types": "String, BinaryData",
+					"description": "File path or binary data of the object",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "UploadFullObject",
+			"id": "UPLOADFULLOBJECT",
+			"description": "Upload object with single request",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Name of the object in the bucket",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Name of the bucket to put the object",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--data",
+					"types": "String, BinaryData",
+					"description": "File path or binary data of the object",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "InitPartsUpload",
+			"id": "INITPARTSUPLOAD",
+			"description": "Initializes the multipart object uploading",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Name of the object in the bucket",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Name of the bucket to put the object",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "UploadObjectPart",
+			"id": "UPLOADOBJECTPART",
+			"description": "Uploads a part of an object for multipart uploading",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Name of the object in the bucket",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Name of the bucket to put the object",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--upload",
+					"types": "String",
+					"description": "Upload ID. See InitPartsUpload",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--part",
+					"types": "Number, String",
+					"description": "Number of the object part from 1 to 10000",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--content",
+					"types": "BinaryData, String",
+					"description": "Part content for uploading",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "FinishPartsUpload",
+			"id": "FINISHPARTSUPLOAD",
+			"description": "Confirms the multipart uploading finish",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Name of the object in the bucket",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Name of the bucket to put the object",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--upload",
+					"types": "String",
+					"description": "Upload ID. See InitPartsUpload",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--tags",
+					"types": "Array Of String",
+					"description": "An array of tags (Etag) from the uploads responses of each part",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "AbortMultipartUpload",
+			"id": "ABORTMULTIPARTUPLOAD",
+			"description": "Aborts the multipart uploading of the object",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Name of the object in the bucket",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Name of the bucket to put the object",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--upload",
+					"types": "String",
+					"description": "Upload ID. See InitPartsUpload",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "HeadObject",
+			"id": "HEADOBJECT",
+			"description": "Receives information about the properties of the object in the baquette",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Name of the object in the bucket",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Name of the bucket in which the object is stored",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--ver",
+					"types": "String",
+					"description": "Token for receiving a specific version of an object",
+					"default": "Пустое значение",
+					"short": "-v"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "GetObject",
+			"id": "GETOBJECT",
+			"description": "Gets the contents of the object from the bucket",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Name of the object in the bucket",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Name of the bucket in which the object is stored",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--ver",
+					"types": "String",
+					"description": "Token for receiving a specific version of an object",
+					"default": "Пустое значение",
+					"short": "-v"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--out",
+					"types": "String",
+					"description": "Path to directly write a file to disk",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "DeleteObject",
+			"id": "DELETEOBJECT",
+			"description": "Removes the object from the bucket",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Name of the object in the bucket",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Name of the bucket to put the object",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--ver",
+					"types": "String",
+					"description": "Token for deleting a specific version of an object",
+					"default": "Пустое значение",
+					"short": "-v"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "CopyObject",
+			"id": "COPYOBJECT",
+			"description": "Copies an object from one location to another",
+			"params": [
+				{
+					"name": "--sname",
+					"types": "String",
+					"description": "Path (name) in the source bucket",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--sbucket",
+					"types": "String",
+					"description": "Source bucket name",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Path (name) in the destination bucket",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Destination bucket name",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "PutObjectTagging",
+			"id": "PUTOBJECTTAGGING",
+			"description": "Sets the tag set of the object",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Object name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--tagset",
+					"types": "Structure Of KeyAndValue",
+					"description": "Set of tags (key and value)",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "GetObjectTagging",
+			"id": "GETOBJECTTAGGING",
+			"description": "Gets the tag set of the object",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Object name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--ver",
+					"types": "String",
+					"description": "Token for retrieving data of a specific version of an object",
+					"default": "Пустое значение",
+					"short": "-v"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "DeleteObjectTagging",
+			"id": "DELETEOBJECTTAGGING",
+			"description": "Deletes an objects tag set",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Object name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--ver",
+					"types": "String",
+					"description": "Token for deleting data of a specific version of an object",
+					"default": "Пустое значение",
+					"short": "-v"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "ListObjects",
+			"id": "LISTOBJECTS",
+			"description": "Gets the list of objects in the selected bucket",
+			"params": [
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--prefix",
+					"types": "String",
+					"description": "Filtering by prefix, if necessary",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--ctoken",
+					"types": "String",
+					"description": "Page token if pagination is used",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "ListObjectVersions",
+			"id": "LISTOBJECTVERSIONS",
+			"description": "Gets a list of all versions of objects in the selected bucket",
+			"params": [
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Bucket name",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--prefix",
+					"types": "String",
+					"description": "Filtering by prefix, if necessary",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--ver",
+					"types": "String",
+					"description": "Version ID for the beginning of the list",
+					"default": "Пустое значение",
+					"short": "-v"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "GetObjectDownloadLink",
+			"id": "GETOBJECTDOWNLOADLINK",
+			"description": "Get presigned link for object retrieving without authorization",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Name of the object in the bucket",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Name of the bucket to put the object",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--expires",
+					"types": "String, Number",
+					"description": "Link lifetime in seconds. 604800 max.",
+					"default": 3600,
+					"short": "-e"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		},
+		{
+			"name": "GetObjectUploadLink",
+			"id": "GETOBJECTUPLOADLINK",
+			"description": "Gets a direct link to upload (put) an object without additional authorization",
+			"params": [
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Name of the object in the bucket",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "String",
+					"description": "Name of the bucket to put the object",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Structure Of KeyAndValue",
+					"description": "Basic request data. See GetBasicDataStructure",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--expires",
+					"types": "String, Number",
+					"description": "Link lifetime in seconds. 604800 max.",
+					"default": 3600,
+					"short": "-e"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Boolean",
+					"description": "True > Path style URL, False > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Objects management"
+		}
+	]
+}

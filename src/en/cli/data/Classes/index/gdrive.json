@@ -1,0 +1,518 @@
+{
+	"module": "gdrive",
+	"library": "gdrive",
+	"depends": {
+		"OPI_GoogleDrive": "%1/oint/core/Modules/OPI_GoogleDrive.os",
+		"OPI_GoogleWorkspace": "%1/oint/core/Modules/OPI_GoogleWorkspace.os"
+	},
+	"methods": [
+		{
+			"name": "FormCodeRetrievalLink",
+			"id": "FORMCODERETRIEVALLINK",
+			"description": "Returns URL for browser authorization",
+			"params": [
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--calendar",
+					"types": "Boolean",
+					"description": "Calendar methods permission",
+					"default": true,
+					"short": "-c"
+				},
+				{
+					"name": "--drive",
+					"types": "Boolean",
+					"description": "Drive methods permission",
+					"default": true,
+					"short": "-d"
+				},
+				{
+					"name": "--sheets",
+					"types": "Boolean",
+					"description": "Sheets methods permission",
+					"default": true,
+					"short": "-s"
+				}
+			],
+			"region": "Authorization"
+		},
+		{
+			"name": "GetTokenByCode",
+			"id": "GETTOKENBYCODE",
+			"description": "Gets token by code from browser authorization",
+			"params": [
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "String",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--code",
+					"types": "String",
+					"description": "Code from browser",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Authorization"
+		},
+		{
+			"name": "RefreshToken",
+			"id": "REFRESHTOKEN",
+			"description": "Updates token by Refresh token",
+			"params": [
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "String",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--refresh",
+					"types": "String",
+					"description": "Refresh token",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Authorization"
+		},
+		{
+			"name": "GetServiceAccountToken",
+			"id": "GETSERVICEACCOUNTTOKEN",
+			"description": "Gets authorization token by service account data",
+			"params": [
+				{
+					"name": "--auth",
+					"types": "Arbitrary",
+					"description": "JSON authorization data as a file, collection or binary data",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--scope",
+					"types": "Array Of String",
+					"description": "Scope or array of scopes",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--exp",
+					"types": "Number",
+					"description": "Token lifetime in seconds",
+					"default": 3600,
+					"short": "-e"
+				}
+			],
+			"region": "Authorization"
+		},
+		{
+			"name": "GetObjectInformation",
+			"id": "GETOBJECTINFORMATION",
+			"description": "Gets information about a folder or file by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "String",
+					"description": "Identifier of the file or folder",
+					"default": "",
+					"short": "-o"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "GetDirectoriesList",
+			"id": "GETDIRECTORIESLIST",
+			"description": "Gets the list of drive directories",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--querry",
+					"types": "String",
+					"description": "Filter by name",
+					"default": "Пустое значение",
+					"short": "-q"
+				},
+				{
+					"name": "--depth",
+					"types": "Boolean",
+					"description": "Adds a list of files to the directory fields",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "GetFilesList",
+			"id": "GETFILESLIST",
+			"description": "Gets the list of files",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--querry",
+					"types": "String",
+					"description": "Filter by name",
+					"default": "Пустое значение",
+					"short": "-q"
+				},
+				{
+					"name": "--catalog",
+					"types": "String",
+					"description": "Filter by parent directory ID",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "UploadFile",
+			"id": "UPLOADFILE",
+			"description": "Uploads a file to the drive",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--file",
+					"types": "BinaryData,String",
+					"description": "File to be uploaded",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--props",
+					"types": "Map Of KeyAndValue",
+					"description": "See GetFileDescription",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "CreateFolder",
+			"id": "CREATEFOLDER",
+			"description": "Creates an empty directory on the drive",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Folder name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--catalog",
+					"types": "String",
+					"description": "Parent",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "DownloadFile",
+			"id": "DOWNLOADFILE",
+			"description": "Gets file by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "String",
+					"description": "File identifier",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--out",
+					"types": "String",
+					"description": "File save path",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "CopyObject",
+			"id": "COPYOBJECT",
+			"description": "Copies file or directory",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "String",
+					"description": "Object identifier",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New object name",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--catalog",
+					"types": "String",
+					"description": "New parent directory",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "UpdateFile",
+			"id": "UPDATEFILE",
+			"description": "Updates file binary data",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "String",
+					"description": "Identifier of the object to update",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--file",
+					"types": "BinaryData,String",
+					"description": "File source for update",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New file name (if necessary)",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "DeleteObject",
+			"id": "DELETEOBJECT",
+			"description": "Deletes file or directory by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "String",
+					"description": "Identifier of the object to delete",
+					"default": "",
+					"short": "-o"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "GetFileDescription",
+			"id": "GETFILEDESCRIPTION",
+			"description": "Gets a blank description template for uploading a file",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "File and directory management"
+		},
+		{
+			"name": "CreateComment",
+			"id": "CREATECOMMENT",
+			"description": "Creates a comment for a file or directory",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "String",
+					"description": "Identifier of the object that needs a comment",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Comment text",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Comment management"
+		},
+		{
+			"name": "GetComment",
+			"id": "GETCOMMENT",
+			"description": "Gets comment by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "String",
+					"description": "Identifier of the file or directory where the comment is located",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--comment",
+					"types": "String",
+					"description": "Comment identifier",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Comment management"
+		},
+		{
+			"name": "GetCommentList",
+			"id": "GETCOMMENTLIST",
+			"description": "Gets the list of all comments of the object",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "String",
+					"description": "Object identifier",
+					"default": "",
+					"short": "-o"
+				}
+			],
+			"region": "Comment management"
+		},
+		{
+			"name": "DeleteComment",
+			"id": "DELETECOMMENT",
+			"description": "Deletes comment by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--object",
+					"types": "String",
+					"description": "Identifier of the file or directory where the comment is located",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--comment",
+					"types": "String",
+					"description": "Comment identifier",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Comment management"
+		}
+	]
+}

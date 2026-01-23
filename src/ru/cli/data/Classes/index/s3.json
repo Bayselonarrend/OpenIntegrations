@@ -1,0 +1,1476 @@
+{
+	"module": "s3",
+	"library": "s3",
+	"depends": {
+		"OPI_S3": "%1/oint/core/Modules/OPI_S3.os"
+	},
+	"methods": [
+		{
+			"name": "ПолучитьСтруктуруДанных",
+			"id": "ПОЛУЧИТЬСТРУКТУРУДАННЫХ",
+			"description": "Возвращает основные данные запроса в структурированном виде",
+			"params": [
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL: домен для обычных методов или полный URL с параметрами для прямой отправки запросов",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--access",
+					"types": "Строка",
+					"description": "Access key для авторизации",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--secret",
+					"types": "Строка",
+					"description": "Secret key для авторизации",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--region",
+					"types": "Строка",
+					"description": "Регион сервиса",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--service",
+					"types": "Строка",
+					"description": "Вид сервиса, если отличен от s3",
+					"default": "s3",
+					"short": "-s"
+				}
+			],
+			"region": "Общие методы"
+		},
+		{
+			"name": "ОтправитьЗапросБезТела",
+			"id": "ОТПРАВИТЬЗАПРОСБЕЗТЕЛА",
+			"description": "Отправляет простой http запрос без тела",
+			"params": [
+				{
+					"name": "--method",
+					"types": "Строка",
+					"description": "HTTP метод",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса (c полным URL). См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--binary",
+					"types": "Булево",
+					"description": "Отключает попытку преобразования ответа в JSON",
+					"default": false,
+					"short": "-b"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Общие методы"
+		},
+		{
+			"name": "ОтправитьЗапросСТелом",
+			"id": "ОТПРАВИТЬЗАПРОССТЕЛОМ",
+			"description": "Отправляет http запрос с телом",
+			"params": [
+				{
+					"name": "--method",
+					"types": "Строка",
+					"description": "HTTP метод",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса (c полным URL). См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--body",
+					"types": "Строка, ДвоичныеДанные",
+					"description": "Двоичное тело запроса или путь к файлу",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--binary",
+					"types": "Булево",
+					"description": "Отключает попытку преобразования ответа в JSON",
+					"default": false,
+					"short": "-b"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Общие методы"
+		},
+		{
+			"name": "СоздатьБакет",
+			"id": "СОЗДАТЬБАКЕТ",
+			"description": "Создает новый бакет с выбранным именем",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с бакетами"
+		},
+		{
+			"name": "УдалитьБакет",
+			"id": "УДАЛИТЬБАКЕТ",
+			"description": "Удаляет бакет с выбранным именем",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с бакетами"
+		},
+		{
+			"name": "ПроверитьДоступностьБакета",
+			"id": "ПРОВЕРИТЬДОСТУПНОСТЬБАКЕТА",
+			"description": "Проверяет доступность бакета для текущего аккаунта или аккаунта по ID",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--account",
+					"types": "Строка",
+					"description": "ID аккаунта для проверки, что бакет принадлежит ему",
+					"default": "Пустое значение",
+					"short": "-a"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с бакетами"
+		},
+		{
+			"name": "УстановитьШифрованиеБакета",
+			"id": "УСТАНОВИТЬШИФРОВАНИЕБАКЕТА",
+			"description": "Устанавлиает шифрование бакета по XML конфигурации",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--conf",
+					"types": "Строка",
+					"description": "XML строка или файл конфигурации шифрования",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с бакетами"
+		},
+		{
+			"name": "ПолучитьШифрованиеБакета",
+			"id": "ПОЛУЧИТЬШИФРОВАНИЕБАКЕТА",
+			"description": "Получает установленную ранее конфигурацию шифрования бакета",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с бакетами"
+		},
+		{
+			"name": "УдалитьШифрованиеБакета",
+			"id": "УДАЛИТЬШИФРОВАНИЕБАКЕТА",
+			"description": "Удаляет конфигурацию шифрования бакета",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с бакетами"
+		},
+		{
+			"name": "УстановитьТегиБакета",
+			"id": "УСТАНОВИТЬТЕГИБАКЕТА",
+			"description": "Устанавливает набор тегов для бакета",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--tagset",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Набор тегов (ключ и значение) для установки",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с бакетами"
+		},
+		{
+			"name": "ПолучитьТегиБакета",
+			"id": "ПОЛУЧИТЬТЕГИБАКЕТА",
+			"description": "Получает набор тегов бакета",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с бакетами"
+		},
+		{
+			"name": "УдалитьТегиБакета",
+			"id": "УДАЛИТЬТЕГИБАКЕТА",
+			"description": "Удаляет набор тегов бакета",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с бакетами"
+		},
+		{
+			"name": "УстановитьНастройкиВерсионированияБакета",
+			"id": "УСТАНОВИТЬНАСТРОЙКИВЕРСИОНИРОВАНИЯБАКЕТА",
+			"description": "Устанавливает настройки версионирования объектов бакета",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--status",
+					"types": "Булево",
+					"description": "Включение и отключение версионирования, если необходимо",
+					"default": "Пустое значение",
+					"short": "-s"
+				},
+				{
+					"name": "--mfad",
+					"types": "Булево",
+					"description": "Включение и отключение удаления MFA, если необходимо",
+					"default": "Пустое значение",
+					"short": "-m"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с бакетами"
+		},
+		{
+			"name": "ПолучитьНастройкийВерсионированияБакета",
+			"id": "ПОЛУЧИТЬНАСТРОЙКИЙВЕРСИОНИРОВАНИЯБАКЕТА",
+			"description": "Получает значения настроек версионирования объектов в бакете",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с бакетами"
+		},
+		{
+			"name": "ПолучитьСписокБакетов",
+			"id": "ПОЛУЧИТЬСПИСОКБАКЕТОВ",
+			"description": "Получает список бакетов. Возможно использование отборов, если они поддерживаются сервисом",
+			"params": [
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--prefix",
+					"types": "Строка",
+					"description": "Отбор по префиксу, если необходимо",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--region",
+					"types": "Строка",
+					"description": "Отбор по региону бакета, если необходимо",
+					"default": "Пустое значение",
+					"short": "-r"
+				},
+				{
+					"name": "--ctoken",
+					"types": "Строка",
+					"description": "Токен страницы, если используется пагинация",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Работа с бакетами"
+		},
+		{
+			"name": "ЗагрузитьОбъект",
+			"id": "ЗАГРУЗИТЬОБЪЕКТ",
+			"description": "Загружает файл в бакет",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование объекта в бакете",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Имя бакета для загрузки объекта",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--data",
+					"types": "Строка, ДвоичныеДанные",
+					"description": "Данные или путь к файлу для загрузки",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "ЗагрузитьОбъектЦеликом",
+			"id": "ЗАГРУЗИТЬОБЪЕКТЦЕЛИКОМ",
+			"description": "Загружает объект на сервер не используюя загрузку по частям",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование объекта в бакете",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Имя бакета для загрузки объекта",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--data",
+					"types": "Строка, ДвоичныеДанные",
+					"description": "Данные или путь к файлу для загрузки",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "ИнициализироватьЗагрузкуЧастями",
+			"id": "ИНИЦИАЛИЗИРОВАТЬЗАГРУЗКУЧАСТЯМИ",
+			"description": "Инициализирует загрузку объекта по частям",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование объекта в бакете",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Имя бакета для загрузки объекта",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "ЗагрузитьЧастьОбъекта",
+			"id": "ЗАГРУЗИТЬЧАСТЬОБЪЕКТА",
+			"description": "Загружает часть объекта при загрузке по частям",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование объекта в бакете",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Имя бакета для загрузки объекта",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--upload",
+					"types": "Строка",
+					"description": "ID загрузки по частям. См. ИнициализироватьЗагрузкуЧастями",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--part",
+					"types": "Число, Строка",
+					"description": "Порядковый номер части объекта от 1 до 10000",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--content",
+					"types": "ДвоичныеДанные, Строка",
+					"description": "Данные части для загрузки",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "ЗавершитьЗагрузкуЧастями",
+			"id": "ЗАВЕРШИТЬЗАГРУЗКУЧАСТЯМИ",
+			"description": "Подтверждает окончание загрузки объекта по частям\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование объекта в бакете",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Имя бакета для загрузки объекта",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--upload",
+					"types": "Строка",
+					"description": "ID загрузки по частям. См. ИнициализироватьЗагрузкуЧастями",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--tags",
+					"types": "Массив Из Строка",
+					"description": "Массив тегов (Etag) из загрузок каждой части",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "ОтменитьЗагрузкуЧастями",
+			"id": "ОТМЕНИТЬЗАГРУЗКУЧАСТЯМИ",
+			"description": "Отменяет загрузку объекта по частям",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование объекта в бакете",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Имя бакета для загрузки объекта",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--upload",
+					"types": "Строка",
+					"description": "ID загрузки по частям. См. ИнициализироватьЗагрузкуЧастями",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "ПолучитьОписаниеОбъекта",
+			"id": "ПОЛУЧИТЬОПИСАНИЕОБЪЕКТА",
+			"description": "Получает информацию о характеристиках объекта в бакете",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование объекта в бакете",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Имя бакета, в котором находится объект",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--ver",
+					"types": "Строка",
+					"description": "Токен для получения конкретной версии объекта",
+					"default": "Пустое значение",
+					"short": "-v"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "ПолучитьОбъект",
+			"id": "ПОЛУЧИТЬОБЪЕКТ",
+			"description": "Получает содержимое объекта из бакета",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование объекта в бакете",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Имя бакета, в котором находится объект",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--ver",
+					"types": "Строка",
+					"description": "Токен для получения конкретной версии объекта",
+					"default": "Пустое значение",
+					"short": "-v"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--out",
+					"types": "Строка",
+					"description": "Путь для прямой записи файла на диск",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "УдалитьОбъект",
+			"id": "УДАЛИТЬОБЪЕКТ",
+			"description": "Удаляет объект из бакета",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование объекта в бакете",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Имя бакета для загрузки объекта",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--ver",
+					"types": "Строка",
+					"description": "Токен для удаления конкретной версии объекта",
+					"default": "Пустое значение",
+					"short": "-v"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "КопироватьОбъект",
+			"id": "КОПИРОВАТЬОБЪЕКТ",
+			"description": "Копирует объект из одного расположения в другое",
+			"params": [
+				{
+					"name": "--sname",
+					"types": "Строка",
+					"description": "Путь (имя) в бакете источнике",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--sbucket",
+					"types": "Строка",
+					"description": "Бакет источник объекта",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Путь (имя) объекта в бакете приемнике",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Имя бакета приемника",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "УстановитьТегиОбъекта",
+			"id": "УСТАНОВИТЬТЕГИОБЪЕКТА",
+			"description": "Устанавливает набор тегов для объекта",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование объекта",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--tagset",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Набор тегов (ключ и значение) для установки",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "ПолучитьТегиОбъекта",
+			"id": "ПОЛУЧИТЬТЕГИОБЪЕКТА",
+			"description": "Получает набор тегов объекта",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование объекта",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--ver",
+					"types": "Строка",
+					"description": "Токен для получения данных конкретной версии объекта",
+					"default": "Пустое значение",
+					"short": "-v"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "УдалитьТегиОбъекта",
+			"id": "УДАЛИТЬТЕГИОБЪЕКТА",
+			"description": "Удаляет набор тегов объекта",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование объекта",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--ver",
+					"types": "Строка",
+					"description": "Токен для удаления данных конкретной версии объекта",
+					"default": "Пустое значение",
+					"short": "-v"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "ПолучитьСписокОбъектов",
+			"id": "ПОЛУЧИТЬСПИСОКОБЪЕКТОВ",
+			"description": "Получает список объектов в выбранном бакете",
+			"params": [
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--prefix",
+					"types": "Строка",
+					"description": "Отбор по префиксу, если необходимо",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--ctoken",
+					"types": "Строка",
+					"description": "Токен страницы, если используется пагинация",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "ПолучитьСписокВерсийОбъектов",
+			"id": "ПОЛУЧИТЬСПИСОКВЕРСИЙОБЪЕКТОВ",
+			"description": "Получает список всех версий объектов в выбранном бакете",
+			"params": [
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Наименование бакета",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--prefix",
+					"types": "Строка",
+					"description": "Отбор по префиксу, если необходимо",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--ver",
+					"types": "Строка",
+					"description": "ID версии начала списка",
+					"default": "Пустое значение",
+					"short": "-v"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "ПолучитьСсылкуСкачиванияОбъекта",
+			"id": "ПОЛУЧИТЬССЫЛКУСКАЧИВАНИЯОБЪЕКТА",
+			"description": "Получает прямую ссылку для скачивания объекта без дополнительной авторизации",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование объекта в бакете",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Имя бакета для загрузки объекта",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--expires",
+					"types": "Строка, Число",
+					"description": "Время жизни ссылки в секундах. 604800 максимум",
+					"default": 3600,
+					"short": "-e"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		},
+		{
+			"name": "ПолучитьСсылкуЗагрузкиОбъекта",
+			"id": "ПОЛУЧИТЬССЫЛКУЗАГРУЗКИОБЪЕКТА",
+			"description": "Получает прямую ссылку для загрузки объекта без дополнительной авторизации",
+			"params": [
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Наименование объекта в бакете",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--bucket",
+					"types": "Строка",
+					"description": "Имя бакета для загрузки объекта",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--basic",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--expires",
+					"types": "Строка, Число",
+					"description": "Время жизни ссылки в секундах. 604800 максимум",
+					"default": 3600,
+					"short": "-e"
+				},
+				{
+					"name": "--headers",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Дополнительные заголовки запроса, если необходимо",
+					"default": "Пустое значение",
+					"short": "-h"
+				},
+				{
+					"name": "--dir",
+					"types": "Булево",
+					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с объектами"
+		}
+	]
+}

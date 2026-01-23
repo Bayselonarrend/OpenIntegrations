@@ -1,0 +1,1022 @@
+{
+	"module": "mongodb",
+	"library": "mongodb",
+	"depends": {
+		"OPI_MongoDB": "%1/oint/core/Modules/OPI_MongoDB.os"
+	},
+	"methods": [
+		{
+			"name": "CreateConnection",
+			"id": "CREATECONNECTION",
+			"description": "",
+			"params": [],
+			"region": "Common methods"
+		},
+		{
+			"name": "CloseConnection",
+			"id": "CLOSECONNECTION",
+			"description": "",
+			"params": [],
+			"region": "Common methods"
+		},
+		{
+			"name": "IsConnector",
+			"id": "ISCONNECTOR",
+			"description": "",
+			"params": [],
+			"region": "Common methods"
+		},
+		{
+			"name": "GenerateConnectionString",
+			"id": "GENERATECONNECTIONSTRING",
+			"description": "Forms a MongoDB connection string",
+			"params": [
+				{
+					"name": "--addr",
+					"types": "String",
+					"description": "Host IP address with port or URL",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database, if necessary",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--usr",
+					"types": "String",
+					"description": "Username for authorization",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--pwd",
+					"types": "String",
+					"description": "Password for authorization",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue, Undefined",
+					"description": "Additional connection parameters",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "ExecuteCommand",
+			"id": "EXECUTECOMMAND",
+			"description": "Executes the command according to its description",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--comm",
+					"types": "String",
+					"description": "Command name to execute",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--arg",
+					"types": "Arbitrary",
+					"description": "Command argument",
+					"default": 1,
+					"short": "-a"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database in which the operation needs to be performed",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--data",
+					"types": "Structure Of KeyAndValue",
+					"description": "Main data fields for performing the operation",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetListOfBases",
+			"id": "GETLISTOFBASES",
+			"description": "Gets the list of databases",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				}
+			],
+			"region": "Working with databases"
+		},
+		{
+			"name": "GetDatabase",
+			"id": "GETDATABASE",
+			"description": "Gets information about the database",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Working with databases"
+		},
+		{
+			"name": "DeleteDatabase",
+			"id": "DELETEDATABASE",
+			"description": "Deletes the database",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Working with databases"
+		},
+		{
+			"name": "GetCollectionList",
+			"id": "GETCOLLECTIONLIST",
+			"description": "Gets a list of database collections",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Collection management"
+		},
+		{
+			"name": "CreateCollection",
+			"id": "CREATECOLLECTION",
+			"description": "Creates a new collection with the specified parameters",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Collection name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional creation parameters",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Collection management"
+		},
+		{
+			"name": "DeleteCollection",
+			"id": "DELETECOLLECTION",
+			"description": "Deletes the selected database collection",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--coll",
+					"types": "String",
+					"description": "Collection name",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Collection management"
+		},
+		{
+			"name": "InsertDocuments",
+			"id": "INSERTDOCUMENTS",
+			"description": "Inserts new documents into the collection",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--coll",
+					"types": "String",
+					"description": "Collection name",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--docs",
+					"types": "Array Of Arbitrary",
+					"description": "Array of docs objects",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional insert options",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Documents management"
+		},
+		{
+			"name": "UpdateDocuments",
+			"id": "UPDATEDOCUMENTS",
+			"description": "Updates document data in the collection",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--coll",
+					"types": "String",
+					"description": "Collection name",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--updates",
+					"types": "Array of Structure",
+					"description": "Update array. See GetDocumentUpdateStructure",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional insert options",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Documents management"
+		},
+		{
+			"name": "GetDocuments",
+			"id": "GETDOCUMENTS",
+			"description": "Gets collection documents",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--coll",
+					"types": "String",
+					"description": "Collection name",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--query",
+					"types": "Structure Of KeyAndValue",
+					"description": "Document filter",
+					"default": "Пустое значение",
+					"short": "-q"
+				},
+				{
+					"name": "--sort",
+					"types": "Structure Of KeyAndValue",
+					"description": "Selection sorting",
+					"default": "Пустое значение",
+					"short": "-s"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional retrieval parameters",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Documents management"
+		},
+		{
+			"name": "DeleteDocuments",
+			"id": "DELETEDOCUMENTS",
+			"description": "Deletes collection documents",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--coll",
+					"types": "String",
+					"description": "Collection name",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--deletes",
+					"types": "Array of Structure",
+					"description": "Deletion array. See GetDocumentDeletionStructure",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional insert options",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Documents management"
+		},
+		{
+			"name": "GetCursor",
+			"id": "GETCURSOR",
+			"description": "",
+			"params": [],
+			"region": "Documents management"
+		},
+		{
+			"name": "GetDocumentBatch",
+			"id": "GETDOCUMENTBATCH",
+			"description": "",
+			"params": [],
+			"region": "Documents management"
+		},
+		{
+			"name": "GetDocumentUpdateStructure",
+			"id": "GETDOCUMENTUPDATESTRUCTURE",
+			"description": "Forms data structure for updating documents",
+			"params": [
+				{
+					"name": "--query",
+					"types": "Structure Of KeyAndValue",
+					"description": "Document filter",
+					"default": "",
+					"short": "-q"
+				},
+				{
+					"name": "--data",
+					"types": "Structure Of KeyAndValue",
+					"description": "New document data for update",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--multi",
+					"types": "Boolean",
+					"description": "True > updates all documents by filter, False > only one",
+					"default": true,
+					"short": "-m"
+				},
+				{
+					"name": "--upsert",
+					"types": "Boolean",
+					"description": "Insert a new document if no document was found",
+					"default": false,
+					"short": "-u"
+				},
+				{
+					"name": "--cltn",
+					"types": "Structure Of KeyAndValue",
+					"description": "Special field comparison rules",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Documents management"
+		},
+		{
+			"name": "GetDocumentDeletionStructure",
+			"id": "GETDOCUMENTDELETIONSTRUCTURE",
+			"description": "Forms data structure for update",
+			"params": [
+				{
+					"name": "--query",
+					"types": "Structure Of KeyAndValue",
+					"description": "Document filter",
+					"default": "",
+					"short": "-q"
+				},
+				{
+					"name": "--limit",
+					"types": "Number",
+					"description": "Deletion limit: 1 > first document, 0 > all documents",
+					"default": "Пустое значение",
+					"short": "-l"
+				},
+				{
+					"name": "--cltn",
+					"types": "Structure Of KeyAndValue",
+					"description": "Special field comparison rules",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Documents management"
+		},
+		{
+			"name": "CreateUser",
+			"id": "CREATEUSER",
+			"description": "Creates a new user",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Users name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--roles",
+					"types": "Array Of Arbitrary",
+					"description": "Array of roles as strings or structures specifying the DB",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--pwd",
+					"types": "String",
+					"description": "Users password",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional creation parameters",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "UpdateUser",
+			"id": "UPDATEUSER",
+			"description": "Modifies existing user data",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Users name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--roles",
+					"types": "Array Of Arbitrary",
+					"description": "Array of roles as strings or structures specifying the DB",
+					"default": "Пустое значение",
+					"short": "-r"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--pwd",
+					"types": "String",
+					"description": "Users password",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional parameters",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "GetUsers",
+			"id": "GETUSERS",
+			"description": "Gets data of one or more users",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--usrs",
+					"types": "Arbitrary",
+					"description": "Username, structure, or array of user structures",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--spwd",
+					"types": "Boolean",
+					"description": "Adds user password hash to the returned data",
+					"default": false,
+					"short": "-s"
+				},
+				{
+					"name": "--sprv",
+					"types": "Boolean",
+					"description": "Adds a list of user privileges to the returned data",
+					"default": false,
+					"short": "-s"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "GetDatabaseUsers",
+			"id": "GETDATABASEUSERS",
+			"description": "Gets information about all database users",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--spwd",
+					"types": "Boolean",
+					"description": "Adds user password hash to the returned data",
+					"default": false,
+					"short": "-s"
+				},
+				{
+					"name": "--sprv",
+					"types": "Boolean",
+					"description": "Adds a list of user privileges to the returned data",
+					"default": false,
+					"short": "-s"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "DeleteUser",
+			"id": "DELETEUSER",
+			"description": "Deletes user by name",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Users name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional deletion parameters",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Users management"
+		},
+		{
+			"name": "CreateRole",
+			"id": "CREATEROLE",
+			"description": "Creates a new role",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Role name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--prvl",
+					"types": "Array of Structure",
+					"description": "prvl",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--roles",
+					"types": "Array Of Arbitrary",
+					"description": "Array of roles based on strings or structures specifying the database",
+					"default": "Пустое значение",
+					"short": "-r"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional deletion parameters",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Role management"
+		},
+		{
+			"name": "UpdateRole",
+			"id": "UPDATEROLE",
+			"description": "Modifies the data of an existing role",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Role name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--prvl",
+					"types": "Array of Structure",
+					"description": "Array of privileges. See GetRolePrivilegeStructure",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--roles",
+					"types": "Array Of Arbitrary",
+					"description": "Array of roles based on strings or structures specifying the database",
+					"default": "Пустое значение",
+					"short": "-r"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional deletion parameters",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Role management"
+		},
+		{
+			"name": "GetRoles",
+			"id": "GETROLES",
+			"description": "Gets information about the specified fields",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--roles",
+					"types": "Arbitrary",
+					"description": "Role or list of roles",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--sprv",
+					"types": "Boolean",
+					"description": "Adds a list of role privileges to the returned data",
+					"default": false,
+					"short": "-s"
+				}
+			],
+			"region": "Role management"
+		},
+		{
+			"name": "DeleteRole",
+			"id": "DELETEROLE",
+			"description": "Deletes an existing role",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Role name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional deletion parameters",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Role management"
+		},
+		{
+			"name": "GrantRoles",
+			"id": "GRANTROLES",
+			"description": "Grants selected roles to a user",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--user",
+					"types": "String",
+					"description": "Users name",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--roles",
+					"types": "Array Of Arbitrary",
+					"description": "Role or role array",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional deletion parameters",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Role management"
+		},
+		{
+			"name": "RevokeRoles",
+			"id": "REVOKEROLES",
+			"description": "Revokes selected roles from a user",
+			"params": [
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--user",
+					"types": "String",
+					"description": "Users name",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--roles",
+					"types": "Array Of Arbitrary",
+					"description": "Role or role array",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--db",
+					"types": "String",
+					"description": "Database name. Current database if not specified",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional deletion parameters",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Role management"
+		},
+		{
+			"name": "GetRolePrivilegeStructure",
+			"id": "GETROLEPRIVILEGESTRUCTURE",
+			"description": "Forms the privilege information structure for use when working with roles",
+			"params": [
+				{
+					"name": "--res",
+					"types": "Structure Of KeyAndValue",
+					"description": "Privilege resource",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--act",
+					"types": "Array Of String",
+					"description": "Array of available privilege actions",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Role management"
+		}
+	]
+}

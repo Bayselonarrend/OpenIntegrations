@@ -1,0 +1,232 @@
+{
+	"module": "ssh",
+	"library": "ssh",
+	"depends": {
+		"OPI_SSH": "%1/oint/core/Modules/OPI_SSH.os"
+	},
+	"methods": [
+		{
+			"name": "CreateConnection",
+			"id": "CREATECONNECTION",
+			"description": "",
+			"params": [],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetConnectionConfiguration",
+			"id": "GETCONNECTIONCONFIGURATION",
+			"description": "Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions",
+			"params": [
+				{
+					"name": "--set",
+					"types": "Structure Of KeyAndValue",
+					"description": "SSH settings",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--proxy",
+					"types": "Structure Of KeyAndValue",
+					"description": "Proxy settings, if required. See GetProxySettings",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "ExecuteCommand",
+			"id": "EXECUTECOMMAND",
+			"description": "Executes the specified command",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--comm",
+					"types": "String",
+					"description": "Command text",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "CloseConnection",
+			"id": "CLOSECONNECTION",
+			"description": "",
+			"params": [],
+			"region": "Common methods"
+		},
+		{
+			"name": "IsConnector",
+			"id": "ISCONNECTOR",
+			"description": "",
+			"params": [],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetSettingsLoginPassword",
+			"id": "GETSETTINGSLOGINPASSWORD",
+			"description": "password)\n    |    Gets connection settings with login and password authentication",
+			"params": [
+				{
+					"name": "--host",
+					"types": "String",
+					"description": "SSH host",
+					"default": "",
+					"short": "-h"
+				},
+				{
+					"name": "--port",
+					"types": "Number",
+					"description": "SSH port",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--user",
+					"types": "String",
+					"description": "SSH username",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--pass",
+					"types": "String",
+					"description": "SSH user password",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetSettingsPrivateKey",
+			"id": "GETSETTINGSPRIVATEKEY",
+			"description": "Gets connection settings with private key authentication",
+			"params": [
+				{
+					"name": "--host",
+					"types": "String",
+					"description": "SSH host",
+					"default": "",
+					"short": "-h"
+				},
+				{
+					"name": "--port",
+					"types": "Number",
+					"description": "SSH port",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--user",
+					"types": "String",
+					"description": "SSH username",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--key",
+					"types": "String",
+					"description": "Path to private key file",
+					"default": "",
+					"short": "-k"
+				},
+				{
+					"name": "--pub",
+					"types": "String",
+					"description": "Path to public key file",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--pass",
+					"types": "String",
+					"description": "Private key password (passphrase)",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetSettingsViaAgent",
+			"id": "GETSETTINGSVIAAGENT",
+			"description": "Gets connection settings with SSH Agent authentication",
+			"params": [
+				{
+					"name": "--host",
+					"types": "String",
+					"description": "SSH host",
+					"default": "",
+					"short": "-h"
+				},
+				{
+					"name": "--port",
+					"types": "Number",
+					"description": "SSH port",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--user",
+					"types": "String",
+					"description": "SSH username",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetProxySettings",
+			"id": "GETPROXYSETTINGS",
+			"description": "Creates a structure of proxy server settings for the connection",
+			"params": [
+				{
+					"name": "--addr",
+					"types": "String",
+					"description": "Proxy address",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--port",
+					"types": "Number",
+					"description": "Proxy port",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--type",
+					"types": "String",
+					"description": "Proxy type: socks5, socks4, http",
+					"default": "socks5",
+					"short": "-t"
+				},
+				{
+					"name": "--login",
+					"types": "String, Undefined",
+					"description": "Authorization login, if required",
+					"default": "Пустое значение",
+					"short": "-l"
+				},
+				{
+					"name": "--pass",
+					"types": "String, Undefined",
+					"description": "Authorization password, if required",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Common methods"
+		}
+	]
+}

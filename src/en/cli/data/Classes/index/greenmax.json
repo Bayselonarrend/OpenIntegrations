@@ -1,0 +1,1038 @@
+{
+	"module": "greenmax",
+	"library": "greenmax",
+	"depends": {
+		"OPI_GreenMax": "%1/oint/core/Modules/OPI_GreenMax.os"
+	},
+	"methods": [
+		{
+			"name": "FormAccessParameters",
+			"id": "FORMACCESSPARAMETERS",
+			"description": "Forms the structure of basic authorization data",
+			"params": [
+				{
+					"name": "--api",
+					"types": "String",
+					"description": "API host link",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--media",
+					"types": "String",
+					"description": "Link to host API for sending files",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Unique instance number",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Instance access key",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "GetAccountInformation",
+			"id": "GETACCOUNTINFORMATION",
+			"description": "Gets account information",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "GetInstanceSettings",
+			"id": "GETINSTANCESETTINGS",
+			"description": "Gets the current instance settings",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "SetInstanceSettings",
+			"id": "SETINSTANCESETTINGS",
+			"description": "Sets the instance settings",
+			"params": [
+				{
+					"name": "--settings",
+					"types": "Structure Of KeyAndValue",
+					"description": "Instance settings. See GetInstanceSettingsStructure",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "GetAuthorizationCode",
+			"id": "GETAUTHORIZATIONCODE",
+			"description": "Sends an SMS to the specified number to obtain a confirmation code",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--phone",
+					"types": "String, Number",
+					"description": "Phone number without +",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "SendAuthorizationCode",
+			"id": "SENDAUTHORIZATIONCODE",
+			"description": "Authorizes the instance using the access code from SMS",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--code",
+					"types": "String",
+					"description": "Authorization code",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "GetInstanceStatus",
+			"id": "GETINSTANCESTATUS",
+			"description": "Gets instance status",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "SetProfilePicture",
+			"id": "SETPROFILEPICTURE",
+			"description": "Sets a new profile picture",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--picture",
+					"types": "BinaryData, String",
+					"description": "Profile picture",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "LogoutInstance",
+			"id": "LOGOUTINSTANCE",
+			"description": "Unlogging the instance",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "RebootInstance",
+			"id": "REBOOTINSTANCE",
+			"description": "Restarts the instance",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "CheckAccount",
+			"id": "CHECKACCOUNT",
+			"description": "Checks the existence of a Max account by phone number",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--phone",
+					"types": "String, Number",
+					"description": "Phone number for verification without +",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--force",
+					"types": "Boolean",
+					"description": "Ignore cache on repeated verification request",
+					"default": false,
+					"short": "-f"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "GetContactList",
+			"id": "GETCONTACTLIST",
+			"description": "Gets account contact list",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--count",
+					"types": "Number",
+					"description": "Contact count to retrieve. All if not specified",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "GetContactInformation",
+			"id": "GETCONTACTINFORMATION",
+			"description": "Gets information about the selected contact",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Chat identifier",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "GetChatList",
+			"id": "GETCHATLIST",
+			"description": "Gets account chat list",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "GetChatAvatar",
+			"id": "GETCHATAVATAR",
+			"description": "Gets chat image URL",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Chat identifier",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "GetInstanceSettingsStructure",
+			"id": "GETINSTANCESETTINGSSTRUCTURE",
+			"description": "Gets the structure template for instance settings",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Account"
+		},
+		{
+			"name": "CreateGroup",
+			"id": "CREATEGROUP",
+			"description": "Creates a new group chat with the specified name",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Group name",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--members",
+					"types": "Array Of String, String",
+					"description": "Array of group member IDs or a single ID",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Group management"
+		},
+		{
+			"name": "GetGroupInformation",
+			"id": "GETGROUPINFORMATION",
+			"description": "Gets information about the group chat",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Group chat ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Group management"
+		},
+		{
+			"name": "UpdateGroupName",
+			"id": "UPDATEGROUPNAME",
+			"description": "Change group chat name",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Group chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "New chat name",
+					"default": "",
+					"short": "-n"
+				}
+			],
+			"region": "Group management"
+		},
+		{
+			"name": "SetGroupPicture",
+			"id": "SETGROUPPICTURE",
+			"description": "Sets the image as the group chat avatar",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Group chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--picture",
+					"types": "String, BinaryData",
+					"description": "Image in jpg format",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Group management"
+		},
+		{
+			"name": "ChangeGroupSettings",
+			"id": "CHANGEGROUPSETTINGS",
+			"description": "Changes selected group chat settings",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Group chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--set",
+					"types": "Structure Of KeyAndValue",
+					"description": "Group chat settings. See GetGroupSettingsStructure",
+					"default": "",
+					"short": "-s"
+				}
+			],
+			"region": "Group management"
+		},
+		{
+			"name": "AddGroupMember",
+			"id": "ADDGROUPMEMBER",
+			"description": "Adds a new member to the selected group chat",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Group chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--member",
+					"types": "String",
+					"description": "Member ID for addition",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Group management"
+		},
+		{
+			"name": "RemoveGroupMember",
+			"id": "REMOVEGROUPMEMBER",
+			"description": "Removes a member from the selected group chat",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Group chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--member",
+					"types": "String",
+					"description": "Member ID for removal",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Group management"
+		},
+		{
+			"name": "SetAdminRights",
+			"id": "SETADMINRIGHTS",
+			"description": "Assigns administrator rights to the specified group chat member",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Group chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--member",
+					"types": "String",
+					"description": "Member ID",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Group management"
+		},
+		{
+			"name": "RevokeAdminRights",
+			"id": "REVOKEADMINRIGHTS",
+			"description": "Revokes administrator rights from the specified group chat member",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Group chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--member",
+					"types": "String",
+					"description": "Member ID",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Group management"
+		},
+		{
+			"name": "LeaveGroup",
+			"id": "LEAVEGROUP",
+			"description": "Excludes the current account from the specified group",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Group chat ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Group management"
+		},
+		{
+			"name": "GetGroupSettingsStructure",
+			"id": "GETGROUPSETTINGSSTRUCTURE",
+			"description": "Returns the structure of group chat settings fields",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				},
+				{
+					"name": "--map",
+					"types": "Boolean",
+					"description": "True > returns settings fields as a mapping",
+					"default": false,
+					"short": "-m"
+				}
+			],
+			"region": "Group management"
+		},
+		{
+			"name": "SendTextMessage",
+			"id": "SENDTEXTMESSAGE",
+			"description": "Sends a text message to the selected chat room",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Chat identifier",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--typing",
+					"types": "Number",
+					"description": "Time to show the typing indicator before sending (in ms.)",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "SendFile",
+			"id": "SENDFILE",
+			"description": "Sends the file to the selected chat room",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Chat identifier",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--file",
+					"types": "String, BinaryData",
+					"description": "File data or filepath",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--filename",
+					"types": "String",
+					"description": "Name of the file with the extension",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--caption",
+					"types": "String",
+					"description": "Message text below the file",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--typing",
+					"types": "Number",
+					"description": "Time to show typing indicator before sending (in ms.)",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--ttype",
+					"types": "String",
+					"description": "Typing type: text, recording, video, image, file",
+					"default": "file",
+					"short": "-t"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "SendFileByURL",
+			"id": "SENDFILEBYURL",
+			"description": "Sends a file from web to the selected chat room",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Chat identifier",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "File URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--filename",
+					"types": "String",
+					"description": "Name of the file with the extension",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--caption",
+					"types": "String",
+					"description": "Message text below the file",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--typing",
+					"types": "Number",
+					"description": "Time to show typing indicator before sending (in ms.)",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--ttype",
+					"types": "String",
+					"description": "Typing type: text, recording, video, image, file",
+					"default": "file",
+					"short": "-t"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "GetNotification",
+			"id": "GETNOTIFICATION",
+			"description": "Gets the latest notification from the queue",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--timeout",
+					"types": "Number",
+					"description": "Timeout for waiting for a notification if the queue is empty",
+					"default": 5,
+					"short": "-t"
+				},
+				{
+					"name": "--del",
+					"types": "Boolean",
+					"description": "Delete notification from the queue after retrieval",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Notifications"
+		},
+		{
+			"name": "DeleteNotification",
+			"id": "DELETENOTIFICATION",
+			"description": "Deletes the specified notification from the queue",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--id",
+					"types": "Number",
+					"description": "Notification ID",
+					"default": "",
+					"short": "-i"
+				}
+			],
+			"region": "Notifications"
+		},
+		{
+			"name": "GetChatMessageHistory",
+			"id": "GETCHATMESSAGEHISTORY",
+			"description": "Gets the latest messages from the chat history",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--count",
+					"types": "Number",
+					"description": "Number of messages to receive",
+					"default": 100,
+					"short": "-c"
+				}
+			],
+			"region": "Message history"
+		},
+		{
+			"name": "GetChatMessage",
+			"id": "GETCHATMESSAGE",
+			"description": "Gets information about the chat message by ID",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "String",
+					"description": "Message ID",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Message history"
+		},
+		{
+			"name": "GetIncomingMessageLog",
+			"id": "GETINCOMINGMESSAGELOG",
+			"description": "Gets the latest incoming messages of the instance",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--span",
+					"types": "Number",
+					"description": "Time in minutes for which messages need to be received",
+					"default": 1440,
+					"short": "-s"
+				}
+			],
+			"region": "Message history"
+		},
+		{
+			"name": "GetOutgoingMessageLog",
+			"id": "GETOUTGOINGMESSAGELOG",
+			"description": "Gets the latest outgoing messages of the instance",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--span",
+					"types": "Number",
+					"description": "Time in minutes for which messages need to be received",
+					"default": 1440,
+					"short": "-s"
+				}
+			],
+			"region": "Message history"
+		},
+		{
+			"name": "MarkMessagesAsRead",
+			"id": "MARKMESSAGESASREAD",
+			"description": "Marks messages in the chat as read",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--chat",
+					"types": "String",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "String",
+					"description": "Message ID. All messages, unless specified",
+					"default": "Пустое значение",
+					"short": "-m"
+				}
+			],
+			"region": "Message history"
+		},
+		{
+			"name": "GetOutgoingMessageCount",
+			"id": "GETOUTGOINGMESSAGECOUNT",
+			"description": "Gets the number of messages in the outgoing queue",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Queues"
+		},
+		{
+			"name": "GetOutgoingMessageQueue",
+			"id": "GETOUTGOINGMESSAGEQUEUE",
+			"description": "Gets the list of messages to be sent",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Queues"
+		},
+		{
+			"name": "ClearOutgoingMessageQueue",
+			"id": "CLEAROUTGOINGMESSAGEQUEUE",
+			"description": "Clears the list of messages to be sent",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Queues"
+		},
+		{
+			"name": "GetIncomingNotificationCount",
+			"id": "GETINCOMINGNOTIFICATIONCOUNT",
+			"description": "Gets the number of notifications in the incoming queue",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Queues"
+		},
+		{
+			"name": "ClearIncomingNotificationQueue",
+			"id": "CLEARINCOMINGNOTIFICATIONQUEUE",
+			"description": "Clears the incoming notification queue",
+			"params": [
+				{
+					"name": "--access",
+					"types": "Structure Of KeyAndValue",
+					"description": "Access parameters. See FormAccessParameters",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Queues"
+		}
+	]
+}

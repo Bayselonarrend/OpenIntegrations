@@ -1,0 +1,648 @@
+{
+	"module": "yadisk",
+	"library": "yadisk",
+	"depends": {
+		"OPI_YandexDisk": "%1/oint/core/Modules/OPI_YandexDisk.os",
+		"OPI_YandexID": "%1/oint/core/Modules/OPI_YandexID.os"
+	},
+	"methods": [
+		{
+			"name": "ПолучитьКодПодтверждения",
+			"id": "ПОЛУЧИТЬКОДПОДТВЕРЖДЕНИЯ",
+			"description": "Получает код подтверждения и адрес страницы, на которой его необходимо ввести",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client id",
+					"default": "",
+					"short": "-i"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "ПреобразоватьКодВТокен",
+			"id": "ПРЕОБРАЗОВАТЬКОДВТОКЕН",
+			"description": "Преобразовывает код в токен после ввода кода при выполнении ПолучитьКодПодтверждения",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client id",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "Строка",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--device",
+					"types": "Строка",
+					"description": "device_code из ПолучитьКодПодтверждения",
+					"default": "",
+					"short": "-d"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "ОбновитьТокен",
+			"id": "ОБНОВИТЬТОКЕН",
+			"description": "Обновляет токен по Refresh token",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client id",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "Строка",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--refresh",
+					"types": "Строка",
+					"description": "Refresh token",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "ПолучитьИнформациюОДиске",
+			"id": "ПОЛУЧИТЬИНФОРМАЦИЮОДИСКЕ",
+			"description": "Получает информацию о текущем диске",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с файлами и папками"
+		},
+		{
+			"name": "СоздатьПапку",
+			"id": "СОЗДАТЬПАПКУ",
+			"description": "Создает каталог на диске",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "Строка",
+					"description": "Путь к созаваемой папке",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Работа с файлами и папками"
+		},
+		{
+			"name": "ПолучитьОбъект",
+			"id": "ПОЛУЧИТЬОБЪЕКТ",
+			"description": "Получает информацию об объекте диска по заданному пути",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "Строка",
+					"description": "Путь к папке или файлу",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Работа с файлами и папками"
+		},
+		{
+			"name": "УдалитьОбъект",
+			"id": "УДАЛИТЬОБЪЕКТ",
+			"description": "Удаляет объект по заданному пути",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "Строка",
+					"description": "Путь к удаляемой папке или файлу",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--can",
+					"types": "Булево",
+					"description": "В корзину",
+					"default": true,
+					"short": "-c"
+				}
+			],
+			"region": "Работа с файлами и папками"
+		},
+		{
+			"name": "СоздатьКопиюОбъекта",
+			"id": "СОЗДАТЬКОПИЮОБЪЕКТА",
+			"description": "Создает копию объекта по заданному пути и пути к оригиналу",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--from",
+					"types": "Строка",
+					"description": "Путь к оригинальному файлу или каталогу",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--to",
+					"types": "Строка",
+					"description": "Путь назначения для копии",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--rewrite",
+					"types": "Булево",
+					"description": "Перезаписывать если файл с таким именем уже существует",
+					"default": false,
+					"short": "-r"
+				}
+			],
+			"region": "Работа с файлами и папками"
+		},
+		{
+			"name": "ПолучитьСсылкуДляСкачивания",
+			"id": "ПОЛУЧИТЬССЫЛКУДЛЯСКАЧИВАНИЯ",
+			"description": "Получает ссылку для скачивания файла",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "Строка",
+					"description": "Путь к файлу для скачивания",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Работа с файлами и папками"
+		},
+		{
+			"name": "ПолучитьСсылкуЗагрузкиФайла",
+			"id": "ПОЛУЧИТЬССЫЛКУЗАГРУЗКИФАЙЛА",
+			"description": "Получает ссылку для ручной загрузки файла на Диск",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "Строка",
+					"description": "Путь для сохранение файла на Диске",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--rewrite",
+					"types": "Булево",
+					"description": "Перезаписывать если файл с таким именем уже существует",
+					"default": false,
+					"short": "-r"
+				}
+			],
+			"region": "Работа с файлами и папками"
+		},
+		{
+			"name": "СкачатьФайл",
+			"id": "СКАЧАТЬФАЙЛ",
+			"description": "Скачивает файл по указанному пути",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "Строка",
+					"description": "Путь к файлу для скачивания",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--out",
+					"types": "Строка",
+					"description": "Путь сохранения файла",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "Работа с файлами и папками"
+		},
+		{
+			"name": "ПолучитьСписокФайлов",
+			"id": "ПОЛУЧИТЬСПИСОКФАЙЛОВ",
+			"description": "Получает список файлов с или без отбора по типу\n    |    Список доступных типов: audio, backup, book, compressed, data, development,\n    |                            diskimage, document, encoded, executable, flash, font,\n    |                            mage, settings, spreadsheet, text, unknown, video, web",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--amount",
+					"types": "Число,Строка",
+					"description": "Количество возвращаемых объектов",
+					"default": "Пустое значение",
+					"short": "-a"
+				},
+				{
+					"name": "--offset",
+					"types": "Число",
+					"description": "Смещение для получение объектов не из начала списка",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--type",
+					"types": "Строка",
+					"description": "Отбор по типу файла",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--datesort",
+					"types": "Булево",
+					"description": "Истина > сортировать по дате, Ложь > по алфавиту",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Работа с файлами и папками"
+		},
+		{
+			"name": "ПереместитьОбъект",
+			"id": "ПЕРЕМЕСТИТЬОБЪЕКТ",
+			"description": "Перемещает объект по заданному пути и пути к оригиналу",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--from",
+					"types": "Строка",
+					"description": "Путь к оригинальному файлу или папке",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--to",
+					"types": "Строка",
+					"description": "Путь назначение для перемещения",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--rewrite",
+					"types": "Булево",
+					"description": "Перезаписывать если файл с таким именем уже существует",
+					"default": false,
+					"short": "-r"
+				}
+			],
+			"region": "Работа с файлами и папками"
+		},
+		{
+			"name": "ЗагрузитьФайл",
+			"id": "ЗАГРУЗИТЬФАЙЛ",
+			"description": "Загружает файл на диск по заданному пути",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "Строка",
+					"description": "Путь для сохранение файла на Диске",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--file",
+					"types": "Строка,ДвоичныеДанные",
+					"description": "Файл для загрузки",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--rewrite",
+					"types": "Булево",
+					"description": "Перезаписывать, если файл с таким именем уже существует",
+					"default": false,
+					"short": "-r"
+				}
+			],
+			"region": "Работа с файлами и папками"
+		},
+		{
+			"name": "ЗагрузитьФайлЧастями",
+			"id": "ЗАГРУЗИТЬФАЙЛЧАСТЯМИ",
+			"description": "Загружает файл на диск по заданному пути частями",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "Строка",
+					"description": "Путь для сохранение файла на Диске",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--file",
+					"types": "Строка,ДвоичныеДанные",
+					"description": "Файл для загрузки",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--psize",
+					"types": "Число",
+					"description": "Размер одной части при загрузке",
+					"default": 33554432,
+					"short": "-p"
+				},
+				{
+					"name": "--rewrite",
+					"types": "Булево",
+					"description": "Перезаписывать, если файл с таким именем уже существует",
+					"default": false,
+					"short": "-r"
+				}
+			],
+			"region": "Работа с файлами и папками"
+		},
+		{
+			"name": "ЗагрузитьФайлПоURL",
+			"id": "ЗАГРУЗИТЬФАЙЛПОURL",
+			"description": "Загружает файл на диск, забирая его по заданному URL",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "Строка",
+					"description": "Путь помещения загруженного файла",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "URL файла",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Работа с файлами и папками"
+		},
+		{
+			"name": "ОпубликоватьОбъект",
+			"id": "ОПУБЛИКОВАТЬОБЪЕКТ",
+			"description": "Публикует объект диска в публичный доступ",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "Строка",
+					"description": "Путь к публикуемому объекту",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Управление публичным доступом"
+		},
+		{
+			"name": "ОтменитьПубликациюОбъекта",
+			"id": "ОТМЕНИТЬПУБЛИКАЦИЮОБЪЕКТА",
+			"description": "Отменяет публикацию ранее опубликованного объекта",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--path",
+					"types": "Строка",
+					"description": "Путь к опубликованному ранее объекту",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Управление публичным доступом"
+		},
+		{
+			"name": "ПолучитьСписокОпубликованныхОбъектов",
+			"id": "ПОЛУЧИТЬСПИСОКОПУБЛИКОВАННЫХОБЪЕКТОВ",
+			"description": "Получает список опубликованных объектов",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--amount",
+					"types": "Число",
+					"description": "Количество возвращаемых объектов",
+					"default": "Пустое значение",
+					"short": "-a"
+				},
+				{
+					"name": "--offset",
+					"types": "Число",
+					"description": "Смещение для получение объектов не из начала списка",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "Управление публичным доступом"
+		},
+		{
+			"name": "ПолучитьПубличныйОбъект",
+			"id": "ПОЛУЧИТЬПУБЛИЧНЫЙОБЪЕКТ",
+			"description": "Получает информацию об опубликованном объекте по его URL",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "Адрес объекта",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--amount",
+					"types": "Число",
+					"description": "Количество возвращаемых вложенных объектов (для каталога)",
+					"default": "Пустое значение",
+					"short": "-a"
+				},
+				{
+					"name": "--offset",
+					"types": "Число",
+					"description": "Смещение для получение вложенных объектов не из начала списка",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "Управление публичным доступом"
+		},
+		{
+			"name": "ПолучитьСсылкуСкачиванияПубличногоОбъекта",
+			"id": "ПОЛУЧИТЬССЫЛКУСКАЧИВАНИЯПУБЛИЧНОГООБЪЕКТА",
+			"description": "Получает прямую ссылку для скачивания публичного объекта",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "Адрес объекта",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--path",
+					"types": "Строка",
+					"description": "Путь внутри объекта",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Управление публичным доступом"
+		},
+		{
+			"name": "СохранитьПубличныйОбъектНаДиск",
+			"id": "СОХРАНИТЬПУБЛИЧНЫЙОБЪЕКТНАДИСК",
+			"description": "Сохраняет публичный объект на ваш диск",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "Адрес объекта",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--from",
+					"types": "Строка",
+					"description": "Путь внутри публичного каталога (только для папок)",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--to",
+					"types": "Строка",
+					"description": "Путь сохранения файла",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Управление публичным доступом"
+		}
+	]
+}

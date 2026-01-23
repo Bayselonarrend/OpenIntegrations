@@ -1,0 +1,139 @@
+{
+	"module": "google",
+	"library": "google",
+	"depends": {
+		"OPI_GoogleWorkspace": "%1/oint/core/Modules/OPI_GoogleWorkspace.os"
+	},
+	"methods": [
+		{
+			"name": "СформироватьСсылкуПолученияКода",
+			"id": "СФОРМИРОВАТЬССЫЛКУПОЛУЧЕНИЯКОДА",
+			"description": "Возвращает URL для авторизации в браузере",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--calendar",
+					"types": "Булево",
+					"description": "разрешение на методы Calendar",
+					"default": true,
+					"short": "-c"
+				},
+				{
+					"name": "--drive",
+					"types": "Булево",
+					"description": "разрешение на методы Drive",
+					"default": true,
+					"short": "-d"
+				},
+				{
+					"name": "--sheets",
+					"types": "Булево",
+					"description": "разрешение на методы Sheets",
+					"default": true,
+					"short": "-s"
+				}
+			],
+			"region": "Программный интерфейс"
+		},
+		{
+			"name": "ПолучитьТокенПоКоду",
+			"id": "ПОЛУЧИТЬТОКЕНПОКОДУ",
+			"description": "Получает токен по коду из авторизации в бразуере",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "Строка",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--code",
+					"types": "Строка",
+					"description": "Code из браузера",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Программный интерфейс"
+		},
+		{
+			"name": "ОбновитьТокен",
+			"id": "ОБНОВИТЬТОКЕН",
+			"description": "Обновляет токен по Refresh token",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "Строка",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--refresh",
+					"types": "Строка",
+					"description": "Refresh token",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Программный интерфейс"
+		},
+		{
+			"name": "ПолучитьТокенServiceАккаунта",
+			"id": "ПОЛУЧИТЬТОКЕНSERVICEАККАУНТА",
+			"description": "Получает токен авторизации по данным service аккаунта\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--auth",
+					"types": "Произвольный",
+					"description": "JSON данные авторизации как файл, коллекция или двоичные данные",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--scope",
+					"types": "Массив Из Строка",
+					"description": "Область действия (scope) или массив областей",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--exp",
+					"types": "Число",
+					"description": "Время жизни токена в секундах",
+					"default": 3600,
+					"short": "-e"
+				}
+			],
+			"region": "Программный интерфейс"
+		},
+		{
+			"name": "ПолучитьЗаголовокАвторизации",
+			"id": "ПОЛУЧИТЬЗАГОЛОВОКАВТОРИЗАЦИИ",
+			"description": "",
+			"params": [],
+			"region": "Служебный программный интерфейс"
+		}
+	]
+}

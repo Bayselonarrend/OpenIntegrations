@@ -1,0 +1,386 @@
+{
+	"module": "notion",
+	"library": "notion",
+	"depends": {
+		"OPI_Notion": "%1/oint/core/Modules/OPI_Notion.os"
+	},
+	"methods": [
+		{
+			"name": "CreatePage",
+			"id": "CREATEPAGE",
+			"description": "Creates a child page above another parent page",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--page",
+					"types": "String",
+					"description": "Parent ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Page title",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Page management"
+		},
+		{
+			"name": "CreatePageInDatabase",
+			"id": "CREATEPAGEINDATABASE",
+			"description": "Creates a page in the parent database",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Parent database ID",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--data",
+					"types": "Map Of KeyAndValue",
+					"description": "Properties map",
+					"default": "",
+					"short": "-d"
+				}
+			],
+			"region": "Page management"
+		},
+		{
+			"name": "GetPage",
+			"id": "GETPAGE",
+			"description": "Gets information about the page by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--page",
+					"types": "String",
+					"description": "Page ID",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Page management"
+		},
+		{
+			"name": "EditPageProperties",
+			"id": "EDITPAGEPROPERTIES",
+			"description": "Changes the properties of an existing page",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--page",
+					"types": "String",
+					"description": "ID of the page being modified",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--data",
+					"types": "Map Of KeyAndValue",
+					"description": "Map of editable parameters",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--icon",
+					"types": "String",
+					"description": "URL of the page icon image",
+					"default": "Пустое значение",
+					"short": "-i"
+				},
+				{
+					"name": "--cover",
+					"types": "String",
+					"description": "URL of the page cover image",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--archive",
+					"types": "Boolean",
+					"description": "Archive page or not (boolean)",
+					"default": false,
+					"short": "-a"
+				}
+			],
+			"region": "Page management"
+		},
+		{
+			"name": "CreateDatabase",
+			"id": "CREATEDATABASE",
+			"description": "Creates a database",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--page",
+					"types": "String",
+					"description": "Parent page ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Database title",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--props",
+					"types": "Structure Of String",
+					"description": "Database properties",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Database management"
+		},
+		{
+			"name": "GetDatabase",
+			"id": "GETDATABASE",
+			"description": "Get database information",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Database ID",
+					"default": "",
+					"short": "-b"
+				}
+			],
+			"region": "Database management"
+		},
+		{
+			"name": "EditDatabaseProperties",
+			"id": "EDITDATABASEPROPERTIES",
+			"description": "Edits properties of an existing database",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Target database ID",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--props",
+					"types": "Map of KeyAndValue",
+					"description": "New or modified database properties",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New database title",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--description",
+					"types": "String",
+					"description": "New database description",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Database management"
+		},
+		{
+			"name": "CreateBlock",
+			"id": "CREATEBLOCK",
+			"description": "Creates a new block based on an existing block",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--page",
+					"types": "String",
+					"description": "Parent block or page ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--block",
+					"types": "String, Map Of KeyAndValue",
+					"description": "Block ID or block sample itself",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--prev",
+					"types": "String",
+					"description": "Block ID after which to insert the new one",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Blocks management"
+		},
+		{
+			"name": "ReturnBlock",
+			"id": "RETURNBLOCK",
+			"description": "Returns the block structure by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--block",
+					"types": "String",
+					"description": "Block ID",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--core",
+					"types": "Boolean",
+					"description": "True > service fields are deleted, only the block itself remains",
+					"default": true,
+					"short": "-c"
+				}
+			],
+			"region": "Blocks management"
+		},
+		{
+			"name": "ReturnChildBlocks",
+			"id": "RETURNCHILDBLOCKS",
+			"description": "Returns list of child blocks of parent block",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--block",
+					"types": "String",
+					"description": "Parent block ID",
+					"default": "",
+					"short": "-b"
+				}
+			],
+			"region": "Blocks management"
+		},
+		{
+			"name": "DeleteBlock",
+			"id": "DELETEBLOCK",
+			"description": "Deletes block by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--block",
+					"types": "String",
+					"description": "Block ID",
+					"default": "",
+					"short": "-b"
+				}
+			],
+			"region": "Blocks management"
+		},
+		{
+			"name": "UserList",
+			"id": "USERLIST",
+			"description": "Returns a list of workspace users",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Users"
+		},
+		{
+			"name": "GetUserData",
+			"id": "GETUSERDATA",
+			"description": "Gets user data by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--user",
+					"types": "String",
+					"description": "Target user ID",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Users"
+		}
+	]
+}

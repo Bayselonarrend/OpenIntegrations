@@ -1,0 +1,711 @@
+{
+	"module": "airtable",
+	"library": "airtable",
+	"depends": {
+		"OPI_Airtable": "%1/oint/core/Modules/OPI_Airtable.os"
+	},
+	"methods": [
+		{
+			"name": "GetListOfBases",
+			"id": "GETLISTOFBASES",
+			"description": "Gets the list of available bases",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--offset",
+					"types": "String",
+					"description": "Next page identifier of the base list from the previous request",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "Working with databases"
+		},
+		{
+			"name": "GetDatabaseTables",
+			"id": "GETDATABASETABLES",
+			"description": "Gets the schema of base tables",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Base identifier",
+					"default": "",
+					"short": "-b"
+				}
+			],
+			"region": "Working with databases"
+		},
+		{
+			"name": "CreateDatabase",
+			"id": "CREATEDATABASE",
+			"description": "Creates a new database",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--ws",
+					"types": "String",
+					"description": "Workspace identifier",
+					"default": "",
+					"short": "-w"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New base name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--tablesdata",
+					"types": "Map Of KeyAndValue",
+					"description": "Table description: Key > name, Value > array of fields",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Working with databases"
+		},
+		{
+			"name": "CreateTable",
+			"id": "CREATETABLE",
+			"description": "Creates a new table in the base",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Base identifier",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New table name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fieldsdata",
+					"types": "Array of Structure",
+					"description": "Array of field descriptions",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--description",
+					"types": "String",
+					"description": "Table description",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Table management"
+		},
+		{
+			"name": "ModifyTable",
+			"id": "MODIFYTABLE",
+			"description": "Changes the name and    |   or description of the base",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Base identifier",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table identifier",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New name",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--description",
+					"types": "String",
+					"description": "New description",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Table management"
+		},
+		{
+			"name": "CreateField",
+			"id": "CREATEFIELD",
+			"description": "Creates a new field in the table",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Base identifier",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table identifier",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fielddata",
+					"types": "Structure Of KeyAndValue",
+					"description": "Description of the new field",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Working with fields"
+		},
+		{
+			"name": "ModifyField",
+			"id": "MODIFYFIELD",
+			"description": "Changes the name and    |   or description of an existing table field",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Base identifier Base",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table identifier",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--field",
+					"types": "String",
+					"description": "Field identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New name",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--description",
+					"types": "String",
+					"description": "New description",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Working with fields"
+		},
+		{
+			"name": "GetStringField",
+			"id": "GETSTRINGFIELD",
+			"description": "Gets the description of a string field",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New field name",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Working with fields"
+		},
+		{
+			"name": "GetNumberField",
+			"id": "GETNUMBERFIELD",
+			"description": "Gets the description of a numeric field",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New field name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--precision",
+					"types": "Number, String",
+					"description": "Number of decimal places",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Working with fields"
+		},
+		{
+			"name": "GetAttachmentField",
+			"id": "GETATTACHMENTFIELD",
+			"description": "Gets the description of a file field",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Field name",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Working with fields"
+		},
+		{
+			"name": "GetCheckboxField",
+			"id": "GETCHECKBOXFIELD",
+			"description": "Gets the description of a boolean field",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Field name",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Working with fields"
+		},
+		{
+			"name": "GetDateField",
+			"id": "GETDATEFIELD",
+			"description": "Gets the description of a date field",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Field name",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Working with fields"
+		},
+		{
+			"name": "GetEmailField",
+			"id": "GETEMAILFIELD",
+			"description": "Gets the description of an email field",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Field name",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Working with fields"
+		},
+		{
+			"name": "GetPhoneField",
+			"id": "GETPHONEFIELD",
+			"description": "Gets the description of a phone number field",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Field name",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Working with fields"
+		},
+		{
+			"name": "GetLinkField",
+			"id": "GETLINKFIELD",
+			"description": "Gets the description of a URL field",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Field name",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Working with fields"
+		},
+		{
+			"name": "GetListOfRecords",
+			"id": "GETLISTOFRECORDS",
+			"description": "Gets the list of records of the selected table",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Database identifier",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table identifier",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--offset",
+					"types": "String",
+					"description": "Next page identifier of data from the previous request",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "Record management"
+		},
+		{
+			"name": "GetRecord",
+			"id": "GETRECORD",
+			"description": "Gets row data of the table by identifier",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Database identifier",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table identifier",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--record",
+					"types": "String",
+					"description": "Record identifier in the table",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Record management"
+		},
+		{
+			"name": "CreatePosts",
+			"id": "CREATEPOSTS",
+			"description": "Creates one or an array of records by description or an array of field value descriptions",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Database identifier",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table identifier",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--data",
+					"types": "Structure, Array of Structure",
+					"description": "Set or array of sets of pairs Key : Value > Field : FieldValue",
+					"default": "",
+					"short": "-d"
+				}
+			],
+			"region": "Record management"
+		},
+		{
+			"name": "DeleteRecords",
+			"id": "DELETERECORDS",
+			"description": "Deletes one or an array of records by identifiers",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Database identifier",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table identifier",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--records",
+					"types": "String, Array of String",
+					"description": "Identifier or array of record identifiers",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Record management"
+		},
+		{
+			"name": "GetComments",
+			"id": "GETCOMMENTS",
+			"description": "Gets the list of comments for a record in the table",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Database identifier",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table identifier",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--record",
+					"types": "String",
+					"description": "Record identifier in the table",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--offset",
+					"types": "String",
+					"description": "Next page identifier of data from the previous request",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "Comment management"
+		},
+		{
+			"name": "CreateComment",
+			"id": "CREATECOMMENT",
+			"description": "Creates a comment for a record in the table",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Database identifier",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table identifier",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--record",
+					"types": "String",
+					"description": "Record identifier in the table",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Comment text",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Comment management"
+		},
+		{
+			"name": "EditComment",
+			"id": "EDITCOMMENT",
+			"description": "Changes the text of an existing comment",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Database identifier",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table identifier",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--record",
+					"types": "String",
+					"description": "Record identifier in the table",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--comment",
+					"types": "String",
+					"description": "Comment identifier",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "New comment text",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Comment management"
+		},
+		{
+			"name": "DeleteComment",
+			"id": "DELETECOMMENT",
+			"description": "Deletes a comment for a table record",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "String",
+					"description": "Database identifier",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table identifier",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--record",
+					"types": "String",
+					"description": "Record identifier in the table",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--comment",
+					"types": "String",
+					"description": "Comment identifier",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Comment management"
+		}
+	]
+}
