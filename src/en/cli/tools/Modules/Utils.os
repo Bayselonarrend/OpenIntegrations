@@ -10,20 +10,20 @@ Var DesiredParameter;
 // Specific Value When Specifying Field Name
 // 
 // Parameters:
-//  JSON                           - String  - JSON data                                                          - json
-//  MaximumNestingLevel - Number   - Parsing depth limit. Full depth by default  - nesting
-//  ParameterName                   - String  - Field name to retrieve. Displays the entire list if not specified         - name 
-//  Encoding                      - String  - Encoding of JSON Data                            - enc
+// JSON - String - JSON data - json
+// MaximumNestingLevel - Number - Parsing depth limit. Full depth by default - nesting
+// ParameterName - String - Field name to retrieve. Displays the entire list if not specified - name 
+// Encoding - String - Encoding of JSON Data - enc
 // 
 // Returns:
-//  String - empty string
+// String - empty string
 Function ParseJSON(Val JSON
 	, Val MaximumNestingLevel = 0
 	, Val ParameterName = ""
 	, Val Encoding = "UTF-8") Export
 
 	MaximumNesting = Number(MaximumNestingLevel);
-    DesiredParameter         = ParameterName;
+    DesiredParameter = ParameterName;
 
 	GetCollection(JSON, Encoding);
 
@@ -40,10 +40,10 @@ EndFunction
 // Convert file with Base64 string to binary file
 // 
 // Parameters:
-//  Entry  - String  - Base64 File       - in
+// Entry - String - Base64 File - in
 // 
 // Returns:
-//  String - empty string
+// String - empty string
 Function ConvertBase64ToBinary(Val Entry) Export
 
 	InputFile = New File(Entry);
@@ -56,7 +56,7 @@ Function ConvertBase64ToBinary(Val Entry) Export
 	TextDocument.Read(Entry);
 	
 	B64 = TextDocument.GetText();
-    BD  = Base64Value(B64);
+    BD = Base64Value(B64);
 
 	Return BD;
 
@@ -77,10 +77,10 @@ Function GetValuesRecursively(Val JSON, Val Prefix = "", Val CurrentNesting = 1,
 	For Each Pair In JSON Do
 
 		Value = Pair.Value;
-		Key     = Prefix + String(Pair.Key);
+		Key = Prefix + String(Pair.Key);
 
 		ThisIsCollection = TypeOf(Value) = Type("Map") Or TypeOf(Value) = Type("Structure");
-		NextNesting         = CurrentNesting + 1;
+		NextNesting = CurrentNesting + 1;
 		NextNestingAvailable = MaximumNesting = 0 Or NextNesting <= MaximumNesting;
 
 	    If Not ThisIsCollection Or Not NextNestingAvailable Then
@@ -88,10 +88,10 @@ Function GetValuesRecursively(Val JSON, Val Prefix = "", Val CurrentNesting = 1,
 			duplicates = FieldMapping.Get(Key);
 
 			If duplicates = Undefined Then
-				Counter         = 0;
+				Counter = 0;
 				EnvironmentVariable = Key;
 			Else
-				Counter         = duplicates + 1;
+				Counter = duplicates + 1;
 				EnvironmentVariable = Key + StrReplace(String(duplicates), Chars.NBSp, "");
 			EndIf;
 
@@ -174,8 +174,8 @@ Procedure GetCollection(Value, Val Encoding)
 			Value = String(Value);
 		EndIf;
 		
-		File               = New File(Value);
-		TextDocument  = New TextDocument();
+		File = New File(Value);
+		TextDocument = New TextDocument();
 		
 		If File.Exists() Then
 			
@@ -201,7 +201,7 @@ Procedure GetCollection(Value, Val Encoding)
 	EndIf;
 
 	NormalizeTextInput(Value);
-	JSONReader  = New JSONReader;
+	JSONReader = New JSONReader;
 	JSONReader.SetString(TrimAll(Value));
 	Value = ReadJSON(JSONReader, True, Undefined, JSONDateFormat.ISO);
 	JSONReader.Close();
@@ -210,8 +210,8 @@ EndProcedure
 
 Procedure NormalizeTextInput(Text)
 
-	InitialCurly    = StrFind(Text, "{");
-	LastCurly    = StrFind(Text, "}", SearchDirection.FromEnd);
+	InitialCurly = StrFind(Text, "{");
+	LastCurly = StrFind(Text, "}", SearchDirection.FromEnd);
 
 	If InitialCurly = 0 Or LastCurly = 0 Then
 		Return;
