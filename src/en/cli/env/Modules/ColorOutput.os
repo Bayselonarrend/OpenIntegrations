@@ -22,7 +22,7 @@ Procedure WriteLine(Val MessageText = "", Val TextColor = Undefined) Export
 
 	Write(MessageText, TextColor);
 
-	Консоль.Write(Chars.LF);
+	Console.Write(Chars.LF);
 
 EndProcedure
 
@@ -39,7 +39,7 @@ Procedure Write(Val MessageText, Val TextColor = Undefined) Export
 
 	If ColoredOutputAvailable Then
 		
-		PreviousTextColorValue = Консоль.TextColor;
+		PreviousTextColorValue = Console.TextColor;
 		If NOT ValueIsFilled(PreviousTextColorValue) Then
 			PreviousTextColorValue = ConsoleColor.White;
 		EndIf;
@@ -49,21 +49,21 @@ Procedure Write(Val MessageText, Val TextColor = Undefined) Export
 		EndIf;
 		For Each Field In FieldsTable Do
 			If ValueIsFilled(Field.Color) Then
-				Консоль.TextColor = ConsoleColor[Field.Color];
+				Console.TextColor = ConsoleColor[Field.Color];
 			Else
-				Консоль.TextColor = PreviousTextColorValue;
+				Console.TextColor = PreviousTextColorValue;
 			EndIf;
-			Консоль.Write(Field.Text);
+			Console.Write(Field.Text);
 		EndDo;
 		
-		Консоль.TextColor = PreviousTextColorValue;
+		Console.TextColor = PreviousTextColorValue;
 		
 	Else
 		
 		FieldArray = FieldsTable.UnloadColumn("Text");
 		TextColorWithoutColoredFields = StrConcat(FieldArray);
 		
-		Консоль.Write(TextColorWithoutColoredFields);
+		Console.Write(TextColorWithoutColoredFields);
 
 	EndIf;
 
