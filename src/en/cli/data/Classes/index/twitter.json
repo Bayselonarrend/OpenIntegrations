@@ -1,9 +1,29 @@
 {
-	"module": "twitter",
+	"module": "OPI_Twitter",
 	"library": "twitter",
-	"depends": {
-		"OPI_Twitter": "%1/oint/core/Modules/OPI_Twitter.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Data and settings",
+			"methods": [
+				"GetAuthorizationLink",
+				"GetToken",
+				"RefreshToken"
+			]
+		},
+		{
+			"name": "Tweets",
+			"methods": [
+				"CreateCustomTweet",
+				"CreateTextTweet",
+				"CreateImageTweet",
+				"CreateGifTweet",
+				"CreateVideoTweet",
+				"CreatePollTweet",
+				"UploadAttachmentsArray"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "GetAuthorizationLink",
@@ -55,13 +75,6 @@
 					"short": "-a"
 				}
 			],
-			"region": "Data and settings"
-		},
-		{
-			"name": "HandleIncomingRequestAfterAuthorization",
-			"id": "HANDLEINCOMINGREQUESTAFTERAUTHORIZATION",
-			"description": "",
-			"params": [],
 			"region": "Data and settings"
 		},
 		{

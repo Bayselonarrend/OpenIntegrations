@@ -1,31 +1,37 @@
 {
-	"module": "mssql",
+	"module": "OPI_MSSQL",
 	"library": "mssql",
-	"depends": {
-		"OPI_MSSQL": "%1/oint/core/Modules/OPI_MSSQL.os"
-	},
+	"self_depend": true,
+	"regions": [
+		{
+			"name": "Common methods",
+			"methods": [
+				"ExecuteSQLQuery",
+				"GenerateConnectionString",
+				"GetTlsSettings"
+			]
+		},
+		{
+			"name": "Orm",
+			"methods": [
+				"CreateDatabase",
+				"DeleteDatabase",
+				"CreateTable",
+				"AddTableColumn",
+				"DeleteTableColumn",
+				"EnsureTable",
+				"ClearTable",
+				"DeleteTable",
+				"GetTableInformation",
+				"AddRecords",
+				"GetRecords",
+				"UpdateRecords",
+				"DeleteRecords",
+				"GetRecordsFilterStructure"
+			]
+		}
+	],
 	"methods": [
-		{
-			"name": "CreateConnection",
-			"id": "CREATECONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
-		{
-			"name": "CloseConnection",
-			"id": "CLOSECONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
-		{
-			"name": "IsConnector",
-			"id": "ISCONNECTOR",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
 		{
 			"name": "ExecuteSQLQuery",
 			"id": "EXECUTESQLQUERY",
@@ -107,7 +113,7 @@
 					"types": "Number",
 					"description": "Server port",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-r"
 				},
 				{
 					"name": "--trust",
@@ -230,7 +236,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Orm"
@@ -259,7 +265,7 @@
 					"types": "String",
 					"description": "Column data type",
 					"default": "",
-					"short": "-t"
+					"short": "-p"
 				},
 				{
 					"name": "--dbc",
@@ -273,7 +279,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Orm"
@@ -309,7 +315,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Orm"
@@ -345,7 +351,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Orm"
@@ -374,7 +380,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Orm"
@@ -403,7 +409,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Orm"
@@ -432,7 +438,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Orm"
@@ -461,7 +467,7 @@
 					"types": "Boolean",
 					"description": "True > adding records to transactions with rollback on error",
 					"default": true,
-					"short": "-t"
+					"short": "-n"
 				},
 				{
 					"name": "--dbc",
@@ -475,7 +481,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Orm"
@@ -502,9 +508,9 @@
 				{
 					"name": "--filter",
 					"types": "Array of Structure",
-					"description": "Filters array. See GetRecordsFilterStrucutre",
+					"description": "Filters array. See GetRecordsFilterStructure",
 					"default": "Пустое значение",
-					"short": "-f"
+					"short": "-l"
 				},
 				{
 					"name": "--order",
@@ -518,7 +524,7 @@
 					"types": "Number",
 					"description": "Limiting the number of received strings",
 					"default": "Пустое значение",
-					"short": "-l"
+					"short": "-m"
 				},
 				{
 					"name": "--dbc",
@@ -532,7 +538,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orm"
@@ -559,7 +565,7 @@
 				{
 					"name": "--filter",
 					"types": "Array of Structure",
-					"description": "Filters array. See GetRecordsFilterStrucutre",
+					"description": "Filters array. See GetRecordsFilterStructure",
 					"default": "Пустое значение",
 					"short": "-f"
 				},
@@ -575,7 +581,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Orm"
@@ -595,7 +601,7 @@
 				{
 					"name": "--filter",
 					"types": "Array of Structure",
-					"description": "Filters array. See GetRecordsFilterStrucutre",
+					"description": "Filters array. See GetRecordsFilterStructure",
 					"default": "Пустое значение",
 					"short": "-f"
 				},
@@ -611,14 +617,14 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Orm"
 		},
 		{
-			"name": "GetRecordsFilterStrucutre",
-			"id": "GETRECORDSFILTERSTRUCUTRE",
+			"name": "GetRecordsFilterStructure",
+			"id": "GETRECORDSFILTERSTRUCTURE",
 			"description": "Gets the template structure for filtering records in ORM queries",
 			"params": [
 				{
@@ -630,20 +636,6 @@
 				}
 			],
 			"region": "Orm"
-		},
-		{
-			"name": "GetFeatures",
-			"id": "GETFEATURES",
-			"description": "",
-			"params": [],
-			"region": "Internal"
-		},
-		{
-			"name": "GetTypesStructure",
-			"id": "GETTYPESSTRUCTURE",
-			"description": "",
-			"params": [],
-			"region": "Internal"
 		}
 	]
 }

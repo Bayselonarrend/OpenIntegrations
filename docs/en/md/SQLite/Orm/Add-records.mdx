@@ -50,16 +50,16 @@ Binary data can also be transferred as a structure `{'blob':File path}`
     RowStructure2.Insert("created_at", OPI_Tools.GetCurrentDate()); // DATETIME
     RowStructure2.Insert("data"      , New Structure("blob", Image)); // BLOB
 
-    RowStrucutre1 = New Structure;
-    RowStrucutre1.Insert("name"      , "Lesha"); // TEXT
-    RowStrucutre1.Insert("age"       , 20); // INTEGER
-    RowStrucutre1.Insert("salary"    , 200.20); // REAL
-    RowStrucutre1.Insert("is_active" , False); // BOOL
-    RowStrucutre1.Insert("created_at", OPI_Tools.GetCurrentDate()); // DATETIME
-    RowStrucutre1.Insert("data"      , New Structure("blob", PictureFile)); // BLOB
+    RowStructure1 = New Structure;
+    RowStructure1.Insert("name"      , "Lesha"); // TEXT
+    RowStructure1.Insert("age"       , 20); // INTEGER
+    RowStructure1.Insert("salary"    , 200.20); // REAL
+    RowStructure1.Insert("is_active" , False); // BOOL
+    RowStructure1.Insert("created_at", OPI_Tools.GetCurrentDate()); // DATETIME
+    RowStructure1.Insert("data"      , New Structure("blob", PictureFile)); // BLOB
 
     DataArray.Add(RowStructure2);
-    DataArray.Add(RowStrucutre1);
+    DataArray.Add(RowStructure1);
 
     Result = OPI_SQLite.AddRecords(Table, DataArray, , Base);
 ```

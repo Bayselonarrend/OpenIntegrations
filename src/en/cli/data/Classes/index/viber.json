@@ -1,9 +1,30 @@
 {
-	"module": "viber",
+	"module": "OPI_Viber",
 	"library": "viber",
-	"depends": {
-		"OPI_Viber": "%1/oint/core/Modules/OPI_Viber.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Settings and information",
+			"methods": [
+				"SetWebhook",
+				"GetChannelInformation",
+				"GetUserData",
+				"GetOnlineUsers"
+			]
+		},
+		{
+			"name": "Message sending",
+			"methods": [
+				"SendTextMessage",
+				"SendImage",
+				"SendFile",
+				"SendContact",
+				"SendLocation",
+				"SendLink",
+				"CreateKeyboardFromArrayButton"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "SetWebhook",
@@ -103,7 +124,7 @@
 					"types": "String",
 					"description": "Message text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--user",
@@ -289,7 +310,7 @@
 					"types": "String, Number",
 					"description": "Geographic longitude",
 					"default": "",
-					"short": "-l"
+					"short": "-n"
 				},
 				{
 					"name": "--user",
@@ -332,7 +353,7 @@
 					"types": "String, Number",
 					"description": "User ID. For channel > administrator, for bot > recipient",
 					"default": "",
-					"short": "-u"
+					"short": "-s"
 				},
 				{
 					"name": "--ischannel",

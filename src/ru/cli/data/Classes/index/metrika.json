@@ -1,10 +1,32 @@
 {
-	"module": "metrika",
+	"module": "OPI_YandexMetrika",
 	"library": "metrika",
-	"depends": {
-		"OPI_YandexID": "%1/oint/core/Modules/OPI_YandexID.os",
-		"OPI_YandexMetrika": "%1/oint/core/Modules/OPI_YandexMetrika.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Управление метками",
+			"methods": [
+				"СоздатьМетку",
+				"ИзменитьМетку",
+				"ПолучитьМетку",
+				"УдалитьМетку",
+				"ПолучитьСписокМеток"
+			]
+		},
+		{
+			"name": "Управление счетчиками",
+			"methods": [
+				"СоздатьСчетчик",
+				"ИзменитьСчетчик",
+				"ПолучитьСчетчик",
+				"УдалитьСчетчик",
+				"ВосстановитьСчетчик",
+				"ПолучитьСписокСчетчиков",
+				"ПолучитьСтруктуруСчетчика",
+				"ПолучитьСтруктуруФильтраСчетчиков"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "СоздатьМетку",
@@ -23,7 +45,7 @@
 					"types": "Строка",
 					"description": "Наименование метки",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Управление метками"
@@ -52,7 +74,7 @@
 					"types": "Строка",
 					"description": "Новое наименование",
 					"default": "",
-					"short": "-t"
+					"short": "-i"
 				}
 			],
 			"region": "Управление метками"

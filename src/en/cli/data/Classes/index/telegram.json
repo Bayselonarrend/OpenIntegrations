@@ -1,9 +1,66 @@
 {
-	"module": "telegram",
+	"module": "OPI_Telegram",
 	"library": "telegram",
-	"depends": {
-		"OPI_Telegram": "%1/oint/core/Modules/OPI_Telegram.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Data retrieval and settings",
+			"methods": [
+				"GetBotInformation",
+				"GetUpdates",
+				"SetWebhook",
+				"DeleteWebhook",
+				"DownloadFile"
+			]
+		},
+		{
+			"name": "Data sending",
+			"methods": [
+				"SendTextMessage",
+				"SendImage",
+				"SendVideo",
+				"SendAudio",
+				"SendDocument",
+				"SendGif",
+				"SendMediaGroup",
+				"SendLocation",
+				"SendContact",
+				"SendPoll",
+				"ForwardMessage",
+				"DeleteMessage",
+				"ReplaceMessageKeyboard",
+				"ReplaceMessageText",
+				"ReplaceMessageCaption",
+				"FormKeyboardFromButtonArray"
+			]
+		},
+		{
+			"name": "Administration",
+			"methods": [
+				"Ban",
+				"Unban",
+				"CreateInvitationLink",
+				"PinMessage",
+				"UnpinMessage",
+				"GetParticipantCount"
+			]
+		},
+		{
+			"name": "Forum topic management",
+			"methods": [
+				"GetAvatarIconList",
+				"CreateForumTopic",
+				"EditForumTopic",
+				"CloseForumTopic",
+				"OpenForumTopic",
+				"DeleteForumTopic",
+				"HideMainForumTopic",
+				"ShowMainForumTopic",
+				"EditMainForumTopicName",
+				"ClearTopicPinnedMessagesList"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "GetBotInformation",
@@ -37,7 +94,7 @@
 					"types": "Number",
 					"description": "Waiting time for new events",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-m"
 				},
 				{
 					"name": "--offset",
@@ -109,13 +166,6 @@
 			"region": "Data retrieval and settings"
 		},
 		{
-			"name": "ProcessTMAData",
-			"id": "PROCESSTMADATA",
-			"description": "",
-			"params": [],
-			"region": "Data retrieval and settings"
-		},
-		{
 			"name": "SendTextMessage",
 			"id": "SENDTEXTMESSAGE",
 			"description": "Sends a text message to a chat or channel",
@@ -139,7 +189,7 @@
 					"types": "String",
 					"description": "Message text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--keyboard",
@@ -189,7 +239,7 @@
 					"types": "String",
 					"description": "Message text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--picture",
@@ -210,7 +260,7 @@
 					"types": "String",
 					"description": "Text processing type (HTML, Markdown, MarkdownV2)",
 					"default": "Markdown",
-					"short": "-p"
+					"short": "-r"
 				}
 			],
 			"region": "Data sending"
@@ -239,7 +289,7 @@
 					"types": "String",
 					"description": "Message text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--video",
@@ -289,7 +339,7 @@
 					"types": "String",
 					"description": "Message text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--audio",
@@ -339,7 +389,7 @@
 					"types": "String",
 					"description": "Message text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--doc",
@@ -396,7 +446,7 @@
 					"types": "String",
 					"description": "Message text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--gif",
@@ -446,7 +496,7 @@
 					"types": "String",
 					"description": "Message text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--media",
@@ -503,7 +553,7 @@
 					"types": "String, Number",
 					"description": "Geographic longitude",
 					"default": "",
-					"short": "-l"
+					"short": "-n"
 				},
 				{
 					"name": "--keyboard",
@@ -639,7 +689,7 @@
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
 					"default": "",
-					"short": "-t"
+					"short": "-o"
 				}
 			],
 			"region": "Data sending"
@@ -740,7 +790,7 @@
 					"types": "String",
 					"description": "New message text",
 					"default": "",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--parsemode",
@@ -783,14 +833,14 @@
 					"types": "String",
 					"description": "New message description",
 					"default": "",
-					"short": "-c"
+					"short": "-p"
 				},
 				{
 					"name": "--parsemode",
 					"types": "String",
 					"description": "Text processing type (HTML, Markdown, MarkdownV2)",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-r"
 				}
 			],
 			"region": "Data sending"
@@ -906,7 +956,7 @@
 					"types": "String",
 					"description": "Invitation title",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--expire",
@@ -920,7 +970,7 @@
 					"types": "Number",
 					"description": "User limit (infinite if not specified)",
 					"default": "Пустое значение",
-					"short": "-l"
+					"short": "-m"
 				}
 			],
 			"region": "Administration"
@@ -1044,7 +1094,7 @@
 					"types": "String",
 					"description": "Topic title",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--icon",
@@ -1080,14 +1130,14 @@
 					"types": "String, Number",
 					"description": "Topic ID",
 					"default": "",
-					"short": "-t"
+					"short": "-p"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New title",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--icon",
@@ -1123,7 +1173,7 @@
 					"types": "String, Number",
 					"description": "Topic ID",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-p"
 				}
 			],
 			"region": "Forum topic management"
@@ -1152,7 +1202,7 @@
 					"types": "String, Number",
 					"description": "Topic ID",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-p"
 				}
 			],
 			"region": "Forum topic management"
@@ -1181,7 +1231,7 @@
 					"types": "String, Number",
 					"description": "Topic ID",
 					"default": "",
-					"short": "-t"
+					"short": "-p"
 				}
 			],
 			"region": "Forum topic management"
@@ -1254,7 +1304,7 @@
 					"types": "String",
 					"description": "New main topic name",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Forum topic management"
@@ -1283,24 +1333,10 @@
 					"types": "String, Number",
 					"description": "Topic ID. Main if not filled",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-p"
 				}
 			],
 			"region": "Forum topic management"
-		},
-		{
-			"name": "PrepareString",
-			"id": "PREPARESTRING",
-			"description": "",
-			"params": [],
-			"region": "Private"
-		},
-		{
-			"name": "ReplaceSpecialCharacters",
-			"id": "REPLACESPECIALCHARACTERS",
-			"description": "",
-			"params": [],
-			"region": "Private"
 		}
 	]
 }

@@ -1,9 +1,37 @@
 {
-	"module": "rportal",
+	"module": "OPI_ReportPortal",
 	"library": "rportal",
-	"depends": {
-		"OPI_ReportPortal": "%1/oint/core/Modules/OPI_ReportPortal.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Authorization",
+			"methods": [
+				"GetTemporaryToken",
+				"GetPermanentToken",
+				"DeletePermanentToken"
+			]
+		},
+		{
+			"name": "Results management",
+			"methods": [
+				"CreateLaunch",
+				"CreateItem",
+				"FinishLaunch",
+				"FinishItem",
+				"GetLaunchStructure",
+				"GetItemStructure",
+				"GetItemCompletionStructure",
+				"GetLaunchCompletionStructure"
+			]
+		},
+		{
+			"name": "Log recording",
+			"methods": [
+				"WriteLog",
+				"GetLogStructure"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "GetTemporaryToken",
@@ -58,7 +86,7 @@
 					"types": "String",
 					"description": "User ID",
 					"default": "",
-					"short": "-u"
+					"short": "-s"
 				},
 				{
 					"name": "--name",
@@ -94,7 +122,7 @@
 					"types": "String",
 					"description": "User ID",
 					"default": "",
-					"short": "-u"
+					"short": "-s"
 				},
 				{
 					"name": "--id",
@@ -137,7 +165,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Launch parameters. See GetLaunchStructure",
 					"default": "",
-					"short": "-p"
+					"short": "-r"
 				}
 			],
 			"region": "Results management"
@@ -173,14 +201,14 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Item parameters. See GetItemStructure",
 					"default": "",
-					"short": "-p"
+					"short": "-r"
 				},
 				{
 					"name": "--parent",
 					"types": "String",
 					"description": "ID of the parent item, if necessary",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-n"
 				}
 			],
 			"region": "Results management"
@@ -223,7 +251,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Completion parameters. See GetLaunchCompletionStructure",
 					"default": "",
-					"short": "-p"
+					"short": "-r"
 				}
 			],
 			"region": "Results management"
@@ -266,7 +294,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Completion parameters. See GetItemCompletionStructure",
 					"default": "",
-					"short": "-p"
+					"short": "-r"
 				}
 			],
 			"region": "Results management"
@@ -404,7 +432,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Execution information. See GetLogStructure",
 					"default": "",
-					"short": "-p"
+					"short": "-r"
 				}
 			],
 			"region": "Log recording"
@@ -440,14 +468,14 @@
 					"types": "String",
 					"description": "Log text information",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-x"
 				},
 				{
 					"name": "--level",
 					"types": "String",
 					"description": "Information level: error, warn, info, debug, trace, fatal, unknown",
 					"default": "info",
-					"short": "-l"
+					"short": "-v"
 				}
 			],
 			"region": "Log recording"

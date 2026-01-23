@@ -1893,7 +1893,7 @@ Function GetTableStructure(Val Module, Val Table, Val Connection = "", Val Tls =
 	Return ПолучитьСтруктуруТаблицы(Module, Table, Connection, Tls);
 EndFunction
 
-Function GetRecordsFilterStrucutre(Val Clear = False) Export
+Function GetRecordsFilterStructure(Val Clear = False) Export
 	Return ПолучитьСтруктуруФильтраЗаписей(Clear);
 EndFunction
 

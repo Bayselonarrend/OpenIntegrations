@@ -1,10 +1,46 @@
 {
-	"module": "yadisk",
+	"module": "OPI_YandexDisk",
 	"library": "yadisk",
-	"depends": {
-		"OPI_YandexDisk": "%1/oint/core/Modules/OPI_YandexDisk.os",
-		"OPI_YandexID": "%1/oint/core/Modules/OPI_YandexID.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Authorization",
+			"methods": [
+				"GetConfirmationCode",
+				"ConvertCodeToToken",
+				"RefreshToken"
+			]
+		},
+		{
+			"name": "File and folder management",
+			"methods": [
+				"GetDiskInformation",
+				"CreateFolder",
+				"GetObject",
+				"DeleteObject",
+				"CreateObjectCopy",
+				"GetDownloadLink",
+				"GetFileUploadLink",
+				"DownloadFile",
+				"GetFilesList",
+				"MoveObject",
+				"UploadFile",
+				"UploadFileInParts",
+				"UploadFileByURL"
+			]
+		},
+		{
+			"name": "Manage public access",
+			"methods": [
+				"PublishObject",
+				"CancelObjectPublication",
+				"GetPublishedObjectsList",
+				"GetPublicObject",
+				"GetDownloadLinkForPublicObject",
+				"SavePublicObjectToDisk"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "GetConfirmationCode",
@@ -191,7 +227,7 @@
 					"types": "String",
 					"description": "Destination path for the copy",
 					"default": "",
-					"short": "-t"
+					"short": "-o"
 				},
 				{
 					"name": "--rewrite",
@@ -314,7 +350,7 @@
 					"types": "String",
 					"description": "Filter by file type",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-p"
 				},
 				{
 					"name": "--datesort",
@@ -350,7 +386,7 @@
 					"types": "String",
 					"description": "Destination path for moving",
 					"default": "",
-					"short": "-t"
+					"short": "-o"
 				},
 				{
 					"name": "--rewrite",
@@ -429,7 +465,7 @@
 					"types": "Number",
 					"description": "Part size when uploading",
 					"default": 33554432,
-					"short": "-p"
+					"short": "-s"
 				},
 				{
 					"name": "--rewrite",
@@ -639,7 +675,7 @@
 					"types": "String",
 					"description": "File save path",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-o"
 				}
 			],
 			"region": "Manage public access"

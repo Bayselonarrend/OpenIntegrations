@@ -1,9 +1,45 @@
 {
-	"module": "ollama",
+	"module": "OPI_Ollama",
 	"library": "ollama",
-	"depends": {
-		"OPI_Ollama": "%1/oint/core/Modules/OPI_Ollama.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Requests processing",
+			"methods": [
+				"GetVersion",
+				"GetResponse",
+				"GetContextResponse",
+				"GetEmbeddings",
+				"GetRequestParameterStructure",
+				"GetEmbeddingsParameterStructure",
+				"GetContextParameterStructure",
+				"GetContextMessageStructure"
+			]
+		},
+		{
+			"name": "Models management",
+			"methods": [
+				"GetModelList",
+				"ListRunningModels",
+				"GetModelInformation",
+				"CreateModel",
+				"CopyModel",
+				"DeleteModel",
+				"LoadModelToMemory",
+				"UnloadModelFromMemory",
+				"PushModel",
+				"PullModel",
+				"GetModelSettingsStructure"
+			]
+		},
+		{
+			"name": "Working with blob",
+			"methods": [
+				"PushBlob",
+				"CheckBlob"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "GetVersion",
@@ -94,7 +130,7 @@
 					"types": "Array of Structure",
 					"description": "Messages log. See GetContextMessageStructure",
 					"default": "",
-					"short": "-m"
+					"short": "-s"
 				},
 				{
 					"name": "--options",
@@ -232,7 +268,7 @@
 					"types": "Array Of String",
 					"description": "List of tools in JSON format that the model should use",
 					"default": "Пустое значение",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Requests processing"

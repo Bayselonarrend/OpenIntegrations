@@ -1,10 +1,27 @@
 {
-	"module": "yamarket",
+	"module": "OPI_YandexMarket",
 	"library": "yamarket",
-	"depends": {
-		"OPI_YandexID": "%1/oint/core/Modules/OPI_YandexID.os",
-		"OPI_YandexMarket": "%1/oint/core/Modules/OPI_YandexMarket.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Campaigns and business",
+			"methods": [
+				"GetMarketsList",
+				"GetMarket",
+				"GetBusinessSettings",
+				"GetCampaignSettings"
+			]
+		},
+		{
+			"name": "Product management",
+			"methods": [
+				"AddUpdateProducts",
+				"GetCampaignProducts",
+				"GetBusinessProducts",
+				"GetProductStructure"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "GetMarketsList",

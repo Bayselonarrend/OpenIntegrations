@@ -1,17 +1,9 @@
 {
-	"module": "rcon",
+	"module": "OPI_RCON",
 	"library": "rcon",
-	"depends": {
-		"OPI_RCON": "%1/oint/core/Modules/OPI_RCON.os"
-	},
+	"self_depend": true,
+	"regions": [],
 	"methods": [
-		{
-			"name": "ОткрытьСоединение",
-			"id": "ОТКРЫТЬСОЕДИНЕНИЕ",
-			"description": "",
-			"params": [],
-			"region": "Выполнение команд"
-		},
 		{
 			"name": "ВыполнитьКоманду",
 			"id": "ВЫПОЛНИТЬКОМАНДУ",
@@ -68,13 +60,6 @@
 					"short": "-w"
 				}
 			],
-			"region": "Выполнение команд"
-		},
-		{
-			"name": "ЭтоКоннектор",
-			"id": "ЭТОКОННЕКТОР",
-			"description": "",
-			"params": [],
 			"region": "Выполнение команд"
 		}
 	]

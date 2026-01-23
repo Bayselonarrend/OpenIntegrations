@@ -1,9 +1,55 @@
 {
-	"module": "cdek",
+	"module": "OPI_CDEK",
 	"library": "cdek",
-	"depends": {
-		"OPI_CDEK": "%1/oint/core/Modules/OPI_CDEK.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Common methods",
+			"methods": [
+				"GetToken",
+				"GetCashboxChecksByDate",
+				"GetDeliveryCashRegistry",
+				"GetDeliveryCashTransfers",
+				"GetOfficeList",
+				"GetRegionsList",
+				"GetOfficeFilterDescription"
+			]
+		},
+		{
+			"name": "Orders management",
+			"methods": [
+				"CreateOrder",
+				"UpdateOrder",
+				"DeleteOrder",
+				"GetOrder",
+				"GetOrderByNumber",
+				"CreateCustomerRefund",
+				"CreateRefusal",
+				"CreateReceipt",
+				"GetReceipt",
+				"CreateBarcode",
+				"GetBarcode",
+				"CreatePrealert",
+				"GetPrealert",
+				"GetPassportDataStatus",
+				"GetCashboxCheck",
+				"GetOrderDescription"
+			]
+		},
+		{
+			"name": "Delivery management",
+			"methods": [
+				"GetAvailableDeliveryIntervals",
+				"CreateCourierInvitation",
+				"GetCourierInvitation",
+				"DeleteCourierInvitation",
+				"RegisterDeliveryAppointment",
+				"GetDeliveryAppointment",
+				"GetCourierInvitationsDescription",
+				"GetAppointmentDescription"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "GetToken",
@@ -58,7 +104,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Common methods"
@@ -87,7 +133,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Common methods"
@@ -116,7 +162,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Common methods"
@@ -145,7 +191,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Common methods"
@@ -188,7 +234,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Common methods"
@@ -232,14 +278,14 @@
 					"types": "Boolean",
 					"description": "Flag of Online store order type",
 					"default": false,
-					"short": "-o"
+					"short": "-s"
 				},
 				{
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-p"
 				}
 			],
 			"region": "Orders management"
@@ -275,7 +321,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orders management"
@@ -304,7 +350,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orders management"
@@ -333,7 +379,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orders management"
@@ -369,7 +415,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orders management"
@@ -398,14 +444,14 @@
 					"types": "Number",
 					"description": "Tariff code (from those available under the contract)",
 					"default": "",
-					"short": "-t"
+					"short": "-r"
 				},
 				{
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orders management"
@@ -434,7 +480,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orders management"
@@ -463,7 +509,7 @@
 					"types": "String",
 					"description": "Receipt type (language)",
 					"default": "tpl_russia",
-					"short": "-t"
+					"short": "-p"
 				},
 				{
 					"name": "--count",
@@ -477,7 +523,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orders management"
@@ -513,7 +559,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orders management"
@@ -563,7 +609,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orders management"
@@ -599,7 +645,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orders management"
@@ -642,7 +688,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orders management"
@@ -671,7 +717,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orders management"
@@ -700,7 +746,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orders management"
@@ -729,7 +775,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Orders management"
@@ -787,7 +833,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Delivery management"
@@ -816,7 +862,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Delivery management"
@@ -845,7 +891,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Delivery management"
@@ -874,7 +920,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Delivery management"
@@ -903,7 +949,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Delivery management"
@@ -932,7 +978,7 @@
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
 					"default": false,
-					"short": "-t"
+					"short": "-s"
 				}
 			],
 			"region": "Delivery management"

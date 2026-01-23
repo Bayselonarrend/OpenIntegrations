@@ -1,12 +1,14 @@
 Var ColorOutput;
 Var ConsoleWidth;
 Var UseAdaptiveOutput;
+Var OPIObject;
 
 #Region Internal
 
-Procedure OnObjectCreate(AccessTemplate)
+Procedure OnObjectCreate(AccessTemplate_, OPIObject_)
 
-	ColorOutput = LoadScript(StrTemplate(AccessTemplate, "env/Modules/ColorOutput.os"));
+	ColorOutput = LoadScript(StrTemplate(AccessTemplate_, "env/Modules/ColorOutput.os"));
+	OPIObject = OPIObject_;
 
 	Try
 		ConsoleWidth = Console.Width;
@@ -17,7 +19,10 @@ Procedure OnObjectCreate(AccessTemplate)
 
 EndProcedure
 
-Procedure DisplayStartPage(Val ModuleCommandMapping, Val Version) Export
+Procedure DisplayStartPage() Export
+
+	Version = OPIObject.GetVersion();
+	ModuleCommandMapping = OPIObject.GetCommandModuleMapping();
 	
 	CommandList = "";
 
@@ -94,50 +99,47 @@ Procedure DisplayStartPage(Val ModuleCommandMapping, Val Version) Export
 	
 EndProcedure
 
-Procedure DisplayMethodHelp(Val Command, Val ParametersTable) Export
+Procedure DisplayMethodHelp(Val Command) Export
+
+	CommandData = OPIObject.GetIndexData(Command);
+	RegionsData = CommandData["regions"];
 
 	Console.TextColor = ConsoleColor.White;
 	ColorOutput.WriteLine(Chars.LF + " (##|#color=Green) Library - (" + Command + "|#color=Cyan)");
 
-	ParametersTable.GroupBy("Method,Region");
-	
 	ColorOutput.WriteLine(" (##|#color=Green) Available methods: " + Chars.LF);
 	Console.TextColor = ConsoleColor.White;
 
-	CurrentRegion = "";
-	Counter = 0;
-	NumberOfParameters = ParametersTable.Count();
+	For each RegionLine In RegionsData Do
 
-	For each MethodLine In ParametersTable Do
+		CurrentRegion = RegionLine["name"];
+		RegionMethods = RegionLine["methods"];
 
-		First = False;
-		Last = False;
+		ColorOutput.WriteLine(" (o|#color=Yellow) (" + CurrentRegion + "|#color=Cyan)");
+		First = True;
 
-		If CurrentRegion <> MethodLine.Region Then
-			CurrentRegion = MethodLine.Region;
-			ColorOutput.WriteLine(" (o|#color=Yellow) (" + CurrentRegion + "|#color=Cyan)");
-			First = True;
-		EndIf;
+		Counter = 0;
+		For Each RegionMethod In RegionMethods Do
 
-		If Counter >= NumberOfParameters - 1 Then
-			Last = True;
-		Else
-			Last = ParametersTable[Counter + 1].Region <> CurrentRegion;
-		EndIf;
+			Last = Counter = RegionMethods.UBound();
 
-		If First And Last Then
-			Label = "└───";
-		ElsIf First Then
-			Label = "└─┬─";
-		ElsIf Last Then
-			Label = " └─";
-		Else
-			Label = " ├─";
-		EndIf;
-		
-		ColorOutput.WriteLine(" (" + Label + "|#color=Yellow) " + MethodLine.Method);
+			If First And Last Then
+				Label = "└───";
+			ElsIf First Then
+				Label = "└─┬─";
+			ElsIf Last Then
+				Label = " └─";
+			Else
+				Label = " ├─";
+			EndIf;
+			
+			ColorOutput.WriteLine(" (" + Label + "|#color=Yellow) " + RegionMethod);
 
-		Counter = Counter + 1;
+			Counter = Counter + 1;
+			First = False;
+
+		EndDo;
+
 	EndDo;
 
 	Message(Chars.LF);
@@ -147,16 +149,18 @@ Procedure DisplayMethodHelp(Val Command, Val ParametersTable) Export
 
 EndProcedure
 
-Procedure DisplayParameterHelp(Val ParametersTable) Export 
+Procedure DisplayParameterHelp(Val Command, Val Method) Export 
 
-	If ParametersTable.Count() = 0 Then
+	MethodData = OPIObject.GetMethodData(Command, Method);
+
+	If Not ValueIsFilled(MethodData) Then
 		DisplayExceptionMessage("Method");
 	EndIf;
 
-	MethodName = ParametersTable[0].Method;
-	MethodDescription = ParametersTable[0].MethodDescription;
+	MethodName = MethodData["name"];
+	MethodDescription = MethodData["description"];
 	
-	FullParamsDescription = GetFullParamsDescription(ParametersTable);
+	FullParamsDescription = GetFullParamsDescription(MethodData);
 
 	HelpText = StrTemplate("
 	| (##|#color=Green) Method (%1|#color=Cyan)
@@ -213,17 +217,18 @@ EndProcedure
 
 #Region Private
 
-Function GetFullParamsDescription(ParametersTable)
+Function GetFullParamsDescription(MethodData)
 
 	MaximumLength 	 = 0;
 	OptionListsMap = New Map();
 	FullDescriptionsArray = New Array;
 	ParameterDescriptionTemplate = " (%1|#color=Yellow) -%2";
+	MethodParameters = MethodData["params"];
 
-	For Each MethodParameter In ParametersTable Do
+	For Each MethodParameter In MethodParameters Do
 
-		OptionFull = MethodParameter["Parameter"];
-		SplittedOption = MethodParameter["ParameterTrim"];
+		OptionFull = MethodParameter["name"];
+		SplittedOption = MethodParameter["short"];
 
 		CurrentOptionList = ?(ValueIsFilled(SplittedOption)
 			, StrTemplate("%1, %2", SplittedOption, OptionFull)
@@ -246,15 +251,15 @@ Function GetFullParamsDescription(ParametersTable)
 		NewLineTab = NewLineTab + " ";
 	EndDo;
 
-	For Each MethodParameter In ParametersTable Do
+	For Each MethodParameter In MethodParameters Do
 			
-		CurrentOptionList = OptionListsMap.Get(MethodParameter["Parameter"]);
+		CurrentOptionList = OptionListsMap.Get(MethodParameter["name"]);
 
 		While StrLen(CurrentOptionList) < MaximumLength Do
 			CurrentOptionList = CurrentOptionList + " ";
 		EndDo;
 
-		DescriptionArray = StrSplit(MethodParameter["Description"], Chars.LF);
+		DescriptionArray = StrSplit(MethodParameter["description"], Chars.LF);
 		CurrentDescription = Undefined;
 		
 		If UseAdaptiveOutput Then

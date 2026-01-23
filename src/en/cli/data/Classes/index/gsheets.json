@@ -1,10 +1,42 @@
 {
-	"module": "gsheets",
+	"module": "OPI_GoogleSheets",
 	"library": "gsheets",
-	"depends": {
-		"OPI_GoogleSheets": "%1/oint/core/Modules/OPI_GoogleSheets.os",
-		"OPI_GoogleWorkspace": "%1/oint/core/Modules/OPI_GoogleWorkspace.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Authorization",
+			"methods": [
+				"FormCodeRetrievalLink",
+				"GetTokenByCode",
+				"RefreshToken",
+				"GetServiceAccountToken"
+			]
+		},
+		{
+			"name": "Spreadsheets management",
+			"methods": [
+				"CreateSpreadsheet",
+				"GetSpreadsheet",
+				"EditSpreadsheetTitle"
+			]
+		},
+		{
+			"name": "Working with sheets",
+			"methods": [
+				"AddSheet",
+				"DeleteSheet",
+				"CopySheet"
+			]
+		},
+		{
+			"name": "Data management",
+			"methods": [
+				"SetCellValues",
+				"ClearCells",
+				"GetCellValues"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "FormCodeRetrievalLink",
@@ -146,7 +178,7 @@
 					"types": "String",
 					"description": "Name",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--sheets",
@@ -204,7 +236,7 @@
 					"types": "String",
 					"description": "New name",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Spreadsheets management"
@@ -233,7 +265,7 @@
 					"types": "String",
 					"description": "NewSheetName",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Working with sheets"
@@ -262,7 +294,7 @@
 					"types": "String",
 					"description": "IdentifierOfSheetToDelete",
 					"default": "",
-					"short": "-s"
+					"short": "-h"
 				}
 			],
 			"region": "Working with sheets"
@@ -291,7 +323,7 @@
 					"types": "String",
 					"description": "Destination spreadsheet ID",
 					"default": "",
-					"short": "-t"
+					"short": "-o"
 				},
 				{
 					"name": "--sheet",
@@ -334,14 +366,14 @@
 					"types": "String",
 					"description": "Sheet name (first sheet by default)",
 					"default": "Пустое значение",
-					"short": "-s"
+					"short": "-h"
 				},
 				{
 					"name": "--dim",
 					"types": "String",
 					"description": "Main dimension when filling the array range",
 					"default": "COLUMNS",
-					"short": "-d"
+					"short": "-m"
 				}
 			],
 			"region": "Data management"
@@ -377,7 +409,7 @@
 					"types": "String",
 					"description": "Sheet name (first sheet by default)",
 					"default": "Пустое значение",
-					"short": "-s"
+					"short": "-h"
 				}
 			],
 			"region": "Data management"
@@ -413,7 +445,7 @@
 					"types": "String",
 					"description": "Sheet name (first sheet by default)",
 					"default": "Пустое значение",
-					"short": "-s"
+					"short": "-h"
 				}
 			],
 			"region": "Data management"
