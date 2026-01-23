@@ -1,0 +1,81 @@
+{
+	"module": "rcon",
+	"library": "rcon",
+	"depends": {
+		"OPI_RCON": "%1/oint/core/Modules/OPI_RCON.os"
+	},
+	"methods": [
+		{
+			"name": "CreateConnection",
+			"id": "CREATECONNECTION",
+			"description": "",
+			"params": [],
+			"region": "Commands execution"
+		},
+		{
+			"name": "ExecuteCommand",
+			"id": "EXECUTECOMMAND",
+			"description": "Executes the command on the server",
+			"params": [
+				{
+					"name": "--exec",
+					"types": "String",
+					"description": "Command text",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--conn",
+					"types": "Arbitrary, Structure Of KeyAndValue",
+					"description": "Connection or connection parameters",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Commands execution"
+		},
+		{
+			"name": "FormConnectionParameters",
+			"id": "FORMCONNECTIONPARAMETERS",
+			"description": "Forms a collection of connection parameters",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--pass",
+					"types": "String",
+					"description": "Password for connection",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--rtout",
+					"types": "Number",
+					"description": "Response timeout (in seconds)",
+					"default": 30,
+					"short": "-r"
+				},
+				{
+					"name": "--wtout",
+					"types": "Number",
+					"description": "Request sending timeout (in seconds)",
+					"default": 30,
+					"short": "-w"
+				}
+			],
+			"region": "Commands execution"
+		},
+		{
+			"name": "IsConnector",
+			"id": "ISCONNECTOR",
+			"description": "",
+			"params": [],
+			"region": "Commands execution"
+		}
+	]
+}

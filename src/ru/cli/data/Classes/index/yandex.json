@@ -1,0 +1,89 @@
+{
+	"module": "yandex",
+	"library": "yandex",
+	"depends": {
+		"OPI_YandexID": "%1/oint/core/Modules/OPI_YandexID.os"
+	},
+	"methods": [
+		{
+			"name": "ПолучитьКодПодтверждения",
+			"id": "ПОЛУЧИТЬКОДПОДТВЕРЖДЕНИЯ",
+			"description": "Получает код подтверждения и адрес страницы, на которой его необходимо ввести",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client id",
+					"default": "",
+					"short": "-i"
+				}
+			],
+			"region": "Программный интерфейс"
+		},
+		{
+			"name": "ПреобразоватьКодВТокен",
+			"id": "ПРЕОБРАЗОВАТЬКОДВТОКЕН",
+			"description": "Преобразовывает код в токен после ввода кода при выполнении ПолучитьКодПодтверждения",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client id",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "Строка",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--device",
+					"types": "Строка",
+					"description": "device_code из ПолучитьКодПодтверждения()",
+					"default": "",
+					"short": "-d"
+				}
+			],
+			"region": "Программный интерфейс"
+		},
+		{
+			"name": "ОбновитьТокен",
+			"id": "ОБНОВИТЬТОКЕН",
+			"description": "Обновляет токен по Refresh token",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client id",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "Строка",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--refresh",
+					"types": "Строка",
+					"description": "Refresh token",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Программный интерфейс"
+		},
+		{
+			"name": "ПолучитьЗаголовокАвторизации",
+			"id": "ПОЛУЧИТЬЗАГОЛОВОКАВТОРИЗАЦИИ",
+			"description": "",
+			"params": [],
+			"region": "Служебный программный интерфейс"
+		}
+	]
+}

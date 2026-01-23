@@ -1,0 +1,139 @@
+{
+	"module": "google",
+	"library": "google",
+	"depends": {
+		"OPI_GoogleWorkspace": "%1/oint/core/Modules/OPI_GoogleWorkspace.os"
+	},
+	"methods": [
+		{
+			"name": "FormCodeRetrievalLink",
+			"id": "FORMCODERETRIEVALLINK",
+			"description": "Returns URL for browser authorization",
+			"params": [
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--calendar",
+					"types": "Boolean",
+					"description": "Calendar methods permission",
+					"default": true,
+					"short": "-c"
+				},
+				{
+					"name": "--drive",
+					"types": "Boolean",
+					"description": "Drive methods permission",
+					"default": true,
+					"short": "-d"
+				},
+				{
+					"name": "--sheets",
+					"types": "Boolean",
+					"description": "Sheets methods permission",
+					"default": true,
+					"short": "-s"
+				}
+			],
+			"region": "Public"
+		},
+		{
+			"name": "GetTokenByCode",
+			"id": "GETTOKENBYCODE",
+			"description": "Gets token by code from browser authorization",
+			"params": [
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "String",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--code",
+					"types": "String",
+					"description": "Code from browser",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Public"
+		},
+		{
+			"name": "RefreshToken",
+			"id": "REFRESHTOKEN",
+			"description": "Updates token by Refresh token",
+			"params": [
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "String",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--refresh",
+					"types": "String",
+					"description": "Refresh token",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Public"
+		},
+		{
+			"name": "GetServiceAccountToken",
+			"id": "GETSERVICEACCOUNTTOKEN",
+			"description": "Gets authorization token by service account data",
+			"params": [
+				{
+					"name": "--auth",
+					"types": "Arbitrary",
+					"description": "JSON authorization data as a file, collection or binary data",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--scope",
+					"types": "Array Of String",
+					"description": "Scope or array of scopes",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--exp",
+					"types": "Number",
+					"description": "Token lifetime in seconds",
+					"default": 3600,
+					"short": "-e"
+				}
+			],
+			"region": "Public"
+		},
+		{
+			"name": "GetAuthorizationHeader",
+			"id": "GETAUTHORIZATIONHEADER",
+			"description": "",
+			"params": [],
+			"region": "Internal"
+		}
+	]
+}

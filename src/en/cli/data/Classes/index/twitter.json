@@ -1,0 +1,285 @@
+{
+	"module": "twitter",
+	"library": "twitter",
+	"depends": {
+		"OPI_Twitter": "%1/oint/core/Modules/OPI_Twitter.os"
+	},
+	"methods": [
+		{
+			"name": "GetAuthorizationLink",
+			"id": "GETAUTHORIZATIONLINK",
+			"description": "Forms a link for authorization via the browser",
+			"params": [
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization data. See GetStandardParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Data and settings"
+		},
+		{
+			"name": "GetToken",
+			"id": "GETTOKEN",
+			"description": "Gets the token by the code received when authorizing using the link from GetAuthorizationLink",
+			"params": [
+				{
+					"name": "--code",
+					"types": "String",
+					"description": "Code obtained from authorization See GetAuthorizationLink",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization data. See GetStandardParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Data and settings"
+		},
+		{
+			"name": "RefreshToken",
+			"id": "REFRESHTOKEN",
+			"description": "Updates the v2 token using the refresh_token",
+			"params": [
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization data. See GetStandardParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Data and settings"
+		},
+		{
+			"name": "HandleIncomingRequestAfterAuthorization",
+			"id": "HANDLEINCOMINGREQUESTAFTERAUTHORIZATION",
+			"description": "",
+			"params": [],
+			"region": "Data and settings"
+		},
+		{
+			"name": "CreateCustomTweet",
+			"id": "CREATECUSTOMTWEET",
+			"description": "Creates a tweet with custom content",
+			"params": [
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Tweet text",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--media",
+					"types": "Array of String, BinaryData",
+					"description": "Array of binary data or file paths",
+					"default": "Пустое значение",
+					"short": "-m"
+				},
+				{
+					"name": "--options",
+					"types": "Array of String",
+					"description": "Array of poll options, if necessary",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--dur",
+					"types": "String, Number",
+					"description": "Poll duration if necessary (poll without duration is not created)",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization data. See GetStandardParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Tweets"
+		},
+		{
+			"name": "CreateTextTweet",
+			"id": "CREATETEXTTWEET",
+			"description": "Creates a tweet without attachments",
+			"params": [
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Tweet text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization data. See GetStandardParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Tweets"
+		},
+		{
+			"name": "CreateImageTweet",
+			"id": "CREATEIMAGETWEET",
+			"description": "Creates a tweet with an image attachment",
+			"params": [
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Tweet text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--pictures",
+					"types": "Array of String, BinaryData",
+					"description": "Image files array",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization data. See GetStandardParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Tweets"
+		},
+		{
+			"name": "CreateGifTweet",
+			"id": "CREATEGIFTWEET",
+			"description": "Creates a tweet with a gif attachment",
+			"params": [
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Tweet text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--gifs",
+					"types": "Array of String, BinaryData",
+					"description": "Gif files array",
+					"default": "",
+					"short": "-g"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization data. See GetStandardParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Tweets"
+		},
+		{
+			"name": "CreateVideoTweet",
+			"id": "CREATEVIDEOTWEET",
+			"description": "Creates a tweet with a video attachment",
+			"params": [
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Tweet text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--videos",
+					"types": "Array of String, BinaryData",
+					"description": "Video files array",
+					"default": "",
+					"short": "-v"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization data. See GetStandardParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Tweets"
+		},
+		{
+			"name": "CreatePollTweet",
+			"id": "CREATEPOLLTWEET",
+			"description": "Creates a tweet with a poll",
+			"params": [
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Tweet text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--options",
+					"types": "Array of String",
+					"description": "Poll options array",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--duration",
+					"types": "String, Number",
+					"description": "Poll duration",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization data. See GetStandardParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Tweets"
+		},
+		{
+			"name": "UploadAttachmentsArray",
+			"id": "UPLOADATTACHMENTSARRAY",
+			"description": "Uploads files to the server and returns their IDs",
+			"params": [
+				{
+					"name": "--files",
+					"types": "Array of String, BinaryData",
+					"description": "Array of files to be uploaded",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--type",
+					"types": "String",
+					"description": "Attachment type: tweet_video, tweet_image, tweet_gif",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization data. See GetStandardParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Tweets"
+		}
+	]
+}

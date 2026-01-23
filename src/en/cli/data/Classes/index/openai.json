@@ -1,0 +1,821 @@
+{
+	"module": "openai",
+	"library": "openai",
+	"depends": {
+		"OPI_OpenAI": "%1/oint/core/Modules/OPI_OpenAI.os"
+	},
+	"methods": [
+		{
+			"name": "GetResponse",
+			"id": "GETRESPONSE",
+			"description": "Generates a response for a given text query",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--msgs",
+					"types": "String, Array of String",
+					"description": "Conversation messages. See GetMessageStructure",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--options",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional request parameters, if necessary",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetImages",
+			"id": "GETIMAGES",
+			"description": "Generates images based on the specified description",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--descr",
+					"types": "Structure Of KeyAndValue",
+					"description": "Generation parameters. See GetImageDescriptionStructure",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetEmbeddings",
+			"id": "GETEMBEDDINGS",
+			"description": "Gets the embeddings for the given entries",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--input",
+					"types": "Array Of String",
+					"description": "String or array of request strings",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--options",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional request parameters, if necessary",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetMessageStructure",
+			"id": "GETMESSAGESTRUCTURE",
+			"description": "Gets the structure of an arbitrary message for the request message list",
+			"params": [
+				{
+					"name": "--role",
+					"types": "String",
+					"description": "Source of the message: system, user, assistant, etc..",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Name of participant in conversation",
+					"default": "Пустое значение",
+					"short": "-n"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetUserMessage",
+			"id": "GETUSERMESSAGE",
+			"description": "Gets the structure of a message from the user for use in a request",
+			"params": [
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Name of participant in conversation",
+					"default": "Пустое значение",
+					"short": "-n"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetAssistantMessage",
+			"id": "GETASSISTANTMESSAGE",
+			"description": "Gets the structure of a message from the assistant for use in a request",
+			"params": [
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetSystemMessage",
+			"id": "GETSYSTEMMESSAGE",
+			"description": "Gets the structure of a system message for use in a request",
+			"params": [
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetImageMessageStructure",
+			"id": "GETIMAGEMESSAGESTRUCTURE",
+			"description": "Gets the message structure based on the image for the request message list",
+			"params": [
+				{
+					"name": "--role",
+					"types": "String",
+					"description": "Message source: system, user, developer",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--file",
+					"types": "String",
+					"description": "Image file ID. See UploadFile",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--prompt",
+					"types": "String",
+					"description": "Input text query for image processing",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetImageDescriptionStructure",
+			"id": "GETIMAGEDESCRIPTIONSTRUCTURE",
+			"description": "Get image description structure for generation",
+			"params": [
+				{
+					"name": "--prompt",
+					"types": "String",
+					"description": "Text description of the image for generation",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--amount",
+					"types": "Number",
+					"description": "Number of images to generate",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--bg",
+					"types": "String",
+					"description": "Generation background option: transparent, opaque, auto",
+					"default": "Пустое значение",
+					"short": "-b"
+				},
+				{
+					"name": "--size",
+					"types": "String",
+					"description": "Size option for generated images",
+					"default": "Пустое значение",
+					"short": "-s"
+				},
+				{
+					"name": "--options",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional request parameters, if necessary",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "Requests processing"
+		},
+		{
+			"name": "GetAssistantsList",
+			"id": "GETASSISTANTSLIST",
+			"description": "Retrieves a list of assistants with or without filtering",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--limit",
+					"types": "Number",
+					"description": "Maximum number of assistants returned",
+					"default": 20,
+					"short": "-l"
+				},
+				{
+					"name": "--options",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional request parameters, if necessary",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Assistants"
+		},
+		{
+			"name": "CreateAssistant",
+			"id": "CREATEASSISTANT",
+			"description": "Creates an assistant based on the model and instruction",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Assistant name",
+					"default": "Пустое значение",
+					"short": "-n"
+				},
+				{
+					"name": "--inst",
+					"types": "String",
+					"description": "System instruction for the assistant",
+					"default": "Пустое значение",
+					"short": "-i"
+				},
+				{
+					"name": "--options",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional request parameters, if necessary",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Assistants"
+		},
+		{
+			"name": "RetrieveAssistant",
+			"id": "RETRIEVEASSISTANT",
+			"description": "Retrieves information about an assistant by ID",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Assistant ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Assistants"
+		},
+		{
+			"name": "DeleteAssistant",
+			"id": "DELETEASSISTANT",
+			"description": "Deletes a previously created assistant",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Assistant ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Assistants"
+		},
+		{
+			"name": "GetFilesList",
+			"id": "GETFILESLIST",
+			"description": "Get a list of files with or without filtering",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--limit",
+					"types": "Number",
+					"description": "Maximum number of assistants returned",
+					"default": 10000,
+					"short": "-l"
+				},
+				{
+					"name": "--options",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional request parameters, if necessary",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "UploadFile",
+			"id": "UPLOADFILE",
+			"description": "Uploads a file for further use in other requests",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "File name with extension",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--data",
+					"types": "String, BinaryData",
+					"description": "Path to file or data",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--purpose",
+					"types": "String",
+					"description": "File purpose: assistants, batch, vision, user_data, evals",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "GetFileInformation",
+			"id": "GETFILEINFORMATION",
+			"description": "Gets information about the file",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "File ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "DownloadFile",
+			"id": "DOWNLOADFILE",
+			"description": "Get file data from the server",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "File ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "DeleteFile",
+			"id": "DELETEFILE",
+			"description": "Deletes a previously uploaded file",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "File ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "GenerateSpeech",
+			"id": "GENERATESPEECH",
+			"description": "Generates audio with the specified text for speech synthesis",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--input",
+					"types": "String",
+					"description": "Text for speech synthesis",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--voice",
+					"types": "String",
+					"description": "Voice type: alloy, ash, ballad, coral, echo, etc..",
+					"default": "alloy",
+					"short": "-v"
+				},
+				{
+					"name": "--options",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional request parameters, if necessary",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Audio processing"
+		},
+		{
+			"name": "CreateTranscription",
+			"id": "CREATETRANSCRIPTION",
+			"description": "Creates a text transcription for the selected audio file",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--model",
+					"types": "String",
+					"description": "Models name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--audio",
+					"types": "String, BinaryData",
+					"description": "Audio file",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--type",
+					"types": "String",
+					"description": "MIME type of audio file",
+					"default": "audio/mpeg",
+					"short": "-t"
+				},
+				{
+					"name": "--options",
+					"types": "Structure Of KeyAndValue",
+					"description": "Additional request parameters, if necessary",
+					"default": "Пустое значение",
+					"short": "-o"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Audio processing"
+		},
+		{
+			"name": "GetModelList",
+			"id": "GETMODELLIST",
+			"description": "Receives a list of available models",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "OpenAI server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "OpenAI authorization token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--headers",
+					"types": "Map Of KeyAndValue",
+					"description": "Additional request headers, if necessary",
+					"default": "Пустое значение",
+					"short": "-h"
+				}
+			],
+			"region": "Models management"
+		}
+	]
+}

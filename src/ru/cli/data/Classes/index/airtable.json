@@ -1,0 +1,711 @@
+{
+	"module": "airtable",
+	"library": "airtable",
+	"depends": {
+		"OPI_Airtable": "%1/oint/core/Modules/OPI_Airtable.os"
+	},
+	"methods": [
+		{
+			"name": "ПолучитьСписокБаз",
+			"id": "ПОЛУЧИТЬСПИСОКБАЗ",
+			"description": "Получает список доступных баз",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--offset",
+					"types": "Строка",
+					"description": "Идентификатор следующей страницы списка баз из перыдудщего запроса",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "Работа с базами"
+		},
+		{
+			"name": "ПолучитьТаблицыБазы",
+			"id": "ПОЛУЧИТЬТАБЛИЦЫБАЗЫ",
+			"description": "Получает схему таблиц базы",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "Строка",
+					"description": "Идентификатор базы",
+					"default": "",
+					"short": "-b"
+				}
+			],
+			"region": "Работа с базами"
+		},
+		{
+			"name": "СоздатьБазу",
+			"id": "СОЗДАТЬБАЗУ",
+			"description": "Создает новую базу данных",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--ws",
+					"types": "Строка",
+					"description": "Идентификатор рабочего пространства",
+					"default": "",
+					"short": "-w"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Наименование новой базы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--tablesdata",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Описание таблиц: Ключ > имя, Значение > массив полей",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с базами"
+		},
+		{
+			"name": "СоздатьТаблицу",
+			"id": "СОЗДАТЬТАБЛИЦУ",
+			"description": "Создает новую таблицу в базе\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "Строка",
+					"description": "Идентификатор базы",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Наименование новой таблицы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fieldsdata",
+					"types": "Массив Из Структура",
+					"description": "Массив описаний полей",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--description",
+					"types": "Строка",
+					"description": "Описание таблицы",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Работа с таблицами"
+		},
+		{
+			"name": "ИзменитьТаблицу",
+			"id": "ИЗМЕНИТЬТАБЛИЦУ",
+			"description": "Изменяет наименование и|или описание базы",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "Строка",
+					"description": "Идентификатор базы",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "Строка",
+					"description": "Идентификатор таблицы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Новое наименование",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--description",
+					"types": "Строка",
+					"description": "Новое описание",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Работа с таблицами"
+		},
+		{
+			"name": "СоздатьПоле",
+			"id": "СОЗДАТЬПОЛЕ",
+			"description": "Создет новое поле в таблице",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "Строка",
+					"description": "Идентификатор базы",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "Строка",
+					"description": "Идентификатор таблицы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fielddata",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Описание нового поля",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Работа с полями"
+		},
+		{
+			"name": "ИзменитьПоле",
+			"id": "ИЗМЕНИТЬПОЛЕ",
+			"description": "Изменяет имя и|или описание существующего поля таблицы",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "Строка",
+					"description": "Идентификатор базы База",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "Строка",
+					"description": "Идентификатор таблицы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--field",
+					"types": "Строка",
+					"description": "Идентификатор поля",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Новое наименование",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--description",
+					"types": "Строка",
+					"description": "Новое описание",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Работа с полями"
+		},
+		{
+			"name": "ПолучитьПолеСтроковое",
+			"id": "ПОЛУЧИТЬПОЛЕСТРОКОВОЕ",
+			"description": "Получает описание поля строкового типа",
+			"params": [
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Наименование нового поля",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с полями"
+		},
+		{
+			"name": "ПолучитьПолеНомера",
+			"id": "ПОЛУЧИТЬПОЛЕНОМЕРА",
+			"description": "Получает описание поля числового типа",
+			"params": [
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Наименование нового поля",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--precision",
+					"types": "Число,Строка",
+					"description": "Число знаков после запятой",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Работа с полями"
+		},
+		{
+			"name": "ПолучитьПолеВложения",
+			"id": "ПОЛУЧИТЬПОЛЕВЛОЖЕНИЯ",
+			"description": "Получает описание поля файлового типа",
+			"params": [
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Наименование поля",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с полями"
+		},
+		{
+			"name": "ПолучитьПолеФлажка",
+			"id": "ПОЛУЧИТЬПОЛЕФЛАЖКА",
+			"description": "Получает описание поля типа булево",
+			"params": [
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Наименование поля",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с полями"
+		},
+		{
+			"name": "ПолучитьПолеДаты",
+			"id": "ПОЛУЧИТЬПОЛЕДАТЫ",
+			"description": "Получает описание поля типа дата",
+			"params": [
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Наименование поля",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с полями"
+		},
+		{
+			"name": "ПолучитьПолеПочты",
+			"id": "ПОЛУЧИТЬПОЛЕПОЧТЫ",
+			"description": "Получает описание поля с электронной почтой",
+			"params": [
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Наименование поля",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с полями"
+		},
+		{
+			"name": "ПолучитьПолеТелефона",
+			"id": "ПОЛУЧИТЬПОЛЕТЕЛЕФОНА",
+			"description": "Получает описание поля с номером телефона",
+			"params": [
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Наименование поля",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с полями"
+		},
+		{
+			"name": "ПолучитьПолеСсылки",
+			"id": "ПОЛУЧИТЬПОЛЕССЫЛКИ",
+			"description": "Получает описание поля с URL",
+			"params": [
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Наименование поля",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с полями"
+		},
+		{
+			"name": "ПолучитьСписокЗаписей",
+			"id": "ПОЛУЧИТЬСПИСОКЗАПИСЕЙ",
+			"description": "Получает список записей выбранной таблицы",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "Строка",
+					"description": "Идентификатор базы данных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "Строка",
+					"description": "Идентификатор таблицы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--offset",
+					"types": "Строка",
+					"description": "Иднтификатор следующей страницы данных из предыдущего запроса",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "Работа с записями"
+		},
+		{
+			"name": "ПолучитьЗапись",
+			"id": "ПОЛУЧИТЬЗАПИСЬ",
+			"description": "Получает данные строки таблицы по идентификатору",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "Строка",
+					"description": "Идентификатор базы данных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "Строка",
+					"description": "Идентификатор таблицы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--record",
+					"types": "Строка",
+					"description": "Идентификатор записи в таблице",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Работа с записями"
+		},
+		{
+			"name": "СоздатьЗаписи",
+			"id": "СОЗДАТЬЗАПИСИ",
+			"description": "Создает одну или массив записей по описанию или массиву описаний значений полей\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "Строка",
+					"description": "Идентификатор базы данных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "Строка",
+					"description": "Идентификатор таблицы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--data",
+					"types": "Структура, Массив из Структура",
+					"description": "Набор или массив наборов пар Ключ : Значение > Поле : Показатель",
+					"default": "",
+					"short": "-d"
+				}
+			],
+			"region": "Работа с записями"
+		},
+		{
+			"name": "УдалитьЗаписи",
+			"id": "УДАЛИТЬЗАПИСИ",
+			"description": "Удаляет одну или массив записей по идентификаторам\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "Строка",
+					"description": "Идентификатор базы данных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "Строка",
+					"description": "Идентификатор таблицы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--records",
+					"types": "Строка, Массив из Строка",
+					"description": "Идентификатор или массив индентификаторов записей",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Работа с записями"
+		},
+		{
+			"name": "ПолучитьКомментарии",
+			"id": "ПОЛУЧИТЬКОММЕНТАРИИ",
+			"description": "Получает список комментариев к записи в таблице",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "Строка",
+					"description": "Идентификатор базы данных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "Строка",
+					"description": "Идентификатор таблицы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--record",
+					"types": "Строка",
+					"description": "Идентификатор записи в таблице",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--offset",
+					"types": "Строка",
+					"description": "Иднтификатор следующей страницы данных из предыдущего запроса",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "Работа с комментариями"
+		},
+		{
+			"name": "СоздатьКомментарий",
+			"id": "СОЗДАТЬКОММЕНТАРИЙ",
+			"description": "Создает комментарий к записи в таблице",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "Строка",
+					"description": "Идентификатор базы данных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "Строка",
+					"description": "Идентификатор таблицы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--record",
+					"types": "Строка",
+					"description": "Идентификатор записи в таблице",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст комментария",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с комментариями"
+		},
+		{
+			"name": "ИзменитьКомментарий",
+			"id": "ИЗМЕНИТЬКОММЕНТАРИЙ",
+			"description": "Изменяет текст существующего комментария",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "Строка",
+					"description": "Идентификатор базы данных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "Строка",
+					"description": "Идентификатор таблицы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--record",
+					"types": "Строка",
+					"description": "Идентификатор записи в таблице",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--comment",
+					"types": "Строка",
+					"description": "Идентификатор комментария",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Новый текст комментария",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с комментариями"
+		},
+		{
+			"name": "УдалитьКомментарий",
+			"id": "УДАЛИТЬКОММЕНТАРИЙ",
+			"description": "Удаляет комментарий к записи таблицы",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--base",
+					"types": "Строка",
+					"description": "Идентификатор базы данных",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--table",
+					"types": "Строка",
+					"description": "Идентификатор таблицы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--record",
+					"types": "Строка",
+					"description": "Идентификатор записи в таблице",
+					"default": "",
+					"short": "-r"
+				},
+				{
+					"name": "--comment",
+					"types": "Строка",
+					"description": "Идентификатор комментария",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с комментариями"
+		}
+	]
+}

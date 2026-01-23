@@ -1,0 +1,456 @@
+{
+	"module": "rportal",
+	"library": "rportal",
+	"depends": {
+		"OPI_ReportPortal": "%1/oint/core/Modules/OPI_ReportPortal.os"
+	},
+	"methods": [
+		{
+			"name": "GetTemporaryToken",
+			"id": "GETTEMPORARYTOKEN",
+			"description": "Gets a temporary token based on login and password",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--login",
+					"types": "String",
+					"description": "Users login",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--pass",
+					"types": "String",
+					"description": "Users password",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Authorization"
+		},
+		{
+			"name": "GetPermanentToken",
+			"id": "GETPERMANENTTOKEN",
+			"description": "Creates a permanent ReportPortal user token",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--user",
+					"types": "String",
+					"description": "User ID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--name",
+					"types": "String",
+					"description": "Token name",
+					"default": "",
+					"short": "-n"
+				}
+			],
+			"region": "Authorization"
+		},
+		{
+			"name": "DeletePermanentToken",
+			"id": "DELETEPERMANENTTOKEN",
+			"description": "Deletes a previously created user token",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--user",
+					"types": "String",
+					"description": "User ID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Token ID",
+					"default": "",
+					"short": "-i"
+				}
+			],
+			"region": "Authorization"
+		},
+		{
+			"name": "CreateLaunch",
+			"id": "CREATELAUNCH",
+			"description": "Starts a new test execution session",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Launch parameters. See GetLaunchStructure",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Results management"
+		},
+		{
+			"name": "CreateItem",
+			"id": "CREATEITEM",
+			"description": "Creates a new test item",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Item parameters. See GetItemStructure",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--parent",
+					"types": "String",
+					"description": "ID of the parent item, if necessary",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Results management"
+		},
+		{
+			"name": "FinishLaunch",
+			"id": "FINISHLAUNCH",
+			"description": "Ends a previously started test execution session",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Launch ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Completion parameters. See GetLaunchCompletionStructure",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Results management"
+		},
+		{
+			"name": "FinishItem",
+			"id": "FINISHITEM",
+			"description": "Ends a previously created test item",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Element ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Completion parameters. See GetItemCompletionStructure",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Results management"
+		},
+		{
+			"name": "GetLaunchStructure",
+			"id": "GETLAUNCHSTRUCTURE",
+			"description": "Gets the launch parameters structure",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				},
+				{
+					"name": "--map",
+					"types": "Boolean",
+					"description": "True > returns the filter fields as a map",
+					"default": false,
+					"short": "-m"
+				}
+			],
+			"region": "Results management"
+		},
+		{
+			"name": "GetItemStructure",
+			"id": "GETITEMSTRUCTURE",
+			"description": "Gets the test item parameter structure",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				},
+				{
+					"name": "--map",
+					"types": "Boolean",
+					"description": "True > returns the filter fields as a map",
+					"default": false,
+					"short": "-m"
+				}
+			],
+			"region": "Results management"
+		},
+		{
+			"name": "GetItemCompletionStructure",
+			"id": "GETITEMCOMPLETIONSTRUCTURE",
+			"description": "Gets the parameter structure for completing the test item execution",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				},
+				{
+					"name": "--map",
+					"types": "Boolean",
+					"description": "True > returns the filter fields as a map",
+					"default": false,
+					"short": "-m"
+				}
+			],
+			"region": "Results management"
+		},
+		{
+			"name": "GetLaunchCompletionStructure",
+			"id": "GETLAUNCHCOMPLETIONSTRUCTURE",
+			"description": "Gets the parameter structure for completing a test session",
+			"params": [
+				{
+					"name": "--end",
+					"types": "Date",
+					"description": "Launch end date and time",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--status",
+					"types": "String",
+					"description": "Completion status: passed, failed, stopped, skipped, interrupted, cancelled",
+					"default": "Пустое значение",
+					"short": "-s"
+				},
+				{
+					"name": "--descr",
+					"types": "String",
+					"description": "Launch description. Overwrites the one specified during creation",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--attr",
+					"types": "String",
+					"description": "Launch attributes. Overwrites the one specified during creation",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Results management"
+		},
+		{
+			"name": "WriteLog",
+			"id": "WRITELOG",
+			"description": "Adds execution information for the test item",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "ReportPortal server URL",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Access token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--proj",
+					"types": "String",
+					"description": "Project ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--params",
+					"types": "Structure Of KeyAndValue",
+					"description": "Execution information. See GetLogStructure",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Log recording"
+		},
+		{
+			"name": "GetLogStructure",
+			"id": "GETLOGSTRUCTURE",
+			"description": "Gets the parameter structure for log entry",
+			"params": [
+				{
+					"name": "--launch",
+					"types": "String",
+					"description": "Launch ID to which the test item belongs",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Test item ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--time",
+					"types": "Date",
+					"description": "Log entry date and time",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Log text information",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--level",
+					"types": "String",
+					"description": "Information level: error, warn, info, debug, trace, fatal, unknown",
+					"default": "info",
+					"short": "-l"
+				}
+			],
+			"region": "Log recording"
+		}
+	]
+}

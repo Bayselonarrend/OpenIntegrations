@@ -1,0 +1,942 @@
+{
+	"module": "vkteams",
+	"library": "vkteams",
+	"depends": {
+		"OPI_VK": "%1/oint/core/Modules/OPI_VK.os",
+		"OPI_VKTeams": "%1/oint/core/Modules/OPI_VKTeams.os"
+	},
+	"methods": [
+		{
+			"name": "CheckToken",
+			"id": "CHECKTOKEN",
+			"description": "Checks if the bot token is functional",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetEvents",
+			"id": "GETEVENTS",
+			"description": "Receives bot events in Polling mode",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--last",
+					"types": "String, Number",
+					"description": "ID of the last event processed before this event",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--timeout",
+					"types": "String, Number",
+					"description": "Connection hold time for Long Polling",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetFileInformation",
+			"id": "GETFILEINFORMATION",
+			"description": "Gets information about a file by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "String, Number",
+					"description": "File ID",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "SendTextMessage",
+			"id": "SENDTEXTMESSAGE",
+			"description": "Sends a text message to a chat",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID for message sending",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--reply",
+					"types": "String, Number",
+					"description": "Replying message id if necessary",
+					"default": "Пустое значение",
+					"short": "-r"
+				},
+				{
+					"name": "--keyboard",
+					"types": "Array Of String",
+					"description": "Buttons to the message if necessary",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemod",
+					"types": "String",
+					"description": "Markup type for message text: MarkdownV2 or HTML",
+					"default": "MarkdownV2",
+					"short": "-p"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "SendFile",
+			"id": "SENDFILE",
+			"description": "Sends the file to the chat",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID for sending",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--file",
+					"types": "BinaryData, String",
+					"description": "File for sending",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "File caption",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--filename",
+					"types": "String",
+					"description": "Displayed file name",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--parsemod",
+					"types": "String",
+					"description": "Markup type for message text: MarkdownV2 or HTML",
+					"default": "MarkdownV2",
+					"short": "-p"
+				},
+				{
+					"name": "--type",
+					"types": "String",
+					"description": "Content type for sending",
+					"default": "image/jpeg",
+					"short": "-t"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "SendVoice",
+			"id": "SENDVOICE",
+			"description": "Sends an audio file as a voice message",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID for sending",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--file",
+					"types": "BinaryData, String",
+					"description": "File for sending",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--type",
+					"types": "String",
+					"description": "Audio type: aac, ogg or m4a",
+					"default": "m4a",
+					"short": "-t"
+				},
+				{
+					"name": "--reply",
+					"types": "String, Number",
+					"description": "Replying message id if necessary",
+					"default": "Пустое значение",
+					"short": "-r"
+				},
+				{
+					"name": "--keyboard",
+					"types": "Array Of String",
+					"description": "Buttons to the message if necessary",
+					"default": "Пустое значение",
+					"short": "-k"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "EditMessageText",
+			"id": "EDITMESSAGETEXT",
+			"description": "Changes the text of an existing message",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID for message sending",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--messageid",
+					"types": "String, Number",
+					"description": "Message ID for editing",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "New message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--parsemod",
+					"types": "String",
+					"description": "Markup type for message text: MarkdownV2 or HTML",
+					"default": "MarkdownV2",
+					"short": "-p"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "DeleteMessage",
+			"id": "DELETEMESSAGE",
+			"description": "Deletes a message by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID for message sending",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--messageid",
+					"types": "String, Number",
+					"description": "Message ID for editing",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "ResendFile",
+			"id": "RESENDFILE",
+			"description": "Sends a previously uploaded file by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID for sending",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--fileid",
+					"types": "String, Number",
+					"description": "File ID to send",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "File caption",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--parsemod",
+					"types": "String",
+					"description": "Markup type for message text: MarkdownV2 or HTML",
+					"default": "MarkdownV2",
+					"short": "-p"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "ResendVoice",
+			"id": "RESENDVOICE",
+			"description": "Sends a previously uploaded voice message by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID for sending",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--fileid",
+					"types": "String, Number",
+					"description": "File ID of voice message",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "ForwardMessage",
+			"id": "FORWARDMESSAGE",
+			"description": "Forwards an existing message to the current dialog box",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--messageid",
+					"types": "String, Number",
+					"description": "Original message ID",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--fromid",
+					"types": "String, Number",
+					"description": "Source chat ID",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID for message sending",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Additional message text",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "PinMessage",
+			"id": "PINMESSAGE",
+			"description": "Pins the selected message in the chat room",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--messageid",
+					"types": "String, Number",
+					"description": "ID of the message to be pinned",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "UnpinMessage",
+			"id": "UNPINMESSAGE",
+			"description": "Unpins a previously pinned chat message",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--messageid",
+					"types": "String, Number",
+					"description": "ID of the message to be unpinned",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "AnswerButtonEvent",
+			"id": "ANSWERBUTTONEVENT",
+			"description": "Returns a response to the user when a keyboard button is pressed",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--queryid",
+					"types": "String",
+					"description": "Identifier of the callback query received by the bot",
+					"default": "",
+					"short": "-q"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Answer text",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL to be opened by the client application",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--showalert",
+					"types": "Boolean",
+					"description": "Display the answer as an alert)",
+					"default": false,
+					"short": "-s"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "MakeActionButton",
+			"id": "MAKEACTIONBUTTON",
+			"description": "Forms an action button for the message keyboard",
+			"params": [
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Button text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--data",
+					"types": "String",
+					"description": "The value returned in the event. Only if the URL is not filled",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL to create the page open button. Only if the Value is not filled in",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--style",
+					"types": "String",
+					"description": "Button style: primary, attention or base",
+					"default": "base",
+					"short": "-s"
+				}
+			],
+			"region": "Message sending"
+		},
+		{
+			"name": "RemoveChatMembers",
+			"id": "REMOVECHATMEMBERS",
+			"description": "Removes users from the chat",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--members",
+					"types": "String, Number, Array of String, Number",
+					"description": "The member or members of the chat room to remove",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Chat management"
+		},
+		{
+			"name": "ChangeChatPicture",
+			"id": "CHANGECHATPICTURE",
+			"description": "Changes the chat avatar picture",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--file",
+					"types": "BinaryData, String",
+					"description": "Image file",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Chat management"
+		},
+		{
+			"name": "GetChatInfo",
+			"id": "GETCHATINFO",
+			"description": "Gets basic information about the chat",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Chat management"
+		},
+		{
+			"name": "GetChatAdmins",
+			"id": "GETCHATADMINS",
+			"description": "Gets the list of chat administrators",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Chat management"
+		},
+		{
+			"name": "GetChatMembers",
+			"id": "GETCHATMEMBERS",
+			"description": "Gets the list of chat members",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--cursor",
+					"types": "String",
+					"description": "Next page marker from the previous request",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Chat management"
+		},
+		{
+			"name": "GetChatBlockedUsers",
+			"id": "GETCHATBLOCKEDUSERS",
+			"description": "Gets the list of blocked chat users",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Chat management"
+		},
+		{
+			"name": "GetChatJoinRequests",
+			"id": "GETCHATJOINREQUESTS",
+			"description": "Gets a list of requests to join the chat room",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Chat management"
+		},
+		{
+			"name": "BlockChatUser",
+			"id": "BLOCKCHATUSER",
+			"description": "Blocks the selected user in chat",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--userid",
+					"types": "String, Number",
+					"description": "User ID to be blocked",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--dellast",
+					"types": "Boolean",
+					"description": "Delete last messages before blocking",
+					"default": false,
+					"short": "-d"
+				}
+			],
+			"region": "Chat management"
+		},
+		{
+			"name": "UnblockChatUser",
+			"id": "UNBLOCKCHATUSER",
+			"description": "Unblocks a previously blocked user in the chat room",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--userid",
+					"types": "String, Number",
+					"description": "User ID",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Chat management"
+		},
+		{
+			"name": "ApprovePending",
+			"id": "APPROVEPENDING",
+			"description": "Confirms the user's request to join a private chat room",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--userid",
+					"types": "String, Number",
+					"description": "User ID. For all active requests if not filled in",
+					"default": "Пустое значение",
+					"short": "-u"
+				}
+			],
+			"region": "Chat management"
+		},
+		{
+			"name": "DisapprovePending",
+			"id": "DISAPPROVEPENDING",
+			"description": "Rejects the user's request to join a private chat room",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--userid",
+					"types": "String, Number",
+					"description": "User ID. For all active requests if not filled in",
+					"default": "Пустое значение",
+					"short": "-u"
+				}
+			],
+			"region": "Chat management"
+		},
+		{
+			"name": "SetChatTitle",
+			"id": "SETCHATTITLE",
+			"description": "Sets new chat title",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Title text",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Chat management"
+		},
+		{
+			"name": "SetChatDescription",
+			"id": "SETCHATDESCRIPTION",
+			"description": "Sets new chat description",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Description text",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Chat management"
+		},
+		{
+			"name": "SetChatRules",
+			"id": "SETCHATRULES",
+			"description": "Sets new chat rules",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chatid",
+					"types": "String, Number",
+					"description": "Chat ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Rules Text",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Chat management"
+		}
+	]
+}
