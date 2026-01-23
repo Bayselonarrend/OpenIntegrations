@@ -2,7 +2,7 @@
 
     Картинка1 = "https://hut.openintegrations.dev/test_data/picture.jpg";  // URL, Двоичные или Путь к файлу
     Картинка2 = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Двоичные или Путь к файлу
-    Подборка  = "144";
+    Подборка  = "149";
 
     МассивКартинок = Новый Массив;
     МассивКартинок.Добавить(Картинка1);
