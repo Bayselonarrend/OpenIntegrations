@@ -1,2 +1,2 @@
-﻿    Parameters = GetTwitterAuthData();
+    Parameters = GetTwitterAuthData();
     Result     = OPI_Twitter.RefreshToken(Parameters);

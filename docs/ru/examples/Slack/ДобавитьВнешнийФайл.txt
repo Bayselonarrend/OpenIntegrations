@@ -1,4 +1,4 @@
-﻿    Токен     = "xoxb-6965308400114-696804637...";
+    Токен     = "xoxb-6965308400114-696804637...";
     Заголовок = "Новый файл";
     Файл      = "https://hut.openintegrations.dev/test_data/document.docx";
 

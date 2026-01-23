@@ -1,4 +1,4 @@
-﻿---
+---
 sidebar_position: 2
 description: Update post and other functions to work with Bitrix24 in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Bitrix24]
@@ -37,18 +37,18 @@ Method at API documentation: [log.blogpost.update](https://dev.1c-bitrix.ru/rest
     Text   = "New post text";
     Title  = "New post title";
     Image1 = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
-    PostID = "3576";
+    PostID = "3326";
 
     Files = New Map;
     Files.Insert("1.png", Image1);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "bafe5c69006e9f06006b12e400000001000...";
-    PostID = "3574";
+    Token  = "a5b00469006e9f06006b12e400000001000...";
+    PostID = "3324";
 
     Result = OPI_Bitrix24.UpdatePost(URL, PostID, Text, , Files, Title, Token);
 ```

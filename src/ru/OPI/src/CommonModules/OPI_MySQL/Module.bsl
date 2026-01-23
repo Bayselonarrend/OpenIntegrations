@@ -1,10 +1,10 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_MySQL.os
+// OneScript: ./OInt/core/Modules/OPI_MySQL.os
 // Lib: MySQL
 // CLI: mysql
 // Keywords: mysql, my sql
 
 // DocsCategory: Database
-// DocsNameRU: MySQL 
+// DocsNameRU: MySQL
 // DocsNameEN: MySQL
 
 // MIT License

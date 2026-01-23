@@ -1,1 +1,1 @@
-﻿    Result = OPI_Airtable.GetEmailField("Email");
+    Result = OPI_Airtable.GetEmailField("Email");

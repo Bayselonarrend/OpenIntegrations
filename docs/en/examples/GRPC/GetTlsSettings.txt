@@ -1,1 +1,1 @@
-﻿    Result = OPI_GRPC.GetTlsSettings(True);
+    Result = OPI_GRPC.GetTlsSettings(True);

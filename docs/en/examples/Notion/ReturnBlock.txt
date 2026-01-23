@@ -1,4 +1,4 @@
-﻿    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
     Block = "d7021bdd15b944ababcb02bd2b1a5f6a";
 
     Result = OPI_Notion.ReturnBlock(Token, Block);

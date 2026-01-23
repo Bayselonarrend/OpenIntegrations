@@ -3,6 +3,10 @@
 // CLI: twitter
 // Keywords: twitter, x
 
+// DocsCategory: Social
+// DocsNameRU: Twitter (X)
+// DocsNameEN: Twitter (X)
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

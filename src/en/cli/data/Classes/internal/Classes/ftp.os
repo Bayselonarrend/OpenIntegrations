@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -244,7 +244,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONNECTIONSETTINGS";
     NewLine.Parameter     = "--passive";
     NewLine.ParameterTrim = "-v";
-    NewLine.Description     = "Passive connection mode (optional, def. val.. - True)";
+    NewLine.Description     = "Passive connection mode (optional, def. val.. - Yes)";
     NewLine.Region      = "Common methods";
 
 
@@ -277,7 +277,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONNECTIONSETTINGS";
     NewLine.Parameter     = "--ipresl";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "Advanced passive mode address resolution (optional, def. val.. - True)";
+    NewLine.Description     = "Advanced passive mode address resolution (optional, def. val.. - Yes)";
     NewLine.Region      = "Common methods";
 
 
@@ -390,7 +390,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTOBJECTS";
     NewLine.Parameter     = "--rcv";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Get information about objects in nested directories (optional, def. val.. - False)";
+    NewLine.Description     = "Get information about objects in nested directories (optional, def. val.. - No)";
     NewLine.Region      = "Directory management";
 
 

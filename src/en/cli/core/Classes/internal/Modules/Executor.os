@@ -1,4 +1,4 @@
-﻿#Use "../../../../../oint/tools"
+#Use "../../../../../oint/tools"
 
 Function GetLastBuildHashSum() Export
 	Return OPI_Tools.GetLastBuildHashSum();

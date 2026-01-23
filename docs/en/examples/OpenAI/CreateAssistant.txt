@@ -1,4 +1,4 @@
-﻿    URL   = "https://hut.openintegrations.dev/localai/";
+    URL   = "https://hut.openintegrations.dev/localai/";
     Token = "12We...";
 
     Instruction = "You are a personal math tutor. When asked a question, write and run Python code to answer the question.";

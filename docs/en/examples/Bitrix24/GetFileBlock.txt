@@ -1,4 +1,4 @@
-﻿    Name = "Image";
+    Name = "Image";
     URL  = "https://hut.openintegrations.dev/test_data/document.docx";
 
     Result = OPI_Bitrix24.GetFileBlock(Name, URL);

@@ -1,4 +1,4 @@
-﻿    Parameters = GetTwitterAuthData();
+    Parameters = GetTwitterAuthData();
     Code       = "123456";
 
     Result = OPI_Twitter.GetToken(Code, Parameters);

@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/internal/Modules/internal/Modules/OPI_BuildHash.os
+// OneScript: ./OInt/tools/Modules/internal/Modules/internal/Modules/OPI_BuildHash.os
 
 // MIT License
 
@@ -32,7 +32,7 @@
 
 Function GetHashSum() Export
 
-    LastBuildHash  = "D5BF059745FD19246ACAA873DAF4338D71F5D2F0A01F5593101C5FF58195ED72";
+    LastBuildHash  = "43FC5E15076F2603ACD746B207C5179A7ECC715675957EB0F6FA7603AB60F453";
 
     Return LastBuildHash;
 

@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_AddIns.os
+// OneScript: ./OInt/tools/Modules/OPI_AddIns.os
 
 // MIT License
 

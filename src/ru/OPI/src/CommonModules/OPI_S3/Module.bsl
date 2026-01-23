@@ -1,10 +1,10 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_S3.os
+// OneScript: ./OInt/core/Modules/OPI_S3.os
 // Lib: S3
 // CLI: s3
 // Keywords: s3, minio, aws, simple storage service
 
 // DocsCategory: Folder
-// DocsNameRU: AWS S3 
+// DocsNameRU: AWS S3
 // DocsNameEN: AWS S3
 
 // MIT License

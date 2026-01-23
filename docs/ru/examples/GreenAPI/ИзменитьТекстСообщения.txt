@@ -1,10 +1,10 @@
-﻿    ApiUrl           = "https://7105.api.greenapi.com";
+    ApiUrl           = "https://7105.api.greenapi.com";
     MediaUrl         = "https://7105.media.greenapi.com";
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     IDЧата      = "120363410406221140@g.us";
-    IDСообщения = "3EB0F14C02D48C1A7F3DE9";
+    IDСообщения = "BAE5777A5F7C5685";
     Текст       = "Новый текст сообщения";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);

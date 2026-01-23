@@ -1,4 +1,4 @@
-﻿    Токен    = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Токен    = "secret_9RsfMrRMqZwqp0Zl0B...";
     Родитель = "5dd94c34fab04bff986b7511c0779f77";
     Блок     = "d7021bdd15b944ababcb02bd2b1a5f6a";
 

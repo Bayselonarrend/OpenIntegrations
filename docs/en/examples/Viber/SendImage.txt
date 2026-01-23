@@ -1,4 +1,4 @@
-﻿    Description = "TestMessage";
+    Description = "TestMessage";
     URL         = "https://hut.openintegrations.dev/test_data/picture.jpg";
 
     UserID           = "d3jxe61Z4W73nmNkjYGgZg==";

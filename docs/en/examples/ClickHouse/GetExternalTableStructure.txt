@@ -1,4 +1,4 @@
-﻿    // Minimal structure
+    // Minimal structure
 
     TableName      = "external_data";
     ColoumnsStruct = New Structure;

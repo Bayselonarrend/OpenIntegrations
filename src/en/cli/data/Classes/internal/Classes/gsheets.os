@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -38,7 +38,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--calendar";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Calendar methods permission (optional, def. val.. - True)";
+    NewLine.Description     = "Calendar methods permission (optional, def. val.. - Yes)";
     NewLine.Region      = "Authorization";
 
 
@@ -49,7 +49,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--drive";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Drive methods permission (optional, def. val.. - True)";
+    NewLine.Description     = "Drive methods permission (optional, def. val.. - Yes)";
     NewLine.Region      = "Authorization";
 
 
@@ -60,7 +60,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMCODERETRIEVALLINK";
     NewLine.Parameter     = "--sheets";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Sheets methods permission (optional, def. val.. - True)";
+    NewLine.Description     = "Sheets methods permission (optional, def. val.. - Yes)";
     NewLine.Region      = "Authorization";
 
 

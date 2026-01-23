@@ -1,10 +1,10 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_FTP.os
+// OneScript: ./OInt/core/Modules/OPI_FTP.os
 // Lib: FTP
 // CLI: ftp
 // Keywords: ftp, ftps
 
 // DocsCategory: Exchange
-// DocsNameRU: FTP(S) 
+// DocsNameRU: FTP(S)
 // DocsNameEN: FTP(S)
 
 // MIT License

@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tests/Modules/internal/OPI_TestsCLI.os
+// OneScript: ./OInt/tests/Modules/internal/OPI_TestsCLI.os
 
 // MIT License
 
@@ -2641,14 +2641,14 @@ Procedure HTTP_Initialization() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL" , TestParameters);
 
-    HTTPClient_Initialize(TestParameters);
-    HTTPClient_SetURL(TestParameters);
-    HTTPClient_SetURLParams(TestParameters);
-    HTTPClient_SetResponseFile(TestParameters);
-    HTTPClient_SetDataType(TestParameters);
-    HTTPClient_GetLog(TestParameters);
-    HTTPClient_SetProxy(TestParameters);
-    HTTPClient_SetTimeout(TestParameters);
+    HTTP_Initialize(TestParameters);
+    HTTP_SetURL(TestParameters);
+    HTTP_SetURLParams(TestParameters);
+    HTTP_SetResponseFile(TestParameters);
+    HTTP_SetDataType(TestParameters);
+    HTTP_GetLog(TestParameters);
+    HTTP_SetProxy(TestParameters);
+    HTTP_SetTimeout(TestParameters);
 
 EndProcedure
 
@@ -2658,14 +2658,14 @@ Procedure HTTP_BodySet() Export
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
 
-    HTTPClient_SetBinaryBody(TestParameters);
-    HTTPClient_SetStringBody(TestParameters);
-    HTTPClient_SetJsonBody(TestParameters);
-    HTTPClient_SetFormBody(TestParameters);
-    HTTPClient_StartMultipartBody(TestParameters);
-    HTTPClient_AddMultipartFormDataField(TestParameters);
-    HTTPClient_AddMultipartFormDataFile(TestParameters);
-    HTTPClient_AddDataAsRelated(TestParameters);
+    HTTP_SetBinaryBody(TestParameters);
+    HTTP_SetStringBody(TestParameters);
+    HTTP_SetJsonBody(TestParameters);
+    HTTP_SetFormBody(TestParameters);
+    HTTP_StartMultipartBody(TestParameters);
+    HTTP_AddMultipartFormDataField(TestParameters);
+    HTTP_AddMultipartFormDataFile(TestParameters);
+    HTTP_AddDataAsRelated(TestParameters);
 
 EndProcedure
 
@@ -2675,14 +2675,14 @@ Procedure HTTP_Settings() Export
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
 
-    HTTPClient_UseEncoding(TestParameters);
-    HTTPClient_UseGzipCompression(TestParameters);
-    HTTPClient_UseBodyFiledsAtOAuth(TestParameters);
-    HTTPClient_UseURLEncoding(TestParameters);
-    HTTPClient_SplitArraysInURL(TestParameters);
-    HTTPClient_MaxRedirects(TestParameters);
-    HTTPClient_MaxAttempts(TestParameters);
-    HTTPClient_ReturnSettings(TestParameters);
+    HTTP_UseEncoding(TestParameters);
+    HTTP_UseGzipCompression(TestParameters);
+    HTTP_UseBodyFiledsAtOAuth(TestParameters);
+    HTTP_UseURLEncoding(TestParameters);
+    HTTP_SplitArraysInURL(TestParameters);
+    HTTP_MaxRedirects(TestParameters);
+    HTTP_MaxAttempts(TestParameters);
+    HTTP_ReturnSettings(TestParameters);
 
 EndProcedure
 
@@ -2691,8 +2691,8 @@ Procedure HTTP_HeadersSetting() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
 
-    HTTPClient_SetHeaders(TestParameters);
-    HTTPClient_AddHeader(TestParameters);
+    HTTP_SetHeaders(TestParameters);
+    HTTP_AddHeader(TestParameters);
 
 EndProcedure
 
@@ -2701,11 +2701,11 @@ Procedure HTTP_Authorization() Export
     TestParameters = New Structure;
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
 
-    HTTPClient_AddBasicAuthorization(TestParameters);
-    HTTPClient_AddBearerAuthorization(TestParameters);
-    HTTPClient_AddAWS4Authorization(TestParameters);
-    HTTPClient_AddOAuthV1Authorization(TestParameters);
-    HTTPClient_SetOAuthV1Algorithm(TestParameters);
+    HTTP_AddBasicAuthorization(TestParameters);
+    HTTP_AddBearerAuthorization(TestParameters);
+    HTTP_AddAWS4Authorization(TestParameters);
+    HTTP_AddOAuthV1Authorization(TestParameters);
+    HTTP_SetOAuthV1Algorithm(TestParameters);
 
 EndProcedure
 
@@ -2715,12 +2715,12 @@ Procedure HTTP_RequestProcessing() Export
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
 
-    HTTPClient_ProcessRequest(TestParameters);
-    HTTPClient_ExecuteRequest(TestParameters);
-    HTTPClient_ReturnRequest(TestParameters);
-    HTTPClient_ReturnConnection(TestParameters);
-    HTTPClient_SendDataInParts(TestParameters);
-    HTTPClient_SendPart(TestParameters);
+    HTTP_ProcessRequest(TestParameters);
+    HTTP_ExecuteRequest(TestParameters);
+    HTTP_ReturnRequest(TestParameters);
+    HTTP_ReturnConnection(TestParameters);
+    HTTP_SendDataInParts(TestParameters);
+    HTTP_SendPart(TestParameters);
 
 EndProcedure
 
@@ -2730,11 +2730,11 @@ Procedure HTTP_ResponseReceiving() Export
     OPI_TestDataRetrieval.ParameterToCollection("HTTP_URL", TestParameters);
     OPI_TestDataRetrieval.ParameterToCollection("Picture" , TestParameters);
 
-    HTTPClient_ReturnResponse(TestParameters);
-    HTTPClient_ReturnResponseAsJSONObject(TestParameters);
-    HTTPClient_ReturnResponseAsBinaryData(TestParameters);
-    HTTPClient_ReturnResponseAsString(TestParameters);
-    HTTPClient_ReturnResponseFilename(TestParameters);
+    HTTP_ReturnResponse(TestParameters);
+    HTTP_ReturnResponseAsJSONObject(TestParameters);
+    HTTP_ReturnResponseAsBinaryData(TestParameters);
+    HTTP_ReturnResponseAsString(TestParameters);
+    HTTP_ReturnResponseFilename(TestParameters);
 
 EndProcedure
 
@@ -25135,7 +25135,7 @@ EndProcedure
 
 #Region HTTP
 
-Procedure HTTPClient_Initialize(FunctionParameters)
+Procedure HTTP_Initialize(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25148,23 +25148,23 @@ Procedure HTTPClient_Initialize(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "Initialize");
+    Process(Result, "HTTP", "Initialize");
 
     HTTPClient = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
         .ProcessRequest("POST", False);
 
-    Process(HTTPClient, "HTTPClient", "Initialize", "Check 1", FunctionParameters);
+    Process(HTTPClient, "HTTP", "Initialize", "Check 1", FunctionParameters);
 
     AnotherRequest = HTTPClient.SetURL(FunctionParameters["HTTP_URL"] + "/post")
         .ProcessRequest("POST", False)
         .ReturnRequest();
 
-    Process(AnotherRequest, "HTTPClient", "Initialize", "Check 2");
+    Process(AnotherRequest, "HTTP", "Initialize", "Check 2");
 
 EndProcedure
 
-Procedure HTTPClient_SetURL(FunctionParameters)
+Procedure HTTP_SetURL(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25177,18 +25177,18 @@ Procedure HTTPClient_SetURL(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "SetURL");
+    Process(Result, "HTTP", "SetURL");
 
     HTTPClient = OPI_HTTPRequests.NewRequest()
         .Initialize()
         .SetURL(URL)
         .ProcessRequest("POST", False);
 
-    Process(HTTPClient, "HTTPClient", "SetURL", "Check", FunctionParameters);
+    Process(HTTPClient, "HTTP", "SetURL", "Check", FunctionParameters);
 
 EndProcedure
 
-Procedure HTTPClient_SetURLParams(FunctionParameters)
+Procedure HTTP_SetURLParams(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25204,7 +25204,7 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "SetURLParams", , FunctionParameters);
+    Process(Result, "HTTP", "SetURLParams", , FunctionParameters);
 
     HTTPClient = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
@@ -25213,7 +25213,7 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
 
     HTTPRequest = HTTPClient.ReturnRequest();
 
-    Process(HTTPRequest, "HTTPClient", "SetURLParams", "Check");
+    Process(HTTPRequest, "HTTP", "SetURLParams", "Check");
 
     // Encoding check
 
@@ -25233,7 +25233,7 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
         .ReturnRequest()
         .ResourceAddress;
 
-    Process(ResourceAddress1, "HTTPClient", "SetURLParams", "Option 1");
+    Process(ResourceAddress1, "HTTP", "SetURLParams", "Option 1");
 
     ParameterStructure2 = New Structure;
     ParameterStructure2.Insert("param1", "search?text");
@@ -25248,7 +25248,7 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
         .ReturnRequest()
         .ResourceAddress;
 
-    Process(ResourceAddress2, "HTTPClient", "SetURLParams", "Option 2");
+    Process(ResourceAddress2, "HTTP", "SetURLParams", "Option 2");
 
     // Empty parameter string
 
@@ -25263,7 +25263,7 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
         .ReturnRequest()
         .ResourceAddress;
 
-    Process(ResourceAddress3, "HTTPClient", "SetURLParams", "Variant 3");
+    Process(ResourceAddress3, "HTTP", "SetURLParams", "Variant 3");
 
     // Special characters at path
 
@@ -25278,7 +25278,7 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
         .ReturnRequest()
         .ResourceAddress;
 
-    Process(ResourceAddress4, "HTTPClient", "SetURLParams", "Variant 4");
+    Process(ResourceAddress4, "HTTP", "SetURLParams", "Variant 4");
 
     // URL with a snippet
 
@@ -25293,7 +25293,7 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
         .ReturnRequest()
         .ResourceAddress;
 
-    Process(ResourceAddress5, "HTTPClient", "SetURLParams", "Variant 5");
+    Process(ResourceAddress5, "HTTP", "SetURLParams", "Variant 5");
 
     // Cyrillic at path
 
@@ -25308,7 +25308,7 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
         .ReturnRequest()
         .ResourceAddress;
 
-    Process(ResourceAddress6, "HTTPClient", "SetURLParams", "Variant 6");
+    Process(ResourceAddress6, "HTTP", "SetURLParams", "Variant 6");
 
     // Multiple parameters and encoding
 
@@ -25324,11 +25324,11 @@ Procedure HTTPClient_SetURLParams(FunctionParameters)
         .ReturnRequest()
         .ResourceAddress;
 
-    Process(ResourceAddress7, "HTTPClient", "SetURLParams", "Variant 7");
+    Process(ResourceAddress7, "HTTP", "SetURLParams", "Variant 7");
 
 EndProcedure
 
-Procedure HTTPClient_SetResponseFile(FunctionParameters)
+Procedure HTTP_SetResponseFile(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25343,7 +25343,7 @@ Procedure HTTPClient_SetResponseFile(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "SetResponseFile", , TFN);
+    Process(Result, "HTTP", "SetResponseFile", , TFN);
 
     CheckResult = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -25352,13 +25352,13 @@ Procedure HTTPClient_SetResponseFile(FunctionParameters)
         .ProcessRequest("GET")
         .ReturnResponseAsBinaryData();
 
-    Process(CheckResult, "HTTPClient", "SetResponseFile", "Body", TFN);
+    Process(CheckResult, "HTTP", "SetResponseFile", "Body", TFN);
 
     OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
-Procedure HTTPClient_SetDataType(FunctionParameters)
+Procedure HTTP_SetDataType(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -25374,11 +25374,11 @@ Procedure HTTPClient_SetDataType(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "SetDataType");
+    Process(Result, "HTTP", "SetDataType");
 
 EndProcedure
 
-Procedure HTTPClient_GetLog(FunctionParameters)
+Procedure HTTP_GetLog(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25396,11 +25396,11 @@ Procedure HTTPClient_GetLog(FunctionParameters)
 
     // END
 
-    Process(Log, "HTTPClient", "GetLog");
+    Process(Log, "HTTP", "GetLog");
 
 EndProcedure
 
-Procedure HTTPClient_SetBinaryBody(FunctionParameters)
+Procedure HTTP_SetBinaryBody(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -25415,11 +25415,11 @@ Procedure HTTPClient_SetBinaryBody(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "SetBinaryBody", , Image);
+    Process(Result, "HTTP", "SetBinaryBody", , Image);
 
 EndProcedure
 
-Procedure HTTPClient_SetStringBody(FunctionParameters)
+Procedure HTTP_SetStringBody(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -25436,11 +25436,11 @@ Procedure HTTPClient_SetStringBody(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "SetStringBody");
+    Process(Result, "HTTP", "SetStringBody");
 
 EndProcedure
 
-Procedure HTTPClient_SetJsonBody(FunctionParameters)
+Procedure HTTP_SetJsonBody(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -25460,11 +25460,11 @@ Procedure HTTPClient_SetJsonBody(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "SetJsonBody", , Data);
+    Process(Result, "HTTP", "SetJsonBody", , Data);
 
 EndProcedure
 
-Procedure HTTPClient_SetFormBody(FunctionParameters)
+Procedure HTTP_SetFormBody(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -25479,11 +25479,11 @@ Procedure HTTPClient_SetFormBody(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "SetFormBody", , Data);
+    Process(Result, "HTTP", "SetFormBody", , Data);
 
 EndProcedure
 
-Procedure HTTPClient_StartMultipartBody(FunctionParameters)
+Procedure HTTP_StartMultipartBody(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -25501,11 +25501,11 @@ Procedure HTTPClient_StartMultipartBody(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "StartMultipartBody", , Image);
+    Process(Result, "HTTP", "StartMultipartBody", , Image);
 
 EndProcedure
 
-Procedure HTTPClient_AddMultipartFormDataFile(FunctionParameters)
+Procedure HTTP_AddMultipartFormDataFile(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -25523,11 +25523,11 @@ Procedure HTTPClient_AddMultipartFormDataFile(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "AddMultipartFormDataFile", , Image);
+    Process(Result, "HTTP", "AddMultipartFormDataFile", , Image);
 
 EndProcedure
 
-Procedure HTTPClient_AddMultipartFormDataField(FunctionParameters)
+Procedure HTTP_AddMultipartFormDataField(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -25545,11 +25545,11 @@ Procedure HTTPClient_AddMultipartFormDataField(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "AddMultipartFormDataField", , Image);
+    Process(Result, "HTTP", "AddMultipartFormDataField", , Image);
 
 EndProcedure
 
-Procedure HTTPClient_AddDataAsRelated(FunctionParameters)
+Procedure HTTP_AddDataAsRelated(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -25570,11 +25570,11 @@ Procedure HTTPClient_AddDataAsRelated(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "AddDataAsRelated");
+    Process(Result, "HTTP", "AddDataAsRelated");
 
 EndProcedure
 
-Procedure HTTPClient_UseEncoding(FunctionParameters)
+Procedure HTTP_UseEncoding(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -25591,11 +25591,11 @@ Procedure HTTPClient_UseEncoding(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "UseEncoding");
+    Process(Result, "HTTP", "UseEncoding");
 
 EndProcedure
 
-Procedure HTTPClient_UseGzipCompression(FunctionParameters)
+Procedure HTTP_UseGzipCompression(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -25611,7 +25611,7 @@ Procedure HTTPClient_UseGzipCompression(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "UseGzipCompression");
+    Process(Result, "HTTP", "UseGzipCompression");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
@@ -25620,11 +25620,11 @@ Procedure HTTPClient_UseGzipCompression(FunctionParameters)
         .ProcessRequest("POST", False)
         .ReturnRequest();
 
-    Process(Result, "HTTPClient", "UseGzipCompression", "Enabled");
+    Process(Result, "HTTP", "UseGzipCompression", "Enabled");
 
 EndProcedure
 
-Procedure HTTPClient_UseBodyFiledsAtOAuth(FunctionParameters)
+Procedure HTTP_UseBodyFiledsAtOAuth(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -25652,7 +25652,7 @@ Procedure HTTPClient_UseBodyFiledsAtOAuth(FunctionParameters)
     // END
 
     LogAsString = NewRequest.GetLog(True);
-    Process(Result, "HTTPClient", "UseBodyFiledsAtOAuth", , LogAsString);
+    Process(Result, "HTTP", "UseBodyFiledsAtOAuth", , LogAsString);
 
     Result = OPI_HTTPRequests
         .NewRequest()
@@ -25666,11 +25666,11 @@ Procedure HTTPClient_UseBodyFiledsAtOAuth(FunctionParameters)
         .ProcessRequest("POST", False)
         .GetLog(True);
 
-    Process(Result, "HTTPClient", "UseBodyFiledsAtOAuth", "Enabled");
+    Process(Result, "HTTP", "UseBodyFiledsAtOAuth", "Enabled");
 
 EndProcedure
 
-Procedure HTTPClient_SetHeaders(FunctionParameters)
+Procedure HTTP_SetHeaders(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25688,7 +25688,7 @@ Procedure HTTPClient_SetHeaders(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "SetHeaders");
+    Process(Result, "HTTP", "SetHeaders");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -25698,11 +25698,11 @@ Procedure HTTPClient_SetHeaders(FunctionParameters)
         .ProcessRequest("GET")
         .ReturnResponseAsJSONObject();
 
-    Process(Result, "HTTPClient", "SetHeaders", "Rewrite");
+    Process(Result, "HTTP", "SetHeaders", "Rewrite");
 
 EndProcedure
 
-Procedure HTTPClient_AddHeader(FunctionParameters)
+Procedure HTTP_AddHeader(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25717,7 +25717,7 @@ Procedure HTTPClient_AddHeader(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "AddHeader");
+    Process(Result, "HTTP", "AddHeader");
 
     Headers = New Map;
     Headers.Insert("X-Header1", "Value1");
@@ -25733,7 +25733,7 @@ Procedure HTTPClient_AddHeader(FunctionParameters)
         .ProcessRequest("GET")
         .ReturnResponseAsJSONObject();
 
-    Process(Result, "HTTPClient", "AddHeader", "Replace");
+    Process(Result, "HTTP", "AddHeader", "Replace");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -25745,11 +25745,11 @@ Procedure HTTPClient_AddHeader(FunctionParameters)
         .ProcessRequest("GET")
         .ReturnResponseAsJSONObject();
 
-    Process(Result, "HTTPClient", "AddHeader", "Addition");
+    Process(Result, "HTTP", "AddHeader", "Addition");
 
 EndProcedure
 
-Procedure HTTPClient_AddBasicAuthorization(FunctionParameters)
+Procedure HTTP_AddBasicAuthorization(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25763,11 +25763,11 @@ Procedure HTTPClient_AddBasicAuthorization(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "AddBasicAuthorization");
+    Process(Result, "HTTP", "AddBasicAuthorization");
 
 EndProcedure
 
-Procedure HTTPClient_AddBearerAuthorization(FunctionParameters)
+Procedure HTTP_AddBearerAuthorization(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25781,11 +25781,11 @@ Procedure HTTPClient_AddBearerAuthorization(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "AddBearerAuthorization");
+    Process(Result, "HTTP", "AddBearerAuthorization");
 
 EndProcedure
 
-Procedure HTTPClient_AddAWS4Authorization(FunctionParameters)
+Procedure HTTP_AddAWS4Authorization(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25803,11 +25803,11 @@ Procedure HTTPClient_AddAWS4Authorization(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "AddAWS4Authorization");
+    Process(Result, "HTTP", "AddAWS4Authorization");
 
 EndProcedure
 
-Procedure HTTPClient_AddOAuthV1Authorization(FunctionParameters)
+Procedure HTTP_AddOAuthV1Authorization(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25826,11 +25826,11 @@ Procedure HTTPClient_AddOAuthV1Authorization(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "AddOAuthV1Authorization");
+    Process(Result, "HTTP", "AddOAuthV1Authorization");
 
 EndProcedure
 
-Procedure HTTPClient_SetOAuthV1Algorithm(FunctionParameters)
+Procedure HTTP_SetOAuthV1Algorithm(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25850,11 +25850,11 @@ Procedure HTTPClient_SetOAuthV1Algorithm(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "SetOAuthV1Algorithm");
+    Process(Result, "HTTP", "SetOAuthV1Algorithm");
 
 EndProcedure
 
-Procedure HTTPClient_ProcessRequest(FunctionParameters)
+Procedure HTTP_ProcessRequest(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25867,11 +25867,11 @@ Procedure HTTPClient_ProcessRequest(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "ProcessRequest");
+    Process(Result, "HTTP", "ProcessRequest");
 
 EndProcedure
 
-Procedure HTTPClient_ExecuteRequest(FunctionParameters)
+Procedure HTTP_ExecuteRequest(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25885,7 +25885,7 @@ Procedure HTTPClient_ExecuteRequest(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "ExecuteRequest");
+    Process(Result, "HTTP", "ExecuteRequest");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -25893,7 +25893,7 @@ Procedure HTTPClient_ExecuteRequest(FunctionParameters)
         .ProcessRequest("GET", False)
         .ReturnResponse(True);
 
-    Process(Result, "HTTPClient", "ExecuteRequest", "No execution");
+    Process(Result, "HTTP", "ExecuteRequest", "No execution");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -25902,11 +25902,11 @@ Procedure HTTPClient_ExecuteRequest(FunctionParameters)
         .ExecuteRequest()
         .ReturnResponse(True);
 
-    Process(Result, "HTTPClient", "ExecuteRequest", "Execution");
+    Process(Result, "HTTP", "ExecuteRequest", "Execution");
 
 EndProcedure
 
-Procedure HTTPClient_ReturnRequest(FunctionParameters)
+Procedure HTTP_ReturnRequest(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25919,18 +25919,18 @@ Procedure HTTPClient_ReturnRequest(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "ReturnRequest");
+    Process(Result, "HTTP", "ReturnRequest");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
         .SetURL(URL)
         .ReturnRequest(True);
 
-    Process(Result, "HTTPClient", "ReturnRequest", "Forced");
+    Process(Result, "HTTP", "ReturnRequest", "Forced");
 
 EndProcedure
 
-Procedure HTTPClient_ReturnConnection(FunctionParameters)
+Procedure HTTP_ReturnConnection(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -25943,18 +25943,18 @@ Procedure HTTPClient_ReturnConnection(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "ReturnConnection");
+    Process(Result, "HTTP", "ReturnConnection");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
         .SetURL(URL)
         .ReturnConnection(True);
 
-    Process(Result, "HTTPClient", "ReturnConnection", "Forced");
+    Process(Result, "HTTP", "ReturnConnection", "Forced");
 
 EndProcedure
 
-Procedure HTTPClient_ReturnResponse(FunctionParameters)
+Procedure HTTP_ReturnResponse(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -25969,11 +25969,11 @@ Procedure HTTPClient_ReturnResponse(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "ReturnResponse");
+    Process(Result, "HTTP", "ReturnResponse");
 
 EndProcedure
 
-Procedure HTTPClient_ReturnResponseAsJSONObject(FunctionParameters)
+Procedure HTTP_ReturnResponseAsJSONObject(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -25988,11 +25988,11 @@ Procedure HTTPClient_ReturnResponseAsJSONObject(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "ReturnResponseAsJSONObject");
+    Process(Result, "HTTP", "ReturnResponseAsJSONObject");
 
 EndProcedure
 
-Procedure HTTPClient_ReturnResponseAsBinaryData(FunctionParameters)
+Procedure HTTP_ReturnResponseAsBinaryData(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -26007,11 +26007,11 @@ Procedure HTTPClient_ReturnResponseAsBinaryData(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "ReturnResponseAsBinaryData");
+    Process(Result, "HTTP", "ReturnResponseAsBinaryData");
 
 EndProcedure
 
-Procedure HTTPClient_ReturnResponseAsString(FunctionParameters)
+Procedure HTTP_ReturnResponseAsString(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/post";
@@ -26026,11 +26026,11 @@ Procedure HTTPClient_ReturnResponseAsString(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "ReturnResponseAsString");
+    Process(Result, "HTTP", "ReturnResponseAsString");
 
 EndProcedure
 
-Procedure HTTPClient_ReturnResponseFilename(FunctionParameters)
+Procedure HTTP_ReturnResponseFilename(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -26045,13 +26045,13 @@ Procedure HTTPClient_ReturnResponseFilename(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "ReturnResponseFilename", , TFN);
+    Process(Result, "HTTP", "ReturnResponseFilename", , TFN);
 
     OPI_Tools.RemoveFileWithTry(TFN, "Failed to delete the temporary file after the test!!");
 
 EndProcedure
 
-Procedure HTTPClient_SetProxy(FunctionParameters)
+Procedure HTTP_SetProxy(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -26068,11 +26068,11 @@ Procedure HTTPClient_SetProxy(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "SetProxy");
+    Process(Result, "HTTP", "SetProxy");
 
 EndProcedure
 
-Procedure HTTPClient_SetTimeout(FunctionParameters)
+Procedure HTTP_SetTimeout(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -26086,11 +26086,11 @@ Procedure HTTPClient_SetTimeout(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "SetTimeout");
+    Process(Result, "HTTP", "SetTimeout");
 
 EndProcedure
 
-Procedure HTTPClient_UseURLEncoding(FunctionParameters)
+Procedure HTTP_UseURLEncoding(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -26123,11 +26123,11 @@ Procedure HTTPClient_UseURLEncoding(FunctionParameters)
     Result.Insert("No encoding"   , NoEncoding);
     Result.Insert("With encoding" , WithEncoding);
 
-    Process(Result, "HTTPClient", "UseURLEncoding");
+    Process(Result, "HTTP", "UseURLEncoding");
 
 EndProcedure
 
-Procedure HTTPClient_SplitArraysInURL(FunctionParameters)
+Procedure HTTP_SplitArraysInURL(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/get";
@@ -26169,11 +26169,11 @@ Procedure HTTPClient_SplitArraysInURL(FunctionParameters)
     Result.Insert("Separation"   , Separation);
     Result.Insert("PHP"          , SeparationPhp);
 
-    Process(Result, "HTTPClient", "SplitArraysInURL");
+    Process(Result, "HTTP", "SplitArraysInURL");
 
 EndProcedure
 
-Procedure HTTPClient_SendDataInParts(FunctionParameters)
+Procedure HTTP_SendDataInParts(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/put";
@@ -26189,11 +26189,11 @@ Procedure HTTPClient_SendDataInParts(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "SendDataInParts");
+    Process(Result, "HTTP", "SendDataInParts");
 
 EndProcedure
 
-Procedure HTTPClient_SendPart(FunctionParameters)
+Procedure HTTP_SendPart(FunctionParameters)
 
     URL = FunctionParameters["HTTP_URL"];
     URL = URL + "/put";
@@ -26213,11 +26213,11 @@ Procedure HTTPClient_SendPart(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "SendPart");
+    Process(Result, "HTTP", "SendPart");
 
 EndProcedure
 
-Procedure HTTPClient_MaxAttempts(FunctionParameters)
+Procedure HTTP_MaxAttempts(FunctionParameters)
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -26226,11 +26226,11 @@ Procedure HTTPClient_MaxAttempts(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "MaxAttempts");
+    Process(Result, "HTTP", "MaxAttempts");
 
 EndProcedure
 
-Procedure HTTPClient_MaxRedirects(FunctionParameters)
+Procedure HTTP_MaxRedirects(FunctionParameters)
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -26239,11 +26239,11 @@ Procedure HTTPClient_MaxRedirects(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "MaxRedirects");
+    Process(Result, "HTTP", "MaxRedirects");
 
 EndProcedure
 
-Procedure HTTPClient_ReturnSettings(FunctionParameters)
+Procedure HTTP_ReturnSettings(FunctionParameters)
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
@@ -26251,13 +26251,13 @@ Procedure HTTPClient_ReturnSettings(FunctionParameters)
 
     // END
 
-    Process(Result, "HTTPClient", "ReturnSettings");
+    Process(Result, "HTTP", "ReturnSettings");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
         .ReturnSettings("EncodeRequestBody");
 
-    Process(Result, "HTTPClient", "ReturnSettings", "Single");
+    Process(Result, "HTTP", "ReturnSettings", "Single");
 
     SettingArray = New Array;
     SettingArray.Add("MaxAttempts");
@@ -26268,13 +26268,13 @@ Procedure HTTPClient_ReturnSettings(FunctionParameters)
         .MaxAttempts(5)
         .ReturnSettings(SettingArray);
 
-    Process(Result, "HTTPClient", "ReturnSettings", "Array");
+    Process(Result, "HTTP", "ReturnSettings", "Array");
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize()
         .ReturnSettings("AAA");
 
-    Process(Result, "HTTPClient", "ReturnSettings", "Nonexistent");
+    Process(Result, "HTTP", "ReturnSettings", "Nonexistent");
 
 EndProcedure
 

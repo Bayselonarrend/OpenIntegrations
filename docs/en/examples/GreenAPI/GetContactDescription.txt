@@ -1,4 +1,4 @@
-﻿    Phone      = 79001234568;
+    Phone      = 79001234568;
     Name       = "Artem";
     LastName   = "Evpatoriysky";
     Patronymic = "Petrovich";

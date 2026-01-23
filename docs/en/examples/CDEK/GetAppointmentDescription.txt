@@ -1,1 +1,1 @@
-﻿    Result = OPI_CDEK.GetAppointmentDescription();
+    Result = OPI_CDEK.GetAppointmentDescription();

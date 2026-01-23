@@ -1,4 +1,4 @@
-﻿    Parameters = GetVKParameters();
+    Parameters = GetVKParameters();
 
     Text           = "Message from autotest";
     UserID         = "657846756";

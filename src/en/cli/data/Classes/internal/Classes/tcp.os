@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -49,7 +49,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PROCESSREQUEST";
     NewLine.Parameter     = "--string";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "An attribute of receiving the response as a string (optional, def. val.. - True)";
+    NewLine.Description     = "An attribute of receiving the response as a string (optional, def. val.. - Yes)";
     NewLine.Region      = "Client methods";
 
 

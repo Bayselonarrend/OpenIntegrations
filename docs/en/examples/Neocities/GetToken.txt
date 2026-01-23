@@ -1,4 +1,4 @@
-﻿    Login    = "2athenaeum";
+    Login    = "2athenaeum";
     Password = "Rit...";
 
     Result = OPI_Neocities.GetToken(Login, Password);

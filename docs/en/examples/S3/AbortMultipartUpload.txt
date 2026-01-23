@@ -1,4 +1,4 @@
-﻿    URL       = "s3.openintegrations.dev";
+    URL       = "s3.openintegrations.dev";
     AccessKey = "bayselo...";
     SecretKey = "12we34...";
     Region    = "BTC";
@@ -8,7 +8,7 @@
     Name = "fileChunked.mp3";
 
     Directory = True; // Formation URL in path-style
-    Bucket = "";
+    Bucket = "w567hjy1";
     Start    = OPI_S3.InitPartsUpload(Name, Bucket, BasicData, , Directory);
     UploadID = Start["response"]["InitiateMultipartUploadResult"]["UploadId"];
 

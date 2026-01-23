@@ -1,4 +1,4 @@
-﻿    URL   = "https://hut.openintegrations.dev/ollama";
+    URL   = "https://hut.openintegrations.dev/ollama";
     Token = "12We34..."; // Authorization - not part API Ollama
 
     Model = "mario";

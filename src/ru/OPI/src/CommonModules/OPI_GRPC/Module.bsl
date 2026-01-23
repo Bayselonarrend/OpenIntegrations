@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_GRPC.os
+// OneScript: ./OInt/core/Modules/OPI_GRPC.os
 // Lib: GRPC
 // CLI: grpc
 // Keywords: grpc

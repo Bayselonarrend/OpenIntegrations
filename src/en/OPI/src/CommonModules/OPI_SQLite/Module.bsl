@@ -1,8 +1,12 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_SQLite.os
+// OneScript: ./OInt/core/Modules/OPI_SQLite.os
 // Lib: SQLite
 // CLI: sqlite
 // Keywords: sqlite
 // Depends: OPI_SQLite
+
+// DocsCategory: Database
+// DocsNameRU: SQLite
+// DocsNameEN: SQLite
 
 // MIT License
 

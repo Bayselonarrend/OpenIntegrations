@@ -1,9 +1,9 @@
-﻿    Parameters = GetVKParameters();
+    Parameters = GetVKParameters();
 
     Image1       = "https://hut.openintegrations.dev/test_data/picture.jpg";
     Image2       = "https://hut.openintegrations.dev/test_data/picture2.jpg";
-    PropVariant1 = "9873";
-    PropVariant2 = "9874";
+    PropVariant1 = "8944";
+    PropVariant2 = "8945";
 
     ImageArray = New Array;
     ImageArray.Add(Image1);

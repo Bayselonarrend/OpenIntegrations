@@ -1,7 +1,11 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_CDEK.os
+// OneScript: ./OInt/core/Modules/OPI_CDEK.os
 // Lib: CDEK
 // CLI: cdek
 // Keywords: cdek
+
+// DocsCategory: Commerce
+// DocsNameRU: CDEK
+// DocsNameEN: CDEK
 
 // MIT License
 

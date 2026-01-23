@@ -1,4 +1,4 @@
-﻿    ApiUrl           = "https://7105.api.greenapi.com";
+    ApiUrl           = "https://7105.api.greenapi.com";
     MediaUrl         = "https://7105.media.greenapi.com";
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
@@ -6,7 +6,7 @@
     From   = "11001234567@c.us";
     Target = "120363410406221140@g.us";
 
-    Message = "3EB0F14C02D48C1A7F3DE9";
+    Message = "BAE5777A5F7C5685";
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.ForwardMessages(AccessParameters, From, Target, Message);

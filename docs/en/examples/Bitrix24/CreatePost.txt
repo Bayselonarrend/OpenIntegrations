@@ -1,4 +1,4 @@
-﻿    Text   = "Text of post";
+    Text   = "Text of post";
     Title  = "Post title";
     Image1 = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
     Image2 = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Path or Binary Data
@@ -7,11 +7,11 @@
     Files.Insert("1.png", Image1);
     Files.Insert("2.png", Image2);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
 
     Result = OPI_Bitrix24.CreatePost(URL, Text, , Files, Title, True);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "bafe5c69006e9f06006b12e400000001000...";
+    Token = "a5b00469006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CreatePost(URL, Text, , Files, Title, , Token);

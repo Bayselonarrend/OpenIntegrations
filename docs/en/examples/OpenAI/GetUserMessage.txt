@@ -1,1 +1,1 @@
-﻿    Result = OPI_OpenAI.GetUserMessage("What is 1C:Enterprise?", "Vitaly");
+    Result = OPI_OpenAI.GetUserMessage("What is 1C:Enterprise?", "Vitaly");

@@ -4,6 +4,10 @@
 // Keywords: postgresql, postgre sql, postgres
 // Depends: OPI_PostgreSQL
 
+// DocsCategory: Database
+// DocsNameRU: PostgreSQL
+// DocsNameEN: PostgreSQL
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

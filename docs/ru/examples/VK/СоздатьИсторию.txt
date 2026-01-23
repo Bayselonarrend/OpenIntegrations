@@ -1,4 +1,4 @@
-﻿    Параметры = ПолучитьПараметрыВК();
+    Параметры = ПолучитьПараметрыВК();
     URL       = "https://github.com/Bayselonarrend/OpenIntegrations";
 
     Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg";       // URL, Путь к файлу или Двоичные данные

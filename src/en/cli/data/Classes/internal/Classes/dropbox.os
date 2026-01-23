@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -164,7 +164,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETOBJECTINFORMATION";
     NewLine.Parameter     = "--detail";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Add information fields for mediafiles (optional, def. val.. - False)";
+    NewLine.Description     = "Add information fields for mediafiles (optional, def. val.. - No)";
     NewLine.Region      = "File and directory management";
 
 
@@ -198,7 +198,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLISTOFFOLDERFILES";
     NewLine.Parameter     = "--detail";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Add information fields for mediafiles (optional, def. val.. - False)";
+    NewLine.Description     = "Add information fields for mediafiles (optional, def. val.. - No)";
     NewLine.Region      = "File and directory management";
 
 
@@ -277,7 +277,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFILE";
     NewLine.Parameter     = "--overwrite";
     NewLine.ParameterTrim = "-o";
-    NewLine.Description     = "Overwrite file in case of path conflicts (optional, def. val.. - False)";
+    NewLine.Description     = "Overwrite file in case of path conflicts (optional, def. val.. - No)";
     NewLine.Region      = "File and directory management";
 
 
@@ -368,7 +368,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEOBJECT";
     NewLine.Parameter     = "--permanently";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Delete object without the possibility of recovery (optional, def. val.. - False)";
+    NewLine.Description     = "Delete object without the possibility of recovery (optional, def. val.. - No)";
     NewLine.Region      = "File and directory management";
 
 
@@ -755,7 +755,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDUSERSTOFILE";
     NewLine.Parameter     = "--readonly";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Prohibits file editing for the external user (optional, def. val.. - True)";
+    NewLine.Description     = "Prohibits file editing for the external user (optional, def. val.. - Yes)";
     NewLine.Region      = "Shared access settings";
 
 
@@ -800,7 +800,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDUSERSTOFOLDER";
     NewLine.Parameter     = "--readonly";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Prohibits file editing for the external user (optional, def. val.. - True)";
+    NewLine.Description     = "Prohibits file editing for the external user (optional, def. val.. - Yes)";
     NewLine.Region      = "Shared access settings";
 
 

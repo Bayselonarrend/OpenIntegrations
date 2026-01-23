@@ -1,4 +1,4 @@
-﻿    Parameters = GetVKParameters();
+    Parameters = GetVKParameters();
 
     Name = "Color";
 

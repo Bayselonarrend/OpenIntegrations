@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -89,7 +89,7 @@ Function GetConnectionString() Export
         |
 
         |
-        |Utils = LoadScript(""C:/ProgramData/Jenkins/.jenkins/workspace/OpiBuild/OpiMain/src/en/cli/tools/Modules/Utils.os"", Context);
+        |Utils = LoadScript(""R:/Repos/OpenIntegrations/src/en/cli/tools/Modules/Utils.os"", Context);
         |" + Chars.LF;
 
 

@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -196,7 +196,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATEPOST";
     NewLine.Parameter     = "--important";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "Mark post as important (optional, def. val.. - False)";
+    NewLine.Description     = "Mark post as important (optional, def. val.. - No)";
     NewLine.Region      = "Feed posts management";
 
 
@@ -1471,7 +1471,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKSFILTERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Tasks management";
     NewLine.MethodDescription   = "Return filter structure for GetTasksList";
 
@@ -1483,7 +1483,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETTASKSFILTERSTRUCTURE";
     NewLine.Parameter     = "--map";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val.. - False)";
+    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val.. - No)";
     NewLine.Region      = "Tasks management";
 
 
@@ -1764,7 +1764,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDTASKSCHECKLISTELEMENT";
     NewLine.Parameter     = "--complete";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "Mark as completed (optional, def. val.. - False)";
+    NewLine.Description     = "Mark as completed (optional, def. val.. - No)";
     NewLine.Region      = "Tasks checklists management";
 
 
@@ -2383,7 +2383,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCOMMENTSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Comments and results management";
     NewLine.MethodDescription   = "Get comment fields structure";
 
@@ -2451,7 +2451,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDKANBANSTAGE";
     NewLine.Parameter     = "--admin";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Allows you to add stages without checking permissions (for administrators) (optional, def. val.. - False)";
+    NewLine.Description     = "Allows you to add stages without checking permissions (for administrators) (optional, def. val.. - No)";
     NewLine.Region      = "Kanban";
 
 
@@ -2529,7 +2529,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEKANBANSSTAGE";
     NewLine.Parameter     = "--admin";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Allows you to add stages without checking permissions (for administrators) (optional, def. val.. - False)";
+    NewLine.Description     = "Allows you to add stages without checking permissions (for administrators) (optional, def. val.. - No)";
     NewLine.Region      = "Kanban";
 
 
@@ -2574,7 +2574,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEKANBANSTAGE";
     NewLine.Parameter     = "--admin";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Allows you to add stages without checking permissions (for administrators) (optional, def. val.. - False)";
+    NewLine.Description     = "Allows you to add stages without checking permissions (for administrators) (optional, def. val.. - No)";
     NewLine.Region      = "Kanban";
 
 
@@ -2619,7 +2619,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETKANBANSTAGES";
     NewLine.Parameter     = "--admin";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Allows you to get stages without checking permissions (for administrators) (optional, def. val.. - False)";
+    NewLine.Description     = "Allows you to get stages without checking permissions (for administrators) (optional, def. val.. - No)";
     NewLine.Region      = "Kanban";
 
 
@@ -3813,7 +3813,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETFOLDERFILTERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty values, False > field types at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty values, False > field types at values (optional, def. val.. - No)";
     NewLine.Region      = "Catalogs management";
 
 
@@ -4433,7 +4433,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDUSERSTOCHAT";
     NewLine.Parameter     = "--hide";
     NewLine.ParameterTrim = "-h";
-    NewLine.Description     = "Hide old messages from new members (optional, def. val.. - False)";
+    NewLine.Description     = "Hide old messages from new members (optional, def. val.. - No)";
     NewLine.Region      = "Chats and dialogs management";
 
 
@@ -5020,7 +5020,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHATSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty values, False > field types at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty values, False > field types at values (optional, def. val.. - No)";
     NewLine.Region      = "Chats and dialogs management";
     NewLine.MethodDescription   = "Get chat fields structure";
 
@@ -5955,7 +5955,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CHANGEUSERSTATUS";
     NewLine.Parameter     = "--fire";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "True > Deactivation, False > Activation (optional, def. val.. - True)";
+    NewLine.Description     = "True > Deactivation, False > Activation (optional, def. val.. - Yes)";
     NewLine.Region      = "Users management";
 
 
@@ -6034,7 +6034,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSERFILTERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Users management";
     NewLine.MethodDescription   = "Returns the field structure for filtering users in the FindUsers method";
 
@@ -6261,7 +6261,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLEADFILTERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Leads management";
     NewLine.MethodDescription   = "Returns the field structure for filtering leads in the GetLeadsList method";
 
@@ -6488,7 +6488,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDEALSFILTERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Deals management";
     NewLine.MethodDescription   = "Returns the field structure for filtering deals in the GetDealsList method";
 
@@ -6816,7 +6816,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCALEDNARCUSTOMSETTINGSSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Calendars management";
     NewLine.MethodDescription   = "Gets an empty structure for setting custom calendar settings";
 
@@ -6828,7 +6828,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCALENDARSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Calendars management";
     NewLine.MethodDescription   = "Returns the structure of the calendar description fields";
 
@@ -7122,7 +7122,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCALENDAREVENTSSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Calendar events management";
     NewLine.MethodDescription   = "Returns the structure of the calendar event fields";
 
@@ -7134,7 +7134,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCALENDAREVENTSFILTERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Calendar events management";
     NewLine.MethodDescription   = "Gets the filter structure for the function GetCalendarEvents";
 

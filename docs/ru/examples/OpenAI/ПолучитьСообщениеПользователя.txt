@@ -1,1 +1,1 @@
-﻿    Результат = OPI_OpenAI.ПолучитьСообщениеПользователя("What is 1C:Enterprise?", "Vitaly");
+    Результат = OPI_OpenAI.ПолучитьСообщениеПользователя("What is 1C:Enterprise?", "Vitaly");

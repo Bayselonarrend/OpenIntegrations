@@ -1,10 +1,10 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_ClickHouse.os
+// OneScript: ./OInt/core/Modules/OPI_ClickHouse.os
 // Lib: ClickHouse
 // CLI: clickhouse
 // Keywords: clickhouse
 
 // DocsCategory: Database
-// DocsNameRU: ClickHouse 
+// DocsNameRU: ClickHouse
 // DocsNameEN: ClickHouse
 
 // MIT License

@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -49,7 +49,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EXECUTESQLQUERY";
     NewLine.Parameter     = "--force";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Includes an attempt to retrieve the result, even for nonSELECT queries (optional, def. val.. - False)";
+    NewLine.Description     = "Includes an attempt to retrieve the result, even for nonSELECT queries (optional, def. val.. - No)";
     NewLine.Region      = "Common methods";
 
 
@@ -579,7 +579,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ADDRECORDS";
     NewLine.Parameter     = "--trn";
     NewLine.ParameterTrim = "-n";
-    NewLine.Description     = "True > adding records to transactions with rollback on error (optional, def. val.. - True)";
+    NewLine.Description     = "True > adding records to transactions with rollback on error (optional, def. val.. - Yes)";
     NewLine.Region      = "Orm";
 
 
@@ -791,7 +791,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETRECORDSFILTERSTRUCUTRE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Orm";
     NewLine.MethodDescription   = "Gets the template structure for filtering records in ORM queries";
 

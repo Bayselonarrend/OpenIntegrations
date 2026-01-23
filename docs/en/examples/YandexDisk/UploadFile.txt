@@ -1,4 +1,4 @@
-﻿    Path1 = "/" + String(New UUID) + ".png";
+    Path1 = "/" + String(New UUID) + ".png";
     Path2 = "/" + String(New UUID) + ".png";
 
     Token = "y0__xCOranuBRj1uTsgs8z_iRV...";

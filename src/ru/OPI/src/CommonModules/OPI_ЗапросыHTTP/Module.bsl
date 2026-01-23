@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_ЗапросыHTTP.os
+// OneScript: ./OInt/tools/Modules/OPI_ЗапросыHTTP.os
 
 // MIT License
 

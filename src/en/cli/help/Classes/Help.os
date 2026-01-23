@@ -1,4 +1,4 @@
-﻿Var ColorOutput;
+Var ColorOutput;
 Var ConsoleWidth;
 Var UseAdaptiveOutput;
 

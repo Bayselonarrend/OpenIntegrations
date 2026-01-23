@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -217,7 +217,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETREQUESTPARAMETERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Requests processing";
     NewLine.MethodDescription   = "Gets the structure of additional parameters for request processing";
 
@@ -229,7 +229,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETEMBEDDINGSPARAMETERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Requests processing";
     NewLine.MethodDescription   = "Gets the structure of additional parameters for processing embeddings requests";
 
@@ -241,7 +241,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCONTEXTPARAMETERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Requests processing";
     NewLine.MethodDescription   = "Gets the structure of additional parameters to process the request in context";
 
@@ -367,7 +367,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETMODELINFORMATION";
     NewLine.Parameter     = "--verbose";
     NewLine.ParameterTrim = "-v";
-    NewLine.Description     = "Return full model information (optional, def. val.. - True)";
+    NewLine.Description     = "Return full model information (optional, def. val.. - Yes)";
     NewLine.Region      = "Models management";
 
 
@@ -615,7 +615,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PUSHMODEL";
     NewLine.Parameter     = "--insecure";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "Allows an unsecured connection to the library (optional, def. val.. - False)";
+    NewLine.Description     = "Allows an unsecured connection to the library (optional, def. val.. - No)";
     NewLine.Region      = "Models management";
 
 
@@ -660,7 +660,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PULLMODEL";
     NewLine.Parameter     = "--insecure";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "Allows an unsecured connection to the library (optional, def. val.. - False)";
+    NewLine.Description     = "Allows an unsecured connection to the library (optional, def. val.. - No)";
     NewLine.Region      = "Models management";
 
 
@@ -682,7 +682,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETMODELSETTINGSSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Models management";
     NewLine.MethodDescription   = "Gets the settings structure for creating a new model";
 

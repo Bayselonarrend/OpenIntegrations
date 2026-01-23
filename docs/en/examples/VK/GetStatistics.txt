@@ -1,4 +1,4 @@
-﻿    Parameters = GetVKParameters();
+    Parameters = GetVKParameters();
 
     CurrentDate = OPI_Tools.GetCurrentDate();
     StartDate   = BegOfDay(CurrentDate);

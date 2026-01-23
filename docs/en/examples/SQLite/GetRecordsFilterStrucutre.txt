@@ -1,1 +1,1 @@
-﻿    Result = OPI_SQLite.GetRecordsFilterStrucutre();
+    Result = OPI_SQLite.GetRecordsFilterStrucutre();

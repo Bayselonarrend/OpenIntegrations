@@ -1,4 +1,4 @@
-﻿    Text = "TestMessage";
+    Text = "TestMessage";
 
     UserID           = "d3jxe61Z4W73nmNkjYGgZg==";
     Token            = "523b5b25ed27e6ec-fdf013e4...";

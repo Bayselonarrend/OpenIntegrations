@@ -1,4 +1,4 @@
-﻿    Parameters = GetVKParameters();
+    Parameters = GetVKParameters();
     Question   = "What's your favorite color??";
 
     OptionArray = New Array;

@@ -1,4 +1,4 @@
-﻿    URL = "https://bin.openintegrations.dev";
+    URL = "https://bin.openintegrations.dev";
     URL = URL + "/post";
 
     RandomArray = New Array;

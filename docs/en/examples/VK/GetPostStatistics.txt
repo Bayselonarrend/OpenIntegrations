@@ -1,4 +1,4 @@
-﻿    Parameters = GetVKParameters();
+    Parameters = GetVKParameters();
 
     ArrayOfPosts = New Array;
     ArrayOfPosts.Add(214);

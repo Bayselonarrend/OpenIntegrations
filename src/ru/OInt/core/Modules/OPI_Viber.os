@@ -3,6 +3,10 @@
 // CLI: viber
 // Keywords: viber
 
+// DocsCategory: Messenger
+// DocsNameRU: Viber
+// DocsNameEN: Viber
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

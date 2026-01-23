@@ -1,1 +1,1 @@
-﻿    Result = OPI_Airtable.GetPhoneField("Phone");
+    Result = OPI_Airtable.GetPhoneField("Phone");

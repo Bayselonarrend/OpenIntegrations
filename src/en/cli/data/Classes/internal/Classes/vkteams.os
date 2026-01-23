@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -656,7 +656,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "ANSWERBUTTONEVENT";
     NewLine.Parameter     = "--showalert";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Display the answer as an alert) (optional, def. val.. - False)";
+    NewLine.Description     = "Display the answer as an alert) (optional, def. val.. - No)";
     NewLine.Region      = "Message sending";
 
 
@@ -940,7 +940,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "BLOCKCHATUSER";
     NewLine.Parameter     = "--dellast";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Delete last messages before blocking (optional, def. val.. - False)";
+    NewLine.Description     = "Delete last messages before blocking (optional, def. val.. - No)";
     NewLine.Region      = "Chat management";
 
 

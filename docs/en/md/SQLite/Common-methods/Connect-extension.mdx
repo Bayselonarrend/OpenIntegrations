@@ -1,4 +1,4 @@
-﻿---
+---
 sidebar_position: 5
 description: Connect extension  and other functions to work with SQLite in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, SQLite]
@@ -44,7 +44,7 @@ Parameters with Binary data type can also accept file paths on disk and URLs
         Extension = "https://hut.openintegrations.dev/test_data/uuid.so"; // URL, Path or Binary Data
     EndIf;
 
-    Base       = "C:\Users\bayse\AppData\Local\Temp\v8_5DFF_2c.sqlite";
+    Base       = "/tmp/vnnmoosn.qqb.sqlite";
     EntryPoint = "sqlite3_uuid_init";
 
     Connection = OPI_SQLite.CreateConnection(Base);

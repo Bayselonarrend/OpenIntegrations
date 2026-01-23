@@ -1,11 +1,11 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_GoogleSheets.os
+// OneScript: ./OInt/core/Modules/OPI_GoogleSheets.os
 // Lib: GoogleSheets
 // CLI: gsheets
 // Keywords: googlesheets, google sheets, spreadsheets
 // Depends: OPI_GoogleWorkspace
 
 // DocsCategory: Database
-// DocsNameRU: Google Sheets 
+// DocsNameRU: Google Sheets
 // DocsNameEN: Google Sheets
 
 // MIT License

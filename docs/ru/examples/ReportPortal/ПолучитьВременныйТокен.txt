@@ -1,4 +1,4 @@
-﻿    URL    = "tests.openintegrations.dev";
+    URL    = "tests.openintegrations.dev";
     Логин  = "superadmin";
     Пароль = "Rit2...";
 

@@ -1,4 +1,4 @@
-﻿    Parameters = GetTwitterAuthData();
+    Parameters = GetTwitterAuthData();
     Text       = "TestTweet" + String(New UUID);
 
     AnswersArray = New Array;

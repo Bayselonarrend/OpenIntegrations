@@ -1,5 +1,5 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_YandexID.os
-// Lib: Yandex ID
+// OneScript: ./OInt/core/Modules/OPI_YandexID.os
+// Lib: YandexID
 // CLI: yandex
 
 // MIT License

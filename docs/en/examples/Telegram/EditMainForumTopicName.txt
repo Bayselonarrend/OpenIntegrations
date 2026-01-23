@@ -1,4 +1,4 @@
-﻿    Title = "New main topic name " + String(New UUID);
+    Title = "New main topic name " + String(New UUID);
     Token = "6129457865:AAFyzNYOAFbu...";
     Chat  = "-1001971186208";
 
