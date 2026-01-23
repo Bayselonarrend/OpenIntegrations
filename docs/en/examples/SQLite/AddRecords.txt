@@ -4,7 +4,7 @@
     PictureFile = GetTempFileName("png");
     Image.Write(PictureFile); // PictureFile - File to disk
 
-    Base  = "/tmp/vnnmoosn.qqb.sqlite";
+    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_5DFF_2c.sqlite";
     Table = "test";
 
     DataArray = New Array;

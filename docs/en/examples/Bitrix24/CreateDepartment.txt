@@ -1,4 +1,4 @@
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
 
     Name     = "Main department";
     ParentID = 1;
@@ -6,10 +6,10 @@
     Result = OPI_Bitrix24.CreateDepartment(URL, Name, ParentID);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "a5b00469006e9f06006b12e400000001000...";
+    Token = "bafe5c69006e9f06006b12e400000001000...";
 
     Name     = "Subordinate department";
-    ParentID = "2962";
+    ParentID = "3212";
     HeadID   = 1;
 
     Result = OPI_Bitrix24.CreateDepartment(URL, Name, ParentID, HeadID, Token);

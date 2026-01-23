@@ -34,7 +34,7 @@ If you want to add an intranet user, you must pass UF_DEPARTMENT field: [...]
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    URL   = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
+    URL   = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
     Email = String(New UUID) + "@exepmple.org";
 
     // The full structure can be obtained with the function GetUserFieldsStructure
@@ -46,7 +46,7 @@ If you want to add an intranet user, you must pass UF_DEPARTMENT field: [...]
     Result = OPI_Bitrix24.CreateUser(URL, UserStructure);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "a5b00469006e9f06006b12e400000001000...";
+    Token = "bafe5c69006e9f06006b12e400000001000...";
     Email = String(New UUID) + "@exepmple.org";
 
     UserStructure = New Structure;
