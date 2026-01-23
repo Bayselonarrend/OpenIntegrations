@@ -1,10 +1,26 @@
 {
-	"module": "clickhouse",
+	"module": "OPI_ClickHouse",
 	"library": "clickhouse",
-	"depends": {
-		"OPI_ClickHouse": "%1/oint/core/Modules/OPI_ClickHouse.os",
-		"OPI_GRPC": "%1/oint/core/Modules/OPI_GRPC.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Основные методы",
+			"methods": [
+				"ВыполнитьЗапрос",
+				"ПолучитьНастройкиСоединенияHTTP",
+				"ПолучитьНастройкиЗапроса",
+				"ПолучитьСтруктуруВнешнейТаблицы",
+				"ПолучитьНастройкиСессии"
+			]
+		},
+		{
+			"name": "Grpc",
+			"methods": [
+				"ПолучитьНастройкиСоединенияGRPC",
+				"ПолучитьНастройкиTls"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "ВыполнитьЗапрос",
@@ -95,7 +111,7 @@
 					"types": "Произвольный",
 					"description": "Строка, файл или двоичные данные запроса",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-t"
 				},
 				{
 					"name": "--format",
@@ -220,34 +236,6 @@
 					"short": "-t"
 				}
 			],
-			"region": "Grpc"
-		},
-		{
-			"name": "ОткрытьСоединениеGRPC",
-			"id": "ОТКРЫТЬСОЕДИНЕНИЕGRPC",
-			"description": "",
-			"params": [],
-			"region": "Grpc"
-		},
-		{
-			"name": "ОткрытьКлиентскийПотокGRPC",
-			"id": "ОТКРЫТЬКЛИЕНТСКИЙПОТОКGRPC",
-			"description": "",
-			"params": [],
-			"region": "Grpc"
-		},
-		{
-			"name": "ОткрытьСерверныйПотокGRPC",
-			"id": "ОТКРЫТЬСЕРВЕРНЫЙПОТОКGRPC",
-			"description": "",
-			"params": [],
-			"region": "Grpc"
-		},
-		{
-			"name": "ОткрытьДвунаправленныйПотокGRPC",
-			"id": "ОТКРЫТЬДВУНАПРАВЛЕННЫЙПОТОКGRPC",
-			"description": "",
-			"params": [],
 			"region": "Grpc"
 		},
 		{

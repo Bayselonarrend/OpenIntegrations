@@ -1,31 +1,66 @@
 {
-	"module": "mongodb",
+	"module": "OPI_MongoDB",
 	"library": "mongodb",
-	"depends": {
-		"OPI_MongoDB": "%1/oint/core/Modules/OPI_MongoDB.os"
-	},
+	"self_depend": true,
+	"regions": [
+		{
+			"name": "Common methods",
+			"methods": [
+				"GenerateConnectionString",
+				"ExecuteCommand"
+			]
+		},
+		{
+			"name": "Working with databases",
+			"methods": [
+				"GetListOfBases",
+				"GetDatabase",
+				"DeleteDatabase"
+			]
+		},
+		{
+			"name": "Collection management",
+			"methods": [
+				"GetCollectionList",
+				"CreateCollection",
+				"DeleteCollection"
+			]
+		},
+		{
+			"name": "Documents management",
+			"methods": [
+				"InsertDocuments",
+				"UpdateDocuments",
+				"GetDocuments",
+				"DeleteDocuments",
+				"GetDocumentUpdateStructure",
+				"GetDocumentDeletionStructure"
+			]
+		},
+		{
+			"name": "Users management",
+			"methods": [
+				"CreateUser",
+				"UpdateUser",
+				"GetUsers",
+				"GetDatabaseUsers",
+				"DeleteUser"
+			]
+		},
+		{
+			"name": "Role management",
+			"methods": [
+				"CreateRole",
+				"UpdateRole",
+				"GetRoles",
+				"DeleteRole",
+				"GrantRoles",
+				"RevokeRoles",
+				"GetRolePrivilegeStructure"
+			]
+		}
+	],
 	"methods": [
-		{
-			"name": "CreateConnection",
-			"id": "CREATECONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
-		{
-			"name": "CloseConnection",
-			"id": "CLOSECONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
-		{
-			"name": "IsConnector",
-			"id": "ISCONNECTOR",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
 		{
 			"name": "GenerateConnectionString",
 			"id": "GENERATECONNECTIONSTRING",
@@ -64,7 +99,7 @@
 					"types": "Structure Of KeyAndValue, Undefined",
 					"description": "Additional connection parameters",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-r"
 				}
 			],
 			"region": "Common methods"
@@ -100,14 +135,14 @@
 					"types": "String",
 					"description": "Database in which the operation needs to be performed",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--data",
 					"types": "Structure Of KeyAndValue",
 					"description": "Main data fields for performing the operation",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-t"
 				}
 			],
 			"region": "Common methods"
@@ -144,7 +179,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				}
 			],
 			"region": "Working with databases"
@@ -166,7 +201,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				}
 			],
 			"region": "Working with databases"
@@ -188,7 +223,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				}
 			],
 			"region": "Collection management"
@@ -217,7 +252,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--params",
@@ -253,7 +288,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				}
 			],
 			"region": "Collection management"
@@ -282,14 +317,14 @@
 					"types": "Array Of Arbitrary",
 					"description": "Array of docs objects",
 					"default": "",
-					"short": "-d"
+					"short": "-s"
 				},
 				{
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--params",
@@ -332,7 +367,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--params",
@@ -368,7 +403,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--query",
@@ -418,14 +453,14 @@
 					"types": "Array of Structure",
 					"description": "Deletion array. See GetDocumentDeletionStructure",
 					"default": "",
-					"short": "-d"
+					"short": "-l"
 				},
 				{
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--params",
@@ -435,20 +470,6 @@
 					"short": "-p"
 				}
 			],
-			"region": "Documents management"
-		},
-		{
-			"name": "GetCursor",
-			"id": "GETCURSOR",
-			"description": "",
-			"params": [],
-			"region": "Documents management"
-		},
-		{
-			"name": "GetDocumentBatch",
-			"id": "GETDOCUMENTBATCH",
-			"description": "",
-			"params": [],
 			"region": "Documents management"
 		},
 		{
@@ -554,7 +575,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--pwd",
@@ -568,7 +589,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional creation parameters",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-m"
 				}
 			],
 			"region": "Users management"
@@ -604,7 +625,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--pwd",
@@ -618,7 +639,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional parameters",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-m"
 				}
 			],
 			"region": "Users management"
@@ -647,7 +668,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--spwd",
@@ -661,7 +682,7 @@
 					"types": "Boolean",
 					"description": "Adds a list of user privileges to the returned data",
 					"default": false,
-					"short": "-s"
+					"short": "-p"
 				}
 			],
 			"region": "Users management"
@@ -683,7 +704,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--spwd",
@@ -697,7 +718,7 @@
 					"types": "Boolean",
 					"description": "Adds a list of user privileges to the returned data",
 					"default": false,
-					"short": "-s"
+					"short": "-p"
 				}
 			],
 			"region": "Users management"
@@ -726,7 +747,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--params",
@@ -762,7 +783,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--prvl",
@@ -783,7 +804,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional deletion parameters",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-m"
 				}
 			],
 			"region": "Role management"
@@ -812,7 +833,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--prvl",
@@ -833,7 +854,7 @@
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional deletion parameters",
 					"default": "Пустое значение",
-					"short": "-p"
+					"short": "-m"
 				}
 			],
 			"region": "Role management"
@@ -862,7 +883,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--sprv",
@@ -898,7 +919,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--params",
@@ -941,7 +962,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--params",
@@ -984,7 +1005,7 @@
 					"types": "String",
 					"description": "Database name. Current database if not specified",
 					"default": "Пустое значение",
-					"short": "-d"
+					"short": "-b"
 				},
 				{
 					"name": "--params",

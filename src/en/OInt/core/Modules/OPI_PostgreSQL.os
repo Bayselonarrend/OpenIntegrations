@@ -451,7 +451,7 @@ EndFunction
 // Parameters:
 // Table - String - Table name - table
 // Fields - Array Of String - Fields for selection - fields
-// Filters - Array of Structure - Filters array. See GetRecordsFilterStrucutre - filter
+// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
 // Sort - Structure Of KeyAndValue - Sorting: Key > field name, Value > direction (ASC, DESC) - order
 // Count - Number - Limiting the number of received strings - limit
 // Connection - String, Arbitrary - Connection or connection string - dbc
@@ -491,7 +491,7 @@ EndFunction
 // Parameters:
 // Table - String - Table name - table
 // ValueStructure - Structure Of KeyAndValue - Values structure: Key > field, Value > field value - values
-// Filters - Array of Structure - Filters array. See GetRecordsFilterStrucutre - filter
+// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
 // Connection - String, Arbitrary - Connection or connection string - dbc
 // Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
@@ -513,7 +513,7 @@ EndFunction
 //
 // Parameters:
 // Table - String - Table name - table
-// Filters - Array of Structure - Filters array. See GetRecordsFilterStrucutre - filter
+// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
 // Connection - String, Arbitrary - Connection or connection string - dbc
 // Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
@@ -526,7 +526,7 @@ Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "", Val Tls
 
 EndFunction
 
-// Get records filter strucutre
+// Get records filter Structure
 // Gets the template structure for filtering records in ORM queries
 //
 // Note:
@@ -540,9 +540,9 @@ EndFunction
 //
 // Returns:
 // Structure Of KeyAndValue - Record filter element
-Function GetRecordsFilterStrucutre(Val Clear = False) Export
+Function GetRecordsFilterStructure(Val Clear = False) Export
 
-    Return OPI_SQLQueries.GetRecordsFilterStrucutre(Clear);
+    Return OPI_SQLQueries.GetRecordsFilterStructure(Clear);
 
 EndFunction
 
@@ -672,7 +672,7 @@ Function УдалитьЗаписи(Val Таблица, Val Фильтры = "",
 EndFunction
 
 Function ПолучитьСтруктуруФильтраЗаписей(Val Пустая = False) Export
-	Return GetRecordsFilterStrucutre(Пустая);
+	Return GetRecordsFilterStructure(Пустая);
 EndFunction
 
 Function ПолучитьОсобенности() Export

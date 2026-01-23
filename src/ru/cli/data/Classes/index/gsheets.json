@@ -1,10 +1,42 @@
 {
-	"module": "gsheets",
+	"module": "OPI_GoogleSheets",
 	"library": "gsheets",
-	"depends": {
-		"OPI_GoogleSheets": "%1/oint/core/Modules/OPI_GoogleSheets.os",
-		"OPI_GoogleWorkspace": "%1/oint/core/Modules/OPI_GoogleWorkspace.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Авторизация",
+			"methods": [
+				"СформироватьСсылкуПолученияКода",
+				"ПолучитьТокенПоКоду",
+				"ОбновитьТокен",
+				"ПолучитьТокенServiceАккаунта"
+			]
+		},
+		{
+			"name": "Работа с книгами",
+			"methods": [
+				"СоздатьКнигу",
+				"ПолучитьКнигу",
+				"ИзменитьНаименованиеКниги"
+			]
+		},
+		{
+			"name": "Работа с листами",
+			"methods": [
+				"ДобавитьЛист",
+				"УдалитьЛист",
+				"КопироватьЛист"
+			]
+		},
+		{
+			"name": "Работа с данными",
+			"methods": [
+				"УстановитьЗначенияЯчеек",
+				"ОчиститьЯчейки",
+				"ПолучитьЗначенияЯчеек"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "СформироватьСсылкуПолученияКода",
@@ -146,7 +178,7 @@
 					"types": "Строка",
 					"description": "Наименование",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				},
 				{
 					"name": "--sheets",
@@ -204,7 +236,7 @@
 					"types": "Строка",
 					"description": "Новое наименование",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Работа с книгами"
@@ -233,7 +265,7 @@
 					"types": "Строка",
 					"description": "Наименование нового листа",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Работа с листами"
@@ -262,7 +294,7 @@
 					"types": "Строка",
 					"description": "Идентификатор удаляемого листа",
 					"default": "",
-					"short": "-s"
+					"short": "-h"
 				}
 			],
 			"region": "Работа с листами"
@@ -291,7 +323,7 @@
 					"types": "Строка",
 					"description": "ID книги приемника",
 					"default": "",
-					"short": "-t"
+					"short": "-o"
 				},
 				{
 					"name": "--sheet",
@@ -334,14 +366,14 @@
 					"types": "Строка",
 					"description": "Имя листа (первый лист по умолчанию)",
 					"default": "Пустое значение",
-					"short": "-s"
+					"short": "-h"
 				},
 				{
 					"name": "--dim",
 					"types": "Строка",
 					"description": "Основное измерение при заполнении диапазона массивом",
 					"default": "COLUMNS",
-					"short": "-d"
+					"short": "-m"
 				}
 			],
 			"region": "Работа с данными"
@@ -377,7 +409,7 @@
 					"types": "Строка",
 					"description": "Имя листа (первый лист по умолчанию)",
 					"default": "Пустое значение",
-					"short": "-s"
+					"short": "-h"
 				}
 			],
 			"region": "Работа с данными"
@@ -413,7 +445,7 @@
 					"types": "Строка",
 					"description": "Имя листа (первый лист по умолчанию)",
 					"default": "Пустое значение",
-					"short": "-s"
+					"short": "-h"
 				}
 			],
 			"region": "Работа с данными"

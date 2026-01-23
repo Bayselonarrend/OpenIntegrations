@@ -1,10 +1,32 @@
 {
-	"module": "metrika",
+	"module": "OPI_YandexMetrika",
 	"library": "metrika",
-	"depends": {
-		"OPI_YandexID": "%1/oint/core/Modules/OPI_YandexID.os",
-		"OPI_YandexMetrika": "%1/oint/core/Modules/OPI_YandexMetrika.os"
-	},
+	"self_depend": false,
+	"regions": [
+		{
+			"name": "Tags management",
+			"methods": [
+				"CreateTag",
+				"UpdateTag",
+				"GetTag",
+				"DeleteTag",
+				"GetTagsList"
+			]
+		},
+		{
+			"name": "Counters management",
+			"methods": [
+				"CreateCounter",
+				"UpdateCounter",
+				"GetCounter",
+				"DeleteCounter",
+				"RestoreCounter",
+				"GetCountersList",
+				"GetCounterStructure",
+				"GetCounterFilterStructure"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "CreateTag",
@@ -23,7 +45,7 @@
 					"types": "String",
 					"description": "Tag title",
 					"default": "",
-					"short": "-t"
+					"short": "-l"
 				}
 			],
 			"region": "Tags management"
@@ -52,7 +74,7 @@
 					"types": "String",
 					"description": "New name",
 					"default": "",
-					"short": "-t"
+					"short": "-i"
 				}
 			],
 			"region": "Tags management"

@@ -1,31 +1,33 @@
 {
-	"module": "sqlite",
+	"module": "OPI_SQLite",
 	"library": "sqlite",
-	"depends": {
-		"OPI_SQLite": "%1/oint/core/Modules/OPI_SQLite.os"
-	},
+	"self_depend": true,
+	"regions": [
+		{
+			"name": "Common methods",
+			"methods": [
+				"ExecuteSQLQuery"
+			]
+		},
+		{
+			"name": "Orm",
+			"methods": [
+				"GetTableInformation",
+				"CreateTable",
+				"AddTableColumn",
+				"DeleteTableColumn",
+				"EnsureTable",
+				"AddRecords",
+				"GetRecords",
+				"UpdateRecords",
+				"DeleteRecords",
+				"DeleteTable",
+				"ClearTable",
+				"GetRecordsFilterStructure"
+			]
+		}
+	],
 	"methods": [
-		{
-			"name": "CreateConnection",
-			"id": "CREATECONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
-		{
-			"name": "CloseConnection",
-			"id": "CLOSECONNECTION",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
-		{
-			"name": "IsConnector",
-			"id": "ISCONNECTOR",
-			"description": "",
-			"params": [],
-			"region": "Common methods"
-		},
 		{
 			"name": "ExecuteSQLQuery",
 			"id": "EXECUTESQLQUERY",
@@ -67,13 +69,6 @@
 					"short": "-e"
 				}
 			],
-			"region": "Common methods"
-		},
-		{
-			"name": "ConnectExtension",
-			"id": "CONNECTEXTENSION",
-			"description": "",
-			"params": [],
 			"region": "Common methods"
 		},
 		{
@@ -151,7 +146,7 @@
 					"types": "String",
 					"description": "Column data type",
 					"default": "",
-					"short": "-t"
+					"short": "-p"
 				},
 				{
 					"name": "--db",
@@ -245,7 +240,7 @@
 					"types": "Boolean",
 					"description": "True > adding records to transactions with rollback on error",
 					"default": true,
-					"short": "-t"
+					"short": "-n"
 				},
 				{
 					"name": "--db",
@@ -279,9 +274,9 @@
 				{
 					"name": "--filter",
 					"types": "Array of Structure",
-					"description": "Filters array. See GetRecordsFilterStrucutre",
+					"description": "Filters array. See GetRecordsFilterStructure",
 					"default": "Пустое значение",
-					"short": "-f"
+					"short": "-l"
 				},
 				{
 					"name": "--order",
@@ -295,7 +290,7 @@
 					"types": "Number",
 					"description": "Limiting the number of received strings",
 					"default": "Пустое значение",
-					"short": "-l"
+					"short": "-m"
 				},
 				{
 					"name": "--db",
@@ -329,7 +324,7 @@
 				{
 					"name": "--filter",
 					"types": "Array of Structure",
-					"description": "Filters array. See GetRecordsFilterStrucutre",
+					"description": "Filters array. See GetRecordsFilterStructure",
 					"default": "Пустое значение",
 					"short": "-f"
 				},
@@ -358,7 +353,7 @@
 				{
 					"name": "--filter",
 					"types": "Array of Structure",
-					"description": "Filters array. See GetRecordsFilterStrucutre",
+					"description": "Filters array. See GetRecordsFilterStructure",
 					"default": "Пустое значение",
 					"short": "-f"
 				},
@@ -417,8 +412,8 @@
 			"region": "Orm"
 		},
 		{
-			"name": "GetRecordsFilterStrucutre",
-			"id": "GETRECORDSFILTERSTRUCUTRE",
+			"name": "GetRecordsFilterStructure",
+			"id": "GETRECORDSFILTERSTRUCTURE",
 			"description": "Gets the template structure for filtering records in ORM queries",
 			"params": [
 				{
@@ -430,20 +425,6 @@
 				}
 			],
 			"region": "Orm"
-		},
-		{
-			"name": "GetFeatures",
-			"id": "GETFEATURES",
-			"description": "",
-			"params": [],
-			"region": "Internal"
-		},
-		{
-			"name": "GetTypesStructure",
-			"id": "GETTYPESSTRUCTURE",
-			"description": "",
-			"params": [],
-			"region": "Internal"
 		}
 	]
 }
