@@ -1,0 +1,1475 @@
+{
+	"module": "vk",
+	"library": "vk",
+	"depends": {
+		"OPI_VK": "%1/oint/core/Modules/OPI_VK.os"
+	},
+	"methods": [
+		{
+			"name": "CreateTokenRetrievalLink",
+			"id": "CREATETOKENRETRIEVALLINK",
+			"description": "Getting a link for interactive token retrieval (access_token), which is necessary\n    |    for further actions",
+			"params": [
+				{
+					"name": "--app",
+					"types": "String, Number",
+					"description": "app_id from application settings",
+					"default": "",
+					"short": "-a"
+				}
+			],
+			"region": "Authorization"
+		},
+		{
+			"name": "GetAuthParameters",
+			"id": "GETAUTHPARAMETERS",
+			"description": "Gets the structure of authorization parameters",
+			"params": [
+				{
+					"name": "--group",
+					"types": "String, Number",
+					"description": "Group ID",
+					"default": "",
+					"short": "-g"
+				},
+				{
+					"name": "--app",
+					"types": "String, Number",
+					"description": "App ID",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Authorization"
+		},
+		{
+			"name": "CreatePost",
+			"id": "CREATEPOST",
+			"description": "Creates a post with images",
+			"params": [
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Post text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--pictures",
+					"types": "Array of String, BinaryData",
+					"description": "Array of images",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--ad",
+					"types": "Boolean",
+					"description": "Sign \"\"This is an ad\"\"",
+					"default": false,
+					"short": "-a"
+				},
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Link (URL) under the post",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Community management"
+		},
+		{
+			"name": "CreateCompositePost",
+			"id": "CREATECOMPOSITEPOST",
+			"description": "Creates a post based on an array of object identifiers (images, videos, etc..)",
+			"params": [
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Post text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--objects",
+					"types": "Array of String",
+					"description": "Array of identifiers like photo123_123",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--ad",
+					"types": "Boolean",
+					"description": "Sign \"\"This is an ad\"\"",
+					"default": false,
+					"short": "-a"
+				},
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "Link (URL) under the post",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Community management"
+		},
+		{
+			"name": "DeletePost",
+			"id": "DELETEPOST",
+			"description": "Deletes a post by ID",
+			"params": [
+				{
+					"name": "--post",
+					"types": "String, Number",
+					"description": "Post ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Community management"
+		},
+		{
+			"name": "CreatePoll",
+			"id": "CREATEPOLL",
+			"description": "Creates a poll with answer options",
+			"params": [
+				{
+					"name": "--question",
+					"types": "String",
+					"description": "Poll question",
+					"default": "",
+					"short": "-q"
+				},
+				{
+					"name": "--options",
+					"types": "Array of String",
+					"description": "Array of answer options",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--picture",
+					"types": "String, BinaryData",
+					"description": "Poll image. Required if there is no text",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Post text. Required if there is no picture",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Community management"
+		},
+		{
+			"name": "CreateAlbum",
+			"id": "CREATEALBUM",
+			"description": "Creates an album to store images",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Album name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--description",
+					"types": "String",
+					"description": "Album description",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Community management"
+		},
+		{
+			"name": "DeleteAlbum",
+			"id": "DELETEALBUM",
+			"description": "Deletes a previously created album",
+			"params": [
+				{
+					"name": "--album",
+					"types": "String, Number",
+					"description": "Album ID",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Community management"
+		},
+		{
+			"name": "CreateStory",
+			"id": "CREATESTORY",
+			"description": "Creates a story from an image",
+			"params": [
+				{
+					"name": "--picture",
+					"types": "String, BinaryData",
+					"description": "Story background",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL for button under the story",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Community management"
+		},
+		{
+			"name": "SaveImageToAlbum",
+			"id": "SAVEIMAGETOALBUM",
+			"description": "Saves an image to the community album",
+			"params": [
+				{
+					"name": "--album",
+					"types": "String, Number",
+					"description": "Album ID",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--picture",
+					"types": "BinaryData, String",
+					"description": "Image file",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--description",
+					"types": "String",
+					"description": "Image description",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Community management"
+		},
+		{
+			"name": "DeleteImage",
+			"id": "DELETEIMAGE",
+			"description": "Deletes an image from the album",
+			"params": [
+				{
+					"name": "--pictureid",
+					"types": "String, Number",
+					"description": "Image ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Community management"
+		},
+		{
+			"name": "UploadVideoToServer",
+			"id": "UPLOADVIDEOTOSERVER",
+			"description": "Uploads video to the group for further use",
+			"params": [
+				{
+					"name": "--file",
+					"types": "String, BinaryData",
+					"description": "Video file",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Video name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--description",
+					"types": "String",
+					"description": "Video description",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--album",
+					"types": "String",
+					"description": "Album ID, if necessary",
+					"default": "Пустое значение",
+					"short": "-a"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Community management"
+		},
+		{
+			"name": "UploadPhotoToServer",
+			"id": "UPLOADPHOTOTOSERVER",
+			"description": "Uploads photo to server for further use",
+			"params": [
+				{
+					"name": "--file",
+					"types": "String, BinaryData",
+					"description": "Image file",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				},
+				{
+					"name": "--type",
+					"types": "String",
+					"description": "Upload type (Post, Product, Story, Poll, Other)",
+					"default": "Post",
+					"short": "-t"
+				}
+			],
+			"region": "Community management"
+		},
+		{
+			"name": "CreateDiscussion",
+			"id": "CREATEDISCUSSION",
+			"description": "Creates a new discussion",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Discussion name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Text of the first message",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Discussion management"
+		},
+		{
+			"name": "CloseDiscussion",
+			"id": "CLOSEDISCUSSION",
+			"description": "Close or delete discussion",
+			"params": [
+				{
+					"name": "--topic",
+					"types": "String, Number",
+					"description": "Discussion ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--remove",
+					"types": "Boolean",
+					"description": "Delete completely (True) or close",
+					"default": false,
+					"short": "-r"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Discussion management"
+		},
+		{
+			"name": "OpenDiscussion",
+			"id": "OPENDISCUSSION",
+			"description": "Opens a previously closed discussion",
+			"params": [
+				{
+					"name": "--topic",
+					"types": "String, Number",
+					"description": "Discussion ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Discussion management"
+		},
+		{
+			"name": "WriteInDiscussion",
+			"id": "WRITEINDISCUSSION",
+			"description": "Adds a message to the discussion on behalf of the group",
+			"params": [
+				{
+					"name": "--topic",
+					"types": "String, Number",
+					"description": "Discussion ID",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Discussion management"
+		},
+		{
+			"name": "LikePost",
+			"id": "LIKEPOST",
+			"description": "Likes a post",
+			"params": [
+				{
+					"name": "--post",
+					"types": "String, Number",
+					"description": "Post ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--wall",
+					"types": "String, Number",
+					"description": "ID of the wall where the post is located",
+					"default": "Пустое значение",
+					"short": "-w"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Interactive actions"
+		},
+		{
+			"name": "MakeRepost",
+			"id": "MAKEREPOST",
+			"description": "Reposts the record",
+			"params": [
+				{
+					"name": "--post",
+					"types": "String, Number",
+					"description": "Post ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--from",
+					"types": "String, Number",
+					"description": "ID of the wall where the post is located",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--to",
+					"types": "String, Number",
+					"description": "ID of the target wall or group",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--ad",
+					"types": "Boolean",
+					"description": "Sign of an advertising post",
+					"default": false,
+					"short": "-a"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Interactive actions"
+		},
+		{
+			"name": "WriteMessage",
+			"id": "WRITEMESSAGE",
+			"description": "Write a message to a user in the community's dialog",
+			"params": [
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--user",
+					"types": "String",
+					"description": "Recipient user ID",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--ct",
+					"types": "String",
+					"description": "Community chat bot token, which can be obtained in the settings",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--keyboard",
+					"types": "String",
+					"description": "Keyboard JSON. See FormKeyboard",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Interactive actions"
+		},
+		{
+			"name": "WriteComment",
+			"id": "WRITECOMMENT",
+			"description": "Creates a comment under the selected record",
+			"params": [
+				{
+					"name": "--post",
+					"types": "String, Number",
+					"description": "ID of the target post",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--wall",
+					"types": "String, Number",
+					"description": "ID of the wall where the post is located",
+					"default": "",
+					"short": "-w"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Comment text",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Interactive actions"
+		},
+		{
+			"name": "ShortenLink",
+			"id": "SHORTENLINK",
+			"description": "Creates a shortened URL from a regular one",
+			"params": [
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL for shortening",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Interactive actions"
+		},
+		{
+			"name": "GetStatistics",
+			"id": "GETSTATISTICS",
+			"description": "Gets the overall community statistics for a period",
+			"params": [
+				{
+					"name": "--datefrom",
+					"types": "Date",
+					"description": "Start date of the period",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--dateto",
+					"types": "Date",
+					"description": "End date of the period",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Statistics"
+		},
+		{
+			"name": "GetPostStatistics",
+			"id": "GETPOSTSTATISTICS",
+			"description": "Gets statistics in terms of posts",
+			"params": [
+				{
+					"name": "--posts",
+					"types": "Array of string, number",
+					"description": "Array of post IDs",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Statistics"
+		},
+		{
+			"name": "CreateAdvertisingCampaign",
+			"id": "CREATEADVERTISINGCAMPAIGN",
+			"description": "Creates a campaign in the selected advertising account",
+			"params": [
+				{
+					"name": "--cabinet",
+					"types": "String, Number",
+					"description": "Advertising account ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Campaign name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Ad account management"
+		},
+		{
+			"name": "CreateAd",
+			"id": "CREATEAD",
+			"description": "Creates an advertising post based on a post",
+			"params": [
+				{
+					"name": "--campaign",
+					"types": "String, Number",
+					"description": "Advertising campaign ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--limit",
+					"types": "String, Number",
+					"description": "Daily limit in rubles",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--category",
+					"types": "String, Number",
+					"description": "Advertising category number",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--post",
+					"types": "String, Number",
+					"description": "ID of the post used for advertising",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--cabinet",
+					"types": "String, Number",
+					"description": "Advertising account ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Ad account management"
+		},
+		{
+			"name": "PauseAdvertising",
+			"id": "PAUSEADVERTISING",
+			"description": "Pauses the display of the advertising post",
+			"params": [
+				{
+					"name": "--cabinet",
+					"types": "String, Number",
+					"description": "Advertising account ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--adv",
+					"types": "String, Number",
+					"description": "Ad ID",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Ad account management"
+		},
+		{
+			"name": "GetAdvertisingCategoryList",
+			"id": "GETADVERTISINGCATEGORYLIST",
+			"description": "Gets a list of advertising category IDs for creating an advertising post",
+			"params": [
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Ad account management"
+		},
+		{
+			"name": "GetProductCategoryList",
+			"id": "GETPRODUCTCATEGORYLIST",
+			"description": "Gets a list of product category IDs to specify when creating a product",
+			"params": [
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product management"
+		},
+		{
+			"name": "GetProductList",
+			"id": "GETPRODUCTLIST",
+			"description": "Gets the community's product list",
+			"params": [
+				{
+					"name": "--sel",
+					"types": "String, Number",
+					"description": "Selection ID, if filtering is needed",
+					"default": "Пустое значение",
+					"short": "-s"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product management"
+		},
+		{
+			"name": "GetProductsByID",
+			"id": "GETPRODUCTSBYID",
+			"description": "Gets information about products by array of IDs",
+			"params": [
+				{
+					"name": "--items",
+					"types": "String, Array of String",
+					"description": "Array of product IDs",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product management"
+		},
+		{
+			"name": "AddProduct",
+			"id": "ADDPRODUCT",
+			"description": "Adds a new product to the community's catalog",
+			"params": [
+				{
+					"name": "--product",
+					"types": "Map Of KeyAndValue",
+					"description": "Product description. See GetProductDescription",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--sel",
+					"types": "String",
+					"description": "Selection ID for placing the product, if needed",
+					"default": "Пустое значение",
+					"short": "-s"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product management"
+		},
+		{
+			"name": "EditProduct",
+			"id": "EDITPRODUCT",
+			"description": "Edits a previously created product",
+			"params": [
+				{
+					"name": "--item",
+					"types": "Number, String",
+					"description": "Identifier of the product being edited",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--product",
+					"types": "Map Of KeyAndValue",
+					"description": "Product description. See GetProductDescription",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--sel",
+					"types": "String",
+					"description": "Identifier of the new selection, if needed",
+					"default": "Пустое значение",
+					"short": "-s"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product management"
+		},
+		{
+			"name": "DeleteProduct",
+			"id": "DELETEPRODUCT",
+			"description": "Deletes a previously created product",
+			"params": [
+				{
+					"name": "--item",
+					"types": "String, Number",
+					"description": "Product ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product management"
+		},
+		{
+			"name": "GroupProducts",
+			"id": "GROUPPRODUCTS",
+			"description": "Groups products based on similar sets of properties",
+			"params": [
+				{
+					"name": "--items",
+					"types": "Array Of String",
+					"description": "Array of product IDs",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--sellgroup",
+					"types": "String",
+					"description": "ID of the existing group, if needed",
+					"default": "Пустое значение",
+					"short": "-s"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product management"
+		},
+		{
+			"name": "GetProductDescription",
+			"id": "GETPRODUCTDESCRIPTION",
+			"description": "Gets the description template for creating a product",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Product management"
+		},
+		{
+			"name": "GetSelectionList",
+			"id": "GETSELECTIONLIST",
+			"description": "Gets the list of product selections",
+			"params": [
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product selection management"
+		},
+		{
+			"name": "GetSelectionsByID",
+			"id": "GETSELECTIONSBYID",
+			"description": "Gets the list of selections by array of IDs",
+			"params": [
+				{
+					"name": "--sels",
+					"types": "String, Array of String",
+					"description": "Selection IDs",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product selection management"
+		},
+		{
+			"name": "CreateProductCollection",
+			"id": "CREATEPRODUCTCOLLECTION",
+			"description": "Creates an empty product selection",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Selection name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--picture",
+					"types": "String, BinaryData",
+					"description": "Image file",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--main",
+					"types": "Boolean",
+					"description": "Main",
+					"default": false,
+					"short": "-m"
+				},
+				{
+					"name": "--hidden",
+					"types": "Boolean",
+					"description": "Hidden",
+					"default": false,
+					"short": "-h"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product selection management"
+		},
+		{
+			"name": "EditProductCollection",
+			"id": "EDITPRODUCTCOLLECTION",
+			"description": "Edits the properties of a product selection",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New selection name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--sel",
+					"types": "String",
+					"description": "Selection ID",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--picture",
+					"types": "String, BinaryData",
+					"description": "New selection image",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--main",
+					"types": "Boolean",
+					"description": "Main",
+					"default": false,
+					"short": "-m"
+				},
+				{
+					"name": "--hidden",
+					"types": "Boolean",
+					"description": "Hidden",
+					"default": false,
+					"short": "-h"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product selection management"
+		},
+		{
+			"name": "AddProductToCollection",
+			"id": "ADDPRODUCTTOCOLLECTION",
+			"description": "Adds a product to the selection",
+			"params": [
+				{
+					"name": "--items",
+					"types": "Array of string, number",
+					"description": "Array of products or product",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--sel",
+					"types": "String",
+					"description": "Selection ID",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product selection management"
+		},
+		{
+			"name": "RemoveProductFromSelection",
+			"id": "REMOVEPRODUCTFROMSELECTION",
+			"description": "Removes a previously added product from the selection",
+			"params": [
+				{
+					"name": "--item",
+					"types": "String",
+					"description": "Product ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--sel",
+					"types": "String",
+					"description": "Selection ID",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product selection management"
+		},
+		{
+			"name": "DeleteSelection",
+			"id": "DELETESELECTION",
+			"description": "Deletes the selection by ID",
+			"params": [
+				{
+					"name": "--sel",
+					"types": "String",
+					"description": "Selection ID",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product selection management"
+		},
+		{
+			"name": "GetPropertyList",
+			"id": "GETPROPERTYLIST",
+			"description": "Gets the list of properties of group products",
+			"params": [
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product properties management"
+		},
+		{
+			"name": "CreateProductProperty",
+			"id": "CREATEPRODUCTPROPERTY",
+			"description": "Creates a new property for use in products",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Property name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product properties management"
+		},
+		{
+			"name": "EditProductProperty",
+			"id": "EDITPRODUCTPROPERTY",
+			"description": "Edits the existing product property",
+			"params": [
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--prop",
+					"types": "String, Number",
+					"description": "Property ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product properties management"
+		},
+		{
+			"name": "DeleteProductProperty",
+			"id": "DELETEPRODUCTPROPERTY",
+			"description": "Deletes the existing product property",
+			"params": [
+				{
+					"name": "--prop",
+					"types": "String, Number",
+					"description": "Property ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product properties management"
+		},
+		{
+			"name": "AddProductPropertyVariant",
+			"id": "ADDPRODUCTPROPERTYVARIANT",
+			"description": "Adds a variant for an existing property",
+			"params": [
+				{
+					"name": "--value",
+					"types": "String",
+					"description": "Property value",
+					"default": "",
+					"short": "-v"
+				},
+				{
+					"name": "--prop",
+					"types": "String, Number",
+					"description": "Property ID where the variant is added",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product properties management"
+		},
+		{
+			"name": "EditProductPropertyVariant",
+			"id": "EDITPRODUCTPROPERTYVARIANT",
+			"description": "Edits the value of an existing product property variant",
+			"params": [
+				{
+					"name": "--value",
+					"types": "String",
+					"description": "New property value",
+					"default": "",
+					"short": "-v"
+				},
+				{
+					"name": "--prop",
+					"types": "String, Number",
+					"description": "Property ID",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--option",
+					"types": "String, Number",
+					"description": "Variant ID",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product properties management"
+		},
+		{
+			"name": "DeleteProductPropertyVariant",
+			"id": "DELETEPRODUCTPROPERTYVARIANT",
+			"description": "Deletes the previously created product property variant",
+			"params": [
+				{
+					"name": "--option",
+					"types": "String, Number",
+					"description": "Variant ID",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Product properties management"
+		},
+		{
+			"name": "GetOrderList",
+			"id": "GETORDERLIST",
+			"description": "Returns the community's order list",
+			"params": [
+				{
+					"name": "--auth",
+					"types": "Structure Of String",
+					"description": "Authorization parameters. See GetAuthParameters",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Order management"
+		},
+		{
+			"name": "FormKeyboard",
+			"id": "FORMKEYBOARD",
+			"description": "Forms a keyboard from an array of buttons",
+			"params": [
+				{
+					"name": "--buttons",
+					"types": "Array of String",
+					"description": "Array of button titles",
+					"default": "",
+					"short": "-b"
+				}
+			],
+			"region": "Others"
+		}
+	]
+}

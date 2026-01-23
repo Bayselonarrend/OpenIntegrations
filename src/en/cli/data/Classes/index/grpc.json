@@ -1,0 +1,438 @@
+{
+	"module": "grpc",
+	"library": "grpc",
+	"depends": {
+		"OPI_GRPC": "%1/oint/core/Modules/OPI_GRPC.os"
+	},
+	"methods": [
+		{
+			"name": "CreateConnection",
+			"id": "CREATECONNECTION",
+			"description": "",
+			"params": [],
+			"region": "Common methods"
+		},
+		{
+			"name": "CloseConnection",
+			"id": "CLOSECONNECTION",
+			"description": "",
+			"params": [],
+			"region": "Common methods"
+		},
+		{
+			"name": "SetMetadata",
+			"id": "SETMETADATA",
+			"description": "",
+			"params": [],
+			"region": "Common methods"
+		},
+		{
+			"name": "ExecuteMethod",
+			"id": "EXECUTEMETHOD",
+			"description": "Performs a unary request to the selected service",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection parameters",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--service",
+					"types": "String",
+					"description": "Service name",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--method",
+					"types": "String",
+					"description": "Method name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--data",
+					"types": "Structure Of KeyAndValue",
+					"description": "Request data",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--tout",
+					"types": "Number",
+					"description": "Timeout (in ms)",
+					"default": 10000,
+					"short": "-t"
+				},
+				{
+					"name": "--tls",
+					"types": "Structure Of KeyAndValue",
+					"description": "TLS settings, if necessary. See GetTlsSettings",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "IsConnector",
+			"id": "ISCONNECTOR",
+			"description": "",
+			"params": [],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetConnectionParameters",
+			"id": "GETCONNECTIONPARAMETERS",
+			"description": "Forms a structure of parameters for creating a connection",
+			"params": [
+				{
+					"name": "--addr",
+					"types": "String",
+					"description": "Connection address (with protocol)",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--proto",
+					"types": "Arbitrary",
+					"description": "Schema or schema structure: Key > file name (for import), Value > schema as a string or file path",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--meta",
+					"types": "Structure Of KeyAndValue",
+					"description": "Metadata structure, if necessary",
+					"default": "Пустое значение",
+					"short": "-m"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetTlsSettings",
+			"id": "GETTLSSETTINGS",
+			"description": "Forms settings for using TLS",
+			"params": [
+				{
+					"name": "--trust",
+					"types": "Boolean",
+					"description": "Allows to work with invalid certificates, including self signed",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--cert",
+					"types": "String",
+					"description": "Path to the root PEM file of the certificate if it is not in the system repository",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetServiceList",
+			"id": "GETSERVICELIST",
+			"description": "Gets a list of available services",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection parameters",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--tls",
+					"types": "Structure Of KeyAndValue",
+					"description": "TLS settings, if necessary. See GetTlsSettings",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Introspection"
+		},
+		{
+			"name": "GetMethodList",
+			"id": "GETMETHODLIST",
+			"description": "Gets a list of available methods for the specified service",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection parameters",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--service",
+					"types": "String",
+					"description": "Service name",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--tls",
+					"types": "Structure Of KeyAndValue",
+					"description": "TLS settings, if necessary. See GetTlsSettings",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Introspection"
+		},
+		{
+			"name": "GetMethod",
+			"id": "GETMETHOD",
+			"description": "Get method information",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection parameters",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--service",
+					"types": "String",
+					"description": "Service name",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--method",
+					"types": "String",
+					"description": "Method name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--tls",
+					"types": "Structure Of KeyAndValue",
+					"description": "TLS settings, if necessary. See GetTlsSettings",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Introspection"
+		},
+		{
+			"name": "InitializeServerStream",
+			"id": "INITIALIZESERVERSTREAM",
+			"description": "",
+			"params": [],
+			"region": "Streaming"
+		},
+		{
+			"name": "InitializeClientStream",
+			"id": "INITIALIZECLIENTSTREAM",
+			"description": "",
+			"params": [],
+			"region": "Streaming"
+		},
+		{
+			"name": "InitializeBidirectionalStream",
+			"id": "INITIALIZEBIDIRECTIONALSTREAM",
+			"description": "",
+			"params": [],
+			"region": "Streaming"
+		},
+		{
+			"name": "SendMessage",
+			"id": "SENDMESSAGE",
+			"description": "",
+			"params": [],
+			"region": "Streaming"
+		},
+		{
+			"name": "GetMessage",
+			"id": "GETMESSAGE",
+			"description": "",
+			"params": [],
+			"region": "Streaming"
+		},
+		{
+			"name": "CompleteSend",
+			"id": "COMPLETESEND",
+			"description": "",
+			"params": [],
+			"region": "Streaming"
+		},
+		{
+			"name": "CloseStream",
+			"id": "CLOSESTREAM",
+			"description": "",
+			"params": [],
+			"region": "Streaming"
+		},
+		{
+			"name": "ProcessServerStream",
+			"id": "PROCESSSERVERSTREAM",
+			"description": "Initializes the server stream and returns an array of received messages",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection parameters",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--service",
+					"types": "String",
+					"description": "Service name",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--method",
+					"types": "String",
+					"description": "Method name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--data",
+					"types": "Structure Of KeyAndValue",
+					"description": "First request data",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--tout",
+					"types": "Number",
+					"description": "Timeout for individual operation (in ms))",
+					"default": 10000,
+					"short": "-t"
+				},
+				{
+					"name": "--tls",
+					"types": "Structure Of KeyAndValue",
+					"description": "TLS settings, if necessary. See GetTlsSettings",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--count",
+					"types": "Number",
+					"description": "Maximum messages to retrieve. Unlimited by default",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Streaming"
+		},
+		{
+			"name": "ProcessClientStream",
+			"id": "PROCESSCLIENTSTREAM",
+			"description": "Initializes client thread, passes message array, and receives final response",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection parameters",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--service",
+					"types": "String",
+					"description": "Service name",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--method",
+					"types": "String",
+					"description": "Method name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--data",
+					"types": "Array of Structure",
+					"description": "Request data array or single request",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--tout",
+					"types": "Number",
+					"description": "Timeout for individual operation (in ms))",
+					"default": 10000,
+					"short": "-t"
+				},
+				{
+					"name": "--tls",
+					"types": "Structure Of KeyAndValue",
+					"description": "TLS settings, if necessary. See GetTlsSettings",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Streaming"
+		},
+		{
+			"name": "ProcessBidirectionalStream",
+			"id": "PROCESSBIDIRECTIONALSTREAM",
+			"description": "Initializes a bidirectional stream, then passes and sends messages in the specified order",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection parameters",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--service",
+					"types": "String",
+					"description": "Service name",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--method",
+					"types": "String",
+					"description": "Method name",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--exch",
+					"types": "Array Of Arbitrary",
+					"description": "Array of request data and Undefined where retrieval is needed",
+					"default": "",
+					"short": "-e"
+				},
+				{
+					"name": "--tout",
+					"types": "Number",
+					"description": "Timeout for individual operation (in ms))",
+					"default": 10000,
+					"short": "-t"
+				},
+				{
+					"name": "--tls",
+					"types": "Structure Of KeyAndValue",
+					"description": "TLS settings, if necessary. See GetTlsSettings",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--cnt",
+					"types": "Boolean",
+					"description": "Continue receiving after processing the exchange order",
+					"default": true,
+					"short": "-c"
+				}
+			],
+			"region": "Streaming"
+		}
+	]
+}

@@ -1,0 +1,1306 @@
+{
+	"module": "telegram",
+	"library": "telegram",
+	"depends": {
+		"OPI_Telegram": "%1/oint/core/Modules/OPI_Telegram.os"
+	},
+	"methods": [
+		{
+			"name": "ПолучитьИнформациюБота",
+			"id": "ПОЛУЧИТЬИНФОРМАЦИЮБОТА",
+			"description": "Выполняет запрос, возвращающий базовую информацию о боте: имя, id, возможность добавлять бота в группы и т.д.",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Получение данных и настройка"
+		},
+		{
+			"name": "ПолучитьОбновления",
+			"id": "ПОЛУЧИТЬОБНОВЛЕНИЯ",
+			"description": "Выполняет запрос, возвращающий информацию о событиях бота. Используется при работе в polling режиме",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--timeout",
+					"types": "Число",
+					"description": "Время ожидания новых событий",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--offset",
+					"types": "Число",
+					"description": "Смещение в списке получаемых сообщений",
+					"default": "Пустое значение",
+					"short": "-o"
+				}
+			],
+			"region": "Получение данных и настройка"
+		},
+		{
+			"name": "УстановитьWebhook",
+			"id": "УСТАНОВИТЬWEBHOOK",
+			"description": "Устанавливает URL обработчика событий бота для работы в режиме Webhook",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--url",
+					"types": "Строка",
+					"description": "Адрес обработки запросов от Telegram (с https:)",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Получение данных и настройка"
+		},
+		{
+			"name": "УдалитьWebhook",
+			"id": "УДАЛИТЬWEBHOOK",
+			"description": "Удаляет URL обработчика событий бота для работы в режиме Webhook",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Получение данных и настройка"
+		},
+		{
+			"name": "СкачатьФайл",
+			"id": "СКАЧАТЬФАЙЛ",
+			"description": "Скачивает файл с серверов Telegram",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "Строка",
+					"description": "ID файла для скачивания",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Получение данных и настройка"
+		},
+		{
+			"name": "ОбработатьДанныеTMA",
+			"id": "ОБРАБОТАТЬДАННЫЕTMA",
+			"description": "",
+			"params": [],
+			"region": "Получение данных и настройка"
+		},
+		{
+			"name": "ОтправитьТекстовоеСообщение",
+			"id": "ОТПРАВИТЬТЕКСТОВОЕСООБЩЕНИЕ",
+			"description": "Отправляет текстовое сообщение в чат или канал",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата или IDЧата*IDТемы",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст сообщения",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--keyboard",
+					"types": "Строка, Структура Из КлючИЗначение",
+					"description": "Клавиатура. См. СформироватьКлавиатуруПоМассивуКнопок",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemode",
+					"types": "Строка",
+					"description": "Вид обработки текста (HTML, Markdown, MarkdownV2)",
+					"default": "Markdown",
+					"short": "-p"
+				},
+				{
+					"name": "--reply",
+					"types": "Строка, Число",
+					"description": "ID сообщения на которое надо ответить",
+					"default": "Пустое значение",
+					"short": "-r"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "ОтправитьКартинку",
+			"id": "ОТПРАВИТЬКАРТИНКУ",
+			"description": "Отправляет картинку в чат или канал",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата или IDЧата*IDТемы",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст сообщения",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--picture",
+					"types": "ДвоичныеДанные, Строка",
+					"description": "Файл картинки",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--keyboard",
+					"types": "Строка, Структура Из КлючИЗначение",
+					"description": "Клавиатура. См. СформироватьКлавиатуруПоМассивуКнопок",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemode",
+					"types": "Строка",
+					"description": "Вид обработки текста (HTML, Markdown, MarkdownV2)",
+					"default": "Markdown",
+					"short": "-p"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "ОтправитьВидео",
+			"id": "ОТПРАВИТЬВИДЕО",
+			"description": "Отправляет видео в чат или канал",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата или IDЧата*IDТемы",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст сообщения",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--video",
+					"types": "ДвоичныеДанные, Строка",
+					"description": "Файл видео",
+					"default": "",
+					"short": "-v"
+				},
+				{
+					"name": "--keyboard",
+					"types": "Строка, Структура Из КлючИЗначение",
+					"description": "Клавиатура. См. СформироватьКлавиатуруПоМассивуКнопок",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemode",
+					"types": "Строка",
+					"description": "Вид обработки текста (HTML, Markdown, MarkdownV2)",
+					"default": "Markdown",
+					"short": "-p"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "ОтправитьАудио",
+			"id": "ОТПРАВИТЬАУДИО",
+			"description": "Отправляет аудиофайл в чат или канал",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата или IDЧата*IDТемы",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст сообщения",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--audio",
+					"types": "ДвоичныеДанные, Строка",
+					"description": "Файл аудио",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--keyboard",
+					"types": "Строка, Структура Из КлючИЗначение",
+					"description": "Клавиатура. См. СформироватьКлавиатуруПоМассивуКнопок",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemode",
+					"types": "Строка",
+					"description": "Вид обработки текста (HTML, Markdown, MarkdownV2)",
+					"default": "Markdown",
+					"short": "-p"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "ОтправитьДокумент",
+			"id": "ОТПРАВИТЬДОКУМЕНТ",
+			"description": "Отправляет документ в чат или канал",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка,Число",
+					"description": "ID целевого чата или IDЧата*IDТемы",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст сообщения",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--doc",
+					"types": "ДвоичныеДанные, Строка",
+					"description": "Файл документа",
+					"default": "",
+					"short": "-d"
+				},
+				{
+					"name": "--keyboard",
+					"types": "Строка, Структура Из КлючИЗначение",
+					"description": "Клавиатура. См. СформироватьКлавиатуруПоМассивуКнопок",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemode",
+					"types": "Строка",
+					"description": "Вид обработки текста (HTML, Markdown, MarkdownV2)",
+					"default": "Markdown",
+					"short": "-p"
+				},
+				{
+					"name": "--filename",
+					"types": "Строка",
+					"description": "Отображаемое имя файла c расширением, если необходимо",
+					"default": "Пустое значение",
+					"short": "-f"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "ОтправитьГифку",
+			"id": "ОТПРАВИТЬГИФКУ",
+			"description": "Отправляет гифку в чат или канал",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата или IDЧата*IDТемы",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст сообщения",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--gif",
+					"types": "ДвоичныеДанные, Строка",
+					"description": "Файл гифки",
+					"default": "",
+					"short": "-g"
+				},
+				{
+					"name": "--keyboard",
+					"types": "Строка, Структура Из КлючИЗначение",
+					"description": "Клавиатура. См. СформироватьКлавиатуруПоМассивуКнопок",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemode",
+					"types": "Строка",
+					"description": "Вид обработки текста (HTML, Markdown, MarkdownV2)",
+					"default": "Markdown",
+					"short": "-p"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "ОтправитьМедиагруппу",
+			"id": "ОТПРАВИТЬМЕДИАГРУППУ",
+			"description": "Отправляет набор файлов в чат или канал. Варианты типов медиа: audio, document, photo, video",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата или IDЧата*IDТемы",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Текст сообщения",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--media",
+					"types": "Соответствие из КлючИЗначение",
+					"description": "Коллекция файлов: Ключ > Файл, Значение > Тип медиа",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--keyboard",
+					"types": "Строка",
+					"description": "Клавиатура. См. СформироватьКлавиатуруПоМассивуКнопок",
+					"default": "Пустое значение",
+					"short": "-k"
+				},
+				{
+					"name": "--parsemode",
+					"types": "Строка",
+					"description": "Вид обработки текста (HTML, Markdown, MarkdownV2)",
+					"default": "Markdown",
+					"short": "-p"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "ОтправитьМестоположение",
+			"id": "ОТПРАВИТЬМЕСТОПОЛОЖЕНИЕ",
+			"description": "Отправляет местоположение по географической широте и долготе в чат или канал",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата или IDЧата*IDТемы",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--lat",
+					"types": "Строка, Число",
+					"description": "Географическая широта",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--long",
+					"types": "Строка, Число",
+					"description": "Географическая долгота",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--keyboard",
+					"types": "Строка, Структура Из КлючИЗначение",
+					"description": "Клавиатура. См. СформироватьКлавиатуруПоМассивуКнопок",
+					"default": "Пустое значение",
+					"short": "-k"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "ОтправитьКонтакт",
+			"id": "ОТПРАВИТЬКОНТАКТ",
+			"description": "Отправляет контакт с именем и номером телефона",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата или IDЧата*IDТемы",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--name",
+					"types": "Строка",
+					"description": "Имя контакта",
+					"default": "",
+					"short": "-n"
+				},
+				{
+					"name": "--surname",
+					"types": "Строка",
+					"description": "Фамилия контакта",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--phone",
+					"types": "Строка",
+					"description": "Телефон контакта",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--keyboard",
+					"types": "Строка, Структура Из КлючИЗначение",
+					"description": "Клавиатура. См. СформироватьКлавиатуруПоМассивуКнопок",
+					"default": "Пустое значение",
+					"short": "-k"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "ОтправитьОпрос",
+			"id": "ОТПРАВИТЬОПРОС",
+			"description": "Отправляет опрос с вариантами ответа\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата или IDЧата*IDТемы",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--question",
+					"types": "Строка",
+					"description": "Вопрос опроса",
+					"default": "",
+					"short": "-q"
+				},
+				{
+					"name": "--options",
+					"types": "Массив из Строка",
+					"description": "Массив вариантов ответа",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--anonymous",
+					"types": "Булево",
+					"description": "Флаг анонимности опроса",
+					"default": true,
+					"short": "-a"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "ПереслатьСообщение",
+			"id": "ПЕРЕСЛАТЬСООБЩЕНИЕ",
+			"description": "Пересылает сообщение между чатами или в рамках одного чата",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--message",
+					"types": "Строка, Число",
+					"description": "ID оригинального сообщения",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--from",
+					"types": "Строка, Число",
+					"description": "ID чата оригинального сообщения",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--to",
+					"types": "Строка, Число",
+					"description": "ID целевого чата или IDЧата*IDТемы",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "УдалитьСообщение",
+			"id": "УДАЛИТЬСООБЩЕНИЕ",
+			"description": "Удаляет указанное сообщение из чата или канала",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "Строка, Число",
+					"description": "ID удаляемого сообщения",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "ЗаменитьКлавиатуруСообщения",
+			"id": "ЗАМЕНИТЬКЛАВИАТУРУСООБЩЕНИЯ",
+			"description": "Заменяет клавиатуру сообщения на новую",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "Строка, Число",
+					"description": "ID удаляемого сообщения",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--keyboard",
+					"types": "Строка, Структура Из КлючИЗначение",
+					"description": "Клавиатура. См. СформироватьКлавиатуруПоМассивуКнопок",
+					"default": "",
+					"short": "-k"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "ЗаменитьТекстСообщения",
+			"id": "ЗАМЕНИТЬТЕКСТСООБЩЕНИЯ",
+			"description": "Заменяет текст сообщения на новый",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "Строка, Число",
+					"description": "ID удаляемого сообщения",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--text",
+					"types": "Строка",
+					"description": "Новый текст сообщения",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--parsemode",
+					"types": "Строка",
+					"description": "Вид обработки текста (HTML, Markdown, MarkdownV2)",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "ЗаменитьОписаниеСообщения",
+			"id": "ЗАМЕНИТЬОПИСАНИЕСООБЩЕНИЯ",
+			"description": "Заменяет текст в сообщении с вложениями",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "Строка, Число",
+					"description": "ID удаляемого сообщения",
+					"default": "",
+					"short": "-m"
+				},
+				{
+					"name": "--caption",
+					"types": "Строка",
+					"description": "Новое описание сообщения",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--parsemode",
+					"types": "Строка",
+					"description": "Вид обработки текста (HTML, Markdown, MarkdownV2)",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "СформироватьКлавиатуруПоМассивуКнопок",
+			"id": "СФОРМИРОВАТЬКЛАВИАТУРУПОМАССИВУКНОПОК",
+			"description": "Формирует простую JSON клавиатуру из массив кнопок для сообщения или нижней панели\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--buttons",
+					"types": "Массив из Строка",
+					"description": "Массив кнопок",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--under",
+					"types": "Булево",
+					"description": "Клавиатура под сообщением или на нижней панели",
+					"default": false,
+					"short": "-u"
+				},
+				{
+					"name": "--column",
+					"types": "Булево",
+					"description": "Истина > кнопки выводятся в столбик, Ложь > в строку",
+					"default": true,
+					"short": "-c"
+				}
+			],
+			"region": "Отправка данных"
+		},
+		{
+			"name": "Бан",
+			"id": "БАН",
+			"description": "Банит пользователя в выбранном чате",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата или IDЧата*IDТемы",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--user",
+					"types": "Строка, Число",
+					"description": "ID целевого пользователя",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Администрирование"
+		},
+		{
+			"name": "Разбан",
+			"id": "РАЗБАН",
+			"description": "Разбанивает забаненного ранее пользователя",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата или IDЧата*IDТемы",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--user",
+					"types": "Строка, Число",
+					"description": "ID целевого пользователя",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Администрирование"
+		},
+		{
+			"name": "СоздатьСсылкуПриглашение",
+			"id": "СОЗДАТЬССЫЛКУПРИГЛАШЕНИЕ",
+			"description": "Создает ссылку для вступления в закрытый чат\n\n    Дата указывается в формате ISO 8601:\n    \"2024-04-07\"\n    \"2024-04-07T13:34:42+00:00\" \n    \"2024-04-07T13:34:42Z\"\n",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата или IDЧата*IDТемы",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Заголовок приглашения",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--expire",
+					"types": "Дата",
+					"description": "Дата окончания жизни ссылки (безсрочно, если не указано)",
+					"default": "Пустое значение",
+					"short": "-e"
+				},
+				{
+					"name": "--limit",
+					"types": "Число",
+					"description": "Лимит пользователей (бесконечно, если не указано)",
+					"default": "Пустое значение",
+					"short": "-l"
+				}
+			],
+			"region": "Администрирование"
+		},
+		{
+			"name": "ЗакрепитьСообщение",
+			"id": "ЗАКРЕПИТЬСООБЩЕНИЕ",
+			"description": "Закрепляет сообщение в шапке чата",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "Строка, Число",
+					"description": "ID целевого сообщения",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Администрирование"
+		},
+		{
+			"name": "ОткрепитьСообщение",
+			"id": "ОТКРЕПИТЬСООБЩЕНИЕ",
+			"description": "Открепляет сообщение в шапке чата",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--message",
+					"types": "Строка, Число",
+					"description": "ID целевого сообщения",
+					"default": "",
+					"short": "-m"
+				}
+			],
+			"region": "Администрирование"
+		},
+		{
+			"name": "ПолучитьЧислоУчастников",
+			"id": "ПОЛУЧИТЬЧИСЛОУЧАСТНИКОВ",
+			"description": "Получает общее число участников чата",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен бота",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--chat",
+					"types": "Строка, Число",
+					"description": "ID целевого чата",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Администрирование"
+		},
+		{
+			"name": "ПолучитьСписокИконокАватаров",
+			"id": "ПОЛУЧИТЬСПИСОКИКОНОКАВАТАРОВ",
+			"description": "Получает соответствие ID Emoji для установки в качестве иконок тем форума",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с темами форума"
+		},
+		{
+			"name": "СоздатьТемуФорума",
+			"id": "СОЗДАТЬТЕМУФОРУМА",
+			"description": "Создает новую тему в группе с включенным функционалом тем",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "Строка, Число",
+					"description": "ID чата создания темы",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Заголовок темы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--icon",
+					"types": "Строка",
+					"description": "См. ПолучитьСписокИконокАватаров",
+					"default": "Пустое значение",
+					"short": "-i"
+				}
+			],
+			"region": "Работа с темами форума"
+		},
+		{
+			"name": "ИзменитьТемуФорума",
+			"id": "ИЗМЕНИТЬТЕМУФОРУМА",
+			"description": "Создает новую тему в группе с включенным функционалом тем",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "Строка, Число",
+					"description": "ID чата создания темы",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--topic",
+					"types": "Строка, Число",
+					"description": "ID темы",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Новый заголовок",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--icon",
+					"types": "Строка",
+					"description": "См. ПолучитьСписокИконокАватаров",
+					"default": "Пустое значение",
+					"short": "-i"
+				}
+			],
+			"region": "Работа с темами форума"
+		},
+		{
+			"name": "ЗакрытьТемуФорума",
+			"id": "ЗАКРЫТЬТЕМУФОРУМА",
+			"description": "Закрывает тему для новых сообщений",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "Строка, Число",
+					"description": "ID чата темы",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--topic",
+					"types": "Строка, Число",
+					"description": "ID темы",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с темами форума"
+		},
+		{
+			"name": "ОткрытьТемуФорума",
+			"id": "ОТКРЫТЬТЕМУФОРУМА",
+			"description": "Повторно открывает ранее закрытую тему форума",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "Строка, Число",
+					"description": "ID чата темы",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--topic",
+					"types": "Строка, Число",
+					"description": "ID темы",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с темами форума"
+		},
+		{
+			"name": "УдалитьТемуФорума",
+			"id": "УДАЛИТЬТЕМУФОРУМА",
+			"description": "Удаляет тему форума",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "Строка, Число",
+					"description": "ID чата темы",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--topic",
+					"types": "Строка, Число",
+					"description": "ID темы",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с темами форума"
+		},
+		{
+			"name": "СкрытьГлавнуюТемуФорума",
+			"id": "СКРЫТЬГЛАВНУЮТЕМУФОРУМА",
+			"description": "Скрывает главную тему форума",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "Строка, Число",
+					"description": "ID чата темы",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Работа с темами форума"
+		},
+		{
+			"name": "ПоказатьГлавнуюТемуФорума",
+			"id": "ПОКАЗАТЬГЛАВНУЮТЕМУФОРУМА",
+			"description": "Показывает ранее скрытую главную тему форума",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "Строка, Число",
+					"description": "ID чата темы",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Работа с темами форума"
+		},
+		{
+			"name": "ИзменитьИмяГлавнойТемыФорума",
+			"id": "ИЗМЕНИТЬИМЯГЛАВНОЙТЕМЫФОРУМА",
+			"description": "Изменяет имя главной темы форума",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "Строка, Число",
+					"description": "ID чата темы",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Новое имя главной темы",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с темами форума"
+		},
+		{
+			"name": "ОчиститьСписокЗакрепленныхСообщенийТемы",
+			"id": "ОЧИСТИТЬСПИСОКЗАКРЕПЛЕННЫХСООБЩЕНИЙТЕМЫ",
+			"description": "Очищает список закрепленных сообщений в теме форума",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--forum",
+					"types": "Строка, Число",
+					"description": "ID чата темы",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--topic",
+					"types": "Строка, Число",
+					"description": "ID темы. Главная, если не заполнено",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с темами форума"
+		},
+		{
+			"name": "ПодготовитьСтроку",
+			"id": "ПОДГОТОВИТЬСТРОКУ",
+			"description": "",
+			"params": [],
+			"region": "Служебные процедуры и функции"
+		},
+		{
+			"name": "ЗаменитьСпецСимволы",
+			"id": "ЗАМЕНИТЬСПЕЦСИМВОЛЫ",
+			"description": "",
+			"params": [],
+			"region": "Служебные процедуры и функции"
+		}
+	]
+}

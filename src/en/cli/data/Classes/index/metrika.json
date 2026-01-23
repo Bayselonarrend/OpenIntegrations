@@ -1,0 +1,311 @@
+{
+	"module": "metrika",
+	"library": "metrika",
+	"depends": {
+		"OPI_YandexID": "%1/oint/core/Modules/OPI_YandexID.os",
+		"OPI_YandexMetrika": "%1/oint/core/Modules/OPI_YandexMetrika.os"
+	},
+	"methods": [
+		{
+			"name": "CreateTag",
+			"id": "CREATETAG",
+			"description": "Creates a tag with the specified name",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Tag title",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Tags management"
+		},
+		{
+			"name": "UpdateTag",
+			"id": "UPDATETAG",
+			"description": "Changes the tag name by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--label",
+					"types": "String",
+					"description": "Tag ID to change",
+					"default": "",
+					"short": "-l"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New name",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Tags management"
+		},
+		{
+			"name": "GetTag",
+			"id": "GETTAG",
+			"description": "Gets the tag by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--label",
+					"types": "String",
+					"description": "Tag ID",
+					"default": "",
+					"short": "-l"
+				}
+			],
+			"region": "Tags management"
+		},
+		{
+			"name": "DeleteTag",
+			"id": "DELETETAG",
+			"description": "Deletes a tag by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--label",
+					"types": "String",
+					"description": "ID of the tag to be deleted",
+					"default": "",
+					"short": "-l"
+				}
+			],
+			"region": "Tags management"
+		},
+		{
+			"name": "GetTagsList",
+			"id": "GETTAGSLIST",
+			"description": "Gets a list of the users tags",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Tags management"
+		},
+		{
+			"name": "CreateCounter",
+			"id": "CREATECOUNTER",
+			"description": "Creates a counter by field description",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "Counter structure. See GetCounterStructure",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Counters management"
+		},
+		{
+			"name": "UpdateCounter",
+			"id": "UPDATECOUNTER",
+			"description": "Changes counter field values by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--counter",
+					"types": "String, Number",
+					"description": "Counter ID to change",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--fields",
+					"types": "Structure Of KeyAndValue",
+					"description": "Structure of fields to be changed. See GetCounterStructure",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "Counters management"
+		},
+		{
+			"name": "GetCounter",
+			"id": "GETCOUNTER",
+			"description": "Gets information about the counter by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--counter",
+					"types": "String, Number",
+					"description": "Counter ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Counters management"
+		},
+		{
+			"name": "DeleteCounter",
+			"id": "DELETECOUNTER",
+			"description": "Deletes a counter by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--counter",
+					"types": "Number, String",
+					"description": "Counter ID for deletion",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Counters management"
+		},
+		{
+			"name": "RestoreCounter",
+			"id": "RESTORECOUNTER",
+			"description": "Restores a previously deleted counter by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--counter",
+					"types": "String, Number",
+					"description": "Counter ID for restoring",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Counters management"
+		},
+		{
+			"name": "GetCountersList",
+			"id": "GETCOUNTERSLIST",
+			"description": "Gets a list of available counters with or without filtering",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--filter",
+					"types": "Structure Of KeyAndValue",
+					"description": "List filter. See GetCounterFilterStructure",
+					"default": "Пустое значение",
+					"short": "-f"
+				}
+			],
+			"region": "Counters management"
+		},
+		{
+			"name": "GetCounterStructure",
+			"id": "GETCOUNTERSTRUCTURE",
+			"description": "Gets the structure of standard fields for counter creation",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Counters management"
+		},
+		{
+			"name": "GetCounterFilterStructure",
+			"id": "GETCOUNTERFILTERSTRUCTURE",
+			"description": "Gets the structure of filter fields to get the list of counters",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Counters management"
+		},
+		{
+			"name": "GetActionsList",
+			"id": "GETACTIONSLIST",
+			"description": "Gets the list of actions of the selected counter",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Auth token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--counter",
+					"types": "String, Number",
+					"description": "Counter ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Actions management"
+		}
+	]
+}

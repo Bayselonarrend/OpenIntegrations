@@ -1,0 +1,166 @@
+{
+	"module": "tcp",
+	"library": "tcp",
+	"depends": {
+		"OPI_TCP": "%1/oint/core/Modules/OPI_TCP.os"
+	},
+	"methods": [
+		{
+			"name": "CreateConnection",
+			"id": "CREATECONNECTION",
+			"description": "",
+			"params": [],
+			"region": "Client methods"
+		},
+		{
+			"name": "CloseConnection",
+			"id": "CLOSECONNECTION",
+			"description": "",
+			"params": [],
+			"region": "Client methods"
+		},
+		{
+			"name": "ReadBinaryData",
+			"id": "READBINARYDATA",
+			"description": "",
+			"params": [],
+			"region": "Client methods"
+		},
+		{
+			"name": "ReadLine",
+			"id": "READLINE",
+			"description": "",
+			"params": [],
+			"region": "Client methods"
+		},
+		{
+			"name": "SendBinaryData",
+			"id": "SENDBINARYDATA",
+			"description": "",
+			"params": [],
+			"region": "Client methods"
+		},
+		{
+			"name": "SendLine",
+			"id": "SENDLINE",
+			"description": "",
+			"params": [],
+			"region": "Client methods"
+		},
+		{
+			"name": "ProcessRequest",
+			"id": "PROCESSREQUEST",
+			"description": "Sends a single request to a specified address and receives a response using the default settings",
+			"params": [
+				{
+					"name": "--address",
+					"types": "String",
+					"description": "Address and port",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--data",
+					"types": "String, BinaryData",
+					"description": "Data or text to be sent",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--string",
+					"types": "Boolean",
+					"description": "An attribute of receiving the response as a string",
+					"default": true,
+					"short": "-s"
+				},
+				{
+					"name": "--tls",
+					"types": "Structure Of KeyAndValue",
+					"description": "TLS settings, if necessary. See GetTlsSettings",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--proxy",
+					"types": "Structure Of KeyAndValue",
+					"description": "Proxy settings, if required. See GetProxySettings",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Client methods"
+		},
+		{
+			"name": "GetLastError",
+			"id": "GETLASTERROR",
+			"description": "",
+			"params": [],
+			"region": "Client methods"
+		},
+		{
+			"name": "GetProxySettings",
+			"id": "GETPROXYSETTINGS",
+			"description": "Creates a structure of proxy server settings for the connection",
+			"params": [
+				{
+					"name": "--addr",
+					"types": "String",
+					"description": "Proxy address",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--port",
+					"types": "Number",
+					"description": "Proxy port",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--type",
+					"types": "String",
+					"description": "Proxy type: socks5, socks4, http",
+					"default": "socks5",
+					"short": "-t"
+				},
+				{
+					"name": "--login",
+					"types": "String, Undefined",
+					"description": "Authorization login, if required",
+					"default": "Пустое значение",
+					"short": "-l"
+				},
+				{
+					"name": "--pass",
+					"types": "String, Undefined",
+					"description": "Authorization password, if required",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Client methods"
+		},
+		{
+			"name": "GetTlsSettings",
+			"id": "GETTLSSETTINGS",
+			"description": "Forms settings for using TLS",
+			"params": [
+				{
+					"name": "--trust",
+					"types": "Boolean",
+					"description": "Allows to work with invalid certificates, including self signed",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--cert",
+					"types": "String",
+					"description": "Path to the root PEM file of the certificate if it is not in the system repository",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Client methods"
+		}
+	]
+}

@@ -1,0 +1,532 @@
+{
+	"module": "ftp",
+	"library": "ftp",
+	"depends": {
+		"OPI_FTP": "%1/oint/core/Modules/OPI_FTP.os"
+	},
+	"methods": [
+		{
+			"name": "CreateConnection",
+			"id": "CREATECONNECTION",
+			"description": "",
+			"params": [],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetConnectionConfiguration",
+			"id": "GETCONNECTIONCONFIGURATION",
+			"description": "Forms a complete structure of connection settings that can be used instead of the actual connection when calling other functions",
+			"params": [
+				{
+					"name": "--set",
+					"types": "Structure Of KeyAndValue",
+					"description": "FTP settings. See GetConnectionSettings",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--proxy",
+					"types": "Structure Of KeyAndValue",
+					"description": "Proxy settings, if required. See GetProxySettings",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--tls",
+					"types": "Structure Of KeyAndValue",
+					"description": "TLS settings, if necessary. See GetTlsSettings",
+					"default": "Пустое значение",
+					"short": "-t"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "CloseConnection",
+			"id": "CLOSECONNECTION",
+			"description": "",
+			"params": [],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetWelcomeMessage",
+			"id": "GETWELCOMEMESSAGE",
+			"description": "Receives the FTP servers welcome message",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetProtocolFeatureList",
+			"id": "GETPROTOCOLFEATURELIST",
+			"description": "Gets a list of FTP protocol features supported by the server",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "Ping",
+			"id": "PING",
+			"description": "Checks the connection activity and resets the timeout until its automatic closure",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "ExecuteCustomCommand",
+			"id": "EXECUTECUSTOMCOMMAND",
+			"description": "Executes a specific (SITE) server command and returns the response",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--cmd",
+					"types": "String",
+					"description": "Text of the executed command",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "ExecuteArbitraryCommand",
+			"id": "EXECUTEARBITRARYCOMMAND",
+			"description": "Sends an arbitrary text request to the server for processing",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--cmd",
+					"types": "String",
+					"description": "Text of the executed command",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetObjectSize",
+			"id": "GETOBJECTSIZE",
+			"description": "Get the size of a file or directory if it exists",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to the object",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "UpdatePath",
+			"id": "UPDATEPATH",
+			"description": "Changes the object's path to the specified one",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--old",
+					"types": "String",
+					"description": "Current path to object",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--new",
+					"types": "String",
+					"description": "New path to object",
+					"default": "",
+					"short": "-n"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "IsConnector",
+			"id": "ISCONNECTOR",
+			"description": "",
+			"params": [],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetConnectionSettings",
+			"id": "GETCONNECTIONSETTINGS",
+			"description": "Creates a structure of FTP connection settings",
+			"params": [
+				{
+					"name": "--host",
+					"types": "String",
+					"description": "Host address",
+					"default": "",
+					"short": "-h"
+				},
+				{
+					"name": "--port",
+					"types": "Number",
+					"description": "Server port",
+					"default": 21,
+					"short": "-p"
+				},
+				{
+					"name": "--login",
+					"types": "String, Undefined",
+					"description": "Username for authorization, if required",
+					"default": "Пустое значение",
+					"short": "-l"
+				},
+				{
+					"name": "--pass",
+					"types": "String, Undefined",
+					"description": "User password for authorization, if required",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--passive",
+					"types": "Boolean",
+					"description": "Passive connection mode",
+					"default": true,
+					"short": "-p"
+				},
+				{
+					"name": "--rtout",
+					"types": "Number",
+					"description": "Read timeout",
+					"default": 120,
+					"short": "-r"
+				},
+				{
+					"name": "--wtout",
+					"types": "Number",
+					"description": "Write timeout",
+					"default": 120,
+					"short": "-w"
+				},
+				{
+					"name": "--ipresl",
+					"types": "Boolean",
+					"description": "Advanced passive mode address resolution",
+					"default": true,
+					"short": "-i"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetProxySettings",
+			"id": "GETPROXYSETTINGS",
+			"description": "Creates a structure of proxy server settings for the connection",
+			"params": [
+				{
+					"name": "--addr",
+					"types": "String",
+					"description": "Proxy address",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--port",
+					"types": "Number",
+					"description": "Proxy port",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--type",
+					"types": "String",
+					"description": "Proxy type: socks5, socks4, http",
+					"default": "socks5",
+					"short": "-t"
+				},
+				{
+					"name": "--login",
+					"types": "String, Undefined",
+					"description": "Authorization login, if required",
+					"default": "Пустое значение",
+					"short": "-l"
+				},
+				{
+					"name": "--pass",
+					"types": "String, Undefined",
+					"description": "Authorization password, if required",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "GetTlsSettings",
+			"id": "GETTLSSETTINGS",
+			"description": "Forms settings for using TLS",
+			"params": [
+				{
+					"name": "--trust",
+					"types": "Boolean",
+					"description": "Allows to work with invalid certificates, including self signed",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--cert",
+					"types": "String",
+					"description": "Path to the root PEM file of the certificate if it is not in the system repository",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Common methods"
+		},
+		{
+			"name": "ListObjects",
+			"id": "LISTOBJECTS",
+			"description": "Gets information about the contents of a directory at the specified path",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to search directory",
+					"default": "Пустое значение",
+					"short": "-p"
+				},
+				{
+					"name": "--rcv",
+					"types": "Boolean",
+					"description": "Get information about objects in nested directories",
+					"default": false,
+					"short": "-r"
+				}
+			],
+			"region": "Directory management"
+		},
+		{
+			"name": "CreateNewDirectory",
+			"id": "CREATENEWDIRECTORY",
+			"description": "Creates a directory at the specified path",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to new directory",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Directory management"
+		},
+		{
+			"name": "DeleteDirectory",
+			"id": "DELETEDIRECTORY",
+			"description": "Deletes an existing directory",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to directory to delete",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Directory management"
+		},
+		{
+			"name": "ClearDirectory",
+			"id": "CLEARDIRECTORY",
+			"description": "Deletes all objects in the selected directory",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to the directory to be cleaned",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Directory management"
+		},
+		{
+			"name": "GetCurrentDirectory",
+			"id": "GETCURRENTDIRECTORY",
+			"description": "Gets the current directory from which relative paths are calculated",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Directory management"
+		},
+		{
+			"name": "ChangeCurrentDirectory",
+			"id": "CHANGECURRENTDIRECTORY",
+			"description": "",
+			"params": [],
+			"region": "Directory management"
+		},
+		{
+			"name": "UploadFile",
+			"id": "UPLOADFILE",
+			"description": "Uploads a file from disk or binary data to the FTP server",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--file",
+					"types": "String, BinaryData",
+					"description": "File on disk or file data",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to save file on server",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "DeleteFile",
+			"id": "DELETEFILE",
+			"description": "Delete file from server",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to file on server",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "SaveFile",
+			"id": "SAVEFILE",
+			"description": "Saves the file from the server to the specified path",
+			"params": [
+				{
+					"name": "--conn",
+					"types": "Arbitrary",
+					"description": "Existing connection or connection configuration",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--path",
+					"types": "String",
+					"description": "Path to file on server",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--file",
+					"types": "String",
+					"description": "Path to save file on disk",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "GetFileData",
+			"id": "GETFILEDATA",
+			"description": "",
+			"params": [],
+			"region": "File management"
+		}
+	]
+}

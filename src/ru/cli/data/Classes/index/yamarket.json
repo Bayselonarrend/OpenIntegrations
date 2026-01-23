@@ -1,0 +1,221 @@
+{
+	"module": "yamarket",
+	"library": "yamarket",
+	"depends": {
+		"OPI_YandexID": "%1/oint/core/Modules/OPI_YandexID.os",
+		"OPI_YandexMarket": "%1/oint/core/Modules/OPI_YandexMarket.os"
+	},
+	"methods": [
+		{
+			"name": "ПолучитьСписокМагазинов",
+			"id": "ПОЛУЧИТЬСПИСОКМАГАЗИНОВ",
+			"description": "Получает список магазинов в кабинете по токену",
+			"params": [
+				{
+					"name": "--Key)",
+					"types": "Строка",
+					"description": "token",
+					"default": "",
+					"short": "-K"
+				},
+				{
+					"name": "--page",
+					"types": "Число",
+					"description": "Номер страницы выдачи списка",
+					"default": 1,
+					"short": "-p"
+				}
+			],
+			"region": "Кабинеты и магазины"
+		},
+		{
+			"name": "ПолучитьМагазин",
+			"id": "ПОЛУЧИТЬМАГАЗИН",
+			"description": "Получает информацию о магазине (кампании) по ID",
+			"params": [
+				{
+					"name": "--Key)",
+					"types": "Строка",
+					"description": "token",
+					"default": "",
+					"short": "-K"
+				},
+				{
+					"name": "--campaign",
+					"types": "Строка, Число",
+					"description": "ID магазина (кампании)",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Кабинеты и магазины"
+		},
+		{
+			"name": "ПолучитьНастройкиКабинета",
+			"id": "ПОЛУЧИТЬНАСТРОЙКИКАБИНЕТА",
+			"description": "Получает значения настроек кабинета по ID",
+			"params": [
+				{
+					"name": "--Key)",
+					"types": "Строка",
+					"description": "token",
+					"default": "",
+					"short": "-K"
+				},
+				{
+					"name": "--business",
+					"types": "Строка, Число",
+					"description": "ID кабинета",
+					"default": "",
+					"short": "-b"
+				}
+			],
+			"region": "Кабинеты и магазины"
+		},
+		{
+			"name": "ПолучитьНастройкиМагазина",
+			"id": "ПОЛУЧИТЬНАСТРОЙКИМАГАЗИНА",
+			"description": "Получает настройки магазина по ID",
+			"params": [
+				{
+					"name": "--Key)",
+					"types": "Строка",
+					"description": "token",
+					"default": "",
+					"short": "-K"
+				},
+				{
+					"name": "--campaign",
+					"types": "Строка, Число",
+					"description": "ID магазина (кампании)",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Кабинеты и магазины"
+		},
+		{
+			"name": "ДобавитьОбновитьТовары",
+			"id": "ДОБАВИТЬОБНОВИТЬТОВАРЫ",
+			"description": "Добавляет или обновляет информацию о товарах в каталоге\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--Key)",
+					"types": "Строка",
+					"description": "token",
+					"default": "",
+					"short": "-K"
+				},
+				{
+					"name": "--business",
+					"types": "Строка, Число",
+					"description": "ID кабинета",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--offers",
+					"types": "Структура, Массив Из Структура",
+					"description": "Массив описаний товаров",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--pmedia",
+					"types": "Булево",
+					"description": "Признак использования только своих изображений товаров",
+					"default": false,
+					"short": "-p"
+				}
+			],
+			"region": "Работа с товарами"
+		},
+		{
+			"name": "ПолучитьТоварыМагазина",
+			"id": "ПОЛУЧИТЬТОВАРЫМАГАЗИНА",
+			"description": "Получает список товаров выбранного магазина",
+			"params": [
+				{
+					"name": "--Key)",
+					"types": "Строка",
+					"description": "token",
+					"default": "",
+					"short": "-K"
+				},
+				{
+					"name": "--business",
+					"types": "Строка, Число",
+					"description": "ID магазина",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--filters",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Фильтры для отбора товаров",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--page",
+					"types": "Строка",
+					"description": "Токен следующей страницы при большой выборке",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Работа с товарами"
+		},
+		{
+			"name": "ПолучитьТоварыКабинета",
+			"id": "ПОЛУЧИТЬТОВАРЫКАБИНЕТА",
+			"description": "Получает список товаров выбранного кабинета",
+			"params": [
+				{
+					"name": "--Key)",
+					"types": "Строка",
+					"description": "token",
+					"default": "",
+					"short": "-K"
+				},
+				{
+					"name": "--business",
+					"types": "Строка, Число",
+					"description": "ID кабинета",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--filters",
+					"types": "Структура Из КлючИЗначение",
+					"description": "Фильтры для отбора товаров",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--page",
+					"types": "Строка",
+					"description": "Токен следующей страницы при большой выборке",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Работа с товарами"
+		},
+		{
+			"name": "ПолучитьСтруктуруТовара",
+			"id": "ПОЛУЧИТЬСТРУКТУРУТОВАРА",
+			"description": "Получает структуру стандартных полей товара",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Булево",
+					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Работа с товарами"
+		}
+	]
+}

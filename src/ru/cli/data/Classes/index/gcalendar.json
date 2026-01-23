@@ -1,0 +1,570 @@
+{
+	"module": "gcalendar",
+	"library": "gcalendar",
+	"depends": {
+		"OPI_GoogleCalendar": "%1/oint/core/Modules/OPI_GoogleCalendar.os",
+		"OPI_GoogleWorkspace": "%1/oint/core/Modules/OPI_GoogleWorkspace.os"
+	},
+	"methods": [
+		{
+			"name": "СформироватьСсылкуПолученияКода",
+			"id": "СФОРМИРОВАТЬССЫЛКУПОЛУЧЕНИЯКОДА",
+			"description": "Возвращает URL для авторизации в браузере",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--calendar",
+					"types": "Булево",
+					"description": "разрешение на методы Calendar",
+					"default": true,
+					"short": "-c"
+				},
+				{
+					"name": "--drive",
+					"types": "Булево",
+					"description": "разрешение на методы Drive",
+					"default": true,
+					"short": "-d"
+				},
+				{
+					"name": "--sheets",
+					"types": "Булево",
+					"description": "разрешение на методы Sheets",
+					"default": true,
+					"short": "-s"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "ПолучитьТокенПоКоду",
+			"id": "ПОЛУЧИТЬТОКЕНПОКОДУ",
+			"description": "Получает токен по коду из авторизации в бразуере",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "Строка",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--code",
+					"types": "Строка",
+					"description": "Code из браузера",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "ОбновитьТокен",
+			"id": "ОБНОВИТЬТОКЕН",
+			"description": "Обновляет токен по Refresh token",
+			"params": [
+				{
+					"name": "--id",
+					"types": "Строка",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "Строка",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--refresh",
+					"types": "Строка",
+					"description": "Refresh token",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "ПолучитьТокенServiceАккаунта",
+			"id": "ПОЛУЧИТЬТОКЕНSERVICEАККАУНТА",
+			"description": "Получает токен авторизации по данным service аккаунта\n\n    Пример указания параметра типа массив:\n    --param \"['Val1','Val2','Val3']\"\n",
+			"params": [
+				{
+					"name": "--auth",
+					"types": "Произвольный",
+					"description": "JSON данные авторизации как файл, коллекция или двоичные данные",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--scope",
+					"types": "Массив Из Строка",
+					"description": "Область действия (scope) или массив областей",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--exp",
+					"types": "Число",
+					"description": "Время жизни токена в секундах",
+					"default": 3600,
+					"short": "-e"
+				}
+			],
+			"region": "Авторизация"
+		},
+		{
+			"name": "СоздатьКалендарь",
+			"id": "СОЗДАТЬКАЛЕНДАРЬ",
+			"description": "Создает пустой календарь",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Наименование создаваемого календаря",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с метаданными календарей"
+		},
+		{
+			"name": "ПолучитьМетаданныеКалендаря",
+			"id": "ПОЛУЧИТЬМЕТАДАННЫЕКАЛЕНДАРЯ",
+			"description": "Получает информацию о календаре по ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "Строка",
+					"description": "ID календаря",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с метаданными календарей"
+		},
+		{
+			"name": "ИзменитьМетаданныеКалендаря",
+			"id": "ИЗМЕНИТЬМЕТАДАННЫЕКАЛЕНДАРЯ",
+			"description": "Изменяет свойства существуещего календаря",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "Строка",
+					"description": "ID календаря",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--title",
+					"types": "Строка",
+					"description": "Новое наименование",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--description",
+					"types": "Строка",
+					"description": "Новое описание календаря",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Работа с метаданными календарей"
+		},
+		{
+			"name": "ОчиститьОсновнойКалендарь",
+			"id": "ОЧИСТИТЬОСНОВНОЙКАЛЕНДАРЬ",
+			"description": "Очищает список событий основного календаря",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа с метаданными календарей"
+		},
+		{
+			"name": "УдалитьКалендарь",
+			"id": "УДАЛИТЬКАЛЕНДАРЬ",
+			"description": "Удаляет календарь по ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "Строка",
+					"description": "ID календаря",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с метаданными календарей"
+		},
+		{
+			"name": "ПолучитьСписокКалендарей",
+			"id": "ПОЛУЧИТЬСПИСОККАЛЕНДАРЕЙ",
+			"description": "Получает массив календарей аккаунта",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Работа со списком календарей"
+		},
+		{
+			"name": "ДобавитьКалендарьВСписок",
+			"id": "ДОБАВИТЬКАЛЕНДАРЬВСПИСОК",
+			"description": "Добавляет существующий календарь в список пользователя",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "Строка",
+					"description": "ID календаря",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа со списком календарей"
+		},
+		{
+			"name": "ПолучитьКалендарьСписка",
+			"id": "ПОЛУЧИТЬКАЛЕНДАРЬСПИСКА",
+			"description": "Получает календарь из списка пользователя по ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "Строка",
+					"description": "ID календаря",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа со списком календарей"
+		},
+		{
+			"name": "УдалитьКалендарьИзСписка",
+			"id": "УДАЛИТЬКАЛЕНДАРЬИЗСПИСКА",
+			"description": "Удаляет календарь из списка пользователя",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "Строка",
+					"description": "ID календаря",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа со списком календарей"
+		},
+		{
+			"name": "ИзменитьКалендарьСписка",
+			"id": "ИЗМЕНИТЬКАЛЕНДАРЬСПИСКА",
+			"description": "Изменяет свойства календаря из списка пользователей",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "Строка",
+					"description": "ID календаря",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--primary",
+					"types": "Строка",
+					"description": "HEX основного цвета (#ffffff)",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--secondary",
+					"types": "Строка",
+					"description": "HEX дополнительного цвета (#ffffff)",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--hidden",
+					"types": "Булево",
+					"description": "Скрытый календарь",
+					"default": false,
+					"short": "-h"
+				}
+			],
+			"region": "Работа со списком календарей"
+		},
+		{
+			"name": "ПолучитьОписаниеСобытия",
+			"id": "ПОЛУЧИТЬОПИСАНИЕСОБЫТИЯ",
+			"description": "Получает пустой макет для создания события",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Булево",
+					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Работа с событиями"
+		},
+		{
+			"name": "ПолучитьСписокСобытий",
+			"id": "ПОЛУЧИТЬСПИСОКСОБЫТИЙ",
+			"description": "Получает список всех событий календаря",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "Строка",
+					"description": "ID календаря",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Работа с событиями"
+		},
+		{
+			"name": "ПолучитьСобытие",
+			"id": "ПОЛУЧИТЬСОБЫТИЕ",
+			"description": "Получает событие по ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "Строка",
+					"description": "ID календаря",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--event",
+					"types": "Строка",
+					"description": "ID события",
+					"default": "",
+					"short": "-e"
+				}
+			],
+			"region": "Работа с событиями"
+		},
+		{
+			"name": "СоздатьСобытие",
+			"id": "СОЗДАТЬСОБЫТИЕ",
+			"description": "Создает новое событие",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "Строка",
+					"description": "ID календаря",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--props",
+					"types": "Соответствие Из КлючИЗначение",
+					"description": "Описание события",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Работа с событиями"
+		},
+		{
+			"name": "ПереместитьСобытие",
+			"id": "ПЕРЕМЕСТИТЬСОБЫТИЕ",
+			"description": "Перемещает событие в другой календарь",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--from",
+					"types": "Строка",
+					"description": "ID календаря источника",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--to",
+					"types": "Строка",
+					"description": "ID календаря приемника",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--event",
+					"types": "Строка",
+					"description": "ID события календаря источника",
+					"default": "",
+					"short": "-e"
+				}
+			],
+			"region": "Работа с событиями"
+		},
+		{
+			"name": "ИзменитьСобытие",
+			"id": "ИЗМЕНИТЬСОБЫТИЕ",
+			"description": "Изменяет существующее событие",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "Строка",
+					"description": "ID календаря",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--props",
+					"types": "Строка",
+					"description": "Новое описание события",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--event",
+					"types": "Строка",
+					"description": "ID события",
+					"default": "",
+					"short": "-e"
+				}
+			],
+			"region": "Работа с событиями"
+		},
+		{
+			"name": "УдалитьСобытие",
+			"id": "УДАЛИТЬСОБЫТИЕ",
+			"description": "Удаляет событие по ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "Строка",
+					"description": "Токен",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "Строка",
+					"description": "ID календаря",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--event",
+					"types": "Строка",
+					"description": "ID события",
+					"default": "",
+					"short": "-e"
+				}
+			],
+			"region": "Работа с событиями"
+		}
+	]
+}

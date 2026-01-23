@@ -1,0 +1,221 @@
+{
+	"module": "yamarket",
+	"library": "yamarket",
+	"depends": {
+		"OPI_YandexID": "%1/oint/core/Modules/OPI_YandexID.os",
+		"OPI_YandexMarket": "%1/oint/core/Modules/OPI_YandexMarket.os"
+	},
+	"methods": [
+		{
+			"name": "GetMarketsList",
+			"id": "GETMARKETSLIST",
+			"description": "Gets the list of shops in the cabinet by token",
+			"params": [
+				{
+					"name": "--Key)",
+					"types": "String",
+					"description": "token",
+					"default": "",
+					"short": "-K"
+				},
+				{
+					"name": "--page",
+					"types": "Number",
+					"description": "Issue page number of the list",
+					"default": 1,
+					"short": "-p"
+				}
+			],
+			"region": "Campaigns and business"
+		},
+		{
+			"name": "GetMarket",
+			"id": "GETMARKET",
+			"description": "Gets information about a market (campaign) by ID",
+			"params": [
+				{
+					"name": "--Key)",
+					"types": "String",
+					"description": "token",
+					"default": "",
+					"short": "-K"
+				},
+				{
+					"name": "--campaign",
+					"types": "String, Number",
+					"description": "Market ID (campaignsId)",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Campaigns and business"
+		},
+		{
+			"name": "GetBusinessSettings",
+			"id": "GETBUSINESSSETTINGS",
+			"description": "Gets the values of cabinet (business) settings by ID",
+			"params": [
+				{
+					"name": "--Key)",
+					"types": "String",
+					"description": "token",
+					"default": "",
+					"short": "-K"
+				},
+				{
+					"name": "--business",
+					"types": "String, Number",
+					"description": "Business ID",
+					"default": "",
+					"short": "-b"
+				}
+			],
+			"region": "Campaigns and business"
+		},
+		{
+			"name": "GetCampaignSettings",
+			"id": "GETCAMPAIGNSETTINGS",
+			"description": "Gets market (campaign) settings by ID",
+			"params": [
+				{
+					"name": "--Key)",
+					"types": "String",
+					"description": "token",
+					"default": "",
+					"short": "-K"
+				},
+				{
+					"name": "--campaign",
+					"types": "String, Number",
+					"description": "Market ID (campaignsId)",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Campaigns and business"
+		},
+		{
+			"name": "AddUpdateProducts",
+			"id": "ADDUPDATEPRODUCTS",
+			"description": "Adds or updates product information in the catalogue",
+			"params": [
+				{
+					"name": "--Key)",
+					"types": "String",
+					"description": "token",
+					"default": "",
+					"short": "-K"
+				},
+				{
+					"name": "--business",
+					"types": "String, Number",
+					"description": "Business ID",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--offers",
+					"types": "Structure, Array of Structure",
+					"description": "Array of product descriptions",
+					"default": "",
+					"short": "-o"
+				},
+				{
+					"name": "--pmedia",
+					"types": "Boolean",
+					"description": "A flag of using only your own product images",
+					"default": false,
+					"short": "-p"
+				}
+			],
+			"region": "Product management"
+		},
+		{
+			"name": "GetCampaignProducts",
+			"id": "GETCAMPAIGNPRODUCTS",
+			"description": "Gets the list of products of the selected market (campaign)",
+			"params": [
+				{
+					"name": "--Key)",
+					"types": "String",
+					"description": "token",
+					"default": "",
+					"short": "-K"
+				},
+				{
+					"name": "--business",
+					"types": "String, Number",
+					"description": "Campaign ID",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--filters",
+					"types": "Structure Of KeyAndValue",
+					"description": "Product filters",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--page",
+					"types": "String",
+					"description": "Next page token in case of a large selection",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Product management"
+		},
+		{
+			"name": "GetBusinessProducts",
+			"id": "GETBUSINESSPRODUCTS",
+			"description": "Gets the list of products of the business",
+			"params": [
+				{
+					"name": "--Key)",
+					"types": "String",
+					"description": "token",
+					"default": "",
+					"short": "-K"
+				},
+				{
+					"name": "--business",
+					"types": "String, Number",
+					"description": "Business ID",
+					"default": "",
+					"short": "-b"
+				},
+				{
+					"name": "--filters",
+					"types": "Structure Of KeyAndValue",
+					"description": "Product filters",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--page",
+					"types": "String",
+					"description": "Next page token in case of a large selection",
+					"default": "Пустое значение",
+					"short": "-p"
+				}
+			],
+			"region": "Product management"
+		},
+		{
+			"name": "GetProductStructure",
+			"id": "GETPRODUCTSTRUCTURE",
+			"description": "Gets the structure of product standard fields",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Product management"
+		}
+	]
+}

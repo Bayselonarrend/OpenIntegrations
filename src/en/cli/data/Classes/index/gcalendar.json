@@ -1,0 +1,570 @@
+{
+	"module": "gcalendar",
+	"library": "gcalendar",
+	"depends": {
+		"OPI_GoogleCalendar": "%1/oint/core/Modules/OPI_GoogleCalendar.os",
+		"OPI_GoogleWorkspace": "%1/oint/core/Modules/OPI_GoogleWorkspace.os"
+	},
+	"methods": [
+		{
+			"name": "FormCodeRetrievalLink",
+			"id": "FORMCODERETRIEVALLINK",
+			"description": "Returns URL for browser authorization",
+			"params": [
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--calendar",
+					"types": "Boolean",
+					"description": "Calendar methods permission",
+					"default": true,
+					"short": "-c"
+				},
+				{
+					"name": "--drive",
+					"types": "Boolean",
+					"description": "Drive methods permission",
+					"default": true,
+					"short": "-d"
+				},
+				{
+					"name": "--sheets",
+					"types": "Boolean",
+					"description": "Sheets methods permission",
+					"default": true,
+					"short": "-s"
+				}
+			],
+			"region": "Authorization"
+		},
+		{
+			"name": "GetTokenByCode",
+			"id": "GETTOKENBYCODE",
+			"description": "Gets token by code from browser authorization",
+			"params": [
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "String",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--code",
+					"types": "String",
+					"description": "Code from browser",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Authorization"
+		},
+		{
+			"name": "RefreshToken",
+			"id": "REFRESHTOKEN",
+			"description": "Updates token by Refresh token",
+			"params": [
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Client ID",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "String",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--refresh",
+					"types": "String",
+					"description": "Refresh token",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Authorization"
+		},
+		{
+			"name": "GetServiceAccountToken",
+			"id": "GETSERVICEACCOUNTTOKEN",
+			"description": "Gets authorization token by service account data",
+			"params": [
+				{
+					"name": "--auth",
+					"types": "Arbitrary",
+					"description": "JSON authorization data as a file, collection or binary data",
+					"default": "",
+					"short": "-a"
+				},
+				{
+					"name": "--scope",
+					"types": "Array Of String",
+					"description": "Scope or array of scopes",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--exp",
+					"types": "Number",
+					"description": "Token lifetime in seconds",
+					"default": 3600,
+					"short": "-e"
+				}
+			],
+			"region": "Authorization"
+		},
+		{
+			"name": "CreateCalendar",
+			"id": "CREATECALENDAR",
+			"description": "Creates an empty calendar",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Name of the created calendar",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Calendar metadata management"
+		},
+		{
+			"name": "GetCalendarMetadata",
+			"id": "GETCALENDARMETADATA",
+			"description": "Gets calendar information by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "String",
+					"description": "Calendar ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Calendar metadata management"
+		},
+		{
+			"name": "EditCalendarMetadata",
+			"id": "EDITCALENDARMETADATA",
+			"description": "Edits properties of an existing calendar",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "String",
+					"description": "Calendar ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New name",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--description",
+					"types": "String",
+					"description": "New calendar description",
+					"default": "Пустое значение",
+					"short": "-d"
+				}
+			],
+			"region": "Calendar metadata management"
+		},
+		{
+			"name": "ClearMainCalendar",
+			"id": "CLEARMAINCALENDAR",
+			"description": "Clears the event list of the primary calendar",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Calendar metadata management"
+		},
+		{
+			"name": "DeleteCalendar",
+			"id": "DELETECALENDAR",
+			"description": "Deletes a calendar by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "String",
+					"description": "Calendar ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Calendar metadata management"
+		},
+		{
+			"name": "GetCalendarList",
+			"id": "GETCALENDARLIST",
+			"description": "Gets an array of account calendars",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Calendar list management"
+		},
+		{
+			"name": "AddCalendarToList",
+			"id": "ADDCALENDARTOLIST",
+			"description": "Adds an existing calendar to the user's list",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "String",
+					"description": "Calendar ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Calendar list management"
+		},
+		{
+			"name": "GetListCalendar",
+			"id": "GETLISTCALENDAR",
+			"description": "Gets a calendar from the user's list by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "String",
+					"description": "Calendar ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Calendar list management"
+		},
+		{
+			"name": "DeleteCalendarFromList",
+			"id": "DELETECALENDARFROMLIST",
+			"description": "Removes a calendar from the user's list",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "String",
+					"description": "Calendar ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Calendar list management"
+		},
+		{
+			"name": "EditListCalendar",
+			"id": "EDITLISTCALENDAR",
+			"description": "Edits the properties of a calendar from the user's list",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "String",
+					"description": "Calendar ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--primary",
+					"types": "String",
+					"description": "HEX primary color (#ffffff)",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--secondary",
+					"types": "String",
+					"description": "HEX secondary color (#ffffff)",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--hidden",
+					"types": "Boolean",
+					"description": "Hidden calendar",
+					"default": false,
+					"short": "-h"
+				}
+			],
+			"region": "Calendar list management"
+		},
+		{
+			"name": "GetEventDescription",
+			"id": "GETEVENTDESCRIPTION",
+			"description": "Gets an empty layout to create the event",
+			"params": [
+				{
+					"name": "--empty",
+					"types": "Boolean",
+					"description": "True > structure with empty valuse, False > field descriptions at values",
+					"default": false,
+					"short": "-e"
+				}
+			],
+			"region": "Event management"
+		},
+		{
+			"name": "GetEventList",
+			"id": "GETEVENTLIST",
+			"description": "Gets the list of all calendar events",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "String",
+					"description": "Calendar ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Event management"
+		},
+		{
+			"name": "GetEvent",
+			"id": "GETEVENT",
+			"description": "Gets an event by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "String",
+					"description": "Calendar ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--event",
+					"types": "String",
+					"description": "Event ID",
+					"default": "",
+					"short": "-e"
+				}
+			],
+			"region": "Event management"
+		},
+		{
+			"name": "CreateEvent",
+			"id": "CREATEEVENT",
+			"description": "Creates a new event",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "String",
+					"description": "Calendar ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--props",
+					"types": "Map Of KeyAndValue",
+					"description": "Event description",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Event management"
+		},
+		{
+			"name": "MoveEvent",
+			"id": "MOVEEVENT",
+			"description": "Moves an event to another calendar",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--from",
+					"types": "String",
+					"description": "ID of the source calendar",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--to",
+					"types": "String",
+					"description": "ID of the target calendar",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--event",
+					"types": "String",
+					"description": "ID of the source calendar event",
+					"default": "",
+					"short": "-e"
+				}
+			],
+			"region": "Event management"
+		},
+		{
+			"name": "EditEvent",
+			"id": "EDITEVENT",
+			"description": "Edits an existing event",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "String",
+					"description": "Calendar ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--props",
+					"types": "String",
+					"description": "New event description",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--event",
+					"types": "String",
+					"description": "Event ID",
+					"default": "",
+					"short": "-e"
+				}
+			],
+			"region": "Event management"
+		},
+		{
+			"name": "DeleteEvent",
+			"id": "DELETEEVENT",
+			"description": "Deletes an event by ID",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--calendar",
+					"types": "String",
+					"description": "Calendar ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--event",
+					"types": "String",
+					"description": "Event ID",
+					"default": "",
+					"short": "-e"
+				}
+			],
+			"region": "Event management"
+		}
+	]
+}

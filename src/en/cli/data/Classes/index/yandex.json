@@ -1,0 +1,89 @@
+{
+	"module": "yandex",
+	"library": "yandex",
+	"depends": {
+		"OPI_YandexID": "%1/oint/core/Modules/OPI_YandexID.os"
+	},
+	"methods": [
+		{
+			"name": "GetConfirmationCode",
+			"id": "GETCONFIRMATIONCODE",
+			"description": "Gets the confirmation code and the address of the page where it needs to be entered",
+			"params": [
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Client id",
+					"default": "",
+					"short": "-i"
+				}
+			],
+			"region": "Public"
+		},
+		{
+			"name": "ConvertCodeToToken",
+			"id": "CONVERTCODETOTOKEN",
+			"description": "Converts the code to a token after entering the code when executing GetConfirmationCode",
+			"params": [
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Client id",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "String",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--device",
+					"types": "String",
+					"description": "device_code from GetConfirmationCode()",
+					"default": "",
+					"short": "-d"
+				}
+			],
+			"region": "Public"
+		},
+		{
+			"name": "RefreshToken",
+			"id": "REFRESHTOKEN",
+			"description": "Updates token by Refresh token",
+			"params": [
+				{
+					"name": "--id",
+					"types": "String",
+					"description": "Client id",
+					"default": "",
+					"short": "-i"
+				},
+				{
+					"name": "--secret",
+					"types": "String",
+					"description": "Client secret",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--refresh",
+					"types": "String",
+					"description": "Refresh token",
+					"default": "",
+					"short": "-r"
+				}
+			],
+			"region": "Public"
+		},
+		{
+			"name": "GetAuthorizationHeader",
+			"id": "GETAUTHORIZATIONHEADER",
+			"description": "",
+			"params": [],
+			"region": "Internal"
+		}
+	]
+}

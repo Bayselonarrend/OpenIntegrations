@@ -1,0 +1,1026 @@
+{
+	"module": "slack",
+	"library": "slack",
+	"depends": {
+		"OPI_Slack": "%1/oint/core/Modules/OPI_Slack.os"
+	},
+	"methods": [
+		{
+			"name": "GetBotInformation",
+			"id": "GETBOTINFORMATION",
+			"description": "Gets basic information about the bot",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Management and settings"
+		},
+		{
+			"name": "GetWorkspaceList",
+			"id": "GETWORKSPACELIST",
+			"description": "Gets a list of workspaces where the bot is connected",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--cursor",
+					"types": "String",
+					"description": "Pointer from the previous request, if the result rows > 100",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Management and settings"
+		},
+		{
+			"name": "GetUserList",
+			"id": "GETUSERLIST",
+			"description": "Gets a list of users in the workspace",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--cursor",
+					"types": "String",
+					"description": "Pointer from the previous request, if the result rows > 100",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Management and settings"
+		},
+		{
+			"name": "SendMessage",
+			"id": "SENDMESSAGE",
+			"description": "Sends a message at a selected hour",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--date",
+					"types": "Date",
+					"description": "Sending date for delayed message",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--blocks",
+					"types": "Array of Structure",
+					"description": "JSON array of block descriptions",
+					"default": "Пустое значение",
+					"short": "-b"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "SendEphemeralMessage",
+			"id": "SENDEPHEMERALMESSAGE",
+			"description": "Sends a message that arrives in the channel but is visible\n    |    only to a specific user",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "Message text",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--user",
+					"types": "String",
+					"description": "User ID",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--blocks",
+					"types": "Array of Structure",
+					"description": "JSON array of block descriptions",
+					"default": "Пустое значение",
+					"short": "-b"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "EditMessage",
+			"id": "EDITMESSAGE",
+			"description": "Edits the content of an existing message",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--stamp",
+					"types": "String",
+					"description": "Message timestamp",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--text",
+					"types": "String",
+					"description": "New message text",
+					"default": "Пустое значение",
+					"short": "-t"
+				},
+				{
+					"name": "--blocks",
+					"types": "Array of Structure",
+					"description": "JSON array of block descriptions",
+					"default": "Пустое значение",
+					"short": "-b"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "DeleteMessage",
+			"id": "DELETEMESSAGE",
+			"description": "Deletes a channel message by timestamp",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--stamp",
+					"types": "String",
+					"description": "Timestamp or message ID",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--issheduled",
+					"types": "Boolean",
+					"description": "Indicator of deleting a delayed message",
+					"default": false,
+					"short": "-i"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "GetDelayedMessageList",
+			"id": "GETDELAYEDMESSAGELIST",
+			"description": "Gets a list of delayed channel messages",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--cursor",
+					"types": "String",
+					"description": "Pointer from the previous request, if the result rows > 100",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "GetMessageLink",
+			"id": "GETMESSAGELINK",
+			"description": "Gets a permanent URL to the channel message",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--stamp",
+					"types": "String",
+					"description": "Timestamp or message ID",
+					"default": "",
+					"short": "-s"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "GetMessageReplyList",
+			"id": "GETMESSAGEREPLYLIST",
+			"description": "Gets an array of messages that are replies to the specified",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--stamp",
+					"types": "String",
+					"description": "Timestamp or message ID",
+					"default": "",
+					"short": "-s"
+				},
+				{
+					"name": "--cursor",
+					"types": "String",
+					"description": "Pointer from the previous request, if the result rows > 100",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Message management"
+		},
+		{
+			"name": "GetChannelList",
+			"id": "GETCHANNELLIST",
+			"description": "Gets a list of available channels",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--notarchived",
+					"types": "Boolean",
+					"description": "Indicator of excluding archived channels",
+					"default": false,
+					"short": "-n"
+				},
+				{
+					"name": "--cursor",
+					"types": "String",
+					"description": "Pointer from the previous request, if the result rows > 100",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Channel management"
+		},
+		{
+			"name": "GetChannelUserList",
+			"id": "GETCHANNELUSERLIST",
+			"description": "Gets a list of users in the specified channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--cursor",
+					"types": "String",
+					"description": "Pointer from the previous request, if the result rows > 100",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "Channel management"
+		},
+		{
+			"name": "CreateChannel",
+			"id": "CREATECHANNEL",
+			"description": "Creates a new channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "Channel name",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--private",
+					"types": "Boolean",
+					"description": "Create channel as private",
+					"default": false,
+					"short": "-p"
+				}
+			],
+			"region": "Channel management"
+		},
+		{
+			"name": "ArchiveChannel",
+			"id": "ARCHIVECHANNEL",
+			"description": "Archives an active channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Channel management"
+		},
+		{
+			"name": "GetChannel",
+			"id": "GETCHANNEL",
+			"description": "Gets information about the channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Channel management"
+		},
+		{
+			"name": "GetChannelHistory",
+			"id": "GETCHANNELHISTORY",
+			"description": "Gets information about channel events",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Channel management"
+		},
+		{
+			"name": "InviteUsersToChannel",
+			"id": "INVITEUSERSTOCHANNEL",
+			"description": "Adds specified users to the channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--users",
+					"types": "Array Of String",
+					"description": "User ID Array",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Channel management"
+		},
+		{
+			"name": "KickUserFromChannel",
+			"id": "KICKUSERFROMCHANNEL",
+			"description": "Removes specified user from channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--user",
+					"types": "String",
+					"description": "User ID",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Channel management"
+		},
+		{
+			"name": "JoinChannel",
+			"id": "JOINCHANNEL",
+			"description": "Adds the current bot to the channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Channel management"
+		},
+		{
+			"name": "LeaveChannel",
+			"id": "LEAVECHANNEL",
+			"description": "Removes the current bot from the channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Channel management"
+		},
+		{
+			"name": "SetChannelTopic",
+			"id": "SETCHANNELTOPIC",
+			"description": "Sets the channel topic",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--theme",
+					"types": "String",
+					"description": "Channel topic",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Channel management"
+		},
+		{
+			"name": "SetChannelGoal",
+			"id": "SETCHANNELGOAL",
+			"description": "Sets the channel purpose (description)",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--purpose",
+					"types": "String",
+					"description": "Channel purpose",
+					"default": "",
+					"short": "-p"
+				}
+			],
+			"region": "Channel management"
+		},
+		{
+			"name": "RenameChannel",
+			"id": "RENAMECHANNEL",
+			"description": "Changes the name of the channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "",
+					"short": "-c"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "New channel name",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "Channel management"
+		},
+		{
+			"name": "OpenDialog",
+			"id": "OPENDIALOG",
+			"description": "Opens a new dialog with one or more users",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--users",
+					"types": "Array of String",
+					"description": "User ID Array",
+					"default": "",
+					"short": "-u"
+				}
+			],
+			"region": "Dialog management"
+		},
+		{
+			"name": "CloseDialog",
+			"id": "CLOSEDIALOG",
+			"description": "Closes an existing dialog",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--conv",
+					"types": "String",
+					"description": "Dialog ID",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "Dialog management"
+		},
+		{
+			"name": "GetFilesList",
+			"id": "GETFILESLIST",
+			"description": "Gets a list of files of the bot or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel for selection",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--page",
+					"types": "Number, String",
+					"description": "Page number",
+					"default": 1,
+					"short": "-p"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "UploadFile",
+			"id": "UPLOADFILE",
+			"description": "Uploads a file to Slack servers",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--file",
+					"types": "String, BinaryData",
+					"description": "File for upload",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--filename",
+					"types": "String",
+					"description": "File name with extension",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "File name in Slack",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel ID",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "GetFileData",
+			"id": "GETFILEDATA",
+			"description": "Gets information about the file",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "String",
+					"description": "File identifier",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "DeleteFile",
+			"id": "DELETEFILE",
+			"description": "Deletes a file on Slack",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "String",
+					"description": "File identifier",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "MakeFilePublic",
+			"id": "MAKEFILEPUBLIC",
+			"description": "Creates a public URL for the file. Requires user token",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "User token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "String",
+					"description": "File identifier",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "MakeFilePrivate",
+			"id": "MAKEFILEPRIVATE",
+			"description": "Removes the public URL from the file. Requires user token",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "User token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "String",
+					"description": "File identifier",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "File management"
+		},
+		{
+			"name": "GetExternalFileList",
+			"id": "GETEXTERNALFILELIST",
+			"description": "Gets a list of external files of a user or channel",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--channel",
+					"types": "String",
+					"description": "Channel for selection",
+					"default": "Пустое значение",
+					"short": "-c"
+				},
+				{
+					"name": "--cursor",
+					"types": "String",
+					"description": "Pointer from the previous request, if the result rows > 100",
+					"default": "Пустое значение",
+					"short": "-c"
+				}
+			],
+			"region": "External files management"
+		},
+		{
+			"name": "GetExternalFile",
+			"id": "GETEXTERNALFILE",
+			"description": "Gets information about the external file",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "String",
+					"description": "File identifier",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "External files management"
+		},
+		{
+			"name": "AddExternalFile",
+			"id": "ADDEXTERNALFILE",
+			"description": "Adds a new external file",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--url",
+					"types": "String",
+					"description": "URL to external file",
+					"default": "",
+					"short": "-u"
+				},
+				{
+					"name": "--title",
+					"types": "String",
+					"description": "File title for Slack",
+					"default": "",
+					"short": "-t"
+				}
+			],
+			"region": "External files management"
+		},
+		{
+			"name": "SendExternalFile",
+			"id": "SENDEXTERNALFILE",
+			"description": "Sends an external file to a list of channels",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "String",
+					"description": "File identifier",
+					"default": "",
+					"short": "-f"
+				},
+				{
+					"name": "--channels",
+					"types": "Array Of String",
+					"description": "Array of channels for sending",
+					"default": "",
+					"short": "-c"
+				}
+			],
+			"region": "External files management"
+		},
+		{
+			"name": "DeleteExternalFile",
+			"id": "DELETEEXTERNALFILE",
+			"description": "Deletes an external file from Slack",
+			"params": [
+				{
+					"name": "--token",
+					"types": "String",
+					"description": "Bot token",
+					"default": "",
+					"short": "-t"
+				},
+				{
+					"name": "--fileid",
+					"types": "String",
+					"description": "File identifier",
+					"default": "",
+					"short": "-f"
+				}
+			],
+			"region": "External files management"
+		},
+		{
+			"name": "GenerateImageBlock",
+			"id": "GENERATEIMAGEBLOCK",
+			"description": "Generates a block with an image to add to the message block array",
+			"params": [
+				{
+					"name": "--picture",
+					"types": "String",
+					"description": "Image URL",
+					"default": "",
+					"short": "-p"
+				},
+				{
+					"name": "--alt",
+					"types": "String",
+					"description": "Alternate text of the image",
+					"default": "Пустое значение",
+					"short": "-a"
+				}
+			],
+			"region": "Block formation"
+		}
+	]
+}
