@@ -1,1 +1,1 @@
-﻿    Result = OPI_OpenAI.GetSystemMessage("What is 1C:Enterprise?");
+    Result = OPI_OpenAI.GetSystemMessage("What is 1C:Enterprise?");

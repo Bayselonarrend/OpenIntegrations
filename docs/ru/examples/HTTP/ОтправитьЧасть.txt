@@ -1,4 +1,4 @@
-﻿    URL = "https://bin.openintegrations.dev";
+    URL = "https://bin.openintegrations.dev";
     URL = URL + "/put";
 
     РазмерЧасти = 524288;

@@ -1,4 +1,4 @@
-﻿    Расширение = "docx";
+    Расширение = "docx";
     URL        = "https://hut.openintegrations.dev/test_data/document.docx";
 
     IDПользователя = "d3jxe61Z4W73nmNkjYGgZg==";

@@ -1,4 +1,4 @@
-﻿    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
+    Token = "secret_9RsfMrRMqZwqp0Zl0B...";
     User  = "ed71865a-9891-46bc-86cd-a92aa499cfdb";
 
     Result = OPI_Notion.GetUserData(Token, User);

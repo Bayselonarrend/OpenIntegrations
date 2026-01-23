@@ -1,1 +1,1 @@
-﻿    Result = OPI_Ollama.GetModelSettingsStructure();
+    Result = OPI_Ollama.GetModelSettingsStructure();

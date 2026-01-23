@@ -1,4 +1,4 @@
-﻿    Extension = "docx";
+    Extension = "docx";
     URL       = "https://hut.openintegrations.dev/test_data/document.docx";
 
     UserID           = "d3jxe61Z4W73nmNkjYGgZg==";

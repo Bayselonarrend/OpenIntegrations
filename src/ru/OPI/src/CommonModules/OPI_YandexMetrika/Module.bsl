@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_YandexMetrika.os
+// OneScript: ./OInt/core/Modules/OPI_YandexMetrika.os
 // Lib: YandexMetrika
 // CLI: metrika
 // Depends: OPI_YandexID

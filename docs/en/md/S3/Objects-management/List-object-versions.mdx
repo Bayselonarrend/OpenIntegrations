@@ -1,4 +1,4 @@
-﻿---
+---
 sidebar_position: 15
 description: List object versions and other functions to work with S3 in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
 keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, S3]
@@ -41,7 +41,7 @@ Method at AWS documentation: [ListObjectVersions](https://docs.aws.amazon.com/Am
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
     Directory = True; // Formation URL in path-style
-    Bucket = "";
+    Bucket = "w567hjy1";
     Prefix = "pic";
     Result = OPI_S3.ListObjectVersions(Bucket, BasicData, Prefix, , , Directory);
 ```

@@ -1,4 +1,4 @@
-﻿    URL   = "https://hut.openintegrations.dev/localai/";
+    URL   = "https://hut.openintegrations.dev/localai/";
     Token = "12We...";
 
     FileID = "file-3";

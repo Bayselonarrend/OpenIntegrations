@@ -1,10 +1,10 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_SSH.os
+// OneScript: ./OInt/core/Modules/OPI_SSH.os
 // Lib: SSH
 // CLI: ssh
 // Keywords: ssh, shell
 
 // DocsCategory: Exchange
-// DocsNameRU: SSH 
+// DocsNameRU: SSH
 // DocsNameEN: SSH
 
 // MIT License

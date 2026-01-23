@@ -1,4 +1,4 @@
-﻿    Keyboard         = New Array;
+    Keyboard         = New Array;
     ButtonsLineArray = New Array;
 
     ButtonsLineArray.Add(OPI_VKTeams.MakeActionButton("Button1", "ButtonEvent1", , "attention"));

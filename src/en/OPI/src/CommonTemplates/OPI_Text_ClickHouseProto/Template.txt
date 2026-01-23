@@ -1,4 +1,4 @@
-﻿/* This file describes gRPC protocol supported in ClickHouse.
+/* This file describes gRPC protocol supported in ClickHouse.
  *
  * To use this protocol a client should send one or more messages of the QueryInfo type
  * and then receive one or more messages of the Result type.

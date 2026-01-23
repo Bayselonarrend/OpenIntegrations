@@ -1,4 +1,4 @@
-﻿    URL = "https://bin.openintegrations.dev";
+    URL = "https://bin.openintegrations.dev";
     URL = URL + "/post";
 
     Data = New Structure("Field1,Field2", "10", "Text");

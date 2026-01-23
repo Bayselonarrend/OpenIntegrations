@@ -1,4 +1,4 @@
-﻿
+
 
 Перем ТаблицаСостава;
 
@@ -89,7 +89,7 @@
         |
 
         |
-        |Utils = ЗагрузитьСценарий(""C:/ProgramData/Jenkins/.jenkins/workspace/OpiBuild/OpiMain/src/ru/cli/tools/Modules/Utils.os"", Контекст);
+        |Utils = ЗагрузитьСценарий(""R:/Repos/OpenIntegrations/src/ru/cli/tools/Modules/Utils.os"", Контекст);
         |" + Символы.ПС;
 
 

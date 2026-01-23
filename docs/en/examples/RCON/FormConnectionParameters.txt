@@ -1,4 +1,4 @@
-﻿    URL          = "127.0.0.1:25565";
+    URL          = "127.0.0.1:25565";
     Password     = "12We...";
     WriteTimeout = 20;
     ReadTimeout  = 20;

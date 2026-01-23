@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_TestDataRetrieval.os
+// OneScript: ./OInt/tools/Modules/OPI_TestDataRetrieval.os
 
 // MIT License
 

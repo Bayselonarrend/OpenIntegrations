@@ -1,11 +1,11 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_GoogleCalendar.os
+// OneScript: ./OInt/core/Modules/OPI_GoogleCalendar.os
 // Lib: GoogleCalendar
 // CLI: gcalendar
 // Keywords: google calendar, googlecalendar, gcalendar
 // Depends: OPI_GoogleWorkspace
 
 // DocsCategory: Calendar
-// DocsNameRU: Google Calendar 
+// DocsNameRU: Google Calendar
 // DocsNameEN: Google Calendar
 
 // MIT License

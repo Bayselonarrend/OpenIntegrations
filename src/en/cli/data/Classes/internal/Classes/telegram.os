@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -785,7 +785,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDPOLL";
     NewLine.Parameter     = "--anonymous";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Survey anonymity flag (optional, def. val.. - True)";
+    NewLine.Description     = "Survey anonymity flag (optional, def. val.. - Yes)";
     NewLine.Region      = "Data sending";
 
 
@@ -1044,7 +1044,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMKEYBOARDFROMBUTTONARRAY";
     NewLine.Parameter     = "--under";
     NewLine.ParameterTrim = "-u";
-    NewLine.Description     = "Keyboard under the message or on the bottom panel (optional, def. val.. - False)";
+    NewLine.Description     = "Keyboard under the message or on the bottom panel (optional, def. val.. - No)";
     NewLine.Region      = "Data sending";
 
 
@@ -1055,7 +1055,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "FORMKEYBOARDFROMBUTTONARRAY";
     NewLine.Parameter     = "--column";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "True > buttons are displayed in a column, False > in a row (optional, def. val.. - True)";
+    NewLine.Description     = "True > buttons are displayed in a column, False > in a row (optional, def. val.. - Yes)";
     NewLine.Region      = "Data sending";
 
 

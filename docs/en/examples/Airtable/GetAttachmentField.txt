@@ -1,1 +1,1 @@
-﻿    Result = OPI_Airtable.GetAttachmentField("Attachment");
+    Result = OPI_Airtable.GetAttachmentField("Attachment");

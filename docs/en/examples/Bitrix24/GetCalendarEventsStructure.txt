@@ -1,1 +1,1 @@
-﻿    Result = OPI_Bitrix24.GetCalendarEventsStructure();
+    Result = OPI_Bitrix24.GetCalendarEventsStructure();

@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -187,7 +187,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "EDITPAGEPROPERTIES";
     NewLine.Parameter     = "--archive";
     NewLine.ParameterTrim = "-a";
-    NewLine.Description     = "Archive page or not (boolean) (optional, def. val.. - False)";
+    NewLine.Description     = "Archive page or not (boolean) (optional, def. val.. - No)";
     NewLine.Region      = "Page management";
 
 
@@ -420,7 +420,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "RETURNBLOCK";
     NewLine.Parameter     = "--core";
     NewLine.ParameterTrim = "-c";
-    NewLine.Description     = "True > service fields are deleted, only the block itself remains (optional, def. val.. - True)";
+    NewLine.Description     = "True > service fields are deleted, only the block itself remains (optional, def. val.. - Yes)";
     NewLine.Region      = "Blocks management";
 
 

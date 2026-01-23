@@ -1,4 +1,4 @@
-﻿    Token     = "6129457865:AAFyzNYOAFbu...";
+    Token     = "6129457865:AAFyzNYOAFbu...";
     ChatID    = "461699897";
     ChannelID = "@testsichee";
     Text      = "Строковое значение";

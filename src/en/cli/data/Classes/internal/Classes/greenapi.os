@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -258,7 +258,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETINSTANCESETTINGSSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Account";
     NewLine.MethodDescription   = "Gets the structure template for instance settings";
 
@@ -778,7 +778,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "SENDPOLL";
     NewLine.Parameter     = "--multi";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "Allows to select more than one answer choice (optional, def. val.. - False)";
+    NewLine.Description     = "Allows to select more than one answer choice (optional, def. val.. - No)";
     NewLine.Region      = "Message sending";
 
 
@@ -1014,7 +1014,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEMESSAGE";
     NewLine.Parameter     = "--sender";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Delete for sender only (optional, def. val.. - False)";
+    NewLine.Description     = "Delete for sender only (optional, def. val.. - No)";
     NewLine.Region      = "Message sending";
 
 

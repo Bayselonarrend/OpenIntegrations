@@ -1,2 +1,2 @@
-﻿coloratos: https://github.com/oscript-library/coloratos
+coloratos: https://github.com/oscript-library/coloratos
 cmdline: https://github.com/oscript-library/cmdline

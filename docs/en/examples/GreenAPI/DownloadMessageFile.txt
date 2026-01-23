@@ -1,10 +1,10 @@
-﻿    ApiUrl           = "https://7105.api.greenapi.com";
+    ApiUrl           = "https://7105.api.greenapi.com";
     MediaUrl         = "https://7105.media.greenapi.com";
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
     ChatID    = "120363410406221140@g.us";
-    MessageID = "3EB01269EB6097D0BCEAD2";
+    MessageID = "BAE58CA98E4E31AB";
 
     AccessParameters = OPI_GreenAPI.FormAccessParameters(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
     Result           = OPI_GreenAPI.DownloadMessageFile(AccessParameters, ChatID, MessageID);

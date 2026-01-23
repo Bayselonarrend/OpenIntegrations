@@ -1,3 +1,3 @@
-﻿    Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
+    Token = "y0_AgAAAABdylaOAAy9KgAAAAEXh6i...";
 
     Result = OPI_YandexMetrika.GetTagsList(Token);

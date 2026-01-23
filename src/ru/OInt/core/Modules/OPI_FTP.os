@@ -3,6 +3,10 @@
 // CLI: ftp
 // Keywords: ftp, ftps
 
+// DocsCategory: Exchange
+// DocsNameRU: FTP(S)
+// DocsNameEN: FTP(S)
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

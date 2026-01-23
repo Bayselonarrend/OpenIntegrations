@@ -1,4 +1,4 @@
-﻿    Token = "523b58ba82afffaa-7ef3b426...";
+    Token = "523b58ba82afffaa-7ef3b426...";
     URL   = "http://api.athenaeum.digital/hs/viber";
 
     Result = OPI_Viber.SetWebhook(Token, URL);

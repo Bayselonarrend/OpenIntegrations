@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -290,7 +290,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCOUNTERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Counters management";
     NewLine.MethodDescription   = "Gets the structure of standard fields for counter creation";
 
@@ -302,7 +302,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCOUNTERFILTERSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Counters management";
     NewLine.MethodDescription   = "Gets the structure of filter fields to get the list of counters";
 

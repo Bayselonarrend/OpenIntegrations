@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <mdclass:CommonModule xmlns:mdclass="http://g5.1c.ru/v8/dt/metadata/mdclass" uuid="34f3181c-fd79-4d34-9978-5ebb19c8d974">
   <name>OPI_ClickHouse</name>
   <synonym>

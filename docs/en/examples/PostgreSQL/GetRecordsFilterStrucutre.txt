@@ -1,1 +1,1 @@
-﻿    Result = OPI_PostgreSQL.GetRecordsFilterStrucutre();
+    Result = OPI_PostgreSQL.GetRecordsFilterStrucutre();

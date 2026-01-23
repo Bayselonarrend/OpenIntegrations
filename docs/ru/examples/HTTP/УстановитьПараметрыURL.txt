@@ -1,4 +1,4 @@
-﻿    URL = "https://bin.openintegrations.dev";
+    URL = "https://bin.openintegrations.dev";
     URL = URL + "/get";
 
     СтруктураПараметров = Новый Структура("param1,param2", "text", 10);

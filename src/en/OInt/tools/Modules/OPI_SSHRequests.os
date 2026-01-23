@@ -1,4 +1,4 @@
-﻿// OneScript: ./OInt/tools/Modules/OPI_SSHRequests.os
+// OneScript: ./OInt/tools/Modules/OPI_SSHRequests.os
 
 // MIT License
 

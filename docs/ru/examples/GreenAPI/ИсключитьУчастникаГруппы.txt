@@ -1,9 +1,9 @@
-﻿    ApiUrl           = "https://7105.api.greenapi.com";
+    ApiUrl           = "https://7105.api.greenapi.com";
     MediaUrl         = "https://7105.media.greenapi.com";
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
-    IDГруппы       = "120363425349847662@g.us";
+    IDГруппы       = "120363421084000163@g.us";
     IDПользователя = "123123123@c.us";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);

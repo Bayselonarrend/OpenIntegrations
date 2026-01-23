@@ -1,1 +1,1 @@
-﻿    Result = OPI_CDEK.GetOfficeFilterDescription();
+    Result = OPI_CDEK.GetOfficeFilterDescription();

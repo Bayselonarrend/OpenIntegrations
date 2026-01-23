@@ -4,6 +4,10 @@
 // Keywords: mssql, ms sql
 // Depends: OPI_MSSQL
 
+// DocsCategory: Database
+// DocsNameRU: MS SQL
+// DocsNameEN: MS SQL
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

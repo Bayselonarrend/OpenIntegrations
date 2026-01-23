@@ -5400,332 +5400,332 @@
 "variant": "Error"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "Initialize",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "Initialize",
 "variant": "Check 1"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "Initialize",
 "variant": "Check 2"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetURL",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetURL",
 "variant": "Check"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetURLParams",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetURLParams",
 "variant": "Check"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetURLParams",
 "variant": "Option 1"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetURLParams",
 "variant": "Option 2"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetURLParams",
 "variant": "Variant 3"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetURLParams",
 "variant": "Variant 4"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetURLParams",
 "variant": "Variant 5"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetURLParams",
 "variant": "Variant 6"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetURLParams",
 "variant": "Variant 7"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetResponseFile",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetResponseFile",
 "variant": "Body"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetDataType",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "GetLog",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetBinaryBody",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetStringBody",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetJsonBody",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetFormBody",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "StartMultipartBody",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "AddMultipartFormDataFile",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "AddMultipartFormDataField",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "AddDataAsRelated",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "UseEncoding",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "UseGzipCompression",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "UseGzipCompression",
 "variant": "Enabled"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "UseBodyFiledsAtOAuth",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "UseBodyFiledsAtOAuth",
 "variant": "Enabled"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetHeaders",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetHeaders",
 "variant": "Rewrite"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "AddHeader",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "AddHeader",
 "variant": "Replace"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "AddHeader",
 "variant": "Addition"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "AddBasicAuthorization",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "AddBearerAuthorization",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "AddAWS4Authorization",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "AddOAuthV1Authorization",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetOAuthV1Algorithm",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ProcessRequest",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ExecuteRequest",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ExecuteRequest",
 "variant": "No execution"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ExecuteRequest",
 "variant": "Execution"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ReturnRequest",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ReturnRequest",
 "variant": "Forced"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ReturnConnection",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ReturnConnection",
 "variant": "Forced"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ReturnResponse",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ReturnResponseAsJSONObject",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ReturnResponseAsBinaryData",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ReturnResponseAsString",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ReturnResponseFilename",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetProxy",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SetTimeout",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "UseURLEncoding",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SplitArraysInURL",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SendDataInParts",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "SendPart",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "MaxAttempts",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "MaxRedirects",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ReturnSettings",
 "variant": ""
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ReturnSettings",
 "variant": "Single"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ReturnSettings",
 "variant": "Array"
 },
 {
-"lib": "HTTPClient",
+"lib": "HTTP",
 "name": "ReturnSettings",
 "variant": "Nonexistent"
 },

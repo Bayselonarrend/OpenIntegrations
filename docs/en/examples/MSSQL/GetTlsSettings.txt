@@ -1,1 +1,1 @@
-﻿    Result = OPI_MSSQL.GetTLSSettings(True);
+    Result = OPI_MSSQL.GetTLSSettings(True);

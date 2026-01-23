@@ -1,2 +1,2 @@
-﻿    Clear  = False;
+    Clear  = False;
     Result = OPI_Bitrix24.GetTasksFilterStructure(Clear);

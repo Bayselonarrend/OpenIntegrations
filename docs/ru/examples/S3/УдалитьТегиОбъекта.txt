@@ -1,4 +1,4 @@
-﻿    URL       = "s3.openintegrations.dev";
+    URL       = "s3.openintegrations.dev";
     AccessKey = "bayselo...";
     SecretKey = "12we34...";
     Region    = "BTC";
@@ -8,5 +8,5 @@
     Наименование = "picture.jpg";
 
     Каталог = Истина; // Формирование URL в path-style
-    Бакет = "";
+    Бакет = "w567hjy1";
     Результат = OPI_S3.УдалитьТегиОбъекта(Наименование, Бакет, ОсновныеДанные, , , Каталог);

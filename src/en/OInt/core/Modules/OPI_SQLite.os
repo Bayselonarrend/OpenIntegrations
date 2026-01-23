@@ -4,6 +4,10 @@
 // Keywords: sqlite
 // Depends: OPI_SQLite
 
+// DocsCategory: Database
+// DocsNameRU: SQLite
+// DocsNameEN: SQLite
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

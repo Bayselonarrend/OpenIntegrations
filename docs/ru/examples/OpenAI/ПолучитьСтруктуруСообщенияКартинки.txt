@@ -1,4 +1,4 @@
-﻿    URL      = "https://hut.openintegrations.dev/localai/";
+    URL      = "https://hut.openintegrations.dev/localai/";
     Токен    = "12We...";
     Картинка = "file-3";
 

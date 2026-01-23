@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -464,7 +464,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "PROCESSBIDIRECTIONALSTREAM";
     NewLine.Parameter     = "--cnt";
     NewLine.ParameterTrim = "-n";
-    NewLine.Description     = "Continue receiving after processing the exchange order (optional, def. val.. - True)";
+    NewLine.Description     = "Continue receiving after processing the exchange order (optional, def. val.. - Yes)";
     NewLine.Region      = "Streaming";
 
     Return CompositionTable;

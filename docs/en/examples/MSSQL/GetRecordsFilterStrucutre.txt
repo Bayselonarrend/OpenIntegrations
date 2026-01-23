@@ -1,1 +1,1 @@
-﻿    Result = OPI_MSSQL.GetRecordsFilterStrucutre();
+    Result = OPI_MSSQL.GetRecordsFilterStrucutre();

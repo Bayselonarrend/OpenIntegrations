@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -246,7 +246,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CHECKACCOUNT";
     NewLine.Parameter     = "--force";
     NewLine.ParameterTrim = "-f";
-    NewLine.Description     = "Ignore cache on repeated verification request (optional, def. val.. - False)";
+    NewLine.Description     = "Ignore cache on repeated verification request (optional, def. val.. - No)";
     NewLine.Region      = "Account";
 
 
@@ -338,7 +338,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETINSTANCESETTINGSSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Account";
     NewLine.MethodDescription   = "Gets the structure template for instance settings";
 
@@ -668,7 +668,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETGROUPSETTINGSSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Group management";
     NewLine.MethodDescription   = "Returns the structure of group chat settings fields";
 
@@ -680,7 +680,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETGROUPSETTINGSSTRUCTURE";
     NewLine.Parameter     = "--map";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "True > returns settings fields as a mapping (optional, def. val.. - False)";
+    NewLine.Description     = "True > returns settings fields as a mapping (optional, def. val.. - No)";
     NewLine.Region      = "Group management";
 
 
@@ -915,7 +915,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETNOTIFICATION";
     NewLine.Parameter     = "--del";
     NewLine.ParameterTrim = "-d";
-    NewLine.Description     = "Delete notification from the queue after retrieval (optional, def. val.. - False)";
+    NewLine.Description     = "Delete notification from the queue after retrieval (optional, def. val.. - No)";
     NewLine.Region      = "Notifications";
 
 

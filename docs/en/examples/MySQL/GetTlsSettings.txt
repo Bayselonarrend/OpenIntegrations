@@ -1,1 +1,1 @@
-﻿    Result = OPI_MySQL.GetTLSSettings(True);
+    Result = OPI_MySQL.GetTLSSettings(True);

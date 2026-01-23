@@ -1,4 +1,4 @@
-﻿    ButtonArray = New Array;
+    ButtonArray = New Array;
     ButtonArray.Add("Button1");
     ButtonArray.Add("Button2");
     ButtonArray.Add("Button3");

@@ -1,10 +1,10 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Viber.os
+// OneScript: ./OInt/core/Modules/OPI_Viber.os
 // Lib: Viber
 // CLI: viber
 // Keywords: viber
 
 // DocsCategory: Messenger
-// DocsNameRU: Viber 
+// DocsNameRU: Viber
 // DocsNameEN: Viber
 
 // MIT License

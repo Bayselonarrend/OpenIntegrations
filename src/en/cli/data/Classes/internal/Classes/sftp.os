@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -83,7 +83,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPDATEPATH";
     NewLine.Parameter     = "--rw";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Overwrite if an object already exists at the target path (optional, def. val.. - False)";
+    NewLine.Description     = "Overwrite if an object already exists at the target path (optional, def. val.. - No)";
     NewLine.Region      = "Common methods";
 
 
@@ -320,7 +320,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "LISTOBJECTS";
     NewLine.Parameter     = "--rcv";
     NewLine.ParameterTrim = "-r";
-    NewLine.Description     = "Get information about objects in nested directories (optional, def. val.. - False)";
+    NewLine.Description     = "Get information about objects in nested directories (optional, def. val.. - No)";
     NewLine.Region      = "Directory management";
 
 

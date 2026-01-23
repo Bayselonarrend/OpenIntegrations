@@ -1,1 +1,1 @@
-﻿    Результат = OPI_OpenAI.ПолучитьСообщениеАссистента("What is 1C:Enterprise?");
+    Результат = OPI_OpenAI.ПолучитьСообщениеАссистента("What is 1C:Enterprise?");

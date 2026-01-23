@@ -1,7 +1,11 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_Airtable.os
+// OneScript: ./OInt/core/Modules/OPI_Airtable.os
 // Lib: Airtable
 // CLI: airtable
 // Keywords: airtable
+
+// DocsCategory: Database
+// DocsNameRU: Airtable
+// DocsNameEN: Airtable
 
 // MIT License
 
