@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -287,7 +287,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "DELETEMESSAGE";
     NewLine.Parameter     = "--issheduled";
     NewLine.ParameterTrim = "-i";
-    NewLine.Description     = "Indicator of deleting a delayed message (optional, def. val.. - False)";
+    NewLine.Description     = "Indicator of deleting a delayed message (optional, def. val.. - No)";
     NewLine.Region      = "Message management";
 
 
@@ -423,7 +423,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETCHANNELLIST";
     NewLine.Parameter     = "--notarchived";
     NewLine.ParameterTrim = "-n";
-    NewLine.Description     = "Indicator of excluding archived channels (optional, def. val.. - False)";
+    NewLine.Description     = "Indicator of excluding archived channels (optional, def. val.. - No)";
     NewLine.Region      = "Channel management";
 
 
@@ -502,7 +502,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "CREATECHANNEL";
     NewLine.Parameter     = "--private";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Create channel as private (optional, def. val.. - False)";
+    NewLine.Description     = "Create channel as private (optional, def. val.. - No)";
     NewLine.Region      = "Channel management";
 
 

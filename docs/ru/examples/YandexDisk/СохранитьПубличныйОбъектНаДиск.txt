@@ -1,4 +1,4 @@
-﻿    Токен = "y0__xCOranuBRj1uTsgs8z_iRV...";
-    URL   = "https://yadi.sk/d/CdYAMtEDoJVXJQ";
+    Токен = "y0__xCOranuBRj1uTsgs8z_iRV...";
+    URL   = "https://yadi.sk/d/n0QfpfP48V7piQ";
 
     Результат = OPI_YandexDisk.СохранитьПубличныйОбъектНаДиск(Токен, URL);

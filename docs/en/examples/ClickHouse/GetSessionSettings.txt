@@ -1,4 +1,4 @@
-﻿    SessionID = String(New UUID);
+    SessionID = String(New UUID);
     Check     = True;
     Timeout   = 120;
 

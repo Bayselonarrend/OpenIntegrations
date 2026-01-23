@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -363,7 +363,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLAUNCHSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Results management";
     NewLine.MethodDescription   = "Gets the launch parameters structure";
 
@@ -375,7 +375,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETLAUNCHSTRUCTURE";
     NewLine.Parameter     = "--map";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val.. - False)";
+    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val.. - No)";
     NewLine.Region      = "Results management";
 
 
@@ -386,7 +386,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETITEMSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Results management";
     NewLine.MethodDescription   = "Gets the test item parameter structure";
 
@@ -398,7 +398,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETITEMSTRUCTURE";
     NewLine.Parameter     = "--map";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val.. - False)";
+    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val.. - No)";
     NewLine.Region      = "Results management";
 
 
@@ -409,7 +409,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETITEMCOMPLETIONSTRUCTURE";
     NewLine.Parameter     = "--empty";
     NewLine.ParameterTrim = "-e";
-    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - False)";
+    NewLine.Description     = "True > structure with empty valuse, False > field descriptions at values (optional, def. val.. - No)";
     NewLine.Region      = "Results management";
     NewLine.MethodDescription   = "Gets the parameter structure for completing the test item execution";
 
@@ -421,7 +421,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETITEMCOMPLETIONSTRUCTURE";
     NewLine.Parameter     = "--map";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val.. - False)";
+    NewLine.Description     = "True > returns the filter fields as a map (optional, def. val.. - No)";
     NewLine.Region      = "Results management";
 
 

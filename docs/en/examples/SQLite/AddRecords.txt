@@ -1,10 +1,10 @@
-﻿    Image = "https://hut.openintegrations.dev/test_data/picture.jpg";
+    Image = "https://hut.openintegrations.dev/test_data/picture.jpg";
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
     PictureFile = GetTempFileName("png");
     Image.Write(PictureFile); // PictureFile - File to disk
 
-    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_5DFF_2c.sqlite";
+    Base  = "/tmp/vnnmoosn.qqb.sqlite";
     Table = "test";
 
     DataArray = New Array;

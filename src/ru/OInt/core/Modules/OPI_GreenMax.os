@@ -3,6 +3,10 @@
 // CLI: greenmax
 // Keywords: greenapi, max
 
+// DocsCategory: Messenger
+// DocsNameRU: GreenAPI (Max)
+// DocsNameEN: GreenAPI (Max)
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

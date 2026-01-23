@@ -1,4 +1,4 @@
-﻿    Token  = "6129457865:AAFyzNYOAFbu...";
+    Token  = "6129457865:AAFyzNYOAFbu...";
     ChatID = "461699897";
     Text   = "Строковое значение";
     Image  = "https://hut.openintegrations.dev/test_data/picture.jpg";

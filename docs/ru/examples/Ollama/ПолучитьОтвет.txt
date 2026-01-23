@@ -1,4 +1,4 @@
-﻿    URL   = "https://hut.openintegrations.dev/ollama";
+    URL   = "https://hut.openintegrations.dev/ollama";
     Токен = "12We34..."; // Авторизация - не часть API Ollama
 
     Промпт = "What is 1C:Enterprise?";

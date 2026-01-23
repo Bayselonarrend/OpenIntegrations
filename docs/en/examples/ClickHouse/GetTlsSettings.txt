@@ -1,1 +1,1 @@
-﻿    Result = OPI_ClickHouse.GetTlsSettings(False);
+    Result = OPI_ClickHouse.GetTlsSettings(False);

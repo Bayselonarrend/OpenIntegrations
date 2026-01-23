@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -556,7 +556,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDOCUMENTUPDATESTRUCTURE";
     NewLine.Parameter     = "--multi";
     NewLine.ParameterTrim = "-m";
-    NewLine.Description     = "True > updates all documents by filter, False > only one (optional, def. val.. - True)";
+    NewLine.Description     = "True > updates all documents by filter, False > only one (optional, def. val.. - Yes)";
     NewLine.Region      = "Documents management";
 
 
@@ -567,7 +567,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDOCUMENTUPDATESTRUCTURE";
     NewLine.Parameter     = "--upsert";
     NewLine.ParameterTrim = "-u";
-    NewLine.Description     = "Insert a new document if no document was found (optional, def. val.. - False)";
+    NewLine.Description     = "Insert a new document if no document was found (optional, def. val.. - No)";
     NewLine.Region      = "Documents management";
 
 
@@ -791,7 +791,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSERS";
     NewLine.Parameter     = "--spwd";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Adds user password hash to the returned data (optional, def. val.. - False)";
+    NewLine.Description     = "Adds user password hash to the returned data (optional, def. val.. - No)";
     NewLine.Region      = "Users management";
 
 
@@ -802,7 +802,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETUSERS";
     NewLine.Parameter     = "--sprv";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Adds a list of user privileges to the returned data (optional, def. val.. - False)";
+    NewLine.Description     = "Adds a list of user privileges to the returned data (optional, def. val.. - No)";
     NewLine.Region      = "Users management";
 
 
@@ -836,7 +836,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDATABASEUSERS";
     NewLine.Parameter     = "--spwd";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Adds user password hash to the returned data (optional, def. val.. - False)";
+    NewLine.Description     = "Adds user password hash to the returned data (optional, def. val.. - No)";
     NewLine.Region      = "Users management";
 
 
@@ -847,7 +847,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETDATABASEUSERS";
     NewLine.Parameter     = "--sprv";
     NewLine.ParameterTrim = "-p";
-    NewLine.Description     = "Adds a list of user privileges to the returned data (optional, def. val.. - False)";
+    NewLine.Description     = "Adds a list of user privileges to the returned data (optional, def. val.. - No)";
     NewLine.Region      = "Users management";
 
 
@@ -1071,7 +1071,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "GETROLES";
     NewLine.Parameter     = "--sprv";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "Adds a list of role privileges to the returned data (optional, def. val.. - False)";
+    NewLine.Description     = "Adds a list of role privileges to the returned data (optional, def. val.. - No)";
     NewLine.Region      = "Role management";
 
 

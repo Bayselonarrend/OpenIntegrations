@@ -1,4 +1,4 @@
-﻿    URL       = "s3.openintegrations.dev";
+    URL       = "s3.openintegrations.dev";
     AccessKey = "bayselo...";
     SecretKey = "12we34...";
     Region    = "BTC";
@@ -7,5 +7,5 @@
     Status    = True;
 
     Directory = True; // Formation URL in path-style
-    Name = "";
+    Name = "w567hjy1";
     Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status);

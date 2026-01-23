@@ -1,4 +1,4 @@
-﻿    Токен    = "6129457865:AAFyzNYOAFbu...";
+    Токен    = "6129457865:AAFyzNYOAFbu...";
     IDЧата   = "461699897";
     Текст    = "Строковое значение";
     Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg";

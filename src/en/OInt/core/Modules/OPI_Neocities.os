@@ -3,6 +3,10 @@
 // CLI: neocities
 // Keywords: neocities
 
+// DocsCategory: Other
+// DocsNameRU: Neocities
+// DocsNameEN: Neocities
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

@@ -1,4 +1,4 @@
-﻿    TFN = GetTempFileName("sqlite");
+    TFN = GetTempFileName("sqlite");
 
     LocalBase    = OPI_SQLite.CreateConnection(TFN);
     InMemoryBase = OPI_SQLite.CreateConnection();

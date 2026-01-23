@@ -1,1 +1,1 @@
-﻿    Result = OPI_OpenAI.GetAssistantMessage("What is 1C:Enterprise?");
+    Result = OPI_OpenAI.GetAssistantMessage("What is 1C:Enterprise?");

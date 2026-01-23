@@ -1,7 +1,7 @@
-﻿---
+---
 sidebar_position: 5
-description: Move event and other functions to work with Google Calendar in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
-keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, Google Calendar]
+description: Move event and other functions to work with GoogleCalendar in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, GoogleCalendar]
 ---
 
 import Tabs from '@theme/Tabs';
@@ -27,10 +27,10 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="1C:Enterprise/OneScript code example"
-    Token = "ya29.a0Aa7pCA_GKuTstHik6bj1MJWZFLq6Rw5mQEZ6UpvNp9rgAbC-k5fpzhJPU_c4cEvVXwDo6GAXMYcBuPpzfZoPNP2pKbXWwL-bwnzotcuHaeGL9ZoSxPM95kRPm...";
-    Event = "nfvagukkh3e3juj875j87q06r4";
+    Token = "ya29.a0ATi6K2sWW_31WLH0d9aK0qk0HJ-UfyvZDcLeBbF5bLU7QH09Bx2pXAupIw40USQVaxXqsovItVSt9swWuPdBDSA0eFaVPE0CbaU2OLQlyrnITI1VVXgZ_Gx2R...";
+    Event = "l6kkhcjgt4n0a3qdonan09tv30";
 
-    SourceCalendar = "820a0b504e49dc31b520578e608186d90ce12d730bb5b46b48f372df1a63cd0b@group.calendar.google.com";
+    SourceCalendar = "f70efec034ef36b040f12b5d8938e54fc399d73cd37b8e765bdd86ebc4a67e4a@group.calendar.google.com";
     TargetCalendar = "bayselonarrend@gmail.com";
 
     Result = OPI_GoogleCalendar.MoveEvent(Token, SourceCalendar, TargetCalendar, Event);

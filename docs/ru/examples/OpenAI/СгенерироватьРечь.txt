@@ -1,4 +1,4 @@
-﻿    URL   = "https://hut.openintegrations.dev/localai/";
+    URL   = "https://hut.openintegrations.dev/localai/";
     Токен = "12We...";
 
     Текст  = "Attack ships on fire off the shoulder of Orion bright as magnesium";

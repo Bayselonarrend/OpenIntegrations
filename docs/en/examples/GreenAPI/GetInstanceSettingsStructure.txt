@@ -1,1 +1,1 @@
-﻿    Result = OPI_GreenAPI.GetInstanceSettingsStructure();
+    Result = OPI_GreenAPI.GetInstanceSettingsStructure();

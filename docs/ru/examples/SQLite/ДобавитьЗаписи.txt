@@ -1,10 +1,10 @@
-﻿    Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg";
+    Картинка = "https://hut.openintegrations.dev/test_data/picture.jpg";
     OPI_ПреобразованиеТипов.ПолучитьДвоичныеДанные(Картинка); // Картинка - Тип: ДвоичныеДанные
 
     ФайлКартинки = ПолучитьИмяВременногоФайла("png");
     Картинка.Записать(ФайлКартинки);                          // ФайлКартинки - Файл на диске
 
-    База    = "C:\Users\bayse\AppData\Local\Temp\v8_5DFF_2c.sqlite";
+    База    = "/tmp/vnnmoosn.qqb.sqlite";
     Таблица = "test";
 
     МассивДанных = Новый Массив;

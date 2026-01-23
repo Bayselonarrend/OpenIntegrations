@@ -1,1 +1,1 @@
-﻿    Result = OPI_GoogleDrive.GetFileDescription();
+    Result = OPI_GoogleDrive.GetFileDescription();

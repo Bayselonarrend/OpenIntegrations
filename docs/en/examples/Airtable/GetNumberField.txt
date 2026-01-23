@@ -1,1 +1,1 @@
-﻿    Result = OPI_Airtable.GetNumberField("Number");
+    Result = OPI_Airtable.GetNumberField("Number");

@@ -1,4 +1,4 @@
-﻿    Данные = "https://hut.openintegrations.dev/secret_test_data/google_service.json"; // URL, двоичные данные, файл или коллекция
+    Данные = "https://hut.openintegrations.dev/secret_test_data/google_service.json"; // URL, двоичные данные, файл или коллекция
 
     ОбластиДействия = Новый Массив;
     ОбластиДействия.Добавить("https://www.googleapis.com/auth/calendar");

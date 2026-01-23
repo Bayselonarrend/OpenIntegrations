@@ -5400,332 +5400,332 @@
 "variant": "Ошибка"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "Инициализировать",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "Инициализировать",
 "variant": "Проверка 1"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "Инициализировать",
 "variant": "Проверка 2"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьURL",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьURL",
 "variant": "Проверка"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьПараметрыURL",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьПараметрыURL",
 "variant": "Проверка"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьПараметрыURL",
 "variant": "Вариант 1"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьПараметрыURL",
 "variant": "Вариант 2"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьПараметрыURL",
 "variant": "Вариант 3"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьПараметрыURL",
 "variant": "Вариант 4"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьПараметрыURL",
 "variant": "Вариант 5"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьПараметрыURL",
 "variant": "Вариант 6"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьПараметрыURL",
 "variant": "Вариант 7"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьФайлОтвета",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьФайлОтвета",
 "variant": "Тело"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьТипДанных",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ПолучитьЛог",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьДвоичноеТело",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьСтроковоеТело",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьJsonТело",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьFormТело",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "НачатьЗаписьТелаMultipart",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ДобавитьФайлMultipartFormData",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ДобавитьПолеMultipartFormData",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ДобавитьДанныеRelated",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ИспользоватьКодировку",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ИспользоватьСжатиеGzip",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ИспользоватьСжатиеGzip",
 "variant": "Включено"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ИспользоватьПоляТелаВOAuth",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ИспользоватьПоляТелаВOAuth",
 "variant": "Включено"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьЗаголовки",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьЗаголовки",
 "variant": "Перезапись"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ДобавитьЗаголовок",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ДобавитьЗаголовок",
 "variant": "Замена"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ДобавитьЗаголовок",
 "variant": "Дополнение"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ДобавитьBasicАвторизацию",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ДобавитьBearerАвторизацию",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ДобавитьAWS4Авторизацию",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ДобавитьOAuthV1Авторизацию",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьАлгоритмOAuthV1",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ОбработатьЗапрос",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВыполнитьЗапрос",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВыполнитьЗапрос",
 "variant": "Без выполнения"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВыполнитьЗапрос",
 "variant": "Выполнение"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВернутьЗапрос",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВернутьЗапрос",
 "variant": "Принудительно"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВернутьСоединение",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВернутьСоединение",
 "variant": "Принудительно"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВернутьОтвет",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВернутьОтветКакJSONКоллекцию",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВернутьОтветКакДвоичныеДанные",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВернутьОтветКакСтроку",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВернутьИмяФайлаТелаОтвета",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьПрокси",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "УстановитьТаймаут",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ИспользоватьКодированиеURL",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "РазделятьМассивыВURL",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ОтправитьДанныеЧастями",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ОтправитьЧасть",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "МаксимумПопыток",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "МаксимумПереадресаций",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВернутьНастройки",
 "variant": ""
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВернутьНастройки",
 "variant": "Одиночный"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВернутьНастройки",
 "variant": "Массив"
 },
 {
-"lib": "HTTPКлиент",
+"lib": "HTTP",
 "name": "ВернутьНастройки",
 "variant": "Несуществующий"
 },

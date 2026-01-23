@@ -1,4 +1,4 @@
-﻿    Name  = "Petr Petrov";
+    Name  = "Petr Petrov";
     Phone = "+123456789";
 
     UserID           = "d3jxe61Z4W73nmNkjYGgZg==";

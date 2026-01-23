@@ -1,13 +1,13 @@
-﻿    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    MessageID = "74600";
+    URL       = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
+    MessageID = "67534";
 
     Text = "New message text";
 
     Result = OPI_Bitrix24.EditMessage(URL, MessageID, Text);
 
     URL       = "b24-ar17wx.bitrix24.by";
-    Token     = "bafe5c69006e9f06006b12e400000001000...";
-    MessageID = "74602";
+    Token     = "a5b00469006e9f06006b12e400000001000...";
+    MessageID = "67536";
 
     Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";

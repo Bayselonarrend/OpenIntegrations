@@ -1,4 +1,4 @@
-﻿    // The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
+    // The complete structure of the fields can be obtained by the GetTaskFieldsStructure() function()
 
     CurrentDate = OPI_Tools.GetCurrentDate();
     Hour        = 3600;
@@ -12,11 +12,11 @@
     TaskData.Insert("DEADLINE"      , CurrentDate + Hour * Day);
     TaskData.Insert("RESPONSIBLE_ID", Responsible);
 
-    URL = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    URL = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
 
     Result = OPI_Bitrix24.CreateTask(URL, TaskData);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "bafe5c69006e9f06006b12e400000001000...";
+    Token = "a5b00469006e9f06006b12e400000001000...";
 
     Result = OPI_Bitrix24.CreateTask(URL, TaskData, Token);

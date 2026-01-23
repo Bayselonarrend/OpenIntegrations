@@ -1,10 +1,10 @@
-﻿// OneScript: ./OInt/core/Modules/OPI_SFTP.os
+// OneScript: ./OInt/core/Modules/OPI_SFTP.os
 // Lib: SFTP
 // CLI: sftp
 // Keywords: sftp
 
 // DocsCategory: Exchange
-// DocsNameRU: SFTP 
+// DocsNameRU: SFTP
 // DocsNameEN: SFTP
 
 // MIT License

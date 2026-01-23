@@ -3,6 +3,10 @@
 // CLI: ssh
 // Keywords: ssh, shell
 
+// DocsCategory: Exchange
+// DocsNameRU: SSH
+// DocsNameEN: SSH
+
 // MIT License
 
 // Copyright (c) 2023-2026 Anton Tsitavets

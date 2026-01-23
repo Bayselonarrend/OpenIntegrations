@@ -1,4 +1,4 @@
-﻿
+
 
 Var CompositionTable;
 
@@ -129,7 +129,7 @@ Function GetComposition() Export
     NewLine.SearchMethod  = "UPLOADFILES";
     NewLine.Parameter     = "--singly";
     NewLine.ParameterTrim = "-s";
-    NewLine.Description     = "True > sends files in separate requests (optional, def. val.. - False)";
+    NewLine.Description     = "True > sends files in separate requests (optional, def. val.. - No)";
     NewLine.Region      = "File management";
 
 
