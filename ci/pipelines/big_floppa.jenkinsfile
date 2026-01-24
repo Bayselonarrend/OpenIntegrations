@@ -16,7 +16,10 @@ pipeline {
         }
         stage('Melezh - Main + Release') {
             steps {
-                build job: 'Melezh/MelezhRelease', wait: true
+                build job: 'Melezh/MelezhRelease', wait: true,
+                parameters: [
+                    string(name: 'MELEZH_VERSION', value: '0.9.0'),
+                ]
             }
         }
         stage('OpenIntegrations - 1C DB Update') {
@@ -35,7 +38,7 @@ pipeline {
                 build job: 'Melezh/MelezhDocker', wait: true,
                     parameters: [
                             [$class: 'StringParameterValue', name: 'VERSION', value: 'draft'],
-                            [$class: 'StringParameterValue', name: 'MELEZH_VERSION', value: '0.7.0'],
+                            [$class: 'StringParameterValue', name: 'MELEZH_VERSION', value: '0.9.0'],
                             [$class: 'StringParameterValue', name: 'OINT_VERSION', value: '1.32.0'],
                             [$class: 'StringParameterValue', name: 'OINT_BUILD_ID', value: 'lastSuccessfulBuild']
                     ]
