@@ -1,20 +1,20 @@
 ---
 id: HTTP
 sidebar_class_name: HTTP
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, HTTP, HTTPS]
 ---
 
 <img src={require('../../static/img/APIs/HTTP.png').default} width='64px' />
 
 # HTTP (Client)
 
+This section covers the library for working with the HTTP protocol in 1C:Enterprise, OneScript, and CLI. This page describes all the actions required to get started.
 
-This section covers the library for working with HTTP(s) protocol in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
+## Getting Started
 
-## Getting started
+The HTTP module is designed for quickly creating HTTP requests in 1C:Enterprise and OneScript using a fluent interface. Each request should start by initializing the HTTP client in one of the following ways:
 
-The HTTP module is designed to quickly create HTTP requests in 1C:Enterprise and OneScript using the fluent interface. Each request must be started by initializing the HTTP client in one of the following ways:
-
-```bsl title="Common method (recommended)"
+```bsl title="Universal method (recommended)"
     HTTPClient = OPI_HTTPRequests
         .NewRequest()
         .Initialize(URL)
@@ -29,16 +29,16 @@ The HTTP module is designed to quickly create HTTP requests in 1C:Enterprise and
     HTTPClient.Initialize(URL);
 ```
 
-The client can also be initialized without specifying a URL. See *Initialization* for details
+The client can also be initialized without setting the URL. For details, see the *Initialization* section.
 
-## Common procedure for creating a request
+## General request description workflow
 
-After client initialization, a new request can be described by any number of additional actions listed in the subsections of this documentation block
+After initializing the client, a new request can be formed with any number of additional actions described in the subsections of this documentation block.
 
 ```bsl
 
-    URL  = "https://exemple.com/post";
-    Data = New Structure("Field1,Field2,Field3", 10, "Text", 20);
+    URL    = "https://exemple.com/post";
+    Data   = New Structure("Field1,Field2,Field3", 10, "Text", 20);
 
     Result = OPI_HTTPRequests.NewRequest()
         .Initialize(URL)
@@ -51,18 +51,19 @@ After client initialization, a new request can be described by any number of add
 
 ```
 
-In general, to execute the request after the end of formation, the `ProcessRequest(Method, Start = True)` function is used or the same function with the `Start = False` attribute and calling the `ExecuteRequest` function separately. To receive the final response after processing the request, one of the functions from the *Response receiving* section is used, depending on the expected body format
+Typically, to execute a request after building it, either the `ProcessRequest(Method, ExecuteImmediately = True)` function is used, or the same function with `ExecuteImmediately = False` and a separate call to `ExecuteRequest`. To receive the final response after processing the request, use one of the functions from the *Receiving the response* section, depending on the expected body format.
 
 ## Logging
 
-During the client's operation, logging of its actions is performed. To retrieve the log, the `GetLog` function is used, which returns the recorded actions as either an array or a single string (depending on the value of the `AsString` parameter). Some functions from the *Response receiving* section may also return a log string within an exception when the `ExceptionOnError`  parameter is specified (otherwise, in case of an error, the HTTP client object is returned, from which the log can be obtained manually).
+The client logs its operations as they are performed. To retrieve the log, use the `GetLog` function, which returns a list of actions as an array or a single string (depending on the `AsString` parameter). Some functions from the *Receiving the response* section may also return the log string in an exception if you specify the `ExceptionOnError` parameter (otherwise, in case of an error, the HTTP client object is returned, from which the log can be retrieved manually).
 
 ```bsl
 
     URL             = "https://exemple.com";
     ParamsStructure = New Structure("param1,param2", "text", 10);
 
-    HTTPClient = OPI_HTTPRequests.NewRequest()
+    HTTPClient = OPI_HTTPRequests
+        .NewRequest()
         .Initialize(URL)
         .SetURLParams(ParamsStructure)
         .ProcessRequest("GET");
@@ -75,4 +76,4 @@ During the client's operation, logging of its actions is performed. To retrieve 
     
 ```
 
-> **Error** - an export field (Boolean type) that is set to True when a critical error occurs in the client
+> **Error** - an exported Boolean field, which is set to True when a critical error occurs in the client
