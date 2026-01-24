@@ -13,7 +13,7 @@
 					"name": "--address",
 					"types": "Строка",
 					"description": "Адрес и порт для подключения",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -56,14 +56,14 @@
 					"name": "--addr",
 					"types": "Строка",
 					"description": "Адрес прокси",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--port",
 					"types": "Число",
 					"description": "Порт прокси",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -99,7 +99,7 @@
 					"name": "--trust",
 					"types": "Булево",
 					"description": "Позволяет работать с некорретными сертификатами, в т.ч. самоподписанными",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{

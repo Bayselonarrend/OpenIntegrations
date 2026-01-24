@@ -13,7 +13,7 @@
 					"name": "--set",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Настройки SSH",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -35,14 +35,14 @@
 					"name": "--conn",
 					"types": "Произвольный",
 					"description": "Существующее соединение или конфигурация соединения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--comm",
 					"types": "Строка",
 					"description": "Текст команды",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -57,21 +57,21 @@
 					"name": "--host",
 					"types": "Строка",
 					"description": "Хост SSH",
-					"default": "",
+					"default": null,
 					"short": "-h"
 				},
 				{
 					"name": "--port",
 					"types": "Число",
 					"description": "Порт SSH",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--user",
 					"types": "Строка",
 					"description": "Имя пользователя SSH",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -93,28 +93,28 @@
 					"name": "--host",
 					"types": "Строка",
 					"description": "Хост SSH",
-					"default": "",
+					"default": null,
 					"short": "-h"
 				},
 				{
 					"name": "--port",
 					"types": "Число",
 					"description": "Порт SSH",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--user",
 					"types": "Строка",
 					"description": "Имя пользователя SSH",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--key",
 					"types": "Строка",
 					"description": "Путь к файлу приватного ключа",
-					"default": "",
+					"default": null,
 					"short": "-k"
 				},
 				{
@@ -143,21 +143,21 @@
 					"name": "--host",
 					"types": "Строка",
 					"description": "Хост SSH",
-					"default": "",
+					"default": null,
 					"short": "-h"
 				},
 				{
 					"name": "--port",
 					"types": "Число",
 					"description": "Порт SSH",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--user",
 					"types": "Строка",
 					"description": "Имя пользователя SSH",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -172,14 +172,14 @@
 					"name": "--addr",
 					"types": "Строка",
 					"description": "Адрес прокси",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--port",
 					"types": "Число",
 					"description": "Порт прокси",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{

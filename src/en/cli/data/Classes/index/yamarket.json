@@ -32,7 +32,7 @@
 					"name": "--Key)",
 					"types": "String",
 					"description": "token",
-					"default": "",
+					"default": null,
 					"short": "-K"
 				},
 				{
@@ -54,14 +54,14 @@
 					"name": "--Key)",
 					"types": "String",
 					"description": "token",
-					"default": "",
+					"default": null,
 					"short": "-K"
 				},
 				{
 					"name": "--campaign",
 					"types": "String, Number",
 					"description": "Market ID (campaignsId)",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -76,14 +76,14 @@
 					"name": "--Key)",
 					"types": "String",
 					"description": "token",
-					"default": "",
+					"default": null,
 					"short": "-K"
 				},
 				{
 					"name": "--business",
 					"types": "String, Number",
 					"description": "Business ID",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				}
 			],
@@ -98,14 +98,14 @@
 					"name": "--Key)",
 					"types": "String",
 					"description": "token",
-					"default": "",
+					"default": null,
 					"short": "-K"
 				},
 				{
 					"name": "--campaign",
 					"types": "String, Number",
 					"description": "Market ID (campaignsId)",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -120,21 +120,21 @@
 					"name": "--Key)",
 					"types": "String",
 					"description": "token",
-					"default": "",
+					"default": null,
 					"short": "-K"
 				},
 				{
 					"name": "--business",
 					"types": "String, Number",
 					"description": "Business ID",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--offers",
 					"types": "Structure, Array of Structure",
 					"description": "Array of product descriptions",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -156,14 +156,14 @@
 					"name": "--Key)",
 					"types": "String",
 					"description": "token",
-					"default": "",
+					"default": null,
 					"short": "-K"
 				},
 				{
 					"name": "--business",
 					"types": "String, Number",
 					"description": "Campaign ID",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -192,14 +192,14 @@
 					"name": "--Key)",
 					"types": "String",
 					"description": "token",
-					"default": "",
+					"default": null,
 					"short": "-K"
 				},
 				{
 					"name": "--business",
 					"types": "String, Number",
 					"description": "Business ID",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{

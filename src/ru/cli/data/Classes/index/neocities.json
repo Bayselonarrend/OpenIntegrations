@@ -31,7 +31,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -53,14 +53,14 @@
 					"name": "--login",
 					"types": "Строка",
 					"description": "Логин пользователя",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--password",
 					"types": "Строка",
 					"description": "Пароль пользователя",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -75,21 +75,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "Строка",
 					"description": "Целевой путь файла на Neocities",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--file",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "URL, путь или данные файла для загрузки",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -104,14 +104,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--files",
 					"types": "Соответствие Из КлючИЗначение",
 					"description": "Файлы для загрузки: Ключ > путь на NC, Значение > Файл",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -133,14 +133,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--paths",
 					"types": "Строка, Массив Из Строка",
 					"description": "Путь или несколько путей удаляемых файлов",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -155,7 +155,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -177,14 +177,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--local",
 					"types": "Строка",
 					"description": "Локальный каталог источник",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{

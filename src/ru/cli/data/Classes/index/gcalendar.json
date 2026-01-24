@@ -55,7 +55,7 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -91,21 +91,21 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "Строка",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--code",
 					"types": "Строка",
 					"description": "Code из браузера",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -120,21 +120,21 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "Строка",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--refresh",
 					"types": "Строка",
 					"description": "Refresh token",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -149,14 +149,14 @@
 					"name": "--auth",
 					"types": "Произвольный",
 					"description": "JSON данные авторизации как файл, коллекция или двоичные данные",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--scope",
 					"types": "Массив Из Строка",
 					"description": "Область действия (scope) или массив областей",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -178,14 +178,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование создаваемого календаря",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -200,14 +200,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--calendar",
 					"types": "Строка",
 					"description": "ID календаря",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -222,14 +222,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--calendar",
 					"types": "Строка",
 					"description": "ID календаря",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -258,7 +258,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -273,14 +273,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--calendar",
 					"types": "Строка",
 					"description": "ID календаря",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -295,7 +295,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -310,14 +310,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--calendar",
 					"types": "Строка",
 					"description": "ID календаря",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -332,14 +332,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--calendar",
 					"types": "Строка",
 					"description": "ID календаря",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -354,14 +354,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--calendar",
 					"types": "Строка",
 					"description": "ID календаря",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -376,28 +376,28 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--calendar",
 					"types": "Строка",
 					"description": "ID календаря",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--primary",
 					"types": "Строка",
 					"description": "HEX основного цвета (#ffffff)",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--secondary",
 					"types": "Строка",
 					"description": "HEX дополнительного цвета (#ffffff)",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -434,14 +434,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--calendar",
 					"types": "Строка",
 					"description": "ID календаря",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -456,21 +456,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--calendar",
 					"types": "Строка",
 					"description": "ID календаря",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--event",
 					"types": "Строка",
 					"description": "ID события",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				}
 			],
@@ -485,21 +485,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--calendar",
 					"types": "Строка",
 					"description": "ID календаря",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--props",
 					"types": "Соответствие Из КлючИЗначение",
 					"description": "Описание события",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -514,28 +514,28 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--from",
 					"types": "Строка",
 					"description": "ID календаря источника",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "Строка",
 					"description": "ID календаря приемника",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--event",
 					"types": "Строка",
 					"description": "ID события календаря источника",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				}
 			],
@@ -550,28 +550,28 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--calendar",
 					"types": "Строка",
 					"description": "ID календаря",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--props",
 					"types": "Строка",
 					"description": "Новое описание события",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--event",
 					"types": "Строка",
 					"description": "ID события",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				}
 			],
@@ -586,21 +586,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--calendar",
 					"types": "Строка",
 					"description": "ID календаря",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--event",
 					"types": "Строка",
 					"description": "ID события",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				}
 			],

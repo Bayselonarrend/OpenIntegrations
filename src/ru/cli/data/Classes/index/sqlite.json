@@ -37,7 +37,7 @@
 					"name": "--sql",
 					"types": "Строка",
 					"description": "Текст запроса к базе",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -80,7 +80,7 @@
 					"name": "--table",
 					"types": "Строка",
 					"description": "Имя таблицы",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -102,14 +102,14 @@
 					"name": "--table",
 					"types": "Строка",
 					"description": "Имя таблицы",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--cols",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура колонок: Ключ > имя, Значение > Тип данных",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -131,21 +131,21 @@
 					"name": "--table",
 					"types": "Строка",
 					"description": "Имя таблицы",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Имя колонки",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--type",
 					"types": "Строка",
 					"description": "Тип данных колонки",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -167,14 +167,14 @@
 					"name": "--table",
 					"types": "Строка",
 					"description": "Имя таблицы",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Имя колонки",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -196,14 +196,14 @@
 					"name": "--table",
 					"types": "Строка",
 					"description": "Имя таблицы",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--cols",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура колонок: Ключ > имя, Значение > Тип данных",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -225,14 +225,14 @@
 					"name": "--table",
 					"types": "Строка",
 					"description": "Имя таблицы",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--rows",
 					"types": "Массив Из Структура",
 					"description": "Массив структур данных строк: Ключ > поле, Значение > значение поля",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -261,7 +261,7 @@
 					"name": "--table",
 					"types": "Строка",
 					"description": "Имя таблицы",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -311,14 +311,14 @@
 					"name": "--table",
 					"types": "Строка",
 					"description": "Имя таблицы",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--values",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура значений: Ключ > поле, Значение > значение поля",
-					"default": "",
+					"default": null,
 					"short": "-v"
 				},
 				{
@@ -347,7 +347,7 @@
 					"name": "--table",
 					"types": "Строка",
 					"description": "Имя таблицы",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -376,7 +376,7 @@
 					"name": "--table",
 					"types": "Строка",
 					"description": "Имя таблицы",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -398,7 +398,7 @@
 					"name": "--table",
 					"types": "Строка",
 					"description": "Имя таблицы",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{

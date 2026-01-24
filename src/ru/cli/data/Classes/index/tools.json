@@ -21,7 +21,7 @@
 					"name": "--json",
 					"types": "Строка",
 					"description": "JSON данные",
-					"default": "",
+					"default": null,
 					"short": "-j"
 				},
 				{
@@ -57,7 +57,7 @@
 					"name": "--in",
 					"types": "Строка",
 					"description": "Файл с Base64",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],

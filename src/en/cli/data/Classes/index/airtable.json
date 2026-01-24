@@ -62,7 +62,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -84,14 +84,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Base identifier",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				}
 			],
@@ -106,28 +106,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--ws",
 					"types": "String",
 					"description": "Workspace identifier",
-					"default": "",
+					"default": null,
 					"short": "-w"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New base name",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--tablesdata",
 					"types": "Map Of KeyAndValue",
 					"description": "Table description: Key > name, Value > array of fields",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				}
 			],
@@ -142,28 +142,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Base identifier",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New table name",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--fieldsdata",
 					"types": "Array of Structure",
 					"description": "Array of field descriptions",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -185,21 +185,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Base identifier",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--table",
 					"types": "String",
 					"description": "Table identifier",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -228,28 +228,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Base identifier",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--table",
 					"types": "String",
 					"description": "Table identifier",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--fielddata",
 					"types": "Structure Of KeyAndValue",
 					"description": "Description of the new field",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -264,28 +264,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Base identifier Base",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--table",
 					"types": "String",
 					"description": "Table identifier",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--field",
 					"types": "String",
 					"description": "Field identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -314,7 +314,7 @@
 					"name": "--title",
 					"types": "String",
 					"description": "New field name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -329,7 +329,7 @@
 					"name": "--title",
 					"types": "String",
 					"description": "New field name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -351,7 +351,7 @@
 					"name": "--title",
 					"types": "String",
 					"description": "Field name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -366,7 +366,7 @@
 					"name": "--title",
 					"types": "String",
 					"description": "Field name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -381,7 +381,7 @@
 					"name": "--title",
 					"types": "String",
 					"description": "Field name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -396,7 +396,7 @@
 					"name": "--title",
 					"types": "String",
 					"description": "Field name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -411,7 +411,7 @@
 					"name": "--title",
 					"types": "String",
 					"description": "Field name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -426,7 +426,7 @@
 					"name": "--title",
 					"types": "String",
 					"description": "Field name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -441,21 +441,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Database identifier",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--table",
 					"types": "String",
 					"description": "Table identifier",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -477,28 +477,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Database identifier",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--table",
 					"types": "String",
 					"description": "Table identifier",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--record",
 					"types": "String",
 					"description": "Record identifier in the table",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -513,28 +513,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Database identifier",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--table",
 					"types": "String",
 					"description": "Table identifier",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--data",
 					"types": "Structure, Array of Structure",
 					"description": "Set or array of sets of pairs Key : Value > Field : FieldValue",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				}
 			],
@@ -549,28 +549,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Database identifier",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--table",
 					"types": "String",
 					"description": "Table identifier",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--records",
 					"types": "String, Array of String",
 					"description": "Identifier or array of record identifiers",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -585,28 +585,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Database identifier",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--table",
 					"types": "String",
 					"description": "Table identifier",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--record",
 					"types": "String",
 					"description": "Record identifier in the table",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -628,35 +628,35 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Database identifier",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--table",
 					"types": "String",
 					"description": "Table identifier",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--record",
 					"types": "String",
 					"description": "Record identifier in the table",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Comment text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				}
 			],
@@ -671,42 +671,42 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Database identifier",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--table",
 					"types": "String",
 					"description": "Table identifier",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--record",
 					"types": "String",
 					"description": "Record identifier in the table",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
 					"name": "--comment",
 					"types": "String",
 					"description": "Comment identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "New comment text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				}
 			],
@@ -721,35 +721,35 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Database identifier",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--table",
 					"types": "String",
 					"description": "Table identifier",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--record",
 					"types": "String",
 					"description": "Record identifier in the table",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
 					"name": "--comment",
 					"types": "String",
 					"description": "Comment identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],

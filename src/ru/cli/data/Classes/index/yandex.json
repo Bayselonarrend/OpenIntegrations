@@ -22,7 +22,7 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client id",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],
@@ -37,21 +37,21 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client id",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "Строка",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--device",
 					"types": "Строка",
 					"description": "device_code из ПолучитьКодПодтверждения()",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				}
 			],
@@ -66,21 +66,21 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client id",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "Строка",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--refresh",
 					"types": "Строка",
 					"description": "Refresh token",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],

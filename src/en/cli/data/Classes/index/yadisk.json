@@ -51,7 +51,7 @@
 					"name": "--id",
 					"types": "String",
 					"description": "Client id",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],
@@ -66,21 +66,21 @@
 					"name": "--id",
 					"types": "String",
 					"description": "Client id",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "String",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--device",
 					"types": "String",
 					"description": "device_code from GetConfirmationCode",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				}
 			],
@@ -95,21 +95,21 @@
 					"name": "--id",
 					"types": "String",
 					"description": "Client id",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "String",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--refresh",
 					"types": "String",
 					"description": "Refresh token",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -124,7 +124,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -139,14 +139,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the created folder",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -161,14 +161,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to folder or file",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -183,14 +183,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the folder or file to be deleted",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -212,21 +212,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--from",
 					"types": "String",
 					"description": "Path to the original file or directory",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "String",
 					"description": "Destination path for the copy",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -248,14 +248,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the file for downloading",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -270,14 +270,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path for saving the file to disk",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -299,14 +299,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the file for downloading",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -328,7 +328,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -371,21 +371,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--from",
 					"types": "String",
 					"description": "Path to the original file or folder",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "String",
 					"description": "Destination path for moving",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -407,21 +407,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path for saving the file to disk",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--file",
 					"types": "String, BinaryData",
 					"description": "File for upload",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -443,21 +443,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path for saving the file to disk",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--file",
 					"types": "String, BinaryData",
 					"description": "File for upload",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -486,21 +486,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to place the downloaded file",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "File URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -515,14 +515,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the object to be published",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -537,14 +537,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the previously published object",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -559,7 +559,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -588,14 +588,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "Object address",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -624,14 +624,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "Object address",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -653,14 +653,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "Object address",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{

@@ -62,7 +62,7 @@
 					"name": "--appkey",
 					"types": "String",
 					"description": "Application key",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -77,21 +77,21 @@
 					"name": "--appkey",
 					"types": "String",
 					"description": "Application key",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--appsecret",
 					"types": "String",
 					"description": "Application secret",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--code",
 					"types": "String",
 					"description": "Code from the authorization page",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -106,21 +106,21 @@
 					"name": "--appkey",
 					"types": "String",
 					"description": "Application key",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--appsecret",
 					"types": "String",
 					"description": "Application secret",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--refresh",
 					"types": "String",
 					"description": "Refresh token",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -135,7 +135,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -157,7 +157,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -172,14 +172,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the object",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -201,7 +201,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -237,14 +237,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the object",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -259,21 +259,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--file",
 					"types": "String, BinaryData",
 					"description": "Data file for upload",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Save path on Dropbox",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -295,21 +295,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "URL source of the file",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Save path on Dropbox",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -324,14 +324,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--job",
 					"types": "String",
 					"description": "ID of async jsob from UploadFileByURL response",
-					"default": "",
+					"default": null,
 					"short": "-j"
 				}
 			],
@@ -346,14 +346,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the object to delete",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -375,21 +375,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--from",
 					"types": "String",
 					"description": "Path to the original object",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "String",
 					"description": "Target path for the new object",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				}
 			],
@@ -404,21 +404,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--from",
 					"types": "String",
 					"description": "Path to the original object",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "String",
 					"description": "Target path for the new object",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				}
 			],
@@ -433,14 +433,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Target path for creating the directory",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -455,14 +455,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path or ID of the file",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -477,14 +477,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path or ID of the directory",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -499,14 +499,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the object",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -528,21 +528,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the object",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--rev",
 					"types": "String",
 					"description": "ID of the version (revision) for restoration",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -557,14 +557,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--paths",
 					"types": "String, Array of String",
 					"description": "Path or set of paths to the files",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -579,21 +579,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the object for which the tag needs to be created",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--tag",
 					"types": "String",
 					"description": "Tag text",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				}
 			],
@@ -608,21 +608,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the object whose tag needs to be deleted",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--tag",
 					"types": "String",
 					"description": "Tag text",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				}
 			],
@@ -637,14 +637,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the target directory",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -659,14 +659,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--folder",
 					"types": "String",
 					"description": "ID of the public catalog (shared folder ID)",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -681,21 +681,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "String",
 					"description": "ID of the file to be accessed",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--emails",
 					"types": "String, Array of String",
 					"description": "List of email addresses of users being added",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -717,21 +717,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--folder",
 					"types": "String",
 					"description": "ID of the public catalog (shared folder ID)",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--emails",
 					"types": "String, Array of String",
 					"description": "List of email addresses of users being added",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -753,14 +753,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--job",
 					"types": "String",
 					"description": "AsynchronousJobID",
-					"default": "",
+					"default": null,
 					"short": "-j"
 				}
 			],
@@ -775,14 +775,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "String",
 					"description": "ID of the file to be accessed",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],

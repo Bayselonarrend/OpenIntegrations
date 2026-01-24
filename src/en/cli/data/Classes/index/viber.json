@@ -35,14 +35,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Viber Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "URL for setting up Webhook",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -57,7 +57,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -72,14 +72,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--user",
 					"types": "String, Number",
 					"description": "Viber User ID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -94,14 +94,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Viber Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--users",
 					"types": "String,Number,Array of String,Number",
 					"description": "Viber User(s) ID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -116,28 +116,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
 					"name": "--user",
 					"types": "String, Number",
 					"description": "User ID. For channel > administrator, for bot > recipient",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--ischannel",
 					"types": "Boolean",
 					"description": "Sending to channel or bot chat",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -159,28 +159,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--picture",
 					"types": "String",
 					"description": "Image URL",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--user",
 					"types": "String, Number",
 					"description": "User ID. For channel > administrator, for bot > recipient",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--ischannel",
 					"types": "boolean",
 					"description": "Sending to channel or bot chat",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -202,35 +202,35 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--file",
 					"types": "String",
 					"description": "File URL",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--user",
 					"types": "String, Number",
 					"description": "User ID. For channel > administrator, for bot > recipient",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--ischannel",
 					"types": "Boolean",
 					"description": "Sending to channel or bot chat",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--ext",
 					"types": "String",
 					"description": "File extension",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -252,35 +252,35 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--name",
 					"types": "String",
 					"description": "Contact name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--phone",
 					"types": "String",
 					"description": "Phone number",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--user",
 					"types": "String, Number",
 					"description": "User ID. For channel > administrator, for bot > recipient",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--ischannel",
 					"types": "Boolean",
 					"description": "Sending to channel or bot chat",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],
@@ -295,35 +295,35 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--lat",
 					"types": "String, Number",
 					"description": "Geographic latitude",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--long",
 					"types": "String, Number",
 					"description": "Geographic longitude",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--user",
 					"types": "String, Number",
 					"description": "User ID. For channel > administrator, for bot > recipient",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--ischannel",
 					"types": "Boolean",
 					"description": "Sending to channel or bot chat",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],
@@ -338,28 +338,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "SentLink",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--user",
 					"types": "String, Number",
 					"description": "User ID. For channel > administrator, for bot > recipient",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--ischannel",
 					"types": "Boolean",
 					"description": "Sending to channel or bot chat",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],
@@ -374,7 +374,7 @@
 					"name": "--buttons",
 					"types": "Array of String",
 					"description": "Array of buttons",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{

@@ -47,7 +47,7 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -83,21 +83,21 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "Строка",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--code",
 					"types": "Строка",
 					"description": "Code из браузера",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -112,21 +112,21 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "Строка",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--refresh",
 					"types": "Строка",
 					"description": "Refresh token",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -141,14 +141,14 @@
 					"name": "--auth",
 					"types": "Произвольный",
 					"description": "JSON данные авторизации как файл, коллекция или двоичные данные",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--scope",
 					"types": "Массив Из Строка",
 					"description": "Область действия (scope) или массив областей",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -170,14 +170,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "Строка",
 					"description": "Идентификатор файла или каталога",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				}
 			],
@@ -192,7 +192,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -221,7 +221,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -250,21 +250,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--file",
 					"types": "ДвоичныеДанные,Строка",
 					"description": "Загружаемый файл",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--props",
 					"types": "Соответствие Из КлючИЗначение",
 					"description": "См. ПолучитьОписаниеФайла",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -279,14 +279,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Имя папки",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -308,14 +308,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "Строка",
 					"description": "Идентификатор файла",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -337,14 +337,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "Строка",
 					"description": "Идентификатор объекта",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -373,21 +373,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "Строка",
 					"description": "Идентификатор обновляемого объекта",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--file",
 					"types": "ДвоичныеДанные,Строка",
 					"description": "Файл источник обновления",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -409,14 +409,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "Строка",
 					"description": "Идентификатор объекта для удаления",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				}
 			],
@@ -446,21 +446,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "Строка",
 					"description": "Идентификатор объекта, для которого необходим комментарий",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст комментария",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				}
 			],
@@ -475,21 +475,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "Строка",
 					"description": "Идентификатор файла или каталога размещения комментария",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--comment",
 					"types": "Строка",
 					"description": "Идентификатор комментария",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -504,14 +504,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "Строка",
 					"description": "Идентификатор объекта",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				}
 			],
@@ -526,21 +526,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "Строка",
 					"description": "Идентификатор файла или каталога размещения комментария",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--comment",
 					"types": "Строка",
 					"description": "Идентификатор комментария",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],

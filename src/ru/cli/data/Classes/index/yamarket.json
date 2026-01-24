@@ -32,7 +32,7 @@
 					"name": "--Key)",
 					"types": "Строка",
 					"description": "token",
-					"default": "",
+					"default": null,
 					"short": "-K"
 				},
 				{
@@ -54,14 +54,14 @@
 					"name": "--Key)",
 					"types": "Строка",
 					"description": "token",
-					"default": "",
+					"default": null,
 					"short": "-K"
 				},
 				{
 					"name": "--campaign",
 					"types": "Строка, Число",
 					"description": "ID магазина (кампании)",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -76,14 +76,14 @@
 					"name": "--Key)",
 					"types": "Строка",
 					"description": "token",
-					"default": "",
+					"default": null,
 					"short": "-K"
 				},
 				{
 					"name": "--business",
 					"types": "Строка, Число",
 					"description": "ID кабинета",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				}
 			],
@@ -98,14 +98,14 @@
 					"name": "--Key)",
 					"types": "Строка",
 					"description": "token",
-					"default": "",
+					"default": null,
 					"short": "-K"
 				},
 				{
 					"name": "--campaign",
 					"types": "Строка, Число",
 					"description": "ID магазина (кампании)",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -120,21 +120,21 @@
 					"name": "--Key)",
 					"types": "Строка",
 					"description": "token",
-					"default": "",
+					"default": null,
 					"short": "-K"
 				},
 				{
 					"name": "--business",
 					"types": "Строка, Число",
 					"description": "ID кабинета",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--offers",
 					"types": "Структура, Массив Из Структура",
 					"description": "Массив описаний товаров",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -156,14 +156,14 @@
 					"name": "--Key)",
 					"types": "Строка",
 					"description": "token",
-					"default": "",
+					"default": null,
 					"short": "-K"
 				},
 				{
 					"name": "--business",
 					"types": "Строка, Число",
 					"description": "ID магазина",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -192,14 +192,14 @@
 					"name": "--Key)",
 					"types": "Строка",
 					"description": "token",
-					"default": "",
+					"default": null,
 					"short": "-K"
 				},
 				{
 					"name": "--business",
 					"types": "Строка, Число",
 					"description": "ID кабинета",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{

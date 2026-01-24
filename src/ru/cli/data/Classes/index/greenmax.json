@@ -86,28 +86,28 @@
 					"name": "--api",
 					"types": "Строка",
 					"description": "Ссылка на хост API",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--media",
 					"types": "Строка",
 					"description": "Ссылка на хост API для отправки файлов",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--id",
 					"types": "Строка",
 					"description": "Уникальный номер инстанса",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Ключ доступа инстанса",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -122,7 +122,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -137,7 +137,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -152,14 +152,14 @@
 					"name": "--settings",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Настройки инстанса. См. ПолучитьСтруктуруНастроекИнстанса",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -174,14 +174,14 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--phone",
 					"types": "Строка, Число",
 					"description": "Номер телефона без знака +",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -196,14 +196,14 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--code",
 					"types": "Строка",
 					"description": "Код авторизации",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -218,7 +218,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -233,14 +233,14 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--picture",
 					"types": "ДвоичныеДанные, Строка",
 					"description": "Картинка профиля",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -255,7 +255,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -270,7 +270,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -285,14 +285,14 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--phone",
 					"types": "Строка, Число",
 					"description": "Номер телефона для проверки без знака +",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -314,7 +314,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -336,14 +336,14 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "Идентификатор чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -358,7 +358,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -373,14 +373,14 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "Идентификатор чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -410,21 +410,21 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование группы",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--members",
 					"types": "Массив Из Строка, Строка",
 					"description": "Массив ID участников группы или один ID",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -439,14 +439,14 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "ID группового чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -461,21 +461,21 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "ID группового чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Новое наименование чата",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				}
 			],
@@ -490,21 +490,21 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "ID группового чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--picture",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Картинка в формате jpg",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -519,21 +519,21 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "ID группового чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--set",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Настройки группового чата. См. ПолучитьСтруктуруНастроекГруппы",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				}
 			],
@@ -548,21 +548,21 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "ID группового чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--member",
 					"types": "Строка",
 					"description": "ID участника для добавления",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -577,21 +577,21 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "ID группового чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--member",
 					"types": "Строка",
 					"description": "ID участника для удаления",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -606,21 +606,21 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "ID группового чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--member",
 					"types": "Строка",
 					"description": "ID участника",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -635,21 +635,21 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "ID группового чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--member",
 					"types": "Строка",
 					"description": "ID участника",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -664,14 +664,14 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "ID группового чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -708,21 +708,21 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "Идентификатор чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст сообщения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -744,28 +744,28 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "Идентификатор чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--file",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Данные или путь к файлу",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--filename",
 					"types": "Строка",
 					"description": "Имя загружаемого файла с раширением",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -801,28 +801,28 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "Идентификатор чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL файла для отправки",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--filename",
 					"types": "Строка",
 					"description": "Имя загружаемого файла с раширением",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -858,7 +858,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -887,14 +887,14 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--id",
 					"types": "Число",
 					"description": "ID уведомления для удаления",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],
@@ -909,14 +909,14 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -938,21 +938,21 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--message",
 					"types": "Строка",
 					"description": "ID сообщения",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -967,7 +967,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -989,7 +989,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -1011,14 +1011,14 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -1040,7 +1040,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -1055,7 +1055,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -1070,7 +1070,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -1085,7 +1085,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -1100,7 +1100,7 @@
 					"name": "--access",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры доступа. См. СформироватьПараметрыДоступа",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
