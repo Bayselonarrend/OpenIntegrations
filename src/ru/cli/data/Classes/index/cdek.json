@@ -60,14 +60,14 @@
 					"name": "--account",
 					"types": "Строка",
 					"description": "Идентификатор клиента (Account)",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--pass",
 					"types": "Строка",
 					"description": "Секретный ключ (Password)",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -89,14 +89,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--date",
 					"types": "Дата",
 					"description": "Дата, за которую необходимо получить данные",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -118,14 +118,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--date",
 					"types": "Дата",
 					"description": "Дата, за которую необходимо получить данные",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -147,14 +147,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--date",
 					"types": "Дата",
 					"description": "Дата, за которую необходимо получить данные",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -176,7 +176,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -205,7 +205,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -263,14 +263,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--order",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Набор полей заказа. См. ПолучитьОписаниеЗаказа",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -299,21 +299,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "Строка",
 					"description": "UUID заказа для изменение",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--order",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Набор изменяемых полей заказа",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -335,14 +335,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "Строка",
 					"description": "UUID заказа для удаления",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -364,14 +364,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "Строка",
 					"description": "UUID заказа",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -393,14 +393,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--number",
 					"types": "Строка",
 					"description": "Номер заказа",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -429,21 +429,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "Строка",
 					"description": "UUID заказа",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--tariff",
 					"types": "Число",
 					"description": "Код тарифа (из доступных по договору)",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -465,14 +465,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "Строка",
 					"description": "UUID заказа",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -494,14 +494,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuids",
 					"types": "Строка, Массив Из Строка",
 					"description": "Один или массив UUID заказов",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -537,14 +537,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "Строка",
 					"description": "UUID квитанции, полученный при ее формировании",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -573,14 +573,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuids",
 					"types": "Строка, Массив Из Строка",
 					"description": "Один или массив UUID заказов",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -623,14 +623,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "Строка",
 					"description": "UUID штрихкода, полученный при его формировании",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -659,28 +659,28 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuids",
 					"types": "Строка, Массив Из Строка",
 					"description": "Один или массив UUID заказов",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--date",
 					"types": "Дата",
 					"description": "Планируемая дата передачи заказов в СДЭК",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--point",
 					"types": "Строка",
 					"description": "Код ПВЗ, в который планируется передать заказы",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -702,14 +702,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "Строка",
 					"description": "UUID преалерта",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -731,14 +731,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "Строка",
 					"description": "UUID заказа",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -760,14 +760,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "Строка",
 					"description": "UUID заказа",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -818,14 +818,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "Строка",
 					"description": "UUID заказа",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -847,14 +847,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--intake",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Описание заявки. См. ПолучитьОписаниеЗаявкиКурьера",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -876,14 +876,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "Строка",
 					"description": "UUID заявки",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -905,14 +905,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "Строка",
 					"description": "UUID заявки для удаления",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -934,14 +934,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--appt",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Описание договоренности. См. ПолучитьОписаниеДоговоренности",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -963,14 +963,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "Строка",
 					"description": "UUID договоренности",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{

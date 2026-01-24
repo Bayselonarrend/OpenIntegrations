@@ -13,7 +13,7 @@
 					"name": "--set",
 					"types": "Structure Of KeyAndValue",
 					"description": "SSH settings",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -35,14 +35,14 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--comm",
 					"types": "String",
 					"description": "Command text",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -57,21 +57,21 @@
 					"name": "--host",
 					"types": "String",
 					"description": "SSH host",
-					"default": "",
+					"default": null,
 					"short": "-h"
 				},
 				{
 					"name": "--port",
 					"types": "Number",
 					"description": "SSH port",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--user",
 					"types": "String",
 					"description": "SSH username",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -93,28 +93,28 @@
 					"name": "--host",
 					"types": "String",
 					"description": "SSH host",
-					"default": "",
+					"default": null,
 					"short": "-h"
 				},
 				{
 					"name": "--port",
 					"types": "Number",
 					"description": "SSH port",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--user",
 					"types": "String",
 					"description": "SSH username",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--key",
 					"types": "String",
 					"description": "Path to private key file",
-					"default": "",
+					"default": null,
 					"short": "-k"
 				},
 				{
@@ -143,21 +143,21 @@
 					"name": "--host",
 					"types": "String",
 					"description": "SSH host",
-					"default": "",
+					"default": null,
 					"short": "-h"
 				},
 				{
 					"name": "--port",
 					"types": "Number",
 					"description": "SSH port",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--user",
 					"types": "String",
 					"description": "SSH username",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -172,14 +172,14 @@
 					"name": "--addr",
 					"types": "String",
 					"description": "Proxy address",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--port",
 					"types": "Number",
 					"description": "Proxy port",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{

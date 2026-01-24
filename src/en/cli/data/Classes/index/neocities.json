@@ -31,7 +31,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -53,14 +53,14 @@
 					"name": "--login",
 					"types": "String",
 					"description": "Users login",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--password",
 					"types": "String",
 					"description": "Users password",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -75,21 +75,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "File path on Neocities",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--file",
 					"types": "String, BinaryData",
 					"description": "URL, path or file data",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -104,14 +104,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--files",
 					"types": "Map Of KeyAndValue",
 					"description": "Files: Key > destination path on NC, Value > file",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -133,14 +133,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--paths",
 					"types": "String, Array of String",
 					"description": "Path or multiple paths of the files to be deleted",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -155,7 +155,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -177,14 +177,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--local",
 					"types": "String",
 					"description": "Local source catalog",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{

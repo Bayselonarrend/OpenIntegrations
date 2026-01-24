@@ -47,21 +47,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--page",
 					"types": "String",
 					"description": "Parent ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "Page title",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -76,21 +76,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Parent database ID",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--data",
 					"types": "Map Of KeyAndValue",
 					"description": "Properties map",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				}
 			],
@@ -105,14 +105,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--page",
 					"types": "String",
 					"description": "Page ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -127,14 +127,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--page",
 					"types": "String",
 					"description": "ID of the page being modified",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -177,21 +177,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--page",
 					"types": "String",
 					"description": "Parent page ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "Database title",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -213,14 +213,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Database ID",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				}
 			],
@@ -235,14 +235,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "String",
 					"description": "Target database ID",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -278,21 +278,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--page",
 					"types": "String",
 					"description": "Parent block or page ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--block",
 					"types": "String, Map Of KeyAndValue",
 					"description": "Block ID or block sample itself",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -314,14 +314,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--block",
 					"types": "String",
 					"description": "Block ID",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -343,14 +343,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--block",
 					"types": "String",
 					"description": "Parent block ID",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				}
 			],
@@ -365,14 +365,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--block",
 					"types": "String",
 					"description": "Block ID",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				}
 			],
@@ -387,7 +387,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -402,14 +402,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--user",
 					"types": "String",
 					"description": "Target user ID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],

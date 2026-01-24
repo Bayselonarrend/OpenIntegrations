@@ -23,7 +23,7 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -59,21 +59,21 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "Строка",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--code",
 					"types": "Строка",
 					"description": "Code из браузера",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -88,21 +88,21 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "Строка",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--refresh",
 					"types": "Строка",
 					"description": "Refresh token",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -117,14 +117,14 @@
 					"name": "--auth",
 					"types": "Произвольный",
 					"description": "JSON данные авторизации как файл, коллекция или двоичные данные",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--scope",
 					"types": "Массив Из Строка",
 					"description": "Область действия (scope) или массив областей",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{

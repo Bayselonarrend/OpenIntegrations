@@ -61,28 +61,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL: domain for common methods or full URL with parameters for direct request sending",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--access",
 					"types": "String",
 					"description": "Access key for authorization",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--secret",
 					"types": "String",
 					"description": "Secret key for authorization",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--region",
 					"types": "String",
 					"description": "Service region",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -104,14 +104,14 @@
 					"name": "--method",
 					"types": "String",
 					"description": "HTTP method",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data (with full URL). See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -140,21 +140,21 @@
 					"name": "--method",
 					"types": "String",
 					"description": "HTTP method",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data (with full URL). See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--body",
 					"types": "String, BinaryData",
 					"description": "Binary data or file of request body data",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -183,14 +183,14 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -219,14 +219,14 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -255,14 +255,14 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -298,21 +298,21 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--conf",
 					"types": "String",
 					"description": "XML string or file of encryption configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -341,14 +341,14 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -377,14 +377,14 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -413,21 +413,21 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--tagset",
 					"types": "Structure Of KeyAndValue",
 					"description": "Set of tags (key and value)",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -456,14 +456,14 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -492,14 +492,14 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -528,14 +528,14 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -578,14 +578,14 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -614,7 +614,7 @@
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -657,28 +657,28 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Name of the object in the bucket",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Name of the bucket to put the object",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--data",
 					"types": "String, BinaryData",
 					"description": "File path or binary data of the object",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -707,28 +707,28 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Name of the object in the bucket",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Name of the bucket to put the object",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--data",
 					"types": "String, BinaryData",
 					"description": "File path or binary data of the object",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -757,21 +757,21 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Name of the object in the bucket",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Name of the bucket to put the object",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -800,42 +800,42 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Name of the object in the bucket",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Name of the bucket to put the object",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--upload",
 					"types": "String",
 					"description": "Upload ID. See InitPartsUpload",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--part",
 					"types": "Number, String",
 					"description": "Number of the object part from 1 to 10000",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--content",
 					"types": "BinaryData, String",
 					"description": "Part content for uploading",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -857,35 +857,35 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Name of the object in the bucket",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Name of the bucket to put the object",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--upload",
 					"types": "String",
 					"description": "Upload ID. See InitPartsUpload",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--tags",
 					"types": "Array Of String",
 					"description": "An array of tags (Etag) from the uploads responses of each part",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -914,28 +914,28 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Name of the object in the bucket",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Name of the bucket to put the object",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--upload",
 					"types": "String",
 					"description": "Upload ID. See InitPartsUpload",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -964,21 +964,21 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Name of the object in the bucket",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Name of the bucket in which the object is stored",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1014,21 +1014,21 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Name of the object in the bucket",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Name of the bucket in which the object is stored",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1071,21 +1071,21 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Name of the object in the bucket",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Name of the bucket to put the object",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1121,35 +1121,35 @@
 					"name": "--sname",
 					"types": "String",
 					"description": "Path (name) in the source bucket",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--sbucket",
 					"types": "String",
 					"description": "Source bucket name",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--name",
 					"types": "String",
 					"description": "Path (name) in the destination bucket",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Destination bucket name",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -1178,28 +1178,28 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Object name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--tagset",
 					"types": "Structure Of KeyAndValue",
 					"description": "Set of tags (key and value)",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1228,21 +1228,21 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Object name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1278,21 +1278,21 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Object name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1328,14 +1328,14 @@
 					"name": "--bucket",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1378,14 +1378,14 @@
 					"name": "--bucket",
 					"types": "String",
 					"description": "Bucket name",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1428,21 +1428,21 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Name of the object in the bucket",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Name of the bucket to put the object",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1478,21 +1478,21 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Name of the object in the bucket",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "String",
 					"description": "Name of the bucket to put the object",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Structure Of KeyAndValue",
 					"description": "Basic request data. See GetBasicDataStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{

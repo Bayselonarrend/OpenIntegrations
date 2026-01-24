@@ -47,7 +47,7 @@
 					"name": "--id",
 					"types": "String",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -83,21 +83,21 @@
 					"name": "--id",
 					"types": "String",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "String",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--code",
 					"types": "String",
 					"description": "Code from browser",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -112,21 +112,21 @@
 					"name": "--id",
 					"types": "String",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "String",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--refresh",
 					"types": "String",
 					"description": "Refresh token",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -141,14 +141,14 @@
 					"name": "--auth",
 					"types": "Arbitrary",
 					"description": "JSON authorization data as a file, collection or binary data",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--scope",
 					"types": "Array Of String",
 					"description": "Scope or array of scopes",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -170,14 +170,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "String",
 					"description": "Identifier of the file or folder",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				}
 			],
@@ -192,7 +192,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -221,7 +221,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -250,21 +250,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--file",
 					"types": "BinaryData,String",
 					"description": "File to be uploaded",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--props",
 					"types": "Map Of KeyAndValue",
 					"description": "See GetFileDescription",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -279,14 +279,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "Folder name",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -308,14 +308,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "String",
 					"description": "File identifier",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -337,14 +337,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "String",
 					"description": "Object identifier",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -373,21 +373,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "String",
 					"description": "Identifier of the object to update",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--file",
 					"types": "BinaryData,String",
 					"description": "File source for update",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -409,14 +409,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "String",
 					"description": "Identifier of the object to delete",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				}
 			],
@@ -446,21 +446,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "String",
 					"description": "Identifier of the object that needs a comment",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Comment text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				}
 			],
@@ -475,21 +475,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "String",
 					"description": "Identifier of the file or directory where the comment is located",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--comment",
 					"types": "String",
 					"description": "Comment identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -504,14 +504,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "String",
 					"description": "Object identifier",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				}
 			],
@@ -526,21 +526,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--object",
 					"types": "String",
 					"description": "Identifier of the file or directory where the comment is located",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--comment",
 					"types": "String",
 					"description": "Comment identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],

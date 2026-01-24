@@ -13,14 +13,14 @@
 					"name": "--exec",
 					"types": "Строка",
 					"description": "Текст команды",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
 					"name": "--conn",
 					"types": "Произвольный, Структура Из КлючИЗначение",
 					"description": "Соединение или параметры соединения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -35,14 +35,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--pass",
 					"types": "Строка",
 					"description": "Пароль для подключения",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{

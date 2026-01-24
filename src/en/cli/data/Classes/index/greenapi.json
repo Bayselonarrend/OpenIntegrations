@@ -87,28 +87,28 @@
 					"name": "--api",
 					"types": "String",
 					"description": "API host link",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--media",
 					"types": "String",
 					"description": "Link to host API for sending files",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--id",
 					"types": "String",
 					"description": "Unique instance number",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "Instance access key",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -123,7 +123,7 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -138,7 +138,7 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -153,14 +153,14 @@
 					"name": "--settings",
 					"types": "Structure Of KeyAndValue",
 					"description": "Instance settings. See GetInstanceSettingsStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -175,7 +175,7 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -190,7 +190,7 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -205,7 +205,7 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -220,7 +220,7 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -235,14 +235,14 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--phone",
 					"types": "String, Number",
 					"description": "Phone number in international format without + and 00",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -257,14 +257,14 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--picture",
 					"types": "BinaryData, String",
 					"description": "Profile picture",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -279,14 +279,14 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "String",
 					"description": "Chat ID for archiving",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -301,14 +301,14 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "String",
 					"description": "Chat ID for dearchiving",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -338,14 +338,14 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--group",
 					"types": "String",
 					"description": "Group chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				}
 			],
@@ -360,14 +360,14 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--name",
 					"types": "String",
 					"description": "Name of the group chat",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -389,21 +389,21 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--group",
 					"types": "String",
 					"description": "Group chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				},
 				{
 					"name": "--name",
 					"types": "String",
 					"description": "New group chat name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				}
 			],
@@ -418,21 +418,21 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--group",
 					"types": "String",
 					"description": "Group chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				},
 				{
 					"name": "--user",
 					"types": "String",
 					"description": "User ID to add",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -447,21 +447,21 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--group",
 					"types": "String",
 					"description": "Group chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				},
 				{
 					"name": "--user",
 					"types": "String",
 					"description": "User ID to add",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -476,21 +476,21 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--group",
 					"types": "String",
 					"description": "Group chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				},
 				{
 					"name": "--user",
 					"types": "String",
 					"description": "User ID to add",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -505,21 +505,21 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--group",
 					"types": "String",
 					"description": "Group chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				},
 				{
 					"name": "--user",
 					"types": "String",
 					"description": "User ID to add",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -534,14 +534,14 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--group",
 					"types": "String",
 					"description": "Group chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				}
 			],
@@ -556,21 +556,21 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--group",
 					"types": "String",
 					"description": "Group chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				},
 				{
 					"name": "--picture",
 					"types": "BinaryData, String",
 					"description": "Profile picture",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -585,21 +585,21 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "String",
 					"description": "Chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -621,28 +621,28 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "String",
 					"description": "Chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--file",
 					"types": "String, BinaryData",
 					"description": "File data or filepath",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--filename",
 					"types": "String",
 					"description": "Name of the file with the extension",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -671,28 +671,28 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "String",
 					"description": "Chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "File URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--filename",
 					"types": "String",
 					"description": "Name of the file with the extension",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -721,28 +721,28 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "String",
 					"description": "Chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--options",
 					"types": "Array Of String",
 					"description": "Answer options",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -771,21 +771,21 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "String",
 					"description": "Chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--loc",
 					"types": "Structure Of KeyAndValue",
 					"description": "Location description. See GetLocationDescription",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -807,21 +807,21 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "String",
 					"description": "Chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--contact",
 					"types": "Structure Of KeyAndValue",
 					"description": "Contact description. See GetContactDescription",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -843,28 +843,28 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--from",
 					"types": "String",
 					"description": "Message source chat ID",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "String",
 					"description": "Message receiver chat ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--msgs",
 					"types": "String, Array of String",
 					"description": "Messages or a single message to be sent",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -879,28 +879,28 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "String",
 					"description": "Chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--message",
 					"types": "String",
 					"description": "Message identifier",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "New message text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -915,21 +915,21 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "String",
 					"description": "Chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--message",
 					"types": "String",
 					"description": "Message identifier",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -951,7 +951,7 @@
 					"name": "--phone",
 					"types": "Number",
 					"description": "Phone number in international format without a plus sign",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -994,14 +994,14 @@
 					"name": "--lat",
 					"types": "Number",
 					"description": "Geographic latitude",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--long",
 					"types": "Number",
 					"description": "Geographic longitude",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -1030,7 +1030,7 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -1052,14 +1052,14 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--receipt",
 					"types": "String, Number",
 					"description": "Receipt identifier from the GetNotification method",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -1074,21 +1074,21 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "String",
 					"description": "Chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--message",
 					"types": "String",
 					"description": "Identifier of the message with the file",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -1103,14 +1103,14 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "String",
 					"description": "Chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -1132,7 +1132,7 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -1147,7 +1147,7 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -1162,14 +1162,14 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "String",
 					"description": "Chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -1191,21 +1191,21 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--chat",
 					"types": "String",
 					"description": "Chat identifier",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--msg",
 					"types": "String",
 					"description": "Message identifier",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -1220,7 +1220,7 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -1242,7 +1242,7 @@
 					"name": "--access",
 					"types": "Structure Of KeyAndValue",
 					"description": "Access parameters. See FormAccessParameters",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{

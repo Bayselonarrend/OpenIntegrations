@@ -121,7 +121,7 @@
 					"name": "--app",
 					"types": "Строка, Число",
 					"description": "app_id из настроек приложения",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -136,21 +136,21 @@
 					"name": "--group",
 					"types": "Строка, Число",
 					"description": "ID целевой группы",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				},
 				{
 					"name": "--app",
 					"types": "Строка, Число",
 					"description": "ID приложения",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -165,14 +165,14 @@
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст поста",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--pictures",
 					"types": "Массив из Строка, ДвоичныеДанные",
 					"description": "Массив картинок",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -208,14 +208,14 @@
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст поста",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--objects",
 					"types": "Массив из Строка",
 					"description": "Массив идентификаторов вида photo123_123",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -251,7 +251,7 @@
 					"name": "--post",
 					"types": "Строка, Число",
 					"description": "ID поста",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -273,14 +273,14 @@
 					"name": "--question",
 					"types": "Строка",
 					"description": "Вопрос опроса",
-					"default": "",
+					"default": null,
 					"short": "-q"
 				},
 				{
 					"name": "--options",
 					"types": "Массив из Строка",
 					"description": "Массив вариантов ответа",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -316,7 +316,7 @@
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование альбома",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -345,7 +345,7 @@
 					"name": "--album",
 					"types": "Строка, Число",
 					"description": "ID альбома",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -367,7 +367,7 @@
 					"name": "--picture",
 					"types": "Строка,ДвоичныеДанные",
 					"description": "Фон истории",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -396,14 +396,14 @@
 					"name": "--album",
 					"types": "Строка, Число",
 					"description": "ID альбома",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--picture",
 					"types": "ДвоичныеДанные, Строка",
 					"description": "Файл картинки",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -432,7 +432,7 @@
 					"name": "--pictureid",
 					"types": "Строка, Число",
 					"description": "ID картинки",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -454,14 +454,14 @@
 					"name": "--file",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Файл видео",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование видео",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -497,7 +497,7 @@
 					"name": "--file",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Файл картинки",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -526,14 +526,14 @@
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование обсуждения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст первого сообщения",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -555,7 +555,7 @@
 					"name": "--topic",
 					"types": "Строка, Число",
 					"description": "ID обсуждения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -584,7 +584,7 @@
 					"name": "--topic",
 					"types": "Строка, Число",
 					"description": "ID обсуждения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -606,14 +606,14 @@
 					"name": "--topic",
 					"types": "Строка, Число",
 					"description": "ID обсуждения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст сообщения",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -635,7 +635,7 @@
 					"name": "--post",
 					"types": "Строка, Число",
 					"description": "ID поста",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -664,7 +664,7 @@
 					"name": "--post",
 					"types": "Строка, Число",
 					"description": "ID поста",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -707,21 +707,21 @@
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст сообщения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--user",
 					"types": "Строка",
 					"description": "ID пользователя адресата",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--ct",
 					"types": "Строка",
 					"description": "Токен бота чата сообщества, котрый можно получить в настройках",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -750,21 +750,21 @@
 					"name": "--post",
 					"types": "Строка, Число",
 					"description": "ID целевого поста",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--wall",
 					"types": "Строка, Число",
 					"description": "ID стены расположения поста",
-					"default": "",
+					"default": null,
 					"short": "-w"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст комментария",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -786,7 +786,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL для сокращения",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -808,14 +808,14 @@
 					"name": "--datefrom",
 					"types": "Дата",
 					"description": "Дата начала периода",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--dateto",
 					"types": "Дата",
 					"description": "Дата окончания периода",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -837,7 +837,7 @@
 					"name": "--posts",
 					"types": "Массив из Строка, Число",
 					"description": "Массив ID постов",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -859,14 +859,14 @@
 					"name": "--cabinet",
 					"types": "Строка, Число",
 					"description": "ID рекламного кабинета",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование кампании",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -888,35 +888,35 @@
 					"name": "--campaign",
 					"types": "Строка, Число",
 					"description": "ID рекламной кампании",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--limit",
 					"types": "Строка, Число",
 					"description": "Дневной лимит в рублях",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--category",
 					"types": "Строка, Число",
 					"description": "Номер рекламной категории",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--post",
 					"types": "Строка, Число",
 					"description": "ID поста, используемого в качетсве рекламы",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--cabinet",
 					"types": "Строка, Число",
 					"description": "ID рекламного кабинета",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -938,14 +938,14 @@
 					"name": "--cabinet",
 					"types": "Строка, Число",
 					"description": "ID рекламного кабинета",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--adv",
 					"types": "Строка, Число",
 					"description": "ID объявления",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -1019,7 +1019,7 @@
 					"name": "--items",
 					"types": "Строка, Массив Из Строка",
 					"description": "Массив ID товаров",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -1041,7 +1041,7 @@
 					"name": "--product",
 					"types": "Соответствие Из КлючИЗначение",
 					"description": "Описание товара. См. ПолучитьОписаниеТовара",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -1070,14 +1070,14 @@
 					"name": "--item",
 					"types": "Число, Строка",
 					"description": "Идентификатор изменяемого товара",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--product",
 					"types": "Соответствие Из КлючИЗначение",
 					"description": "Описание товара. См. ПолучитьОписаниеТовара",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -1106,7 +1106,7 @@
 					"name": "--item",
 					"types": "Строка, Число",
 					"description": "ID товара",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -1128,7 +1128,7 @@
 					"name": "--items",
 					"types": "Массив Из Строка",
 					"description": "Массив ID товаров",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -1187,7 +1187,7 @@
 					"name": "--sels",
 					"types": "Строка, Массив Из Строка",
 					"description": "ID подборок",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1209,14 +1209,14 @@
 					"name": "--title",
 					"types": "Строка",
 					"description": "Название подборки",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--picture",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Файл картинки",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -1252,14 +1252,14 @@
 					"name": "--title",
 					"types": "Строка",
 					"description": "Новое название подборки",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--sel",
 					"types": "Строка",
 					"description": "ID подборки",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1302,14 +1302,14 @@
 					"name": "--items",
 					"types": "Массив из Строка, Число",
 					"description": "Массив товаров или товар",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--sel",
 					"types": "Строка",
 					"description": "ID подборки",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1331,14 +1331,14 @@
 					"name": "--item",
 					"types": "Строка",
 					"description": "ID товара",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--sel",
 					"types": "Строка",
 					"description": "ID подборки",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1360,7 +1360,7 @@
 					"name": "--sel",
 					"types": "Строка",
 					"description": "ID подборки",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1397,7 +1397,7 @@
 					"name": "--title",
 					"types": "Строка",
 					"description": "Название свойства",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1419,14 +1419,14 @@
 					"name": "--title",
 					"types": "Строка",
 					"description": "Новое название",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--prop",
 					"types": "Строка, Число",
 					"description": "ID свойства",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -1448,7 +1448,7 @@
 					"name": "--prop",
 					"types": "Строка, Число",
 					"description": "ID свойства",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -1470,14 +1470,14 @@
 					"name": "--value",
 					"types": "Строка",
 					"description": "Значение свойства",
-					"default": "",
+					"default": null,
 					"short": "-v"
 				},
 				{
 					"name": "--prop",
 					"types": "Строка, Число",
 					"description": "ID свойства, куда добавляется вариант",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -1499,21 +1499,21 @@
 					"name": "--value",
 					"types": "Строка",
 					"description": "Новое значение свойства",
-					"default": "",
+					"default": null,
 					"short": "-v"
 				},
 				{
 					"name": "--prop",
 					"types": "Строка, Число",
 					"description": "ID свойства",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--option",
 					"types": "Строка, Число",
 					"description": "ID варианта",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -1535,7 +1535,7 @@
 					"name": "--option",
 					"types": "Строка, Число",
 					"description": "ID варианта",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -1572,7 +1572,7 @@
 					"name": "--buttons",
 					"types": "Массив из Строка",
 					"description": "Массив заголовков кнопок",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				}
 			],
