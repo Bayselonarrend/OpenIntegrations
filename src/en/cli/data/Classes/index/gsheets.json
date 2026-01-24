@@ -47,7 +47,7 @@
 					"name": "--id",
 					"types": "String",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -83,21 +83,21 @@
 					"name": "--id",
 					"types": "String",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "String",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--code",
 					"types": "String",
 					"description": "Code from browser",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -112,21 +112,21 @@
 					"name": "--id",
 					"types": "String",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "String",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--refresh",
 					"types": "String",
 					"description": "Refresh token",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -141,14 +141,14 @@
 					"name": "--auth",
 					"types": "Arbitrary",
 					"description": "JSON authorization data as a file, collection or binary data",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--scope",
 					"types": "Array Of String",
 					"description": "Scope or array of scopes",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -170,21 +170,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "Name",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--sheets",
 					"types": "Array of String",
 					"description": "Array of names to add new sheets to the spreadsheet",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				}
 			],
@@ -199,14 +199,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--spreadsheet",
 					"types": "String",
 					"description": "Spreadsheet identifier",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				}
 			],
@@ -221,21 +221,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--spreadsheet",
 					"types": "String",
 					"description": "SpreadsheetID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New name",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -250,21 +250,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--spreadsheet",
 					"types": "String",
 					"description": "Spreadsheet identifier",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "NewSheetName",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -279,21 +279,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--spreadsheet",
 					"types": "String",
 					"description": "Spreadsheet identifier",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--sheet",
 					"types": "String",
 					"description": "IdentifierOfSheetToDelete",
-					"default": "",
+					"default": null,
 					"short": "-h"
 				}
 			],
@@ -308,28 +308,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--from",
 					"types": "String",
 					"description": "Source spreadsheet ID",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "String",
 					"description": "Destination spreadsheet ID",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--sheet",
 					"types": "String",
 					"description": "CopiedSheetID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				}
 			],
@@ -344,21 +344,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--spreadsheet",
 					"types": "String",
 					"description": "SpreadsheetID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--data",
 					"types": "Map Of KeyAndValue",
 					"description": "Fill data where the key is the cell name like A1",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -387,21 +387,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--spreadsheet",
 					"types": "String",
 					"description": "SpreadsheetID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--cells",
 					"types": "Array of String",
 					"description": "Array of cells like A1 to be cleared",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -423,14 +423,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--spreadsheet",
 					"types": "String",
 					"description": "SpreadsheetID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{

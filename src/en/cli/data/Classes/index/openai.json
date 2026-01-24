@@ -60,28 +60,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--model",
 					"types": "String",
 					"description": "Models name",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--msgs",
 					"types": "String, Array of String",
 					"description": "Conversation messages. See GetMessageStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -110,28 +110,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--model",
 					"types": "String",
 					"description": "Models name",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--descr",
 					"types": "Structure Of KeyAndValue",
 					"description": "Generation parameters. See GetImageDescriptionStructure",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -153,28 +153,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--model",
 					"types": "String",
 					"description": "Models name",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--input",
 					"types": "Array Of String",
 					"description": "String or array of request strings",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -203,14 +203,14 @@
 					"name": "--role",
 					"types": "String",
 					"description": "Source of the message: system, user, assistant, etc..",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -232,7 +232,7 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -254,7 +254,7 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -269,7 +269,7 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -284,14 +284,14 @@
 					"name": "--role",
 					"types": "String",
 					"description": "Message source: system, user, developer",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
 					"name": "--file",
 					"types": "String",
 					"description": "Image file ID. See UploadFile",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -313,14 +313,14 @@
 					"name": "--prompt",
 					"types": "String",
 					"description": "Text description of the image for generation",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--amount",
 					"types": "Number",
 					"description": "Number of images to generate",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -356,14 +356,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -399,21 +399,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--model",
 					"types": "String",
 					"description": "Models name",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -456,21 +456,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--id",
 					"types": "String",
 					"description": "Assistant ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -492,21 +492,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--id",
 					"types": "String",
 					"description": "Assistant ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -528,14 +528,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -571,35 +571,35 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--name",
 					"types": "String",
 					"description": "File name with extension",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--data",
 					"types": "String, BinaryData",
 					"description": "Path to file or data",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--purpose",
 					"types": "String",
 					"description": "File purpose: assistants, batch, vision, user_data, evals",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -621,21 +621,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--id",
 					"types": "String",
 					"description": "File ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -657,21 +657,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--id",
 					"types": "String",
 					"description": "File ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -693,21 +693,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--id",
 					"types": "String",
 					"description": "File ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -729,28 +729,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--model",
 					"types": "String",
 					"description": "Models name",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--input",
 					"types": "String",
 					"description": "Text for speech synthesis",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -786,28 +786,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--model",
 					"types": "String",
 					"description": "Models name",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--audio",
 					"types": "String, BinaryData",
 					"description": "Audio file",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -843,14 +843,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "OpenAI server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "OpenAI authorization token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{

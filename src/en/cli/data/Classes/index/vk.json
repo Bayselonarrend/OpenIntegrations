@@ -121,7 +121,7 @@
 					"name": "--app",
 					"types": "String, Number",
 					"description": "app_id from application settings",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -136,21 +136,21 @@
 					"name": "--group",
 					"types": "String, Number",
 					"description": "Group ID",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				},
 				{
 					"name": "--app",
 					"types": "String, Number",
 					"description": "App ID",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -165,14 +165,14 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Post text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--pictures",
 					"types": "Array of String, BinaryData",
 					"description": "Array of images",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -208,14 +208,14 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Post text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--objects",
 					"types": "Array of String",
 					"description": "Array of identifiers like photo123_123",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -251,7 +251,7 @@
 					"name": "--post",
 					"types": "String, Number",
 					"description": "Post ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -273,14 +273,14 @@
 					"name": "--question",
 					"types": "String",
 					"description": "Poll question",
-					"default": "",
+					"default": null,
 					"short": "-q"
 				},
 				{
 					"name": "--options",
 					"types": "Array of String",
 					"description": "Array of answer options",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -316,7 +316,7 @@
 					"name": "--title",
 					"types": "String",
 					"description": "Album name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -345,7 +345,7 @@
 					"name": "--album",
 					"types": "String, Number",
 					"description": "Album ID",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -367,7 +367,7 @@
 					"name": "--picture",
 					"types": "String, BinaryData",
 					"description": "Story background",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -396,14 +396,14 @@
 					"name": "--album",
 					"types": "String, Number",
 					"description": "Album ID",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--picture",
 					"types": "BinaryData, String",
 					"description": "Image file",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -432,7 +432,7 @@
 					"name": "--pictureid",
 					"types": "String, Number",
 					"description": "Image ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -454,14 +454,14 @@
 					"name": "--file",
 					"types": "String, BinaryData",
 					"description": "Video file",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "Video name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -497,7 +497,7 @@
 					"name": "--file",
 					"types": "String, BinaryData",
 					"description": "Image file",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -526,14 +526,14 @@
 					"name": "--title",
 					"types": "String",
 					"description": "Discussion name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Text of the first message",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -555,7 +555,7 @@
 					"name": "--topic",
 					"types": "String, Number",
 					"description": "Discussion ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -584,7 +584,7 @@
 					"name": "--topic",
 					"types": "String, Number",
 					"description": "Discussion ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -606,14 +606,14 @@
 					"name": "--topic",
 					"types": "String, Number",
 					"description": "Discussion ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -635,7 +635,7 @@
 					"name": "--post",
 					"types": "String, Number",
 					"description": "Post ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -664,7 +664,7 @@
 					"name": "--post",
 					"types": "String, Number",
 					"description": "Post ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -707,21 +707,21 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--user",
 					"types": "String",
 					"description": "Recipient user ID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--ct",
 					"types": "String",
 					"description": "Community chat bot token, which can be obtained in the settings",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -750,21 +750,21 @@
 					"name": "--post",
 					"types": "String, Number",
 					"description": "ID of the target post",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--wall",
 					"types": "String, Number",
 					"description": "ID of the wall where the post is located",
-					"default": "",
+					"default": null,
 					"short": "-w"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Comment text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -786,7 +786,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL for shortening",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -808,14 +808,14 @@
 					"name": "--datefrom",
 					"types": "Date",
 					"description": "Start date of the period",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--dateto",
 					"types": "Date",
 					"description": "End date of the period",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -837,7 +837,7 @@
 					"name": "--posts",
 					"types": "Array of string, number",
 					"description": "Array of post IDs",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -859,14 +859,14 @@
 					"name": "--cabinet",
 					"types": "String, Number",
 					"description": "Advertising account ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "Campaign name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -888,35 +888,35 @@
 					"name": "--campaign",
 					"types": "String, Number",
 					"description": "Advertising campaign ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--limit",
 					"types": "String, Number",
 					"description": "Daily limit in rubles",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--category",
 					"types": "String, Number",
 					"description": "Advertising category number",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--post",
 					"types": "String, Number",
 					"description": "ID of the post used for advertising",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--cabinet",
 					"types": "String, Number",
 					"description": "Advertising account ID",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -938,14 +938,14 @@
 					"name": "--cabinet",
 					"types": "String, Number",
 					"description": "Advertising account ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--adv",
 					"types": "String, Number",
 					"description": "Ad ID",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -1019,7 +1019,7 @@
 					"name": "--items",
 					"types": "String, Array of String",
 					"description": "Array of product IDs",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -1041,7 +1041,7 @@
 					"name": "--product",
 					"types": "Map Of KeyAndValue",
 					"description": "Product description. See GetProductDescription",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -1070,14 +1070,14 @@
 					"name": "--item",
 					"types": "Number, String",
 					"description": "Identifier of the product being edited",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--product",
 					"types": "Map Of KeyAndValue",
 					"description": "Product description. See GetProductDescription",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -1106,7 +1106,7 @@
 					"name": "--item",
 					"types": "String, Number",
 					"description": "Product ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -1128,7 +1128,7 @@
 					"name": "--items",
 					"types": "Array Of String",
 					"description": "Array of product IDs",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -1187,7 +1187,7 @@
 					"name": "--sels",
 					"types": "String, Array of String",
 					"description": "Selection IDs",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1209,14 +1209,14 @@
 					"name": "--title",
 					"types": "String",
 					"description": "Selection name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--picture",
 					"types": "String, BinaryData",
 					"description": "Image file",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -1252,14 +1252,14 @@
 					"name": "--title",
 					"types": "String",
 					"description": "New selection name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--sel",
 					"types": "String",
 					"description": "Selection ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1302,14 +1302,14 @@
 					"name": "--items",
 					"types": "Array of string, number",
 					"description": "Array of products or product",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--sel",
 					"types": "String",
 					"description": "Selection ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1331,14 +1331,14 @@
 					"name": "--item",
 					"types": "String",
 					"description": "Product ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--sel",
 					"types": "String",
 					"description": "Selection ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1360,7 +1360,7 @@
 					"name": "--sel",
 					"types": "String",
 					"description": "Selection ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1397,7 +1397,7 @@
 					"name": "--title",
 					"types": "String",
 					"description": "Property name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1419,14 +1419,14 @@
 					"name": "--title",
 					"types": "String",
 					"description": "New name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--prop",
 					"types": "String, Number",
 					"description": "Property ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -1448,7 +1448,7 @@
 					"name": "--prop",
 					"types": "String, Number",
 					"description": "Property ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -1470,14 +1470,14 @@
 					"name": "--value",
 					"types": "String",
 					"description": "Property value",
-					"default": "",
+					"default": null,
 					"short": "-v"
 				},
 				{
 					"name": "--prop",
 					"types": "String, Number",
 					"description": "Property ID where the variant is added",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -1499,21 +1499,21 @@
 					"name": "--value",
 					"types": "String",
 					"description": "New property value",
-					"default": "",
+					"default": null,
 					"short": "-v"
 				},
 				{
 					"name": "--prop",
 					"types": "String, Number",
 					"description": "Property ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--option",
 					"types": "String, Number",
 					"description": "Variant ID",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -1535,7 +1535,7 @@
 					"name": "--option",
 					"types": "String, Number",
 					"description": "Variant ID",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -1572,7 +1572,7 @@
 					"name": "--buttons",
 					"types": "Array of String",
 					"description": "Array of button titles",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				}
 			],

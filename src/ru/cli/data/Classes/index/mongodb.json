@@ -70,7 +70,7 @@
 					"name": "--addr",
 					"types": "Строка",
 					"description": "IP адрес с портом или доменное имя для подключения",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -113,14 +113,14 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--comm",
 					"types": "Строка",
 					"description": "Имя команды для выполнения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -156,7 +156,7 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				}
 			],
@@ -171,7 +171,7 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -193,7 +193,7 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -215,7 +215,7 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -237,14 +237,14 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Имя новой коллекции",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -273,14 +273,14 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--coll",
 					"types": "Строка",
 					"description": "Имя коллекции",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -302,21 +302,21 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--coll",
 					"types": "Строка",
 					"description": "Имя коллекции",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--docs",
 					"types": "Массив Из Произвольный",
 					"description": "Массив объектов документов",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -345,21 +345,21 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--coll",
 					"types": "Строка",
 					"description": "Имя коллекции",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--updates",
 					"types": "Массив Из Структура",
 					"description": "Массив обновлений. См. ПолучитьСтруктуруОбновленияДокументов",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -388,14 +388,14 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--coll",
 					"types": "Строка",
 					"description": "Имя коллекции",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -438,21 +438,21 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--coll",
 					"types": "Строка",
 					"description": "Имя коллекции",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--deletes",
 					"types": "Массив Из Структура",
 					"description": "Массив удаления. См. ПолучитьСтруктуруУдаленияДокументов",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -481,14 +481,14 @@
 					"name": "--query",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Фильтр документов",
-					"default": "",
+					"default": null,
 					"short": "-q"
 				},
 				{
 					"name": "--data",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Новые данные документов для обновления",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -524,7 +524,7 @@
 					"name": "--query",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Фильтр документов",
-					"default": "",
+					"default": null,
 					"short": "-q"
 				},
 				{
@@ -553,21 +553,21 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Имя пользователя",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--roles",
 					"types": "Массив Из Произвольный",
 					"description": "Массив ролей в виде строк или структур с указанием БД",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -603,14 +603,14 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Имя пользователя",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -653,14 +653,14 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--usrs",
 					"types": "Произвольный",
 					"description": "Имя пользователя, структура или массив структур пользователей",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -696,7 +696,7 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -732,14 +732,14 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Имя пользователя",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -768,14 +768,14 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Название роли",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -818,14 +818,14 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Название роли",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -868,14 +868,14 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--roles",
 					"types": "Произвольный",
 					"description": "Роль или список ролей",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -904,14 +904,14 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Название роли",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -940,21 +940,21 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--user",
 					"types": "Строка",
 					"description": "Имя пользователя",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--roles",
 					"types": "Массив Из Произвольный",
 					"description": "Роль или массив ролей",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -983,21 +983,21 @@
 					"name": "--dbc",
 					"types": "Строка, Произвольный",
 					"description": "Соединение или строка подключения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--user",
 					"types": "Строка",
 					"description": "Имя пользователя",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--roles",
 					"types": "Массив Из Произвольный",
 					"description": "Роль или массив ролей",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -1026,14 +1026,14 @@
 					"name": "--res",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Ресурс привелегии",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
 					"name": "--act",
 					"types": "Массив Из Строка",
 					"description": "Массив доступных действий привелегии",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],

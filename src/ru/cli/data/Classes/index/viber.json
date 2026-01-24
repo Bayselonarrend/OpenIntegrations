@@ -35,14 +35,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен Viber",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL для установки Webhook",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -57,7 +57,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -72,14 +72,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--user",
 					"types": "Строка, Число",
 					"description": "ID пользователя Viber",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -94,14 +94,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен Viber",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--users",
 					"types": "Строка,Число,Массив из Строка,Число",
 					"description": "ID пользователей(я) Viber",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -116,28 +116,28 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст сообщения",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
 					"name": "--user",
 					"types": "Строка,Число",
 					"description": "ID пользователя. Для канала > администратора, для бота > получателя",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--ischannel",
 					"types": "Булево",
 					"description": "Отправка в канал или в чат бота",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -159,28 +159,28 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--picture",
 					"types": "Строка",
 					"description": "URL картинки",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--user",
 					"types": "Строка,Число",
 					"description": "ID пользователя. Для канала > администратора, для бота > получателя",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--ischannel",
 					"types": "булево",
 					"description": "Отправка в канал или в чат бота",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -202,35 +202,35 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--file",
 					"types": "Строка",
 					"description": "URL файла",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--user",
 					"types": "Строка,Число",
 					"description": "ID пользователя. Для канала > администратора, для бота > получателя",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--ischannel",
 					"types": "Булево",
 					"description": "Отправка в канал или в чат бота",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--ext",
 					"types": "Строка",
 					"description": "Расширение файла",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -252,35 +252,35 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Имя контакта",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--phone",
 					"types": "Строка",
 					"description": "Номер телефона",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--user",
 					"types": "Строка,Число",
 					"description": "ID пользователя. Для канала > администратора, для бота > получателя",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--ischannel",
 					"types": "Булево",
 					"description": "Отправка в канал или в чат бота",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],
@@ -295,35 +295,35 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--lat",
 					"types": "Строка,Число",
 					"description": "Географическая широта",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--long",
 					"types": "Строка,Число",
 					"description": "Географическая долгота",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--user",
 					"types": "Строка,Число",
 					"description": "ID пользователя. Для канала > администратора, для бота > получателя",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--ischannel",
 					"types": "Булево",
 					"description": "Отправка в канал или в чат бота",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],
@@ -338,28 +338,28 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "Строка",
 					"description": "Отправляемая ссылка",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--user",
 					"types": "Строка,Число",
 					"description": "ID пользователя. Для канала > администратора, для бота > получателя",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--ischannel",
 					"types": "Булево",
 					"description": "Отправка в канал или в чат бота",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],
@@ -374,7 +374,7 @@
 					"name": "--buttons",
 					"types": "Массив из Строка",
 					"description": "Массив кнопок",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{

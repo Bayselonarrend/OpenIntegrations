@@ -50,7 +50,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -72,21 +72,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--prompt",
 					"types": "Строка",
 					"description": "Текст запроса",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -115,21 +115,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--msgs",
 					"types": "Массив Из Структура",
 					"description": "История сообщений. См. ПолучитьСтруктуруСообщенияКонтекста",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -158,21 +158,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--input",
 					"types": "Массив Из Строка",
 					"description": "Строка или массив строк запросов",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -246,14 +246,14 @@
 					"name": "--role",
 					"types": "Строка",
 					"description": "Источник сообщения: system, user, assistant, tool",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст сообщения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -282,7 +282,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -304,7 +304,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -326,14 +326,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -362,21 +362,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--settings",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Настройки модели. См. ПолучитьСтруктуруНастроекМодели",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -398,21 +398,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя существующей модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Имя новой модели",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -434,14 +434,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -463,14 +463,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -499,14 +499,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -528,14 +528,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -564,14 +564,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -615,14 +615,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--data",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Данные или путь к файлу",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -644,14 +644,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера Ollama",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--digest",
 					"types": "Строка",
 					"description": "SHA256 дайджест нужного BLOB",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{

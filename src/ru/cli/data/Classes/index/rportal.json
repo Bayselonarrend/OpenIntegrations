@@ -42,21 +42,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера ReportPortal",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--login",
 					"types": "Строка",
 					"description": "Логин пользователя",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--pass",
 					"types": "Строка",
 					"description": "Пароль пользователя",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -71,28 +71,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера ReportPortal",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен доступа",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--user",
 					"types": "Строка",
 					"description": "ID пользователя",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Имя токена",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				}
 			],
@@ -107,28 +107,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера ReportPortal",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен доступа",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--user",
 					"types": "Строка",
 					"description": "ID пользователя",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--id",
 					"types": "Строка",
 					"description": "ID токена",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],
@@ -143,28 +143,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера ReportPortal",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен доступа",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--proj",
 					"types": "Строка",
 					"description": "ID проекта",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--params",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры запуска. См. ПолучитьСтруктуруЗапуска",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -179,28 +179,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера ReportPortal",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен доступа",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--proj",
 					"types": "Строка",
 					"description": "ID проекта",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--params",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры элемента. См. ПолучитьСтруктуруЭлемента",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -222,35 +222,35 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера ReportPortal",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен доступа",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--proj",
 					"types": "Строка",
 					"description": "ID проекта",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--id",
 					"types": "Строка",
 					"description": "ID запуска",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--params",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры завершения. См. ПолучитьСтруктуруЗавершенияЗапуска",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -265,35 +265,35 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера ReportPortal",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен доступа",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--proj",
 					"types": "Строка",
 					"description": "ID проекта",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--id",
 					"types": "Строка",
 					"description": "ID элемента",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--params",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры завершения. См. ПолучитьСтруктуруЗавершенияЭлемента",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -374,7 +374,7 @@
 					"name": "--end",
 					"types": "Дата",
 					"description": "Дата и время завершения запуска",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -410,28 +410,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера ReportPortal",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен доступа",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--proj",
 					"types": "Строка",
 					"description": "ID проекта",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--params",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Информация о выполнении. См. ПолучитьСтруктуруЛога",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -446,21 +446,21 @@
 					"name": "--launch",
 					"types": "Строка",
 					"description": "ID запуска, к которому принадлежит тестовый элемент",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--id",
 					"types": "Строка",
 					"description": "ID тестового элемента",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--time",
 					"types": "Дата",
 					"description": "Дата и время записи лога",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{

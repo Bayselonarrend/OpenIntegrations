@@ -293,14 +293,14 @@
 					"name": "--domain",
 					"types": "String",
 					"description": "Current Bitrix URL (like 'portal.bitrix24.com')",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--clientid",
 					"types": "String",
 					"description": "Client ID from app settings",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -315,21 +315,21 @@
 					"name": "--clientid",
 					"types": "String",
 					"description": "Client ID from app settings",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--clientsecret",
 					"types": "String",
 					"description": "Client secret from app settings",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--code",
 					"types": "String",
 					"description": "Code from browser auth page",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				}
 			],
@@ -344,21 +344,21 @@
 					"name": "--clientid",
 					"types": "String",
 					"description": "Client ID from app settings",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--clientsecret",
 					"types": "String",
 					"description": "Client secret from app settings",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--refresh",
 					"types": "String",
 					"description": "Refresh token",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -373,7 +373,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -395,14 +395,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Text of post",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -452,21 +452,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--postid",
 					"types": "String, Number",
 					"description": "Post ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Text of post",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -509,14 +509,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--postid",
 					"types": "String, Number",
 					"description": "Id of post to remove",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -538,14 +538,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--postid",
 					"types": "String, Number",
 					"description": "Id of important post",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -567,7 +567,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -603,21 +603,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--postid",
 					"types": "String, Number",
 					"description": "Post ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Comment text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -639,21 +639,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--postid",
 					"types": "String, Number",
 					"description": "Post ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--vision",
 					"types": "String",
 					"description": "Array or 1 recipient: UA all, SGn w. group, Un user, DRn department, Gn group",
-					"default": "",
+					"default": null,
 					"short": "-v"
 				},
 				{
@@ -675,14 +675,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -704,7 +704,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -747,14 +747,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "Task fields structure. See GetTaskFieldsStructure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -776,21 +776,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "Task fields structure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -812,14 +812,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -841,21 +841,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "Number, String",
 					"description": "File ID",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -877,14 +877,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -906,14 +906,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -935,14 +935,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -964,14 +964,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -993,14 +993,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1022,14 +1022,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1051,14 +1051,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1080,14 +1080,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1109,14 +1109,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1138,21 +1138,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--user",
 					"types": "Number, String",
 					"description": "ID of responsible user",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1174,14 +1174,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1203,14 +1203,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1232,14 +1232,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1261,14 +1261,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1297,14 +1297,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1326,14 +1326,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1355,28 +1355,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--taskfrom",
 					"types": "String, Number",
 					"description": "From task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--taskto",
 					"types": "String, Number",
 					"description": "To task ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--linktype",
 					"types": "String, Number",
 					"description": "Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -1398,28 +1398,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--taskfrom",
 					"types": "String, Number",
 					"description": "From task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--taskto",
 					"types": "String, Number",
 					"description": "To task ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--linktype",
 					"types": "String, Number",
 					"description": "Link type: 0 start>start, 1 start>finish, 2 finish>start, 3 finish>finish",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -1441,7 +1441,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -1463,7 +1463,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -1507,7 +1507,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -1529,21 +1529,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--type",
 					"types": "String",
 					"description": "Field type: string, double, date, boolean",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fieldname",
 					"types": "String",
 					"description": "Text identifier (name) of the field",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -1586,14 +1586,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fieldid",
 					"types": "String, Number",
 					"description": "Field ID for updating",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -1636,14 +1636,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fieldid",
 					"types": "String, Number",
 					"description": "Field ID for retrieval",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -1665,14 +1665,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fieldid",
 					"types": "String, Number",
 					"description": "Field ID for deletion",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -1694,21 +1694,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Text (title) of checklist element",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -1737,28 +1737,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--element",
 					"types": "Number, String",
 					"description": "Checklist element ID",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Text (title) of checklist element",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -1780,21 +1780,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--element",
 					"types": "Number, String",
 					"description": "ID of deleted element",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -1816,14 +1816,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1845,21 +1845,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--element",
 					"types": "Number, String",
 					"description": "Element ID",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -1881,21 +1881,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--element",
 					"types": "Number, String",
 					"description": "Element ID",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -1917,21 +1917,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--element",
 					"types": "Number, String",
 					"description": "Element ID",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -1953,14 +1953,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1982,21 +1982,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--comment",
 					"types": "Number, String",
 					"description": "CommentID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -2018,21 +2018,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Comment text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -2054,28 +2054,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--comment",
 					"types": "Number, String",
 					"description": "CommentID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Comment text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -2097,21 +2097,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--comment",
 					"types": "Number, String",
 					"description": "ID of comment to remove",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -2133,14 +2133,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Number, String",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -2162,14 +2162,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--comment",
 					"types": "Number, String",
 					"description": "CommentID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -2191,14 +2191,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--comment",
 					"types": "Number, String",
 					"description": "CommentID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -2235,14 +2235,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New stage name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -2292,21 +2292,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New stages name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--stage",
 					"types": "String, Number",
 					"description": "Stage ID for change",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -2349,14 +2349,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--stage",
 					"types": "String, Number",
 					"description": "ID of stage to dele",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -2385,7 +2385,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2421,21 +2421,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "String, Number",
 					"description": "ID of task to move",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--stage",
 					"types": "String, Number",
 					"description": "Stage ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -2471,21 +2471,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "String, Number",
 					"description": "ID of task for time accounting",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--amount",
 					"types": "String, Number",
 					"description": "Time spent in seconds",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -2528,21 +2528,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "String, Number",
 					"description": "ID of task for time accounting",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--record",
 					"types": "String, Number",
 					"description": "Time record ID",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -2564,14 +2564,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "String, Number",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -2593,21 +2593,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "String, Number",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--record",
 					"types": "String, Number",
 					"description": "Time record ID",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -2629,28 +2629,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "String, Number",
 					"description": "Task ID",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--record",
 					"types": "String, Number",
 					"description": "Time record ID",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
 					"name": "--amount",
 					"types": "String, Number",
 					"description": "Time spent in seconds",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -2686,7 +2686,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2729,7 +2729,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2772,7 +2772,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2801,7 +2801,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2830,7 +2830,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2859,7 +2859,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2881,7 +2881,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2903,14 +2903,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--storageid",
 					"types": "String, Number",
 					"description": "Storage ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -2932,21 +2932,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--storageid",
 					"types": "String, Number",
 					"description": "Storage ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New storage name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -2968,14 +2968,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--storageid",
 					"types": "String, Number",
 					"description": "Storage ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -2997,21 +2997,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--storageid",
 					"types": "String",
 					"description": "Storage ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "Folder name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -3033,14 +3033,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "String, Number",
 					"description": "Folder identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3062,21 +3062,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "String, Number",
 					"description": "Parent folder identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "Name of new folder",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -3098,21 +3098,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "String, Number",
 					"description": "Folder identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--tagetid",
 					"types": "String, Number",
 					"description": "ID of target folder",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -3134,21 +3134,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "String, Number",
 					"description": "Folder identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--tagetid",
 					"types": "String, Number",
 					"description": "ID of target folder",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -3170,14 +3170,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "String, Number",
 					"description": "ID of folder to be deleted",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3199,14 +3199,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "String, Number",
 					"description": "Folder identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3228,14 +3228,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "String, Number",
 					"description": "Folder identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3264,14 +3264,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "String, Number",
 					"description": "Folder identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3293,14 +3293,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "String, Number",
 					"description": "Folder identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3322,21 +3322,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "String, Number",
 					"description": "Folder identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New folders name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -3358,7 +3358,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -3387,28 +3387,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "File name with extension",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--file",
 					"types": "String, BinaryData",
 					"description": "File for upload",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--storageid",
 					"types": "String",
 					"description": "Storage id",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -3437,28 +3437,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "File name with extension",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--file",
 					"types": "String, BinaryData",
 					"description": "File for upload",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--folderid",
 					"types": "String",
 					"description": "Folder identifier",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -3480,14 +3480,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "String, Number",
 					"description": "File identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3509,14 +3509,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "String, Number",
 					"description": "ID of removing file",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3538,14 +3538,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "String, Number",
 					"description": "File identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3567,14 +3567,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "String, Number",
 					"description": "File identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3596,14 +3596,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "String, Number",
 					"description": "File identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3625,21 +3625,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "String, Number",
 					"description": "Original file ID",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--folderid",
 					"types": "String, Number",
 					"description": "ID of copy destination folder",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -3661,21 +3661,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "String, Number",
 					"description": "File ID",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--folderid",
 					"types": "String, Number",
 					"description": "ID of new destination folder",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -3697,21 +3697,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "String, Number",
 					"description": "File identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New folders name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -3733,14 +3733,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "Chat fields structure. See GetChatStructure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3762,14 +3762,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -3791,14 +3791,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -3820,14 +3820,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--users",
 					"types": "Array of String, Number",
 					"description": "Usesr ID or array of users IDs",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -3849,21 +3849,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--users",
 					"types": "Array of string, number",
 					"description": "New members IDs",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -3892,21 +3892,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--user",
 					"types": "String, Number",
 					"description": "User ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -3928,21 +3928,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New title",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -3964,21 +3964,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--color",
 					"types": "String",
 					"description": "New chat color",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -4000,21 +4000,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--picture",
 					"types": "String, BinaryData",
 					"description": "Picture data",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -4036,21 +4036,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--user",
 					"types": "String, Number",
 					"description": "User ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -4072,14 +4072,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -4101,14 +4101,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -4130,14 +4130,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID (as chatXXX) or User ID (as XXX)",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -4173,14 +4173,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID (as chatXXX) or User ID (as XXX)",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -4202,14 +4202,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID (as chatXXX) or User ID (as XXX)",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -4231,14 +4231,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID (as chatXXX) or User ID (as XXX)",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -4260,7 +4260,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -4282,14 +4282,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--status",
 					"types": "String, Number",
 					"description": "Status value: online, dnd, away",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -4311,7 +4311,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -4333,14 +4333,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -4377,21 +4377,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID (as chatXXX) or User ID (as XXX)",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -4420,14 +4420,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--message",
 					"types": "String, Number",
 					"description": "ID of the message to be edited",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -4463,14 +4463,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--message",
 					"types": "String, Number",
 					"description": "Message ID",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -4492,14 +4492,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--message",
 					"types": "String, Number",
 					"description": "ID of the message to be deleted",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -4521,21 +4521,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--fileid",
 					"types": "String, Number",
 					"description": "File ID from UploadFileToFolder method",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -4564,21 +4564,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID (as chatXXX) or User ID (as XXX)",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--message",
 					"types": "String, Number",
 					"description": "Id of last readed message",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -4600,21 +4600,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Chat ID (as chatXXX) or User ID (as XXX)",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--message",
 					"types": "String, Number",
 					"description": "ID of last unreaded message",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -4636,14 +4636,14 @@
 					"name": "--title",
 					"types": "String",
 					"description": "Picture name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "URL of sending picture",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -4658,14 +4658,14 @@
 					"name": "--title",
 					"types": "String",
 					"description": "Picture name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "File URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -4680,21 +4680,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--user",
 					"types": "String, Number",
 					"description": "User ID for sending the notification",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Notification text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -4730,21 +4730,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--user",
 					"types": "String, Number",
 					"description": "User ID for sending the notification",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Notification text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -4780,14 +4780,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--notif",
 					"types": "String, Number",
 					"description": "Notification ID",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -4809,14 +4809,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "Department name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -4852,14 +4852,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--depid",
 					"types": "String, Number",
 					"description": "Department ID",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -4902,7 +4902,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -4952,14 +4952,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--depid",
 					"types": "String, Number",
 					"description": "Department ID for deletion",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -4981,7 +4981,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5003,14 +5003,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--userid",
 					"types": "String, Number",
 					"description": "User ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -5032,14 +5032,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "New user data. See. GetUserFieldsStructure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5061,21 +5061,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--userid",
 					"types": "String, Number",
 					"description": "User ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "New user data. See. GetUserFieldsStructure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5097,14 +5097,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--userid",
 					"types": "String, Number",
 					"description": "User ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -5133,14 +5133,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--filter",
 					"types": "Structure Of KeyAndValue",
 					"description": "Filter. See GetUserFilterStructure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5162,7 +5162,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5199,14 +5199,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "Lead fields structure. See GetLeadStructure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5228,14 +5228,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--lead",
 					"types": "Number, String",
 					"description": "Lead ID",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -5257,14 +5257,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--lead",
 					"types": "Number, String",
 					"description": "Lead ID",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -5286,7 +5286,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5322,21 +5322,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--lead",
 					"types": "Number, String",
 					"description": "Lead ID",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "Structure of lead fields",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5358,7 +5358,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5395,14 +5395,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "Deal fields structure. See. GetDealStructure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5424,14 +5424,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--deal",
 					"types": "Number, String",
 					"description": "Deal ID",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -5453,14 +5453,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--deal",
 					"types": "Number, String",
 					"description": "Deal ID",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -5482,7 +5482,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5518,21 +5518,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--deal",
 					"types": "Number, String",
 					"description": "Deal ID",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "Deal fields structure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5554,7 +5554,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5591,21 +5591,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--owner",
 					"types": "String, Number",
 					"description": "Calendar owner ID",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--type",
 					"types": "String",
 					"description": "Calendar type: user, group, company_calendar, location, etc.",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -5627,14 +5627,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "Calendar fields structure. See GetCalendarStructure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5656,21 +5656,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--calendar",
 					"types": "String, Number",
 					"description": "Calendar ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "Deal fields structure. See. GetDealStructure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5692,28 +5692,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--calendar",
 					"types": "String, Number",
 					"description": "Calendar ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--owner",
 					"types": "String, Number",
 					"description": "Calendar owner ID",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--type",
 					"types": "String",
 					"description": "Calendar type: user, group",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -5735,28 +5735,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--users",
 					"types": "Number, Array Of Number",
 					"description": "IDs of users or a single user",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--from",
 					"types": "Date",
 					"description": "Start date of the period",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "Date",
 					"description": "End date of the period",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -5778,7 +5778,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5800,14 +5800,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--settings",
 					"types": "Structure Of KeyAndValue",
 					"description": "Settings structure. See GetCalednarCustomSettingsStructure",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -5829,7 +5829,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5881,14 +5881,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "Event description. See GetCalendarEventsStructure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5910,21 +5910,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--event",
 					"types": "Number",
 					"description": "Calednar event ID",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "Event description. See GetCalendarEventsStructure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5946,14 +5946,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--event",
 					"types": "Number",
 					"description": "Event ID to retrieve",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -5975,21 +5975,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--owner",
 					"types": "String, Number",
 					"description": "Calendar owner ID",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--type",
 					"types": "String",
 					"description": "Calendar type: user, group, company_calendar",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -6018,14 +6018,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--event",
 					"types": "Number",
 					"description": "ID of the event to be deleted",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -6047,14 +6047,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--event",
 					"types": "Number",
 					"description": "Calednar event ID",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -6076,21 +6076,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL of webhook or a Bitrix24 domain, when token used",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--event",
 					"types": "Number",
 					"description": "Calednar event ID",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
 					"name": "--status",
 					"types": "String",
 					"description": "Participation status: Y (agreed), N (refused), Q (did not answer)",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{

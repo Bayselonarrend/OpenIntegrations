@@ -49,7 +49,7 @@
 					"name": "--code",
 					"types": "String",
 					"description": "Code obtained from authorization See GetAuthorizationLink",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -129,7 +129,7 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Tweet text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -151,14 +151,14 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Tweet text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--pictures",
 					"types": "Array of String, BinaryData",
 					"description": "Image files array",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -180,14 +180,14 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Tweet text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--gifs",
 					"types": "Array of String, BinaryData",
 					"description": "Gif files array",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				},
 				{
@@ -209,14 +209,14 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Tweet text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--videos",
 					"types": "Array of String, BinaryData",
 					"description": "Video files array",
-					"default": "",
+					"default": null,
 					"short": "-v"
 				},
 				{
@@ -238,21 +238,21 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Tweet text",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--options",
 					"types": "Array of String",
 					"description": "Poll options array",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--duration",
 					"types": "String, Number",
 					"description": "Poll duration",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -274,14 +274,14 @@
 					"name": "--files",
 					"types": "Array of String, BinaryData",
 					"description": "Array of files to be uploaded",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--type",
 					"types": "String",
 					"description": "Attachment type: tweet_video, tweet_image, tweet_gif",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{

@@ -31,14 +31,14 @@
 					"name": "--conn",
 					"types": "Произвольный",
 					"description": "Настройки или объект соединения (для gRPC)",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--req",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Данные запроса. См. ПолучитьНастройкиЗапроса",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -60,7 +60,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "Адрес подключения с протоколом и портом",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -89,7 +89,7 @@
 					"name": "--query",
 					"types": "Строка",
 					"description": "Текст запроса",
-					"default": "",
+					"default": null,
 					"short": "-q"
 				},
 				{
@@ -146,14 +146,14 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Имя таблицы",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--cols",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура колонок таблицы: Ключ > имя, Значение > тип данных",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -211,7 +211,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "Адрес подключения с протоколом и портом",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -247,7 +247,7 @@
 					"name": "--trust",
 					"types": "Булево",
 					"description": "Позволяет работать с некорретными сертификатами, в т.ч. самоподписанными",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{

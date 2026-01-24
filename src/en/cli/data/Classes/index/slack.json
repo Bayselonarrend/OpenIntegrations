@@ -86,7 +86,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -101,7 +101,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -123,7 +123,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -145,14 +145,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -188,14 +188,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -231,21 +231,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--stamp",
 					"types": "String",
 					"description": "Message timestamp",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -274,21 +274,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--stamp",
 					"types": "String",
 					"description": "Timestamp or message ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -310,14 +310,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -339,21 +339,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--stamp",
 					"types": "String",
 					"description": "Timestamp or message ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				}
 			],
@@ -368,21 +368,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--stamp",
 					"types": "String",
 					"description": "Timestamp or message ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -404,7 +404,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -433,14 +433,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -462,14 +462,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "Channel name",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -491,14 +491,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -513,14 +513,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -535,14 +535,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -557,21 +557,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--users",
 					"types": "Array Of String",
 					"description": "User ID Array",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -586,21 +586,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--user",
 					"types": "String",
 					"description": "User ID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -615,14 +615,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -637,14 +637,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -659,21 +659,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--theme",
 					"types": "String",
 					"description": "Channel topic",
-					"default": "",
+					"default": null,
 					"short": "-h"
 				}
 			],
@@ -688,21 +688,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--purpose",
 					"types": "String",
 					"description": "Channel purpose",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -717,21 +717,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New channel name",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -746,14 +746,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--users",
 					"types": "Array of String",
 					"description": "User ID Array",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -768,14 +768,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--conv",
 					"types": "String",
 					"description": "Dialog ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -790,7 +790,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -819,28 +819,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--file",
 					"types": "String, BinaryData",
 					"description": "File for upload",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--filename",
 					"types": "String",
 					"description": "File name with extension",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "File name in Slack",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -862,14 +862,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "String",
 					"description": "File identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -884,14 +884,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "String",
 					"description": "File identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -906,14 +906,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "User token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "String",
 					"description": "File identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -928,14 +928,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "User token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "String",
 					"description": "File identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -950,7 +950,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -979,14 +979,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "String",
 					"description": "File identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -1001,21 +1001,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "URL to external file",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "File title for Slack",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -1030,21 +1030,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "String",
 					"description": "File identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--channels",
 					"types": "Array Of String",
 					"description": "Array of channels for sending",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -1059,14 +1059,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "String",
 					"description": "File identifier",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -1081,7 +1081,7 @@
 					"name": "--picture",
 					"types": "String",
 					"description": "Image URL",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{

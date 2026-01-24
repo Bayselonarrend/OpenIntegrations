@@ -13,7 +13,7 @@
 					"name": "--address",
 					"types": "String",
 					"description": "Address and port",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -56,14 +56,14 @@
 					"name": "--addr",
 					"types": "String",
 					"description": "Proxy address",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--port",
 					"types": "Number",
 					"description": "Proxy port",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -99,7 +99,7 @@
 					"name": "--trust",
 					"types": "Boolean",
 					"description": "Allows to work with invalid certificates, including self signed",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{

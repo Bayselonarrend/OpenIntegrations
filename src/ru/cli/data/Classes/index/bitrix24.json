@@ -293,14 +293,14 @@
 					"name": "--domain",
 					"types": "Строка",
 					"description": "Адрес битрикс вида portal.bitrix24.com",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--clientid",
 					"types": "Строка",
 					"description": "Client ID из настроек приложения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -315,21 +315,21 @@
 					"name": "--clientid",
 					"types": "Строка",
 					"description": "Client ID из настроек приложения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--clientsecret",
 					"types": "Строка",
 					"description": "Client secret из настроек приложения",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--code",
 					"types": "Строка",
 					"description": "Code из авторизации через браузер",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				}
 			],
@@ -344,21 +344,21 @@
 					"name": "--clientid",
 					"types": "Строка",
 					"description": "Client ID из настроек приложения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--clientsecret",
 					"types": "Строка",
 					"description": "Client secret из настроек приложения",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--refresh",
 					"types": "Строка",
 					"description": "Refresh токен",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -373,7 +373,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -395,14 +395,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст новости",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -452,21 +452,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--postid",
 					"types": "Строка, Число",
 					"description": "ID новости",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст новости",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -509,14 +509,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--postid",
 					"types": "Строка, Число",
 					"description": "ID новости для удаления",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -538,14 +538,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--postid",
 					"types": "Строка, Число",
 					"description": "ID важной новости",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -567,7 +567,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -603,21 +603,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--postid",
 					"types": "Строка, Число",
 					"description": "ID новости",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст комментария",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -639,21 +639,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--postid",
 					"types": "Строка, Число",
 					"description": "ID новости",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--vision",
 					"types": "Строка",
 					"description": "Массив или 1 получатель: UA все, SGn р. группа, Un пользователь, DRn отдел, Gn группа",
-					"default": "",
+					"default": null,
 					"short": "-v"
 				},
 				{
@@ -675,14 +675,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -704,7 +704,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -747,14 +747,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура полей задачи. См. ПолучитьСтруктуруЗадачи",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -776,21 +776,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура полей задачи",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -812,14 +812,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -841,21 +841,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число, Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "Число, Строка",
 					"description": "ID Файла",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -877,14 +877,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -906,14 +906,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -935,14 +935,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -964,14 +964,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -993,14 +993,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1022,14 +1022,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1051,14 +1051,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1080,14 +1080,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1109,14 +1109,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1138,21 +1138,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--user",
 					"types": "Число,Строка",
 					"description": "ID пользователя исполнителя",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1174,14 +1174,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1203,14 +1203,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1232,14 +1232,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1261,14 +1261,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1297,14 +1297,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1326,14 +1326,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1355,28 +1355,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--taskfrom",
 					"types": "Строка, Число",
 					"description": "ID задачи источника связи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--taskto",
 					"types": "Строка, Число",
 					"description": "ID задачи приемника связи",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--linktype",
 					"types": "Строка, Число",
 					"description": "Тип связи: 0 старт>старт, 1 старт>финиш, 2 финиш>старт, 3 финиш>финиш",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -1398,28 +1398,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--taskfrom",
 					"types": "Строка, Число",
 					"description": "ID задачи источника связи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--taskto",
 					"types": "Строка, Число",
 					"description": "ID задачи приемника связи",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--linktype",
 					"types": "Строка, Число",
 					"description": "Тип связи: 0 старт>старт, 1 старт>финиш, 2 финиш>старт, 3 финиш>финиш",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -1441,7 +1441,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -1463,7 +1463,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -1507,7 +1507,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -1529,21 +1529,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--type",
 					"types": "Строка",
 					"description": "Тип поля: string, double, date, boolean",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fieldname",
 					"types": "Строка",
 					"description": "Текстовый идентификатор (наименование) поля",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -1586,14 +1586,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fieldid",
 					"types": "Строка, Число",
 					"description": "ID поля для изменения",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -1636,14 +1636,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fieldid",
 					"types": "Строка, Число",
 					"description": "ID поля для получения",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -1665,14 +1665,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fieldid",
 					"types": "Строка, Число",
 					"description": "ID поля для удаления",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -1694,21 +1694,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число, Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст (заголовок) пункта чек листа",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -1737,28 +1737,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число, Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--element",
 					"types": "Число, Строка",
 					"description": "ID элемента чеклиста",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст (заголовок) пункта чек листа",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -1780,21 +1780,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число, Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--element",
 					"types": "Число, Строка",
 					"description": "ID элемента для удаления",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -1816,14 +1816,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число, Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1845,21 +1845,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число, Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--element",
 					"types": "Число, Строка",
 					"description": "ID элемента для получения",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -1881,21 +1881,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число, Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--element",
 					"types": "Число, Строка",
 					"description": "ID элемента",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -1917,21 +1917,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число, Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--element",
 					"types": "Число, Строка",
 					"description": "ID элемента",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -1953,14 +1953,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число, Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1982,21 +1982,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число, Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--comment",
 					"types": "Число, Строка",
 					"description": "ID комментария",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -2018,21 +2018,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число, Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст комментария",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -2054,28 +2054,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число, Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--comment",
 					"types": "Число, Строка",
 					"description": "ID комментария",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст комментария",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -2097,21 +2097,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число, Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--comment",
 					"types": "Число, Строка",
 					"description": "ID удаляемого комментария",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -2133,14 +2133,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Число,Строка",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -2162,14 +2162,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--comment",
 					"types": "Число, Строка",
 					"description": "ID комментария",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -2191,14 +2191,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--comment",
 					"types": "Число, Строка",
 					"description": "ID комментария",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -2235,14 +2235,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование новой стадии",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -2292,21 +2292,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Новое наименование стадии",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--stage",
 					"types": "Строка, Число",
 					"description": "ID стадии для изменения",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -2349,14 +2349,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--stage",
 					"types": "Строка, Число",
 					"description": "ID стадии для удаления",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -2385,7 +2385,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2421,21 +2421,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Строка, Число",
 					"description": "ID задачи для переноса",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--stage",
 					"types": "Строка, Число",
 					"description": "ID стадии",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -2471,21 +2471,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Строка, Число",
 					"description": "ID задачи для добавления затрат",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--amount",
 					"types": "Строка, Число",
 					"description": "Затраченное время в секундах",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -2528,21 +2528,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Строка, Число",
 					"description": "ID задачи для добавления затрат",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--record",
 					"types": "Строка, Число",
 					"description": "ID записи о трудозатратах",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -2564,14 +2564,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Строка, Число",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -2593,21 +2593,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Строка, Число",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--record",
 					"types": "Строка, Число",
 					"description": "ID записи о трудозатратах",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -2629,28 +2629,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--task",
 					"types": "Строка, Число",
 					"description": "ID задачи",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--record",
 					"types": "Строка, Число",
 					"description": "ID записи о трудозатратах",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
 					"name": "--amount",
 					"types": "Строка, Число",
 					"description": "Затраченное время в секундах",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -2686,7 +2686,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2729,7 +2729,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2772,7 +2772,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2801,7 +2801,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2830,7 +2830,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2859,7 +2859,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2881,7 +2881,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -2903,14 +2903,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--storageid",
 					"types": "Строка, Число",
 					"description": "Идентификатор хранилища",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -2932,21 +2932,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--storageid",
 					"types": "Строка, Число",
 					"description": "Идентификатор хранилища",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Новое наименование хранилища",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -2968,14 +2968,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--storageid",
 					"types": "Строка, Число",
 					"description": "Идентификатор хранилища",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -2997,21 +2997,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--storageid",
 					"types": "Строка",
 					"description": "Идентификатор хранилища",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Имя каталога",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -3033,14 +3033,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "Строка, Число",
 					"description": "Идентификатор каталога",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3062,21 +3062,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "Строка, Число",
 					"description": "Идентификатор каталога родителя",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование нового каталога",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -3098,21 +3098,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "Строка, Число",
 					"description": "Идентификатор каталога",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--tagetid",
 					"types": "Строка, Число",
 					"description": "ID каталога назначения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -3134,21 +3134,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "Строка, Число",
 					"description": "Идентификатор каталога",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--tagetid",
 					"types": "Строка, Число",
 					"description": "ID каталога назначения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -3170,14 +3170,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "Строка, Число",
 					"description": "Идентификатор удаляемого каталога",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3199,14 +3199,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "Строка, Число",
 					"description": "Идентификатор каталога",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3228,14 +3228,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "Строка, Число",
 					"description": "Идентификатор каталога",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3264,14 +3264,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "Строка, Число",
 					"description": "Идентификатор каталога",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3293,14 +3293,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "Строка, Число",
 					"description": "Идентификатор каталога",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3322,21 +3322,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--folderid",
 					"types": "Строка, Число",
 					"description": "Идентификатор каталога",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Новое наименование каталога",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -3358,7 +3358,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -3387,28 +3387,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование файла с расширением для сохранения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--file",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Файл для загрузки",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--storageid",
 					"types": "Строка",
 					"description": "Идентификатор хранилища для загрузки",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -3437,28 +3437,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование файла с расширением для сохранения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--file",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Файл для загрузки",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--folderid",
 					"types": "Строка",
 					"description": "Идентификатор каталога для загрузки",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -3480,14 +3480,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "Строка, Число",
 					"description": "Идентификатор файла",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3509,14 +3509,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "Строка, Число",
 					"description": "Идентификатор удаляемого файла",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3538,14 +3538,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "Строка, Число",
 					"description": "Идентификатор файла",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3567,14 +3567,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "Строка, Число",
 					"description": "Идентификатор файла",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3596,14 +3596,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "Строка, Число",
 					"description": "Идентификатор файла",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3625,21 +3625,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "Строка, Число",
 					"description": "ID файла для копирования",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--folderid",
 					"types": "Строка, Число",
 					"description": "ID каталога размещения копии",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -3661,21 +3661,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "Строка, Число",
 					"description": "ID файла для перемещения",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--folderid",
 					"types": "Строка, Число",
 					"description": "ID каталога нового размещения",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -3697,21 +3697,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fileid",
 					"types": "Строка, Число",
 					"description": "Идентификатор файла",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Новое наименование каталога",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -3733,14 +3733,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура полей чата. См. ПолучитьСтруктуруЧата",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -3762,14 +3762,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -3791,14 +3791,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -3820,14 +3820,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--users",
 					"types": "Массив Из Строка, Число",
 					"description": "ID пользователя или нескольких пользователей",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -3849,21 +3849,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--users",
 					"types": "Массив из Строка, Число",
 					"description": "ID пользователей для добавления",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -3892,21 +3892,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--user",
 					"types": "Строка, Число",
 					"description": "ID пользователя",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -3928,21 +3928,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Новый текст заголовка",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -3964,21 +3964,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--color",
 					"types": "Строка",
 					"description": "Новый цвет чата",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -4000,21 +4000,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--picture",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Данные файла картинки",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -4036,21 +4036,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--user",
 					"types": "Строка, Число",
 					"description": "ID пользователя",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -4072,14 +4072,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -4101,14 +4101,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -4130,14 +4130,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата (chatXXX) или пользователя (XXX) для диалога",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -4173,14 +4173,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата (chatXXX) или пользователя (XXX) для диалога",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -4202,14 +4202,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата (chatXXX) или пользователя (XXX) для диалога",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -4231,14 +4231,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата (chatXXX) или пользователя (XXX) для диалога",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -4260,7 +4260,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -4282,14 +4282,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--status",
 					"types": "Строка, Число",
 					"description": "Статус пользователя: online, dnd, away",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -4311,7 +4311,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -4333,14 +4333,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -4377,21 +4377,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата (chatXXX) или пользователя (XXX) для диалога",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст сообщения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -4420,14 +4420,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--message",
 					"types": "Строка, Число",
 					"description": "ID сообщения для изменения",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -4463,14 +4463,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--message",
 					"types": "Строка, Число",
 					"description": "ID сообщения",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -4492,14 +4492,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--message",
 					"types": "Строка, Число",
 					"description": "ID сообщения для удаления",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -4521,21 +4521,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--fileid",
 					"types": "Строка, Число",
 					"description": "ID файла, загруженного при помощи ЗагрузитьФайлВКаталог",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -4564,21 +4564,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата (chatXXX) или пользователя (XXX) для диалога",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--message",
 					"types": "Строка, Число",
 					"description": "ID последнего прочитанного сообщения",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -4600,21 +4600,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--chat",
 					"types": "Строка, Число",
 					"description": "ID чата (chatXXX) или пользователя (XXX) для диалога",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--message",
 					"types": "Строка, Число",
 					"description": "ID послднего непрочитанного сообщения",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -4636,14 +4636,14 @@
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование картинки",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL картинки для отправки",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -4658,14 +4658,14 @@
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование картинки",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL файла для отправки",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -4680,21 +4680,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--user",
 					"types": "Строка, Число",
 					"description": "ID пользователя для отправки уведомления",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст уведомления",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -4730,21 +4730,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--user",
 					"types": "Строка, Число",
 					"description": "ID пользователя для отправки уведомления",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст уведомления",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -4780,14 +4780,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--notif",
 					"types": "Строка, Число",
 					"description": "ID уведомления для удаления",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -4809,14 +4809,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование подразделения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -4852,14 +4852,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--depid",
 					"types": "Строка, Число",
 					"description": "ID подразделения",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -4902,7 +4902,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -4952,14 +4952,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--depid",
 					"types": "Строка, Число",
 					"description": "ID подразделения для удаления",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -4981,7 +4981,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5003,14 +5003,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--userid",
 					"types": "Строка, Число",
 					"description": "ID пользователя для получения",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -5032,14 +5032,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Данные пользователя. См. ПолучитьСтурктуруПользователя",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5061,21 +5061,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--userid",
 					"types": "Строка, Число",
 					"description": "ID пользователя для изменения",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Данные пользователя. См. ПолучитьСтурктуруПользователя",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5097,14 +5097,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--userid",
 					"types": "Строка, Число",
 					"description": "ID пользователя для изменения",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -5133,14 +5133,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--filter",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Фильтр. См. ПолучитьСтруктуруФильтраПользователей",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5162,7 +5162,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5199,14 +5199,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура полей лида. См. ПолучитьСтруктуруЛида",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5228,14 +5228,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--lead",
 					"types": "Число, Строка",
 					"description": "ID лида",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -5257,14 +5257,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--lead",
 					"types": "Число,Строка",
 					"description": "ID лида",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -5286,7 +5286,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5322,21 +5322,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--lead",
 					"types": "Число, Строка",
 					"description": "ID лида",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура полей лида",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5358,7 +5358,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5395,14 +5395,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура полей сделки. См. ПолучитьСтруктуруСделки",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5424,14 +5424,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--deal",
 					"types": "Число, Строка",
 					"description": "ID сделки",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -5453,14 +5453,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--deal",
 					"types": "Число,Строка",
 					"description": "ID сделки",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -5482,7 +5482,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5518,21 +5518,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--deal",
 					"types": "Число, Строка",
 					"description": "ID сделки",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура полей сделки",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5554,7 +5554,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5591,21 +5591,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--owner",
 					"types": "Строка, Число",
 					"description": "ID владельца календаря",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--type",
 					"types": "Строка",
 					"description": "Тип календаря: user, group, company_calendar, location и др.",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -5627,14 +5627,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура полей календаря. См. ПолучитьСтруктуруКалендаря",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5656,21 +5656,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--calendar",
 					"types": "Строка, Число",
 					"description": "ID календаря",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура полей сделки. См. ПолучитьСтруктуруСделки",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5692,28 +5692,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--calendar",
 					"types": "Строка, Число",
 					"description": "ID календаря",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--owner",
 					"types": "Строка, Число",
 					"description": "ID владельца календаря",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--type",
 					"types": "Строка",
 					"description": "Тип календаря: user, group",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -5735,28 +5735,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--users",
 					"types": "Число, Массив Из Число",
 					"description": "ID пользователей или одного пользователя",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--from",
 					"types": "Дата",
 					"description": "Дата начала периода",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "Дата",
 					"description": "Дата окончания периода",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -5778,7 +5778,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5800,14 +5800,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--settings",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура настроек. См. ПолучитьСтруктуруПользовательскихНастроекКаледнаря",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -5829,7 +5829,7 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -5881,14 +5881,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Описание события. См. ПолучитьСтруктуруСобытияКалендаря",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5910,21 +5910,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--event",
 					"types": "Число",
 					"description": "ID события календаря",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Описание события. См. ПолучитьСтруктуруСобытияКалендаря",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -5946,14 +5946,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--event",
 					"types": "Число",
 					"description": "ID события для получения",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -5975,21 +5975,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--owner",
 					"types": "Строка, Число",
 					"description": "ID владельца календаря",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--type",
 					"types": "Строка",
 					"description": "Тип календаря: user, group, company_calendar",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -6018,14 +6018,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--event",
 					"types": "Число",
 					"description": "ID события для удаления",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -6047,14 +6047,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--event",
 					"types": "Число",
 					"description": "ID события календаря",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -6076,21 +6076,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL внешнего вебхука или адрес Bitrix24 при использовании токена",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--event",
 					"types": "Число",
 					"description": "ID события календаря",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
 					"name": "--status",
 					"types": "Строка",
 					"description": "Статус участия: Y (согласен), N (отказался), Q (не ответил)",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{

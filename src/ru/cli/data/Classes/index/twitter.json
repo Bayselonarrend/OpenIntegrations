@@ -49,7 +49,7 @@
 					"name": "--code",
 					"types": "Строка",
 					"description": "Код, полученный из авторизации См.ПолучитьСсылкуАвторизации",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -129,7 +129,7 @@
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст твита",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -151,14 +151,14 @@
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст твита",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--pictures",
 					"types": "Массив из Строка,ДвоичныеДанные",
 					"description": "Массив файлов картинок",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -180,14 +180,14 @@
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст твита",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--gifs",
 					"types": "Массив из Строка,ДвоичныеДанные",
 					"description": "Массив файлов гифок",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				},
 				{
@@ -209,14 +209,14 @@
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст твита",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--videos",
 					"types": "Массив из Строка,ДвоичныеДанные",
 					"description": "Массив файлов видео",
-					"default": "",
+					"default": null,
 					"short": "-v"
 				},
 				{
@@ -238,21 +238,21 @@
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст твита",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--options",
 					"types": "Массив из Строка",
 					"description": "Массив вариантов опроса",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--duration",
 					"types": "Строка,Число",
 					"description": "Длительность опроса",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -274,14 +274,14 @@
 					"name": "--files",
 					"types": "Массив из Строка, ДвоичныеДанные",
 					"description": "Массив файлов для загрузки",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--type",
 					"types": "Строка",
 					"description": "Тип вложений: tweet_video, tweet_image, tweet_gif",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{

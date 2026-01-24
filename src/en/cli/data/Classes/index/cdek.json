@@ -60,14 +60,14 @@
 					"name": "--account",
 					"types": "String",
 					"description": "Client identifier (Account)",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--pass",
 					"types": "String",
 					"description": "Secret key (Password)",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -89,14 +89,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--date",
 					"types": "Date",
 					"description": "Date for which data should be retrieved",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -118,14 +118,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--date",
 					"types": "Date",
 					"description": "Date for which data should be retrieved",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -147,14 +147,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--date",
 					"types": "Date",
 					"description": "Date for which data should be retrieved",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -176,7 +176,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -205,7 +205,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -263,14 +263,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--order",
 					"types": "Structure Of KeyAndValue",
 					"description": "Set of order fields. See GetOrderDescription",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -299,21 +299,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "String",
 					"description": "Order UUID for updating",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--order",
 					"types": "Structure Of KeyAndValue",
 					"description": "Set of changing order fields",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -335,14 +335,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "String",
 					"description": "Order UUID for deletion",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -364,14 +364,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "String",
 					"description": "Order UUID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -393,14 +393,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--number",
 					"types": "String",
 					"description": "Order number",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -429,21 +429,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "String",
 					"description": "Order UUID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--tariff",
 					"types": "Number",
 					"description": "Tariff code (from those available under the contract)",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -465,14 +465,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "String",
 					"description": "Order UUID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -494,14 +494,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuids",
 					"types": "String, Array of String",
 					"description": "One or an array of order UUIDs",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -537,14 +537,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "String",
 					"description": "UUID of the receipt received during its creation",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -573,14 +573,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuids",
 					"types": "String, Array of String",
 					"description": "One or an array of order UUIDs",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -623,14 +623,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "String",
 					"description": "The UID of the barcode received when the barcode was created",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -659,28 +659,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuids",
 					"types": "String, Array of String",
 					"description": "One or an array of order UUIDs",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--date",
 					"types": "Date",
 					"description": "Planned date of transfer of orders to CDEK",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--point",
 					"types": "String",
 					"description": "Code of shipment point to which it is planned to transfer orders",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -702,14 +702,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "String",
 					"description": "Prealert UUID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -731,14 +731,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "String",
 					"description": "Order UUID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -760,14 +760,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "String",
 					"description": "Order UUID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -818,14 +818,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "String",
 					"description": "Order UUID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -847,14 +847,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--intake",
 					"types": "Structure Of KeyAndValue",
 					"description": "Invitations description. See GetCourierInvitationsDescription",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -876,14 +876,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "String",
 					"description": "UUID of the invitation",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -905,14 +905,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "String",
 					"description": "UUID of the invitation for deletion",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -934,14 +934,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--appt",
 					"types": "Structure Of KeyAndValue",
 					"description": "Appointment description. See GetAppointmentDescription",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -963,14 +963,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--uuid",
 					"types": "String",
 					"description": "Appointment UUID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{

@@ -58,7 +58,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -73,14 +73,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--last",
 					"types": "Строка, Число",
 					"description": "ID последнего обработанного до этого события",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -102,14 +102,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "Строка, Число",
 					"description": "ID Файла",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -124,21 +124,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата для отправки сообщения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст сообщения",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -174,21 +174,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата для отправки файла",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--file",
 					"types": "ДвоичныеДанные, Строка",
 					"description": "Файл для отправки",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -231,21 +231,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата для отправки файла",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--file",
 					"types": "ДвоичныеДанные, Строка",
 					"description": "Файл для отправки",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -281,28 +281,28 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата для отправки сообщения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--messageid",
 					"types": "Строка, Число",
 					"description": "ID сообщения для редактирования",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Новый текст сообщения",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -324,21 +324,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата для отправки сообщения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--messageid",
 					"types": "Строка, Число",
 					"description": "ID сообщения для редактирования",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -353,21 +353,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата для отправки файла",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--fileid",
 					"types": "Строка, Число",
 					"description": "ID Файла для отправки",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -396,21 +396,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата для отправки файла",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--fileid",
 					"types": "Строка, Число",
 					"description": "ID Файла голосового сообщения",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -425,28 +425,28 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--messageid",
 					"types": "Строка, Число",
 					"description": "ID оригинального сообщения",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--fromid",
 					"types": "Строка, Число",
 					"description": "ID чата источника оригинального сообщения",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата для отправки сообщения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -468,21 +468,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--messageid",
 					"types": "Строка, Число",
 					"description": "ID сообщения для закрепления",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -497,21 +497,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--messageid",
 					"types": "Строка, Число",
 					"description": "ID сообщения для открепления",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -526,14 +526,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--queryid",
 					"types": "Строка",
 					"description": "Идентификатор callback query полученного ботом",
-					"default": "",
+					"default": null,
 					"short": "-q"
 				},
 				{
@@ -569,7 +569,7 @@
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст кнопки",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -605,21 +605,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--members",
 					"types": "Строка, Число, Массив Из Строка, Число",
 					"description": "Пользователь или пользователи чата для удаления",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -634,21 +634,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--file",
 					"types": "ДвоичныеДанные, Строка",
 					"description": "Файл картинки",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -663,14 +663,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -685,14 +685,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -707,14 +707,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -736,14 +736,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -758,14 +758,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -780,21 +780,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--userid",
 					"types": "Строка, Число",
 					"description": "ID пользователя для блокировки",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -816,21 +816,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--userid",
 					"types": "Строка, Число",
 					"description": "ID пользователя",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -845,14 +845,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -874,14 +874,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -903,21 +903,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст заголовка",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				}
 			],
@@ -932,21 +932,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст описания",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				}
 			],
@@ -961,21 +961,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен бота",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chatid",
 					"types": "Строка, Число",
 					"description": "ID чата",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст правил",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				}
 			],

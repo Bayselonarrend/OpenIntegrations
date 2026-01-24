@@ -71,7 +71,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -86,7 +86,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -115,14 +115,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "Request handling address from Telegram (with https:)",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -137,7 +137,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -152,14 +152,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "String",
 					"description": "File ID for downloading",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -174,21 +174,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -224,28 +224,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
 					"name": "--picture",
 					"types": "BinaryData, String",
 					"description": "Image file",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -274,28 +274,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
 					"name": "--video",
 					"types": "BinaryData, String",
 					"description": "Video file",
-					"default": "",
+					"default": null,
 					"short": "-v"
 				},
 				{
@@ -324,28 +324,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
 					"name": "--audio",
 					"types": "BinaryData, String",
 					"description": "Audio file",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -374,28 +374,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
 					"name": "--doc",
 					"types": "BinaryData, String",
 					"description": "Document file",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -431,28 +431,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
 					"name": "--gif",
 					"types": "BinaryData, String",
 					"description": "GIF file",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				},
 				{
@@ -481,28 +481,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
 					"name": "--media",
 					"types": "Map of KeyAndValue",
 					"description": "File collection: Key > File, Value > Media Type",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -531,28 +531,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--lat",
 					"types": "String, Number",
 					"description": "Geographic latitude",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--long",
 					"types": "String, Number",
 					"description": "Geographic longitude",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -574,35 +574,35 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--name",
 					"types": "String",
 					"description": "Contact name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--surname",
 					"types": "String",
 					"description": "Contact last name",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--phone",
 					"types": "String",
 					"description": "Contact phone number",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -624,28 +624,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--question",
 					"types": "String",
 					"description": "Poll question",
-					"default": "",
+					"default": null,
 					"short": "-q"
 				},
 				{
 					"name": "--options",
 					"types": "Array of String",
 					"description": "Array of answer options",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
@@ -667,28 +667,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--message",
 					"types": "String, Number",
 					"description": "Original message ID",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--from",
 					"types": "String, Number",
 					"description": "Chat ID of the original message",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				}
 			],
@@ -703,21 +703,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--message",
 					"types": "String, Number",
 					"description": "ID of message to delete",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -732,28 +732,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--message",
 					"types": "String, Number",
 					"description": "ID of message to delete",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--keyboard",
 					"types": "String, Structure Of KeyAndValue",
 					"description": "Keyboard. See FormKeyboardFromButtonArray",
-					"default": "",
+					"default": null,
 					"short": "-k"
 				}
 			],
@@ -768,28 +768,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--message",
 					"types": "String, Number",
 					"description": "ID of message to delete",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "New message text",
-					"default": "",
+					"default": null,
 					"short": "-x"
 				},
 				{
@@ -811,28 +811,28 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--message",
 					"types": "String, Number",
 					"description": "ID of message to delete",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--caption",
 					"types": "String",
 					"description": "New message description",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -854,7 +854,7 @@
 					"name": "--buttons",
 					"types": "Array of String",
 					"description": "Array of buttons",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -883,21 +883,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--user",
 					"types": "String, Number",
 					"description": "Target user ID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -912,21 +912,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--user",
 					"types": "String, Number",
 					"description": "Target user ID",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],
@@ -941,14 +941,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID or ChatID*TopicID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -984,21 +984,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--message",
 					"types": "String, Number",
 					"description": "Target message ID",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -1013,21 +1013,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--message",
 					"types": "String, Number",
 					"description": "Target message ID",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -1042,14 +1042,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Bot token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--chat",
 					"types": "String, Number",
 					"description": "Target chat ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -1064,7 +1064,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -1079,21 +1079,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--forum",
 					"types": "String, Number",
 					"description": "Topic creation chat ID",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "Topic title",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -1115,21 +1115,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--forum",
 					"types": "String, Number",
 					"description": "Topic creation chat ID",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--topic",
 					"types": "String, Number",
 					"description": "Topic ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -1158,14 +1158,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--forum",
 					"types": "String, Number",
 					"description": "Topic chat ID",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -1187,14 +1187,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--forum",
 					"types": "String, Number",
 					"description": "Topic chat ID",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -1216,21 +1216,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--forum",
 					"types": "String, Number",
 					"description": "Topic chat ID",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--topic",
 					"types": "String, Number",
 					"description": "Topic ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -1245,14 +1245,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--forum",
 					"types": "String, Number",
 					"description": "Topic chat ID",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -1267,14 +1267,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--forum",
 					"types": "String, Number",
 					"description": "Topic chat ID",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -1289,21 +1289,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--forum",
 					"types": "String, Number",
 					"description": "Topic chat ID",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New main topic name",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -1318,14 +1318,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--forum",
 					"types": "String, Number",
 					"description": "Topic chat ID",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{

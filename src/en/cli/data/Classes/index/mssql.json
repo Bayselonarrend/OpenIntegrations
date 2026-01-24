@@ -41,7 +41,7 @@
 					"name": "--sql",
 					"types": "String",
 					"description": "Database query text",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -84,7 +84,7 @@
 					"name": "--addr",
 					"types": "String",
 					"description": "Database server address and instance",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -134,7 +134,7 @@
 					"name": "--trust",
 					"types": "Boolean",
 					"description": "Allows to work with invalid certificates, including self signed",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -156,7 +156,7 @@
 					"name": "--base",
 					"types": "String",
 					"description": "Database name",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -185,7 +185,7 @@
 					"name": "--base",
 					"types": "String",
 					"description": "Database name",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -214,14 +214,14 @@
 					"name": "--table",
 					"types": "String",
 					"description": "Table name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--cols",
 					"types": "Structure Of KeyAndValue",
 					"description": "Column structure: Key > Name, Value > Data type",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -250,21 +250,21 @@
 					"name": "--table",
 					"types": "String",
 					"description": "Table name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--name",
 					"types": "String",
 					"description": "Column name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--type",
 					"types": "String",
 					"description": "Column data type",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -293,14 +293,14 @@
 					"name": "--table",
 					"types": "String",
 					"description": "Table name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--name",
 					"types": "String",
 					"description": "Column name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
@@ -329,14 +329,14 @@
 					"name": "--table",
 					"types": "String",
 					"description": "Table name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--cols",
 					"types": "Structure Of KeyAndValue",
 					"description": "Column structure: Key > Name, Value > Data type",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -365,7 +365,7 @@
 					"name": "--table",
 					"types": "String",
 					"description": "Table name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -394,7 +394,7 @@
 					"name": "--table",
 					"types": "String",
 					"description": "Table name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -423,7 +423,7 @@
 					"name": "--table",
 					"types": "String",
 					"description": "Table name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -452,14 +452,14 @@
 					"name": "--table",
 					"types": "String",
 					"description": "Table name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--rows",
 					"types": "Array of Structure",
 					"description": "An array of string data structures: Key > field, Value > field value",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -495,7 +495,7 @@
 					"name": "--table",
 					"types": "String",
 					"description": "Table name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -552,14 +552,14 @@
 					"name": "--table",
 					"types": "String",
 					"description": "Table name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--values",
 					"types": "Structure Of KeyAndValue",
 					"description": "Values structure: Key > field, Value > field value",
-					"default": "",
+					"default": null,
 					"short": "-v"
 				},
 				{
@@ -595,7 +595,7 @@
 					"name": "--table",
 					"types": "String",
 					"description": "Table name",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{

@@ -62,7 +62,7 @@
 					"name": "--appkey",
 					"types": "Строка",
 					"description": "Ключ приложения",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				}
 			],
@@ -77,21 +77,21 @@
 					"name": "--appkey",
 					"types": "Строка",
 					"description": "Ключ приложения",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--appsecret",
 					"types": "Строка",
 					"description": "Секрет приложения",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--code",
 					"types": "Строка",
 					"description": "Код со страницы авторизации",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -106,21 +106,21 @@
 					"name": "--appkey",
 					"types": "Строка",
 					"description": "Ключ приложения",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--appsecret",
 					"types": "Строка",
 					"description": "Секрет приложения",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--refresh",
 					"types": "Строка",
 					"description": "Рефреш токен",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -135,7 +135,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -157,7 +157,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -172,14 +172,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "Строка",
 					"description": "Путь к объекту",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -201,7 +201,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -237,14 +237,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "Строка",
 					"description": "Путь к объекту",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -259,21 +259,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--file",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Данные файл для загрузки",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--path",
 					"types": "Строка",
 					"description": "Путь сохранения на Dropbox",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -295,21 +295,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL источник файла",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--path",
 					"types": "Строка",
 					"description": "Путь сохранения на Dropbox",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -324,14 +324,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--job",
 					"types": "Строка",
 					"description": "ID асинхронной работы из ответа ЗагрузитьФайлПоURL",
-					"default": "",
+					"default": null,
 					"short": "-j"
 				}
 			],
@@ -346,21 +346,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "Строка",
 					"description": "Путь к объекту удаления",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--permanently",
 					"types": "Строка",
 					"description": "Удалить объект без возможности востановления",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -375,21 +375,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--from",
 					"types": "Строка",
 					"description": "Путь к объекту оригинала",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "Строка",
 					"description": "Целевой путь для нового объекта",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				}
 			],
@@ -404,21 +404,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--from",
 					"types": "Строка",
 					"description": "Путь к объекту оригинала",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "Строка",
 					"description": "Целевой путь для нового объекта",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				}
 			],
@@ -433,14 +433,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "Строка",
 					"description": "Целевой путь создания каталога",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -455,14 +455,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "Строка",
 					"description": "Путь или ID файла",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -477,14 +477,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "Строка",
 					"description": "Путь или ID каталога",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -499,14 +499,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "Строка",
 					"description": "Путь к объекту",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -528,21 +528,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "Строка",
 					"description": "Путь к объекту",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--rev",
 					"types": "Строка",
 					"description": "ID версии (ревизии) для востановления",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -557,14 +557,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--paths",
 					"types": "Строка, Массив Из Строка",
 					"description": "Путь или набору путей к файлам",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -579,21 +579,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "Строка",
 					"description": "Путь к объекту, для которого необходимо создать тег",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--tag",
 					"types": "Строка",
 					"description": "Текст тега",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				}
 			],
@@ -608,21 +608,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "Строка",
 					"description": "Путь к объекту, тег которого необходимо удалить",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--tag",
 					"types": "Строка",
 					"description": "Текст тега",
-					"default": "",
+					"default": null,
 					"short": "-g"
 				}
 			],
@@ -637,14 +637,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--path",
 					"types": "Строка",
 					"description": "Путь к целевому каталогу",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -659,14 +659,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--folder",
 					"types": "Строка",
 					"description": "ID публичного каталога (shared folder ID)",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -681,21 +681,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "Строка",
 					"description": "ID файла, к которому предоставляется доступ",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--emails",
 					"types": "Строка, Массив Из Строка",
 					"description": "Список адресов почты добавляемых пользователей",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -717,21 +717,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--folder",
 					"types": "Строка",
 					"description": "ID публичного каталога (shared folder ID)",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--emails",
 					"types": "Строка, Массив Из Строка",
 					"description": "Список адресов почты добавляемых пользователей",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -753,14 +753,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--job",
 					"types": "Строка",
 					"description": "ID асинхронной работы",
-					"default": "",
+					"default": null,
 					"short": "-j"
 				}
 			],
@@ -775,14 +775,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fileid",
 					"types": "Строка",
 					"description": "ID файла, к которому предоставляется доступ",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],

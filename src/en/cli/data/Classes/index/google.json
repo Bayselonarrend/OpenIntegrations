@@ -23,7 +23,7 @@
 					"name": "--id",
 					"types": "String",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -59,21 +59,21 @@
 					"name": "--id",
 					"types": "String",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "String",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--code",
 					"types": "String",
 					"description": "Code from browser",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -88,21 +88,21 @@
 					"name": "--id",
 					"types": "String",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "String",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--refresh",
 					"types": "String",
 					"description": "Refresh token",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -117,14 +117,14 @@
 					"name": "--auth",
 					"types": "Arbitrary",
 					"description": "JSON authorization data as a file, collection or binary data",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--scope",
 					"types": "Array Of String",
 					"description": "Scope or array of scopes",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
