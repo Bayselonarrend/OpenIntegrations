@@ -38,21 +38,21 @@
 					"name": "--conn",
 					"types": "Произвольный",
 					"description": "Существующее соединение или параметры соединения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--service",
 					"types": "Строка",
 					"description": "Имя сервиса",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--method",
 					"types": "Строка",
 					"description": "Имя метода",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -88,7 +88,7 @@
 					"name": "--addr",
 					"types": "Строка",
 					"description": "Адрес для подключения (с протоколом)",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -117,7 +117,7 @@
 					"name": "--trust",
 					"types": "Булево",
 					"description": "Позволяет работать с некорретными сертификатами, в т.ч. самоподписанными",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -139,7 +139,7 @@
 					"name": "--conn",
 					"types": "Произвольный",
 					"description": "Существующее соединение или параметры соединения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -161,14 +161,14 @@
 					"name": "--conn",
 					"types": "Произвольный",
 					"description": "Существующее соединение или параметры соединения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--service",
 					"types": "Строка",
 					"description": "Имя сервиса",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -190,21 +190,21 @@
 					"name": "--conn",
 					"types": "Произвольный",
 					"description": "Существующее соединение или параметры соединения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--service",
 					"types": "Строка",
 					"description": "Имя сервиса",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--method",
 					"types": "Строка",
 					"description": "Имя метода",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -226,28 +226,28 @@
 					"name": "--conn",
 					"types": "Произвольный",
 					"description": "Существующее соединение или параметры соединения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--service",
 					"types": "Строка",
 					"description": "Имя сервиса",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--method",
 					"types": "Строка",
 					"description": "Имя метода",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--data",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Данные первого запроса",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -283,28 +283,28 @@
 					"name": "--conn",
 					"types": "Произвольный",
 					"description": "Существующее соединение или параметры соединения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--service",
 					"types": "Строка",
 					"description": "Имя сервиса",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--method",
 					"types": "Строка",
 					"description": "Имя метода",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--data",
 					"types": "Массив Из Структура",
 					"description": "Массив запросов или одиночный запрос",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -333,28 +333,28 @@
 					"name": "--conn",
 					"types": "Произвольный",
 					"description": "Существующее соединение или параметры соединения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--service",
 					"types": "Строка",
 					"description": "Имя сервиса",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--method",
 					"types": "Строка",
 					"description": "Имя метода",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--exch",
 					"types": "Массив Из Произвольный",
 					"description": "Массив из данных запросов и Неопределено там, где необходимо получение",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{

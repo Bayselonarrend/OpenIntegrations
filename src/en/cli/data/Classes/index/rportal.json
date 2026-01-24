@@ -42,21 +42,21 @@
 					"name": "--url",
 					"types": "String",
 					"description": "ReportPortal server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--login",
 					"types": "String",
 					"description": "Users login",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--pass",
 					"types": "String",
 					"description": "Users password",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -71,28 +71,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "ReportPortal server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "Access token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--user",
 					"types": "String",
 					"description": "User ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--name",
 					"types": "String",
 					"description": "Token name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				}
 			],
@@ -107,28 +107,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "ReportPortal server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "Access token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--user",
 					"types": "String",
 					"description": "User ID",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--id",
 					"types": "String",
 					"description": "Token ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],
@@ -143,28 +143,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "ReportPortal server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "Access token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--proj",
 					"types": "String",
 					"description": "Project ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Launch parameters. See GetLaunchStructure",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -179,28 +179,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "ReportPortal server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "Access token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--proj",
 					"types": "String",
 					"description": "Project ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Item parameters. See GetItemStructure",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -222,35 +222,35 @@
 					"name": "--url",
 					"types": "String",
 					"description": "ReportPortal server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "Access token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--proj",
 					"types": "String",
 					"description": "Project ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--id",
 					"types": "String",
 					"description": "Launch ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Completion parameters. See GetLaunchCompletionStructure",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -265,35 +265,35 @@
 					"name": "--url",
 					"types": "String",
 					"description": "ReportPortal server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "Access token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--proj",
 					"types": "String",
 					"description": "Project ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--id",
 					"types": "String",
 					"description": "Element ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Completion parameters. See GetItemCompletionStructure",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -374,7 +374,7 @@
 					"name": "--end",
 					"types": "Date",
 					"description": "Launch end date and time",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
@@ -410,28 +410,28 @@
 					"name": "--url",
 					"types": "String",
 					"description": "ReportPortal server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "String",
 					"description": "Access token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--proj",
 					"types": "String",
 					"description": "Project ID",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Execution information. See GetLogStructure",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -446,21 +446,21 @@
 					"name": "--launch",
 					"types": "String",
 					"description": "Launch ID to which the test item belongs",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--id",
 					"types": "String",
 					"description": "Test item ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--time",
 					"types": "Date",
 					"description": "Log entry date and time",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{

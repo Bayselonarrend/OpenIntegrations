@@ -222,13 +222,15 @@ Function GetFullParamsDescription(MethodData)
 	MaximumLength 	 = 0;
 	OptionListsMap = New Map();
 	FullDescriptionsArray = New Array;
-	ParameterDescriptionTemplate = " (%1|#color=Yellow) -%2";
+	ParameterDescriptionTemplate = " (%1|#color=Yellow) -%2%3";
+	DefaultValueTemplate = " (optional, def. val. - %1)";
 	MethodParameters = MethodData["params"];
 
 	For Each MethodParameter In MethodParameters Do
 
 		OptionFull = MethodParameter["name"];
 		SplittedOption = MethodParameter["short"];
+		DefaultValue = MethodParameter["default"];
 
 		CurrentOptionList = ?(ValueIsFilled(SplittedOption)
 			, StrTemplate("%1, %2", SplittedOption, OptionFull)
@@ -254,6 +256,14 @@ Function GetFullParamsDescription(MethodData)
 	For Each MethodParameter In MethodParameters Do
 			
 		CurrentOptionList = OptionListsMap.Get(MethodParameter["name"]);
+		CurrentDescription = MethodParameters["description"];
+		CurrentDefaultValue = MethodParameters["default"];
+
+		If CurrentDefaultValue <> Undefined Then
+			DefaultValueDescription = StrTemplate(DefaultValueTemplate, CurrentDefaultValue);
+		Else
+			DefaultValueDescription = "";
+		EndIf;
 
 		While StrLen(CurrentOptionList) < MaximumLength Do
 			CurrentOptionList = CurrentOptionList + " ";
@@ -274,9 +284,9 @@ Function GetFullParamsDescription(MethodData)
 				CurrentDescription = StrConcat(DescriptionArray, Chars.LF + NewLineTab);
 			EndIf;
 
-		EndIf;;
+		EndIf;
 
-		CurrentFullDescription = StrTemplate(ParameterDescriptionTemplate, CurrentOptionList, CurrentDescription);
+		CurrentFullDescription = StrTemplate(ParameterDescriptionTemplate, CurrentOptionList, CurrentDescription, DefaultValueDescription);
 		FullDescriptionsArray.Add(CurrentFullDescription);
 
 	EndDo;

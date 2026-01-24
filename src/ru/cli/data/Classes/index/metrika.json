@@ -37,14 +37,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование метки",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -59,21 +59,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--label",
 					"types": "Строка",
 					"description": "ID метки для изменения",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Новое наименование",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],
@@ -88,14 +88,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--label",
 					"types": "Строка",
 					"description": "ID метки",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -110,14 +110,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--label",
 					"types": "Строка",
 					"description": "ID метки для удаления",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -132,7 +132,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -147,14 +147,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура счетчика. См. ПолучитьСтруктуруСчетчика",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -169,21 +169,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--counter",
 					"types": "Строка, Число",
 					"description": "ID счетчика для изменения",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--fields",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Структура изменяемых полей. См. ПолучитьСтруктуруСчетчика",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -198,14 +198,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--counter",
 					"types": "Строка, Число",
 					"description": "ID счетчика",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -220,14 +220,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--counter",
 					"types": "Число, Строка",
 					"description": "ID счетчика для удаления",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -242,14 +242,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--counter",
 					"types": "Строка, Число",
 					"description": "ID счетчика для восстановления",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -264,7 +264,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -316,14 +316,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--counter",
 					"types": "Строка, Число",
 					"description": "ID счетчика",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],

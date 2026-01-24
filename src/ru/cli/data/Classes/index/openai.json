@@ -60,28 +60,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--msgs",
 					"types": "Строка, Массив Из Строка",
 					"description": "Сообщения разговора. См. ПолучитьСтруктуруСообщения",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -110,28 +110,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--descr",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Параметры генерации. См. ПолучитьСтруктуруОписанияКартинок",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -153,28 +153,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--input",
 					"types": "Массив Из Строка",
 					"description": "Строка или массив строк запросов",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -203,14 +203,14 @@
 					"name": "--role",
 					"types": "Строка",
 					"description": "Источник сообщения: system, user, assistant и др.",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст сообщения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -232,7 +232,7 @@
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст сообщения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -254,7 +254,7 @@
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст сообщения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -269,7 +269,7 @@
 					"name": "--text",
 					"types": "Строка",
 					"description": "Текст сообщения",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -284,14 +284,14 @@
 					"name": "--role",
 					"types": "Строка",
 					"description": "Источник сообщения: system, user, developer",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
 					"name": "--file",
 					"types": "Строка",
 					"description": "ID файла картинки. См. ЗагрузитьФайл",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
@@ -313,14 +313,14 @@
 					"name": "--prompt",
 					"types": "Строка",
 					"description": "Текстовое описание картинки для генерации",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--amount",
 					"types": "Число",
 					"description": "Количество изображений для генерации",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -356,14 +356,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -399,21 +399,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -456,21 +456,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--id",
 					"types": "Строка",
 					"description": "ID ассистента",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -492,21 +492,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--id",
 					"types": "Строка",
 					"description": "ID ассистента",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -528,14 +528,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -571,35 +571,35 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Имя файла с раширением",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--data",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Путь к файлу или данные",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--purpose",
 					"types": "Строка",
 					"description": "Назначение файла: assistants, batch, vision, user_data, evals",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -621,21 +621,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--id",
 					"types": "Строка",
 					"description": "ID файла",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -657,21 +657,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--id",
 					"types": "Строка",
 					"description": "ID файла",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -693,21 +693,21 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--id",
 					"types": "Строка",
 					"description": "ID файла",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -729,28 +729,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--input",
 					"types": "Строка",
 					"description": "Текст для озвучивания",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -786,28 +786,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--model",
 					"types": "Строка",
 					"description": "Имя модели",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--audio",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Аудио файл",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -843,14 +843,14 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL сервера OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен авторизации OpenAI",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{

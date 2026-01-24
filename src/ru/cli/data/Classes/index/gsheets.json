@@ -47,7 +47,7 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
@@ -83,21 +83,21 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "Строка",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--code",
 					"types": "Строка",
 					"description": "Code из браузера",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -112,21 +112,21 @@
 					"name": "--id",
 					"types": "Строка",
 					"description": "Client ID",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				},
 				{
 					"name": "--secret",
 					"types": "Строка",
 					"description": "Client secret",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--refresh",
 					"types": "Строка",
 					"description": "Refresh token",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				}
 			],
@@ -141,14 +141,14 @@
 					"name": "--auth",
 					"types": "Произвольный",
 					"description": "JSON данные авторизации как файл, коллекция или двоичные данные",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--scope",
 					"types": "Массив Из Строка",
 					"description": "Область действия (scope) или массив областей",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -170,21 +170,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--sheets",
 					"types": "Массив из Строка",
 					"description": "Массив имен для добавления новых листов в книгу",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				}
 			],
@@ -199,14 +199,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--spreadsheet",
 					"types": "Строка",
 					"description": "Идентификатор книги",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				}
 			],
@@ -221,21 +221,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--spreadsheet",
 					"types": "Строка",
 					"description": "ID книги",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Новое наименование",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -250,21 +250,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--spreadsheet",
 					"types": "Строка",
 					"description": "Идентификатор книги",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Наименование нового листа",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -279,21 +279,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--spreadsheet",
 					"types": "Строка",
 					"description": "Идентификатор книги",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--sheet",
 					"types": "Строка",
 					"description": "Идентификатор удаляемого листа",
-					"default": "",
+					"default": null,
 					"short": "-h"
 				}
 			],
@@ -308,28 +308,28 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--from",
 					"types": "Строка",
 					"description": "ID книги источника",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "Строка",
 					"description": "ID книги приемника",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--sheet",
 					"types": "Строка",
 					"description": "ID копируемого листа",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				}
 			],
@@ -344,21 +344,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--spreadsheet",
 					"types": "Строка",
 					"description": "ID книги",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--data",
 					"types": "Соответствие Из КлючИЗначение",
 					"description": "Данные заполнения, где ключ это имя ячейки вида A1",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -387,21 +387,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--spreadsheet",
 					"types": "Строка",
 					"description": "ID книги",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--cells",
 					"types": "Массив из Строка",
 					"description": "Массив ячеек вида А1 для очистки",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -423,14 +423,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--spreadsheet",
 					"types": "Строка",
 					"description": "ID книги",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{

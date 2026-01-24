@@ -47,21 +47,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--page",
 					"types": "Строка",
 					"description": "ID Родителя",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Заголовок страницы",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -76,21 +76,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "Строка",
 					"description": "ID родительской базы",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--data",
 					"types": "Соответствие Из КлючИЗначение",
 					"description": "Соответствие свойств",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				}
 			],
@@ -105,14 +105,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--page",
 					"types": "Строка",
 					"description": "ID страницы",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -127,14 +127,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--page",
 					"types": "Строка",
 					"description": "ID изменяемой страницы",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -177,21 +177,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--page",
 					"types": "Строка",
 					"description": "ID страницы родителя",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--title",
 					"types": "Строка",
 					"description": "Заголовок базы данных",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
@@ -213,14 +213,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "Строка",
 					"description": "ID базы данных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				}
 			],
@@ -235,14 +235,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--base",
 					"types": "Строка",
 					"description": "ID целевой базы",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -278,21 +278,21 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--page",
 					"types": "Строка",
 					"description": "ID родительского блока или страницы",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--block",
 					"types": "Строка,Соответствие Из КлючИЗначение",
 					"description": "ID блока или сам блок образец",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -314,14 +314,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--block",
 					"types": "Строка",
 					"description": "ID блока",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -343,14 +343,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--block",
 					"types": "Строка",
 					"description": "ID блока родителя",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				}
 			],
@@ -365,14 +365,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--block",
 					"types": "Строка",
 					"description": "ID блока",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				}
 			],
@@ -387,7 +387,7 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -402,14 +402,14 @@
 					"name": "--token",
 					"types": "Строка",
 					"description": "Токен",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--user",
 					"types": "Строка",
 					"description": "ID целевого пользователя",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				}
 			],

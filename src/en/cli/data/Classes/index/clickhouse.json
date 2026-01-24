@@ -31,14 +31,14 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Connection settings or object (for gRPC)",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--req",
 					"types": "Structure Of KeyAndValue",
 					"description": "Request data. See GetRequestSettings",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -60,7 +60,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "Connection address with protocol and port",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -89,7 +89,7 @@
 					"name": "--query",
 					"types": "String",
 					"description": "Request text",
-					"default": "",
+					"default": null,
 					"short": "-q"
 				},
 				{
@@ -146,14 +146,14 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Table name",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--cols",
 					"types": "Structure Of KeyAndValue",
 					"description": "Table column structure: Key > name, Value > data type",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -211,7 +211,7 @@
 					"name": "--url",
 					"types": "String",
 					"description": "Connection address with protocol and port",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -247,7 +247,7 @@
 					"name": "--trust",
 					"types": "Boolean",
 					"description": "Allows to work with invalid certificates, including self signed",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{

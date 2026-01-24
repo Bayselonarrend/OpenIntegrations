@@ -13,14 +13,14 @@
 					"name": "--exec",
 					"types": "String",
 					"description": "Command text",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{
 					"name": "--conn",
 					"types": "Arbitrary, Structure Of KeyAndValue",
 					"description": "Connection or connection parameters",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -35,14 +35,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "Server URL",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--pass",
 					"types": "String",
 					"description": "Password for connection",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{

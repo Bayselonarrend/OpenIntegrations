@@ -38,21 +38,21 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection parameters",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--service",
 					"types": "String",
 					"description": "Service name",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--method",
 					"types": "String",
 					"description": "Method name",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -88,7 +88,7 @@
 					"name": "--addr",
 					"types": "String",
 					"description": "Connection address (with protocol)",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -117,7 +117,7 @@
 					"name": "--trust",
 					"types": "Boolean",
 					"description": "Allows to work with invalid certificates, including self signed",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -139,7 +139,7 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection parameters",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -161,14 +161,14 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection parameters",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--service",
 					"types": "String",
 					"description": "Service name",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -190,21 +190,21 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection parameters",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--service",
 					"types": "String",
 					"description": "Service name",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--method",
 					"types": "String",
 					"description": "Method name",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
@@ -226,28 +226,28 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection parameters",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--service",
 					"types": "String",
 					"description": "Service name",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--method",
 					"types": "String",
 					"description": "Method name",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--data",
 					"types": "Structure Of KeyAndValue",
 					"description": "First request data",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -283,28 +283,28 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection parameters",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--service",
 					"types": "String",
 					"description": "Service name",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--method",
 					"types": "String",
 					"description": "Method name",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--data",
 					"types": "Array of Structure",
 					"description": "Request data array or single request",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -333,28 +333,28 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection parameters",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--service",
 					"types": "String",
 					"description": "Service name",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--method",
 					"types": "String",
 					"description": "Method name",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--exch",
 					"types": "Array Of Arbitrary",
 					"description": "Array of request data and Undefined where retrieval is needed",
-					"default": "",
+					"default": null,
 					"short": "-e"
 				},
 				{

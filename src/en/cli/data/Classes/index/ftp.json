@@ -48,7 +48,7 @@
 					"name": "--set",
 					"types": "Structure Of KeyAndValue",
 					"description": "FTP settings. See GetConnectionSettings",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -77,7 +77,7 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -92,7 +92,7 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -107,7 +107,7 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -122,14 +122,14 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--cmd",
 					"types": "String",
 					"description": "Text of the executed command",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -144,14 +144,14 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--cmd",
 					"types": "String",
 					"description": "Text of the executed command",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				}
 			],
@@ -166,14 +166,14 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the object",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -188,21 +188,21 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--old",
 					"types": "String",
 					"description": "Current path to object",
-					"default": "",
+					"default": null,
 					"short": "-o"
 				},
 				{
 					"name": "--new",
 					"types": "String",
 					"description": "New path to object",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				}
 			],
@@ -217,7 +217,7 @@
 					"name": "--host",
 					"types": "String",
 					"description": "Host address",
-					"default": "",
+					"default": null,
 					"short": "-h"
 				},
 				{
@@ -281,14 +281,14 @@
 					"name": "--addr",
 					"types": "String",
 					"description": "Proxy address",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--port",
 					"types": "Number",
 					"description": "Proxy port",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
@@ -324,7 +324,7 @@
 					"name": "--trust",
 					"types": "Boolean",
 					"description": "Allows to work with invalid certificates, including self signed",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -346,7 +346,7 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -375,14 +375,14 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to new directory",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -397,14 +397,14 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to directory to delete",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -419,14 +419,14 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the directory to be cleaned",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -441,7 +441,7 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -456,21 +456,21 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--file",
 					"types": "String, BinaryData",
 					"description": "File on disk or file data",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to save file on server",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -485,14 +485,14 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to file on server",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				}
 			],
@@ -507,21 +507,21 @@
 					"name": "--conn",
 					"types": "Arbitrary",
 					"description": "Existing connection or connection configuration",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--path",
 					"types": "String",
 					"description": "Path to file on server",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--file",
 					"types": "String",
 					"description": "Path to save file on disk",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],

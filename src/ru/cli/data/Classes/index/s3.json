@@ -61,28 +61,28 @@
 					"name": "--url",
 					"types": "Строка",
 					"description": "URL: домен для обычных методов или полный URL с параметрами для прямой отправки запросов",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--access",
 					"types": "Строка",
 					"description": "Access key для авторизации",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
 					"name": "--secret",
 					"types": "Строка",
 					"description": "Secret key для авторизации",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--region",
 					"types": "Строка",
 					"description": "Регион сервиса",
-					"default": "",
+					"default": null,
 					"short": "-r"
 				},
 				{
@@ -104,14 +104,14 @@
 					"name": "--method",
 					"types": "Строка",
 					"description": "HTTP метод",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса (c полным URL). См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -140,21 +140,21 @@
 					"name": "--method",
 					"types": "Строка",
 					"description": "HTTP метод",
-					"default": "",
+					"default": null,
 					"short": "-m"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса (c полным URL). См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--body",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Двоичное тело запроса или путь к файлу",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
@@ -183,14 +183,14 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -219,14 +219,14 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -255,14 +255,14 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -298,21 +298,21 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--conf",
 					"types": "Строка",
 					"description": "XML строка или файл конфигурации шифрования",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -341,14 +341,14 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -377,14 +377,14 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -413,21 +413,21 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--tagset",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Набор тегов (ключ и значение) для установки",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -456,14 +456,14 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -492,14 +492,14 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -528,14 +528,14 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -578,14 +578,14 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -614,7 +614,7 @@
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
@@ -657,28 +657,28 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование объекта в бакете",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Имя бакета для загрузки объекта",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--data",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Данные или путь к файлу для загрузки",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -707,28 +707,28 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование объекта в бакете",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Имя бакета для загрузки объекта",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--data",
 					"types": "Строка, ДвоичныеДанные",
 					"description": "Данные или путь к файлу для загрузки",
-					"default": "",
+					"default": null,
 					"short": "-d"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -757,21 +757,21 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование объекта в бакете",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Имя бакета для загрузки объекта",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -800,42 +800,42 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование объекта в бакете",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Имя бакета для загрузки объекта",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--upload",
 					"types": "Строка",
 					"description": "ID загрузки по частям. См. ИнициализироватьЗагрузкуЧастями",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--part",
 					"types": "Число, Строка",
 					"description": "Порядковый номер части объекта от 1 до 10000",
-					"default": "",
+					"default": null,
 					"short": "-p"
 				},
 				{
 					"name": "--content",
 					"types": "ДвоичныеДанные, Строка",
 					"description": "Данные части для загрузки",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
@@ -857,35 +857,35 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование объекта в бакете",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Имя бакета для загрузки объекта",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--upload",
 					"types": "Строка",
 					"description": "ID загрузки по частям. См. ИнициализироватьЗагрузкуЧастями",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
 					"name": "--tags",
 					"types": "Массив Из Строка",
 					"description": "Массив тегов (Etag) из загрузок каждой части",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -914,28 +914,28 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование объекта в бакете",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Имя бакета для загрузки объекта",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--upload",
 					"types": "Строка",
 					"description": "ID загрузки по частям. См. ИнициализироватьЗагрузкуЧастями",
-					"default": "",
+					"default": null,
 					"short": "-u"
 				},
 				{
@@ -964,21 +964,21 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование объекта в бакете",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Имя бакета, в котором находится объект",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1014,21 +1014,21 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование объекта в бакете",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Имя бакета, в котором находится объект",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1071,21 +1071,21 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование объекта в бакете",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Имя бакета для загрузки объекта",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1121,35 +1121,35 @@
 					"name": "--sname",
 					"types": "Строка",
 					"description": "Путь (имя) в бакете источнике",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--sbucket",
 					"types": "Строка",
 					"description": "Бакет источник объекта",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--name",
 					"types": "Строка",
 					"description": "Путь (имя) объекта в бакете приемнике",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Имя бакета приемника",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-a"
 				},
 				{
@@ -1178,28 +1178,28 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование объекта",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
 					"name": "--tagset",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Набор тегов (ключ и значение) для установки",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -1228,21 +1228,21 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование объекта",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1278,21 +1278,21 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование объекта",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1328,14 +1328,14 @@
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1378,14 +1378,14 @@
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Наименование бакета",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1428,21 +1428,21 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование объекта в бакете",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Имя бакета для загрузки объекта",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{
@@ -1478,21 +1478,21 @@
 					"name": "--name",
 					"types": "Строка",
 					"description": "Наименование объекта в бакете",
-					"default": "",
+					"default": null,
 					"short": "-n"
 				},
 				{
 					"name": "--bucket",
 					"types": "Строка",
 					"description": "Имя бакета для загрузки объекта",
-					"default": "",
+					"default": null,
 					"short": "-b"
 				},
 				{
 					"name": "--basic",
 					"types": "Структура Из КлючИЗначение",
 					"description": "Основные данные запроса. См. ПолучитьСтруктуруДанных",
-					"default": "",
+					"default": null,
 					"short": "-s"
 				},
 				{

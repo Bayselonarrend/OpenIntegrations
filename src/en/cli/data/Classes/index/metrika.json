@@ -37,14 +37,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "Tag title",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -59,21 +59,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--label",
 					"types": "String",
 					"description": "Tag ID to change",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New name",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],
@@ -88,14 +88,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--label",
 					"types": "String",
 					"description": "Tag ID",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -110,14 +110,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--label",
 					"types": "String",
 					"description": "ID of the tag to be deleted",
-					"default": "",
+					"default": null,
 					"short": "-l"
 				}
 			],
@@ -132,7 +132,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				}
 			],
@@ -147,14 +147,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "Counter structure. See GetCounterStructure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -169,21 +169,21 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--counter",
 					"types": "String, Number",
 					"description": "Counter ID to change",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				},
 				{
 					"name": "--fields",
 					"types": "Structure Of KeyAndValue",
 					"description": "Structure of fields to be changed. See GetCounterStructure",
-					"default": "",
+					"default": null,
 					"short": "-f"
 				}
 			],
@@ -198,14 +198,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--counter",
 					"types": "String, Number",
 					"description": "Counter ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -220,14 +220,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--counter",
 					"types": "Number, String",
 					"description": "Counter ID for deletion",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -242,14 +242,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--counter",
 					"types": "String, Number",
 					"description": "Counter ID for restoring",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],
@@ -264,7 +264,7 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
@@ -316,14 +316,14 @@
 					"name": "--token",
 					"types": "String",
 					"description": "Auth token",
-					"default": "",
+					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--counter",
 					"types": "String, Number",
 					"description": "Counter ID",
-					"default": "",
+					"default": null,
 					"short": "-c"
 				}
 			],

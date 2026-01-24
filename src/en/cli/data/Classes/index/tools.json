@@ -21,7 +21,7 @@
 					"name": "--json",
 					"types": "String",
 					"description": "JSON data",
-					"default": "",
+					"default": null,
 					"short": "-j"
 				},
 				{
@@ -57,7 +57,7 @@
 					"name": "--in",
 					"types": "String",
 					"description": "Base64 File",
-					"default": "",
+					"default": null,
 					"short": "-i"
 				}
 			],
