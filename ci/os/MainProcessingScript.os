@@ -36,7 +36,8 @@
 	Обработчик = Новый APICatalogGenerator(ДанныеПроекта);
 	Обработчик = Новый TestIndexGenerator(ДанныеПроекта);
 	Обработчик = Новый HashSumGenerator(ДанныеПроекта);
-	Обработчик = Новый DocsGenerator();
+	Обработчик = Новый DocsGenerator(ДанныеПроекта);
+	Обработчик = Новый AILocalizationMethods(ДанныеПроекта);
 
 	CommonTools.СообщитьПроцесс("Processing complete!");
 
