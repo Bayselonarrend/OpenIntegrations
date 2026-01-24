@@ -19,7 +19,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                    bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/MainProcessingScript.os'
+                withCredentials([string(credentialsId: 'gpgkey', variable: 'GPGKEY')]) {
+                    bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/MainProcessingScript.os %GPGKEY%'
+                }
             }
         }
 
