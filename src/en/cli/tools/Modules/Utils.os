@@ -6,8 +6,7 @@ Var DesiredParameter;
 #Region Internal
 
 // Parse JSON to Parameters
-// Displays the values that can be obtained from the passed JSON and returns
-// Specific Value When Specifying Field Name
+// Shows values that can be extracted from the provided JSON and returns a specific value when a field name is specified
 // 
 // Parameters:
 // JSON - String - JSON data - json

@@ -179,7 +179,7 @@
 		{
 			"name": "ModifyTable",
 			"id": "MODIFYTABLE",
-			"description": "Changes the name and    |   or description of the base",
+			"description": "Changes the name and\nor description of the base",
 			"params": [
 				{
 					"name": "--token",
@@ -258,7 +258,7 @@
 		{
 			"name": "ModifyField",
 			"id": "MODIFYFIELD",
-			"description": "Changes the name and    |   or description of an existing table field",
+			"description": "Changes the name and\nor description of an existing table field",
 			"params": [
 				{
 					"name": "--token",

@@ -29,7 +29,7 @@
 		{
 			"name": "SetWebhook",
 			"id": "SETWEBHOOK",
-			"description": "IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to have a free URL for this.,\n    |    which will return 200 and a genuine SSL certificate. If there is a certificate and the database is published\n    |    on the server - you can use an HTTP service. Information about new messages will also be sent there\n    |    Viber periodically knocks on the Webhook address, so if it is inactive, everything will stop working",
+			"description": "IMPORTANT: Setting up Webhook is mandatory according to Viber rules. You need to have a free URL for this.,\n\n which will return 200 and a genuine SSL certificate. If there is a certificate and the database is published\n\n on the server - you can use an HTTP service. Information about new messages will also be sent there\n\n Viber periodically knocks on the Webhook address, so if it is inactive, everything will stop working",
 			"params": [
 				{
 					"name": "--token",
@@ -51,7 +51,7 @@
 		{
 			"name": "GetChannelInformation",
 			"id": "GETCHANNELINFORMATION",
-			"description": "Here you can get the channel's user IDs. Bot IDs need to be obtained from the Webhook arrivals\n    |    The user ID from channel information is not suitable for sending messages through the bot - they are different",
+			"description": "Here you can get the channel's user IDs. Bot IDs need to be obtained from the Webhook arrivals\n\n The user ID from channel information is not suitable for sending messages through the bot - they are different",
 			"params": [
 				{
 					"name": "--token",

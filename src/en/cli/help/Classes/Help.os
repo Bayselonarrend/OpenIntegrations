@@ -256,8 +256,8 @@ Function GetFullParamsDescription(MethodData)
 	For Each MethodParameter In MethodParameters Do
 			
 		CurrentOptionList = OptionListsMap.Get(MethodParameter["name"]);
-		CurrentDescription = MethodParameters["description"];
-		CurrentDefaultValue = MethodParameters["default"];
+		CurrentDescription = MethodParameter["description"];
+		CurrentDefaultValue = MethodParameter["default"];
 
 		If CurrentDefaultValue <> Undefined Then
 			DefaultValueDescription = StrTemplate(DefaultValueTemplate, CurrentDefaultValue);
