@@ -1,20 +1,21 @@
-﻿---
+---
 id: Start
 sidebar_class_name: NachaloRaboty
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, HTTP, Extension]
 ---
 
 # Welcome!
 
 ![OPI](../../static/img/logo_long.webp)
 
-**OpenIntegrations** is a set of tools for working with external APIs, available as a library (extension) for 1C:Enterprise / OneScript and a cross-platform console application for Windows and Linux. The project provides ready-made methods for performing application tasks (sending messages, creating documents, SQL queries, etc.) across more than 30 services and technologies, including Telegram, VK, Bitrix24, Google and Yandex services, as well as various DBMS and exchange protocols
+**OpenIntegrations** is a set of tools for working with external APIs, available as a library (extension) for 1C:Enterprise / OneScript and as a cross-platform console application for Windows and Linux. The project provides ready-to-use methods for solving application tasks (sending messages, creating documents, SQL queries, etc.) in more than 30 services and technologies, including Telegram, VK, Bitrix24, Google and Yandex services, as well as various DBMS and data exchange protocols.
 
-The project code is organized as a set of independent modules, each responsible for working with a specific service. Common logic, such as HTTP or JSON handling, is extracted into reusable components. This allows for both quick application of ready-made functions and easy extension of functionality by adding new methods based on existing components. The source code is open, providing full control over implementation and enabling community participation in development
+The project code is organized as a set of independent modules, each responsible for interacting with a specific service. Shared logic, such as working with HTTP or JSON, is implemented in reusable components. This enables both rapid application of ready-made functions and easy extension of functionality by adding new methods based on existing components. The source code is open, which grants full control over implementation and allows the community to participate in development.
 
 <br/>
 
-Fast navigation:
- <div>
+Quick navigation:
+<div>
  <a href="/docs/Instructions/Telegram/"><img src={require('../../static/img/APIs/Telegram.png').default} width="32" class="wp_logo"/></a>
  <a href="/docs/Instructions/Bitrix24/"><img src={require('../../static/img/APIs/Bitrix24.png').default} width="32" class="wp_logo"/></a>
  <a href="/docs/Instructions/CDEK/"><img src={require('../../static/img/APIs/CDEK.png').default} width="32" class="wp_logo"/></a>
@@ -49,45 +50,44 @@ Fast navigation:
  <a href="/docs/Instructions/GRPC/"><img src={require('../../static/img/APIs/gRPC.png').default} width="32" class="wp_logo"/></a>
  <a href="/docs/Instructions/SSH/"><img src={require('../../static/img/APIs/SSH.png').default} width="32" class="wp_logo"/></a>
  <a href="/docs/Instructions/RCON/"><img src={require('../../static/img/APIs/RCON.png').default} width="32" class="wp_logo"/></a>
-
 </div> 
 
 <br/>
 
-## Getting started
+## Getting Started
 
-The library releases come in five variants: 
+The library is released in five variants:
 
 - As a CLI application for Windows and Linux (exe, rpm, deb)
-- As XML extension files for loading via the configurator
+- As XML extension files for uploading via the configurator
 - As an EDT extension project
-- As a standalone extension file in cfe format
+- As a standalone cfe extension file
 - As a OneScript extension package in ospx format
 
-Regardless of the chosen installation method, the files must be obtained from the [Release](https://github.com/Bayselonarrend/OpenIntegrations/releases) section, as the repository files may contain intermediate data and functions that are still in development. 
+Regardless of the selected installation method, files must be downloaded from the [Release](https://github.com/Bayselonarrend/OpenIntegrations/releases) section, as the repository files themselves may contain intermediate data or functions still under development.
 
-For more details about each release variant, see the section [About Release Variants](/docs/Start/Release-variants)
+See [About Release Variants](/docs/Start/Release-variants) for more details about each release type.
 
 <hr/>
 
-## Examples of Usage
+## Usage Examples
 
-As an 1C extension and OneScript package, the OpenIntegrations is a set of common modules with export methods - one module for each API. All available methods are functions, i.e. they return values. Typically, these are *Map* describing the JSON of the server response, but can also be *Binary Data* (e.g. in file download methods) or *String* (e.g. in URL retrieval methods). The return value types are described for each method in the current documentation and in the documentation comments in the library code itself
+When used as an extension for 1C and as a OneScript package, OpenIntegrations is a set of shared modules with exported methods—one module per API. All available methods are functions, i.e. they return values. As a rule, these are *Maps* describing the server response JSON, but may also be *Binary Data* (for methods that download files), or *Strings* (for methods that return URLs). The types of return values are described for each method in the online documentation and in the documented comments in the library’s source code.
 
-A simple example of using OpenIntegrations is sending a picture to Telegram:
+A simple example of using OpenIntegrations—sending an image to Telegram:
 
 ```bsl
 
     Token    = "6129457865:AAFyzNYOAFbu...";
     ChatID   = "461699897";
     Text     = "Cool pic";
-    Picture  = "C:/picture.jpg";  // URL, disk path or Binary data
+    Picture  = "C:/picture.jpg";  // URL, local file path, or Binary Data
 
     Result = OPI_Telegram.SendImage(Token, ChatID, Text, Picture);
 
 ```
 
-The implementation of OpenIntegrations as a CLI application, repeats the functionality of the extension/package and provides access to all its methods from the command line. Each parameter of the original function matches an option starting with `--` characters, e.g. `--token`. These matches for each specific method can be found in the current documentation, as well as in the 1C/OneScript function comments and the application's built-in help (the method help is displayed when the method is called without parameters, for more details see [Working with CLI app](/docs/Start/CLI_version))
+Implementation of OpenIntegrations as a CLI application reproduces the functionality of the extension/package and provides access to all its methods from the command line. Each parameter of the original function corresponds to an option starting with `--`, e.g. `--token`. These mappings for each particular method can be found in the current documentation, as well as in the 1C/OneScript function comments and the built-in help of the application (help for a method is displayed when you call the method without parameters, for details see [Working with the CLI version](/docs/Start/CLI_version)).
 
 CLI example:
 
@@ -103,22 +103,22 @@ CLI example:
 
 <hr/>
 
-## Working with current documentation
+## About the Documentation
 
-Some features of this documentation that will help you use it more effectively and avoid misunderstandings:
+A few features of this documentation—knowing them will help you use it more efficiently and avoid misunderstandings:
 
-1. **Each method has its own description page**. As a rule, the title of the description page is the same as the name of the method (with spaces added) and is located in the subsection whose name is the same as the name of the program module region. If you can't find the page for a particular function you are interested in, try the built-in full-text search in the top right corner
+1. **Each method has its own description page.** Typically, the title of the description page matches the method name (with spaces added), and is located in the subsection whose name matches the module area. If you cannot find the page for the specific function of interest, try using the built-in full-text search in the top right corner.
 
-2. **Parameters of type BinaryData can be defined as file paths or URLs**. Often, for parameters with the *BinaryData* data type, the documentation code examples use URLs or file paths on disk. This is acceptable behavior, because at the beginning of all functions, incoming parameters are converted (if possible) to the required types. In the case of binary data, for example, when passing a string, an attempt will be made to find the file on disk, get it from the Internet, or convert it from Base64
+2. **Parameters of type BinaryData can be specified as file paths or URLs.** Often, for parameters of the *BinaryData* data type, the documentation's code examples use URLs or file paths on disk. This is permitted, because at the start of every function, incoming parameters are converted (as far as possible) to the required types. In the case of binary data, passing a string will make the function try to find a file on disk, fetch it from the internet, or convert it from Base64.
 
-3. **Examples of function results are in JSON format, but in 1C and OS they will be Maps**. If the sample result on the function description page is JSON, in 1C and OneScript it will be a *Map* - i.e. the response will be deserialized. JSON is returned as a string only in the CLI version
+3. **Function result examples are shown in JSON format, but in 1C and OS they are Maps.** If the result example on a function’s description page is shown as JSON, that means in 1C and OneScript the result will be a *Map* (with the JSON response parsed). Only the CLI version returns the response as a JSON string.
 
 <hr/>
 
-## Support the project
+## Support the Project
 
 <img src={require('../../static/img/boosty.png').default}/>
 
-If you like this or my other projects, you can support me [on Boosty](https://boosty.to/bayselonarrend) (regularly or one-time). With a subscription of 500 rubles (~6 dollars) or more, you'll get access to a private Telegram chat where you can ask questions about the project and receive direct assistance from me.
+If you like this or my other projects, you can support me [on Boosty](https://boosty.to/bayselonarrend) (either regularly or as a one-time donation). Subscriptions of 500 rubles (~$6) or more unlock access to a private Telegram chat where you can ask questions about the project and receive direct assistance from me. There is also a sponsorship option for companies, which includes priority support and placement of your logo in the sponsors list.
 
-**Thanks for your support!**
+**Thank you for your support!**
