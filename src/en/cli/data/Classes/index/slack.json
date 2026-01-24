@@ -182,7 +182,7 @@
 		{
 			"name": "SendEphemeralMessage",
 			"id": "SENDEPHEMERALMESSAGE",
-			"description": "Sends a message that arrives in the channel but is visible\n    |    only to a specific user",
+			"description": "Sends a message that arrives in the channel but is visible\n\n only to a specific user",
 			"params": [
 				{
 					"name": "--token",

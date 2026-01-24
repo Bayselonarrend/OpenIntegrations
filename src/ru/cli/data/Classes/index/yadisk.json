@@ -322,7 +322,7 @@
 		{
 			"name": "ПолучитьСписокФайлов",
 			"id": "ПОЛУЧИТЬСПИСОКФАЙЛОВ",
-			"description": "Получает список файлов с или без отбора по типу\n    |    Список доступных типов: audio, backup, book, compressed, data, development,\n    |                            diskimage, document, encoded, executable, flash, font,\n    |                            mage, settings, spreadsheet, text, unknown, video, web",
+			"description": "Получает список файлов с или без отбора по типу\n\n Список доступных типов: audio, backup, book, compressed, data, development,\n\n                         diskimage, document, encoded, executable, flash, font,\n\n                         mage, settings, spreadsheet, text, unknown, video, web",
 			"params": [
 				{
 					"name": "--token",
