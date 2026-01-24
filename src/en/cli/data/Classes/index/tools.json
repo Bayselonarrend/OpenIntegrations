@@ -15,7 +15,7 @@
 		{
 			"name": "ParseJSON",
 			"id": "PARSEJSON",
-			"description": "Displays the values that can be obtained from the passed JSON and returns\n    |    Specific Value When Specifying Field Name",
+			"description": "Shows values that can be extracted from the provided JSON and returns a specific value when a field name is specified",
 			"params": [
 				{
 					"name": "--json",

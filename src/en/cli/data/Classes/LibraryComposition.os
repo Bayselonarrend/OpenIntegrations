@@ -173,13 +173,8 @@ EndFunction
 Procedure CompleteCompositionCache(Val Library, Val ParametersTable, Command = "") Export
     
     Command = ?(ValueIsFilled(Command), Command, Library);
-    ConnectionString = "";
     
-    IndexInformation = New Structure;
-    IndexInformation.Insert("Composition" , ParametersTable);
-    IndexInformation.Insert("ConnectionString", ConnectionString);
-    
-    IndexCache.Insert(Command, IndexInformation);
+    IndexCache.Insert(Command, ParametersTable);
     ModuleCommandMapping.Insert(Command, Library);
     
 EndProcedure

@@ -1,443 +1,443 @@
 {
-    "primary": {
-        "description": "Primary project data",
-        "value": {
-            "version": {
-                "description": "Current project version",
-                "value": "1.32.0"
-            },
-            "repoUrl": {
-                "description": "Repository URL",
-                "value": "https://github.com/Bayselonarrend/OpenIntegrations"
-            }
-        }
-    },
-    "local": {
-        "description": "Paths and information for processing on local machine",
-        "value": {
-            "engineWindows": {
-                "description": "OneScript engine for CLI packs (Windows)",
-                "value": "C:/engine/windows"
-            },
-            "engineLinux": {
-                "description": "OneScript engine for CLI packs (Linux)",
-                "value": "C:/engine/linux"
-            },
-            "engineLinuxWsl": {
-                "description": "OneScript engine for CLI packs (Linux, at WSL)",
-                "value": "/mnt/c/engine/linux/"
-            },
-            "onecPath": {
-                "description": "1C:Enterprise exe path",
-                "value": "C:/Program Files/1cv8/8.3.18.1208/bin/1cv8.exe"
-            },
-            "osPath": {
-                "description": "OneScript exe path",
-                "value": "C:/Program Files/OneScript/"
-            },
-            "ghcliPath": {
-                "description": "GitHub CLI exe path",
-                "value": "C:/Program Files/GitHub CLI/gh.exe"
-            },
-            "innoPath": {
-                "description": "Inno Setup exe path",
-                "value": "C:/Program Files (x86)/Inno Setup 6/Compil32.exe"
-            },
-            "serverName": {
-                "description": "Build server name",
-                "value": "DEVSRV"
-            },
-            "edtProjectsPath": {
-                "description": "EDT projects directory",
-                "value": "C:/Users/bayse/AppData/Local/1C/1cedtstart/projects"
-            },
-            "jenkinsHost": {
-                "description": "Jenkins URL",
-                "value": "https://jenkins.openintegrations.dev"
-            },
-            "rcloneConf": {
-                "description": "rclone configuration name for web site deploying",
-                "value": "hoster"
-            },
-            "npmPath": {
-                "description": "NPM executable",
-                "value": "C:/Program Files/nodejs/npm.cmd"
-            }
-        }
-    },
-    "paths": {
-        "description": "Special repository directories paths",
-        "value": {
-            "root": {
-                "description": "Source code root directory",
-                "value": "./src/"
-            },
-            "addinsSrc": {
-                "description": "AddIns directory",
-                "value": "./src/addins/"
-            },
-            "packageSrc": {
-                "description": "OneScript package directory",
-                "value": "./src/ru/OInt/"
-            },
-            "packagedefSrc": {
-                "description": "Packagedef file path",
-                "value": "./src/ru/OInt/packagedef"
-            },
-            "configurationSrc": {
-                "description": "1C configuration directory",
-                "value": "./src/ru/OPI/src/"
-            },
-            "dictionariesSrc": {
-                "description": "Translation dictionaries directory",
-                "value": "./service/dictionaries/"
-            },
-            "workflowsSrc": {
-                "description": "GitHub Actions workflows directory",
-                "value": "./.github/workflows/"
-            },
-            "jenkinsSrc": {
-                "description": "Jenkinsfiles directory",
-                "value": "./ci/pipelines/"
-            },
-            "paramsExamplesSrc": {
-                "description": "CLI tips directory",
-                "value": "./service/params_examples/"
-            },
-            "templatesSrc": {
-                "description": "CI template files directory",
-                "value": "./service/templates/"
-            }
-        }
-    },
-    "docs": {
-        "description": "Docs generation settings",
-        "value": {
-            "deployMainSrc": {
-                "description": "Primary docs workspace directory",
-                "value": "./docs/docusaurus/"
-            },
-            "deployDocsSrc": {
-                "description": "MD files at workspace docs directory",
-                "value": "./docs/docusaurus/docs/"
-            },
-            "deployBuildSrc": {
-                "description": "Deploy-ready docs directory",
-                "value": "./docs/docusaurus/build/"
-            },
-            "deployModulesSrc": {
-                "description": "Node modules directory",
-                "value": "./docs/docusaurus/node_modules/"
-            }
-        }
-    },
-    "tests": {
-        "description": "Testing data",
-        "value": {
-            "yaxunitConf": {
-                "description": "YaxUnit configurations directory",
-                "value": "./service/yaxunit_conf/"
-            },
-            "jenkinsSplit": {
-                "description": "Jenkins path for split tests",
-                "value": "/job/OPITest/job/OpiSplitTests"
-            },
-            "jenkinsFull": {
-                "description": "Jenkins path for full tests",
-                "value": "/job/OPITest/job/OpiFullTest"
-            },
-            "availability": {
-                "description": "Enabled and disabled tests categories",
-                "value": {
-                    "Telegram": true,
-                    "VK": true,
-                    "Viber": true,
-                    "Twitter": true,
-                    "FTP": true,
-                    "SSH": true,
-                    "SFTP": true,
-                    "PostgreSQL": true,
-                    "MySQL": true,
-                    "MSSQL": true,
-                    "SQLite": true,
-                    "RCON": true,
-                    "YandexDisk": true,
-                    "GoogleWorkspace": true,
-                    "GoogleCalendar": true,
-                    "GoogleDrive": true,
-                    "GoogleSheets": true,
-                    "Notion": true,
-                    "Slack": true,
-                    "Airtable": true,
-                    "Dropbox": true,
-                    "Bitrix24": true,
-                    "VkTeams": true,
-                    "Neocities": true,
-                    "CDEK": true,
-                    "YandexMetrika": true,
-                    "S3": true,
-                    "TCP": true,
-                    "GreenAPI": true,
-                    "GreenMax": true,
-                    "Ollama": true,
-                    "HTTPКлиент": true,
-                    "OpenAI": false,
-                    "ReportPortal": true,
-                    "HTTPClient": true,
-                    "BuildCheck": true,
-                    "MongoDB": true,
-                    "GRPC": true,
-                    "ClickHouse": true
-                }
-            }
-        }
-    },
-    "release": {
-        "description": "Release producing data",
-        "value": {
-            "artifactsCount": {
-                "description": "Release artifacts (files) count",
-                "value": 16
-            }
-        }
-    },
-    "localization": {
-        "description": "Localization data",
-        "value": {
-            "mainLang": {
-                "description": "Main project language",
-                "value": "ru"
-            },
-            "langs": {
-                "description": "Localization languages",
-                "value": [
-                    "en",
-                    "ru"
-                ]
-            },
-            "langsVars": {
-                "description": "Language defined data",
-                "value": {
-                    "ru": {
-                        "description": "Language defined data for Russian",
-                        "value": {
-                            "title": {
-                                "description": "Language name",
-                                "value": "English"
-                            },
-                            "edt_project": {
-                                "description": "1C:EDT project name",
-                                "value": "OpenIntegrations_Ru"
-                            },
-                            "ib_name": {
-                                "description": "1C infobase name",
-                                "value": "OpenIntegrations"
-                            },
-                            "methodString": {
-                                "description": "Method word translation",
-                                "value": "Метод"
-                            },
-                            "synonymString": {
-                                "description": "Synonym word translation",
-                                "value": "Синоним"
-                            },
-                            "sectionsString": {
-                                "description": "Section word translation",
-                                "value": "Раздел"
-                            },
-                            "testsModule": {
-                                "description": "Main tests module name",
-                                "value": "OPI_Тесты"
-                            },
-                            "testsModuleCLI": {
-                                "description": "CLI test module name",
-                                "value": "OPI_ТестыCLI"
-                            },
-                            "testsTableMethod": {
-                                "description": "Test table retrieve method",
-                                "value": "OPI_ПолучениеДанныхТестов.ПолучитьТаблицуТестов()"
-                            },
-                            "testsSectionsMethod": {
-                                "description": "Test selections array retrieve method (for Jenkins)",
-                                "value": "OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестирования()"
-                            },
-                            "testsSectionsMethodGA": {
-                                "dictionaries": "Test selections array retrieve method (for Github Actions)",
-                                "value": "OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестированияGA()"
-                            },
-                            "docsMdSrc": {
-                                "description": "Docs MD files directory",
-                                "value": "./docs/ru/md/"
-                            },
-                            "codeExamplesSrc": {
-                                "description": "Docs code examples directory",
-                                "value": "./docs/ru/examples/"
-                            },
-                            "testValuesSrc": {
-                                "description": "Docs test values directory",
-                                "value": "./docs/ru/data/"
-                            },
-                            "testsModulePath": {
-                                "description": "Main tests module path",
-                                "value": "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os"
-                            },
-                            "testsCliModulePath": {
-                                "description": "CLI test module path",
-                                "value": "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os"
-                            },
-                            "testsRegionName": {
-                                "description": "Atomic test retrieve method",
-                                "value": "АтомарныеТесты"
-                            },
-                            "remoteDocsSrc": {
-                                "description": "Docs directory on remote server (hosting)",
-                                "value": "public_html"
-                            },
-                            "namesTranslation": {
-                                "description": "Modules names localization",
-                                "value": {}
-                            },
-                            "docsCategories": {
-                                "description": "Docs categories and classes",
-                                "value": {
-                                    "Messenger": "Мессенджеры",
-                                    "Social": "Социальные сети",
-                                    "Database": "Базы данных и электронные таблицы",
-                                    "Folder": "Файловые хостинги и хранилища",
-                                    "CRM": "Комплексные решения (CMS, CRM)",
-                                    "Commerce": "Электронная коммерция и доставка",
-                                    "Calendar": "Планирование и управление проектами",
-                                    "AI": "Искусственный интеллект",
-                                    "Exchange": "Протоколы обмена",
-                                    "Other": "Прочее"
-                                }
-                            }
-                        }
-                    },
-                    "en": {
-                        "description": "Language defined data for English",
-                        "value": {
-                            "title": {
-                                "description": "Language name",
-                                "value": "English"
-                            },
-                            "edt_project": {
-                                "description": "1C:EDT project name",
-                                "value": "OpenIntegrations_En"
-                            },
-                            "ib_name": {
-                                "description": "1C infobase name",
-                                "value": "OpenIntegrationsEng"
-                            },
-                            "methodString": {
-                                "description": "Method word translation",
-                                "value": "Method"
-                            },
-                            "synonymString": {
-                                "description": "Synonym word translation",
-                                "value": "Synonym"
-                            },
-                            "sectionsString": {
-                                "description": "Section word translation",
-                                "value": "Section"
-                            },
-                            "testsModule": {
-                                "description": "Main tests module name",
-                                "value": "OPI_Tests"
-                            },
-                            "testsModuleCLI": {
-                                "description": "CLI test module name",
-                                "value": "OPI_TestsCLI"
-                            },
-                            "testsTableMethod": {
-                                "description": "Test table retrieve method",
-                                "value": "OPI_TestDataRetrieval.GetTestTable()"
-                            },
-                            "testsSectionsMethod": {
-                                "description": "Test selections array retrieve method (for Jenkins)",
-                                "value": "OPI_TestDataRetrieval.GetTestingSectionMapping()"
-                            },
-                            "testsSectionsMethodGA": {
-                                "dictionaries": "Test selections array retrieve method (for Github Actions)",
-                                "value": "OPI_TestDataRetrieval.GetTestingSectionMappingGA()"
-                            },
-                            "docsMdSrc": {
-                                "description": "Docs MD files directory",
-                                "value": "./docs/en/md/"
-                            },
-                            "codeExamplesSrc": {
-                                "description": "Docs code examples directory",
-                                "value": "./docs/en/examples/"
-                            },
-                            "testValuesSrc": {
-                                "description": "Docs test values directory",
-                                "value": "./docs/en/data/"
-                            },
-                            "testsModulePath": {
-                                "description": "Main tests module path",
-                                "value": "./src/en/OInt/tests/Modules/internal/OPI_Tests.os"
-                            },
-                            "testsCliModulePath": {
-                                "description": "CLI test module path",
-                                "value": "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os"
-                            },
-                            "testsRegionName": {
-                                "description": "Atomic test retrieve method",
-                                "value": "AtomicTests"
-                            },
-                            "remoteDocsSrc": {
-                                "description": "Docs directory on remote server (hosting)",
-                                "value": "public_html_en"
-                            },
-                            "namesTranslation": {
-                                "description": "Modules names localization",
-                                "value": {
-                                    "OPI_Инструменты": "OPI_Tools",
-                                    "OPI_Криптография": "OPI_Cryptography",
-                                    "OPI_HTTPКлиент": "OPI_HTTPClient",
-                                    "OPI_Компоненты": "OPI_AddIns",
-                                    "OPI_ЗапросыHTTP": "OPI_HTTPRequests",
-                                    "OPI_ЗапросыSQL": "OPI_SQLQueries",
-                                    "OPI_ПолучениеДанныхТестов": "OPI_TestDataRetrieval",
-                                    "OPI_ПреобразованиеТипов": "OPI_TypeConversion"
-                                }
-                            },
-                            "docsCategories": {
-                                "description": "Docs categories and classes",
-                                "value": {
-                                    "Messenger": "Messengers",
-                                    "Social": "Social networks",
-                                    "Database": "Databases and spreadsheets",
-                                    "Folder": "File-hosting services and storages",
-                                    "CRM": "Complete solutions (CMS, CRM)",
-                                    "Commerce": "E-commerce and delivery",
-                                    "Calendar": "Planning and projects management",
-                                    "AI": "Artificial Intelligence",
-                                    "Exchange": "Exchange protocols",
-                                    "Other": "Other"
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    },
-    "replacements": {
-        "description": "Dictionary of values replacements",
-        "value": {
-            "oscriptConvertation": {
-                "description": "Replacements for 1C to OneScript conversion",
-                "value": {
-                    "// #Использовать": "#Использовать",
-                    "//#Использовать": "#Использовать",
-                    "УстановитьБезопасныйРежим(Истина);": "",
-                    "УстановитьБезопасныйРежим(Ложь);": "",
-                    "// !OInt ": "",
-                    "#КонецЕсли": "// #КонецЕсли",
-                    "#Если": "// #Если"
-                }
-            }
-        }
+ "primary": {
+  "description": "Primary project data",
+  "value": {
+   "version": {
+    "description": "Current project version",
+    "value": "1.32.0"
+   },
+   "repoUrl": {
+    "description": "Repository URL",
+    "value": "https://github.com/Bayselonarrend/OpenIntegrations"
+   }
+  }
+ },
+ "local": {
+  "description": "Paths and information for processing on local machine",
+  "value": {
+   "engineWindows": {
+    "description": "OneScript engine for CLI packs (Windows)",
+    "value": "C:/engine/windows"
+   },
+   "engineLinux": {
+    "description": "OneScript engine for CLI packs (Linux)",
+    "value": "C:/engine/linux"
+   },
+   "engineLinuxWsl": {
+    "description": "OneScript engine for CLI packs (Linux, at WSL)",
+    "value": "/mnt/c/engine/linux/"
+   },
+   "onecPath": {
+    "description": "1C:Enterprise exe path",
+    "value": "C:/Program Files/1cv8/8.3.18.1208/bin/1cv8.exe"
+   },
+   "osPath": {
+    "description": "OneScript exe path",
+    "value": "C:/Program Files/OneScript/"
+   },
+   "ghcliPath": {
+    "description": "GitHub CLI exe path",
+    "value": "C:/Program Files/GitHub CLI/gh.exe"
+   },
+   "innoPath": {
+    "description": "Inno Setup exe path",
+    "value": "C:/Program Files (x86)/Inno Setup 6/Compil32.exe"
+   },
+   "serverName": {
+    "description": "Build server name",
+    "value": "DEVSRV"
+   },
+   "edtProjectsPath": {
+    "description": "EDT projects directory",
+    "value": "C:/Users/bayse/AppData/Local/1C/1cedtstart/projects"
+   },
+   "jenkinsHost": {
+    "description": "Jenkins URL",
+    "value": "https://jenkins.openintegrations.dev"
+   },
+   "rcloneConf": {
+    "description": "rclone configuration name for web site deploying",
+    "value": "hoster"
+   },
+   "npmPath": {
+    "description": "NPM executable",
+    "value": "C:/Program Files/nodejs/npm.cmd"
+   }
+  }
+ },
+ "paths": {
+  "description": "Special repository directories paths",
+  "value": {
+   "root": {
+    "description": "Source code root directory",
+    "value": "./src/"
+   },
+   "addinsSrc": {
+    "description": "AddIns directory",
+    "value": "./src/addins/"
+   },
+   "packageSrc": {
+    "description": "OneScript package directory",
+    "value": "./src/ru/OInt/"
+   },
+   "packagedefSrc": {
+    "description": "Packagedef file path",
+    "value": "./src/ru/OInt/packagedef"
+   },
+   "configurationSrc": {
+    "description": "1C configuration directory",
+    "value": "./src/ru/OPI/src/"
+   },
+   "dictionariesSrc": {
+    "description": "Translation dictionaries directory",
+    "value": "./service/dictionaries/"
+   },
+   "workflowsSrc": {
+    "description": "GitHub Actions workflows directory",
+    "value": "./.github/workflows/"
+   },
+   "jenkinsSrc": {
+    "description": "Jenkinsfiles directory",
+    "value": "./ci/pipelines/"
+   },
+   "paramsExamplesSrc": {
+    "description": "CLI tips directory",
+    "value": "./service/params_examples/"
+   },
+   "templatesSrc": {
+    "description": "CI template files directory",
+    "value": "./service/templates/"
+   }
+  }
+ },
+ "docs": {
+  "description": "Docs generation settings",
+  "value": {
+   "deployMainSrc": {
+    "description": "Primary docs workspace directory",
+    "value": "./docs/docusaurus/"
+   },
+   "deployDocsSrc": {
+    "description": "MD files at workspace docs directory",
+    "value": "./docs/docusaurus/docs/"
+   },
+   "deployBuildSrc": {
+    "description": "Deploy-ready docs directory",
+    "value": "./docs/docusaurus/build/"
+   },
+   "deployModulesSrc": {
+    "description": "Node modules directory",
+    "value": "./docs/docusaurus/node_modules/"
+   }
+  }
+ },
+ "tests": {
+  "description": "Testing data",
+  "value": {
+   "yaxunitConf": {
+    "description": "YaxUnit configurations directory",
+    "value": "./service/yaxunit_conf/"
+   },
+   "jenkinsSplit": {
+    "description": "Jenkins path for split tests",
+    "value": "/job/OPITest/job/OpiSplitTests"
+   },
+   "jenkinsFull": {
+    "description": "Jenkins path for full tests",
+    "value": "/job/OPITest/job/OpiFullTest"
+   },
+   "availability": {
+    "description": "Enabled and disabled tests categories",
+    "value": {
+     "Telegram": true,
+     "VK": true,
+     "Viber": true,
+     "Twitter": true,
+     "FTP": true,
+     "SSH": true,
+     "SFTP": true,
+     "PostgreSQL": true,
+     "MySQL": true,
+     "MSSQL": true,
+     "SQLite": true,
+     "RCON": true,
+     "YandexDisk": true,
+     "GoogleWorkspace": true,
+     "GoogleCalendar": true,
+     "GoogleDrive": true,
+     "GoogleSheets": true,
+     "Notion": true,
+     "Slack": true,
+     "Airtable": true,
+     "Dropbox": true,
+     "Bitrix24": true,
+     "VkTeams": true,
+     "Neocities": true,
+     "CDEK": true,
+     "YandexMetrika": true,
+     "S3": true,
+     "TCP": true,
+     "GreenAPI": true,
+     "GreenMax": true,
+     "Ollama": true,
+     "HTTPКлиент": true,
+     "OpenAI": false,
+     "ReportPortal": true,
+     "HTTPClient": true,
+     "BuildCheck": true,
+     "MongoDB": true,
+     "GRPC": true,
+     "ClickHouse": true
     }
+   }
+  }
+ },
+ "release": {
+  "description": "Release producing data",
+  "value": {
+   "artifactsCount": {
+    "description": "Release artifacts (files) count",
+    "value": 16
+   }
+  }
+ },
+ "localization": {
+  "description": "Localization data",
+  "value": {
+   "mainLang": {
+    "description": "Main project language",
+    "value": "ru"
+   },
+   "langs": {
+    "description": "Localization languages",
+    "value": [
+     "en",
+     "ru"
+    ]
+   },
+   "langsVars": {
+    "description": "Language defined data",
+    "value": {
+     "ru": {
+      "description": "Language defined data for Russian",
+      "value": {
+       "title": {
+        "description": "Language name",
+        "value": "English"
+       },
+       "edt_project": {
+        "description": "1C:EDT project name",
+        "value": "OpenIntegrations_Ru"
+       },
+       "ib_name": {
+        "description": "1C infobase name",
+        "value": "OpenIntegrations"
+       },
+       "methodString": {
+        "description": "Method word translation",
+        "value": "Метод"
+       },
+       "synonymString": {
+        "description": "Synonym word translation",
+        "value": "Синоним"
+       },
+       "sectionsString": {
+        "description": "Section word translation",
+        "value": "Раздел"
+       },
+       "testsModule": {
+        "description": "Main tests module name",
+        "value": "OPI_Тесты"
+       },
+       "testsModuleCLI": {
+        "description": "CLI test module name",
+        "value": "OPI_ТестыCLI"
+       },
+       "testsTableMethod": {
+        "description": "Test table retrieve method",
+        "value": "OPI_ПолучениеДанныхТестов.ПолучитьТаблицуТестов()"
+       },
+       "testsSectionsMethod": {
+        "description": "Test selections array retrieve method (for Jenkins)",
+        "value": "OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестирования()"
+       },
+       "testsSectionsMethodGA": {
+        "dictionaries": "Test selections array retrieve method (for Github Actions)",
+        "value": "OPI_ПолучениеДанныхТестов.ПолучитьСоответствиеРазделовТестированияGA()"
+       },
+       "docsMdSrc": {
+        "description": "Docs MD files directory",
+        "value": "./docs/ru/md/"
+       },
+       "codeExamplesSrc": {
+        "description": "Docs code examples directory",
+        "value": "./docs/ru/examples/"
+       },
+       "testValuesSrc": {
+        "description": "Docs test values directory",
+        "value": "./docs/ru/data/"
+       },
+       "testsModulePath": {
+        "description": "Main tests module path",
+        "value": "./src/ru/OInt/tests/Modules/internal/OPI_Тесты.os"
+       },
+       "testsCliModulePath": {
+        "description": "CLI test module path",
+        "value": "./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os"
+       },
+       "testsRegionName": {
+        "description": "Atomic test retrieve method",
+        "value": "АтомарныеТесты"
+       },
+       "remoteDocsSrc": {
+        "description": "Docs directory on remote server (hosting)",
+        "value": "public_html"
+       },
+       "namesTranslation": {
+        "description": "Modules names localization",
+        "value": {}
+       },
+       "docsCategories": {
+        "description": "Docs categories and classes",
+        "value": {
+         "Messenger": "Мессенджеры",
+         "Social": "Социальные сети",
+         "Database": "Базы данных и электронные таблицы",
+         "Folder": "Файловые хостинги и хранилища",
+         "CRM": "Комплексные решения (CMS, CRM)",
+         "Commerce": "Электронная коммерция и доставка",
+         "Calendar": "Планирование и управление проектами",
+         "AI": "Искусственный интеллект",
+         "Exchange": "Протоколы обмена",
+         "Other": "Прочее"
+        }
+       }
+      }
+     },
+     "en": {
+      "description": "Language defined data for English",
+      "value": {
+       "title": {
+        "description": "Language name",
+        "value": "English"
+       },
+       "edt_project": {
+        "description": "1C:EDT project name",
+        "value": "OpenIntegrations_En"
+       },
+       "ib_name": {
+        "description": "1C infobase name",
+        "value": "OpenIntegrationsEng"
+       },
+       "methodString": {
+        "description": "Method word translation",
+        "value": "Method"
+       },
+       "synonymString": {
+        "description": "Synonym word translation",
+        "value": "Synonym"
+       },
+       "sectionsString": {
+        "description": "Section word translation",
+        "value": "Section"
+       },
+       "testsModule": {
+        "description": "Main tests module name",
+        "value": "OPI_Tests"
+       },
+       "testsModuleCLI": {
+        "description": "CLI test module name",
+        "value": "OPI_TestsCLI"
+       },
+       "testsTableMethod": {
+        "description": "Test table retrieve method",
+        "value": "OPI_TestDataRetrieval.GetTestTable()"
+       },
+       "testsSectionsMethod": {
+        "description": "Test selections array retrieve method (for Jenkins)",
+        "value": "OPI_TestDataRetrieval.GetTestingSectionMapping()"
+       },
+       "testsSectionsMethodGA": {
+        "dictionaries": "Test selections array retrieve method (for Github Actions)",
+        "value": "OPI_TestDataRetrieval.GetTestingSectionMappingGA()"
+       },
+       "docsMdSrc": {
+        "description": "Docs MD files directory",
+        "value": "./docs/en/md/"
+       },
+       "codeExamplesSrc": {
+        "description": "Docs code examples directory",
+        "value": "./docs/en/examples/"
+       },
+       "testValuesSrc": {
+        "description": "Docs test values directory",
+        "value": "./docs/en/data/"
+       },
+       "testsModulePath": {
+        "description": "Main tests module path",
+        "value": "./src/en/OInt/tests/Modules/internal/OPI_Tests.os"
+       },
+       "testsCliModulePath": {
+        "description": "CLI test module path",
+        "value": "./src/en/OInt/tests/Modules/internal/OPI_TestsCLI.os"
+       },
+       "testsRegionName": {
+        "description": "Atomic test retrieve method",
+        "value": "AtomicTests"
+       },
+       "remoteDocsSrc": {
+        "description": "Docs directory on remote server (hosting)",
+        "value": "public_html_en"
+       },
+       "namesTranslation": {
+        "description": "Modules names localization",
+        "value": {
+         "OPI_Инструменты": "OPI_Tools",
+         "OPI_Криптография": "OPI_Cryptography",
+         "OPI_HTTPКлиент": "OPI_HTTPClient",
+         "OPI_Компоненты": "OPI_AddIns",
+         "OPI_ЗапросыHTTP": "OPI_HTTPRequests",
+         "OPI_ЗапросыSQL": "OPI_SQLQueries",
+         "OPI_ПолучениеДанныхТестов": "OPI_TestDataRetrieval",
+         "OPI_ПреобразованиеТипов": "OPI_TypeConversion"
+        }
+       },
+       "docsCategories": {
+        "description": "Docs categories and classes",
+        "value": {
+         "Messenger": "Messengers",
+         "Social": "Social networks",
+         "Database": "Databases and spreadsheets",
+         "Folder": "File-hosting services and storages",
+         "CRM": "Complete solutions (CMS, CRM)",
+         "Commerce": "E-commerce and delivery",
+         "Calendar": "Planning and projects management",
+         "AI": "Artificial Intelligence",
+         "Exchange": "Exchange protocols",
+         "Other": "Other"
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ },
+ "replacements": {
+  "description": "Dictionary of values replacements",
+  "value": {
+   "oscriptConvertation": {
+    "description": "Replacements for 1C to OneScript conversion",
+    "value": {
+     "// #Использовать": "#Использовать",
+     "//#Использовать": "#Использовать",
+     "УстановитьБезопасныйРежим(Истина);": "",
+     "УстановитьБезопасныйРежим(Ложь);": "",
+     "// !OInt ": "",
+     "#КонецЕсли": "// #КонецЕсли",
+     "#Если": "// #Если"
+    }
+   }
+  }
+ }
 }

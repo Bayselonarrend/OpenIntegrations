@@ -322,7 +322,7 @@
 		{
 			"name": "GetFilesList",
 			"id": "GETFILESLIST",
-			"description": "Gets a list of files with or without filtering by type\n    |    List of available types: audio, backup, book, compressed, data, development,\n    |    diskimage, document, encoded, executable, flash, font,\n    |    mage, settings, spreadsheet, text, unknown, video, web",
+			"description": "Gets a list of files with or without filtering by type\n\n List of available types: audio, backup, book, compressed, data, development,\n\n diskimage, document, encoded, executable, flash, font,\n\n mage, settings, spreadsheet, text, unknown, video, web",
 			"params": [
 				{
 					"name": "--token",
