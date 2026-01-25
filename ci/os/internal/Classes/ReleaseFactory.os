@@ -279,16 +279,23 @@
 	Описание = Данные["Описание"];
 	Префикс  = Данные["Префикс"];
 	
+	ПодготовитьДополнительныеФайлыПакета(Данные);
+	ОписаниеПакета = СоздатьОписаниеПакета(Описание, Префикс);
+	
 	ТекстSh = "--name oint"
 	+ " -s dir"
 	+ " --license mit"
 	+ СтрШаблон(" --version %1", Версия)
 	+ " --architecture all"
-	+ СтрШаблон(" --description ""%1""", Описание)
+	+ СтрШаблон(" --description ""%1""", ОписаниеПакета)
 	+ " --url ""https://openintegrations.dev/"""
 	+ " --maintainer ""Anton Titovets <bayselonarrend@gmail.com>"""
+	+ " --category ""Development"""
+	+ " --after-install ""../ci/package_extras/postinst.sh"""
+	+ " --after-remove ""../ci/package_extras/postrm.sh"""
 	+ " --verbose"
-	+ СтрШаблон(" ../ci/installer_set/=/usr %1=/usr/lib/oint/bin", ПутьДвижка);
+	+ СтрШаблон(" ../ci/installer_set/=/usr %1=/usr/lib/oint/bin", ПутьДвижка)
+	+ " ../ci/package_extras/=/usr";
 	
 	ИмяDeb = СтрШаблон("oint_%1_all_%2.deb", Версия, Префикс);
 	ИмяRpm = СтрШаблон("oint-%1-1.noarch_%2.rpm", Версия, Префикс);
@@ -298,8 +305,8 @@
 	СоответствиеПакетов.Вставить("rpm", ИмяRpm);
 	
 	СоответствиеДополнений = Новый Соответствие();
-	СоответствиеДополнений.Вставить("deb", " ");
-	СоответствиеДополнений.Вставить("rpm", " --rpm-os linux --depends libicu ");
+	СоответствиеДополнений.Вставить("deb", " --deb-priority optional --deb-field ""Bugs: https://github.com/Bayselonarrend/OpenIntegrations/issues"" --deb-field ""Homepage: https://openintegrations.dev/"" ");
+	СоответствиеДополнений.Вставить("rpm", " --rpm-os linux --depends libicu --rpm-summary ""CLI toolkit for API integrations"" ");
 	
 	Для Каждого Пакет Из СоответствиеПакетов Цикл
 		
@@ -310,6 +317,9 @@
 		
 		FPM = СтрШаблон("chmod +x %1
 		|chmod +x ./ci/installer_set/bin/oint
+		|chmod +x ./ci/package_extras/share/applications/oint.desktop
+		|chmod +x ./ci/package_extras/postinst.sh
+		|chmod +x ./ci/package_extras/postrm.sh
 		|fpm -t %2 -p %3 %4%5"
 			, ПутьДвижка
 			, Пакет.Ключ
@@ -330,6 +340,9 @@
 		УдалитьФайлы(MakeSh);
 		
 	КонецЦикла;
+	
+	// Очищаем временные файлы
+	УдалитьФайлы("./ci/package_extras", Истина);
 	
 КонецПроцедуры
 
@@ -361,5 +374,272 @@
 	
 	СборкаSetup = СтрШаблон("""%1"" /cc ""%2""", ПутьInnoSetup, ПутьISS);
 	CommonTools.ЗапуститьВнешнееПриложение(СборкаSetup);
+	
+КонецПроцедуры
+
+Процедура ПодготовитьДополнительныеФайлыПакета(Данные)
+	
+	Префикс = Данные["Префикс"];
+	
+	КаталогExtras = "./ci/package_extras";
+	СоздатьКаталог(КаталогExtras);
+	СоздатьКаталог(КаталогExtras + "/share");
+	СоздатьКаталог(КаталогExtras + "/share/applications");
+	СоздатьКаталог(КаталогExtras + "/share/pixmaps");
+	СоздатьКаталог(КаталогExtras + "/share/man");
+	СоздатьКаталог(КаталогExtras + "/share/man/man1");
+	
+	СоздатьDesktopФайл(КаталогExtras, Префикс);
+	КопироватьИконку(КаталогExtras);
+	СоздатьManСтраницу(КаталогExtras, Префикс);
+	СоздатьPostInstallСкрипты(КаталогExtras);
+	
+КонецПроцедуры
+
+Процедура СоздатьDesktopФайл(КаталогExtras, Префикс)
+	
+	ПутьDesktop = КаталогExtras + "/share/applications/oint.desktop";
+	
+	Если Префикс = "ru" Тогда
+		ИмяПриложения = "OInt CLI";
+		Описание = "Инструмент командной строки для интеграции с API популярных онлайн-сервисов";
+		КомментарийDesktop = "Работа с API различных сервисов из командной строки";
+		КлючевыеСлова = "api;integration;cli;development;онлайн-сервисы;интеграция;разработка;";
+		ИмяТерминала = "OInt CLI";
+	Иначе
+		ИмяПриложения = "OInt CLI";
+		Описание = "CLI toolkit for integrating with APIs of popular online services";
+		КомментарийDesktop = "Work with various service APIs from command line";
+		КлючевыеСлова = "api;integration;cli;development;online-services;";
+		ИмяТерминала = "OInt CLI";
+	КонецЕсли;
+	
+	// Создаем команду, которая запускает oint и оставляет терминал открытым
+	КомандаЗапуска = "sh -c ""oint; exec bash""";
+	
+	ТекстDesktop = "[Desktop Entry]
+	|Version=1.0
+	|Type=Application
+	|Name=" + ИмяПриложения + "
+	|Comment=" + КомментарийDesktop + "
+	|Exec=x-terminal-emulator -T """ + ИмяТерминала + """ -e " + КомандаЗапуска + "
+	|Icon=oint
+	|Terminal=false
+	|Categories=Development;Utility;ConsoleOnly;
+	|Keywords=" + КлючевыеСлова + "
+	|StartupNotify=true
+	|NoDisplay=false";
+		
+	ФайлDesktop = Новый ТекстовыйДокумент();
+	ФайлDesktop.УстановитьТекст(ТекстDesktop);
+	ФайлDesktop.Записать(ПутьDesktop, КодировкаТекста.UTF8);
+	
+КонецПроцедуры
+
+Процедура КопироватьИконку(КаталогExtras)
+
+	ИсходнаяИконка = "./media/icons/ex.png";
+	ЦелеваяИконка = КаталогExtras + "/share/pixmaps/oint.png";
+	
+	Если Новый Файл(ИсходнаяИконка).Существует() Тогда
+		КопироватьФайл(ИсходнаяИконка, ЦелеваяИконка);
+	Иначе
+		ИсходнаяИконка = "./media/icons/ex.ico";
+		Если Новый Файл(ИсходнаяИконка).Существует() Тогда
+			КопироватьФайл(ИсходнаяИконка, ЦелеваяИконка);
+		КонецЕсли;
+	КонецЕсли;
+	
+КонецПроцедуры
+
+Функция СоздатьОписаниеПакета(Описание, Префикс)
+	
+	Если Префикс = "ru" Тогда
+		ДлинноеОписание = "OInt CLI - мощный инструмент командной строки для интеграции с API популярных онлайн-сервисов.
+		| .
+		| Поддерживаемые сервисы:
+		| • Telegram, VK, Twitter, Slack - мессенджеры и социальные сети
+		| • Google Drive, Dropbox, Yandex Disk - облачные хранилища  
+		| • Google Sheets, Airtable, Notion - таблицы и базы данных
+		| • MySQL, PostgreSQL, MongoDB, SQLite - системы управления БД
+		| • OpenAI, Ollama - AI и машинное обучение
+		| • И многие другие сервисы
+		| .
+		| Особенности:
+		| • Простой и интуитивный интерфейс командной строки
+		| • Подробная документация и примеры использования
+		| • Поддержка различных форматов данных (JSON, XML, CSV)
+		| • Возможность автоматизации через скрипты";
+	Иначе
+		ДлинноеОписание = "OInt CLI - powerful command-line toolkit for integrating with APIs of popular online services.
+		| .
+		| Supported services:
+		| • Telegram, VK, Twitter, Slack - messengers and social networks
+		| • Google Drive, Dropbox, Yandex Disk - cloud storage
+		| • Google Sheets, Airtable, Notion - spreadsheets and databases
+		| • MySQL, PostgreSQL, MongoDB, SQLite - database management systems
+		| • OpenAI, Ollama - AI and machine learning
+		| • And many other services
+		| .
+		| Features:
+		| • Simple and intuitive command-line interface
+		| • Comprehensive documentation and usage examples
+		| • Support for various data formats (JSON, XML, CSV)
+		| • Automation capabilities through scripts";
+	КонецЕсли;
+	
+	Возврат Описание + Символы.ПС + ДлинноеОписание;
+	
+КонецФункции
+
+Процедура СоздатьPostInstallСкрипты(КаталогExtras)
+	
+	// Post-install скрипт
+	ТекстPostInst = "#!/bin/bash
+	|# Post-installation script for OInt CLI
+	|
+	|# Update desktop database
+	|if command -v update-desktop-database >/dev/null 2>&1; then
+	|    update-desktop-database /usr/share/applications >/dev/null 2>&1 || true
+	|fi
+	|
+	|# Update icon cache
+	|if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+	|    gtk-update-icon-cache -f -t /usr/share/pixmaps >/dev/null 2>&1 || true
+	|fi
+	|
+	|# Update man database
+	|if command -v mandb >/dev/null 2>&1; then
+	|    mandb -q >/dev/null 2>&1 || true
+	|fi
+	|
+	|# Add /usr/bin to PATH if not already there (should be by default)
+	|if ! echo $PATH | grep -q ""/usr/bin""; then
+	|    echo ""export PATH=$PATH:/usr/bin"" >> /etc/environment
+	|fi
+	|
+	|echo ""OInt CLI has been successfully installed!""
+	|echo ""You can now run 'oint --help' from any terminal.""
+	|echo ""The application is also available in your applications menu.""
+	|echo ""For detailed documentation, visit: https://openintegrations.dev/""";
+	
+	ФайлPostInst = Новый ТекстовыйДокумент();
+	ФайлPostInst.УстановитьТекст(ТекстPostInst);
+	ФайлPostInst.Записать(КаталогExtras + "/postinst.sh", КодировкаТекста.UTF8);
+	
+	ТекстPostRm = "#!/bin/bash
+	|# Post-removal script for OInt CLI
+	|
+	|# Update desktop database
+	|if command -v update-desktop-database >/dev/null 2>&1; then
+	|    update-desktop-database /usr/share/applications >/dev/null 2>&1 || true
+	|fi
+	|
+	|# Update icon cache
+	|if command -v gtk-update-icon-cache >/dev/null 2>&1; then
+	|    gtk-update-icon-cache -f -t /usr/share/pixmaps >/dev/null 2>&1 || true
+	|fi
+	|
+	|# Update man database
+	|if command -v mandb >/dev/null 2>&1; then
+	|    mandb -q >/dev/null 2>&1 || true
+	|fi
+	|
+	|echo ""OInt CLI has been removed.""";
+	
+	ФайлPostRm = Новый ТекстовыйДокумент();
+	ФайлPostRm.УстановитьТекст(ТекстPostRm);
+	ФайлPostRm.Записать(КаталогExtras + "/postrm.sh", КодировкаТекста.UTF8);
+	
+КонецПроцедуры
+Процедура СоздатьManСтраницу(КаталогExtras, Префикс)
+	
+	ПутьMan = КаталогExtras + "/share/man/man1/oint.1";
+	
+	Если Префикс = "ru" Тогда
+		ТекстMan = ".TH OINT 1 """ + ТекущаяДата() + """ ""OInt CLI " + Версия + """ ""User Commands""
+		|.SH NAME
+		|oint \- инструмент командной строки для интеграции с API популярных онлайн-сервисов
+		|.SH SYNOPSIS
+		|.B oint
+		|[\fIOPTIONS\fR] [\fICOMMAND\fR] [\fIARGUMENTS\fR]
+		|.SH DESCRIPTION
+		|OInt CLI - это мощный инструмент командной строки для работы с API различных онлайн-сервисов.
+		|Поддерживает интеграцию с мессенджерами, облачными хранилищами, базами данных, AI-сервисами и многими другими платформами.
+		|.SH OPTIONS
+		|.TP
+		|.B \-h, \-\-help
+		|Показать справку по использованию
+		|.TP
+		|.B \-v, \-\-version
+		|Показать версию программы
+		|.SH EXAMPLES
+		|.TP
+		|.B oint --help
+		|Показать общую справку
+		|.TP
+		|.B oint telegram --help
+		|Показать справку по работе с Telegram API
+		|.SH SUPPORTED SERVICES
+		|Telegram, VK, Twitter, Slack, Google Drive, Dropbox, Yandex Disk, Google Sheets, 
+		|Airtable, Notion, MySQL, PostgreSQL, MongoDB, SQLite, OpenAI, Ollama и многие другие.
+		|.SH FILES
+		|.TP
+		|.I /usr/lib/oint/
+		|Каталог установки программы
+		|.TP
+		|.I /usr/share/oint/
+		|Каталог с дополнительными файлами
+		|.SH AUTHOR
+		|Anton Titovets <bayselonarrend@gmail.com>
+		|.SH SEE ALSO
+		|Документация: https://openintegrations.dev/
+		|.br
+		|GitHub: https://github.com/Bayselonarrend/OpenIntegrations";
+	Иначе
+		ТекстMan = ".TH OINT 1 """ + ТекущаяДата() + """ ""OInt CLI " + Версия + """ ""User Commands""
+		|.SH NAME
+		|oint \- CLI toolkit for integrating with APIs of popular online services
+		|.SH SYNOPSIS
+		|.B oint
+		|[\fIOPTIONS\fR] [\fICOMMAND\fR] [\fIARGUMENTS\fR]
+		|.SH DESCRIPTION
+		|OInt CLI is a powerful command-line toolkit for working with APIs of various online services.
+		|Supports integration with messengers, cloud storage, databases, AI services and many other platforms.
+		|.SH OPTIONS
+		|.TP
+		|.B \-h, \-\-help
+		|Show usage help
+		|.TP
+		|.B \-v, \-\-version
+		|Show program version
+		|.SH EXAMPLES
+		|.TP
+		|.B oint --help
+		|Show general help
+		|.TP
+		|.B oint telegram --help
+		|Show help for Telegram API integration
+		|.SH SUPPORTED SERVICES
+		|Telegram, VK, Twitter, Slack, Google Drive, Dropbox, Yandex Disk, Google Sheets, 
+		|Airtable, Notion, MySQL, PostgreSQL, MongoDB, SQLite, OpenAI, Ollama and many others.
+		|.SH FILES
+		|.TP
+		|.I /usr/lib/oint/
+		|Program installation directory
+		|.TP
+		|.I /usr/share/oint/
+		|Additional files directory
+		|.SH AUTHOR
+		|Anton Titovets <bayselonarrend@gmail.com>
+		|.SH SEE ALSO
+		|Documentation: https://en.openintegrations.dev/
+		|.br
+		|GitHub: https://github.com/Bayselonarrend/OpenIntegrations";
+	КонецЕсли;
+	
+	ФайлMan = Новый ТекстовыйДокумент();
+	ФайлMan.УстановитьТекст(ТекстMan);
+	ФайлMan.Записать(ПутьMan, КодировкаТекста.UTF8);
 	
 КонецПроцедуры
