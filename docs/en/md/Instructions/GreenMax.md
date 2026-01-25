@@ -8,16 +8,16 @@ keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Servic
 
 # Max (GreenAPI)
 
-This section covers the library for working with Max via Green API in 1C:Enterprise, OneScript, and CLI. This page describes all the actions required to get started.
+This section covers the library for working with Max via Green API in 1С:Enterprise, OneScript, and CLI. This page describes all the steps required to get started.
 
 ### Getting Started
 
-1. Go to your [Green API Personal Account](https://console.green-api.com/registration) and complete the registration process.
-2. Navigate to the [instance list](https://console.green-api.com/instanceList) and create a new instance.
-3. Select the new instance and link it to your Max account by phone number.
-4. Save the instance credentials. To use the library, you will need `apiUrl`, `mediaUrl`, `idInstance`, and `apiTokenInstance`.
+1. Go to the [Green API Personal Account](https://console.green-api.com/registration) and complete the registration process
+2. Navigate to the [instance list](https://console.green-api.com/instanceList) and create a new instance
+3. Select the new instance and link it to your Max account via phone number
+4. Save the instance credentials. To work with the library, you need `apiUrl`, `mediaUrl`, `idInstance`, and `apiTokenInstance`
 
-The obtained data must be passed to the `FormAccessParameters` function. The resulting structure will be used for authorization in all other GreenAPI operations.
+The obtained data must be passed to the `FormAccessParameters` function. The resulting structure will be used for authorization in all other GreenAPI functions.
 
 ```bsl
     ApiUrl           = "https://3100.api.green-api.com/v3";
