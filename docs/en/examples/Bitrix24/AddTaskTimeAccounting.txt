@@ -1,12 +1,12 @@
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    TaskID = "9366";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
+    TaskID = "8726";
 
     Time = 3600;
 
     Result = OPI_Bitrix24.AddTaskTimeAccounting(URL, TaskID, Time);
 
     URL   = "b24-ar17wx.bitrix24.by";
-    Token = "bafe5c69006e9f06006b12e400000001000...";
+    Token = "a5b00469006e9f06006b12e400000001000...";
 
     Text      = "Time spent on work";
     UserID    = 10;
