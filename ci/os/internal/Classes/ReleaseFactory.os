@@ -305,8 +305,8 @@
 	СоответствиеПакетов.Вставить("rpm", ИмяRpm);
 	
 	СоответствиеДополнений = Новый Соответствие();
-	СоответствиеДополнений.Вставить("deb", " --deb-priority optional --deb-field ""Bugs: https://github.com/Bayselonarrend/OpenIntegrations/issues"" --deb-field ""Homepage: https://openintegrations.dev/"" ");
-	СоответствиеДополнений.Вставить("rpm", " --rpm-os linux --depends libicu --rpm-summary ""CLI toolkit for API integrations"" ");
+	СоответствиеДополнений.Вставить("deb", " --deb-priority optional ");
+	СоответствиеДополнений.Вставить("rpm", " --rpm-os linux --depends libicu ");
 	
 	Для Каждого Пакет Из СоответствиеПакетов Цикл
 		
