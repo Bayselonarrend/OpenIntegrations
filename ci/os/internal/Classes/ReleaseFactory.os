@@ -288,7 +288,7 @@
 	+ " --url ""https://openintegrations.dev/"""
 	+ " --maintainer ""Anton Titovets <bayselonarrend@gmail.com>"""
 	+ " --verbose"
-	+ СтрШаблон(" ../ci/installer_set/=/usr %1=/usr/share/oint/bin", ПутьДвижка);
+	+ СтрШаблон(" ../ci/installer_set/=/usr %1=/usr/lib/oint/bin", ПутьДвижка);
 	
 	ИмяDeb = СтрШаблон("oint_%1_all_%2.deb", Версия, Префикс);
 	ИмяRpm = СтрШаблон("oint-%1-1.noarch_%2.rpm", Версия, Префикс);
@@ -309,7 +309,7 @@
 		Дистрибутив = ?(Пакет.Ключ = "deb", "Ubuntu", "OracleLinux_9_1");	
 		
 		FPM = СтрШаблон("chmod +x %1
-		|chmod +x ../ci/installer_set/bin/oint
+		|chmod +x ./ci/installer_set/bin/oint
 		|fpm -t %2 -p %3 %4%5"
 			, ПутьДвижка
 			, Пакет.Ключ

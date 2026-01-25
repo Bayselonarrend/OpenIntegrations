@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/share/oint/bin/oscript /usr/share/oint/lib/oint-cli/core/Classes/app.os "$@"
+/usr/lib/oint/bin/oscript /usr/share/oint/lib/oint-cli/core/Classes/app.os "$@"
