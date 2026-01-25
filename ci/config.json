@@ -448,7 +448,7 @@
    },
    "textModel": {
     "description": "AI model for text-based operations",
-    "value": "gpt-4.1"
+    "value": "claude-sonnet-4.5"
    },
    "tokenField": {
     "description": "Token filed key at secret data file",
