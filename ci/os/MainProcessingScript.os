@@ -36,6 +36,7 @@
 	Обработчик = Новый APICatalogGenerator(ДанныеПроекта);
 	Обработчик = Новый TestIndexGenerator(ДанныеПроекта);
 	Обработчик = Новый HashSumGenerator(ДанныеПроекта);
+	Обработчик = Новый SonarQubeMethods(ДанныеПроекта);
 	Обработчик = Новый DocsGenerator(ДанныеПроекта);
 	Обработчик = Новый AILocalizationMethods(ДанныеПроекта);
 
