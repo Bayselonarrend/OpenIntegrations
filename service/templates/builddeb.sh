@@ -1,1 +1,14 @@
-fpm -t deb -p oint_%1_all_%2.deb --name oint -s dir --license mit --version %1 --architecture all  --category "Development" --description "%3" --url "%4" --maintainer "%5" --verbose ../ci/installer_set/=/usr %6=/usr/lib/oint/bin
+fpm -t deb \
+  -p oint_%1_all_%2.deb \
+  --name oint \
+  -s dir \
+  --license mit \
+  --version %1 \
+  --architecture all \
+  --category "Development" \
+  --description "%3" \
+  --url "%4" \
+  --maintainer "%5" \
+  --after-install postinst.sh \
+  --verbose \
+  ../ci/installer_set/=/usr %6=/usr/lib/oint/bin
