@@ -1,1 +1,16 @@
-fpm -t deb -p oint-%1-1.noarch_%2.rpm --rpm-os linux --depends libicu --name oint -s dir --license mit --version %1 --architecture all --category "Development" --description "%3" --url "%4" --maintainer "%5" --verbose ../ci/installer_set/=/usr %6=/usr/lib/oint/bin
+fpm -t rpm \
+  -p oint-%1-1.noarch_%2.rpm \
+  --rpm-os linux \
+  --depends libicu \
+  --name oint \
+  -s dir \
+  --license mit \
+  --version %1 \
+  --architecture all \
+  --category "Development" \
+  --description "%3" \
+  --url "%4" \
+  --maintainer "%5" \
+  --after-install postinst.sh \
+  --verbose \
+  ../ci/installer_set/=/usr %6=/usr/lib/oint/bin
