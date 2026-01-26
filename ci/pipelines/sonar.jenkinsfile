@@ -4,9 +4,7 @@ pipeline {
 
         stage('Scan') {
             steps {                  
-                withCredentials([string(credentialsId: 'Sonar', variable: 'LOGIN')]) {
-                    bat 'call cd ./src/ru/OPI && sonar-scanner -D"sonar.projectKey=OpenIntegrations" -D"sonar.host.url=http://localhost:32772" -D"sonar.token=%LOGIN%" -D"sonar.sourceEncoding=UTF-8" -D"sonar.inclusions=**/*.bsl"'
-                }
+                bat encoding: 'UTF-8', script:'chcp 65001 & oscript ./ci/os/internal/Classes/SonarQubeMethods.os'
             }
         }
     }
