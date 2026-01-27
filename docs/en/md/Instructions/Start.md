@@ -47,7 +47,7 @@ Fast navigation:
  <a href="/docs/Instructions/SFTP/"><img src={require('../../static/img/APIs/SFTP.png').default} width="32" class="wp_logo"/></a>
  <a href="/docs/Instructions/TCP/"><img src={require('../../static/img/APIs/TCP.png').default} width="32" class="wp_logo"/></a>
  <a href="/docs/Instructions/HTTP/"><img src={require('../../static/img/APIs/HTTP.png').default} width="32" class="wp_logo"/></a>
- <a href="/docs/Instructions/GRPC/"><img src={require('../../static/img/APIs/gRPC.png').default} width="32" class="wp_logo"/></a>
+ <a href="/docs/Instructions/GRPC/"><img src={require('../../static/img/APIs/GRPC.png').default} width="32" class="wp_logo"/></a>
  <a href="/docs/Instructions/SSH/"><img src={require('../../static/img/APIs/SSH.png').default} width="32" class="wp_logo"/></a>
  <a href="/docs/Instructions/RCON/"><img src={require('../../static/img/APIs/RCON.png').default} width="32" class="wp_logo"/></a>
 </div> 
