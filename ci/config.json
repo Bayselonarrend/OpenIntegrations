@@ -249,6 +249,10 @@
                                 "description": "Section word translation",
                                 "value": "Раздел"
                             },
+                            "testProcessProcedure": {
+                                "description": "Tests results processing procedure name",
+                                "value": "Обработать"
+                            },
                             "testsModule": {
                                 "description": "Main tests module name",
                                 "value": "OPI_Тесты"
@@ -356,6 +360,10 @@
                             "sectionsString": {
                                 "description": "Section word translation",
                                 "value": "Section"
+                            },
+                            "testProcessProcedure": {
+                                "description": "Tests results processing procedure name",
+                                "value": "Process"
                             },
                             "testsModule": {
                                 "description": "Main tests module name",
