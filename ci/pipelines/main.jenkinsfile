@@ -25,14 +25,6 @@ pipeline {
             }
         }
 
-        stage('Local update'){
-            steps {
-                powershell encoding: 'UTF-8', script:'cd ./src/ru/OInt; opm build; opm install -f oint-1.32.0.ospx; del oint-1.32.0.ospx'
-                powershell encoding: 'UTF-8', script:'cd ./src/ru/cli; opm build; opm install -f oint-cli-1.32.0.ospx; del oint-cli-1.32.0.ospx'
-            }
-
-        }
-
         stage('Update GIT') {
             steps {
                 script {
@@ -44,9 +36,7 @@ pipeline {
                         bat "git add ."
                         bat 'git commit -m "Main build (Jenkins)"'
                         bat "git push origin HEAD:main"
-                    }
-                        
-                    
+                    }                       
                 }
             }
         }
