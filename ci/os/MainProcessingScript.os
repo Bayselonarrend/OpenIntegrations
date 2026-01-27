@@ -39,6 +39,7 @@
 	Обработчик = Новый SonarQubeMethods(ДанныеПроекта);
 	Обработчик = Новый DocsGenerator(ДанныеПроекта);
 	Обработчик = Новый AILocalizationMethods(ДанныеПроекта);
+	Обработчик = Новый LocalUpdater(ДанныеПроекта);
 
 	CommonTools.СообщитьПроцесс("Processing complete!");
 
