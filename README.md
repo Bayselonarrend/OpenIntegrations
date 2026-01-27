@@ -51,10 +51,10 @@
   <a href="https://openintegrations.dev/docs/Instructions/Dropbox/"><img src="media/Dropbox.png?6" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/Neocities/"><img src="media/Neocities.png?6" width="40"></a>
    <a href="https://openintegrations.dev/docs/Instructions/FTP/"><img src="media/FTP.png?6" width="40"></a>
-   <a href="https://openintegrations.dev/docs/Instructions/SFTP/"><img src="media/sftp.png?6" width="40"></a>
+   <a href="https://openintegrations.dev/docs/Instructions/SFTP/"><img src="media/SFTP.png?6" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/TCP/"><img src="media/TCP.png?6" width="40"></a>
    <a href="https://openintegrations.dev/docs/Instructions/HTTP/"><img src="media/HTTP.png?6" width="40"></a>
-   <a href="https://openintegrations.dev/docs/Instructions/GRPC/"><img src="media/gRPC.png?6" width="40"></a>
+   <a href="https://openintegrations.dev/docs/Instructions/GRPC/"><img src="media/GRPC.png?6" width="40"></a>
    <a href="https://openintegrations.dev/docs/Instructions/SSH/"><img src="media/SSH.png?6" width="40"></a>
   <a href="https://openintegrations.dev/docs/Instructions/RCON/"><img src="media/RCON.png?6" width="40"></a>
      
