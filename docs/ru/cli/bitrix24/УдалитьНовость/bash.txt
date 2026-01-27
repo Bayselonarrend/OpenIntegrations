@@ -1,4 +1,4 @@
 oint bitrix24 УдалитьНовость \
   --url "b24-ar17wx.bitrix24.by" \
-  --postid 3612 \
+  --postid 3616 \
   --token "***"
