@@ -2,5 +2,5 @@ oint bitrix24 ЗагрузитьФайлВКаталог ^
   --url "b24-ar17wx.bitrix24.by" ^
   --title "Важный документ.docx" ^
   --file "https://hut.openintegrations.dev/test_data/document.docx" ^
-  --folderid 50554 ^
+  --folderid 50608 ^
   --token "***"

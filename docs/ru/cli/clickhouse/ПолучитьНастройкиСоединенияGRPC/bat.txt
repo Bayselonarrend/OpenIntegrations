@@ -1,2 +1,2 @@
 oint clickhouse ПолучитьНастройкиСоединенияGRPC ^
-  --auth "C:\Users\bayse\AppData\Local\Temp\fvqyoeti.cu4.json"
+  --auth "C:\Users\bayse\AppData\Local\Temp\cobw2xvn.y0z.json"

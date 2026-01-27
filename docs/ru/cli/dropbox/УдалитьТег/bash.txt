@@ -1,4 +1,4 @@
 oint dropbox УдалитьТег \
   --token "***" \
   --path "/New/mydoc.docx" \
-  --tag "Важное"
+  --tag "Important"
