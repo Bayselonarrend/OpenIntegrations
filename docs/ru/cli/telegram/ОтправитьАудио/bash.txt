@@ -2,4 +2,4 @@ oint telegram ОтправитьАудио \
   --token "***" \
   --chat "***" \
   --text "Строковое значение" \
-  --audio "C:\Users\bayse\AppData\Local\Temp\fabszyz2.ggl"
+  --audio "C:\Users\bayse\AppData\Local\Temp\2d2jdosn.k1a"
