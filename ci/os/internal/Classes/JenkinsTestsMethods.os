@@ -52,7 +52,7 @@
 	ПутьJenkinsFull            = ДанныеПроекта.ПолучитьЗначениеНастройки("tests.jenkinsFull");
 	ПутьJenkinsSplit           = ДанныеПроекта.ПолучитьЗначениеНастройки("tests.jenkinsSplit");
 
-	КаталогWorkflowТестов     = КаталогWorkflow + "tests_full/";
+	КаталогWorkflowТестов     = КаталогWorkflow + "tests_full";
 	ШаблонКонфигурацииYaxUnit = КаталогКонфигурацииYaxUnit + "template.txt";
 	ШаблонКонфигурацииYaxUnit = Новый ДвоичныеДанные(ШаблонКонфигурацииYaxUnit);
 	ШаблонКонфигурацииYaxUnit = ПолучитьСтрокуИзДвоичныхДанных(ШаблонКонфигурацииYaxUnit);
@@ -136,7 +136,7 @@
 
 			СоздатьПапкуJenkins(ПутьJenkinsSplit, ИмяБиблиотеки, ИмяБиблиотеки);
 
-			ТекущийКаталогWorkflow = СтрШаблон("%1%2/%3/", КаталогWorkflow, "tests_split", ИмяБиблиотеки);
+			ТекущийКаталогWorkflow = СтрШаблон("%1/%2/%3/", КаталогWorkflow, "tests_split", ИмяБиблиотеки);
 
 			СформироватьWorkflow(ТекущийКаталогWorkflow
 				, Язык
