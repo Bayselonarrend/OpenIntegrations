@@ -2,6 +2,9 @@
 	"module": "OPI_GoogleSheets",
 	"library": "gsheets",
 	"self_depend": false,
+	"dependencies": [
+		"OPI_GoogleWorkspace"
+	],
 	"regions": [
 		{
 			"name": "Авторизация",

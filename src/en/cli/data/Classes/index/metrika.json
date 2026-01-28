@@ -2,6 +2,9 @@
 	"module": "OPI_YandexMetrika",
 	"library": "metrika",
 	"self_depend": false,
+	"dependencies": [
+		"OPI_YandexID"
+	],
 	"regions": [
 		{
 			"name": "Tags management",
@@ -24,6 +27,12 @@
 				"GetCountersList",
 				"GetCounterStructure",
 				"GetCounterFilterStructure"
+			]
+		},
+		{
+			"name": "Actions management",
+			"methods": [
+				"GetActionsList"
 			]
 		}
 	],

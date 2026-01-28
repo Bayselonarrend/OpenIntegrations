@@ -2,6 +2,7 @@
 	"module": "OPI_S3",
 	"library": "s3",
 	"self_depend": false,
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Common methods",
