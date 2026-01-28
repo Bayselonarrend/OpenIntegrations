@@ -110,7 +110,7 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
     
     If Dynamically Then
         InitializationString = FormModuleInitializationString(CommandData, Module);
-        CallArray.Add(InitializationString);
+        StingsArray.Add(InitializationString);
     EndIf;
       
     For Each RequiredParameter In MethodParameters Do
@@ -143,9 +143,9 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
     EndDo;
     
     CallString = StrTemplate("Response = %1.%2(%3)", Module, Method, StrConcat(CallArray, ","));
-    CallArray.Add(CallString);
+    StingsArray.Add(CallString);
     
-    ExecutionText = StrConcat(CallArray, Chars.LF);
+    ExecutionText = StrConcat(StingsArray, Chars.LF);
     
     ReturnStructure = New Structure("Error,Result", False, ExecutionText);
     
