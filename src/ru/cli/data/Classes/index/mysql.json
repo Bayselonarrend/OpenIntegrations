@@ -2,6 +2,7 @@
 	"module": "OPI_MySQL",
 	"library": "mysql",
 	"self_depend": true,
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Основные методы",

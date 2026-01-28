@@ -2,6 +2,7 @@
 	"module": "OPI_OpenAI",
 	"library": "openai",
 	"self_depend": false,
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Requests processing",
