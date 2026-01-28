@@ -2,6 +2,7 @@
 	"module": "OPI_GRPC",
 	"library": "grpc",
 	"self_depend": true,
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Common methods",

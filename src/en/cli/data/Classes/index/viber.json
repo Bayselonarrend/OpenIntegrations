@@ -2,6 +2,7 @@
 	"module": "OPI_Viber",
 	"library": "viber",
 	"self_depend": false,
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Settings and information",

@@ -2,6 +2,7 @@
 	"module": "OPI_Slack",
 	"library": "slack",
 	"self_depend": false,
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Управление и настройки",

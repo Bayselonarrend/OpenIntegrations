@@ -2,6 +2,9 @@
 	"module": "OPI_GoogleCalendar",
 	"library": "gcalendar",
 	"self_depend": false,
+	"dependencies": [
+		"OPI_GoogleWorkspace"
+	],
 	"regions": [
 		{
 			"name": "Authorization",

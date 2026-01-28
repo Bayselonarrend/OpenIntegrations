@@ -2,6 +2,9 @@
 	"module": "OPI_SQLite",
 	"library": "sqlite",
 	"self_depend": true,
+	"dependencies": [
+		"OPI_SQLite"
+	],
 	"regions": [
 		{
 			"name": "Common methods",

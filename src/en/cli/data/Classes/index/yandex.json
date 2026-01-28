@@ -2,6 +2,7 @@
 	"module": "OPI_YandexID",
 	"library": "yandex",
 	"self_depend": false,
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Public",

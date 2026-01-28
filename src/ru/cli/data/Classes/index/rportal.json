@@ -2,6 +2,7 @@
 	"module": "OPI_ReportPortal",
 	"library": "rportal",
 	"self_depend": false,
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Авторизация",

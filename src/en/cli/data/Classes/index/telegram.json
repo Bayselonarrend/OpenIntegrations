@@ -2,6 +2,7 @@
 	"module": "OPI_Telegram",
 	"library": "telegram",
 	"self_depend": false,
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Data retrieval and settings",

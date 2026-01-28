@@ -2,6 +2,7 @@
 	"module": "OPI_Neocities",
 	"library": "neocities",
 	"self_depend": false,
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Data retrieving",
