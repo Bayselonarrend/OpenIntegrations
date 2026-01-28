@@ -3,19 +3,7 @@
 	"library": "ssh",
 	"self_depend": true,
 	"dependencies": null,
-	"regions": [
-		{
-			"name": "Common methods",
-			"methods": [
-				"GetConnectionConfiguration",
-				"ExecuteCommand",
-				"GetSettingsLoginPassword",
-				"GetSettingsPrivateKey",
-				"GetSettingsViaAgent",
-				"GetProxySettings"
-			]
-		}
-	],
+	"regions": [],
 	"methods": [
 		{
 			"name": "GetConnectionConfiguration",
