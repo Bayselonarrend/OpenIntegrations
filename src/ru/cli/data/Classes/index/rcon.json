@@ -3,15 +3,7 @@
 	"library": "rcon",
 	"self_depend": true,
 	"dependencies": null,
-	"regions": [
-		{
-			"name": "Выполнение команд",
-			"methods": [
-				"ВыполнитьКоманду",
-				"СформироватьПараметрыСоединения"
-			]
-		}
-	],
+	"regions": [],
 	"methods": [
 		{
 			"name": "ВыполнитьКоманду",

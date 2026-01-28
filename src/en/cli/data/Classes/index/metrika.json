@@ -28,12 +28,6 @@
 				"GetCounterStructure",
 				"GetCounterFilterStructure"
 			]
-		},
-		{
-			"name": "Actions management",
-			"methods": [
-				"GetActionsList"
-			]
 		}
 	],
 	"methods": [
