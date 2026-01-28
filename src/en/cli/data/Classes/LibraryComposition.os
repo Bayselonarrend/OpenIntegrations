@@ -68,7 +68,7 @@ Function GetMethodData(Val Command, Val Method) Export
     EndDo;
     
     Return MethodInfo;
-
+    
 EndFunction
 
 Function GetFullComposition() Export
@@ -100,10 +100,19 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
         Return New Structure("Error,Result", True, "Method");
     EndIf;
     
-    MethodParameters = MethodData["params"];
+    StingsArray = New Array;
+    CallArray = New Array;
     ExecutionText = "";
-    CallString = StrTemplate("%1.%2(", Module, Method);
     
+    MethodParameters = MethodData["params"];
+    VariableTemplate = "%1 = ""%2"";";
+    TemplateES = "OPI_Tools.ReplaceEscapeSequences(%1);";
+    
+    If Dynamically Then
+        InitializationString = FormModuleInitializationString(CommandData, Module);
+        CallArray.Add(InitializationString);
+    EndIf;
+      
     For Each RequiredParameter In MethodParameters Do
         
         ParameterName = RequiredParameter["name"];
@@ -116,53 +125,27 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
         
         If ValueIsFilled(ParameterValue) Then
             
-            ParameterName = "Parameter" + StrReplace(ParameterName, "--", "_");
+            ParameterName = StrTemplate("Parameter%1", StrReplace(ParameterName, "--", "_"));
+            CoveredValue = StrReplace(ParameterValue, """", """""");
             
-            ExecutionText = ExecutionText 
-            + Chars.LF 
-            + ParameterName
-            + " = """ 
-            + StrReplace(ParameterValue, """", """""")
-            + """;";
+            StingsArray.Add(StrTemplate(VariableTemplate, ParameterName, CoveredValue));
             
             If RequiresProcessingOfEscapeSequences(ParameterName, ParameterValue) Then
-                ExecutionText = ExecutionText 
-                + Chars.LF 
-                + "OPI_Tools.ReplaceEscapeSequences(" + ParameterName + ");";
+                StingsArray.Add(StrTemplate(TemplateES, ParameterName));
             EndIf;
             
-            CallString = CallString + ParameterName + ", ";
+            CallArray.Add(ParameterName);
             
         Else
-            CallString = CallString + " , ";
+            CallArray.Add("");
         EndIf;
         
     EndDo;
     
-    ExtraCharacters = 2;
-    CallString = Left(CallString, StrLen(CallString) - ExtraCharacters);
-    CallString = CallString + ");";
-    CallString = "Response = " + CallString;
-    ExecutionText = ExecutionText + Chars.LF + CallString;
-
-    If Dynamically Then
-
-        InitializationTemplate = "Context = New Structure;
-        |Context.Insert(""%1"", Undefined);
-        |%1 = LoadScript(""%2/oint/core/Modules/%1.os"", Context);";
-
-        If CommandData["self_depend"] Then
-
-            InitializationTemplate = InitializationTemplate + "
-            |Context.Insert(""%1"", %1);
-            |%1 = LoadScript(""%2/oint/core/Modules/%1.os"", Context);
-            |";
-
-        EndIf;
-
-        ExecutionText = StrTemplate(InitializationTemplate, Module, PackagesDirectory) + ExecutionText;
-
-    EndIf;
+    CallString = StrTemplate("Response = %1.%2(%3)", Module, Method, StrConcat(CallArray, ","));
+    CallArray.Add(CallString);
+    
+    ExecutionText = StrConcat(CallArray, Chars.LF);
     
     ReturnStructure = New Structure("Error,Result", False, ExecutionText);
     
@@ -206,6 +189,43 @@ Function RequiresProcessingOfEscapeSequences(Val ParameterName, Val ParameterVal
     And Not StrStartsWith(ParamValueTrim, "[") 
     And Not ParamFile.Exists() 
     And Not ParameterName = "Parameter_out";
+    
+EndFunction
+
+Function FormModuleInitializationString(Val CommandData, Val Module)
+    
+    LoadingTemplate = StrTemplate("%%1 = LoadScript(""%1/oint/core/Modules/%%1.os"", Context);", PackagesDirectory);
+    ContextTemplate = "Context.Insert(""%1"", %2);";
+    CallArray = New Array;
+
+    CallArray.Add("Context = New Structure;");
+
+    Dependencies = CommandData["dependencies"];
+
+    If Dependencies <> Undefined Then
+
+        For Each Dependence In Dependencies Do
+
+            CallArray.Add(StrTemplate(LoadingTemplate, Dependence));
+            CallArray.Add(StrTemplate(ContextTemplate, Dependence, Dependence));
+
+        EndDo;
+
+    EndIf;
+    
+    CallArray.Add(StrTemplate(ContextTemplate, Module, "Undefined"));
+    CallArray.Add(StrTemplate(LoadingTemplate , Module));
+    
+    If CommandData["self_depend"] Then
+        
+        CallArray.Add(StrTemplate(ContextTemplate, Module, Module));
+        CallArray.Add(StrTemplate(LoadingTemplate , Module));
+        
+    EndIf;
+    
+    ExecutionText = StrConcat(CallArray, Chars.LF);
+
+    Return ExecutionText;
     
 EndFunction
 

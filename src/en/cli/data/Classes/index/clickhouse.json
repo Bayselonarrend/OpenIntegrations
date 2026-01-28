@@ -2,7 +2,9 @@
 	"module": "OPI_ClickHouse",
 	"library": "clickhouse",
 	"self_depend": false,
-	"dependencies": null,
+	"dependencies": [
+		"OPI_GRPC"
+	],
 	"regions": [
 		{
 			"name": "Common methods",

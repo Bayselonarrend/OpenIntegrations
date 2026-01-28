@@ -2,9 +2,7 @@
 	"module": "OPI_PostgreSQL",
 	"library": "postgres",
 	"self_depend": true,
-	"dependencies": [
-		"OPI_PostgreSQL"
-	],
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Основные методы",
