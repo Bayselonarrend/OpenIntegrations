@@ -2,7 +2,17 @@
 	"module": "OPI_TCP",
 	"library": "tcp",
 	"self_depend": false,
-	"regions": [],
+	"dependencies": null,
+	"regions": [
+		{
+			"name": "Client methods",
+			"methods": [
+				"ProcessRequest",
+				"GetProxySettings",
+				"GetTlsSettings"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "ProcessRequest",

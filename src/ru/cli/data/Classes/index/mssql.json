@@ -2,6 +2,9 @@
 	"module": "OPI_MSSQL",
 	"library": "mssql",
 	"self_depend": true,
+	"dependencies": [
+		"OPI_MSSQL"
+	],
 	"regions": [
 		{
 			"name": "Основные методы",

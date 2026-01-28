@@ -2,6 +2,7 @@
 	"module": "Utils",
 	"library": "tools",
 	"self_depend": false,
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Служебный программный интерфейс",

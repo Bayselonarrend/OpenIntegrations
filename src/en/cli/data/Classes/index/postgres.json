@@ -2,6 +2,9 @@
 	"module": "OPI_PostgreSQL",
 	"library": "postgres",
 	"self_depend": true,
+	"dependencies": [
+		"OPI_PostgreSQL"
+	],
 	"regions": [
 		{
 			"name": "Common methods",

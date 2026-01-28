@@ -2,7 +2,20 @@
 	"module": "OPI_SSH",
 	"library": "ssh",
 	"self_depend": true,
-	"regions": [],
+	"dependencies": null,
+	"regions": [
+		{
+			"name": "Common methods",
+			"methods": [
+				"GetConnectionConfiguration",
+				"ExecuteCommand",
+				"GetSettingsLoginPassword",
+				"GetSettingsPrivateKey",
+				"GetSettingsViaAgent",
+				"GetProxySettings"
+			]
+		}
+	],
 	"methods": [
 		{
 			"name": "GetConnectionConfiguration",

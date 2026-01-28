@@ -2,6 +2,7 @@
 // Lib: ClickHouse
 // CLI: clickhouse
 // Keywords: clickhouse
+// Depends: OPI_GRPC
 
 // DocsCategory: Database
 // DocsNameRU: ClickHouse

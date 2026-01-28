@@ -2,6 +2,7 @@
 	"module": "OPI_Bitrix24",
 	"library": "bitrix24",
 	"self_depend": false,
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Settings and administartion",

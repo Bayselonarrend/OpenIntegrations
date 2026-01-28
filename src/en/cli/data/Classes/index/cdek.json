@@ -2,6 +2,7 @@
 	"module": "OPI_CDEK",
 	"library": "cdek",
 	"self_depend": false,
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Common methods",
