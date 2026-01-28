@@ -2,9 +2,7 @@
 	"module": "OPI_SQLite",
 	"library": "sqlite",
 	"self_depend": true,
-	"dependencies": [
-		"OPI_SQLite"
-	],
+	"dependencies": null,
 	"regions": [
 		{
 			"name": "Основные методы",

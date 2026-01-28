@@ -2,7 +2,6 @@
 // Lib: SQLite
 // CLI: sqlite
 // Keywords: sqlite
-// Depends: OPI_SQLite
 
 // DocsCategory: Database
 // DocsNameRU: SQLite

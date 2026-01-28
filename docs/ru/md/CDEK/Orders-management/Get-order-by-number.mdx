@@ -44,7 +44,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint cdek ПолучитьЗаказПоНомеру \
               --token "***" \
-              --number "c51a1b0f-29fe-4a68-85b8-f054485a4bac" \
+              --number "51fdab79-55a5-41b4-a8fe-6bbbf4d594be" \
               --internal true \
               --testapi "***"
         ```
@@ -54,7 +54,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint cdek ПолучитьЗаказПоНомеру ^
               --token "***" ^
-              --number "c51a1b0f-29fe-4a68-85b8-f054485a4bac" ^
+              --number "51fdab79-55a5-41b4-a8fe-6bbbf4d594be" ^
               --internal true ^
               --testapi "***"
         ```
@@ -65,153 +65,88 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "0a3c80cf-4398-4e6b-8fab-40a976eceb7a",
+  "uuid": "17564154-4d0e-4b4c-97e0-a1bbb7d0446c",
   "type": 1,
-  "is_return": false,
-  "is_reverse": false,
-  "cdek_number": "1106865785",
-  "number": "c51a1b0f-29fe-4a68-85b8-f054485a4bac",
+  "number": "51fdab79-55a5-41b4-a8fe-6bbbf4d594be",
   "tariff_code": 139,
   "comment": "Новый заказ",
-  "items_cost_currency": "RUB",
-  "recipient_currency": "RUB",
   "delivery_recipient_cost": {
-   "value": 50,
-   "vat_sum": 0
+   "value": 50
   },
   "delivery_recipient_cost_adv": [
    {
     "threshold": 200,
-    "sum": 3000,
-    "vat_sum": 0
+    "sum": 3000
    }
   ],
   "sender": {
-   "company": "Тестирование Интеграции ИМ",
-   "name": "Петров Петр",
-   "contragent_type": "LEGAL_ENTITY",
-   "phones": [
-    {
-     "number": "79529287654"
-    }
-   ],
-   "passport_requirements_satisfied": "***"
-  },
-  "seller": {
-   "name": "Тестирование Интеграции ИМ"
+   "name": "Петров Петр"
   },
   "recipient": {
-   "company": "Иванов Иван",
    "name": "Иванов Иван",
    "phones": [
     {
-     "number": "79134637228"
+     "number": "+79134637228"
     }
-   ],
-   "passport_requirements_satisfied": "***"
+   ]
   },
   "from_location": {
    "code": 44,
-   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
    "city": "Москва",
-   "fias_guid": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
-   "country_code": "RU",
-   "country": "Россия",
-   "region": "Москва",
-   "region_code": 81,
-   "sub_region": "Москва",
-   "longitude": 37.61556,
-   "latitude": 55.75222,
    "address": "пр. Ленинградский, д.4"
   },
   "to_location": {
    "code": 270,
-   "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2",
    "city": "Новосибирск",
-   "kladr_code": "5400000100000",
-   "country_code": "RU",
-   "country": "Россия",
-   "region": "Новосибирская область",
-   "region_code": 23,
-   "sub_region": "городской округ Новосибирск",
-   "longitude": 82.906928,
-   "latitude": 55.028739,
    "address": "ул. Блюхера, 32"
   },
   "services": [
    {
     "code": "SECURE_PACKAGE_A2",
-    "parameter": "10",
-    "sum": 500,
-    "total_sum": 600,
-    "discount_percent": 0,
-    "discount_sum": 0,
-    "vat_rate": 20,
-    "vat_sum": 100
-   },
-   {
-    "code": "INSURANCE",
-    "parameter": "600.00",
-    "sum": 4.5,
-    "total_sum": 5.4,
-    "discount_percent": 0,
-    "discount_sum": 0,
-    "vat_rate": 20,
-    "vat_sum": 0.9
+    "parameter": "10"
    }
   ],
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001529425",
     "weight": 4000,
     "length": 10,
     "width": "***",
-    "weight_volume": 200,
-    "weight_calc": 4000,
     "height": 10,
-    "comment": "приложена опись",
+    "comment": "Упаковка",
     "items": [
      {
       "name": "Товар",
       "ware_key": "***",
       "payment": {
-       "value": 3000,
-       "vat_sum": 0
+       "value": 3000
       },
       "weight": 700,
-      "weight_gross": 700,
       "amount": 2,
-      "delivery_amount": 0,
       "url": "www.item.ru",
-      "return_item_detail": {},
-      "excise": false,
       "cost": 300
      }
-    ],
-    "package_id": "cda164a9-4ac1-44d1-9267-b408f730dfeb"
+    ]
    }
   ],
   "statuses": [
    {
-    "code": "CREATED",
-    "name": "Создан",
-    "date_time": "2026-01-19T22:29:25+03:00",
-    "city": "Офис СДЭК",
-    "deleted": false
-   },
-   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-01-19T22:29:24+03:00",
+    "date_time": "2026-01-27T22:57:18+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }
-  ],
-  "is_client_return": "***",
-  "delivery_mode": "1",
-  "has_reverse_order": false,
-  "delivery_detail": {
-   "delivery_sum": 1315,
-...
+  ]
+ },
+ "requests": [
+  {
+   "request_uuid": "18d97af5-6ab8-40af-818e-b65674533c9f",
+   "type": "CREATE",
+   "date_time": "2026-01-27T22:57:18+03:00",
+   "state": "ACCEPTED"
+  }
+ ],
+ "related_entities": []
+}
 ```

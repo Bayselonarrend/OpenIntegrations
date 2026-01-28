@@ -2,7 +2,6 @@
 // Lib: PostgreSQL
 // CLI: postgres
 // Keywords: postgresql, postgre sql, postgres
-// Depends: OPI_PostgreSQL
 
 // DocsCategory: Database
 // DocsNameRU: PostgreSQL

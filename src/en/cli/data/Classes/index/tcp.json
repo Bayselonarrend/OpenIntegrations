@@ -3,16 +3,7 @@
 	"library": "tcp",
 	"self_depend": false,
 	"dependencies": null,
-	"regions": [
-		{
-			"name": "Client methods",
-			"methods": [
-				"ProcessRequest",
-				"GetProxySettings",
-				"GetTlsSettings"
-			]
-		}
-	],
+	"regions": [],
 	"methods": [
 		{
 			"name": "ProcessRequest",
