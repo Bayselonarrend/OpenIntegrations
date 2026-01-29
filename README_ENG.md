@@ -6,6 +6,7 @@
 ![Версия](https://img.shields.io/badge/1C_version-8.3.10-yellow)
 [![OpenYellow](https://img.shields.io/endpoint?url=https://openyellow.org/data/badges/2/736878759.json)](https://openyellow.org/grid?data=top&repo=736878759)
 [![OneScript](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/refs/heads/main/media/os-logo.json)](https://github.com/EvilBeaver/OneScript)
+[![Used by](https://litrosbadges.ru/package/oint.svg)](https://litrosbadges.ru/package/oint)
 [![Boosty](media/boosty.svg)](https://boosty.to/bayselonarrend)
 
 **OpenIntegrations** is a set of tools for working with external APIs, available as a library (extension) for 1C:Enterprise / OneScript and a cross-platform console application for Windows and Linux. The project provides ready-made methods for performing application tasks (sending messages, creating documents, SQL queries, etc.) across more than 30 services and technologies, including Telegram, VK, Bitrix24, Google and Yandex services, as well as various DBMS and exchange protocols.
