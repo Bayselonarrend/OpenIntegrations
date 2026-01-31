@@ -74,6 +74,34 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint postgres ГарантироватьЗаписи \
+              --table "test_merge" \
+              --rows "[{'id':{'INT':'1'},'name':{'TEXT':'Vitaly Updated'},'age':{'INT':'25'},'salary':{'REAL':'1500.5'}},{'id':{'INT':'3'},'name':{'TEXT':'Anton'},'age':{'INT':'30'},'salary':{'REAL':'3000'}}]" \
+              --unique "['id']" \
+              --db "postgresql://bayselonarrend:12we3456!2154@127.0.0.1:5433/testbase1" \
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint postgres ГарантироватьЗаписи ^
+              --table "test_merge" ^
+              --rows "[{'id':{'INT':'1'},'name':{'TEXT':'Vitaly Updated'},'age':{'INT':'25'},'salary':{'REAL':'1500.5'}},{'id':{'INT':'3'},'name':{'TEXT':'Anton'},'age':{'INT':'30'},'salary':{'REAL':'3000'}}]" ^
+              --unique "['id']" ^
+              --db "postgresql://bayselonarrend:12we3456!2154@127.0.0.1:5433/testbase1" ^
+              --tls "{'use_tls':true,'accept_invalid_certs':true}"
+        ```
+    </TabItem>
+</Tabs>
 
 
 

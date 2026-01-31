@@ -320,13 +320,6 @@
 					"description": "File identifier",
 					"default": null,
 					"short": "-o"
-				},
-				{
-					"name": "--out",
-					"types": "String",
-					"description": "File save path",
-					"default": "Пустое значение",
-					"short": "-u"
 				}
 			],
 			"region": "File and directory management"

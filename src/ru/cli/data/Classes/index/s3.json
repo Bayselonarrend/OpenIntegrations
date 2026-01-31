@@ -1047,13 +1047,6 @@
 					"short": "-h"
 				},
 				{
-					"name": "--out",
-					"types": "Строка",
-					"description": "Путь для прямой записи файла на диск",
-					"default": "Пустое значение",
-					"short": "-o"
-				},
-				{
 					"name": "--dir",
 					"types": "Булево",
 					"description": "Истина > Path style URL, Ложь > Virtual hosted style URL",

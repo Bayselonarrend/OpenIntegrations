@@ -9605,7 +9605,7 @@ Function Check_Ollama_CheckBlob(Val Result, Val Option, Parameters = "")
 
 EndFunction
 
-Function Check_HTTPClient_Initialize(Val Result, Val Option, Parameters = "")
+Function Check_HTTP_Initialize(Val Result, Val Option, Parameters = "")
 
     If Not ValueIsFilled(Option) Then
 
@@ -9664,7 +9664,7 @@ Function Check_HTTPClient_Initialize(Val Result, Val Option, Parameters = "")
 
 EndFunction
 
-Function Check_HTTPClient_SetURL(Val Result, Val Option, Parameters = "")
+Function Check_HTTP_SetURL(Val Result, Val Option, Parameters = "")
 
     If Not ValueIsFilled(Option) Then
 
@@ -9713,7 +9713,7 @@ Function Check_HTTPClient_SetURL(Val Result, Val Option, Parameters = "")
 
 EndFunction
 
-Function Check_HTTPClient_SetURLParams(Val Result, Val Option, Parameters = "")
+Function Check_HTTP_SetURLParams(Val Result, Val Option, Parameters = "")
 
     Address = "/get?param1=text&param2=10";
 
@@ -9765,7 +9765,7 @@ Function Check_HTTPClient_SetURLParams(Val Result, Val Option, Parameters = "")
 
 EndFunction
 
-Function Check_HTTPClient_SetResponseFile(Val Result, Val Option, TFN = "")
+Function Check_HTTP_SetResponseFile(Val Result, Val Option, TFN = "")
 
     BodyFile = New File(TFN);
 
@@ -9791,7 +9791,7 @@ Function Check_HTTPClient_SetResponseFile(Val Result, Val Option, TFN = "")
 
 EndFunction
 
-Function Check_HTTPClient_SetDataType(Val Result, Val Option)
+Function Check_HTTP_SetDataType(Val Result, Val Option)
 
     Try
         Result["origin"] = "***";
@@ -9809,7 +9809,7 @@ Function Check_HTTPClient_SetDataType(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_GetLog(Val Result, Val Option)
+Function Check_HTTP_GetLog(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("String");
 
@@ -9817,7 +9817,7 @@ Function Check_HTTPClient_GetLog(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_SetBinaryBody(Val Result, Val Option, Image = "")
+Function Check_HTTP_SetBinaryBody(Val Result, Val Option, Image = "")
 
     Try
         Result["origin"] = "***";
@@ -9842,7 +9842,7 @@ Function Check_HTTPClient_SetBinaryBody(Val Result, Val Option, Image = "")
 
 EndFunction
 
-Function Check_HTTPClient_SetStringBody(Val Result, Val Option)
+Function Check_HTTP_SetStringBody(Val Result, Val Option)
 
     Try
         Result["origin"] = "***";
@@ -9873,7 +9873,7 @@ Function Check_HTTPClient_SetStringBody(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_SetJsonBody(Val Result, Val Option, JSONOriginal = "")
+Function Check_HTTP_SetJsonBody(Val Result, Val Option, JSONOriginal = "")
 
     Try
         Result["origin"] = "***";
@@ -9899,7 +9899,7 @@ Function Check_HTTPClient_SetJsonBody(Val Result, Val Option, JSONOriginal = "")
 
 EndFunction
 
-Function Check_HTTPClient_SetFormBody(Val Result, Val Option, Data = "")
+Function Check_HTTP_SetFormBody(Val Result, Val Option, Data = "")
 
     Try
         Result["origin"] = "***";
@@ -9920,7 +9920,7 @@ Function Check_HTTPClient_SetFormBody(Val Result, Val Option, Data = "")
 
 EndFunction
 
-Function Check_HTTPClient_StartMultipartBody(Val Result, Val Option, Image = "")
+Function Check_HTTP_StartMultipartBody(Val Result, Val Option, Image = "")
 
     Try
         Result["origin"]         = "***";
@@ -9948,7 +9948,7 @@ Function Check_HTTPClient_StartMultipartBody(Val Result, Val Option, Image = "")
 
 EndFunction
 
-Function Check_HTTPClient_AddMultipartFormDataFile(Val Result, Val Option, Image = "")
+Function Check_HTTP_AddMultipartFormDataFile(Val Result, Val Option, Image = "")
 
     Try
         Result["origin"]         = "***";
@@ -9976,7 +9976,7 @@ Function Check_HTTPClient_AddMultipartFormDataFile(Val Result, Val Option, Image
 
 EndFunction
 
-Function Check_HTTPClient_AddMultipartFormDataField(Val Result, Val Option, Image = "")
+Function Check_HTTP_AddMultipartFormDataField(Val Result, Val Option, Image = "")
 
     Try
         Result["origin"]         = "***";
@@ -10004,7 +10004,7 @@ Function Check_HTTPClient_AddMultipartFormDataField(Val Result, Val Option, Imag
 
 EndFunction
 
-Function Check_HTTPClient_AddDataAsRelated(Val Result, Val Option)
+Function Check_HTTP_AddDataAsRelated(Val Result, Val Option)
 
     Try
         Result["origin"] = "***";
@@ -10022,7 +10022,7 @@ Function Check_HTTPClient_AddDataAsRelated(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_UseEncoding(Val Result, Val Option)
+Function Check_HTTP_UseEncoding(Val Result, Val Option)
 
     Try
         Result["origin"] = "***";
@@ -10041,7 +10041,7 @@ Function Check_HTTPClient_UseEncoding(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_UseGzipCompression(Val Result, Val Option)
+Function Check_HTTP_UseGzipCompression(Val Result, Val Option)
 
     If Option       = "Enabled" Then
         Compression = "gzip";
@@ -10055,7 +10055,7 @@ Function Check_HTTPClient_UseGzipCompression(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_MaxAttempts(Val Result, Val Option)
+Function Check_HTTP_MaxAttempts(Val Result, Val Option)
 
     ExpectsThat(Result["MaxAttempts"]).Равно(10);
 
@@ -10063,7 +10063,7 @@ Function Check_HTTPClient_MaxAttempts(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_MaxRedirects(Val Result, Val Option)
+Function Check_HTTP_MaxRedirects(Val Result, Val Option)
 
     ExpectsThat(Result["MaxRedirects"]).Равно(15);
 
@@ -10071,7 +10071,7 @@ Function Check_HTTPClient_MaxRedirects(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_ReturnSettings(Val Result, Val Option)
+Function Check_HTTP_ReturnSettings(Val Result, Val Option)
 
     If Option = "Single" Then
 
@@ -10099,7 +10099,7 @@ Function Check_HTTPClient_ReturnSettings(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_UseBodyFiledsAtOAuth(Val Result, Val Option, LogAsString = "")
+Function Check_HTTP_UseBodyFiledsAtOAuth(Val Result, Val Option, LogAsString = "")
 
     If Option = "Enabled" Then
         ExpectsThat(StrFind(Result, "adding body fields to the signature string") <> 0).Равно(True);
@@ -10124,7 +10124,7 @@ Function Check_HTTPClient_UseBodyFiledsAtOAuth(Val Result, Val Option, LogAsStri
 
 EndFunction
 
-Function Check_HTTPClient_SetHeaders(Val Result, Val Option)
+Function Check_HTTP_SetHeaders(Val Result, Val Option)
 
     Try
         Result["origin"] = "***";
@@ -10149,7 +10149,7 @@ Function Check_HTTPClient_SetHeaders(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_AddHeader(Val Result, Val Option)
+Function Check_HTTP_AddHeader(Val Result, Val Option)
 
     If Option = "Replace" Then
 
@@ -10188,7 +10188,7 @@ Function Check_HTTPClient_AddHeader(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_AddBasicAuthorization(Val Result, Val Option)
+Function Check_HTTP_AddBasicAuthorization(Val Result, Val Option)
 
     Try
         Result["origin"] = "***";
@@ -10208,7 +10208,7 @@ Function Check_HTTPClient_AddBasicAuthorization(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_AddBearerAuthorization(Val Result, Val Option)
+Function Check_HTTP_AddBearerAuthorization(Val Result, Val Option)
 
     Try
         Result["origin"] = "***";
@@ -10226,7 +10226,7 @@ Function Check_HTTPClient_AddBearerAuthorization(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_AddAWS4Authorization(Val Result, Val Option)
+Function Check_HTTP_AddAWS4Authorization(Val Result, Val Option)
 
     Try
         Result["origin"] = "***";
@@ -10245,7 +10245,7 @@ Function Check_HTTPClient_AddAWS4Authorization(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_AddOAuthV1Authorization(Val Result, Val Option)
+Function Check_HTTP_AddOAuthV1Authorization(Val Result, Val Option)
 
     Try
         Result["origin"] = "***";
@@ -10263,7 +10263,7 @@ Function Check_HTTPClient_AddOAuthV1Authorization(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_SetOAuthV1Algorithm(Val Result, Val Option)
+Function Check_HTTP_SetOAuthV1Algorithm(Val Result, Val Option)
 
     Try
         Result["origin"] = "***";
@@ -10281,7 +10281,7 @@ Function Check_HTTPClient_SetOAuthV1Algorithm(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_ProcessRequest(Val Result, Val Option)
+Function Check_HTTP_ProcessRequest(Val Result, Val Option)
 
     Try
         Result["origin"] = "***";
@@ -10300,7 +10300,7 @@ Function Check_HTTPClient_ProcessRequest(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_ExecuteRequest(Val Result, Val Option)
+Function Check_HTTP_ExecuteRequest(Val Result, Val Option)
 
     If Option = "No execution" Then
 
@@ -10331,7 +10331,7 @@ Function Check_HTTPClient_ExecuteRequest(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_ReturnRequest(Val Result, Val Option)
+Function Check_HTTP_ReturnRequest(Val Result, Val Option)
 
     If Option = "Forced" Then
 
@@ -10347,7 +10347,7 @@ Function Check_HTTPClient_ReturnRequest(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_ReturnConnection(Val Result, Val Option)
+Function Check_HTTP_ReturnConnection(Val Result, Val Option)
 
     If Option = "Forced" Then
 
@@ -10363,7 +10363,7 @@ Function Check_HTTPClient_ReturnConnection(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_ReturnResponse(Val Result, Val Option)
+Function Check_HTTP_ReturnResponse(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("HTTPResponse");
 
@@ -10371,7 +10371,7 @@ Function Check_HTTPClient_ReturnResponse(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_ReturnResponseAsJSONObject(Val Result, Val Option)
+Function Check_HTTP_ReturnResponseAsJSONObject(Val Result, Val Option)
 
     Try
         Result["origin"] = "***";
@@ -10390,7 +10390,7 @@ Function Check_HTTPClient_ReturnResponseAsJSONObject(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_ReturnResponseAsBinaryData(Val Result, Val Option)
+Function Check_HTTP_ReturnResponseAsBinaryData(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("BinaryData");
 
@@ -10398,7 +10398,7 @@ Function Check_HTTPClient_ReturnResponseAsBinaryData(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_ReturnResponseAsString(Val Result, Val Option)
+Function Check_HTTP_ReturnResponseAsString(Val Result, Val Option)
 
     Try
 
@@ -10423,7 +10423,7 @@ Function Check_HTTPClient_ReturnResponseAsString(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_ReturnResponseFilename(Val Result, Val Option, TFN = "")
+Function Check_HTTP_ReturnResponseFilename(Val Result, Val Option, TFN = "")
 
     BodyFile       = New File(TFN);
     BodyFileReturn = New File(Result);
@@ -10436,7 +10436,7 @@ Function Check_HTTPClient_ReturnResponseFilename(Val Result, Val Option, TFN = "
 
 EndFunction
 
-Function Check_HTTPClient_SetProxy(Val Result, Val Option)
+Function Check_HTTP_SetProxy(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("HTTPConnection");
     ExpectsThat(Result.Proxy.User("https")).Равно("user");
@@ -10446,7 +10446,7 @@ Function Check_HTTPClient_SetProxy(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_SetTimeout(Val Result, Val Option)
+Function Check_HTTP_SetTimeout(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("HTTPConnection");
     ExpectsThat(Result.Timeout).Равно(60);
@@ -10455,7 +10455,7 @@ Function Check_HTTPClient_SetTimeout(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_UseURLEncoding(Val Result, Val Option)
+Function Check_HTTP_UseURLEncoding(Val Result, Val Option)
 
     CorrectVariant1 = "/page?param1=search?text&param2=John Doe&param3"
         + "=value&another&param4=кириллица&param5=<script>alert('XSS')</script>";
@@ -10471,7 +10471,7 @@ Function Check_HTTPClient_UseURLEncoding(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_SplitArraysInURL(Val Result, Val Option)
+Function Check_HTTP_SplitArraysInURL(Val Result, Val Option)
 
     Separation    = Result["Separation"];
     NoSeparation  = Result["No separation"];
@@ -10494,14 +10494,14 @@ Function Check_HTTPClient_SplitArraysInURL(Val Result, Val Option)
 
 EndFunction
 
-Function Check_HTTPClient_SendDataInParts(Val Result, Val Option)
+Function Check_HTTP_SendDataInParts(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("Map");
     Return Result;
 
 EndFunction
 
-Function Check_HTTPClient_SendPart(Val Result, Val Option)
+Function Check_HTTP_SendPart(Val Result, Val Option)
 
     ExpectsThat(Result["data"]).Равно("data for");
     ExpectsThat(Result["headers"]["Content-Length"]).Равно("8");
