@@ -1,3 +1,3 @@
 oint gcalendar ПолучитьСписокСобытий ^
   --token "***" ^
-  --calendar "c34f2c423cd776a67ae5bb71d52138764684b7a196e4c526c8a33b6ed11601a1@group.calendar.google.com"
+  --calendar "9a857293acaf23faf3306c57a0d344b37e586f1aa63fb72d8d186959f73c1051@group.calendar.google.com"

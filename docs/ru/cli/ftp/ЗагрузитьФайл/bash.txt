@@ -2,5 +2,5 @@
 
 oint ftp ЗагрузитьФайл \
   --conn "{'set':{'advanced_resolve':true,'domain':'127.0.0.1','login':'bayselonarrend','passive':true,'password':'***','port':'21','read_timeout':'1000','write_timeout':'1000'}}" \
-  --file "C:\Users\bayse\AppData\Local\Temp\ezbtpzqu.0zo" \
+  --file "C:\Users\bayse\AppData\Local\Temp\om4dcsmo.k00" \
   --path "pic_from_binary.png"

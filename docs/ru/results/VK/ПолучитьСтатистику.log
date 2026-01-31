@@ -5,8 +5,8 @@
     "comments": 1,
     "likes": 1
    },
-   "period_from": 1769472000,
-   "period_to": 1769558399,
+   "period_from": 1769817600,
+   "period_to": 1769903999,
    "reach": {
     "age": [
      {
@@ -140,8 +140,8 @@
    }
   },
   {
-   "period_from": 1769385600,
-   "period_to": 1769471999,
+   "period_from": 1769731200,
+   "period_to": 1769817599,
    "reach": {
     "cities": [],
     "countries": [],
@@ -151,10 +151,17 @@
    },
    "visitors": {
     "cities": [],
-    "countries": [],
+    "countries": [
+     {
+      "code": "RU",
+      "count": 1,
+      "name": "Россия",
+      "value": 1
+     }
+    ],
     "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
+    "views": 1,
+    "visitors": 1
    }
   }
  ]
