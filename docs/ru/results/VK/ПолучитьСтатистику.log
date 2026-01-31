@@ -2,8 +2,8 @@
  "response": [
   {
    "activity": {
-    "comments": 1,
-    "likes": 1
+    "comments": 2,
+    "likes": 2
    },
    "period_from": 1769817600,
    "period_to": 1769903999,
@@ -42,17 +42,29 @@
       "count": 0
      }
     ],
-    "cities": [],
+    "cities": [
+     {
+      "count": 1,
+      "name": "Череповец",
+      "value": 8
+     }
+    ],
     "countries": [
      {
       "code": "BY",
       "count": 1,
       "name": "Беларусь",
       "value": 3
+     },
+     {
+      "code": "RU",
+      "count": 1,
+      "name": "Россия",
+      "value": 1
      }
     ],
-    "mobile_reach": 1,
-    "reach": 1,
+    "mobile_reach": 2,
+    "reach": 2,
     "reach_subscribers": 1,
     "sex": [
      {
@@ -61,7 +73,7 @@
      },
      {
       "value": "m",
-      "count": 1
+      "count": 2
      }
     ],
     "sex_age": [

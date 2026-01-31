@@ -1,7 +1,7 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint s3 УстановитьШифрованиеБакета ^
-  --name "502f5e25" ^
+  --name "4b28e784" ^
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-  --conf "C:\Users\bayse\AppData\Local\Temp\krojsx1a.5tw.xml" ^
+  --conf "C:\Users\bayse\AppData\Local\Temp\q1cufo01.zjn.xml" ^
   --dir true
