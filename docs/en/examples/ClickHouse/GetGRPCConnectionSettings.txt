@@ -1,4 +1,4 @@
-    URL = "http://localhost:9101";
+    URL = "";
 
     // No authorization
 
@@ -6,8 +6,8 @@
 
     // With basic authorization
 
-    Login    = "bayselonarrend";
-    Password = "12we...";
+    Login    = "";
+    Password = "...";
 
     Authorization = New Structure(Login, Password);
 

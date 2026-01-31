@@ -908,7 +908,7 @@ Function FormTextMerge(Val Scheme)
     For N = 0 To Fields.UBound() Do
 
         CurrentMarker = Marker;
-        CurrentField        = Fields[N];
+        CurrentField  = Fields[N];
 
         If Numeration Then
             CurrentMarker = StrTemplate("%1%2", CurrentMarker, OPI_Tools.NumberToString(N + 1));
