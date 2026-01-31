@@ -8113,6 +8113,40 @@ Function Check_SQLite_EnsureTable(Val Result, Val Option, ColoumnsStruct = "")
 
 EndFunction
 
+Function Check_SQLite_EnsureRecords(Val Result, Val Option)
+
+    If Option = "Insertion" Or Option = "Updating" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+    ElsIf Option = "Insertion check" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"].Count()).Равно(2);
+
+    ElsIf Option = "Updating check" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"].Count()).Равно(3);
+
+        Found = False;
+
+        For Each Record In Result["data"] Do
+            If Record["id"] = 1 Then
+                ExpectsThat(Record["name"]).Равно("Vitaly Updated");
+                ExpectsThat(Record["salary"]).Равно(1500.50);
+                Found       = True;
+            EndIf;
+        EndDo;
+
+        ExpectsThat(Found).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_PostgreSQL_GenerateConnectionString(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("String").Заполнено();
@@ -8413,6 +8447,40 @@ Function Check_PostgreSQL_EnsureTable(Val Result, Val Option, ColoumnsStruct = "
 
 EndFunction
 
+Function Check_PostgreSQL_EnsureRecords(Val Result, Val Option)
+
+    If Option = "Insertion" Or Option = "Updating" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+    ElsIf Option = "Insertion check" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"].Count()).Равно(2);
+
+    ElsIf Option = "Updating check" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"].Count()).Равно(3);
+
+        Found = False;
+
+        For Each Record In Result["data"] Do
+            If Record["id"] = 1 Then
+                ExpectsThat(Record["name"]).Равно("Vitaly Updated");
+                ExpectsThat(Record["salary"]).Равно(1500.50);
+                Found       = True;
+            EndIf;
+        EndDo;
+
+        ExpectsThat(Found).Равно(True);
+
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
 Function Check_MySQL_GenerateConnectionString(Val Result, Val Option)
 
     ExpectsThat(Result).ИмеетТип("String").Заполнено();
@@ -8705,6 +8773,40 @@ Function Check_MySQL_EnsureTable(Val Result, Val Option, ColoumnsStruct = "")
 
     Else
         ExpectsThat(Result["commit"]["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MySQL_EnsureRecords(Val Result, Val Option)
+
+    If Option = "Insertion" Or Option = "Updating" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+    ElsIf Option = "Insertion check" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"].Count()).Равно(2);
+
+    ElsIf Option = "Updating check" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"].Count()).Равно(3);
+
+        Found = False;
+
+        For Each Record In Result["data"] Do
+            If Record["id"] = 1 Then
+                ExpectsThat(Record["name"]).Равно("Vitaly Updated");
+                ExpectsThat(Record["salary"]).Равно(1500.50);
+                Found       = True;
+            EndIf;
+        EndDo;
+
+        ExpectsThat(Found).Равно(True);
+
     EndIf;
 
     Return Result;
@@ -10887,6 +10989,40 @@ Function Check_MSSQL_EnsureTable(Val Result, Val Option, ColoumnsStruct = "")
 
     Else
         ExpectsThat(Result["commit"]["result"]).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_MSSQL_EnsureRecords(Val Result, Val Option)
+
+    If Option = "Insertion" Or Option = "Updating" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+
+    ElsIf Option = "Insertion check" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"].Count()).Равно(2);
+
+    ElsIf Option = "Updating check" Then
+
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["data"].Count()).Равно(3);
+
+        Found = False;
+
+        For Each Record In Result["data"] Do
+            If Record["id"] = 1 Then
+                ExpectsThat(Record["name"]).Равно("Vitaly Updated");
+                ExpectsThat(Record["salary"]).Равно(1500.50);
+                Found       = True;
+            EndIf;
+        EndDo;
+
+        ExpectsThat(Found).Равно(True);
+
     EndIf;
 
     Return Result;

@@ -1,0 +1,31 @@
+    Address  = "127.0.0.1";
+    Login    = "SA";
+    Password = "12we...";
+    Base     = "testbase1";
+
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "test_guarantee";
+
+    DataArray = New Array;
+
+    RowStructure2 = New Structure;
+    RowStructure2.Insert("id"    , New Structure("INT"     , 1));
+    RowStructure2.Insert("name"  , New Structure("NVARCHAR", "Vitaly"));
+    RowStructure2.Insert("age"   , New Structure("INT"     , 25));
+    RowStructure2.Insert("salary", New Structure("DECIMAL" , 1000.12));
+
+    RowStructure1 = New Structure;
+    RowStructure1.Insert("id"    , New Structure("INT"     , 2));
+    RowStructure1.Insert("name"  , New Structure("NVARCHAR", "Lesha"));
+    RowStructure1.Insert("age"   , New Structure("INT"     , 20));
+    RowStructure1.Insert("salary", New Structure("DECIMAL" , 200.20));
+
+    DataArray.Add(RowStructure2);
+    DataArray.Add(RowStructure1);
+
+    KeyFields = New Array;
+    KeyFields.Add("id");
+
+    Result = OPI_MSSQL.EnsureRecords(Table, DataArray, KeyFields, , ConnectionString, TLSSettings);

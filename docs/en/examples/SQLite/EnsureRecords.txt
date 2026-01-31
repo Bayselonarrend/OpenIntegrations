@@ -1,0 +1,24 @@
+    Base  = "C:\Users\bayse\AppData\Local\Temp\v8_ED7A_d0.sqlite";
+    Table = "test_merge";
+
+    DataArray = New Array;
+
+    RowStructure2 = New Structure;
+    RowStructure2.Insert("id"    , 1);
+    RowStructure2.Insert("name"  , "Vitaly");
+    RowStructure2.Insert("age"   , 25);
+    RowStructure2.Insert("salary", 1000.12);
+
+    RowStructure1 = New Structure;
+    RowStructure1.Insert("id"    , 2);
+    RowStructure1.Insert("name"  , "Lesha");
+    RowStructure1.Insert("age"   , 20);
+    RowStructure1.Insert("salary", 200.20);
+
+    DataArray.Add(RowStructure2);
+    DataArray.Add(RowStructure1);
+
+    KeyFields = New Array;
+    KeyFields.Add("id");
+
+    Result = OPI_SQLite.EnsureRecords(Table, DataArray, KeyFields, , Base);
