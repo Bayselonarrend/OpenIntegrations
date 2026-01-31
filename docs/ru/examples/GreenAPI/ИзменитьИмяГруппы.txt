@@ -3,7 +3,7 @@
     IdInstance       = "71051...";
     ApiTokenInstance = "425010d90e114aa6b78f0969e...";
 
-    IDГруппы = "120363425349847662@g.us";
+    IDГруппы = "120363421084000163@g.us";
     Имя      = "New name";
 
     ПараметрыДоступа = OPI_GreenAPI.СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);

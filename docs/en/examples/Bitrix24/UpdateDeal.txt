@@ -3,8 +3,8 @@
     FieldsStructure.Insert("CURRENCY_ID", "RUB");
     FieldsStructure.Insert("OPPORTUNITY", 50000);
 
-    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
-    DealID = "5984";
+    URL    = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
+    DealID = "5482";
 
     Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure);
 
@@ -12,7 +12,7 @@
     FieldsStructure.Insert("BEGINDATE", "2025-01-01");
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "bafe5c69006e9f06006b12e400000001000...";
-    DealID = "5986";
+    Token  = "a5b00469006e9f06006b12e400000001000...";
+    DealID = "5484";
 
     Result = OPI_Bitrix24.UpdateDeal(URL, DealID, FieldsStructure, Token);

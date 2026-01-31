@@ -10,5 +10,5 @@
     TagStructure.Insert("MyTag2", "AnotherOne");
 
     Directory = True; // Formation URL in path-style
-    Name = "";
+    Name = "w567hjy1";
     Result = OPI_S3.PutBucketTagging(Name, BasicData, TagStructure);
