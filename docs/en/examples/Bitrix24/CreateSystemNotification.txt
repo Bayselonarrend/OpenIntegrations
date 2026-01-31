@@ -1,6 +1,6 @@
     UserID = 1;
 
-    URL   = "https://b24-ar17wx.bitrix24.by/rest/1/h0m...";
+    URL   = "https://b24-ar17wx.bitrix24.by/rest/1/av5...";
     Text  = "Message text";
     Image = "https://raw.githubusercontent.com/Bayselonarrend/OpenIntegrations/main/service/test_data/picture.jpg";
     File  = "https://github.com/Bayselonarrend/OpenIntegrations/raw/main/service/test_data/document.docx";
@@ -12,7 +12,7 @@
     Result = OPI_Bitrix24.CreateSystemNotification(URL, UserID, Text, , Attachments);
 
     URL    = "b24-ar17wx.bitrix24.by";
-    Token  = "bafe5c69006e9f06006b12e400000001000...";
+    Token  = "a5b00469006e9f06006b12e400000001000...";
     Tag    = "New";
     UserID = 10;
 
