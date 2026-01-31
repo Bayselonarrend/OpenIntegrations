@@ -71,46 +71,40 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "3d4f9088-98c4-4d84-91f2-1647390fb07c",
+  "uuid": "14851e64-5e8c-4226-a6b6-688d0f7b6a4d",
   "orders": [
    {
-    "order_uuid": "17564154-4d0e-4b4c-97e0-a1bbb7d0446c"
+    "order_uuid": "9ff5cd4d-9615-4646-bef7-339783b933fb"
    }
   ],
   "copy_count": 1,
   "format": "A5",
+  "url": "https://api.edu.cdek.ru/v2/print/barcodes/14851e64-5e8c-4226-a6b6-688d0f7b6a4d.pdf",
   "lang": "RUS",
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-01-27T22:57:48+03:00"
+    "date_time": "2026-01-31T18:25:30+03:00"
    },
    {
-    "code": "INVALID",
-    "name": "Некорректный запрос",
-    "date_time": "2026-01-27T22:57:49+03:00"
+    "code": "PROCESSING",
+    "name": "Формируется",
+    "date_time": "2026-01-31T18:25:30+03:00"
+   },
+   {
+    "code": "READY",
+    "name": "Сформирован",
+    "date_time": "2026-01-31T18:25:30+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "70a44fc2-1eb0-4fd5-bd21-ee7cf0301e52",
+   "request_uuid": "2b2018c5-7d0c-4892-a57a-c79ce5b5aa32",
    "type": "CREATE",
-   "date_time": "2026-01-27T22:57:48+03:00",
-   "state": "INVALID",
-   "errors": [
-    {
-     "code": "v2_orders_number_is_empty",
-     "message": "Entity is empty. All orders are incorrect"
-    }
-   ],
-   "warnings": [
-    {
-     "code": "v2_order_invalid",
-     "message": "Order is invalid 17564154-4d0e-4b4c-97e0-a1bbb7d0446c"
-    }
-   ]
+   "date_time": "2026-01-31T18:25:30+03:00",
+   "state": "SUCCESSFUL"
   }
  ],
  "related_entities": []
