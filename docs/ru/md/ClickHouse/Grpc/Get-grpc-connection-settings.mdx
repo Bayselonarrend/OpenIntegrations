@@ -27,7 +27,7 @@ import TabItem from '@theme/TabItem';
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
-    URL = "";
+    URL = "http://localhost:9101";
 
     // Без авторизации
 
@@ -35,8 +35,8 @@ import TabItem from '@theme/TabItem';
 
     // С basic авторизацией
 
-    Логин  = "";
-    Пароль = "...";
+    Логин  = "bayselonarrend";
+    Пароль = "12we...";
 
     Авторизация = Новый Структура(Логин, Пароль);
 
@@ -67,15 +67,21 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint clickhouse ПолучитьНастройкиСоединенияGRPC \
-              --auth "C:\Users\bayse\AppData\Local\Temp\cobw2xvn.y0z.json"
+              --url "http://localhost:9101" \
+              --auth "{'bayselonarrend':'12we3456!2154'}"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint clickhouse ПолучитьНастройкиСоединенияGRPC ^
-              --auth "C:\Users\bayse\AppData\Local\Temp\cobw2xvn.y0z.json"
+              --url "http://localhost:9101" ^
+              --auth "{'bayselonarrend':'12we3456!2154'}"
         ```
     </TabItem>
 </Tabs>
