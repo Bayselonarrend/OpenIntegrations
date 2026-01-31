@@ -1,6 +1,6 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint s3 ПолучитьСписокОбъектов \
-  --bucket "73452e2f" \
+  --bucket "ae6f89ac" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
-  --dir true
+  --dir false
