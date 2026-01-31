@@ -4351,6 +4351,26 @@
 	},
 	{
 		"lib": "SQLite",
+		"name": "EnsureRecords",
+		"variant": "Insertion"
+	},
+	{
+		"lib": "SQLite",
+		"name": "EnsureRecords",
+		"variant": "Insertion check"
+	},
+	{
+		"lib": "SQLite",
+		"name": "EnsureRecords",
+		"variant": "Updating"
+	},
+	{
+		"lib": "SQLite",
+		"name": "EnsureRecords",
+		"variant": "Updating check"
+	},
+	{
+		"lib": "SQLite",
 		"name": "GetRecordsFilterStructure",
 		"variant": ""
 	},
@@ -4646,6 +4666,26 @@
 	},
 	{
 		"lib": "PostgreSQL",
+		"name": "EnsureRecords",
+		"variant": "Insertion"
+	},
+	{
+		"lib": "PostgreSQL",
+		"name": "EnsureRecords",
+		"variant": "Insertion check"
+	},
+	{
+		"lib": "PostgreSQL",
+		"name": "EnsureRecords",
+		"variant": "Updating"
+	},
+	{
+		"lib": "PostgreSQL",
+		"name": "EnsureRecords",
+		"variant": "Updating check"
+	},
+	{
+		"lib": "PostgreSQL",
 		"name": "GetRecordsFilterStructure",
 		"variant": ""
 	},
@@ -4878,6 +4918,26 @@
 		"lib": "MySQL",
 		"name": "ClearTable",
 		"variant": "Check"
+	},
+	{
+		"lib": "MySQL",
+		"name": "EnsureRecords",
+		"variant": "Insertion"
+	},
+	{
+		"lib": "MySQL",
+		"name": "EnsureRecords",
+		"variant": "Insertion check"
+	},
+	{
+		"lib": "MySQL",
+		"name": "EnsureRecords",
+		"variant": "Updating"
+	},
+	{
+		"lib": "MySQL",
+		"name": "EnsureRecords",
+		"variant": "Updating check"
 	},
 	{
 		"lib": "MySQL",
@@ -6073,6 +6133,26 @@
 		"lib": "MSSQL",
 		"name": "EnsureTable",
 		"variant": "New"
+	},
+	{
+		"lib": "MSSQL",
+		"name": "EnsureRecords",
+		"variant": "Insertion"
+	},
+	{
+		"lib": "MSSQL",
+		"name": "EnsureRecords",
+		"variant": "Insertion check"
+	},
+	{
+		"lib": "MSSQL",
+		"name": "EnsureRecords",
+		"variant": "Updating"
+	},
+	{
+		"lib": "MSSQL",
+		"name": "EnsureRecords",
+		"variant": "Updating check"
 	},
 	{
 		"lib": "MSSQL",

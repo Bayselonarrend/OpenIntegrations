@@ -348,6 +348,57 @@ Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connec
 
 EndFunction
 
+// Update records
+// Updates the value of records by selected criteria
+//
+// Parameters:
+// Table - String - Table name - table
+// ValueStructure - Structure Of KeyAndValue - Values structure: Key > field, Value > field value - values
+// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "") Export
+
+    Result = OPI_SQLQueries.UpdateRecords(OPI_SQLite, Table, ValueStructure, Filters, Connection);
+    Return Result;
+
+EndFunction
+
+// Ensure records
+// Adds records or updates data of existing ones when key fields match
+//
+// Note:
+// UNIQUE and PRIMARY KEY fields can be specified as key fields.^^
+// If fields are not specified, uniqueness is determined by all suitable fields
+//
+// Parameters:
+// Table - String - Table name - table
+// DataArray - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
+// KeyFields - Array Of String - Name or names of key table fields for uniqueness validation - unique
+// Transaction - Boolean - True > adding records to transactions with rollback on error - trn
+// Connection - String, Arbitrary - Existing connection or database path - db
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function EnsureRecords(Val Table
+    , Val DataArray
+    , Val KeyFields = ""
+    , Val Transaction = True
+    , Val Connection = "") Export
+
+    Result = OPI_SQLQueries.EnsureRecords(OPI_SQLite
+        , Table
+        , DataArray
+        , KeyFields
+        , Transaction
+        , Connection);
+
+    Return Result;
+
+EndFunction
+
 // Get records
 // Gets records from the selected table
 //
@@ -372,24 +423,6 @@ Function GetRecords(Val Table
     , Val Connection = "") Export
 
     Result = OPI_SQLQueries.GetRecords(OPI_SQLite, Table, Fields, Filters, Sort, Count, Connection);
-    Return Result;
-
-EndFunction
-
-// Update records
-// Updates the value of records by selected criteria
-//
-// Parameters:
-// Table - String - Table name - table
-// ValueStructure - Structure Of KeyAndValue - Values structure: Key > field, Value > field value - values
-// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
-// Connection - String, Arbitrary - Existing connection or database path - db
-//
-// Returns:
-// Map Of KeyAndValue - Result of query execution
-Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "") Export
-
-    Result = OPI_SQLQueries.UpdateRecords(OPI_SQLite, Table, ValueStructure, Filters, Connection);
     Return Result;
 
 EndFunction
@@ -549,12 +582,16 @@ Function ДобавитьЗаписи(Val Таблица, Val МассивДан
 	Return AddRecords(Таблица, МассивДанных, Транзакция, Соединение);
 EndFunction
 
-Function ПолучитьЗаписи(Val Таблица, Val Поля = "*", Val Фильтры = "", Val Сортировка = "", Val Количество = "", Val Соединение = "") Export
-	Return GetRecords(Таблица, Поля, Фильтры, Сортировка, Количество, Соединение);
-EndFunction
-
 Function ОбновитьЗаписи(Val Таблица, Val СтруктураЗначений, Val Фильтры = "", Val Соединение = "") Export
 	Return UpdateRecords(Таблица, СтруктураЗначений, Фильтры, Соединение);
+EndFunction
+
+Function ГарантироватьЗаписи(Val Таблица, Val МассивДанных, Val КлючевыеПоля = "", Val Транзакция = True, Val Соединение = "") Export
+	Return EnsureRecords(Таблица, МассивДанных, КлючевыеПоля, Транзакция, Соединение);
+EndFunction
+
+Function ПолучитьЗаписи(Val Таблица, Val Поля = "*", Val Фильтры = "", Val Сортировка = "", Val Количество = "", Val Соединение = "") Export
+	Return GetRecords(Таблица, Поля, Фильтры, Сортировка, Количество, Соединение);
 EndFunction
 
 Function УдалитьЗаписи(Val Таблица, Val Фильтры = "", Val Соединение = "") Export

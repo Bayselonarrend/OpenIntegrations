@@ -444,6 +444,69 @@ Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connec
 
 EndFunction
 
+// Update records
+// Updates the value of records by selected criteria
+//
+// Note:
+// Record data is specified as an array of structures of the following type:^
+// `{'Field name 1': {'Type': 'Value'}, 'Field name 2': {'Type': 'Value'},...}`
+// The list of available types is described on the initial page of the PostgreSQL library documentation
+//
+// Parameters:
+// Table - String - Table name - table
+// ValueStructure - Structure Of KeyAndValue - Values structure: Key > field, Value > field value - values
+// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function UpdateRecords(Val Table
+    , Val ValueStructure
+    , Val Filters = ""
+    , Val Connection = ""
+    , Val Tls = "") Export
+
+    Result = OPI_SQLQueries.UpdateRecords(OPI_PostgreSQL, Table, ValueStructure, Filters, Connection, Tls);
+    Return Result;
+
+EndFunction
+
+// Ensure records
+// Adds records or updates data of existing ones when key fields match
+//
+// Note:
+// UNIQUE and PRIMARY KEY fields can be specified as key fields
+//
+// Parameters:
+// Table - String - Table name - table
+// DataArray - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
+// KeyFields - Array Of String - Name or names of key table fields for uniqueness validation - unique
+// Transaction - Boolean - True > adding records to transactions with rollback on error - trn
+// Connection - String, Arbitrary - Existing connection or database path - db
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function EnsureRecords(Val Table
+    , Val DataArray
+    , Val KeyFields = ""
+    , Val Transaction = True
+    , Val Connection = ""
+    , Val Tls = "") Export
+
+    Result = OPI_SQLQueries.EnsureRecords(OPI_PostgreSQL
+        , Table
+        , DataArray
+        , KeyFields
+        , Transaction
+        , Connection
+        , Tls);
+
+    Return Result;
+
+EndFunction
+
 // Get records
 // Gets records from the selected table
 //
@@ -475,34 +538,6 @@ Function GetRecords(Val Table
         , Connection
         , Tls);
 
-    Return Result;
-
-EndFunction
-
-// Update records
-// Updates the value of records by selected criteria
-//
-// Note:
-// Record data is specified as an array of structures of the following type:^
-// `{'Field name 1': {'Type': 'Value'}, 'Field name 2': {'Type': 'Value'},...}`
-// The list of available types is described on the initial page of the PostgreSQL library documentation
-//
-// Parameters:
-// Table - String - Table name - table
-// ValueStructure - Structure Of KeyAndValue - Values structure: Key > field, Value > field value - values
-// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
-//
-// Returns:
-// Map Of KeyAndValue - Result of query execution
-Function UpdateRecords(Val Table
-    , Val ValueStructure
-    , Val Filters = ""
-    , Val Connection = ""
-    , Val Tls = "") Export
-
-    Result = OPI_SQLQueries.UpdateRecords(OPI_PostgreSQL, Table, ValueStructure, Filters, Connection, Tls);
     Return Result;
 
 EndFunction

@@ -1,9 +1,9 @@
     // Connection settings
 
-    URL = "";
+    URL = "http://localhost:8123";
 
-    Login    = "";
-    Password = "...";
+    Login    = "bayselonarrend";
+    Password = "12we...";
 
     Authorization = New Structure(Login, Password);
 

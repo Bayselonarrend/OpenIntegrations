@@ -7,5 +7,5 @@
     Status    = True;
 
     Directory = True; // Formation URL in path-style
-    Name = "w567hjy1";
+    Name = "";
     Result = OPI_S3.PutBucketVersioning(Name, BasicData, Status);
