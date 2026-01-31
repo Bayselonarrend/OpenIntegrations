@@ -1,3 +1,3 @@
 oint sqlite ПолучитьЗаписи \
   --table "test" \
-  --db "C:\Users\bayse\AppData\Local\Temp\k25e5ijh.rww.sqlite"
+  --db "C:\Users\bayse\AppData\Local\Temp\iu1eqmir.4mj.sqlite"
