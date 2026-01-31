@@ -1,5 +1,5 @@
     URL            = "tests.openintegrations.dev";
-    Токен          = "test-key_uTk4iLOTRU2XN217ku-ATdmUoqQ...";
+    Токен          = "test-key_vrOtLPcVRa-X93ekUYBuPhHpoiO...";
     IDПользователя = "1";
     IDКлюча        = "1...";
 

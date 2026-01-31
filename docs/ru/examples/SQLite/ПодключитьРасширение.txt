@@ -4,7 +4,7 @@
         Расширение = "https://hut.openintegrations.dev/test_data/uuid.so"; // URL, Путь или Двоичные данные
     КонецЕсли;
 
-    База       = "/tmp/vnnmoosn.qqb.sqlite";
+    База       = "C:\Users\bayse\AppData\Local\Temp\v8_ED7A_d0.sqlite";
     ТочкаВхода = "sqlite3_uuid_init";
 
     Соединение = OPI_SQLite.ОткрытьСоединение(База);
