@@ -1,0 +1,6 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
+oint clickhouse ПолучитьНастройкиЗапроса \
+  --query "SELECT * FROM ext_grpc" \
+  --format "JSON" \
+  --ext "[{'name':'ext_grpc','cols':{'id':'UInt64','name':'String'},'data':'1\tJohn 2\tJane','format':'TSV'}]"

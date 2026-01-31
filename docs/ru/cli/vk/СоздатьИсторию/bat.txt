@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk СоздатьИсторию ^
-  --picture "C:\Users\bayse\AppData\Local\Temp\vcfgfpkr.3sm.png" ^
+  --picture "C:\Users\bayse\AppData\Local\Temp\4d4fqqoz.klt.png" ^
   --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

@@ -3,7 +3,7 @@
   "count": 1,
   "items": [
    {
-    "id": 456241375,
+    "id": 456241377,
     "owner_id": -218861756,
     "access_key": "***",
     "can_comment": 1,
@@ -12,16 +12,16 @@
     "can_like": true,
     "can_share": 1,
     "can_hide": 1,
-    "date": 1769538986,
-    "expires_at": 1769625386,
+    "date": 1769867853,
+    "expires_at": 1769954253,
     "link": {
      "text": "Ещё",
      "url": "https://github.com/Bayselonarrend/OpenIntegrations"
     },
     "photo": {
      "album_id": -81,
-     "date": 1769538986,
-     "id": 457261938,
+     "date": 1769867853,
+     "id": 457261957,
      "owner_id": -218861756,
      "sizes": [
       {
@@ -58,7 +58,7 @@
      "count": 0,
      "new": 0
     },
-    "track_code": "story_json/eyJvd25lcl9pZCI6LTIxODg2MTc1Niwic3RvcnlfaWQiOjQ1NjI0MTM3NSwidmlld2VyX2lkIjo2NTc4NDY3NTZ9",
+    "track_code": "story_json/eyJvd25lcl9pZCI6LTIxODg2MTc1Niwic3RvcnlfaWQiOjQ1NjI0MTM3Nywidmlld2VyX2lkIjo2NTc4NDY3NTZ9",
     "type": "photo",
     "views": 0,
     "likes_count": 0,
