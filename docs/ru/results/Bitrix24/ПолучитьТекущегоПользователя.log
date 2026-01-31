@@ -10,7 +10,7 @@
   "DATE_REGISTER": "2024-02-10T03:00:00+03:00",
   "TIME_ZONE": "Europe/Moscow",
   "IS_ONLINE": "N",
-  "TIMESTAMP_X": "27.01.2026 22:50:23",
+  "TIMESTAMP_X": "31.01.2026 18:18:10",
   "LAST_ACTIVITY_DATE": "2026-01-04 12:23:03",
   "PERSONAL_GENDER": "",
   "PERSONAL_BIRTHDAY": "",
@@ -22,13 +22,13 @@
   ]
  },
  "time": {
-  "start": 1769543432,
-  "finish": 1769543432.92745,
-  "duration": 0.927448987960816,
+  "start": 1769872699,
+  "finish": 1769872699.81401,
+  "duration": 0.814011096954346,
   "processing": 0,
-  "date_start": "2026-01-27T22:50:32+03:00",
-  "date_finish": "2026-01-27T22:50:32+03:00",
-  "operating_reset_at": 1769544032,
+  "date_start": "2026-01-31T18:18:19+03:00",
+  "date_finish": "2026-01-31T18:18:19+03:00",
+  "operating_reset_at": 1769873299,
   "operating": 0
  }
 }
