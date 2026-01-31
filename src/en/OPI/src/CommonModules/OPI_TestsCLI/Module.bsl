@@ -18857,7 +18857,7 @@ Procedure S3_GetObject(FunctionParameters)
     Options.Insert("name", Name);
     Options.Insert("bucket", Bucket);
     Options.Insert("basic", BasicData);
-    Options.Insert("dir", Directory);
+    Options.Insert("basic", Directory);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
@@ -18870,7 +18870,7 @@ Procedure S3_GetObject(FunctionParameters)
     Options.Insert("name", Name);
     Options.Insert("bucket", Bucket);
     Options.Insert("basic", BasicData);
-    Options.Insert("out", TempFile);
+    Options.Insert("dir", TempFile);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
@@ -18886,7 +18886,7 @@ Procedure S3_GetObject(FunctionParameters)
     Options.Insert("name", Name);
     Options.Insert("bucket", Bucket);
     Options.Insert("basic", BasicData);
-    Options.Insert("out", BigTempFile);
+    Options.Insert("dir", BigTempFile);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 

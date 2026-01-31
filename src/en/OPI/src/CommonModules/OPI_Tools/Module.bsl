@@ -914,7 +914,7 @@ Function NumberToString(Val Value) Export
 EndFunction
 
 Function GetCurrentDate() Export
-    Return ToLocalTime(CurrentUniversalDate());
+    Return CurrentDate();
 EndFunction
 
 Function UNIXTime(Val Date) Export

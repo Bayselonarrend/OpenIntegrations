@@ -59,6 +59,32 @@ import TabItem from '@theme/TabItem';
 ```
     
 
+ <Tabs>
+  
+    <TabItem value="bash" label="Bash" default>
+        ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint sqlite ГарантироватьЗаписи \
+              --table "test_merge" \
+              --rows "[{'id':'1','name':'Vitaly Updated','age':'25','salary':'1500.5'},{'id':'3','name':'Anton','age':'30','salary':'3000'}]" \
+              --unique "['id']" \
+              --db "C:\Users\bayse\AppData\Local\Temp\k25e5ijh.rww.sqlite"
+        ```
+    </TabItem>
+  
+    <TabItem value="bat" label="CMD/Bat" default>
+        ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
+            oint sqlite ГарантироватьЗаписи ^
+              --table "test_merge" ^
+              --rows "[{'id':'1','name':'Vitaly Updated','age':'25','salary':'1500.5'},{'id':'3','name':'Anton','age':'30','salary':'3000'}]" ^
+              --unique "['id']" ^
+              --db "C:\Users\bayse\AppData\Local\Temp\k25e5ijh.rww.sqlite"
+        ```
+    </TabItem>
+</Tabs>
 
 
 
