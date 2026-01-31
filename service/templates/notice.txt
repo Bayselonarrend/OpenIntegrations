@@ -4,6 +4,11 @@ Licensed under the MIT License
 
 Dependencies and imports:
 
+EvilBeaver/OneScript
+ * Copyright (c) Andrey Ovsiankin
+ * Licensed under the MPL-2.0 license
+ * https://github.com/EvilBeaver/OneScript
+ 
 vbondarevsky/Connector
  * Copyright 2017-2023 Vladimir Bondarevskiy 
  * Licensed under the Apache License, Version 2.0
