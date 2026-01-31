@@ -25,8 +25,9 @@
 				"DeleteTable",
 				"GetTableInformation",
 				"AddRecords",
-				"GetRecords",
 				"UpdateRecords",
+				"EnsureRecords",
+				"GetRecords",
 				"DeleteRecords",
 				"GetRecordsFilterStructure"
 			]
@@ -488,6 +489,99 @@
 			"region": "Orm"
 		},
 		{
+			"name": "UpdateRecords",
+			"id": "UPDATERECORDS",
+			"description": "Updates the value of records by selected criteria",
+			"params": [
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table name",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--values",
+					"types": "Structure Of KeyAndValue",
+					"description": "Values structure: Key > field, Value > field value",
+					"default": null,
+					"short": "-v"
+				},
+				{
+					"name": "--filter",
+					"types": "Array of Structure",
+					"description": "Filters array. See GetRecordsFilterStructure",
+					"default": "Пустое значение",
+					"short": "-f"
+				},
+				{
+					"name": "--dbc",
+					"types": "String, Arbitrary",
+					"description": "Connection or connection string",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--tls",
+					"types": "Structure Of KeyAndValue",
+					"description": "TLS settings, if necessary. See GetTlsSettings",
+					"default": "Пустое значение",
+					"short": "-l"
+				}
+			],
+			"region": "Orm"
+		},
+		{
+			"name": "EnsureRecords",
+			"id": "ENSURERECORDS",
+			"description": "Adds records or updates data of existing ones when key fields match",
+			"params": [
+				{
+					"name": "--table",
+					"types": "String",
+					"description": "Table name",
+					"default": null,
+					"short": "-t"
+				},
+				{
+					"name": "--rows",
+					"types": "Array of Structure",
+					"description": "An array of string data structures: Key > field, Value > field value",
+					"default": null,
+					"short": "-r"
+				},
+				{
+					"name": "--unique",
+					"types": "Array Of String",
+					"description": "Name or names of key table fields for uniqueness validation",
+					"default": "Пустое значение",
+					"short": "-u"
+				},
+				{
+					"name": "--trn",
+					"types": "Boolean",
+					"description": "True > adding records to transactions with rollback on error",
+					"default": true,
+					"short": "-n"
+				},
+				{
+					"name": "--db",
+					"types": "String, Arbitrary",
+					"description": "Existing connection or database path",
+					"default": "Пустое значение",
+					"short": "-d"
+				},
+				{
+					"name": "--tls",
+					"types": "Structure Of KeyAndValue",
+					"description": "TLS settings, if necessary. See GetTlsSettings",
+					"default": "Пустое значение",
+					"short": "-l"
+				}
+			],
+			"region": "Orm"
+		},
+		{
 			"name": "GetRecords",
 			"id": "GETRECORDS",
 			"description": "Gets records from the selected table",
@@ -540,49 +634,6 @@
 					"description": "TLS settings, if necessary. See GetTlsSettings",
 					"default": "Пустое значение",
 					"short": "-s"
-				}
-			],
-			"region": "Orm"
-		},
-		{
-			"name": "UpdateRecords",
-			"id": "UPDATERECORDS",
-			"description": "Updates the value of records by selected criteria",
-			"params": [
-				{
-					"name": "--table",
-					"types": "String",
-					"description": "Table name",
-					"default": null,
-					"short": "-t"
-				},
-				{
-					"name": "--values",
-					"types": "Structure Of KeyAndValue",
-					"description": "Values structure: Key > field, Value > field value",
-					"default": null,
-					"short": "-v"
-				},
-				{
-					"name": "--filter",
-					"types": "Array of Structure",
-					"description": "Filters array. See GetRecordsFilterStructure",
-					"default": "Пустое значение",
-					"short": "-f"
-				},
-				{
-					"name": "--dbc",
-					"types": "String, Arbitrary",
-					"description": "Connection or connection string",
-					"default": "Пустое значение",
-					"short": "-d"
-				},
-				{
-					"name": "--tls",
-					"types": "Structure Of KeyAndValue",
-					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
-					"short": "-l"
 				}
 			],
 			"region": "Orm"

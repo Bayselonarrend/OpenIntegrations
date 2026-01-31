@@ -1,0 +1,38 @@
+    Address  = "127.0.0.1";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+    Base     = "testbase1";
+
+    TLS = True;
+    Port = 3306;
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
+    Table = "test_merge";
+
+    DataArray = New Array;
+
+    RowStructure2 = New Structure;
+    RowStructure2.Insert("id"    , New Structure("INT"   , 1));
+    RowStructure2.Insert("name"  , New Structure("TEXT"  , "Vitaly"));
+    RowStructure2.Insert("age"   , New Structure("INT"   , 25));
+    RowStructure2.Insert("salary", New Structure("DOUBLE", 1000.12));
+
+    RowStructure1 = New Structure;
+    RowStructure1.Insert("id"    , New Structure("INT"   , 2));
+    RowStructure1.Insert("name"  , New Structure("TEXT"  , "Lesha"));
+    RowStructure1.Insert("age"   , New Structure("INT"   , 20));
+    RowStructure1.Insert("salary", New Structure("DOUBLE", 200.20));
+
+    DataArray.Add(RowStructure2);
+    DataArray.Add(RowStructure1);
+
+    KeyFields = New Array;
+    KeyFields.Add("id");
+
+    Result = OPI_MySQL.EnsureRecords(Table, DataArray, , ConnectionString, TLSSettings);

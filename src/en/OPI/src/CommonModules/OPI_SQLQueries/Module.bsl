@@ -213,7 +213,7 @@ Function AddRecords(Val Module
         Return ProblemStep;
     EndIf;
 
-    ProcessedStructure = ProcessRecords(Module, Table, DataArray, Transaction, Connection);
+    ProcessedStructure = ProcessRecords(Module, Table, DataArray, Undefined, Transaction, Connection);
     ResultStructure    = ProcessRecordsEnd(ProcessedStructure, Module, Transaction, Connection);
 
     Return ResultStructure;
@@ -273,6 +273,37 @@ Function UpdateRecords(Val Module
     Result  = ExecuteSQLQuery(Module, Request, Scheme["values"], , Connection, Tls);
 
     Return Result;
+
+EndFunction
+
+Function EnsureRecords(Val Module
+    , Val Table
+    , Val DataArray
+    , Val KeyFields   = ""
+    , Val Transaction = True
+    , Val Connection  = ""
+    , Val Tls         = Undefined) Export
+
+    If ValueIsFilled(KeyFields) Then
+        OPI_TypeConversion.GetArray(KeyFields);
+    Else
+        KeyFields = New Array;
+    EndIf;
+
+    OPI_TypeConversion.GetArray(DataArray);
+    OPI_TypeConversion.GetBoolean(Transaction);
+
+    Connection  = CreateConnection(Module, Connection, Tls);
+    ProblemStep = ProcessRecordsStart(Module, Transaction, Connection);
+
+    If ValueIsFilled(ProblemStep) Then
+        Return ProblemStep;
+    EndIf;
+
+    ProcessedStructure = ProcessRecords(Module, Table, DataArray, KeyFields, Transaction, Connection);
+    ResultStructure    = ProcessRecordsEnd(ProcessedStructure, Module, Transaction, Connection);
+
+    Return ResultStructure;
 
 EndFunction
 
@@ -422,6 +453,10 @@ Function NewSQLScheme(Val Action, Val Module = Undefined)
 
         Scheme = EmptySchemeUpdate();
 
+    ElsIf Action = "MERGE" Then
+
+        Scheme = EmptySchemeMerge();
+
     ElsIf Action = "DELETE" Then
 
         Scheme = EmptySchemeDelete();
@@ -510,6 +545,19 @@ Function EmptySchemeUpdate()
     Scheme.Insert("set"    , New Array);
     Scheme.Insert("filter" , New Array);
     Scheme.Insert("values" , New Array);
+
+    Return Scheme;
+
+EndFunction
+
+Function EmptySchemeMerge()
+
+    Scheme = New Structure("type", "MERGE");
+
+    Scheme.Insert("table" , "");
+    Scheme.Insert("set"   , New Array);
+    Scheme.Insert("keys"  , New Array);
+    Scheme.Insert("values", New Array);
 
     Return Scheme;
 
@@ -641,6 +689,10 @@ Function FormSQLText(Val Scheme)
 
         QueryText = FormTextUpdate(Scheme);
 
+    ElsIf SchemeType = "MERGE" Then
+
+        QueryText = FormTextMerge(Scheme);
+
     ElsIf SchemeType = "DELETE" Then
 
         QueryText = FormTextDelete(Scheme);
@@ -744,7 +796,7 @@ Function FormTextInsert(Val Scheme)
         CurrentMarker = Marker;
 
         If Numeration Then
-            CurrentMarker = CurrentMarker + OPI_Tools.NumberToString(N);
+            CurrentMarker = StrTemplate("%1%2", CurrentMarker, OPI_Tools.NumberToString(N));
         EndIf;
 
         Parameters.Add(CurrentMarker);
@@ -787,6 +839,101 @@ Function FormTextUpdate(Val Scheme)
     EndDo;
 
     TextSQL = StrTemplate(SQLTemplate, Table, StrConcat(Fields, "," + Chars.LF), FilterText);
+
+    Return TextSQL;
+
+EndFunction
+
+Function FormTextMerge(Val Scheme)
+
+    CheckSchemeRequiredFields(Scheme, "table,set,values,dbms");
+
+    Table      = Scheme["table"];
+    Fields     = Scheme["set"];
+    KeyFields  = Scheme["keys"];
+    Numeration = Scheme["nump"];
+    Marker     = Scheme["markp"];
+    DBMS       = Scheme["dbms"];
+
+    SourceTemplate = Undefined;
+
+    If DBMS = "mssql" Then
+
+        ItemTemplate = "%1 = source.%1";
+        SQLTemplate = "MERGE %1 AS target USING(VALUES (%3)) AS source (%2) ON %5
+        |WHEN MATCHED THEN UPDATE SET %4
+        |WHEN NOT MATCHED THEN INSERT (%2) VALUES (%%1);";
+
+        SourceTemplate = "source.%1";
+        KeysTemplate = "target.%1 = source.%1";
+        KeyArray       = New Array;
+
+        For Each KeyField In KeyFields Do
+            KeyArray.Add(StrTemplate(KeysTemplate, KeyField));
+        EndDo;
+
+        KeyFieldsString = StrConcat(KeyArray, Chars.LF + "AND ");
+
+    ElsIf DBMS = "mysql" Then
+
+        ItemTemplate = "%1 = VALUES(%1)";
+        SQLTemplate = "INSERT INTO %1 (%2) VALUES (%3) ON DUPLICATE KEY UPDATE %4; %5";
+
+        KeyFieldsString = "";
+
+    Else
+
+        ItemTemplate = "%1 = EXCLUDED.%1";
+        ItemTemplate = ?(DBMS = "sqlite", Lower(ItemTemplate), ItemTemplate);
+        SQLTemplate  = "INSERT INTO %1 (%2) VALUES (%3) ON CONFLICT %5 DO UPDATE SET %4;";
+
+        If ValueIsFilled(KeyFields) Then
+            KeyFieldsString = StrTemplate("(%1)", StrConcat(KeyFields, ", "));
+        Else
+            KeyFieldsString = "";
+        EndIf;
+
+    EndIf;
+
+    Parameters = New Array;
+    Items      = New Array;
+
+    If SourceTemplate <> Undefined Then
+        SourceFields = New Array;
+        FillSources  = True;
+    Else
+        FillSources  = False;
+    EndIf;
+
+    For N = 0 To Fields.UBound() Do
+
+        CurrentMarker = Marker;
+        CurrentField        = Fields[N];
+
+        If Numeration Then
+            CurrentMarker = StrTemplate("%1%2", CurrentMarker, OPI_Tools.NumberToString(N + 1));
+        EndIf;
+
+        Parameters.Add(CurrentMarker);
+        Items.Add(StrTemplate(ItemTemplate, CurrentField));
+
+        If FillSources Then
+            SourceFields.Add(StrTemplate(SourceTemplate, CurrentField));
+        EndIf;
+
+    EndDo;
+
+    TextSQL = StrTemplate(SQLTemplate
+        , Table
+        , StrConcat(Fields, ", ")
+        , StrConcat(Parameters, ", ")
+        , StrConcat(Items, "," + Chars.LF)
+        , KeyFieldsString);
+
+    If FillSources Then
+        SourcesString = StrConcat(SourceFields, ", ");
+        TextSQL       = StrTemplate(TextSQL, SourcesString);
+    EndIf;
 
     Return TextSQL;
 
@@ -979,19 +1126,24 @@ Function ExecuteSQLQuery(Val Module
 
 EndFunction
 
-Function ProcessRecords(Val Module, Val Table, Val DataArray, Val Transaction, Val Connection)
+Function ProcessRecords(Val Module, Val Table, Val DataArray, Val KeyFields, Val Transaction, Val Connection)
 
     If OPI_AddIns.FileTransferRequired() Then
-        Result = AddRecordsBatch(Module, Table, DataArray, Transaction, Connection);
+        Result = ProcessRecordsBatch(Module, Table, DataArray, KeyFields, Transaction, Connection);
     Else
-        Result = AddRecordsSeparately(Module, Table, DataArray, Transaction, Connection);
+        Result = ProcessRecordsSeparately(Module, Table, DataArray, KeyFields, Transaction, Connection);
     EndIf;
 
     Return Result;
 
 EndFunction
 
-Function AddRecordsSeparately(Val Module, Val Table, Val DataArray, Val Transaction, Val Connection)
+Function ProcessRecordsSeparately(Val Module
+    , Val Table
+    , Val DataArray
+    , Val KeyFields
+    , Val Transaction
+    , Val Connection)
 
     ErrorsArray  = New Array;
     Counter      = 0;
@@ -1009,7 +1161,7 @@ Function AddRecordsSeparately(Val Module, Val Table, Val DataArray, Val Transact
             EndIf;
         EndIf;
 
-        Result = AddRow(Module, Table, Record, Connection);
+        Result = ProcessRecord(Module, Table, Record, KeyFields, Connection);
 
         Success = CheckSingleQueryExecution(Result, Transaction, Counter, SuccessCount, ErrorsArray);
 
@@ -1025,7 +1177,12 @@ Function AddRecordsSeparately(Val Module, Val Table, Val DataArray, Val Transact
 
 EndFunction
 
-Function AddRecordsBatch(Val Module, Val Table, Val DataArray, Val Transaction, Val Connection)
+Function ProcessRecordsBatch(Val Module
+    , Val Table
+    , Val DataArray
+    , Val KeyFields
+    , Val Transaction
+    , Val Connection)
 
     BlanksArray = New Array;
     ErrorsArray = New Array;
@@ -1054,7 +1211,7 @@ Function AddRecordsBatch(Val Module, Val Table, Val DataArray, Val Transaction, 
             EndIf;
         EndIf;
 
-        Result = AddRow(Module, Table, Record, Connection, False);
+        Result = ProcessRecord(Module, Table, Record, KeyFields, Connection, False);
         BlanksArray.Add(Result);
 
     EndDo;
@@ -1142,14 +1299,28 @@ Function CheckRecordCorrectness(Record, ErrorsArray, Val Counter)
 
 EndFunction
 
-Function AddRow(Val Module, Val Table, Val Record, Val Connection, Val ExecuteNow = True)
+Function ProcessRecord(Val Module
+    , Val Table
+    , Val Record
+    , Val KeyFields
+    , Val Connection
+    , Val ExecuteNow = True)
 
     FieldArray  = New Array;
     ValuesArray = New Array;
 
-    Scheme = NewSQLScheme("INSERT", Module);
-    SetTableName(Scheme, Table);
+    If KeyFields = Undefined Then
+        Scheme   = NewSQLScheme("INSERT", Module);
+    Else
 
+        Scheme = NewSQLScheme("MERGE", Module);
+
+        OPI_TypeConversion.GetArray(KeyFields);
+        Scheme["keys"] = KeyFields;
+
+    EndIf;
+
+    SetTableName(Scheme, Table);
     SplitDataCollection(Record, FieldArray, ValuesArray);
 
     For Each Field In FieldArray Do

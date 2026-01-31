@@ -418,6 +418,67 @@ Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connec
 
 EndFunction
 
+// Update records
+// Updates the value of records by selected criteria
+//
+// Note:
+// Record data is specified as an array of structures of the following type:^
+// `{'Field name 1': {'Type': 'Value'}, 'Field name 2': {'Type': 'Value'},...}`
+// The list of available types is described on the initial page of the MySQL library documentation
+//
+// Parameters:
+// Table - String - Table name - table
+// ValueStructure - Structure Of KeyAndValue - Values structure: Key > field, Value > field value - values
+// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
+// Connection - String, Arbitrary - Connection or connection string - dbc
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function UpdateRecords(Val Table
+    , Val ValueStructure
+    , Val Filters = ""
+    , Val Connection = ""
+    , Val Tls = "") Export
+
+    Result = OPI_SQLQueries.UpdateRecords(OPI_MySQL, Table, ValueStructure, Filters, Connection, Tls);
+    Return Result;
+
+EndFunction
+
+// Ensure records
+// Adds records or updates data of existing ones when key fields match
+//
+// Note:
+// All UNIQUE and PRIMARY KEY fields of the table serve as key fields
+//
+// Parameters:
+// Table - String - Table name - table
+// DataArray - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
+// Transaction - Boolean - True > adding records to transactions with rollback on error - trn
+// Connection - String, Arbitrary - Existing connection or database path - db
+// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+//
+// Returns:
+// Map Of KeyAndValue - Result of query execution
+Function EnsureRecords(Val Table
+    , Val DataArray
+    , Val Transaction = True
+    , Val Connection = ""
+    , Val Tls = "") Export
+
+    Result = OPI_SQLQueries.EnsureRecords(OPI_MySQL
+        , Table
+        , DataArray
+        , New Array
+        , Transaction
+        , Connection
+        , Tls);
+
+    Return Result;
+
+EndFunction
+
 // Get records
 // Gets records from the selected table
 //
@@ -449,34 +510,6 @@ Function GetRecords(Val Table
         , Connection
         , Tls);
 
-    Return Result;
-
-EndFunction
-
-// Update records
-// Updates the value of records by selected criteria
-//
-// Note:
-// Record data is specified as an array of structures of the following type:^
-// `{'Field name 1': {'Type': 'Value'}, 'Field name 2': {'Type': 'Value'},...}`
-// The list of available types is described on the initial page of the MySQL library documentation
-//
-// Parameters:
-// Table - String - Table name - table
-// ValueStructure - Structure Of KeyAndValue - Values structure: Key > field, Value > field value - values
-// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
-//
-// Returns:
-// Map Of KeyAndValue - Result of query execution
-Function UpdateRecords(Val Table
-    , Val ValueStructure
-    , Val Filters = ""
-    , Val Connection = ""
-    , Val Tls = "") Export
-
-    Result = OPI_SQLQueries.UpdateRecords(OPI_MySQL, Table, ValueStructure, Filters, Connection, Tls);
     Return Result;
 
 EndFunction
@@ -623,12 +656,16 @@ Function ДобавитьЗаписи(Val Таблица, Val МассивДан
 	Return AddRecords(Таблица, МассивДанных, Транзакция, Соединение, Tls);
 EndFunction
 
-Function ПолучитьЗаписи(Val Таблица, Val Поля = "*", Val Фильтры = "", Val Сортировка = "", Val Количество = "", Val Соединение = "", Val Tls = "") Export
-	Return GetRecords(Таблица, Поля, Фильтры, Сортировка, Количество, Соединение, Tls);
-EndFunction
-
 Function ОбновитьЗаписи(Val Таблица, Val СтруктураЗначений, Val Фильтры = "", Val Соединение = "", Val Tls = "") Export
 	Return UpdateRecords(Таблица, СтруктураЗначений, Фильтры, Соединение, Tls);
+EndFunction
+
+Function ГарантироватьЗаписи(Val Таблица, Val МассивДанных, Val Транзакция = True, Val Соединение = "", Val Tls = "") Export
+	Return EnsureRecords(Таблица, МассивДанных, Транзакция, Соединение, Tls);
+EndFunction
+
+Function ПолучитьЗаписи(Val Таблица, Val Поля = "*", Val Фильтры = "", Val Сортировка = "", Val Количество = "", Val Соединение = "", Val Tls = "") Export
+	Return GetRecords(Таблица, Поля, Фильтры, Сортировка, Количество, Соединение, Tls);
 EndFunction
 
 Function УдалитьЗаписи(Val Таблица, Val Фильтры = "", Val Соединение = "", Val Tls = "") Export

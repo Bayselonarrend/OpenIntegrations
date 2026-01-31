@@ -6,7 +6,7 @@
     BasicData = OPI_S3.GetBasicDataStructure(URL, AccessKey, SecretKey, Region);
 
     Directory = True; // Formation URL in path-style
-    Bucket = "w567hjy1";
+    Bucket = "";
     Name   = "picture.jpg";
     Entity = "https://hut.openintegrations.dev/test_data/picture.jpg"; // URL, Path or Binary Data
 

@@ -2306,6 +2306,7 @@ Procedure SQLL_ORM() Export
 
     SQLite_CreateTable(TestParameters);
     SQLite_AddRecords(TestParameters);
+    SQLite_EnsureRecords(TestParameters);
     SQLite_GetRecords(TestParameters);
     SQLite_UpdateRecords(TestParameters);
     SQLite_DeleteRecords(TestParameters);
@@ -2322,6 +2323,7 @@ Procedure SQLL_ORM() Export
 
     SQLite_CreateTable(TestParameters);
     SQLite_AddRecords(TestParameters);
+    SQLite_EnsureRecords(TestParameters);
     SQLite_GetRecords(TestParameters);
     SQLite_UpdateRecords(TestParameters);
     SQLite_DeleteRecords(TestParameters);
@@ -2367,6 +2369,7 @@ Procedure Postgres_ORM() Export
         PostgreSQL_CreateDatabase(TestParameters);
         PostgreSQL_CreateTable(TestParameters);
         PostgreSQL_AddRecords(TestParameters);
+        PostgreSQL_EnsureRecords(TestParameters);
         PostgreSQL_GetRecords(TestParameters);
         PostgreSQL_UpdateRecords(TestParameters);
         PostgreSQL_DeleteRecords(TestParameters);
@@ -2414,6 +2417,7 @@ Procedure MYS_ORM() Export
         MySQL_CreateDatabase(TestParameters);
         MySQL_CreateTable(TestParameters);
         MySQL_AddRecords(TestParameters);
+        MySQL_EnsureRecords(TestParameters);
         MySQL_GetRecords(TestParameters);
         MySQL_UpdateRecords(TestParameters);
         MySQL_DeleteRecords(TestParameters);
@@ -2842,6 +2846,7 @@ Procedure MSS_ORM() Export
     MSSQL_CreateDatabase(TestParameters);
     MSSQL_CreateTable(TestParameters);
     MSSQL_AddRecords(TestParameters);
+    MSSQL_EnsureRecords(TestParameters);
     MSSQL_GetRecords(TestParameters);
     MSSQL_UpdateRecords(TestParameters);
     MSSQL_DeleteRecords(TestParameters);
@@ -15620,6 +15625,71 @@ Procedure SQLite_GetTableInformation(FunctionParameters)
 
 EndProcedure
 
+Procedure SQLite_EnsureRecords(FunctionParameters)
+
+    Base  = FunctionParameters["SQLite_DB"];
+    Table = "test_merge";
+
+    ColoumnsStruct = New Structure; // SKIP
+    ColoumnsStruct.Insert("id"     , "INTEGER PRIMARY KEY"); // SKIP
+    ColoumnsStruct.Insert("name"   , "TEXT"); // SKIP
+    ColoumnsStruct.Insert("age"    , "INTEGER"); // SKIP
+    ColoumnsStruct.Insert("salary" , "REAL"); // SKIP
+    OPI_SQLite.CreateTable(Table, ColoumnsStruct, Base); // SKIP
+
+    DataArray = New Array;
+
+    RowStructure2 = New Structure;
+    RowStructure2.Insert("id"    , 1);
+    RowStructure2.Insert("name"  , "Vitaly");
+    RowStructure2.Insert("age"   , 25);
+    RowStructure2.Insert("salary", 1000.12);
+
+    RowStructure1 = New Structure;
+    RowStructure1.Insert("id"    , 2);
+    RowStructure1.Insert("name"  , "Lesha");
+    RowStructure1.Insert("age"   , 20);
+    RowStructure1.Insert("salary", 200.20);
+
+    DataArray.Add(RowStructure2);
+    DataArray.Add(RowStructure1);
+
+    KeyFields = New Array;
+    KeyFields.Add("id");
+
+    Result = OPI_SQLite.EnsureRecords(Table, DataArray, KeyFields, , Base);
+
+    // END
+
+    Process(Result, "SQLite", "EnsureRecords", "Insertion");
+
+    Check = OPI_SQLite.GetRecords(Table, "*", , , , Base);
+    Process(Check, "SQLite", "EnsureRecords", "Insertion check");
+
+    RowStructure2.Insert("name"  , "Vitaly Updated");
+    RowStructure2.Insert("salary", 1500.50);
+
+    StringStructure3 = New Structure;
+    StringStructure3.Insert("id"    , 3);
+    StringStructure3.Insert("name"  , "Anton");
+    StringStructure3.Insert("age"   , 30);
+    StringStructure3.Insert("salary", 3000.00);
+
+    DataArray = New Array;
+    DataArray.Add(RowStructure2);
+    DataArray.Add(StringStructure3);
+
+    Result = OPI_SQLite.EnsureRecords(Table, DataArray, KeyFields, , Base);
+
+    Process(Result, "SQLite", "EnsureRecords", "Updating");
+
+    Check = OPI_SQLite.GetRecords(Table, "*", , , , Base);
+    Process(Check, "SQLite", "EnsureRecords", "Updating check");
+
+    OPI_SQLite.DeleteTable(Table, Base);
+
+EndProcedure
+
 Procedure SQLite_GetRecordsFilterStructure(FunctionParameters)
 
     Result = OPI_SQLite.GetRecordsFilterStructure();
@@ -16636,6 +16706,89 @@ Procedure PostgreSQL_DisableAllDatabaseConnections(FunctionParameters)
 
 EndProcedure
 
+Procedure PostgreSQL_EnsureRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    TLS = True;
+    TLS = FunctionParameters["TLS"]; // SKIP
+
+    Port = 5432;
+    Port = ?(TLS, 5433, 5432); // SKIP
+
+    ConnectionString = OPI_PostgreSQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_PostgreSQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
+    Table = "test_merge";
+
+    ColoumnsStruct = New Structure; // SKIP
+    ColoumnsStruct.Insert("id"    , "INT PRIMARY KEY"); // SKIP
+    ColoumnsStruct.Insert("name"  , "TEXT"); // SKIP
+    ColoumnsStruct.Insert("age"   , "INT"); // SKIP
+    ColoumnsStruct.Insert("salary", "REAL"); // SKIP
+    OPI_PostgreSQL.CreateTable(Table, ColoumnsStruct, ConnectionString, TLSSettings); // SKIP
+
+    DataArray = New Array;
+
+    RowStructure2 = New Structure;
+    RowStructure2.Insert("id"    , New Structure("INT" , 1));
+    RowStructure2.Insert("name"  , New Structure("TEXT", "Vitaly"));
+    RowStructure2.Insert("age"   , New Structure("INT" , 25));
+    RowStructure2.Insert("salary", New Structure("REAL", 1000.12));
+
+    RowStructure1 = New Structure;
+    RowStructure1.Insert("id"    , New Structure("INT" , 2));
+    RowStructure1.Insert("name"  , New Structure("TEXT", "Lesha"));
+    RowStructure1.Insert("age"   , New Structure("INT" , 20));
+    RowStructure1.Insert("salary", New Structure("REAL", 200.20));
+
+    DataArray.Add(RowStructure2);
+    DataArray.Add(RowStructure1);
+
+    KeyFields = New Array;
+    KeyFields.Add("id");
+
+    Result = OPI_PostgreSQL.EnsureRecords(Table, DataArray, KeyFields, , ConnectionString, TLSSettings);
+
+    // END
+
+    Process(Result, "PostgreSQL", "EnsureRecords", "Insertion");
+
+    Check = OPI_PostgreSQL.GetRecords(Table, "*", , , , ConnectionString, TLSSettings);
+    Process(Check, "PostgreSQL", "EnsureRecords", "Insertion check");
+
+    RowStructure2.Insert("name"  , New Structure("TEXT", "Vitaly Updated"));
+    RowStructure2.Insert("salary", New Structure("REAL", 1500.50));
+
+    StringStructure3 = New Structure;
+    StringStructure3.Insert("id"    , New Structure("INT" , 3));
+    StringStructure3.Insert("name"  , New Structure("TEXT", "Anton"));
+    StringStructure3.Insert("age"   , New Structure("INT" , 30));
+    StringStructure3.Insert("salary", New Structure("REAL", 3000.00));
+
+    DataArray = New Array;
+    DataArray.Add(RowStructure2);
+    DataArray.Add(StringStructure3);
+
+    Result = OPI_PostgreSQL.EnsureRecords(Table, DataArray, KeyFields, , ConnectionString, TLSSettings);
+
+    Process(Result, "PostgreSQL", "EnsureRecords", "Updating");
+
+    Check = OPI_PostgreSQL.GetRecords(Table, "*", , , , ConnectionString, TLSSettings);
+    Process(Check, "PostgreSQL", "EnsureRecords", "Updating check");
+
+    OPI_PostgreSQL.DeleteTable(Table, ConnectionString, TLSSettings);
+
+EndProcedure
+
 Procedure PostgreSQL_GetRecordsFilterStructure(FunctionParameters)
 
     Result = OPI_PostgreSQL.GetRecordsFilterStructure();
@@ -17518,6 +17671,89 @@ Procedure MySQL_ClearTable(FunctionParameters)
     Result = OPI_MySQL.GetRecords(Table, , , , , ConnectionString, TLSSettings);
 
     Process(Result, "MySQL", "ClearTable", "Check");
+
+EndProcedure
+
+Procedure MySQL_EnsureRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "bayselonarrend";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    TLS = True;
+    TLS = FunctionParameters["TLS"]; // SKIP
+
+    Port = 3306;
+    Port = ?(TLS, 3307, 3306); // SKIP
+
+    ConnectionString = OPI_MySQL.GenerateConnectionString(Address, Base, Login, Password, Port);
+
+    If TLS Then
+        TLSSettings = OPI_MySQL.GetTLSSettings(True);
+    Else
+        TLSSettings = Undefined;
+    EndIf;
+
+    Table = "test_merge";
+
+    ColoumnsStruct = New Structure; // SKIP
+    ColoumnsStruct.Insert("id"    , "INT PRIMARY KEY"); // SKIP
+    ColoumnsStruct.Insert("name"  , "TEXT"); // SKIP
+    ColoumnsStruct.Insert("age"   , "INT"); // SKIP
+    ColoumnsStruct.Insert("salary", "DOUBLE"); // SKIP
+    OPI_MySQL.CreateTable(Table, ColoumnsStruct, ConnectionString, TLSSettings); // SKIP
+
+    DataArray = New Array;
+
+    RowStructure2 = New Structure;
+    RowStructure2.Insert("id"    , New Structure("INT"   , 1));
+    RowStructure2.Insert("name"  , New Structure("TEXT"  , "Vitaly"));
+    RowStructure2.Insert("age"   , New Structure("INT"   , 25));
+    RowStructure2.Insert("salary", New Structure("DOUBLE", 1000.12));
+
+    RowStructure1 = New Structure;
+    RowStructure1.Insert("id"    , New Structure("INT"   , 2));
+    RowStructure1.Insert("name"  , New Structure("TEXT"  , "Lesha"));
+    RowStructure1.Insert("age"   , New Structure("INT"   , 20));
+    RowStructure1.Insert("salary", New Structure("DOUBLE", 200.20));
+
+    DataArray.Add(RowStructure2);
+    DataArray.Add(RowStructure1);
+
+    KeyFields = New Array;
+    KeyFields.Add("id");
+
+    Result = OPI_MySQL.EnsureRecords(Table, DataArray, , ConnectionString, TLSSettings);
+
+    // END
+
+    Process(Result, "MySQL", "EnsureRecords", "Insertion");
+
+    Check = OPI_MySQL.GetRecords(Table, "*", , , , ConnectionString, TLSSettings);
+    Process(Check, "MySQL", "EnsureRecords", "Insertion check");
+
+    RowStructure2.Insert("name"  , New Structure("TEXT"  , "Vitaly Updated"));
+    RowStructure2.Insert("salary", New Structure("DOUBLE", 1500.50));
+
+    StringStructure3 = New Structure;
+    StringStructure3.Insert("id"    , New Structure("INT"   , 3));
+    StringStructure3.Insert("name"  , New Structure("TEXT"  , "Anton"));
+    StringStructure3.Insert("age"   , New Structure("INT"   , 30));
+    StringStructure3.Insert("salary", New Structure("DOUBLE", 3000.00));
+
+    DataArray = New Array;
+    DataArray.Add(RowStructure2);
+    DataArray.Add(StringStructure3);
+
+    Result = OPI_MySQL.EnsureRecords(Table, DataArray, , ConnectionString, TLSSettings);
+
+    Process(Result, "MySQL", "EnsureRecords", "Updating");
+
+    Check = OPI_MySQL.GetRecords(Table, "*", , , , ConnectionString, TLSSettings);
+    Process(Check, "MySQL", "EnsureRecords", "Updating check");
+
+    OPI_MySQL.DeleteTable(Table, ConnectionString, TLSSettings);
 
 EndProcedure
 
@@ -21321,6 +21557,78 @@ Procedure MSSQL_EnsureTable(FunctionParameters)
     Check = OPI_MSSQL.GetTableInformation(Table, ConnectionString, TLSSettings);
 
     Process(Check, "MSSQL", "EnsureTable", "Check", ColoumnsStruct);
+
+EndProcedure
+
+Procedure MSSQL_EnsureRecords(FunctionParameters)
+
+    Address  = FunctionParameters["PG_IP"];
+    Login    = "SA";
+    Password = FunctionParameters["PG_Password"];
+    Base     = "testbase1";
+
+    TLSSettings      = OPI_MSSQL.GetTLSSettings(True);
+    ConnectionString = OPI_MSSQL.GenerateConnectionString(Address, Base, Login, Password);
+
+    Table = "test_guarantee";
+
+    ColoumnsStruct = New Structure; // SKIP
+    ColoumnsStruct.Insert("id"    , "INT PRIMARY KEY"); // SKIP
+    ColoumnsStruct.Insert("name"  , "NVARCHAR(255)"); // SKIP
+    ColoumnsStruct.Insert("age"   , "INT"); // SKIP
+    ColoumnsStruct.Insert("salary", "DECIMAL(10,2)"); // SKIP
+    OPI_MSSQL.CreateTable(Table, ColoumnsStruct, ConnectionString, TLSSettings); // SKIP
+
+    DataArray = New Array;
+
+    RowStructure2 = New Structure;
+    RowStructure2.Insert("id"    , New Structure("INT"     , 1));
+    RowStructure2.Insert("name"  , New Structure("NVARCHAR", "Vitaly"));
+    RowStructure2.Insert("age"   , New Structure("INT"     , 25));
+    RowStructure2.Insert("salary", New Structure("DECIMAL" , 1000.12));
+
+    RowStructure1 = New Structure;
+    RowStructure1.Insert("id"    , New Structure("INT"     , 2));
+    RowStructure1.Insert("name"  , New Structure("NVARCHAR", "Lesha"));
+    RowStructure1.Insert("age"   , New Structure("INT"     , 20));
+    RowStructure1.Insert("salary", New Structure("DECIMAL" , 200.20));
+
+    DataArray.Add(RowStructure2);
+    DataArray.Add(RowStructure1);
+
+    KeyFields = New Array;
+    KeyFields.Add("id");
+
+    Result = OPI_MSSQL.EnsureRecords(Table, DataArray, KeyFields, , ConnectionString, TLSSettings);
+
+    // END
+
+    Process(Result, "MSSQL", "EnsureRecords", "Insertion");
+
+    Check = OPI_MSSQL.GetRecords(Table, "*", , , , ConnectionString, TLSSettings);
+    Process(Check, "MSSQL", "EnsureRecords", "Insertion check");
+
+    RowStructure2.Insert("name"  , New Structure("NVARCHAR", "Vitaly Updated"));
+    RowStructure2.Insert("salary", New Structure("DECIMAL" , 1500.50));
+
+    StringStructure3 = New Structure;
+    StringStructure3.Insert("id"    , New Structure("INT"     , 3));
+    StringStructure3.Insert("name"  , New Structure("NVARCHAR", "Anton"));
+    StringStructure3.Insert("age"   , New Structure("INT"     , 30));
+    StringStructure3.Insert("salary", New Structure("DECIMAL" , 3000.00));
+
+    DataArray = New Array;
+    DataArray.Add(RowStructure2);
+    DataArray.Add(StringStructure3);
+
+    Result = OPI_MSSQL.EnsureRecords(Table, DataArray, KeyFields, , ConnectionString, TLSSettings);
+
+    Process(Result, "MSSQL", "EnsureRecords", "Updating");
+
+    Check = OPI_MSSQL.GetRecords(Table, "*", , , , ConnectionString, TLSSettings);
+    Process(Check, "MSSQL", "EnsureRecords", "Updating check");
+
+    OPI_MSSQL.DeleteTable(Table, ConnectionString, TLSSettings);
 
 EndProcedure
 
