@@ -1,2 +1,5 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint clickhouse ПолучитьНастройкиСоединенияGRPC ^
-  --auth "C:\Users\bayse\AppData\Local\Temp\cobw2xvn.y0z.json"
+  --url "http://localhost:9101" ^
+  --auth "{'bayselonarrend':'12we3456!2154'}"

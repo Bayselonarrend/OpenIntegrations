@@ -1,2 +1,5 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint clickhouse ПолучитьНастройкиСоединенияHTTP \
-  --auth "C:\Users\bayse\AppData\Local\Temp\tsq53uit.tyz.json"
+  --url "http://localhost:8123" \
+  --auth "{'bayselonarrend':'12we3456!2154'}"
