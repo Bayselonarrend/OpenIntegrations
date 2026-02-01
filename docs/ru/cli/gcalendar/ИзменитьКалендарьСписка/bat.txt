@@ -1,6 +1,6 @@
 oint gcalendar ИзменитьКалендарьСписка ^
   --token "***" ^
-  --calendar "1e47026750b38b411dfd9ea74697cfbf028b9225b70bfe73bdfb9fc105cf1480@group.calendar.google.com" ^
+  --calendar "f15925a1a7269758bd124f895579b35bec73a13644220df6eb987aaa111d6d62@group.calendar.google.com" ^
   --primary "#000000" ^
   --secondary "#ffd800" ^
   --hidden false
