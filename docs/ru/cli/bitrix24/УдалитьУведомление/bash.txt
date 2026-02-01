@@ -1,4 +1,4 @@
 oint bitrix24 УдалитьУведомление \
   --url "b24-ar17wx.bitrix24.by" \
-  --notif 76280 \
+  --notif 76422 \
   --token "***"

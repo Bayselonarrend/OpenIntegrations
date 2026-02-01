@@ -1,7 +1,7 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint s3 ПолучитьСписокВерсийОбъектов ^
-  --bucket "ae6f89ac" ^
+  --bucket "1c0baece" ^
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
   --prefix "pic" ^
   --dir false
