@@ -2,7 +2,7 @@
 
 oint vk СоздатьПост \
   --text "Пост из автотеста" \
-  --pictures "C:\Users\bayse\AppData\Local\Temp\i0alzdaw.kpr.png" \
+  --pictures "C:\Users\bayse\AppData\Local\Temp\z433swxt.l2b.png" \
   --ad true \
   --url "https://github.com/Bayselonarrend/OpenIntegrations" \
   --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

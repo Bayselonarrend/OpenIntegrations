@@ -2,7 +2,7 @@
 
 oint s3 ЗагрузитьОбъект \
   --name "fileChunked.mp3" \
-  --bucket "ae6f89ac" \
+  --bucket "1c0baece" \
   --data "https://hut.openintegrations.dev/test_data/song.mp3" \
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'5242880'}" \
   --dir false

@@ -2,7 +2,7 @@
  "ok": true,
  "result": [
   {
-   "message_id": 19202,
+   "message_id": 19220,
    "from": {
     "id": 6129457865,
     "is_bot": true,
@@ -16,8 +16,8 @@
     "username": "bayselonarrend",
     "type": "private"
    },
-   "date": 1769885508,
-   "media_group_id": "14159084071928154",
+   "date": 1769969369,
+   "media_group_id": "14159754953790786",
    "photo": [
     {
      "file_id": "AgACAgIAAxkDAAJK1ml5A6H6X06oLx7wwhMDQ9A9CUz2AAKaE2sbrJHJS90omtb5-6hfAQADAgADcwADOAQ",
@@ -58,7 +58,7 @@
    "caption": "Строковое значение"
   },
   {
-   "message_id": 19203,
+   "message_id": 19221,
    "from": {
     "id": 6129457865,
     "is_bot": true,
@@ -72,8 +72,8 @@
     "username": "bayselonarrend",
     "type": "private"
    },
-   "date": 1769885509,
-   "media_group_id": "14159084071928154",
+   "date": 1769969369,
+   "media_group_id": "14159754953790786",
    "video": {
     "duration": 5,
     "width": "***",
@@ -81,21 +81,21 @@
     "file_name": "video1",
     "mime_type": "video/mp4",
     "thumbnail": {
-     "file_id": "AAMCAgADFQdpfk9EqNALkmxG6EkAAc9mZpEkzUAAAq2TAAKBb_BLyFnNCAldvtABAAdtAAM4BA",
-     "file_unique_id": "AQADrZMAAoFv8Ety",
+     "file_id": "AAMCAgADFQdpf5bYCLfASXgz43k_pXCl5m22HwACB44AAoFvAAFIBuz3qNafhnABAAdtAAM4BA",
+     "file_unique_id": "AQADB44AAoFvAAFIcg",
      "file_size": 20106,
      "width": "***",
      "height": 240
     },
     "thumb": {
-     "file_id": "AAMCAgADFQdpfk9EqNALkmxG6EkAAc9mZpEkzUAAAq2TAAKBb_BLyFnNCAldvtABAAdtAAM4BA",
-     "file_unique_id": "AQADrZMAAoFv8Ety",
+     "file_id": "AAMCAgADFQdpf5bYCLfASXgz43k_pXCl5m22HwACB44AAoFvAAFIBuz3qNafhnABAAdtAAM4BA",
+     "file_unique_id": "AQADB44AAoFvAAFIcg",
      "file_size": 20106,
      "width": "***",
      "height": 240
     },
-    "file_id": "BAACAgIAAxUHaX5PRKjQC5JsRuhJAAHPZmaRJM1AAAKtkwACgW_wS8hZzQgJXb7QOAQ",
-    "file_unique_id": "AgADrZMAAoFv8Es",
+    "file_id": "BAACAgIAAxUHaX-W2Ai3wEl4M-N5P6VwpeZtth8AAgeOAAKBbwABSAbs96jWn4ZwOAQ",
+    "file_unique_id": "AgADB44AAoFvAAFI",
     "file_size": 1137878
    }
   }

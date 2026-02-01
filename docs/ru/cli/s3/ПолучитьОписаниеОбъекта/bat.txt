@@ -2,6 +2,6 @@
 
 oint s3 ПолучитьОписаниеОбъекта ^
   --name "picture.jpg" ^
-  --bucket "ae6f89ac" ^
+  --bucket "1c0baece" ^
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
   --dir false

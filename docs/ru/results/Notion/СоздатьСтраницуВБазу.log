@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "2f982aa7-fc4e-81f4-9074-ced8bdb44e1d",
- "created_time": "2026-01-31T20:02:00Z",
- "last_edited_time": "2026-01-31T20:02:00Z",
+ "id": "2fa82aa7-fc4e-815d-9019-e1455884c91e",
+ "created_time": "2026-02-01T19:21:00Z",
+ "last_edited_time": "2026-02-01T19:21:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,24 +15,23 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "2f982aa7-fc4e-81d9-99ec-f329c273a751"
+  "database_id": "2fa82aa7-fc4e-8126-821d-fd31bc6b1cbc"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Телефон": {
-   "id": "%3DSLR",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Номер": {
-   "id": "BynA",
-   "type": "number",
-   "number": 1
+  "Статус": {
+   "id": "A%5BPc",
+   "type": "select",
+   "select": {
+    "id": "fdf4c674-f7ae-4ce2-869d-b313b7953122",
+    "name": "Новый",
+    "color": "green"
+   }
   },
   "Картинка": {
-   "id": "DWNR",
+   "id": "F%7CIj",
    "type": "files",
    "files": [
     {
@@ -44,26 +43,18 @@
     }
    ]
   },
-  "Дата создания": {
-   "id": "JAfs",
-   "type": "date",
-   "date": {
-    "start": "2026-01-31T14:02:00+03:00",
-    "end": null,
-    "time_zone": null
-   }
+  "Номер": {
+   "id": "NwY%3C",
+   "type": "number",
+   "number": 1
   },
-  "Статус": {
-   "id": "Mj%40f",
-   "type": "select",
-   "select": {
-    "id": "c90ff476-cf9a-4785-a1f0-885d83c3d609",
-    "name": "Новый",
-    "color": "green"
-   }
+  "Телефон": {
+   "id": "PNdJ",
+   "type": "phone_number",
+   "phone_number": "***"
   },
   "Почта": {
-   "id": "Yivp",
+   "id": "SA%5Dr",
    "type": "rich_text",
    "rich_text": [
     {
@@ -85,18 +76,8 @@
     }
    ]
   },
-  "Активен": {
-   "id": "hA%7BA",
-   "type": "checkbox",
-   "checkbox": true
-  },
-  "Пользователь": {
-   "id": "tupH",
-   "type": "people",
-   "people": []
-  },
   "Описание": {
-   "id": "zKo%5C",
+   "id": "WrMZ",
    "type": "rich_text",
    "rich_text": [
     {
@@ -117,6 +98,25 @@
      "href": null
     }
    ]
+  },
+  "Пользователь": {
+   "id": "%5BN%3D%3A",
+   "type": "people",
+   "people": []
+  },
+  "Дата создания": {
+   "id": "eJnu",
+   "type": "date",
+   "date": {
+    "start": "2026-02-01T13:21:00+03:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
+  "Активен": {
+   "id": "hzP%60",
+   "type": "checkbox",
+   "checkbox": true
   },
   "Имя": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/2f982aa7fc4e81f49074ced8bdb44e1d",
+ "url": "https://www.notion.so/2fa82aa7fc4e815d9019e1455884c91e",
  "public_url": null,
- "request_id": "4ab99066-739a-4139-a949-0b9d4b970259"
+ "request_id": "3bf672c2-435b-4d6e-bb86-e2a9ee85b661"
 }

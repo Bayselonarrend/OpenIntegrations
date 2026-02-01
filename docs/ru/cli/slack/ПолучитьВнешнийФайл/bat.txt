@@ -1,3 +1,3 @@
 oint slack ПолучитьВнешнийФайл ^
   --token "***" ^
-  --fileid "F0ACAK318LC"
+  --fileid "F0AC7R82DNJ"
