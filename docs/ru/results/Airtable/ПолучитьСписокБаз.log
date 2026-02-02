@@ -4234,6 +4234,11 @@
    "id": "app3CsvSET32SFg5p",
    "name": "Тестовая база",
    "permissionLevel": "create"
+  },
+  {
+   "id": "appERO27Ic9xyvbrB",
+   "name": "Тестовая база",
+   "permissionLevel": "create"
   }
  ]
 }
