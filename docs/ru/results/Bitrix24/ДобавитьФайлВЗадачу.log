@@ -1,15 +1,15 @@
 ﻿{
  "result": {
-  "attachmentId": 14284
+  "attachmentId": 14300
  },
  "time": {
-  "start": 1770055030,
-  "finish": 1770055031.00193,
-  "duration": 1.00193095207214,
-  "processing": 1,
-  "date_start": "2026-02-02T20:57:10+03:00",
-  "date_finish": "2026-02-02T20:57:11+03:00",
-  "operating_reset_at": 1770055630,
+  "start": 1770061830,
+  "finish": 1770061830.89793,
+  "duration": 0.897933959960938,
+  "processing": 0,
+  "date_start": "2026-02-02T19:50:30+00:00",
+  "date_finish": "2026-02-02T19:50:30+00:00",
+  "operating_reset_at": 1770062430,
   "operating": 0
  }
 }
