@@ -4,4 +4,4 @@ oint greenapi ОтправитьКонтакт ^
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" ^
   --chat "***" ^
   --contact "{'phoneContact':'79001234568','company':'Велосипед'}" ^
-  --quoted "3EB0BB15E34EDE785F3341"
+  --quoted "3EB0138D1846C218D41D00"
