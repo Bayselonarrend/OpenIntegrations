@@ -18857,7 +18857,7 @@ Procedure S3_GetObject(FunctionParameters)
     Options.Insert("name", Name);
     Options.Insert("bucket", Bucket);
     Options.Insert("basic", BasicData);
-    Options.Insert("basic", Directory);
+    Options.Insert("dir", Directory);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
@@ -18870,7 +18870,7 @@ Procedure S3_GetObject(FunctionParameters)
     Options.Insert("name", Name);
     Options.Insert("bucket", Bucket);
     Options.Insert("basic", BasicData);
-    Options.Insert("dir", TempFile);
+    Options.Insert("out", TempFile);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
@@ -18886,7 +18886,7 @@ Procedure S3_GetObject(FunctionParameters)
     Options.Insert("name", Name);
     Options.Insert("bucket", Bucket);
     Options.Insert("basic", BasicData);
-    Options.Insert("dir", BigTempFile);
+    Options.Insert("out", BigTempFile);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("s3", "GetObject", Options);
 
@@ -36253,7 +36253,7 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
     DataFormat = "JSON";
     DataArray  = New Array;
 
-    CurrentDate = OPI_Tools.GetCurrentDate();
+    CurrentDate = Date("20260101100000");
 
     Record1 = New Structure;
     Record1.Insert("id"        , 1);
