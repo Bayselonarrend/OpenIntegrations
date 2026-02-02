@@ -1,3 +1,3 @@
 oint yadisk СкачатьФайл ^
   --token "***" ^
-  --path "/12f23b0f-8192-4c52-a3bf-4422f4bd9f18.png"
+  --path "/a91715d0-31b8-4e5f-a88a-34edc15b773d.png"
