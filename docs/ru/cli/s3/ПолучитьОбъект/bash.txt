@@ -1,4 +1,6 @@
+# JSON данные также могут быть переданы как путь к файлу .json
+
 oint s3 ПолучитьОбъект \
-  --name "picture.jpg" \
-  --bucket "1c0baece" \
-  --basic false
+  --name "bigfile.exe" \
+  --bucket "newbucket2" \
+  --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'200000'}"
