@@ -6,4 +6,4 @@ oint greenapi ОтправитьФайлПоURL \
   --url "https://hut.openintegrations.dev/test_data/video.mp4" \
   --filename "vid.mp4" \
   --caption "Описание файла" \
-  --quoted "3EB05271EAE77350FF14EB"
+  --quoted "3EB0E2D5EA28D4302692F6"

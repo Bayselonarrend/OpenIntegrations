@@ -5,8 +5,8 @@
     "comments": 1,
     "likes": 1
    },
-   "period_from": 1769904000,
-   "period_to": 1769990399,
+   "period_from": 1769990400,
+   "period_to": 1770076799,
    "reach": {
     "age": [
      {
@@ -141,11 +141,11 @@
   },
   {
    "activity": {
-    "comments": 2,
-    "likes": 2
+    "comments": 1,
+    "likes": 1
    },
-   "period_from": 1769817600,
-   "period_to": 1769903999,
+   "period_from": 1769904000,
+   "period_to": 1769990399,
    "reach": {
     "age": [
      {
@@ -181,29 +181,17 @@
       "count": 0
      }
     ],
-    "cities": [
-     {
-      "count": 1,
-      "name": "Череповец",
-      "value": 8
-     }
-    ],
+    "cities": [],
     "countries": [
      {
       "code": "BY",
       "count": 1,
       "name": "Беларусь",
       "value": 3
-     },
-     {
-      "code": "RU",
-      "count": 1,
-      "name": "Россия",
-      "value": 1
      }
     ],
-    "mobile_reach": 2,
-    "reach": 2,
+    "mobile_reach": 1,
+    "reach": 1,
     "reach_subscribers": 1,
     "sex": [
      {
@@ -212,7 +200,7 @@
      },
      {
       "value": "m",
-      "count": 2
+      "count": 1
      }
     ],
     "sex_age": [
