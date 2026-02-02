@@ -27411,7 +27411,7 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
     DataFormat = "JSON";
     DataArray  = New Array;
 
-    CurrentDate = OPI_Tools.GetCurrentDate();
+    CurrentDate = Date("20260101100000");
 
     Record1 = New Structure;
     Record1.Insert("id"        , 1);

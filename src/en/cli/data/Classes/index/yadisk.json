@@ -311,6 +311,13 @@
 					"description": "Path to the file for downloading",
 					"default": null,
 					"short": "-p"
+				},
+				{
+					"name": "--out",
+					"types": "String",
+					"description": "File save path",
+					"default": "Пустое значение",
+					"short": "-o"
 				}
 			],
 			"region": "File and folder management"
