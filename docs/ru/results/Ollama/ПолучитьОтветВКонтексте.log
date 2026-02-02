@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2026-02-02T18:33:42.990191424Z",
+ "created_at": "2026-02-02T20:12:00.191825273Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in 2006. The current version is v2019, which was released in September 2018. As with most software releases, it depends on the specific version and configuration that you're using. Generally, businesses choose to update to the latest version when they have a need for more features or functionalities, and the latest stable version is recommended based on the system requirements of the software."
+  "content": "The first version of 1C:Enterprise was released in 2003. It has since been updated several times, with each release bringing new features and functionality to the software. The latest version is currently on version 8, which was released in 2021. The release cycle for major upgrades is usually every two or three years. However, some minor updates may be released periodically to address bugs and improve stability."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 32698130332,
- "load_duration": 19365334,
- "prompt_eval_count": 206,
- "prompt_eval_duration": 10051956784,
- "eval_count": 101,
- "eval_duration": 22621467696
+ "total_duration": 15524732168,
+ "load_duration": 25272306,
+ "prompt_eval_count": 204,
+ "prompt_eval_duration": 5138129648,
+ "eval_count": 96,
+ "eval_duration": 10357229345
 }
