@@ -442,6 +442,11 @@ Function ExecuteRequestViaHTTP(Val Connection, Val Request, Val Session)
     DataFormat = OPI_Tools.GetOr(Request, "format" , "JSON");
     Database   = OPI_Tools.GetOr(Request, "database" , Undefined);
 
+    If QueryText <> Undefined Then
+        OPI_TypeConversion.GetLine(QueryText, True);
+        QueryText = StrReplace(QueryText, Chars.LF, "");
+    EndIf;
+
     HTTPClient = OPI_HTTPRequests
         .NewRequest()
         .Initialize(URL)
