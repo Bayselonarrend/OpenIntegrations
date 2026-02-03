@@ -1,6 +1,6 @@
 oint vkteams ОтправитьФайл \
   --token "***" \
   --chatid "***" \
-  --file "C:\Users\bayse\AppData\Local\Temp\ibxs3hvw.nij" \
+  --file "C:\Users\bayse\AppData\Local\Temp\npl3mete.inf" \
   --text "Подпись к файлу" \
   --filename "ВажныйДокумент.docx"
