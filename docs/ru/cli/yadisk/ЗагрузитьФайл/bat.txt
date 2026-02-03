@@ -1,5 +1,5 @@
 oint yadisk ЗагрузитьФайл ^
   --token "***" ^
-  --path "/dfbb3371-6c3f-4b5d-8a0a-8d78025bf7f1.png" ^
-  --file "C:\Users\bayse\AppData\Local\Temp\c4libypy.cfj.png" ^
+  --path "/8b475195-a28a-4cd9-84c3-a59559965667.png" ^
+  --file "C:\Users\bayse\AppData\Local\Temp\iylsxpll.fwe.png" ^
   --rewrite true

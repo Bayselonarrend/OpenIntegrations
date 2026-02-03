@@ -2,8 +2,8 @@
  "response": [
   {
    "activity": {
-    "comments": 1,
-    "likes": 1
+    "comments": 2,
+    "likes": 2
    },
    "period_from": 1770076800,
    "period_to": 1770163199,
@@ -126,10 +126,17 @@
    },
    "visitors": {
     "cities": [],
-    "countries": [],
+    "countries": [
+     {
+      "code": "RU",
+      "count": 1,
+      "name": "Россия",
+      "value": 1
+     }
+    ],
     "mobile_views": 0,
-    "views": 0,
-    "visitors": 0
+    "views": 1,
+    "visitors": 1
    }
   },
   {

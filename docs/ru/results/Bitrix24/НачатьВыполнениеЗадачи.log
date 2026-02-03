@@ -1,7 +1,7 @@
 ﻿{
  "result": {
   "task": {
-   "id": "9520",
+   "id": "9530",
    "parentId": null,
    "title": "Другой заголовок задачи",
    "description": "Другое описание задачи",
@@ -14,19 +14,19 @@
    "sprintId": null,
    "backlogId": null,
    "createdBy": "1",
-   "createdDate": "2026-02-03T12:43:02+03:00",
+   "createdDate": "2026-02-03T23:11:04+03:00",
    "responsibleId": "2960",
    "changedBy": "1",
-   "changedDate": "2026-02-03T12:44:12+03:00",
+   "changedDate": "2026-02-03T23:12:08+03:00",
    "statusChangedBy": "1",
    "closedBy": "1",
    "closedDate": null,
-   "activityDate": "2026-02-03T12:44:13+03:00",
-   "dateStart": "2026-02-03T12:44:12+03:00",
-   "deadline": "2026-02-04T12:42:00+03:00",
-   "startDatePlan": "2026-02-03T12:43:02+03:00",
+   "activityDate": "2026-02-03T23:12:08+03:00",
+   "dateStart": "2026-02-03T23:12:08+03:00",
+   "deadline": "2026-02-04T23:10:00+03:00",
+   "startDatePlan": "2026-02-03T23:11:04+03:00",
    "endDatePlan": "2026-02-04T00:00:00+03:00",
-   "guid": "{05964c45-1f64-4a9d-aa05-2d15a6670a0a}",
+   "guid": "{8e8389ac-5c94-4594-ade7-0011e6e78565}",
    "xmlId": null,
    "commentsCount": null,
    "serviceCommentsCount": null,
@@ -55,7 +55,7 @@
    "chatId": "***",
    "descriptionInBbcode": "Y",
    "status": "3",
-   "statusChangedDate": "2026-02-03T12:44:12+03:00",
+   "statusChangedDate": "2026-02-03T23:12:08+03:00",
    "durationPlan": null,
    "durationType": "days",
    "favorite": "N",
@@ -136,13 +136,13 @@
   }
  },
  "time": {
-  "start": 1770111852,
-  "finish": 1770111853.20463,
-  "duration": 1.20462894439697,
-  "processing": 1,
-  "date_start": "2026-02-03T12:44:12+03:00",
-  "date_finish": "2026-02-03T12:44:13+03:00",
-  "operating_reset_at": 1770112452,
-  "operating": 0.258846998214722
+  "start": 1770149528,
+  "finish": 1770149528.31854,
+  "duration": 0.318542003631592,
+  "processing": 0,
+  "date_start": "2026-02-03T23:12:08+03:00",
+  "date_finish": "2026-02-03T23:12:08+03:00",
+  "operating_reset_at": 1770150128,
+  "operating": 0.26361608505249
  }
 }
