@@ -4,4 +4,4 @@ oint greenapi ОтправитьТекстовоеСообщение \
   --access "{'apiUrl':'***','mediaUrl':'https://7105.media.greenapi.com','idInstance':'7105187566','apiTokenInstance':'***'}" \
   --chat "***" \
   --text "Новое сообщение" \
-  --quoted "3EB0108E4FE3A83AE9F197"
+  --quoted "3EB0826B9C56A6AEE4ADAC"

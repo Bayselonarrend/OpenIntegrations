@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "2fc82aa7-fc4e-818b-b285-e817396652c7",
- "created_time": "2026-02-03T09:34:00Z",
- "last_edited_time": "2026-02-03T09:34:00Z",
+ "id": "2fc82aa7-fc4e-8115-9e1c-cd9642a23c56",
+ "created_time": "2026-02-03T20:02:00Z",
+ "last_edited_time": "2026-02-03T20:02:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,33 +15,38 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "2fc82aa7-fc4e-816b-b1e3-d40bf6707778"
+  "database_id": "2fc82aa7-fc4e-8138-bb6b-cc898b69608b"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Дата создания": {
-   "id": "%3E%5ER%40",
-   "type": "date",
-   "date": {
-    "start": "2026-02-03T15:34:00+03:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
   "Телефон": {
-   "id": "LYAs",
+   "id": "GQlT",
    "type": "phone_number",
    "phone_number": "***"
   },
+  "Пользователь": {
+   "id": "LD%7Bb",
+   "type": "people",
+   "people": []
+  },
   "Номер": {
-   "id": "Pbvm",
+   "id": "LN%3EU",
    "type": "number",
    "number": 1
   },
+  "Статус": {
+   "id": "QP%5Bc",
+   "type": "select",
+   "select": {
+    "id": "bf330950-27a9-4a67-8a1d-5ffb1fbf55b7",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
   "Картинка": {
-   "id": "UpYK",
+   "id": "k~%5Em",
    "type": "files",
    "files": [
     {
@@ -53,17 +58,40 @@
     }
    ]
   },
-  "Статус": {
-   "id": "ZU%3Fj",
-   "type": "select",
-   "select": {
-    "id": "28953016-4a39-4fde-ba10-a6d4242d7b53",
-    "name": "Новый",
-    "color": "green"
+  "Описание": {
+   "id": "r%3EL%60",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "Наш первый клиент",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "Наш первый клиент",
+     "href": null
+    }
+   ]
+  },
+  "Дата создания": {
+   "id": "ruk%3F",
+   "type": "date",
+   "date": {
+    "start": "2026-02-03T14:02:00+03:00",
+    "end": null,
+    "time_zone": null
    }
   },
   "Почта": {
-   "id": "io%7Dh",
+   "id": "t%5BIp",
    "type": "rich_text",
    "rich_text": [
     {
@@ -86,37 +114,9 @@
    ]
   },
   "Активен": {
-   "id": "n%5CH%5E",
+   "id": "tdov",
    "type": "checkbox",
    "checkbox": true
-  },
-  "Описание": {
-   "id": "v_Iv",
-   "type": "rich_text",
-   "rich_text": [
-    {
-     "type": "text",
-     "text": {
-      "content": "Наш первый клиент",
-      "link": null
-     },
-     "annotations": {
-      "bold": false,
-      "italic": false,
-      "strikethrough": false,
-      "underline": false,
-      "code": false,
-      "color": "default"
-     },
-     "plain_text": "Наш первый клиент",
-     "href": null
-    }
-   ]
-  },
-  "Пользователь": {
-   "id": "yA%3EW",
-   "type": "people",
-   "people": []
   },
   "Имя": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/2fc82aa7fc4e818bb285e817396652c7",
+ "url": "https://www.notion.so/2fc82aa7fc4e81159e1ccd9642a23c56",
  "public_url": null,
- "request_id": "81a781ec-9da9-4499-8fad-cb83164d62ab"
+ "request_id": "104fa4f1-1a3a-49aa-a609-e73594019624"
 }
