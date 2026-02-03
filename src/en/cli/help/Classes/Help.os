@@ -229,6 +229,11 @@ Function GetFullParamsDescription(MethodData)
 	For Each MethodParameter In MethodParameters Do
 
 		OptionFull = MethodParameter["name"];
+
+		If OptionFull = "--out" Then
+			Continue;
+		EndIf;
+
 		SplittedOption = MethodParameter["short"];
 		DefaultValue = MethodParameter["default"];
 

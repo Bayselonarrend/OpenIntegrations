@@ -57,8 +57,8 @@ import TabItem from '@theme/TabItem';
             
             oint notion СоздатьСтраницуВБазу \
               --token "***" \
-              --base "2fa82aa7-fc4e-8126-821d-fd31bc6b1cbc" \
-              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'2/1/2026 10:21:07 PM','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
+              --base "2fb82aa7-fc4e-8139-9ff4-c755f50b52ff" \
+              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'2/2/2026 8:46:18 PM','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
         ```
     </TabItem>
   
@@ -68,8 +68,8 @@ import TabItem from '@theme/TabItem';
             
             oint notion СоздатьСтраницуВБазу ^
               --token "***" ^
-              --base "2fa82aa7-fc4e-8126-821d-fd31bc6b1cbc" ^
-              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'2/1/2026 10:21:07 PM','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
+              --base "2fb82aa7-fc4e-8139-9ff4-c755f50b52ff" ^
+              --data "{'Имя':'ООО Вектор','Описание':'Наш первый клиент','Номер':'1','Дата создания':'2/2/2026 8:46:18 PM','Картинка':{'Лого':'https://hut.openintegrations.dev/test_data/picture.jpg'},'Активен':true,'Сайт':'https://vector.ru','Почта':'mail@vector.ru','Телефон':'88005553535','Статус':'Новый'}"
         ```
     </TabItem>
 </Tabs>
@@ -78,9 +78,9 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "object": "page",
- "id": "2fa82aa7-fc4e-815d-9019-e1455884c91e",
- "created_time": "2026-02-01T19:21:00Z",
- "last_edited_time": "2026-02-01T19:21:00Z",
+ "id": "2fb82aa7-fc4e-812f-949e-dfc7c475960b",
+ "created_time": "2026-02-02T19:44:00Z",
+ "last_edited_time": "2026-02-02T19:44:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -93,23 +93,19 @@ import TabItem from '@theme/TabItem';
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "2fa82aa7-fc4e-8126-821d-fd31bc6b1cbc"
+  "database_id": "2fb82aa7-fc4e-81dc-8408-ec4302cc28ea"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "Статус": {
-   "id": "A%5BPc",
-   "type": "select",
-   "select": {
-    "id": "fdf4c674-f7ae-4ce2-869d-b313b7953122",
-    "name": "Новый",
-    "color": "green"
-   }
+  "Активен": {
+   "id": "%3BdIq",
+   "type": "checkbox",
+   "checkbox": true
   },
   "Картинка": {
-   "id": "F%7CIj",
+   "id": "%3CXkh",
    "type": "files",
    "files": [
     {
@@ -121,41 +117,13 @@ import TabItem from '@theme/TabItem';
     }
    ]
   },
-  "Номер": {
-   "id": "NwY%3C",
-   "type": "number",
-   "number": 1
-  },
-  "Телефон": {
-   "id": "PNdJ",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Почта": {
-   "id": "SA%5Dr",
-   "type": "rich_text",
-   "rich_text": [
-    {
-     "type": "text",
-     "text": {
-      "content": "mail@vector.ru",
-      "link": null
-     },
-     "annotations": {
-      "bold": false,
-      "italic": false,
-      "strikethrough": false,
-      "underline": false,
-      "code": false,
-      "color": "default"
-     },
-     "plain_text": "mail@vector.ru",
-     "href": null
-    }
-   ]
+  "Пользователь": {
+   "id": "%3EvlE",
+   "type": "people",
+   "people": []
   },
   "Описание": {
-   "id": "WrMZ",
+   "id": "Dhen",
    "type": "rich_text",
    "rich_text": [
     {
@@ -177,24 +145,56 @@ import TabItem from '@theme/TabItem';
     }
    ]
   },
-  "Пользователь": {
-   "id": "%5BN%3D%3A",
-   "type": "people",
-   "people": []
+  "Почта": {
+   "id": "G%3C%40M",
+   "type": "rich_text",
+   "rich_text": [
+    {
+     "type": "text",
+     "text": {
+      "content": "mail@vector.ru",
+      "link": null
+     },
+     "annotations": {
+      "bold": false,
+      "italic": false,
+      "strikethrough": false,
+      "underline": false,
+      "code": false,
+      "color": "default"
+     },
+     "plain_text": "mail@vector.ru",
+     "href": null
+    }
+   ]
+  },
+  "Статус": {
+   "id": "dPy%3D",
+   "type": "select",
+   "select": {
+    "id": "a7ea7376-8e63-4a98-8715-9540cbfbba26",
+    "name": "Новый",
+    "color": "green"
+   }
+  },
+  "Номер": {
+   "id": "rCIA",
+   "type": "number",
+   "number": 1
   },
   "Дата создания": {
-   "id": "eJnu",
+   "id": "vIP_",
    "type": "date",
    "date": {
-    "start": "2026-02-01T13:21:00+03:00",
+    "start": "2026-02-02T07:44:00+00:00",
     "end": null,
     "time_zone": null
    }
   },
-  "Активен": {
-   "id": "hzP%60",
-   "type": "checkbox",
-   "checkbox": true
+  "Телефон": {
+   "id": "yHBo",
+   "type": "phone_number",
+   "phone_number": "***"
   },
   "Имя": {
    "id": "title",
@@ -220,8 +220,8 @@ import TabItem from '@theme/TabItem';
    ]
   }
  },
- "url": "https://www.notion.so/2fa82aa7fc4e815d9019e1455884c91e",
+ "url": "https://www.notion.so/2fb82aa7fc4e812f949edfc7c475960b",
  "public_url": null,
- "request_id": "3bf672c2-435b-4d6e-bb86-e2a9ee85b661"
+ "request_id": "d0d5ae3b-02a9-4fbf-b2db-158fc5b6fde2"
 }
 ```

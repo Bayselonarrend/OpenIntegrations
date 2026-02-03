@@ -72,16 +72,13 @@ Procedure FormParameterSet()
 
 	Parser.AddPositionalCommandParameter(Command, "Method");
 	
-	ParameterArray = AddMethodParams(Command, Parser);
+	AddMethodParams(Command, Parser);
 
 	Parser.AddCommandFlagParameter(Command, "--help");
 	Parser.AddCommandFlagParameter(Command, "--debug");
 	Parser.AddCommandFlagParameter(Command, "--test");
+	Parser.AddNamedCommandParameter(Command, "--out");
 
-	If ParameterArray.Find("--out") = Undefined Then
-		Parser.AddNamedCommandParameter(Command, "--out");
-	EndIf;
-	
 	Parser.AddCommand(Command);
 
 EndProcedure
@@ -157,13 +154,12 @@ EndFunction
 
 #Region Auxiliary
 
-Function AddMethodParams(Command, Parser);
+Procedure AddMethodParams(Command, Parser)
 	
 	If Not ValueIsFilled(CurrentMethod) Then
-		Return New Array;;	
+		Return	
 	EndIf;
 
-	ParameterArray = New Array;
 	MethodData = OPIObject.GetMethodData(CurrentCommand, CurrentMethod);
 	
 	If Not ValueIsFilled(MethodData) Then
@@ -175,17 +171,19 @@ Function AddMethodParams(Command, Parser);
 	For Each Parameter In MethodParameters Do
 
 		FullName = Parameter["name"];
+
+		If FullName = "--out" Then
+			Continue;
+		EndIf;
+
 		ShortName = Parameter["short"];
 
 		Parser.AddNamedCommandParameter(Command, FullName);
 		Parser.AddNamedCommandParameter(Command, ShortName);
-		ParameterArray.Add(FullName);
 
 	EndDo;
 
-	Return ParameterArray;
-		
-EndFunction
+EndProcedure
 
 Procedure DefinePathsTemplates()
 
