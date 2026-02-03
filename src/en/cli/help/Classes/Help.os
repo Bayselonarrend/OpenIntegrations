@@ -222,7 +222,7 @@ Function GetFullParamsDescription(MethodData)
 	MaximumLength 	 = 0;
 	OptionListsMap = New Map();
 	FullDescriptionsArray = New Array;
-	ParameterDescriptionTemplate = " (%1|#color=Yellow) -%2%3";
+	ParameterDescriptionTemplate = " (%1|#color=Yellow) -%2";
 	DefaultValueTemplate = " (optional, def. val. - %1)";
 	MethodParameters = MethodData["params"];
 
@@ -274,7 +274,8 @@ Function GetFullParamsDescription(MethodData)
 			CurrentOptionList = CurrentOptionList + " ";
 		EndDo;
 
-		DescriptionArray = StrSplit(MethodParameter["description"], Chars.LF);
+		DescriptionText = StrTemplate("%1%2", MethodParameter["description"], DefaultValueDescription);
+		DescriptionArray = StrSplit(DescriptionText, Chars.LF);
 		CurrentDescription = Undefined;
 		
 		If UseAdaptiveOutput Then
@@ -291,7 +292,7 @@ Function GetFullParamsDescription(MethodData)
 
 		EndIf;
 
-		CurrentFullDescription = StrTemplate(ParameterDescriptionTemplate, CurrentOptionList, CurrentDescription, DefaultValueDescription);
+		CurrentFullDescription = StrTemplate(ParameterDescriptionTemplate, CurrentOptionList, CurrentDescription);
 		FullDescriptionsArray.Add(CurrentFullDescription);
 
 	EndDo;

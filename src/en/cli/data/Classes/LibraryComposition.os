@@ -116,12 +116,16 @@ Function FormMethodCallString(Val PassedParameters, Val Command, Val Method, Val
     For Each RequiredParameter In MethodParameters Do
         
         ParameterName = RequiredParameter["name"];
+
+        If ParameterName = "--out" Then
+            Continue;
+        EndIf;
+
         ParameterNameTrim = RequiredParameter["short"];
-        
         ParameterValue = PassedParameters.Get(ParameterName);
         ParameterValue = ?(ParameterValue = Undefined
-        , PassedParameters.Get(ParameterNameTrim)
-        , ParameterValue);
+            , PassedParameters.Get(ParameterNameTrim)
+            , ParameterValue);
         
         If ValueIsFilled(ParameterValue) Then
             

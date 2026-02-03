@@ -2267,6 +2267,7 @@ Function ExecuteMethod(Val RedirectCount = 0, Val ErrorCount = 0, Val Forced = F
         If Response = Undefined Then
 
             ResponseStatusCode = 0;
+            Error              = True;
             ResponseHeaders    = New Map;
 
         Else
