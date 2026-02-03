@@ -1,4 +1,4 @@
 oint dropbox ВосстановитьОбъектКВерсии \
   --token "***" \
   --path "/New/pic.png" \
-  --rev "649daf65633febd841553"
+  --rev "649e834597e0cbd841553"

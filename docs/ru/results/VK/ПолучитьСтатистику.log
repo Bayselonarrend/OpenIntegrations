@@ -2,11 +2,11 @@
  "response": [
   {
    "activity": {
-    "comments": 2,
-    "likes": 2
+    "comments": 1,
+    "likes": 1
    },
-   "period_from": 1769990400,
-   "period_to": 1770076799,
+   "period_from": 1770076800,
+   "period_to": 1770163199,
    "reach": {
     "age": [
      {
@@ -43,14 +43,7 @@
      }
     ],
     "cities": [],
-    "countries": [
-     {
-      "code": "BY",
-      "count": 1,
-      "name": "Беларусь",
-      "value": 3
-     }
-    ],
+    "countries": [],
     "mobile_reach": 1,
     "reach": 1,
     "reach_subscribers": 1,
@@ -141,11 +134,11 @@
   },
   {
    "activity": {
-    "comments": 1,
-    "likes": 1
+    "comments": 2,
+    "likes": 2
    },
-   "period_from": 1769904000,
-   "period_to": 1769990399,
+   "period_from": 1769990400,
+   "period_to": 1770076799,
    "reach": {
     "age": [
      {

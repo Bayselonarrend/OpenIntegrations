@@ -21,21 +21,21 @@
     ],
     "roles": [
      {
-      "role": "read",
+      "role": "userAdmin",
       "db": "admin"
      },
      {
-      "role": "userAdmin",
+      "role": "read",
       "db": "admin"
      }
     ],
     "inheritedRoles": [
      {
-      "role": "read",
+      "role": "userAdmin",
       "db": "admin"
      },
      {
-      "role": "userAdmin",
+      "role": "read",
       "db": "admin"
      }
     ],
