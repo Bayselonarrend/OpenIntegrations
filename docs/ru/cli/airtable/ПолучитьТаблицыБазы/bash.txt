@@ -1,3 +1,3 @@
 oint airtable ПолучитьТаблицыБазы \
   --token "***" \
-  --base "appIRw8wgPVWkfRBD"
+  --base "appydMXMk1OF23BzN"

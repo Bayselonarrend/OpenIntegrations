@@ -1,27 +1,6 @@
 ﻿{
  "date_intervals": [
   {
-   "date": "2026-02-04",
-   "time_intervals": [
-    {
-     "start_time": "09:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "09:00:00",
-     "end_time": "14:00:00"
-    },
-    {
-     "start_time": "14:00:00",
-     "end_time": "18:00:00"
-    },
-    {
-     "start_time": "18:00:00",
-     "end_time": "22:00:00"
-    }
-   ]
-  },
-  {
    "date": "2026-02-11",
    "time_intervals": [
     {
