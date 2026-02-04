@@ -1,4 +1,4 @@
-oint bitrix24 ПолучитьКомменатрийЗадачи \
+oint bitrix24 ПолучитьКомментарийЗадачи \
   --url "b24-ar17wx.bitrix24.by" \
   --task "9060" \
   --comment 20972 \

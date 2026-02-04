@@ -381,7 +381,7 @@
 				{
 					"name": "--status",
 					"types": "Строка",
-					"description": "Статус заверщения: passed, failed, stopped, skipped, interrupted, cancelled",
+					"description": "Статус завершения: passed, failed, stopped, skipped, interrupted, cancelled",
 					"default": "Пустое значение",
 					"short": "-s"
 				},

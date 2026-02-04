@@ -203,7 +203,7 @@
 КонецФункции
 
 // Установить шифрование бакета
-// Устанавлиает шифрование бакета по XML конфигурации
+// Устанавливает шифрование бакета по XML конфигурации
 //
 // Примечание:
 // Метод в документации AWS: [PutBucketEncryption](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketEncryption.html)
@@ -469,7 +469,7 @@
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - сериализованный JSON ответа от хранилища
-Функция ПолучитьНастройкийВерсионированияБакета(Знач Наименование
+Функция ПолучитьНастройкиВерсионированияБакета(Знач Наименование
     , Знач ОсновныеДанные
     , Знач Каталог = Ложь
     , Знач Заголовки = Неопределено) Экспорт
@@ -600,7 +600,7 @@
 КонецФункции
 
 // Загрузить объект целиком
-// Загружает объект на сервер не используюя загрузку по частям
+// Загружает объект на сервер не используя загрузку по частям
 //
 // Примечание:
 // Метод в документации AWS: [PutObject](@docs.aws.amazon.com/AmazonS3/latest/API/API_PutObject.html)
@@ -2029,7 +2029,7 @@ Function PutBucketVersioning(Val Name, Val BasicData, Val Status = Undefined, Va
 EndFunction
 
 Function GetBucketVersioning(Val Name, Val BasicData, Val Directory = False, Val Headers = Undefined) Export
-	Return ПолучитьНастройкийВерсионированияБакета(Name, BasicData, Directory, Headers);
+	Return ПолучитьНастройкиВерсионированияБакета(Name, BasicData, Directory, Headers);
 EndFunction
 
 Function ListBuckets(Val BasicData, Val Prefix = "", Val Region = "", Val PageToken = "", Val Headers = Undefined) Export

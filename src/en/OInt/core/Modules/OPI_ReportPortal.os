@@ -521,8 +521,8 @@ Function ПолучитьСтруктуруЗавершенияЭлемента(
 	Return GetItemCompletionStructure(Пустая, КакСоответствие);
 EndFunction
 
-Function ПолучитьСтруктуруЗавершенияЗапуска(Val Время, Val Статус = "", Val Описание = "", Val Артибуты = "") Export
-	Return GetLaunchCompletionStructure(Время, Статус, Описание, Артибуты);
+Function ПолучитьСтруктуруЗавершенияЗапуска(Val Время, Val Статус = "", Val Описание = "", Val Атрибуты = "") Export
+	Return GetLaunchCompletionStructure(Время, Статус, Описание, Атрибуты);
 EndFunction
 
 Function ЗаписатьЛог(Val URL, Val Токен, Val Проект, Val СтруктураЛога) Export
