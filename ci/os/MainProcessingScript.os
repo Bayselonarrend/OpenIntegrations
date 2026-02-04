@@ -24,6 +24,7 @@
 
 	ДанныеПроекта = Новый ProjectData;
 	Обработчик = Новый DictionariesMethods(ДанныеПроекта);
+	Обработчик = Новый SpellCheckMethods(ДанныеПроекта);
 	Обработчик = Новый Versioning(ДанныеПроекта);
 	Обработчик = Новый ConversionMethods(ДанныеПроекта);
 	Обработчик = Новый LocalizationMethods(ДанныеПроекта);
