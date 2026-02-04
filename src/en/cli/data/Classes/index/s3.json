@@ -1051,7 +1051,7 @@
 					"types": "String",
 					"description": "Path to directly write a file to disk",
 					"default": "Пустое значение",
-					"short": "-o"
+					"short": null
 				},
 				{
 					"name": "--dir",

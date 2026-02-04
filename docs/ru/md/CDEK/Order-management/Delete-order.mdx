@@ -1,31 +1,30 @@
 ---
-sidebar_position: 2
-description: Изменить заказ и другие функции для работы с CDEK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+sidebar_position: 3
+description: Удалить заказ и другие функции для работы с CDEK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, CDEK]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Изменить заказ
- Изменяет значения полей выбранного заказа
+# Удалить заказ
+ Удаляет заказ по UUID
 
 
 
-`Функция ИзменитьЗаказ(Знач Токен, Знач UUID, Знач ОписаниеЗаказа, Знач ТестовыйAPI = Ложь) Экспорт`
+`Функция УдалитьЗаказ(Знач Токен, Знач UUID, Знач ТестовыйAPI = Ложь) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
   | Токен | --token | Строка | &#x2714; | Токен авторизации |
-  | UUID | --uuid | Строка | &#x2714; | UUID заказа для изменение |
-  | ОписаниеЗаказа | --order | Структура Из КлючИЗначение | &#x2714; | Набор изменяемых полей заказа |
+  | UUID | --uuid | Строка | &#x2714; | UUID заказа для удаления |
   | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
 
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
 
 :::tip
-Метод в документации API: [Изменение заказа](https://api-docs.cdek.ru/36981178.html)
+Метод в документации API: [Удаление заказа](https://api-docs.cdek.ru/29924487.html)
 :::
 <br/>
 
@@ -34,9 +33,7 @@ import TabItem from '@theme/TabItem';
     Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjE5MTU3NDQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
     UUID  = "4c7113d6-e20b-4218-9fd9-2cf33b75a384";
 
-    ОписаниеЗаказа = Новый Структура("comment", "Новый комментарий");
-
-    Результат = OPI_CDEK.ИзменитьЗаказ(Токен, UUID, ОписаниеЗаказа, Истина);
+    Результат = OPI_CDEK.УдалитьЗаказ(Токен, UUID, Истина);
 ```
     
 
@@ -44,24 +41,18 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
-            oint cdek ИзменитьЗаказ \
+            oint cdek УдалитьЗаказ \
               --token "***" \
-              --uuid "812a616d-518f-4e63-a021-22da5408ddf8" \
-              --order "{'comment':'Новый комментарий'}" \
+              --uuid "a5cea0ee-e84f-4562-9ef5-62e0333b9631" \
               --testapi "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
-            oint cdek ИзменитьЗаказ ^
+            oint cdek УдалитьЗаказ ^
               --token "***" ^
-              --uuid "812a616d-518f-4e63-a021-22da5408ddf8" ^
-              --order "{'comment':'Новый комментарий'}" ^
+              --uuid "a5cea0ee-e84f-4562-9ef5-62e0333b9631" ^
               --testapi "***"
         ```
     </TabItem>
@@ -71,13 +62,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "812a616d-518f-4e63-a021-22da5408ddf8"
+  "uuid": "a5cea0ee-e84f-4562-9ef5-62e0333b9631"
  },
  "requests": [
   {
-   "request_uuid": "afb3021c-9d8d-476d-a3b8-702773dbd471",
-   "type": "UPDATE",
-   "date_time": "2026-02-03T13:01:31+03:00",
+   "request_uuid": "b3c2265f-4f5f-48e5-b1e3-0a635775ecac",
+   "type": "DELETE",
+   "date_time": "2026-02-03T23:29:37+03:00",
    "state": "ACCEPTED"
   }
  ],

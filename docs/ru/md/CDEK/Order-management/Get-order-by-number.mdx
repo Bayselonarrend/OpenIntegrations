@@ -1,23 +1,24 @@
 ---
-sidebar_position: 4
-description: Получить заказ и другие функции для работы с CDEK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+sidebar_position: 5
+description: Получить заказ по номеру и другие функции для работы с CDEK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, CDEK]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Получить заказ
- Получает заказ по UUID
+# Получить заказ по номеру
+ Получает заказ по номеру СДЭК или внутреннему номеру клиента
 
 
 
-`Функция ПолучитьЗаказ(Знач Токен, Знач UUID, Знач ТестовыйAPI = Ложь) Экспорт`
+`Функция ПолучитьЗаказПоНомеру(Знач Токен, Знач НомерЗаказа, Знач Внутренний = Ложь, Знач ТестовыйAPI = Ложь) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
   | Токен | --token | Строка | &#x2714; | Токен авторизации |
-  | UUID | --uuid | Строка | &#x2714; | UUID заказа |
+  | НомерЗаказа | --number | Строка | &#x2714; | Номер заказа |
+  | Внутренний | --internal | Булево | &#x2716; | Вид номера заказа. Истина > номер в базе клиента, Ложь > номер СДЭК |
   | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
 
   
@@ -31,9 +32,9 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjE5MTU3NDQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "4c7113d6-e20b-4218-9fd9-2cf33b75a384";
 
-    Результат = OPI_CDEK.ПолучитьЗаказ(Токен, UUID, Истина);
+    НомерЗаказа = "34e9706a-f47f-4348-bd4d-116bf6c5517d";
+    Результат   = OPI_CDEK.ПолучитьЗаказПоНомеру(Токен, НомерЗаказа, Истина, Истина);
 ```
     
 
@@ -41,18 +42,20 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint cdek ПолучитьЗаказ \
+            oint cdek ПолучитьЗаказПоНомеру \
               --token "***" \
-              --uuid "812a616d-518f-4e63-a021-22da5408ddf8" \
+              --number "eac37884-a572-4a5b-993d-3d2fe53526cd" \
+              --internal true \
               --testapi "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint cdek ПолучитьЗаказ ^
+            oint cdek ПолучитьЗаказПоНомеру ^
               --token "***" ^
-              --uuid "812a616d-518f-4e63-a021-22da5408ddf8" ^
+              --number "eac37884-a572-4a5b-993d-3d2fe53526cd" ^
+              --internal true ^
               --testapi "***"
         ```
     </TabItem>
@@ -62,12 +65,12 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "812a616d-518f-4e63-a021-22da5408ddf8",
+  "uuid": "d6d4ad9b-5b7d-4a64-b448-1e1270203d01",
   "type": 1,
   "is_return": false,
   "is_reverse": false,
-  "cdek_number": "1106982714",
-  "number": "60f1e41b-3d8d-45c6-b4ae-4fd1df4d7c7a",
+  "cdek_number": "1106982922",
+  "number": "eac37884-a572-4a5b-993d-3d2fe53526cd",
   "tariff_code": 139,
   "comment": "Новый заказ",
   "items_cost_currency": "RUB",
@@ -160,7 +163,7 @@ import TabItem from '@theme/TabItem';
   "packages": [
    {
     "number": "bar-001",
-    "barcode": "000001649439",
+    "barcode": "000001650197",
     "weight": 4000,
     "length": 10,
     "width": "***",
@@ -186,21 +189,21 @@ import TabItem from '@theme/TabItem';
       "cost": 300
      }
     ],
-    "package_id": "422d2393-ef85-4fd1-bc3f-37bf048f97b1"
+    "package_id": "4cbd807e-f5f9-48b6-9fc9-d6b77199cd85"
    }
   ],
   "statuses": [
    {
     "code": "CREATED",
     "name": "Создан",
-    "date_time": "2026-02-03T12:59:59+03:00",
+    "date_time": "2026-02-03T23:27:19+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    },
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-02-03T12:59:58+03:00",
+    "date_time": "2026-02-03T23:27:18+03:00",
     "city": "Офис СДЭК",
     "deleted": false
    }

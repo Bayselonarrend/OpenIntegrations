@@ -63,9 +63,10 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint s3 ПолучитьОбъект \
-              --name "bigfile.exe" \
-              --bucket "newbucket2" \
-              --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'200000'}"
+              --name "picture.jpg" \
+              --bucket "cf93f52a" \
+              --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" \
+              --dir false
         ```
     </TabItem>
   
@@ -74,9 +75,10 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint s3 ПолучитьОбъект ^
-              --name "bigfile.exe" ^
-              --bucket "newbucket2" ^
-              --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3','ChunkSize':'200000'}"
+              --name "picture.jpg" ^
+              --bucket "cf93f52a" ^
+              --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
+              --dir false
         ```
     </TabItem>
 </Tabs>

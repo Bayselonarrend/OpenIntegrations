@@ -28,54 +28,6 @@ import TabItem from '@theme/TabItem';
 ```
     
 
- <Tabs>
-  
-    <TabItem value="bash" label="Bash" default>
-        ```bash
-            oint bitrix24 ПолучитьСтруктуруПользовательскихНастроекКалендаря \
-              --empty true
-        ```
-    </TabItem>
-  
-    <TabItem value="bat" label="CMD/Bat" default>
-        ```batch
-            oint bitrix24 ПолучитьСтруктуруПользовательскихНастроекКалендаря ^
-              --empty true
-        ```
-    </TabItem>
-</Tabs>
 
 
-```json title="Результат"
-{
- "view": "<стандартное представление: day, week, month, list>",
- "meetSection": "<календарь для приглашений>",
- "crmSection": "<календарь для CRM>",
- "showDeclined": "<показывать отклоненные события>",
- "denyBusyInvitation": "<запрещать приглашать в событие, если время занято>",
- "collapseOffHours": "<скрывать нерабочее время: Y,N>",
- "showWeekNumbers": "<показывать номер недель: Y,N>",
- "showTasks": "<отображать задачи: Y,N>",
- "syncTasks": "<синхронизировать календарь задач: Y,N>",
- "showCompletedTasks": "<отображать завершенные задачи: Y,N>",
- "lastUsedSection": "<календарь событий по умолчанию>",
- "sendFromEmail": "<E-mail для отправки почтовых приглашений>",
- "defaultSections": "<настройки предустановленных календарей>",
- "syncPeriodPast": "<количество месяцев для синхронизации в прошлом периоде>",
- "syncPeriodFuture": "<количество месяцев для синхронизации в будущем периоде>",
- "defaultReminders": {
-  "fullDay": [
-   {
-    "type": "<временной тип напоминания: min, hour, day>",
-    "count": "<числовое значение временного промежутка>"
-   }
-  ],
-  "withTime": [
-   {
-    "type": "<временной тип напоминания: min, hour, day>",
-    "count": "<числовое значение временного промежутка>"
-   }
-  ]
- }
-}
-```
+

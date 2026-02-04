@@ -326,7 +326,7 @@
 					"types": "String",
 					"description": "File save path",
 					"default": "Пустое значение",
-					"short": "-u"
+					"short": null
 				}
 			],
 			"region": "File and directory management"

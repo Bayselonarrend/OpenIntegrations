@@ -17,7 +17,7 @@
 			]
 		},
 		{
-			"name": "Orders management",
+			"name": "Order management",
 			"methods": [
 				"CreateOrder",
 				"UpdateOrder",
@@ -289,7 +289,7 @@
 					"short": "-p"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "UpdateOrder",
@@ -325,7 +325,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "DeleteOrder",
@@ -354,7 +354,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "GetOrder",
@@ -383,7 +383,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "GetOrderByNumber",
@@ -419,7 +419,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "CreateCustomerRefund",
@@ -455,7 +455,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "CreateRefusal",
@@ -484,7 +484,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "CreateReceipt",
@@ -527,7 +527,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "GetReceipt",
@@ -563,7 +563,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "CreateBarcode",
@@ -613,7 +613,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "GetBarcode",
@@ -649,7 +649,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "CreatePrealert",
@@ -692,7 +692,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "GetPrealert",
@@ -721,7 +721,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "GetPassportDataStatus",
@@ -750,7 +750,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "GetCashboxCheck",
@@ -779,7 +779,7 @@
 					"short": "-s"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "GetOrderDescription",
@@ -808,7 +808,7 @@
 					"short": "-o"
 				}
 			],
-			"region": "Orders management"
+			"region": "Order management"
 		},
 		{
 			"name": "GetAvailableDeliveryIntervals",

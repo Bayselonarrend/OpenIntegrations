@@ -535,7 +535,7 @@ Function GetCounterFilterStructure(Val Clear = False) Export
         IDArray.Add("<counter id for selection>");
 
     FilterStructure.Insert("counter_ids"  , IDArray);
-    FilterStructure.Insert("label_id"     , "<filter by label>");
+    FilterStructure.Insert("label_id"     , "<filter by tag>");
     FilterStructure.Insert("offset"       , "<sequence number of the first counter in the list>");
     FilterStructure.Insert("per_page"     , "<maximum number of counters in the output>");
     FilterStructure.Insert("permission"   , "<filter by access level>");

@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 
 
-`Функция ПолучитьНастройкийВерсионированияБакета(Знач Наименование, Знач ОсновныеДанные, Знач Каталог = Ложь, Знач Заголовки = Неопределено) Экспорт`
+`Функция ПолучитьНастройкиВерсионированияБакета(Знач Наименование, Знач ОсновныеДанные, Знач Каталог = Ложь, Знач Заголовки = Неопределено) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
@@ -40,57 +40,10 @@ import TabItem from '@theme/TabItem';
 
     Каталог = Истина; // Формирование URL в path-style
     Наименование = "w567hjy1";
-    Результат = OPI_S3.ПолучитьНастройкийВерсионированияБакета(Наименование, ОсновныеДанные);
+    Результат = OPI_S3.ПолучитьНастройкиВерсионированияБакета(Наименование, ОсновныеДанные);
 ```
     
 
- <Tabs>
-  
-    <TabItem value="bash" label="Bash" default>
-        ```bash
-            # JSON данные также могут быть переданы как путь к файлу .json
-            
-            oint s3 ПолучитьНастройкийВерсионированияБакета \
-              --name "e5181332" \
-              --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
-        ```
-    </TabItem>
-  
-    <TabItem value="bat" label="CMD/Bat" default>
-        ```batch
-            :: JSON данные также могут быть переданы как путь к файлу .json
-            
-            oint s3 ПолучитьНастройкийВерсионированияБакета ^
-              --name "e5181332" ^
-              --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}"
-        ```
-    </TabItem>
-</Tabs>
 
 
-```json title="Результат"
-{
- "status": 200,
- "response": {
-  "VersioningConfiguration": {
-   "Status": "Enabled"
-  }
- },
- "headers": {
-  "Accept-Ranges": "bytes",
-  "Vary": "Accept-Encoding",
-  "Server": "Microsoft-IIS/10.0",
-  "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
-  "X-Amz-Id-2": "dd9025bab4ad464b049177c95eb6ebf374d3b3fd1af9251148b658df7ac2e3e8",
-  "X-Amz-Request-Id": "1890B47ED36B9980",
-  "X-Content-Type-Options": "nosniff",
-  "X-Ratelimit-Limit": "3169",
-  "X-Ratelimit-Remaining": "3169",
-  "X-XSS-Protection": "1; mode=block",
-  "X-Powered-By": "ARR/3.0",
-  "Date": "Tue, 03 Feb 2026 10:05:10 GMT",
-  "Content-Type": "application/xml",
-  "Content-Length": "123"
- }
-}
-```
+
