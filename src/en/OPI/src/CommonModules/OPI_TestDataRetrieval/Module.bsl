@@ -8390,7 +8390,7 @@ Function Check_PostgreSQL_AddTableColumn(Val Result, Val Option)
 
             If Column["column_name"] = "new_field" Then
                 ExpectsThat(Lower(Column["data_type"])).Равно("text");
-                Found                 = True;
+                Found                = True;
             EndIf;
 
         EndDo;
@@ -8414,7 +8414,7 @@ Function Check_PostgreSQL_DeleteTableColumn(Val Result, Val Option)
         For Each Column In Result["data"] Do
 
             If Column["column_name"] = "new_field" Then
-                Found                 = True;
+                Found                = True;
             EndIf;
 
         EndDo;
@@ -8745,7 +8745,7 @@ Function Check_MySQL_DeleteTableColumn(Val Result, Val Option)
         For Each Column In Result["data"] Do
 
             If Column["COLUMN_NAME"] = "new_field" Then
-                Found                 = True;
+                Found                = True;
             EndIf;
 
         EndDo;
@@ -10962,7 +10962,7 @@ Function Check_MSSQL_DeleteTableColumn(Val Result, Val Option)
         For Each Column In Result["data"] Do
 
             If Column["column_name"] = "new_field" Then
-                Found                 = True;
+                Found                = True;
             EndIf;
 
         EndDo;
