@@ -230,10 +230,6 @@ Function GetFullParamsDescription(MethodData)
 
 		OptionFull = MethodParameter["name"];
 
-		If OptionFull = "--out" Then
-			Continue;
-		EndIf;
-
 		SplittedOption = MethodParameter["short"];
 		DefaultValue = MethodParameter["default"];
 
