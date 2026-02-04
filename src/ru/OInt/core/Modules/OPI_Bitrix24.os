@@ -1392,7 +1392,7 @@
 #Область РаботаСКомментариямиИРезультатамиЗадач
 
 // Получить список комментариев задачи
-// получает список комментариев пользователей к задаче по ID
+// Получает список комментариев пользователей к задаче по ID
 //
 // Примечание:
 // Метод в документации API: [task.commentitem.getlist](@dev.1c-bitrix.ru/rest_help/tasks/task/commentitem/getlist.php)
@@ -3555,7 +3555,7 @@
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Bitrix24
-Функция ОтметитьСообщениеКакПрочитаное(Знач URL, Знач IDЧата, Знач IDСообщения, Знач Токен = "") Экспорт
+Функция ОтметитьСообщениеКакПрочитанное(Знач URL, Знач IDЧата, Знач IDСообщения, Знач Токен = "") Экспорт
 
     Параметры = НормализоватьАвторизацию(URL, Токен, "im.dialog.read");
 
@@ -4053,7 +4053,7 @@
 КонецФункции
 
 // Получить структуру пользователя
-// Получает структура полей для создания или изменения пользователя
+// Получает структуру полей для создания или изменения пользователя
 //
 // Примечание:
 // Метод в документации API: [user.fields](@dev.1c-bitrix.ru/rest_help/users/user_fields.php)
@@ -5750,7 +5750,7 @@ Function SendFile(Val URL, Val ChatID, Val FileID, Val Description = "", Val Tok
 EndFunction
 
 Function MarkMessageAsReaded(Val URL, Val ChatID, Val MessageID, Val Token = "") Export
-	Return ОтметитьСообщениеКакПрочитаное(URL, ChatID, MessageID, Token);
+	Return ОтметитьСообщениеКакПрочитанное(URL, ChatID, MessageID, Token);
 EndFunction
 
 Function MarkMessageAsUnreaded(Val URL, Val ChatID, Val MessageID, Val Token = "") Export
