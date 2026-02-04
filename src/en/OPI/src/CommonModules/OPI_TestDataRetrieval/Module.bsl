@@ -8044,11 +8044,11 @@ Function Check_SQLite_AddTableColumn(Val Result, Val Option)
 
         Found = False;
 
-        For Each Coloumn In Result["data"] Do
+        For Each Column In Result["data"] Do
 
-            If Coloumn["name"] = "new_col" Then
+            If Column["name"] = "new_col" Then
 
-                ExpectsThat(Coloumn["type"]).Равно("TEXT");
+                ExpectsThat(Column["type"]).Равно("TEXT");
                 Found = True;
 
             EndIf;
@@ -8071,9 +8071,9 @@ Function Check_SQLite_DeleteTableColumn(Val Result, Val Option)
 
         Found = False;
 
-        For Each Coloumn In Result["data"] Do
+        For Each Column In Result["data"] Do
 
-            If Coloumn["name"] = "new_col" Then
+            If Column["name"] = "new_col" Then
 
                 Found = True;
 
@@ -8103,8 +8103,8 @@ Function Check_SQLite_EnsureTable(Val Result, Val Option, ColoumnsStruct = "")
 
         ExpectsThat(Result["data"].Count()).Равно(ColoumnsStruct.Count());
 
-        For Each Coloumn In Result["data"] Do
-            ExpectsThat(Coloumn["type"]).Равно(ColoumnsStruct[Coloumn["name"]]);
+        For Each Column In Result["data"] Do
+            ExpectsThat(Column["type"]).Равно(ColoumnsStruct[Column["name"]]);
         EndDo;
 
     EndIf;
@@ -8386,10 +8386,10 @@ Function Check_PostgreSQL_AddTableColumn(Val Result, Val Option)
 
         Found = False;
 
-        For Each Coloumn In Result["data"] Do
+        For Each Column In Result["data"] Do
 
-            If Coloumn["column_name"] = "new_field" Then
-                ExpectsThat(Lower(Coloumn["data_type"])).Равно("text");
+            If Column["column_name"] = "new_field" Then
+                ExpectsThat(Lower(Column["data_type"])).Равно("text");
                 Found                 = True;
             EndIf;
 
@@ -8411,9 +8411,9 @@ Function Check_PostgreSQL_DeleteTableColumn(Val Result, Val Option)
 
         Found = False;
 
-        For Each Coloumn In Result["data"] Do
+        For Each Column In Result["data"] Do
 
-            If Coloumn["column_name"] = "new_field" Then
+            If Column["column_name"] = "new_field" Then
                 Found                 = True;
             EndIf;
 
@@ -8435,8 +8435,8 @@ Function Check_PostgreSQL_EnsureTable(Val Result, Val Option, ColoumnsStruct = "
 
         ExpectsThat(Result["data"].Count()).Равно(ColoumnsStruct.Count());
 
-        For Each Coloumn In Result["data"] Do
-            ExpectsThat(Lower(Coloumn["data_type"])).Равно(Lower(ColoumnsStruct[Coloumn["column_name"]]));
+        For Each Column In Result["data"] Do
+            ExpectsThat(Lower(Column["data_type"])).Равно(Lower(ColoumnsStruct[Column["column_name"]]));
         EndDo;
 
     Else
@@ -8715,11 +8715,11 @@ Function Check_MySQL_AddTableColumn(Val Result, Val Option)
 
         Found = False;
 
-        For Each Coloumn In Result["data"] Do
+        For Each Column In Result["data"] Do
 
-            If Coloumn["COLUMN_NAME"] = "new_field" Then
+            If Column["COLUMN_NAME"] = "new_field" Then
 
-                CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
+                CurrentType = GetStringFromBinaryData(Base64Value(Column["DATA_TYPE"]["BYTES"]));
                 ExpectsThat(Lower(CurrentType)).Равно("mediumtext");
                 Found       = True;
             EndIf;
@@ -8742,9 +8742,9 @@ Function Check_MySQL_DeleteTableColumn(Val Result, Val Option)
 
         Found = False;
 
-        For Each Coloumn In Result["data"] Do
+        For Each Column In Result["data"] Do
 
-            If Coloumn["COLUMN_NAME"] = "new_field" Then
+            If Column["COLUMN_NAME"] = "new_field" Then
                 Found                 = True;
             EndIf;
 
@@ -8766,9 +8766,9 @@ Function Check_MySQL_EnsureTable(Val Result, Val Option, ColoumnsStruct = "")
 
         ExpectsThat(Result["data"].Count()).Равно(ColoumnsStruct.Count());
 
-        For Each Coloumn In Result["data"] Do
-            CurrentType = GetStringFromBinaryData(Base64Value(Coloumn["DATA_TYPE"]["BYTES"]));
-            ExpectsThat(Lower(CurrentType)).Равно(Lower(ColoumnsStruct[Coloumn["COLUMN_NAME"]]));
+        For Each Column In Result["data"] Do
+            CurrentType = GetStringFromBinaryData(Base64Value(Column["DATA_TYPE"]["BYTES"]));
+            ExpectsThat(Lower(CurrentType)).Равно(Lower(ColoumnsStruct[Column["COLUMN_NAME"]]));
         EndDo;
 
     Else
@@ -10933,11 +10933,11 @@ Function Check_MSSQL_AddTableColumn(Val Result, Val Option)
 
         Found = False;
 
-        For Each Coloumn In Result["data"] Do
+        For Each Column In Result["data"] Do
 
-            If Coloumn["column_name"] = "new_field" Then
+            If Column["column_name"] = "new_field" Then
 
-                ExpectsThat(Lower(Coloumn["data_type"])).Равно("bigint");
+                ExpectsThat(Lower(Column["data_type"])).Равно("bigint");
                 Found = True;
             EndIf;
 
@@ -10959,9 +10959,9 @@ Function Check_MSSQL_DeleteTableColumn(Val Result, Val Option)
 
         Found = False;
 
-        For Each Coloumn In Result["data"] Do
+        For Each Column In Result["data"] Do
 
-            If Coloumn["column_name"] = "new_field" Then
+            If Column["column_name"] = "new_field" Then
                 Found                 = True;
             EndIf;
 
@@ -10983,8 +10983,8 @@ Function Check_MSSQL_EnsureTable(Val Result, Val Option, ColoumnsStruct = "")
 
         ExpectsThat(Result["data"].Count()).Равно(ColoumnsStruct.Count());
 
-        For Each Coloumn In Result["data"] Do
-            ExpectsThat(Lower(Coloumn["data_type"])).Равно(Lower(ColoumnsStruct[Coloumn["column_name"]]));
+        For Each Column In Result["data"] Do
+            ExpectsThat(Lower(Column["data_type"])).Равно(Lower(ColoumnsStruct[Column["column_name"]]));
         EndDo;
 
     Else

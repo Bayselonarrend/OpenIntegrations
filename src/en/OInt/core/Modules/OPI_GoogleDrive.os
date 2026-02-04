@@ -157,7 +157,7 @@ EndFunction
 //
 // Parameters:
 // Token - String - Token - token
-// NameContains - String - Filter by name - querry
+// NameContains - String - Filter by name - query
 // Detailed - Boolean - Adds a list of files to the directory fields - depth
 //
 // Returns:
@@ -193,7 +193,7 @@ EndFunction
 //
 // Parameters:
 // Token - String - Token - token
-// NameContains - String - Filter by name - querry
+// NameContains - String - Filter by name - query
 // Directory - String - Filter by parent directory ID - catalog
 //
 // Returns:

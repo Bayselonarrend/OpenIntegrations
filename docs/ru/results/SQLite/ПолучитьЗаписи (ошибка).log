@@ -1,4 +1,4 @@
 ﻿    {
- "error": "near \"BEETWEEN\": syntax error in SELECT name, age, salary, is_active, created_at FROM test\nWHERE name = ?1 AND age BEETWEEN 20 AND 30 AND age BEETWEEN 20 AND 30 \n\n at offset 82",
+ "error": "near \"BETWEEN\": syntax error in SELECT name, age, salary, is_active, created_at FROM test\nWHERE name = ?1 AND age BETWEEN 20 AND 30 AND age BETWEEN 20 AND 30 \n\n at offset 82",
  "result": false
 }

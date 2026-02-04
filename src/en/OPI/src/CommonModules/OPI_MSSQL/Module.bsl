@@ -571,7 +571,7 @@ EndFunction
 // Gets the template structure for filtering records in ORM queries
 //
 // Note:
-// The use of the `raw` feature is necessary for compound constructions like `BEETWEEN`.^^
+// The use of the `raw` feature is necessary for compound constructions like `BETWEEN`.^^
 // For example: with `raw:false` the filter `type:BETWEEN` `value:10 AND 20` will be interpolated as `BETWEEN ?1 `^^
 // where `?1 = "10 AND 20,"' which would cause an error..^^
 // In such a case, you must use `raw:true` to set the condition directly in the query text
