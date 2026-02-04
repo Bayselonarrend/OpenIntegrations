@@ -86,8 +86,8 @@ Function CreateTable(Val Module
 
     SetTableName(Scheme, Table);
 
-    For Each Coloumn In ColoumnsStruct Do
-        AddColoumn(Scheme, Coloumn.Key, Coloumn.Value);
+    For Each Column In ColoumnsStruct Do
+        AddColoumn(Scheme, Column.Key, Column.Value);
     EndDo;
 
     Request = FormSQLText(Scheme);
@@ -971,8 +971,8 @@ Function FormTextCreate(Val Scheme)
 
     ColoumnsDescriptionArray = New Array;
 
-    For Each Coloumn In Columns Do
-        For Each Element In Coloumn Do
+    For Each Column In Columns Do
+        For Each Element In Column Do
             ColoumnsDescriptionArray.Add(StrTemplate(ColoumTemplate, Element.Key, Element.Value));
         EndDo;
     EndDo;
@@ -1414,9 +1414,9 @@ Function NormalizeTable(Val Module
     AddCode    = 1;
     IgnoreCode = 2;
 
-    For Each Coloumn In TableColumns Do
+    For Each Column In TableColumns Do
 
-        ColumnName = Coloumn[FieldName];
+        ColumnName = Column[FieldName];
 
         If Not ValueIsFilled(ColumnName) Then
             Continue;

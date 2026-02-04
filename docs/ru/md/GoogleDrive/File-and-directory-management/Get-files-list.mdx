@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
   | Токен | --token | Строка | &#x2714; | Токен |
-  | ИмяСодержит | --querry | Строка | &#x2716; | Отбор по имени |
+  | ИмяСодержит | --query | Строка | &#x2716; | Отбор по имени |
   | Каталог | --catalog | Строка | &#x2716; | Отбор по ID каталога родителя |
 
   
@@ -40,7 +40,7 @@ import TabItem from '@theme/TabItem';
         ```bash
             oint gdrive ПолучитьСписокФайлов \
               --token "***" \
-              --querry "data" \
+              --query "data" \
               --catalog "root"
         ```
     </TabItem>
@@ -49,7 +49,7 @@ import TabItem from '@theme/TabItem';
         ```batch
             oint gdrive ПолучитьСписокФайлов ^
               --token "***" ^
-              --querry "data" ^
+              --query "data" ^
               --catalog "root"
         ```
     </TabItem>
