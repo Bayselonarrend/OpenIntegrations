@@ -61,5 +61,124 @@ import TabItem from '@theme/TabItem';
 
 
 ```json title="Результат"
-{}
+[
+ {
+  "messageID": "3EB0927369F4715333EBC8",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "***",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0D83796AEB69B11DBA7",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "***",
+   "message": "Какой ваш любимый цвет?",
+   "options": [
+    {
+     "optionName": "Красный"
+    },
+    {
+     "optionName": "Желтый"
+    },
+    {
+     "optionName": "Зеленый"
+    }
+   ],
+   "multipleAnswers": true,
+   "quotedMessageId": "3EB0927369F4715333EBC8",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0246B6956A42423D39D",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "address": "Площадь Победы, Минск",
+   "nameLocation": "пл. Победы",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB05BB3C58B57CC68A4AB",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "quotedMessageId": "3EB0246B6956A42423D39D",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0DA72DDF6E2BFEE0879",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "firstName": "Артем",
+    "middleName": "Евпаторийский",
+    "lastName": "Петрович",
+    "company": "Велосипед"
+   },
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB020DBE5BDB1C288FEC5",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "company": "Велосипед"
+   },
+   "quotedMessageId": "3EB0DA72DDF6E2BFEE0879",
+   "typingTime": null
+  }
+ },
+ {
+  "messagesIDs": [
+   "3EB041E9B2D0781522493C"
+  ],
+  "type": "ForwardMessages",
+  "body": {
+   "chatId": "***",
+   "chatIdFrom": "***",
+   "messages": [
+    "3EB0826B9C56A6AEE4ADAC"
+   ],
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0AE57C5A40A59CF6ECD",
+  "type": "editMessage",
+  "body": {
+   "chatId": "***",
+   "idMessage": "3EB0826B9C56A6AEE4ADAC",
+   "message": "Новый текст сообщения",
+   "linkPreview": true
+  }
+ }
+]
 ```

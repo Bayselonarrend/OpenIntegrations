@@ -494,20 +494,6 @@ EndFunction
 
 Function GetStandardParameters(Val Parameters = "")
 
-    // The definition of the data required for the work is collected here.
-    // For Twitter, this is quite a significant set, which is due to the presence of 2 APIs at once,
-    // which, at the same time, are not created for different tasks, but are simply versions of each other.
-    // The current version of the API is v2 and it requires obtaining temporary tokens. Despite the fact,
-    // that Twitter insists on using this latest version, they somehow managed not to transfer
-    // file upload mechanism and some others from the old version - v1.1. Therefore, something needs to be done
-    // on version 1.1, and something on 2: up to the point that they removed the ability to post tweets from v1.1,
-    // but only through it you can add a picture to the tweet. At the same time, their authentication methods and tokens are different
-
-    // The world gigacorporation of Elon Musk, by the way, a reminder ;)
-
-    // P.S The following is often referred to as the "Twitter Developer settings page" - this
-    // https://developer.twitter.com/en/portal/dashboard and chosing of project from list (key icon)
-
     Parameters_ = New Map;
     Permissions = "tweet.read tweet.write tweet.moderate.write users.read "
         + "follows.read follows.write offline.access space.read mute.read "
