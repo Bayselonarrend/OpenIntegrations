@@ -148,7 +148,7 @@
 				{
 					"name": "--path",
 					"types": "Строка",
-					"description": "Путь к созаваемой папке",
+					"description": "Путь к создаваемой папке",
 					"default": null,
 					"short": "-p"
 				}

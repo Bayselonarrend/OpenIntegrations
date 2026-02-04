@@ -585,7 +585,7 @@
 				{
 					"name": "--name",
 					"types": "Строка",
-					"description": "Имя файла с раширением",
+					"description": "Имя файла с расширением",
 					"default": null,
 					"short": "-n"
 				},
