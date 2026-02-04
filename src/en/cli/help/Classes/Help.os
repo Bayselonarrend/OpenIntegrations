@@ -239,7 +239,7 @@ Function GetFullParamsDescription(MethodData)
 
 		CurrentOptionList = ?(ValueIsFilled(SplittedOption)
 			, StrTemplate("%1, %2", SplittedOption, OptionFull)
-			, OptionFull);
+			, StrTemplate(" %1", OptionFull));
 
 		CurrentLength = StrLen(CurrentOptionList);
 

@@ -1,30 +1,35 @@
 ---
-sidebar_position: 7
-description: Создать отказ и другие функции для работы с CDEK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+sidebar_position: 6
+description: Оформить клиентский возврат и другие функции для работы с CDEK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, CDEK]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Создать отказ
- Создает отказ по заказу для возврата в интернет магазин
+# Оформить клиентский возврат
+ Оформляет клиентский возврат для заказа интернет магазина
 
 
 
-`Функция СоздатьОтказ(Знач Токен, Знач UUID, Знач ТестовыйAPI = Ложь) Экспорт`
+`Функция ОформитьКлиентскийВозврат(Знач Токен, Знач UUID, Знач Тариф, Знач ТестовыйAPI = Ложь) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
   | Токен | --token | Строка | &#x2714; | Токен авторизации |
   | UUID | --uuid | Строка | &#x2714; | UUID заказа |
+  | Тариф | --tariff | Число | &#x2714; | Код тарифа (из доступных по договору) |
   | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
 
   
   Возвращаемое значение:   Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
 
 :::tip
-Метод в документации API: [Регистрация отказа](https://api-docs.cdek.ru/55327658.html)
+Этот метод используется в случае, если прямой заказ доставлялся СДЭК и получатель хочет вернуть его полностью
+
+Если заказ доставлялся другой службой, либо нужно вернуть не все товары, то необходимо использовать метод СоздатьЗаказ с is_client_return = true
+
+Метод в документации API: [Клиентские возвраты](https://api-docs.cdek.ru/122762174.html)
 :::
 <br/>
 
@@ -32,8 +37,9 @@ import TabItem from '@theme/TabItem';
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjE5MTU3NDQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
     UUID  = "4c7113d6-e20b-4218-9fd9-2cf33b75a384";
+    Тариф = 139;
 
-    Результат = OPI_CDEK.СоздатьОтказ(Токен, UUID, Истина);
+    Результат = OPI_CDEK.ОформитьКлиентскийВозврат(Токен, UUID, Тариф, Истина);
 ```
     
 
@@ -41,18 +47,20 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint cdek СоздатьОтказ \
+            oint cdek ОформитьКлиентскийВозврат \
               --token "***" \
-              --uuid "812a616d-518f-4e63-a021-22da5408ddf8" \
+              --uuid "d6d4ad9b-5b7d-4a64-b448-1e1270203d01" \
+              --tariff 139 \
               --testapi "***"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint cdek СоздатьОтказ ^
+            oint cdek ОформитьКлиентскийВозврат ^
               --token "***" ^
-              --uuid "812a616d-518f-4e63-a021-22da5408ddf8" ^
+              --uuid "d6d4ad9b-5b7d-4a64-b448-1e1270203d01" ^
+              --tariff 139 ^
               --testapi "***"
         ```
     </TabItem>
@@ -62,13 +70,13 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "812a616d-518f-4e63-a021-22da5408ddf8"
+  "uuid": "d6d4ad9b-5b7d-4a64-b448-1e1270203d01"
  },
  "requests": [
   {
-   "request_uuid": "6e254c61-3e2f-4752-979a-9c4ffb374ee0",
-   "type": "CREATE_REFUSAL",
-   "date_time": "2026-02-03T13:01:35+03:00",
+   "request_uuid": "08f66ffa-e14e-445b-9116-e0c0d2075e08",
+   "type": "CREATE_CLIENT_RETURN",
+   "date_time": "2026-02-03T23:28:23+03:00",
    "state": "ACCEPTED"
   }
  ],

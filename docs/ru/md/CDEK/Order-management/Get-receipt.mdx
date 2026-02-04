@@ -1,23 +1,23 @@
 ---
-sidebar_position: 11
-description: Получить штрихкод и другие функции для работы с CDEK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
+sidebar_position: 9
+description: Получить квитанцию и другие функции для работы с CDEK в Открытом пакете интеграций - бесплатной open-source библиотеке интеграций для 1С:Предприятие 8, OneScript и CLI
 keywords: [1C, 1С, 1С:Предприятие, 1С:Предприятие 8.3, API, Интеграция, Сервисы, Обмен, OneScript, CLI, CDEK]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Получить штрихкод
- Получает штрихкод места к заказу
+# Получить квитанцию
+ Получает квитанцию к заказу
 
 
 
-`Функция ПолучитьШтрихкод(Знач Токен, Знач UUID, Знач ПолучитьФайл = Ложь, Знач ТестовыйAPI = Ложь) Экспорт`
+`Функция ПолучитьКвитанцию(Знач Токен, Знач UUID, Знач ПолучитьФайл = Ложь, Знач ТестовыйAPI = Ложь) Экспорт`
 
   | Параметр | CLI опция | Тип | Обяз. | Назначение |
   |-|-|-|-|-|
   | Токен | --token | Строка | &#x2714; | Токен авторизации |
-  | UUID | --uuid | Строка | &#x2714; | UUID штрихкода, полученный при его формировании |
+  | UUID | --uuid | Строка | &#x2714; | UUID квитанции, полученный при ее формировании |
   | ПолучитьФайл | --getfile | Булево | &#x2716; | Истина > будут получены сразу данные PDF файла, Ложь > ответ сервера CDEK |
   | ТестовыйAPI | --testapi | Булево | &#x2716; | Флаг использования API для тестовых запросов |
 
@@ -25,20 +25,20 @@ import TabItem from '@theme/TabItem';
   Возвращаемое значение:   Соответствие Из КлючИЗначение, ДвоичныеДанные - сериализованный JSON ответа от CDEK или PDF файл
 
 :::tip
-Штрихкод должен быть предварительно создан. См. СформироватьШтрихкод
+Квитанция должна быть предварительно создана. См. СформироватьКвитанцию
 
-Ссылка на файл с ШК местом к заказам доступна в течение 1 часа
+Ссылка на файл с квитанцией к заказам доступна в течение 1 часа
 
-Метод в документации API: [Получение ШК места к заказу](https://api-docs.cdek.ru/36967298.html)
+Метод в документации API: [Получение квитанции к заказу](https://api-docs.cdek.ru/36967287.html)
 :::
 <br/>
 
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Токен = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZSI6WyJsb2NhdGlvbjphbGwiLCJvcmRlcjphbGwiLCJwYXltZW50OmFsbCJdLCJleHAiOjE3NjE5MTU3NDQsImF1dGhvcml0aWVzIjpbInNoYXJkLWlkOnJ1LTAxIiwiY2xpZW50LWNpdHk60J3QvtCy0L7RgdC40LHQuNGA0YHQuiwg0J3QvtCy0L7RgdC40LHQuNGA0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwiLCJhY2NvdW50LWxhbmc6cnVzIiwiY29udHJhY3Q60JjQnC3QoNCkLdCT0JvQky0yMiIsImFwaS12ZXJzaW9uOjEuMSIsImFjY291bnQtdXVpZDplOTI1YmQwZi0wNWE2LTRjNTYtYjczNy00Yjk5YzE0ZjY2OWEiLCJjbGllbnQtaWQtZWM1OmVkNzVlY2Y0LTMwZWQtNDE1My1hZmU5LWViODBiYjUxMmYyMiIsImNvbnRyYWN0LWlkOmRlNDJjYjcxLTZjOGMtNGNmNS04MjIyLWNmYjY2MDQ0ZThkZiIsImNsaWVudC1pZC1lYzQ6MTQzNDgyMzEiLCJjb250cmFnZW50L...";
-    UUID  = "207f61a9-23a4-4d08-8723-8dd671a7b391";
+    UUID  = "fe0421c4-7a85-4fae-812d-3aee31c939cb";
 
-    Результат = OPI_CDEK.ПолучитьШтрихкод(Токен, UUID, , Истина); // Ответ сервера с ссылкой
+    Результат = OPI_CDEK.ПолучитьКвитанцию(Токен, UUID, , Истина); // Ответ сервера с ссылкой
 ```
     
 
@@ -46,23 +46,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
-            oint cdek ПолучитьШтрихкод \
+            oint cdek ПолучитьКвитанцию \
               --token "***" \
-              --uuid "b99f911a-9abf-4493-8e51-0793063d6a94" \
+              --uuid "8a8df3b2-2b6d-4afa-ab62-ef25645c7acd" \
               --getfile "True" \
               --testapi "***" \
-              --out "/tmp/5z4v25xx.idl.pdf"
+              --out "/tmp/bvggi3eg.21d.pdf"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
-            oint cdek ПолучитьШтрихкод ^
+            oint cdek ПолучитьКвитанцию ^
               --token "***" ^
-              --uuid "b99f911a-9abf-4493-8e51-0793063d6a94" ^
+              --uuid "8a8df3b2-2b6d-4afa-ab62-ef25645c7acd" ^
               --getfile "True" ^
               --testapi "***" ^
-              --out "/tmp/5z4v25xx.idl.pdf"
+              --out "/tmp/bvggi3eg.21d.pdf"
         ```
     </TabItem>
 </Tabs>
@@ -71,39 +71,38 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 {
  "entity": {
-  "uuid": "f1f5c054-26c7-4b62-80cb-838a54c363ba",
+  "uuid": "be82b654-0a69-40af-95c1-4b83905c4ac6",
   "orders": [
    {
-    "order_uuid": "812a616d-518f-4e63-a021-22da5408ddf8"
+    "order_uuid": "d6d4ad9b-5b7d-4a64-b448-1e1270203d01"
    }
   ],
   "copy_count": 1,
-  "format": "A5",
-  "url": "https://api.edu.cdek.ru/v2/print/barcodes/f1f5c054-26c7-4b62-80cb-838a54c363ba.pdf",
-  "lang": "RUS",
+  "type": "tpl_russia",
+  "url": "https://api.edu.cdek.ru/v2/print/orders/be82b654-0a69-40af-95c1-4b83905c4ac6.pdf",
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-02-03T13:00:29+03:00"
+    "date_time": "2026-02-03T23:27:47+03:00"
    },
    {
     "code": "PROCESSING",
     "name": "Формируется",
-    "date_time": "2026-02-03T13:00:29+03:00"
+    "date_time": "2026-02-03T23:27:47+03:00"
    },
    {
     "code": "READY",
     "name": "Сформирован",
-    "date_time": "2026-02-03T13:00:30+03:00"
+    "date_time": "2026-02-03T23:27:48+03:00"
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "9e996e35-845f-4f09-a9e0-a4a39258187f",
+   "request_uuid": "9c2a707e-402c-4c67-8ca5-75c366336f92",
    "type": "CREATE",
-   "date_time": "2026-02-03T13:00:29+03:00",
+   "date_time": "2026-02-03T23:27:47+03:00",
    "state": "SUCCESSFUL"
   }
  ],

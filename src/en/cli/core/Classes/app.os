@@ -5,7 +5,9 @@ Var Parser; // Object parser incoming data
 Var OPIObject; // Object work with methods OPI
 Var Help; // Object output reference information
 
+Var WriteFromFunction; // Record in file not need, that as performed inside primary functions
 Var OutputFile; // Path redirection output in file
+
 Var CurrentCommand; // Name current commands
 Var CurrentMethod;
 Var CurrentIndex;
@@ -23,6 +25,7 @@ Procedure MainHandler()
 	
 	Debugging = True;
 	Testing = False;
+	WriteFromFunction = False;
 
 	SetEnvironmentVariable("OINT_CLI", "YES");
 
@@ -72,12 +75,17 @@ Procedure FormParameterSet()
 
 	Parser.AddPositionalCommandParameter(Command, "Method");
 	
-	AddMethodParams(Command, Parser);
+	ParameterArray = AddMethodParams(Command, Parser);
+
+	If ParameterArray.Find("--out") = Undefined Then
+		Parser.AddNamedCommandParameter(Command, "--out");
+	Else
+		WriteFromFunction = True;
+	EndIf;
 
 	Parser.AddCommandFlagParameter(Command, "--help");
 	Parser.AddCommandFlagParameter(Command, "--debug");
 	Parser.AddCommandFlagParameter(Command, "--test");
-	Parser.AddNamedCommandParameter(Command, "--out");
 
 	Parser.AddCommand(Command);
 
@@ -154,10 +162,12 @@ EndFunction
 
 #Region Auxiliary
 
-Procedure AddMethodParams(Command, Parser)
+Function AddMethodParams(Command, Parser)
 	
+	ParameterArray = New Array;
+
 	If Not ValueIsFilled(CurrentMethod) Then
-		Return	
+		Return	ParameterArray;
 	EndIf;
 
 	MethodData = OPIObject.GetMethodData(CurrentCommand, CurrentMethod);
@@ -171,19 +181,78 @@ Procedure AddMethodParams(Command, Parser)
 	For Each Parameter In MethodParameters Do
 
 		FullName = Parameter["name"];
-
-		If FullName = "--out" Then
-			Continue;
-		EndIf;
-
 		ShortName = Parameter["short"];
 
 		Parser.AddNamedCommandParameter(Command, FullName);
 		Parser.AddNamedCommandParameter(Command, ShortName);
 
+		ParameterArray.Add(FullName);
+
 	EndDo;
 
-EndProcedure
+	Return ParameterArray;
+
+EndFunction
+
+Function WriteValueToFile(Val Value, Val Path)
+
+	StandardUnit = 1024;
+	DataUnit = StandardUnit * StandardUnit;
+
+	If Not WriteFromFunction Then
+		PrepareRecord(Value, Path);
+	EndIf;
+
+	RecordedFile = New File(Path);
+
+	If RecordedFile.Exists() Then
+
+		Return StrTemplate("File with size %1 MB was recorded in %1"
+			, String(Round(RecordedFile.Size() / DataUnit, 3)) 
+			, RecordedFile.FullName);
+
+	Else
+		Raise "File was not saved! Use the --debug flag for more information";
+	EndIf;
+
+EndFunction
+
+Function EmptyOutput(Output)
+
+	If TypeOf(Output) = Type("BinaryData") Then
+		Return Output.Size() = 0;
+	Else
+		Return Not ValueIsFilled(Output);
+	EndIf;
+	
+EndFunction
+
+Function JSONString(Val Data)
+
+    LineBreak = JSONLineBreak.Windows;
+
+    JSONParameters = New JSONWriterSettings(LineBreak
+        , " "
+        , False
+        , JSONCharactersEscapeMode["None"]
+        , False
+        , False
+        , False
+        , False);
+
+    Try
+
+        JSONWriter = New JSONWriter;
+        JSONWriter.SetString(JSONParameters);
+
+        WriteJSON(JSONWriter, Data);
+        Return JSONWriter.Close();
+
+    Except
+        Return "NOT JSON: " + String(Data);
+    EndTry;
+
+EndFunction
 
 Procedure DefinePathsTemplates()
 
@@ -295,11 +364,14 @@ Procedure ReportResult(Val Text, Val Status = "")
 	EndIf;
 
 	If ValueIsFilled(OutputFile) Then
+
 		Text = WriteValueToFile(Text, OutputFile);
+
 	ElsIf TypeOf(Text) = Type("BinaryData") Then
-		Text = "It Seems Binary Data Was Received in Response!! "
-		    + "Next time, use the --out option to specify the path for saving";
+
+		Text = "It Seems Binary Data Was Received in Response! Next time, use the --out option to specify the path for saving";
 		Status = MessageStatus.Information;
+
 	Else 
 		Text = String(Text);
 	EndIf;
@@ -324,10 +396,8 @@ Procedure AttachExecutor()
 
 EndProcedure
 
-Function WriteValueToFile(Val Value, Val Path)
-	
-	StandardUnit = 1024;
-	DataUnit = StandardUnit * StandardUnit;
+Procedure PrepareRecord(Value, Path)
+
 	Value = ?(TypeOf(Value) = Type("BinaryData"), Value, String(Value));
 
 	If TypeOf(Value) = Type("String") Then 
@@ -346,55 +416,7 @@ Function WriteValueToFile(Val Value, Val Path)
         Value.Write(Path);
 	EndIf;
 
-	RecordedFile = New File(Path);
-
-	If RecordedFile.Exists() Then
-		Return "File with size " 
-		    + String(Round(RecordedFile.Size() / DataUnit, 3)) 
-			+ " MB was recorded in " 
-			+ RecordedFile.FullName;
-	Else
-		Raise "File was not saved! Use the --debug flag for more information";
-	EndIf;
-
-EndFunction
-
-Function EmptyOutput(Output)
-
-	If TypeOf(Output) = Type("BinaryData") Then
-		Return Output.Size() = 0;
-	Else
-		Return Not ValueIsFilled(Output);
-	EndIf;
-	
-EndFunction
-
-Function JSONString(Val Data)
-
-    LineBreak = JSONLineBreak.Windows;
-
-    JSONParameters = New JSONWriterSettings(LineBreak
-        , " "
-        , False
-        , JSONCharactersEscapeMode["None"]
-        , False
-        , False
-        , False
-        , False);
-
-    Try
-
-        JSONWriter = New JSONWriter;
-        JSONWriter.SetString(JSONParameters);
-
-        WriteJSON(JSONWriter, Data);
-        Return JSONWriter.Close();
-
-    Except
-        Return "NOT JSON: " + String(Data);
-    EndTry;
-
-EndFunction
+EndProcedure
 
 #EndRegion
 

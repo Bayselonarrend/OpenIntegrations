@@ -54,8 +54,8 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint twitter СоздатьТвитГифки \
-              --text "Тестовый твиттbbd7e7b2-6279-40ee-9f76-d227c802e27e" \
-              --gifs "C:\Users\bayse\AppData\Local\Temp\4vpghas3.mae" \
+              --text "Тестовый твиттb5488f8b-8b01-4ff7-98c9-aebf88878ac7" \
+              --gifs "C:\Users\bayse\AppData\Local\Temp\jf51sasn.xbl" \
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -65,8 +65,8 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint twitter СоздатьТвитГифки ^
-              --text "Тестовый твиттbbd7e7b2-6279-40ee-9f76-d227c802e27e" ^
-              --gifs "C:\Users\bayse\AppData\Local\Temp\4vpghas3.mae" ^
+              --text "Тестовый твиттb5488f8b-8b01-4ff7-98c9-aebf88878ac7" ^
+              --gifs "C:\Users\bayse\AppData\Local\Temp\jf51sasn.xbl" ^
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
     </TabItem>
@@ -75,9 +75,12 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "title": "Too Many Requests",
- "detail": "Too Many Requests",
- "type": "about:blank",
- "status": 429
+ "data": {
+  "text": "Тестовый твитт48c2e6a2-db75-48a0-8df3-d08f1ca0bed5 https://t.co/rlENvUgt44",
+  "id": "2018762848160100708",
+  "edit_history_tweet_ids": [
+   "2018762848160100708"
+  ]
+ }
 }
 ```
