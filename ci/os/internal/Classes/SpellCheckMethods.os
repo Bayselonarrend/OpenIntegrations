@@ -12,7 +12,7 @@
 
 	CommonTools.СообщитьПроцесс("Spell check");
 
-	CommonTools.ЗапуститьПриложениеВКонсоли("npm install -g -D ");
+	CommonTools.ЗапуститьПриложениеВКонсоли("npm install -g -D cspell");
 	CommonTools.ЗапуститьПриложениеВКонсоли("npm install -g -D @cspell/dict-ru_ru");
 	CommonTools.ЗапуститьПриложениеВКонсоли("npx cspell lint ""./src/ru/OPI/**/*.bsl"" --config ./service/cspell.json --locale ""en,ru"" -u");
 
