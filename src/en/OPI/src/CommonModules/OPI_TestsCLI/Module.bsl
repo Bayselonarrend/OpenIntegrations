@@ -3434,7 +3434,7 @@ Function GetTwitterAuthData()
     Token = Result["data"];
 
     Parameters.Insert("redirect_uri"      , OPI_TestDataRetrieval.GetParameter("Twitter_Redirect"));
-    Parameters.Insert("client_id"         , OPI_TestDataRetrieval.GetParameter("Twitter_ClinetID"));
+    Parameters.Insert("client_id"         , OPI_TestDataRetrieval.GetParameter("Twitter_ClientID"));
     Parameters.Insert("client_secret"     , OPI_TestDataRetrieval.GetParameter("Twitter_ClientSecret"));
     Parameters.Insert("access_token"      , Token);
     Parameters.Insert("refresh_token"     , OPI_TestDataRetrieval.GetParameter("Twitter_Refresh"));
@@ -14129,7 +14129,7 @@ EndProcedure
 Procedure Bitrix24_DeleteNotification(FunctionParameters)
 
     URL            = FunctionParameters["Bitrix24_URL"];
-    NotificationID = FunctionParameters["Bitrix24_PersoalHookNotifyID"];
+    NotificationID = FunctionParameters["Bitrix24_PersonalHookNotifyID"];
 
     Options = New Structure;
     Options.Insert("url", URL);
@@ -14141,7 +14141,7 @@ Procedure Bitrix24_DeleteNotification(FunctionParameters)
 
     URL            = FunctionParameters["Bitrix24_Domain"];
     Token          = FunctionParameters["Bitrix24_Token"];
-    NotificationID = FunctionParameters["Bitrix24_PersoalNotifyID"];
+    NotificationID = FunctionParameters["Bitrix24_PersonalNotifyID"];
 
     Options = New Structure;
     Options.Insert("url", URL);
@@ -14495,7 +14495,7 @@ EndProcedure
 Procedure Bitrix24_CreateUser(FunctionParameters)
 
     URL   = FunctionParameters["Bitrix24_URL"];
-    Email = String(New UUID) + "@exepmple.org";
+    Email = String(New UUID) + "@example.org";
 
     // The full structure can be obtained with the function GetUserFieldsStructure
 
@@ -14513,7 +14513,7 @@ Procedure Bitrix24_CreateUser(FunctionParameters)
 
     URL   = FunctionParameters["Bitrix24_Domain"];
     Token = FunctionParameters["Bitrix24_Token"];
-    Email = String(New UUID) + "@exepmple.org";
+    Email = String(New UUID) + "@example.org";
 
     UserStructure = New Structure;
     UserStructure.Insert("EMAIL"          , Email);
@@ -14539,7 +14539,7 @@ Procedure Bitrix24_UpdateUser(FunctionParameters)
 
     URL    = FunctionParameters["Bitrix24_URL"];
     UserID = FunctionParameters["Bitrix24_HookUserID"];
-    Email  = String(New UUID) + "@exepmple.org";
+    Email  = String(New UUID) + "@example.org";
 
     // The full structure can be obtained with the function GetUserFieldsStructure
 
@@ -14559,7 +14559,7 @@ Procedure Bitrix24_UpdateUser(FunctionParameters)
     URL    = FunctionParameters["Bitrix24_Domain"];
     Token  = FunctionParameters["Bitrix24_Token"];
     UserID = FunctionParameters["Bitrix24_UserID"];
-    Email  = String(New UUID) + "@exepmple.org";
+    Email  = String(New UUID) + "@example.org";
 
     UserStructure = New Structure;
     UserStructure.Insert("EMAIL"        , Email);
