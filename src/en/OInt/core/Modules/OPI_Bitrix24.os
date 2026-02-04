@@ -5749,7 +5749,7 @@ Function ОтправитьФайл(Val URL, Val IDЧата, Val IDФайла, V
 	Return SendFile(URL, IDЧата, IDФайла, Описание, Токен);
 EndFunction
 
-Function ОтметитьСообщениеКакПрочитаное(Val URL, Val IDЧата, Val IDСообщения, Val Токен = "") Export
+Function ОтметитьСообщениеКакПрочитанное(Val URL, Val IDЧата, Val IDСообщения, Val Токен = "") Export
 	Return MarkMessageAsReaded(URL, IDЧата, IDСообщения, Токен);
 EndFunction
 
