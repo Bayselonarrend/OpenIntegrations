@@ -10,6 +10,12 @@
 		ДанныеПроекта = ДанныеПроекта_;
 	КонецЕсли;
 
+	CommonTools.СообщитьПроцесс("Spell check");
+
+	CommonTools.ЗапуститьВнешнееПриложение("npm install -g -D ");
+	CommonTools.ЗапуститьВнешнееПриложение("npm install -g -D @cspell/dict-ru_ru");
+	CommonTools.ЗапуститьВнешнееПриложение("npx cspell lint ""./src/ru/OPI/**/*.bsl"" --config ./service/cspell.json --locale ""en,ru"" -u");
+
 КонецПроцедуры
 
 #КонецОбласти
