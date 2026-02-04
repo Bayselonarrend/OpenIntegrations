@@ -301,7 +301,7 @@ Function CreateKeyboardFromArrayButton(Val ButtonArray, Val ButtonColor = "#2db9
         ButtonStructure.Insert("ActionBody", ButtonText);
         ButtonStructure.Insert("Text"      , ButtonText);
         ButtonStructure.Insert("BgColor"   , ButtonColor);
-        ButtonStructure.Insert("Columns"  , 3);
+        ButtonStructure.Insert("Columns"   , 3);
 
         ArrayOfButtonStructures.Add(ButtonStructure);
 

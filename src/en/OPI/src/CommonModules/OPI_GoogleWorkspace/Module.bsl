@@ -220,7 +220,7 @@ EndFunction
 
 #EndRegion
 
-#Region ServiceProceduresAndFunctions
+#Region Private
 
 Function GetPermissionsList(Calendar, Drive, Sheets)
 
