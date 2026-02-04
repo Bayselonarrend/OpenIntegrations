@@ -433,13 +433,13 @@ Procedure AddKeyValue(Table, Val Key, Val Value) Export
     KeyExists   = False;
     ValueExists = False;
 
-    For Each Coloumn In Table.Columns Do
+    For Each Column In Table.Columns Do
 
-        If Coloumn.Name = "Key" Then
+        If Column.Name = "Key" Then
 
             KeyExists = True;
 
-        ElsIf Coloumn.Name = "Value" Then
+        ElsIf Column.Name = "Value" Then
 
             ValueExists = True;
 

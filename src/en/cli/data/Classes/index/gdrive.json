@@ -199,7 +199,7 @@
 					"short": "-t"
 				},
 				{
-					"name": "--querry",
+					"name": "--query",
 					"types": "String",
 					"description": "Filter by name",
 					"default": "Пустое значение",
@@ -228,7 +228,7 @@
 					"short": "-t"
 				},
 				{
-					"name": "--querry",
+					"name": "--query",
 					"types": "String",
 					"description": "Filter by name",
 					"default": "Пустое значение",
