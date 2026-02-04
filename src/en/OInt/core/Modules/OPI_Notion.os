@@ -690,7 +690,7 @@ Procedure RemoveExtraBlockFields(Val Block)
     ExtraArray.Add("last_edited_time");
     ExtraArray.Add("created_time");
     ExtraArray.Add("has_children");
-    ExtraArray.Add("parrent");
+    ExtraArray.Add("parent");
     ExtraArray.Add("last_edited_by");
     ExtraArray.Add("id");
 

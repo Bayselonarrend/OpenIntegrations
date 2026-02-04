@@ -7193,7 +7193,7 @@ Procedure GoogleDrive_GetDirectoriesList(FunctionParameters)
 
     Options = New Structure;
     Options.Insert("token", Token);
-    Options.Insert("querry", Name);
+    Options.Insert("query", Name);
     Options.Insert("depth", Истина);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetDirectoriesList", Options);
@@ -7339,7 +7339,7 @@ Procedure GoogleDrive_GetFilesList(FunctionParameters)
 
     Options = New Structure;
     Options.Insert("token", Token);
-    Options.Insert("querry", NameContains);
+    Options.Insert("query", NameContains);
     Options.Insert("catalog", Directory);
 
     Result = OPI_TestDataRetrieval.ExecuteTestCLI("gdrive", "GetFilesList", Options);
@@ -19993,7 +19993,7 @@ Procedure SQLite_GetRecords(FunctionParameters)
 
     Process(Result, "SQLite", "GetRecords", "No parameters");
 
-    FilterStructure2.Insert("type", "BEETWEEN");
+    FilterStructure2.Insert("type", "BETWEEN");
     Filters.Add(FilterStructure2);
 
     Options = New Structure;

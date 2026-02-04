@@ -5,4 +5,4 @@ oint viber SendTextMessage ^
  --text "TestMessage" ^
  --user "d3jxe61Z4W73nmNkjYGgZg==" ^
  --ischannel false ^
- --keyboard "{'Buttons':[{'ActionType':'reply','ActionBody':'Button 1','Text':'Button 1','BgColor':'#2db9b9','Coloumns':3},{'ActionType':'reply','ActionBody':'Button 2','Text':'Button 2','BgColor':'#2db9b9','Coloumns':3},{'ActionType':'reply','ActionBody':'Button 3','Text':'Button 3','BgColor':'#2db9b9','Coloumns':3}],'Type':'keyboard'}"
+ --keyboard "{'Buttons':[{'ActionType':'reply','ActionBody':'Button 1','Text':'Button 1','BgColor':'#2db9b9','Columns':3},{'ActionType':'reply','ActionBody':'Button 2','Text':'Button 2','BgColor':'#2db9b9','Columns':3},{'ActionType':'reply','ActionBody':'Button 3','Text':'Button 3','BgColor':'#2db9b9','Columns':3}],'Type':'keyboard'}"
