@@ -5445,7 +5445,7 @@ Function ПолучитьСписокКомментариевЗадачи(Val UR
 	Return GetTaskCommentsList(URL, IDЗадачи, Токен);
 EndFunction
 
-Function ПолучитьКомменатрийЗадачи(Val URL, Val IDЗадачи, Val IDКомментария, Val Токен = "") Export
+Function ПолучитьКомментарийЗадачи(Val URL, Val IDЗадачи, Val IDКомментария, Val Токен = "") Export
 	Return GetTaskComment(URL, IDЗадачи, IDКомментария, Токен);
 EndFunction
 
@@ -5749,7 +5749,7 @@ Function ОтправитьФайл(Val URL, Val IDЧата, Val IDФайла, V
 	Return SendFile(URL, IDЧата, IDФайла, Описание, Токен);
 EndFunction
 
-Function ОтметитьСообщениеКакПрочитанное(Val URL, Val IDЧата, Val IDСообщения, Val Токен = "") Export
+Function ОтметитьСообщениеКакПрочитаное(Val URL, Val IDЧата, Val IDСообщения, Val Токен = "") Export
 	Return MarkMessageAsReaded(URL, IDЧата, IDСообщения, Токен);
 EndFunction
 
@@ -5817,7 +5817,7 @@ Function НайтиПользователей(Val URL, Val СтруктураФ�
 	Return FindUsers(URL, СтруктураФильтра, Токен);
 EndFunction
 
-Function ПолучитьСтурктуруПользователя(Val URL, Val Токен = "") Export
+Function ПолучитьСтруктуруПользователя(Val URL, Val Токен = "") Export
 	Return GetUserFieldsStructure(URL, Токен);
 EndFunction
 
@@ -5913,7 +5913,7 @@ Function ПолучитьСтруктуруНастроекКалендаря(Va
 	Return GetCalendarSettingsStructure(URL, Токен);
 EndFunction
 
-Function ПолучитьСтруктуруПользовательскихНастроекКаледнаря(Val Пустая = False) Export
+Function ПолучитьСтруктуруПользовательскихНастроекКалендаря(Val Пустая = False) Export
 	Return GetCalednarCustomSettingsStructure(Пустая);
 EndFunction
 

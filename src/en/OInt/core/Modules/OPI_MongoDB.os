@@ -1397,28 +1397,28 @@ Function ИзменитьПользователя(Val Соединение, Val 
 	Return UpdateUser(Соединение, Имя, РолиПользователя, База, Пароль, Параметры);
 EndFunction
 
-Function ПолучитьПользователей(Val Соединение, Val Пользователи, Val База = Undefined, Val ПолучатьПароль = False, Val ПолучатьПривелегии = False) Export
-	Return GetUsers(Соединение, Пользователи, База, ПолучатьПароль, ПолучатьПривелегии);
+Function ПолучитьПользователей(Val Соединение, Val Пользователи, Val База = Undefined, Val ПолучатьПароль = False, Val ПолучатьПривилегии = False) Export
+	Return GetUsers(Соединение, Пользователи, База, ПолучатьПароль, ПолучатьПривилегии);
 EndFunction
 
-Function ПолучитьПользователейБазы(Val Соединение, Val База = Undefined, Val ПолучатьПароль = False, Val ПолучатьПривелегии = False) Export
-	Return GetDatabaseUsers(Соединение, База, ПолучатьПароль, ПолучатьПривелегии);
+Function ПолучитьПользователейБазы(Val Соединение, Val База = Undefined, Val ПолучатьПароль = False, Val ПолучатьПривилегии = False) Export
+	Return GetDatabaseUsers(Соединение, База, ПолучатьПароль, ПолучатьПривилегии);
 EndFunction
 
 Function УдалитьПользователя(Val Соединение, Val Имя, Val База = Undefined, Val Параметры = Undefined) Export
 	Return DeleteUser(Соединение, Имя, База, Параметры);
 EndFunction
 
-Function СоздатьРоль(Val Соединение, Val Имя, Val База = Undefined, Val МассивПривелегий = Undefined, Val МассивРолей = Undefined, Val Параметры = Undefined) Export
-	Return CreateRole(Соединение, Имя, База, МассивПривелегий, МассивРолей, Параметры);
+Function СоздатьРоль(Val Соединение, Val Имя, Val База = Undefined, Val МассивПривилегий = Undefined, Val МассивРолей = Undefined, Val Параметры = Undefined) Export
+	Return CreateRole(Соединение, Имя, База, МассивПривилегий, МассивРолей, Параметры);
 EndFunction
 
-Function ИзменитьРоль(Val Соединение, Val Имя, Val База = Undefined, Val МассивПривелегий = Undefined, Val МассивРолей = Undefined, Val Параметры = Undefined) Export
-	Return UpdateRole(Соединение, Имя, База, МассивПривелегий, МассивРолей, Параметры);
+Function ИзменитьРоль(Val Соединение, Val Имя, Val База = Undefined, Val МассивПривилегий = Undefined, Val МассивРолей = Undefined, Val Параметры = Undefined) Export
+	Return UpdateRole(Соединение, Имя, База, МассивПривилегий, МассивРолей, Параметры);
 EndFunction
 
-Function ПолучитьРоли(Val Соединение, Val МассивРолей, Val База = Undefined, Val ПолучатьПривелегии = False) Export
-	Return GetRoles(Соединение, МассивРолей, База, ПолучатьПривелегии);
+Function ПолучитьРоли(Val Соединение, Val МассивРолей, Val База = Undefined, Val ПолучатьПривилегии = False) Export
+	Return GetRoles(Соединение, МассивРолей, База, ПолучатьПривилегии);
 EndFunction
 
 Function УдалитьРоль(Val Соединение, Val Имя, Val База = Undefined, Val Параметры = Undefined) Export
@@ -1433,7 +1433,7 @@ Function СнятьРоли(Val Соединение, Val Пользовател
 	Return RevokeRoles(Соединение, Пользователь, МассивРолей, База, Параметры);
 EndFunction
 
-Function ПолучитьСтруктуруПривелегииРоли(Val Ресурс, Val МассивДействий) Export
+Function ПолучитьСтруктуруПривилегииРоли(Val Ресурс, Val МассивДействий) Export
 	Return GetRolePrivilegeStructure(Ресурс, МассивДействий);
 EndFunction
 
