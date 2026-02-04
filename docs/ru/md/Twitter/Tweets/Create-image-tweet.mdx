@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
 
 ```bsl title="Пример использования для 1С:Предприятие/OneScript"
     Параметры = ПолучитьПараметрыАвторизацииТвиттер();
-    Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
+    Текст     = "Тестовый твит" + Строка(Новый УникальныйИдентификатор);
 
     Картинка  = "https://hut.openintegrations.dev/test_data/picture.jpg";  // URL, Двоичные или Путь к файлу
     Картинка2 = "https://hut.openintegrations.dev/test_data/picture2.jpg"; // URL, Двоичные или Путь к файлу
@@ -42,7 +42,7 @@ import TabItem from '@theme/TabItem';
 
     Результат = OPI_Twitter.СоздатьТвитКартинки(Текст, МассивКартинок, Параметры);
 
-    Текст     = "Тестовый твитт" + Строка(Новый УникальныйИдентификатор);
+    Текст     = "Тестовый твит" + Строка(Новый УникальныйИдентификатор);
     Результат = OPI_Twitter.СоздатьТвитКартинки(Текст, Картинка, Параметры);
 ```
     
@@ -54,7 +54,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint twitter СоздатьТвитКартинки \
-              --text "Тестовый твиттded8594b-c222-4993-a9d0-99b9570402d9" \
+              --text "Тестовый твитded8594b-c222-4993-a9d0-99b9570402d9" \
               --pictures "C:\Users\bayse\AppData\Local\Temp\124c03pf.rt5" \
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
@@ -65,7 +65,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint twitter СоздатьТвитКартинки ^
-              --text "Тестовый твиттded8594b-c222-4993-a9d0-99b9570402d9" ^
+              --text "Тестовый твитded8594b-c222-4993-a9d0-99b9570402d9" ^
               --pictures "C:\Users\bayse\AppData\Local\Temp\124c03pf.rt5" ^
               --auth "{'redirect_uri':'https://hut.openintegrations.dev/melezh/6ad91cc8b','client_id':'***','client_secret':'***','access_token':'***','refresh_token':'***','oauth_token':'***','oauth_token_secret':'***','oauth_consumer_key':'***','oauth_consumer_secret':'***'}"
         ```
@@ -80,7 +80,7 @@ import TabItem from '@theme/TabItem';
   "edit_history_tweet_ids": [
    "2018762599240814626"
   ],
-  "text": "Тестовый твитт49cbb7a9-ccf3-4ede-ae41-7d6e8ef54067 https://t.co/m1VoUUlNZa"
+  "text": "Тестовый твит49cbb7a9-ccf3-4ede-ae41-7d6e8ef54067 https://t.co/m1VoUUlNZa"
  }
 }
 ```

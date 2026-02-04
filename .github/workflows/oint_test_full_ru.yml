@@ -824,7 +824,7 @@ jobs:
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_ГД_ЗагрузитьУдалитьФайл"
 
-      - name: Создать/Удалить кооментарий
+      - name: Создать/Удалить комментарий
         if: ${{ cancelled() }} == false
         run: oscript /home/runner/.local/share/ovm/current/lib/1testrunner/src/main.os -run ./src/ru/OInt/tests/Modules/internal/OPI_ТестыCLI.os "CLI_ГД_СоздатьУдалитьКомментарий"
 
