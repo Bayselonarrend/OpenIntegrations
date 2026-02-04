@@ -6046,9 +6046,9 @@ Function Check_Bitrix24_CreatePersonalNotification(Val Result, Val Option, Param
     ExpectsThat(Result["result"]).ИмеетТип("Number").Заполнено();
 
     If Option         = "Hook" Then
-        ParameterName = "Bitrix24_PersoalHookNotifyID";
+        ParameterName = "Bitrix24_PersonalHookNotifyID";
     Else
-        ParameterName = "Bitrix24_PersoalNotifyID";
+        ParameterName = "Bitrix24_PersonalNotifyID";
     EndIf;
 
     MessageID = Result["result"];
@@ -14378,7 +14378,7 @@ Procedure ЗавершитьЗапуск() Export
 	FinishLaunch();
 EndProcedure
 
-Function ПолучитьСпискоВыполненныхТестов() Export
+Function ПолучитьСписокВыполненныхТестов() Export
 	Return GetExecutedTestsList();
 EndFunction
 

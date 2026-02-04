@@ -2751,7 +2751,7 @@ Function ZipLFH()
     Buffer.WriteInt32(14, 0); // crc-32
     Buffer.WriteInt32(18, 0); // compressed size
     Buffer.WriteInt32(22, 0); // uncompressed size
-    Buffer.WriteInt16(26, 4); // filename legth - "data"
+    Buffer.WriteInt16(26, 4); // filename length - "data"
     Buffer.WriteInt16(28, 0); // extra field length
     Buffer.Write(30, GetBinaryDataBufferFromString("data", "ascii", False));
 
