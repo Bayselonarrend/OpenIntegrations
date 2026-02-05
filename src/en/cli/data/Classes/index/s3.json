@@ -119,14 +119,14 @@
 					"name": "--binary",
 					"types": "Boolean",
 					"description": "Disables an attempt to convert the response to JSON",
-					"default": false,
+					"default": "false",
 					"short": "-n"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -162,14 +162,14 @@
 					"name": "--binary",
 					"types": "Boolean",
 					"description": "Disables an attempt to convert the response to JSON",
-					"default": false,
+					"default": "false",
 					"short": "-n"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -198,14 +198,14 @@
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -234,14 +234,14 @@
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -270,21 +270,21 @@
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				},
 				{
 					"name": "--account",
 					"types": "String",
 					"description": "Account ID to verify that hes the bucket owner",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -320,14 +320,14 @@
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -356,14 +356,14 @@
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -392,14 +392,14 @@
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -435,14 +435,14 @@
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -471,14 +471,14 @@
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -507,14 +507,14 @@
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -543,28 +543,28 @@
 					"name": "--status",
 					"types": "Boolean",
 					"description": "Enable and disable versioning, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				},
 				{
 					"name": "--mfad",
 					"types": "Boolean",
 					"description": "Enable and disable MFA deletion, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -593,14 +593,14 @@
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -622,28 +622,28 @@
 					"name": "--prefix",
 					"types": "String",
 					"description": "Filtering by prefix, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--region",
 					"types": "String",
 					"description": "Selection by bucket region, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				},
 				{
 					"name": "--ctoken",
 					"types": "String",
 					"description": "Page token if pagination is used",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -686,14 +686,14 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],
@@ -736,14 +736,14 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],
@@ -779,14 +779,14 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -843,7 +843,7 @@
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -893,14 +893,14 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -943,14 +943,14 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -986,21 +986,21 @@
 					"name": "--ver",
 					"types": "String",
 					"description": "Token for receiving a specific version of an object",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-v"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -1036,28 +1036,28 @@
 					"name": "--ver",
 					"types": "String",
 					"description": "Token for receiving a specific version of an object",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-v"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--out",
 					"types": "String",
 					"description": "Path to directly write a file to disk",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": null
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -1093,21 +1093,21 @@
 					"name": "--ver",
 					"types": "String",
 					"description": "Token for deleting a specific version of an object",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-v"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -1157,14 +1157,14 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -1207,14 +1207,14 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -1250,21 +1250,21 @@
 					"name": "--ver",
 					"types": "String",
 					"description": "Token for retrieving data of a specific version of an object",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-v"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -1300,21 +1300,21 @@
 					"name": "--ver",
 					"types": "String",
 					"description": "Token for deleting data of a specific version of an object",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-v"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -1343,28 +1343,28 @@
 					"name": "--prefix",
 					"types": "String",
 					"description": "Filtering by prefix, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--ctoken",
 					"types": "String",
 					"description": "Page token if pagination is used",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -1393,28 +1393,28 @@
 					"name": "--prefix",
 					"types": "String",
 					"description": "Filtering by prefix, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--ver",
 					"types": "String",
 					"description": "Version ID for the beginning of the list",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-v"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -1457,14 +1457,14 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -1507,14 +1507,14 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
 					"name": "--dir",
 					"types": "Boolean",
 					"description": "True > Path style URL, False > Virtual hosted style URL",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],

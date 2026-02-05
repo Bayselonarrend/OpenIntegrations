@@ -496,14 +496,14 @@
 					"name": "--multi",
 					"types": "Булево",
 					"description": "Истина > обновляет все документы по фильтру, Ложь > только один",
-					"default": true,
+					"default": "true",
 					"short": "-m"
 				},
 				{
 					"name": "--upsert",
 					"types": "Булево",
 					"description": "Вставить новый документ, если ни один документ не был найден",
-					"default": false,
+					"default": "false",
 					"short": "-u"
 				},
 				{
@@ -675,14 +675,14 @@
 					"name": "--spwd",
 					"types": "Булево",
 					"description": "Добавляет хеш пароля пользователя в возвращаемые данные",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				},
 				{
 					"name": "--sprv",
 					"types": "Булево",
 					"description": "Добавляет список привилегий пользователя в возвращаемые данные",
-					"default": false,
+					"default": "false",
 					"short": "-p"
 				}
 			],
@@ -711,14 +711,14 @@
 					"name": "--spwd",
 					"types": "Булево",
 					"description": "Добавляет хеш пароля пользователя в возвращаемые данные",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				},
 				{
 					"name": "--sprv",
 					"types": "Булево",
 					"description": "Добавляет список привилегий пользователя в возвращаемые данные",
-					"default": false,
+					"default": "false",
 					"short": "-p"
 				}
 			],
@@ -890,7 +890,7 @@
 					"name": "--sprv",
 					"types": "Булево",
 					"description": "Добавляет список привилегий роли в возвращаемые данные",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],

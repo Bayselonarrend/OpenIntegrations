@@ -57,21 +57,21 @@
 					"name": "--calendar",
 					"types": "Булево",
 					"description": "разрешение на методы Calendar",
-					"default": true,
+					"default": "true",
 					"short": "-c"
 				},
 				{
 					"name": "--drive",
 					"types": "Булево",
 					"description": "разрешение на методы Drive",
-					"default": true,
+					"default": "true",
 					"short": "-d"
 				},
 				{
 					"name": "--sheets",
 					"types": "Булево",
 					"description": "разрешение на методы Sheets",
-					"default": true,
+					"default": "true",
 					"short": "-s"
 				}
 			],

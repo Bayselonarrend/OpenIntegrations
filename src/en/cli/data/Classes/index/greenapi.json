@@ -324,7 +324,7 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -375,7 +375,7 @@
 					"name": "--members",
 					"types": "Array Of String",
 					"description": "Chat members array",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				}
 			],
@@ -607,7 +607,7 @@
 					"name": "--quoted",
 					"types": "String",
 					"description": "Replying message id if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-q"
 				}
 			],
@@ -650,14 +650,14 @@
 					"name": "--caption",
 					"types": "String",
 					"description": "Message text below the file",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--quoted",
 					"types": "String",
 					"description": "Replying message id if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-q"
 				}
 			],
@@ -700,14 +700,14 @@
 					"name": "--caption",
 					"types": "String",
 					"description": "Message text below the file",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--quoted",
 					"types": "String",
 					"description": "Replying message id if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-q"
 				}
 			],
@@ -750,14 +750,14 @@
 					"name": "--multi",
 					"types": "Boolean",
 					"description": "Allows to select more than one answer choice",
-					"default": false,
+					"default": "false",
 					"short": "-m"
 				},
 				{
 					"name": "--quoted",
 					"types": "String",
 					"description": "Replying message id if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-q"
 				}
 			],
@@ -793,7 +793,7 @@
 					"name": "--quoted",
 					"types": "String",
 					"description": "Replying message id if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-q"
 				}
 			],
@@ -829,7 +829,7 @@
 					"name": "--quoted",
 					"types": "String",
 					"description": "Replying message id if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-q"
 				}
 			],
@@ -937,7 +937,7 @@
 					"name": "--sender",
 					"types": "Boolean",
 					"description": "Delete for sender only",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -959,28 +959,28 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Contact name",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-n"
 				},
 				{
 					"name": "--surname",
 					"types": "String",
 					"description": "Contact last name",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				},
 				{
 					"name": "--midname",
 					"types": "String",
 					"description": "Contacts patronymic or middle name",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				},
 				{
 					"name": "--company",
 					"types": "String",
 					"description": "Name of the contact company",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -1009,14 +1009,14 @@
 					"name": "--addr",
 					"types": "String",
 					"description": "Location address",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				},
 				{
 					"name": "--name",
 					"types": "String",
 					"description": "Location name",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				}
 			],
@@ -1118,7 +1118,7 @@
 					"name": "--message",
 					"types": "String",
 					"description": "Message ID. All messages, if not filled in",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				}
 			],

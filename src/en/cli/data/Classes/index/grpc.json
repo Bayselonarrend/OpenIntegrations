@@ -60,7 +60,7 @@
 					"name": "--data",
 					"types": "Structure Of KeyAndValue",
 					"description": "Request data",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
@@ -74,7 +74,7 @@
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -96,14 +96,14 @@
 					"name": "--proto",
 					"types": "Arbitrary",
 					"description": "Schema or schema structure: Key > file name (for import), Value > schema as a string or file path",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--meta",
 					"types": "Structure Of KeyAndValue",
 					"description": "Metadata structure, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				}
 			],
@@ -125,7 +125,7 @@
 					"name": "--cert",
 					"types": "String",
 					"description": "Path to the root PEM file of the certificate if it is not in the system repository",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -147,7 +147,7 @@
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				}
 			],
@@ -176,7 +176,7 @@
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				}
 			],
@@ -212,7 +212,7 @@
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				}
 			],
@@ -262,14 +262,14 @@
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
 					"name": "--count",
 					"types": "Number",
 					"description": "Maximum messages to retrieve. Unlimited by default",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-n"
 				}
 			],
@@ -319,7 +319,7 @@
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -369,14 +369,14 @@
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
 					"name": "--cnt",
 					"types": "Boolean",
 					"description": "Continue receiving after processing the exchange order",
-					"default": true,
+					"default": "true",
 					"short": "-n"
 				}
 			],

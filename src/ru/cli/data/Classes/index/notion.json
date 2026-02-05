@@ -163,7 +163,7 @@
 					"name": "--archive",
 					"types": "Булево",
 					"description": "Архивировать страницу или нет (булево)",
-					"default": false,
+					"default": "false",
 					"short": "-a"
 				}
 			],
@@ -329,7 +329,7 @@
 					"name": "--core",
 					"types": "Булево",
 					"description": "Истина > служебные поля удаляются, остается только сам блок",
-					"default": true,
+					"default": "true",
 					"short": "-c"
 				}
 			],

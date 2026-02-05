@@ -75,7 +75,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-t"
 				}
 			],
@@ -104,7 +104,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -133,7 +133,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -162,7 +162,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -184,14 +184,14 @@
 					"name": "--filter",
 					"types": "Structure Of KeyAndValue",
 					"description": "Office filter. See GetOfficeFilterDescription",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-f"
 				},
 				{
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -213,14 +213,14 @@
 					"name": "--countries",
 					"types": "Array Of String",
 					"description": "Array of country codes in ISO_31661_alpha2 format for selection",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				},
 				{
 					"name": "--page",
 					"types": "Number",
 					"description": "Result page",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
@@ -234,7 +234,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -249,7 +249,7 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -278,14 +278,14 @@
 					"name": "--ostore",
 					"types": "Boolean",
 					"description": "Flag of Online store order type",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				},
 				{
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-p"
 				}
 			],
@@ -321,7 +321,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -350,7 +350,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -379,7 +379,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -408,14 +408,14 @@
 					"name": "--internal",
 					"types": "Boolean",
 					"description": "Type of order number. True > number in the customer base, False > CDEK number",
-					"default": false,
+					"default": "false",
 					"short": "-i"
 				},
 				{
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -451,7 +451,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -480,7 +480,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -523,7 +523,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -552,14 +552,14 @@
 					"name": "--getfile",
 					"types": "Boolean",
 					"description": "True > PDF file data will be received, False > receives CDEK server response",
-					"default": false,
+					"default": "false",
 					"short": "-g"
 				},
 				{
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -609,7 +609,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -638,14 +638,14 @@
 					"name": "--getfile",
 					"types": "Boolean",
 					"description": "True > PDF file data will be received, False > receives CDEK server response",
-					"default": false,
+					"default": "false",
 					"short": "-g"
 				},
 				{
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -688,7 +688,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -717,7 +717,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -746,7 +746,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -775,7 +775,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -790,21 +790,21 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--required",
 					"types": "Boolean",
 					"description": "True > only required fields will be in the set",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				},
 				{
 					"name": "--ostore",
 					"types": "Boolean",
 					"description": "Flag of including fields in the layout exclusively for online store orders",
-					"default": false,
+					"default": "false",
 					"short": "-o"
 				}
 			],
@@ -833,7 +833,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -862,7 +862,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -891,7 +891,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -920,7 +920,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -949,7 +949,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -978,7 +978,7 @@
 					"name": "--testapi",
 					"types": "Boolean",
 					"description": "Flag to use test API for requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -993,14 +993,14 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--required",
 					"types": "Boolean",
 					"description": "True > only required fields will be in the set",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],
@@ -1015,14 +1015,14 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--required",
 					"types": "Boolean",
 					"description": "True > only required fields will be in the set",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],

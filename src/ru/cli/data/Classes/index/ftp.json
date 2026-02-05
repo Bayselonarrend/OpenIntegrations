@@ -246,7 +246,7 @@
 					"name": "--passive",
 					"types": "Булево",
 					"description": "Пассивный режим соединения",
-					"default": true,
+					"default": "true",
 					"short": "-v"
 				},
 				{
@@ -267,7 +267,7 @@
 					"name": "--ipresl",
 					"types": "Булево",
 					"description": "Расширенное определение адресов в пассивном режиме",
-					"default": true,
+					"default": "true",
 					"short": "-i"
 				}
 			],
@@ -361,7 +361,7 @@
 					"name": "--rcv",
 					"types": "Булево",
 					"description": "Получать информацию об объектах во вложенных директориях",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],

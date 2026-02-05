@@ -300,7 +300,7 @@
 					"name": "--force",
 					"types": "Булево",
 					"description": "Игнорировать кэш при повторном запросе проверки",
-					"default": false,
+					"default": "false",
 					"short": "-f"
 				}
 			],
@@ -396,7 +396,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -687,14 +687,14 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--map",
 					"types": "Булево",
 					"description": "Истина > возвращает поля настроек как соответствие",
-					"default": false,
+					"default": "false",
 					"short": "-m"
 				}
 			],
@@ -873,7 +873,7 @@
 					"name": "--del",
 					"types": "Булево",
 					"description": "Удалять уведомление из очереди после получения",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],

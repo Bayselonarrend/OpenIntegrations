@@ -29,14 +29,14 @@
 					"name": "--nesting",
 					"types": "Number",
 					"description": "Parsing depth limit. Full depth by default",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-n"
 				},
 				{
 					"name": "--name",
 					"types": "String",
 					"description": "Field name to retrieve. Displays the entire list if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				},
 				{

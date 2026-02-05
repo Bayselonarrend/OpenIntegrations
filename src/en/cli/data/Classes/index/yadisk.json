@@ -200,7 +200,7 @@
 					"name": "--can",
 					"types": "Boolean",
 					"description": "To cart",
-					"default": true,
+					"default": "true",
 					"short": "-c"
 				}
 			],
@@ -236,7 +236,7 @@
 					"name": "--rewrite",
 					"types": "Boolean",
 					"description": "Overwrite if a file with the same name already exists",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],
@@ -287,7 +287,7 @@
 					"name": "--rewrite",
 					"types": "Boolean",
 					"description": "Overwrite if a file with the same name already exists",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],
@@ -316,7 +316,7 @@
 					"name": "--out",
 					"types": "String",
 					"description": "File save path",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": null
 				}
 			],
@@ -338,28 +338,28 @@
 					"name": "--amount",
 					"types": "Number, String",
 					"description": "Number of returned objects",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				},
 				{
 					"name": "--offset",
 					"types": "Number",
 					"description": "Offset for getting objects not from the beginning of the list",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				},
 				{
 					"name": "--type",
 					"types": "String",
 					"description": "Filter by file type",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--datesort",
 					"types": "Boolean",
 					"description": "True > sort by date, False > alphabetically",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -395,7 +395,7 @@
 					"name": "--rewrite",
 					"types": "Boolean",
 					"description": "Overwrite if a file with the same name already exists",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],
@@ -431,7 +431,7 @@
 					"name": "--rewrite",
 					"types": "Boolean",
 					"description": "Overwrite if a file with the same name already exists",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],
@@ -474,7 +474,7 @@
 					"name": "--rewrite",
 					"types": "Boolean",
 					"description": "Overwrite if a file with the same name already exists",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],
@@ -569,14 +569,14 @@
 					"name": "--amount",
 					"types": "Number",
 					"description": "Number of returned objects",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				},
 				{
 					"name": "--offset",
 					"types": "Number",
 					"description": "Offset for getting objects not from the beginning of the list",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				}
 			],
@@ -605,14 +605,14 @@
 					"name": "--amount",
 					"types": "Number",
 					"description": "Number of returned nested objects (for catalog)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				},
 				{
 					"name": "--offset",
 					"types": "Number",
 					"description": "Offset for getting nested objects not from the beginning of the list",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				}
 			],
@@ -641,7 +641,7 @@
 					"name": "--path",
 					"types": "String",
 					"description": "Path inside the object",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -670,14 +670,14 @@
 					"name": "--from",
 					"types": "String",
 					"description": "Path within public catalog (folders only)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "String",
 					"description": "File save path",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				}
 			],

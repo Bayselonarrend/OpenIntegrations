@@ -143,7 +143,7 @@
 					"name": "--account",
 					"types": "String",
 					"description": "Account ID. Current token account if not filled",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -187,7 +187,7 @@
 					"name": "--detail",
 					"types": "Boolean",
 					"description": "Add information fields for mediafiles",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -209,21 +209,21 @@
 					"name": "--path",
 					"types": "String",
 					"description": "Path to the directory. Optional if the cursor is specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--detail",
 					"types": "Boolean",
 					"description": "Add information fields for mediafiles",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				},
 				{
 					"name": "--cursor",
 					"types": "String",
 					"description": "Cursor from the previous request to get the next set of files",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -281,7 +281,7 @@
 					"name": "--overwrite",
 					"types": "Boolean",
 					"description": "Overwrite file in case of path conflicts",
-					"default": false,
+					"default": "false",
 					"short": "-o"
 				}
 			],
@@ -361,7 +361,7 @@
 					"name": "--permanently",
 					"types": "String",
 					"description": "Delete object without the possibility of recovery",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],
@@ -703,7 +703,7 @@
 					"name": "--readonly",
 					"types": "Boolean",
 					"description": "Prohibits file editing for the external user",
-					"default": true,
+					"default": "true",
 					"short": "-r"
 				}
 			],
@@ -739,7 +739,7 @@
 					"name": "--readonly",
 					"types": "Boolean",
 					"description": "Prohibits file editing for the external user",
-					"default": true,
+					"default": "true",
 					"short": "-r"
 				}
 			],

@@ -65,21 +65,21 @@
 					"name": "--calendar",
 					"types": "Boolean",
 					"description": "Calendar methods permission",
-					"default": true,
+					"default": "true",
 					"short": "-c"
 				},
 				{
 					"name": "--drive",
 					"types": "Boolean",
 					"description": "Drive methods permission",
-					"default": true,
+					"default": "true",
 					"short": "-d"
 				},
 				{
 					"name": "--sheets",
 					"types": "Boolean",
 					"description": "Sheets methods permission",
-					"default": true,
+					"default": "true",
 					"short": "-s"
 				}
 			],
@@ -239,14 +239,14 @@
 					"name": "--title",
 					"types": "String",
 					"description": "New name",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
 					"name": "--description",
 					"types": "String",
 					"description": "New calendar description",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				}
 			],
@@ -407,7 +407,7 @@
 					"name": "--hidden",
 					"types": "Boolean",
 					"description": "Hidden calendar",
-					"default": false,
+					"default": "false",
 					"short": "-h"
 				}
 			],
@@ -422,7 +422,7 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],

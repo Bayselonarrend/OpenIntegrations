@@ -296,7 +296,7 @@
 					"name": "--issheduled",
 					"types": "Булево",
 					"description": "Признак удаления отложенного сообщения",
-					"default": false,
+					"default": "false",
 					"short": "-i"
 				}
 			],
@@ -412,7 +412,7 @@
 					"name": "--notarchived",
 					"types": "Булево",
 					"description": "Признак исключения архивированных каналов",
-					"default": false,
+					"default": "false",
 					"short": "-n"
 				},
 				{
@@ -477,7 +477,7 @@
 					"name": "--private",
 					"types": "Булево",
 					"description": "Создать канал приватным",
-					"default": false,
+					"default": "false",
 					"short": "-p"
 				}
 			],
