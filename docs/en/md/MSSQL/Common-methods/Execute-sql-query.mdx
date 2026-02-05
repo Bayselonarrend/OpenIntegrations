@@ -51,16 +51,16 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
 
     QueryText = "
         |CREATE TABLE test_table (
-        | ID INT PRIMARY KEY,
-        | FirstName NVARCHAR(50),
-        | LastName NVARCHAR(50),
-        | BirthDate DATE,
-        | IsEmployed BIT,
-        | Salary DECIMAL(10, 2),
-        | CreatedAt DATETIME,
-        | Age SMALLINT,
-        | RowGuid UNIQUEIDENTIFIER,
-        | Data VARBINARY(MAX)
+        |    ID INT PRIMARY KEY,
+        |    FirstName NVARCHAR(50),
+        |    LastName NVARCHAR(50),
+        |    BirthDate DATE,
+        |    IsEmployed BIT,
+        |    Salary DECIMAL(10, 2),
+        |    CreatedAt DATETIME,
+        |    Age SMALLINT,
+        |    RowGuid UNIQUEIDENTIFIER,
+        |    Data VARBINARY(MAX)
         |);";
 
     Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, , , Connection);

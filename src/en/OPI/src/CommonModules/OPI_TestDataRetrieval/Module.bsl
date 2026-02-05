@@ -14089,8 +14089,8 @@ Procedure WriteCLICall(Val Library, Val Method, Val Options)
 
     EndIf;
 
-    BatSeparator  = " ^" + Chars.LF + " ";
-    BashSeparator = " \" + Chars.LF + " ";
+    BatSeparator  = " ^" + Chars.LF + "  ";
+    BashSeparator = " \" + Chars.LF + "  ";
 
     BatString  = StartBat + Library + " " + Method + BatSeparator + StrConcat(OptionsArray, BatSeparator);
     BashString = StartBash + Library + " " + Method + BashSeparator + StrConcat(OptionsArray, BashSeparator);

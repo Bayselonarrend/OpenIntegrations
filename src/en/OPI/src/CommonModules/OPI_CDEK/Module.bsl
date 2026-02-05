@@ -926,7 +926,7 @@ Function GetOrderDescription(Val Clear = False, Val RequiredOnly = False, Val On
             AddressStructure.Insert("postal_code" , "<Postal code>");
             AddressStructure.Insert("longitude"   , "<Longitude>");
             AddressStructure.Insert("latitude"    , "<Latitude>");
-            AddressStructure.Insert("country_code", "<Country code in ISO_3166-1_alpha-2 format>");
+            AddressStructure.Insert("country_code", "<Country code in the ISO_3166-1_alpha-2 format>");
             AddressStructure.Insert("region"      , "<Region name, specifying parameter for the city field>");
             AddressStructure.Insert("region_code" , "<CDEK region code, specifying parameter for the city field>");
             AddressStructure.Insert("sub_region"  , "<Name of the region's district, specifying parameter for the region field>");
@@ -1281,7 +1281,7 @@ Function GetAppointmentDescription(Val Clear = False, Val RequiredOnly = False) 
             DeliveryAddressStruct.Insert("postal_code" , "<Postal code>");
             DeliveryAddressStruct.Insert("longitude"   , "<Longitude>");
             DeliveryAddressStruct.Insert("latitude"    , "<Latitude>");
-            DeliveryAddressStruct.Insert("country_code", "<Country code in ISO_3166-1_alpha-2 format>");
+            DeliveryAddressStruct.Insert("country_code", "<Country code in the ISO_3166-1_alpha-2 format>");
             DeliveryAddressStruct.Insert("region"      , "<Region name>");
             DeliveryAddressStruct.Insert("region_code" , "<Region code>");
             DeliveryAddressStruct.Insert("sub_region"  , "<Name of the area of the region>");

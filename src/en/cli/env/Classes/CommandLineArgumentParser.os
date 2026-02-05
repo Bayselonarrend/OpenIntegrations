@@ -205,7 +205,7 @@ Procedure ShowCommandsHelp() Export
 	AvailableCommands = HelpAvailableCommand();
 	
 	MaxWidth = 0;
-	Field = " ";
+	Field = "               ";
 	For Each Command In AvailableCommands Do
 		CurrentWidth = StrLen(Command.Command);
 		If CurrentWidth > MaxWidth Then
