@@ -1,7 +1,7 @@
 oint airtable ИзменитьКомментарий \
   --token "***" \
-  --base "appydMXMk1OF23BzN" \
-  --table "tblhj3DhqLIzLLMJh" \
-  --record "recdJQyh0Qy7EYfQl" \
-  --comment "comORhFXEH4EFXqPD" \
+  --base "appzXb0wWCUeKfvRE" \
+  --table "tblYPmgisjuz2Mna9" \
+  --record "rec85JzODwlSiOfNA" \
+  --comment "comX1YoIwdoD33AOs" \
   --text "Тестовый комментарий (изм.)"

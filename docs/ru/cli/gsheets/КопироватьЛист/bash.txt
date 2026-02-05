@@ -1,5 +1,5 @@
 oint gsheets КопироватьЛист \
   --token "***" \
-  --from "17Mt5OyLvpzg4LRNCuvQg-ISP9Ld8ME6a9Z4ko64Ubac" \
-  --to "1MLmid0C4taJm6ZYrp_5iIWeaGcSkBOvM_NTBlqGKYIo" \
-  --sheet "1012716990"
+  --from "1LhCGFruSlD4SFLjYOxhDa-1GYcc4G_pT5o_7HL-bALk" \
+  --to "1OzWjSk5TZIO8wCusg9xz3omHkqza70QvylNNJx0T0j4" \
+  --sheet "569276548"
