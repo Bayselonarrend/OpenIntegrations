@@ -15,37 +15,37 @@
 		{
 			"name": "Message sending",
 			"methods": [
-				"SendTextMessage",
-				"SendFile",
-				"SendVoice",
-				"EditMessageText",
+				"AnswerButtonEvent",
 				"DeleteMessage",
+				"EditMessageText",
+				"ForwardMessage",
+				"MakeActionButton",
+				"PinMessage",
 				"ResendFile",
 				"ResendVoice",
-				"ForwardMessage",
-				"PinMessage",
-				"UnpinMessage",
-				"AnswerButtonEvent",
-				"MakeActionButton"
+				"SendFile",
+				"SendTextMessage",
+				"SendVoice",
+				"UnpinMessage"
 			]
 		},
 		{
 			"name": "Chat management",
 			"methods": [
-				"RemoveChatMembers",
-				"ChangeChatPicture",
-				"GetChatInfo",
-				"GetChatAdmins",
-				"GetChatMembers",
-				"GetChatBlockedUsers",
-				"GetChatJoinRequests",
-				"BlockChatUser",
-				"UnblockChatUser",
 				"ApprovePending",
+				"BlockChatUser",
+				"ChangeChatPicture",
 				"DisapprovePending",
-				"SetChatTitle",
+				"GetChatAdmins",
+				"GetChatBlockedUsers",
+				"GetChatInfo",
+				"GetChatJoinRequests",
+				"GetChatMembers",
+				"RemoveChatMembers",
 				"SetChatDescription",
-				"SetChatRules"
+				"SetChatRules",
+				"SetChatTitle",
+				"UnblockChatUser"
 			]
 		}
 	],

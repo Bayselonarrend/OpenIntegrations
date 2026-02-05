@@ -7,57 +7,57 @@
 		{
 			"name": "Common methods",
 			"methods": [
-				"GenerateConnectionString",
-				"ExecuteCommand"
+				"ExecuteCommand",
+				"GenerateConnectionString"
 			]
 		},
 		{
 			"name": "Working with databases",
 			"methods": [
-				"GetListOfBases",
+				"DeleteDatabase",
 				"GetDatabase",
-				"DeleteDatabase"
+				"GetListOfBases"
 			]
 		},
 		{
 			"name": "Collection management",
 			"methods": [
-				"GetCollectionList",
 				"CreateCollection",
-				"DeleteCollection"
+				"DeleteCollection",
+				"GetCollectionList"
 			]
 		},
 		{
 			"name": "Documents management",
 			"methods": [
-				"InsertDocuments",
-				"UpdateDocuments",
-				"GetDocuments",
 				"DeleteDocuments",
+				"GetDocumentDeletionStructure",
+				"GetDocuments",
 				"GetDocumentUpdateStructure",
-				"GetDocumentDeletionStructure"
+				"InsertDocuments",
+				"UpdateDocuments"
 			]
 		},
 		{
 			"name": "Users management",
 			"methods": [
 				"CreateUser",
-				"UpdateUser",
-				"GetUsers",
+				"DeleteUser",
 				"GetDatabaseUsers",
-				"DeleteUser"
+				"GetUsers",
+				"UpdateUser"
 			]
 		},
 		{
 			"name": "Role management",
 			"methods": [
 				"CreateRole",
-				"UpdateRole",
-				"GetRoles",
 				"DeleteRole",
+				"GetRolePrivilegeStructure",
+				"GetRoles",
 				"GrantRoles",
 				"RevokeRoles",
-				"GetRolePrivilegeStructure"
+				"UpdateRole"
 			]
 		}
 	],

@@ -9,37 +9,37 @@
 		{
 			"name": "Authorization",
 			"methods": [
-				"GetConfirmationCode",
 				"ConvertCodeToToken",
+				"GetConfirmationCode",
 				"RefreshToken"
 			]
 		},
 		{
 			"name": "File and folder management",
 			"methods": [
-				"GetDiskInformation",
 				"CreateFolder",
-				"GetObject",
-				"DeleteObject",
 				"CreateObjectCopy",
-				"GetDownloadLink",
-				"GetFileUploadLink",
+				"DeleteObject",
 				"DownloadFile",
+				"GetDiskInformation",
+				"GetDownloadLink",
 				"GetFilesList",
+				"GetFileUploadLink",
+				"GetObject",
 				"MoveObject",
 				"UploadFile",
-				"UploadFileInParts",
-				"UploadFileByURL"
+				"UploadFileByURL",
+				"UploadFileInParts"
 			]
 		},
 		{
 			"name": "Manage public access",
 			"methods": [
-				"PublishObject",
 				"CancelObjectPublication",
-				"GetPublishedObjectsList",
-				"GetPublicObject",
 				"GetDownloadLinkForPublicObject",
+				"GetPublicObject",
+				"GetPublishedObjectsList",
+				"PublishObject",
 				"SavePublicObjectToDisk"
 			]
 		}

@@ -8,9 +8,9 @@
 			"name": "Public",
 			"methods": [
 				"FormCodeRetrievalLink",
+				"GetServiceAccountToken",
 				"GetTokenByCode",
-				"RefreshToken",
-				"GetServiceAccountToken"
+				"RefreshToken"
 			]
 		}
 	],

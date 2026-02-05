@@ -15,17 +15,17 @@
 		{
 			"name": "Introspection",
 			"methods": [
-				"GetServiceList",
+				"GetMethod",
 				"GetMethodList",
-				"GetMethod"
+				"GetServiceList"
 			]
 		},
 		{
 			"name": "Streaming",
 			"methods": [
-				"ProcessServerStream",
+				"ProcessBidirectionalStream",
 				"ProcessClientStream",
-				"ProcessBidirectionalStream"
+				"ProcessServerStream"
 			]
 		}
 	],

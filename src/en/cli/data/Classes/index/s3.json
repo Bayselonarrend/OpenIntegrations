@@ -8,8 +8,8 @@
 			"name": "Common methods",
 			"methods": [
 				"GetBasicDataStructure",
-				"SendRequestWithoutBody",
-				"SendRequestWithBody"
+				"SendRequestWithBody",
+				"SendRequestWithoutBody"
 			]
 		},
 		{
@@ -17,38 +17,38 @@
 			"methods": [
 				"CreateBucket",
 				"DeleteBucket",
-				"HeadBucket",
-				"PutBucketEncryption",
-				"GetBucketEncryption",
 				"DeleteBucketEncryption",
-				"PutBucketTagging",
-				"GetBucketTagging",
 				"DeleteBucketTagging",
-				"PutBucketVersioning",
+				"GetBucketEncryption",
+				"GetBucketTagging",
 				"GetBucketVersioning",
-				"ListBuckets"
+				"HeadBucket",
+				"ListBuckets",
+				"PutBucketEncryption",
+				"PutBucketTagging",
+				"PutBucketVersioning"
 			]
 		},
 		{
 			"name": "Objects management",
 			"methods": [
-				"PutObject",
-				"UploadFullObject",
-				"InitPartsUpload",
-				"UploadObjectPart",
-				"FinishPartsUpload",
 				"AbortMultipartUpload",
-				"HeadObject",
-				"GetObject",
-				"DeleteObject",
 				"CopyObject",
-				"PutObjectTagging",
-				"GetObjectTagging",
+				"DeleteObject",
 				"DeleteObjectTagging",
+				"FinishPartsUpload",
+				"GetObject",
+				"GetObjectDownloadLink",
+				"GetObjectTagging",
+				"GetObjectUploadLink",
+				"HeadObject",
+				"InitPartsUpload",
 				"ListObjects",
 				"ListObjectVersions",
-				"GetObjectDownloadLink",
-				"GetObjectUploadLink"
+				"PutObject",
+				"PutObjectTagging",
+				"UploadFullObject",
+				"UploadObjectPart"
 			]
 		}
 	],

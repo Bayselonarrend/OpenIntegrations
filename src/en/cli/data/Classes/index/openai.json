@@ -7,41 +7,41 @@
 		{
 			"name": "Requests processing",
 			"methods": [
-				"GetResponse",
-				"GetImages",
-				"GetEmbeddings",
-				"GetMessageStructure",
-				"GetUserMessage",
 				"GetAssistantMessage",
-				"GetSystemMessage",
+				"GetEmbeddings",
+				"GetImageDescriptionStructure",
 				"GetImageMessageStructure",
-				"GetImageDescriptionStructure"
+				"GetImages",
+				"GetMessageStructure",
+				"GetResponse",
+				"GetSystemMessage",
+				"GetUserMessage"
 			]
 		},
 		{
 			"name": "Assistants",
 			"methods": [
-				"GetAssistantsList",
 				"CreateAssistant",
-				"RetrieveAssistant",
-				"DeleteAssistant"
+				"DeleteAssistant",
+				"GetAssistantsList",
+				"RetrieveAssistant"
 			]
 		},
 		{
 			"name": "File management",
 			"methods": [
-				"GetFilesList",
-				"UploadFile",
-				"GetFileInformation",
+				"DeleteFile",
 				"DownloadFile",
-				"DeleteFile"
+				"GetFileInformation",
+				"GetFilesList",
+				"UploadFile"
 			]
 		},
 		{
 			"name": "Audio processing",
 			"methods": [
-				"GenerateSpeech",
-				"CreateTranscription"
+				"CreateTranscription",
+				"GenerateSpeech"
 			]
 		},
 		{

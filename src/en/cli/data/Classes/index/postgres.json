@@ -15,22 +15,22 @@
 		{
 			"name": "Orm",
 			"methods": [
-				"CreateDatabase",
-				"DeleteDatabase",
-				"DisableAllDatabaseConnections",
-				"GetTableInformation",
-				"CreateTable",
-				"AddTableColumn",
-				"DeleteTableColumn",
-				"EnsureTable",
-				"ClearTable",
-				"DeleteTable",
 				"AddRecords",
-				"UpdateRecords",
-				"EnsureRecords",
-				"GetRecords",
+				"AddTableColumn",
+				"ClearTable",
+				"CreateDatabase",
+				"CreateTable",
+				"DeleteDatabase",
 				"DeleteRecords",
-				"GetRecordsFilterStructure"
+				"DeleteTable",
+				"DeleteTableColumn",
+				"DisableAllDatabaseConnections",
+				"EnsureRecords",
+				"EnsureTable",
+				"GetRecords",
+				"GetRecordsFilterStructure",
+				"GetTableInformation",
+				"UpdateRecords"
 			]
 		}
 	],
