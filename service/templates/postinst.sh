@@ -2,6 +2,6 @@
 set -e
 
 chmod +x /usr/bin/oint
-chmod +x /usr/lib/oint/oscript
+chmod +x /usr/lib/oint/bin/oscript
 
 exit 0
