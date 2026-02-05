@@ -71,17 +71,25 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint sqlite ПолучитьЗаписи \
               --table "test" \
-              --db "C:\Users\bayse\AppData\Local\Temp\ytftyix0.03q.sqlite"
+              --fields "['name','age','salary','is_active','created_at']" \
+              --filter "[{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':false},{'field':'age','type':'BETWEEN','value':'20 AND 30','raw':true},{'field':'age','type':'BETWEEN','value':'20 AND 30','raw':true}]" \
+              --db "C:\Users\bayse\AppData\Local\Temp\xplhrcuc.tnw.sqlite"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint sqlite ПолучитьЗаписи ^
               --table "test" ^
-              --db "C:\Users\bayse\AppData\Local\Temp\ytftyix0.03q.sqlite"
+              --fields "['name','age','salary','is_active','created_at']" ^
+              --filter "[{'field':'name','type':'=','value':'Vitaly','union':'AND','raw':false},{'field':'age','type':'BETWEEN','value':'20 AND 30','raw':true},{'field':'age','type':'BETWEEN','value':'20 AND 30','raw':true}]" ^
+              --db "C:\Users\bayse\AppData\Local\Temp\xplhrcuc.tnw.sqlite"
         ```
     </TabItem>
 </Tabs>

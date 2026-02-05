@@ -15527,7 +15527,7 @@ Procedure SQLite_GetRecords(FunctionParameters)
 
     Process(Result, "SQLite", "GetRecords", "No parameters");
 
-    FilterStructure2.Insert("type", "BETWEEN");
+    FilterStructure2.Insert("type", "SOMETHING");
     Filters.Add(FilterStructure2);
 
     Result = OPI_SQLite.GetRecords(Table
