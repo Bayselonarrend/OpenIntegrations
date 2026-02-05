@@ -1,4 +1,4 @@
 oint vkteams ОтправитьГолосовоеСообщение \
   --token "***" \
   --chatid "***" \
-  --file "C:\Users\bayse\AppData\Local\Temp\ox4bf13b.c53"
+  --file "C:\Users\bayse\AppData\Local\Temp\hdm1bitt.55s"
