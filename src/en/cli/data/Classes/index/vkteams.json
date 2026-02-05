@@ -88,7 +88,7 @@
 					"name": "--timeout",
 					"types": "String, Number",
 					"description": "Connection hold time for Long Polling",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				}
 			],
@@ -146,14 +146,14 @@
 					"name": "--reply",
 					"types": "String, Number",
 					"description": "Replying message id if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				},
 				{
 					"name": "--keyboard",
 					"types": "Array Of String",
 					"description": "Buttons to the message if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-k"
 				},
 				{
@@ -196,14 +196,14 @@
 					"name": "--text",
 					"types": "String",
 					"description": "File caption",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-x"
 				},
 				{
 					"name": "--filename",
 					"types": "String",
 					"description": "Displayed file name",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
@@ -260,14 +260,14 @@
 					"name": "--reply",
 					"types": "String, Number",
 					"description": "Replying message id if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				},
 				{
 					"name": "--keyboard",
 					"types": "Array Of String",
 					"description": "Buttons to the message if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-k"
 				}
 			],
@@ -375,7 +375,7 @@
 					"name": "--text",
 					"types": "String",
 					"description": "File caption",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-x"
 				},
 				{
@@ -454,7 +454,7 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Additional message text",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-x"
 				}
 			],
@@ -541,21 +541,21 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Answer text",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-x"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "URL to be opened by the client application",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-u"
 				},
 				{
 					"name": "--showalert",
 					"types": "Boolean",
 					"description": "Display the answer as an alert)",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -577,14 +577,14 @@
 					"name": "--data",
 					"types": "String",
 					"description": "The value returned in the event. Only if the URL is not filled",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "URL to create the page open button. Only if the Value is not filled in",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-u"
 				},
 				{
@@ -722,7 +722,7 @@
 					"name": "--cursor",
 					"types": "String",
 					"description": "Next page marker from the previous request",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				}
 			],
@@ -802,7 +802,7 @@
 					"name": "--dellast",
 					"types": "Boolean",
 					"description": "Delete last messages before blocking",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -860,7 +860,7 @@
 					"name": "--userid",
 					"types": "String, Number",
 					"description": "User ID. For all active requests if not filled in",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-u"
 				}
 			],
@@ -889,7 +889,7 @@
 					"name": "--userid",
 					"types": "String, Number",
 					"description": "User ID. For all active requests if not filled in",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-u"
 				}
 			],

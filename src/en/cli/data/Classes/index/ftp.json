@@ -56,14 +56,14 @@
 					"name": "--proxy",
 					"types": "Structure Of KeyAndValue",
 					"description": "Proxy settings, if required. See GetProxySettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				}
 			],
@@ -232,21 +232,21 @@
 					"name": "--login",
 					"types": "String, Undefined",
 					"description": "Username for authorization, if required",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
 					"name": "--pass",
 					"types": "String, Undefined",
 					"description": "User password for authorization, if required",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				},
 				{
 					"name": "--passive",
 					"types": "Boolean",
 					"description": "Passive connection mode",
-					"default": true,
+					"default": "true",
 					"short": "-v"
 				},
 				{
@@ -267,7 +267,7 @@
 					"name": "--ipresl",
 					"types": "Boolean",
 					"description": "Advanced passive mode address resolution",
-					"default": true,
+					"default": "true",
 					"short": "-i"
 				}
 			],
@@ -303,14 +303,14 @@
 					"name": "--login",
 					"types": "String, Undefined",
 					"description": "Authorization login, if required",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
 					"name": "--pass",
 					"types": "String, Undefined",
 					"description": "Authorization password, if required",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				}
 			],
@@ -332,7 +332,7 @@
 					"name": "--cert",
 					"types": "String",
 					"description": "Path to the root PEM file of the certificate if it is not in the system repository",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -354,14 +354,14 @@
 					"name": "--path",
 					"types": "String",
 					"description": "Path to search directory",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--rcv",
 					"types": "Boolean",
 					"description": "Get information about objects in nested directories",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],

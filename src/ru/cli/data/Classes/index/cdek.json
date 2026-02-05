@@ -75,7 +75,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-t"
 				}
 			],
@@ -104,7 +104,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -133,7 +133,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -162,7 +162,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -191,7 +191,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -234,7 +234,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -249,7 +249,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -278,14 +278,14 @@
 					"name": "--ostore",
 					"types": "Булево",
 					"description": "Признак типа заказа Интернет магазин",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				},
 				{
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-p"
 				}
 			],
@@ -321,7 +321,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -350,7 +350,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -379,7 +379,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -408,14 +408,14 @@
 					"name": "--internal",
 					"types": "Булево",
 					"description": "Вид номера заказа. Истина > номер в базе клиента, Ложь > номер СДЭК",
-					"default": false,
+					"default": "false",
 					"short": "-i"
 				},
 				{
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -451,7 +451,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -480,7 +480,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -523,7 +523,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -552,14 +552,14 @@
 					"name": "--getfile",
 					"types": "Булево",
 					"description": "Истина > будут получены сразу данные PDF файла, Ложь > ответ сервера CDEK",
-					"default": false,
+					"default": "false",
 					"short": "-g"
 				},
 				{
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -609,7 +609,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -638,14 +638,14 @@
 					"name": "--getfile",
 					"types": "Булево",
 					"description": "Истина > будут получены сразу данные PDF файла, Ложь > ответ сервера CDEK",
-					"default": false,
+					"default": "false",
 					"short": "-g"
 				},
 				{
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -688,7 +688,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -717,7 +717,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -746,7 +746,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -775,7 +775,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -790,21 +790,21 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--required",
 					"types": "Булево",
 					"description": "Истина > в макете будут только обязательные поля",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				},
 				{
 					"name": "--ostore",
 					"types": "Булево",
 					"description": "Признак включения в макет полей исключительно для заказов Интернет магазина",
-					"default": false,
+					"default": "false",
 					"short": "-o"
 				}
 			],
@@ -833,7 +833,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -862,7 +862,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -891,7 +891,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -920,7 +920,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -949,7 +949,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -978,7 +978,7 @@
 					"name": "--testapi",
 					"types": "Булево",
 					"description": "Флаг использования API для тестовых запросов",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -993,14 +993,14 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--required",
 					"types": "Булево",
 					"description": "Истина > в макете будут только обязательные поля",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],
@@ -1015,14 +1015,14 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--required",
 					"types": "Булево",
 					"description": "Истина > в макете будут только обязательные поля",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],

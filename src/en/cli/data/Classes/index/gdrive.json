@@ -57,21 +57,21 @@
 					"name": "--calendar",
 					"types": "Boolean",
 					"description": "Calendar methods permission",
-					"default": true,
+					"default": "true",
 					"short": "-c"
 				},
 				{
 					"name": "--drive",
 					"types": "Boolean",
 					"description": "Drive methods permission",
-					"default": true,
+					"default": "true",
 					"short": "-d"
 				},
 				{
 					"name": "--sheets",
 					"types": "Boolean",
 					"description": "Sheets methods permission",
-					"default": true,
+					"default": "true",
 					"short": "-s"
 				}
 			],
@@ -202,14 +202,14 @@
 					"name": "--query",
 					"types": "String",
 					"description": "Filter by name",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-q"
 				},
 				{
 					"name": "--depth",
 					"types": "Boolean",
 					"description": "Adds a list of files to the directory fields",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -231,14 +231,14 @@
 					"name": "--query",
 					"types": "String",
 					"description": "Filter by name",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-q"
 				},
 				{
 					"name": "--catalog",
 					"types": "String",
 					"description": "Filter by parent directory ID",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -296,7 +296,7 @@
 					"name": "--catalog",
 					"types": "String",
 					"description": "Parent",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -325,7 +325,7 @@
 					"name": "--out",
 					"types": "String",
 					"description": "File save path",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": null
 				}
 			],
@@ -354,14 +354,14 @@
 					"name": "--title",
 					"types": "String",
 					"description": "New object name",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
 					"name": "--catalog",
 					"types": "String",
 					"description": "New parent directory",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -397,7 +397,7 @@
 					"name": "--title",
 					"types": "String",
 					"description": "New file name (if necessary)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -434,7 +434,7 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],

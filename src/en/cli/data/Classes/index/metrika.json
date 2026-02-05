@@ -274,7 +274,7 @@
 					"name": "--filter",
 					"types": "Structure Of KeyAndValue",
 					"description": "List filter. See GetCounterFilterStructure",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-f"
 				}
 			],
@@ -289,7 +289,7 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -304,7 +304,7 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],

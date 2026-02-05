@@ -145,7 +145,7 @@
 					"name": "--keyboard",
 					"types": "Structure Of String",
 					"description": "See CreateKeyboardFromArrayButton",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-k"
 				}
 			],
@@ -188,7 +188,7 @@
 					"name": "--description",
 					"types": "String",
 					"description": "Image annotation",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				}
 			],
@@ -238,7 +238,7 @@
 					"name": "--size",
 					"types": "Number",
 					"description": "File size. If not filled in > determined automatically by downloading the file",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				}
 			],

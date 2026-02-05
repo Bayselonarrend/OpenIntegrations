@@ -555,7 +555,7 @@
 					"name": "--showalert",
 					"types": "Булево",
 					"description": "Отображать ответ как предупреждение (alert)",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -802,7 +802,7 @@
 					"name": "--dellast",
 					"types": "Булево",
 					"description": "Удалить последние сообщения перед блокировкой",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],

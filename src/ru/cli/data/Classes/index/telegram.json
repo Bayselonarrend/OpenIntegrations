@@ -653,7 +653,7 @@
 					"name": "--anonymous",
 					"types": "Булево",
 					"description": "Флаг анонимности опроса",
-					"default": true,
+					"default": "true",
 					"short": "-a"
 				}
 			],
@@ -862,14 +862,14 @@
 					"name": "--under",
 					"types": "Булево",
 					"description": "Клавиатура под сообщением или на нижней панели",
-					"default": false,
+					"default": "false",
 					"short": "-u"
 				},
 				{
 					"name": "--column",
 					"types": "Булево",
 					"description": "Истина > кнопки выводятся в столбик, Ложь > в строку",
-					"default": true,
+					"default": "true",
 					"short": "-c"
 				}
 			],

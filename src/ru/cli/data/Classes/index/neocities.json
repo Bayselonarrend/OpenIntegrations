@@ -119,7 +119,7 @@
 					"name": "--singly",
 					"types": "Булево",
 					"description": "Истина > отправляет файлы отдельными запросами",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],

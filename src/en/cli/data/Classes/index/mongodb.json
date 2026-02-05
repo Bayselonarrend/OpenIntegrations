@@ -78,28 +78,28 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--usr",
 					"types": "String",
 					"description": "Username for authorization",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-u"
 				},
 				{
 					"name": "--pwd",
 					"types": "String",
 					"description": "Password for authorization",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue, Undefined",
 					"description": "Additional connection parameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				}
 			],
@@ -135,14 +135,14 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database in which the operation needs to be performed",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--data",
 					"types": "Structure Of KeyAndValue",
 					"description": "Main data fields for performing the operation",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				}
 			],
@@ -179,7 +179,7 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				}
 			],
@@ -201,7 +201,7 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				}
 			],
@@ -223,7 +223,7 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				}
 			],
@@ -252,14 +252,14 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional creation parameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -288,7 +288,7 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				}
 			],
@@ -324,14 +324,14 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional insert options",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -367,14 +367,14 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional insert options",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -403,28 +403,28 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--query",
 					"types": "Structure Of KeyAndValue",
 					"description": "Document filter",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-q"
 				},
 				{
 					"name": "--sort",
 					"types": "Structure Of KeyAndValue",
 					"description": "Selection sorting",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional retrieval parameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -460,14 +460,14 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional insert options",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -496,21 +496,21 @@
 					"name": "--multi",
 					"types": "Boolean",
 					"description": "True > updates all documents by filter, False > only one",
-					"default": true,
+					"default": "true",
 					"short": "-m"
 				},
 				{
 					"name": "--upsert",
 					"types": "Boolean",
 					"description": "Insert a new document if no document was found",
-					"default": false,
+					"default": "false",
 					"short": "-u"
 				},
 				{
 					"name": "--cltn",
 					"types": "Structure Of KeyAndValue",
 					"description": "Special field comparison rules",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -532,14 +532,14 @@
 					"name": "--limit",
 					"types": "Number",
 					"description": "Deletion limit: 1 > first document, 0 > all documents",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
 					"name": "--cltn",
 					"types": "Structure Of KeyAndValue",
 					"description": "Special field comparison rules",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -575,21 +575,21 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--pwd",
 					"types": "String",
 					"description": "Users password",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional creation parameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				}
 			],
@@ -618,28 +618,28 @@
 					"name": "--roles",
 					"types": "Array Of Arbitrary",
 					"description": "Array of roles as strings or structures specifying the DB",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				},
 				{
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--pwd",
 					"types": "String",
 					"description": "Users password",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional parameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				}
 			],
@@ -668,21 +668,21 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--spwd",
 					"types": "Boolean",
 					"description": "Adds user password hash to the returned data",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				},
 				{
 					"name": "--sprv",
 					"types": "Boolean",
 					"description": "Adds a list of user privileges to the returned data",
-					"default": false,
+					"default": "false",
 					"short": "-p"
 				}
 			],
@@ -704,21 +704,21 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--spwd",
 					"types": "Boolean",
 					"description": "Adds user password hash to the returned data",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				},
 				{
 					"name": "--sprv",
 					"types": "Boolean",
 					"description": "Adds a list of user privileges to the returned data",
-					"default": false,
+					"default": "false",
 					"short": "-p"
 				}
 			],
@@ -747,14 +747,14 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional deletion parameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -783,28 +783,28 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--prvl",
 					"types": "Array of Structure",
 					"description": "prvl",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--roles",
 					"types": "Array Of Arbitrary",
 					"description": "Array of roles based on strings or structures specifying the database",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional deletion parameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				}
 			],
@@ -833,28 +833,28 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--prvl",
 					"types": "Array of Structure",
 					"description": "Array of privileges. See GetRolePrivilegeStructure",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--roles",
 					"types": "Array Of Arbitrary",
 					"description": "Array of roles based on strings or structures specifying the database",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional deletion parameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				}
 			],
@@ -883,14 +883,14 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--sprv",
 					"types": "Boolean",
 					"description": "Adds a list of role privileges to the returned data",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -919,14 +919,14 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional deletion parameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -962,14 +962,14 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional deletion parameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -1005,14 +1005,14 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database name. Current database if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--params",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional deletion parameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],

@@ -21,28 +21,28 @@
 					"name": "--data",
 					"types": "String, BinaryData",
 					"description": "Data or text to be sent",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--string",
 					"types": "Boolean",
 					"description": "An attribute of receiving the response as a string",
-					"default": true,
+					"default": "true",
 					"short": "-s"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				},
 				{
 					"name": "--proxy",
 					"types": "Structure Of KeyAndValue",
 					"description": "Proxy settings, if required. See GetProxySettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -78,14 +78,14 @@
 					"name": "--login",
 					"types": "String, Undefined",
 					"description": "Authorization login, if required",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
 					"name": "--pass",
 					"types": "String, Undefined",
 					"description": "Authorization password, if required",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				}
 			],
@@ -107,7 +107,7 @@
 					"name": "--cert",
 					"types": "String",
 					"description": "Path to the root PEM file of the certificate if it is not in the system repository",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],

@@ -28,7 +28,7 @@
 					"name": "--string",
 					"types": "Булево",
 					"description": "Признак получения ответа как строки",
-					"default": true,
+					"default": "true",
 					"short": "-s"
 				},
 				{

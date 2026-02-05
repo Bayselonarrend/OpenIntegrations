@@ -142,28 +142,28 @@
 					"name": "--data",
 					"types": "Map Of KeyAndValue",
 					"description": "Map of editable parameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--icon",
 					"types": "String",
 					"description": "URL of the page icon image",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-i"
 				},
 				{
 					"name": "--cover",
 					"types": "String",
 					"description": "URL of the page cover image",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				},
 				{
 					"name": "--archive",
 					"types": "Boolean",
 					"description": "Archive page or not (boolean)",
-					"default": false,
+					"default": "false",
 					"short": "-a"
 				}
 			],
@@ -199,7 +199,7 @@
 					"name": "--props",
 					"types": "Structure Of String",
 					"description": "Database properties",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				}
 			],
@@ -250,21 +250,21 @@
 					"name": "--props",
 					"types": "Map of KeyAndValue",
 					"description": "New or modified database properties",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--title",
 					"types": "String",
 					"description": "New database title",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
 					"name": "--description",
 					"types": "String",
 					"description": "New database description",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				}
 			],
@@ -300,7 +300,7 @@
 					"name": "--prev",
 					"types": "String",
 					"description": "Block ID after which to insert the new one",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				}
 			],
@@ -329,7 +329,7 @@
 					"name": "--core",
 					"types": "Boolean",
 					"description": "True > service fields are deleted, only the block itself remains",
-					"default": true,
+					"default": "true",
 					"short": "-c"
 				}
 			],

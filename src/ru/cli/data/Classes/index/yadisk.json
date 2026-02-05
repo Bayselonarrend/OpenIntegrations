@@ -200,7 +200,7 @@
 					"name": "--can",
 					"types": "Булево",
 					"description": "В корзину",
-					"default": true,
+					"default": "true",
 					"short": "-c"
 				}
 			],
@@ -236,7 +236,7 @@
 					"name": "--rewrite",
 					"types": "Булево",
 					"description": "Перезаписывать если файл с таким именем уже существует",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],
@@ -287,7 +287,7 @@
 					"name": "--rewrite",
 					"types": "Булево",
 					"description": "Перезаписывать если файл с таким именем уже существует",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],
@@ -359,7 +359,7 @@
 					"name": "--datesort",
 					"types": "Булево",
 					"description": "Истина > сортировать по дате, Ложь > по алфавиту",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -395,7 +395,7 @@
 					"name": "--rewrite",
 					"types": "Булево",
 					"description": "Перезаписывать если файл с таким именем уже существует",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],
@@ -431,7 +431,7 @@
 					"name": "--rewrite",
 					"types": "Булево",
 					"description": "Перезаписывать, если файл с таким именем уже существует",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],
@@ -474,7 +474,7 @@
 					"name": "--rewrite",
 					"types": "Булево",
 					"description": "Перезаписывать, если файл с таким именем уже существует",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				}
 			],

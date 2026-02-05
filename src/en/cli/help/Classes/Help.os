@@ -23,21 +23,20 @@ Procedure DisplayStartPage() Export
 
 	Version = OPIObject.GetVersion();
 	ModuleCommandMapping = OPIObject.GetCommandModuleMapping();
+	CommandArray = New Array;
 	
-	CommandList = "";
-
 	For Each Command In ModuleCommandMapping Do
-		CommandList = CommandList + Command.Key + ", ";
+		CommandArray.Add(Command.Key)
 	EndDo;
 
-	ExtraCharacters = 2;
-	CommandList = Left(CommandList, StrLen(CommandList) - ExtraCharacters);
+	CommandList = StrConcat(CommandArray, ", ");
 
-	Console.TextColor = ConsoleColor.Green;
-	Console.WriteLine("");
+	OffsetLength = 11;
+	NewLineTab = "           ";
 
 	Console.TextColor = ConsoleColor.Yellow;
-	ColorOutput.Write("
+	ColorOutput.Write(StrTemplate("
+		|
 		|    _______ _____________  ___  _______
 		|    __  __ ___/__  _/_ /  |  / /___  __/
 		|    _  / / / __  /  __      / __  /   
@@ -49,50 +48,24 @@ Procedure DisplayStartPage() Export
 		|
 		| Structure call:
 	    | 
-		| "
-		+ "(oint|#color=White) "
-		+ "(<library>|#color=Cyan) "
-		+ "(<method>|#color=Cyan) " 
-		+ "(--option1|#color=Gray) "
-		+ "(""|#color=Green)"
-		+ "(Value|#color=White)"
-		+ "(""|#color=Green) "
-		+ "(...|#color=White) "
-		+ "(--optionN|#color=Gray) "
-		+ "(""|#color=Green)"
-		+ "(Value|#color=White)"
-		+ "(""|#color=Green) ");
-
-	Console.Write("
+		| (oint|#color=White) (<library>|#color=Cyan) (<method>|#color=Cyan) (--option1|#color=Gray) (""|#color=Green)(Value|#color=White)(""|#color=Green) (...|#color=White) (--optionN|#color=Gray) (""|#color=Green)(Value|#color=White)(""|#color=Green) 
 		|
 		| Call libraries without method or method without parameters returns help
-		| List available libraries: "); 
-		
-	Console.TextColor = ConsoleColor.White;
-	Console.Write(CommandList); 
-
-	Console.TextColor = ConsoleColor.White;
-	OffsetLength = 11;
-	NewLineTab = "           ";
-
-	StandardOptionsDescription = StrTemplate("
+		| List available libraries: (%1|#color=White) 
 		|
 		| (Standard options:|#color=Yellow)
 		|
-		|  (--help|#color=Green)  -%1
-		|  (--debug|#color=Green) -%2
-		|  (--out|#color=Green)   -%3
+		|  (--help|#color=Green)  -%2
+		|  (--debug|#color=Green) -%3
+		|  (--out|#color=Green)   -%4
+		|
+		|  (Full documentation can be found at:|#color=Yellow) (https://openintegrations.dev|#color=Cyan)
 		|"
+		, CommandList
 		, GetWidthSplittedDescription("displays help on the current command or method. Similar to calling a command without options", NewLineTab, OffsetLength)
 		, GetWidthSplittedDescription("a flag responsible for providing more detailed information during program operation", NewLineTab, OffsetLength)
-		, GetWidthSplittedDescription("the path to the result saving file (particularly binary data)", NewLineTab, OffsetLength));
+		, GetWidthSplittedDescription("the path to the result saving file (particularly binary data)", NewLineTab, OffsetLength)));
 
-	ColorOutput.WriteLine(StandardOptionsDescription);
-	
-	Console.TextColor = ConsoleColor.Yellow;
-	ColorOutput.WriteLine(" Full documentation can be found at: (https://openintegrations.dev|#color=Cyan)" + Chars.LF);
-
-	Console.WriteLine("");
 	Console.TextColor = ConsoleColor.White;
 
 	Exit(0);
@@ -105,19 +78,23 @@ Procedure DisplayMethodHelp(Val Command) Export
 	RegionsData = CommandData["regions"];
 
 	Console.TextColor = ConsoleColor.White;
-	ColorOutput.WriteLine(Chars.LF + " (■|#color=Green) Library - (" + Command + "|#color=Cyan)");
 
-	ColorOutput.WriteLine(" (■|#color=Green) Available methods: " + Chars.LF);
-	Console.TextColor = ConsoleColor.White;
+	RegionTemplate = "   (■|#color=Yellow) (%1|#color=Cyan)";
+	MethodTemplate = "   (%1|#color=Yellow) %2";
+
+	ColorOutput.WriteLine(StrTemplate("
+	| (■|#color=Green) Library - (%1|#color=Cyan)
+	| (■|#color=Green) Available methods: 
+	|", Command));
 
 	For each RegionLine In RegionsData Do
 
+		First = True;
 		CurrentRegion = RegionLine["name"];
 		RegionMethods = RegionLine["methods"];
 
-		ColorOutput.WriteLine("    (■|#color=Yellow) (" + CurrentRegion + "|#color=Cyan)");
-		First = True;
-
+		ColorOutput.WriteLine(StrTemplate(RegionTemplate, CurrentRegion));
+		
 		Counter = 0;
 		For Each RegionMethod In RegionMethods Do
 
@@ -133,7 +110,7 @@ Procedure DisplayMethodHelp(Val Command) Export
 				Label = "  ├─";
 			EndIf;
 			
-			ColorOutput.WriteLine("    (" + Label + "|#color=Yellow) " + RegionMethod);
+			ColorOutput.WriteLine(StrTemplate(MethodTemplate, Label, RegionMethod));
 
 			Counter = Counter + 1;
 			First = False;
@@ -141,9 +118,6 @@ Procedure DisplayMethodHelp(Val Command) Export
 		EndDo;
 
 	EndDo;
-
-	Message(Chars.LF);
-	Console.TextColor = ConsoleColor.White;
 
 	Exit(0);
 
@@ -166,8 +140,7 @@ Procedure DisplayParameterHelp(Val Command, Val Method) Export
 	| (■|#color=Green) Method (%1|#color=Cyan)
 	| (■|#color=Green) %2
 	|
-	|%3
-	|", MethodName, MethodDescription, FullParamsDescription); 
+	|%3", MethodName, MethodDescription, FullParamsDescription); 
 
 	ColorOutput.WriteLine(HelpText);
 
@@ -192,7 +165,9 @@ Procedure DisplayExceptionMessage(Val Reason, Val OutputFile = "") Export
 		Code = 99;
 	EndIf;
 
-	Text = Chars.LF + Text + Chars.LF;
+	Text = StrTemplate("
+	|%1
+	|", Text);
 	
 	Message(Text, MessageStatus.VeryImportant);
 
@@ -222,7 +197,7 @@ Function GetFullParamsDescription(MethodData)
 	MaximumLength 	 = 0;
 	OptionListsMap = New Map();
 	FullDescriptionsArray = New Array;
-	ParameterDescriptionTemplate = "    (%1|#color=Yellow) -%2";
+	ParameterDescriptionTemplate = "   (%1|#color=Yellow) -%2";
 	DefaultValueTemplate = " (optional, def. val. - %1)";
 	MethodParameters = MethodData["params"];
 
@@ -336,7 +311,7 @@ Function GetWidthSplittedDescription(DescriptionLinesArray, NewLineTab, OffsetLe
 
 					SymbolCount = AvailableStringLength - StrLen(CurrentRow) - 1;
 					LeftPart = Left(Word, SymbolCount);
-					CurrentRow = CurrentRow + LeftPart + "-";
+					CurrentRow = StrTemplate("%1%2-", CurrentRow, LeftPart);
 					WordArray[N] = Right(Word, StrLen(Word) - StrLen(LeftPart));
 				
 				EndIf;

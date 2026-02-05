@@ -431,7 +431,7 @@
 					"name": "--important",
 					"types": "Булево",
 					"description": "Помечает новость как важную",
-					"default": false,
+					"default": "false",
 					"short": "-i"
 				},
 				{
@@ -1486,14 +1486,14 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--map",
 					"types": "Булево",
 					"description": "Истина > возвращает поля фильтра как соответствие",
-					"default": false,
+					"default": "false",
 					"short": "-m"
 				}
 			],
@@ -1716,7 +1716,7 @@
 					"name": "--complete",
 					"types": "Булево",
 					"description": "Отметить пункт как выполненный",
-					"default": false,
+					"default": "false",
 					"short": "-c"
 				},
 				{
@@ -2221,7 +2221,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -2271,7 +2271,7 @@
 					"name": "--admin",
 					"types": "Булево",
 					"description": "Позволяет добавлять стадии без проверки прав (для администраторов)",
-					"default": false,
+					"default": "false",
 					"short": "-a"
 				},
 				{
@@ -2328,7 +2328,7 @@
 					"name": "--admin",
 					"types": "Булево",
 					"description": "Позволяет добавлять стадии без проверки прав (для администраторов)",
-					"default": false,
+					"default": "false",
 					"short": "-a"
 				},
 				{
@@ -2364,7 +2364,7 @@
 					"name": "--admin",
 					"types": "Булево",
 					"description": "Позволяет добавлять стадии без проверки прав (для администраторов)",
-					"default": false,
+					"default": "false",
 					"short": "-a"
 				},
 				{
@@ -2400,7 +2400,7 @@
 					"name": "--admin",
 					"types": "Булево",
 					"description": "Позволяет получать стадии без проверки прав (для администраторов)",
-					"default": false,
+					"default": "false",
 					"short": "-a"
 				},
 				{
@@ -3366,7 +3366,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания типов полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
@@ -3871,7 +3871,7 @@
 					"name": "--hide",
 					"types": "Булево",
 					"description": "Скрыть старые сообщения от новых пользователей",
-					"default": false,
+					"default": "false",
 					"short": "-h"
 				},
 				{
@@ -4363,7 +4363,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания типов полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -5112,7 +5112,7 @@
 					"name": "--fire",
 					"types": "Булево",
 					"description": "Истина > Деактивация, Ложь > Активация",
-					"default": true,
+					"default": "true",
 					"short": "-f"
 				},
 				{
@@ -5185,7 +5185,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -5381,7 +5381,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -5577,7 +5577,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -5852,7 +5852,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -5867,7 +5867,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -6113,7 +6113,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -6128,7 +6128,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],

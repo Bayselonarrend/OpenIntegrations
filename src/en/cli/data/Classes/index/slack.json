@@ -109,7 +109,7 @@
 					"name": "--cursor",
 					"types": "String",
 					"description": "Pointer from the previous request, if the result rows > 100",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -131,7 +131,7 @@
 					"name": "--cursor",
 					"types": "String",
 					"description": "Pointer from the previous request, if the result rows > 100",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -160,21 +160,21 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-x"
 				},
 				{
 					"name": "--date",
 					"types": "Date",
 					"description": "Sending date for delayed message",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--blocks",
 					"types": "Array of Structure",
 					"description": "JSON array of block descriptions",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				}
 			],
@@ -203,21 +203,21 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Message text",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-x"
 				},
 				{
 					"name": "--user",
 					"types": "String",
 					"description": "User ID",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-u"
 				},
 				{
 					"name": "--blocks",
 					"types": "Array of Structure",
 					"description": "JSON array of block descriptions",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				}
 			],
@@ -253,14 +253,14 @@
 					"name": "--text",
 					"types": "String",
 					"description": "New message text",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-x"
 				},
 				{
 					"name": "--blocks",
 					"types": "Array of Structure",
 					"description": "JSON array of block descriptions",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				}
 			],
@@ -296,7 +296,7 @@
 					"name": "--issheduled",
 					"types": "Boolean",
 					"description": "Indicator of deleting a delayed message",
-					"default": false,
+					"default": "false",
 					"short": "-i"
 				}
 			],
@@ -325,7 +325,7 @@
 					"name": "--cursor",
 					"types": "String",
 					"description": "Pointer from the previous request, if the result rows > 100",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				}
 			],
@@ -390,7 +390,7 @@
 					"name": "--cursor",
 					"types": "String",
 					"description": "Pointer from the previous request, if the result rows > 100",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				}
 			],
@@ -412,14 +412,14 @@
 					"name": "--notarchived",
 					"types": "Boolean",
 					"description": "Indicator of excluding archived channels",
-					"default": false,
+					"default": "false",
 					"short": "-n"
 				},
 				{
 					"name": "--cursor",
 					"types": "String",
 					"description": "Pointer from the previous request, if the result rows > 100",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -448,7 +448,7 @@
 					"name": "--cursor",
 					"types": "String",
 					"description": "Pointer from the previous request, if the result rows > 100",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				}
 			],
@@ -477,7 +477,7 @@
 					"name": "--private",
 					"types": "Boolean",
 					"description": "Create channel as private",
-					"default": false,
+					"default": "false",
 					"short": "-p"
 				}
 			],
@@ -798,7 +798,7 @@
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel for selection",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				},
 				{
@@ -848,7 +848,7 @@
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel ID",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -958,14 +958,14 @@
 					"name": "--channel",
 					"types": "String",
 					"description": "Channel for selection",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				},
 				{
 					"name": "--cursor",
 					"types": "String",
 					"description": "Pointer from the previous request, if the result rows > 100",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				}
 			],
@@ -1089,7 +1089,7 @@
 					"name": "--alt",
 					"types": "String",
 					"description": "Alternate text of the image",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],

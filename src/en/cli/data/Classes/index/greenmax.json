@@ -300,7 +300,7 @@
 					"name": "--force",
 					"types": "Boolean",
 					"description": "Ignore cache on repeated verification request",
-					"default": false,
+					"default": "false",
 					"short": "-f"
 				}
 			],
@@ -322,7 +322,7 @@
 					"name": "--count",
 					"types": "Number",
 					"description": "Contact count to retrieve. All if not specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -396,7 +396,7 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -687,14 +687,14 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--map",
 					"types": "Boolean",
 					"description": "True > returns settings fields as a mapping",
-					"default": false,
+					"default": "false",
 					"short": "-m"
 				}
 			],
@@ -730,7 +730,7 @@
 					"name": "--typing",
 					"types": "Number",
 					"description": "Time to show the typing indicator before sending (in ms.)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -773,14 +773,14 @@
 					"name": "--caption",
 					"types": "String",
 					"description": "Message text below the file",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--typing",
 					"types": "Number",
 					"description": "Time to show typing indicator before sending (in ms.)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				},
 				{
@@ -830,14 +830,14 @@
 					"name": "--caption",
 					"types": "String",
 					"description": "Message text below the file",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--typing",
 					"types": "Number",
 					"description": "Time to show typing indicator before sending (in ms.)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				},
 				{
@@ -873,7 +873,7 @@
 					"name": "--del",
 					"types": "Boolean",
 					"description": "Delete notification from the queue after retrieval",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -1026,7 +1026,7 @@
 					"name": "--message",
 					"types": "String",
 					"description": "Message ID. All messages, unless specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				}
 			],
