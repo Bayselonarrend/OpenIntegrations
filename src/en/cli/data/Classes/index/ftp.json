@@ -7,35 +7,35 @@
 		{
 			"name": "Common methods",
 			"methods": [
-				"GetConnectionConfiguration",
-				"GetWelcomeMessage",
-				"GetProtocolFeatureList",
-				"Ping",
-				"ExecuteCustomCommand",
 				"ExecuteArbitraryCommand",
-				"GetObjectSize",
-				"UpdatePath",
+				"ExecuteCustomCommand",
+				"GetConnectionConfiguration",
 				"GetConnectionSettings",
+				"GetObjectSize",
+				"GetProtocolFeatureList",
 				"GetProxySettings",
-				"GetTlsSettings"
+				"GetTlsSettings",
+				"GetWelcomeMessage",
+				"Ping",
+				"UpdatePath"
 			]
 		},
 		{
 			"name": "Directory management",
 			"methods": [
-				"ListObjects",
+				"ClearDirectory",
 				"CreateNewDirectory",
 				"DeleteDirectory",
-				"ClearDirectory",
-				"GetCurrentDirectory"
+				"GetCurrentDirectory",
+				"ListObjects"
 			]
 		},
 		{
 			"name": "File management",
 			"methods": [
-				"UploadFile",
 				"DeleteFile",
-				"SaveFile"
+				"SaveFile",
+				"UploadFile"
 			]
 		}
 	],

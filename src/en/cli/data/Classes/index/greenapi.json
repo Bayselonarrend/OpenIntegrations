@@ -7,73 +7,73 @@
 		{
 			"name": "Account",
 			"methods": [
+				"ArchiveChat",
 				"FormAccessParameters",
 				"GetAccountInformation",
-				"GetInstanceSettings",
-				"SetInstanceSettings",
-				"GetInstanceStatus",
-				"RebootInstance",
-				"LogoutInstance",
-				"GetQR",
 				"GetAuthorizationCode",
+				"GetInstanceSettings",
+				"GetInstanceSettingsStructure",
+				"GetInstanceStatus",
+				"GetQR",
+				"LogoutInstance",
+				"RebootInstance",
+				"SetInstanceSettings",
 				"SetProfilePicture",
-				"ArchiveChat",
-				"UnarchiveChat",
-				"GetInstanceSettingsStructure"
+				"UnarchiveChat"
 			]
 		},
 		{
 			"name": "Group management",
 			"methods": [
-				"GetGroupInformation",
-				"CreateGroup",
-				"UpdateGroupName",
 				"AddGroupMember",
+				"CreateGroup",
 				"ExcludeGroupMember",
-				"SetAdminRights",
-				"RevokeAdminRights",
+				"GetGroupInformation",
 				"LeaveGroup",
-				"SetGroupPicture"
+				"RevokeAdminRights",
+				"SetAdminRights",
+				"SetGroupPicture",
+				"UpdateGroupName"
 			]
 		},
 		{
 			"name": "Message sending",
 			"methods": [
-				"SendTextMessage",
+				"DeleteMessage",
+				"EditMessageText",
+				"ForwardMessages",
+				"GetContactDescription",
+				"GetLocationDescription",
+				"SendContact",
 				"SendFile",
 				"SendFileByURL",
-				"SendPoll",
 				"SendLocation",
-				"SendContact",
-				"ForwardMessages",
-				"EditMessageText",
-				"DeleteMessage",
-				"GetContactDescription",
-				"GetLocationDescription"
+				"SendPoll",
+				"SendTextMessage"
 			]
 		},
 		{
 			"name": "Notifications receiving",
 			"methods": [
-				"GetNotification",
 				"DeleteNotificationFromQueue",
 				"DownloadMessageFile",
+				"GetNotification",
 				"SetReadMark"
 			]
 		},
 		{
 			"name": "Message queue",
 			"methods": [
-				"GetMessageQueue",
-				"ClearMessageQueue"
+				"ClearMessageQueue",
+				"GetMessageQueue"
 			]
 		},
 		{
 			"name": "Message logs",
 			"methods": [
 				"GetChatHistory",
-				"GetMessage",
 				"GetIncomingMessageLog",
+				"GetMessage",
 				"GetOutgoingMessageLog"
 			]
 		}

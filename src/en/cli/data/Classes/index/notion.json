@@ -9,32 +9,32 @@
 			"methods": [
 				"CreatePage",
 				"CreatePageInDatabase",
-				"GetPage",
-				"EditPageProperties"
+				"EditPageProperties",
+				"GetPage"
 			]
 		},
 		{
 			"name": "Database management",
 			"methods": [
 				"CreateDatabase",
-				"GetDatabase",
-				"EditDatabaseProperties"
+				"EditDatabaseProperties",
+				"GetDatabase"
 			]
 		},
 		{
 			"name": "Blocks management",
 			"methods": [
 				"CreateBlock",
+				"DeleteBlock",
 				"ReturnBlock",
-				"ReturnChildBlocks",
-				"DeleteBlock"
+				"ReturnChildBlocks"
 			]
 		},
 		{
 			"name": "Users",
 			"methods": [
-				"UserList",
-				"GetUserData"
+				"GetUserData",
+				"UserList"
 			]
 		}
 	],

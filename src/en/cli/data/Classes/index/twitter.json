@@ -16,11 +16,11 @@
 			"name": "Tweets",
 			"methods": [
 				"CreateCustomTweet",
-				"CreateTextTweet",
-				"CreateImageTweet",
 				"CreateGifTweet",
-				"CreateVideoTweet",
+				"CreateImageTweet",
 				"CreatePollTweet",
+				"CreateTextTweet",
+				"CreateVideoTweet",
 				"UploadAttachmentsArray"
 			]
 		}

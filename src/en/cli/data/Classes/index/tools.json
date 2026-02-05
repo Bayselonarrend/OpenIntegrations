@@ -7,8 +7,8 @@
 		{
 			"name": "Internal",
 			"methods": [
-				"ParseJSON",
-				"ConvertBase64ToBinary"
+				"ConvertBase64ToBinary",
+				"ParseJSON"
 			]
 		}
 	],

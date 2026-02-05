@@ -7,8 +7,8 @@
 		{
 			"name": "Public",
 			"methods": [
-				"GetConfirmationCode",
 				"ConvertCodeToToken",
+				"GetConfirmationCode",
 				"RefreshToken"
 			]
 		}

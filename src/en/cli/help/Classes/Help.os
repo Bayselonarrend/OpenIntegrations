@@ -105,9 +105,9 @@ Procedure DisplayMethodHelp(Val Command) Export
 	RegionsData = CommandData["regions"];
 
 	Console.TextColor = ConsoleColor.White;
-	ColorOutput.WriteLine(Chars.LF + " (##|#color=Green) Library - (" + Command + "|#color=Cyan)");
+	ColorOutput.WriteLine(Chars.LF + " (■|#color=Green) Library - (" + Command + "|#color=Cyan)");
 
-	ColorOutput.WriteLine(" (##|#color=Green) Available methods: " + Chars.LF);
+	ColorOutput.WriteLine(" (■|#color=Green) Available methods: " + Chars.LF);
 	Console.TextColor = ConsoleColor.White;
 
 	For each RegionLine In RegionsData Do
@@ -115,7 +115,7 @@ Procedure DisplayMethodHelp(Val Command) Export
 		CurrentRegion = RegionLine["name"];
 		RegionMethods = RegionLine["methods"];
 
-		ColorOutput.WriteLine("    (o|#color=Yellow) (" + CurrentRegion + "|#color=Cyan)");
+		ColorOutput.WriteLine("    (■|#color=Yellow) (" + CurrentRegion + "|#color=Cyan)");
 		First = True;
 
 		Counter = 0;
@@ -163,8 +163,8 @@ Procedure DisplayParameterHelp(Val Command, Val Method) Export
 	FullParamsDescription = GetFullParamsDescription(MethodData);
 
 	HelpText = StrTemplate("
-	| (##|#color=Green) Method (%1|#color=Cyan)
-	| (##|#color=Green) %2
+	| (■|#color=Green) Method (%1|#color=Cyan)
+	| (■|#color=Green) %2
 	|
 	|%3
 	|", MethodName, MethodDescription, FullParamsDescription); 

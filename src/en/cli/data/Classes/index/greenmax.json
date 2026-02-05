@@ -7,60 +7,60 @@
 		{
 			"name": "Account",
 			"methods": [
+				"CheckAccount",
 				"FormAccessParameters",
 				"GetAccountInformation",
-				"GetInstanceSettings",
-				"SetInstanceSettings",
 				"GetAuthorizationCode",
-				"SendAuthorizationCode",
+				"GetChatAvatar",
+				"GetChatList",
+				"GetContactInformation",
+				"GetContactList",
+				"GetInstanceSettings",
+				"GetInstanceSettingsStructure",
 				"GetInstanceStatus",
-				"SetProfilePicture",
 				"LogoutInstance",
 				"RebootInstance",
-				"CheckAccount",
-				"GetContactList",
-				"GetContactInformation",
-				"GetChatList",
-				"GetChatAvatar",
-				"GetInstanceSettingsStructure"
+				"SendAuthorizationCode",
+				"SetInstanceSettings",
+				"SetProfilePicture"
 			]
 		},
 		{
 			"name": "Group management",
 			"methods": [
+				"AddGroupMember",
+				"ChangeGroupSettings",
 				"CreateGroup",
 				"GetGroupInformation",
-				"UpdateGroupName",
-				"SetGroupPicture",
-				"ChangeGroupSettings",
-				"AddGroupMember",
-				"RemoveGroupMember",
-				"SetAdminRights",
-				"RevokeAdminRights",
+				"GetGroupSettingsStructure",
 				"LeaveGroup",
-				"GetGroupSettingsStructure"
+				"RemoveGroupMember",
+				"RevokeAdminRights",
+				"SetAdminRights",
+				"SetGroupPicture",
+				"UpdateGroupName"
 			]
 		},
 		{
 			"name": "Message sending",
 			"methods": [
-				"SendTextMessage",
 				"SendFile",
-				"SendFileByURL"
+				"SendFileByURL",
+				"SendTextMessage"
 			]
 		},
 		{
 			"name": "Notifications",
 			"methods": [
-				"GetNotification",
-				"DeleteNotification"
+				"DeleteNotification",
+				"GetNotification"
 			]
 		},
 		{
 			"name": "Message history",
 			"methods": [
-				"GetChatMessageHistory",
 				"GetChatMessage",
+				"GetChatMessageHistory",
 				"GetIncomingMessageLog",
 				"GetOutgoingMessageLog",
 				"MarkMessagesAsRead"
@@ -69,11 +69,11 @@
 		{
 			"name": "Queues",
 			"methods": [
-				"GetOutgoingMessageCount",
-				"GetOutgoingMessageQueue",
+				"ClearIncomingNotificationQueue",
 				"ClearOutgoingMessageQueue",
 				"GetIncomingNotificationCount",
-				"ClearIncomingNotificationQueue"
+				"GetOutgoingMessageCount",
+				"GetOutgoingMessageQueue"
 			]
 		}
 	],

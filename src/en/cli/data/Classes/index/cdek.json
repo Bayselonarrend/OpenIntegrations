@@ -7,47 +7,47 @@
 		{
 			"name": "Common methods",
 			"methods": [
-				"GetToken",
 				"GetCashboxChecksByDate",
 				"GetDeliveryCashRegistry",
 				"GetDeliveryCashTransfers",
+				"GetOfficeFilterDescription",
 				"GetOfficeList",
 				"GetRegionsList",
-				"GetOfficeFilterDescription"
+				"GetToken"
 			]
 		},
 		{
 			"name": "Order management",
 			"methods": [
+				"CreateBarcode",
+				"CreateCustomerRefund",
 				"CreateOrder",
-				"UpdateOrder",
+				"CreatePrealert",
+				"CreateReceipt",
+				"CreateRefusal",
 				"DeleteOrder",
+				"GetBarcode",
+				"GetCashboxCheck",
 				"GetOrder",
 				"GetOrderByNumber",
-				"CreateCustomerRefund",
-				"CreateRefusal",
-				"CreateReceipt",
-				"GetReceipt",
-				"CreateBarcode",
-				"GetBarcode",
-				"CreatePrealert",
-				"GetPrealert",
+				"GetOrderDescription",
 				"GetPassportDataStatus",
-				"GetCashboxCheck",
-				"GetOrderDescription"
+				"GetPrealert",
+				"GetReceipt",
+				"UpdateOrder"
 			]
 		},
 		{
 			"name": "Delivery management",
 			"methods": [
-				"GetAvailableDeliveryIntervals",
 				"CreateCourierInvitation",
-				"GetCourierInvitation",
 				"DeleteCourierInvitation",
-				"RegisterDeliveryAppointment",
-				"GetDeliveryAppointment",
+				"GetAppointmentDescription",
+				"GetAvailableDeliveryIntervals",
+				"GetCourierInvitation",
 				"GetCourierInvitationsDescription",
-				"GetAppointmentDescription"
+				"GetDeliveryAppointment",
+				"RegisterDeliveryAppointment"
 			]
 		}
 	],

@@ -9,18 +9,18 @@
 		{
 			"name": "Campaigns and business",
 			"methods": [
-				"GetMarketsList",
-				"GetMarket",
 				"GetBusinessSettings",
-				"GetCampaignSettings"
+				"GetCampaignSettings",
+				"GetMarket",
+				"GetMarketsList"
 			]
 		},
 		{
 			"name": "Product management",
 			"methods": [
 				"AddUpdateProducts",
-				"GetCampaignProducts",
 				"GetBusinessProducts",
+				"GetCampaignProducts",
 				"GetProductStructure"
 			]
 		}

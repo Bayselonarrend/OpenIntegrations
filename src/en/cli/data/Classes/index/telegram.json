@@ -7,58 +7,58 @@
 		{
 			"name": "Data retrieval and settings",
 			"methods": [
+				"DeleteWebhook",
+				"DownloadFile",
 				"GetBotInformation",
 				"GetUpdates",
-				"SetWebhook",
-				"DeleteWebhook",
-				"DownloadFile"
+				"SetWebhook"
 			]
 		},
 		{
 			"name": "Data sending",
 			"methods": [
-				"SendTextMessage",
-				"SendImage",
-				"SendVideo",
-				"SendAudio",
-				"SendDocument",
-				"SendGif",
-				"SendMediaGroup",
-				"SendLocation",
-				"SendContact",
-				"SendPoll",
-				"ForwardMessage",
 				"DeleteMessage",
+				"FormKeyboardFromButtonArray",
+				"ForwardMessage",
+				"ReplaceMessageCaption",
 				"ReplaceMessageKeyboard",
 				"ReplaceMessageText",
-				"ReplaceMessageCaption",
-				"FormKeyboardFromButtonArray"
+				"SendAudio",
+				"SendContact",
+				"SendDocument",
+				"SendGif",
+				"SendImage",
+				"SendLocation",
+				"SendMediaGroup",
+				"SendPoll",
+				"SendTextMessage",
+				"SendVideo"
 			]
 		},
 		{
 			"name": "Administration",
 			"methods": [
 				"Ban",
-				"Unban",
 				"CreateInvitationLink",
+				"GetParticipantCount",
 				"PinMessage",
-				"UnpinMessage",
-				"GetParticipantCount"
+				"Unban",
+				"UnpinMessage"
 			]
 		},
 		{
 			"name": "Forum topic management",
 			"methods": [
-				"GetAvatarIconList",
-				"CreateForumTopic",
-				"EditForumTopic",
+				"ClearTopicPinnedMessagesList",
 				"CloseForumTopic",
-				"OpenForumTopic",
+				"CreateForumTopic",
 				"DeleteForumTopic",
-				"HideMainForumTopic",
-				"ShowMainForumTopic",
+				"EditForumTopic",
 				"EditMainForumTopicName",
-				"ClearTopicPinnedMessagesList"
+				"GetAvatarIconList",
+				"HideMainForumTopic",
+				"OpenForumTopic",
+				"ShowMainForumTopic"
 			]
 		}
 	],
