@@ -40,11 +40,11 @@ import TabItem from '@theme/TabItem';
     // Request (table creation)
 
     QueryText = "CREATE TABLE IF NOT EXISTS events (
-    | id UInt64,
-    | timestamp DateTime,
-    | user_id UInt32,
-    | event_type String,
-    | payload String
+    |    id UInt64,
+    |    timestamp DateTime,
+    |    user_id UInt32,
+    |    event_type String,
+    |    payload String
     |) ENGINE = MergeTree()
     |ORDER BY (timestamp, id)";
 

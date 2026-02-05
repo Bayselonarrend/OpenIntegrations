@@ -95,14 +95,14 @@ Without specifying the `ForcifyResult` flag, result data is returned only for qu
 
     QueryText = "DO $$
                    |BEGIN
-                   | CREATE TABLE users (
-                   | id SMALLSERIAL,
-                   | name TEXT NOT NULL,
-                   | age INT NOT NULL
-                   | );
-                   | INSERT INTO users (name, age) VALUES ('Alice', 30);
-                   | INSERT INTO users (name, age) VALUES ('Bob', 25);
-                   | INSERT INTO users (name, age) VALUES ('Charlie', 35);
+                   |    CREATE TABLE users (
+                   |        id SMALLSERIAL,
+                   |        name TEXT NOT NULL,
+                   |        age INT NOT NULL
+                   |    );
+                   |    INSERT INTO users (name, age) VALUES ('Alice', 30);
+                   |    INSERT INTO users (name, age) VALUES ('Bob', 25);
+                   |    INSERT INTO users (name, age) VALUES ('Charlie', 35);
                    |END $$ LANGUAGE plpgsql;";
 
     Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);

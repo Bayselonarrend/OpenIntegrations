@@ -17,16 +17,16 @@
     |{
     |""type"": ""object"",
     |""properties"": {
-    | ""age"": {
-    | ""type"": ""integer""
-    | },
-    | ""available"": {
-    | ""type"": ""boolean""
-    | }
+    |  ""age"": {
+    |    ""type"": ""integer""
+    |  },
+    |  ""available"": {
+    |    ""type"": ""boolean""
+    |  }
     |},
     |""required"": [
-    | ""age"",
-    | ""available""
+    |  ""age"",
+    |  ""available""
     |]
     |}");
 

@@ -38,11 +38,11 @@ Procedure DisplayStartPage() Export
 
 	Console.TextColor = ConsoleColor.Yellow;
 	ColorOutput.Write("
-		| _______ _____________ ___ _______
-		| __ __ ___/__ _/_ / | / /___ __/
-		| _ / / / __ / __ / __ /   
-		| / /_/ / __/ / _ /| / _ /    
-		| \____/ /___/ /_/ |_/ /_/     
+		|    _______ _____________  ___  _______
+		|    __  __ ___/__  _/_ /  |  / /___  __/
+		|    _  / / / __  /  __      / __  /   
+		|    / /_/ / __/ /   _  /|  /  _  /    
+		|    \____/  /___/   /_/ |_/   /_/     
 		|                          
 		|
 		| Welcome in (OInt|#color=White) v (" + Version + "|#color=Green)!
@@ -73,15 +73,15 @@ Procedure DisplayStartPage() Export
 
 	Console.TextColor = ConsoleColor.White;
 	OffsetLength = 11;
-	NewLineTab = " ";
+	NewLineTab = "           ";
 
 	StandardOptionsDescription = StrTemplate("
 		|
 		| (Standard options:|#color=Yellow)
 		|
-		| (--help|#color=Green) -%1
-		| (--debug|#color=Green) -%2
-		| (--out|#color=Green) -%3
+		|  (--help|#color=Green)  -%1
+		|  (--debug|#color=Green) -%2
+		|  (--out|#color=Green)   -%3
 		|"
 		, GetWidthSplittedDescription("displays help on the current command or method. Similar to calling a command without options", NewLineTab, OffsetLength)
 		, GetWidthSplittedDescription("a flag responsible for providing more detailed information during program operation", NewLineTab, OffsetLength)
@@ -115,7 +115,7 @@ Procedure DisplayMethodHelp(Val Command) Export
 		CurrentRegion = RegionLine["name"];
 		RegionMethods = RegionLine["methods"];
 
-		ColorOutput.WriteLine(" (o|#color=Yellow) (" + CurrentRegion + "|#color=Cyan)");
+		ColorOutput.WriteLine("    (o|#color=Yellow) (" + CurrentRegion + "|#color=Cyan)");
 		First = True;
 
 		Counter = 0;
@@ -128,12 +128,12 @@ Procedure DisplayMethodHelp(Val Command) Export
 			ElsIf First Then
 				Label = "└─┬─";
 			ElsIf Last Then
-				Label = " └─";
+				Label = "  └─";
 			Else
-				Label = " ├─";
+				Label = "  ├─";
 			EndIf;
 			
-			ColorOutput.WriteLine(" (" + Label + "|#color=Yellow) " + RegionMethod);
+			ColorOutput.WriteLine("    (" + Label + "|#color=Yellow) " + RegionMethod);
 
 			Counter = Counter + 1;
 			First = False;
@@ -222,7 +222,7 @@ Function GetFullParamsDescription(MethodData)
 	MaximumLength 	 = 0;
 	OptionListsMap = New Map();
 	FullDescriptionsArray = New Array;
-	ParameterDescriptionTemplate = " (%1|#color=Yellow) -%2";
+	ParameterDescriptionTemplate = "    (%1|#color=Yellow) -%2";
 	DefaultValueTemplate = " (optional, def. val. - %1)";
 	MethodParameters = MethodData["params"];
 
@@ -235,7 +235,7 @@ Function GetFullParamsDescription(MethodData)
 
 		CurrentOptionList = ?(ValueIsFilled(SplittedOption)
 			, StrTemplate("%1, %2", SplittedOption, OptionFull)
-			, StrTemplate(" %1", OptionFull));
+			, StrTemplate("    %1", OptionFull));
 
 		CurrentLength = StrLen(CurrentOptionList);
 
