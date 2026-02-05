@@ -10,41 +10,41 @@
 			"name": "Authorization",
 			"methods": [
 				"FormCodeRetrievalLink",
+				"GetServiceAccountToken",
 				"GetTokenByCode",
-				"RefreshToken",
-				"GetServiceAccountToken"
+				"RefreshToken"
 			]
 		},
 		{
 			"name": "Calendar metadata management",
 			"methods": [
-				"CreateCalendar",
-				"GetCalendarMetadata",
-				"EditCalendarMetadata",
 				"ClearMainCalendar",
-				"DeleteCalendar"
+				"CreateCalendar",
+				"DeleteCalendar",
+				"EditCalendarMetadata",
+				"GetCalendarMetadata"
 			]
 		},
 		{
 			"name": "Calendar list management",
 			"methods": [
-				"GetCalendarList",
 				"AddCalendarToList",
-				"GetListCalendar",
 				"DeleteCalendarFromList",
-				"EditListCalendar"
+				"EditListCalendar",
+				"GetCalendarList",
+				"GetListCalendar"
 			]
 		},
 		{
 			"name": "Event management",
 			"methods": [
+				"CreateEvent",
+				"DeleteEvent",
+				"EditEvent",
+				"GetEvent",
 				"GetEventDescription",
 				"GetEventList",
-				"GetEvent",
-				"CreateEvent",
-				"MoveEvent",
-				"EditEvent",
-				"DeleteEvent"
+				"MoveEvent"
 			]
 		}
 	],

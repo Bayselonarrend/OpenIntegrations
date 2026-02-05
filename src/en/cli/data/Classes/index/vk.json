@@ -14,24 +14,24 @@
 		{
 			"name": "Community management",
 			"methods": [
-				"CreatePost",
-				"CreateCompositePost",
-				"DeletePost",
-				"CreatePoll",
 				"CreateAlbum",
-				"DeleteAlbum",
+				"CreateCompositePost",
+				"CreatePoll",
+				"CreatePost",
 				"CreateStory",
-				"SaveImageToAlbum",
+				"DeleteAlbum",
 				"DeleteImage",
-				"UploadVideoToServer",
-				"UploadPhotoToServer"
+				"DeletePost",
+				"SaveImageToAlbum",
+				"UploadPhotoToServer",
+				"UploadVideoToServer"
 			]
 		},
 		{
 			"name": "Discussion management",
 			"methods": [
-				"CreateDiscussion",
 				"CloseDiscussion",
+				"CreateDiscussion",
 				"OpenDiscussion",
 				"WriteInDiscussion"
 			]
@@ -41,62 +41,62 @@
 			"methods": [
 				"LikePost",
 				"MakeRepost",
-				"WriteMessage",
+				"ShortenLink",
 				"WriteComment",
-				"ShortenLink"
+				"WriteMessage"
 			]
 		},
 		{
 			"name": "Statistics",
 			"methods": [
-				"GetStatistics",
-				"GetPostStatistics"
+				"GetPostStatistics",
+				"GetStatistics"
 			]
 		},
 		{
 			"name": "Ad account management",
 			"methods": [
-				"CreateAdvertisingCampaign",
 				"CreateAd",
-				"PauseAdvertising",
-				"GetAdvertisingCategoryList"
+				"CreateAdvertisingCampaign",
+				"GetAdvertisingCategoryList",
+				"PauseAdvertising"
 			]
 		},
 		{
 			"name": "Product management",
 			"methods": [
+				"AddProduct",
+				"DeleteProduct",
+				"EditProduct",
 				"GetProductCategoryList",
+				"GetProductDescription",
 				"GetProductList",
 				"GetProductsByID",
-				"AddProduct",
-				"EditProduct",
-				"DeleteProduct",
-				"GroupProducts",
-				"GetProductDescription"
+				"GroupProducts"
 			]
 		},
 		{
 			"name": "Product selection management",
 			"methods": [
+				"AddProductToCollection",
+				"CreateProductCollection",
+				"DeleteSelection",
+				"EditProductCollection",
 				"GetSelectionList",
 				"GetSelectionsByID",
-				"CreateProductCollection",
-				"EditProductCollection",
-				"AddProductToCollection",
-				"RemoveProductFromSelection",
-				"DeleteSelection"
+				"RemoveProductFromSelection"
 			]
 		},
 		{
 			"name": "Product properties management",
 			"methods": [
-				"GetPropertyList",
-				"CreateProductProperty",
-				"EditProductProperty",
-				"DeleteProductProperty",
 				"AddProductPropertyVariant",
+				"CreateProductProperty",
+				"DeleteProductProperty",
+				"DeleteProductPropertyVariant",
+				"EditProductProperty",
 				"EditProductPropertyVariant",
-				"DeleteProductPropertyVariant"
+				"GetPropertyList"
 			]
 		},
 		{

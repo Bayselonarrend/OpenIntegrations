@@ -10,23 +10,23 @@
 			"name": "Tags management",
 			"methods": [
 				"CreateTag",
-				"UpdateTag",
-				"GetTag",
 				"DeleteTag",
-				"GetTagsList"
+				"GetTag",
+				"GetTagsList",
+				"UpdateTag"
 			]
 		},
 		{
 			"name": "Counters management",
 			"methods": [
 				"CreateCounter",
-				"UpdateCounter",
-				"GetCounter",
 				"DeleteCounter",
-				"RestoreCounter",
+				"GetCounter",
+				"GetCounterFilterStructure",
 				"GetCountersList",
 				"GetCounterStructure",
-				"GetCounterFilterStructure"
+				"RestoreCounter",
+				"UpdateCounter"
 			]
 		}
 	],

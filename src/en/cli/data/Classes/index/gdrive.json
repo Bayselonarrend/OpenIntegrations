@@ -10,33 +10,33 @@
 			"name": "Authorization",
 			"methods": [
 				"FormCodeRetrievalLink",
+				"GetServiceAccountToken",
 				"GetTokenByCode",
-				"RefreshToken",
-				"GetServiceAccountToken"
+				"RefreshToken"
 			]
 		},
 		{
 			"name": "File and directory management",
 			"methods": [
-				"GetObjectInformation",
-				"GetDirectoriesList",
-				"GetFilesList",
-				"UploadFile",
-				"CreateFolder",
-				"DownloadFile",
 				"CopyObject",
-				"UpdateFile",
+				"CreateFolder",
 				"DeleteObject",
-				"GetFileDescription"
+				"DownloadFile",
+				"GetDirectoriesList",
+				"GetFileDescription",
+				"GetFilesList",
+				"GetObjectInformation",
+				"UpdateFile",
+				"UploadFile"
 			]
 		},
 		{
 			"name": "Comment management",
 			"methods": [
 				"CreateComment",
+				"DeleteComment",
 				"GetComment",
-				"GetCommentList",
-				"DeleteComment"
+				"GetCommentList"
 			]
 		}
 	],

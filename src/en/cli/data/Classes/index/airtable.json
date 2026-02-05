@@ -7,9 +7,9 @@
 		{
 			"name": "Working with databases",
 			"methods": [
-				"GetListOfBases",
+				"CreateDatabase",
 				"GetDatabaseTables",
-				"CreateDatabase"
+				"GetListOfBases"
 			]
 		},
 		{
@@ -23,33 +23,33 @@
 			"name": "Working with fields",
 			"methods": [
 				"CreateField",
-				"ModifyField",
-				"GetStringField",
-				"GetNumberField",
 				"GetAttachmentField",
 				"GetCheckboxField",
 				"GetDateField",
 				"GetEmailField",
+				"GetLinkField",
+				"GetNumberField",
 				"GetPhoneField",
-				"GetLinkField"
+				"GetStringField",
+				"ModifyField"
 			]
 		},
 		{
 			"name": "Record management",
 			"methods": [
-				"GetListOfRecords",
-				"GetRecord",
 				"CreatePosts",
-				"DeleteRecords"
+				"DeleteRecords",
+				"GetListOfRecords",
+				"GetRecord"
 			]
 		},
 		{
 			"name": "Comment management",
 			"methods": [
-				"GetComments",
 				"CreateComment",
+				"DeleteComment",
 				"EditComment",
-				"DeleteComment"
+				"GetComments"
 			]
 		}
 	],

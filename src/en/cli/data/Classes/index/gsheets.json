@@ -10,33 +10,33 @@
 			"name": "Authorization",
 			"methods": [
 				"FormCodeRetrievalLink",
+				"GetServiceAccountToken",
 				"GetTokenByCode",
-				"RefreshToken",
-				"GetServiceAccountToken"
+				"RefreshToken"
 			]
 		},
 		{
 			"name": "Spreadsheets management",
 			"methods": [
 				"CreateSpreadsheet",
-				"GetSpreadsheet",
-				"EditSpreadsheetTitle"
+				"EditSpreadsheetTitle",
+				"GetSpreadsheet"
 			]
 		},
 		{
 			"name": "Working with sheets",
 			"methods": [
 				"AddSheet",
-				"DeleteSheet",
-				"CopySheet"
+				"CopySheet",
+				"DeleteSheet"
 			]
 		},
 		{
 			"name": "Data management",
 			"methods": [
-				"SetCellValues",
 				"ClearCells",
-				"GetCellValues"
+				"GetCellValues",
+				"SetCellValues"
 			]
 		}
 	],
