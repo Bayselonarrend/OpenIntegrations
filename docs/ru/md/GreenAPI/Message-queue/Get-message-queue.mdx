@@ -63,7 +63,82 @@ import TabItem from '@theme/TabItem';
 ```json title="Результат"
 [
  {
-  "messageID": "3EB0927369F4715333EBC8",
+  "messageID": "3EB0BDA10A51729C17C49A",
+  "type": "sendMessage",
+  "body": {
+   "chatId": "***",
+   "message": "Новое сообщение",
+   "linkPreview": true,
+   "typingTime": null,
+   "typePreview": "small"
+  }
+ },
+ {
+  "messageID": "3EB0D44279905E2089E8BA",
+  "type": "sendMessage",
+  "body": {
+   "chatId": "***",
+   "message": "Новое сообщение",
+   "quotedMessageId": "3EB0BDA10A51729C17C49A",
+   "linkPreview": true,
+   "typingTime": null,
+   "typePreview": "small"
+  }
+ },
+ {
+  "messageID": "3EB071464E990EEAE1C614",
+  "type": "sendFileByUrl",
+  "body": {
+   "fileName": "photo.jpg",
+   "chatId": "***",
+   "caption": "Описание файла",
+   "archive": false,
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/f4bbe41f-4584-4528-9234-4351a34d3aa0.jpg",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "3EB0428768344373406479",
+  "type": "sendFileByUrl",
+  "body": {
+   "fileName": "vid.mp4",
+   "chatId": "***",
+   "quotedMessageId": "3EB071464E990EEAE1C614",
+   "caption": "Описание файла",
+   "archive": false,
+   "urlFile": "https://do-mediaout-7105.fra1.digitaloceanspaces.com/7105187566/62e42f80-8d81-4ad0-8292-5260b37edf1d.mp4",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "3EB0F647E890D5164475F0",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "***",
+   "urlFile": "https://hut.openintegrations.dev/test_data/picture.jpg",
+   "fileName": "photo.jpg",
+   "caption": "Описание файла",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "3EB09403F1A581B300C8CC",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "***",
+   "urlFile": "https://hut.openintegrations.dev/test_data/video.mp4",
+   "fileName": "vid.mp4",
+   "caption": "Описание файла",
+   "quotedMessageId": "3EB0F647E890D5164475F0",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "3EB09782605F7A52B7F495",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -84,7 +159,7 @@ import TabItem from '@theme/TabItem';
   }
  },
  {
-  "messageID": "3EB0D83796AEB69B11DBA7",
+  "messageID": "3EB045877B064202126DBC",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -101,12 +176,12 @@ import TabItem from '@theme/TabItem';
     }
    ],
    "multipleAnswers": true,
-   "quotedMessageId": "3EB0927369F4715333EBC8",
+   "quotedMessageId": "3EB09782605F7A52B7F495",
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB0246B6956A42423D39D",
+  "messageID": "3EB02DF9E0217A55C559AD",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
@@ -118,67 +193,23 @@ import TabItem from '@theme/TabItem';
   }
  },
  {
-  "messageID": "3EB05BB3C58B57CC68A4AB",
+  "messageID": "3EB0D4B84F4F6CA0657E21",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
-   "quotedMessageId": "3EB0246B6956A42423D39D",
+   "quotedMessageId": "3EB02DF9E0217A55C559AD",
    "latitude": 53.908522,
    "longitude": 27.574821,
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB0DA72DDF6E2BFEE0879",
+  "messageID": "3EB0012426D6337BE9FCDF",
   "type": "sendContact",
   "body": {
    "chatId": "***",
    "contact": {
     "phoneContact": "***",
     "firstName": "Артем",
-    "middleName": "Евпаторийский",
-    "lastName": "Петрович",
-    "company": "Велосипед"
-   },
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB020DBE5BDB1C288FEC5",
-  "type": "sendContact",
-  "body": {
-   "chatId": "***",
-   "contact": {
-    "phoneContact": "***",
-    "company": "Велосипед"
-   },
-   "quotedMessageId": "3EB0DA72DDF6E2BFEE0879",
-   "typingTime": null
-  }
- },
- {
-  "messagesIDs": [
-   "3EB041E9B2D0781522493C"
-  ],
-  "type": "ForwardMessages",
-  "body": {
-   "chatId": "***",
-   "chatIdFrom": "***",
-   "messages": [
-    "3EB0826B9C56A6AEE4ADAC"
-   ],
-   "typingTime": null
-  }
- },
- {
-  "messageID": "3EB0AE57C5A40A59CF6ECD",
-  "type": "editMessage",
-  "body": {
-   "chatId": "***",
-   "idMessage": "3EB0826B9C56A6AEE4ADAC",
-   "message": "Новый текст сообщения",
-   "linkPreview": true
-  }
- }
-]
+...
 ```
