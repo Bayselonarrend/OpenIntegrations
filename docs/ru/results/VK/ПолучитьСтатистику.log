@@ -2,150 +2,11 @@
  "response": [
   {
    "activity": {
-    "comments": 2,
-    "likes": 2
+    "comments": 1,
+    "likes": 1
    },
-   "period_from": 1770076800,
-   "period_to": 1770163199,
-   "reach": {
-    "age": [
-     {
-      "value": "12-18",
-      "count": 0
-     },
-     {
-      "value": "18-21",
-      "count": 0
-     },
-     {
-      "value": "21-24",
-      "count": 0
-     },
-     {
-      "value": "24-27",
-      "count": 1
-     },
-     {
-      "value": "27-30",
-      "count": 0
-     },
-     {
-      "value": "30-35",
-      "count": 0
-     },
-     {
-      "value": "35-45",
-      "count": 0
-     },
-     {
-      "value": "45-100",
-      "count": 0
-     }
-    ],
-    "cities": [],
-    "countries": [],
-    "mobile_reach": 1,
-    "reach": 1,
-    "reach_subscribers": 1,
-    "sex": [
-     {
-      "value": "f",
-      "count": 0
-     },
-     {
-      "value": "m",
-      "count": 1
-     }
-    ],
-    "sex_age": [
-     {
-      "value": "f;12-18",
-      "count": 0
-     },
-     {
-      "value": "f;18-21",
-      "count": 0
-     },
-     {
-      "value": "f;21-24",
-      "count": 0
-     },
-     {
-      "value": "f;24-27",
-      "count": 0
-     },
-     {
-      "value": "f;27-30",
-      "count": 0
-     },
-     {
-      "value": "f;30-35",
-      "count": 0
-     },
-     {
-      "value": "f;35-45",
-      "count": 0
-     },
-     {
-      "value": "f;45-100",
-      "count": 0
-     },
-     {
-      "value": "m;12-18",
-      "count": 0
-     },
-     {
-      "value": "m;18-21",
-      "count": 0
-     },
-     {
-      "value": "m;21-24",
-      "count": 0
-     },
-     {
-      "value": "m;24-27",
-      "count": 1
-     },
-     {
-      "value": "m;27-30",
-      "count": 0
-     },
-     {
-      "value": "m;30-35",
-      "count": 0
-     },
-     {
-      "value": "m;35-45",
-      "count": 0
-     },
-     {
-      "value": "m;45-100",
-      "count": 0
-     }
-    ]
-   },
-   "visitors": {
-    "cities": [],
-    "countries": [
-     {
-      "code": "RU",
-      "count": 1,
-      "name": "Россия",
-      "value": 1
-     }
-    ],
-    "mobile_views": 0,
-    "views": 1,
-    "visitors": 1
-   }
-  },
-  {
-   "activity": {
-    "comments": 2,
-    "likes": 2
-   },
-   "period_from": 1769990400,
-   "period_to": 1770076799,
+   "period_from": 1770249600,
+   "period_to": 1770335999,
    "reach": {
     "age": [
      {
@@ -269,6 +130,24 @@
       "count": 0
      }
     ]
+   },
+   "visitors": {
+    "cities": [],
+    "countries": [],
+    "mobile_views": 0,
+    "views": 0,
+    "visitors": 0
+   }
+  },
+  {
+   "period_from": 1770163200,
+   "period_to": 1770249599,
+   "reach": {
+    "cities": [],
+    "countries": [],
+    "mobile_reach": 0,
+    "reach": 0,
+    "reach_subscribers": 0
    },
    "visitors": {
     "cities": [],
