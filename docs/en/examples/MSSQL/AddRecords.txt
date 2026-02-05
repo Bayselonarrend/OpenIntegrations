@@ -13,14 +13,14 @@
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
     XML = "<?xml version=""1.0""?><root>
-        | <element>
-        | <name>Example</name>
-        | <value>123</value>
-        | </element>
-        | <element>
-        | <name>Test</name>
-        | <value>456</value>
-        | </element>
+        |    <element>
+        |        <name>Example</name>
+        |        <value>123</value>
+        |    </element>
+        |    <element>
+        |        <name>Test</name>
+        |        <value>456</value>
+        |    </element>
         |</root>";
 
     CurrentDate   = OPI_Tools.GetCurrentDate();

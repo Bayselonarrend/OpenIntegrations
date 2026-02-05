@@ -45,15 +45,15 @@
     // Transaction
 
     QueryText = "BEGIN TRANSACTION;
-                   | CREATE TABLE IF NOT EXISTS users (
-                   | id INTEGER PRIMARY KEY AUTOINCREMENT,
-                   | name TEXT NOT NULL,
-                   | age INTEGER NOT NULL
-                   | );
-                   | INSERT INTO users (name, age) VALUES ('Alice', 30);
-                   | INSERT INTO users (name, age) VALUES ('Bob', 25);
-                   | INSERT INTO users (name, age) VALUES ('Charlie', 35);
-                   | COMMIT;";
+                   |    CREATE TABLE IF NOT EXISTS users (
+                   |        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                   |        name TEXT NOT NULL,
+                   |        age INTEGER NOT NULL
+                   |    );
+                   |    INSERT INTO users (name, age) VALUES ('Alice', 30);
+                   |    INSERT INTO users (name, age) VALUES ('Bob', 25);
+                   |    INSERT INTO users (name, age) VALUES ('Charlie', 35);
+                   |    COMMIT;";
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 

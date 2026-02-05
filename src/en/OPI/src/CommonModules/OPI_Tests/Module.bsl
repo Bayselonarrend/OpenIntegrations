@@ -15338,15 +15338,15 @@ Procedure SQLite_ExecuteSQLQuery(FunctionParameters)
     // Transaction
 
     QueryText = "BEGIN TRANSACTION;
-                   | CREATE TABLE IF NOT EXISTS users (
-                   | id INTEGER PRIMARY KEY AUTOINCREMENT,
-                   | name TEXT NOT NULL,
-                   | age INTEGER NOT NULL
-                   | );
-                   | INSERT INTO users (name, age) VALUES ('Alice', 30);
-                   | INSERT INTO users (name, age) VALUES ('Bob', 25);
-                   | INSERT INTO users (name, age) VALUES ('Charlie', 35);
-                   | COMMIT;";
+                   |    CREATE TABLE IF NOT EXISTS users (
+                   |        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                   |        name TEXT NOT NULL,
+                   |        age INTEGER NOT NULL
+                   |    );
+                   |    INSERT INTO users (name, age) VALUES ('Alice', 30);
+                   |    INSERT INTO users (name, age) VALUES ('Bob', 25);
+                   |    INSERT INTO users (name, age) VALUES ('Charlie', 35);
+                   |    COMMIT;";
 
     Result = OPI_SQLite.ExecuteSQLQuery(QueryText, , , Connection);
 
@@ -16046,14 +16046,14 @@ Procedure PostgreSQL_ExecuteSQLQuery(FunctionParameters)
 
     QueryText = "DO $$
                    |BEGIN
-                   | CREATE TABLE users (
-                   | id SMALLSERIAL,
-                   | name TEXT NOT NULL,
-                   | age INT NOT NULL
-                   | );
-                   | INSERT INTO users (name, age) VALUES ('Alice', 30);
-                   | INSERT INTO users (name, age) VALUES ('Bob', 25);
-                   | INSERT INTO users (name, age) VALUES ('Charlie', 35);
+                   |    CREATE TABLE users (
+                   |        id SMALLSERIAL,
+                   |        name TEXT NOT NULL,
+                   |        age INT NOT NULL
+                   |    );
+                   |    INSERT INTO users (name, age) VALUES ('Alice', 30);
+                   |    INSERT INTO users (name, age) VALUES ('Bob', 25);
+                   |    INSERT INTO users (name, age) VALUES ('Charlie', 35);
                    |END $$ LANGUAGE plpgsql;";
 
     Result = OPI_PostgreSQL.ExecuteSQLQuery(QueryText, , , Connection);
@@ -18898,16 +18898,16 @@ Procedure Ollama_GetResponse(FunctionParameters)
     |{
     |""type"": ""object"",
     |""properties"": {
-    | ""age"": {
-    | ""type"": ""integer""
-    | },
-    | ""available"": {
-    | ""type"": ""boolean""
-    | }
+    |  ""age"": {
+    |    ""type"": ""integer""
+    |  },
+    |  ""available"": {
+    |    ""type"": ""boolean""
+    |  }
     |},
     |""required"": [
-    | ""age"",
-    | ""available""
+    |  ""age"",
+    |  ""available""
     |]
     |}");
 
@@ -20922,16 +20922,16 @@ Procedure MSSQL_ExecuteSQLQuery(FunctionParameters)
 
     QueryText = "
         |CREATE TABLE test_table (
-        | ID INT PRIMARY KEY,
-        | FirstName NVARCHAR(50),
-        | LastName NVARCHAR(50),
-        | BirthDate DATE,
-        | IsEmployed BIT,
-        | Salary DECIMAL(10, 2),
-        | CreatedAt DATETIME,
-        | Age SMALLINT,
-        | RowGuid UNIQUEIDENTIFIER,
-        | Data VARBINARY(MAX)
+        |    ID INT PRIMARY KEY,
+        |    FirstName NVARCHAR(50),
+        |    LastName NVARCHAR(50),
+        |    BirthDate DATE,
+        |    IsEmployed BIT,
+        |    Salary DECIMAL(10, 2),
+        |    CreatedAt DATETIME,
+        |    Age SMALLINT,
+        |    RowGuid UNIQUEIDENTIFIER,
+        |    Data VARBINARY(MAX)
         |);";
 
     Result = OPI_MSSQL.ExecuteSQLQuery(QueryText, , , Connection);
@@ -21112,14 +21112,14 @@ Procedure MSSQL_AddRecords(FunctionParameters)
     OPI_TypeConversion.GetBinaryData(Image); // Image - Type: BinaryData
 
     XML = "<?xml version=""1.0""?><root>
-        | <element>
-        | <name>Example</name>
-        | <value>123</value>
-        | </element>
-        | <element>
-        | <name>Test</name>
-        | <value>456</value>
-        | </element>
+        |    <element>
+        |        <name>Example</name>
+        |        <value>123</value>
+        |    </element>
+        |    <element>
+        |        <name>Test</name>
+        |        <value>456</value>
+        |    </element>
         |</root>";
 
     CurrentDate   = OPI_Tools.GetCurrentDate();
@@ -27388,11 +27388,11 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
     // Request (table creation)
 
     QueryText = "CREATE TABLE IF NOT EXISTS events (
-    | id UInt64,
-    | timestamp DateTime,
-    | user_id UInt32,
-    | event_type String,
-    | payload String
+    |    id UInt64,
+    |    timestamp DateTime,
+    |    user_id UInt32,
+    |    event_type String,
+    |    payload String
     |) ENGINE = MergeTree()
     |ORDER BY (timestamp, id)";
 
@@ -27553,11 +27553,11 @@ Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
     // Request via open connection (table creation)
 
     QueryText = "CREATE TABLE IF NOT EXISTS events_grpc (
-    | id UInt64,
-    | timestamp DateTime,
-    | user_id UInt32,
-    | event_type String,
-    | payload String
+    |    id UInt64,
+    |    timestamp DateTime,
+    |    user_id UInt32,
+    |    event_type String,
+    |    payload String
     |) ENGINE = MergeTree()
     |ORDER BY (timestamp, id)";
 
