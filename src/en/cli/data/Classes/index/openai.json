@@ -89,14 +89,14 @@
 					"name": "--options",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional request parameters, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -139,7 +139,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -182,14 +182,14 @@
 					"name": "--options",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional request parameters, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -218,7 +218,7 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Name of participant in conversation",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-n"
 				}
 			],
@@ -240,7 +240,7 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Name of participant in conversation",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-n"
 				}
 			],
@@ -299,7 +299,7 @@
 					"name": "--prompt",
 					"types": "String",
 					"description": "Input text query for image processing",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -328,21 +328,21 @@
 					"name": "--bg",
 					"types": "String",
 					"description": "Generation background option: transparent, opaque, auto",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--size",
 					"types": "String",
 					"description": "Size option for generated images",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				},
 				{
 					"name": "--options",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional request parameters, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				}
 			],
@@ -378,14 +378,14 @@
 					"name": "--options",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional request parameters, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -421,28 +421,28 @@
 					"name": "--name",
 					"types": "String",
 					"description": "Assistant name",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-n"
 				},
 				{
 					"name": "--inst",
 					"types": "String",
 					"description": "System instruction for the assistant",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-i"
 				},
 				{
 					"name": "--options",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional request parameters, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -478,7 +478,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -514,7 +514,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -550,14 +550,14 @@
 					"name": "--options",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional request parameters, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -607,7 +607,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -643,7 +643,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -679,7 +679,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -715,7 +715,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -765,14 +765,14 @@
 					"name": "--options",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional request parameters, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -822,14 +822,14 @@
 					"name": "--options",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional request parameters, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -858,7 +858,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],

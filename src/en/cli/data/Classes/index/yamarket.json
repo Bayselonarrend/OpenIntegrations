@@ -144,7 +144,7 @@
 					"name": "--pmedia",
 					"types": "Boolean",
 					"description": "A flag of using only your own product images",
-					"default": false,
+					"default": "false",
 					"short": "-p"
 				}
 			],
@@ -173,14 +173,14 @@
 					"name": "--filters",
 					"types": "Structure Of KeyAndValue",
 					"description": "Product filters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-f"
 				},
 				{
 					"name": "--page",
 					"types": "String",
 					"description": "Next page token in case of a large selection",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -209,14 +209,14 @@
 					"name": "--filters",
 					"types": "Structure Of KeyAndValue",
 					"description": "Product filters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-f"
 				},
 				{
 					"name": "--page",
 					"types": "String",
 					"description": "Next page token in case of a large selection",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -231,7 +231,7 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],

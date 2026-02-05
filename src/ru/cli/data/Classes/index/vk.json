@@ -180,7 +180,7 @@
 					"name": "--ad",
 					"types": "Булево",
 					"description": "Признак \"\"Это реклама\"\"",
-					"default": false,
+					"default": "false",
 					"short": "-a"
 				},
 				{
@@ -223,7 +223,7 @@
 					"name": "--ad",
 					"types": "Булево",
 					"description": "Признак \"\"Это реклама\"\"",
-					"default": false,
+					"default": "false",
 					"short": "-a"
 				},
 				{
@@ -563,7 +563,7 @@
 					"name": "--remove",
 					"types": "Булево",
 					"description": "Удалить полностью (Истина) или закрыть",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				},
 				{
@@ -686,7 +686,7 @@
 					"name": "--ad",
 					"types": "Булево",
 					"description": "Признак рекламного поста",
-					"default": false,
+					"default": "false",
 					"short": "-a"
 				},
 				{
@@ -1158,7 +1158,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -1224,14 +1224,14 @@
 					"name": "--main",
 					"types": "Булево",
 					"description": "Основная",
-					"default": false,
+					"default": "false",
 					"short": "-m"
 				},
 				{
 					"name": "--hidden",
 					"types": "Булево",
 					"description": "Скрытая",
-					"default": false,
+					"default": "false",
 					"short": "-h"
 				},
 				{
@@ -1274,14 +1274,14 @@
 					"name": "--main",
 					"types": "Булево",
 					"description": "Основная",
-					"default": false,
+					"default": "false",
 					"short": "-m"
 				},
 				{
 					"name": "--hidden",
 					"types": "Булево",
 					"description": "Скрытая",
-					"default": false,
+					"default": "false",
 					"short": "-h"
 				},
 				{

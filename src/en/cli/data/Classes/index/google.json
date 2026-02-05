@@ -31,21 +31,21 @@
 					"name": "--calendar",
 					"types": "Boolean",
 					"description": "Calendar methods permission",
-					"default": true,
+					"default": "true",
 					"short": "-c"
 				},
 				{
 					"name": "--drive",
 					"types": "Boolean",
 					"description": "Drive methods permission",
-					"default": true,
+					"default": "true",
 					"short": "-d"
 				},
 				{
 					"name": "--sheets",
 					"types": "Boolean",
 					"description": "Sheets methods permission",
-					"default": true,
+					"default": "true",
 					"short": "-s"
 				}
 			],

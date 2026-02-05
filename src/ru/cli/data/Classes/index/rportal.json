@@ -309,14 +309,14 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--map",
 					"types": "Булево",
 					"description": "Истина > возвращает поля фильтра как соответствие",
-					"default": false,
+					"default": "false",
 					"short": "-m"
 				}
 			],
@@ -331,14 +331,14 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--map",
 					"types": "Булево",
 					"description": "Истина > возвращает поля фильтра как соответствие",
-					"default": false,
+					"default": "false",
 					"short": "-m"
 				}
 			],
@@ -353,14 +353,14 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--map",
 					"types": "Булево",
 					"description": "Истина > возвращает поля фильтра как соответствие",
-					"default": false,
+					"default": "false",
 					"short": "-m"
 				}
 			],

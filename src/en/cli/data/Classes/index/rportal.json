@@ -208,7 +208,7 @@
 					"name": "--parent",
 					"types": "String",
 					"description": "ID of the parent item, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-n"
 				}
 			],
@@ -309,14 +309,14 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--map",
 					"types": "Boolean",
 					"description": "True > returns the filter fields as a map",
-					"default": false,
+					"default": "false",
 					"short": "-m"
 				}
 			],
@@ -331,14 +331,14 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--map",
 					"types": "Boolean",
 					"description": "True > returns the filter fields as a map",
-					"default": false,
+					"default": "false",
 					"short": "-m"
 				}
 			],
@@ -353,14 +353,14 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				},
 				{
 					"name": "--map",
 					"types": "Boolean",
 					"description": "True > returns the filter fields as a map",
-					"default": false,
+					"default": "false",
 					"short": "-m"
 				}
 			],
@@ -382,21 +382,21 @@
 					"name": "--status",
 					"types": "String",
 					"description": "Completion status: passed, failed, stopped, skipped, interrupted, cancelled",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				},
 				{
 					"name": "--descr",
 					"types": "String",
 					"description": "Launch description. Overwrites the one specified during creation",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--attr",
 					"types": "String",
 					"description": "Launch attributes. Overwrites the one specified during creation",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -468,7 +468,7 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Log text information",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-x"
 				},
 				{

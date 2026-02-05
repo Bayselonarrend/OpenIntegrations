@@ -58,7 +58,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -94,14 +94,14 @@
 					"name": "--options",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional parameters. See GetRequestParametersStructure",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -137,14 +137,14 @@
 					"name": "--options",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional parameters. See GetRequestParametersStructure",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -180,14 +180,14 @@
 					"name": "--options",
 					"types": "Structure Of KeyAndValue",
 					"description": "Additional parameters. See GetEmbeddingsParameterStructure",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -202,7 +202,7 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -217,7 +217,7 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -232,7 +232,7 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -261,14 +261,14 @@
 					"name": "--images",
 					"types": "Array Of String",
 					"description": "List of pictures in Base64 format (for multimodal models like llava)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-i"
 				},
 				{
 					"name": "--tools",
 					"types": "Array Of String",
 					"description": "List of tools in JSON format that the model should use",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -290,7 +290,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -312,7 +312,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -341,14 +341,14 @@
 					"name": "--verbose",
 					"types": "Boolean",
 					"description": "Return full model information",
-					"default": true,
+					"default": "true",
 					"short": "-v"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -384,7 +384,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -420,7 +420,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -449,7 +449,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -485,7 +485,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -514,7 +514,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -543,14 +543,14 @@
 					"name": "--insecure",
 					"types": "Boolean",
 					"description": "Allows an unsecured connection to the library",
-					"default": false,
+					"default": "false",
 					"short": "-i"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -579,14 +579,14 @@
 					"name": "--insecure",
 					"types": "Boolean",
 					"description": "Allows an unsecured connection to the library",
-					"default": false,
+					"default": "false",
 					"short": "-i"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -601,7 +601,7 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -630,7 +630,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -659,7 +659,7 @@
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],

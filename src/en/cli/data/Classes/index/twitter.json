@@ -35,7 +35,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization data. See GetStandardParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -57,7 +57,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization data. See GetStandardParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -72,7 +72,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization data. See GetStandardParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -87,35 +87,35 @@
 					"name": "--text",
 					"types": "String",
 					"description": "Tweet text",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				},
 				{
 					"name": "--media",
 					"types": "Array of String, BinaryData",
 					"description": "Array of binary data or file paths",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				},
 				{
 					"name": "--options",
 					"types": "Array of String",
 					"description": "Array of poll options, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				},
 				{
 					"name": "--dur",
 					"types": "String, Number",
 					"description": "Poll duration if necessary (poll without duration is not created)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization data. See GetStandardParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -137,7 +137,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization data. See GetStandardParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -166,7 +166,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization data. See GetStandardParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -195,7 +195,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization data. See GetStandardParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -224,7 +224,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization data. See GetStandardParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -260,7 +260,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization data. See GetStandardParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -289,7 +289,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization data. See GetStandardParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],

@@ -21,7 +21,7 @@
 					"name": "--proxy",
 					"types": "Structure Of KeyAndValue",
 					"description": "Proxy settings, if required. See GetProxySettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -79,7 +79,7 @@
 					"name": "--pass",
 					"types": "String",
 					"description": "SSH user password",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				}
 			],
@@ -122,14 +122,14 @@
 					"name": "--pub",
 					"types": "String",
 					"description": "Path to public key file",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-b"
 				},
 				{
 					"name": "--pass",
 					"types": "String",
 					"description": "Private key password (passphrase)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				}
 			],
@@ -194,14 +194,14 @@
 					"name": "--login",
 					"types": "String, Undefined",
 					"description": "Authorization login, if required",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
 					"name": "--pass",
 					"types": "String, Undefined",
 					"description": "Authorization password, if required",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				}
 			],

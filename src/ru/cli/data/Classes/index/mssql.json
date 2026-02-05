@@ -57,7 +57,7 @@
 					"name": "--force",
 					"types": "Булево",
 					"description": "Включает попытку получения результата, даже для не SELECT запросов",
-					"default": false,
+					"default": "false",
 					"short": "-f"
 				},
 				{
@@ -121,7 +121,7 @@
 					"name": "--trust",
 					"types": "Булево",
 					"description": "Использовать аутентификацию Windows. Логин и пароль будут проигнорированы",
-					"default": false,
+					"default": "false",
 					"short": "-t"
 				}
 			],
@@ -468,7 +468,7 @@
 					"name": "--trn",
 					"types": "Булево",
 					"description": "Истина > добавление записей в транзакции с откатом при ошибке",
-					"default": true,
+					"default": "true",
 					"short": "-n"
 				},
 				{
@@ -561,7 +561,7 @@
 					"name": "--trn",
 					"types": "Булево",
 					"description": "Истина > добавление записей в транзакции с откатом при ошибке",
-					"default": true,
+					"default": "true",
 					"short": "-n"
 				},
 				{
@@ -683,7 +683,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
