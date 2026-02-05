@@ -57,21 +57,21 @@
 					"name": "--calendar",
 					"types": "Boolean",
 					"description": "Calendar methods permission",
-					"default": true,
+					"default": "true",
 					"short": "-c"
 				},
 				{
 					"name": "--drive",
 					"types": "Boolean",
 					"description": "Drive methods permission",
-					"default": true,
+					"default": "true",
 					"short": "-d"
 				},
 				{
 					"name": "--sheets",
 					"types": "Boolean",
 					"description": "Sheets methods permission",
-					"default": true,
+					"default": "true",
 					"short": "-s"
 				}
 			],
@@ -368,7 +368,7 @@
 					"name": "--sheetname",
 					"types": "String",
 					"description": "Sheet name (first sheet by default)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				},
 				{
@@ -411,7 +411,7 @@
 					"name": "--sheetname",
 					"types": "String",
 					"description": "Sheet name (first sheet by default)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -440,14 +440,14 @@
 					"name": "--cells",
 					"types": "Array of String",
 					"description": "Array of A1 type cells to get (whole sheet if not filled)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				},
 				{
 					"name": "--sheetname",
 					"types": "String",
 					"description": "Sheet name (first sheet by default)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],

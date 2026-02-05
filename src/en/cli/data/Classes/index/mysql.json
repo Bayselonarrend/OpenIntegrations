@@ -50,28 +50,28 @@
 					"name": "--params",
 					"types": "Array Of Arbitrary",
 					"description": "Array of positional parameters of the request",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--force",
 					"types": "Boolean",
 					"description": "Includes an attempt to retrieve the result, even for nonSELECT queries",
-					"default": false,
+					"default": "false",
 					"short": "-f"
 				},
 				{
 					"name": "--dbc",
 					"types": "String, Arbitrary",
 					"description": "Connection or connection string",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				}
 			],
@@ -93,21 +93,21 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Name of the database to connect",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--login",
 					"types": "String",
 					"description": "MySQL user",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
 					"name": "--pass",
 					"types": "String",
 					"description": "MySQL password",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
@@ -136,7 +136,7 @@
 					"name": "--cert",
 					"types": "String",
 					"description": "Path to the root PEM file of the certificate if it is not in the system repository",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],
@@ -158,14 +158,14 @@
 					"name": "--dbc",
 					"types": "String, Arbitrary",
 					"description": "Connection or connection string",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				}
 			],
@@ -187,14 +187,14 @@
 					"name": "--dbc",
 					"types": "String, Arbitrary",
 					"description": "Connection or connection string",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				}
 			],
@@ -223,14 +223,14 @@
 					"name": "--dbc",
 					"types": "String, Arbitrary",
 					"description": "Connection or connection string",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -266,14 +266,14 @@
 					"name": "--dbc",
 					"types": "String, Arbitrary",
 					"description": "Connection or connection string",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -302,14 +302,14 @@
 					"name": "--dbc",
 					"types": "String, Arbitrary",
 					"description": "Connection or connection string",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -338,14 +338,14 @@
 					"name": "--dbc",
 					"types": "String, Arbitrary",
 					"description": "Existing connection or database path",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -367,14 +367,14 @@
 					"name": "--dbc",
 					"types": "String, Arbitrary",
 					"description": "Connection or connection string",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -396,14 +396,14 @@
 					"name": "--dbc",
 					"types": "String, Arbitrary",
 					"description": "Connection or connection string",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -425,14 +425,14 @@
 					"name": "--dbc",
 					"types": "String, Arbitrary",
 					"description": "Connection or connection string",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -461,21 +461,21 @@
 					"name": "--trn",
 					"types": "Boolean",
 					"description": "True > adding records to transactions with rollback on error",
-					"default": true,
+					"default": "true",
 					"short": "-n"
 				},
 				{
 					"name": "--dbc",
 					"types": "String, Arbitrary",
 					"description": "Connection or connection string",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -504,21 +504,21 @@
 					"name": "--filter",
 					"types": "Array of Structure",
 					"description": "Filters array. See GetRecordsFilterStructure",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-f"
 				},
 				{
 					"name": "--dbc",
 					"types": "String, Arbitrary",
 					"description": "Connection or connection string",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -547,21 +547,21 @@
 					"name": "--trn",
 					"types": "Boolean",
 					"description": "True > adding records to transactions with rollback on error",
-					"default": true,
+					"default": "true",
 					"short": "-n"
 				},
 				{
 					"name": "--db",
 					"types": "String, Arbitrary",
 					"description": "Existing connection or database path",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -590,35 +590,35 @@
 					"name": "--filter",
 					"types": "Array of Structure",
 					"description": "Filters array. See GetRecordsFilterStructure",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
 					"name": "--order",
 					"types": "Structure Of KeyAndValue",
 					"description": "Sorting: Key > field name, Value > direction (ASC, DESC)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				},
 				{
 					"name": "--limit",
 					"types": "Number",
 					"description": "Limiting the number of received strings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				},
 				{
 					"name": "--dbc",
 					"types": "String, Arbitrary",
 					"description": "Connection or connection string",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				}
 			],
@@ -640,21 +640,21 @@
 					"name": "--filter",
 					"types": "Array of Structure",
 					"description": "Filters array. See GetRecordsFilterStructure",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-f"
 				},
 				{
 					"name": "--dbc",
 					"types": "String, Arbitrary",
 					"description": "Connection or connection string",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings, if necessary. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				}
 			],
@@ -669,7 +669,7 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],

@@ -94,14 +94,14 @@
 					"name": "--timeout",
 					"types": "Number",
 					"description": "Waiting time for new events",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				},
 				{
 					"name": "--offset",
 					"types": "Number",
 					"description": "Offset in the list of received messages",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				}
 			],
@@ -196,7 +196,7 @@
 					"name": "--keyboard",
 					"types": "String, Structure Of KeyAndValue",
 					"description": "Keyboard. See FormKeyboardFromButtonArray",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-k"
 				},
 				{
@@ -210,7 +210,7 @@
 					"name": "--reply",
 					"types": "String, Number",
 					"description": "Reply to message ID",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				}
 			],
@@ -253,7 +253,7 @@
 					"name": "--keyboard",
 					"types": "String, Structure Of KeyAndValue",
 					"description": "Keyboard. See FormKeyboardFromButtonArray",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-k"
 				},
 				{
@@ -303,7 +303,7 @@
 					"name": "--keyboard",
 					"types": "String, Structure Of KeyAndValue",
 					"description": "Keyboard. See FormKeyboardFromButtonArray",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-k"
 				},
 				{
@@ -353,7 +353,7 @@
 					"name": "--keyboard",
 					"types": "String, Structure Of KeyAndValue",
 					"description": "Keyboard. See FormKeyboardFromButtonArray",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-k"
 				},
 				{
@@ -403,7 +403,7 @@
 					"name": "--keyboard",
 					"types": "String, Structure Of KeyAndValue",
 					"description": "Keyboard. See FormKeyboardFromButtonArray",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-k"
 				},
 				{
@@ -417,7 +417,7 @@
 					"name": "--filename",
 					"types": "String",
 					"description": "Custom displayed file name with extension, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-f"
 				}
 			],
@@ -460,7 +460,7 @@
 					"name": "--keyboard",
 					"types": "String, Structure Of KeyAndValue",
 					"description": "Keyboard. See FormKeyboardFromButtonArray",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-k"
 				},
 				{
@@ -510,7 +510,7 @@
 					"name": "--keyboard",
 					"types": "String",
 					"description": "Keyboard. See FormKeyboardFromButtonArray",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-k"
 				},
 				{
@@ -560,7 +560,7 @@
 					"name": "--keyboard",
 					"types": "String, Structure Of KeyAndValue",
 					"description": "Keyboard. See FormKeyboardFromButtonArray",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-k"
 				}
 			],
@@ -610,7 +610,7 @@
 					"name": "--keyboard",
 					"types": "String, Structure Of KeyAndValue",
 					"description": "Keyboard. See FormKeyboardFromButtonArray",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-k"
 				}
 			],
@@ -653,7 +653,7 @@
 					"name": "--anonymous",
 					"types": "Boolean",
 					"description": "Survey anonymity flag",
-					"default": true,
+					"default": "true",
 					"short": "-a"
 				}
 			],
@@ -797,7 +797,7 @@
 					"name": "--parsemode",
 					"types": "String",
 					"description": "Text processing type (HTML, Markdown, MarkdownV2)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -840,7 +840,7 @@
 					"name": "--parsemode",
 					"types": "String",
 					"description": "Text processing type (HTML, Markdown, MarkdownV2)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				}
 			],
@@ -862,14 +862,14 @@
 					"name": "--under",
 					"types": "Boolean",
 					"description": "Keyboard under the message or on the bottom panel",
-					"default": false,
+					"default": "false",
 					"short": "-u"
 				},
 				{
 					"name": "--column",
 					"types": "Boolean",
 					"description": "True > buttons are displayed in a column, False > in a row",
-					"default": true,
+					"default": "true",
 					"short": "-c"
 				}
 			],
@@ -956,21 +956,21 @@
 					"name": "--title",
 					"types": "String",
 					"description": "Invitation title",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
 					"name": "--expire",
 					"types": "Date",
 					"description": "Link expiration date (permanent if not specified)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-e"
 				},
 				{
 					"name": "--limit",
 					"types": "Number",
 					"description": "User limit (infinite if not specified)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				}
 			],
@@ -1101,7 +1101,7 @@
 					"name": "--icon",
 					"types": "String",
 					"description": "See GetAvatarIconList",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-i"
 				}
 			],
@@ -1137,14 +1137,14 @@
 					"name": "--title",
 					"types": "String",
 					"description": "New title",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-l"
 				},
 				{
 					"name": "--icon",
 					"types": "String",
 					"description": "See GetAvatarIconList",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-i"
 				}
 			],
@@ -1173,7 +1173,7 @@
 					"name": "--topic",
 					"types": "String, Number",
 					"description": "Topic ID",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -1202,7 +1202,7 @@
 					"name": "--topic",
 					"types": "String, Number",
 					"description": "Topic ID",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -1333,7 +1333,7 @@
 					"name": "--topic",
 					"types": "String, Number",
 					"description": "Topic ID. Main if not filled",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],

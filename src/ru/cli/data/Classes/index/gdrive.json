@@ -57,21 +57,21 @@
 					"name": "--calendar",
 					"types": "Булево",
 					"description": "разрешение на методы Calendar",
-					"default": true,
+					"default": "true",
 					"short": "-c"
 				},
 				{
 					"name": "--drive",
 					"types": "Булево",
 					"description": "разрешение на методы Drive",
-					"default": true,
+					"default": "true",
 					"short": "-d"
 				},
 				{
 					"name": "--sheets",
 					"types": "Булево",
 					"description": "разрешение на методы Sheets",
-					"default": true,
+					"default": "true",
 					"short": "-s"
 				}
 			],
@@ -209,7 +209,7 @@
 					"name": "--depth",
 					"types": "Булево",
 					"description": "Добавляет список файлов к полям каталога",
-					"default": false,
+					"default": "false",
 					"short": "-d"
 				}
 			],
@@ -434,7 +434,7 @@
 					"name": "--empty",
 					"types": "Булево",
 					"description": "Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],

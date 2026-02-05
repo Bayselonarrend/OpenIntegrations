@@ -39,7 +39,7 @@
 					"name": "--sitename",
 					"types": "String",
 					"description": "Site name (login) for information. Current, if not filled in",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				}
 			],
@@ -119,7 +119,7 @@
 					"name": "--singly",
 					"types": "Boolean",
 					"description": "True > sends files in separate requests",
-					"default": false,
+					"default": "false",
 					"short": "-s"
 				}
 			],
@@ -163,7 +163,7 @@
 					"name": "--path",
 					"types": "String",
 					"description": "Selection of files by catalog. All if not filled in",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -192,7 +192,7 @@
 					"name": "--remote",
 					"types": "String",
 					"description": "Remote receiver catalog. Root by default",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-r"
 				}
 			],

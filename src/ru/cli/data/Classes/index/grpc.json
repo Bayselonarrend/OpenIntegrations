@@ -376,7 +376,7 @@
 					"name": "--cnt",
 					"types": "Булево",
 					"description": "Продолжать получение после обработки порядка обмена",
-					"default": true,
+					"default": "true",
 					"short": "-n"
 				}
 			],

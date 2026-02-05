@@ -70,7 +70,7 @@
 					"name": "--offset",
 					"types": "String",
 					"description": "Next page identifier of the base list from the previous request",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				}
 			],
@@ -171,7 +171,7 @@
 					"name": "--description",
 					"types": "String",
 					"description": "Table description",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				}
 			],
@@ -207,14 +207,14 @@
 					"name": "--title",
 					"types": "String",
 					"description": "New name",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-i"
 				},
 				{
 					"name": "--description",
 					"types": "String",
 					"description": "New description",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				}
 			],
@@ -293,14 +293,14 @@
 					"name": "--title",
 					"types": "String",
 					"description": "New name",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-i"
 				},
 				{
 					"name": "--description",
 					"types": "String",
 					"description": "New description",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				}
 			],
@@ -337,7 +337,7 @@
 					"name": "--precision",
 					"types": "Number, String",
 					"description": "Number of decimal places",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				}
 			],
@@ -463,7 +463,7 @@
 					"name": "--offset",
 					"types": "String",
 					"description": "Next page identifier of data from the previous request",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				}
 			],
@@ -614,7 +614,7 @@
 					"name": "--offset",
 					"types": "String",
 					"description": "Next page identifier of data from the previous request",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-o"
 				}
 			],

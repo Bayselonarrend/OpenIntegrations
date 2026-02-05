@@ -48,7 +48,7 @@
 					"name": "--session",
 					"types": "Structure Of KeyAndValue",
 					"description": "Session settings. See GetSessionSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				}
 			],
@@ -70,14 +70,14 @@
 					"name": "--auth",
 					"types": "String, Structure Of KeyAndValue",
 					"description": "Authorization: string for JWT, structure for basic",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				},
 				{
 					"name": "--headers",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional request headers",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -99,21 +99,21 @@
 					"name": "--db",
 					"types": "String",
 					"description": "Database",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--id",
 					"types": "String",
 					"description": "Unique request ID, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-i"
 				},
 				{
 					"name": "--data",
 					"types": "Arbitrary",
 					"description": "String, file, or binary data of the request",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				},
 				{
@@ -127,14 +127,14 @@
 					"name": "--ext",
 					"types": "Array of Structure",
 					"description": "External tables data. See GetExternalTableStructure",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-e"
 				},
 				{
 					"name": "--settings",
 					"types": "Map Of KeyAndValue",
 					"description": "Additional query parameters of the request",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				}
 			],
@@ -163,14 +163,14 @@
 					"name": "--data",
 					"types": "Arbitrary",
 					"description": "String, file, or binary data of the table",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--format",
 					"types": "String",
 					"description": "Data format: CVS, TVS, JSON, etc..",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-f"
 				}
 			],
@@ -185,14 +185,14 @@
 					"name": "--id",
 					"types": "String",
 					"description": "Session ID. A new unique identifier if not specified (a new session will be created)",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-i"
 				},
 				{
 					"name": "--check",
 					"types": "Boolean",
 					"description": "Check for session existence. True when ID is specified and false when not, unless otherwise specified",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				},
 				{
@@ -221,21 +221,21 @@
 					"name": "--auth",
 					"types": "String, Structure Of KeyAndValue",
 					"description": "Authorization: string for JWT, structure for basic",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				},
 				{
 					"name": "--meta",
 					"types": "Structure Of KeyAndValue",
 					"description": "gRPC metadata structure, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-m"
 				},
 				{
 					"name": "--tls",
 					"types": "Structure Of KeyAndValue",
 					"description": "TLS settings. See GetTlsSettings",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				}
 			],
@@ -257,7 +257,7 @@
 					"name": "--cert",
 					"types": "String",
 					"description": "Path to the root PEM file of the certificate if it is not in the system repository",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-c"
 				}
 			],

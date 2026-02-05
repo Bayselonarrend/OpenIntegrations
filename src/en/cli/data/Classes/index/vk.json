@@ -180,21 +180,21 @@
 					"name": "--ad",
 					"types": "Boolean",
 					"description": "Sign \"\"This is an ad\"\"",
-					"default": false,
+					"default": "false",
 					"short": "-a"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "Link (URL) under the post",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-u"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -223,21 +223,21 @@
 					"name": "--ad",
 					"types": "Boolean",
 					"description": "Sign \"\"This is an ad\"\"",
-					"default": false,
+					"default": "false",
 					"short": "-a"
 				},
 				{
 					"name": "--url",
 					"types": "String",
 					"description": "Link (URL) under the post",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-u"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -259,7 +259,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -288,21 +288,21 @@
 					"name": "--picture",
 					"types": "String, BinaryData",
 					"description": "Poll image. Required if there is no text",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--text",
 					"types": "String",
 					"description": "Post text. Required if there is no picture",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -324,14 +324,14 @@
 					"name": "--description",
 					"types": "String",
 					"description": "Album description",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -353,7 +353,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				}
 			],
@@ -375,14 +375,14 @@
 					"name": "--url",
 					"types": "String",
 					"description": "URL for button under the story",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-u"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -411,14 +411,14 @@
 					"name": "--description",
 					"types": "String",
 					"description": "Image description",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				}
 			],
@@ -440,7 +440,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -469,21 +469,21 @@
 					"name": "--description",
 					"types": "String",
 					"description": "Video description",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-d"
 				},
 				{
 					"name": "--album",
 					"types": "String",
 					"description": "Album ID, if necessary",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -505,7 +505,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				},
 				{
@@ -541,7 +541,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -563,14 +563,14 @@
 					"name": "--remove",
 					"types": "Boolean",
 					"description": "Delete completely (True) or close",
-					"default": false,
+					"default": "false",
 					"short": "-r"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -592,7 +592,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -621,7 +621,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -643,14 +643,14 @@
 					"name": "--wall",
 					"types": "String, Number",
 					"description": "ID of the wall where the post is located",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-w"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -672,28 +672,28 @@
 					"name": "--from",
 					"types": "String, Number",
 					"description": "ID of the wall where the post is located",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-f"
 				},
 				{
 					"name": "--to",
 					"types": "String, Number",
 					"description": "ID of the target wall or group",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				},
 				{
 					"name": "--ad",
 					"types": "Boolean",
 					"description": "Sign of an advertising post",
-					"default": false,
+					"default": "false",
 					"short": "-a"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-h"
 				}
 			],
@@ -729,14 +729,14 @@
 					"name": "--keyboard",
 					"types": "String",
 					"description": "Keyboard JSON. See FormKeyboard",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-k"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -772,7 +772,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -794,7 +794,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -823,7 +823,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -845,7 +845,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -874,7 +874,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -924,7 +924,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -953,7 +953,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-t"
 				}
 			],
@@ -968,7 +968,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -983,7 +983,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -998,14 +998,14 @@
 					"name": "--sel",
 					"types": "String, Number",
 					"description": "Selection ID, if filtering is needed",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1027,7 +1027,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1049,14 +1049,14 @@
 					"name": "--sel",
 					"types": "String",
 					"description": "Selection ID for placing the product, if needed",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1085,14 +1085,14 @@
 					"name": "--sel",
 					"types": "String",
 					"description": "Identifier of the new selection, if needed",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1114,7 +1114,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1136,14 +1136,14 @@
 					"name": "--sellgroup",
 					"types": "String",
 					"description": "ID of the existing group, if needed",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-s"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1158,7 +1158,7 @@
 					"name": "--empty",
 					"types": "Boolean",
 					"description": "True > structure with empty valuse, False > field descriptions at values",
-					"default": false,
+					"default": "false",
 					"short": "-e"
 				}
 			],
@@ -1173,7 +1173,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1195,7 +1195,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1224,21 +1224,21 @@
 					"name": "--main",
 					"types": "Boolean",
 					"description": "Main",
-					"default": false,
+					"default": "false",
 					"short": "-m"
 				},
 				{
 					"name": "--hidden",
 					"types": "Boolean",
 					"description": "Hidden",
-					"default": false,
+					"default": "false",
 					"short": "-h"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1267,28 +1267,28 @@
 					"name": "--picture",
 					"types": "String, BinaryData",
 					"description": "New selection image",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-p"
 				},
 				{
 					"name": "--main",
 					"types": "Boolean",
 					"description": "Main",
-					"default": false,
+					"default": "false",
 					"short": "-m"
 				},
 				{
 					"name": "--hidden",
 					"types": "Boolean",
 					"description": "Hidden",
-					"default": false,
+					"default": "false",
 					"short": "-h"
 				},
 				{
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1317,7 +1317,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1346,7 +1346,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1368,7 +1368,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1383,7 +1383,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1405,7 +1405,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1434,7 +1434,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1456,7 +1456,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1485,7 +1485,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1521,7 +1521,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1543,7 +1543,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
@@ -1558,7 +1558,7 @@
 					"name": "--auth",
 					"types": "Structure Of String",
 					"description": "Authorization parameters. See GetAuthParameters",
-					"default": "Пустое значение",
+					"default": "Empty value",
 					"short": "-a"
 				}
 			],
