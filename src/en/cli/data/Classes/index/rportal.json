@@ -7,29 +7,29 @@
 		{
 			"name": "Authorization",
 			"methods": [
-				"GetTemporaryToken",
+				"DeletePermanentToken",
 				"GetPermanentToken",
-				"DeletePermanentToken"
+				"GetTemporaryToken"
 			]
 		},
 		{
 			"name": "Results management",
 			"methods": [
-				"CreateLaunch",
 				"CreateItem",
-				"FinishLaunch",
+				"CreateLaunch",
 				"FinishItem",
-				"GetLaunchStructure",
-				"GetItemStructure",
+				"FinishLaunch",
 				"GetItemCompletionStructure",
-				"GetLaunchCompletionStructure"
+				"GetItemStructure",
+				"GetLaunchCompletionStructure",
+				"GetLaunchStructure"
 			]
 		},
 		{
 			"name": "Log recording",
 			"methods": [
-				"WriteLog",
-				"GetLogStructure"
+				"GetLogStructure",
+				"WriteLog"
 			]
 		}
 	],

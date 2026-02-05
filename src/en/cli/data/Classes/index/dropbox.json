@@ -7,49 +7,49 @@
 		{
 			"name": "Account and authorization",
 			"methods": [
-				"GetAuthorizationLink",
-				"GetToken",
-				"RefreshToken",
 				"GetAccountInformation",
-				"GetSpaceUsageData"
+				"GetAuthorizationLink",
+				"GetSpaceUsageData",
+				"GetToken",
+				"RefreshToken"
 			]
 		},
 		{
 			"name": "File and directory management",
 			"methods": [
-				"GetObjectInformation",
-				"GetListOfFolderFiles",
-				"GetPreview",
-				"UploadFile",
-				"UploadFileByURL",
-				"GetUploadStatusByURL",
-				"DeleteObject",
 				"CopyObject",
-				"MoveObject",
 				"CreateFolder",
+				"DeleteObject",
 				"DownloadFile",
 				"DownloadFolder",
+				"GetListOfFolderFiles",
+				"GetObjectInformation",
 				"GetObjectVersionList",
-				"RestoreObjectToVersion"
+				"GetPreview",
+				"GetUploadStatusByURL",
+				"MoveObject",
+				"RestoreObjectToVersion",
+				"UploadFile",
+				"UploadFileByURL"
 			]
 		},
 		{
 			"name": "Tags management",
 			"methods": [
-				"GetTagList",
 				"AddTag",
-				"DeleteTag"
+				"DeleteTag",
+				"GetTagList"
 			]
 		},
 		{
 			"name": "Shared access settings",
 			"methods": [
-				"PublishFolder",
-				"CancelFolderPublication",
 				"AddUsersToFile",
 				"AddUsersToFolder",
+				"CancelFilePublication",
+				"CancelFolderPublication",
 				"GetAsynchronousChangeStatus",
-				"CancelFilePublication"
+				"PublishFolder"
 			]
 		}
 	],

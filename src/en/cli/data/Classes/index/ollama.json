@@ -7,37 +7,37 @@
 		{
 			"name": "Requests processing",
 			"methods": [
-				"GetVersion",
-				"GetResponse",
+				"GetContextMessageStructure",
+				"GetContextParameterStructure",
 				"GetContextResponse",
 				"GetEmbeddings",
-				"GetRequestParameterStructure",
 				"GetEmbeddingsParameterStructure",
-				"GetContextParameterStructure",
-				"GetContextMessageStructure"
+				"GetRequestParameterStructure",
+				"GetResponse",
+				"GetVersion"
 			]
 		},
 		{
 			"name": "Models management",
 			"methods": [
-				"GetModelList",
-				"ListRunningModels",
-				"GetModelInformation",
-				"CreateModel",
 				"CopyModel",
+				"CreateModel",
 				"DeleteModel",
+				"GetModelInformation",
+				"GetModelList",
+				"GetModelSettingsStructure",
+				"ListRunningModels",
 				"LoadModelToMemory",
-				"UnloadModelFromMemory",
-				"PushModel",
 				"PullModel",
-				"GetModelSettingsStructure"
+				"PushModel",
+				"UnloadModelFromMemory"
 			]
 		},
 		{
 			"name": "Working with blob",
 			"methods": [
-				"PushBlob",
-				"CheckBlob"
+				"CheckBlob",
+				"PushBlob"
 			]
 		}
 	],

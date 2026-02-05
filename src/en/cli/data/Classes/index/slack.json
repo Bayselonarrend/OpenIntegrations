@@ -8,66 +8,66 @@
 			"name": "Management and settings",
 			"methods": [
 				"GetBotInformation",
-				"GetWorkspaceList",
-				"GetUserList"
+				"GetUserList",
+				"GetWorkspaceList"
 			]
 		},
 		{
 			"name": "Message management",
 			"methods": [
-				"SendMessage",
-				"SendEphemeralMessage",
-				"EditMessage",
 				"DeleteMessage",
+				"EditMessage",
 				"GetDelayedMessageList",
 				"GetMessageLink",
-				"GetMessageReplyList"
+				"GetMessageReplyList",
+				"SendEphemeralMessage",
+				"SendMessage"
 			]
 		},
 		{
 			"name": "Channel management",
 			"methods": [
-				"GetChannelList",
-				"GetChannelUserList",
-				"CreateChannel",
 				"ArchiveChannel",
+				"CreateChannel",
 				"GetChannel",
 				"GetChannelHistory",
+				"GetChannelList",
+				"GetChannelUserList",
 				"InviteUsersToChannel",
-				"KickUserFromChannel",
 				"JoinChannel",
+				"KickUserFromChannel",
 				"LeaveChannel",
-				"SetChannelTopic",
+				"RenameChannel",
 				"SetChannelGoal",
-				"RenameChannel"
+				"SetChannelTopic"
 			]
 		},
 		{
 			"name": "Dialog management",
 			"methods": [
-				"OpenDialog",
-				"CloseDialog"
+				"CloseDialog",
+				"OpenDialog"
 			]
 		},
 		{
 			"name": "File management",
 			"methods": [
-				"GetFilesList",
-				"UploadFile",
-				"GetFileData",
 				"DeleteFile",
+				"GetFileData",
+				"GetFilesList",
+				"MakeFilePrivate",
 				"MakeFilePublic",
-				"MakeFilePrivate"
+				"UploadFile"
 			]
 		},
 		{
 			"name": "External files management",
 			"methods": [
-				"GetExternalFileList",
-				"GetExternalFile",
 				"AddExternalFile",
-				"SendExternalFile",
-				"DeleteExternalFile"
+				"DeleteExternalFile",
+				"GetExternalFile",
+				"GetExternalFileList",
+				"SendExternalFile"
 			]
 		},
 		{

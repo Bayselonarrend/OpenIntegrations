@@ -7,22 +7,22 @@
 		{
 			"name": "Settings and information",
 			"methods": [
-				"SetWebhook",
 				"GetChannelInformation",
+				"GetOnlineUsers",
 				"GetUserData",
-				"GetOnlineUsers"
+				"SetWebhook"
 			]
 		},
 		{
 			"name": "Message sending",
 			"methods": [
-				"SendTextMessage",
-				"SendImage",
-				"SendFile",
+				"CreateKeyboardFromArrayButton",
 				"SendContact",
-				"SendLocation",
+				"SendFile",
+				"SendImage",
 				"SendLink",
-				"CreateKeyboardFromArrayButton"
+				"SendLocation",
+				"SendTextMessage"
 			]
 		}
 	],

@@ -13,19 +13,19 @@
 		{
 			"name": "Orm",
 			"methods": [
-				"GetTableInformation",
-				"CreateTable",
-				"AddTableColumn",
-				"DeleteTableColumn",
-				"EnsureTable",
 				"AddRecords",
-				"UpdateRecords",
-				"EnsureRecords",
-				"GetRecords",
+				"AddTableColumn",
+				"ClearTable",
+				"CreateTable",
 				"DeleteRecords",
 				"DeleteTable",
-				"ClearTable",
-				"GetRecordsFilterStructure"
+				"DeleteTableColumn",
+				"EnsureRecords",
+				"EnsureTable",
+				"GetRecords",
+				"GetRecordsFilterStructure",
+				"GetTableInformation",
+				"UpdateRecords"
 			]
 		}
 	],

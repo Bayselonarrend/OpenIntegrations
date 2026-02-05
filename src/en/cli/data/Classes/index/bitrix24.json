@@ -16,91 +16,91 @@
 		{
 			"name": "Feed posts management",
 			"methods": [
+				"AddPostComment",
+				"AddPostRecipients",
 				"CreatePost",
-				"UpdatePost",
 				"DeletePost",
 				"GetImportantPostViewers",
 				"GetPosts",
-				"AddPostComment",
-				"AddPostRecipients"
+				"UpdatePost"
 			]
 		},
 		{
 			"name": "Tasks management",
 			"methods": [
-				"GetTask",
-				"GetTasksList",
-				"CreateTask",
-				"UpdateTask",
-				"DeleteTask",
-				"AttachFileToTopic",
+				"AddTaskToFavorites",
 				"ApproveTask",
-				"DisapproveTask",
+				"AttachFileToTopic",
+				"CheckTaskAccesses",
 				"CompleteTask",
-				"RenewTask",
+				"CreateTask",
+				"CreateTasksDependencies",
 				"DeferTask",
+				"DelegateTask",
+				"DeleteTask",
+				"DeleteTasksDependencies",
+				"DisapproveTask",
+				"GetDailyPlan",
+				"GetTask",
+				"GetTaskFieldsStructure",
+				"GetTaskHistory",
+				"GetTasksFilterStructure",
+				"GetTasksList",
+				"MuteTask",
 				"PauseTask",
+				"RemoveTaskFromFavorites",
+				"RenewTask",
 				"StartTask",
 				"StartWatchingTask",
 				"StopWatchingTask",
-				"DelegateTask",
-				"AddTaskToFavorites",
-				"RemoveTaskFromFavorites",
-				"GetTaskHistory",
-				"CheckTaskAccesses",
-				"MuteTask",
 				"UnmuteTask",
-				"CreateTasksDependencies",
-				"DeleteTasksDependencies",
-				"GetDailyPlan",
-				"GetTaskFieldsStructure",
-				"GetTasksFilterStructure"
+				"UpdateTask"
 			]
 		},
 		{
 			"name": "Customs tasks fields management",
 			"methods": [
-				"GetCustomTaskFieldsList",
 				"AddCustomTaskField",
-				"UpdateCustomTaskField",
+				"DeleteCustomTaskField",
 				"GetCustomTaskField",
-				"DeleteCustomTaskField"
+				"GetCustomTaskFieldsList",
+				"UpdateCustomTaskField"
 			]
 		},
 		{
 			"name": "Tasks checklists management",
 			"methods": [
 				"AddTasksChecklistElement",
-				"UpdateTasksChecklistElement",
+				"CompleteTasksChecklistElement",
 				"DeleteTasksChecklistElement",
 				"GetTasksChecklist",
 				"GetTasksChecklistElement",
-				"CompleteTasksChecklistElement",
-				"RenewTasksChecklistElement"
+				"RenewTasksChecklistElement",
+				"UpdateTasksChecklistElement"
 			]
 		},
 		{
 			"name": "Comments and results management",
 			"methods": [
-				"GetTaskCommentsList",
-				"GetTaskComment",
 				"AddTaskComment",
-				"UpdateTaskComment",
-				"DeleteTaskComment",
-				"GetResultsList",
 				"CreateResultFromComment",
 				"DeleteResultFromComment",
-				"GetCommentStructure"
+				"DeleteTaskComment",
+				"GetCommentStructure",
+				"GetResultsList",
+				"GetTaskComment",
+				"GetTaskCommentsList",
+				"UpdateTaskComment"
 			]
 		},
 		{
 			"name": "Kanban",
 			"methods": [
 				"AddKanbanStage",
-				"UpdateKanbansStage",
 				"DeleteKanbanStage",
 				"GetKanbanStages",
-				"MoveTaskToKanbanStage"
+				"MoveTaskToKanbanStage",
+				"UpdateKanbansStage"
 			]
 		},
 		{
@@ -108,96 +108,96 @@
 			"methods": [
 				"AddTaskTimeAccounting",
 				"DeleteTaskTimeAccounting",
-				"GetTaskTimeAccountingList",
 				"GetTaskTimeAccounting",
-				"UpdateTaskTimeAccounting",
+				"GetTaskTimeAccountingList",
+				"GetTimekeepingSettings",
+				"GetTimekeepingStatus",
+				"PauseTimekeeping",
 				"StartTimekeeping",
 				"StopTimekeeping",
-				"PauseTimekeeping",
-				"GetTimekeepingStatus",
-				"GetTimekeepingSettings"
+				"UpdateTaskTimeAccounting"
 			]
 		},
 		{
 			"name": "Storages management",
 			"methods": [
-				"GetStoragesList",
+				"CreateStorageFolder",
 				"GetAppStorage",
 				"GetStorage",
-				"RenameStorage",
 				"GetStorageObjects",
-				"CreateStorageFolder"
+				"GetStoragesList",
+				"RenameStorage"
 			]
 		},
 		{
 			"name": "Catalogs management",
 			"methods": [
-				"GetFolderInformation",
 				"CreateSubfolder",
-				"MakeFolderCopy",
-				"MoveFolder",
 				"DeleteFolder",
 				"GetFolderExternalLink",
+				"GetFolderFilterStructure",
+				"GetFolderInformation",
 				"GetFolderItems",
+				"MakeFolderCopy",
 				"MarkFolderAsDeleted",
-				"RestoreFolder",
+				"MoveFolder",
 				"RenameFolder",
-				"GetFolderFilterStructure"
+				"RestoreFolder"
 			]
 		},
 		{
 			"name": "File management",
 			"methods": [
-				"UploadFileToStorage",
-				"UploadFileToFolder",
-				"GetFileInformation",
 				"DeleteFile",
 				"GetFileExternalLink",
-				"MarkFileAsDeleted",
-				"RestoreFile",
+				"GetFileInformation",
 				"MakeFileCopy",
+				"MarkFileAsDeleted",
 				"MoveFileToFolder",
-				"RenameFile"
+				"RenameFile",
+				"RestoreFile",
+				"UploadFileToFolder",
+				"UploadFileToStorage"
 			]
 		},
 		{
 			"name": "Chats and dialogs management",
 			"methods": [
-				"CreateChat",
-				"GetChatUsers",
-				"LeaveChat",
-				"GetUsers",
 				"AddUsersToChat",
-				"DeleteUserFromChat",
-				"ChangeChatTitle",
 				"ChangeChatColor",
-				"ChangeChatPicture",
 				"ChangeChatOwner",
+				"ChangeChatPicture",
+				"ChangeChatTitle",
+				"CreateChat",
+				"DeleteUserFromChat",
 				"DisableChatNotifications",
 				"EnableChatNotifications",
-				"GetChatMessagesList",
-				"GetDialog",
-				"GetChatMembersList",
-				"SendWritingNotification",
-				"GetUserStatus",
-				"SetUserStatus",
-				"ReadAll",
 				"GetChatFilesFolder",
-				"GetChatStructure"
+				"GetChatMembersList",
+				"GetChatMessagesList",
+				"GetChatStructure",
+				"GetChatUsers",
+				"GetDialog",
+				"GetUsers",
+				"GetUserStatus",
+				"LeaveChat",
+				"ReadAll",
+				"SendWritingNotification",
+				"SetUserStatus"
 			]
 		},
 		{
 			"name": "Message management",
 			"methods": [
-				"SendMessage",
-				"EditMessage",
-				"SetMessageReaction",
 				"DeleteMessage",
-				"SendFile",
+				"EditMessage",
+				"GetFileBlock",
+				"GetPictureBlock",
 				"MarkMessageAsReaded",
 				"MarkMessageAsUnreaded",
-				"GetPictureBlock",
-				"GetFileBlock"
+				"SendFile",
+				"SendMessage",
+				"SetMessageReaction"
 			]
 		},
 		{
@@ -212,22 +212,22 @@
 			"name": "Departments management",
 			"methods": [
 				"CreateDepartment",
-				"UpdateDepartment",
+				"DeleteDepartment",
 				"GetDepartments",
-				"DeleteDepartment"
+				"UpdateDepartment"
 			]
 		},
 		{
 			"name": "Users management",
 			"methods": [
+				"ChangeUserStatus",
+				"CreateUser",
+				"FindUsers",
 				"GetCurrentUser",
 				"GetUser",
-				"CreateUser",
-				"UpdateUser",
-				"ChangeUserStatus",
-				"FindUsers",
 				"GetUserFieldsStructure",
-				"GetUserFilterStructure"
+				"GetUserFilterStructure",
+				"UpdateUser"
 			]
 		},
 		{
@@ -236,10 +236,10 @@
 				"CreateLead",
 				"DeleteLead",
 				"GetLead",
+				"GetLeadFilterStructure",
 				"GetLeadsList",
-				"UpdateLead",
 				"GetLeadStructure",
-				"GetLeadFilterStructure"
+				"UpdateLead"
 			]
 		},
 		{
@@ -248,39 +248,39 @@
 				"CreateDeal",
 				"DeleteDeal",
 				"GetDeal",
+				"GetDealsFilterStructure",
 				"GetDealsList",
-				"UpdateDeal",
 				"GetDealStructure",
-				"GetDealsFilterStructure"
+				"UpdateDeal"
 			]
 		},
 		{
 			"name": "Calendars management",
 			"methods": [
-				"GetCalendarList",
 				"CreateCalendar",
-				"UpdateCalendar",
 				"DeleteCalendar",
-				"GetUserBusy",
-				"GetCustomCalendarSettings",
-				"SetCustomCalendarSettings",
-				"GetCalendarSettingsStructure",
 				"GetCalednarCustomSettingsStructure",
-				"GetCalendarStructure"
+				"GetCalendarList",
+				"GetCalendarSettingsStructure",
+				"GetCalendarStructure",
+				"GetCustomCalendarSettings",
+				"GetUserBusy",
+				"SetCustomCalendarSettings",
+				"UpdateCalendar"
 			]
 		},
 		{
 			"name": "Calendar events management",
 			"methods": [
 				"CreateCalendarEvent",
-				"UpdateCalendarEvent",
+				"DeleteCalendarEvent",
 				"GetCalendarEvent",
 				"GetCalendarEvents",
-				"DeleteCalendarEvent",
+				"GetCalendarEventsFilterStructure",
+				"GetCalendarEventsStructure",
 				"GetUserParticipationStatus",
 				"SetUserParticipationStatus",
-				"GetCalendarEventsStructure",
-				"GetCalendarEventsFilterStructure"
+				"UpdateCalendarEvent"
 			]
 		}
 	],

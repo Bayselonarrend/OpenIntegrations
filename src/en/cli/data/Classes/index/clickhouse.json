@@ -10,9 +10,9 @@
 			"name": "Common methods",
 			"methods": [
 				"ExecuteRequest",
+				"GetExternalTableStructure",
 				"GetHTTPConnectionSettings",
 				"GetRequestSettings",
-				"GetExternalTableStructure",
 				"GetSessionSettings"
 			]
 		},
