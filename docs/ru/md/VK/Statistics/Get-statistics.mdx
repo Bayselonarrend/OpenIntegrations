@@ -43,8 +43,8 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику \
-              --datefrom "2026-02-03T00:00:00" \
-              --dateto "2026-02-03T23:59:59" \
+              --datefrom "2026-02-05T00:00:00" \
+              --dateto "2026-02-05T23:59:59" \
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -54,8 +54,8 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint vk ПолучитьСтатистику ^
-              --datefrom "2026-02-03T00:00:00" ^
-              --dateto "2026-02-03T23:59:59" ^
+              --datefrom "2026-02-05T00:00:00" ^
+              --dateto "2026-02-05T23:59:59" ^
               --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"
         ```
     </TabItem>
@@ -67,11 +67,11 @@ import TabItem from '@theme/TabItem';
  "response": [
   {
    "activity": {
-    "comments": 2,
-    "likes": 2
+    "comments": 1,
+    "likes": 1
    },
-   "period_from": 1770076800,
-   "period_to": 1770163199,
+   "period_from": 1770249600,
+   "period_to": 1770335999,
    "reach": {
     "age": [
      {
@@ -108,7 +108,14 @@ import TabItem from '@theme/TabItem';
      }
     ],
     "cities": [],
-    "countries": [],
+    "countries": [
+     {
+      "code": "BY",
+      "count": 1,
+      "name": "Беларусь",
+      "value": 3
+     }
+    ],
     "mobile_reach": 1,
     "reach": 1,
     "reach_subscribers": 1,
@@ -191,27 +198,20 @@ import TabItem from '@theme/TabItem';
    },
    "visitors": {
     "cities": [],
-    "countries": [
-     {
-      "code": "RU",
-      "count": 1,
-      "name": "Россия",
-      "value": 1
-     }
-    ],
+    "countries": [],
     "mobile_views": 0,
-    "views": 1,
-    "visitors": 1
+    "views": 0,
+    "visitors": 0
    }
   },
   {
-   "activity": {
-    "comments": 2,
-    "likes": 2
-   },
-   "period_from": 1769990400,
-   "period_to": 1770076799,
+   "period_from": 1770163200,
+   "period_to": 1770249599,
    "reach": {
-    "age": [
+    "cities": [],
+    "countries": [],
+    "mobile_reach": 0,
+    "reach": 0,
+    "reach_subscribers": 0
 ...
 ```
