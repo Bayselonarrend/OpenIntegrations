@@ -39,17 +39,27 @@ import TabItem from '@theme/TabItem';
     <TabItem value="bash" label="Bash" default>
         ```bash
             oint clickhouse ПолучитьНастройкиСессии \
-              --id "30b76f3b-e7e8-4945-b760-e1821f78ba5c"
+              --id "d6b7b63f-6700-4148-911d-d5970a731caf" \
+              --check true \
+              --timeout 120
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
             oint clickhouse ПолучитьНастройкиСессии ^
-              --id "30b76f3b-e7e8-4945-b760-e1821f78ba5c"
+              --id "d6b7b63f-6700-4148-911d-d5970a731caf" ^
+              --check true ^
+              --timeout 120
         ```
     </TabItem>
 </Tabs>
 
 
-
+```json title="Результат"
+{
+ "id": "d6b7b63f-6700-4148-911d-d5970a731caf",
+ "check": true,
+ "timeout": 120
+}
+```
