@@ -1,5 +1,5 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint vk ДобавитьТовар \
-  --product "{'Имя':'Тестовый товар (другой)','Описание':'Описание товара','Категория':'20173','Цена':'1','СтараяЦена':'15','ОсновноеФото':'https://hut.openintegrations.dev/test_data/picture.jpg','URL':'https://github.com/Bayselonarrend/OpenIntegrations','ДополнительныеФото':['https://hut.openintegrations.dev/test_data/picture.jpg','https://hut.openintegrations.dev/test_data/picture2.jpg'],'ГлавныйВГруппе':true,'Ширина':'20','Высота':'30','Глубина':'40','Вес':'100','SKU':'12345','ДоступныйОстаток':'10','ЗначенияСвойств':'10164'}" \
+  --product "{'Имя':'Тестовый товар (другой)','Описание':'Описание товара','Категория':'20173','Цена':'1','СтараяЦена':'15','ОсновноеФото':'https://hut.openintegrations.dev/test_data/picture.jpg','URL':'https://github.com/Bayselonarrend/OpenIntegrations','ДополнительныеФото':['https://hut.openintegrations.dev/test_data/picture.jpg','https://hut.openintegrations.dev/test_data/picture2.jpg'],'ГлавныйВГруппе':true,'Ширина':'20','Высота':'30','Глубина':'40','Вес':'100','SKU':'12345','ДоступныйОстаток':'10','ЗначенияСвойств':'10169'}" \
   --auth "{'access_token':'***','owner_id':'-218861756','app_id':'51694790','group_id':'218861756'}"

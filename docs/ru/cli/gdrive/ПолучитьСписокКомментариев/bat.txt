@@ -1,3 +1,3 @@
 oint gdrive ПолучитьСписокКомментариев ^
   --token "***" ^
-  --object "1UVvJ6_vztBhXdnVLFBVjOcknR0vbYLsl"
+  --object "1WYn5IDhmrPU8Yj7S_SLTNqwk9lt69ApO"
