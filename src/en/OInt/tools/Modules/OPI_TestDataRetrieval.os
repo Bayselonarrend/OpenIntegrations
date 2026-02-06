@@ -67,17 +67,9 @@
 Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
 
     If OPI_Tools.IsWindows() Then
-
-        If OPI_Tools.IsOneScript() Then
-            Oint = """C:\Program Files (x86)\OInt\bin\oint.bat""";
-        Else
-            Oint = """C:\Program Files\OneScript\bin\oint.bat""";
-        EndIf;
-
+        Oint    = """C:\Program Files (x86)\OInt\bin\oint.bat""";
     Else
-
         Oint = "oint";
-
     EndIf;
 
     ResultFile = GetTempFileName();
@@ -13161,14 +13153,17 @@ Function Check_ClickHouse_CreateGRPCConnection(Val Result, Option)
     ElsIf Option = "TableCreation" Or Option = "DataInsert" Then
 
         ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+        ExpectsThat(Result["result"]).Равно(True);
 
     ElsIf Option = "Selection" Then
 
         ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+        ExpectsThat(Result["result"]).Равно(True);
 
     Else
 
         ExpectsThat(Result).ИмеетТип("Map").Заполнено();
+        ExpectsThat(Result["result"]).Равно(True);
 
     EndIf;
 
@@ -13178,29 +13173,30 @@ EndFunction
 
 Function Check_ClickHouse_GetHTTPConnectionSettings(Val Result, Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
-    ExpectsThat(Result.Property("address")).Равно(True);
-    ExpectsThat(Result.Property("transport")).Равно(True);
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "address")).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "transport")).Равно(True);
     ExpectsThat(Result["transport"]).Равно("http");
 
     If Option = "NoAuthorization" Then
 
-        ExpectsThat(Result.Property("auth_type")).Равно(False);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "auth_type")).Равно(False);
 
     ElsIf Option = "BasicAuthorization" Then
 
         ExpectsThat(Result["auth_type"]).Равно("basic");
-        ExpectsThat(Result.Property("user")).Равно(True);
-        ExpectsThat(Result.Property("password")).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "user")).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "password")).Равно(True);
 
     ElsIf Option = "JWTAuthorization" Then
 
         ExpectsThat(Result["auth_type"]).Равно("jwt");
-        ExpectsThat(Result.Property("token")).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "token")).Равно(True);
 
     ElsIf Not ValueIsFilled(Option) Then
 
-        ExpectsThat(Result.Property("headers")).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "headers")).Равно(True);
 
     EndIf;
 
@@ -13210,33 +13206,33 @@ EndFunction
 
 Function Check_ClickHouse_GetGRPCConnectionSettings(Val Result, Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
-    ExpectsThat(Result.Property("address")).Равно(True);
-    ExpectsThat(Result.Property("transport")).Равно(True);
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "address")).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "transport")).Равно(True);
     ExpectsThat(Result["transport"]).Равно("grpc");
 
     If Option = "NoAuthorization" Then
 
-        ExpectsThat(Result.Property("auth_type")).Равно(False);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "auth_type")).Равно(False);
 
     ElsIf Option = "BasicAuthorization" Then
 
         ExpectsThat(Result["auth_type"]).Равно("basic");
-        ExpectsThat(Result.Property("user")).Равно(True);
-        ExpectsThat(Result.Property("password")).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "user")).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "password")).Равно(True);
 
     ElsIf Option = "JWTAuthorization" Then
 
         ExpectsThat(Result["auth_type"]).Равно("jwt");
-        ExpectsThat(Result.Property("token")).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "token")).Равно(True);
 
     ElsIf Option = "WithMetadata" Then
 
-        ExpectsThat(Result.Property("metadata")).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "metadata")).Равно(True);
 
     ElsIf Not ValueIsFilled(Option) Then
 
-        ExpectsThat(Result.Property("tls")).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "tls")).Равно(True);
 
     EndIf;
 
@@ -13246,8 +13242,8 @@ EndFunction
 
 Function Check_ClickHouse_GetRequestSettings(Val Result, Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
-    ExpectsThat(Result.Property("query")).Равно(True);
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "query")).Равно(True);
 
     If Option = "Minimal" Then
 
@@ -13257,11 +13253,11 @@ Function Check_ClickHouse_GetRequestSettings(Val Result, Option)
 
         ExpectsThat(Result["database"]).Равно("default");
         ExpectsThat(Result["id"]).Заполнено();
-        ExpectsThat(Result.Property("data")).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "data")).Равно(True);
         ExpectsThat(Result["format"]).Равно("CSV");
-        ExpectsThat(Result.Property("external_tables")).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "external_tables")).Равно(True);
         ExpectsThat(Result["external_tables"]).ИмеетТип("Array");
-        ExpectsThat(Result.Property("settings")).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "settings")).Равно(True);
 
     EndIf;
 
@@ -13271,19 +13267,19 @@ EndFunction
 
 Function Check_ClickHouse_GetExternalTableStructure(Val Result, Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
-    ExpectsThat(Result.Property("name")).Равно(True);
-    ExpectsThat(Result.Property("cols")).Равно(True);
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result     , True)).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "name")).Равно(True);
+    ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "cols")).Равно(True);
     ExpectsThat(Result["name"]).Равно("external_data");
 
     If Option = "Minimal" Then
 
-        ExpectsThat(Result.Property("data")).Равно(False);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "data")).Равно(False);
 
     ElsIf Option = "TSV" Or Not ValueIsFilled(Option) Then
 
         ExpectsThat(Result["format"]).Равно("TSV");
-        ExpectsThat(Result.Property("data")).Равно(True);
+        ExpectsThat(OPI_Tools.CollectionFieldExists(Result, "data")).Равно(True);
 
     EndIf;
 
@@ -13293,7 +13289,7 @@ EndFunction
 
 Function Check_ClickHouse_GetSessionSettings(Val Result, Option)
 
-    ExpectsThat(Result).ИмеетТип("Structure").Заполнено();
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
     ExpectsThat(Result["id"]).ИмеетТип("String").Заполнено();
     ExpectsThat(Result["check"]).Равно(True);
     ExpectsThat(Result["timeout"]).Равно(120);
