@@ -1,8 +1,8 @@
 ﻿{
  "query": "SELECT 1",
  "database": "default",
- "id": "8c25f769-7df5-4304-9570-2440d72ecd95",
- "data": "/tmp/vrbbwiyy.vc2.json",
+ "id": "d0f74276-0f69-4a89-abf6-7e44673c81d5",
+ "data": "/tmp/xpk1yguy.3s5.json",
  "format": "CSV",
  "external_tables": [
   {
