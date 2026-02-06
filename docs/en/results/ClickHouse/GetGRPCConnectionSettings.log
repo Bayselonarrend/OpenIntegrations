@@ -1,0 +1,11 @@
+﻿{
+ "address": "http://127.0.0.1:9101",
+ "tls": {
+  "use_tls": true,
+  "accept_invalid_certs": true
+ },
+ "transport": "grpc",
+ "auth_type": "basic",
+ "user": "bayselonarrend",
+ "password": "***"
+}
