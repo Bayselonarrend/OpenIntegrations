@@ -67,7 +67,7 @@
 Функция ВыполнитьТестCLI(Знач Библиотека, Знач Метод, Знач Опции, Знач Записывать = Истина) Экспорт
 
     Если OPI_Инструменты.ЭтоWindows() Тогда
-        Oint    = """C:\Program Files (x86)\OInt\bin\oint.bat""";
+        Oint = """C:\Program Files (x86)\OInt\bin\oint.bat""";
     Иначе
         Oint = "oint";
     КонецЕсли;
