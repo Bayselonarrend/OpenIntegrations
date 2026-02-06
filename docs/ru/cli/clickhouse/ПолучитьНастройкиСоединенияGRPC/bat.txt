@@ -1,5 +1,5 @@
 :: JSON данные также могут быть переданы как путь к файлу .json
 
 oint clickhouse ПолучитьНастройкиСоединенияGRPC ^
-  --url "http://localhost:9101" ^
+  --url "http://127.0.0.1:9101" ^
   --auth "{'bayselonarrend':'12we3456!2154'}"
