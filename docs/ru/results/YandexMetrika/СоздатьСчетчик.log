@@ -1,6 +1,6 @@
 ﻿{
  "counter": {
-  "id": 106677372,
+  "id": 106682526,
   "status": "Active",
   "owner_login": "bayselonarrend",
   "code_status": "CS_ERR_UNKNOWN",
@@ -41,12 +41,12 @@
    "ytm": false,
    "ssr": true
   },
-  "create_time": "2026-02-05T20:11:09+03:00",
+  "create_time": "2026-02-06T06:30:56+00:00",
   "time_zone_name": "Europe/Moscow",
   "time_zone_offset": 180,
   "partner_id": 0,
-  "update_time": "2026-02-05 20:11:09",
-  "code": "<!-- Yandex.Metrika informer -->\n<a href=\"https://metrica.yandex.com/stat/?id=106677372&amp;from=informer\" target=\"_blank\" rel=\"nofollow\">\n    <img src=\"https://metrika-informer.com/informer/106677372/2_1_EEEEEEEE_EFEFEFFE_0_uniques\"\n         style=\"width:80px; height:31px; border:0;\"\n         alt=\"Yandex Metrica\"\n         title=\"Yandex Metrica: data for today (unique users)\"\n        class=\"ym-advanced-informer\" data-cid=\"106677372\" data-lang=\"en\"/>\n</a>\n<!-- /Yandex.Metrika informer -->\n\n<!-- Yandex.Metrika counter -->\n<script type=\"text/javascript\">\n    (function(m,e,t,r,i,k,a){\n        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};\n        m[i].l=1*new Date();\n        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}\n        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)\n    })(window, document,'script','https://mc.webvisor.org/metrika/tag_ww.js?id=106677372', 'ym');\n\n    ym(106677372, 'init', {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:\"dataLayer\", params: {__ym: {isFromApi: 'yesIsFromApi'}}, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});\n</script>\n<noscript><div><img src=\"https://mc.yandex.ru/watch/106677372\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div></noscript>\n<!-- /Yandex.Metrika counter -->\n\n\n",
+  "update_time": "2026-02-06 09:30:57",
+  "code": "<!-- Yandex.Metrika informer -->\n<a href=\"https://metrica.yandex.com/stat/?id=106682526&amp;from=informer\" target=\"_blank\" rel=\"nofollow\">\n    <img src=\"https://metrika-informer.com/informer/106682526/2_1_EEEEEEEE_EFEFEFFE_0_uniques\"\n         style=\"width:80px; height:31px; border:0;\"\n         alt=\"Yandex Metrica\"\n         title=\"Yandex Metrica: data for today (unique users)\"\n        class=\"ym-advanced-informer\" data-cid=\"106682526\" data-lang=\"en\"/>\n</a>\n<!-- /Yandex.Metrika informer -->\n\n<!-- Yandex.Metrika counter -->\n<script type=\"text/javascript\">\n    (function(m,e,t,r,i,k,a){\n        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};\n        m[i].l=1*new Date();\n        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}\n        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)\n    })(window, document,'script','https://mc.webvisor.org/metrika/tag_ww.js?id=106682526', 'ym');\n\n    ym(106682526, 'init', {ssr:true, webvisor:true, trackHash:true, clickmap:true, ecommerce:\"dataLayer\", params: {__ym: {isFromApi: 'yesIsFromApi'}}, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});\n</script>\n<noscript><div><img src=\"https://mc.yandex.ru/watch/106682526\" style=\"position:absolute; left:-9999px;\" alt=\"\" /></div></noscript>\n<!-- /Yandex.Metrika counter -->\n\n\n",
   "filter_robots": 2,
   "currency": 643,
   "currency_code": "RUB",

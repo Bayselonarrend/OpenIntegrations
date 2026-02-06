@@ -1,7 +1,7 @@
 ﻿{
  "ok": true,
  "result": {
-  "message_id": 19314,
+  "message_id": 19332,
   "from": {
    "id": 6129457865,
    "is_bot": true,
@@ -15,9 +15,9 @@
    "username": "bayselonarrend",
    "type": "private"
   },
-  "date": 1770304923,
+  "date": 1770352425,
   "poll": {
-   "id": "5197398735876789847",
+   "id": "5199650535690475767",
    "question": "Какой ваш любимый цвет?",
    "options": [
     {
