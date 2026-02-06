@@ -1,5 +1,8 @@
 ﻿{
  "bytes": 2114023,
- "filepath": "/tmp/e5my4eme.gow.bin",
- "result": true
+ "filepath": "/tmp/mixulwnn.idk.bin",
+ "result": true,
+ "close_connection": {
+  "result": true
+ }
 }
