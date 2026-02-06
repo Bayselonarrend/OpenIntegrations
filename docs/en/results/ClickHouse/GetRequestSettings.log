@@ -1,0 +1,22 @@
+﻿{
+ "query": "SELECT 1",
+ "database": "default",
+ "id": "0ccabb31-5589-49e6-8665-058654bb3749",
+ "data": {
+  "meta": [],
+  "data": []
+ },
+ "format": "CSV",
+ "external_tables": [
+  {
+   "name": "ext",
+   "cols": {
+    "id": "UInt64",
+    "name": "String"
+   }
+  }
+ ],
+ "settings": {
+  "max_threads": "4"
+ }
+}
