@@ -1,2 +1,6 @@
+:: JSON данные также могут быть переданы как путь к файлу .json
+
 oint clickhouse ПолучитьНастройкиЗапроса ^
-  --query "CREATE TABLE IF NOT EXISTS events (\n    id UInt64,\n    timestamp DateTime,\n    user_id UInt32,\n    event_type String,\n    payload String\n) ENGINE    = MergeTree()\nORDER BY (timestamp, id)"
+  --query "SELECT * FROM ext_grpc" ^
+  --format "JSON" ^
+  --ext "[{'name':'ext_grpc','cols':{'id':'UInt64','name':'String'},'data':'1\tJohn\n2\tJane','format':'TSV'}]"
