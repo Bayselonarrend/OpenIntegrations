@@ -9,7 +9,7 @@
    },
    {
     "name": "config",
-    "sizeOnDisk": 73728,
+    "sizeOnDisk": 61440,
     "empty": false
    },
    {
@@ -33,7 +33,7 @@
     "empty": false
    }
   ],
-  "totalSize": 827392,
+  "totalSize": 815104,
   "totalSizeMb": 0,
   "ok": 1
  }

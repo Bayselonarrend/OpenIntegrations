@@ -1,0 +1,10 @@
+﻿{
+ "address": "http://127.0.0.1:8123",
+ "headers": {
+  "X-Custom-Header": "CustomValue"
+ },
+ "transport": "http",
+ "auth_type": "basic",
+ "user": "bayselonarrend",
+ "password": "***"
+}

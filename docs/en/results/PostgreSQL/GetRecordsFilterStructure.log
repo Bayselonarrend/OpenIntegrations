@@ -1,0 +1,7 @@
+﻿{
+ "field": "<filtering field name>",
+ "type": "<comparison type>",
+ "value": "<comparison value>",
+ "union": "<connection with the following condition: AND, OR, etc..>",
+ "raw": "<true - the value will be inserted by text as it is, false - through the parameter>"
+}

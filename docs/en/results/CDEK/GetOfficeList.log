@@ -66,6 +66,8 @@
    "address_full": "630007, Россия, Новосибирская область, Новосибирск, ул. Кривощековская, 15, корп.1",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -135,6 +137,8 @@
    "address_full": "630049, Россия, Новосибирская область, Новосибирск, пр-т Красный, 99",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -206,6 +210,8 @@
    "address_full": "630088, Россия, Новосибирская область, Новосибирск, ул. Зорге, 1а",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -281,6 +287,8 @@
    "address_full": "630090, Россия, Новосибирская область, Новосибирск, ул. Ильича, 6",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -350,6 +358,8 @@
    "address_full": "630089, Россия, Новосибирская область, Новосибирск, ул. Бориса Богаткова, 203/1",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -422,6 +432,8 @@
    "address_full": "630110, Россия, Новосибирская область, Новосибирск, ул. Богдана Хмельницкого, 63",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -493,6 +505,8 @@
    "address_full": "630007, Россия, Новосибирская область, Новосибирск, ул. Гоголя, 38",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -566,6 +580,8 @@
    "address_full": "630102, Россия, Новосибирская область, Новосибирск, ул. Восход, 1а, 105",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -640,6 +656,8 @@
    "address_full": "630037, Россия, Новосибирская область, Новосибирск, ул. Героев Революции, 5/2",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -712,6 +730,8 @@
    "address_full": "630088, Россия, Новосибирская область, Новосибирск, пр. Северный, 3/8",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -785,6 +805,8 @@
    "address_full": "630126, Россия, Новосибирская область, Новосибирск, ул. Выборная, 122",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -856,6 +878,8 @@
    "address_full": "630039, Россия, Новосибирская область, Новосибирск, Гусинобродское ш., 62 к.1",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -928,6 +952,8 @@
    "address_full": "630054, Россия, Новосибирская область, Новосибирск, ул. Титова, 17",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -1001,6 +1027,8 @@
    "address_full": "630056, Россия, Новосибирская область, Новосибирск, ул. Молодости, 21",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -1073,6 +1101,8 @@
    "address_full": "630087, Россия, Новосибирская область, Новосибирск, пр-т Карла Маркса, 24, оф. 1",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -1147,6 +1177,8 @@
    "address_full": "630091, Россия, Новосибирская область, Новосибирск, ул. Советская, 36/1",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -1221,6 +1253,8 @@
    "address_full": "630099, Россия, Новосибирская область, Новосибирск, ул. Октябрьская, 42, 110а",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -1293,6 +1327,8 @@
    "address_full": "630001, Россия, Новосибирская область, Новосибирск, ул. Холодильная, 13",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -1368,6 +1404,8 @@
    "address_full": "630091, Россия, Новосибирская область, Новосибирск, ул. Крылова, 7/1, 5а",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -1448,6 +1486,8 @@
    "address_full": "630051, Россия, Новосибирская область, Новосибирск, пр-т Дзержинского, 34/1, 105",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -1536,6 +1576,8 @@
    "address_full": "630058, Россия, Новосибирская область, Новосибирск, ул. Балтийская, 29",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -1625,6 +1667,8 @@
    "address_full": "630049, Россия, Новосибирская область, Новосибирск, ул. Дуси Ковальчук, 179а, 3",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -1713,6 +1757,8 @@
    "address_full": "630087, Россия, Новосибирская область, Новосибирск, ул. Немировича – Данченко, 165, 109",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -1802,6 +1848,8 @@
    "address_full": "630083, Россия, Новосибирская область, Новосибирск, ул. Большевистская, 48",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -1894,6 +1942,8 @@
    "address_full": "630129, Россия, Новосибирская область, Новосибирск, ул. Рассветная, 17",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -1976,6 +2026,8 @@
    "address_full": "630128, Россия, Новосибирская область, Новосибирск, ул. Кутателадзе, 4",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -2065,6 +2117,8 @@
    "address_full": "630075, Россия, Новосибирская область, Новосибирск, ул. Богдана Хмельницкого, 1/1",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -2148,6 +2202,8 @@
    "address_full": "630008, Россия, Новосибирская область, Новосибирск, ул. Бориса Богаткова, 68, 106",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -2238,6 +2294,8 @@
    "address_full": "630132, Россия, Новосибирская область, Новосибирск, ул. Нарымская, 17/2",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -2321,6 +2379,8 @@
    "address_full": "630120, Россия, Новосибирская область, Новосибирск, ул. Титова, 198",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -2406,6 +2466,8 @@
    "address_full": "630033, Россия, Новосибирская область, Новосибирск, ул. Оловозаводская, 18/1",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -2488,6 +2550,8 @@
    "address_full": "630008, Россия, Новосибирская область, Новосибирск, ул. Ленинградская, 102",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -2574,6 +2638,8 @@
    "address_full": "630008, Россия, Новосибирская область, Новосибирск, ул. Московская, 93",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  },
  {
@@ -2674,6 +2740,8 @@
    "address_full": "630082, Россия, Новосибирская область, Новосибирск, ул. Вавилова, 3, 2",
    "city_uuid": "4e938d63-e189-454d-bb5c-54bfb2f1e4e2"
   },
+  "ltl_acceptance_partners": false,
+  "ltl_issuance_partners": false,
   "fulfillment": false
  }
 ]
