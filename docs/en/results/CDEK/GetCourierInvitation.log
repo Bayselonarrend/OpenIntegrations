@@ -1,7 +1,9 @@
 ﻿{
  "entity": {
-  "uuid": "b5a99212-9b73-43a0-b20c-68698ebecad7",
-  "intake_date": "2026-01-07",
+  "uuid": "1ce5d306-1b26-4ced-92d6-ba067ce6abd4",
+  "cdek_number": "1106983890",
+  "order_uuid": "d0e92052-e83b-4dc3-b80a-230142915ab6",
+  "intake_date": "2026-02-08",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -17,35 +19,46 @@
     {
      "number": "+79589441654"
     }
-   ]
+   ],
+   "passport_requirements_satisfied": "***"
   },
   "from_location": {
    "code": 44,
-   "city": "Moscow",
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
    "fias_guid": "0c5b2444-70a0-4932-980c-b4dc0d3f02b5",
-   "kladr_code": "7700000000000",
    "country_code": "RU",
-   "region": "Moscow",
-   "sub_region": "Moscow",
-   "longitude": 37.6204,
-   "latitude": 55.754,
-   "address": "st. Bluchera, 32",
-   "postal_code": "109004"
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "sub_region": "Москва",
+   "longitude": 37.61556,
+   "latitude": 55.75222,
+   "address": "st. Bluchera, 32"
   },
   "need_call": false,
   "statuses": [
    {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-01-06T05:43:49+00:00"
+    "date_time": "2026-02-07T01:39:36+03:00"
+   }
+  ],
+  "packages": [
+   {
+    "package_id": "dcb58881-d82d-4ea1-bd18-3b3fe52d011f",
+    "weight": 1000,
+    "length": 10,
+    "width": "***",
+    "height": 10
    }
   ]
  },
  "requests": [
   {
-   "request_uuid": "0f873313-7558-458f-a596-419a96de9b18",
+   "request_uuid": "fb75c1ae-ba19-426c-8c21-98e395010ebc",
    "type": "CREATE",
-   "date_time": "2026-01-06T05:43:45+00:00",
+   "date_time": "2026-02-07T01:39:31+03:00",
    "state": "ACCEPTED"
   }
  ]
