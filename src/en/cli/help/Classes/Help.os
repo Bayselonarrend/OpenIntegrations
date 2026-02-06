@@ -55,9 +55,9 @@ Procedure DisplayStartPage() Export
 		|
 		| (Standard options:|#color=Yellow)
 		|
-		|  (--help|#color=Green)  -%2
-		|  (--debug|#color=Green) -%3
-		|  (--out|#color=Green)   -%4
+		|  (--help|#color=Green)  (-%2|#color=White)
+		|  (--debug|#color=Green) (-%3|#color=White)
+		|  (--out|#color=Green)   (-%4|#color=White)
 		|
 		|  (Full documentation can be found at:|#color=Yellow) (https://openintegrations.dev|#color=Cyan)
 		|"
@@ -222,7 +222,7 @@ Function GetFullParamsDescription(MethodData)
 		
 	EndDo;
 
-	NewLineTabLength = MaximumLength + 5;
+	NewLineTabLength = MaximumLength + 4;
 	NewLineTab = "";
 	
 	For N = 0 To NewLineTabLength Do

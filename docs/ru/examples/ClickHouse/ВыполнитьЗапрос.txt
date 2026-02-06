@@ -1,7 +1,6 @@
     // Настройки соединения
 
     URL = "http://localhost:8123";
-
     Логин  = "bayselonarrend";
     Пароль = "12we...";
 

@@ -1,5 +1,4 @@
     URL = "http://localhost:9101";
-
     // No authorization
 
     Result = OPI_ClickHouse.GetGRPCConnectionSettings(URL);
