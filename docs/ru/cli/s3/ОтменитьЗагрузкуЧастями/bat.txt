@@ -2,7 +2,7 @@
 
 oint s3 ОтменитьЗагрузкуЧастями ^
   --name "fileChunked.mp3" ^
-  --bucket "847387f5" ^
+  --bucket "9e2d48a0" ^
   --basic "{'URL':'s3.openintegrations.dev','AccessKey':'***','SecretKey':'***','Region':'BTC','Service':'s3'}" ^
-  --upload "NGU4YWU5ZGItY2JiMC00Y2U4LThjM2QtY2QyODU2N2VkODVmLjFkMDA3ODdkLTQ5YjEtNGFhNS05NTcyLTJiZjc5NjRmNDM1N3gxNzcwMzU5ODc2NTU5MzMxNDky" ^
+  --upload "NGU4YWU5ZGItY2JiMC00Y2U4LThjM2QtY2QyODU2N2VkODVmLjc2YjM1NDNhLTBhY2UtNDY0My04OTM0LTI4MWU3YjkwMDNjNXgxNzcwNDExNTU0MDg3OTQ2ODE3" ^
   --dir true
