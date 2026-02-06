@@ -67,7 +67,7 @@
 Function ExecuteTestCLI(Val Library, Val Method, Val Options, Val Record = True) Export
 
     If OPI_Tools.IsWindows() Then
-        Oint    = """C:\Program Files (x86)\OInt\bin\oint.bat""";
+        Oint = """C:\Program Files (x86)\OInt\bin\oint.bat""";
     Else
         Oint = "oint";
     EndIf;
