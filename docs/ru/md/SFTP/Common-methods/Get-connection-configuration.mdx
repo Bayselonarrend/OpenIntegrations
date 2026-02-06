@@ -84,7 +84,7 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint sftp ПолучитьКонфигурациюСоединения \
-              --set "{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\rmkmtakk.nq4.tmp'}" \
+              --set "{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'/tmp/maq1i5nr.eac.tmp'}" \
               --proxy "{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}"
         ```
     </TabItem>
@@ -94,7 +94,7 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint sftp ПолучитьКонфигурациюСоединения ^
-              --set "{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'C:\\Users\\bayse\\AppData\\Local\\Temp\\rmkmtakk.nq4.tmp'}" ^
+              --set "{'auth_type':'private_key','host':'172.33.0.13','port':'2222','username':'bayselonarrend','key_path':'***','pub_path':'/tmp/maq1i5nr.eac.tmp'}" ^
               --proxy "{'server':'127.0.0.1','port':'8071','proxy_type':'http','login':'proxyuser','password':'***'}"
         ```
     </TabItem>
@@ -111,7 +111,7 @@ import TabItem from '@theme/TabItem';
   "password": "***"
  },
  "proxy": {
-  "server": "127.0.0.1",
+  "server": "host.docker.internal",
   "port": 1080,
   "proxy_type": "socks5",
   "login": "proxyuser",

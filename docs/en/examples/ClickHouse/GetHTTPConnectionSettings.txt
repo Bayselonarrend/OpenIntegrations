@@ -1,5 +1,4 @@
     URL = "http://localhost:8123";
-
     // No authorization
 
     Result = OPI_ClickHouse.GetHTTPConnectionSettings(URL);
