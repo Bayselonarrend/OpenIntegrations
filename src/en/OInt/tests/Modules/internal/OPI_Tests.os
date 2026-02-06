@@ -3367,10 +3367,10 @@ EndProcedure
 Procedure CH_CommonMethods() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Address"    , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_AddressGRPC", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_User"       , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Password"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Port"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_PortGRPC" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_User"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Password" , TestParameters);
 
     ClickHouse_ExecuteRequest(TestParameters);
     ClickHouse_GetHTTPConnectionSettings(TestParameters);
@@ -3384,9 +3384,9 @@ EndProcedure
 Procedure CH_GRPC() Export
 
     TestParameters = New Structure;
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_AddressGRPC", TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_User"       , TestParameters);
-    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Password"   , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_PortGRPC" , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_User"     , TestParameters);
+    OPI_TestDataRetrieval.ParameterToCollection("ClickHouse_Password" , TestParameters);
 
     ClickHouse_CreateGRPCConnection(TestParameters);
     ClickHouse_GetTlsSettings(TestParameters);
@@ -27375,7 +27375,8 @@ Procedure ClickHouse_ExecuteRequest(FunctionParameters)
 
     // Connection settings
 
-    URL = FunctionParameters["ClickHouse_Address"];
+    URL = "http://localhost:8123";
+    URL = StrTemplate("http://%1:%2", OPI_TestDataRetrieval.GetLocalhost(), FunctionParameters["ClickHouse_Port"]); // SKIP
 
     Login    = FunctionParameters["ClickHouse_User"];
     Password = FunctionParameters["ClickHouse_Password"];
@@ -27535,7 +27536,8 @@ EndProcedure
 
 Procedure ClickHouse_CreateGRPCConnection(FunctionParameters)
 
-    URL = FunctionParameters["ClickHouse_AddressGRPC"];
+    URL = "http://localhost:9101";
+    URL = StrTemplate("http://%1:%2", OPI_TestDataRetrieval.GetLocalhost(), FunctionParameters["ClickHouse_PortGRPC"]); // SKIP
 
     Login    = FunctionParameters["ClickHouse_User"];
     Password = FunctionParameters["ClickHouse_Password"];
@@ -27638,7 +27640,8 @@ EndProcedure
 
 Procedure ClickHouse_GetHTTPConnectionSettings(FunctionParameters)
 
-    URL = FunctionParameters["ClickHouse_Address"];
+    URL = "http://localhost:8123";
+    URL = StrTemplate("http://%1:%2", OPI_TestDataRetrieval.GetLocalhost(), FunctionParameters["ClickHouse_Port"]); // SKIP
 
     // No authorization
 
@@ -27680,7 +27683,8 @@ EndProcedure
 
 Procedure ClickHouse_GetGRPCConnectionSettings(FunctionParameters)
 
-    URL = FunctionParameters["ClickHouse_AddressGRPC"];
+    URL = "http://localhost:9101";
+    URL = StrTemplate("http://%1:%2", OPI_TestDataRetrieval.GetLocalhost(), FunctionParameters["ClickHouse_PortGRPC"]); // SKIP
 
     // No authorization
 
