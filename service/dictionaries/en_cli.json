@@ -10,7 +10,7 @@
     "МБ был записан в": "MB) has been written to",
     "Файл не был записан! Используйте флаг --debug для получения дополнительной информации":"The file was not written! Use the --debug flag for additional information",
     "Добро пожаловать в":"Welcome to ",
-    "<бибилотека>":"<library>",
+    "<библиотека>":"<library>",
     "<метод>":"<method>",
     "--опция":"--option",
     "(Значение|": "(Value|",
