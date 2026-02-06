@@ -1,2 +1,2 @@
 oint clickhouse ПолучитьНастройкиTls ^
-  --trust false
+  --trust true

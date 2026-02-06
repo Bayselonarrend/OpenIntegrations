@@ -1,0 +1,19 @@
+﻿{
+ "query": "SELECT 1",
+ "database": "default",
+ "id": "8c25f769-7df5-4304-9570-2440d72ecd95",
+ "data": "/tmp/vrbbwiyy.vc2.json",
+ "format": "CSV",
+ "external_tables": [
+  {
+   "name": "ext",
+   "cols": {
+    "id": "UInt64",
+    "name": "String"
+   }
+  }
+ ],
+ "settings": {
+  "max_threads": "4"
+ }
+}
