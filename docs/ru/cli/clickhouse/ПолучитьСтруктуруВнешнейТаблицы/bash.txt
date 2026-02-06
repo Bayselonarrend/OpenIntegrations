@@ -1,7 +1,7 @@
 # JSON данные также могут быть переданы как путь к файлу .json
 
 oint clickhouse ПолучитьСтруктуруВнешнейТаблицы \
-  --name "ext_grpc" \
+  --name "external_data" \
   --cols "{'id':'UInt64','name':'String'}" \
-  --data "1	John\n2	Jane" \
+  --data "1	Test\n2Test2" \
   --format "TSV"

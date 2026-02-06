@@ -1,0 +1,10 @@
+﻿{
+ "address": "http://host.docker.internal:8123",
+ "headers": {
+  "X-Custom-Header": "CustomValue"
+ },
+ "transport": "http",
+ "auth_type": "basic",
+ "user": "bayselonarrend",
+ "password": "***"
+}
