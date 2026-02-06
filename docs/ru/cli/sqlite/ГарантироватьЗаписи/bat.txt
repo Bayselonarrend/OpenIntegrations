@@ -4,4 +4,4 @@ oint sqlite ГарантироватьЗаписи ^
   --table "test_merge" ^
   --rows "[{'id':'1','name':'Vitaly Updated','age':'25','salary':'1500.5'},{'id':'3','name':'Anton','age':'30','salary':'3000'}]" ^
   --unique "['id']" ^
-  --db "/tmp/bussnljm.y3s.sqlite"
+  --db "C:\Users\bayse\AppData\Local\Temp\mrfclxr4.oof.sqlite"
