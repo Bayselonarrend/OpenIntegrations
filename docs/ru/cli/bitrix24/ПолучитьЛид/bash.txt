@@ -1,4 +1,4 @@
 oint bitrix24 ПолучитьЛид \
   --url "b24-ar17wx.bitrix24.by" \
-  --lead 3074 \
+  --lead 3078 \
   --token "***"
