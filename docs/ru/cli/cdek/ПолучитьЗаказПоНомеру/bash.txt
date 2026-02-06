@@ -1,5 +1,5 @@
 oint cdek ПолучитьЗаказПоНомеру \
   --token "***" \
-  --number "fc0882fc-7561-4771-a02c-21eb057efad8" \
+  --number "2b96e814-0803-447f-b7f1-f7edd9e0138a" \
   --internal true \
   --testapi "***"
