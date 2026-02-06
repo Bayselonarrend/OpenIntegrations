@@ -298,7 +298,8 @@ Function CreateGRPCConnection(Val ConnectionSettings) Export
 
     If OPI_GRPC.IsConnector(Connection) Then
         ParametersString = OPI_Tools.JSONString(ConnectionSettings);
-        Connection.StoreSettings(ParametersString);
+        //@skip-check module-unused-local-variable
+        Result           = Connection.StoreSettings(ParametersString);
     EndIf;
 
     Return Connection;
