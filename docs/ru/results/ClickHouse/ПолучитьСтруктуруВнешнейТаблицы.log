@@ -1,0 +1,9 @@
+﻿{
+ "name": "external_data",
+ "cols": {
+  "id": "UInt64",
+  "name": "String"
+ },
+ "data": "1\tTest\n2Test2",
+ "format": "TSV"
+}
