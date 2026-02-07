@@ -3,17 +3,17 @@
   "count": 1,
   "items": [
    {
-    "id": 145,
+    "id": 146,
     "owner_id": -218861756,
     "title": "EditedCollection",
     "count": 0,
-    "updated_time": 1770457875,
+    "updated_time": 1770462647,
     "is_main": false,
     "is_hidden": false,
     "photo": {
      "album_id": -53,
-     "date": 1770457875,
-     "id": 457262187,
+     "date": 1770462647,
+     "id": 457262206,
      "owner_id": -218861756,
      "sizes": [
       {

@@ -1,16 +1,16 @@
 ﻿{
  "model": "tinyllama",
- "created_at": "2026-02-07T10:46:17.074599627Z",
+ "created_at": "2026-02-07T12:06:57.495509461Z",
  "message": {
   "role": "assistant",
-  "content": "The first version of 1C:Enterprise was released in 2003. Since then, there have been subsequent updates and upgrades to the software suite, as well as new versions introduced when necessary for compatibility or feature enhancements. However, the most recent version released by 1C is 9.0, which was launched in 2017."
+  "content": "The first version of 1C:Enterprise was released in 1998. The latest version is v23, which was released in September 2021. However, each version may have additional new features and functionalities based on the release schedule and user feedback."
  },
  "done_reason": "stop",
  "done": true,
- "total_duration": 18556460508,
- "load_duration": 19483849,
- "prompt_eval_count": 196,
- "prompt_eval_duration": 9745531753,
- "eval_count": 80,
- "eval_duration": 8775631323
+ "total_duration": 18392768290,
+ "load_duration": 16763973,
+ "prompt_eval_count": 259,
+ "prompt_eval_duration": 10586656108,
+ "eval_count": 60,
+ "eval_duration": 7774737172
 }
