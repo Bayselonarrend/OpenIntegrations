@@ -1,28 +1,27 @@
 ﻿{
  "kind": "drive#file",
- "id": "1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP",
+ "id": "1T61ve0vc7hRiV8RYiMcBqR0GH3umkYDN",
  "name": "TestFolder",
  "mimeType": "application/vnd.google-apps.folder",
- "description": "",
  "starred": false,
- "trashed": true,
- "explicitlyTrashed": true,
+ "trashed": false,
+ "explicitlyTrashed": false,
  "parents": [
   "0AN2vrbrhqfJrUk9PVA"
  ],
  "spaces": [
   "drive"
  ],
- "version": "3",
- "webViewLink": "https://drive.google.com/drive/folders/1RA5EV-HEr2SDzooZLmZ2h6HnnmZ0EHzP",
+ "version": "1",
+ "webViewLink": "https://drive.google.com/drive/folders/1T61ve0vc7hRiV8RYiMcBqR0GH3umkYDN",
  "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.folder",
  "hasThumbnail": false,
  "thumbnailVersion": "0",
  "viewedByMe": true,
- "viewedByMeTime": "2025-11-22T09:13:32.441Z",
- "createdTime": "2025-10-28T11:51:11.778Z",
- "modifiedTime": "2025-10-28T11:51:11.778Z",
- "modifiedByMeTime": "2025-10-28T11:51:11.778Z",
+ "viewedByMeTime": "2026-02-07T12:48:08.163Z",
+ "createdTime": "2026-02-07T12:48:08.163Z",
+ "modifiedTime": "2026-02-07T12:48:09.41Z",
+ "modifiedByMeTime": "2026-02-07T12:48:09.41Z",
  "modifiedByMe": true,
  "owners": [
   {
@@ -76,8 +75,8 @@
   "canModifyOwnerContentRestriction": false,
   "canModifyLabels": false,
   "canMoveChildrenWithinDrive": true,
-  "canMoveItemIntoTeamDrive": false,
-  "canMoveItemOutOfDrive": false,
+  "canMoveItemIntoTeamDrive": true,
+  "canMoveItemOutOfDrive": true,
   "canMoveItemWithinDrive": true,
   "canReadLabels": false,
   "canReadRevisions": false,
@@ -122,7 +121,7 @@
  ],
  "folderColorRgb": "#8f8f8f",
  "quotaBytesUsed": "0",
- "isAppAuthorized": true,
+ "isAppAuthorized": false,
  "linkShareMetadata": {
   "securityUpdateEligible": false,
   "securityUpdateEnabled": true
