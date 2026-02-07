@@ -1,43 +1,17 @@
 ﻿{
  "receiptId": 1,
  "body": {
-  "typeWebhook": "outgoingAPIMessageReceived",
+  "typeWebhook": "outgoingMessageStatus",
+  "chatId": "***",
   "instanceData": {
    "idInstance": "***",
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1770411770,
-  "idMessage": "3EB0FD0AFA6A0FBC8ABEB2",
-  "senderData": {
-   "chatId": "***",
-   "chatName": "***",
-   "sender": "***",
-   "senderName": "***",
-   "senderContactName": "***"
-  },
-  "messageData": {
-   "typeMessage": "quotedMessage",
-   "extendedTextMessageData": {
-    "text": "Новое сообщение",
-    "stanzaId": "3EB07E00426E4BFB2D6D2A",
-    "participant": "1234567890@c.us"
-   },
-   "quotedMessage": {
-    "stanzaId": "3EB07E00426E4BFB2D6D2A",
-    "participant": "1234567890@c.us",
-    "typeMessage": "extendedTextMessage",
-    "textMessage": "Новое сообщение",
-    "extendedTextMessage": {
-     "text": "Новое сообщение",
-     "description": "",
-     "title": "",
-     "previewType": "None",
-     "jpegThumbnail": "",
-     "forwardingScore": 0,
-     "isForwarded": false
-    }
-   }
-  }
+  "timestamp": 1770411801,
+  "idMessage": "3EB063C951BFAB125542FC",
+  "status": "failed",
+  "description": "TypeError: this.isZero is not a function",
+  "sendByApi": "***"
  }
 }
