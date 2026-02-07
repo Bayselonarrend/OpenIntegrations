@@ -1,6 +1,6 @@
 ﻿[
  {
-  "messageID": "3EB06D25CE2D9336E1E7FE",
+  "messageID": "3EB09A7932FA33ADB04BFD",
   "type": "sendFileByUrl",
   "body": {
    "chatId": "***",
@@ -12,20 +12,20 @@
   }
  },
  {
-  "messageID": "3EB0492A945202F44834B6",
+  "messageID": "3EB06EA0BACF67FE30E539",
   "type": "sendFileByUrl",
   "body": {
    "chatId": "***",
    "urlFile": "https://hut.openintegrations.dev/test_data/video.mp4",
    "fileName": "vid.mp4",
    "caption": "File description",
-   "quotedMessageId": "3EB06D25CE2D9336E1E7FE",
+   "quotedMessageId": "3EB09A7932FA33ADB04BFD",
    "typingTime": null,
    "typingType": "composing"
   }
  },
  {
-  "messageID": "3EB04DA8D9F87C6E9427FC",
+  "messageID": "3EB0A8FC8C16264A478AB0",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -46,7 +46,7 @@
   }
  },
  {
-  "messageID": "3EB05EB6A12027786CE53B",
+  "messageID": "3EB06DDE10892EDAB8897B",
   "type": "sendPoll",
   "body": {
    "chatId": "***",
@@ -63,12 +63,12 @@
     }
    ],
    "multipleAnswers": true,
-   "quotedMessageId": "3EB04DA8D9F87C6E9427FC",
+   "quotedMessageId": "3EB0A8FC8C16264A478AB0",
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB00DB1AB75ECD8A7B4BC",
+  "messageID": "3EB0F9BCBCBD56DAB26AC3",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
@@ -80,18 +80,18 @@
   }
  },
  {
-  "messageID": "3EB0A93B2468E981862A78",
+  "messageID": "3EB01B3E89C3E60AEA444C",
   "type": "sendLocation",
   "body": {
    "chatId": "***",
-   "quotedMessageId": "3EB00DB1AB75ECD8A7B4BC",
+   "quotedMessageId": "3EB0F9BCBCBD56DAB26AC3",
    "latitude": 53.908522,
    "longitude": 27.574821,
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB03995F774BC03E35A1B",
+  "messageID": "3EB058F77D199643D7D346",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -106,7 +106,7 @@
   }
  },
  {
-  "messageID": "3EB0A61B9D060A99F8D55A",
+  "messageID": "3EB08F797C5897C9CA685B",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -114,30 +114,30 @@
     "phoneContact": "***",
     "company": "Bicycle"
    },
-   "quotedMessageId": "3EB03995F774BC03E35A1B",
+   "quotedMessageId": "3EB058F77D199643D7D346",
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "3EB0DB22EB500362CB4BB3"
+   "3EB0803F56767058A86364"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "***",
    "chatIdFrom": "***",
    "messages": [
-    "3EB0F44FBCDE46526EF46B"
+    "3EB03D807475B9670E028E"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB0E18E3127526616075D",
+  "messageID": "3EB059C9CD496BB6E28333",
   "type": "editMessage",
   "body": {
    "chatId": "***",
-   "idMessage": "3EB0F44FBCDE46526EF46B",
+   "idMessage": "3EB03D807475B9670E028E",
    "message": "New message text",
    "linkPreview": true
   }
