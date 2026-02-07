@@ -1,15 +1,15 @@
 ﻿{
  "result": {
-  "ID": 51202
+  "ID": 51310
  },
  "time": {
-  "start": 1770417265,
-  "finish": 1770417266.02554,
-  "duration": 1.02554488182068,
-  "processing": 1,
-  "date_start": "2026-02-07T01:34:25+03:00",
-  "date_finish": "2026-02-07T01:34:26+03:00",
-  "operating_reset_at": 1770417865,
-  "operating": 0.104082822799683
+  "start": 1770460239,
+  "finish": 1770460239.36533,
+  "duration": 0.365325927734375,
+  "processing": 0,
+  "date_start": "2026-02-07T10:30:39+00:00",
+  "date_finish": "2026-02-07T10:30:39+00:00",
+  "operating_reset_at": 1770460839,
+  "operating": 0
  }
 }
