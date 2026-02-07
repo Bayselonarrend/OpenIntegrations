@@ -118,40 +118,45 @@ import TabItem from '@theme/TabItem';
 
 ```json title="Результат"
 {
- "result": false,
- "error": "ВызватьМетод: достигнуто максимальное число ошибок, завершение",
- "log": [
-  "Инициализировать: установка стандартных значений",
-  "УстановитьСтандартныеНастройки: установка настроек",
-  "УстановитьURL: установка значения",
-  "РазбитьURL: разбиение запроса на составные части",
-  "РазбитьURL: Защищенное = False",
-  "РазбитьURL: Адрес = ",
-  "РазбитьURL: Домен = host.docker.internal:9101",
-  "РазбитьURL: Порт = 9101",
-  "РазбитьURL: Сервер = host.docker.internal",
-  "ДобавитьПараметрURL: добавление параметра, ключ - query",
-  "ДобавитьПараметрURL: пустой параметр проигнорирован, ключ - query_id",
-  "ДобавитьПараметрURL: добавление параметра, ключ - default_format",
-  "ДобавитьЗаголовок: пустой заголовок проигнорирован, ключ X-ClickHouse-Database",
-  "УстановитьДвоичноеТело: передано пустое тело - пропуск",
-  "НачатьЗаписьТелаMultipart: создание потока в памяти",
-  "ДобавитьПараметрURL: добавление параметра, ключ - ext_grpc_format",
-  "ДобавитьПараметрURL: добавление параметра, ключ - ext_grpc_structure",
-  "ДобавитьФайлMultipart: запись шапки блока",
-  "ДобавитьФайлMultipart: запись данных",
-  "ОбработатьЗапрос: формирование объекта HTTPЗапроса",
-  "СформироватьЗапрос: Добавление параметров",
-  "ПараметрыЗапросаВСтроку: Получение коллекции КлючЗначение",
-  "ПараметрыЗапросаВСтроку: Добавление параметров",
-  "СформироватьЗапрос: Создание объекта запроса",
-  "СформироватьЗапрос: Создание объекта соединения",
-  "ОбработатьЗапрос: перенос тела в объект HTTPЗапроса",
-  "ДополнитьЗаголовки: установка Content-Length",
-  "ДополнитьЗаголовки: установка заголовка ожидания gzip",
-  "ВызватьМетод: отправка запроса",
-  "ВызватьМетод: внутренняя ошибка - {Модуль /usr/share/oint/lib/oint/tools/Modules/internal/Classes/OP...",
-  "ВызватьМетод: достигнуто максимальное число ошибок, завершение"
- ]
+ "data": {
+  "cancelled": false,
+  "exception": {
+   "code": 0,
+   "display_text": "",
+   "name": "",
+   "stack_trace": ""
+  },
+  "extremes": {
+   "BYTES": ""
+  },
+  "logs": [],
+  "output": {
+   "BYTES": "ewoJIm1ldGEiOgoJWwoJCXsKCQkJIm5hbWUiOiAiaWQiLAoJCQkidHlwZSI6ICJVSW50NjQiCgkJfSwKCQl7CgkJCSJuYW1lIjogIm5hbWUiLAoJCQkidHlwZSI6ICJTdHJpbmciCgkJfQoJXSwKCgkiZGF0YSI6CglbCgkJewoJCQkiaWQiOiAiMSIsCgkJCSJuYW1lIjogIkpvaG4iCgkJfSwKCQl7CgkJCSJpZCI6ICIyIiwKCQkJIm5hbWUiOiAiSmFuZSIKCQl9CgldLAoKCSJyb3dzIjogMiwKCgkic3RhdGlzdGljcyI6Cgl7CgkJImVsYXBzZWQiOiAwLjAwNjA0NjI3MywKCQkicm93c19yZWFkIjogMCwKCQkiYnl0ZXNfcmVhZCI6IDAKCX0KfQo="
+  },
+  "output_columns": [],
+  "output_format": "JSON",
+  "progress": {
+   "read_bytes": 42,
+   "read_rows": 2,
+   "total_rows_to_read": 0,
+   "written_bytes": 0,
+   "written_rows": 0
+  },
+  "query_id": "91512339-ae13-4739-bd05-7f1af2097ba8",
+  "stats": {
+   "allocated_bytes": 8448,
+   "applied_aggregation": false,
+   "applied_limit": false,
+   "blocks": 1,
+   "rows": 2,
+   "rows_before_aggregation": 0,
+   "rows_before_limit": 0
+  },
+  "time_zone": "Europe/Moscow",
+  "totals": {
+   "BYTES": ""
+  }
+ },
+ "result": true
 }
 ```
