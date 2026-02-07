@@ -7,8 +7,8 @@
    "wid": "***",
    "typeInstance": "whatsapp"
   },
-  "timestamp": 1770360175,
-  "idMessage": "3EB0C2C8E91206DAED2861",
+  "timestamp": 1770411767,
+  "idMessage": "3EB07E00426E4BFB2D6D2A",
   "senderData": {
    "chatId": "***",
    "chatName": "***",
@@ -17,26 +17,15 @@
    "senderContactName": "***"
   },
   "messageData": {
-   "typeMessage": "quotedMessage",
+   "typeMessage": "extendedTextMessage",
    "extendedTextMessageData": {
     "text": "Новое сообщение",
-    "stanzaId": "3EB05EE237F74A08C4E253",
-    "participant": "1234567890@c.us"
-   },
-   "quotedMessage": {
-    "stanzaId": "3EB05EE237F74A08C4E253",
-    "participant": "1234567890@c.us",
-    "typeMessage": "extendedTextMessage",
-    "textMessage": "Новое сообщение",
-    "extendedTextMessage": {
-     "text": "Новое сообщение",
-     "description": "",
-     "title": "",
-     "previewType": "None",
-     "jpegThumbnail": "",
-     "forwardingScore": 0,
-     "isForwarded": false
-    }
+    "description": "",
+    "title": "",
+    "previewType": "None",
+    "jpegThumbnail": "",
+    "forwardingScore": 0,
+    "isForwarded": false
    }
   }
  }
