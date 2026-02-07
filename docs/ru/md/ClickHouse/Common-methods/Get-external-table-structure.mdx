@@ -52,9 +52,9 @@ import TabItem from '@theme/TabItem';
             # JSON данные также могут быть переданы как путь к файлу .json
             
             oint clickhouse ПолучитьСтруктуруВнешнейТаблицы \
-              --name "external_data" \
+              --name "ext_grpc" \
               --cols "{'id':'UInt64','name':'String'}" \
-              --data "1	Test\n2Test2" \
+              --data "1	John\n2	Jane" \
               --format "TSV"
         ```
     </TabItem>
@@ -64,9 +64,9 @@ import TabItem from '@theme/TabItem';
             :: JSON данные также могут быть переданы как путь к файлу .json
             
             oint clickhouse ПолучитьСтруктуруВнешнейТаблицы ^
-              --name "external_data" ^
+              --name "ext_grpc" ^
               --cols "{'id':'UInt64','name':'String'}" ^
-              --data "1	Test\n2Test2" ^
+              --data "1	John\n2	Jane" ^
               --format "TSV"
         ```
     </TabItem>
