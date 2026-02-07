@@ -24,21 +24,21 @@
   ],
   "rows": 2,
   "statistics": {
-   "elapsed": 0.001342999,
+   "elapsed": 0.004912148,
    "rows_read": 2,
    "bytes_read": 44
   }
  },
  "headers": {
-  "Date": "Fri, 06 Feb 2026 21:20:07 GMT",
+  "Date": "Sat, 07 Feb 2026 07:18:39 GMT",
   "Connection": "Keep-Alive",
   "X-ClickHouse-Server-Display-Name": "clickhouse",
   "Transfer-Encoding": "chunked",
-  "X-ClickHouse-Query-Id": "a38b5c0b-d751-42c9-9102-5749185bbf83",
+  "X-ClickHouse-Query-Id": "3cf84010-88a9-4fbc-8a70-8201511bae6d",
   "X-ClickHouse-Format": "JSON",
   "X-ClickHouse-Timezone": "Europe/Moscow",
   "Keep-Alive": "timeout=3",
   "X-ClickHouse-Summary": "{\"read_rows\":\"2\",\"read_bytes\":\"44\",\"written_rows\":\"0\",\"written_bytes\":\"0\",\"total_rows_to_read\":\"0\",\"result_rows\":\"0\",\"result_bytes\":\"0\"}",
-  "Content-Type": "application/json; charset=UTF-8"
+  "Content-Type": "application/json; charset=utf-8"
  }
 }

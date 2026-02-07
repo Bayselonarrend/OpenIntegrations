@@ -1,8 +1,11 @@
 ﻿{
  "query": "SELECT 1",
  "database": "default",
- "id": "e85935cd-3056-405b-89a1-0270eaf67ebb",
- "data": "C:\\Users\\bayse\\AppData\\Local\\Temp\\qcuarp4u.geg.json",
+ "id": "c89049df-81eb-4fa5-9378-043a9ccccd0d",
+ "data": {
+  "meta": [],
+  "data": []
+ },
  "format": "CSV",
  "external_tables": [
   {
