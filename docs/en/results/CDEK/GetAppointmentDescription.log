@@ -12,7 +12,7 @@
   "postal_code": "<Postal code>",
   "longitude": "<Longitude>",
   "latitude": "<Latitude>",
-  "country_code": "<Country code in ISO_3166-1_alpha-2 format>",
+  "country_code": "<Country code in the ISO_3166-1_alpha-2 format>",
   "region": "<Region name>",
   "region_code": "<Region code>",
   "sub_region": "<Name of the area of the region>",

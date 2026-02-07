@@ -2053,7 +2053,7 @@
    }
   },
   {
-   "ID": "1978",
+   "ID": "1986",
    "NAME": "Новое имя календаря",
    "GAPI_CALENDAR_ID": "***",
    "DESCRIPTION": "Этот календарь был изменен",
@@ -2062,13 +2062,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1978&sign=6ad8299e7e467c9fe6528dd47e99d066&bx_hit_hash=oC27K4NOZn74xfXllFefboAwcBtydKUQ"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1986&sign=70d9e714739f334228019ccd8ab1163c&bx_hit_hash=oC27K4NOZn74xfXllFefboAwcBtydKUQ"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2026-02-06 23:44:00",
-   "TIMESTAMP_X": "2026-02-06 23:44:00",
+   "DATE_CREATE": "2026-02-07 09:49:00",
+   "TIMESTAMP_X": "2026-02-07 09:49:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": "***",
    "PAGE_TOKEN": "***",
@@ -2089,7 +2089,7 @@
    }
   },
   {
-   "ID": "1980",
+   "ID": "1988",
    "NAME": "Новое имя календаря",
    "GAPI_CALENDAR_ID": "***",
    "DESCRIPTION": "Этот календарь был изменен",
@@ -2098,13 +2098,13 @@
    "EXPORT": {
     "ALLOW": true,
     "PATH": "https://b24-ar17wx.bitrix24.by/company/personal/user/1/calendar/",
-    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1980&sign=931e2c328da5c266bf33263023f37725&bx_hit_hash=oC27K4NOZn74xfXllFefboAwcBtydKUQ"
+    "LINK": "&type=user&owner=1&ncc=1&user=1&sec_id=1988&sign=decc673289b19b414b540d059f1424eb&bx_hit_hash=oC27K4NOZn74xfXllFefboAwcBtydKUQ"
    },
    "CAL_TYPE": "user",
    "OWNER_ID": "1",
    "CREATED_BY": "1",
-   "DATE_CREATE": "2026-02-06 23:44:00",
-   "TIMESTAMP_X": "2026-02-06 23:44:00",
+   "DATE_CREATE": "2026-02-07 09:49:00",
+   "TIMESTAMP_X": "2026-02-07 09:49:00",
    "CAL_DAV_CON": null,
    "SYNC_TOKEN": "***",
    "PAGE_TOKEN": "***",
@@ -2126,13 +2126,13 @@
   }
  ],
  "time": {
-  "start": 1770410644,
-  "finish": 1770410644.08196,
-  "duration": 0.0819580554962158,
+  "start": 1770446965,
+  "finish": 1770446965.15374,
+  "duration": 0.153738021850586,
   "processing": 0,
-  "date_start": "2026-02-06T23:44:04+03:00",
-  "date_finish": "2026-02-06T23:44:04+03:00",
-  "operating_reset_at": 1770411244,
+  "date_start": "2026-02-07T06:49:25+00:00",
+  "date_finish": "2026-02-07T06:49:25+00:00",
+  "operating_reset_at": 1770447565,
   "operating": 0
  }
 }
