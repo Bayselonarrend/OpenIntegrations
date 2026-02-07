@@ -1,8 +1,8 @@
 ﻿{
  "object": "page",
- "id": "2ff82aa7-fc4e-8158-88f5-e90a8ebb89de",
- "created_time": "2026-02-06T22:26:00Z",
- "last_edited_time": "2026-02-06T22:26:00Z",
+ "id": "30082aa7-fc4e-81bb-94ee-ee705b16b321",
+ "created_time": "2026-02-07T10:22:00Z",
+ "last_edited_time": "2026-02-07T10:22:00Z",
  "created_by": {
   "object": "user",
   "id": "8b07422e-eeea-40d1-8d5e-c784211825b0"
@@ -15,23 +15,14 @@
  "icon": null,
  "parent": {
   "type": "database_id",
-  "database_id": "2ff82aa7-fc4e-8165-9c9e-e6a8582cc06a"
+  "database_id": "30082aa7-fc4e-81d4-b454-e91211a8fc2d"
  },
  "archived": false,
  "in_trash": false,
  "is_locked": false,
  "properties": {
-  "CreationDate": {
-   "id": "%3BemV",
-   "type": "date",
-   "date": {
-    "start": "2026-02-07T04:26:00+03:00",
-    "end": null,
-    "time_zone": null
-   }
-  },
   "Email": {
-   "id": "%3DaVv",
+   "id": "JxPD",
    "type": "rich_text",
    "rich_text": [
     {
@@ -54,7 +45,7 @@
    ]
   },
   "Description": {
-   "id": "%40an_",
+   "id": "Yc%7Dv",
    "type": "rich_text",
    "rich_text": [
     {
@@ -76,27 +67,46 @@
     }
    ]
   },
-  "Active": {
-   "id": "BOwt",
-   "type": "checkbox",
-   "checkbox": true
+  "User": {
+   "id": "%5B%40WN",
+   "type": "people",
+   "people": []
+  },
+  "Number": {
+   "id": "_ASk",
+   "type": "number",
+   "number": 1
   },
   "Status": {
-   "id": "Gnig",
+   "id": "hl%3Bu",
    "type": "select",
    "select": {
-    "id": "2821253a-acb8-4bf7-a882-c72166ac228c",
+    "id": "9ea3b3e8-e913-444a-adc4-82f376458606",
     "name": "New",
     "color": "green"
    }
   },
-  "User": {
-   "id": "IYvo",
-   "type": "people",
-   "people": []
+  "CreationDate": {
+   "id": "lcCG",
+   "type": "date",
+   "date": {
+    "start": "2026-02-07T10:22:00+00:00",
+    "end": null,
+    "time_zone": null
+   }
+  },
+  "Phone": {
+   "id": "lr%3C%5C",
+   "type": "phone_number",
+   "phone_number": "***"
+  },
+  "Active": {
+   "id": "pjpl",
+   "type": "checkbox",
+   "checkbox": true
   },
   "Image": {
-   "id": "U%5BEx",
+   "id": "vcA%60",
    "type": "files",
    "files": [
     {
@@ -107,16 +117,6 @@
      }
     }
    ]
-  },
-  "Phone": {
-   "id": "dZ%7BJ",
-   "type": "phone_number",
-   "phone_number": "***"
-  },
-  "Number": {
-   "id": "zDgN",
-   "type": "number",
-   "number": 1
   },
   "Name": {
    "id": "title",
@@ -142,7 +142,7 @@
    ]
   }
  },
- "url": "https://www.notion.so/LLC-Vector-2ff82aa7fc4e815888f5e90a8ebb89de",
+ "url": "https://www.notion.so/LLC-Vector-30082aa7fc4e81bb94eeee705b16b321",
  "public_url": null,
- "request_id": "1e62dae1-6fff-4100-bab8-37591cb5decd"
+ "request_id": "727b8fcf-fe4d-4e90-8712-ade2339273eb"
 }
