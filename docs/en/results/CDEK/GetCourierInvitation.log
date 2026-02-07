@@ -1,9 +1,10 @@
 ﻿{
  "entity": {
-  "uuid": "b15efd60-1d3e-4d3b-b4d2-aa57ce33f1b4",
-  "cdek_number": "1106983952",
-  "order_uuid": "bd38ac75-3819-4f9b-8123-f8e9492c533b",
+  "uuid": "90eff849-8690-4c9d-be35-c405ab648059",
+  "cdek_number": "1106983961",
+  "order_uuid": "4859874c-9a3b-426b-a32d-4ca06500975b",
   "intake_date": "2026-02-08",
+  "intake_number": "13311135",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -15,7 +16,11 @@
   "sender": {
    "company": "Company",
    "name": "Ivaniv Ivan",
+   "contragent_type": "LEGAL_ENTITY",
    "phones": [
+    {
+     "number": "79589441654"
+    },
     {
      "number": "+79589441654"
     }
@@ -36,17 +41,35 @@
    "latitude": 55.75222,
    "address": "st. Bluchera, 32"
   },
+  "to_location": {
+   "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "longitude": 37.831928,
+   "latitude": 55.644399,
+   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
+   "postal_code": "140091"
+  },
   "need_call": false,
   "statuses": [
    {
+    "code": "CREATED",
+    "name": "Создан",
+    "date_time": "2026-02-07T14:09:05+00:00"
+   },
+   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-02-07T11:56:14+00:00"
+    "date_time": "2026-02-07T14:09:05+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "b5ca0e8d-9c8c-4662-bb8d-c54b17e4bc67",
+    "package_id": "dd450042-fc80-4760-9fe2-bc0110073543",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -56,9 +79,9 @@
  },
  "requests": [
   {
-   "request_uuid": "716d2457-efbd-4672-a6d6-5fc807659fa8",
+   "request_uuid": "25a54e6a-5056-4e33-8316-daa2ce774a00",
    "type": "CREATE",
-   "date_time": "2026-02-07T11:56:10+00:00",
+   "date_time": "2026-02-07T14:09:01+00:00",
    "state": "ACCEPTED"
   }
  ]
