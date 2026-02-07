@@ -2,8 +2,8 @@
  "Description": "",
  "Title": "New event",
  "Venue": "",
- "StartDate": "2026-02-07T01:25:12+03:00",
- "EndDate": "2026-02-07T02:25:12+03:00",
+ "StartDate": "2026-02-07T10:20:23+00:00",
+ "EndDate": "2026-02-07T11:20:23+00:00",
  "ArrayOfAttachmentURLs": {},
  "SendNotifications": true
 }
