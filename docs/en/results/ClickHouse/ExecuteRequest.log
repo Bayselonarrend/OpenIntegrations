@@ -1,0 +1,44 @@
+﻿{
+ "status": 200,
+ "result": true,
+ "body": {
+  "meta": [
+   {
+    "name": "id",
+    "type": "UInt64"
+   },
+   {
+    "name": "value",
+    "type": "String"
+   }
+  ],
+  "data": [
+   {
+    "id": "1",
+    "value": "test1"
+   },
+   {
+    "id": "2",
+    "value": "test2"
+   }
+  ],
+  "rows": 2,
+  "statistics": {
+   "elapsed": 0.001615281,
+   "rows_read": 2,
+   "bytes_read": 44
+  }
+ },
+ "headers": {
+  "Date": "Sat, 07 Feb 2026 10:53:34 GMT",
+  "Connection": "Keep-Alive",
+  "X-ClickHouse-Server-Display-Name": "clickhouse",
+  "Transfer-Encoding": "chunked",
+  "X-ClickHouse-Query-Id": "caaad88a-3cab-4fea-927d-9db336026276",
+  "X-ClickHouse-Format": "JSON",
+  "X-ClickHouse-Timezone": "Europe/Moscow",
+  "Keep-Alive": "timeout=3",
+  "X-ClickHouse-Summary": "{\"read_rows\":\"2\",\"read_bytes\":\"44\",\"written_rows\":\"0\",\"written_bytes\":\"0\",\"total_rows_to_read\":\"0\",\"result_rows\":\"0\",\"result_bytes\":\"0\"}",
+  "Content-Type": "application/json; charset=UTF-8"
+ }
+}

@@ -1,6 +1,112 @@
 ﻿[
  {
-  "messageID": "3EB043BED65DCC060A7792",
+  "messageID": "3EB06D25CE2D9336E1E7FE",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "***",
+   "urlFile": "https://hut.openintegrations.dev/test_data/picture.jpg",
+   "fileName": "photo.jpg",
+   "caption": "File description",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "3EB0492A945202F44834B6",
+  "type": "sendFileByUrl",
+  "body": {
+   "chatId": "***",
+   "urlFile": "https://hut.openintegrations.dev/test_data/video.mp4",
+   "fileName": "vid.mp4",
+   "caption": "File description",
+   "quotedMessageId": "3EB06D25CE2D9336E1E7FE",
+   "typingTime": null,
+   "typingType": "composing"
+  }
+ },
+ {
+  "messageID": "3EB04DA8D9F87C6E9427FC",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "***",
+   "message": "What's your favorite color??",
+   "options": [
+    {
+     "optionName": "Red"
+    },
+    {
+     "optionName": "Yellow"
+    },
+    {
+     "optionName": "Green"
+    }
+   ],
+   "multipleAnswers": false,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB05EB6A12027786CE53B",
+  "type": "sendPoll",
+  "body": {
+   "chatId": "***",
+   "message": "What's your favorite color??",
+   "options": [
+    {
+     "optionName": "Red"
+    },
+    {
+     "optionName": "Yellow"
+    },
+    {
+     "optionName": "Green"
+    }
+   ],
+   "multipleAnswers": true,
+   "quotedMessageId": "3EB04DA8D9F87C6E9427FC",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB00DB1AB75ECD8A7B4BC",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "address": "Victory Square, Minsk",
+   "nameLocation": "Victory sq.",
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0A93B2468E981862A78",
+  "type": "sendLocation",
+  "body": {
+   "chatId": "***",
+   "quotedMessageId": "3EB00DB1AB75ECD8A7B4BC",
+   "latitude": 53.908522,
+   "longitude": 27.574821,
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB03995F774BC03E35A1B",
+  "type": "sendContact",
+  "body": {
+   "chatId": "***",
+   "contact": {
+    "phoneContact": "***",
+    "firstName": "Artem",
+    "middleName": "Evpatoriysky",
+    "lastName": "Petrovich",
+    "company": "Bicycle"
+   },
+   "typingTime": null
+  }
+ },
+ {
+  "messageID": "3EB0A61B9D060A99F8D55A",
   "type": "sendContact",
   "body": {
    "chatId": "***",
@@ -8,30 +114,30 @@
     "phoneContact": "***",
     "company": "Bicycle"
    },
-   "quotedMessageId": "3EB04A26912579F842D9D3",
+   "quotedMessageId": "3EB03995F774BC03E35A1B",
    "typingTime": null
   }
  },
  {
   "messagesIDs": [
-   "3EB0DE0BCA3F0E5C4E3ECD"
+   "3EB0DB22EB500362CB4BB3"
   ],
   "type": "ForwardMessages",
   "body": {
    "chatId": "***",
    "chatIdFrom": "***",
    "messages": [
-    "3EB05528815B0E1DCC983C"
+    "3EB0F44FBCDE46526EF46B"
    ],
    "typingTime": null
   }
  },
  {
-  "messageID": "3EB0BEB9BD3101211A2EBA",
+  "messageID": "3EB0E18E3127526616075D",
   "type": "editMessage",
   "body": {
    "chatId": "***",
-   "idMessage": "3EB05528815B0E1DCC983C",
+   "idMessage": "3EB0F44FBCDE46526EF46B",
    "message": "New message text",
    "linkPreview": true
   }

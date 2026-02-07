@@ -72,15 +72,23 @@ import TabItem from '@theme/TabItem';
   
     <TabItem value="bash" label="Bash" default>
         ```bash
+            # JSON данные также могут быть переданы как путь к файлу .json
+            
             oint clickhouse ПолучитьНастройкиЗапроса \
-              --query "CREATE TABLE IF NOT EXISTS events_grpc (\n    id UInt64,\n    timestamp DateTime,\n    user_id UInt32,\n    event_type String,\n    payload String\n) ENGINE    = MergeTree()\nORDER BY (timestamp, id)"
+              --query "SELECT * FROM ext_grpc" \
+              --format "JSON" \
+              --ext "[{'name':'ext_grpc','cols':{'id':'UInt64','name':'String'},'data':'1\tJohn\n2\tJane','format':'TSV'}]"
         ```
     </TabItem>
   
     <TabItem value="bat" label="CMD/Bat" default>
         ```batch
+            :: JSON данные также могут быть переданы как путь к файлу .json
+            
             oint clickhouse ПолучитьНастройкиЗапроса ^
-              --query "CREATE TABLE IF NOT EXISTS events_grpc (\n    id UInt64,\n    timestamp DateTime,\n    user_id UInt32,\n    event_type String,\n    payload String\n) ENGINE    = MergeTree()\nORDER BY (timestamp, id)"
+              --query "SELECT * FROM ext_grpc" ^
+              --format "JSON" ^
+              --ext "[{'name':'ext_grpc','cols':{'id':'UInt64','name':'String'},'data':'1\tJohn\n2\tJane','format':'TSV'}]"
         ```
     </TabItem>
 </Tabs>
@@ -90,8 +98,11 @@ import TabItem from '@theme/TabItem';
 {
  "query": "SELECT 1",
  "database": "default",
- "id": "8c25f769-7df5-4304-9570-2440d72ecd95",
- "data": "/tmp/vrbbwiyy.vc2.json",
+ "id": "c89049df-81eb-4fa5-9378-043a9ccccd0d",
+ "data": {
+  "meta": [],
+  "data": []
+ },
  "format": "CSV",
  "external_tables": [
   {
