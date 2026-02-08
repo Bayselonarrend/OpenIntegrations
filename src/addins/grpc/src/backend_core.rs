@@ -341,14 +341,12 @@ impl GrpcBackend {
                                     &message_value
                                 ).await
                             });
-                            
+
                             let response_msg = match result {
                                 Ok(_) => json!({"result": true}).to_string(),
-                                Err(e) => match e.as_str() {
-                                    "Timeout" => json!({"result": false, "error": e}).to_string(),
-                                    _ => json!({"result": false, "error": "Closed", "info": e}).to_string()
-                                },
+                                Err(e) => e
                             };
+
                             let _ = response.send(response_msg);
                         }
                         BackendCommand::GetNextMessage { stream_id, response } => {
