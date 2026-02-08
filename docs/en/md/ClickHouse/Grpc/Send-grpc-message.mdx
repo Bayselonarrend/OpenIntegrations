@@ -1,0 +1,59 @@
+---
+sidebar_position: 4
+description: Send GRPC message  and other functions to work with ClickHouse in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ClickHouse]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Send GRPC message 
+ Sends the next message to the client or bidirectional stream
+
+
+
+`Function SendGRPCMessage(Val Connection, Val StreamID, Val Request, Val Session = Undefined, Val WaitNext = False) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | - | Arbitrary | &#x2714; | GRPC connection object |
+  | StreamID | - | String | &#x2714; | Stream Identifier |
+  | Request | - | Structure Of KeyAndValue | &#x2714; | Request data. See GetRequestSettings |
+  | Session | - | Structure Of KeyAndValue | &#x2716; | Session settings. See GetSessionSettings |
+  | WaitNext | - | Boolean | &#x2716; | Flag for waiting for the next messages after the current one |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "http://localhost:9101";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    Authorization = New Structure(Login, Password);
+
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    Timeout = 10000;
+
+    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Timeout);
+    StreamID      = OpeningResult["streamId"];
+
+    QueryText = "SELECT 1 AS result";
+    Request   = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON");
+
+    Result = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request);
+```
+ 
+
+
+
+
