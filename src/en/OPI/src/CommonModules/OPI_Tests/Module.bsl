@@ -1,4 +1,4 @@
-// OneScript: ./OInt/tests/Modules/internal/OPI_Tests.os
+ // OneScript: ./OInt/tests/Modules/internal/OPI_Tests.os
 
 // MIT License
 
@@ -3390,6 +3390,11 @@ Procedure CH_GRPC() Export
 
     ClickHouse_CreateGRPCConnection(TestParameters);
     ClickHouse_GetTlsSettings(TestParameters);
+    ClickHouse_OpenGRPCStream(TestParameters);
+    ClickHouse_SendGRPCMessage(TestParameters);
+    ClickHouse_GetGRPCMessage(TestParameters);
+    ClickHouse_CompleteGRPCSending(TestParameters);
+    ClickHouse_CloseGRPCStream(TestParameters);
 
 EndProcedure
 
@@ -27821,6 +27826,196 @@ Procedure ClickHouse_GetTlsSettings(FunctionParameters)
     // END
 
     Process(Result, "ClickHouse", "GetTlsSettings");
+
+EndProcedure
+
+Procedure ClickHouse_OpenGRPCStream(FunctionParameters)
+
+    URL = "http://localhost:9101";
+    URL = StrTemplate("http://%1:%2", OPI_TestDataRetrieval.GetLocalhost(), FunctionParameters["ClickHouse_PortGRPC"]); // SKIP
+
+    Login    = FunctionParameters["ClickHouse_User"];
+    Password = FunctionParameters["ClickHouse_Password"];
+
+    Authorization = New Structure(Login, Password);
+
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    Result = OPI_ClickHouse.OpenGRPCStream(Connection);
+
+    If Not Result["result"] Then
+        Raise Result["error"];
+    Else
+        StreamID = Result["streamId"];
+    EndIf;
+
+    QueryText   = "INSERT INTO events_grpc FORMAT JSONEachRow";
+    DataFormat  = "JSON";
+    CurrentDate = Date("20260101100000");
+
+    Counter = 0;
+    While Counter < 5 Do
+
+        Record = New Structure;
+        Record.Insert("id"         , Counter + 1);
+        Record.Insert("timestamp"  , CurrentDate);
+        Record.Insert("user_id"    , 100 + Counter);
+        Record.Insert("event_type" , "stream_test");
+        Record.Insert("payload"    , "{}");
+
+        Record = OPI_Tools.JSONString(Record) + Chars.LF;
+
+        Last = Counter = 4;
+
+        If Counter     = 0 Then
+            Request = OPI_ClickHouse.GetRequestSettings(QueryText, "default", , Record, DataFormat);
+            CurrentSend   = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request, , Not Last);
+        Else
+            CurrentSend   = OPI_ClickHouse.SendGRPCData(Connection, StreamID, Record, Not Last);
+        EndIf;
+
+        If Not CurrentSend["result"] Then
+
+            Error = CurrentSend["error"];
+
+            If Error <> "Timeout" Then
+                Raise OPI_Tools.JSONString(CurrentSend);
+            EndIf;
+
+        EndIf;
+
+        Counter = Counter + 1;
+
+    EndDo;
+
+    Completion   = OPI_ClickHouse.CompleteGRPCSending(Connection, StreamID);
+    FinalMessage = OPI_ClickHouse.GetGRPCMessage(Connection, StreamID);
+
+    OPI_GRPC.CloseConnection(Connection);
+
+    // END
+
+    Process(Result       , "ClickHouse", "OpenGRPCStream");
+    Process(FinalMessage , "ClickHouse", "OpenGRPCStream", "Final");
+
+EndProcedure
+
+Procedure ClickHouse_SendGRPCMessage(FunctionParameters)
+
+    URL = "http://localhost:9101";
+    URL = StrTemplate("http://%1:%2", OPI_TestDataRetrieval.GetLocalhost(), FunctionParameters["ClickHouse_PortGRPC"]); // SKIP
+
+    Login    = FunctionParameters["ClickHouse_User"];
+    Password = FunctionParameters["ClickHouse_Password"];
+
+    Authorization = New Structure(Login, Password);
+
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    Timeout = 10000;
+
+    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Timeout);
+    StreamID      = OpeningResult["streamId"];
+
+    QueryText = "SELECT 1 AS result";
+    Request   = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON");
+
+    Result = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request);
+
+    // END
+
+    Process(Result, "ClickHouse", "SendGRPCMessage");
+
+    OPI_ClickHouse.CloseGRPCStream(Connection, StreamID);
+    OPI_GRPC.CloseConnection(Connection);
+
+EndProcedure
+
+Procedure ClickHouse_GetGRPCMessage(FunctionParameters)
+
+    URL = "http://localhost:9101";
+    URL = StrTemplate("http://%1:%2", OPI_TestDataRetrieval.GetLocalhost(), FunctionParameters["ClickHouse_PortGRPC"]); // SKIP
+
+    Login    = FunctionParameters["ClickHouse_User"];
+    Password = FunctionParameters["ClickHouse_Password"];
+
+    Authorization = New Structure(Login, Password);
+
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    QueryText = "SELECT number FROM system.numbers LIMIT 1";
+    Request   = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON");
+    Timeout   = 10000;
+
+    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Request, , Timeout);
+    StreamID      = OpeningResult["streamId"];
+
+    Result = OPI_ClickHouse.GetGRPCMessage(Connection, StreamID);
+
+    // END
+
+    Process(Result, "ClickHouse", "GetGRPCMessage");
+
+    OPI_GRPC.CloseConnection(Connection);
+
+EndProcedure
+
+Procedure ClickHouse_CompleteGRPCSending(FunctionParameters)
+
+    URL = "http://localhost:9101";
+    URL = StrTemplate("http://%1:%2", OPI_TestDataRetrieval.GetLocalhost(), FunctionParameters["ClickHouse_PortGRPC"]); // SKIP
+
+    Login    = FunctionParameters["ClickHouse_User"];
+    Password = FunctionParameters["ClickHouse_Password"];
+
+    Authorization = New Structure(Login, Password);
+
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    Timeout = 10000;
+
+    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Timeout);
+    StreamID      = OpeningResult["streamId"];
+
+    Result = OPI_ClickHouse.CompleteGRPCSending(Connection, StreamID);
+
+    // END
+
+    Process(Result, "ClickHouse", "CompleteGRPCSending");
+
+    OPI_GRPC.CloseConnection(Connection);
+
+EndProcedure
+
+Procedure ClickHouse_CloseGRPCStream(FunctionParameters)
+
+    URL = "http://localhost:9101";
+    URL = StrTemplate("http://%1:%2", OPI_TestDataRetrieval.GetLocalhost(), FunctionParameters["ClickHouse_PortGRPC"]); // SKIP
+
+    Login    = FunctionParameters["ClickHouse_User"];
+    Password = FunctionParameters["ClickHouse_Password"];
+
+    Authorization = New Structure(Login, Password);
+
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    Timeout = 10000;
+
+    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Timeout);
+    StreamID      = OpeningResult["streamId"];
+
+    Result = OPI_ClickHouse.CloseGRPCStream(Connection, StreamID);
+
+    // END
+
+    Process(Result, "ClickHouse", "CloseGRPCStream");
+
+    OPI_GRPC.CloseConnection(Connection);
 
 EndProcedure
 

@@ -64,10 +64,11 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
 ```json title="Result"
 {
  "entity": {
-  "uuid": "1ce5d306-1b26-4ced-92d6-ba067ce6abd4",
-  "cdek_number": "1106983890",
-  "order_uuid": "d0e92052-e83b-4dc3-b80a-230142915ab6",
+  "uuid": "90eff849-8690-4c9d-be35-c405ab648059",
+  "cdek_number": "1106983961",
+  "order_uuid": "4859874c-9a3b-426b-a32d-4ca06500975b",
   "intake_date": "2026-02-08",
+  "intake_number": "13311135",
   "intake_time_from": "10:00",
   "intake_time_to": "17:00",
   "name": "Consolidated cargo",
@@ -79,7 +80,11 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
   "sender": {
    "company": "Company",
    "name": "Ivaniv Ivan",
+   "contragent_type": "LEGAL_ENTITY",
    "phones": [
+    {
+     "number": "79589441654"
+    },
     {
      "number": "+79589441654"
     }
@@ -100,17 +105,35 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
    "latitude": 55.75222,
    "address": "st. Bluchera, 32"
   },
+  "to_location": {
+   "code": 44,
+   "city_uuid": "7e8f36ba-d937-4ce4-8d53-e44177db6469",
+   "city": "Москва",
+   "country_code": "RU",
+   "country": "Россия",
+   "region": "Москва",
+   "region_code": 81,
+   "longitude": 37.831928,
+   "latitude": 55.644399,
+   "address": "Россия, Москва, Москва, ул. Энергетиков, 22 корп. 2",
+   "postal_code": "140091"
+  },
   "need_call": false,
   "statuses": [
    {
+    "code": "CREATED",
+    "name": "Создан",
+    "date_time": "2026-02-07T14:09:05+00:00"
+   },
+   {
     "code": "ACCEPTED",
     "name": "Принят",
-    "date_time": "2026-02-07T01:39:36+03:00"
+    "date_time": "2026-02-07T14:09:05+00:00"
    }
   ],
   "packages": [
    {
-    "package_id": "dcb58881-d82d-4ea1-bd18-3b3fe52d011f",
+    "package_id": "dd450042-fc80-4760-9fe2-bc0110073543",
     "weight": 1000,
     "length": 10,
     "width": "***",
@@ -120,9 +143,9 @@ Method at API documentation: [Details of a courier invitation(https://api-docs.c
  },
  "requests": [
   {
-   "request_uuid": "fb75c1ae-ba19-426c-8c21-98e395010ebc",
+   "request_uuid": "25a54e6a-5056-4e33-8316-daa2ce774a00",
    "type": "CREATE",
-   "date_time": "2026-02-07T01:39:31+03:00",
+   "date_time": "2026-02-07T14:09:01+00:00",
    "state": "ACCEPTED"
   }
  ]

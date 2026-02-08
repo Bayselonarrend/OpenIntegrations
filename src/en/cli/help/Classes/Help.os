@@ -31,8 +31,8 @@ Procedure DisplayStartPage() Export
 
 	CommandList = StrConcat(CommandArray, ", ");
 
-	OffsetLength = 11;
-	NewLineTab = "           ";
+	OffsetLength = 10;
+	NewLineTab = "          ";
 
 	Console.TextColor = ConsoleColor.Yellow;
 	ColorOutput.Write(StrTemplate("
@@ -44,29 +44,32 @@ Procedure DisplayStartPage() Export
 		|    \____/  /___/   /_/ |_/   /_/     
 		|                          
 		|
-		| Welcome in (OInt|#color=White) v (" + Version + "|#color=Green)!
+		| Welcome in (OInt|#color=White) v (%1|#color=Green)!
 		|
 		| Structure call:
 	    | 
 		| (oint|#color=White) (<library>|#color=Cyan) (<method>|#color=Cyan) (--option1|#color=Gray) (""|#color=Green)(Value|#color=White)(""|#color=Green) (...|#color=White) (--optionN|#color=Gray) (""|#color=Green)(Value|#color=White)(""|#color=Green) 
 		|
 		| Call libraries without method or method without parameters returns help
-		| List available libraries: (%1|#color=White) 
-		|
+		| List available libraries: (%2|#color=White) 
+		|"
+		, Version
+		, CommandList));
+
+	Console.TextColor = ConsoleColor.White;
+
+	ColorOutput.Write(StrTemplate("
 		| (Standard options:|#color=Yellow)
 		|
-		|  (--help|#color=Green)  (-%2|#color=White)
-		|  (--debug|#color=Green) (-%3|#color=White)
-		|  (--out|#color=Green)   (-%4|#color=White)
+		|  (--help|#color=Green)  -%1
+		|  (--debug|#color=Green) -%2
+		|  (--out|#color=Green)   -%3
 		|
 		|  (Full documentation can be found at:|#color=Yellow) (https://openintegrations.dev|#color=Cyan)
 		|"
-		, CommandList
 		, GetWidthSplittedDescription("displays help on the current command or method. Similar to calling a command without options", NewLineTab, OffsetLength)
 		, GetWidthSplittedDescription("a flag responsible for providing more detailed information during program operation", NewLineTab, OffsetLength)
 		, GetWidthSplittedDescription("the path to the result saving file (particularly binary data)", NewLineTab, OffsetLength)));
-
-	Console.TextColor = ConsoleColor.White;
 
 	Exit(0);
 	
