@@ -1,0 +1,17 @@
+    URL = "http://localhost:9101";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    Authorization = New Structure(Login, Password);
+
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    QueryText = "SELECT number FROM system.numbers LIMIT 1";
+    Request   = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON");
+    Timeout   = 10000;
+
+    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Request, , Timeout);
+    StreamID      = OpeningResult["streamId"];
+
+    Result = OPI_ClickHouse.GetGRPCMessage(Connection, StreamID);

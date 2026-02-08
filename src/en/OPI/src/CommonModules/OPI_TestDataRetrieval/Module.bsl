@@ -13307,6 +13307,58 @@ Function Check_ClickHouse_GetTlsSettings(Val Result, Option)
 
 EndFunction
 
+Function Check_ClickHouse_OpenGRPCStream(Val Result, Option)
+
+    If Option = "Final" Then
+        ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+        ExpectsThat(Result["result"]).Равно(True);
+    Else
+        ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(ValueIsFilled(Result["streamId"])).Равно(True);
+    EndIf;
+
+    Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_SendGRPCMessage(Val Result, Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_GetGRPCMessage(Val Result, Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+    ExpectsThat(Result["result"]).Равно(True);
+    ExpectsThat(ValueIsFilled(Result["message"])).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_CompleteGRPCSending(Val Result, Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
+Function Check_ClickHouse_CloseGRPCStream(Val Result, Option)
+
+    ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+    ExpectsThat(Result["result"]).Равно(True);
+
+    Return Result;
+
+EndFunction
+
 #EndRegion
 
 #Region ReportPortal
