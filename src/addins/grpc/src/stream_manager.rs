@@ -103,27 +103,27 @@ impl StreamManager {
             tokio::time::timeout(duration, sender.reserve())
                 .await
                 .map_err(|_| "Timeout")?
-                .map_err(|_| "Closed".to_string())?;
+                .map_err(|e| e.to_string())?;
 
             tokio::time::timeout(duration, sender.send(msg_with_ack))
                 .await
                 .map_err(|_| "Timeout")?
-                .map_err(|_| "Closed".to_string())?;
+                .map_err(|e| e.to_string())?;
 
             tokio::time::timeout(duration, ack_rx)
                 .await
                 .map_err(|_| "Timeout")?
-                .map_err(|_| "Closed".to_string())?;
+                .map_err(|e| e.to_string())?;
         } else {
 
             sender.reserve().await
-                .map_err(|_| "Closed".to_string())?;
+                .map_err(|e| e.to_string())?;
 
             sender.send(msg_with_ack).await
-                .map_err(|_| "Closed".to_string())?;
+                .map_err(|e| e.to_string())?;
 
             ack_rx.await
-                .map_err(|_| "Closed".to_string())?;
+                .map_err(|e| e.to_string())?;
         }
 
         Ok(())
