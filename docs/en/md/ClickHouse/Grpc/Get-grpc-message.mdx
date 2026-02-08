@@ -1,0 +1,55 @@
+---
+sidebar_position: 6
+description: Get GRPC message  and other functions to work with ClickHouse in the Open Integration Package, a free open-source integration library for 1C:Enterprise 8, OneScript and CLI
+keywords: [1C, 1С, 1С:Enterprise, 1С:Enterprise 8.3, API, Integration, Services, Exchange, OneScript, CLI, ClickHouse]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Get GRPC message 
+ Gets the next message from the stream
+
+
+
+`Function GetGRPCMessage(Val Connection, Val StreamID) Export`
+
+  | Parameter | CLI option | Type | Required | Description |
+  |-|-|-|-|-|
+  | Connection | - | Arbitrary | &#x2714; | Connection object |
+  | StreamID | - | String | &#x2714; | Stream Identifier |
+
+  
+  Returns:  Map Of KeyAndValue - Processing result
+
+
+:::caution
+**NOCLI:** this method is not available in CLI version
+:::
+<br/>
+
+
+```bsl title="1C:Enterprise/OneScript code example"
+    URL = "http://localhost:9101";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    Authorization = New Structure(Login, Password);
+
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    QueryText = "SELECT number FROM system.numbers LIMIT 1";
+    Request   = OPI_ClickHouse.GetRequestSettings(QueryText, , , , "JSON");
+    Timeout   = 10000;
+
+    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Request, , Timeout);
+    StreamID      = OpeningResult["streamId"];
+
+    Result = OPI_ClickHouse.GetGRPCMessage(Connection, StreamID);
+```
+ 
+
+
+
+
