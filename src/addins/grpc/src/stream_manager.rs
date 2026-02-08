@@ -1,8 +1,10 @@
 use std::collections::HashMap;
 use std::sync::Arc;
+use common_utils::utils::json_error;
 use tokio::sync::{mpsc, oneshot, Mutex};
 use tokio::task::AbortHandle;
 use prost_reflect::{DynamicMessage, MessageDescriptor};
+use serde_json::json;
 use tokio::sync::mpsc::Receiver;
 use uuid::Uuid;
 
@@ -88,7 +90,7 @@ impl StreamManager {
         };
 
         if sender.is_closed() {
-            return Err("Closed".to_string());
+            return Err(json_error("Closed".to_string()));
         }
 
         let (ack_tx, ack_rx) = oneshot::channel();
@@ -102,28 +104,28 @@ impl StreamManager {
 
             tokio::time::timeout(duration, sender.reserve())
                 .await
-                .map_err(|_| "Timeout")?
-                .map_err(|e| e.to_string())?;
+                .map_err(|_| json_error("Timeout"))?
+                .map_err(|e| process_close_error(e.to_string()))?;
 
             tokio::time::timeout(duration, sender.send(msg_with_ack))
                 .await
-                .map_err(|_| "Timeout")?
-                .map_err(|e| e.to_string())?;
+                .map_err(|_| json_error("Timeout"))?
+                .map_err(|e| process_close_error(e.to_string()))?;
 
             tokio::time::timeout(duration, ack_rx)
                 .await
-                .map_err(|_| "Timeout")?
-                .map_err(|e| e.to_string())?;
+                .map_err(|_| json_error("Timeout"))?
+                .map_err(|e| process_close_error(e.to_string()))?;
         } else {
 
             sender.reserve().await
-                .map_err(|e| e.to_string())?;
+                .map_err(|e| process_close_error(e.to_string()))?;
 
             sender.send(msg_with_ack).await
-                .map_err(|e| e.to_string())?;
+                .map_err(|e| process_close_error(e.to_string()))?;
 
             ack_rx.await
-                .map_err(|e| e.to_string())?;
+                .map_err(|e| process_close_error(e.to_string()))?;
         }
 
         Ok(())
@@ -234,7 +236,12 @@ impl StreamManager {
         }
 
         streams.clear();
-        
+
         Ok(())
     }
+}
+
+
+fn process_close_error(err: String) -> String {
+    json!({"result": false, "error": "Closed", "info": err}).to_string()
 }
