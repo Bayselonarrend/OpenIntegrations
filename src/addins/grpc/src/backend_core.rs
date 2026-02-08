@@ -344,7 +344,10 @@ impl GrpcBackend {
                             
                             let response_msg = match result {
                                 Ok(_) => json!({"result": true}).to_string(),
-                                Err(e) => json_error(&e),
+                                Err(e) => match e.as_str() {
+                                    "Timeout" => json!({"result": false, "error": e}).to_string(),
+                                    _ => json!({"result": false, "error": "Closed", "info": e}).to_string()
+                                },
                             };
                             let _ = response.send(response_msg);
                         }
