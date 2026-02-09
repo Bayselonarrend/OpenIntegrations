@@ -51,7 +51,7 @@
 // Method at API documentation: [List of users shops](@yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaigns)
 //
 // Parameters:
-// Token - String - Authorization token (Api      - Key)
+// Token - String - Auth token (Api               - Key)
 // Page  - Number - Issue page number of the list - page
 //
 // Returns:
@@ -80,8 +80,8 @@ EndFunction
 // Method at API documentation: [Market information](@yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaign)
 //
 // Parameters:
-// Token      - String         - Authorization token (Api - Key)
-// CampaignID - String, Number - Market ID (campaignsId)  - campaign
+// Token      - String         - Auth token (Api         - Key)
+// CampaignID - String, Number - Market ID (campaignsId) - campaign
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex Market
@@ -105,8 +105,8 @@ EndFunction
 // Method at API documentation: [Cabinet settings](@yandex.ru/dev/market/partner-api/doc/ru/reference/businesses/getBusinessSettings)
 //
 // Parameters:
-// Token     - String         - Authorization token (Api - Key)
-// AccountID - String, Number - Business ID              - business
+// Token     - String         - Auth token (Api - Key)
+// AccountID - String, Number - Business ID     - business
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex Market
@@ -131,8 +131,8 @@ EndFunction
 // Method at API documentation: [Market settings](@yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaignSettings)
 //
 // Parameters:
-// Token      - String         - Authorization token (Api - Key)
-// CampaignID - String, Number - Market ID (campaignsId)  - campaign
+// Token      - String         - Auth token (Api         - Key)
+// CampaignID - String, Number - Market ID (campaignsId) - campaign
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex Market
@@ -161,7 +161,7 @@ EndFunction
 // Method at API documentation: [Adding products to the catalogue and changing information about them](@yandex.ru/dev/market/partner-api/doc/ru/reference/business-assortment/updateOfferMappings)
 //
 // Parameters:
-// Token         - String                        - Authorization token (Api                     - Key)
+// Token         - String                        - Auth token (Api                              - Key)
 // AccountID     - String, Number                - Business ID                                  - business
 // ProductsArray - Structure, Array of Structure - Array of product descriptions                - offers
 // OwnImages     - Boolean                       - A flag of using only your own product images - pmedia
@@ -193,7 +193,7 @@ EndFunction
 // Method at API documentation: [Information about products that are placed in a selected market](@yandex.ru/dev/market/partner-api/doc/ru/reference/assortment/getCampaignOffers)
 //
 // Parameters:
-// Token      - String                   - Authorization token (Api                     - Key)
+// Token      - String                   - Auth token (Api                              - Key)
 // CampaignID - String, Number           - Campaign ID                                  - business
 // Filters    - Structure Of KeyAndValue - Product filters                              - filters
 // PageToken  - String                   - Next page token in case of a large selection - page
@@ -228,7 +228,7 @@ EndFunction
 // Gets the list of products of the business
 //
 // Parameters:
-// Token     - String                   - Authorization token (Api                     - Key)
+// Token     - String                   - Auth token (Api                              - Key)
 // AccountID - String, Number           - Business ID                                  - business
 // Filters   - Structure Of KeyAndValue - Product filters                              - filters
 // PageToken - String                   - Next page token in case of a large selection - page

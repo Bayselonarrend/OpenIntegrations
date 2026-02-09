@@ -7,6 +7,22 @@
     ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
 
+    // Create tables for test
+
+    TableCreationText = "CREATE TABLE IF NOT EXISTS events_stream_test (
+    |    id UInt64,
+    |    timestamp DateTime,
+    |    user_id UInt32,
+    |    event_type String,
+    |    payload String
+    |) ENGINE         = MergeTree()
+    |ORDER BY (timestamp, id)";
+
+    Request = OPI_ClickHouse.GetRequestSettings(TableCreationText);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    // Open stream and insert data
+
     Result = OPI_ClickHouse.OpenGRPCStream(Connection);
 
     If Not Result["result"] Then
@@ -15,7 +31,7 @@
         StreamID = Result["streamId"];
     EndIf;
 
-    QueryText   = "INSERT INTO events_grpc FORMAT JSONEachRow";
+    QueryText   = "INSERT INTO events_stream_test FORMAT JSONEachRow";
     DataFormat  = "JSON";
     CurrentDate = Date("20260101100000");
 
@@ -33,11 +49,11 @@
 
         Last = Counter = 4;
 
-        If Counter     = 0 Then
-            Request = OPI_ClickHouse.GetRequestSettings(QueryText, "default", , Record, DataFormat);
-            CurrentSend   = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request, , Not Last);
+        If Counter      = 0 Then
+            Request     = OPI_ClickHouse.GetRequestSettings(QueryText, "default", , Record, DataFormat);
+            CurrentSend = OPI_ClickHouse.SendGRPCMessage(Connection, StreamID, Request, , Not Last);
         Else
-            CurrentSend   = OPI_ClickHouse.SendGRPCData(Connection, StreamID, Record, Not Last);
+            CurrentSend = OPI_ClickHouse.SendGRPCData(Connection, StreamID, Record, Not Last);
         EndIf;
 
         If Not CurrentSend["result"] Then

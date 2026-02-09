@@ -242,39 +242,39 @@ EndFunction
 #Region Alternate
 
 Procedure ИнициализироватьОсновныеСписки() Export
-	InitializeCommonLists();
+    InitializeCommonLists();
 EndProcedure
 
 Function ПолучитьВерсию() Export
-	Return GetVersion();
+    Return GetVersion();
 EndFunction
 
 Function ПолучитьСоответствиеКомандМодулей() Export
-	Return GetCommandModuleMapping();
+    Return GetCommandModuleMapping();
 EndFunction
 
 Function ПолучитьИнформациюИндекса(Val Команда) Export
-	Return GetIndexData(Команда);
+    Return GetIndexData(Команда);
 EndFunction
 
 Function ПолучитьИнформациюОМетоде(Val Команда, Val Метод) Export
-	Return GetMethodData(Команда, Метод);
+    Return GetMethodData(Команда, Метод);
 EndFunction
 
 Function ПолучитьПолныйСостав() Export
-	Return GetFullComposition();
+    Return GetFullComposition();
 EndFunction
 
 Function СформироватьСтрокуВызоваМетода(Val ПереданныеПараметры, Val Команда, Val Метод, Val Динамически = True) Export
-	Return FormMethodCallString(ПереданныеПараметры, Команда, Метод, Динамически);
+    Return FormMethodCallString(ПереданныеПараметры, Команда, Метод, Динамически);
 EndFunction
 
 Procedure ДополнитьКэшСостава(Val Библиотека, Val ТаблицаПараметров, Команда = "") Export
-	CompleteCompositionCache(Библиотека, ТаблицаПараметров, Команда);
+    CompleteCompositionCache(Библиотека, ТаблицаПараметров, Команда);
 EndProcedure
 
 Procedure УстановитьКаталогПакетов(Val Путь) Export
-	SetPackagesDirectory(Путь);
+    SetPackagesDirectory(Путь);
 EndProcedure
 
 #EndRegion

@@ -366,7 +366,7 @@
 			"params": [
 				{
 					"name": "--picture",
-					"types": "Строка,ДвоичныеДанные",
+					"types": "Строка, ДвоичныеДанные",
 					"description": "Фон истории",
 					"default": null,
 					"short": "-p"

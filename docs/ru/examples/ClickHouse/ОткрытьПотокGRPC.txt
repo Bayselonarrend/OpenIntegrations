@@ -7,6 +7,22 @@
     НастройкиСоединения = OPI_ClickHouse.ПолучитьНастройкиСоединенияGRPC(URL, Авторизация);
     Соединение          = OPI_ClickHouse.ОткрытьСоединениеGRPC(НастройкиСоединения);
 
+    // Создание таблицы для теста
+
+    ТекстСозданияТаблицы = "CREATE TABLE IF NOT EXISTS events_stream_test (
+    |    id UInt64,
+    |    timestamp DateTime,
+    |    user_id UInt32,
+    |    event_type String,
+    |    payload String
+    |) ENGINE            = MergeTree()
+    |ORDER BY (timestamp, id)";
+
+    Запрос    = OPI_ClickHouse.ПолучитьНастройкиЗапроса(ТекстСозданияТаблицы);
+    Результат = OPI_ClickHouse.ВыполнитьЗапрос(Соединение, Запрос);
+
+    // Открытие потока и вставка данных
+
     Результат = OPI_ClickHouse.ОткрытьПотокGRPC(Соединение);
 
     Если Не Результат["result"] Тогда
@@ -15,7 +31,7 @@
         IDПотока = Результат["streamId"];
     КонецЕсли;
 
-    ТекстЗапроса = "INSERT INTO events_grpc FORMAT JSONEachRow";
+    ТекстЗапроса = "INSERT INTO events_stream_test FORMAT JSONEachRow";
     ФорматДанных = "JSON";
     ТекущаяДата  = Дата("20260101100000");
 
@@ -34,7 +50,7 @@
         Последнее = Счетчик = 4;
 
         Если Счетчик = 0 Тогда
-            Запрос    = OPI_ClickHouse.ПолучитьНастройкиЗапроса(ТекстЗапроса, "default", , Запись, ФорматДанных);
+            Запрос          = OPI_ClickHouse.ПолучитьНастройкиЗапроса(ТекстЗапроса, "default", , Запись, ФорматДанных);
             ТекущаяОтправка = OPI_ClickHouse.ОтправитьСообщениеGRPC(Соединение, IDПотока, Запрос, , Не Последнее);
         Иначе
             ТекущаяОтправка = OPI_ClickHouse.ОтправитьДанныеGRPC(Соединение, IDПотока, Запись, Не Последнее);

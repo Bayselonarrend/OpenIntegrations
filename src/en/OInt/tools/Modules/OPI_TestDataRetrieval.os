@@ -13308,9 +13308,29 @@ EndFunction
 
 Function Check_ClickHouse_OpenGRPCStream(Val Result, Option)
 
-    If Option = "Final" Then
+    If Option    = "Final" Then
         ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
         ExpectsThat(Result["result"]).Равно(True);
+    ElsIf Option = "Selection" Then
+        ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
+        ExpectsThat(Result["result"]).Равно(True);
+        ExpectsThat(Result["status"]).Равно(200);
+
+        ResponseBody = Result["body"];
+        ExpectsThat(OPI_Tools.ThisIsCollection(ResponseBody, True)).Равно(True);
+        ExpectsThat(ResponseBody.Property("data")).Равно(True);
+
+        Data = ResponseBody["data"];
+        ExpectsThat(TypeOf(Data)).Равно(Type("Array"));
+        ExpectsThat(Data.Count()).Равно(5);
+
+        // Check that the data is inserted correctly
+        For Counter = 0 To 4 Do
+            Record = Data[Counter];
+            ExpectsThat(Record["id"]).Равно(Counter + 1);
+            ExpectsThat(Record["user_id"]).Равно(100 + Counter);
+            ExpectsThat(Record["event_type"]).Равно("stream_test");
+        EndDo;
     Else
         ExpectsThat(OPI_Tools.ThisIsCollection(Result, True)).Равно(True);
         ExpectsThat(Result["result"]).Равно(True);

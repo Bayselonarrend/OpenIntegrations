@@ -145,7 +145,7 @@ EndFunction
 // on redirect_uri after authorization via the browser is only 30 seconds
 //
 // Parameters:
-// Request - HTTPServiceRequest - Request coming to the http service
+// Request - HTTPServiceRequest - Request coming to http - service
 //
 // Returns:
 // HTTPResponse, Arbitrary, BinaryData - Result of reading the JSON response from the server

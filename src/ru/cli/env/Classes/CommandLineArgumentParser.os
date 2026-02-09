@@ -434,83 +434,83 @@
 #Region Alternate
 
 Function AddParameter(Val ParameterName, Val Explanation = "") Export
-	Return ДобавитьПараметр(ParameterName, Explanation);
+    Return ДобавитьПараметр(ParameterName, Explanation);
 EndFunction
 
 Function AddNamedParam(Val ParameterName, Val Explanation = "", Val Global = False) Export
-	Return ДобавитьИменованныйПараметр(ParameterName, Explanation, Global);
+    Return ДобавитьИменованныйПараметр(ParameterName, Explanation, Global);
 EndFunction
 
 Function AddFlagParam(Val ParameterName, Val Explanation = "", Val Global = False) Export
-	Return ДобавитьПараметрФлаг(ParameterName, Explanation, Global);
+    Return ДобавитьПараметрФлаг(ParameterName, Explanation, Global);
 EndFunction
 
 Function AddCollectionParam(Val ParameterName, Val Explanation = "") Export
-	Return ДобавитьПараметрКоллекция(ParameterName, Explanation);
+    Return ДобавитьПараметрКоллекция(ParameterName, Explanation);
 EndFunction
 
 Function CommandDescription(Val CommandName, Val Explanation = "") Export
-	Return ОписаниеКоманды(CommandName, Explanation);
+    Return ОписаниеКоманды(CommandName, Explanation);
 EndFunction
 
 Procedure AddCommand(Val CommandDescription) Export
-	ДобавитьКоманду(CommandDescription);
+    ДобавитьКоманду(CommandDescription);
 EndProcedure
 
 Function GetCommand(Val CommandName) Export
-	Return ПолучитьКоманду(CommandName);
+    Return ПолучитьКоманду(CommandName);
 EndFunction
 
 Function AddPositionalCommandParameter(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
-	Return ДобавитьПозиционныйПараметрКоманды(CommandDescription, ParameterName, Explanation);
+    Return ДобавитьПозиционныйПараметрКоманды(CommandDescription, ParameterName, Explanation);
 EndFunction
 
 Function AddNamedCommandParameter(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
-	Return ДобавитьИменованныйПараметрКоманды(CommandDescription, ParameterName, Explanation);
+    Return ДобавитьИменованныйПараметрКоманды(CommandDescription, ParameterName, Explanation);
 EndFunction
 
 Function AddCommandFlagParameter(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
-	Return ДобавитьПараметрФлагКоманды(CommandDescription, ParameterName, Explanation);
+    Return ДобавитьПараметрФлагКоманды(CommandDescription, ParameterName, Explanation);
 EndFunction
 
 Function AddCommandCollectionParam(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
-	Return ДобавитьПараметрКоллекцияКоманды(CommandDescription, ParameterName, Explanation);
+    Return ДобавитьПараметрКоллекцияКоманды(CommandDescription, ParameterName, Explanation);
 EndFunction
 
 Function AddNamedCommandCollectionParam(Val CommandDescription, Val ParameterName, Val Explanation = "") Export
-	Return ДобавитьИменованныйПараметрКоллекцияКоманды(CommandDescription, ParameterName, Explanation);
+    Return ДобавитьИменованныйПараметрКоллекцияКоманды(CommandDescription, ParameterName, Explanation);
 EndFunction
 
 Function ParseCommand(Val ParameterArray) Export
-	Return РазобратьКоманду(ParameterArray);
+    Return РазобратьКоманду(ParameterArray);
 EndFunction
 
 Function Parse(Val InputParamsArray) Export
-	Return Разобрать(InputParamsArray);
+    Return Разобрать(InputParamsArray);
 EndFunction
 
 Function ParamsHelp() Export
-	Return СправкаПоПараметрам();
+    Return СправкаПоПараметрам();
 EndFunction
 
 Procedure DisplayParameterHelp() Export
-	ВывестиСправкуПоПараметрам();
+    ВывестиСправкуПоПараметрам();
 EndProcedure
 
 Function CommandHelp(Val CommandName) Export
-	Return СправкаПоКоманде(CommandName);
+    Return СправкаПоКоманде(CommandName);
 EndFunction
 
 Function HelpAvailableCommand() Export
-	Return СправкаВозможныеКоманды();
+    Return СправкаВозможныеКоманды();
 EndFunction
 
 Procedure ShowCommandsHelp() Export
-	ВывестиСправкуПоКомандам();
+    ВывестиСправкуПоКомандам();
 EndProcedure
 
 Procedure ShowCommandHelp(Val CommandName) Export
-	ВывестиСправкуПоКоманде(CommandName);
+    ВывестиСправкуПоКоманде(CommandName);
 EndProcedure
 
 #EndRegion

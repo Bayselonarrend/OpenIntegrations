@@ -147,15 +147,15 @@
 #Region Alternate
 
 Procedure Message(Val MessageText = "", Val pMessageStatus = Undefined) Export
-	Сообщить(MessageText, pMessageStatus);
+    Сообщить(MessageText, pMessageStatus);
 EndProcedure
 
 Procedure WriteLine(Val MessageText = "", Val TextColor = Undefined) Export
-	ВывестиСтроку(MessageText, TextColor);
+    ВывестиСтроку(MessageText, TextColor);
 EndProcedure
 
 Procedure Write(Val MessageText, Val TextColor = Undefined) Export
-	Вывести(MessageText, TextColor);
+    Вывести(MessageText, TextColor);
 EndProcedure
 
 #EndRegion

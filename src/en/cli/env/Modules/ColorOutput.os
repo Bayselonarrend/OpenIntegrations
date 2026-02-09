@@ -147,15 +147,15 @@ EndFunction
 #Region Alternate
 
 Procedure Сообщить(Val ТекстСообщения = "", Val пСтатусСообщения = Undefined) Export
-	Message(ТекстСообщения, пСтатусСообщения);
+    Message(ТекстСообщения, пСтатусСообщения);
 EndProcedure
 
 Procedure ВывестиСтроку(Val ТекстСообщения = "", Val ЦветТекста = Undefined) Export
-	WriteLine(ТекстСообщения, ЦветТекста);
+    WriteLine(ТекстСообщения, ЦветТекста);
 EndProcedure
 
 Procedure Вывести(Val ТекстСообщения, Val ЦветТекста = Undefined) Export
-	Write(ТекстСообщения, ЦветТекста);
+    Write(ТекстСообщения, ЦветТекста);
 EndProcedure
 
 #EndRegion
