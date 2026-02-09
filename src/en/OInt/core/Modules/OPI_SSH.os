@@ -57,8 +57,8 @@
 // `GetSettingsPrivateKey`, `GetSettingsViaAgent`
 //
 // Parameters:
-// SSHSettings - Structure Of KeyAndValue - Connection settings structure - set
-// Proxy - Structure Of KeyAndValue - Proxy settings structure, if necessary - proxy
+// SSHSettings - Structure Of KeyAndValue - Connection settings structure          - set
+// Proxy       - Structure Of KeyAndValue - Proxy settings structure, if necessary - proxy
 //
 // Returns:
 // Arbitrary, Map of KeyAndValue - Create connection
@@ -78,8 +78,8 @@ EndFunction
 // This functionality is primarily intended for the CLI version of OInt, where maintaining a connection between calls is not possible
 //
 // Parameters:
-// SSHSettings - Structure Of KeyAndValue - SSH settings - set
-// Proxy - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
+// SSHSettings - Structure Of KeyAndValue - SSH settings                                      - set
+// Proxy       - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
 //
 // Returns:
 // Structure Of KeyAndValue - Connection settings structure
@@ -94,7 +94,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Command - String - Command text - comm
+// Command    - String    - Command text                                    - comm
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -136,9 +136,9 @@ EndFunction
 // Gets connection settings with login and password authentication
 //
 // Parameters:
-// Host - String - SSH host - host
-// Port - Number - SSH port - port
-// Login - String - SSH username - user
+// Host     - String - SSH host          - host
+// Port     - Number - SSH port          - port
+// Login    - String - SSH username      - user
 // Password - String - SSH user password - pass
 //
 // Returns:
@@ -153,11 +153,11 @@ EndFunction
 // Gets connection settings with private key authentication
 //
 // Parameters:
-// Host - String - SSH host - host
-// Port - Number - SSH port - port
-// Login - String - SSH username - user
-// Private - String - Path to private key file - key
-// Public - String - Path to public key file - pub
+// Host     - String - SSH host                          - host
+// Port     - Number - SSH port                          - port
+// Login    - String - SSH username                      - user
+// Private  - String - Path to private key file          - key
+// Public   - String - Path to public key file           - pub
 // Password - String - Private key password (passphrase) - pass
 //
 // Returns:
@@ -177,8 +177,8 @@ EndFunction
 // Gets connection settings with SSH Agent authentication
 //
 // Parameters:
-// Host - String - SSH host - host
-// Port - Number - SSH port - port
+// Host  - String - SSH host     - host
+// Port  - Number - SSH port     - port
 // Login - String - SSH username - user
 //
 // Returns:
@@ -193,10 +193,10 @@ EndFunction
 // Creates a structure of proxy server settings for the connection
 //
 // Parameters:
-// Address - String - Proxy address - addr
-// Port - Number - Proxy port - port
-// View - String - Proxy type: socks5, socks4, http - type
-// Login - String, Undefined - Authorization login, if required - login
+// Address  - String            - Proxy address                       - addr
+// Port     - Number            - Proxy port                          - port
+// View     - String            - Proxy type: socks5, socks4, http    - type
+// Login    - String, Undefined - Authorization login, if required    - login
 // Password - String, Undefined - Authorization password, if required - pass
 //
 // Returns:
@@ -218,39 +218,39 @@ EndFunction
 #Region Alternate
 
 Function ОткрытьСоединение(Val НастройкиSSH, Val Прокси = "") Export
-	Return CreateConnection(НастройкиSSH, Прокси);
+    Return CreateConnection(НастройкиSSH, Прокси);
 EndFunction
 
 Function ПолучитьКонфигурациюСоединения(Val НастройкиSSH, Val Прокси = Undefined) Export
-	Return GetConnectionConfiguration(НастройкиSSH, Прокси);
+    Return GetConnectionConfiguration(НастройкиSSH, Прокси);
 EndFunction
 
 Function ВыполнитьКоманду(Val Соединение, Val Команда) Export
-	Return ExecuteCommand(Соединение, Команда);
+    Return ExecuteCommand(Соединение, Команда);
 EndFunction
 
 Function ЗакрытьСоединение(Val Соединение) Export
-	Return CloseConnection(Соединение);
+    Return CloseConnection(Соединение);
 EndFunction
 
 Function ЭтоКоннектор(Val Значение) Export
-	Return IsConnector(Значение);
+    Return IsConnector(Значение);
 EndFunction
 
 Function ПолучитьНастройкиЛогинПароль(Val Хост, Val Порт, Val Логин, Val Пароль = "") Export
-	Return GetSettingsLoginPassword(Хост, Порт, Логин, Пароль);
+    Return GetSettingsLoginPassword(Хост, Порт, Логин, Пароль);
 EndFunction
 
 Function ПолучитьНастройкиПриватныйКлюч(Val Хост, Val Порт, Val Логин, Val Приватный, Val Публичный = "", Val Пароль = "") Export
-	Return GetSettingsPrivateKey(Хост, Порт, Логин, Приватный, Публичный, Пароль);
+    Return GetSettingsPrivateKey(Хост, Порт, Логин, Приватный, Публичный, Пароль);
 EndFunction
 
 Function ПолучитьНастройкиЧерезАгента(Val Хост, Val Порт, Val Логин) Export
-	Return GetSettingsViaAgent(Хост, Порт, Логин);
+    Return GetSettingsViaAgent(Хост, Порт, Логин);
 EndFunction
 
 Function ПолучитьНастройкиПрокси(Val Адрес, Val Порт, Val Вид = "socks5", Val Логин = Undefined, Val Пароль = Undefined) Export
-	Return GetProxySettings(Адрес, Порт, Вид, Логин, Пароль);
+    Return GetProxySettings(Адрес, Порт, Вид, Логин, Пароль);
 EndFunction
 
 #EndRegion

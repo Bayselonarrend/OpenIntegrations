@@ -67,7 +67,7 @@ EndFunction
 // Gets a list of workspaces where the bot is connected
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token  - String - Bot token                                                   - token
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 //
 // Returns:
@@ -85,7 +85,7 @@ EndFunction
 // Gets a list of users in the workspace
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token  - String - Bot token                                                   - token
 // Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
 //
 // Returns:
@@ -107,11 +107,11 @@ EndFunction
 // Sends a message at a selected hour
 //
 // Parameters:
-// Token - String - Bot token - token
-// Channel - String - Channel ID - channel
-// Text - String - Message text - text
-// SendingDate - Date - Sending date for delayed message - date
-// Blocks - Array of Structure - Array of block descriptions - blocks - JSON array of block descriptions
+// Token       - String             - Bot token                        - token
+// Channel     - String             - Channel ID                       - channel
+// Text        - String             - Message text                     - text
+// SendingDate - Date               - Sending date for delayed message - date
+// Blocks      - Array of Structure - Array of block descriptions      - blocks
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Slack
@@ -148,11 +148,11 @@ EndFunction
 // only to a specific user
 //
 // Parameters:
-// Token - String - Bot token - token
-// Channel - String - Channel ID - channel
-// Text - String - Message text - text
-// User - String - User ID - user
-// Blocks - Array of Structure - Array of block descriptions - blocks - JSON array of block descriptions
+// Token   - String             - Bot token                   - token
+// Channel - String             - Channel ID                  - channel
+// Text    - String             - Message text                - text
+// User    - String             - User ID                     - user
+// Blocks  - Array of Structure - Array of block descriptions - blocks
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Slack
@@ -184,11 +184,11 @@ EndFunction
 // Edits the content of an existing message
 //
 // Parameters:
-// Token - String - Bot token - token
-// Channel - String - Channel ID - channel
-// Timestamp - String - Message timestamp - stamp
-// Text - String - New message text - text
-// BlockArray - Array of Structure - Array of block descriptions - blocks - JSON array of block descriptions
+// Token      - String             - Bot token                   - token
+// Channel    - String             - Channel ID                  - channel
+// Timestamp  - String             - Message timestamp           - stamp
+// Text       - String             - New message text            - text
+// BlockArray - Array of Structure - Array of block descriptions - blocks
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Slack
@@ -214,9 +214,9 @@ EndFunction
 // Deletes a channel message by timestamp
 //
 // Parameters:
-// Token - String - Bot token - token
-// Channel - String - Channel ID - channel
-// Timestamp - String - Timestamp or message ID - stamp
+// Token     - String  - Bot token                               - token
+// Channel   - String  - Channel ID                              - channel
+// Timestamp - String  - Timestamp or message ID                 - stamp
 // IsDelayed - Boolean - Indicator of deleting a delayed message - issheduled
 //
 // Returns:
@@ -249,9 +249,9 @@ EndFunction
 // Gets a list of delayed channel messages
 //
 // Parameters:
-// Token - String - Bot token - token
-// Channel - String - Channel ID - channel
-// Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
+// Token   - String - Bot token                                                   - token
+// Channel - String - Channel ID                                                  - channel
+// Cursor  - String - Pointer from the previous request, if the result rows > 100 - cursor
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Slack
@@ -274,8 +274,8 @@ EndFunction
 // Gets a permanent URL to the channel message
 //
 // Parameters:
-// Token - String - Bot token - token
-// Channel - String - Channel ID - channel
+// Token     - String - Bot token               - token
+// Channel   - String - Channel ID              - channel
 // Timestamp - String - Timestamp or message ID - stamp
 //
 // Returns:
@@ -299,10 +299,10 @@ EndFunction
 // Gets an array of messages that are replies to the specified
 //
 // Parameters:
-// Token - String - Bot token - token
-// Channel - String - Channel ID - channel
-// Timestamp - String - Timestamp or message ID - stamp
-// Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
+// Token     - String - Bot token                                                   - token
+// Channel   - String - Channel ID                                                  - channel
+// Timestamp - String - Timestamp or message ID                                     - stamp
+// Cursor    - String - Pointer from the previous request, if the result rows > 100 - cursor
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Slack
@@ -331,9 +331,9 @@ EndFunction
 // Gets a list of available channels
 //
 // Parameters:
-// Token - String - Bot token - token
-// ExcludeArchived - Boolean - Indicator of excluding archived channels - notarchived
-// Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
+// Token           - String  - Bot token                                                   - token
+// ExcludeArchived - Boolean - Indicator of excluding archived channels                    - notarchived
+// Cursor          - String  - Pointer from the previous request, if the result rows > 100 - cursor
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Slack
@@ -356,9 +356,9 @@ EndFunction
 // Gets a list of users in the specified channel
 //
 // Parameters:
-// Token - String - Bot token - token
-// Channel - String - Channel ID - channel
-// Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
+// Token   - String - Bot token                                                   - token
+// Channel - String - Channel ID                                                  - channel
+// Cursor  - String - Pointer from the previous request, if the result rows > 100 - cursor
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Slack
@@ -381,8 +381,8 @@ EndFunction
 // Creates a new channel
 //
 // Parameters:
-// Token - String - Bot token - token
-// Name - String - Channel name - title
+// Token   - String  - Bot token                 - token
+// Name    - String  - Channel name              - title
 // Private - Boolean - Create channel as private - private
 //
 // Returns:
@@ -406,7 +406,7 @@ EndFunction
 // Archives an active channel
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token   - String - Bot token  - token
 // Channel - String - Channel ID - channel
 //
 // Returns:
@@ -423,7 +423,7 @@ EndFunction
 // Gets information about the channel
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token   - String - Bot token  - token
 // Channel - String - Channel ID - channel
 //
 // Returns:
@@ -440,7 +440,7 @@ EndFunction
 // Gets information about channel events
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token   - String - Bot token  - token
 // Channel - String - Channel ID - channel
 //
 // Returns:
@@ -457,8 +457,8 @@ EndFunction
 // Adds specified users to the channel
 //
 // Parameters:
-// Token - String - Bot token - token
-// Channel - String - Channel ID - channel
+// Token        - String          - Bot token     - token
+// Channel      - String          - Channel ID    - channel
 // ArrayOfUsers - Array Of String - User ID Array - users
 //
 // Returns:
@@ -485,9 +485,9 @@ EndFunction
 // Removes specified user from channel
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token   - String - Bot token  - token
 // Channel - String - Channel ID - channel
-// User - String - User ID - user
+// User    - String - User ID    - user
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Slack
@@ -510,7 +510,7 @@ EndFunction
 // Adds the current bot to the channel
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token   - String - Bot token  - token
 // Channel - String - Channel ID - channel
 //
 // Returns:
@@ -527,7 +527,7 @@ EndFunction
 // Removes the current bot from the channel
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token   - String - Bot token  - token
 // Channel - String - Channel ID - channel
 //
 // Returns:
@@ -544,9 +544,9 @@ EndFunction
 // Sets the channel topic
 //
 // Parameters:
-// Token - String - Bot token - token
-// Channel - String - Channel ID - channel
-// Topic - String - Channel topic - theme
+// Token   - String - Bot token     - token
+// Channel - String - Channel ID    - channel
+// Topic   - String - Channel topic - theme
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Slack
@@ -569,8 +569,8 @@ EndFunction
 // Sets the channel purpose (description)
 //
 // Parameters:
-// Token - String - Bot token - token
-// Channel - String - Channel ID - channel
+// Token   - String - Bot token       - token
+// Channel - String - Channel ID      - channel
 // Purpose - String - Channel purpose - purpose
 //
 // Returns:
@@ -594,9 +594,9 @@ EndFunction
 // Changes the name of the channel
 //
 // Parameters:
-// Token - String - Bot token - token
-// Channel - String - Channel ID - channel
-// Name - String - New channel name - title
+// Token   - String - Bot token        - token
+// Channel - String - Channel ID       - channel
+// Name    - String - New channel name - title
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Slack
@@ -623,7 +623,7 @@ EndFunction
 // Opens a new dialog with one or more users
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token        - String          - Bot token     - token
 // ArrayOfUsers - Array of String - User ID Array - users
 //
 // Returns:
@@ -649,7 +649,7 @@ EndFunction
 // Closes an existing dialog
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token  - String - Bot token - token
 // Dialog - String - Dialog ID - conv
 //
 // Returns:
@@ -670,9 +670,9 @@ EndFunction
 // Gets a list of files of the bot or channel
 //
 // Parameters:
-// Token - String - Bot token - token
-// Channel - String - Channel for selection - channel
-// PageNumber - Number, String - Page number - page
+// Token      - String         - Bot token             - token
+// Channel    - String         - Channel for selection - channel
+// PageNumber - Number, String - Page number           - page
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Slack
@@ -695,11 +695,11 @@ EndFunction
 // Uploads a file to Slack servers
 //
 // Parameters:
-// Token - String - Bot token - token
-// File - String, BinaryData - File for upload - file
-// FileName - String - File name with extension - filename
-// Title - String - File name in Slack - title
-// Channel - String - Channel ID - channel
+// Token    - String             - Bot token                - token
+// File     - String, BinaryData - File for upload          - file
+// FileName - String             - File name with extension - filename
+// Title    - String             - File name in Slack       - title
+// Channel  - String             - Channel ID               - channel
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Slack
@@ -750,7 +750,7 @@ EndFunction
 // Gets information about the file
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token  - String - Bot token       - token
 // FileID - String - File identifier - fileid
 //
 // Returns:
@@ -768,7 +768,7 @@ EndFunction
 // Deletes a file on Slack
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token  - String - Bot token       - token
 // FileID - String - File identifier - fileid
 //
 // Returns:
@@ -786,7 +786,7 @@ EndFunction
 // Creates a public URL for the file. Requires user token
 //
 // Parameters:
-// Token - String - User token - token
+// Token  - String - User token      - token
 // FileID - String - File identifier - fileid
 //
 // Returns:
@@ -804,7 +804,7 @@ EndFunction
 // Removes the public URL from the file. Requires user token
 //
 // Parameters:
-// Token - String - User token - token
+// Token  - String - User token      - token
 // FileID - String - File identifier - fileid
 //
 // Returns:
@@ -826,9 +826,9 @@ EndFunction
 // Gets a list of external files of a user or channel
 //
 // Parameters:
-// Token - String - Bot token - token
-// Channel - String - Channel for selection - channel
-// Cursor - String - Pointer from the previous request, if the result rows > 100 - cursor
+// Token   - String - Bot token                                                   - token
+// Channel - String - Channel for selection                                       - channel
+// Cursor  - String - Pointer from the previous request, if the result rows > 100 - cursor
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Slack
@@ -851,7 +851,7 @@ EndFunction
 // Gets information about the external file
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token  - String - Bot token       - token
 // FileID - String - File identifier - fileid
 //
 // Returns:
@@ -869,8 +869,8 @@ EndFunction
 // Adds a new external file
 //
 // Parameters:
-// Token - String - Bot token - token
-// URL - String - URL to external file - url
+// Token - String - Bot token            - token
+// URL   - String - URL to external file - url
 // Title - String - File title for Slack - title
 //
 // Returns:
@@ -897,8 +897,8 @@ EndFunction
 // Sends an external file to a list of channels
 //
 // Parameters:
-// Token - String - Bot token - token
-// FileID - String - File identifier - fileid
+// Token        - String          - Bot token                     - token
+// FileID       - String          - File identifier               - fileid
 // ChannelArray - Array Of String - Array of channels for sending - channels
 //
 // Returns:
@@ -925,7 +925,7 @@ EndFunction
 // Deletes an external file from Slack
 //
 // Parameters:
-// Token - String - Bot token - token
+// Token  - String - Bot token       - token
 // FileID - String - File identifier - fileid
 //
 // Returns:
@@ -947,7 +947,7 @@ EndFunction
 // Generates a block with an image to add to the message block array
 //
 // Parameters:
-// URL - String - Image URL - picture
+// URL           - String - Image URL                   - picture
 // AlternateText - String - Alternate text of the image - alt
 //
 // Returns:

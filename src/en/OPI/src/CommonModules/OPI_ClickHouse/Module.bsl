@@ -55,9 +55,9 @@
 // Executes a request with the specified parameters
 //
 // Parameters:
-// Connection - Arbitrary - Connection settings or object (for gRPC) - conn
-// Request - Structure Of KeyAndValue - Request data. See GetRequestSettings - req
-// Session - Structure Of KeyAndValue - Session settings. See GetSessionSettings - session
+// Connection - Arbitrary                - Connection settings or object (for gRPC) - conn
+// Request    - Structure Of KeyAndValue - Request data. See GetRequestSettings     - req
+// Session    - Structure Of KeyAndValue - Session settings. See GetSessionSettings - session
 //
 // Returns:
 // Map Of KeyAndValue - Execution result
@@ -105,9 +105,9 @@ EndFunction
 // Gets the settings structure for HTTP connection
 //
 // Parameters:
-// Address - String - Connection address with protocol and port - url
-// Authorization - String, Structure Of KeyAndValue - Authorization: string for JWT, structure for basic - auth
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers - headers
+// Address           - String                           - Connection address with protocol and port          - url
+// Authorization     - String, Structure Of KeyAndValue - Authorization: string for JWT, structure for basic - auth
+// AdditionalHeaders - Map Of KeyAndValue               - Additional request headers                         - headers
 //
 // Returns:
 // Structure Of KeyAndValue - Connection settings structure
@@ -139,13 +139,13 @@ EndFunction
 // In the CLI version, binary data will be represented as a Base64 string
 //
 // Parameters:
-// Text - String - Request text - query
-// Database - String - Database - db
-// RequestID - String - Unique request ID, if necessary - id
-// Data - Arbitrary - String, file, or binary data of the request - data
-// ResponseFormat - String - Response format: JSON, CSV, TSV, etc.. - format
+// Text           - String             - Request text                                        - query
+// Database       - String             - Database                                            - db
+// RequestID      - String             - Unique request ID, if necessary                     - id
+// Data           - Arbitrary          - String, file, or binary data of the request         - data
+// ResponseFormat - String             - Response format: JSON, CSV, TSV, etc..              - format
 // ExternalTables - Array of Structure - External tables data. See GetExternalTableStructure - ext
-// Settings - Map Of KeyAndValue - Additional query parameters of the request - settings
+// Settings       - Map Of KeyAndValue - Additional query parameters of the request          - settings
 //
 // Returns:
 // Structure Of KeyAndValue - Request structure
@@ -174,10 +174,10 @@ EndFunction
 // Gets the description structure of the external table of the request
 //
 // Parameters:
-// Name - String - Table name - name
+// Name           - String                   - Table name                                            - name
 // ColoumnsStruct - Structure Of KeyAndValue - Table column structure: Key > name, Value > data type - cols
-// Data - Arbitrary - String, file, or binary data of the table - data
-// DataFormat - String - Data format: CVS, TVS, JSON, etc.. - format
+// Data           - Arbitrary                - String, file, or binary data of the table             - data
+// DataFormat     - String                   - Data format: CVS, TVS, JSON, etc..                    - format
 //
 // Returns:
 // Structure Of KeyAndValue - Structure of external table description
@@ -200,9 +200,9 @@ EndFunction
 // Forms the session settings structure for executing the request
 //
 // Parameters:
-// SessionID - String - Session ID. A new unique identifier if not specified (a new session will be created) - id
+// SessionID    - String  - Session ID. A new unique identifier if not specified (a new session will be created)                  - id
 // CheckSession - Boolean - Check for session existence. True when ID is specified and false when not, unless otherwise specified - check
-// Timeout - Number - Session lifetime in seconds - timeout
+// Timeout      - Number  - Session lifetime in seconds                                                                           - timeout
 //
 // Returns:
 // Structure Of KeyAndValue - Session settings structure
@@ -233,10 +233,10 @@ EndFunction
 // Gets the settings structure for gRPC connection
 //
 // Parameters:
-// Address - String - Connection address with protocol and port - url
+// Address       - String                           - Connection address with protocol and port          - url
 // Authorization - String, Structure Of KeyAndValue - Authorization: string for JWT, structure for basic - auth
-// Meta - Structure Of KeyAndValue - gRPC metadata structure, if necessary - meta
-// Tls - Structure Of KeyAndValue - TLS settings. See GetTlsSettings - tls
+// Meta          - Structure Of KeyAndValue         - gRPC metadata structure, if necessary              - meta
+// Tls           - Structure Of KeyAndValue         - TLS settings. See GetTlsSettings                   - tls
 //
 // Returns:
 // Structure Of KeyAndValue - Connection settings structure
@@ -311,7 +311,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - GRPC connection object - conn
-// Timeout - Number - Timeout (in ms) - tout
+// Timeout    - Number    - Timeout (in ms)        - tout
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -329,11 +329,11 @@ EndFunction
 // Sends the next message to the client or bidirectional stream
 //
 // Parameters:
-// Connection - Arbitrary - GRPC connection object - conn
-// StreamID - String - Stream Identifier - stream
-// Request - Structure Of KeyAndValue - Request data. See GetRequestSettings - req
-// Session - Structure Of KeyAndValue - Session settings. See GetSessionSettings - session
-// WaitNext - Boolean - Flag for waiting for the next messages after the current one - next
+// Connection - Arbitrary                - GRPC connection object                                       - conn
+// StreamID   - String                   - Stream Identifier                                            - stream
+// Request    - Structure Of KeyAndValue - Request data. See GetRequestSettings                         - req
+// Session    - Structure Of KeyAndValue - Session settings. See GetSessionSettings                     - session
+// WaitNext   - Boolean                  - Flag for waiting for the next messages after the current one - next
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -356,10 +356,10 @@ EndFunction
 // Sends part of the data (additional QueryInfo) to the stream
 //
 // Parameters:
-// Connection - Arbitrary - GRPC connection object - conn
-// StreamID - String - Stream Identifier - stream
-// Data - Arbitrary - Sending data - data
-// WaitNext - Boolean - Flag for waiting for the next messages after the current one - next
+// Connection - Arbitrary - GRPC connection object                                       - conn
+// StreamID   - String    - Stream Identifier                                            - stream
+// Data       - Arbitrary - Sending data                                                 - data
+// WaitNext   - Boolean   - Flag for waiting for the next messages after the current one - next
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -382,7 +382,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Connection object - conn
-// StreamID - String - Stream Identifier - stream
+// StreamID   - String    - Stream Identifier - stream
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -399,7 +399,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Connection object - conn
-// StreamID - String - Stream Identifier - stream
+// StreamID   - String    - Stream Identifier - stream
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -416,7 +416,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Connection object - conn
-// StreamID - String - Stream Identifier - stream
+// StreamID   - String    - Stream Identifier - stream
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -436,8 +436,8 @@ EndFunction
 // or implicit, when passing settings
 //
 // Parameters:
-// DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed - trust
-// CertFilepath - String - Path to the root PEM file of the certificate if it is not in the system repository - cert
+// DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed                    - trust
+// CertFilepath            - String  - Path to the root PEM file of the certificate if it is not in the system repository - cert
 //
 // Returns:
 // Structure Of KeyAndValue - Structure of TLS connection settings

@@ -65,9 +65,9 @@ EndFunction
 // Gets token based on the code from the GetAuthorizationLink page
 //
 // Parameters:
-// AppKey - String - Application key - appkey
-// AppSecret - String - Application secret - appsecret
-// Code - String - Code from the authorization page - code
+// AppKey    - String - Application key                  - appkey
+// AppSecret - String - Application secret               - appsecret
+// Code      - String - Code from the authorization page - code
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Dropbox
@@ -94,9 +94,9 @@ EndFunction
 // Gets a new token based on the refresh token
 //
 // Parameters:
-// AppKey - String - Application key - appkey
-// AppSecret - String - Application secret - appsecret
-// RefreshToken - String - Refresh token - refresh
+// AppKey       - String - Application key    - appkey
+// AppSecret    - String - Application secret - appsecret
+// RefreshToken - String - Refresh token      - refresh
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Dropbox
@@ -121,7 +121,7 @@ EndFunction
 // Gets account information
 //
 // Parameters:
-// Token - String - Token - token
+// Token   - String - Token                                           - token
 // Account - String - Account ID. Current token account if not filled - account
 //
 // Returns:
@@ -171,8 +171,8 @@ EndFunction
 // Gets information about a file or directory
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the object - path
+// Token    - String  - Token                                 - token
+// Path     - String  - Path to the object                    - path
 // Detailed - Boolean - Add information fields for mediafiles - detail
 //
 // Returns:
@@ -196,10 +196,10 @@ EndFunction
 // Gets the list of the first files in the directory or continues getting the next ones when the cursor is specified
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the directory. Optional if the cursor is specified - path
-// Detailed - Boolean - Add information fields for mediafiles - detail
-// Cursor - String - Cursor from the previous request to get the next set of files - cursor
+// Token    - String  - Token                                                         - token
+// Path     - String  - Path to the directory. Optional if the cursor is specified    - path
+// Detailed - Boolean - Add information fields for mediafiles                         - detail
+// Cursor   - String  - Cursor from the previous request to get the next set of files - cursor
 //
 // Returns:
 // HTTPResponse - Get list of folder files
@@ -234,8 +234,8 @@ EndFunction
 // Gets PDF or HTML preview of the object (for documents only)
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the object - path
+// Token - String - Token              - token
+// Path  - String - Path to the object - path
 //
 // Returns:
 // BinaryData - document preview
@@ -252,10 +252,10 @@ EndFunction
 // Uploads a file to the cloud drive
 //
 // Parameters:
-// Token - String - Token - token
-// File - String, BinaryData - Data file for upload - file
-// Path - String - Save path on Dropbox - path
-// Overwrite - Boolean - Overwrite file in case of path conflicts - overwrite
+// Token     - String             - Token                                    - token
+// File      - String, BinaryData - Data file for upload                     - file
+// Path      - String             - Save path on Dropbox                     - path
+// Overwrite - Boolean            - Overwrite file in case of path conflicts - overwrite
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Dropbox
@@ -283,9 +283,9 @@ EndFunction
 // Uploads a file to the cloud drive by fetching it from the specified URL
 //
 // Parameters:
-// Token - String - Token - token
+// Token   - String - Token                  - token
 // FileURL - String - URL source of the file - url
-// Path - String - Save path on Dropbox - path
+// Path    - String - Save path on Dropbox   - path
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Dropbox
@@ -308,7 +308,7 @@ EndFunction
 // Gets the upload status of the file by URL
 //
 // Parameters:
-// Token - String - Token - token
+// Token - String - Token                                          - token
 // JobID - String - ID of async jsob from UploadFileByURL response - job
 //
 // Returns:
@@ -331,8 +331,8 @@ EndFunction
 // Deletes an object from the cloud drive
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the object to delete - path
+// Token         - String - Token                                             - token
+// Path          - String - Path to the object to delete                      - path
 // Irrecoverable - String - Delete object without the possibility of recovery - permanently
 //
 // Returns:
@@ -357,8 +357,8 @@ EndFunction
 // Copies a file or directory to the selected path
 //
 // Parameters:
-// Token - String - Token - token
-// From - String - Path to the original object - from
+// Token  - String - Token                          - token
+// From   - String - Path to the original object    - from
 // Target - String - Target path for the new object - to
 //
 // Returns:
@@ -383,8 +383,8 @@ EndFunction
 // Moves an object to the selected path
 //
 // Parameters:
-// Token - String - Token - token
-// From - String - Path to the original object - from
+// Token  - String - Token                          - token
+// From   - String - Path to the original object    - from
 // Target - String - Target path for the new object - to
 //
 // Returns:
@@ -409,8 +409,8 @@ EndFunction
 // Creates an empty directory at the selected path
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Target path for creating the directory - path
+// Token - String - Token                                  - token
+// Path  - String - Target path for creating the directory - path
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Dropbox
@@ -427,8 +427,8 @@ EndFunction
 // Downloads a file by the specified path or ID
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path or ID of the file - path
+// Token - String - Token                  - token
+// Path  - String - Path or ID of the file - path
 //
 // Returns:
 // BinaryData - binary data of the file
@@ -445,8 +445,8 @@ EndFunction
 // Downloads a zip archive with the contents of the specified directory
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path or ID of the directory - path
+// Token - String - Token                       - token
+// Path  - String - Path or ID of the directory - path
 //
 // Returns:
 // BinaryData - binary data of the zip archive with the contents of the directory
@@ -463,8 +463,8 @@ EndFunction
 // Gets the list of versions (revisions) of the object
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the object - path
+// Token - String         - Token                                                  - token
+// Path  - String         - Path to the object                                     - path
 // Count - String, Number - Number of the latest versions of the object to display - amount
 //
 // Returns:
@@ -488,8 +488,8 @@ EndFunction
 // Restores object state to required version (revision)
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the object - path
+// Token   - String - Token                                        - token
+// Path    - String - Path to the object                           - path
 // Version - String - ID of the version (revision) for restoration - rev
 //
 // Returns:
@@ -517,7 +517,7 @@ EndFunction
 // Gets the list of tags of the selected files
 //
 // Parameters:
-// Token - String - Token - token
+// Token - String                  - Token                             - token
 // Paths - String, Array of String - Path or set of paths to the files - paths
 //
 // Returns:
@@ -541,9 +541,9 @@ EndFunction
 // Add new tag to file or folder
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the object for which the tag needs to be created - path
-// Tag - String - Tag text - tag
+// Token - String - Token                                                    - token
+// Path  - String - Path to the object for which the tag needs to be created - path
+// Tag   - String - Tag text                                                 - tag
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Dropbox
@@ -557,9 +557,9 @@ EndFunction
 // Deletes the text tag of a file or directory
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the object whose tag needs to be deleted - path
-// Tag - String - Tag text - tag
+// Token - String - Token                                            - token
+// Path  - String - Path to the object whose tag needs to be deleted - path
+// Tag   - String - Tag text                                         - tag
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Dropbox
@@ -577,8 +577,8 @@ EndFunction
 // Sets the directory to public access mode
 //
 // Parameters:
-// Token - String - Token - token
-// Path - String - Path to the target directory - path
+// Token - String - Token                        - token
+// Path  - String - Path to the target directory - path
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Dropbox
@@ -595,7 +595,7 @@ EndFunction
 // Cancels the public access mode for the directory
 //
 // Parameters:
-// Token - String - Token - token
+// Token    - String - Token                                       - token
 // FolderID - String - ID of the public catalog (shared folder ID) - folder
 //
 // Returns:
@@ -618,10 +618,10 @@ EndFunction
 // Defines access to the file for third-party users
 //
 // Parameters:
-// Token - String - Token - token
-// FileID - String - ID of the file to be accessed - fileid
+// Token          - String                  - Token                                        - token
+// FileID         - String                  - ID of the file to be accessed                - fileid
 // EmailAddresses - String, Array of String - List of email addresses of users being added - emails
-// ViewOnly - Boolean - Prohibits file editing for the external user - readonly
+// ViewOnly       - Boolean                 - Prohibits file editing for the external user - readonly
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Dropbox
@@ -671,10 +671,10 @@ EndFunction
 // Grants external users access to the directory
 //
 // Parameters:
-// Token - String - Token - token
-// FolderID - String - ID of the public catalog (shared folder ID) - folder
+// Token          - String                  - Token                                        - token
+// FolderID       - String                  - ID of the public catalog (shared folder ID)  - folder
 // EmailAddresses - String, Array of String - List of email addresses of users being added - emails
-// ViewOnly - Boolean - Prohibits file editing for the external user - readonly
+// ViewOnly       - Boolean                 - Prohibits file editing for the external user - readonly
 //
 // Returns:
 // Undefined - empty response
@@ -718,7 +718,7 @@ EndFunction
 // Get async job status for access changes
 //
 // Parameters:
-// Token - String - Token - token
+// Token - String - Token             - token
 // JobID - String - AsynchronousJobID - job
 //
 // Returns:
@@ -741,7 +741,7 @@ EndFunction
 // Prohibits access to the file for external users
 //
 // Parameters:
-// Token - String - Token - token
+// Token  - String - Token                         - token
 // FileID - String - ID of the file to be accessed - fileid
 //
 // Returns:
@@ -994,115 +994,115 @@ EndFunction
 #Region Alternate
 
 Function ПолучитьСсылкуАвторизации(Val КлючПриложения) Export
-	Return GetAuthorizationLink(КлючПриложения);
+    Return GetAuthorizationLink(КлючПриложения);
 EndFunction
 
 Function ПолучитьТокен(Val КлючПриложения, Val СекретПриложения, Val Код) Export
-	Return GetToken(КлючПриложения, СекретПриложения, Код);
+    Return GetToken(КлючПриложения, СекретПриложения, Код);
 EndFunction
 
 Function ОбновитьТокен(Val КлючПриложения, Val СекретПриложения, Val РефрешТокен) Export
-	Return RefreshToken(КлючПриложения, СекретПриложения, РефрешТокен);
+    Return RefreshToken(КлючПриложения, СекретПриложения, РефрешТокен);
 EndFunction
 
 Function ПолучитьИнформациюОбАккаунте(Val Токен, Val Аккаунт = "") Export
-	Return GetAccountInformation(Токен, Аккаунт);
+    Return GetAccountInformation(Токен, Аккаунт);
 EndFunction
 
 Function ПолучитьДанныеИспользованияПространства(Val Токен) Export
-	Return GetSpaceUsageData(Токен);
+    Return GetSpaceUsageData(Токен);
 EndFunction
 
 Function ПолучитьИнформациюОбОбъекте(Val Токен, Val Путь, Val Подробно = False) Export
-	Return GetObjectInformation(Токен, Путь, Подробно);
+    Return GetObjectInformation(Токен, Путь, Подробно);
 EndFunction
 
 Function ПолучитьСписокФайловПапки(Val Токен, Val Путь = "", Val Подробно = False, Val Курсор = "") Export
-	Return GetListOfFolderFiles(Токен, Путь, Подробно, Курсор);
+    Return GetListOfFolderFiles(Токен, Путь, Подробно, Курсор);
 EndFunction
 
 Function ПолучитьПревью(Val Токен, Val Путь) Export
-	Return GetPreview(Токен, Путь);
+    Return GetPreview(Токен, Путь);
 EndFunction
 
 Function ЗагрузитьФайл(Val Токен, Val Файл, Val Путь, Val Перезаписывать = False) Export
-	Return UploadFile(Токен, Файл, Путь, Перезаписывать);
+    Return UploadFile(Токен, Файл, Путь, Перезаписывать);
 EndFunction
 
 Function ЗагрузитьФайлПоURL(Val Токен, Val URLФайла, Val Путь) Export
-	Return UploadFileByURL(Токен, URLФайла, Путь);
+    Return UploadFileByURL(Токен, URLФайла, Путь);
 EndFunction
 
 Function ПолучитьСтатусЗагрузкиПоURL(Val Токен, Val IDРаботы) Export
-	Return GetUploadStatusByURL(Токен, IDРаботы);
+    Return GetUploadStatusByURL(Токен, IDРаботы);
 EndFunction
 
 Function УдалитьОбъект(Val Токен, Val Путь, Val Безвозвратно = False) Export
-	Return DeleteObject(Токен, Путь, Безвозвратно);
+    Return DeleteObject(Токен, Путь, Безвозвратно);
 EndFunction
 
 Function КопироватьОбъект(Val Токен, Val Откуда, Val Куда) Export
-	Return CopyObject(Токен, Откуда, Куда);
+    Return CopyObject(Токен, Откуда, Куда);
 EndFunction
 
 Function ПереместитьОбъект(Val Токен, Val Откуда, Val Куда) Export
-	Return MoveObject(Токен, Откуда, Куда);
+    Return MoveObject(Токен, Откуда, Куда);
 EndFunction
 
 Function СоздатьПапку(Val Токен, Val Путь) Export
-	Return CreateFolder(Токен, Путь);
+    Return CreateFolder(Токен, Путь);
 EndFunction
 
 Function СкачатьФайл(Val Токен, Val Путь) Export
-	Return DownloadFile(Токен, Путь);
+    Return DownloadFile(Токен, Путь);
 EndFunction
 
 Function СкачатьПапку(Val Токен, Val Путь) Export
-	Return DownloadFolder(Токен, Путь);
+    Return DownloadFolder(Токен, Путь);
 EndFunction
 
 Function ПолучитьСписокВерсийОбъекта(Val Токен, Val Путь, Val Количество = 10) Export
-	Return GetObjectVersionList(Токен, Путь, Количество);
+    Return GetObjectVersionList(Токен, Путь, Количество);
 EndFunction
 
 Function ВосстановитьОбъектКВерсии(Val Токен, Val Путь, Val Версия) Export
-	Return RestoreObjectToVersion(Токен, Путь, Версия);
+    Return RestoreObjectToVersion(Токен, Путь, Версия);
 EndFunction
 
 Function ПолучитьСписокТегов(Val Токен, Val Пути) Export
-	Return GetTagList(Токен, Пути);
+    Return GetTagList(Токен, Пути);
 EndFunction
 
 Function ДобавитьТег(Val Токен, Val Путь, Val Тег) Export
-	Return AddTag(Токен, Путь, Тег);
+    Return AddTag(Токен, Путь, Тег);
 EndFunction
 
 Function УдалитьТег(Val Токен, Val Путь, Val Тег) Export
-	Return DeleteTag(Токен, Путь, Тег);
+    Return DeleteTag(Токен, Путь, Тег);
 EndFunction
 
 Function ОпубликоватьПапку(Val Токен, Val Путь) Export
-	Return PublishFolder(Токен, Путь);
+    Return PublishFolder(Токен, Путь);
 EndFunction
 
 Function ОтменитьПубликациюПапки(Val Токен, Val IDПапки) Export
-	Return CancelFolderPublication(Токен, IDПапки);
+    Return CancelFolderPublication(Токен, IDПапки);
 EndFunction
 
 Function ДобавитьПользователейКФайлу(Val Токен, Val IDФайла, Val АдресаПочты, Val ТолькоПросмотр = True) Export
-	Return AddUsersToFile(Токен, IDФайла, АдресаПочты, ТолькоПросмотр);
+    Return AddUsersToFile(Токен, IDФайла, АдресаПочты, ТолькоПросмотр);
 EndFunction
 
 Function ДобавитьПользователейКПапке(Val Токен, Val IDПапки, Val АдресаПочты, Val ТолькоПросмотр = True) Export
-	Return AddUsersToFolder(Токен, IDПапки, АдресаПочты, ТолькоПросмотр);
+    Return AddUsersToFolder(Токен, IDПапки, АдресаПочты, ТолькоПросмотр);
 EndFunction
 
 Function ПолучитьСтатусАсинхронногоИзменения(Val Токен, Val IDРаботы) Export
-	Return GetAsynchronousChangeStatus(Токен, IDРаботы);
+    Return GetAsynchronousChangeStatus(Токен, IDРаботы);
 EndFunction
 
 Function ОтменитьПубликациюФайла(Val Токен, Val IDФайла) Export
-	Return CancelFilePublication(Токен, IDФайла);
+    Return CancelFilePublication(Токен, IDФайла);
 EndFunction
 
 #EndRegion

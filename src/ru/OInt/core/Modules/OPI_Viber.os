@@ -109,8 +109,8 @@
 // Получает статус пользователя или нескольких пользователей по ID
 //
 // Параметры:
-//  Токен           - Строка                              - Токен Viber                - token
-//  IDПользователей - Строка,Число,Массив из Строка,Число - ID пользователей(я) Viber  - users
+//  Токен           - Строка                                 - Токен Viber               - token
+//  IDПользователей - Строка, Число, Массив из Строка, Число - ID пользователей(я) Viber - users
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
@@ -135,11 +135,11 @@
 // Отправляет текстовое сообщение в чат или канал
 //
 // Параметры:
-//  Токен          - Строка       - Токен                                                               - token
-//  Текст          - Строка       - Текст сообщения                                                     - text
-//  IDПользователя - Строка,Число - ID пользователя. Для канала > администратора, для бота > получателя - user
-//  ОтправкаВКанал - Булево       - Отправка в канал или в чат бота                                     - ischannel
-//  Клавиатура     - Структура из Строка -  См. СформироватьКлавиатуруИзМассиваКнопок - keyboard
+//  Токен          - Строка              - Токен                                                               - token
+//  Текст          - Строка              - Текст сообщения                                                     - text
+//  IDПользователя - Строка, Число       - ID пользователя. Для канала > администратора, для бота > получателя - user
+//  ОтправкаВКанал - Булево              - Отправка в канал или в чат бота                                     - ischannel
+//  Клавиатура     - Структура из Строка - См. СформироватьКлавиатуруИзМассиваКнопок                           - keyboard
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
@@ -157,11 +157,11 @@
 // Отправляет картинку в чат или канал
 //
 // Параметры:
-//  Токен          - Строка       - Токен                                                                - token
-//  URL            - Строка       - URL картинки                                                         - picture
-//  IDПользователя - Строка,Число - ID пользователя. Для канала > администратора, для бота > получателя  - user
-//  ОтправкаВКанал - булево       - Отправка в канал или в чат бота                                      - ischannel
-//  Описание       - Строка       - Аннотация к картинке                                                 - description
+//  Токен          - Строка        - Токен                                                               - token
+//  URL            - Строка        - URL картинки                                                        - picture
+//  IDПользователя - Строка, Число - ID пользователя. Для канала > администратора, для бота > получателя - user
+//  ОтправкаВКанал - булево        - Отправка в канал или в чат бота                                     - ischannel
+//  Описание       - Строка        - Аннотация к картинке                                                - description
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
@@ -175,12 +175,12 @@
 // Отправляет файл (документ) в чат или канал
 //
 // Параметры:
-//  Токен          - Строка       - Токен                                                                - token
-//  URL            - Строка       - URL файла                                                            - file
-//  IDПользователя - Строка,Число - ID пользователя. Для канала > администратора, для бота > получателя  - user
-//  ОтправкаВКанал - Булево       - Отправка в канал или в чат бота                                      - ischannel
-//  Расширение     - Строка       - Расширение файла                                                     - ext
-//  Размер         - Число        - Размер файла. Если не заполнен > определяется автоматически скачиванием файла - size
+//  Токен          - Строка        - Токен                                                                         - token
+//  URL            - Строка        - URL файла                                                                     - file
+//  IDПользователя - Строка, Число - ID пользователя. Для канала > администратора, для бота > получателя           - user
+//  ОтправкаВКанал - Булево        - Отправка в канал или в чат бота                                               - ischannel
+//  Расширение     - Строка        - Расширение файла                                                              - ext
+//  Размер         - Число         - Размер файла. Если не заполнен > определяется автоматически скачиванием файла - size
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
@@ -214,11 +214,11 @@
 // Отправляет контакт с номером телефона в чат или канал
 //
 // Параметры:
-//  Токен          - Строка       - Токен                                                                - token
-//  ИмяКонтакта    - Строка       - Имя контакта                                                         - name
-//  НомерТелефона  - Строка       - Номер телефона                                                       - phone
-//  IDПользователя - Строка,Число - ID пользователя. Для канала > администратора, для бота > получателя  - user
-//  ОтправкаВКанал - Булево       - Отправка в канал или в чат бота                                      - ischannel
+//  Токен          - Строка        - Токен                                                               - token
+//  ИмяКонтакта    - Строка        - Имя контакта                                                        - name
+//  НомерТелефона  - Строка        - Номер телефона                                                      - phone
+//  IDПользователя - Строка, Число - ID пользователя. Для канала > администратора, для бота > получателя - user
+//  ОтправкаВКанал - Булево        - Отправка в канал или в чат бота                                     - ischannel
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
@@ -240,11 +240,11 @@
 // Отправляет географические координаты в чат или канал
 //
 // Параметры:
-//  Токен          - Строка       - Токен                                                                - token
-//  Широта         - Строка,Число - Географическая широта                                                - lat
-//  Долгота        - Строка,Число - Географическая долгота                                               - long
-//  IDПользователя - Строка,Число - ID пользователя. Для канала > администратора, для бота > получателя  - user
-//  ОтправкаВКанал - Булево       - Отправка в канал или в чат бота                                      - ischannel
+//  Токен          - Строка        - Токен                                                               - token
+//  Широта         - Строка, Число - Географическая широта                                               - lat
+//  Долгота        - Строка, Число - Географическая долгота                                              - long
+//  IDПользователя - Строка, Число - ID пользователя. Для канала > администратора, для бота > получателя - user
+//  ОтправкаВКанал - Булево        - Отправка в канал или в чат бота                                     - ischannel
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
@@ -262,10 +262,10 @@
 // Отправляет URL с предпросмотром в чат или канал
 //
 // Параметры:
-//  Токен          - Строка       - Токен                                                                - token
-//  URL            - Строка       - Отправляемая ссылка                                                  - url
-//  IDПользователя - Строка,Число - ID пользователя. Для канала > администратора, для бота > получателя  - user
-//  ОтправкаВКанал - Булево       - Отправка в канал или в чат бота                                      - ischannel
+//  Токен          - Строка        - Токен                                                               - token
+//  URL            - Строка        - Отправляемая ссылка                                                 - url
+//  IDПользователя - Строка, Число - ID пользователя. Для канала > администратора, для бота > получателя - user
+//  ОтправкаВКанал - Булево        - Отправка в канал или в чат бота                                     - ischannel
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Viber
@@ -411,47 +411,47 @@
 #Region Alternate
 
 Function SetWebhook(Val Token, Val URL) Export
-	Return УстановитьWebhook(Token, URL);
+    Return УстановитьWebhook(Token, URL);
 EndFunction
 
 Function GetChannelInformation(Val Token) Export
-	Return ПолучитьИнформациюОКанале(Token);
+    Return ПолучитьИнформациюОКанале(Token);
 EndFunction
 
 Function GetUserData(Val Token, Val UserID) Export
-	Return ПолучитьДанныеПользователя(Token, UserID);
+    Return ПолучитьДанныеПользователя(Token, UserID);
 EndFunction
 
 Function GetOnlineUsers(Val Token, Val UserIDs) Export
-	Return ПолучитьОнлайнПользователей(Token, UserIDs);
+    Return ПолучитьОнлайнПользователей(Token, UserIDs);
 EndFunction
 
 Function SendTextMessage(Val Token, Val Text, Val UserID, Val SendingToChannel, Val Keyboard = "") Export
-	Return ОтправитьТекстовоеСообщение(Token, Text, UserID, SendingToChannel, Keyboard);
+    Return ОтправитьТекстовоеСообщение(Token, Text, UserID, SendingToChannel, Keyboard);
 EndFunction
 
 Function SendImage(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Description = "") Export
-	Return ОтправитьКартинку(Token, URL, UserID, SendingToChannel, Description);
+    Return ОтправитьКартинку(Token, URL, UserID, SendingToChannel, Description);
 EndFunction
 
 Function SendFile(Val Token, Val URL, Val UserID, Val SendingToChannel, Val Extension, Val Size = "") Export
-	Return ОтправитьФайл(Token, URL, UserID, SendingToChannel, Extension, Size);
+    Return ОтправитьФайл(Token, URL, UserID, SendingToChannel, Extension, Size);
 EndFunction
 
 Function SendContact(Val Token, Val ContactName, Val PhoneNumber, Val UserID, Val SendingToChannel) Export
-	Return ОтправитьКонтакт(Token, ContactName, PhoneNumber, UserID, SendingToChannel);
+    Return ОтправитьКонтакт(Token, ContactName, PhoneNumber, UserID, SendingToChannel);
 EndFunction
 
 Function SendLocation(Val Token, Val Latitude, Val Longitude, Val UserID, Val SendingToChannel) Export
-	Return ОтправитьЛокацию(Token, Latitude, Longitude, UserID, SendingToChannel);
+    Return ОтправитьЛокацию(Token, Latitude, Longitude, UserID, SendingToChannel);
 EndFunction
 
 Function SendLink(Val Token, Val URL, Val UserID, Val SendingToChannel) Export
-	Return ОтправитьСсылку(Token, URL, UserID, SendingToChannel);
+    Return ОтправитьСсылку(Token, URL, UserID, SendingToChannel);
 EndFunction
 
 Function CreateKeyboardFromArrayButton(Val ButtonArray, Val ButtonColor = "#2db9b9") Export
-	Return СформироватьКлавиатуруИзМассиваКнопок(ButtonArray, ButtonColor);
+    Return СформироватьКлавиатуруИзМассиваКнопок(ButtonArray, ButtonColor);
 EndFunction
 
 #EndRegion

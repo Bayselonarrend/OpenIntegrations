@@ -51,10 +51,10 @@
 // Возвращает URL для авторизации в браузере
 //
 // Параметры:
-//  ClientID - Строка - Client ID                      - id
-//  Calendar - Булево - разрешение на методы Calendar  - calendar
-//  Drive    - Булево - разрешение на методы Drive     - drive
-//  Sheets   - Булево - разрешение на методы Sheets    - sheets
+//  ClientID - Строка - Client ID                     - id
+//  Calendar - Булево - разрешение на методы Calendar - calendar
+//  Drive    - Булево - разрешение на методы Drive    - drive
+//  Sheets   - Булево - разрешение на методы Sheets   - sheets
 //
 // Возвращаемое значение:
 //  Строка - Ссылка получения кода
@@ -156,9 +156,9 @@
 // Получает список каталогов диска
 //
 // Параметры:
-//  Токен       - Строка - Токен                                     - token
-//  ИмяСодержит - Строка - Отбор по имени                            - query
-//  Подробно    - Булево - Добавляет список файлов к полям каталога  - depth
+//  Токен       - Строка - Токен                                    - token
+//  ИмяСодержит - Строка - Отбор по имени                           - query
+//  Подробно    - Булево - Добавляет список файлов к полям каталога - depth
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Массив соответствий каталогов
@@ -192,9 +192,9 @@
 // Получает список файлов
 //
 // Параметры:
-//  Токен       - Строка - Токен                          - token
-//  ИмяСодержит - Строка - Отбор по имени                 - query
-//  Каталог     - Строка - Отбор по ID каталога родителя  - catalog
+//  Токен       - Строка - Токен                         - token
+//  ИмяСодержит - Строка - Отбор по имени                - query
+//  Каталог     - Строка - Отбор по ID каталога родителя - catalog
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Массив соответствий файлов
@@ -228,9 +228,9 @@
 // Загружает файл на диск
 //
 // Параметры:
-//  Токен     - Строка                        - Токен                     - token
-//  Файл      - ДвоичныеДанные,Строка         - Загружаемый файл          - file
-//  Описание  - Соответствие Из КлючИЗначение - См. ПолучитьОписаниеФайла - props
+//  Токен    - Строка                        - Токен                     - token
+//  Файл     - ДвоичныеДанные, Строка        - Загружаемый файл          - file
+//  Описание - Соответствие Из КлючИЗначение - См. ПолучитьОписаниеФайла - props
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
@@ -244,9 +244,9 @@
 // Создает пустой каталог на диске
 //
 // Параметры:
-//  Токен    - Строка - Токен      - token
-//  Имя      - Строка - Имя папки  - title
-//  Родитель - Строка - Родитель   - catalog
+//  Токен    - Строка - Токен     - token
+//  Имя      - Строка - Имя папки - title
+//  Родитель - Строка - Родитель  - catalog
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
@@ -297,10 +297,10 @@
 // Копирует файл или каталог
 //
 // Параметры:
-//  Токен         - Строка - Токен                     - token
-//  Идентификатор - Строка - Идентификатор объекта     - object
-//  НовоеИмя      - Строка - Новое имя объекта         - title
-//  НовыйРодитель - Строка - Новый каталог размещения  - catalog
+//  Токен         - Строка - Токен                    - token
+//  Идентификатор - Строка - Идентификатор объекта    - object
+//  НовоеИмя      - Строка - Новое имя объекта        - title
+//  НовыйРодитель - Строка - Новый каталог размещения - catalog
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
@@ -338,10 +338,10 @@
 // Обновляет двоичные данные файла
 //
 // Параметры:
-//  Токен         - Строка - Токен                                     - token
-//  Идентификатор - Строка - Идентификатор обновляемого объекта        - object
-//  Файл          - ДвоичныеДанные,Строка - Файл источник обновления   - file
-//  НовоеИмя      - Строка - Новое имя файла (если необходимо)         - title
+//  Токен         - Строка                 - Токен                              - token
+//  Идентификатор - Строка                 - Идентификатор обновляемого объекта - object
+//  Файл          - ДвоичныеДанные, Строка - Файл источник обновления           - file
+//  НовоеИмя      - Строка                 - Новое имя файла (если необходимо)  - title
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
@@ -367,8 +367,8 @@
 // Удаляет файл или каталог по ID
 //
 // Параметры:
-//  Токен         - Строка - Токен                               - token
-//  Идентификатор - Строка - Идентификатор объекта для удаления  - object
+//  Токен         - Строка - Токен                              - token
+//  Идентификатор - Строка - Идентификатор объекта для удаления - object
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
@@ -481,8 +481,8 @@
 // Получает список всех комментариев объекта
 //
 // Параметры:
-//  Токен     - Строка - Токен                  - token
-//  ИДОбъекта - Строка - Идентификатор объекта  - object
+//  Токен     - Строка - Токен                 - token
+//  ИДОбъекта - Строка - Идентификатор объекта - object
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
@@ -507,9 +507,9 @@
 // Удаляет комментарий по ID
 //
 // Параметры:
-//  Токен         - Строка - Токен                                                    - token
-//  ИДОбъекта     - Строка - Идентификатор файла или каталога размещения комментария  - object
-//  ИДКомментария - Строка - Идентификатор комментария                                - comment
+//  Токен         - Строка - Токен                                                   - token
+//  ИДОбъекта     - Строка - Идентификатор файла или каталога размещения комментария - object
+//  ИДКомментария - Строка - Идентификатор комментария                               - comment
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
@@ -741,75 +741,75 @@
 #Region Alternate
 
 Function FormCodeRetrievalLink(Val ClientID, Val Calendar = True, Val Drive = True, Val Sheets = True) Export
-	Return СформироватьСсылкуПолученияКода(ClientID, Calendar, Drive, Sheets);
+    Return СформироватьСсылкуПолученияКода(ClientID, Calendar, Drive, Sheets);
 EndFunction
 
 Function GetTokenByCode(Val ClientID, Val ClientSecret, Val Code) Export
-	Return ПолучитьТокенПоКоду(ClientID, ClientSecret, Code);
+    Return ПолучитьТокенПоКоду(ClientID, ClientSecret, Code);
 EndFunction
 
 Function RefreshToken(Val ClientID, Val ClientSecret, Val RefreshToken) Export
-	Return ОбновитьТокен(ClientID, ClientSecret, RefreshToken);
+    Return ОбновитьТокен(ClientID, ClientSecret, RefreshToken);
 EndFunction
 
 Function GetServiceAccountToken(Val Data, Val Scope, Val Expire = 3600) Export
-	Return ПолучитьТокенServiceАккаунта(Data, Scope, Expire);
+    Return ПолучитьТокенServiceАккаунта(Data, Scope, Expire);
 EndFunction
 
 Function GetObjectInformation(Val Token, Val Identifier) Export
-	Return ПолучитьИнформациюОбОбъекте(Token, Identifier);
+    Return ПолучитьИнформациюОбОбъекте(Token, Identifier);
 EndFunction
 
 Function GetDirectoriesList(Val Token, Val NameContains = "", Val Detailed = False) Export
-	Return ПолучитьСписокКаталогов(Token, NameContains, Detailed);
+    Return ПолучитьСписокКаталогов(Token, NameContains, Detailed);
 EndFunction
 
 Function GetFilesList(Val Token, Val NameContains = "", Val Directory = "") Export
-	Return ПолучитьСписокФайлов(Token, NameContains, Directory);
+    Return ПолучитьСписокФайлов(Token, NameContains, Directory);
 EndFunction
 
 Function UploadFile(Val Token, Val File, Val Description) Export
-	Return ЗагрузитьФайл(Token, File, Description);
+    Return ЗагрузитьФайл(Token, File, Description);
 EndFunction
 
 Function CreateFolder(Val Token, Val Name, Val Parent = "") Export
-	Return СоздатьПапку(Token, Name, Parent);
+    Return СоздатьПапку(Token, Name, Parent);
 EndFunction
 
 Function DownloadFile(Val Token, Val Identifier, Val SavePath = "") Export
-	Return СкачатьФайл(Token, Identifier, SavePath);
+    Return СкачатьФайл(Token, Identifier, SavePath);
 EndFunction
 
 Function CopyObject(Val Token, Val Identifier, Val NewName = "", Val NewParent = "") Export
-	Return СкопироватьОбъект(Token, Identifier, NewName, NewParent);
+    Return СкопироватьОбъект(Token, Identifier, NewName, NewParent);
 EndFunction
 
 Function UpdateFile(Val Token, Val Identifier, Val File, Val NewName = "") Export
-	Return ОбновитьФайл(Token, Identifier, File, NewName);
+    Return ОбновитьФайл(Token, Identifier, File, NewName);
 EndFunction
 
 Function DeleteObject(Val Token, Val Identifier) Export
-	Return УдалитьОбъект(Token, Identifier);
+    Return УдалитьОбъект(Token, Identifier);
 EndFunction
 
 Function GetFileDescription(Val Clear = False) Export
-	Return ПолучитьОписаниеФайла(Clear);
+    Return ПолучитьОписаниеФайла(Clear);
 EndFunction
 
 Function CreateComment(Val Token, Val Identifier, Val Comment) Export
-	Return СоздатьКомментарий(Token, Identifier, Comment);
+    Return СоздатьКомментарий(Token, Identifier, Comment);
 EndFunction
 
 Function GetComment(Val Token, Val ObjectID, Val CommentID) Export
-	Return ПолучитьКомментарий(Token, ObjectID, CommentID);
+    Return ПолучитьКомментарий(Token, ObjectID, CommentID);
 EndFunction
 
 Function GetCommentList(Val Token, Val ObjectID) Export
-	Return ПолучитьСписокКомментариев(Token, ObjectID);
+    Return ПолучитьСписокКомментариев(Token, ObjectID);
 EndFunction
 
 Function DeleteComment(Val Token, Val ObjectID, Val CommentID) Export
-	Return УдалитьКомментарий(Token, ObjectID, CommentID);
+    Return УдалитьКомментарий(Token, ObjectID, CommentID);
 EndFunction
 
 #EndRegion

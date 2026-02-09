@@ -51,7 +51,7 @@
 // Метод в документации API: [Список магазинов пользователя](@yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaigns)
 //
 // Параметры:
-//  Токен    - Строка - Токен авторизации (Api-Key)  - token
+//  Токен    - Строка - Токен авторизации (Api       - Key)
 //  Страница - Число  - Номер страницы выдачи списка - page
 //
 // Возвращаемое значение:
@@ -80,8 +80,8 @@
 // Метод в документации API: [Информация о магазине](@yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaign)
 //
 // Параметры:
-//  Токен      - Строка        - Токен авторизации (Api-Key) - token
-//  IDМагазина - Строка, Число - ID магазина (кампании)      - campaign
+//  Токен      - Строка        - Токен авторизации (Api - Key)
+//  IDМагазина - Строка, Число - ID магазина (кампании) - campaign
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex Market
@@ -105,8 +105,8 @@
 // Метод в документации API: [Настройки кабинета](@yandex.ru/dev/market/partner-api/doc/ru/reference/businesses/getBusinessSettings)
 //
 // Параметры:
-//  Токен      - Строка        - Токен авторизации (Api-Key) - token
-//  IDКабинета - Строка, Число - ID кабинета                 - business
+//  Токен      - Строка        - Токен авторизации (Api - Key)
+//  IDКабинета - Строка, Число - ID кабинета            - business
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex Market
@@ -131,8 +131,8 @@
 // Метод в документации API: [Настройки магазина](@yandex.ru/dev/market/partner-api/doc/ru/reference/campaigns/getCampaignSettings)
 //
 // Параметры:
-//  Токен      - Строка        - Токен авторизации (Api-Key) - token
-//  IDМагазина - Строка, Число - ID магазина (кампании)      - campaign
+//  Токен      - Строка        - Токен авторизации (Api - Key)
+//  IDМагазина - Строка, Число - ID магазина (кампании) - campaign
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex Market
@@ -161,7 +161,7 @@
 // Метод в документации API: [Добавление товаров в каталог и изменение информации о них](@yandex.ru/dev/market/partner-api/doc/ru/reference/business-assortment/updateOfferMappings)
 //
 // Параметры:
-//  Токен           - Строка                         - Токен авторизации (Api-Key)                            - token
+//  Токен           - Строка                         - Токен авторизации (Api                                 - Key)
 //  IDКабинета      - Строка, Число                  - ID кабинета                                            - business
 //  МассивТоваров   - Структура, Массив Из Структура - Массив описаний товаров                                - offers
 //  СвоиИзображения - Булево                         - Признак использования только своих изображений товаров - pmedia
@@ -193,10 +193,10 @@
 // Метод в документации API: [Информация о товарах, которые размещены в заданном магазине](@yandex.ru/dev/market/partner-api/doc/ru/reference/assortment/getCampaignOffers)
 //
 // Параметры:
-//  Токен         - Строка                      - Токен авторизации (Api-Key)                  - token
-//  IDМагазина    - Строка, Число               - ID магазина                                  - business
-//  Фильтры       - Структура Из КлючИЗначение  - Фильтры для отбора товаров                   - filters
-//  ТокенСтраницы - Строка                      - Токен следующей страницы при большой выборке - page
+//  Токен         - Строка                     - Токен авторизации (Api                       - Key)
+//  IDМагазина    - Строка, Число              - ID магазина                                  - business
+//  Фильтры       - Структура Из КлючИЗначение - Фильтры для отбора товаров                   - filters
+//  ТокенСтраницы - Строка                     - Токен следующей страницы при большой выборке - page
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Yandex Market
@@ -228,7 +228,7 @@
 // Получает список товаров выбранного кабинета
 //
 // Параметры:
-//  Токен         - Строка                     - Токен авторизации (Api-Key)                  - token
+//  Токен         - Строка                     - Токен авторизации (Api                       - Key)
 //  IDКабинета    - Строка, Число              - ID кабинета                                  - business
 //  Фильтры       - Структура Из КлючИЗначение - Фильтры для отбора товаров                   - filters
 //  ТокенСтраницы - Строка                     - Токен следующей страницы при большой выборке - page
@@ -430,35 +430,35 @@
 #Region Alternate
 
 Function GetMarketsList(Val Token, Val Page = 1) Export
-	Return ПолучитьСписокМагазинов(Token, Page);
+    Return ПолучитьСписокМагазинов(Token, Page);
 EndFunction
 
 Function GetMarket(Val Token, Val CampaignID) Export
-	Return ПолучитьМагазин(Token, CampaignID);
+    Return ПолучитьМагазин(Token, CampaignID);
 EndFunction
 
 Function GetBusinessSettings(Val Token, Val AccountID) Export
-	Return ПолучитьНастройкиКабинета(Token, AccountID);
+    Return ПолучитьНастройкиКабинета(Token, AccountID);
 EndFunction
 
 Function GetCampaignSettings(Val Token, Val CampaignID) Export
-	Return ПолучитьНастройкиМагазина(Token, CampaignID);
+    Return ПолучитьНастройкиМагазина(Token, CampaignID);
 EndFunction
 
 Function AddUpdateProducts(Val Token, Val AccountID, Val ProductsArray, Val OwnImages = False) Export
-	Return ДобавитьОбновитьТовары(Token, AccountID, ProductsArray, OwnImages);
+    Return ДобавитьОбновитьТовары(Token, AccountID, ProductsArray, OwnImages);
 EndFunction
 
 Function GetCampaignProducts(Val Token, Val CampaignID, Val Filters = "", Val PageToken = "") Export
-	Return ПолучитьТоварыМагазина(Token, CampaignID, Filters, PageToken);
+    Return ПолучитьТоварыМагазина(Token, CampaignID, Filters, PageToken);
 EndFunction
 
 Function GetBusinessProducts(Val Token, Val AccountID, Val Filters = "", Val PageToken = "") Export
-	Return ПолучитьТоварыКабинета(Token, AccountID, Filters, PageToken);
+    Return ПолучитьТоварыКабинета(Token, AccountID, Filters, PageToken);
 EndFunction
 
 Function GetProductStructure(Val Clear = False) Export
-	Return ПолучитьСтруктуруТовара(Clear);
+    Return ПолучитьСтруктуруТовара(Clear);
 EndFunction
 
 #EndRegion

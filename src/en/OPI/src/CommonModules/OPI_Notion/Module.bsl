@@ -50,9 +50,9 @@
 // Creates a child page above another parent page
 //
 // Parameters:
-// Token - String - Token - token
-// Parent - String - Parent ID - page
-// Title - String - Page title - title
+// Token  - String - Token      - token
+// Parent - String - Parent ID  - page
+// Title  - String - Page title - title
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Notion
@@ -81,9 +81,9 @@ EndFunction
 // Creates a page in the parent database
 //
 // Parameters:
-// Token - String - Token - token
-// Parent - String - Parent database ID - base
-// Data - Map Of KeyAndValue - Properties map - data
+// Token  - String             - Token              - token
+// Parent - String             - Parent database ID - base
+// Data   - Map Of KeyAndValue - Properties map     - data
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Notion
@@ -111,8 +111,8 @@ EndFunction
 // Gets information about the page by ID
 //
 // Parameters:
-// Token - String - Token - token
-// Page - String - Page ID - page
+// Token - String - Token   - token
+// Page  - String - Page ID - page
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Notion
@@ -134,12 +134,12 @@ EndFunction
 // Changes the properties of an existing page
 //
 // Parameters:
-// Token - String - Token - token
-// Page - String - ID of the page being modified - page
-// Data - Map Of KeyAndValue - Map of editable parameters - data
-// Icon - String - URL of the page icon image - icon
-// Cover - String - URL of the page cover image - cover
-// Archived - Boolean - Archive page or not (boolean) - archive
+// Token    - String             - Token                         - token
+// Page     - String             - ID of the page being modified - page
+// Data     - Map Of KeyAndValue - Map of editable parameters    - data
+// Icon     - String             - URL of the page icon image    - icon
+// Cover    - String             - URL of the page cover image   - cover
+// Archived - Boolean            - Archive page or not (boolean) - archive
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Notion
@@ -209,9 +209,9 @@ EndFunction
 // Creates a database
 //
 // Parameters:
-// Token - String - Token - token
-// Parent - String - Parent page ID - page
-// Title - String - Database title - title
+// Token      - String              - Token               - token
+// Parent     - String              - Parent page ID      - page
+// Title      - String              - Database title      - title
 // Properties - Structure Of String - Database properties - props
 //
 // Returns:
@@ -258,8 +258,8 @@ EndFunction
 // Get database information
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Database ID - base
+// Token - String - Token       - token
+// Base  - String - Database ID - base
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Notion
@@ -281,11 +281,11 @@ EndFunction
 // Edits properties of an existing database
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Target database ID - base
-// Properties - Map of KeyAndValue - New or modified database properties - props
-// Title - String - New database title - title
-// Description - String - New database description - description
+// Token       - String             - Token                               - token
+// Base        - String             - Target database ID                  - base
+// Properties  - Map of KeyAndValue - New or modified database properties - props
+// Title       - String             - New database title                  - title
+// Description - String             - New database description            - description
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Notion
@@ -327,10 +327,10 @@ EndFunction
 // Creates a new block based on an existing block
 //
 // Parameters:
-// Token - String - Token - token
-// Parent - String - Parent block or page ID - page
-// Block - String, Map Of KeyAndValue - Block ID or block sample itself - block
-// InsertAfter - String - Block ID after which to insert the new one - prev
+// Token       - String                     - Token                                      - token
+// Parent      - String                     - Parent block or page ID                    - page
+// Block       - String, Map Of KeyAndValue - Block ID or block sample itself            - block
+// InsertAfter - String                     - Block ID after which to insert the new one - prev
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Notion
@@ -374,8 +374,8 @@ EndFunction
 // Returns the block structure by ID
 //
 // Parameters:
-// Token - String - Token - token
-// BlockID - String - Block ID - block
+// Token    - String  - Token                                                            - token
+// BlockID  - String  - Block ID                                                         - block
 // OnlyBase - Boolean - True > service fields are deleted, only the block itself remains - core
 //
 // Returns:
@@ -403,7 +403,7 @@ EndFunction
 // Returns list of child blocks of parent block
 //
 // Parameters:
-// Token - String - Token - token
+// Token   - String - Token           - token
 // BlockID - String - Parent block ID - block
 //
 // Returns:
@@ -426,7 +426,7 @@ EndFunction
 // Deletes block by ID
 //
 // Parameters:
-// Token - String - Token - token
+// Token   - String - Token    - token
 // BlockID - String - Block ID - block
 //
 // Returns:
@@ -472,7 +472,7 @@ EndFunction
 // Gets user data by ID
 //
 // Parameters:
-// Token - String - Token - token
+// Token  - String - Token          - token
 // UserID - String - Target user ID - user
 //
 // Returns:

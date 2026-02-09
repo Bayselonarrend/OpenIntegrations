@@ -149,8 +149,8 @@
 // Метод в документации API: [StartAuthorization](@green-api.com/v3/docs/api/account/StartAuthorization/)
 //
 // Параметры:
-//  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа  - access
-//  НомерТелефона    - Строка, Число              - Номер телефона без знака +                           - phone
+//  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа - access
+//  НомерТелефона    - Строка, Число              - Номер телефона без знака +                          - phone
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
@@ -788,7 +788,7 @@
 //  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа  - access
 //  IDЧата           - Строка                     - Идентификатор чата                                   - chat
 //  Файл             - Строка, ДвоичныеДанные     - Данные или путь к файлу                              - file
-//  ИмяФайла         - Строка                     - Имя загружаемого файла с расширением                  - filename
+//  ИмяФайла         - Строка                     - Имя загружаемого файла с расширением                 - filename
 //  Описание         - Строка                     - Текст сообщения под файлом                           - caption
 //  ВремяНабора      - Число                      - Время показа признака набора перед отправкой (в мс.) - typing
 //  ТипНабора        - Строка                     - Тип набора: text, recording, video, image, file      - ttype
@@ -837,7 +837,7 @@
 //  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа  - access
 //  IDЧата           - Строка                     - Идентификатор чата                                   - chat
 //  URLФайла         - Строка                     - URL файла для отправки                               - url
-//  ИмяФайла         - Строка                     - Имя загружаемого файла с расширением                  - filename
+//  ИмяФайла         - Строка                     - Имя загружаемого файла с расширением                 - filename
 //  Описание         - Строка                     - Текст сообщения под файлом                           - caption
 //  ВремяНабора      - Число                      - Время показа признака набора перед отправкой (в мс.) - typing
 //  ТипНабора        - Строка                     - Тип набора: text, recording, video, image, file      - ttype
@@ -1088,7 +1088,7 @@
 // Метод в документации API: [GetMessagesCount](@green-api.com/v3/docs/api/queues/GetMessagesCount/)
 //
 // Параметры:
-//  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа  - access
+//  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа - access
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
@@ -1108,7 +1108,7 @@
 // Метод в документации API: [ShowMessagesQueue](@green-api.com/v3/docs/api/queues/ShowMessagesQueue/)
 //
 // Параметры:
-//  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа  - access
+//  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа - access
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
@@ -1128,7 +1128,7 @@
 // Метод в документации API: [ClearMessagesQueue](@green-api.com/v3/docs/api/queues/ClearMessagesQueue/)
 //
 // Параметры:
-//  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа  - access
+//  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа - access
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
@@ -1148,7 +1148,7 @@
 // Метод в документации API: [GetWebhooksCount](@green-api.com/v3/docs/api/queues/GetWebhooksCount/)
 //
 // Параметры:
-//  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа  - access
+//  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа - access
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
@@ -1168,7 +1168,7 @@
 // Метод в документации API: [ClearWebhooksQueue](@green-api.com/v3/docs/api/queues/ClearWebhooksQueue/)
 //
 // Параметры:
-//  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа  - access
+//  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа - access
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
@@ -1226,171 +1226,171 @@
 #Region Alternate
 
 Function FormAccessParameters(Val ApiUrl, Val MediaUrl, Val IdInstance, Val ApiTokenInstance) Export
-	Return СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Return СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
 EndFunction
 
 Function GetAccountInformation(Val AccessParameters) Export
-	Return ПолучитьИнформациюОбАккаунте(AccessParameters);
+    Return ПолучитьИнформациюОбАккаунте(AccessParameters);
 EndFunction
 
 Function GetInstanceSettings(Val AccessParameters) Export
-	Return ПолучитьНастройкиИнстанса(AccessParameters);
+    Return ПолучитьНастройкиИнстанса(AccessParameters);
 EndFunction
 
 Function SetInstanceSettings(Val Settings, Val AccessParameters) Export
-	Return УстановитьНастройкиИнстанса(Settings, AccessParameters);
+    Return УстановитьНастройкиИнстанса(Settings, AccessParameters);
 EndFunction
 
 Function GetAuthorizationCode(Val AccessParameters, Val PhoneNumber) Export
-	Return ПолучитьКодАвторизации(AccessParameters, PhoneNumber);
+    Return ПолучитьКодАвторизации(AccessParameters, PhoneNumber);
 EndFunction
 
 Function SendAuthorizationCode(Val AccessParameters, Val AuthCode) Export
-	Return ОтправитьКодАвторизации(AccessParameters, AuthCode);
+    Return ОтправитьКодАвторизации(AccessParameters, AuthCode);
 EndFunction
 
 Function GetInstanceStatus(Val AccessParameters) Export
-	Return ПолучитьСостояниеИнстанса(AccessParameters);
+    Return ПолучитьСостояниеИнстанса(AccessParameters);
 EndFunction
 
 Function SetProfilePicture(Val AccessParameters, Val Image) Export
-	Return УстановитьКартинкуПрофиля(AccessParameters, Image);
+    Return УстановитьКартинкуПрофиля(AccessParameters, Image);
 EndFunction
 
 Function LogoutInstance(Val AccessParameters) Export
-	Return РазлогинитьИнстанс(AccessParameters);
+    Return РазлогинитьИнстанс(AccessParameters);
 EndFunction
 
 Function RebootInstance(Val AccessParameters) Export
-	Return ПерезапуститьИнстанс(AccessParameters);
+    Return ПерезапуститьИнстанс(AccessParameters);
 EndFunction
 
 Function CheckAccount(Val AccessParameters, Val PhoneNumber, Val IgnoreCache = False) Export
-	Return ПроверитьАккаунт(AccessParameters, PhoneNumber, IgnoreCache);
+    Return ПроверитьАккаунт(AccessParameters, PhoneNumber, IgnoreCache);
 EndFunction
 
 Function GetContactList(Val AccessParameters, Val Count = Undefined) Export
-	Return ПолучитьСписокКонтактов(AccessParameters, Count);
+    Return ПолучитьСписокКонтактов(AccessParameters, Count);
 EndFunction
 
 Function GetContactInformation(Val AccessParameters, Val ChatID) Export
-	Return ПолучитьИнформациюОКонтакте(AccessParameters, ChatID);
+    Return ПолучитьИнформациюОКонтакте(AccessParameters, ChatID);
 EndFunction
 
 Function GetChatList(Val AccessParameters) Export
-	Return ПолучитьСписокЧатов(AccessParameters);
+    Return ПолучитьСписокЧатов(AccessParameters);
 EndFunction
 
 Function GetChatAvatar(Val AccessParameters, Val ChatID) Export
-	Return ПолучитьАватарЧата(AccessParameters, ChatID);
+    Return ПолучитьАватарЧата(AccessParameters, ChatID);
 EndFunction
 
 Function GetInstanceSettingsStructure(Val Clear = False) Export
-	Return ПолучитьСтруктуруНастроекИнстанса(Clear);
+    Return ПолучитьСтруктуруНастроекИнстанса(Clear);
 EndFunction
 
 Function CreateGroup(Val AccessParameters, Val Name, Val Members) Export
-	Return СоздатьГруппу(AccessParameters, Name, Members);
+    Return СоздатьГруппу(AccessParameters, Name, Members);
 EndFunction
 
 Function GetGroupInformation(Val AccessParameters, Val ChatID) Export
-	Return ПолучитьИнформациюОГруппе(AccessParameters, ChatID);
+    Return ПолучитьИнформациюОГруппе(AccessParameters, ChatID);
 EndFunction
 
 Function UpdateGroupName(Val AccessParameters, Val ChatID, Val Name) Export
-	Return ИзменитьИмяГруппы(AccessParameters, ChatID, Name);
+    Return ИзменитьИмяГруппы(AccessParameters, ChatID, Name);
 EndFunction
 
 Function SetGroupPicture(Val AccessParameters, Val ChatID, Val Image) Export
-	Return УстановитьКартинкуГруппы(AccessParameters, ChatID, Image);
+    Return УстановитьКартинкуГруппы(AccessParameters, ChatID, Image);
 EndFunction
 
 Function ChangeGroupSettings(Val AccessParameters, Val ChatID, Val Settings) Export
-	Return ИзменитьНастройкиГруппы(AccessParameters, ChatID, Settings);
+    Return ИзменитьНастройкиГруппы(AccessParameters, ChatID, Settings);
 EndFunction
 
 Function AddGroupMember(Val AccessParameters, Val ChatID, Val MemberID) Export
-	Return ДобавитьУчастникаГруппы(AccessParameters, ChatID, MemberID);
+    Return ДобавитьУчастникаГруппы(AccessParameters, ChatID, MemberID);
 EndFunction
 
 Function RemoveGroupMember(Val AccessParameters, Val ChatID, Val MemberID) Export
-	Return УдалитьУчастникаГруппы(AccessParameters, ChatID, MemberID);
+    Return УдалитьУчастникаГруппы(AccessParameters, ChatID, MemberID);
 EndFunction
 
 Function SetAdminRights(Val AccessParameters, Val ChatID, Val MemberID) Export
-	Return НазначитьПраваАдминистратора(AccessParameters, ChatID, MemberID);
+    Return НазначитьПраваАдминистратора(AccessParameters, ChatID, MemberID);
 EndFunction
 
 Function RevokeAdminRights(Val AccessParameters, Val ChatID, Val MemberID) Export
-	Return ОтозватьПраваАдминистратора(AccessParameters, ChatID, MemberID);
+    Return ОтозватьПраваАдминистратора(AccessParameters, ChatID, MemberID);
 EndFunction
 
 Function LeaveGroup(Val AccessParameters, Val ChatID) Export
-	Return ВыйтиИзГруппы(AccessParameters, ChatID);
+    Return ВыйтиИзГруппы(AccessParameters, ChatID);
 EndFunction
 
 Function GetGroupSettingsStructure(Val Clear = False, Val AsMap = False) Export
-	Return ПолучитьСтруктуруНастроекГруппы(Clear, AsMap);
+    Return ПолучитьСтруктуруНастроекГруппы(Clear, AsMap);
 EndFunction
 
 Function SendTextMessage(Val AccessParameters, Val ChatID, Val Text, Val TypingTime = 0) Export
-	Return ОтправитьТекстовоеСообщение(AccessParameters, ChatID, Text, TypingTime);
+    Return ОтправитьТекстовоеСообщение(AccessParameters, ChatID, Text, TypingTime);
 EndFunction
 
 Function SendFile(Val AccessParameters, Val ChatID, Val File, Val FileName, Val Description = "", Val TypingTime = 0, Val TypingType = "file") Export
-	Return ОтправитьФайл(AccessParameters, ChatID, File, FileName, Description, TypingTime, TypingType);
+    Return ОтправитьФайл(AccessParameters, ChatID, File, FileName, Description, TypingTime, TypingType);
 EndFunction
 
 Function SendFileByURL(Val AccessParameters, Val ChatID, Val FileURL, Val FileName, Val Description = "", Val TypingTime = 0, Val TypingType = "file") Export
-	Return ОтправитьФайлПоURL(AccessParameters, ChatID, FileURL, FileName, Description, TypingTime, TypingType);
+    Return ОтправитьФайлПоURL(AccessParameters, ChatID, FileURL, FileName, Description, TypingTime, TypingType);
 EndFunction
 
 Function GetNotification(Val AccessParameters, Val Timeout = 5, Val Delete = False) Export
-	Return ПолучитьУведомление(AccessParameters, Timeout, Delete);
+    Return ПолучитьУведомление(AccessParameters, Timeout, Delete);
 EndFunction
 
 Function DeleteNotification(Val AccessParameters, Val NotificationID) Export
-	Return УдалитьУведомление(AccessParameters, NotificationID);
+    Return УдалитьУведомление(AccessParameters, NotificationID);
 EndFunction
 
 Function GetChatMessageHistory(Val AccessParameters, Val ChatID, Val Count = 100) Export
-	Return ПолучитьИсториюСообщенийЧата(AccessParameters, ChatID, Count);
+    Return ПолучитьИсториюСообщенийЧата(AccessParameters, ChatID, Count);
 EndFunction
 
 Function GetChatMessage(Val AccessParameters, Val ChatID, Val MessageID) Export
-	Return ПолучитьСообщениеЧата(AccessParameters, ChatID, MessageID);
+    Return ПолучитьСообщениеЧата(AccessParameters, ChatID, MessageID);
 EndFunction
 
 Function GetIncomingMessageLog(Val AccessParameters, Val Period = 1440) Export
-	Return ПолучитьЖурналВходящихСообщений(AccessParameters, Period);
+    Return ПолучитьЖурналВходящихСообщений(AccessParameters, Period);
 EndFunction
 
 Function GetOutgoingMessageLog(Val AccessParameters, Val Period = 1440) Export
-	Return ПолучитьЖурналИсходящихСообщений(AccessParameters, Period);
+    Return ПолучитьЖурналИсходящихСообщений(AccessParameters, Period);
 EndFunction
 
 Function MarkMessagesAsRead(Val AccessParameters, Val ChatID, Val MessageID = "") Export
-	Return ОтметитьСообщенияКакПрочитанные(AccessParameters, ChatID, MessageID);
+    Return ОтметитьСообщенияКакПрочитанные(AccessParameters, ChatID, MessageID);
 EndFunction
 
 Function GetOutgoingMessageCount(Val AccessParameters) Export
-	Return ПолучитьКоличествоСообщенийКОтправке(AccessParameters);
+    Return ПолучитьКоличествоСообщенийКОтправке(AccessParameters);
 EndFunction
 
 Function GetOutgoingMessageQueue(Val AccessParameters) Export
-	Return ПолучитьОчередьСообщенийКОтправке(AccessParameters);
+    Return ПолучитьОчередьСообщенийКОтправке(AccessParameters);
 EndFunction
 
 Function ClearOutgoingMessageQueue(Val AccessParameters) Export
-	Return ОчиститьОчередьСообщенийКОтправке(AccessParameters);
+    Return ОчиститьОчередьСообщенийКОтправке(AccessParameters);
 EndFunction
 
 Function GetIncomingNotificationCount(Val AccessParameters) Export
-	Return ПолучитьКоличествоВходящихУведомлений(AccessParameters);
+    Return ПолучитьКоличествоВходящихУведомлений(AccessParameters);
 EndFunction
 
 Function ClearIncomingNotificationQueue(Val AccessParameters) Export
-	Return ОчиститьОчередьВходящихУведомлений(AccessParameters);
+    Return ОчиститьОчередьВходящихУведомлений(AccessParameters);
 EndFunction
 
 #EndRegion

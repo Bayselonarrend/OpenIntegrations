@@ -54,9 +54,9 @@
 // Creates a TCP connection
 //
 // Parameters:
-// Address - String - Address and port - address
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
-// Proxy - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
+// Address - String                   - Address and port                                  - address
+// Tls     - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings    - tls
+// Proxy   - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
 //
 // Returns:
 // Map Of KeyAndValue, Arbitrary - Returns TCP client object on successful connection or error information
@@ -126,10 +126,10 @@ EndFunction
 // If the connection is closed, an error occurs, or EOF is detected, the read is terminated in either case
 //
 // Parameters:
-// Connection - Arbitrary - Connection, See CreateConnection - tcp
-// MaxSize - Number - Maximum data size (bytes). 0 > no limit - size
-// Marker - String, BinaryData - End of message marker. Empty > without marker - marker
-// Timeout - Number - Data waiting timeout (ms). 0 > no limit - timeout
+// Connection - Arbitrary          - Connection, See CreateConnection              - tcp
+// MaxSize    - Number             - Maximum data size (bytes). 0 > no limit       - size
+// Marker     - String, BinaryData - End of message marker. Empty > without marker - marker
+// Timeout    - Number             - Data waiting timeout (ms). 0 > no limit       - timeout
 //
 // Returns:
 // BinaryData - Received data
@@ -160,10 +160,10 @@ EndFunction
 // If the connection is closed, an error occurs, or EOF is detected, the read is terminated in either case
 //
 // Parameters:
-// Connection - Arbitrary - Connection, See CreateConnection - tcp
-// Encoding - String - Encoding of data conversion to string - enc
-// Marker - String, BinaryData - End of message marker. Empty > without marker - marker
-// Timeout - Number - Data waiting timeout (ms). 0 > no limit - timeout
+// Connection - Arbitrary          - Connection, See CreateConnection              - tcp
+// Encoding   - String             - Encoding of data conversion to string         - enc
+// Marker     - String, BinaryData - End of message marker. Empty > without marker - marker
+// Timeout    - Number             - Data waiting timeout (ms). 0 > no limit       - timeout
 //
 // Returns:
 // String - Received data as string
@@ -185,9 +185,9 @@ EndFunction
 // Sends binary data over the specified connection
 //
 // Parameters:
-// Connection - Arbitrary - Connection, See CreateConnection - tcp
-// Data - BinaryData - Sending data - data
-// Timeout - Number - Data reading timeout (ms). 0 > no limit - timeout
+// Connection - Arbitrary  - Connection, See CreateConnection        - tcp
+// Data       - BinaryData - Sending data                            - data
+// Timeout    - Number     - Data reading timeout (ms). 0 > no limit - timeout
 //
 // Returns:
 // Boolean - Flag of successful delivery
@@ -206,10 +206,10 @@ EndFunction
 // Sends data as a string over the specified connection
 //
 // Parameters:
-// Connection - Arbitrary - Connection, See CreateConnection - tcp
-// Data - String - Data to be sent as a string - data
-// Encoding - String - Encoding for writing the outgoing string to the stream - enc
-// Timeout - Number - Data reading timeout (ms). 0 > no limit - timeout
+// Connection - Arbitrary - Connection, See CreateConnection                       - tcp
+// Data       - String    - Data to be sent as a string                            - data
+// Encoding   - String    - Encoding for writing the outgoing string to the stream - enc
+// Timeout    - Number    - Data reading timeout (ms). 0 > no limit                - timeout
 //
 // Returns:
 // Boolean - Flag of successful delivery
@@ -230,11 +230,11 @@ EndFunction
 // Sends a single request to a specified address and receives a response using the default settings
 //
 // Parameters:
-// Address - String - Address and port - address
-// Data - String, BinaryData - Data or text to be sent - data
-// ResponseString - Boolean - An attribute of receiving the response as a string - string
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
-// Proxy - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
+// Address        - String                   - Address and port                                   - address
+// Data           - String, BinaryData       - Data or text to be sent                            - data
+// ResponseString - Boolean                  - An attribute of receiving the response as a string - string
+// Tls            - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings     - tls
+// Proxy          - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings  - proxy
 //
 // Returns:
 // BinaryData, String - Response or error information
@@ -313,10 +313,10 @@ EndFunction
 // Creates a structure of proxy server settings for the connection
 //
 // Parameters:
-// Address - String - Proxy address - addr
-// Port - Number - Proxy port - port
-// View - String - Proxy type: socks5, socks4, http - type
-// Login - String, Undefined - Authorization login, if required - login
+// Address  - String            - Proxy address                       - addr
+// Port     - Number            - Proxy port                          - port
+// View     - String            - Proxy type: socks5, socks4, http    - type
+// Login    - String, Undefined - Authorization login, if required    - login
 // Password - String, Undefined - Authorization password, if required - pass
 //
 // Returns:
@@ -340,8 +340,8 @@ EndFunction
 // or implicit, when passing the connection string to the `ProcessRequest` method
 //
 // Parameters:
-// DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed - trust
-// CertFilepath - String - Path to the root PEM file of the certificate if it is not in the system repository - cert
+// DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed                    - trust
+// CertFilepath            - String  - Path to the root PEM file of the certificate if it is not in the system repository - cert
 //
 // Returns:
 // Structure Of KeyAndValue - Structure of TLS connection settings

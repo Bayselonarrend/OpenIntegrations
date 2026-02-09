@@ -99,7 +99,7 @@ EndFunction
 // To execute several commands (in OS and 1C versions), it is recommended to use a connection created in advance (see CreateConnection)
 //
 // Parameters:
-// Command - String - Command text - exec
+// Command    - String                              - Command text                        - exec
 // Connection - Arbitrary, Structure Of KeyAndValue - Connection or connection parameters - conn
 //
 // Returns:
@@ -129,9 +129,9 @@ EndFunction
 // Forms a collection of connection parameters
 //
 // Parameters:
-// URL - String - Server URL - url
-// Password - String - Password for connection - pass
-// ReadTimeout - Number - Response timeout (in seconds) - rtout
+// URL          - String - Server URL                           - url
+// Password     - String - Password for connection              - pass
+// ReadTimeout  - Number - Response timeout (in seconds)        - rtout
 // WriteTimeout - Number - Request sending timeout (in seconds) - wtout
 //
 // Returns:
@@ -169,19 +169,19 @@ EndFunction
 #Region Alternate
 
 Function ОткрытьСоединение(Val ПараметрыСоединения) Export
-	Return CreateConnection(ПараметрыСоединения);
+    Return CreateConnection(ПараметрыСоединения);
 EndFunction
 
 Function ВыполнитьКоманду(Val Команда, Val Соединение) Export
-	Return ExecuteCommand(Команда, Соединение);
+    Return ExecuteCommand(Команда, Соединение);
 EndFunction
 
 Function СформироватьПараметрыСоединения(Val URL, Val Пароль, Val ТаймаутЧтения = 30, Val ТаймаутЗаписи = 30) Export
-	Return FormConnectionParameters(URL, Пароль, ТаймаутЧтения, ТаймаутЗаписи);
+    Return FormConnectionParameters(URL, Пароль, ТаймаутЧтения, ТаймаутЗаписи);
 EndFunction
 
 Function ЭтоКоннектор(Val Значение) Export
-	Return IsConnector(Значение);
+    Return IsConnector(Значение);
 EndFunction
 
 #EndRegion

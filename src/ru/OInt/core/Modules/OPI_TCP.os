@@ -126,10 +126,10 @@
 // При закрытии соединения, ошибке или обнаружении EOF чтение завершается в любом случае
 //
 // Параметры:
-//  Соединение          - Произвольный           - Соединение, См. ОткрытьСоединение                      - tcp
-//  МаксимальныйРазмер  - Число                  - Максимальный размер данных (байт). 0 > без ограничений - size
-//  Маркер              - Строка, ДвоичныеДанные - Маркер конца сообщения. Пусто > без маркера            - marker
-//  Таймаут             - Число                  - Таймаут ожидания данных (мс). 0 > без ограничений      - timeout
+//  Соединение         - Произвольный           - Соединение, См. ОткрытьСоединение                      - tcp
+//  МаксимальныйРазмер - Число                  - Максимальный размер данных (байт). 0 > без ограничений - size
+//  Маркер             - Строка, ДвоичныеДанные - Маркер конца сообщения. Пусто > без маркера            - marker
+//  Таймаут            - Число                  - Таймаут ожидания данных (мс). 0 > без ограничений      - timeout
 //
 // Возвращаемое значение:
 //  ДвоичныеДанные - Полученные данные
@@ -160,10 +160,10 @@
 // При закрытии соединения, ошибке или обнаружении EOF чтение завершается в любом случае
 //
 // Параметры:
-//  Соединение  - Произвольный           - Соединение, См. ОткрытьСоединение                 - tcp
-//  Кодировка   - Строка                 - Кодировка преобразования данных в строку          - enc
-//  Маркер      - Строка, ДвоичныеДанные - Маркер конца сообщения. Пусто > без маркера       - marker
-//  Таймаут     - Число                  - Таймаут ожидания данных (мс). 0 > без ограничений - timeout
+//  Соединение - Произвольный           - Соединение, См. ОткрытьСоединение                 - tcp
+//  Кодировка  - Строка                 - Кодировка преобразования данных в строку          - enc
+//  Маркер     - Строка, ДвоичныеДанные - Маркер конца сообщения. Пусто > без маркера       - marker
+//  Таймаут    - Число                  - Таймаут ожидания данных (мс). 0 > без ограничений - timeout
 //
 // Возвращаемое значение:
 //  Строка - Полученные данные в виде строки
@@ -206,10 +206,10 @@
 // Отправляет данные в виде строки через указанное соединение
 //
 // Параметры:
-//  Соединение - Произвольный  - Соединение, См. ОткрытьСоединение                  - tcp
-//  Данные     - Строка        - Данные для отправки в виде строки                  - data
-//  Кодировка  - Строка        - Кодировка для записи исходящей строки в поток      - enc
-//  Таймаут    - Число         - Таймаут ожидания записи (мс). 0 > без ограничений  - timeout
+//  Соединение - Произвольный - Соединение, См. ОткрытьСоединение                 - tcp
+//  Данные     - Строка       - Данные для отправки в виде строки                 - data
+//  Кодировка  - Строка       - Кодировка для записи исходящей строки в поток     - enc
+//  Таймаут    - Число        - Таймаут ожидания записи (мс). 0 > без ограничений - timeout
 //
 // Возвращаемое значение:
 //  Булево - Признак успешного выполнения
@@ -291,7 +291,7 @@
 // Получает информацию о последней ошибке в соединении
 //
 // Параметры:
-//  Соединение - Произвольный  - Соединение, См. ОткрытьСоединение - tcp
+//  Соединение - Произвольный - Соединение, См. ОткрытьСоединение - tcp
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение, Неопределено -  Информация об ошибке или неопределено, если ошибки нет
@@ -340,7 +340,7 @@
 // или неявного, при передаче строки подключения в метод `ОбработатьЗапрос`
 //
 // Параметры:
-//  ОтключитьПроверкуСертификатов - Булево - Позволяет работать с некорректными сертификатами, в т.ч. самоподписанными   - trust
+//  ОтключитьПроверкуСертификатов - Булево - Позволяет работать с некорректными сертификатами, в т.ч. самоподписанными  - trust
 //  ПутьКСертификату              - Строка - Путь к корневому PEM файлу сертификата, если его нет в системном хранилище - cert
 //
 // Возвращаемое значение:
@@ -358,43 +358,43 @@
 #Region Alternate
 
 Function CreateConnection(Val Address, Val Tls = "", Val Proxy = "") Export
-	Return ОткрытьСоединение(Address, Tls, Proxy);
+    Return ОткрытьСоединение(Address, Tls, Proxy);
 EndFunction
 
 Function CloseConnection(Val Connection) Export
-	Return ЗакрытьСоединение(Connection);
+    Return ЗакрытьСоединение(Connection);
 EndFunction
 
 Function ReadBinaryData(Val Connection, Val MaxSize = 0, Val Marker = "", Val Timeout = 5000) Export
-	Return ПрочитатьДвоичныеДанные(Connection, MaxSize, Marker, Timeout);
+    Return ПрочитатьДвоичныеДанные(Connection, MaxSize, Marker, Timeout);
 EndFunction
 
 Function ReadLine(Val Connection, Val Encoding = "UTF-8", Val Marker = "", Val Timeout = 5000) Export
-	Return ПрочитатьСтроку(Connection, Encoding, Marker, Timeout);
+    Return ПрочитатьСтроку(Connection, Encoding, Marker, Timeout);
 EndFunction
 
 Function SendBinaryData(Val Connection, Val Data, Val Timeout = 5000) Export
-	Return ОтправитьДвоичныеДанные(Connection, Data, Timeout);
+    Return ОтправитьДвоичныеДанные(Connection, Data, Timeout);
 EndFunction
 
 Function SendLine(Val Connection, Val Data, Val Encoding = "UTF-8", Val Timeout = 5000) Export
-	Return ОтправитьСтроку(Connection, Data, Encoding, Timeout);
+    Return ОтправитьСтроку(Connection, Data, Encoding, Timeout);
 EndFunction
 
 Function ProcessRequest(Val Address, Val Data = "", Val ResponseString = True, Val Tls = "", Val Proxy = "") Export
-	Return ОбработатьЗапрос(Address, Data, ResponseString, Tls, Proxy);
+    Return ОбработатьЗапрос(Address, Data, ResponseString, Tls, Proxy);
 EndFunction
 
 Function GetLastError(Val Connection) Export
-	Return ПолучитьПоследнююОшибку(Connection);
+    Return ПолучитьПоследнююОшибку(Connection);
 EndFunction
 
 Function GetProxySettings(Val Address, Val Port, Val View = "socks5", Val Login = Undefined, Val Password = Undefined) Export
-	Return ПолучитьНастройкиПрокси(Address, Port, View, Login, Password);
+    Return ПолучитьНастройкиПрокси(Address, Port, View, Login, Password);
 EndFunction
 
 Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
-	Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
+    Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
 EndFunction
 
 #EndRegion

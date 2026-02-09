@@ -94,10 +94,10 @@
 // Создает новую базу данных
 //
 // Параметры:
-//  Токен               - Строка                    - Токен                                                - token
-//  РабочееПространство - Строка                    - Идентификатор рабочего пространства                  - ws
-//  Наименование        - Строка                    - Наименование новой базы                              - title
-//  КоллекцияТаблиц - Соответствие Из КлючИЗначение - Описание таблиц: Ключ > имя, Значение > массив полей - tablesdata
+//  Токен               - Строка                        - Токен                                                - token
+//  РабочееПространство - Строка                        - Идентификатор рабочего пространства                  - ws
+//  Наименование        - Строка                        - Наименование новой базы                              - title
+//  КоллекцияТаблиц     - Соответствие Из КлючИЗначение - Описание таблиц: Ключ > имя, Значение > массив полей - tablesdata
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
@@ -168,11 +168,11 @@
 // Изменяет наименование и|или описание базы
 //
 // Параметры:
-//  Токен        - Строка  - Токен                  - token
-//  База         - Строка  - Идентификатор базы     - base
-//  Таблица      - Строка  - Идентификатор таблицы  - table
-//  Наименование - Строка  - Новое наименование     - title
-//  Описание     - Строка  - Новое описание         - description
+//  Токен        - Строка - Токен                 - token
+//  База         - Строка - Идентификатор базы    - base
+//  Таблица      - Строка - Идентификатор таблицы - table
+//  Наименование - Строка - Новое наименование    - title
+//  Описание     - Строка - Новое описание        - description
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
@@ -202,10 +202,10 @@
 // Создает новое поле в таблице
 //
 // Параметры:
-//  Токен         - Строка                     - Токен                  - token
-//  База          - Строка                     - Идентификатор базы     - base
-//  Таблица       - Строка                     - Идентификатор таблицы  - table
-//  СтруктураПоля - Структура Из КлючИЗначение - Описание нового поля   - fielddata
+//  Токен         - Строка                     - Токен                 - token
+//  База          - Строка                     - Идентификатор базы    - base
+//  Таблица       - Строка                     - Идентификатор таблицы - table
+//  СтруктураПоля - Структура Из КлючИЗначение - Описание нового поля  - fielddata
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
@@ -287,8 +287,8 @@
 // Получает описание поля числового типа
 //
 // Параметры:
-//  Наименование - Строка       - Наименование нового поля   - title
-//  Точность     - Число,Строка - Число знаков после запятой - precision
+//  Наименование - Строка        - Наименование нового поля   - title
+//  Точность     - Число, Строка - Число знаков после запятой - precision
 //
 // Возвращаемое значение:
 //  Структура -  Описание поля
@@ -397,9 +397,9 @@
 // Получает список записей выбранной таблицы
 //
 // Параметры:
-//  Токен   - Строка - Токен                                                         - token
-//  База    - Строка - Идентификатор базы данных                                     - base
-//  Таблица - Строка - Идентификатор таблицы                                         - table
+//  Токен   - Строка - Токен                                                          - token
+//  База    - Строка - Идентификатор базы данных                                      - base
+//  Таблица - Строка - Идентификатор таблицы                                          - table
 //  Отступ  - Строка - Идентификатор следующей страницы данных из предыдущего запроса - offset
 //
 // Возвращаемое значение:
@@ -480,9 +480,9 @@
 // Удаляет одну или массив записей по идентификаторам
 //
 // Параметры:
-//  Токен   - Строка                   - Токен                                             - token
-//  База    - Строка                   - Идентификатор базы данных                         - base
-//  Таблица - Строка                   - Идентификатор таблицы                             - table
+//  Токен   - Строка                   - Токен                                            - token
+//  База    - Строка                   - Идентификатор базы данных                        - base
+//  Таблица - Строка                   - Идентификатор таблицы                            - table
 //  Записи  - Строка, Массив из Строка - Идентификатор или массив идентификаторов записей - records
 //
 // Возвращаемое значение:
@@ -519,10 +519,10 @@
 // Получает список комментариев к записи в таблице
 //
 // Параметры:
-//  Токен   - Строка - Токен                                                         - token
-//  База    - Строка - Идентификатор базы данных                                     - base
-//  Таблица - Строка - Идентификатор таблицы                                         - table
-//  Запись  - Строка - Идентификатор записи в таблице                                - record
+//  Токен   - Строка - Токен                                                          - token
+//  База    - Строка - Идентификатор базы данных                                      - base
+//  Таблица - Строка - Идентификатор таблицы                                          - table
+//  Запись  - Строка - Идентификатор записи в таблице                                 - record
 //  Отступ  - Строка - Идентификатор следующей страницы данных из предыдущего запроса - offset
 //
 // Возвращаемое значение:
@@ -549,11 +549,11 @@
 // Создает комментарий к записи в таблице
 //
 // Параметры:
-//  Токен   - Строка - Токен                           - token
-//  База    - Строка - Идентификатор базы данных       - base
-//  Таблица - Строка - Идентификатор таблицы           - table
-//  Запись  - Строка - Идентификатор записи в таблице  - record
-//  Текст   - Строка - Текст комментария               - text
+//  Токен   - Строка - Токен                          - token
+//  База    - Строка - Идентификатор базы данных      - base
+//  Таблица - Строка - Идентификатор таблицы          - table
+//  Запись  - Строка - Идентификатор записи в таблице - record
+//  Текст   - Строка - Текст комментария              - text
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
@@ -579,12 +579,12 @@
 // Изменяет текст существующего комментария
 //
 // Параметры:
-//  Токен       - Строка - Токен                           - token
-//  База        - Строка - Идентификатор базы данных       - base
-//  Таблица     - Строка - Идентификатор таблицы           - table
-//  Запись      - Строка - Идентификатор записи в таблице  - record
-//  Комментарий - Строка - Идентификатор комментария       - comment
-//  Текст       - Строка - Новый текст комментария         - text
+//  Токен       - Строка - Токен                          - token
+//  База        - Строка - Идентификатор базы данных      - base
+//  Таблица     - Строка - Идентификатор таблицы          - table
+//  Запись      - Строка - Идентификатор записи в таблице - record
+//  Комментарий - Строка - Идентификатор комментария      - comment
+//  Текст       - Строка - Новый текст комментария        - text
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
@@ -611,11 +611,11 @@
 // Удаляет комментарий к записи таблицы
 //
 // Параметры:
-//  Токен       - Строка - Токен                           - token
-//  База        - Строка - Идентификатор базы данных       - base
-//  Таблица     - Строка - Идентификатор таблицы           - table
-//  Запись      - Строка - Идентификатор записи в таблице  - record
-//  Комментарий - Строка - Идентификатор комментария       - comment
+//  Токен       - Строка - Токен                          - token
+//  База        - Строка - Идентификатор базы данных      - base
+//  Таблица     - Строка - Идентификатор таблицы          - table
+//  Запись      - Строка - Идентификатор записи в таблице - record
+//  Комментарий - Строка - Идентификатор комментария      - comment
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Airtable
@@ -701,95 +701,95 @@
 #Region Alternate
 
 Function GetListOfBases(Val Token, Val Indent = "") Export
-	Return ПолучитьСписокБаз(Token, Indent);
+    Return ПолучитьСписокБаз(Token, Indent);
 EndFunction
 
 Function GetDatabaseTables(Val Token, Val Base) Export
-	Return ПолучитьТаблицыБазы(Token, Base);
+    Return ПолучитьТаблицыБазы(Token, Base);
 EndFunction
 
 Function CreateDatabase(Val Token, Val Workspace, Val Name, Val TableCollection) Export
-	Return СоздатьБазу(Token, Workspace, Name, TableCollection);
+    Return СоздатьБазу(Token, Workspace, Name, TableCollection);
 EndFunction
 
 Function CreateTable(Val Token, Val Base, Val Name, Val FieldArray, Val Description = "") Export
-	Return СоздатьТаблицу(Token, Base, Name, FieldArray, Description);
+    Return СоздатьТаблицу(Token, Base, Name, FieldArray, Description);
 EndFunction
 
 Function ModifyTable(Val Token, Val Base, Val Table, Val Name = "", Val Description = "") Export
-	Return ИзменитьТаблицу(Token, Base, Table, Name, Description);
+    Return ИзменитьТаблицу(Token, Base, Table, Name, Description);
 EndFunction
 
 Function CreateField(Val Token, Val Base, Val Table, Val FieldStructure) Export
-	Return СоздатьПоле(Token, Base, Table, FieldStructure);
+    Return СоздатьПоле(Token, Base, Table, FieldStructure);
 EndFunction
 
 Function ModifyField(Val Token, Val Base, Val Table, Val Field, Val Name = "", Val Description = "") Export
-	Return ИзменитьПоле(Token, Base, Table, Field, Name, Description);
+    Return ИзменитьПоле(Token, Base, Table, Field, Name, Description);
 EndFunction
 
 Function GetStringField(Val Name) Export
-	Return ПолучитьПолеСтроковое(Name);
+    Return ПолучитьПолеСтроковое(Name);
 EndFunction
 
 Function GetNumberField(Val Name, Val Precision = 0) Export
-	Return ПолучитьПолеНомера(Name, Precision);
+    Return ПолучитьПолеНомера(Name, Precision);
 EndFunction
 
 Function GetAttachmentField(Val Name) Export
-	Return ПолучитьПолеВложения(Name);
+    Return ПолучитьПолеВложения(Name);
 EndFunction
 
 Function GetCheckboxField(Val Name) Export
-	Return ПолучитьПолеФлажка(Name);
+    Return ПолучитьПолеФлажка(Name);
 EndFunction
 
 Function GetDateField(Val Name) Export
-	Return ПолучитьПолеДаты(Name);
+    Return ПолучитьПолеДаты(Name);
 EndFunction
 
 Function GetEmailField(Val Name) Export
-	Return ПолучитьПолеПочты(Name);
+    Return ПолучитьПолеПочты(Name);
 EndFunction
 
 Function GetPhoneField(Val Name) Export
-	Return ПолучитьПолеТелефона(Name);
+    Return ПолучитьПолеТелефона(Name);
 EndFunction
 
 Function GetLinkField(Val Name) Export
-	Return ПолучитьПолеСсылки(Name);
+    Return ПолучитьПолеСсылки(Name);
 EndFunction
 
 Function GetListOfRecords(Val Token, Val Base, Val Table, Val Indent = "") Export
-	Return ПолучитьСписокЗаписей(Token, Base, Table, Indent);
+    Return ПолучитьСписокЗаписей(Token, Base, Table, Indent);
 EndFunction
 
 Function GetRecord(Val Token, Val Base, Val Table, Val Record) Export
-	Return ПолучитьЗапись(Token, Base, Table, Record);
+    Return ПолучитьЗапись(Token, Base, Table, Record);
 EndFunction
 
 Function CreatePosts(Val Token, Val Base, Val Table, Val Data) Export
-	Return СоздатьЗаписи(Token, Base, Table, Data);
+    Return СоздатьЗаписи(Token, Base, Table, Data);
 EndFunction
 
 Function DeleteRecords(Val Token, Val Base, Val Table, Val Records) Export
-	Return УдалитьЗаписи(Token, Base, Table, Records);
+    Return УдалитьЗаписи(Token, Base, Table, Records);
 EndFunction
 
 Function GetComments(Val Token, Val Base, Val Table, Val Record, Val Indent = "") Export
-	Return ПолучитьКомментарии(Token, Base, Table, Record, Indent);
+    Return ПолучитьКомментарии(Token, Base, Table, Record, Indent);
 EndFunction
 
 Function CreateComment(Val Token, Val Base, Val Table, Val Record, Val Text) Export
-	Return СоздатьКомментарий(Token, Base, Table, Record, Text);
+    Return СоздатьКомментарий(Token, Base, Table, Record, Text);
 EndFunction
 
 Function EditComment(Val Token, Val Base, Val Table, Val Record, Val Comment, Val Text) Export
-	Return ИзменитьКомментарий(Token, Base, Table, Record, Comment, Text);
+    Return ИзменитьКомментарий(Token, Base, Table, Record, Comment, Text);
 EndFunction
 
 Function DeleteComment(Val Token, Val Base, Val Table, Val Record, Val Comment) Export
-	Return УдалитьКомментарий(Token, Base, Table, Record, Comment);
+    Return УдалитьКомментарий(Token, Base, Table, Record, Comment);
 EndFunction
 
 #EndRegion

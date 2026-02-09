@@ -58,12 +58,12 @@
 // Method at API documentation: [Create chat completion](@platform.openai.com/docs/api-reference/chat/create)
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
-// Model - String - Models name - model
-// Messages - String, Array of String - Conversation messages. See GetMessageStructure - msgs
-// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// URL                  - String                   - OpenAI server URL                              - url
+// Token                - String                   - OpenAI authorization token                     - token
+// Model                - String                   - Models name                                    - model
+// Messages             - String, Array of String  - Conversation messages. See GetMessageStructure - msgs
+// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary    - options
+// AdditionalHeaders    - Map Of KeyAndValue       - Additional request headers, if necessary       - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -92,11 +92,11 @@ EndFunction
 // Method at API documentation: [Create image](@platform.openai.com/docs/api-reference/images/create)
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
-// Model - String - Models name - model
-// Description - Structure Of KeyAndValue - Generation parameters. See GetImageDescriptionStructure - descr
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// URL               - String                   - OpenAI server URL                                       - url
+// Token             - String                   - OpenAI authorization token                              - token
+// Model             - String                   - Models name                                             - model
+// Description       - Structure Of KeyAndValue - Generation parameters. See GetImageDescriptionStructure - descr
+// AdditionalHeaders - Map Of KeyAndValue       - Additional request headers, if necessary                - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -128,12 +128,12 @@ EndFunction
 // Method at API documentation: [Create embeddings](@platform.openai.com/docs/api-reference/embeddings/create)
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
-// Model - String - Models name - model
-// Text - Array Of String - String or array of request strings - input
+// URL                  - String                   - OpenAI server URL                           - url
+// Token                - String                   - OpenAI authorization token                  - token
+// Model                - String                   - Models name                                 - model
+// Text                 - Array Of String          - String or array of request strings          - input
 // AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// AdditionalHeaders    - Map Of KeyAndValue       - Additional request headers, if necessary    - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -160,8 +160,8 @@ EndFunction
 //
 // Parameters:
 // Role - String - Source of the message: system, user, assistant, etc.. - role
-// Text - String - Message text - text
-// Name - String - Name of participant in conversation - name
+// Text - String - Message text                                          - text
+// Name - String - Name of participant in conversation                   - name
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
@@ -185,7 +185,7 @@ EndFunction
 // Is a shorthand for the function `GetMessageStructure`
 //
 // Parameters:
-// Text - String - Message text - text
+// Text - String - Message text                        - text
 // Name - String - Name of participant in conversation - name
 //
 // Returns:
@@ -228,9 +228,9 @@ EndFunction
 // Gets the message structure based on the image for the request message list
 //
 // Parameters:
-// Role - String - Message source: system, user, developer - role
-// FileID - String - Image file ID. See UploadFile - file
-// Text - String - Input text query for image processing - prompt
+// Role   - String - Message source: system, user, developer - role
+// FileID - String - Image file ID. See UploadFile           - file
+// Text   - String - Input text query for image processing   - prompt
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
@@ -262,11 +262,11 @@ EndFunction
 // The set of fields and their interpretation may vary depending on the model used
 //
 // Parameters:
-// Prompt - String - Text description of the image for generation - prompt
-// Count - Number - Number of images to generate - amount
-// Background - String - Generation background option: transparent, opaque, auto - bg
-// Size - String - Size option for generated images - size
-// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
+// Prompt               - String                   - Text description of the image for generation            - prompt
+// Count                - Number                   - Number of images to generate                            - amount
+// Background           - String                   - Generation background option: transparent, opaque, auto - bg
+// Size                 - String                   - Size option for generated images                        - size
+// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary             - options
 //
 // Returns:
 // Structure - Fields structure
@@ -301,11 +301,11 @@ EndFunction
 // Method at API documentation: [List assistants](@platform.openai.com/docs/api-reference/assistants/listAssistants)
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
-// Count - Number - Maximum number of assistants returned - limit
+// URL                  - String                   - OpenAI server URL                           - url
+// Token                - String                   - OpenAI authorization token                  - token
+// Count                - Number                   - Maximum number of assistants returned       - limit
 // AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// AdditionalHeaders    - Map Of KeyAndValue       - Additional request headers, if necessary    - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -341,13 +341,13 @@ EndFunction
 // Method at API documentation: [Create assistant](@platform.openai.com/docs/api-reference/assistants/createAssistant)
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
-// Model - String - Models name - model
-// Name - String - Assistant name - name
-// Instruction - String - System instruction for the assistant - inst
+// URL                  - String                   - OpenAI server URL                           - url
+// Token                - String                   - OpenAI authorization token                  - token
+// Model                - String                   - Models name                                 - model
+// Name                 - String                   - Assistant name                              - name
+// Instruction          - String                   - System instruction for the assistant        - inst
 // AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// AdditionalHeaders    - Map Of KeyAndValue       - Additional request headers, if necessary    - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -384,9 +384,9 @@ EndFunction
 // Method at API documentation: [Retrieve assistant](@platform.openai.com/docs/api-reference/assistants/getAssistant)
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
-// AssistantID - String - Assistant ID - id
+// URL               - String             - OpenAI server URL                        - url
+// Token             - String             - OpenAI authorization token               - token
+// AssistantID       - String             - Assistant ID                             - id
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -411,9 +411,9 @@ EndFunction
 // Method at API documentation: [Delete assistant](@platform.openai.com/docs/api-reference/assistants/deleteAssistant)
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
-// AssistantID - String - Assistant ID - id
+// URL               - String             - OpenAI server URL                        - url
+// Token             - String             - OpenAI authorization token               - token
+// AssistantID       - String             - Assistant ID                             - id
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -442,11 +442,11 @@ EndFunction
 // Method at API documentation: [List files](@platform.openai.com/docs/api-reference/files/list)
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
-// Count - Number - Maximum number of assistants returned - limit
+// URL                  - String                   - OpenAI server URL                           - url
+// Token                - String                   - OpenAI authorization token                  - token
+// Count                - Number                   - Maximum number of assistants returned       - limit
 // AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// AdditionalHeaders    - Map Of KeyAndValue       - Additional request headers, if necessary    - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -482,12 +482,12 @@ EndFunction
 // Method at API documentation: [Upload file](@platform.openai.com/docs/api-reference/files/create)
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
-// FileName - String - File name with extension - name
-// Data - String, BinaryData - Path to file or data - data
-// Destination - String - File purpose: assistants, batch, vision, user_data, evals - purpose
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// URL               - String             - OpenAI server URL                                         - url
+// Token             - String             - OpenAI authorization token                                - token
+// FileName          - String             - File name with extension                                  - name
+// Data              - String, BinaryData - Path to file or data                                      - data
+// Destination       - String             - File purpose: assistants, batch, vision, user_data, evals - purpose
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary                  - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -516,9 +516,9 @@ EndFunction
 // Method at API documentation: [Retrieve file](@platform.openai.com/docs/api-reference/files/retrieve)
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
-// FileID - String - File ID - id
+// URL               - String             - OpenAI server URL                        - url
+// Token             - String             - OpenAI authorization token               - token
+// FileID            - String             - File ID                                  - id
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -543,9 +543,9 @@ EndFunction
 // Method at API documentation: [Retrieve file content](@platform.openai.com/docs/api-reference/files/retrieve-contents)
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
-// FileID - String - File ID - id
+// URL               - String             - OpenAI server URL                        - url
+// Token             - String             - OpenAI authorization token               - token
+// FileID            - String             - File ID                                  - id
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -570,9 +570,9 @@ EndFunction
 // Method at API documentation: [Delete file](@platform.openai.com/docs/api-reference/files/delete)
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
-// FileID - String - File ID - id
+// URL               - String             - OpenAI server URL                        - url
+// Token             - String             - OpenAI authorization token               - token
+// FileID            - String             - File ID                                  - id
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -604,13 +604,13 @@ EndFunction
 // Available formats: mp3 (default), opus, aac, flac, wav, pcm
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
-// Model - String - Models name - model
-// Text - String - Text for speech synthesis - input
-// Voice - String - Voice type: alloy, ash, ballad, coral, echo, etc.. - voice
-// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// URL                  - String                   - OpenAI server URL                                  - url
+// Token                - String                   - OpenAI authorization token                         - token
+// Model                - String                   - Models name                                        - model
+// Text                 - String                   - Text for speech synthesis                          - input
+// Voice                - String                   - Voice type: alloy, ash, ballad, coral, echo, etc.. - voice
+// AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary        - options
+// AdditionalHeaders    - Map Of KeyAndValue       - Additional request headers, if necessary           - headers
 //
 // Returns:
 // BinaryData - Processing result
@@ -647,13 +647,13 @@ EndFunction
 // Method at API documentation: [Create transcription](@platform.openai.com/docs/api-reference/audio/createTranscription)
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
-// Model - String - Models name - model
-// Audio - String, BinaryData - Audio file - audio
-// MIME - String - MIME type of audio file - type
+// URL                  - String                   - OpenAI server URL                           - url
+// Token                - String                   - OpenAI authorization token                  - token
+// Model                - String                   - Models name                                 - model
+// Audio                - String, BinaryData       - Audio file                                  - audio
+// MIME                 - String                   - MIME type of audio file                     - type
 // AdditionalParameters - Structure Of KeyAndValue - Additional request parameters, if necessary - options
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// AdditionalHeaders    - Map Of KeyAndValue       - Additional request headers, if necessary    - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -694,8 +694,8 @@ EndFunction
 // Method at API documentation: [List models](@platform.openai.com/docs/api-reference/models/list)
 //
 // Parameters:
-// URL - String - OpenAI server URL - url
-// Token - String - OpenAI authorization token - token
+// URL               - String             - OpenAI server URL                        - url
+// Token             - String             - OpenAI authorization token               - token
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:

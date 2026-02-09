@@ -565,63 +565,63 @@ EndProcedure
 #Region Alternate
 
 Procedure ПолучитьДвоичныеДанные(Значение, Val Безусловно = False, Val ПопыткаB64 = True) Export
-	GetBinaryData(Значение, Безусловно, ПопыткаB64);
+    GetBinaryData(Значение, Безусловно, ПопыткаB64);
 EndProcedure
 
 Procedure ПолучитьДвоичныеИлиПоток(Значение) Export
-	GetBinaryOrStream(Значение);
+    GetBinaryOrStream(Значение);
 EndProcedure
 
 Procedure ПолучитьКоллекцию(Значение, ПоСети = True, Успех = False) Export
-	GetCollection(Значение, ПоСети, Успех);
+    GetCollection(Значение, ПоСети, Успех);
 EndProcedure
 
 Procedure ПолучитьКоллекциюКлючИЗначение(Значение, Val СообщениеОшибки = "Указанное значение не является подходящей коллекцией!") Export
-	GetKeyValueCollection(Значение, СообщениеОшибки);
+    GetKeyValueCollection(Значение, СообщениеОшибки);
 EndProcedure
 
 Procedure ПолучитьМассив(Значение) Export
-	GetArray(Значение);
+    GetArray(Значение);
 EndProcedure
 
 Procedure ПолучитьБулево(Значение) Export
-	GetBoolean(Значение);
+    GetBoolean(Значение);
 EndProcedure
 
 Procedure ПолучитьСтроку(Значение, Val ИзИсточника = False) Export
-	GetLine(Значение, ИзИсточника);
+    GetLine(Значение, ИзИсточника);
 EndProcedure
 
 Procedure ПолучитьДату(Значение) Export
-	GetDate(Значение);
+    GetDate(Значение);
 EndProcedure
 
 Procedure ПолучитьЧисло(Значение) Export
-	GetNumber(Значение);
+    GetNumber(Значение);
 EndProcedure
 
 Procedure ПолучитьФайлНаДиске(Значение, Val Расширение = "tmp") Export
-	GetFileOnDisk(Значение, Расширение);
+    GetFileOnDisk(Значение, Расширение);
 EndProcedure
 
 Procedure ВернутьУправляющиеПоследовательности(Текст) Export
-	RestoreEscapeSequences(Текст);
+    RestoreEscapeSequences(Текст);
 EndProcedure
 
 Procedure ЗаменитьУправляющиеПоследовательности(Текст) Export
-	ReplaceEscapeSequences(Текст);
+    ReplaceEscapeSequences(Текст);
 EndProcedure
 
 Procedure ЗначениеВМассив(Значение) Export
-	ValueToArray(Значение);
+    ValueToArray(Значение);
 EndProcedure
 
 Function JSONСтрокой(Val Данные, Val Экранирование = "Нет", Val ПереносСтрок = True, Val ДвойныеКавычки = True) Export
-	Return JSONString(Данные, Экранирование, ПереносСтрок, ДвойныеКавычки);
+    Return JSONString(Данные, Экранирование, ПереносСтрок, ДвойныеКавычки);
 EndFunction
 
 Function ЧислоВСтроку(Val Значение) Export
-	Return NumberToString(Значение);
+    Return NumberToString(Значение);
 EndFunction
 
 #EndRegion

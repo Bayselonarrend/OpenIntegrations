@@ -51,10 +51,10 @@
 // Возвращает URL для авторизации в браузере
 //
 // Параметры:
-//  ClientID - Строка - Client ID                      - id
-//  Calendar - Булево - разрешение на методы Calendar  - calendar
-//  Drive    - Булево - разрешение на методы Drive     - drive
-//  Sheets   - Булево - разрешение на методы Sheets    - sheets
+//  ClientID - Строка - Client ID                     - id
+//  Calendar - Булево - разрешение на методы Calendar - calendar
+//  Drive    - Булево - разрешение на методы Drive    - drive
+//  Sheets   - Булево - разрешение на методы Sheets   - sheets
 //
 // Возвращаемое значение:
 //  Строка - Ссылка получения кода
@@ -253,9 +253,9 @@
 // Удаляет лист из книги
 //
 // Параметры:
-//  Токен   - Строка - Токен                          - token
-//  Книга   - Строка - Идентификатор книги            - spreadsheet
-//  Лист    - Строка - Идентификатор удаляемого листа - sheet
+//  Токен - Строка - Токен                          - token
+//  Книга - Строка - Идентификатор книги            - spreadsheet
+//  Лист  - Строка - Идентификатор удаляемого листа - sheet
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
@@ -284,7 +284,7 @@
 // Копирует лист из одной книги в другую
 //
 // Параметры:
-//  Токен  - Строка - Токен - token
+//  Токен  - Строка - Токен                - token
 //  Откуда - Строка - ID книги источника   - from
 //  Куда   - Строка - ID книги приемника   - to
 //  Лист   - Строка - ID копируемого листа - sheet
@@ -319,10 +319,10 @@
 // Устанавливает значения ячеек листа
 //
 // Параметры:
-//  Токен                - Строка                        - Токен    - token
-//  Книга                - Строка                        - ID книги - spreadsheet
+//  Токен                - Строка                        - Токен                                                - token
+//  Книга                - Строка                        - ID книги                                             - spreadsheet
 //  СоответствиеЗначений - Соответствие Из КлючИЗначение - Данные заполнения, где ключ это имя ячейки вида A1   - data
-//  Лист                 - Строка                        - Имя листа (первый лист по умолчанию) - sheetname
+//  Лист                 - Строка                        - Имя листа (первый лист по умолчанию)                 - sheetname
 //  ОсновноеИзмерение    - Строка                        - Основное измерение при заполнении диапазона массивом - dim
 //
 // Возвращаемое значение:
@@ -384,10 +384,10 @@
 // Получает значения ячеек таблицы
 //
 // Параметры:
-//  Токен       - Строка           - Токен                                                              - token
-//  Книга       - Строка           - ID книги                                                           - spreadsheet
-//  МассивЯчеек - Массив из Строка - Массив ячеек вида А1 для получения (весь лист, если не заполнено)  - cells
-//  Лист        - Строка           - Имя листа (первый лист по умолчанию)                               - sheetname
+//  Токен       - Строка           - Токен                                                             - token
+//  Книга       - Строка           - ID книги                                                          - spreadsheet
+//  МассивЯчеек - Массив из Строка - Массив ячеек вида А1 для получения (весь лист, если не заполнено) - cells
+//  Лист        - Строка           - Имя листа (первый лист по умолчанию)                              - sheetname
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Google
@@ -507,55 +507,55 @@
 #Region Alternate
 
 Function FormCodeRetrievalLink(Val ClientID, Val Calendar = True, Val Drive = True, Val Sheets = True) Export
-	Return СформироватьСсылкуПолученияКода(ClientID, Calendar, Drive, Sheets);
+    Return СформироватьСсылкуПолученияКода(ClientID, Calendar, Drive, Sheets);
 EndFunction
 
 Function GetTokenByCode(Val ClientID, Val ClientSecret, Val Code) Export
-	Return ПолучитьТокенПоКоду(ClientID, ClientSecret, Code);
+    Return ПолучитьТокенПоКоду(ClientID, ClientSecret, Code);
 EndFunction
 
 Function RefreshToken(Val ClientID, Val ClientSecret, Val RefreshToken) Export
-	Return ОбновитьТокен(ClientID, ClientSecret, RefreshToken);
+    Return ОбновитьТокен(ClientID, ClientSecret, RefreshToken);
 EndFunction
 
 Function GetServiceAccountToken(Val Data, Val Scope, Val Expire = 3600) Export
-	Return ПолучитьТокенServiceАккаунта(Data, Scope, Expire);
+    Return ПолучитьТокенServiceАккаунта(Data, Scope, Expire);
 EndFunction
 
 Function CreateSpreadsheet(Val Token, Val Name, Val ArrayOfSheetNames) Export
-	Return СоздатьКнигу(Token, Name, ArrayOfSheetNames);
+    Return СоздатьКнигу(Token, Name, ArrayOfSheetNames);
 EndFunction
 
 Function GetSpreadsheet(Val Token, Val Identifier) Export
-	Return ПолучитьКнигу(Token, Identifier);
+    Return ПолучитьКнигу(Token, Identifier);
 EndFunction
 
 Function EditSpreadsheetTitle(Val Token, Val Spreadsheet, Val Name) Export
-	Return ИзменитьНаименованиеКниги(Token, Spreadsheet, Name);
+    Return ИзменитьНаименованиеКниги(Token, Spreadsheet, Name);
 EndFunction
 
 Function AddSheet(Val Token, Val Spreadsheet, Val Name) Export
-	Return ДобавитьЛист(Token, Spreadsheet, Name);
+    Return ДобавитьЛист(Token, Spreadsheet, Name);
 EndFunction
 
 Function DeleteSheet(Val Token, Val Spreadsheet, Val Sheet) Export
-	Return УдалитьЛист(Token, Spreadsheet, Sheet);
+    Return УдалитьЛист(Token, Spreadsheet, Sheet);
 EndFunction
 
 Function CopySheet(Val Token, Val From, Val Target, Val Sheet) Export
-	Return КопироватьЛист(Token, From, Target, Sheet);
+    Return КопироватьЛист(Token, From, Target, Sheet);
 EndFunction
 
 Function SetCellValues(Val Token, Val Spreadsheet, Val ValueMapping, Val Sheet = "", Val MajorDimension = "COLUMNS") Export
-	Return УстановитьЗначенияЯчеек(Token, Spreadsheet, ValueMapping, Sheet, MajorDimension);
+    Return УстановитьЗначенияЯчеек(Token, Spreadsheet, ValueMapping, Sheet, MajorDimension);
 EndFunction
 
 Function ClearCells(Val Token, Val Spreadsheet, Val CellsArray, Val Sheet = "") Export
-	Return ОчиститьЯчейки(Token, Spreadsheet, CellsArray, Sheet);
+    Return ОчиститьЯчейки(Token, Spreadsheet, CellsArray, Sheet);
 EndFunction
 
 Function GetCellValues(Val Token, Val Spreadsheet, Val CellsArray = "", Val Sheet = "") Export
-	Return ПолучитьЗначенияЯчеек(Token, Spreadsheet, CellsArray, Sheet);
+    Return ПолучитьЗначенияЯчеек(Token, Spreadsheet, CellsArray, Sheet);
 EndFunction
 
 #EndRegion

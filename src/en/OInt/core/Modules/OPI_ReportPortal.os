@@ -50,9 +50,9 @@
 // Gets a temporary token based on login and password
 //
 // Parameters:
-// URL - String - ReportPortal server URL - url
-// Login - String - Users login - login
-// Password - String - Users password - pass
+// URL      - String - ReportPortal server URL - url
+// Login    - String - Users login             - login
+// Password - String - Users password          - pass
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from ReportPortal
@@ -79,10 +79,10 @@ EndFunction
 // Creates a permanent ReportPortal user token
 //
 // Parameters:
-// URL - String - ReportPortal server URL - url
-// Token - String - Access token - token
-// UserID - String - User ID - user
-// KeyName - String - Token name - name
+// URL     - String - ReportPortal server URL - url
+// Token   - String - Access token            - token
+// UserID  - String - User ID                 - user
+// KeyName - String - Token name              - name
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from ReportPortal
@@ -106,10 +106,10 @@ EndFunction
 // Deletes a previously created user token
 //
 // Parameters:
-// URL - String - ReportPortal server URL - url
-// Token - String - Access token - token
-// UserID - String - User ID - user
-// KeyID - String - Token ID - id
+// URL    - String - ReportPortal server URL - url
+// Token  - String - Access token            - token
+// UserID - String - User ID                 - user
+// KeyID  - String - Token ID                - id
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from ReportPortal
@@ -136,9 +136,9 @@ EndFunction
 // Starts a new test execution session
 //
 // Parameters:
-// URL - String - ReportPortal server URL - url
-// Token - String - Access token - token
-// Project - String - Project ID - proj
+// URL             - String                   - ReportPortal server URL                   - url
+// Token           - String                   - Access token                              - token
+// Project         - String                   - Project ID                                - proj
 // LaunchStructure - Structure Of KeyAndValue - Launch parameters. See GetLaunchStructure - params
 //
 // Returns:
@@ -164,11 +164,11 @@ EndFunction
 // Creates a new test item
 //
 // Parameters:
-// URL - String - ReportPortal server URL - url
-// Token - String - Access token - token
-// Project - String - Project ID - proj
+// URL              - String                   - ReportPortal server URL               - url
+// Token            - String                   - Access token                          - token
+// Project          - String                   - Project ID                            - proj
 // ElementStructure - Structure Of KeyAndValue - Item parameters. See GetItemStructure - params
-// Parent - String - ID of the parent item, if necessary - parent
+// Parent           - String                   - ID of the parent item, if necessary   - parent
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from ReportPortal
@@ -196,10 +196,10 @@ EndFunction
 // Ends a previously started test execution session
 //
 // Parameters:
-// URL - String - ReportPortal server URL - url
-// Token - String - Access token - token
-// Project - String - Project ID - proj
-// LaunchID - String - Launch ID - id
+// URL             - String                   - ReportPortal server URL                                 - url
+// Token           - String                   - Access token                                            - token
+// Project         - String                   - Project ID                                              - proj
+// LaunchID        - String                   - Launch ID                                               - id
 // FinishStructure - Structure Of KeyAndValue - Completion parameters. See GetLaunchCompletionStructure - params
 //
 // Returns:
@@ -226,10 +226,10 @@ EndFunction
 // Ends a previously created test item
 //
 // Parameters:
-// URL - String - ReportPortal server URL - url
-// Token - String - Access token - token
-// Project - String - Project ID - proj
-// ElementID - String - Element ID - id
+// URL             - String                   - ReportPortal server URL                               - url
+// Token           - String                   - Access token                                          - token
+// Project         - String                   - Project ID                                            - proj
+// ElementID       - String                   - Element ID                                            - id
 // FinishStructure - Structure Of KeyAndValue - Completion parameters. See GetItemCompletionStructure - params
 //
 // Returns:
@@ -257,7 +257,7 @@ EndFunction
 //
 // Parameters:
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
-// AsMap - Boolean - True > returns the filter fields as a map - map
+// AsMap - Boolean - True > returns the filter fields as a map                                - map
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
@@ -295,7 +295,7 @@ EndFunction
 //
 // Parameters:
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
-// AsMap - Boolean - True > returns the filter fields as a map - map
+// AsMap - Boolean - True > returns the filter fields as a map                                - map
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
@@ -335,7 +335,7 @@ EndFunction
 //
 // Parameters:
 // Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
-// AsMap - Boolean - True > returns the filter fields as a map - map
+// AsMap - Boolean - True > returns the filter fields as a map                                - map
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
@@ -371,10 +371,10 @@ EndFunction
 // Gets the parameter structure for completing a test session
 //
 // Parameters:
-// Time - Date - Launch end date and time - end
-// Status - String - Completion status: passed, failed, stopped, skipped, interrupted, cancelled - status
-// Description - String - Launch description. Overwrites the one specified during creation - descr
-// Attributes - String - Launch attributes. Overwrites the one specified during creation - attr
+// Time        - Date   - Launch end date and time                                                    - end
+// Status      - String - Completion status: passed, failed, stopped, skipped, interrupted, cancelled - status
+// Description - String - Launch description. Overwrites the one specified during creation            - descr
+// Attributes  - String - Launch attributes. Overwrites the one specified during creation             - attr
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
@@ -400,9 +400,9 @@ EndFunction
 // Adds execution information for the test item
 //
 // Parameters:
-// URL - String - ReportPortal server URL - url
-// Token - String - Access token - token
-// Project - String - Project ID - proj
+// URL          - String                   - ReportPortal server URL                    - url
+// Token        - String                   - Access token                               - token
+// Project      - String                   - Project ID                                 - proj
 // LogStructure - Structure Of KeyAndValue - Execution information. See GetLogStructure - params
 //
 // Returns:
@@ -428,11 +428,11 @@ EndFunction
 // Gets the parameter structure for log entry
 //
 // Parameters:
-// LaunchID - String - Launch ID to which the test item belongs - launch
-// ElementID - String - Test item ID - id
-// Time - Date - Log entry date and time - time
-// Text - String - Log text information - text
-// Level - String - Information level: error, warn, info, debug, trace, fatal, unknown - level
+// LaunchID  - String - Launch ID to which the test item belongs                           - launch
+// ElementID - String - Test item ID                                                       - id
+// Time      - Date   - Log entry date and time                                            - time
+// Text      - String - Log text information                                               - text
+// Level     - String - Information level: error, warn, info, debug, trace, fatal, unknown - level
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
@@ -482,55 +482,55 @@ EndFunction
 #Region Alternate
 
 Function ПолучитьВременныйТокен(Val URL, Val Логин, Val Пароль) Export
-	Return GetTemporaryToken(URL, Логин, Пароль);
+    Return GetTemporaryToken(URL, Логин, Пароль);
 EndFunction
 
 Function ПолучитьПостоянныйТокен(Val URL, Val Токен, Val IDПользователя, Val ИмяКлюча) Export
-	Return GetPermanentToken(URL, Токен, IDПользователя, ИмяКлюча);
+    Return GetPermanentToken(URL, Токен, IDПользователя, ИмяКлюча);
 EndFunction
 
 Function УдалитьПостоянныйТокен(Val URL, Val Токен, Val IDПользователя, Val IDКлюча) Export
-	Return DeletePermanentToken(URL, Токен, IDПользователя, IDКлюча);
+    Return DeletePermanentToken(URL, Токен, IDПользователя, IDКлюча);
 EndFunction
 
 Function СоздатьЗапуск(Val URL, Val Токен, Val Проект, Val СтруктураЗапуска) Export
-	Return CreateLaunch(URL, Токен, Проект, СтруктураЗапуска);
+    Return CreateLaunch(URL, Токен, Проект, СтруктураЗапуска);
 EndFunction
 
 Function СоздатьЭлемент(Val URL, Val Токен, Val Проект, Val СтруктураЭлемента, Val Родитель = "") Export
-	Return CreateItem(URL, Токен, Проект, СтруктураЭлемента, Родитель);
+    Return CreateItem(URL, Токен, Проект, СтруктураЭлемента, Родитель);
 EndFunction
 
 Function ЗавершитьЗапуск(Val URL, Val Токен, Val Проект, Val IDЗапуска, Val СтруктураЗавершения) Export
-	Return FinishLaunch(URL, Токен, Проект, IDЗапуска, СтруктураЗавершения);
+    Return FinishLaunch(URL, Токен, Проект, IDЗапуска, СтруктураЗавершения);
 EndFunction
 
 Function ЗавершитьЭлемент(Val URL, Val Токен, Val Проект, Val IDЭлемента, Val СтруктураЗавершения) Export
-	Return FinishItem(URL, Токен, Проект, IDЭлемента, СтруктураЗавершения);
+    Return FinishItem(URL, Токен, Проект, IDЭлемента, СтруктураЗавершения);
 EndFunction
 
 Function ПолучитьСтруктуруЗапуска(Val Пустая = False, Val КакСоответствие = False) Export
-	Return GetLaunchStructure(Пустая, КакСоответствие);
+    Return GetLaunchStructure(Пустая, КакСоответствие);
 EndFunction
 
 Function ПолучитьСтруктуруЭлемента(Val Пустая = False, Val КакСоответствие = False) Export
-	Return GetItemStructure(Пустая, КакСоответствие);
+    Return GetItemStructure(Пустая, КакСоответствие);
 EndFunction
 
 Function ПолучитьСтруктуруЗавершенияЭлемента(Val Пустая = False, Val КакСоответствие = False) Export
-	Return GetItemCompletionStructure(Пустая, КакСоответствие);
+    Return GetItemCompletionStructure(Пустая, КакСоответствие);
 EndFunction
 
 Function ПолучитьСтруктуруЗавершенияЗапуска(Val Время, Val Статус = "", Val Описание = "", Val Атрибуты = "") Export
-	Return GetLaunchCompletionStructure(Время, Статус, Описание, Атрибуты);
+    Return GetLaunchCompletionStructure(Время, Статус, Описание, Атрибуты);
 EndFunction
 
 Function ЗаписатьЛог(Val URL, Val Токен, Val Проект, Val СтруктураЛога) Export
-	Return WriteLog(URL, Токен, Проект, СтруктураЛога);
+    Return WriteLog(URL, Токен, Проект, СтруктураЛога);
 EndFunction
 
 Function ПолучитьСтруктуруЛога(Val IDЗапуска, Val IDЭлемента, Val Время, Val Текст = "", Val Уровень = "info") Export
-	Return GetLogStructure(IDЗапуска, IDЭлемента, Время, Текст, Уровень);
+    Return GetLogStructure(IDЗапуска, IDЭлемента, Время, Текст, Уровень);
 EndFunction
 
 #EndRegion

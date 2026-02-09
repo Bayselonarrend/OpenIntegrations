@@ -52,8 +52,8 @@
 // Viber periodically knocks on the Webhook address, so if it is inactive, everything will stop working
 //
 // Parameters:
-// Token - String - Viber Token - token
-// URL - String - URL for setting up Webhook - url
+// Token - String - Viber Token                - token
+// URL   - String - URL for setting up Webhook - url
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Viber
@@ -87,7 +87,7 @@ EndFunction
 // Gets user information by ID
 //
 // Parameters:
-// Token - String - Token - token
+// Token  - String         - Token         - token
 // UserID - String, Number - Viber User ID - user
 //
 // Returns:
@@ -109,8 +109,8 @@ EndFunction
 // Gets the status of a user or multiple users by ID
 //
 // Parameters:
-// Token - String - Viber Token - token
-// UserIDs - String,Number,Array of String,Number - Viber User(s) ID - users
+// Token   - String                                  - Viber Token      - token
+// UserIDs - String, Number, Array of String, Number - Viber User(s) ID - users
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Viber
@@ -135,11 +135,11 @@ EndFunction
 // Sends a text message to a chat or channel
 //
 // Parameters:
-// Token - String - Token - token
-// Text - String - Message text - text
-// UserID - String, Number - User ID. For channel > administrator, for bot > recipient - user
-// SendingToChannel - Boolean - Sending to channel or bot chat - ischannel
-// Keyboard - Structure Of String - See CreateKeyboardFromArrayButton - keyboard
+// Token            - String              - Token                                                     - token
+// Text             - String              - Message text                                              - text
+// UserID           - String, Number      - User ID. For channel > administrator, for bot > recipient - user
+// SendingToChannel - Boolean             - Sending to channel or bot chat                            - ischannel
+// Keyboard         - Structure Of String - See CreateKeyboardFromArrayButton                         - keyboard
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Viber
@@ -157,11 +157,11 @@ EndFunction
 // Sends an image to a chat or channel
 //
 // Parameters:
-// Token - String - Token - token
-// URL - String - Image URL - picture
-// UserID - String, Number - User ID. For channel > administrator, for bot > recipient - user
-// SendingToChannel - boolean - Sending to channel or bot chat - ischannel
-// Description - String - Image annotation - description
+// Token            - String         - Token                                                     - token
+// URL              - String         - Image URL                                                 - picture
+// UserID           - String, Number - User ID. For channel > administrator, for bot > recipient - user
+// SendingToChannel - boolean        - Sending to channel or bot chat                            - ischannel
+// Description      - String         - Image annotation                                          - description
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Viber
@@ -175,12 +175,12 @@ EndFunction
 // Sends a file (document) to a chat or channel
 //
 // Parameters:
-// Token - String - Token - token
-// URL - String - File URL - file
-// UserID - String, Number - User ID. For channel > administrator, for bot > recipient - user
-// SendingToChannel - Boolean - Sending to channel or bot chat - ischannel
-// Extension - String - File extension - ext
-// Size - Number - File size. If not filled in > determined automatically by downloading the file - size
+// Token            - String         - Token                                                                          - token
+// URL              - String         - File URL                                                                       - file
+// UserID           - String, Number - User ID. For channel > administrator, for bot > recipient                      - user
+// SendingToChannel - Boolean        - Sending to channel or bot chat                                                 - ischannel
+// Extension        - String         - File extension                                                                 - ext
+// Size             - Number         - File size. If not filled in > determined automatically by downloading the file - size
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Viber
@@ -214,11 +214,11 @@ EndFunction
 // Sends a contact with a phone number to a chat or channel
 //
 // Parameters:
-// Token - String - Token - token
-// ContactName - String - Contact name - name
-// PhoneNumber - String - Phone number - phone
-// UserID - String, Number - User ID. For channel > administrator, for bot > recipient - user
-// SendingToChannel - Boolean - Sending to channel or bot chat - ischannel
+// Token            - String         - Token                                                     - token
+// ContactName      - String         - Contact name                                              - name
+// PhoneNumber      - String         - Phone number                                              - phone
+// UserID           - String, Number - User ID. For channel > administrator, for bot > recipient - user
+// SendingToChannel - Boolean        - Sending to channel or bot chat                            - ischannel
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Viber
@@ -240,11 +240,11 @@ EndFunction
 // Sends geographic coordinates to a chat or channel
 //
 // Parameters:
-// Token - String - Token - token
-// Latitude - String, Number - Geographic latitude - lat
-// Longitude - String, Number - Geographic longitude - long
-// UserID - String, Number - User ID. For channel > administrator, for bot > recipient - user
-// SendingToChannel - Boolean - Sending to channel or bot chat - ischannel
+// Token            - String         - Token                                                     - token
+// Latitude         - String, Number - Geographic latitude                                       - lat
+// Longitude        - String, Number - Geographic longitude                                      - long
+// UserID           - String, Number - User ID. For channel > administrator, for bot > recipient - user
+// SendingToChannel - Boolean        - Sending to channel or bot chat                            - ischannel
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Viber
@@ -262,10 +262,10 @@ EndFunction
 // Sends a URL with a preview to a chat or channel
 //
 // Parameters:
-// Token - String - Token - token
-// URL - String - SentLink - url
-// UserID - String, Number - User ID. For channel > administrator, for bot > recipient - user
-// SendingToChannel - Boolean - Sending to channel or bot chat - ischannel
+// Token            - String         - Token                                                     - token
+// URL              - String         - SentLink                                                  - url
+// UserID           - String, Number - User ID. For channel > administrator, for bot > recipient - user
+// SendingToChannel - Boolean        - Sending to channel or bot chat                            - ischannel
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Viber
@@ -279,8 +279,8 @@ EndFunction
 // Returns a keyboard structure for messages
 //
 // Parameters:
-// ButtonArray - Array of String - Array of buttons - buttons
-// ButtonColor - String - HEX color of buttons with # at the beginning - color
+// ButtonArray - Array of String - Array of buttons                             - buttons
+// ButtonColor - String          - HEX color of buttons with # at the beginning - color
 //
 // Returns:
 // Structure - Create a keyboard from an array of buttons:

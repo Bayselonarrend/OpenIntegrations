@@ -56,9 +56,9 @@
 // Method at API documentation: [Client authorization](@api-docs.cdek.ru/33828799.html)
 //
 // Parameters:
-// Account - String - Client identifier (Account) - account
-// Password - String - Secret key (Password) - pass
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// Account  - String  - Client identifier (Account)       - account
+// Password - String  - Secret key (Password)             - pass
+// TestAPI  - Boolean - Flag to use test API for requests - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -86,9 +86,9 @@ EndFunction
 // Method at API documentation: [Cashbox check information](@api-docs.cdek.ru/68258028.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// ReceivingDate - Date - Date for which data should be retrieved - date
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// Token         - String  - Auth token                              - token
+// ReceivingDate - Date    - Date for which data should be retrieved - date
+// TestAPI       - Boolean - Flag to use test API for requests       - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -113,9 +113,9 @@ EndFunction
 // Method at API documentation: [Cash on delivery registry information](@api-docs.cdek.ru/107254821.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// ReceivingDate - Date - Date for which data should be retrieved - date
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// Token         - String  - Auth token                              - token
+// ReceivingDate - Date    - Date for which data should be retrieved - date
+// TestAPI       - Boolean - Flag to use test API for requests       - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -140,9 +140,9 @@ EndFunction
 // Method at API documentation: [Cash on delivery transfer information](@api-docs.cdek.ru/71060213.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// ReceivingDate - Date - Date for which data should be retrieved - date
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// Token         - String  - Auth token                              - token
+// ReceivingDate - Date    - Date for which data should be retrieved - date
+// TestAPI       - Boolean - Flag to use test API for requests       - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -167,9 +167,9 @@ EndFunction
 // Method at API documentation: [List of pickup points](@api-docs.cdek.ru/36990336.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// Filter - Structure Of KeyAndValue - Office filter. See GetOfficeFilterDescription - filter
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// Token   - String                   - Auth token                                    - token
+// Filter  - Structure Of KeyAndValue - Office filter. See GetOfficeFilterDescription - filter
+// TestAPI - Boolean                  - Flag to use test API for requests             - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -193,11 +193,11 @@ EndFunction
 // Method at API documentation: [List of Regions](@api-docs.cdek.ru/33829453.html)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token     - String          - Auth token                                                      - token
 // Countrues - Array Of String - Array of country codes in ISO_31661_alpha2 format for selection - countries
-// Page - Number - Result page - page
-// Lang - String - Language: rus, eng, zho - lang
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// Page      - Number          - Result page                                                     - page
+// Lang      - String          - Language: rus, eng, zho                                         - lang
+// TestAPI   - Boolean         - Flag to use test API for requests                               - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -280,10 +280,10 @@ EndFunction
 // Method at API documentation: [Order registration](@api-docs.cdek.ru/33828802.html)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token            - String                   - Auth token                                   - token
 // OrderDescription - Structure Of KeyAndValue - Set of order fields. See GetOrderDescription - order
-// OnlineStore - Boolean - Flag of Online store order type - ostore
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// OnlineStore      - Boolean                  - Flag of Online store order type              - ostore
+// TestAPI          - Boolean                  - Flag to use test API for requests            - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -310,10 +310,10 @@ EndFunction
 // Method at API documentation: [Update an order](@api-docs.cdek.ru/36989543.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUID - String - Order UUID for updating - uuid
-// OrderDescription - Structure Of KeyAndValue - Set of changing order fields - order
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// Token            - String                   - Auth token                        - token
+// UUID             - String                   - Order UUID for updating           - uuid
+// OrderDescription - Structure Of KeyAndValue - Set of changing order fields      - order
+// TestAPI          - Boolean                  - Flag to use test API for requests - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -339,8 +339,8 @@ EndFunction
 // Method at API documentation: [Deleting an order](@api-docs.cdek.ru/33828855.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUID - String - Order UUID for deletion - uuid
+// Token   - String  - Auth token                        - token
+// UUID    - String  - Order UUID for deletion           - uuid
 // TestAPI - Boolean - Flag to use test API for requests - testapi
 //
 // Returns:
@@ -365,8 +365,8 @@ EndFunction
 // Method at API documentation: [Order details](@api-docs.cdek.ru/33828849.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUID - String - Order UUID - uuid
+// Token   - String  - Auth token                        - token
+// UUID    - String  - Order UUID                        - uuid
 // TestAPI - Boolean - Flag to use test API for requests - testapi
 //
 // Returns:
@@ -391,10 +391,10 @@ EndFunction
 // Method at API documentation: [Order details](@api-docs.cdek.ru/33828849.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// OrderNumber - String - Order number - number
-// Internal - Boolean - Type of order number. True > number in the customer base, False > CDEK number - internal
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// Token       - String  - Auth token                                                                    - token
+// OrderNumber - String  - Order number                                                                  - number
+// Internal    - Boolean - Type of order number. True > number in the customer base, False > CDEK number - internal
+// TestAPI     - Boolean - Flag to use test API for requests                                             - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -425,10 +425,10 @@ EndFunction
 // Method at API documentation: [Registration of refusal](@api-docs.cdek.ru/55327686.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUID - String - Order UUID - uuid
-// Tariff - Number - Tariff code (from those available under the contract) - tariff
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// Token   - String  - Auth token                                            - token
+// UUID    - String  - Order UUID                                            - uuid
+// Tariff  - Number  - Tariff code (from those available under the contract) - tariff
+// TestAPI - Boolean - Flag to use test API for requests                     - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -455,8 +455,8 @@ EndFunction
 // Method at API documentation: [Registration of refusal](@api-docs.cdek.ru/55327686.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUID - String - Order UUID - uuid
+// Token   - String  - Auth token                        - token
+// UUID    - String  - Order UUID                        - uuid
 // TestAPI - Boolean - Flag to use test API for requests - testapi
 //
 // Returns:
@@ -483,11 +483,11 @@ EndFunction
 // Method at API documentation: [Creating order receipt](@api-docs.cdek.ru/36969649.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUIDArray - String, Array of String - One or an array of order UUIDs - uuids
-// Type - String - Receipt type (language) - type
-// CopiesPerSheet - Number - Number of copies of one receipt per sheet - count
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// Token          - String                  - Auth token                                - token
+// UUIDArray      - String, Array of String - One or an array of order UUIDs            - uuids
+// Type           - String                  - Receipt type (language)                   - type
+// CopiesPerSheet - Number                  - Number of copies of one receipt per sheet - count
+// TestAPI        - Boolean                 - Flag to use test API for requests         - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -531,10 +531,10 @@ EndFunction
 // Method at API documentation: [Receiving order receipt](@api-docs.cdek.ru/36969694.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUID - String - UUID of the receipt received during its creation - uuid
+// Token   - String  - Auth token                                                                   - token
+// UUID    - String  - UUID of the receipt received during its creation                             - uuid
 // GetFile - Boolean - True > PDF file data will be received, False > receives CDEK server response - getfile
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// TestAPI - Boolean - Flag to use test API for requests                                            - testapi
 //
 // Returns:
 // Map Of KeyAndValue, BinaryData - serialized JSON response from CDEK or a PDF file
@@ -577,12 +577,12 @@ EndFunction
 // Method at API documentation: [Creating barcode CP for the order](@api-docs.cdek.ru/36969713.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUIDArray - String, Array of String - One or an array of order UUIDs - uuids
-// Copies - Number - Number of copies - count
-// Format - String - Print format: A4, A5, A6, A7 - format
-// Lang - String - Barcode language: RUS, ENG - lang
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// Token     - String                  - Auth token                        - token
+// UUIDArray - String, Array of String - One or an array of order UUIDs    - uuids
+// Copies    - Number                  - Number of copies                  - count
+// Format    - String                  - Print format: A4, A5, A6, A7      - format
+// Lang      - String                  - Barcode language: RUS, ENG        - lang
+// TestAPI   - Boolean                 - Flag to use test API for requests - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -628,10 +628,10 @@ EndFunction
 // Method at API documentation: [Receiving barcode CP for the order](@api-docs.cdek.ru/36969722.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUID - String - The UID of the barcode received when the barcode was created - uuid
+// Token   - String  - Auth token                                                                   - token
+// UUID    - String  - The UID of the barcode received when the barcode was created                 - uuid
 // GetFile - Boolean - True > PDF file data will be received, False > receives CDEK server response - getfile
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// TestAPI - Boolean - Flag to use test API for requests                                            - testapi
 //
 // Returns:
 // Map Of KeyAndValue, BinaryData - serialized JSON response from CDEK or a PDF file
@@ -674,11 +674,11 @@ EndFunction
 // Method at API documentation: [Registration of Prealert document](@api-docs.cdek.ru/78935159.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUIDArray - String, Array of String - One or an array of order UUIDs - uuids
-// TransferDate - Date - Planned date of transfer of orders to CDEK - date
-// Point - String - Code of shipment point to which it is planned to transfer orders - point
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// Token        - String                  - Auth token                                                       - token
+// UUIDArray    - String, Array of String - One or an array of order UUIDs                                   - uuids
+// TransferDate - Date                    - Planned date of transfer of orders to CDEK                       - date
+// Point        - String                  - Code of shipment point to which it is planned to transfer orders - point
+// TestAPI      - Boolean                 - Flag to use test API for requests                                - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -721,8 +721,8 @@ EndFunction
 // Method at API documentation: [Details of prealert document](@api-docs.cdek.ru/78935281.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUID - String - Prealert UUID - uuid
+// Token   - String  - Auth token                        - token
+// UUID    - String  - Prealert UUID                     - uuid
 // TestAPI - Boolean - Flag to use test API for requests - testapi
 //
 // Returns:
@@ -747,8 +747,8 @@ EndFunction
 // Method at API documentation: [Passport data information](@api-docs.cdek.ru/55343134.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUID - String - Order UUID - uuid
+// Token   - String  - Auth token                        - token
+// UUID    - String  - Order UUID                        - uuid
 // TestAPI - Boolean - Flag to use test API for requests - testapi
 //
 // Returns:
@@ -774,8 +774,8 @@ EndFunction
 // Method at API documentation: [Cashbox check information](@api-docs.cdek.ru/68258028.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUID - String - Order UUID - uuid
+// Token   - String  - Auth token                        - token
+// UUID    - String  - Order UUID                        - uuid
 // TestAPI - Boolean - Flag to use test API for requests - testapi
 //
 // Returns:
@@ -802,9 +802,9 @@ EndFunction
 // Field descriptions in the documentation: [Order registration](@api-docs.cdek.ru/33828802.html)
 //
 // Parameters:
-// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
-// RequiredOnly - Boolean - True > only required fields will be in the set - required
-// OnlineStore - Boolean - Flag of including fields in the layout exclusively for online store orders - ostore
+// Clear        - Boolean - True > structure with empty valuse, False > field descriptions at values   - empty
+// RequiredOnly - Boolean - True > only required fields will be in the set                             - required
+// OnlineStore  - Boolean - Flag of including fields in the layout exclusively for online store orders - ostore
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
@@ -1005,8 +1005,8 @@ EndFunction
 // Method at API documentation: [Getting delivery intervals (RU)](@api-docs.cdek.ru/154160502.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUID - String - Order UUID - uuid
+// Token   - String  - Auth token                        - token
+// UUID    - String  - Order UUID                        - uuid
 // TestAPI - Boolean - Flag to use test API for requests - testapi
 //
 // Returns:
@@ -1032,9 +1032,9 @@ EndFunction
 // Method at API documentation: [Registration of refusal](@api-docs.cdek.ru/55327686.html)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token                 - String                   - Auth token                                                    - token
 // InvitationDescription - Structure Of KeyAndValue - Invitations description. See GetCourierInvitationsDescription - intake
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// TestAPI               - Boolean                  - Flag to use test API for requests                             - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -1059,8 +1059,8 @@ EndFunction
 // Method at API documentation: [Details of a courier invitation(@api-docs.cdek.ru/33828865.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUID - String - UUID of the invitation - uuid
+// Token   - String  - Auth token                        - token
+// UUID    - String  - UUID of the invitation            - uuid
 // TestAPI - Boolean - Flag to use test API for requests - testapi
 //
 // Returns:
@@ -1084,9 +1084,9 @@ EndFunction
 // Method at API documentation: [Deleting a courier invitation](@api-docs.cdek.ru/33828880.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUID - String - UUID of the invitation for deletion - uuid
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// Token   - String  - Auth token                          - token
+// UUID    - String  - UUID of the invitation for deletion - uuid
+// TestAPI - Boolean - Flag to use test API for requests   - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -1110,9 +1110,9 @@ EndFunction
 // Method at API documentation: [Registration of delivery appointment](@api-docs.cdek.ru/36989576.html)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token       - String                   - Auth token                                             - token
 // Appointment - Structure Of KeyAndValue - Appointment description. See GetAppointmentDescription - appt
-// TestAPI - Boolean - Flag to use test API for requests - testapi
+// TestAPI     - Boolean                  - Flag to use test API for requests                      - testapi
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from CDEK
@@ -1137,8 +1137,8 @@ EndFunction
 // Method at API documentation: [Information about delivery appointment](@api-docs.cdek.ru/36989601.html)
 //
 // Parameters:
-// Token - String - Auth token - token
-// UUID - String - Appointment UUID - uuid
+// Token   - String  - Auth token                        - token
+// UUID    - String  - Appointment UUID                  - uuid
 // TestAPI - Boolean - Flag to use test API for requests - testapi
 //
 // Returns:
@@ -1164,8 +1164,8 @@ EndFunction
 // Field descriptions in the documentation: [Registration of a courier invitation](@api-docs.cdek.ru/33828859.html)
 //
 // Parameters:
-// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
-// RequiredOnly - Boolean - True > only required fields will be in the set - required
+// Clear        - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// RequiredOnly - Boolean - True > only required fields will be in the set                           - required
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
@@ -1252,8 +1252,8 @@ EndFunction
 // Field descriptions in the documentation: [Registration of delivery appointment](@api-docs.cdek.ru/36989576.html)
 //
 // Parameters:
-// Clear - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
-// RequiredOnly - Boolean - True > only required fields will be in the set - required
+// Clear        - Boolean - True > structure with empty valuse, False > field descriptions at values - empty
+// RequiredOnly - Boolean - True > only required fields will be in the set                           - required
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure

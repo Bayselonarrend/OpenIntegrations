@@ -76,9 +76,9 @@ EndFunction
 // Method at API documentation: [GET /events/get](@teams.vk.com/botapi/#/events/get_events_get)
 //
 // Parameters:
-// Token - String - Bot token - token
-// LastID - String, Number - ID of the last event processed before this event - last
-// Timeout - String, Number - Connection hold time for Long Polling - timeout
+// Token   - String         - Bot token                                        - token
+// LastID  - String, Number - ID of the last event processed before this event - last
+// Timeout - String, Number - Connection hold time for Long Polling            - timeout
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -104,8 +104,8 @@ EndFunction
 // Method at API documentation: [GET /files/getInfo](@teams.vk.com/botapi/#/files/get_files_getInfo)
 //
 // Parameters:
-// Token - String - Bot token - token
-// FileID - String, Number - File ID - fileid
+// Token  - String         - Bot token - token
+// FileID - String, Number - File ID   - fileid
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -134,12 +134,12 @@ EndFunction
 // Method at API documentation: [GET /messages/sendText](@teams.vk.com/botapi/#/messages/get_messages_sendText)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID for message sending - chatid
-// Text - String - Message text - text
-// ReplyID - String, Number - Replying message id if necessary - reply
-// Keyboard - Array Of String - Buttons to the message if necessary - keyboard
-// Markup - String - Markup type for message text: MarkdownV2 or HTML - parsemod
+// Token    - String          - Bot token                                        - token
+// ChatID   - String, Number  - Chat ID for message sending                      - chatid
+// Text     - String          - Message text                                     - text
+// ReplyID  - String, Number  - Replying message id if necessary                 - reply
+// Keyboard - Array Of String - Buttons to the message if necessary              - keyboard
+// Markup   - String          - Markup type for message text: MarkdownV2 or HTML - parsemod
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -174,13 +174,13 @@ EndFunction
 // Method at API documentation: [POST /messages/sendFile](@teams.vk.com/botapi/#/messages/post_messages_sendFile)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID for sending - chatid
-// File - BinaryData, String - File for sending - file
-// Text - String - File caption - text
-// FileName - String - Displayed file name - filename
-// Markup - String - Markup type for message text: MarkdownV2 or HTML - parsemod
-// ContentType - String - Content type for sending - type
+// Token       - String             - Bot token                                        - token
+// ChatID      - String, Number     - Chat ID for sending                              - chatid
+// File        - BinaryData, String - File for sending                                 - file
+// Text        - String             - File caption                                     - text
+// FileName    - String             - Displayed file name                              - filename
+// Markup      - String             - Markup type for message text: MarkdownV2 or HTML - parsemod
+// ContentType - String             - Content type for sending                         - type
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -228,12 +228,12 @@ EndFunction
 // Method at API documentation: [POST /messages/sendVoice](@teams.vk.com/botapi/#/messages/post_messages_sendVoice)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID for sending - chatid
-// File - BinaryData, String - File for sending - file
-// FileType - String - Audio type: aac, ogg or m4a - type
-// ReplyID - String, Number - Replying message id if necessary - reply
-// Keyboard - Array Of String - Buttons to the message if necessary - keyboard
+// Token    - String             - Bot token                           - token
+// ChatID   - String, Number     - Chat ID for sending                 - chatid
+// File     - BinaryData, String - File for sending                    - file
+// FileType - String             - Audio type: aac, ogg or m4a         - type
+// ReplyID  - String, Number     - Replying message id if necessary    - reply
+// Keyboard - Array Of String    - Buttons to the message if necessary - keyboard
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -277,11 +277,11 @@ EndFunction
 // Method at API documentation: [GET /messages/editText](@teams.vk.com/botapi/#/messages/get_messages_editText)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID for message sending - chatid
-// MessageID - String, Number - Message ID for editing - messageid
-// Text - String - New message text - text
-// Markup - String - Markup type for message text: MarkdownV2 or HTML - parsemod
+// Token     - String         - Bot token                                        - token
+// ChatID    - String, Number - Chat ID for message sending                      - chatid
+// MessageID - String, Number - Message ID for editing                           - messageid
+// Text      - String         - New message text                                 - text
+// Markup    - String         - Markup type for message text: MarkdownV2 or HTML - parsemod
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -314,9 +314,9 @@ EndFunction
 // Method at API documentation: [GET /messages/deleteMessages](@teams.vk.com/botapi/#/messages/get_messages_deleteMessages)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID for message sending - chatid
-// MessageID - String, Number - Message ID for editing - messageid
+// Token     - String         - Bot token                   - token
+// ChatID    - String, Number - Chat ID for message sending - chatid
+// MessageID - String, Number - Message ID for editing      - messageid
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -341,11 +341,11 @@ EndFunction
 // Method at API documentation: [GET /messages/sendFile](@teams.vk.com/botapi/#/messages/get_messages_sendFile)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID for sending - chatid
-// FileID - String, Number - File ID to send - fileid
-// Text - String - File caption - text
-// Markup - String - Markup type for message text: MarkdownV2 or HTML - parsemod
+// Token  - String         - Bot token                                        - token
+// ChatID - String, Number - Chat ID for sending                              - chatid
+// FileID - String, Number - File ID to send                                  - fileid
+// Text   - String         - File caption                                     - text
+// Markup - String         - Markup type for message text: MarkdownV2 or HTML - parsemod
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -378,8 +378,8 @@ EndFunction
 // Method at API documentation: [GET /messages/sendVoice](@teams.vk.com/botapi/#/messages/get_messages_sendVoice)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID for sending - chatid
+// Token  - String         - Bot token                - token
+// ChatID - String, Number - Chat ID for sending      - chatid
 // FileID - String, Number - File ID of voice message - fileid
 //
 // Returns:
@@ -406,11 +406,11 @@ EndFunction
 // Method at API documentation: [GET /messages/sendText](@teams.vk.com/botapi/#/messages/get_messages_sendText)
 //
 // Parameters:
-// Token - String - Bot token - token
-// MessageID - String, Number - Original message ID - messageid
-// FromChatID - String, Number - Source chat ID - fromid
-// ChatID - String, Number - Chat ID for message sending - chatid
-// Text - String - Additional message text - text
+// Token      - String         - Bot token                   - token
+// MessageID  - String, Number - Original message ID         - messageid
+// FromChatID - String, Number - Source chat ID              - fromid
+// ChatID     - String, Number - Chat ID for message sending - chatid
+// Text       - String         - Additional message text     - text
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -440,8 +440,8 @@ EndFunction
 // Method at API documentation: [GET /chats/pinMessage](@teams.vk.com/botapi/#/chats/get_chats_pinMessage)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
+// Token     - String         - Bot token                      - token
+// ChatID    - String, Number - Chat ID                        - chatid
 // MessageID - String, Number - ID of the message to be pinned - messageid
 //
 // Returns:
@@ -468,8 +468,8 @@ EndFunction
 // Method at API documentation: [GET /chats/unpinMessage](@teams.vk.com/botapi/#/chats/get_chats_unpinMessage)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
+// Token     - String         - Bot token                        - token
+// ChatID    - String, Number - Chat ID                          - chatid
 // MessageID - String, Number - ID of the message to be unpinned - messageid
 //
 // Returns:
@@ -496,11 +496,11 @@ EndFunction
 // Method at API documentation: [GET /messages/answerCallbackQuery](@teams.vk.com/botapi/#/messages/get_messages_answerCallbackQuery)
 //
 // Parameters:
-// Token - String - Bot token - token
-// EventID - String - Identifier of the callback query received by the bot - queryid
-// Text - String - Answer text - text
-// URL - String - URL to be opened by the client application - url
-// AsAlert - Boolean - Display the answer as an alert) - showalert
+// Token   - String  - Bot token                                            - token
+// EventID - String  - Identifier of the callback query received by the bot - queryid
+// Text    - String  - Answer text                                          - text
+// URL     - String  - URL to be opened by the client application           - url
+// AsAlert - Boolean - Display the answer as an alert)                      - showalert
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -533,10 +533,10 @@ EndFunction
 // Used for `SendTextMessage` function
 //
 // Parameters:
-// Text - String - Button text - text
-// Value - String - The value returned in the event. Only if the URL is not filled - data
-// URL - String - URL to create the page open button. Only if the Value is not filled in - url
-// Style - String - Button style: primary, attention or base - style
+// Text  - String - Button text                                                            - text
+// Value - String - The value returned in the event. Only if the URL is not filled         - data
+// URL   - String - URL to create the page open button. Only if the Value is not filled in - url
+// Style - String - Button style: primary, attention or base                               - style
 //
 // Returns:
 // Structure - Button for keyboard
@@ -565,9 +565,9 @@ EndFunction
 // Method at API documentation: [GET /chats/members/delete](@teams.vk.com/botapi/#/chats/get_chats_members_delete)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
-// Users - String, Number, Array of String, Number - The member or members of the chat room to remove - members
+// Token  - String                                  - Bot token                                        - token
+// ChatID - String, Number                          - Chat ID                                          - chatid
+// Users  - String, Number, Array of String, Number - The member or members of the chat room to remove - members
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -610,9 +610,9 @@ EndFunction
 // Method at API documentation: [POST ​/chats​/avatar​/set](@teams.vk.com/botapi/#/chats/post_chats_avatar_set)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
-// File - BinaryData, String - Image file - file
+// Token  - String             - Bot token  - token
+// ChatID - String, Number     - Chat ID    - chatid
+// File   - BinaryData, String - Image file - file
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -641,8 +641,8 @@ EndFunction
 // Method at API documentation: [GET /chats/getInfo](@teams.vk.com/botapi/#/chats/get_chats_getInfo)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
+// Token  - String         - Bot token - token
+// ChatID - String, Number - Chat ID   - chatid
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -662,8 +662,8 @@ EndFunction
 // Method at API documentation: [GET /chats/getAdmins](@teams.vk.com/botapi/#/chats/get_chats_getAdmins)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
+// Token  - String         - Bot token - token
+// ChatID - String, Number - Chat ID   - chatid
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -683,9 +683,9 @@ EndFunction
 // Method at API documentation: [GET /chats/getMembers](@teams.vk.com/botapi/#/chats/get_chats_getMembers)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
-// Cursor - String - Next page marker from the previous request - cursor
+// Token  - String         - Bot token                                  - token
+// ChatID - String, Number - Chat ID                                    - chatid
+// Cursor - String         - Next page marker from the previous request - cursor
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -706,8 +706,8 @@ EndFunction
 // Method at API documentation: [GET ​/chats​/getBlockedUsers](@teams.vk.com/botapi/#/chats/get_chats_getBlockedUsers)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
+// Token  - String         - Bot token - token
+// ChatID - String, Number - Chat ID   - chatid
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -728,8 +728,8 @@ EndFunction
 // Method at API documentation: [GET ​​/chats​/getPendingUsers](@teams.vk.com/botapi/#/chats/get_chats_getPendingUsers)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
+// Token  - String         - Bot token - token
+// ChatID - String, Number - Chat ID   - chatid
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -750,10 +750,10 @@ EndFunction
 // Method at API documentation: [GET ​​/chats​/blockUser](@teams.vk.com/botapi/#/chats/get_chats_blockUser)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
-// UserID - String, Number - User ID to be blocked - userid
-// DeleteLastMessages - Boolean - Delete last messages before blocking - dellast
+// Token              - String         - Bot token                            - token
+// ChatID             - String, Number - Chat ID                              - chatid
+// UserID             - String, Number - User ID to be blocked                - userid
+// DeleteLastMessages - Boolean        - Delete last messages before blocking - dellast
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -783,9 +783,9 @@ EndFunction
 // Method at API documentation: [GET ​​/chats/unblockUser](@teams.vk.com/botapi/#/chats/get_chats_unblockUser)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
-// UserID - String, Number - User ID - userid
+// Token  - String         - Bot token - token
+// ChatID - String, Number - Chat ID   - chatid
+// UserID - String, Number - User ID   - userid
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -811,8 +811,8 @@ EndFunction
 // Method at API documentation: [GET ​​/chats/resolvePending](@teams.vk.com/botapi/#/chats/get_chats_resolvePending)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
+// Token  - String         - Bot token                                         - token
+// ChatID - String, Number - Chat ID                                           - chatid
 // UserID - String, Number - User ID. For all active requests if not filled in - userid
 //
 // Returns:
@@ -833,8 +833,8 @@ EndFunction
 // Method at API documentation: [GET ​​/chats/resolvePending](@teams.vk.com/botapi/#/chats/get_chats_resolvePending)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
+// Token  - String         - Bot token                                         - token
+// ChatID - String, Number - Chat ID                                           - chatid
 // UserID - String, Number - User ID. For all active requests if not filled in - userid
 //
 // Returns:
@@ -855,9 +855,9 @@ EndFunction
 // Method at API documentation: [GET ​​/chats/setTitle](@teams.vk.com/botapi/#/chats/get_chats_setTitle)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
-// Text - String - Title text - text
+// Token  - String         - Bot token  - token
+// ChatID - String, Number - Chat ID    - chatid
+// Text   - String         - Title text - text
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -877,9 +877,9 @@ EndFunction
 // Method at API documentation: [GET ​​/chats/setAbout](@teams.vk.com/botapi/#/chats/get_chats_setAbout)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
-// Text - String - Description text - text
+// Token  - String         - Bot token        - token
+// ChatID - String, Number - Chat ID          - chatid
+// Text   - String         - Description text - text
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams
@@ -899,9 +899,9 @@ EndFunction
 // Method at API documentation: [GET /chats/setRules](@teams.vk.com/botapi/#/chats/get_chats_setRules)
 //
 // Parameters:
-// Token - String - Bot token - token
-// ChatID - String, Number - Chat ID - chatid
-// Text - String - Rules Text - text
+// Token  - String         - Bot token  - token
+// ChatID - String, Number - Chat ID    - chatid
+// Text   - String         - Rules Text - text
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from VK Teams

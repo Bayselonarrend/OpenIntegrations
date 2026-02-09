@@ -249,19 +249,19 @@ EndFunction
 #Region Alternate
 
 Function СоздатьПодпись(Val КлючПодписи, Val ДанныеПодписи, Val Алгоритм, Val ФункцияХеша) Export
-	Return CreateSignature(КлючПодписи, ДанныеПодписи, Алгоритм, ФункцияХеша);
+    Return CreateSignature(КлючПодписи, ДанныеПодписи, Алгоритм, ФункцияХеша);
 EndFunction
 
 Function Хеш(ДвоичныеДанные, Тип) Export
-	Return Hash(ДвоичныеДанные, Тип);
+    Return Hash(ДвоичныеДанные, Тип);
 EndFunction
 
 Function СклеитьДвоичныеДанные(ДвоичныеДанные1, ДвоичныеДанные2) Export
-	Return UniteBinaryData(ДвоичныеДанные1, ДвоичныеДанные2);
+    Return UniteBinaryData(ДвоичныеДанные1, ДвоичныеДанные2);
 EndFunction
 
 Function ПовторитьСтроку(Строка, Количество) Export
-	Return RepeatString(Строка, Количество);
+    Return RepeatString(Строка, Количество);
 EndFunction
 
 #EndRegion
