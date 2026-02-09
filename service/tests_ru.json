@@ -7228,5 +7228,35 @@
 		"lib": "ClickHouse",
 		"name": "ПолучитьНастройкиTls",
 		"variant": ""
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "ОткрытьПотокGRPC",
+		"variant": ""
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "ОткрытьПотокGRPC",
+		"variant": "Финал"
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "ОтправитьСообщениеGRPC",
+		"variant": ""
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "ПолучитьСообщениеGRPC",
+		"variant": ""
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "ЗавершитьОтправкуGRPC",
+		"variant": ""
+	},
+	{
+		"lib": "ClickHouse",
+		"name": "ЗакрытьПотокGRPC",
+		"variant": ""
 	}
 ]

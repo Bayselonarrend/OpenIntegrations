@@ -306,8 +306,8 @@ Function CreateGRPCConnection(Val ConnectionSettings) Export
 
 EndFunction
 
-// Open client GRPC stream !NOCLI
-// Initializes a client stream for exchange
+// Open GRPC stream !NOCLI
+// Initializes the I/O stream for communication
 //
 // Parameters:
 // Connection - Arbitrary - GRPC connection object - conn
@@ -315,44 +315,116 @@ EndFunction
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
-Function OpenClientGRPCStream(Val Connection, Val Timeout = 10000) Export
+Function OpenGRPCStream(Val Connection, Val Timeout = 10000) Export
 
-    Return OpenGRPCStream(Connection, "client", , , Timeout);
+    Service = GetGRPCServiceName();
+    Method  = "ExecuteQueryWithStreamIO";
+    Result  = OPI_GRPC.InitializeBidirectionalStream(Connection, Service, Method, Timeout);
+
+    Return Result;
 
 EndFunction
 
-// Open server GRPC stream !NOCLI
-// Initializes a server stream for exchange
+// Send GRPC message !NOCLI
+// Sends the next message to the client or bidirectional stream
 //
 // Parameters:
 // Connection - Arbitrary - GRPC connection object - conn
+// StreamID - String - Stream Identifier - stream
 // Request - Structure Of KeyAndValue - Request data. See GetRequestSettings - req
 // Session - Structure Of KeyAndValue - Session settings. See GetSessionSettings - session
-// Timeout - Number - Timeout (in ms) - tout
+// WaitNext - Boolean - Flag for waiting for the next messages after the current one - next
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
-Function OpenServerGRPCStream(Val Connection
-    , Val Request = Undefined
+Function SendGRPCMessage(Val Connection
+    , Val StreamID
+    , Val Request
     , Val Session = Undefined
-    , Val Timeout = 10000) Export
+    , Val WaitNext = False) Export
 
-    Return OpenGRPCStream(Connection, "server", Request, Session, Timeout);
+    GRPCRequest = FormGRPCRequest(Connection, Request, Session);
+    OPI_Tools.AddField("next_query_info", WaitNext, "Boolean", GRPCRequest);
+
+    Result = OPI_GRPC.SendMessage(Connection, StreamID, GRPCRequest);
+
+    Return Result;
 
 EndFunction
 
-// Open bidirectional GRPC stream !NOCLI
-// Initializes a bidirectional stream for exchange
+// Send GRPC data !NOCLI
+// Sends part of the data (additional QueryInfo) to the stream
 //
 // Parameters:
 // Connection - Arbitrary - GRPC connection object - conn
-// Timeout - Number - Timeout (in ms) - tout
+// StreamID - String - Stream Identifier - stream
+// Data - Arbitrary - Sending data - data
+// WaitNext - Boolean - Flag for waiting for the next messages after the current one - next
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
-Function OpenBidirectionalGRPCStream(Val Connection, Val Timeout = 10000) Export
+Function SendGRPCData(Val Connection, Val StreamID, Val Data, Val WaitNext = False) Export
 
-    Return OpenGRPCStream(Connection, "bidi", , , Timeout);
+    GRPCRequest = New Structure;
+
+    OPI_TypeConversion.GetBinaryData(Data, True);
+    OPI_Tools.AddField("input_data"     , Data    , "BinaryData", GRPCRequest);
+    OPI_Tools.AddField("next_query_info", WaitNext, "Boolean"   , GRPCRequest);
+
+    Result = OPI_GRPC.SendMessage(Connection, StreamID, GRPCRequest);
+
+    Return Result;
+
+EndFunction
+
+// Get GRPC message !NOCLI
+// Gets the next message from the stream
+//
+// Parameters:
+// Connection - Arbitrary - Connection object - conn
+// StreamID - String - Stream Identifier - stream
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function GetGRPCMessage(Val Connection, Val StreamID) Export
+
+    Result = OPI_GRPC.GetMessage(Connection, StreamID);
+
+    Return Result;
+
+EndFunction
+
+// Complete GRPC sending !NOCLI
+// Closes the sending channel in a client or bidirectional stream
+//
+// Parameters:
+// Connection - Arbitrary - Connection object - conn
+// StreamID - String - Stream Identifier - stream
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function CompleteGRPCSending(Val Connection, Val StreamID) Export
+
+    Result = OPI_GRPC.CompleteSend(Connection, StreamID);
+
+    Return Result;
+
+EndFunction
+
+// Close GRPC stream !NOCLI
+// Close stream by ID
+//
+// Parameters:
+// Connection - Arbitrary - Connection object - conn
+// StreamID - String - Stream Identifier - stream
+//
+// Returns:
+// Map Of KeyAndValue - Processing result
+Function CloseGRPCStream(Val Connection, Val StreamID) Export
+
+    Result = OPI_GRPC.CloseStream(Connection, StreamID);
+
+    Return Result;
 
 EndFunction
 
@@ -686,36 +758,6 @@ Function ExecuteRequestViaGRPC(Val Connection, Val Request, Val Session)
 
 EndFunction
 
-Function OpenGRPCStream(Connection
-    , Val View
-    , Val Request = Undefined
-    , Val Session = Undefined
-    , Val Timeout = 10000)
-
-    Service = GetGRPCServiceName();
-
-    If View = "client" Then
-
-        Method = "ExecuteQueryWithStreamInput";
-        Result = OPI_GRPC.InitializeClientStream(Connection, Service, Method, Timeout);
-
-    ElsIf View = "server" Then
-
-        Method      = "ExecuteQueryWithStreamOutput";
-        GRPCRequest = FormGRPCRequest(Connection, Request, Session);
-        Result      = OPI_GRPC.InitializeServerStream(Connection, Service, Method, GRPCRequest, Timeout);
-
-    Else
-
-        Method = "ExecuteQueryWithStreamIO";
-        Result = OPI_GRPC.InitializeBidirectionalStream(Connection, Service, Method, Timeout);
-
-    EndIf;
-
-    Return Result;
-
-EndFunction
-
 Function FormGRPCRequest(Val Connection, Val Request, Val Session)
 
     If Request = Undefined Then
@@ -731,10 +773,12 @@ Function FormGRPCRequest(Val Connection, Val Request, Val Session)
     Data               = OPI_Tools.GetOr(Request, "data" , Undefined);
     RequestID          = OPI_Tools.GetOr(Request, "id" , Undefined);
     QueryText          = OPI_Tools.GetOr(Request, "query" , Undefined);
-    DataFormat         = OPI_Tools.GetOr(Request, "format" , "JSON");
+    DataFormat         = OPI_Tools.GetOr(Request, "format" , Undefined);
     Database           = OPI_Tools.GetOr(Request, "database" , Undefined);
     AdditionalSettings = OPI_Tools.GetOr(Request, "settings" , New Structure);
     ExternalTables     = OPI_Tools.GetOr(Request, "external_tables", Undefined);
+
+    OPI_TypeConversion.GetBinaryData(Data, True);
 
     GRPCRequest = New Structure;
     OPI_Tools.AddField("query"        , QueryText         , "String"      , GRPCRequest);
@@ -933,16 +977,28 @@ Function ОткрытьСоединениеGRPC(Val НастройкиСоеди
 	Return CreateGRPCConnection(НастройкиСоединения);
 EndFunction
 
-Function ОткрытьКлиентскийПотокGRPC(Val Соединение, Val Таймаут = 10000) Export
-	Return OpenClientGRPCStream(Соединение, Таймаут);
+Function ОткрытьПотокGRPC(Val Соединение, Val Таймаут = 10000) Export
+	Return OpenGRPCStream(Соединение, Таймаут);
 EndFunction
 
-Function ОткрытьСерверныйПотокGRPC(Val Соединение, Val Запрос = Undefined, Val Сессия = Undefined, Val Таймаут = 10000) Export
-	Return OpenServerGRPCStream(Соединение, Запрос, Сессия, Таймаут);
+Function ОтправитьСообщениеGRPC(Val Соединение, Val IDПотока, Val Запрос, Val Сессия = Undefined, Val ОжидатьСледующее = False) Export
+	Return SendGRPCMessage(Соединение, IDПотока, Запрос, Сессия, ОжидатьСледующее);
 EndFunction
 
-Function ОткрытьДвунаправленныйПотокGRPC(Val Соединение, Val Таймаут = 10000) Export
-	Return OpenBidirectionalGRPCStream(Соединение, Таймаут);
+Function ОтправитьДанныеGRPC(Val Соединение, Val IDПотока, Val Данные, Val ОжидатьСледующее = False) Export
+	Return SendGRPCData(Соединение, IDПотока, Данные, ОжидатьСледующее);
+EndFunction
+
+Function ПолучитьСообщениеGRPC(Val Соединение, Val IDПотока) Export
+	Return GetGRPCMessage(Соединение, IDПотока);
+EndFunction
+
+Function ЗавершитьОтправкуGRPC(Val Соединение, Val IDПотока) Export
+	Return CompleteGRPCSending(Соединение, IDПотока);
+EndFunction
+
+Function ЗакрытьПотокGRPC(Val Соединение, Val IDПотока) Export
+	Return CloseGRPCStream(Соединение, IDПотока);
 EndFunction
 
 Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export

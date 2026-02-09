@@ -1,0 +1,15 @@
+    URL = "http://localhost:9101";
+    Login    = "bayselonarrend";
+    Password = "12we...";
+
+    Authorization = New Structure(Login, Password);
+
+    ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
+    Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    Timeout = 10000;
+
+    OpeningResult = OPI_ClickHouse.OpenGRPCStream(Connection, Timeout);
+    StreamID      = OpeningResult["streamId"];
+
+    Result = OPI_ClickHouse.CloseGRPCStream(Connection, StreamID);
