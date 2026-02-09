@@ -51,10 +51,10 @@
 // Returns URL for browser authorization
 //
 // Parameters:
-// ClientID - String - Client ID - id
+// ClientID - String  - Client ID                   - id
 // Calendar - Boolean - Calendar methods permission - calendar
-// Drive - Boolean - Drive methods permission - drive
-// Sheets - Boolean - Sheets methods permission - sheets
+// Drive    - Boolean - Drive methods permission    - drive
+// Sheets   - Boolean - Sheets methods permission   - sheets
 //
 // Returns:
 // String - Code retrieval link
@@ -72,9 +72,9 @@ EndFunction
 // Gets token by code from browser authorization
 //
 // Parameters:
-// ClientID - String - Client ID - id
-// ClientSecret - String - Client secret - secret
-// Code - String - Code from browser - code
+// ClientID     - String - Client ID         - id
+// ClientSecret - String - Client secret     - secret
+// Code         - String - Code from browser - code
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -89,7 +89,7 @@ EndFunction
 // Updates token by Refresh token
 //
 // Parameters:
-// ClientID - String - Client ID - id
+// ClientID     - String - Client ID     - id
 // ClientSecret - String - Client secret - secret
 // RefreshToken - String - Refresh token - refresh
 //
@@ -109,9 +109,9 @@ EndFunction
 // List of available scopes: [developers.google.com](https://developers.google.com/identity/protocols/oauth2/scopes)
 //
 // Parameters:
-// Data - Arbitrary - JSON authorization data as a file, collection or binary data - auth
-// Scope - Array Of String - Scope or array of scopes - scope
-// Expire - Number - Token lifetime in seconds - exp
+// Data   - Arbitrary       - JSON authorization data as a file, collection or binary data - auth
+// Scope  - Array Of String - Scope or array of scopes                                     - scope
+// Expire - Number          - Token lifetime in seconds                                    - exp
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -130,7 +130,7 @@ EndFunction
 // Gets information about a folder or file by ID
 //
 // Parameters:
-// Token - String - Token - token
+// Token      - String - Token                            - token
 // Identifier - String - Identifier of the file or folder - object
 //
 // Returns:
@@ -156,9 +156,9 @@ EndFunction
 // Gets the list of drive directories
 //
 // Parameters:
-// Token - String - Token - token
-// NameContains - String - Filter by name - query
-// Detailed - Boolean - Adds a list of files to the directory fields - depth
+// Token        - String  - Token                                        - token
+// NameContains - String  - Filter by name                               - query
+// Detailed     - Boolean - Adds a list of files to the directory fields - depth
 //
 // Returns:
 // Map Of KeyAndValue - Array of directory mappings
@@ -192,9 +192,9 @@ EndFunction
 // Gets the list of files
 //
 // Parameters:
-// Token - String - Token - token
-// NameContains - String - Filter by name - query
-// Directory - String - Filter by parent directory ID - catalog
+// Token        - String - Token                         - token
+// NameContains - String - Filter by name                - query
+// Directory    - String - Filter by parent directory ID - catalog
 //
 // Returns:
 // Map Of KeyAndValue - Array of file mappings
@@ -228,8 +228,8 @@ EndFunction
 // Uploads a file to the drive
 //
 // Parameters:
-// Token - String - Token - token
-// File - BinaryData,String - File to be uploaded - file
+// Token       - String             - Token                  - token
+// File        - BinaryData, String - File to be uploaded    - file
 // Description - Map Of KeyAndValue - See GetFileDescription - props
 //
 // Returns:
@@ -244,9 +244,9 @@ EndFunction
 // Creates an empty directory on the drive
 //
 // Parameters:
-// Token - String - Token - token
-// Name - String - Folder name - title
-// Parent - String - Parent - catalog
+// Token  - String - Token       - token
+// Name   - String - Folder name - title
+// Parent - String - Parent      - catalog
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -270,9 +270,9 @@ EndFunction
 // Gets file by ID
 //
 // Parameters:
-// Token - String - Token - token
+// Token      - String - Token           - token
 // Identifier - String - File identifier - object
-// SavePath - String - File save path - out
+// SavePath   - String - File save path  - out
 //
 // Returns:
 // BinaryData,String - Binary data or file path when SavePath parameter is specified
@@ -297,10 +297,10 @@ EndFunction
 // Copies file or directory
 //
 // Parameters:
-// Token - String - Token - token
-// Identifier - String - Object identifier - object
-// NewName - String - New object name - title
-// NewParent - String - New parent directory - catalog
+// Token      - String - Token                - token
+// Identifier - String - Object identifier    - object
+// NewName    - String - New object name      - title
+// NewParent  - String - New parent directory - catalog
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -338,10 +338,10 @@ EndFunction
 // Updates file binary data
 //
 // Parameters:
-// Token - String - Token - token
-// Identifier - String - Identifier of the object to update - object
-// File - BinaryData,String - File source for update - file
-// NewName - String - New file name (if necessary) - title
+// Token      - String             - Token                              - token
+// Identifier - String             - Identifier of the object to update - object
+// File       - BinaryData, String - File source for update             - file
+// NewName    - String             - New file name (if necessary)       - title
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -367,7 +367,7 @@ EndFunction
 // Deletes file or directory by ID
 //
 // Parameters:
-// Token - String - Token - token
+// Token      - String - Token                              - token
 // Identifier - String - Identifier of the object to delete - object
 //
 // Returns:
@@ -425,9 +425,9 @@ EndFunction
 // Creates a comment for a file or directory
 //
 // Parameters:
-// Token - String - Token - token
+// Token      - String - Token                                         - token
 // Identifier - String - Identifier of the object that needs a comment - object
-// Comment - String - Comment text - text
+// Comment    - String - Comment text                                  - text
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -453,9 +453,9 @@ EndFunction
 // Gets comment by ID
 //
 // Parameters:
-// Token - String - Token - token
-// ObjectID - String - Identifier of the file or directory where the comment is located - object
-// CommentID - String - Comment identifier - comment
+// Token     - String - Token                                                            - token
+// ObjectID  - String - Identifier of the file or directory where the comment is located - object
+// CommentID - String - Comment identifier                                               - comment
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -481,7 +481,7 @@ EndFunction
 // Gets the list of all comments of the object
 //
 // Parameters:
-// Token - String - Token - token
+// Token    - String - Token             - token
 // ObjectID - String - Object identifier - object
 //
 // Returns:
@@ -507,9 +507,9 @@ EndFunction
 // Deletes comment by ID
 //
 // Parameters:
-// Token - String - Token - token
-// ObjectID - String - Identifier of the file or directory where the comment is located - object
-// CommentID - String - Comment identifier - comment
+// Token     - String - Token                                                            - token
+// ObjectID  - String - Identifier of the file or directory where the comment is located - object
+// CommentID - String - Comment identifier                                               - comment
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google

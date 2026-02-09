@@ -172,7 +172,7 @@
 // Устанавливает новый URL запроса
 //
 // Параметры:
-//  URL - Строка -  URL запроса - url
+//  URL - Строка - URL запроса - url
 //
 // Возвращаемое значение:
 //  ОбработкаОбъект.OPI_HTTPКлиент -  Этот же объект обработки
@@ -1062,8 +1062,8 @@
 // Запись Multipart предварительно должна быть инициализирована при помощи функции `НачатьЗаписьТелаMultipart`
 //
 // Параметры:
-//  ИмяПоля   - Строка       - Имя поля формы     - field
-//  Значение  - Произвольный - Значение поля      - data
+//  ИмяПоля  - Строка       - Имя поля формы - field
+//  Значение - Произвольный - Значение поля  - data
 //
 // Возвращаемое значение:
 //  ОбработкаОбъект.OPI_HTTPКлиент -  Этот же объект обработки
@@ -1171,7 +1171,7 @@
 // Устанавливает коллекцию заголовков запросов
 //
 // Параметры:
-//  Значение     - Произвольный - Структура или соответствие заголовков запроса              - headers
+//  Значение     - Произвольный - Структура или соответствие заголовков запроса            - headers
 //  ПолнаяЗамена - Булево       - Очищает все добавленные ранее заголовки перед установкой - replace
 //
 // Возвращаемое значение:
@@ -1309,10 +1309,10 @@
 // Добавляет данные для AWS4 авторизации
 //
 // Параметры:
-//  AccessKey - Строка - Access key для авторизации       - access
-//  SecretKey - Строка - Secret key для авторизации       - secret
-//  Region    - Строка - Регион сервиса                   - region
-//  Service   - Строка - Вид сервиса, если отличен от s3  - service
+//  AccessKey - Строка - Access key для авторизации      - access
+//  SecretKey - Строка - Secret key для авторизации      - secret
+//  Region    - Строка - Регион сервиса                  - region
+//  Service   - Строка - Вид сервиса, если отличен от s3 - service
 //
 // Возвращаемое значение:
 //  ОбработкаОбъект.OPI_HTTPКлиент -  Этот же объект обработки
@@ -1347,11 +1347,11 @@
 // `УстановитьАлгоритмOAuthV1`
 //
 // Параметры:
-//  Token          - Строка - Token для авторизации            - token
-//  Secret         - Строка - Secret для авторизации           - secret
-//  ConsumerKey    - Строка - Consumer key для авторизации     - ck
-//  ConsumerSecret - Строка - Consumer secret для авторизации  - cs
-//  Версия         - Строка - Версия API                       - ver
+//  Token          - Строка - Token для авторизации           - token
+//  Secret         - Строка - Secret для авторизации          - secret
+//  ConsumerKey    - Строка - Consumer key для авторизации    - ck
+//  ConsumerSecret - Строка - Consumer secret для авторизации - cs
+//  Версия         - Строка - Версия API                      - ver
 //
 // Возвращаемое значение:
 //  ОбработкаОбъект.OPI_HTTPКлиент -  Этот же объект обработки
@@ -1598,7 +1598,7 @@
 // Возвращает объект текущего HTTP запроса
 //
 // Параметры:
-//  Принудительно - Булево -  Ложь > Вместо запроса будет возвращен объект обработки, если в ней были ошибки - force
+//  Принудительно - Булево - Ложь > Вместо запроса будет возвращен объект обработки, если в ней были ошибки - force
 //
 // Возвращаемое значение:
 //  ОбработкаОбъект.OPI_HTTPКлиент, HTTPЗапрос, Неопределено -  Запрос или этот же объект обработки
@@ -1616,7 +1616,7 @@
 // Возвращает объект текущего HTTP соединения
 //
 // Параметры:
-//  Принудительно - Булево -  Ложь > Вместо соединения будет возвращен объект обработки, если в ней были ошибки - force
+//  Принудительно - Булево - Ложь > Вместо соединения будет возвращен объект обработки, если в ней были ошибки - force
 //
 // Возвращаемое значение:
 //  ОбработкаОбъект.OPI_HTTPКлиент, HTTPСоединение, Неопределено -  Соединение или этот же объект обработки
@@ -1701,7 +1701,7 @@
 //
 // Параметры:
 //  Принудительно       - Булево - Ложь > Вместо ответа будет возвращен объект обработки, если в ней были ошибки - force
-//  ИсключениеПриОшибке - Булево - Вызывает исключение с логом, если во время обработки были ошибки - ex
+//  ИсключениеПриОшибке - Булево - Вызывает исключение с логом, если во время обработки были ошибки              - ex
 //
 // Возвращаемое значение:
 //  Произвольный -  Ответ или этот же объект обработки
@@ -1733,7 +1733,7 @@
 //
 // Параметры:
 //  Принудительно       - Булево - Ложь > Вместо ответа будет возвращен объект обработки, если в ней были ошибки - force
-//  ИсключениеПриОшибке - Булево - Вызывает исключение с логом, если во время обработки были ошибки - ex
+//  ИсключениеПриОшибке - Булево - Вызывает исключение с логом, если во время обработки были ошибки              - ex
 //
 // Возвращаемое значение:
 //  Произвольный -  Ответ или этот же объект обработки
@@ -1765,7 +1765,7 @@
 //
 // Параметры:
 //  Принудительно       - Булево - Ложь > Вместо ответа будет возвращен объект обработки, если в ней были ошибки - force
-//  ИсключениеПриОшибке - Булево - Вызывает исключение с логом, если во время обработки были ошибки - ex
+//  ИсключениеПриОшибке - Булево - Вызывает исключение с логом, если во время обработки были ошибки              - ex
 //
 // Возвращаемое значение:
 //  Произвольный -  Ответ или этот же объект обработки
@@ -3420,179 +3420,179 @@
 #Region Alternate
 
 Function Initialize(Val URL = "") Export
-	Return Инициализировать(URL);
+    Return Инициализировать(URL);
 EndFunction
 
 Function SetURL(Val URL) Export
-	Return УстановитьURL(URL);
+    Return УстановитьURL(URL);
 EndFunction
 
 Function SetURLParams(Val Value) Export
-	Return УстановитьПараметрыURL(Value);
+    Return УстановитьПараметрыURL(Value);
 EndFunction
 
 Function AddURLParameter(Val Name, Val Value, Val IgnoreEmpty = False) Export
-	Return ДобавитьПараметрURL(Name, Value, IgnoreEmpty);
+    Return ДобавитьПараметрURL(Name, Value, IgnoreEmpty);
 EndFunction
 
 Function SetResponseFile(Val Value) Export
-	Return УстановитьФайлОтвета(Value);
+    Return УстановитьФайлОтвета(Value);
 EndFunction
 
 Function SetDataType(Val Value) Export
-	Return УстановитьТипДанных(Value);
+    Return УстановитьТипДанных(Value);
 EndFunction
 
 Function SetProxy(Val Settings) Export
-	Return УстановитьПрокси(Settings);
+    Return УстановитьПрокси(Settings);
 EndFunction
 
 Function SetTimeout(Val Value) Export
-	Return УстановитьТаймаут(Value);
+    Return УстановитьТаймаут(Value);
 EndFunction
 
 Function GetLog(Val AsString = False) Export
-	Return ПолучитьЛог(AsString);
+    Return ПолучитьЛог(AsString);
 EndFunction
 
 Function UseEncoding(Val Encoding) Export
-	Return ИспользоватьКодировку(Encoding);
+    Return ИспользоватьКодировку(Encoding);
 EndFunction
 
 Function UseGzipCompression(Val Flag) Export
-	Return ИспользоватьСжатиеGzip(Flag);
+    Return ИспользоватьСжатиеGzip(Flag);
 EndFunction
 
 Function UseBodyFiledsAtOAuth(Val Flag) Export
-	Return ИспользоватьПоляТелаВOAuth(Flag);
+    Return ИспользоватьПоляТелаВOAuth(Flag);
 EndFunction
 
 Function UseURLEncoding(Val Flag) Export
-	Return ИспользоватьКодированиеURL(Flag);
+    Return ИспользоватьКодированиеURL(Flag);
 EndFunction
 
 Function MaxAttempts(Val Value) Export
-	Return МаксимумПопыток(Value);
+    Return МаксимумПопыток(Value);
 EndFunction
 
 Function MaxRedirects(Val Value) Export
-	Return МаксимумПереадресаций(Value);
+    Return МаксимумПереадресаций(Value);
 EndFunction
 
 Function SplitArraysInURL(Val Flag, Val SquareBrackets = Undefined) Export
-	Return РазделятьМассивыВURL(Flag, SquareBrackets);
+    Return РазделятьМассивыВURL(Flag, SquareBrackets);
 EndFunction
 
 Function ReturnSettings(Val Filter = Undefined) Export
-	Return ВернутьНастройки(Filter);
+    Return ВернутьНастройки(Filter);
 EndFunction
 
 Function SetBinaryBody(Val Data, Val SetIfEmpty = False) Export
-	Return УстановитьДвоичноеТело(Data, SetIfEmpty);
+    Return УстановитьДвоичноеТело(Data, SetIfEmpty);
 EndFunction
 
 Function SetStringBody(Val Data, Val WriteBOM = False) Export
-	Return УстановитьСтроковоеТело(Data, WriteBOM);
+    Return УстановитьСтроковоеТело(Data, WriteBOM);
 EndFunction
 
 Function SetJsonBody(Val Data) Export
-	Return УстановитьJsonТело(Data);
+    Return УстановитьJsonТело(Data);
 EndFunction
 
 Function SetFormBody(Val Data) Export
-	Return УстановитьFormТело(Data);
+    Return УстановитьFormТело(Data);
 EndFunction
 
 Function StartMultipartBody(UseFile = True, Val View = "form-data") Export
-	Return НачатьЗаписьТелаMultipart(UseFile, View);
+    Return НачатьЗаписьТелаMultipart(UseFile, View);
 EndFunction
 
 Function AddMultipartFormDataFile(Val FieldName, Val FileName, Val Data, Val DataType = "", Val IgnoreEmpty = False) Export
-	Return ДобавитьФайлMultipartFormData(FieldName, FileName, Data, DataType, IgnoreEmpty);
+    Return ДобавитьФайлMultipartFormData(FieldName, FileName, Data, DataType, IgnoreEmpty);
 EndFunction
 
 Function AddMultipartFormDataField(Val FieldName, Val Value) Export
-	Return ДобавитьПолеMultipartFormData(FieldName, Value);
+    Return ДобавитьПолеMultipartFormData(FieldName, Value);
 EndFunction
 
 Function AddDataAsRelated(Val Data, Val DataType, Val ContentID = "") Export
-	Return ДобавитьДанныеRelated(Data, DataType, ContentID);
+    Return ДобавитьДанныеRelated(Data, DataType, ContentID);
 EndFunction
 
 Function SetHeaders(Val Value, Val FullReplace = False) Export
-	Return УстановитьЗаголовки(Value, FullReplace);
+    Return УстановитьЗаголовки(Value, FullReplace);
 EndFunction
 
 Function AddHeader(Val Name, Val Value, Val IgnoreEmpty = False) Export
-	Return ДобавитьЗаголовок(Name, Value, IgnoreEmpty);
+    Return ДобавитьЗаголовок(Name, Value, IgnoreEmpty);
 EndFunction
 
 Function AddBasicAuthorization(Val User, Val Password) Export
-	Return ДобавитьBasicАвторизацию(User, Password);
+    Return ДобавитьBasicАвторизацию(User, Password);
 EndFunction
 
 Function AddBearerAuthorization(Val Token) Export
-	Return ДобавитьBearerАвторизацию(Token);
+    Return ДобавитьBearerАвторизацию(Token);
 EndFunction
 
 Function AddAWS4Authorization(Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export
-	Return ДобавитьAWS4Авторизацию(AccessKey, SecretKey, Region, Service);
+    Return ДобавитьAWS4Авторизацию(AccessKey, SecretKey, Region, Service);
 EndFunction
 
 Function AddOAuthV1Authorization(Val Token, Val Secret, Val ConsumerKey, Val ConsumerSecret, Val Version) Export
-	Return ДобавитьOAuthV1Авторизацию(Token, Secret, ConsumerKey, ConsumerSecret, Version);
+    Return ДобавитьOAuthV1Авторизацию(Token, Secret, ConsumerKey, ConsumerSecret, Version);
 EndFunction
 
 Function SetOAuthV1Algorithm(Val Algorithm, Val HashFunction) Export
-	Return УстановитьАлгоритмOAuthV1(Algorithm, HashFunction);
+    Return УстановитьАлгоритмOAuthV1(Algorithm, HashFunction);
 EndFunction
 
 Function ProcessRequest(Val Method, Val Start = True) Export
-	Return ОбработатьЗапрос(Method, Start);
+    Return ОбработатьЗапрос(Method, Start);
 EndFunction
 
 Function ExecuteRequest(Forced = False) Export
-	Return ВыполнитьЗапрос(Forced);
+    Return ВыполнитьЗапрос(Forced);
 EndFunction
 
 Function SendDataInParts(Val ChunkSize = 5242880, Val Method = "PUT") Export
-	Return ОтправитьДанныеЧастями(ChunkSize, Method);
+    Return ОтправитьДанныеЧастями(ChunkSize, Method);
 EndFunction
 
 Function SendPart(Val StartPosition, Val ByteCount, Val Method = "PUT") Export
-	Return ОтправитьЧасть(StartPosition, ByteCount, Method);
+    Return ОтправитьЧасть(StartPosition, ByteCount, Method);
 EndFunction
 
 Function ReturnRequest(Forced = False) Export
-	Return ВернутьЗапрос(Forced);
+    Return ВернутьЗапрос(Forced);
 EndFunction
 
 Function ReturnConnection(Forced = False) Export
-	Return ВернутьСоединение(Forced);
+    Return ВернутьСоединение(Forced);
 EndFunction
 
 Function ReturnResponse(Val Forced = False, Val ExceptionOnError = False) Export
-	Return ВернутьОтвет(Forced, ExceptionOnError);
+    Return ВернутьОтвет(Forced, ExceptionOnError);
 EndFunction
 
 Function ReturnResponseAsJSONObject(Val ToMap = True, Val ExceptionOnError = False) Export
-	Return ВернутьОтветКакJSONКоллекцию(ToMap, ExceptionOnError);
+    Return ВернутьОтветКакJSONКоллекцию(ToMap, ExceptionOnError);
 EndFunction
 
 Function ReturnResponseAsBinaryData(Val Forced = False, Val ExceptionOnError = False) Export
-	Return ВернутьОтветКакДвоичныеДанные(Forced, ExceptionOnError);
+    Return ВернутьОтветКакДвоичныеДанные(Forced, ExceptionOnError);
 EndFunction
 
 Function ReturnResponseAsString(Val Forced = False, Val ExceptionOnError = False) Export
-	Return ВернутьОтветКакСтроку(Forced, ExceptionOnError);
+    Return ВернутьОтветКакСтроку(Forced, ExceptionOnError);
 EndFunction
 
 Function ReturnResponseFilename(Val Forced = False, Val ExceptionOnError = False) Export
-	Return ВернутьИмяФайлаТелаОтвета(Forced, ExceptionOnError);
+    Return ВернутьИмяФайлаТелаОтвета(Forced, ExceptionOnError);
 EndFunction
 
 Procedure EncodeURLInURL(URL) Export
-	КодироватьURLВURL(URL);
+    КодироватьURLВURL(URL);
 EndProcedure
 
 #EndRegion

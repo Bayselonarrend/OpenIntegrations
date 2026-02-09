@@ -51,10 +51,10 @@
 // Returns URL for browser authorization
 //
 // Parameters:
-// ClientID - String - Client ID - id
+// ClientID - String  - Client ID                   - id
 // Calendar - Boolean - Calendar methods permission - calendar
-// Drive - Boolean - Drive methods permission - drive
-// Sheets - Boolean - Sheets methods permission - sheets
+// Drive    - Boolean - Drive methods permission    - drive
+// Sheets   - Boolean - Sheets methods permission   - sheets
 //
 // Returns:
 // String - Code retrieval link
@@ -72,9 +72,9 @@ EndFunction
 // Gets token by code from browser authorization
 //
 // Parameters:
-// ClientID - String - Client ID - id
-// ClientSecret - String - Client secret - secret
-// Code - String - Code from browser - code
+// ClientID     - String - Client ID         - id
+// ClientSecret - String - Client secret     - secret
+// Code         - String - Code from browser - code
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -89,7 +89,7 @@ EndFunction
 // Updates token by Refresh token
 //
 // Parameters:
-// ClientID - String - Client ID - id
+// ClientID     - String - Client ID     - id
 // ClientSecret - String - Client secret - secret
 // RefreshToken - String - Refresh token - refresh
 //
@@ -109,9 +109,9 @@ EndFunction
 // List of available scopes: [developers.google.com](https://developers.google.com/identity/protocols/oauth2/scopes)
 //
 // Parameters:
-// Data - Arbitrary - JSON authorization data as a file, collection or binary data - auth
-// Scope - Array Of String - Scope or array of scopes - scope
-// Expire - Number - Token lifetime in seconds - exp
+// Data   - Arbitrary       - JSON authorization data as a file, collection or binary data - auth
+// Scope  - Array Of String - Scope or array of scopes                                     - scope
+// Expire - Number          - Token lifetime in seconds                                    - exp
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -130,8 +130,8 @@ EndFunction
 // Creates a new spreadsheet
 //
 // Parameters:
-// Token - String - Token - token
-// Name - String - Name - title
+// Token             - String          - Token                                               - token
+// Name              - String          - Name                                                - title
 // ArrayOfSheetNames - Array of String - Array of names to add new sheets to the spreadsheet - sheets
 //
 // Returns:
@@ -163,7 +163,7 @@ EndFunction
 // Gets information about the spreadsheet by ID
 //
 // Parameters:
-// Token - String - Token - token
+// Token      - String - Token                  - token
 // Identifier - String - Spreadsheet identifier - spreadsheet
 //
 // Returns:
@@ -185,9 +185,9 @@ EndFunction
 // Changes the name of the existing spreadsheet
 //
 // Parameters:
-// Token - String - Token - token
+// Token       - String - Token         - token
 // Spreadsheet - String - SpreadsheetID - spreadsheet
-// Name - String - New name - title
+// Name        - String - New name      - title
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -223,9 +223,9 @@ EndFunction
 //
 //
 // Parameters:
-// Token - String - Token - token
+// Token       - String - Token                  - token
 // Spreadsheet - String - Spreadsheet identifier - spreadsheet
-// Name - String - NewSheetName - title
+// Name        - String - NewSheetName           - title
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -253,9 +253,9 @@ EndFunction
 // Deletes a sheet from the spreadsheet
 //
 // Parameters:
-// Token - String - Token - token
-// Spreadsheet - String - Spreadsheet identifier - spreadsheet
-// Sheet - String - IdentifierOfSheetToDelete - sheet
+// Token       - String - Token                     - token
+// Spreadsheet - String - Spreadsheet identifier    - spreadsheet
+// Sheet       - String - IdentifierOfSheetToDelete - sheet
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -284,10 +284,10 @@ EndFunction
 // Copies a sheet from one spreadsheet to another
 //
 // Parameters:
-// Token - String - Token - token
-// From - String - Source spreadsheet ID - from
+// Token  - String - Token                      - token
+// From   - String - Source spreadsheet ID      - from
 // Target - String - Destination spreadsheet ID - to
-// Sheet - String - CopiedSheetID - sheet
+// Sheet  - String - CopiedSheetID              - sheet
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -319,11 +319,11 @@ EndFunction
 // Sets sheet cell values
 //
 // Parameters:
-// Token - String - Token - token
-// Spreadsheet - String - SpreadsheetID - spreadsheet
-// ValueMapping - Map Of KeyAndValue - Fill data where the key is the cell name like A1 - data
-// Sheet - String - Sheet name (first sheet by default) - sheetname
-// MajorDimension - String - Main dimension when filling the array range - dim
+// Token          - String             - Token                                            - token
+// Spreadsheet    - String             - SpreadsheetID                                    - spreadsheet
+// ValueMapping   - Map Of KeyAndValue - Fill data where the key is the cell name like A1 - data
+// Sheet          - String             - Sheet name (first sheet by default)              - sheetname
+// MajorDimension - String             - Main dimension when filling the array range      - dim
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -356,10 +356,10 @@ EndFunction
 // Clears the value in cells
 //
 // Parameters:
-// Token - String - Token - token
-// Spreadsheet - String - SpreadsheetID - spreadsheet
-// CellsArray - Array of String - Array of cells like A1 to be cleared - cells
-// Sheet - String - Sheet name (first sheet by default) - sheetname
+// Token       - String          - Token                                - token
+// Spreadsheet - String          - SpreadsheetID                        - spreadsheet
+// CellsArray  - Array of String - Array of cells like A1 to be cleared - cells
+// Sheet       - String          - Sheet name (first sheet by default)  - sheetname
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -384,10 +384,10 @@ EndFunction
 // Gets cell values of the table
 //
 // Parameters:
-// Token - String - Token - token
-// Spreadsheet - String - SpreadsheetID - spreadsheet
-// CellsArray - Array of String - Array of A1 type cells to get (whole sheet if not filled) - cells
-// Sheet - String - Sheet name (first sheet by default) - sheetname
+// Token       - String          - Token                                                     - token
+// Spreadsheet - String          - SpreadsheetID                                             - spreadsheet
+// CellsArray  - Array of String - Array of A1 type cells to get (whole sheet if not filled) - cells
+// Sheet       - String          - Sheet name (first sheet by default)                       - sheetname
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google

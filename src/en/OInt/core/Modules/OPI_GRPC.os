@@ -56,8 +56,8 @@
 // Opens a gRPC connection
 //
 // Parameters:
-// Parameters - String - Connection parameters. See GetConnectionParameters - params
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Parameters - String                   - Connection parameters. See GetConnectionParameters - params
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings     - tls
 //
 // Returns:
 // Arbitrary - Client object or map with error information
@@ -149,8 +149,8 @@ EndFunction
 // Replaces the metadata set during connection creation
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection - conn
-// Metadata - Structure Of KeyAndValue - Metadata list - meta
+// Connection - Arbitrary                - Existing connection - conn
+// Metadata   - Structure Of KeyAndValue - Metadata list       - meta
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -181,12 +181,12 @@ EndFunction
 // Performs a unary request to the selected service
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection parameters - conn
-// Service - String - Service name - service
-// Method - String - Method name - method
-// Request - Structure Of KeyAndValue - Request data - data
-// Timeout - Number - Timeout (in ms) - tout
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Connection - Arbitrary                - Existing connection or connection parameters   - conn
+// Service    - String                   - Service name                                   - service
+// Method     - String                   - Method name                                    - method
+// Request    - Structure Of KeyAndValue - Request data                                   - data
+// Timeout    - Number                   - Timeout (in ms)                                - tout
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -247,9 +247,9 @@ EndFunction
 // `{"main.proto": passed value}`
 //
 // Parameters:
-// Address - String - Connection address (with protocol) - addr
-// Proto - Arbitrary - Schema or schema structure: Key > file name (for import), Value > schema as a string or file path - proto
-// Metadata - Structure Of KeyAndValue - Metadata structure, if necessary - meta
+// Address  - String                   - Connection address (with protocol)                                                                - addr
+// Proto    - Arbitrary                - Schema or schema structure: Key > file name (for import), Value > schema as a string or file path - proto
+// Metadata - Structure Of KeyAndValue - Metadata structure, if necessary                                                                  - meta
 //
 // Returns:
 // Structure Of KeyAndValue - Connection parameters
@@ -289,8 +289,8 @@ EndFunction
 // or implicit, when passing settings
 //
 // Parameters:
-// DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed - trust
-// CertFilepath - String - Path to the root PEM file of the certificate if it is not in the system repository - cert
+// DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed                    - trust
+// CertFilepath            - String  - Path to the root PEM file of the certificate if it is not in the system repository - cert
 //
 // Returns:
 // Structure Of KeyAndValue - Structure of TLS connection settings
@@ -308,8 +308,8 @@ EndFunction
 // Gets a list of available services
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection parameters - conn
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Connection - Arbitrary                - Existing connection or connection parameters   - conn
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -342,9 +342,9 @@ EndFunction
 // Gets a list of available methods for the specified service
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection parameters - conn
-// Service - String - Service name - service
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Connection - Arbitrary                - Existing connection or connection parameters   - conn
+// Service    - String                   - Service name                                   - service
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -379,10 +379,10 @@ EndFunction
 // Get method information
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection parameters - conn
-// Service - String - Service name - service
-// Method - String - Method name - method
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Connection - Arbitrary                - Existing connection or connection parameters   - conn
+// Service    - String                   - Service name                                   - service
+// Method     - String                   - Method name                                    - method
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -422,11 +422,11 @@ EndFunction
 // Initializes a new server stream
 //
 // Parameters:
-// Connection - Arbitrary - Connection object - conn
-// Service - String - Service name - service
-// Method - String - Method name - method
-// Request - Structure Of KeyAndValue - Client request data - data
-// Timeout - Number - Timeout (in ms) - tout
+// Connection - Arbitrary                - Connection object   - conn
+// Service    - String                   - Service name        - service
+// Method     - String                   - Method name         - method
+// Request    - Structure Of KeyAndValue - Client request data - data
+// Timeout    - Number                   - Timeout (in ms)     - tout
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -445,9 +445,9 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Connection object - conn
-// Service - String - Service name - service
-// Method - String - Method name - method
-// Timeout - Number - Timeout (in ms) - tout
+// Service    - String    - Service name      - service
+// Method     - String    - Method name       - method
+// Timeout    - Number    - Timeout (in ms)   - tout
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -465,9 +465,9 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Connection object - conn
-// Service - String - Service name - service
-// Method - String - Method name - method
-// Timeout - Number - Timeout (in ms) - tout
+// Service    - String    - Service name      - service
+// Method     - String    - Method name       - method
+// Timeout    - Number    - Timeout (in ms)   - tout
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -484,9 +484,9 @@ EndFunction
 // Sends the next message to the client or bidirectional stream
 //
 // Parameters:
-// Connection - Arbitrary - Connection object - conn
-// StreamID - String - Stream Identifier - stream
-// Request - Structure Of KeyAndValue - Request data for sending - data
+// Connection - Arbitrary                - Connection object        - conn
+// StreamID   - String                   - Stream Identifier        - stream
+// Request    - Structure Of KeyAndValue - Request data for sending - data
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -519,7 +519,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Connection object - conn
-// StreamID - String - Stream Identifier - stream
+// StreamID   - String    - Stream Identifier - stream
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -549,7 +549,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Connection object - conn
-// StreamID - String - Stream Identifier - stream
+// StreamID   - String    - Stream Identifier - stream
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -579,7 +579,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Connection object - conn
-// StreamID - String - Stream Identifier - stream
+// StreamID   - String    - Stream Identifier - stream
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -608,13 +608,13 @@ EndFunction
 // Initializes the server stream and returns an array of received messages
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection parameters - conn
-// Service - String - Service name - service
-// Method - String - Method name - method
-// Request - Structure Of KeyAndValue - First request data - data
-// Timeout - Number - Timeout for individual operation (in ms)) - tout
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
-// MessageCount - Number - Maximum messages to retrieve. Unlimited by default - count
+// Connection   - Arbitrary                - Existing connection or connection parameters       - conn
+// Service      - String                   - Service name                                       - service
+// Method       - String                   - Method name                                        - method
+// Request      - Structure Of KeyAndValue - First request data                                 - data
+// Timeout      - Number                   - Timeout for individual operation (in ms))          - tout
+// Tls          - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings     - tls
+// MessageCount - Number                   - Maximum messages to retrieve. Unlimited by default - count
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -702,12 +702,12 @@ EndFunction
 // Initializes client thread, passes message array, and receives final response
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection parameters - conn
-// Service - String - Service name - service
-// Method - String - Method name - method
-// Requests - Array of Structure - Request data array or single request - data
-// Timeout - Number - Timeout for individual operation (in ms)) - tout
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Connection - Arbitrary                - Existing connection or connection parameters   - conn
+// Service    - String                   - Service name                                   - service
+// Method     - String                   - Method name                                    - method
+// Requests   - Array of Structure       - Request data array or single request           - data
+// Timeout    - Number                   - Timeout for individual operation (in ms))      - tout
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -786,13 +786,13 @@ EndFunction
 // ExchangeOrder: `[{Message1}, {Message2}, null, {Message3}, ... {MessageN}, null, null, null, null, null]`
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection parameters - conn
-// Service - String - Service name - service
-// Method - String - Method name - method
-// ExchangeOrder - Array Of Arbitrary - Array of request data and Undefined where retrieval is needed - exch
-// Timeout - Number - Timeout for individual operation (in ms)) - tout
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
-// ContinueReceiving - Boolean - Continue receiving after processing the exchange order - cnt
+// Connection        - Arbitrary                - Existing connection or connection parameters                  - conn
+// Service           - String                   - Service name                                                  - service
+// Method            - String                   - Method name                                                   - method
+// ExchangeOrder     - Array Of Arbitrary       - Array of request data and Undefined where retrieval is needed - exch
+// Timeout           - Number                   - Timeout for individual operation (in ms))                     - tout
+// Tls               - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings                - tls
+// ContinueReceiving - Boolean                  - Continue receiving after processing the exchange order        - cnt
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -1069,83 +1069,83 @@ EndFunction
 #Region Alternate
 
 Function ОткрытьСоединение(Val Параметры, Val Tls = Undefined) Export
-	Return CreateConnection(Параметры, Tls);
+    Return CreateConnection(Параметры, Tls);
 EndFunction
 
 Function ЗакрытьСоединение(Val Соединение) Export
-	Return CloseConnection(Соединение);
+    Return CloseConnection(Соединение);
 EndFunction
 
 Function УстановитьМетаданные(Val Соединение, Val Метаданные) Export
-	Return SetMetadata(Соединение, Метаданные);
+    Return SetMetadata(Соединение, Метаданные);
 EndFunction
 
 Function ВызватьМетод(Val Соединение, Val Сервис, Val Метод, Val Запрос = Undefined, Val Таймаут = 10000, Val Tls = Undefined) Export
-	Return ExecuteMethod(Соединение, Сервис, Метод, Запрос, Таймаут, Tls);
+    Return ExecuteMethod(Соединение, Сервис, Метод, Запрос, Таймаут, Tls);
 EndFunction
 
 Function ЭтоКоннектор(Val Значение) Export
-	Return IsConnector(Значение);
+    Return IsConnector(Значение);
 EndFunction
 
 Function ПолучитьПараметрыСоединения(Val Адрес, Val Proto = Undefined, Val Метаданные = Undefined) Export
-	Return GetConnectionParameters(Адрес, Proto, Метаданные);
+    Return GetConnectionParameters(Адрес, Proto, Метаданные);
 EndFunction
 
 Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
-	Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
+    Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
 EndFunction
 
 Function ПолучитьСписокСервисов(Val Соединение, Val Tls = Undefined) Export
-	Return GetServiceList(Соединение, Tls);
+    Return GetServiceList(Соединение, Tls);
 EndFunction
 
 Function ПолучитьСписокМетодов(Val Соединение, Val Сервис, Val Tls = Undefined) Export
-	Return GetMethodList(Соединение, Сервис, Tls);
+    Return GetMethodList(Соединение, Сервис, Tls);
 EndFunction
 
 Function ПолучитьМетод(Val Соединение, Val Сервис, Val Метод, Val Tls = Undefined) Export
-	Return GetMethod(Соединение, Сервис, Метод, Tls);
+    Return GetMethod(Соединение, Сервис, Метод, Tls);
 EndFunction
 
 Function ИнициализироватьСерверныйПоток(Val Соединение, Val Сервис, Val Метод, Val Запрос, Val Таймаут = 10000) Export
-	Return InitializeServerStream(Соединение, Сервис, Метод, Запрос, Таймаут);
+    Return InitializeServerStream(Соединение, Сервис, Метод, Запрос, Таймаут);
 EndFunction
 
 Function ИнициализироватьКлиентскийПоток(Val Соединение, Val Сервис, Val Метод, Val Таймаут = 10000) Export
-	Return InitializeClientStream(Соединение, Сервис, Метод, Таймаут);
+    Return InitializeClientStream(Соединение, Сервис, Метод, Таймаут);
 EndFunction
 
 Function ИнициализироватьДвунаправленныйПоток(Val Соединение, Val Сервис, Val Метод, Val Таймаут = 10000) Export
-	Return InitializeBidirectionalStream(Соединение, Сервис, Метод, Таймаут);
+    Return InitializeBidirectionalStream(Соединение, Сервис, Метод, Таймаут);
 EndFunction
 
 Function ОтправитьСообщение(Val Соединение, Val IDПотока, Val Запрос) Export
-	Return SendMessage(Соединение, IDПотока, Запрос);
+    Return SendMessage(Соединение, IDПотока, Запрос);
 EndFunction
 
 Function ПолучитьСообщение(Val Соединение, Val IDПотока) Export
-	Return GetMessage(Соединение, IDПотока);
+    Return GetMessage(Соединение, IDПотока);
 EndFunction
 
 Function ЗавершитьОтправку(Val Соединение, Val IDПотока) Export
-	Return CompleteSend(Соединение, IDПотока);
+    Return CompleteSend(Соединение, IDПотока);
 EndFunction
 
 Function ЗакрытьПоток(Val Соединение, Val IDПотока) Export
-	Return CloseStream(Соединение, IDПотока);
+    Return CloseStream(Соединение, IDПотока);
 EndFunction
 
 Function ОбработатьСерверныйПоток(Val Соединение, Val Сервис, Val Метод, Val Запрос, Val Таймаут = 10000, Val Tls = Undefined, Val ЧислоСообщений = Undefined) Export
-	Return ProcessServerStream(Соединение, Сервис, Метод, Запрос, Таймаут, Tls, ЧислоСообщений);
+    Return ProcessServerStream(Соединение, Сервис, Метод, Запрос, Таймаут, Tls, ЧислоСообщений);
 EndFunction
 
 Function ОбработатьКлиентскийПоток(Val Соединение, Val Сервис, Val Метод, Val Запросы, Val Таймаут = 10000, Val Tls = Undefined) Export
-	Return ProcessClientStream(Соединение, Сервис, Метод, Запросы, Таймаут, Tls);
+    Return ProcessClientStream(Соединение, Сервис, Метод, Запросы, Таймаут, Tls);
 EndFunction
 
 Function ОбработатьДвунаправленныйПоток(Val Соединение, Val Сервис, Val Метод, Val ПорядокОбмена, Val Таймаут = 10000, Val Tls = Undefined, Val ПродолжатьПолучение = True) Export
-	Return ProcessBidirectionalStream(Соединение, Сервис, Метод, ПорядокОбмена, Таймаут, Tls, ПродолжатьПолучение);
+    Return ProcessBidirectionalStream(Соединение, Сервис, Метод, ПорядокОбмена, Таймаут, Tls, ПродолжатьПолучение);
 EndFunction
 
 #EndRegion

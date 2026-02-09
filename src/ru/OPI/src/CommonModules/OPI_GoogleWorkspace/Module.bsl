@@ -43,10 +43,10 @@
 // Возвращает URL для авторизации в браузере
 //
 // Параметры:
-//  ClientID - Строка - Client ID                      - id
-//  Calendar - Булево - разрешение на методы Calendar  - calendar
-//  Drive    - Булево - разрешение на методы Drive     - drive
-//  Sheets   - Булево - разрешение на методы Sheets    - sheets
+//  ClientID - Строка - Client ID                     - id
+//  Calendar - Булево - разрешение на методы Calendar - calendar
+//  Drive    - Булево - разрешение на методы Drive    - drive
+//  Sheets   - Булево - разрешение на методы Sheets   - sheets
 //
 // Возвращаемое значение:
 //  Строка - Ссылка получения кода

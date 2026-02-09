@@ -274,10 +274,10 @@
 // Добавляет новую колонку в существующую таблицу
 //
 // Параметры:
-//  Таблица    - Строка                - Имя таблицы                             - table
-//  Имя        - Строка                - Имя колонки                             - name
-//  ТипДанных  - Строка                - Тип данных колонки                      - type
-//  Соединение - Строка, Произвольный  - Существующее соединение или путь к базе - db
+//  Таблица    - Строка               - Имя таблицы                             - table
+//  Имя        - Строка               - Имя колонки                             - name
+//  ТипДанных  - Строка               - Тип данных колонки                      - type
+//  Соединение - Строка, Произвольный - Существующее соединение или путь к базе - db
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат выполнения запроса
@@ -292,9 +292,9 @@
 // Удаляет колонку из таблицы
 //
 // Параметры:
-//  Таблица    - Строка                - Имя таблицы                             - table
-//  Имя        - Строка                - Имя колонки                             - name
-//  Соединение - Строка, Произвольный  - Существующее соединение или путь к базе - db
+//  Таблица    - Строка               - Имя таблицы                             - table
+//  Имя        - Строка               - Имя колонки                             - name
+//  Соединение - Строка, Произвольный - Существующее соединение или путь к базе - db
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат выполнения запроса
@@ -406,12 +406,12 @@
 // Значения типа Двоичные данные (BLOB) возвращаются в виде `{'blob':Base64 строка}`
 //
 // Параметры:
-//  Таблица    - Строка                     - Имя таблицы                                                  - table
-//  Поля       - Массив Из Строка           - Поля для выборки                                             - fields
-//  Фильтры    - Массив Из Структура        - Массив фильтров. См. ПолучитьСтруктуруФильтраЗаписей         - filter
-//  Сортировка - Структура Из КлючИЗначение - Сортировка: Ключ > поле, Значение > направление (ASC, DESC)  - order
-//  Количество - Число                      - Ограничение количества получаемых строк                      - limit
-//  Соединение - Строка, Произвольный       - Существующее соединение или путь к базе                      - db
+//  Таблица    - Строка                     - Имя таблицы                                                 - table
+//  Поля       - Массив Из Строка           - Поля для выборки                                            - fields
+//  Фильтры    - Массив Из Структура        - Массив фильтров. См. ПолучитьСтруктуруФильтраЗаписей        - filter
+//  Сортировка - Структура Из КлючИЗначение - Сортировка: Ключ > поле, Значение > направление (ASC, DESC) - order
+//  Количество - Число                      - Ограничение количества получаемых строк                     - limit
+//  Соединение - Строка, Произвольный       - Существующее соединение или путь к базе                     - db
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат выполнения запроса
@@ -539,83 +539,83 @@
 #Region Alternate
 
 Function CreateConnection(Val Base = "") Export
-	Return ОткрытьСоединение(Base);
+    Return ОткрытьСоединение(Base);
 EndFunction
 
 Function CloseConnection(Val Connection) Export
-	Return ЗакрытьСоединение(Connection);
+    Return ЗакрытьСоединение(Connection);
 EndFunction
 
 Function IsConnector(Val Value) Export
-	Return ЭтоКоннектор(Value);
+    Return ЭтоКоннектор(Value);
 EndFunction
 
 Function ExecuteSQLQuery(Val QueryText, Val Parameters = "", Val ForceResult = False, Val Connection = "", Val Extensions = Undefined) Export
-	Return ВыполнитьЗапросSQL(QueryText, Parameters, ForceResult, Connection, Extensions);
+    Return ВыполнитьЗапросSQL(QueryText, Parameters, ForceResult, Connection, Extensions);
 EndFunction
 
 Function ConnectExtension(Val Extension, Val EntryPoint = "", Val Connection = "") Export
-	Return ПодключитьРасширение(Extension, EntryPoint, Connection);
+    Return ПодключитьРасширение(Extension, EntryPoint, Connection);
 EndFunction
 
 Function GetTableInformation(Val Table, Val Connection = "") Export
-	Return ПолучитьИнформациюОТаблице(Table, Connection);
+    Return ПолучитьИнформациюОТаблице(Table, Connection);
 EndFunction
 
 Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
-	Return СоздатьТаблицу(Table, ColoumnsStruct, Connection);
+    Return СоздатьТаблицу(Table, ColoumnsStruct, Connection);
 EndFunction
 
 Function AddTableColumn(Val Table, Val Name, Val DataType, Val Connection = "") Export
-	Return ДобавитьКолонкуТаблицы(Table, Name, DataType, Connection);
+    Return ДобавитьКолонкуТаблицы(Table, Name, DataType, Connection);
 EndFunction
 
 Function DeleteTableColumn(Val Table, Val Name, Val Connection = "") Export
-	Return УдалитьКолонкуТаблицы(Table, Name, Connection);
+    Return УдалитьКолонкуТаблицы(Table, Name, Connection);
 EndFunction
 
 Function EnsureTable(Val Table, Val ColoumnsStruct, Val Connection = "") Export
-	Return ГарантироватьТаблицу(Table, ColoumnsStruct, Connection);
+    Return ГарантироватьТаблицу(Table, ColoumnsStruct, Connection);
 EndFunction
 
 Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "") Export
-	Return ДобавитьЗаписи(Table, DataArray, Transaction, Connection);
+    Return ДобавитьЗаписи(Table, DataArray, Transaction, Connection);
 EndFunction
 
 Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "") Export
-	Return ОбновитьЗаписи(Table, ValueStructure, Filters, Connection);
+    Return ОбновитьЗаписи(Table, ValueStructure, Filters, Connection);
 EndFunction
 
 Function EnsureRecords(Val Table, Val DataArray, Val KeyFields = "", Val Transaction = True, Val Connection = "") Export
-	Return ГарантироватьЗаписи(Table, DataArray, KeyFields, Transaction, Connection);
+    Return ГарантироватьЗаписи(Table, DataArray, KeyFields, Transaction, Connection);
 EndFunction
 
 Function GetRecords(Val Table, Val Fields = "*", Val Filters = "", Val Sort = "", Val Count = "", Val Connection = "") Export
-	Return ПолучитьЗаписи(Table, Fields, Filters, Sort, Count, Connection);
+    Return ПолучитьЗаписи(Table, Fields, Filters, Sort, Count, Connection);
 EndFunction
 
 Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "") Export
-	Return УдалитьЗаписи(Table, Filters, Connection);
+    Return УдалитьЗаписи(Table, Filters, Connection);
 EndFunction
 
 Function DeleteTable(Val Table, Val Connection = "") Export
-	Return УдалитьТаблицу(Table, Connection);
+    Return УдалитьТаблицу(Table, Connection);
 EndFunction
 
 Function ClearTable(Val Table, Val Connection = "") Export
-	Return ОчиститьТаблицу(Table, Connection);
+    Return ОчиститьТаблицу(Table, Connection);
 EndFunction
 
 Function GetRecordsFilterStructure(Val Clear = False) Export
-	Return ПолучитьСтруктуруФильтраЗаписей(Clear);
+    Return ПолучитьСтруктуруФильтраЗаписей(Clear);
 EndFunction
 
 Function GetFeatures() Export
-	Return ПолучитьОсобенности();
+    Return ПолучитьОсобенности();
 EndFunction
 
 Function GetTypesStructure() Export
-	Return ПолучитьСтруктуруТипов();
+    Return ПолучитьСтруктуруТипов();
 EndFunction
 
 #EndRegion

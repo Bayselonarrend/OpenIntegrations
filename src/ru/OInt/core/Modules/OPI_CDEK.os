@@ -86,9 +86,9 @@
 // Метод в документации API: [Информация о чеке](@api-docs.cdek.ru/68257388.html)
 //
 // Параметры:
-//  Токен         - Строка - Токен авторизации                             - token
-//  ДатаПолучения - Дата   - Дата, за которую необходимо получить данные   - date
-//  ТестовыйAPI   - Булево - Флаг использования API для тестовых запросов  - testapi
+//  Токен         - Строка - Токен авторизации                            - token
+//  ДатаПолучения - Дата   - Дата, за которую необходимо получить данные  - date
+//  ТестовыйAPI   - Булево - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -113,9 +113,9 @@
 // Метод в документации API: [Информация о реестрах наложенных платежей](@api-docs.cdek.ru/107254706.html)
 //
 // Параметры:
-//  Токен         - Строка - Токен авторизации                             - token
-//  ДатаПолучения - Дата   - Дата, за которую необходимо получить данные   - date
-//  ТестовыйAPI   - Булево - Флаг использования API для тестовых запросов  - testapi
+//  Токен         - Строка - Токен авторизации                            - token
+//  ДатаПолучения - Дата   - Дата, за которую необходимо получить данные  - date
+//  ТестовыйAPI   - Булево - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -140,9 +140,9 @@
 // Метод в документации API: [Информация о переводе наложенного платежа](@api-docs.cdek.ru/71059888.html)
 //
 // Параметры:
-//  Токен         - Строка - Токен авторизации                             - token
-//  ДатаПолучения - Дата   - Дата, за которую необходимо получить данные   - date
-//  ТестовыйAPI   - Булево - Флаг использования API для тестовых запросов  - testapi
+//  Токен         - Строка - Токен авторизации                            - token
+//  ДатаПолучения - Дата   - Дата, за которую необходимо получить данные  - date
+//  ТестовыйAPI   - Булево - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -167,9 +167,9 @@
 // Метод в документации API: [Список офисов](@api-docs.cdek.ru/36982648.html)
 //
 // Параметры:
-//  Токен       - Строка - Токен авторизации                                                    - token
+//  Токен       - Строка                     - Токен авторизации                                - token
 //  Фильтр      - Структура Из КлючИЗначение - Фильтр офисов. См. ПолучитьОписаниеФильтраОфисов - filter
-//  ТестовыйAPI - Булево - Флаг использования API для тестовых запросов                         - testapi
+//  ТестовыйAPI - Булево                     - Флаг использования API для тестовых запросов     - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -229,7 +229,7 @@
 // Описания полей в документации: [Список офисов](@api-docs.cdek.ru/36982648.html)
 //
 // Параметры:
-//  Пустая  - Булево - Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей - empty
+//  Пустая - Булево - Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей - empty
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - Структура полей
@@ -310,10 +310,10 @@
 // Метод в документации API: [Изменение заказа](@api-docs.cdek.ru/36981178.html)
 //
 // Параметры:
-//  Токен           - Строка                     - Токен авторизации                              - token
-//  UUID            - Строка                     - UUID заказа для изменение                      - uuid
-//  ОписаниеЗаказа  - Структура Из КлючИЗначение - Набор изменяемых полей заказа                  - order
-//  ТестовыйAPI     - Булево                     - Флаг использования API для тестовых запросов   - testapi
+//  Токен          - Строка                     - Токен авторизации                            - token
+//  UUID           - Строка                     - UUID заказа для изменение                    - uuid
+//  ОписаниеЗаказа - Структура Из КлючИЗначение - Набор изменяемых полей заказа                - order
+//  ТестовыйAPI    - Булево                     - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -339,9 +339,9 @@
 // Метод в документации API: [Удаление заказа](@api-docs.cdek.ru/29924487.html)
 //
 // Параметры:
-//  Токен       - Строка - Токен авторизации                              - token
-//  UUID        - Строка - UUID заказа для удаления                       - uuid
-//  ТестовыйAPI - Булево - Флаг использования API для тестовых запросов   - testapi
+//  Токен       - Строка - Токен авторизации                            - token
+//  UUID        - Строка - UUID заказа для удаления                     - uuid
+//  ТестовыйAPI - Булево - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -425,10 +425,10 @@
 // Метод в документации API: [Клиентские возвраты](@api-docs.cdek.ru/122762174.html)
 //
 // Параметры:
-//  Токен       - Строка - Токен авторизации                             - token
-//  UUID        - Строка - UUID заказа                                   - uuid
-//  Тариф       - Число  - Код тарифа (из доступных по договору)         - tariff
-//  ТестовыйAPI - Булево - Флаг использования API для тестовых запросов  - testapi
+//  Токен       - Строка - Токен авторизации                            - token
+//  UUID        - Строка - UUID заказа                                  - uuid
+//  Тариф       - Число  - Код тарифа (из доступных по договору)        - tariff
+//  ТестовыйAPI - Булево - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -455,9 +455,9 @@
 // Метод в документации API: [Регистрация отказа](@api-docs.cdek.ru/55327658.html)
 //
 // Параметры:
-//  Токен       - Строка - Токен авторизации                             - token
-//  UUID        - Строка - UUID заказа                                   - uuid
-//  ТестовыйAPI - Булево - Флаг использования API для тестовых запросов  - testapi
+//  Токен       - Строка - Токен авторизации                            - token
+//  UUID        - Строка - UUID заказа                                  - uuid
+//  ТестовыйAPI - Булево - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -483,11 +483,11 @@
 // Метод в документации API: [Формирование квитанции к заказу](@api-docs.cdek.ru/36967276.html)
 //
 // Параметры:
-//  Токен        - Строка                   - Токен авторизации                             - token
-//  МассивUUID   - Строка, Массив Из Строка - Один или массив UUID заказов                  - uuids
-//  Тип          - Строка                   - Тип (язык) квитанции                          - type
-//  КопийНаЛисте - Число                    - Число копий одной квитанции на листе          - count
-//  ТестовыйAPI  - Булево                   - Флаг использования API для тестовых запросов  - testapi
+//  Токен        - Строка                   - Токен авторизации                            - token
+//  МассивUUID   - Строка, Массив Из Строка - Один или массив UUID заказов                 - uuids
+//  Тип          - Строка                   - Тип (язык) квитанции                         - type
+//  КопийНаЛисте - Число                    - Число копий одной квитанции на листе         - count
+//  ТестовыйAPI  - Булево                   - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -577,12 +577,12 @@
 // Метод в документации API: [Формирование ШК места к заказу](@api-docs.cdek.ru/36967295.html)
 //
 // Параметры:
-//  Токен        - Строка                   - Токен авторизации                             - token
-//  МассивUUID   - Строка, Массив Из Строка - Один или массив UUID заказов                  - uuids
-//  Копий        - Число                    - Число копий                                   - count
-//  Формат       - Строка                   - Формат печати: A4, A5, A6, A7                 - format
-//  Язык         - Строка                   - Язык штрихкода: RUS, ENG                      - lang
-//  ТестовыйAPI  - Булево                   - Флаг использования API для тестовых запросов  - testapi
+//  Токен       - Строка                   - Токен авторизации                            - token
+//  МассивUUID  - Строка, Массив Из Строка - Один или массив UUID заказов                 - uuids
+//  Копий       - Число                    - Число копий                                  - count
+//  Формат      - Строка                   - Формат печати: A4, A5, A6, A7                - format
+//  Язык        - Строка                   - Язык штрихкода: RUS, ENG                     - lang
+//  ТестовыйAPI - Булево                   - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -721,9 +721,9 @@
 // Метод в документации API: [Информация о преалерте](@api-docs.cdek.ru/78934799.html)
 //
 // Параметры:
-//  Токен        - Строка - Токен авторизации                             - token
-//  UUID         - Строка - UUID преалерта                                - uuid
-//  ТестовыйAPI  - Булево - Флаг использования API для тестовых запросов  - testapi
+//  Токен       - Строка - Токен авторизации                            - token
+//  UUID        - Строка - UUID преалерта                               - uuid
+//  ТестовыйAPI - Булево - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -747,9 +747,9 @@
 // Метод в документации API: [Информация о паспортных данных](@api-docs.cdek.ru/55343091.html)
 //
 // Параметры:
-//  Токен        - Строка - Токен авторизации                             - token
-//  UUID         - Строка - UUID заказа                                   - uuid
-//  ТестовыйAPI  - Булево - Флаг использования API для тестовых запросов  - testapi
+//  Токен       - Строка - Токен авторизации                            - token
+//  UUID        - Строка - UUID заказа                                  - uuid
+//  ТестовыйAPI - Булево - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -774,9 +774,9 @@
 // Метод в документации API: [Информация о чеке](@api-docs.cdek.ru/68257388.html)
 //
 // Параметры:
-//  Токен        - Строка - Токен авторизации                             - token
-//  UUID         - Строка - UUID заказа                                   - uuid
-//  ТестовыйAPI  - Булево - Флаг использования API для тестовых запросов  - testapi
+//  Токен       - Строка - Токен авторизации                            - token
+//  UUID        - Строка - UUID заказа                                  - uuid
+//  ТестовыйAPI - Булево - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -804,7 +804,7 @@
 // Параметры:
 //  Пустая             - Булево - Истина > структура с пустыми значениями, Ложь > в значениях будут описания полей - empty
 //  ТолькоОбязательные - Булево - Истина > в макете будут только обязательные поля                                 - required
-//  ИнтернетМагазин    - Булево - Признак включения в макет полей исключительно для заказов Интернет магазина       - ostore
+//  ИнтернетМагазин    - Булево - Признак включения в макет полей исключительно для заказов Интернет магазина      - ostore
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - Структура полей
@@ -1032,9 +1032,9 @@
 // Метод в документации API: [Регистрация отказа](@api-docs.cdek.ru/55327658.html)
 //
 // Параметры:
-//  Токен          - Строка - Токен авторизации                                                      - token
+//  Токен          - Строка                     - Токен авторизации                                  - token
 //  ОписаниеЗаявки - Структура Из КлючИЗначение - Описание заявки. См. ПолучитьОписаниеЗаявкиКурьера - intake
-//  ТестовыйAPI    - Булево - Флаг использования API для тестовых запросов                           - testapi
+//  ТестовыйAPI    - Булево                     - Флаг использования API для тестовых запросов       - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -1059,9 +1059,9 @@
 // Метод в документации API: [Информация о заявке](@api-docs.cdek.ru/29948360.html)
 //
 // Параметры:
-//  Токен        - Строка - Токен авторизации                             - token
-//  UUID         - Строка - UUID заявки                                   - uuid
-//  ТестовыйAPI  - Булево - Флаг использования API для тестовых запросов  - testapi
+//  Токен       - Строка - Токен авторизации                            - token
+//  UUID        - Строка - UUID заявки                                  - uuid
+//  ТестовыйAPI - Булево - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -1084,9 +1084,9 @@
 // Метод в документации API: [Удаление заявки](@api-docs.cdek.ru/29948379.html)
 //
 // Параметры:
-//  Токен        - Строка - Токен авторизации                             - token
-//  UUID         - Строка - UUID заявки для удаления                      - uuid
-//  ТестовыйAPI  - Булево - Флаг использования API для тестовых запросов  - testapi
+//  Токен       - Строка - Токен авторизации                            - token
+//  UUID        - Строка - UUID заявки для удаления                     - uuid
+//  ТестовыйAPI - Булево - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -1110,9 +1110,9 @@
 // Метод в документации API: [Регистрация договоренности о доставке](@api-docs.cdek.ru/36981338.html)
 //
 // Параметры:
-//  Токен          - Строка - Токен авторизации                                                               - token
+//  Токен          - Строка                     - Токен авторизации                                           - token
 //  Договоренность - Структура Из КлючИЗначение - Описание договоренности. См. ПолучитьОписаниеДоговоренности - appt
-//  ТестовыйAPI    - Булево - Флаг использования API для тестовых запросов                                    - testapi
+//  ТестовыйAPI    - Булево                     - Флаг использования API для тестовых запросов                - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -1137,9 +1137,9 @@
 // Метод в документации API: [Информация о договоренности о доставке](@api-docs.cdek.ru/36981626.html)
 //
 // Параметры:
-//  Токен        - Строка - Токен авторизации                             - token
-//  UUID         - Строка - UUID договоренности                           - uuid
-//  ТестовыйAPI  - Булево - Флаг использования API для тестовых запросов  - testapi
+//  Токен       - Строка - Токен авторизации                            - token
+//  UUID        - Строка - UUID договоренности                          - uuid
+//  ТестовыйAPI - Булево - Флаг использования API для тестовых запросов - testapi
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от CDEK
@@ -1339,127 +1339,127 @@
 #Region Alternate
 
 Function GetToken(Val Account, Val Password, TestAPI = False) Export
-	Return ПолучитьТокен(Account, Password, TestAPI);
+    Return ПолучитьТокен(Account, Password, TestAPI);
 EndFunction
 
 Function GetCashboxChecksByDate(Val Token, Val ReceivingDate, Val TestAPI = False) Export
-	Return ПолучитьЧекиНаДату(Token, ReceivingDate, TestAPI);
+    Return ПолучитьЧекиНаДату(Token, ReceivingDate, TestAPI);
 EndFunction
 
 Function GetDeliveryCashRegistry(Val Token, Val ReceivingDate, Val TestAPI = False) Export
-	Return ПолучитьРеестрыПлатежейНаДату(Token, ReceivingDate, TestAPI);
+    Return ПолучитьРеестрыПлатежейНаДату(Token, ReceivingDate, TestAPI);
 EndFunction
 
 Function GetDeliveryCashTransfers(Val Token, Val ReceivingDate, Val TestAPI = False) Export
-	Return ПолучитьПереводыПлатежейНаДату(Token, ReceivingDate, TestAPI);
+    Return ПолучитьПереводыПлатежейНаДату(Token, ReceivingDate, TestAPI);
 EndFunction
 
 Function GetOfficeList(Val Token, Val Filter = "", Val TestAPI = False) Export
-	Return ПолучитьСписокОфисов(Token, Filter, TestAPI);
+    Return ПолучитьСписокОфисов(Token, Filter, TestAPI);
 EndFunction
 
 Function GetRegionsList(Val Token, Val Countrues = Undefined, Val Page = 0, Val Lang = "rus", Val TestAPI = False) Export
-	Return ПолучитьСписокРегионов(Token, Countrues, Page, Lang, TestAPI);
+    Return ПолучитьСписокРегионов(Token, Countrues, Page, Lang, TestAPI);
 EndFunction
 
 Function GetOfficeFilterDescription(Val Clear = False) Export
-	Return ПолучитьОписаниеФильтраОфисов(Clear);
+    Return ПолучитьОписаниеФильтраОфисов(Clear);
 EndFunction
 
 Function CreateOrder(Val Token, Val OrderDescription, Val OnlineStore = False, Val TestAPI = False) Export
-	Return СоздатьЗаказ(Token, OrderDescription, OnlineStore, TestAPI);
+    Return СоздатьЗаказ(Token, OrderDescription, OnlineStore, TestAPI);
 EndFunction
 
 Function UpdateOrder(Val Token, Val UUID, Val OrderDescription, Val TestAPI = False) Export
-	Return ИзменитьЗаказ(Token, UUID, OrderDescription, TestAPI);
+    Return ИзменитьЗаказ(Token, UUID, OrderDescription, TestAPI);
 EndFunction
 
 Function DeleteOrder(Val Token, Val UUID, Val TestAPI = False) Export
-	Return УдалитьЗаказ(Token, UUID, TestAPI);
+    Return УдалитьЗаказ(Token, UUID, TestAPI);
 EndFunction
 
 Function GetOrder(Val Token, Val UUID, Val TestAPI = False) Export
-	Return ПолучитьЗаказ(Token, UUID, TestAPI);
+    Return ПолучитьЗаказ(Token, UUID, TestAPI);
 EndFunction
 
 Function GetOrderByNumber(Val Token, Val OrderNumber, Val Internal = False, Val TestAPI = False) Export
-	Return ПолучитьЗаказПоНомеру(Token, OrderNumber, Internal, TestAPI);
+    Return ПолучитьЗаказПоНомеру(Token, OrderNumber, Internal, TestAPI);
 EndFunction
 
 Function CreateCustomerRefund(Val Token, Val UUID, Val Tariff, Val TestAPI = False) Export
-	Return ОформитьКлиентскийВозврат(Token, UUID, Tariff, TestAPI);
+    Return ОформитьКлиентскийВозврат(Token, UUID, Tariff, TestAPI);
 EndFunction
 
 Function CreateRefusal(Val Token, Val UUID, Val TestAPI = False) Export
-	Return СоздатьОтказ(Token, UUID, TestAPI);
+    Return СоздатьОтказ(Token, UUID, TestAPI);
 EndFunction
 
 Function CreateReceipt(Val Token, Val UUIDArray, Val Type = "tpl_russia", Val CopiesPerSheet = 2, Val TestAPI = False) Export
-	Return СформироватьКвитанцию(Token, UUIDArray, Type, CopiesPerSheet, TestAPI);
+    Return СформироватьКвитанцию(Token, UUIDArray, Type, CopiesPerSheet, TestAPI);
 EndFunction
 
 Function GetReceipt(Val Token, Val UUID, Val GetFile = False, Val TestAPI = False) Export
-	Return ПолучитьКвитанцию(Token, UUID, GetFile, TestAPI);
+    Return ПолучитьКвитанцию(Token, UUID, GetFile, TestAPI);
 EndFunction
 
 Function CreateBarcode(Val Token, Val UUIDArray, Val Copies = 1, Val Format = "A4", Val Lang = "RUS", Val TestAPI = False) Export
-	Return СформироватьШтрихкод(Token, UUIDArray, Copies, Format, Lang, TestAPI);
+    Return СформироватьШтрихкод(Token, UUIDArray, Copies, Format, Lang, TestAPI);
 EndFunction
 
 Function GetBarcode(Val Token, Val UUID, Val GetFile = False, Val TestAPI = False) Export
-	Return ПолучитьШтрихкод(Token, UUID, GetFile, TestAPI);
+    Return ПолучитьШтрихкод(Token, UUID, GetFile, TestAPI);
 EndFunction
 
 Function CreatePrealert(Val Token, Val UUIDArray, Val TransferDate, Val Point, Val TestAPI = False) Export
-	Return СоздатьПреалерт(Token, UUIDArray, TransferDate, Point, TestAPI);
+    Return СоздатьПреалерт(Token, UUIDArray, TransferDate, Point, TestAPI);
 EndFunction
 
 Function GetPrealert(Val Token, Val UUID, Val TestAPI = False) Export
-	Return ПолучитьПреалерт(Token, UUID, TestAPI);
+    Return ПолучитьПреалерт(Token, UUID, TestAPI);
 EndFunction
 
 Function GetPassportDataStatus(Val Token, Val UUID, Val TestAPI = False) Export
-	Return ПолучитьСтатусПаспортныхДанных(Token, UUID, TestAPI);
+    Return ПолучитьСтатусПаспортныхДанных(Token, UUID, TestAPI);
 EndFunction
 
 Function GetCashboxCheck(Val Token, Val UUID, Val TestAPI = False) Export
-	Return ПолучитьЧекЗаказа(Token, UUID, TestAPI);
+    Return ПолучитьЧекЗаказа(Token, UUID, TestAPI);
 EndFunction
 
 Function GetOrderDescription(Val Clear = False, Val RequiredOnly = False, Val OnlineStore = False) Export
-	Return ПолучитьОписаниеЗаказа(Clear, RequiredOnly, OnlineStore);
+    Return ПолучитьОписаниеЗаказа(Clear, RequiredOnly, OnlineStore);
 EndFunction
 
 Function GetAvailableDeliveryIntervals(Val Token, Val UUID, Val TestAPI = False) Export
-	Return ПолучитьДоступныеИнтервалыДоставки(Token, UUID, TestAPI);
+    Return ПолучитьДоступныеИнтервалыДоставки(Token, UUID, TestAPI);
 EndFunction
 
 Function CreateCourierInvitation(Val Token, Val InvitationDescription, Val TestAPI = False) Export
-	Return СоздатьЗаявкуНаВызовКурьера(Token, InvitationDescription, TestAPI);
+    Return СоздатьЗаявкуНаВызовКурьера(Token, InvitationDescription, TestAPI);
 EndFunction
 
 Function GetCourierInvitation(Val Token, Val UUID, Val TestAPI = False) Export
-	Return ПолучитьЗаявкуНаВызовКурьера(Token, UUID, TestAPI);
+    Return ПолучитьЗаявкуНаВызовКурьера(Token, UUID, TestAPI);
 EndFunction
 
 Function DeleteCourierInvitation(Val Token, Val UUID, Val TestAPI = False) Export
-	Return УдалитьЗаявкуНаВызовКурьера(Token, UUID, TestAPI);
+    Return УдалитьЗаявкуНаВызовКурьера(Token, UUID, TestAPI);
 EndFunction
 
 Function RegisterDeliveryAppointment(Val Token, Val Appointment, Val TestAPI = False) Export
-	Return ЗафиксироватьДоговоренностьОДоставке(Token, Appointment, TestAPI);
+    Return ЗафиксироватьДоговоренностьОДоставке(Token, Appointment, TestAPI);
 EndFunction
 
 Function GetDeliveryAppointment(Val Token, Val UUID, Val TestAPI = False) Export
-	Return ПолучитьДоговоренностьОДоставке(Token, UUID, TestAPI);
+    Return ПолучитьДоговоренностьОДоставке(Token, UUID, TestAPI);
 EndFunction
 
 Function GetCourierInvitationsDescription(Val Clear = False, Val RequiredOnly = False) Export
-	Return ПолучитьОписаниеЗаявкиКурьера(Clear, RequiredOnly);
+    Return ПолучитьОписаниеЗаявкиКурьера(Clear, RequiredOnly);
 EndFunction
 
 Function GetAppointmentDescription(Val Clear = False, Val RequiredOnly = False) Export
-	Return ПолучитьОписаниеДоговоренности(Clear, RequiredOnly);
+    Return ПолучитьОписаниеДоговоренности(Clear, RequiredOnly);
 EndFunction
 
 #EndRegion

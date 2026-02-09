@@ -213,7 +213,7 @@
 // Передача настроек Tls совместно с передачей уже созданного соединения в параметр `Соединение` будет проигнорирована
 //
 // Параметры:
-//  ОтключитьПроверкуСертификатов - Булево - Позволяет работать с некорректными сертификатами, в т.ч. самоподписанными   - trust
+//  ОтключитьПроверкуСертификатов - Булево - Позволяет работать с некорректными сертификатами, в т.ч. самоподписанными  - trust
 //  ПутьКСертификату              - Строка - Путь к корневому PEM файлу сертификата, если его нет в системном хранилище - cert
 //
 // Возвращаемое значение:
@@ -483,13 +483,13 @@
 // Получает записи из выбранной таблицы
 //
 // Параметры:
-//  Таблица    - Строка                     - Имя таблицы                                                  - table
-//  Поля       - Массив Из Строка           - Поля для выборки                                             - fields
-//  Фильтры    - Массив Из Структура        - Массив фильтров. См. ПолучитьСтруктуруФильтраЗаписей         - filter
-//  Сортировка - Структура Из КлючИЗначение - Сортировка: Ключ > поле, Значение > направление (ASC, DESC)  - order
-//  Количество - Число                      - Ограничение количества получаемых строк                      - limit
-//  Соединение - Строка, Произвольный       - Соединение или строка подключения                            - dbc
-//  Tls        - Структура Из КлючИЗначение - Настройки TLS, если необходимо. См. ПолучитьНастройкиTls     - tls
+//  Таблица    - Строка                     - Имя таблицы                                                 - table
+//  Поля       - Массив Из Строка           - Поля для выборки                                            - fields
+//  Фильтры    - Массив Из Структура        - Массив фильтров. См. ПолучитьСтруктуруФильтраЗаписей        - filter
+//  Сортировка - Структура Из КлючИЗначение - Сортировка: Ключ > поле, Значение > направление (ASC, DESC) - order
+//  Количество - Число                      - Ограничение количества получаемых строк                     - limit
+//  Соединение - Строка, Произвольный       - Соединение или строка подключения                           - dbc
+//  Tls        - Структура Из КлючИЗначение - Настройки TLS, если необходимо. См. ПолучитьНастройкиTls    - tls
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат выполнения запроса
@@ -593,95 +593,95 @@
 #Region Alternate
 
 Function CreateConnection(Val ConnectionString = "", Val Tls = "") Export
-	Return ОткрытьСоединение(ConnectionString, Tls);
+    Return ОткрытьСоединение(ConnectionString, Tls);
 EndFunction
 
 Function CloseConnection(Val Connection) Export
-	Return ЗакрытьСоединение(Connection);
+    Return ЗакрытьСоединение(Connection);
 EndFunction
 
 Function IsConnector(Val Value) Export
-	Return ЭтоКоннектор(Value);
+    Return ЭтоКоннектор(Value);
 EndFunction
 
 Function ExecuteSQLQuery(Val QueryText, Val Parameters = "", Val ForceResult = False, Val Connection = "", Val Tls = "") Export
-	Return ВыполнитьЗапросSQL(QueryText, Parameters, ForceResult, Connection, Tls);
+    Return ВыполнитьЗапросSQL(QueryText, Parameters, ForceResult, Connection, Tls);
 EndFunction
 
 Function GenerateConnectionString(Val Address, Val Base = "", Val Login = "", Val Password = "", Val Port = "3306") Export
-	Return СформироватьСтрокуПодключения(Address, Base, Login, Password, Port);
+    Return СформироватьСтрокуПодключения(Address, Base, Login, Password, Port);
 EndFunction
 
 Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
-	Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
+    Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
 EndFunction
 
 Function CreateDatabase(Val Base, Val Connection = "", Val Tls = "") Export
-	Return СоздатьБазуДанных(Base, Connection, Tls);
+    Return СоздатьБазуДанных(Base, Connection, Tls);
 EndFunction
 
 Function DeleteDatabase(Val Base, Val Connection = "", Val Tls = "") Export
-	Return УдалитьБазуДанных(Base, Connection, Tls);
+    Return УдалитьБазуДанных(Base, Connection, Tls);
 EndFunction
 
 Function CreateTable(Val Table, Val ColoumnsStruct, Val Connection = "", Val Tls = "") Export
-	Return СоздатьТаблицу(Table, ColoumnsStruct, Connection, Tls);
+    Return СоздатьТаблицу(Table, ColoumnsStruct, Connection, Tls);
 EndFunction
 
 Function AddTableColumn(Val Table, Val Name, Val DataType, Val Connection = "", Val Tls = "") Export
-	Return ДобавитьКолонкуТаблицы(Table, Name, DataType, Connection, Tls);
+    Return ДобавитьКолонкуТаблицы(Table, Name, DataType, Connection, Tls);
 EndFunction
 
 Function DeleteTableColumn(Val Table, Val Name, Val Connection = "", Val Tls = "") Export
-	Return УдалитьКолонкуТаблицы(Table, Name, Connection, Tls);
+    Return УдалитьКолонкуТаблицы(Table, Name, Connection, Tls);
 EndFunction
 
 Function EnsureTable(Val Table, Val ColoumnsStruct, Val Connection = "", Val Tls = "") Export
-	Return ГарантироватьТаблицу(Table, ColoumnsStruct, Connection, Tls);
+    Return ГарантироватьТаблицу(Table, ColoumnsStruct, Connection, Tls);
 EndFunction
 
 Function ClearTable(Val Table, Val Connection = "", Val Tls = "") Export
-	Return ОчиститьТаблицу(Table, Connection, Tls);
+    Return ОчиститьТаблицу(Table, Connection, Tls);
 EndFunction
 
 Function DeleteTable(Val Table, Val Connection = "", Val Tls = "") Export
-	Return УдалитьТаблицу(Table, Connection, Tls);
+    Return УдалитьТаблицу(Table, Connection, Tls);
 EndFunction
 
 Function GetTableInformation(Val Table, Val Connection = "", Val Tls = "") Export
-	Return ПолучитьИнформациюОТаблице(Table, Connection, Tls);
+    Return ПолучитьИнформациюОТаблице(Table, Connection, Tls);
 EndFunction
 
 Function AddRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "", Val Tls = "") Export
-	Return ДобавитьЗаписи(Table, DataArray, Transaction, Connection, Tls);
+    Return ДобавитьЗаписи(Table, DataArray, Transaction, Connection, Tls);
 EndFunction
 
 Function UpdateRecords(Val Table, Val ValueStructure, Val Filters = "", Val Connection = "", Val Tls = "") Export
-	Return ОбновитьЗаписи(Table, ValueStructure, Filters, Connection, Tls);
+    Return ОбновитьЗаписи(Table, ValueStructure, Filters, Connection, Tls);
 EndFunction
 
 Function EnsureRecords(Val Table, Val DataArray, Val Transaction = True, Val Connection = "", Val Tls = "") Export
-	Return ГарантироватьЗаписи(Table, DataArray, Transaction, Connection, Tls);
+    Return ГарантироватьЗаписи(Table, DataArray, Transaction, Connection, Tls);
 EndFunction
 
 Function GetRecords(Val Table, Val Fields = "*", Val Filters = "", Val Sort = "", Val Count = "", Val Connection = "", Val Tls = "") Export
-	Return ПолучитьЗаписи(Table, Fields, Filters, Sort, Count, Connection, Tls);
+    Return ПолучитьЗаписи(Table, Fields, Filters, Sort, Count, Connection, Tls);
 EndFunction
 
 Function DeleteRecords(Val Table, Val Filters = "", Val Connection = "", Val Tls = "") Export
-	Return УдалитьЗаписи(Table, Filters, Connection, Tls);
+    Return УдалитьЗаписи(Table, Filters, Connection, Tls);
 EndFunction
 
 Function GetRecordsFilterStructure(Val Clear = False) Export
-	Return ПолучитьСтруктуруФильтраЗаписей(Clear);
+    Return ПолучитьСтруктуруФильтраЗаписей(Clear);
 EndFunction
 
 Function GetFeatures() Export
-	Return ПолучитьОсобенности();
+    Return ПолучитьОсобенности();
 EndFunction
 
 Function GetTypesStructure() Export
-	Return ПолучитьСтруктуруТипов();
+    Return ПолучитьСтруктуруТипов();
 EndFunction
 
 #EndRegion

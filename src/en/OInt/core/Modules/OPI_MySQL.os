@@ -54,8 +54,8 @@
 // Creates a connection to the specified base
 //
 // Parameters:
-// ConnectionString - String - Connection string. See GenerateConnectionString - string
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// ConnectionString - String                   - Connection string. See GenerateConnectionString - string
+// Tls              - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings  - tls
 //
 // Returns:
 // Arbitrary - Connector object or structure with error information
@@ -134,11 +134,11 @@ EndFunction
 // For other queries, `result:true` or `false` with error text is returned
 //
 // Parameters:
-// QueryText - String - Database query text - sql
-// Parameters - Array Of Arbitrary - Array of positional parameters of the request - params
-// ForceResult - Boolean - Includes an attempt to retrieve the result, even for nonSELECT queries - force
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// QueryText   - String                   - Database query text                                                    - sql
+// Parameters  - Array Of Arbitrary       - Array of positional parameters of the request                          - params
+// ForceResult - Boolean                  - Includes an attempt to retrieve the result, even for nonSELECT queries - force
+// Connection  - String, Arbitrary        - Connection or connection string                                        - dbc
+// Tls         - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings                         - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -178,11 +178,11 @@ EndFunction
 // Forms a connection string from the passed data
 //
 // Parameters:
-// Address - String - IP address or domain name of the server - addr
-// Base - String - Name of the database to connect - db
-// Login - String - MySQL user - login
-// Password - String - MySQL password - pass
-// Port - String - Connection port - port
+// Address  - String - IP address or domain name of the server - addr
+// Base     - String - Name of the database to connect         - db
+// Login    - String - MySQL user                              - login
+// Password - String - MySQL password                          - pass
+// Port     - String - Connection port                         - port
 //
 // Returns:
 // String - MySQL database connection string
@@ -213,8 +213,8 @@ EndFunction
 // Passing Tls settings together with passing an already created connection to the `Connection` parameter will be ignored
 //
 // Parameters:
-// DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed - trust
-// CertFilepath - String - Path to the root PEM file of the certificate if it is not in the system repository - cert
+// DisableCertVerification - Boolean - Allows to work with invalid certificates, including self signed                    - trust
+// CertFilepath            - String  - Path to the root PEM file of the certificate if it is not in the system repository - cert
 //
 // Returns:
 // Structure Of KeyAndValue - Structure of TLS connection settings
@@ -232,9 +232,9 @@ EndFunction
 // Creates a database with the specified name
 //
 // Parameters:
-// Base - String - Database name - base
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Base       - String                   - Database name                                  - base
+// Connection - String, Arbitrary        - Connection or connection string                - dbc
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -249,9 +249,9 @@ EndFunction
 // Deletes the database
 //
 // Parameters:
-// Base - String - Database name - base
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Base       - String                   - Database name                                  - base
+// Connection - String, Arbitrary        - Connection or connection string                - dbc
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -269,10 +269,10 @@ EndFunction
 // The list of available types is described on the initial page of the MySQL library documentation
 //
 // Parameters:
-// Table - String - Table name - table
+// Table          - String                   - Table name                                      - table
 // ColoumnsStruct - Structure Of KeyAndValue - Column structure: Key > Name, Value > Data type - cols
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Connection     - String, Arbitrary        - Connection or connection string                 - dbc
+// Tls            - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings  - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -287,11 +287,11 @@ EndFunction
 // Adds a new column to an existing table
 //
 // Parameters:
-// Table - String - Table name - table
-// Name - String - Column name - name
-// DataType - String - Column data type - type
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Table      - String                   - Table name                                     - table
+// Name       - String                   - Column name                                    - name
+// DataType   - String                   - Column data type                               - type
+// Connection - String, Arbitrary        - Connection or connection string                - dbc
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -306,10 +306,10 @@ EndFunction
 // Deletes a column from the table
 //
 // Parameters:
-// Table - String - Table name - table
-// Name - String - Column name - name
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Table      - String                   - Table name                                     - table
+// Name       - String                   - Column name                                    - name
+// Connection - String, Arbitrary        - Connection or connection string                - dbc
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -329,10 +329,10 @@ EndFunction
 // This function does not update the data type of existing columns
 //
 // Parameters:
-// Table - String - Table name - table
+// Table          - String                   - Table name                                      - table
 // ColoumnsStruct - Structure Of KeyAndValue - Column structure: Key > Name, Value > Data type - cols
-// Connection - String, Arbitrary - Existing connection or database path - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Connection     - String, Arbitrary        - Existing connection or database path            - dbc
+// Tls            - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings  - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -347,9 +347,9 @@ EndFunction
 // Clears the database table
 //
 // Parameters:
-// Table - String - Table name - table
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Table      - String                   - Table name                                     - table
+// Connection - String, Arbitrary        - Connection or connection string                - dbc
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -364,9 +364,9 @@ EndFunction
 // Deletes a table from the database
 //
 // Parameters:
-// Table - String - Table name - table
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Table      - String                   - Table name                                     - table
+// Connection - String, Arbitrary        - Connection or connection string                - dbc
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -381,9 +381,9 @@ EndFunction
 // Gets information about the table
 //
 // Parameters:
-// Table - String - Table name - table
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Table      - String                   - Table name                                     - table
+// Connection - String, Arbitrary        - Connection or connection string                - dbc
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -403,11 +403,11 @@ EndFunction
 // The list of available types is described on the initial page of the MySQL library documentation
 //
 // Parameters:
-// Table - String - Table name - table
-// DataArray - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
-// Transaction - Boolean - True > adding records to transactions with rollback on error - trn
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Table       - String                   - Table name                                                           - table
+// DataArray   - Array of Structure       - An array of string data structures: Key > field, Value > field value - rows
+// Transaction - Boolean                  - True > adding records to transactions with rollback on error         - trn
+// Connection  - String, Arbitrary        - Connection or connection string                                      - dbc
+// Tls         - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings                       - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -427,11 +427,11 @@ EndFunction
 // The list of available types is described on the initial page of the MySQL library documentation
 //
 // Parameters:
-// Table - String - Table name - table
+// Table          - String                   - Table name                                         - table
 // ValueStructure - Structure Of KeyAndValue - Values structure: Key > field, Value > field value - values
-// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Filters        - Array of Structure       - Filters array. See GetRecordsFilterStructure       - filter
+// Connection     - String, Arbitrary        - Connection or connection string                    - dbc
+// Tls            - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings     - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -453,11 +453,11 @@ EndFunction
 // All UNIQUE and PRIMARY KEY fields of the table serve as key fields
 //
 // Parameters:
-// Table - String - Table name - table
-// DataArray - Array of Structure - An array of string data structures: Key > field, Value > field value - rows
-// Transaction - Boolean - True > adding records to transactions with rollback on error - trn
-// Connection - String, Arbitrary - Existing connection or database path - db
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Table       - String                   - Table name                                                           - table
+// DataArray   - Array of Structure       - An array of string data structures: Key > field, Value > field value - rows
+// Transaction - Boolean                  - True > adding records to transactions with rollback on error         - trn
+// Connection  - String, Arbitrary        - Existing connection or database path                                 - db
+// Tls         - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings                       - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -483,13 +483,13 @@ EndFunction
 // Gets records from the selected table
 //
 // Parameters:
-// Table - String - Table name - table
-// Fields - Array Of String - Fields for selection - fields
-// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
-// Sort - Structure Of KeyAndValue - Sorting: Key > field name, Value > direction (ASC, DESC) - order
-// Count - Number - Limiting the number of received strings - limit
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Table      - String                   - Table name                                               - table
+// Fields     - Array Of String          - Fields for selection                                     - fields
+// Filters    - Array of Structure       - Filters array. See GetRecordsFilterStructure             - filter
+// Sort       - Structure Of KeyAndValue - Sorting: Key > field name, Value > direction (ASC, DESC) - order
+// Count      - Number                   - Limiting the number of received strings                  - limit
+// Connection - String, Arbitrary        - Connection or connection string                          - dbc
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings           - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -518,10 +518,10 @@ EndFunction
 // Deletes records from the table
 //
 // Parameters:
-// Table - String - Table name - table
-// Filters - Array of Structure - Filters array. See GetRecordsFilterStructure - filter
-// Connection - String, Arbitrary - Connection or connection string - dbc
-// Tls - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
+// Table      - String                   - Table name                                     - table
+// Filters    - Array of Structure       - Filters array. See GetRecordsFilterStructure   - filter
+// Connection - String, Arbitrary        - Connection or connection string                - dbc
+// Tls        - Structure Of KeyAndValue - TLS settings, if necessary. See GetTlsSettings - tls
 //
 // Returns:
 // Map Of KeyAndValue - Result of query execution
@@ -593,95 +593,95 @@ EndFunction
 #Region Alternate
 
 Function ОткрытьСоединение(Val СтрокаПодключения = "", Val Tls = "") Export
-	Return CreateConnection(СтрокаПодключения, Tls);
+    Return CreateConnection(СтрокаПодключения, Tls);
 EndFunction
 
 Function ЗакрытьСоединение(Val Соединение) Export
-	Return CloseConnection(Соединение);
+    Return CloseConnection(Соединение);
 EndFunction
 
 Function ЭтоКоннектор(Val Значение) Export
-	Return IsConnector(Значение);
+    Return IsConnector(Значение);
 EndFunction
 
 Function ВыполнитьЗапросSQL(Val ТекстЗапроса, Val Параметры = "", Val ФорсироватьРезультат = False, Val Соединение = "", Val Tls = "") Export
-	Return ExecuteSQLQuery(ТекстЗапроса, Параметры, ФорсироватьРезультат, Соединение, Tls);
+    Return ExecuteSQLQuery(ТекстЗапроса, Параметры, ФорсироватьРезультат, Соединение, Tls);
 EndFunction
 
 Function СформироватьСтрокуПодключения(Val Адрес, Val База = "", Val Логин = "", Val Пароль = "", Val Порт = "3306") Export
-	Return GenerateConnectionString(Адрес, База, Логин, Пароль, Порт);
+    Return GenerateConnectionString(Адрес, База, Логин, Пароль, Порт);
 EndFunction
 
 Function ПолучитьНастройкиTls(Val ОтключитьПроверкуСертификатов, Val ПутьКСертификату = "") Export
-	Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
+    Return GetTlsSettings(ОтключитьПроверкуСертификатов, ПутьКСертификату);
 EndFunction
 
 Function СоздатьБазуДанных(Val База, Val Соединение = "", Val Tls = "") Export
-	Return CreateDatabase(База, Соединение, Tls);
+    Return CreateDatabase(База, Соединение, Tls);
 EndFunction
 
 Function УдалитьБазуДанных(Val База, Val Соединение = "", Val Tls = "") Export
-	Return DeleteDatabase(База, Соединение, Tls);
+    Return DeleteDatabase(База, Соединение, Tls);
 EndFunction
 
 Function СоздатьТаблицу(Val Таблица, Val СтруктураКолонок, Val Соединение = "", Val Tls = "") Export
-	Return CreateTable(Таблица, СтруктураКолонок, Соединение, Tls);
+    Return CreateTable(Таблица, СтруктураКолонок, Соединение, Tls);
 EndFunction
 
 Function ДобавитьКолонкуТаблицы(Val Таблица, Val Имя, Val ТипДанных, Val Соединение = "", Val Tls = "") Export
-	Return AddTableColumn(Таблица, Имя, ТипДанных, Соединение, Tls);
+    Return AddTableColumn(Таблица, Имя, ТипДанных, Соединение, Tls);
 EndFunction
 
 Function УдалитьКолонкуТаблицы(Val Таблица, Val Имя, Val Соединение = "", Val Tls = "") Export
-	Return DeleteTableColumn(Таблица, Имя, Соединение, Tls);
+    Return DeleteTableColumn(Таблица, Имя, Соединение, Tls);
 EndFunction
 
 Function ГарантироватьТаблицу(Val Таблица, Val СтруктураКолонок, Val Соединение = "", Val Tls = "") Export
-	Return EnsureTable(Таблица, СтруктураКолонок, Соединение, Tls);
+    Return EnsureTable(Таблица, СтруктураКолонок, Соединение, Tls);
 EndFunction
 
 Function ОчиститьТаблицу(Val Таблица, Val Соединение = "", Val Tls = "") Export
-	Return ClearTable(Таблица, Соединение, Tls);
+    Return ClearTable(Таблица, Соединение, Tls);
 EndFunction
 
 Function УдалитьТаблицу(Val Таблица, Val Соединение = "", Val Tls = "") Export
-	Return DeleteTable(Таблица, Соединение, Tls);
+    Return DeleteTable(Таблица, Соединение, Tls);
 EndFunction
 
 Function ПолучитьИнформациюОТаблице(Val Таблица, Val Соединение = "", Val Tls = "") Export
-	Return GetTableInformation(Таблица, Соединение, Tls);
+    Return GetTableInformation(Таблица, Соединение, Tls);
 EndFunction
 
 Function ДобавитьЗаписи(Val Таблица, Val МассивДанных, Val Транзакция = True, Val Соединение = "", Val Tls = "") Export
-	Return AddRecords(Таблица, МассивДанных, Транзакция, Соединение, Tls);
+    Return AddRecords(Таблица, МассивДанных, Транзакция, Соединение, Tls);
 EndFunction
 
 Function ОбновитьЗаписи(Val Таблица, Val СтруктураЗначений, Val Фильтры = "", Val Соединение = "", Val Tls = "") Export
-	Return UpdateRecords(Таблица, СтруктураЗначений, Фильтры, Соединение, Tls);
+    Return UpdateRecords(Таблица, СтруктураЗначений, Фильтры, Соединение, Tls);
 EndFunction
 
 Function ГарантироватьЗаписи(Val Таблица, Val МассивДанных, Val Транзакция = True, Val Соединение = "", Val Tls = "") Export
-	Return EnsureRecords(Таблица, МассивДанных, Транзакция, Соединение, Tls);
+    Return EnsureRecords(Таблица, МассивДанных, Транзакция, Соединение, Tls);
 EndFunction
 
 Function ПолучитьЗаписи(Val Таблица, Val Поля = "*", Val Фильтры = "", Val Сортировка = "", Val Количество = "", Val Соединение = "", Val Tls = "") Export
-	Return GetRecords(Таблица, Поля, Фильтры, Сортировка, Количество, Соединение, Tls);
+    Return GetRecords(Таблица, Поля, Фильтры, Сортировка, Количество, Соединение, Tls);
 EndFunction
 
 Function УдалитьЗаписи(Val Таблица, Val Фильтры = "", Val Соединение = "", Val Tls = "") Export
-	Return DeleteRecords(Таблица, Фильтры, Соединение, Tls);
+    Return DeleteRecords(Таблица, Фильтры, Соединение, Tls);
 EndFunction
 
 Function ПолучитьСтруктуруФильтраЗаписей(Val Пустая = False) Export
-	Return GetRecordsFilterStructure(Пустая);
+    Return GetRecordsFilterStructure(Пустая);
 EndFunction
 
 Function ПолучитьОсобенности() Export
-	Return GetFeatures();
+    Return GetFeatures();
 EndFunction
 
 Function ПолучитьСтруктуруТипов() Export
-	Return GetTypesStructure();
+    Return GetTypesStructure();
 EndFunction
 
 #EndRegion

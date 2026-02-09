@@ -47,7 +47,7 @@
 // Gets the list of available bases
 //
 // Parameters:
-// Token - String - Token - token
+// Token  - String - Token                                                           - token
 // Indent - String - Next page identifier of the base list from the previous request - offset
 //
 // Returns:
@@ -72,8 +72,8 @@ EndFunction
 // Gets the schema of base tables
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Base identifier - base
+// Token - String - Token           - token
+// Base  - String - Base identifier - base
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Airtable
@@ -94,9 +94,9 @@ EndFunction
 // Creates a new database
 //
 // Parameters:
-// Token - String - Token - token
-// Workspace - String - Workspace identifier - ws
-// Name - String - New base name - title
+// Token           - String             - Token                                                  - token
+// Workspace       - String             - Workspace identifier                                   - ws
+// Name            - String             - New base name                                          - title
 // TableCollection - Map Of KeyAndValue - Table description: Key > name, Value > array of fields - tablesdata
 //
 // Returns:
@@ -142,11 +142,11 @@ EndFunction
 // Creates a new table in the base
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Base identifier - base
-// Name - String - New table name - title
-// FieldArray - Array of Structure - Array of field descriptions - fieldsdata
-// Description - String - Table description - description
+// Token       - String             - Token                       - token
+// Base        - String             - Base identifier             - base
+// Name        - String             - New table name              - title
+// FieldArray  - Array of Structure - Array of field descriptions - fieldsdata
+// Description - String             - Table description           - description
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Airtable
@@ -168,11 +168,11 @@ EndFunction
 // Changes the name and/or description of the base
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Base identifier - base
-// Table - String - Table identifier - table
-// Name - String - New name - title
-// Description - String - New description - description
+// Token       - String - Token            - token
+// Base        - String - Base identifier  - base
+// Table       - String - Table identifier - table
+// Name        - String - New name         - title
+// Description - String - New description  - description
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Airtable
@@ -202,9 +202,9 @@ EndFunction
 // Creates a new field in the table
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Base identifier - base
-// Table - String - Table identifier - table
+// Token          - String                   - Token                        - token
+// Base           - String                   - Base identifier              - base
+// Table          - String                   - Table identifier             - table
 // FieldStructure - Structure Of KeyAndValue - Description of the new field - fielddata
 //
 // Returns:
@@ -235,12 +235,12 @@ EndFunction
 // Changes the name and/or description of an existing table field
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Base identifier Base - base
-// Table - String - Table identifier - table
-// Field - String - Field identifier - field
-// Name - String - New name - title
-// Description - String - New description - description
+// Token       - String - Token                - token
+// Base        - String - Base identifier Base - base
+// Table       - String - Table identifier     - table
+// Field       - String - Field identifier     - field
+// Name        - String - New name             - title
+// Description - String - New description      - description
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Airtable
@@ -287,7 +287,7 @@ EndFunction
 // Gets the description of a numeric field
 //
 // Parameters:
-// Name - String - New field name - title
+// Name      - String         - New field name           - title
 // Precision - Number, String - Number of decimal places - precision
 //
 // Returns:
@@ -397,9 +397,9 @@ EndFunction
 // Gets the list of records of the selected table
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Database identifier - base
-// Table - String - Table identifier - table
+// Token  - String - Token                                                  - token
+// Base   - String - Database identifier                                    - base
+// Table  - String - Table identifier                                       - table
 // Indent - String - Next page identifier of data from the previous request - offset
 //
 // Returns:
@@ -425,9 +425,9 @@ EndFunction
 // Gets row data of the table by identifier
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Database identifier - base
-// Table - String - Table identifier - table
+// Token  - String - Token                          - token
+// Base   - String - Database identifier            - base
+// Table  - String - Table identifier               - table
 // Record - String - Record identifier in the table - record
 //
 // Returns:
@@ -451,10 +451,10 @@ EndFunction
 // Creates one or an array of records by description or an array of field value descriptions
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Database identifier - base
-// Table - String - Table identifier - table
-// Data - Structure, Array of Structure - Set or array of sets of pairs Key : Value > Field : FieldValue - data
+// Token - String                        - Token                                                          - token
+// Base  - String                        - Database identifier                                            - base
+// Table - String                        - Table identifier                                               - table
+// Data  - Structure, Array of Structure - Set or array of sets of pairs Key : Value > Field : FieldValue - data
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Airtable
@@ -480,9 +480,9 @@ EndFunction
 // Deletes one or an array of records by identifiers
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Database identifier - base
-// Table - String - Table identifier - table
+// Token   - String                  - Token                                     - token
+// Base    - String                  - Database identifier                       - base
+// Table   - String                  - Table identifier                          - table
 // Records - String, Array of String - Identifier or array of record identifiers - records
 //
 // Returns:
@@ -519,10 +519,10 @@ EndFunction
 // Gets the list of comments for a record in the table
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Database identifier - base
-// Table - String - Table identifier - table
-// Record - String - Record identifier in the table - record
+// Token  - String - Token                                                  - token
+// Base   - String - Database identifier                                    - base
+// Table  - String - Table identifier                                       - table
+// Record - String - Record identifier in the table                         - record
 // Indent - String - Next page identifier of data from the previous request - offset
 //
 // Returns:
@@ -549,11 +549,11 @@ EndFunction
 // Creates a comment for a record in the table
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Database identifier - base
-// Table - String - Table identifier - table
+// Token  - String - Token                          - token
+// Base   - String - Database identifier            - base
+// Table  - String - Table identifier               - table
 // Record - String - Record identifier in the table - record
-// Text - String - Comment text - text
+// Text   - String - Comment text                   - text
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Airtable
@@ -579,12 +579,12 @@ EndFunction
 // Changes the text of an existing comment
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Database identifier - base
-// Table - String - Table identifier - table
-// Record - String - Record identifier in the table - record
-// Comment - String - Comment identifier - comment
-// Text - String - New comment text - text
+// Token   - String - Token                          - token
+// Base    - String - Database identifier            - base
+// Table   - String - Table identifier               - table
+// Record  - String - Record identifier in the table - record
+// Comment - String - Comment identifier             - comment
+// Text    - String - New comment text               - text
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Airtable
@@ -611,11 +611,11 @@ EndFunction
 // Deletes a comment for a table record
 //
 // Parameters:
-// Token - String - Token - token
-// Base - String - Database identifier - base
-// Table - String - Table identifier - table
-// Record - String - Record identifier in the table - record
-// Comment - String - Comment identifier - comment
+// Token   - String - Token                          - token
+// Base    - String - Database identifier            - base
+// Table   - String - Table identifier               - table
+// Record  - String - Record identifier in the table - record
+// Comment - String - Comment identifier             - comment
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Airtable

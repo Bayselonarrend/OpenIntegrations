@@ -51,10 +51,10 @@
 // Returns URL for browser authorization
 //
 // Parameters:
-// ClientID - String - Client ID - id
+// ClientID - String  - Client ID                   - id
 // Calendar - Boolean - Calendar methods permission - calendar
-// Drive - Boolean - Drive methods permission - drive
-// Sheets - Boolean - Sheets methods permission - sheets
+// Drive    - Boolean - Drive methods permission    - drive
+// Sheets   - Boolean - Sheets methods permission   - sheets
 //
 // Returns:
 // String - Code retrieval link
@@ -72,9 +72,9 @@ EndFunction
 // Gets token by code from browser authorization
 //
 // Parameters:
-// ClientID - String - Client ID - id
-// ClientSecret - String - Client secret - secret
-// Code - String - Code from browser - code
+// ClientID     - String - Client ID         - id
+// ClientSecret - String - Client secret     - secret
+// Code         - String - Code from browser - code
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -89,7 +89,7 @@ EndFunction
 // Updates token by Refresh token
 //
 // Parameters:
-// ClientID - String - Client ID - id
+// ClientID     - String - Client ID     - id
 // ClientSecret - String - Client secret - secret
 // RefreshToken - String - Refresh token - refresh
 //
@@ -109,9 +109,9 @@ EndFunction
 // List of available scopes: [developers.google.com](https://developers.google.com/identity/protocols/oauth2/scopes)
 //
 // Parameters:
-// Data - Arbitrary - JSON authorization data as a file, collection or binary data - auth
-// Scope - Array Of String - Scope or array of scopes - scope
-// Expire - Number - Token lifetime in seconds - exp
+// Data   - Arbitrary       - JSON authorization data as a file, collection or binary data - auth
+// Scope  - Array Of String - Scope or array of scopes                                     - scope
+// Expire - Number          - Token lifetime in seconds                                    - exp
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -130,8 +130,8 @@ EndFunction
 // Creates an empty calendar
 //
 // Parameters:
-// Token - String - Token - token
-// Name - String - Name of the created calendar - title
+// Token - String - Token                        - token
+// Name  - String - Name of the created calendar - title
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -157,7 +157,7 @@ EndFunction
 // Gets calendar information by ID
 //
 // Parameters:
-// Token - String - Token - token
+// Token    - String - Token       - token
 // Calendar - String - Calendar ID - calendar
 //
 // Returns:
@@ -179,9 +179,9 @@ EndFunction
 // Edits properties of an existing calendar
 //
 // Parameters:
-// Token - String - Token - token
-// Calendar - String - Calendar ID - calendar
-// Name - String - New name - title
+// Token       - String - Token                    - token
+// Calendar    - String - Calendar ID              - calendar
+// Name        - String - New name                 - title
 // Description - String - New calendar description - description
 //
 // Returns:
@@ -239,7 +239,7 @@ EndFunction
 // Deletes a calendar by ID
 //
 // Parameters:
-// Token - String - Token - token
+// Token    - String - Token       - token
 // Calendar - String - Calendar ID - calendar
 //
 // Returns:
@@ -286,7 +286,7 @@ EndFunction
 // Adds an existing calendar to the user's list
 //
 // Parameters:
-// Token - String - Token - token
+// Token    - String - Token       - token
 // Calendar - String - Calendar ID - calendar
 //
 // Returns:
@@ -312,7 +312,7 @@ EndFunction
 // Gets a calendar from the user's list by ID
 //
 // Parameters:
-// Token - String - Token - token
+// Token    - String - Token       - token
 // Calendar - String - Calendar ID - calendar
 //
 // Returns:
@@ -334,7 +334,7 @@ EndFunction
 // Removes a calendar from the user's list
 //
 // Parameters:
-// Token - String - Token - token
+// Token    - String - Token       - token
 // Calendar - String - Calendar ID - calendar
 //
 // Returns:
@@ -356,11 +356,11 @@ EndFunction
 // Edits the properties of a calendar from the user's list
 //
 // Parameters:
-// Token - String - Token - token
-// Calendar - String - Calendar ID - calendar
-// PrimaryColor - String - HEX primary color (#ffffff) - primary
-// SecondaryColor - String - HEX secondary color (#ffffff) - secondary
-// Hidden - Boolean - Hidden calendar - hidden
+// Token          - String  - Token                         - token
+// Calendar       - String  - Calendar ID                   - calendar
+// PrimaryColor   - String  - HEX primary color (#ffffff)   - primary
+// SecondaryColor - String  - HEX secondary color (#ffffff) - secondary
+// Hidden         - Boolean - Hidden calendar               - hidden
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -436,7 +436,7 @@ EndFunction
 // Gets the list of all calendar events
 //
 // Parameters:
-// Token - String - Token - token
+// Token    - String - Token       - token
 // Calendar - String - Calendar ID - calendar
 //
 // Returns:
@@ -459,9 +459,9 @@ EndFunction
 // Gets an event by ID
 //
 // Parameters:
-// Token - String - Token - token
+// Token    - String - Token       - token
 // Calendar - String - Calendar ID - calendar
-// Event - String - Event ID - event
+// Event    - String - Event ID    - event
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -487,8 +487,8 @@ EndFunction
 // Creates a new event
 //
 // Parameters:
-// Token - String - Token - token
-// Calendar - String - Calendar ID - calendar
+// Token            - String             - Token             - token
+// Calendar         - String             - Calendar ID       - calendar
 // EventDescription - Map Of KeyAndValue - Event description - props
 //
 // Returns:
@@ -503,10 +503,10 @@ EndFunction
 // Moves an event to another calendar
 //
 // Parameters:
-// Token - String - Token - token
-// SourceCalendar - String - ID of the source calendar - from
-// TargetCalendar - String - ID of the target calendar - to
-// Event - String - ID of the source calendar event - event
+// Token          - String - Token                           - token
+// SourceCalendar - String - ID of the source calendar       - from
+// TargetCalendar - String - ID of the target calendar       - to
+// Event          - String - ID of the source calendar event - event
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -535,10 +535,10 @@ EndFunction
 // Edits an existing event
 //
 // Parameters:
-// Token - String - Token - token
-// Calendar - String - Calendar ID - calendar
+// Token            - String - Token                 - token
+// Calendar         - String - Calendar ID           - calendar
 // EventDescription - String - New event description - props
-// Event - String - Event ID - event
+// Event            - String - Event ID              - event
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -552,9 +552,9 @@ EndFunction
 // Deletes an event by ID
 //
 // Parameters:
-// Token - String - Token - token
+// Token    - String - Token       - token
 // Calendar - String - Calendar ID - calendar
-// Event - String - Event ID - event
+// Event    - String - Event ID    - event
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Google
@@ -743,87 +743,87 @@ EndProcedure
 #Region Alternate
 
 Function СформироватьСсылкуПолученияКода(Val ClientID, Val Calendar = True, Val Drive = True, Val Sheets = True) Export
-	Return FormCodeRetrievalLink(ClientID, Calendar, Drive, Sheets);
+    Return FormCodeRetrievalLink(ClientID, Calendar, Drive, Sheets);
 EndFunction
 
 Function ПолучитьТокенПоКоду(Val ClientID, Val ClientSecret, Val Code) Export
-	Return GetTokenByCode(ClientID, ClientSecret, Code);
+    Return GetTokenByCode(ClientID, ClientSecret, Code);
 EndFunction
 
 Function ОбновитьТокен(Val ClientID, Val ClientSecret, Val RefreshToken) Export
-	Return RefreshToken(ClientID, ClientSecret, RefreshToken);
+    Return RefreshToken(ClientID, ClientSecret, RefreshToken);
 EndFunction
 
 Function ПолучитьТокенServiceАккаунта(Val Данные, Val ОбластиДействия, Val ВремяЖизни = 3600) Export
-	Return GetServiceAccountToken(Данные, ОбластиДействия, ВремяЖизни);
+    Return GetServiceAccountToken(Данные, ОбластиДействия, ВремяЖизни);
 EndFunction
 
 Function СоздатьКалендарь(Val Токен, Val Наименование) Export
-	Return CreateCalendar(Токен, Наименование);
+    Return CreateCalendar(Токен, Наименование);
 EndFunction
 
 Function ПолучитьМетаданныеКалендаря(Val Токен, Val Календарь) Export
-	Return GetCalendarMetadata(Токен, Календарь);
+    Return GetCalendarMetadata(Токен, Календарь);
 EndFunction
 
 Function ИзменитьМетаданныеКалендаря(Val Токен, Val Календарь, Val Наименование = "", Val Описание = "") Export
-	Return EditCalendarMetadata(Токен, Календарь, Наименование, Описание);
+    Return EditCalendarMetadata(Токен, Календарь, Наименование, Описание);
 EndFunction
 
 Function ОчиститьОсновнойКалендарь(Val Токен) Export
-	Return ClearMainCalendar(Токен);
+    Return ClearMainCalendar(Токен);
 EndFunction
 
 Function УдалитьКалендарь(Val Токен, Val Календарь) Export
-	Return DeleteCalendar(Токен, Календарь);
+    Return DeleteCalendar(Токен, Календарь);
 EndFunction
 
 Function ПолучитьСписокКалендарей(Val Токен) Export
-	Return GetCalendarList(Токен);
+    Return GetCalendarList(Токен);
 EndFunction
 
 Function ДобавитьКалендарьВСписок(Val Токен, Val Календарь) Export
-	Return AddCalendarToList(Токен, Календарь);
+    Return AddCalendarToList(Токен, Календарь);
 EndFunction
 
 Function ПолучитьКалендарьСписка(Val Токен, Val Календарь) Export
-	Return GetListCalendar(Токен, Календарь);
+    Return GetListCalendar(Токен, Календарь);
 EndFunction
 
 Function УдалитьКалендарьИзСписка(Val Токен, Val Календарь) Export
-	Return DeleteCalendarFromList(Токен, Календарь);
+    Return DeleteCalendarFromList(Токен, Календарь);
 EndFunction
 
 Function ИзменитьКалендарьСписка(Val Токен, Val Календарь, Val ОсновнойЦвет, Val ДополнительныйЦвет, Val Скрытый = False) Export
-	Return EditListCalendar(Токен, Календарь, ОсновнойЦвет, ДополнительныйЦвет, Скрытый);
+    Return EditListCalendar(Токен, Календарь, ОсновнойЦвет, ДополнительныйЦвет, Скрытый);
 EndFunction
 
 Function ПолучитьОписаниеСобытия(Val Пустая = False) Export
-	Return GetEventDescription(Пустая);
+    Return GetEventDescription(Пустая);
 EndFunction
 
 Function ПолучитьСписокСобытий(Val Токен, Val Календарь) Export
-	Return GetEventList(Токен, Календарь);
+    Return GetEventList(Токен, Календарь);
 EndFunction
 
 Function ПолучитьСобытие(Val Токен, Val Календарь, Val Событие) Export
-	Return GetEvent(Токен, Календарь, Событие);
+    Return GetEvent(Токен, Календарь, Событие);
 EndFunction
 
 Function СоздатьСобытие(Val Токен, Val Календарь, Val ОписаниеСобытия) Export
-	Return CreateEvent(Токен, Календарь, ОписаниеСобытия);
+    Return CreateEvent(Токен, Календарь, ОписаниеСобытия);
 EndFunction
 
 Function ПереместитьСобытие(Val Токен, Val КалендарьИсточник, Val КалендарьПриемник, Val Событие) Export
-	Return MoveEvent(Токен, КалендарьИсточник, КалендарьПриемник, Событие);
+    Return MoveEvent(Токен, КалендарьИсточник, КалендарьПриемник, Событие);
 EndFunction
 
 Function ИзменитьСобытие(Val Токен, Val Календарь, Val ОписаниеСобытия, Val Событие) Export
-	Return EditEvent(Токен, Календарь, ОписаниеСобытия, Событие);
+    Return EditEvent(Токен, Календарь, ОписаниеСобытия, Событие);
 EndFunction
 
 Function УдалитьСобытие(Val Токен, Val Календарь, Val Событие) Export
-	Return DeleteEvent(Токен, Календарь, Событие);
+    Return DeleteEvent(Токен, Календарь, Событие);
 EndFunction
 
 #EndRegion

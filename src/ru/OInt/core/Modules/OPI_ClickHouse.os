@@ -55,9 +55,9 @@
 // Выполняет запрос с указанными параметрами
 //
 // Параметры:
-//  Соединение - Произвольный               - Настройки или объект соединения (для gRPC)     - conn
-//  Запрос     - Структура Из КлючИЗначение - Данные запроса. См. ПолучитьНастройкиЗапроса   - req
-//  Сессия     - Структура Из КлючИЗначение - Настройки сессии. См. ПолучитьНастройкиСессии  - session
+//  Соединение - Произвольный               - Настройки или объект соединения (для gRPC)    - conn
+//  Запрос     - Структура Из КлючИЗначение - Данные запроса. См. ПолучитьНастройкиЗапроса  - req
+//  Сессия     - Структура Из КлючИЗначение - Настройки сессии. См. ПолучитьНастройкиСессии - session
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат выполнения
@@ -105,9 +105,9 @@
 // Получает структуру настроек для HTTP соединения
 //
 // Параметры:
-//  Адрес        - Строка                             - Адрес подключения с протоколом и портом           - url
-//  Авторизация  - Строка, Структура Из КлючИЗначение - Авторизация: строка для JWT, структура для basic  - auth
-//  ДопЗаголовки - Соответствие Из КлючИЗначение      - Дополнительные заголовки запроса                  - headers
+//  Адрес        - Строка                             - Адрес подключения с протоколом и портом          - url
+//  Авторизация  - Строка, Структура Из КлючИЗначение - Авторизация: строка для JWT, структура для basic - auth
+//  ДопЗаголовки - Соответствие Из КлючИЗначение      - Дополнительные заголовки запроса                 - headers
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - Структура настроек соединения
@@ -139,13 +139,13 @@
 // В CLI версии двоичные данные будут представлены в виде Base64 строки
 //
 // Параметры:
-//  Текст          - Строка                        - Текст запроса                                                       - query
-//  БазаДанных     - Строка                        - База данных                                                         - db
-//  IDЗапроса      - Строка                        - Уникальный ID запроса, если необходимо                              - id
-//  Данные         - Произвольный                  - Строка, файл или двоичные данные запроса                            - data
-//  ФорматОтвета   - Строка                        - Формат получения ответа: JSON, CSV, TSV и пр.                       - format
-//  ВнешниеТаблицы - Массив Из Структура           - Информация о внешних таблицах. См. ПолучитьСтруктуруВнешнейТаблицы  - ext
-//  Настройки      - Соответствие Из КлючИЗначение - Дополнительные query параметры запроса                              - settings
+//  Текст          - Строка                        - Текст запроса                                                      - query
+//  БазаДанных     - Строка                        - База данных                                                        - db
+//  IDЗапроса      - Строка                        - Уникальный ID запроса, если необходимо                             - id
+//  Данные         - Произвольный                  - Строка, файл или двоичные данные запроса                           - data
+//  ФорматОтвета   - Строка                        - Формат получения ответа: JSON, CSV, TSV и пр.                      - format
+//  ВнешниеТаблицы - Массив Из Структура           - Информация о внешних таблицах. См. ПолучитьСтруктуруВнешнейТаблицы - ext
+//  Настройки      - Соответствие Из КлючИЗначение - Дополнительные query параметры запроса                             - settings
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - Структура запроса
@@ -233,10 +233,10 @@
 // Получает структуру настроек для gRPC соединения
 //
 // Параметры:
-//  Адрес        - Строка                             - Адрес подключения с протоколом и портом          - url
-//  Авторизация  - Строка, Структура Из КлючИЗначение - Авторизация: строка для JWT, структура для basic - auth
-//  Meta         - Структура Из КлючИЗначение         - Структура метаданных gRPC, если необходимо       - meta
-//  Tls          - Структура Из КлючИЗначение         - Настройки TLS. См. ПолучитьНастройкиTls          - tls
+//  Адрес       - Строка                             - Адрес подключения с протоколом и портом          - url
+//  Авторизация - Строка, Структура Из КлючИЗначение - Авторизация: строка для JWT, структура для basic - auth
+//  Meta        - Структура Из КлючИЗначение         - Структура метаданных gRPC, если необходимо       - meta
+//  Tls         - Структура Из КлючИЗначение         - Настройки TLS. См. ПолучитьНастройкиTls          - tls
 //
 // Возвращаемое значение:
 //  Структура Из КлючИЗначение - Структура настроек соединения
@@ -329,11 +329,11 @@
 // Отправляет очередное сообщение в клиентский или двунаправленный поток
 //
 // Параметры:
-//  Соединение       - Произвольный               - Объект соединения GRPC                            - conn
-//  IDПотока         - Строка                     - Идентификатор потока                              - stream
-//  Запрос           - Структура Из КлючИЗначение - Данные запроса. См. ПолучитьНастройкиЗапроса      - req
-//  Сессия           - Структура Из КлючИЗначение - Настройки сессии. См. ПолучитьНастройкиСессии     - session
-//  ОжидатьСледующее - Булево                     - Флаг ожидания следующих сообщений после текущего  - next
+//  Соединение       - Произвольный               - Объект соединения GRPC                           - conn
+//  IDПотока         - Строка                     - Идентификатор потока                             - stream
+//  Запрос           - Структура Из КлючИЗначение - Данные запроса. См. ПолучитьНастройкиЗапроса     - req
+//  Сессия           - Структура Из КлючИЗначение - Настройки сессии. См. ПолучитьНастройкиСессии    - session
+//  ОжидатьСледующее - Булево                     - Флаг ожидания следующих сообщений после текущего - next
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
@@ -356,10 +356,10 @@
 // Отправляет часть данных (дополнительный QueryInfo) в поток
 //
 // Параметры:
-//  Соединение       - Произвольный  - Объект соединения GRPC                            - conn
-//  IDПотока         - Строка        - Идентификатор потока                              - stream
-//  Данные           - Произвольный  - Данные для отправки                               - data
-//  ОжидатьСледующее - Булево        - Флаг ожидания следующих сообщений после текущего - next
+//  Соединение       - Произвольный - Объект соединения GRPC                           - conn
+//  IDПотока         - Строка       - Идентификатор потока                             - stream
+//  Данные           - Произвольный - Данные для отправки                              - data
+//  ОжидатьСледующее - Булево       - Флаг ожидания следующих сообщений после текущего - next
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат обработки
@@ -436,7 +436,7 @@
 // или неявного, при передаче настроек
 //
 // Параметры:
-//  ОтключитьПроверкуСертификатов - Булево - Позволяет работать с некорректными сертификатами, в т.ч. самоподписанными   - trust
+//  ОтключитьПроверкуСертификатов - Булево - Позволяет работать с некорректными сертификатами, в т.ч. самоподписанными  - trust
 //  ПутьКСертификату              - Строка - Путь к корневому PEM файлу сертификата, если его нет в системном хранилище - cert
 //
 // Возвращаемое значение:
@@ -950,59 +950,59 @@
 #Region Alternate
 
 Function ExecuteRequest(Val Connection, Val Request, Val Session = Undefined) Export
-	Return ВыполнитьЗапрос(Connection, Request, Session);
+    Return ВыполнитьЗапрос(Connection, Request, Session);
 EndFunction
 
 Function GetHTTPConnectionSettings(Val Address, Val Authorization = Undefined, Val AdditionalHeaders = Undefined) Export
-	Return ПолучитьНастройкиСоединенияHTTP(Address, Authorization, AdditionalHeaders);
+    Return ПолучитьНастройкиСоединенияHTTP(Address, Authorization, AdditionalHeaders);
 EndFunction
 
 Function GetRequestSettings(Val Text, Val Database = Undefined, Val RequestID = Undefined, Val Data = Undefined, Val ResponseFormat = "JSON", Val ExternalTables = Undefined, Val Settings = Undefined) Export
-	Return ПолучитьНастройкиЗапроса(Text, Database, RequestID, Data, ResponseFormat, ExternalTables, Settings);
+    Return ПолучитьНастройкиЗапроса(Text, Database, RequestID, Data, ResponseFormat, ExternalTables, Settings);
 EndFunction
 
 Function GetExternalTableStructure(Val Name, Val ColoumnsStruct, Val Data = Undefined, Val DataFormat = Undefined) Export
-	Return ПолучитьСтруктуруВнешнейТаблицы(Name, ColoumnsStruct, Data, DataFormat);
+    Return ПолучитьСтруктуруВнешнейТаблицы(Name, ColoumnsStruct, Data, DataFormat);
 EndFunction
 
 Function GetSessionSettings(Val SessionID = Undefined, Val CheckSession = Undefined, Val Timeout = 60) Export
-	Return ПолучитьНастройкиСессии(SessionID, CheckSession, Timeout);
+    Return ПолучитьНастройкиСессии(SessionID, CheckSession, Timeout);
 EndFunction
 
 Function GetGRPCConnectionSettings(Val Address, Val Authorization = Undefined, Val Meta = Undefined, Val Tls = Undefined) Export
-	Return ПолучитьНастройкиСоединенияGRPC(Address, Authorization, Meta, Tls);
+    Return ПолучитьНастройкиСоединенияGRPC(Address, Authorization, Meta, Tls);
 EndFunction
 
 Function CreateGRPCConnection(Val ConnectionSettings) Export
-	Return ОткрытьСоединениеGRPC(ConnectionSettings);
+    Return ОткрытьСоединениеGRPC(ConnectionSettings);
 EndFunction
 
 Function OpenGRPCStream(Val Connection, Val Timeout = 10000) Export
-	Return ОткрытьПотокGRPC(Connection, Timeout);
+    Return ОткрытьПотокGRPC(Connection, Timeout);
 EndFunction
 
 Function SendGRPCMessage(Val Connection, Val StreamID, Val Request, Val Session = Undefined, Val WaitNext = False) Export
-	Return ОтправитьСообщениеGRPC(Connection, StreamID, Request, Session, WaitNext);
+    Return ОтправитьСообщениеGRPC(Connection, StreamID, Request, Session, WaitNext);
 EndFunction
 
 Function SendGRPCData(Val Connection, Val StreamID, Val Data, Val WaitNext = False) Export
-	Return ОтправитьДанныеGRPC(Connection, StreamID, Data, WaitNext);
+    Return ОтправитьДанныеGRPC(Connection, StreamID, Data, WaitNext);
 EndFunction
 
 Function GetGRPCMessage(Val Connection, Val StreamID) Export
-	Return ПолучитьСообщениеGRPC(Connection, StreamID);
+    Return ПолучитьСообщениеGRPC(Connection, StreamID);
 EndFunction
 
 Function CompleteGRPCSending(Val Connection, Val StreamID) Export
-	Return ЗавершитьОтправкуGRPC(Connection, StreamID);
+    Return ЗавершитьОтправкуGRPC(Connection, StreamID);
 EndFunction
 
 Function CloseGRPCStream(Val Connection, Val StreamID) Export
-	Return ЗакрытьПотокGRPC(Connection, StreamID);
+    Return ЗакрытьПотокGRPC(Connection, StreamID);
 EndFunction
 
 Function GetTlsSettings(Val DisableCertVerification, Val CertFilepath = "") Export
-	Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
+    Return ПолучитьНастройкиTls(DisableCertVerification, CertFilepath);
 EndFunction
 
 #EndRegion

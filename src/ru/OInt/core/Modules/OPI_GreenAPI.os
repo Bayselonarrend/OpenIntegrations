@@ -631,7 +631,7 @@
 //  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа - access
 //  IDЧата           - Строка                     - Идентификатор чата                                  - chat
 //  Файл             - Строка, ДвоичныеДанные     - Данные или путь к файлу                             - file
-//  ИмяФайла         - Строка                     - Имя загружаемого файла с расширением                 - filename
+//  ИмяФайла         - Строка                     - Имя загружаемого файла с расширением                - filename
 //  Описание         - Строка                     - Текст сообщения под файлом                          - caption
 //  IDЦитируемого    - Строка                     - ID цитируемого сообщения, если необходимо           - quoted
 //
@@ -674,7 +674,7 @@
 //  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа - access
 //  IDЧата           - Строка                     - Идентификатор чата                                  - chat
 //  URLФайла         - Строка                     - URL файла для отправки                              - url
-//  ИмяФайла         - Строка                     - Имя загружаемого файла с расширением                 - filename
+//  ИмяФайла         - Строка                     - Имя загружаемого файла с расширением                - filename
 //  Описание         - Строка                     - Текст сообщения под файлом                          - caption
 //  IDЦитируемого    - Строка                     - ID цитируемого сообщения, если необходимо           - quoted
 //
@@ -756,10 +756,10 @@
 // Метод в документации API: [SendPoll](@green-api.com/docs/api/sending/SendPoll/)
 //
 // Параметры:
-//  ПараметрыДоступа   - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа - access
-//  IDЧата             - Строка                     - Идентификатор чата                                  - chat
-//  Локация            - Структура Из КлючИЗначение - Описание локации. См. ПолучитьОписаниеЛокации       - loc
-//  IDЦитируемого      - Строка                     - ID цитируемого сообщения, если необходимо           - quoted
+//  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа - access
+//  IDЧата           - Строка                     - Идентификатор чата                                  - chat
+//  Локация          - Структура Из КлючИЗначение - Описание локации. См. ПолучитьОписаниеЛокации       - loc
+//  IDЦитируемого    - Строка                     - ID цитируемого сообщения, если необходимо           - quoted
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
@@ -790,10 +790,10 @@
 // Метод в документации API: [SendContact](@green-api.com/docs/api/sending/SendContact/)
 //
 // Параметры:
-//  ПараметрыДоступа   - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа - access
-//  IDЧата             - Строка                     - Идентификатор чата                                  - chat
-//  Контакт            - Структура Из КлючИЗначение - Описание контакта. См. ПолучитьОписаниеКонтакта     - contact
-//  IDЦитируемого      - Строка                     - ID цитируемого сообщения, если необходимо           - quoted
+//  ПараметрыДоступа - Структура Из КлючИЗначение - Параметры доступа. См. СформироватьПараметрыДоступа - access
+//  IDЧата           - Строка                     - Идентификатор чата                                  - chat
+//  Контакт          - Структура Из КлючИЗначение - Описание контакта. См. ПолучитьОписаниеКонтакта     - contact
+//  IDЦитируемого    - Строка                     - ID цитируемого сообщения, если необходимо           - quoted
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Green API
@@ -1293,175 +1293,175 @@
 #Region Alternate
 
 Function FormAccessParameters(Val ApiUrl, Val MediaUrl, Val IdInstance, Val ApiTokenInstance) Export
-	Return СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
+    Return СформироватьПараметрыДоступа(ApiUrl, MediaUrl, IdInstance, ApiTokenInstance);
 EndFunction
 
 Function GetAccountInformation(Val AccessParameters) Export
-	Return ПолучитьИнформациюОбАккаунте(AccessParameters);
+    Return ПолучитьИнформациюОбАккаунте(AccessParameters);
 EndFunction
 
 Function GetInstanceSettings(Val AccessParameters) Export
-	Return ПолучитьНастройкиИнстанса(AccessParameters);
+    Return ПолучитьНастройкиИнстанса(AccessParameters);
 EndFunction
 
 Function SetInstanceSettings(Val Settings, Val AccessParameters) Export
-	Return УстановитьНастройкиИнстанса(Settings, AccessParameters);
+    Return УстановитьНастройкиИнстанса(Settings, AccessParameters);
 EndFunction
 
 Function GetInstanceStatus(Val AccessParameters) Export
-	Return ПолучитьСостояниеИнстанса(AccessParameters);
+    Return ПолучитьСостояниеИнстанса(AccessParameters);
 EndFunction
 
 Function RebootInstance(Val AccessParameters) Export
-	Return ПерезапуститьИнстанс(AccessParameters);
+    Return ПерезапуститьИнстанс(AccessParameters);
 EndFunction
 
 Function LogoutInstance(Val AccessParameters) Export
-	Return РазлогинитьИнстанс(AccessParameters);
+    Return РазлогинитьИнстанс(AccessParameters);
 EndFunction
 
 Function GetQR(Val AccessParameters) Export
-	Return ПолучитьQR(AccessParameters);
+    Return ПолучитьQR(AccessParameters);
 EndFunction
 
 Function GetAuthorizationCode(Val AccessParameters, Val PhoneNumber) Export
-	Return ПолучитьКодАвторизации(AccessParameters, PhoneNumber);
+    Return ПолучитьКодАвторизации(AccessParameters, PhoneNumber);
 EndFunction
 
 Function SetProfilePicture(Val AccessParameters, Val Image) Export
-	Return УстановитьКартинкуПрофиля(AccessParameters, Image);
+    Return УстановитьКартинкуПрофиля(AccessParameters, Image);
 EndFunction
 
 Function ArchiveChat(Val AccessParameters, Val ChatID) Export
-	Return АрхивироватьЧат(AccessParameters, ChatID);
+    Return АрхивироватьЧат(AccessParameters, ChatID);
 EndFunction
 
 Function UnarchiveChat(Val AccessParameters, Val ChatID) Export
-	Return РазархивироватьЧат(AccessParameters, ChatID);
+    Return РазархивироватьЧат(AccessParameters, ChatID);
 EndFunction
 
 Function GetInstanceSettingsStructure(Val Clear = False) Export
-	Return ПолучитьСтруктуруНастроекИнстанса(Clear);
+    Return ПолучитьСтруктуруНастроекИнстанса(Clear);
 EndFunction
 
 Function GetGroupInformation(Val AccessParameters, Val GroupID) Export
-	Return ПолучитьИнформациюОГруппе(AccessParameters, GroupID);
+    Return ПолучитьИнформациюОГруппе(AccessParameters, GroupID);
 EndFunction
 
 Function CreateGroup(Val AccessParameters, Val Name, Val Members = Undefined) Export
-	Return СоздатьГруппу(AccessParameters, Name, Members);
+    Return СоздатьГруппу(AccessParameters, Name, Members);
 EndFunction
 
 Function UpdateGroupName(Val AccessParameters, Val GroupID, Val Name) Export
-	Return ИзменитьИмяГруппы(AccessParameters, GroupID, Name);
+    Return ИзменитьИмяГруппы(AccessParameters, GroupID, Name);
 EndFunction
 
 Function AddGroupMember(Val AccessParameters, Val GroupID, Val UserID) Export
-	Return ДобавитьУчастникаВГруппу(AccessParameters, GroupID, UserID);
+    Return ДобавитьУчастникаВГруппу(AccessParameters, GroupID, UserID);
 EndFunction
 
 Function ExcludeGroupMember(Val AccessParameters, Val GroupID, Val UserID) Export
-	Return ИсключитьУчастникаГруппы(AccessParameters, GroupID, UserID);
+    Return ИсключитьУчастникаГруппы(AccessParameters, GroupID, UserID);
 EndFunction
 
 Function SetAdminRights(Val AccessParameters, Val GroupID, Val UserID) Export
-	Return НазначитьПраваАдминистратора(AccessParameters, GroupID, UserID);
+    Return НазначитьПраваАдминистратора(AccessParameters, GroupID, UserID);
 EndFunction
 
 Function RevokeAdminRights(Val AccessParameters, Val GroupID, Val UserID) Export
-	Return ОтозватьПраваАдминистратора(AccessParameters, GroupID, UserID);
+    Return ОтозватьПраваАдминистратора(AccessParameters, GroupID, UserID);
 EndFunction
 
 Function LeaveGroup(Val AccessParameters, Val GroupID) Export
-	Return ПокинутьГруппу(AccessParameters, GroupID);
+    Return ПокинутьГруппу(AccessParameters, GroupID);
 EndFunction
 
 Function SetGroupPicture(Val AccessParameters, Val GroupID, Val Image) Export
-	Return УстановитьКартинкуГруппы(AccessParameters, GroupID, Image);
+    Return УстановитьКартинкуГруппы(AccessParameters, GroupID, Image);
 EndFunction
 
 Function SendTextMessage(Val AccessParameters, Val ChatID, Val Text, Val ReplyID = "") Export
-	Return ОтправитьТекстовоеСообщение(AccessParameters, ChatID, Text, ReplyID);
+    Return ОтправитьТекстовоеСообщение(AccessParameters, ChatID, Text, ReplyID);
 EndFunction
 
 Function SendFile(Val AccessParameters, Val ChatID, Val File, Val FileName, Val Description = "", Val ReplyID = "") Export
-	Return ОтправитьФайл(AccessParameters, ChatID, File, FileName, Description, ReplyID);
+    Return ОтправитьФайл(AccessParameters, ChatID, File, FileName, Description, ReplyID);
 EndFunction
 
 Function SendFileByURL(Val AccessParameters, Val ChatID, Val FileURL, Val FileName, Val Description = "", Val ReplyID = "") Export
-	Return ОтправитьФайлПоURL(AccessParameters, ChatID, FileURL, FileName, Description, ReplyID);
+    Return ОтправитьФайлПоURL(AccessParameters, ChatID, FileURL, FileName, Description, ReplyID);
 EndFunction
 
 Function SendPoll(Val AccessParameters, Val ChatID, Val Text, Val Variants, Val MultipleSelect = False, Val ReplyID = "") Export
-	Return ОтправитьОпрос(AccessParameters, ChatID, Text, Variants, MultipleSelect, ReplyID);
+    Return ОтправитьОпрос(AccessParameters, ChatID, Text, Variants, MultipleSelect, ReplyID);
 EndFunction
 
 Function SendLocation(Val AccessParameters, Val ChatID, Val Location, Val ReplyID = "") Export
-	Return ОтправитьЛокацию(AccessParameters, ChatID, Location, ReplyID);
+    Return ОтправитьЛокацию(AccessParameters, ChatID, Location, ReplyID);
 EndFunction
 
 Function SendContact(Val AccessParameters, Val ChatID, Val Contact, Val ReplyID = "") Export
-	Return ОтправитьКонтакт(AccessParameters, ChatID, Contact, ReplyID);
+    Return ОтправитьКонтакт(AccessParameters, ChatID, Contact, ReplyID);
 EndFunction
 
 Function ForwardMessages(Val AccessParameters, Val From, Val Target, Val Messages) Export
-	Return ПереслатьСообщения(AccessParameters, From, Target, Messages);
+    Return ПереслатьСообщения(AccessParameters, From, Target, Messages);
 EndFunction
 
 Function EditMessageText(Val AccessParameters, Val ChatID, Val MessageID, Val Text) Export
-	Return ИзменитьТекстСообщения(AccessParameters, ChatID, MessageID, Text);
+    Return ИзменитьТекстСообщения(AccessParameters, ChatID, MessageID, Text);
 EndFunction
 
 Function DeleteMessage(Val AccessParameters, Val ChatID, Val MessageID, Val ForSenderOnly = False) Export
-	Return УдалитьСообщение(AccessParameters, ChatID, MessageID, ForSenderOnly);
+    Return УдалитьСообщение(AccessParameters, ChatID, MessageID, ForSenderOnly);
 EndFunction
 
 Function GetContactDescription(Val Phone, Val Name = "", Val LastName = "", Val Patronymic = "", Val Company = "") Export
-	Return ПолучитьОписаниеКонтакта(Phone, Name, LastName, Patronymic, Company);
+    Return ПолучитьОписаниеКонтакта(Phone, Name, LastName, Patronymic, Company);
 EndFunction
 
 Function GetLocationDescription(Val Latitude, Val Longitude, Val Address = "", Val Name = "") Export
-	Return ПолучитьОписаниеЛокации(Latitude, Longitude, Address, Name);
+    Return ПолучитьОписаниеЛокации(Latitude, Longitude, Address, Name);
 EndFunction
 
 Function GetNotification(Val AccessParameters, Val Timeout = 5) Export
-	Return ПолучитьУведомление(AccessParameters, Timeout);
+    Return ПолучитьУведомление(AccessParameters, Timeout);
 EndFunction
 
 Function DeleteNotificationFromQueue(Val AccessParameters, Val ReceiptID) Export
-	Return УдалитьУведомлениеИзОчереди(AccessParameters, ReceiptID);
+    Return УдалитьУведомлениеИзОчереди(AccessParameters, ReceiptID);
 EndFunction
 
 Function DownloadMessageFile(Val AccessParameters, Val ChatID, Val MessageID) Export
-	Return СкачатьФайлСообщения(AccessParameters, ChatID, MessageID);
+    Return СкачатьФайлСообщения(AccessParameters, ChatID, MessageID);
 EndFunction
 
 Function SetReadMark(Val AccessParameters, Val ChatID, Val MessageID = "") Export
-	Return УстановитьОтметкуПрочтения(AccessParameters, ChatID, MessageID);
+    Return УстановитьОтметкуПрочтения(AccessParameters, ChatID, MessageID);
 EndFunction
 
 Function GetMessageQueue(Val AccessParameters) Export
-	Return ПолучитьОчередьСообщений(AccessParameters);
+    Return ПолучитьОчередьСообщений(AccessParameters);
 EndFunction
 
 Function ClearMessageQueue(Val AccessParameters) Export
-	Return ОчиститьОчередьСообщений(AccessParameters);
+    Return ОчиститьОчередьСообщений(AccessParameters);
 EndFunction
 
 Function GetChatHistory(Val AccessParameters, Val ChatID, Val Count = 100) Export
-	Return ПолучитьИсториюЧата(AccessParameters, ChatID, Count);
+    Return ПолучитьИсториюЧата(AccessParameters, ChatID, Count);
 EndFunction
 
 Function GetMessage(Val AccessParameters, Val ChatID, Val MessageID) Export
-	Return ПолучитьСообщение(AccessParameters, ChatID, MessageID);
+    Return ПолучитьСообщение(AccessParameters, ChatID, MessageID);
 EndFunction
 
 Function GetIncomingMessageLog(Val AccessParameters, Val Period = 1440) Export
-	Return ПолучитьЖурналВходящихСообщений(AccessParameters, Period);
+    Return ПолучитьЖурналВходящихСообщений(AccessParameters, Period);
 EndFunction
 
 Function GetOutgoingMessageLog(Val AccessParameters, Val Period = 1440) Export
-	Return ПолучитьЖурналИсходящихСообщений(AccessParameters, Period);
+    Return ПолучитьЖурналИсходящихСообщений(AccessParameters, Period);
 EndFunction
 
 #EndRegion

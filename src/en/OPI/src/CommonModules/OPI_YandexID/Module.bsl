@@ -60,9 +60,9 @@ EndFunction
 // Converts the code to a token after entering the code when executing GetConfirmationCode
 //
 // Parameters:
-// ClientId - String - Client id - id
-// ClientSecret - String - Client secret - secret
-// DeviceCode - String - device_code from GetConfirmationCode() - device
+// ClientId     - String - Client id                              - id
+// ClientSecret - String - Client secret                          - secret
+// DeviceCode   - String - device_code from GetConfirmationCode() - device
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -88,7 +88,7 @@ EndFunction
 // Updates token by Refresh token
 //
 // Parameters:
-// ClientId - String - Client id - id
+// ClientId     - String - Client id     - id
 // ClientSecret - String - Client secret - secret
 // RefreshToken - String - Refresh token - refresh
 //

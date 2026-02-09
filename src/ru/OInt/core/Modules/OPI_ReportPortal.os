@@ -482,55 +482,55 @@
 #Region Alternate
 
 Function GetTemporaryToken(Val URL, Val Login, Val Password) Export
-	Return ПолучитьВременныйТокен(URL, Login, Password);
+    Return ПолучитьВременныйТокен(URL, Login, Password);
 EndFunction
 
 Function GetPermanentToken(Val URL, Val Token, Val UserID, Val KeyName) Export
-	Return ПолучитьПостоянныйТокен(URL, Token, UserID, KeyName);
+    Return ПолучитьПостоянныйТокен(URL, Token, UserID, KeyName);
 EndFunction
 
 Function DeletePermanentToken(Val URL, Val Token, Val UserID, Val KeyID) Export
-	Return УдалитьПостоянныйТокен(URL, Token, UserID, KeyID);
+    Return УдалитьПостоянныйТокен(URL, Token, UserID, KeyID);
 EndFunction
 
 Function CreateLaunch(Val URL, Val Token, Val Project, Val LaunchStructure) Export
-	Return СоздатьЗапуск(URL, Token, Project, LaunchStructure);
+    Return СоздатьЗапуск(URL, Token, Project, LaunchStructure);
 EndFunction
 
 Function CreateItem(Val URL, Val Token, Val Project, Val ElementStructure, Val Parent = "") Export
-	Return СоздатьЭлемент(URL, Token, Project, ElementStructure, Parent);
+    Return СоздатьЭлемент(URL, Token, Project, ElementStructure, Parent);
 EndFunction
 
 Function FinishLaunch(Val URL, Val Token, Val Project, Val LaunchID, Val FinishStructure) Export
-	Return ЗавершитьЗапуск(URL, Token, Project, LaunchID, FinishStructure);
+    Return ЗавершитьЗапуск(URL, Token, Project, LaunchID, FinishStructure);
 EndFunction
 
 Function FinishItem(Val URL, Val Token, Val Project, Val ElementID, Val FinishStructure) Export
-	Return ЗавершитьЭлемент(URL, Token, Project, ElementID, FinishStructure);
+    Return ЗавершитьЭлемент(URL, Token, Project, ElementID, FinishStructure);
 EndFunction
 
 Function GetLaunchStructure(Val Clear = False, Val AsMap = False) Export
-	Return ПолучитьСтруктуруЗапуска(Clear, AsMap);
+    Return ПолучитьСтруктуруЗапуска(Clear, AsMap);
 EndFunction
 
 Function GetItemStructure(Val Clear = False, Val AsMap = False) Export
-	Return ПолучитьСтруктуруЭлемента(Clear, AsMap);
+    Return ПолучитьСтруктуруЭлемента(Clear, AsMap);
 EndFunction
 
 Function GetItemCompletionStructure(Val Clear = False, Val AsMap = False) Export
-	Return ПолучитьСтруктуруЗавершенияЭлемента(Clear, AsMap);
+    Return ПолучитьСтруктуруЗавершенияЭлемента(Clear, AsMap);
 EndFunction
 
 Function GetLaunchCompletionStructure(Val Time, Val Status = "", Val Description = "", Val Attributes = "") Export
-	Return ПолучитьСтруктуруЗавершенияЗапуска(Time, Status, Description, Attributes);
+    Return ПолучитьСтруктуруЗавершенияЗапуска(Time, Status, Description, Attributes);
 EndFunction
 
 Function WriteLog(Val URL, Val Token, Val Project, Val LogStructure) Export
-	Return ЗаписатьЛог(URL, Token, Project, LogStructure);
+    Return ЗаписатьЛог(URL, Token, Project, LogStructure);
 EndFunction
 
 Function GetLogStructure(Val LaunchID, Val ElementID, Val Time, Val Text = "", Val Level = "info") Export
-	Return ПолучитьСтруктуруЛога(LaunchID, ElementID, Time, Text, Level);
+    Return ПолучитьСтруктуруЛога(LaunchID, ElementID, Time, Text, Level);
 EndFunction
 
 #EndRegion

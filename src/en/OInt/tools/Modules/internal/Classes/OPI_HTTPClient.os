@@ -246,9 +246,9 @@ EndFunction
 // The parameter value will be converted to a string
 //
 // Parameters:
-// Name - String - Request parameter key - key
-// Value - Arbitrary - Request parameter value - value
-// IgnoreEmpty - Boolean - Do not add parameter if empty value is passed - skipempty
+// Name        - String    - Request parameter key                         - key
+// Value       - Arbitrary - Request parameter value                       - value
+// IgnoreEmpty - Boolean   - Do not add parameter if empty value is passed - skipempty
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -629,7 +629,7 @@ EndFunction
 // By default, square brackets to parameter keys are not set when array splitting is performed
 //
 // Parameters:
-// Flag - Boolean - Flag for dividing the array into individual URL parameters - split
+// Flag           - Boolean - Flag for dividing the array into individual URL parameters        - split
 // SquareBrackets - Boolean - Add PHP style empty brackets to keys (key[]=value) if Flag = True - php
 //
 // Returns:
@@ -724,8 +724,8 @@ EndFunction
 // Sets the request body from binary data, file or string (with conversion to binary data)
 //
 // Parameters:
-// Data - String, BinaryData - File, string, or request body data - data
-// SetIfEmpty - Boolean - Sets the body even when empty data is passed - empty
+// Data       - String, BinaryData - File, string, or request body data           - data
+// SetIfEmpty - Boolean            - Sets the body even when empty data is passed - empty
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -773,7 +773,7 @@ EndFunction
 // Sets the body of the request from the string
 //
 // Parameters:
-// Data - String - Request body data - data
+// Data     - String  - Request body data        - data
 // WriteBOM - Boolean - True > BOM will be added - bom
 //
 // Returns:
@@ -925,7 +925,7 @@ EndFunction
 //
 // Parameters:
 // UseFile - Boolean - True > use a temporary file, False > form a body in memory - file
-// View - String - Multipart data type: form data, related - type
+// View    - String  - Multipart data type: form data, related                    - type
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -996,11 +996,11 @@ EndFunction
 // The Multipart record must first be initialized using the `StartMultipartBody` function
 //
 // Parameters:
-// FieldName - String - Form field name - field
-// FileName - String - File name with extension - filename
-// Data - BinaryData, String - File data to be written - data
-// DataType - String - MIME type of data - mime
-// IgnoreEmpty - Boolean - Do not add file if empty data is passed - skipempty
+// FieldName   - String             - Form field name                         - field
+// FileName    - String             - File name with extension                - filename
+// Data        - BinaryData, String - File data to be written                 - data
+// DataType    - String             - MIME type of data                       - mime
+// IgnoreEmpty - Boolean            - Do not add file if empty data is passed - skipempty
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -1062,8 +1062,8 @@ EndFunction
 // The Multipart record must first be initialized using the `StartMultipartBody` function
 //
 // Parameters:
-// FieldName - String - Form field name - field
-// Value - Arbitrary - Field value - data
+// FieldName - String    - Form field name - field
+// Value     - Arbitrary - Field value     - data
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -1122,9 +1122,9 @@ EndFunction
 // The Multipart record must first be initialized using the `StartMultipartBody` function
 //
 // Parameters:
-// Data - Arbitrary - Data to be written - data
-// DataType - String - MIME type of data - mime
-// ContentID - String - Content ID, if required - cid
+// Data      - Arbitrary - Data to be written      - data
+// DataType  - String    - MIME type of data       - mime
+// ContentID - String    - Content ID, if required - cid
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -1171,8 +1171,8 @@ EndFunction
 // Sets a collection of query headers
 //
 // Parameters:
-// Value - Arbitrary - Structure or map of request headers - headers
-// FullReplace - Boolean - Clears all previously added headers before setting - replace
+// Value       - Arbitrary - Structure or map of request headers                - headers
+// FullReplace - Boolean   - Clears all previously added headers before setting - replace
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -1209,8 +1209,8 @@ EndFunction
 // Adds a header to the request header set
 //
 // Parameters:
-// Name - String - Header key - header
-// Value - String - Header value - value
+// Name        - String  - Header key                                 - header
+// Value       - String  - Header value                               - value
 // IgnoreEmpty - Boolean - Do not add header if empty value is passed - skipempty
 //
 // Returns:
@@ -1253,8 +1253,8 @@ EndFunction
 // Adds standard authorization by username and password
 //
 // Parameters:
-// User - String - Users name - user
-// Password - String - Password - pwd
+// User     - String - Users name - user
+// Password - String - Password   - pwd
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -1309,10 +1309,10 @@ EndFunction
 // Adds data for AWS4 authorization
 //
 // Parameters:
-// AccessKey - String - Access key for authorization - access
-// SecretKey - String - Secret key for authorization - secret
-// Region - String - Service region - region
-// Service - String - Type of service, if different from s3 - service
+// AccessKey - String - Access key for authorization          - access
+// SecretKey - String - Secret key for authorization          - secret
+// Region    - String - Service region                        - region
+// Service   - String - Type of service, if different from s3 - service
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -1347,11 +1347,11 @@ EndFunction
 // `SetOAuthV1Algorithm`
 //
 // Parameters:
-// Token - String - Token for authorization - token
-// Secret - String - Secret for authorization - secret
-// ConsumerKey - String - Consumer key for authorization - ck
+// Token          - String - Token for authorization           - token
+// Secret         - String - Secret for authorization          - secret
+// ConsumerKey    - String - Consumer key for authorization    - ck
 // ConsumerSecret - String - Consumer secret for authorization - cs
-// Version - String - API version - ver
+// Version        - String - API version                       - ver
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -1385,7 +1385,7 @@ EndFunction
 // Changes the algorithm for OAuth signatures
 //
 // Parameters:
-// Algorithm - String - Encryption algorithm: HMAC, RSA - alg
+// Algorithm    - String - Encryption algorithm: HMAC, RSA           - alg
 // HashFunction - String - Hash function for signature: SHA1, SHA256 - hash
 //
 // Returns:
@@ -1423,8 +1423,8 @@ EndFunction
 // HTTPConnection and HTTPConnection objects without executing them. See `ReturnRequest` and `ReturnConnection`.
 //
 // Parameters:
-// Method - String - Request HTTP method - method
-// Start - Boolean - Executes the request immediately after it is generated - run
+// Method - String  - Request HTTP method                                    - method
+// Start  - Boolean - Executes the request immediately after it is generated - run
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -1487,7 +1487,7 @@ EndFunction
 //
 // Parameters:
 // ChunkSize - Number - Size of one part for sending - part
-// Method - String - Request HTTP method - method
+// Method    - String - Request HTTP method          - method
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -1537,9 +1537,9 @@ EndFunction
 // Sends a request with the specified part of the body and the Content-Range header
 //
 // Parameters:
-// StartPosition - Number - Start position in request body - start
-// ByteCount - Number - Number of bytes from the specified start position for sending - bytes
-// Method - String - Request HTTP method - method
+// StartPosition - Number - Start position in request body                                - start
+// ByteCount     - Number - Number of bytes from the specified start position for sending - bytes
+// Method        - String - Request HTTP method                                           - method
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient - This processor object
@@ -1638,8 +1638,8 @@ EndFunction
 // Returns the object of the current HTTP response
 //
 // Parameters:
-// Forced - Boolean - False > The processor object will be returned instead of the response if there were errors in it - force
-// ExceptionOnError - Boolean - Causes an exception with a log if there were errors during processing - ex
+// Forced           - Boolean - False > The processor object will be returned instead of the response if there were errors in it - force
+// ExceptionOnError - Boolean - Causes an exception with a log if there were errors during processing                            - ex
 //
 // Returns:
 // DataProcessorObject.OPI_HTTPClient, HTTPResponse, Undefined - The response or the same processing object
@@ -1660,7 +1660,7 @@ EndFunction
 // If it is not possible to obtain a collection from the body, binary data will be returned
 //
 // Parameters:
-// ToMap - Boolean - Use map instead of structure - map
+// ToMap            - Boolean - Use map instead of structure                                          - map
 // ExceptionOnError - Boolean - Causes an exception with a log if there were errors during processing - ex
 //
 // Returns:
@@ -1700,8 +1700,8 @@ EndFunction
 // Returns the response body as binary data
 //
 // Parameters:
-// Forced - Boolean - False > The processor object will be returned instead of the response if there were errors in it - force
-// ExceptionOnError - Boolean - Causes an exception with a log if there were errors during processing - ex
+// Forced           - Boolean - False > The processor object will be returned instead of the response if there were errors in it - force
+// ExceptionOnError - Boolean - Causes an exception with a log if there were errors during processing                            - ex
 //
 // Returns:
 // Arbitrary - The response or the same processing object
@@ -1732,8 +1732,8 @@ EndFunction
 // Returns the body of the response as a string
 //
 // Parameters:
-// Forced - Boolean - False > The processor object will be returned instead of the response if there were errors in it - force
-// ExceptionOnError - Boolean - Causes an exception with a log if there were errors during processing - ex
+// Forced           - Boolean - False > The processor object will be returned instead of the response if there were errors in it - force
+// ExceptionOnError - Boolean - Causes an exception with a log if there were errors during processing                            - ex
 //
 // Returns:
 // Arbitrary - The response or the same processing object
@@ -1764,8 +1764,8 @@ EndFunction
 // Returns the path to the response body file
 //
 // Parameters:
-// Forced - Boolean - False > The processor object will be returned instead of the response if there were errors in it - force
-// ExceptionOnError - Boolean - Causes an exception with a log if there were errors during processing - ex
+// Forced           - Boolean - False > The processor object will be returned instead of the response if there were errors in it - force
+// ExceptionOnError - Boolean - Causes an exception with a log if there were errors during processing                            - ex
 //
 // Returns:
 // Arbitrary - The response or the same processing object
@@ -3420,179 +3420,179 @@ EndProcedure
 #Region Alternate
 
 Function Инициализировать(Val URL = "") Export
-	Return Initialize(URL);
+    Return Initialize(URL);
 EndFunction
 
 Function УстановитьURL(Val URL) Export
-	Return SetURL(URL);
+    Return SetURL(URL);
 EndFunction
 
 Function УстановитьПараметрыURL(Val Значение) Export
-	Return SetURLParams(Значение);
+    Return SetURLParams(Значение);
 EndFunction
 
 Function ДобавитьПараметрURL(Val Имя, Val Значение, Val ИгнорироватьПустой = False) Export
-	Return AddURLParameter(Имя, Значение, ИгнорироватьПустой);
+    Return AddURLParameter(Имя, Значение, ИгнорироватьПустой);
 EndFunction
 
 Function УстановитьФайлОтвета(Val Значение) Export
-	Return SetResponseFile(Значение);
+    Return SetResponseFile(Значение);
 EndFunction
 
 Function УстановитьТипДанных(Val Значение) Export
-	Return SetDataType(Значение);
+    Return SetDataType(Значение);
 EndFunction
 
 Function УстановитьПрокси(Val Настройки) Export
-	Return SetProxy(Настройки);
+    Return SetProxy(Настройки);
 EndFunction
 
 Function УстановитьТаймаут(Val Значение) Export
-	Return SetTimeout(Значение);
+    Return SetTimeout(Значение);
 EndFunction
 
 Function ПолучитьЛог(Val Строкой = False) Export
-	Return GetLog(Строкой);
+    Return GetLog(Строкой);
 EndFunction
 
 Function ИспользоватьКодировку(Val Кодировка) Export
-	Return UseEncoding(Кодировка);
+    Return UseEncoding(Кодировка);
 EndFunction
 
 Function ИспользоватьСжатиеGzip(Val Флаг) Export
-	Return UseGzipCompression(Флаг);
+    Return UseGzipCompression(Флаг);
 EndFunction
 
 Function ИспользоватьПоляТелаВOAuth(Val Флаг) Export
-	Return UseBodyFiledsAtOAuth(Флаг);
+    Return UseBodyFiledsAtOAuth(Флаг);
 EndFunction
 
 Function ИспользоватьКодированиеURL(Val Флаг) Export
-	Return UseURLEncoding(Флаг);
+    Return UseURLEncoding(Флаг);
 EndFunction
 
 Function МаксимумПопыток(Val Значение) Export
-	Return MaxAttempts(Значение);
+    Return MaxAttempts(Значение);
 EndFunction
 
 Function МаксимумПереадресаций(Val Значение) Export
-	Return MaxRedirects(Значение);
+    Return MaxRedirects(Значение);
 EndFunction
 
 Function РазделятьМассивыВURL(Val Флаг, Val КвадратныеСкобки = Undefined) Export
-	Return SplitArraysInURL(Флаг, КвадратныеСкобки);
+    Return SplitArraysInURL(Флаг, КвадратныеСкобки);
 EndFunction
 
 Function ВернутьНастройки(Val Отбор = Undefined) Export
-	Return ReturnSettings(Отбор);
+    Return ReturnSettings(Отбор);
 EndFunction
 
 Function УстановитьДвоичноеТело(Val Данные, Val УстанавливатьПустое = False) Export
-	Return SetBinaryBody(Данные, УстанавливатьПустое);
+    Return SetBinaryBody(Данные, УстанавливатьПустое);
 EndFunction
 
 Function УстановитьСтроковоеТело(Val Данные, Val ЗаписатьBOM = False) Export
-	Return SetStringBody(Данные, ЗаписатьBOM);
+    Return SetStringBody(Данные, ЗаписатьBOM);
 EndFunction
 
 Function УстановитьJsonТело(Val Данные) Export
-	Return SetJsonBody(Данные);
+    Return SetJsonBody(Данные);
 EndFunction
 
 Function УстановитьFormТело(Val Данные) Export
-	Return SetFormBody(Данные);
+    Return SetFormBody(Данные);
 EndFunction
 
 Function НачатьЗаписьТелаMultipart(ИспользоватьФайл = True, Val Вид = "form-data") Export
-	Return StartMultipartBody(ИспользоватьФайл, Вид);
+    Return StartMultipartBody(ИспользоватьФайл, Вид);
 EndFunction
 
 Function ДобавитьФайлMultipartFormData(Val ИмяПоля, Val ИмяФайла, Val Данные, Val ТипДанных = "", Val ИгнорироватьПустой = False) Export
-	Return AddMultipartFormDataFile(ИмяПоля, ИмяФайла, Данные, ТипДанных, ИгнорироватьПустой);
+    Return AddMultipartFormDataFile(ИмяПоля, ИмяФайла, Данные, ТипДанных, ИгнорироватьПустой);
 EndFunction
 
 Function ДобавитьПолеMultipartFormData(Val ИмяПоля, Val Значение) Export
-	Return AddMultipartFormDataField(ИмяПоля, Значение);
+    Return AddMultipartFormDataField(ИмяПоля, Значение);
 EndFunction
 
 Function ДобавитьДанныеRelated(Val Данные, Val ТипДанных, Val IDЧасти = "") Export
-	Return AddDataAsRelated(Данные, ТипДанных, IDЧасти);
+    Return AddDataAsRelated(Данные, ТипДанных, IDЧасти);
 EndFunction
 
 Function УстановитьЗаголовки(Val Значение, Val ПолнаяЗамена = False) Export
-	Return SetHeaders(Значение, ПолнаяЗамена);
+    Return SetHeaders(Значение, ПолнаяЗамена);
 EndFunction
 
 Function ДобавитьЗаголовок(Val Имя, Val Значение, Val ИгнорироватьПустой = False) Export
-	Return AddHeader(Имя, Значение, ИгнорироватьПустой);
+    Return AddHeader(Имя, Значение, ИгнорироватьПустой);
 EndFunction
 
 Function ДобавитьBasicАвторизацию(Val Пользователь, Val Пароль) Export
-	Return AddBasicAuthorization(Пользователь, Пароль);
+    Return AddBasicAuthorization(Пользователь, Пароль);
 EndFunction
 
 Function ДобавитьBearerАвторизацию(Val Токен) Export
-	Return AddBearerAuthorization(Токен);
+    Return AddBearerAuthorization(Токен);
 EndFunction
 
 Function ДобавитьAWS4Авторизацию(Val AccessKey, Val SecretKey, Val Region, Val Service = "s3") Export
-	Return AddAWS4Authorization(AccessKey, SecretKey, Region, Service);
+    Return AddAWS4Authorization(AccessKey, SecretKey, Region, Service);
 EndFunction
 
 Function ДобавитьOAuthV1Авторизацию(Val Token, Val Secret, Val ConsumerKey, Val ConsumerSecret, Val Версия) Export
-	Return AddOAuthV1Authorization(Token, Secret, ConsumerKey, ConsumerSecret, Версия);
+    Return AddOAuthV1Authorization(Token, Secret, ConsumerKey, ConsumerSecret, Версия);
 EndFunction
 
 Function УстановитьАлгоритмOAuthV1(Val Алгоритм, Val ХешФункция) Export
-	Return SetOAuthV1Algorithm(Алгоритм, ХешФункция);
+    Return SetOAuthV1Algorithm(Алгоритм, ХешФункция);
 EndFunction
 
 Function ОбработатьЗапрос(Val Метод, Val ВыполнитьСразу = True) Export
-	Return ProcessRequest(Метод, ВыполнитьСразу);
+    Return ProcessRequest(Метод, ВыполнитьСразу);
 EndFunction
 
 Function ВыполнитьЗапрос(Принудительно = False) Export
-	Return ExecuteRequest(Принудительно);
+    Return ExecuteRequest(Принудительно);
 EndFunction
 
 Function ОтправитьДанныеЧастями(Val РазмерЧасти = 5242880, Val Метод = "PUT") Export
-	Return SendDataInParts(РазмерЧасти, Метод);
+    Return SendDataInParts(РазмерЧасти, Метод);
 EndFunction
 
 Function ОтправитьЧасть(Val ПозицияНачала, Val КоличествоБайт, Val Метод = "PUT") Export
-	Return SendPart(ПозицияНачала, КоличествоБайт, Метод);
+    Return SendPart(ПозицияНачала, КоличествоБайт, Метод);
 EndFunction
 
 Function ВернутьЗапрос(Принудительно = False) Export
-	Return ReturnRequest(Принудительно);
+    Return ReturnRequest(Принудительно);
 EndFunction
 
 Function ВернутьСоединение(Принудительно = False) Export
-	Return ReturnConnection(Принудительно);
+    Return ReturnConnection(Принудительно);
 EndFunction
 
 Function ВернутьОтвет(Val Принудительно = False, Val ИсключениеПриОшибке = False) Export
-	Return ReturnResponse(Принудительно, ИсключениеПриОшибке);
+    Return ReturnResponse(Принудительно, ИсключениеПриОшибке);
 EndFunction
 
 Function ВернутьОтветКакJSONКоллекцию(Val ВСоответствие = True, Val ИсключениеПриОшибке = False) Export
-	Return ReturnResponseAsJSONObject(ВСоответствие, ИсключениеПриОшибке);
+    Return ReturnResponseAsJSONObject(ВСоответствие, ИсключениеПриОшибке);
 EndFunction
 
 Function ВернутьОтветКакДвоичныеДанные(Val Принудительно = False, Val ИсключениеПриОшибке = False) Export
-	Return ReturnResponseAsBinaryData(Принудительно, ИсключениеПриОшибке);
+    Return ReturnResponseAsBinaryData(Принудительно, ИсключениеПриОшибке);
 EndFunction
 
 Function ВернутьОтветКакСтроку(Val Принудительно = False, Val ИсключениеПриОшибке = False) Export
-	Return ReturnResponseAsString(Принудительно, ИсключениеПриОшибке);
+    Return ReturnResponseAsString(Принудительно, ИсключениеПриОшибке);
 EndFunction
 
 Function ВернутьИмяФайлаТелаОтвета(Val Принудительно = False, Val ИсключениеПриОшибке = False) Export
-	Return ReturnResponseFilename(Принудительно, ИсключениеПриОшибке);
+    Return ReturnResponseFilename(Принудительно, ИсключениеПриОшибке);
 EndFunction
 
 Procedure КодироватьURLВURL(URL) Export
-	EncodeURLInURL(URL);
+    EncodeURLInURL(URL);
 EndProcedure
 
 #EndRegion

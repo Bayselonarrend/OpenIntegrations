@@ -50,9 +50,9 @@
 // Создает дочернюю страницу над другой страницей-родителем
 //
 // Параметры:
-//  Токен     - Строка - Токен                  - token
-//  Родитель  - Строка - ID Родителя            - page
-//  Заголовок - Строка - Заголовок страницы     - title
+//  Токен     - Строка - Токен              - token
+//  Родитель  - Строка - ID Родителя        - page
+//  Заголовок - Строка - Заголовок страницы - title
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
@@ -111,8 +111,8 @@
 // Получает информацию о странице по ID
 //
 // Параметры:
-//  Токен    - Строка - Токен        - token
-//  Страница - Строка - ID страницы  - page
+//  Токен    - Строка - Токен       - token
+//  Страница - Строка - ID страницы - page
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
@@ -134,12 +134,12 @@
 // Изменяет свойства существующей страницы
 //
 // Параметры:
-//  Токен        - Строка                        - Токен                                   - token
-//  Страница     - Строка                        - ID изменяемой страницы                  - page
-//  Данные       - Соответствие Из КлючИЗначение - Соответствие изменяемых параметров      - data
-//  Иконка       - Строка                        - URL картинки иконки страницы            - icon
-//  Обложка      - Строка                        - URL картинки обложки страницы           - cover
-//  Архивирована - Булево                        - Архивировать страницу или нет (булево)  - archive
+//  Токен        - Строка                        - Токен                                  - token
+//  Страница     - Строка                        - ID изменяемой страницы                 - page
+//  Данные       - Соответствие Из КлючИЗначение - Соответствие изменяемых параметров     - data
+//  Иконка       - Строка                        - URL картинки иконки страницы           - icon
+//  Обложка      - Строка                        - URL картинки обложки страницы          - cover
+//  Архивирована - Булево                        - Архивировать страницу или нет (булево) - archive
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
@@ -209,10 +209,10 @@
 // Создает базу данных
 //
 // Параметры:
-//  Токен     - Строка              - Токен                    - token
-//  Родитель  - Строка              - ID страницы родителя     - page
-//  Заголовок - Строка              - Заголовок базы данных    - title
-//  Свойства  - Структура Из Строка - Свойства базы данных     - props
+//  Токен     - Строка              - Токен                 - token
+//  Родитель  - Строка              - ID страницы родителя  - page
+//  Заголовок - Строка              - Заголовок базы данных - title
+//  Свойства  - Структура Из Строка - Свойства базы данных  - props
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
@@ -327,10 +327,10 @@
 // Создает новый блок на основе существующего блока
 //
 // Параметры:
-//  Токен         - Строка                               - Токен                                              - token
-//  Родитель      - Строка                               - ID родительского блока или страницы                - page
-//  Блок          - Строка,Соответствие Из КлючИЗначение - ID блока или сам блок образец                      - block
-//  ВставитьПосле - Строка                               - ID блока, после которого необходимо вставить новый - prev
+//  Токен         - Строка                                - Токен                                              - token
+//  Родитель      - Строка                                - ID родительского блока или страницы                - page
+//  Блок          - Строка, Соответствие Из КлючИЗначение - ID блока или сам блок образец                      - block
+//  ВставитьПосле - Строка                                - ID блока, после которого необходимо вставить новый - prev
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
@@ -374,9 +374,9 @@
 // Возвращает структуру блока по ID
 //
 // Параметры:
-//  Токен        - Строка - Токен                                                         - token
-//  ИДБлока      - Строка - ID блока                                                      - block
-//  ТолькоОснова - Булево - Истина > служебные поля удаляются, остается только сам блок   - core
+//  Токен        - Строка - Токен                                                       - token
+//  ИДБлока      - Строка - ID блока                                                    - block
+//  ТолькоОснова - Булево - Истина > служебные поля удаляются, остается только сам блок - core
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
@@ -472,8 +472,8 @@
 // Получает данные пользователя по ID
 //
 // Параметры:
-//  Токен          - Строка - Токен                     - token
-//  ИДПользователя - Строка - ID целевого пользователя  - user
+//  Токен          - Строка - Токен                    - token
+//  ИДПользователя - Строка - ID целевого пользователя - user
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - сериализованный JSON ответа от Notion
@@ -899,55 +899,55 @@
 #Region Alternate
 
 Function CreatePage(Val Token, Val Parent, Val Title) Export
-	Return СоздатьСтраницу(Token, Parent, Title);
+    Return СоздатьСтраницу(Token, Parent, Title);
 EndFunction
 
 Function CreatePageInDatabase(Val Token, Val Parent, Val Data) Export
-	Return СоздатьСтраницуВБазу(Token, Parent, Data);
+    Return СоздатьСтраницуВБазу(Token, Parent, Data);
 EndFunction
 
 Function GetPage(Val Token, Val Page) Export
-	Return ПолучитьСтраницу(Token, Page);
+    Return ПолучитьСтраницу(Token, Page);
 EndFunction
 
 Function EditPageProperties(Val Token, Val Page, Val Data = "", Val Icon = "", Val Cover = "", Val Archived = False) Export
-	Return ИзменитьСвойстваСтраницы(Token, Page, Data, Icon, Cover, Archived);
+    Return ИзменитьСвойстваСтраницы(Token, Page, Data, Icon, Cover, Archived);
 EndFunction
 
 Function CreateDatabase(Val Token, Val Parent, Val Title, Val Properties = "") Export
-	Return СоздатьБазуДанных(Token, Parent, Title, Properties);
+    Return СоздатьБазуДанных(Token, Parent, Title, Properties);
 EndFunction
 
 Function GetDatabase(Val Token, Val Base) Export
-	Return ПолучитьБазуДанных(Token, Base);
+    Return ПолучитьБазуДанных(Token, Base);
 EndFunction
 
 Function EditDatabaseProperties(Val Token, Val Base, Val Properties = "", Val Title = "", Val Description = "") Export
-	Return ИзменитьСвойстваБазы(Token, Base, Properties, Title, Description);
+    Return ИзменитьСвойстваБазы(Token, Base, Properties, Title, Description);
 EndFunction
 
 Function CreateBlock(Val Token, Val Parent, Val Block, Val InsertAfter = "") Export
-	Return СоздатьБлок(Token, Parent, Block, InsertAfter);
+    Return СоздатьБлок(Token, Parent, Block, InsertAfter);
 EndFunction
 
 Function ReturnBlock(Val Token, Val BlockID, Val OnlyBase = True) Export
-	Return ВернутьБлок(Token, BlockID, OnlyBase);
+    Return ВернутьБлок(Token, BlockID, OnlyBase);
 EndFunction
 
 Function ReturnChildBlocks(Val Token, Val BlockID) Export
-	Return ВернутьДочерниеБлоки(Token, BlockID);
+    Return ВернутьДочерниеБлоки(Token, BlockID);
 EndFunction
 
 Function DeleteBlock(Val Token, Val BlockID) Export
-	Return УдалитьБлок(Token, BlockID);
+    Return УдалитьБлок(Token, BlockID);
 EndFunction
 
 Function UserList(Val Token) Export
-	Return СписокПользователей(Token);
+    Return СписокПользователей(Token);
 EndFunction
 
 Function GetUserData(Val Token, Val UserID) Export
-	Return ПолучитьДанныеПользователя(Token, UserID);
+    Return ПолучитьДанныеПользователя(Token, UserID);
 EndFunction
 
 #EndRegion

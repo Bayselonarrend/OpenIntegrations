@@ -52,7 +52,7 @@
 //
 // Parameters:
 // Token - String - Auth token - token
-// Name - String - Tag title - title
+// Name  - String - Tag title  - title
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -77,9 +77,9 @@ EndFunction
 // Method at API documentation: [Changing a tag](@yandex.ru/dev/metrika/en/management/openapi/label/updateLabel)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token - String - Auth token       - token
 // TagID - String - Tag ID to change - label
-// Name - String - New name - title
+// Name  - String - New name         - title
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -107,7 +107,7 @@ EndFunction
 //
 // Parameters:
 // Token - String - Auth token - token
-// TagID - String - Tag ID - label
+// TagID - String - Tag ID     - label
 //
 // Returns:
 // Map Of KeyAndValue - serialized JSON response from Yandex
@@ -131,7 +131,7 @@ EndFunction
 // Method at API documentation: [Deleting a tag](@yandex.ru/dev/metrika/en/management/openapi/label/deleteLabel)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token - String - Auth token                  - token
 // TagID - String - ID of the tag to be deleted - label
 //
 // Returns:
@@ -182,7 +182,7 @@ EndFunction
 // Method at API documentation: [Creating a counter](@yandex.ru/dev/metrika/en/management/openapi/counter/addCounter)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token            - String                   - Auth token                                 - token
 // CounterStructure - Structure Of KeyAndValue - Counter structure. See GetCounterStructure - fields
 //
 // Returns:
@@ -208,8 +208,8 @@ EndFunction
 // Method at API documentation: [Changing a counter](@yandex.ru/dev/metrika/en/management/openapi/counter/editCounter)
 //
 // Parameters:
-// Token - String - Auth token - token
-// CounterID - String, Number - Counter ID to change - counter
+// Token            - String                   - Auth token                                                 - token
+// CounterID        - String, Number           - Counter ID to change                                       - counter
 // CounterStructure - Structure Of KeyAndValue - Structure of fields to be changed. See GetCounterStructure - fields
 //
 // Returns:
@@ -237,7 +237,7 @@ EndFunction
 // Method at API documentation: [Counter information](@yandex.ru/dev/metrika/en/management/openapi/counter/counter)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token     - String         - Auth token - token
 // CounterID - String, Number - Counter ID - counter
 //
 // Returns:
@@ -262,7 +262,7 @@ EndFunction
 // Method at API documentation: [Deleting a counter](@yandex.ru/dev/metrika/en/management/openapi/counter/deleteCounter)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token     - String         - Auth token              - token
 // CounterID - Number, String - Counter ID for deletion - counter
 //
 // Returns:
@@ -287,7 +287,7 @@ EndFunction
 // Method at API documentation: [Restoring a counter](@yandex.ru/dev/metrika/en/management/openapi/counter/undeleteCounter)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token     - String         - Auth token               - token
 // CounterID - String, Number - Counter ID for restoring - counter
 //
 // Returns:
@@ -313,7 +313,7 @@ EndFunction
 // Method at API documentation: [List of available counters](@yandex.ru/dev/metrika/en/management/openapi/counter/counters)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token  - String                   - Auth token                                 - token
 // Filter - Structure Of KeyAndValue - List filter. See GetCounterFilterStructure - filter
 //
 // Returns:
@@ -564,7 +564,7 @@ EndFunction
 // Method at API documentation: [List of actions](@yandex.ru/dev/metrika/en/management/openapi/operation/operations)
 //
 // Parameters:
-// Token - String - Auth token - token
+// Token     - String         - Auth token - token
 // CounterID - String, Number - Counter ID - counter
 //
 // Returns:

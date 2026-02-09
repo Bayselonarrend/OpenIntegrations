@@ -192,11 +192,11 @@
 // Выполняет команду по ее описанию
 //
 // Параметры:
-//  Соединение    - Строка, Произвольный       - Соединение или строка подключения                    - dbc
-//  Команда       - Строка                     - Имя команды для выполнения                           - comm
-//  Аргумент      - Произвольный               - Аргумент команды                                     - arg
-//  База          - Строка                     - База данных, в которой необходимо провести операцию  - db
-//  Данные        - Структура Из КлючИЗначение - Основные поля данных для выполнения операции         - data
+//  Соединение - Строка, Произвольный       - Соединение или строка подключения                   - dbc
+//  Команда    - Строка                     - Имя команды для выполнения                          - comm
+//  Аргумент   - Произвольный               - Аргумент команды                                    - arg
+//  База       - Строка                     - База данных, в которой необходимо провести операцию - db
+//  Данные     - Структура Из КлючИЗначение - Основные поля данных для выполнения операции        - data
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат выполнения операции
@@ -367,9 +367,9 @@
 // Удаляет выбранную коллекцию базы
 //
 // Параметры:
-//  Соединение   - Строка, Произвольный - Соединение или строка подключения       - dbc
-//  Коллекция    - Строка               - Имя коллекции                           - coll
-//  База         - Строка               - Имя базы. Текущая база, если не указано - db
+//  Соединение - Строка, Произвольный - Соединение или строка подключения       - dbc
+//  Коллекция  - Строка               - Имя коллекции                           - coll
+//  База       - Строка               - Имя базы. Текущая база, если не указано - db
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат выполнения операции
@@ -571,11 +571,11 @@
 // Удаляет документы коллекции
 //
 // Параметры:
-//  Соединение - Строка, Произвольный       - Соединение или строка подключения                            - dbc
-//  Коллекция  - Строка                     - Имя коллекции                                                - coll
-//  Удаления   - Массив Из Структура        - Массив удаления. См. ПолучитьСтруктуруУдаленияДокументов     - deletes
-//  База       - Строка                     - Имя базы. Текущая база, если не указано                      - db
-//  Параметры  - Структура Из КлючИЗначение - Дополнительные параметры вставки                             - params
+//  Соединение - Строка, Произвольный       - Соединение или строка подключения                        - dbc
+//  Коллекция  - Строка                     - Имя коллекции                                            - coll
+//  Удаления   - Массив Из Структура        - Массив удаления. См. ПолучитьСтруктуруУдаленияДокументов - deletes
+//  База       - Строка                     - Имя базы. Текущая база, если не указано                  - db
+//  Параметры  - Структура Из КлючИЗначение - Дополнительные параметры вставки                         - params
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат выполнения операции
@@ -878,10 +878,10 @@
 // Удаляет пользователя по имени
 //
 // Параметры:
-//  Соединение       - Строка, Произвольный       - Соединение или строка подключения       - dbc
-//  Имя              - Строка                     - Имя пользователя                        - name
-//  База             - Строка                     - Имя базы. Текущая база, если не указано - db
-//  Параметры        - Структура Из КлючИЗначение - Дополнительные параметры удаления       - params
+//  Соединение - Строка, Произвольный       - Соединение или строка подключения       - dbc
+//  Имя        - Строка                     - Имя пользователя                        - name
+//  База       - Строка                     - Имя базы. Текущая база, если не указано - db
+//  Параметры  - Структура Из КлючИЗначение - Дополнительные параметры удаления       - params
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат выполнения операции
@@ -920,7 +920,7 @@
 //  Соединение       - Строка, Произвольный       - Соединение или строка подключения                               - dbc
 //  Имя              - Строка                     - Название роли                                                   - name
 //  База             - Строка                     - Имя базы. Текущая база, если не указано                         - db
-//  МассивПривилегий - Массив Из Структура        - Массив привилегий. См. ПолучитьСтруктуруПривилегииРоли          - prvl                                          - prvl
+//  МассивПривилегий - Массив Из Структура        - Массив привилегий. См. ПолучитьСтруктуруПривилегииРоли          - prvl
 //  МассивРолей      - Массив Из Произвольный     - Массив ролей оснований в виде строк или структур с указанием БД - roles
 //  Параметры        - Структура Из КлючИЗначение - Дополнительные параметры удаления                               - params
 //
@@ -1005,10 +1005,10 @@
 // Удаляет существующую роль
 //
 // Параметры:
-//  Соединение  - Строка, Произвольный       - Соединение или строка подключения       - dbc
-//  Имя         - Строка                     - Название роли                           - name
-//  База        - Строка                     - Имя базы. Текущая база, если не указано - db
-//  Параметры   - Структура Из КлючИЗначение - Дополнительные параметры удаления       - params
+//  Соединение - Строка, Произвольный       - Соединение или строка подключения       - dbc
+//  Имя        - Строка                     - Название роли                           - name
+//  База       - Строка                     - Имя базы. Текущая база, если не указано - db
+//  Параметры  - Структура Из КлючИЗначение - Дополнительные параметры удаления       - params
 //
 // Возвращаемое значение:
 //  Соответствие Из КлючИЗначение - Результат выполнения операции
@@ -1314,127 +1314,127 @@
 #Region Alternate
 
 Function CreateConnection(Val ConnectionString) Export
-	Return ОткрытьСоединение(ConnectionString);
+    Return ОткрытьСоединение(ConnectionString);
 EndFunction
 
 Function CloseConnection(Val Connection) Export
-	Return ЗакрытьСоединение(Connection);
+    Return ЗакрытьСоединение(Connection);
 EndFunction
 
 Function IsConnector(Val Value) Export
-	Return ЭтоКоннектор(Value);
+    Return ЭтоКоннектор(Value);
 EndFunction
 
 Function GenerateConnectionString(Val Address, Val Base = "", Val Login = "", Val Password = "", Val Parameters = Undefined) Export
-	Return СформироватьСтрокуПодключения(Address, Base, Login, Password, Parameters);
+    Return СформироватьСтрокуПодключения(Address, Base, Login, Password, Parameters);
 EndFunction
 
 Function ExecuteCommand(Val Connection, Val Command, Val Argument = 1, Val Base = Undefined, Val Data = Undefined) Export
-	Return ВыполнитьКоманду(Connection, Command, Argument, Base, Data);
+    Return ВыполнитьКоманду(Connection, Command, Argument, Base, Data);
 EndFunction
 
 Function GetListOfBases(Val Connection) Export
-	Return ПолучитьСписокБаз(Connection);
+    Return ПолучитьСписокБаз(Connection);
 EndFunction
 
 Function GetDatabase(Val Connection, Val Base = Undefined) Export
-	Return ПолучитьБазуДанных(Connection, Base);
+    Return ПолучитьБазуДанных(Connection, Base);
 EndFunction
 
 Function DeleteDatabase(Val Connection, Val Base = Undefined) Export
-	Return УдалитьБазуДанных(Connection, Base);
+    Return УдалитьБазуДанных(Connection, Base);
 EndFunction
 
 Function GetCollectionList(Val Connection, Val Base = Undefined) Export
-	Return ПолучитьСписокКоллекций(Connection, Base);
+    Return ПолучитьСписокКоллекций(Connection, Base);
 EndFunction
 
 Function CreateCollection(Val Connection, Val Name, Val Base = Undefined, Val Parameters = Undefined) Export
-	Return СоздатьКоллекцию(Connection, Name, Base, Parameters);
+    Return СоздатьКоллекцию(Connection, Name, Base, Parameters);
 EndFunction
 
 Function DeleteCollection(Val Connection, Val Collection, Val Base = Undefined) Export
-	Return УдалитьКоллекцию(Connection, Collection, Base);
+    Return УдалитьКоллекцию(Connection, Collection, Base);
 EndFunction
 
 Function InsertDocuments(Val Connection, Val Collection, Val Values, Val Base = Undefined, Val Parameters = Undefined) Export
-	Return ВставитьДокументы(Connection, Collection, Values, Base, Parameters);
+    Return ВставитьДокументы(Connection, Collection, Values, Base, Parameters);
 EndFunction
 
 Function UpdateDocuments(Val Connection, Val Collection, Val Updates, Val Base = Undefined, Val Parameters = Undefined) Export
-	Return ОбновитьДокументы(Connection, Collection, Updates, Base, Parameters);
+    Return ОбновитьДокументы(Connection, Collection, Updates, Base, Parameters);
 EndFunction
 
 Function GetDocuments(Val Connection, Val Collection, Val Base = Undefined, Val Filter = Undefined, Val Sort = Undefined, Val Parameters = Undefined) Export
-	Return ПолучитьДокументы(Connection, Collection, Base, Filter, Sort, Parameters);
+    Return ПолучитьДокументы(Connection, Collection, Base, Filter, Sort, Parameters);
 EndFunction
 
 Function DeleteDocuments(Val Connection, Val Collection, Val Deletions, Val Base = Undefined, Val Parameters = Undefined) Export
-	Return УдалитьДокументы(Connection, Collection, Deletions, Base, Parameters);
+    Return УдалитьДокументы(Connection, Collection, Deletions, Base, Parameters);
 EndFunction
 
 Function GetCursor(Val Connection, Val Collection, Val Base = Undefined, Val Filter = Undefined, Val Sort = Undefined, Val Parameters = Undefined) Export
-	Return ПолучитьКурсор(Connection, Collection, Base, Filter, Sort, Parameters);
+    Return ПолучитьКурсор(Connection, Collection, Base, Filter, Sort, Parameters);
 EndFunction
 
 Function GetDocumentBatch(Val Connection, Val Collection, Val CursorID, Val Base = Undefined, Val BatchSize = Undefined, Val Waiting = Undefined) Export
-	Return ПолучитьПакетДокументов(Connection, Collection, CursorID, Base, BatchSize, Waiting);
+    Return ПолучитьПакетДокументов(Connection, Collection, CursorID, Base, BatchSize, Waiting);
 EndFunction
 
 Function GetDocumentUpdateStructure(Val Filter, Val Data, Val UpdateAll = True, Val Insert = False, Val Collation = Undefined) Export
-	Return ПолучитьСтруктуруОбновленияДокументов(Filter, Data, UpdateAll, Insert, Collation);
+    Return ПолучитьСтруктуруОбновленияДокументов(Filter, Data, UpdateAll, Insert, Collation);
 EndFunction
 
 Function GetDocumentDeletionStructure(Val Filter, Val Count = 0, Collation = Undefined) Export
-	Return ПолучитьСтруктуруУдаленияДокументов(Filter, Count, Collation);
+    Return ПолучитьСтруктуруУдаленияДокументов(Filter, Count, Collation);
 EndFunction
 
 Function CreateUser(Val Connection, Val Name, Val UserRoles, Val Base = Undefined, Val Password = Undefined, Val Parameters = Undefined) Export
-	Return СоздатьПользователя(Connection, Name, UserRoles, Base, Password, Parameters);
+    Return СоздатьПользователя(Connection, Name, UserRoles, Base, Password, Parameters);
 EndFunction
 
 Function UpdateUser(Val Connection, Val Name, Val UserRoles = Undefined, Val Base = Undefined, Val Password = Undefined, Val Parameters = Undefined) Export
-	Return ИзменитьПользователя(Connection, Name, UserRoles, Base, Password, Parameters);
+    Return ИзменитьПользователя(Connection, Name, UserRoles, Base, Password, Parameters);
 EndFunction
 
 Function GetUsers(Val Connection, Val Users, Val Base = Undefined, Val GetPassword = False, Val GetPrivileges = False) Export
-	Return ПолучитьПользователей(Connection, Users, Base, GetPassword, GetPrivileges);
+    Return ПолучитьПользователей(Connection, Users, Base, GetPassword, GetPrivileges);
 EndFunction
 
 Function GetDatabaseUsers(Val Connection, Val Base = Undefined, Val GetPassword = False, Val GetPrivileges = False) Export
-	Return ПолучитьПользователейБазы(Connection, Base, GetPassword, GetPrivileges);
+    Return ПолучитьПользователейБазы(Connection, Base, GetPassword, GetPrivileges);
 EndFunction
 
 Function DeleteUser(Val Connection, Val Name, Val Base = Undefined, Val Parameters = Undefined) Export
-	Return УдалитьПользователя(Connection, Name, Base, Parameters);
+    Return УдалитьПользователя(Connection, Name, Base, Parameters);
 EndFunction
 
 Function CreateRole(Val Connection, Val Name, Val Base = Undefined, Val PrivilegesArray = Undefined, Val RoleArray = Undefined, Val Parameters = Undefined) Export
-	Return СоздатьРоль(Connection, Name, Base, PrivilegesArray, RoleArray, Parameters);
+    Return СоздатьРоль(Connection, Name, Base, PrivilegesArray, RoleArray, Parameters);
 EndFunction
 
 Function UpdateRole(Val Connection, Val Name, Val Base = Undefined, Val PrivilegesArray = Undefined, Val RoleArray = Undefined, Val Parameters = Undefined) Export
-	Return ИзменитьРоль(Connection, Name, Base, PrivilegesArray, RoleArray, Parameters);
+    Return ИзменитьРоль(Connection, Name, Base, PrivilegesArray, RoleArray, Parameters);
 EndFunction
 
 Function GetRoles(Val Connection, Val RoleArray, Val Base = Undefined, Val GetPrivileges = False) Export
-	Return ПолучитьРоли(Connection, RoleArray, Base, GetPrivileges);
+    Return ПолучитьРоли(Connection, RoleArray, Base, GetPrivileges);
 EndFunction
 
 Function DeleteRole(Val Connection, Val Name, Val Base = Undefined, Val Parameters = Undefined) Export
-	Return УдалитьРоль(Connection, Name, Base, Parameters);
+    Return УдалитьРоль(Connection, Name, Base, Parameters);
 EndFunction
 
 Function GrantRoles(Val Connection, Val User, Val RoleArray, Val Base = Undefined, Val Parameters = Undefined) Export
-	Return НазначитьРоли(Connection, User, RoleArray, Base, Parameters);
+    Return НазначитьРоли(Connection, User, RoleArray, Base, Parameters);
 EndFunction
 
 Function RevokeRoles(Val Connection, Val User, Val RoleArray, Val Base = Undefined, Val Parameters = Undefined) Export
-	Return СнятьРоли(Connection, User, RoleArray, Base, Parameters);
+    Return СнятьРоли(Connection, User, RoleArray, Base, Parameters);
 EndFunction
 
 Function GetRolePrivilegeStructure(Val Resource, Val ActionsArray) Export
-	Return ПолучитьСтруктуруПривилегииРоли(Resource, ActionsArray);
+    Return ПолучитьСтруктуруПривилегииРоли(Resource, ActionsArray);
 EndFunction
 
 #EndRegion

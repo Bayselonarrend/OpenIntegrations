@@ -57,8 +57,8 @@
 // `GetSettingsPrivateKey`, `GetSettingsViaAgent`
 //
 // Parameters:
-// SSHSettings - Structure Of KeyAndValue - Connection settings structure - set
-// Proxy - Structure Of KeyAndValue - Proxy settings structure, if necessary - proxy
+// SSHSettings - Structure Of KeyAndValue - Connection settings structure          - set
+// Proxy       - Structure Of KeyAndValue - Proxy settings structure, if necessary - proxy
 //
 // Returns:
 // Arbitrary, Map of KeyAndValue - Create connection
@@ -87,8 +87,8 @@ EndFunction
 // This functionality is primarily intended for the CLI version of OInt, where maintaining a connection between calls is not possible
 //
 // Parameters:
-// SSHSettings - Structure Of KeyAndValue - SSH settings - set
-// Proxy - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
+// SSHSettings - Structure Of KeyAndValue - SSH settings                                      - set
+// Proxy       - Structure Of KeyAndValue - Proxy settings, if required. See GetProxySettings - proxy
 //
 // Returns:
 // Structure Of KeyAndValue - Connection settings structure
@@ -116,10 +116,10 @@ EndFunction
 // Changes the object's path to the specified one
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Current path to object - old
-// NewPath - String - New path to object - new
-// Overwrite - Boolean - Overwrite if an object already exists at the target path - rw
+// Connection - Arbitrary - Existing connection or connection configuration          - conn
+// Path       - String    - Current path to object                                   - old
+// NewPath    - String    - New path to object                                       - new
+// Overwrite  - Boolean   - Overwrite if an object already exists at the target path - rw
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -166,9 +166,9 @@ EndFunction
 // Gets connection settings with login and password authentication
 //
 // Parameters:
-// Host - String - SSH host - host
-// Port - Number - SSH port - port
-// Login - String - SSH username - user
+// Host     - String - SSH host          - host
+// Port     - Number - SSH port          - port
+// Login    - String - SSH username      - user
 // Password - String - SSH user password - pass
 //
 // Returns:
@@ -183,11 +183,11 @@ EndFunction
 // Gets connection settings with private key authentication
 //
 // Parameters:
-// Host - String - SSH host - host
-// Port - Number - SSH port - port
-// Login - String - SSH username - user
-// Private - String - Path to private key file - key
-// Public - String - Path to public key file - pub
+// Host     - String - SSH host                          - host
+// Port     - Number - SSH port                          - port
+// Login    - String - SSH username                      - user
+// Private  - String - Path to private key file          - key
+// Public   - String - Path to public key file           - pub
 // Password - String - Private key password (passphrase) - pass
 //
 // Returns:
@@ -207,8 +207,8 @@ EndFunction
 // Gets connection settings with SSH Agent authentication
 //
 // Parameters:
-// Host - String - SSH host - host
-// Port - Number - SSH port - port
+// Host  - String - SSH host     - host
+// Port  - Number - SSH port     - port
 // Login - String - SSH username - user
 //
 // Returns:
@@ -223,10 +223,10 @@ EndFunction
 // Creates a structure of proxy server settings for the connection
 //
 // Parameters:
-// Address - String - Proxy address - addr
-// Port - Number - Proxy port - port
-// View - String - Proxy type: socks5, socks4, http - type
-// Login - String, Undefined - Authorization login, if required - login
+// Address  - String            - Proxy address                       - addr
+// Port     - Number            - Proxy port                          - port
+// View     - String            - Proxy type: socks5, socks4, http    - type
+// Login    - String, Undefined - Authorization login, if required    - login
 // Password - String, Undefined - Authorization password, if required - pass
 //
 // Returns:
@@ -253,9 +253,9 @@ EndFunction
 // FTP Command: `LIST`
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to search directory - path
-// Recursively - Boolean - Get information about objects in nested directories - rcv
+// Connection  - Arbitrary - Existing connection or connection configuration     - conn
+// Path        - String    - Path to search directory                            - path
+// Recursively - Boolean   - Get information about objects in nested directories - rcv
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -291,9 +291,9 @@ EndFunction
 // Creates a directory at the specified path
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to new directory - path
-// Permissions - String - Access mode to the directory in POSIX numeric format (as in chmod) - mode
+// Connection  - Arbitrary - Existing connection or connection configuration                    - conn
+// Path        - String    - Path to new directory                                              - path
+// Permissions - String    - Access mode to the directory in POSIX numeric format (as in chmod) - mode
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -327,7 +327,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to directory to delete - path
+// Path       - String    - Path to directory to delete                     - path
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -393,9 +393,9 @@ EndFunction
 //
 //
 // Parameters:
-// Connection - Arbitrary - Existing connection or connection configuration - conn
-// File - String, BinaryData - File on disk or file data - file
-// Path - String - Path to save file on server - path
+// Connection - Arbitrary          - Existing connection or connection configuration - conn
+// File       - String, BinaryData - File on disk or file data                       - file
+// Path       - String             - Path to save file on server                     - path
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -458,7 +458,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to file on server - path
+// Path       - String    - Path to file on server                          - path
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -490,8 +490,8 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to file on server - path
-// FileName - String - Path to save file on disk - file
+// Path       - String    - Path to file on server                          - path
+// FileName   - String    - Path to save file on disk                       - file
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -526,7 +526,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to file on server - path
+// Path       - String    - Path to file on server                          - path
 //
 // Returns:
 // Map Of KeyAndValue, BinaryData - File data or error information
@@ -587,7 +587,7 @@ EndFunction
 //
 // Parameters:
 // Connection - Arbitrary - Existing connection or connection configuration - conn
-// Path - String - Path to file on server - path
+// Path       - String    - Path to file on server                          - path
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -746,75 +746,75 @@ EndProcedure
 #Region Alternate
 
 Function ОткрытьСоединение(Val НастройкиSSH, Val Прокси = "") Export
-	Return CreateConnection(НастройкиSSH, Прокси);
+    Return CreateConnection(НастройкиSSH, Прокси);
 EndFunction
 
 Function ПолучитьКонфигурациюСоединения(Val НастройкиSSH, Val Прокси = Undefined) Export
-	Return GetConnectionConfiguration(НастройкиSSH, Прокси);
+    Return GetConnectionConfiguration(НастройкиSSH, Прокси);
 EndFunction
 
 Function ЗакрытьСоединение(Val Соединение) Export
-	Return CloseConnection(Соединение);
+    Return CloseConnection(Соединение);
 EndFunction
 
 Function ИзменитьПуть(Val Соединение, Val Путь, Val НовыйПуть, Val Перезаписывать = False) Export
-	Return UpdatePath(Соединение, Путь, НовыйПуть, Перезаписывать);
+    Return UpdatePath(Соединение, Путь, НовыйПуть, Перезаписывать);
 EndFunction
 
 Function ЭтоКоннектор(Val Значение) Export
-	Return IsConnector(Значение);
+    Return IsConnector(Значение);
 EndFunction
 
 Function ПолучитьНастройкиЛогинПароль(Val Хост, Val Порт, Val Логин, Val Пароль = "") Export
-	Return GetSettingsLoginPassword(Хост, Порт, Логин, Пароль);
+    Return GetSettingsLoginPassword(Хост, Порт, Логин, Пароль);
 EndFunction
 
 Function ПолучитьНастройкиПриватныйКлюч(Val Хост, Val Порт, Val Логин, Val Приватный, Val Публичный = "", Val Пароль = "") Export
-	Return GetSettingsPrivateKey(Хост, Порт, Логин, Приватный, Публичный, Пароль);
+    Return GetSettingsPrivateKey(Хост, Порт, Логин, Приватный, Публичный, Пароль);
 EndFunction
 
 Function ПолучитьНастройкиЧерезАгента(Val Хост, Val Порт, Val Логин) Export
-	Return GetSettingsViaAgent(Хост, Порт, Логин);
+    Return GetSettingsViaAgent(Хост, Порт, Логин);
 EndFunction
 
 Function ПолучитьНастройкиПрокси(Val Адрес, Val Порт, Val Вид = "socks5", Val Логин = Undefined, Val Пароль = Undefined) Export
-	Return GetProxySettings(Адрес, Порт, Вид, Логин, Пароль);
+    Return GetProxySettings(Адрес, Порт, Вид, Логин, Пароль);
 EndFunction
 
 Function ПолучитьСписокОбъектов(Val Соединение, Val Путь = "", Val Рекурсивно = False) Export
-	Return ListObjects(Соединение, Путь, Рекурсивно);
+    Return ListObjects(Соединение, Путь, Рекурсивно);
 EndFunction
 
 Function СоздатьНовуюДиректорию(Val Соединение, Val Путь, Val Права = 700) Export
-	Return CreateNewDirectory(Соединение, Путь, Права);
+    Return CreateNewDirectory(Соединение, Путь, Права);
 EndFunction
 
 Function УдалитьДиректорию(Val Соединение, Val Путь) Export
-	Return DeleteDirectory(Соединение, Путь);
+    Return DeleteDirectory(Соединение, Путь);
 EndFunction
 
 Function ПолучитьТекущийКаталог(Val Соединение) Export
-	Return GetCurrentDirectory(Соединение);
+    Return GetCurrentDirectory(Соединение);
 EndFunction
 
 Function ЗагрузитьФайл(Val Соединение, Val Файл, Val Путь) Export
-	Return UploadFile(Соединение, Файл, Путь);
+    Return UploadFile(Соединение, Файл, Путь);
 EndFunction
 
 Function УдалитьФайл(Val Соединение, Val Путь) Export
-	Return DeleteFile(Соединение, Путь);
+    Return DeleteFile(Соединение, Путь);
 EndFunction
 
 Function СохранитьФайл(Val Соединение, Val Путь, Val ИмяФайла) Export
-	Return SaveFile(Соединение, Путь, ИмяФайла);
+    Return SaveFile(Соединение, Путь, ИмяФайла);
 EndFunction
 
 Function ПолучитьДанныеФайла(Val Соединение, Val Путь) Export
-	Return GetFileData(Соединение, Путь);
+    Return GetFileData(Соединение, Путь);
 EndFunction
 
 Function ПолучитьИнформациюОФайле(Val Соединение, Val Путь) Export
-	Return GetFileInformation(Соединение, Путь);
+    Return GetFileInformation(Соединение, Путь);
 EndFunction
 
 #EndRegion

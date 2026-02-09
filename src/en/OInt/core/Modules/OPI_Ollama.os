@@ -58,7 +58,7 @@
 // Method at API documentation: [Version](@github.com/ollama/ollama/blob/main/docs/api.md#version)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
+// URL               - String             - Ollama server URL                        - url
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -82,11 +82,11 @@ EndFunction
 // Method at API documentation: [Generate a completion](@github.com/ollama/ollama/blob/main/docs/api.md#generate-a-completion)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Question - String - Request text - prompt
+// URL                  - String                   - Ollama server URL                                        - url
+// Model                - String                   - Models name                                              - model
+// Question             - String                   - Request text                                             - prompt
 // AdditionalParameters - Structure Of KeyAndValue - Additional parameters. See GetRequestParametersStructure - options
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// AdditionalHeaders    - Map Of KeyAndValue       - Additional request headers, if necessary                 - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -117,11 +117,11 @@ EndFunction
 // Method at API documentation: [Generate a chat completion](@github.com/ollama/ollama/blob/main/docs/api.md#generate-a-chat-completion)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Messages - Array of Structure - Messages log. See GetContextMessageStructure - msgs
+// URL                  - String                   - Ollama server URL                                        - url
+// Model                - String                   - Models name                                              - model
+// Messages             - Array of Structure       - Messages log. See GetContextMessageStructure             - msgs
 // AdditionalParameters - Structure Of KeyAndValue - Additional parameters. See GetRequestParametersStructure - options
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// AdditionalHeaders    - Map Of KeyAndValue       - Additional request headers, if necessary                 - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -151,11 +151,11 @@ EndFunction
 // Method at API documentation: [Generate Embeddings](@github.com/ollama/ollama/blob/main/docs/api.md#generate-embeddings)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Question - Array Of String - String or array of request strings - input
+// URL                  - String                   - Ollama server URL                                          - url
+// Model                - String                   - Models name                                                - model
+// Question             - Array Of String          - String or array of request strings                         - input
 // AdditionalParameters - Structure Of KeyAndValue - Additional parameters. See GetEmbeddingsParameterStructure - options
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// AdditionalHeaders    - Map Of KeyAndValue       - Additional request headers, if necessary                   - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -265,10 +265,10 @@ EndFunction
 // Gets the message structure for a list of request messages in context
 //
 // Parameters:
-// Role - String - Message source: system, user, assistant, tool - role
-// Text - String - Message text - text
+// Role     - String          - Message source: system, user, assistant, tool                        - role
+// Text     - String          - Message text                                                         - text
 // Pictures - Array Of String - List of pictures in Base64 format (for multimodal models like llava) - images
-// Tools - Array Of String - List of tools in JSON format that the model should use - tools
+// Tools    - Array Of String - List of tools in JSON format that the model should use               - tools
 //
 // Returns:
 // Structure Of KeyAndValue - Fields structure
@@ -296,7 +296,7 @@ EndFunction
 // Method at API documentation: [List Local Models](@github.com/ollama/ollama/blob/main/docs/api.md#list-local-models)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
+// URL               - String             - Ollama server URL                        - url
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -320,7 +320,7 @@ EndFunction
 // Method at API documentation: [List Running Models](@github.com/ollama/ollama/blob/main/docs/api.md#list-running-models)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
+// URL               - String             - Ollama server URL                        - url
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -344,9 +344,9 @@ EndFunction
 // Method at API documentation: [Show Model Information](@github.com/ollama/ollama/blob/main/docs/api.md#show-model-information)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Detailed - Boolean - Return full model information - verbose
+// URL               - String             - Ollama server URL                        - url
+// Model             - String             - Models name                              - model
+// Detailed          - Boolean            - Return full model information            - verbose
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -375,10 +375,10 @@ EndFunction
 // Method at API documentation: [Create a Model](@github.com/ollama/ollama/blob/main/docs/api.md#create-a-model)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Settings - Structure Of KeyAndValue - Model settings. See GetModelSettingsStructure - settings
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// URL               - String                   - Ollama server URL                             - url
+// Model             - String                   - Models name                                   - model
+// Settings          - Structure Of KeyAndValue - Model settings. See GetModelSettingsStructure - settings
+// AdditionalHeaders - Map Of KeyAndValue       - Additional request headers, if necessary      - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -407,9 +407,9 @@ EndFunction
 // Method at API documentation: [Copy a Model](@github.com/ollama/ollama/blob/main/docs/api.md#copy-a-model)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Name of existing model - model
-// Name - String - The name of the new model - name
+// URL               - String             - Ollama server URL                        - url
+// Model             - String             - Name of existing model                   - model
+// Name              - String             - The name of the new model                - name
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -439,8 +439,8 @@ EndFunction
 // Method at API documentation: [Delete a Model](@github.com/ollama/ollama/blob/main/docs/api.md#delete-a-model)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
+// URL               - String             - Ollama server URL                        - url
+// Model             - String             - Models name                              - model
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -469,9 +469,9 @@ EndFunction
 // Method at API documentation: [Load a model](@github.com/ollama/ollama/blob/main/docs/api.md#load-a-model)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Period - Number - Model hold time in seconds - keep
+// URL               - String             - Ollama server URL                        - url
+// Model             - String             - Models name                              - model
+// Period            - Number             - Model hold time in seconds               - keep
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -499,8 +499,8 @@ EndFunction
 // Method at API documentation: [Unload a model](@github.com/ollama/ollama/blob/main/docs/api.md#unload-a-model)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
+// URL               - String             - Ollama server URL                        - url
+// Model             - String             - Models name                              - model
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -531,10 +531,10 @@ EndFunction
 // Registration on ollama.ai and adding a public key is required.
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Insecure - Boolean - Allows an unsecured connection to the library - insecure
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// URL               - String             - Ollama server URL                             - url
+// Model             - String             - Models name                                   - model
+// Insecure          - Boolean            - Allows an unsecured connection to the library - insecure
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary      - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -563,10 +563,10 @@ EndFunction
 // Method at API documentation: [Pull a Model](@github.com/ollama/ollama/blob/main/docs/api.md#pull-a-model)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Model - String - Models name - model
-// Insecure - Boolean - Allows an unsecured connection to the library - insecure
-// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
+// URL               - String             - Ollama server URL                             - url
+// Model             - String             - Models name                                   - model
+// Insecure          - Boolean            - Allows an unsecured connection to the library - insecure
+// AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary      - headers
 //
 // Returns:
 // Map Of KeyAndValue - Processing result
@@ -631,8 +631,8 @@ EndFunction
 // Method at API documentation: [Push a Blob](@github.com/ollama/ollama/blob/main/docs/api.md#push-a-blob)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// Data - String, BinaryData - File data or filepath - data
+// URL               - String             - Ollama server URL                        - url
+// Data              - String, BinaryData - File data or filepath                    - data
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -669,8 +669,8 @@ EndFunction
 // Method at API documentation: [Check if a Blob Exists](@github.com/ollama/ollama/blob/main/docs/api.md#check-if-a-blob-exists)
 //
 // Parameters:
-// URL - String - Ollama server URL - url
-// SHA256 - String - SHA256 BLOB digest - digest
+// URL               - String             - Ollama server URL                        - url
+// SHA256            - String             - SHA256 BLOB digest                       - digest
 // AdditionalHeaders - Map Of KeyAndValue - Additional request headers, if necessary - headers
 //
 // Returns:
@@ -738,87 +738,87 @@ EndProcedure
 #Region Alternate
 
 Function ПолучитьВерсию(Val URL, Val ДопЗаголовки = "") Export
-	Return GetVersion(URL, ДопЗаголовки);
+    Return GetVersion(URL, ДопЗаголовки);
 EndFunction
 
 Function ПолучитьОтвет(Val URL, Val Модель, Val Вопрос, Val ДопПараметры = "", Val ДопЗаголовки = "") Export
-	Return GetResponse(URL, Модель, Вопрос, ДопПараметры, ДопЗаголовки);
+    Return GetResponse(URL, Модель, Вопрос, ДопПараметры, ДопЗаголовки);
 EndFunction
 
 Function ПолучитьОтветВКонтексте(Val URL, Val Модель, Val Сообщения, Val ДопПараметры = "", Val ДопЗаголовки = "") Export
-	Return GetContextResponse(URL, Модель, Сообщения, ДопПараметры, ДопЗаголовки);
+    Return GetContextResponse(URL, Модель, Сообщения, ДопПараметры, ДопЗаголовки);
 EndFunction
 
 Function ПолучитьПредставления(Val URL, Val Модель, Val Вопрос, Val ДопПараметры = "", Val ДопЗаголовки = "") Export
-	Return GetEmbeddings(URL, Модель, Вопрос, ДопПараметры, ДопЗаголовки);
+    Return GetEmbeddings(URL, Модель, Вопрос, ДопПараметры, ДопЗаголовки);
 EndFunction
 
 Function ПолучитьСтруктуруПараметровЗапроса(Val Пустая = False) Export
-	Return GetRequestParameterStructure(Пустая);
+    Return GetRequestParameterStructure(Пустая);
 EndFunction
 
 Function ПолучитьСтруктуруПараметровПредставлений(Val Пустая = False) Export
-	Return GetEmbeddingsParameterStructure(Пустая);
+    Return GetEmbeddingsParameterStructure(Пустая);
 EndFunction
 
 Function ПолучитьСтруктуруПараметровВКонтексте(Val Пустая = False) Export
-	Return GetContextParameterStructure(Пустая);
+    Return GetContextParameterStructure(Пустая);
 EndFunction
 
 Function ПолучитьСтруктуруСообщенияКонтекста(Val Роль, Val Текст, Val Картинки = "", Val Инструменты = "") Export
-	Return GetContextMessageStructure(Роль, Текст, Картинки, Инструменты);
+    Return GetContextMessageStructure(Роль, Текст, Картинки, Инструменты);
 EndFunction
 
 Function ПолучитьСписокМоделей(Val URL, Val ДопЗаголовки = "") Export
-	Return GetModelList(URL, ДопЗаголовки);
+    Return GetModelList(URL, ДопЗаголовки);
 EndFunction
 
 Function ПолучитьСписокЗапущенныхМоделей(Val URL, Val ДопЗаголовки = "") Export
-	Return ListRunningModels(URL, ДопЗаголовки);
+    Return ListRunningModels(URL, ДопЗаголовки);
 EndFunction
 
 Function ПолучитьИнформациюОМодели(Val URL, Val Модель, Val Подробно = True, Val ДопЗаголовки = "") Export
-	Return GetModelInformation(URL, Модель, Подробно, ДопЗаголовки);
+    Return GetModelInformation(URL, Модель, Подробно, ДопЗаголовки);
 EndFunction
 
 Function СоздатьМодель(Val URL, Val Модель, Val Настройки, Val ДопЗаголовки = "") Export
-	Return CreateModel(URL, Модель, Настройки, ДопЗаголовки);
+    Return CreateModel(URL, Модель, Настройки, ДопЗаголовки);
 EndFunction
 
 Function КопироватьМодель(Val URL, Val Модель, Val Имя, Val ДопЗаголовки = "") Export
-	Return CopyModel(URL, Модель, Имя, ДопЗаголовки);
+    Return CopyModel(URL, Модель, Имя, ДопЗаголовки);
 EndFunction
 
 Function УдалитьМодель(Val URL, Val Модель, Val ДопЗаголовки = "") Export
-	Return DeleteModel(URL, Модель, ДопЗаголовки);
+    Return DeleteModel(URL, Модель, ДопЗаголовки);
 EndFunction
 
 Function ЗагрузитьМодельВПамять(Val URL, Val Модель, Val Период = 300, Val ДопЗаголовки = "") Export
-	Return LoadModelToMemory(URL, Модель, Период, ДопЗаголовки);
+    Return LoadModelToMemory(URL, Модель, Период, ДопЗаголовки);
 EndFunction
 
 Function ВыгрузитьМодельИзПамяти(Val URL, Val Модель, Val ДопЗаголовки = "") Export
-	Return UnloadModelFromMemory(URL, Модель, ДопЗаголовки);
+    Return UnloadModelFromMemory(URL, Модель, ДопЗаголовки);
 EndFunction
 
 Function ОтправитьМодель(Val URL, Val Модель, Val Небезопасно = False, Val ДопЗаголовки = "") Export
-	Return PushModel(URL, Модель, Небезопасно, ДопЗаголовки);
+    Return PushModel(URL, Модель, Небезопасно, ДопЗаголовки);
 EndFunction
 
 Function СкачатьМодель(Val URL, Val Модель, Val Небезопасно = False, Val ДопЗаголовки = "") Export
-	Return PullModel(URL, Модель, Небезопасно, ДопЗаголовки);
+    Return PullModel(URL, Модель, Небезопасно, ДопЗаголовки);
 EndFunction
 
 Function ПолучитьСтруктуруНастроекМодели(Val Пустая = False) Export
-	Return GetModelSettingsStructure(Пустая);
+    Return GetModelSettingsStructure(Пустая);
 EndFunction
 
 Function ОтправитьBlob(Val URL, Val Данные, Val ДопЗаголовки = "") Export
-	Return PushBlob(URL, Данные, ДопЗаголовки);
+    Return PushBlob(URL, Данные, ДопЗаголовки);
 EndFunction
 
 Function ПроверитьBlob(Val URL, Val SHA256, Val ДопЗаголовки = "") Export
-	Return CheckBlob(URL, SHA256, ДопЗаголовки);
+    Return CheckBlob(URL, SHA256, ДопЗаголовки);
 EndFunction
 
 #EndRegion

@@ -14337,127 +14337,127 @@ EndProcedure
 #Region Alternate
 
 Function ВыполнитьТестCLI(Val Библиотека, Val Метод, Val Опции, Val Записывать = True) Export
-	Return ExecuteTestCLI(Библиотека, Метод, Опции, Записывать);
+    Return ExecuteTestCLI(Библиотека, Метод, Опции, Записывать);
 EndFunction
 
 Function ПолучитьСоответствиеРазделовТестирования() Export
-	Return GetTestingSectionMapping();
+    Return GetTestingSectionMapping();
 EndFunction
 
 Function ПолучитьСоответствиеРазделовТестированияGA() Export
-	Return GetTestingSectionMappingGA();
+    Return GetTestingSectionMappingGA();
 EndFunction
 
 Function ПолучитьТаблицуТестов() Export
-	Return GetTestTable();
+    Return GetTestTable();
 EndFunction
 
 Function ОжидаетЧто(Значение) Export
-	Return ExpectsThat(Значение);
+    Return ExpectsThat(Значение);
 EndFunction
 
 Function СформироватьТестыЯкс() Export
-	Return FormYAXTests();
+    Return FormYAXTests();
 EndFunction
 
 Function СформироватьТестыАссертс() Export
-	Return FormAssertsTests();
+    Return FormAssertsTests();
 EndFunction
 
 Function СформироватьТестыЯксCLI() Export
-	Return FormYAXTestsCLI();
+    Return FormYAXTestsCLI();
 EndFunction
 
 Function СформироватьТестыАссертсCLI() Export
-	Return FormAssertsTestsCLI();
+    Return FormAssertsTestsCLI();
 EndFunction
 
 Function ПолучитьПараметр(Параметр) Export
-	Return GetParameter(Параметр);
+    Return GetParameter(Параметр);
 EndFunction
 
 Function ПолучитьДвоичные(Параметр) Export
-	Return GetBinary(Параметр);
+    Return GetBinary(Параметр);
 EndFunction
 
 Function ПолучитьФайлПути(Val Путь) Export
-	Return GetFilePath(Путь);
+    Return GetFilePath(Путь);
 EndFunction
 
 Function ПолучитьLocalhost() Export
-	Return GetLocalhost();
+    Return GetLocalhost();
 EndFunction
 
 Function ЭтоТестCLI() Export
-	Return IsCLITest();
+    Return IsCLITest();
 EndFunction
 
 Procedure ПараметрВКоллекцию(Параметр, Коллекция) Export
-	ParameterToCollection(Параметр, Коллекция);
+    ParameterToCollection(Параметр, Коллекция);
 EndProcedure
 
 Procedure ДвоичныеВКоллекцию(Параметр, Коллекция) Export
-	BinaryToCollection(Параметр, Коллекция);
+    BinaryToCollection(Параметр, Коллекция);
 EndProcedure
 
 Procedure ЗаписатьПараметр(Параметр, Значение) Export
-	WriteParameter(Параметр, Значение);
+    WriteParameter(Параметр, Значение);
 EndProcedure
 
 Procedure ОбработатьРезультатТестирования(Val Результат, Val Метод, Val Библиотека, Val Вариант = "", ДопПараметр1 = Undefined, ДопПараметр2 = Undefined, ДопПараметр3 = Undefined) Export
-	ProcessTestingResult(Результат, Метод, Библиотека, Вариант, ДопПараметр1, ДопПараметр2, ДопПараметр3);
+    ProcessTestingResult(Результат, Метод, Библиотека, Вариант, ДопПараметр1, ДопПараметр2, ДопПараметр3);
 EndProcedure
 
 Procedure ВывестиСлужебнуюИнформацию(Val Текст, Val Примечание, Val Библиотека) Export
-	LogServiceInformation(Текст, Примечание, Библиотека);
+    LogServiceInformation(Текст, Примечание, Библиотека);
 EndProcedure
 
 Function СоздатьЗапускReportPortal(Val Платформа = "") Export
-	Return CreateReportPortalLaunch(Платформа);
+    Return CreateReportPortalLaunch(Платформа);
 EndFunction
 
 Function СоздатьНаборЗапуска(Val Наименование) Export
-	Return CreateLaunchSet(Наименование);
+    Return CreateLaunchSet(Наименование);
 EndFunction
 
 Function СоздатьТестовыйЭлемент(Val Набор, Val Библиотека, Val Метод, Val Вариант) Export
-	Return CreateTestElement(Набор, Библиотека, Метод, Вариант);
+    Return CreateTestElement(Набор, Библиотека, Метод, Вариант);
 EndFunction
 
 Procedure ЗавершитьЗапуск() Export
-	FinishLaunch();
+    FinishLaunch();
 EndProcedure
 
 Function ПолучитьСписокВыполненныхТестов() Export
-	Return GetExecutedTestsList();
+    Return GetExecutedTestsList();
 EndFunction
 
 Function ПолучитьПолныйСписокТестов() Export
-	Return GetFullTestList();
+    Return GetFullTestList();
 EndFunction
 
 Function ПолучитьВариантыПараметровFTP() Export
-	Return GetFTPParameterOptions();
+    Return GetFTPParameterOptions();
 EndFunction
 
 Function ПолучитьВариантыПараметровSSH() Export
-	Return GetSSHParameterOptions();
+    Return GetSSHParameterOptions();
 EndFunction
 
 Function ПолучитьВариантыПараметровS3() Export
-	Return GetS3ParameterOptions();
+    Return GetS3ParameterOptions();
 EndFunction
 
 Function ПолучитьВариантыПараметровPostgres() Export
-	Return GetPostgresParameterOptions();
+    Return GetPostgresParameterOptions();
 EndFunction
 
 Function ПолучитьВариантыПараметровMySQL() Export
-	Return GetMySQLParameterOptions();
+    Return GetMySQLParameterOptions();
 EndFunction
 
 Function ПолучитьМассивТегов(Индекс) Export
-	Return GetTagArray(Индекс);
+    Return GetTagArray(Индекс);
 EndFunction
 
 #EndRegion
