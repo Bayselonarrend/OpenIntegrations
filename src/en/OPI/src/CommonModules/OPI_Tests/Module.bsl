@@ -27842,6 +27842,25 @@ Procedure ClickHouse_OpenGRPCStream(FunctionParameters)
     ConnectionSettings = OPI_ClickHouse.GetGRPCConnectionSettings(URL, Authorization);
     Connection         = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
 
+    // Create tables for test
+
+    TableCreationText = "CREATE TABLE IF NOT EXISTS events_stream_test (
+    |    id UInt64,
+    |    timestamp DateTime,
+    |    user_id UInt32,
+    |    event_type String,
+    |    payload String
+    |) ENGINE         = MergeTree()
+    |ORDER BY (timestamp, id)";
+
+    Request = OPI_ClickHouse.GetRequestSettings("DROP TABLE IF EXISTS events_stream_test"); // SKIP
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request); // SKIP
+
+    Request = OPI_ClickHouse.GetRequestSettings(TableCreationText);
+    Result  = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    // Open stream and insert data
+
     Result = OPI_ClickHouse.OpenGRPCStream(Connection);
 
     If Not Result["result"] Then
@@ -27850,7 +27869,7 @@ Procedure ClickHouse_OpenGRPCStream(FunctionParameters)
         StreamID = Result["streamId"];
     EndIf;
 
-    QueryText   = "INSERT INTO events_grpc FORMAT JSONEachRow";
+    QueryText   = "INSERT INTO events_stream_test FORMAT JSONEachRow";
     DataFormat  = "JSON";
     CurrentDate = Date("20260101100000");
 
@@ -27898,6 +27917,18 @@ Procedure ClickHouse_OpenGRPCStream(FunctionParameters)
 
     Process(Result       , "ClickHouse", "OpenGRPCStream");
     Process(FinalMessage , "ClickHouse", "OpenGRPCStream", "Final");
+
+    // Check inserted data
+
+    Connection = OPI_ClickHouse.CreateGRPCConnection(ConnectionSettings);
+
+    SelectionText   = "SELECT * FROM events_stream_test ORDER BY id";
+    Request         = OPI_ClickHouse.GetRequestSettings(SelectionText, , , , "JSON");
+    SelectionResult = OPI_ClickHouse.ExecuteRequest(Connection, Request);
+
+    Process(SelectionResult, "ClickHouse", "OpenGRPCStream", "Selection");
+
+    OPI_GRPC.CloseConnection(Connection);
 
 EndProcedure
 

@@ -173,7 +173,7 @@
 				{
 					"name": "--blocks",
 					"types": "Array of Structure",
-					"description": "JSON array of block descriptions",
+					"description": "Array of block descriptions",
 					"default": "Empty value",
 					"short": "-b"
 				}
@@ -216,7 +216,7 @@
 				{
 					"name": "--blocks",
 					"types": "Array of Structure",
-					"description": "JSON array of block descriptions",
+					"description": "Array of block descriptions",
 					"default": "Empty value",
 					"short": "-b"
 				}
@@ -259,7 +259,7 @@
 				{
 					"name": "--blocks",
 					"types": "Array of Structure",
-					"description": "JSON array of block descriptions",
+					"description": "Array of block descriptions",
 					"default": "Empty value",
 					"short": "-b"
 				}

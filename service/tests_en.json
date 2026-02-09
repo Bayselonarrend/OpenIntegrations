@@ -7241,6 +7241,11 @@
 	},
 	{
 		"lib": "ClickHouse",
+		"name": "OpenGRPCStream",
+		"variant": "Selection"
+	},
+	{
+		"lib": "ClickHouse",
 		"name": "SendGRPCMessage",
 		"variant": ""
 	},
