@@ -100,7 +100,7 @@
 				},
 				{
 					"name": "--users",
-					"types": "String,Number,Array of String,Number",
+					"types": "String, Number, Array of String, Number",
 					"description": "Viber User(s) ID",
 					"default": null,
 					"short": "-u"
