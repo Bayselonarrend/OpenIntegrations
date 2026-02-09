@@ -906,15 +906,15 @@ Procedure ProcessGRPCResponse(Response)
         Return;
     EndIf;
 
-    Format = OPI_Tools.GetOr(Response, "output_format", Undefined);
+    Format = OPI_Tools.GetOr(Response, "data.output_format", Undefined);
 
     If Not ValueIsFilled(Format) Then
         Return;
     EndIf;
 
-    B64String = OPI_Tools.CollectionFieldExists(Response, "data.output.BYTES");
+    B64String = "";
 
-    If ValueIsFilled(B64String) Then
+    If OPI_Tools.CollectionFieldExists(Response, "data.output.BYTES", B64String) Then
 
         If IsValidJSONFormat(Format) Then
 
