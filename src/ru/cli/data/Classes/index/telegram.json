@@ -380,7 +380,7 @@
 				},
 				{
 					"name": "--chat",
-					"types": "Строка,Число",
+					"types": "Строка, Число",
 					"description": "ID целевого чата или IDЧата*IDТемы",
 					"default": null,
 					"short": "-c"

@@ -681,7 +681,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -782,7 +782,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -818,7 +818,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -883,7 +883,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -912,7 +912,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -941,7 +941,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -970,7 +970,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -999,7 +999,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -1028,7 +1028,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -1057,7 +1057,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -1086,7 +1086,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -1115,7 +1115,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -1144,14 +1144,14 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
 				},
 				{
 					"name": "--user",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID пользователя исполнителя",
 					"default": null,
 					"short": "-s"
@@ -1180,7 +1180,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -1209,7 +1209,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -1238,7 +1238,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -1267,7 +1267,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -1303,7 +1303,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -1332,7 +1332,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -2139,7 +2139,7 @@
 				},
 				{
 					"name": "--task",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID задачи",
 					"default": null,
 					"short": "-t"
@@ -5263,7 +5263,7 @@
 				},
 				{
 					"name": "--lead",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID лида",
 					"default": null,
 					"short": "-l"
@@ -5459,7 +5459,7 @@
 				},
 				{
 					"name": "--deal",
-					"types": "Число,Строка",
+					"types": "Число, Строка",
 					"description": "ID сделки",
 					"default": null,
 					"short": "-d"

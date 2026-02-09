@@ -258,7 +258,7 @@
 				},
 				{
 					"name": "--file",
-					"types": "BinaryData,String",
+					"types": "BinaryData, String",
 					"description": "File to be uploaded",
 					"default": null,
 					"short": "-f"
@@ -388,7 +388,7 @@
 				},
 				{
 					"name": "--file",
-					"types": "BinaryData,String",
+					"types": "BinaryData, String",
 					"description": "File source for update",
 					"default": null,
 					"short": "-f"

@@ -789,7 +789,7 @@
 				{
 					"name": "--prvl",
 					"types": "Array of Structure",
-					"description": "prvl",
+					"description": "Array of privileges. See GetRolePrivilegeStructure",
 					"default": "Empty value",
 					"short": "-p"
 				},

@@ -434,83 +434,83 @@ EndFunction
 #Region Alternate
 
 Function ДобавитьПараметр(Val ИмяПараметра, Val Пояснение = "") Export
-	Return AddParameter(ИмяПараметра, Пояснение);
+    Return AddParameter(ИмяПараметра, Пояснение);
 EndFunction
 
 Function ДобавитьИменованныйПараметр(Val ИмяПараметра, Val Пояснение = "", Val Глобальный = False) Export
-	Return AddNamedParam(ИмяПараметра, Пояснение, Глобальный);
+    Return AddNamedParam(ИмяПараметра, Пояснение, Глобальный);
 EndFunction
 
 Function ДобавитьПараметрФлаг(Val ИмяПараметра, Val Пояснение = "", Val Глобальный = False) Export
-	Return AddFlagParam(ИмяПараметра, Пояснение, Глобальный);
+    Return AddFlagParam(ИмяПараметра, Пояснение, Глобальный);
 EndFunction
 
 Function ДобавитьПараметрКоллекция(Val ИмяПараметра, Val Пояснение = "") Export
-	Return AddCollectionParam(ИмяПараметра, Пояснение);
+    Return AddCollectionParam(ИмяПараметра, Пояснение);
 EndFunction
 
 Function ОписаниеКоманды(Val ИмяКоманды, Val Пояснение = "") Export
-	Return CommandDescription(ИмяКоманды, Пояснение);
+    Return CommandDescription(ИмяКоманды, Пояснение);
 EndFunction
 
 Procedure ДобавитьКоманду(Val ОписаниеКоманды) Export
-	AddCommand(ОписаниеКоманды);
+    AddCommand(ОписаниеКоманды);
 EndProcedure
 
 Function ПолучитьКоманду(Val ИмяКоманды) Export
-	Return GetCommand(ИмяКоманды);
+    Return GetCommand(ИмяКоманды);
 EndFunction
 
 Function ДобавитьПозиционныйПараметрКоманды(Val ОписаниеКоманды, Val ИмяПараметра, Val Пояснение = "") Export
-	Return AddPositionalCommandParameter(ОписаниеКоманды, ИмяПараметра, Пояснение);
+    Return AddPositionalCommandParameter(ОписаниеКоманды, ИмяПараметра, Пояснение);
 EndFunction
 
 Function ДобавитьИменованныйПараметрКоманды(Val ОписаниеКоманды, Val ИмяПараметра, Val Пояснение = "") Export
-	Return AddNamedCommandParameter(ОписаниеКоманды, ИмяПараметра, Пояснение);
+    Return AddNamedCommandParameter(ОписаниеКоманды, ИмяПараметра, Пояснение);
 EndFunction
 
 Function ДобавитьПараметрФлагКоманды(Val ОписаниеКоманды, Val ИмяПараметра, Val Пояснение = "") Export
-	Return AddCommandFlagParameter(ОписаниеКоманды, ИмяПараметра, Пояснение);
+    Return AddCommandFlagParameter(ОписаниеКоманды, ИмяПараметра, Пояснение);
 EndFunction
 
 Function ДобавитьПараметрКоллекцияКоманды(Val ОписаниеКоманды, Val ИмяПараметра, Val Пояснение = "") Export
-	Return AddCommandCollectionParam(ОписаниеКоманды, ИмяПараметра, Пояснение);
+    Return AddCommandCollectionParam(ОписаниеКоманды, ИмяПараметра, Пояснение);
 EndFunction
 
 Function ДобавитьИменованныйПараметрКоллекцияКоманды(Val ОписаниеКоманды, Val ИмяПараметра, Val Пояснение = "") Export
-	Return AddNamedCommandCollectionParam(ОписаниеКоманды, ИмяПараметра, Пояснение);
+    Return AddNamedCommandCollectionParam(ОписаниеКоманды, ИмяПараметра, Пояснение);
 EndFunction
 
 Function РазобратьКоманду(Val МассивПараметров) Export
-	Return ParseCommand(МассивПараметров);
+    Return ParseCommand(МассивПараметров);
 EndFunction
 
 Function Разобрать(Val ВходнойМассивПараметров) Export
-	Return Parse(ВходнойМассивПараметров);
+    Return Parse(ВходнойМассивПараметров);
 EndFunction
 
 Function СправкаПоПараметрам() Export
-	Return ParamsHelp();
+    Return ParamsHelp();
 EndFunction
 
 Procedure ВывестиСправкуПоПараметрам() Export
-	DisplayParameterHelp();
+    DisplayParameterHelp();
 EndProcedure
 
 Function СправкаПоКоманде(Val ИмяКоманды) Export
-	Return CommandHelp(ИмяКоманды);
+    Return CommandHelp(ИмяКоманды);
 EndFunction
 
 Function СправкаВозможныеКоманды() Export
-	Return HelpAvailableCommand();
+    Return HelpAvailableCommand();
 EndFunction
 
 Procedure ВывестиСправкуПоКомандам() Export
-	ShowCommandsHelp();
+    ShowCommandsHelp();
 EndProcedure
 
 Procedure ВывестиСправкуПоКоманде(Val ИмяКоманды) Export
-	ShowCommandHelp(ИмяКоманды);
+    ShowCommandHelp(ИмяКоманды);
 EndProcedure
 
 #EndRegion
